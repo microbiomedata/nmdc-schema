@@ -960,17 +960,21 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of percent.
     """
-    JSOLIDUSK = "J/K"
+    JSOLIDUSdegree_Celsius = "J/K"
     """
     The Unified Code for Units of Measure (UCUM) representation of joule per kelvin.
     """
-    Cel = "Cel"
+    degrees_Celsius = "Cel"
     """
     The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.
     """
     cm = "cm"
     """
     The Unified Code for Units of Measure (UCUM) representation of centimeter.
+    """
+    cP = "cP"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of centipoise.
     """
     d = "d"
     """
@@ -1040,7 +1044,7 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of watts per square meter.
     """
-    a = "a"
+    years = "a"
     """
     The Unified Code for Units of Measure (UCUM) representation of year.
     """
@@ -1076,7 +1080,7 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram.
     """
-    umolSOLIDUSm2SOLIDUSs = "umol/m2/s"
+    micromoles_per_square_meter_per_second = "umol/m2/s"
     """
     The Unified Code for Units of Measure (UCUM) representation of micromoles per square meter per second.
     """
@@ -1108,10 +1112,6 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of millivolt.
     """
-    PSU = "PSU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.
-    """
     L = "L"
     """
     The Unified Code for Units of Measure (UCUM) representation of liter.
@@ -1120,11 +1120,7 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of micrometer.
     """
-    y = "y"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of year.
-    """
-    number_1 = "1"
+    ratioSOLIDUSunitless = "1"
     """
     The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity.
     """
@@ -1136,7 +1132,7 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of kilogram.
     """
-    ppt = "ppt"
+    LEFT_SQUARE_BRACKETppthRIGHT_SQUARE_BRACKET = "[ppth]"
     """
     The Unified Code for Units of Measure (UCUM) representation of parts per thousand.
     """
@@ -1144,7 +1140,7 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of gram per gram.
     """
-    lx = "lx"
+    lux = "lx"
     """
     The Unified Code for Units of Measure (UCUM) representation of lux.
     """
@@ -1292,6 +1288,10 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of hertz.
     """
+    number_1SOLIDUSd = "1/d"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of per day (frequency).
+    """
     kHz = "kHz"
     """
     The Unified Code for Units of Measure (UCUM) representation of kilohertz.
@@ -1332,41 +1332,13 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of kilowatt.
     """
-    API = "API"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of API units.
-    """
     mbar = "mbar"
     """
     The Unified Code for Units of Measure (UCUM) representation of millibar.
     """
-    ratio = "ratio"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of ratio (dimensionless).
-    """
-    JSOLIDUSCel = "J/Cel"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of joules per Celsius.
-    """
-    uESOLIDUSm2SOLIDUSs = "uE/m2/s"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microeinsteins per square meter per second.
-    """
     kWSOLIDUSm2 = "kW/m2"
     """
     The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter.
-    """
-    people = "people"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of people count.
-    """
-    pets = "pets"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of pet count.
-    """
-    plants = "plants"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of plant count.
     """
     umolSOLIDUSsSOLIDUSm2 = "umol/s/m2"
     """
@@ -1380,7 +1352,7 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of liters per hour.
     """
-    pH = "pH"
+    LEFT_SQUARE_BRACKETpHRIGHT_SQUARE_BRACKET = "[pH]"
     """
     The Unified Code for Units of Measure (UCUM) representation of pH units.
     """
@@ -1388,9 +1360,13 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter per day.
     """
-    NTU = "NTU"
+    Nephelometric_Turbidity_Units = "[NTU]"
     """
     The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units.
+    """
+    Formazin_Nephelometric_Units = "[FNU]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of Formazin Nephelometric Units.
     """
     m3SOLIDUSmin = "m3/min"
     """
@@ -1399,6 +1375,122 @@ class UnitEnum(str, Enum):
     kmSOLIDUSh = "km/h"
     """
     The Unified Code for Units of Measure (UCUM) representation of kilometers per hour.
+    """
+    pounds_LEFT_PARENTHESISavoirdupoisRIGHT_PARENTHESIS = "[lb_av]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of pound (avoirdupois).
+    """
+    kgSOLIDUSkg = "kg/kg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilogram per kilogram.
+    """
+    ugSOLIDUSm3 = "ug/m3"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrograms per cubic meter.
+    """
+    meqSOLIDUSL = "meq/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milliequivalents per liter.
+    """
+    lmSOLIDUSm2 = "lm/m2"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of lumens per square meter.
+    """
+    mg = "mg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milligram.
+    """
+    umolSOLIDUSLSOLIDUSh = "umol/L/h"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micromoles per liter per hour.
+    """
+    gSOLIDUScm3 = "g/cm3"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of grams per cubic centimeter.
+    """
+    gSOLIDUSL = "g/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of grams per liter.
+    """
+    wk = "wk"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of week.
+    """
+    standard_gravity = "[g]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of standard gravity.
+    """
+    mSOLIDUSs2 = "m/s2"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of meters per second squared.
+    """
+    molSOLIDUSg = "mol/g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of moles per gram.
+    """
+    gSOLIDUSm2SOLIDUSd = "g/m2/d"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of grams per square meter per day.
+    """
+    Gy = "Gy"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of gray (absorbed dose).
+    """
+    rad_LEFT_PARENTHESISradiation_absorbed_doseRIGHT_PARENTHESIS = "RAD"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of rad (radiation absorbed dose).
+    """
+    square_feet = "[sft_i]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of square feet.
+    """
+    cubic_feet = "[cft_i]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of cubic feet.
+    """
+    m3 = "m3"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of cubic meter.
+    """
+    ug = "ug"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of microgram.
+    """
+    millimeters_per_year = "mm/a"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millimeters per year.
+    """
+    cm2 = "cm2"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of square centimeter.
+    """
+    ergSOLIDUScm2SOLIDUSs = "erg/cm2/s"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of ergs per square centimeter per second.
+    """
+    gSOLIDUSm2 = "g/m2"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of grams per square meter.
+    """
+    LSOLIDUSs = "L/s"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of liters per second.
+    """
+    cm3SOLIDUScm3 = "cm3/cm3"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of cubic centimeters per cubic centimeter.
+    """
+    knots = "[kn_i]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of knot (nautical miles per hour).
+    """
+    m3SOLIDUSs = "m3/s"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of cubic meters per second.
+    """
+    inches = "[in_i]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of inch.
     """
 
 
@@ -3555,6 +3647,7 @@ class MobilePhaseSegment(ConfiguredBaseModel):
          'from_schema': 'https://w3id.org/nmdc/nmdc'})
 
     duration: Optional[QuantityValue] = Field(default=None, description="""The elapsed time of an activity.""", json_schema_extra = { "linkml_meta": {'alias': 'duration',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'h|min'}},
          'domain_of': ['MixingProcess',
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
@@ -3594,6 +3687,7 @@ class MobilePhaseSegment(ConfiguredBaseModel):
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
     volume: Optional[QuantityValue] = Field(default=None, description="""The volume of a substance.""", json_schema_extra = { "linkml_meta": {'alias': 'volume',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mL|uL'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['Extraction',
                        'SubSamplingProcess',
@@ -3612,12 +3706,17 @@ class PortionOfSubstance(ConfiguredBaseModel):
          'title': 'Portion of a Substance'})
 
     final_concentration: Optional[QuantityValue] = Field(default=None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination""", json_schema_extra = { "linkml_meta": {'alias': 'final_concentration',
+         'annotations': {'storage_units': {'tag': 'storage_units',
+                                           'value': '%|mmol/L|umol/L'}},
          'domain_of': ['PortionOfSubstance'],
          'is_a': 'concentration'} })
     mass: Optional[QuantityValue] = Field(default=None, title="mass", description="""A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.""", json_schema_extra = { "linkml_meta": {'alias': 'mass',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'g'}},
          'domain_of': ['SubSamplingProcess', 'PortionOfSubstance'],
          'exact_mappings': ['PATO:0000125']} })
     source_concentration: Optional[QuantityValue] = Field(default=None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in solution A""", json_schema_extra = { "linkml_meta": {'alias': 'source_concentration',
+         'annotations': {'storage_units': {'tag': 'storage_units',
+                                           'value': '%|mmol/L'}},
          'domain_of': ['PortionOfSubstance'],
          'is_a': 'concentration'} })
     known_as: Optional[ChemicalEntityEnum] = Field(default=None, description="""The substance from which a portion was taken.""", json_schema_extra = { "linkml_meta": {'alias': 'known_as', 'domain_of': ['PortionOfSubstance']} })
@@ -3650,6 +3749,7 @@ class PortionOfSubstance(ConfiguredBaseModel):
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
     volume: Optional[QuantityValue] = Field(default=None, description="""The volume of a substance.""", json_schema_extra = { "linkml_meta": {'alias': 'volume',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mL|uL'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['Extraction',
                        'SubSamplingProcess',
@@ -5992,7 +6092,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram per gram, kilogram per '
-                                                     'kilogram, kilogram, pound'}},
+                                                     'kilogram, kilogram, pound'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[lb_av]|g/g|kg|kg/kg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '9 gram per gram'}],
          'is_a': 'core field',
@@ -6052,7 +6154,11 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, mole per liter, milligram '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'g|mg/L|mol/L'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'roundup;5 milligram per liter;2018-06-21'}],
          'is_a': 'core field',
@@ -6065,7 +6171,8 @@ class Biosample(Sample):
                                                      'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micrograms per cubic meter'}},
+                                            'value': 'micrograms per cubic meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'ug/m3'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'PM2.5;10 microgram per cubic meter'}],
          'is_a': 'core field',
@@ -6077,7 +6184,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '20 degree Celsius'}],
          'is_a': 'core field',
@@ -6088,7 +6196,9 @@ class Biosample(Sample):
                                             'value': 'temperature value;treatment '
                                                      'interval and duration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '25 degree '
                                 'Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -6101,7 +6211,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'percentage'}},
+                                            'value': 'percentage'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '27%'}],
          'is_a': 'core field',
@@ -6134,7 +6245,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milliequivalent per liter, '
-                                                     'milligram per liter'}},
+                                                     'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'meq/L|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '50 milligram per liter'}],
          'is_a': 'core field',
@@ -6155,7 +6268,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'mole per liter'}},
+                                            'value': 'mole per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.005 mole per liter'}],
          'is_a': 'core field',
@@ -6163,7 +6277,8 @@ class Biosample(Sample):
     alt: Optional[QuantityValue] = Field(default=None, title="altitude", description="""Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air""", json_schema_extra = { "linkml_meta": {'alias': 'alt',
          'aliases': ['altitude'],
          'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'measurement value'}},
+                                            'value': 'measurement value'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '100 meter'}],
          'is_a': 'environment field',
@@ -6174,7 +6289,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'mole per liter per hour'}},
+                                            'value': 'mole per liter per hour'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mol/L/h'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.269 mole per liter per hour'}],
          'is_a': 'core field',
@@ -6186,7 +6302,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter, milligram '
-                                                     'per liter, parts per million'}},
+                                                     'per liter, parts per million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1.5 milligram per liter'}],
          'is_a': 'core field',
@@ -6197,7 +6315,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'lux, lumens per square meter'}},
+                                            'value': 'lux, lumens per square meter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'lm/m2|lx'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -6218,7 +6338,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'millimeter'}},
+                                            'value': 'millimeter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '8.94 inch'}],
          'is_a': 'core field',
@@ -6229,7 +6350,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '12.5 degree Celsius'}],
          'is_a': 'core field',
@@ -6242,7 +6364,10 @@ class Biosample(Sample):
                                                      'duration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram'}},
+                                            'value': 'milligram'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'penicillin;5 '
                                 'milligram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -6256,7 +6381,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degrees API'}},
+                                            'value': 'degrees API'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'non_ucum_unit'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -6276,7 +6403,8 @@ class Biosample(Sample):
                                             'value': 'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'percent'}},
+                                            'value': 'percent'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -6288,7 +6416,8 @@ class Biosample(Sample):
                                             'value': 'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'percent'}},
+                                            'value': 'percent'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -6311,7 +6440,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '25.5 degree Celsius'}],
          'is_a': 'core field',
@@ -6330,7 +6460,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '12.5 degree Celsius'}],
          'is_a': 'core field',
@@ -6342,7 +6473,8 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per cubic meter per '
-                                                     'day'}},
+                                                     'day'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/m3/d'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '5 milligram per cubic meter per day'}],
          'is_a': 'core field',
@@ -6355,7 +6487,9 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per cubic meter per '
                                                      'day, micromole oxygen per liter '
-                                                     'per hour'}},
+                                                     'per hour'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mg/m3/d|umol/L/h'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '300 micromole oxygen per liter per hour'}],
          'is_a': 'core field',
@@ -6366,7 +6500,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'nanogram per hour'}},
+                                            'value': 'nanogram per hour'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'ng/h'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '2.53 microgram per liter per hour'}],
          'is_a': 'core field',
@@ -6377,7 +6512,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'millibar'}},
+                                            'value': 'millibar'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mbar'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '5 millibar'}],
          'is_a': 'core field',
@@ -6414,7 +6550,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -6425,7 +6563,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -6447,7 +6586,8 @@ class Biosample(Sample):
                                                      'value;frequency;duration;duration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -6469,7 +6609,8 @@ class Biosample(Sample):
                                             'value': 'biomass type;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'ton, kilogram, gram'}},
+                                            'value': 'ton, kilogram, gram'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'g|kg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'total;20 gram'}],
          'is_a': 'core field',
@@ -6500,7 +6641,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'microgram per liter, microgram '
-                                                     'per gram'}},
+                                                     'per gram'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'ug/L|ug/g'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '14 microgram per liter'}],
          'is_a': 'core field',
@@ -6511,7 +6654,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'millimeter mercury'}},
+                                            'value': 'millimeter mercury'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mm[Hg]'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -6522,7 +6666,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'millimeter mercury'}},
+                                            'value': 'millimeter mercury'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mm[Hg]'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -6533,7 +6678,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'parts per million'}},
+                                            'value': 'parts per million'},
+                         'storage_units': {'tag': 'storage_units', 'value': '[ppm]'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.05 parts per million'}],
          'is_a': 'core field',
@@ -6569,7 +6715,8 @@ class Biosample(Sample):
          'aliases': ['built structure age'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'year'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'year'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'a'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '15'}],
          'is_a': 'core field',
@@ -6601,7 +6748,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per liter, micromole '
-                                                     'per liter, parts per million'}},
+                                                     'per liter, parts per million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L|umol/L|mg/kg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.2 micromole per liter'}],
          'is_a': 'core field',
@@ -6613,7 +6762,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '410 parts per million'}],
          'is_a': 'core field',
@@ -6625,7 +6776,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.1 parts per million'}],
          'is_a': 'core field',
@@ -6634,7 +6787,8 @@ class Biosample(Sample):
          'aliases': ['carbon/nitrogen ratio'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'storage_units': {'tag': 'storage_units', 'value': '1'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.417361111'}],
          'is_a': 'core field',
@@ -6645,7 +6799,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'square meter'}},
+                                            'value': 'square meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm2'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '25 square meter'}],
          'is_a': 'core field',
@@ -6693,7 +6848,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'joule per degree Celsius'}},
+                                            'value': 'joule per degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'J/K'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -6736,7 +6892,8 @@ class Biosample(Sample):
                                                      'duration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'nitrous acid;0.5 milligram per '
                                 'liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -6750,7 +6907,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -6762,7 +6920,8 @@ class Biosample(Sample):
                                                      'value;frequency;duration;duration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -6786,7 +6945,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '5000 milligram per liter'}],
          'is_a': 'core field',
@@ -6798,7 +6959,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per cubic meter, '
-                                                     'microgram per liter'}},
+                                                     'microgram per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mg/m3|ug/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '5 milligram per cubic meter'}],
          'is_a': 'core field',
@@ -6833,7 +6996,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milliSiemens per centimeter'}},
+                                            'value': 'milliSiemens per centimeter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mS/cm|uS/cm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '10 milliSiemens per centimeter'}],
          'is_a': 'core field',
@@ -6922,7 +7087,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram per cubic meter, gram per '
-                                                     'cubic centimeter'}},
+                                                     'cubic centimeter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'g/cm3|g/m3|kg/m3'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1000 kilogram per cubic meter'}],
          'is_a': 'core field',
@@ -6939,7 +7106,8 @@ class Biosample(Sample):
     depth: Optional[QuantityValue] = Field(default=None, title="depth", description="""The vertical distance below local surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples.""", json_schema_extra = { "linkml_meta": {'alias': 'depth',
          'aliases': ['depth'],
          'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'measurement value'}},
+                                            'value': 'measurement value'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '10 meter'}],
          'is_a': 'environment field',
@@ -6950,7 +7118,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '22 degree Celsius'}],
          'is_a': 'core field',
@@ -6962,7 +7131,8 @@ class Biosample(Sample):
                                                      'value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'nanogram per liter'}},
+                                            'value': 'nanogram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'ng/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.2 nanogram per liter'}],
          'is_a': 'core field',
@@ -6975,7 +7145,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter, milligram '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mg/L|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '5 milligram per liter'}],
          'is_a': 'core field',
@@ -6986,7 +7158,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micromole per liter'}},
+                                            'value': 'micromole per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.3 micromole per liter'}],
          'is_a': 'core field',
@@ -6998,7 +7171,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'microgram per liter, milligram '
-                                                     'per liter, parts per million'}},
+                                                     'per liter, parts per million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L|ug/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '2059 micromole per kilogram'}],
          'is_a': 'core field',
@@ -7010,7 +7185,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'microgram per liter, micromole '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'ug/L|umol/L|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '761 micromole per liter'}],
          'is_a': 'core field',
@@ -7022,7 +7199,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'microgram per liter, milligram '
-                                                     'per liter, parts per million'}},
+                                                     'per liter, parts per million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L|ug/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '56.5 micromole per liter'}],
          'is_a': 'core field',
@@ -7033,7 +7212,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7045,7 +7225,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter, milligram '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mg/L|umol/L|ug/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '197 micromole per liter'}],
          'is_a': 'core field',
@@ -7057,7 +7239,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'microgram per liter, milligram '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mg/L|ug/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.05 micromole per liter'}],
          'is_a': 'core field',
@@ -7069,7 +7253,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per kilogram, '
-                                                     'milligram per liter'}},
+                                                     'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mg/L|umol/kg|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '175 micromole per kilogram'}],
          'is_a': 'core field',
@@ -7081,7 +7267,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per kilogram, '
-                                                     'milligram per liter'}},
+                                                     'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mg/L|umol/kg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7146,7 +7334,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'square meter'}},
+                                            'value': 'square meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm2'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '2.5 square meter'}],
          'is_a': 'core field',
@@ -7197,7 +7386,9 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'microEinstein per square meter '
                                                      'per second, microEinstein per '
-                                                     'square centimeter per second'}},
+                                                     'square centimeter per second'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'umol/m2/s'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '28.71 microEinstein per square meter per second'}],
          'is_a': 'core field',
@@ -7226,7 +7417,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micromole per liter'}},
+                                            'value': 'micromole per liter'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'mixs_inconsistent'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7259,7 +7452,8 @@ class Biosample(Sample):
                                             'value': 'emulsion name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'gram per liter'}},
+                                            'value': 'gram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'g/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7364,7 +7558,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7375,7 +7571,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'square meter'}},
+                                            'value': 'square meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm2'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7384,7 +7581,9 @@ class Biosample(Sample):
          'aliases': ['exposed pipes'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'pending_analysis'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7450,7 +7649,11 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, mole per liter, milligram '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'g|mg/L|mol/L'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'urea;0.6 milligram per '
                                 'liter;R2/2018-05-11:T14:30/2018-05-11T19:30/P1H30M'}],
@@ -7516,7 +7719,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'years, weeks, days'}},
+                                            'value': 'years, weeks, days'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'a|d|wk'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7527,7 +7731,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'square meter'}},
+                                            'value': 'square meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm2'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7573,7 +7778,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'joule per degree Celsius'}},
+                                            'value': 'joule per degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'J/K'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7594,7 +7800,8 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram chlorophyll a per '
-                                                     'cubic meter, volts'}},
+                                                     'cubic meter, volts'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/m3'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '2.5 volts'}],
          'is_a': 'core field',
@@ -7603,7 +7810,8 @@ class Biosample(Sample):
          'aliases': ['frequency of cleaning'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration or {text}'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'storage_units': {'tag': 'storage_units', 'value': '1/d'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7612,7 +7820,8 @@ class Biosample(Sample):
          'aliases': ['frequency of cooking'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'storage_units': {'tag': 'storage_units', 'value': '1/d'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7626,7 +7835,11 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, mole per liter, milligram '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'g|mg/L|mol/L'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'bifonazole;1 mole per '
                                 'liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -7651,7 +7864,8 @@ class Biosample(Sample):
                                                      'interval and duration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micromole per liter'}},
+                                            'value': 'micromole per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'CO2; 500ppm above ambient; constant'},
                       {'value': 'nitric oxide;0.5 micromole per '
@@ -7672,7 +7886,8 @@ class Biosample(Sample):
                                                      'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micromole per liter'}},
+                                            'value': 'micromole per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7714,7 +7929,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'mol per liter per hour'}},
+                                            'value': 'mol per liter per hour'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mol/L/h'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '5 mol per liter per hour'}],
          'is_a': 'core field',
@@ -7736,7 +7952,9 @@ class Biosample(Sample):
                                                      'interval and duration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'meter per square second, g'}},
+                                            'value': 'meter per square second, g'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[g]|m/s2'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '12 g;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
          'is_a': 'core field',
@@ -7770,7 +7988,11 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, mole per liter, milligram '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'g|mg/L|mol/L'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'abscisic acid;0.5 milligram per '
                                 'liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -7819,7 +8041,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7839,7 +8062,8 @@ class Biosample(Sample):
                                             'value': 'measurement value range'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'atmosphere, kilopascal'}},
+                                            'value': 'atmosphere, kilopascal'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'atm|kPa'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7851,7 +8075,8 @@ class Biosample(Sample):
                                             'value': 'measurement value range'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '150-295 degree Celsius'}],
          'is_a': 'core field',
@@ -7901,7 +8126,8 @@ class Biosample(Sample):
                                                      'value unit'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'microgram per gram'}},
+                                            'value': 'microgram per gram'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'ug/g'}},
          'comments': ['For multiple heavy metals and concentrations, separate by ;'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'mercury 0.09 micrograms per gram'},
@@ -7934,7 +8160,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'centimeter'}},
+                                            'value': 'centimeter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'cm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -7948,7 +8175,11 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, mole per liter, milligram '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'g|mg/L|mol/L'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'atrazine;10 milligram per '
                                 'liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -7971,7 +8202,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'year, day, hour'}},
+                                            'value': 'year, day, hour'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'a|d|h'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '10 days'}],
          'is_a': 'core field',
@@ -8012,7 +8244,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '15 degree Celsius'}],
          'is_a': 'core field',
@@ -8052,7 +8285,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'kilogram, gram'}},
+                                            'value': 'kilogram, gram'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'g|kg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '500 gram'}],
          'is_a': 'core field',
@@ -8094,7 +8328,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'centimeter, millimeter, meter'}},
+                                            'value': 'centimeter, millimeter, meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'cm|m|mm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.1 meter'}],
          'is_a': 'core field',
@@ -8115,7 +8350,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'centimeter, millimeter, meter'}},
+                                            'value': 'centimeter, millimeter, meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'cm|m|mm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1 meter'}],
          'is_a': 'core field',
@@ -8218,7 +8454,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'kilogram, gram'}},
+                                            'value': 'kilogram, gram'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'g|kg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '2500 gram'}],
          'is_a': 'core field',
@@ -8229,7 +8466,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'kilogram, gram'}},
+                                            'value': 'kilogram, gram'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'g|kg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1500 gram'}],
          'is_a': 'core field',
@@ -8240,7 +8478,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'gram per cubic meter'}},
+                                            'value': 'gram per cubic meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'g/m3|%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '25 gram per cubic meter'}],
          'is_a': 'core field',
@@ -8252,7 +8491,10 @@ class Biosample(Sample):
                                                      'interval and duration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'gram per cubic meter'}},
+                                            'value': 'gram per cubic meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'g/m3'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '25 gram per cubic '
                                 'meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -8283,7 +8525,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'percentage'}},
+                                            'value': 'percentage'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8296,7 +8539,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'mole per liter, milligram per '
-                                                     'liter'}},
+                                                     'liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mg/L|mol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8308,7 +8553,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'kilowatt per square metre'}},
+                                            'value': 'kilowatt per square metre'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'mixs_inconsistent'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8337,7 +8584,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'percent'}},
+                                            'value': 'percent'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8368,7 +8616,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'lux'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'lux'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'lx'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.3 lux'}],
          'is_a': 'core field',
@@ -8381,7 +8630,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'lux; micrometer, nanometer, '
-                                                     'angstrom'}},
+                                                     'angstrom'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'incandescant light;10 lux;450 nanometer'}],
          'is_a': 'core field',
@@ -8463,7 +8714,9 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'mole per liter, milligram per '
                                                      'liter, parts per million, '
-                                                     'micromole per kilogram'}},
+                                                     'micromole per kilogram'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L|mol/L|umol/kg|mg/kg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '52.8 micromole per kilogram'}],
          'is_a': 'core field',
@@ -8472,7 +8725,8 @@ class Biosample(Sample):
          'aliases': ['maximum occupancy'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'storage_units': {'tag': 'storage_units', 'value': '1'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8483,7 +8737,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'meter per second'}},
+                                            'value': 'meter per second'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm/s'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.5 meter per second'}],
          'is_a': 'core field',
@@ -8494,7 +8749,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'meter per second'}},
+                                            'value': 'meter per second'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm/s'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1 meter per second'}],
          'is_a': 'core field',
@@ -8525,7 +8781,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter, parts per '
-                                                     'billion, parts per million'}},
+                                                     'billion, parts per million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppb]|[ppm]|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1800 parts per billion'}],
          'is_a': 'core field',
@@ -8547,7 +8805,8 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'ton, kilogram, gram per kilogram '
-                                                     'soil'}},
+                                                     'soil'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'kg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8561,7 +8820,11 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, mole per liter, milligram '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'g|mg/L|mol/L'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'potassium;15 '
                                 'gram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -8587,7 +8850,8 @@ class Biosample(Sample):
                                             'value': 'n-alkane name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micromole per liter'}},
+                                            'value': 'micromole per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'n-hexadecane;100 milligram per liter'}],
          'is_a': 'core field',
@@ -8600,7 +8864,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter, milligram '
-                                                     'per liter, parts per million'}},
+                                                     'per liter, parts per million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '65 micromole per liter'}],
          'is_a': 'core field',
@@ -8612,7 +8878,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter, milligram '
-                                                     'per liter, parts per million'}},
+                                                     'per liter, parts per million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.5 micromole per liter'}],
          'is_a': 'core field',
@@ -8623,7 +8891,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micromole per liter'}},
+                                            'value': 'micromole per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'umol/L|%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '4.2 micromole per liter'}],
          'is_a': 'core field',
@@ -8638,7 +8908,11 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, mole per liter, milligram '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'g|mg/L|mol/L'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'carbon dioxide;10 mole per '
                                 'liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -8650,7 +8924,8 @@ class Biosample(Sample):
          'aliases': ['number of pets'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'storage_units': {'tag': 'storage_units', 'value': '1'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8659,7 +8934,8 @@ class Biosample(Sample):
          'aliases': ['number of houseplants'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'storage_units': {'tag': 'storage_units', 'value': '1'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8668,7 +8944,8 @@ class Biosample(Sample):
          'aliases': ['number of residents'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'storage_units': {'tag': 'storage_units', 'value': '1'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8677,7 +8954,9 @@ class Biosample(Sample):
          'aliases': ['occupant density at sampling'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'pending_analysis'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8695,7 +8974,8 @@ class Biosample(Sample):
          'aliases': ['occupancy at sampling'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'storage_units': {'tag': 'storage_units', 'value': '1'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '10'}],
          'is_a': 'core field',
@@ -8706,7 +8986,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micromole per liter'}},
+                                            'value': 'micromole per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'umol/L|%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1.5 microgram per liter'}],
          'is_a': 'core field',
@@ -8723,7 +9005,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'number of cells per gram (or ml '
-                                                     'or cm^2)'}},
+                                                     'or cm^2)'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8737,7 +9021,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'microgram per liter'}},
+                                            'value': 'microgram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'ug/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1.75 milligram per cubic meter'}],
          'is_a': 'core field',
@@ -8748,7 +9033,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'microgram per liter'}},
+                                            'value': 'microgram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'ug/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '4 micromole per liter'}],
          'is_a': 'core field',
@@ -8759,7 +9045,8 @@ class Biosample(Sample):
                                             'value': 'particle name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'gram per liter'}},
+                                            'value': 'gram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'g/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8775,7 +9062,9 @@ class Biosample(Sample):
                                             'value': 'number of cells per cubic meter, '
                                                      'number of cells per milliliter, '
                                                      'number of cells per cubic '
-                                                     'centimeter'}},
+                                                     'centimeter'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'total prokaryotes;3.5e7 cells per milliliter;qPCR'}],
          'is_a': 'core field',
@@ -8785,7 +9074,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8806,7 +9096,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '600 parts per million'}],
          'is_a': 'core field',
@@ -8817,7 +9109,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'microgram per liter'}},
+                                            'value': 'microgram per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'ug/L|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1.92 micromole per liter'}],
          'is_a': 'core field',
@@ -8829,7 +9123,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'microgram per liter, micromole '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'ug/L|umol/L|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.3 micromole per liter'}],
          'is_a': 'core field',
@@ -8840,7 +9136,8 @@ class Biosample(Sample):
                                             'value': 'particle name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micrometer'}},
+                                            'value': 'micrometer'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'um'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8851,7 +9148,9 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value range'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mD'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mD'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'non_ucum_unit'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -8879,7 +9178,11 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, mole per liter, milligram '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'g|mg/L|mol/L'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'pyrethrum;0.6 milligram per '
                                 'liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -8893,7 +9196,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micromole per liter'}},
+                                            'value': 'micromole per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.05 micromole per liter'}],
          'is_a': 'core field',
@@ -8938,7 +9242,8 @@ class Biosample(Sample):
                                                      'value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per cubic meter'}},
+                                            'value': 'milligram per cubic meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/m3'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '2.5 milligram per cubic meter'}],
          'is_a': 'core field',
@@ -8950,7 +9255,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micromole per liter'}},
+                                            'value': 'micromole per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.7 micromole per liter'}],
          'is_a': 'core field',
@@ -8962,7 +9268,9 @@ class Biosample(Sample):
                                                      'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'mole per gram, mole per liter'}},
+                                            'value': 'mole per gram, mole per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mol/L|mol/g'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '2.98 milligram per liter'}],
          'is_a': 'core field',
@@ -8975,7 +9283,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'number of photons per second per '
-                                                     'unit area'}},
+                                                     'unit area'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'umol/m2/s'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '3.926 micromole photons per second per square meter'}],
          'is_a': 'core field',
@@ -9026,7 +9336,9 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, mole per liter, milligram '
                                                      'per liter, microgram per cubic '
-                                                     'meter'}},
+                                                     'meter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'g|mg/L|mol/L|ug/m3'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'lead;0.15 microgram per cubic meter'}],
          'is_a': 'core field',
@@ -9038,7 +9350,8 @@ class Biosample(Sample):
                                             'value': 'measurement value or range'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'percentage'}},
+                                            'value': 'percentage'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9051,7 +9364,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L|mg/kg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '463 milligram per liter'}],
          'is_a': 'core field',
@@ -9062,7 +9377,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9092,7 +9408,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'atmosphere'}},
+                                            'value': 'atmosphere'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'atm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '50 atmosphere'}],
          'is_a': 'core field',
@@ -9125,7 +9442,9 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per cubic meter per '
                                                      'day, gram per square meter per '
-                                                     'day'}},
+                                                     'day'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'g/m2/d|mg/m3/d'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '100 milligram per cubic meter per day'}],
          'is_a': 'core field',
@@ -9146,7 +9465,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'cubic meter per day'}},
+                                            'value': 'cubic meter per day'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm3/d'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9186,7 +9506,10 @@ class Biosample(Sample):
                                                      'duration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'rad, gray'}},
+                                            'value': 'rad, gray'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Gy|RAD'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'gamma radiation;60 '
                                 'gray;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -9201,7 +9524,10 @@ class Biosample(Sample):
                                                      'interval and duration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'millimeter'}},
+                                            'value': 'millimeter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mm'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '15 '
                                 'millimeter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -9224,7 +9550,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'millivolt'}},
+                                            'value': 'millivolt'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mV'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '300 millivolt'}],
          'is_a': 'core field',
@@ -9235,7 +9562,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'percentage'}},
+                                            'value': 'percentage'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '80%'}],
          'is_a': 'core field',
@@ -9246,7 +9574,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'gram of air, kilogram of air'}},
+                                            'value': 'gram of air, kilogram of air'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'mixs_inconsistent'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '12 per kilogram of air'}],
          'is_a': 'core field',
@@ -9275,7 +9605,8 @@ class Biosample(Sample):
                                             'value': 'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'percent'}},
+                                            'value': 'percent'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9287,7 +9618,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'liter per hour'}},
+                                            'value': 'liter per hour'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'L/h'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9333,7 +9665,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9345,7 +9678,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9394,7 +9728,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'square feet, square meter'}},
+                                            'value': 'square feet, square meter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[sft_i]|m2'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9404,7 +9740,8 @@ class Biosample(Sample):
          'aliases': ['room occupancy'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'storage_units': {'tag': 'storage_units', 'value': '1'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9433,7 +9770,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'cubic feet, cubic meter'}},
+                                            'value': 'cubic feet, cubic meter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[cft_i]|m3'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9474,7 +9813,8 @@ class Biosample(Sample):
                                                      'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'sucrose'}],
          'is_a': 'core field',
@@ -9487,7 +9827,8 @@ class Biosample(Sample):
                                                      'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'KH2PO4;170¬†milligram per liter'}],
          'is_a': 'core field',
@@ -9500,7 +9841,8 @@ class Biosample(Sample):
                                                      'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'H3BO3;6.2¬†milligram per liter'}],
          'is_a': 'core field',
@@ -9510,7 +9852,8 @@ class Biosample(Sample):
          'aliases': ['rooting medium pH'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'storage_units': {'tag': 'storage_units', 'value': '[pH]'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '7.5'}],
          'is_a': 'core field',
@@ -9522,7 +9865,8 @@ class Biosample(Sample):
                                                      'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'abscisic acid;0.75 milligram per liter'}],
          'is_a': 'core field',
@@ -9544,7 +9888,8 @@ class Biosample(Sample):
                                                      'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'nicotinic acid;0.5 milligram per liter'}],
          'is_a': 'core field',
@@ -9557,7 +9902,8 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'practical salinity unit, '
-                                                     'percentage'}},
+                                                     'percentage'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '25 practical salinity unit'}],
          'is_a': 'core field',
@@ -9580,7 +9926,11 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, microgram, mole per liter, '
-                                                     'gram per liter'}},
+                                                     'gram per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'g|g/L|mol/L|ug'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'NaCl;5 gram per '
                                 'liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -9649,7 +9999,8 @@ class Biosample(Sample):
                                             'value': 'measurement value range'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'millimeter per year'}},
+                                            'value': 'millimeter per year'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mm/a'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9668,7 +10019,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value;enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1534 meter;MSL'}],
          'is_a': 'core field',
@@ -9687,7 +10039,8 @@ class Biosample(Sample):
                                             'value': 'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milliliter'}},
+                                            'value': 'milliliter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mL'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9707,7 +10060,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'millliter, gram, milligram, '
-                                                     'liter'}},
+                                                     'liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'L|g|mL|mg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '5 liter'}],
          'is_a': 'nucleic acid sequence source field',
@@ -9748,7 +10103,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '-80 degree Celsius'}],
          'is_a': 'core field',
@@ -9775,7 +10131,8 @@ class Biosample(Sample):
          'aliases': ['sampling time outside'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'time'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'hour'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'hour'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'h'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9787,7 +10144,9 @@ class Biosample(Sample):
                                                      'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'days;degree Celsius'}},
+                                            'value': 'days;degree Celsius'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '5 days;-20 degree Celsius'}],
          'is_a': 'core field',
@@ -9799,7 +10158,8 @@ class Biosample(Sample):
                                             'value': 'measurement value or measurement '
                                                      'value range'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9839,7 +10199,8 @@ class Biosample(Sample):
                                             'value': 'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'percent'}},
+                                            'value': 'percent'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -9873,7 +10234,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'millimeter'}},
+                                            'value': 'millimeter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mm'}},
          'comments': ['Seasons are defined as spring (March, April, May), summer '
                       '(June, July, August), autumn (September, October, November) and '
                       'winter (December, January, February).'],
@@ -9891,7 +10253,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '18 degree Celsius'}],
          'is_a': 'core field',
@@ -10004,7 +10367,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micromole per liter'}},
+                                            'value': 'micromole per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.05 micromole per liter'}],
          'is_a': 'core field',
@@ -10023,7 +10387,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micrometer'}},
+                                            'value': 'micrometer'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'um'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.2 micrometer'}],
          'is_a': 'core field',
@@ -10033,7 +10398,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'micrometer'}},
+                                            'value': 'micrometer'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'um'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '20 micrometer'}],
          'is_a': 'core field',
@@ -10043,8 +10409,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'degree'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'deg'}},
          'comments': ['Aspect is the orientation of slope, measured clockwise in '
                       'degrees from 0 to 360, where 0 is north-facing, 90 is '
                       'east-facing, 180 is south-facing, and 270 is west-facing.'],
@@ -10058,7 +10424,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'percentage'}},
+                                            'value': 'percentage'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '10%'}, {'value': '10 %'}, {'value': '0.10'}],
          'is_a': 'core field',
@@ -10070,7 +10437,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'hours'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'hours'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'h'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10082,7 +10450,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '10.5 milligram per liter'}],
          'is_a': 'core field',
@@ -10100,7 +10470,9 @@ class Biosample(Sample):
          'aliases': ['soil texture measurement'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'pending_analysis'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10143,7 +10515,9 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'kilowatts per square meter per '
                                                      'day, ergs per square centimeter '
-                                                     'per second'}},
+                                                     'per second'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'kW/m2/d|erg/cm2/s'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1.36 kilowatts per square meter per day'}],
          'is_a': 'core field',
@@ -10157,7 +10531,9 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, microgram, mole per liter, '
                                                      'gram per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|g|g/L|mol/L|ug'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10172,7 +10548,9 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, microgram, mole per liter, '
                                                      'gram per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|g|g/L|mol/L|ug'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10185,7 +10563,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter, milligram '
-                                                     'per liter, parts per million'}},
+                                                     'per liter, parts per million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L|umol/L|ug/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.1 milligram per liter'}],
          'is_a': 'core field',
@@ -10238,7 +10618,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'gram of air, kilogram of air'}},
+                                            'value': 'gram of air, kilogram of air'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'mixs_inconsistent'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '15 per kilogram of air'}],
          'is_a': 'core field',
@@ -10284,7 +10666,9 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'standing water type;treatment '
                                                      'interval and duration'},
-                         'occurrence': {'tag': 'occurrence', 'value': 'm'}},
+                         'occurrence': {'tag': 'occurrence', 'value': 'm'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'standing '
                                 'water;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -10317,7 +10701,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter, milligram '
-                                                     'per liter, parts per million'}},
+                                                     'per liter, parts per million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '5 micromole per liter'}],
          'is_a': 'core field',
@@ -10328,7 +10714,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10340,7 +10727,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter, milligram '
-                                                     'per liter, parts per million'}},
+                                                     'per liter, parts per million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '2 micromole per liter'}],
          'is_a': 'core field',
@@ -10360,7 +10749,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'percentage'}},
+                                            'value': 'percentage'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '10%'}],
          'is_a': 'core field',
@@ -10382,7 +10772,9 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'parts per million, gram per '
                                                      'cubic meter, gram per square '
-                                                     'meter'}},
+                                                     'meter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|g/m2|g/m3'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.01 gram per square meter'}],
          'is_a': 'core field',
@@ -10402,7 +10794,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '15 degree Celsius'}],
          'is_a': 'core field',
@@ -10413,7 +10806,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.5 milligram per liter'}],
          'is_a': 'core field',
@@ -10427,7 +10821,9 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram, microgram, milligram per '
                                                      'liter, mole per liter, gram per '
-                                                     'liter, part per million'}},
+                                                     'liter, part per million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|g|g/L|mg/L|mol/L|ug'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10439,7 +10835,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10449,7 +10846,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '25 degree Celsius'}],
          'is_a': 'environment field',
@@ -10460,7 +10858,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '5 degree Celsius'}],
          'is_a': 'core field',
@@ -10510,7 +10909,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10521,7 +10922,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'microgram per liter'}},
+                                            'value': 'microgram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'ug/L|%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1 ug/L'}],
          'is_a': 'core field',
@@ -10535,7 +10937,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '500 meter'}],
          'is_a': 'core field',
@@ -10546,7 +10949,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'microgram per liter'}},
+                                            'value': 'microgram per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'ug/L|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '40 microgram per liter'}],
          'is_a': 'core field',
@@ -10557,7 +10962,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'microgram per liter'}},
+                                            'value': 'microgram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'ug/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '40 microgram per liter'}],
          'is_a': 'core field',
@@ -10569,7 +10975,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per liter, milligram '
-                                                     'per kilogram'}},
+                                                     'per kilogram'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mg/L|mg/kg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10581,7 +10989,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'microgram per liter, micromole '
-                                                     'per liter, milligram per liter'}},
+                                                     'per liter, milligram per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mg/L|ug/L|umol/L|%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '50 micromole per liter'}],
          'is_a': 'core field',
@@ -10604,7 +11014,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'microgram per liter, micromole '
-                                                     'per liter, milligram per liter'}},
+                                                     'per liter, milligram per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'mg/L|ug/L|umol/L|%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '5 mg N/ L'}],
          'is_a': 'core field',
@@ -10626,7 +11038,8 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram Carbon per kilogram sample '
-                                                     'material'}},
+                                                     'material'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '5 mg N/ L'}],
          'is_a': 'core field',
@@ -10639,7 +11052,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'microgram per liter, micromole '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'ug/L|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '35 micromole per liter'}],
          'is_a': 'core field',
@@ -10651,7 +11066,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter, milligram '
-                                                     'per liter, parts per million'}},
+                                                     'per liter, parts per million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.03 milligram per liter'}],
          'is_a': 'core field',
@@ -10663,7 +11080,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'microgram per liter, micromole '
-                                                     'per liter'}},
+                                                     'per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'ug/L|umol/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10675,7 +11094,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10714,7 +11135,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'formazin turbidity unit, '
-                                                     'formazin nephelometric units'}},
+                                                     'formazin nephelometric units'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[NTU]|[FNU]'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.3 nephelometric turbidity units'}],
          'is_a': 'core field',
@@ -10724,7 +11147,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10734,7 +11158,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10755,7 +11180,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'cubic meter per minute, liters '
-                                                     'per second'}},
+                                                     'per second'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'L/s|m3/min'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '750 cubic meter per minute'}],
          'is_a': 'core field',
@@ -10777,7 +11204,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10788,7 +11217,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milligram per liter'}},
+                                            'value': 'milligram per liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10809,7 +11239,8 @@ class Biosample(Sample):
                                                      'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'cP at degree Celsius'}},
+                                            'value': 'cP at degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'cP'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10823,8 +11254,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'microgram per cubic meter, parts '
-                                                     'per million, nanogram per '
-                                                     'liter'}},
+                                                     'per million, nanogram per liter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|ng/L|ug/m3'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'formaldehyde;500 nanogram per liter'}],
          'is_a': 'core field',
@@ -10836,7 +11268,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'square meter'}},
+                                            'value': 'square meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm2'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10864,7 +11297,8 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'centimeter'}},
+                                            'value': 'centimeter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'cm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10902,7 +11336,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'joule per degree Celsius'}},
+                                            'value': 'joule per degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'J/K'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10970,7 +11405,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'cubic meter per second, knots'}},
+                                            'value': 'cubic meter per second, knots'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[kn_i]|m3/s'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '10 cubic meter per second'}],
          'is_a': 'core field',
@@ -10981,7 +11418,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'percent'}},
+                                            'value': 'percent'},
+                         'storage_units': {'tag': 'storage_units', 'value': '%'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -10992,7 +11430,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'square meter'}},
+                                            'value': 'square meter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm2'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -11012,7 +11451,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'cubic meter per day'}},
+                                            'value': 'cubic meter per day'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm3/d'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -11024,7 +11464,10 @@ class Biosample(Sample):
                                                      'interval and duration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'degree Celsius'}},
+                                            'value': 'degree Celsius'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '15 degree '
                                 'Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
@@ -11038,7 +11481,10 @@ class Biosample(Sample):
                                                      'interval and duration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'milliliter, liter'}},
+                                            'value': 'milliliter, liter'},
+                         'storage_units': {'tag': 'storage_units', 'value': 'L|mL'},
+                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'protocol_slot'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'},
                       {'value': '75% water holding capacity; constant'}],
@@ -11080,7 +11526,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'meter per second, kilometer per '
-                                                     'hour'}},
+                                                     'hour'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': 'km/h|m/s'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '21 kilometer per hour'}],
          'is_a': 'core field',
@@ -11144,7 +11592,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'inch, meter'}},
+                                            'value': 'inch, meter'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[in_i]|m'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -11196,7 +11646,9 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram per liter, parts per '
-                                                     'million'}},
+                                                     'million'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -11261,7 +11713,9 @@ class Biosample(Sample):
          'see_also': ['https://github.com/microbiomedata/nmdc-metadata/pull/297']} })
     sample_collection_site: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_collection_site', 'domain_of': ['Biosample']} })
     soluble_iron_micromol: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'soluble_iron_micromol', 'domain_of': ['Biosample']} })
-    subsurface_depth: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'subsurface_depth', 'domain_of': ['Biosample']} })
+    subsurface_depth: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'subsurface_depth',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'm'}},
+         'domain_of': ['Biosample']} })
     dna_collect_site: Optional[str] = Field(default=None, title="DNA collection site", description="""Provide information on the site your DNA sample was collected from""", json_schema_extra = { "linkml_meta": {'alias': 'dna_collect_site',
          'domain_of': ['Biosample'],
          'examples': [{'value': 'untreated pond water'}],
@@ -11535,6 +11989,8 @@ class Biosample(Sample):
          'slot_group': 'Sample ID',
          'string_serialization': '{text}:{text}'} })
     bulk_elect_conductivity: Optional[QuantityValue] = Field(default=None, title="bulk electrical conductivity", description="""Electrical conductivity is a measure of the ability to carry electric current, which is mostly dictated by the chemistry of and amount of water.""", json_schema_extra = { "linkml_meta": {'alias': 'bulk_elect_conductivity',
+         'annotations': {'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'pending_analysis'}},
          'comments': ['Provide the value output of the field instrument.'],
          'domain_of': ['Biosample'],
          'examples': [{'description': 'The conductivity measurement was 0.017 '
@@ -11552,7 +12008,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'mg/kg (ppm)'}},
+                                            'value': 'mg/kg (ppm)'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/kg|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '2.5 mg/kg'}],
          'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
@@ -11561,7 +12019,9 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'mg/kg (ppm)'}},
+                                            'value': 'mg/kg (ppm)'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/kg|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '24.7 mg/kg'}],
          'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
@@ -11570,7 +12030,9 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mg/kg'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mg/kg'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/kg|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '2.3 mg/kg'}],
          'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
@@ -11579,7 +12041,9 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mg/kg'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mg/kg'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/kg|mg/L'}},
          'comments': ['often below some specified limit of detection'],
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.29 mg/kg'}],
@@ -11589,7 +12053,9 @@ class Biosample(Sample):
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mg/kg'}},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mg/kg'},
+                         'storage_units': {'tag': 'storage_units',
+                                           'value': '[ppm]|mg/kg|mg/L'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '1.2 mg/kg'}],
          'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
@@ -11599,7 +12065,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'ppm CaCO3/pH'}},
+                                            'value': 'ppm CaCO3/pH'},
+                         'storage_units': {'tag': 'storage_units', 'value': '[ppm]'}},
          'comments': ['This is the mass of lime, in mg, needed to raise the pH of one '
                       'kg of soil by one pH unit'],
          'domain_of': ['Biosample'],
@@ -11612,7 +12079,8 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'ppm CaCO3/pH'}},
+                                            'value': 'ppm CaCO3/pH'},
+                         'storage_units': {'tag': 'storage_units', 'value': '[ppm]'}},
          'comments': ['This is the mass of lime, in mg, needed to raise the pH of one '
                       'kg of soil by one pH unit'],
          'domain_of': ['Biosample'],
@@ -11852,7 +12320,10 @@ class ProcessedSample(Sample):
                                                       'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}}},
          'title': 'Processed Sample'})
 
-    biomaterial_purity: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'biomaterial_purity', 'domain_of': ['ProcessedSample']} })
+    biomaterial_purity: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'biomaterial_purity',
+         'annotations': {'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'pending_analysis'}},
+         'domain_of': ['ProcessedSample']} })
     dna_absorb1: Optional[float] = Field(default=None, title="DNA absorbance 260/280", description="""260/280 measurement of DNA sample purity""", json_schema_extra = { "linkml_meta": {'alias': 'dna_absorb1',
          'comments': ['Recommended value is between 1 and 3.'],
          'domain_of': ['ProcessedSample'],
@@ -12646,6 +13117,7 @@ class StorageProcess(PlannedProcess):
                       {'value': 'falcon tube'},
                       {'value': 'whirlpak'}]} })
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
                        'Extraction',
@@ -13178,10 +13650,12 @@ class Extraction(MaterialProcessing):
          'rank': 1000} })
     input_mass: Optional[QuantityValue] = Field(default=None, title="sample mass used", description="""Total mass of sample used in activity.""", json_schema_extra = { "linkml_meta": {'alias': 'input_mass',
          'aliases': ['sample mass', 'sample weight'],
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'g'}},
          'domain_of': ['Extraction'],
          'exact_mappings': ['MS:1000004'],
          'narrow_mappings': ['MIXS:0000111']} })
     volume: Optional[QuantityValue] = Field(default=None, description="""The volume of the solvent/solute being used, not the input.""", json_schema_extra = { "linkml_meta": {'alias': 'volume',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mL|uL'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['Extraction',
                        'SubSamplingProcess',
@@ -13189,6 +13663,7 @@ class Extraction(MaterialProcessing):
                        'MobilePhaseSegment',
                        'PortionOfSubstance']} })
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
                        'Extraction',
@@ -13641,6 +14116,8 @@ class SubSamplingProcess(MaterialProcessing):
                                    'name': 'volume'}}})
 
     container_size: Optional[QuantityValue] = Field(default=None, description="""The volume of the container an analyte is stored in or an activity takes place in""", json_schema_extra = { "linkml_meta": {'alias': 'container_size',
+         'annotations': {'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'pending_analysis'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['SubSamplingProcess', 'FiltrationProcess']} })
     contained_in: Optional[ContainerCategoryEnum] = Field(default=None, description="""A type of container.""", json_schema_extra = { "linkml_meta": {'alias': 'contained_in',
@@ -13649,6 +14126,7 @@ class SubSamplingProcess(MaterialProcessing):
                       {'value': 'falcon tube'},
                       {'value': 'whirlpak'}]} })
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
                        'Extraction',
@@ -13659,6 +14137,7 @@ class SubSamplingProcess(MaterialProcessing):
                        'ChemicalConversionProcess'],
          'notes': ['Not to be confused with the MIXS:0000113']} })
     volume: Optional[QuantityValue] = Field(default=None, description="""The output volume of the SubSampling Process.""", json_schema_extra = { "linkml_meta": {'alias': 'volume',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mL|uL'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['Extraction',
                        'SubSamplingProcess',
@@ -13666,6 +14145,7 @@ class SubSamplingProcess(MaterialProcessing):
                        'MobilePhaseSegment',
                        'PortionOfSubstance']} })
     mass: Optional[QuantityValue] = Field(default=None, title="mass", description="""The output mass of the SubSampling Process.""", json_schema_extra = { "linkml_meta": {'alias': 'mass',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'g'}},
          'domain_of': ['SubSamplingProcess', 'PortionOfSubstance'],
          'exact_mappings': ['PATO:0000125']} })
     sampled_portion: Optional[list[SamplePortionEnum]] = Field(default=None, description="""The portion of the sample that is taken for downstream activity.""", json_schema_extra = { "linkml_meta": {'alias': 'sampled_portion',
@@ -13856,6 +14336,7 @@ class MixingProcess(MaterialProcessing):
                                'structured_pattern': {'syntax': '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'}}}})
 
     duration: Optional[QuantityValue] = Field(default=None, description="""The elapsed time of an activity.""", json_schema_extra = { "linkml_meta": {'alias': 'duration',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'h|min'}},
          'domain_of': ['MixingProcess',
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
@@ -14045,6 +14526,8 @@ class FiltrationProcess(MaterialProcessing):
          'domain_of': ['FiltrationProcess'],
          'list_elements_ordered': True} })
     container_size: Optional[QuantityValue] = Field(default=None, description="""The volume of the container an analyte is stored in or an activity takes place in""", json_schema_extra = { "linkml_meta": {'alias': 'container_size',
+         'annotations': {'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'pending_analysis'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['SubSamplingProcess', 'FiltrationProcess']} })
     filter_material: Optional[str] = Field(default=None, description="""A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained.""", json_schema_extra = { "linkml_meta": {'alias': 'filter_material',
@@ -14059,11 +14542,15 @@ class FiltrationProcess(MaterialProcessing):
                       'commonly and several pore sizes are available for air sampling '
                       '(0.45−0.8 μm are commonly employed).'],
          'domain_of': ['FiltrationProcess']} })
-    filter_pore_size: Optional[QuantityValue] = Field(default=None, description="""A quantitative or qualitative measurement of the physical dimensions of the pores in a material.""", json_schema_extra = { "linkml_meta": {'alias': 'filter_pore_size', 'domain_of': ['FiltrationProcess']} })
+    filter_pore_size: Optional[QuantityValue] = Field(default=None, description="""A quantitative or qualitative measurement of the physical dimensions of the pores in a material.""", json_schema_extra = { "linkml_meta": {'alias': 'filter_pore_size',
+         'annotations': {'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'pending_analysis'}},
+         'domain_of': ['FiltrationProcess']} })
     filtration_category: Optional[str] = Field(default=None, description="""The type of conditioning applied to a filter, device, etc.""", json_schema_extra = { "linkml_meta": {'alias': 'filtration_category', 'domain_of': ['FiltrationProcess']} })
     is_pressurized: Optional[bool] = Field(default=None, description="""Whether or not pressure was applied to a thing or process.""", json_schema_extra = { "linkml_meta": {'alias': 'is_pressurized', 'domain_of': ['FiltrationProcess']} })
     separation_method: Optional[SeparationMethodEnum] = Field(default=None, description="""The method that was used to separate a substance from a solution or mixture.""", json_schema_extra = { "linkml_meta": {'alias': 'separation_method', 'domain_of': ['FiltrationProcess']} })
     volume: Optional[QuantityValue] = Field(default=None, description="""The volume of sample filtered.""", json_schema_extra = { "linkml_meta": {'alias': 'volume',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mL|uL'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['Extraction',
                        'SubSamplingProcess',
@@ -14255,6 +14742,7 @@ class ChromatographicSeparationProcess(MaterialProcessing):
          'domain_of': ['ChromatographyConfiguration',
                        'ChromatographicSeparationProcess']} })
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
                        'Extraction',
@@ -14432,12 +14920,14 @@ class DissolvingProcess(MaterialProcessing):
                                                       'syntax': '{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$'}}}})
 
     duration: Optional[QuantityValue] = Field(default=None, description="""The elapsed time of an activity.""", json_schema_extra = { "linkml_meta": {'alias': 'duration',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'h|min'}},
          'domain_of': ['MixingProcess',
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment'],
          'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='h')"}]} })
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
                        'Extraction',
@@ -14626,12 +15116,14 @@ class ChemicalConversionProcess(MaterialProcessing):
     chemical_conversion_category: Optional[ChemicalConversionCategoryEnum] = Field(default=None, description="""The type of chemical conversion process.""", json_schema_extra = { "linkml_meta": {'alias': 'chemical_conversion_category',
          'domain_of': ['ChemicalConversionProcess']} })
     duration: Optional[QuantityValue] = Field(default=None, description="""The elapsed time of an activity.""", json_schema_extra = { "linkml_meta": {'alias': 'duration',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'h|min'}},
          'domain_of': ['MixingProcess',
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment'],
          'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='h')"}]} })
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
                        'Extraction',
@@ -14647,7 +15139,10 @@ class ChemicalConversionProcess(MaterialProcessing):
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment']} })
-    substances_volume: Optional[QuantityValue] = Field(default=None, description="""The volume of the combined substances that was included in a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'alias': 'substances_volume', 'domain_of': ['ChemicalConversionProcess']} })
+    substances_volume: Optional[QuantityValue] = Field(default=None, description="""The volume of the combined substances that was included in a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'alias': 'substances_volume',
+         'annotations': {'units_alignment_excuse': {'tag': 'units_alignment_excuse',
+                                                    'value': 'pending_analysis'}},
+         'domain_of': ['ChemicalConversionProcess']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
@@ -15910,6 +16405,7 @@ class ChromatographyConfiguration(Configuration):
          'domain_of': ['ChromatographyConfiguration',
                        'ChromatographicSeparationProcess']} })
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
                        'Extraction',

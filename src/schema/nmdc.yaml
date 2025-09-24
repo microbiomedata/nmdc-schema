@@ -1038,6 +1038,8 @@ enums:
 slots:
   biomaterial_purity:
     range: QuantityValue
+    annotations:
+      units_alignment_excuse: pending_analysis
 
   generates_calibration:
     range: CalibrationInformation
@@ -1204,6 +1206,8 @@ slots:
     narrow_mappings:
       - MIXS:0000111
     range: QuantityValue
+    annotations:
+      storage_units: g
 
   library_type:
     title: library type
@@ -1351,6 +1355,8 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
+    annotations:
+      units_alignment_excuse: pending_analysis
 
   filter_material:
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
@@ -1360,6 +1366,8 @@ slots:
   filter_pore_size:
     range: QuantityValue
     description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
+    annotations:
+      units_alignment_excuse: pending_analysis
   conditionings:
     range: string
     description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
@@ -1376,6 +1384,8 @@ slots:
     description: "A material processing in which components of an input material become segregated in space"
   value:
     range: QuantityValue
+    annotations:
+      units_alignment_excuse: pending_analysis
   modifier_substance:
     range: string
     description: The type of modification being done
@@ -1394,6 +1404,8 @@ slots:
   input_volume: # see also `volume`
     range: QuantityValue
     description: The volume of the input sample.
+    annotations:
+      units_alignment_excuse: pending_analysis
 
   ordered_mobile_phases:
     range: MobilePhaseSegment

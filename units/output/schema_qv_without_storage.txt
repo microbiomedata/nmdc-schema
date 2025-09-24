@@ -1,0 +1,17 @@
+biomaterial_purity | MISSING
+container_size | MISSING
+filter_pore_size | MISSING
+value | MISSING
+input_volume | MISSING
+substances_volume | MISSING
+bulk_elect_conductivity | MISSING
+concentration | MISSING
+api | MISSING
+efficiency_percent | MISSING
+exp_pipe | MISSING
+inside_lux | MISSING
+occup_density_samp | MISSING
+organism_count | MISSING
+rel_humidity_out | MISSING
+soil_text_measure | MISSING
+specific_humidity | MISSING

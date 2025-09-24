@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-09-17T19:41:44
+# Generation date: 2025-09-23T19:15:15
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -6950,6 +6950,9 @@ class UnitEnum(EnumDefinitionImpl):
     cm = PermissibleValue(
         text="cm",
         description="The Unified Code for Units of Measure (UCUM) representation of centimeter.")
+    cP = PermissibleValue(
+        text="cP",
+        description="The Unified Code for Units of Measure (UCUM) representation of centipoise.")
     d = PermissibleValue(
         text="d",
         description="The Unified Code for Units of Measure (UCUM) representation of day.")
@@ -6989,24 +6992,15 @@ class UnitEnum(EnumDefinitionImpl):
     mV = PermissibleValue(
         text="mV",
         description="The Unified Code for Units of Measure (UCUM) representation of millivolt.")
-    PSU = PermissibleValue(
-        text="PSU",
-        description="The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.")
     L = PermissibleValue(
         text="L",
         description="The Unified Code for Units of Measure (UCUM) representation of liter.")
     um = PermissibleValue(
         text="um",
         description="The Unified Code for Units of Measure (UCUM) representation of micrometer.")
-    y = PermissibleValue(
-        text="y",
-        description="The Unified Code for Units of Measure (UCUM) representation of year.")
     kg = PermissibleValue(
         text="kg",
         description="The Unified Code for Units of Measure (UCUM) representation of kilogram.")
-    ppt = PermissibleValue(
-        text="ppt",
-        description="The Unified Code for Units of Measure (UCUM) representation of parts per thousand.")
     lx = PermissibleValue(
         text="lx",
         description="The Unified Code for Units of Measure (UCUM) representation of lux.")
@@ -7106,30 +7100,30 @@ class UnitEnum(EnumDefinitionImpl):
     kW = PermissibleValue(
         text="kW",
         description="The Unified Code for Units of Measure (UCUM) representation of kilowatt.")
-    API = PermissibleValue(
-        text="API",
-        description="The Unified Code for Units of Measure (UCUM) representation of API units.")
     mbar = PermissibleValue(
         text="mbar",
         description="The Unified Code for Units of Measure (UCUM) representation of millibar.")
-    ratio = PermissibleValue(
-        text="ratio",
-        description="The Unified Code for Units of Measure (UCUM) representation of ratio (dimensionless).")
-    people = PermissibleValue(
-        text="people",
-        description="The Unified Code for Units of Measure (UCUM) representation of people count.")
-    pets = PermissibleValue(
-        text="pets",
-        description="The Unified Code for Units of Measure (UCUM) representation of pet count.")
-    plants = PermissibleValue(
-        text="plants",
-        description="The Unified Code for Units of Measure (UCUM) representation of plant count.")
-    pH = PermissibleValue(
-        text="pH",
-        description="The Unified Code for Units of Measure (UCUM) representation of pH units.")
-    NTU = PermissibleValue(
-        text="NTU",
-        description="The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units.")
+    mg = PermissibleValue(
+        text="mg",
+        description="The Unified Code for Units of Measure (UCUM) representation of milligram.")
+    wk = PermissibleValue(
+        text="wk",
+        description="The Unified Code for Units of Measure (UCUM) representation of week.")
+    Gy = PermissibleValue(
+        text="Gy",
+        description="The Unified Code for Units of Measure (UCUM) representation of gray (absorbed dose).")
+    RAD = PermissibleValue(
+        text="RAD",
+        description="The Unified Code for Units of Measure (UCUM) representation of rad (radiation absorbed dose).")
+    m3 = PermissibleValue(
+        text="m3",
+        description="The Unified Code for Units of Measure (UCUM) representation of cubic meter.")
+    ug = PermissibleValue(
+        text="ug",
+        description="The Unified Code for Units of Measure (UCUM) representation of microgram.")
+    cm2 = PermissibleValue(
+        text="cm2",
+        description="The Unified Code for Units of Measure (UCUM) representation of square centimeter.")
 
     _defn = EnumDefinition(
         name="UnitEnum",
@@ -7237,6 +7231,10 @@ class UnitEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="uL/kg",
                 description="""The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram."""))
+        setattr(cls, "[ppth]",
+            PermissibleValue(
+                text="[ppth]",
+                description="The Unified Code for Units of Measure (UCUM) representation of parts per thousand."))
         setattr(cls, "g/g",
             PermissibleValue(
                 text="g/g",
@@ -7297,14 +7295,10 @@ class UnitEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="pg/mL",
                 description="""The Unified Code for Units of Measure (UCUM) representation of picograms per milliliter."""))
-        setattr(cls, "J/Cel",
+        setattr(cls, "1/d",
             PermissibleValue(
-                text="J/Cel",
-                description="The Unified Code for Units of Measure (UCUM) representation of joules per Celsius."))
-        setattr(cls, "uE/m2/s",
-            PermissibleValue(
-                text="uE/m2/s",
-                description="""The Unified Code for Units of Measure (UCUM) representation of microeinsteins per square meter per second."""))
+                text="1/d",
+                description="The Unified Code for Units of Measure (UCUM) representation of per day (frequency)."))
         setattr(cls, "kW/m2",
             PermissibleValue(
                 text="kW/m2",
@@ -7321,10 +7315,22 @@ class UnitEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="L/h",
                 description="The Unified Code for Units of Measure (UCUM) representation of liters per hour."))
+        setattr(cls, "[pH]",
+            PermissibleValue(
+                text="[pH]",
+                description="The Unified Code for Units of Measure (UCUM) representation of pH units."))
         setattr(cls, "kW/m2/d",
             PermissibleValue(
                 text="kW/m2/d",
                 description="""The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter per day."""))
+        setattr(cls, "[NTU]",
+            PermissibleValue(
+                text="[NTU]",
+                description="""The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units."""))
+        setattr(cls, "[FNU]",
+            PermissibleValue(
+                text="[FNU]",
+                description="""The Unified Code for Units of Measure (UCUM) representation of Formazin Nephelometric Units."""))
         setattr(cls, "m3/min",
             PermissibleValue(
                 text="m3/min",
@@ -7333,6 +7339,94 @@ class UnitEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="km/h",
                 description="The Unified Code for Units of Measure (UCUM) representation of kilometers per hour."))
+        setattr(cls, "[lb_av]",
+            PermissibleValue(
+                text="[lb_av]",
+                description="The Unified Code for Units of Measure (UCUM) representation of pound (avoirdupois)."))
+        setattr(cls, "kg/kg",
+            PermissibleValue(
+                text="kg/kg",
+                description="The Unified Code for Units of Measure (UCUM) representation of kilogram per kilogram."))
+        setattr(cls, "ug/m3",
+            PermissibleValue(
+                text="ug/m3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micrograms per cubic meter."""))
+        setattr(cls, "meq/L",
+            PermissibleValue(
+                text="meq/L",
+                description="""The Unified Code for Units of Measure (UCUM) representation of milliequivalents per liter."""))
+        setattr(cls, "lm/m2",
+            PermissibleValue(
+                text="lm/m2",
+                description="""The Unified Code for Units of Measure (UCUM) representation of lumens per square meter."""))
+        setattr(cls, "umol/L/h",
+            PermissibleValue(
+                text="umol/L/h",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micromoles per liter per hour."""))
+        setattr(cls, "g/cm3",
+            PermissibleValue(
+                text="g/cm3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of grams per cubic centimeter."""))
+        setattr(cls, "g/L",
+            PermissibleValue(
+                text="g/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of grams per liter."))
+        setattr(cls, "[g]",
+            PermissibleValue(
+                text="[g]",
+                description="The Unified Code for Units of Measure (UCUM) representation of standard gravity."))
+        setattr(cls, "m/s2",
+            PermissibleValue(
+                text="m/s2",
+                description="""The Unified Code for Units of Measure (UCUM) representation of meters per second squared."""))
+        setattr(cls, "mol/g",
+            PermissibleValue(
+                text="mol/g",
+                description="The Unified Code for Units of Measure (UCUM) representation of moles per gram."))
+        setattr(cls, "g/m2/d",
+            PermissibleValue(
+                text="g/m2/d",
+                description="""The Unified Code for Units of Measure (UCUM) representation of grams per square meter per day."""))
+        setattr(cls, "[sft_i]",
+            PermissibleValue(
+                text="[sft_i]",
+                description="The Unified Code for Units of Measure (UCUM) representation of square feet."))
+        setattr(cls, "[cft_i]",
+            PermissibleValue(
+                text="[cft_i]",
+                description="The Unified Code for Units of Measure (UCUM) representation of cubic feet."))
+        setattr(cls, "mm/a",
+            PermissibleValue(
+                text="mm/a",
+                description="The Unified Code for Units of Measure (UCUM) representation of millimeters per year."))
+        setattr(cls, "erg/cm2/s",
+            PermissibleValue(
+                text="erg/cm2/s",
+                description="""The Unified Code for Units of Measure (UCUM) representation of ergs per square centimeter per second."""))
+        setattr(cls, "g/m2",
+            PermissibleValue(
+                text="g/m2",
+                description="The Unified Code for Units of Measure (UCUM) representation of grams per square meter."))
+        setattr(cls, "L/s",
+            PermissibleValue(
+                text="L/s",
+                description="The Unified Code for Units of Measure (UCUM) representation of liters per second."))
+        setattr(cls, "cm3/cm3",
+            PermissibleValue(
+                text="cm3/cm3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of cubic centimeters per cubic centimeter."""))
+        setattr(cls, "[kn_i]",
+            PermissibleValue(
+                text="[kn_i]",
+                description="""The Unified Code for Units of Measure (UCUM) representation of knot (nautical miles per hour)."""))
+        setattr(cls, "m3/s",
+            PermissibleValue(
+                text="m3/s",
+                description="""The Unified Code for Units of Measure (UCUM) representation of cubic meters per second."""))
+        setattr(cls, "[in_i]",
+            PermissibleValue(
+                text="[in_i]",
+                description="The Unified Code for Units of Measure (UCUM) representation of inch."))
 
 class ExecutionResourceEnum(EnumDefinitionImpl):
 
