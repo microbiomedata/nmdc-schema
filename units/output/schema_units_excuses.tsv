@@ -21,7 +21,6 @@ mineral_nutr_regm	protocol_slot
 non_min_nutr_regm	protocol_slot
 occup_density_samp	pending_analysis
 org_count_qpcr_info	protocol_slot
-organism_count	protocol_slot
 permeability	non_ucum_unit
 pesticide_regm	protocol_slot
 radiation_regm	protocol_slot

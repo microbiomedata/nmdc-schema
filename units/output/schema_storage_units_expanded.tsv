@@ -169,6 +169,7 @@ org_carb	umol/L
 org_carb	%
 org_matter	ug/L
 org_nitro	ug/L
+organism_count	1
 owc_tvdss	m
 oxygen	[ppm]
 oxygen	mg/L

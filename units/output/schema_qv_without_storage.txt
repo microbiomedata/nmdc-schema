@@ -11,7 +11,6 @@ efficiency_percent | MISSING
 exp_pipe | MISSING
 inside_lux | MISSING
 occup_density_samp | MISSING
-organism_count | MISSING
 rel_humidity_out | MISSING
 soil_text_measure | MISSING
 specific_humidity | MISSING
