@@ -4,14 +4,50 @@ This document provides a comprehensive overview of the unit analysis, validation
 
 ## Table of Contents
 
-1. [Overview](#overview)
-2. [Data Flow Pipeline](#data-flow-pipeline)
-3. [Core Scripts & Transformations](#core-scripts--transformations)
-4. [UCUM Validation System](#ucum-validation-system)
-5. [Schema Transformation Outputs](#schema-transformation-outputs)
-6. [Automation Recommendations](#automation-recommendations)
-7. [Troubleshooting](#troubleshooting)
-8. [File Management](#file-management)
+1. [Maintainer Guide](#maintainer-guide) **← START HERE**
+2. [Overview](#overview)
+3. [Data Flow Pipeline](#data-flow-pipeline)
+4. [Core Scripts & Transformations](#core-scripts--transformations)
+5. [UCUM Validation System](#ucum-validation-system)
+6. [Schema Transformation Outputs](#schema-transformation-outputs)
+7. [Automation Recommendations](#automation-recommendations)
+8. [Troubleshooting](#troubleshooting)
+9. [File Management](#file-management)
+
+## Maintainer Guide
+
+### For Schema Maintainers: When Do I Touch This Directory?
+
+**Short Answer**: You don't. These scripts are specialist tools for units work.
+
+#### **Normal Schema Maintenance**
+- ✅ **Adding new classes/slots**: No action needed
+- ✅ **Changing slot ranges**: No action needed  
+- ✅ **General schema updates**: No action needed
+- ✅ **Tests passing**: Units constraints enforced automatically
+
+#### **When Units Work Is Needed** 
+- ❌ **Test failure**: `test_quantityvalue_slots_have_storage_units_or_excuse`
+- **Who handles it**: UCUM Squad (@turbomam)
+- **Process**: Add to weekly UCUM Squad meeting agenda
+- **Your role**: Review and merge the resulting PR
+
+#### **What Gets Changed**
+- **Files modified**: Schema YAML files (`src/schema/*.yaml`)
+- **Changes**: Addition of `storage_units` or `units_alignment_excuse` annotations
+- **Review needed**: Standard schema change review (no special units knowledge required)
+
+#### **Emergency Override**
+If you need to fix a failing test immediately:
+1. Add temporary excuse: `units_alignment_excuse: {tag: "units_alignment_excuse", value: "pending_analysis"}`
+2. File issue for UCUM Squad review
+3. Tag @turbomam and add to UCUM Squad meeting agenda
+
+### For UCUM Squad: Script Usage
+The scripts in this directory are for specialized units analysis and should only be run by someone familiar with UCUM, MIxS, and units validation concepts.
+
+### Future Migration Note
+The data validation scripts in `units/` (like `validate_production_units.py`) will be replaced with validation code in the `nmdc-runtime` repository (handled by @pkalita-lbl). The schema annotation scripts will remain here.
 
 ## Overview
 
@@ -43,18 +79,30 @@ The original workflow involved:
 
 ## Data Flow Pipeline
 
-### 1. MongoDB Unit Analysis Pipeline
+### MongoDB Production Data Analysis
 
+**Core Workflow**: Dump MongoDB → migrate data → validate against schema
+
+**Two approaches for slot/unit analysis:**
+
+#### **Approach A: RDF/Triplestore Analysis**
 ```
 mongodb-slots-to-units.csv --[analyze_units.py]--> mongodb-slots-to-units_analyzed.csv --[manual]--> mongodb-slots-to-units_remediated.csv
 ```
 
-**Input:** `mongodb-slots-to-units.csv`
-- **Source**: Generated via SPARQL query over RDF-converted MongoDB production data
-- **Infrastructure**: Uses Makefile targets for MongoDB→RDF conversion + custom SPARQL query
+**File**: `assets/sparql/mongodb-slots-to-units.rq`  
+**Pipeline**: MongoDB dump → RDF conversion (w/ workarounds) → schema→OWL (w/ workarounds) → SPARQL query → downstream Python analysis  
+**Advantage**: Rich triplestore discovery capabilities
+
+**SPARQL Output:** `mongodb-slots-to-units.csv`
 - CSV format: `sc,p,l,su,u,count` (schema class, property, label, acceptable units, actual unit, count)
 - Contains production MongoDB data showing actual units used vs. schema-acceptable units
 - Example: `https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000110,samp_store_temp,Cel,Cel,4219`
+
+#### **Approach B: Direct Python Analysis**
+**File**: `units/validate_production_units.py`  
+**Pipeline**: MongoDB dump → direct YAML processing → slot/unit compliance analysis  
+**Advantage**: Same slot/unit analysis without RDF/OWL conversion workarounds
 
 **SPARQL Query Used:**
 Saved as `assets/sparql/mongodb-slots-to-units.rq`:
@@ -116,13 +164,13 @@ single.txt + multi.txt
 - Now uses Click CLI with configurable schema path
 - Moved from `src/scripts/` to local `units/` directory
 
-**Script 2:** `extract.py` (formerly `generate_mixs_input_from_schema.py`)
+**Script 2:** `extract.py`
 - Converts preferred units to UCUM notation deterministically
 - Detects problem patterns (brackets, imperial units, complex expressions)
 - Handles multi-unit slots (comma/pipe separated)
 - **Key Innovation**: No external dependencies - pure schema-based
 
-**Script 3:** `process.py` (formerly `process_mixs_units.py`)
+**Script 3:** `process.py`
 - Consolidated replacement for 4 individual scripts:
   - `add_has_problem.py`
   - `add_slot_count.py` 
@@ -278,11 +326,14 @@ INSERT { <https://w3id.org/nmdc/UnitEnum#mmHg> ?p ?o }
 - **Generate** yq commands using existing clean units
 - **Flag** problematic slots without fixing them
 
-**Needed**: A Python script that could:
-- Remove brackets: `[NTU]` → `NTU`
+**Current Risk**: Square brackets in UCUM units like `[NTU]` break OWL generation, causing failures in OntoText GraphDB and `robot convert`. (See [issue #2614](https://github.com/microbiomedata/nmdc-schema/issues/2614))
+
+**Short-term workaround**: Manual bracket removal script:
+- Remove brackets: `[NTU]` → `NTU`  
 - Convert special chars: `%` → `percent`, `mm[Hg]` → `mmHg`
-- Validate URI safety of unit values
-- Bulk sanitize YAML files before RDF generation
+- Validate URI safety before RDF generation
+
+**Long-term solution**: LinkML PR #2869 (merged to main, awaiting release) implements proper URI encoding for special characters in permissible values, eliminating manual sanitization needs.
 
 ### Testing Tools for Unit Issues
 
@@ -313,10 +364,7 @@ all_slots = view.class_slots("Biosample")  # Gets ALL usable slots
 **Advantage over RDF extraction**: Captures optional/compatible slots, not just axiomatically required ones.
 
 #### 4. UCUM Validation (Not Currently Available)
-**Status**: Referenced automation doesn't exist
-- ❌ Makefile target `make local/invalid_unitenum_units.txt` - **missing**
-- ❌ Script `src/scripts/check_unitenum_ucum_compliance.js` - **missing** 
-- ❌ Node.js UCUM validation integration - **not implemented**
+**Status**: JavaScript UCUM validation automation is not currently implemented
 
 **If implemented, would provide**:
 - Validation against UCUM standard
@@ -354,22 +402,6 @@ nmdc-non-native-uris.owl.ttl --[fix-units-update-v2.ru]--> nmdc-fixed.ttl --> nm
 
 **Key Files:**
 - `fix-units-update-v2.ru` - SPARQL UPDATE queries for unit URI fixes (6.4KB, kept)
-- `nmdc-iri-map*.tsv` - Entity-to-replacement mappings for ROBOT tool (deleted)
-- `robot.txt` - ROBOT tool execution logs (deleted)
-- `nmdc-fixed.ttl`, `nmdc-fixed2.ttl` - Generated RDF outputs (deleted)
-
-**Generated RDF Analysis (now deleted):**
-The sequential transformation workflow `nmdc-fixed.ttl` → `nmdc-fixed2.ttl` successfully demonstrated SPARQL-based unit sanitization:
-- **nmdc-fixed.ttl** (2.2MB) - First-pass SPARQL transformation, partially cleaned units
-- **nmdc-fixed2.ttl** (2.7MB) - Final cleaned output with more complete processing
-- **Proof of concept** - Showed that `%` → `percent`, `[NTU]` → `NTU`, `mm[Hg]` → `mmHg` transformations work
-
-**IRI Mapping Analysis (now deleted):**
-The IRI mapping files demonstrated an alternative ROBOT-based approach to unit cleaning:
-- **nmdc-iri-map.tsv** (969B) - Original entity-to-replacement mappings
-- **nmdc-iri-map-robot.tsv** (966B) - ROBOT tool compatible format (`Old IRI | New IRI`)
-- **nmdc-iri-map-robot-v2.tsv** (966B) - Duplicate of robot version
-- **Dual approach strategy** - Explored both SPARQL (`fix-units-update-v2.ru`) and ROBOT (`replace-iris`) methods
 
 **Note on RDF Extraction Limitations:**
 Attempts to extract individual classes (like `biosample.ttl`) from OWL files typically only capture axiomatically required properties, missing optional/compatible slots. Use LinkML SchemaView for comprehensive class analysis instead.
@@ -431,9 +463,8 @@ test-units-roundtrip: nmdc_schema/nmdc_materialized_patterns.yaml
 
 **UCUM Validation** (not currently available):
 ```makefile
-# This automation doesn't exist but could be implemented
-local/invalid_unitenum_units.txt: src/schema/attribute_values.yaml src/scripts/check_unitenum_ucum_compliance.js
-	cd src/scripts && npm ci && node check_unitenum_ucum_compliance.js ../../$< > ../../$@
+# This automation could be implemented in the future
+# local/invalid_unitenum_units.txt: validation target (not yet available)
 ```
 
 ## Data Validation Against storage_units Constraints
@@ -555,16 +586,7 @@ poetry run pure-export \
 Failed to resolve 'dev-api.microbiomedata.org' ([Errno 8] nodename nor servname provided, or not known)
 ```
 
-**Root Cause:** The `project.Makefile` defines:
-```makefile
-API_DEV_URL = https://dev-api.microbiomedata.org  # INCORRECT
-```
-
-**Correct URL:** `https://api-dev.microbiomedata.org` (confirmed working at `/docs` endpoint)
-
-**Diagnostic:** DNS lookup shows `NXDOMAIN` for `dev-api.microbiomedata.org` but `api-dev.microbiomedata.org` resolves correctly.
-
-**Impact:** This affects the `ENV=dev` functionality in `project.Makefile` but not our units validation since we use the correct URL directly.
+**Root Cause:** Makefile uses incorrect URL `dev-api.microbiomedata.org` instead of correct `api-dev.microbiomedata.org`.
 
 **Problem 3: Collection coverage gaps**
 ```
@@ -582,22 +604,10 @@ Database slots only: ['functional_annotation_agg']
 
 **Issue:** Development APIs often have intermittent availability or require special network access.
 
-**Diagnostic Steps:**
-1. Test DNS resolution: `nslookup api-dev.microbiomedata.org`
-2. Check endpoint health: `curl https://api-dev.microbiomedata.org/docs`
-3. Verify API compatibility with expected endpoints
-
-**Fallback Strategy:** Use production API (`https://api.microbiomedata.org`) for testing validation workflow if dev is unavailable.
-
-### Current API Infrastructure Status
-
-**Production API**: ✅ `https://api.microbiomedata.org` - Stable, publicly accessible
-**Development API**: ✅ `https://api-dev.microbiomedata.org` - Working (as of validation)
-**Incorrect URL in Makefile**: ⚠️ `https://dev-api.microbiomedata.org` - Does not exist
 
 ### Data Collection Statistics (Dev API)
 
-**Successful dump from api-dev.microbiomedata.org:**
+**Successful dump from api-dev.microbiomedata.org (as of validation date - numbers change frequently):**
 - **biosample_set**: 13,248 documents (25.4MB)
 - **data_object_set**: 184,356 documents (94.6MB) 
 - **workflow_execution_set**: 19,522 documents (524MB)
@@ -683,11 +693,6 @@ The default schema path is `../nmdc_schema/nmdc_materialized_patterns.yaml`. Use
 #### Empty outputs
 Check that schema contains `preferred_unit` annotations. Run with verbose output.
 
-#### "npm: command not found"
-Install Node.js and npm for UCUM validation (if implemented).
-
-#### Network errors during npm ci
-Check internet connection for package downloads.
 
 ## File Management
 

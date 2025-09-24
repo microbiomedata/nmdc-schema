@@ -9,7 +9,7 @@ This script replaces the chain of individual scripts:
 - generate_multi_unit_storage_units.py
 
 Usage:
-    python process_mixs_units.py INPUT_FILE [--output-dir OUTPUT_DIR]
+    python process.py INPUT_FILE [--output-dir OUTPUT_DIR]
 
 Input file should contain columns:
 - slot: The schema slot name
@@ -126,8 +126,8 @@ def write_output_files(single_commands: List[str], multi_commands: List[str], ou
     """Write yq commands to output files."""
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    single_file = output_dir / "single.txt"
-    multi_file = output_dir / "multi.txt"
+    single_file = output_dir / "yq_commands_single_unit.txt"
+    multi_file = output_dir / "yq_commands_multi_unit.txt"
     
     with open(single_file, 'w') as f:
         f.write('\n'.join(single_commands))
