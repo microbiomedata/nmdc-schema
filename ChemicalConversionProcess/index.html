@@ -662,6 +662,10 @@ attributes:
     range: ChemicalConversionCategoryEnum
   duration:
     name: duration
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: h|min
     description: The elapsed time of an activity.
     examples:
     - value: JsonObj(has_numeric_value=2, has_unit='h')
@@ -677,6 +681,10 @@ attributes:
     range: QuantityValue
   temperature:
     name: temperature
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: Cel
     description: The value of a temperature measurement or temperature used in a process.
     notes:
     - Not to be confused with the MIXS:0000113
@@ -715,6 +723,10 @@ attributes:
     inlined_as_list: true
   substances_volume:
     name: substances_volume
+    annotations:
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: pending_analysis
     description: The volume of the combined substances that was included in a ChemicalConversionProcess.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000

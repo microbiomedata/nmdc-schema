@@ -688,6 +688,10 @@ slot_usage:
 attributes:
   container_size:
     name: container_size
+    annotations:
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: pending_analysis
     description: The volume of the container an analyte is stored in or an activity
       takes place in
     from_schema: https://w3id.org/nmdc/nmdc
@@ -718,6 +722,10 @@ attributes:
     range: ContainerCategoryEnum
   temperature:
     name: temperature
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: Cel
     description: The value of a temperature measurement or temperature used in a process.
     notes:
     - Not to be confused with the MIXS:0000113
@@ -739,6 +747,10 @@ attributes:
     range: QuantityValue
   volume:
     name: volume
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mL|uL
     description: The output volume of the SubSampling Process.
     from_schema: https://w3id.org/nmdc/nmdc
     contributors:
@@ -756,6 +768,10 @@ attributes:
     range: QuantityValue
   mass:
     name: mass
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: g
     description: The output mass of the SubSampling Process.
     title: mass
     from_schema: https://w3id.org/nmdc/nmdc

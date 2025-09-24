@@ -548,6 +548,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annotations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       Schema Source
@@ -614,6 +623,26 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../Extraction/">Extraction</a></td>
+<td>A material separation in which a desired component of an input material is se...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../StorageProcess/">StorageProcess</a></td>
+<td>A planned process with the objective to preserve and protect material entitie...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td>A process that results in the interconversion of chemical species by a reacti...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
+<td>Separating a sample aliquot from the starting material for downstream activit...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
 <td>The process of using a selective partitioning of the analyte or interferent b...</td>
 <td>no</td>
@@ -624,28 +653,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
-<td>Separating a sample aliquot from the starting material for downstream activit...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ChromatographyConfiguration/">ChromatographyConfiguration</a></td>
 <td>A set of parameters that define and control the actions of a chromatography p...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
-<td>A process that results in the interconversion of chemical species by a reacti...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Extraction/">Extraction</a></td>
-<td>A material separation in which a desired component of an input material is se...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../StorageProcess/">StorageProcess</a></td>
-<td>A planned process with the objective to preserve and protect material entitie...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -655,6 +664,21 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storage_units</td>
+<td>Cel</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -678,6 +702,10 @@
 <details>
 
 <pre><code class="language-yaml">name: temperature
+annotations:
+  storage_units:
+    tag: storage_units
+    value: Cel
 description: The value of a temperature measurement or temperature used in a process.
 notes:
 - Not to be confused with the MIXS:0000113

@@ -502,6 +502,10 @@ mappings:
 attributes:
   final_concentration:
     name: final_concentration
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '%|mmol/L|umol/L'
     description: When solutions A (containing substance X) and B are combined together,
       this slot captures the concentration of X in the combination
     from_schema: https://w3id.org/nmdc/nmdc
@@ -514,6 +518,10 @@ attributes:
     range: QuantityValue
   mass:
     name: mass
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: g
     description: A physical quality that inheres in a bearer by virtue of the proportion
       of the bearer's amount of matter.
     title: mass
@@ -529,6 +537,10 @@ attributes:
     range: QuantityValue
   source_concentration:
     name: source_concentration
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '%|mmol/L'
     description: When solutions A (containing substance X) and B are combined together,
       this slot captures the concentration of X in solution A
     from_schema: https://w3id.org/nmdc/nmdc
@@ -606,6 +618,10 @@ attributes:
     required: true
   volume:
     name: volume
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mL|uL
     description: The volume of a substance.
     from_schema: https://w3id.org/nmdc/nmdc
     contributors:

@@ -548,6 +548,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annotations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       Schema Source
@@ -625,6 +634,21 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>units_alignment_excuse</td>
+<td>pending_analysis</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -648,6 +672,10 @@
 <details>
 
 <pre><code class="language-yaml">name: filter_pore_size
+annotations:
+  units_alignment_excuse:
+    tag: units_alignment_excuse
+    value: pending_analysis
 description: A quantitative or qualitative measurement of the physical dimensions
   of the pores in a material.
 from_schema: https://w3id.org/nmdc/nmdc

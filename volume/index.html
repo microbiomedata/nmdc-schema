@@ -548,6 +548,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annotations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       Schema Source
@@ -614,9 +623,14 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MobilePhaseSegment/">MobilePhaseSegment</a></td>
-<td>A fluid mixture of substances that flow though a chromatographic stationary p...</td>
-<td>no</td>
+<td><a href="../Extraction/">Extraction</a></td>
+<td>A material separation in which a desired component of an input material is se...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
+<td>The process of segregation of phases; e</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
@@ -629,14 +643,9 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Extraction/">Extraction</a></td>
-<td>A material separation in which a desired component of an input material is se...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
-<td>The process of segregation of phases; e</td>
-<td>yes</td>
+<td><a href="../MobilePhaseSegment/">MobilePhaseSegment</a></td>
+<td>A fluid mixture of substances that flow though a chromatographic stationary p...</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -645,6 +654,21 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storage_units</td>
+<td>mL</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -668,6 +692,10 @@
 <details>
 
 <pre><code class="language-yaml">name: volume
+annotations:
+  storage_units:
+    tag: storage_units
+    value: mL|uL
 description: The volume of a substance.
 from_schema: https://w3id.org/nmdc/nmdc
 contributors:
