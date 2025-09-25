@@ -7,31 +7,7 @@ This document is the **definitive source** for all units-related problems in the
 1. **Problematic Slots** (Schema design issues) - Slots with `units_alignment_excuse` annotations
 2. **Problematic Data** (Production data issues) - Data using units not in the slot's `storage_units` list
 
-## Schema Annotation Issues Found
 
-### 1. Missing Slot from Excuse File
-The slot `organism_count` is listed in `units/output/schema_units_excuses.tsv` as having `protocol_slot` excuse, but current schema shows it has `storage_units: '1'`.
-
-### 2. Contradictory Dual Annotations  
-15 slots have BOTH `storage_units` AND `units_alignment_excuse` annotations:
-
-- `agrochem_addition` - has `storage_units: g|mg/L|mol/L` AND `units_alignment_excuse: protocol_slot`
-- `antibiotic_regm` - has `storage_units: mg` AND `units_alignment_excuse: protocol_slot`  
-- `fertilizer_regm` - has `storage_units: g|mg/L|mol/L` AND `units_alignment_excuse: protocol_slot`
-- `fungicide_regm` - has both storage_units and excuse
-- `growth_hormone_regm` - has both storage_units and excuse
-- `herbicide_regm` - has both storage_units and excuse
-- `humidity_regm` - has both storage_units and excuse
-- `mineral_nutr_regm` - has both storage_units and excuse
-- `non_min_nutr_regm` - has both storage_units and excuse
-- `pesticide_regm` - has both storage_units and excuse
-- `radiation_regm` - has both storage_units and excuse
-- `rainfall_regm` - has both storage_units and excuse
-- `salt_regm` - has both storage_units and excuse
-- `water_temp_regm` - has both storage_units and excuse
-- `watering_regm` - has both storage_units and excuse
-
-A slot should have EITHER storage_units OR units_alignment_excuse, not both.
 
 ## Types of Problems
 
@@ -44,19 +20,33 @@ Data using units not in the slot's `storage_units` list, indicating data quality
 ## Excuse Categories Analysis
 
 ### Schema State Summary
-- **37 slots listed in excuse file**
-- **22 slots have ONLY excuse annotations** (✅ correct)
-- **15 slots have BOTH storage_units AND excuse** (❌ contradictory)
-- **1 slot missing from excuse file** (`organism_count` has storage_units but was listed as excused)
+Current state after recent fixes and regeneration.
 
-### `protocol_slot` Category (20 slots)
+### `protocol_slot` Category
 
 **Problem Statement**: These slots describe experimental protocols/regimens rather than direct measurements. They combine multiple measurement types with temporal/procedural information that cannot be reduced to a single storage unit.
 
-**Affected Slots**:
-- `agrochem_addition`, `fertilizer_regm`, `antibiotic_regm`, `fungicide_regm`, `growth_hormone_regm`, `herbicide_regm`, `mineral_nutr_regm`, `non_min_nutr_regm`, `pesticide_regm`, `salt_regm`
-- `air_temp_regm`, `humidity_regm`, `light_regm`, `radiation_regm`, `rainfall_regm`, `water_temp_regm`, `watering_regm`, `standing_water_regm`
-- `org_count_qpcr_info`, `samp_transport_cond`
+**Example Problem Slots**:
+- `agrochem_addition`
+- `fertilizer_regm` 
+- `antibiotic_regm`
+- `fungicide_regm`
+- `growth_hormone_regm`
+- `herbicide_regm`
+- `mineral_nutr_regm`
+- `non_min_nutr_regm`
+- `pesticide_regm`
+- `salt_regm`
+- `air_temp_regm`
+- `humidity_regm`
+- `light_regm`
+- `radiation_regm`
+- `rainfall_regm`
+- `water_temp_regm`
+- `watering_regm`
+- `standing_water_regm`
+- `org_count_qpcr_info`
+- `samp_transport_cond`
 
 **Examples**: 
 - `agrochem_addition`: "roundup;5 milligram per liter;2018-06-21"
@@ -66,31 +56,16 @@ Data using units not in the slot's `storage_units` list, indicating data quality
 
 **GitHub Reference**: [PR #2599 comment](https://github.com/microbiomedata/nmdc-schema/pull/2599#issuecomment-3270547242) - "I don't think it's really possible to assert a unit for compound slots like these"
 
-**Issue**: 15 of 19 protocol_slot category slots have contradictory dual annotations
+### `complex_unit` Category (2 slots)
 
-**Slots with CONTRADICTORY dual annotations** (have both storage_units AND excuse):
-- `agrochem_addition` (TextValue) - has `storage_units: g|mg/L|mol/L` + excuse
-- `antibiotic_regm` (TextValue) - has `storage_units: mg` + excuse
-- `fertilizer_regm` (TextValue) - has `storage_units: g|mg/L|mol/L` + excuse
-- `fungicide_regm` (TextValue) - has both annotations
-- `growth_hormone_regm` (TextValue) - has both annotations
-- `herbicide_regm` (TextValue) - has both annotations
-- `humidity_regm` (TextValue) - has both annotations
-- `mineral_nutr_regm` (TextValue) - has both annotations
-- `non_min_nutr_regm` (TextValue) - has both annotations
-- `pesticide_regm` (TextValue) - has both annotations
-- `radiation_regm` (TextValue) - has both annotations
-- `rainfall_regm` (TextValue) - has both annotations
-- `salt_regm` (TextValue) - has both annotations
-- `water_temp_regm` (TextValue) - has both annotations
-- `watering_regm` (TextValue) - has both annotations
+**Problem Statement**: These slots have QuantityValue range but represent complex structured measurements that combine numeric and text data, making simple UCUM storage_units inappropriate.
 
-**Slots with ONLY excuse annotation** (✅ correct):
-- `air_temp_regm` (TextValue) - excuse only
-- `light_regm` (TextValue) - excuse only
-- `org_count_qpcr_info` (string) - excuse only
-- `samp_transport_cond` (TextValue) - excuse only
-- `standing_water_regm` (TextValue) - excuse only
+**Affected Slots**:
+- `microbial_biomass` (QuantityValue) - combines numeric biomass with measurement method text
+- `tvdss_of_hcr_temp` (QuantityValue) - combines depth measurement with temperature reference
+
+**Why no storage_units**: These represent structured measurements that cannot be reduced to simple UCUM units while preserving their semantic meaning.
+
 
 ### `pending_analysis` Category (11 slots)
 
@@ -116,18 +91,6 @@ Data using units not in the slot's `storage_units` list, indicating data quality
 
 **Why no storage_units**: Require schema design decisions about whether these should have QuantityValue range or use different modeling approaches (TextValue, categorical enums, etc.).
 
-**All slots have ONLY excuse annotation** (✅ correct, no dual annotations):
-- `biomaterial_purity` (QuantityValue) - excuse only
-- `bulk_elect_conductivity` (QuantityValue) - excuse only  
-- `concentration` (QuantityValue) - excuse only
-- `container_size` (QuantityValue) - excuse only
-- `exp_pipe` (QuantityValue) - excuse only
-- `filter_pore_size` (QuantityValue) - excuse only
-- `input_volume` (QuantityValue) - excuse only
-- `occup_density_samp` (QuantityValue) - excuse only
-- `soil_text_measure` (QuantityValue) - excuse only
-- `substances_volume` (QuantityValue) - excuse only
-- `value` (QuantityValue) - excuse only
 
 ### `mixs_inconsistent` Category (4 slots)
 
@@ -149,31 +112,22 @@ Data using units not in the slot's `storage_units` list, indicating data quality
 
 **GitHub Reference**: [PR #2599 detailed analysis](https://github.com/microbiomedata/nmdc-schema/pull/2599#issuecomment-3246905246) - documented as "Major MIxS Specification Problems"
 
-**All slots have ONLY excuse annotation** (✅ correct):
-- `efficiency_percent` (QuantityValue) - excuse only, name suggests % but MIxS specifies concentration
-- `inside_lux` (QuantityValue) - excuse only, name suggests illuminance but MIxS specifies power density  
-- `rel_humidity_out` (QuantityValue) - excuse only, ambiguous unit phrasing
-- `specific_humidity` (QuantityValue) - excuse only, ambiguous unit phrasing
 
-### `non_ucum_unit` Category (2 slots)
+### `non_ucum_unit` Category (1 slot)
 
 **Problem Statement**: These slots use industry-standard units that are not part of the UCUM standard but are legitimate, well-established units in their respective domains.
 
 **Affected Slots**:
-- **`api`**: Uses "degrees API" (American Petroleum Institute gravity scale)
-  - Industry-standard density measurement for petroleum products
-  - Cannot be converted to UCUM without losing domain-specific meaning
-- **`permeability`**: Uses "mD" (millidarcy) 
-  - Standard geological permeability unit
-  - Specialized unit for fluid flow through porous media
+- `api` - Uses "degrees API" (American Petroleum Institute gravity scale)
+
+**Example Problem Slots**:
+- `api` - Industry-standard density measurement for petroleum products
+- `permeability` - Uses "mD" (millidarcy), standard geological permeability unit
 
 **Why no storage_units**: These are valid, widely-accepted units in petroleum and geology domains but fall outside UCUM scope.
 
 **GitHub Reference**: [PR #2599 analysis](https://github.com/microbiomedata/nmdc-schema/pull/2599#issuecomment-3246905246) - confirmed as valid industry standards that "can't be aligned with UCUM"
 
-**All slots have ONLY excuse annotation** (✅ correct):
-- `api` (QuantityValue) - excuse only, degrees API petroleum industry standard
-- `permeability` (TextValue) - excuse only, mD millidarcy geological standard
 
 ## Production Data Problems
 
@@ -266,24 +220,6 @@ From UCUM validation:
 
 ## Immediate Action Items
 
-### 1. **Resolve Contradictory Dual Annotations**
-15 slots have BOTH storage_units AND units_alignment_excuse:
-
-**Decision needed**: For each of the 15 contradictory slots:
-- **Option A**: Remove `units_alignment_excuse` (if storage_units is sufficient)
-- **Option B**: Remove `storage_units` (if excuse is still needed)
-- **Logic**: A slot should have EITHER storage_units OR excuse, never both
-
-**Affected slots**: All 15 protocol_slot slots with dual annotations listed above.
-
-### 2. **Fix Missing Excuse File Entry**
-**`organism_count`** was listed in excuse file but actually has `storage_units: '1'`:
-- **Action**: Remove from excuse file analysis
-- **Reason**: Has valid storage_units annotation
-
-### 3. **Regenerate Excuse Analysis** 
-Regenerate all analysis files after fixing dual annotations using the fast analysis targets.
-
 ### 4. **Emergency Override for Test Failures**
 If you need to fix a failing test immediately:
 1. Add temporary excuse: `units_alignment_excuse: {tag: "units_alignment_excuse", value: "pending_analysis"}`
@@ -299,10 +235,6 @@ From validation analysis - invalid UCUM units need fixing:
 
 Also fix turbidity test failure: `[FNU]` missing from materialized UnitEnum.
 
-### 6. **Verified Categories (No Action Needed)**
-- **`pending_analysis`** (11 slots) - all have only excuse, all QuantityValue range
-- **`mixs_inconsistent`** (4 slots) - all have only excuse, all QuantityValue range  
-- **`non_ucum_unit`** (2 slots) - all have only excuse, appropriate ranges
 
 ### 7. **Production Data Fixes**
 Schema updates recommended:
@@ -318,9 +250,6 @@ Schema updates recommended:
 3. Add storage_units if keeping QuantityValue range
 4. Update range if measurement nature is non-quantitative
 
-#### `protocol_slot` Category (5 correctly excused + 15 with dual annotations):
-- Consider whether dual-annotation slots should have `TextValue` range instead of `QuantityValue`
-- Keep excuse for genuine protocol/regimen slots
 
 #### `mixs_inconsistent` Category (4 slots):
 - Coordinate with MIxS consortium to resolve specification inconsistencies

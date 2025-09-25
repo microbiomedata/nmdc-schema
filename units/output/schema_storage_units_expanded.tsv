@@ -152,7 +152,6 @@ mean_peak_frict_vel	m/s
 methane	[ppb]
 methane	[ppm]
 methane	umol/L
-microbial_biomass	kg
 nitrate	[ppm]
 nitrate	mg/L
 nitrate	umol/L
@@ -269,7 +268,6 @@ tot_sulfur	mg/L
 turbidity	[NTU]
 turbidity	[FNU]
 tvdss_of_hcr_press	m
-tvdss_of_hcr_temp	m
 ventilation_rate	L/s
 ventilation_rate	m3/min
 vfa	[ppm]
