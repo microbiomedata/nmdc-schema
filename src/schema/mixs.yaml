@@ -6882,9 +6882,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
+      storage_units:
+        tag: storage_units
+        value: "1"
     description: 'Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)'
     title: organism count
     examples:

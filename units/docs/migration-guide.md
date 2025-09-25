@@ -15,22 +15,26 @@ This document helps **existing contributors** understand changes to the units an
 ### Key Contributors
 
 **Mark A. Miller** (`MAM@lbl.gov` / @turbomam):
+
 - Units analysis infrastructure reorganization
 - All original functionality preserved in new structure
 
 **samobermiller** (`samobermiller@gmail.com`):
+
 - Enhanced production validation
-- ⚠️ **Active PR conflict**: May have open PR affecting production validation scripts
+- ⚠️ **Active PR conflict**:[Add migrator assuring unit compliance with annotations and UnitEnum by samobermiller · Pull Request #2641 · microbiomedata/nmdc-schema · GitHub](https://github.com/microbiomedata/nmdc-schema/pull/2641)
 
 ## Specific Conflicts & Resolutions
 
 ### Production Validation Script Movement
+
 - **Old location**: `units/validate_production_units.py`  
 - **New location**: `units/scripts/production_validate_units.py`
 - **Impact**: Sam's PR changes need to be applied to new location
 - **Resolution**: Coordinate with samobermiller to migrate changes
 
 ### Breaking Changes
+
 - **File paths**: Hardcoded references to old script locations will break
 - **Import statements**: Python imports of moved modules will fail  
 - **CI/Documentation**: References to old script names need updating
