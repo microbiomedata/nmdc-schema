@@ -5,6 +5,8 @@ import yaml
 from tests import SCHEMA_FILE
 
 
+# TODO: Follow best practices and switch to SchemaView for consistency,
+# though raw YAML access is safe here since class URIs don't involve inheritance
 def read_yaml(file_path):
     with open(file_path, 'r') as file:
         return yaml.safe_load(file)

@@ -48,6 +48,11 @@ output/schema_units_excuses.tsv: $(SCHEMA_FILE)
 	@mkdir -p output
 	yq eval '(.slots // {}) | to_entries[] | select(.value.annotations.units_alignment_excuse) | .key + "	" + (.value.annotations.units_alignment_excuse.value // .value.annotations.units_alignment_excuse)' $< | sort > $@
 
+# Extract user-friendly unit titles (very fast: <1 second)
+output/user_friendly_units.tsv: $(SCHEMA_FILE)
+	@mkdir -p output
+	yq eval '.enums.UnitEnum.permissible_values | to_entries | map(select(.value | has("title"))) | .[] | .key + "	" + .value.title' $< > $@
+
 # Extract slot-to-storage-unit pairs (expands pipe-separated values)
 output/schema_storage_units_expanded.tsv: $(SCHEMA_FILE)
 	poetry run units-schema-extract-slot-unit-pairs --schema-file $< --output $@
@@ -101,7 +106,7 @@ output/schema_qv_storage_counts.tsv: $(SCHEMA_FILE)
 	@echo "qv_slots_total	$$(yq '.slots | to_entries | map(select(.value.range == "QuantityValue")) | length' $<)" >> $@
 
 # Fast target - comprehensive analysis pipeline
-fast: output/schema_preferred_units.tsv output/schema_ucum_input.tsv output/schema_ucum_detailed.tsv output/yq_commands_single_unit.txt output/yq_commands_multi_unit.txt output/testdata_quantity_values.tsv output/ucum_validation_results.csv output/schema_qv_with_storage.txt output/schema_qv_without_storage.txt output/schema_qv_complete_table.txt output/schema_qv_storage_counts.tsv output/testdata_has_unit_check.tsv output/schema_units_excuses.tsv output/schema_storage_units_expanded.tsv
+fast: output/schema_preferred_units.tsv output/schema_ucum_input.tsv output/schema_ucum_detailed.tsv output/yq_commands_single_unit.txt output/yq_commands_multi_unit.txt output/testdata_quantity_values.tsv output/ucum_validation_results.csv output/schema_qv_with_storage.txt output/schema_qv_without_storage.txt output/schema_qv_complete_table.txt output/schema_qv_storage_counts.tsv output/testdata_has_unit_check.tsv output/schema_units_excuses.tsv output/user_friendly_units.tsv output/schema_storage_units_expanded.tsv
 
 # Clean all output files (preserves slow-outputs/ directory)
 clean-fast:

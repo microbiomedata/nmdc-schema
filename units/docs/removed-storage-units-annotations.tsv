@@ -1,0 +1,69 @@
+slot_name	range	removed_storage_units	units_alignment_excuse	preferred_unit
+agrochem_addition	TextValue	g|mg/L|mol/L	protocol_slot	gram, mole per liter, milligram per liter
+air_PM_concen	TextValue	ug/m3		micrograms per cubic meter
+antibiotic_regm	TextValue	mg	protocol_slot	milligram
+aromatics_pc	TextValue	%		percent
+asphaltenes_pc	TextValue	%		percent
+biocide_admin_method	TextValue	mg/L		milligram per liter
+biomass	TextValue	g|kg		ton, kilogram, gram
+chem_mutagen	TextValue	mg/L		milligram per liter
+chem_treat_method	string	mg/L		milligram per liter
+diether_lipids	TextValue	ng/L		nanogram per liter
+emulsions	TextValue	g/L		gram per liter
+fertilizer_regm	TextValue	g|mg/L|mol/L	protocol_slot	gram, mole per liter, milligram per liter
+fungicide_regm	TextValue	g|mg/L|mol/L	protocol_slot	gram, mole per liter, milligram per liter
+gaseous_environment	TextValue	umol/L		micromole per liter
+gaseous_substances	TextValue	umol/L		micromole per liter
+gravity	TextValue	[g]|m/s2		meter per square second, g
+growth_hormone_regm	TextValue	g|mg/L|mol/L	protocol_slot	gram, mole per liter, milligram per liter
+hcr_pressure	TextValue	atm|kPa		atmosphere, kilopascal
+hcr_temp	TextValue	Cel		degree Celsius
+heavy_metals	TextValue	ug/g		microgram per gram
+herbicide_regm	TextValue	g|mg/L|mol/L	protocol_slot	gram, mole per liter, milligram per liter
+humidity_regm	TextValue	g/m3	protocol_slot	gram per cubic meter
+inorg_particles	TextValue	mg/L|mol/L		mole per liter, milligram per liter
+microbial_biomass	QuantityValue	kg		ton, kilogram, gram per kilogram soil
+mineral_nutr_regm	TextValue	g|mg/L|mol/L	protocol_slot	gram, mole per liter, milligram per liter
+n_alkanes	TextValue	umol/L		micromole per liter
+non_min_nutr_regm	string	g|mg/L|mol/L	protocol_slot	gram, mole per liter, milligram per liter
+org_particles	TextValue	g/L		gram per liter
+particle_class	TextValue	um		micrometer
+pesticide_regm	TextValue	g|mg/L|mol/L	protocol_slot	gram, mole per liter, milligram per liter
+phaeopigments	TextValue	mg/m3		milligram per cubic meter
+phosplipid_fatt_acid	TextValue	mol/L|mol/g		mole per gram, mole per liter
+pollutants	TextValue	g|mg/L|mol/L|ug/m3		gram, mole per liter, milligram per liter, microgram per cubic meter
+porosity	TextValue	%		percentage
+radiation_regm	TextValue	Gy|RAD	protocol_slot	rad, gray
+rainfall_regm	TextValue	mm	protocol_slot	millimeter
+resins_pc	TextValue	%		percent
+room_dim	TextValue	m		meter
+room_door_dist	TextValue	m		meter
+room_net_area	TextValue	[sft_i]|m2		square feet, square meter
+room_vol	TextValue	[cft_i]|m3		cubic feet, cubic meter
+root_med_carbon	TextValue	mg/L		milligram per liter
+root_med_macronutr	TextValue	mg/L		milligram per liter
+root_med_micronutr	TextValue	mg/L		milligram per liter
+root_med_regl	TextValue	mg/L		milligram per liter
+root_med_suppl	TextValue	mg/L		milligram per liter
+salt_regm	TextValue	g|g/L|mol/L|ug	protocol_slot	gram, microgram, mole per liter, gram per liter
+samp_loc_corr_rate	TextValue	mm/a		millimeter per year
+samp_preserv	TextValue	mL		milliliter
+samp_time_out	TextValue	h		hour
+samp_tvdss	TextValue	m		meter
+saturates_pc	TextValue	%		percent
+soluble_inorg_mat	TextValue	[ppm]|g|g/L|mol/L|ug		gram, microgram, mole per liter, gram per liter, parts per million
+soluble_org_mat	TextValue	[ppm]|g|g/L|mol/L|ug		gram, microgram, mole per liter, gram per liter, parts per million
+suspend_solids	TextValue	[ppm]|g|g/L|mg/L|mol/L|ug		gram, microgram, milligram per liter, mole per liter, gram per liter, part per million
+tvdss_of_hcr_temp	QuantityValue	m		meter
+viscosity	TextValue	cP		cP at degree Celsius
+volatile_org_comp	TextValue	[ppm]|ng/L|ug/m3		microgram per cubic meter, parts per million, nanogram per liter
+water_content	string	cm3/cm3|g/g		gram per gram or cubic centimeter per cubic centimeter
+water_temp_regm	TextValue	Cel	protocol_slot	degree Celsius
+watering_regm	TextValue	L|mL	protocol_slot	milliliter, liter
+window_size	TextValue	[in_i]|m		inch, meter
+air_temp_regm	TextValue		protocol_slot	degree Celsius
+light_regm	TextValue		protocol_slot	lux, lumen per square meter
+org_count_qpcr_info	string		protocol_slot	
+permeability	TextValue		non_ucum_unit	millidarcy
+samp_transport_cond	TextValue		protocol_slot	
+standing_water_regm	TextValue		protocol_slot	

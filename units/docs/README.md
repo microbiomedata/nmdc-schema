@@ -5,14 +5,31 @@ This document provides a comprehensive overview of the unit analysis, validation
 ## Table of Contents
 
 1. [Maintainer Guide](#maintainer-guide) **← START HERE**
-2. [Overview](#overview)
-3. [Data Flow Pipeline](#data-flow-pipeline)
-4. [Core Scripts & Transformations](#core-scripts--transformations)
-5. [UCUM Validation System](#ucum-validation-system)
-6. [Schema Transformation Outputs](#schema-transformation-outputs)
-7. [Automation Recommendations](#automation-recommendations)
-8. [Troubleshooting](#troubleshooting)
-9. [File Management](#file-management)
+2. [Documentation Navigation](#documentation-navigation)
+3. [Overview](#overview)
+4. [Data Flow Pipeline](#data-flow-pipeline)
+5. [Core Scripts & Transformations](#core-scripts--transformations)
+6. [UCUM Validation System](#ucum-validation-system)
+7. [Schema Transformation Outputs](#schema-transformation-outputs)
+8. [Automation Recommendations](#automation-recommendations)
+9. [Troubleshooting](#troubleshooting)
+10. [File Management](#file-management)
+
+## Documentation Navigation
+
+### Primary Documents
+
+- **`units-problems-definitive.md`** - **DEFINITIVE SOURCE** for all units problems (excuse problems and production data issues)
+- **`README.md`** - This file: workflow overview, scripts, and automation guidance
+
+### Specialized Analysis
+
+- **`units-ecosystem-overview.md`** - Strategic architecture and contributor analysis
+
+### Contributor Support
+
+- **`migration-guide.md`** - Workflow migration guidance for existing contributors  
+- **`legacy-data-strategy.md`** - Proposed strategy for non-standard units
 
 ## Maintainer Guide
 
@@ -21,33 +38,75 @@ This document provides a comprehensive overview of the unit analysis, validation
 **Short Answer**: You don't. These scripts are specialist tools for units work.
 
 #### **Normal Schema Maintenance**
+
 - ✅ **Adding new classes/slots**: No action needed
 - ✅ **Changing slot ranges**: No action needed  
 - ✅ **General schema updates**: No action needed
 - ✅ **Tests passing**: Units constraints enforced automatically
 
-#### **When Units Work Is Needed** 
-- ❌ **Test failure**: `test_quantityvalue_slots_have_storage_units_or_excuse`
+#### **When Units Work Is Needed**
+
+- ❌ **Test failure**: QuantityValue slot validation
 - **Who handles it**: UCUM Squad (@turbomam)
 - **Process**: Add to weekly UCUM Squad meeting agenda
 - **Your role**: Review and merge the resulting PR
 
 #### **What Gets Changed**
+
 - **Files modified**: Schema YAML files (`src/schema/*.yaml`)
-- **Changes**: Addition of `storage_units` or `units_alignment_excuse` annotations
+- **Changes**: Addition of required slot annotations
 - **Review needed**: Standard schema change review (no special units knowledge required)
 
 #### **Emergency Override**
-If you need to fix a failing test immediately:
-1. Add temporary excuse: `units_alignment_excuse: {tag: "units_alignment_excuse", value: "pending_analysis"}`
-2. File issue for UCUM Squad review
-3. Tag @turbomam and add to UCUM Squad meeting agenda
+
+See `units-problems-definitive.md` for emergency procedures.
 
 ### For UCUM Squad: Script Usage
+
 The scripts in this directory are for specialized units analysis and should only be run by someone familiar with UCUM, MIxS, and units validation concepts.
 
+**For all units problems:** See `units-problems-definitive.md` - the definitive source for both excuse problems and production data issues.
+
+### Implementation Status and Project Coordination
+
+**Primary Issue:** [#2598](https://github.com/microbiomedata/nmdc-schema/issues/2598) - Add `storage_units` annotations to QuantityValue slots
+
+**✅ Phase 1: COMPLETED** (Under review in [PR #2599](https://github.com/microbiomedata/nmdc-schema/pull/2599))
+
+- Added `storage_units` annotations to 159 QuantityValue slots with clear MIxS → UCUM mappings
+- Lead: @turbomam
+
+**🔄 Phase 2: NEXT TASK**
+
+- Add `storage_units` annotations to remaining QuantityValue slots without MIxS `preferred_unit` annotations
+
+**Contributors:**
+
+- **@turbomam:** Schema annotation implementation (#2598, PR #2599)
+- **samobermiller:** Validation and migration support (#2637, PR #2641)
+
+**Current analysis:** Run `make fast` to generate current QuantityValue slot analysis including storage_units status.
+
 ### Future Migration Note
+
 The data validation scripts in `units/` (like `validate_production_units.py`) will be replaced with validation code in the `nmdc-runtime` repository (handled by @pkalita-lbl). The schema annotation scripts will remain here.
+
+### User-Friendly Unit Titles
+
+**Issue from PR #2599**: "storage_units that may not be intuitive and might require a title assertion, to be used as the display value"
+
+**Solution**: ✅ Complete - Added `title` annotations to cryptic UCUM units in the schema.
+
+**Current mappings**: Run `make output/user_friendly_units.tsv` to generate current table.
+
+**For new units**: Add `title`, `aliases`, and `description` fields to ensure meaningful display names.
+
+### Legacy Data and Non-Standard Units
+
+For data with units that cannot be converted to UCUM or don't conform to storage_units specifications, see:
+
+- **units/docs/legacy-data-strategy.md** - Proposed approach using misc_param key-value structure (⚠️ speculative)
+- **units/docs/units-problems-definitive.md** - Definitive source for all units problems
 
 ## Overview
 
@@ -58,12 +117,14 @@ The unit analysis workflow addresses Issue #2598: adding `storage_units` annotat
 **Key Breakthrough:** The workflow can now be implemented using only NMDC schema data, eliminating external dependencies:
 
 **This schema-only workflow replaces:**
+
 1. MongoDB data extraction + SPARQL queries
 2. MIxS external data download
 3. LLM processing for UCUM conversion
 4. Chain of 4 individual scripts
 
 **New workflow uses only:**
+
 1. NMDC schema preferred_unit annotations
 2. Deterministic UCUM conversion rules
 3. Single consolidated script
@@ -71,6 +132,7 @@ The unit analysis workflow addresses Issue #2598: adding `storage_units` annotat
 ### Legacy Workflow Components
 
 The original workflow involved:
+
 - **MongoDB data analysis** - Understanding actual vs. acceptable units in production data
 - **MIxS mapping** - Correlating schema slots with MIxS preferred units
 - **UCUM validation** - Ensuring units comply with standardized notation
@@ -86,6 +148,7 @@ The original workflow involved:
 **Two approaches for slot/unit analysis:**
 
 #### **Approach A: RDF/Triplestore Analysis**
+
 ```
 mongodb-slots-to-units.csv --[analyze_units.py]--> mongodb-slots-to-units_analyzed.csv --[manual]--> mongodb-slots-to-units_remediated.csv
 ```
@@ -95,17 +158,20 @@ mongodb-slots-to-units.csv --[analyze_units.py]--> mongodb-slots-to-units_analyz
 **Advantage**: Rich triplestore discovery capabilities
 
 **SPARQL Output:** `mongodb-slots-to-units.csv`
+
 - CSV format: `sc,p,l,su,u,count` (schema class, property, label, acceptable units, actual unit, count)
 - Contains production MongoDB data showing actual units used vs. schema-acceptable units
 - Example: `https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000110,samp_store_temp,Cel,Cel,4219`
 
 #### **Approach B: Direct Python Analysis**
+
 **File**: `units/validate_production_units.py`  
 **Pipeline**: MongoDB dump → direct YAML processing → slot/unit compliance analysis  
 **Advantage**: Same slot/unit analysis without RDF/OWL conversion workarounds
 
 **SPARQL Query Used:**
 Saved as `assets/sparql/mongodb-slots-to-units.rq`:
+
 ```sparql
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX nmdc: <https://w3id.org/nmdc/>
@@ -127,21 +193,25 @@ group by ?sc ?p ?l ?su ?u
 ```
 
 **Query Logic:**
+
 - **Finds instances** (`?s`) with QuantityValue properties containing actual units (`nmdc:has_unit ?u`)
 - **Gets schema-acceptable units** via `nmdc:storage_units ?su` 
 - **Aggregates by class, property, label, acceptable units, and actual unit**
 - **Optional patterns** handle missing labels and storage_units (explains empty CSV values)
 
 **Script:** `analyze_units.py`
+
 - Adds `valid` column indicating whether actual unit (u) is in acceptable units (su)
-- Values: `valid`, `invalid`, `no_spec`
+- Values: validation status indicators
 - Provides summary statistics
 
 **Output:** `mongodb-slots-to-units_analyzed.csv`
+
 - Same as input plus `valid` column
 - Shows validation status for each slot-unit combination
 
 **LLM Processing:** Creates `mongodb-slots-to-units_remediated.csv`
+
 - **Method**: `mongodb-slots-to-units_analyzed.csv` processed through LLM 
 - Adds `remediation` column with systematic fix recommendations
 - **LLM generates**: Specific conversion factors, schema additions, or "none required"
@@ -149,150 +219,39 @@ group by ?sc ?p ?l ?su ?u
 
 ### 2. Current Schema-Only Pipeline
 
-```
-../nmdc_schema/nmdc_materialized_patterns.yaml
-    ↓ [analyze.py]
-schema.tsv 
-    ↓ [extract.py] 
-input.tsv + detailed.tsv
-    ↓ [process.py]
-single.txt + multi.txt
-```
+The pipeline processes schema YAML files through three stages to generate storage_units annotations. See the Makefile for the complete workflow definition.
 
-**Script 1:** `analyze.py` (formerly `analyze_preferred_units.py`)
-- Extracts preferred_unit annotations from schema YAML
-- Now uses Click CLI with configurable schema path
-- Moved from `src/scripts/` to local `units/` directory
+### 3. Schema Annotation Application
 
-**Script 2:** `extract.py`
-- Converts preferred units to UCUM notation deterministically
-- Detects problem patterns (brackets, imperial units, complex expressions)
-- Handles multi-unit slots (comma/pipe separated)
-- **Key Innovation**: No external dependencies - pure schema-based
-
-**Script 3:** `process.py`
-- Consolidated replacement for 4 individual scripts:
-  - `add_has_problem.py`
-  - `add_slot_count.py` 
-  - `find_storage_units.py`
-  - `generate_multi_unit_storage_units.py`
-- Complete processing pipeline in single script
-- Proper error handling and Click CLI interface
-
-### 3. Storage Units Annotation Generation
-
-#### Single-Unit Slots
-```
-input.tsv --[process.py]--> single.txt (yq commands)
-```
-
-**Logic:**
-- Filters: `problem != 1` AND `slot_row_count == 1`
-- Generates yq commands for single UCUM-compatible units
-- Output format: `'.slots.{slot_name}.annotations.storage_units.tag |= "storage_units"'`
-
-#### Multi-Unit Slots
-```
-input.tsv --[process.py]--> multi.txt (yq commands)
-```
-
-**Logic:**
-- Filters: `problem != 1` AND `slot_row_count > 1`
-- Groups by slot, creates pipe-separated UCUM notation lists
-- Output format: `'.slots.{slot_name}.annotations.storage_units = {"tag": "storage_units", "value": "unit1|unit2"}'`
-
-### 4. Schema Annotation Application
-
-```
-single.txt + multi.txt --[yq]--> src/schema/*.yaml (updated with storage_units annotations)
-```
-
-The generated yq commands are applied to update schema files with `storage_units` annotations.
+The pipeline generates yq commands that are applied to update schema files with `storage_units` annotations. See the Makefile targets for implementation details.
 
 ## Core Scripts & Transformations
 
 ### Current Implementation
 
-**Quick Start:**
-```bash
-make all         # Build all outputs
-make rebuild     # Clean then build
-make clean       # Remove generated files
-```
+**Quick Start:** Run `make help` for available targets.
 
 **Files:**
-- `analyze.py` - Extract preferred units from schema
-- `extract.py` - Convert to UCUM with problem detection  
-- `process.py` - Generate yq commands for storage_units
+
+- `units/scripts/schema_extract_preferred_units.py` - Extract preferred units from schema
+- `units/scripts/schema_convert_to_ucum.py` - Convert to UCUM with problem detection  
+- `units/scripts/schema_generate_yq_commands.py` - Generate yq commands for storage_units
 - `Makefile` - Build automation
-- `schema.tsv` - Preferred units extracted from schema
-- `input.tsv` - Minimal data for processing (slot, ucum_notation, problem)
-- `detailed.tsv` - Full metadata with context and descriptions
-- `single.txt` - yq commands for slots with one unit
-- `multi.txt` - yq commands for slots with multiple units
+- `output/schema_preferred_units.tsv` - Preferred units extracted from schema
+- `output/schema_ucum_input.tsv` - Minimal data for processing (slot, ucum_notation, problem)
+- `output/schema_ucum_detailed.tsv` - Full metadata with context and descriptions
+- `output/yq_commands_single_unit.txt` - yq commands for slots with one unit
+- `output/yq_commands_multi_unit.txt` - yq commands for slots with multiple units
 
-### `analyze.py`
-**Purpose:** Extract preferred_unit annotations from NMDC schema
+### Script Usage
 
-**Usage:**
+Run any script with `--help` for detailed usage information:
+
 ```bash
-python analyze.py [--schema-file PATH] OUTPUT_FILE
+poetry run units-schema-extract --help
+poetry run units-schema-convert --help  
+poetry run units-schema-generate --help
 ```
-
-**Features:**
-- Converted to Click CLI (was hardcoded paths)
-- Moved from `src/scripts/` to local directory
-- Configurable schema file path
-- Comprehensive summary statistics
-
-### `extract.py`
-**Purpose:** Schema-only UCUM conversion with problem detection
-
-**Usage:**
-```bash
-python extract.py INPUT_FILE OUTPUT_FILE [--detailed DETAILED_FILE] [--quiet]
-```
-
-**Key Innovation:** Replaces external MIxS data + LLM processing with deterministic rules:
-
-**Direct UCUM mappings:**
-```python
-direct_mappings = {
-    'degree Celsius': 'Cel',
-    'meter': 'm',
-    'millimeter': 'mm',
-    'gram': 'g',
-    'liter': 'L',
-    'percent': '%',
-    # ... etc
-}
-```
-
-**Problem pattern detection:**
-```python
-problem_patterns = [
-    r'.*,.*',           # Multiple units separated by commas
-    r'.*\\|.*',         # Multiple units separated by pipes  
-    r'.*\\[.*\\].*',    # Bracketed units like [NTU], [pH]
-    r'.*\\bper\\b.*\\bper\\b.*',  # Complex ratios
-    r'.*formazin.*',    # Turbidity units
-    # ... etc
-]
-```
-
-### `process.py`
-**Purpose:** Consolidated pipeline generating yq commands
-
-**Usage:**
-```bash
-python process.py INPUT_FILE [--output-dir DIR]
-```
-
-**Replaces 4 scripts:**
-- Adds slot-level problem flags
-- Counts units per slot
-- Generates single-unit yq commands
-- Generates multi-unit yq commands
 
 ## Unit Sanitization & Validation
 
@@ -306,7 +265,8 @@ The round-trip testing with ROBOT tool revealed that **special characters in Uni
 
 ### Current Sanitization Approach
 
-**SPARQL-based**: Uses `fix-units-update-v2.ru` to transform problematic units:
+**SPARQL-based**: Uses `fix-units-update-v2.ru` to transform units:
+
 ```sparql
 # Remove brackets and fix special characters
 DELETE { <https://w3id.org/nmdc/UnitEnum#%> ?p ?o } 
@@ -322,13 +282,15 @@ INSERT { <https://w3id.org/nmdc/UnitEnum#mmHg> ?p ?o }
 ### Missing: Python-based Sanitization
 
 **Gap identified**: No Python scripts currently sanitize permissible values. The root directory scripts only:
+
 - **Analyze** units (`analyze_units.py`) - validates but doesn't clean
 - **Generate** yq commands using existing clean units
-- **Flag** problematic slots without fixing them
+- **Flag** slots requiring attention
 
 **Current Risk**: Square brackets in UCUM units like `[NTU]` break OWL generation, causing failures in OntoText GraphDB and `robot convert`. (See [issue #2614](https://github.com/microbiomedata/nmdc-schema/issues/2614))
 
 **Short-term workaround**: Manual bracket removal script:
+
 - Remove brackets: `[NTU]` → `NTU`  
 - Convert special chars: `%` → `percent`, `mm[Hg]` → `mmHg`
 - Validate URI safety before RDF generation
@@ -338,19 +300,24 @@ INSERT { <https://w3id.org/nmdc/UnitEnum#mmHg> ?p ?o }
 ### Testing Tools for Unit Issues
 
 #### 1. ROBOT Round-Trip Testing
+
 ```bash
 # Test ontology parsing robustness
 robot convert --input schema.owl.ttl --output schema-rt.owl.ttl --debug > robot-log.txt
 ```
+
 **Purpose**: Identifies which units cause RDF/OWL parsing failures
 
 #### 2. Manual URI Validation
+
 Check units for characters that break URIs:
+
 - Brackets: `[`, `]`
 - Spaces, special chars that need encoding
-- Characters invalid in RDF fragment identifiers
+- Characters requiring encoding in RDF fragment identifiers
 
 #### 3. Schema Analysis Tools
+
 For comprehensive class/slot analysis, use **LinkML SchemaView** instead of RDF extraction:
 
 ```python
@@ -364,9 +331,11 @@ all_slots = view.class_slots("Biosample")  # Gets ALL usable slots
 **Advantage over RDF extraction**: Captures optional/compatible slots, not just axiomatically required ones.
 
 #### 4. UCUM Validation (Not Currently Available)
+
 **Status**: JavaScript UCUM validation automation is not currently implemented
 
 **If implemented, would provide**:
+
 - Validation against UCUM standard
 - Identification of non-standard unit expressions
 - Recommendations for UCUM-compliant alternatives
@@ -384,6 +353,7 @@ src/schema/attribute_values.yaml --[Python sanitizer]--> cleaned units --[schema
 ```
 
 **Benefits of Python approach**:
+
 - **Preventive**: Fix issues before RDF generation
 - **Automated**: Can be integrated into Makefile
 - **Reversible**: Can maintain mapping of original → sanitized units
@@ -401,12 +371,14 @@ nmdc-non-native-uris.owl.ttl --[fix-units-update-v2.ru]--> nmdc-fixed.ttl --> nm
 ```
 
 **Key Files:**
-- `fix-units-update-v2.ru` - SPARQL UPDATE queries for unit URI fixes (6.4KB, kept)
+
+- `fix-units-update-v2.ru` - SPARQL UPDATE queries for unit URI fixes
 
 **Note on RDF Extraction Limitations:**
 Attempts to extract individual classes (like `biosample.ttl`) from OWL files typically only capture axiomatically required properties, missing optional/compatible slots. Use LinkML SchemaView for comprehensive class analysis instead.
 
 **Transformations Applied:**
+
 - Remove brackets from bracketed units: `[NTU]` → `NTU`
 - Standardize unit URIs: `%` → `percent`
 - Fix mercury unit syntax: `mm[Hg]` → `mmHg`
@@ -415,56 +387,32 @@ Attempts to extract individual classes (like `biosample.ttl`) from OWL files typ
 
 ### Current Makefile
 
-```makefile
-# Current simplified workflow
-all: single.txt multi.txt
+See the `Makefile` in this directory for the complete workflow definition and available targets.
 
-schema.tsv: analyze.py
-	python analyze.py schema.tsv
+### Alternative Approaches
 
-input.tsv detailed.tsv: schema.tsv extract.py
-	python extract.py $< $@ --detailed detailed.tsv
-
-single.txt multi.txt: input.tsv process.py
-	python process.py input.tsv
-
-clean:
-	rm -f schema.tsv input.tsv detailed.tsv single.txt multi.txt
-
-rebuild: clean all
-```
-
-### Legacy Automation (Replaced)
-
-**MongoDB unit analysis pipeline:**
-```makefile
-# This was the old approach - now replaced
-mongodb-slots-to-units_analyzed.csv: mongodb-slots-to-units.csv analyze_units.py
-	$(RUN) python analyze_units.py $<
-
-# Storage units yq command generation  
-storage-units-single.txt: find_storage_units.py pref-unit-slots-final.tsv
-	$(RUN) python find_storage_units.py > $@
-```
+The current schema-only workflow replaced earlier MongoDB-based approaches that required external data dependencies.
 
 ### Potential Additional Automation
 
 **Unit Sanitization** (recommended addition):
+
 ```makefile
 # Sanitize units before schema build
 src/schema/attribute_values_clean.yaml: src/schema/attribute_values.yaml sanitize_units.py
-	$(RUN) python sanitize_units.py $< > $@
+    $(RUN) python sanitize_units.py $< > $@
 
 # Round-trip test for unit issues
 test-units-roundtrip: nmdc_schema/nmdc_materialized_patterns.yaml
-	robot convert --input project/owl/nmdc.owl.ttl --output local/nmdc-rt.owl.ttl --debug > local/robot-test.log
-	@echo "Check local/robot-test.log for unit parsing issues"
+    robot convert --input project/owl/nmdc.owl.ttl --output local/nmdc-rt.owl.ttl --debug > local/robot-test.log
+    @echo "Check local/robot-test.log for unit parsing issues"
 ```
 
 **UCUM Validation** (not currently available):
+
 ```makefile
 # This automation could be implemented in the future
-# local/invalid_unitenum_units.txt: validation target (not yet available)
+# local/validation_results.txt: validation target (not yet available)
 ```
 
 ## Data Validation Against storage_units Constraints
@@ -487,11 +435,12 @@ The MongoDB SPARQL approach provides comprehensive validation of production data
 ```
 
 **Advantages of SPARQL approach:**
+
 - **Comprehensive coverage** - Analyzes ALL QuantityValue patterns in production MongoDB data
 - **Production scale** - Handles large datasets efficiently vs limited test files
 - **Flexible querying** - Can filter by class, slot, unit patterns ("show all Biosample temperature readings with non-Celsius units")
-- **Statistical analysis** - Count violations, group by slot/class, find most common issues
-- **Pattern discovery** - Identify which slots have the most storage_units constraint violations
+- **Statistical analysis** - Count compliance, group by slot/class, find patterns
+- **Pattern discovery** - Identify usage patterns for storage_units constraints
 
 ### MongoDB YAML Dump Validation (Implemented)
 
@@ -508,22 +457,26 @@ cd units && make validate-production ENV=prod           # Uses release schema (f
 ```
 
 **Current Flexibility Status:**
+
 - **MongoDB dump (project.Makefile)**: ✅ API flexible, ⚠️ schema hardcoded to dev
 - **Units validation (units/Makefile)**: ✅ API inherited, ✅ schema flexible
 
 **MongoDB dump process:**
+
 - **Collections analyzed**: 16 default collections including `biosample_set`, `processed_sample_set`, `data_object_set`, etc.
 - **Data source**: Live NMDC API (`https://api.microbiomedata.org`)
 - **Scope**: Up to 200,000 documents per collection
 - **Output format**: Single YAML file with all collections
 
 **Validation features:**
+
 - **UnitEnum compliance** - Checks all `has_unit` values exist in schema's UnitEnum
 - **storage_units constraints** - Validates units against slot-specific storage_units annotations
-- **Comprehensive reporting** - TSV output with violation details, statistics, and summaries
+- **Comprehensive reporting** - TSV output with compliance details, statistics, and summaries
 - **Production scale** - Handles full MongoDB dataset efficiently
 
 **Usage:**
+
 ```bash
 # Validate against current development schema (default)
 python validate_production_units.py \
@@ -550,6 +503,7 @@ The existing `tests/test_has_unit_validation.py` validates example data files:
 - **Limitations**: Small dataset, no production coverage, limited aggregation capabilities
 
 **When to use each approach:**
+
 - **SPARQL**: Production compliance analysis, schema validation assessment, identifying real-world unit issues
 - **Tests**: CI/CD validation of example data, ensuring curated examples remain compliant
 
@@ -560,6 +514,7 @@ The SPARQL approach provides the comprehensive production analysis needed to ass
 ### MongoDB Dump Issues and Workarounds
 
 **Problem 1: Makefile target broken due to contributor modifications**
+
 ```
 Error: No such option: --psize Did you mean --page-size?
 ```
@@ -569,6 +524,7 @@ Error: No such option: --psize Did you mean --page-size?
 **Diagnostic:** The `--page-size 200000` parameter gets mangled into `--psize 200 200000` during Make processing.
 
 **Workaround:** Call `pure-export` directly instead of using the Makefile target:
+
 ```bash
 poetry run pure-export \
     --max-docs-per-coll 200000 \
@@ -582,6 +538,7 @@ poetry run pure-export \
 ```
 
 **Problem 2: Incorrect dev API URL in project.Makefile**
+
 ```
 Failed to resolve 'dev-api.microbiomedata.org' ([Errno 8] nodename nor servname provided, or not known)
 ```
@@ -589,11 +546,13 @@ Failed to resolve 'dev-api.microbiomedata.org' ([Errno 8] nodename nor servname 
 **Root Cause:** Makefile uses incorrect URL `dev-api.microbiomedata.org` instead of correct `api-dev.microbiomedata.org`.
 
 **Problem 3: Collection coverage gaps**
+
 ```
 Database slots only: ['functional_annotation_agg']
 ```
 
 **Observation:** The `DEFAULT_COLLECTIONS` list in `project.Makefile` includes 16 collections but misses `functional_annotation_agg` which:
+
 - ✅ Exists in schema (17 total collections)
 - ✅ Exists in database (41.3M documents - largest collection!)
 - ❌ Not included in default dump
@@ -604,44 +563,39 @@ Database slots only: ['functional_annotation_agg']
 
 **Issue:** Development APIs often have intermittent availability or require special network access.
 
-
 ### Data Collection Statistics (Dev API)
 
-**Successful dump from api-dev.microbiomedata.org (as of validation date - numbers change frequently):**
-- **biosample_set**: 13,248 documents (25.4MB)
-- **data_object_set**: 184,356 documents (94.6MB) 
-- **workflow_execution_set**: 19,522 documents (524MB)
-- **functional_annotation_agg**: 41.3M documents (6.8GB) - **Not included in default dump**
+**Data collection overview:**
+
+- **biosample_set**: Environmental measurements  
+- **data_object_set**: Large collection
+- **workflow_execution_set**: Analysis results
+- **functional_annotation_agg**: Very large collection - **Not included in default dump**
 - **Other collections**: Various sizes, some empty
-- **Total collections available**: 17 in schema, 16 in default dump
 
 **Collections with substantial QuantityValue potential:**
+
 - `biosample_set` - Environmental measurements
-- `material_processing_set` - 9,372 documents
+- `material_processing_set` - Processing metadata
 - `study_set` - Study-level metadata
 - `workflow_execution_set` - Analysis results
 
 ### Document Limit Analysis (200k max per collection)
 
-**🚨 Critical Risk - Collections approaching limit:**
-- **data_object_set**: 184,356 documents (92% of 200k limit)
-  - Only 15,644 documents below limit
-  - High risk of truncation with normal data growth
-  - May miss recent data objects in validation
+**Collections approaching document limits:**
 
-**⚠️ Extreme Risk - Collections exceeding limit:**
-- **functional_annotation_agg**: 41,305,297 documents (206x the limit!)
-  - Would be truncated to only 0.5% of actual data
-  - Fortunately excluded from default dump
-  - Unclear if contains QuantityValue objects for units validation
+- **data_object_set**: Approaching collection limit, risk of truncation
+- **functional_annotation_agg**: Far exceeds limits, excluded from default dump
 
-**✅ Safe Collections (well below limit):**
-- workflow_execution_set: 19,522 docs (10% of limit)
-- biosample_set: 13,248 docs (7% of limit) 
-- material_processing_set: 9,372 docs (5% of limit)
-- All other collections: <1,000 docs each
+**Collections within limits:**
+
+- **workflow_execution_set**: Well below limit
+- **biosample_set**: Well below limit  
+- **material_processing_set**: Well below limit
+- **Other collections**: Small numbers
 
 **Recommendations:**
+
 1. **Monitor data_object_set growth** - Consider increasing limit or adding alerts
 2. **Investigate functional_annotation_agg** - Determine if it contains QuantityValue objects
 3. **Collection-specific limits** - Large collections may need higher limits than 200k
@@ -649,138 +603,84 @@ Database slots only: ['functional_annotation_agg']
 
 ## Troubleshooting
 
-### Turbidity Unit Fix Status
-
-**Issue:** Test `tests/test_annotations.py::TestAnnotations::test_storage_units_from_unit_enum` fails with:
-```
-"SlotDefinition.turbidity: storage_units value '[FNU]' not in UnitEnum"
-```
-
-**Root Cause:** [FNU] is defined in `src/schema/attribute_values.yaml` but not appearing in the materialized UnitEnum.
-
-**Resolution Steps:**
-1. **Debug [FNU] missing from UnitEnum:**
-   ```bash
-   grep -n "\[FNU\]" nmdc_schema/nmdc_materialized_patterns.yaml
-   ```
-
-2. **Verify UnitEnum generation:**
-   - Check how `src/schema/attribute_values.yaml` gets converted to materialized UnitEnum
-   - Look for filtering steps that might exclude [FNU]
-
-3. **Test the fix:**
-   ```bash
-   python -m pytest tests/test_annotations.py::TestAnnotations::test_storage_units_from_unit_enum -v
-   ```
-
-**Completed Tasks:**
-- ✅ Added `not_measurement_like` to annotation whitelist in `tests/test_annotations.py`
-- ✅ Updated test data files to use proper turbidity units (`[NTU]`)
-- ✅ Confirmed [FNU] exists in `src/schema/attribute_values.yaml:1936-1938`
-- ✅ Rebuilt schema with `make squeaky-clean all`
-
 ### Common Issues
 
 #### Script not found
+
 Ensure you're running from the `units/` directory.
 
 #### Missing dependencies
+
 All scripts require `click`, `pandas`, and `yaml` packages.
 
 #### Schema file not found
+
 The default schema path is `../nmdc_schema/nmdc_materialized_patterns.yaml`. Use `--schema-file` to specify different path.
 
 #### Empty outputs
-Check that schema contains `preferred_unit` annotations. Run with verbose output.
 
+Check that schema contains `preferred_unit` annotations. Run with verbose output.
 
 ## File Management
 
 ### Current Files (Keep)
-- **Core Scripts:** `analyze.py`, `extract.py`, `process.py` - Current implementation
+
+- **Core Scripts:** `units/scripts/schema_extract_preferred_units.py`, `units/scripts/schema_convert_to_ucum.py`, `units/scripts/schema_generate_yq_commands.py` - Current implementation
 - **Build System:** `Makefile` - Clean artifact-based automation
 - **Documentation:** `README.md` - This comprehensive documentation
 - **Transformation Queries:** `fix-units-update-v2.ru` - SPARQL unit URI fixes
 
 ### Generated Files (Cleaned by `make clean`)
-- **Intermediate Data:** `schema.tsv`, `input.tsv`, `detailed.tsv`
-- **Final Outputs:** `single.txt`, `multi.txt` - yq command files for applying storage_units annotations
+
+- **Intermediate Data:** `output/schema_preferred_units.tsv`, `output/schema_ucum_input.tsv`, `output/schema_ucum_detailed.tsv`
+- **Final Outputs:** `output/yq_commands_single_unit.txt`, `output/yq_commands_multi_unit.txt` - yq command files for applying storage_units annotations
 
 **When to regenerate:** The yq command files should be regenerated when:
+
 - New slots receive preferred_unit annotations
 - UCUM conversion logic improvements are made 
 - Preferred_unit values change in the schema
-- Previously problematic units are resolved
+- Historical unit issues are resolved
 
 ### Legacy Files Analysis
 
 #### Files Deleted During Cleanup
-- **Documentation stubs:** `TURBIDITY_UNIT_FIX_STATUS.md` - ✅ **Status: Deleted**
-- **ROBOT logs:** `robot.txt` (1830 lines) - ✅ **Status: Deleted** 
-- **Context Files:** `UnitEnum-context.txt` - ✅ **Status: Deleted**
-- **Invalid Validation Files:** `local/invalid_unitenum_units.txt`, `UnitEnum_UCUM_Validation.md` - ✅ **Status: Deleted**
-- **RDF Transformation Files:** `nmdc-non-native-uris*.owl.ttl` - ✅ **Status: Deleted**
-- **Generated RDF Outputs:** `nmdc-fixed.ttl`, `nmdc-fixed2.ttl` (5MB+ total) - ✅ **Status: Deleted**
-- **Incomplete Extractions:** `biosample.ttl` (34KB) - ✅ **Status: Deleted**
-- **IRI Mapping Files:** `nmdc-iri-map*.tsv` (2.9KB total) - ✅ **Status: Deleted**
 
-#### MongoDB Production Data Analysis Files 
-- **`mongodb-slots-to-units.csv`** (89 lines) - **Status: Can delete** - Regenerable via SPARQL query (documented above)
-- **`mongodb-slots-to-units_analyzed.csv`** (89 lines) - **Status: Can delete** - Regenerable via `analyze_units.py`
-- **`mongodb-slots-to-units_remediated.csv`** (88 lines) - **Status: Keep** - LLM-generated remediation with specific conversion factors
+- **Documentation stubs:** `TURBIDITY_UNIT_FIX_STATUS.md` - ✅ **Status: Deleted**
+- **ROBOT logs:** `robot.txt` - ✅ **Status: Deleted** 
+- **Context Files:** `UnitEnum-context.txt` - ✅ **Status: Deleted**
+- **Legacy Validation Files:** Various validation outputs - ✅ **Status: Deleted**
+- **RDF Transformation Files:** `nmdc-non-native-uris*.owl.ttl` - ✅ **Status: Deleted**
+- **Generated RDF Outputs:** `nmdc-fixed.ttl`, `nmdc-fixed2.ttl` - ✅ **Status: Deleted**
+- **Incomplete Extractions:** `biosample.ttl` - ✅ **Status: Deleted**
+- **IRI Mapping Files:** `nmdc-iri-map*.tsv` - ✅ **Status: Deleted**
+
+#### MongoDB Production Data Analysis Files
+
+- **`mongodb-slots-to-units.csv`** - **Status: Can delete** - Regenerable via SPARQL query (documented above)
+- **`mongodb-slots-to-units_analyzed.csv`** - **Status: Can delete** - Regenerable via `analyze_units.py`
+- **`mongodb-slots-to-units_remediated.csv`** - **Status: Keep** - LLM-generated remediation with specific conversion factors
 
 **Keep Only:** The remediated file contains the most valuable insights - systematic LLM-generated conversion factors and remediation strategies that would be time-consuming to recreate:
+
 - **Specific conversion factors**: "convert data from ug/L to mg/L (multiply by 0.001)"
 - **Schema recommendations**: "add m to schema acceptable units"  
 - **Production data analysis**: Based on real MongoDB usage patterns with thousands of records
 
-#### Individual Scripts (Consolidated)
-- **`add_has_problem.py`, `add_slot_count.py`, `find_storage_units.py`, `generate_multi_unit_storage_units.py`** - ✅ **Status: Deleted** - Individual scripts in broken MIxS pipeline, replaced by consolidated `process.py`
+#### Current Script Architecture
 
-#### Script Consolidation Summary
-- **`process.py`** - ✅ **New** - Consolidated MIxS processing pipeline with proper error handling and Click CLI interface
-  - **Replaces**: 4 individual scripts with hardcoded paths and no error handling
-  - **Usage**: `python process.py INPUT_FILE [--output-dir DIR]`
-  - **Required input columns**: `slot`, `ucum_notation`, `problem`
-  - **Outputs**: `single.txt`, `multi.txt`
-  - **Benefits**: Single script, proper error handling, consistent paths, Click CLI interface
+- **`units/scripts/schema_extract_preferred_units.py`** - Extract preferred_unit annotations from schema
+- **`units/scripts/schema_convert_to_ucum.py`** - Convert units to UCUM notation with problem detection
+- **`units/scripts/schema_generate_yq_commands.py`** - Generate yq commands for storage_units annotations
 
-#### Schema-Only Input Generation
-- **`extract.py`** - ✅ **New** - **Schema-only workflow** that eliminates external dependencies
-  - **Key Innovation**: Generates input for `process.py` using **only schema data** - no MongoDB, no external MIxS downloads, no LLM
-  - **Data sources**: 
-    1. **NMDC schema preferred_unit annotations** - via `analyze.py`
-    2. **Deterministic UCUM conversion** - pattern-based rules, fully reproducible
-    3. **Problem detection** - regex patterns for brackets, complex expressions, imperial units
-  - **Creates**: `input.tsv` (minimal) + `detailed.tsv` (full metadata)
-  - **Results**: 369 slot-unit combinations from 224 unique slots, 144 clean UCUM units
-  - **Workflow**: `make all` (complete automation)
-  - **Advantages**: Faster, simpler, no external dependencies, fully deterministic
+Use `poetry run <script-name> --help` for detailed CLI options.
 
-#### Files That Were Archived/Replaced
-- **Large Reference Data:** `mixs_source.tsv` - ✅ **Status: Deleted** - Use GitHub URL instead for reproducibility
-  - **Replace with**: `curl "https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs6.2_release_candidate/refs/heads/main/GSC-excel-harmonized-repaired/mixs_v6.xlsx.harmonized.tsv" > mixs_source.tsv`
-  - **Benefits**: Always uses latest MIxS 6.2 data, publicly reproducible workflow
-- **Schema Annotation Export:** `annotations.tsv` - ✅ **Status: Deleted** - Regenerable from materialized schema
-  - **Replace with**: 
-    ```bash
-    yq eval '
-      ((.slots // {}) | to_entries[] | 
-      select(.value.annotations) |
-      (.key as $slot | .value.annotations | to_entries[] | 
-      "slots." + $slot + "\t" + .value.tag + "\t" + .value.value)),
-      
-      ((.classes // {}) | to_entries[] |
-      select(.value.slot_usage) |
-      (.key as $class | .value.slot_usage | to_entries[] |
-      select(.value.annotations) |
-      (.key as $slot | .value.annotations | to_entries[] |
-      "classes." + $class + ".slot_usage." + $slot + "\t" + .value.tag + "\t" + .value.value)))
-    ' nmdc_schema/nmdc_materialized_patterns.yaml > annotations.tsv
-    ```
-  - **Benefits**: Always current with schema, eliminates maintenance of derived files
-- **Redundant Script:** `generate_fixed_storage_units.py` - ✅ **Status: Deleted** - Duplicate functionality, replaced by `process.py`
-- **Obsoleted Prototype:** `create_mixs_input_prototype.py` - ✅ **Status: Deleted** - External dependency prototype, replaced by schema-only `extract.py`
-- **One-time Fix Script:** `fix_biosample_entry.py` - ✅ **Status: Deleted** - Fixed corrupted biosample entry `nmdc:bsm-99-4444444` in `Database-interleaved.yaml` (work complete)
+#### File Evolution Notes
+
+Several files and approaches have been replaced or consolidated:
+
+- **Reference data**: Now fetched from GitHub URLs for reproducibility
+- **Derived exports**: Generated on-demand from materialized schema
+- **Redundant scripts**: Consolidated into current pipeline
 
 This workflow documentation centralizes all unit-related analysis and provides clear automation pathways for future maintenance while preserving the complete history and rationale of our development process.

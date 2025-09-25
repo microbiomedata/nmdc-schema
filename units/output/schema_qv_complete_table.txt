@@ -91,7 +91,7 @@ max_occup | 1
 mean_frict_vel | m/s
 mean_peak_frict_vel | m/s
 methane | [ppb]|[ppm]|umol/L
-microbial_biomass | kg
+microbial_biomass | MISSING
 nitrate | [ppm]|mg/L|umol/L
 nitrate_nitrogen | [ppm]|mg/kg|mg/L
 nitrite | [ppm]|mg/L|umol/L
@@ -105,7 +105,7 @@ occup_samp | 1
 org_carb | umol/L|%
 org_matter | ug/L
 org_nitro | ug/L
-organism_count | MISSING
+organism_count | 1
 owc_tvdss | m
 oxygen | [ppm]|mg/L
 part_org_carb | ug/L|mg/L
@@ -170,7 +170,7 @@ tot_phosphate | ug/L|umol/L
 tot_sulfur | [ppm]|mg/L
 turbidity | [NTU]|[FNU]
 tvdss_of_hcr_press | m
-tvdss_of_hcr_temp | m
+tvdss_of_hcr_temp | MISSING
 value | MISSING
 ventilation_rate | L/s|m3/min
 vfa | [ppm]|mg/L

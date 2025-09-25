@@ -87,7 +87,6 @@ max_occup
 mean_frict_vel
 mean_peak_frict_vel
 methane
-microbial_biomass
 nitrate
 nitrite
 nitro
@@ -98,6 +97,7 @@ occup_samp
 org_carb
 org_matter
 org_nitro
+organism_count
 owc_tvdss
 oxygen
 part_org_carb
@@ -156,7 +156,6 @@ tot_phosphate
 tot_sulfur
 turbidity
 tvdss_of_hcr_press
-tvdss_of_hcr_temp
 ventilation_rate
 vfa
 vfa_fw
