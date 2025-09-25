@@ -8054,12 +8054,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g|mg/L|mol/L
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Addition of fertilizers, pesticides, etc. - amount and time of applications
     title: history/agrochemical additions
     examples:
@@ -8085,9 +8079,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: ug/m3
     description: Concentration of substances that remain suspended in the air, and
       comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can
       report multiple PM's by entering numeric values preceded by name of PM
@@ -8141,9 +8132,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving an exposure to varying temperatures;
       should include the temperature, treatment regimen including how many times the
       treatment was repeated, how long each treatment lasted, and the start and end
@@ -8473,12 +8461,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: mg
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving antibiotic administration;
       should include the name of antibiotic, amount administered, treatment regimen
       including how many times the treatment was repeated, how long each treatment
@@ -8557,9 +8539,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: '%'
     description: 'Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis
       method that divides¬†crude oil¬†components according to their polarizability
       and polarity. There are three main methods to obtain SARA results. The most
@@ -8588,9 +8567,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: '%'
     description: 'Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis
       method that divides¬†crude oil¬†components according to their polarizability
       and polarity. There are three main methods to obtain SARA results. The most
@@ -8958,9 +8934,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: mg/L
     description: Method of biocide administration (dose, frequency, duration, time
       elapsed between last biociding and sampling) (e.g. 150 mg/l; weekly; 4 hr; 3
       days)
@@ -9007,9 +8980,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g|kg
     description: Amount of biomass; should include the name for the part of biomass
       measured, e.g. Microbial, total. Can include multiple measurements
     title: biomass
@@ -9617,9 +9587,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: mg/L
     description: Treatment involving use of mutagens; should include the name of mutagen,
       amount administered, treatment regimen including how many times the treatment
       was repeated, how long each treatment lasted, and the start and end time of
@@ -9676,9 +9643,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: mg/L
     description: Method of chemical administration(dose, frequency, duration, time
       elapsed between administration and sampling) (e.g. 50 mg/l; twice a week; 1
       hr; 0 days)
@@ -10118,9 +10082,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: ng/L
     description: Concentration of diether lipids; can include multiple types of diether
       lipids
     title: diether lipids
@@ -10774,9 +10735,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g/L
     description: Amount or concentration of substances such as paints, adhesives,
       mayonnaise, hair colorants, emulsified oils, etc.; can include multiple emulsion
       types
@@ -11122,12 +11080,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g|mg/L|mol/L
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving the use of fertilizers; should
       include the name of fertilizer, amount administered, treatment regimen including
       how many times the treatment was repeated, how long each treatment lasted, and
@@ -11513,12 +11465,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g|mg/L|mol/L
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving use of fungicides; should include
       the name of fungicide, amount administered, treatment regimen including how
       many times the treatment was repeated, how long each treatment lasted, and the
@@ -11568,9 +11514,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: umol/L
     description: Use of conditions with differing gaseous environments; should include
       the name of gaseous compound, amount administered, treatment duration, interval
       and total experimental duration; can include multiple gaseous environment regimens
@@ -11598,9 +11541,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: umol/L
     description: Amount or concentration of substances such as hydrogen sulfide, carbon
       dioxide, methane, etc.; can include multiple substances
     title: gaseous substances
@@ -11741,9 +11681,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: '[g]|m/s2'
     description: Information about treatment involving use of gravity factor to study
       various types of responses in presence, absence or modified levels of gravity;
       treatment regimen including how many times the treatment was repeated, how long
@@ -11816,12 +11753,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g|mg/L|mol/L
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving use of growth hormones; should
       include the name of growth hormone, amount administered, treatment regimen including
       how many times the treatment was repeated, how long each treatment lasted, and
@@ -11986,9 +11917,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: atm|kPa
     description: Original pressure of the hydrocarbon resource
     title: hydrocarbon resource original pressure
     examples:
@@ -12013,9 +11941,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: Cel
     description: Original temperature of the hydrocarbon resource
     title: hydrocarbon resource original temperature
     examples:
@@ -12121,9 +12046,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: ug/g
     description: Heavy metals present in the sequenced sample and their concentrations.
       For multiple heavy metals and concentrations, add multiple copies of this field.
     title: extreme_unusual_properties/heavy metals
@@ -12198,12 +12120,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g|mg/L|mol/L
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving use of herbicides; information
       about treatment involving use of growth hormones; should include the name of
       herbicide, amount administered, treatment regimen including how many times the
@@ -12900,12 +12816,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g/m3
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving an exposure to varying degree
       of humidity; information about treatment involving use of growth hormones; should
       include amount of humidity administered, treatment regimen including how many
@@ -13003,9 +12913,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: mg/L|mol/L
     description: Concentration of particles such as sand, grit, metal particles, ceramics,
       etc.; can include multiple particles
     title: inorganic particles
@@ -13192,9 +13099,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment(s) involving exposure to light, including
       both light intensity and quality.
     title: light regimen
@@ -13561,9 +13465,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: kg
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: complex_unit
     description: The part of the organic matter in the soil that constitutes living
       microorganisms smaller than 5-10 micrometer. If you keep this, you would need
       to have correction factors used for conversion to the final units
@@ -13590,12 +13494,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g|mg/L|mol/L
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving the use of mineral supplements;
       should include the name of mineral nutrient, amount administered, treatment
       regimen including how many times the treatment was repeated, how long each treatment
@@ -13648,9 +13546,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: umol/L
     description: Concentration of n-alkanes; can include multiple n-alkanes
     title: n-alkanes
     examples:
@@ -13755,12 +13650,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g|mg/L|mol/L
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving the exposure of plant to non-mineral
       nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral
       nutrient, amount administered, treatment regimen including how many times the
@@ -13992,9 +13881,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: 'If qpcr was used for the cell count, the target gene name, the primer
       sequence and the cycling conditions should also be provided. (Example: 16S rrna;
       FWD:ACGTAGCTATGACGT REV:GTGCTAGTCGAGTAC; initial denaturation:90C_5min; denaturation:90C_2min;
@@ -14076,9 +13962,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g/L
     description: Concentration of particles such as faeces, hairs, food, vomit, paper
       fibers, plant material, humus, etc.
     title: organic particles
@@ -14106,9 +13989,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
+      storage_units:
+        tag: storage_units
+        value: '1'
     description: 'Total cell count of any organism (or group of organisms) per gram,
       volume or area of sample, should include name of organism followed by count.
       The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should
@@ -14260,9 +14143,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: um
     description: Particles are classified, based on their size, into six general categories:clay,
       silt, sand, gravel, cobbles, and boulders; should include amount of particle
       preceded by the name of the particle type; can include multiple values
@@ -14332,9 +14212,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: non_ucum_unit
     description: 'Measure of the ability of a hydrocarbon resource to allow fluids
       to pass through it. (Additional information: https://en.wikipedia.org/wiki/Permeability_(earth_sciences))'
     title: permeability
@@ -14385,12 +14262,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g|mg/L|mol/L
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving use of insecticides; should
       include the name of pesticide, amount administered, treatment regimen including
       how many times the treatment was repeated, how long each treatment lasted, and
@@ -14513,9 +14384,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: mg/m3
     description: Concentration of phaeopigments; can include multiple phaeopigments
     title: phaeopigments
     examples:
@@ -14567,9 +14435,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: mol/L|mol/g
     description: Concentration of phospholipid fatty acids; can include multiple values
     title: phospholipid fatty acid
     examples:
@@ -14711,9 +14576,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g|mg/L|mol/L|ug/m3
     description: Pollutant types and, amount or concentrations measured at the time
       of sampling; can report multiple pollutants by entering numeric values preceded
       by name of pollutant
@@ -14763,9 +14625,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: '%'
     description: Porosity of deposited sediment is volume of voids divided by the
       total volume of sample
     title: porosity
@@ -15095,12 +14954,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: Gy|RAD
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving exposure of plant or a plant
       part to a particular radiation regimen; should include the radiation type, amount
       or intensity administered, treatment regimen including how many times the treatment
@@ -15130,12 +14983,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: mm
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving an exposure to a given amount
       of rainfall, treatment regimen including how many times the treatment was repeated,
       how long each treatment lasted, and the start and end time of the entire treatment;
@@ -15308,9 +15155,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: '%'
     description: 'Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis
       method that divides¬†crude oil¬†components according to their polarizability
       and polarity. There are three main methods to obtain SARA results. The most
@@ -15448,9 +15292,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: m
     description: The length, width and height of sampling room
     title: room dimensions
     examples:
@@ -15475,9 +15316,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: m
     description: Distance between doors (meters) in the hallway between the sampling
       room and adjacent rooms
     title: room door distance
@@ -15588,9 +15426,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: '[sft_i]|m2'
     description: The net floor area of sampling room. Net area excludes wall thicknesses
     title: room net area
     examples:
@@ -15680,9 +15515,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: '[cft_i]|m3'
     description: Volume of sampling room
     title: room volume
     examples:
@@ -15771,9 +15603,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: mg/L
     description: Source of organic carbon in the culture rooting medium; e.g. sucrose.
     title: rooting medium carbon
     examples:
@@ -15798,9 +15627,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: mg/L
     description: Measurement of the culture rooting medium macronutrients (N,P, K,
       Ca, Mg, S); e.g. KH2PO4 (170¬†mg/L).
     title: rooting medium macronutrients
@@ -15826,9 +15652,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: mg/L
     description: Measurement of the culture rooting medium micronutrients (Fe, Mn,
       Zn, B, Cu, Mo); e.g. H3BO3 (6.2¬†mg/L).
     title: rooting medium micronutrients
@@ -15877,9 +15700,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: mg/L
     description: Growth regulators in the culture rooting medium such as cytokinins,
       auxins, gybberellins, abscisic acid; e.g. 0.5¬†mg/L NAA.
     title: rooting medium regulators
@@ -15927,9 +15747,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: mg/L
     description: Organic supplements of the culture rooting medium, such as vitamins,
       amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid
       (0.5¬†mg/L).
@@ -16008,12 +15825,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: g|g/L|mol/L|ug
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving use of salts as supplement
       to liquid and soil growth media; should include the name of salt, amount administered,
       treatment regimen including how many times the treatment was repeated, how long
@@ -16164,9 +15975,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: mm/a
     description: Metal corrosion rate is the speed of metal deterioration due to environmental
       conditions. As environmental conditions change corrosion rates change accordingly.
       Therefore, long term corrosion rates are generally more informative than short
@@ -16272,9 +16080,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: mL
     description: Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde,
       etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)
     title: preservative added to sample
@@ -16479,9 +16284,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: h
     description: The recent and long term history of outside sampling
     title: sampling time outside
     examples:
@@ -16505,9 +16307,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Sample transport duration (in days or hrs) and temperature the sample
       was exposed to (e.g. 5.5 days; 20 ¬∞C)
     title: sample transport conditions
@@ -16533,9 +16332,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: m
     description: Depth of the sample i.e. The vertical distance between the sea level
       and the sampled position in the subsurface. Depth can be reported as an interval
       for subsurface samples e.g. 1325.75-1362.25 m
@@ -16654,9 +16450,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: '%'
     description: 'Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis
       method that divides¬†crude oil¬†components according to their polarizability
       and polarity. There are three main methods to obtain SARA results. The most
@@ -17383,9 +17176,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: '[ppm]|g|g/L|mol/L|ug'
     description: Concentration of substances such as ammonia, road-salt, sea-salt,
       cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc.
     title: soluble inorganic material
@@ -17412,9 +17202,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: '[ppm]|g|g/L|mol/L|ug'
     description: Concentration of substances such as urea, fruit sugars, soluble proteins,
       drugs, pharmaceuticals, etc.
     title: soluble organic material
@@ -17651,9 +17438,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Treatment involving an exposure to standing water during a plant's
       life span, types can be flood water or standing water, treatment regimen including
       how many times the treatment was repeated, how long each treatment lasted, and
@@ -17968,9 +17752,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: '[ppm]|g|g/L|mg/L|mol/L|ug'
     description: Concentration of substances including a wide variety of material,
       such as silt, decaying plant and animal matter; can include multiple substances
     title: suspended solids
@@ -18694,9 +18475,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: m
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: complex_unit
     description: True vertical depth subsea (TVDSS) of the hydrocarbon resource where
       the original temperature was measured (e.g. 1345 m).
     title: depth (TVDSS) of hydrocarbon resource temperature
@@ -18860,9 +18641,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: cP
     description: A measure of oil's resistance¬†to gradual deformation by¬†shear stress¬†or¬†tensile
       stress (e.g. 3.5 cp; 100 ¬∞C)
     title: viscosity
@@ -18888,9 +18666,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: '[ppm]|ng/L|ug/m3'
     description: Concentration of carbon-based chemicals that easily evaporate at
       room temperature; can report multiple volatile organic compounds by entering
       numeric values preceded by name of compound
@@ -19163,9 +18938,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: cm3/cm3|g/g
     description: Water content measurement
     title: water content
     examples:
@@ -19314,12 +19086,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: Cel
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving an exposure to water with varying
       degree of temperature, treatment regimen including how many times the treatment
       was repeated, how long each treatment lasted, and the start and end time of
@@ -19348,12 +19114,6 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-      storage_units:
-        tag: storage_units
-        value: L|mL
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: protocol_slot
     description: Information about treatment involving an exposure to watering frequencies,
       treatment regimen including how many times the treatment was repeated, how long
       each treatment lasted, and the start and end time of the entire treatment; can
@@ -19593,9 +19353,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: '[in_i]|m'
     description: The window's length and width
     title: window area/size
     examples:
