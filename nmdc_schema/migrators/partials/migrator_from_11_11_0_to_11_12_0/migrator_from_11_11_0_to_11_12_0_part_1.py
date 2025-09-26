@@ -1,12 +1,13 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 import sys
 from pathlib import Path
+from nmdc_schema.migrators.helpers import create_schema_view
 
-# For importing ProductionUnitsValidator and materialized yaml
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from units.validate_production_units import ProductionUnitsValidator
+from units.scripts.production_validate_units import ProductionUnitsValidator
+from migrators.partials.migrator_from_11_9_1_to_11_10_0.migrator_from_11_9_1_to_11_10_0_part_1 import get_collection_names_with_qv_slots_from_schema
 
 class Migrator(MigratorBase):
     r'''
@@ -16,23 +17,34 @@ class Migrator(MigratorBase):
     - This assumes that all storage_unit restrictions are applied on the global level, it does not validate any changes made on slot_useage (same as python tests, example: does not test if temp on biosample has to be celsius but temp on conversion process is kelvin)
     '''
 
-    _from_version = '11.11.0.part_2'
-    _to_version = '11.11.0.part_3'
+    _from_version = '11.11.0'
+    _to_version = '11.12.0.part_1'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
         # Initialize the validator with the schema file
         schema_file = Path('nmdc_schema/nmdc_materialized_patterns.yaml')
         self.validator = ProductionUnitsValidator(schema_file)
+
+        
 
     def upgrade(self,commit_changes: bool = False) -> None:
         r'''
         Migrates the database from conforming to the original schema, to conforming to the new schema.
         '''
         
-        self.adapter.do_for_each_document(
-            'biosample_set', self.confirm_units_fit_unitenum_and_storage_units
-        )
+        # Get schema view to find all classes and their slots with QuantityValue range
+        self._schema_view = create_schema_view()
+
+        # Get the actual collection names from the Database class slots
+        real_collection_names = get_collection_names_with_qv_slots_from_schema()
+
+        # Apply migrator through collections
+        for collection_name in real_collection_names:
+            print(f'processing collection {collection_name}')
+            self.adapter.do_for_each_document(collection_name, self.confirm_units_fit_unitenum_and_storage_units)
+        
 
     def confirm_units_fit_unitenum_and_storage_units(self, document: dict) -> None:
         r'''
