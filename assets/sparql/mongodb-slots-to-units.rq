@@ -18,8 +18,12 @@
 # 2. Export results as mongodb-slots-to-units.csv
 # 3. Process with: make mongodb-analysis (in units/ directory)
 #
-# Note: This is part of the legacy MongoDB workflow. The current schema-only 
-# approach (analyze.py → extract.py → process.py) eliminates this dependency.
+# Note: This SPARQL query validates storage_units compliance in production data.
+# Standard LinkML validation tools cannot validate slot-to-unit combinations 
+# expressed via storage_units annotations.
+# 
+# RDF approach: MongoDB dump → RDF conversion → this SPARQL query → validation
+# Python alternative: units/validate_production_units.py (direct YAML processing)
 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX nmdc: <https://w3id.org/nmdc/>

@@ -7,11 +7,11 @@ class Migrator(MigratorBase):
     _from_version = "11.10.0"
     _to_version = "11.11.0.part_1"
 
-    def upgrade(self,commit_changes: bool = False) -> None:
+    def upgrade(self, commit_changes: bool = True) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
         self.adapter.do_for_each_document("biosample_set", self.check_for_fields)
 
-    def check_for_fields(self, biosample: dict) -> dict:
+    def check_for_fields(self, biosample: dict) -> None:
         r"""
         Check each biosample record to ensure none of the removed slots are being used. 
         List of the slots that were removed:

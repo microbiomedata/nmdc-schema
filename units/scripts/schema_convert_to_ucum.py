@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Generate input for process_mixs_units.py from NMDC schema data only.
+Generate input for process.py from NMDC schema data only.
 
-This script demonstrates that the input for process_mixs_units.py can be generated
+This script demonstrates that the input for process.py can be generated
 completely deterministically from schema-centric data without needing MongoDB data.
 
 Prerequisites: Run this first to generate the preferred units report:
@@ -210,7 +210,7 @@ def main(input: Path, output: Path, detailed: Path = None, quiet: bool = False):
     output_file = output
     
     if not quiet:
-        click.echo("Generating process_mixs_units.py input from NMDC schema...")
+        click.echo("Generating process.py input from NMDC schema...")
         click.echo("=" * 60)
     
     # Load the extracted data

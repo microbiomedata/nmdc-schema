@@ -527,11 +527,11 @@ fluor:
 freq_clean:  # FreqCleanEnum
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '1'
+  has_unit: '1/d'
 freq_cook:  # measurement with value and text?
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '1'
+  has_unit: '1/d'
 fungicide_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx

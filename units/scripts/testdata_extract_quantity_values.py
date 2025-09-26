@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
-Script to flatten nmdc:QuantityValue structures from Biosample-possibly-exhaustive.yaml
+Script to flatten nmdc:QuantityValue structures from YAML files
 to TSV format with specified columns.
 """
 
 import yaml
 import csv
 import sys
+import click
+from pathlib import Path
 from typing import Dict, Any, List
 
 def extract_quantity_values(data: Dict[str, Any], parent_key: str = '') -> List[Dict[str, str]]:
@@ -52,26 +54,32 @@ def extract_quantity_values(data: Dict[str, Any], parent_key: str = '') -> List[
     
     return results
 
-def main():
-    input_file = '../data/valid/Biosample-possibly-exhaustive.yaml'
-    output_file = '../../quantity_values.tsv'
+@click.command()
+@click.option('--input', 'input_file', default='../src/data/valid/Biosample-possibly-exhaustive.yaml', 
+              type=click.Path(exists=True, path_type=Path), 
+              help='Input YAML file containing QuantityValue structures')
+@click.option('--output', 'output_file', default='quantity_values.tsv',
+              type=click.Path(path_type=Path),
+              help='Output TSV file path')
+def main(input_file, output_file):
+    """Extract QuantityValue structures from YAML file to TSV format."""
     
     # Read YAML file
     try:
         with open(input_file, 'r') as f:
             data = yaml.safe_load(f)
     except FileNotFoundError:
-        print(f"Error: File {input_file} not found")
+        click.echo(f"Error: File {input_file} not found")
         sys.exit(1)
     except yaml.YAMLError as e:
-        print(f"Error parsing YAML: {e}")
+        click.echo(f"Error parsing YAML: {e}")
         sys.exit(1)
     
     # Extract QuantityValue structures
     quantity_values = extract_quantity_values(data)
     
     if not quantity_values:
-        print("No QuantityValue structures found in the file")
+        click.echo("No QuantityValue structures found in the file")
         sys.exit(0)
     
     # Define column headers
@@ -92,19 +100,10 @@ def main():
             writer.writeheader()
             writer.writerows(quantity_values)
         
-        print(f"Successfully extracted {len(quantity_values)} QuantityValue structures to {output_file}")
-        
-        # Print summary
-        print("\nSummary:")
-        print(f"Total QuantityValue fields found: {len(quantity_values)}")
-        print(f"Fields with has_numeric_value: {sum(1 for qv in quantity_values if qv['has_numeric_value'])}")
-        print(f"Fields with has_unit: {sum(1 for qv in quantity_values if qv['has_unit'])}")
-        print(f"Fields with has_raw_value: {sum(1 for qv in quantity_values if qv['has_raw_value'])}")
-        print(f"Fields with has_maximum_numeric_value: {sum(1 for qv in quantity_values if qv['has_maximum_numeric_value'])}")
-        print(f"Fields with has_minimum_numeric_value: {sum(1 for qv in quantity_values if qv['has_minimum_numeric_value'])}")
+        click.echo(f"Extracted {len(quantity_values)} QuantityValue structures to {output_file}")
         
     except IOError as e:
-        print(f"Error writing to file: {e}")
+        click.echo(f"Error writing to file: {e}")
         sys.exit(1)
 
 if __name__ == '__main__':

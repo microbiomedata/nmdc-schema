@@ -14,6 +14,7 @@ import re
 import sys
 import time
 import urllib.parse
+import click
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
@@ -353,34 +354,48 @@ class ReportGenerator:
                 ])
 
 
-def main() -> None:
-    """Main entry point."""
-    tsv_file = Path('../../quantity_values.tsv')
+@click.command()
+@click.option('--input', 'input_file', default='quantity_values.tsv',
+              type=click.Path(exists=True, path_type=Path),
+              help='Input TSV file with QuantityValue data')
+@click.option('--output', 'output_file', default='units_validation_report.csv',
+              type=click.Path(path_type=Path),
+              help='Output CSV file for validation report')
+@click.option('--verbose', is_flag=True, help='Show detailed progress information')
+def main(input_file, output_file, verbose) -> None:
+    """Validate UCUM units from QuantityValue TSV file."""
     
     try:
         # Initialize validator
         validator = UCUMValidator()
         
         # Extract unique units from TSV file
-        unique_units = validator.extract_unique_units(tsv_file)
+        unique_units = validator.extract_unique_units(input_file)
         
         # Validate units
-        summary = validator.validate_units(unique_units, verbose=True)
+        summary = validator.validate_units(unique_units, verbose=verbose)
         
-        # Generate report
-        ReportGenerator.print_summary_report(summary)
+        # Generate report (only if verbose)
+        if verbose:
+            ReportGenerator.print_summary_report(summary)
         
-        # Optionally save CSV report
-        # ReportGenerator.save_csv_report(summary, Path('validation_results.csv'))
+        # Save CSV report
+        ReportGenerator.save_csv_report(summary, output_file)
+        
+        # Minimal console summary
+        if not verbose:
+            click.echo(f"UCUM validation: {len(summary.valid_units)} valid, {len(summary.invalid_units)} invalid, {summary.success_rate:.1f}% success - see {output_file}")
+        else:
+            click.echo(f"\nValidation report saved to: {output_file}")
         
     except FileNotFoundError:
-        print(f"Error: File {tsv_file} not found", file=sys.stderr)
+        click.echo(f"Error: File {input_file} not found", file=sys.stderr)
         sys.exit(1)
     except ValueError as e:
-        print(f"Error: {e}", file=sys.stderr)
+        click.echo(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
     except Exception as e:
-        print(f"Unexpected error: {e}", file=sys.stderr)
+        click.echo(f"Unexpected error: {e}", file=sys.stderr)
         sys.exit(1)
 
 
