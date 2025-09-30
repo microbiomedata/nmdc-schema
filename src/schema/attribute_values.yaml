@@ -417,6 +417,8 @@ enums:
         description: The Unified Code for Units of Measure (UCUM) representation of square meters.
       atm:
         description: The Unified Code for Units of Measure (UCUM) representation of atmosphere.
+      V:
+        description: The Unified Code for Units of Measure (UCUM) representation of volt.
       mV:
         description: The Unified Code for Units of Measure (UCUM) representation of millivolt.
       L:
