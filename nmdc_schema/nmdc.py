@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-09-25T12:17:40
+# Generation date: 2025-10-01T12:18:03
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -6989,6 +6989,9 @@ class UnitEnum(EnumDefinitionImpl):
     atm = PermissibleValue(
         text="atm",
         description="The Unified Code for Units of Measure (UCUM) representation of atmosphere.")
+    V = PermissibleValue(
+        text="V",
+        description="The Unified Code for Units of Measure (UCUM) representation of volt.")
     mV = PermissibleValue(
         text="mV",
         description="The Unified Code for Units of Measure (UCUM) representation of millivolt.")
@@ -13318,9 +13321,6 @@ slots.Biosample_al_sat = Slot(uri=MIXS['0000607'], name="Biosample_al_sat", curi
 slots.Biosample_al_sat_meth = Slot(uri=MIXS['0000324'], name="Biosample_al_sat_meth", curie=MIXS.curie('0000324'),
                    model_uri=NMDC.Biosample_al_sat_meth, domain=Biosample, range=Optional[Union[dict, TextValue]])
 
-slots.Biosample_annual_precpt = Slot(uri=MIXS['0000644'], name="Biosample_annual_precpt", curie=MIXS.curie('0000644'),
-                   model_uri=NMDC.Biosample_annual_precpt, domain=Biosample, range=Optional[Union[dict, QuantityValue]])
-
 slots.Biosample_cur_vegetation = Slot(uri=MIXS['0000312'], name="Biosample_cur_vegetation", curie=MIXS.curie('0000312'),
                    model_uri=NMDC.Biosample_cur_vegetation, domain=Biosample, range=Optional[Union[dict, TextValue]])
 
@@ -13350,9 +13350,6 @@ slots.Biosample_tot_carb = Slot(uri=MIXS['0000525'], name="Biosample_tot_carb", 
 
 slots.Biosample_tot_nitro_cont_meth = Slot(uri=MIXS['0000338'], name="Biosample_tot_nitro_cont_meth", curie=MIXS.curie('0000338'),
                    model_uri=NMDC.Biosample_tot_nitro_cont_meth, domain=Biosample, range=Optional[str])
-
-slots.Biosample_tot_nitro_content = Slot(uri=MIXS['0000530'], name="Biosample_tot_nitro_content", curie=MIXS.curie('0000530'),
-                   model_uri=NMDC.Biosample_tot_nitro_content, domain=Biosample, range=Optional[Union[dict, QuantityValue]])
 
 slots.Biosample_tot_org_c_meth = Slot(uri=MIXS['0000337'], name="Biosample_tot_org_c_meth", curie=MIXS.curie('0000337'),
                    model_uri=NMDC.Biosample_tot_org_c_meth, domain=Biosample, range=Optional[Union[dict, TextValue]])
