@@ -1,18 +1,18 @@
-api	non_ucum_unit
-biomaterial_purity	pending_analysis
-bulk_elect_conductivity	pending_analysis
-concentration	pending_analysis
-container_size	pending_analysis
-efficiency_percent	mixs_inconsistent
-exp_pipe	pending_analysis
-filter_pore_size	pending_analysis
-input_volume	pending_analysis
-inside_lux	mixs_inconsistent
-microbial_biomass	complex_unit
-occup_density_samp	pending_analysis
-rel_humidity_out	mixs_inconsistent
-soil_text_measure	pending_analysis
-specific_humidity	mixs_inconsistent
-substances_volume	pending_analysis
-tvdss_of_hcr_temp	complex_unit
-value	pending_analysis
+api	non_ucum_unit	degrees API	no UCUM unit, could add regex but nothing we can apply for UCUM
+biomaterial_purity	pending_analysis	float	also, this slot isn't used as is as far as I know. Should be 
+bulk_elect_conductivity	pending_analysis		mS/cm = milliSiemens/centimeter . UCUM has Siemens as `S`, but no milliSiemens. 
+concentration	pending_analysis	%	"2 child slots are %, I""m not sure we use `concentration` on any classes, likely just the children"
+container_size	pending_analysis	mL	volume
+efficiency_percent	mixs_inconsistent	umol/L	submit a ticket to MIxS about % vs umol/L
+exp_pipe	pending_analysis	float	
+filter_pore_size	pending_analysis	um	micrometer
+input_volume	pending_analysis	mL	volume
+inside_lux	mixs_inconsistent	B[kW]/m2	kilowatt per square metre (B[kW] (bel kilowatt) ?)
+microbial_biomass	complex_unit		not a quantity value
+occup_density_samp	pending_analysis	float	
+rel_humidity_out	mixs_inconsistent		should this be percent? open unit, submit a ticket to MIxS
+soil_text_measure	pending_analysis		not a `QuantityValue`
+specific_humidity	mixs_inconsistent	g/kg	I think MIxS just has this written weirdly.. should be grams of water vapor per kilogram of air (g/kg)
+substances_volume	pending_analysis	mL	volume
+tvdss_of_hcr_temp	complex_unit	m	this is depth like soil depth but it's where a measurement was taken
+value	pending_analysis		what class is this slot on?
