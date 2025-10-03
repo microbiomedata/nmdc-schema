@@ -8,7 +8,7 @@ exp_pipe	pending_analysis	float	this is just number of exposed pipes and pipes w
 filter_pore_size	pending_analysis	um	micrometer
 input_volume	pending_analysis	mL	volume
 inside_lux	mixs_inconsistent	B[kW]/m2	kilowatt per square metre (B[kW] (bel kilowatt) ?)
-microbial_biomass	complex_unit		not a quantity value
+microbial_biomass	complex_unit		not a `QuantityValue`
 occup_density_samp	pending_analysis	float	
 rel_humidity_out	mixs_inconsistent		should this be percent? open unit, submit a ticket to MIxS
 soil_text_measure	pending_analysis		not a `QuantityValue`
