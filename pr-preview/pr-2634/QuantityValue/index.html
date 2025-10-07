@@ -1011,12 +1011,6 @@
 </tr>
 <tr>
 <td><a href="../Biosample/">Biosample</a></td>
-<td><a href="../misc_param/">misc_param</a></td>
-<td>any_of[range]</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="../Biosample/">Biosample</a></td>
 <td><a href="../nitrate/">nitrate</a></td>
 <td>range</td>
 <td><a href="./">QuantityValue</a></td>
@@ -1666,6 +1660,7 @@ slot_usage:
   has_unit:
     name: has_unit
     description: The unit of the quantity
+    required: true
   has_numeric_value:
     name: has_numeric_value
     description: The number part of the quantity
@@ -1689,6 +1684,7 @@ slot_usage:
   has_unit:
     name: has_unit
     description: The unit of the quantity
+    required: true
   has_numeric_value:
     name: has_numeric_value
     description: The number part of the quantity
@@ -1704,6 +1700,7 @@ attributes:
     owner: QuantityValue
     domain_of:
     - QuantityValue
+    - PropertyAssertion
     range: decimal
   has_minimum_numeric_value:
     name: has_minimum_numeric_value
@@ -1716,6 +1713,7 @@ attributes:
     owner: QuantityValue
     domain_of:
     - QuantityValue
+    - PropertyAssertion
     range: decimal
   has_numeric_value:
     name: has_numeric_value
@@ -1729,6 +1727,7 @@ attributes:
     owner: QuantityValue
     domain_of:
     - QuantityValue
+    - PropertyAssertion
     range: decimal
   has_unit:
     name: has_unit
@@ -1744,6 +1743,7 @@ attributes:
     owner: QuantityValue
     domain_of:
     - QuantityValue
+    - PropertyAssertion
     range: UnitEnum
     required: true
   has_raw_value:

@@ -2161,8 +2161,8 @@
 </tr>
 <tr>
 <td><a href="../misc_param/">misc_param</a></td>
-<td>* <br/> <a href="../TextValue/">TextValue</a>&nbsp;or&nbsp;<br /><a href="../TextValue/">TextValue</a>&nbsp;or&nbsp;<br /><a href="../QuantityValue/">QuantityValue</a></td>
-<td>Captures key:value pairs that don't align with existing slots or requirements</td>
+<td>* <br/> <a href="../PropertyAssertion/">PropertyAssertion</a></td>
+<td>Structured miscellaneous property assertions for this Biosample</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -4599,34 +4599,6 @@ slots:
 - lbc_thirty
 - lbceq
 slot_usage:
-  misc_param:
-    name: misc_param
-    description: Captures key:value pairs that don't align with existing slots or
-      requirements. Inlcude ontology term or standard whenever possible.
-    examples:
-    - object:
-        attribute:
-          id: MIXS:0000117
-          label: total phosphorus
-        has_raw_value: 2.2 ppm
-        has_unit: ppm
-        has_numeric_value: 2.2
-    - object:
-        attribute:
-          id: MIXS:0000011
-          label: collection date
-        has_raw_value: '2025-06-12'
-    - object:
-        attribute:
-          id: MIXS:0000012
-          label: env_broad_scale
-        value: terrestrial biome
-        value_cv_id: ENVO:00000446
-    required: false
-    multivalued: true
-    any_of:
-    - range: TextValue
-    - range: QuantityValue
   collected_from:
     name: collected_from
     structured_pattern:
@@ -4978,34 +4950,6 @@ exact_mappings:
 - http://purl.obolibrary.org/obo/FBcv_0003024
 is_a: Sample
 slot_usage:
-  misc_param:
-    name: misc_param
-    description: Captures key:value pairs that don't align with existing slots or
-      requirements. Inlcude ontology term or standard whenever possible.
-    examples:
-    - object:
-        attribute:
-          id: MIXS:0000117
-          label: total phosphorus
-        has_raw_value: 2.2 ppm
-        has_unit: ppm
-        has_numeric_value: 2.2
-    - object:
-        attribute:
-          id: MIXS:0000011
-          label: collection date
-        has_raw_value: '2025-06-12'
-    - object:
-        attribute:
-          id: MIXS:0000012
-          label: env_broad_scale
-        value: terrestrial biome
-        value_cv_id: ENVO:00000446
-    required: false
-    multivalued: true
-    any_of:
-    - range: TextValue
-    - range: QuantityValue
   collected_from:
     name: collected_from
     structured_pattern:
@@ -12415,28 +12359,11 @@ attributes:
       occurrence:
         tag: occurrence
         value: m
-    description: Captures key:value pairs that don't align with existing slots or
-      requirements. Inlcude ontology term or standard whenever possible.
+    description: Structured miscellaneous property assertions for this Biosample.
+      Use when a value cannot cleanly fit an existing, policy-governed slot.
     title: miscellaneous parameter
     examples:
-    - object:
-        attribute:
-          id: MIXS:0000117
-          label: total phosphorus
-        has_raw_value: 2.2 ppm
-        has_unit: ppm
-        has_numeric_value: 2.2
-    - object:
-        attribute:
-          id: MIXS:0000011
-          label: collection date
-        has_raw_value: '2025-06-12'
-    - object:
-        attribute:
-          id: MIXS:0000012
-          label: env_broad_scale
-        value: terrestrial biome
-        value_cv_id: ENVO:00000446
+    - value: Bicarbonate ion concentration;2075 micromole per kilogram
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - miscellaneous parameter
@@ -12448,14 +12375,10 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    range: TextValue
-    required: false
+    range: PropertyAssertion
     multivalued: true
     inlined: true
     inlined_as_list: true
-    any_of:
-    - range: TextValue
-    - range: QuantityValue
   n_alkanes:
     name: n_alkanes
     annotations:

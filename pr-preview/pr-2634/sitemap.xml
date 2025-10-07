@@ -701,6 +701,10 @@
          <lastmod>2025-10-07</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/PropertyAssertion/</loc>
+         <lastmod>2025-10-07</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/ProteinQuantification/</loc>
          <lastmod>2025-10-07</lastmod>
     </url>
@@ -2253,6 +2257,14 @@
          <lastmod>2025-10-07</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/has_attribute_id/</loc>
+         <lastmod>2025-10-07</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/has_attribute_label/</loc>
+         <lastmod>2025-10-07</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/has_boolean_value/</loc>
          <lastmod>2025-10-07</lastmod>
     </url>
@@ -2262,6 +2274,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/has_credit_associations/</loc>
+         <lastmod>2025-10-07</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/has_datetime_value/</loc>
          <lastmod>2025-10-07</lastmod>
     </url>
     <url>
@@ -2309,11 +2325,19 @@
          <lastmod>2025-10-07</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/has_quantity_kind_id/</loc>
+         <lastmod>2025-10-07</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/has_raw_value/</loc>
          <lastmod>2025-10-07</lastmod>
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/has_unit/</loc>
+         <lastmod>2025-10-07</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/has_value_term_id/</loc>
          <lastmod>2025-10-07</lastmod>
     </url>
     <url>
