@@ -15,4 +15,4 @@ soil_text_measure	pending_analysis		not a `QuantityValue`
 specific_humidity	mixs_inconsistent	g/kg	I think MIxS just has this written weirdly.. should be grams of water vapor per kilogram of air (g/kg)
 substances_volume	pending_analysis	mL	volume
 tvdss_of_hcr_temp	complex_unit	m	this is depth like soil depth but it's where a measurement was taken
-value	pending_analysis		what class is this slot on?
+value	pending_analysis		what class is this slot on?, left over. Ignore.
