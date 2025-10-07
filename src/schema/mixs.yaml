@@ -6346,6 +6346,8 @@ slots:
     slot_uri: MIXS:0000752
     range: PropertyAssertion
     multivalued: true
+    todos:
+      - This slot should not be available in the submission portal.
     inlined_as_list: true
   n_alkanes:
     annotations:

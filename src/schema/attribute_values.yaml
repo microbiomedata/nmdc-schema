@@ -170,26 +170,28 @@ classes:
     examples:
       - object:
           type: nmdc:PropertyAssertion
-          has_raw_value: "2.2 ppm"
-          has_attribute_id: MIXS:0000117
-          has_attribute_label: total phosphorus
-          has_numeric_value: 2.2
-          has_unit: "[ppm]"
-        description: Numeric property assertion with units for total phosphorus measurement
+          has_raw_value: "50 kPa"
+          has_attribute_id: MIXS:0000122
+          has_attribute_label: absolute air humidity
+          has_numeric_value: 50
+          has_unit: kPa
+        description: Data provided from submission that doesn't conform to required abs_air_humidity units
       - object:
           type: nmdc:PropertyAssertion
-          has_raw_value: "2025-06-12"
-          has_attribute_id: MIXS:0000011
-          has_attribute_label: collection date
-          has_datetime_value: "2025-06-12"
-        description: Temporal property assertion for collection date
+          has_raw_value: "5.5 mL/L"
+          has_attribute_id: MIXS:0000119
+          has_attribute_label: dissolved oxygen
+          has_numeric_value: 5.5
+          has_unit: mL/L
+        description: Data provided from submission that doesn't conform to required UCUM unit
       - object:
           type: nmdc:PropertyAssertion
-          has_raw_value: "terrestrial biome"
-          has_attribute_id: MIXS:0000012
-          has_attribute_label: env_broad_scale
-          has_value_term_id: "ENVO:00000446"
-        description: Categorical property assertion using controlled vocabulary term
+          has_raw_value: "250 W/m2"
+          has_attribute_id: MIXS:0000112
+          has_attribute_label: solar irradiance
+          has_numeric_value: 250
+          has_unit: W/m2
+        description: Unit provided is invalid for UCUM and standard
 
 
 slots:
