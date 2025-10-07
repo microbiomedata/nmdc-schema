@@ -1566,7 +1566,7 @@ slots:
     is_a: concentration
     description: When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination
     annotations:
-      storage_units: '%|mmol/L|umol/L'
+      storage_units: '%|mmol/L|umol/L|mg/L|g/L'
   duration: # or could be a ISO8601 period string
     range: QuantityValue
     description: The elapsed time of an activity.
