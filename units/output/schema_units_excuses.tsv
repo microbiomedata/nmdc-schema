@@ -1,4 +1,4 @@
-api	non_ucum_unit	degrees API	no UCUM unit, could add regex but nothing we can apply for UCUM
+api	non_ucum_unit	degrees API	no UCUM unit, could add regex but nothing we can apply for UCUM. Could use attribute value.
 biomaterial_purity	pending_analysis	float	also, this slot isn't used as is as far as I know. Should be 
 bulk_elect_conductivity	pending_analysis		mS/cm = milliSiemens/centimeter . UCUM has Siemens as `S`, but no milliSiemens. 
 concentration	pending_analysis	%	"2 child slots are %, I""m not sure we use `concentration` on any classes, likely just the children"
