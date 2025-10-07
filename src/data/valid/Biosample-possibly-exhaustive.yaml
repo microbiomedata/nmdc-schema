@@ -236,11 +236,11 @@ bishomohopanol:
 blood_press_diast:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: "ug/L"
+  has_unit: "mm[Hg]"
 blood_press_syst:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: "ug/L"
+  has_unit: "mm[Hg]"
 bromide:
   type: nmdc:QuantityValue
   has_raw_value: 0.05 parts per million
@@ -293,7 +293,7 @@ ceil_texture: crows feet
 ceil_thermal_mass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: J/Cel
+  has_unit: J/K
 ceil_type: cathedral
 ceil_water_mold:
   type: nmdc:TextValue
@@ -355,7 +355,7 @@ date_last_rain:
 density:
   type: nmdc:QuantityValue
   has_raw_value: 1000 kilogram per cubic meter
-  has_unit: kg/m3
+  has_unit: g/m3
   has_numeric_value: 1000.0
 depos_env: other
 depth:  # this raw value may not meet the submission portal's expectations
@@ -385,7 +385,7 @@ diss_hydrogen:
 diss_inorg_carb:
   type: nmdc:QuantityValue
   has_raw_value: 2059 micromole per kilogram
-  has_unit: umol/kg
+  has_unit: ug/L
   has_numeric_value: 2059.0
 diss_inorg_nitro:
   type: nmdc:QuantityValue
@@ -394,7 +394,7 @@ diss_inorg_nitro:
 diss_inorg_phosp:
   type: nmdc:QuantityValue
   has_raw_value: 56.5 micromole per liter
-  has_unit: umol/L
+  has_unit: ug/L
   has_numeric_value: 56.5
 diss_iron:
   type: nmdc:QuantityValue
@@ -408,7 +408,7 @@ diss_org_carb:
 diss_org_nitro:
   type: nmdc:QuantityValue
   has_raw_value: 0.05 micromole per liter
-  has_unit: umol/L
+  has_unit: ug/L
   has_numeric_value: 0.05
 diss_oxygen:
   type: nmdc:QuantityValue
@@ -438,7 +438,7 @@ door_water_mold:
 down_par:  # example: 28.71 microEinstein per square meter per second (Einstein is not in UCUM)
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: 'm2/s'
+  has_unit: umol/m2/s
 drainage_class: well
 drawings: operation
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
@@ -518,7 +518,7 @@ floor_struc: balcony
 floor_thermal_mass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: J/Cel
+  has_unit: J/K
 floor_water_mold: condensation
 fluor:
   type: nmdc:QuantityValue
@@ -527,11 +527,11 @@ fluor:
 freq_clean:  # FreqCleanEnum
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '1'
+  has_unit: '1/d'
 freq_cook:  # measurement with value and text?
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '1'
+  has_unit: '1/d'
 fungicide_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -612,10 +612,6 @@ host_age:
   has_raw_value: 3 years
   has_unit: a
   type: nmdc:QuantityValue
-
-  type: nmdc:QuantityValue
-  has_raw_value: xxx
-  has_unit: "mol/L/h"
 host_body_habitat:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -728,13 +724,13 @@ lat_lon:
   longitude: 6.408977
 lbc_thirty:
   type: nmdc:QuantityValue
-  has_raw_value: 543 mg/kg
-  has_unit: mg/kg
+  has_raw_value: 543 ppm
+  has_unit: '[ppm]'
   has_numeric_value: 543.0
 lbceq:
   type: nmdc:QuantityValue
-  has_raw_value: 1575 mg/kg
-  has_unit: mg/kg
+  has_raw_value: 1575 ppm
+  has_unit: '[ppm]'
   has_numeric_value: 1575.0
 light_intensity:
   has_numeric_value: 0.3
@@ -775,7 +771,7 @@ manganese:
 max_occup:
   type: nmdc:QuantityValue
   has_raw_value: '35'
-  has_unit: 'people'
+  has_unit: '1'
   has_numeric_value: 35
 mean_frict_vel:
   type: nmdc:QuantityValue
@@ -800,7 +796,7 @@ micro_biomass_meth: xxx
 microbial_biomass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: g/kg
+  has_unit: kg
 mineral_nutr_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -834,17 +830,17 @@ non_min_nutr_regm:
 number_pets:
   type: nmdc:QuantityValue
   has_raw_value: '3'
-  has_unit: 'pets'
+  has_unit: '1'
   has_numeric_value: 3
 number_plants:
   type: nmdc:QuantityValue
   has_raw_value: '4'
-  has_unit: 'plants'
+  has_unit: '1'
   has_numeric_value: 4
 number_resident:
   type: nmdc:QuantityValue
   has_raw_value: '3'
-  has_unit: 'people'
+  has_unit: '1'
   has_numeric_value: 3
 occup_density_samp:  # Float
   type: nmdc:QuantityValue
@@ -854,7 +850,7 @@ occup_document: estimate
 occup_samp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: 'people'
+  has_unit: '1'
 org_carb:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -863,12 +859,12 @@ org_count_qpcr_info: xxx
 org_matter:
   type: nmdc:QuantityValue
   has_raw_value: 1.75 milligram per cubic meter
-  has_unit: mg/m3
+  has_unit: ug/L
   has_numeric_value: 1.75
 org_nitro:
   type: nmdc:QuantityValue
   has_raw_value: 4 micromole per liter
-  has_unit: umol/L
+  has_unit: ug/L
   has_numeric_value: 4.0
 org_particles:
   - type: nmdc:TextValue
@@ -890,7 +886,7 @@ oxygen:
 part_org_carb:
   type: nmdc:QuantityValue
   has_raw_value: 1.92 micromole per liter
-  has_unit: umol/L
+  has_unit: ug/L
   has_numeric_value: 1.92
 part_org_nitro:
   type: nmdc:QuantityValue
@@ -934,7 +930,7 @@ phosplipid_fatt_acid:
 photon_flux:  # example 3.926 micromole photons per second per square meter
   has_numeric_value: 3.926
   has_raw_value: "3.926 micromole photons per second per square meter"
-  has_unit: umol/s/m2
+  has_unit: umol/m2/s
   type: nmdc:QuantityValue
 plant_growth_med:
   type: nmdc:ControlledTermValue
@@ -1050,7 +1046,7 @@ room_net_area:
 room_occup:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: 'people'
+  has_unit: '1'
 room_samp_pos: north corner
 room_type: attic
 room_vol:
@@ -1075,7 +1071,7 @@ root_med_micronutr:
 root_med_ph:  # Float
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: 'pH'
+  has_unit: '[pH]'
 root_med_regl:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -1088,7 +1084,7 @@ root_med_suppl:
 salinity:
   has_numeric_value: 25
   has_raw_value: 25 practical salinity unit
-  has_unit: 'PSU'
+  has_unit: '%'
   type: nmdc:QuantityValue
 salinity_meth:
   type: nmdc:TextValue
@@ -1383,15 +1379,15 @@ tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10
 tot_nitro_content:
   type: nmdc:QuantityValue
   has_raw_value: 35 milligrams Nitrogen per kilogram of soil
-  has_unit: mg/kg
+  has_unit: mg/L
   has_numeric_value: 35.0
 tot_org_c_meth:
   type: nmdc:TextValue
   has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
 tot_org_carb:
   type: nmdc:QuantityValue
-  has_raw_value: 2%
-  has_unit: '%'
+  has_raw_value: 2 mg/L
+  has_unit: mg/L
   has_numeric_value: 2
 tot_part_carb:
   type: nmdc:QuantityValue
@@ -1413,19 +1409,19 @@ tot_sulfur:
 train_line: red
 train_stat_loc: south station above ground
 train_stop_loc: end
-turbidity:  # example: 0.3 nephelometric turbidity units (which is not a valid unit in UCUM)
+turbidity:  # example: 0.3 nephelometric turbidity units
   has_numeric_value: 0.3
   has_raw_value: "0.3 nephelometric turbidity units"
-  has_unit: '1'
+  has_unit: '[NTU]'
   type: nmdc:QuantityValue
 tvdss_of_hcr_press:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: atm
+  has_unit: m
 tvdss_of_hcr_temp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: Cel
+  has_unit: m
 typ_occup_density: 123.0
 ventilation_rate:
   has_numeric_value: 750.0
@@ -1459,7 +1455,7 @@ wall_finish_mat: plaster
 wall_height:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: m
+  has_unit: cm
 wall_loc: north
 wall_surf_treatment: painted
 wall_texture: knockdown
@@ -1480,7 +1476,7 @@ water_content:
 water_current:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: m/s
+  has_unit: m3/s
 water_cut:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -1488,7 +1484,7 @@ water_cut:
 water_feat_size:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: m
+  has_unit: m2
 water_feat_type: fountain
 water_prod_rate:
   type: nmdc:QuantityValue
@@ -1616,4 +1612,3 @@ nitrate_nitrogen:
   has_raw_value: 1.2 mg/kg
   has_numeric_value: 1.2
   has_unit: mg/kg
-

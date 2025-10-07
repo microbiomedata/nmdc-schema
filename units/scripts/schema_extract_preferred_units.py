@@ -15,6 +15,7 @@ import csv
 import sys
 from pathlib import Path
 from typing import Dict, Any, List, Optional
+import click
 
 def extract_examples_values(slot_data: Dict[str, Any]) -> str:
     """Extract examples values from slot data."""
@@ -83,42 +84,42 @@ def extract_preferred_units_from_classes(classes_data: Dict[str, Any]) -> List[D
     
     return results
 
-def main():
-    # File paths
-    schema_file = Path('../../nmdc_schema/nmdc_materialized_patterns.yaml')
-    output_file = Path('../../preferred_units_report.tsv')
+@click.command()
+@click.option('--schema-file', type=click.Path(exists=True, path_type=Path), 
+              default=Path('../nmdc_schema/nmdc_materialized_patterns.yaml'),
+              help='Path to schema file')
+@click.option('--output', type=click.Path(path_type=Path), required=True,
+              help='TSV file to write the preferred units report')
+def main(schema_file: Path, output: Path):
+    """Analyze NMDC schema for slots with preferred_unit annotations."""
     
-    print(f"Analyzing schema file: {schema_file}")
+    output_file = output
     
     # Read YAML file
     try:
         with open(schema_file, 'r', encoding='utf-8') as f:
             schema_data = yaml.safe_load(f)
     except FileNotFoundError:
-        print(f"Error: Schema file {schema_file} not found")
+        click.echo(f"Error: Schema file {schema_file} not found", err=True)
         sys.exit(1)
     except yaml.YAMLError as e:
-        print(f"Error parsing YAML: {e}")
+        click.echo(f"Error parsing YAML: {e}", err=True)
         sys.exit(1)
     
     # Extract preferred unit annotations
-    print("Extracting preferred unit annotations...")
-    
     # From global slots
     slots_data = schema_data.get('slots', {})
     global_units = extract_preferred_units_from_slots(slots_data)
-    print(f"Found {len(global_units)} global slots with preferred_unit annotations")
     
     # From class slot_usage
     classes_data = schema_data.get('classes', {})
     class_usage_units = extract_preferred_units_from_classes(classes_data)
-    print(f"Found {len(class_usage_units)} class slot_usage entries with preferred_unit annotations")
     
     # Combine results
     all_results = global_units + class_usage_units
     
     if not all_results:
-        print("No preferred_unit annotations found in the schema")
+        click.echo("No preferred_unit annotations found in the schema")
         sys.exit(0)
     
     # Sort by slot name, then by context
@@ -142,42 +143,10 @@ def main():
             writer.writeheader()
             writer.writerows(all_results)
         
-        print(f"\\nSuccessfully wrote {len(all_results)} preferred unit annotations to {output_file}")
-        
-        # Print summary
-        print("\\nSummary:")
-        print(f"Total preferred_unit annotations found: {len(all_results)}")
-        print(f"Global slot definitions: {len(global_units)}")
-        print(f"Class slot_usage definitions: {len(class_usage_units)}")
-        
-        # Show unique units
-        unique_units = set(result['preferred_unit'] for result in all_results if result['preferred_unit'])
-        print(f"Unique preferred units found: {len(unique_units)}")
-        
-        # Show breakdown by context
-        context_counts = {}
-        for result in all_results:
-            context = result['context']
-            context_counts[context] = context_counts.get(context, 0) + 1
-        
-        print("\\nBreakdown by context:")
-        for context, count in sorted(context_counts.items()):
-            print(f"  {context}: {count}")
-        
-        # Show most common units
-        unit_counts = {}
-        for result in all_results:
-            unit = result['preferred_unit']
-            if unit:
-                unit_counts[unit] = unit_counts.get(unit, 0) + 1
-        
-        print("\\nMost common preferred units:")
-        sorted_units = sorted(unit_counts.items(), key=lambda x: x[1], reverse=True)
-        for unit, count in sorted_units[:10]:  # Top 10
-            print(f"  '{unit}': {count}")
+        click.echo(f"Extracted {len(all_results)} preferred unit annotations to {output_file}")
         
     except IOError as e:
-        print(f"Error writing to file: {e}")
+        click.echo(f"Error writing to file: {e}", err=True)
         sys.exit(1)
 
 if __name__ == '__main__':

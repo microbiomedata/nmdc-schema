@@ -1,10 +1,19 @@
 import json
 import unittest
 
-from nmdc_data import get_nmdc_file_type_enums, get_nmdc_yaml_bytes, get_nmdc_yaml_string, \
-    get_materialized_nmdc_yaml_string, get_nmdc_jsonschema_bytes, get_nmdc_jsonschema_string, \
-    get_nmdc_jsonschema_dict, get_nmdc_jsonschema, get_nmdc_schema_definition, \
-    get_nmdc_file_type_enums_json, get_gold_sssom
+from nmdc_data import (
+    get_gold_sssom,
+    get_materialized_nmdc_yaml_string,
+    get_nmdc_file_type_enums,
+    get_nmdc_file_type_enums_json,
+    get_nmdc_jsonschema,
+    get_nmdc_jsonschema_bytes,
+    get_nmdc_jsonschema_dict,
+    get_nmdc_jsonschema_string,
+    get_nmdc_schema_definition,
+    get_nmdc_yaml_bytes,
+    get_nmdc_yaml_string,
+)
 
 
 class TestNmdcData(unittest.TestCase):

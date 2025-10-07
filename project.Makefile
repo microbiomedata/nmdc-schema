@@ -201,7 +201,7 @@ make-rdf: rdf-clean \
 
 # Define API URLs for different environments
 API_PROD_URL = https://api.microbiomedata.org
-API_DEV_URL = https://dev-api.microbiomedata.org
+API_DEV_URL = https://api-dev.microbiomedata.org
 
 # Dynamically set the API url based on the ENV variable
 API_URL = $(if $(filter dev,$(ENV)),$(API_DEV_URL),$(API_PROD_URL))

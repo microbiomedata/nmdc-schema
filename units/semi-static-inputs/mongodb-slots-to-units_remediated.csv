@@ -1,0 +1,89 @@
+sc,p,l,su,u,count,valid,remediation
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000018,depth,,m,10447,no_spec,add m to schema acceptable units
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000110,samp_store_temp,Cel,Cel,4219,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000177,chlorophyll,mg/m3|ug/L,ug/L,206,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000184,silicate,umol/L,umol/L,275,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000425,nitrate,[ppm]|mg/L|umol/L,umol/L,293,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000426,nitrite,[ppm]|mg/L|umol/L,umol/L,275,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000427,ammonium,[ppm]|mg/L|umol/L,umol/L,275,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000505,phosphate,umol/L,umol/L,275,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000102,tot_nitro,mg/L|ug/L|umol/L,mg/L,31,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000113,temp,Cel,Cel,5198,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000119,diss_oxygen,mg/L|umol/kg,mg/L,464,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000433,diss_org_carb,mg/L|umol/L,ug/L,31,invalid,convert data from ug/L to mg/L (multiply by 0.001)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000515,part_org_carb,ug/L,mg/L,31,invalid,convert data from mg/L to ug/L (multiply by 1000)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000692,conduc,mS/cm,uS/cm,209,invalid,convert data from uS/cm to mS/cm (multiply by 0.001)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000719,part_org_nitro,ug/L|umol/L,mg/L,31,invalid,convert data from mg/L to ug/L (multiply by 1000)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000735,size_frac_low,um,um,31,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000738,soluble_react_phosp,[ppm]|mg/L|umol/L,ug/L,31,invalid,convert data from ug/L to mg/L (multiply by 0.001)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000741,suspend_part_matter,mg/L,mg/L,31,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000435,density,g/cm3|g/m3,kg/m3,153,invalid,convert data from kg/m3 to g/m3 (multiply by 1000)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000117,tot_phosp,[ppm]|mg/L|umol/L,umol/L,64,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000119,diss_oxygen,mg/L|umol/kg,mL/L,101,invalid,review data - mL/L may be incorrect unit for dissolved oxygen
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000692,conduc,mS/cm,mS/cm,117,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000704,fluor,,mg/m3,118,no_spec,add mg/m3 to schema acceptable units
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000744,tot_diss_nitro,ug/L,umol/L,64,invalid,convert data from umol/L to ug/L (requires molecular weight conversion)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000119,diss_oxygen,mg/L|umol/kg,umol/L,17,invalid,convert data from umol/L to mg/L (multiply by 0.032 for O2)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000255,host_age,a|d|h,d,138,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000117,tot_phosp,[ppm]|mg/L|umol/L,[ppm],127,valid,none required
+https://w3id.org/nmdc/ChemicalConversionProcess,https://w3id.org/nmdc/duration,duration,,h,72,no_spec,add h to schema acceptable units
+https://w3id.org/nmdc/PortionOfSubstance,https://w3id.org/nmdc/volume,volume,,mL,4088,no_spec,add mL to schema acceptable units
+https://w3id.org/nmdc/ChemicalConversionProcess,https://w3id.org/nmdc/temperature,temperature,,Cel,72,no_spec,add Cel to schema acceptable units
+https://w3id.org/nmdc/MobilePhaseSegment,https://w3id.org/nmdc/duration,duration,,min,14,no_spec,add min to schema acceptable units
+https://w3id.org/nmdc/PortionOfSubstance,https://w3id.org/nmdc/final_concentration,final_concentration,,%,29,no_spec,add % to schema acceptable units
+https://w3id.org/nmdc/ChromatographyConfiguration,https://w3id.org/nmdc/temperature,temperature,,Cel,4,no_spec,add Cel to schema acceptable units
+https://w3id.org/nmdc/PortionOfSubstance,https://w3id.org/nmdc/final_concentration,final_concentration,,umol/L,1,no_spec,add umol/L to schema acceptable units
+https://w3id.org/nmdc/PortionOfSubstance,https://w3id.org/nmdc/final_concentration,final_concentration,,mmol/L,4,no_spec,add mmol/L to schema acceptable units
+https://w3id.org/nmdc/PortionOfSubstance,https://w3id.org/nmdc/source_concentration,source_concentration,,%,398,no_spec,add % to schema acceptable units
+https://w3id.org/nmdc/PortionOfSubstance,https://w3id.org/nmdc/volume,volume,,uL,398,no_spec,add uL to schema acceptable units
+https://w3id.org/nmdc/PortionOfSubstance,https://w3id.org/nmdc/source_concentration,source_concentration,,mmol/L,747,no_spec,add mmol/L to schema acceptable units
+https://w3id.org/nmdc/Extraction,https://w3id.org/nmdc/input_mass,input_mass,,g,2567,no_spec,add g to schema acceptable units
+https://w3id.org/nmdc/Extraction,https://w3id.org/nmdc/temperature,temperature,,Cel,207,no_spec,add Cel to schema acceptable units
+https://w3id.org/nmdc/SubSamplingProcess,https://w3id.org/nmdc/mass,mass,,g,625,no_spec,add g to schema acceptable units
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000310,carb_nitro_ratio,,1,1190,no_spec,add 1 to schema acceptable units
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000504,nitro,umol/L,%,919,invalid,review data - % likely correct for soil nitrogen content
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000508,org_carb,umol/L,%,1407,invalid,review data - % likely correct for organic carbon content
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000100,humidity,g/m3,%,192,invalid,convert data from % to g/m3 (requires temperature and pressure)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000112,solar_irradiance,erg/cm2/s|kW/m2/d,W/m2,192,invalid,convert data from W/m2 to kW/m2/d (multiply by 0.0864)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000118,wind_speed,km/h|m/s,m/s,192,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000122,abs_air_humidity,[lb_av]|g/g|kg|kg/kg,kPa,192,invalid,review data - kPa is pressure not humidity
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000142,avg_temp,Cel,Cel,192,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000257,host_dry_mass,g|kg,g,192,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000264,host_height,cm|m|mm,cm,192,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000525,tot_carb,ug/L,%,192,invalid,review data - % likely correct for total carbon content
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000530,tot_nitro_content,mg/L|ug/L|umol/L,%,192,invalid,review data - % likely correct for soil nitrogen content
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000725,photon_flux,,umol/m2/s,192,no_spec,add umol/m2/s to schema acceptable units
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000530,tot_nitro_content,mg/L|ug/L|umol/L,mg/L,1240,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/nmdc/ammonium_nitrogen,ammonium_nitrogen,mg/kg,mg/L,1239,invalid,review data - mg/kg expected for soil samples
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000102,tot_nitro,mg/L|ug/L|umol/L,%,103,invalid,review data - % likely correct for soil nitrogen content
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000430,potassium,[ppm]|mg/L,mg/kg,103,invalid,convert data from mg/kg to mg/L (requires density conversion)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000431,magnesium,[ppm]|mg/L|mol/L|umol/kg,mg/kg,103,invalid,review data - mg/kg common for soil samples
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000432,calcium,[ppm]|mg/L|umol/L,mg/kg,103,invalid,convert data from mg/kg to mg/L (requires density conversion)
+https://w3id.org/nmdc/Biosample,https://w3id.org/nmdc/ammonium_nitrogen,ammonium_nitrogen,mg/kg,mg/kg,103,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/nmdc/lbc_thirty,lbc_thirty,,[ppm],103,no_spec,add [ppm] to schema acceptable units
+https://w3id.org/nmdc/Biosample,https://w3id.org/nmdc/lbceq,lbceq,,[ppm],103,no_spec,add [ppm] to schema acceptable units
+https://w3id.org/nmdc/Biosample,https://w3id.org/nmdc/manganese,manganese,[ppm]|mg/kg,mg/kg,103,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/nmdc/nitrate_nitrogen,nitrate_nitrogen,mg/kg,mg/kg,103,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/nmdc/nitrite_nitrogen,nitrite_nitrogen,mg/kg,mg/kg,103,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/nmdc/zinc,zinc,[ppm]|mg/kg,mg/kg,103,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000255,host_age,a|d|h,a,28,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000117,tot_phosp,[ppm]|mg/L|umol/L,mg/L,45,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000427,ammonium,[ppm]|mg/L|umol/L,mg/L,45,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000433,diss_org_carb,mg/L|umol/L,mg/L,25,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000434,diss_inorg_carb,[ppm]|mg/L|ug/L,mg/L,25,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000533,tot_org_carb,,mg/L,32,no_spec,add mg/L to schema acceptable units
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000698,diss_inorg_nitro,ug/L|umol/L,mg/L,45,invalid,convert data from mg/L to ug/L (multiply by 1000)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000738,soluble_react_phosp,[ppm]|mg/L|umol/L,mg/L,45,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000001,samp_size,L|g|mL|mg,g,36,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000183,salinity,%,mg/L,17,invalid,review data - salinity should be dimensionless (%)
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000183,salinity,%,%,2,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000139,diss_iron,mg/L,mg/L,6,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000423,sulfate,[ppm]|mg/L|umol/L,mg/L,6,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000428,sodium,[ppm]|mg/L,mg/L,6,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000429,chloride,[ppm]|mg/L,mg/L,6,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000430,potassium,[ppm]|mg/L,mg/L,6,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000431,magnesium,[ppm]|mg/L|mol/L|umol/kg,mg/L,6,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000432,calcium,[ppm]|mg/L|umol/L,mg/L,6,valid,none required
+https://w3id.org/nmdc/Biosample,https://w3id.org/nmdc/manganese,manganese,[ppm]|mg/kg,mg/L,6,invalid,convert data from mg/L to mg/kg (requires density conversion)
+https://w3id.org/nmdc/Biosample,https://w3id.org/nmdc/subsurface_depth,subsurface_depth,,m,1,no_spec,add m to schema acceptable units
+https://w3id.org/nmdc/Biosample,https://w3id.org/mixs/0000001,samp_size,L|g|mL|mg,mL,629,valid,none required

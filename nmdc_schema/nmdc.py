@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-13T11:18:22
+# Generation date: 2025-10-01T12:18:03
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -2107,44 +2107,12 @@ class Biosample(Sample):
     sample_collection_site: Optional[str] = None
     soluble_iron_micromol: Optional[str] = None
     subsurface_depth: Optional[Union[dict, QuantityValue]] = None
-    dna_absorb1: Optional[float] = None
-    dna_absorb2: Optional[float] = None
     dna_collect_site: Optional[str] = None
-    dna_concentration: Optional[float] = None
-    dna_cont_type: Optional[Union[str, "JgiContTypeEnum"]] = None
-    dna_cont_well: Optional[str] = None
-    dna_container_id: Optional[str] = None
-    dna_dnase: Optional[Union[str, "YesNoEnum"]] = None
     dna_isolate_meth: Optional[str] = None
     dna_organisms: Optional[str] = None
-    dna_project_contact: Optional[str] = None
-    dna_samp_id: Optional[str] = None
-    dna_sample_format: Optional[Union[str, "DNASampleFormatEnum"]] = None
-    dna_sample_name: Optional[str] = None
-    dna_seq_project: Optional[str] = None
-    dna_seq_project_pi: Optional[str] = None
-    dna_seq_project_name: Optional[str] = None
-    dna_volume: Optional[float] = None
-    proposal_dna: Optional[str] = None
-    dnase_rna: Optional[Union[str, "YesNoEnum"]] = None
-    proposal_rna: Optional[str] = None
-    rna_absorb1: Optional[float] = None
-    rna_absorb2: Optional[float] = None
     rna_collect_site: Optional[str] = None
-    rna_concentration: Optional[float] = None
-    rna_cont_type: Optional[Union[str, "JgiContTypeEnum"]] = None
-    rna_cont_well: Optional[str] = None
-    rna_container_id: Optional[str] = None
     rna_isolate_meth: Optional[str] = None
     rna_organisms: Optional[str] = None
-    rna_project_contact: Optional[str] = None
-    rna_samp_id: Optional[str] = None
-    rna_sample_format: Optional[Union[str, "RNASampleFormatEnum"]] = None
-    rna_sample_name: Optional[str] = None
-    rna_seq_project: Optional[str] = None
-    rna_seq_project_pi: Optional[str] = None
-    rna_seq_project_name: Optional[str] = None
-    rna_volume: Optional[float] = None
     collection_date_inc: Optional[str] = None
     collection_time: Optional[str] = None
     collection_time_inc: Optional[str] = None
@@ -3784,29 +3752,8 @@ class Biosample(Sample):
         if self.subsurface_depth is not None and not isinstance(self.subsurface_depth, QuantityValue):
             self.subsurface_depth = QuantityValue(**as_dict(self.subsurface_depth))
 
-        if self.dna_absorb1 is not None and not isinstance(self.dna_absorb1, float):
-            self.dna_absorb1 = float(self.dna_absorb1)
-
-        if self.dna_absorb2 is not None and not isinstance(self.dna_absorb2, float):
-            self.dna_absorb2 = float(self.dna_absorb2)
-
         if self.dna_collect_site is not None and not isinstance(self.dna_collect_site, str):
             self.dna_collect_site = str(self.dna_collect_site)
-
-        if self.dna_concentration is not None and not isinstance(self.dna_concentration, float):
-            self.dna_concentration = float(self.dna_concentration)
-
-        if self.dna_cont_type is not None and not isinstance(self.dna_cont_type, JgiContTypeEnum):
-            self.dna_cont_type = JgiContTypeEnum(self.dna_cont_type)
-
-        if self.dna_cont_well is not None and not isinstance(self.dna_cont_well, str):
-            self.dna_cont_well = str(self.dna_cont_well)
-
-        if self.dna_container_id is not None and not isinstance(self.dna_container_id, str):
-            self.dna_container_id = str(self.dna_container_id)
-
-        if self.dna_dnase is not None and not isinstance(self.dna_dnase, YesNoEnum):
-            self.dna_dnase = YesNoEnum(self.dna_dnase)
 
         if self.dna_isolate_meth is not None and not isinstance(self.dna_isolate_meth, str):
             self.dna_isolate_meth = str(self.dna_isolate_meth)
@@ -3814,89 +3761,14 @@ class Biosample(Sample):
         if self.dna_organisms is not None and not isinstance(self.dna_organisms, str):
             self.dna_organisms = str(self.dna_organisms)
 
-        if self.dna_project_contact is not None and not isinstance(self.dna_project_contact, str):
-            self.dna_project_contact = str(self.dna_project_contact)
-
-        if self.dna_samp_id is not None and not isinstance(self.dna_samp_id, str):
-            self.dna_samp_id = str(self.dna_samp_id)
-
-        if self.dna_sample_format is not None and not isinstance(self.dna_sample_format, DNASampleFormatEnum):
-            self.dna_sample_format = DNASampleFormatEnum(self.dna_sample_format)
-
-        if self.dna_sample_name is not None and not isinstance(self.dna_sample_name, str):
-            self.dna_sample_name = str(self.dna_sample_name)
-
-        if self.dna_seq_project is not None and not isinstance(self.dna_seq_project, str):
-            self.dna_seq_project = str(self.dna_seq_project)
-
-        if self.dna_seq_project_pi is not None and not isinstance(self.dna_seq_project_pi, str):
-            self.dna_seq_project_pi = str(self.dna_seq_project_pi)
-
-        if self.dna_seq_project_name is not None and not isinstance(self.dna_seq_project_name, str):
-            self.dna_seq_project_name = str(self.dna_seq_project_name)
-
-        if self.dna_volume is not None and not isinstance(self.dna_volume, float):
-            self.dna_volume = float(self.dna_volume)
-
-        if self.proposal_dna is not None and not isinstance(self.proposal_dna, str):
-            self.proposal_dna = str(self.proposal_dna)
-
-        if self.dnase_rna is not None and not isinstance(self.dnase_rna, YesNoEnum):
-            self.dnase_rna = YesNoEnum(self.dnase_rna)
-
-        if self.proposal_rna is not None and not isinstance(self.proposal_rna, str):
-            self.proposal_rna = str(self.proposal_rna)
-
-        if self.rna_absorb1 is not None and not isinstance(self.rna_absorb1, float):
-            self.rna_absorb1 = float(self.rna_absorb1)
-
-        if self.rna_absorb2 is not None and not isinstance(self.rna_absorb2, float):
-            self.rna_absorb2 = float(self.rna_absorb2)
-
         if self.rna_collect_site is not None and not isinstance(self.rna_collect_site, str):
             self.rna_collect_site = str(self.rna_collect_site)
-
-        if self.rna_concentration is not None and not isinstance(self.rna_concentration, float):
-            self.rna_concentration = float(self.rna_concentration)
-
-        if self.rna_cont_type is not None and not isinstance(self.rna_cont_type, JgiContTypeEnum):
-            self.rna_cont_type = JgiContTypeEnum(self.rna_cont_type)
-
-        if self.rna_cont_well is not None and not isinstance(self.rna_cont_well, str):
-            self.rna_cont_well = str(self.rna_cont_well)
-
-        if self.rna_container_id is not None and not isinstance(self.rna_container_id, str):
-            self.rna_container_id = str(self.rna_container_id)
 
         if self.rna_isolate_meth is not None and not isinstance(self.rna_isolate_meth, str):
             self.rna_isolate_meth = str(self.rna_isolate_meth)
 
         if self.rna_organisms is not None and not isinstance(self.rna_organisms, str):
             self.rna_organisms = str(self.rna_organisms)
-
-        if self.rna_project_contact is not None and not isinstance(self.rna_project_contact, str):
-            self.rna_project_contact = str(self.rna_project_contact)
-
-        if self.rna_samp_id is not None and not isinstance(self.rna_samp_id, str):
-            self.rna_samp_id = str(self.rna_samp_id)
-
-        if self.rna_sample_format is not None and not isinstance(self.rna_sample_format, RNASampleFormatEnum):
-            self.rna_sample_format = RNASampleFormatEnum(self.rna_sample_format)
-
-        if self.rna_sample_name is not None and not isinstance(self.rna_sample_name, str):
-            self.rna_sample_name = str(self.rna_sample_name)
-
-        if self.rna_seq_project is not None and not isinstance(self.rna_seq_project, str):
-            self.rna_seq_project = str(self.rna_seq_project)
-
-        if self.rna_seq_project_pi is not None and not isinstance(self.rna_seq_project_pi, str):
-            self.rna_seq_project_pi = str(self.rna_seq_project_pi)
-
-        if self.rna_seq_project_name is not None and not isinstance(self.rna_seq_project_name, str):
-            self.rna_seq_project_name = str(self.rna_seq_project_name)
-
-        if self.rna_volume is not None and not isinstance(self.rna_volume, float):
-            self.rna_volume = float(self.rna_volume)
 
         if self.collection_date_inc is not None and not isinstance(self.collection_date_inc, str):
             self.collection_date_inc = str(self.collection_date_inc)
@@ -4863,6 +4735,7 @@ class Protocol(YAMLRoot):
     type: Union[str, URIorCURIE] = None
     url: Optional[str] = None
     name: Optional[str] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
@@ -4874,6 +4747,9 @@ class Protocol(YAMLRoot):
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
@@ -7074,6 +6950,9 @@ class UnitEnum(EnumDefinitionImpl):
     cm = PermissibleValue(
         text="cm",
         description="The Unified Code for Units of Measure (UCUM) representation of centimeter.")
+    cP = PermissibleValue(
+        text="cP",
+        description="The Unified Code for Units of Measure (UCUM) representation of centipoise.")
     d = PermissibleValue(
         text="d",
         description="The Unified Code for Units of Measure (UCUM) representation of day.")
@@ -7110,27 +6989,21 @@ class UnitEnum(EnumDefinitionImpl):
     atm = PermissibleValue(
         text="atm",
         description="The Unified Code for Units of Measure (UCUM) representation of atmosphere.")
+    V = PermissibleValue(
+        text="V",
+        description="The Unified Code for Units of Measure (UCUM) representation of volt.")
     mV = PermissibleValue(
         text="mV",
         description="The Unified Code for Units of Measure (UCUM) representation of millivolt.")
-    PSU = PermissibleValue(
-        text="PSU",
-        description="The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.")
     L = PermissibleValue(
         text="L",
         description="The Unified Code for Units of Measure (UCUM) representation of liter.")
     um = PermissibleValue(
         text="um",
         description="The Unified Code for Units of Measure (UCUM) representation of micrometer.")
-    y = PermissibleValue(
-        text="y",
-        description="The Unified Code for Units of Measure (UCUM) representation of year.")
     kg = PermissibleValue(
         text="kg",
         description="The Unified Code for Units of Measure (UCUM) representation of kilogram.")
-    ppt = PermissibleValue(
-        text="ppt",
-        description="The Unified Code for Units of Measure (UCUM) representation of parts per thousand.")
     lx = PermissibleValue(
         text="lx",
         description="The Unified Code for Units of Measure (UCUM) representation of lux.")
@@ -7230,30 +7103,30 @@ class UnitEnum(EnumDefinitionImpl):
     kW = PermissibleValue(
         text="kW",
         description="The Unified Code for Units of Measure (UCUM) representation of kilowatt.")
-    API = PermissibleValue(
-        text="API",
-        description="The Unified Code for Units of Measure (UCUM) representation of API units.")
     mbar = PermissibleValue(
         text="mbar",
         description="The Unified Code for Units of Measure (UCUM) representation of millibar.")
-    ratio = PermissibleValue(
-        text="ratio",
-        description="The Unified Code for Units of Measure (UCUM) representation of ratio (dimensionless).")
-    people = PermissibleValue(
-        text="people",
-        description="The Unified Code for Units of Measure (UCUM) representation of people count.")
-    pets = PermissibleValue(
-        text="pets",
-        description="The Unified Code for Units of Measure (UCUM) representation of pet count.")
-    plants = PermissibleValue(
-        text="plants",
-        description="The Unified Code for Units of Measure (UCUM) representation of plant count.")
-    pH = PermissibleValue(
-        text="pH",
-        description="The Unified Code for Units of Measure (UCUM) representation of pH units.")
-    NTU = PermissibleValue(
-        text="NTU",
-        description="The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units.")
+    mg = PermissibleValue(
+        text="mg",
+        description="The Unified Code for Units of Measure (UCUM) representation of milligram.")
+    wk = PermissibleValue(
+        text="wk",
+        description="The Unified Code for Units of Measure (UCUM) representation of week.")
+    Gy = PermissibleValue(
+        text="Gy",
+        description="The Unified Code for Units of Measure (UCUM) representation of gray (absorbed dose).")
+    RAD = PermissibleValue(
+        text="RAD",
+        description="The Unified Code for Units of Measure (UCUM) representation of rad (radiation absorbed dose).")
+    m3 = PermissibleValue(
+        text="m3",
+        description="The Unified Code for Units of Measure (UCUM) representation of cubic meter.")
+    ug = PermissibleValue(
+        text="ug",
+        description="The Unified Code for Units of Measure (UCUM) representation of microgram.")
+    cm2 = PermissibleValue(
+        text="cm2",
+        description="The Unified Code for Units of Measure (UCUM) representation of square centimeter.")
 
     _defn = EnumDefinition(
         name="UnitEnum",
@@ -7361,6 +7234,10 @@ class UnitEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="uL/kg",
                 description="""The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram."""))
+        setattr(cls, "[ppth]",
+            PermissibleValue(
+                text="[ppth]",
+                description="The Unified Code for Units of Measure (UCUM) representation of parts per thousand."))
         setattr(cls, "g/g",
             PermissibleValue(
                 text="g/g",
@@ -7421,14 +7298,10 @@ class UnitEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="pg/mL",
                 description="""The Unified Code for Units of Measure (UCUM) representation of picograms per milliliter."""))
-        setattr(cls, "J/Cel",
+        setattr(cls, "1/d",
             PermissibleValue(
-                text="J/Cel",
-                description="The Unified Code for Units of Measure (UCUM) representation of joules per Celsius."))
-        setattr(cls, "uE/m2/s",
-            PermissibleValue(
-                text="uE/m2/s",
-                description="""The Unified Code for Units of Measure (UCUM) representation of microeinsteins per square meter per second."""))
+                text="1/d",
+                description="The Unified Code for Units of Measure (UCUM) representation of per day (frequency)."))
         setattr(cls, "kW/m2",
             PermissibleValue(
                 text="kW/m2",
@@ -7445,10 +7318,22 @@ class UnitEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="L/h",
                 description="The Unified Code for Units of Measure (UCUM) representation of liters per hour."))
+        setattr(cls, "[pH]",
+            PermissibleValue(
+                text="[pH]",
+                description="The Unified Code for Units of Measure (UCUM) representation of pH units."))
         setattr(cls, "kW/m2/d",
             PermissibleValue(
                 text="kW/m2/d",
                 description="""The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter per day."""))
+        setattr(cls, "[NTU]",
+            PermissibleValue(
+                text="[NTU]",
+                description="""The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units."""))
+        setattr(cls, "[FNU]",
+            PermissibleValue(
+                text="[FNU]",
+                description="""The Unified Code for Units of Measure (UCUM) representation of Formazin Nephelometric Units."""))
         setattr(cls, "m3/min",
             PermissibleValue(
                 text="m3/min",
@@ -7457,6 +7342,94 @@ class UnitEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="km/h",
                 description="The Unified Code for Units of Measure (UCUM) representation of kilometers per hour."))
+        setattr(cls, "[lb_av]",
+            PermissibleValue(
+                text="[lb_av]",
+                description="The Unified Code for Units of Measure (UCUM) representation of pound (avoirdupois)."))
+        setattr(cls, "kg/kg",
+            PermissibleValue(
+                text="kg/kg",
+                description="The Unified Code for Units of Measure (UCUM) representation of kilogram per kilogram."))
+        setattr(cls, "ug/m3",
+            PermissibleValue(
+                text="ug/m3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micrograms per cubic meter."""))
+        setattr(cls, "meq/L",
+            PermissibleValue(
+                text="meq/L",
+                description="""The Unified Code for Units of Measure (UCUM) representation of milliequivalents per liter."""))
+        setattr(cls, "lm/m2",
+            PermissibleValue(
+                text="lm/m2",
+                description="""The Unified Code for Units of Measure (UCUM) representation of lumens per square meter."""))
+        setattr(cls, "umol/L/h",
+            PermissibleValue(
+                text="umol/L/h",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micromoles per liter per hour."""))
+        setattr(cls, "g/cm3",
+            PermissibleValue(
+                text="g/cm3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of grams per cubic centimeter."""))
+        setattr(cls, "g/L",
+            PermissibleValue(
+                text="g/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of grams per liter."))
+        setattr(cls, "[g]",
+            PermissibleValue(
+                text="[g]",
+                description="The Unified Code for Units of Measure (UCUM) representation of standard gravity."))
+        setattr(cls, "m/s2",
+            PermissibleValue(
+                text="m/s2",
+                description="""The Unified Code for Units of Measure (UCUM) representation of meters per second squared."""))
+        setattr(cls, "mol/g",
+            PermissibleValue(
+                text="mol/g",
+                description="The Unified Code for Units of Measure (UCUM) representation of moles per gram."))
+        setattr(cls, "g/m2/d",
+            PermissibleValue(
+                text="g/m2/d",
+                description="""The Unified Code for Units of Measure (UCUM) representation of grams per square meter per day."""))
+        setattr(cls, "[sft_i]",
+            PermissibleValue(
+                text="[sft_i]",
+                description="The Unified Code for Units of Measure (UCUM) representation of square feet."))
+        setattr(cls, "[cft_i]",
+            PermissibleValue(
+                text="[cft_i]",
+                description="The Unified Code for Units of Measure (UCUM) representation of cubic feet."))
+        setattr(cls, "mm/a",
+            PermissibleValue(
+                text="mm/a",
+                description="The Unified Code for Units of Measure (UCUM) representation of millimeters per year."))
+        setattr(cls, "erg/cm2/s",
+            PermissibleValue(
+                text="erg/cm2/s",
+                description="""The Unified Code for Units of Measure (UCUM) representation of ergs per square centimeter per second."""))
+        setattr(cls, "g/m2",
+            PermissibleValue(
+                text="g/m2",
+                description="The Unified Code for Units of Measure (UCUM) representation of grams per square meter."))
+        setattr(cls, "L/s",
+            PermissibleValue(
+                text="L/s",
+                description="The Unified Code for Units of Measure (UCUM) representation of liters per second."))
+        setattr(cls, "cm3/cm3",
+            PermissibleValue(
+                text="cm3/cm3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of cubic centimeters per cubic centimeter."""))
+        setattr(cls, "[kn_i]",
+            PermissibleValue(
+                text="[kn_i]",
+                description="""The Unified Code for Units of Measure (UCUM) representation of knot (nautical miles per hour)."""))
+        setattr(cls, "m3/s",
+            PermissibleValue(
+                text="m3/s",
+                description="""The Unified Code for Units of Measure (UCUM) representation of cubic meters per second."""))
+        setattr(cls, "[in_i]",
+            PermissibleValue(
+                text="[in_i]",
+                description="The Unified Code for Units of Measure (UCUM) representation of inch."))
 
 class ExecutionResourceEnum(EnumDefinitionImpl):
 
@@ -7587,10 +7560,6 @@ class FileTypeEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="QC non-rRNA R1",
                 description="QC removed rRNA reads (R1) fastq"))
-        setattr(cls, "Metagenome Bins",
-            PermissibleValue(
-                text="Metagenome Bins",
-                description="Metagenome bin contigs fasta"))
         setattr(cls, "Metagenome HQMQ Bins Compression File",
             PermissibleValue(
                 text="Metagenome HQMQ Bins Compression File",
@@ -7663,10 +7632,6 @@ class FileTypeEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Kraken2 Taxonomic Classification",
                 description="Kraken2 output read classification file"))
-        setattr(cls, "Centrifuge Classification Report",
-            PermissibleValue(
-                text="Centrifuge Classification Report",
-                description="Centrifuge output report file"))
         setattr(cls, "Centrifuge Taxonomic Classification",
             PermissibleValue(
                 text="Centrifuge Taxonomic Classification",
@@ -10316,42 +10281,6 @@ class SampleTypeEnum(EnumDefinitionImpl):
         setattr(cls, "plant associated",
             PermissibleValue(text="plant associated"))
 
-class DNASampleFormatEnum(EnumDefinitionImpl):
-
-    DNAStable = PermissibleValue(text="DNAStable")
-    Ethanol = PermissibleValue(text="Ethanol")
-    PBS = PermissibleValue(text="PBS")
-    Pellet = PermissibleValue(text="Pellet")
-    RNAStable = PermissibleValue(text="RNAStable")
-    TE = PermissibleValue(text="TE")
-    Water = PermissibleValue(text="Water")
-
-    _defn = EnumDefinition(
-        name="DNASampleFormatEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "10 mmol/L Tris-HCl",
-            PermissibleValue(text="10 mmol/L Tris-HCl"))
-        setattr(cls, "Low EDTA TE",
-            PermissibleValue(text="Low EDTA TE"))
-        setattr(cls, "MDA reaction buffer",
-            PermissibleValue(text="MDA reaction buffer"))
-        setattr(cls, "Gentegra-DNA",
-            PermissibleValue(text="Gentegra-DNA"))
-        setattr(cls, "Gentegra-RNA",
-            PermissibleValue(text="Gentegra-RNA"))
-
-class JgiContTypeEnum(EnumDefinitionImpl):
-
-    plate = PermissibleValue(text="plate")
-    tube = PermissibleValue(text="tube")
-
-    _defn = EnumDefinition(
-        name="JgiContTypeEnum",
-    )
-
 class YesNoEnum(EnumDefinitionImpl):
     """
     replaces DnaDnaseEnum and DnaseRnaEnum
@@ -10363,33 +10292,6 @@ class YesNoEnum(EnumDefinitionImpl):
         name="YesNoEnum",
         description="replaces DnaDnaseEnum and DnaseRnaEnum",
     )
-
-class RNASampleFormatEnum(EnumDefinitionImpl):
-
-    DNAStable = PermissibleValue(text="DNAStable")
-    Ethanol = PermissibleValue(text="Ethanol")
-    PBS = PermissibleValue(text="PBS")
-    Pellet = PermissibleValue(text="Pellet")
-    RNAStable = PermissibleValue(text="RNAStable")
-    TE = PermissibleValue(text="TE")
-    Water = PermissibleValue(text="Water")
-
-    _defn = EnumDefinition(
-        name="RNASampleFormatEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "10 mmol/L Tris-HCl",
-            PermissibleValue(text="10 mmol/L Tris-HCl"))
-        setattr(cls, "Low EDTA TE",
-            PermissibleValue(text="Low EDTA TE"))
-        setattr(cls, "MDA reaction buffer",
-            PermissibleValue(text="MDA reaction buffer"))
-        setattr(cls, "Gentegra-DNA",
-            PermissibleValue(text="Gentegra-DNA"))
-        setattr(cls, "Gentegra-RNA",
-            PermissibleValue(text="Gentegra-RNA"))
 
 class AnalysisTypeEnum(EnumDefinitionImpl):
 
@@ -11332,109 +11234,20 @@ slots.technical_reps = Slot(uri=NMDC.technical_reps, name="technical_reps", curi
 slots.dna_collect_site = Slot(uri=NMDC.dna_collect_site, name="dna_collect_site", curie=NMDC.curie('dna_collect_site'),
                    model_uri=NMDC.dna_collect_site, domain=None, range=Optional[str])
 
-slots.dna_cont_type = Slot(uri=NMDC.dna_cont_type, name="dna_cont_type", curie=NMDC.curie('dna_cont_type'),
-                   model_uri=NMDC.dna_cont_type, domain=None, range=Optional[Union[str, "JgiContTypeEnum"]])
-
-slots.dna_cont_well = Slot(uri=NMDC.dna_cont_well, name="dna_cont_well", curie=NMDC.curie('dna_cont_well'),
-                   model_uri=NMDC.dna_cont_well, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$'))
-
-slots.dna_container_id = Slot(uri=NMDC.dna_container_id, name="dna_container_id", curie=NMDC.curie('dna_container_id'),
-                   model_uri=NMDC.dna_container_id, domain=None, range=Optional[str])
-
-slots.dna_dnase = Slot(uri=NMDC.dna_dnase, name="dna_dnase", curie=NMDC.curie('dna_dnase'),
-                   model_uri=NMDC.dna_dnase, domain=None, range=Optional[Union[str, "YesNoEnum"]])
-
 slots.dna_isolate_meth = Slot(uri=NMDC.dna_isolate_meth, name="dna_isolate_meth", curie=NMDC.curie('dna_isolate_meth'),
                    model_uri=NMDC.dna_isolate_meth, domain=None, range=Optional[str])
 
 slots.dna_organisms = Slot(uri=NMDC.dna_organisms, name="dna_organisms", curie=NMDC.curie('dna_organisms'),
                    model_uri=NMDC.dna_organisms, domain=None, range=Optional[str])
 
-slots.dna_project_contact = Slot(uri=NMDC.dna_project_contact, name="dna_project_contact", curie=NMDC.curie('dna_project_contact'),
-                   model_uri=NMDC.dna_project_contact, domain=None, range=Optional[str])
-
-slots.dna_samp_id = Slot(uri=NMDC.dna_samp_id, name="dna_samp_id", curie=NMDC.curie('dna_samp_id'),
-                   model_uri=NMDC.dna_samp_id, domain=None, range=Optional[str])
-
-slots.dna_sample_format = Slot(uri=NMDC.dna_sample_format, name="dna_sample_format", curie=NMDC.curie('dna_sample_format'),
-                   model_uri=NMDC.dna_sample_format, domain=None, range=Optional[Union[str, "DNASampleFormatEnum"]])
-
-slots.dna_sample_name = Slot(uri=NMDC.dna_sample_name, name="dna_sample_name", curie=NMDC.curie('dna_sample_name'),
-                   model_uri=NMDC.dna_sample_name, domain=None, range=Optional[str])
-
-slots.dna_seq_project = Slot(uri=NMDC.dna_seq_project, name="dna_seq_project", curie=NMDC.curie('dna_seq_project'),
-                   model_uri=NMDC.dna_seq_project, domain=None, range=Optional[str])
-
-slots.dna_seq_project_pi = Slot(uri=NMDC.dna_seq_project_pi, name="dna_seq_project_pi", curie=NMDC.curie('dna_seq_project_pi'),
-                   model_uri=NMDC.dna_seq_project_pi, domain=None, range=Optional[str])
-
-slots.dna_seq_project_name = Slot(uri=NMDC.dna_seq_project_name, name="dna_seq_project_name", curie=NMDC.curie('dna_seq_project_name'),
-                   model_uri=NMDC.dna_seq_project_name, domain=None, range=Optional[str])
-
-slots.dna_volume = Slot(uri=NMDC.dna_volume, name="dna_volume", curie=NMDC.curie('dna_volume'),
-                   model_uri=NMDC.dna_volume, domain=None, range=Optional[float])
-
-slots.proposal_dna = Slot(uri=NMDC.proposal_dna, name="proposal_dna", curie=NMDC.curie('proposal_dna'),
-                   model_uri=NMDC.proposal_dna, domain=None, range=Optional[str])
-
-slots.dnase_rna = Slot(uri=NMDC.dnase_rna, name="dnase_rna", curie=NMDC.curie('dnase_rna'),
-                   model_uri=NMDC.dnase_rna, domain=None, range=Optional[Union[str, "YesNoEnum"]])
-
-slots.proposal_rna = Slot(uri=NMDC.proposal_rna, name="proposal_rna", curie=NMDC.curie('proposal_rna'),
-                   model_uri=NMDC.proposal_rna, domain=None, range=Optional[str])
-
-slots.rna_absorb1 = Slot(uri=NMDC.rna_absorb1, name="rna_absorb1", curie=NMDC.curie('rna_absorb1'),
-                   model_uri=NMDC.rna_absorb1, domain=None, range=Optional[float])
-
-slots.rna_absorb2 = Slot(uri=NMDC.rna_absorb2, name="rna_absorb2", curie=NMDC.curie('rna_absorb2'),
-                   model_uri=NMDC.rna_absorb2, domain=None, range=Optional[float])
-
 slots.rna_collect_site = Slot(uri=NMDC.rna_collect_site, name="rna_collect_site", curie=NMDC.curie('rna_collect_site'),
                    model_uri=NMDC.rna_collect_site, domain=None, range=Optional[str])
-
-slots.rna_concentration = Slot(uri=NMDC.rna_concentration, name="rna_concentration", curie=NMDC.curie('rna_concentration'),
-                   model_uri=NMDC.rna_concentration, domain=None, range=Optional[float])
-
-slots.rna_cont_type = Slot(uri=NMDC.rna_cont_type, name="rna_cont_type", curie=NMDC.curie('rna_cont_type'),
-                   model_uri=NMDC.rna_cont_type, domain=None, range=Optional[Union[str, "JgiContTypeEnum"]])
-
-slots.rna_cont_well = Slot(uri=NMDC.rna_cont_well, name="rna_cont_well", curie=NMDC.curie('rna_cont_well'),
-                   model_uri=NMDC.rna_cont_well, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$'))
-
-slots.rna_container_id = Slot(uri=NMDC.rna_container_id, name="rna_container_id", curie=NMDC.curie('rna_container_id'),
-                   model_uri=NMDC.rna_container_id, domain=None, range=Optional[str])
 
 slots.rna_isolate_meth = Slot(uri=NMDC.rna_isolate_meth, name="rna_isolate_meth", curie=NMDC.curie('rna_isolate_meth'),
                    model_uri=NMDC.rna_isolate_meth, domain=None, range=Optional[str])
 
 slots.rna_organisms = Slot(uri=NMDC.rna_organisms, name="rna_organisms", curie=NMDC.curie('rna_organisms'),
                    model_uri=NMDC.rna_organisms, domain=None, range=Optional[str])
-
-slots.rna_project_contact = Slot(uri=NMDC.rna_project_contact, name="rna_project_contact", curie=NMDC.curie('rna_project_contact'),
-                   model_uri=NMDC.rna_project_contact, domain=None, range=Optional[str])
-
-slots.rna_samp_id = Slot(uri=NMDC.rna_samp_id, name="rna_samp_id", curie=NMDC.curie('rna_samp_id'),
-                   model_uri=NMDC.rna_samp_id, domain=None, range=Optional[str])
-
-slots.rna_sample_format = Slot(uri=NMDC.rna_sample_format, name="rna_sample_format", curie=NMDC.curie('rna_sample_format'),
-                   model_uri=NMDC.rna_sample_format, domain=None, range=Optional[Union[str, "RNASampleFormatEnum"]])
-
-slots.rna_sample_name = Slot(uri=NMDC.rna_sample_name, name="rna_sample_name", curie=NMDC.curie('rna_sample_name'),
-                   model_uri=NMDC.rna_sample_name, domain=None, range=Optional[str])
-
-slots.rna_seq_project = Slot(uri=NMDC.rna_seq_project, name="rna_seq_project", curie=NMDC.curie('rna_seq_project'),
-                   model_uri=NMDC.rna_seq_project, domain=None, range=Optional[str])
-
-slots.rna_seq_project_pi = Slot(uri=NMDC.rna_seq_project_pi, name="rna_seq_project_pi", curie=NMDC.curie('rna_seq_project_pi'),
-                   model_uri=NMDC.rna_seq_project_pi, domain=None, range=Optional[str])
-
-slots.rna_seq_project_name = Slot(uri=NMDC.rna_seq_project_name, name="rna_seq_project_name", curie=NMDC.curie('rna_seq_project_name'),
-                   model_uri=NMDC.rna_seq_project_name, domain=None, range=Optional[str])
-
-slots.rna_volume = Slot(uri=NMDC.rna_volume, name="rna_volume", curie=NMDC.curie('rna_volume'),
-                   model_uri=NMDC.rna_volume, domain=None, range=Optional[float])
 
 slots.collection_date_inc = Slot(uri=NMDC.collection_date_inc, name="collection_date_inc", curie=NMDC.curie('collection_date_inc'),
                    model_uri=NMDC.collection_date_inc, domain=None, range=Optional[str])
@@ -13508,9 +13321,6 @@ slots.Biosample_al_sat = Slot(uri=MIXS['0000607'], name="Biosample_al_sat", curi
 slots.Biosample_al_sat_meth = Slot(uri=MIXS['0000324'], name="Biosample_al_sat_meth", curie=MIXS.curie('0000324'),
                    model_uri=NMDC.Biosample_al_sat_meth, domain=Biosample, range=Optional[Union[dict, TextValue]])
 
-slots.Biosample_annual_precpt = Slot(uri=MIXS['0000644'], name="Biosample_annual_precpt", curie=MIXS.curie('0000644'),
-                   model_uri=NMDC.Biosample_annual_precpt, domain=Biosample, range=Optional[Union[dict, QuantityValue]])
-
 slots.Biosample_cur_vegetation = Slot(uri=MIXS['0000312'], name="Biosample_cur_vegetation", curie=MIXS.curie('0000312'),
                    model_uri=NMDC.Biosample_cur_vegetation, domain=Biosample, range=Optional[Union[dict, TextValue]])
 
@@ -13540,9 +13350,6 @@ slots.Biosample_tot_carb = Slot(uri=MIXS['0000525'], name="Biosample_tot_carb", 
 
 slots.Biosample_tot_nitro_cont_meth = Slot(uri=MIXS['0000338'], name="Biosample_tot_nitro_cont_meth", curie=MIXS.curie('0000338'),
                    model_uri=NMDC.Biosample_tot_nitro_cont_meth, domain=Biosample, range=Optional[str])
-
-slots.Biosample_tot_nitro_content = Slot(uri=MIXS['0000530'], name="Biosample_tot_nitro_content", curie=MIXS.curie('0000530'),
-                   model_uri=NMDC.Biosample_tot_nitro_content, domain=Biosample, range=Optional[Union[dict, QuantityValue]])
 
 slots.Biosample_tot_org_c_meth = Slot(uri=MIXS['0000337'], name="Biosample_tot_org_c_meth", curie=MIXS.curie('0000337'),
                    model_uri=NMDC.Biosample_tot_org_c_meth, domain=Biosample, range=Optional[Union[dict, TextValue]])

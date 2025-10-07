@@ -1,6 +1,7 @@
 import json
 import pkgutil
 import unittest
+
 import fastjsonschema
 
 from nmdc_schema import nmdc_data

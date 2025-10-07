@@ -267,13 +267,19 @@ enums:
           - Percent
         description: The Unified Code for Units of Measure (UCUM) representation of percent.
       "J/K":
+        title: "J/degree Celsius"
         aliases:
           - joule per kelvin
           - joules per kelvin
           - J/Kelvin
-          - J/Kelvin
+          - J/Celvin
+          - "J/Cel"
+          - "J/C"
         description: The Unified Code for Units of Measure (UCUM) representation of joule per kelvin.
+        comments:
+          - "UCUM-compliant unit for energy per temperature. J/Cel deprecated due to non-ratio temperature unit."
       Cel:
+        title: degrees Celsius
         aliases:
           - Celsius
           - C
@@ -290,6 +296,11 @@ enums:
           - OM:degreeCelsius
       cm:
         description: The Unified Code for Units of Measure (UCUM) representation of centimeter.
+      cP:
+        aliases:
+          - centipoise
+          - centiPoise
+        description: The Unified Code for Units of Measure (UCUM) representation of centipoise.
       d:
         aliases:
           - days
@@ -339,8 +350,9 @@ enums:
         description: The Unified Code for Units of Measure (UCUM) representation of millisiemens per centimeter.
       "[ppm]":
         description: The Unified Code for Units of Measure (UCUM) representation of parts per million.
-        comments: >-
-          see https://terminology.hl7.org/5.1.0/ValueSet-v3-UnitsOfMeasureCaseSensitive.html, https://ucum.org/ucum
+        see_also:
+          - https://terminology.hl7.org/5.1.0/ValueSet-v3-UnitsOfMeasureCaseSensitive.html
+          - https://ucum.org/ucum
         aliases:
           - "ppm"
           - "1*10-6"
@@ -354,6 +366,7 @@ enums:
       "W/m2":
         description: The Unified Code for Units of Measure (UCUM) representation of watts per square meter.
       a:
+        title: years
         aliases:
           - years
         description: The Unified Code for Units of Measure (UCUM) representation of year.
@@ -385,11 +398,13 @@ enums:
       "umol/kg":
         description: The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram.
       "umol/m2/s":
+        title: micromoles per square meter per second
         description: The Unified Code for Units of Measure (UCUM) representation of micromoles per square meter per second.
         aliases:
           - "μmol/m2/s"
           - "micromol/m2/s"
           - "u[E]/m2/s"
+          - "micro Einsteins"
       "mg/m3":
         description: The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter.
       "m2/s":
@@ -402,10 +417,10 @@ enums:
         description: The Unified Code for Units of Measure (UCUM) representation of square meters.
       atm:
         description: The Unified Code for Units of Measure (UCUM) representation of atmosphere.
+      V:
+        description: The Unified Code for Units of Measure (UCUM) representation of volt.
       mV:
         description: The Unified Code for Units of Measure (UCUM) representation of millivolt.
-      PSU:
-        description: The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.
       L:
         description: The Unified Code for Units of Measure (UCUM) representation of liter.
       um:
@@ -413,21 +428,33 @@ enums:
           - μm
           - µm
         description: The Unified Code for Units of Measure (UCUM) representation of micrometer.
-      y:
-        description: The Unified Code for Units of Measure (UCUM) representation of year.
       "1":
+        title: "ratio/unitless"
+        aliases:
+          - "ratio"
+          - "unitless"
+          - "dimensionless" 
+          - "people"
+          - "pets"
+          - "plants"
         description: The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity.
+        comments:
+          - "Used for ratios, counts, and dimensionless measurements (e.g., number of people, pets, plants)."
       "uL/kg":
         description: The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram.
       kg:
         description: The Unified Code for Units of Measure (UCUM) representation of kilogram.
-      ppt:
+      "[ppth]":
         description: The Unified Code for Units of Measure (UCUM) representation of parts per thousand.
+        aliases:
+          - ppt
+          - parts per thousand
       "g/g":
         aliases:
           - g/g
         description: The Unified Code for Units of Measure (UCUM) representation of gram per gram.
       lx:
+        title: lux
         aliases:
           - lx
         description: The Unified Code for Units of Measure (UCUM) representation of lux.
@@ -622,6 +649,11 @@ enums:
           - Hz
           - hertz
         description: The Unified Code for Units of Measure (UCUM) representation of hertz.
+      "1/d":
+        aliases:
+          - per day
+          - daily frequency
+        description: The Unified Code for Units of Measure (UCUM) representation of per day (frequency).
       "kHz":
         aliases:
           - kHz
@@ -679,28 +711,10 @@ enums:
           - kilowatt
           - kilowatts
         description: The Unified Code for Units of Measure (UCUM) representation of kilowatt.
-      API:
-        description: The Unified Code for Units of Measure (UCUM) representation of API units.
       mbar:
         description: The Unified Code for Units of Measure (UCUM) representation of millibar.
-      ratio:
-        aliases:
-          - "{ratio}"
-        description: The Unified Code for Units of Measure (UCUM) representation of ratio (dimensionless).
-      "J/Cel":
-        description: The Unified Code for Units of Measure (UCUM) representation of joules per Celsius.
-      "uE/m2/s":
-        description: The Unified Code for Units of Measure (UCUM) representation of microeinsteins per square meter per second.
-        aliases:
-          - "[arb'U]{micro_Einstein}/m2/s"
       "kW/m2":
         description: The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter.
-      people:
-        description: The Unified Code for Units of Measure (UCUM) representation of people count.
-      pets:
-        description: The Unified Code for Units of Measure (UCUM) representation of pet count.
-      plants:
-        description: The Unified Code for Units of Measure (UCUM) representation of plant count.
       "umol/s/m2":
         description: The Unified Code for Units of Measure (UCUM) representation of micromoles per second per square meter.
         aliases:
@@ -709,15 +723,162 @@ enums:
         description: The Unified Code for Units of Measure (UCUM) representation of cubic meters per day.
       "L/h":
         description: The Unified Code for Units of Measure (UCUM) representation of liters per hour.
-      pH:
+      "[pH]":
         description: The Unified Code for Units of Measure (UCUM) representation of pH units.
         aliases:
-          - "[pH]"
+          - pH
       "kW/m2/d":
         description: The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter per day.
-      NTU:
+      "[NTU]":
         description: The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units.
+        title: Nephelometric Turbidity Units
+        aliases:
+          - NTU
+      "[FNU]":
+        description: The Unified Code for Units of Measure (UCUM) representation of Formazin Nephelometric Units.
+        title: Formazin Nephelometric Units
+        aliases:
+          - FNU
       "m3/min":
         description: The Unified Code for Units of Measure (UCUM) representation of cubic meters per minute.
       "km/h":
         description: The Unified Code for Units of Measure (UCUM) representation of kilometers per hour.
+      "[lb_av]":
+        title: pounds (avoirdupois)
+        aliases:
+          - pound
+          - lb
+        description: The Unified Code for Units of Measure (UCUM) representation of pound (avoirdupois).
+      "kg/kg":
+        aliases:
+          - kilogram per kilogram
+        description: The Unified Code for Units of Measure (UCUM) representation of kilogram per kilogram.
+      "ug/m3":
+        aliases:
+          - μg/m3
+          - micrograms per cubic meter
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms per cubic meter.
+      "meq/L":
+        aliases:
+          - milliequivalents per liter
+        description: The Unified Code for Units of Measure (UCUM) representation of milliequivalents per liter.
+      "lm/m2":
+        aliases:
+          - lumens per square meter
+        description: The Unified Code for Units of Measure (UCUM) representation of lumens per square meter.
+      mg:
+        aliases:
+          - milligram
+          - milligrams
+        description: The Unified Code for Units of Measure (UCUM) representation of milligram.
+      "umol/L/h":
+        aliases:
+          - micromoles per liter per hour
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles per liter per hour.
+        comments: >-
+          For example, micromoles of oxygen created by photosynthesis per liter of water per hour.
+      "g/cm3":
+        aliases:
+          - grams per cubic centimeter
+        description: The Unified Code for Units of Measure (UCUM) representation of grams per cubic centimeter.
+      "g/L":
+        aliases:
+          - grams per liter
+        description: The Unified Code for Units of Measure (UCUM) representation of grams per liter.
+      wk:
+        aliases:
+          - week
+          - weeks
+        description: The Unified Code for Units of Measure (UCUM) representation of week.
+      "[g]":
+        title: standard gravity
+        aliases:
+          - standard gravity
+          - g-force
+        description: The Unified Code for Units of Measure (UCUM) representation of standard gravity.
+      "m/s2":
+        aliases:
+          - meters per second squared
+        description: The Unified Code for Units of Measure (UCUM) representation of meters per second squared.
+      "mol/g":
+        aliases:
+          - moles per gram
+        description: The Unified Code for Units of Measure (UCUM) representation of moles per gram.
+      "g/m2/d":
+        aliases:
+          - grams per square meter per day
+        description: The Unified Code for Units of Measure (UCUM) representation of grams per square meter per day.
+      Gy:
+        aliases:
+          - gray
+        description: The Unified Code for Units of Measure (UCUM) representation of gray (absorbed dose).
+      RAD:
+        title: rad (radiation absorbed dose)
+        aliases:
+          - radiation absorbed dose
+        description: The Unified Code for Units of Measure (UCUM) representation of rad (radiation absorbed dose).
+      "[sft_i]":
+        title: square feet
+        aliases:
+          - square feet
+          - sq ft
+        description: The Unified Code for Units of Measure (UCUM) representation of square feet.
+      "[cft_i]":
+        title: cubic feet
+        aliases:
+          - cubic feet
+          - cu ft
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic feet.
+      m3:
+        aliases:
+          - cubic meter
+          - cubic meters
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic meter.
+      ug:
+        aliases:
+          - μg
+          - microgram
+          - micrograms
+        description: The Unified Code for Units of Measure (UCUM) representation of microgram.
+      "mm/a":
+        title: millimeters per year
+        aliases:
+          - millimeters per year
+        description: The Unified Code for Units of Measure (UCUM) representation of millimeters per year.
+      cm2:
+        aliases:
+          - square centimeter
+          - square centimeters
+        description: The Unified Code for Units of Measure (UCUM) representation of square centimeter.
+      "erg/cm2/s":
+        aliases:
+          - ergs per square centimeter per second
+        description: The Unified Code for Units of Measure (UCUM) representation of ergs per square centimeter per second.
+      "g/m2":
+        aliases:
+          - grams per square meter
+        description: The Unified Code for Units of Measure (UCUM) representation of grams per square meter.
+      "L/s":
+        aliases:
+          - liters per second
+        description: The Unified Code for Units of Measure (UCUM) representation of liters per second.
+      "cm3/cm3":
+        aliases:
+          - cubic centimeters per cubic centimeter
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic centimeters per cubic centimeter.
+      "[kn_i]":
+        title: knots
+        aliases:
+          - knot
+          - knots
+        description: The Unified Code for Units of Measure (UCUM) representation of knot (nautical miles per hour).
+      "m3/s":
+        aliases:
+          - cubic meters per second
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic meters per second.
+      "[in_i]":
+        title: inches
+        aliases:
+          - inch
+          - inches
+        description: The Unified Code for Units of Measure (UCUM) representation of inch.
