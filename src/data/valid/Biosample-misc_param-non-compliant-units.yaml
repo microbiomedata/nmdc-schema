@@ -34,6 +34,11 @@ env_medium:
     id: ENVO:00005792
 misc_param:
   - type: nmdc:PropertyAssertion
+    has_raw_value: "123 puppies"
+    has_attribute_label: puppy count
+    has_numeric_value: 123
+    has_unit: puppies
+  - type: nmdc:PropertyAssertion
     has_raw_value: "50 kPa"
     has_attribute_id: MIXS:0000122
     has_attribute_label: absolute air humidity

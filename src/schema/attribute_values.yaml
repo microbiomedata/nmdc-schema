@@ -37,6 +37,7 @@ classes:
         description: Unnormalized atomic string representation, should in syntax {number} {unit}
       has_unit:
         description: The unit of the quantity
+        range: UnitEnum
         required: true
       has_numeric_value:
         description: The number part of the quantity
@@ -245,7 +246,7 @@ slots:
     mappings:
       - qud:unit
       - schema:unitCode
-    range: UnitEnum
+    range: string
 
   type:
     required: true
