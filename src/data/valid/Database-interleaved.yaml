@@ -2229,8 +2229,27 @@ biosample_set:
       - type: nmdc:TextValue
         has_raw_value: xxx
     misc_param:
-      - type: nmdc:TextValue
+      - type: nmdc:PropertyAssertion
         has_raw_value: Bicarbonate ion concentration;2075 micromole per kilogram
+        has_attribute_label: bicarbonate ion concentration
+        has_numeric_value: 2075
+        has_unit: umol/kg
+      - type: nmdc:PropertyAssertion
+        has_raw_value: "2.2 ppm"
+        has_attribute_id: MIXS:0000117
+        has_attribute_label: total phosphorus
+        has_numeric_value: 2.2
+        has_unit: "[ppm]"
+      - type: nmdc:PropertyAssertion
+        has_raw_value: "2025-06-12"
+        has_attribute_id: MIXS:0000011
+        has_attribute_label: collection date
+        has_datetime_value: "2025-06-12"
+      - type: nmdc:PropertyAssertion
+        has_raw_value: "terrestrial biome"
+        has_attribute_id: MIXS:0000012
+        has_attribute_label: env_broad_scale
+        has_value_term_id: "ENVO:00000446"
     n_alkanes:
       - type: nmdc:TextValue
         has_raw_value: n-hexadecane;100 milligram per liter

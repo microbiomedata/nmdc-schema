@@ -913,34 +913,34 @@ classes:
       - lbc_thirty
       - lbceq
     slot_usage:
-      misc_param:
-        description: Captures key:value pairs that don't align with existing slots or requirements. Inlcude ontology term or standard whenever possible.
-        multivalued: true
-        required: false
-        any_of:
-          - range:
-              TextValue
-          - range:
-              QuantityValue
-        examples:
-          - object:
-              attribute:
-                id: MIXS:0000117
-                label: total phosphorus
-              has_raw_value: "2.2 ppm"
-              has_unit: ppm
-              has_numeric_value: 2.2
-          - object:
-              attribute:
-                id: MIXS:0000011
-                label: collection date
-              has_raw_value: "2025-06-12"
-          - object:
-              attribute:
-                id: MIXS:0000012
-                label: env_broad_scale
-              value: "terrestrial biome"
-              value_cv_id: "ENVO:00000446"
+#      misc_param:
+#        description: Captures key:value pairs that don't align with existing slots or requirements. Inlcude ontology term or standard whenever possible.
+#        multivalued: true
+#        required: false
+#        any_of:
+#          - range:
+#              TextValue
+#          - range:
+#              QuantityValue
+#        examples:
+#          - object:
+#              attribute:
+#                id: MIXS:0000117
+#                label: total phosphorus
+#              has_raw_value: "2.2 ppm"
+#              has_unit: ppm
+#              has_numeric_value: 2.2
+#          - object:
+#              attribute:
+#                id: MIXS:0000011
+#                label: collection date
+#              has_raw_value: "2025-06-12"
+#          - object:
+#              attribute:
+#                id: MIXS:0000012
+#                label: env_broad_scale
+#              value: "terrestrial biome"
+#              value_cv_id: "ENVO:00000446"
 
       collected_from:
         structured_pattern:
