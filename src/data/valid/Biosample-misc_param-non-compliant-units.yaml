@@ -1,0 +1,53 @@
+# Example Biosample demonstrating misc_param usage for metadata with non-compliant units
+# Based on issue #2633: https://github.com/microbiomedata/nmdc-schema/issues/2633
+#
+# This file illustrates the three problematic cases identified by Patrick Kalita:
+# 1. abs_air_humidity with unit kPa (expected: [lb_av]|g/g|kg|kg/kg)
+# 2. diss_oxygen with unit mL/L (expected: mg/L|umol/kg|umol/L)
+# 3. solar_irradiance with unit W/m2 (expected: kW/m2/d|erg/cm2/s)
+#
+# These values exist in MongoDB with units that don't comply with the schema's storage_units annotations.
+# Using PropertyAssertion via misc_param allows capturing this non-compliant metadata while maintaining
+# schema validation and providing a migration path.
+
+id: nmdc:bsm-99-noncompliant
+type: nmdc:Biosample
+associated_studies:
+  - nmdc:sty-00-abc123
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002030
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002030
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002169
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002169
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00005792
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00005792
+misc_param:
+  - type: nmdc:PropertyAssertion
+    has_raw_value: "50 kPa"
+    has_attribute_id: MIXS:0000122
+    has_attribute_label: absolute air humidity
+    has_numeric_value: 50
+    has_unit: kPa
+  - type: nmdc:PropertyAssertion
+    has_raw_value: "5.5 mL/L"
+    has_attribute_id: MIXS:0000119
+    has_attribute_label: dissolved oxygen
+    has_numeric_value: 5.5
+    has_unit: mL/L
+  - type: nmdc:PropertyAssertion
+    has_raw_value: "250 W/m2"
+    has_attribute_id: MIXS:0000112
+    has_attribute_label: solar irradiance
+    has_numeric_value: 250
+    has_unit: W/m2
