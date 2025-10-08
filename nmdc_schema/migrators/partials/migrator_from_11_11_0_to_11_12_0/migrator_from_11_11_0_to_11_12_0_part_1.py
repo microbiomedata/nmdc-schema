@@ -39,6 +39,8 @@ class Migrator(MigratorBase):
 
         self.adapter.do_for_each_document("biosample_set", self.migrate_misc_param_to_PropertyAssertion_range)
 
+        self.adapter.do_for_each_document("biosample_set", self.move_problematic_values_to_misc_param)
+
         # Get the actual collection names from the Database class slots
         real_collection_names = get_collection_names_with_qv_slots_from_schema()
 
@@ -117,6 +119,117 @@ class Migrator(MigratorBase):
                     f"Biosample {biosample.get('id')} has misc_param item that is not a TextValue: {item}"
                 )
         biosample["misc_param"] = property_assertions
+
+
+    def move_problematic_values_to_misc_param(self, biosample: dict) -> None:
+        r"""Move QuantityValue entries with invalid units to misc_param as PropertyAssertion.
+
+        >>> m = Migrator()
+
+        # Test: Biosample with valid QuantityValue entries
+        >>> biosample_valid = {
+        ...     "id": "test1",
+        ...     "type": "nmdc:Biosample",
+        ...     "abs_air_humidity": {
+        ...         "type": "nmdc:QuantityValue",
+        ...         "has_unit": "kg/kg",
+        ...         "has_numeric_value": 75.0
+        ...     },
+        ...     "diss_oxygen": {
+        ...         "type": "nmdc:QuantityValue",
+        ...         "has_unit": "umol/L",
+        ...         "has_numeric_value": 8.0
+        ...     },
+        ...     "solar_irradiance": {
+        ...         "type": "nmdc:QuantityValue",
+        ...         "has_unit": "kW/m2/d",
+        ...         "has_numeric_value": 200.0
+        ...     }
+        ... }
+        >>> m.move_problematic_values_to_misc_param(biosample_valid)
+        >>> biosample_valid.get("misc_param") is None
+        True
+
+        # Test: Biosample with problematic QuantityValue entries
+        >>> biosample_problematic = {
+        ...     "id": "test2",
+        ...     "type": "nmdc:Biosample",
+        ...     "abs_air_humidity": {
+        ...         "type": "nmdc:QuantityValue",
+        ...         "has_unit": "kPa",
+        ...         "has_numeric_value": 75.0
+        ...     },
+        ...     "diss_oxygen": {
+        ...         "type": "nmdc:QuantityValue",
+        ...         "has_unit": "mL/L",
+        ...         "has_numeric_value": 8.0
+        ...     },
+        ...     "solar_irradiance": {
+        ...         "type": "nmdc:QuantityValue",
+        ...         "has_unit": "W/m2",
+        ...         "has_numeric_value": 200.0
+        ...     }
+        ... }
+        >>> m.move_problematic_values_to_misc_param(biosample_problematic)
+        >>> biosample_problematic.get("misc_param") == [
+        ... {
+        ...     "type": "nmdc:PropertyAssertion",
+        ...     "has_attribute_label": "abs_air_humidity",
+        ...     "has_attribute_id": "MIXS:0000122",
+        ...     "has_numeric_value": 75.0,
+        ...     "has_unit": "kPa"
+        ... },
+        ... {
+        ...     "type": "nmdc:PropertyAssertion",
+        ...     "has_attribute_label": "diss_oxygen",
+        ...     "has_attribute_id": "MIXS:0000119",
+        ...     "has_numeric_value": 8.0,
+        ...     "has_unit": "mL/L"
+        ... },
+        ... {
+        ...     "type": "nmdc:PropertyAssertion",
+        ...     "has_attribute_label": "solar_irradiance",
+        ...     "has_attribute_id": "MIXS:0000112",
+        ...     "has_numeric_value": 200.0,
+        ...     "has_unit": "W/m2"
+        ... }]
+        True
+        >>> biosample_problematic.get("abs_air_humidity") is None
+        True
+        >>> biosample_problematic.get("diss_oxygen") is None
+        True
+        >>> biosample_problematic.get("solar_irradiance") is None
+        True
+        """
+        problematic_units = (
+            ("abs_air_humidity", "MIXS:0000122", "kPa"),
+            ("diss_oxygen", "MIXS:0000119", "mL/L"),
+            ("solar_irradiance", "MIXS:0000112", "W/m2"),
+        )
+        for slot_name, slot_uri, bad_unit in problematic_units:
+            qv = biosample.get(slot_name)
+            if isinstance(qv, dict) and qv.get("type") == "nmdc:QuantityValue":
+                if qv.get("has_unit") == bad_unit:
+                    # Move to misc_param as PropertyAssertion
+                    pa = {
+                        "type": "nmdc:PropertyAssertion",
+                        "has_attribute_label": slot_name,
+                        "has_attribute_id": slot_uri,
+                    }
+                    if "has_numeric_value" in qv:
+                        pa["has_numeric_value"] = qv["has_numeric_value"]
+                    if "has_unit" in qv:
+                        pa["has_unit"] = qv["has_unit"]
+                    if "has_raw_value" in qv:
+                        pa["has_raw_value"] = qv["has_raw_value"]
+
+                    # Ensure misc_param is a list and append the new PropertyAssertion
+                    if "misc_param" not in biosample or not isinstance(biosample["misc_param"], list):
+                        biosample["misc_param"] = []
+                    biosample["misc_param"].append(pa)
+                    # Remove the problematic QuantityValue from its original slot
+                    del biosample[slot_name]
+
 
     def confirm_units_fit_unitenum_and_storage_units(self, document: dict) -> None:
         r'''
