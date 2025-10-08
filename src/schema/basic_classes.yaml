@@ -1095,15 +1095,19 @@ enums:
     comments:
       - These are the non-abstract class descendants of PlannedProcess.
     permissible_values:
+      AnnotatingWorkflow:
       ChemicalConversionProcess:
       ChromatographicSeparationProcess:
       CollectingBiosamplesFromSite:
+      DataEmitterProcess:
+      DataGeneration:
       DissolvingProcess:
       Extraction:
       FiltrationProcess:
       LibraryPreparation:
       MagsAnalysis:
       MassSpectrometry:
+      MaterialProcessing:
       MetabolomicsAnalysis:
       MetagenomeAnnotation:
       MetagenomeAssembly:
@@ -1114,8 +1118,10 @@ enums:
       MixingProcess:
       NomAnalysis:
       NucleotideSequencing:
+      PlannedProcess:
       Pooling:
       ReadBasedTaxonomyAnalysis:
       ReadQcAnalysis:
       StorageProcess:
       SubSamplingProcess:
+      WorkflowExecution:
