@@ -9,9 +9,7 @@ imports:
   - attribute_values
   - basic_slots
   - basic_classes
-  - portal_emsl
-  - portal_jgi_metagenomics
-  - portal_jgi_metatranscriptomics
+  - portal_user_facility
   - portal_mixs_inspired
   - portal_sample_id
 
