@@ -10,10 +10,6 @@ from nmdc_schema_validation_plugin import NmdcSchemaValidationPlugin
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from units.scripts.production_validate_units import ProductionUnitsValidator
-from migrators.partials.migrator_from_11_9_1_to_11_10_0.migrator_from_11_9_1_to_11_10_0_part_1 import \
-    get_collection_names_with_qv_slots_from_schema
-
 
 class Migrator(MigratorBase):
     r"""A check-only migrator that raises an exception if any QuantityValue's has_unit slot
