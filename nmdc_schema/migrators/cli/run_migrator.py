@@ -17,6 +17,7 @@ Environment variables (loaded from .env file if present):
     MONGO_PASSWORD - MongoDB password
     MONGO_AUTH_DB - Authentication database name
 """
+import importlib
 
 import click
 import sys
@@ -28,18 +29,9 @@ from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 # Load environment variables from .env file if it exists
 load_dotenv()
 
-# Import all migrators
-from nmdc_schema.migrators.partials.migrator_from_11_9_1_to_11_10_0 import migrator_from_11_9_1_to_11_10_0_part_1
-
-# Map migrator names to their classes
-MIGRATORS = {
-    "migrator_from_11_9_1_to_11_10_0": migrator_from_11_9_1_to_11_10_0_part_1.Migrator,
-    # Add other migrators here as needed
-}
-
 
 @click.command()
-@click.argument("migrator_name", required=True, type=click.Choice(list(MIGRATORS.keys())))
+@click.argument("migrator", required=True)
 @click.argument("action", required=False, default="rollback", type=click.Choice(["commit", "rollback"]))
 @click.option("--host", default=lambda: os.getenv("MONGO_HOST", "localhost"), help="MongoDB host (default: from MONGO_HOST env var or localhost)")
 @click.option("--port", default=lambda: int(os.getenv("MONGO_PORT", "27022")), type=int, help="MongoDB port (default: from MONGO_PORT env var or 27022)")
@@ -47,10 +39,10 @@ MIGRATORS = {
 @click.option("--auth-db", default=lambda: os.getenv("MONGO_AUTH_DB"), help="Authentication database name (default: from MONGO_AUTH_DB env var)")
 @click.option("--username", default=lambda: os.getenv("MONGO_USERNAME"), help="MongoDB username (default: from MONGO_USERNAME env var)")
 @click.option("--password", default=lambda: os.getenv("MONGO_PASSWORD"), help="MongoDB password (default: from MONGO_PASSWORD env var)")
-def run_migrator(migrator_name, action, host, port, database, auth_db, username, password):
+def run_migrator(migrator, action, host, port, database, auth_db, username, password):
     """Run a specific migrator against MongoDB using PyMongo.
     
-    MIGRATOR_NAME should be one of the available migrators.
+    MIGRATOR should the fully qualified module name for module containing a Migrator class
     ACTION should be either 'commit' to save changes or 'rollback' to discard changes (default: rollback).
     """
     
@@ -70,12 +62,13 @@ def run_migrator(migrator_name, action, host, port, database, auth_db, username,
     
     commit_changes = action == "commit"
     
-    click.echo(f"Running migrator: {migrator_name}")
+    click.echo(f"Running migrator: {migrator}")
     click.echo(f"Action: {action.upper()} (changes will {'be saved' if commit_changes else 'be discarded'})")
     click.echo(f"MongoDB connection: {host}:{port}/{database}")
     
     # Get the migrator class
-    migrator_class = MIGRATORS[migrator_name]
+    migrator_module = importlib.import_module(migrator)
+    migrator_class = getattr(migrator_module, "Migrator")
     
     # Connect to MongoDB using PyMongo
     try:
