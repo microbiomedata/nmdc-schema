@@ -162,6 +162,3 @@ units-schema-extract-slot-unit-pairs = "units.scripts.schema_expand_storage_unit
 extend_exclude = [
     "nmdc_schema/nmdc-pydantic.py"
 ]
-
-[tool.deptry.per_rule_ignores]
-DEP003 = ["units"]
