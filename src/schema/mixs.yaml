@@ -6334,7 +6334,7 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-    description: Any other measurement performed or parameter collected, that is not listed here
+    description: Structured miscellaneous property assertions for this Biosample. Use when a value cannot cleanly fit an existing, policy-governed slot.
     title: miscellaneous parameter
     examples:
       - value: Bicarbonate ion concentration;2075 micromole per kilogram
@@ -6344,8 +6344,10 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000752
-    range: TextValue
+    range: PropertyAssertion
     multivalued: true
+    todos:
+      - This slot should not be available in the submission portal.
     inlined_as_list: true
   n_alkanes:
     annotations:
