@@ -1,14 +1,14 @@
-# Example Biosample demonstrating misc_param usage for metadata with non-compliant units
+# Example Biosample demonstrating PropertyAssertion usage via misc_param
 # Based on issue #2633: https://github.com/microbiomedata/nmdc-schema/issues/2633
 #
-# This file illustrates the three problematic cases identified by Patrick Kalita:
-# 1. abs_air_humidity with unit kPa (expected: [lb_av]|g/g|kg|kg/kg)
-# 2. diss_oxygen with unit mL/L (expected: mg/L|umol/kg|umol/L)
-# 3. solar_irradiance with unit W/m2 (expected: kW/m2/d|erg/cm2/s)
+# This file demonstrates PropertyAssertion capabilities:
+# 1. Non-compliant units (kPa, mL/L, W/m2 don't match storage_units annotations)
+# 2. Arbitrary units (puppies, ppb)
+# 3. Semantic annotations (has_quantity_kind_id for concentration measurements)
+# 4. Optional MIxS identifiers (has_attribute_id) for standard properties
 #
-# These values exist in MongoDB with units that don't comply with the schema's storage_units annotations.
-# Using PropertyAssertion via misc_param allows capturing this non-compliant metadata while maintaining
-# schema validation and providing a migration path.
+# PropertyAssertion via misc_param provides flexible metadata capture while maintaining
+# schema validation and enabling data integration through semantic annotations.
 
 id: nmdc:bsm-99-noncompliant
 type: nmdc:Biosample
@@ -56,3 +56,9 @@ misc_param:
     has_attribute_label: solar irradiance
     has_numeric_value: 250
     has_unit: W/m2
+  - type: nmdc:PropertyAssertion
+    has_raw_value: "12.5 ppb"
+    has_attribute_label: soluble chromium
+    has_numeric_value: 12.5
+    has_unit: ppb
+    has_quantity_kind_id: PATO:0000033

@@ -6349,8 +6349,6 @@ slots:
     todos:
       - This slot should not be available in the submission portal.
     inlined_as_list: true
-    todos:
-      - This slot should not be available in the submission portal.
   n_alkanes:
     annotations:
       expected_value:
