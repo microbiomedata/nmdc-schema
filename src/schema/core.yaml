@@ -994,8 +994,6 @@ classes:
           expected_value: date, string
         range: string
       slope_aspect:
-        examples:
-          - value: 35
         comments:
           - Aspect is the orientation of slope, measured clockwise in degrees from 0 to 360,
             where 0 is north-facing, 90 is east-facing, 180 is south-facing, and 270 is west-facing.
@@ -1030,9 +1028,6 @@ classes:
           - value: https://doi.org/10.1371/journal.pone.0176357
         todos:
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts?
-      annual_precpt:
-        examples:
-          - value: 8.94 inch
       cur_vegetation:
         description:
           Vegetation classification from one or more standard classification
@@ -1078,9 +1073,6 @@ classes:
         comments:
           - Seasons are defined as spring (March, April, May), summer (June, July, August),
             autumn (September, October, November) and winter (December, January, February).
-        examples:
-          - value: 0.4 inch
-          - value: 10.16 mm
         notes:
           - mean and average are the same thing, but it seems like bad practice to not be consistent. Changed mean to average
         todos:
@@ -1127,15 +1119,10 @@ classes:
         examples:
           - value: https://doi.org/10.2134/agronmonogr9.2.c32
           - value: https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/sssaj2009.0389?casa_token=bm0pYIUdNMgAAAAA%3AOWVRR0STHaOe-afTcTdxn5m1hM8n2ltM0wY-b1iYpYdD9dhwppk5j3LvC2IO5yhOIvyLVeQz4NZRCZo
-      tot_nitro_content:
-        examples:
-          - value: 5 mg N/ L
       tot_org_c_meth:
         examples:
           - value: https://doi.org/10.1080/07352680902776556
       tot_org_carb:
-        examples:
-          - value: 5 mg N/ L
         todos:
           - check description. How are they different?
       salinity_meth:
@@ -1497,7 +1484,7 @@ slots:
     description: lime buffer capacity, determined after 30 minute incubation
     title: lime buffer capacity (at 30 minutes)
     examples:
-      - value: 543 mg/kg
+      - value: 543 [ppm]
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
       - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
@@ -1516,7 +1503,7 @@ slots:
     description: lime buffer capacity, determined at equilibrium after 5 day incubation
     title: lime buffer capacity (after 5 day incubation)
     examples:
-      - value: 1575 mg/kg
+      - value: 1575 [ppm]
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
     range: QuantityValue
@@ -1579,7 +1566,7 @@ slots:
     is_a: concentration
     description: When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination
     annotations:
-      storage_units: '%|mmol/L|umol/L'
+      storage_units: '%|mmol/L|umol/L|mg/L|g/L'
   duration: # or could be a ISO8601 period string
     range: QuantityValue
     description: The elapsed time of an activity.

@@ -5,6 +5,9 @@ description: Schema for National Microbiome Data Collaborative (NMDC), Attribute
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
+imports:
+  - basic_slots
+
 prefixes:
   schema: "http://schema.org/"
   nmdc: "https://w3id.org/nmdc/"
@@ -34,6 +37,8 @@ classes:
         description: Unnormalized atomic string representation, should in syntax {number} {unit}
       has_unit:
         description: The unit of the quantity
+        range: UnitEnum
+        required: true
       has_numeric_value:
         description: The number part of the quantity
     # range: double # MAM 2024-0405 I don't believe we have any data that requires this level of precision
@@ -124,8 +129,73 @@ classes:
         required: true
     mappings:
       - schema:GeoCoordinates
-slots:
 
+  PropertyAssertion:
+    class_uri: nmdc:PropertyAssertion
+    is_a: AttributeValue
+    description: >-
+      A structured record of data that doesn't fit nicely within the constraints of other NMDC AttributeValues.
+      Uses primitive ranges only.
+    comments:
+      - >-
+        This class enables flexible metadata capture for properties that don't align with existing,
+        policy-governed slots in NMDC schema.
+      - >-
+        Interoperability note: This approach is aligned with the BERtron schema's 'properties' slot pattern
+        (see https://github.com/ber-data/bertron-schema), which uses any_of to support both TextValue
+        and QuantityValue ranges. NMDC's PropertyAssertion provides a more granular approach by using
+        primitive types with optional semantic annotations, enabling better validation while maintaining
+        flexibility for diverse metadata types.
+      - >-
+        PropertyAssertion supports both categorical values (via has_value_term_id) and numeric values
+        (via has_numeric_value with optional min/max ranges), along with temporal (has_datetime_value)
+        and boolean (has_boolean_value) data types.
+    slots:
+      - has_attribute_label
+      - has_attribute_id
+      - has_quantity_kind_id
+      - has_value_term_id
+      - has_boolean_value
+      - has_datetime_value
+      - has_numeric_value
+      - has_minimum_numeric_value
+      - has_maximum_numeric_value
+      - has_unit
+    slot_usage:
+      has_raw_value:
+        description: Original contributor string representation (unparsed)
+        required: true
+      has_unit:
+        description: UCUM unit code (required only when numeric value is present)
+        required: false
+    examples:
+      - object:
+          type: nmdc:PropertyAssertion
+          has_raw_value: "50 kPa"
+          has_attribute_id: MIXS:0000122
+          has_attribute_label: absolute air humidity
+          has_numeric_value: 50
+          has_unit: kPa
+        description: Data provided from submission that doesn't conform to required abs_air_humidity units
+      - object:
+          type: nmdc:PropertyAssertion
+          has_raw_value: "5.5 mL/L"
+          has_attribute_id: MIXS:0000119
+          has_attribute_label: dissolved oxygen
+          has_numeric_value: 5.5
+          has_unit: mL/L
+        description: Data provided from submission that doesn't conform to required UCUM unit
+      - object:
+          type: nmdc:PropertyAssertion
+          has_raw_value: "250 W/m2"
+          has_attribute_id: MIXS:0000112
+          has_attribute_label: solar irradiance
+          has_numeric_value: 250
+          has_unit: W/m2
+        description: Unit provided is invalid for UCUM and standard
+
+
+slots:
   name:
     range: string
     description: >-
@@ -176,8 +246,7 @@ slots:
     mappings:
       - qud:unit
       - schema:unitCode
-    required: true
-    range: UnitEnum
+    range: string
 
   type:
     required: true
@@ -257,6 +326,53 @@ slots:
       - the website slot and its subproperties are virtually identical to the url slot, except that they are multivalued and url is single-valued.
     see_also:
       - nmdc:url
+
+  has_attribute_label:
+    range: string
+    description: Human-readable label for the property (e.g., MIxS label, ENVO term label).
+    comments:
+      - >-
+        This provides a human-friendly name for the asserted property. For example, "bicarbonate ion concentration"
+        or "total phosphorus". The label helps with readability and data discovery.
+
+  has_attribute_id:
+    range: uriorcurie
+    description: CURIE or IRI for the property (MIxS slot, NMDC slot, ENVO/OBI term, etc.).
+    comments:
+      - >-
+        This provides a resolvable identifier for the property being asserted. Examples include MIXS:0000117
+        for total phosphorus, or ENVO:01001357 for bicarbonate ion concentration.
+      - >-
+        Prefer using standard ontology terms (ENVO, PATO, OBI, etc.) or MIxS identifiers when available
+        to enhance interoperability.
+
+  has_quantity_kind_id:
+    range: uriorcurie
+    description: Optional CURIE or IRI for the physical quantity kind (e.g., qudt:QuantityKind).
+    comments:
+      - >-
+        This slot enables precise semantic description of what physical quantity is being measured,
+        independent of the specific units used. For example, qudt:MassConcentration or qudt:Temperature.
+      - >-
+        Using quantity kind identifiers from QUDT or similar vocabularies improves data integration
+        and enables automated unit conversion.
+
+  has_value_term_id:
+    range: uriorcurie
+    description: CURIE or IRI for categorical values (ENVO, PATO, METPO, etc.).
+    comments:
+      - >-
+        Use this slot when the value of the property is a controlled vocabulary term rather than
+        a numeric or free-text value. For example, ENVO:00002297 for "desert ecosystem" or
+        PATO:0001199 for "dry".
+
+  has_datetime_value:
+    range: string
+    description: Date-time value for the property in ISO-8601 format.
+    comments:
+      - >-
+        Use this slot for temporal properties. The value should follow ISO-8601 format
+        (e.g., "2025-06-12T14:30:00Z").
 
 enums:
   UnitEnum:
@@ -417,6 +533,8 @@ enums:
         description: The Unified Code for Units of Measure (UCUM) representation of square meters.
       atm:
         description: The Unified Code for Units of Measure (UCUM) representation of atmosphere.
+      V:
+        description: The Unified Code for Units of Measure (UCUM) representation of volt.
       mV:
         description: The Unified Code for Units of Measure (UCUM) representation of millivolt.
       L:

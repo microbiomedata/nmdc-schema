@@ -1108,6 +1108,10 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of atmosphere.
     """
+    V = "V"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of volt.
+    """
     mV = "mV"
     """
     The Unified Code for Units of Measure (UCUM) representation of millivolt.
@@ -5643,8 +5647,6 @@ class Biosample(Sample):
                                                                    'has been submitted '
                                                                    'to NMDC',
                                                     'name': 'alternative_identifiers'},
-                        'annual_precpt': {'examples': [{'value': '8.94 inch'}],
-                                          'name': 'annual_precpt'},
                         'associated_studies': {'name': 'associated_studies',
                                                'pattern': '^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                                'range': 'Study',
@@ -5844,8 +5846,6 @@ class Biosample(Sample):
                                                        '(September, October, November) '
                                                        'and winter (December, January, '
                                                        'February).'],
-                                          'examples': [{'value': '0.4 inch'},
-                                                       {'value': '10.16 mm'}],
                                           'name': 'season_precpt',
                                           'notes': ['mean and average are the same '
                                                     'thing, but it seems like bad '
@@ -5884,7 +5884,6 @@ class Biosample(Sample):
                                                         'exposure that will influence '
                                                         'soil temperature and '
                                                         'evapotranspiration.',
-                                         'examples': [{'value': '35'}],
                                          'name': 'slope_aspect'},
                         'slope_gradient': {'examples': [{'value': '10%'},
                                                         {'value': '10 %'},
@@ -5933,12 +5932,9 @@ class Biosample(Sample):
                         'tot_nitro_cont_meth': {'examples': [{'value': 'https://doi.org/10.2134/agronmonogr9.2.c32'},
                                                              {'value': 'https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/sssaj2009.0389?casa_token=bm0pYIUdNMgAAAAA%3AOWVRR0STHaOe-afTcTdxn5m1hM8n2ltM0wY-b1iYpYdD9dhwppk5j3LvC2IO5yhOIvyLVeQz4NZRCZo'}],
                                                 'name': 'tot_nitro_cont_meth'},
-                        'tot_nitro_content': {'examples': [{'value': '5 mg N/ L'}],
-                                              'name': 'tot_nitro_content'},
                         'tot_org_c_meth': {'examples': [{'value': 'https://doi.org/10.1080/07352680902776556'}],
                                            'name': 'tot_org_c_meth'},
-                        'tot_org_carb': {'examples': [{'value': '5 mg N/ L'}],
-                                         'name': 'tot_org_carb',
+                        'tot_org_carb': {'name': 'tot_org_carb',
                                          'todos': ['check description. How are they '
                                                    'different?']},
                         'water_cont_soil_meth': {'comments': ['Required if providing '
@@ -6096,7 +6092,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[lb_av]|g/g|kg|kg/kg'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '9 gram per gram'}],
+         'examples': [{'value': '9 g/g'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000122'} })
     add_recov_method: Optional[TextValue] = Field(default=None, title="secondary and tertiary recovery methods and start date", description="""Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for increase of hydrocarbon recovery from resource and start date for each one of them. If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'add_recov_method',
@@ -6182,7 +6178,7 @@ class Biosample(Sample):
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '20 degree Celsius'}],
+         'examples': [{'value': '20 Cel'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000124'} })
     air_temp_regm: Optional[list[TextValue]] = Field(default=None, title="air temperature regimen", description="""Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens""", json_schema_extra = { "linkml_meta": {'alias': 'air_temp_regm',
@@ -6242,7 +6238,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'meq/L|mg/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '50 milligram per liter'}],
+         'examples': [{'value': '50 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000421'} })
     alkalinity_method: Optional[TextValue] = Field(default=None, title="alkalinity method", description="""Method used for alkalinity measurement""", json_schema_extra = { "linkml_meta": {'alias': 'alkalinity_method',
@@ -6264,7 +6260,7 @@ class Biosample(Sample):
                                             'value': 'mole per liter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'mol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.005 mole per liter'}],
+         'examples': [{'value': '0.005 mol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000490'} })
     alt: Optional[QuantityValue] = Field(default=None, title="altitude", description="""Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air""", json_schema_extra = { "linkml_meta": {'alias': 'alt',
@@ -6273,7 +6269,7 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '100 meter'}],
+         'examples': [{'value': '100 m'}],
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000094'} })
     aminopept_act: Optional[QuantityValue] = Field(default=None, title="aminopeptidase activity", description="""Measurement of aminopeptidase activity""", json_schema_extra = { "linkml_meta": {'alias': 'aminopept_act',
@@ -6285,7 +6281,7 @@ class Biosample(Sample):
                                             'value': 'mole per liter per hour'},
                          'storage_units': {'tag': 'storage_units', 'value': 'mol/L/h'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.269 mole per liter per hour'}],
+         'examples': [{'value': '0.269 mol/L/h'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000172'} })
     ammonium: Optional[QuantityValue] = Field(default=None, title="ammonium", description="""Concentration of ammonium in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'ammonium',
@@ -6299,7 +6295,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '1.5 milligram per liter'}],
+         'examples': [{'value': '1.5 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000427'} })
     amount_light: Optional[QuantityValue] = Field(default=None, title="amount of light", description="""The unit of illuminance and luminous emittance, measuring luminous flux per unit area""", json_schema_extra = { "linkml_meta": {'alias': 'amount_light',
@@ -6334,7 +6330,7 @@ class Biosample(Sample):
                                             'value': 'millimeter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'mm'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '8.94 inch'}],
+         'examples': [{'value': '225 mm'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000644'} })
     annual_temp: Optional[QuantityValue] = Field(default=None, title="mean annual temperature", description="""Mean annual temperature""", json_schema_extra = { "linkml_meta": {'alias': 'annual_temp',
@@ -6346,7 +6342,7 @@ class Biosample(Sample):
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '12.5 degree Celsius'}],
+         'examples': [{'value': '12.5 Cel'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000642'} })
     antibiotic_regm: Optional[list[TextValue]] = Field(default=None, title="antibiotic regimen", description="""Information about treatment involving antibiotic administration; should include the name of antibiotic, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple antibiotic regimens""", json_schema_extra = { "linkml_meta": {'alias': 'antibiotic_regm',
@@ -6431,7 +6427,7 @@ class Biosample(Sample):
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '25.5 degree Celsius'}],
+         'examples': [{'value': '25.5 Cel'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000141'} })
     avg_occup: Optional[TextValue] = Field(default=None, title="average daily occupancy", description="""Daily average occupancy of room. Indicate the number of person(s) daily occupying the sampling room.""", json_schema_extra = { "linkml_meta": {'alias': 'avg_occup',
@@ -6451,7 +6447,7 @@ class Biosample(Sample):
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '12.5 degree Celsius'}],
+         'examples': [{'value': '12.5 Cel'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000142'} })
     bac_prod: Optional[QuantityValue] = Field(default=None, title="bacterial production", description="""Bacterial production in the water column measured by isotope uptake""", json_schema_extra = { "linkml_meta": {'alias': 'bac_prod',
@@ -6464,7 +6460,7 @@ class Biosample(Sample):
                                                      'day'},
                          'storage_units': {'tag': 'storage_units', 'value': 'mg/m3/d'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '5 milligram per cubic meter per day'}],
+         'examples': [{'value': '5 mg/m3/d'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000683'} })
     bac_resp: Optional[QuantityValue] = Field(default=None, title="bacterial respiration", description="""Measurement of bacterial respiration in the water column""", json_schema_extra = { "linkml_meta": {'alias': 'bac_resp',
@@ -6479,7 +6475,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'mg/m3/d|umol/L/h'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '300 micromole oxygen per liter per hour'}],
+         'examples': [{'value': '300 umol/L/h'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000684'} })
     bacteria_carb_prod: Optional[QuantityValue] = Field(default=None, title="bacterial carbon production", description="""Measurement of bacterial carbon production""", json_schema_extra = { "linkml_meta": {'alias': 'bacteria_carb_prod',
@@ -6491,7 +6487,7 @@ class Biosample(Sample):
                                             'value': 'nanogram per hour'},
                          'storage_units': {'tag': 'storage_units', 'value': 'ng/h'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '2.53 microgram per liter per hour'}],
+         'examples': [{'value': '50 ng/h'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000173'} })
     barometric_press: Optional[QuantityValue] = Field(default=None, title="barometric pressure", description="""Force per unit area exerted against a surface by the weight of air above that surface""", json_schema_extra = { "linkml_meta": {'alias': 'barometric_press',
@@ -6503,7 +6499,7 @@ class Biosample(Sample):
                                             'value': 'millibar'},
                          'storage_units': {'tag': 'storage_units', 'value': 'mbar'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '5 millibar'}],
+         'examples': [{'value': '1013 mbar'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000096'} })
     basin: Optional[TextValue] = Field(default=None, title="basin name", description="""Name of the basin (e.g. Campos)""", json_schema_extra = { "linkml_meta": {'alias': 'basin',
@@ -6631,7 +6627,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'ug/L|ug/g'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '14 microgram per liter'}],
+         'examples': [{'value': '14 ug/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000175'} })
     blood_press_diast: Optional[QuantityValue] = Field(default=None, title="host blood pressure diastolic", description="""Resting diastolic blood pressure, measured as mm mercury""", json_schema_extra = { "linkml_meta": {'alias': 'blood_press_diast',
@@ -6667,7 +6663,7 @@ class Biosample(Sample):
                                             'value': 'parts per million'},
                          'storage_units': {'tag': 'storage_units', 'value': '[ppm]'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.05 parts per million'}],
+         'examples': [{'value': '0.05 [ppm]'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000176'} })
     build_docs: Optional[BuildDocsEnum] = Field(default=None, title="design, construction, and operation documents", description="""The building design, construction and operation documents""", json_schema_extra = { "linkml_meta": {'alias': 'build_docs',
@@ -6704,7 +6700,7 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit', 'value': 'year'},
                          'storage_units': {'tag': 'storage_units', 'value': 'a'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '15'}],
+         'examples': [{'value': '15 a'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000145'} })
     built_struc_set: Optional[TextValue] = Field(default=None, title="built structure setting", description="""The characterization of the location of the built structure as high or low human density""", json_schema_extra = { "linkml_meta": {'alias': 'built_struc_set',
@@ -6738,7 +6734,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L|umol/L|mg/kg'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.2 micromole per liter'}],
+         'examples': [{'value': '0.2 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000432'} })
     carb_dioxide: Optional[QuantityValue] = Field(default=None, title="carbon dioxide", description="""Carbon dioxide (gas) amount or concentration at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'carb_dioxide',
@@ -6752,7 +6748,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '410 parts per million'}],
+         'examples': [{'value': '410 [ppm]'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000097'} })
     carb_monoxide: Optional[QuantityValue] = Field(default=None, title="carbon monoxide", description="""Carbon monoxide (gas) amount or concentration at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'carb_monoxide',
@@ -6766,7 +6762,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.1 parts per million'}],
+         'examples': [{'value': '0.1 [ppm]'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000098'} })
     carb_nitro_ratio: Optional[QuantityValue] = Field(default=None, title="carbon/nitrogen ratio", description="""Ratio of amount or concentrations of carbon to nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'carb_nitro_ratio',
@@ -6788,7 +6784,7 @@ class Biosample(Sample):
                                             'value': 'square meter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'm2'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '25 square meter'}],
+         'examples': [{'value': '25 m2'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000148'} })
     ceil_cond: Optional[CeilCondEnum] = Field(default=None, title="ceiling condition", description="""The physical condition of the ceiling at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas""", json_schema_extra = { "linkml_meta": {'alias': 'ceil_cond',
@@ -6933,7 +6929,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '5000 milligram per liter'}],
+         'examples': [{'value': '5000 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000429'} })
     chlorophyll: Optional[QuantityValue] = Field(default=None, title="chlorophyll", description="""Concentration of chlorophyll""", json_schema_extra = { "linkml_meta": {'alias': 'chlorophyll',
@@ -6947,7 +6943,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'mg/m3|ug/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '5 milligram per cubic meter'}],
+         'examples': [{'value': '5 mg/m3'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000177'} })
     climate_environment: Optional[list[TextValue]] = Field(default=None, title="climate environment", description="""Treatment involving an exposure to a particular climate; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple climates""", json_schema_extra = { "linkml_meta": {'alias': 'climate_environment',
@@ -6984,7 +6980,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'mS/cm|uS/cm'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '10 milliSiemens per centimeter'}],
+         'examples': [{'value': '10 uS/cm'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000692'} })
     cool_syst_id: Optional[TextValue] = Field(default=None, title="cooling system identifier", description="""The cooling system identifier""", json_schema_extra = { "linkml_meta": {'alias': 'cool_syst_id',
@@ -7075,7 +7071,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'g/cm3|g/m3|kg/m3'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '1000 kilogram per cubic meter'}],
+         'examples': [{'value': '1000 kg/m3'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000435'} })
     depos_env: Optional[DeposEnvEnum] = Field(default=None, title="depositional environment", description="""Main depositional environment (https://en.wikipedia.org/wiki/Depositional_environment). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'depos_env',
@@ -7093,7 +7089,7 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '10 meter'}],
+         'examples': [{'value': '10 m'}],
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000018'} })
     dew_point: Optional[QuantityValue] = Field(default=None, title="dew point", description="""The temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water.""", json_schema_extra = { "linkml_meta": {'alias': 'dew_point',
@@ -7105,7 +7101,7 @@ class Biosample(Sample):
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '22 degree Celsius'}],
+         'examples': [{'value': '22 Cel'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000129'} })
     diether_lipids: Optional[list[TextValue]] = Field(default=None, title="diether lipids", description="""Concentration of diether lipids; can include multiple types of diether lipids""", json_schema_extra = { "linkml_meta": {'alias': 'diether_lipids',
@@ -7132,7 +7128,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'mg/L|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '5 milligram per liter'}],
+         'examples': [{'value': '5 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000436'} })
     diss_hydrogen: Optional[QuantityValue] = Field(default=None, title="dissolved hydrogen", description="""Concentration of dissolved hydrogen""", json_schema_extra = { "linkml_meta": {'alias': 'diss_hydrogen',
@@ -7144,7 +7140,7 @@ class Biosample(Sample):
                                             'value': 'micromole per liter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.3 micromole per liter'}],
+         'examples': [{'value': '0.3 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000179'} })
     diss_inorg_carb: Optional[QuantityValue] = Field(default=None, title="dissolved inorganic carbon", description="""Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter""", json_schema_extra = { "linkml_meta": {'alias': 'diss_inorg_carb',
@@ -7156,9 +7152,9 @@ class Biosample(Sample):
                                             'value': 'microgram per liter, milligram '
                                                      'per liter, parts per million'},
                          'storage_units': {'tag': 'storage_units',
-                                           'value': '[ppm]|mg/L|ug/L'}},
+                                           'value': '[ppm]|mg/L|ug/L|umol/kg'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '2059 micromole per kilogram'}],
+         'examples': [{'value': '2059 umol/kg'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000434'} })
     diss_inorg_nitro: Optional[QuantityValue] = Field(default=None, title="dissolved inorganic nitrogen", description="""Concentration of dissolved inorganic nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'diss_inorg_nitro',
@@ -7172,7 +7168,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'ug/L|umol/L|mg/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '761 micromole per liter'}],
+         'examples': [{'value': '761 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000698'} })
     diss_inorg_phosp: Optional[QuantityValue] = Field(default=None, title="dissolved inorganic phosphorus", description="""Concentration of dissolved inorganic phosphorus in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'diss_inorg_phosp',
@@ -7184,9 +7180,9 @@ class Biosample(Sample):
                                             'value': 'microgram per liter, milligram '
                                                      'per liter, parts per million'},
                          'storage_units': {'tag': 'storage_units',
-                                           'value': '[ppm]|mg/L|ug/L'}},
+                                           'value': '[ppm]|mg/L|ug/L|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '56.5 micromole per liter'}],
+         'examples': [{'value': '56.5 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000106'} })
     diss_iron: Optional[QuantityValue] = Field(default=None, title="dissolved iron", description="""Concentration of dissolved iron in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'diss_iron',
@@ -7212,7 +7208,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'mg/L|umol/L|ug/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '197 micromole per liter'}],
+         'examples': [{'value': '197 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000433'} })
     diss_org_nitro: Optional[QuantityValue] = Field(default=None, title="dissolved organic nitrogen", description="""Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2""", json_schema_extra = { "linkml_meta": {'alias': 'diss_org_nitro',
@@ -7226,7 +7222,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'mg/L|ug/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.05 micromole per liter'}],
+         'examples': [{'value': '0.05 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000162'} })
     diss_oxygen: Optional[QuantityValue] = Field(default=None, title="dissolved oxygen", description="""Concentration of dissolved oxygen""", json_schema_extra = { "linkml_meta": {'alias': 'diss_oxygen',
@@ -7240,7 +7236,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'mg/L|umol/kg|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '175 micromole per kilogram'}],
+         'examples': [{'value': '175 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000119'} })
     diss_oxygen_fluid: Optional[QuantityValue] = Field(default=None, title="dissolved oxygen in fluids", description="""Concentration of dissolved oxygen in the oil field produced fluids as it contributes to oxgen-corrosion and microbial activity (e.g. Mic).""", json_schema_extra = { "linkml_meta": {'alias': 'diss_oxygen_fluid',
@@ -7320,7 +7316,7 @@ class Biosample(Sample):
                                             'value': 'square meter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'm2'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '2.5 square meter'}],
+         'examples': [{'value': '2.5 m2'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000158'} })
     door_type: Optional[DoorTypeEnum] = Field(default=None, title="door type", description="""The type of door material""", json_schema_extra = { "linkml_meta": {'alias': 'door_type',
@@ -7373,7 +7369,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'umol/m2/s'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '28.71 microEinstein per square meter per second'}],
+         'examples': [{'value': '28.71 umol/m2/s'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000703'} })
     drainage_class: Optional[DrainageClassEnum] = Field(default=None, title="drainage classification", description="""Drainage classification from a standard system such as the USDA system""", json_schema_extra = { "linkml_meta": {'alias': 'drainage_class',
@@ -7779,9 +7775,9 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'milligram chlorophyll a per '
                                                      'cubic meter, volts'},
-                         'storage_units': {'tag': 'storage_units', 'value': 'mg/m3'}},
+                         'storage_units': {'tag': 'storage_units', 'value': 'mg/m3|V'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '2.5 volts'}],
+         'examples': [{'value': '2.5 V'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000704'} })
     freq_clean: Optional[QuantityValue] = Field(default=None, title="frequency of cleaning", description="""The number of times the sample location is cleaned. Frequency of cleaning might be on a Daily basis, Weekly, Monthly, Quarterly or Annually.""", json_schema_extra = { "linkml_meta": {'alias': 'freq_clean',
@@ -7904,7 +7900,7 @@ class Biosample(Sample):
                                             'value': 'mol per liter per hour'},
                          'storage_units': {'tag': 'storage_units', 'value': 'mol/L/h'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '5 mol per liter per hour'}],
+         'examples': [{'value': '5 mol/L/h'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000137'} })
     gravidity: Optional[TextValue] = Field(default=None, title="gravidity", description="""Whether or not subject is gravid, and if yes date due or date post-conception, specifying which is used""", json_schema_extra = { "linkml_meta": {'alias': 'gravidity',
@@ -8164,7 +8160,7 @@ class Biosample(Sample):
                                             'value': 'year, day, hour'},
                          'storage_units': {'tag': 'storage_units', 'value': 'a|d|h'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '10 days'}],
+         'examples': [{'value': '10 d'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000255'} })
     host_body_habitat: Optional[TextValue] = Field(default=None, title="host body habitat", description="""Original body habitat where the sample was obtained from""", json_schema_extra = { "linkml_meta": {'alias': 'host_body_habitat',
@@ -8206,7 +8202,7 @@ class Biosample(Sample):
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '15 degree Celsius'}],
+         'examples': [{'value': '15 Cel'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000274'} })
     host_color: Optional[TextValue] = Field(default=None, title="host color", description="""The color of host""", json_schema_extra = { "linkml_meta": {'alias': 'host_color',
@@ -8247,7 +8243,7 @@ class Biosample(Sample):
                                             'value': 'kilogram, gram'},
                          'storage_units': {'tag': 'storage_units', 'value': 'g|kg'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '500 gram'}],
+         'examples': [{'value': '500 g'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000257'} })
     host_family_relation: Optional[list[str]] = Field(default=None, title="host family relationship", description="""Familial relationships to other hosts in the same study; can include multiple relationships""", json_schema_extra = { "linkml_meta": {'alias': 'host_family_relation',
@@ -8290,7 +8286,7 @@ class Biosample(Sample):
                                             'value': 'centimeter, millimeter, meter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'cm|m|mm'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.1 meter'}],
+         'examples': [{'value': '0.1 m'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000264'} })
     host_last_meal: Optional[list[TextValue]] = Field(default=None, title="host last meal", description="""Content of last meal and time since feeding; can include multiple values""", json_schema_extra = { "linkml_meta": {'alias': 'host_last_meal',
@@ -8312,7 +8308,7 @@ class Biosample(Sample):
                                             'value': 'centimeter, millimeter, meter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'cm|m|mm'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '1 meter'}],
+         'examples': [{'value': '1 m'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000256'} })
     host_life_stage: Optional[TextValue] = Field(default=None, title="host life stage", description="""Description of life stage of host""", json_schema_extra = { "linkml_meta": {'alias': 'host_life_stage',
@@ -8416,7 +8412,7 @@ class Biosample(Sample):
                                             'value': 'kilogram, gram'},
                          'storage_units': {'tag': 'storage_units', 'value': 'g|kg'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '2500 gram'}],
+         'examples': [{'value': '2500 g'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000263'} })
     host_wet_mass: Optional[QuantityValue] = Field(default=None, title="host wet mass", description="""Measurement of wet mass""", json_schema_extra = { "linkml_meta": {'alias': 'host_wet_mass',
@@ -8428,7 +8424,7 @@ class Biosample(Sample):
                                             'value': 'kilogram, gram'},
                          'storage_units': {'tag': 'storage_units', 'value': 'g|kg'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '1500 gram'}],
+         'examples': [{'value': '1500 g'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000567'} })
     humidity: Optional[QuantityValue] = Field(default=None, title="humidity", description="""Amount of water vapour in the air, at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'humidity',
@@ -8440,7 +8436,7 @@ class Biosample(Sample):
                                             'value': 'gram per cubic meter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'g/m3|%'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '25 gram per cubic meter'}],
+         'examples': [{'value': '25 g/m3'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000100'} })
     humidity_regm: Optional[list[TextValue]] = Field(default=None, title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'alias': 'humidity_regm',
@@ -8573,7 +8569,7 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit', 'value': 'lux'},
                          'storage_units': {'tag': 'storage_units', 'value': 'lx'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.3 lux'}],
+         'examples': [{'value': '0.3 lx'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000706'} })
     light_regm: Optional[TextValue] = Field(default=None, title="light regimen", description="""Information about treatment(s) involving exposure to light, including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'alias': 'light_regm',
@@ -8670,7 +8666,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L|mol/L|umol/kg|mg/kg'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '52.8 micromole per kilogram'}],
+         'examples': [{'value': '52.8 umol/kg'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000431'} })
     max_occup: Optional[QuantityValue] = Field(default=None, title="maximum occupancy", description="""The maximum amount of people allowed in the indoor environment""", json_schema_extra = { "linkml_meta": {'alias': 'max_occup',
@@ -8692,7 +8688,7 @@ class Biosample(Sample):
                                             'value': 'meter per second'},
                          'storage_units': {'tag': 'storage_units', 'value': 'm/s'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.5 meter per second'}],
+         'examples': [{'value': '0.5 m/s'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000498'} })
     mean_peak_frict_vel: Optional[QuantityValue] = Field(default=None, title="mean peak friction velocity", description="""Measurement of mean peak friction velocity""", json_schema_extra = { "linkml_meta": {'alias': 'mean_peak_frict_vel',
@@ -8704,7 +8700,7 @@ class Biosample(Sample):
                                             'value': 'meter per second'},
                          'storage_units': {'tag': 'storage_units', 'value': 'm/s'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '1 meter per second'}],
+         'examples': [{'value': '1 m/s'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000502'} })
     mech_struc: Optional[MechStrucEnum] = Field(default=None, title="mechanical structure", description="""mechanical structure: a moving structure""", json_schema_extra = { "linkml_meta": {'alias': 'mech_struc',
@@ -8737,7 +8733,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppb]|[ppm]|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '1800 parts per billion'}],
+         'examples': [{'value': '1800 [ppb]'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000101'} })
     micro_biomass_meth: Optional[str] = Field(default=None, title="microbial biomass method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'alias': 'micro_biomass_meth',
@@ -8816,7 +8812,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '65 micromole per liter'}],
+         'examples': [{'value': '65 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000425'} })
     nitrite: Optional[QuantityValue] = Field(default=None, title="nitrite", description="""Concentration of nitrite in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'nitrite',
@@ -8830,7 +8826,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.5 micromole per liter'}],
+         'examples': [{'value': '0.5 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000426'} })
     nitro: Optional[QuantityValue] = Field(default=None, title="nitrogen", description="""Concentration of nitrogen (total)""", json_schema_extra = { "linkml_meta": {'alias': 'nitro',
@@ -8843,7 +8839,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'umol/L|%'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '4.2 micromole per liter'}],
+         'examples': [{'value': '4.2 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000504'} })
     non_min_nutr_regm: Optional[list[str]] = Field(default=None, title="non-mineral nutrient regimen", description="""Information about treatment involving the exposure of plant to non-mineral nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple non-mineral nutrient regimens""", json_schema_extra = { "linkml_meta": {'alias': 'non_min_nutr_regm',
@@ -8932,9 +8928,9 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'micromole per liter'},
                          'storage_units': {'tag': 'storage_units',
-                                           'value': 'umol/L|%'}},
+                                           'value': 'umol/L|%|mg/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '1.5 microgram per liter'}],
+         'examples': [{'value': '0.015 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000508'} })
     org_count_qpcr_info: Optional[str] = Field(default=None, title="organism count qPCR information", description="""If qpcr was used for the cell count, the target gene name, the primer sequence and the cycling conditions should also be provided. (Example: 16S rrna; FWD:ACGTAGCTATGACGT REV:GTGCTAGTCGAGTAC; initial denaturation:90C_5min; denaturation:90C_2min; annealing:52C_30 sec; elongation:72C_30 sec; 90 C for 1 min; final elongation:72C_5min; 30 cycles)""", json_schema_extra = { "linkml_meta": {'alias': 'org_count_qpcr_info',
@@ -8966,7 +8962,7 @@ class Biosample(Sample):
                                             'value': 'microgram per liter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'ug/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '1.75 milligram per cubic meter'}],
+         'examples': [{'value': '200 ug/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000204'} })
     org_nitro: Optional[QuantityValue] = Field(default=None, title="organic nitrogen", description="""Concentration of organic nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'org_nitro',
@@ -8978,7 +8974,7 @@ class Biosample(Sample):
                                             'value': 'microgram per liter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'ug/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '4 micromole per liter'}],
+         'examples': [{'value': '4 ug/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000205'} })
     org_particles: Optional[list[TextValue]] = Field(default=None, title="organic particles", description="""Concentration of particles such as faeces, hairs, food, vomit, paper fibers, plant material, humus, etc.""", json_schema_extra = { "linkml_meta": {'alias': 'org_particles',
@@ -9040,7 +9036,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '600 parts per million'}],
+         'examples': [{'value': '600 [ppm]'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000104'} })
     part_org_carb: Optional[QuantityValue] = Field(default=None, title="particulate organic carbon", description="""Concentration of particulate organic carbon""", json_schema_extra = { "linkml_meta": {'alias': 'part_org_carb',
@@ -9053,7 +9049,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'ug/L|mg/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '1.92 micromole per liter'}],
+         'examples': [{'value': '0.02 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000515'} })
     part_org_nitro: Optional[QuantityValue] = Field(default=None, title="particulate organic nitrogen", description="""Concentration of particulate organic nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'part_org_nitro',
@@ -9067,7 +9063,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'ug/L|umol/L|mg/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.3 micromole per liter'}],
+         'examples': [{'value': '0.3 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000719'} })
     particle_class: Optional[list[TextValue]] = Field(default=None, title="particle classification", description="""Particles are classified, based on their size, into six general categories:clay, silt, sand, gravel, cobbles, and boulders; should include amount of particle preceded by the name of the particle type; can include multiple values""", json_schema_extra = { "linkml_meta": {'alias': 'particle_class',
@@ -9132,7 +9128,7 @@ class Biosample(Sample):
                                             'value': 'micromole per liter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.05 micromole per liter'}],
+         'examples': [{'value': '0.05 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000516'} })
     ph: Optional[float] = Field(default=None, title="pH", description="""Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'alias': 'ph',
@@ -9190,7 +9186,7 @@ class Biosample(Sample):
                                             'value': 'micromole per liter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.7 micromole per liter'}],
+         'examples': [{'value': '0.7 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000505'} })
     phosplipid_fatt_acid: Optional[list[TextValue]] = Field(default=None, title="phospholipid fatty acid", description="""Concentration of phospholipid fatty acids; can include multiple values""", json_schema_extra = { "linkml_meta": {'alias': 'phosplipid_fatt_acid',
@@ -9217,7 +9213,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'umol/m2/s'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '3.926 micromole photons per second per square meter'}],
+         'examples': [{'value': '3.926 umol/m2/s'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000725'} })
     plant_growth_med: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="plant growth medium", description="""Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from EO:plant growth medium (follow this link for terms http://purl.obolibrary.org/obo/EO_0007147) or other controlled vocabulary""", json_schema_extra = { "linkml_meta": {'alias': 'plant_growth_med',
@@ -9295,7 +9291,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L|mg/kg'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '463 milligram per liter'}],
+         'examples': [{'value': '463 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000430'} })
     pour_point: Optional[QuantityValue] = Field(default=None, title="pour point", description="""Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high¬†pour point¬†is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (soure: https://en.wikipedia.org/wiki/pour_point)""", json_schema_extra = { "linkml_meta": {'alias': 'pour_point',
@@ -9338,7 +9334,7 @@ class Biosample(Sample):
                                             'value': 'atmosphere'},
                          'storage_units': {'tag': 'storage_units', 'value': 'atm'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '50 atmosphere'}],
+         'examples': [{'value': '50 atm'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000412'} })
     prev_land_use_meth: Optional[str] = Field(default=None, title="history/previous land use method", description="""Reference or method used in determining previous land use and dates""", json_schema_extra = { "linkml_meta": {'alias': 'prev_land_use_meth',
@@ -9373,7 +9369,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'g/m2/d|mg/m3/d'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '100 milligram per cubic meter per day'}],
+         'examples': [{'value': '100 mg/m3/d'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000728'} })
     primary_treatment: Optional[TextValue] = Field(default=None, title="primary treatment", description="""The process to produce both a generally homogeneous liquid capable of being treated biologically and a sludge that can be separately treated or processed""", json_schema_extra = { "linkml_meta": {'alias': 'primary_treatment',
@@ -9474,7 +9470,7 @@ class Biosample(Sample):
                                             'value': 'millivolt'},
                          'storage_units': {'tag': 'storage_units', 'value': 'mV'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '300 millivolt'}],
+         'examples': [{'value': '300 mV'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000182'} })
     rel_air_humidity: Optional[QuantityValue] = Field(default=None, title="relative air humidity", description="""Partial vapor and air pressure, density of the vapor and air, or by the actual mass of the vapor and air""", json_schema_extra = { "linkml_meta": {'alias': 'rel_air_humidity',
@@ -9814,7 +9810,7 @@ class Biosample(Sample):
                                                      'percentage'},
                          'storage_units': {'tag': 'storage_units', 'value': '%|mg/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '25 practical salinity unit'}],
+         'examples': [{'value': '70 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000183'} })
     salinity_meth: Optional[TextValue] = Field(default=None, title="salinity method", description="""Reference or method used in determining salinity""", json_schema_extra = { "linkml_meta": {'alias': 'salinity_meth',
@@ -9926,7 +9922,7 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '1534 meter;MSL'}],
+         'examples': [{'value': '1534 m'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000413'} })
     samp_name: Optional[str] = Field(default=None, title="sample name", description="""A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name.""", json_schema_extra = { "linkml_meta": {'alias': 'samp_name',
@@ -9967,7 +9963,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'L|g|mL|mg'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '5 liter'}],
+         'examples': [{'value': '5 L'}],
          'is_a': 'nucleic acid sequence source field',
          'slot_uri': 'MIXS:0000001'} })
     samp_sort_meth: Optional[list[TextValue]] = Field(default=None, title="sample size sorting method", description="""Method by which samples are sorted; open face filter collecting total suspended particles, prefilter to remove particles larger than X micrometers in diameter, where common values of X would be 10 and 2.5 full size sorting in a cascade impactor.""", json_schema_extra = { "linkml_meta": {'alias': 'samp_sort_meth',
@@ -10009,7 +10005,7 @@ class Biosample(Sample):
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '-80 degree Celsius'}],
+         'examples': [{'value': '-80 Cel'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000110'} })
     samp_subtype: Optional[SampSubtypeEnum] = Field(default=None, title="sample subtype", description="""Name of sample sub-type. For example if \"sample type\" is \"Produced Water\" then subtype could be \"Oil Phase\" or \"Water Phase\". If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'samp_subtype',
@@ -10138,7 +10134,7 @@ class Biosample(Sample):
                       '(June, July, August), autumn (September, October, November) and '
                       'winter (December, January, February).'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.4 inch'}, {'value': '10.16 mm'}],
+         'examples': [{'value': '10 mm'}],
          'is_a': 'core field',
          'notes': ['mean and average are the same thing, but it seems like bad '
                    'practice to not be consistent. Changed mean to average'],
@@ -10154,7 +10150,7 @@ class Biosample(Sample):
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '18 degree Celsius'}],
+         'examples': [{'value': '18 Cel'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000643'} })
     season_use: Optional[SeasonUseEnum] = Field(default=None, title="seasonal use", description="""The seasons the space is occupied""", json_schema_extra = { "linkml_meta": {'alias': 'season_use',
@@ -10268,7 +10264,7 @@ class Biosample(Sample):
                                             'value': 'micromole per liter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.05 micromole per liter'}],
+         'examples': [{'value': '0.05 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000184'} })
     size_frac: Optional[TextValue] = Field(default=None, title="size fraction selected", description="""Filtering pore size used in sample preparation""", json_schema_extra = { "linkml_meta": {'alias': 'size_frac',
@@ -10288,7 +10284,7 @@ class Biosample(Sample):
                                             'value': 'micrometer'},
                          'storage_units': {'tag': 'storage_units', 'value': 'um'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.2 micrometer'}],
+         'examples': [{'value': '0.2 um'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000735'} })
     size_frac_up: Optional[QuantityValue] = Field(default=None, title="size-fraction upper threshold", description="""Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample""", json_schema_extra = { "linkml_meta": {'alias': 'size_frac_up',
@@ -10299,7 +10295,7 @@ class Biosample(Sample):
                                             'value': 'micrometer'},
                          'storage_units': {'tag': 'storage_units', 'value': 'um'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '20 micrometer'}],
+         'examples': [{'value': '20 um'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000736'} })
     slope_aspect: Optional[QuantityValue] = Field(default=None, title="slope aspect", description="""The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees). This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.""", json_schema_extra = { "linkml_meta": {'alias': 'slope_aspect',
@@ -10313,7 +10309,7 @@ class Biosample(Sample):
                       'degrees from 0 to 360, where 0 is north-facing, 90 is '
                       'east-facing, 180 is south-facing, and 270 is west-facing.'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '35'}],
+         'examples': [{'value': '35 deg'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000647'} })
     slope_gradient: Optional[QuantityValue] = Field(default=None, title="slope gradient", description="""Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer""", json_schema_extra = { "linkml_meta": {'alias': 'slope_gradient',
@@ -10352,7 +10348,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '10.5 milligram per liter'}],
+         'examples': [{'value': '10.5 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000428'} })
     soil_horizon: Optional[SoilHorizonEnum] = Field(default=None, title="soil horizon", description="""Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath""", json_schema_extra = { "linkml_meta": {'alias': 'soil_horizon',
@@ -10417,7 +10413,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'kW/m2/d|erg/cm2/s'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '1.36 kilowatts per square meter per day'}],
+         'examples': [{'value': '1.36 kW/m2/d'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000112'} })
     soluble_inorg_mat: Optional[list[TextValue]] = Field(default=None, title="soluble inorganic material", description="""Concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc.""", json_schema_extra = { "linkml_meta": {'alias': 'soluble_inorg_mat',
@@ -10461,7 +10457,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L|umol/L|ug/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.1 milligram per liter'}],
+         'examples': [{'value': '0.1 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000738'} })
     source_mat_id: Optional[TextValue] = Field(default=None, title="source material identifier", description="""A globally unique identifier assigned to the biological sample.""", json_schema_extra = { "linkml_meta": {'alias': 'source_mat_id',
@@ -10597,7 +10593,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '5 micromole per liter'}],
+         'examples': [{'value': '5 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000423'} })
     sulfate_fw: Optional[QuantityValue] = Field(default=None, title="sulfate in formation water", description="""Original sulfate concentration in the hydrocarbon resource""", json_schema_extra = { "linkml_meta": {'alias': 'sulfate_fw',
@@ -10623,7 +10619,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '2 micromole per liter'}],
+         'examples': [{'value': '2 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000424'} })
     surf_air_cont: Optional[list[SurfAirContEnum]] = Field(default=None, title="surface-air contaminant", description="""Contaminant identified on surface""", json_schema_extra = { "linkml_meta": {'alias': 'surf_air_cont',
@@ -10668,7 +10664,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|g/m2|g/m3'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.01 gram per square meter'}],
+         'examples': [{'value': '0.01 g/m2'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000128'} })
     surf_moisture_ph: Optional[float] = Field(default=None, title="surface moisture pH", description="""ph measurement of surface""", json_schema_extra = { "linkml_meta": {'alias': 'surf_moisture_ph',
@@ -10689,7 +10685,7 @@ class Biosample(Sample):
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '15 degree Celsius'}],
+         'examples': [{'value': '15 Cel'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000125'} })
     suspend_part_matter: Optional[QuantityValue] = Field(default=None, title="suspended particulate matter", description="""Concentration of suspended particulate matter""", json_schema_extra = { "linkml_meta": {'alias': 'suspend_part_matter',
@@ -10701,7 +10697,7 @@ class Biosample(Sample):
                                             'value': 'milligram per liter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.5 milligram per liter'}],
+         'examples': [{'value': '0.5 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000741'} })
     suspend_solids: Optional[list[TextValue]] = Field(default=None, title="suspended solids", description="""Concentration of substances including a wide variety of material, such as silt, decaying plant and animal matter; can include multiple substances""", json_schema_extra = { "linkml_meta": {'alias': 'suspend_solids',
@@ -10739,7 +10735,7 @@ class Biosample(Sample):
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '25 degree Celsius'}],
+         'examples': [{'value': '25 Cel'}],
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000113'} })
     temp_out: Optional[QuantityValue] = Field(default=None, title="temperature outside house", description="""The recorded temperature value at sampling time outside""", json_schema_extra = { "linkml_meta": {'alias': 'temp_out',
@@ -10751,7 +10747,7 @@ class Biosample(Sample):
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '5 degree Celsius'}],
+         'examples': [{'value': '5 Cel'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000197'} })
     tertiary_treatment: Optional[TextValue] = Field(default=None, title="tertiary treatment", description="""The process providing a final treatment stage to raise the effluent quality before it is discharged to the receiving environment""", json_schema_extra = { "linkml_meta": {'alias': 'tertiary_treatment',
@@ -10830,7 +10826,7 @@ class Biosample(Sample):
                          'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '500 meter'}],
+         'examples': [{'value': '500 m'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000634'} })
     tot_diss_nitro: Optional[QuantityValue] = Field(default=None, title="total dissolved nitrogen", description="""Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'tot_diss_nitro',
@@ -10843,7 +10839,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'ug/L|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '40 microgram per liter'}],
+         'examples': [{'value': '40 ug/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000744'} })
     tot_inorg_nitro: Optional[QuantityValue] = Field(default=None, title="total inorganic nitrogen", description="""Total inorganic nitrogen content""", json_schema_extra = { "linkml_meta": {'alias': 'tot_inorg_nitro',
@@ -10855,7 +10851,7 @@ class Biosample(Sample):
                                             'value': 'microgram per liter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'ug/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '40 microgram per liter'}],
+         'examples': [{'value': '40 ug/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000745'} })
     tot_iron: Optional[QuantityValue] = Field(default=None, title="total iron", description="""Concentration of total iron in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'tot_iron',
@@ -10883,7 +10879,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'mg/L|ug/L|umol/L|%'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '50 micromole per liter'}],
+         'examples': [{'value': '50 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000102'} })
     tot_nitro_cont_meth: Optional[str] = Field(default=None, title="total nitrogen content method", description="""Reference or method used in determining the total nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'tot_nitro_cont_meth',
@@ -10908,7 +10904,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'mg/L|ug/L|umol/L|%'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '5 mg N/ L'}],
+         'examples': [{'value': '5 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000530'} })
     tot_org_c_meth: Optional[TextValue] = Field(default=None, title="total organic carbon method", description="""Reference or method used in determining total organic carbon""", json_schema_extra = { "linkml_meta": {'alias': 'tot_org_c_meth',
@@ -10931,7 +10927,7 @@ class Biosample(Sample):
                                                      'material'},
                          'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '5 mg N/ L'}],
+         'examples': [{'value': '5 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000533',
          'todos': ['check description. How are they different?']} })
@@ -10946,7 +10942,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'ug/L|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '35 micromole per liter'}],
+         'examples': [{'value': '35 umol/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000747'} })
     tot_phosp: Optional[QuantityValue] = Field(default=None, title="total phosphorus", description="""Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus""", json_schema_extra = { "linkml_meta": {'alias': 'tot_phosp',
@@ -10960,7 +10956,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[ppm]|mg/L|umol/L'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.03 milligram per liter'}],
+         'examples': [{'value': '0.03 mg/L'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000117'} })
     tot_phosphate: Optional[QuantityValue] = Field(default=None, title="total phosphate", description="""Total amount or concentration of phosphate""", json_schema_extra = { "linkml_meta": {'alias': 'tot_phosphate',
@@ -11029,7 +11025,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[NTU]|[FNU]'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '0.3 nephelometric turbidity units'}],
+         'examples': [{'value': '0.3 [NTU]'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000191'} })
     tvdss_of_hcr_press: Optional[QuantityValue] = Field(default=None, title="depth (TVDSS) of hydrocarbon resource pressure", description="""True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original pressure was measured (e.g. 1578 m).""", json_schema_extra = { "linkml_meta": {'alias': 'tvdss_of_hcr_press',
@@ -11075,7 +11071,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'L/s|m3/min'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '750 cubic meter per minute'}],
+         'examples': [{'value': '750 m3/min'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000114'} })
     ventilation_type: Optional[TextValue] = Field(default=None, title="ventilation type", description="""Ventilation system used in the sampled premises""", json_schema_extra = { "linkml_meta": {'alias': 'ventilation_type',
@@ -11298,7 +11294,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': '[kn_i]|m3/s'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '10 cubic meter per second'}],
+         'examples': [{'value': '10 m3/s'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000203'} })
     water_cut: Optional[QuantityValue] = Field(default=None, title="water cut", description="""Current amount of water (%) in a produced fluid stream; or the average of the combined streams""", json_schema_extra = { "linkml_meta": {'alias': 'water_cut',
@@ -11413,7 +11409,7 @@ class Biosample(Sample):
                          'storage_units': {'tag': 'storage_units',
                                            'value': 'km/h|m/s'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': '21 kilometer per hour'}],
+         'examples': [{'value': '21 km/h'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000118'} })
     window_cond: Optional[WindowCondEnum] = Field(default=None, title="window condition", description="""The physical condition of the window at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'window_cond',
@@ -11951,7 +11947,7 @@ class Biosample(Sample):
          'comments': ['This is the mass of lime, in mg, needed to raise the pH of one '
                       'kg of soil by one pH unit'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '543 mg/kg'}],
+         'examples': [{'value': '543 [ppm]'}],
          'see_also': ['https://www.ornl.gov/content/bio-scales-0',
                       'https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF']} })
     lbceq: Optional[QuantityValue] = Field(default=None, title="lime buffer capacity (after 5 day incubation)", description="""lime buffer capacity, determined at equilibrium after 5 day incubation""", json_schema_extra = { "linkml_meta": {'alias': 'lbceq',
@@ -11965,7 +11961,7 @@ class Biosample(Sample):
          'comments': ['This is the mass of lime, in mg, needed to raise the pH of one '
                       'kg of soil by one pH unit'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '1575 mg/kg'}],
+         'examples': [{'value': '1575 [ppm]'}],
          'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
     id: str = Field(default=..., description="""An NMDC assigned unique identifier for a biosample submitted to NMDC.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],

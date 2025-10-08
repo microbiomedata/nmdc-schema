@@ -1,0 +1,64 @@
+# Example Biosample demonstrating PropertyAssertion usage via misc_param
+# Based on issue #2633: https://github.com/microbiomedata/nmdc-schema/issues/2633
+#
+# This file demonstrates PropertyAssertion capabilities:
+# 1. Non-compliant units (kPa, mL/L, W/m2 don't match storage_units annotations)
+# 2. Arbitrary units (puppies, ppb)
+# 3. Semantic annotations (has_quantity_kind_id for concentration measurements)
+# 4. Optional MIxS identifiers (has_attribute_id) for standard properties
+#
+# PropertyAssertion via misc_param provides flexible metadata capture while maintaining
+# schema validation and enabling data integration through semantic annotations.
+
+id: nmdc:bsm-99-noncompliant
+type: nmdc:Biosample
+associated_studies:
+  - nmdc:sty-00-abc123
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002030
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002030
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002169
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002169
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00005792
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00005792
+misc_param:
+  - type: nmdc:PropertyAssertion
+    has_raw_value: "123 puppies"
+    has_attribute_label: puppy count
+    has_numeric_value: 123
+    has_unit: puppies
+  - type: nmdc:PropertyAssertion
+    has_raw_value: "50 kPa"
+    has_attribute_id: MIXS:0000122
+    has_attribute_label: absolute air humidity
+    has_numeric_value: 50
+    has_unit: kPa
+  - type: nmdc:PropertyAssertion
+    has_raw_value: "5.5 mL/L"
+    has_attribute_id: MIXS:0000119
+    has_attribute_label: dissolved oxygen
+    has_numeric_value: 5.5
+    has_unit: mL/L
+  - type: nmdc:PropertyAssertion
+    has_raw_value: "250 W/m2"
+    has_attribute_id: MIXS:0000112
+    has_attribute_label: solar irradiance
+    has_numeric_value: 250
+    has_unit: W/m2
+  - type: nmdc:PropertyAssertion
+    has_raw_value: "12.5 ppb"
+    has_attribute_label: soluble chromium
+    has_numeric_value: 12.5
+    has_unit: ppb
+    has_quantity_kind_id: PATO:0000033
