@@ -156,7 +156,6 @@ units-testdata-extract = "units.scripts.testdata_extract_quantity_values:main"
 units-testdata-check = "units.scripts.testdata_check_has_unit:main"
 units-ucum-validate = "units.scripts.ucum_validate_units:main"
 units-mongodb-analyze = "units.scripts.mongodb_analyze_units:main"
-units-production-validate = "units.scripts.production_validate_units:main"
 units-schema-extract-slot-unit-pairs = "units.scripts.schema_expand_storage_units:main"
 
 [tool.deptry]
