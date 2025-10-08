@@ -113,11 +113,17 @@ classes:
     title: Material Entity
   Instrument:
     class_uri: nmdc:Instrument
-    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent. This class models the make and model of the instrument, not the specific instance of the instrument.
     is_a: MaterialEntity
     slots:
       - vendor
       - model
+    unique_keys:
+      main:
+        description: A unique instrument is defined by its vendor and model.
+        unique_key_slots:
+          - vendor
+          - model
     aliases:
       - device
     exact_mappings:
