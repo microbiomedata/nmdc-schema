@@ -721,6 +721,10 @@ environmental context of samples.</p>
 <td>An attribute value representing a person</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PropertyAssertion/">PropertyAssertion</a></td>
+<td>A structured record of data that doesn't fit nicely within the constraints of...</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="QuantityValue/">QuantityValue</a></td>
 <td>A simple quantity, e</td>
 </tr>
@@ -2244,6 +2248,14 @@ environmental context of samples.</p>
 <td>The handidness of the individual sampled</td>
 </tr>
 <tr>
+<td><a href="has_attribute_id/">has_attribute_id</a></td>
+<td>CURIE or IRI for the property (MIxS slot, NMDC slot, ENVO/OBI term, etc</td>
+</tr>
+<tr>
+<td><a href="has_attribute_label/">has_attribute_label</a></td>
+<td>Human-readable label for the property (e</td>
+</tr>
+<tr>
 <td><a href="has_boolean_value/">has_boolean_value</a></td>
 <td>Links a quantity value to a boolean</td>
 </tr>
@@ -2254,6 +2266,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="has_credit_associations/">has_credit_associations</a></td>
 <td>This slot links a study to a credit association</td>
+</tr>
+<tr>
+<td><a href="has_datetime_value/">has_datetime_value</a></td>
+<td>Date-time value for the property in ISO-8601 format</td>
 </tr>
 <tr>
 <td><a href="has_failure_categorization/">has_failure_categorization</a></td>
@@ -2300,12 +2316,20 @@ environmental context of samples.</p>
 <td>A list of process parts that make up a protocol</td>
 </tr>
 <tr>
+<td><a href="has_quantity_kind_id/">has_quantity_kind_id</a></td>
+<td>Optional CURIE or IRI for the physical quantity kind (e</td>
+</tr>
+<tr>
 <td><a href="has_raw_value/">has_raw_value</a></td>
 <td>The value that was specified for an annotation in raw form, i</td>
 </tr>
 <tr>
 <td><a href="has_unit/">has_unit</a></td>
 <td>Links a QuantityValue to a unit</td>
+</tr>
+<tr>
+<td><a href="has_value_term_id/">has_value_term_id</a></td>
+<td>CURIE or IRI for categorical values (ENVO, PATO, METPO, etc</td>
 </tr>
 <tr>
 <td><a href="hc_produced/">hc_produced</a></td>
@@ -2897,7 +2921,7 @@ environmental context of samples.</p>
 </tr>
 <tr>
 <td><a href="misc_param/">misc_param</a></td>
-<td>Any other measurement performed or parameter collected, that is not listed he...</td>
+<td>Structured miscellaneous property assertions for this Biosample</td>
 </tr>
 <tr>
 <td><a href="mixs_env_triad_field/">mixs_env_triad_field</a></td>

@@ -1660,6 +1660,8 @@ slot_usage:
   has_unit:
     name: has_unit
     description: The unit of the quantity
+    range: UnitEnum
+    required: true
   has_numeric_value:
     name: has_numeric_value
     description: The number part of the quantity
@@ -1683,6 +1685,8 @@ slot_usage:
   has_unit:
     name: has_unit
     description: The unit of the quantity
+    range: UnitEnum
+    required: true
   has_numeric_value:
     name: has_numeric_value
     description: The number part of the quantity
@@ -1698,6 +1702,7 @@ attributes:
     owner: QuantityValue
     domain_of:
     - QuantityValue
+    - PropertyAssertion
     range: decimal
   has_minimum_numeric_value:
     name: has_minimum_numeric_value
@@ -1710,6 +1715,7 @@ attributes:
     owner: QuantityValue
     domain_of:
     - QuantityValue
+    - PropertyAssertion
     range: decimal
   has_numeric_value:
     name: has_numeric_value
@@ -1723,6 +1729,7 @@ attributes:
     owner: QuantityValue
     domain_of:
     - QuantityValue
+    - PropertyAssertion
     range: decimal
   has_unit:
     name: has_unit
@@ -1738,6 +1745,7 @@ attributes:
     owner: QuantityValue
     domain_of:
     - QuantityValue
+    - PropertyAssertion
     range: UnitEnum
     required: true
   has_raw_value:

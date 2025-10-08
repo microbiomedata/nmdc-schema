@@ -2161,8 +2161,8 @@
 </tr>
 <tr>
 <td><a href="../misc_param/">misc_param</a></td>
-<td>* <br/> <a href="../TextValue/">TextValue</a></td>
-<td>Any other measurement performed or parameter collected, that is not listed he...</td>
+<td>* <br/> <a href="../PropertyAssertion/">PropertyAssertion</a></td>
+<td>Structured miscellaneous property assertions for this Biosample</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -12359,9 +12359,11 @@ attributes:
       occurrence:
         tag: occurrence
         value: m
-    description: Any other measurement performed or parameter collected, that is not
-      listed here
+    description: Structured miscellaneous property assertions for this Biosample.
+      Use when a value cannot cleanly fit an existing, policy-governed slot.
     title: miscellaneous parameter
+    todos:
+    - This slot should not be available in the submission portal.
     examples:
     - value: Bicarbonate ion concentration;2075 micromole per kilogram
     from_schema: https://w3id.org/nmdc/nmdc
@@ -12375,7 +12377,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    range: TextValue
+    range: PropertyAssertion
     multivalued: true
     inlined: true
     inlined_as_list: true

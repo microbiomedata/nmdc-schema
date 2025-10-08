@@ -635,7 +635,7 @@
 
 
 <h1 id="slot-miscellaneous-parameter-misc_param">Slot: miscellaneous parameter (misc_param)</h1>
-<p><em>Any other measurement performed or parameter collected, that is not listed here</em></p>
+<p><em>Structured miscellaneous property assertions for this Biosample. Use when a value cannot cleanly fit an existing, policy-governed slot.</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000752">MIXS:0000752</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
@@ -664,7 +664,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../TextValue/">TextValue</a></p>
+<p>Range: <a href="../PropertyAssertion/">PropertyAssertion</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -733,9 +733,11 @@ annotations:
   occurrence:
     tag: occurrence
     value: m
-description: Any other measurement performed or parameter collected, that is not listed
-  here
+description: Structured miscellaneous property assertions for this Biosample. Use
+  when a value cannot cleanly fit an existing, policy-governed slot.
 title: miscellaneous parameter
+todos:
+- This slot should not be available in the submission portal.
 examples:
 - value: Bicarbonate ion concentration;2075 micromole per kilogram
 from_schema: https://w3id.org/nmdc/nmdc
@@ -748,7 +750,7 @@ slot_uri: MIXS:0000752
 alias: misc_param
 domain_of:
 - Biosample
-range: TextValue
+range: PropertyAssertion
 multivalued: true
 inlined: true
 inlined_as_list: true

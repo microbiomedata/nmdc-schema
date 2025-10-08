@@ -623,6 +623,11 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../PropertyAssertion/">PropertyAssertion</a></td>
+<td>A structured record of data that doesn't fit nicely within the constraints of...</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../QuantityValue/">QuantityValue</a></td>
 <td>A simple quantity, e</td>
 <td>yes</td>
@@ -631,12 +636,7 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../UnitEnum/">UnitEnum</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="aliases">Aliases</h2>
 <ul>
@@ -677,8 +677,8 @@ rank: 1000
 alias: has_unit
 domain_of:
 - QuantityValue
-range: UnitEnum
-required: true
+- PropertyAssertion
+range: string
 
 </code></pre>
 
