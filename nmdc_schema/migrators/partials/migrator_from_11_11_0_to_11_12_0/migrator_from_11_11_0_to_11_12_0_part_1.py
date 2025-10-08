@@ -58,8 +58,7 @@ class Migrator(MigratorBase):
         ...     "type": "nmdc:Biosample"
         ... }
         >>> m.migrate_misc_param_to_PropertyAssertion_range(biosample_no_misc)
-        >>> biosample_no_misc.get("misc_param") is None
-        True
+        {'id': 'test1', 'type': 'nmdc:Biosample'}
 
         # Test: Biosample with misc_param as TextValue
         >>> biosample_with_misc = {
@@ -68,20 +67,7 @@ class Migrator(MigratorBase):
         ...     "misc_param": [{"type": "nmdc:TextValue", "has_raw_value": "biomass_yield;2.565699 Mg/ha"}]
         ... }
         >>> m.migrate_misc_param_to_PropertyAssertion_range(biosample_with_misc)
-        >>> misc_params = biosample_with_misc.get("misc_param")
-        >>> isinstance(misc_params, list) and len(misc_params) == 1
-        True
-        >>> pa = misc_params[0]
-        >>> pa["type"]
-        'nmdc:PropertyAssertion'
-        >>> pa["has_raw_value"]
-        'biomass_yield;2.565699 Mg/ha'
-        >>> pa["has_attribute_label"]
-        'biomass_yield'
-        >>> pa["has_numeric_value"]
-        2.565699
-        >>> pa["has_unit"]
-        'Mg/ha'
+        {'id': 'test2', 'type': 'nmdc:Biosample', 'misc_param': [{'type': 'nmdc:PropertyAssertion', 'has_raw_value': 'biomass_yield;2.565699 Mg/ha', 'has_attribute_label': 'biomass_yield', 'has_numeric_value': 2.565699, 'has_unit': 'Mg/ha'}]}
         """
         misc_param = biosample.get("misc_param")
         if not misc_param:
@@ -144,8 +130,7 @@ class Migrator(MigratorBase):
         ...     }
         ... }
         >>> m.move_problematic_values_to_misc_param(biosample_valid)
-        >>> biosample_valid.get("misc_param") is None
-        True
+        {'id': 'test1', 'type': 'nmdc:Biosample', 'abs_air_humidity': {'type': 'nmdc:QuantityValue', 'has_unit': 'kg/kg', 'has_numeric_value': 75.0}, 'diss_oxygen': {'type': 'nmdc:QuantityValue', 'has_unit': 'umol/L', 'has_numeric_value': 8.0}, 'solar_irradiance': {'type': 'nmdc:QuantityValue', 'has_unit': 'kW/m2/d', 'has_numeric_value': 200.0}}
 
         # Test: Biosample with problematic QuantityValue entries
         >>> biosample_problematic = {
@@ -168,35 +153,7 @@ class Migrator(MigratorBase):
         ...     }
         ... }
         >>> m.move_problematic_values_to_misc_param(biosample_problematic)
-        >>> biosample_problematic.get("misc_param") == [
-        ... {
-        ...     "type": "nmdc:PropertyAssertion",
-        ...     "has_attribute_label": "abs_air_humidity",
-        ...     "has_attribute_id": "MIXS:0000122",
-        ...     "has_numeric_value": 75.0,
-        ...     "has_unit": "kPa"
-        ... },
-        ... {
-        ...     "type": "nmdc:PropertyAssertion",
-        ...     "has_attribute_label": "diss_oxygen",
-        ...     "has_attribute_id": "MIXS:0000119",
-        ...     "has_numeric_value": 8.0,
-        ...     "has_unit": "mL/L"
-        ... },
-        ... {
-        ...     "type": "nmdc:PropertyAssertion",
-        ...     "has_attribute_label": "solar_irradiance",
-        ...     "has_attribute_id": "MIXS:0000112",
-        ...     "has_numeric_value": 200.0,
-        ...     "has_unit": "W/m2"
-        ... }]
-        True
-        >>> biosample_problematic.get("abs_air_humidity") is None
-        True
-        >>> biosample_problematic.get("diss_oxygen") is None
-        True
-        >>> biosample_problematic.get("solar_irradiance") is None
-        True
+        {'id': 'test2', 'type': 'nmdc:Biosample', 'misc_param': [{'type': 'nmdc:PropertyAssertion', 'has_attribute_label': 'abs_air_humidity', 'has_attribute_id': 'MIXS:0000122', 'has_numeric_value': 75.0, 'has_unit': 'kPa'}, {'type': 'nmdc:PropertyAssertion', 'has_attribute_label': 'diss_oxygen', 'has_attribute_id': 'MIXS:0000119', 'has_numeric_value': 8.0, 'has_unit': 'mL/L'}, {'type': 'nmdc:PropertyAssertion', 'has_attribute_label': 'solar_irradiance', 'has_attribute_id': 'MIXS:0000112', 'has_numeric_value': 200.0, 'has_unit': 'W/m2'}]}
         """
         problematic_units = (
             ("abs_air_humidity", "MIXS:0000122", "kPa"),
