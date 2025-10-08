@@ -47,8 +47,9 @@ class Migrator(MigratorBase):
             all_collection_names.update(collection_names)
 
         # Apply migrator through collections
+        self.logger.info("Checking QuantityValue units against UnitEnum and storage_units constraints")
         for collection_name in all_collection_names:
-            print(f'processing collection {collection_name}')
+            self.logger.info(f"  Checking collection '{collection_name}'")
             self.adapter.do_for_each_document(collection_name, self.confirm_units_fit_unitenum_and_storage_units)
 
     def confirm_units_fit_unitenum_and_storage_units(self, document: dict) -> None:

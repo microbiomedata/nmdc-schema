@@ -40,6 +40,7 @@ class Migrator(MigratorBase):
 
 
     def perform_all_migration_operations(self, _, __) -> None:
+        self.logger.info("Moving problematic QuantityValue entries to misc_param")
         self.adapter.process_each_document("biosample_set", [
             self.migrate_misc_param_to_PropertyAssertion_range,
             self.move_problematic_values_to_misc_param,
