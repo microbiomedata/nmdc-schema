@@ -65,7 +65,7 @@
 '.slots.max_occup.range |= "QuantityValue"'
 '.slots.micro_biomass_meth.range |= "string"'
 '.slots.mineral_nutr_regm.range |= "TextValue"'
-'.slots.misc_param.description |= "Structured miscellaneous property assertions for this Biosample. Use when a value cannot cleanly fit an existing, policy-governed slot."'
+'.slots.misc_param.description |= "Structured miscellaneous property assertions. Use when a value cannot cleanly fit an existing, policy-governed slot."'
 '.slots.misc_param.range |= "PropertyAssertion"'
 '.slots.misc_param.multivalued |= true'
 '.slots.misc_param.todos += ["This slot should not be available in the submission portal."]'
