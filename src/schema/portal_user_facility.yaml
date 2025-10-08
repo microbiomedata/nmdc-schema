@@ -26,7 +26,6 @@ slots:
       - value: untreated pond water
     rank: 15
     string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_isolate_meth:
     description: Describe the method/protocol/kit used to extract DNA/RNA.
@@ -37,7 +36,6 @@ slots:
       - Sample Isolation Method
     rank: 16
     string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_organisms:
     description: List any organisms known or suspected to grow in co-culture, as well
@@ -48,7 +46,6 @@ slots:
           (1%)
     rank: 14
     string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
     recommended: true
   dna_lr_isolate_meth:
     description: Describe the method/protocol/kit used to extract DNA/RNA.
@@ -57,7 +54,6 @@ slots:
       - value: phenol/chloroform extraction
     rank: 16
     string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
     recommended: true
     aliases:
       - Sample Isolation Method
@@ -68,7 +64,6 @@ slots:
       - value: untreated pond water
     rank: 15
     string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
     recommended: true
   dna_isolate_meth:
     description: Describe the method/protocol/kit used to extract DNA/RNA.
@@ -77,7 +72,6 @@ slots:
       - value: phenol/chloroform extraction
     rank: 16
     string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
     recommended: true
     aliases:
       - Sample Isolation Method
@@ -90,7 +84,6 @@ slots:
           (1%)
     rank: 14
     string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
     recommended: true
   emsl_store_temp:
     description: The temperature at which the sample should be stored upon delivery
@@ -105,13 +98,11 @@ slots:
     rank: 4
     string_serialization: '{float}'
     recommended: true
-    slot_group: EMSL
   project_id:
     description: Proposal IDs or names associated with dataset
     title: project ID
     rank: 1
     string_serialization: '{text}'
-    slot_group: EMSL
     recommended: true
   replicate_number:
     description: If sending biological replicates, indicate the rep number here.
@@ -120,7 +111,6 @@ slots:
       - This will guide staff in ensuring your samples are blocked & randomized correctly
     rank: 6
     string_serialization: '{integer}'
-    slot_group: EMSL
     recommended: true
   sample_shipped:
     description: The total amount or size (volume (ml), mass (g) or area (m2) ) of
@@ -135,7 +125,6 @@ slots:
       - value: 5 mL
     rank: 3
     string_serialization: '{float} {unit}'
-    slot_group: EMSL
     recommended: true
   sample_type:
     description: Type of sample being submitted
@@ -145,7 +134,6 @@ slots:
     examples:
       - value: water extracted soil
     rank: 2
-    slot_group: EMSL
     range: SampleTypeEnum
     recommended: true
   technical_reps:
@@ -159,5 +147,4 @@ slots:
       - value: '2'
     rank: 5
     string_serialization: '{integer}'
-    slot_group: EMSL
     recommended: true
