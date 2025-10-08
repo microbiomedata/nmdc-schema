@@ -1,7 +1,11 @@
+from linkml.validator import Validator
+
 from nmdc_schema.migrators.migrator_base import MigratorBase
 import sys
 from pathlib import Path
-from nmdc_schema.migrators.helpers import create_schema_view
+from nmdc_schema.migrators.helpers import create_schema_view, get_classes_with_slots_by_range, \
+    get_database_collections_for_class
+from nmdc_schema_validation_plugin import NmdcSchemaValidationPlugin
 
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
@@ -12,12 +16,8 @@ from migrators.partials.migrator_from_11_9_1_to_11_10_0.migrator_from_11_9_1_to_
 
 
 class Migrator(MigratorBase):
-    r'''
-    Migrates a database between two schemas.
-    TWO NOTES:
-    - If there is no storage_unit on the slot, the only test is whether the value for `has_unit` is in the UnitEnum
-    - This assumes that all storage_unit restrictions are applied on the global level, it does not validate any changes made on slot_useage (same as python tests, example: does not test if temp on biosample has to be celsius but temp on conversion process is kelvin)
-    '''
+    r"""A check-only migrator that raises an exception if any QuantityValue's has_unit slot
+    is not valid against the slot's storage_unit or UnitEnum constraints."""
 
     _from_version = '11.11.0'
     _to_version = '11.12.0.part_2'
@@ -25,26 +25,35 @@ class Migrator(MigratorBase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Initialize the validator with the schema file
-        schema_file = Path('nmdc_schema/nmdc_materialized_patterns.yaml')
-        self.validator = ProductionUnitsValidator(schema_file)
+        self.schema_view = create_schema_view()
+        self.validator = Validator(
+            self.schema_view.schema,
+            # This is intentionally *only* using the NMDC plugin, because this migrator is *only*
+            # concerned with validating the QuantityValue-related constraints that the plugin
+            # implements.
+            validation_plugins=[
+                NmdcSchemaValidationPlugin()
+            ]
+        )
 
     def upgrade(self, commit_changes: bool = False) -> None:
         r'''
         Migrates the database from conforming to the original schema, to conforming to the new schema.
         '''
 
-        # Get schema view to find all classes and their slots with QuantityValue range
-        self._schema_view = create_schema_view()
+        # Get the schema classes which have slots with range QuantityValue
+        classes_with_qv_slots = get_classes_with_slots_by_range(self.schema_view, 'QuantityValue')
 
-        # Get the actual collection names from the Database class slots
-        real_collection_names = get_collection_names_with_qv_slots_from_schema()
+        # Get the Database collection names that can hold these classes
+        all_collection_names = set()
+        for class_name in classes_with_qv_slots.keys():
+            collection_names = get_database_collections_for_class(self.schema_view, class_name)
+            all_collection_names.update(collection_names)
 
         # Apply migrator through collections
-        for collection_name in real_collection_names:
+        for collection_name in all_collection_names:
             print(f'processing collection {collection_name}')
-            self.adapter.do_for_each_document(collection_name,
-                                              self.confirm_units_fit_unitenum_and_storage_units)
+            self.adapter.do_for_each_document(collection_name, self.confirm_units_fit_unitenum_and_storage_units)
 
     def confirm_units_fit_unitenum_and_storage_units(self, document: dict) -> None:
         r'''
@@ -77,7 +86,8 @@ class Migrator(MigratorBase):
         >>> m.confirm_units_fit_unitenum_and_storage_units(invalid_biosample_enum)
         Traceback (most recent call last):
             ...
-        ValueError: Document test2 has invalid unit 'invalid_unit' for slot 'temp': Unit not in UnitEnum
+        ValueError: In test2:
+          QuantityValue at /temp has unit 'invalid_unit' which is not allowed for slot 'temp' (allowed: Cel)
 
         # Test: unit not allowed for specific slot's storage_units
         >>> invalid_biosample_storage = {
@@ -92,30 +102,15 @@ class Migrator(MigratorBase):
         >>> m.confirm_units_fit_unitenum_and_storage_units(invalid_biosample_storage)
         Traceback (most recent call last):
             ...
-        ValueError: Document test3 has invalid unit 'm' for slot 'temp': Unit 'm' not in allowed storage_units ['Cel'] for slot 'temp'
-
+        ValueError: In test3:
+          QuantityValue at /temp has unit 'm' which is not allowed for slot 'temp' (allowed: Cel)
         '''
 
-        document_id = document.get("id")
-
-        # Find all QuantityValue objects in this document using the imported validator
-        for path, qv_data in self.validator.iter_quantity_values(document):
-            has_unit = qv_data.get('has_unit')
-            if not has_unit:
-                continue
-
-            # Extract slot name from path using the imported method
-            slot_name = path[-1]
-
-            # First validate against UnitEnum using the imported method
-            if not self.validator.validate_has_unit_against_enum(has_unit):
-                raise ValueError(
-                    f"Document {document_id} has invalid unit '{has_unit}' for slot '{slot_name}': Unit not in UnitEnum"
-                )
-
-            # Then validate against storage_units constraints using the imported method
-            is_valid, message = self.validator.validate_has_unit_against_slot(has_unit, slot_name)
-            if not is_valid:
-                raise ValueError(
-                    f"Document {document_id} has invalid unit '{has_unit}' for slot '{slot_name}': {message}"
-                )
+        document_id = document.get('id', '<unknown id>')
+        document_type = document.get('type')
+        if not document_type:
+            raise ValueError(f"Unable to infer target_class for document with id '{document_id}'")
+        target_class = document_type.replace('nmdc:', '')
+        report = self.validator.validate(document, target_class)
+        if report.results:
+            raise ValueError(f"In {document_id}:\n" + "\n".join("  " + result.message for result in report.results))
