@@ -1,8 +1,8 @@
-from nmdc_schema.migrators.migrator_base import MigratorBase
-from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 import sys
 from pathlib import Path
-from nmdc_schema.migrators.helpers import create_schema_view
+
+from nmdc_schema.migrators.migrator_base import MigratorBase
+from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
