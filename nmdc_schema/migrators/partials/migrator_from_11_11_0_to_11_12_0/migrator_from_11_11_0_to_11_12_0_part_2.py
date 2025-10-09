@@ -41,14 +41,14 @@ class Migrator(MigratorBase):
         classes_with_qv_slots = get_classes_with_slots_by_range(self.schema_view, 'QuantityValue')
 
         # Get the Database collection names that can hold these classes
-        all_collection_names = set()
+        eligible_collection_names = set()
         for class_name in classes_with_qv_slots.keys():
             collection_names = get_database_collections_for_class(self.schema_view, class_name)
-            all_collection_names.update(collection_names)
+            eligible_collection_names.update(collection_names)
 
         # Apply migrator through collections
         self.logger.info("Checking QuantityValue units against UnitEnum and storage_units constraints")
-        for collection_name in all_collection_names:
+        for collection_name in eligible_collection_names:
             self.logger.info(f"  Checking collection '{collection_name}'")
             self.adapter.do_for_each_document(collection_name, self.confirm_units_fit_unitenum_and_storage_units)
 
