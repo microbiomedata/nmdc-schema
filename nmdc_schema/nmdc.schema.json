@@ -2647,9 +2647,9 @@
                     ]
                 },
                 "misc_param": {
-                    "description": "Any other measurement performed or parameter collected, that is not listed here",
+                    "description": "Structured miscellaneous property assertions for this Biosample. Use when a value cannot cleanly fit an existing, policy-governed slot.",
                     "items": {
-                        "$ref": "#/$defs/TextValue"
+                        "$ref": "#/$defs/PropertyAssertion"
                     },
                     "type": [
                         "array",
@@ -8515,7 +8515,7 @@
         },
         "Instrument": {
             "additionalProperties": false,
-            "description": "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.",
+            "description": "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent. This class models the make and model of the instrument, not the specific instance of the instrument.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -13128,10 +13128,113 @@
             "title": "ProfilePositionEnum",
             "type": "string"
         },
+        "PropertyAssertion": {
+            "additionalProperties": false,
+            "description": "A structured record of data that doesn't fit nicely within the constraints of other NMDC AttributeValues. Uses primitive ranges only.",
+            "properties": {
+                "has_attribute_id": {
+                    "description": "CURIE or IRI for the property (MIxS slot, NMDC slot, ENVO/OBI term, etc.).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_attribute_label": {
+                    "description": "Human-readable label for the property (e.g., MIxS label, ENVO term label).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_boolean_value": {
+                    "description": "Links a quantity value to a boolean",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "has_datetime_value": {
+                    "description": "Date-time value for the property in ISO-8601 format.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_maximum_numeric_value": {
+                    "description": "The maximum value part, expressed as number, of the quantity value when the value covers a range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "has_minimum_numeric_value": {
+                    "description": "The minimum value part, expressed as number, of the quantity value when the value covers a range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "has_numeric_value": {
+                    "description": "Links a quantity value to a number",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "has_quantity_kind_id": {
+                    "description": "Optional CURIE or IRI for the physical quantity kind (e.g., qudt:QuantityKind).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_raw_value": {
+                    "description": "Original contributor string representation (unparsed)",
+                    "type": "string"
+                },
+                "has_unit": {
+                    "description": "UCUM unit code (required only when numeric value is present)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_value_term_id": {
+                    "description": "CURIE or IRI for categorical values (ENVO, PATO, METPO, etc.).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:PropertyAssertion"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "has_raw_value",
+                "type"
+            ],
+            "title": "PropertyAssertion",
+            "type": "object"
+        },
         "Protocol": {
             "additionalProperties": false,
             "description": "",
             "properties": {
+                "analysis_type": {
+                    "description": "Select all the data types associated or available for this biosample",
+                    "items": {
+                        "$ref": "#/$defs/AnalysisTypeEnum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -13145,6 +13248,10 @@
                         "string",
                         "null"
                     ]
+                },
+                "protocol_for": {
+                    "$ref": "#/$defs/ProtocolForEnum",
+                    "description": "The type of planned process that the protocol describes."
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -13182,6 +13289,43 @@
                 "phenol_chloroform_extraction"
             ],
             "title": "ProtocolCategoryEnum",
+            "type": "string"
+        },
+        "ProtocolForEnum": {
+            "description": "The permitted values for describing the type of planned process that a protocol describes.",
+            "enum": [
+                "AnnotatingWorkflow",
+                "ChemicalConversionProcess",
+                "ChromatographicSeparationProcess",
+                "CollectingBiosamplesFromSite",
+                "DataEmitterProcess",
+                "DataGeneration",
+                "DissolvingProcess",
+                "Extraction",
+                "FiltrationProcess",
+                "LibraryPreparation",
+                "MagsAnalysis",
+                "MassSpectrometry",
+                "MaterialProcessing",
+                "MetabolomicsAnalysis",
+                "MetagenomeAnnotation",
+                "MetagenomeAssembly",
+                "MetaproteomicsAnalysis",
+                "MetatranscriptomeAnnotation",
+                "MetatranscriptomeAssembly",
+                "MetatranscriptomeExpressionAnalysis",
+                "MixingProcess",
+                "NomAnalysis",
+                "NucleotideSequencing",
+                "PlannedProcess",
+                "Pooling",
+                "ReadBasedTaxonomyAnalysis",
+                "ReadQcAnalysis",
+                "StorageProcess",
+                "SubSamplingProcess",
+                "WorkflowExecution"
+            ],
+            "title": "ProtocolForEnum",
             "type": "string"
         },
         "QuadPosEnum": {

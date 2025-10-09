@@ -325,39 +325,6 @@ emit_prefixes:
 default_prefix: nmdc
 default_range: string
 types:
-  external_identifier:
-    name: external_identifier
-    description: A CURIE representing an external identifier
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://microbiomedata.github.io/nmdc-schema/identifiers/
-    typeof: uriorcurie
-    uri: xsd:anyURI
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-  bytes:
-    name: bytes
-    description: An integer value that corresponds to a size in bytes
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - UO:0000233
-    base: int
-    uri: xsd:long
-  decimal_degree:
-    name: decimal_degree
-    description: A decimal degree expresses latitude or longitude as decimal fractions.
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://en.wikipedia.org/wiki/Decimal_degrees
-    base: float
-    uri: xsd:decimal
-  language_code:
-    name: language_code
-    description: A language code conforming to ISO_639-1
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://en.wikipedia.org/wiki/ISO_639-1
-    base: str
-    uri: xsd:language
   string:
     name: string
     description: A character string
@@ -588,6 +555,39 @@ types:
     base: str
     uri: xsd:string
     repr: str
+  external_identifier:
+    name: external_identifier
+    description: A CURIE representing an external identifier
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://microbiomedata.github.io/nmdc-schema/identifiers/
+    typeof: uriorcurie
+    uri: xsd:anyURI
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  bytes:
+    name: bytes
+    description: An integer value that corresponds to a size in bytes
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - UO:0000233
+    base: int
+    uri: xsd:long
+  decimal_degree:
+    name: decimal_degree
+    description: A decimal degree expresses latitude or longitude as decimal fractions.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://en.wikipedia.org/wiki/Decimal_degrees
+    base: float
+    uri: xsd:decimal
+  language_code:
+    name: language_code
+    description: A language code conforming to ISO_639-1
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://en.wikipedia.org/wiki/ISO_639-1
+    base: str
+    uri: xsd:language
 enums:
   CalibrationTargetEnum:
     name: CalibrationTargetEnum
@@ -5548,6 +5548,74 @@ enums:
       NomAnalysis:
         text: NomAnalysis
         description: A failure has occurred in analyzing NOM data.
+  ProtocolForEnum:
+    name: ProtocolForEnum
+    description: The permitted values for describing the type of planned process that
+      a protocol describes.
+    comments:
+    - These are the non-abstract class descendants of PlannedProcess.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      AnnotatingWorkflow:
+        text: AnnotatingWorkflow
+      ChemicalConversionProcess:
+        text: ChemicalConversionProcess
+      ChromatographicSeparationProcess:
+        text: ChromatographicSeparationProcess
+      CollectingBiosamplesFromSite:
+        text: CollectingBiosamplesFromSite
+      DataEmitterProcess:
+        text: DataEmitterProcess
+      DataGeneration:
+        text: DataGeneration
+      DissolvingProcess:
+        text: DissolvingProcess
+      Extraction:
+        text: Extraction
+      FiltrationProcess:
+        text: FiltrationProcess
+      LibraryPreparation:
+        text: LibraryPreparation
+      MagsAnalysis:
+        text: MagsAnalysis
+      MassSpectrometry:
+        text: MassSpectrometry
+      MaterialProcessing:
+        text: MaterialProcessing
+      MetabolomicsAnalysis:
+        text: MetabolomicsAnalysis
+      MetagenomeAnnotation:
+        text: MetagenomeAnnotation
+      MetagenomeAssembly:
+        text: MetagenomeAssembly
+      MetaproteomicsAnalysis:
+        text: MetaproteomicsAnalysis
+      MetatranscriptomeAnnotation:
+        text: MetatranscriptomeAnnotation
+      MetatranscriptomeAssembly:
+        text: MetatranscriptomeAssembly
+      MetatranscriptomeExpressionAnalysis:
+        text: MetatranscriptomeExpressionAnalysis
+      MixingProcess:
+        text: MixingProcess
+      NomAnalysis:
+        text: NomAnalysis
+      NucleotideSequencing:
+        text: NucleotideSequencing
+      PlannedProcess:
+        text: PlannedProcess
+      Pooling:
+        text: Pooling
+      ReadBasedTaxonomyAnalysis:
+        text: ReadBasedTaxonomyAnalysis
+      ReadQcAnalysis:
+        text: ReadQcAnalysis
+      StorageProcess:
+        text: StorageProcess
+      SubSamplingProcess:
+        text: SubSamplingProcess
+      WorkflowExecution:
+        text: WorkflowExecution
   SampleTypeEnum:
     name: SampleTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6541,7 +6609,7 @@ slots:
     annotations:
       storage_units:
         tag: storage_units
-        value: '%|mmol/L|umol/L'
+        value: '%|mmol/L|umol/L|mg/L|g/L'
     description: When solutions A (containing substance X) and B are combined together,
       this slot captures the concentration of X in the combination
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6926,8 +6994,7 @@ slots:
     mappings:
     - qud:unit
     - schema:unitCode
-    range: UnitEnum
-    required: true
+    range: string
   type:
     name: type
     description: the class_uri of the class that has been instantiated
@@ -7024,6 +7091,56 @@ slots:
     range: string
     multivalued: true
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
+  has_attribute_label:
+    name: has_attribute_label
+    description: Human-readable label for the property (e.g., MIxS label, ENVO term
+      label).
+    comments:
+    - This provides a human-friendly name for the asserted property. For example,
+      "bicarbonate ion concentration" or "total phosphorus". The label helps with
+      readability and data discovery.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
+  has_attribute_id:
+    name: has_attribute_id
+    description: CURIE or IRI for the property (MIxS slot, NMDC slot, ENVO/OBI term,
+      etc.).
+    comments:
+    - This provides a resolvable identifier for the property being asserted. Examples
+      include MIXS:0000117 for total phosphorus, or ENVO:01001357 for bicarbonate
+      ion concentration.
+    - Prefer using standard ontology terms (ENVO, PATO, OBI, etc.) or MIxS identifiers
+      when available to enhance interoperability.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: uriorcurie
+  has_quantity_kind_id:
+    name: has_quantity_kind_id
+    description: Optional CURIE or IRI for the physical quantity kind (e.g., qudt:QuantityKind).
+    comments:
+    - This slot enables precise semantic description of what physical quantity is
+      being measured, independent of the specific units used. For example, qudt:MassConcentration
+      or qudt:Temperature.
+    - Using quantity kind identifiers from QUDT or similar vocabularies improves data
+      integration and enables automated unit conversion.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: uriorcurie
+  has_value_term_id:
+    name: has_value_term_id
+    description: CURIE or IRI for categorical values (ENVO, PATO, METPO, etc.).
+    comments:
+    - Use this slot when the value of the property is a controlled vocabulary term
+      rather than a numeric or free-text value. For example, ENVO:00002297 for "desert
+      ecosystem" or PATO:0001199 for "dry".
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: uriorcurie
+  has_datetime_value:
+    name: has_datetime_value
+    description: Date-time value for the property in ISO-8601 format.
+    comments:
+    - Use this slot for temporal properties. The value should follow ISO-8601 format
+      (e.g., "2025-06-12T14:30:00Z").
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
   processing_institution_workflow_metadata:
     name: processing_institution_workflow_metadata
     description: Information about how workflow results were generated when the processing
@@ -13524,9 +13641,11 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-    description: Any other measurement performed or parameter collected, that is not
-      listed here
+    description: Structured miscellaneous property assertions for this Biosample.
+      Use when a value cannot cleanly fit an existing, policy-governed slot.
     title: miscellaneous parameter
+    todos:
+    - This slot should not be available in the submission portal.
     examples:
     - value: Bicarbonate ion concentration;2075 micromole per kilogram
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13535,7 +13654,7 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000752
-    range: TextValue
+    range: PropertyAssertion
     multivalued: true
     inlined_as_list: true
   n_alkanes:
@@ -19756,6 +19875,11 @@ slots:
     - For example, low read count from a sequencer, malformed fastq files, etc.
     from_schema: https://w3id.org/nmdc/nmdc
     range: FailureWhatEnum
+  protocol_for:
+    name: protocol_for
+    description: The type of planned process that the protocol describes.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: ProtocolForEnum
   emsl_store_temp:
     name: emsl_store_temp
     description: The temperature at which the sample should be stored upon delivery
@@ -22608,6 +22732,8 @@ classes:
       has_unit:
         name: has_unit
         description: The unit of the quantity
+        range: UnitEnum
+        required: true
       has_numeric_value:
         name: has_numeric_value
         description: The number part of the quantity
@@ -22720,6 +22846,72 @@ classes:
         name: longitude
         required: true
     class_uri: nmdc:GeolocationValue
+  PropertyAssertion:
+    name: PropertyAssertion
+    description: A structured record of data that doesn't fit nicely within the constraints
+      of other NMDC AttributeValues. Uses primitive ranges only.
+    comments:
+    - This class enables flexible metadata capture for properties that don't align
+      with existing, policy-governed slots in NMDC schema.
+    - 'Interoperability note: This approach is aligned with the BERtron schema''s
+      ''properties'' slot pattern (see https://github.com/ber-data/bertron-schema),
+      which uses any_of to support both TextValue and QuantityValue ranges. NMDC''s
+      PropertyAssertion provides a more granular approach by using primitive types
+      with optional semantic annotations, enabling better validation while maintaining
+      flexibility for diverse metadata types.'
+    - PropertyAssertion supports both categorical values (via has_value_term_id) and
+      numeric values (via has_numeric_value with optional min/max ranges), along with
+      temporal (has_datetime_value) and boolean (has_boolean_value) data types.
+    examples:
+    - description: Data provided from submission that doesn't conform to required
+        abs_air_humidity units
+      object:
+        type: nmdc:PropertyAssertion
+        has_raw_value: 50 kPa
+        has_attribute_id: MIXS:0000122
+        has_attribute_label: absolute air humidity
+        has_numeric_value: 50
+        has_unit: kPa
+    - description: Data provided from submission that doesn't conform to required
+        UCUM unit
+      object:
+        type: nmdc:PropertyAssertion
+        has_raw_value: 5.5 mL/L
+        has_attribute_id: MIXS:0000119
+        has_attribute_label: dissolved oxygen
+        has_numeric_value: 5.5
+        has_unit: mL/L
+    - description: Unit provided is invalid for UCUM and standard
+      object:
+        type: nmdc:PropertyAssertion
+        has_raw_value: 250 W/m2
+        has_attribute_id: MIXS:0000112
+        has_attribute_label: solar irradiance
+        has_numeric_value: 250
+        has_unit: W/m2
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: AttributeValue
+    slots:
+    - has_attribute_label
+    - has_attribute_id
+    - has_quantity_kind_id
+    - has_value_term_id
+    - has_boolean_value
+    - has_datetime_value
+    - has_numeric_value
+    - has_minimum_numeric_value
+    - has_maximum_numeric_value
+    - has_unit
+    slot_usage:
+      has_raw_value:
+        name: has_raw_value
+        description: Original contributor string representation (unparsed)
+        required: true
+      has_unit:
+        name: has_unit
+        description: UCUM unit code (required only when numeric value is present)
+        required: false
+    class_uri: nmdc:PropertyAssertion
   NamedThing:
     name: NamedThing
     description: a databased entity or concept/class
@@ -22824,7 +23016,8 @@ classes:
   Instrument:
     name: Instrument
     description: A material entity that is designed to perform a function in a scientific
-      investigation, but is not a reagent.
+      investigation, but is not a reagent. This class models the make and model of
+      the instrument, not the specific instance of the instrument.
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - device
@@ -22842,6 +23035,13 @@ classes:
           syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:Instrument
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - vendor
+        - model
+        description: A unique instrument is defined by its vendor and model.
   PlannedProcess:
     name: PlannedProcess
     title: Planned Process
@@ -22867,6 +23067,8 @@ classes:
     - name
     - type
     - description
+    - protocol_for
+    - analysis_type
     class_uri: nmdc:Protocol
   CreditAssociation:
     name: CreditAssociation

@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-01T12:18:03
+# Generation date: 2025-10-09T10:04:09
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -1195,6 +1195,74 @@ class GeolocationValue(AttributeValue):
 
 
 @dataclass(repr=False)
+class PropertyAssertion(AttributeValue):
+    """
+    A structured record of data that doesn't fit nicely within the constraints of other NMDC AttributeValues. Uses
+    primitive ranges only.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["PropertyAssertion"]
+    class_class_curie: ClassVar[str] = "nmdc:PropertyAssertion"
+    class_name: ClassVar[str] = "PropertyAssertion"
+    class_model_uri: ClassVar[URIRef] = NMDC.PropertyAssertion
+
+    type: Union[str, URIorCURIE] = None
+    has_raw_value: str = None
+    has_attribute_label: Optional[str] = None
+    has_attribute_id: Optional[Union[str, URIorCURIE]] = None
+    has_quantity_kind_id: Optional[Union[str, URIorCURIE]] = None
+    has_value_term_id: Optional[Union[str, URIorCURIE]] = None
+    has_boolean_value: Optional[Union[bool, Bool]] = None
+    has_datetime_value: Optional[str] = None
+    has_numeric_value: Optional[Decimal] = None
+    has_minimum_numeric_value: Optional[Decimal] = None
+    has_maximum_numeric_value: Optional[Decimal] = None
+    has_unit: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.has_raw_value):
+            self.MissingRequiredField("has_raw_value")
+        if not isinstance(self.has_raw_value, str):
+            self.has_raw_value = str(self.has_raw_value)
+
+        if self.has_attribute_label is not None and not isinstance(self.has_attribute_label, str):
+            self.has_attribute_label = str(self.has_attribute_label)
+
+        if self.has_attribute_id is not None and not isinstance(self.has_attribute_id, URIorCURIE):
+            self.has_attribute_id = URIorCURIE(self.has_attribute_id)
+
+        if self.has_quantity_kind_id is not None and not isinstance(self.has_quantity_kind_id, URIorCURIE):
+            self.has_quantity_kind_id = URIorCURIE(self.has_quantity_kind_id)
+
+        if self.has_value_term_id is not None and not isinstance(self.has_value_term_id, URIorCURIE):
+            self.has_value_term_id = URIorCURIE(self.has_value_term_id)
+
+        if self.has_boolean_value is not None and not isinstance(self.has_boolean_value, Bool):
+            self.has_boolean_value = Bool(self.has_boolean_value)
+
+        if self.has_datetime_value is not None and not isinstance(self.has_datetime_value, str):
+            self.has_datetime_value = str(self.has_datetime_value)
+
+        if self.has_numeric_value is not None and not isinstance(self.has_numeric_value, Decimal):
+            self.has_numeric_value = Decimal(self.has_numeric_value)
+
+        if self.has_minimum_numeric_value is not None and not isinstance(self.has_minimum_numeric_value, Decimal):
+            self.has_minimum_numeric_value = Decimal(self.has_minimum_numeric_value)
+
+        if self.has_maximum_numeric_value is not None and not isinstance(self.has_maximum_numeric_value, Decimal):
+            self.has_maximum_numeric_value = Decimal(self.has_maximum_numeric_value)
+
+        if self.has_unit is not None and not isinstance(self.has_unit, str):
+            self.has_unit = str(self.has_unit)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
 class NamedThing(YAMLRoot):
     """
     a databased entity or concept/class
@@ -1848,7 +1916,7 @@ class Biosample(Sample):
     micro_biomass_meth: Optional[str] = None
     microbial_biomass: Optional[Union[dict, QuantityValue]] = None
     mineral_nutr_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
-    misc_param: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    misc_param: Optional[Union[Union[dict, PropertyAssertion], list[Union[dict, PropertyAssertion]]]] = empty_list()
     n_alkanes: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     nitrate: Optional[Union[dict, QuantityValue]] = None
     nitrite: Optional[Union[dict, QuantityValue]] = None
@@ -2949,7 +3017,7 @@ class Biosample(Sample):
 
         if not isinstance(self.misc_param, list):
             self.misc_param = [self.misc_param] if self.misc_param is not None else []
-        self.misc_param = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.misc_param]
+        self.misc_param = [v if isinstance(v, PropertyAssertion) else PropertyAssertion(**as_dict(v)) for v in self.misc_param]
 
         if not isinstance(self.n_alkanes, list):
             self.n_alkanes = [self.n_alkanes] if self.n_alkanes is not None else []
@@ -4008,7 +4076,8 @@ class FieldResearchSite(Site):
 @dataclass(repr=False)
 class Instrument(MaterialEntity):
     """
-    A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    A material entity that is designed to perform a function in a scientific investigation, but is not a reagent. This
+    class models the make and model of the instrument, not the specific instance of the instrument.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -4736,6 +4805,8 @@ class Protocol(YAMLRoot):
     url: Optional[str] = None
     name: Optional[str] = None
     description: Optional[str] = None
+    protocol_for: Optional[Union[str, "ProtocolForEnum"]] = None
+    analysis_type: Optional[Union[Union[str, "AnalysisTypeEnum"], list[Union[str, "AnalysisTypeEnum"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
@@ -4750,6 +4821,13 @@ class Protocol(YAMLRoot):
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.protocol_for is not None and not isinstance(self.protocol_for, ProtocolForEnum):
+            self.protocol_for = ProtocolForEnum(self.protocol_for)
+
+        if not isinstance(self.analysis_type, list):
+            self.analysis_type = [self.analysis_type] if self.analysis_type is not None else []
+        self.analysis_type = [v if isinstance(v, AnalysisTypeEnum) else AnalysisTypeEnum(v) for v in self.analysis_type]
 
         super().__post_init__(**kwargs)
 
@@ -8295,6 +8373,46 @@ class FailureWhereEnum(EnumDefinitionImpl):
         description="""The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.""",
     )
 
+class ProtocolForEnum(EnumDefinitionImpl):
+    """
+    The permitted values for describing the type of planned process that a protocol describes.
+    """
+    AnnotatingWorkflow = PermissibleValue(text="AnnotatingWorkflow")
+    ChemicalConversionProcess = PermissibleValue(text="ChemicalConversionProcess")
+    ChromatographicSeparationProcess = PermissibleValue(text="ChromatographicSeparationProcess")
+    CollectingBiosamplesFromSite = PermissibleValue(text="CollectingBiosamplesFromSite")
+    DataEmitterProcess = PermissibleValue(text="DataEmitterProcess")
+    DataGeneration = PermissibleValue(text="DataGeneration")
+    DissolvingProcess = PermissibleValue(text="DissolvingProcess")
+    Extraction = PermissibleValue(text="Extraction")
+    FiltrationProcess = PermissibleValue(text="FiltrationProcess")
+    LibraryPreparation = PermissibleValue(text="LibraryPreparation")
+    MagsAnalysis = PermissibleValue(text="MagsAnalysis")
+    MassSpectrometry = PermissibleValue(text="MassSpectrometry")
+    MaterialProcessing = PermissibleValue(text="MaterialProcessing")
+    MetabolomicsAnalysis = PermissibleValue(text="MetabolomicsAnalysis")
+    MetagenomeAnnotation = PermissibleValue(text="MetagenomeAnnotation")
+    MetagenomeAssembly = PermissibleValue(text="MetagenomeAssembly")
+    MetaproteomicsAnalysis = PermissibleValue(text="MetaproteomicsAnalysis")
+    MetatranscriptomeAnnotation = PermissibleValue(text="MetatranscriptomeAnnotation")
+    MetatranscriptomeAssembly = PermissibleValue(text="MetatranscriptomeAssembly")
+    MetatranscriptomeExpressionAnalysis = PermissibleValue(text="MetatranscriptomeExpressionAnalysis")
+    MixingProcess = PermissibleValue(text="MixingProcess")
+    NomAnalysis = PermissibleValue(text="NomAnalysis")
+    NucleotideSequencing = PermissibleValue(text="NucleotideSequencing")
+    PlannedProcess = PermissibleValue(text="PlannedProcess")
+    Pooling = PermissibleValue(text="Pooling")
+    ReadBasedTaxonomyAnalysis = PermissibleValue(text="ReadBasedTaxonomyAnalysis")
+    ReadQcAnalysis = PermissibleValue(text="ReadQcAnalysis")
+    StorageProcess = PermissibleValue(text="StorageProcess")
+    SubSamplingProcess = PermissibleValue(text="SubSamplingProcess")
+    WorkflowExecution = PermissibleValue(text="WorkflowExecution")
+
+    _defn = EnumDefinition(
+        name="ProtocolForEnum",
+        description="The permitted values for describing the type of planned process that a protocol describes.",
+    )
+
 class ArchStrucEnum(EnumDefinitionImpl):
 
     building = PermissibleValue(text="building")
@@ -10935,7 +11053,7 @@ slots.has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_value'], name="has
                    model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
 
 slots.has_unit = Slot(uri=NMDC['attribute_values/has_unit'], name="has_unit", curie=NMDC.curie('attribute_values/has_unit'),
-                   model_uri=NMDC.has_unit, domain=None, range=Union[str, "UnitEnum"], mappings = [QUD["unit"], SCHEMA["unitCode"]])
+                   model_uri=NMDC.has_unit, domain=None, range=Optional[str], mappings = [QUD["unit"], SCHEMA["unitCode"]])
 
 slots.type = Slot(uri=RDF.type, name="type", curie=RDF.curie('type'),
                    model_uri=NMDC.type, domain=None, range=Union[str, URIorCURIE])
@@ -10961,6 +11079,21 @@ slots.url = Slot(uri=NMDC['attribute_values/url'], name="url", curie=NMDC.curie(
 slots.websites = Slot(uri=NMDC['attribute_values/websites'], name="websites", curie=NMDC.curie('attribute_values/websites'),
                    model_uri=NMDC.websites, domain=None, range=Optional[Union[str, list[str]]],
                    pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
+
+slots.has_attribute_label = Slot(uri=NMDC['attribute_values/has_attribute_label'], name="has_attribute_label", curie=NMDC.curie('attribute_values/has_attribute_label'),
+                   model_uri=NMDC.has_attribute_label, domain=None, range=Optional[str])
+
+slots.has_attribute_id = Slot(uri=NMDC['attribute_values/has_attribute_id'], name="has_attribute_id", curie=NMDC.curie('attribute_values/has_attribute_id'),
+                   model_uri=NMDC.has_attribute_id, domain=None, range=Optional[Union[str, URIorCURIE]])
+
+slots.has_quantity_kind_id = Slot(uri=NMDC['attribute_values/has_quantity_kind_id'], name="has_quantity_kind_id", curie=NMDC.curie('attribute_values/has_quantity_kind_id'),
+                   model_uri=NMDC.has_quantity_kind_id, domain=None, range=Optional[Union[str, URIorCURIE]])
+
+slots.has_value_term_id = Slot(uri=NMDC['attribute_values/has_value_term_id'], name="has_value_term_id", curie=NMDC.curie('attribute_values/has_value_term_id'),
+                   model_uri=NMDC.has_value_term_id, domain=None, range=Optional[Union[str, URIorCURIE]])
+
+slots.has_datetime_value = Slot(uri=NMDC['attribute_values/has_datetime_value'], name="has_datetime_value", curie=NMDC.curie('attribute_values/has_datetime_value'),
+                   model_uri=NMDC.has_datetime_value, domain=None, range=Optional[str])
 
 slots.processing_institution_workflow_metadata = Slot(uri=NMDC.processing_institution_workflow_metadata, name="processing_institution_workflow_metadata", curie=NMDC.curie('processing_institution_workflow_metadata'),
                    model_uri=NMDC.processing_institution_workflow_metadata, domain=None, range=Optional[str], mappings = [NCIT["C165211"]])
@@ -11212,6 +11345,9 @@ slots.qc_failure_where = Slot(uri=NMDC['basic_classes/qc_failure_where'], name="
 
 slots.qc_failure_what = Slot(uri=NMDC['basic_classes/qc_failure_what'], name="qc_failure_what", curie=NMDC.curie('basic_classes/qc_failure_what'),
                    model_uri=NMDC.qc_failure_what, domain=None, range=Optional[Union[str, "FailureWhatEnum"]])
+
+slots.protocol_for = Slot(uri=NMDC['basic_classes/protocol_for'], name="protocol_for", curie=NMDC.curie('basic_classes/protocol_for'),
+                   model_uri=NMDC.protocol_for, domain=None, range=Optional[Union[str, "ProtocolForEnum"]])
 
 slots.emsl_store_temp = Slot(uri=NMDC.emsl_store_temp, name="emsl_store_temp", curie=NMDC.curie('emsl_store_temp'),
                    model_uri=NMDC.emsl_store_temp, domain=None, range=Optional[str])
@@ -12146,7 +12282,7 @@ slots.mineral_nutr_regm = Slot(uri=MIXS['0000570'], name="mineral_nutr_regm", cu
                    model_uri=NMDC.mineral_nutr_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.misc_param = Slot(uri=MIXS['0000752'], name="misc_param", curie=MIXS.curie('0000752'),
-                   model_uri=NMDC.misc_param, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
+                   model_uri=NMDC.misc_param, domain=None, range=Optional[Union[Union[dict, PropertyAssertion], list[Union[dict, PropertyAssertion]]]])
 
 slots.n_alkanes = Slot(uri=MIXS['0000503'], name="n_alkanes", curie=MIXS.curie('0000503'),
                    model_uri=NMDC.n_alkanes, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
@@ -13417,6 +13553,12 @@ slots.GeolocationValue_latitude = Slot(uri=WGS84.lat, name="GeolocationValue_lat
 
 slots.GeolocationValue_longitude = Slot(uri=WGS84.long, name="GeolocationValue_longitude", curie=WGS84.curie('long'),
                    model_uri=NMDC.GeolocationValue_longitude, domain=GeolocationValue, range=float, mappings = [SCHEMA["longitude"]])
+
+slots.PropertyAssertion_has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_value'], name="PropertyAssertion_has_raw_value", curie=NMDC.curie('attribute_values/has_raw_value'),
+                   model_uri=NMDC.PropertyAssertion_has_raw_value, domain=PropertyAssertion, range=str)
+
+slots.PropertyAssertion_has_unit = Slot(uri=NMDC['attribute_values/has_unit'], name="PropertyAssertion_has_unit", curie=NMDC.curie('attribute_values/has_unit'),
+                   model_uri=NMDC.PropertyAssertion_has_unit, domain=PropertyAssertion, range=Optional[str], mappings = [QUD["unit"], SCHEMA["unitCode"]])
 
 slots.OntologyClass_id = Slot(uri=NMDC.id, name="OntologyClass_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.OntologyClass_id, domain=OntologyClass, range=Union[str, OntologyClassId],

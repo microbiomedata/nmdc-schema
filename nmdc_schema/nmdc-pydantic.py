@@ -3330,6 +3330,42 @@ class FailureWhereEnum(str, Enum):
     """
 
 
+class ProtocolForEnum(str, Enum):
+    """
+    The permitted values for describing the type of planned process that a protocol describes.
+    """
+    AnnotatingWorkflow = "AnnotatingWorkflow"
+    ChemicalConversionProcess = "ChemicalConversionProcess"
+    ChromatographicSeparationProcess = "ChromatographicSeparationProcess"
+    CollectingBiosamplesFromSite = "CollectingBiosamplesFromSite"
+    DataEmitterProcess = "DataEmitterProcess"
+    DataGeneration = "DataGeneration"
+    DissolvingProcess = "DissolvingProcess"
+    Extraction = "Extraction"
+    FiltrationProcess = "FiltrationProcess"
+    LibraryPreparation = "LibraryPreparation"
+    MagsAnalysis = "MagsAnalysis"
+    MassSpectrometry = "MassSpectrometry"
+    MaterialProcessing = "MaterialProcessing"
+    MetabolomicsAnalysis = "MetabolomicsAnalysis"
+    MetagenomeAnnotation = "MetagenomeAnnotation"
+    MetagenomeAssembly = "MetagenomeAssembly"
+    MetaproteomicsAnalysis = "MetaproteomicsAnalysis"
+    MetatranscriptomeAnnotation = "MetatranscriptomeAnnotation"
+    MetatranscriptomeAssembly = "MetatranscriptomeAssembly"
+    MetatranscriptomeExpressionAnalysis = "MetatranscriptomeExpressionAnalysis"
+    MixingProcess = "MixingProcess"
+    NomAnalysis = "NomAnalysis"
+    NucleotideSequencing = "NucleotideSequencing"
+    PlannedProcess = "PlannedProcess"
+    Pooling = "Pooling"
+    ReadBasedTaxonomyAnalysis = "ReadBasedTaxonomyAnalysis"
+    ReadQcAnalysis = "ReadQcAnalysis"
+    StorageProcess = "StorageProcess"
+    SubSamplingProcess = "SubSamplingProcess"
+    WorkflowExecution = "WorkflowExecution"
+
+
 class SampleTypeEnum(str, Enum):
     soil = "soil"
     soil___water_extract = "soil - water extract"
@@ -3711,7 +3747,7 @@ class PortionOfSubstance(ConfiguredBaseModel):
 
     final_concentration: Optional[QuantityValue] = Field(default=None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination""", json_schema_extra = { "linkml_meta": {'alias': 'final_concentration',
          'annotations': {'storage_units': {'tag': 'storage_units',
-                                           'value': '%|mmol/L|umol/L'}},
+                                           'value': '%|mmol/L|umol/L|mg/L|g/L'}},
          'domain_of': ['PortionOfSubstance'],
          'is_a': 'concentration'} })
     mass: Optional[QuantityValue] = Field(default=None, title="mass", description="""A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.""", json_schema_extra = { "linkml_meta": {'alias': 'mass',
@@ -4122,20 +4158,22 @@ class QuantityValue(AttributeValue):
                                                          'syntax {number} {unit}',
                                           'name': 'has_raw_value'},
                         'has_unit': {'description': 'The unit of the quantity',
-                                     'name': 'has_unit'}}})
+                                     'name': 'has_unit',
+                                     'range': 'UnitEnum',
+                                     'required': True}}})
 
     has_maximum_numeric_value: Optional[Decimal] = Field(default=None, description="""The maximum value part, expressed as number, of the quantity value when the value covers a range.""", json_schema_extra = { "linkml_meta": {'alias': 'has_maximum_numeric_value',
-         'domain_of': ['QuantityValue'],
+         'domain_of': ['QuantityValue', 'PropertyAssertion'],
          'is_a': 'has_numeric_value'} })
     has_minimum_numeric_value: Optional[Decimal] = Field(default=None, description="""The minimum value part, expressed as number, of the quantity value when the value covers a range.""", json_schema_extra = { "linkml_meta": {'alias': 'has_minimum_numeric_value',
-         'domain_of': ['QuantityValue'],
+         'domain_of': ['QuantityValue', 'PropertyAssertion'],
          'is_a': 'has_numeric_value'} })
     has_numeric_value: Optional[Decimal] = Field(default=None, description="""The number part of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'has_numeric_value',
-         'domain_of': ['QuantityValue'],
+         'domain_of': ['QuantityValue', 'PropertyAssertion'],
          'mappings': ['qud:quantityValue', 'schema:value']} })
     has_unit: UnitEnum = Field(default=..., description="""The unit of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'has_unit',
          'aliases': ['scale'],
-         'domain_of': ['QuantityValue'],
+         'domain_of': ['QuantityValue', 'PropertyAssertion'],
          'mappings': ['qud:unit', 'schema:unitCode']} })
     has_raw_value: Optional[str] = Field(default=None, description="""Unnormalized atomic string representation, should in syntax {number} {unit}""", json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value', 'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/QuantityValue","nmdc:QuantityValue"] = Field(default="nmdc:QuantityValue", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
@@ -4515,6 +4553,135 @@ class GeolocationValue(AttributeValue):
          'slot_uri': 'wgs84:long'} })
     has_raw_value: Optional[str] = Field(default=None, description="""The raw value for a geolocation should follow {latitude} {longitude}""", json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value', 'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/GeolocationValue","nmdc:GeolocationValue"] = Field(default="nmdc:GeolocationValue", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'designates_type': True,
+         'domain_of': ['EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'AttributeValue',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
+
+
+class PropertyAssertion(AttributeValue):
+    """
+    A structured record of data that doesn't fit nicely within the constraints of other NMDC AttributeValues. Uses primitive ranges only.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:PropertyAssertion',
+         'comments': ['This class enables flexible metadata capture for properties '
+                      "that don't align with existing, policy-governed slots in NMDC "
+                      'schema.',
+                      'Interoperability note: This approach is aligned with the '
+                      "BERtron schema's 'properties' slot pattern (see "
+                      'https://github.com/ber-data/bertron-schema), which uses any_of '
+                      "to support both TextValue and QuantityValue ranges. NMDC's "
+                      'PropertyAssertion provides a more granular approach by using '
+                      'primitive types with optional semantic annotations, enabling '
+                      'better validation while maintaining flexibility for diverse '
+                      'metadata types.',
+                      'PropertyAssertion supports both categorical values (via '
+                      'has_value_term_id) and numeric values (via has_numeric_value '
+                      'with optional min/max ranges), along with temporal '
+                      '(has_datetime_value) and boolean (has_boolean_value) data '
+                      'types.'],
+         'examples': [{'description': "Data provided from submission that doesn't "
+                                      'conform to required abs_air_humidity units',
+                       'object': {'has_attribute_id': 'MIXS:0000122',
+                                  'has_attribute_label': 'absolute air humidity',
+                                  'has_numeric_value': 50,
+                                  'has_raw_value': '50 kPa',
+                                  'has_unit': 'kPa',
+                                  'type': 'nmdc:PropertyAssertion'}},
+                      {'description': "Data provided from submission that doesn't "
+                                      'conform to required UCUM unit',
+                       'object': {'has_attribute_id': 'MIXS:0000119',
+                                  'has_attribute_label': 'dissolved oxygen',
+                                  'has_numeric_value': 5.5,
+                                  'has_raw_value': '5.5 mL/L',
+                                  'has_unit': 'mL/L',
+                                  'type': 'nmdc:PropertyAssertion'}},
+                      {'description': 'Unit provided is invalid for UCUM and standard',
+                       'object': {'has_attribute_id': 'MIXS:0000112',
+                                  'has_attribute_label': 'solar irradiance',
+                                  'has_numeric_value': 250,
+                                  'has_raw_value': '250 W/m2',
+                                  'has_unit': 'W/m2',
+                                  'type': 'nmdc:PropertyAssertion'}}],
+         'from_schema': 'https://w3id.org/nmdc/nmdc',
+         'slot_usage': {'has_raw_value': {'description': 'Original contributor string '
+                                                         'representation (unparsed)',
+                                          'name': 'has_raw_value',
+                                          'required': True},
+                        'has_unit': {'description': 'UCUM unit code (required only '
+                                                    'when numeric value is present)',
+                                     'name': 'has_unit',
+                                     'required': False}}})
+
+    has_attribute_label: Optional[str] = Field(default=None, description="""Human-readable label for the property (e.g., MIxS label, ENVO term label).""", json_schema_extra = { "linkml_meta": {'alias': 'has_attribute_label',
+         'comments': ['This provides a human-friendly name for the asserted property. '
+                      'For example, "bicarbonate ion concentration" or "total '
+                      'phosphorus". The label helps with readability and data '
+                      'discovery.'],
+         'domain_of': ['PropertyAssertion']} })
+    has_attribute_id: Optional[str] = Field(default=None, description="""CURIE or IRI for the property (MIxS slot, NMDC slot, ENVO/OBI term, etc.).""", json_schema_extra = { "linkml_meta": {'alias': 'has_attribute_id',
+         'comments': ['This provides a resolvable identifier for the property being '
+                      'asserted. Examples include MIXS:0000117 for total phosphorus, '
+                      'or ENVO:01001357 for bicarbonate ion concentration.',
+                      'Prefer using standard ontology terms (ENVO, PATO, OBI, etc.) or '
+                      'MIxS identifiers when available to enhance interoperability.'],
+         'domain_of': ['PropertyAssertion']} })
+    has_quantity_kind_id: Optional[str] = Field(default=None, description="""Optional CURIE or IRI for the physical quantity kind (e.g., qudt:QuantityKind).""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantity_kind_id',
+         'comments': ['This slot enables precise semantic description of what physical '
+                      'quantity is being measured, independent of the specific units '
+                      'used. For example, qudt:MassConcentration or qudt:Temperature.',
+                      'Using quantity kind identifiers from QUDT or similar '
+                      'vocabularies improves data integration and enables automated '
+                      'unit conversion.'],
+         'domain_of': ['PropertyAssertion']} })
+    has_value_term_id: Optional[str] = Field(default=None, description="""CURIE or IRI for categorical values (ENVO, PATO, METPO, etc.).""", json_schema_extra = { "linkml_meta": {'alias': 'has_value_term_id',
+         'comments': ['Use this slot when the value of the property is a controlled '
+                      'vocabulary term rather than a numeric or free-text value. For '
+                      'example, ENVO:00002297 for "desert ecosystem" or PATO:0001199 '
+                      'for "dry".'],
+         'domain_of': ['PropertyAssertion']} })
+    has_boolean_value: Optional[bool] = Field(default=None, description="""Links a quantity value to a boolean""", json_schema_extra = { "linkml_meta": {'alias': 'has_boolean_value', 'domain_of': ['PropertyAssertion']} })
+    has_datetime_value: Optional[str] = Field(default=None, description="""Date-time value for the property in ISO-8601 format.""", json_schema_extra = { "linkml_meta": {'alias': 'has_datetime_value',
+         'comments': ['Use this slot for temporal properties. The value should follow '
+                      'ISO-8601 format (e.g., "2025-06-12T14:30:00Z").'],
+         'domain_of': ['PropertyAssertion']} })
+    has_numeric_value: Optional[Decimal] = Field(default=None, description="""Links a quantity value to a number""", json_schema_extra = { "linkml_meta": {'alias': 'has_numeric_value',
+         'domain_of': ['QuantityValue', 'PropertyAssertion'],
+         'mappings': ['qud:quantityValue', 'schema:value']} })
+    has_minimum_numeric_value: Optional[Decimal] = Field(default=None, description="""The minimum value part, expressed as number, of the quantity value when the value covers a range.""", json_schema_extra = { "linkml_meta": {'alias': 'has_minimum_numeric_value',
+         'domain_of': ['QuantityValue', 'PropertyAssertion'],
+         'is_a': 'has_numeric_value'} })
+    has_maximum_numeric_value: Optional[Decimal] = Field(default=None, description="""The maximum value part, expressed as number, of the quantity value when the value covers a range.""", json_schema_extra = { "linkml_meta": {'alias': 'has_maximum_numeric_value',
+         'domain_of': ['QuantityValue', 'PropertyAssertion'],
+         'is_a': 'has_numeric_value'} })
+    has_unit: Optional[str] = Field(default=None, description="""UCUM unit code (required only when numeric value is present)""", json_schema_extra = { "linkml_meta": {'alias': 'has_unit',
+         'aliases': ['scale'],
+         'domain_of': ['QuantityValue', 'PropertyAssertion'],
+         'mappings': ['qud:unit', 'schema:unitCode']} })
+    has_raw_value: str = Field(default=..., description="""Original contributor string representation (unparsed)""", json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value', 'domain_of': ['AttributeValue']} })
+    type: Literal["https://w3id.org/nmdc/PropertyAssertion","nmdc:PropertyAssertion"] = Field(default="nmdc:PropertyAssertion", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
@@ -8777,7 +8944,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000570',
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
-    misc_param: Optional[list[TextValue]] = Field(default=None, title="miscellaneous parameter", description="""Any other measurement performed or parameter collected, that is not listed here""", json_schema_extra = { "linkml_meta": {'alias': 'misc_param',
+    misc_param: Optional[list[PropertyAssertion]] = Field(default=None, title="miscellaneous parameter", description="""Structured miscellaneous property assertions for this Biosample. Use when a value cannot cleanly fit an existing, policy-governed slot.""", json_schema_extra = { "linkml_meta": {'alias': 'misc_param',
          'aliases': ['miscellaneous parameter'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'parameter name;measurement '
@@ -8788,7 +8955,8 @@ class Biosample(Sample):
                                 'kilogram'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000752',
-         'string_serialization': '{text};{float} {unit}'} })
+         'string_serialization': '{text};{float} {unit}',
+         'todos': ['This slot should not be available in the submission portal.']} })
     n_alkanes: Optional[list[TextValue]] = Field(default=None, title="n-alkanes", description="""Concentration of n-alkanes; can include multiple n-alkanes""", json_schema_extra = { "linkml_meta": {'alias': 'n_alkanes',
          'aliases': ['n-alkanes'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -11848,7 +12016,7 @@ class Biosample(Sample):
     analysis_type: Optional[list[AnalysisTypeEnum]] = Field(default=None, title="analysis/data type", description="""Select all the data types associated or available for this biosample""", json_schema_extra = { "linkml_meta": {'alias': 'analysis_type',
          'comments': ['MIxS:investigation_type was included as a `see_also` but that '
                       "term doesn't resolve any more"],
-         'domain_of': ['Biosample'],
+         'domain_of': ['Biosample', 'Protocol'],
          'examples': [{'value': 'metagenomics; metabolomics; metaproteomics'}],
          'rank': 3,
          'recommended': True,
@@ -12596,7 +12764,7 @@ class FieldResearchSite(Site):
 
 class Instrument(MaterialEntity):
     """
-    A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    A material entity that is designed to perform a function in a scientific investigation, but is not a reagent. This class models the make and model of the instrument, not the specific instance of the instrument.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['device'],
          'class_uri': 'nmdc:Instrument',
@@ -12605,7 +12773,11 @@ class Instrument(MaterialEntity):
          'slot_usage': {'id': {'name': 'id',
                                'pattern': '^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                'structured_pattern': {'interpolated': True,
-                                                      'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}}}})
+                                                      'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}}},
+         'unique_keys': {'main': {'description': 'A unique instrument is defined by '
+                                                 'its vendor and model.',
+                                  'unique_key_name': 'main',
+                                  'unique_key_slots': ['vendor', 'model']}}})
 
     vendor: Optional[InstrumentVendorEnum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'vendor', 'domain_of': ['Instrument']} })
     model: Optional[InstrumentModelEnum] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'model', 'domain_of': ['Instrument']} })
@@ -15209,6 +15381,15 @@ class Protocol(ConfiguredBaseModel):
     description: Optional[str] = Field(default=None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing', 'Protocol'],
          'slot_uri': 'dcterms:description'} })
+    protocol_for: Optional[ProtocolForEnum] = Field(default=None, description="""The type of planned process that the protocol describes.""", json_schema_extra = { "linkml_meta": {'alias': 'protocol_for', 'domain_of': ['Protocol']} })
+    analysis_type: Optional[list[AnalysisTypeEnum]] = Field(default=None, title="analysis/data type", description="""Select all the data types associated or available for this biosample""", json_schema_extra = { "linkml_meta": {'alias': 'analysis_type',
+         'comments': ['MIxS:investigation_type was included as a `see_also` but that '
+                      "term doesn't resolve any more"],
+         'domain_of': ['Biosample', 'Protocol'],
+         'examples': [{'value': 'metagenomics; metabolomics; metaproteomics'}],
+         'rank': 3,
+         'recommended': True,
+         'slot_group': 'Sample ID'} })
 
 
 class CreditAssociation(ConfiguredBaseModel):
@@ -21054,6 +21235,7 @@ TimestampValue.model_rebuild()
 ControlledTermValue.model_rebuild()
 ControlledIdentifiedTermValue.model_rebuild()
 GeolocationValue.model_rebuild()
+PropertyAssertion.model_rebuild()
 NamedThing.model_rebuild()
 GeneProduct.model_rebuild()
 OntologyClass.model_rebuild()
