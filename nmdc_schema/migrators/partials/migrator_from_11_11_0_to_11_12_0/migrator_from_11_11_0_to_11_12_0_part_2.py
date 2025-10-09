@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 from nmdc_schema.migrators.helpers import create_schema_view, get_classes_with_slots_by_range, \
     get_database_collections_for_class
-from nmdc_schema_validation_plugin import NmdcSchemaValidationPlugin
+from nmdc_schema import NmdcSchemaValidationPlugin
 
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
