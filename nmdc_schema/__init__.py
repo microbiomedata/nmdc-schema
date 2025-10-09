@@ -1,1 +1,1 @@
-from nmdc_schema_validation_plugin import NmdcSchemaValidationPlugin as NmdcSchemaValidationPlugin
+from nmdc_schema.nmdc_schema_validation_plugin import NmdcSchemaValidationPlugin as NmdcSchemaValidationPlugin
