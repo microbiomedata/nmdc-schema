@@ -26,6 +26,9 @@ from dotenv import load_dotenv
 from pymongo import MongoClient
 from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 
+# TODO: Is this script somewhat redundant with nmdc_schema/migration_recursion.py? Can they be
+#       consolidated?
+
 # Load environment variables from .env file if it exists
 load_dotenv()
 

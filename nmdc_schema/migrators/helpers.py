@@ -114,6 +114,7 @@ def get_classes_with_slots_by_range(schema_view: SchemaView, range_constraint: s
     return classes_with_slots
 
 
+# TODO: Check whether this function can be replaced by a similar function from `refscan`.
 def get_database_collections_for_class(schema_view: SchemaView, class_name: str) -> List[str]:
     """
     Returns the list of database collection names associated with the specified class.
