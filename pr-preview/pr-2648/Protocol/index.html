@@ -312,9 +312,19 @@
   class Protocol
   click Protocol href "../Protocol"
 
+  Protocol : analysis_type
+
+      Protocol --&gt; "* _recommended_" AnalysisTypeEnum : analysis_type
+    click AnalysisTypeEnum href "../AnalysisTypeEnum"
+
   Protocol : description
 
   Protocol : name
+
+  Protocol : protocol_for
+
+      Protocol --&gt; "0..1" ProtocolForEnum : protocol_for
+    click ProtocolForEnum href "../ProtocolForEnum"
 
   Protocol : type
 
@@ -357,6 +367,18 @@
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>a human-readable description of a thing</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protocol_for/">protocol_for</a></td>
+<td>0..1 <br/> <a href="../ProtocolForEnum/">ProtocolForEnum</a></td>
+<td>The type of planned process that the protocol describes</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../analysis_type/">analysis_type</a></td>
+<td>* <em>recommended</em> <br/> <a href="../AnalysisTypeEnum/">AnalysisTypeEnum</a></td>
+<td>Select all the data types associated or available for this biosample</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -621,6 +643,8 @@ slots:
 - name
 - type
 - description
+- protocol_for
+- analysis_type
 class_uri: nmdc:Protocol
 
 </code></pre>
@@ -713,6 +737,36 @@ attributes:
     - NamedThing
     - Protocol
     range: string
+  protocol_for:
+    name: protocol_for
+    description: The type of planned process that the protocol describes.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: protocol_for
+    owner: Protocol
+    domain_of:
+    - Protocol
+    range: ProtocolForEnum
+  analysis_type:
+    name: analysis_type
+    description: Select all the data types associated or available for this biosample
+    title: analysis/data type
+    comments:
+    - MIxS:investigation_type was included as a `see_also` but that term doesn't resolve
+      any more
+    examples:
+    - value: metagenomics; metabolomics; metaproteomics
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 3
+    alias: analysis_type
+    owner: Protocol
+    domain_of:
+    - Biosample
+    - Protocol
+    slot_group: Sample ID
+    range: AnalysisTypeEnum
+    recommended: true
+    multivalued: true
 class_uri: nmdc:Protocol
 
 </code></pre>
