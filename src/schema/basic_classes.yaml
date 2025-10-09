@@ -155,6 +155,8 @@ classes:
       - name
       - type
       - description
+      - protocol_for
+      - analysis_type
   CreditAssociation:
     aliases:
       - study role
@@ -680,6 +682,11 @@ slots:
     comments:
       - For example, low read count from a sequencer, malformed fastq files, etc.
 
+  protocol_for:
+    range: ProtocolForEnum
+    description: >-
+      The type of planned process that the protocol describes.
+
 enums:
   CreditEnum:
     permissible_values:
@@ -1081,3 +1088,40 @@ enums:
         description: A failure has occurred in analyzing metaproteomics data.
       NomAnalysis:
         description: A failure has occurred in analyzing NOM data.
+
+  ProtocolForEnum:
+    description: >-
+      The permitted values for describing the type of planned process that a protocol describes.
+    comments:
+      - These are the non-abstract class descendants of PlannedProcess.
+    permissible_values:
+      AnnotatingWorkflow:
+      ChemicalConversionProcess:
+      ChromatographicSeparationProcess:
+      CollectingBiosamplesFromSite:
+      DataEmitterProcess:
+      DataGeneration:
+      DissolvingProcess:
+      Extraction:
+      FiltrationProcess:
+      LibraryPreparation:
+      MagsAnalysis:
+      MassSpectrometry:
+      MaterialProcessing:
+      MetabolomicsAnalysis:
+      MetagenomeAnnotation:
+      MetagenomeAssembly:
+      MetaproteomicsAnalysis:
+      MetatranscriptomeAnnotation:
+      MetatranscriptomeAssembly:
+      MetatranscriptomeExpressionAnalysis:
+      MixingProcess:
+      NomAnalysis:
+      NucleotideSequencing:
+      PlannedProcess:
+      Pooling:
+      ReadBasedTaxonomyAnalysis:
+      ReadQcAnalysis:
+      StorageProcess:
+      SubSamplingProcess:
+      WorkflowExecution:
