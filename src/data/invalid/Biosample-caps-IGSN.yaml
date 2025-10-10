@@ -1,0 +1,57 @@
+#invalid b/c IGSN ID prefix is uppercase
+id: nmdc:bsm-99-4444444
+type: nmdc:Biosample
+name: Sample Exhaustive Biosample instance. Although all of these values should pass
+  validation, that does not mean that any Biosample of any type would necessarily
+  have this particular combination of values.
+description: unconstrained text
+alternative_identifiers:
+  - generic:abc123
+alternative_names:
+  - alt_name_1
+  - alt_name_2
+associated_studies:
+  - nmdc:sty-99-987654
+  - nmdc:sty-99-qwerty
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002030
+  term:
+    id: ENVO:00002030
+    type: nmdc:OntologyClass
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002169
+  term:
+    id: ENVO:00002169
+    type: nmdc:OntologyClass
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00005792
+  term:
+    id: ENVO:00005792
+    type: nmdc:OntologyClass
+biosample_categories:
+  - LTER
+  - FICUS
+collected_from: nmdc:frsite-99-29dl6v
+embargoed: true
+host_taxid:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: NCBITaxon:9606
+  term:
+    id: NCBITaxon:9606
+    type: nmdc:OntologyClass
+img_identifiers:
+  - img.taxon:abc123
+samp_name: see also name
+gold_biosample_identifiers:
+  - gold:Gb123456789
+  - gold:Gb90909090
+insdc_biosample_identifiers:
+  - biosample:SAMN123456789
+  - biosample:SAMN000
+emsl_biosample_identifiers:
+  - generic:abc123
+igsn_biosample_identifiers:
+  - IGSN:AU124
