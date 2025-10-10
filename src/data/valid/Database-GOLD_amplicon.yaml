@@ -30,4 +30,3 @@ processed_sample_set:
 - id: nmdc:procsm-11-def124
   type: nmdc:ProcessedSample
   name: 18S amplicon library for nmdc:bsm-12-xnfqbd54
-
