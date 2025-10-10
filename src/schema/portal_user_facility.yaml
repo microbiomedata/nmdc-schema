@@ -67,6 +67,7 @@ slots:
     rank: 15
     string_serialization: '{text}'
     recommended: true
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions
   dna_isolate_meth:
     description: Describe the method/protocol/kit used to extract DNA/RNA.
     title: DNA isolation method
