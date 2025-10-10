@@ -279,6 +279,7 @@ slots:
     is_a: biosample_identifiers
     mixins:
       - igsn_identifiers
+    pattern: "^igsn:[A-Za-z]{2,4}[A-Za-z0-9.-]{1,71}$"
 
   ## DataGeneration
 
