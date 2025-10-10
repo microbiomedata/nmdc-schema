@@ -88,6 +88,7 @@ slots:
     rank: 14
     string_serialization: '{text}'
     recommended: true
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions
   emsl_store_temp:
     description: The temperature at which the sample should be stored upon delivery
       to EMSL
