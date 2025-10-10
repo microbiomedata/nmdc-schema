@@ -92,6 +92,33 @@ classes:
           interpolated: true
         range: NucleotideSequencing
 
+  ChemicalEntity:
+    deprecated: >-
+      true; as of Jan 2025, NMDC only needs a handful of chemicals and its use cases can be served via an enumeration
+      rather than supporting a full class.
+    class_uri: nmdc:ChemicalEntity
+    aliases:
+      - metabolite
+      - chemical substance
+      - chemical compound
+      - chemical
+    is_a: OntologyClass
+    description: >-
+      An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
+      There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a
+      physical entity that pertains to chemistry or biochemistry.
+    comments:
+      - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
+    slots:
+      - chemical_formula
+    see_also:
+      - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
+    id_prefixes:
+      - CHEBI
+      - MS
+    exact_mappings:
+      - biolink:ChemicalSubstance
+
 slots:
   omics_type:
     deprecated_element_has_exact_replacement: analyte_category
