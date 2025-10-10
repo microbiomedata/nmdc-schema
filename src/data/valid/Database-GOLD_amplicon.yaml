@@ -24,8 +24,10 @@ material_processing_set:
    - nmdc:bsm-12-xnfqbd54
   has_output:
    - nmdc:procsm-11-def124
-   
+  target_gene_fragment: 18S_rRNA
+        
 processed_sample_set:
 - id: nmdc:procsm-11-def124
   type: nmdc:ProcessedSample
-  name: 16S amplicon library for nmdc:bsm-12-xnfqbd54
+  name: 18S amplicon library for nmdc:bsm-12-xnfqbd54
+
