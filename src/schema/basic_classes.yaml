@@ -930,7 +930,7 @@ enums:
           - Illumina MiSeq
         meaning: OBI:0002003
         structured_aliases:
-          ILLUMINA_MI_SEQ:
+          Illumina MiSeq:
             contexts:
             -  https://gold.jgi.doe.gov/
             predicate: EXACT_SYNONYM
