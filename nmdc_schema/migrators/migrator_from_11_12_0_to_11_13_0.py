@@ -46,5 +46,5 @@ class Migrator(MigratorBase):
         for record in igsn_values:
           if not record.startswith(prefix):
             raise ValueError(
-                 f"Biosample {biosample_id} has value: {record}"
+                 f"Biosample {biosample_id} 'igsn_biosample_identifiers' list includes: {record}"
             )
