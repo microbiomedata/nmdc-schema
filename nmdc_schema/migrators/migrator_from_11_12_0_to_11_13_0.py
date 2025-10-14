@@ -39,7 +39,7 @@ class Migrator(MigratorBase):
         >>> m.confirm_igsn_prefix({"id": 3, "type": "nmdc:Biosample", "igsn_biosample_identifiers": ["igsn:AU124"]}) is None
         True
         """
-        prefix="igsn:"
+        prefix = "igsn:"
         igsn_values = []
         igsn_values = biosample.get("igsn_biosample_identifiers")
         biosample_id = biosample.get("id")
