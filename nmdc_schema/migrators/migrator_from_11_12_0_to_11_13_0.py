@@ -13,27 +13,25 @@ class Migrator(MigratorBase):
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
         """
-        self.adapter.do_for_each_document(
-            "biosample_set", self.confirm_igsn_prefix
-        )
+        self.adapter.do_for_each_document("biosample_set", self.confirm_igsn_prefix)
 
     def confirm_igsn_prefix(self, biosample: dict) -> None:
         r"""
         If a biosample  has a igsn_biosample_identifiers prefix of 'IGSN' raise an exception.
 
         >>> m = Migrator()
- 
+
         # Test: igsn_biosample_identifiers matching "IGSN:"
         >>> m.confirm_igsn_prefix({"id": 1, "type": "nmdc:Biosample", "igsn_biosample_identifiers": ["IGSN:AU124"]})
         Traceback (most recent call last):
             ...
-        ValueError: Biosample 1 has value: IGSN:AU124
+        ValueError: Biosample 1 'igsn_biosample_identifiers' list includes: IGSN:AU124
 
         # Test: igsn_biosample_identifiers with another non-confirming prefix
         >>> m.confirm_igsn_prefix({"id": 1, "type": "nmdc:Biosample", "igsn_biosample_identifiers": ["isng:AU124"]})
         Traceback (most recent call last):
             ...
-        ValueError: Biosample 1 has value: isng:AU124
+        ValueError: Biosample 1 'igsn_biosample_identifiers' list includes: isng:AU124
 
         # Test: valid Biosample
         >>> m.confirm_igsn_prefix({"id": 3, "type": "nmdc:Biosample", "igsn_biosample_identifiers": ["igsn:AU124"]}) is None
@@ -44,7 +42,7 @@ class Migrator(MigratorBase):
         igsn_values = biosample.get("igsn_biosample_identifiers")
         biosample_id = biosample.get("id")
         for record in igsn_values:
-          if not record.startswith(prefix):
-            raise ValueError(
-                 f"Biosample {biosample_id} 'igsn_biosample_identifiers' list includes: {record}"
-            )
+            if not record.startswith(prefix):
+                raise ValueError(
+                    f"Biosample {biosample_id} 'igsn_biosample_identifiers' list includes: {record}"
+                )
