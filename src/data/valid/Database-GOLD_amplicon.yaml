@@ -15,10 +15,7 @@ data_generation_set:
     - nmdc:procsm-11-def124
   associated_studies:
    - nmdc:sty-11-547rwq94
-  name: 16s amplicon sequencing of nmdc:bsm-99-dtTMNb
   type: nmdc:NucleotideSequencing
-  insdc_experiment_identifiers:
-    - insdc.sra:SRX26008237
 
 material_processing_set:
 - id: nmdc:libprp-11-abcdef
@@ -27,7 +24,8 @@ material_processing_set:
    - nmdc:bsm-12-xnfqbd54
   has_output:
    - nmdc:procsm-11-def124
-   
+  target_gene: 18S_rRNA
+        
 processed_sample_set:
 - id: nmdc:procsm-11-def124
   type: nmdc:ProcessedSample
