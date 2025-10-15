@@ -42,6 +42,7 @@ slots:
 
   igsn_identifiers:
     mixin: true
+    is_a: external_database_identifiers
 
   gold_identifiers:
     mixin: true
