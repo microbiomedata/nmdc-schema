@@ -25,7 +25,7 @@ prefixes:
   skos: "http://www.w3.org/2004/02/skos/core#"
 
 default_prefix: nmdc
-default_range: curie
+
 
 slots:
 
