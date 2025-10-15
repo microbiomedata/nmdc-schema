@@ -26,7 +26,6 @@ prefixes:
 
 default_prefix: nmdc
 
-
 slots:
 
   img_identifiers:
