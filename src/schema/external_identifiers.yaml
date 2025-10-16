@@ -25,7 +25,6 @@ prefixes:
   skos: "http://www.w3.org/2004/02/skos/core#"
 
 default_prefix: nmdc
-default_range: string
 
 slots:
 
@@ -43,19 +42,23 @@ slots:
 
   igsn_identifiers:
     mixin: true
+    is_a: external_database_identifiers
 
   gold_identifiers:
     mixin: true
     see_also:
       - https://gold.jgi.doe.gov/
+    is_a: external_database_identifiers
 
   emsl_identifiers:
     mixin: true
+    is_a: external_database_identifiers
 
   mgnify_identifiers:
     mixin: true
     see_also:
       - https://www.ebi.ac.uk/metagenomics/
+    is_a: external_database_identifiers
 
   insdc_identifiers:
     mixin: true
@@ -71,20 +74,24 @@ slots:
     see_also:
       - https://www.insdc.org/
       - https://ena-docs.readthedocs.io/en/latest/submit/general-guide/accessions.html
+    is_a: external_database_identifiers
 
   neon_identifiers:
     mixin: true
     description: identifiers for entities according to NEON
+    is_a: external_database_identifiers
 
   jgi_portal_identifiers:
     mixin: true
     description: identifiers for entities according to JGI Portal
     see_also:
       - https://data.jgi.doe.gov/
+    is_a: external_database_identifiers
 
   gnps_identifiers:
     mixin: true
-
+    is_a: external_database_identifiers
+ 
   ## studies
 
   study_identifiers:
