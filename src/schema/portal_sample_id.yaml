@@ -47,7 +47,7 @@ slots:
       was grown in links to the plant sample. An original culture sample was transferred
       to a new vial and generated a new sample)'
     examples:
-      - value: IGSN:DSJ0284
+      - value: igsn:DSJ0284
     multivalued: true
     rank: 5
     recommended: true
