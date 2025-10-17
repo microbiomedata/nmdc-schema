@@ -1,0 +1,1205 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.12, pytest-8.4.1, pluggy-1.6.0 -- /Users/MAM/Documents/gitrepos/nmdc-schema/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/MAM/Documents/gitrepos/nmdc-schema
+configfile: pyproject.toml
+collecting ... collected 2 items
+
+tests/test_has_unit_validation.py::TestHasUnitValidation::test_has_unit_enum_validation Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-MetabolomicsAnalysis-1.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/LibraryPreparation-amplicon.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometry-valid-lc-with-config.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/NucleotideSequencing-2.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/NucleotideSequencing-dgns-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-extraction_set-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-lipid-workflow.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-possibly-exhaustive.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: abs_air_humidity
+  - QuantityValue at: air_temp
+  - QuantityValue at: al_sat
+  - QuantityValue at: alkalinity
+  - QuantityValue at: alkyl_diethers
+  - QuantityValue at: alt
+  - QuantityValue at: aminopept_act
+  - QuantityValue at: ammonium
+  - QuantityValue at: ammonium_nitrogen
+  - QuantityValue at: amount_light
+  - QuantityValue at: annual_precpt
+  - QuantityValue at: annual_temp
+  - QuantityValue at: api
+  - QuantityValue at: avg_dew_point
+  - QuantityValue at: avg_temp
+  - QuantityValue at: bac_prod
+  - QuantityValue at: bac_resp
+  - QuantityValue at: bacteria_carb_prod
+  - QuantityValue at: barometric_press
+  - QuantityValue at: benzene
+  - QuantityValue at: biochem_oxygen_dem
+  - QuantityValue at: bishomohopanol
+  - QuantityValue at: blood_press_diast
+  - QuantityValue at: blood_press_syst
+  - QuantityValue at: bromide
+  - QuantityValue at: built_struc_age
+  - QuantityValue at: calcium
+  - QuantityValue at: carb_dioxide
+  - QuantityValue at: carb_monoxide
+  - QuantityValue at: carb_nitro_ratio
+  - QuantityValue at: ceil_area
+  - QuantityValue at: ceil_thermal_mass
+  - QuantityValue at: chem_oxygen_dem
+  - QuantityValue at: chloride
+  - QuantityValue at: chlorophyll
+  - QuantityValue at: conduc
+  - QuantityValue at: density
+  - QuantityValue at: depth
+  - QuantityValue at: dew_point
+  - QuantityValue at: diss_carb_dioxide
+  - QuantityValue at: diss_hydrogen
+  - QuantityValue at: diss_inorg_carb
+  - QuantityValue at: diss_inorg_nitro
+  - QuantityValue at: diss_inorg_phosp
+  - QuantityValue at: diss_iron
+  - QuantityValue at: diss_org_carb
+  - QuantityValue at: diss_org_nitro
+  - QuantityValue at: diss_oxygen
+  - QuantityValue at: diss_oxygen_fluid
+  - QuantityValue at: door_size
+  - QuantityValue at: down_par
+  - QuantityValue at: efficiency_percent
+  - QuantityValue at: ethylbenzene
+  - QuantityValue at: exp_duct
+  - QuantityValue at: exp_pipe
+  - QuantityValue at: floor_age
+  - QuantityValue at: floor_area
+  - QuantityValue at: floor_thermal_mass
+  - QuantityValue at: fluor
+  - QuantityValue at: freq_clean
+  - QuantityValue at: freq_cook
+  - QuantityValue at: glucosidase_act
+  - QuantityValue at: hcr_fw_salinity
+  - QuantityValue at: height_carper_fiber
+  - QuantityValue at: host_age
+  - QuantityValue at: host_body_temp
+  - QuantityValue at: host_dry_mass
+  - QuantityValue at: host_height
+  - QuantityValue at: host_length
+  - QuantityValue at: host_tot_mass
+  - QuantityValue at: host_wet_mass
+  - QuantityValue at: humidity
+  - QuantityValue at: indust_eff_percent
+  - QuantityValue at: inside_lux
+  - QuantityValue at: iwf
+  - QuantityValue at: lbc_thirty
+  - QuantityValue at: lbceq
+  - QuantityValue at: light_intensity
+  - QuantityValue at: magnesium
+  - QuantityValue at: manganese
+  - QuantityValue at: max_occup
+  - QuantityValue at: mean_frict_vel
+  - QuantityValue at: mean_peak_frict_vel
+  - QuantityValue at: methane
+  - QuantityValue at: microbial_biomass
+  - QuantityValue at: nitrate
+  - QuantityValue at: nitrite
+  - QuantityValue at: nitrite_nitrogen
+  - QuantityValue at: nitro
+  - QuantityValue at: number_pets
+  - QuantityValue at: number_plants
+  - QuantityValue at: number_resident
+  - QuantityValue at: occup_density_samp
+  - QuantityValue at: occup_samp
+  - QuantityValue at: org_carb
+  - QuantityValue at: org_matter
+  - QuantityValue at: org_nitro
+  - QuantityValue at: organism_count.0
+  - QuantityValue at: owc_tvdss
+  - QuantityValue at: oxygen
+  - QuantityValue at: part_org_carb
+  - QuantityValue at: part_org_nitro
+  - QuantityValue at: petroleum_hydrocarb
+  - QuantityValue at: phosphate
+  - QuantityValue at: photon_flux
+  - QuantityValue at: potassium
+  - QuantityValue at: pour_point
+  - QuantityValue at: pressure
+  - QuantityValue at: primary_prod
+  - QuantityValue at: prod_rate
+  - QuantityValue at: redox_potential
+  - QuantityValue at: rel_air_humidity
+  - QuantityValue at: rel_humidity_out
+  - QuantityValue at: room_air_exch_rate
+  - QuantityValue at: room_occup
+  - QuantityValue at: root_med_ph
+  - QuantityValue at: salinity
+  - QuantityValue at: samp_md
+  - QuantityValue at: samp_size
+  - QuantityValue at: samp_store_temp
+  - QuantityValue at: season_precpt
+  - QuantityValue at: season_temp
+  - QuantityValue at: silicate
+  - QuantityValue at: size_frac_low
+  - QuantityValue at: size_frac_up
+  - QuantityValue at: slope_aspect
+  - QuantityValue at: slope_gradient
+  - QuantityValue at: sludge_retent_time
+  - QuantityValue at: sodium
+  - QuantityValue at: soil_text_measure
+  - QuantityValue at: solar_irradiance
+  - QuantityValue at: soluble_react_phosp
+  - QuantityValue at: specific_humidity
+  - QuantityValue at: sulfate
+  - QuantityValue at: sulfate_fw
+  - QuantityValue at: sulfide
+  - QuantityValue at: surf_humidity
+  - QuantityValue at: surf_moisture
+  - QuantityValue at: surf_temp
+  - QuantityValue at: suspend_part_matter
+  - QuantityValue at: tan
+  - QuantityValue at: temp
+  - QuantityValue at: temp_out
+  - QuantityValue at: toluene
+  - QuantityValue at: tot_carb
+  - QuantityValue at: tot_depth_water_col
+  - QuantityValue at: tot_diss_nitro
+  - QuantityValue at: tot_inorg_nitro
+  - QuantityValue at: tot_iron
+  - QuantityValue at: tot_nitro
+  - QuantityValue at: tot_nitro_content
+  - QuantityValue at: tot_org_carb
+  - QuantityValue at: tot_part_carb
+  - QuantityValue at: tot_phosp
+  - QuantityValue at: tot_phosphate
+  - QuantityValue at: tot_sulfur
+  - QuantityValue at: turbidity
+  - QuantityValue at: tvdss_of_hcr_press
+  - QuantityValue at: tvdss_of_hcr_temp
+  - QuantityValue at: ventilation_rate
+  - QuantityValue at: vfa
+  - QuantityValue at: vfa_fw
+  - QuantityValue at: wall_area
+  - QuantityValue at: wall_height
+  - QuantityValue at: wall_thermal_mass
+  - QuantityValue at: water_current
+  - QuantityValue at: water_cut
+  - QuantityValue at: water_feat_size
+  - QuantityValue at: water_prod_rate
+  - QuantityValue at: wind_speed
+  - QuantityValue at: xylene
+  - QuantityValue at: zinc
+  - QuantityValue at: subsurface_depth
+  - QuantityValue at: bulk_elect_conductivity
+  - QuantityValue at: nitrate_nitrogen
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-metagenome-assembly.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MagsAnalysis-exhaustive.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-metatranscriptome_workflow.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-metatranscriptome-expression.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-nmdc-example.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-study-set-with-consortia-and-parents.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MagsAnalysis.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-embargoed.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometry-dgms-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-polymorphic-planned-process-set.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-mags.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-mass_spectrometry_gc.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-biosamples-infiltrations.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-metabolomics_calibration_example.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ChemicalConversionProcess-minimal.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: substances_used.0.volume
+  - QuantityValue at: substances_used.0.final_concentration
+  - QuantityValue at: temperature
+  - QuantityValue at: duration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-nom-alt_id.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-processed_sample-extract-exhaustive.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: processed_sample_set.0.biomaterial_purity
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometryConfiguration-NOM.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Extraction-NEON.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: input_mass
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-mass_spec.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/StorageProcess-minimal.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: substances_used.0.final_concentration
+  - QuantityValue at: temperature
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-nom_analysis_set.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-soil_horizon.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/OntologyClass-chebi.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/FunctionalAnnotationAggMember-metatranscriptome.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/TextValue-raw_value.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MetabolomicsAnalysis-1.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/SubSamplingProcess-minimal.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: container_size
+  - QuantityValue at: volume
+  - QuantityValue at: temperature
+  - QuantityValue at: mass
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-neon-story.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Study-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometry-valid-syringe-without-config.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/CalibrationInformation-GC.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Study-exhaustive.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-PropertyAssertion-examples.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MetatranscriptomeAnnotation-1.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-1.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ChromatographyConfiguration-LC.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: temperature
+  - QuantityValue at: ordered_mobile_phases.0.duration
+  - QuantityValue at: ordered_mobile_phases.0.substances_used.0.final_concentration
+  - QuantityValue at: ordered_mobile_phases.1.substances_used.0.final_concentration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-MassSpectrometry-NucleotideSequencing.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Extraction-proteomics.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: substances_used.2.final_concentration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-NOM-material-processing.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: material_processing_set.0.substances_used.0.final_concentration
+  - QuantityValue at: material_processing_set.1.substances_used.0.final_concentration
+  - QuantityValue at: material_processing_set.1.substances_volume
+  - QuantityValue at: material_processing_set.2.filter_pore_size
+  - QuantityValue at: material_processing_set.3.ordered_mobile_phases.0.volume
+  - QuantityValue at: material_processing_set.3.ordered_mobile_phases.1.substances_used.1.final_concentration
+  - QuantityValue at: material_processing_set.3.ordered_mobile_phases.1.volume
+  - QuantityValue at: material_processing_set.3.ordered_mobile_phases.2.volume
+  - QuantityValue at: material_processing_set.4.substances_used.0.volume
+  - QuantityValue at: material_processing_set.5.substances_used.0.final_concentration
+  - QuantityValue at: material_processing_set.5.substances_volume
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Extraction-metabolomics.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: substances_used.1.final_concentration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-MassSpectrometry-dgms-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/OntologyClass-envo.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DissolvingProcess-minimal.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: substances_used.0.final_concentration
+  - QuantityValue at: substances_used.0.volume
+  - QuantityValue at: duration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-biosamples-sites.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-gen_from_omics.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-instrument_set.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/FunctionalAnnotation-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-GOLD_amplicon.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-exhaustive.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Doi-valid-dmp-without-provider.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ChemicalConversionProcess-digest.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: substances_used.1.source_concentration
+  - QuantityValue at: substances_used.2.final_concentration
+  - QuantityValue at: substances_volume
+  - QuantityValue at: temperature
+  - QuantityValue at: duration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-Metabolomics-configuration.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/NucleotideSequencing-processing-institution.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-WorkflowExecution.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Doi-valid-dataset-with-provider.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-nom_calibration_example.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometry-omprc-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-pooling_set-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ReadQcAnalysis-1.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/NucleotideSequencing-valid.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-biosamples-1.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-study_test.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Extraction-Target-NOM.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: input_mass
+  - QuantityValue at: substances_used.0.volume
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-library-prep-exhausive.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-librarypreparation_rna_option1.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/NucleotideSequencing-ndsdc-bioproject.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-my_emsl_prefix.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-multiple-paths.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-3.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-multi-id-study.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-Crisper-Terms-data_object_type.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/PortionOfSubstance-1.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-interleaved.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: storage_process_set.0.substances_used.0.final_concentration
+  - QuantityValue at: storage_process_set.0.temperature
+  - QuantityValue at: biosample_set.26.annual_precpt
+  - QuantityValue at: biosample_set.26.salinity
+  - QuantityValue at: biosample_set.26.temp
+  - QuantityValue at: biosample_set.35.abs_air_humidity
+  - QuantityValue at: biosample_set.35.air_temp
+  - QuantityValue at: biosample_set.35.al_sat
+  - QuantityValue at: biosample_set.35.alkalinity
+  - QuantityValue at: biosample_set.35.alkyl_diethers
+  - QuantityValue at: biosample_set.35.alt
+  - QuantityValue at: biosample_set.35.aminopept_act
+  - QuantityValue at: biosample_set.35.ammonium
+  - QuantityValue at: biosample_set.35.ammonium_nitrogen
+  - QuantityValue at: biosample_set.35.amount_light
+  - QuantityValue at: biosample_set.35.annual_precpt
+  - QuantityValue at: biosample_set.35.annual_temp
+  - QuantityValue at: biosample_set.35.api
+  - QuantityValue at: biosample_set.35.avg_dew_point
+  - QuantityValue at: biosample_set.35.avg_temp
+  - QuantityValue at: biosample_set.35.bac_prod
+  - QuantityValue at: biosample_set.35.bac_resp
+  - QuantityValue at: biosample_set.35.bacteria_carb_prod
+  - QuantityValue at: biosample_set.35.barometric_press
+  - QuantityValue at: biosample_set.35.benzene
+  - QuantityValue at: biosample_set.35.biochem_oxygen_dem
+  - QuantityValue at: biosample_set.35.bishomohopanol
+  - QuantityValue at: biosample_set.35.blood_press_diast
+  - QuantityValue at: biosample_set.35.blood_press_syst
+  - QuantityValue at: biosample_set.35.bromide
+  - QuantityValue at: biosample_set.35.built_struc_age
+  - QuantityValue at: biosample_set.35.calcium
+  - QuantityValue at: biosample_set.35.carb_dioxide
+  - QuantityValue at: biosample_set.35.carb_monoxide
+  - QuantityValue at: biosample_set.35.carb_nitro_ratio
+  - QuantityValue at: biosample_set.35.ceil_area
+  - QuantityValue at: biosample_set.35.ceil_thermal_mass
+  - QuantityValue at: biosample_set.35.chem_oxygen_dem
+  - QuantityValue at: biosample_set.35.chloride
+  - QuantityValue at: biosample_set.35.chlorophyll
+  - QuantityValue at: biosample_set.35.conduc
+  - QuantityValue at: biosample_set.35.density
+  - QuantityValue at: biosample_set.35.depth
+  - QuantityValue at: biosample_set.35.dew_point
+  - QuantityValue at: biosample_set.35.diss_carb_dioxide
+  - QuantityValue at: biosample_set.35.diss_hydrogen
+  - QuantityValue at: biosample_set.35.diss_inorg_carb
+  - QuantityValue at: biosample_set.35.diss_inorg_nitro
+  - QuantityValue at: biosample_set.35.diss_inorg_phosp
+  - QuantityValue at: biosample_set.35.diss_iron
+  - QuantityValue at: biosample_set.35.diss_org_carb
+  - QuantityValue at: biosample_set.35.diss_org_nitro
+  - QuantityValue at: biosample_set.35.diss_oxygen
+  - QuantityValue at: biosample_set.35.diss_oxygen_fluid
+  - QuantityValue at: biosample_set.35.door_size
+  - QuantityValue at: biosample_set.35.down_par
+  - QuantityValue at: biosample_set.35.efficiency_percent
+  - QuantityValue at: biosample_set.35.ethylbenzene
+  - QuantityValue at: biosample_set.35.exp_duct
+  - QuantityValue at: biosample_set.35.exp_pipe
+  - QuantityValue at: biosample_set.35.floor_age
+  - QuantityValue at: biosample_set.35.floor_area
+  - QuantityValue at: biosample_set.35.floor_thermal_mass
+  - QuantityValue at: biosample_set.35.fluor
+  - QuantityValue at: biosample_set.35.freq_clean
+  - QuantityValue at: biosample_set.35.freq_cook
+  - QuantityValue at: biosample_set.35.glucosidase_act
+  - QuantityValue at: biosample_set.35.hcr_fw_salinity
+  - QuantityValue at: biosample_set.35.height_carper_fiber
+  - QuantityValue at: biosample_set.35.host_age
+  - QuantityValue at: biosample_set.35.host_body_temp
+  - QuantityValue at: biosample_set.35.host_dry_mass
+  - QuantityValue at: biosample_set.35.host_height
+  - QuantityValue at: biosample_set.35.host_length
+  - QuantityValue at: biosample_set.35.host_tot_mass
+  - QuantityValue at: biosample_set.35.host_wet_mass
+  - QuantityValue at: biosample_set.35.humidity
+  - QuantityValue at: biosample_set.35.indust_eff_percent
+  - QuantityValue at: biosample_set.35.inside_lux
+  - QuantityValue at: biosample_set.35.iwf
+  - QuantityValue at: biosample_set.35.lbc_thirty
+  - QuantityValue at: biosample_set.35.lbceq
+  - QuantityValue at: biosample_set.35.light_intensity
+  - QuantityValue at: biosample_set.35.magnesium
+  - QuantityValue at: biosample_set.35.manganese
+  - QuantityValue at: biosample_set.35.max_occup
+  - QuantityValue at: biosample_set.35.mean_frict_vel
+  - QuantityValue at: biosample_set.35.mean_peak_frict_vel
+  - QuantityValue at: biosample_set.35.methane
+  - QuantityValue at: biosample_set.35.microbial_biomass
+  - QuantityValue at: biosample_set.35.nitrate
+  - QuantityValue at: biosample_set.35.nitrite
+  - QuantityValue at: biosample_set.35.nitrite_nitrogen
+  - QuantityValue at: biosample_set.35.nitro
+  - QuantityValue at: biosample_set.35.number_pets
+  - QuantityValue at: biosample_set.35.number_plants
+  - QuantityValue at: biosample_set.35.number_resident
+  - QuantityValue at: biosample_set.35.occup_density_samp
+  - QuantityValue at: biosample_set.35.occup_samp
+  - QuantityValue at: biosample_set.35.org_carb
+  - QuantityValue at: biosample_set.35.org_matter
+  - QuantityValue at: biosample_set.35.org_nitro
+  - QuantityValue at: biosample_set.35.organism_count.0
+  - QuantityValue at: biosample_set.35.owc_tvdss
+  - QuantityValue at: biosample_set.35.oxygen
+  - QuantityValue at: biosample_set.35.part_org_carb
+  - QuantityValue at: biosample_set.35.part_org_nitro
+  - QuantityValue at: biosample_set.35.petroleum_hydrocarb
+  - QuantityValue at: biosample_set.35.phosphate
+  - QuantityValue at: biosample_set.35.photon_flux
+  - QuantityValue at: biosample_set.35.potassium
+  - QuantityValue at: biosample_set.35.pour_point
+  - QuantityValue at: biosample_set.35.pressure
+  - QuantityValue at: biosample_set.35.primary_prod
+  - QuantityValue at: biosample_set.35.prod_rate
+  - QuantityValue at: biosample_set.35.redox_potential
+  - QuantityValue at: biosample_set.35.rel_air_humidity
+  - QuantityValue at: biosample_set.35.rel_humidity_out
+  - QuantityValue at: biosample_set.35.room_air_exch_rate
+  - QuantityValue at: biosample_set.35.room_occup
+  - QuantityValue at: biosample_set.35.root_med_ph
+  - QuantityValue at: biosample_set.35.salinity
+  - QuantityValue at: biosample_set.35.samp_md
+  - QuantityValue at: biosample_set.35.samp_size
+  - QuantityValue at: biosample_set.35.samp_store_temp
+  - QuantityValue at: biosample_set.35.season_precpt
+  - QuantityValue at: biosample_set.35.season_temp
+  - QuantityValue at: biosample_set.35.silicate
+  - QuantityValue at: biosample_set.35.size_frac_low
+  - QuantityValue at: biosample_set.35.size_frac_up
+  - QuantityValue at: biosample_set.35.slope_aspect
+  - QuantityValue at: biosample_set.35.slope_gradient
+  - QuantityValue at: biosample_set.35.sludge_retent_time
+  - QuantityValue at: biosample_set.35.sodium
+  - QuantityValue at: biosample_set.35.soil_text_measure
+  - QuantityValue at: biosample_set.35.solar_irradiance
+  - QuantityValue at: biosample_set.35.soluble_react_phosp
+  - QuantityValue at: biosample_set.35.specific_humidity
+  - QuantityValue at: biosample_set.35.sulfate
+  - QuantityValue at: biosample_set.35.sulfate_fw
+  - QuantityValue at: biosample_set.35.sulfide
+  - QuantityValue at: biosample_set.35.surf_humidity
+  - QuantityValue at: biosample_set.35.surf_moisture
+  - QuantityValue at: biosample_set.35.surf_temp
+  - QuantityValue at: biosample_set.35.suspend_part_matter
+  - QuantityValue at: biosample_set.35.tan
+  - QuantityValue at: biosample_set.35.temp
+  - QuantityValue at: biosample_set.35.temp_out
+  - QuantityValue at: biosample_set.35.toluene
+  - QuantityValue at: biosample_set.35.tot_carb
+  - QuantityValue at: biosample_set.35.tot_depth_water_col
+  - QuantityValue at: biosample_set.35.tot_diss_nitro
+  - QuantityValue at: biosample_set.35.tot_inorg_nitro
+  - QuantityValue at: biosample_set.35.tot_iron
+  - QuantityValue at: biosample_set.35.tot_nitro
+  - QuantityValue at: biosample_set.35.tot_nitro_content
+  - QuantityValue at: biosample_set.35.tot_org_carb
+  - QuantityValue at: biosample_set.35.tot_part_carb
+  - QuantityValue at: biosample_set.35.tot_phosp
+  - QuantityValue at: biosample_set.35.tot_phosphate
+  - QuantityValue at: biosample_set.35.tot_sulfur
+  - QuantityValue at: biosample_set.35.turbidity
+  - QuantityValue at: biosample_set.35.tvdss_of_hcr_press
+  - QuantityValue at: biosample_set.35.tvdss_of_hcr_temp
+  - QuantityValue at: biosample_set.35.ventilation_rate
+  - QuantityValue at: biosample_set.35.vfa
+  - QuantityValue at: biosample_set.35.vfa_fw
+  - QuantityValue at: biosample_set.35.wall_area
+  - QuantityValue at: biosample_set.35.wall_height
+  - QuantityValue at: biosample_set.35.wall_thermal_mass
+  - QuantityValue at: biosample_set.35.water_current
+  - QuantityValue at: biosample_set.35.water_cut
+  - QuantityValue at: biosample_set.35.water_feat_size
+  - QuantityValue at: biosample_set.35.water_prod_rate
+  - QuantityValue at: biosample_set.35.wind_speed
+  - QuantityValue at: biosample_set.35.xylene
+  - QuantityValue at: biosample_set.35.zinc
+  - QuantityValue at: biosample_set.35.subsurface_depth
+  - QuantityValue at: biosample_set.35.bulk_elect_conductivity
+  - QuantityValue at: biosample_set.35.nitrate_nitrogen
+  - QuantityValue at: processed_sample_set.0.biomaterial_purity
+  - QuantityValue at: processed_sample_set.9.biomaterial_purity
+  - QuantityValue at: configuration_set.2.temperature
+  - QuantityValue at: configuration_set.2.ordered_mobile_phases.0.duration
+  - QuantityValue at: configuration_set.2.ordered_mobile_phases.0.substances_used.0.final_concentration
+  - QuantityValue at: configuration_set.2.ordered_mobile_phases.1.substances_used.0.final_concentration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-data-generations.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MixingProcess-minimal.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: duration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-calibration.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Study-credit-1.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-ReadQcAnalysisActivity-quality_fail.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-pooling_set-exhaustive.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-mass-spectrometry.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: configuration_set.2.temperature
+  - QuantityValue at: configuration_set.2.ordered_mobile_phases.0.duration
+  - QuantityValue at: configuration_set.2.ordered_mobile_phases.0.substances_used.0.final_concentration
+  - QuantityValue at: configuration_set.2.ordered_mobile_phases.1.substances_used.0.final_concentration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometry-valid-gc-with-config.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Doi-valid-award-with-provider.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Pooling-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-processed_sample-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-gen_by_omics.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Doi-valid-publication-without-provider.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/FiltrationProcess-minimal_pressurized.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Instrument-basic.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Study-tidy.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/QuantityValue-1.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: 
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-amplicon.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Pooling-exhaustive.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-biosamples-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-data_objects_genomad.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-neon_Biosample_to_DataObject_NEON.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MetabolomicsAnalysis-2.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MobilePhaseSegment-1.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: substances_used.0.final_concentration
+  - QuantityValue at: duration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometry-NOM.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-with-fire.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-functional-annotations.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-ProcessedSample-sampled_portion.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: material_processing_set.0.substances_used.0.volume
+  - QuantityValue at: material_processing_set.0.substances_used.1.volume
+  - QuantityValue at: material_processing_set.0.substances_used.2.volume
+  - QuantityValue at: material_processing_set.1.substances_used.0.volume
+  - QuantityValue at: material_processing_set.1.substances_used.1.volume
+  - QuantityValue at: material_processing_set.2.substances_used.0.volume
+  - QuantityValue at: material_processing_set.2.temperature
+  - QuantityValue at: material_processing_set.2.duration
+  - QuantityValue at: material_processing_set.3.substances_used.0.volume
+  - QuantityValue at: material_processing_set.3.substances_used.1.volume
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Protocol-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ImageValue-1.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/CreditAssociation-1.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ChromatographyConfiguration-GC.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/NucleotideSequencing-omprc-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ChromatographicSeparationProcess-SPE.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: ordered_mobile_phases.0.substances_used.0.final_concentration
+  - QuantityValue at: ordered_mobile_phases.0.volume
+  - QuantityValue at: ordered_mobile_phases.1.substances_used.0.final_concentration
+  - QuantityValue at: ordered_mobile_phases.1.volume
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-nucleic-extraction.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: material_processing_set.0.input_mass
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/FunctionalAnnotationAggMember-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/GeneProduct-minimal.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-functional_annotation_agg.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-AssemblyAnalysis-1.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-analytical_sample-extract-EDITED-TO_PASS.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-amplicon_example.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-extraction_set-exhaustive.yaml (in test_has_unit_enum_validation)
+  - QuantityValue at: material_processing_set.0.input_mass
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/LibraryPreparation.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Study-emsl.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-study-set-with-gnps-id.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/FunctionalAnnotation-exhaustive.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-DataObject_expression_output.yaml (in test_has_unit_enum_validation)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-study-set-with-dois.yaml (in test_has_unit_enum_validation)
+FAILED
+tests/test_has_unit_validation.py::TestHasUnitValidation::test_has_unit_slot_appropriateness Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-MetabolomicsAnalysis-1.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/LibraryPreparation-amplicon.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometry-valid-lc-with-config.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/NucleotideSequencing-2.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/NucleotideSequencing-dgns-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-extraction_set-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-lipid-workflow.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-possibly-exhaustive.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: abs_air_humidity
+  - QuantityValue at: air_temp
+  - QuantityValue at: al_sat
+  - QuantityValue at: alkalinity
+  - QuantityValue at: alkyl_diethers
+  - QuantityValue at: alt
+  - QuantityValue at: aminopept_act
+  - QuantityValue at: ammonium
+  - QuantityValue at: ammonium_nitrogen
+  - QuantityValue at: amount_light
+  - QuantityValue at: annual_precpt
+  - QuantityValue at: annual_temp
+  - QuantityValue at: api
+  - QuantityValue at: avg_dew_point
+  - QuantityValue at: avg_temp
+  - QuantityValue at: bac_prod
+  - QuantityValue at: bac_resp
+  - QuantityValue at: bacteria_carb_prod
+  - QuantityValue at: barometric_press
+  - QuantityValue at: benzene
+  - QuantityValue at: biochem_oxygen_dem
+  - QuantityValue at: bishomohopanol
+  - QuantityValue at: blood_press_diast
+  - QuantityValue at: blood_press_syst
+  - QuantityValue at: bromide
+  - QuantityValue at: built_struc_age
+  - QuantityValue at: calcium
+  - QuantityValue at: carb_dioxide
+  - QuantityValue at: carb_monoxide
+  - QuantityValue at: carb_nitro_ratio
+  - QuantityValue at: ceil_area
+  - QuantityValue at: ceil_thermal_mass
+  - QuantityValue at: chem_oxygen_dem
+  - QuantityValue at: chloride
+  - QuantityValue at: chlorophyll
+  - QuantityValue at: conduc
+  - QuantityValue at: density
+  - QuantityValue at: depth
+  - QuantityValue at: dew_point
+  - QuantityValue at: diss_carb_dioxide
+  - QuantityValue at: diss_hydrogen
+  - QuantityValue at: diss_inorg_carb
+  - QuantityValue at: diss_inorg_nitro
+  - QuantityValue at: diss_inorg_phosp
+  - QuantityValue at: diss_iron
+  - QuantityValue at: diss_org_carb
+  - QuantityValue at: diss_org_nitro
+  - QuantityValue at: diss_oxygen
+  - QuantityValue at: diss_oxygen_fluid
+  - QuantityValue at: door_size
+  - QuantityValue at: down_par
+  - QuantityValue at: efficiency_percent
+  - QuantityValue at: ethylbenzene
+  - QuantityValue at: exp_duct
+  - QuantityValue at: exp_pipe
+  - QuantityValue at: floor_age
+  - QuantityValue at: floor_area
+  - QuantityValue at: floor_thermal_mass
+  - QuantityValue at: fluor
+  - QuantityValue at: freq_clean
+  - QuantityValue at: freq_cook
+  - QuantityValue at: glucosidase_act
+  - QuantityValue at: hcr_fw_salinity
+  - QuantityValue at: height_carper_fiber
+  - QuantityValue at: host_age
+  - QuantityValue at: host_body_temp
+  - QuantityValue at: host_dry_mass
+  - QuantityValue at: host_height
+  - QuantityValue at: host_length
+  - QuantityValue at: host_tot_mass
+  - QuantityValue at: host_wet_mass
+  - QuantityValue at: humidity
+  - QuantityValue at: indust_eff_percent
+  - QuantityValue at: inside_lux
+  - QuantityValue at: iwf
+  - QuantityValue at: lbc_thirty
+  - QuantityValue at: lbceq
+  - QuantityValue at: light_intensity
+  - QuantityValue at: magnesium
+  - QuantityValue at: manganese
+  - QuantityValue at: max_occup
+  - QuantityValue at: mean_frict_vel
+  - QuantityValue at: mean_peak_frict_vel
+  - QuantityValue at: methane
+  - QuantityValue at: microbial_biomass
+  - QuantityValue at: nitrate
+  - QuantityValue at: nitrite
+  - QuantityValue at: nitrite_nitrogen
+  - QuantityValue at: nitro
+  - QuantityValue at: number_pets
+  - QuantityValue at: number_plants
+  - QuantityValue at: number_resident
+  - QuantityValue at: occup_density_samp
+  - QuantityValue at: occup_samp
+  - QuantityValue at: org_carb
+  - QuantityValue at: org_matter
+  - QuantityValue at: org_nitro
+  - QuantityValue at: organism_count.0
+  - QuantityValue at: owc_tvdss
+  - QuantityValue at: oxygen
+  - QuantityValue at: part_org_carb
+  - QuantityValue at: part_org_nitro
+  - QuantityValue at: petroleum_hydrocarb
+  - QuantityValue at: phosphate
+  - QuantityValue at: photon_flux
+  - QuantityValue at: potassium
+  - QuantityValue at: pour_point
+  - QuantityValue at: pressure
+  - QuantityValue at: primary_prod
+  - QuantityValue at: prod_rate
+  - QuantityValue at: redox_potential
+  - QuantityValue at: rel_air_humidity
+  - QuantityValue at: rel_humidity_out
+  - QuantityValue at: room_air_exch_rate
+  - QuantityValue at: room_occup
+  - QuantityValue at: root_med_ph
+  - QuantityValue at: salinity
+  - QuantityValue at: samp_md
+  - QuantityValue at: samp_size
+  - QuantityValue at: samp_store_temp
+  - QuantityValue at: season_precpt
+  - QuantityValue at: season_temp
+  - QuantityValue at: silicate
+  - QuantityValue at: size_frac_low
+  - QuantityValue at: size_frac_up
+  - QuantityValue at: slope_aspect
+  - QuantityValue at: slope_gradient
+  - QuantityValue at: sludge_retent_time
+  - QuantityValue at: sodium
+  - QuantityValue at: soil_text_measure
+  - QuantityValue at: solar_irradiance
+  - QuantityValue at: soluble_react_phosp
+  - QuantityValue at: specific_humidity
+  - QuantityValue at: sulfate
+  - QuantityValue at: sulfate_fw
+  - QuantityValue at: sulfide
+  - QuantityValue at: surf_humidity
+  - QuantityValue at: surf_moisture
+  - QuantityValue at: surf_temp
+  - QuantityValue at: suspend_part_matter
+  - QuantityValue at: tan
+  - QuantityValue at: temp
+  - QuantityValue at: temp_out
+  - QuantityValue at: toluene
+  - QuantityValue at: tot_carb
+  - QuantityValue at: tot_depth_water_col
+  - QuantityValue at: tot_diss_nitro
+  - QuantityValue at: tot_inorg_nitro
+  - QuantityValue at: tot_iron
+  - QuantityValue at: tot_nitro
+  - QuantityValue at: tot_nitro_content
+  - QuantityValue at: tot_org_carb
+  - QuantityValue at: tot_part_carb
+  - QuantityValue at: tot_phosp
+  - QuantityValue at: tot_phosphate
+  - QuantityValue at: tot_sulfur
+  - QuantityValue at: turbidity
+  - QuantityValue at: tvdss_of_hcr_press
+  - QuantityValue at: tvdss_of_hcr_temp
+  - QuantityValue at: ventilation_rate
+  - QuantityValue at: vfa
+  - QuantityValue at: vfa_fw
+  - QuantityValue at: wall_area
+  - QuantityValue at: wall_height
+  - QuantityValue at: wall_thermal_mass
+  - QuantityValue at: water_current
+  - QuantityValue at: water_cut
+  - QuantityValue at: water_feat_size
+  - QuantityValue at: water_prod_rate
+  - QuantityValue at: wind_speed
+  - QuantityValue at: xylene
+  - QuantityValue at: zinc
+  - QuantityValue at: subsurface_depth
+  - QuantityValue at: bulk_elect_conductivity
+  - QuantityValue at: nitrate_nitrogen
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-metagenome-assembly.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MagsAnalysis-exhaustive.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-metatranscriptome_workflow.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-metatranscriptome-expression.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-nmdc-example.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-study-set-with-consortia-and-parents.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MagsAnalysis.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-embargoed.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometry-dgms-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-polymorphic-planned-process-set.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-mags.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-mass_spectrometry_gc.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-biosamples-infiltrations.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-metabolomics_calibration_example.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ChemicalConversionProcess-minimal.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: substances_used.0.volume
+  - QuantityValue at: substances_used.0.final_concentration
+  - QuantityValue at: temperature
+  - QuantityValue at: duration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-nom-alt_id.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-processed_sample-extract-exhaustive.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: processed_sample_set.0.biomaterial_purity
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometryConfiguration-NOM.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Extraction-NEON.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: input_mass
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-mass_spec.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/StorageProcess-minimal.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: substances_used.0.final_concentration
+  - QuantityValue at: temperature
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-nom_analysis_set.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-soil_horizon.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/OntologyClass-chebi.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/FunctionalAnnotationAggMember-metatranscriptome.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/TextValue-raw_value.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MetabolomicsAnalysis-1.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/SubSamplingProcess-minimal.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: container_size
+  - QuantityValue at: volume
+  - QuantityValue at: temperature
+  - QuantityValue at: mass
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-neon-story.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Study-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometry-valid-syringe-without-config.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/CalibrationInformation-GC.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Study-exhaustive.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-PropertyAssertion-examples.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MetatranscriptomeAnnotation-1.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-1.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ChromatographyConfiguration-LC.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: temperature
+  - QuantityValue at: ordered_mobile_phases.0.duration
+  - QuantityValue at: ordered_mobile_phases.0.substances_used.0.final_concentration
+  - QuantityValue at: ordered_mobile_phases.1.substances_used.0.final_concentration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-MassSpectrometry-NucleotideSequencing.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Extraction-proteomics.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: substances_used.2.final_concentration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-NOM-material-processing.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: material_processing_set.0.substances_used.0.final_concentration
+  - QuantityValue at: material_processing_set.1.substances_used.0.final_concentration
+  - QuantityValue at: material_processing_set.1.substances_volume
+  - QuantityValue at: material_processing_set.2.filter_pore_size
+  - QuantityValue at: material_processing_set.3.ordered_mobile_phases.0.volume
+  - QuantityValue at: material_processing_set.3.ordered_mobile_phases.1.substances_used.1.final_concentration
+  - QuantityValue at: material_processing_set.3.ordered_mobile_phases.1.volume
+  - QuantityValue at: material_processing_set.3.ordered_mobile_phases.2.volume
+  - QuantityValue at: material_processing_set.4.substances_used.0.volume
+  - QuantityValue at: material_processing_set.5.substances_used.0.final_concentration
+  - QuantityValue at: material_processing_set.5.substances_volume
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Extraction-metabolomics.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: substances_used.1.final_concentration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-MassSpectrometry-dgms-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/OntologyClass-envo.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DissolvingProcess-minimal.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: substances_used.0.final_concentration
+  - QuantityValue at: substances_used.0.volume
+  - QuantityValue at: duration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-biosamples-sites.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-gen_from_omics.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-instrument_set.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/FunctionalAnnotation-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-GOLD_amplicon.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-exhaustive.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Doi-valid-dmp-without-provider.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ChemicalConversionProcess-digest.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: substances_used.1.source_concentration
+  - QuantityValue at: substances_used.2.final_concentration
+  - QuantityValue at: substances_volume
+  - QuantityValue at: temperature
+  - QuantityValue at: duration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-Metabolomics-configuration.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/NucleotideSequencing-processing-institution.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-WorkflowExecution.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Doi-valid-dataset-with-provider.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-nom_calibration_example.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometry-omprc-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-pooling_set-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ReadQcAnalysis-1.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/NucleotideSequencing-valid.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-biosamples-1.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-study_test.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Extraction-Target-NOM.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: input_mass
+  - QuantityValue at: substances_used.0.volume
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-library-prep-exhausive.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-librarypreparation_rna_option1.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/NucleotideSequencing-ndsdc-bioproject.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-my_emsl_prefix.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-multiple-paths.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-3.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-multi-id-study.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-Crisper-Terms-data_object_type.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/PortionOfSubstance-1.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-interleaved.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: storage_process_set.0.substances_used.0.final_concentration
+  - QuantityValue at: storage_process_set.0.temperature
+  - QuantityValue at: biosample_set.26.annual_precpt
+  - QuantityValue at: biosample_set.26.salinity
+  - QuantityValue at: biosample_set.26.temp
+  - QuantityValue at: biosample_set.35.abs_air_humidity
+  - QuantityValue at: biosample_set.35.air_temp
+  - QuantityValue at: biosample_set.35.al_sat
+  - QuantityValue at: biosample_set.35.alkalinity
+  - QuantityValue at: biosample_set.35.alkyl_diethers
+  - QuantityValue at: biosample_set.35.alt
+  - QuantityValue at: biosample_set.35.aminopept_act
+  - QuantityValue at: biosample_set.35.ammonium
+  - QuantityValue at: biosample_set.35.ammonium_nitrogen
+  - QuantityValue at: biosample_set.35.amount_light
+  - QuantityValue at: biosample_set.35.annual_precpt
+  - QuantityValue at: biosample_set.35.annual_temp
+  - QuantityValue at: biosample_set.35.api
+  - QuantityValue at: biosample_set.35.avg_dew_point
+  - QuantityValue at: biosample_set.35.avg_temp
+  - QuantityValue at: biosample_set.35.bac_prod
+  - QuantityValue at: biosample_set.35.bac_resp
+  - QuantityValue at: biosample_set.35.bacteria_carb_prod
+  - QuantityValue at: biosample_set.35.barometric_press
+  - QuantityValue at: biosample_set.35.benzene
+  - QuantityValue at: biosample_set.35.biochem_oxygen_dem
+  - QuantityValue at: biosample_set.35.bishomohopanol
+  - QuantityValue at: biosample_set.35.blood_press_diast
+  - QuantityValue at: biosample_set.35.blood_press_syst
+  - QuantityValue at: biosample_set.35.bromide
+  - QuantityValue at: biosample_set.35.built_struc_age
+  - QuantityValue at: biosample_set.35.calcium
+  - QuantityValue at: biosample_set.35.carb_dioxide
+  - QuantityValue at: biosample_set.35.carb_monoxide
+  - QuantityValue at: biosample_set.35.carb_nitro_ratio
+  - QuantityValue at: biosample_set.35.ceil_area
+  - QuantityValue at: biosample_set.35.ceil_thermal_mass
+  - QuantityValue at: biosample_set.35.chem_oxygen_dem
+  - QuantityValue at: biosample_set.35.chloride
+  - QuantityValue at: biosample_set.35.chlorophyll
+  - QuantityValue at: biosample_set.35.conduc
+  - QuantityValue at: biosample_set.35.density
+  - QuantityValue at: biosample_set.35.depth
+  - QuantityValue at: biosample_set.35.dew_point
+  - QuantityValue at: biosample_set.35.diss_carb_dioxide
+  - QuantityValue at: biosample_set.35.diss_hydrogen
+  - QuantityValue at: biosample_set.35.diss_inorg_carb
+  - QuantityValue at: biosample_set.35.diss_inorg_nitro
+  - QuantityValue at: biosample_set.35.diss_inorg_phosp
+  - QuantityValue at: biosample_set.35.diss_iron
+  - QuantityValue at: biosample_set.35.diss_org_carb
+  - QuantityValue at: biosample_set.35.diss_org_nitro
+  - QuantityValue at: biosample_set.35.diss_oxygen
+  - QuantityValue at: biosample_set.35.diss_oxygen_fluid
+  - QuantityValue at: biosample_set.35.door_size
+  - QuantityValue at: biosample_set.35.down_par
+  - QuantityValue at: biosample_set.35.efficiency_percent
+  - QuantityValue at: biosample_set.35.ethylbenzene
+  - QuantityValue at: biosample_set.35.exp_duct
+  - QuantityValue at: biosample_set.35.exp_pipe
+  - QuantityValue at: biosample_set.35.floor_age
+  - QuantityValue at: biosample_set.35.floor_area
+  - QuantityValue at: biosample_set.35.floor_thermal_mass
+  - QuantityValue at: biosample_set.35.fluor
+  - QuantityValue at: biosample_set.35.freq_clean
+  - QuantityValue at: biosample_set.35.freq_cook
+  - QuantityValue at: biosample_set.35.glucosidase_act
+  - QuantityValue at: biosample_set.35.hcr_fw_salinity
+  - QuantityValue at: biosample_set.35.height_carper_fiber
+  - QuantityValue at: biosample_set.35.host_age
+  - QuantityValue at: biosample_set.35.host_body_temp
+  - QuantityValue at: biosample_set.35.host_dry_mass
+  - QuantityValue at: biosample_set.35.host_height
+  - QuantityValue at: biosample_set.35.host_length
+  - QuantityValue at: biosample_set.35.host_tot_mass
+  - QuantityValue at: biosample_set.35.host_wet_mass
+  - QuantityValue at: biosample_set.35.humidity
+  - QuantityValue at: biosample_set.35.indust_eff_percent
+  - QuantityValue at: biosample_set.35.inside_lux
+  - QuantityValue at: biosample_set.35.iwf
+  - QuantityValue at: biosample_set.35.lbc_thirty
+  - QuantityValue at: biosample_set.35.lbceq
+  - QuantityValue at: biosample_set.35.light_intensity
+  - QuantityValue at: biosample_set.35.magnesium
+  - QuantityValue at: biosample_set.35.manganese
+  - QuantityValue at: biosample_set.35.max_occup
+  - QuantityValue at: biosample_set.35.mean_frict_vel
+  - QuantityValue at: biosample_set.35.mean_peak_frict_vel
+  - QuantityValue at: biosample_set.35.methane
+  - QuantityValue at: biosample_set.35.microbial_biomass
+  - QuantityValue at: biosample_set.35.nitrate
+  - QuantityValue at: biosample_set.35.nitrite
+  - QuantityValue at: biosample_set.35.nitrite_nitrogen
+  - QuantityValue at: biosample_set.35.nitro
+  - QuantityValue at: biosample_set.35.number_pets
+  - QuantityValue at: biosample_set.35.number_plants
+  - QuantityValue at: biosample_set.35.number_resident
+  - QuantityValue at: biosample_set.35.occup_density_samp
+  - QuantityValue at: biosample_set.35.occup_samp
+  - QuantityValue at: biosample_set.35.org_carb
+  - QuantityValue at: biosample_set.35.org_matter
+  - QuantityValue at: biosample_set.35.org_nitro
+  - QuantityValue at: biosample_set.35.organism_count.0
+  - QuantityValue at: biosample_set.35.owc_tvdss
+  - QuantityValue at: biosample_set.35.oxygen
+  - QuantityValue at: biosample_set.35.part_org_carb
+  - QuantityValue at: biosample_set.35.part_org_nitro
+  - QuantityValue at: biosample_set.35.petroleum_hydrocarb
+  - QuantityValue at: biosample_set.35.phosphate
+  - QuantityValue at: biosample_set.35.photon_flux
+  - QuantityValue at: biosample_set.35.potassium
+  - QuantityValue at: biosample_set.35.pour_point
+  - QuantityValue at: biosample_set.35.pressure
+  - QuantityValue at: biosample_set.35.primary_prod
+  - QuantityValue at: biosample_set.35.prod_rate
+  - QuantityValue at: biosample_set.35.redox_potential
+  - QuantityValue at: biosample_set.35.rel_air_humidity
+  - QuantityValue at: biosample_set.35.rel_humidity_out
+  - QuantityValue at: biosample_set.35.room_air_exch_rate
+  - QuantityValue at: biosample_set.35.room_occup
+  - QuantityValue at: biosample_set.35.root_med_ph
+  - QuantityValue at: biosample_set.35.salinity
+  - QuantityValue at: biosample_set.35.samp_md
+  - QuantityValue at: biosample_set.35.samp_size
+  - QuantityValue at: biosample_set.35.samp_store_temp
+  - QuantityValue at: biosample_set.35.season_precpt
+  - QuantityValue at: biosample_set.35.season_temp
+  - QuantityValue at: biosample_set.35.silicate
+  - QuantityValue at: biosample_set.35.size_frac_low
+  - QuantityValue at: biosample_set.35.size_frac_up
+  - QuantityValue at: biosample_set.35.slope_aspect
+  - QuantityValue at: biosample_set.35.slope_gradient
+  - QuantityValue at: biosample_set.35.sludge_retent_time
+  - QuantityValue at: biosample_set.35.sodium
+  - QuantityValue at: biosample_set.35.soil_text_measure
+  - QuantityValue at: biosample_set.35.solar_irradiance
+  - QuantityValue at: biosample_set.35.soluble_react_phosp
+  - QuantityValue at: biosample_set.35.specific_humidity
+  - QuantityValue at: biosample_set.35.sulfate
+  - QuantityValue at: biosample_set.35.sulfate_fw
+  - QuantityValue at: biosample_set.35.sulfide
+  - QuantityValue at: biosample_set.35.surf_humidity
+  - QuantityValue at: biosample_set.35.surf_moisture
+  - QuantityValue at: biosample_set.35.surf_temp
+  - QuantityValue at: biosample_set.35.suspend_part_matter
+  - QuantityValue at: biosample_set.35.tan
+  - QuantityValue at: biosample_set.35.temp
+  - QuantityValue at: biosample_set.35.temp_out
+  - QuantityValue at: biosample_set.35.toluene
+  - QuantityValue at: biosample_set.35.tot_carb
+  - QuantityValue at: biosample_set.35.tot_depth_water_col
+  - QuantityValue at: biosample_set.35.tot_diss_nitro
+  - QuantityValue at: biosample_set.35.tot_inorg_nitro
+  - QuantityValue at: biosample_set.35.tot_iron
+  - QuantityValue at: biosample_set.35.tot_nitro
+  - QuantityValue at: biosample_set.35.tot_nitro_content
+  - QuantityValue at: biosample_set.35.tot_org_carb
+  - QuantityValue at: biosample_set.35.tot_part_carb
+  - QuantityValue at: biosample_set.35.tot_phosp
+  - QuantityValue at: biosample_set.35.tot_phosphate
+  - QuantityValue at: biosample_set.35.tot_sulfur
+  - QuantityValue at: biosample_set.35.turbidity
+  - QuantityValue at: biosample_set.35.tvdss_of_hcr_press
+  - QuantityValue at: biosample_set.35.tvdss_of_hcr_temp
+  - QuantityValue at: biosample_set.35.ventilation_rate
+  - QuantityValue at: biosample_set.35.vfa
+  - QuantityValue at: biosample_set.35.vfa_fw
+  - QuantityValue at: biosample_set.35.wall_area
+  - QuantityValue at: biosample_set.35.wall_height
+  - QuantityValue at: biosample_set.35.wall_thermal_mass
+  - QuantityValue at: biosample_set.35.water_current
+  - QuantityValue at: biosample_set.35.water_cut
+  - QuantityValue at: biosample_set.35.water_feat_size
+  - QuantityValue at: biosample_set.35.water_prod_rate
+  - QuantityValue at: biosample_set.35.wind_speed
+  - QuantityValue at: biosample_set.35.xylene
+  - QuantityValue at: biosample_set.35.zinc
+  - QuantityValue at: biosample_set.35.subsurface_depth
+  - QuantityValue at: biosample_set.35.bulk_elect_conductivity
+  - QuantityValue at: biosample_set.35.nitrate_nitrogen
+  - QuantityValue at: processed_sample_set.0.biomaterial_purity
+  - QuantityValue at: processed_sample_set.9.biomaterial_purity
+  - QuantityValue at: configuration_set.2.temperature
+  - QuantityValue at: configuration_set.2.ordered_mobile_phases.0.duration
+  - QuantityValue at: configuration_set.2.ordered_mobile_phases.0.substances_used.0.final_concentration
+  - QuantityValue at: configuration_set.2.ordered_mobile_phases.1.substances_used.0.final_concentration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-data-generations.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MixingProcess-minimal.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: duration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-calibration.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Study-credit-1.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-ReadQcAnalysisActivity-quality_fail.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-pooling_set-exhaustive.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-mass-spectrometry.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: configuration_set.2.temperature
+  - QuantityValue at: configuration_set.2.ordered_mobile_phases.0.duration
+  - QuantityValue at: configuration_set.2.ordered_mobile_phases.0.substances_used.0.final_concentration
+  - QuantityValue at: configuration_set.2.ordered_mobile_phases.1.substances_used.0.final_concentration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometry-valid-gc-with-config.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Doi-valid-award-with-provider.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Pooling-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-processed_sample-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/DataObject-gen_by_omics.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Doi-valid-publication-without-provider.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/FiltrationProcess-minimal_pressurized.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Instrument-basic.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Study-tidy.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/QuantityValue-1.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: 
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-amplicon.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Pooling-exhaustive.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-biosamples-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-data_objects_genomad.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-neon_Biosample_to_DataObject_NEON.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MetabolomicsAnalysis-2.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MobilePhaseSegment-1.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: substances_used.0.final_concentration
+  - QuantityValue at: duration
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/MassSpectrometry-NOM.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-with-fire.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-functional-annotations.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-ProcessedSample-sampled_portion.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: material_processing_set.0.substances_used.0.volume
+  - QuantityValue at: material_processing_set.0.substances_used.1.volume
+  - QuantityValue at: material_processing_set.0.substances_used.2.volume
+  - QuantityValue at: material_processing_set.1.substances_used.0.volume
+  - QuantityValue at: material_processing_set.1.substances_used.1.volume
+  - QuantityValue at: material_processing_set.2.substances_used.0.volume
+  - QuantityValue at: material_processing_set.2.temperature
+  - QuantityValue at: material_processing_set.2.duration
+  - QuantityValue at: material_processing_set.3.substances_used.0.volume
+  - QuantityValue at: material_processing_set.3.substances_used.1.volume
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Protocol-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ImageValue-1.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/CreditAssociation-1.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ChromatographyConfiguration-GC.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/NucleotideSequencing-omprc-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/ChromatographicSeparationProcess-SPE.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: ordered_mobile_phases.0.substances_used.0.final_concentration
+  - QuantityValue at: ordered_mobile_phases.0.volume
+  - QuantityValue at: ordered_mobile_phases.1.substances_used.0.final_concentration
+  - QuantityValue at: ordered_mobile_phases.1.volume
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-nucleic-extraction.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: material_processing_set.0.input_mass
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/FunctionalAnnotationAggMember-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/GeneProduct-minimal.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-functional_annotation_agg.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-AssemblyAnalysis-1.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-analytical_sample-extract-EDITED-TO_PASS.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-amplicon_example.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-extraction_set-exhaustive.yaml (in test_has_unit_slot_appropriateness)
+  - QuantityValue at: material_processing_set.0.input_mass
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/LibraryPreparation.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Study-emsl.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-study-set-with-gnps-id.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/FunctionalAnnotation-exhaustive.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-DataObject_expression_output.yaml (in test_has_unit_slot_appropriateness)
+Processing: /Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Database-study-set-with-dois.yaml (in test_has_unit_slot_appropriateness)
+FAILED
+
+=================================== FAILURES ===================================
+_____________ TestHasUnitValidation.test_has_unit_enum_validation ______________
+
+self = <tests.test_has_unit_validation.TestHasUnitValidation testMethod=test_has_unit_enum_validation>
+
+    def test_has_unit_enum_validation(self):
+        """Test that all has_unit values exist in UnitEnum."""
+        violations = []
+    
+        for file, data_path, quantity_value in iter_example_quantity_values("test_has_unit_enum_validation"):
+            has_unit = quantity_value.get("has_unit")
+            if not has_unit:
+                violations.append(
+                    f"{file}:{data_path} - QuantityValue is missing has_unit"
+                )
+            elif not self.validator.validate_has_unit_against_enum(has_unit):
+                violations.append(
+                    f"{file}:{data_path} - Unit '{has_unit}' not found in UnitEnum"
+                )
+    
+>       self.assertEqual(
+            [], violations, f"Found {len(violations)} has_unit values not in UnitEnum"
+        )
+E       AssertionError: Lists differ: [] != ["/Users/MAM/Documents/gitrepos/nmdc-schem[111 chars]num"]
+E       
+E       Second list contains 1 additional elements.
+E       First extra element 0:
+E       "/Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-possibly-exhaustive.yaml:['abs_air_humidity'] - Unit 'gallon/ton' not found in UnitEnum"
+E       
+E       - []
+E       + ["/Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-possibly-exhaustive.yaml:['abs_air_humidity'] "
+E       +  "- Unit 'gallon/ton' not found in UnitEnum"] : Found 1 has_unit values not in UnitEnum
+
+tests/test_has_unit_validation.py:132: AssertionError
+___________ TestHasUnitValidation.test_has_unit_slot_appropriateness ___________
+
+self = <tests.test_has_unit_validation.TestHasUnitValidation testMethod=test_has_unit_slot_appropriateness>
+
+    def test_has_unit_slot_appropriateness(self):
+        """Test that has_unit values are appropriate for their slots."""
+        violations = []
+    
+        for file, data_path, quantity_value in iter_example_quantity_values("test_has_unit_slot_appropriateness"):
+            has_unit = quantity_value.get("has_unit")
+            if not has_unit:
+                violations.append(
+                    f"{file}:{data_path} - QuantityValue is missing has_unit"
+                )
+            else:
+                # Get last part of path as slot name
+                slot_name = data_path[-1] if data_path else None
+                if not slot_name:
+                    # Edge case: direct QuantityValue instantiation without clear slot ownership
+                    continue
+                is_valid, message = self.validator.validate_has_unit_against_slot(
+                    has_unit, slot_name
+                )
+                if not is_valid:
+                    violations.append(
+                        f"{file}:{data_path} (slot: {slot_name}) - {message}"
+                    )
+    
+>       self.assertEqual(
+            [],
+            violations,
+            f"Found {len(violations)} has_unit values inappropriate for their slots",
+        )
+E       AssertionError: Lists differ: [] != ["/Users/MAM/Documents/gitrepos/nmdc-schem[205 chars]ty'"]
+E       
+E       Second list contains 1 additional elements.
+E       First extra element 0:
+E       "/Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-possibly-exhaustive.yaml:['abs_air_humidity'] (slot: abs_air_humidity) - Unit 'gallon/ton' not in allowed storage_units ['[lb_av]', 'g/g', 'kg', 'kg/kg'] for slot 'abs_air_humidity'"
+E       
+E       - []
+E       + ["/Users/MAM/Documents/gitrepos/nmdc-schema/src/data/valid/Biosample-possibly-exhaustive.yaml:['abs_air_humidity'] "
+E       +  "(slot: abs_air_humidity) - Unit 'gallon/ton' not in allowed storage_units "
+E       +  "['[lb_av]', 'g/g', 'kg', 'kg/kg'] for slot 'abs_air_humidity'"] : Found 1 has_unit values inappropriate for their slots
+
+tests/test_has_unit_validation.py:160: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_has_unit_validation.py::TestHasUnitValidation::test_has_unit_enum_validation
+FAILED tests/test_has_unit_validation.py::TestHasUnitValidation::test_has_unit_slot_appropriateness
+============================== 2 failed in 4.11s ===============================
