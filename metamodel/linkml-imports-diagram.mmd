@@ -1,0 +1,45 @@
+graph TB
+    types[types.yaml<br/>NO IMPORTS]
+
+    extensions[extensions.yaml]
+    mappings[mappings.yaml]
+    validation[validation.yaml<br/>reporting.yaml]
+    datasets[datasets.yaml]
+    array[array.yaml]
+    extended[extended_types.yaml]
+
+    annotations[annotations.yaml]
+    units[units.yaml]
+    meta[meta.yaml<br/>MAIN METAMODEL]
+
+    types --> extensions
+    types --> mappings
+    types --> validation
+    types --> datasets
+    types --> array
+    types --> extended
+    types --> annotations
+    types --> units
+    types --> meta
+
+    extensions --> annotations
+    extensions --> units
+    extensions --> meta
+
+    mappings --> units
+    mappings --> meta
+
+    annotations --> units
+    annotations --> meta
+
+    units --> meta
+
+    style types fill:#e1f5e1
+    style meta fill:#ffe1e1
+    style units fill:#fff4e1
+    style annotations fill:#e1f0ff
+    style extensions fill:#e1f0ff
+    style mappings fill:#e1f0ff
+
+    classDef level1 fill:#f0f0f0
+    class validation,datasets,array,extended level1

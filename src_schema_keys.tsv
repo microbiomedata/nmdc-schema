@@ -1,0 +1,3074 @@
+filename	key	count	classification
+annotation.yaml	CATH	1	application
+annotation.yaml	COG	1	application
+annotation.yaml	EC	1	application
+annotation.yaml	EGGNOG	1	application
+annotation.yaml	FunctionalAnnotation	1	application
+annotation.yaml	FunctionalAnnotationTerm	1	application
+annotation.yaml	GO	1	application
+annotation.yaml	GenomeFeature	1	application
+annotation.yaml	KEGG.ORTHOLOGY	1	application
+annotation.yaml	KEGG.REACTION	1	application
+annotation.yaml	KEGG_PATHWAY	1	application
+annotation.yaml	MetaCyc	1	application
+annotation.yaml	MetaNetX	1	application
+annotation.yaml	OrthologyGroup	1	application
+annotation.yaml	PANTHER.FAMILY	1	application
+annotation.yaml	PFAM	1	application
+annotation.yaml	Pathway	1	application
+annotation.yaml	RHEA	1	application
+annotation.yaml	SEED	1	application
+annotation.yaml	SUPFAM	1	application
+annotation.yaml	TIGRFAM	1	application
+annotation.yaml	abstract	1	metamodel
+annotation.yaml	aliases	2	metamodel
+annotation.yaml	biolink	1	application
+annotation.yaml	class_uri	5	metamodel
+annotation.yaml	classes	1	metamodel
+annotation.yaml	close_mappings	2	application
+annotation.yaml	comments	3	metamodel
+annotation.yaml	default_prefix	1	metamodel
+annotation.yaml	default_range	1	metamodel
+annotation.yaml	deprecated	1	metamodel
+annotation.yaml	description	16	metamodel
+annotation.yaml	encodes	1	application
+annotation.yaml	end	2	application
+annotation.yaml	exact_mappings	4	application
+annotation.yaml	feature_category	1	application
+annotation.yaml	feature_type	1	application
+annotation.yaml	gff_coordinate	1	application
+annotation.yaml	has_function	2	application
+annotation.yaml	id	1	metamodel
+annotation.yaml	id_prefixes	2	metamodel
+annotation.yaml	imports	1	metamodel
+annotation.yaml	interpolated	1	metamodel
+annotation.yaml	is_a	5	metamodel
+annotation.yaml	license	1	metamodel
+annotation.yaml	linkml	1	application
+annotation.yaml	maximum_value	1	metamodel
+annotation.yaml	minimum_value	2	metamodel
+annotation.yaml	name	1	metamodel
+annotation.yaml	narrow_mappings	1	application
+annotation.yaml	nmdc	1	application
+annotation.yaml	notes	4	metamodel
+annotation.yaml	pattern	1	metamodel
+annotation.yaml	phase	1	application
+annotation.yaml	prefixes	1	metamodel
+annotation.yaml	range	10	metamodel
+annotation.yaml	required	3	metamodel
+annotation.yaml	see_also	3	metamodel
+annotation.yaml	seqid	2	application
+annotation.yaml	slot_usage	2	metamodel
+annotation.yaml	slots	3	metamodel
+annotation.yaml	start	2	application
+annotation.yaml	strand	1	application
+annotation.yaml	structured_pattern	1	metamodel
+annotation.yaml	subject	1	application
+annotation.yaml	syntax	1	metamodel
+annotation.yaml	title	1	metamodel
+annotation.yaml	todos	5	metamodel
+annotation.yaml	was_generated_by	1	application
+attribute_values.yaml	%	1	application
+attribute_values.yaml	1	1	application
+attribute_values.yaml	1/d	1	application
+attribute_values.yaml	AttributeValue	1	application
+attribute_values.yaml	Bq	1	application
+attribute_values.yaml	Cel	1	application
+attribute_values.yaml	Ci	1	application
+attribute_values.yaml	ControlledIdentifiedTermValue	1	application
+attribute_values.yaml	ControlledTermValue	1	application
+attribute_values.yaml	GBq	1	application
+attribute_values.yaml	GHz	1	application
+attribute_values.yaml	GeolocationValue	1	application
+attribute_values.yaml	Gy	1	application
+attribute_values.yaml	Hz	1	application
+attribute_values.yaml	ImageValue	1	application
+attribute_values.yaml	J	1	application
+attribute_values.yaml	J/K	1	application
+attribute_values.yaml	L	1	application
+attribute_values.yaml	L/h	1	application
+attribute_values.yaml	L/s	1	application
+attribute_values.yaml	MBq	1	application
+attribute_values.yaml	MHz	1	application
+attribute_values.yaml	MJ	1	application
+attribute_values.yaml	N	1	application
+attribute_values.yaml	PersonValue	1	application
+attribute_values.yaml	PropertyAssertion	1	application
+attribute_values.yaml	QuantityValue	1	application
+attribute_values.yaml	RAD	1	application
+attribute_values.yaml	TextValue	1	application
+attribute_values.yaml	TimestampValue	1	application
+attribute_values.yaml	U	1	application
+attribute_values.yaml	UnitEnum	1	application
+attribute_values.yaml	V	1	application
+attribute_values.yaml	W	1	application
+attribute_values.yaml	W/m2	1	application
+attribute_values.yaml	[FNU]	1	application
+attribute_values.yaml	[NTU]	1	application
+attribute_values.yaml	[cft_i]	1	application
+attribute_values.yaml	[g]	1	application
+attribute_values.yaml	[in_i]	1	application
+attribute_values.yaml	[kn_i]	1	application
+attribute_values.yaml	[lb_av]	1	application
+attribute_values.yaml	[pH]	1	application
+attribute_values.yaml	[ppb]	1	application
+attribute_values.yaml	[ppm]	1	application
+attribute_values.yaml	[ppth]	1	application
+attribute_values.yaml	[sft_i]	1	application
+attribute_values.yaml	a	1	application
+attribute_values.yaml	abstract	1	metamodel
+attribute_values.yaml	aliases	104	metamodel
+attribute_values.yaml	alt_descriptions	2	metamodel
+attribute_values.yaml	annotations	3	metamodel
+attribute_values.yaml	atm	1	application
+attribute_values.yaml	cP	1	application
+attribute_values.yaml	class_uri	10	metamodel
+attribute_values.yaml	classes	1	metamodel
+attribute_values.yaml	cm	1	application
+attribute_values.yaml	cm2	1	application
+attribute_values.yaml	cm3/cm3	1	application
+attribute_values.yaml	comments	10	metamodel
+attribute_values.yaml	contexts	1	application
+attribute_values.yaml	d	1	application
+attribute_values.yaml	deg	1	application
+attribute_values.yaml	description	180	metamodel
+attribute_values.yaml	designates_type	1	metamodel
+attribute_values.yaml	display_order	1	application
+attribute_values.yaml	email	2	application
+attribute_values.yaml	enums	1	metamodel
+attribute_values.yaml	erg/cm2/s	1	application
+attribute_values.yaml	exact_mappings	1	application
+attribute_values.yaml	examples	4	metamodel
+attribute_values.yaml	g	1	application
+attribute_values.yaml	g/L	1	application
+attribute_values.yaml	g/cm3	1	application
+attribute_values.yaml	g/g	1	application
+attribute_values.yaml	g/kg	1	application
+attribute_values.yaml	g/m2	1	application
+attribute_values.yaml	g/m2/d	1	application
+attribute_values.yaml	g/m3	1	application
+attribute_values.yaml	h	1	application
+attribute_values.yaml	has_attribute_id	4	application
+attribute_values.yaml	has_attribute_label	4	application
+attribute_values.yaml	has_datetime_value	1	application
+attribute_values.yaml	has_maximum_numeric_value	1	application
+attribute_values.yaml	has_minimum_numeric_value	1	application
+attribute_values.yaml	has_numeric_value	5	application
+attribute_values.yaml	has_quantity_kind_id	1	application
+attribute_values.yaml	has_raw_value	8	application
+attribute_values.yaml	has_unit	6	application
+attribute_values.yaml	has_value_term_id	1	application
+attribute_values.yaml	id	1	metamodel
+attribute_values.yaml	imports	1	metamodel
+attribute_values.yaml	inlined	1	metamodel
+attribute_values.yaml	is_a	11	metamodel
+attribute_values.yaml	kBq	1	application
+attribute_values.yaml	kHz	1	application
+attribute_values.yaml	kJ	1	application
+attribute_values.yaml	kN	1	application
+attribute_values.yaml	kPa	1	application
+attribute_values.yaml	kW	1	application
+attribute_values.yaml	kW/m2	1	application
+attribute_values.yaml	kW/m2/d	1	application
+attribute_values.yaml	kg	1	application
+attribute_values.yaml	kg/kg	1	application
+attribute_values.yaml	kg/m3	1	application
+attribute_values.yaml	km/h	1	application
+attribute_values.yaml	language	1	application
+attribute_values.yaml	latitude	2	application
+attribute_values.yaml	license	1	metamodel
+attribute_values.yaml	lm/m2	1	application
+attribute_values.yaml	longitude	2	application
+attribute_values.yaml	lx	1	application
+attribute_values.yaml	m	1	application
+attribute_values.yaml	m/s	1	application
+attribute_values.yaml	m/s2	1	application
+attribute_values.yaml	m2	1	application
+attribute_values.yaml	m2/s	1	application
+attribute_values.yaml	m3	1	application
+attribute_values.yaml	m3/d	1	application
+attribute_values.yaml	m3/min	1	application
+attribute_values.yaml	m3/s	1	application
+attribute_values.yaml	mCi	1	application
+attribute_values.yaml	mL	1	application
+attribute_values.yaml	mL/L	1	application
+attribute_values.yaml	mS/cm	1	application
+attribute_values.yaml	mU	1	application
+attribute_values.yaml	mV	1	application
+attribute_values.yaml	mappings	6	metamodel
+attribute_values.yaml	mbar	1	application
+attribute_values.yaml	meq/L	1	application
+attribute_values.yaml	mg	1	application
+attribute_values.yaml	mg/L	1	application
+attribute_values.yaml	mg/g	1	application
+attribute_values.yaml	mg/kg	1	application
+attribute_values.yaml	mg/m3	1	application
+attribute_values.yaml	mg/m3/d	1	application
+attribute_values.yaml	min	1	application
+attribute_values.yaml	mm	1	application
+attribute_values.yaml	mm/a	1	application
+attribute_values.yaml	mm[Hg]	1	application
+attribute_values.yaml	mmol	1	application
+attribute_values.yaml	mmol/L	1	application
+attribute_values.yaml	mol	1	application
+attribute_values.yaml	mol/L	1	application
+attribute_values.yaml	mol/L/h	1	application
+attribute_values.yaml	mol/g	1	application
+attribute_values.yaml	multivalued	1	metamodel
+attribute_values.yaml	nCi	1	application
+attribute_values.yaml	nU	1	application
+attribute_values.yaml	name	3	metamodel
+attribute_values.yaml	ng/L	1	application
+attribute_values.yaml	ng/g	1	application
+attribute_values.yaml	ng/h	1	application
+attribute_values.yaml	ng/mL	1	application
+attribute_values.yaml	nmdc	1	application
+attribute_values.yaml	nmol	1	application
+attribute_values.yaml	notes	3	metamodel
+attribute_values.yaml	object	3	metamodel
+attribute_values.yaml	orcid	2	application
+attribute_values.yaml	pCi	1	application
+attribute_values.yaml	pattern	1	metamodel
+attribute_values.yaml	permissible_values	1	metamodel
+attribute_values.yaml	pg/L	1	application
+attribute_values.yaml	pg/g	1	application
+attribute_values.yaml	pg/mL	1	application
+attribute_values.yaml	pmol	1	application
+attribute_values.yaml	predicate	1	application
+attribute_values.yaml	prefixes	1	metamodel
+attribute_values.yaml	profile_image_url	1	application
+attribute_values.yaml	rad	1	application
+attribute_values.yaml	range	22	metamodel
+attribute_values.yaml	required	7	metamodel
+attribute_values.yaml	schema	1	metamodel
+attribute_values.yaml	see_also	3	metamodel
+attribute_values.yaml	slot_uri	5	metamodel
+attribute_values.yaml	slot_usage	5	metamodel
+attribute_values.yaml	slots	9	metamodel
+attribute_values.yaml	sr	1	application
+attribute_values.yaml	structured_aliases	1	metamodel
+attribute_values.yaml	term	2	application
+attribute_values.yaml	title	17	metamodel
+attribute_values.yaml	todos	2	metamodel
+attribute_values.yaml	tooltip	3	application
+attribute_values.yaml	type	4	application
+attribute_values.yaml	uCi	1	application
+attribute_values.yaml	uL	1	application
+attribute_values.yaml	uL/kg	1	application
+attribute_values.yaml	uS/cm	1	application
+attribute_values.yaml	uU	1	application
+attribute_values.yaml	ug	1	application
+attribute_values.yaml	ug/L	1	application
+attribute_values.yaml	ug/L/h	1	application
+attribute_values.yaml	ug/g	1	application
+attribute_values.yaml	ug/m3	1	application
+attribute_values.yaml	ug/mL	1	application
+attribute_values.yaml	ug/uL	1	application
+attribute_values.yaml	um	1	application
+attribute_values.yaml	umol	1	application
+attribute_values.yaml	umol/L	1	application
+attribute_values.yaml	umol/L/h	1	application
+attribute_values.yaml	umol/kg	1	application
+attribute_values.yaml	umol/m2/s	1	application
+attribute_values.yaml	umol/s/m2	1	application
+attribute_values.yaml	url	1	application
+attribute_values.yaml	value	4	metamodel
+attribute_values.yaml	websites	1	application
+attribute_values.yaml	wikipedia	2	application
+attribute_values.yaml	wk	1	application
+attribute_values.yaml	workflow_execution_class	1	application
+basic_classes.yaml	BFO	1	application
+basic_classes.yaml	Conceptualization	1	application
+basic_classes.yaml	CreditAssociation	1	application
+basic_classes.yaml	CreditEnum	1	application
+basic_classes.yaml	Data curation	1	application
+basic_classes.yaml	DataEmitterProcess	1	application
+basic_classes.yaml	DataGeneration	1	application
+basic_classes.yaml	DataObject	1	application
+basic_classes.yaml	Doi	1	application
+basic_classes.yaml	EFO	1	application
+basic_classes.yaml	Extraction	1	application
+basic_classes.yaml	FailureCategorization	1	application
+basic_classes.yaml	FailureWhatEnum	1	application
+basic_classes.yaml	FailureWhereEnum	1	application
+basic_classes.yaml	Formal Analysis	1	application
+basic_classes.yaml	Funding acquisition	1	application
+basic_classes.yaml	ILLUMINA_MI_SEQ	1	application
+basic_classes.yaml	ISA	1	application
+basic_classes.yaml	Illumina HiSeq 2500-1TB	1	application
+basic_classes.yaml	Illumina HiSeq 2500-Rapid	1	application
+basic_classes.yaml	Illumina NextSeq-HO	1	application
+basic_classes.yaml	Illumina NextSeq-MO	1	application
+basic_classes.yaml	Illumina NovaSeq S2	1	application
+basic_classes.yaml	Illumina NovaSeq S4	1	application
+basic_classes.yaml	Illumina NovaSeq SP	1	application
+basic_classes.yaml	InformationObject	1	application
+basic_classes.yaml	Instrument	1	application
+basic_classes.yaml	InstrumentModelEnum	1	application
+basic_classes.yaml	InstrumentVendorEnum	1	application
+basic_classes.yaml	Investigation	1	application
+basic_classes.yaml	LibraryPreparation	1	application
+basic_classes.yaml	MagsAnalysis	1	application
+basic_classes.yaml	ManifestCategoryEnum	1	application
+basic_classes.yaml	MassSpectrometry	1	application
+basic_classes.yaml	MaterialEntity	1	application
+basic_classes.yaml	MetabolomicsAnalysis	1	application
+basic_classes.yaml	MetagenomeAnnotation	1	application
+basic_classes.yaml	MetagenomeAssembly	1	application
+basic_classes.yaml	MetaproteomicsAnalysis	1	application
+basic_classes.yaml	MetatranscriptomeAnnotation	1	application
+basic_classes.yaml	MetatranscriptomeAssembly	1	application
+basic_classes.yaml	MetatranscriptomeExpressionAnalysis	1	application
+basic_classes.yaml	Methodology	1	application
+basic_classes.yaml	NCIT	1	application
+basic_classes.yaml	NamedThing	1	application
+basic_classes.yaml	NomAnalysis	1	application
+basic_classes.yaml	NucleotideSequencing	1	application
+basic_classes.yaml	OBI	1	application
+basic_classes.yaml	OntologyClass	1	application
+basic_classes.yaml	OntologyRelation	1	application
+basic_classes.yaml	PlannedProcess	1	application
+basic_classes.yaml	Pooling	1	application
+basic_classes.yaml	Principal Investigator	1	application
+basic_classes.yaml	Project administration	1	application
+basic_classes.yaml	Protocol	1	application
+basic_classes.yaml	ReadBasedTaxonomyAnalysis	1	application
+basic_classes.yaml	ReadQcAnalysis	1	application
+basic_classes.yaml	Resources	1	application
+basic_classes.yaml	SIO	1	application
+basic_classes.yaml	Software	1	application
+basic_classes.yaml	Study	1	application
+basic_classes.yaml	StudyCategoryEnum	1	application
+basic_classes.yaml	Submitter	1	application
+basic_classes.yaml	Supervision	1	application
+basic_classes.yaml	Validation	1	application
+basic_classes.yaml	Visualization	1	application
+basic_classes.yaml	WorkflowExecution	1	application
+basic_classes.yaml	Writing original draft	1	application
+basic_classes.yaml	Writing review and editing	1	application
+basic_classes.yaml	abstract	7	metamodel
+basic_classes.yaml	agilent	1	application
+basic_classes.yaml	agilent_7980A	1	application
+basic_classes.yaml	agilent_8890A	1	application
+basic_classes.yaml	aliases	59	metamodel
+basic_classes.yaml	alt_descriptions	3	metamodel
+basic_classes.yaml	alternative_identifiers	1	application
+basic_classes.yaml	alternative_names	1	application
+basic_classes.yaml	annotations	9	metamodel
+basic_classes.yaml	applied_roles	1	application
+basic_classes.yaml	applies_to_person	1	application
+basic_classes.yaml	assembly_size_too_small	1	application
+basic_classes.yaml	associated_dois	1	application
+basic_classes.yaml	associated_studies	2	application
+basic_classes.yaml	attributes	1	metamodel
+basic_classes.yaml	biolink	1	application
+basic_classes.yaml	broad_mappings	2	application
+basic_classes.yaml	bruker	1	application
+basic_classes.yaml	class_uri	16	metamodel
+basic_classes.yaml	classes	1	metamodel
+basic_classes.yaml	close_mappings	1	application
+basic_classes.yaml	comments	16	metamodel
+basic_classes.yaml	consortium	1	application
+basic_classes.yaml	contexts	9	application
+basic_classes.yaml	data_category	1	application
+basic_classes.yaml	data_object_type	1	application
+basic_classes.yaml	dcterms	1	application
+basic_classes.yaml	definition	1	metamodel
+basic_classes.yaml	description	89	metamodel
+basic_classes.yaml	doi	3	application
+basic_classes.yaml	doi_category	5	application
+basic_classes.yaml	doi_provider	4	application
+basic_classes.yaml	embl.ena	3	application
+basic_classes.yaml	enums	1	metamodel
+basic_classes.yaml	equals_string	3	metamodel
+basic_classes.yaml	exact_mappings	7	application
+basic_classes.yaml	examples	1	metamodel
+basic_classes.yaml	exploris_21T	1	application
+basic_classes.yaml	exploris_240	1	application
+basic_classes.yaml	exploris_480	1	application
+basic_classes.yaml	fractions	1	application
+basic_classes.yaml	gilson	1	application
+basic_classes.yaml	git_url	1	application
+basic_classes.yaml	gridion	1	application
+basic_classes.yaml	has_credit_associations	1	application
+basic_classes.yaml	has_input	3	application
+basic_classes.yaml	has_output	5	application
+basic_classes.yaml	hiseq	1	application
+basic_classes.yaml	hiseq_1000	1	application
+basic_classes.yaml	hiseq_1500	1	application
+basic_classes.yaml	hiseq_2000	1	application
+basic_classes.yaml	hiseq_2500	1	application
+basic_classes.yaml	hiseq_3000	1	application
+basic_classes.yaml	hiseq_4000	1	application
+basic_classes.yaml	hiseq_x_ten	1	application
+basic_classes.yaml	homepage_website	1	application
+basic_classes.yaml	id	5	metamodel
+basic_classes.yaml	illumina	1	application
+basic_classes.yaml	imports	1	metamodel
+basic_classes.yaml	in_manifest	1	application
+basic_classes.yaml	inlined	1	metamodel
+basic_classes.yaml	inlined_as_list	5	metamodel
+basic_classes.yaml	insdc_bioproject_identifiers	1	application
+basic_classes.yaml	instrument_instance_specifier	1	application
+basic_classes.yaml	instrument_run	1	application
+basic_classes.yaml	instrument_used	1	application
+basic_classes.yaml	interpolated	13	metamodel
+basic_classes.yaml	is_a	10	metamodel
+basic_classes.yaml	is_obsolete	1	application
+basic_classes.yaml	is_root	1	application
+basic_classes.yaml	license	1	metamodel
+basic_classes.yaml	linkml	1	application
+basic_classes.yaml	low_read_count	1	application
+basic_classes.yaml	ltq_orbitrap_velos	1	application
+basic_classes.yaml	malformed_data	1	application
+basic_classes.yaml	manifest_category	1	application
+basic_classes.yaml	mappings	1	metamodel
+basic_classes.yaml	meaning	24	metamodel
+basic_classes.yaml	minion	1	application
+basic_classes.yaml	miniseq	1	application
+basic_classes.yaml	miseq	1	application
+basic_classes.yaml	model	1	metamodel
+basic_classes.yaml	multivalued	13	metamodel
+basic_classes.yaml	name	3	metamodel
+basic_classes.yaml	narrow_mappings	2	application
+basic_classes.yaml	nextseq	1	application
+basic_classes.yaml	nextseq_1000	1	application
+basic_classes.yaml	nextseq_500	1	application
+basic_classes.yaml	nextseq_550	1	application
+basic_classes.yaml	no_valid_data_generated	1	application
+basic_classes.yaml	notes	3	metamodel
+basic_classes.yaml	novaseq	1	application
+basic_classes.yaml	novaseq_6000	1	application
+basic_classes.yaml	novaseq_x	1	application
+basic_classes.yaml	object	1	metamodel
+basic_classes.yaml	orbitrap_eclipse_tribid	1	application
+basic_classes.yaml	orbitrap_fusion_lumos	1	application
+basic_classes.yaml	orbitrap_iqx_tribrid	1	application
+basic_classes.yaml	orbitrap_q_exactive	1	application
+basic_classes.yaml	other	1	application
+basic_classes.yaml	owl	1	application
+basic_classes.yaml	oxford_nanopore	1	application
+basic_classes.yaml	pacbio	1	application
+basic_classes.yaml	part_of	2	application
+basic_classes.yaml	pattern	1	metamodel
+basic_classes.yaml	perkin_elmer	1	application
+basic_classes.yaml	permissible_values	7	metamodel
+basic_classes.yaml	pnnl	1	application
+basic_classes.yaml	poolable_replicates	1	application
+basic_classes.yaml	postconditions	4	metamodel
+basic_classes.yaml	preconditions	4	metamodel
+basic_classes.yaml	predicate	10	application
+basic_classes.yaml	prefixes	1	metamodel
+basic_classes.yaml	principal_investigator	1	application
+basic_classes.yaml	processing_institution	1	application
+basic_classes.yaml	promethion	1	application
+basic_classes.yaml	protocol_link	2	application
+basic_classes.yaml	prov	1	application
+basic_classes.yaml	qc_failure_what	1	application
+basic_classes.yaml	qc_failure_where	1	application
+basic_classes.yaml	qc_status	2	application
+basic_classes.yaml	range	35	metamodel
+basic_classes.yaml	rdfs	1	application
+basic_classes.yaml	related_identifiers	1	application
+basic_classes.yaml	relations	1	application
+basic_classes.yaml	required	24	metamodel
+basic_classes.yaml	research_study	1	application
+basic_classes.yaml	revio	1	application
+basic_classes.yaml	rs_II	1	application
+basic_classes.yaml	rules	2	metamodel
+basic_classes.yaml	schema	1	metamodel
+basic_classes.yaml	scientific_industries	1	application
+basic_classes.yaml	see_also	4	metamodel
+basic_classes.yaml	sequel	1	application
+basic_classes.yaml	sequel_II	1	application
+basic_classes.yaml	slot_conditions	8	metamodel
+basic_classes.yaml	slot_uri	2	metamodel
+basic_classes.yaml	slot_usage	6	metamodel
+basic_classes.yaml	slots	14	metamodel
+basic_classes.yaml	solarix_12T	1	application
+basic_classes.yaml	solarix_15T	1	application
+basic_classes.yaml	solarix_7T	1	application
+basic_classes.yaml	started_at_time	1	application
+basic_classes.yaml	structured_aliases	5	metamodel
+basic_classes.yaml	structured_pattern	13	metamodel
+basic_classes.yaml	study_category	1	application
+basic_classes.yaml	study_image	1	application
+basic_classes.yaml	subject	1	application
+basic_classes.yaml	syntax	13	metamodel
+basic_classes.yaml	thermo_fisher	1	application
+basic_classes.yaml	title	7	metamodel
+basic_classes.yaml	todos	1	metamodel
+basic_classes.yaml	tooltip	9	application
+basic_classes.yaml	value	1	metamodel
+basic_classes.yaml	value_presence	1	metamodel
+basic_classes.yaml	vendor	1	application
+basic_classes.yaml	vortex_genie_2	1	application
+basic_classes.yaml	vwr	1	application
+basic_classes.yaml	was_generated_by	2	application
+basic_classes.yaml	was_informed_by	3	application
+basic_classes.yaml	waters	1	application
+basic_classes.yaml	websites	1	application
+basic_slots.yaml	ANL	1	application
+basic_slots.yaml	Analysis Tool Parameter File	1	application
+basic_slots.yaml	Annotation Amino Acid FASTA	1	application
+basic_slots.yaml	Annotation Enzyme Commission	1	application
+basic_slots.yaml	Annotation Info File	1	application
+basic_slots.yaml	Annotation KEGG Orthology	1	application
+basic_slots.yaml	Annotation Statistics	1	application
+basic_slots.yaml	Assembly AGP	1	application
+basic_slots.yaml	Assembly Contigs	1	application
+basic_slots.yaml	Assembly Coverage BAM	1	application
+basic_slots.yaml	Assembly Coverage Stats	1	application
+basic_slots.yaml	Assembly Info File	1	application
+basic_slots.yaml	Assembly Scaffolds	1	application
+basic_slots.yaml	Azenta	1	application
+basic_slots.yaml	BAI File	1	application
+basic_slots.yaml	Battelle	1	application
+basic_slots.yaml	CATH FunFams (Functional Families) Annotation GFF	1	application
+basic_slots.yaml	CRT Annotation GFF	1	application
+basic_slots.yaml	Centrifuge Krona Plot	1	application
+basic_slots.yaml	Centrifuge Taxonomic Classification	1	application
+basic_slots.yaml	Centrifuge output report file	1	application
+basic_slots.yaml	CheckM Statistics	1	application
+basic_slots.yaml	Clusters of Orthologous Groups (COG) Annotation GFF	1	application
+basic_slots.yaml	Configuration toml	1	application
+basic_slots.yaml	Contaminants Amino Acid FASTA	1	application
+basic_slots.yaml	Contig Mapping File	1	application
+basic_slots.yaml	Crispr Terms	1	application
+basic_slots.yaml	DNA	1	application
+basic_slots.yaml	DataCategoryEnum	1	application
+basic_slots.yaml	Direct Infusion FT ICR-MS Raw Data	1	application
+basic_slots.yaml	Direct Infusion FT-ICR MS Analysis Results	1	application
+basic_slots.yaml	Direct Infusion FT-ICR MS QC Plots	1	application
+basic_slots.yaml	DoiCategoryEnum	1	application
+basic_slots.yaml	DoiProviderEnum	1	application
+basic_slots.yaml	EMSL	1	application
+basic_slots.yaml	EMSL-RZR	1	application
+basic_slots.yaml	EMSL-Tahoma	1	application
+basic_slots.yaml	Error Corrected Reads	1	application
+basic_slots.yaml	ExecutionResourceEnum	1	application
+basic_slots.yaml	ExtractionTargetEnum	1	application
+basic_slots.yaml	FileTypeEnum	1	application
+basic_slots.yaml	Filtered Sequencing Reads	1	application
+basic_slots.yaml	Functional Annotation GFF	1	application
+basic_slots.yaml	GC-MS Metabolomics Results	1	application
+basic_slots.yaml	GC-MS Raw Data	1	application
+basic_slots.yaml	GOTTCHA2 Classification Report	1	application
+basic_slots.yaml	GOTTCHA2 Krona Plot	1	application
+basic_slots.yaml	GOTTCHA2 Report Full	1	application
+basic_slots.yaml	GTDBTK Archaeal Summary	1	application
+basic_slots.yaml	GTDBTK Bacterial Summary	1	application
+basic_slots.yaml	GeNomad Aggregated Classification	1	application
+basic_slots.yaml	Gene Phylogeny tsv	1	application
+basic_slots.yaml	Genemark Annotation GFF	1	application
+basic_slots.yaml	JGI	1	application
+basic_slots.yaml	KO_EC Annotation GFF	1	application
+basic_slots.yaml	Kraken2 Classification Report	1	application
+basic_slots.yaml	Kraken2 Krona Plot	1	application
+basic_slots.yaml	Kraken2 Taxonomic Classification	1	application
+basic_slots.yaml	LC FT-ICR MS Analysis Results	1	application
+basic_slots.yaml	LC FT-ICR MS QC Plots	1	application
+basic_slots.yaml	LC FT-ICR MS Raw Data	1	application
+basic_slots.yaml	LC-DDA-MS/MS Raw Data	1	application
+basic_slots.yaml	LC-MS Lipidomics Processed Data	1	application
+basic_slots.yaml	LC-MS Lipidomics Results	1	application
+basic_slots.yaml	LC-MS Metabolomics Processed Data	1	application
+basic_slots.yaml	LC-MS Metabolomics Results	1	application
+basic_slots.yaml	MIXS	1	application
+basic_slots.yaml	Mass Spectrometry Reference Spectral Library	1	application
+basic_slots.yaml	MassSpectrometryEnum	1	application
+basic_slots.yaml	Metagenome Bins Barplot	1	application
+basic_slots.yaml	Metagenome Bins Heatmap	1	application
+basic_slots.yaml	Metagenome Bins Info File	1	application
+basic_slots.yaml	Metagenome Bins Krona Plot	1	application
+basic_slots.yaml	Metagenome HQMQ Bins Compression File	1	application
+basic_slots.yaml	Metagenome LQ Bins Compression File	1	application
+basic_slots.yaml	Metagenome Raw Read 1	1	application
+basic_slots.yaml	Metagenome Raw Read 2	1	application
+basic_slots.yaml	Metagenome Raw Reads	1	application
+basic_slots.yaml	Metaproteomics Workflow Statistics	1	application
+basic_slots.yaml	Metatranscriptome Expression	1	application
+basic_slots.yaml	Metatranscriptome Expression Info File	1	application
+basic_slots.yaml	Metatranscriptome Expression Intergenic	1	application
+basic_slots.yaml	Metatranscriptome Raw Read 1	1	application
+basic_slots.yaml	Metatranscriptome Raw Read 2	1	application
+basic_slots.yaml	Metatranscriptome Raw Reads	1	application
+basic_slots.yaml	Misc Annotation GFF	1	application
+basic_slots.yaml	NCIT	1	application
+basic_slots.yaml	NERSC-Cori	1	application
+basic_slots.yaml	NERSC-Perlmutter	1	application
+basic_slots.yaml	NMDC	1	application
+basic_slots.yaml	NucleotideSequencingEnum	1	application
+basic_slots.yaml	OBI	1	application
+basic_slots.yaml	Peptide Report	1	application
+basic_slots.yaml	Pfam Annotation GFF	1	application
+basic_slots.yaml	Plasmid Summary	1	application
+basic_slots.yaml	ProcessingInstitutionEnum	1	application
+basic_slots.yaml	Prodigal Annotation GFF	1	application
+basic_slots.yaml	Product Names	1	application
+basic_slots.yaml	Protein Report	1	application
+basic_slots.yaml	QC Statistics	1	application
+basic_slots.yaml	QC Statistics Extended	1	application
+basic_slots.yaml	QC non-rRNA R1	1	application
+basic_slots.yaml	QC non-rRNA R2	1	application
+basic_slots.yaml	RFAM Annotation GFF	1	application
+basic_slots.yaml	RNA	1	application
+basic_slots.yaml	Read Based Analysis Info File	1	application
+basic_slots.yaml	Read Count and RPKM	1	application
+basic_slots.yaml	Read Filtering Info File	1	application
+basic_slots.yaml	Reference Calibration File	1	application
+basic_slots.yaml	SIO	1	application
+basic_slots.yaml	SMART Annotation GFF	1	application
+basic_slots.yaml	SUPERFam Annotation GFF	1	application
+basic_slots.yaml	Scaffold Lineage tsv	1	application
+basic_slots.yaml	StatusEnum	1	application
+basic_slots.yaml	Structural Annotation GFF	1	application
+basic_slots.yaml	Structural Annotation Stats Json	1	application
+basic_slots.yaml	TIGRFam Annotation GFF	1	application
+basic_slots.yaml	TMRNA Annotation GFF	1	application
+basic_slots.yaml	TRNA Annotation GFF	1	application
+basic_slots.yaml	UCD_Genome_Center	1	application
+basic_slots.yaml	UCSD	1	application
+basic_slots.yaml	Unfiltered Metaproteomics Results	1	application
+basic_slots.yaml	Virus Summary	1	application
+basic_slots.yaml	Workflow Operation Summary	1	application
+basic_slots.yaml	abstract	2	metamodel
+basic_slots.yaml	add_date	1	application
+basic_slots.yaml	aliases	21	metamodel
+basic_slots.yaml	alternative_descriptions	1	application
+basic_slots.yaml	alternative_identifiers	1	application
+basic_slots.yaml	alternative_names	1	application
+basic_slots.yaml	alternative_titles	1	application
+basic_slots.yaml	amplicon_sequencing_assay	1	application
+basic_slots.yaml	analyte_category	1	application
+basic_slots.yaml	annotations	59	metamodel
+basic_slots.yaml	award_doi	1	application
+basic_slots.yaml	broad_mappings	2	application
+basic_slots.yaml	close_mappings	3	application
+basic_slots.yaml	comments	11	metamodel
+basic_slots.yaml	community	1	application
+basic_slots.yaml	compression_type	1	application
+basic_slots.yaml	contexts	3	application
+basic_slots.yaml	data_category	1	application
+basic_slots.yaml	data_management_plan_doi	1	application
+basic_slots.yaml	data_object_id	1	application
+basic_slots.yaml	data_object_type	2	application
+basic_slots.yaml	dataset_doi	1	application
+basic_slots.yaml	dcterms	1	application
+basic_slots.yaml	default_prefix	1	metamodel
+basic_slots.yaml	default_range	1	metamodel
+basic_slots.yaml	description	155	metamodel
+basic_slots.yaml	dna_concentration	1	application
+basic_slots.yaml	doi	1	application
+basic_slots.yaml	doi_category	1	application
+basic_slots.yaml	doi_provider	1	application
+basic_slots.yaml	doi_value	1	application
+basic_slots.yaml	ecosystem	1	application
+basic_slots.yaml	ecosystem_category	1	application
+basic_slots.yaml	ecosystem_subtype	1	application
+basic_slots.yaml	ecosystem_type	1	application
+basic_slots.yaml	edam.data	1	application
+basic_slots.yaml	edam.format	1	application
+basic_slots.yaml	edi	1	application
+basic_slots.yaml	embargoed	1	application
+basic_slots.yaml	emsl	1	application
+basic_slots.yaml	end_date	1	application
+basic_slots.yaml	ended_at_time	1	application
+basic_slots.yaml	enums	1	metamodel
+basic_slots.yaml	ess_dive	1	application
+basic_slots.yaml	exact_mappings	5	application
+basic_slots.yaml	examples	18	metamodel
+basic_slots.yaml	execution_resource	1	application
+basic_slots.yaml	external_database_identifiers	1	application
+basic_slots.yaml	extraction_targets	1	application
+basic_slots.yaml	fail	1	application
+basic_slots.yaml	figshare	1	application
+basic_slots.yaml	file_name_pattern	57	application
+basic_slots.yaml	file_size_bytes	1	application
+basic_slots.yaml	funding_sources	1	application
+basic_slots.yaml	git_url	1	application
+basic_slots.yaml	gold_path_field	1	application
+basic_slots.yaml	gsc	1	application
+basic_slots.yaml	habitat	1	application
+basic_slots.yaml	has_boolean_value	1	application
+basic_slots.yaml	homepage_website	1	application
+basic_slots.yaml	host_name	1	application
+basic_slots.yaml	id	2	metamodel
+basic_slots.yaml	identifier	1	metamodel
+basic_slots.yaml	imports	1	metamodel
+basic_slots.yaml	infiltrations	1	application
+basic_slots.yaml	instrument_data	1	application
+basic_slots.yaml	is_a	7	metamodel
+basic_slots.yaml	jgi	1	application
+basic_slots.yaml	kbase	1	application
+basic_slots.yaml	license	1	metamodel
+basic_slots.yaml	linkml	1	application
+basic_slots.yaml	lipid	1	application
+basic_slots.yaml	lipidome	1	application
+basic_slots.yaml	list_elements_ordered	1	metamodel
+basic_slots.yaml	location	1	application
+basic_slots.yaml	mappings	4	metamodel
+basic_slots.yaml	massive	1	application
+basic_slots.yaml	maximum_cardinality	1	metamodel
+basic_slots.yaml	maximum_value	1	metamodel
+basic_slots.yaml	md5_checksum	1	application
+basic_slots.yaml	meaning	16	metamodel
+basic_slots.yaml	metabolite	1	application
+basic_slots.yaml	metabolome	1	application
+basic_slots.yaml	metagenome	1	application
+basic_slots.yaml	metaproteome	1	application
+basic_slots.yaml	metatranscriptome	1	application
+basic_slots.yaml	minimum_value	1	metamodel
+basic_slots.yaml	mod_date	1	application
+basic_slots.yaml	multivalued	8	metamodel
+basic_slots.yaml	name	1	metamodel
+basic_slots.yaml	narrow_mappings	2	application
+basic_slots.yaml	natural organic matter	1	application
+basic_slots.yaml	ncbi_project_name	1	application
+basic_slots.yaml	ncbi_taxonomy_name	1	application
+basic_slots.yaml	nmdc	1	application
+basic_slots.yaml	nom	1	application
+basic_slots.yaml	notes	7	metamodel
+basic_slots.yaml	objective	1	application
+basic_slots.yaml	osti	1	application
+basic_slots.yaml	pass	1	application
+basic_slots.yaml	pattern	7	metamodel
+basic_slots.yaml	permissible_values	10	metamodel
+basic_slots.yaml	predicate	3	application
+basic_slots.yaml	prefixes	1	metamodel
+basic_slots.yaml	processed_data	1	application
+basic_slots.yaml	processing_institution	1	application
+basic_slots.yaml	processing_institution_workflow_metadata	1	application
+basic_slots.yaml	proport_woa_temperature	1	application
+basic_slots.yaml	protein	1	application
+basic_slots.yaml	prov	1	application
+basic_slots.yaml	publication_doi	1	application
+basic_slots.yaml	qc_comment	1	application
+basic_slots.yaml	qc_status	1	application
+basic_slots.yaml	qud	1	application
+basic_slots.yaml	rRNA Filtered Sequencing Reads	1	application
+basic_slots.yaml	range	45	metamodel
+basic_slots.yaml	rank	2	metamodel
+basic_slots.yaml	rdf	1	application
+basic_slots.yaml	recommended	2	metamodel
+basic_slots.yaml	related_identifiers	1	application
+basic_slots.yaml	related_mappings	1	application
+basic_slots.yaml	required	4	metamodel
+basic_slots.yaml	ror	1	application
+basic_slots.yaml	salinity_category	1	application
+basic_slots.yaml	sample_collection_site	1	application
+basic_slots.yaml	schema	1	metamodel
+basic_slots.yaml	see_also	14	metamodel
+basic_slots.yaml	skos	1	application
+basic_slots.yaml	slot_group	1	metamodel
+basic_slots.yaml	slots	1	metamodel
+basic_slots.yaml	soluble_iron_micromol	1	application
+basic_slots.yaml	source	1	metamodel
+basic_slots.yaml	specific_ecosystem	1	application
+basic_slots.yaml	start_date	1	application
+basic_slots.yaml	started_at_time	1	application
+basic_slots.yaml	structured_aliases	2	metamodel
+basic_slots.yaml	tag	1	application
+basic_slots.yaml	title	29	metamodel
+basic_slots.yaml	todos	4	metamodel
+basic_slots.yaml	tooltip	1	application
+basic_slots.yaml	value	26	metamodel
+basic_slots.yaml	version	1	metamodel
+basic_slots.yaml	wgs84	1	application
+basic_slots.yaml	workflow_execution_id	1	application
+basic_slots.yaml	workflow_parameter_data	1	application
+basic_slots.yaml	zenodo	1	application
+core.yaml	AnnotatingWorkflow	1	application
+core.yaml	Arg-C	1	application
+core.yaml	Asp-N	1	application
+core.yaml	BRC	1	application
+core.yaml	BinQualityEnum	1	application
+core.yaml	Biosample	1	application
+core.yaml	BiosampleCategoryEnum	1	application
+core.yaml	CHEBI	1	application
+core.yaml	ChemicalConversionCategoryEnum	1	application
+core.yaml	ChemicalConversionProcess	1	application
+core.yaml	ChemicalEntity	1	application
+core.yaml	ChemicalEntityEnum	1	application
+core.yaml	EC	1	application
+core.yaml	EnvironmentalMaterialTerm	1	application
+core.yaml	FBcv	1	application
+core.yaml	FICUS	1	application
+core.yaml	FieldResearchSite	1	application
+core.yaml	GENEPIO	1	application
+core.yaml	GeneProduct	1	application
+core.yaml	Glu-C	1	application
+core.yaml	HQ	1	application
+core.yaml	KEGG.COMPOUND	1	application
+core.yaml	LQ	1	application
+core.yaml	LTER	1	application
+core.yaml	Lys-C	1	application
+core.yaml	Lys-N	1	application
+core.yaml	MISO	1	application
+core.yaml	MQ	1	application
+core.yaml	MS	1	application
+core.yaml	MagBin	1	application
+core.yaml	MaterialProcessing	1	application
+core.yaml	MetaboliteIdentification	1	application
+core.yaml	MetagenomeAnnotation	1	application
+core.yaml	MobilePhaseSegment	1	application
+core.yaml	N-methyl-N-trimethylsilyltrifluoroacetamide	1	application
+core.yaml	NCIT	1	application
+core.yaml	NEON	1	application
+core.yaml	OBI	1	application
+core.yaml	OMIT	1	application
+core.yaml	PATO	1	application
+core.yaml	PR	1	application
+core.yaml	PortionOfSubstance	1	application
+core.yaml	ProcessedSample	1	application
+core.yaml	SFA	1	application
+core.yaml	SIP	1	application
+core.yaml	Sample	1	application
+core.yaml	SampleStateEnum	1	application
+core.yaml	Site	1	application
+core.yaml	SubstanceRoleEnum	1	application
+core.yaml	TAXRANK	1	application
+core.yaml	UniProtKB	1	application
+core.yaml	abstract	4	metamodel
+core.yaml	acetic_acid	1	application
+core.yaml	acetonitrile	1	application
+core.yaml	acid	1	application
+core.yaml	acid_base	1	application
+core.yaml	addition	1	application
+core.yaml	al_sat	1	application
+core.yaml	al_sat_meth	1	application
+core.yaml	aliases	14	metamodel
+core.yaml	alphaLP	1	application
+core.yaml	alt_descriptions	1	metamodel
+core.yaml	alternative_identifiers	1	application
+core.yaml	amitriptyline	1	application
+core.yaml	ammonium_acetate	1	application
+core.yaml	ammonium_bicarbonate	1	application
+core.yaml	ammonium_nitrogen	1	application
+core.yaml	annotations	22	metamodel
+core.yaml	associated_studies	1	application
+core.yaml	base	1	metamodel
+core.yaml	bin_name	1	application
+core.yaml	bin_quality	1	application
+core.yaml	biolink	1	application
+core.yaml	biosample_categories	1	application
+core.yaml	broad_mappings	5	application
+core.yaml	buffer	1	application
+core.yaml	bulk_elect_conductivity	1	application
+core.yaml	chemical_conversion_category	1	application
+core.yaml	chemical_formula	1	application
+core.yaml	chloroform	1	application
+core.yaml	chymotrypsin	1	application
+core.yaml	class_uri	16	metamodel
+core.yaml	classes	1	metamodel
+core.yaml	climate_environment	1	application
+core.yaml	close_mappings	1	application
+core.yaml	collected_from	2	application
+core.yaml	combustion	1	application
+core.yaml	comments	39	metamodel
+core.yaml	completeness	1	application
+core.yaml	concentration	1	application
+core.yaml	contamination	1	application
+core.yaml	contributors	3	metamodel
+core.yaml	cur_vegetation	1	application
+core.yaml	cur_vegetation_meth	1	application
+core.yaml	dcterms	1	application
+core.yaml	decomposition	1	application
+core.yaml	default_prefix	1	metamodel
+core.yaml	default_range	1	metamodel
+core.yaml	deprecated	5	metamodel
+core.yaml	derivatizing_agent	1	application
+core.yaml	description	83	metamodel
+core.yaml	dna_absorb1	1	application
+core.yaml	dna_absorb2	1	application
+core.yaml	doi	1	application
+core.yaml	duration	1	application
+core.yaml	elev	1	application
+core.yaml	embl.ena	1	application
+core.yaml	enums	1	metamodel
+core.yaml	env_broad_scale	1	application
+core.yaml	env_local_scale	1	application
+core.yaml	env_medium	1	application
+core.yaml	env_package	1	application
+core.yaml	ethanol	1	application
+core.yaml	exact_mappings	13	application
+core.yaml	examples	33	metamodel
+core.yaml	expected_value	11	application
+core.yaml	extreme_event	1	application
+core.yaml	final_concentration	1	application
+core.yaml	fire	1	application
+core.yaml	flooding	1	application
+core.yaml	formic_acid	1	application
+core.yaml	gas	1	application
+core.yaml	gaseous_environment	1	application
+core.yaml	gene_count	1	application
+core.yaml	glucose	1	application
+core.yaml	gold_analysis_project_identifiers	1	application
+core.yaml	gold_biosample_identifiers	1	application
+core.yaml	gtdbtk_class	1	application
+core.yaml	gtdbtk_domain	1	application
+core.yaml	gtdbtk_family	1	application
+core.yaml	gtdbtk_genus	1	application
+core.yaml	gtdbtk_order	1	application
+core.yaml	gtdbtk_phylum	1	application
+core.yaml	gtdbtk_species	1	application
+core.yaml	gtpo	1	application
+core.yaml	has_input	1	application
+core.yaml	has_numeric_value	2	application
+core.yaml	has_output	1	application
+core.yaml	has_raw_value	1	application
+core.yaml	has_unit	2	application
+core.yaml	heavy_metals	1	application
+core.yaml	heavy_metals_meth	1	application
+core.yaml	highest_similarity_score	1	application
+core.yaml	hydrochloric_acid	1	application
+core.yaml	id	6	metamodel
+core.yaml	id_prefixes	2	metamodel
+core.yaml	img_identifiers	1	application
+core.yaml	imports	1	metamodel
+core.yaml	inchi	1	application
+core.yaml	inchi_key	1	application
+core.yaml	inlined_as_list	1	metamodel
+core.yaml	interpolated	12	metamodel
+core.yaml	is_a	16	metamodel
+core.yaml	isopropyl_alcohol	1	application
+core.yaml	known_as	1	application
+core.yaml	lat_lon	1	application
+core.yaml	lbc_thirty	1	application
+core.yaml	lbceq	1	application
+core.yaml	license	1	metamodel
+core.yaml	linkml	1	application
+core.yaml	liquid	1	application
+core.yaml	manganese	1	application
+core.yaml	mappings	1	metamodel
+core.yaml	mass	1	application
+core.yaml	maximum_cardinality	1	metamodel
+core.yaml	meaning	38	metamodel
+core.yaml	medronic_acid	1	application
+core.yaml	members_id	1	application
+core.yaml	metabolite_identified	1	application
+core.yaml	methanol	1	application
+core.yaml	methoxyamine	1	application
+core.yaml	minimum_value	9	metamodel
+core.yaml	ms_proteolytic_enzyme	1	application
+core.yaml	multivalued	6	metamodel
+core.yaml	name	1	metamodel
+core.yaml	nitrate_nitrogen	1	application
+core.yaml	nitrite_nitrogen	1	application
+core.yaml	nmdc	1	application
+core.yaml	notes	10	metamodel
+core.yaml	num_16s	1	application
+core.yaml	num_23s	1	application
+core.yaml	num_5s	1	application
+core.yaml	num_t_rna	1	application
+core.yaml	number_of_contig	1	application
+core.yaml	occurrence	7	application
+core.yaml	part_of	1	application
+core.yaml	pattern	1	metamodel
+core.yaml	permissible_values	6	metamodel
+core.yaml	ph_meth	1	application
+core.yaml	phosphoric_acid	1	application
+core.yaml	preferred_unit	8	application
+core.yaml	prefixes	1	metamodel
+core.yaml	protease_cleavage	1	application
+core.yaml	qud	1	application
+core.yaml	range	59	metamodel
+core.yaml	rank	2	metamodel
+core.yaml	rdf	1	application
+core.yaml	recommended	2	metamodel
+core.yaml	reduction_oxidation	1	application
+core.yaml	required	10	metamodel
+core.yaml	salinity_meth	1	application
+core.yaml	samp_name_unique_key	1	application
+core.yaml	schema	1	metamodel
+core.yaml	season_precpt	1	application
+core.yaml	see_also	16	metamodel
+core.yaml	sieving	1	application
+core.yaml	slope_aspect	1	application
+core.yaml	slope_gradient	1	application
+core.yaml	slot_group	2	metamodel
+core.yaml	slot_usage	6	metamodel
+core.yaml	slots	12	metamodel
+core.yaml	smiles	1	application
+core.yaml	solid	1	application
+core.yaml	solubilizing_agent	1	application
+core.yaml	solvent	1	application
+core.yaml	source_concentration	1	application
+core.yaml	source_mat_id	1	application
+core.yaml	storage_units	14	application
+core.yaml	structured_pattern	12	metamodel
+core.yaml	substance_role	1	application
+core.yaml	substances_used	1	application
+core.yaml	substances_volume	1	application
+core.yaml	substitution	1	application
+core.yaml	subsurface_depth	1	application
+core.yaml	surfactant	1	application
+core.yaml	syntax	12	metamodel
+core.yaml	temperature	1	application
+core.yaml	title	29	metamodel
+core.yaml	todos	19	metamodel
+core.yaml	tooltip	1	application
+core.yaml	tot_carb	1	application
+core.yaml	tot_nitro_cont_meth	1	application
+core.yaml	tot_org_c_meth	1	application
+core.yaml	tot_org_carb	1	application
+core.yaml	total_bases	1	application
+core.yaml	trimethylchlorosilane	1	application
+core.yaml	trypsin	1	application
+core.yaml	unique_key_slots	1	metamodel
+core.yaml	unique_keys	1	metamodel
+core.yaml	units_alignment_excuse	3	application
+core.yaml	value	52	metamodel
+core.yaml	volume	1	application
+core.yaml	was_informed_by	1	application
+core.yaml	water	1	application
+core.yaml	water_cont_soil_meth	1	application
+core.yaml	water_content	1	application
+core.yaml	watering_regm	1	application
+core.yaml	wgs84	1	application
+core.yaml	zinc	1	application
+deprecated.yaml	MetagenomeSequencing	1	application
+deprecated.yaml	OBI	1	application
+deprecated.yaml	PeptideQuantification	1	application
+deprecated.yaml	ProteinQuantification	1	application
+deprecated.yaml	ProtocolExecution	1	application
+deprecated.yaml	all_proteins	1	application
+deprecated.yaml	best_protein	1	application
+deprecated.yaml	class_uri	4	metamodel
+deprecated.yaml	classes	1	metamodel
+deprecated.yaml	default_prefix	1	metamodel
+deprecated.yaml	default_range	1	metamodel
+deprecated.yaml	deprecated	20	metamodel
+deprecated.yaml	deprecated_element_has_exact_replacement	1	application
+deprecated.yaml	description	19	metamodel
+deprecated.yaml	examples	1	metamodel
+deprecated.yaml	has_input	2	application
+deprecated.yaml	has_output	1	application
+deprecated.yaml	has_peptide_quantifications	1	application
+deprecated.yaml	has_process_parts	2	application
+deprecated.yaml	id	3	metamodel
+deprecated.yaml	inlined_as_list	1	metamodel
+deprecated.yaml	interpolated	7	metamodel
+deprecated.yaml	is_a	2	metamodel
+deprecated.yaml	last_updated_on	2	metamodel
+deprecated.yaml	license	1	metamodel
+deprecated.yaml	linkml	1	application
+deprecated.yaml	list_elements_ordered	1	metamodel
+deprecated.yaml	metagenome_annotation_id	1	application
+deprecated.yaml	min_q_value	1	application
+deprecated.yaml	mixins	1	metamodel
+deprecated.yaml	modified_by	1	metamodel
+deprecated.yaml	multivalued	3	metamodel
+deprecated.yaml	name	1	metamodel
+deprecated.yaml	nmdc	1	application
+deprecated.yaml	omics_type	1	application
+deprecated.yaml	peptide_sequence	1	application
+deprecated.yaml	peptide_sequence_count	1	application
+deprecated.yaml	peptide_spectral_count	1	application
+deprecated.yaml	peptide_sum_masic_abundance	1	application
+deprecated.yaml	prefixes	1	metamodel
+deprecated.yaml	protein_spectral_count	1	application
+deprecated.yaml	protein_sum_masic_abundance	1	application
+deprecated.yaml	protocol_execution_category	1	application
+deprecated.yaml	protocol_execution_set	1	application
+deprecated.yaml	range	17	metamodel
+deprecated.yaml	required	6	metamodel
+deprecated.yaml	sample_state_information	1	application
+deprecated.yaml	see_also	1	metamodel
+deprecated.yaml	slot_usage	2	metamodel
+deprecated.yaml	slots	4	metamodel
+deprecated.yaml	structured_pattern	7	metamodel
+deprecated.yaml	syntax	7	metamodel
+deprecated.yaml	title	2	metamodel
+deprecated.yaml	value	2	metamodel
+deprecated.yaml	was_informed_by	1	application
+external_identifiers.yaml	abstract	5	metamodel
+external_identifiers.yaml	aliases	4	metamodel
+external_identifiers.yaml	analysis_identifiers	1	application
+external_identifiers.yaml	assembly_identifiers	1	application
+external_identifiers.yaml	bioproject	1	application
+external_identifiers.yaml	biosample	1	application
+external_identifiers.yaml	biosample_identifiers	1	application
+external_identifiers.yaml	comments	7	metamodel
+external_identifiers.yaml	default_prefix	1	metamodel
+external_identifiers.yaml	default_range	1	metamodel
+external_identifiers.yaml	description	27	metamodel
+external_identifiers.yaml	emsl.project	1	application
+external_identifiers.yaml	emsl_biosample_identifiers	1	application
+external_identifiers.yaml	emsl_identifiers	1	application
+external_identifiers.yaml	emsl_project_identifiers	1	application
+external_identifiers.yaml	examples	15	metamodel
+external_identifiers.yaml	gnps.task	1	application
+external_identifiers.yaml	gnps_identifiers	1	application
+external_identifiers.yaml	gnps_task_identifiers	1	application
+external_identifiers.yaml	gold	1	application
+external_identifiers.yaml	gold_analysis_project_identifiers	1	application
+external_identifiers.yaml	gold_biosample_identifiers	1	application
+external_identifiers.yaml	gold_identifiers	1	application
+external_identifiers.yaml	gold_sequencing_project_identifiers	1	application
+external_identifiers.yaml	gold_study_identifiers	1	application
+external_identifiers.yaml	id	1	metamodel
+external_identifiers.yaml	id_prefixes	2	metamodel
+external_identifiers.yaml	igsn_biosample_identifiers	1	application
+external_identifiers.yaml	igsn_identifiers	1	application
+external_identifiers.yaml	img_identifiers	1	application
+external_identifiers.yaml	imports	1	metamodel
+external_identifiers.yaml	insdc.sra	1	application
+external_identifiers.yaml	insdc_analysis_identifiers	1	application
+external_identifiers.yaml	insdc_assembly_identifiers	1	application
+external_identifiers.yaml	insdc_bioproject_identifiers	1	application
+external_identifiers.yaml	insdc_biosample_identifiers	1	application
+external_identifiers.yaml	insdc_experiment_identifiers	1	application
+external_identifiers.yaml	insdc_identifiers	1	application
+external_identifiers.yaml	insdc_secondary_sample_identifiers	1	application
+external_identifiers.yaml	insdc_sra_ena_study_identifiers	1	application
+external_identifiers.yaml	is_a	26	metamodel
+external_identifiers.yaml	jgi.analysis	1	application
+external_identifiers.yaml	jgi.proposal	1	application
+external_identifiers.yaml	jgi_portal_analysis_project_identifiers	1	application
+external_identifiers.yaml	jgi_portal_identifiers	1	application
+external_identifiers.yaml	jgi_portal_study_identifiers	1	application
+external_identifiers.yaml	license	1	metamodel
+external_identifiers.yaml	linkml	1	application
+external_identifiers.yaml	mgnify.analysis	1	application
+external_identifiers.yaml	mgnify.proj	1	application
+external_identifiers.yaml	mgnify_analysis_identifiers	1	application
+external_identifiers.yaml	mgnify_identifiers	1	application
+external_identifiers.yaml	mgnify_project_identifiers	1	application
+external_identifiers.yaml	mixin	8	metamodel
+external_identifiers.yaml	mixins	21	metamodel
+external_identifiers.yaml	name	1	metamodel
+external_identifiers.yaml	neon_biosample_identifiers	1	application
+external_identifiers.yaml	neon_identifiers	1	application
+external_identifiers.yaml	neon_study_identifiers	1	application
+external_identifiers.yaml	nmdc	1	application
+external_identifiers.yaml	notes	2	metamodel
+external_identifiers.yaml	omics_processing_identifiers	1	application
+external_identifiers.yaml	pattern	17	metamodel
+external_identifiers.yaml	prefixes	1	metamodel
+external_identifiers.yaml	range	1	metamodel
+external_identifiers.yaml	see_also	10	metamodel
+external_identifiers.yaml	skos	1	application
+external_identifiers.yaml	slots	1	metamodel
+external_identifiers.yaml	study_identifiers	1	application
+external_identifiers.yaml	title	8	metamodel
+external_identifiers.yaml	todos	3	metamodel
+external_identifiers.yaml	value	17	metamodel
+mixs.yaml		1	application
+mixs.yaml	,restroom	1	application
+mixs.yaml	16S_rRNA	1	application
+mixs.yaml	18S_rRNA	1	application
+mixs.yaml	1st floor	1	application
+mixs.yaml	23S_rRNA	1	application
+mixs.yaml	28S_rRNA	1	application
+mixs.yaml	2nd floor	1	application
+mixs.yaml	3D scans	1	application
+mixs.yaml	A horizon	1	application
+mixs.yaml	ATP	1	application
+mixs.yaml	Acrisols	1	application
+mixs.yaml	Andosols	1	application
+mixs.yaml	Androdioecious	1	application
+mixs.yaml	Androecious	1	application
+mixs.yaml	Androgynomonoecious	1	application
+mixs.yaml	Androgynous	1	application
+mixs.yaml	Andromonoecious	1	application
+mixs.yaml	Annually	1	application
+mixs.yaml	Archean	2	application
+mixs.yaml	Arenosols	1	application
+mixs.yaml	B horizon	1	application
+mixs.yaml	Basement	1	application
+mixs.yaml	Biosilicieous	1	application
+mixs.yaml	Bisexual	1	application
+mixs.yaml	Bitumen	1	application
+mixs.yaml	C horizon	1	application
+mixs.yaml	Cambisols	1	application
+mixs.yaml	Cambrian	2	application
+mixs.yaml	Carbonate	1	application
+mixs.yaml	Carboniferous	2	application
+mixs.yaml	Cenozoic	2	application
+mixs.yaml	Chalk	1	application
+mixs.yaml	Chernozems	1	application
+mixs.yaml	Chert	1	application
+mixs.yaml	Clastic	1	application
+mixs.yaml	Coal	2	application
+mixs.yaml	Coalbed	1	application
+mixs.yaml	Coalbed Methane	1	application
+mixs.yaml	Conglomerate	1	application
+mixs.yaml	Continental - Aeolian	1	application
+mixs.yaml	Continental - Alluvial	1	application
+mixs.yaml	Continental - Fluvial	1	application
+mixs.yaml	Continental - Lacustrine	1	application
+mixs.yaml	Cretaceous	2	application
+mixs.yaml	DF	1	application
+mixs.yaml	Daily	1	application
+mixs.yaml	Devonian	2	application
+mixs.yaml	Diatomite	1	application
+mixs.yaml	Dichogamous	1	application
+mixs.yaml	Diclinous	1	application
+mixs.yaml	Dioecious	1	application
+mixs.yaml	Dolomite	1	application
+mixs.yaml	E horizon	1	application
+mixs.yaml	East side	1	application
+mixs.yaml	Fall	1	application
+mixs.yaml	Ferralsols	1	application
+mixs.yaml	Fluvioldeltaic	1	application
+mixs.yaml	Fluviomarine	1	application
+mixs.yaml	Fluvisols	1	application
+mixs.yaml	Friday	1	application
+mixs.yaml	Gas	1	application
+mixs.yaml	Gas Reservoir	1	application
+mixs.yaml	Gas-Condensate	1	application
+mixs.yaml	Gleysols	1	application
+mixs.yaml	Greyzems	1	application
+mixs.yaml	Gynodioecious	1	application
+mixs.yaml	Gynoecious	1	application
+mixs.yaml	Gynomonoecious	1	application
+mixs.yaml	Gypsisols	1	application
+mixs.yaml	HEPA	1	application
+mixs.yaml	Hermaphroditic	1	application
+mixs.yaml	Histosols	1	application
+mixs.yaml	Imperfect	1	application
+mixs.yaml	Jurassic	2	application
+mixs.yaml	KB	1	application
+mixs.yaml	Kastanozems	1	application
+mixs.yaml	Lacustine	1	application
+mixs.yaml	Limestone	1	application
+mixs.yaml	Lithosols	1	application
+mixs.yaml	Luvisols	1	application
+mixs.yaml	M horizon	1	application
+mixs.yaml	MIXS	1	application
+mixs.yaml	MPN	1	application
+mixs.yaml	MSL	1	application
+mixs.yaml	Marine	1	application
+mixs.yaml	Marine - Deep	1	application
+mixs.yaml	Marine - Reef	1	application
+mixs.yaml	Marine - Shallow	1	application
+mixs.yaml	Mesozoic	2	application
+mixs.yaml	Monday	1	application
+mixs.yaml	Monoclinous	1	application
+mixs.yaml	Monoecious	1	application
+mixs.yaml	Monthly	1	application
+mixs.yaml	Neogene	2	application
+mixs.yaml	Nitosols	1	application
+mixs.yaml	North side	1	application
+mixs.yaml	O horizon	1	application
+mixs.yaml	Oil	1	application
+mixs.yaml	Oil Reservoir	1	application
+mixs.yaml	Oil Sand	1	application
+mixs.yaml	Ordovician	2	application
+mixs.yaml	Other - Evaporite	1	application
+mixs.yaml	Other - Glacial	1	application
+mixs.yaml	Other - Volcanic	1	application
+mixs.yaml	PVC	1	application
+mixs.yaml	Paleogene	2	application
+mixs.yaml	Paleozoic	2	application
+mixs.yaml	Perfect	1	application
+mixs.yaml	Permafrost	1	application
+mixs.yaml	Permian	2	application
+mixs.yaml	Phaeozems	1	application
+mixs.yaml	Planosols	1	application
+mixs.yaml	Podzols	1	application
+mixs.yaml	Podzoluvisols	1	application
+mixs.yaml	Polygamodioecious	1	application
+mixs.yaml	Polygamomonoecious	1	application
+mixs.yaml	Polygamous	1	application
+mixs.yaml	Precambrian	2	application
+mixs.yaml	Protandrous	1	application
+mixs.yaml	Proterozoic	2	application
+mixs.yaml	Protogynous	1	application
+mixs.yaml	Quarterly	1	application
+mixs.yaml	R layer	1	application
+mixs.yaml	RT	1	application
+mixs.yaml	Rankers	1	application
+mixs.yaml	Regosols	1	application
+mixs.yaml	Rendzinas	1	application
+mixs.yaml	Sandstone	1	application
+mixs.yaml	Santa-Fe texture	2	application
+mixs.yaml	Saturday	1	application
+mixs.yaml	Shale	2	application
+mixs.yaml	Siltstone	1	application
+mixs.yaml	Silurian	2	application
+mixs.yaml	Solonchaks	1	application
+mixs.yaml	Solonetz	1	application
+mixs.yaml	South side	1	application
+mixs.yaml	Spring	1	application
+mixs.yaml	Subandroecious	1	application
+mixs.yaml	Subdioecious	1	application
+mixs.yaml	Subgynoecious	1	application
+mixs.yaml	Summer	1	application
+mixs.yaml	Sunday	1	application
+mixs.yaml	Synoecious	1	application
+mixs.yaml	TargetGeneEnum	1	application
+mixs.yaml	Thursday	1	application
+mixs.yaml	Tight Gas Reservoir	1	application
+mixs.yaml	Tight Oil Reservoir	1	application
+mixs.yaml	Transitional - Beach	1	application
+mixs.yaml	Transitional - Deltaic	1	application
+mixs.yaml	Transitional - Lagoonal	1	application
+mixs.yaml	Transitional - Lake	1	application
+mixs.yaml	Transitional - Tidal	1	application
+mixs.yaml	Triassic	2	application
+mixs.yaml	Trimonoecious	1	application
+mixs.yaml	Trioecious	1	application
+mixs.yaml	Tuesday	1	application
+mixs.yaml	Type I	1	application
+mixs.yaml	Type II	1	application
+mixs.yaml	Type III	1	application
+mixs.yaml	Type IV	1	application
+mixs.yaml	Unisexual	1	application
+mixs.yaml	Vertisols	1	application
+mixs.yaml	Volcanic	1	application
+mixs.yaml	Wednesday	1	application
+mixs.yaml	Weekly	1	application
+mixs.yaml	West side	1	application
+mixs.yaml	Winter	1	application
+mixs.yaml	Yermosols	1	application
+mixs.yaml	abs_air_humidity	1	application
+mixs.yaml	abstract	6	metamodel
+mixs.yaml	acoustical treatment	1	application
+mixs.yaml	active surveillance in response to an outbreak	1	application
+mixs.yaml	active surveillance not initiated by an outbreak	1	application
+mixs.yaml	add_recov_method	1	application
+mixs.yaml	additional_info	1	application
+mixs.yaml	address	1	application
+mixs.yaml	adj_room	1	application
+mixs.yaml	adobe	1	application
+mixs.yaml	aero_struc	1	application
+mixs.yaml	aerobic	1	application
+mixs.yaml	agrochem_addition	1	application
+mixs.yaml	air_PM_concen	1	application
+mixs.yaml	air_temp	1	application
+mixs.yaml	air_temp_regm	1	application
+mixs.yaml	airport	1	application
+mixs.yaml	al_sat	1	application
+mixs.yaml	al_sat_meth	1	application
+mixs.yaml	aliases	493	metamodel
+mixs.yaml	alkalinity	1	application
+mixs.yaml	alkalinity_method	1	application
+mixs.yaml	alkyl_diethers	1	application
+mixs.yaml	all gender	1	application
+mixs.yaml	alt	1	application
+mixs.yaml	aluminum	1	application
+mixs.yaml	ambidexterity	1	application
+mixs.yaml	aminopept_act	1	application
+mixs.yaml	ammonium	1	application
+mixs.yaml	amount_light	1	application
+mixs.yaml	anaerobic	1	application
+mixs.yaml	ances_data	1	application
+mixs.yaml	annotations	506	metamodel
+mixs.yaml	annual_precpt	1	application
+mixs.yaml	annual_temp	1	application
+mixs.yaml	antibiotic_regm	1	application
+mixs.yaml	api	1	application
+mixs.yaml	arch_struc	1	application
+mixs.yaml	arch_struc_enum	1	application
+mixs.yaml	aromatics_pc	1	application
+mixs.yaml	as built	2	application
+mixs.yaml	asphaltenes_pc	1	application
+mixs.yaml	atmospheric_data	1	application
+mixs.yaml	attic	2	application
+mixs.yaml	auditorium	1	application
+mixs.yaml	automated count	1	application
+mixs.yaml	avg_dew_point	1	application
+mixs.yaml	avg_occup	1	application
+mixs.yaml	avg_temp	1	application
+mixs.yaml	bac_prod	1	application
+mixs.yaml	bac_resp	1	application
+mixs.yaml	backslope	1	application
+mixs.yaml	bacteria_carb_prod	1	application
+mixs.yaml	badlands	1	application
+mixs.yaml	bahama shutters	1	application
+mixs.yaml	balcony	1	application
+mixs.yaml	bamboo	1	application
+mixs.yaml	barometric_press	1	application
+mixs.yaml	barrel-shaped	1	application
+mixs.yaml	basement	2	application
+mixs.yaml	basin	1	application
+mixs.yaml	bathroom	3	application
+mixs.yaml	bathroom_count	1	application
+mixs.yaml	battened	1	application
+mixs.yaml	bedroom	1	application
+mixs.yaml	bedroom_count	1	application
+mixs.yaml	benzene	1	application
+mixs.yaml	bettened and ledged	1	application
+mixs.yaml	bid	2	application
+mixs.yaml	biochem_oxygen_dem	1	application
+mixs.yaml	biocide	1	application
+mixs.yaml	biocide_admin_method	1	application
+mixs.yaml	biocides	1	application
+mixs.yaml	biofilm	1	application
+mixs.yaml	biogenous	1	application
+mixs.yaml	biol_stat	1	application
+mixs.yaml	biol_stat_enum	1	application
+mixs.yaml	biological contaminants	1	application
+mixs.yaml	biomass	1	application
+mixs.yaml	biotic_regm	1	application
+mixs.yaml	biotic_relationship	1	application
+mixs.yaml	biotic_relationship_enum	1	application
+mixs.yaml	bishomohopanol	1	application
+mixs.yaml	blinds	1	application
+mixs.yaml	blood_press_diast	1	application
+mixs.yaml	blood_press_syst	1	application
+mixs.yaml	boat	1	application
+mixs.yaml	bottom	1	application
+mixs.yaml	breeder's line	1	application
+mixs.yaml	bromide	1	application
+mixs.yaml	build_docs	1	application
+mixs.yaml	build_docs_enum	1	application
+mixs.yaml	build_occup_type	1	application
+mixs.yaml	build_occup_type_enum	1	application
+mixs.yaml	building	1	application
+mixs.yaml	building information model	1	application
+mixs.yaml	building navigation map	1	application
+mixs.yaml	building_setting	1	application
+mixs.yaml	building_setting_enum	1	application
+mixs.yaml	built_struc_age	1	application
+mixs.yaml	built_struc_set	1	application
+mixs.yaml	built_struc_type	1	application
+mixs.yaml	bulging walls	1	application
+mixs.yaml	bus	1	application
+mixs.yaml	cabinet	2	application
+mixs.yaml	cafe	1	application
+mixs.yaml	calcium	1	application
+mixs.yaml	car	1	application
+mixs.yaml	carb_dioxide	1	application
+mixs.yaml	carb_monoxide	1	application
+mixs.yaml	carb_nitro_ratio	1	application
+mixs.yaml	carpet	2	application
+mixs.yaml	carriage	1	application
+mixs.yaml	cathedral	1	application
+mixs.yaml	ceil_area	1	application
+mixs.yaml	ceil_cond	1	application
+mixs.yaml	ceil_cond_enum	1	application
+mixs.yaml	ceil_finish_mat	1	application
+mixs.yaml	ceil_finish_mat_enum	1	application
+mixs.yaml	ceil_struc	1	application
+mixs.yaml	ceil_texture	1	application
+mixs.yaml	ceil_texture_enum	1	application
+mixs.yaml	ceil_thermal_mass	1	application
+mixs.yaml	ceil_type	1	application
+mixs.yaml	ceil_type_enum	1	application
+mixs.yaml	ceil_water_mold	1	application
+mixs.yaml	ceiling	1	application
+mixs.yaml	ceiling discoloration	1	application
+mixs.yaml	cellular PVC	1	application
+mixs.yaml	center	1	application
+mixs.yaml	center of car	1	application
+mixs.yaml	chair	1	application
+mixs.yaml	chem_administration	1	application
+mixs.yaml	chem_mutagen	1	application
+mixs.yaml	chem_oxygen_dem	1	application
+mixs.yaml	chem_treat_method	1	application
+mixs.yaml	chem_treatment	1	application
+mixs.yaml	chemical air filter	1	application
+mixs.yaml	chimera_check	1	application
+mixs.yaml	chisel	1	application
+mixs.yaml	chloride	1	application
+mixs.yaml	chlorophyll	1	application
+mixs.yaml	cinder blocks	1	application
+mixs.yaml	cities	1	application
+mixs.yaml	clad	1	application
+mixs.yaml	clear finish	1	application
+mixs.yaml	clear sky	1	application
+mixs.yaml	climate_environment	1	application
+mixs.yaml	clonal selection	1	application
+mixs.yaml	closet	2	application
+mixs.yaml	cloudy	1	application
+mixs.yaml	coach	1	application
+mixs.yaml	coffered	1	application
+mixs.yaml	collapsible	2	application
+mixs.yaml	collection_date	1	application
+mixs.yaml	commensal	1	application
+mixs.yaml	comments	5	metamodel
+mixs.yaml	commercial	1	application
+mixs.yaml	commissioning report	1	application
+mixs.yaml	commonly of the building	1	application
+mixs.yaml	complaint logs	1	application
+mixs.yaml	composite	1	application
+mixs.yaml	concave	1	application
+mixs.yaml	concrete	3	application
+mixs.yaml	condensation	1	application
+mixs.yaml	conduc	1	application
+mixs.yaml	conference room	2	application
+mixs.yaml	conifers	1	application
+mixs.yaml	construction	2	application
+mixs.yaml	contract administration	1	application
+mixs.yaml	contributors	1	metamodel
+mixs.yaml	cool_syst_id	1	application
+mixs.yaml	core field	1	application
+mixs.yaml	cork	1	application
+mixs.yaml	corner room	1	application
+mixs.yaml	corrugated steel	1	application
+mixs.yaml	cosmogenous	1	application
+mixs.yaml	cost estimate	1	application
+mixs.yaml	counter top	1	application
+mixs.yaml	cove	1	application
+mixs.yaml	crawlspace	1	application
+mixs.yaml	created_by	1	metamodel
+mixs.yaml	crop trees	1	application
+mixs.yaml	crop_rotation	1	application
+mixs.yaml	crows feet	2	application
+mixs.yaml	crows-foot stomp	2	application
+mixs.yaml	cult_root_med	1	application
+mixs.yaml	cur_land_use	1	application
+mixs.yaml	cur_land_use_enum	1	application
+mixs.yaml	cur_vegetation	1	application
+mixs.yaml	cur_vegetation_meth	1	application
+mixs.yaml	curtains	1	application
+mixs.yaml	cutting disc	1	application
+mixs.yaml	damaged	7	application
+mixs.yaml	data center	1	application
+mixs.yaml	date_last_rain	1	application
+mixs.yaml	default_prefix	1	metamodel
+mixs.yaml	density	1	application
+mixs.yaml	depos_env	1	application
+mixs.yaml	depos_env_enum	1	application
+mixs.yaml	depth	1	application
+mixs.yaml	description	497	metamodel
+mixs.yaml	design	2	application
+mixs.yaml	desk lamp	1	application
+mixs.yaml	desks	1	application
+mixs.yaml	dew_point	1	application
+mixs.yaml	diagram	1	application
+mixs.yaml	diether_lipids	1	application
+mixs.yaml	disc plough	1	application
+mixs.yaml	diss_carb_dioxide	1	application
+mixs.yaml	diss_hydrogen	1	application
+mixs.yaml	diss_inorg_carb	1	application
+mixs.yaml	diss_inorg_nitro	1	application
+mixs.yaml	diss_inorg_phosp	1	application
+mixs.yaml	diss_iron	1	application
+mixs.yaml	diss_org_carb	1	application
+mixs.yaml	diss_org_nitro	1	application
+mixs.yaml	diss_oxygen	1	application
+mixs.yaml	diss_oxygen_fluid	1	application
+mixs.yaml	dissemination	1	application
+mixs.yaml	door	1	application
+mixs.yaml	door_comp_type	1	application
+mixs.yaml	door_comp_type_enum	1	application
+mixs.yaml	door_cond	1	application
+mixs.yaml	door_cond_enum	1	application
+mixs.yaml	door_direct	1	application
+mixs.yaml	door_direct_enum	1	application
+mixs.yaml	door_loc	1	application
+mixs.yaml	door_loc_enum	1	application
+mixs.yaml	door_mat	1	application
+mixs.yaml	door_mat_enum	1	application
+mixs.yaml	door_move	1	application
+mixs.yaml	door_move_enum	1	application
+mixs.yaml	door_size	1	application
+mixs.yaml	door_type	1	application
+mixs.yaml	door_type_enum	1	application
+mixs.yaml	door_type_metal	1	application
+mixs.yaml	door_type_metal_enum	1	application
+mixs.yaml	door_type_wood	1	application
+mixs.yaml	door_type_wood_enum	1	application
+mixs.yaml	door_water_mold	1	application
+mixs.yaml	double skip	2	application
+mixs.yaml	down_par	1	application
+mixs.yaml	downtown	1	application
+mixs.yaml	drainage_class	1	application
+mixs.yaml	drainage_class_enum	1	application
+mixs.yaml	drawings	1	application
+mixs.yaml	drawings_enum	1	application
+mixs.yaml	drill	1	application
+mixs.yaml	drilling rig	1	application
+mixs.yaml	dropped	1	application
+mixs.yaml	drywall	1	application
+mixs.yaml	dust	1	application
+mixs.yaml	east	6	application
+mixs.yaml	east corner	1	application
+mixs.yaml	ebb tide	1	application
+mixs.yaml	edge of car	1	application
+mixs.yaml	efficiency_percent	1	application
+mixs.yaml	electric light	1	application
+mixs.yaml	electrostatic	1	application
+mixs.yaml	elev	1	application
+mixs.yaml	elevator	5	application
+mixs.yaml	emulsions	1	application
+mixs.yaml	end	1	application
+mixs.yaml	engineered plastic	1	application
+mixs.yaml	enums	1	metamodel
+mixs.yaml	env_broad_scale	1	application
+mixs.yaml	env_local_scale	1	application
+mixs.yaml	env_medium	1	application
+mixs.yaml	environment field	1	application
+mixs.yaml	equipment	1	application
+mixs.yaml	erect	1	application
+mixs.yaml	escalator	2	application
+mixs.yaml	estimate	1	application
+mixs.yaml	ethylbenzene	1	application
+mixs.yaml	examining room	2	application
+mixs.yaml	examples	499	metamodel
+mixs.yaml	excessively drained	1	application
+mixs.yaml	exp_duct	1	application
+mixs.yaml	exp_pipe	1	application
+mixs.yaml	expected_value	489	application
+mixs.yaml	experimental_factor	1	application
+mixs.yaml	ext_door	1	application
+mixs.yaml	ext_wall_orient	1	application
+mixs.yaml	ext_wall_orient_enum	1	application
+mixs.yaml	ext_window_orient	1	application
+mixs.yaml	ext_window_orient_enum	1	application
+mixs.yaml	exterior roll blind	1	application
+mixs.yaml	exterior wall	1	application
+mixs.yaml	extreme_event	1	application
+mixs.yaml	exurban	1	application
+mixs.yaml	fabric	1	application
+mixs.yaml	fao_class	1	application
+mixs.yaml	fao_class_enum	1	application
+mixs.yaml	farm sample	1	application
+mixs.yaml	farmstead	1	application
+mixs.yaml	female	2	application
+mixs.yaml	fertilizer_regm	1	application
+mixs.yaml	fiberboard	1	application
+mixs.yaml	fiberglass	3	application
+mixs.yaml	field	1	metamodel
+mixs.yaml	filter_type	1	application
+mixs.yaml	filter_type_enum	1	application
+mixs.yaml	fire	1	application
+mixs.yaml	fire resistive	1	application
+mixs.yaml	fireplace_type	1	application
+mixs.yaml	fixed window	1	application
+mixs.yaml	floating floor	1	application
+mixs.yaml	flood tide	1	application
+mixs.yaml	flooding	1	application
+mixs.yaml	floor discoloration	1	application
+mixs.yaml	floor_age	1	application
+mixs.yaml	floor_area	1	application
+mixs.yaml	floor_cond	1	application
+mixs.yaml	floor_cond_enum	1	application
+mixs.yaml	floor_count	1	application
+mixs.yaml	floor_finish_mat	1	application
+mixs.yaml	floor_finish_mat_enum	1	application
+mixs.yaml	floor_struc	1	application
+mixs.yaml	floor_struc_enum	1	application
+mixs.yaml	floor_thermal_mass	1	application
+mixs.yaml	floor_water_mold	1	application
+mixs.yaml	floor_water_mold_enum	1	application
+mixs.yaml	flourescent lights	1	application
+mixs.yaml	fluor	1	application
+mixs.yaml	flush	1	application
+mixs.yaml	foggy	1	application
+mixs.yaml	folding	1	application
+mixs.yaml	footslope	1	application
+mixs.yaml	forced air system	1	application
+mixs.yaml	forest hills	1	application
+mixs.yaml	fountain	1	application
+mixs.yaml	foyer	1	application
+mixs.yaml	frame construction	1	application
+mixs.yaml	framed and paneled	1	application
+mixs.yaml	free living	1	application
+mixs.yaml	freq_clean	1	application
+mixs.yaml	freq_clean_enum	1	application
+mixs.yaml	freq_cook	1	application
+mixs.yaml	from_schema	595	metamodel
+mixs.yaml	fungicide_regm	1	application
+mixs.yaml	furniture	1	application
+mixs.yaml	furniture_enum	1	application
+mixs.yaml	gambrel awning	1	application
+mixs.yaml	gas-phase or ultraviolet air treatments	1	application
+mixs.yaml	gaseous_environment	1	application
+mixs.yaml	gaseous_substances	1	application
+mixs.yaml	gender neurtral	1	application
+mixs.yaml	gender_restroom	1	application
+mixs.yaml	gender_restroom_enum	1	application
+mixs.yaml	genetic_mod	1	application
+mixs.yaml	geo_loc_name	1	application
+mixs.yaml	glashed or sash	1	application
+mixs.yaml	glass	1	application
+mixs.yaml	glass floor	1	application
+mixs.yaml	glucosidase_act	1	application
+mixs.yaml	gravel	1	application
+mixs.yaml	gravidity	1	application
+mixs.yaml	gravity	1	application
+mixs.yaml	green	1	application
+mixs.yaml	growth and reproduction	1	application
+mixs.yaml	growth_facil	1	application
+mixs.yaml	growth_habit	1	application
+mixs.yaml	growth_habit_enum	1	application
+mixs.yaml	growth_hormone_regm	1	application
+mixs.yaml	gymnasium	1	application
+mixs.yaml	gypsum board	1	application
+mixs.yaml	gypsum plaster	1	application
+mixs.yaml	hail	1	application
+mixs.yaml	hall_count	1	application
+mixs.yaml	hallway	3	application
+mixs.yaml	handidness	1	application
+mixs.yaml	handidness_enum	1	application
+mixs.yaml	hardwoods	1	application
+mixs.yaml	hawk and trowel	2	application
+mixs.yaml	hay bales	1	application
+mixs.yaml	hayland	1	application
+mixs.yaml	hc_produced	1	application
+mixs.yaml	hc_produced_enum	1	application
+mixs.yaml	hcr	1	application
+mixs.yaml	hcr_enum	1	application
+mixs.yaml	hcr_fw_salinity	1	application
+mixs.yaml	hcr_geol_age	1	application
+mixs.yaml	hcr_geol_age_enum	1	application
+mixs.yaml	hcr_pressure	1	application
+mixs.yaml	hcr_temp	1	application
+mixs.yaml	health care	1	application
+mixs.yaml	heat pump	1	application
+mixs.yaml	heat_cool_type	1	application
+mixs.yaml	heat_cool_type_enum	1	application
+mixs.yaml	heat_deliv_loc	1	application
+mixs.yaml	heat_deliv_loc_enum	1	application
+mixs.yaml	heat_sys_deliv_meth	1	application
+mixs.yaml	heat_system_id	1	application
+mixs.yaml	heavy_metals	1	application
+mixs.yaml	heavy_metals_meth	1	application
+mixs.yaml	height_carper_fiber	1	application
+mixs.yaml	herbicide_regm	1	application
+mixs.yaml	hermaphrodite	1	application
+mixs.yaml	high	1	application
+mixs.yaml	high rise	1	application
+mixs.yaml	high tide	1	application
+mixs.yaml	hollow	1	application
+mixs.yaml	home	1	application
+mixs.yaml	hood awning	1	application
+mixs.yaml	horizon_meth	1	application
+mixs.yaml	horizontal sash window	1	application
+mixs.yaml	horticultural plants	1	application
+mixs.yaml	host_age	1	application
+mixs.yaml	host_body_habitat	1	application
+mixs.yaml	host_body_product	1	application
+mixs.yaml	host_body_site	1	application
+mixs.yaml	host_body_temp	1	application
+mixs.yaml	host_color	1	application
+mixs.yaml	host_common_name	1	application
+mixs.yaml	host_diet	1	application
+mixs.yaml	host_disease_stat	1	application
+mixs.yaml	host_dry_mass	1	application
+mixs.yaml	host_family_relation	1	application
+mixs.yaml	host_genotype	1	application
+mixs.yaml	host_growth_cond	1	application
+mixs.yaml	host_height	1	application
+mixs.yaml	host_last_meal	1	application
+mixs.yaml	host_length	1	application
+mixs.yaml	host_life_stage	1	application
+mixs.yaml	host_phenotype	1	application
+mixs.yaml	host_sex	1	application
+mixs.yaml	host_sex_enum	1	application
+mixs.yaml	host_shape	1	application
+mixs.yaml	host_subject_id	1	application
+mixs.yaml	host_subspecf_genlin	1	application
+mixs.yaml	host_substrate	1	application
+mixs.yaml	host_symbiont	1	application
+mixs.yaml	host_taxid	1	application
+mixs.yaml	host_tot_mass	1	application
+mixs.yaml	host_wet_mass	1	application
+mixs.yaml	humidity	1	application
+mixs.yaml	humidity_regm	1	application
+mixs.yaml	hybrid	1	application
+mixs.yaml	hydrogenous	1	application
+mixs.yaml	id	1	metamodel
+mixs.yaml	imports	1	metamodel
+mixs.yaml	inbred line	1	application
+mixs.yaml	indoor_space	1	application
+mixs.yaml	indoor_space_enum	1	application
+mixs.yaml	indoor_surf	1	application
+mixs.yaml	indoor_surf_enum	1	application
+mixs.yaml	indust_eff_percent	1	application
+mixs.yaml	industrial areas	1	application
+mixs.yaml	infection	1	application
+mixs.yaml	inlined_as_list	49	metamodel
+mixs.yaml	inoculation	1	application
+mixs.yaml	inorg_particles	1	application
+mixs.yaml	inside_lux	1	application
+mixs.yaml	int_wall_cond	1	application
+mixs.yaml	int_wall_cond_enum	1	application
+mixs.yaml	interior room	1	application
+mixs.yaml	interiors	1	application
+mixs.yaml	intermixed hardwood and conifers	1	application
+mixs.yaml	investigation field	1	application
+mixs.yaml	inward	1	application
+mixs.yaml	is_a	489	metamodel
+mixs.yaml	iw_bt_date_well	1	application
+mixs.yaml	iwf	1	application
+mixs.yaml	janitorial schedules or logs	1	application
+mixs.yaml	joisted masonry	1	application
+mixs.yaml	kitchen	3	application
+mixs.yaml	knockdown	2	application
+mixs.yaml	laboratory_dry	1	application
+mixs.yaml	laboratory_wet	1	application
+mixs.yaml	laminate wood	1	application
+mixs.yaml	last_clean	1	application
+mixs.yaml	lat_lon	1	application
+mixs.yaml	ledged and braced	1	application
+mixs.yaml	ledged and framed	1	application
+mixs.yaml	ledged, braced and frame	1	application
+mixs.yaml	left	1	application
+mixs.yaml	left handedness	1	application
+mixs.yaml	light noncombustible	1	application
+mixs.yaml	light_intensity	1	application
+mixs.yaml	light_regm	1	application
+mixs.yaml	light_type	1	application
+mixs.yaml	light_type_enum	1	application
+mixs.yaml	lineoleum	1	application
+mixs.yaml	link_addit_analys	1	application
+mixs.yaml	link_class_info	1	application
+mixs.yaml	link_climate_info	1	application
+mixs.yaml	linkml	1	application
+mixs.yaml	lithogenous	1	application
+mixs.yaml	lithology	1	application
+mixs.yaml	lithology_enum	1	application
+mixs.yaml	lobby	2	application
+mixs.yaml	local_class	1	application
+mixs.yaml	local_class_meth	1	application
+mixs.yaml	locker room	1	application
+mixs.yaml	lockers	1	application
+mixs.yaml	louvered	1	application
+mixs.yaml	low	1	application
+mixs.yaml	low rise	1	application
+mixs.yaml	low tide	1	application
+mixs.yaml	low-MERV pleated media	1	application
+mixs.yaml	magnesium	1	application
+mixs.yaml	mail room	2	application
+mixs.yaml	maintenance plans	1	application
+mixs.yaml	male	2	application
+mixs.yaml	male and female	1	application
+mixs.yaml	manual count	1	application
+mixs.yaml	market	1	application
+mixs.yaml	market sample	1	application
+mixs.yaml	marshlands	1	application
+mixs.yaml	masonry	1	application
+mixs.yaml	masonry noncombustible	1	application
+mixs.yaml	max_occup	1	application
+mixs.yaml	meadows	1	application
+mixs.yaml	mean_frict_vel	1	application
+mixs.yaml	mean_peak_frict_vel	1	application
+mixs.yaml	mech_struc	1	application
+mixs.yaml	mech_struc_enum	1	application
+mixs.yaml	mechanical or electrical room	1	application
+mixs.yaml	mechanical_damage	1	application
+mixs.yaml	metal	6	application
+mixs.yaml	metal covered	1	application
+mixs.yaml	methane	1	application
+mixs.yaml	micro_biomass_meth	1	application
+mixs.yaml	microbial_biomass	1	application
+mixs.yaml	mid	1	application
+mixs.yaml	middle	2	application
+mixs.yaml	mineral fibre	1	application
+mixs.yaml	mineral wool/calcium silicate	1	application
+mixs.yaml	mineral_nutr_regm	1	application
+mixs.yaml	mines/quarries	1	application
+mixs.yaml	misc_param	1	application
+mixs.yaml	mixed-handedness	1	application
+mixs.yaml	mixs_env_triad_field	1	application
+mixs.yaml	moderately well	1	application
+mixs.yaml	modified fire resistive	1	application
+mixs.yaml	mold odor	1	application
+mixs.yaml	mouldboard	1	application
+mixs.yaml	mudflats	1	application
+mixs.yaml	multivalued	489	metamodel
+mixs.yaml	mutant	1	application
+mixs.yaml	n_alkanes	1	application
+mixs.yaml	name	1	metamodel
+mixs.yaml	narrow_mappings	1	application
+mixs.yaml	natatorium	1	application
+mixs.yaml	natural	1	application
+mixs.yaml	natural light	1	application
+mixs.yaml	needs repair	7	application
+mixs.yaml	new	7	application
+mixs.yaml	nitrate	1	application
+mixs.yaml	nitrite	1	application
+mixs.yaml	nitro	1	application
+mixs.yaml	nmdc	1	application
+mixs.yaml	no treatment	1	application
+mixs.yaml	non-binary	1	application
+mixs.yaml	non_min_nutr_regm	1	application
+mixs.yaml	none	3	application
+mixs.yaml	none or unfinished	1	application
+mixs.yaml	north	6	application
+mixs.yaml	north corner	1	application
+mixs.yaml	northeast	2	application
+mixs.yaml	northeast corner	1	application
+mixs.yaml	northwest	2	application
+mixs.yaml	northwest corner	1	application
+mixs.yaml	not applicable	1	application
+mixs.yaml	notes	1	metamodel
+mixs.yaml	nucl_acid_amp	1	application
+mixs.yaml	nucl_acid_ext	1	application
+mixs.yaml	nucleic acid sequence source field	1	application
+mixs.yaml	number_pets	1	application
+mixs.yaml	number_plants	1	application
+mixs.yaml	number_resident	1	application
+mixs.yaml	nutrients	1	application
+mixs.yaml	occup_density_samp	1	application
+mixs.yaml	occup_document	1	application
+mixs.yaml	occup_document_enum	1	application
+mixs.yaml	occup_samp	1	application
+mixs.yaml	occurrence	458	application
+mixs.yaml	office	3	application
+mixs.yaml	oil phase	1	application
+mixs.yaml	oil waste areas	1	application
+mixs.yaml	open office	1	application
+mixs.yaml	operation	2	application
+mixs.yaml	orange	1	application
+mixs.yaml	orange peel	2	application
+mixs.yaml	org_carb	1	application
+mixs.yaml	org_count_qpcr_info	1	application
+mixs.yaml	org_matter	1	application
+mixs.yaml	org_nitro	1	application
+mixs.yaml	org_particles	1	application
+mixs.yaml	organic matter	1	application
+mixs.yaml	organism_count	1	application
+mixs.yaml	organism_count_enum	1	application
+mixs.yaml	originally	15	application
+mixs.yaml	other	17	application
+mixs.yaml	other artificial liquid medium	1	application
+mixs.yaml	other artificial solid medium	1	application
+mixs.yaml	outward	1	application
+mixs.yaml	owc_tvdss	1	application
+mixs.yaml	oxy_stat_samp	1	application
+mixs.yaml	oxy_stat_samp_enum	1	application
+mixs.yaml	oxygen	1	application
+mixs.yaml	paint	2	application
+mixs.yaml	painted	1	application
+mixs.yaml	paneling	1	application
+mixs.yaml	parasite	1	application
+mixs.yaml	part_org_carb	1	application
+mixs.yaml	part_org_nitro	1	application
+mixs.yaml	particle_class	1	application
+mixs.yaml	particulate air filter	1	application
+mixs.yaml	particulate matter	1	application
+mixs.yaml	pastureland	1	application
+mixs.yaml	pattern	1	metamodel
+mixs.yaml	pcr_cond	1	application
+mixs.yaml	pcr_primers	1	application
+mixs.yaml	peat moss	1	application
+mixs.yaml	peeling paint or wallpaper	1	application
+mixs.yaml	penetration	1	application
+mixs.yaml	perlite	1	application
+mixs.yaml	permanent snow or ice	1	application
+mixs.yaml	permeability	1	application
+mixs.yaml	permissible_values	102	metamodel
+mixs.yaml	perturbation	1	application
+mixs.yaml	pesticide_regm	1	application
+mixs.yaml	petroleum_hydrocarb	1	application
+mixs.yaml	ph	1	application
+mixs.yaml	ph_meth	1	application
+mixs.yaml	ph_regm	1	application
+mixs.yaml	phaeopigments	1	application
+mixs.yaml	phosphate	1	application
+mixs.yaml	phosplipid_fatt_acid	1	application
+mixs.yaml	photon_flux	1	application
+mixs.yaml	photos	2	application
+mixs.yaml	plant_growth_med	1	application
+mixs.yaml	plant_growth_med_enum	1	application
+mixs.yaml	plant_product	1	application
+mixs.yaml	plant_sex	1	application
+mixs.yaml	plant_sex_enum	1	application
+mixs.yaml	plant_struc	1	application
+mixs.yaml	plaster	1	application
+mixs.yaml	plasterboard	1	application
+mixs.yaml	plastic	1	application
+mixs.yaml	pollutants	1	application
+mixs.yaml	pool	1	application
+mixs.yaml	pool_dna_extracts	1	application
+mixs.yaml	poorly	1	application
+mixs.yaml	popcorn	2	application
+mixs.yaml	porchroller awning	1	application
+mixs.yaml	porosity	1	application
+mixs.yaml	potassium	1	application
+mixs.yaml	pour_point	1	application
+mixs.yaml	pre_treatment	1	application
+mixs.yaml	preferred_unit	217	application
+mixs.yaml	prefix_prefix	3	metamodel
+mixs.yaml	prefix_reference	3	metamodel
+mixs.yaml	prefixes	1	metamodel
+mixs.yaml	pres_animal_insect	1	application
+mixs.yaml	pressure	1	application
+mixs.yaml	prev_land_use_meth	1	application
+mixs.yaml	previous_land_use	1	application
+mixs.yaml	primary_prod	1	application
+mixs.yaml	primary_treatment	1	application
+mixs.yaml	private office	1	application
+mixs.yaml	prod_rate	1	application
+mixs.yaml	prod_start_date	1	application
+mixs.yaml	profile_position	1	application
+mixs.yaml	profile_position_enum	1	application
+mixs.yaml	prostrate	1	application
+mixs.yaml	pumice	1	application
+mixs.yaml	quad_pos	1	application
+mixs.yaml	quad_pos_enum	1	application
+mixs.yaml	radiant system	1	application
+mixs.yaml	radiation_regm	1	application
+mixs.yaml	radon	1	application
+mixs.yaml	rain	1	application
+mixs.yaml	rainfall_regm	1	application
+mixs.yaml	rainforest	1	application
+mixs.yaml	raised floor	1	application
+mixs.yaml	range	490	metamodel
+mixs.yaml	rangeland	1	application
+mixs.yaml	reactor_type	1	application
+mixs.yaml	red	1	application
+mixs.yaml	redox_potential	1	application
+mixs.yaml	rel_air_humidity	1	application
+mixs.yaml	rel_humidity_out	1	application
+mixs.yaml	rel_samp_loc	1	application
+mixs.yaml	rel_samp_loc_enum	1	application
+mixs.yaml	reservoir	1	application
+mixs.yaml	residence	1	application
+mixs.yaml	residential	1	application
+mixs.yaml	resins_pc	1	application
+mixs.yaml	restaurant	1	application
+mixs.yaml	revolving	2	application
+mixs.yaml	ridge till	1	application
+mixs.yaml	right	1	application
+mixs.yaml	right handedness	1	application
+mixs.yaml	riverside	1	application
+mixs.yaml	roads/railroads	1	application
+mixs.yaml	rock	1	application
+mixs.yaml	rolling shutter	1	application
+mixs.yaml	rolling shutters	1	application
+mixs.yaml	room_air_exch_rate	1	application
+mixs.yaml	room_architec_elem	1	application
+mixs.yaml	room_condt	1	application
+mixs.yaml	room_condt_enum	1	application
+mixs.yaml	room_connected	1	application
+mixs.yaml	room_connected_enum	1	application
+mixs.yaml	room_count	1	application
+mixs.yaml	room_dim	1	application
+mixs.yaml	room_door_dist	1	application
+mixs.yaml	room_door_share	1	application
+mixs.yaml	room_hallway	1	application
+mixs.yaml	room_loc	1	application
+mixs.yaml	room_loc_enum	1	application
+mixs.yaml	room_moist_dam_hist	1	application
+mixs.yaml	room_net_area	1	application
+mixs.yaml	room_occup	1	application
+mixs.yaml	room_samp_pos	1	application
+mixs.yaml	room_samp_pos_enum	1	application
+mixs.yaml	room_type	1	application
+mixs.yaml	room_type_enum	1	application
+mixs.yaml	room_vol	1	application
+mixs.yaml	room_wall_share	1	application
+mixs.yaml	room_window_count	1	application
+mixs.yaml	root_cond	1	application
+mixs.yaml	root_med_carbon	1	application
+mixs.yaml	root_med_macronutr	1	application
+mixs.yaml	root_med_micronutr	1	application
+mixs.yaml	root_med_ph	1	application
+mixs.yaml	root_med_regl	1	application
+mixs.yaml	root_med_solid	1	application
+mixs.yaml	root_med_suppl	1	application
+mixs.yaml	rosebud stomp	2	application
+mixs.yaml	row crops	1	application
+mixs.yaml	rug	1	application
+mixs.yaml	rupture	7	application
+mixs.yaml	rural	1	application
+mixs.yaml	saline seeps	1	application
+mixs.yaml	salinity	1	application
+mixs.yaml	salinity_meth	1	application
+mixs.yaml	salt flats	1	application
+mixs.yaml	salt_regm	1	application
+mixs.yaml	samp_capt_status	1	application
+mixs.yaml	samp_capt_status_enum	1	application
+mixs.yaml	samp_collec_device	1	application
+mixs.yaml	samp_collec_method	1	application
+mixs.yaml	samp_collect_point	1	application
+mixs.yaml	samp_collect_point_enum	1	application
+mixs.yaml	samp_dis_stage	1	application
+mixs.yaml	samp_dis_stage_enum	1	application
+mixs.yaml	samp_floor	1	application
+mixs.yaml	samp_floor_enum	1	application
+mixs.yaml	samp_loc_corr_rate	1	application
+mixs.yaml	samp_mat_process	1	application
+mixs.yaml	samp_md	1	application
+mixs.yaml	samp_md_enum	1	application
+mixs.yaml	samp_name	1	application
+mixs.yaml	samp_preserv	1	application
+mixs.yaml	samp_room_id	1	application
+mixs.yaml	samp_size	1	application
+mixs.yaml	samp_sort_meth	1	application
+mixs.yaml	samp_store_dur	1	application
+mixs.yaml	samp_store_loc	1	application
+mixs.yaml	samp_store_temp	1	application
+mixs.yaml	samp_subtype	1	application
+mixs.yaml	samp_subtype_enum	1	application
+mixs.yaml	samp_taxon_id	1	application
+mixs.yaml	samp_time_out	1	application
+mixs.yaml	samp_transport_cond	1	application
+mixs.yaml	samp_tvdss	1	application
+mixs.yaml	samp_type	1	application
+mixs.yaml	samp_vol_we_dna_ext	1	application
+mixs.yaml	samp_weather	1	application
+mixs.yaml	samp_weather_enum	1	application
+mixs.yaml	samp_well_name	1	application
+mixs.yaml	sand	2	application
+mixs.yaml	sarasota shutters	1	application
+mixs.yaml	saturates_pc	1	application
+mixs.yaml	schedule	1	application
+mixs.yaml	school	1	application
+mixs.yaml	sealed	1	application
+mixs.yaml	season	1	application
+mixs.yaml	season_environment	1	application
+mixs.yaml	season_precpt	1	application
+mixs.yaml	season_temp	1	application
+mixs.yaml	season_use	1	application
+mixs.yaml	season_use_enum	1	application
+mixs.yaml	secondary_treatment	1	application
+mixs.yaml	sections	1	application
+mixs.yaml	sediment_type	1	application
+mixs.yaml	sediment_type_enum	1	application
+mixs.yaml	see_also	1	metamodel
+mixs.yaml	semi-erect	1	application
+mixs.yaml	semi-natural	1	application
+mixs.yaml	separator	1	application
+mixs.yaml	seq_meth	1	application
+mixs.yaml	seq_quality_check	1	application
+mixs.yaml	sequencing field	1	application
+mixs.yaml	sewage_type	1	application
+mixs.yaml	shad_dev_water_mold	1	application
+mixs.yaml	shading_device_cond	1	application
+mixs.yaml	shading_device_cond_enum	1	application
+mixs.yaml	shading_device_loc	1	application
+mixs.yaml	shading_device_mat	1	application
+mixs.yaml	shading_device_type	1	application
+mixs.yaml	shading_device_type_enum	1	application
+mixs.yaml	shed	1	application
+mixs.yaml	sheet vinyl	1	application
+mixs.yaml	shelving	1	application
+mixs.yaml	shop drawings	1	application
+mixs.yaml	shoulder	1	application
+mixs.yaml	shrub crops	1	application
+mixs.yaml	shrub land	1	application
+mixs.yaml	sideways	1	application
+mixs.yaml	sieving	1	application
+mixs.yaml	silicate	1	application
+mixs.yaml	single-hung sash window	1	application
+mixs.yaml	site context (adjacent buildings, vegetation, terrain, streets)	1	application
+mixs.yaml	size_frac	1	application
+mixs.yaml	size_frac_low	1	application
+mixs.yaml	size_frac_up	1	application
+mixs.yaml	sketch	1	application
+mixs.yaml	skip trowel	2	application
+mixs.yaml	slab on grade	1	application
+mixs.yaml	slatted aluminum	1	application
+mixs.yaml	sleet	1	application
+mixs.yaml	sliding	2	application
+mixs.yaml	slope_aspect	1	application
+mixs.yaml	slope_gradient	1	application
+mixs.yaml	slot_uri	489	metamodel
+mixs.yaml	slots	1	metamodel
+mixs.yaml	sludge_retent_time	1	application
+mixs.yaml	small grains	1	application
+mixs.yaml	smooth	2	application
+mixs.yaml	snow	1	application
+mixs.yaml	sodium	1	application
+mixs.yaml	soil	1	application
+mixs.yaml	soil_horizon	1	application
+mixs.yaml	soil_horizon_enum	1	application
+mixs.yaml	soil_text_measure	1	application
+mixs.yaml	soil_texture_meth	1	application
+mixs.yaml	soil_type	1	application
+mixs.yaml	soil_type_meth	1	application
+mixs.yaml	solar_irradiance	1	application
+mixs.yaml	solid aluminum awning	1	application
+mixs.yaml	soluble_inorg_mat	1	application
+mixs.yaml	soluble_org_mat	1	application
+mixs.yaml	soluble_react_phosp	1	application
+mixs.yaml	somewhat poorly	1	application
+mixs.yaml	source	1	metamodel
+mixs.yaml	source_file	1	metamodel
+mixs.yaml	source_mat_id	1	application
+mixs.yaml	south	6	application
+mixs.yaml	south corner	1	application
+mixs.yaml	south station above ground	1	application
+mixs.yaml	south station amtrak	1	application
+mixs.yaml	south station underground	1	application
+mixs.yaml	southeast	2	application
+mixs.yaml	southeast corner	1	application
+mixs.yaml	southwest	2	application
+mixs.yaml	southwest corner	1	application
+mixs.yaml	space_typ_state	1	application
+mixs.yaml	specific	1	application
+mixs.yaml	specific_enum	1	application
+mixs.yaml	specific_humidity	1	application
+mixs.yaml	sports complex	1	application
+mixs.yaml	spreading	1	application
+mixs.yaml	sprung floor	1	application
+mixs.yaml	sr_dep_env	1	application
+mixs.yaml	sr_dep_env_enum	1	application
+mixs.yaml	sr_geol_age	1	application
+mixs.yaml	sr_geol_age_enum	1	application
+mixs.yaml	sr_kerog_type	1	application
+mixs.yaml	sr_kerog_type_enum	1	application
+mixs.yaml	sr_lithology	1	application
+mixs.yaml	sr_lithology_enum	1	application
+mixs.yaml	stainless steel	1	application
+mixs.yaml	stairwell	2	application
+mixs.yaml	standing feature	1	application
+mixs.yaml	standing_water_regm	1	application
+mixs.yaml	steam forced heat	1	application
+mixs.yaml	steel plate	1	application
+mixs.yaml	stomp knockdown	2	application
+mixs.yaml	stone	2	application
+mixs.yaml	stone facing	1	application
+mixs.yaml	storage tank	1	application
+mixs.yaml	storage_units	157	application
+mixs.yaml	store_cond	1	application
+mixs.yaml	stream	1	application
+mixs.yaml	stretched	1	application
+mixs.yaml	string_serialization	191	metamodel
+mixs.yaml	strip tillage	1	application
+mixs.yaml	stucco	3	application
+mixs.yaml	submittals	1	application
+mixs.yaml	substructure_type	1	application
+mixs.yaml	substructure_type_enum	1	application
+mixs.yaml	suburban	1	application
+mixs.yaml	subway	1	application
+mixs.yaml	successional shrub land	1	application
+mixs.yaml	sulfate	1	application
+mixs.yaml	sulfate_fw	1	application
+mixs.yaml	sulfide	1	application
+mixs.yaml	summit	1	application
+mixs.yaml	sun screen	1	application
+mixs.yaml	sunny	1	application
+mixs.yaml	surf_air_cont	1	application
+mixs.yaml	surf_air_cont_enum	1	application
+mixs.yaml	surf_humidity	1	application
+mixs.yaml	surf_material	1	application
+mixs.yaml	surf_material_enum	1	application
+mixs.yaml	surf_moisture	1	application
+mixs.yaml	surf_moisture_ph	1	application
+mixs.yaml	surf_temp	1	application
+mixs.yaml	suspend_part_matter	1	application
+mixs.yaml	suspend_solids	1	application
+mixs.yaml	swamp	1	application
+mixs.yaml	swinging	1	application
+mixs.yaml	swirl	2	application
+mixs.yaml	symbiont	1	application
+mixs.yaml	tag	1333	application
+mixs.yaml	tan	1	application
+mixs.yaml	target_gene	1	application
+mixs.yaml	target_subfragment	1	application
+mixs.yaml	telescopic	1	application
+mixs.yaml	temp	1	application
+mixs.yaml	temp_out	1	application
+mixs.yaml	terrazo	1	application
+mixs.yaml	terrazzo	1	application
+mixs.yaml	tertiary_treatment	1	application
+mixs.yaml	test well	1	application
+mixs.yaml	thermoplastic alloy	1	application
+mixs.yaml	tidal_stage	1	application
+mixs.yaml	tidal_stage_enum	1	application
+mixs.yaml	tile	3	application
+mixs.yaml	tiles	1	application
+mixs.yaml	tillage	1	application
+mixs.yaml	tillage_enum	1	application
+mixs.yaml	tined	1	application
+mixs.yaml	tiss_cult_growth_med	1	application
+mixs.yaml	title	490	metamodel
+mixs.yaml	todos	1	metamodel
+mixs.yaml	toeslope	1	application
+mixs.yaml	toluene	1	application
+mixs.yaml	tooltip	4	application
+mixs.yaml	top	1	application
+mixs.yaml	tot_carb	1	application
+mixs.yaml	tot_depth_water_col	1	application
+mixs.yaml	tot_diss_nitro	1	application
+mixs.yaml	tot_inorg_nitro	1	application
+mixs.yaml	tot_iron	1	application
+mixs.yaml	tot_nitro	1	application
+mixs.yaml	tot_nitro_cont_meth	1	application
+mixs.yaml	tot_nitro_content	1	application
+mixs.yaml	tot_org_c_meth	1	application
+mixs.yaml	tot_org_carb	1	application
+mixs.yaml	tot_part_carb	1	application
+mixs.yaml	tot_phosp	1	application
+mixs.yaml	tot_phosphate	1	application
+mixs.yaml	tot_sulfur	1	application
+mixs.yaml	train	1	application
+mixs.yaml	train_line	1	application
+mixs.yaml	train_line_enum	1	application
+mixs.yaml	train_stat_loc	1	application
+mixs.yaml	train_stat_loc_enum	1	application
+mixs.yaml	train_stop_loc	1	application
+mixs.yaml	train_stop_loc_enum	1	application
+mixs.yaml	transgender	1	application
+mixs.yaml	transgender (female to male)	1	application
+mixs.yaml	transgender (male to female)	1	application
+mixs.yaml	tree	1	application
+mixs.yaml	trellis	1	application
+mixs.yaml	tropical	1	application
+mixs.yaml	tundra	1	application
+mixs.yaml	turbidity	1	application
+mixs.yaml	tvdss_of_hcr_press	1	application
+mixs.yaml	tvdss_of_hcr_temp	1	application
+mixs.yaml	typ_occup_density	1	application
+mixs.yaml	undeclared	1	application
+mixs.yaml	under a seat	1	application
+mixs.yaml	unisex	1	application
+mixs.yaml	units_alignment_excuse	10	application
+mixs.yaml	urban	1	application
+mixs.yaml	value	1860	metamodel
+mixs.yaml	vegetable crops	1	application
+mixs.yaml	veneer plaster	1	application
+mixs.yaml	venetian awning	1	application
+mixs.yaml	vent cover	1	application
+mixs.yaml	ventilation system	1	application
+mixs.yaml	ventilation_rate	1	application
+mixs.yaml	ventilation_type	1	application
+mixs.yaml	vermiculite	1	application
+mixs.yaml	very poorly	1	application
+mixs.yaml	vestibule	1	application
+mixs.yaml	vfa	1	application
+mixs.yaml	vfa_fw	1	application
+mixs.yaml	videos	2	application
+mixs.yaml	vine crops	1	application
+mixs.yaml	vinyl	3	application
+mixs.yaml	vinyl composition tile	1	application
+mixs.yaml	vis_media	1	application
+mixs.yaml	vis_media_enum	1	application
+mixs.yaml	viscosity	1	application
+mixs.yaml	visible signs of mold/mildew	1	application
+mixs.yaml	visible wear	7	application
+mixs.yaml	volatile organic compounds	1	application
+mixs.yaml	volatile_org_comp	1	application
+mixs.yaml	wall	1	application
+mixs.yaml	wall discoloration	1	application
+mixs.yaml	wall paper	1	application
+mixs.yaml	wall_area	1	application
+mixs.yaml	wall_const_type	1	application
+mixs.yaml	wall_const_type_enum	1	application
+mixs.yaml	wall_finish_mat	1	application
+mixs.yaml	wall_finish_mat_enum	1	application
+mixs.yaml	wall_height	1	application
+mixs.yaml	wall_loc	1	application
+mixs.yaml	wall_loc_enum	1	application
+mixs.yaml	wall_surf_treatment	1	application
+mixs.yaml	wall_surf_treatment_enum	1	application
+mixs.yaml	wall_texture	1	application
+mixs.yaml	wall_texture_enum	1	application
+mixs.yaml	wall_thermal_mass	1	application
+mixs.yaml	wall_water_mold	1	application
+mixs.yaml	warehouse	1	application
+mixs.yaml	wastewater_type	1	application
+mixs.yaml	water	1	application
+mixs.yaml	water phase	1	application
+mixs.yaml	water stains	1	application
+mixs.yaml	water_cont_soil_meth	1	application
+mixs.yaml	water_content	1	application
+mixs.yaml	water_current	1	application
+mixs.yaml	water_cut	1	application
+mixs.yaml	water_feat_size	1	application
+mixs.yaml	water_feat_type	1	application
+mixs.yaml	water_feat_type_enum	1	application
+mixs.yaml	water_prod_rate	1	application
+mixs.yaml	water_temp_regm	1	application
+mixs.yaml	waterfall	1	application
+mixs.yaml	watering_regm	1	application
+mixs.yaml	weekday	1	application
+mixs.yaml	weekday_enum	1	application
+mixs.yaml	well	2	application
+mixs.yaml	wellhead	1	application
+mixs.yaml	west	6	application
+mixs.yaml	west corner	1	application
+mixs.yaml	wet floor	1	application
+mixs.yaml	wild	1	application
+mixs.yaml	win	1	application
+mixs.yaml	wind_direction	1	application
+mixs.yaml	wind_speed	1	application
+mixs.yaml	window	1	application
+mixs.yaml	window_cond	1	application
+mixs.yaml	window_cond_enum	1	application
+mixs.yaml	window_cover	1	application
+mixs.yaml	window_cover_enum	1	application
+mixs.yaml	window_horiz_pos	1	application
+mixs.yaml	window_horiz_pos_enum	1	application
+mixs.yaml	window_loc	1	application
+mixs.yaml	window_loc_enum	1	application
+mixs.yaml	window_mat	1	application
+mixs.yaml	window_mat_enum	1	application
+mixs.yaml	window_open_freq	1	application
+mixs.yaml	window_size	1	application
+mixs.yaml	window_status	1	application
+mixs.yaml	window_type	1	application
+mixs.yaml	window_type_enum	1	application
+mixs.yaml	window_vert_pos	1	application
+mixs.yaml	window_vert_pos_enum	1	application
+mixs.yaml	window_water_mold	1	application
+mixs.yaml	windows	1	application
+mixs.yaml	windy	1	application
+mixs.yaml	wire gauged	1	application
+mixs.yaml	wood	5	application
+mixs.yaml	wood framed	1	application
+mixs.yaml	wood stove	1	application
+mixs.yaml	wood strip or parquet	1	application
+mixs.yaml	wood-framed	1	application
+mixs.yaml	wood/plastic composite	1	application
+mixs.yaml	wooden	1	application
+mixs.yaml	xylene	1	application
+mixs.yaml	zonal tillage	1	application
+nmdc.yaml	BEH-HILIC	1	application
+nmdc.yaml	BFO	1	application
+nmdc.yaml	C1	1	application
+nmdc.yaml	C18	1	application
+nmdc.yaml	C2	1	application
+nmdc.yaml	C30	1	application
+nmdc.yaml	C4	1	application
+nmdc.yaml	C60	1	application
+nmdc.yaml	C8	1	application
+nmdc.yaml	CATH	1	application
+nmdc.yaml	CHEBI	1	application
+nmdc.yaml	CHEMBL.COMPOUND	1	application
+nmdc.yaml	CHMO	1	application
+nmdc.yaml	CN	1	application
+nmdc.yaml	CNT	1	application
+nmdc.yaml	COG	1	application
+nmdc.yaml	CalibrationInformation	1	application
+nmdc.yaml	CalibrationStandardEnum	1	application
+nmdc.yaml	CalibrationTargetEnum	1	application
+nmdc.yaml	ChromatographicCategoryEnum	1	application
+nmdc.yaml	ChromatographicSeparationProcess	1	application
+nmdc.yaml	ChromatographyConfiguration	1	application
+nmdc.yaml	CollectingBiosamplesFromSite	1	application
+nmdc.yaml	Configuration	1	application
+nmdc.yaml	ContainerCategoryEnum	1	application
+nmdc.yaml	Contaminant	1	application
+nmdc.yaml	DNA	1	application
+nmdc.yaml	DRUGBANK	1	application
+nmdc.yaml	Database	1	application
+nmdc.yaml	Diol	1	application
+nmdc.yaml	DissolvingProcess	1	application
+nmdc.yaml	EC	1	application
+nmdc.yaml	EFO	1	application
+nmdc.yaml	EGGNOG	1	application
+nmdc.yaml	ENVO	1	application
+nmdc.yaml	EluentIntroductionCategoryEnum	1	application
+nmdc.yaml	EukEval	1	application
+nmdc.yaml	Extraction	1	application
+nmdc.yaml	FBcv	1	application
+nmdc.yaml	FMA	1	application
+nmdc.yaml	FiltrationProcess	1	application
+nmdc.yaml	FunctionalAnnotationAggMember	1	application
+nmdc.yaml	GENEPIO	1	application
+nmdc.yaml	GO	1	application
+nmdc.yaml	HILIC	1	application
+nmdc.yaml	HLB	1	application
+nmdc.yaml	HMDB	1	application
+nmdc.yaml	ISA	1	application
+nmdc.yaml	IonizationSourceEnum	1	application
+nmdc.yaml	KEGG.COMPOUND	1	application
+nmdc.yaml	KEGG.MODULE	1	application
+nmdc.yaml	KEGG.ORTHOLOGY	1	application
+nmdc.yaml	KEGG.REACTION	1	application
+nmdc.yaml	KEGG_PATHWAY	1	application
+nmdc.yaml	LibraryPreparation	1	application
+nmdc.yaml	LibraryTypeEnum	1	application
+nmdc.yaml	MASSIVE	1	application
+nmdc.yaml	MCO	1	application
+nmdc.yaml	MESH	1	application
+nmdc.yaml	MISO	1	application
+nmdc.yaml	MIXS	1	application
+nmdc.yaml	MS	1	application
+nmdc.yaml	Manifest	1	application
+nmdc.yaml	MassAnalyzerEnum	1	application
+nmdc.yaml	MassSpectrometry	1	application
+nmdc.yaml	MassSpectrometryAcquisitionStrategyEnum	1	application
+nmdc.yaml	MassSpectrometryConfiguration	1	application
+nmdc.yaml	MassSpectrumCollectionModeEnum	1	application
+nmdc.yaml	MetaCyc	1	application
+nmdc.yaml	MetaNetX	1	application
+nmdc.yaml	MixingProcess	1	application
+nmdc.yaml	NCBI	1	application
+nmdc.yaml	NCBITaxon	1	application
+nmdc.yaml	NCIT	1	application
+nmdc.yaml	NH2	1	application
+nmdc.yaml	NucleotideSequencing	1	application
+nmdc.yaml	OBI	1	application
+nmdc.yaml	OMIT	1	application
+nmdc.yaml	ORCID	1	application
+nmdc.yaml	Orbitrap	1	application
+nmdc.yaml	PANTHER.FAMILY	1	application
+nmdc.yaml	PATO	1	application
+nmdc.yaml	PFAM	1	application
+nmdc.yaml	PFAM.CLAN	1	application
+nmdc.yaml	PO	1	application
+nmdc.yaml	PR	1	application
+nmdc.yaml	PS-DVB	1	application
+nmdc.yaml	PUBCHEM.COMPOUND	1	application
+nmdc.yaml	Phenyl	1	application
+nmdc.yaml	PolarityModeEnum	1	application
+nmdc.yaml	Polysiloxane	1	application
+nmdc.yaml	Pooling	1	application
+nmdc.yaml	ProtocolCategoryEnum	1	application
+nmdc.yaml	RHEA	1	application
+nmdc.yaml	RNA	1	application
+nmdc.yaml	RO	1	application
+nmdc.yaml	ResolutionCategoryEnum	1	application
+nmdc.yaml	RetroRules	1	application
+nmdc.yaml	SAX	1	application
+nmdc.yaml	SCX	1	application
+nmdc.yaml	SEED	1	application
+nmdc.yaml	SIO	1	application
+nmdc.yaml	SO	1	application
+nmdc.yaml	SUPFAM	1	application
+nmdc.yaml	SamplePortionEnum	1	application
+nmdc.yaml	SeparationMethodEnum	1	application
+nmdc.yaml	Silica	1	application
+nmdc.yaml	StationaryPhaseEnum	1	application
+nmdc.yaml	StorageProcess	1	application
+nmdc.yaml	StrandedOrientationEnum	1	application
+nmdc.yaml	SubSamplingProcess	1	application
+nmdc.yaml	TIGRFAM	1	application
+nmdc.yaml	UBERON	1	application
+nmdc.yaml	UO	1	application
+nmdc.yaml	UniProtKB	1	application
+nmdc.yaml	WAX	1	application
+nmdc.yaml	WCX	1	application
+nmdc.yaml	ZIC-HILIC	1	application
+nmdc.yaml	ZIC-cHILIC	1	application
+nmdc.yaml	ZIC-pHILIC	1	application
+nmdc.yaml	abstract	1	metamodel
+nmdc.yaml	aliases	30	metamodel
+nmdc.yaml	alkanes	1	application
+nmdc.yaml	analyte_category	2	application
+nmdc.yaml	annotations	6	metamodel
+nmdc.yaml	antisense orientation	1	application
+nmdc.yaml	aqueous_layer	1	application
+nmdc.yaml	atmospheric_pressure_chemical_ionization	1	application
+nmdc.yaml	atmospheric_pressure_photo_ionization	1	application
+nmdc.yaml	biogas_retention_time	1	application
+nmdc.yaml	biogas_temperature	1	application
+nmdc.yaml	biolink	1	application
+nmdc.yaml	biomaterial_purity	1	application
+nmdc.yaml	bioproject	1	application
+nmdc.yaml	biosample	1	application
+nmdc.yaml	biosample_set	1	application
+nmdc.yaml	calibration_object	2	application
+nmdc.yaml	calibration_set	1	application
+nmdc.yaml	calibration_standard	2	application
+nmdc.yaml	calibration_target	3	application
+nmdc.yaml	cas	1	application
+nmdc.yaml	centroid	1	application
+nmdc.yaml	chemical_entity_set	1	application
+nmdc.yaml	chloroform_layer	1	application
+nmdc.yaml	chromatographic_category	2	application
+nmdc.yaml	class_uri	20	metamodel
+nmdc.yaml	classes	1	metamodel
+nmdc.yaml	close_mappings	2	application
+nmdc.yaml	collecting_biosamples_from_site_set	1	application
+nmdc.yaml	comments	11	metamodel
+nmdc.yaml	completion_date	1	application
+nmdc.yaml	conditionings	1	application
+nmdc.yaml	configuration_set	1	application
+nmdc.yaml	contained_in	1	application
+nmdc.yaml	container_size	1	application
+nmdc.yaml	contributors	9	metamodel
+nmdc.yaml	count	2	application
+nmdc.yaml	data_dependent_acquisition	1	application
+nmdc.yaml	data_generation_set	1	application
+nmdc.yaml	data_independent_acquisition	1	application
+nmdc.yaml	data_object_set	1	application
+nmdc.yaml	date_created	1	application
+nmdc.yaml	dcterms	1	application
+nmdc.yaml	default_prefix	1	metamodel
+nmdc.yaml	default_range	1	metamodel
+nmdc.yaml	deprecated	1	metamodel
+nmdc.yaml	derivatization	1	application
+nmdc.yaml	description	144	metamodel
+nmdc.yaml	direct_infusion_autosampler	1	application
+nmdc.yaml	direct_infusion_syringe	1	application
+nmdc.yaml	dna_extraction	1	application
+nmdc.yaml	doi	1	application
+nmdc.yaml	ecosystem_path_id	1	application
+nmdc.yaml	edam.data	1	application
+nmdc.yaml	edam.format	1	application
+nmdc.yaml	electron_ionization	1	application
+nmdc.yaml	electrospray_ionization	1	application
+nmdc.yaml	eluent_introduction_category	5	application
+nmdc.yaml	emit_prefixes	1	metamodel
+nmdc.yaml	emsl	1	application
+nmdc.yaml	emsl.project	1	application
+nmdc.yaml	emsl_uuid_like	1	application
+nmdc.yaml	enums	1	metamodel
+nmdc.yaml	equals_string	4	metamodel
+nmdc.yaml	etl_software_version	1	application
+nmdc.yaml	eukaryotic_evaluation	1	application
+nmdc.yaml	exact_mappings	18	application
+nmdc.yaml	examples	7	metamodel
+nmdc.yaml	falcon_tube	1	application
+nmdc.yaml	fames	1	application
+nmdc.yaml	field_research_site_set	1	application
+nmdc.yaml	filter_clean_up	1	application
+nmdc.yaml	filter_material	1	application
+nmdc.yaml	filter_pore_size	1	application
+nmdc.yaml	filtration_category	1	application
+nmdc.yaml	full_profile	1	application
+nmdc.yaml	full_scan_only	1	application
+nmdc.yaml	functional_annotation_agg	1	application
+nmdc.yaml	functional_annotation_set	1	application
+nmdc.yaml	gas_chromatography	2	application
+nmdc.yaml	gene_function_id	2	application
+nmdc.yaml	generates_calibration	2	application
+nmdc.yaml	generic	1	application
+nmdc.yaml	genome_feature_set	1	application
+nmdc.yaml	gnps.task	1	application
+nmdc.yaml	gold	1	application
+nmdc.yaml	gtpo	1	application
+nmdc.yaml	has_chromatography_configuration	4	application
+nmdc.yaml	has_failure_categorization	1	application
+nmdc.yaml	has_input	9	application
+nmdc.yaml	has_mass_spectrometry_configuration	2	application
+nmdc.yaml	has_output	9	application
+nmdc.yaml	high	1	application
+nmdc.yaml	id	17	metamodel
+nmdc.yaml	id_blade	1	application
+nmdc.yaml	id_locus	1	application
+nmdc.yaml	id_nmdc_prefix	1	application
+nmdc.yaml	id_shoulder	1	application
+nmdc.yaml	id_version	1	application
+nmdc.yaml	igsn	1	application
+nmdc.yaml	img.taxon	1	application
+nmdc.yaml	imports	1	metamodel
+nmdc.yaml	inlined	1	metamodel
+nmdc.yaml	inlined_as_list	4	metamodel
+nmdc.yaml	input_mass	1	application
+nmdc.yaml	input_volume	1	application
+nmdc.yaml	insdc.sra	1	application
+nmdc.yaml	instrument_set	1	application
+nmdc.yaml	interlayer	1	application
+nmdc.yaml	internal_calibration	3	application
+nmdc.yaml	interpolated	37	metamodel
+nmdc.yaml	ion_cyclotron_resonance	1	application
+nmdc.yaml	ion_trap	1	application
+nmdc.yaml	ionization_source	2	application
+nmdc.yaml	is_a	23	metamodel
+nmdc.yaml	is_pressurized	1	application
+nmdc.yaml	is_stranded	1	application
+nmdc.yaml	jgi	1	application
+nmdc.yaml	jgi.analysis	1	application
+nmdc.yaml	jgi.proposal	1	application
+nmdc.yaml	kegg	1	application
+nmdc.yaml	library_preparation_kit	1	application
+nmdc.yaml	library_type	1	application
+nmdc.yaml	license	1	metamodel
+nmdc.yaml	linkml	1	application
+nmdc.yaml	liquid_chromatography	2	application
+nmdc.yaml	list_elements_ordered	2	metamodel
+nmdc.yaml	low	1	application
+nmdc.yaml	manifest_set	1	application
+nmdc.yaml	mass	1	application
+nmdc.yaml	mass_analyzers	2	application
+nmdc.yaml	mass_charge_ratio	1	application
+nmdc.yaml	mass_spectrometry_acquisition_strategy	2	application
+nmdc.yaml	mass_spectrum_collection_modes	2	application
+nmdc.yaml	material_component_separation	1	application
+nmdc.yaml	material_processing_set	1	application
+nmdc.yaml	matrix_assisted_laser_desorption_ionization	1	application
+nmdc.yaml	maximum_cardinality	1	metamodel
+nmdc.yaml	methanol_layer	1	application
+nmdc.yaml	mgnify.analysis	1	application
+nmdc.yaml	mgnify.proj	1	application
+nmdc.yaml	minimum_cardinality	2	metamodel
+nmdc.yaml	mixin	1	metamodel
+nmdc.yaml	mixins	18	metamodel
+nmdc.yaml	modifier_substance	1	application
+nmdc.yaml	mplex	1	application
+nmdc.yaml	multivalued	9	metamodel
+nmdc.yaml	my_emsl	1	application
+nmdc.yaml	name	3	metamodel
+nmdc.yaml	narrow_mappings	1	application
+nmdc.yaml	ncbi_lineage	1	application
+nmdc.yaml	ncbi_lineage_tax_ids	1	application
+nmdc.yaml	negative	1	application
+nmdc.yaml	neon.identifier	1	application
+nmdc.yaml	neon.schema	1	application
+nmdc.yaml	nmdc	1	application
+nmdc.yaml	notes	5	metamodel
+nmdc.yaml	object_set	1	application
+nmdc.yaml	ontology_class_set	1	application
+nmdc.yaml	ordered_mobile_phases	1	application
+nmdc.yaml	organic_layer	1	application
+nmdc.yaml	organic_matter_extraction	1	application
+nmdc.yaml	owl	1	application
+nmdc.yaml	pattern	2	metamodel
+nmdc.yaml	pcr_cond	1	application
+nmdc.yaml	pcr_cycles	1	application
+nmdc.yaml	pellet	1	application
+nmdc.yaml	permissible_values	17	metamodel
+nmdc.yaml	ph_measurement	1	application
+nmdc.yaml	phenol_chloroform_extraction	1	application
+nmdc.yaml	phosphorus_extraction	1	application
+nmdc.yaml	polarity_mode	2	application
+nmdc.yaml	positive	1	application
+nmdc.yaml	postconditions	5	metamodel
+nmdc.yaml	preconditions	5	metamodel
+nmdc.yaml	prefixes	1	metamodel
+nmdc.yaml	processed_sample_set	1	application
+nmdc.yaml	prov	1	application
+nmdc.yaml	ptfe_96_well_filter_plate	1	application
+nmdc.yaml	quadrupole	1	application
+nmdc.yaml	qud	1	application
+nmdc.yaml	range	87	metamodel
+nmdc.yaml	rdf	1	application
+nmdc.yaml	rdfs	1	application
+nmdc.yaml	reduced_profile	1	application
+nmdc.yaml	related_mappings	3	application
+nmdc.yaml	required	42	metamodel
+nmdc.yaml	resolution_categories	2	application
+nmdc.yaml	respiration_measurement	1	application
+nmdc.yaml	retention_index	1	application
+nmdc.yaml	retention_time	1	application
+nmdc.yaml	ror	1	application
+nmdc.yaml	rules	2	metamodel
+nmdc.yaml	sample_collection_day	1	application
+nmdc.yaml	sample_collection_hour	1	application
+nmdc.yaml	sample_collection_minute	1	application
+nmdc.yaml	sample_collection_month	1	application
+nmdc.yaml	sample_collection_year	1	application
+nmdc.yaml	sampled_portion	1	application
+nmdc.yaml	schema	1	metamodel
+nmdc.yaml	sense orientation	1	application
+nmdc.yaml	separation_method	1	application
+nmdc.yaml	settings	1	metamodel
+nmdc.yaml	skos	1	application
+nmdc.yaml	slot_conditions	10	metamodel
+nmdc.yaml	slot_usage	17	metamodel
+nmdc.yaml	slots	20	metamodel
+nmdc.yaml	soil_annual_season_temp	1	application
+nmdc.yaml	solid_phase_extraction	2	application
+nmdc.yaml	stationary_phase	2	application
+nmdc.yaml	storage_process_set	1	application
+nmdc.yaml	storage_units	1	application
+nmdc.yaml	stranded_orientation	1	application
+nmdc.yaml	structured_pattern	40	metamodel
+nmdc.yaml	study_set	1	application
+nmdc.yaml	substances_used	1	application
+nmdc.yaml	supernatant	1	application
+nmdc.yaml	syntax	40	metamodel
+nmdc.yaml	syringe	1	application
+nmdc.yaml	texture_measurement	1	application
+nmdc.yaml	time_of_flight	1	application
+nmdc.yaml	title	19	metamodel
+nmdc.yaml	tree_root	1	metamodel
+nmdc.yaml	units_alignment_excuse	5	application
+nmdc.yaml	uses_calibration	1	application
+nmdc.yaml	v-bottom_conical_tube	1	application
+nmdc.yaml	value	12	metamodel
+nmdc.yaml	version	1	metamodel
+nmdc.yaml	volume	3	application
+nmdc.yaml	was_generated_by	1	application
+nmdc.yaml	wgs84	1	application
+nmdc.yaml	wikidata	1	application
+nmdc.yaml	workflow_execution_set	1	application
+nmdc.yaml	xsd	1	application
+nmdc_subsets.yaml	comments	1	metamodel
+nmdc_subsets.yaml	data object subset	1	application
+nmdc_subsets.yaml	data_portal_subset	1	application
+nmdc_subsets.yaml	default_prefix	1	metamodel
+nmdc_subsets.yaml	default_range	1	metamodel
+nmdc_subsets.yaml	description	5	metamodel
+nmdc_subsets.yaml	environment	1	application
+nmdc_subsets.yaml	id	1	metamodel
+nmdc_subsets.yaml	investigation	1	application
+nmdc_subsets.yaml	license	1	metamodel
+nmdc_subsets.yaml	linkml	1	application
+nmdc_subsets.yaml	name	1	metamodel
+nmdc_subsets.yaml	nmdc	1	application
+nmdc_subsets.yaml	nucleic acid sequence source	1	application
+nmdc_subsets.yaml	prefixes	1	metamodel
+nmdc_subsets.yaml	proteases	1	application
+nmdc_subsets.yaml	sample subset	1	application
+nmdc_subsets.yaml	sequencing	1	application
+nmdc_subsets.yaml	subsets	1	metamodel
+nmdc_subsets.yaml	title	1	metamodel
+nmdc_subsets.yaml	workflow subset	1	application
+nmdc_types.yaml	UO	1	application
+nmdc_types.yaml	base	3	metamodel
+nmdc_types.yaml	bytes	1	application
+nmdc_types.yaml	decimal_degree	1	application
+nmdc_types.yaml	default_prefix	1	metamodel
+nmdc_types.yaml	default_range	1	metamodel
+nmdc_types.yaml	description	5	metamodel
+nmdc_types.yaml	external_identifier	1	application
+nmdc_types.yaml	id	1	metamodel
+nmdc_types.yaml	imports	1	metamodel
+nmdc_types.yaml	language_code	1	application
+nmdc_types.yaml	license	1	metamodel
+nmdc_types.yaml	linkml	1	application
+nmdc_types.yaml	name	1	metamodel
+nmdc_types.yaml	pattern	1	metamodel
+nmdc_types.yaml	prefixes	1	metamodel
+nmdc_types.yaml	qud	1	application
+nmdc_types.yaml	see_also	4	metamodel
+nmdc_types.yaml	title	1	metamodel
+nmdc_types.yaml	typeof	1	metamodel
+nmdc_types.yaml	types	1	metamodel
+nmdc_types.yaml	uri	4	metamodel
+portal_emsl.yaml	comments	5	metamodel
+portal_emsl.yaml	default_prefix	1	metamodel
+portal_emsl.yaml	default_range	1	metamodel
+portal_emsl.yaml	description	7	metamodel
+portal_emsl.yaml	emsl_store_temp	1	application
+portal_emsl.yaml	examples	4	metamodel
+portal_emsl.yaml	id	1	metamodel
+portal_emsl.yaml	imports	1	metamodel
+portal_emsl.yaml	license	1	metamodel
+portal_emsl.yaml	linkml	1	application
+portal_emsl.yaml	name	1	metamodel
+portal_emsl.yaml	nmdc	1	application
+portal_emsl.yaml	prefixes	1	metamodel
+portal_emsl.yaml	project_id	1	application
+portal_emsl.yaml	range	1	metamodel
+portal_emsl.yaml	rank	6	metamodel
+portal_emsl.yaml	recommended	6	metamodel
+portal_emsl.yaml	replicate_number	1	application
+portal_emsl.yaml	sample_shipped	1	application
+portal_emsl.yaml	sample_type	1	application
+portal_emsl.yaml	slot_group	6	metamodel
+portal_emsl.yaml	slots	1	metamodel
+portal_emsl.yaml	string_serialization	5	metamodel
+portal_emsl.yaml	technical_reps	1	application
+portal_emsl.yaml	title	7	metamodel
+portal_emsl.yaml	todos	1	metamodel
+portal_emsl.yaml	value	6	metamodel
+portal_enums.yaml	AnalysisTypeEnum	1	application
+portal_enums.yaml	ApprovedHeld	1	application
+portal_enums.yaml	Denied	1	application
+portal_enums.yaml	InProgress	1	application
+portal_enums.yaml	InProgressUpdate	1	application
+portal_enums.yaml	OBI	1	application
+portal_enums.yaml	PendingUserFacility	1	application
+portal_enums.yaml	Released	1	application
+portal_enums.yaml	ResubmittedPendingReview	1	application
+portal_enums.yaml	SampleTypeEnum	1	application
+portal_enums.yaml	SubmissionStatusEnum	1	application
+portal_enums.yaml	SubmittedPendingReview	1	application
+portal_enums.yaml	UpdatesRequired	1	application
+portal_enums.yaml	YesNoEnum	1	application
+portal_enums.yaml	amplicon sequencing assay	1	application
+portal_enums.yaml	bulk chemistry	1	application
+portal_enums.yaml	default_prefix	1	metamodel
+portal_enums.yaml	description	13	metamodel
+portal_enums.yaml	enums	1	metamodel
+portal_enums.yaml	id	1	metamodel
+portal_enums.yaml	license	1	metamodel
+portal_enums.yaml	lipidomics	1	application
+portal_enums.yaml	meaning	1	metamodel
+portal_enums.yaml	metabolomics	1	application
+portal_enums.yaml	metagenomics	1	application
+portal_enums.yaml	metagenomics_long_read	1	application
+portal_enums.yaml	metaproteomics	1	application
+portal_enums.yaml	metatranscriptomics	1	application
+portal_enums.yaml	name	1	metamodel
+portal_enums.yaml	natural organic matter	1	application
+portal_enums.yaml	nmdc	1	application
+portal_enums.yaml	no	1	application
+portal_enums.yaml	permissible_values	4	metamodel
+portal_enums.yaml	plant associated	1	application
+portal_enums.yaml	prefixes	1	metamodel
+portal_enums.yaml	sediment	1	application
+portal_enums.yaml	soil	1	application
+portal_enums.yaml	soil - water extract	1	application
+portal_enums.yaml	title	13	metamodel
+portal_enums.yaml	water	1	application
+portal_enums.yaml	yes	1	application
+portal_jgi_metagenomics.yaml	aliases	1	metamodel
+portal_jgi_metagenomics.yaml	default_prefix	1	metamodel
+portal_jgi_metagenomics.yaml	default_range	1	metamodel
+portal_jgi_metagenomics.yaml	description	4	metamodel
+portal_jgi_metagenomics.yaml	dna_collect_site	1	application
+portal_jgi_metagenomics.yaml	dna_isolate_meth	1	application
+portal_jgi_metagenomics.yaml	dna_organisms	1	application
+portal_jgi_metagenomics.yaml	examples	3	metamodel
+portal_jgi_metagenomics.yaml	id	1	metamodel
+portal_jgi_metagenomics.yaml	imports	1	metamodel
+portal_jgi_metagenomics.yaml	license	1	metamodel
+portal_jgi_metagenomics.yaml	linkml	1	application
+portal_jgi_metagenomics.yaml	name	1	metamodel
+portal_jgi_metagenomics.yaml	nmdc	1	application
+portal_jgi_metagenomics.yaml	prefixes	1	metamodel
+portal_jgi_metagenomics.yaml	rank	3	metamodel
+portal_jgi_metagenomics.yaml	recommended	3	metamodel
+portal_jgi_metagenomics.yaml	slot_group	3	metamodel
+portal_jgi_metagenomics.yaml	slots	1	metamodel
+portal_jgi_metagenomics.yaml	string_serialization	3	metamodel
+portal_jgi_metagenomics.yaml	title	4	metamodel
+portal_jgi_metagenomics.yaml	value	3	metamodel
+portal_jgi_metatranscriptomics.yaml	aliases	1	metamodel
+portal_jgi_metatranscriptomics.yaml	default_prefix	1	metamodel
+portal_jgi_metatranscriptomics.yaml	default_range	1	metamodel
+portal_jgi_metatranscriptomics.yaml	description	4	metamodel
+portal_jgi_metatranscriptomics.yaml	examples	3	metamodel
+portal_jgi_metatranscriptomics.yaml	id	1	metamodel
+portal_jgi_metatranscriptomics.yaml	imports	1	metamodel
+portal_jgi_metatranscriptomics.yaml	license	1	metamodel
+portal_jgi_metatranscriptomics.yaml	linkml	1	application
+portal_jgi_metatranscriptomics.yaml	name	1	metamodel
+portal_jgi_metatranscriptomics.yaml	nmdc	1	application
+portal_jgi_metatranscriptomics.yaml	prefixes	1	metamodel
+portal_jgi_metatranscriptomics.yaml	rank	3	metamodel
+portal_jgi_metatranscriptomics.yaml	recommended	3	metamodel
+portal_jgi_metatranscriptomics.yaml	rna_collect_site	1	application
+portal_jgi_metatranscriptomics.yaml	rna_isolate_meth	1	application
+portal_jgi_metatranscriptomics.yaml	rna_organisms	1	application
+portal_jgi_metatranscriptomics.yaml	slot_group	3	metamodel
+portal_jgi_metatranscriptomics.yaml	slots	1	metamodel
+portal_jgi_metatranscriptomics.yaml	string_serialization	3	metamodel
+portal_jgi_metatranscriptomics.yaml	title	4	metamodel
+portal_jgi_metatranscriptomics.yaml	value	3	metamodel
+portal_mixs_inspired.yaml	MIXS	1	application
+portal_mixs_inspired.yaml	collection_date_inc	1	application
+portal_mixs_inspired.yaml	collection_time	1	application
+portal_mixs_inspired.yaml	collection_time_inc	1	application
+portal_mixs_inspired.yaml	comments	15	metamodel
+portal_mixs_inspired.yaml	default_prefix	1	metamodel
+portal_mixs_inspired.yaml	default_range	1	metamodel
+portal_mixs_inspired.yaml	description	17	metamodel
+portal_mixs_inspired.yaml	examples	15	metamodel
+portal_mixs_inspired.yaml	experimental_factor_other	1	application
+portal_mixs_inspired.yaml	filter_method	1	application
+portal_mixs_inspired.yaml	id	1	metamodel
+portal_mixs_inspired.yaml	imports	1	metamodel
+portal_mixs_inspired.yaml	isotope_exposure	1	application
+portal_mixs_inspired.yaml	license	1	metamodel
+portal_mixs_inspired.yaml	linkml	1	application
+portal_mixs_inspired.yaml	micro_biomass_c_meth	1	application
+portal_mixs_inspired.yaml	micro_biomass_n_meth	1	application
+portal_mixs_inspired.yaml	microbial_biomass_c	1	application
+portal_mixs_inspired.yaml	microbial_biomass_n	1	application
+portal_mixs_inspired.yaml	name	1	metamodel
+portal_mixs_inspired.yaml	nmdc	1	application
+portal_mixs_inspired.yaml	non_microb_biomass	1	application
+portal_mixs_inspired.yaml	non_microb_biomass_method	1	application
+portal_mixs_inspired.yaml	notes	6	metamodel
+portal_mixs_inspired.yaml	org_nitro_method	1	application
+portal_mixs_inspired.yaml	other_treatment	1	application
+portal_mixs_inspired.yaml	prefixes	1	metamodel
+portal_mixs_inspired.yaml	rank	16	metamodel
+portal_mixs_inspired.yaml	recommended	10	metamodel
+portal_mixs_inspired.yaml	see_also	16	metamodel
+portal_mixs_inspired.yaml	slot_group	16	metamodel
+portal_mixs_inspired.yaml	slots	1	metamodel
+portal_mixs_inspired.yaml	start_date_inc	1	application
+portal_mixs_inspired.yaml	start_time_inc	1	application
+portal_mixs_inspired.yaml	string_serialization	15	metamodel
+portal_mixs_inspired.yaml	title	17	metamodel
+portal_mixs_inspired.yaml	todos	2	metamodel
+portal_mixs_inspired.yaml	value	26	metamodel
+portal_sample_id.yaml	analysis_type	1	application
+portal_sample_id.yaml	comments	2	metamodel
+portal_sample_id.yaml	default_prefix	1	metamodel
+portal_sample_id.yaml	default_range	1	metamodel
+portal_sample_id.yaml	description	3	metamodel
+portal_sample_id.yaml	enums	1	metamodel
+portal_sample_id.yaml	examples	2	metamodel
+portal_sample_id.yaml	id	1	metamodel
+portal_sample_id.yaml	imports	1	metamodel
+portal_sample_id.yaml	license	1	metamodel
+portal_sample_id.yaml	linkml	1	application
+portal_sample_id.yaml	multivalued	2	metamodel
+portal_sample_id.yaml	name	1	metamodel
+portal_sample_id.yaml	nmdc	1	application
+portal_sample_id.yaml	prefixes	1	metamodel
+portal_sample_id.yaml	range	1	metamodel
+portal_sample_id.yaml	rank	2	metamodel
+portal_sample_id.yaml	recommended	2	metamodel
+portal_sample_id.yaml	sample_link	1	application
+portal_sample_id.yaml	slot_group	2	metamodel
+portal_sample_id.yaml	slots	1	metamodel
+portal_sample_id.yaml	string_serialization	1	metamodel
+portal_sample_id.yaml	title	3	metamodel
+portal_sample_id.yaml	todos	1	metamodel
+portal_sample_id.yaml	value	2	metamodel
+workflow_execution_activity.yaml	MagsAnalysis	1	application
+workflow_execution_activity.yaml	MetabolomicsAnalysis	1	application
+workflow_execution_activity.yaml	MetabolomicsAnalysisCategoryEnum	1	application
+workflow_execution_activity.yaml	MetagenomeAssembly	1	application
+workflow_execution_activity.yaml	MetaproteomicsAnalysis	1	application
+workflow_execution_activity.yaml	MetaproteomicsAnalysisCategoryEnum	1	application
+workflow_execution_activity.yaml	MetatranscriptomeAnnotation	1	application
+workflow_execution_activity.yaml	MetatranscriptomeAssembly	1	application
+workflow_execution_activity.yaml	MetatranscriptomeExpressionAnalysis	1	application
+workflow_execution_activity.yaml	NomAnalysis	1	application
+workflow_execution_activity.yaml	ReadBasedTaxonomyAnalysis	1	application
+workflow_execution_activity.yaml	ReadQcAnalysis	1	application
+workflow_execution_activity.yaml	abstract	2	metamodel
+workflow_execution_activity.yaml	asm_score	1	application
+workflow_execution_activity.yaml	binned_contig_num	1	application
+workflow_execution_activity.yaml	class_uri	10	metamodel
+workflow_execution_activity.yaml	classes	1	metamodel
+workflow_execution_activity.yaml	comments	1	metamodel
+workflow_execution_activity.yaml	contig_bp	1	application
+workflow_execution_activity.yaml	contigs	1	application
+workflow_execution_activity.yaml	ctg_l50	1	application
+workflow_execution_activity.yaml	ctg_l90	1	application
+workflow_execution_activity.yaml	ctg_logsum	1	application
+workflow_execution_activity.yaml	ctg_max	1	application
+workflow_execution_activity.yaml	ctg_n50	1	application
+workflow_execution_activity.yaml	ctg_n90	1	application
+workflow_execution_activity.yaml	ctg_powsum	1	application
+workflow_execution_activity.yaml	default_prefix	1	metamodel
+workflow_execution_activity.yaml	default_range	1	metamodel
+workflow_execution_activity.yaml	description	53	metamodel
+workflow_execution_activity.yaml	enums	1	metamodel
+workflow_execution_activity.yaml	gap_pct	1	application
+workflow_execution_activity.yaml	gc_avg	1	application
+workflow_execution_activity.yaml	gc_ms_metabolomics	1	application
+workflow_execution_activity.yaml	gc_std	1	application
+workflow_execution_activity.yaml	gold_analysis_project_identifiers	1	application
+workflow_execution_activity.yaml	has_input	1	application
+workflow_execution_activity.yaml	has_metabolite_identifications	1	application
+workflow_execution_activity.yaml	has_output	1	application
+workflow_execution_activity.yaml	id	11	metamodel
+workflow_execution_activity.yaml	img_identifiers	3	application
+workflow_execution_activity.yaml	imports	1	metamodel
+workflow_execution_activity.yaml	in_silico_metagenome	1	application
+workflow_execution_activity.yaml	inlined_as_list	2	metamodel
+workflow_execution_activity.yaml	input_base_count	1	application
+workflow_execution_activity.yaml	input_contig_num	1	application
+workflow_execution_activity.yaml	input_read_bases	1	application
+workflow_execution_activity.yaml	input_read_count	1	application
+workflow_execution_activity.yaml	interpolated	23	metamodel
+workflow_execution_activity.yaml	is_a	41	metamodel
+workflow_execution_activity.yaml	lc_ms_lipidomics	1	application
+workflow_execution_activity.yaml	lc_ms_metabolomics	1	application
+workflow_execution_activity.yaml	license	1	metamodel
+workflow_execution_activity.yaml	linkml	1	application
+workflow_execution_activity.yaml	low_depth_contig_num	1	application
+workflow_execution_activity.yaml	mags_list	1	application
+workflow_execution_activity.yaml	matched_metagenome	1	application
+workflow_execution_activity.yaml	maximum_cardinality	3	metamodel
+workflow_execution_activity.yaml	metabolomics_analysis_category	1	application
+workflow_execution_activity.yaml	metagenome_assembly_parameter	1	application
+workflow_execution_activity.yaml	metaproteomics_analysis_category	1	application
+workflow_execution_activity.yaml	minimum_value	5	metamodel
+workflow_execution_activity.yaml	multivalued	2	metamodel
+workflow_execution_activity.yaml	name	1	metamodel
+workflow_execution_activity.yaml	nmdc	1	application
+workflow_execution_activity.yaml	num_aligned_reads	1	application
+workflow_execution_activity.yaml	num_input_reads	1	application
+workflow_execution_activity.yaml	output_base_count	1	application
+workflow_execution_activity.yaml	output_read_bases	1	application
+workflow_execution_activity.yaml	output_read_count	1	application
+workflow_execution_activity.yaml	permissible_values	2	metamodel
+workflow_execution_activity.yaml	prefixes	1	metamodel
+workflow_execution_activity.yaml	range	52	metamodel
+workflow_execution_activity.yaml	read_qc_analysis_statistic	1	application
+workflow_execution_activity.yaml	required	12	metamodel
+workflow_execution_activity.yaml	scaf_bp	1	application
+workflow_execution_activity.yaml	scaf_l50	1	application
+workflow_execution_activity.yaml	scaf_l90	1	application
+workflow_execution_activity.yaml	scaf_l_gt50k	1	application
+workflow_execution_activity.yaml	scaf_logsum	1	application
+workflow_execution_activity.yaml	scaf_max	1	application
+workflow_execution_activity.yaml	scaf_n50	1	application
+workflow_execution_activity.yaml	scaf_n90	1	application
+workflow_execution_activity.yaml	scaf_n_gt50k	1	application
+workflow_execution_activity.yaml	scaf_pct_gt50k	1	application
+workflow_execution_activity.yaml	scaf_powsum	1	application
+workflow_execution_activity.yaml	scaffolds	1	application
+workflow_execution_activity.yaml	slot_usage	10	metamodel
+workflow_execution_activity.yaml	slots	10	metamodel
+workflow_execution_activity.yaml	structured_pattern	23	metamodel
+workflow_execution_activity.yaml	syntax	23	metamodel
+workflow_execution_activity.yaml	title	4	metamodel
+workflow_execution_activity.yaml	too_short_contig_num	1	application
+workflow_execution_activity.yaml	unbinned_contig_num	1	application
+workflow_execution_activity.yaml	was_informed_by	10	application

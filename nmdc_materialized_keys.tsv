@@ -1,0 +1,2415 @@
+filename	key	count	classification
+nmdc_materialized_patterns.yaml		1	application
+nmdc_materialized_patterns.yaml	%	1	application
+nmdc_materialized_patterns.yaml	,restroom	1	application
+nmdc_materialized_patterns.yaml	1	1	application
+nmdc_materialized_patterns.yaml	1/d	1	application
+nmdc_materialized_patterns.yaml	16S_rRNA	1	application
+nmdc_materialized_patterns.yaml	18S_rRNA	1	application
+nmdc_materialized_patterns.yaml	1st floor	1	application
+nmdc_materialized_patterns.yaml	23S_rRNA	1	application
+nmdc_materialized_patterns.yaml	28S_rRNA	1	application
+nmdc_materialized_patterns.yaml	2nd floor	1	application
+nmdc_materialized_patterns.yaml	3D scans	1	application
+nmdc_materialized_patterns.yaml	A horizon	1	application
+nmdc_materialized_patterns.yaml	ANL	1	application
+nmdc_materialized_patterns.yaml	ATP	1	application
+nmdc_materialized_patterns.yaml	Acrisols	1	application
+nmdc_materialized_patterns.yaml	Analysis Tool Parameter File	1	application
+nmdc_materialized_patterns.yaml	AnalysisTypeEnum	1	application
+nmdc_materialized_patterns.yaml	Andosols	1	application
+nmdc_materialized_patterns.yaml	Androdioecious	1	application
+nmdc_materialized_patterns.yaml	Androecious	1	application
+nmdc_materialized_patterns.yaml	Androgynomonoecious	1	application
+nmdc_materialized_patterns.yaml	Androgynous	1	application
+nmdc_materialized_patterns.yaml	Andromonoecious	1	application
+nmdc_materialized_patterns.yaml	AnnotatingWorkflow	1	application
+nmdc_materialized_patterns.yaml	Annotation Amino Acid FASTA	1	application
+nmdc_materialized_patterns.yaml	Annotation Enzyme Commission	1	application
+nmdc_materialized_patterns.yaml	Annotation Info File	1	application
+nmdc_materialized_patterns.yaml	Annotation KEGG Orthology	1	application
+nmdc_materialized_patterns.yaml	Annotation Statistics	1	application
+nmdc_materialized_patterns.yaml	Annually	1	application
+nmdc_materialized_patterns.yaml	ApprovedHeld	1	application
+nmdc_materialized_patterns.yaml	Archean	2	application
+nmdc_materialized_patterns.yaml	Arenosols	1	application
+nmdc_materialized_patterns.yaml	Arg-C	1	application
+nmdc_materialized_patterns.yaml	Asp-N	1	application
+nmdc_materialized_patterns.yaml	Assembly AGP	1	application
+nmdc_materialized_patterns.yaml	Assembly Contigs	1	application
+nmdc_materialized_patterns.yaml	Assembly Coverage BAM	1	application
+nmdc_materialized_patterns.yaml	Assembly Coverage Stats	1	application
+nmdc_materialized_patterns.yaml	Assembly Info File	1	application
+nmdc_materialized_patterns.yaml	Assembly Scaffolds	1	application
+nmdc_materialized_patterns.yaml	AttributeValue	1	application
+nmdc_materialized_patterns.yaml	Azenta	1	application
+nmdc_materialized_patterns.yaml	B horizon	1	application
+nmdc_materialized_patterns.yaml	BAI File	1	application
+nmdc_materialized_patterns.yaml	BEH-HILIC	1	application
+nmdc_materialized_patterns.yaml	BFO	1	application
+nmdc_materialized_patterns.yaml	BRC	1	application
+nmdc_materialized_patterns.yaml	Basement	1	application
+nmdc_materialized_patterns.yaml	Battelle	1	application
+nmdc_materialized_patterns.yaml	BinQualityEnum	1	application
+nmdc_materialized_patterns.yaml	Biosample	1	application
+nmdc_materialized_patterns.yaml	BiosampleCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	Biosilicieous	1	application
+nmdc_materialized_patterns.yaml	Bisexual	1	application
+nmdc_materialized_patterns.yaml	Bitumen	1	application
+nmdc_materialized_patterns.yaml	Bq	1	application
+nmdc_materialized_patterns.yaml	C horizon	1	application
+nmdc_materialized_patterns.yaml	C1	1	application
+nmdc_materialized_patterns.yaml	C18	1	application
+nmdc_materialized_patterns.yaml	C2	1	application
+nmdc_materialized_patterns.yaml	C30	1	application
+nmdc_materialized_patterns.yaml	C4	1	application
+nmdc_materialized_patterns.yaml	C60	1	application
+nmdc_materialized_patterns.yaml	C8	1	application
+nmdc_materialized_patterns.yaml	CATH	1	application
+nmdc_materialized_patterns.yaml	CATH FunFams (Functional Families) Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	CHEBI	1	application
+nmdc_materialized_patterns.yaml	CHEMBL.COMPOUND	1	application
+nmdc_materialized_patterns.yaml	CHMO	1	application
+nmdc_materialized_patterns.yaml	CN	1	application
+nmdc_materialized_patterns.yaml	CNT	1	application
+nmdc_materialized_patterns.yaml	COG	1	application
+nmdc_materialized_patterns.yaml	CRT Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	CalibrationInformation	1	application
+nmdc_materialized_patterns.yaml	CalibrationStandardEnum	1	application
+nmdc_materialized_patterns.yaml	CalibrationTargetEnum	1	application
+nmdc_materialized_patterns.yaml	Cambisols	1	application
+nmdc_materialized_patterns.yaml	Cambrian	2	application
+nmdc_materialized_patterns.yaml	Carbonate	1	application
+nmdc_materialized_patterns.yaml	Carboniferous	2	application
+nmdc_materialized_patterns.yaml	Cel	1	application
+nmdc_materialized_patterns.yaml	Cenozoic	2	application
+nmdc_materialized_patterns.yaml	Centrifuge Krona Plot	1	application
+nmdc_materialized_patterns.yaml	Centrifuge Taxonomic Classification	1	application
+nmdc_materialized_patterns.yaml	Centrifuge output report file	1	application
+nmdc_materialized_patterns.yaml	Chalk	1	application
+nmdc_materialized_patterns.yaml	CheckM Statistics	1	application
+nmdc_materialized_patterns.yaml	ChemicalConversionCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	ChemicalConversionProcess	1	application
+nmdc_materialized_patterns.yaml	ChemicalEntity	1	application
+nmdc_materialized_patterns.yaml	ChemicalEntityEnum	1	application
+nmdc_materialized_patterns.yaml	Chernozems	1	application
+nmdc_materialized_patterns.yaml	Chert	1	application
+nmdc_materialized_patterns.yaml	ChromatographicCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	ChromatographicSeparationProcess	1	application
+nmdc_materialized_patterns.yaml	ChromatographyConfiguration	1	application
+nmdc_materialized_patterns.yaml	Ci	1	application
+nmdc_materialized_patterns.yaml	Clastic	1	application
+nmdc_materialized_patterns.yaml	Clusters of Orthologous Groups (COG) Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	Coal	2	application
+nmdc_materialized_patterns.yaml	Coalbed	1	application
+nmdc_materialized_patterns.yaml	Coalbed Methane	1	application
+nmdc_materialized_patterns.yaml	CollectingBiosamplesFromSite	1	application
+nmdc_materialized_patterns.yaml	Conceptualization	1	application
+nmdc_materialized_patterns.yaml	Configuration	1	application
+nmdc_materialized_patterns.yaml	Configuration toml	1	application
+nmdc_materialized_patterns.yaml	Conglomerate	1	application
+nmdc_materialized_patterns.yaml	ContainerCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	Contaminant	1	application
+nmdc_materialized_patterns.yaml	Contaminants Amino Acid FASTA	1	application
+nmdc_materialized_patterns.yaml	Contig Mapping File	1	application
+nmdc_materialized_patterns.yaml	Continental - Aeolian	1	application
+nmdc_materialized_patterns.yaml	Continental - Alluvial	1	application
+nmdc_materialized_patterns.yaml	Continental - Fluvial	1	application
+nmdc_materialized_patterns.yaml	Continental - Lacustrine	1	application
+nmdc_materialized_patterns.yaml	ControlledIdentifiedTermValue	1	application
+nmdc_materialized_patterns.yaml	ControlledTermValue	1	application
+nmdc_materialized_patterns.yaml	CreditAssociation	1	application
+nmdc_materialized_patterns.yaml	CreditEnum	1	application
+nmdc_materialized_patterns.yaml	Cretaceous	2	application
+nmdc_materialized_patterns.yaml	Crispr Terms	1	application
+nmdc_materialized_patterns.yaml	DF	1	application
+nmdc_materialized_patterns.yaml	DNA	2	application
+nmdc_materialized_patterns.yaml	DRUGBANK	1	application
+nmdc_materialized_patterns.yaml	Daily	1	application
+nmdc_materialized_patterns.yaml	Data curation	1	application
+nmdc_materialized_patterns.yaml	DataCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	DataEmitterProcess	1	application
+nmdc_materialized_patterns.yaml	DataGeneration	1	application
+nmdc_materialized_patterns.yaml	DataObject	1	application
+nmdc_materialized_patterns.yaml	Database	1	application
+nmdc_materialized_patterns.yaml	Denied	1	application
+nmdc_materialized_patterns.yaml	Devonian	2	application
+nmdc_materialized_patterns.yaml	Diatomite	1	application
+nmdc_materialized_patterns.yaml	Dichogamous	1	application
+nmdc_materialized_patterns.yaml	Diclinous	1	application
+nmdc_materialized_patterns.yaml	Dioecious	1	application
+nmdc_materialized_patterns.yaml	Diol	1	application
+nmdc_materialized_patterns.yaml	Direct Infusion FT ICR-MS Raw Data	1	application
+nmdc_materialized_patterns.yaml	Direct Infusion FT-ICR MS Analysis Results	1	application
+nmdc_materialized_patterns.yaml	Direct Infusion FT-ICR MS QC Plots	1	application
+nmdc_materialized_patterns.yaml	DissolvingProcess	1	application
+nmdc_materialized_patterns.yaml	Doi	1	application
+nmdc_materialized_patterns.yaml	DoiCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	DoiProviderEnum	1	application
+nmdc_materialized_patterns.yaml	Dolomite	1	application
+nmdc_materialized_patterns.yaml	E horizon	1	application
+nmdc_materialized_patterns.yaml	EC	1	application
+nmdc_materialized_patterns.yaml	EFO	1	application
+nmdc_materialized_patterns.yaml	EGGNOG	1	application
+nmdc_materialized_patterns.yaml	EMSL	1	application
+nmdc_materialized_patterns.yaml	EMSL-RZR	1	application
+nmdc_materialized_patterns.yaml	EMSL-Tahoma	1	application
+nmdc_materialized_patterns.yaml	ENVO	1	application
+nmdc_materialized_patterns.yaml	East side	1	application
+nmdc_materialized_patterns.yaml	EluentIntroductionCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	EnvironmentalMaterialTerm	1	application
+nmdc_materialized_patterns.yaml	Error Corrected Reads	1	application
+nmdc_materialized_patterns.yaml	EukEval	1	application
+nmdc_materialized_patterns.yaml	ExecutionResourceEnum	1	application
+nmdc_materialized_patterns.yaml	Extraction	2	application
+nmdc_materialized_patterns.yaml	ExtractionTargetEnum	1	application
+nmdc_materialized_patterns.yaml	FBcv	1	application
+nmdc_materialized_patterns.yaml	FICUS	1	application
+nmdc_materialized_patterns.yaml	FMA	1	application
+nmdc_materialized_patterns.yaml	FailureCategorization	1	application
+nmdc_materialized_patterns.yaml	FailureWhatEnum	1	application
+nmdc_materialized_patterns.yaml	FailureWhereEnum	1	application
+nmdc_materialized_patterns.yaml	Fall	1	application
+nmdc_materialized_patterns.yaml	Ferralsols	1	application
+nmdc_materialized_patterns.yaml	FieldResearchSite	1	application
+nmdc_materialized_patterns.yaml	FileTypeEnum	1	application
+nmdc_materialized_patterns.yaml	Filtered Sequencing Reads	1	application
+nmdc_materialized_patterns.yaml	FiltrationProcess	1	application
+nmdc_materialized_patterns.yaml	Fluvioldeltaic	1	application
+nmdc_materialized_patterns.yaml	Fluviomarine	1	application
+nmdc_materialized_patterns.yaml	Fluvisols	1	application
+nmdc_materialized_patterns.yaml	Formal Analysis	1	application
+nmdc_materialized_patterns.yaml	Friday	1	application
+nmdc_materialized_patterns.yaml	Functional Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	FunctionalAnnotation	1	application
+nmdc_materialized_patterns.yaml	FunctionalAnnotationAggMember	1	application
+nmdc_materialized_patterns.yaml	FunctionalAnnotationTerm	1	application
+nmdc_materialized_patterns.yaml	Funding acquisition	1	application
+nmdc_materialized_patterns.yaml	GBq	1	application
+nmdc_materialized_patterns.yaml	GC-MS Metabolomics Results	1	application
+nmdc_materialized_patterns.yaml	GC-MS Raw Data	1	application
+nmdc_materialized_patterns.yaml	GENEPIO	1	application
+nmdc_materialized_patterns.yaml	GHz	1	application
+nmdc_materialized_patterns.yaml	GO	1	application
+nmdc_materialized_patterns.yaml	GOTTCHA2 Classification Report	1	application
+nmdc_materialized_patterns.yaml	GOTTCHA2 Krona Plot	1	application
+nmdc_materialized_patterns.yaml	GOTTCHA2 Report Full	1	application
+nmdc_materialized_patterns.yaml	GTDBTK Archaeal Summary	1	application
+nmdc_materialized_patterns.yaml	GTDBTK Bacterial Summary	1	application
+nmdc_materialized_patterns.yaml	Gas	1	application
+nmdc_materialized_patterns.yaml	Gas Reservoir	1	application
+nmdc_materialized_patterns.yaml	Gas-Condensate	1	application
+nmdc_materialized_patterns.yaml	GeNomad Aggregated Classification	1	application
+nmdc_materialized_patterns.yaml	Gene Phylogeny tsv	1	application
+nmdc_materialized_patterns.yaml	GeneProduct	1	application
+nmdc_materialized_patterns.yaml	Genemark Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	GenomeFeature	1	application
+nmdc_materialized_patterns.yaml	GeolocationValue	1	application
+nmdc_materialized_patterns.yaml	Gleysols	1	application
+nmdc_materialized_patterns.yaml	Glu-C	1	application
+nmdc_materialized_patterns.yaml	Greyzems	1	application
+nmdc_materialized_patterns.yaml	Gy	1	application
+nmdc_materialized_patterns.yaml	Gynodioecious	1	application
+nmdc_materialized_patterns.yaml	Gynoecious	1	application
+nmdc_materialized_patterns.yaml	Gynomonoecious	1	application
+nmdc_materialized_patterns.yaml	Gypsisols	1	application
+nmdc_materialized_patterns.yaml	HEPA	1	application
+nmdc_materialized_patterns.yaml	HILIC	1	application
+nmdc_materialized_patterns.yaml	HLB	1	application
+nmdc_materialized_patterns.yaml	HMDB	1	application
+nmdc_materialized_patterns.yaml	HQ	1	application
+nmdc_materialized_patterns.yaml	Hermaphroditic	1	application
+nmdc_materialized_patterns.yaml	Histosols	1	application
+nmdc_materialized_patterns.yaml	Hz	1	application
+nmdc_materialized_patterns.yaml	ILLUMINA_MI_SEQ	1	application
+nmdc_materialized_patterns.yaml	ISA	1	application
+nmdc_materialized_patterns.yaml	Illumina HiSeq 2500-1TB	1	application
+nmdc_materialized_patterns.yaml	Illumina HiSeq 2500-Rapid	1	application
+nmdc_materialized_patterns.yaml	Illumina NextSeq-HO	1	application
+nmdc_materialized_patterns.yaml	Illumina NextSeq-MO	1	application
+nmdc_materialized_patterns.yaml	Illumina NovaSeq S2	1	application
+nmdc_materialized_patterns.yaml	Illumina NovaSeq S4	1	application
+nmdc_materialized_patterns.yaml	Illumina NovaSeq SP	1	application
+nmdc_materialized_patterns.yaml	ImageValue	1	application
+nmdc_materialized_patterns.yaml	Imperfect	1	application
+nmdc_materialized_patterns.yaml	InProgress	1	application
+nmdc_materialized_patterns.yaml	InProgressUpdate	1	application
+nmdc_materialized_patterns.yaml	InformationObject	1	application
+nmdc_materialized_patterns.yaml	Instrument	1	application
+nmdc_materialized_patterns.yaml	InstrumentModelEnum	1	application
+nmdc_materialized_patterns.yaml	InstrumentVendorEnum	1	application
+nmdc_materialized_patterns.yaml	Investigation	1	application
+nmdc_materialized_patterns.yaml	IonizationSourceEnum	1	application
+nmdc_materialized_patterns.yaml	J	1	application
+nmdc_materialized_patterns.yaml	J/K	1	application
+nmdc_materialized_patterns.yaml	JGI	1	application
+nmdc_materialized_patterns.yaml	Jurassic	2	application
+nmdc_materialized_patterns.yaml	KB	1	application
+nmdc_materialized_patterns.yaml	KEGG.COMPOUND	1	application
+nmdc_materialized_patterns.yaml	KEGG.MODULE	1	application
+nmdc_materialized_patterns.yaml	KEGG.ORTHOLOGY	1	application
+nmdc_materialized_patterns.yaml	KEGG.REACTION	1	application
+nmdc_materialized_patterns.yaml	KEGG_PATHWAY	1	application
+nmdc_materialized_patterns.yaml	KO_EC Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	Kastanozems	1	application
+nmdc_materialized_patterns.yaml	Kraken2 Classification Report	1	application
+nmdc_materialized_patterns.yaml	Kraken2 Krona Plot	1	application
+nmdc_materialized_patterns.yaml	Kraken2 Taxonomic Classification	1	application
+nmdc_materialized_patterns.yaml	L	1	application
+nmdc_materialized_patterns.yaml	L/h	1	application
+nmdc_materialized_patterns.yaml	L/s	1	application
+nmdc_materialized_patterns.yaml	LC FT-ICR MS Analysis Results	1	application
+nmdc_materialized_patterns.yaml	LC FT-ICR MS QC Plots	1	application
+nmdc_materialized_patterns.yaml	LC FT-ICR MS Raw Data	1	application
+nmdc_materialized_patterns.yaml	LC-DDA-MS/MS Raw Data	1	application
+nmdc_materialized_patterns.yaml	LC-MS Lipidomics Processed Data	1	application
+nmdc_materialized_patterns.yaml	LC-MS Lipidomics Results	1	application
+nmdc_materialized_patterns.yaml	LC-MS Metabolomics Processed Data	1	application
+nmdc_materialized_patterns.yaml	LC-MS Metabolomics Results	1	application
+nmdc_materialized_patterns.yaml	LQ	1	application
+nmdc_materialized_patterns.yaml	LTER	1	application
+nmdc_materialized_patterns.yaml	Lacustine	1	application
+nmdc_materialized_patterns.yaml	LibraryPreparation	2	application
+nmdc_materialized_patterns.yaml	LibraryTypeEnum	1	application
+nmdc_materialized_patterns.yaml	Limestone	1	application
+nmdc_materialized_patterns.yaml	Lithosols	1	application
+nmdc_materialized_patterns.yaml	Luvisols	1	application
+nmdc_materialized_patterns.yaml	Lys-C	1	application
+nmdc_materialized_patterns.yaml	Lys-N	1	application
+nmdc_materialized_patterns.yaml	M horizon	1	application
+nmdc_materialized_patterns.yaml	MASSIVE	1	application
+nmdc_materialized_patterns.yaml	MBq	1	application
+nmdc_materialized_patterns.yaml	MCO	1	application
+nmdc_materialized_patterns.yaml	MESH	1	application
+nmdc_materialized_patterns.yaml	MHz	1	application
+nmdc_materialized_patterns.yaml	MISO	1	application
+nmdc_materialized_patterns.yaml	MIXS	1	application
+nmdc_materialized_patterns.yaml	MJ	1	application
+nmdc_materialized_patterns.yaml	MPN	1	application
+nmdc_materialized_patterns.yaml	MQ	1	application
+nmdc_materialized_patterns.yaml	MS	1	application
+nmdc_materialized_patterns.yaml	MSL	1	application
+nmdc_materialized_patterns.yaml	MagBin	1	application
+nmdc_materialized_patterns.yaml	MagsAnalysis	2	application
+nmdc_materialized_patterns.yaml	Manifest	1	application
+nmdc_materialized_patterns.yaml	ManifestCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	Marine	1	application
+nmdc_materialized_patterns.yaml	Marine - Deep	1	application
+nmdc_materialized_patterns.yaml	Marine - Reef	1	application
+nmdc_materialized_patterns.yaml	Marine - Shallow	1	application
+nmdc_materialized_patterns.yaml	Mass Spectrometry Reference Spectral Library	1	application
+nmdc_materialized_patterns.yaml	MassAnalyzerEnum	1	application
+nmdc_materialized_patterns.yaml	MassSpectrometry	2	application
+nmdc_materialized_patterns.yaml	MassSpectrometryAcquisitionStrategyEnum	1	application
+nmdc_materialized_patterns.yaml	MassSpectrometryConfiguration	1	application
+nmdc_materialized_patterns.yaml	MassSpectrometryEnum	1	application
+nmdc_materialized_patterns.yaml	MassSpectrumCollectionModeEnum	1	application
+nmdc_materialized_patterns.yaml	MaterialEntity	1	application
+nmdc_materialized_patterns.yaml	MaterialProcessing	1	application
+nmdc_materialized_patterns.yaml	Mesozoic	2	application
+nmdc_materialized_patterns.yaml	MetaCyc	1	application
+nmdc_materialized_patterns.yaml	MetaNetX	1	application
+nmdc_materialized_patterns.yaml	MetaboliteIdentification	1	application
+nmdc_materialized_patterns.yaml	MetabolomicsAnalysis	2	application
+nmdc_materialized_patterns.yaml	MetabolomicsAnalysisCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	Metagenome Bins Barplot	1	application
+nmdc_materialized_patterns.yaml	Metagenome Bins Heatmap	1	application
+nmdc_materialized_patterns.yaml	Metagenome Bins Info File	1	application
+nmdc_materialized_patterns.yaml	Metagenome Bins Krona Plot	1	application
+nmdc_materialized_patterns.yaml	Metagenome HQMQ Bins Compression File	1	application
+nmdc_materialized_patterns.yaml	Metagenome LQ Bins Compression File	1	application
+nmdc_materialized_patterns.yaml	Metagenome Raw Read 1	1	application
+nmdc_materialized_patterns.yaml	Metagenome Raw Read 2	1	application
+nmdc_materialized_patterns.yaml	Metagenome Raw Reads	1	application
+nmdc_materialized_patterns.yaml	MetagenomeAnnotation	2	application
+nmdc_materialized_patterns.yaml	MetagenomeAssembly	2	application
+nmdc_materialized_patterns.yaml	Metaproteomics Workflow Statistics	1	application
+nmdc_materialized_patterns.yaml	MetaproteomicsAnalysis	2	application
+nmdc_materialized_patterns.yaml	MetaproteomicsAnalysisCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	Metatranscriptome Expression	1	application
+nmdc_materialized_patterns.yaml	Metatranscriptome Expression Info File	1	application
+nmdc_materialized_patterns.yaml	Metatranscriptome Expression Intergenic	1	application
+nmdc_materialized_patterns.yaml	Metatranscriptome Raw Read 1	1	application
+nmdc_materialized_patterns.yaml	Metatranscriptome Raw Read 2	1	application
+nmdc_materialized_patterns.yaml	Metatranscriptome Raw Reads	1	application
+nmdc_materialized_patterns.yaml	MetatranscriptomeAnnotation	2	application
+nmdc_materialized_patterns.yaml	MetatranscriptomeAssembly	2	application
+nmdc_materialized_patterns.yaml	MetatranscriptomeExpressionAnalysis	2	application
+nmdc_materialized_patterns.yaml	Methodology	1	application
+nmdc_materialized_patterns.yaml	Misc Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	MixingProcess	1	application
+nmdc_materialized_patterns.yaml	MobilePhaseSegment	1	application
+nmdc_materialized_patterns.yaml	Monday	1	application
+nmdc_materialized_patterns.yaml	Monoclinous	1	application
+nmdc_materialized_patterns.yaml	Monoecious	1	application
+nmdc_materialized_patterns.yaml	Monthly	1	application
+nmdc_materialized_patterns.yaml	N	1	application
+nmdc_materialized_patterns.yaml	N-methyl-N-trimethylsilyltrifluoroacetamide	1	application
+nmdc_materialized_patterns.yaml	NCBI	1	application
+nmdc_materialized_patterns.yaml	NCBITaxon	1	application
+nmdc_materialized_patterns.yaml	NCIT	1	application
+nmdc_materialized_patterns.yaml	NEON	1	application
+nmdc_materialized_patterns.yaml	NERSC-Cori	1	application
+nmdc_materialized_patterns.yaml	NERSC-Perlmutter	1	application
+nmdc_materialized_patterns.yaml	NH2	1	application
+nmdc_materialized_patterns.yaml	NMDC	1	application
+nmdc_materialized_patterns.yaml	NamedThing	1	application
+nmdc_materialized_patterns.yaml	Neogene	2	application
+nmdc_materialized_patterns.yaml	Nitosols	1	application
+nmdc_materialized_patterns.yaml	NomAnalysis	2	application
+nmdc_materialized_patterns.yaml	North side	1	application
+nmdc_materialized_patterns.yaml	NucleotideSequencing	2	application
+nmdc_materialized_patterns.yaml	NucleotideSequencingEnum	1	application
+nmdc_materialized_patterns.yaml	O horizon	1	application
+nmdc_materialized_patterns.yaml	OBI	1	application
+nmdc_materialized_patterns.yaml	OMIT	1	application
+nmdc_materialized_patterns.yaml	ORCID	1	application
+nmdc_materialized_patterns.yaml	Oil	1	application
+nmdc_materialized_patterns.yaml	Oil Reservoir	1	application
+nmdc_materialized_patterns.yaml	Oil Sand	1	application
+nmdc_materialized_patterns.yaml	OntologyClass	1	application
+nmdc_materialized_patterns.yaml	OntologyRelation	1	application
+nmdc_materialized_patterns.yaml	Orbitrap	1	application
+nmdc_materialized_patterns.yaml	Ordovician	2	application
+nmdc_materialized_patterns.yaml	OrthologyGroup	1	application
+nmdc_materialized_patterns.yaml	Other - Evaporite	1	application
+nmdc_materialized_patterns.yaml	Other - Glacial	1	application
+nmdc_materialized_patterns.yaml	Other - Volcanic	1	application
+nmdc_materialized_patterns.yaml	PANTHER.FAMILY	1	application
+nmdc_materialized_patterns.yaml	PATO	1	application
+nmdc_materialized_patterns.yaml	PFAM	1	application
+nmdc_materialized_patterns.yaml	PFAM.CLAN	1	application
+nmdc_materialized_patterns.yaml	PO	1	application
+nmdc_materialized_patterns.yaml	PR	1	application
+nmdc_materialized_patterns.yaml	PS-DVB	1	application
+nmdc_materialized_patterns.yaml	PUBCHEM.COMPOUND	1	application
+nmdc_materialized_patterns.yaml	PVC	1	application
+nmdc_materialized_patterns.yaml	Paleogene	2	application
+nmdc_materialized_patterns.yaml	Paleozoic	2	application
+nmdc_materialized_patterns.yaml	Pathway	1	application
+nmdc_materialized_patterns.yaml	PendingUserFacility	1	application
+nmdc_materialized_patterns.yaml	Peptide Report	1	application
+nmdc_materialized_patterns.yaml	Perfect	1	application
+nmdc_materialized_patterns.yaml	Permafrost	1	application
+nmdc_materialized_patterns.yaml	Permian	2	application
+nmdc_materialized_patterns.yaml	PersonValue	1	application
+nmdc_materialized_patterns.yaml	Pfam Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	Phaeozems	1	application
+nmdc_materialized_patterns.yaml	Phenyl	1	application
+nmdc_materialized_patterns.yaml	PlannedProcess	1	application
+nmdc_materialized_patterns.yaml	Planosols	1	application
+nmdc_materialized_patterns.yaml	Plasmid Summary	1	application
+nmdc_materialized_patterns.yaml	Podzols	1	application
+nmdc_materialized_patterns.yaml	Podzoluvisols	1	application
+nmdc_materialized_patterns.yaml	PolarityModeEnum	1	application
+nmdc_materialized_patterns.yaml	Polygamodioecious	1	application
+nmdc_materialized_patterns.yaml	Polygamomonoecious	1	application
+nmdc_materialized_patterns.yaml	Polygamous	1	application
+nmdc_materialized_patterns.yaml	Polysiloxane	1	application
+nmdc_materialized_patterns.yaml	Pooling	2	application
+nmdc_materialized_patterns.yaml	PortionOfSubstance	1	application
+nmdc_materialized_patterns.yaml	Precambrian	2	application
+nmdc_materialized_patterns.yaml	Principal Investigator	1	application
+nmdc_materialized_patterns.yaml	ProcessedSample	1	application
+nmdc_materialized_patterns.yaml	ProcessingInstitutionEnum	1	application
+nmdc_materialized_patterns.yaml	Prodigal Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	Product Names	1	application
+nmdc_materialized_patterns.yaml	Project administration	1	application
+nmdc_materialized_patterns.yaml	PropertyAssertion	1	application
+nmdc_materialized_patterns.yaml	Protandrous	1	application
+nmdc_materialized_patterns.yaml	Protein Report	1	application
+nmdc_materialized_patterns.yaml	Proterozoic	2	application
+nmdc_materialized_patterns.yaml	Protocol	1	application
+nmdc_materialized_patterns.yaml	ProtocolCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	Protogynous	1	application
+nmdc_materialized_patterns.yaml	QC Statistics	1	application
+nmdc_materialized_patterns.yaml	QC Statistics Extended	1	application
+nmdc_materialized_patterns.yaml	QC non-rRNA R1	1	application
+nmdc_materialized_patterns.yaml	QC non-rRNA R2	1	application
+nmdc_materialized_patterns.yaml	QuantityValue	1	application
+nmdc_materialized_patterns.yaml	Quarterly	1	application
+nmdc_materialized_patterns.yaml	R layer	1	application
+nmdc_materialized_patterns.yaml	RAD	1	application
+nmdc_materialized_patterns.yaml	RFAM Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	RHEA	1	application
+nmdc_materialized_patterns.yaml	RNA	2	application
+nmdc_materialized_patterns.yaml	RO	1	application
+nmdc_materialized_patterns.yaml	RT	1	application
+nmdc_materialized_patterns.yaml	Rankers	1	application
+nmdc_materialized_patterns.yaml	Read Based Analysis Info File	1	application
+nmdc_materialized_patterns.yaml	Read Count and RPKM	1	application
+nmdc_materialized_patterns.yaml	Read Filtering Info File	1	application
+nmdc_materialized_patterns.yaml	ReadBasedTaxonomyAnalysis	2	application
+nmdc_materialized_patterns.yaml	ReadQcAnalysis	2	application
+nmdc_materialized_patterns.yaml	Reference Calibration File	1	application
+nmdc_materialized_patterns.yaml	Regosols	1	application
+nmdc_materialized_patterns.yaml	Released	1	application
+nmdc_materialized_patterns.yaml	Rendzinas	1	application
+nmdc_materialized_patterns.yaml	ResolutionCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	Resources	1	application
+nmdc_materialized_patterns.yaml	ResubmittedPendingReview	1	application
+nmdc_materialized_patterns.yaml	RetroRules	1	application
+nmdc_materialized_patterns.yaml	SAX	1	application
+nmdc_materialized_patterns.yaml	SCX	1	application
+nmdc_materialized_patterns.yaml	SEED	1	application
+nmdc_materialized_patterns.yaml	SFA	1	application
+nmdc_materialized_patterns.yaml	SIO	1	application
+nmdc_materialized_patterns.yaml	SIP	1	application
+nmdc_materialized_patterns.yaml	SMART Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	SO	1	application
+nmdc_materialized_patterns.yaml	SUPERFam Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	SUPFAM	1	application
+nmdc_materialized_patterns.yaml	Sample	1	application
+nmdc_materialized_patterns.yaml	SamplePortionEnum	1	application
+nmdc_materialized_patterns.yaml	SampleStateEnum	1	application
+nmdc_materialized_patterns.yaml	SampleTypeEnum	1	application
+nmdc_materialized_patterns.yaml	Sandstone	1	application
+nmdc_materialized_patterns.yaml	Santa-Fe texture	2	application
+nmdc_materialized_patterns.yaml	Saturday	1	application
+nmdc_materialized_patterns.yaml	Scaffold Lineage tsv	1	application
+nmdc_materialized_patterns.yaml	SeparationMethodEnum	1	application
+nmdc_materialized_patterns.yaml	Shale	2	application
+nmdc_materialized_patterns.yaml	Silica	1	application
+nmdc_materialized_patterns.yaml	Siltstone	1	application
+nmdc_materialized_patterns.yaml	Silurian	2	application
+nmdc_materialized_patterns.yaml	Site	1	application
+nmdc_materialized_patterns.yaml	Software	1	application
+nmdc_materialized_patterns.yaml	Solonchaks	1	application
+nmdc_materialized_patterns.yaml	Solonetz	1	application
+nmdc_materialized_patterns.yaml	South side	1	application
+nmdc_materialized_patterns.yaml	Spring	1	application
+nmdc_materialized_patterns.yaml	StationaryPhaseEnum	1	application
+nmdc_materialized_patterns.yaml	StatusEnum	1	application
+nmdc_materialized_patterns.yaml	StorageProcess	1	application
+nmdc_materialized_patterns.yaml	StrandedOrientationEnum	1	application
+nmdc_materialized_patterns.yaml	Structural Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	Structural Annotation Stats Json	1	application
+nmdc_materialized_patterns.yaml	Study	1	application
+nmdc_materialized_patterns.yaml	StudyCategoryEnum	1	application
+nmdc_materialized_patterns.yaml	SubSamplingProcess	1	application
+nmdc_materialized_patterns.yaml	Subandroecious	1	application
+nmdc_materialized_patterns.yaml	Subdioecious	1	application
+nmdc_materialized_patterns.yaml	Subgynoecious	1	application
+nmdc_materialized_patterns.yaml	SubmissionStatusEnum	1	application
+nmdc_materialized_patterns.yaml	SubmittedPendingReview	1	application
+nmdc_materialized_patterns.yaml	Submitter	1	application
+nmdc_materialized_patterns.yaml	SubstanceRoleEnum	1	application
+nmdc_materialized_patterns.yaml	Summer	1	application
+nmdc_materialized_patterns.yaml	Sunday	1	application
+nmdc_materialized_patterns.yaml	Supervision	1	application
+nmdc_materialized_patterns.yaml	Synoecious	1	application
+nmdc_materialized_patterns.yaml	TAXRANK	1	application
+nmdc_materialized_patterns.yaml	TIGRFAM	1	application
+nmdc_materialized_patterns.yaml	TIGRFam Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	TMRNA Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	TRNA Annotation GFF	1	application
+nmdc_materialized_patterns.yaml	TargetGeneEnum	1	application
+nmdc_materialized_patterns.yaml	TextValue	1	application
+nmdc_materialized_patterns.yaml	Thursday	1	application
+nmdc_materialized_patterns.yaml	Tight Gas Reservoir	1	application
+nmdc_materialized_patterns.yaml	Tight Oil Reservoir	1	application
+nmdc_materialized_patterns.yaml	TimestampValue	1	application
+nmdc_materialized_patterns.yaml	Transitional - Beach	1	application
+nmdc_materialized_patterns.yaml	Transitional - Deltaic	1	application
+nmdc_materialized_patterns.yaml	Transitional - Lagoonal	1	application
+nmdc_materialized_patterns.yaml	Transitional - Lake	1	application
+nmdc_materialized_patterns.yaml	Transitional - Tidal	1	application
+nmdc_materialized_patterns.yaml	Triassic	2	application
+nmdc_materialized_patterns.yaml	Trimonoecious	1	application
+nmdc_materialized_patterns.yaml	Trioecious	1	application
+nmdc_materialized_patterns.yaml	Tuesday	1	application
+nmdc_materialized_patterns.yaml	Type I	1	application
+nmdc_materialized_patterns.yaml	Type II	1	application
+nmdc_materialized_patterns.yaml	Type III	1	application
+nmdc_materialized_patterns.yaml	Type IV	1	application
+nmdc_materialized_patterns.yaml	U	1	application
+nmdc_materialized_patterns.yaml	UBERON	1	application
+nmdc_materialized_patterns.yaml	UCD_Genome_Center	1	application
+nmdc_materialized_patterns.yaml	UCSD	1	application
+nmdc_materialized_patterns.yaml	UO	1	application
+nmdc_materialized_patterns.yaml	Unfiltered Metaproteomics Results	1	application
+nmdc_materialized_patterns.yaml	UniProtKB	1	application
+nmdc_materialized_patterns.yaml	Unisexual	1	application
+nmdc_materialized_patterns.yaml	UnitEnum	1	application
+nmdc_materialized_patterns.yaml	UpdatesRequired	1	application
+nmdc_materialized_patterns.yaml	V	1	application
+nmdc_materialized_patterns.yaml	Validation	1	application
+nmdc_materialized_patterns.yaml	Vertisols	1	application
+nmdc_materialized_patterns.yaml	Virus Summary	1	application
+nmdc_materialized_patterns.yaml	Visualization	1	application
+nmdc_materialized_patterns.yaml	Volcanic	1	application
+nmdc_materialized_patterns.yaml	W	1	application
+nmdc_materialized_patterns.yaml	W/m2	1	application
+nmdc_materialized_patterns.yaml	WAX	1	application
+nmdc_materialized_patterns.yaml	WCX	1	application
+nmdc_materialized_patterns.yaml	Wednesday	1	application
+nmdc_materialized_patterns.yaml	Weekly	1	application
+nmdc_materialized_patterns.yaml	West side	1	application
+nmdc_materialized_patterns.yaml	Winter	1	application
+nmdc_materialized_patterns.yaml	Workflow Operation Summary	1	application
+nmdc_materialized_patterns.yaml	WorkflowExecution	1	application
+nmdc_materialized_patterns.yaml	Writing original draft	1	application
+nmdc_materialized_patterns.yaml	Writing review and editing	1	application
+nmdc_materialized_patterns.yaml	Yermosols	1	application
+nmdc_materialized_patterns.yaml	YesNoEnum	1	application
+nmdc_materialized_patterns.yaml	ZIC-HILIC	1	application
+nmdc_materialized_patterns.yaml	ZIC-cHILIC	1	application
+nmdc_materialized_patterns.yaml	ZIC-pHILIC	1	application
+nmdc_materialized_patterns.yaml	[FNU]	1	application
+nmdc_materialized_patterns.yaml	[NTU]	1	application
+nmdc_materialized_patterns.yaml	[cft_i]	1	application
+nmdc_materialized_patterns.yaml	[g]	1	application
+nmdc_materialized_patterns.yaml	[in_i]	1	application
+nmdc_materialized_patterns.yaml	[kn_i]	1	application
+nmdc_materialized_patterns.yaml	[lb_av]	1	application
+nmdc_materialized_patterns.yaml	[pH]	1	application
+nmdc_materialized_patterns.yaml	[ppb]	1	application
+nmdc_materialized_patterns.yaml	[ppm]	1	application
+nmdc_materialized_patterns.yaml	[ppth]	1	application
+nmdc_materialized_patterns.yaml	[sft_i]	1	application
+nmdc_materialized_patterns.yaml	a	1	application
+nmdc_materialized_patterns.yaml	abs_air_humidity	1	application
+nmdc_materialized_patterns.yaml	abstract	29	metamodel
+nmdc_materialized_patterns.yaml	acetic_acid	1	application
+nmdc_materialized_patterns.yaml	acetonitrile	1	application
+nmdc_materialized_patterns.yaml	acid	1	application
+nmdc_materialized_patterns.yaml	acid_base	1	application
+nmdc_materialized_patterns.yaml	acoustical treatment	1	application
+nmdc_materialized_patterns.yaml	active surveillance in response to an outbreak	1	application
+nmdc_materialized_patterns.yaml	active surveillance not initiated by an outbreak	1	application
+nmdc_materialized_patterns.yaml	add_date	1	application
+nmdc_materialized_patterns.yaml	add_recov_method	1	application
+nmdc_materialized_patterns.yaml	addition	1	application
+nmdc_materialized_patterns.yaml	additional_info	1	application
+nmdc_materialized_patterns.yaml	address	1	application
+nmdc_materialized_patterns.yaml	adj_room	1	application
+nmdc_materialized_patterns.yaml	adobe	1	application
+nmdc_materialized_patterns.yaml	aero_struc	1	application
+nmdc_materialized_patterns.yaml	aerobic	1	application
+nmdc_materialized_patterns.yaml	agilent	1	application
+nmdc_materialized_patterns.yaml	agilent_7980A	1	application
+nmdc_materialized_patterns.yaml	agilent_8890A	1	application
+nmdc_materialized_patterns.yaml	agrochem_addition	1	application
+nmdc_materialized_patterns.yaml	air_PM_concen	1	application
+nmdc_materialized_patterns.yaml	air_temp	1	application
+nmdc_materialized_patterns.yaml	air_temp_regm	1	application
+nmdc_materialized_patterns.yaml	airport	1	application
+nmdc_materialized_patterns.yaml	al_sat	2	application
+nmdc_materialized_patterns.yaml	al_sat_meth	2	application
+nmdc_materialized_patterns.yaml	aliases	729	metamodel
+nmdc_materialized_patterns.yaml	alkalinity	1	application
+nmdc_materialized_patterns.yaml	alkalinity_method	1	application
+nmdc_materialized_patterns.yaml	alkanes	1	application
+nmdc_materialized_patterns.yaml	alkyl_diethers	1	application
+nmdc_materialized_patterns.yaml	all gender	1	application
+nmdc_materialized_patterns.yaml	alphaLP	1	application
+nmdc_materialized_patterns.yaml	alt	1	application
+nmdc_materialized_patterns.yaml	alt_descriptions	6	metamodel
+nmdc_materialized_patterns.yaml	alternative_descriptions	1	application
+nmdc_materialized_patterns.yaml	alternative_identifiers	3	application
+nmdc_materialized_patterns.yaml	alternative_names	2	application
+nmdc_materialized_patterns.yaml	alternative_titles	1	application
+nmdc_materialized_patterns.yaml	aluminum	1	application
+nmdc_materialized_patterns.yaml	ambidexterity	1	application
+nmdc_materialized_patterns.yaml	aminopept_act	1	application
+nmdc_materialized_patterns.yaml	amitriptyline	1	application
+nmdc_materialized_patterns.yaml	ammonium	1	application
+nmdc_materialized_patterns.yaml	ammonium_acetate	1	application
+nmdc_materialized_patterns.yaml	ammonium_bicarbonate	1	application
+nmdc_materialized_patterns.yaml	ammonium_nitrogen	1	application
+nmdc_materialized_patterns.yaml	amount_light	1	application
+nmdc_materialized_patterns.yaml	amplicon sequencing assay	1	application
+nmdc_materialized_patterns.yaml	amplicon_sequencing_assay	1	application
+nmdc_materialized_patterns.yaml	anaerobic	1	application
+nmdc_materialized_patterns.yaml	analysis_identifiers	1	application
+nmdc_materialized_patterns.yaml	analysis_type	1	application
+nmdc_materialized_patterns.yaml	analyte_category	3	application
+nmdc_materialized_patterns.yaml	ances_data	1	application
+nmdc_materialized_patterns.yaml	annotations	605	metamodel
+nmdc_materialized_patterns.yaml	annual_precpt	1	application
+nmdc_materialized_patterns.yaml	annual_temp	1	application
+nmdc_materialized_patterns.yaml	antibiotic_regm	1	application
+nmdc_materialized_patterns.yaml	antisense orientation	1	application
+nmdc_materialized_patterns.yaml	api	1	application
+nmdc_materialized_patterns.yaml	applied_roles	1	application
+nmdc_materialized_patterns.yaml	applies_to_person	1	application
+nmdc_materialized_patterns.yaml	aqueous_layer	1	application
+nmdc_materialized_patterns.yaml	arch_struc	1	application
+nmdc_materialized_patterns.yaml	arch_struc_enum	1	application
+nmdc_materialized_patterns.yaml	aromatics_pc	1	application
+nmdc_materialized_patterns.yaml	as built	2	application
+nmdc_materialized_patterns.yaml	asm_score	1	application
+nmdc_materialized_patterns.yaml	asphaltenes_pc	1	application
+nmdc_materialized_patterns.yaml	assembly_identifiers	1	application
+nmdc_materialized_patterns.yaml	assembly_size_too_small	1	application
+nmdc_materialized_patterns.yaml	associated_dois	1	application
+nmdc_materialized_patterns.yaml	associated_studies	3	application
+nmdc_materialized_patterns.yaml	atm	1	application
+nmdc_materialized_patterns.yaml	atmospheric_data	1	application
+nmdc_materialized_patterns.yaml	atmospheric_pressure_chemical_ionization	1	application
+nmdc_materialized_patterns.yaml	atmospheric_pressure_photo_ionization	1	application
+nmdc_materialized_patterns.yaml	attic	2	application
+nmdc_materialized_patterns.yaml	attributes	1	metamodel
+nmdc_materialized_patterns.yaml	auditorium	1	application
+nmdc_materialized_patterns.yaml	automated count	1	application
+nmdc_materialized_patterns.yaml	avg_dew_point	1	application
+nmdc_materialized_patterns.yaml	avg_occup	1	application
+nmdc_materialized_patterns.yaml	avg_temp	1	application
+nmdc_materialized_patterns.yaml	award_doi	1	application
+nmdc_materialized_patterns.yaml	bac_prod	1	application
+nmdc_materialized_patterns.yaml	bac_resp	1	application
+nmdc_materialized_patterns.yaml	backslope	1	application
+nmdc_materialized_patterns.yaml	bacteria_carb_prod	1	application
+nmdc_materialized_patterns.yaml	badlands	1	application
+nmdc_materialized_patterns.yaml	bahama shutters	1	application
+nmdc_materialized_patterns.yaml	balcony	1	application
+nmdc_materialized_patterns.yaml	bamboo	1	application
+nmdc_materialized_patterns.yaml	barometric_press	1	application
+nmdc_materialized_patterns.yaml	barrel-shaped	1	application
+nmdc_materialized_patterns.yaml	base	23	metamodel
+nmdc_materialized_patterns.yaml	basement	2	application
+nmdc_materialized_patterns.yaml	basin	1	application
+nmdc_materialized_patterns.yaml	bathroom	3	application
+nmdc_materialized_patterns.yaml	bathroom_count	1	application
+nmdc_materialized_patterns.yaml	battened	1	application
+nmdc_materialized_patterns.yaml	bedroom	1	application
+nmdc_materialized_patterns.yaml	bedroom_count	1	application
+nmdc_materialized_patterns.yaml	benzene	1	application
+nmdc_materialized_patterns.yaml	bettened and ledged	1	application
+nmdc_materialized_patterns.yaml	bid	2	application
+nmdc_materialized_patterns.yaml	bin_name	1	application
+nmdc_materialized_patterns.yaml	bin_quality	1	application
+nmdc_materialized_patterns.yaml	binned_contig_num	1	application
+nmdc_materialized_patterns.yaml	biochem_oxygen_dem	1	application
+nmdc_materialized_patterns.yaml	biocide	1	application
+nmdc_materialized_patterns.yaml	biocide_admin_method	1	application
+nmdc_materialized_patterns.yaml	biocides	1	application
+nmdc_materialized_patterns.yaml	biofilm	1	application
+nmdc_materialized_patterns.yaml	biogas_retention_time	1	application
+nmdc_materialized_patterns.yaml	biogas_temperature	1	application
+nmdc_materialized_patterns.yaml	biogenous	1	application
+nmdc_materialized_patterns.yaml	biol_stat	1	application
+nmdc_materialized_patterns.yaml	biol_stat_enum	1	application
+nmdc_materialized_patterns.yaml	biolink	1	application
+nmdc_materialized_patterns.yaml	biological contaminants	1	application
+nmdc_materialized_patterns.yaml	biomass	1	application
+nmdc_materialized_patterns.yaml	biomaterial_purity	1	application
+nmdc_materialized_patterns.yaml	bioproject	1	application
+nmdc_materialized_patterns.yaml	biosample	1	application
+nmdc_materialized_patterns.yaml	biosample_categories	1	application
+nmdc_materialized_patterns.yaml	biosample_identifiers	1	application
+nmdc_materialized_patterns.yaml	biosample_set	1	application
+nmdc_materialized_patterns.yaml	biotic_regm	1	application
+nmdc_materialized_patterns.yaml	biotic_relationship	1	application
+nmdc_materialized_patterns.yaml	biotic_relationship_enum	1	application
+nmdc_materialized_patterns.yaml	bishomohopanol	1	application
+nmdc_materialized_patterns.yaml	blinds	1	application
+nmdc_materialized_patterns.yaml	blood_press_diast	1	application
+nmdc_materialized_patterns.yaml	blood_press_syst	1	application
+nmdc_materialized_patterns.yaml	boat	1	application
+nmdc_materialized_patterns.yaml	boolean	1	metamodel
+nmdc_materialized_patterns.yaml	bottom	1	application
+nmdc_materialized_patterns.yaml	breeder's line	1	application
+nmdc_materialized_patterns.yaml	broad_mappings	10	application
+nmdc_materialized_patterns.yaml	bromide	1	application
+nmdc_materialized_patterns.yaml	bruker	1	application
+nmdc_materialized_patterns.yaml	buffer	1	application
+nmdc_materialized_patterns.yaml	build_docs	1	application
+nmdc_materialized_patterns.yaml	build_docs_enum	1	application
+nmdc_materialized_patterns.yaml	build_occup_type	1	application
+nmdc_materialized_patterns.yaml	build_occup_type_enum	1	application
+nmdc_materialized_patterns.yaml	building	1	application
+nmdc_materialized_patterns.yaml	building information model	1	application
+nmdc_materialized_patterns.yaml	building navigation map	1	application
+nmdc_materialized_patterns.yaml	building_setting	1	application
+nmdc_materialized_patterns.yaml	building_setting_enum	1	application
+nmdc_materialized_patterns.yaml	built_struc_age	1	application
+nmdc_materialized_patterns.yaml	built_struc_set	1	application
+nmdc_materialized_patterns.yaml	built_struc_type	1	application
+nmdc_materialized_patterns.yaml	bulging walls	1	application
+nmdc_materialized_patterns.yaml	bulk chemistry	1	application
+nmdc_materialized_patterns.yaml	bulk_elect_conductivity	1	application
+nmdc_materialized_patterns.yaml	bus	1	application
+nmdc_materialized_patterns.yaml	bytes	1	application
+nmdc_materialized_patterns.yaml	cP	1	application
+nmdc_materialized_patterns.yaml	cabinet	2	application
+nmdc_materialized_patterns.yaml	cafe	1	application
+nmdc_materialized_patterns.yaml	calcium	1	application
+nmdc_materialized_patterns.yaml	calibration_object	2	application
+nmdc_materialized_patterns.yaml	calibration_set	1	application
+nmdc_materialized_patterns.yaml	calibration_standard	2	application
+nmdc_materialized_patterns.yaml	calibration_target	3	application
+nmdc_materialized_patterns.yaml	car	1	application
+nmdc_materialized_patterns.yaml	carb_dioxide	1	application
+nmdc_materialized_patterns.yaml	carb_monoxide	1	application
+nmdc_materialized_patterns.yaml	carb_nitro_ratio	1	application
+nmdc_materialized_patterns.yaml	carpet	2	application
+nmdc_materialized_patterns.yaml	carriage	1	application
+nmdc_materialized_patterns.yaml	cas	1	application
+nmdc_materialized_patterns.yaml	cathedral	1	application
+nmdc_materialized_patterns.yaml	ceil_area	1	application
+nmdc_materialized_patterns.yaml	ceil_cond	1	application
+nmdc_materialized_patterns.yaml	ceil_cond_enum	1	application
+nmdc_materialized_patterns.yaml	ceil_finish_mat	1	application
+nmdc_materialized_patterns.yaml	ceil_finish_mat_enum	1	application
+nmdc_materialized_patterns.yaml	ceil_struc	1	application
+nmdc_materialized_patterns.yaml	ceil_texture	1	application
+nmdc_materialized_patterns.yaml	ceil_texture_enum	1	application
+nmdc_materialized_patterns.yaml	ceil_thermal_mass	1	application
+nmdc_materialized_patterns.yaml	ceil_type	1	application
+nmdc_materialized_patterns.yaml	ceil_type_enum	1	application
+nmdc_materialized_patterns.yaml	ceil_water_mold	1	application
+nmdc_materialized_patterns.yaml	ceiling	1	application
+nmdc_materialized_patterns.yaml	ceiling discoloration	1	application
+nmdc_materialized_patterns.yaml	cellular PVC	1	application
+nmdc_materialized_patterns.yaml	center	1	application
+nmdc_materialized_patterns.yaml	center of car	1	application
+nmdc_materialized_patterns.yaml	centroid	1	application
+nmdc_materialized_patterns.yaml	chair	1	application
+nmdc_materialized_patterns.yaml	chem_administration	1	application
+nmdc_materialized_patterns.yaml	chem_mutagen	1	application
+nmdc_materialized_patterns.yaml	chem_oxygen_dem	1	application
+nmdc_materialized_patterns.yaml	chem_treat_method	1	application
+nmdc_materialized_patterns.yaml	chem_treatment	1	application
+nmdc_materialized_patterns.yaml	chemical air filter	1	application
+nmdc_materialized_patterns.yaml	chemical_conversion_category	1	application
+nmdc_materialized_patterns.yaml	chemical_entity_set	1	application
+nmdc_materialized_patterns.yaml	chemical_formula	1	application
+nmdc_materialized_patterns.yaml	chimera_check	1	application
+nmdc_materialized_patterns.yaml	chisel	1	application
+nmdc_materialized_patterns.yaml	chloride	1	application
+nmdc_materialized_patterns.yaml	chloroform	1	application
+nmdc_materialized_patterns.yaml	chloroform_layer	1	application
+nmdc_materialized_patterns.yaml	chlorophyll	1	application
+nmdc_materialized_patterns.yaml	chromatographic_category	2	application
+nmdc_materialized_patterns.yaml	chymotrypsin	1	application
+nmdc_materialized_patterns.yaml	cinder blocks	1	application
+nmdc_materialized_patterns.yaml	cities	1	application
+nmdc_materialized_patterns.yaml	clad	1	application
+nmdc_materialized_patterns.yaml	class_uri	77	metamodel
+nmdc_materialized_patterns.yaml	classes	1	metamodel
+nmdc_materialized_patterns.yaml	clear finish	1	application
+nmdc_materialized_patterns.yaml	clear sky	1	application
+nmdc_materialized_patterns.yaml	climate_environment	2	application
+nmdc_materialized_patterns.yaml	clonal selection	1	application
+nmdc_materialized_patterns.yaml	close_mappings	11	application
+nmdc_materialized_patterns.yaml	closet	2	application
+nmdc_materialized_patterns.yaml	cloudy	1	application
+nmdc_materialized_patterns.yaml	cm	1	application
+nmdc_materialized_patterns.yaml	cm2	1	application
+nmdc_materialized_patterns.yaml	cm3/cm3	1	application
+nmdc_materialized_patterns.yaml	coach	1	application
+nmdc_materialized_patterns.yaml	coffered	1	application
+nmdc_materialized_patterns.yaml	collapsible	2	application
+nmdc_materialized_patterns.yaml	collected_from	2	application
+nmdc_materialized_patterns.yaml	collecting_biosamples_from_site_set	1	application
+nmdc_materialized_patterns.yaml	collection_date	1	application
+nmdc_materialized_patterns.yaml	collection_date_inc	1	application
+nmdc_materialized_patterns.yaml	collection_time	1	application
+nmdc_materialized_patterns.yaml	collection_time_inc	1	application
+nmdc_materialized_patterns.yaml	combustion	1	application
+nmdc_materialized_patterns.yaml	commensal	1	application
+nmdc_materialized_patterns.yaml	comments	128	metamodel
+nmdc_materialized_patterns.yaml	commercial	1	application
+nmdc_materialized_patterns.yaml	commissioning report	1	application
+nmdc_materialized_patterns.yaml	commonly of the building	1	application
+nmdc_materialized_patterns.yaml	community	1	application
+nmdc_materialized_patterns.yaml	complaint logs	1	application
+nmdc_materialized_patterns.yaml	completeness	1	application
+nmdc_materialized_patterns.yaml	completion_date	1	application
+nmdc_materialized_patterns.yaml	composite	1	application
+nmdc_materialized_patterns.yaml	compression_type	1	application
+nmdc_materialized_patterns.yaml	concave	1	application
+nmdc_materialized_patterns.yaml	concentration	1	application
+nmdc_materialized_patterns.yaml	concrete	3	application
+nmdc_materialized_patterns.yaml	condensation	1	application
+nmdc_materialized_patterns.yaml	conditionings	1	application
+nmdc_materialized_patterns.yaml	conduc	1	application
+nmdc_materialized_patterns.yaml	conference room	2	application
+nmdc_materialized_patterns.yaml	configuration_set	1	application
+nmdc_materialized_patterns.yaml	conforms_to	5	metamodel
+nmdc_materialized_patterns.yaml	conifers	1	application
+nmdc_materialized_patterns.yaml	consortium	1	application
+nmdc_materialized_patterns.yaml	construction	2	application
+nmdc_materialized_patterns.yaml	contained_in	1	application
+nmdc_materialized_patterns.yaml	container_size	1	application
+nmdc_materialized_patterns.yaml	contamination	1	application
+nmdc_materialized_patterns.yaml	contexts	13	application
+nmdc_materialized_patterns.yaml	contig_bp	1	application
+nmdc_materialized_patterns.yaml	contigs	1	application
+nmdc_materialized_patterns.yaml	contract administration	1	application
+nmdc_materialized_patterns.yaml	contributors	13	metamodel
+nmdc_materialized_patterns.yaml	cool_syst_id	1	application
+nmdc_materialized_patterns.yaml	core field	1	application
+nmdc_materialized_patterns.yaml	cork	1	application
+nmdc_materialized_patterns.yaml	corner room	1	application
+nmdc_materialized_patterns.yaml	corrugated steel	1	application
+nmdc_materialized_patterns.yaml	cosmogenous	1	application
+nmdc_materialized_patterns.yaml	cost estimate	1	application
+nmdc_materialized_patterns.yaml	count	2	application
+nmdc_materialized_patterns.yaml	counter top	1	application
+nmdc_materialized_patterns.yaml	cove	1	application
+nmdc_materialized_patterns.yaml	crawlspace	1	application
+nmdc_materialized_patterns.yaml	created_by	1	metamodel
+nmdc_materialized_patterns.yaml	crop trees	1	application
+nmdc_materialized_patterns.yaml	crop_rotation	1	application
+nmdc_materialized_patterns.yaml	crows feet	2	application
+nmdc_materialized_patterns.yaml	crows-foot stomp	2	application
+nmdc_materialized_patterns.yaml	ctg_l50	1	application
+nmdc_materialized_patterns.yaml	ctg_l90	1	application
+nmdc_materialized_patterns.yaml	ctg_logsum	1	application
+nmdc_materialized_patterns.yaml	ctg_max	1	application
+nmdc_materialized_patterns.yaml	ctg_n50	1	application
+nmdc_materialized_patterns.yaml	ctg_n90	1	application
+nmdc_materialized_patterns.yaml	ctg_powsum	1	application
+nmdc_materialized_patterns.yaml	cult_root_med	1	application
+nmdc_materialized_patterns.yaml	cur_land_use	1	application
+nmdc_materialized_patterns.yaml	cur_land_use_enum	1	application
+nmdc_materialized_patterns.yaml	cur_vegetation	2	application
+nmdc_materialized_patterns.yaml	cur_vegetation_meth	2	application
+nmdc_materialized_patterns.yaml	curie	1	metamodel
+nmdc_materialized_patterns.yaml	curtains	1	application
+nmdc_materialized_patterns.yaml	cutting disc	1	application
+nmdc_materialized_patterns.yaml	d	1	application
+nmdc_materialized_patterns.yaml	damaged	7	application
+nmdc_materialized_patterns.yaml	data center	1	application
+nmdc_materialized_patterns.yaml	data_category	2	application
+nmdc_materialized_patterns.yaml	data_dependent_acquisition	1	application
+nmdc_materialized_patterns.yaml	data_generation_set	1	application
+nmdc_materialized_patterns.yaml	data_independent_acquisition	1	application
+nmdc_materialized_patterns.yaml	data_management_plan_doi	1	application
+nmdc_materialized_patterns.yaml	data_object_id	1	application
+nmdc_materialized_patterns.yaml	data_object_set	1	application
+nmdc_materialized_patterns.yaml	data_object_type	3	application
+nmdc_materialized_patterns.yaml	dataset_doi	1	application
+nmdc_materialized_patterns.yaml	date	1	metamodel
+nmdc_materialized_patterns.yaml	date_created	1	application
+nmdc_materialized_patterns.yaml	date_last_rain	1	application
+nmdc_materialized_patterns.yaml	date_or_datetime	1	metamodel
+nmdc_materialized_patterns.yaml	datetime	1	metamodel
+nmdc_materialized_patterns.yaml	dcterms	1	application
+nmdc_materialized_patterns.yaml	decimal	1	metamodel
+nmdc_materialized_patterns.yaml	decimal_degree	1	application
+nmdc_materialized_patterns.yaml	decomposition	1	application
+nmdc_materialized_patterns.yaml	default_prefix	1	metamodel
+nmdc_materialized_patterns.yaml	default_range	1	metamodel
+nmdc_materialized_patterns.yaml	definition	1	metamodel
+nmdc_materialized_patterns.yaml	deg	1	application
+nmdc_materialized_patterns.yaml	density	1	application
+nmdc_materialized_patterns.yaml	depos_env	1	application
+nmdc_materialized_patterns.yaml	depos_env_enum	1	application
+nmdc_materialized_patterns.yaml	deprecated	7	metamodel
+nmdc_materialized_patterns.yaml	depth	1	application
+nmdc_materialized_patterns.yaml	derivatization	1	application
+nmdc_materialized_patterns.yaml	derivatizing_agent	1	application
+nmdc_materialized_patterns.yaml	description	1309	metamodel
+nmdc_materialized_patterns.yaml	design	2	application
+nmdc_materialized_patterns.yaml	designates_type	1	metamodel
+nmdc_materialized_patterns.yaml	desk lamp	1	application
+nmdc_materialized_patterns.yaml	desks	1	application
+nmdc_materialized_patterns.yaml	dew_point	1	application
+nmdc_materialized_patterns.yaml	diagram	1	application
+nmdc_materialized_patterns.yaml	diether_lipids	1	application
+nmdc_materialized_patterns.yaml	direct_infusion_autosampler	1	application
+nmdc_materialized_patterns.yaml	direct_infusion_syringe	1	application
+nmdc_materialized_patterns.yaml	disc plough	1	application
+nmdc_materialized_patterns.yaml	display_order	1	application
+nmdc_materialized_patterns.yaml	diss_carb_dioxide	1	application
+nmdc_materialized_patterns.yaml	diss_hydrogen	1	application
+nmdc_materialized_patterns.yaml	diss_inorg_carb	1	application
+nmdc_materialized_patterns.yaml	diss_inorg_nitro	1	application
+nmdc_materialized_patterns.yaml	diss_inorg_phosp	1	application
+nmdc_materialized_patterns.yaml	diss_iron	1	application
+nmdc_materialized_patterns.yaml	diss_org_carb	1	application
+nmdc_materialized_patterns.yaml	diss_org_nitro	1	application
+nmdc_materialized_patterns.yaml	diss_oxygen	1	application
+nmdc_materialized_patterns.yaml	diss_oxygen_fluid	1	application
+nmdc_materialized_patterns.yaml	dissemination	1	application
+nmdc_materialized_patterns.yaml	dna_absorb1	1	application
+nmdc_materialized_patterns.yaml	dna_absorb2	1	application
+nmdc_materialized_patterns.yaml	dna_collect_site	1	application
+nmdc_materialized_patterns.yaml	dna_concentration	1	application
+nmdc_materialized_patterns.yaml	dna_extraction	1	application
+nmdc_materialized_patterns.yaml	dna_isolate_meth	1	application
+nmdc_materialized_patterns.yaml	dna_organisms	1	application
+nmdc_materialized_patterns.yaml	doi	1	application
+nmdc_materialized_patterns.yaml	doi_category	3	application
+nmdc_materialized_patterns.yaml	doi_provider	3	application
+nmdc_materialized_patterns.yaml	doi_value	1	application
+nmdc_materialized_patterns.yaml	door	1	application
+nmdc_materialized_patterns.yaml	door_comp_type	1	application
+nmdc_materialized_patterns.yaml	door_comp_type_enum	1	application
+nmdc_materialized_patterns.yaml	door_cond	1	application
+nmdc_materialized_patterns.yaml	door_cond_enum	1	application
+nmdc_materialized_patterns.yaml	door_direct	1	application
+nmdc_materialized_patterns.yaml	door_direct_enum	1	application
+nmdc_materialized_patterns.yaml	door_loc	1	application
+nmdc_materialized_patterns.yaml	door_loc_enum	1	application
+nmdc_materialized_patterns.yaml	door_mat	1	application
+nmdc_materialized_patterns.yaml	door_mat_enum	1	application
+nmdc_materialized_patterns.yaml	door_move	1	application
+nmdc_materialized_patterns.yaml	door_move_enum	1	application
+nmdc_materialized_patterns.yaml	door_size	1	application
+nmdc_materialized_patterns.yaml	door_type	1	application
+nmdc_materialized_patterns.yaml	door_type_enum	1	application
+nmdc_materialized_patterns.yaml	door_type_metal	1	application
+nmdc_materialized_patterns.yaml	door_type_metal_enum	1	application
+nmdc_materialized_patterns.yaml	door_type_wood	1	application
+nmdc_materialized_patterns.yaml	door_type_wood_enum	1	application
+nmdc_materialized_patterns.yaml	door_water_mold	1	application
+nmdc_materialized_patterns.yaml	double	1	metamodel
+nmdc_materialized_patterns.yaml	double skip	2	application
+nmdc_materialized_patterns.yaml	down_par	1	application
+nmdc_materialized_patterns.yaml	downtown	1	application
+nmdc_materialized_patterns.yaml	drainage_class	1	application
+nmdc_materialized_patterns.yaml	drainage_class_enum	1	application
+nmdc_materialized_patterns.yaml	drawings	1	application
+nmdc_materialized_patterns.yaml	drawings_enum	1	application
+nmdc_materialized_patterns.yaml	drill	1	application
+nmdc_materialized_patterns.yaml	drilling rig	1	application
+nmdc_materialized_patterns.yaml	dropped	1	application
+nmdc_materialized_patterns.yaml	drywall	1	application
+nmdc_materialized_patterns.yaml	duration	1	application
+nmdc_materialized_patterns.yaml	dust	1	application
+nmdc_materialized_patterns.yaml	east	6	application
+nmdc_materialized_patterns.yaml	east corner	1	application
+nmdc_materialized_patterns.yaml	ebb tide	1	application
+nmdc_materialized_patterns.yaml	ecosystem	1	application
+nmdc_materialized_patterns.yaml	ecosystem_category	1	application
+nmdc_materialized_patterns.yaml	ecosystem_path_id	1	application
+nmdc_materialized_patterns.yaml	ecosystem_subtype	1	application
+nmdc_materialized_patterns.yaml	ecosystem_type	1	application
+nmdc_materialized_patterns.yaml	edam.data	1	application
+nmdc_materialized_patterns.yaml	edam.format	1	application
+nmdc_materialized_patterns.yaml	edge of car	1	application
+nmdc_materialized_patterns.yaml	edi	1	application
+nmdc_materialized_patterns.yaml	efficiency_percent	1	application
+nmdc_materialized_patterns.yaml	electric light	1	application
+nmdc_materialized_patterns.yaml	electron_ionization	1	application
+nmdc_materialized_patterns.yaml	electrospray_ionization	1	application
+nmdc_materialized_patterns.yaml	electrostatic	1	application
+nmdc_materialized_patterns.yaml	elev	2	application
+nmdc_materialized_patterns.yaml	elevator	5	application
+nmdc_materialized_patterns.yaml	eluent_introduction_category	5	application
+nmdc_materialized_patterns.yaml	email	2	application
+nmdc_materialized_patterns.yaml	embargoed	1	application
+nmdc_materialized_patterns.yaml	embl.ena	4	application
+nmdc_materialized_patterns.yaml	emit_prefixes	1	metamodel
+nmdc_materialized_patterns.yaml	emsl	2	application
+nmdc_materialized_patterns.yaml	emsl.project	1	application
+nmdc_materialized_patterns.yaml	emsl_biosample_identifiers	1	application
+nmdc_materialized_patterns.yaml	emsl_identifiers	1	application
+nmdc_materialized_patterns.yaml	emsl_project_identifiers	1	application
+nmdc_materialized_patterns.yaml	emsl_store_temp	1	application
+nmdc_materialized_patterns.yaml	emsl_uuid_like	1	application
+nmdc_materialized_patterns.yaml	emulsions	1	application
+nmdc_materialized_patterns.yaml	encodes	1	application
+nmdc_materialized_patterns.yaml	end	3	application
+nmdc_materialized_patterns.yaml	end_date	1	application
+nmdc_materialized_patterns.yaml	ended_at_time	1	application
+nmdc_materialized_patterns.yaml	engineered plastic	1	application
+nmdc_materialized_patterns.yaml	enums	1	metamodel
+nmdc_materialized_patterns.yaml	env_broad_scale	2	application
+nmdc_materialized_patterns.yaml	env_local_scale	2	application
+nmdc_materialized_patterns.yaml	env_medium	2	application
+nmdc_materialized_patterns.yaml	env_package	1	application
+nmdc_materialized_patterns.yaml	environment field	1	application
+nmdc_materialized_patterns.yaml	equals_string	7	metamodel
+nmdc_materialized_patterns.yaml	equipment	1	application
+nmdc_materialized_patterns.yaml	erect	1	application
+nmdc_materialized_patterns.yaml	erg/cm2/s	1	application
+nmdc_materialized_patterns.yaml	escalator	2	application
+nmdc_materialized_patterns.yaml	ess_dive	1	application
+nmdc_materialized_patterns.yaml	estimate	1	application
+nmdc_materialized_patterns.yaml	ethanol	1	application
+nmdc_materialized_patterns.yaml	ethylbenzene	1	application
+nmdc_materialized_patterns.yaml	etl_software_version	1	application
+nmdc_materialized_patterns.yaml	eukaryotic_evaluation	1	application
+nmdc_materialized_patterns.yaml	exact_mappings	55	application
+nmdc_materialized_patterns.yaml	examining room	2	application
+nmdc_materialized_patterns.yaml	examples	604	metamodel
+nmdc_materialized_patterns.yaml	excessively drained	1	application
+nmdc_materialized_patterns.yaml	execution_resource	1	application
+nmdc_materialized_patterns.yaml	exp_duct	1	application
+nmdc_materialized_patterns.yaml	exp_pipe	1	application
+nmdc_materialized_patterns.yaml	expected_value	500	application
+nmdc_materialized_patterns.yaml	experimental_factor	1	application
+nmdc_materialized_patterns.yaml	experimental_factor_other	1	application
+nmdc_materialized_patterns.yaml	exploris_21T	1	application
+nmdc_materialized_patterns.yaml	exploris_240	1	application
+nmdc_materialized_patterns.yaml	exploris_480	1	application
+nmdc_materialized_patterns.yaml	ext_door	1	application
+nmdc_materialized_patterns.yaml	ext_wall_orient	1	application
+nmdc_materialized_patterns.yaml	ext_wall_orient_enum	1	application
+nmdc_materialized_patterns.yaml	ext_window_orient	1	application
+nmdc_materialized_patterns.yaml	ext_window_orient_enum	1	application
+nmdc_materialized_patterns.yaml	exterior roll blind	1	application
+nmdc_materialized_patterns.yaml	exterior wall	1	application
+nmdc_materialized_patterns.yaml	external_database_identifiers	1	application
+nmdc_materialized_patterns.yaml	external_identifier	1	application
+nmdc_materialized_patterns.yaml	extraction_targets	1	application
+nmdc_materialized_patterns.yaml	extreme_event	2	application
+nmdc_materialized_patterns.yaml	exurban	1	application
+nmdc_materialized_patterns.yaml	fabric	1	application
+nmdc_materialized_patterns.yaml	fail	1	application
+nmdc_materialized_patterns.yaml	falcon_tube	1	application
+nmdc_materialized_patterns.yaml	fames	1	application
+nmdc_materialized_patterns.yaml	fao_class	1	application
+nmdc_materialized_patterns.yaml	fao_class_enum	1	application
+nmdc_materialized_patterns.yaml	farm sample	1	application
+nmdc_materialized_patterns.yaml	farmstead	1	application
+nmdc_materialized_patterns.yaml	feature_category	1	application
+nmdc_materialized_patterns.yaml	feature_type	1	application
+nmdc_materialized_patterns.yaml	female	2	application
+nmdc_materialized_patterns.yaml	fertilizer_regm	1	application
+nmdc_materialized_patterns.yaml	fiberboard	1	application
+nmdc_materialized_patterns.yaml	fiberglass	3	application
+nmdc_materialized_patterns.yaml	field	1	metamodel
+nmdc_materialized_patterns.yaml	field_research_site_set	1	application
+nmdc_materialized_patterns.yaml	figshare	1	application
+nmdc_materialized_patterns.yaml	file_name_pattern	57	application
+nmdc_materialized_patterns.yaml	file_size_bytes	1	application
+nmdc_materialized_patterns.yaml	filter_clean_up	1	application
+nmdc_materialized_patterns.yaml	filter_material	1	application
+nmdc_materialized_patterns.yaml	filter_method	1	application
+nmdc_materialized_patterns.yaml	filter_pore_size	1	application
+nmdc_materialized_patterns.yaml	filter_type	1	application
+nmdc_materialized_patterns.yaml	filter_type_enum	1	application
+nmdc_materialized_patterns.yaml	filtration_category	1	application
+nmdc_materialized_patterns.yaml	final_concentration	1	application
+nmdc_materialized_patterns.yaml	fire	2	application
+nmdc_materialized_patterns.yaml	fire resistive	1	application
+nmdc_materialized_patterns.yaml	fireplace_type	1	application
+nmdc_materialized_patterns.yaml	fixed window	1	application
+nmdc_materialized_patterns.yaml	float	1	metamodel
+nmdc_materialized_patterns.yaml	floating floor	1	application
+nmdc_materialized_patterns.yaml	flood tide	1	application
+nmdc_materialized_patterns.yaml	flooding	2	application
+nmdc_materialized_patterns.yaml	floor discoloration	1	application
+nmdc_materialized_patterns.yaml	floor_age	1	application
+nmdc_materialized_patterns.yaml	floor_area	1	application
+nmdc_materialized_patterns.yaml	floor_cond	1	application
+nmdc_materialized_patterns.yaml	floor_cond_enum	1	application
+nmdc_materialized_patterns.yaml	floor_count	1	application
+nmdc_materialized_patterns.yaml	floor_finish_mat	1	application
+nmdc_materialized_patterns.yaml	floor_finish_mat_enum	1	application
+nmdc_materialized_patterns.yaml	floor_struc	1	application
+nmdc_materialized_patterns.yaml	floor_struc_enum	1	application
+nmdc_materialized_patterns.yaml	floor_thermal_mass	1	application
+nmdc_materialized_patterns.yaml	floor_water_mold	1	application
+nmdc_materialized_patterns.yaml	floor_water_mold_enum	1	application
+nmdc_materialized_patterns.yaml	flourescent lights	1	application
+nmdc_materialized_patterns.yaml	fluor	1	application
+nmdc_materialized_patterns.yaml	flush	1	application
+nmdc_materialized_patterns.yaml	foggy	1	application
+nmdc_materialized_patterns.yaml	folding	1	application
+nmdc_materialized_patterns.yaml	footslope	1	application
+nmdc_materialized_patterns.yaml	forced air system	1	application
+nmdc_materialized_patterns.yaml	forest hills	1	application
+nmdc_materialized_patterns.yaml	formic_acid	1	application
+nmdc_materialized_patterns.yaml	fountain	1	application
+nmdc_materialized_patterns.yaml	foyer	1	application
+nmdc_materialized_patterns.yaml	fractions	1	application
+nmdc_materialized_patterns.yaml	frame construction	1	application
+nmdc_materialized_patterns.yaml	framed and paneled	1	application
+nmdc_materialized_patterns.yaml	free living	1	application
+nmdc_materialized_patterns.yaml	freq_clean	1	application
+nmdc_materialized_patterns.yaml	freq_clean_enum	1	application
+nmdc_materialized_patterns.yaml	freq_cook	1	application
+nmdc_materialized_patterns.yaml	from_schema	1098	metamodel
+nmdc_materialized_patterns.yaml	full_profile	1	application
+nmdc_materialized_patterns.yaml	full_scan_only	1	application
+nmdc_materialized_patterns.yaml	functional_annotation_agg	1	application
+nmdc_materialized_patterns.yaml	functional_annotation_set	1	application
+nmdc_materialized_patterns.yaml	funding_sources	1	application
+nmdc_materialized_patterns.yaml	fungicide_regm	1	application
+nmdc_materialized_patterns.yaml	furniture	1	application
+nmdc_materialized_patterns.yaml	furniture_enum	1	application
+nmdc_materialized_patterns.yaml	g	1	application
+nmdc_materialized_patterns.yaml	g/L	1	application
+nmdc_materialized_patterns.yaml	g/cm3	1	application
+nmdc_materialized_patterns.yaml	g/g	1	application
+nmdc_materialized_patterns.yaml	g/kg	1	application
+nmdc_materialized_patterns.yaml	g/m2	1	application
+nmdc_materialized_patterns.yaml	g/m2/d	1	application
+nmdc_materialized_patterns.yaml	g/m3	1	application
+nmdc_materialized_patterns.yaml	gambrel awning	1	application
+nmdc_materialized_patterns.yaml	gap_pct	1	application
+nmdc_materialized_patterns.yaml	gas	1	application
+nmdc_materialized_patterns.yaml	gas-phase or ultraviolet air treatments	1	application
+nmdc_materialized_patterns.yaml	gas_chromatography	2	application
+nmdc_materialized_patterns.yaml	gaseous_environment	2	application
+nmdc_materialized_patterns.yaml	gaseous_substances	1	application
+nmdc_materialized_patterns.yaml	gc_avg	1	application
+nmdc_materialized_patterns.yaml	gc_ms_metabolomics	1	application
+nmdc_materialized_patterns.yaml	gc_std	1	application
+nmdc_materialized_patterns.yaml	gender neurtral	1	application
+nmdc_materialized_patterns.yaml	gender_restroom	1	application
+nmdc_materialized_patterns.yaml	gender_restroom_enum	1	application
+nmdc_materialized_patterns.yaml	gene_count	1	application
+nmdc_materialized_patterns.yaml	gene_function_id	2	application
+nmdc_materialized_patterns.yaml	generates_calibration	2	application
+nmdc_materialized_patterns.yaml	generic	1	application
+nmdc_materialized_patterns.yaml	genetic_mod	1	application
+nmdc_materialized_patterns.yaml	genome_feature_set	1	application
+nmdc_materialized_patterns.yaml	geo_loc_name	1	application
+nmdc_materialized_patterns.yaml	gff_coordinate	1	application
+nmdc_materialized_patterns.yaml	gilson	1	application
+nmdc_materialized_patterns.yaml	git_url	2	application
+nmdc_materialized_patterns.yaml	glashed or sash	1	application
+nmdc_materialized_patterns.yaml	glass	1	application
+nmdc_materialized_patterns.yaml	glass floor	1	application
+nmdc_materialized_patterns.yaml	glucose	1	application
+nmdc_materialized_patterns.yaml	glucosidase_act	1	application
+nmdc_materialized_patterns.yaml	gnps.task	1	application
+nmdc_materialized_patterns.yaml	gnps_identifiers	1	application
+nmdc_materialized_patterns.yaml	gnps_task_identifiers	1	application
+nmdc_materialized_patterns.yaml	gold	1	application
+nmdc_materialized_patterns.yaml	gold_analysis_project_identifiers	3	application
+nmdc_materialized_patterns.yaml	gold_biosample_identifiers	2	application
+nmdc_materialized_patterns.yaml	gold_identifiers	1	application
+nmdc_materialized_patterns.yaml	gold_path_field	1	application
+nmdc_materialized_patterns.yaml	gold_sequencing_project_identifiers	1	application
+nmdc_materialized_patterns.yaml	gold_study_identifiers	1	application
+nmdc_materialized_patterns.yaml	gravel	1	application
+nmdc_materialized_patterns.yaml	gravidity	1	application
+nmdc_materialized_patterns.yaml	gravity	1	application
+nmdc_materialized_patterns.yaml	green	1	application
+nmdc_materialized_patterns.yaml	gridion	1	application
+nmdc_materialized_patterns.yaml	growth and reproduction	1	application
+nmdc_materialized_patterns.yaml	growth_facil	1	application
+nmdc_materialized_patterns.yaml	growth_habit	1	application
+nmdc_materialized_patterns.yaml	growth_habit_enum	1	application
+nmdc_materialized_patterns.yaml	growth_hormone_regm	1	application
+nmdc_materialized_patterns.yaml	gsc	1	application
+nmdc_materialized_patterns.yaml	gtdbtk_class	1	application
+nmdc_materialized_patterns.yaml	gtdbtk_domain	1	application
+nmdc_materialized_patterns.yaml	gtdbtk_family	1	application
+nmdc_materialized_patterns.yaml	gtdbtk_genus	1	application
+nmdc_materialized_patterns.yaml	gtdbtk_order	1	application
+nmdc_materialized_patterns.yaml	gtdbtk_phylum	1	application
+nmdc_materialized_patterns.yaml	gtdbtk_species	1	application
+nmdc_materialized_patterns.yaml	gtpo	1	application
+nmdc_materialized_patterns.yaml	gymnasium	1	application
+nmdc_materialized_patterns.yaml	gypsum board	1	application
+nmdc_materialized_patterns.yaml	gypsum plaster	1	application
+nmdc_materialized_patterns.yaml	h	1	application
+nmdc_materialized_patterns.yaml	habitat	1	application
+nmdc_materialized_patterns.yaml	hail	1	application
+nmdc_materialized_patterns.yaml	hall_count	1	application
+nmdc_materialized_patterns.yaml	hallway	3	application
+nmdc_materialized_patterns.yaml	handidness	1	application
+nmdc_materialized_patterns.yaml	handidness_enum	1	application
+nmdc_materialized_patterns.yaml	hardwoods	1	application
+nmdc_materialized_patterns.yaml	has_attribute_id	4	application
+nmdc_materialized_patterns.yaml	has_attribute_label	4	application
+nmdc_materialized_patterns.yaml	has_boolean_value	1	application
+nmdc_materialized_patterns.yaml	has_chromatography_configuration	4	application
+nmdc_materialized_patterns.yaml	has_credit_associations	1	application
+nmdc_materialized_patterns.yaml	has_datetime_value	1	application
+nmdc_materialized_patterns.yaml	has_failure_categorization	1	application
+nmdc_materialized_patterns.yaml	has_function	2	application
+nmdc_materialized_patterns.yaml	has_input	14	application
+nmdc_materialized_patterns.yaml	has_mass_spectrometry_configuration	2	application
+nmdc_materialized_patterns.yaml	has_maximum_numeric_value	1	application
+nmdc_materialized_patterns.yaml	has_metabolite_identifications	1	application
+nmdc_materialized_patterns.yaml	has_minimum_numeric_value	1	application
+nmdc_materialized_patterns.yaml	has_numeric_value	5	application
+nmdc_materialized_patterns.yaml	has_output	16	application
+nmdc_materialized_patterns.yaml	has_quantity_kind_id	1	application
+nmdc_materialized_patterns.yaml	has_raw_value	8	application
+nmdc_materialized_patterns.yaml	has_unit	6	application
+nmdc_materialized_patterns.yaml	has_value_term_id	1	application
+nmdc_materialized_patterns.yaml	hawk and trowel	2	application
+nmdc_materialized_patterns.yaml	hay bales	1	application
+nmdc_materialized_patterns.yaml	hayland	1	application
+nmdc_materialized_patterns.yaml	hc_produced	1	application
+nmdc_materialized_patterns.yaml	hc_produced_enum	1	application
+nmdc_materialized_patterns.yaml	hcr	1	application
+nmdc_materialized_patterns.yaml	hcr_enum	1	application
+nmdc_materialized_patterns.yaml	hcr_fw_salinity	1	application
+nmdc_materialized_patterns.yaml	hcr_geol_age	1	application
+nmdc_materialized_patterns.yaml	hcr_geol_age_enum	1	application
+nmdc_materialized_patterns.yaml	hcr_pressure	1	application
+nmdc_materialized_patterns.yaml	hcr_temp	1	application
+nmdc_materialized_patterns.yaml	health care	1	application
+nmdc_materialized_patterns.yaml	heat pump	1	application
+nmdc_materialized_patterns.yaml	heat_cool_type	1	application
+nmdc_materialized_patterns.yaml	heat_cool_type_enum	1	application
+nmdc_materialized_patterns.yaml	heat_deliv_loc	1	application
+nmdc_materialized_patterns.yaml	heat_deliv_loc_enum	1	application
+nmdc_materialized_patterns.yaml	heat_sys_deliv_meth	1	application
+nmdc_materialized_patterns.yaml	heat_system_id	1	application
+nmdc_materialized_patterns.yaml	heavy_metals	2	application
+nmdc_materialized_patterns.yaml	heavy_metals_meth	2	application
+nmdc_materialized_patterns.yaml	height_carper_fiber	1	application
+nmdc_materialized_patterns.yaml	herbicide_regm	1	application
+nmdc_materialized_patterns.yaml	hermaphrodite	1	application
+nmdc_materialized_patterns.yaml	high	2	application
+nmdc_materialized_patterns.yaml	high rise	1	application
+nmdc_materialized_patterns.yaml	high tide	1	application
+nmdc_materialized_patterns.yaml	highest_similarity_score	1	application
+nmdc_materialized_patterns.yaml	hiseq	1	application
+nmdc_materialized_patterns.yaml	hiseq_1000	1	application
+nmdc_materialized_patterns.yaml	hiseq_1500	1	application
+nmdc_materialized_patterns.yaml	hiseq_2000	1	application
+nmdc_materialized_patterns.yaml	hiseq_2500	1	application
+nmdc_materialized_patterns.yaml	hiseq_3000	1	application
+nmdc_materialized_patterns.yaml	hiseq_4000	1	application
+nmdc_materialized_patterns.yaml	hiseq_x_ten	1	application
+nmdc_materialized_patterns.yaml	hollow	1	application
+nmdc_materialized_patterns.yaml	home	1	application
+nmdc_materialized_patterns.yaml	homepage_website	2	application
+nmdc_materialized_patterns.yaml	hood awning	1	application
+nmdc_materialized_patterns.yaml	horizon_meth	1	application
+nmdc_materialized_patterns.yaml	horizontal sash window	1	application
+nmdc_materialized_patterns.yaml	horticultural plants	1	application
+nmdc_materialized_patterns.yaml	host_age	1	application
+nmdc_materialized_patterns.yaml	host_body_habitat	1	application
+nmdc_materialized_patterns.yaml	host_body_product	1	application
+nmdc_materialized_patterns.yaml	host_body_site	1	application
+nmdc_materialized_patterns.yaml	host_body_temp	1	application
+nmdc_materialized_patterns.yaml	host_color	1	application
+nmdc_materialized_patterns.yaml	host_common_name	1	application
+nmdc_materialized_patterns.yaml	host_diet	1	application
+nmdc_materialized_patterns.yaml	host_disease_stat	1	application
+nmdc_materialized_patterns.yaml	host_dry_mass	1	application
+nmdc_materialized_patterns.yaml	host_family_relation	1	application
+nmdc_materialized_patterns.yaml	host_genotype	1	application
+nmdc_materialized_patterns.yaml	host_growth_cond	1	application
+nmdc_materialized_patterns.yaml	host_height	1	application
+nmdc_materialized_patterns.yaml	host_last_meal	1	application
+nmdc_materialized_patterns.yaml	host_length	1	application
+nmdc_materialized_patterns.yaml	host_life_stage	1	application
+nmdc_materialized_patterns.yaml	host_name	1	application
+nmdc_materialized_patterns.yaml	host_phenotype	1	application
+nmdc_materialized_patterns.yaml	host_sex	1	application
+nmdc_materialized_patterns.yaml	host_sex_enum	1	application
+nmdc_materialized_patterns.yaml	host_shape	1	application
+nmdc_materialized_patterns.yaml	host_subject_id	1	application
+nmdc_materialized_patterns.yaml	host_subspecf_genlin	1	application
+nmdc_materialized_patterns.yaml	host_substrate	1	application
+nmdc_materialized_patterns.yaml	host_symbiont	1	application
+nmdc_materialized_patterns.yaml	host_taxid	1	application
+nmdc_materialized_patterns.yaml	host_tot_mass	1	application
+nmdc_materialized_patterns.yaml	host_wet_mass	1	application
+nmdc_materialized_patterns.yaml	humidity	1	application
+nmdc_materialized_patterns.yaml	humidity_regm	1	application
+nmdc_materialized_patterns.yaml	hybrid	1	application
+nmdc_materialized_patterns.yaml	hydrochloric_acid	1	application
+nmdc_materialized_patterns.yaml	hydrogenous	1	application
+nmdc_materialized_patterns.yaml	id	37	metamodel
+nmdc_materialized_patterns.yaml	id_blade	1	application
+nmdc_materialized_patterns.yaml	id_locus	1	application
+nmdc_materialized_patterns.yaml	id_nmdc_prefix	1	application
+nmdc_materialized_patterns.yaml	id_prefixes	7	metamodel
+nmdc_materialized_patterns.yaml	id_shoulder	1	application
+nmdc_materialized_patterns.yaml	id_version	1	application
+nmdc_materialized_patterns.yaml	identifier	1	metamodel
+nmdc_materialized_patterns.yaml	igsn	1	application
+nmdc_materialized_patterns.yaml	igsn_biosample_identifiers	1	application
+nmdc_materialized_patterns.yaml	igsn_identifiers	1	application
+nmdc_materialized_patterns.yaml	illumina	1	application
+nmdc_materialized_patterns.yaml	img.taxon	1	application
+nmdc_materialized_patterns.yaml	img_identifiers	5	application
+nmdc_materialized_patterns.yaml	in_manifest	1	application
+nmdc_materialized_patterns.yaml	in_silico_metagenome	1	application
+nmdc_materialized_patterns.yaml	inbred line	1	application
+nmdc_materialized_patterns.yaml	inchi	1	application
+nmdc_materialized_patterns.yaml	inchi_key	1	application
+nmdc_materialized_patterns.yaml	indoor_space	1	application
+nmdc_materialized_patterns.yaml	indoor_space_enum	1	application
+nmdc_materialized_patterns.yaml	indoor_surf	1	application
+nmdc_materialized_patterns.yaml	indoor_surf_enum	1	application
+nmdc_materialized_patterns.yaml	indust_eff_percent	1	application
+nmdc_materialized_patterns.yaml	industrial areas	1	application
+nmdc_materialized_patterns.yaml	infection	1	application
+nmdc_materialized_patterns.yaml	infiltrations	1	application
+nmdc_materialized_patterns.yaml	inlined	3	metamodel
+nmdc_materialized_patterns.yaml	inlined_as_list	61	metamodel
+nmdc_materialized_patterns.yaml	inoculation	1	application
+nmdc_materialized_patterns.yaml	inorg_particles	1	application
+nmdc_materialized_patterns.yaml	input_base_count	1	application
+nmdc_materialized_patterns.yaml	input_contig_num	1	application
+nmdc_materialized_patterns.yaml	input_mass	1	application
+nmdc_materialized_patterns.yaml	input_read_bases	1	application
+nmdc_materialized_patterns.yaml	input_read_count	1	application
+nmdc_materialized_patterns.yaml	input_volume	1	application
+nmdc_materialized_patterns.yaml	insdc.sra	1	application
+nmdc_materialized_patterns.yaml	insdc_analysis_identifiers	1	application
+nmdc_materialized_patterns.yaml	insdc_assembly_identifiers	1	application
+nmdc_materialized_patterns.yaml	insdc_bioproject_identifiers	2	application
+nmdc_materialized_patterns.yaml	insdc_biosample_identifiers	1	application
+nmdc_materialized_patterns.yaml	insdc_experiment_identifiers	1	application
+nmdc_materialized_patterns.yaml	insdc_identifiers	1	application
+nmdc_materialized_patterns.yaml	insdc_secondary_sample_identifiers	1	application
+nmdc_materialized_patterns.yaml	insdc_sra_ena_study_identifiers	1	application
+nmdc_materialized_patterns.yaml	inside_lux	1	application
+nmdc_materialized_patterns.yaml	instrument_data	1	application
+nmdc_materialized_patterns.yaml	instrument_instance_specifier	1	application
+nmdc_materialized_patterns.yaml	instrument_run	1	application
+nmdc_materialized_patterns.yaml	instrument_set	1	application
+nmdc_materialized_patterns.yaml	instrument_used	1	application
+nmdc_materialized_patterns.yaml	int_wall_cond	1	application
+nmdc_materialized_patterns.yaml	int_wall_cond_enum	1	application
+nmdc_materialized_patterns.yaml	integer	1	metamodel
+nmdc_materialized_patterns.yaml	interior room	1	application
+nmdc_materialized_patterns.yaml	interiors	1	application
+nmdc_materialized_patterns.yaml	interlayer	1	application
+nmdc_materialized_patterns.yaml	intermixed hardwood and conifers	1	application
+nmdc_materialized_patterns.yaml	internal_calibration	3	application
+nmdc_materialized_patterns.yaml	interpolated	86	metamodel
+nmdc_materialized_patterns.yaml	investigation field	1	application
+nmdc_materialized_patterns.yaml	inward	1	application
+nmdc_materialized_patterns.yaml	ion_cyclotron_resonance	1	application
+nmdc_materialized_patterns.yaml	ion_trap	1	application
+nmdc_materialized_patterns.yaml	ionization_source	2	application
+nmdc_materialized_patterns.yaml	is_a	628	metamodel
+nmdc_materialized_patterns.yaml	is_obsolete	1	application
+nmdc_materialized_patterns.yaml	is_pressurized	1	application
+nmdc_materialized_patterns.yaml	is_root	1	application
+nmdc_materialized_patterns.yaml	is_stranded	1	application
+nmdc_materialized_patterns.yaml	isopropyl_alcohol	1	application
+nmdc_materialized_patterns.yaml	isotope_exposure	1	application
+nmdc_materialized_patterns.yaml	iw_bt_date_well	1	application
+nmdc_materialized_patterns.yaml	iwf	1	application
+nmdc_materialized_patterns.yaml	janitorial schedules or logs	1	application
+nmdc_materialized_patterns.yaml	jgi	2	application
+nmdc_materialized_patterns.yaml	jgi.analysis	1	application
+nmdc_materialized_patterns.yaml	jgi.proposal	1	application
+nmdc_materialized_patterns.yaml	jgi_portal_analysis_project_identifiers	1	application
+nmdc_materialized_patterns.yaml	jgi_portal_identifiers	1	application
+nmdc_materialized_patterns.yaml	jgi_portal_study_identifiers	1	application
+nmdc_materialized_patterns.yaml	joisted masonry	1	application
+nmdc_materialized_patterns.yaml	jsonpath	1	metamodel
+nmdc_materialized_patterns.yaml	jsonpointer	1	metamodel
+nmdc_materialized_patterns.yaml	kBq	1	application
+nmdc_materialized_patterns.yaml	kHz	1	application
+nmdc_materialized_patterns.yaml	kJ	1	application
+nmdc_materialized_patterns.yaml	kN	1	application
+nmdc_materialized_patterns.yaml	kPa	1	application
+nmdc_materialized_patterns.yaml	kW	1	application
+nmdc_materialized_patterns.yaml	kW/m2	1	application
+nmdc_materialized_patterns.yaml	kW/m2/d	1	application
+nmdc_materialized_patterns.yaml	kbase	1	application
+nmdc_materialized_patterns.yaml	kegg	1	application
+nmdc_materialized_patterns.yaml	kg	1	application
+nmdc_materialized_patterns.yaml	kg/kg	1	application
+nmdc_materialized_patterns.yaml	kg/m3	1	application
+nmdc_materialized_patterns.yaml	kitchen	3	application
+nmdc_materialized_patterns.yaml	km/h	1	application
+nmdc_materialized_patterns.yaml	knockdown	2	application
+nmdc_materialized_patterns.yaml	known_as	1	application
+nmdc_materialized_patterns.yaml	laboratory_dry	1	application
+nmdc_materialized_patterns.yaml	laboratory_wet	1	application
+nmdc_materialized_patterns.yaml	laminate wood	1	application
+nmdc_materialized_patterns.yaml	language	1	application
+nmdc_materialized_patterns.yaml	language_code	1	application
+nmdc_materialized_patterns.yaml	last_clean	1	application
+nmdc_materialized_patterns.yaml	lat_lon	2	application
+nmdc_materialized_patterns.yaml	latitude	2	application
+nmdc_materialized_patterns.yaml	lbc_thirty	1	application
+nmdc_materialized_patterns.yaml	lbceq	1	application
+nmdc_materialized_patterns.yaml	lc_ms_lipidomics	1	application
+nmdc_materialized_patterns.yaml	lc_ms_metabolomics	1	application
+nmdc_materialized_patterns.yaml	ledged and braced	1	application
+nmdc_materialized_patterns.yaml	ledged and framed	1	application
+nmdc_materialized_patterns.yaml	ledged, braced and frame	1	application
+nmdc_materialized_patterns.yaml	left	1	application
+nmdc_materialized_patterns.yaml	left handedness	1	application
+nmdc_materialized_patterns.yaml	library_preparation_kit	1	application
+nmdc_materialized_patterns.yaml	library_type	1	application
+nmdc_materialized_patterns.yaml	license	1	metamodel
+nmdc_materialized_patterns.yaml	light noncombustible	1	application
+nmdc_materialized_patterns.yaml	light_intensity	1	application
+nmdc_materialized_patterns.yaml	light_regm	1	application
+nmdc_materialized_patterns.yaml	light_type	1	application
+nmdc_materialized_patterns.yaml	light_type_enum	1	application
+nmdc_materialized_patterns.yaml	lineoleum	1	application
+nmdc_materialized_patterns.yaml	link_addit_analys	1	application
+nmdc_materialized_patterns.yaml	link_class_info	1	application
+nmdc_materialized_patterns.yaml	link_climate_info	1	application
+nmdc_materialized_patterns.yaml	linkml	1	application
+nmdc_materialized_patterns.yaml	lipid	1	application
+nmdc_materialized_patterns.yaml	lipidome	1	application
+nmdc_materialized_patterns.yaml	lipidomics	1	application
+nmdc_materialized_patterns.yaml	liquid	1	application
+nmdc_materialized_patterns.yaml	liquid_chromatography	2	application
+nmdc_materialized_patterns.yaml	list_elements_ordered	3	metamodel
+nmdc_materialized_patterns.yaml	literal_form	13	metamodel
+nmdc_materialized_patterns.yaml	lithogenous	1	application
+nmdc_materialized_patterns.yaml	lithology	1	application
+nmdc_materialized_patterns.yaml	lithology_enum	1	application
+nmdc_materialized_patterns.yaml	lm/m2	1	application
+nmdc_materialized_patterns.yaml	lobby	2	application
+nmdc_materialized_patterns.yaml	local_class	1	application
+nmdc_materialized_patterns.yaml	local_class_meth	1	application
+nmdc_materialized_patterns.yaml	location	1	application
+nmdc_materialized_patterns.yaml	locker room	1	application
+nmdc_materialized_patterns.yaml	lockers	1	application
+nmdc_materialized_patterns.yaml	longitude	2	application
+nmdc_materialized_patterns.yaml	louvered	1	application
+nmdc_materialized_patterns.yaml	low	2	application
+nmdc_materialized_patterns.yaml	low rise	1	application
+nmdc_materialized_patterns.yaml	low tide	1	application
+nmdc_materialized_patterns.yaml	low-MERV pleated media	1	application
+nmdc_materialized_patterns.yaml	low_depth_contig_num	1	application
+nmdc_materialized_patterns.yaml	low_read_count	1	application
+nmdc_materialized_patterns.yaml	ltq_orbitrap_velos	1	application
+nmdc_materialized_patterns.yaml	lx	1	application
+nmdc_materialized_patterns.yaml	m	1	application
+nmdc_materialized_patterns.yaml	m/s	1	application
+nmdc_materialized_patterns.yaml	m/s2	1	application
+nmdc_materialized_patterns.yaml	m2	1	application
+nmdc_materialized_patterns.yaml	m2/s	1	application
+nmdc_materialized_patterns.yaml	m3	1	application
+nmdc_materialized_patterns.yaml	m3/d	1	application
+nmdc_materialized_patterns.yaml	m3/min	1	application
+nmdc_materialized_patterns.yaml	m3/s	1	application
+nmdc_materialized_patterns.yaml	mCi	1	application
+nmdc_materialized_patterns.yaml	mL	1	application
+nmdc_materialized_patterns.yaml	mL/L	1	application
+nmdc_materialized_patterns.yaml	mS/cm	1	application
+nmdc_materialized_patterns.yaml	mU	1	application
+nmdc_materialized_patterns.yaml	mV	1	application
+nmdc_materialized_patterns.yaml	magnesium	1	application
+nmdc_materialized_patterns.yaml	mags_list	1	application
+nmdc_materialized_patterns.yaml	mail room	2	application
+nmdc_materialized_patterns.yaml	maintenance plans	1	application
+nmdc_materialized_patterns.yaml	male	2	application
+nmdc_materialized_patterns.yaml	male and female	1	application
+nmdc_materialized_patterns.yaml	malformed_data	1	application
+nmdc_materialized_patterns.yaml	manganese	1	application
+nmdc_materialized_patterns.yaml	manifest_category	1	application
+nmdc_materialized_patterns.yaml	manifest_set	1	application
+nmdc_materialized_patterns.yaml	manual count	1	application
+nmdc_materialized_patterns.yaml	mappings	12	metamodel
+nmdc_materialized_patterns.yaml	market	1	application
+nmdc_materialized_patterns.yaml	market sample	1	application
+nmdc_materialized_patterns.yaml	marshlands	1	application
+nmdc_materialized_patterns.yaml	masonry	1	application
+nmdc_materialized_patterns.yaml	masonry noncombustible	1	application
+nmdc_materialized_patterns.yaml	mass	2	application
+nmdc_materialized_patterns.yaml	mass_analyzers	2	application
+nmdc_materialized_patterns.yaml	mass_charge_ratio	1	application
+nmdc_materialized_patterns.yaml	mass_spectrometry_acquisition_strategy	2	application
+nmdc_materialized_patterns.yaml	mass_spectrum_collection_modes	2	application
+nmdc_materialized_patterns.yaml	massive	1	application
+nmdc_materialized_patterns.yaml	matched_metagenome	1	application
+nmdc_materialized_patterns.yaml	material_component_separation	1	application
+nmdc_materialized_patterns.yaml	material_processing_set	1	application
+nmdc_materialized_patterns.yaml	matrix_assisted_laser_desorption_ionization	1	application
+nmdc_materialized_patterns.yaml	max_occup	1	application
+nmdc_materialized_patterns.yaml	maximum_cardinality	6	metamodel
+nmdc_materialized_patterns.yaml	maximum_value	2	metamodel
+nmdc_materialized_patterns.yaml	mbar	1	application
+nmdc_materialized_patterns.yaml	md5_checksum	1	application
+nmdc_materialized_patterns.yaml	meadows	1	application
+nmdc_materialized_patterns.yaml	mean_frict_vel	1	application
+nmdc_materialized_patterns.yaml	mean_peak_frict_vel	1	application
+nmdc_materialized_patterns.yaml	meaning	79	metamodel
+nmdc_materialized_patterns.yaml	mech_struc	1	application
+nmdc_materialized_patterns.yaml	mech_struc_enum	1	application
+nmdc_materialized_patterns.yaml	mechanical or electrical room	1	application
+nmdc_materialized_patterns.yaml	mechanical_damage	1	application
+nmdc_materialized_patterns.yaml	medronic_acid	1	application
+nmdc_materialized_patterns.yaml	members_id	1	application
+nmdc_materialized_patterns.yaml	meq/L	1	application
+nmdc_materialized_patterns.yaml	metabolite	1	application
+nmdc_materialized_patterns.yaml	metabolite_identified	1	application
+nmdc_materialized_patterns.yaml	metabolome	1	application
+nmdc_materialized_patterns.yaml	metabolomics	1	application
+nmdc_materialized_patterns.yaml	metabolomics_analysis_category	1	application
+nmdc_materialized_patterns.yaml	metagenome	1	application
+nmdc_materialized_patterns.yaml	metagenome_assembly_parameter	1	application
+nmdc_materialized_patterns.yaml	metagenomics	1	application
+nmdc_materialized_patterns.yaml	metagenomics_long_read	1	application
+nmdc_materialized_patterns.yaml	metal	6	application
+nmdc_materialized_patterns.yaml	metal covered	1	application
+nmdc_materialized_patterns.yaml	metaproteome	1	application
+nmdc_materialized_patterns.yaml	metaproteomics	1	application
+nmdc_materialized_patterns.yaml	metaproteomics_analysis_category	1	application
+nmdc_materialized_patterns.yaml	metatranscriptome	1	application
+nmdc_materialized_patterns.yaml	metatranscriptomics	1	application
+nmdc_materialized_patterns.yaml	methane	1	application
+nmdc_materialized_patterns.yaml	methanol	1	application
+nmdc_materialized_patterns.yaml	methanol_layer	1	application
+nmdc_materialized_patterns.yaml	methoxyamine	1	application
+nmdc_materialized_patterns.yaml	mg	1	application
+nmdc_materialized_patterns.yaml	mg/L	1	application
+nmdc_materialized_patterns.yaml	mg/g	1	application
+nmdc_materialized_patterns.yaml	mg/kg	1	application
+nmdc_materialized_patterns.yaml	mg/m3	1	application
+nmdc_materialized_patterns.yaml	mg/m3/d	1	application
+nmdc_materialized_patterns.yaml	mgnify.analysis	1	application
+nmdc_materialized_patterns.yaml	mgnify.proj	1	application
+nmdc_materialized_patterns.yaml	mgnify_analysis_identifiers	1	application
+nmdc_materialized_patterns.yaml	mgnify_identifiers	1	application
+nmdc_materialized_patterns.yaml	mgnify_project_identifiers	1	application
+nmdc_materialized_patterns.yaml	micro_biomass_c_meth	1	application
+nmdc_materialized_patterns.yaml	micro_biomass_meth	1	application
+nmdc_materialized_patterns.yaml	micro_biomass_n_meth	1	application
+nmdc_materialized_patterns.yaml	microbial_biomass	1	application
+nmdc_materialized_patterns.yaml	microbial_biomass_c	1	application
+nmdc_materialized_patterns.yaml	microbial_biomass_n	1	application
+nmdc_materialized_patterns.yaml	mid	1	application
+nmdc_materialized_patterns.yaml	middle	2	application
+nmdc_materialized_patterns.yaml	min	1	application
+nmdc_materialized_patterns.yaml	mineral fibre	1	application
+nmdc_materialized_patterns.yaml	mineral wool/calcium silicate	1	application
+nmdc_materialized_patterns.yaml	mineral_nutr_regm	1	application
+nmdc_materialized_patterns.yaml	mines/quarries	1	application
+nmdc_materialized_patterns.yaml	minimum_cardinality	2	metamodel
+nmdc_materialized_patterns.yaml	minimum_value	17	metamodel
+nmdc_materialized_patterns.yaml	minion	1	application
+nmdc_materialized_patterns.yaml	miniseq	1	application
+nmdc_materialized_patterns.yaml	misc_param	1	application
+nmdc_materialized_patterns.yaml	miseq	1	application
+nmdc_materialized_patterns.yaml	mixed-handedness	1	application
+nmdc_materialized_patterns.yaml	mixin	9	metamodel
+nmdc_materialized_patterns.yaml	mixins	39	metamodel
+nmdc_materialized_patterns.yaml	mixs_env_triad_field	1	application
+nmdc_materialized_patterns.yaml	mm	1	application
+nmdc_materialized_patterns.yaml	mm/a	1	application
+nmdc_materialized_patterns.yaml	mm[Hg]	1	application
+nmdc_materialized_patterns.yaml	mmol	1	application
+nmdc_materialized_patterns.yaml	mmol/L	1	application
+nmdc_materialized_patterns.yaml	mod_date	1	application
+nmdc_materialized_patterns.yaml	model	1	metamodel
+nmdc_materialized_patterns.yaml	moderately well	1	application
+nmdc_materialized_patterns.yaml	modified fire resistive	1	application
+nmdc_materialized_patterns.yaml	modifier_substance	1	application
+nmdc_materialized_patterns.yaml	mol	1	application
+nmdc_materialized_patterns.yaml	mol/L	1	application
+nmdc_materialized_patterns.yaml	mol/L/h	1	application
+nmdc_materialized_patterns.yaml	mol/g	1	application
+nmdc_materialized_patterns.yaml	mold odor	1	application
+nmdc_materialized_patterns.yaml	mouldboard	1	application
+nmdc_materialized_patterns.yaml	mplex	1	application
+nmdc_materialized_patterns.yaml	ms_proteolytic_enzyme	1	application
+nmdc_materialized_patterns.yaml	mudflats	1	application
+nmdc_materialized_patterns.yaml	multivalued	530	metamodel
+nmdc_materialized_patterns.yaml	mutant	1	application
+nmdc_materialized_patterns.yaml	my_emsl	1	application
+nmdc_materialized_patterns.yaml	nCi	1	application
+nmdc_materialized_patterns.yaml	nU	1	application
+nmdc_materialized_patterns.yaml	n_alkanes	1	application
+nmdc_materialized_patterns.yaml	name	1303	metamodel
+nmdc_materialized_patterns.yaml	narrow_mappings	7	application
+nmdc_materialized_patterns.yaml	natatorium	1	application
+nmdc_materialized_patterns.yaml	natural	1	application
+nmdc_materialized_patterns.yaml	natural light	1	application
+nmdc_materialized_patterns.yaml	natural organic matter	2	application
+nmdc_materialized_patterns.yaml	ncbi_lineage	1	application
+nmdc_materialized_patterns.yaml	ncbi_lineage_tax_ids	1	application
+nmdc_materialized_patterns.yaml	ncbi_project_name	1	application
+nmdc_materialized_patterns.yaml	ncbi_taxonomy_name	1	application
+nmdc_materialized_patterns.yaml	ncname	1	metamodel
+nmdc_materialized_patterns.yaml	needs repair	7	application
+nmdc_materialized_patterns.yaml	negative	1	application
+nmdc_materialized_patterns.yaml	neon.identifier	1	application
+nmdc_materialized_patterns.yaml	neon.schema	1	application
+nmdc_materialized_patterns.yaml	neon_biosample_identifiers	1	application
+nmdc_materialized_patterns.yaml	neon_identifiers	1	application
+nmdc_materialized_patterns.yaml	neon_study_identifiers	1	application
+nmdc_materialized_patterns.yaml	new	7	application
+nmdc_materialized_patterns.yaml	nextseq	1	application
+nmdc_materialized_patterns.yaml	nextseq_1000	1	application
+nmdc_materialized_patterns.yaml	nextseq_500	1	application
+nmdc_materialized_patterns.yaml	nextseq_550	1	application
+nmdc_materialized_patterns.yaml	ng/L	1	application
+nmdc_materialized_patterns.yaml	ng/g	1	application
+nmdc_materialized_patterns.yaml	ng/h	1	application
+nmdc_materialized_patterns.yaml	ng/mL	1	application
+nmdc_materialized_patterns.yaml	nitrate	1	application
+nmdc_materialized_patterns.yaml	nitrate_nitrogen	1	application
+nmdc_materialized_patterns.yaml	nitrite	1	application
+nmdc_materialized_patterns.yaml	nitrite_nitrogen	1	application
+nmdc_materialized_patterns.yaml	nitro	1	application
+nmdc_materialized_patterns.yaml	nmdc	1	application
+nmdc_materialized_patterns.yaml	nmol	1	application
+nmdc_materialized_patterns.yaml	no	1	application
+nmdc_materialized_patterns.yaml	no treatment	1	application
+nmdc_materialized_patterns.yaml	no_valid_data_generated	1	application
+nmdc_materialized_patterns.yaml	nodeidentifier	1	metamodel
+nmdc_materialized_patterns.yaml	nom	1	application
+nmdc_materialized_patterns.yaml	non-binary	1	application
+nmdc_materialized_patterns.yaml	non_microb_biomass	1	application
+nmdc_materialized_patterns.yaml	non_microb_biomass_method	1	application
+nmdc_materialized_patterns.yaml	non_min_nutr_regm	1	application
+nmdc_materialized_patterns.yaml	none	3	application
+nmdc_materialized_patterns.yaml	none or unfinished	1	application
+nmdc_materialized_patterns.yaml	north	6	application
+nmdc_materialized_patterns.yaml	north corner	1	application
+nmdc_materialized_patterns.yaml	northeast	2	application
+nmdc_materialized_patterns.yaml	northeast corner	1	application
+nmdc_materialized_patterns.yaml	northwest	2	application
+nmdc_materialized_patterns.yaml	northwest corner	1	application
+nmdc_materialized_patterns.yaml	not applicable	1	application
+nmdc_materialized_patterns.yaml	notes	59	metamodel
+nmdc_materialized_patterns.yaml	novaseq	1	application
+nmdc_materialized_patterns.yaml	novaseq_6000	1	application
+nmdc_materialized_patterns.yaml	novaseq_x	1	application
+nmdc_materialized_patterns.yaml	nucl_acid_amp	1	application
+nmdc_materialized_patterns.yaml	nucl_acid_ext	1	application
+nmdc_materialized_patterns.yaml	nucleic acid sequence source field	1	application
+nmdc_materialized_patterns.yaml	num_16s	1	application
+nmdc_materialized_patterns.yaml	num_23s	1	application
+nmdc_materialized_patterns.yaml	num_5s	1	application
+nmdc_materialized_patterns.yaml	num_aligned_reads	1	application
+nmdc_materialized_patterns.yaml	num_input_reads	1	application
+nmdc_materialized_patterns.yaml	num_t_rna	1	application
+nmdc_materialized_patterns.yaml	number_of_contig	1	application
+nmdc_materialized_patterns.yaml	number_pets	1	application
+nmdc_materialized_patterns.yaml	number_plants	1	application
+nmdc_materialized_patterns.yaml	number_resident	1	application
+nmdc_materialized_patterns.yaml	nutrients	1	application
+nmdc_materialized_patterns.yaml	object	4	metamodel
+nmdc_materialized_patterns.yaml	object_set	1	application
+nmdc_materialized_patterns.yaml	objectidentifier	1	metamodel
+nmdc_materialized_patterns.yaml	objective	1	application
+nmdc_materialized_patterns.yaml	occup_density_samp	1	application
+nmdc_materialized_patterns.yaml	occup_document	1	application
+nmdc_materialized_patterns.yaml	occup_document_enum	1	application
+nmdc_materialized_patterns.yaml	occup_samp	1	application
+nmdc_materialized_patterns.yaml	occurrence	465	application
+nmdc_materialized_patterns.yaml	office	3	application
+nmdc_materialized_patterns.yaml	oil phase	1	application
+nmdc_materialized_patterns.yaml	oil waste areas	1	application
+nmdc_materialized_patterns.yaml	omics_processing_identifiers	1	application
+nmdc_materialized_patterns.yaml	ontology_class_set	1	application
+nmdc_materialized_patterns.yaml	open office	1	application
+nmdc_materialized_patterns.yaml	operation	2	application
+nmdc_materialized_patterns.yaml	orange	1	application
+nmdc_materialized_patterns.yaml	orange peel	2	application
+nmdc_materialized_patterns.yaml	orbitrap_eclipse_tribid	1	application
+nmdc_materialized_patterns.yaml	orbitrap_fusion_lumos	1	application
+nmdc_materialized_patterns.yaml	orbitrap_iqx_tribrid	1	application
+nmdc_materialized_patterns.yaml	orbitrap_q_exactive	1	application
+nmdc_materialized_patterns.yaml	orcid	2	application
+nmdc_materialized_patterns.yaml	ordered_mobile_phases	1	application
+nmdc_materialized_patterns.yaml	org_carb	1	application
+nmdc_materialized_patterns.yaml	org_count_qpcr_info	1	application
+nmdc_materialized_patterns.yaml	org_matter	1	application
+nmdc_materialized_patterns.yaml	org_nitro	1	application
+nmdc_materialized_patterns.yaml	org_nitro_method	1	application
+nmdc_materialized_patterns.yaml	org_particles	1	application
+nmdc_materialized_patterns.yaml	organic matter	1	application
+nmdc_materialized_patterns.yaml	organic_layer	1	application
+nmdc_materialized_patterns.yaml	organic_matter_extraction	1	application
+nmdc_materialized_patterns.yaml	organism_count	1	application
+nmdc_materialized_patterns.yaml	organism_count_enum	1	application
+nmdc_materialized_patterns.yaml	originally	15	application
+nmdc_materialized_patterns.yaml	osti	1	application
+nmdc_materialized_patterns.yaml	other	18	application
+nmdc_materialized_patterns.yaml	other artificial liquid medium	1	application
+nmdc_materialized_patterns.yaml	other artificial solid medium	1	application
+nmdc_materialized_patterns.yaml	other_treatment	1	application
+nmdc_materialized_patterns.yaml	output_base_count	1	application
+nmdc_materialized_patterns.yaml	output_read_bases	1	application
+nmdc_materialized_patterns.yaml	output_read_count	1	application
+nmdc_materialized_patterns.yaml	outward	1	application
+nmdc_materialized_patterns.yaml	owc_tvdss	1	application
+nmdc_materialized_patterns.yaml	owl	1	application
+nmdc_materialized_patterns.yaml	oxford_nanopore	1	application
+nmdc_materialized_patterns.yaml	oxy_stat_samp	1	application
+nmdc_materialized_patterns.yaml	oxy_stat_samp_enum	1	application
+nmdc_materialized_patterns.yaml	oxygen	1	application
+nmdc_materialized_patterns.yaml	pCi	1	application
+nmdc_materialized_patterns.yaml	pacbio	1	application
+nmdc_materialized_patterns.yaml	paint	2	application
+nmdc_materialized_patterns.yaml	painted	1	application
+nmdc_materialized_patterns.yaml	paneling	1	application
+nmdc_materialized_patterns.yaml	parasite	1	application
+nmdc_materialized_patterns.yaml	part_of	3	application
+nmdc_materialized_patterns.yaml	part_org_carb	1	application
+nmdc_materialized_patterns.yaml	part_org_nitro	1	application
+nmdc_materialized_patterns.yaml	particle_class	1	application
+nmdc_materialized_patterns.yaml	particulate air filter	1	application
+nmdc_materialized_patterns.yaml	particulate matter	1	application
+nmdc_materialized_patterns.yaml	pass	1	application
+nmdc_materialized_patterns.yaml	pastureland	1	application
+nmdc_materialized_patterns.yaml	pattern	121	metamodel
+nmdc_materialized_patterns.yaml	pcr_cond	2	application
+nmdc_materialized_patterns.yaml	pcr_cycles	1	application
+nmdc_materialized_patterns.yaml	pcr_primers	1	application
+nmdc_materialized_patterns.yaml	peat moss	1	application
+nmdc_materialized_patterns.yaml	peeling paint or wallpaper	1	application
+nmdc_materialized_patterns.yaml	pellet	1	application
+nmdc_materialized_patterns.yaml	penetration	1	application
+nmdc_materialized_patterns.yaml	perkin_elmer	1	application
+nmdc_materialized_patterns.yaml	perlite	1	application
+nmdc_materialized_patterns.yaml	permanent snow or ice	1	application
+nmdc_materialized_patterns.yaml	permeability	1	application
+nmdc_materialized_patterns.yaml	permissible_values	149	metamodel
+nmdc_materialized_patterns.yaml	perturbation	1	application
+nmdc_materialized_patterns.yaml	pesticide_regm	1	application
+nmdc_materialized_patterns.yaml	petroleum_hydrocarb	1	application
+nmdc_materialized_patterns.yaml	pg/L	1	application
+nmdc_materialized_patterns.yaml	pg/g	1	application
+nmdc_materialized_patterns.yaml	pg/mL	1	application
+nmdc_materialized_patterns.yaml	ph	1	application
+nmdc_materialized_patterns.yaml	ph_measurement	1	application
+nmdc_materialized_patterns.yaml	ph_meth	2	application
+nmdc_materialized_patterns.yaml	ph_regm	1	application
+nmdc_materialized_patterns.yaml	phaeopigments	1	application
+nmdc_materialized_patterns.yaml	phase	1	application
+nmdc_materialized_patterns.yaml	phenol_chloroform_extraction	1	application
+nmdc_materialized_patterns.yaml	phosphate	1	application
+nmdc_materialized_patterns.yaml	phosphoric_acid	1	application
+nmdc_materialized_patterns.yaml	phosphorus_extraction	1	application
+nmdc_materialized_patterns.yaml	phosplipid_fatt_acid	1	application
+nmdc_materialized_patterns.yaml	photon_flux	1	application
+nmdc_materialized_patterns.yaml	photos	2	application
+nmdc_materialized_patterns.yaml	plant associated	1	application
+nmdc_materialized_patterns.yaml	plant_growth_med	1	application
+nmdc_materialized_patterns.yaml	plant_growth_med_enum	1	application
+nmdc_materialized_patterns.yaml	plant_product	1	application
+nmdc_materialized_patterns.yaml	plant_sex	1	application
+nmdc_materialized_patterns.yaml	plant_sex_enum	1	application
+nmdc_materialized_patterns.yaml	plant_struc	1	application
+nmdc_materialized_patterns.yaml	plaster	1	application
+nmdc_materialized_patterns.yaml	plasterboard	1	application
+nmdc_materialized_patterns.yaml	plastic	1	application
+nmdc_materialized_patterns.yaml	pmol	1	application
+nmdc_materialized_patterns.yaml	pnnl	1	application
+nmdc_materialized_patterns.yaml	polarity_mode	2	application
+nmdc_materialized_patterns.yaml	pollutants	1	application
+nmdc_materialized_patterns.yaml	pool	1	application
+nmdc_materialized_patterns.yaml	pool_dna_extracts	1	application
+nmdc_materialized_patterns.yaml	poolable_replicates	1	application
+nmdc_materialized_patterns.yaml	poorly	1	application
+nmdc_materialized_patterns.yaml	popcorn	2	application
+nmdc_materialized_patterns.yaml	porchroller awning	1	application
+nmdc_materialized_patterns.yaml	porosity	1	application
+nmdc_materialized_patterns.yaml	positive	1	application
+nmdc_materialized_patterns.yaml	postconditions	9	metamodel
+nmdc_materialized_patterns.yaml	potassium	1	application
+nmdc_materialized_patterns.yaml	pour_point	1	application
+nmdc_materialized_patterns.yaml	pre_treatment	1	application
+nmdc_materialized_patterns.yaml	preconditions	9	metamodel
+nmdc_materialized_patterns.yaml	predicate	14	application
+nmdc_materialized_patterns.yaml	preferred_unit	225	application
+nmdc_materialized_patterns.yaml	prefix_prefix	97	metamodel
+nmdc_materialized_patterns.yaml	prefix_reference	97	metamodel
+nmdc_materialized_patterns.yaml	prefixes	1	metamodel
+nmdc_materialized_patterns.yaml	pres_animal_insect	1	application
+nmdc_materialized_patterns.yaml	pressure	1	application
+nmdc_materialized_patterns.yaml	prev_land_use_meth	1	application
+nmdc_materialized_patterns.yaml	previous_land_use	1	application
+nmdc_materialized_patterns.yaml	primary_prod	1	application
+nmdc_materialized_patterns.yaml	primary_treatment	1	application
+nmdc_materialized_patterns.yaml	principal_investigator	1	application
+nmdc_materialized_patterns.yaml	private office	1	application
+nmdc_materialized_patterns.yaml	processed_data	1	application
+nmdc_materialized_patterns.yaml	processed_sample_set	1	application
+nmdc_materialized_patterns.yaml	processing_institution	2	application
+nmdc_materialized_patterns.yaml	processing_institution_workflow_metadata	1	application
+nmdc_materialized_patterns.yaml	prod_rate	1	application
+nmdc_materialized_patterns.yaml	prod_start_date	1	application
+nmdc_materialized_patterns.yaml	profile_image_url	1	application
+nmdc_materialized_patterns.yaml	profile_position	1	application
+nmdc_materialized_patterns.yaml	profile_position_enum	1	application
+nmdc_materialized_patterns.yaml	project_id	1	application
+nmdc_materialized_patterns.yaml	promethion	1	application
+nmdc_materialized_patterns.yaml	proport_woa_temperature	1	application
+nmdc_materialized_patterns.yaml	prostrate	1	application
+nmdc_materialized_patterns.yaml	protease_cleavage	1	application
+nmdc_materialized_patterns.yaml	protein	1	application
+nmdc_materialized_patterns.yaml	protocol_link	2	application
+nmdc_materialized_patterns.yaml	prov	1	application
+nmdc_materialized_patterns.yaml	ptfe_96_well_filter_plate	1	application
+nmdc_materialized_patterns.yaml	publication_doi	1	application
+nmdc_materialized_patterns.yaml	pumice	1	application
+nmdc_materialized_patterns.yaml	qc_comment	1	application
+nmdc_materialized_patterns.yaml	qc_failure_what	1	application
+nmdc_materialized_patterns.yaml	qc_failure_where	1	application
+nmdc_materialized_patterns.yaml	qc_status	3	application
+nmdc_materialized_patterns.yaml	quad_pos	1	application
+nmdc_materialized_patterns.yaml	quad_pos_enum	1	application
+nmdc_materialized_patterns.yaml	quadrupole	1	application
+nmdc_materialized_patterns.yaml	qud	1	application
+nmdc_materialized_patterns.yaml	rRNA Filtered Sequencing Reads	1	application
+nmdc_materialized_patterns.yaml	rad	1	application
+nmdc_materialized_patterns.yaml	radiant system	1	application
+nmdc_materialized_patterns.yaml	radiation_regm	1	application
+nmdc_materialized_patterns.yaml	radon	1	application
+nmdc_materialized_patterns.yaml	rain	1	application
+nmdc_materialized_patterns.yaml	rainfall_regm	1	application
+nmdc_materialized_patterns.yaml	rainforest	1	application
+nmdc_materialized_patterns.yaml	raised floor	1	application
+nmdc_materialized_patterns.yaml	range	803	metamodel
+nmdc_materialized_patterns.yaml	rangeland	1	application
+nmdc_materialized_patterns.yaml	rank	34	metamodel
+nmdc_materialized_patterns.yaml	rdf	1	application
+nmdc_materialized_patterns.yaml	rdfs	1	application
+nmdc_materialized_patterns.yaml	reactor_type	1	application
+nmdc_materialized_patterns.yaml	read_qc_analysis_statistic	1	application
+nmdc_materialized_patterns.yaml	recommended	28	metamodel
+nmdc_materialized_patterns.yaml	red	1	application
+nmdc_materialized_patterns.yaml	redox_potential	1	application
+nmdc_materialized_patterns.yaml	reduced_profile	1	application
+nmdc_materialized_patterns.yaml	reduction_oxidation	1	application
+nmdc_materialized_patterns.yaml	rel_air_humidity	1	application
+nmdc_materialized_patterns.yaml	rel_humidity_out	1	application
+nmdc_materialized_patterns.yaml	rel_samp_loc	1	application
+nmdc_materialized_patterns.yaml	rel_samp_loc_enum	1	application
+nmdc_materialized_patterns.yaml	related_identifiers	2	application
+nmdc_materialized_patterns.yaml	related_mappings	4	application
+nmdc_materialized_patterns.yaml	relations	1	application
+nmdc_materialized_patterns.yaml	replicate_number	1	application
+nmdc_materialized_patterns.yaml	repr	14	metamodel
+nmdc_materialized_patterns.yaml	required	102	metamodel
+nmdc_materialized_patterns.yaml	research_study	1	application
+nmdc_materialized_patterns.yaml	reservoir	1	application
+nmdc_materialized_patterns.yaml	residence	1	application
+nmdc_materialized_patterns.yaml	residential	1	application
+nmdc_materialized_patterns.yaml	resins_pc	1	application
+nmdc_materialized_patterns.yaml	resolution_categories	2	application
+nmdc_materialized_patterns.yaml	respiration_measurement	1	application
+nmdc_materialized_patterns.yaml	restaurant	1	application
+nmdc_materialized_patterns.yaml	retention_index	1	application
+nmdc_materialized_patterns.yaml	retention_time	1	application
+nmdc_materialized_patterns.yaml	revio	1	application
+nmdc_materialized_patterns.yaml	revolving	2	application
+nmdc_materialized_patterns.yaml	ridge till	1	application
+nmdc_materialized_patterns.yaml	right	1	application
+nmdc_materialized_patterns.yaml	right handedness	1	application
+nmdc_materialized_patterns.yaml	riverside	1	application
+nmdc_materialized_patterns.yaml	rna_collect_site	1	application
+nmdc_materialized_patterns.yaml	rna_isolate_meth	1	application
+nmdc_materialized_patterns.yaml	rna_organisms	1	application
+nmdc_materialized_patterns.yaml	roads/railroads	1	application
+nmdc_materialized_patterns.yaml	rock	1	application
+nmdc_materialized_patterns.yaml	rolling shutter	1	application
+nmdc_materialized_patterns.yaml	rolling shutters	1	application
+nmdc_materialized_patterns.yaml	room_air_exch_rate	1	application
+nmdc_materialized_patterns.yaml	room_architec_elem	1	application
+nmdc_materialized_patterns.yaml	room_condt	1	application
+nmdc_materialized_patterns.yaml	room_condt_enum	1	application
+nmdc_materialized_patterns.yaml	room_connected	1	application
+nmdc_materialized_patterns.yaml	room_connected_enum	1	application
+nmdc_materialized_patterns.yaml	room_count	1	application
+nmdc_materialized_patterns.yaml	room_dim	1	application
+nmdc_materialized_patterns.yaml	room_door_dist	1	application
+nmdc_materialized_patterns.yaml	room_door_share	1	application
+nmdc_materialized_patterns.yaml	room_hallway	1	application
+nmdc_materialized_patterns.yaml	room_loc	1	application
+nmdc_materialized_patterns.yaml	room_loc_enum	1	application
+nmdc_materialized_patterns.yaml	room_moist_dam_hist	1	application
+nmdc_materialized_patterns.yaml	room_net_area	1	application
+nmdc_materialized_patterns.yaml	room_occup	1	application
+nmdc_materialized_patterns.yaml	room_samp_pos	1	application
+nmdc_materialized_patterns.yaml	room_samp_pos_enum	1	application
+nmdc_materialized_patterns.yaml	room_type	1	application
+nmdc_materialized_patterns.yaml	room_type_enum	1	application
+nmdc_materialized_patterns.yaml	room_vol	1	application
+nmdc_materialized_patterns.yaml	room_wall_share	1	application
+nmdc_materialized_patterns.yaml	room_window_count	1	application
+nmdc_materialized_patterns.yaml	root_cond	1	application
+nmdc_materialized_patterns.yaml	root_med_carbon	1	application
+nmdc_materialized_patterns.yaml	root_med_macronutr	1	application
+nmdc_materialized_patterns.yaml	root_med_micronutr	1	application
+nmdc_materialized_patterns.yaml	root_med_ph	1	application
+nmdc_materialized_patterns.yaml	root_med_regl	1	application
+nmdc_materialized_patterns.yaml	root_med_solid	1	application
+nmdc_materialized_patterns.yaml	root_med_suppl	1	application
+nmdc_materialized_patterns.yaml	ror	1	application
+nmdc_materialized_patterns.yaml	rosebud stomp	2	application
+nmdc_materialized_patterns.yaml	row crops	1	application
+nmdc_materialized_patterns.yaml	rs_II	1	application
+nmdc_materialized_patterns.yaml	rug	1	application
+nmdc_materialized_patterns.yaml	rules	4	metamodel
+nmdc_materialized_patterns.yaml	rupture	7	application
+nmdc_materialized_patterns.yaml	rural	1	application
+nmdc_materialized_patterns.yaml	saline seeps	1	application
+nmdc_materialized_patterns.yaml	salinity	1	application
+nmdc_materialized_patterns.yaml	salinity_category	1	application
+nmdc_materialized_patterns.yaml	salinity_meth	2	application
+nmdc_materialized_patterns.yaml	salt flats	1	application
+nmdc_materialized_patterns.yaml	salt_regm	1	application
+nmdc_materialized_patterns.yaml	samp_capt_status	1	application
+nmdc_materialized_patterns.yaml	samp_capt_status_enum	1	application
+nmdc_materialized_patterns.yaml	samp_collec_device	1	application
+nmdc_materialized_patterns.yaml	samp_collec_method	1	application
+nmdc_materialized_patterns.yaml	samp_collect_point	1	application
+nmdc_materialized_patterns.yaml	samp_collect_point_enum	1	application
+nmdc_materialized_patterns.yaml	samp_dis_stage	1	application
+nmdc_materialized_patterns.yaml	samp_dis_stage_enum	1	application
+nmdc_materialized_patterns.yaml	samp_floor	1	application
+nmdc_materialized_patterns.yaml	samp_floor_enum	1	application
+nmdc_materialized_patterns.yaml	samp_loc_corr_rate	1	application
+nmdc_materialized_patterns.yaml	samp_mat_process	1	application
+nmdc_materialized_patterns.yaml	samp_md	1	application
+nmdc_materialized_patterns.yaml	samp_md_enum	1	application
+nmdc_materialized_patterns.yaml	samp_name	1	application
+nmdc_materialized_patterns.yaml	samp_name_unique_key	1	application
+nmdc_materialized_patterns.yaml	samp_preserv	1	application
+nmdc_materialized_patterns.yaml	samp_room_id	1	application
+nmdc_materialized_patterns.yaml	samp_size	1	application
+nmdc_materialized_patterns.yaml	samp_sort_meth	1	application
+nmdc_materialized_patterns.yaml	samp_store_dur	1	application
+nmdc_materialized_patterns.yaml	samp_store_loc	1	application
+nmdc_materialized_patterns.yaml	samp_store_temp	1	application
+nmdc_materialized_patterns.yaml	samp_subtype	1	application
+nmdc_materialized_patterns.yaml	samp_subtype_enum	1	application
+nmdc_materialized_patterns.yaml	samp_taxon_id	1	application
+nmdc_materialized_patterns.yaml	samp_time_out	1	application
+nmdc_materialized_patterns.yaml	samp_transport_cond	1	application
+nmdc_materialized_patterns.yaml	samp_tvdss	1	application
+nmdc_materialized_patterns.yaml	samp_type	1	application
+nmdc_materialized_patterns.yaml	samp_vol_we_dna_ext	1	application
+nmdc_materialized_patterns.yaml	samp_weather	1	application
+nmdc_materialized_patterns.yaml	samp_weather_enum	1	application
+nmdc_materialized_patterns.yaml	samp_well_name	1	application
+nmdc_materialized_patterns.yaml	sample_collection_day	1	application
+nmdc_materialized_patterns.yaml	sample_collection_hour	1	application
+nmdc_materialized_patterns.yaml	sample_collection_minute	1	application
+nmdc_materialized_patterns.yaml	sample_collection_month	1	application
+nmdc_materialized_patterns.yaml	sample_collection_site	1	application
+nmdc_materialized_patterns.yaml	sample_collection_year	1	application
+nmdc_materialized_patterns.yaml	sample_link	1	application
+nmdc_materialized_patterns.yaml	sample_shipped	1	application
+nmdc_materialized_patterns.yaml	sample_type	1	application
+nmdc_materialized_patterns.yaml	sampled_portion	1	application
+nmdc_materialized_patterns.yaml	sand	2	application
+nmdc_materialized_patterns.yaml	sarasota shutters	1	application
+nmdc_materialized_patterns.yaml	saturates_pc	1	application
+nmdc_materialized_patterns.yaml	scaf_bp	1	application
+nmdc_materialized_patterns.yaml	scaf_l50	1	application
+nmdc_materialized_patterns.yaml	scaf_l90	1	application
+nmdc_materialized_patterns.yaml	scaf_l_gt50k	1	application
+nmdc_materialized_patterns.yaml	scaf_logsum	1	application
+nmdc_materialized_patterns.yaml	scaf_max	1	application
+nmdc_materialized_patterns.yaml	scaf_n50	1	application
+nmdc_materialized_patterns.yaml	scaf_n90	1	application
+nmdc_materialized_patterns.yaml	scaf_n_gt50k	1	application
+nmdc_materialized_patterns.yaml	scaf_pct_gt50k	1	application
+nmdc_materialized_patterns.yaml	scaf_powsum	1	application
+nmdc_materialized_patterns.yaml	scaffolds	1	application
+nmdc_materialized_patterns.yaml	schedule	1	application
+nmdc_materialized_patterns.yaml	schema	1	metamodel
+nmdc_materialized_patterns.yaml	school	1	application
+nmdc_materialized_patterns.yaml	scientific_industries	1	application
+nmdc_materialized_patterns.yaml	sealed	1	application
+nmdc_materialized_patterns.yaml	season	1	application
+nmdc_materialized_patterns.yaml	season_environment	1	application
+nmdc_materialized_patterns.yaml	season_precpt	2	application
+nmdc_materialized_patterns.yaml	season_temp	1	application
+nmdc_materialized_patterns.yaml	season_use	1	application
+nmdc_materialized_patterns.yaml	season_use_enum	1	application
+nmdc_materialized_patterns.yaml	secondary_treatment	1	application
+nmdc_materialized_patterns.yaml	sections	1	application
+nmdc_materialized_patterns.yaml	sediment	1	application
+nmdc_materialized_patterns.yaml	sediment_type	1	application
+nmdc_materialized_patterns.yaml	sediment_type_enum	1	application
+nmdc_materialized_patterns.yaml	see_also	70	metamodel
+nmdc_materialized_patterns.yaml	semi-erect	1	application
+nmdc_materialized_patterns.yaml	semi-natural	1	application
+nmdc_materialized_patterns.yaml	sense orientation	1	application
+nmdc_materialized_patterns.yaml	separation_method	1	application
+nmdc_materialized_patterns.yaml	separator	1	application
+nmdc_materialized_patterns.yaml	seq_meth	1	application
+nmdc_materialized_patterns.yaml	seq_quality_check	1	application
+nmdc_materialized_patterns.yaml	seqid	2	application
+nmdc_materialized_patterns.yaml	sequel	1	application
+nmdc_materialized_patterns.yaml	sequel_II	1	application
+nmdc_materialized_patterns.yaml	sequencing field	1	application
+nmdc_materialized_patterns.yaml	setting_key	5	metamodel
+nmdc_materialized_patterns.yaml	setting_value	5	metamodel
+nmdc_materialized_patterns.yaml	settings	1	metamodel
+nmdc_materialized_patterns.yaml	sewage_type	1	application
+nmdc_materialized_patterns.yaml	shad_dev_water_mold	1	application
+nmdc_materialized_patterns.yaml	shading_device_cond	1	application
+nmdc_materialized_patterns.yaml	shading_device_cond_enum	1	application
+nmdc_materialized_patterns.yaml	shading_device_loc	1	application
+nmdc_materialized_patterns.yaml	shading_device_mat	1	application
+nmdc_materialized_patterns.yaml	shading_device_type	1	application
+nmdc_materialized_patterns.yaml	shading_device_type_enum	1	application
+nmdc_materialized_patterns.yaml	shed	1	application
+nmdc_materialized_patterns.yaml	sheet vinyl	1	application
+nmdc_materialized_patterns.yaml	shelving	1	application
+nmdc_materialized_patterns.yaml	shex	1	application
+nmdc_materialized_patterns.yaml	shop drawings	1	application
+nmdc_materialized_patterns.yaml	shoulder	1	application
+nmdc_materialized_patterns.yaml	shrub crops	1	application
+nmdc_materialized_patterns.yaml	shrub land	1	application
+nmdc_materialized_patterns.yaml	sideways	1	application
+nmdc_materialized_patterns.yaml	sieving	2	application
+nmdc_materialized_patterns.yaml	silicate	1	application
+nmdc_materialized_patterns.yaml	single-hung sash window	1	application
+nmdc_materialized_patterns.yaml	site context (adjacent buildings, vegetation, terrain, streets)	1	application
+nmdc_materialized_patterns.yaml	size_frac	1	application
+nmdc_materialized_patterns.yaml	size_frac_low	1	application
+nmdc_materialized_patterns.yaml	size_frac_up	1	application
+nmdc_materialized_patterns.yaml	sketch	1	application
+nmdc_materialized_patterns.yaml	skip trowel	2	application
+nmdc_materialized_patterns.yaml	skos	1	application
+nmdc_materialized_patterns.yaml	slab on grade	1	application
+nmdc_materialized_patterns.yaml	slatted aluminum	1	application
+nmdc_materialized_patterns.yaml	sleet	1	application
+nmdc_materialized_patterns.yaml	sliding	2	application
+nmdc_materialized_patterns.yaml	slope_aspect	2	application
+nmdc_materialized_patterns.yaml	slope_gradient	2	application
+nmdc_materialized_patterns.yaml	slot_conditions	18	metamodel
+nmdc_materialized_patterns.yaml	slot_group	33	metamodel
+nmdc_materialized_patterns.yaml	slot_uri	496	metamodel
+nmdc_materialized_patterns.yaml	slot_usage	46	metamodel
+nmdc_materialized_patterns.yaml	slots	62	metamodel
+nmdc_materialized_patterns.yaml	sludge_retent_time	1	application
+nmdc_materialized_patterns.yaml	small grains	1	application
+nmdc_materialized_patterns.yaml	smiles	1	application
+nmdc_materialized_patterns.yaml	smooth	2	application
+nmdc_materialized_patterns.yaml	snow	1	application
+nmdc_materialized_patterns.yaml	sodium	1	application
+nmdc_materialized_patterns.yaml	soil	2	application
+nmdc_materialized_patterns.yaml	soil - water extract	1	application
+nmdc_materialized_patterns.yaml	soil_annual_season_temp	1	application
+nmdc_materialized_patterns.yaml	soil_horizon	1	application
+nmdc_materialized_patterns.yaml	soil_horizon_enum	1	application
+nmdc_materialized_patterns.yaml	soil_text_measure	1	application
+nmdc_materialized_patterns.yaml	soil_texture_meth	1	application
+nmdc_materialized_patterns.yaml	soil_type	1	application
+nmdc_materialized_patterns.yaml	soil_type_meth	1	application
+nmdc_materialized_patterns.yaml	solar_irradiance	1	application
+nmdc_materialized_patterns.yaml	solarix_12T	1	application
+nmdc_materialized_patterns.yaml	solarix_15T	1	application
+nmdc_materialized_patterns.yaml	solarix_7T	1	application
+nmdc_materialized_patterns.yaml	solid	1	application
+nmdc_materialized_patterns.yaml	solid aluminum awning	1	application
+nmdc_materialized_patterns.yaml	solid_phase_extraction	2	application
+nmdc_materialized_patterns.yaml	solubilizing_agent	1	application
+nmdc_materialized_patterns.yaml	soluble_inorg_mat	1	application
+nmdc_materialized_patterns.yaml	soluble_iron_micromol	1	application
+nmdc_materialized_patterns.yaml	soluble_org_mat	1	application
+nmdc_materialized_patterns.yaml	soluble_react_phosp	1	application
+nmdc_materialized_patterns.yaml	solvent	1	application
+nmdc_materialized_patterns.yaml	somewhat poorly	1	application
+nmdc_materialized_patterns.yaml	source	8	metamodel
+nmdc_materialized_patterns.yaml	source_concentration	1	application
+nmdc_materialized_patterns.yaml	source_file	1	metamodel
+nmdc_materialized_patterns.yaml	source_mat_id	2	application
+nmdc_materialized_patterns.yaml	south	6	application
+nmdc_materialized_patterns.yaml	south corner	1	application
+nmdc_materialized_patterns.yaml	south station above ground	1	application
+nmdc_materialized_patterns.yaml	south station amtrak	1	application
+nmdc_materialized_patterns.yaml	south station underground	1	application
+nmdc_materialized_patterns.yaml	southeast	2	application
+nmdc_materialized_patterns.yaml	southeast corner	1	application
+nmdc_materialized_patterns.yaml	southwest	2	application
+nmdc_materialized_patterns.yaml	southwest corner	1	application
+nmdc_materialized_patterns.yaml	space_typ_state	1	application
+nmdc_materialized_patterns.yaml	sparqlpath	1	metamodel
+nmdc_materialized_patterns.yaml	specific	1	application
+nmdc_materialized_patterns.yaml	specific_ecosystem	1	application
+nmdc_materialized_patterns.yaml	specific_enum	1	application
+nmdc_materialized_patterns.yaml	specific_humidity	1	application
+nmdc_materialized_patterns.yaml	sports complex	1	application
+nmdc_materialized_patterns.yaml	spreading	1	application
+nmdc_materialized_patterns.yaml	sprung floor	1	application
+nmdc_materialized_patterns.yaml	sr	1	application
+nmdc_materialized_patterns.yaml	sr_dep_env	1	application
+nmdc_materialized_patterns.yaml	sr_dep_env_enum	1	application
+nmdc_materialized_patterns.yaml	sr_geol_age	1	application
+nmdc_materialized_patterns.yaml	sr_geol_age_enum	1	application
+nmdc_materialized_patterns.yaml	sr_kerog_type	1	application
+nmdc_materialized_patterns.yaml	sr_kerog_type_enum	1	application
+nmdc_materialized_patterns.yaml	sr_lithology	1	application
+nmdc_materialized_patterns.yaml	sr_lithology_enum	1	application
+nmdc_materialized_patterns.yaml	stainless steel	1	application
+nmdc_materialized_patterns.yaml	stairwell	2	application
+nmdc_materialized_patterns.yaml	standing feature	1	application
+nmdc_materialized_patterns.yaml	standing_water_regm	1	application
+nmdc_materialized_patterns.yaml	start	2	application
+nmdc_materialized_patterns.yaml	start_date	1	application
+nmdc_materialized_patterns.yaml	start_date_inc	1	application
+nmdc_materialized_patterns.yaml	start_time_inc	1	application
+nmdc_materialized_patterns.yaml	started_at_time	2	application
+nmdc_materialized_patterns.yaml	stationary_phase	2	application
+nmdc_materialized_patterns.yaml	steam forced heat	1	application
+nmdc_materialized_patterns.yaml	steel plate	1	application
+nmdc_materialized_patterns.yaml	stomp knockdown	2	application
+nmdc_materialized_patterns.yaml	stone	2	application
+nmdc_materialized_patterns.yaml	stone facing	1	application
+nmdc_materialized_patterns.yaml	storage tank	1	application
+nmdc_materialized_patterns.yaml	storage_process_set	1	application
+nmdc_materialized_patterns.yaml	storage_units	172	application
+nmdc_materialized_patterns.yaml	store_cond	1	application
+nmdc_materialized_patterns.yaml	strand	1	application
+nmdc_materialized_patterns.yaml	stranded_orientation	1	application
+nmdc_materialized_patterns.yaml	stream	1	application
+nmdc_materialized_patterns.yaml	stretched	1	application
+nmdc_materialized_patterns.yaml	string	1	metamodel
+nmdc_materialized_patterns.yaml	string_serialization	218	metamodel
+nmdc_materialized_patterns.yaml	strip tillage	1	application
+nmdc_materialized_patterns.yaml	structured_aliases	8	metamodel
+nmdc_materialized_patterns.yaml	structured_pattern	89	metamodel
+nmdc_materialized_patterns.yaml	stucco	3	application
+nmdc_materialized_patterns.yaml	study_category	1	application
+nmdc_materialized_patterns.yaml	study_identifiers	1	application
+nmdc_materialized_patterns.yaml	study_image	1	application
+nmdc_materialized_patterns.yaml	study_set	1	application
+nmdc_materialized_patterns.yaml	subject	2	application
+nmdc_materialized_patterns.yaml	submittals	1	application
+nmdc_materialized_patterns.yaml	substance_role	1	application
+nmdc_materialized_patterns.yaml	substances_used	2	application
+nmdc_materialized_patterns.yaml	substances_volume	1	application
+nmdc_materialized_patterns.yaml	substitution	1	application
+nmdc_materialized_patterns.yaml	substructure_type	1	application
+nmdc_materialized_patterns.yaml	substructure_type_enum	1	application
+nmdc_materialized_patterns.yaml	subsurface_depth	1	application
+nmdc_materialized_patterns.yaml	suburban	1	application
+nmdc_materialized_patterns.yaml	subway	1	application
+nmdc_materialized_patterns.yaml	successional shrub land	1	application
+nmdc_materialized_patterns.yaml	sulfate	1	application
+nmdc_materialized_patterns.yaml	sulfate_fw	1	application
+nmdc_materialized_patterns.yaml	sulfide	1	application
+nmdc_materialized_patterns.yaml	summit	1	application
+nmdc_materialized_patterns.yaml	sun screen	1	application
+nmdc_materialized_patterns.yaml	sunny	1	application
+nmdc_materialized_patterns.yaml	supernatant	1	application
+nmdc_materialized_patterns.yaml	surf_air_cont	1	application
+nmdc_materialized_patterns.yaml	surf_air_cont_enum	1	application
+nmdc_materialized_patterns.yaml	surf_humidity	1	application
+nmdc_materialized_patterns.yaml	surf_material	1	application
+nmdc_materialized_patterns.yaml	surf_material_enum	1	application
+nmdc_materialized_patterns.yaml	surf_moisture	1	application
+nmdc_materialized_patterns.yaml	surf_moisture_ph	1	application
+nmdc_materialized_patterns.yaml	surf_temp	1	application
+nmdc_materialized_patterns.yaml	surfactant	1	application
+nmdc_materialized_patterns.yaml	suspend_part_matter	1	application
+nmdc_materialized_patterns.yaml	suspend_solids	1	application
+nmdc_materialized_patterns.yaml	swamp	1	application
+nmdc_materialized_patterns.yaml	swinging	1	application
+nmdc_materialized_patterns.yaml	swirl	2	application
+nmdc_materialized_patterns.yaml	symbiont	1	application
+nmdc_materialized_patterns.yaml	syntax	89	metamodel
+nmdc_materialized_patterns.yaml	syringe	1	application
+nmdc_materialized_patterns.yaml	tag	1472	application
+nmdc_materialized_patterns.yaml	tan	1	application
+nmdc_materialized_patterns.yaml	target_gene	1	application
+nmdc_materialized_patterns.yaml	target_subfragment	1	application
+nmdc_materialized_patterns.yaml	technical_reps	1	application
+nmdc_materialized_patterns.yaml	telescopic	1	application
+nmdc_materialized_patterns.yaml	temp	1	application
+nmdc_materialized_patterns.yaml	temp_out	1	application
+nmdc_materialized_patterns.yaml	temperature	1	application
+nmdc_materialized_patterns.yaml	term	2	application
+nmdc_materialized_patterns.yaml	terrazo	1	application
+nmdc_materialized_patterns.yaml	terrazzo	1	application
+nmdc_materialized_patterns.yaml	tertiary_treatment	1	application
+nmdc_materialized_patterns.yaml	test well	1	application
+nmdc_materialized_patterns.yaml	text	1305	metamodel
+nmdc_materialized_patterns.yaml	texture_measurement	1	application
+nmdc_materialized_patterns.yaml	thermo_fisher	1	application
+nmdc_materialized_patterns.yaml	thermoplastic alloy	1	application
+nmdc_materialized_patterns.yaml	tidal_stage	1	application
+nmdc_materialized_patterns.yaml	tidal_stage_enum	1	application
+nmdc_materialized_patterns.yaml	tile	3	application
+nmdc_materialized_patterns.yaml	tiles	1	application
+nmdc_materialized_patterns.yaml	tillage	1	application
+nmdc_materialized_patterns.yaml	tillage_enum	1	application
+nmdc_materialized_patterns.yaml	time	1	metamodel
+nmdc_materialized_patterns.yaml	time_of_flight	1	application
+nmdc_materialized_patterns.yaml	tined	1	application
+nmdc_materialized_patterns.yaml	tiss_cult_growth_med	1	application
+nmdc_materialized_patterns.yaml	title	638	metamodel
+nmdc_materialized_patterns.yaml	todos	38	metamodel
+nmdc_materialized_patterns.yaml	toeslope	1	application
+nmdc_materialized_patterns.yaml	toluene	1	application
+nmdc_materialized_patterns.yaml	too_short_contig_num	1	application
+nmdc_materialized_patterns.yaml	tooltip	18	application
+nmdc_materialized_patterns.yaml	top	1	application
+nmdc_materialized_patterns.yaml	tot_carb	2	application
+nmdc_materialized_patterns.yaml	tot_depth_water_col	1	application
+nmdc_materialized_patterns.yaml	tot_diss_nitro	1	application
+nmdc_materialized_patterns.yaml	tot_inorg_nitro	1	application
+nmdc_materialized_patterns.yaml	tot_iron	1	application
+nmdc_materialized_patterns.yaml	tot_nitro	1	application
+nmdc_materialized_patterns.yaml	tot_nitro_cont_meth	2	application
+nmdc_materialized_patterns.yaml	tot_nitro_content	1	application
+nmdc_materialized_patterns.yaml	tot_org_c_meth	2	application
+nmdc_materialized_patterns.yaml	tot_org_carb	2	application
+nmdc_materialized_patterns.yaml	tot_part_carb	1	application
+nmdc_materialized_patterns.yaml	tot_phosp	1	application
+nmdc_materialized_patterns.yaml	tot_phosphate	1	application
+nmdc_materialized_patterns.yaml	tot_sulfur	1	application
+nmdc_materialized_patterns.yaml	total_bases	1	application
+nmdc_materialized_patterns.yaml	train	1	application
+nmdc_materialized_patterns.yaml	train_line	1	application
+nmdc_materialized_patterns.yaml	train_line_enum	1	application
+nmdc_materialized_patterns.yaml	train_stat_loc	1	application
+nmdc_materialized_patterns.yaml	train_stat_loc_enum	1	application
+nmdc_materialized_patterns.yaml	train_stop_loc	1	application
+nmdc_materialized_patterns.yaml	train_stop_loc_enum	1	application
+nmdc_materialized_patterns.yaml	transgender	1	application
+nmdc_materialized_patterns.yaml	transgender (female to male)	1	application
+nmdc_materialized_patterns.yaml	transgender (male to female)	1	application
+nmdc_materialized_patterns.yaml	tree	1	application
+nmdc_materialized_patterns.yaml	tree_root	1	metamodel
+nmdc_materialized_patterns.yaml	trellis	1	application
+nmdc_materialized_patterns.yaml	trimethylchlorosilane	1	application
+nmdc_materialized_patterns.yaml	tropical	1	application
+nmdc_materialized_patterns.yaml	trypsin	1	application
+nmdc_materialized_patterns.yaml	tundra	1	application
+nmdc_materialized_patterns.yaml	turbidity	1	application
+nmdc_materialized_patterns.yaml	tvdss_of_hcr_press	1	application
+nmdc_materialized_patterns.yaml	tvdss_of_hcr_temp	1	application
+nmdc_materialized_patterns.yaml	typ_occup_density	1	application
+nmdc_materialized_patterns.yaml	type	4	application
+nmdc_materialized_patterns.yaml	typeof	1	metamodel
+nmdc_materialized_patterns.yaml	types	1	metamodel
+nmdc_materialized_patterns.yaml	uCi	1	application
+nmdc_materialized_patterns.yaml	uL	1	application
+nmdc_materialized_patterns.yaml	uL/kg	1	application
+nmdc_materialized_patterns.yaml	uS/cm	1	application
+nmdc_materialized_patterns.yaml	uU	1	application
+nmdc_materialized_patterns.yaml	ug	1	application
+nmdc_materialized_patterns.yaml	ug/L	1	application
+nmdc_materialized_patterns.yaml	ug/L/h	1	application
+nmdc_materialized_patterns.yaml	ug/g	1	application
+nmdc_materialized_patterns.yaml	ug/m3	1	application
+nmdc_materialized_patterns.yaml	ug/mL	1	application
+nmdc_materialized_patterns.yaml	ug/uL	1	application
+nmdc_materialized_patterns.yaml	um	1	application
+nmdc_materialized_patterns.yaml	umol	1	application
+nmdc_materialized_patterns.yaml	umol/L	1	application
+nmdc_materialized_patterns.yaml	umol/L/h	1	application
+nmdc_materialized_patterns.yaml	umol/kg	1	application
+nmdc_materialized_patterns.yaml	umol/m2/s	1	application
+nmdc_materialized_patterns.yaml	umol/s/m2	1	application
+nmdc_materialized_patterns.yaml	unbinned_contig_num	1	application
+nmdc_materialized_patterns.yaml	undeclared	1	application
+nmdc_materialized_patterns.yaml	under a seat	1	application
+nmdc_materialized_patterns.yaml	unique_key_name	1	metamodel
+nmdc_materialized_patterns.yaml	unique_key_slots	1	metamodel
+nmdc_materialized_patterns.yaml	unique_keys	1	metamodel
+nmdc_materialized_patterns.yaml	unisex	1	application
+nmdc_materialized_patterns.yaml	units_alignment_excuse	18	application
+nmdc_materialized_patterns.yaml	urban	1	application
+nmdc_materialized_patterns.yaml	uri	24	metamodel
+nmdc_materialized_patterns.yaml	uriorcurie	1	metamodel
+nmdc_materialized_patterns.yaml	url	1	application
+nmdc_materialized_patterns.yaml	uses_calibration	1	application
+nmdc_materialized_patterns.yaml	v-bottom_conical_tube	1	application
+nmdc_materialized_patterns.yaml	value	2147	metamodel
+nmdc_materialized_patterns.yaml	value_presence	1	metamodel
+nmdc_materialized_patterns.yaml	vegetable crops	1	application
+nmdc_materialized_patterns.yaml	vendor	1	application
+nmdc_materialized_patterns.yaml	veneer plaster	1	application
+nmdc_materialized_patterns.yaml	venetian awning	1	application
+nmdc_materialized_patterns.yaml	vent cover	1	application
+nmdc_materialized_patterns.yaml	ventilation system	1	application
+nmdc_materialized_patterns.yaml	ventilation_rate	1	application
+nmdc_materialized_patterns.yaml	ventilation_type	1	application
+nmdc_materialized_patterns.yaml	vermiculite	1	application
+nmdc_materialized_patterns.yaml	version	2	metamodel
+nmdc_materialized_patterns.yaml	very poorly	1	application
+nmdc_materialized_patterns.yaml	vestibule	1	application
+nmdc_materialized_patterns.yaml	vfa	1	application
+nmdc_materialized_patterns.yaml	vfa_fw	1	application
+nmdc_materialized_patterns.yaml	videos	2	application
+nmdc_materialized_patterns.yaml	vine crops	1	application
+nmdc_materialized_patterns.yaml	vinyl	3	application
+nmdc_materialized_patterns.yaml	vinyl composition tile	1	application
+nmdc_materialized_patterns.yaml	vis_media	1	application
+nmdc_materialized_patterns.yaml	vis_media_enum	1	application
+nmdc_materialized_patterns.yaml	viscosity	1	application
+nmdc_materialized_patterns.yaml	visible signs of mold/mildew	1	application
+nmdc_materialized_patterns.yaml	visible wear	7	application
+nmdc_materialized_patterns.yaml	volatile organic compounds	1	application
+nmdc_materialized_patterns.yaml	volatile_org_comp	1	application
+nmdc_materialized_patterns.yaml	volume	4	application
+nmdc_materialized_patterns.yaml	vortex_genie_2	1	application
+nmdc_materialized_patterns.yaml	vwr	1	application
+nmdc_materialized_patterns.yaml	wall	1	application
+nmdc_materialized_patterns.yaml	wall discoloration	1	application
+nmdc_materialized_patterns.yaml	wall paper	1	application
+nmdc_materialized_patterns.yaml	wall_area	1	application
+nmdc_materialized_patterns.yaml	wall_const_type	1	application
+nmdc_materialized_patterns.yaml	wall_const_type_enum	1	application
+nmdc_materialized_patterns.yaml	wall_finish_mat	1	application
+nmdc_materialized_patterns.yaml	wall_finish_mat_enum	1	application
+nmdc_materialized_patterns.yaml	wall_height	1	application
+nmdc_materialized_patterns.yaml	wall_loc	1	application
+nmdc_materialized_patterns.yaml	wall_loc_enum	1	application
+nmdc_materialized_patterns.yaml	wall_surf_treatment	1	application
+nmdc_materialized_patterns.yaml	wall_surf_treatment_enum	1	application
+nmdc_materialized_patterns.yaml	wall_texture	1	application
+nmdc_materialized_patterns.yaml	wall_texture_enum	1	application
+nmdc_materialized_patterns.yaml	wall_thermal_mass	1	application
+nmdc_materialized_patterns.yaml	wall_water_mold	1	application
+nmdc_materialized_patterns.yaml	warehouse	1	application
+nmdc_materialized_patterns.yaml	was_generated_by	4	application
+nmdc_materialized_patterns.yaml	was_informed_by	14	application
+nmdc_materialized_patterns.yaml	wastewater_type	1	application
+nmdc_materialized_patterns.yaml	water	3	application
+nmdc_materialized_patterns.yaml	water phase	1	application
+nmdc_materialized_patterns.yaml	water stains	1	application
+nmdc_materialized_patterns.yaml	water_cont_soil_meth	2	application
+nmdc_materialized_patterns.yaml	water_content	2	application
+nmdc_materialized_patterns.yaml	water_current	1	application
+nmdc_materialized_patterns.yaml	water_cut	1	application
+nmdc_materialized_patterns.yaml	water_feat_size	1	application
+nmdc_materialized_patterns.yaml	water_feat_type	1	application
+nmdc_materialized_patterns.yaml	water_feat_type_enum	1	application
+nmdc_materialized_patterns.yaml	water_prod_rate	1	application
+nmdc_materialized_patterns.yaml	water_temp_regm	1	application
+nmdc_materialized_patterns.yaml	waterfall	1	application
+nmdc_materialized_patterns.yaml	watering_regm	2	application
+nmdc_materialized_patterns.yaml	waters	1	application
+nmdc_materialized_patterns.yaml	websites	2	application
+nmdc_materialized_patterns.yaml	weekday	1	application
+nmdc_materialized_patterns.yaml	weekday_enum	1	application
+nmdc_materialized_patterns.yaml	well	2	application
+nmdc_materialized_patterns.yaml	wellhead	1	application
+nmdc_materialized_patterns.yaml	west	6	application
+nmdc_materialized_patterns.yaml	west corner	1	application
+nmdc_materialized_patterns.yaml	wet floor	1	application
+nmdc_materialized_patterns.yaml	wgs84	1	application
+nmdc_materialized_patterns.yaml	wikidata	1	application
+nmdc_materialized_patterns.yaml	wikipedia	2	application
+nmdc_materialized_patterns.yaml	wild	1	application
+nmdc_materialized_patterns.yaml	win	1	application
+nmdc_materialized_patterns.yaml	wind_direction	1	application
+nmdc_materialized_patterns.yaml	wind_speed	1	application
+nmdc_materialized_patterns.yaml	window	1	application
+nmdc_materialized_patterns.yaml	window_cond	1	application
+nmdc_materialized_patterns.yaml	window_cond_enum	1	application
+nmdc_materialized_patterns.yaml	window_cover	1	application
+nmdc_materialized_patterns.yaml	window_cover_enum	1	application
+nmdc_materialized_patterns.yaml	window_horiz_pos	1	application
+nmdc_materialized_patterns.yaml	window_horiz_pos_enum	1	application
+nmdc_materialized_patterns.yaml	window_loc	1	application
+nmdc_materialized_patterns.yaml	window_loc_enum	1	application
+nmdc_materialized_patterns.yaml	window_mat	1	application
+nmdc_materialized_patterns.yaml	window_mat_enum	1	application
+nmdc_materialized_patterns.yaml	window_open_freq	1	application
+nmdc_materialized_patterns.yaml	window_size	1	application
+nmdc_materialized_patterns.yaml	window_status	1	application
+nmdc_materialized_patterns.yaml	window_type	1	application
+nmdc_materialized_patterns.yaml	window_type_enum	1	application
+nmdc_materialized_patterns.yaml	window_vert_pos	1	application
+nmdc_materialized_patterns.yaml	window_vert_pos_enum	1	application
+nmdc_materialized_patterns.yaml	window_water_mold	1	application
+nmdc_materialized_patterns.yaml	windows	1	application
+nmdc_materialized_patterns.yaml	windy	1	application
+nmdc_materialized_patterns.yaml	wire gauged	1	application
+nmdc_materialized_patterns.yaml	wk	1	application
+nmdc_materialized_patterns.yaml	wood	5	application
+nmdc_materialized_patterns.yaml	wood framed	1	application
+nmdc_materialized_patterns.yaml	wood stove	1	application
+nmdc_materialized_patterns.yaml	wood strip or parquet	1	application
+nmdc_materialized_patterns.yaml	wood-framed	1	application
+nmdc_materialized_patterns.yaml	wood/plastic composite	1	application
+nmdc_materialized_patterns.yaml	wooden	1	application
+nmdc_materialized_patterns.yaml	workflow_execution_class	1	application
+nmdc_materialized_patterns.yaml	workflow_execution_id	1	application
+nmdc_materialized_patterns.yaml	workflow_execution_set	1	application
+nmdc_materialized_patterns.yaml	workflow_parameter_data	1	application
+nmdc_materialized_patterns.yaml	xsd	1	application
+nmdc_materialized_patterns.yaml	xylene	1	application
+nmdc_materialized_patterns.yaml	yes	1	application
+nmdc_materialized_patterns.yaml	zenodo	1	application
+nmdc_materialized_patterns.yaml	zinc	1	application
+nmdc_materialized_patterns.yaml	zonal tillage	1	application
