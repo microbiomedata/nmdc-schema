@@ -28,10 +28,8 @@ SELF_CONTAINED_FILES = {
     "src/schema/nmdc_subsets.yaml",
     "src/schema/nmdc_types.yaml",
     "src/schema/nmdc.yaml",
-    "src/schema/portal_emsl.yaml",
     "src/schema/portal_enums.yaml",
-    "src/schema/portal_jgi_metagenomics.yaml",
-    "src/schema/portal_jgi_metatranscriptomics.yaml",
+    "src/schema/portal_user_facility.yaml",
     "src/schema/portal_mixs_inspired.yaml",
     "src/schema/portal_sample_id.yaml"
 }

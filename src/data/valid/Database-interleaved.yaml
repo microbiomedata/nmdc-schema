@@ -3028,10 +3028,10 @@ biosample_set:
     start_date_inc: '2023-01-27'
     start_time_inc: 13:42+0000
     project_id: no example from MIxS
-    replicate_number: '1'
+    replicate_number: 1
     sample_shipped: 15 g
     sample_type: soil - water extract
-    technical_reps: '2'
+    technical_reps: 2
     analysis_type:
       - metabolomics
       - metagenomics
