@@ -6334,7 +6334,7 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-    description: Structured miscellaneous property assertions for this Biosample. Use when a value cannot cleanly fit an existing, policy-governed slot.
+    description: Structured miscellaneous property assertions. Use when a value cannot cleanly fit an existing, policy-governed slot.
     title: miscellaneous parameter
     examples:
       - value: Bicarbonate ion concentration;2075 micromole per kilogram
@@ -9787,10 +9787,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: mixs_inconsistent
-      storage_units: g/kg
+      storage_units:
+        tag: storage_units
+        value: g/kg
     description: The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound.
     title: specific humidity
     examples:
@@ -10861,10 +10860,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: complex_unit
-      storage_units: m
+      storage_units:
+        tag: storage_units
+        value: m
     description: True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m).
     title: depth (TVDSS) of hydrocarbon resource temperature
     examples:
