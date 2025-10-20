@@ -1,0 +1,4931 @@
+name: no_orphans
+comments:
+- array has a slot_usage on a slot
+- not happy with contributors either
+id: https://example.com/no_orphans
+prefixes:
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  xsd:
+    prefix_prefix: xsd
+    prefix_reference: http://www.w3.org/2001/XMLSchema#
+  shex:
+    prefix_prefix: shex
+    prefix_reference: http://www.w3.org/ns/shex#
+  schema:
+    prefix_prefix: schema
+    prefix_reference: http://schema.org/
+  skos:
+    prefix_prefix: skos
+    prefix_reference: http://www.w3.org/2004/02/skos/core#
+  OIO:
+    prefix_prefix: OIO
+    prefix_reference: http://www.geneontology.org/formats/oboInOwl#
+  IAO:
+    prefix_prefix: IAO
+    prefix_reference: http://purl.obolibrary.org/obo/IAO_
+  qudt:
+    prefix_prefix: qudt
+    prefix_reference: http://qudt.org/schema/qudt/
+  skosxl:
+    prefix_prefix: skosxl
+    prefix_reference: http://www.w3.org/2008/05/skos-xl#
+  NCIT:
+    prefix_prefix: NCIT
+    prefix_reference: http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#
+  pav:
+    prefix_prefix: pav
+    prefix_reference: http://purl.org/pav/
+  oslc:
+    prefix_prefix: oslc
+    prefix_reference: http://open-services.net/ns/core#
+  bibo:
+    prefix_prefix: bibo
+    prefix_reference: http://purl.org/ontology/bibo/
+  swrl:
+    prefix_prefix: swrl
+    prefix_reference: http://www.w3.org/2003/11/swrl#
+  sh:
+    prefix_prefix: sh
+    prefix_reference: http://www.w3.org/ns/shacl#
+  owl:
+    prefix_prefix: owl
+    prefix_reference: http://www.w3.org/2002/07/owl#
+  qb:
+    prefix_prefix: qb
+    prefix_reference: http://purl.org/linked-data/cube#
+  prov:
+    prefix_prefix: prov
+    prefix_reference: http://www.w3.org/ns/prov#
+  vann:
+    prefix_prefix: vann
+    prefix_reference: https://vocab.org/vann/
+  cdisc:
+    prefix_prefix: cdisc
+    prefix_reference: http://rdf.cdisc.org/mms#
+  SIO:
+    prefix_prefix: SIO
+    prefix_reference: http://semanticscience.org/resource/SIO_
+  github:
+    prefix_prefix: github
+    prefix_reference: https://github.com/
+  gom:
+    prefix_prefix: gom
+    prefix_reference: https://w3id.org/gom#
+  datasets:
+    prefix_prefix: datasets
+    prefix_reference: https://w3id.org/linkml/report
+  void:
+    prefix_prefix: void
+    prefix_reference: http://rdfs.org/ns/void#
+  frictionless:
+    prefix_prefix: frictionless
+    prefix_reference: https://specs.frictionlessdata.io/
+  formats:
+    prefix_prefix: formats
+    prefix_reference: http://www.w3.org/ns/formats/
+  csvw:
+    prefix_prefix: csvw
+    prefix_reference: http://www.w3.org/ns/csvw#
+  dcat:
+    prefix_prefix: dcat
+    prefix_reference: http://www.w3.org/ns/dcat#
+  mediatypes:
+    prefix_prefix: mediatypes
+    prefix_reference: https://www.iana.org/assignments/media-types/
+  reporting:
+    prefix_prefix: reporting
+    prefix_reference: https://w3id.org/linkml/report
+default_prefix: https://example.com/no_orphans/
+subsets:
+  MinimalSubset:
+    name: MinimalSubset
+    description: 'The absolute minimal set of elements necessary for defining any
+      schema.
+
+
+      schemas conforming to the minimal subset consist of classes, with all slots
+
+      inlined as attributes. There are no enums.'
+    title: minimal subset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 0
+  BasicSubset:
+    name: BasicSubset
+    description: 'An extension of MinimalSubset that avoids advanced constructs and
+      can be implemented by a broad variety of tools.
+
+
+      This subset roughly corresponds to the union of most standard constructs used
+      in relational datamodel modeling,
+
+      object oriented modeling, and simple JSON-style modeling, while avoiding more
+      advanced constructs from these languages.
+
+
+      It is often possible to translate from a more expressive schema to a BasicSubset
+      schema, through a schema derivation
+
+      process'
+    title: basic subset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1
+  SpecificationSubset:
+    name: SpecificationSubset
+    description: 'A subset that includes all the metamodel elements that form part
+      of the normative LinkML specification.
+
+
+      The complete LinkML specification can be found at [linkml:specification](https://w3id.org/linkml/specification)'
+    title: specification subset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 2
+  RelationalModelProfile:
+    name: RelationalModelProfile
+    description: 'A profile that includes all the metamodel elements whose semantics
+      can be expressed using the classic Relational Model.
+
+      The Relational Model excludes collections (multivalued slots) as first class
+      entities. Instead, these must be
+
+      mapped to backreferences
+
+
+      The classic Relational Model excludes inheritance and polymorphism -- these
+      must be rolled down to
+
+      concrete classes or otherwise transformed.'
+    title: relational model profile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 3
+  ObjectOrientedProfile:
+    name: ObjectOrientedProfile
+    description: 'A profile that includes all the metamodel elements whose semantics
+      can be expressed using a minimal
+
+      implementation of the object oriented metamodel as employed by languages such
+      as Java and Python, or
+
+      in modeling frameworks like UML'
+    title: object oriented profile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 4
+  OwlProfile:
+    name: OwlProfile
+    description: A profile that includes all the metamodel elements whose semantics
+      can be expressed in OWL
+    title: owl profile
+    from_schema: https://w3id.org/linkml/meta
+types:
+  string:
+    name: string
+    description: A character string
+    notes:
+    - In RDF serializations, a slot with range of string is treated as a literal or
+      type xsd:string.   If you are authoring schemas in LinkML YAML, the type is
+      referenced with the lower case "string".
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:Text
+    base: str
+    uri: xsd:string
+  integer:
+    name: integer
+    description: An integer
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "integer".
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:Integer
+    base: int
+    uri: xsd:integer
+  boolean:
+    name: boolean
+    description: A binary (true or false) value
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "boolean".
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:Boolean
+    base: Bool
+    uri: xsd:boolean
+    repr: bool
+  float:
+    name: float
+    description: A real number that conforms to the xsd:float specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "float".
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:float
+  double:
+    name: double
+    description: A real number that conforms to the xsd:double specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "double".
+    from_schema: https://w3id.org/linkml/types
+    close_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:double
+  decimal:
+    name: decimal
+    description: A real number with arbitrary precision that conforms to the xsd:decimal
+      specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "decimal".
+    from_schema: https://w3id.org/linkml/types
+    broad_mappings:
+    - schema:Number
+    base: Decimal
+    uri: xsd:decimal
+  time:
+    name: time
+    description: A time object represents a (local) time of day, independent of any
+      particular day
+    notes:
+    - URI is dateTime because OWL reasoners do not work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "time".
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:Time
+    base: XSDTime
+    uri: xsd:time
+    repr: str
+  date:
+    name: date
+    description: a date (year, month and day) in an idealized calendar
+    notes:
+    - URI is dateTime because OWL reasoners don't work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date".
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:Date
+    base: XSDDate
+    uri: xsd:date
+    repr: str
+  datetime:
+    name: datetime
+    description: The combination of a date and time
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "datetime".
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:DateTime
+    base: XSDDateTime
+    uri: xsd:dateTime
+    repr: str
+  date_or_datetime:
+    name: date_or_datetime
+    description: Either a date or a datetime
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date_or_datetime".
+    from_schema: https://w3id.org/linkml/types
+    base: str
+    uri: linkml:DateOrDatetime
+    repr: str
+  uriorcurie:
+    name: uriorcurie
+    description: a URI or a CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uriorcurie".
+    from_schema: https://w3id.org/linkml/types
+    base: URIorCURIE
+    uri: xsd:anyURI
+    repr: str
+  curie:
+    name: curie
+    conforms_to: https://www.w3.org/TR/curie/
+    description: a compact URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "curie".
+    comments:
+    - in RDF serializations this MUST be expanded to a URI
+    - in non-RDF serializations MAY be serialized as the compact representation
+    from_schema: https://w3id.org/linkml/types
+    base: Curie
+    uri: xsd:string
+    repr: str
+  uri:
+    name: uri
+    conforms_to: https://www.ietf.org/rfc/rfc3987.txt
+    description: a complete URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uri".
+    comments:
+    - in RDF serializations a slot with range of uri is treated as a literal or type
+      xsd:anyURI unless it is an identifier or a reference to an identifier, in which
+      case it is translated directly to a node
+    from_schema: https://w3id.org/linkml/types
+    close_mappings:
+    - schema:URL
+    base: URI
+    uri: xsd:anyURI
+    repr: str
+  ncname:
+    name: ncname
+    description: Prefix part of CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "ncname".
+    from_schema: https://w3id.org/linkml/types
+    base: NCName
+    uri: xsd:string
+    repr: str
+  objectidentifier:
+    name: objectidentifier
+    description: A URI or CURIE that represents an object in the model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "objectidentifier".
+    comments:
+    - Used for inheritance and type checking
+    from_schema: https://w3id.org/linkml/types
+    base: ElementIdentifier
+    uri: shex:iri
+    repr: str
+  nodeidentifier:
+    name: nodeidentifier
+    description: A URI, CURIE or BNODE that represents a node in a model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "nodeidentifier".
+    from_schema: https://w3id.org/linkml/types
+    base: NodeIdentifier
+    uri: shex:nonLiteral
+    repr: str
+  jsonpointer:
+    name: jsonpointer
+    conforms_to: https://datatracker.ietf.org/doc/html/rfc6901
+    description: A string encoding a JSON Pointer. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to a valid object within the current
+      instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpointer".
+    from_schema: https://w3id.org/linkml/types
+    base: str
+    uri: xsd:string
+    repr: str
+  jsonpath:
+    name: jsonpath
+    conforms_to: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html
+    description: A string encoding a JSON Path. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to zero or more valid objects within
+      the current instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpath".
+    from_schema: https://w3id.org/linkml/types
+    base: str
+    uri: xsd:string
+    repr: str
+  sparqlpath:
+    name: sparqlpath
+    conforms_to: https://www.w3.org/TR/sparql11-query/#propertypaths
+    description: A string encoding a SPARQL Property Path. The value of the string
+      MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects
+      within the current instance document when encoded as RDF.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "sparqlpath".
+    from_schema: https://w3id.org/linkml/types
+    base: str
+    uri: xsd:string
+    repr: str
+  any_number:
+    name: any_number
+    description: A number of any type
+    from_schema: https://w3id.org/linkml/extended_types
+    union_of:
+    - integer
+    - float
+    - decimal
+  signedinteger:
+    name: signedinteger
+    description: An integer that may be negative
+    from_schema: https://w3id.org/linkml/extended_types
+    see_also:
+    - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.signedinteger
+    typeof: integer
+  unsignedinteger:
+    name: unsignedinteger
+    description: An integer that is non-negative
+    from_schema: https://w3id.org/linkml/extended_types
+    see_also:
+    - https://www.w3.org/TR/xmlschema-2/#nonNegativeInteger
+    - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.unsignedinteger
+    typeof: integer
+    uri: xsd:unsignedInt
+    minimum_value: 0
+  int8:
+    name: int8
+    description: An 8-bit signed integer
+    from_schema: https://w3id.org/linkml/extended_types
+    see_also:
+    - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.byte
+    aliases:
+    - byte
+    - b
+    typeof: signedinteger
+    minimum_value: -128
+    maximum_value: 127
+  int16:
+    name: int16
+    description: A 16-bit signed integer
+    from_schema: https://w3id.org/linkml/extended_types
+    see_also:
+    - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.short
+    aliases:
+    - short
+    - h
+    typeof: signedinteger
+    minimum_value: -32768
+    maximum_value: 32767
+  int32:
+    name: int32
+    description: A 32-bit signed integer
+    from_schema: https://w3id.org/linkml/extended_types
+    see_also:
+    - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.intc
+    aliases:
+    - intc
+    - i
+    typeof: signedinteger
+    minimum_value: -2147483648
+    maximum_value: 2147483647
+  int64:
+    name: int64
+    description: A 64-bit signed integer
+    from_schema: https://w3id.org/linkml/extended_types
+    see_also:
+    - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.int_
+    aliases:
+    - long
+    - l
+    - int_
+    typeof: signedinteger
+    minimum_value: -9223372036854775808
+    maximum_value: 9223372036854775807
+  uint8:
+    name: uint8
+    description: An 8-bit unsigned integer
+    from_schema: https://w3id.org/linkml/extended_types
+    see_also:
+    - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.uint8
+    aliases:
+    - ubyte
+    - B
+    typeof: unsignedinteger
+    maximum_value: 255
+  uint16:
+    name: uint16
+    description: A 16-bit unsigned integer
+    from_schema: https://w3id.org/linkml/extended_types
+    aliases:
+    - ushort
+    - H
+    typeof: unsignedinteger
+    maximum_value: 65535
+  uint32:
+    name: uint32
+    description: A 32-bit unsigned integer
+    from_schema: https://w3id.org/linkml/extended_types
+    aliases:
+    - uintc
+    - I
+    typeof: unsignedinteger
+    maximum_value: 4294967295
+  uint64:
+    name: uint64
+    description: A 64-bit unsigned integer
+    from_schema: https://w3id.org/linkml/extended_types
+    aliases:
+    - ulong
+    - L
+    - uint_
+    typeof: unsignedinteger
+    maximum_value: 18446744073709551615
+  float16:
+    name: float16
+    description: A 16-bit floating point number
+    from_schema: https://w3id.org/linkml/extended_types
+    see_also:
+    - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.half
+    aliases:
+    - half
+    - e
+    typeof: float
+  float32:
+    name: float32
+    description: A 32-bit floating point number
+    from_schema: https://w3id.org/linkml/extended_types
+    see_also:
+    - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float32
+    aliases:
+    - f
+    typeof: float
+  float64:
+    name: float64
+    description: A 64-bit floating point number
+    from_schema: https://w3id.org/linkml/extended_types
+    see_also:
+    - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64
+    aliases:
+    - d
+    typeof: float
+enums:
+  pv_formula_options:
+    name: pv_formula_options
+    description: The formula used to generate the set of permissible values from the
+      code_set values
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1
+    permissible_values:
+      CODE:
+        text: CODE
+        description: The permissible values are the set of possible codes in the code
+          set
+      CURIE:
+        text: CURIE
+        description: The permissible values are the set of CURIES in the code set
+      URI:
+        text: URI
+        description: The permissible values are the set of code URIs in the code set
+      FHIR_CODING:
+        text: FHIR_CODING
+        description: The permissible values are the set of FHIR coding elements derived
+          from the code set
+      LABEL:
+        text: LABEL
+        description: The permissible values are the set of human readable labels in
+          the code set
+  presence_enum:
+    name: presence_enum
+    description: enumeration of conditions by which a slot value should be set
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    rank: 11
+    permissible_values:
+      UNCOMMITTED:
+        text: UNCOMMITTED
+      PRESENT:
+        text: PRESENT
+      ABSENT:
+        text: ABSENT
+  relational_role_enum:
+    name: relational_role_enum
+    description: enumeration of roles a slot on a relationship class can play
+    from_schema: https://w3id.org/linkml/meta
+    rank: 3
+    permissible_values:
+      SUBJECT:
+        text: SUBJECT
+        description: a slot with this role connects a relationship to its subject/source
+          node
+        meaning: rdf:subject
+        exact_mappings:
+        - owl:annotatedSource
+      OBJECT:
+        text: OBJECT
+        description: a slot with this role connects a relationship to its object/target
+          node
+        meaning: rdf:object
+        exact_mappings:
+        - owl:annotatedTarget
+      PREDICATE:
+        text: PREDICATE
+        description: a slot with this role connects a relationship to its predicate/property
+        meaning: rdf:predicate
+        exact_mappings:
+        - owl:annotatedProperty
+      NODE:
+        text: NODE
+        description: a slot with this role connects a symmetric relationship to a
+          node that represents either subject or object node
+      OTHER_ROLE:
+        text: OTHER_ROLE
+        description: a slot with this role connects a relationship to a node that
+          is not subject/object/predicate
+  alias_predicate_enum:
+    name: alias_predicate_enum
+    description: permissible values for the relationship between an element and an
+      alias
+    from_schema: https://w3id.org/linkml/meta
+    rank: 5
+    permissible_values:
+      EXACT_SYNONYM:
+        text: EXACT_SYNONYM
+        meaning: skos:exactMatch
+      RELATED_SYNONYM:
+        text: RELATED_SYNONYM
+        meaning: skos:relatedMatch
+      BROAD_SYNONYM:
+        text: BROAD_SYNONYM
+        meaning: skos:broaderMatch
+      NARROW_SYNONYM:
+        text: NARROW_SYNONYM
+        meaning: skos:narrowerMatch
+  obligation_level_enum:
+    name: obligation_level_enum
+    description: The level of obligation or recommendation strength for a metadata
+      element
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 10
+    permissible_values:
+      REQUIRED:
+        text: REQUIRED
+        description: The metadata element is required to be present in the model
+      RECOMMENDED:
+        text: RECOMMENDED
+        description: The metadata element is recommended to be present in the model
+        aliases:
+        - ENCOURAGED
+      OPTIONAL:
+        text: OPTIONAL
+        description: The metadata element is optional to be present in the model
+      EXAMPLE:
+        text: EXAMPLE
+        description: The metadata element is an example of how to use the model
+      DISCOURAGED:
+        text: DISCOURAGED
+        description: The metadata element is allowed but discouraged to be present
+          in the model
+  ArrayLinearizationOrderOptions:
+    name: ArrayLinearizationOrderOptions
+    description: Determines how a linear contiguous representation of the elements
+      of an array map to array indices
+    from_schema: https://w3id.org/linkml/lib/arrays
+    permissible_values:
+      COLUMN_MAJOR_ARRAY_ORDER:
+        text: COLUMN_MAJOR_ARRAY_ORDER
+        description: An array layout option in which the elements in each column is
+          stored in consecutive positions, or any generalization thereof to dimensionality
+          greater than 2
+        meaning: gom:columnMajorArray
+        aliases:
+        - F order
+      ROW_MAJOR_ARRAY_ORDER:
+        text: ROW_MAJOR_ARRAY_ORDER
+        description: An array layout option in which the elements in each row is stored
+          in consecutive positions, or any generalization thereof to dimensionality
+          greater than 2
+        meaning: gom:rowMajorArray
+        aliases:
+        - C order
+  TestRole:
+    name: TestRole
+    from_schema: https://w3id.org/linkml/datasets
+    permissible_values:
+      Example:
+        text: Example
+      CounterExample:
+        text: CounterExample
+  MediaTypeEnum:
+    name: MediaTypeEnum
+    from_schema: https://w3id.org/linkml/datasets
+    exact_mappings:
+    - dcterms:MediaType
+    permissible_values:
+      csv:
+        text: csv
+        meaning: mediatypes:text/csv
+      rdf-xml:
+        text: rdf-xml
+        meaning: mediatypes:application/rdf+xml
+  FormatEnum:
+    name: FormatEnum
+    from_schema: https://w3id.org/linkml/datasets
+    permissible_values:
+      JSON-LD:
+        text: JSON-LD
+        meaning: formats:JSON-LD
+      N3:
+        text: N3
+        meaning: formats:N3
+      N-Triples:
+        text: N-Triples
+        meaning: formats:N-Triples
+      N-Quads:
+        text: N-Quads
+        meaning: formats:N-Quads
+      LD Patch:
+        text: LD Patch
+        meaning: formats:LD_Patch
+      Microdata:
+        text: Microdata
+        meaning: formats:microdata
+      OWL XML Serialization:
+        text: OWL XML Serialization
+        meaning: formats:OWL_XML
+      OWL Functional Syntax:
+        text: OWL Functional Syntax
+        meaning: formats:OWL_Functional
+      OWL Manchester Syntax:
+        text: OWL Manchester Syntax
+        meaning: formats:OWL_Manchester
+      POWDER:
+        text: POWDER
+        meaning: formats:POWDER
+      POWDER-S:
+        text: POWDER-S
+        meaning: formats:POWDER-S
+      PROV-N:
+        text: PROV-N
+        meaning: formats:PROV-N
+      PROV-XML:
+        text: PROV-XML
+        meaning: formats:PROV-XML
+      RDFa:
+        text: RDFa
+        meaning: formats:RDFa
+      RDF/JSON:
+        text: RDF/JSON
+        meaning: formats:RDF_JSON
+      RDF/XML:
+        text: RDF/XML
+        meaning: formats:RDF_XML
+      RIF XML Syntax:
+        text: RIF XML Syntax
+        meaning: formats:RIF_XML
+      SPARQL Results in XML:
+        text: SPARQL Results in XML
+        meaning: formats:SPARQL_Results_XML
+      SPARQL Results in JSON:
+        text: SPARQL Results in JSON
+        meaning: formats:SPARQL_Results_JSON
+      SPARQL Results in CSV:
+        text: SPARQL Results in CSV
+        meaning: formats:SPARQL_Results_CSV
+      SPARQL Results in TSV:
+        text: SPARQL Results in TSV
+        meaning: formats:SPARQL_Results_TSV
+      Turtle:
+        text: Turtle
+        meaning: formats:Turtle
+      TriG:
+        text: TriG
+        meaning: formats:TriG
+      YAML:
+        text: YAML
+      JSON:
+        text: JSON
+  problem_type:
+    name: problem_type
+    from_schema: https://w3id.org/linkml/reporting
+    permissible_values:
+      undeclared_slot:
+        text: undeclared_slot
+        description: Applies when a slot is used in data but the slot is undeclared
+          in the datamodel
+      inapplicable_slot:
+        text: inapplicable_slot
+        description: Applies when a slot is used in an instance of a class where the
+          slot is not applicable for that class
+      missing_slot_value:
+        text: missing_slot_value
+        description: Applies when an instance of a class has a required slot which
+          is not filled in
+      slot_range_violation:
+        text: slot_range_violation
+        description: Applies when the value of a slot is inconsistent with the declared
+          range
+      max_count_violation:
+        text: max_count_violation
+        meaning: sh:MaxCountConstraintComponent
+      parsing_error:
+        text: parsing_error
+        description: The data could not be parsed
+  severity_options:
+    name: severity_options
+    from_schema: https://w3id.org/linkml/reporting
+    exact_mappings:
+    - sh:Severity
+    permissible_values:
+      FATAL:
+        text: FATAL
+      ERROR:
+        text: ERROR
+        meaning: sh:Violation
+      WARNING:
+        text: WARNING
+        meaning: sh:Warning
+      INFO:
+        text: INFO
+        meaning: sh:Info
+slots:
+  mappings:
+    name: mappings
+    description: A list of terms from different schemas or terminology systems that
+      have comparable meaning. These may include terms that are precisely equivalent,
+      broader or narrower in meaning, or otherwise semantically related but not equivalent
+      from a strict ontological perspective.
+    from_schema: https://w3id.org/linkml/mappings
+    aliases:
+    - xrefs
+    - identifiers
+    - alternate identifiers
+    - alternate ids
+    slot_uri: skos:mappingRelation
+    range: uriorcurie
+    multivalued: true
+  exact mappings:
+    name: exact mappings
+    description: A list of terms from different schemas or terminology systems that
+      have identical meaning.
+    from_schema: https://w3id.org/linkml/mappings
+    is_a: mappings
+    slot_uri: skos:exactMatch
+    inherited: false
+    range: uriorcurie
+    multivalued: true
+  close mappings:
+    name: close mappings
+    description: A list of terms from different schemas or terminology systems that
+      have close meaning.
+    from_schema: https://w3id.org/linkml/mappings
+    is_a: mappings
+    slot_uri: skos:closeMatch
+    inherited: false
+    range: uriorcurie
+    multivalued: true
+  related mappings:
+    name: related mappings
+    description: A list of terms from different schemas or terminology systems that
+      have related meaning.
+    from_schema: https://w3id.org/linkml/mappings
+    is_a: mappings
+    slot_uri: skos:relatedMatch
+    inherited: false
+    range: uriorcurie
+    multivalued: true
+  narrow mappings:
+    name: narrow mappings
+    description: A list of terms from different schemas or terminology systems that
+      have narrower meaning.
+    from_schema: https://w3id.org/linkml/mappings
+    is_a: mappings
+    slot_uri: skos:narrowMatch
+    inherited: false
+    range: uriorcurie
+    multivalued: true
+  broad mappings:
+    name: broad mappings
+    description: A list of terms from different schemas or terminology systems that
+      have broader meaning.
+    from_schema: https://w3id.org/linkml/mappings
+    is_a: mappings
+    slot_uri: skos:broadMatch
+    inherited: false
+    range: uriorcurie
+    multivalued: true
+  deprecated element has exact replacement:
+    name: deprecated element has exact replacement
+    description: When an element is deprecated, it can be automatically replaced by
+      this uri or curie
+    from_schema: https://w3id.org/linkml/mappings
+    mappings:
+    - IAO:0100001
+    range: uriorcurie
+  deprecated element has possible replacement:
+    name: deprecated element has possible replacement
+    description: When an element is deprecated, it can be potentially replaced by
+      this uri or curie
+    from_schema: https://w3id.org/linkml/mappings
+    mappings:
+    - OIO:consider
+    range: uriorcurie
+  extensions:
+    name: extensions
+    description: a tag/text tuple attached to an arbitrary element
+    from_schema: https://w3id.org/linkml/extensions
+    domain: extensible
+    range: extension
+    multivalued: true
+    inlined: true
+  extension_tag:
+    name: extension_tag
+    description: a tag associated with an extension
+    from_schema: https://w3id.org/linkml/extensions
+    domain: extension
+    key: true
+    alias: tag
+    range: uriorcurie
+    required: true
+  extension_value:
+    name: extension_value
+    annotations:
+      simple_dict_value:
+        tag: simple_dict_value
+        value: true
+    description: the actual annotation
+    from_schema: https://w3id.org/linkml/extensions
+    domain: extension
+    alias: value
+    range: AnyValue
+    required: true
+  annotations:
+    name: annotations
+    description: a collection of tag/text tuples with the semantics of OWL Annotation
+    from_schema: https://w3id.org/linkml/annotations
+    is_a: extensions
+    domain: annotatable
+    range: annotation
+    multivalued: true
+  unit:
+    name: unit
+    description: an encoding of a unit
+    from_schema: https://w3id.org/linkml/units
+    slot_uri: qudt:unit
+    range: UnitOfMeasure
+  ucum_code:
+    name: ucum_code
+    description: associates a QUDT unit with its UCUM code (case-sensitive).
+    from_schema: https://w3id.org/linkml/units
+    domain: UnitOfMeasure
+    slot_uri: qudt:ucumCode
+    range: string
+    recommended: true
+  derivation:
+    name: derivation
+    description: Expression for deriving this unit from other units
+    from_schema: https://w3id.org/linkml/units
+    range: string
+  has_quantity_kind:
+    name: has_quantity_kind
+    description: Concept in a vocabulary or ontology that denotes the kind of quantity
+      being measured, e.g. length
+    comments:
+    - Potential ontologies include but are not limited to PATO, NCIT, OBOE, qudt.quantityKind
+    from_schema: https://w3id.org/linkml/units
+    slot_uri: qudt:hasQuantityKind
+    range: uriorcurie
+  iec61360code:
+    name: iec61360code
+    from_schema: https://w3id.org/linkml/units
+    slot_uri: qudt:iec61360Code
+  symbol:
+    name: symbol
+    description: name of the unit encoded as a symbol
+    from_schema: https://w3id.org/linkml/units
+    slot_uri: qudt:symbol
+  abbreviation:
+    name: abbreviation
+    description: 'An abbreviation for a unit is a short ASCII string that is used
+      in place of the full name for the unit in  contexts where non-ASCII characters
+      would be problematic, or where using the abbreviation will enhance  readability.
+      When a power of a base unit needs to be expressed, such as squares this can
+      be done using  abbreviations rather than symbols (source: qudt)'
+    from_schema: https://w3id.org/linkml/units
+    slot_uri: qudt:abbreviation
+  descriptive_name:
+    name: descriptive_name
+    description: the spelled out name of the unit, for example, meter
+    from_schema: https://w3id.org/linkml/units
+    slot_uri: rdfs:label
+  name:
+    name: name
+    description: the unique name of the element within the context of the schema.  Name
+      is combined with the default prefix to form the globally unique subject of the
+      target class.
+    in_subset:
+    - SpecificationSubset
+    - OwlProfile
+    - MinimalSubset
+    - BasicSubset
+    - RelationalModelProfile
+    - ObjectOrientedProfile
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://en.wikipedia.org/wiki/Data_element_name
+    - https://linkml.io/linkml/faq/modeling.html#why-are-my-class-names-translated-to-camelcase
+    aliases:
+    - short name
+    - unique name
+    exact_mappings:
+    - schema:name
+    rank: 1
+    domain: element
+    slot_uri: rdfs:label
+    identifier: true
+  title:
+    name: title
+    description: A concise human-readable display label for the element. The title
+      should mirror the name, and should use ordinary textual punctuation.
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - long name
+    rank: 3
+    domain: element
+    slot_uri: dcterms:title
+  conforms_to:
+    name: conforms_to
+    description: An established standard to which the element conforms.
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - linkml:implements
+    domain: element
+    slot_uri: dcterms:conformsTo
+  implements:
+    name: implements
+    description: An element in another schema which this element conforms to. The
+      referenced element is not imported into the schema for the implementing element.
+      However, the referenced schema may be used to check conformance of the implementing
+      element.
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    range: uriorcurie
+    multivalued: true
+  instantiates:
+    name: instantiates
+    description: An element in another schema which this element instantiates.
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    range: uriorcurie
+    multivalued: true
+  categories:
+    name: categories
+    description: Controlled terms used to categorize an element.
+    comments:
+    - if you wish to use uncontrolled terms or terms that lack identifiers then use
+      the keywords element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    singular_name: category
+    slot_uri: dcterms:subject
+    range: uriorcurie
+    multivalued: true
+  keywords:
+    name: keywords
+    description: Keywords or tags used to describe the element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    singular_name: keyword
+    domain: element
+    slot_uri: schema:keywords
+    range: string
+    multivalued: true
+  definition_uri:
+    name: definition_uri
+    description: The native URI of the element. This is always within the namespace
+      of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri
+    comments:
+    - Formed by combining the default_prefix with the normalized element name
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - linkml:class_uri
+    - linkml:slot_uri
+    domain: element
+    readonly: filled in by the schema loader or schema view
+    range: uriorcurie
+  id_prefixes:
+    name: id_prefixes
+    description: An allowed list of prefixes for which identifiers must conform. The
+      identifier of this class or slot must begin with the URIs referenced by this
+      prefix
+    comments:
+    - Order of elements may be used to indicate priority order
+    - If identifiers are treated as CURIEs, then the CURIE must start with one of
+      the indicated prefixes followed by `:` (_should_ start if the list is open)
+    - If identifiers are treated as URIs, then the URI string must start with the
+      expanded for of the prefix (_should_ start if the list is open)
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/linkml-model/issues/28
+    domain: element
+    range: ncname
+    multivalued: true
+  id_prefixes_are_closed:
+    name: id_prefixes_are_closed
+    description: If true, then the id_prefixes slot is treated as being closed, and
+      any use of an id that does not have this prefix is considered a violation.
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/linkml/issues/194
+    domain: element
+    range: boolean
+  description:
+    name: description
+    description: a textual description of the element's purpose and use
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - definition
+    exact_mappings:
+    - dcterms:description
+    - schema:description
+    rank: 5
+    domain: element
+    slot_uri: skos:definition
+    recommended: true
+  structured_aliases:
+    name: structured_aliases
+    description: A list of structured_alias objects, used to provide aliases in conjunction
+      with additional metadata.
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - linkml:aliases
+    slot_uri: skosxl:altLabel
+    range: structured_alias
+    multivalued: true
+    inlined: true
+  aliases:
+    name: aliases
+    description: Alternate names/labels for the element. These do not alter the semantics
+      of the schema, but may be useful to support search and alignment.
+    comments:
+    - not be confused with the metaslot alias.
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - synonyms
+    - alternate names
+    - alternative labels
+    - designations
+    exact_mappings:
+    - schema:alternateName
+    domain: element
+    slot_uri: skos:altLabel
+    range: string
+    multivalued: true
+  deprecated:
+    name: deprecated
+    description: Description of why and when this element will no longer be used
+    comments:
+    - note that linkml does not use a boolean to indicate deprecation status - the
+      presence of a string value in this field is sufficient to indicate deprecation.
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - owl:deprecated
+    domain: element
+    range: string
+  todos:
+    name: todos
+    description: Outstanding issues that needs resolution
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    range: string
+    multivalued: true
+  notes:
+    name: notes
+    description: editorial notes about an element intended primarily for internal
+      consumption
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    slot_uri: skos:editorialNote
+    multivalued: true
+  comments:
+    name: comments
+    description: notes and comments about an element intended primarily for external
+      consumption
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    exact_mappings:
+    - rdfs:comment
+    domain: element
+    slot_uri: skos:note
+    multivalued: true
+  in_subset:
+    name: in_subset
+    description: used to indicate membership of a term in a defined subset of terms
+      used for a particular domain or application.
+    comments:
+    - an example of use in the translator_minimal subset in the biolink model, holding
+      the minimal set of predicates used in a translator knowledge graph
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    slot_uri: OIO:inSubset
+    range: subset_definition
+    multivalued: true
+  from_schema:
+    name: from_schema
+    description: id of the schema that defined the element
+    notes:
+    - A stronger model would be range schema_definition, but this doesn't address
+      the import model
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    slot_uri: skos:inScheme
+    readonly: supplied by the schema loader or schema view
+    range: uri
+  imported_from:
+    name: imported_from
+    description: the imports entry that this element was derived from.  Empty means
+      primary source
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    readonly: supplied by the schema loader or schema view
+    range: string
+  see_also:
+    name: see_also
+    description: A list of related entities or URLs that may be of relevance
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    slot_uri: rdfs:seeAlso
+    range: uriorcurie
+    multivalued: true
+  owned_by:
+    name: owned_by
+    description: agent that owns or is the steward of the element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - steward
+    - owner
+    close_mappings:
+    - rdfs:isDefinedBy
+    domain: element
+    range: uriorcurie
+  created_by:
+    name: created_by
+    description: agent that created the element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    slot_uri: pav:createdBy
+    range: uriorcurie
+  contributors:
+    name: contributors
+    description: agent that contributed to the element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    slot_uri: dcterms:contributor
+    range: uriorcurie
+    multivalued: true
+  created_on:
+    name: created_on
+    description: time at which the element was created
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    slot_uri: pav:createdOn
+    range: datetime
+  last_updated_on:
+    name: last_updated_on
+    description: time at which the element was last updated
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    slot_uri: pav:lastUpdatedOn
+    range: datetime
+  modified_by:
+    name: modified_by
+    description: agent that modified the element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    slot_uri: oslc:modifiedBy
+    range: uriorcurie
+  status:
+    name: status
+    description: status of the element
+    examples:
+    - value: bibo:draft
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://www.hl7.org/fhir/valueset-publication-status.html
+    - https://www.hl7.org/fhir/versions.html#std-process
+    aliases:
+    - workflow status
+    domain: element
+    slot_uri: bibo:status
+    range: uriorcurie
+  literal_form:
+    name: literal_form
+    description: The literal lexical form of a structured alias; i.e the actual alias
+      value.
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - alias_name
+    - string_value
+    domain: structured_alias
+    slot_uri: skosxl:literalForm
+    range: string
+    required: true
+  alias_predicate:
+    name: alias_predicate
+    description: The relationship between an element and its alias.
+    from_schema: https://w3id.org/linkml/meta
+    domain: structured_alias
+    slot_uri: rdf:predicate
+    alias: predicate
+    range: alias_predicate_enum
+    recommended: true
+  alias_contexts:
+    name: alias_contexts
+    description: The context in which an alias should be applied
+    from_schema: https://w3id.org/linkml/meta
+    domain: structured_alias
+    alias: contexts
+    range: uri
+    multivalued: true
+  in_language:
+    name: in_language
+    conforms_to: https://www.rfc-editor.org/rfc/bcp/bcp47.txt
+    description: the primary language used in the sources
+    comments:
+    - Recommended to use a string from IETF BCP 47
+    from_schema: https://w3id.org/linkml/meta
+    slot_uri: schema:inLanguage
+    range: string
+  source:
+    name: source
+    description: A related resource from which the element is derived.
+    comments:
+    - The described resource may be derived from the related resource in whole or
+      in part
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - origin
+    - derived from
+    close_mappings:
+    - prov:wasDerivedFrom
+    - schema:isBasedOn
+    domain: element
+    slot_uri: dcterms:source
+    range: uriorcurie
+  publisher:
+    name: publisher
+    description: An entity responsible for making the resource available
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    slot_uri: dcterms:publisher
+    range: uriorcurie
+  is_a:
+    name: is_a
+    description: A primary parent class or slot from which inheritable metaslots are
+      propagated from. While multiple inheritance is not allowed, mixins can be provided
+      effectively providing the same thing. The semantics are the same when translated
+      to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework
+      (e.g. java classes, python classes) then is a is used. When translating a framework
+      without polymorphism (e.g. json-schema, solr document schema) then is a and
+      mixins are recursively unfolded
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - ObjectOrientedProfile
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 11
+    abstract: true
+    range: definition
+  abstract:
+    name: abstract
+    description: Indicates the class or slot cannot be directly instantiated and is
+      intended for grouping purposes.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - ObjectOrientedProfile
+    from_schema: https://w3id.org/linkml/meta
+    domain: definition
+    range: boolean
+  mixin:
+    name: mixin
+    description: Indicates the class or slot is intended to be inherited from without
+      being an is_a parent. mixins should not be inherited from using is_a, except
+      by other mixins.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - ObjectOrientedProfile
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://en.wikipedia.org/wiki/Mixin
+    aliases:
+    - trait
+    domain: definition
+    range: boolean
+  mixins:
+    name: mixins
+    description: A collection of secondary parent classes or slots from which inheritable
+      metaslots are propagated from.
+    comments:
+    - mixins act in the same way as parents (is_a). They allow a model to have a primary
+      strict hierarchy, while keeping the benefits of multiple inheritance
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - ObjectOrientedProfile
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://en.wikipedia.org/wiki/Mixin
+    aliases:
+    - traits
+    rank: 13
+    range: definition
+    multivalued: true
+  apply_to:
+    name: apply_to
+    description: Used to extend class or slot definitions. For example, if we have
+      a core schema where a gene has two slots for identifier and symbol, and we have
+      a specialized schema for my_organism where we wish to add a slot systematic_name,
+      we can avoid subclassing by defining a class gene_my_organism, adding the slot
+      to this class, and then adding an apply_to pointing to the gene class. The new
+      slot will be 'injected into' the gene class.
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: definition
+    range: definition
+    multivalued: true
+  values_from:
+    name: values_from
+    description: 'The identifier of a "value set" -- a set of identifiers that form
+      the possible values for the range of a slot. Note: this is different than ''subproperty_of''
+      in that ''subproperty_of'' is intended to be a single ontology term while ''values_from''
+      is the identifier of an entire value set.  Additionally, this is different than
+      an enumeration in that in an enumeration, the values of the enumeration are
+      listed directly in the model itself. Setting this property on a slot does not
+      guarantee an expansion of the ontological hierarchy into an enumerated list
+      of possible values in every serialization of the model.'
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: definition
+    range: uriorcurie
+    multivalued: true
+  code_set:
+    name: code_set
+    description: the identifier of an enumeration code set.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: enum_expression
+    range: uriorcurie
+  code_set_version:
+    name: code_set_version
+    description: the version identifier of the enumeration code set
+    comments:
+    - we assume that version identifiers lexically sort in temporal order. Recommend
+      semver when possible
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: enum_expression
+    range: string
+  code_set_tag:
+    name: code_set_tag
+    description: the version tag of the enumeration code set
+    comments:
+    - enum_expression cannot have both a code_set_tag and a code_set_version
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: enum_expression
+    range: string
+  pv_formula:
+    name: pv_formula
+    description: Defines the specific formula to be used to generate the permissible
+      values.
+    comments:
+    - you cannot have BOTH the permissible_values and permissible_value_formula tag
+    - code_set must be supplied for this to be valid
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    range: pv_formula_options
+  permissible_values:
+    name: permissible_values
+    description: A list of possible values for a slot range
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - coded values
+    exact_mappings:
+    - cdisc:PermissibleValue
+    domain: enum_expression
+    range: permissible_value
+    multivalued: true
+    inlined: true
+  enum_uri:
+    name: enum_uri
+    description: URI of the enum that provides a semantic interpretation of the element
+      in a linked data context. The URI may come from any namespace and may be shared
+      between schemas
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - public ID
+    domain: enum_definition
+    ifabsent: class_curie
+    range: uriorcurie
+  include:
+    name: include
+    description: An enum expression that yields a list of permissible values that
+      are to be included, after subtracting the minus set
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: enum_expression
+    range: anonymous_enum_expression
+    multivalued: true
+  minus:
+    name: minus
+    description: An enum expression that yields a list of permissible values that
+      are to be subtracted from the enum
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: enum_expression
+    range: anonymous_enum_expression
+    multivalued: true
+  inherits:
+    name: inherits
+    description: An enum definition that is used as the basis to create a new enum
+    comments:
+    - All permissible values for all inherited enums are copied to form the initial
+      seed set
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: enum_expression
+    range: enum_definition
+    multivalued: true
+  matches:
+    name: matches
+    description: Specifies a match query that is used to calculate the list of permissible
+      values
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: enum_expression
+    range: match_query
+  identifier_pattern:
+    name: identifier_pattern
+    description: A regular expression that is used to obtain a set of identifiers
+      from a source_ontology to construct a set of permissible values
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: match_query
+    range: string
+  concepts:
+    name: concepts
+    description: A list of identifiers that are used to construct a set of permissible
+      values
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: enum_expression
+    range: uriorcurie
+    multivalued: true
+  reachable_from:
+    name: reachable_from
+    description: Specifies a query for obtaining a list of permissible values based
+      on graph reachability
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: enum_expression
+    range: reachability_query
+  source_ontology:
+    name: source_ontology
+    description: An ontology or vocabulary or terminology that is used in a query
+      to obtain a set of permissible values
+    comments:
+    - examples include schema.org, wikidata, or an OBO ontology
+    - for obo ontologies we recommend CURIEs of the form obo:cl, obo:envo, etc
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - terminology
+    - vocabulary
+    range: uriorcurie
+  is_direct:
+    name: is_direct
+    description: True if the reachability query should only include directly related
+      nodes, if False then include also transitively connected
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - non-transitive
+    domain: reachability_query
+    range: boolean
+  traverse_up:
+    name: traverse_up
+    description: True if the direction of the reachability query is reversed and ancestors
+      are retrieved
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - ancestors
+    domain: reachability_query
+    range: boolean
+  include_self:
+    name: include_self
+    description: True if the query is reflexive
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - reflexive
+    domain: reachability_query
+    range: boolean
+  relationship_types:
+    name: relationship_types
+    description: A list of relationship types (properties) that are used in a reachability
+      query
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - predicates
+    - properties
+    domain: reachability_query
+    range: uriorcurie
+    multivalued: true
+  source_nodes:
+    name: source_nodes
+    description: A list of nodes that are used in the reachability query
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: reachability_query
+    range: uriorcurie
+    multivalued: true
+  text:
+    name: text
+    description: The actual permissible value itself
+    comments:
+    - there are no constraints on the text of the permissible value, but for many
+      applications you may want to consider following idiomatic forms and using computer-friendly
+      forms
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - value
+    close_mappings:
+    - skos:notation
+    rank: 21
+    domain: permissible_value
+    identifier: true
+    range: string
+  meaning:
+    name: meaning
+    description: the value meaning of a permissible value
+    notes:
+    - we may want to change the range of this (and other) elements in the model to
+      an entitydescription type construct
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://en.wikipedia.org/wiki/ISO/IEC_11179
+    aliases:
+    - PV meaning
+    rank: 23
+    domain: permissible_value
+    range: uriorcurie
+  id:
+    name: id
+    description: The official schema URI
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 0
+    domain: schema_definition
+    range: uri
+    required: true
+  emit_prefixes:
+    name: emit_prefixes
+    description: a list of Curie prefixes that are used in the representation of instances
+      of the model.  All prefixes in this list are added to the prefix sections of
+      the target models.
+    from_schema: https://w3id.org/linkml/meta
+    domain: schema_definition
+    range: ncname
+    multivalued: true
+  version:
+    name: version
+    description: particular version of schema
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    exact_mappings:
+    - schema:schemaVersion
+    domain: schema_definition
+    slot_uri: pav:version
+  imports:
+    name: imports
+    description: A list of schemas that are to be included in this schema
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 21
+    domain: schema_definition
+    range: uriorcurie
+    multivalued: true
+  structured_imports:
+    name: structured_imports
+    description: A list of specifications for how to import elements from external
+      schemas
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: schema_definition
+    range: import_expression
+    multivalued: true
+  license:
+    name: license
+    description: license for the schema
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 31
+    domain: schema_definition
+    slot_uri: dcterms:license
+  default_curi_maps:
+    name: default_curi_maps
+    description: ordered list of prefixcommon biocontexts to be fetched to resolve
+      id prefixes and inline prefix variables
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: schema_definition
+    multivalued: true
+  default_prefix:
+    name: default_prefix
+    description: The prefix that is used for all elements within a schema
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 11
+    domain: schema_definition
+    ifabsent: default_ns
+    range: string
+  default_range:
+    name: default_range
+    description: default slot range to be used if range element is omitted from a
+      slot definition
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 13
+    domain: schema_definition
+    range: type_definition
+  subsets:
+    name: subsets
+    description: An index to the collection of all subset definitions in the schema
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    exact_mappings:
+    - OIO:hasSubset
+    rank: 8
+    domain: schema_definition
+    range: subset_definition
+    multivalued: true
+    inlined: true
+  types:
+    name: types
+    description: An index to the collection of all type definitions in the schema
+    in_subset:
+    - BasicSubset
+    - ObjectOrientedProfile
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 6
+    domain: schema_definition
+    range: type_definition
+    multivalued: true
+    inlined: true
+  enums:
+    name: enums
+    description: An index to the collection of all enum definitions in the schema
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - ObjectOrientedProfile
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 5
+    domain: schema_definition
+    range: enum_definition
+    multivalued: true
+    inlined: true
+  slot_definitions:
+    name: slot_definitions
+    description: An index to the collection of all slot definitions in the schema
+    comments:
+    - note the formal name of this element is slot_definitions, but it has alias slots,
+      which is the canonical form used in yaml/json serializes of schemas.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 4
+    domain: schema_definition
+    alias: slots
+    range: slot_definition
+    multivalued: true
+    inlined: true
+  classes:
+    name: classes
+    description: An index to the collection of all class definitions in the schema
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - RelationalModelProfile
+    - ObjectOrientedProfile
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 3
+    domain: schema_definition
+    range: class_definition
+    multivalued: true
+    inlined: true
+  metamodel_version:
+    name: metamodel_version
+    description: Version of the metamodel used to load the schema
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: schema_definition
+    readonly: supplied by the schema loader or schema view
+  source_file:
+    name: source_file
+    description: name, uri or description of the source of the schema
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: schema_definition
+    readonly: supplied by the schema loader
+  source_file_date:
+    name: source_file_date
+    description: modification date of the source of the schema
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: schema_definition
+    readonly: supplied by the loader
+    range: datetime
+  source_file_size:
+    name: source_file_size
+    description: size in bytes of the source of the schema
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: schema_definition
+    readonly: supplied by the schema loader or schema view
+    range: integer
+  generation_date:
+    name: generation_date
+    description: date and time that the schema was loaded/generated
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: schema_definition
+    readonly: supplied by the schema loader or schema view
+    range: datetime
+  slots:
+    name: slots
+    description: collection of slot names that are applicable to a class
+    comments:
+    - the list of applicable slots is inherited from parent classes
+    - This defines the set of slots that are allowed to be used for a given class.
+      The final list of slots for a class is the combination of the parent (is a)
+      slots, mixins slots, apply to slots minus the slot usage entries.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 19
+    domain: class_definition
+    range: slot_definition
+    multivalued: true
+  slot_usage:
+    name: slot_usage
+    description: the refinement of a slot in the context of the containing class definition.
+    comments:
+    - Many slots may be reused across different classes, but the meaning of the slot
+      may be refined by context. For example, a generic association model may use
+      slots subject/predicate/object with generic semantics and minimal constraints.
+      When this is subclasses, e.g. to disease-phenotype associations then slot usage
+      may specify both local naming (e.g. subject=disease) and local constraints
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 23
+    domain: class_definition
+    range: slot_definition
+    multivalued: true
+    inlined: true
+  enum_range:
+    name: enum_range
+    description: An inlined enumeration
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    range: enum_expression
+  range_expression:
+    name: range_expression
+    description: A range that is described as a boolean expression combining existing
+      ranges
+    comments:
+    - one use for this is being able to describe a range using any_of expressions,
+      for example to combine two enums
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: slot_expression
+    range: anonymous_class_expression
+  boolean_slot:
+    name: boolean_slot
+    description: A grouping of slots that expression a boolean operator over a list
+      of operands
+    from_schema: https://w3id.org/linkml/meta
+    abstract: true
+    range: expression
+    multivalued: true
+  any_of:
+    name: any_of
+    description: holds if at least one of the expressions hold
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:or
+    rank: 101
+    is_a: boolean_slot
+    range: expression
+  exactly_one_of:
+    name: exactly_one_of
+    description: holds if only one of the expressions hold
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:xone
+    rank: 103
+    is_a: boolean_slot
+    range: expression
+  none_of:
+    name: none_of
+    description: holds if none of the expressions hold
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:not
+    rank: 105
+    is_a: boolean_slot
+    range: expression
+  all_of:
+    name: all_of
+    description: holds if all of the expressions hold
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:and
+    rank: 107
+    is_a: boolean_slot
+    range: expression
+  preconditions:
+    name: preconditions
+    description: an expression that must hold in order for the rule to be applicable
+      to an instance
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    aliases:
+    - if
+    - body
+    - antecedents
+    close_mappings:
+    - swrl:body
+    rank: 111
+    slot_uri: sh:condition
+    range: anonymous_class_expression
+    inlined: true
+  postconditions:
+    name: postconditions
+    description: an expression that must hold for an instance of the class, if the
+      preconditions hold
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    aliases:
+    - then
+    - head
+    - consequents
+    close_mappings:
+    - swrl:body
+    rank: 113
+    range: anonymous_class_expression
+    inlined: true
+  elseconditions:
+    name: elseconditions
+    description: an expression that must hold for an instance of the class, if the
+      preconditions no not hold
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    aliases:
+    - else
+    rank: 115
+    range: anonymous_class_expression
+    inlined: true
+  bidirectional:
+    name: bidirectional
+    description: in addition to preconditions entailing postconditions, the postconditions
+      entail the preconditions
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - iff
+    - if and only if
+    range: boolean
+  open_world:
+    name: open_world
+    description: if true, the the postconditions may be omitted in instance data,
+      but it is valid for an inference engine to add these
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    range: boolean
+  rank:
+    name: rank
+    description: the relative order in which the element occurs, lower values are
+      given precedence
+    comments:
+    - the rank of an element does not affect the semantics
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - order
+    - precedence
+    - display order
+    exact_mappings:
+    - qudt:order
+    - qb:order
+    rank: 51
+    slot_uri: sh:order
+    range: integer
+  deactivated:
+    name: deactivated
+    description: a deactivated rule is not executed by the rules engine
+    from_schema: https://w3id.org/linkml/meta
+    slot_uri: sh:deactivated
+    range: boolean
+  rules:
+    name: rules
+    description: the collection of rules that apply to all members of this class
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: class_definition
+    slot_uri: sh:rule
+    range: class_rule
+    multivalued: true
+    inlined: true
+  classification_rules:
+    name: classification_rules
+    description: The collection of classification rules that apply to all members
+      of this class. Classification rules allow for automatically assigning the instantiated
+      type of an instance.
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: class_definition
+    range: anonymous_class_expression
+    multivalued: true
+    inlined: true
+  slot_conditions:
+    name: slot_conditions
+    description: expresses constraints on a group of slots for a class expression
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: class_expression
+    range: slot_definition
+    multivalued: true
+    inlined: true
+  attributes:
+    name: attributes
+    description: Inline definition of slots
+    comments:
+    - attributes are an alternative way of defining new slots.  An attribute adds
+      a slot to the global space in the form <class_name>__<slot_name> (lower case,
+      double underscores).  Attributes can be specialized via slot_usage.
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - RelationalModelProfile
+    - ObjectOrientedProfile
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 29
+    domain: class_definition
+    range: slot_definition
+    multivalued: true
+    inlined: true
+  class_uri:
+    name: class_uri
+    description: URI of the class that provides a semantic interpretation of the element
+      in a linked data context. The URI may come from any namespace and may be shared
+      between schemas
+    comments:
+    - Assigning class_uris can provide additional hooks for interoperation, indicating
+      a common conceptual model
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - linkml:definition_uri
+    - https://linkml.io/linkml/schemas/uris-and-mappings.html
+    aliases:
+    - public ID
+    rank: 2
+    domain: class_definition
+    ifabsent: class_curie
+    range: uriorcurie
+  subclass_of:
+    name: subclass_of
+    description: DEPRECATED -- rdfs:subClassOf to be emitted in OWL generation
+    deprecated: Use is_a instead
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - rdfs:subClassOf
+    domain: class_definition
+    range: uriorcurie
+  defining_slots:
+    name: defining_slots
+    description: The combination of is a plus defining slots form a genus-differentia
+      definition, or the set of necessary and sufficient conditions that can be transformed
+      into an OWL equivalence axiom
+    from_schema: https://w3id.org/linkml/meta
+    domain: class_definition
+    inherited: true
+    range: slot_definition
+    multivalued: true
+  union_of:
+    name: union_of
+    description: indicates that the domain element consists exactly of the members
+      of the element in the range.
+    notes:
+    - this only applies in the OWL generation
+    in_subset:
+    - SpecificationSubset
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    range: element
+    multivalued: true
+  tree_root:
+    name: tree_root
+    description: Indicates that this is the Container class which forms the root of
+      the serialized document structure in tree serializations
+    notes:
+    - each schema should have at most one tree root
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://linkml.io/linkml/intro/tutorial02.html
+    rank: 31
+    domain: class_definition
+    range: boolean
+  unique_keys:
+    name: unique_keys
+    description: A collection of named unique keys for this class. Unique keys may
+      be singular or compound.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - RelationalModelProfile
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://linkml.io/linkml/schemas/constraints.html#unique-key
+    exact_mappings:
+    - owl:hasKey
+    domain: class_definition
+    range: unique_key
+    multivalued: true
+    inlined: true
+  unique_key_name:
+    name: unique_key_name
+    description: name of the unique key
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - RelationalModelProfile
+    from_schema: https://w3id.org/linkml/meta
+    domain: unique_key
+    key: true
+    required: true
+  consider_nulls_inequal:
+    name: consider_nulls_inequal
+    description: By default, None values are considered equal for the purposes of
+      comparisons in determining uniqueness. Set this to true to treat missing values
+      as per ANSI-SQL NULLs, i.e NULL=NULL is always False.
+    from_schema: https://w3id.org/linkml/meta
+    domain: unique_key
+    range: boolean
+  unique_key_slots:
+    name: unique_key_slots
+    description: list of slot names that form a key. The tuple formed from the values
+      of all these slots should be unique.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - RelationalModelProfile
+    from_schema: https://w3id.org/linkml/meta
+    domain: unique_key
+    range: slot_definition
+    required: true
+    multivalued: true
+  slot_names_unique:
+    name: slot_names_unique
+    description: if true then induced/mangled slot names are not created for class_usage
+      and attributes
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: definition
+    range: boolean
+  extra_slots:
+    name: extra_slots
+    description: "How a class instance handles extra data not specified in the class\
+      \ definition.\nNote that this does *not* define the constraints that are placed\
+      \ on additional slots defined by inheriting classes.\n\nPossible values:\n-\
+      \ `allowed: true` - allow all additional data\n- `allowed: false` (or `allowed:`\
+      \ or `allowed: null` while `range_expression` is `null`) - \n  forbid all additional\
+      \ data (default) \n- `range_expression: ...`  - allow additional data if it\
+      \ matches the slot expression (see examples)\n"
+    examples:
+    - value: JsonObj(allowed=True)
+      description: Allow all additional data
+    - value: JsonObj(allowed=False)
+      description: Forbid any additional data
+    - value: JsonObj(range_expression=JsonObj(range='string'))
+      description: Allow additional data that are strings
+    - value: JsonObj(range_expression=JsonObj(range='AClassDefinition'))
+      description: Allow additional data if they are instances of the class definition
+        "AClassDefinition"
+    - value: 'JsonObj(range_expression=JsonObj(any_of=[{''range'': ''string''}, {''range'':
+        ''integer''}]))'
+      description: allow additional data if they are either strings or integers
+    - value: JsonObj(range_expression=JsonObj(range='integer', multivalued=True, maximum_cardinality=5))
+      description: 'Allow additional data if they are lists of integers of at most
+        length 5.
+
+        Note that this does *not* mean that a maximum of 5 extra slots are allowed.
+
+        '
+    - value: JsonObj(range_expression=JsonObj(range='integer', required=True))
+      description: "Allow additional data if they are integers. \n`required` is meaningless\
+        \ in this context and ignored, since by definition all \"extra\" slots are\
+        \ optional.\n"
+    - value: JsonObj(allowed=False, range_expression=JsonObj(range='string'))
+      description: "A semantically *invalid* use of `extra_slots`, as extra slots\
+        \ will be forbidden and the \n`anonymous_slot_expression` will be ignored.\n"
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: class_definition
+    range: extra_slots_expression
+  allowed:
+    name: allowed
+    description: Whether or not something is allowed. Usage defined by context.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    range: boolean
+  domain:
+    name: domain
+    description: "defines the type of the subject of the slot.  Given the following\
+      \ slot definition\n  S1:\n    domain: C1\n    range:  C2\nthe declaration\n\
+      \  X:\n    S1: Y\n\nimplicitly asserts that X is an instance of C1\n"
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    inherited: true
+    range: class_definition
+  range:
+    name: range
+    description: "defines the type of the object of the slot.  Given the following\
+      \ slot definition\n  S1:\n    domain: C1\n    range:  C2\nthe declaration\n\
+      \  X:\n    S1: Y\n\nimplicitly asserts Y is an instance of C2\n"
+    comments:
+    - range is underspecified, as not all elements can appear as the range of a slot.
+    - to use a URI or CURIE as the range, create a class with the URI or curie as
+      the class_uri
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - RelationalModelProfile
+    - ObjectOrientedProfile
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - value domain
+    domain: slot_definition
+    inherited: true
+    ifabsent: default_range
+    range: element
+  slot_uri:
+    name: slot_uri
+    description: URI of the class that provides a semantic interpretation of the slot
+      in a linked data context. The URI may come from any namespace and may be shared
+      between schemas.
+    comments:
+    - Assigning slot_uris can provide additional hooks for interoperation, indicating
+      a common conceptual model
+    - To use a URI or CURIE as a range, create a class with the URI or CURIE as the
+      class_uri
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - linkml:definition_uri
+    - https://linkml.io/linkml/schemas/uris-and-mappings.html
+    aliases:
+    - public ID
+    rank: 2
+    domain: slot_definition
+    ifabsent: slot_curie
+    range: uriorcurie
+  multivalued:
+    name: multivalued
+    description: true means that slot can have more than one value and should be represented
+      using a list or collection structure.
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - ObjectOrientedProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 7
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  array:
+    name: array
+    description: coerces the value of the slot into an array and defines the dimensions
+      of that array
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: slot_definition
+    inherited: true
+    range: array_expression
+  dimensions:
+    name: dimensions
+    description: definitions of each axis in the array
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - axes
+    status: testing
+    domain: array_expression
+    list_elements_ordered: true
+    range: dimension_expression
+    multivalued: true
+  minimum_number_dimensions:
+    name: minimum_number_dimensions
+    description: minimum number of dimensions in the array
+    comments:
+    - minimum_cardinality cannot be greater than maximum_cardinality
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: array_expression
+    range: integer
+  maximum_number_dimensions:
+    name: maximum_number_dimensions
+    description: maximum number of dimensions in the array, or False if explicitly
+      no maximum. If this is unset, and an explicit list of dimensions are passed
+      using dimensions, then this is interpreted as a closed list and the maximum_number_dimensions
+      is the length of the dimensions list, unless this value is set to False
+    comments:
+    - maximum_number_dimensions cannot be less than minimum_number_dimensions
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: array_expression
+    range: Anything
+    any_of:
+    - range: integer
+    - range: boolean
+  exact_number_dimensions:
+    name: exact_number_dimensions
+    description: exact number of dimensions in the array
+    comments:
+    - if exact_number_dimensions is set, then minimum_number_dimensions and maximum_number_dimensions
+      must be unset or have the same value
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: array_expression
+    range: integer
+  inherited:
+    name: inherited
+    description: true means that the *value* of a slot is inherited by subclasses
+    comments:
+    - the slot is to be used for defining *metamodels* only
+    - Inherited applies to slot values.  Parent *slots* are always inherited by subclasses
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  readonly:
+    name: readonly
+    description: If present, slot is read only.  Text explains why
+    comments:
+    - the slot is to be used for defining *metamodels* only
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    inherited: true
+    range: string
+  ifabsent:
+    name: ifabsent
+    description: "function that provides a default value for the slot.\n  * [Tt]rue\
+      \ -- boolean True\n  * [Ff]alse -- boolean False\n  * bnode -- blank node identifier\n\
+      \  * class_curie -- CURIE for the containing class\n  * class_uri -- URI for\
+      \ the containing class\n  * default_ns -- schema default namespace\n  * default_range\
+      \ -- schema default range\n  * int(value) -- integer value\n  * slot_uri --\
+      \ URI for the slot\n  * slot_curie -- CURIE for the slot\n  * string(value)\
+      \ -- string value\n  * EnumName(PermissibleValue) -- enum value"
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - linkml:equals_expression
+    close_mappings:
+    - sh:defaultValue
+    domain: slot_definition
+    inherited: true
+    range: string
+  implicit_prefix:
+    name: implicit_prefix
+    description: Causes the slot value to be interpreted as a uriorcurie after prefixing
+      with this string
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: slot_expression
+    range: string
+  value_specification_constant:
+    name: value_specification_constant
+    description: Grouping for metamodel slots that constrain the a slot value to equal
+      a specified constant
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    abstract: true
+  list_value_specification_constant:
+    name: list_value_specification_constant
+    description: Grouping for metamodel slots that constrain members of a multivalued
+      slot value to equal a specified constant
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    abstract: true
+  value_presence:
+    name: value_presence
+    description: if PRESENT then a value must be present (for lists there must be
+      at least one value). If ABSENT then a value must be absent (for lists, must
+      be empty)
+    comments:
+    - if set to true this has the same effect as required=true. In contrast, required=false
+      allows a value to be present
+    from_schema: https://w3id.org/linkml/meta
+    status: unstable
+    is_a: list_value_specification_constant
+    domain: slot_definition
+    inherited: true
+    range: presence_enum
+  equals_string:
+    name: equals_string
+    description: the slot must have range string and the value of the slot must equal
+      the specified value
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    is_a: list_value_specification_constant
+    inherited: true
+    range: string
+  equals_number:
+    name: equals_number
+    description: the slot must have range of a number and the value of the slot must
+      equal the specified value
+    from_schema: https://w3id.org/linkml/meta
+    status: unstable
+    is_a: list_value_specification_constant
+    inherited: true
+    range: integer
+  equals_expression:
+    name: equals_expression
+    description: the value of the slot must equal the value of the evaluated expression
+    comments:
+    - for example, a 'length' slot may have an equals_expression with value '(end-start)+1'
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://linkml.io/linkml/developers/inference.html
+    - https://linkml.io/linkml/schemas/advanced.html#equals-expression
+    is_a: list_value_specification_constant
+    inherited: true
+    range: string
+  exact_cardinality:
+    name: exact_cardinality
+    description: the exact number of entries for a multivalued slot
+    comments:
+    - if exact_cardinality is set, then minimum_cardinalty and maximum_cardinality
+      must be unset or have the same value
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    is_a: list_value_specification_constant
+    inherited: true
+    range: integer
+  minimum_cardinality:
+    name: minimum_cardinality
+    description: the minimum number of entries for a multivalued slot
+    comments:
+    - minimum_cardinality cannot be greater than maximum_cardinality
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    is_a: list_value_specification_constant
+    inherited: true
+    range: integer
+  maximum_cardinality:
+    name: maximum_cardinality
+    description: the maximum number of entries for a multivalued slot
+    comments:
+    - maximum_cardinality cannot be less than minimum_cardinality
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    is_a: list_value_specification_constant
+    inherited: true
+    range: integer
+  equals_string_in:
+    name: equals_string_in
+    description: the slot must have range string and the value of the slot must equal
+      one of the specified values
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    is_a: list_value_specification_constant
+    inherited: true
+    range: string
+    multivalued: true
+  equals_number_in:
+    name: equals_number_in
+    description: the slot must have range number and the value of the slot must equal
+      one of the specified values
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    is_a: list_value_specification_constant
+    inherited: true
+    range: integer
+    multivalued: true
+  has_member:
+    name: has_member
+    description: the value of the slot is multivalued with at least one member satisfying
+      the condition
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    is_a: list_value_specification_constant
+    range: anonymous_slot_expression
+  all_members:
+    name: all_members
+    description: the value of the slot is multivalued with all members satisfying
+      the condition
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    is_a: list_value_specification_constant
+    range: anonymous_slot_expression
+  singular_name:
+    name: singular_name
+    description: a name that is used in the singular form
+    comments:
+    - this may be used in some schema translations where use of a singular form is
+      idiomatic, for example RDF
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - skos:altLabel
+    domain: slot_definition
+  required:
+    name: required
+    description: true means that the slot must be present in instances of the class
+      definition
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - RelationalModelProfile
+    - ObjectOrientedProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 8
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  recommended:
+    name: recommended
+    description: true means that the slot should be present in instances of the class
+      definition, but this is not required
+    comments:
+    - This is to be used where not all data is expected to conform to having a required
+      field
+    - If a slot is recommended, and it is not populated, applications must not treat
+      this as an error. Applications may use this to inform the user of missing data
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/linkml/issues/177
+    rank: 9
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  inapplicable:
+    name: inapplicable
+    description: true means that values for this slot must not be present
+    comments:
+    - By default all slots are applicable. The main use case for this slot is as an
+      override in a subclass
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  inlined:
+    name: inlined
+    description: True means that keyed or identified slot appears in an outer structure
+      by value.  False means that only the key or identifier for the slot appears
+      within the domain, referencing a structure that appears elsewhere.
+    comments:
+    - classes without keys or identifiers are necessarily inlined as lists
+    - only applicable in tree-like serializations, e.g json, yaml
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/06mapping/#collection-forms
+    - https://linkml.io/linkml/schemas/inlining.html
+    rank: 25
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  inlined_as_list:
+    name: inlined_as_list
+    description: True means that an inlined slot is represented as a list of range
+      instances.  False means that an inlined slot is represented as a dictionary,
+      whose key is the slot key or identifier and whose value is the range instance.
+    comments:
+    - 'The default loader will accept either list or dictionary form as input.  This
+      parameter controls internal
+
+      representation and output.'
+    - 'A keyed or identified class with one additional slot can be input in a third
+      form, a dictionary whose key
+
+      is the key or identifier and whose value is the one additional element.  This
+      form is still stored according
+
+      to the inlined_as_list setting.'
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/06mapping/#collection-forms
+    - https://linkml.io/linkml/schemas/inlining.html
+    rank: 27
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  inlined_as_simple_dict:
+    name: inlined_as_simple_dict
+    description: True means that an inlined slot is represented as a simple dict whose
+      values are all atoms
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/06mapping/#collection-forms
+    status: testing
+    rank: 28
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  list_elements_ordered:
+    name: list_elements_ordered
+    description: If True, then the order of elements of a multivalued slot is guaranteed
+      to be preserved. If False, the order may still be preserved but this is not
+      guaranteed
+    comments:
+    - should only be used with multivalued slots
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  list_elements_unique:
+    name: list_elements_unique
+    description: If True, then there must be no duplicates in the elements of a multivalued
+      slot
+    comments:
+    - should only be used with multivalued slots
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  shared:
+    name: shared
+    description: If True, then the relationship between the slot domain and range
+      is many to one or many to many
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - inverse functional
+    - many to one or many
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  key:
+    name: key
+    description: True means that the key slot(s) uniquely identify the elements within
+      a single container
+    comments:
+    - key is inherited
+    - a given domain can have at most one key slot (restriction to be removed in the
+      future)
+    - identifiers and keys are mutually exclusive.  A given domain cannot have both
+    - a key slot is automatically required.  Keys cannot be optional
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - RelationalModelProfile
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - linkml:unique_keys
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  identifier:
+    name: identifier
+    description: True means that the key slot(s) uniquely identifies the elements.
+      There can be at most one identifier or key per container
+    comments:
+    - identifier is inherited
+    - a key slot is automatically required.  Identifiers cannot be optional
+    - a given domain can have at most one identifier
+    - identifiers and keys are mutually exclusive.  A given domain cannot have both
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - RelationalModelProfile
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://en.wikipedia.org/wiki/Identifier
+    - linkml:unique_keys
+    aliases:
+    - primary key
+    - ID
+    - UID
+    - code
+    rank: 5
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  designates_type:
+    name: designates_type
+    description: True means that the key slot(s) is used to determine the instantiation
+      (types) relation between objects and a ClassDefinition
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://linkml.io/linkml/schemas/type-designators.html
+    aliases:
+    - type designator
+    domain: slot_definition
+    inherited: true
+    range: boolean
+  alias:
+    name: alias
+    description: the name used for a slot in the context of its owning class.  If
+      present, this is used instead of the actual slot name.
+    comments:
+    - an example of alias is used within this metamodel, slot_definitions is aliases
+      as slots
+    - not to be confused with aliases, which indicates a set of terms to be used for
+      search purposes.
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 6
+    domain: slot_definition
+    slot_uri: skos:prefLabel
+    range: string
+  owner:
+    name: owner
+    description: the "owner" of the slot. It is the class if it appears in the slots
+      list, otherwise the declaring slot
+    deprecated: Will be replaced by domain_of and eventually removed
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    readonly: filled in by loader -- either class domain or slot domain
+    range: definition
+  domain_of:
+    name: domain_of
+    description: the class(es) that reference the slot in a "slots" or "slot_usage"
+      context
+    from_schema: https://w3id.org/linkml/meta
+    exact_mappings:
+    - schema:domainIncludes
+    - SIO:000011
+    domain: slot_definition
+    readonly: filled in by the loader
+    range: class_definition
+    multivalued: true
+  is_usage_slot:
+    name: is_usage_slot
+    description: True means that this slot was defined in a slot_usage situation
+    deprecated: Replaced by usage_slot_name
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    readonly: filled in by the loader
+    range: boolean
+  usage_slot_name:
+    name: usage_slot_name
+    description: The name of the slot referenced in the slot_usage
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    readonly: filled in by the loader
+    range: string
+  subproperty_of:
+    name: subproperty_of
+    description: 'Ontology property which this slot is a subproperty of.  Note: setting
+      this property on a slot does not guarantee an expansion of the ontological hierarchy
+      into an enumerated list of possible values in every serialization of the model.'
+    examples:
+    - value: RO:HOM0000001
+      description: this is the RO term for "in homology relationship with", and used
+        as a value of subproperty of this means that any ontological child (related
+        to RO:HOM0000001 via an is_a relationship), is a valid value for the slot
+        that declares this with the subproperty_of tag.  This differs from the 'values_from'
+        meta model component in that 'values_from' requires the id of a value set
+        (said another way, if an entire ontology had a curie/identifier that was the
+        identifier for the entire ontology, then that identifier would be used in
+        'values_from.')
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    slot_uri: rdfs:subPropertyOf
+    range: slot_definition
+  disjoint_with:
+    name: disjoint_with
+    description: Two classes are disjoint if they have no instances in common, two
+      slots are disjoint if they can never hold between the same two instances
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: definition
+    range: definition
+    multivalued: true
+  children_are_mutually_disjoint:
+    name: children_are_mutually_disjoint
+    description: If true then all direct is_a children are mutually disjoint and share
+      no instances in common
+    from_schema: https://w3id.org/linkml/meta
+    domain: definition
+    range: boolean
+  relational_logical_characteristic:
+    name: relational_logical_characteristic
+    description: An abstract grouping for metaslots that describe logical properties
+      of a slot
+    from_schema: https://w3id.org/linkml/meta
+    abstract: true
+    domain: slot_definition
+    range: boolean
+  symmetric:
+    name: symmetric
+    description: If s is symmetric, and i.s=v, then v.s=i
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - owl:SymmetricProperty
+    is_a: relational_logical_characteristic
+  asymmetric:
+    name: asymmetric
+    description: If s is antisymmetric, and i.s=v where i is different from v, v.s
+      cannot have value i
+    comments:
+    - asymmetry is the combination of antisymmetry and irreflexivity
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - owl:AsymmetricProperty
+    is_a: relational_logical_characteristic
+  reflexive:
+    name: reflexive
+    description: If s is reflexive, then i.s=i for all instances i
+    comments:
+    - it is rare for a property to be reflexive, this characteristic is added for
+      completeness, consider instead locally_reflexive
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - owl:ReflexiveProperty
+    is_a: relational_logical_characteristic
+  irreflexive:
+    name: irreflexive
+    description: If s is irreflexive, then there exists no i such i.s=i
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - owl:IrreflexiveProperty
+    is_a: relational_logical_characteristic
+  locally_reflexive:
+    name: locally_reflexive
+    description: If s is locally_reflexive, then i.s=i for all instances i where s
+      is a class slot for the type of i
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    is_a: relational_logical_characteristic
+  transitive:
+    name: transitive
+    description: If s is transitive, and i.s=z, and s.s=j, then i.s=j
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - owl:TransitiveProperty
+    is_a: relational_logical_characteristic
+  transitive_form_of:
+    name: transitive_form_of
+    description: If s transitive_form_of d, then (1) s holds whenever d holds (2)
+      s is transitive (3) d holds whenever s holds and there are no intermediates,
+      and s is not reflexive
+    comments:
+    - 'Example: ancestor_of is the transitive_form_of parent_of'
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    range: slot_definition
+  reflexive_transitive_form_of:
+    name: reflexive_transitive_form_of
+    description: transitive_form_of including the reflexive case
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    is_a: transitive_form_of
+  inverse:
+    name: inverse
+    description: indicates that any instance of d s r implies that there is also an
+      instance of r s' d
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    slot_uri: owl:inverseOf
+    range: slot_definition
+  is_class_field:
+    name: is_class_field
+    description: indicates that for any instance, i, the domain of this slot will
+      include an assertion of i s range
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    range: boolean
+  role:
+    name: role
+    description: a textual descriptor that indicates the role played by the slot range
+    comments:
+    - the primary use case for this slot is to provide a textual descriptor of a generic
+      slot name when used in the context of a more specific class
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    inherited: true
+    range: string
+  minimum_value:
+    name: minimum_value
+    description: For ordinal ranges, the value must be equal to or higher than this
+    notes:
+    - Range to be refined to an "Ordinal" metaclass - see https://github.com/linkml/linkml/issues/1384#issuecomment-1892721142
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - low value
+    domain: slot_definition
+    inherited: true
+    range: Anything
+  maximum_value:
+    name: maximum_value
+    description: For ordinal ranges, the value must be equal to or lower than this
+    notes:
+    - Range to be refined to an "Ordinal" metaclass - see https://github.com/linkml/linkml/issues/1384#issuecomment-1892721142
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - high value
+    domain: slot_definition
+    inherited: true
+    range: Anything
+  interpolated:
+    name: interpolated
+    description: if true then the pattern is first string interpolated
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: pattern_expression
+    range: boolean
+  partial_match:
+    name: partial_match
+    description: if not true then the pattern must match the whole string, as if enclosed
+      in ^...$
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: pattern_expression
+    range: boolean
+  pattern:
+    name: pattern
+    description: the string value of the slot must conform to this regular expression
+      expressed in the string
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 35
+    domain: definition
+    inherited: true
+    range: string
+  syntax:
+    name: syntax
+    description: the string value of the slot must conform to this regular expression
+      expressed in the string. May be interpolated.
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: pattern_expression
+    inherited: true
+    range: string
+  structured_pattern:
+    name: structured_pattern
+    description: the string value of the slot must conform to the regular expression
+      in the pattern expression
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://linkml.io/linkml/schemas/constraints.html#structured-patterns
+    domain: definition
+    inherited: true
+    range: pattern_expression
+  string_serialization:
+    name: string_serialization
+    description: 'Used on a slot that stores the string serialization of the containing
+      object. The syntax follows python formatted strings, with slot names enclosed
+      in {}s. These are expanded using the values of those slots.
+
+      We call the slot with the serialization the s-slot, the slots used in the {}s
+      are v-slots. If both s-slots and v-slots are populated on an object then the
+      value of the s-slot should correspond to the expansion.
+
+      Implementations of frameworks may choose to use this property to either (a)
+      PARSE: implement automated normalizations by parsing denormalized strings into
+      complex objects (b) GENERATE: implement automated to_string labeling of complex
+      objects
+
+      For example, a Measurement class may have 3 fields: unit, value, and string_value.
+      The string_value slot may have a string_serialization of {value}{unit} such
+      that if unit=cm and value=2, the value of string_value shouldd be 2cm'
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/issues/128
+    domain: definition
+    inherited: false
+    range: string
+  bindings:
+    name: bindings
+    description: 'A collection of enum bindings that specify how a slot can be bound
+      to a permissible value from an enumeration.
+
+      LinkML provides enums to allow string values to be restricted to one of a set
+      of permissible values (specified statically or dynamically).
+
+      Enum bindings allow enums to be bound to any object, including complex nested
+      objects. For example, given a (generic) class Concept with slots id and label,
+      it may be desirable to restrict the values the id takes on in a given context.
+      For example, a HumanSample class may have a slot for representing sample site,
+      with a range of concept, but the values of that slot may be restricted to concepts
+      from a particular branch of an anatomy ontology.'
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: element
+    range: enum_binding
+    multivalued: true
+    inlined: true
+  binds_value_of:
+    name: binds_value_of
+    description: A path to a slot that is being bound to a permissible value from
+      an enumeration.
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: enum_binding
+    range: string
+  obligation_level:
+    name: obligation_level
+    description: The level of obligation or recommendation strength for a metadata
+      element
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    range: obligation_level_enum
+  type_mappings:
+    name: type_mappings
+    description: A collection of type mappings that specify how a slot's range should
+      be mapped or serialized in different frameworks
+    from_schema: https://w3id.org/linkml/meta
+    range: type_mapping
+    multivalued: true
+  framework_key:
+    name: framework_key
+    description: The name of a format that can be used to serialize LinkML data. The
+      string value should be a code from the LinkML frameworks vocabulary, but this
+      is not strictly enforced
+    from_schema: https://w3id.org/linkml/meta
+    key: true
+    alias: framework
+    range: string
+  mapped_type:
+    name: mapped_type
+    description: type to coerce to
+    from_schema: https://w3id.org/linkml/meta
+    alias: type
+    range: type_definition
+  typeof:
+    name: typeof
+    description: A parent type from which type properties are inherited
+    comments:
+    - the target type definition of the typeof slot is referred to as the "parent
+      type"
+    - the type definition containing the typeof slot is referred to as the "child
+      type"
+    - type definitions without a typeof slot are referred to as a "root type"
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 7
+    domain: type_definition
+    range: type_definition
+  base:
+    name: base
+    description: python base type in the LinkML runtime that implements this type
+      definition
+    comments:
+    - every root type must have a base
+    - the base is inherited by child types but may be overridden.  Base compatibility
+      is not checked.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 8
+    domain: type_definition
+    inherited: true
+  type_uri:
+    name: type_uri
+    description: The uri that defines the possible values for the type definition
+    comments:
+    - uri is typically drawn from the set of URI's defined in OWL (https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#Datatype_Maps)
+    - every root type must have a type uri
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 2
+    domain: type_definition
+    inherited: true
+    alias: uri
+    range: uriorcurie
+  repr:
+    name: repr
+    description: the name of the python object that implements this type definition
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 10
+    domain: type_definition
+    inherited: true
+    range: string
+  alt_description_text:
+    name: alt_description_text
+    description: text of an attributed description
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: alt_description
+    alias: description
+    range: string
+    required: true
+  alt_description_source:
+    name: alt_description_source
+    description: the source of an attributed description
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: alt_description
+    key: true
+    alias: source
+    range: string
+  alt_descriptions:
+    name: alt_descriptions
+    description: A sourced alternative description for an element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - alternate definitions
+    domain: element
+    range: alt_description
+    multivalued: true
+    inlined: true
+  value:
+    name: value
+    description: example value
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: example
+    slot_uri: skos:example
+  value_description:
+    name: value_description
+    description: description of what the value is doing
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: example
+    alias: description
+  value_object:
+    name: value_object
+    description: direct object representation of the example
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: example
+    alias: object
+    range: Anything
+  examples:
+    name: examples
+    description: example usages of an element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - vann:example
+    singular_name: example
+    domain: element
+    range: example
+    multivalued: true
+    inlined: true
+  prefix_prefix:
+    name: prefix_prefix
+    description: The prefix components of a prefix expansions. This is the part that
+      appears before the colon in a CURIE.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1
+    domain: prefix
+    slot_uri: sh:prefix
+    key: true
+    range: ncname
+  prefix_reference:
+    name: prefix_reference
+    description: The namespace to which a prefix expands to.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 2
+    domain: prefix
+    slot_uri: sh:namespace
+    range: uri
+    required: true
+  prefixes:
+    name: prefixes
+    description: A collection of prefix expansions that specify how CURIEs can be
+      expanded to URIs
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 10
+    domain: schema_definition
+    slot_uri: sh:declare
+    range: prefix
+    multivalued: true
+    inlined: true
+  setting_key:
+    name: setting_key
+    description: the variable name for a setting
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: setting
+    key: true
+    range: ncname
+  setting_value:
+    name: setting_value
+    description: The value assigned for a setting
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: setting
+    range: string
+    required: true
+  settings:
+    name: settings
+    description: A collection of global variable settings
+    comments:
+    - global variables are used in string interpolation in structured patterns
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - constants
+    rank: 20
+    domain: schema_definition
+    range: setting
+    multivalued: true
+    inlined: true
+  import_from:
+    name: import_from
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: import_expression
+    range: uriorcurie
+    required: true
+  import_as:
+    name: import_as
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: import_expression
+    range: ncname
+  import_map:
+    name: import_map
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    domain: import_expression
+    range: setting
+    multivalued: true
+    inlined: true
+  local_name_source:
+    name: local_name_source
+    description: the ncname of the source of the name
+    from_schema: https://w3id.org/linkml/meta
+    domain: local_name
+    key: true
+    range: ncname
+  local_name_value:
+    name: local_name_value
+    description: a name assigned to an element in a given ontology
+    from_schema: https://w3id.org/linkml/meta
+    domain: local_name
+    slot_uri: skos:altLabel
+    range: string
+    required: true
+  local_names:
+    name: local_names
+    from_schema: https://w3id.org/linkml/meta
+    domain: element
+    range: local_name
+    multivalued: true
+    inlined: true
+  slot_group:
+    name: slot_group
+    description: allows for grouping of related slots into a grouping slot that serves
+      the role of a group
+    comments:
+    - slot groups do not change the semantics of a model but are a useful way of visually
+      grouping related slots
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    slot_uri: sh:group
+    range: slot_definition
+    range_expression:
+      slot_conditions:
+        is_grouping_slot:
+          name: is_grouping_slot
+          equals_expression: 'True'
+  is_grouping_slot:
+    name: is_grouping_slot
+    description: true if this slot is a grouping slot
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - sh:PropertyGroup
+    domain: slot_definition
+    range: boolean
+  followed_by:
+    name: followed_by
+    description: in a sequential list, this indicates the next member
+    from_schema: https://w3id.org/linkml/meta
+    range: expression
+  reversed:
+    name: reversed
+    description: true if the slot is to be inversed
+    from_schema: https://w3id.org/linkml/meta
+    range: boolean
+  traverse:
+    name: traverse
+    description: the slot to traverse
+    from_schema: https://w3id.org/linkml/meta
+    range: slot_definition
+  path_rule:
+    name: path_rule
+    description: a rule for inferring a slot assignment based on evaluating a path
+      through a sequence of slot assignments
+    from_schema: https://w3id.org/linkml/meta
+    domain: slot_definition
+    range: path_expression
+  represents_relationship:
+    name: represents_relationship
+    description: true if this class represents a relationship rather than an entity
+    comments:
+    - in the context of Entity-Relationship (ER) modeling, this is used to state that
+      a class models a relationship between entities, and should be drawn with a diamond
+    - in the context of RDF, this should be used when instances of the class are `rdf:Statement`s
+    - in the context of property graphs, this should be used when a class is used
+      to represent an edge that connects nodes
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - rdf:Statement
+    - https://patterns.dataincubator.org/book/qualified-relation.html
+    aliases:
+    - is_reified
+    status: testing
+    domain: class_definition
+    inherited: true
+    range: boolean
+  relational_role:
+    name: relational_role
+    description: the role a slot on a relationship class plays, for example, the subject,
+      object or predicate roles
+    comments:
+    - this should only be used on slots that are applicable to class that represent
+      relationships
+    - in the context of RDF, this should be used for slots that can be modeled using
+      the RDF reification vocabulary
+    - in the context of property graphs, this should be used on edge classes to indicate
+      which slots represent the input and output nodes
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - reification_role
+    status: testing
+    domain: slot_definition
+    inherited: true
+    range: relational_role_enum
+  axis:
+    name: axis
+    description: A one-dimensional series that contains elements that form one part
+      of a tuple used to access an array
+    from_schema: https://w3id.org/linkml/lib/arrays
+    aliases:
+    - dimension
+    range: NDArray
+    required: true
+  axis_index:
+    name: axis_index
+    description: The position of an axis in a tuple used to access an array
+    from_schema: https://w3id.org/linkml/lib/arrays
+    range: integer
+  elements:
+    name: elements
+    description: A collection of values that make up the contents of an array. These
+      elements may be interpreted as a contiguous linear sequence (direct representation)
+      or as elements to be accessed via an array index
+    from_schema: https://w3id.org/linkml/lib/arrays
+    aliases:
+    - values
+    range: Any
+    required: true
+    multivalued: true
+  series_label:
+    name: series_label
+    description: A name that uniquely identifiers a series
+    from_schema: https://w3id.org/linkml/lib/arrays
+    key: true
+  length:
+    name: length
+    description: The number of elements in the array
+    from_schema: https://w3id.org/linkml/lib/arrays
+    range: integer
+    equals_expression: length(elements)
+  array_linearization_order:
+    name: array_linearization_order
+    from_schema: https://w3id.org/linkml/lib/arrays
+    ifabsent: string(ROW_MAJOR_ARRAY_ORDER)
+    range: ArrayLinearizationOrderOptions
+  specified_input:
+    name: specified_input
+    from_schema: https://w3id.org/linkml/lib/arrays
+    range: DataStructure
+    multivalued: true
+  specified_output:
+    name: specified_output
+    from_schema: https://w3id.org/linkml/lib/arrays
+    range: DataStructure
+    multivalued: true
+  operation_parameters:
+    name: operation_parameters
+    from_schema: https://w3id.org/linkml/lib/arrays
+    range: Any
+    multivalued: true
+  language:
+    name: language
+    description: language in which the information is expressed
+    from_schema: https://w3id.org/linkml/datasets
+  issued:
+    name: issued
+    from_schema: https://w3id.org/linkml/datasets
+    slot_uri: dcterms:issued
+    range: datetime
+  page:
+    name: page
+    from_schema: https://w3id.org/linkml/datasets
+    slot_uri: dcat:landingPage
+  dialect:
+    name: dialect
+    from_schema: https://w3id.org/linkml/datasets
+    slot_uri: csvw:dialect
+  bytes:
+    name: bytes
+    from_schema: https://w3id.org/linkml/datasets
+    slot_uri: dcat:byteSize
+    range: integer
+  path:
+    name: path
+    from_schema: https://w3id.org/linkml/datasets
+    close_mappings:
+    - frictionless:path
+  download_url:
+    name: download_url
+    from_schema: https://w3id.org/linkml/datasets
+    exact_mappings:
+    - schema:url
+    close_mappings:
+    - frictionless:path
+    slot_uri: dcat:downloadURL
+    range: uri
+  format:
+    name: format
+    from_schema: https://w3id.org/linkml/datasets
+    slot_uri: dcterms:format
+    range: FormatEnum
+  compression:
+    name: compression
+    from_schema: https://w3id.org/linkml/datasets
+  encoding:
+    name: encoding
+    from_schema: https://w3id.org/linkml/datasets
+  hash:
+    name: hash
+    notes:
+    - we recommend using a more specific slot such as sha256 or md5
+    from_schema: https://w3id.org/linkml/datasets
+  sha256:
+    name: sha256
+    from_schema: https://w3id.org/linkml/datasets
+    is_a: hash
+  md5:
+    name: md5
+    from_schema: https://w3id.org/linkml/datasets
+    is_a: hash
+  media_type:
+    name: media_type
+    examples:
+    - value: text/csv
+    - value: application/json
+    from_schema: https://w3id.org/linkml/datasets
+    exact_mappings:
+    - frictionless:mediatype
+    - schema:encodingFormat
+    slot_uri: dcat:mediaType
+    range: string
+  conforms_to_schema:
+    name: conforms_to_schema
+    from_schema: https://w3id.org/linkml/datasets
+    exact_mappings:
+    - frictionless:schema
+    is_a: conforms_to
+  conforms_to_class:
+    name: conforms_to_class
+    description: class in schema which the data object instantiates
+    from_schema: https://w3id.org/linkml/datasets
+    is_a: conforms_to
+  profile:
+    name: profile
+    from_schema: https://w3id.org/linkml/datasets
+    exact_mappings:
+    - frictionless:profiles
+    range: uriorcurie
+  themes:
+    name: themes
+    from_schema: https://w3id.org/linkml/datasets
+    singular_name: theme
+    slot_uri: dcat:theme
+    range: uriorcurie
+    multivalued: true
+  resources:
+    name: resources
+    from_schema: https://w3id.org/linkml/datasets
+    exact_mappings:
+    - schema:distribution
+    slot_uri: dcat:distribution
+    range: DataResource
+    multivalued: true
+  test_roles:
+    name: test_roles
+    from_schema: https://w3id.org/linkml/datasets
+    range: TestRole
+    multivalued: true
+  was_derived_from:
+    name: was_derived_from
+    description: A derivation is a transformation of an entity into another, an update
+      of an entity resulting in a new one, or the construction of a new entity based
+      on a pre-existing entity.@en
+    from_schema: https://w3id.org/linkml/datasets
+    slot_uri: prov:wasDerivedFrom
+  type:
+    name: type
+    from_schema: https://w3id.org/linkml/reporting
+    slot_uri: sh:sourceConstraintComponent
+    range: nodeidentifier
+  subject:
+    name: subject
+    from_schema: https://w3id.org/linkml/reporting
+    slot_uri: sh:focusNode
+    range: nodeidentifier
+  predicate:
+    name: predicate
+    from_schema: https://w3id.org/linkml/reporting
+    related_mappings:
+    - sh:resultPath
+    range: nodeidentifier
+  object:
+    name: object
+    from_schema: https://w3id.org/linkml/reporting
+    slot_uri: sh:value
+    range: nodeidentifier
+  object_str:
+    name: object_str
+    from_schema: https://w3id.org/linkml/reporting
+    range: string
+  node_source:
+    name: node_source
+    from_schema: https://w3id.org/linkml/reporting
+    range: nodeidentifier
+  severity:
+    name: severity
+    from_schema: https://w3id.org/linkml/reporting
+    range: severity_options
+  info:
+    name: info
+    from_schema: https://w3id.org/linkml/reporting
+    range: string
+classes:
+  AnyValue:
+    name: AnyValue
+    from_schema: https://w3id.org/linkml/extensions
+    class_uri: linkml:Any
+  extension:
+    name: extension
+    description: a tag/value pair used to add non-model information to an entry
+    from_schema: https://w3id.org/linkml/extensions
+    slots:
+    - extension_tag
+    - extension_value
+    - extensions
+  extensible:
+    name: extensible
+    description: mixin for classes that support extension
+    from_schema: https://w3id.org/linkml/extensions
+    mixin: true
+    slots:
+    - extensions
+  annotatable:
+    name: annotatable
+    description: mixin for classes that support annotations
+    from_schema: https://w3id.org/linkml/annotations
+    mixin: true
+    slots:
+    - annotations
+  annotation:
+    name: annotation
+    description: a tag/value pair with the semantics of OWL Annotation
+    from_schema: https://w3id.org/linkml/annotations
+    is_a: extension
+    mixins:
+    - annotatable
+    slots:
+    - annotations
+  UnitOfMeasure:
+    name: UnitOfMeasure
+    description: A unit of measure, or unit, is a particular quantity value that has
+      been chosen as a scale for  measuring other quantities the same kind (more generally
+      of equivalent dimension).
+    from_schema: https://w3id.org/linkml/units
+    slots:
+    - symbol
+    - abbreviation
+    - descriptive_name
+    - exact mappings
+    - ucum_code
+    - derivation
+    - has_quantity_kind
+    - iec61360code
+    slot_usage:
+      exact mappings:
+        name: exact mappings
+        description: Used to link a unit to equivalent concepts in ontologies such
+          as UO, SNOMED, OEM, OBOE, NCIT
+        comments:
+        - Do not use this to encode mappings to systems for which a dedicated field
+          exists
+    class_uri: qudt:Unit
+    any_of:
+    - slot_conditions:
+        ucum_code:
+          name: ucum_code
+          required: true
+    - slot_conditions:
+        iec61360code:
+          name: iec61360code
+          required: true
+    - slot_conditions:
+        symbol:
+          name: symbol
+          required: true
+    - slot_conditions:
+        exact_mappings:
+          name: exact_mappings
+          required: true
+  Anything:
+    name: Anything
+    from_schema: https://w3id.org/linkml/meta
+    class_uri: linkml:Any
+  common_metadata:
+    name: common_metadata
+    description: Generic metadata shared across definitions
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    mixin: true
+    slots:
+    - description
+    - alt_descriptions
+    - title
+    - deprecated
+    - todos
+    - notes
+    - comments
+    - examples
+    - in_subset
+    - from_schema
+    - imported_from
+    - source
+    - in_language
+    - see_also
+    - deprecated element has exact replacement
+    - deprecated element has possible replacement
+    - aliases
+    - structured_aliases
+    - mappings
+    - exact mappings
+    - close mappings
+    - related mappings
+    - narrow mappings
+    - broad mappings
+    - created_by
+    - contributors
+    - created_on
+    - last_updated_on
+    - modified_by
+    - status
+    - rank
+    - categories
+    - keywords
+  element:
+    name: element
+    description: A named element in the model
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://en.wikipedia.org/wiki/Data_element
+    aliases:
+    - data element
+    - object
+    abstract: true
+    mixins:
+    - extensible
+    - annotatable
+    - common_metadata
+    slots:
+    - name
+    - id_prefixes
+    - id_prefixes_are_closed
+    - definition_uri
+    - local_names
+    - conforms_to
+    - implements
+    - instantiates
+  schema_definition:
+    name: schema_definition
+    description: A collection of definitions that make up a schema or a data model.
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - RelationalModelProfile
+    - ObjectOrientedProfile
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://en.wikipedia.org/wiki/Data_dictionary
+    aliases:
+    - data dictionary
+    - data model
+    - information model
+    - logical model
+    - schema
+    - model
+    close_mappings:
+    - qb:ComponentSet
+    - owl:Ontology
+    rank: 1
+    is_a: element
+    slots:
+    - id
+    - version
+    - imports
+    - license
+    - prefixes
+    - emit_prefixes
+    - default_curi_maps
+    - default_prefix
+    - default_range
+    - subsets
+    - types
+    - enums
+    - slot_definitions
+    - classes
+    - metamodel_version
+    - source_file
+    - source_file_date
+    - source_file_size
+    - generation_date
+    - slot_names_unique
+    - settings
+    - bindings
+    slot_usage:
+      name:
+        name: name
+        description: a unique name for the schema that is both human-readable and
+          consists of only characters from the NCName set
+        range: ncname
+    tree_root: true
+  type_expression:
+    name: type_expression
+    description: An abstract class grouping named types and anonymous type expressions
+    from_schema: https://w3id.org/linkml/meta
+    is_a: expression
+    mixin: true
+    slots:
+    - pattern
+    - structured_pattern
+    - unit
+    - implicit_prefix
+    - equals_string
+    - equals_string_in
+    - equals_number
+    - minimum_value
+    - maximum_value
+    - none_of
+    - exactly_one_of
+    - any_of
+    - all_of
+    slot_usage:
+      any_of:
+        name: any_of
+        range: anonymous_type_expression
+      all_of:
+        name: all_of
+        range: anonymous_type_expression
+      exactly_one_of:
+        name: exactly_one_of
+        range: anonymous_type_expression
+      none_of:
+        name: none_of
+        range: anonymous_type_expression
+  anonymous_type_expression:
+    name: anonymous_type_expression
+    description: A type expression that is not a top-level named type definition.
+      Used for nesting.
+    from_schema: https://w3id.org/linkml/meta
+    mixins:
+    - type_expression
+  type_definition:
+    name: type_definition
+    description: an element that whose instances are atomic scalar values that can
+      be mapped to primitive types
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 4
+    is_a: element
+    mixins:
+    - type_expression
+    slots:
+    - typeof
+    - base
+    - type_uri
+    - repr
+    - union_of
+    slot_usage:
+      union_of:
+        name: union_of
+        range: type_definition
+  subset_definition:
+    name: subset_definition
+    description: an element that can be used to group other metamodel elements
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 6
+    is_a: element
+  definition:
+    name: definition
+    description: abstract base class for core metaclasses
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://en.wikipedia.org/wiki/Data_element_definition
+    is_a: element
+    abstract: true
+    slots:
+    - is_a
+    - abstract
+    - mixin
+    - mixins
+    - apply_to
+    - values_from
+    - string_serialization
+  enum_expression:
+    name: enum_expression
+    description: An expression that constrains the range of a slot
+    from_schema: https://w3id.org/linkml/meta
+    is_a: expression
+    slots:
+    - code_set
+    - code_set_tag
+    - code_set_version
+    - pv_formula
+    - permissible_values
+    - include
+    - minus
+    - inherits
+    - reachable_from
+    - matches
+    - concepts
+  anonymous_enum_expression:
+    name: anonymous_enum_expression
+    description: An enum_expression that is not named
+    from_schema: https://w3id.org/linkml/meta
+    mixins:
+    - enum_expression
+  enum_definition:
+    name: enum_definition
+    description: an element whose instances must be drawn from a specified set of
+      permissible values
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - RelationalModelProfile
+    - ObjectOrientedProfile
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - enum
+    - enumeration
+    - semantic enumeration
+    - value set
+    - term set
+    - concept set
+    - code set
+    - Terminology Value Set
+    - answer list
+    - value domain
+    exact_mappings:
+    - qb:HierarchicalCodeList
+    - NCIT:C113497
+    - cdisc:ValueDomain
+    close_mappings:
+    - skos:ConceptScheme
+    rank: 5
+    is_a: definition
+    mixins:
+    - enum_expression
+    slots:
+    - enum_uri
+  enum_binding:
+    name: enum_binding
+    description: A binding of a slot or a class to a permissible value from an enumeration.
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    mixins:
+    - extensible
+    - annotatable
+    - common_metadata
+    slots:
+    - range
+    - obligation_level
+    - binds_value_of
+    - pv_formula
+    slot_usage:
+      range:
+        name: range
+        range: enum_definition
+  match_query:
+    name: match_query
+    description: A query that is used on an enum expression to dynamically obtain
+      a set of permissivle values via a query that  matches on properties of the external
+      concepts.
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    slots:
+    - identifier_pattern
+    - source_ontology
+  reachability_query:
+    name: reachability_query
+    description: A query that is used on an enum expression to dynamically obtain
+      a set of permissible values via walking from a  set of source nodes to a set
+      of descendants or ancestors over a set of relationship types.
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    slots:
+    - source_ontology
+    - source_nodes
+    - relationship_types
+    - is_direct
+    - include_self
+    - traverse_up
+  structured_alias:
+    name: structured_alias
+    description: object that contains meta data about a synonym or alias including
+      where it came from (source) and its scope (narrow, broad, etc.)
+    from_schema: https://w3id.org/linkml/meta
+    mixins:
+    - expression
+    - extensible
+    - annotatable
+    - common_metadata
+    slots:
+    - literal_form
+    - alias_predicate
+    - categories
+    - alias_contexts
+    slot_usage:
+      categories:
+        name: categories
+        description: The category or categories of an alias. This can be drawn from
+          any relevant vocabulary
+        examples:
+        - value: https://w3id.org/mod#acronym
+          description: An acronym
+    class_uri: skosxl:Label
+  expression:
+    name: expression
+    description: general mixin for any class that can represent some form of expression
+    from_schema: https://w3id.org/linkml/meta
+    abstract: true
+    mixin: true
+  anonymous_expression:
+    name: anonymous_expression
+    description: An abstract parent class for any nested expression
+    comments:
+    - anonymous expressions are useful for when it is necessary to build a complex
+      expression without introducing a named element for each sub-expression
+    from_schema: https://w3id.org/linkml/meta
+    abstract: true
+    mixins:
+    - expression
+    - extensible
+    - annotatable
+    - common_metadata
+  path_expression:
+    name: path_expression
+    description: An expression that describes an abstract path from an object to another
+      through a sequence of slot lookups
+    from_schema: https://w3id.org/linkml/meta
+    mixins:
+    - expression
+    - extensible
+    - annotatable
+    - common_metadata
+    slots:
+    - followed_by
+    - none_of
+    - any_of
+    - all_of
+    - exactly_one_of
+    - reversed
+    - traverse
+    - range_expression
+    slot_usage:
+      followed_by:
+        name: followed_by
+        range: path_expression
+      any_of:
+        name: any_of
+        range: path_expression
+      exactly_one_of:
+        name: exactly_one_of
+        range: path_expression
+      none_of:
+        name: none_of
+        range: path_expression
+      all_of:
+        name: all_of
+        range: path_expression
+  slot_expression:
+    name: slot_expression
+    description: an expression that constrains the range of values a slot can take
+    from_schema: https://w3id.org/linkml/meta
+    is_a: expression
+    mixin: true
+    slots:
+    - range
+    - range_expression
+    - enum_range
+    - bindings
+    - required
+    - recommended
+    - multivalued
+    - inlined
+    - inlined_as_list
+    - minimum_value
+    - maximum_value
+    - pattern
+    - structured_pattern
+    - unit
+    - implicit_prefix
+    - value_presence
+    - equals_string
+    - equals_string_in
+    - equals_number
+    - equals_expression
+    - exact_cardinality
+    - minimum_cardinality
+    - maximum_cardinality
+    - has_member
+    - all_members
+    - none_of
+    - exactly_one_of
+    - any_of
+    - all_of
+    - array
+    slot_usage:
+      any_of:
+        name: any_of
+        range: anonymous_slot_expression
+      all_of:
+        name: all_of
+        range: anonymous_slot_expression
+      exactly_one_of:
+        name: exactly_one_of
+        range: anonymous_slot_expression
+      none_of:
+        name: none_of
+        range: anonymous_slot_expression
+  anonymous_slot_expression:
+    name: anonymous_slot_expression
+    from_schema: https://w3id.org/linkml/meta
+    is_a: anonymous_expression
+    mixins:
+    - slot_expression
+  slot_definition:
+    name: slot_definition
+    description: an element that describes how instances are related to other instances
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - slot
+    - field
+    - property
+    - attribute
+    - column
+    - variable
+    close_mappings:
+    - rdf:Property
+    - qb:ComponentProperty
+    rank: 3
+    is_a: definition
+    mixins:
+    - slot_expression
+    slots:
+    - singular_name
+    - domain
+    - slot_uri
+    - inherited
+    - readonly
+    - ifabsent
+    - list_elements_unique
+    - list_elements_ordered
+    - shared
+    - key
+    - identifier
+    - designates_type
+    - alias
+    - owner
+    - domain_of
+    - subproperty_of
+    - symmetric
+    - reflexive
+    - locally_reflexive
+    - irreflexive
+    - asymmetric
+    - transitive
+    - inverse
+    - is_class_field
+    - transitive_form_of
+    - reflexive_transitive_form_of
+    - role
+    - is_usage_slot
+    - usage_slot_name
+    - relational_role
+    - slot_group
+    - is_grouping_slot
+    - path_rule
+    - disjoint_with
+    - children_are_mutually_disjoint
+    - union_of
+    - type_mappings
+    slot_usage:
+      is_a:
+        name: is_a
+        description: A primary parent slot from which inheritable metaslots are propagated
+        range: slot_definition
+      mixins:
+        name: mixins
+        description: A collection of secondary parent mixin slots from which inheritable
+          metaslots are propagated
+        range: slot_definition
+      apply_to:
+        name: apply_to
+        range: slot_definition
+      disjoint_with:
+        name: disjoint_with
+        range: slot_definition
+      union_of:
+        name: union_of
+        range: slot_definition
+  class_expression:
+    name: class_expression
+    description: A boolean expression that can be used to dynamically determine membership
+      of a class
+    from_schema: https://w3id.org/linkml/meta
+    mixin: true
+    slots:
+    - any_of
+    - exactly_one_of
+    - none_of
+    - all_of
+    - slot_conditions
+    slot_usage:
+      any_of:
+        name: any_of
+        range: anonymous_class_expression
+      all_of:
+        name: all_of
+        range: anonymous_class_expression
+      exactly_one_of:
+        name: exactly_one_of
+        range: anonymous_class_expression
+      none_of:
+        name: none_of
+        range: anonymous_class_expression
+  anonymous_class_expression:
+    name: anonymous_class_expression
+    from_schema: https://w3id.org/linkml/meta
+    is_a: anonymous_expression
+    mixins:
+    - class_expression
+    slots:
+    - is_a
+  class_definition:
+    name: class_definition
+    description: an element whose instances are complex objects that may have slot-value
+      assignments
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - RelationalModelProfile
+    - ObjectOrientedProfile
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - table
+    - record
+    - template
+    - message
+    - observation
+    close_mappings:
+    - owl:Class
+    rank: 2
+    is_a: definition
+    mixins:
+    - class_expression
+    slots:
+    - slots
+    - slot_usage
+    - attributes
+    - class_uri
+    - subclass_of
+    - union_of
+    - defining_slots
+    - tree_root
+    - unique_keys
+    - rules
+    - classification_rules
+    - slot_names_unique
+    - represents_relationship
+    - disjoint_with
+    - children_are_mutually_disjoint
+    - extra_slots
+    - alias
+    slot_usage:
+      is_a:
+        name: is_a
+        description: A primary parent class from which inheritable metaslots are propagated
+        range: class_definition
+      mixins:
+        name: mixins
+        description: A collection of secondary parent mixin classes from which inheritable
+          metaslots are propagated
+        range: class_definition
+      apply_to:
+        name: apply_to
+        range: class_definition
+      rules:
+        name: rules
+        range: class_rule
+      disjoint_with:
+        name: disjoint_with
+        range: class_definition
+      union_of:
+        name: union_of
+        range: class_definition
+  class_level_rule:
+    name: class_level_rule
+    description: A rule that is applied to classes
+    from_schema: https://w3id.org/linkml/meta
+    abstract: true
+  class_rule:
+    name: class_rule
+    description: A rule that applies to instances of a class
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - if rule
+    close_mappings:
+    - sh:TripleRule
+    - swrl:Imp
+    is_a: class_level_rule
+    mixins:
+    - extensible
+    - annotatable
+    - common_metadata
+    slots:
+    - preconditions
+    - postconditions
+    - elseconditions
+    - bidirectional
+    - open_world
+    - rank
+    - deactivated
+  array_expression:
+    name: array_expression
+    description: defines the dimensions of an array
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    mixins:
+    - extensible
+    - annotatable
+    - common_metadata
+    slots:
+    - exact_number_dimensions
+    - minimum_number_dimensions
+    - maximum_number_dimensions
+    - dimensions
+  dimension_expression:
+    name: dimension_expression
+    description: defines one of the dimensions of an array
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    mixins:
+    - extensible
+    - annotatable
+    - common_metadata
+    slots:
+    - alias
+    - maximum_cardinality
+    - minimum_cardinality
+    - exact_cardinality
+  pattern_expression:
+    name: pattern_expression
+    description: a regular expression pattern used to evaluate conformance of a string
+    from_schema: https://w3id.org/linkml/meta
+    mixins:
+    - extensible
+    - annotatable
+    - common_metadata
+    slots:
+    - syntax
+    - interpolated
+    - partial_match
+  import_expression:
+    name: import_expression
+    description: an expression describing an import
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    mixins:
+    - extensible
+    - annotatable
+    - common_metadata
+    slots:
+    - import_from
+    - import_as
+    - import_map
+  setting:
+    name: setting
+    description: assignment of a key to a value
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    slots:
+    - setting_key
+    - setting_value
+  prefix:
+    name: prefix
+    description: prefix URI tuple
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 12
+    slots:
+    - prefix_prefix
+    - prefix_reference
+  local_name:
+    name: local_name
+    description: an attributed label
+    from_schema: https://w3id.org/linkml/meta
+    slots:
+    - local_name_source
+    - local_name_value
+  example:
+    name: example
+    description: usage example and description
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    slots:
+    - value
+    - value_description
+    - value_object
+  alt_description:
+    name: alt_description
+    description: an attributed description
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - structured description
+    slots:
+    - alt_description_source
+    - alt_description_text
+  permissible_value:
+    name: permissible_value
+    description: a permissible value, accompanied by intended text and an optional
+      mapping to a concept URI
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - PV
+    close_mappings:
+    - skos:Concept
+    rank: 16
+    mixins:
+    - extensible
+    - annotatable
+    - common_metadata
+    slots:
+    - text
+    - description
+    - meaning
+    - unit
+    - instantiates
+    - implements
+    - is_a
+    - mixins
+    slot_usage:
+      is_a:
+        name: is_a
+        range: permissible_value
+      mixins:
+        name: mixins
+        range: permissible_value
+  unique_key:
+    name: unique_key
+    description: a collection of slots whose values uniquely identify an instance
+      of a class
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - RelationalModelProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 20
+    mixins:
+    - extensible
+    - annotatable
+    - common_metadata
+    slots:
+    - unique_key_name
+    - unique_key_slots
+    - consider_nulls_inequal
+  type_mapping:
+    name: type_mapping
+    description: Represents how a slot or type can be serialized to a format.
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 21
+    mixins:
+    - extensible
+    - annotatable
+    - common_metadata
+    slots:
+    - framework_key
+    - mapped_type
+    - string_serialization
+  extra_slots_expression:
+    name: extra_slots_expression
+    description: "An expression that defines how to handle additional data in an instance\
+      \ of class\nbeyond the slots/attributes defined for that class. \nSee `extra_slots`\
+      \ for usage examples.\n"
+    from_schema: https://w3id.org/linkml/meta
+    mixins:
+    - expression
+    slots:
+    - allowed
+    - range_expression
+  Any:
+    name: Any
+    from_schema: https://w3id.org/linkml/lib/arrays
+    class_uri: linkml:Any
+  DataStructure:
+    name: DataStructure
+    from_schema: https://w3id.org/linkml/lib/arrays
+    abstract: true
+  NDArray:
+    name: NDArray
+    description: a data structure consisting of a collection of *elements*, each identified
+      by at least one array index tuple.
+    from_schema: https://w3id.org/linkml/lib/arrays
+    is_a: DataStructure
+    abstract: true
+    slots:
+    - dimensions
+    - elements
+    - array_linearization_order
+    slot_usage:
+      elements:
+        name: elements
+        description: the collection of values that make up the array. The elements
+          have a *direct* representation which is an ordered sequence of values. The
+          elements also have an *array interpretation*, where each element has a unique
+          index which is determined by array_linearization_order
+  DataArray:
+    name: DataArray
+    description: a data structure containing an NDArray and a set of one-dimensional
+      series that are used to label the elements of the array
+    from_schema: https://w3id.org/linkml/lib/arrays
+    see_also:
+    - https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html
+    is_a: DataStructure
+    slots:
+    - axis
+    - array
+  GroupingByArrayOrder:
+    name: GroupingByArrayOrder
+    description: A mixin that describes an array whose elements are mapped from a
+      linear sequence to an array index via a specified mapping
+    from_schema: https://w3id.org/linkml/lib/arrays
+    mixin: true
+  ColumnOrderedArray:
+    name: ColumnOrderedArray
+    description: An array ordering that is column-order
+    from_schema: https://w3id.org/linkml/lib/arrays
+    is_a: GroupingByArrayOrder
+    mixin: true
+    slots:
+    - array_linearization_order
+    slot_usage:
+      array_linearization_order:
+        name: array_linearization_order
+        equals_string: COLUMN_MAJOR_ARRAY_ORDER
+  RowOrderedArray:
+    name: RowOrderedArray
+    description: An array ordering that is row-order or generalizations thereof
+    from_schema: https://w3id.org/linkml/lib/arrays
+    is_a: GroupingByArrayOrder
+    mixin: true
+    slots:
+    - array_linearization_order
+    slot_usage:
+      array_linearization_order:
+        name: array_linearization_order
+        equals_string: ROW_MAJOR_ARRAY_ORDER
+  Information:
+    name: Information
+    description: Grouping for datasets and data files
+    from_schema: https://w3id.org/linkml/datasets
+    close_mappings:
+    - schema:CreativeWork
+    abstract: true
+    slots:
+    - id
+    - download_url
+    - license
+    - title
+    - description
+    - conforms_to
+    - conforms_to_schema
+    - conforms_to_class
+    - version
+    - language
+    - publisher
+    - keywords
+    - issued
+    - created_by
+    - created_on
+    - compression
+    - was_derived_from
+    - page
+    - test_roles
+  DataPackage:
+    name: DataPackage
+    description: A collection of data resources
+    from_schema: https://w3id.org/linkml/datasets
+    see_also:
+    - https://specs.frictionlessdata.io/data-package
+    aliases:
+    - dataset
+    - file collection
+    - data resource collection
+    exact_mappings:
+    - dcat:Dataset
+    close_mappings:
+    - dcat:Catalog
+    is_a: Information
+    slots:
+    - resources
+    class_uri: void:Dataset
+  DataResource:
+    name: DataResource
+    description: An individual file or table
+    from_schema: https://w3id.org/linkml/datasets
+    see_also:
+    - https://specs.frictionlessdata.io/data-resource
+    exact_mappings:
+    - schema:DataDownload
+    is_a: Information
+    slots:
+    - path
+    - title
+    - description
+    - format
+    - media_type
+    - encoding
+    - bytes
+    - hash
+    - md5
+    - sha256
+    - dialect
+    class_uri: dcat:Distribution
+  FormatDialect:
+    name: FormatDialect
+    description: Additional format information for a file
+    from_schema: https://w3id.org/linkml/datasets
+    attributes:
+      comment_prefix:
+        name: comment_prefix
+        from_schema: https://w3id.org/linkml/datasets
+      delimiter:
+        name: delimiter
+        from_schema: https://w3id.org/linkml/datasets
+      double_quote:
+        name: double_quote
+        from_schema: https://w3id.org/linkml/datasets
+      header:
+        name: header
+        from_schema: https://w3id.org/linkml/datasets
+      quote_char:
+        name: quote_char
+        from_schema: https://w3id.org/linkml/datasets
+  ValidationReport:
+    name: ValidationReport
+    description: A report object
+    todos:
+    - add prov object
+    from_schema: https://w3id.org/linkml/reporting
+    attributes:
+      results:
+        name: results
+        from_schema: https://w3id.org/linkml/reporting
+        range: ValidationResult
+        multivalued: true
+    class_uri: sh:ValidationReport
+  ValidationResult:
+    name: ValidationResult
+    description: An individual result arising from validation of a data instance using
+      a particular rule
+    from_schema: https://w3id.org/linkml/reporting
+    slots:
+    - type
+    - severity
+    - subject
+    - instantiates
+    - predicate
+    - object
+    - object_str
+    - node_source
+    - info
+    class_uri: sh:ValidationResult
+source_file: no_orphans.yaml

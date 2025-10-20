@@ -1,0 +1,88 @@
+id: https://example.com/no_orphans
+name: no_orphans
+comments:
+  - array has a slot_usage on a slot
+  - not happy with contributors either
+imports:
+  - meta
+  - array
+  - datasets
+  - extended_types
+  - validation
+
+#poetry run linkml generate linkml \
+#--output no_orphans_materialized.yaml \
+#--no-materialize-patterns \
+#--no-materialize-attributes \
+#--no-materialize \
+#--format yaml \
+#--mergeimports no_orphans.yaml
+
+# poetry run linkml generate owl no_orphans_materialized.yaml
+
+#generator_args:
+#  owl:
+#    add_root_classes: true
+#    mergeimports: true
+#    mixins_as_expressions: true
+#    metaclasses: false
+#    type_objects: false
+
+# yq eval '.slots | to_entries | .[] | select(.value.readonly) | .key' no_orphans_materialized.yaml
+
+####
+
+#poetry run linkml generate owl \
+#--add-root-classes \
+#--mergeimports \
+#--mixins-as-expressions \
+#--no-metaclasses \
+#--no-type-objects no_orphans_materialized.yaml > no_orphans_materialized.owl.ttl
+
+
+#PREFIX owl: <http://www.w3.org/2002/07/owl#>
+#PREFIX linkml: <https://w3id.org/linkml/>
+#PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#select * where {
+#    ?x a ?y .
+#    minus {
+#        ?x rdfs:subClassOf* linkml:element
+#    }
+#    minus {
+#        ?x a owl:Ontology
+#    }
+#    minus {
+#        ?x a owl:Restriction
+#    }
+#    minus {
+#        ?x a rdfs:Datatype
+#    }
+#    minus {
+#        ?x a owl:DatatypeProperty
+#    }
+#    minus {
+#        ?x a owl:ObjectProperty
+#    }
+#}
+
+# readonly not preserved in OWL
+
+# only slots are marked readonly in the merged metamodel
+
+#MAM@MAM-M74 metamodel % grep readonly no_orphans_materialized.yaml
+#    readonly: filled in by the schema loader or schema view
+#    readonly: supplied by the schema loader or schema view
+#    readonly: supplied by the schema loader or schema view
+#    readonly: supplied by the schema loader or schema view
+#    readonly: supplied by the schema loader
+#    readonly: supplied by the loader
+#    readonly: supplied by the schema loader or schema view
+#    readonly: supplied by the schema loader or schema view
+#  readonly:
+#    name: readonly
+#    readonly: filled in by loader -- either class domain or slot domain
+#    readonly: filled in by the loader
+#    readonly: filled in by the loader
+#    readonly: filled in by the loader
+#    - readonly
+#MAM@MAM-M74 metamodel %

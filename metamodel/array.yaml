@@ -11,14 +11,15 @@ description: >-
   use `implements` to denote conformance.
 
 status: testing
-# contributors:
-#  - github:rly
-#  - github:oruebel
-#  - github:jmchandonia
-#  - github:realmarcin
-#  - github:mavaylon1
-#  - github:ialarmedalien
-#  - github:cmungall
+
+## contributors:
+##  - github:rly
+##  - github:oruebel
+##  - github:jmchandonia
+##  - github:realmarcin
+##  - github:mavaylon1
+##  - github:ialarmedalien
+##  - github:cmungall
 
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -106,9 +107,9 @@ slots:
     range: integer
   axis:
     range: NDArray
-    slot_usage:
-      dimensions:
-        equals_number: 1
+#    slot_usage:
+#      dimensions:
+#        equals_number: 1
     aliases:
       - dimension
     description: >-
