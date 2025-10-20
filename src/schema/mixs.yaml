@@ -9790,6 +9790,7 @@ slots:
       units_alignment_excuse:
         tag: units_alignment_excuse
         value: mixs_inconsistent
+      storage_units: g/kg
     description: The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound.
     title: specific humidity
     examples:
@@ -10863,6 +10864,7 @@ slots:
       units_alignment_excuse:
         tag: units_alignment_excuse
         value: complex_unit
+      storage_units: m
     description: True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m).
     title: depth (TVDSS) of hydrocarbon resource temperature
     examples:
