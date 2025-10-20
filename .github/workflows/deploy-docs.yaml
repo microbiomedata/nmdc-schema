@@ -13,7 +13,7 @@ jobs:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
       - name: Install Poetry.
-        uses: pipx install poetry
+        run: pipx install poetry
 
       - name: Set up Python 3.
         uses: actions/setup-python@v6
