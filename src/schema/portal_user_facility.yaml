@@ -47,7 +47,7 @@ slots:
     recommended: true
     deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions
   dna_lr_isolate_meth:
-    description: Describe the method/protocol/kit used to extract DNA/RNA.
+    description: Describe the method/protocol/kit used to extract DNA/RNA for long read sequencing.
     title: DNA isolation method for long read sequencing
     examples:
       - value: phenol/chloroform extraction
