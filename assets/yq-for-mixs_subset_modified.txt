@@ -551,6 +551,8 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.occup_samp.annotations.storage_units = {"tag": "storage_units", "value": "1"}'
 '.slots.freq_clean.annotations.storage_units = {"tag": "storage_units", "value": "1/d"}'
 '.slots.freq_cook.annotations.storage_units = {"tag": "storage_units", "value": "1/d"}'
+'.slots.exp_pipe.annotations.storage_units = {"tag": "storage_units", "value": "1"}'
+'.slots.occup_density_samp.annotations.storage_units = {"tag": "storage_units", "value": "1/[sft_i]"}'
 
 # Units alignment excuses for problematic MIxS specifications
 '.slots.efficiency_percent.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "mixs_inconsistent"}'
@@ -560,8 +562,6 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.api.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "non_ucum_unit"}'
 
 # Units alignment excuses for MIxS slots with zero occurrences in production data
-'.slots.exp_pipe.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "pending_analysis"}'
-'.slots.occup_density_samp.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "pending_analysis"}'
 '.slots.soil_text_measure.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "pending_analysis"}'
 
 # Complex measurement slots that combine numeric and text data

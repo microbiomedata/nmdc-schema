@@ -3955,9 +3955,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: pending_analysis
+      storage_units:
+        tag: storage_units
+        value: "1"
     description: The number of exposed pipes in the room
     title: exposed pipes
     examples:
@@ -6334,7 +6334,7 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-    description: Structured miscellaneous property assertions for this Biosample. Use when a value cannot cleanly fit an existing, policy-governed slot.
+    description: Structured miscellaneous property assertions. Use when a value cannot cleanly fit an existing, policy-governed slot.
     title: miscellaneous parameter
     examples:
       - value: Bicarbonate ion concentration;2075 micromole per kilogram
@@ -6579,9 +6579,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: pending_analysis
+      storage_units:
+        tag: storage_units
+        value: 1/[sft_i]
     description: Average number of occupants at time of sampling per square footage
     title: occupant density at sampling
     examples:
