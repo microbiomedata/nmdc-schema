@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Poetry
-        uses: snok/install-poetry@v1.3
+        uses: pipx install poetry
       - uses: actions/checkout@v3
       - name: Install dependencies
         run: poetry install --no-interaction --no-root
