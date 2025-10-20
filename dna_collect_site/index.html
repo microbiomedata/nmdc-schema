@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: DNA collection site (dna_collect_site) - NMDC Schema Documentation</title>
+        <title>Slot: DNA collection site (dna_collect_site) (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-dna-collection-site-dna_collect_site" class="md-skip">
+        <a href="#slot-dna-collection-site-dna_collect_site-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: DNA collection site (dna_collect_site)
+              Slot: DNA collection site (dna_collect_site) (DEPRECATED)
             
           </span>
         </div>
@@ -607,7 +607,7 @@
   
 
 
-<h1 id="slot-dna-collection-site-dna_collect_site">Slot: DNA collection site (dna_collect_site)</h1>
+<h1 id="slot-dna-collection-site-dna_collect_site-deprecated">Slot: DNA collection site (dna_collect_site)  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p><em>Provide information on the site your DNA sample was collected from</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/dna_collect_site">nmdc:dna_collect_site</a></p>
 <!-- no inheritance hierarchy -->
@@ -677,15 +677,15 @@
 <pre><code class="language-yaml">name: dna_collect_site
 description: Provide information on the site your DNA sample was collected from
 title: DNA collection site
+deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot
+  &amp; it's now captured directly in the submission portal schema to support submissions
 examples:
 - value: untreated pond water
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 15
-string_serialization: '{text}'
 alias: dna_collect_site
 domain_of:
 - Biosample
-slot_group: JGI-Metagenomics
 range: string
 recommended: true
 

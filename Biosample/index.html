@@ -3853,7 +3853,7 @@
 </tr>
 <tr>
 <td><a href="../replicate_number/">replicate_number</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Integer/">Integer</a></td>
 <td>If sending biological replicates, indicate the rep number here</td>
 <td>direct</td>
 </tr>
@@ -3871,7 +3871,7 @@
 </tr>
 <tr>
 <td><a href="../technical_reps/">technical_reps</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Integer/">Integer</a></td>
 <td>If sending technical replicates of the same sample, indicate the replicate co...</td>
 <td>direct</td>
 </tr>
@@ -19624,16 +19624,17 @@ attributes:
     name: dna_collect_site
     description: Provide information on the site your DNA sample was collected from
     title: DNA collection site
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
+      slot &amp; it's now captured directly in the submission portal schema to support
+      submissions
     examples:
     - value: untreated pond water
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 15
-    string_serialization: '{text}'
     alias: dna_collect_site
     owner: Biosample
     domain_of:
     - Biosample
-    slot_group: JGI-Metagenomics
     range: string
     recommended: true
   dna_isolate_meth:
@@ -19646,12 +19647,10 @@ attributes:
     aliases:
     - Sample Isolation Method
     rank: 16
-    string_serialization: '{text}'
     alias: dna_isolate_meth
     owner: Biosample
     domain_of:
     - Biosample
-    slot_group: JGI-Metagenomics
     range: string
     recommended: true
   dna_organisms:
@@ -19659,33 +19658,35 @@ attributes:
     description: List any organisms known or suspected to grow in co-culture, as well
       as estimated % of the organism in that culture.
     title: DNA expected organisms
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
+      slot &amp; it's now captured directly in the submission portal schema to support
+      submissions
     examples:
     - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
         (1%)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 14
-    string_serialization: '{text}'
     alias: dna_organisms
     owner: Biosample
     domain_of:
     - Biosample
-    slot_group: JGI-Metagenomics
     range: string
     recommended: true
   rna_collect_site:
     name: rna_collect_site
     description: Provide information on the site your RNA sample was collected from
     title: RNA collection site
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
+      slot &amp; it's now captured directly in the submission portal schema to support
+      submissions
     examples:
     - value: untreated pond water
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 15
-    string_serialization: '{text}'
     alias: rna_collect_site
     owner: Biosample
     domain_of:
     - Biosample
-    slot_group: JGI-Metatranscriptomics
     range: string
     recommended: true
   rna_isolate_meth:
@@ -19698,12 +19699,10 @@ attributes:
     aliases:
     - Sample Isolation Method
     rank: 16
-    string_serialization: '{text}'
     alias: rna_isolate_meth
     owner: Biosample
     domain_of:
     - Biosample
-    slot_group: JGI-Metatranscriptomics
     range: string
     recommended: true
   rna_organisms:
@@ -19711,17 +19710,18 @@ attributes:
     description: List any organisms known or suspected to grow in co-culture, as well
       as estimated % of the organism in that culture.
     title: RNA expected organisms
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
+      slot &amp; it's now captured directly in the submission portal schema to support
+      submissions
     examples:
     - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
         (1%)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 14
-    string_serialization: '{text}'
     alias: rna_organisms
     owner: Biosample
     domain_of:
     - Biosample
-    slot_group: JGI-Metatranscriptomics
     range: string
     recommended: true
   collection_date_inc:
@@ -20091,12 +20091,10 @@ attributes:
     title: project ID
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1
-    string_serialization: '{text}'
     alias: project_id
     owner: Biosample
     domain_of:
     - Biosample
-    slot_group: EMSL
     range: string
     recommended: true
   replicate_number:
@@ -20107,13 +20105,11 @@ attributes:
     - This will guide staff in ensuring your samples are blocked &amp; randomized correctly
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 6
-    string_serialization: '{integer}'
     alias: replicate_number
     owner: Biosample
     domain_of:
     - Biosample
-    slot_group: EMSL
-    range: string
+    range: integer
     recommended: true
   sample_shipped:
     name: sample_shipped
@@ -20129,12 +20125,10 @@ attributes:
     - value: 5 mL
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 3
-    string_serialization: '{float} {unit}'
     alias: sample_shipped
     owner: Biosample
     domain_of:
     - Biosample
-    slot_group: EMSL
     range: string
     recommended: true
   sample_type:
@@ -20151,7 +20145,6 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    slot_group: EMSL
     range: SampleTypeEnum
     recommended: true
   technical_reps:
@@ -20166,13 +20159,11 @@ attributes:
     - value: '2'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 5
-    string_serialization: '{integer}'
     alias: technical_reps
     owner: Biosample
     domain_of:
     - Biosample
-    slot_group: EMSL
-    range: string
+    range: integer
     recommended: true
   analysis_type:
     name: analysis_type

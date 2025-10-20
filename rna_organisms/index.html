@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: RNA expected organisms (rna_organisms) - NMDC Schema Documentation</title>
+        <title>Slot: RNA expected organisms (rna_organisms) (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-rna-expected-organisms-rna_organisms" class="md-skip">
+        <a href="#slot-rna-expected-organisms-rna_organisms-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: RNA expected organisms (rna_organisms)
+              Slot: RNA expected organisms (rna_organisms) (DEPRECATED)
             
           </span>
         </div>
@@ -607,7 +607,7 @@
   
 
 
-<h1 id="slot-rna-expected-organisms-rna_organisms">Slot: RNA expected organisms (rna_organisms)</h1>
+<h1 id="slot-rna-expected-organisms-rna_organisms-deprecated">Slot: RNA expected organisms (rna_organisms)  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p><em>List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/rna_organisms">nmdc:rna_organisms</a></p>
 <!-- no inheritance hierarchy -->
@@ -678,15 +678,15 @@
 description: List any organisms known or suspected to grow in co-culture, as well
   as estimated % of the organism in that culture.
 title: RNA expected organisms
+deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot
+  &amp; it's now captured directly in the submission portal schema to support submissions
 examples:
 - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles (1%)
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 14
-string_serialization: '{text}'
 alias: rna_organisms
 domain_of:
 - Biosample
-slot_group: JGI-Metatranscriptomics
 range: string
 recommended: true
 

@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: DNA expected organisms (dna_organisms) - NMDC Schema Documentation</title>
+        <title>Slot: DNA expected organisms (dna_organisms) (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-dna-expected-organisms-dna_organisms" class="md-skip">
+        <a href="#slot-dna-expected-organisms-dna_organisms-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: DNA expected organisms (dna_organisms)
+              Slot: DNA expected organisms (dna_organisms) (DEPRECATED)
             
           </span>
         </div>
@@ -607,7 +607,7 @@
   
 
 
-<h1 id="slot-dna-expected-organisms-dna_organisms">Slot: DNA expected organisms (dna_organisms)</h1>
+<h1 id="slot-dna-expected-organisms-dna_organisms-deprecated">Slot: DNA expected organisms (dna_organisms)  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p><em>List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/dna_organisms">nmdc:dna_organisms</a></p>
 <!-- no inheritance hierarchy -->
@@ -678,15 +678,15 @@
 description: List any organisms known or suspected to grow in co-culture, as well
   as estimated % of the organism in that culture.
 title: DNA expected organisms
+deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot
+  &amp; it's now captured directly in the submission portal schema to support submissions
 examples:
 - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles (1%)
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 14
-string_serialization: '{text}'
 alias: dna_organisms
 domain_of:
 - Biosample
-slot_group: JGI-Metagenomics
 range: string
 recommended: true
 
