@@ -22,9 +22,10 @@ jobs:
         run: pipx install poetry
 
       - name: Set up Python 3
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
-          python-version: 3.9
+          python-version: '3.12'
+          cache: 'poetry'
 
       - name: Install dependencies
         run: poetry install
