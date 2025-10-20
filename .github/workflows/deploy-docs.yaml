@@ -52,6 +52,8 @@ jobs:
         #
         # Reference: https://www.mkdocs.org/user-guide/deploying-your-docs/
         #
+        # MAM 2025-10-20 switching back from `make mkd-gh-deploy` to invocation
+        # outside of make in order to use the --force option
       - name: Deploy web-based documentation to GitHub Pages
         run: |
-          make mkd-gh-deploy
+          poetry run mkdocs gh-deploy --force
