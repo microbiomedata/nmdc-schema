@@ -55,7 +55,6 @@ slots:
     examples:
       - value: phenol/chloroform extraction
     rank: 16
-    string_serialization: '{text}'
     recommended: true
     aliases:
       - Sample Isolation Method
