@@ -8,10 +8,8 @@ bulk_elect_conductivity | MISSING
 concentration | MISSING
 api | MISSING
 efficiency_percent | MISSING
-exp_pipe | MISSING
 inside_lux | MISSING
 microbial_biomass | MISSING
-occup_density_samp | MISSING
 rel_humidity_out | MISSING
 soil_text_measure | MISSING
 specific_humidity | MISSING
