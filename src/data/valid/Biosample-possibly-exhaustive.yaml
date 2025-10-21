@@ -476,7 +476,7 @@ exp_duct:
 exp_pipe:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: m2
+  has_unit: '1'
 experimental_factor:
   type: nmdc:ControlledTermValue
   has_raw_value: unconstrained text, unlike the MIxS environmental triad
@@ -864,7 +864,7 @@ number_resident:
 occup_density_samp:  # Float
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '1'
+  has_unit: '1/[sft_i]'
 occup_document: estimate
 occup_samp:
   type: nmdc:QuantityValue

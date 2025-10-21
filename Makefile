@@ -150,7 +150,7 @@ test-schema:
 		-d tmp $(SOURCE_SCHEMA_PATH)
 
 test-python:
-	$(RUN) python -m unittest discover
+	$(RUN) pytest
 	$(RUN) python -m doctest nmdc_schema/nmdc_data.py
 	$(RUN) python -m doctest nmdc_schema/id_helpers.py
 	$(RUN) python -m doctest src/scripts/make_typecode_to_class_map.py
