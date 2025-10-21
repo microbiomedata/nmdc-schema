@@ -1,0 +1,15 @@
+element	nmdc_origin	meta_origin
+bytes	https://w3id.org/nmdc/nmdc_types	https://w3id.org/linkml/datasets
+definition	https://w3id.org/nmdc/basic_classes	https://w3id.org/linkml/meta
+description	https://w3id.org/nmdc/attribute_values	https://w3id.org/linkml/datasets
+id	https://w3id.org/nmdc/basic_slots	https://w3id.org/linkml/datasets
+language	https://w3id.org/nmdc/attribute_values	https://w3id.org/linkml/datasets
+name	https://w3id.org/nmdc/attribute_values	https://w3id.org/linkml/meta
+notes	https://w3id.org/nmdc/basic_slots	https://w3id.org/linkml/meta
+object	https://w3id.org/nmdc/basic_classes	https://w3id.org/linkml/reporting
+predicate	https://w3id.org/nmdc/basic_classes	https://w3id.org/linkml/reporting
+subject	https://w3id.org/nmdc/annotation	https://w3id.org/linkml/reporting
+title	https://w3id.org/nmdc/basic_slots	https://w3id.org/linkml/datasets
+type	https://w3id.org/nmdc/attribute_values	https://w3id.org/linkml/reporting
+value	https://w3id.org/nmdc/nmdc	https://w3id.org/linkml/meta
+version	https://w3id.org/nmdc/basic_slots	https://w3id.org/linkml/datasets
