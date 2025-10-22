@@ -627,13 +627,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
+<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td></td>
+<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
+<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -641,7 +641,10 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../String/">String</a></p>
+<p>Range: <a href="../ExternalIdentifier/">ExternalIdentifier</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
 </li>
 <li>
 <p>Regex pattern: <code>^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$</code></p>
@@ -680,7 +683,8 @@ alias: insdc_assembly_identifiers
 domain_of:
 - MetagenomeAssembly
 - MetatranscriptomeAssembly
-range: string
+range: external_identifier
+multivalued: true
 pattern: ^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
 
 </code></pre>

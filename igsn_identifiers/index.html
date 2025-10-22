@@ -520,6 +520,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inheritance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mixin-usage" class="md-nav__link">
     <span class="md-ellipsis">
       Mixin Usage
@@ -600,8 +609,16 @@
 
 <h1 id="slot-igsn_identifiers">Slot: igsn_identifiers</h1>
 <p>URI: <a href="https://w3id.org/nmdc/igsn_identifiers">nmdc:igsn_identifiers</a></p>
-<!-- no inheritance hierarchy -->
-
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../alternative_identifiers/">alternative_identifiers</a><ul>
+<li><a href="../external_database_identifiers/">external_database_identifiers</a><ul>
+<li><strong>igsn_identifiers</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="mixin-usage">Mixin Usage</h2>
 <table>
 <thead>
@@ -624,7 +641,13 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../String/">String</a></p>
+<p>Range: <a href="../ExternalIdentifier/">ExternalIdentifier</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
+</li>
+<li>
+<p>Regex pattern: <code>^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$</code></p>
 </li>
 <li>
 <p>Mixin: True</p>
@@ -656,9 +679,12 @@
 <pre><code class="language-yaml">name: igsn_identifiers
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
+is_a: external_database_identifiers
 mixin: true
 alias: igsn_identifiers
-range: string
+range: external_identifier
+multivalued: true
+pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
 
 </code></pre>
 

@@ -640,7 +640,7 @@
 </tr>
 <tr>
 <td><a href="../insdc_assembly_identifiers/">insdc_assembly_identifiers</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -1232,7 +1232,8 @@ attributes:
     domain_of:
     - MetagenomeAssembly
     - MetatranscriptomeAssembly
-    range: string
+    range: external_identifier
+    multivalued: true
     pattern: ^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
   ended_at_time:
     name: ended_at_time
