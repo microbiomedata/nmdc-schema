@@ -4912,7 +4912,7 @@ slot_usage:
       IDs enable linking to derived analytes and subsamples. If you have not assigned
       FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
     examples:
-    - value: IGSN:AU1243
+    - value: igsn:AU1243
     - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
 class_uri: nmdc:Biosample
 unique_keys:
@@ -5263,7 +5263,7 @@ slot_usage:
       IDs enable linking to derived analytes and subsamples. If you have not assigned
       FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
     examples:
-    - value: IGSN:AU1243
+    - value: igsn:AU1243
     - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
 attributes:
   associated_studies:
@@ -5496,7 +5496,7 @@ attributes:
     - Biosample
     range: external_identifier
     multivalued: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    pattern: ^igsn:[A-Za-z]{2,4}[A-Za-z0-9.-]{1,71}$
   abs_air_humidity:
     name: abs_air_humidity
     annotations:
@@ -16723,7 +16723,7 @@ attributes:
       IDs enable linking to derived analytes and subsamples. If you have not assigned
       FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
     examples:
-    - value: IGSN:AU1243
+    - value: igsn:AU1243
     - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
@@ -20197,7 +20197,7 @@ attributes:
       was grown in links to the plant sample. An original culture sample was transferred
       to a new vial and generated a new sample)'
     examples:
-    - value: IGSN:DSJ0284
+    - value: igsn:DSJ0284
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 5
     string_serialization: '{text}:{text}'
