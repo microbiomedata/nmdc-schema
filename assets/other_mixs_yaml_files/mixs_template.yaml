@@ -1,13 +1,7 @@
 name: mixs-schema-subset
-title: MIxS Schema Subset for NMDC
 id: https://w3id.org/nmdc/mixs
 
-notes:
-  - removed several MIxS terms/slots that were sharing slot uris; commented out Biosample assignments
-  - note that the NMDC submission schema in sheets_and_friends takes its MIxS terms
-    from https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml
-    and then potentially modifies them. Ideally this file would contain MIxS terms, essentially ready-to-use
-  - multiple LinkML representations of MIxS are currently available and one will be blessed soon
+source: https://github.com/microbiomedata/mixs/tree/main/model/schema
 
 prefixes:
   nmdc: https://w3id.org/nmdc/
