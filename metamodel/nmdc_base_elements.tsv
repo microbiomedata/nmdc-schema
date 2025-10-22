@@ -1,0 +1,1099 @@
+name	type	is_a	abstract	from_schema
+AnalysisTypeEnum	EnumDefinition			https://w3id.org/nmdc/portal_enums
+AnnotatingWorkflow	ClassDefinition	WorkflowExecution	True	https://w3id.org/nmdc/core
+AttributeValue	ClassDefinition		True	https://w3id.org/nmdc/attribute_values
+BinQualityEnum	EnumDefinition			https://w3id.org/nmdc/core
+Biosample	ClassDefinition	Sample		https://w3id.org/nmdc/core
+BiosampleCategoryEnum	EnumDefinition			https://w3id.org/nmdc/core
+CalibrationInformation	ClassDefinition	InformationObject		https://w3id.org/nmdc/nmdc
+CalibrationStandardEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+CalibrationTargetEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ChemicalConversionCategoryEnum	EnumDefinition			https://w3id.org/nmdc/core
+ChemicalConversionProcess	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/core
+ChemicalEntityEnum	EnumDefinition			https://w3id.org/nmdc/core
+ChromatographicCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ChromatographicSeparationProcess	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+ChromatographyConfiguration	ClassDefinition	Configuration		https://w3id.org/nmdc/nmdc
+CollectingBiosamplesFromSite	ClassDefinition	PlannedProcess		https://w3id.org/nmdc/nmdc
+Configuration	ClassDefinition	InformationObject	True	https://w3id.org/nmdc/nmdc
+ContainerCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ControlledIdentifiedTermValue	ClassDefinition	ControlledTermValue		https://w3id.org/nmdc/attribute_values
+ControlledTermValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/attribute_values
+CreditAssociation	ClassDefinition			https://w3id.org/nmdc/basic_classes
+CreditEnum	EnumDefinition			https://w3id.org/nmdc/basic_classes
+DataCategoryEnum	EnumDefinition			https://w3id.org/nmdc/basic_slots
+DataEmitterProcess	ClassDefinition	PlannedProcess	True	https://w3id.org/nmdc/basic_classes
+DataGeneration	ClassDefinition	DataEmitterProcess	True	https://w3id.org/nmdc/basic_classes
+DataObject	ClassDefinition	InformationObject		https://w3id.org/nmdc/basic_classes
+Database	ClassDefinition			https://w3id.org/nmdc/nmdc
+DissolvingProcess	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+Doi	ClassDefinition			https://w3id.org/nmdc/basic_classes
+DoiCategoryEnum	EnumDefinition			https://w3id.org/nmdc/basic_slots
+DoiProviderEnum	EnumDefinition			https://w3id.org/nmdc/basic_slots
+EluentIntroductionCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+EnvironmentalMaterialTerm	ClassDefinition	OntologyClass		https://w3id.org/nmdc/core
+EukEval	ClassDefinition			https://w3id.org/nmdc/nmdc
+ExecutionResourceEnum	EnumDefinition			https://w3id.org/nmdc/basic_slots
+Extraction	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+ExtractionTargetEnum	EnumDefinition			https://w3id.org/nmdc/basic_slots
+FailureCategorization	ClassDefinition			https://w3id.org/nmdc/basic_classes
+FailureWhatEnum	EnumDefinition			https://w3id.org/nmdc/basic_classes
+FailureWhereEnum	EnumDefinition			https://w3id.org/nmdc/basic_classes
+FieldResearchSite	ClassDefinition	Site		https://w3id.org/nmdc/core
+FileTypeEnum	EnumDefinition			https://w3id.org/nmdc/basic_slots
+FiltrationProcess	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+FunctionalAnnotation	ClassDefinition			https://w3id.org/nmdc/annotation
+FunctionalAnnotationAggMember	ClassDefinition			https://w3id.org/nmdc/nmdc
+FunctionalAnnotationTerm	ClassDefinition	OntologyClass	True	https://w3id.org/nmdc/annotation
+GeneProduct	ClassDefinition	NamedThing		https://w3id.org/nmdc/core
+GenomeFeature	ClassDefinition			https://w3id.org/nmdc/annotation
+GeolocationValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/attribute_values
+ImageValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/attribute_values
+InformationObject	ClassDefinition	NamedThing	True	https://w3id.org/nmdc/basic_classes
+Instrument	ClassDefinition	MaterialEntity		https://w3id.org/nmdc/basic_classes
+InstrumentModelEnum	EnumDefinition			https://w3id.org/nmdc/basic_classes
+InstrumentVendorEnum	EnumDefinition			https://w3id.org/nmdc/basic_classes
+IonizationSourceEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+LibraryPreparation	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+LibraryTypeEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+MagBin	ClassDefinition			https://w3id.org/nmdc/core
+MagsAnalysis	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/workflow_execution_activity
+Manifest	ClassDefinition	InformationObject		https://w3id.org/nmdc/nmdc
+ManifestCategoryEnum	EnumDefinition			https://w3id.org/nmdc/basic_classes
+MassAnalyzerEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+MassSpectrometry	ClassDefinition	DataGeneration		https://w3id.org/nmdc/nmdc
+MassSpectrometryAcquisitionStrategyEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+MassSpectrometryConfiguration	ClassDefinition	Configuration		https://w3id.org/nmdc/nmdc
+MassSpectrometryEnum	EnumDefinition			https://w3id.org/nmdc/basic_slots
+MassSpectrumCollectionModeEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+MaterialEntity	ClassDefinition	NamedThing	True	https://w3id.org/nmdc/basic_classes
+MaterialProcessing	ClassDefinition	PlannedProcess	True	https://w3id.org/nmdc/core
+MetaboliteIdentification	ClassDefinition			https://w3id.org/nmdc/core
+MetabolomicsAnalysis	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/workflow_execution_activity
+MetabolomicsAnalysisCategoryEnum	EnumDefinition			https://w3id.org/nmdc/workflow_execution_activity
+MetagenomeAnnotation	ClassDefinition	AnnotatingWorkflow		https://w3id.org/nmdc/core
+MetagenomeAssembly	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/workflow_execution_activity
+MetaproteomicsAnalysis	ClassDefinition	AnnotatingWorkflow		https://w3id.org/nmdc/workflow_execution_activity
+MetaproteomicsAnalysisCategoryEnum	EnumDefinition			https://w3id.org/nmdc/workflow_execution_activity
+MetatranscriptomeAnnotation	ClassDefinition	AnnotatingWorkflow		https://w3id.org/nmdc/workflow_execution_activity
+MetatranscriptomeAssembly	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/workflow_execution_activity
+MetatranscriptomeExpressionAnalysis	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/workflow_execution_activity
+MixingProcess	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+MobilePhaseSegment	ClassDefinition			https://w3id.org/nmdc/core
+NamedThing	ClassDefinition		True	https://w3id.org/nmdc/basic_classes
+NomAnalysis	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/workflow_execution_activity
+NucleotideSequencing	ClassDefinition	DataGeneration		https://w3id.org/nmdc/nmdc
+NucleotideSequencingEnum	EnumDefinition			https://w3id.org/nmdc/basic_slots
+OntologyClass	ClassDefinition	NamedThing		https://w3id.org/nmdc/basic_classes
+OntologyRelation	ClassDefinition			https://w3id.org/nmdc/basic_classes
+OrthologyGroup	ClassDefinition	FunctionalAnnotationTerm		https://w3id.org/nmdc/annotation
+Pathway	ClassDefinition	FunctionalAnnotationTerm		https://w3id.org/nmdc/annotation
+PersonValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/attribute_values
+PlannedProcess	ClassDefinition	NamedThing	True	https://w3id.org/nmdc/basic_classes
+PolarityModeEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+Pooling	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+PortionOfSubstance	ClassDefinition			https://w3id.org/nmdc/core
+ProcessedSample	ClassDefinition	Sample		https://w3id.org/nmdc/core
+ProcessingInstitutionEnum	EnumDefinition			https://w3id.org/nmdc/basic_slots
+PropertyAssertion	ClassDefinition	AttributeValue		https://w3id.org/nmdc/attribute_values
+Protocol	ClassDefinition			https://w3id.org/nmdc/basic_classes
+ProtocolCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ProtocolForEnum	EnumDefinition			https://w3id.org/nmdc/basic_classes
+QuantityValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/attribute_values
+ReadBasedTaxonomyAnalysis	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/workflow_execution_activity
+ReadQcAnalysis	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/workflow_execution_activity
+ResolutionCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+Sample	ClassDefinition	MaterialEntity	True	https://w3id.org/nmdc/core
+SamplePortionEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+SampleStateEnum	EnumDefinition			https://w3id.org/nmdc/core
+SampleTypeEnum	EnumDefinition			https://w3id.org/nmdc/portal_enums
+SeparationMethodEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+Site	ClassDefinition	MaterialEntity	True	https://w3id.org/nmdc/core
+StationaryPhaseEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+StatusEnum	EnumDefinition			https://w3id.org/nmdc/basic_slots
+StorageProcess	ClassDefinition	PlannedProcess		https://w3id.org/nmdc/nmdc
+StrandedOrientationEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+Study	ClassDefinition	NamedThing		https://w3id.org/nmdc/basic_classes
+StudyCategoryEnum	EnumDefinition			https://w3id.org/nmdc/basic_classes
+SubSamplingProcess	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+SubmissionStatusEnum	EnumDefinition			https://w3id.org/nmdc/portal_enums
+SubstanceRoleEnum	EnumDefinition			https://w3id.org/nmdc/core
+TargetGeneEnum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+TextValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/attribute_values
+TimestampValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/attribute_values
+UnitEnum	EnumDefinition			https://w3id.org/nmdc/attribute_values
+WorkflowExecution	ClassDefinition	DataEmitterProcess	True	https://w3id.org/nmdc/basic_classes
+YesNoEnum	EnumDefinition			https://w3id.org/nmdc/portal_enums
+abs_air_humidity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+add_date	SlotDefinition			https://w3id.org/nmdc/basic_slots
+add_recov_method	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+additional_info	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+address	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+adj_room	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+aero_struc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+agrochem_addition	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+air_PM_concen	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+air_temp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+air_temp_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+al_sat	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+al_sat_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+alkalinity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+alkalinity_method	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+alkyl_diethers	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+alt	SlotDefinition	environment field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+alternative_descriptions	SlotDefinition			https://w3id.org/nmdc/basic_slots
+alternative_identifiers	SlotDefinition			https://w3id.org/nmdc/basic_slots
+alternative_names	SlotDefinition			https://w3id.org/nmdc/basic_slots
+alternative_titles	SlotDefinition			https://w3id.org/nmdc/basic_slots
+aminopept_act	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ammonium	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ammonium_nitrogen	SlotDefinition			https://w3id.org/nmdc/core
+amount_light	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+analysis_identifiers	SlotDefinition	external_database_identifiers	True	https://w3id.org/nmdc/external_identifiers
+analysis_type	SlotDefinition			https://w3id.org/nmdc/portal/sample_id
+analyte_category	SlotDefinition			https://w3id.org/nmdc/basic_slots
+ances_data	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+annual_precpt	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+annual_temp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+antibiotic_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+api	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+applied_roles	SlotDefinition			https://w3id.org/nmdc/basic_classes
+applies_to_person	SlotDefinition			https://w3id.org/nmdc/basic_classes
+arch_struc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+arch_struc_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+aromatics_pc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+asm_score	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+asphaltenes_pc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+assembly_identifiers	SlotDefinition		True	https://w3id.org/nmdc/external_identifiers
+associated_dois	SlotDefinition			https://w3id.org/nmdc/basic_classes
+associated_studies	SlotDefinition			https://w3id.org/nmdc/basic_classes
+atmospheric_data	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+avg_dew_point	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+avg_occup	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+avg_temp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+bac_prod	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+bac_resp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+bacteria_carb_prod	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+barometric_press	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+basin	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+bathroom_count	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+bedroom_count	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+benzene	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+bin_name	SlotDefinition			https://w3id.org/nmdc/core
+bin_quality	SlotDefinition			https://w3id.org/nmdc/core
+binned_contig_num	SlotDefinition			https://w3id.org/nmdc/workflow_execution_activity
+biochem_oxygen_dem	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+biocide	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+biocide_admin_method	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+biogas_retention_time	SlotDefinition			https://w3id.org/nmdc/nmdc
+biogas_temperature	SlotDefinition			https://w3id.org/nmdc/nmdc
+biol_stat	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+biol_stat_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+biomass	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+biomaterial_purity	SlotDefinition			https://w3id.org/nmdc/nmdc
+biosample_categories	SlotDefinition			https://w3id.org/nmdc/core
+biosample_identifiers	SlotDefinition	external_database_identifiers	True	https://w3id.org/nmdc/external_identifiers
+biosample_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+biotic_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+biotic_relationship	SlotDefinition	nucleic acid sequence source field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+biotic_relationship_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+bishomohopanol	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+blood_press_diast	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+blood_press_syst	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+boolean	TypeDefinition			https://w3id.org/linkml/types
+bromide	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+build_docs	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+build_docs_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+build_occup_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+build_occup_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+building_setting	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+building_setting_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+built_struc_age	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+built_struc_set	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+built_struc_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+bulk_elect_conductivity	SlotDefinition			https://w3id.org/nmdc/core
+bytes	TypeDefinition			https://w3id.org/nmdc/nmdc_types
+calcium	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+calibration_object	SlotDefinition			https://w3id.org/nmdc/nmdc
+calibration_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+calibration_standard	SlotDefinition			https://w3id.org/nmdc/nmdc
+calibration_target	SlotDefinition			https://w3id.org/nmdc/nmdc
+carb_dioxide	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+carb_monoxide	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+carb_nitro_ratio	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ceil_area	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ceil_cond	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ceil_cond_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ceil_finish_mat	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ceil_finish_mat_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ceil_struc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ceil_texture	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ceil_texture_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ceil_thermal_mass	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ceil_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ceil_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ceil_water_mold	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+chem_administration	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+chem_mutagen	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+chem_oxygen_dem	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+chem_treat_method	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+chem_treatment	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+chemical_conversion_category	SlotDefinition			https://w3id.org/nmdc/core
+chemical_entity_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+chemical_formula	SlotDefinition			https://w3id.org/nmdc/core
+chimera_check	SlotDefinition	sequencing field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+chloride	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+chlorophyll	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+chromatographic_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+climate_environment	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+collected_from	SlotDefinition			https://w3id.org/nmdc/core
+collecting_biosamples_from_site_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+collection_date	SlotDefinition	environment field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+collection_date_inc	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+collection_time	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+collection_time_inc	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+community	SlotDefinition			https://w3id.org/nmdc/basic_slots
+completeness	SlotDefinition			https://w3id.org/nmdc/core
+completion_date	SlotDefinition			https://w3id.org/nmdc/nmdc
+compression_type	SlotDefinition			https://w3id.org/nmdc/basic_slots
+concentration	SlotDefinition			https://w3id.org/nmdc/core
+conditionings	SlotDefinition			https://w3id.org/nmdc/nmdc
+conduc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+configuration_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+contained_in	SlotDefinition			https://w3id.org/nmdc/nmdc
+container_size	SlotDefinition			https://w3id.org/nmdc/nmdc
+contamination	SlotDefinition			https://w3id.org/nmdc/core
+contig_bp	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+contigs	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+cool_syst_id	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+core field	SlotDefinition		True	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+count	SlotDefinition			https://w3id.org/nmdc/nmdc
+crop_rotation	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ctg_l50	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+ctg_l90	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+ctg_logsum	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+ctg_max	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+ctg_n50	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+ctg_n90	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+ctg_powsum	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+cult_root_med	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+cur_land_use	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+cur_land_use_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+cur_vegetation	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+cur_vegetation_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+curie	TypeDefinition			https://w3id.org/linkml/types
+data_category	SlotDefinition			https://w3id.org/nmdc/basic_slots
+data_generation_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+data_object_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+data_object_type	SlotDefinition			https://w3id.org/nmdc/basic_slots
+date	TypeDefinition			https://w3id.org/linkml/types
+date_created	SlotDefinition			https://w3id.org/nmdc/nmdc
+date_last_rain	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+date_or_datetime	TypeDefinition			https://w3id.org/linkml/types
+datetime	TypeDefinition			https://w3id.org/linkml/types
+decimal	TypeDefinition			https://w3id.org/linkml/types
+decimal_degree	TypeDefinition			https://w3id.org/nmdc/nmdc_types
+definition	SlotDefinition			https://w3id.org/nmdc/basic_classes
+density	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+depos_env	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+depos_env_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+depth	SlotDefinition	environment field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+description	SlotDefinition			https://w3id.org/nmdc/attribute_values
+dew_point	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+diether_lipids	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+display_order	SlotDefinition			https://w3id.org/nmdc/attribute_values
+diss_carb_dioxide	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+diss_hydrogen	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+diss_inorg_carb	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+diss_inorg_nitro	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+diss_inorg_phosp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+diss_iron	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+diss_org_carb	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+diss_org_nitro	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+diss_oxygen	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+diss_oxygen_fluid	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+dna_absorb1	SlotDefinition	biomaterial_purity		https://w3id.org/nmdc/core
+dna_absorb2	SlotDefinition	biomaterial_purity		https://w3id.org/nmdc/core
+dna_collect_site	SlotDefinition			https://w3id.org/nmdc/portal/jgi_metagenomics
+dna_concentration	SlotDefinition			https://w3id.org/nmdc/basic_slots
+dna_isolate_meth	SlotDefinition			https://w3id.org/nmdc/portal/jgi_metagenomics
+dna_organisms	SlotDefinition			https://w3id.org/nmdc/portal/jgi_metagenomics
+doi_category	SlotDefinition			https://w3id.org/nmdc/basic_slots
+doi_provider	SlotDefinition			https://w3id.org/nmdc/basic_slots
+doi_value	SlotDefinition			https://w3id.org/nmdc/basic_slots
+door_comp_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_comp_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_cond	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_cond_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_direct	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_direct_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_loc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_loc_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_mat	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_mat_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_move	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_move_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_size	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_type_metal	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_type_metal_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_type_wood	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_type_wood_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+door_water_mold	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+double	TypeDefinition			https://w3id.org/linkml/types
+down_par	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+drainage_class	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+drainage_class_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+drawings	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+drawings_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+duration	SlotDefinition			https://w3id.org/nmdc/core
+ecosystem	SlotDefinition	gold_path_field		https://w3id.org/nmdc/basic_slots
+ecosystem_category	SlotDefinition	gold_path_field		https://w3id.org/nmdc/basic_slots
+ecosystem_path_id	SlotDefinition			https://w3id.org/nmdc/nmdc
+ecosystem_subtype	SlotDefinition	gold_path_field		https://w3id.org/nmdc/basic_slots
+ecosystem_type	SlotDefinition	gold_path_field		https://w3id.org/nmdc/basic_slots
+efficiency_percent	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+elev	SlotDefinition	environment field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+elevator	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+eluent_introduction_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+email	SlotDefinition			https://w3id.org/nmdc/attribute_values
+embargoed	SlotDefinition			https://w3id.org/nmdc/basic_slots
+emsl_biosample_identifiers	SlotDefinition	biosample_identifiers		https://w3id.org/nmdc/external_identifiers
+emsl_identifiers	SlotDefinition			https://w3id.org/nmdc/external_identifiers
+emsl_project_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/external_identifiers
+emsl_store_temp	SlotDefinition			https://w3id.org/nmdc/emsl
+emulsions	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+encodes	SlotDefinition			https://w3id.org/nmdc/annotation
+end	SlotDefinition	gff_coordinate		https://w3id.org/nmdc/annotation
+end_date	SlotDefinition			https://w3id.org/nmdc/basic_slots
+ended_at_time	SlotDefinition			https://w3id.org/nmdc/basic_slots
+env_broad_scale	SlotDefinition	mixs_env_triad_field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+env_local_scale	SlotDefinition	mixs_env_triad_field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+env_medium	SlotDefinition	mixs_env_triad_field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+env_package	SlotDefinition			https://w3id.org/nmdc/core
+environment field	SlotDefinition		True	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+escalator	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ethylbenzene	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+etl_software_version	SlotDefinition			https://w3id.org/nmdc/nmdc
+eukaryotic_evaluation	SlotDefinition			https://w3id.org/nmdc/nmdc
+execution_resource	SlotDefinition			https://w3id.org/nmdc/basic_slots
+exp_duct	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+exp_pipe	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+experimental_factor	SlotDefinition	investigation field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+experimental_factor_other	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+ext_door	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ext_wall_orient	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ext_wall_orient_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ext_window_orient	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ext_window_orient_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+external_database_identifiers	SlotDefinition	alternative_identifiers	True	https://w3id.org/nmdc/basic_slots
+external_identifier	TypeDefinition			https://w3id.org/nmdc/nmdc_types
+extraction_targets	SlotDefinition			https://w3id.org/nmdc/basic_slots
+extreme_event	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+fao_class	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+fao_class_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+feature_category	SlotDefinition			https://w3id.org/nmdc/annotation
+feature_type	SlotDefinition			https://w3id.org/nmdc/annotation
+fertilizer_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+field	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+field_research_site_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+file_size_bytes	SlotDefinition			https://w3id.org/nmdc/basic_slots
+filter_material	SlotDefinition			https://w3id.org/nmdc/nmdc
+filter_method	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+filter_pore_size	SlotDefinition			https://w3id.org/nmdc/nmdc
+filter_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+filter_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+filtration_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+final_concentration	SlotDefinition	concentration		https://w3id.org/nmdc/core
+fire	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+fireplace_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+float	TypeDefinition			https://w3id.org/linkml/types
+flooding	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+floor_age	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+floor_area	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+floor_cond	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+floor_cond_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+floor_count	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+floor_finish_mat	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+floor_finish_mat_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+floor_struc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+floor_struc_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+floor_thermal_mass	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+floor_water_mold	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+floor_water_mold_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+fluor	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+freq_clean	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+freq_clean_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+freq_cook	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+functional_annotation_agg	SlotDefinition			https://w3id.org/nmdc/nmdc
+functional_annotation_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+funding_sources	SlotDefinition			https://w3id.org/nmdc/basic_slots
+fungicide_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+furniture	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+furniture_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+gap_pct	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+gaseous_environment	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+gaseous_substances	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+gc_avg	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+gc_std	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+gender_restroom	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+gender_restroom_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+gene_count	SlotDefinition			https://w3id.org/nmdc/core
+gene_function_id	SlotDefinition			https://w3id.org/nmdc/nmdc
+generates_calibration	SlotDefinition			https://w3id.org/nmdc/nmdc
+genetic_mod	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+genome_feature_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+geo_loc_name	SlotDefinition	environment field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+gff_coordinate	SlotDefinition			https://w3id.org/nmdc/annotation
+git_url	SlotDefinition			https://w3id.org/nmdc/basic_slots
+glucosidase_act	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+gnps_identifiers	SlotDefinition			https://w3id.org/nmdc/external_identifiers
+gnps_task_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/external_identifiers
+gold_analysis_project_identifiers	SlotDefinition	analysis_identifiers		https://w3id.org/nmdc/external_identifiers
+gold_biosample_identifiers	SlotDefinition	biosample_identifiers		https://w3id.org/nmdc/external_identifiers
+gold_identifiers	SlotDefinition			https://w3id.org/nmdc/external_identifiers
+gold_path_field	SlotDefinition		True	https://w3id.org/nmdc/basic_slots
+gold_sequencing_project_identifiers	SlotDefinition	omics_processing_identifiers		https://w3id.org/nmdc/external_identifiers
+gold_study_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/external_identifiers
+gravidity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+gravity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+growth_facil	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+growth_habit	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+growth_habit_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+growth_hormone_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+gtdbtk_class	SlotDefinition			https://w3id.org/nmdc/core
+gtdbtk_domain	SlotDefinition			https://w3id.org/nmdc/core
+gtdbtk_family	SlotDefinition			https://w3id.org/nmdc/core
+gtdbtk_genus	SlotDefinition			https://w3id.org/nmdc/core
+gtdbtk_order	SlotDefinition			https://w3id.org/nmdc/core
+gtdbtk_phylum	SlotDefinition			https://w3id.org/nmdc/core
+gtdbtk_species	SlotDefinition			https://w3id.org/nmdc/core
+habitat	SlotDefinition			https://w3id.org/nmdc/basic_slots
+hall_count	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+handidness	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+handidness_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+has_attribute_id	SlotDefinition			https://w3id.org/nmdc/attribute_values
+has_attribute_label	SlotDefinition			https://w3id.org/nmdc/attribute_values
+has_boolean_value	SlotDefinition			https://w3id.org/nmdc/basic_slots
+has_chromatography_configuration	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_credit_associations	SlotDefinition			https://w3id.org/nmdc/basic_classes
+has_datetime_value	SlotDefinition			https://w3id.org/nmdc/attribute_values
+has_failure_categorization	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_function	SlotDefinition			https://w3id.org/nmdc/annotation
+has_input	SlotDefinition			https://w3id.org/nmdc/basic_classes
+has_mass_spectrometry_configuration	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_maximum_numeric_value	SlotDefinition	has_numeric_value		https://w3id.org/nmdc/attribute_values
+has_metabolite_identifications	SlotDefinition			https://w3id.org/nmdc/workflow_execution_activity
+has_minimum_numeric_value	SlotDefinition	has_numeric_value		https://w3id.org/nmdc/attribute_values
+has_numeric_value	SlotDefinition			https://w3id.org/nmdc/attribute_values
+has_output	SlotDefinition			https://w3id.org/nmdc/basic_classes
+has_quantity_kind_id	SlotDefinition			https://w3id.org/nmdc/attribute_values
+has_raw_value	SlotDefinition			https://w3id.org/nmdc/attribute_values
+has_unit	SlotDefinition			https://w3id.org/nmdc/attribute_values
+has_value_term_id	SlotDefinition			https://w3id.org/nmdc/attribute_values
+hc_produced	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+hc_produced_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+hcr	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+hcr_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+hcr_fw_salinity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+hcr_geol_age	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+hcr_geol_age_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+hcr_pressure	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+hcr_temp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+heat_cool_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+heat_cool_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+heat_deliv_loc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+heat_deliv_loc_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+heat_sys_deliv_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+heat_system_id	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+heavy_metals	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+heavy_metals_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+height_carper_fiber	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+herbicide_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+highest_similarity_score	SlotDefinition			https://w3id.org/nmdc/core
+homepage_website	SlotDefinition	websites		https://w3id.org/nmdc/basic_slots
+horizon_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_age	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_body_habitat	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_body_product	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_body_site	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_body_temp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_color	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_common_name	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_diet	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_disease_stat	SlotDefinition	nucleic acid sequence source field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_dry_mass	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_family_relation	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_genotype	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_growth_cond	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_height	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_last_meal	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_length	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_life_stage	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_name	SlotDefinition			https://w3id.org/nmdc/basic_slots
+host_phenotype	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_sex	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_sex_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_shape	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_subject_id	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_subspecf_genlin	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_substrate	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_symbiont	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_taxid	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_tot_mass	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+host_wet_mass	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+humidity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+humidity_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+id	SlotDefinition			https://w3id.org/nmdc/basic_slots
+igsn_biosample_identifiers	SlotDefinition	biosample_identifiers		https://w3id.org/nmdc/external_identifiers
+igsn_identifiers	SlotDefinition			https://w3id.org/nmdc/external_identifiers
+img_identifiers	SlotDefinition	external_database_identifiers		https://w3id.org/nmdc/external_identifiers
+in_manifest	SlotDefinition			https://w3id.org/nmdc/basic_classes
+inchi	SlotDefinition			https://w3id.org/nmdc/core
+inchi_key	SlotDefinition			https://w3id.org/nmdc/core
+indoor_space	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+indoor_space_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+indoor_surf	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+indoor_surf_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+indust_eff_percent	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+infiltrations	SlotDefinition			https://w3id.org/nmdc/basic_slots
+inorg_particles	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+input_base_count	SlotDefinition	read_qc_analysis_statistic		https://w3id.org/nmdc/workflow_execution_activity
+input_contig_num	SlotDefinition			https://w3id.org/nmdc/workflow_execution_activity
+input_mass	SlotDefinition			https://w3id.org/nmdc/nmdc
+input_read_bases	SlotDefinition			https://w3id.org/nmdc/workflow_execution_activity
+input_read_count	SlotDefinition	read_qc_analysis_statistic		https://w3id.org/nmdc/workflow_execution_activity
+input_volume	SlotDefinition			https://w3id.org/nmdc/nmdc
+insdc_analysis_identifiers	SlotDefinition	analysis_identifiers		https://w3id.org/nmdc/external_identifiers
+insdc_assembly_identifiers	SlotDefinition	assembly_identifiers		https://w3id.org/nmdc/external_identifiers
+insdc_bioproject_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/external_identifiers
+insdc_biosample_identifiers	SlotDefinition	biosample_identifiers		https://w3id.org/nmdc/external_identifiers
+insdc_experiment_identifiers	SlotDefinition	external_database_identifiers		https://w3id.org/nmdc/external_identifiers
+insdc_identifiers	SlotDefinition			https://w3id.org/nmdc/external_identifiers
+insdc_secondary_sample_identifiers	SlotDefinition	biosample_identifiers		https://w3id.org/nmdc/external_identifiers
+insdc_sra_ena_study_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/external_identifiers
+inside_lux	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+instrument_instance_specifier	SlotDefinition			https://w3id.org/nmdc/basic_classes
+instrument_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+instrument_used	SlotDefinition			https://w3id.org/nmdc/basic_classes
+int_wall_cond	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+int_wall_cond_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+integer	TypeDefinition			https://w3id.org/linkml/types
+internal_calibration	SlotDefinition			https://w3id.org/nmdc/nmdc
+investigation field	SlotDefinition		True	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ionization_source	SlotDefinition			https://w3id.org/nmdc/nmdc
+is_obsolete	SlotDefinition			https://w3id.org/nmdc/basic_classes
+is_pressurized	SlotDefinition			https://w3id.org/nmdc/nmdc
+is_root	SlotDefinition			https://w3id.org/nmdc/basic_classes
+is_stranded	SlotDefinition			https://w3id.org/nmdc/nmdc
+isotope_exposure	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+iw_bt_date_well	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+iwf	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+jgi_portal_analysis_project_identifiers	SlotDefinition	analysis_identifiers		https://w3id.org/nmdc/external_identifiers
+jgi_portal_identifiers	SlotDefinition			https://w3id.org/nmdc/external_identifiers
+jgi_portal_study_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/external_identifiers
+jsonpath	TypeDefinition			https://w3id.org/linkml/types
+jsonpointer	TypeDefinition			https://w3id.org/linkml/types
+known_as	SlotDefinition			https://w3id.org/nmdc/core
+language	SlotDefinition			https://w3id.org/nmdc/attribute_values
+language_code	TypeDefinition			https://w3id.org/nmdc/nmdc_types
+last_clean	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+lat_lon	SlotDefinition	environment field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+latitude	SlotDefinition			https://w3id.org/nmdc/attribute_values
+lbc_thirty	SlotDefinition			https://w3id.org/nmdc/core
+lbceq	SlotDefinition			https://w3id.org/nmdc/core
+library_preparation_kit	SlotDefinition			https://w3id.org/nmdc/nmdc
+library_type	SlotDefinition			https://w3id.org/nmdc/nmdc
+light_intensity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+light_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+light_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+light_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+link_addit_analys	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+link_class_info	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+link_climate_info	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+lithology	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+lithology_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+local_class	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+local_class_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+location	SlotDefinition			https://w3id.org/nmdc/basic_slots
+longitude	SlotDefinition			https://w3id.org/nmdc/attribute_values
+low_depth_contig_num	SlotDefinition			https://w3id.org/nmdc/workflow_execution_activity
+magnesium	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+mags_list	SlotDefinition			https://w3id.org/nmdc/workflow_execution_activity
+manganese	SlotDefinition			https://w3id.org/nmdc/core
+manifest_category	SlotDefinition			https://w3id.org/nmdc/basic_classes
+manifest_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+mass	SlotDefinition			https://w3id.org/nmdc/core
+mass_analyzers	SlotDefinition			https://w3id.org/nmdc/nmdc
+mass_spectrometry_acquisition_strategy	SlotDefinition			https://w3id.org/nmdc/nmdc
+mass_spectrum_collection_modes	SlotDefinition			https://w3id.org/nmdc/nmdc
+material_component_separation	SlotDefinition			https://w3id.org/nmdc/nmdc
+material_processing_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+max_occup	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+md5_checksum	SlotDefinition			https://w3id.org/nmdc/basic_slots
+mean_frict_vel	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+mean_peak_frict_vel	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+mech_struc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+mech_struc_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+mechanical_damage	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+members_id	SlotDefinition			https://w3id.org/nmdc/core
+metabolite_identified	SlotDefinition			https://w3id.org/nmdc/core
+metabolomics_analysis_category	SlotDefinition			https://w3id.org/nmdc/workflow_execution_activity
+metagenome_assembly_parameter	SlotDefinition		True	https://w3id.org/nmdc/workflow_execution_activity
+metaproteomics_analysis_category	SlotDefinition			https://w3id.org/nmdc/workflow_execution_activity
+methane	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+mgnify_analysis_identifiers	SlotDefinition	analysis_identifiers		https://w3id.org/nmdc/external_identifiers
+mgnify_identifiers	SlotDefinition			https://w3id.org/nmdc/external_identifiers
+mgnify_project_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/external_identifiers
+micro_biomass_c_meth	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+micro_biomass_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+micro_biomass_n_meth	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+microbial_biomass	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+microbial_biomass_c	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+microbial_biomass_n	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+mineral_nutr_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+misc_param	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+mixs_env_triad_field	SlotDefinition		True	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+mod_date	SlotDefinition			https://w3id.org/nmdc/basic_slots
+model	SlotDefinition			https://w3id.org/nmdc/basic_classes
+modifier_substance	SlotDefinition			https://w3id.org/nmdc/nmdc
+n_alkanes	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+name	SlotDefinition			https://w3id.org/nmdc/attribute_values
+ncbi_lineage	SlotDefinition			https://w3id.org/nmdc/nmdc
+ncbi_lineage_tax_ids	SlotDefinition			https://w3id.org/nmdc/nmdc
+ncbi_project_name	SlotDefinition			https://w3id.org/nmdc/basic_slots
+ncbi_taxonomy_name	SlotDefinition			https://w3id.org/nmdc/basic_slots
+ncname	TypeDefinition			https://w3id.org/linkml/types
+neon_biosample_identifiers	SlotDefinition	biosample_identifiers		https://w3id.org/nmdc/external_identifiers
+neon_identifiers	SlotDefinition			https://w3id.org/nmdc/external_identifiers
+neon_study_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/external_identifiers
+nitrate	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+nitrate_nitrogen	SlotDefinition			https://w3id.org/nmdc/core
+nitrite	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+nitrite_nitrogen	SlotDefinition			https://w3id.org/nmdc/core
+nitro	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+nodeidentifier	TypeDefinition			https://w3id.org/linkml/types
+non_microb_biomass	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+non_microb_biomass_method	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+non_min_nutr_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+notes	SlotDefinition			https://w3id.org/nmdc/basic_slots
+nucl_acid_amp	SlotDefinition	sequencing field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+nucl_acid_ext	SlotDefinition	sequencing field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+nucleic acid sequence source field	SlotDefinition		True	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+num_16s	SlotDefinition			https://w3id.org/nmdc/core
+num_23s	SlotDefinition			https://w3id.org/nmdc/core
+num_5s	SlotDefinition			https://w3id.org/nmdc/core
+num_aligned_reads	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+num_input_reads	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+num_t_rna	SlotDefinition			https://w3id.org/nmdc/core
+number_of_contig	SlotDefinition			https://w3id.org/nmdc/core
+number_pets	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+number_plants	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+number_resident	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+object	SlotDefinition			https://w3id.org/nmdc/basic_classes
+object_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+objectidentifier	TypeDefinition			https://w3id.org/linkml/types
+objective	SlotDefinition			https://w3id.org/nmdc/basic_slots
+occup_density_samp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+occup_document	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+occup_document_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+occup_samp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+omics_processing_identifiers	SlotDefinition	external_database_identifiers	True	https://w3id.org/nmdc/external_identifiers
+ontology_class_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+orcid	SlotDefinition			https://w3id.org/nmdc/attribute_values
+ordered_mobile_phases	SlotDefinition			https://w3id.org/nmdc/nmdc
+org_carb	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+org_count_qpcr_info	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+org_matter	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+org_nitro	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+org_nitro_method	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+org_particles	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+organism_count	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+organism_count_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+other_treatment	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+output_base_count	SlotDefinition	read_qc_analysis_statistic		https://w3id.org/nmdc/workflow_execution_activity
+output_read_bases	SlotDefinition			https://w3id.org/nmdc/workflow_execution_activity
+output_read_count	SlotDefinition	read_qc_analysis_statistic		https://w3id.org/nmdc/workflow_execution_activity
+owc_tvdss	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+oxy_stat_samp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+oxy_stat_samp_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+oxygen	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+part_of	SlotDefinition			https://w3id.org/nmdc/basic_classes
+part_org_carb	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+part_org_nitro	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+particle_class	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+pcr_cond	SlotDefinition	sequencing field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+pcr_cycles	SlotDefinition			https://w3id.org/nmdc/nmdc
+pcr_primers	SlotDefinition	sequencing field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+permeability	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+perturbation	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+pesticide_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+petroleum_hydrocarb	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ph	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ph_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ph_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+phaeopigments	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+phase	SlotDefinition			https://w3id.org/nmdc/annotation
+phosphate	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+phosplipid_fatt_acid	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+photon_flux	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+plant_growth_med	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+plant_growth_med_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+plant_product	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+plant_sex	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+plant_sex_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+plant_struc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+polarity_mode	SlotDefinition			https://w3id.org/nmdc/nmdc
+pollutants	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+pool_dna_extracts	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+porosity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+potassium	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+pour_point	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+pre_treatment	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+predicate	SlotDefinition			https://w3id.org/nmdc/basic_classes
+pres_animal_insect	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+pressure	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+prev_land_use_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+previous_land_use	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+primary_prod	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+primary_treatment	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+principal_investigator	SlotDefinition			https://w3id.org/nmdc/basic_classes
+processed_sample_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+processing_institution	SlotDefinition			https://w3id.org/nmdc/basic_slots
+processing_institution_workflow_metadata	SlotDefinition			https://w3id.org/nmdc/basic_slots
+prod_rate	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+prod_start_date	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+profile_image_url	SlotDefinition			https://w3id.org/nmdc/attribute_values
+profile_position	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+profile_position_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+project_id	SlotDefinition			https://w3id.org/nmdc/emsl
+proport_woa_temperature	SlotDefinition			https://w3id.org/nmdc/basic_slots
+protocol_for	SlotDefinition			https://w3id.org/nmdc/basic_classes
+protocol_link	SlotDefinition			https://w3id.org/nmdc/basic_classes
+qc_comment	SlotDefinition			https://w3id.org/nmdc/basic_slots
+qc_failure_what	SlotDefinition			https://w3id.org/nmdc/basic_classes
+qc_failure_where	SlotDefinition			https://w3id.org/nmdc/basic_classes
+qc_status	SlotDefinition			https://w3id.org/nmdc/basic_slots
+quad_pos	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+quad_pos_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+radiation_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+rainfall_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+reactor_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+read_qc_analysis_statistic	SlotDefinition		True	https://w3id.org/nmdc/workflow_execution_activity
+redox_potential	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+rel_air_humidity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+rel_humidity_out	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+rel_samp_loc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+rel_samp_loc_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+related_identifiers	SlotDefinition			https://w3id.org/nmdc/basic_slots
+relations	SlotDefinition			https://w3id.org/nmdc/basic_classes
+replicate_number	SlotDefinition			https://w3id.org/nmdc/emsl
+reservoir	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+resins_pc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+resolution_categories	SlotDefinition			https://w3id.org/nmdc/nmdc
+rna_collect_site	SlotDefinition			https://w3id.org/nmdc/portal/jgi_metatranscriptomics
+rna_isolate_meth	SlotDefinition			https://w3id.org/nmdc/portal/jgi_metatranscriptomics
+rna_organisms	SlotDefinition			https://w3id.org/nmdc/portal/jgi_metatranscriptomics
+room_air_exch_rate	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_architec_elem	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_condt	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_condt_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_connected	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_connected_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_count	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_dim	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_door_dist	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_door_share	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_hallway	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_loc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_loc_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_moist_dam_hist	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_net_area	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_occup	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_samp_pos	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_samp_pos_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_vol	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_wall_share	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+room_window_count	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+root_cond	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+root_med_carbon	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+root_med_macronutr	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+root_med_micronutr	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+root_med_ph	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+root_med_regl	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+root_med_solid	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+root_med_suppl	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+salinity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+salinity_category	SlotDefinition			https://w3id.org/nmdc/basic_slots
+salinity_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+salt_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_capt_status	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_capt_status_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_collec_device	SlotDefinition	nucleic acid sequence source field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_collec_method	SlotDefinition	nucleic acid sequence source field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_collect_point	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_collect_point_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_dis_stage	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_dis_stage_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_floor	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_floor_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_loc_corr_rate	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_mat_process	SlotDefinition	nucleic acid sequence source field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_md	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_md_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_name	SlotDefinition	investigation field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_preserv	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_room_id	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_size	SlotDefinition	nucleic acid sequence source field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_sort_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_store_dur	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_store_loc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_store_temp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_subtype	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_subtype_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_taxon_id	SlotDefinition	investigation field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_time_out	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_transport_cond	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_tvdss	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_vol_we_dna_ext	SlotDefinition	nucleic acid sequence source field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_weather	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_weather_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+samp_well_name	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sample_collection_day	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_collection_hour	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_collection_minute	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_collection_month	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_collection_site	SlotDefinition			https://w3id.org/nmdc/basic_slots
+sample_collection_year	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_link	SlotDefinition			https://w3id.org/nmdc/portal/sample_id
+sample_shipped	SlotDefinition			https://w3id.org/nmdc/emsl
+sample_type	SlotDefinition			https://w3id.org/nmdc/emsl
+sampled_portion	SlotDefinition			https://w3id.org/nmdc/nmdc
+saturates_pc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+scaf_bp	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+scaf_l50	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+scaf_l90	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+scaf_l_gt50k	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+scaf_logsum	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+scaf_max	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+scaf_n50	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+scaf_n90	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+scaf_n_gt50k	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+scaf_pct_gt50k	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+scaf_powsum	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+scaffolds	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/workflow_execution_activity
+season	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+season_environment	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+season_precpt	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+season_temp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+season_use	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+season_use_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+secondary_treatment	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sediment_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sediment_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+separation_method	SlotDefinition			https://w3id.org/nmdc/nmdc
+seq_meth	SlotDefinition	sequencing field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+seq_quality_check	SlotDefinition	sequencing field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+seqid	SlotDefinition			https://w3id.org/nmdc/annotation
+sequencing field	SlotDefinition		True	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sewage_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+shad_dev_water_mold	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+shading_device_cond	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+shading_device_cond_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+shading_device_loc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+shading_device_mat	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+shading_device_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+shading_device_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sieving	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+silicate	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+size_frac	SlotDefinition	nucleic acid sequence source field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+size_frac_low	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+size_frac_up	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+slope_aspect	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+slope_gradient	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sludge_retent_time	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+smiles	SlotDefinition			https://w3id.org/nmdc/core
+sodium	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+soil_annual_season_temp	SlotDefinition			https://w3id.org/nmdc/nmdc
+soil_horizon	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+soil_horizon_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+soil_text_measure	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+soil_texture_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+soil_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+soil_type_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+solar_irradiance	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+soluble_inorg_mat	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+soluble_iron_micromol	SlotDefinition			https://w3id.org/nmdc/basic_slots
+soluble_org_mat	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+soluble_react_phosp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+source_concentration	SlotDefinition	concentration		https://w3id.org/nmdc/core
+source_mat_id	SlotDefinition	nucleic acid sequence source field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+space_typ_state	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sparqlpath	TypeDefinition			https://w3id.org/linkml/types
+specific	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+specific_ecosystem	SlotDefinition	gold_path_field		https://w3id.org/nmdc/basic_slots
+specific_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+specific_humidity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sr_dep_env	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sr_dep_env_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sr_geol_age	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sr_geol_age_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sr_kerog_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sr_kerog_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sr_lithology	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sr_lithology_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+standing_water_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+start	SlotDefinition	gff_coordinate		https://w3id.org/nmdc/annotation
+start_date	SlotDefinition			https://w3id.org/nmdc/basic_slots
+start_date_inc	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+start_time_inc	SlotDefinition			https://w3id.org/nmdc/portal/mixs_inspired
+started_at_time	SlotDefinition			https://w3id.org/nmdc/basic_slots
+stationary_phase	SlotDefinition			https://w3id.org/nmdc/nmdc
+storage_process_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+store_cond	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+strand	SlotDefinition			https://w3id.org/nmdc/annotation
+stranded_orientation	SlotDefinition			https://w3id.org/nmdc/nmdc
+string	TypeDefinition			https://w3id.org/linkml/types
+study_category	SlotDefinition			https://w3id.org/nmdc/basic_classes
+study_identifiers	SlotDefinition	external_database_identifiers	True	https://w3id.org/nmdc/external_identifiers
+study_image	SlotDefinition			https://w3id.org/nmdc/basic_classes
+study_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+subject	SlotDefinition			https://w3id.org/nmdc/annotation
+substance_role	SlotDefinition			https://w3id.org/nmdc/core
+substances_used	SlotDefinition			https://w3id.org/nmdc/core
+substances_volume	SlotDefinition			https://w3id.org/nmdc/core
+substructure_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+substructure_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+subsurface_depth	SlotDefinition			https://w3id.org/nmdc/core
+sulfate	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sulfate_fw	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+sulfide	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+surf_air_cont	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+surf_air_cont_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+surf_humidity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+surf_material	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+surf_material_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+surf_moisture	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+surf_moisture_ph	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+surf_temp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+suspend_part_matter	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+suspend_solids	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tan	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+target_gene	SlotDefinition	sequencing field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+target_subfragment	SlotDefinition	sequencing field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+technical_reps	SlotDefinition			https://w3id.org/nmdc/emsl
+temp	SlotDefinition	environment field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+temp_out	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+temperature	SlotDefinition			https://w3id.org/nmdc/core
+term	SlotDefinition			https://w3id.org/nmdc/attribute_values
+tertiary_treatment	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tidal_stage	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tidal_stage_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tillage	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tillage_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+time	TypeDefinition			https://w3id.org/linkml/types
+tiss_cult_growth_med	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+title	SlotDefinition			https://w3id.org/nmdc/basic_slots
+toluene	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+too_short_contig_num	SlotDefinition			https://w3id.org/nmdc/workflow_execution_activity
+tot_carb	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_depth_water_col	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_diss_nitro	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_inorg_nitro	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_iron	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_nitro	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_nitro_cont_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_nitro_content	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_org_c_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_org_carb	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_part_carb	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_phosp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_phosphate	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tot_sulfur	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+total_bases	SlotDefinition			https://w3id.org/nmdc/core
+train_line	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+train_line_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+train_stat_loc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+train_stat_loc_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+train_stop_loc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+train_stop_loc_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+turbidity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tvdss_of_hcr_press	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+tvdss_of_hcr_temp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+typ_occup_density	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+type	SlotDefinition			https://w3id.org/nmdc/attribute_values
+unbinned_contig_num	SlotDefinition			https://w3id.org/nmdc/workflow_execution_activity
+uri	TypeDefinition			https://w3id.org/linkml/types
+uriorcurie	TypeDefinition			https://w3id.org/linkml/types
+url	SlotDefinition			https://w3id.org/nmdc/attribute_values
+uses_calibration	SlotDefinition			https://w3id.org/nmdc/nmdc
+value	SlotDefinition			https://w3id.org/nmdc/nmdc
+vendor	SlotDefinition			https://w3id.org/nmdc/basic_classes
+ventilation_rate	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+ventilation_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+version	SlotDefinition			https://w3id.org/nmdc/basic_slots
+vfa	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+vfa_fw	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+vis_media	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+vis_media_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+viscosity	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+volatile_org_comp	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+volume	SlotDefinition			https://w3id.org/nmdc/core
+wall_area	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_const_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_const_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_finish_mat	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_finish_mat_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_height	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_loc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_loc_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_surf_treatment	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_surf_treatment_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_texture	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_texture_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_thermal_mass	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wall_water_mold	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+was_generated_by	SlotDefinition			https://w3id.org/nmdc/basic_classes
+was_informed_by	SlotDefinition			https://w3id.org/nmdc/basic_classes
+wastewater_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+water_cont_soil_meth	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+water_content	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+water_current	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+water_cut	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+water_feat_size	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+water_feat_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+water_feat_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+water_prod_rate	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+water_temp_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+watering_regm	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+websites	SlotDefinition			https://w3id.org/nmdc/attribute_values
+weekday	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+weekday_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+win	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wind_direction	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+wind_speed	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_cond	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_cond_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_cover	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_cover_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_horiz_pos	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_horiz_pos_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_loc	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_loc_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_mat	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_mat_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_open_freq	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_size	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_status	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_type	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_type_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_vert_pos	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_vert_pos_enum	EnumDefinition			https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+window_water_mold	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+workflow_execution_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+xylene	SlotDefinition	core field		https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+zinc	SlotDefinition			https://w3id.org/nmdc/core

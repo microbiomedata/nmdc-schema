@@ -1,0 +1,1100 @@
+name	type	is_a	abstract	from_schema
+AnalysisTypeEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+AnnotatingWorkflow	ClassDefinition	WorkflowExecution	True	https://w3id.org/nmdc/nmdc
+AttributeValue	ClassDefinition		True	https://w3id.org/nmdc/nmdc
+BinQualityEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+Biosample	ClassDefinition	Sample		https://w3id.org/nmdc/nmdc
+BiosampleCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+CalibrationInformation	ClassDefinition	InformationObject		https://w3id.org/nmdc/nmdc
+CalibrationStandardEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+CalibrationTargetEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ChemicalConversionCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ChemicalConversionProcess	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+ChemicalEntity	ClassDefinition	OntologyClass		https://w3id.org/nmdc/nmdc
+ChemicalEntityEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ChromatographicCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ChromatographicSeparationProcess	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+ChromatographyConfiguration	ClassDefinition	Configuration		https://w3id.org/nmdc/nmdc
+CollectingBiosamplesFromSite	ClassDefinition	PlannedProcess		https://w3id.org/nmdc/nmdc
+Configuration	ClassDefinition	InformationObject	True	https://w3id.org/nmdc/nmdc
+ContainerCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ControlledIdentifiedTermValue	ClassDefinition	ControlledTermValue		https://w3id.org/nmdc/nmdc
+ControlledTermValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/nmdc
+CreditAssociation	ClassDefinition			https://w3id.org/nmdc/nmdc
+CreditEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+DataCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+DataEmitterProcess	ClassDefinition	PlannedProcess	True	https://w3id.org/nmdc/nmdc
+DataGeneration	ClassDefinition	DataEmitterProcess	True	https://w3id.org/nmdc/nmdc
+DataObject	ClassDefinition	InformationObject		https://w3id.org/nmdc/nmdc
+Database	ClassDefinition			https://w3id.org/nmdc/nmdc
+DissolvingProcess	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+Doi	ClassDefinition			https://w3id.org/nmdc/nmdc
+DoiCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+DoiProviderEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+EluentIntroductionCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+EnvironmentalMaterialTerm	ClassDefinition	OntologyClass		https://w3id.org/nmdc/nmdc
+EukEval	ClassDefinition			https://w3id.org/nmdc/nmdc
+ExecutionResourceEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+Extraction	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+ExtractionTargetEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+FailureCategorization	ClassDefinition			https://w3id.org/nmdc/nmdc
+FailureWhatEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+FailureWhereEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+FieldResearchSite	ClassDefinition	Site		https://w3id.org/nmdc/nmdc
+FileTypeEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+FiltrationProcess	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+FunctionalAnnotation	ClassDefinition			https://w3id.org/nmdc/nmdc
+FunctionalAnnotationAggMember	ClassDefinition			https://w3id.org/nmdc/nmdc
+FunctionalAnnotationTerm	ClassDefinition	OntologyClass	True	https://w3id.org/nmdc/nmdc
+GeneProduct	ClassDefinition	NamedThing		https://w3id.org/nmdc/nmdc
+GenomeFeature	ClassDefinition			https://w3id.org/nmdc/nmdc
+GeolocationValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/nmdc
+ImageValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/nmdc
+InformationObject	ClassDefinition	NamedThing	True	https://w3id.org/nmdc/nmdc
+Instrument	ClassDefinition	MaterialEntity		https://w3id.org/nmdc/nmdc
+InstrumentModelEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+InstrumentVendorEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+IonizationSourceEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+LibraryPreparation	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+LibraryTypeEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+MagBin	ClassDefinition			https://w3id.org/nmdc/nmdc
+MagsAnalysis	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/nmdc
+Manifest	ClassDefinition	InformationObject		https://w3id.org/nmdc/nmdc
+ManifestCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+MassAnalyzerEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+MassSpectrometry	ClassDefinition	DataGeneration		https://w3id.org/nmdc/nmdc
+MassSpectrometryAcquisitionStrategyEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+MassSpectrometryConfiguration	ClassDefinition	Configuration		https://w3id.org/nmdc/nmdc
+MassSpectrometryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+MassSpectrumCollectionModeEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+MaterialEntity	ClassDefinition	NamedThing	True	https://w3id.org/nmdc/nmdc
+MaterialProcessing	ClassDefinition	PlannedProcess	True	https://w3id.org/nmdc/nmdc
+MetaboliteIdentification	ClassDefinition			https://w3id.org/nmdc/nmdc
+MetabolomicsAnalysis	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/nmdc
+MetabolomicsAnalysisCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+MetagenomeAnnotation	ClassDefinition	AnnotatingWorkflow		https://w3id.org/nmdc/nmdc
+MetagenomeAssembly	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/nmdc
+MetaproteomicsAnalysis	ClassDefinition	AnnotatingWorkflow		https://w3id.org/nmdc/nmdc
+MetaproteomicsAnalysisCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+MetatranscriptomeAnnotation	ClassDefinition	AnnotatingWorkflow		https://w3id.org/nmdc/nmdc
+MetatranscriptomeAssembly	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/nmdc
+MetatranscriptomeExpressionAnalysis	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/nmdc
+MixingProcess	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+MobilePhaseSegment	ClassDefinition			https://w3id.org/nmdc/nmdc
+NamedThing	ClassDefinition		True	https://w3id.org/nmdc/nmdc
+NomAnalysis	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/nmdc
+NucleotideSequencing	ClassDefinition	DataGeneration		https://w3id.org/nmdc/nmdc
+NucleotideSequencingEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+OntologyClass	ClassDefinition	NamedThing		https://w3id.org/nmdc/nmdc
+OntologyRelation	ClassDefinition			https://w3id.org/nmdc/nmdc
+OrthologyGroup	ClassDefinition	FunctionalAnnotationTerm		https://w3id.org/nmdc/nmdc
+Pathway	ClassDefinition	FunctionalAnnotationTerm		https://w3id.org/nmdc/nmdc
+PersonValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/nmdc
+PlannedProcess	ClassDefinition	NamedThing	True	https://w3id.org/nmdc/nmdc
+PolarityModeEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+Pooling	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+PortionOfSubstance	ClassDefinition			https://w3id.org/nmdc/nmdc
+ProcessedSample	ClassDefinition	Sample		https://w3id.org/nmdc/nmdc
+ProcessingInstitutionEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+PropertyAssertion	ClassDefinition	AttributeValue		https://w3id.org/nmdc/nmdc
+Protocol	ClassDefinition			https://w3id.org/nmdc/nmdc
+ProtocolCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ProtocolForEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+QuantityValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/nmdc
+ReadBasedTaxonomyAnalysis	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/nmdc
+ReadQcAnalysis	ClassDefinition	WorkflowExecution		https://w3id.org/nmdc/nmdc
+ResolutionCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+Sample	ClassDefinition	MaterialEntity	True	https://w3id.org/nmdc/nmdc
+SamplePortionEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+SampleStateEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+SampleTypeEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+SeparationMethodEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+Site	ClassDefinition	MaterialEntity	True	https://w3id.org/nmdc/nmdc
+StationaryPhaseEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+StatusEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+StorageProcess	ClassDefinition	PlannedProcess		https://w3id.org/nmdc/nmdc
+StrandedOrientationEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+Study	ClassDefinition	NamedThing		https://w3id.org/nmdc/nmdc
+StudyCategoryEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+SubSamplingProcess	ClassDefinition	MaterialProcessing		https://w3id.org/nmdc/nmdc
+SubmissionStatusEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+SubstanceRoleEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+TargetGeneEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+TextValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/nmdc
+TimestampValue	ClassDefinition	AttributeValue		https://w3id.org/nmdc/nmdc
+UnitEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+WorkflowExecution	ClassDefinition	DataEmitterProcess	True	https://w3id.org/nmdc/nmdc
+YesNoEnum	EnumDefinition			https://w3id.org/nmdc/nmdc
+abs_air_humidity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+add_date	SlotDefinition			https://w3id.org/nmdc/nmdc
+add_recov_method	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+additional_info	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+address	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+adj_room	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+aero_struc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+agrochem_addition	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+air_PM_concen	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+air_temp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+air_temp_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+al_sat	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+al_sat_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+alkalinity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+alkalinity_method	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+alkyl_diethers	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+alt	SlotDefinition	environment field		https://w3id.org/nmdc/nmdc
+alternative_descriptions	SlotDefinition			https://w3id.org/nmdc/nmdc
+alternative_identifiers	SlotDefinition			https://w3id.org/nmdc/nmdc
+alternative_names	SlotDefinition			https://w3id.org/nmdc/nmdc
+alternative_titles	SlotDefinition			https://w3id.org/nmdc/nmdc
+aminopept_act	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ammonium	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ammonium_nitrogen	SlotDefinition			https://w3id.org/nmdc/nmdc
+amount_light	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+analysis_identifiers	SlotDefinition	external_database_identifiers	True	https://w3id.org/nmdc/nmdc
+analysis_type	SlotDefinition			https://w3id.org/nmdc/nmdc
+analyte_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+ances_data	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+annual_precpt	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+annual_temp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+antibiotic_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+api	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+applied_roles	SlotDefinition			https://w3id.org/nmdc/nmdc
+applies_to_person	SlotDefinition			https://w3id.org/nmdc/nmdc
+arch_struc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+arch_struc_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+aromatics_pc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+asm_score	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+asphaltenes_pc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+assembly_identifiers	SlotDefinition		True	https://w3id.org/nmdc/nmdc
+associated_dois	SlotDefinition			https://w3id.org/nmdc/nmdc
+associated_studies	SlotDefinition			https://w3id.org/nmdc/nmdc
+atmospheric_data	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+avg_dew_point	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+avg_occup	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+avg_temp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+bac_prod	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+bac_resp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+bacteria_carb_prod	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+barometric_press	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+basin	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+bathroom_count	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+bedroom_count	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+benzene	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+bin_name	SlotDefinition			https://w3id.org/nmdc/nmdc
+bin_quality	SlotDefinition			https://w3id.org/nmdc/nmdc
+binned_contig_num	SlotDefinition			https://w3id.org/nmdc/nmdc
+biochem_oxygen_dem	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+biocide	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+biocide_admin_method	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+biogas_retention_time	SlotDefinition			https://w3id.org/nmdc/nmdc
+biogas_temperature	SlotDefinition			https://w3id.org/nmdc/nmdc
+biol_stat	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+biol_stat_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+biomass	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+biomaterial_purity	SlotDefinition			https://w3id.org/nmdc/nmdc
+biosample_categories	SlotDefinition			https://w3id.org/nmdc/nmdc
+biosample_identifiers	SlotDefinition	external_database_identifiers	True	https://w3id.org/nmdc/nmdc
+biosample_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+biotic_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+biotic_relationship	SlotDefinition	nucleic acid sequence source field		https://w3id.org/nmdc/nmdc
+biotic_relationship_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+bishomohopanol	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+blood_press_diast	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+blood_press_syst	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+boolean	TypeDefinition			https://w3id.org/nmdc/nmdc
+bromide	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+build_docs	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+build_docs_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+build_occup_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+build_occup_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+building_setting	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+building_setting_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+built_struc_age	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+built_struc_set	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+built_struc_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+bulk_elect_conductivity	SlotDefinition			https://w3id.org/nmdc/nmdc
+bytes	TypeDefinition			https://w3id.org/nmdc/nmdc
+calcium	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+calibration_object	SlotDefinition			https://w3id.org/nmdc/nmdc
+calibration_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+calibration_standard	SlotDefinition			https://w3id.org/nmdc/nmdc
+calibration_target	SlotDefinition			https://w3id.org/nmdc/nmdc
+carb_dioxide	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+carb_monoxide	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+carb_nitro_ratio	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ceil_area	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ceil_cond	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ceil_cond_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ceil_finish_mat	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ceil_finish_mat_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ceil_struc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ceil_texture	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ceil_texture_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ceil_thermal_mass	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ceil_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ceil_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ceil_water_mold	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+chem_administration	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+chem_mutagen	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+chem_oxygen_dem	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+chem_treat_method	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+chem_treatment	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+chemical_conversion_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+chemical_entity_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+chemical_formula	SlotDefinition			https://w3id.org/nmdc/nmdc
+chimera_check	SlotDefinition	sequencing field		https://w3id.org/nmdc/nmdc
+chloride	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+chlorophyll	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+chromatographic_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+climate_environment	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+collected_from	SlotDefinition			https://w3id.org/nmdc/nmdc
+collecting_biosamples_from_site_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+collection_date	SlotDefinition	environment field		https://w3id.org/nmdc/nmdc
+collection_date_inc	SlotDefinition			https://w3id.org/nmdc/nmdc
+collection_time	SlotDefinition			https://w3id.org/nmdc/nmdc
+collection_time_inc	SlotDefinition			https://w3id.org/nmdc/nmdc
+community	SlotDefinition			https://w3id.org/nmdc/nmdc
+completeness	SlotDefinition			https://w3id.org/nmdc/nmdc
+completion_date	SlotDefinition			https://w3id.org/nmdc/nmdc
+compression_type	SlotDefinition			https://w3id.org/nmdc/nmdc
+concentration	SlotDefinition			https://w3id.org/nmdc/nmdc
+conditionings	SlotDefinition			https://w3id.org/nmdc/nmdc
+conduc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+configuration_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+contained_in	SlotDefinition			https://w3id.org/nmdc/nmdc
+container_size	SlotDefinition			https://w3id.org/nmdc/nmdc
+contamination	SlotDefinition			https://w3id.org/nmdc/nmdc
+contig_bp	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+contigs	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+cool_syst_id	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+core field	SlotDefinition		True	https://w3id.org/nmdc/nmdc
+count	SlotDefinition			https://w3id.org/nmdc/nmdc
+crop_rotation	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ctg_l50	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+ctg_l90	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+ctg_logsum	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+ctg_max	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+ctg_n50	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+ctg_n90	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+ctg_powsum	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+cult_root_med	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+cur_land_use	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+cur_land_use_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+cur_vegetation	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+cur_vegetation_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+curie	TypeDefinition			https://w3id.org/nmdc/nmdc
+data_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+data_generation_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+data_object_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+data_object_type	SlotDefinition			https://w3id.org/nmdc/nmdc
+date	TypeDefinition			https://w3id.org/nmdc/nmdc
+date_created	SlotDefinition			https://w3id.org/nmdc/nmdc
+date_last_rain	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+date_or_datetime	TypeDefinition			https://w3id.org/nmdc/nmdc
+datetime	TypeDefinition			https://w3id.org/nmdc/nmdc
+decimal	TypeDefinition			https://w3id.org/nmdc/nmdc
+decimal_degree	TypeDefinition			https://w3id.org/nmdc/nmdc
+definition	SlotDefinition			https://w3id.org/nmdc/nmdc
+density	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+depos_env	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+depos_env_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+depth	SlotDefinition	environment field		https://w3id.org/nmdc/nmdc
+description	SlotDefinition			https://w3id.org/nmdc/nmdc
+dew_point	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+diether_lipids	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+display_order	SlotDefinition			https://w3id.org/nmdc/nmdc
+diss_carb_dioxide	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+diss_hydrogen	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+diss_inorg_carb	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+diss_inorg_nitro	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+diss_inorg_phosp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+diss_iron	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+diss_org_carb	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+diss_org_nitro	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+diss_oxygen	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+diss_oxygen_fluid	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+dna_absorb1	SlotDefinition	biomaterial_purity		https://w3id.org/nmdc/nmdc
+dna_absorb2	SlotDefinition	biomaterial_purity		https://w3id.org/nmdc/nmdc
+dna_collect_site	SlotDefinition			https://w3id.org/nmdc/nmdc
+dna_concentration	SlotDefinition			https://w3id.org/nmdc/nmdc
+dna_isolate_meth	SlotDefinition			https://w3id.org/nmdc/nmdc
+dna_organisms	SlotDefinition			https://w3id.org/nmdc/nmdc
+doi_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+doi_provider	SlotDefinition			https://w3id.org/nmdc/nmdc
+doi_value	SlotDefinition			https://w3id.org/nmdc/nmdc
+door_comp_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+door_comp_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+door_cond	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+door_cond_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+door_direct	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+door_direct_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+door_loc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+door_loc_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+door_mat	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+door_mat_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+door_move	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+door_move_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+door_size	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+door_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+door_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+door_type_metal	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+door_type_metal_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+door_type_wood	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+door_type_wood_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+door_water_mold	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+double	TypeDefinition			https://w3id.org/nmdc/nmdc
+down_par	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+drainage_class	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+drainage_class_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+drawings	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+drawings_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+duration	SlotDefinition			https://w3id.org/nmdc/nmdc
+ecosystem	SlotDefinition	gold_path_field		https://w3id.org/nmdc/nmdc
+ecosystem_category	SlotDefinition	gold_path_field		https://w3id.org/nmdc/nmdc
+ecosystem_path_id	SlotDefinition			https://w3id.org/nmdc/nmdc
+ecosystem_subtype	SlotDefinition	gold_path_field		https://w3id.org/nmdc/nmdc
+ecosystem_type	SlotDefinition	gold_path_field		https://w3id.org/nmdc/nmdc
+efficiency_percent	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+elev	SlotDefinition	environment field		https://w3id.org/nmdc/nmdc
+elevator	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+eluent_introduction_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+email	SlotDefinition			https://w3id.org/nmdc/nmdc
+embargoed	SlotDefinition			https://w3id.org/nmdc/nmdc
+emsl_biosample_identifiers	SlotDefinition	biosample_identifiers		https://w3id.org/nmdc/nmdc
+emsl_identifiers	SlotDefinition			https://w3id.org/nmdc/nmdc
+emsl_project_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/nmdc
+emsl_store_temp	SlotDefinition			https://w3id.org/nmdc/nmdc
+emulsions	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+encodes	SlotDefinition			https://w3id.org/nmdc/nmdc
+end	SlotDefinition	gff_coordinate		https://w3id.org/nmdc/nmdc
+end_date	SlotDefinition			https://w3id.org/nmdc/nmdc
+ended_at_time	SlotDefinition			https://w3id.org/nmdc/nmdc
+env_broad_scale	SlotDefinition	mixs_env_triad_field		https://w3id.org/nmdc/nmdc
+env_local_scale	SlotDefinition	mixs_env_triad_field		https://w3id.org/nmdc/nmdc
+env_medium	SlotDefinition	mixs_env_triad_field		https://w3id.org/nmdc/nmdc
+env_package	SlotDefinition			https://w3id.org/nmdc/nmdc
+environment field	SlotDefinition		True	https://w3id.org/nmdc/nmdc
+escalator	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ethylbenzene	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+etl_software_version	SlotDefinition			https://w3id.org/nmdc/nmdc
+eukaryotic_evaluation	SlotDefinition			https://w3id.org/nmdc/nmdc
+execution_resource	SlotDefinition			https://w3id.org/nmdc/nmdc
+exp_duct	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+exp_pipe	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+experimental_factor	SlotDefinition	investigation field		https://w3id.org/nmdc/nmdc
+experimental_factor_other	SlotDefinition			https://w3id.org/nmdc/nmdc
+ext_door	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ext_wall_orient	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ext_wall_orient_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+ext_window_orient	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ext_window_orient_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+external_database_identifiers	SlotDefinition	alternative_identifiers	True	https://w3id.org/nmdc/nmdc
+external_identifier	TypeDefinition			https://w3id.org/nmdc/nmdc
+extraction_targets	SlotDefinition			https://w3id.org/nmdc/nmdc
+extreme_event	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+fao_class	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+fao_class_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+feature_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+feature_type	SlotDefinition			https://w3id.org/nmdc/nmdc
+fertilizer_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+field	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+field_research_site_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+file_size_bytes	SlotDefinition			https://w3id.org/nmdc/nmdc
+filter_material	SlotDefinition			https://w3id.org/nmdc/nmdc
+filter_method	SlotDefinition			https://w3id.org/nmdc/nmdc
+filter_pore_size	SlotDefinition			https://w3id.org/nmdc/nmdc
+filter_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+filter_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+filtration_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+final_concentration	SlotDefinition	concentration		https://w3id.org/nmdc/nmdc
+fire	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+fireplace_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+float	TypeDefinition			https://w3id.org/nmdc/nmdc
+flooding	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+floor_age	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+floor_area	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+floor_cond	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+floor_cond_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+floor_count	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+floor_finish_mat	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+floor_finish_mat_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+floor_struc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+floor_struc_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+floor_thermal_mass	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+floor_water_mold	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+floor_water_mold_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+fluor	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+freq_clean	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+freq_clean_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+freq_cook	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+functional_annotation_agg	SlotDefinition			https://w3id.org/nmdc/nmdc
+functional_annotation_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+funding_sources	SlotDefinition			https://w3id.org/nmdc/nmdc
+fungicide_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+furniture	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+furniture_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+gap_pct	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+gaseous_environment	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+gaseous_substances	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+gc_avg	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+gc_std	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+gender_restroom	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+gender_restroom_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+gene_count	SlotDefinition			https://w3id.org/nmdc/nmdc
+gene_function_id	SlotDefinition			https://w3id.org/nmdc/nmdc
+generates_calibration	SlotDefinition			https://w3id.org/nmdc/nmdc
+genetic_mod	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+genome_feature_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+geo_loc_name	SlotDefinition	environment field		https://w3id.org/nmdc/nmdc
+gff_coordinate	SlotDefinition			https://w3id.org/nmdc/nmdc
+git_url	SlotDefinition			https://w3id.org/nmdc/nmdc
+glucosidase_act	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+gnps_identifiers	SlotDefinition			https://w3id.org/nmdc/nmdc
+gnps_task_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/nmdc
+gold_analysis_project_identifiers	SlotDefinition	analysis_identifiers		https://w3id.org/nmdc/nmdc
+gold_biosample_identifiers	SlotDefinition	biosample_identifiers		https://w3id.org/nmdc/nmdc
+gold_identifiers	SlotDefinition			https://w3id.org/nmdc/nmdc
+gold_path_field	SlotDefinition		True	https://w3id.org/nmdc/nmdc
+gold_sequencing_project_identifiers	SlotDefinition	omics_processing_identifiers		https://w3id.org/nmdc/nmdc
+gold_study_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/nmdc
+gravidity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+gravity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+growth_facil	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+growth_habit	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+growth_habit_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+growth_hormone_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+gtdbtk_class	SlotDefinition			https://w3id.org/nmdc/nmdc
+gtdbtk_domain	SlotDefinition			https://w3id.org/nmdc/nmdc
+gtdbtk_family	SlotDefinition			https://w3id.org/nmdc/nmdc
+gtdbtk_genus	SlotDefinition			https://w3id.org/nmdc/nmdc
+gtdbtk_order	SlotDefinition			https://w3id.org/nmdc/nmdc
+gtdbtk_phylum	SlotDefinition			https://w3id.org/nmdc/nmdc
+gtdbtk_species	SlotDefinition			https://w3id.org/nmdc/nmdc
+habitat	SlotDefinition			https://w3id.org/nmdc/nmdc
+hall_count	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+handidness	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+handidness_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+has_attribute_id	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_attribute_label	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_boolean_value	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_chromatography_configuration	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_credit_associations	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_datetime_value	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_failure_categorization	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_function	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_input	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_mass_spectrometry_configuration	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_maximum_numeric_value	SlotDefinition	has_numeric_value		https://w3id.org/nmdc/nmdc
+has_metabolite_identifications	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_minimum_numeric_value	SlotDefinition	has_numeric_value		https://w3id.org/nmdc/nmdc
+has_numeric_value	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_output	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_quantity_kind_id	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_raw_value	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_unit	SlotDefinition			https://w3id.org/nmdc/nmdc
+has_value_term_id	SlotDefinition			https://w3id.org/nmdc/nmdc
+hc_produced	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+hc_produced_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+hcr	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+hcr_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+hcr_fw_salinity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+hcr_geol_age	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+hcr_geol_age_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+hcr_pressure	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+hcr_temp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+heat_cool_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+heat_cool_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+heat_deliv_loc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+heat_deliv_loc_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+heat_sys_deliv_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+heat_system_id	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+heavy_metals	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+heavy_metals_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+height_carper_fiber	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+herbicide_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+highest_similarity_score	SlotDefinition			https://w3id.org/nmdc/nmdc
+homepage_website	SlotDefinition	websites		https://w3id.org/nmdc/nmdc
+horizon_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_age	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_body_habitat	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_body_product	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_body_site	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_body_temp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_color	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_common_name	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_diet	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_disease_stat	SlotDefinition	nucleic acid sequence source field		https://w3id.org/nmdc/nmdc
+host_dry_mass	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_family_relation	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_genotype	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_growth_cond	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_height	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_last_meal	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_length	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_life_stage	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_name	SlotDefinition			https://w3id.org/nmdc/nmdc
+host_phenotype	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_sex	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_sex_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+host_shape	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_subject_id	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_subspecf_genlin	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_substrate	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_symbiont	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_taxid	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_tot_mass	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+host_wet_mass	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+humidity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+humidity_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+id	SlotDefinition			https://w3id.org/nmdc/nmdc
+igsn_biosample_identifiers	SlotDefinition	biosample_identifiers		https://w3id.org/nmdc/nmdc
+igsn_identifiers	SlotDefinition			https://w3id.org/nmdc/nmdc
+img_identifiers	SlotDefinition	external_database_identifiers		https://w3id.org/nmdc/nmdc
+in_manifest	SlotDefinition			https://w3id.org/nmdc/nmdc
+inchi	SlotDefinition			https://w3id.org/nmdc/nmdc
+inchi_key	SlotDefinition			https://w3id.org/nmdc/nmdc
+indoor_space	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+indoor_space_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+indoor_surf	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+indoor_surf_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+indust_eff_percent	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+infiltrations	SlotDefinition			https://w3id.org/nmdc/nmdc
+inorg_particles	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+input_base_count	SlotDefinition	read_qc_analysis_statistic		https://w3id.org/nmdc/nmdc
+input_contig_num	SlotDefinition			https://w3id.org/nmdc/nmdc
+input_mass	SlotDefinition			https://w3id.org/nmdc/nmdc
+input_read_bases	SlotDefinition			https://w3id.org/nmdc/nmdc
+input_read_count	SlotDefinition	read_qc_analysis_statistic		https://w3id.org/nmdc/nmdc
+input_volume	SlotDefinition			https://w3id.org/nmdc/nmdc
+insdc_analysis_identifiers	SlotDefinition	analysis_identifiers		https://w3id.org/nmdc/nmdc
+insdc_assembly_identifiers	SlotDefinition	assembly_identifiers		https://w3id.org/nmdc/nmdc
+insdc_bioproject_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/nmdc
+insdc_biosample_identifiers	SlotDefinition	biosample_identifiers		https://w3id.org/nmdc/nmdc
+insdc_experiment_identifiers	SlotDefinition	external_database_identifiers		https://w3id.org/nmdc/nmdc
+insdc_identifiers	SlotDefinition			https://w3id.org/nmdc/nmdc
+insdc_secondary_sample_identifiers	SlotDefinition	biosample_identifiers		https://w3id.org/nmdc/nmdc
+insdc_sra_ena_study_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/nmdc
+inside_lux	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+instrument_instance_specifier	SlotDefinition			https://w3id.org/nmdc/nmdc
+instrument_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+instrument_used	SlotDefinition			https://w3id.org/nmdc/nmdc
+int_wall_cond	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+int_wall_cond_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+integer	TypeDefinition			https://w3id.org/nmdc/nmdc
+internal_calibration	SlotDefinition			https://w3id.org/nmdc/nmdc
+investigation field	SlotDefinition		True	https://w3id.org/nmdc/nmdc
+ionization_source	SlotDefinition			https://w3id.org/nmdc/nmdc
+is_obsolete	SlotDefinition			https://w3id.org/nmdc/nmdc
+is_pressurized	SlotDefinition			https://w3id.org/nmdc/nmdc
+is_root	SlotDefinition			https://w3id.org/nmdc/nmdc
+is_stranded	SlotDefinition			https://w3id.org/nmdc/nmdc
+isotope_exposure	SlotDefinition			https://w3id.org/nmdc/nmdc
+iw_bt_date_well	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+iwf	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+jgi_portal_analysis_project_identifiers	SlotDefinition	analysis_identifiers		https://w3id.org/nmdc/nmdc
+jgi_portal_identifiers	SlotDefinition			https://w3id.org/nmdc/nmdc
+jgi_portal_study_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/nmdc
+jsonpath	TypeDefinition			https://w3id.org/nmdc/nmdc
+jsonpointer	TypeDefinition			https://w3id.org/nmdc/nmdc
+known_as	SlotDefinition			https://w3id.org/nmdc/nmdc
+language	SlotDefinition			https://w3id.org/nmdc/nmdc
+language_code	TypeDefinition			https://w3id.org/nmdc/nmdc
+last_clean	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+lat_lon	SlotDefinition	environment field		https://w3id.org/nmdc/nmdc
+latitude	SlotDefinition			https://w3id.org/nmdc/nmdc
+lbc_thirty	SlotDefinition			https://w3id.org/nmdc/nmdc
+lbceq	SlotDefinition			https://w3id.org/nmdc/nmdc
+library_preparation_kit	SlotDefinition			https://w3id.org/nmdc/nmdc
+library_type	SlotDefinition			https://w3id.org/nmdc/nmdc
+light_intensity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+light_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+light_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+light_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+link_addit_analys	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+link_class_info	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+link_climate_info	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+lithology	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+lithology_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+local_class	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+local_class_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+location	SlotDefinition			https://w3id.org/nmdc/nmdc
+longitude	SlotDefinition			https://w3id.org/nmdc/nmdc
+low_depth_contig_num	SlotDefinition			https://w3id.org/nmdc/nmdc
+magnesium	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+mags_list	SlotDefinition			https://w3id.org/nmdc/nmdc
+manganese	SlotDefinition			https://w3id.org/nmdc/nmdc
+manifest_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+manifest_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+mass	SlotDefinition			https://w3id.org/nmdc/nmdc
+mass_analyzers	SlotDefinition			https://w3id.org/nmdc/nmdc
+mass_spectrometry_acquisition_strategy	SlotDefinition			https://w3id.org/nmdc/nmdc
+mass_spectrum_collection_modes	SlotDefinition			https://w3id.org/nmdc/nmdc
+material_component_separation	SlotDefinition			https://w3id.org/nmdc/nmdc
+material_processing_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+max_occup	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+md5_checksum	SlotDefinition			https://w3id.org/nmdc/nmdc
+mean_frict_vel	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+mean_peak_frict_vel	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+mech_struc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+mech_struc_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+mechanical_damage	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+members_id	SlotDefinition			https://w3id.org/nmdc/nmdc
+metabolite_identified	SlotDefinition			https://w3id.org/nmdc/nmdc
+metabolomics_analysis_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+metagenome_assembly_parameter	SlotDefinition		True	https://w3id.org/nmdc/nmdc
+metaproteomics_analysis_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+methane	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+mgnify_analysis_identifiers	SlotDefinition	analysis_identifiers		https://w3id.org/nmdc/nmdc
+mgnify_identifiers	SlotDefinition			https://w3id.org/nmdc/nmdc
+mgnify_project_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/nmdc
+micro_biomass_c_meth	SlotDefinition			https://w3id.org/nmdc/nmdc
+micro_biomass_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+micro_biomass_n_meth	SlotDefinition			https://w3id.org/nmdc/nmdc
+microbial_biomass	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+microbial_biomass_c	SlotDefinition			https://w3id.org/nmdc/nmdc
+microbial_biomass_n	SlotDefinition			https://w3id.org/nmdc/nmdc
+mineral_nutr_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+misc_param	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+mixs_env_triad_field	SlotDefinition		True	https://w3id.org/nmdc/nmdc
+mod_date	SlotDefinition			https://w3id.org/nmdc/nmdc
+model	SlotDefinition			https://w3id.org/nmdc/nmdc
+modifier_substance	SlotDefinition			https://w3id.org/nmdc/nmdc
+n_alkanes	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+name	SlotDefinition			https://w3id.org/nmdc/nmdc
+ncbi_lineage	SlotDefinition			https://w3id.org/nmdc/nmdc
+ncbi_lineage_tax_ids	SlotDefinition			https://w3id.org/nmdc/nmdc
+ncbi_project_name	SlotDefinition			https://w3id.org/nmdc/nmdc
+ncbi_taxonomy_name	SlotDefinition			https://w3id.org/nmdc/nmdc
+ncname	TypeDefinition			https://w3id.org/nmdc/nmdc
+neon_biosample_identifiers	SlotDefinition	biosample_identifiers		https://w3id.org/nmdc/nmdc
+neon_identifiers	SlotDefinition			https://w3id.org/nmdc/nmdc
+neon_study_identifiers	SlotDefinition	study_identifiers		https://w3id.org/nmdc/nmdc
+nitrate	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+nitrate_nitrogen	SlotDefinition			https://w3id.org/nmdc/nmdc
+nitrite	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+nitrite_nitrogen	SlotDefinition			https://w3id.org/nmdc/nmdc
+nitro	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+nodeidentifier	TypeDefinition			https://w3id.org/nmdc/nmdc
+non_microb_biomass	SlotDefinition			https://w3id.org/nmdc/nmdc
+non_microb_biomass_method	SlotDefinition			https://w3id.org/nmdc/nmdc
+non_min_nutr_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+notes	SlotDefinition			https://w3id.org/nmdc/nmdc
+nucl_acid_amp	SlotDefinition	sequencing field		https://w3id.org/nmdc/nmdc
+nucl_acid_ext	SlotDefinition	sequencing field		https://w3id.org/nmdc/nmdc
+nucleic acid sequence source field	SlotDefinition		True	https://w3id.org/nmdc/nmdc
+num_16s	SlotDefinition			https://w3id.org/nmdc/nmdc
+num_23s	SlotDefinition			https://w3id.org/nmdc/nmdc
+num_5s	SlotDefinition			https://w3id.org/nmdc/nmdc
+num_aligned_reads	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+num_input_reads	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+num_t_rna	SlotDefinition			https://w3id.org/nmdc/nmdc
+number_of_contig	SlotDefinition			https://w3id.org/nmdc/nmdc
+number_pets	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+number_plants	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+number_resident	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+object	SlotDefinition			https://w3id.org/nmdc/nmdc
+object_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+objectidentifier	TypeDefinition			https://w3id.org/nmdc/nmdc
+objective	SlotDefinition			https://w3id.org/nmdc/nmdc
+occup_density_samp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+occup_document	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+occup_document_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+occup_samp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+omics_processing_identifiers	SlotDefinition	external_database_identifiers	True	https://w3id.org/nmdc/nmdc
+ontology_class_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+orcid	SlotDefinition			https://w3id.org/nmdc/nmdc
+ordered_mobile_phases	SlotDefinition			https://w3id.org/nmdc/nmdc
+org_carb	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+org_count_qpcr_info	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+org_matter	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+org_nitro	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+org_nitro_method	SlotDefinition			https://w3id.org/nmdc/nmdc
+org_particles	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+organism_count	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+organism_count_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+other_treatment	SlotDefinition			https://w3id.org/nmdc/nmdc
+output_base_count	SlotDefinition	read_qc_analysis_statistic		https://w3id.org/nmdc/nmdc
+output_read_bases	SlotDefinition			https://w3id.org/nmdc/nmdc
+output_read_count	SlotDefinition	read_qc_analysis_statistic		https://w3id.org/nmdc/nmdc
+owc_tvdss	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+oxy_stat_samp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+oxy_stat_samp_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+oxygen	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+part_of	SlotDefinition			https://w3id.org/nmdc/nmdc
+part_org_carb	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+part_org_nitro	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+particle_class	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+pcr_cond	SlotDefinition	sequencing field		https://w3id.org/nmdc/nmdc
+pcr_cycles	SlotDefinition			https://w3id.org/nmdc/nmdc
+pcr_primers	SlotDefinition	sequencing field		https://w3id.org/nmdc/nmdc
+permeability	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+perturbation	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+pesticide_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+petroleum_hydrocarb	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ph	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ph_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ph_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+phaeopigments	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+phase	SlotDefinition			https://w3id.org/nmdc/nmdc
+phosphate	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+phosplipid_fatt_acid	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+photon_flux	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+plant_growth_med	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+plant_growth_med_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+plant_product	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+plant_sex	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+plant_sex_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+plant_struc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+polarity_mode	SlotDefinition			https://w3id.org/nmdc/nmdc
+pollutants	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+pool_dna_extracts	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+porosity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+potassium	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+pour_point	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+pre_treatment	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+predicate	SlotDefinition			https://w3id.org/nmdc/nmdc
+pres_animal_insect	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+pressure	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+prev_land_use_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+previous_land_use	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+primary_prod	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+primary_treatment	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+principal_investigator	SlotDefinition			https://w3id.org/nmdc/nmdc
+processed_sample_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+processing_institution	SlotDefinition			https://w3id.org/nmdc/nmdc
+processing_institution_workflow_metadata	SlotDefinition			https://w3id.org/nmdc/nmdc
+prod_rate	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+prod_start_date	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+profile_image_url	SlotDefinition			https://w3id.org/nmdc/nmdc
+profile_position	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+profile_position_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+project_id	SlotDefinition			https://w3id.org/nmdc/nmdc
+proport_woa_temperature	SlotDefinition			https://w3id.org/nmdc/nmdc
+protocol_for	SlotDefinition			https://w3id.org/nmdc/nmdc
+protocol_link	SlotDefinition			https://w3id.org/nmdc/nmdc
+qc_comment	SlotDefinition			https://w3id.org/nmdc/nmdc
+qc_failure_what	SlotDefinition			https://w3id.org/nmdc/nmdc
+qc_failure_where	SlotDefinition			https://w3id.org/nmdc/nmdc
+qc_status	SlotDefinition			https://w3id.org/nmdc/nmdc
+quad_pos	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+quad_pos_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+radiation_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+rainfall_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+reactor_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+read_qc_analysis_statistic	SlotDefinition		True	https://w3id.org/nmdc/nmdc
+redox_potential	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+rel_air_humidity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+rel_humidity_out	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+rel_samp_loc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+rel_samp_loc_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+related_identifiers	SlotDefinition			https://w3id.org/nmdc/nmdc
+relations	SlotDefinition			https://w3id.org/nmdc/nmdc
+replicate_number	SlotDefinition			https://w3id.org/nmdc/nmdc
+reservoir	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+resins_pc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+resolution_categories	SlotDefinition			https://w3id.org/nmdc/nmdc
+rna_collect_site	SlotDefinition			https://w3id.org/nmdc/nmdc
+rna_isolate_meth	SlotDefinition			https://w3id.org/nmdc/nmdc
+rna_organisms	SlotDefinition			https://w3id.org/nmdc/nmdc
+room_air_exch_rate	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_architec_elem	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_condt	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_condt_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+room_connected	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_connected_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+room_count	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_dim	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_door_dist	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_door_share	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_hallway	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_loc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_loc_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+room_moist_dam_hist	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_net_area	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_occup	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_samp_pos	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_samp_pos_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+room_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+room_vol	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_wall_share	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+room_window_count	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+root_cond	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+root_med_carbon	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+root_med_macronutr	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+root_med_micronutr	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+root_med_ph	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+root_med_regl	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+root_med_solid	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+root_med_suppl	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+salinity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+salinity_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+salinity_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+salt_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_capt_status	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_capt_status_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+samp_collec_device	SlotDefinition	nucleic acid sequence source field		https://w3id.org/nmdc/nmdc
+samp_collec_method	SlotDefinition	nucleic acid sequence source field		https://w3id.org/nmdc/nmdc
+samp_collect_point	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_collect_point_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+samp_dis_stage	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_dis_stage_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+samp_floor	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_floor_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+samp_loc_corr_rate	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_mat_process	SlotDefinition	nucleic acid sequence source field		https://w3id.org/nmdc/nmdc
+samp_md	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_md_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+samp_name	SlotDefinition	investigation field		https://w3id.org/nmdc/nmdc
+samp_preserv	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_room_id	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_size	SlotDefinition	nucleic acid sequence source field		https://w3id.org/nmdc/nmdc
+samp_sort_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_store_dur	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_store_loc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_store_temp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_subtype	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_subtype_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+samp_taxon_id	SlotDefinition	investigation field		https://w3id.org/nmdc/nmdc
+samp_time_out	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_transport_cond	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_tvdss	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_vol_we_dna_ext	SlotDefinition	nucleic acid sequence source field		https://w3id.org/nmdc/nmdc
+samp_weather	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+samp_weather_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+samp_well_name	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+sample_collection_day	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_collection_hour	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_collection_minute	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_collection_month	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_collection_site	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_collection_year	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_link	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_shipped	SlotDefinition			https://w3id.org/nmdc/nmdc
+sample_type	SlotDefinition			https://w3id.org/nmdc/nmdc
+sampled_portion	SlotDefinition			https://w3id.org/nmdc/nmdc
+saturates_pc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+scaf_bp	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+scaf_l50	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+scaf_l90	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+scaf_l_gt50k	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+scaf_logsum	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+scaf_max	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+scaf_n50	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+scaf_n90	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+scaf_n_gt50k	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+scaf_pct_gt50k	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+scaf_powsum	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+scaffolds	SlotDefinition	metagenome_assembly_parameter		https://w3id.org/nmdc/nmdc
+season	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+season_environment	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+season_precpt	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+season_temp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+season_use	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+season_use_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+secondary_treatment	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+sediment_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+sediment_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+separation_method	SlotDefinition			https://w3id.org/nmdc/nmdc
+seq_meth	SlotDefinition	sequencing field		https://w3id.org/nmdc/nmdc
+seq_quality_check	SlotDefinition	sequencing field		https://w3id.org/nmdc/nmdc
+seqid	SlotDefinition			https://w3id.org/nmdc/nmdc
+sequencing field	SlotDefinition		True	https://w3id.org/nmdc/nmdc
+sewage_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+shad_dev_water_mold	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+shading_device_cond	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+shading_device_cond_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+shading_device_loc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+shading_device_mat	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+shading_device_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+shading_device_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+sieving	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+silicate	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+size_frac	SlotDefinition	nucleic acid sequence source field		https://w3id.org/nmdc/nmdc
+size_frac_low	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+size_frac_up	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+slope_aspect	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+slope_gradient	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+sludge_retent_time	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+smiles	SlotDefinition			https://w3id.org/nmdc/nmdc
+sodium	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+soil_annual_season_temp	SlotDefinition			https://w3id.org/nmdc/nmdc
+soil_horizon	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+soil_horizon_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+soil_text_measure	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+soil_texture_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+soil_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+soil_type_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+solar_irradiance	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+soluble_inorg_mat	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+soluble_iron_micromol	SlotDefinition			https://w3id.org/nmdc/nmdc
+soluble_org_mat	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+soluble_react_phosp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+source_concentration	SlotDefinition	concentration		https://w3id.org/nmdc/nmdc
+source_mat_id	SlotDefinition	nucleic acid sequence source field		https://w3id.org/nmdc/nmdc
+space_typ_state	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+sparqlpath	TypeDefinition			https://w3id.org/nmdc/nmdc
+specific	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+specific_ecosystem	SlotDefinition	gold_path_field		https://w3id.org/nmdc/nmdc
+specific_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+specific_humidity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+sr_dep_env	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+sr_dep_env_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+sr_geol_age	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+sr_geol_age_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+sr_kerog_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+sr_kerog_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+sr_lithology	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+sr_lithology_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+standing_water_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+start	SlotDefinition	gff_coordinate		https://w3id.org/nmdc/nmdc
+start_date	SlotDefinition			https://w3id.org/nmdc/nmdc
+start_date_inc	SlotDefinition			https://w3id.org/nmdc/nmdc
+start_time_inc	SlotDefinition			https://w3id.org/nmdc/nmdc
+started_at_time	SlotDefinition			https://w3id.org/nmdc/nmdc
+stationary_phase	SlotDefinition			https://w3id.org/nmdc/nmdc
+storage_process_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+store_cond	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+strand	SlotDefinition			https://w3id.org/nmdc/nmdc
+stranded_orientation	SlotDefinition			https://w3id.org/nmdc/nmdc
+string	TypeDefinition			https://w3id.org/nmdc/nmdc
+study_category	SlotDefinition			https://w3id.org/nmdc/nmdc
+study_identifiers	SlotDefinition	external_database_identifiers	True	https://w3id.org/nmdc/nmdc
+study_image	SlotDefinition			https://w3id.org/nmdc/nmdc
+study_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+subject	SlotDefinition			https://w3id.org/nmdc/nmdc
+substance_role	SlotDefinition			https://w3id.org/nmdc/nmdc
+substances_used	SlotDefinition			https://w3id.org/nmdc/nmdc
+substances_volume	SlotDefinition			https://w3id.org/nmdc/nmdc
+substructure_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+substructure_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+subsurface_depth	SlotDefinition			https://w3id.org/nmdc/nmdc
+sulfate	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+sulfate_fw	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+sulfide	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+surf_air_cont	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+surf_air_cont_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+surf_humidity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+surf_material	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+surf_material_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+surf_moisture	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+surf_moisture_ph	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+surf_temp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+suspend_part_matter	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+suspend_solids	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tan	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+target_gene	SlotDefinition	sequencing field		https://w3id.org/nmdc/nmdc
+target_subfragment	SlotDefinition	sequencing field		https://w3id.org/nmdc/nmdc
+technical_reps	SlotDefinition			https://w3id.org/nmdc/nmdc
+temp	SlotDefinition	environment field		https://w3id.org/nmdc/nmdc
+temp_out	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+temperature	SlotDefinition			https://w3id.org/nmdc/nmdc
+term	SlotDefinition			https://w3id.org/nmdc/nmdc
+tertiary_treatment	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tidal_stage	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tidal_stage_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+tillage	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tillage_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+time	TypeDefinition			https://w3id.org/nmdc/nmdc
+tiss_cult_growth_med	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+title	SlotDefinition			https://w3id.org/nmdc/nmdc
+toluene	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+too_short_contig_num	SlotDefinition			https://w3id.org/nmdc/nmdc
+tot_carb	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_depth_water_col	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_diss_nitro	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_inorg_nitro	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_iron	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_nitro	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_nitro_cont_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_nitro_content	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_org_c_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_org_carb	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_part_carb	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_phosp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_phosphate	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tot_sulfur	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+total_bases	SlotDefinition			https://w3id.org/nmdc/nmdc
+train_line	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+train_line_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+train_stat_loc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+train_stat_loc_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+train_stop_loc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+train_stop_loc_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+turbidity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tvdss_of_hcr_press	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+tvdss_of_hcr_temp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+typ_occup_density	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+type	SlotDefinition			https://w3id.org/nmdc/nmdc
+unbinned_contig_num	SlotDefinition			https://w3id.org/nmdc/nmdc
+uri	TypeDefinition			https://w3id.org/nmdc/nmdc
+uriorcurie	TypeDefinition			https://w3id.org/nmdc/nmdc
+url	SlotDefinition			https://w3id.org/nmdc/nmdc
+uses_calibration	SlotDefinition			https://w3id.org/nmdc/nmdc
+value	SlotDefinition			https://w3id.org/nmdc/nmdc
+vendor	SlotDefinition			https://w3id.org/nmdc/nmdc
+ventilation_rate	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+ventilation_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+version	SlotDefinition			https://w3id.org/nmdc/nmdc
+vfa	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+vfa_fw	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+vis_media	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+vis_media_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+viscosity	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+volatile_org_comp	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+volume	SlotDefinition			https://w3id.org/nmdc/nmdc
+wall_area	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+wall_const_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+wall_const_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+wall_finish_mat	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+wall_finish_mat_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+wall_height	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+wall_loc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+wall_loc_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+wall_surf_treatment	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+wall_surf_treatment_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+wall_texture	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+wall_texture_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+wall_thermal_mass	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+wall_water_mold	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+was_generated_by	SlotDefinition			https://w3id.org/nmdc/nmdc
+was_informed_by	SlotDefinition			https://w3id.org/nmdc/nmdc
+wastewater_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+water_cont_soil_meth	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+water_content	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+water_current	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+water_cut	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+water_feat_size	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+water_feat_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+water_feat_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+water_prod_rate	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+water_temp_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+watering_regm	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+websites	SlotDefinition			https://w3id.org/nmdc/nmdc
+weekday	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+weekday_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+win	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+wind_direction	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+wind_speed	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+window_cond	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+window_cond_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+window_cover	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+window_cover_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+window_horiz_pos	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+window_horiz_pos_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+window_loc	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+window_loc_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+window_mat	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+window_mat_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+window_open_freq	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+window_size	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+window_status	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+window_type	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+window_type_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+window_vert_pos	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+window_vert_pos_enum	EnumDefinition			https://w3id.org/nmdc/nmdc
+window_water_mold	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+workflow_execution_set	SlotDefinition			https://w3id.org/nmdc/nmdc
+xylene	SlotDefinition	core field		https://w3id.org/nmdc/nmdc
+zinc	SlotDefinition			https://w3id.org/nmdc/nmdc

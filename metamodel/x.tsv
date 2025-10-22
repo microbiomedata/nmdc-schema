@@ -1,0 +1,390 @@
+name	type	is_a	abstract
+Any	ClassDefinition		
+AnyValue	ClassDefinition		
+Anything	ClassDefinition		
+ArrayLinearizationOrderOptions	EnumDefinition		
+BasicSubset	SubsetDefinition		
+ColumnOrderedArray	ClassDefinition	GroupingByArrayOrder	
+DataArray	ClassDefinition	DataStructure	
+DataPackage	ClassDefinition	Information	
+DataResource	ClassDefinition	Information	
+DataStructure	ClassDefinition		True
+FormatDialect	ClassDefinition		
+FormatEnum	EnumDefinition		
+GroupingByArrayOrder	ClassDefinition		
+Information	ClassDefinition		True
+MediaTypeEnum	EnumDefinition		
+MinimalSubset	SubsetDefinition		
+NDArray	ClassDefinition	DataStructure	True
+ObjectOrientedProfile	SubsetDefinition		
+OwlProfile	SubsetDefinition		
+RelationalModelProfile	SubsetDefinition		
+RowOrderedArray	ClassDefinition	GroupingByArrayOrder	
+SpecificationSubset	SubsetDefinition		
+TestRole	EnumDefinition		
+UnitOfMeasure	ClassDefinition		
+ValidationReport	ClassDefinition		
+ValidationResult	ClassDefinition		
+abbreviation	SlotDefinition		
+abstract	SlotDefinition		
+alias	SlotDefinition		
+alias_contexts	SlotDefinition		
+alias_predicate	SlotDefinition		
+alias_predicate_enum	EnumDefinition		
+aliases	SlotDefinition		
+all_members	SlotDefinition	list_value_specification_constant	
+all_of	SlotDefinition	boolean_slot	
+allowed	SlotDefinition		
+alt_description	ClassDefinition		
+alt_description_source	SlotDefinition		
+alt_description_text	SlotDefinition		
+alt_descriptions	SlotDefinition		
+annotatable	ClassDefinition		
+annotation	ClassDefinition	extension	
+annotations	SlotDefinition	extensions	
+anonymous_class_expression	ClassDefinition	anonymous_expression	
+anonymous_enum_expression	ClassDefinition		
+anonymous_expression	ClassDefinition		True
+anonymous_slot_expression	ClassDefinition	anonymous_expression	
+anonymous_type_expression	ClassDefinition		
+any_number	TypeDefinition		
+any_of	SlotDefinition	boolean_slot	
+apply_to	SlotDefinition		
+array	SlotDefinition		
+array_expression	ClassDefinition		
+array_linearization_order	SlotDefinition		
+asymmetric	SlotDefinition	relational_logical_characteristic	
+attributes	SlotDefinition		
+axis	SlotDefinition		
+axis_index	SlotDefinition		
+base	SlotDefinition		
+bidirectional	SlotDefinition		
+bindings	SlotDefinition		
+binds_value_of	SlotDefinition		
+boolean	TypeDefinition		
+boolean_slot	SlotDefinition		True
+broad mappings	SlotDefinition	mappings	
+bytes	SlotDefinition		
+categories	SlotDefinition		
+children_are_mutually_disjoint	SlotDefinition		
+class_definition	ClassDefinition	definition	
+class_expression	ClassDefinition		
+class_level_rule	ClassDefinition		True
+class_rule	ClassDefinition	class_level_rule	
+class_uri	SlotDefinition		
+classes	SlotDefinition		
+classification_rules	SlotDefinition		
+close mappings	SlotDefinition	mappings	
+code_set	SlotDefinition		
+code_set_tag	SlotDefinition		
+code_set_version	SlotDefinition		
+comment_prefix	SlotDefinition		
+comments	SlotDefinition		
+common_metadata	ClassDefinition		
+compression	SlotDefinition		
+concepts	SlotDefinition		
+conforms_to	SlotDefinition		
+conforms_to_class	SlotDefinition	conforms_to	
+conforms_to_schema	SlotDefinition	conforms_to	
+consider_nulls_inequal	SlotDefinition		
+contributors	SlotDefinition		
+created_by	SlotDefinition		
+created_on	SlotDefinition		
+curie	TypeDefinition		
+date	TypeDefinition		
+date_or_datetime	TypeDefinition		
+datetime	TypeDefinition		
+deactivated	SlotDefinition		
+decimal	TypeDefinition		
+default_curi_maps	SlotDefinition		
+default_prefix	SlotDefinition		
+default_range	SlotDefinition		
+defining_slots	SlotDefinition		
+definition	ClassDefinition	element	True
+definition_uri	SlotDefinition		
+delimiter	SlotDefinition		
+deprecated	SlotDefinition		
+deprecated element has exact replacement	SlotDefinition		
+deprecated element has possible replacement	SlotDefinition		
+derivation	SlotDefinition		
+description	SlotDefinition		
+descriptive_name	SlotDefinition		
+designates_type	SlotDefinition		
+dialect	SlotDefinition		
+dimension_expression	ClassDefinition		
+dimensions	SlotDefinition		
+disjoint_with	SlotDefinition		
+domain	SlotDefinition		
+domain_of	SlotDefinition		
+double	TypeDefinition		
+double_quote	SlotDefinition		
+download_url	SlotDefinition		
+element	ClassDefinition		True
+elements	SlotDefinition		
+elseconditions	SlotDefinition		
+emit_prefixes	SlotDefinition		
+encoding	SlotDefinition		
+enum_binding	ClassDefinition		
+enum_definition	ClassDefinition	definition	
+enum_expression	ClassDefinition	expression	
+enum_range	SlotDefinition		
+enum_uri	SlotDefinition		
+enums	SlotDefinition		
+equals_expression	SlotDefinition	list_value_specification_constant	
+equals_number	SlotDefinition	list_value_specification_constant	
+equals_number_in	SlotDefinition	list_value_specification_constant	
+equals_string	SlotDefinition	list_value_specification_constant	
+equals_string_in	SlotDefinition	list_value_specification_constant	
+exact mappings	SlotDefinition	mappings	
+exact_cardinality	SlotDefinition	list_value_specification_constant	
+exact_number_dimensions	SlotDefinition		
+exactly_one_of	SlotDefinition	boolean_slot	
+example	ClassDefinition		
+examples	SlotDefinition		
+expression	ClassDefinition		True
+extensible	ClassDefinition		
+extension	ClassDefinition		
+extension_tag	SlotDefinition		
+extension_value	SlotDefinition		
+extensions	SlotDefinition		
+extra_slots	SlotDefinition		
+extra_slots_expression	ClassDefinition		
+float	TypeDefinition		
+float16	TypeDefinition		
+float32	TypeDefinition		
+float64	TypeDefinition		
+followed_by	SlotDefinition		
+format	SlotDefinition		
+framework_key	SlotDefinition		
+from_schema	SlotDefinition		
+generation_date	SlotDefinition		
+has_member	SlotDefinition	list_value_specification_constant	
+has_quantity_kind	SlotDefinition		
+hash	SlotDefinition		
+header	SlotDefinition		
+id	SlotDefinition		
+id_prefixes	SlotDefinition		
+id_prefixes_are_closed	SlotDefinition		
+identifier	SlotDefinition		
+identifier_pattern	SlotDefinition		
+iec61360code	SlotDefinition		
+ifabsent	SlotDefinition		
+implements	SlotDefinition		
+implicit_prefix	SlotDefinition		
+import_as	SlotDefinition		
+import_expression	ClassDefinition		
+import_from	SlotDefinition		
+import_map	SlotDefinition		
+imported_from	SlotDefinition		
+imports	SlotDefinition		
+in_language	SlotDefinition		
+in_subset	SlotDefinition		
+inapplicable	SlotDefinition		
+include	SlotDefinition		
+include_self	SlotDefinition		
+info	SlotDefinition		
+inherited	SlotDefinition		
+inherits	SlotDefinition		
+inlined	SlotDefinition		
+inlined_as_list	SlotDefinition		
+inlined_as_simple_dict	SlotDefinition		
+instantiates	SlotDefinition		
+int16	TypeDefinition		
+int32	TypeDefinition		
+int64	TypeDefinition		
+int8	TypeDefinition		
+integer	TypeDefinition		
+interpolated	SlotDefinition		
+inverse	SlotDefinition		
+irreflexive	SlotDefinition	relational_logical_characteristic	
+is_a	SlotDefinition		True
+is_class_field	SlotDefinition		
+is_direct	SlotDefinition		
+is_grouping_slot	SlotDefinition		
+is_usage_slot	SlotDefinition		
+issued	SlotDefinition		
+jsonpath	TypeDefinition		
+jsonpointer	TypeDefinition		
+key	SlotDefinition		
+keywords	SlotDefinition		
+language	SlotDefinition		
+last_updated_on	SlotDefinition		
+length	SlotDefinition		
+license	SlotDefinition		
+list_elements_ordered	SlotDefinition		
+list_elements_unique	SlotDefinition		
+list_value_specification_constant	SlotDefinition		True
+literal_form	SlotDefinition		
+local_name	ClassDefinition		
+local_name_source	SlotDefinition		
+local_name_value	SlotDefinition		
+local_names	SlotDefinition		
+locally_reflexive	SlotDefinition	relational_logical_characteristic	
+mapped_type	SlotDefinition		
+mappings	SlotDefinition		
+match_query	ClassDefinition		
+matches	SlotDefinition		
+maximum_cardinality	SlotDefinition	list_value_specification_constant	
+maximum_number_dimensions	SlotDefinition		
+maximum_value	SlotDefinition		
+md5	SlotDefinition	hash	
+meaning	SlotDefinition		
+media_type	SlotDefinition		
+metamodel_version	SlotDefinition		
+minimum_cardinality	SlotDefinition	list_value_specification_constant	
+minimum_number_dimensions	SlotDefinition		
+minimum_value	SlotDefinition		
+minus	SlotDefinition		
+mixin	SlotDefinition		
+mixins	SlotDefinition		
+modified_by	SlotDefinition		
+multivalued	SlotDefinition		
+name	SlotDefinition		
+narrow mappings	SlotDefinition	mappings	
+ncname	TypeDefinition		
+node_source	SlotDefinition		
+nodeidentifier	TypeDefinition		
+none_of	SlotDefinition	boolean_slot	
+notes	SlotDefinition		
+object	SlotDefinition		
+object_str	SlotDefinition		
+objectidentifier	TypeDefinition		
+obligation_level	SlotDefinition		
+obligation_level_enum	EnumDefinition		
+open_world	SlotDefinition		
+operation_parameters	SlotDefinition		
+owned_by	SlotDefinition		
+owner	SlotDefinition		
+page	SlotDefinition		
+partial_match	SlotDefinition		
+path	SlotDefinition		
+path_expression	ClassDefinition		
+path_rule	SlotDefinition		
+pattern	SlotDefinition		
+pattern_expression	ClassDefinition		
+permissible_value	ClassDefinition		
+permissible_values	SlotDefinition		
+postconditions	SlotDefinition		
+preconditions	SlotDefinition		
+predicate	SlotDefinition		
+prefix	ClassDefinition		
+prefix_prefix	SlotDefinition		
+prefix_reference	SlotDefinition		
+prefixes	SlotDefinition		
+presence_enum	EnumDefinition		
+problem_type	EnumDefinition		
+profile	SlotDefinition		
+publisher	SlotDefinition		
+pv_formula	SlotDefinition		
+pv_formula_options	EnumDefinition		
+quote_char	SlotDefinition		
+range	SlotDefinition		
+range_expression	SlotDefinition		
+rank	SlotDefinition		
+reachability_query	ClassDefinition		
+reachable_from	SlotDefinition		
+readonly	SlotDefinition		
+recommended	SlotDefinition		
+reflexive	SlotDefinition	relational_logical_characteristic	
+reflexive_transitive_form_of	SlotDefinition	transitive_form_of	
+related mappings	SlotDefinition	mappings	
+relational_logical_characteristic	SlotDefinition		True
+relational_role	SlotDefinition		
+relational_role_enum	EnumDefinition		
+relationship_types	SlotDefinition		
+repr	SlotDefinition		
+represents_relationship	SlotDefinition		
+required	SlotDefinition		
+resources	SlotDefinition		
+results	SlotDefinition		
+reversed	SlotDefinition		
+role	SlotDefinition		
+rules	SlotDefinition		
+schema_definition	ClassDefinition	element	
+see_also	SlotDefinition		
+series_label	SlotDefinition		
+setting	ClassDefinition		
+setting_key	SlotDefinition		
+setting_value	SlotDefinition		
+settings	SlotDefinition		
+severity	SlotDefinition		
+severity_options	EnumDefinition		
+sha256	SlotDefinition	hash	
+shared	SlotDefinition		
+signedinteger	TypeDefinition		
+singular_name	SlotDefinition		
+slot_conditions	SlotDefinition		
+slot_definition	ClassDefinition	definition	
+slot_definitions	SlotDefinition		
+slot_expression	ClassDefinition	expression	
+slot_group	SlotDefinition		
+slot_names_unique	SlotDefinition		
+slot_uri	SlotDefinition		
+slot_usage	SlotDefinition		
+slots	SlotDefinition		
+source	SlotDefinition		
+source_file	SlotDefinition		
+source_file_date	SlotDefinition		
+source_file_size	SlotDefinition		
+source_nodes	SlotDefinition		
+source_ontology	SlotDefinition		
+sparqlpath	TypeDefinition		
+specified_input	SlotDefinition		
+specified_output	SlotDefinition		
+status	SlotDefinition		
+string	TypeDefinition		
+string_serialization	SlotDefinition		
+structured_alias	ClassDefinition		
+structured_aliases	SlotDefinition		
+structured_imports	SlotDefinition		
+structured_pattern	SlotDefinition		
+subclass_of	SlotDefinition		
+subject	SlotDefinition		
+subproperty_of	SlotDefinition		
+subset_definition	ClassDefinition	element	
+subsets	SlotDefinition		
+symbol	SlotDefinition		
+symmetric	SlotDefinition	relational_logical_characteristic	
+syntax	SlotDefinition		
+test_roles	SlotDefinition		
+text	SlotDefinition		
+themes	SlotDefinition		
+time	TypeDefinition		
+title	SlotDefinition		
+todos	SlotDefinition		
+transitive	SlotDefinition	relational_logical_characteristic	
+transitive_form_of	SlotDefinition		
+traverse	SlotDefinition		
+traverse_up	SlotDefinition		
+tree_root	SlotDefinition		
+type	SlotDefinition		
+type_definition	ClassDefinition	element	
+type_expression	ClassDefinition	expression	
+type_mapping	ClassDefinition		
+type_mappings	SlotDefinition		
+type_uri	SlotDefinition		
+typeof	SlotDefinition		
+types	SlotDefinition		
+ucum_code	SlotDefinition		
+uint16	TypeDefinition		
+uint32	TypeDefinition		
+uint64	TypeDefinition		
+uint8	TypeDefinition		
+union_of	SlotDefinition		
+unique_key	ClassDefinition		
+unique_key_name	SlotDefinition		
+unique_key_slots	SlotDefinition		
+unique_keys	SlotDefinition		
+unit	SlotDefinition		
+unsignedinteger	TypeDefinition		
+uri	TypeDefinition		
+uriorcurie	TypeDefinition		
+usage_slot_name	SlotDefinition		
+value	SlotDefinition		
+value_description	SlotDefinition		
+value_object	SlotDefinition		
+value_presence	SlotDefinition	list_value_specification_constant	
+value_specification_constant	SlotDefinition		True
+values_from	SlotDefinition		
+version	SlotDefinition		
+was_derived_from	SlotDefinition		
