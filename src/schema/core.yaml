@@ -1312,7 +1312,7 @@ slots:
     range: QuantityValue
     description: The volume of the combined substances that was included in a ChemicalConversionProcess.
     annotations:
-      units_alignment_excuse: pending_analysis
+      storage_units: mL
 
   biosample_categories:
     title: Categories the biosample belongs to
@@ -1342,7 +1342,7 @@ slots:
       description: The conductivity measurement was 0.017 millisiemens per centimeter.
     range: QuantityValue
     annotations:
-      units_alignment_excuse: pending_analysis
+      storage_units: mS/cm
 
   subsurface_depth:
     range: QuantityValue

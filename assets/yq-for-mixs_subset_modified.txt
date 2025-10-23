@@ -552,11 +552,14 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.freq_clean.annotations.storage_units = {"tag": "storage_units", "value": "1/d"}'
 '.slots.freq_cook.annotations.storage_units = {"tag": "storage_units", "value": "1/d"}'
 
+# Add storage_units for slots that can be resolved with valid UCUM units
+'.slots.specific_humidity.annotations.storage_units = {"tag": "storage_units", "value": "g/kg"}'
+'.slots.tvdss_of_hcr_temp.annotations.storage_units = {"tag": "storage_units", "value": "m"}'
+
 # Units alignment excuses for problematic MIxS specifications
 '.slots.efficiency_percent.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "mixs_inconsistent"}'
 '.slots.inside_lux.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "mixs_inconsistent"}'
 '.slots.rel_humidity_out.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "mixs_inconsistent"}'
-'.slots.specific_humidity.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "mixs_inconsistent"}'
 '.slots.api.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "non_ucum_unit"}'
 
 # Units alignment excuses for MIxS slots with zero occurrences in production data
@@ -566,4 +569,3 @@ make: *** [Makefile:102: gen-project] Error 1
 
 # Complex measurement slots that combine numeric and text data
 '.slots.microbial_biomass.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "complex_unit"}'
-'.slots.tvdss_of_hcr_temp.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "complex_unit"}'
