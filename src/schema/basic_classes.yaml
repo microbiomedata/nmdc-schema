@@ -797,6 +797,11 @@ enums:
         aliases:
           - Orbitrap IQ-X Tribrid
           - Thermo Orbitrap IQ-X Tribrid
+      
+      orbitrap_exploris:
+        aliases:
+          - Orbitrap Exploris
+          - Thermo Orbitrap Exploris
 
       solarix_7T:
         aliases:
