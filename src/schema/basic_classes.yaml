@@ -693,9 +693,9 @@ slots:
   superseded_by:
     range: WorkflowExecution
     description: >-
-      Links a data object or workflow execution to a newer workflow execution that 
-      supersedes it, marking this record as outdated. The linked workflow execution 
-      produced improved or corrected results that should be used instead of this record.
+      Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that 
+      supersedes it, marking this record as outdated. The linked WorkflowExecution or
+      resultant DataObjects should be used in favor of this record.
 
 enums:
   CreditEnum:
