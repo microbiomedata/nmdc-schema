@@ -61,7 +61,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: NucleotideSequencing
-      has_newer_version:
+      superseded_by:
         range: MetagenomeAssembly
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
@@ -110,7 +110,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: NucleotideSequencing
-      has_newer_version:
+      superseded_by:
         range: MetatranscriptomeAssembly
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
@@ -147,7 +147,7 @@ classes:
         structured_pattern:
           syntax: "^gold:Ga[0-9]+$"
           interpolated: true
-      has_newer_version:
+      superseded_by:
         range: MetatranscriptomeAnnotation
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$"
@@ -172,7 +172,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: NucleotideSequencing
-      has_newer_version:
+      superseded_by:
         range: MetatranscriptomeExpressionAnalysis
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$"
@@ -207,7 +207,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: NucleotideSequencing
-      has_newer_version:
+      superseded_by:
         range: MagsAnalysis
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$"
@@ -236,7 +236,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: NucleotideSequencing
-      has_newer_version:
+      superseded_by:
         range: ReadQcAnalysis
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$"
@@ -258,7 +258,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: NucleotideSequencing
-      has_newer_version:
+      superseded_by:
         range: ReadBasedTaxonomyAnalysis
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$"
@@ -282,7 +282,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: MassSpectrometry
-      has_newer_version:
+      superseded_by:
         range: MetabolomicsAnalysis
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
@@ -304,7 +304,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: MassSpectrometry
-      has_newer_version:
+      superseded_by:
         range: MetaproteomicsAnalysis
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$"
@@ -326,7 +326,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: MassSpectrometry
-      has_newer_version:
+      superseded_by:
         range: NomAnalysis
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
