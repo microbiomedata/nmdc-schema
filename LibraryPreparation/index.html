@@ -763,8 +763,6 @@ attributes:
     examples:
     - value: https://phylogenomics.me/protocols/16s-pcr-protocol/
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - nucleic acid amplification
     rank: 1000
     is_a: sequencing field
     string_serialization: '{PMID}|{DOI}|{URL}'
@@ -788,8 +786,6 @@ attributes:
     examples:
     - value: initial denaturation:94_3;annealing:50_1;elongation:72_1.5;final elongation:72_10;35
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pcr conditions
     rank: 1000
     is_a: sequencing field
     string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
@@ -826,8 +822,6 @@ attributes:
     examples:
     - value: FWD:GTGCCAGCMGCCGCGGTAA;REV:GGACTACHVGGGTWTCTAAT
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pcr primers
     rank: 1000
     is_a: sequencing field
     string_serialization: FWD:{dna};REV:{dna}
@@ -859,8 +853,6 @@ attributes:
     examples:
     - value: 16S rRNA, 18S rRNA, nif, amoA, rpo
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - target gene
     rank: 1000
     is_a: sequencing field
     string_serialization: '{text}'
@@ -883,8 +875,6 @@ attributes:
     examples:
     - value: V6, V9, ITS
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - target subfragment
     rank: 1000
     is_a: sequencing field
     string_serialization: '{text}'

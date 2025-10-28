@@ -547,15 +547,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#aliases" class="md-nav__link">
-    <span class="md-ellipsis">
-      Aliases
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       Examples
@@ -635,7 +626,7 @@
 
 
 <h1 id="slot-miscellaneous-parameter-misc_param">Slot: miscellaneous parameter (misc_param)</h1>
-<p><em>Structured miscellaneous property assertions for this Biosample. Use when a value cannot cleanly fit an existing, policy-governed slot.</em></p>
+<p><em>Structured miscellaneous property assertions. Use when a value cannot cleanly fit an existing, policy-governed slot.</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000752">MIXS:0000752</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
@@ -669,10 +660,6 @@
 <li>
 <p>Multivalued: True</p>
 </li>
-</ul>
-<h2 id="aliases">Aliases</h2>
-<ul>
-<li>miscellaneous parameter</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <table>
@@ -733,16 +720,14 @@ annotations:
   occurrence:
     tag: occurrence
     value: m
-description: Structured miscellaneous property assertions for this Biosample. Use
-  when a value cannot cleanly fit an existing, policy-governed slot.
+description: Structured miscellaneous property assertions. Use when a value cannot
+  cleanly fit an existing, policy-governed slot.
 title: miscellaneous parameter
 todos:
 - This slot should not be available in the submission portal.
 examples:
 - value: Bicarbonate ion concentration;2075 micromole per kilogram
 from_schema: https://w3id.org/nmdc/nmdc
-aliases:
-- miscellaneous parameter
 rank: 1000
 is_a: core field
 string_serialization: '{text};{float} {unit}'
