@@ -1,0 +1,390 @@
+name	type	is_a	abstract	from_schema
+Any	ClassDefinition			https://w3id.org/linkml/extended_types
+AnyValue	ClassDefinition			https://w3id.org/linkml/extensions
+Anything	ClassDefinition			https://w3id.org/linkml/meta
+ArrayLinearizationOrderOptions	EnumDefinition			https://w3id.org/linkml/lib/arrays
+BasicSubset	SubsetDefinition			https://w3id.org/linkml/meta
+ColumnOrderedArray	ClassDefinition	GroupingByArrayOrder		https://w3id.org/linkml/lib/arrays
+DataArray	ClassDefinition	DataStructure		https://w3id.org/linkml/lib/arrays
+DataPackage	ClassDefinition	Information		https://w3id.org/linkml/datasets
+DataResource	ClassDefinition	Information		https://w3id.org/linkml/datasets
+DataStructure	ClassDefinition		True	https://w3id.org/linkml/lib/arrays
+FormatDialect	ClassDefinition			https://w3id.org/linkml/datasets
+FormatEnum	EnumDefinition			https://w3id.org/linkml/datasets
+GroupingByArrayOrder	ClassDefinition			https://w3id.org/linkml/lib/arrays
+Information	ClassDefinition		True	https://w3id.org/linkml/datasets
+MediaTypeEnum	EnumDefinition			https://w3id.org/linkml/datasets
+MinimalSubset	SubsetDefinition			https://w3id.org/linkml/meta
+NDArray	ClassDefinition	DataStructure	True	https://w3id.org/linkml/lib/arrays
+ObjectOrientedProfile	SubsetDefinition			https://w3id.org/linkml/meta
+OwlProfile	SubsetDefinition			https://w3id.org/linkml/meta
+RelationalModelProfile	SubsetDefinition			https://w3id.org/linkml/meta
+RowOrderedArray	ClassDefinition	GroupingByArrayOrder		https://w3id.org/linkml/lib/arrays
+SpecificationSubset	SubsetDefinition			https://w3id.org/linkml/meta
+TestRole	EnumDefinition			https://w3id.org/linkml/datasets
+UnitOfMeasure	ClassDefinition			https://w3id.org/linkml/units
+ValidationReport	ClassDefinition			https://w3id.org/linkml/reporting
+ValidationResult	ClassDefinition			https://w3id.org/linkml/reporting
+abbreviation	SlotDefinition			https://w3id.org/linkml/units
+abstract	SlotDefinition			https://w3id.org/linkml/meta
+alias	SlotDefinition			https://w3id.org/linkml/meta
+alias_contexts	SlotDefinition			https://w3id.org/linkml/meta
+alias_predicate	SlotDefinition			https://w3id.org/linkml/meta
+alias_predicate_enum	EnumDefinition			https://w3id.org/linkml/meta
+aliases	SlotDefinition			https://w3id.org/linkml/meta
+all_members	SlotDefinition	list_value_specification_constant		https://w3id.org/linkml/meta
+all_of	SlotDefinition	boolean_slot		https://w3id.org/linkml/meta
+allowed	SlotDefinition			https://w3id.org/linkml/meta
+alt_description	ClassDefinition			https://w3id.org/linkml/meta
+alt_description_source	SlotDefinition			https://w3id.org/linkml/meta
+alt_description_text	SlotDefinition			https://w3id.org/linkml/meta
+alt_descriptions	SlotDefinition			https://w3id.org/linkml/meta
+annotatable	ClassDefinition			https://w3id.org/linkml/annotations
+annotation	ClassDefinition	extension		https://w3id.org/linkml/annotations
+annotations	SlotDefinition	extensions		https://w3id.org/linkml/annotations
+anonymous_class_expression	ClassDefinition	anonymous_expression		https://w3id.org/linkml/meta
+anonymous_enum_expression	ClassDefinition			https://w3id.org/linkml/meta
+anonymous_expression	ClassDefinition		True	https://w3id.org/linkml/meta
+anonymous_slot_expression	ClassDefinition	anonymous_expression		https://w3id.org/linkml/meta
+anonymous_type_expression	ClassDefinition			https://w3id.org/linkml/meta
+any_number	TypeDefinition			https://w3id.org/linkml/extended_types
+any_of	SlotDefinition	boolean_slot		https://w3id.org/linkml/meta
+apply_to	SlotDefinition			https://w3id.org/linkml/meta
+array	SlotDefinition			https://w3id.org/linkml/lib/arrays
+array_expression	ClassDefinition			https://w3id.org/linkml/meta
+array_linearization_order	SlotDefinition			https://w3id.org/linkml/lib/arrays
+asymmetric	SlotDefinition	relational_logical_characteristic		https://w3id.org/linkml/meta
+attributes	SlotDefinition			https://w3id.org/linkml/meta
+axis	SlotDefinition			https://w3id.org/linkml/lib/arrays
+axis_index	SlotDefinition			https://w3id.org/linkml/lib/arrays
+base	SlotDefinition			https://w3id.org/linkml/meta
+bidirectional	SlotDefinition			https://w3id.org/linkml/meta
+bindings	SlotDefinition			https://w3id.org/linkml/meta
+binds_value_of	SlotDefinition			https://w3id.org/linkml/meta
+boolean	TypeDefinition			https://w3id.org/linkml/types
+boolean_slot	SlotDefinition		True	https://w3id.org/linkml/meta
+broad mappings	SlotDefinition	mappings		https://w3id.org/linkml/mappings
+bytes	SlotDefinition			https://w3id.org/linkml/datasets
+categories	SlotDefinition			https://w3id.org/linkml/meta
+children_are_mutually_disjoint	SlotDefinition			https://w3id.org/linkml/meta
+class_definition	ClassDefinition	definition		https://w3id.org/linkml/meta
+class_expression	ClassDefinition			https://w3id.org/linkml/meta
+class_level_rule	ClassDefinition		True	https://w3id.org/linkml/meta
+class_rule	ClassDefinition	class_level_rule		https://w3id.org/linkml/meta
+class_uri	SlotDefinition			https://w3id.org/linkml/meta
+classes	SlotDefinition			https://w3id.org/linkml/meta
+classification_rules	SlotDefinition			https://w3id.org/linkml/meta
+close mappings	SlotDefinition	mappings		https://w3id.org/linkml/mappings
+code_set	SlotDefinition			https://w3id.org/linkml/meta
+code_set_tag	SlotDefinition			https://w3id.org/linkml/meta
+code_set_version	SlotDefinition			https://w3id.org/linkml/meta
+comment_prefix	SlotDefinition			https://w3id.org/linkml/datasets
+comments	SlotDefinition			https://w3id.org/linkml/meta
+common_metadata	ClassDefinition			https://w3id.org/linkml/meta
+compression	SlotDefinition			https://w3id.org/linkml/datasets
+concepts	SlotDefinition			https://w3id.org/linkml/meta
+conforms_to	SlotDefinition			https://w3id.org/linkml/datasets
+conforms_to_class	SlotDefinition	conforms_to		https://w3id.org/linkml/datasets
+conforms_to_schema	SlotDefinition	conforms_to		https://w3id.org/linkml/datasets
+consider_nulls_inequal	SlotDefinition			https://w3id.org/linkml/meta
+contributors	SlotDefinition			https://w3id.org/linkml/meta
+created_by	SlotDefinition			https://w3id.org/linkml/datasets
+created_on	SlotDefinition			https://w3id.org/linkml/datasets
+curie	TypeDefinition			https://w3id.org/linkml/types
+date	TypeDefinition			https://w3id.org/linkml/types
+date_or_datetime	TypeDefinition			https://w3id.org/linkml/types
+datetime	TypeDefinition			https://w3id.org/linkml/types
+deactivated	SlotDefinition			https://w3id.org/linkml/meta
+decimal	TypeDefinition			https://w3id.org/linkml/types
+default_curi_maps	SlotDefinition			https://w3id.org/linkml/meta
+default_prefix	SlotDefinition			https://w3id.org/linkml/meta
+default_range	SlotDefinition			https://w3id.org/linkml/meta
+defining_slots	SlotDefinition			https://w3id.org/linkml/meta
+definition	ClassDefinition	element	True	https://w3id.org/linkml/meta
+definition_uri	SlotDefinition			https://w3id.org/linkml/meta
+delimiter	SlotDefinition			https://w3id.org/linkml/datasets
+deprecated	SlotDefinition			https://w3id.org/linkml/meta
+deprecated element has exact replacement	SlotDefinition			https://w3id.org/linkml/mappings
+deprecated element has possible replacement	SlotDefinition			https://w3id.org/linkml/mappings
+derivation	SlotDefinition			https://w3id.org/linkml/units
+description	SlotDefinition			https://w3id.org/linkml/datasets
+descriptive_name	SlotDefinition			https://w3id.org/linkml/units
+designates_type	SlotDefinition			https://w3id.org/linkml/meta
+dialect	SlotDefinition			https://w3id.org/linkml/datasets
+dimension_expression	ClassDefinition			https://w3id.org/linkml/meta
+dimensions	SlotDefinition			https://w3id.org/linkml/lib/arrays
+disjoint_with	SlotDefinition			https://w3id.org/linkml/meta
+domain	SlotDefinition			https://w3id.org/linkml/meta
+domain_of	SlotDefinition			https://w3id.org/linkml/meta
+double	TypeDefinition			https://w3id.org/linkml/types
+double_quote	SlotDefinition			https://w3id.org/linkml/datasets
+download_url	SlotDefinition			https://w3id.org/linkml/datasets
+element	ClassDefinition		True	https://w3id.org/linkml/meta
+elements	SlotDefinition			https://w3id.org/linkml/lib/arrays
+elseconditions	SlotDefinition			https://w3id.org/linkml/meta
+emit_prefixes	SlotDefinition			https://w3id.org/linkml/meta
+encoding	SlotDefinition			https://w3id.org/linkml/datasets
+enum_binding	ClassDefinition			https://w3id.org/linkml/meta
+enum_definition	ClassDefinition	definition		https://w3id.org/linkml/meta
+enum_expression	ClassDefinition	expression		https://w3id.org/linkml/meta
+enum_range	SlotDefinition			https://w3id.org/linkml/meta
+enum_uri	SlotDefinition			https://w3id.org/linkml/meta
+enums	SlotDefinition			https://w3id.org/linkml/meta
+equals_expression	SlotDefinition	list_value_specification_constant		https://w3id.org/linkml/meta
+equals_number	SlotDefinition	list_value_specification_constant		https://w3id.org/linkml/meta
+equals_number_in	SlotDefinition	list_value_specification_constant		https://w3id.org/linkml/meta
+equals_string	SlotDefinition	list_value_specification_constant		https://w3id.org/linkml/meta
+equals_string_in	SlotDefinition	list_value_specification_constant		https://w3id.org/linkml/meta
+exact mappings	SlotDefinition	mappings		https://w3id.org/linkml/mappings
+exact_cardinality	SlotDefinition	list_value_specification_constant		https://w3id.org/linkml/meta
+exact_number_dimensions	SlotDefinition			https://w3id.org/linkml/meta
+exactly_one_of	SlotDefinition	boolean_slot		https://w3id.org/linkml/meta
+example	ClassDefinition			https://w3id.org/linkml/meta
+examples	SlotDefinition			https://w3id.org/linkml/meta
+expression	ClassDefinition		True	https://w3id.org/linkml/meta
+extensible	ClassDefinition			https://w3id.org/linkml/extensions
+extension	ClassDefinition			https://w3id.org/linkml/extensions
+extension_tag	SlotDefinition			https://w3id.org/linkml/extensions
+extension_value	SlotDefinition			https://w3id.org/linkml/extensions
+extensions	SlotDefinition			https://w3id.org/linkml/extensions
+extra_slots	SlotDefinition			https://w3id.org/linkml/meta
+extra_slots_expression	ClassDefinition			https://w3id.org/linkml/meta
+float	TypeDefinition			https://w3id.org/linkml/types
+float16	TypeDefinition			https://w3id.org/linkml/extended_types
+float32	TypeDefinition			https://w3id.org/linkml/extended_types
+float64	TypeDefinition			https://w3id.org/linkml/extended_types
+followed_by	SlotDefinition			https://w3id.org/linkml/meta
+format	SlotDefinition			https://w3id.org/linkml/datasets
+framework_key	SlotDefinition			https://w3id.org/linkml/meta
+from_schema	SlotDefinition			https://w3id.org/linkml/meta
+generation_date	SlotDefinition			https://w3id.org/linkml/meta
+has_member	SlotDefinition	list_value_specification_constant		https://w3id.org/linkml/meta
+has_quantity_kind	SlotDefinition			https://w3id.org/linkml/units
+hash	SlotDefinition			https://w3id.org/linkml/datasets
+header	SlotDefinition			https://w3id.org/linkml/datasets
+id	SlotDefinition			https://w3id.org/linkml/datasets
+id_prefixes	SlotDefinition			https://w3id.org/linkml/meta
+id_prefixes_are_closed	SlotDefinition			https://w3id.org/linkml/meta
+identifier	SlotDefinition			https://w3id.org/linkml/meta
+identifier_pattern	SlotDefinition			https://w3id.org/linkml/meta
+iec61360code	SlotDefinition			https://w3id.org/linkml/units
+ifabsent	SlotDefinition			https://w3id.org/linkml/meta
+implements	SlotDefinition			https://w3id.org/linkml/meta
+implicit_prefix	SlotDefinition			https://w3id.org/linkml/meta
+import_as	SlotDefinition			https://w3id.org/linkml/meta
+import_expression	ClassDefinition			https://w3id.org/linkml/meta
+import_from	SlotDefinition			https://w3id.org/linkml/meta
+import_map	SlotDefinition			https://w3id.org/linkml/meta
+imported_from	SlotDefinition			https://w3id.org/linkml/meta
+imports	SlotDefinition			https://w3id.org/linkml/meta
+in_language	SlotDefinition			https://w3id.org/linkml/meta
+in_subset	SlotDefinition			https://w3id.org/linkml/meta
+inapplicable	SlotDefinition			https://w3id.org/linkml/meta
+include	SlotDefinition			https://w3id.org/linkml/meta
+include_self	SlotDefinition			https://w3id.org/linkml/meta
+info	SlotDefinition			https://w3id.org/linkml/reporting
+inherited	SlotDefinition			https://w3id.org/linkml/meta
+inherits	SlotDefinition			https://w3id.org/linkml/meta
+inlined	SlotDefinition			https://w3id.org/linkml/meta
+inlined_as_list	SlotDefinition			https://w3id.org/linkml/meta
+inlined_as_simple_dict	SlotDefinition			https://w3id.org/linkml/meta
+instantiates	SlotDefinition			https://w3id.org/linkml/reporting
+int16	TypeDefinition			https://w3id.org/linkml/extended_types
+int32	TypeDefinition			https://w3id.org/linkml/extended_types
+int64	TypeDefinition			https://w3id.org/linkml/extended_types
+int8	TypeDefinition			https://w3id.org/linkml/extended_types
+integer	TypeDefinition			https://w3id.org/linkml/types
+interpolated	SlotDefinition			https://w3id.org/linkml/meta
+inverse	SlotDefinition			https://w3id.org/linkml/meta
+irreflexive	SlotDefinition	relational_logical_characteristic		https://w3id.org/linkml/meta
+is_a	SlotDefinition		True	https://w3id.org/linkml/meta
+is_class_field	SlotDefinition			https://w3id.org/linkml/meta
+is_direct	SlotDefinition			https://w3id.org/linkml/meta
+is_grouping_slot	SlotDefinition			https://w3id.org/linkml/meta
+is_usage_slot	SlotDefinition			https://w3id.org/linkml/meta
+issued	SlotDefinition			https://w3id.org/linkml/datasets
+jsonpath	TypeDefinition			https://w3id.org/linkml/types
+jsonpointer	TypeDefinition			https://w3id.org/linkml/types
+key	SlotDefinition			https://w3id.org/linkml/meta
+keywords	SlotDefinition			https://w3id.org/linkml/datasets
+language	SlotDefinition			https://w3id.org/linkml/datasets
+last_updated_on	SlotDefinition			https://w3id.org/linkml/datasets
+length	SlotDefinition			https://w3id.org/linkml/lib/arrays
+license	SlotDefinition			https://w3id.org/linkml/datasets
+list_elements_ordered	SlotDefinition			https://w3id.org/linkml/meta
+list_elements_unique	SlotDefinition			https://w3id.org/linkml/meta
+list_value_specification_constant	SlotDefinition		True	https://w3id.org/linkml/meta
+literal_form	SlotDefinition			https://w3id.org/linkml/meta
+local_name	ClassDefinition			https://w3id.org/linkml/meta
+local_name_source	SlotDefinition			https://w3id.org/linkml/meta
+local_name_value	SlotDefinition			https://w3id.org/linkml/meta
+local_names	SlotDefinition			https://w3id.org/linkml/meta
+locally_reflexive	SlotDefinition	relational_logical_characteristic		https://w3id.org/linkml/meta
+mapped_type	SlotDefinition			https://w3id.org/linkml/meta
+mappings	SlotDefinition			https://w3id.org/linkml/mappings
+match_query	ClassDefinition			https://w3id.org/linkml/meta
+matches	SlotDefinition			https://w3id.org/linkml/meta
+maximum_cardinality	SlotDefinition	list_value_specification_constant		https://w3id.org/linkml/meta
+maximum_number_dimensions	SlotDefinition			https://w3id.org/linkml/meta
+maximum_value	SlotDefinition			https://w3id.org/linkml/meta
+md5	SlotDefinition	hash		https://w3id.org/linkml/datasets
+meaning	SlotDefinition			https://w3id.org/linkml/meta
+media_type	SlotDefinition			https://w3id.org/linkml/datasets
+metamodel_version	SlotDefinition			https://w3id.org/linkml/meta
+minimum_cardinality	SlotDefinition	list_value_specification_constant		https://w3id.org/linkml/meta
+minimum_number_dimensions	SlotDefinition			https://w3id.org/linkml/meta
+minimum_value	SlotDefinition			https://w3id.org/linkml/meta
+minus	SlotDefinition			https://w3id.org/linkml/meta
+mixin	SlotDefinition			https://w3id.org/linkml/meta
+mixins	SlotDefinition			https://w3id.org/linkml/meta
+modified_by	SlotDefinition			https://w3id.org/linkml/datasets
+multivalued	SlotDefinition			https://w3id.org/linkml/meta
+name	SlotDefinition			https://w3id.org/linkml/meta
+narrow mappings	SlotDefinition	mappings		https://w3id.org/linkml/mappings
+ncname	TypeDefinition			https://w3id.org/linkml/types
+node_source	SlotDefinition			https://w3id.org/linkml/reporting
+nodeidentifier	TypeDefinition			https://w3id.org/linkml/types
+none_of	SlotDefinition	boolean_slot		https://w3id.org/linkml/meta
+notes	SlotDefinition			https://w3id.org/linkml/meta
+object	SlotDefinition			https://w3id.org/linkml/reporting
+object_str	SlotDefinition			https://w3id.org/linkml/reporting
+objectidentifier	TypeDefinition			https://w3id.org/linkml/types
+obligation_level	SlotDefinition			https://w3id.org/linkml/meta
+obligation_level_enum	EnumDefinition			https://w3id.org/linkml/meta
+open_world	SlotDefinition			https://w3id.org/linkml/meta
+operation_parameters	SlotDefinition			https://w3id.org/linkml/lib/arrays
+owned_by	SlotDefinition			https://w3id.org/linkml/meta
+owner	SlotDefinition			https://w3id.org/linkml/meta
+page	SlotDefinition			https://w3id.org/linkml/datasets
+partial_match	SlotDefinition			https://w3id.org/linkml/meta
+path	SlotDefinition			https://w3id.org/linkml/datasets
+path_expression	ClassDefinition			https://w3id.org/linkml/meta
+path_rule	SlotDefinition			https://w3id.org/linkml/meta
+pattern	SlotDefinition			https://w3id.org/linkml/meta
+pattern_expression	ClassDefinition			https://w3id.org/linkml/meta
+permissible_value	ClassDefinition			https://w3id.org/linkml/meta
+permissible_values	SlotDefinition			https://w3id.org/linkml/meta
+postconditions	SlotDefinition			https://w3id.org/linkml/meta
+preconditions	SlotDefinition			https://w3id.org/linkml/meta
+predicate	SlotDefinition			https://w3id.org/linkml/reporting
+prefix	ClassDefinition			https://w3id.org/linkml/meta
+prefix_prefix	SlotDefinition			https://w3id.org/linkml/meta
+prefix_reference	SlotDefinition			https://w3id.org/linkml/meta
+prefixes	SlotDefinition			https://w3id.org/linkml/meta
+presence_enum	EnumDefinition			https://w3id.org/linkml/meta
+problem_type	EnumDefinition			https://w3id.org/linkml/reporting
+profile	SlotDefinition			https://w3id.org/linkml/datasets
+publisher	SlotDefinition			https://w3id.org/linkml/datasets
+pv_formula	SlotDefinition			https://w3id.org/linkml/meta
+pv_formula_options	EnumDefinition			https://w3id.org/linkml/meta
+quote_char	SlotDefinition			https://w3id.org/linkml/datasets
+range	SlotDefinition			https://w3id.org/linkml/meta
+range_expression	SlotDefinition			https://w3id.org/linkml/meta
+rank	SlotDefinition			https://w3id.org/linkml/meta
+reachability_query	ClassDefinition			https://w3id.org/linkml/meta
+reachable_from	SlotDefinition			https://w3id.org/linkml/meta
+readonly	SlotDefinition			https://w3id.org/linkml/meta
+recommended	SlotDefinition			https://w3id.org/linkml/meta
+reflexive	SlotDefinition	relational_logical_characteristic		https://w3id.org/linkml/meta
+reflexive_transitive_form_of	SlotDefinition	transitive_form_of		https://w3id.org/linkml/meta
+related mappings	SlotDefinition	mappings		https://w3id.org/linkml/mappings
+relational_logical_characteristic	SlotDefinition		True	https://w3id.org/linkml/meta
+relational_role	SlotDefinition			https://w3id.org/linkml/meta
+relational_role_enum	EnumDefinition			https://w3id.org/linkml/meta
+relationship_types	SlotDefinition			https://w3id.org/linkml/meta
+repr	SlotDefinition			https://w3id.org/linkml/meta
+represents_relationship	SlotDefinition			https://w3id.org/linkml/meta
+required	SlotDefinition			https://w3id.org/linkml/meta
+resources	SlotDefinition			https://w3id.org/linkml/datasets
+results	SlotDefinition			https://w3id.org/linkml/reporting
+reversed	SlotDefinition			https://w3id.org/linkml/meta
+role	SlotDefinition			https://w3id.org/linkml/meta
+rules	SlotDefinition			https://w3id.org/linkml/meta
+schema_definition	ClassDefinition	element		https://w3id.org/linkml/meta
+see_also	SlotDefinition			https://w3id.org/linkml/meta
+series_label	SlotDefinition			https://w3id.org/linkml/lib/arrays
+setting	ClassDefinition			https://w3id.org/linkml/meta
+setting_key	SlotDefinition			https://w3id.org/linkml/meta
+setting_value	SlotDefinition			https://w3id.org/linkml/meta
+settings	SlotDefinition			https://w3id.org/linkml/meta
+severity	SlotDefinition			https://w3id.org/linkml/reporting
+severity_options	EnumDefinition			https://w3id.org/linkml/reporting
+sha256	SlotDefinition	hash		https://w3id.org/linkml/datasets
+shared	SlotDefinition			https://w3id.org/linkml/meta
+signedinteger	TypeDefinition			https://w3id.org/linkml/extended_types
+singular_name	SlotDefinition			https://w3id.org/linkml/meta
+slot_conditions	SlotDefinition			https://w3id.org/linkml/meta
+slot_definition	ClassDefinition	definition		https://w3id.org/linkml/meta
+slot_definitions	SlotDefinition			https://w3id.org/linkml/meta
+slot_expression	ClassDefinition	expression		https://w3id.org/linkml/meta
+slot_group	SlotDefinition			https://w3id.org/linkml/meta
+slot_names_unique	SlotDefinition			https://w3id.org/linkml/meta
+slot_uri	SlotDefinition			https://w3id.org/linkml/meta
+slot_usage	SlotDefinition			https://w3id.org/linkml/meta
+slots	SlotDefinition			https://w3id.org/linkml/meta
+source	SlotDefinition			https://w3id.org/linkml/meta
+source_file	SlotDefinition			https://w3id.org/linkml/meta
+source_file_date	SlotDefinition			https://w3id.org/linkml/meta
+source_file_size	SlotDefinition			https://w3id.org/linkml/meta
+source_nodes	SlotDefinition			https://w3id.org/linkml/meta
+source_ontology	SlotDefinition			https://w3id.org/linkml/meta
+sparqlpath	TypeDefinition			https://w3id.org/linkml/types
+specified_input	SlotDefinition			https://w3id.org/linkml/lib/arrays
+specified_output	SlotDefinition			https://w3id.org/linkml/lib/arrays
+status	SlotDefinition			https://w3id.org/linkml/datasets
+string	TypeDefinition			https://w3id.org/linkml/types
+string_serialization	SlotDefinition			https://w3id.org/linkml/meta
+structured_alias	ClassDefinition			https://w3id.org/linkml/meta
+structured_aliases	SlotDefinition			https://w3id.org/linkml/meta
+structured_imports	SlotDefinition			https://w3id.org/linkml/meta
+structured_pattern	SlotDefinition			https://w3id.org/linkml/meta
+subclass_of	SlotDefinition			https://w3id.org/linkml/meta
+subject	SlotDefinition			https://w3id.org/linkml/reporting
+subproperty_of	SlotDefinition			https://w3id.org/linkml/meta
+subset_definition	ClassDefinition	element		https://w3id.org/linkml/meta
+subsets	SlotDefinition			https://w3id.org/linkml/meta
+symbol	SlotDefinition			https://w3id.org/linkml/units
+symmetric	SlotDefinition	relational_logical_characteristic		https://w3id.org/linkml/meta
+syntax	SlotDefinition			https://w3id.org/linkml/meta
+test_roles	SlotDefinition			https://w3id.org/linkml/datasets
+text	SlotDefinition			https://w3id.org/linkml/meta
+themes	SlotDefinition			https://w3id.org/linkml/datasets
+time	TypeDefinition			https://w3id.org/linkml/types
+title	SlotDefinition			https://w3id.org/linkml/datasets
+todos	SlotDefinition			https://w3id.org/linkml/meta
+transitive	SlotDefinition	relational_logical_characteristic		https://w3id.org/linkml/meta
+transitive_form_of	SlotDefinition			https://w3id.org/linkml/meta
+traverse	SlotDefinition			https://w3id.org/linkml/meta
+traverse_up	SlotDefinition			https://w3id.org/linkml/meta
+tree_root	SlotDefinition			https://w3id.org/linkml/meta
+type	SlotDefinition			https://w3id.org/linkml/reporting
+type_definition	ClassDefinition	element		https://w3id.org/linkml/meta
+type_expression	ClassDefinition	expression		https://w3id.org/linkml/meta
+type_mapping	ClassDefinition			https://w3id.org/linkml/meta
+type_mappings	SlotDefinition			https://w3id.org/linkml/meta
+type_uri	SlotDefinition			https://w3id.org/linkml/meta
+typeof	SlotDefinition			https://w3id.org/linkml/meta
+types	SlotDefinition			https://w3id.org/linkml/meta
+ucum_code	SlotDefinition			https://w3id.org/linkml/units
+uint16	TypeDefinition			https://w3id.org/linkml/extended_types
+uint32	TypeDefinition			https://w3id.org/linkml/extended_types
+uint64	TypeDefinition			https://w3id.org/linkml/extended_types
+uint8	TypeDefinition			https://w3id.org/linkml/extended_types
+union_of	SlotDefinition			https://w3id.org/linkml/meta
+unique_key	ClassDefinition			https://w3id.org/linkml/meta
+unique_key_name	SlotDefinition			https://w3id.org/linkml/meta
+unique_key_slots	SlotDefinition			https://w3id.org/linkml/meta
+unique_keys	SlotDefinition			https://w3id.org/linkml/meta
+unit	SlotDefinition			https://w3id.org/linkml/units
+unsignedinteger	TypeDefinition			https://w3id.org/linkml/extended_types
+uri	TypeDefinition			https://w3id.org/linkml/types
+uriorcurie	TypeDefinition			https://w3id.org/linkml/types
+usage_slot_name	SlotDefinition			https://w3id.org/linkml/meta
+value	SlotDefinition			https://w3id.org/linkml/meta
+value_description	SlotDefinition			https://w3id.org/linkml/meta
+value_object	SlotDefinition			https://w3id.org/linkml/meta
+value_presence	SlotDefinition	list_value_specification_constant		https://w3id.org/linkml/meta
+value_specification_constant	SlotDefinition		True	https://w3id.org/linkml/meta
+values_from	SlotDefinition			https://w3id.org/linkml/meta
+version	SlotDefinition			https://w3id.org/linkml/datasets
+was_derived_from	SlotDefinition			https://w3id.org/linkml/datasets
