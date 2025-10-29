@@ -2416,6 +2416,15 @@ enums:
       Centrifuge Taxonomic Classification:
         text: Centrifuge Taxonomic Classification
         description: Centrifuge output read classification file
+      SingleM Taxonomic Classification:
+        text: SingleM Taxonomic Classification
+        description: SingleM taxonomic classification file
+      SingleM Krona Plot:
+        text: SingleM Krona Plot
+        description: SingleM krona plot HTML file
+      SingleM Clustered Report:
+        text: SingleM Clustered Report
+        description: SingleM taxonomic classification results, clustered by OTU
       Structural Annotation GFF:
         text: Structural Annotation GFF
         description: GFF3 format file with structural annotations
@@ -5199,6 +5208,11 @@ enums:
         aliases:
         - Orbitrap IQ-X Tribrid
         - Thermo Orbitrap IQ-X Tribrid
+      orbitrap_exploris_120:
+        text: orbitrap_exploris_120
+        aliases:
+        - Orbitrap Exploris 120
+        - Thermo Orbitrap Exploris 120
       solarix_7T:
         text: solarix_7T
         aliases:
@@ -5338,8 +5352,8 @@ enums:
         - MiSeq
         - Illumina MiSeq
         structured_aliases:
-          ILLUMINA_MI_SEQ:
-            literal_form: ILLUMINA_MI_SEQ
+          Illumina MiSeq:
+            literal_form: Illumina MiSeq
             predicate: EXACT_SYNONYM
             contexts:
             - https://gold.jgi.doe.gov/
@@ -7595,9 +7609,7 @@ slots:
   title:
     name: title
     description: A name given to the entity that differs from the name/label programmatically
-      assigned to it. For example, when extracting study information for GOLD, the
-      GOLD system has assigned a name/label. However, for display purposes, we may
-      also wish the capture the title of the proposal that was used to fund the study.
+      assigned to it.
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - dcterms:title
@@ -7673,22 +7685,26 @@ slots:
   igsn_identifiers:
     name: igsn_identifiers
     from_schema: https://w3id.org/nmdc/nmdc
+    is_a: external_database_identifiers
     mixin: true
   gold_identifiers:
     name: gold_identifiers
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://gold.jgi.doe.gov/
+    is_a: external_database_identifiers
     mixin: true
   emsl_identifiers:
     name: emsl_identifiers
     from_schema: https://w3id.org/nmdc/nmdc
+    is_a: external_database_identifiers
     mixin: true
   mgnify_identifiers:
     name: mgnify_identifiers
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ebi.ac.uk/metagenomics/
+    is_a: external_database_identifiers
     mixin: true
   insdc_identifiers:
     name: insdc_identifiers
@@ -7707,11 +7723,13 @@ slots:
     - EBI identifiers
     - NCBI identifiers
     - DDBJ identifiers
+    is_a: external_database_identifiers
     mixin: true
   neon_identifiers:
     name: neon_identifiers
     description: identifiers for entities according to NEON
     from_schema: https://w3id.org/nmdc/nmdc
+    is_a: external_database_identifiers
     mixin: true
   jgi_portal_identifiers:
     name: jgi_portal_identifiers
@@ -7719,10 +7737,12 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://data.jgi.doe.gov/
+    is_a: external_database_identifiers
     mixin: true
   gnps_identifiers:
     name: gnps_identifiers
     from_schema: https://w3id.org/nmdc/nmdc
+    is_a: external_database_identifiers
     mixin: true
   study_identifiers:
     name: study_identifiers
@@ -7940,6 +7960,7 @@ slots:
     is_a: biosample_identifiers
     mixins:
     - igsn_identifiers
+    pattern: ^igsn:[A-Za-z]{2,4}[A-Za-z0-9.-]{1,71}$
   omics_processing_identifiers:
     name: omics_processing_identifiers
     from_schema: https://w3id.org/nmdc/nmdc
@@ -8046,8 +8067,6 @@ slots:
     examples:
     - value: 9 g/g
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - absolute air humidity
     is_a: core field
     slot_uri: MIXS:0000122
     range: QuantityValue
@@ -8069,8 +8088,6 @@ slots:
     examples:
     - value: Polymer Addition;2018-06-21T14:30Z
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - secondary and tertiary recovery methods and start date
     is_a: core field
     slot_uri: MIXS:0001009
     range: TextValue
@@ -8090,8 +8107,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - additional info
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000300
@@ -8111,8 +8126,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - address
     is_a: core field
     string_serialization: '{integer}{text}'
     slot_uri: MIXS:0000218
@@ -8133,8 +8146,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - adjacent rooms
     is_a: core field
     string_serialization: '{text};{integer}'
     slot_uri: MIXS:0000219
@@ -8156,8 +8167,6 @@ slots:
     examples:
     - value: plane
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - aerospace structure
     is_a: core field
     string_serialization: '[plane|glider]'
     slot_uri: MIXS:0000773
@@ -8180,8 +8189,6 @@ slots:
     examples:
     - value: roundup;5 milligram per liter;2018-06-21
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - history/agrochemical additions
     is_a: core field
     string_serialization: '{text};{float} {unit};{timestamp}'
     slot_uri: MIXS:0000639
@@ -8207,8 +8214,6 @@ slots:
     examples:
     - value: PM2.5;10 microgram per cubic meter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - air particulate matter concentration
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000108
@@ -8235,8 +8240,6 @@ slots:
     examples:
     - value: 20 Cel
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - air temperature
     is_a: core field
     slot_uri: MIXS:0000124
     range: QuantityValue
@@ -8261,8 +8264,6 @@ slots:
     examples:
     - value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - air temperature regimen
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000551
@@ -8289,8 +8290,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - extreme_unusual_properties/Al saturation
     is_a: core field
     slot_uri: MIXS:0000607
     range: QuantityValue
@@ -8309,8 +8308,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - extreme_unusual_properties/Al saturation method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000324
@@ -8337,8 +8334,6 @@ slots:
     examples:
     - value: 50 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - alkalinity
     is_a: core field
     slot_uri: MIXS:0000421
     range: QuantityValue
@@ -8357,8 +8352,6 @@ slots:
     examples:
     - value: titration
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - alkalinity method
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000298
@@ -8384,8 +8377,6 @@ slots:
     examples:
     - value: 0.005 mol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - alkyl diethers
     is_a: core field
     slot_uri: MIXS:0000490
     range: QuantityValue
@@ -8409,8 +8400,6 @@ slots:
     examples:
     - value: 100 m
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - altitude
     is_a: environment field
     slot_uri: MIXS:0000094
     range: QuantityValue
@@ -8435,8 +8424,6 @@ slots:
     examples:
     - value: 0.269 mol/L/h
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - aminopeptidase activity
     is_a: core field
     slot_uri: MIXS:0000172
     range: QuantityValue
@@ -8461,8 +8448,6 @@ slots:
     examples:
     - value: 1.5 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ammonium
     is_a: core field
     slot_uri: MIXS:0000427
     range: QuantityValue
@@ -8488,8 +8473,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - amount of light
     is_a: core field
     slot_uri: MIXS:0000140
     range: QuantityValue
@@ -8510,8 +8493,6 @@ slots:
     examples:
     - value: A/3*B
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ancestral data
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000247
@@ -8538,8 +8519,6 @@ slots:
     examples:
     - value: 225 mm
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - mean annual precipitation
     is_a: core field
     slot_uri: MIXS:0000644
     range: QuantityValue
@@ -8564,8 +8543,6 @@ slots:
     examples:
     - value: 12.5 Cel
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - mean annual temperature
     is_a: core field
     slot_uri: MIXS:0000642
     range: QuantityValue
@@ -8591,8 +8568,6 @@ slots:
     examples:
     - value: penicillin;5 milligram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - antibiotic regimen
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000553
@@ -8621,8 +8596,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - API gravity
     is_a: core field
     slot_uri: MIXS:0000157
     range: QuantityValue
@@ -8642,8 +8615,6 @@ slots:
     examples:
     - value: shed
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - architectural structure
     is_a: core field
     slot_uri: MIXS:0000774
     range: arch_struc_enum
@@ -8669,8 +8640,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - aromatics wt%
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000133
@@ -8697,8 +8666,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - asphaltenes wt%
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000135
@@ -8718,8 +8685,6 @@ slots:
     examples:
     - value: wind speed;9 knots
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - atmospheric data
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0001097
@@ -8747,8 +8712,6 @@ slots:
     examples:
     - value: 25.5 Cel
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - average dew point
     is_a: core field
     slot_uri: MIXS:0000141
     range: QuantityValue
@@ -8768,8 +8731,6 @@ slots:
     examples:
     - value: '2'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - average daily occupancy
     is_a: core field
     slot_uri: MIXS:0000775
     range: TextValue
@@ -8795,8 +8756,6 @@ slots:
     examples:
     - value: 12.5 Cel
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - average temperature
     is_a: core field
     slot_uri: MIXS:0000142
     range: QuantityValue
@@ -8821,8 +8780,6 @@ slots:
     examples:
     - value: 5 mg/m3/d
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - bacterial production
     is_a: core field
     slot_uri: MIXS:0000683
     range: QuantityValue
@@ -8847,8 +8804,6 @@ slots:
     examples:
     - value: 300 umol/L/h
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - bacterial respiration
     is_a: core field
     slot_uri: MIXS:0000684
     range: QuantityValue
@@ -8873,8 +8828,6 @@ slots:
     examples:
     - value: 50 ng/h
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - bacterial carbon production
     is_a: core field
     slot_uri: MIXS:0000173
     range: QuantityValue
@@ -8900,8 +8853,6 @@ slots:
     examples:
     - value: 1013 mbar
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - barometric pressure
     is_a: core field
     slot_uri: MIXS:0000096
     range: QuantityValue
@@ -8920,8 +8871,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - basin name
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000290
@@ -8941,8 +8890,6 @@ slots:
     examples:
     - value: '1'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - bathroom count
     is_a: core field
     slot_uri: MIXS:0000776
     range: TextValue
@@ -8961,8 +8908,6 @@ slots:
     examples:
     - value: '2'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - bedroom count
     is_a: core field
     slot_uri: MIXS:0000777
     range: TextValue
@@ -8987,8 +8932,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - benzene
     is_a: core field
     slot_uri: MIXS:0000153
     range: QuantityValue
@@ -9015,8 +8958,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - biochemical oxygen demand
     is_a: core field
     slot_uri: MIXS:0000653
     range: QuantityValue
@@ -9036,8 +8977,6 @@ slots:
     examples:
     - value: ALPHA 1427;Baker Hughes;2008-01-23
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - biocide administration
     is_a: core field
     string_serialization: '{text};{text};{timestamp}'
     slot_uri: MIXS:0001011
@@ -9062,8 +9001,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - biocide administration method
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration}'
     slot_uri: MIXS:0000456
@@ -9083,8 +9020,6 @@ slots:
     examples:
     - value: natural
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - biological status
     is_a: core field
     slot_uri: MIXS:0000858
     range: biol_stat_enum
@@ -9107,8 +9042,6 @@ slots:
     examples:
     - value: total;20 gram
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - biomass
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000174
@@ -9130,8 +9063,6 @@ slots:
     examples:
     - value: sample inoculated with Rhizobium spp. Culture
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - biotic regimen
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0001038
@@ -9151,8 +9082,6 @@ slots:
     examples:
     - value: free living
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - observed biotic relationship
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000028
     range: biotic_relationship_enum
@@ -9177,8 +9106,6 @@ slots:
     examples:
     - value: 14 ug/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - bishomohopanol
     is_a: core field
     slot_uri: MIXS:0000175
     range: QuantityValue
@@ -9203,8 +9130,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host blood pressure diastolic
     is_a: core field
     slot_uri: MIXS:0000258
     range: QuantityValue
@@ -9229,8 +9154,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host blood pressure systolic
     is_a: core field
     slot_uri: MIXS:0000259
     range: QuantityValue
@@ -9255,8 +9178,6 @@ slots:
     examples:
     - value: 0.05 [ppm]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - bromide
     is_a: core field
     slot_uri: MIXS:0000176
     range: QuantityValue
@@ -9275,8 +9196,6 @@ slots:
     examples:
     - value: maintenance plans
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - design, construction, and operation documents
     is_a: core field
     slot_uri: MIXS:0000787
     range: build_docs_enum
@@ -9296,8 +9215,6 @@ slots:
     examples:
     - value: market
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - building occupancy type
     is_a: core field
     slot_uri: MIXS:0000761
     range: build_occup_type_enum
@@ -9316,8 +9233,6 @@ slots:
     examples:
     - value: rural
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - building setting
     is_a: core field
     slot_uri: MIXS:0000768
     range: building_setting_enum
@@ -9342,8 +9257,6 @@ slots:
     examples:
     - value: 15 a
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - built structure age
     is_a: core field
     slot_uri: MIXS:0000145
     range: QuantityValue
@@ -9363,8 +9276,6 @@ slots:
     examples:
     - value: rural
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - built structure setting
     is_a: core field
     string_serialization: '[urban|rural]'
     slot_uri: MIXS:0000778
@@ -9385,8 +9296,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - built structure type
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000721
@@ -9412,8 +9321,6 @@ slots:
     examples:
     - value: 0.2 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - calcium
     is_a: core field
     slot_uri: MIXS:0000432
     range: QuantityValue
@@ -9438,8 +9345,6 @@ slots:
     examples:
     - value: 410 [ppm]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - carbon dioxide
     is_a: core field
     slot_uri: MIXS:0000097
     range: QuantityValue
@@ -9464,8 +9369,6 @@ slots:
     examples:
     - value: 0.1 [ppm]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - carbon monoxide
     is_a: core field
     slot_uri: MIXS:0000098
     range: QuantityValue
@@ -9487,8 +9390,6 @@ slots:
     examples:
     - value: '0.417361111'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - carbon/nitrogen ratio
     is_a: core field
     slot_uri: MIXS:0000310
     range: QuantityValue
@@ -9513,8 +9414,6 @@ slots:
     examples:
     - value: 25 m2
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ceiling area
     is_a: core field
     slot_uri: MIXS:0000148
     range: QuantityValue
@@ -9534,8 +9433,6 @@ slots:
     examples:
     - value: damaged
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ceiling condition
     is_a: core field
     slot_uri: MIXS:0000779
     range: ceil_cond_enum
@@ -9554,8 +9451,6 @@ slots:
     examples:
     - value: stucco
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ceiling finish material
     is_a: core field
     slot_uri: MIXS:0000780
     range: ceil_finish_mat_enum
@@ -9574,8 +9469,6 @@ slots:
     examples:
     - value: concrete
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ceiling structure
     is_a: core field
     string_serialization: '[wood frame|concrete]'
     slot_uri: MIXS:0000782
@@ -9595,8 +9488,6 @@ slots:
     examples:
     - value: popcorn
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ceiling texture
     is_a: core field
     slot_uri: MIXS:0000783
     range: ceil_texture_enum
@@ -9624,8 +9515,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ceiling thermal mass
     is_a: core field
     slot_uri: MIXS:0000143
     range: QuantityValue
@@ -9644,8 +9533,6 @@ slots:
     examples:
     - value: coffered
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ceiling type
     is_a: core field
     slot_uri: MIXS:0000784
     range: ceil_type_enum
@@ -9664,8 +9551,6 @@ slots:
     examples:
     - value: presence of mold visible
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ceiling signs of water/mold
     is_a: core field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: MIXS:0000781
@@ -9688,8 +9573,6 @@ slots:
     examples:
     - value: agar [CHEBI:2509];2018-05-11T20:00Z
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - chemical administration
     is_a: core field
     string_serialization: '{termLabel} {[termID]};{timestamp}'
     slot_uri: MIXS:0000751
@@ -9716,8 +9599,6 @@ slots:
     examples:
     - value: nitrous acid;0.5 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - chemical mutagen
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000555
@@ -9746,8 +9627,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - chemical oxygen demand
     is_a: core field
     slot_uri: MIXS:0000656
     range: QuantityValue
@@ -9771,8 +9650,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - chemical treatment method
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration};{duration}'
     slot_uri: MIXS:0000457
@@ -9796,8 +9673,6 @@ slots:
     examples:
     - value: ACCENT 1125;DOW;2010-11-17
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - chemical treatment
     is_a: core field
     string_serialization: '{text};{text};{timestamp}'
     slot_uri: MIXS:0001012
@@ -9816,8 +9691,6 @@ slots:
     examples:
     - value: uchime;v4.1;default parameters
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - chimera check software
     is_a: sequencing field
     string_serialization: '{software};{version};{parameters}'
     slot_uri: MIXS:0000052
@@ -9843,8 +9716,6 @@ slots:
     examples:
     - value: 5000 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - chloride
     is_a: core field
     slot_uri: MIXS:0000429
     range: QuantityValue
@@ -9869,8 +9740,6 @@ slots:
     examples:
     - value: 5 mg/m3
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - chlorophyll
     is_a: core field
     slot_uri: MIXS:0000177
     range: QuantityValue
@@ -9892,8 +9761,6 @@ slots:
     examples:
     - value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - climate environment
     is_a: core field
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0001040
@@ -9914,8 +9781,6 @@ slots:
     examples:
     - value: 2018-05-11T10:00:00+01:00; 2018-05-11
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - collection date
     is_a: environment field
     slot_uri: MIXS:0000011
     range: TimestampValue
@@ -9940,8 +9805,6 @@ slots:
     examples:
     - value: 10 uS/cm
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - conductivity
     is_a: core field
     slot_uri: MIXS:0000692
     range: QuantityValue
@@ -9960,8 +9823,6 @@ slots:
     examples:
     - value: '12345'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - cooling system identifier
     is_a: core field
     slot_uri: MIXS:0000785
     range: TextValue
@@ -9980,8 +9841,6 @@ slots:
     examples:
     - value: yes;R2/2017-01-01/2018-12-31/P6M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - history/crop rotation
     is_a: core field
     string_serialization: '{boolean};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000318
@@ -10004,8 +9863,6 @@ slots:
     examples:
     - value: http://himedialabs.com/TD/PT158.pdf
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - culture rooting medium
     is_a: core field
     string_serialization: '{text}|{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0001041
@@ -10025,8 +9882,6 @@ slots:
     examples:
     - value: conifers
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - current land use
     is_a: core field
     slot_uri: MIXS:0001080
     range: cur_land_use_enum
@@ -10046,8 +9901,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - current vegetation
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000312
@@ -10067,8 +9920,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - current vegetation method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000314
@@ -10088,8 +9939,6 @@ slots:
     examples:
     - value: 2018-05-11:T14:30Z
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - date last rain
     is_a: core field
     slot_uri: MIXS:0000786
     range: TimestampValue
@@ -10115,8 +9964,6 @@ slots:
     examples:
     - value: 1000 kg/m3
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - density
     is_a: core field
     slot_uri: MIXS:0000435
     range: QuantityValue
@@ -10136,8 +9983,6 @@ slots:
     examples:
     - value: Continental - Alluvial
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - depositional environment
     is_a: core field
     slot_uri: MIXS:0000992
     range: depos_env_enum
@@ -10158,8 +10003,6 @@ slots:
     examples:
     - value: 10 m
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - depth
     is_a: environment field
     slot_uri: MIXS:0000018
     range: QuantityValue
@@ -10185,8 +10028,6 @@ slots:
     examples:
     - value: 22 Cel
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - dew point
     is_a: core field
     slot_uri: MIXS:0000129
     range: QuantityValue
@@ -10209,8 +10050,6 @@ slots:
     examples:
     - value: 0.2 nanogram per liter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - diether lipids
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000178
@@ -10238,8 +10077,6 @@ slots:
     examples:
     - value: 5 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - dissolved carbon dioxide
     is_a: core field
     slot_uri: MIXS:0000436
     range: QuantityValue
@@ -10264,8 +10101,6 @@ slots:
     examples:
     - value: 0.3 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - dissolved hydrogen
     is_a: core field
     slot_uri: MIXS:0000179
     range: QuantityValue
@@ -10291,8 +10126,6 @@ slots:
     examples:
     - value: 2059 umol/kg
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - dissolved inorganic carbon
     is_a: core field
     slot_uri: MIXS:0000434
     range: QuantityValue
@@ -10317,8 +10150,6 @@ slots:
     examples:
     - value: 761 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - dissolved inorganic nitrogen
     is_a: core field
     slot_uri: MIXS:0000698
     range: QuantityValue
@@ -10343,8 +10174,6 @@ slots:
     examples:
     - value: 56.5 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - dissolved inorganic phosphorus
     is_a: core field
     slot_uri: MIXS:0000106
     range: QuantityValue
@@ -10369,8 +10198,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - dissolved iron
     is_a: core field
     slot_uri: MIXS:0000139
     range: QuantityValue
@@ -10396,8 +10223,6 @@ slots:
     examples:
     - value: 197 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - dissolved organic carbon
     is_a: core field
     slot_uri: MIXS:0000433
     range: QuantityValue
@@ -10423,8 +10248,6 @@ slots:
     examples:
     - value: 0.05 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - dissolved organic nitrogen
     is_a: core field
     slot_uri: MIXS:0000162
     range: QuantityValue
@@ -10449,8 +10272,6 @@ slots:
     examples:
     - value: 175 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - dissolved oxygen
     is_a: core field
     slot_uri: MIXS:0000119
     range: QuantityValue
@@ -10476,8 +10297,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - dissolved oxygen in fluids
     is_a: core field
     slot_uri: MIXS:0000438
     range: QuantityValue
@@ -10496,8 +10315,6 @@ slots:
     examples:
     - value: revolving
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - door type, composite
     is_a: core field
     slot_uri: MIXS:0000795
     range: door_comp_type_enum
@@ -10516,8 +10333,6 @@ slots:
     examples:
     - value: new
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - door condition
     is_a: core field
     slot_uri: MIXS:0000788
     range: door_cond_enum
@@ -10536,8 +10351,6 @@ slots:
     examples:
     - value: inward
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - door direction of opening
     is_a: core field
     slot_uri: MIXS:0000789
     range: door_direct_enum
@@ -10556,8 +10369,6 @@ slots:
     examples:
     - value: north
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - door location
     is_a: core field
     slot_uri: MIXS:0000790
     range: door_loc_enum
@@ -10576,8 +10387,6 @@ slots:
     examples:
     - value: wood
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - door material
     is_a: core field
     slot_uri: MIXS:0000791
     range: door_mat_enum
@@ -10596,8 +10405,6 @@ slots:
     examples:
     - value: swinging
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - door movement
     is_a: core field
     slot_uri: MIXS:0000792
     range: door_move_enum
@@ -10622,8 +10429,6 @@ slots:
     examples:
     - value: 2.5 m2
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - door area or size
     is_a: core field
     slot_uri: MIXS:0000158
     range: QuantityValue
@@ -10642,8 +10447,6 @@ slots:
     examples:
     - value: wooden
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - door type
     is_a: core field
     slot_uri: MIXS:0000794
     range: door_type_enum
@@ -10662,8 +10465,6 @@ slots:
     examples:
     - value: hollow
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - door type, metal
     is_a: core field
     slot_uri: MIXS:0000796
     range: door_type_metal_enum
@@ -10682,8 +10483,6 @@ slots:
     examples:
     - value: battened
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - door type, wood
     is_a: core field
     slot_uri: MIXS:0000797
     range: door_type_wood_enum
@@ -10702,8 +10501,6 @@ slots:
     examples:
     - value: presence of mold visible
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - door signs of water/mold
     is_a: core field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: MIXS:0000793
@@ -10731,8 +10528,6 @@ slots:
     examples:
     - value: 28.71 umol/m2/s
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - downward PAR
     is_a: core field
     slot_uri: MIXS:0000703
     range: QuantityValue
@@ -10751,8 +10546,6 @@ slots:
     examples:
     - value: well
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - drainage classification
     is_a: core field
     slot_uri: MIXS:0001085
     range: drainage_class_enum
@@ -10772,8 +10565,6 @@ slots:
     examples:
     - value: sketch
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - drawings
     is_a: core field
     slot_uri: MIXS:0000798
     range: drawings_enum
@@ -10798,8 +10589,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - efficiency percent
     is_a: core field
     slot_uri: MIXS:0000657
     range: QuantityValue
@@ -10818,8 +10607,6 @@ slots:
     examples:
     - value: 100 meter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - elevation
     is_a: environment field
     slot_uri: MIXS:0000093
     range: float
@@ -10838,8 +10625,6 @@ slots:
     examples:
     - value: '2'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - elevator count
     is_a: core field
     slot_uri: MIXS:0000799
     range: TextValue
@@ -10863,8 +10648,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - emulsions
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000660
@@ -10895,8 +10678,6 @@ slots:
     examples:
     - value: oceanic epipelagic zone biome [ENVO:01000035]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - broad-scale environmental context
     is_a: mixs_env_triad_field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000012
@@ -10929,8 +10710,6 @@ slots:
     examples:
     - value: litter layer [ENVO:01000338]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - local environmental context
     is_a: mixs_env_triad_field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000013
@@ -10963,8 +10742,6 @@ slots:
     examples:
     - value: soil [ENVO:00001998]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - environmental medium
     is_a: mixs_env_triad_field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000014
@@ -10984,8 +10761,6 @@ slots:
     examples:
     - value: '4'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - escalator count
     is_a: core field
     slot_uri: MIXS:0000800
     range: TextValue
@@ -11010,8 +10785,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ethylbenzene
     is_a: core field
     slot_uri: MIXS:0000155
     range: QuantityValue
@@ -11036,8 +10809,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - exposed ductwork
     is_a: core field
     slot_uri: MIXS:0000144
     range: QuantityValue
@@ -11059,8 +10830,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - exposed pipes
     is_a: core field
     slot_uri: MIXS:0000220
     range: QuantityValue
@@ -11081,8 +10850,6 @@ slots:
     examples:
     - value: time series design [EFO:EFO_0001779]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - experimental factor
     is_a: investigation field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000008
@@ -11102,8 +10869,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - exterior door count
     is_a: core field
     slot_uri: MIXS:0000170
     range: TextValue
@@ -11122,8 +10887,6 @@ slots:
     examples:
     - value: northwest
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - orientations of exterior wall
     is_a: core field
     slot_uri: MIXS:0000817
     range: ext_wall_orient_enum
@@ -11142,8 +10905,6 @@ slots:
     examples:
     - value: southwest
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - orientations of exterior window
     is_a: core field
     slot_uri: MIXS:0000818
     range: ext_window_orient_enum
@@ -11162,8 +10923,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - history/extreme events
     is_a: core field
     slot_uri: MIXS:0000320
     range: string
@@ -11183,8 +10942,6 @@ slots:
     examples:
     - value: Luvisols
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - soil_taxonomic/FAO classification
     is_a: core field
     slot_uri: MIXS:0001083
     range: fao_class_enum
@@ -11210,8 +10967,6 @@ slots:
     examples:
     - value: urea;0.6 milligram per liter;R2/2018-05-11:T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - fertilizer regimen
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000556
@@ -11232,8 +10987,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - field name
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000291
@@ -11253,8 +11006,6 @@ slots:
     examples:
     - value: HEPA
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - filter type
     is_a: core field
     slot_uri: MIXS:0000765
     range: filter_type_enum
@@ -11273,8 +11024,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - history/fire
     is_a: core field
     slot_uri: MIXS:0001086
     range: string
@@ -11293,8 +11042,6 @@ slots:
     examples:
     - value: wood burning
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - fireplace type
     is_a: core field
     string_serialization: '[gas burning|wood burning]'
     slot_uri: MIXS:0000802
@@ -11314,8 +11061,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - history/flooding
     is_a: core field
     slot_uri: MIXS:0000319
     range: string
@@ -11340,8 +11085,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - floor age
     is_a: core field
     slot_uri: MIXS:0000164
     range: QuantityValue
@@ -11366,8 +11109,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - floor area
     is_a: core field
     slot_uri: MIXS:0000165
     range: QuantityValue
@@ -11387,8 +11128,6 @@ slots:
     examples:
     - value: new
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - floor condition
     is_a: core field
     slot_uri: MIXS:0000803
     range: floor_cond_enum
@@ -11408,8 +11147,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - floor count
     is_a: core field
     slot_uri: MIXS:0000225
     range: TextValue
@@ -11428,8 +11165,6 @@ slots:
     examples:
     - value: carpet
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - floor finish material
     is_a: core field
     slot_uri: MIXS:0000804
     range: floor_finish_mat_enum
@@ -11449,8 +11184,6 @@ slots:
     examples:
     - value: concrete
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - floor structure
     is_a: core field
     slot_uri: MIXS:0000806
     range: floor_struc_enum
@@ -11475,8 +11208,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - floor thermal mass
     is_a: core field
     slot_uri: MIXS:0000166
     range: QuantityValue
@@ -11495,8 +11226,6 @@ slots:
     examples:
     - value: ceiling discoloration
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - floor signs of water/mold
     is_a: core field
     slot_uri: MIXS:0000805
     range: floor_water_mold_enum
@@ -11521,8 +11250,6 @@ slots:
     examples:
     - value: 2.5 V
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - fluorescence
     is_a: core field
     slot_uri: MIXS:0000704
     range: QuantityValue
@@ -11545,8 +11272,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - frequency of cleaning
     is_a: core field
     slot_uri: MIXS:0000226
     range: QuantityValue
@@ -11568,8 +11293,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - frequency of cooking
     is_a: core field
     slot_uri: MIXS:0000227
     range: QuantityValue
@@ -11594,8 +11317,6 @@ slots:
     examples:
     - value: bifonazole;1 mole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - fungicide regimen
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000557
@@ -11616,8 +11337,6 @@ slots:
     examples:
     - value: chair
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - furniture
     is_a: core field
     slot_uri: MIXS:0000807
     range: furniture_enum
@@ -11642,8 +11361,6 @@ slots:
     examples:
     - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - gaseous environment
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000558
@@ -11668,8 +11385,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - gaseous substances
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000661
@@ -11690,8 +11405,6 @@ slots:
     examples:
     - value: male
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - gender of restroom
     is_a: core field
     slot_uri: MIXS:0000808
     range: gender_restroom_enum
@@ -11713,8 +11426,6 @@ slots:
     examples:
     - value: aox1A transgenic
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - genetic modification
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0000859
@@ -11735,8 +11446,6 @@ slots:
     examples:
     - value: 'USA: Maryland, Bethesda'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - geographic location (country and/or sea,region)
     is_a: environment field
     string_serialization: '{term}: {term}, {text}'
     slot_uri: MIXS:0000010
@@ -11762,8 +11471,6 @@ slots:
     examples:
     - value: 5 mol/L/h
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - glucosidase activity
     is_a: core field
     slot_uri: MIXS:0000137
     range: QuantityValue
@@ -11783,8 +11490,6 @@ slots:
     examples:
     - value: yes;due date:2018-05-11
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - gravidity
     is_a: core field
     string_serialization: '{boolean};{timestamp}'
     slot_uri: MIXS:0000875
@@ -11811,8 +11516,6 @@ slots:
     examples:
     - value: 12 g;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - gravity
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000559
@@ -11835,8 +11538,6 @@ slots:
     examples:
     - value: Growth chamber [CO_715:0000189]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - growth facility
     is_a: core field
     string_serialization: '{text}|{termLabel} {[termID]}'
     slot_uri: MIXS:0001043
@@ -11856,8 +11557,6 @@ slots:
     examples:
     - value: spreading
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - growth habit
     is_a: core field
     slot_uri: MIXS:0001044
     range: growth_habit_enum
@@ -11883,8 +11582,6 @@ slots:
     examples:
     - value: abscisic acid;0.5 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - growth hormone regimen
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000560
@@ -11905,8 +11602,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - hallway/corridor count
     is_a: core field
     slot_uri: MIXS:0000228
     range: TextValue
@@ -11925,8 +11620,6 @@ slots:
     examples:
     - value: right handedness
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - handidness
     is_a: core field
     slot_uri: MIXS:0000809
     range: handidness_enum
@@ -11946,8 +11639,6 @@ slots:
     examples:
     - value: Gas
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - hydrocarbon type produced
     is_a: core field
     slot_uri: MIXS:0000989
     range: hc_produced_enum
@@ -11972,8 +11663,6 @@ slots:
     examples:
     - value: Oil Sand
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - hydrocarbon resource type
     is_a: core field
     slot_uri: MIXS:0000988
     range: hcr_enum
@@ -11999,8 +11688,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - formation water salinity
     is_a: core field
     slot_uri: MIXS:0000406
     range: QuantityValue
@@ -12020,8 +11707,6 @@ slots:
     examples:
     - value: Silurian
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - hydrocarbon resource geological age
     is_a: core field
     slot_uri: MIXS:0000993
     range: hcr_geol_age_enum
@@ -12043,8 +11728,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - hydrocarbon resource original pressure
     is_a: core field
     string_serialization: '{float} - {float} {unit}'
     slot_uri: MIXS:0000395
@@ -12067,8 +11750,6 @@ slots:
     examples:
     - value: 150-295 degree Celsius
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - hydrocarbon resource original temperature
     is_a: core field
     string_serialization: '{float} - {float} {unit}'
     slot_uri: MIXS:0000393
@@ -12088,8 +11769,6 @@ slots:
     examples:
     - value: heat pump
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - heating and cooling system type
     is_a: core field
     slot_uri: MIXS:0000766
     range: heat_cool_type_enum
@@ -12108,8 +11787,6 @@ slots:
     examples:
     - value: north
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - heating delivery locations
     is_a: core field
     slot_uri: MIXS:0000810
     range: heat_deliv_loc_enum
@@ -12128,8 +11805,6 @@ slots:
     examples:
     - value: radiant
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - heating system delivery method
     is_a: core field
     string_serialization: '[conductive|radiant]'
     slot_uri: MIXS:0000812
@@ -12149,8 +11824,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - heating system identifier
     is_a: core field
     slot_uri: MIXS:0000833
     range: TextValue
@@ -12173,8 +11846,6 @@ slots:
     examples:
     - value: mercury;0.09 micrograms per gram
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - extreme_unusual_properties/heavy metals
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000652
@@ -12195,8 +11866,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - extreme_unusual_properties/heavy metals method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000343
@@ -12223,8 +11892,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - height carpet fiber mat
     is_a: core field
     slot_uri: MIXS:0000167
     range: QuantityValue
@@ -12250,8 +11917,6 @@ slots:
     examples:
     - value: atrazine;10 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - herbicide regimen
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000561
@@ -12272,8 +11937,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - soil horizon method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000321
@@ -12300,8 +11963,6 @@ slots:
     examples:
     - value: 10 d
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host age
     is_a: core field
     slot_uri: MIXS:0000255
     range: QuantityValue
@@ -12320,8 +11981,6 @@ slots:
     examples:
     - value: nasopharynx
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host body habitat
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000866
@@ -12344,8 +12003,6 @@ slots:
     examples:
     - value: mucus [UBERON:0000912]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host body product
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000888
@@ -12368,8 +12025,6 @@ slots:
     examples:
     - value: gill [UBERON:0002535]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host body site
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000867
@@ -12395,8 +12050,6 @@ slots:
     examples:
     - value: 15 Cel
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host body temperature
     is_a: core field
     slot_uri: MIXS:0000274
     range: QuantityValue
@@ -12415,8 +12068,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host color
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000260
@@ -12436,8 +12087,6 @@ slots:
     examples:
     - value: human
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host common name
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000248
@@ -12458,8 +12107,6 @@ slots:
     examples:
     - value: herbivore
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host diet
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000869
@@ -12480,8 +12127,6 @@ slots:
     examples:
     - value: rabies [DOID:11260]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host disease status
     is_a: nucleic acid sequence source field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000031
@@ -12507,8 +12152,6 @@ slots:
     examples:
     - value: 500 g
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host dry mass
     is_a: core field
     slot_uri: MIXS:0000257
     range: QuantityValue
@@ -12528,8 +12171,6 @@ slots:
     examples:
     - value: offspring;Mussel25
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host family relationship
     is_a: core field
     string_serialization: '{text};{text}'
     slot_uri: MIXS:0000872
@@ -12549,8 +12190,6 @@ slots:
     examples:
     - value: C57BL/6
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host genotype
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000365
@@ -12570,8 +12209,6 @@ slots:
     examples:
     - value: https://academic.oup.com/icesjms/article/68/2/349/617247
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host growth conditions
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0000871
@@ -12597,8 +12234,6 @@ slots:
     examples:
     - value: 0.1 m
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host height
     is_a: core field
     slot_uri: MIXS:0000264
     range: QuantityValue
@@ -12618,8 +12253,6 @@ slots:
     examples:
     - value: corn feed;P2H
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host last meal
     is_a: core field
     string_serialization: '{text};{duration}'
     slot_uri: MIXS:0000870
@@ -12646,8 +12279,6 @@ slots:
     examples:
     - value: 1 m
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host length
     is_a: core field
     slot_uri: MIXS:0000256
     range: QuantityValue
@@ -12666,8 +12297,6 @@ slots:
     examples:
     - value: adult
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host life stage
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000251
@@ -12689,8 +12318,6 @@ slots:
     examples:
     - value: elongated [PATO:0001154]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host phenotype
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000874
@@ -12710,8 +12337,6 @@ slots:
     examples:
     - value: non-binary
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host sex
     is_a: core field
     slot_uri: MIXS:0000811
     range: host_sex_enum
@@ -12730,8 +12355,6 @@ slots:
     examples:
     - value: round
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host shape
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000261
@@ -12751,8 +12374,6 @@ slots:
     examples:
     - value: MPI123
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host subject id
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000861
@@ -12777,8 +12398,6 @@ slots:
     examples:
     - value: 'serovar:Newport, variety:glabrum, cultivar: Red Delicious'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host subspecific genetic lineage
     is_a: core field
     string_serialization: '{rank name}:{text}'
     slot_uri: MIXS:0001318
@@ -12798,8 +12417,6 @@ slots:
     examples:
     - value: rock
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host substrate
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000252
@@ -12820,8 +12437,6 @@ slots:
     examples:
     - value: flukeworms
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - observed host symbionts
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0001298
@@ -12841,8 +12456,6 @@ slots:
     comments:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host taxid
     is_a: core field
     slot_uri: MIXS:0000250
     range: ControlledIdentifiedTermValue
@@ -12867,8 +12480,6 @@ slots:
     examples:
     - value: 2500 g
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host total mass
     is_a: core field
     slot_uri: MIXS:0000263
     range: QuantityValue
@@ -12893,8 +12504,6 @@ slots:
     examples:
     - value: 1500 g
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - host wet mass
     is_a: core field
     slot_uri: MIXS:0000567
     range: QuantityValue
@@ -12919,8 +12528,6 @@ slots:
     examples:
     - value: 25 g/m3
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - humidity
     is_a: core field
     slot_uri: MIXS:0000100
     range: QuantityValue
@@ -12946,8 +12553,6 @@ slots:
     examples:
     - value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - humidity regimen
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000568
@@ -12969,8 +12574,6 @@ slots:
     examples:
     - value: foyer
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - indoor space
     is_a: core field
     slot_uri: MIXS:0000763
     range: indoor_space_enum
@@ -12989,8 +12592,6 @@ slots:
     examples:
     - value: wall
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - indoor surface
     is_a: core field
     slot_uri: MIXS:0000764
     range: indoor_surf_enum
@@ -13016,8 +12617,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - industrial effluent percent
     is_a: core field
     slot_uri: MIXS:0000662
     range: QuantityValue
@@ -13040,8 +12639,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - inorganic particles
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000664
@@ -13068,8 +12665,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - inside lux light
     is_a: core field
     slot_uri: MIXS:0000168
     range: QuantityValue
@@ -13089,8 +12684,6 @@ slots:
     examples:
     - value: damaged
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - interior wall condition
     is_a: core field
     slot_uri: MIXS:0000813
     range: int_wall_cond_enum
@@ -13110,8 +12703,6 @@ slots:
     examples:
     - value: '2018-05-11'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - injection water breakthrough date of specific well
     is_a: core field
     slot_uri: MIXS:0001010
     range: TimestampValue
@@ -13137,8 +12728,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - injection water fraction
     is_a: core field
     slot_uri: MIXS:0000455
     range: QuantityValue
@@ -13157,8 +12746,6 @@ slots:
     examples:
     - value: 2018-05-11:T14:30Z
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - last time swept/mopped/vacuumed
     is_a: core field
     slot_uri: MIXS:0000814
     range: TimestampValue
@@ -13175,8 +12762,6 @@ slots:
     examples:
     - value: 50.586825 6.408977
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - geographic location (latitude and longitude)
     is_a: environment field
     string_serialization: '{float} {float}'
     slot_uri: MIXS:0000009
@@ -13202,8 +12787,6 @@ slots:
     examples:
     - value: 0.3 lx
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - light intensity
     is_a: core field
     slot_uri: MIXS:0000706
     range: QuantityValue
@@ -13226,8 +12809,6 @@ slots:
     examples:
     - value: incandescant light;10 lux;450 nanometer
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - light regimen
     is_a: core field
     string_serialization: '{text};{float} {unit};{float} {unit}'
     slot_uri: MIXS:0000569
@@ -13250,8 +12831,6 @@ slots:
     examples:
     - value: desk lamp
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - light type
     is_a: core field
     slot_uri: MIXS:0000769
     range: light_type_enum
@@ -13270,8 +12849,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - links to additional analysis
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000340
@@ -13291,8 +12868,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - link to classification information
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000329
@@ -13312,8 +12887,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - link to climate information
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000328
@@ -13334,8 +12907,6 @@ slots:
     examples:
     - value: Volcanic
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - lithology
     is_a: core field
     slot_uri: MIXS:0000990
     range: lithology_enum
@@ -13354,8 +12925,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - soil_taxonomic/local classification
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000330
@@ -13375,8 +12944,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - soil_taxonomic/local classification method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000331
@@ -13403,8 +12970,6 @@ slots:
     examples:
     - value: 52.8 umol/kg
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - magnesium
     is_a: core field
     slot_uri: MIXS:0000431
     range: QuantityValue
@@ -13426,8 +12991,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - maximum occupancy
     is_a: core field
     slot_uri: MIXS:0000229
     range: QuantityValue
@@ -13452,8 +13015,6 @@ slots:
     examples:
     - value: 0.5 m/s
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - mean friction velocity
     is_a: core field
     slot_uri: MIXS:0000498
     range: QuantityValue
@@ -13478,8 +13039,6 @@ slots:
     examples:
     - value: 1 m/s
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - mean peak friction velocity
     is_a: core field
     slot_uri: MIXS:0000502
     range: QuantityValue
@@ -13498,8 +13057,6 @@ slots:
     examples:
     - value: elevator
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - mechanical structure
     is_a: core field
     slot_uri: MIXS:0000815
     range: mech_struc_enum
@@ -13519,8 +13076,6 @@ slots:
     examples:
     - value: pruning;bark
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - mechanical damage
     is_a: core field
     string_serialization: '{text};{text}'
     slot_uri: MIXS:0001052
@@ -13547,8 +13102,6 @@ slots:
     examples:
     - value: 1800 [ppb]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - methane
     is_a: core field
     slot_uri: MIXS:0000101
     range: QuantityValue
@@ -13567,8 +13120,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - microbial biomass method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000339
@@ -13596,8 +13147,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - microbial biomass
     is_a: core field
     slot_uri: MIXS:0000650
     range: QuantityValue
@@ -13624,8 +13173,6 @@ slots:
     examples:
     - value: potassium;15 gram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - mineral nutrient regimen
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000570
@@ -13641,16 +13188,14 @@ slots:
       occurrence:
         tag: occurrence
         value: m
-    description: Structured miscellaneous property assertions for this Biosample.
-      Use when a value cannot cleanly fit an existing, policy-governed slot.
+    description: Structured miscellaneous property assertions. Use when a value cannot
+      cleanly fit an existing, policy-governed slot.
     title: miscellaneous parameter
     todos:
     - This slot should not be available in the submission portal.
     examples:
     - value: Bicarbonate ion concentration;2075 micromole per kilogram
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - miscellaneous parameter
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000752
@@ -13674,8 +13219,6 @@ slots:
     examples:
     - value: n-hexadecane;100 milligram per liter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - n-alkanes
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000503
@@ -13702,8 +13245,6 @@ slots:
     examples:
     - value: 65 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - nitrate
     is_a: core field
     slot_uri: MIXS:0000425
     range: QuantityValue
@@ -13728,8 +13269,6 @@ slots:
     examples:
     - value: 0.5 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - nitrite
     is_a: core field
     slot_uri: MIXS:0000426
     range: QuantityValue
@@ -13754,8 +13293,6 @@ slots:
     examples:
     - value: 4.2 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - nitrogen
     is_a: core field
     slot_uri: MIXS:0000504
     range: QuantityValue
@@ -13782,8 +13319,6 @@ slots:
     examples:
     - value: carbon dioxide;10 mole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - non-mineral nutrient regimen
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000571
@@ -13802,8 +13337,6 @@ slots:
     examples:
     - value: https://phylogenomics.me/protocols/16s-pcr-protocol/
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - nucleic acid amplification
     is_a: sequencing field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000038
@@ -13822,8 +13355,6 @@ slots:
     examples:
     - value: https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - nucleic acid extraction
     is_a: sequencing field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000037
@@ -13846,8 +13377,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - number of pets
     is_a: core field
     slot_uri: MIXS:0000231
     range: QuantityValue
@@ -13869,8 +13398,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - number of houseplants
     is_a: core field
     slot_uri: MIXS:0000230
     range: QuantityValue
@@ -13892,8 +13419,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - number of residents
     is_a: core field
     slot_uri: MIXS:0000232
     range: QuantityValue
@@ -13915,8 +13440,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - occupant density at sampling
     is_a: core field
     slot_uri: MIXS:0000217
     range: QuantityValue
@@ -13935,8 +13458,6 @@ slots:
     examples:
     - value: estimate
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - occupancy documentation
     is_a: core field
     slot_uri: MIXS:0000816
     range: occup_document_enum
@@ -13958,8 +13479,6 @@ slots:
     examples:
     - value: '10'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - occupancy at sampling
     is_a: core field
     slot_uri: MIXS:0000772
     range: QuantityValue
@@ -13984,8 +13503,6 @@ slots:
     examples:
     - value: 0.015 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - organic carbon
     is_a: core field
     slot_uri: MIXS:0000508
     range: QuantityValue
@@ -14013,8 +13530,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - organism count qPCR information
     is_a: core field
     string_serialization: '{text};FWD:{dna};REV:{dna};initial denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
       elongation:degrees_minutes; total cycles'
@@ -14041,8 +13556,6 @@ slots:
     examples:
     - value: 200 ug/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - organic matter
     is_a: core field
     slot_uri: MIXS:0000204
     range: QuantityValue
@@ -14067,8 +13580,6 @@ slots:
     examples:
     - value: 4 ug/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - organic nitrogen
     is_a: core field
     slot_uri: MIXS:0000205
     range: QuantityValue
@@ -14091,8 +13602,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - organic particles
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000665
@@ -14123,8 +13632,6 @@ slots:
     examples:
     - value: total prokaryotes;3.5e7 cells per milliliter;qPCR
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - organism count
     is_a: core field
     slot_uri: MIXS:0000103
     range: QuantityValue
@@ -14150,8 +13657,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - oil water contact depth
     is_a: core field
     slot_uri: MIXS:0000405
     range: QuantityValue
@@ -14170,8 +13675,6 @@ slots:
     examples:
     - value: aerobic
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - oxygenation status of sample
     is_a: core field
     slot_uri: MIXS:0000753
     range: oxy_stat_samp_enum
@@ -14196,8 +13699,6 @@ slots:
     examples:
     - value: 600 [ppm]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - oxygen
     is_a: core field
     slot_uri: MIXS:0000104
     range: QuantityValue
@@ -14222,8 +13723,6 @@ slots:
     examples:
     - value: 0.02 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - particulate organic carbon
     is_a: core field
     slot_uri: MIXS:0000515
     range: QuantityValue
@@ -14248,8 +13747,6 @@ slots:
     examples:
     - value: 0.3 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - particulate organic nitrogen
     is_a: core field
     slot_uri: MIXS:0000719
     range: QuantityValue
@@ -14273,8 +13770,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - particle classification
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000206
@@ -14294,8 +13789,6 @@ slots:
     examples:
     - value: initial denaturation:94_3;annealing:50_1;elongation:72_1.5;final elongation:72_10;35
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pcr conditions
     is_a: sequencing field
     string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
       elongation:degrees_minutes;total cycles
@@ -14316,8 +13809,6 @@ slots:
     examples:
     - value: FWD:GTGCCAGCMGCCGCGGTAA;REV:GGACTACHVGGGTWTCTAAT
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pcr primers
     is_a: sequencing field
     string_serialization: FWD:{dna};REV:{dna}
     slot_uri: MIXS:0000046
@@ -14341,8 +13832,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - permeability
     is_a: core field
     string_serialization: '{integer} - {integer} {unit}'
     slot_uri: MIXS:0000404
@@ -14365,8 +13854,6 @@ slots:
     examples:
     - value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - perturbation
     is_a: core field
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000754
@@ -14394,8 +13881,6 @@ slots:
     examples:
     - value: pyrethrum;0.6 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pesticide regimen
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000573
@@ -14422,8 +13907,6 @@ slots:
     examples:
     - value: 0.05 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - petroleum hydrocarbon
     is_a: core field
     slot_uri: MIXS:0000516
     range: QuantityValue
@@ -14443,8 +13926,6 @@ slots:
     examples:
     - value: '7.2'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pH
     is_a: core field
     slot_uri: MIXS:0001001
     range: double
@@ -14463,8 +13944,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pH method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0001106
@@ -14487,8 +13966,6 @@ slots:
     examples:
     - value: 7.6;R2/2018-05-11:T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pH regimen
     is_a: core field
     string_serialization: '{float};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0001056
@@ -14512,8 +13989,6 @@ slots:
     examples:
     - value: 2.5 milligram per cubic meter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - phaeopigments
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000180
@@ -14540,8 +14015,6 @@ slots:
     examples:
     - value: 0.7 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - phosphate
     is_a: core field
     slot_uri: MIXS:0000505
     range: QuantityValue
@@ -14563,8 +14036,6 @@ slots:
     examples:
     - value: 2.98 milligram per liter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - phospholipid fatty acid
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000181
@@ -14591,8 +14062,6 @@ slots:
     examples:
     - value: 3.926 umol/m2/s
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - photon flux
     is_a: core field
     slot_uri: MIXS:0000725
     range: QuantityValue
@@ -14615,8 +14084,6 @@ slots:
     examples:
     - value: hydroponic plant culture media [EO:0007067]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - plant growth medium
     is_a: core field
     slot_uri: MIXS:0001057
     range: ControlledTermValue
@@ -14635,8 +14102,6 @@ slots:
     examples:
     - value: xylem sap [PO:0025539]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - plant product
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0001058
@@ -14657,8 +14122,6 @@ slots:
     examples:
     - value: Hermaphroditic
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - plant sex
     is_a: core field
     slot_uri: MIXS:0001059
     range: plant_sex_enum
@@ -14680,8 +14143,6 @@ slots:
     examples:
     - value: epidermis [PO:0005679]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - plant structure
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0001060
@@ -14706,8 +14167,6 @@ slots:
     examples:
     - value: lead;0.15 microgram per cubic meter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pollutants
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000107
@@ -14729,8 +14188,6 @@ slots:
     examples:
     - value: yes;5
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pooling of DNA extracts (if done)
     is_a: core field
     string_serialization: '{boolean};{integer}'
     slot_uri: MIXS:0000325
@@ -14754,8 +14211,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - porosity
     is_a: core field
     string_serialization: '{float} - {float} {unit}'
     slot_uri: MIXS:0000211
@@ -14781,8 +14236,6 @@ slots:
     examples:
     - value: 463 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - potassium
     is_a: core field
     slot_uri: MIXS:0000430
     range: QuantityValue
@@ -14810,8 +14263,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pour point
     is_a: core field
     slot_uri: MIXS:0000127
     range: QuantityValue
@@ -14831,8 +14282,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pre-treatment
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000348
@@ -14853,8 +14302,6 @@ slots:
     examples:
     - value: cat;5
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - presence of pets, animals, or insects
     is_a: core field
     slot_uri: MIXS:0000819
     range: string
@@ -14880,8 +14327,6 @@ slots:
     examples:
     - value: 50 atm
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - pressure
     is_a: core field
     slot_uri: MIXS:0000412
     range: QuantityValue
@@ -14900,8 +14345,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - history/previous land use method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000316
@@ -14921,8 +14364,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - history/previous land use
     is_a: core field
     string_serialization: '{text};{timestamp}'
     slot_uri: MIXS:0000315
@@ -14949,8 +14390,6 @@ slots:
     examples:
     - value: 100 mg/m3/d
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - primary production
     is_a: core field
     slot_uri: MIXS:0000728
     range: QuantityValue
@@ -14971,8 +14410,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - primary treatment
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000349
@@ -14998,8 +14435,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - production rate
     is_a: core field
     slot_uri: MIXS:0000452
     range: QuantityValue
@@ -15018,8 +14453,6 @@ slots:
     examples:
     - value: '2018-05-11'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - production start date
     is_a: core field
     slot_uri: MIXS:0001008
     range: TimestampValue
@@ -15039,8 +14472,6 @@ slots:
     examples:
     - value: summit
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - profile position
     is_a: core field
     slot_uri: MIXS:0001084
     range: profile_position_enum
@@ -15059,8 +14490,6 @@ slots:
     examples:
     - value: West side
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - quadrant position
     is_a: core field
     slot_uri: MIXS:0000820
     range: quad_pos_enum
@@ -15086,8 +14515,6 @@ slots:
     examples:
     - value: gamma radiation;60 gray;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - radiation regimen
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000575
@@ -15114,8 +14541,6 @@ slots:
     examples:
     - value: 15 millimeter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rainfall regimen
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000576
@@ -15138,8 +14563,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - reactor type
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000350
@@ -15166,8 +14589,6 @@ slots:
     examples:
     - value: 300 mV
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - redox potential
     is_a: core field
     slot_uri: MIXS:0000182
     range: QuantityValue
@@ -15193,8 +14614,6 @@ slots:
     examples:
     - value: 80%
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - relative air humidity
     is_a: core field
     slot_uri: MIXS:0000121
     range: QuantityValue
@@ -15219,8 +14638,6 @@ slots:
     examples:
     - value: 12 per kilogram of air
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - outside relative humidity
     is_a: core field
     slot_uri: MIXS:0000188
     range: QuantityValue
@@ -15239,8 +14656,6 @@ slots:
     examples:
     - value: center of car
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - relative sampling location
     is_a: core field
     slot_uri: MIXS:0000821
     range: rel_samp_loc_enum
@@ -15259,8 +14674,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - reservoir name
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000303
@@ -15287,8 +14700,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - resins wt%
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000134
@@ -15314,8 +14725,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room air exchange rate
     is_a: core field
     slot_uri: MIXS:0000169
     range: QuantityValue
@@ -15335,8 +14744,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room architectural elements
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000233
@@ -15356,8 +14763,6 @@ slots:
     examples:
     - value: new
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room condition
     is_a: core field
     slot_uri: MIXS:0000822
     range: room_condt_enum
@@ -15376,8 +14781,6 @@ slots:
     examples:
     - value: office
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rooms connected by a doorway
     is_a: core field
     slot_uri: MIXS:0000826
     range: room_connected_enum
@@ -15397,8 +14800,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room count
     is_a: core field
     slot_uri: MIXS:0000234
     range: TextValue
@@ -15420,8 +14821,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room dimensions
     is_a: core field
     string_serialization: '{integer} {unit} x {integer} {unit} x {integer} {unit}'
     slot_uri: MIXS:0000192
@@ -15445,8 +14844,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room door distance
     is_a: core field
     string_serialization: '{integer} {unit}'
     slot_uri: MIXS:0000193
@@ -15467,8 +14864,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rooms that share a door with sampling room
     is_a: core field
     string_serialization: '{text};{integer}'
     slot_uri: MIXS:0000242
@@ -15489,8 +14884,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rooms that are on the same hallway
     is_a: core field
     string_serialization: '{text};{integer}'
     slot_uri: MIXS:0000238
@@ -15510,8 +14903,6 @@ slots:
     examples:
     - value: interior room
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room location in building
     is_a: core field
     slot_uri: MIXS:0000823
     range: room_loc_enum
@@ -15531,8 +14922,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room moisture damage or mold history
     is_a: core field
     slot_uri: MIXS:0000235
     range: integer
@@ -15554,8 +14943,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room net area
     is_a: core field
     string_serialization: '{integer} {unit}'
     slot_uri: MIXS:0000194
@@ -15578,8 +14965,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room occupancy
     is_a: core field
     slot_uri: MIXS:0000236
     range: QuantityValue
@@ -15599,8 +14984,6 @@ slots:
     examples:
     - value: south corner
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room sampling position
     is_a: core field
     slot_uri: MIXS:0000824
     range: room_samp_pos_enum
@@ -15620,8 +15003,6 @@ slots:
     examples:
     - value: bathroom
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room type
     is_a: core field
     slot_uri: MIXS:0000825
     range: room_type_enum
@@ -15643,8 +15024,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room volume
     is_a: core field
     string_serialization: '{integer} {unit}'
     slot_uri: MIXS:0000195
@@ -15665,8 +15044,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rooms that share a wall with sampling room
     is_a: core field
     string_serialization: '{text};{integer}'
     slot_uri: MIXS:0000243
@@ -15686,8 +15063,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - room window count
     is_a: core field
     slot_uri: MIXS:0000237
     range: integer
@@ -15707,8 +15082,6 @@ slots:
     examples:
     - value: http://himedialabs.com/TD/PT158.pdf
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rooting conditions
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0001061
@@ -15731,8 +15104,6 @@ slots:
     examples:
     - value: sucrose
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rooting medium carbon
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000577
@@ -15756,8 +15127,6 @@ slots:
     examples:
     - value: KH2PO4;170¬†milligram per liter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rooting medium macronutrients
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000578
@@ -15781,8 +15150,6 @@ slots:
     examples:
     - value: H3BO3;6.2¬†milligram per liter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rooting medium micronutrients
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000579
@@ -15805,8 +15172,6 @@ slots:
     examples:
     - value: '7.5'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rooting medium pH
     is_a: core field
     slot_uri: MIXS:0001062
     range: QuantityValue
@@ -15829,8 +15194,6 @@ slots:
     examples:
     - value: abscisic acid;0.75 milligram per liter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rooting medium regulators
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000581
@@ -15851,8 +15214,6 @@ slots:
     examples:
     - value: agar
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rooting medium solidifier
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0001063
@@ -15877,8 +15238,6 @@ slots:
     examples:
     - value: nicotinic acid;0.5 milligram per liter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - rooting medium organic supplements
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000580
@@ -15909,8 +15268,6 @@ slots:
     examples:
     - value: 70 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - salinity
     is_a: core field
     slot_uri: MIXS:0000183
     range: QuantityValue
@@ -15929,8 +15286,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - salinity method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000341
@@ -15957,8 +15312,6 @@ slots:
     examples:
     - value: NaCl;5 gram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - salt regimen
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000582
@@ -15979,8 +15332,6 @@ slots:
     examples:
     - value: farm sample
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample capture status
     is_a: core field
     slot_uri: MIXS:0000860
     range: samp_capt_status_enum
@@ -15998,8 +15349,6 @@ slots:
     examples:
     - value: swab, biopsy, niskin bottle, push core, drag swab [GENEPIO:0002713]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample collection device
     is_a: nucleic acid sequence source field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000002
@@ -16016,8 +15365,6 @@ slots:
     examples:
     - value: swabbing
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample collection method
     is_a: nucleic acid sequence source field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0001225
@@ -16039,8 +15386,6 @@ slots:
     examples:
     - value: well
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample collection point
     is_a: core field
     slot_uri: MIXS:0001015
     range: samp_collect_point_enum
@@ -16060,8 +15405,6 @@ slots:
     examples:
     - value: infection
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample disease stage
     is_a: core field
     slot_uri: MIXS:0000249
     range: samp_dis_stage_enum
@@ -16080,8 +15423,6 @@ slots:
     examples:
     - value: 4th floor
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sampling floor
     is_a: core field
     slot_uri: MIXS:0000828
     range: samp_floor_enum
@@ -16109,8 +15450,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - corrosion rate at sample location
     is_a: core field
     string_serialization: '{float} - {float} {unit}'
     slot_uri: MIXS:0000136
@@ -16129,8 +15468,6 @@ slots:
     examples:
     - value: filtering of seawater, storing samples in ethanol
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample material processing
     is_a: nucleic acid sequence source field
     string_serialization: '{text}'
     slot_uri: MIXS:0000016
@@ -16161,8 +15498,6 @@ slots:
     examples:
     - value: 1534 m
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample measured depth
     is_a: core field
     slot_uri: MIXS:0000413
     range: QuantityValue
@@ -16184,8 +15519,6 @@ slots:
     examples:
     - value: ISDsoil1
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample name
     is_a: investigation field
     string_serialization: '{text}'
     slot_uri: MIXS:0001107
@@ -16209,8 +15542,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - preservative added to sample
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000463
@@ -16231,8 +15562,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sampling room ID or name
     is_a: core field
     slot_uri: MIXS:0000244
     range: TextValue
@@ -16255,8 +15584,6 @@ slots:
     examples:
     - value: 5 L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - amount or size of sample collected
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000001
     range: QuantityValue
@@ -16278,8 +15605,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample size sorting method
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000216
@@ -16300,8 +15625,6 @@ slots:
     examples:
     - value: P1Y6M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample storage duration
     is_a: core field
     string_serialization: '{duration}'
     slot_uri: MIXS:0000116
@@ -16321,8 +15644,6 @@ slots:
     examples:
     - value: Freezer no:5
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample storage location
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000755
@@ -16348,8 +15669,6 @@ slots:
     examples:
     - value: -80 Cel
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample storage temperature
     is_a: core field
     slot_uri: MIXS:0000110
     range: QuantityValue
@@ -16370,8 +15689,6 @@ slots:
     examples:
     - value: biofilm
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample subtype
     is_a: core field
     slot_uri: MIXS:0000999
     range: samp_subtype_enum
@@ -16389,8 +15706,6 @@ slots:
     comments:
     - coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Taxonomy ID of DNA sample
     is_a: investigation field
     slot_uri: MIXS:0001320
     range: ControlledIdentifiedTermValue
@@ -16412,8 +15727,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sampling time outside
     is_a: core field
     slot_uri: MIXS:0000196
     range: TextValue
@@ -16436,8 +15749,6 @@ slots:
     examples:
     - value: 5 days;-20 degree Celsius
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample transport conditions
     is_a: core field
     string_serialization: '{float} {unit};{float} {unit}'
     slot_uri: MIXS:0000410
@@ -16462,8 +15773,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample true vertical depth subsea
     is_a: core field
     string_serialization: '{float}-{float} {unit}'
     slot_uri: MIXS:0000409
@@ -16488,8 +15797,6 @@ slots:
     examples:
     - value: built environment sample [GENEPIO:0001248]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample type
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000998
@@ -16514,8 +15821,6 @@ slots:
     examples:
     - value: 1500 mL
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample volume or weight for DNA extraction
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000111
     range: QuantityValue
@@ -16534,8 +15839,6 @@ slots:
     examples:
     - value: foggy
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sampling day weather
     is_a: core field
     slot_uri: MIXS:0000827
     range: samp_weather_enum
@@ -16554,8 +15857,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sample well name
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000296
@@ -16582,8 +15883,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - saturates wt%
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000131
@@ -16605,8 +15904,6 @@ slots:
     examples:
     - value: autumn [NCIT:C94733]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - season
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000829
@@ -16629,8 +15926,6 @@ slots:
     examples:
     - value: rainy;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - seasonal environment
     is_a: core field
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0001068
@@ -16658,8 +15953,6 @@ slots:
     examples:
     - value: 10 mm
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - mean seasonal precipitation
     is_a: core field
     slot_uri: MIXS:0000645
     range: QuantityValue
@@ -16684,8 +15977,6 @@ slots:
     examples:
     - value: 18 Cel
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - mean seasonal temperature
     is_a: core field
     slot_uri: MIXS:0000643
     range: QuantityValue
@@ -16704,8 +15995,6 @@ slots:
     examples:
     - value: Winter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - seasonal use
     is_a: core field
     slot_uri: MIXS:0000830
     range: season_use_enum
@@ -16725,8 +16014,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - secondary treatment
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000351
@@ -16746,8 +16033,6 @@ slots:
     examples:
     - value: biogenous
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sediment type
     is_a: core field
     slot_uri: MIXS:0001078
     range: sediment_type_enum
@@ -16764,8 +16049,6 @@ slots:
     examples:
     - value: 454 Genome Sequencer FLX [OBI:0000702]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sequencing method
     is_a: sequencing field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000050
@@ -16785,8 +16068,6 @@ slots:
     examples:
     - value: none
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sequence quality check
     is_a: sequencing field
     string_serialization: '[none|manually edited]'
     slot_uri: MIXS:0000051
@@ -16806,8 +16087,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sewage type
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000215
@@ -16827,8 +16106,6 @@ slots:
     examples:
     - value: no presence of mold visible
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - shading device signs of water/mold
     is_a: core field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: MIXS:0000834
@@ -16848,8 +16125,6 @@ slots:
     examples:
     - value: new
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - shading device condition
     is_a: core field
     slot_uri: MIXS:0000831
     range: shading_device_cond_enum
@@ -16868,8 +16143,6 @@ slots:
     examples:
     - value: exterior
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - shading device location
     is_a: core field
     string_serialization: '[exterior|interior]'
     slot_uri: MIXS:0000832
@@ -16889,8 +16162,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - shading device material
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000245
@@ -16910,8 +16181,6 @@ slots:
     examples:
     - value: slatted aluminum awning
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - shading device type
     is_a: core field
     slot_uri: MIXS:0000835
     range: shading_device_type_enum
@@ -16931,8 +16200,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - composite design/sieving
     is_a: core field
     string_serialization: '{{text}|{float} {unit}};{float} {unit}'
     slot_uri: MIXS:0000322
@@ -16958,8 +16225,6 @@ slots:
     examples:
     - value: 0.05 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - silicate
     is_a: core field
     slot_uri: MIXS:0000184
     range: QuantityValue
@@ -16975,8 +16240,6 @@ slots:
     examples:
     - value: 0-0.22 micrometer
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - size fraction selected
     is_a: nucleic acid sequence source field
     string_serialization: '{float}-{float} {unit}'
     slot_uri: MIXS:0000017
@@ -17003,8 +16266,6 @@ slots:
     examples:
     - value: 0.2 um
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - size-fraction lower threshold
     is_a: core field
     slot_uri: MIXS:0000735
     range: QuantityValue
@@ -17030,8 +16291,6 @@ slots:
     examples:
     - value: 20 um
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - size-fraction upper threshold
     is_a: core field
     slot_uri: MIXS:0000736
     range: QuantityValue
@@ -17059,8 +16318,6 @@ slots:
     examples:
     - value: 35 deg
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - slope aspect
     is_a: core field
     slot_uri: MIXS:0000647
     range: QuantityValue
@@ -17087,8 +16344,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - slope gradient
     is_a: core field
     slot_uri: MIXS:0000646
     range: QuantityValue
@@ -17113,8 +16368,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sludge retention time
     is_a: core field
     slot_uri: MIXS:0000669
     range: QuantityValue
@@ -17139,8 +16392,6 @@ slots:
     examples:
     - value: 10.5 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sodium
     is_a: core field
     slot_uri: MIXS:0000428
     range: QuantityValue
@@ -17161,8 +16412,6 @@ slots:
     examples:
     - value: A horizon
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - soil horizon
     is_a: core field
     slot_uri: MIXS:0001082
     range: soil_horizon_enum
@@ -17187,8 +16436,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - soil texture measurement
     is_a: core field
     slot_uri: MIXS:0000335
     range: QuantityValue
@@ -17207,8 +16454,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - soil texture method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000336
@@ -17230,8 +16475,6 @@ slots:
     examples:
     - value: plinthosol [ENVO:00002250]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - soil type
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000332
@@ -17252,8 +16495,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - soil type method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000334
@@ -17281,8 +16522,6 @@ slots:
     examples:
     - value: 1.36 kW/m2/d
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - solar irradiance
     is_a: core field
     slot_uri: MIXS:0000112
     range: QuantityValue
@@ -17305,8 +16544,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - soluble inorganic material
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000672
@@ -17331,8 +16568,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - soluble organic material
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000673
@@ -17359,8 +16594,6 @@ slots:
     examples:
     - value: 0.1 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - soluble reactive phosphorus
     is_a: core field
     slot_uri: MIXS:0000738
     range: QuantityValue
@@ -17388,8 +16621,6 @@ slots:
     examples:
     - value: MPI012345
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - source material identifiers
     is_a: nucleic acid sequence source field
     string_serialization: '{text}'
     slot_uri: MIXS:0000026
@@ -17409,8 +16640,6 @@ slots:
     examples:
     - value: typically occupied
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - space typical state
     is_a: core field
     string_serialization: '[typically occupied|typically unoccupied]'
     slot_uri: MIXS:0000770
@@ -17431,8 +16660,6 @@ slots:
     examples:
     - value: construction
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - specifications
     is_a: core field
     slot_uri: MIXS:0000836
     range: specific_enum
@@ -17459,8 +16686,6 @@ slots:
     examples:
     - value: 15 per kilogram of air
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - specific humidity
     is_a: core field
     slot_uri: MIXS:0000214
     range: QuantityValue
@@ -17480,8 +16705,6 @@ slots:
     examples:
     - value: Marine
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - source rock depositional environment
     is_a: core field
     slot_uri: MIXS:0000996
     range: sr_dep_env_enum
@@ -17501,8 +16724,6 @@ slots:
     examples:
     - value: Silurian
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - source rock geological age
     is_a: core field
     slot_uri: MIXS:0000997
     range: sr_geol_age_enum
@@ -17525,8 +16746,6 @@ slots:
     examples:
     - value: Type IV
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - source rock kerogen type
     is_a: core field
     slot_uri: MIXS:0000994
     range: sr_kerog_type_enum
@@ -17546,8 +16765,6 @@ slots:
     examples:
     - value: Coal
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - source rock lithology
     is_a: core field
     slot_uri: MIXS:0000995
     range: sr_lithology_enum
@@ -17569,8 +16786,6 @@ slots:
     examples:
     - value: standing water;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - standing water regimen
     is_a: core field
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0001069
@@ -17592,8 +16807,6 @@ slots:
     examples:
     - value: -20 degree Celsius freezer;P2Y10D
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - storage conditions
     is_a: core field
     string_serialization: '{text};{duration}'
     slot_uri: MIXS:0000327
@@ -17614,8 +16827,6 @@ slots:
     examples:
     - value: basement
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - substructure type
     is_a: core field
     slot_uri: MIXS:0000767
     range: substructure_type_enum
@@ -17640,8 +16851,6 @@ slots:
     examples:
     - value: 5 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sulfate
     is_a: core field
     slot_uri: MIXS:0000423
     range: QuantityValue
@@ -17666,8 +16875,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sulfate in formation water
     is_a: core field
     slot_uri: MIXS:0000407
     range: QuantityValue
@@ -17692,8 +16899,6 @@ slots:
     examples:
     - value: 2 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - sulfide
     is_a: core field
     slot_uri: MIXS:0000424
     range: QuantityValue
@@ -17712,8 +16917,6 @@ slots:
     examples:
     - value: radon
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - surface-air contaminant
     is_a: core field
     slot_uri: MIXS:0000759
     range: surf_air_cont_enum
@@ -17738,8 +16941,6 @@ slots:
     examples:
     - value: 10%
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - surface humidity
     is_a: core field
     slot_uri: MIXS:0000123
     range: QuantityValue
@@ -17758,8 +16959,6 @@ slots:
     examples:
     - value: wood
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - surface material
     is_a: core field
     slot_uri: MIXS:0000758
     range: surf_material_enum
@@ -17784,8 +16983,6 @@ slots:
     examples:
     - value: 0.01 g/m2
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - surface moisture
     is_a: core field
     slot_uri: MIXS:0000128
     range: QuantityValue
@@ -17804,8 +17001,6 @@ slots:
     examples:
     - value: '7'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - surface moisture pH
     is_a: core field
     slot_uri: MIXS:0000760
     range: double
@@ -17830,8 +17025,6 @@ slots:
     examples:
     - value: 15 Cel
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - surface temperature
     is_a: core field
     slot_uri: MIXS:0000125
     range: QuantityValue
@@ -17856,8 +17049,6 @@ slots:
     examples:
     - value: 0.5 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - suspended particulate matter
     is_a: core field
     slot_uri: MIXS:0000741
     range: QuantityValue
@@ -17881,8 +17072,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - suspended solids
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000150
@@ -17912,8 +17101,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total acid number
     is_a: core field
     slot_uri: MIXS:0000120
     range: QuantityValue
@@ -17929,8 +17116,6 @@ slots:
     examples:
     - value: 16S rRNA, 18S rRNA, nif, amoA, rpo
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - target gene
     is_a: sequencing field
     string_serialization: '{text}'
     slot_uri: MIXS:0000044
@@ -17948,8 +17133,6 @@ slots:
     examples:
     - value: V6, V9, ITS
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - target subfragment
     is_a: sequencing field
     string_serialization: '{text}'
     slot_uri: MIXS:0000045
@@ -17972,8 +17155,6 @@ slots:
     examples:
     - value: 25 Cel
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - temperature
     is_a: environment field
     slot_uri: MIXS:0000113
     range: QuantityValue
@@ -17998,8 +17179,6 @@ slots:
     examples:
     - value: 5 Cel
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - temperature outside house
     is_a: core field
     slot_uri: MIXS:0000197
     range: QuantityValue
@@ -18019,8 +17198,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - tertiary treatment
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000352
@@ -18040,8 +17217,6 @@ slots:
     examples:
     - value: high tide
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - tidal stage
     is_a: core field
     slot_uri: MIXS:0000750
     range: tidal_stage_enum
@@ -18060,8 +17235,6 @@ slots:
     examples:
     - value: chisel
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - history/tillage
     is_a: core field
     slot_uri: MIXS:0001081
     range: tillage_enum
@@ -18080,8 +17253,6 @@ slots:
     examples:
     - value: https://link.springer.com/content/pdf/10.1007/BF02796489.pdf
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - tissue culture growth media
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0001070
@@ -18107,8 +17278,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - toluene
     is_a: core field
     slot_uri: MIXS:0000154
     range: QuantityValue
@@ -18133,8 +17302,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total carbon
     is_a: core field
     slot_uri: MIXS:0000525
     range: QuantityValue
@@ -18159,8 +17326,6 @@ slots:
     examples:
     - value: 500 m
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total depth of water column
     is_a: core field
     slot_uri: MIXS:0000634
     range: QuantityValue
@@ -18186,8 +17351,6 @@ slots:
     examples:
     - value: 40 ug/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total dissolved nitrogen
     is_a: core field
     slot_uri: MIXS:0000744
     range: QuantityValue
@@ -18212,8 +17375,6 @@ slots:
     examples:
     - value: 40 ug/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total inorganic nitrogen
     is_a: core field
     slot_uri: MIXS:0000745
     range: QuantityValue
@@ -18238,8 +17399,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total iron
     is_a: core field
     slot_uri: MIXS:0000105
     range: QuantityValue
@@ -18266,8 +17425,6 @@ slots:
     examples:
     - value: 50 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total nitrogen concentration
     is_a: core field
     slot_uri: MIXS:0000102
     range: QuantityValue
@@ -18286,8 +17443,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total nitrogen content method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000338
@@ -18313,8 +17468,6 @@ slots:
     examples:
     - value: 5 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total nitrogen content
     is_a: core field
     slot_uri: MIXS:0000530
     range: QuantityValue
@@ -18333,8 +17486,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total organic carbon method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000337
@@ -18361,8 +17512,6 @@ slots:
     examples:
     - value: 5 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total organic carbon
     is_a: core field
     slot_uri: MIXS:0000533
     range: QuantityValue
@@ -18387,8 +17536,6 @@ slots:
     examples:
     - value: 35 umol/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total particulate carbon
     is_a: core field
     slot_uri: MIXS:0000747
     range: QuantityValue
@@ -18414,8 +17561,6 @@ slots:
     examples:
     - value: 0.03 mg/L
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total phosphorus
     is_a: core field
     slot_uri: MIXS:0000117
     range: QuantityValue
@@ -18440,8 +17585,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total phosphate
     is_a: core field
     slot_uri: MIXS:0000689
     range: QuantityValue
@@ -18466,8 +17609,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - total sulfur
     is_a: core field
     slot_uri: MIXS:0000419
     range: QuantityValue
@@ -18486,8 +17627,6 @@ slots:
     examples:
     - value: red
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - train line
     is_a: core field
     slot_uri: MIXS:0000837
     range: train_line_enum
@@ -18506,8 +17645,6 @@ slots:
     examples:
     - value: forest hills
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - train station collection location
     is_a: core field
     slot_uri: MIXS:0000838
     range: train_stat_loc_enum
@@ -18526,8 +17663,6 @@ slots:
     examples:
     - value: end
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - train stop collection location
     is_a: core field
     slot_uri: MIXS:0000839
     range: train_stop_loc_enum
@@ -18553,8 +17688,6 @@ slots:
     examples:
     - value: 0.3 [NTU]
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - turbidity
     is_a: core field
     slot_uri: MIXS:0000191
     range: QuantityValue
@@ -18580,8 +17713,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - depth (TVDSS) of hydrocarbon resource pressure
     is_a: core field
     slot_uri: MIXS:0000397
     range: QuantityValue
@@ -18607,8 +17738,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - depth (TVDSS) of hydrocarbon resource temperature
     is_a: core field
     slot_uri: MIXS:0000394
     range: QuantityValue
@@ -18627,8 +17756,6 @@ slots:
     examples:
     - value: '25'
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - typical occupant density
     is_a: core field
     slot_uri: MIXS:0000771
     range: double
@@ -18653,8 +17780,6 @@ slots:
     examples:
     - value: 750 m3/min
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ventilation rate
     is_a: core field
     slot_uri: MIXS:0000114
     range: QuantityValue
@@ -18673,8 +17798,6 @@ slots:
     examples:
     - value: Operable windows
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - ventilation type
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000756
@@ -18700,8 +17823,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - volatile fatty acids
     is_a: core field
     slot_uri: MIXS:0000152
     range: QuantityValue
@@ -18726,8 +17847,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - vfa in formation water
     is_a: core field
     slot_uri: MIXS:0000408
     range: QuantityValue
@@ -18746,8 +17865,6 @@ slots:
     examples:
     - value: 3D scans
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - visual media
     is_a: core field
     slot_uri: MIXS:0000840
     range: vis_media_enum
@@ -18770,8 +17887,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - viscosity
     is_a: core field
     string_serialization: '{float} {unit};{float} {unit}'
     slot_uri: MIXS:0000126
@@ -18796,8 +17911,6 @@ slots:
     examples:
     - value: formaldehyde;500 nanogram per liter
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - volatile organic compounds
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000115
@@ -18824,8 +17937,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - wall area
     is_a: core field
     slot_uri: MIXS:0000198
     range: QuantityValue
@@ -18845,8 +17956,6 @@ slots:
     examples:
     - value: fire resistive
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - wall construction type
     is_a: core field
     slot_uri: MIXS:0000841
     range: wall_const_type_enum
@@ -18865,8 +17974,6 @@ slots:
     examples:
     - value: wood
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - wall finish material
     is_a: core field
     slot_uri: MIXS:0000842
     range: wall_finish_mat_enum
@@ -18891,8 +17998,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - wall height
     is_a: core field
     slot_uri: MIXS:0000221
     range: QuantityValue
@@ -18911,8 +18016,6 @@ slots:
     examples:
     - value: north
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - wall location
     is_a: core field
     slot_uri: MIXS:0000843
     range: wall_loc_enum
@@ -18931,8 +18034,6 @@ slots:
     examples:
     - value: paneling
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - wall surface treatment
     is_a: core field
     slot_uri: MIXS:0000845
     range: wall_surf_treatment_enum
@@ -18951,8 +18052,6 @@ slots:
     examples:
     - value: popcorn
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - wall texture
     is_a: core field
     slot_uri: MIXS:0000846
     range: wall_texture_enum
@@ -18979,8 +18078,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - wall thermal mass
     is_a: core field
     slot_uri: MIXS:0000222
     range: QuantityValue
@@ -18999,8 +18096,6 @@ slots:
     examples:
     - value: no presence of mold visible
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - wall signs of water/mold
     is_a: core field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: MIXS:0000844
@@ -19021,8 +18116,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - wastewater type
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000353
@@ -19042,8 +18135,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - water content method
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000323
@@ -19066,8 +18157,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - water content
     is_a: core field
     slot_uri: MIXS:0000185
     range: string
@@ -19092,8 +18181,6 @@ slots:
     examples:
     - value: 10 m3/s
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - water current
     is_a: core field
     slot_uri: MIXS:0000203
     range: QuantityValue
@@ -19119,8 +18206,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - water cut
     is_a: core field
     slot_uri: MIXS:0000454
     range: QuantityValue
@@ -19145,8 +18230,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - water feature size
     is_a: core field
     slot_uri: MIXS:0000223
     range: QuantityValue
@@ -19165,8 +18248,6 @@ slots:
     examples:
     - value: stream
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - water feature type
     is_a: core field
     slot_uri: MIXS:0000847
     range: water_feat_type_enum
@@ -19191,8 +18272,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - water production rate
     is_a: core field
     slot_uri: MIXS:0000453
     range: QuantityValue
@@ -19217,8 +18296,6 @@ slots:
     examples:
     - value: 15 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - water temperature regimen
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000590
@@ -19245,8 +18322,6 @@ slots:
     examples:
     - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - watering regimen
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000591
@@ -19267,8 +18342,6 @@ slots:
     examples:
     - value: Sunday
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - weekday
     is_a: core field
     slot_uri: MIXS:0000848
     range: weekday_enum
@@ -19290,8 +18363,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - well identification number
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000297
@@ -19311,8 +18382,6 @@ slots:
     examples:
     - value: Northwest
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - wind direction
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000757
@@ -19338,8 +18407,6 @@ slots:
     examples:
     - value: 21 km/h
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - wind speed
     is_a: core field
     slot_uri: MIXS:0000118
     range: QuantityValue
@@ -19358,8 +18425,6 @@ slots:
     examples:
     - value: rupture
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - window condition
     is_a: core field
     slot_uri: MIXS:0000849
     range: window_cond_enum
@@ -19378,8 +18443,6 @@ slots:
     examples:
     - value: curtains
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - window covering
     is_a: core field
     slot_uri: MIXS:0000850
     range: window_cover_enum
@@ -19398,8 +18461,6 @@ slots:
     examples:
     - value: middle
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - window horizontal position
     is_a: core field
     slot_uri: MIXS:0000851
     range: window_horiz_pos_enum
@@ -19418,8 +18479,6 @@ slots:
     examples:
     - value: west
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - window location
     is_a: core field
     slot_uri: MIXS:0000852
     range: window_loc_enum
@@ -19438,8 +18497,6 @@ slots:
     examples:
     - value: wood
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - window material
     is_a: core field
     slot_uri: MIXS:0000853
     range: window_mat_enum
@@ -19458,8 +18515,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - window open frequency
     is_a: core field
     slot_uri: MIXS:0000246
     range: TextValue
@@ -19481,8 +18536,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - window area/size
     is_a: core field
     string_serialization: '{float} {unit} x {float} {unit}'
     slot_uri: MIXS:0000224
@@ -19503,8 +18556,6 @@ slots:
     examples:
     - value: open
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - window status
     is_a: core field
     string_serialization: '[closed|open]'
     slot_uri: MIXS:0000855
@@ -19524,8 +18575,6 @@ slots:
     examples:
     - value: fixed window
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - window type
     is_a: core field
     slot_uri: MIXS:0000856
     range: window_type_enum
@@ -19544,8 +18593,6 @@ slots:
     examples:
     - value: middle
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - window vertical position
     is_a: core field
     slot_uri: MIXS:0000857
     range: window_vert_pos_enum
@@ -19564,8 +18611,6 @@ slots:
     examples:
     - value: no presence of mold visible
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - window signs of water/mold
     is_a: core field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: MIXS:0000854
@@ -19591,8 +18636,6 @@ slots:
     examples:
     - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - xylene
     is_a: core field
     slot_uri: MIXS:0000156
     range: QuantityValue
@@ -19628,10 +18671,6 @@ slots:
         tag: tooltip
         value: The MIxS environmental triad provides context about where a sample
           was collected and what it consists of.
-        annotations:
-          source:
-            tag: source
-            value: https://link.springer.com/protocol/10.1007/978-1-0716-3838-5_20
     description: The MIxS environmental triad provides context about where a sample
       was collected and what it consists of. Its component slots capture the biome
       that the sample was found in, nearby geographical features that might influence
@@ -19880,6 +18919,99 @@ slots:
     description: The type of planned process that the protocol describes.
     from_schema: https://w3id.org/nmdc/nmdc
     range: ProtocolForEnum
+  superseded_by:
+    name: superseded_by
+    description: Links a DataObject or WorkflowExecution record to a newer WorkflowExecution
+      that  supersedes it, marking this record as outdated. The linked WorkflowExecution
+      or resultant DataObjects should be used in favor of this record.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: WorkflowExecution
+  rna_collect_site:
+    name: rna_collect_site
+    description: Provide information on the site your RNA sample was collected from
+    title: RNA collection site
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
+      slot & it's now captured directly in the submission portal schema to support
+      submissions
+    examples:
+    - value: untreated pond water
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 15
+    recommended: true
+  rna_isolate_meth:
+    name: rna_isolate_meth
+    description: Describe the method/protocol/kit used to extract DNA/RNA.
+    title: RNA isolation method
+    examples:
+    - value: phenol/chloroform extraction
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Sample Isolation Method
+    rank: 16
+    recommended: true
+  rna_organisms:
+    name: rna_organisms
+    description: List any organisms known or suspected to grow in co-culture, as well
+      as estimated % of the organism in that culture.
+    title: RNA expected organisms
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
+      slot & it's now captured directly in the submission portal schema to support
+      submissions
+    examples:
+    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
+        (1%)
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 14
+    recommended: true
+  dna_lr_isolate_meth:
+    name: dna_lr_isolate_meth
+    description: Describe the method/protocol/kit used to extract DNA/RNA for long
+      read sequencing.
+    title: DNA isolation method for long read sequencing
+    examples:
+    - value: phenol/chloroform extraction
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Sample Isolation Method
+    rank: 16
+    recommended: true
+  dna_collect_site:
+    name: dna_collect_site
+    description: Provide information on the site your DNA sample was collected from
+    title: DNA collection site
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
+      slot & it's now captured directly in the submission portal schema to support
+      submissions
+    examples:
+    - value: untreated pond water
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 15
+    recommended: true
+  dna_isolate_meth:
+    name: dna_isolate_meth
+    description: Describe the method/protocol/kit used to extract DNA/RNA.
+    title: DNA isolation method
+    examples:
+    - value: phenol/chloroform extraction
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Sample Isolation Method
+    rank: 16
+    recommended: true
+  dna_organisms:
+    name: dna_organisms
+    description: List any organisms known or suspected to grow in co-culture, as well
+      as estimated % of the organism in that culture.
+    title: DNA expected organisms
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
+      slot & it's now captured directly in the submission portal schema to support
+      submissions
+    examples:
+    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
+        (1%)
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 14
+    recommended: true
   emsl_store_temp:
     name: emsl_store_temp
     description: The temperature at which the sample should be stored upon delivery
@@ -19893,8 +19025,7 @@ slots:
     - value: '-80'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 4
-    string_serialization: '{float}'
-    slot_group: EMSL
+    range: float
     recommended: true
   project_id:
     name: project_id
@@ -19902,24 +19033,11 @@ slots:
     title: project ID
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1
-    string_serialization: '{text}'
-    slot_group: EMSL
-    recommended: true
-  replicate_number:
-    name: replicate_number
-    description: If sending biological replicates, indicate the rep number here.
-    title: replicate number
-    comments:
-    - This will guide staff in ensuring your samples are blocked & randomized correctly
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 6
-    string_serialization: '{integer}'
-    slot_group: EMSL
     recommended: true
   sample_shipped:
     name: sample_shipped
-    description: The total amount or size (volume (ml), mass (g) or area (m2) ) of
-      sample sent to EMSL.
+    description: The total amount or size (volume, mass, or area) of sample sent to
+      EMSL.
     title: sample shipped amount
     comments:
     - This field is only required when completing metadata for samples being submitted
@@ -19930,8 +19048,6 @@ slots:
     - value: 5 mL
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 3
-    string_serialization: '{float} {unit}'
-    slot_group: EMSL
     recommended: true
   sample_type:
     name: sample_type
@@ -19943,8 +19059,17 @@ slots:
     - value: water extracted soil
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 2
-    slot_group: EMSL
     range: SampleTypeEnum
+    recommended: true
+  replicate_number:
+    name: replicate_number
+    description: If sending biological replicates, indicate the rep number here.
+    title: replicate number
+    comments:
+    - This will guide staff in ensuring your samples are blocked & randomized correctly
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 6
+    range: integer
     recommended: true
   technical_reps:
     name: technical_reps
@@ -19958,82 +19083,7 @@ slots:
     - value: '2'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 5
-    string_serialization: '{integer}'
-    slot_group: EMSL
-    recommended: true
-  dna_collect_site:
-    name: dna_collect_site
-    description: Provide information on the site your DNA sample was collected from
-    title: DNA collection site
-    examples:
-    - value: untreated pond water
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 15
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_isolate_meth:
-    name: dna_isolate_meth
-    description: Describe the method/protocol/kit used to extract DNA/RNA.
-    title: DNA isolation method
-    examples:
-    - value: phenol/chloroform extraction
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Sample Isolation Method
-    rank: 16
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_organisms:
-    name: dna_organisms
-    description: List any organisms known or suspected to grow in co-culture, as well
-      as estimated % of the organism in that culture.
-    title: DNA expected organisms
-    examples:
-    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-        (1%)
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 14
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  rna_collect_site:
-    name: rna_collect_site
-    description: Provide information on the site your RNA sample was collected from
-    title: RNA collection site
-    examples:
-    - value: untreated pond water
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 15
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_isolate_meth:
-    name: rna_isolate_meth
-    description: Describe the method/protocol/kit used to extract DNA/RNA.
-    title: RNA isolation method
-    examples:
-    - value: phenol/chloroform extraction
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Sample Isolation Method
-    rank: 16
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_organisms:
-    name: rna_organisms
-    description: List any organisms known or suspected to grow in co-culture, as well
-      as estimated % of the organism in that culture.
-    title: RNA expected organisms
-    examples:
-    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-        (1%)
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 14
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
+    range: integer
     recommended: true
   collection_date_inc:
     name: collection_date_inc
@@ -20343,7 +19393,7 @@ slots:
       was grown in links to the plant sample. An original culture sample was transferred
       to a new vial and generated a new sample)'
     examples:
-    - value: IGSN:DSJ0284
+    - value: igsn:DSJ0284
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 5
     string_serialization: '{text}:{text}'
@@ -22394,7 +21444,7 @@ classes:
           IDs enable linking to derived analytes and subsamples. If you have not assigned
           FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
         examples:
-        - value: IGSN:AU1243
+        - value: igsn:AU1243
         - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
     class_uri: nmdc:Biosample
     unique_keys:
@@ -22538,34 +21588,6 @@ classes:
     - metabolite_identified
     - type
     class_uri: nmdc:MetaboliteIdentification
-  ChemicalEntity:
-    name: ChemicalEntity
-    id_prefixes:
-    - CHEBI
-    - MS
-    description: An atom or molecule that can be represented with a chemical formula.
-      Include lipids, glycans, natural products, drugs. There may be different terms
-      for distinct acid-base forms, protonation states. A chemical entity is a  physical
-      entity that pertains to chemistry or biochemistry.
-    deprecated: true; as of Jan 2025, NMDC only needs a handful of chemicals and its
-      use cases can be served via an enumeration rather than supporting a full class.
-    comments:
-    - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode
-      to this class.
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
-    aliases:
-    - metabolite
-    - chemical substance
-    - chemical compound
-    - chemical
-    exact_mappings:
-    - biolink:ChemicalSubstance
-    is_a: OntologyClass
-    slots:
-    - chemical_formula
-    class_uri: nmdc:ChemicalEntity
   GeneProduct:
     name: GeneProduct
     id_prefixes:
@@ -23322,6 +22344,7 @@ classes:
     - url
     - was_generated_by
     - in_manifest
+    - superseded_by
     slot_usage:
       name:
         name: name
@@ -23434,6 +22457,7 @@ classes:
     - version
     - was_informed_by
     - processing_institution_workflow_metadata
+    - superseded_by
     slot_usage:
       started_at_time:
         name: started_at_time
@@ -23541,6 +22565,13 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
           interpolated: true
+      superseded_by:
+        name: superseded_by
+        range: MetagenomeAssembly
+        pattern: ^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
+          interpolated: true
     class_uri: nmdc:MetagenomeAssembly
   MetatranscriptomeAssembly:
     name: MetatranscriptomeAssembly
@@ -23590,6 +22621,13 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
           interpolated: true
+      superseded_by:
+        name: superseded_by
+        range: MetatranscriptomeAssembly
+        pattern: ^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'
+          interpolated: true
     class_uri: nmdc:MetatranscriptomeAssembly
   MetatranscriptomeAnnotation:
     name: MetatranscriptomeAnnotation
@@ -23634,6 +22672,13 @@ classes:
         structured_pattern:
           syntax: ^gold:Ga[0-9]+$
           interpolated: true
+      superseded_by:
+        name: superseded_by
+        range: MetatranscriptomeAnnotation
+        pattern: ^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'
+          interpolated: true
     class_uri: nmdc:MetatranscriptomeAnnotation
   MetatranscriptomeExpressionAnalysis:
     name: MetatranscriptomeExpressionAnalysis
@@ -23660,6 +22705,13 @@ classes:
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      superseded_by:
+        name: superseded_by
+        range: MetatranscriptomeExpressionAnalysis
+        pattern: ^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
     class_uri: nmdc:MetatranscriptomeExpressionAnalysis
   MagsAnalysis:
@@ -23695,6 +22747,13 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
           interpolated: true
+      superseded_by:
+        name: superseded_by
+        range: MagsAnalysis
+        pattern: ^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'
+          interpolated: true
     class_uri: nmdc:MagsAnalysis
   ReadQcAnalysis:
     name: ReadQcAnalysis
@@ -23727,6 +22786,13 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
           interpolated: true
+      superseded_by:
+        name: superseded_by
+        range: ReadQcAnalysis
+        pattern: ^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
+          interpolated: true
     class_uri: nmdc:ReadQcAnalysis
   ReadBasedTaxonomyAnalysis:
     name: ReadBasedTaxonomyAnalysis
@@ -23749,6 +22815,13 @@ classes:
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      superseded_by:
+        name: superseded_by
+        range: ReadBasedTaxonomyAnalysis
+        pattern: ^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
     class_uri: nmdc:ReadBasedTaxonomyAnalysis
   MetabolomicsAnalysis:
@@ -23774,6 +22847,13 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
           interpolated: true
+      superseded_by:
+        name: superseded_by
+        range: MetabolomicsAnalysis
+        pattern: ^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'
+          interpolated: true
     class_uri: nmdc:MetabolomicsAnalysis
   MetaproteomicsAnalysis:
     name: MetaproteomicsAnalysis
@@ -23796,6 +22876,13 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
           interpolated: true
+      superseded_by:
+        name: superseded_by
+        range: MetaproteomicsAnalysis
+        pattern: ^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'
+          interpolated: true
     class_uri: nmdc:MetaproteomicsAnalysis
   NomAnalysis:
     name: NomAnalysis
@@ -23817,6 +22904,13 @@ classes:
         pattern: ^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      superseded_by:
+        name: superseded_by
+        range: NomAnalysis
+        pattern: ^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
     class_uri: nmdc:NomAnalysis
 source_file: src/schema/nmdc.yaml

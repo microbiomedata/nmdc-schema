@@ -6,10 +6,10 @@ class Migrator(MigratorBase):
     Migrates a database between two schemas.
     """
 
-    _from_version = "11.12.2.part_2"
-    _to_version = "11.12.2.part_3"
+    _from_version = "11.13.0.part_2"
+    _to_version = "11.13.0.part_3"
 
-    def upgrade(self) -> None:
+    def upgrade(self, commit_changes: bool = False) -> None:
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
         """
@@ -38,8 +38,7 @@ class Migrator(MigratorBase):
         True
         """
         prefix = "igsn:"
-        igsn_values = []
-        igsn_values = biosample.get("igsn_biosample_identifiers")
+        igsn_values = biosample.get("igsn_biosample_identifiers", [])
         biosample_id = biosample.get("id")
         for record in igsn_values:
             if not record.startswith(prefix):

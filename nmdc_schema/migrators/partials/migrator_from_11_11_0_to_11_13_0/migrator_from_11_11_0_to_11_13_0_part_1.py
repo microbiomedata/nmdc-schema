@@ -13,7 +13,7 @@ class Migrator(MigratorBase):
     '''
 
     _from_version = '11.11.0'
-    _to_version = '11.12.2.part_1'
+    _to_version = '11.13.0.part_1'
 
     def upgrade(self, commit_changes: bool = False) -> None:
         r'''

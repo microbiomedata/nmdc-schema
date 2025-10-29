@@ -1,7 +1,10 @@
-# Use Python 3.9 because that's the Python version listed in `pyproject.toml`.
-FROM python:3.9
+FROM python:3.10
 
 WORKDIR /nmdc-schema
+
+# Install jq.
+RUN apt-get update && \
+    apt-get install -y jq
 
 # Download and install yq.
 # Reference: https://github.com/mikefarah/yq#install
