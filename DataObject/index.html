@@ -355,6 +355,11 @@
 
   DataObject : name
 
+  DataObject : superseded_by
+
+      DataObject --&gt; "0..1" WorkflowExecution : superseded_by
+    click WorkflowExecution href "../WorkflowExecution"
+
   DataObject : type
 
   DataObject : url
@@ -440,6 +445,12 @@
 <td><a href="../in_manifest/">in_manifest</a></td>
 <td>* <br/> <a href="../Manifest/">Manifest</a></td>
 <td>one or more combinations of other DataObjects that can be analyzed together</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../superseded_by/">superseded_by</a></td>
+<td>0..1 <br/> <a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td>Links a DataObject or WorkflowExecution record to a newer WorkflowExecution t...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -718,6 +729,7 @@ slots:
 - url
 - was_generated_by
 - in_manifest
+- superseded_by
 slot_usage:
   name:
     name: name
@@ -909,6 +921,19 @@ attributes:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
       interpolated: true
+  superseded_by:
+    name: superseded_by
+    description: Links a DataObject or WorkflowExecution record to a newer WorkflowExecution
+      that  supersedes it, marking this record as outdated. The linked WorkflowExecution
+      or resultant DataObjects should be used in favor of this record.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: superseded_by
+    owner: DataObject
+    domain_of:
+    - DataObject
+    - WorkflowExecution
+    range: WorkflowExecution
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand

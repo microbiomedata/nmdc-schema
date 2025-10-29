@@ -374,6 +374,11 @@
 
   MetagenomeSequencing : started_at_time
 
+  MetagenomeSequencing : superseded_by
+
+      MetagenomeSequencing --&gt; "0..1" WorkflowExecution : superseded_by
+    click WorkflowExecution href "../WorkflowExecution"
+
   MetagenomeSequencing : type
 
   MetagenomeSequencing : version
@@ -453,6 +458,12 @@
 <td><a href="../processing_institution_workflow_metadata/">processing_institution_workflow_metadata</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Information about how workflow results were generated when the processing is ...</td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+</tr>
+<tr>
+<td><a href="../superseded_by/">superseded_by</a></td>
+<td>0..1 <br/> <a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td>Links a DataObject or WorkflowExecution record to a newer WorkflowExecution t...</td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
@@ -751,6 +762,19 @@ attributes:
     domain_of:
     - WorkflowExecution
     range: string
+  superseded_by:
+    name: superseded_by
+    description: Links a DataObject or WorkflowExecution record to a newer WorkflowExecution
+      that  supersedes it, marking this record as outdated. The linked WorkflowExecution
+      or resultant DataObjects should be used in favor of this record.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: superseded_by
+    owner: MetagenomeSequencing
+    domain_of:
+    - DataObject
+    - WorkflowExecution
+    range: WorkflowExecution
   has_input:
     name: has_input
     description: An input to a process.

@@ -250,6 +250,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+<span class="md-ellipsis">
+      Usages
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#comments">
 <span class="md-ellipsis">
       Comments
@@ -436,6 +443,11 @@
   MetagenomeAssembly : start_date
 
   MetagenomeAssembly : started_at_time
+
+  MetagenomeAssembly : superseded_by
+
+      MetagenomeAssembly --&gt; "0..1" MetagenomeAssembly : superseded_by
+    click MetagenomeAssembly href "../MetagenomeAssembly"
 
   MetagenomeAssembly : type
 
@@ -687,6 +699,12 @@
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
+<td><a href="../superseded_by/">superseded_by</a></td>
+<td>0..1 <br/> <a href="./">MetagenomeAssembly</a></td>
+<td>Links a DataObject or WorkflowExecution record to a newer WorkflowExecution t...</td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+</tr>
+<tr>
 <td><a href="../has_input/">has_input</a></td>
 <td>1..* <br/> <a href="../DataObject/">DataObject</a></td>
 <td>An input to a process</td>
@@ -772,6 +790,25 @@
 </tr>
 </tbody>
 </table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="./">MetagenomeAssembly</a></td>
+<td><a href="../superseded_by/">superseded_by</a></td>
+<td>range</td>
+<td><a href="./">MetagenomeAssembly</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="comments">Comments</h2>
 <ul>
 <li>instances of this class may use a de novo assembly strategy in most or all cases relevant to NMDC</li>
@@ -850,6 +887,12 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
       interpolated: true
+  superseded_by:
+    name: superseded_by
+    range: MetagenomeAssembly
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
+      interpolated: true
 class_uri: nmdc:MetagenomeAssembly
 
 </code></pre>
@@ -876,6 +919,12 @@ slot_usage:
     range: NucleotideSequencing
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  superseded_by:
+    name: superseded_by
+    range: MetagenomeAssembly
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
 attributes:
   asm_score:
@@ -1354,6 +1403,22 @@ attributes:
     domain_of:
     - WorkflowExecution
     range: string
+  superseded_by:
+    name: superseded_by
+    description: Links a DataObject or WorkflowExecution record to a newer WorkflowExecution
+      that  supersedes it, marking this record as outdated. The linked WorkflowExecution
+      or resultant DataObjects should be used in favor of this record.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: superseded_by
+    owner: MetagenomeAssembly
+    domain_of:
+    - DataObject
+    - WorkflowExecution
+    range: MetagenomeAssembly
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
+      interpolated: true
   has_input:
     name: has_input
     description: An input to a process.

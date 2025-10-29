@@ -250,6 +250,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+<span class="md-ellipsis">
+      Usages
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -386,6 +393,11 @@
 
   ReadQcAnalysis : started_at_time
 
+  ReadQcAnalysis : superseded_by
+
+      ReadQcAnalysis --&gt; "0..1" ReadQcAnalysis : superseded_by
+    click ReadQcAnalysis href "../ReadQcAnalysis"
+
   ReadQcAnalysis : type
 
   ReadQcAnalysis : version
@@ -504,6 +516,12 @@
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
+<td><a href="../superseded_by/">superseded_by</a></td>
+<td>0..1 <br/> <a href="./">ReadQcAnalysis</a></td>
+<td>Links a DataObject or WorkflowExecution record to a newer WorkflowExecution t...</td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+</tr>
+<tr>
 <td><a href="../has_input/">has_input</a></td>
 <td>1..* <br/> <a href="../DataObject/">DataObject</a></td>
 <td>An input to a process</td>
@@ -589,6 +607,25 @@
 </tr>
 </tbody>
 </table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="./">ReadQcAnalysis</a></td>
+<td><a href="../superseded_by/">superseded_by</a></td>
+<td>range</td>
+<td><a href="./">ReadQcAnalysis</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -640,6 +677,12 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
       interpolated: true
+  superseded_by:
+    name: superseded_by
+    range: ReadQcAnalysis
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
+      interpolated: true
 class_uri: nmdc:ReadQcAnalysis
 
 </code></pre>
@@ -665,6 +708,12 @@ slot_usage:
     range: NucleotideSequencing
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  superseded_by:
+    name: superseded_by
+    range: ReadQcAnalysis
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
 attributes:
   input_base_count:
@@ -850,6 +899,22 @@ attributes:
     domain_of:
     - WorkflowExecution
     range: string
+  superseded_by:
+    name: superseded_by
+    description: Links a DataObject or WorkflowExecution record to a newer WorkflowExecution
+      that  supersedes it, marking this record as outdated. The linked WorkflowExecution
+      or resultant DataObjects should be used in favor of this record.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: superseded_by
+    owner: ReadQcAnalysis
+    domain_of:
+    - DataObject
+    - WorkflowExecution
+    range: ReadQcAnalysis
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
+      interpolated: true
   has_input:
     name: has_input
     description: An input to a process.

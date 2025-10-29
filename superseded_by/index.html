@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/is_root/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/superseded_by/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: is_root - NMDC Schema Documentation</title>
+        <title>Slot: superseded_by - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-is_root" class="md-skip">
+        <a href="#slot-superseded_by" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: is_root
+              Slot: superseded_by
             
           </span>
         </div>
@@ -598,9 +598,9 @@
   
 
 
-<h1 id="slot-is_root">Slot: is_root</h1>
-<p><em>A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.</em></p>
-<p>URI: <a href="https://w3id.org/nmdc/is_root">nmdc:is_root</a></p>
+<h1 id="slot-superseded_by">Slot: superseded_by</h1>
+<p><em>Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.</em></p>
+<p>URI: <a href="https://w3id.org/nmdc/superseded_by">nmdc:superseded_by</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -614,40 +614,85 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../EnvironmentalMaterialTerm/">EnvironmentalMaterialTerm</a></td>
+<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
+<td>Initial sequencing activity that precedes any analysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
+<td>A workflow execution activity that uses computational binning tools to group ...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td>A workflow execution activity that provides functional and structural annotat...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
 <td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
+<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
+<td>A workflow process that provides expression values and read counts for gene f...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
+<td>A WorkflowExecution whose output indicates the potential functions of genes o...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>An atom or molecule that can be represented with a chemical formula</td>
+<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../NomAnalysis/">NomAnalysis</a></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td>Represents an instance of an execution of a particular workflow</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../FunctionalAnnotationTerm/">FunctionalAnnotationTerm</a></td>
-<td>Abstract grouping class for any term/descriptor that can be applied to a func...</td>
+<td><a href="../ReadQcAnalysis/">ReadQcAnalysis</a></td>
+<td>A workflow execution activity that performs quality control on raw Illumina r...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../DataObject/">DataObject</a></td>
+<td>An object that primarily consists of symbols that represent information</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OrthologyGroup/">OrthologyGroup</a></td>
-<td>A set of genes or gene products in which all members are orthologous</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OntologyClass/">OntologyClass</a></td>
-<td>A representation of class defined in an external ontology</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Pathway/">Pathway</a></td>
-<td>A pathway is a sequence of steps/reactions carried out by an organism or comm...</td>
-<td>no</td>
+<td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
+<td>A workflow execution activity that performs taxonomy classification using seq...</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Boolean/">Boolean</a></li>
+<li>Range: <a href="../WorkflowExecution/">WorkflowExecution</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -672,15 +717,17 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: is_root
-description: A boolean value indicating whether the ontology term is a root term;
-  it is not a subclass of  any other term.
+<pre><code class="language-yaml">name: superseded_by
+description: Links a DataObject or WorkflowExecution record to a newer WorkflowExecution
+  that  supersedes it, marking this record as outdated. The linked WorkflowExecution
+  or resultant DataObjects should be used in favor of this record.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-alias: is_root
+alias: superseded_by
 domain_of:
-- OntologyClass
-range: boolean
+- DataObject
+- WorkflowExecution
+range: WorkflowExecution
 
 </code></pre>
 
