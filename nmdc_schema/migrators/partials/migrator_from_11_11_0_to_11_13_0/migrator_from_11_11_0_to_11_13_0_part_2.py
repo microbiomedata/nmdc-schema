@@ -15,8 +15,8 @@ class Migrator(MigratorBase):
     r"""A check-only migrator that raises an exception if any QuantityValue's has_unit slot
     is not valid against the slot's storage_unit or UnitEnum constraints."""
 
-    _from_version = '11.12.2.part_1'
-    _to_version = '11.12.2.part_2'
+    _from_version = '11.13.0.part_1'
+    _to_version = '11.13.0.part_2'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
