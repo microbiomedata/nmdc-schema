@@ -1690,6 +1690,18 @@ class FileTypeEnum(str, Enum):
     """
     Centrifuge output read classification file
     """
+    SingleM_Taxonomic_Classification = "SingleM Taxonomic Classification"
+    """
+    SingleM taxonomic classification file
+    """
+    SingleM_Krona_Plot = "SingleM Krona Plot"
+    """
+    SingleM krona plot HTML file
+    """
+    SingleM_Clustered_Report = "SingleM Clustered Report"
+    """
+    SingleM taxonomic classification results, clustered by OTU
+    """
     Structural_Annotation_GFF = "Structural Annotation GFF"
     """
     GFF3 format file with structural annotations
@@ -3187,6 +3199,7 @@ class InstrumentModelEnum(str, Enum):
     orbitrap_eclipse_tribid = "orbitrap_eclipse_tribid"
     orbitrap_q_exactive = "orbitrap_q_exactive"
     orbitrap_iqx_tribrid = "orbitrap_iqx_tribrid"
+    orbitrap_exploris_120 = "orbitrap_exploris_120"
     solarix_7T = "solarix_7T"
     solarix_12T = "solarix_12T"
     solarix_15T = "solarix_15T"
@@ -4443,7 +4456,7 @@ class ControlledTermValue(AttributeValue):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'todos': ['add fields for ontology, branch']})
 
-    term: Optional[Union[OntologyClass,EnvironmentalMaterialTerm,ChemicalEntity,FunctionalAnnotationTerm,Pathway,OrthologyGroup]] = Field(default=None, description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'alias': 'term', 'domain_of': ['ControlledTermValue']} })
+    term: Optional[Union[OntologyClass,EnvironmentalMaterialTerm,FunctionalAnnotationTerm,Pathway,OrthologyGroup]] = Field(default=None, description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'alias': 'term', 'domain_of': ['ControlledTermValue']} })
     has_raw_value: Optional[str] = Field(default=None, description="""The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"""", json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value', 'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/ControlledTermValue","nmdc:ControlledTermValue"] = Field(default="nmdc:ControlledTermValue", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'designates_type': True,
@@ -4482,7 +4495,7 @@ class ControlledIdentifiedTermValue(ControlledTermValue):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'term': {'name': 'term', 'required': True}}})
 
-    term: Union[OntologyClass,EnvironmentalMaterialTerm,ChemicalEntity,FunctionalAnnotationTerm,Pathway,OrthologyGroup] = Field(default=..., description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'alias': 'term', 'domain_of': ['ControlledTermValue']} })
+    term: Union[OntologyClass,EnvironmentalMaterialTerm,FunctionalAnnotationTerm,Pathway,OrthologyGroup] = Field(default=..., description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'alias': 'term', 'domain_of': ['ControlledTermValue']} })
     has_raw_value: Optional[str] = Field(default=None, description="""The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"""", json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value', 'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/ControlledIdentifiedTermValue","nmdc:ControlledIdentifiedTermValue"] = Field(default="nmdc:ControlledIdentifiedTermValue", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'designates_type': True,
@@ -5022,111 +5035,6 @@ class EnvironmentalMaterialTerm(OntologyClass):
     alternative_identifiers: Optional[list[str]] = Field(default=None, description="""A list of alternative identifiers for the entity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_identifiers',
          'domain_of': ['MetaboliteIdentification', 'NamedThing']} })
     type: Literal["https://w3id.org/nmdc/EnvironmentalMaterialTerm","nmdc:EnvironmentalMaterialTerm"] = Field(default="nmdc:EnvironmentalMaterialTerm", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'designates_type': True,
-         'domain_of': ['EukEval',
-                       'FunctionalAnnotationAggMember',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance',
-                       'MagBin',
-                       'MetaboliteIdentification',
-                       'GenomeFeature',
-                       'FunctionalAnnotation',
-                       'AttributeValue',
-                       'NamedThing',
-                       'OntologyRelation',
-                       'FailureCategorization',
-                       'Protocol',
-                       'CreditAssociation',
-                       'Doi'],
-         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['makes it easier to read example data files',
-                   'required for polymorphic MongoDB collections'],
-         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type',
-         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                                             'literal_form': 'workflow_execution_class',
-                                                             'predicate': 'NARROW_SYNONYM'}}} })
-
-    @field_validator('id')
-    def pattern_id(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('alternative_identifiers')
-    def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-
-class ChemicalEntity(OntologyClass):
-    """
-    An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a  physical entity that pertains to chemistry or biochemistry.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['metabolite',
-                     'chemical substance',
-                     'chemical compound',
-                     'chemical'],
-         'class_uri': 'nmdc:ChemicalEntity',
-         'comments': ['As with the parent OntologyClass, we will not assign an nmdc id '
-                      'pattern or typecode to this class.'],
-         'deprecated': 'true; as of Jan 2025, NMDC only needs a handful of chemicals '
-                       'and its use cases can be served via an enumeration rather than '
-                       'supporting a full class.',
-         'exact_mappings': ['biolink:ChemicalSubstance'],
-         'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'id_prefixes': ['CHEBI', 'MS'],
-         'see_also': ['https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html']})
-
-    chemical_formula: Optional[str] = Field(default=None, description="""A generic grouping for molecular formulae and empirical formulae""", json_schema_extra = { "linkml_meta": {'alias': 'chemical_formula', 'domain_of': ['ChemicalEntity']} })
-    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
-         'domain_of': ['Biosample', 'OntologyClass', 'Study'],
-         'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
-    relations: Optional[list[OntologyRelation]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
-    definition: Optional[str] = Field(default=None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
-    is_obsolete: Optional[bool] = Field(default=None, description="""A boolean value indicating whether the ontology term is obsolete.""", json_schema_extra = { "linkml_meta": {'alias': 'is_obsolete',
-         'comments': ['If true (the ontology term is declared obsolete via the '
-                      'ontology source itself),  the term is no longer considered a '
-                      'valid term to use in an annotation at NMDC, and it no longer '
-                      'has ontology_relation_set records.'],
-         'domain_of': ['OntologyClass']} })
-    is_root: Optional[bool] = Field(default=None, description="""A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.""", json_schema_extra = { "linkml_meta": {'alias': 'is_root', 'domain_of': ['OntologyClass']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['NamedThing'],
-         'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
-                       'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
-         'notes': ["The identifiers for terms from external ontologies can't have "
-                   'their ids constrained to the nmdc namespace'],
-         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                                   'literal_form': 'data_object_id',
-                                                   'predicate': 'NARROW_SYNONYM'},
-                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                                          'literal_form': 'workflow_execution_id',
-                                                          'predicate': 'NARROW_SYNONYM'}}} })
-    name: Optional[str] = Field(default=None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
-    description: Optional[str] = Field(default=None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['ImageValue', 'NamedThing', 'Protocol'],
-         'slot_uri': 'dcterms:description'} })
-    alternative_identifiers: Optional[list[str]] = Field(default=None, description="""A list of alternative identifiers for the entity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_identifiers',
-         'domain_of': ['MetaboliteIdentification', 'NamedThing']} })
-    type: Literal["https://w3id.org/nmdc/ChemicalEntity","nmdc:ChemicalEntity"] = Field(default="nmdc:ChemicalEntity", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
@@ -6075,7 +5983,7 @@ class Biosample(Sample):
                                           'description': 'A globally unique identifier '
                                                          'assigned to the biological '
                                                          'sample.',
-                                          'examples': [{'value': 'IGSN:AU1243'},
+                                          'examples': [{'value': 'igsn:AU1243'},
                                                        {'value': 'UUID:24f1467a-40f4-11ed-b878-0242ac120002'}],
                                           'name': 'source_mat_id',
                                           'title': 'source material identifier',
@@ -6187,7 +6095,6 @@ class Biosample(Sample):
                    'SubmissionMetadata?',
                    'applying to a Study may not be granular enough']} })
     host_disease_stat: Optional[TextValue] = Field(default=None, title="host disease status", description="""List of diseases with which the host has been diagnosed; can include multiple diagnoses. The value of the field depends on host; for humans the terms should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org, non-human host diseases are free text""", json_schema_extra = { "linkml_meta": {'alias': 'host_disease_stat',
-         'aliases': ['host disease status'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'disease name or Disease Ontology '
                                                      'term'}},
@@ -6249,7 +6156,6 @@ class Biosample(Sample):
          'is_a': 'biosample_identifiers',
          'mixins': ['igsn_identifiers']} })
     abs_air_humidity: Optional[QuantityValue] = Field(default=None, title="absolute air humidity", description="""Actual mass of water vapor - mh20 - present in the air water vapor mixture""", json_schema_extra = { "linkml_meta": {'alias': 'abs_air_humidity',
-         'aliases': ['absolute air humidity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6263,7 +6169,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000122'} })
     add_recov_method: Optional[TextValue] = Field(default=None, title="secondary and tertiary recovery methods and start date", description="""Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for increase of hydrocarbon recovery from resource and start date for each one of them. If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'add_recov_method',
-         'aliases': ['secondary and tertiary recovery methods and start date'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration;timestamp'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6272,7 +6177,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001009'} })
     additional_info: Optional[TextValue] = Field(default=None, title="additional info", description="""Information that doesn't fit anywhere else. Can also be used to propose new entries for fields with controlled vocabulary""", json_schema_extra = { "linkml_meta": {'alias': 'additional_info',
-         'aliases': ['additional info'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'text'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -6281,7 +6185,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000300',
          'string_serialization': '{text}'} })
     address: Optional[TextValue] = Field(default=None, title="address", description="""The street name and building number where the sampling occurred.""", json_schema_extra = { "linkml_meta": {'alias': 'address',
-         'aliases': ['address'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -6290,7 +6193,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000218',
          'string_serialization': '{integer}{text}'} })
     adj_room: Optional[TextValue] = Field(default=None, title="adjacent rooms", description="""List of rooms (room number, room name) immediately adjacent to the sampling room""", json_schema_extra = { "linkml_meta": {'alias': 'adj_room',
-         'aliases': ['adjacent rooms'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'room name;room number'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6300,7 +6202,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000219',
          'string_serialization': '{text};{integer}'} })
     aero_struc: Optional[TextValue] = Field(default=None, title="aerospace structure", description="""Aerospace structures typically consist of thin plates with stiffeners for the external surfaces, bulkheads and frames to support the shape and fasteners such as welds, rivets, screws and bolts to hold the components together""", json_schema_extra = { "linkml_meta": {'alias': 'aero_struc',
-         'aliases': ['aerospace structure'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6310,7 +6211,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000773',
          'string_serialization': '[plane|glider]'} })
     agrochem_addition: Optional[list[TextValue]] = Field(default=None, title="history/agrochemical additions", description="""Addition of fertilizers, pesticides, etc. - amount and time of applications""", json_schema_extra = { "linkml_meta": {'alias': 'agrochem_addition',
-         'aliases': ['history/agrochemical additions'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'agrochemical name;agrochemical '
                                                      'amount;timestamp'},
@@ -6324,7 +6224,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000639',
          'string_serialization': '{text};{float} {unit};{timestamp}'} })
     air_PM_concen: Optional[list[TextValue]] = Field(default=None, title="air particulate matter concentration", description="""Concentration of substances that remain suspended in the air, and comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can report multiple PM's by entering numeric values preceded by name of PM""", json_schema_extra = { "linkml_meta": {'alias': 'air_PM_concen',
-         'aliases': ['air particulate matter concentration'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'particulate matter '
                                                      'name;measurement value'},
@@ -6337,7 +6236,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000108',
          'string_serialization': '{text};{float} {unit}'} })
     air_temp: Optional[QuantityValue] = Field(default=None, title="air temperature", description="""Temperature of the air at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'air_temp',
-         'aliases': ['air temperature'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6349,7 +6247,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000124'} })
     air_temp_regm: Optional[list[TextValue]] = Field(default=None, title="air temperature regimen", description="""Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens""", json_schema_extra = { "linkml_meta": {'alias': 'air_temp_regm',
-         'aliases': ['air temperature regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'temperature value;treatment '
                                                      'interval and duration'},
@@ -6362,7 +6259,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000551',
          'string_serialization': '{float} {unit};{Rn/start_time/end_time/duration}'} })
     al_sat: Optional[QuantityValue] = Field(default=None, title="aluminum saturation/ extreme unusual properties", description="""The relative abundance of aluminum in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'al_sat',
-         'aliases': ['extreme_unusual_properties/Al saturation'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6382,7 +6278,6 @@ class Biosample(Sample):
                    "change. Thoughts? I would argue this isn't an extreme unusual "
                    "property. It's just a biogeochemical measurement."]} })
     al_sat_meth: Optional[TextValue] = Field(default=None, title="aluminum saturation method/ extreme unusual properties", description="""Reference or method used in determining Aluminum saturation""", json_schema_extra = { "linkml_meta": {'alias': 'al_sat_meth',
-         'aliases': ['extreme_unusual_properties/Al saturation method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or URL'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6395,7 +6290,6 @@ class Biosample(Sample):
          'todos': ["I think it's weird the way GSC writes the title. I recommend this "
                    'change. Thoughts?']} })
     alkalinity: Optional[QuantityValue] = Field(default=None, title="alkalinity", description="""Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate""", json_schema_extra = { "linkml_meta": {'alias': 'alkalinity',
-         'aliases': ['alkalinity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6409,7 +6303,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000421'} })
     alkalinity_method: Optional[TextValue] = Field(default=None, title="alkalinity method", description="""Method used for alkalinity measurement""", json_schema_extra = { "linkml_meta": {'alias': 'alkalinity_method',
-         'aliases': ['alkalinity method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'description of method'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6419,7 +6312,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000298',
          'string_serialization': '{text}'} })
     alkyl_diethers: Optional[QuantityValue] = Field(default=None, title="alkyl diethers", description="""Concentration of alkyl diethers""", json_schema_extra = { "linkml_meta": {'alias': 'alkyl_diethers',
-         'aliases': ['alkyl diethers'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6431,7 +6323,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000490'} })
     alt: Optional[QuantityValue] = Field(default=None, title="altitude", description="""Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air""", json_schema_extra = { "linkml_meta": {'alias': 'alt',
-         'aliases': ['altitude'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'storage_units': {'tag': 'storage_units', 'value': 'm'}},
@@ -6440,7 +6331,6 @@ class Biosample(Sample):
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000094'} })
     aminopept_act: Optional[QuantityValue] = Field(default=None, title="aminopeptidase activity", description="""Measurement of aminopeptidase activity""", json_schema_extra = { "linkml_meta": {'alias': 'aminopept_act',
-         'aliases': ['aminopeptidase activity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6452,7 +6342,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000172'} })
     ammonium: Optional[QuantityValue] = Field(default=None, title="ammonium", description="""Concentration of ammonium in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'ammonium',
-         'aliases': ['ammonium'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6466,7 +6355,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000427'} })
     amount_light: Optional[QuantityValue] = Field(default=None, title="amount of light", description="""The unit of illuminance and luminous emittance, measuring luminous flux per unit area""", json_schema_extra = { "linkml_meta": {'alias': 'amount_light',
-         'aliases': ['amount of light'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6479,7 +6367,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000140'} })
     ances_data: Optional[TextValue] = Field(default=None, title="ancestral data", description="""Information about either pedigree or other ancestral information description (e.g. parental variety in case of mutant or selection), e.g. A/3*B (meaning [(A x B) x B] x B)""", json_schema_extra = { "linkml_meta": {'alias': 'ances_data',
-         'aliases': ['ancestral data'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'free text'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6489,7 +6376,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000247',
          'string_serialization': '{text}'} })
     annual_precpt: Optional[QuantityValue] = Field(default=None, title="mean annual precipitation", description="""The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.""", json_schema_extra = { "linkml_meta": {'alias': 'annual_precpt',
-         'aliases': ['mean annual precipitation'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6501,7 +6387,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000644'} })
     annual_temp: Optional[QuantityValue] = Field(default=None, title="mean annual temperature", description="""Mean annual temperature""", json_schema_extra = { "linkml_meta": {'alias': 'annual_temp',
-         'aliases': ['mean annual temperature'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6513,7 +6398,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000642'} })
     antibiotic_regm: Optional[list[TextValue]] = Field(default=None, title="antibiotic regimen", description="""Information about treatment involving antibiotic administration; should include the name of antibiotic, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple antibiotic regimens""", json_schema_extra = { "linkml_meta": {'alias': 'antibiotic_regm',
-         'aliases': ['antibiotic regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'antibiotic name;antibiotic '
                                                      'amount;treatment interval and '
@@ -6529,7 +6413,6 @@ class Biosample(Sample):
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
     api: Optional[QuantityValue] = Field(default=None, title="API gravity", description="""API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity) (e.g. 31.1¬∞ API)""", json_schema_extra = { "linkml_meta": {'alias': 'api',
-         'aliases': ['API gravity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6542,7 +6425,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000157'} })
     arch_struc: Optional[ArchStrucEnum] = Field(default=None, title="architectural structure", description="""An architectural structure is a human-made, free-standing, immobile outdoor construction""", json_schema_extra = { "linkml_meta": {'alias': 'arch_struc',
-         'aliases': ['architectural structure'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6551,7 +6433,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000774'} })
     aromatics_pc: Optional[TextValue] = Field(default=None, title="aromatics wt%", description="""Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)""", json_schema_extra = { "linkml_meta": {'alias': 'aromatics_pc',
-         'aliases': ['aromatics wt%'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6563,7 +6444,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000133',
          'string_serialization': '{text};{float} {unit}'} })
     asphaltenes_pc: Optional[TextValue] = Field(default=None, title="asphaltenes wt%", description="""Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)""", json_schema_extra = { "linkml_meta": {'alias': 'asphaltenes_pc',
-         'aliases': ['asphaltenes wt%'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6575,7 +6455,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000135',
          'string_serialization': '{text};{float} {unit}'} })
     atmospheric_data: Optional[list[TextValue]] = Field(default=None, title="atmospheric data", description="""Measurement of atmospheric data; can include multiple data""", json_schema_extra = { "linkml_meta": {'alias': 'atmospheric_data',
-         'aliases': ['atmospheric data'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'atmospheric data '
                                                      'name;measurement value'},
@@ -6586,7 +6465,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001097',
          'string_serialization': '{text};{float} {unit}'} })
     avg_dew_point: Optional[QuantityValue] = Field(default=None, title="average dew point", description="""The average of dew point measures taken at the beginning of every hour over a 24 hour period on the sampling day""", json_schema_extra = { "linkml_meta": {'alias': 'avg_dew_point',
-         'aliases': ['average dew point'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6598,7 +6476,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000141'} })
     avg_occup: Optional[TextValue] = Field(default=None, title="average daily occupancy", description="""Daily average occupancy of room. Indicate the number of person(s) daily occupying the sampling room.""", json_schema_extra = { "linkml_meta": {'alias': 'avg_occup',
-         'aliases': ['average daily occupancy'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -6606,7 +6483,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000775'} })
     avg_temp: Optional[QuantityValue] = Field(default=None, title="average temperature", description="""The average of temperatures taken at the beginning of every hour over a 24 hour period on the sampling day""", json_schema_extra = { "linkml_meta": {'alias': 'avg_temp',
-         'aliases': ['average temperature'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6618,7 +6494,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000142'} })
     bac_prod: Optional[QuantityValue] = Field(default=None, title="bacterial production", description="""Bacterial production in the water column measured by isotope uptake""", json_schema_extra = { "linkml_meta": {'alias': 'bac_prod',
-         'aliases': ['bacterial production'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6631,7 +6506,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000683'} })
     bac_resp: Optional[QuantityValue] = Field(default=None, title="bacterial respiration", description="""Measurement of bacterial respiration in the water column""", json_schema_extra = { "linkml_meta": {'alias': 'bac_resp',
-         'aliases': ['bacterial respiration'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6646,7 +6520,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000684'} })
     bacteria_carb_prod: Optional[QuantityValue] = Field(default=None, title="bacterial carbon production", description="""Measurement of bacterial carbon production""", json_schema_extra = { "linkml_meta": {'alias': 'bacteria_carb_prod',
-         'aliases': ['bacterial carbon production'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6658,7 +6531,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000173'} })
     barometric_press: Optional[QuantityValue] = Field(default=None, title="barometric pressure", description="""Force per unit area exerted against a surface by the weight of air above that surface""", json_schema_extra = { "linkml_meta": {'alias': 'barometric_press',
-         'aliases': ['barometric pressure'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6670,7 +6542,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000096'} })
     basin: Optional[TextValue] = Field(default=None, title="basin name", description="""Name of the basin (e.g. Campos)""", json_schema_extra = { "linkml_meta": {'alias': 'basin',
-         'aliases': ['basin name'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -6679,7 +6550,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000290',
          'string_serialization': '{text}'} })
     bathroom_count: Optional[TextValue] = Field(default=None, title="bathroom count", description="""The number of bathrooms in the building""", json_schema_extra = { "linkml_meta": {'alias': 'bathroom_count',
-         'aliases': ['bathroom count'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -6687,7 +6557,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000776'} })
     bedroom_count: Optional[TextValue] = Field(default=None, title="bedroom count", description="""The number of bedrooms in the building""", json_schema_extra = { "linkml_meta": {'alias': 'bedroom_count',
-         'aliases': ['bedroom count'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -6695,7 +6564,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000777'} })
     benzene: Optional[QuantityValue] = Field(default=None, title="benzene", description="""Concentration of benzene in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'benzene',
-         'aliases': ['benzene'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6709,7 +6577,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000153'} })
     biochem_oxygen_dem: Optional[QuantityValue] = Field(default=None, title="biochemical oxygen demand", description="""Amount of dissolved oxygen needed by aerobic biological organisms in a body of water to break down organic material present in a given water sample at certain temperature over a specific time period""", json_schema_extra = { "linkml_meta": {'alias': 'biochem_oxygen_dem',
-         'aliases': ['biochemical oxygen demand'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6721,7 +6588,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000653'} })
     biocide: Optional[TextValue] = Field(default=None, title="biocide administration", description="""List of biocides (commercial name of product and supplier) and date of administration""", json_schema_extra = { "linkml_meta": {'alias': 'biocide',
-         'aliases': ['biocide administration'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'name;name;timestamp'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6731,7 +6597,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001011',
          'string_serialization': '{text};{text};{timestamp}'} })
     biocide_admin_method: Optional[TextValue] = Field(default=None, title="biocide administration method", description="""Method of biocide administration (dose, frequency, duration, time elapsed between last biociding and sampling) (e.g. 150 mg/l; weekly; 4 hr; 3 days)""", json_schema_extra = { "linkml_meta": {'alias': 'biocide_admin_method',
-         'aliases': ['biocide administration method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement '
                                                      'value;frequency;duration;duration'},
@@ -6745,7 +6610,6 @@ class Biosample(Sample):
          'string_serialization': '{float} '
                                  '{unit};{Rn/start_time/end_time/duration};{duration}'} })
     biol_stat: Optional[BiolStatEnum] = Field(default=None, title="biological status", description="""The level of genome modification.""", json_schema_extra = { "linkml_meta": {'alias': 'biol_stat',
-         'aliases': ['biological status'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6754,7 +6618,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000858'} })
     biomass: Optional[list[TextValue]] = Field(default=None, title="biomass", description="""Amount of biomass; should include the name for the part of biomass measured, e.g. Microbial, total. Can include multiple measurements""", json_schema_extra = { "linkml_meta": {'alias': 'biomass',
-         'aliases': ['biomass'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'biomass type;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
@@ -6766,7 +6629,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000174',
          'string_serialization': '{text};{float} {unit}'} })
     biotic_regm: Optional[TextValue] = Field(default=None, title="biotic regimen", description="""Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.""", json_schema_extra = { "linkml_meta": {'alias': 'biotic_regm',
-         'aliases': ['biotic regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'free text'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6776,7 +6638,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001038',
          'string_serialization': '{text}'} })
     biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'alias': 'biotic_relationship',
-         'aliases': ['observed biotic relationship'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'}},
          'domain_of': ['Biosample'],
@@ -6784,7 +6645,6 @@ class Biosample(Sample):
          'is_a': 'nucleic acid sequence source field',
          'slot_uri': 'MIXS:0000028'} })
     bishomohopanol: Optional[QuantityValue] = Field(default=None, title="bishomohopanol", description="""Concentration of bishomohopanol""", json_schema_extra = { "linkml_meta": {'alias': 'bishomohopanol',
-         'aliases': ['bishomohopanol'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6798,7 +6658,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000175'} })
     blood_press_diast: Optional[QuantityValue] = Field(default=None, title="host blood pressure diastolic", description="""Resting diastolic blood pressure, measured as mm mercury""", json_schema_extra = { "linkml_meta": {'alias': 'blood_press_diast',
-         'aliases': ['host blood pressure diastolic'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6810,7 +6669,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000258'} })
     blood_press_syst: Optional[QuantityValue] = Field(default=None, title="host blood pressure systolic", description="""Resting systolic blood pressure, measured as mm mercury""", json_schema_extra = { "linkml_meta": {'alias': 'blood_press_syst',
-         'aliases': ['host blood pressure systolic'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6822,7 +6680,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000259'} })
     bromide: Optional[QuantityValue] = Field(default=None, title="bromide", description="""Concentration of bromide""", json_schema_extra = { "linkml_meta": {'alias': 'bromide',
-         'aliases': ['bromide'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6834,7 +6691,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000176'} })
     build_docs: Optional[BuildDocsEnum] = Field(default=None, title="design, construction, and operation documents", description="""The building design, construction and operation documents""", json_schema_extra = { "linkml_meta": {'alias': 'build_docs',
-         'aliases': ['design, construction, and operation documents'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6843,7 +6699,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000787'} })
     build_occup_type: Optional[list[BuildOccupTypeEnum]] = Field(default=None, title="building occupancy type", description="""The primary function for which a building or discrete part of a building is intended to be used""", json_schema_extra = { "linkml_meta": {'alias': 'build_occup_type',
-         'aliases': ['building occupancy type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -6852,7 +6707,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000761'} })
     building_setting: Optional[BuildingSettingEnum] = Field(default=None, title="building setting", description="""A location (geography) where a building is set""", json_schema_extra = { "linkml_meta": {'alias': 'building_setting',
-         'aliases': ['building setting'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6861,7 +6715,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000768'} })
     built_struc_age: Optional[QuantityValue] = Field(default=None, title="built structure age", description="""The age of the built structure since construction""", json_schema_extra = { "linkml_meta": {'alias': 'built_struc_age',
-         'aliases': ['built structure age'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit', 'value': 'year'},
@@ -6871,7 +6724,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000145'} })
     built_struc_set: Optional[TextValue] = Field(default=None, title="built structure setting", description="""The characterization of the location of the built structure as high or low human density""", json_schema_extra = { "linkml_meta": {'alias': 'built_struc_set',
-         'aliases': ['built structure setting'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6881,7 +6733,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000778',
          'string_serialization': '[urban|rural]'} })
     built_struc_type: Optional[TextValue] = Field(default=None, title="built structure type", description="""A physical structure that is a body or assemblage of bodies in space to form a system capable of supporting loads""", json_schema_extra = { "linkml_meta": {'alias': 'built_struc_type',
-         'aliases': ['built structure type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'free text'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6891,7 +6742,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000721',
          'string_serialization': '{text}'} })
     calcium: Optional[QuantityValue] = Field(default=None, title="calcium", description="""Concentration of calcium in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'calcium',
-         'aliases': ['calcium'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6905,7 +6755,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000432'} })
     carb_dioxide: Optional[QuantityValue] = Field(default=None, title="carbon dioxide", description="""Carbon dioxide (gas) amount or concentration at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'carb_dioxide',
-         'aliases': ['carbon dioxide'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6919,7 +6768,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000097'} })
     carb_monoxide: Optional[QuantityValue] = Field(default=None, title="carbon monoxide", description="""Carbon monoxide (gas) amount or concentration at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'carb_monoxide',
-         'aliases': ['carbon monoxide'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6933,7 +6781,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000098'} })
     carb_nitro_ratio: Optional[QuantityValue] = Field(default=None, title="carbon/nitrogen ratio", description="""Ratio of amount or concentrations of carbon to nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'carb_nitro_ratio',
-         'aliases': ['carbon/nitrogen ratio'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6943,7 +6790,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000310'} })
     ceil_area: Optional[QuantityValue] = Field(default=None, title="ceiling area", description="""The area of the ceiling space within the room""", json_schema_extra = { "linkml_meta": {'alias': 'ceil_area',
-         'aliases': ['ceiling area'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -6955,7 +6801,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000148'} })
     ceil_cond: Optional[CeilCondEnum] = Field(default=None, title="ceiling condition", description="""The physical condition of the ceiling at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas""", json_schema_extra = { "linkml_meta": {'alias': 'ceil_cond',
-         'aliases': ['ceiling condition'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6964,7 +6809,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000779'} })
     ceil_finish_mat: Optional[CeilFinishMatEnum] = Field(default=None, title="ceiling finish material", description="""The type of material used to finish a ceiling""", json_schema_extra = { "linkml_meta": {'alias': 'ceil_finish_mat',
-         'aliases': ['ceiling finish material'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6973,7 +6817,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000780'} })
     ceil_struc: Optional[TextValue] = Field(default=None, title="ceiling structure", description="""The construction format of the ceiling""", json_schema_extra = { "linkml_meta": {'alias': 'ceil_struc',
-         'aliases': ['ceiling structure'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6983,7 +6826,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000782',
          'string_serialization': '[wood frame|concrete]'} })
     ceil_texture: Optional[CeilTextureEnum] = Field(default=None, title="ceiling texture", description="""The feel, appearance, or consistency of a ceiling surface""", json_schema_extra = { "linkml_meta": {'alias': 'ceil_texture',
-         'aliases': ['ceiling texture'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -6992,7 +6834,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000783'} })
     ceil_thermal_mass: Optional[QuantityValue] = Field(default=None, title="ceiling thermal mass", description="""The ability of the ceiling to provide inertia against temperature fluctuations. Generally this means concrete that is exposed. A metal deck that supports a concrete slab will act thermally as long as it is exposed to room air flow""", json_schema_extra = { "linkml_meta": {'alias': 'ceil_thermal_mass',
-         'aliases': ['ceiling thermal mass'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7004,7 +6845,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000143'} })
     ceil_type: Optional[CeilTypeEnum] = Field(default=None, title="ceiling type", description="""The type of ceiling according to the ceiling's appearance or construction""", json_schema_extra = { "linkml_meta": {'alias': 'ceil_type',
-         'aliases': ['ceiling type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7013,7 +6853,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000784'} })
     ceil_water_mold: Optional[TextValue] = Field(default=None, title="ceiling signs of water/mold", description="""Signs of the presence of mold or mildew on the ceiling""", json_schema_extra = { "linkml_meta": {'alias': 'ceil_water_mold',
-         'aliases': ['ceiling signs of water/mold'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7024,7 +6863,6 @@ class Biosample(Sample):
          'string_serialization': '[presence of mold visible|no presence of mold '
                                  'visible]'} })
     chem_administration: Optional[list[Union[ControlledTermValue,ControlledIdentifiedTermValue]]] = Field(default=None, title="chemical administration", description="""List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi""", json_schema_extra = { "linkml_meta": {'alias': 'chem_administration',
-         'aliases': ['chemical administration'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'CHEBI;timestamp'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -7034,7 +6872,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000751',
          'string_serialization': '{termLabel} {[termID]};{timestamp}'} })
     chem_mutagen: Optional[list[TextValue]] = Field(default=None, title="chemical mutagen", description="""Treatment involving use of mutagens; should include the name of mutagen, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mutagen regimens""", json_schema_extra = { "linkml_meta": {'alias': 'chem_mutagen',
-         'aliases': ['chemical mutagen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'mutagen name;mutagen '
                                                      'amount;treatment interval and '
@@ -7050,7 +6887,6 @@ class Biosample(Sample):
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
     chem_oxygen_dem: Optional[QuantityValue] = Field(default=None, title="chemical oxygen demand", description="""A measure of the capacity of water to consume oxygen during the decomposition of organic matter and the oxidation of inorganic chemicals such as ammonia and nitrite""", json_schema_extra = { "linkml_meta": {'alias': 'chem_oxygen_dem',
-         'aliases': ['chemical oxygen demand'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7062,7 +6898,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000656'} })
     chem_treat_method: Optional[str] = Field(default=None, title="chemical treatment method", description="""Method of chemical administration(dose, frequency, duration, time elapsed between administration and sampling) (e.g. 50 mg/l; twice a week; 1 hr; 0 days)""", json_schema_extra = { "linkml_meta": {'alias': 'chem_treat_method',
-         'aliases': ['chemical treatment method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement '
                                                      'value;frequency;duration;duration'},
@@ -7076,7 +6911,6 @@ class Biosample(Sample):
          'string_serialization': '{float} '
                                  '{unit};{Rn/start_time/end_time/duration};{duration};{duration}'} })
     chem_treatment: Optional[TextValue] = Field(default=None, title="chemical treatment", description="""List of chemical compounds administered upstream the sampling location where sampling occurred (e.g. Glycols, H2S scavenger, corrosion and scale inhibitors, demulsifiers, and other production chemicals etc.). The commercial name of the product and name of the supplier should be provided. The date of administration should also be included""", json_schema_extra = { "linkml_meta": {'alias': 'chem_treatment',
-         'aliases': ['chemical treatment'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'name;name;timestamp'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7086,7 +6920,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001012',
          'string_serialization': '{text};{text};{timestamp}'} })
     chloride: Optional[QuantityValue] = Field(default=None, title="chloride", description="""Concentration of chloride in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'chloride',
-         'aliases': ['chloride'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7100,7 +6933,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000429'} })
     chlorophyll: Optional[QuantityValue] = Field(default=None, title="chlorophyll", description="""Concentration of chlorophyll""", json_schema_extra = { "linkml_meta": {'alias': 'chlorophyll',
-         'aliases': ['chlorophyll'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7114,7 +6946,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000177'} })
     climate_environment: Optional[list[TextValue]] = Field(default=None, title="climate environment", description="""Treatment involving an exposure to a particular climate; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple climates""", json_schema_extra = { "linkml_meta": {'alias': 'climate_environment',
-         'aliases': ['climate environment'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'climate name;treatment interval '
                                                      'and duration'},
@@ -7130,7 +6961,6 @@ class Biosample(Sample):
                    'add examples, i need to see some examples to add correctly '
                    'formatted example.']} })
     collection_date: Optional[TimestampValue] = Field(default=None, title="collection date", description="""The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant""", json_schema_extra = { "linkml_meta": {'alias': 'collection_date',
-         'aliases': ['collection date'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'date and time'}},
          'domain_of': ['Biosample'],
@@ -7138,7 +6968,6 @@ class Biosample(Sample):
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000011'} })
     conduc: Optional[QuantityValue] = Field(default=None, title="conductivity", description="""Electrical conductivity of water""", json_schema_extra = { "linkml_meta": {'alias': 'conduc',
-         'aliases': ['conductivity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7151,7 +6980,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000692'} })
     cool_syst_id: Optional[TextValue] = Field(default=None, title="cooling system identifier", description="""The cooling system identifier""", json_schema_extra = { "linkml_meta": {'alias': 'cool_syst_id',
-         'aliases': ['cooling system identifier'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'unique identifier'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7160,7 +6988,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000785'} })
     crop_rotation: Optional[TextValue] = Field(default=None, title="history/crop rotation", description="""Whether or not crop is rotated, and if yes, rotation schedule""", json_schema_extra = { "linkml_meta": {'alias': 'crop_rotation',
-         'aliases': ['history/crop rotation'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'crop rotation status;schedule'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7170,7 +6997,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000318',
          'string_serialization': '{boolean};{Rn/start_time/end_time/duration}'} })
     cult_root_med: Optional[TextValue] = Field(default=None, title="culture rooting medium", description="""Name or reference for the hydroponic or in vitro culture rooting medium; can be the name of a commonly used medium or reference to a specific medium, e.g. Murashige and Skoog medium. If the medium has not been formally published, use the rooting medium descriptors.""", json_schema_extra = { "linkml_meta": {'alias': 'cult_root_med',
-         'aliases': ['culture rooting medium'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'name, PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7180,7 +7006,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001041',
          'string_serialization': '{text}|{PMID}|{DOI}|{URL}'} })
     cur_land_use: Optional[CurLandUseEnum] = Field(default=None, title="current land use", description="""Present state of sample site""", json_schema_extra = { "linkml_meta": {'alias': 'cur_land_use',
-         'aliases': ['current land use'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7189,7 +7014,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001080'} })
     cur_vegetation: Optional[TextValue] = Field(default=None, title="current vegetation", description="""Vegetation classification from one or more standard classification systems, or agricultural crop""", json_schema_extra = { "linkml_meta": {'alias': 'cur_vegetation',
-         'aliases': ['current vegetation'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'current vegetation type'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7206,7 +7030,6 @@ class Biosample(Sample):
          'string_serialization': '{text}',
          'todos': ['Recommend changing this from text value to some king of ontology?']} })
     cur_vegetation_meth: Optional[TextValue] = Field(default=None, title="current vegetation method", description="""Reference or method used in vegetation classification""", json_schema_extra = { "linkml_meta": {'alias': 'cur_vegetation_meth',
-         'aliases': ['current vegetation method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7219,7 +7042,6 @@ class Biosample(Sample):
          'todos': ["I'm not sure this is a DOI, PMID, or URI. Should pool the "
                    'community and find out how they accomplish this if provided.']} })
     date_last_rain: Optional[TimestampValue] = Field(default=None, title="date last rain", description="""The date of the last time it rained""", json_schema_extra = { "linkml_meta": {'alias': 'date_last_rain',
-         'aliases': ['date last rain'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'timestamp'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7228,7 +7050,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000786'} })
     density: Optional[QuantityValue] = Field(default=None, title="density", description="""Density of the sample, which is its mass per unit volume (aka volumetric mass density)""", json_schema_extra = { "linkml_meta": {'alias': 'density',
-         'aliases': ['density'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7242,7 +7063,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000435'} })
     depos_env: Optional[DeposEnvEnum] = Field(default=None, title="depositional environment", description="""Main depositional environment (https://en.wikipedia.org/wiki/Depositional_environment). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'depos_env',
-         'aliases': ['depositional environment'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7251,7 +7071,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000992'} })
     depth: Optional[QuantityValue] = Field(default=None, title="depth", description="""The vertical distance below local surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples.""", json_schema_extra = { "linkml_meta": {'alias': 'depth',
-         'aliases': ['depth'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'storage_units': {'tag': 'storage_units', 'value': 'm'}},
@@ -7260,7 +7079,6 @@ class Biosample(Sample):
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000018'} })
     dew_point: Optional[QuantityValue] = Field(default=None, title="dew point", description="""The temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water.""", json_schema_extra = { "linkml_meta": {'alias': 'dew_point',
-         'aliases': ['dew point'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7272,7 +7090,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000129'} })
     diether_lipids: Optional[list[TextValue]] = Field(default=None, title="diether lipids", description="""Concentration of diether lipids; can include multiple types of diether lipids""", json_schema_extra = { "linkml_meta": {'alias': 'diether_lipids',
-         'aliases': ['diether lipids'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'diether lipid name;measurement '
                                                      'value'},
@@ -7285,7 +7102,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000178',
          'string_serialization': '{text};{float} {unit}'} })
     diss_carb_dioxide: Optional[QuantityValue] = Field(default=None, title="dissolved carbon dioxide", description="""Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample""", json_schema_extra = { "linkml_meta": {'alias': 'diss_carb_dioxide',
-         'aliases': ['dissolved carbon dioxide'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7299,7 +7115,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000436'} })
     diss_hydrogen: Optional[QuantityValue] = Field(default=None, title="dissolved hydrogen", description="""Concentration of dissolved hydrogen""", json_schema_extra = { "linkml_meta": {'alias': 'diss_hydrogen',
-         'aliases': ['dissolved hydrogen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7311,7 +7126,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000179'} })
     diss_inorg_carb: Optional[QuantityValue] = Field(default=None, title="dissolved inorganic carbon", description="""Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter""", json_schema_extra = { "linkml_meta": {'alias': 'diss_inorg_carb',
-         'aliases': ['dissolved inorganic carbon'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7325,7 +7139,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000434'} })
     diss_inorg_nitro: Optional[QuantityValue] = Field(default=None, title="dissolved inorganic nitrogen", description="""Concentration of dissolved inorganic nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'diss_inorg_nitro',
-         'aliases': ['dissolved inorganic nitrogen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7339,7 +7152,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000698'} })
     diss_inorg_phosp: Optional[QuantityValue] = Field(default=None, title="dissolved inorganic phosphorus", description="""Concentration of dissolved inorganic phosphorus in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'diss_inorg_phosp',
-         'aliases': ['dissolved inorganic phosphorus'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7353,7 +7165,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000106'} })
     diss_iron: Optional[QuantityValue] = Field(default=None, title="dissolved iron", description="""Concentration of dissolved iron in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'diss_iron',
-         'aliases': ['dissolved iron'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7365,7 +7176,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000139'} })
     diss_org_carb: Optional[QuantityValue] = Field(default=None, title="dissolved organic carbon", description="""Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'alias': 'diss_org_carb',
-         'aliases': ['dissolved organic carbon'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7379,7 +7189,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000433'} })
     diss_org_nitro: Optional[QuantityValue] = Field(default=None, title="dissolved organic nitrogen", description="""Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2""", json_schema_extra = { "linkml_meta": {'alias': 'diss_org_nitro',
-         'aliases': ['dissolved organic nitrogen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7393,7 +7202,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000162'} })
     diss_oxygen: Optional[QuantityValue] = Field(default=None, title="dissolved oxygen", description="""Concentration of dissolved oxygen""", json_schema_extra = { "linkml_meta": {'alias': 'diss_oxygen',
-         'aliases': ['dissolved oxygen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7407,7 +7215,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000119'} })
     diss_oxygen_fluid: Optional[QuantityValue] = Field(default=None, title="dissolved oxygen in fluids", description="""Concentration of dissolved oxygen in the oil field produced fluids as it contributes to oxgen-corrosion and microbial activity (e.g. Mic).""", json_schema_extra = { "linkml_meta": {'alias': 'diss_oxygen_fluid',
-         'aliases': ['dissolved oxygen in fluids'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7421,7 +7228,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000438'} })
     door_comp_type: Optional[DoorCompTypeEnum] = Field(default=None, title="door type, composite", description="""The composite type of the door""", json_schema_extra = { "linkml_meta": {'alias': 'door_comp_type',
-         'aliases': ['door type, composite'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7430,7 +7236,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000795'} })
     door_cond: Optional[DoorCondEnum] = Field(default=None, title="door condition", description="""The phsical condition of the door""", json_schema_extra = { "linkml_meta": {'alias': 'door_cond',
-         'aliases': ['door condition'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7439,7 +7244,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000788'} })
     door_direct: Optional[DoorDirectEnum] = Field(default=None, title="door direction of opening", description="""The direction the door opens""", json_schema_extra = { "linkml_meta": {'alias': 'door_direct',
-         'aliases': ['door direction of opening'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7448,7 +7252,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000789'} })
     door_loc: Optional[DoorLocEnum] = Field(default=None, title="door location", description="""The relative location of the door in the room""", json_schema_extra = { "linkml_meta": {'alias': 'door_loc',
-         'aliases': ['door location'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7457,7 +7260,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000790'} })
     door_mat: Optional[DoorMatEnum] = Field(default=None, title="door material", description="""The material the door is composed of""", json_schema_extra = { "linkml_meta": {'alias': 'door_mat',
-         'aliases': ['door material'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7466,7 +7268,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000791'} })
     door_move: Optional[DoorMoveEnum] = Field(default=None, title="door movement", description="""The type of movement of the door""", json_schema_extra = { "linkml_meta": {'alias': 'door_move',
-         'aliases': ['door movement'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7475,7 +7276,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000792'} })
     door_size: Optional[QuantityValue] = Field(default=None, title="door area or size", description="""The size of the door""", json_schema_extra = { "linkml_meta": {'alias': 'door_size',
-         'aliases': ['door area or size'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7487,7 +7287,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000158'} })
     door_type: Optional[DoorTypeEnum] = Field(default=None, title="door type", description="""The type of door material""", json_schema_extra = { "linkml_meta": {'alias': 'door_type',
-         'aliases': ['door type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7496,7 +7295,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000794'} })
     door_type_metal: Optional[DoorTypeMetalEnum] = Field(default=None, title="door type, metal", description="""The type of metal door""", json_schema_extra = { "linkml_meta": {'alias': 'door_type_metal',
-         'aliases': ['door type, metal'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7505,7 +7303,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000796'} })
     door_type_wood: Optional[DoorTypeWoodEnum] = Field(default=None, title="door type, wood", description="""The type of wood door""", json_schema_extra = { "linkml_meta": {'alias': 'door_type_wood',
-         'aliases': ['door type, wood'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7514,7 +7311,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000797'} })
     door_water_mold: Optional[TextValue] = Field(default=None, title="door signs of water/mold", description="""Signs of the presence of mold or mildew on a door""", json_schema_extra = { "linkml_meta": {'alias': 'door_water_mold',
-         'aliases': ['door signs of water/mold'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7525,7 +7321,6 @@ class Biosample(Sample):
          'string_serialization': '[presence of mold visible|no presence of mold '
                                  'visible]'} })
     down_par: Optional[QuantityValue] = Field(default=None, title="downward PAR", description="""Visible waveband radiance and irradiance measurements in the water column""", json_schema_extra = { "linkml_meta": {'alias': 'down_par',
-         'aliases': ['downward PAR'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7540,7 +7335,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000703'} })
     drainage_class: Optional[DrainageClassEnum] = Field(default=None, title="drainage classification", description="""Drainage classification from a standard system such as the USDA system""", json_schema_extra = { "linkml_meta": {'alias': 'drainage_class',
-         'aliases': ['drainage classification'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7549,7 +7343,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001085'} })
     drawings: Optional[DrawingsEnum] = Field(default=None, title="drawings", description="""The buildings architectural drawings; if design is chosen, indicate phase-conceptual, schematic, design development, and construction documents""", json_schema_extra = { "linkml_meta": {'alias': 'drawings',
-         'aliases': ['drawings'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7558,7 +7351,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000798'} })
     efficiency_percent: Optional[QuantityValue] = Field(default=None, title="efficiency percent", description="""Percentage of volatile solids removed from the anaerobic digestor""", json_schema_extra = { "linkml_meta": {'alias': 'efficiency_percent',
-         'aliases': ['efficiency percent'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7571,7 +7363,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000657'} })
     elev: Optional[float] = Field(default=None, title="elevation, meters", description="""Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit.""", json_schema_extra = { "linkml_meta": {'alias': 'elev',
-         'aliases': ['elevation'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'}},
          'comments': ['All elevations must be reported in meters. Provide the '
@@ -7585,7 +7376,6 @@ class Biosample(Sample):
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000093'} })
     elevator: Optional[TextValue] = Field(default=None, title="elevator count", description="""The number of elevators within the built structure""", json_schema_extra = { "linkml_meta": {'alias': 'elevator',
-         'aliases': ['elevator count'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -7593,7 +7383,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000799'} })
     emulsions: Optional[list[TextValue]] = Field(default=None, title="emulsions", description="""Amount or concentration of substances such as paints, adhesives, mayonnaise, hair colorants, emulsified oils, etc.; can include multiple emulsion types""", json_schema_extra = { "linkml_meta": {'alias': 'emulsions',
-         'aliases': ['emulsions'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'emulsion name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
@@ -7605,7 +7394,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000660',
          'string_serialization': '{text};{float} {unit}'} })
     env_broad_scale: ControlledIdentifiedTermValue = Field(default=..., title="broad-scale environmental context", description="""Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS""", json_schema_extra = { "linkml_meta": {'alias': 'env_broad_scale',
-         'aliases': ['broad-scale environmental context'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'The major environment type(s) '
                                                      'where the sample was collected. '
@@ -7630,7 +7418,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000012',
          'string_serialization': '{termLabel} {[termID]}'} })
     env_local_scale: ControlledIdentifiedTermValue = Field(default=..., title="local environmental context", description="""Report the entity or entities which are in the sample or specimen’s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'alias': 'env_local_scale',
-         'aliases': ['local environmental context'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'Environmental entities having '
                                                      'causal influences upon the '
@@ -7657,7 +7444,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000013',
          'string_serialization': '{termLabel} {[termID]}'} })
     env_medium: ControlledIdentifiedTermValue = Field(default=..., title="environmental medium", description="""Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).""", json_schema_extra = { "linkml_meta": {'alias': 'env_medium',
-         'aliases': ['environmental medium'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'The material displaced by the '
                                                      'entity at time of sampling. '
@@ -7689,7 +7475,6 @@ class Biosample(Sample):
          'domain_of': ['Biosample'],
          'notes': ['no longer in MIxS as of 6.0?']} })
     escalator: Optional[TextValue] = Field(default=None, title="escalator count", description="""The number of escalators within the built structure""", json_schema_extra = { "linkml_meta": {'alias': 'escalator',
-         'aliases': ['escalator count'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -7697,7 +7482,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000800'} })
     ethylbenzene: Optional[QuantityValue] = Field(default=None, title="ethylbenzene", description="""Concentration of ethylbenzene in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'ethylbenzene',
-         'aliases': ['ethylbenzene'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7711,7 +7495,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000155'} })
     exp_duct: Optional[QuantityValue] = Field(default=None, title="exposed ductwork", description="""The amount of exposed ductwork in the room""", json_schema_extra = { "linkml_meta": {'alias': 'exp_duct',
-         'aliases': ['exposed ductwork'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7723,7 +7506,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000144'} })
     exp_pipe: Optional[QuantityValue] = Field(default=None, title="exposed pipes", description="""The number of exposed pipes in the room""", json_schema_extra = { "linkml_meta": {'alias': 'exp_pipe',
-         'aliases': ['exposed pipes'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7734,7 +7516,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000220'} })
     experimental_factor: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="experimental factor", description="""Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI""", json_schema_extra = { "linkml_meta": {'alias': 'experimental_factor',
-         'aliases': ['experimental factor'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'text or EFO and/or OBI'}},
          'domain_of': ['Biosample'],
@@ -7743,7 +7524,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000008',
          'string_serialization': '{termLabel} {[termID]}|{text}'} })
     ext_door: Optional[TextValue] = Field(default=None, title="exterior door count", description="""The number of exterior doors in the built structure""", json_schema_extra = { "linkml_meta": {'alias': 'ext_door',
-         'aliases': ['exterior door count'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -7751,7 +7531,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000170'} })
     ext_wall_orient: Optional[ExtWallOrientEnum] = Field(default=None, title="orientations of exterior wall", description="""The orientation of the exterior wall""", json_schema_extra = { "linkml_meta": {'alias': 'ext_wall_orient',
-         'aliases': ['orientations of exterior wall'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7760,7 +7539,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000817'} })
     ext_window_orient: Optional[ExtWindowOrientEnum] = Field(default=None, title="orientations of exterior window", description="""The compass direction the exterior window of the room is facing""", json_schema_extra = { "linkml_meta": {'alias': 'ext_window_orient',
-         'aliases': ['orientations of exterior window'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7769,7 +7547,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000818'} })
     extreme_event: Optional[str] = Field(default=None, title="history/extreme events", description="""Unusual physical events that may have affected microbial populations""", json_schema_extra = { "linkml_meta": {'alias': 'extreme_event',
-         'aliases': ['history/extreme events'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'date, string'}},
          'domain_of': ['Biosample'],
@@ -7777,7 +7554,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000320'} })
     fao_class: Optional[FaoClassEnum] = Field(default=None, title="soil_taxonomic/FAO classification", description="""Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at http://www.fao.org/nr/land/sols/soil/wrb-soil-maps/reference-groups""", json_schema_extra = { "linkml_meta": {'alias': 'fao_class',
-         'aliases': ['soil_taxonomic/FAO classification'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7786,7 +7562,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001083'} })
     fertilizer_regm: Optional[list[TextValue]] = Field(default=None, title="fertilizer regimen", description="""Information about treatment involving the use of fertilizers; should include the name of fertilizer, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fertilizer regimens""", json_schema_extra = { "linkml_meta": {'alias': 'fertilizer_regm',
-         'aliases': ['fertilizer regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'fertilizer name;fertilizer '
                                                      'amount;treatment interval and '
@@ -7803,7 +7578,6 @@ class Biosample(Sample):
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
     field: Optional[TextValue] = Field(default=None, title="field name", description="""Name of the hydrocarbon field (e.g. Albacora)""", json_schema_extra = { "linkml_meta": {'alias': 'field',
-         'aliases': ['field name'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -7812,7 +7586,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000291',
          'string_serialization': '{text}'} })
     filter_type: Optional[list[FilterTypeEnum]] = Field(default=None, title="filter type", description="""A device which removes solid particulates or airborne molecular contaminants""", json_schema_extra = { "linkml_meta": {'alias': 'filter_type',
-         'aliases': ['filter type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -7821,7 +7594,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000765'} })
     fire: Optional[str] = Field(default=None, title="history/fire", description="""Historical and/or physical evidence of fire""", json_schema_extra = { "linkml_meta": {'alias': 'fire',
-         'aliases': ['history/fire'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'date string'}},
          'comments': ['Provide the date the fire occurred. If extended burning '
@@ -7833,7 +7605,6 @@ class Biosample(Sample):
          'todos': ['is "to" acceptable? Is there a better way to request that be '
                    'written?']} })
     fireplace_type: Optional[TextValue] = Field(default=None, title="fireplace type", description="""A firebox with chimney""", json_schema_extra = { "linkml_meta": {'alias': 'fireplace_type',
-         'aliases': ['fireplace type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7843,7 +7614,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000802',
          'string_serialization': '[gas burning|wood burning]'} })
     flooding: Optional[str] = Field(default=None, title="history/flooding", description="""Historical and/or physical evidence of flooding""", json_schema_extra = { "linkml_meta": {'alias': 'flooding',
-         'aliases': ['history/flooding'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'date string'}},
          'comments': ['Provide the date the flood occurred. If extended flooding '
@@ -7856,7 +7626,6 @@ class Biosample(Sample):
                    'written?',
                    'What about if the "day" isn\'t known? Is this ok?']} })
     floor_age: Optional[QuantityValue] = Field(default=None, title="floor age", description="""The time period since installment of the carpet or flooring""", json_schema_extra = { "linkml_meta": {'alias': 'floor_age',
-         'aliases': ['floor age'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
@@ -7867,7 +7636,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000164'} })
     floor_area: Optional[QuantityValue] = Field(default=None, title="floor area", description="""The area of the floor space within the room""", json_schema_extra = { "linkml_meta": {'alias': 'floor_area',
-         'aliases': ['floor area'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7879,7 +7647,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000165'} })
     floor_cond: Optional[FloorCondEnum] = Field(default=None, title="floor condition", description="""The physical condition of the floor at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas""", json_schema_extra = { "linkml_meta": {'alias': 'floor_cond',
-         'aliases': ['floor condition'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7888,7 +7655,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000803'} })
     floor_count: Optional[TextValue] = Field(default=None, title="floor count", description="""The number of floors in the building, including basements and mechanical penthouse""", json_schema_extra = { "linkml_meta": {'alias': 'floor_count',
-         'aliases': ['floor count'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -7896,7 +7662,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000225'} })
     floor_finish_mat: Optional[FloorFinishMatEnum] = Field(default=None, title="floor finish material", description="""The floor covering type; the finished surface that is walked on""", json_schema_extra = { "linkml_meta": {'alias': 'floor_finish_mat',
-         'aliases': ['floor finish material'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7905,7 +7670,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000804'} })
     floor_struc: Optional[FloorStrucEnum] = Field(default=None, title="floor structure", description="""Refers to the structural elements and subfloor upon which the finish flooring is installed""", json_schema_extra = { "linkml_meta": {'alias': 'floor_struc',
-         'aliases': ['floor structure'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7914,7 +7678,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000806'} })
     floor_thermal_mass: Optional[QuantityValue] = Field(default=None, title="floor thermal mass", description="""The ability of the floor to provide inertia against temperature fluctuations""", json_schema_extra = { "linkml_meta": {'alias': 'floor_thermal_mass',
-         'aliases': ['floor thermal mass'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7926,7 +7689,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000166'} })
     floor_water_mold: Optional[FloorWaterMoldEnum] = Field(default=None, title="floor signs of water/mold", description="""Signs of the presence of mold or mildew in a room""", json_schema_extra = { "linkml_meta": {'alias': 'floor_water_mold',
-         'aliases': ['floor signs of water/mold'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7935,7 +7697,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000805'} })
     fluor: Optional[QuantityValue] = Field(default=None, title="fluorescence", description="""Raw or converted fluorescence of water""", json_schema_extra = { "linkml_meta": {'alias': 'fluor',
-         'aliases': ['fluorescence'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7948,7 +7709,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000704'} })
     freq_clean: Optional[QuantityValue] = Field(default=None, title="frequency of cleaning", description="""The number of times the sample location is cleaned. Frequency of cleaning might be on a Daily basis, Weekly, Monthly, Quarterly or Annually.""", json_schema_extra = { "linkml_meta": {'alias': 'freq_clean',
-         'aliases': ['frequency of cleaning'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration or {text}'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7958,7 +7718,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000226'} })
     freq_cook: Optional[QuantityValue] = Field(default=None, title="frequency of cooking", description="""The number of times a meal is cooked per week""", json_schema_extra = { "linkml_meta": {'alias': 'freq_cook',
-         'aliases': ['frequency of cooking'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -7968,7 +7727,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000227'} })
     fungicide_regm: Optional[list[TextValue]] = Field(default=None, title="fungicide regimen", description="""Information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens""", json_schema_extra = { "linkml_meta": {'alias': 'fungicide_regm',
-         'aliases': ['fungicide regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'fungicide name;fungicide '
                                                      'amount;treatment interval and '
@@ -7985,7 +7743,6 @@ class Biosample(Sample):
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
     furniture: Optional[FurnitureEnum] = Field(default=None, title="furniture", description="""The types of furniture present in the sampled room""", json_schema_extra = { "linkml_meta": {'alias': 'furniture',
-         'aliases': ['furniture'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -7994,7 +7751,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000807'} })
     gaseous_environment: Optional[list[TextValue]] = Field(default=None, title="gaseous environment", description="""Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens""", json_schema_extra = { "linkml_meta": {'alias': 'gaseous_environment',
-         'aliases': ['gaseous environment'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'gaseous compound name;gaseous '
                                                      'compound amount;treatment '
@@ -8016,7 +7772,6 @@ class Biosample(Sample):
                    "did I do this right? keep the example that's provided and add "
                    'another? so as to not override']} })
     gaseous_substances: Optional[list[TextValue]] = Field(default=None, title="gaseous substances", description="""Amount or concentration of substances such as hydrogen sulfide, carbon dioxide, methane, etc.; can include multiple substances""", json_schema_extra = { "linkml_meta": {'alias': 'gaseous_substances',
-         'aliases': ['gaseous substances'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'gaseous substance '
                                                      'name;measurement value'},
@@ -8029,7 +7784,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000661',
          'string_serialization': '{text};{float} {unit}'} })
     gender_restroom: Optional[GenderRestroomEnum] = Field(default=None, title="gender of restroom", description="""The gender type of the restroom""", json_schema_extra = { "linkml_meta": {'alias': 'gender_restroom',
-         'aliases': ['gender of restroom'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8038,7 +7792,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000808'} })
     genetic_mod: Optional[TextValue] = Field(default=None, title="genetic modification", description="""Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection""", json_schema_extra = { "linkml_meta": {'alias': 'genetic_mod',
-         'aliases': ['genetic modification'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI,url or free text'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8048,7 +7801,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000859',
          'string_serialization': '{PMID}|{DOI}|{URL}|{text}'} })
     geo_loc_name: Optional[TextValue] = Field(default=None, title="geographic location (country and/or sea,region)", description="""The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)""", json_schema_extra = { "linkml_meta": {'alias': 'geo_loc_name',
-         'aliases': ['geographic location (country and/or sea,region)'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'country or sea name (INSDC or '
                                                      'GAZ): region(GAZ), specific '
@@ -8059,7 +7811,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000010',
          'string_serialization': '{term}: {term}, {text}'} })
     glucosidase_act: Optional[QuantityValue] = Field(default=None, title="glucosidase activity", description="""Measurement of glucosidase activity""", json_schema_extra = { "linkml_meta": {'alias': 'glucosidase_act',
-         'aliases': ['glucosidase activity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8071,7 +7822,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000137'} })
     gravidity: Optional[TextValue] = Field(default=None, title="gravidity", description="""Whether or not subject is gravid, and if yes date due or date post-conception, specifying which is used""", json_schema_extra = { "linkml_meta": {'alias': 'gravidity',
-         'aliases': ['gravidity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'gravidity status;timestamp'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8081,7 +7831,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000875',
          'string_serialization': '{boolean};{timestamp}'} })
     gravity: Optional[list[TextValue]] = Field(default=None, title="gravity", description="""Information about treatment involving use of gravity factor to study various types of responses in presence, absence or modified levels of gravity; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple treatments""", json_schema_extra = { "linkml_meta": {'alias': 'gravity',
-         'aliases': ['gravity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'gravity factor value;treatment '
                                                      'interval and duration'},
@@ -8094,7 +7843,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000559',
          'string_serialization': '{float} {unit};{Rn/start_time/end_time/duration}'} })
     growth_facil: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="growth facility", description="""Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research""", json_schema_extra = { "linkml_meta": {'alias': 'growth_facil',
-         'aliases': ['growth facility'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'free text or CO'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8104,7 +7852,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001043',
          'string_serialization': '{text}|{termLabel} {[termID]}'} })
     growth_habit: Optional[GrowthHabitEnum] = Field(default=None, title="growth habit", description="""Characteristic shape, appearance or growth form of a plant species""", json_schema_extra = { "linkml_meta": {'alias': 'growth_habit',
-         'aliases': ['growth habit'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8113,7 +7860,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001044'} })
     growth_hormone_regm: Optional[list[TextValue]] = Field(default=None, title="growth hormone regimen", description="""Information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple growth hormone regimens""", json_schema_extra = { "linkml_meta": {'alias': 'growth_hormone_regm',
-         'aliases': ['growth hormone regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'growth hormone name;growth '
                                                      'hormone amount;treatment '
@@ -8130,7 +7876,6 @@ class Biosample(Sample):
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
     hall_count: Optional[TextValue] = Field(default=None, title="hallway/corridor count", description="""The total count of hallways and cooridors in the built structure""", json_schema_extra = { "linkml_meta": {'alias': 'hall_count',
-         'aliases': ['hallway/corridor count'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -8138,7 +7883,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000228'} })
     handidness: Optional[HandidnessEnum] = Field(default=None, title="handidness", description="""The handidness of the individual sampled""", json_schema_extra = { "linkml_meta": {'alias': 'handidness',
-         'aliases': ['handidness'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8147,7 +7891,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000809'} })
     hc_produced: Optional[HcProducedEnum] = Field(default=None, title="hydrocarbon type produced", description="""Main hydrocarbon type produced from resource (i.e. Oil, gas, condensate, etc). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'hc_produced',
-         'aliases': ['hydrocarbon type produced'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8156,7 +7899,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000989'} })
     hcr: Optional[HcrEnum] = Field(default=None, title="hydrocarbon resource type", description="""Main Hydrocarbon Resource type. The term \"Hydrocarbon Resource\" HCR defined as a natural environmental feature containing large amounts of hydrocarbons at high concentrations potentially suitable for commercial exploitation. This term should not be confused with the Hydrocarbon Occurrence term which also includes hydrocarbon-rich environments with currently limited commercial interest such as seeps, outcrops, gas hydrates etc. If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'hcr',
-         'aliases': ['hydrocarbon resource type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8165,7 +7907,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000988'} })
     hcr_fw_salinity: Optional[QuantityValue] = Field(default=None, title="formation water salinity", description="""Original formation water salinity (prior to secondary recovery e.g. Waterflooding) expressed as TDS""", json_schema_extra = { "linkml_meta": {'alias': 'hcr_fw_salinity',
-         'aliases': ['formation water salinity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8177,7 +7918,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000406'} })
     hcr_geol_age: Optional[HcrGeolAgeEnum] = Field(default=None, title="hydrocarbon resource geological age", description="""Geological age of hydrocarbon resource (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'hcr_geol_age',
-         'aliases': ['hydrocarbon resource geological age'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8186,7 +7926,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000993'} })
     hcr_pressure: Optional[TextValue] = Field(default=None, title="hydrocarbon resource original pressure", description="""Original pressure of the hydrocarbon resource""", json_schema_extra = { "linkml_meta": {'alias': 'hcr_pressure',
-         'aliases': ['hydrocarbon resource original pressure'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value range'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8198,7 +7937,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000395',
          'string_serialization': '{float} - {float} {unit}'} })
     hcr_temp: Optional[TextValue] = Field(default=None, title="hydrocarbon resource original temperature", description="""Original temperature of the hydrocarbon resource""", json_schema_extra = { "linkml_meta": {'alias': 'hcr_temp',
-         'aliases': ['hydrocarbon resource original temperature'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value range'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8210,7 +7948,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000393',
          'string_serialization': '{float} - {float} {unit}'} })
     heat_cool_type: Optional[list[HeatCoolTypeEnum]] = Field(default=None, title="heating and cooling system type", description="""Methods of conditioning or heating a room or building""", json_schema_extra = { "linkml_meta": {'alias': 'heat_cool_type',
-         'aliases': ['heating and cooling system type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -8219,7 +7956,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000766'} })
     heat_deliv_loc: Optional[HeatDelivLocEnum] = Field(default=None, title="heating delivery locations", description="""The location of heat delivery within the room""", json_schema_extra = { "linkml_meta": {'alias': 'heat_deliv_loc',
-         'aliases': ['heating delivery locations'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8228,7 +7964,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000810'} })
     heat_sys_deliv_meth: Optional[str] = Field(default=None, title="heating system delivery method", description="""The method by which the heat is delivered through the system""", json_schema_extra = { "linkml_meta": {'alias': 'heat_sys_deliv_meth',
-         'aliases': ['heating system delivery method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8238,7 +7973,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000812',
          'string_serialization': '[conductive|radiant]'} })
     heat_system_id: Optional[TextValue] = Field(default=None, title="heating system identifier", description="""The heating system identifier""", json_schema_extra = { "linkml_meta": {'alias': 'heat_system_id',
-         'aliases': ['heating system identifier'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'unique identifier'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8247,7 +7981,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000833'} })
     heavy_metals: Optional[list[TextValue]] = Field(default=None, title="heavy metals/ extreme unusual properties", description="""Heavy metals present in the sample and their concentrations.""", json_schema_extra = { "linkml_meta": {'alias': 'heavy_metals',
-         'aliases': ['extreme_unusual_properties/heavy metals'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'heavy metal name;measurement '
                                                      'value unit'},
@@ -8267,7 +8000,6 @@ class Biosample(Sample):
                    "change. Thoughts? I would argue this isn't an extreme unusual "
                    "property. It's just a biogeochemical measurement."]} })
     heavy_metals_meth: Optional[list[TextValue]] = Field(default=None, title="heavy metals method/ extreme unusual properties", description="""Reference or method used in determining heavy metals""", json_schema_extra = { "linkml_meta": {'alias': 'heavy_metals_meth',
-         'aliases': ['extreme_unusual_properties/heavy metals method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8282,7 +8014,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000343',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     height_carper_fiber: Optional[QuantityValue] = Field(default=None, title="height carpet fiber mat", description="""The average carpet fiber height in the indoor environment""", json_schema_extra = { "linkml_meta": {'alias': 'height_carper_fiber',
-         'aliases': ['height carpet fiber mat'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
@@ -8293,7 +8024,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000167'} })
     herbicide_regm: Optional[list[TextValue]] = Field(default=None, title="herbicide regimen", description="""Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'alias': 'herbicide_regm',
-         'aliases': ['herbicide regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'herbicide name;herbicide '
                                                      'amount;treatment interval and '
@@ -8310,7 +8040,6 @@ class Biosample(Sample):
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
     horizon_meth: Optional[TextValue] = Field(default=None, title="soil horizon method", description="""Reference or method used in determining the horizon""", json_schema_extra = { "linkml_meta": {'alias': 'horizon_meth',
-         'aliases': ['soil horizon method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8320,7 +8049,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000321',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     host_age: Optional[QuantityValue] = Field(default=None, title="host age", description="""Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees""", json_schema_extra = { "linkml_meta": {'alias': 'host_age',
-         'aliases': ['host age'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
@@ -8331,7 +8059,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000255'} })
     host_body_habitat: Optional[TextValue] = Field(default=None, title="host body habitat", description="""Original body habitat where the sample was obtained from""", json_schema_extra = { "linkml_meta": {'alias': 'host_body_habitat',
-         'aliases': ['host body habitat'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'free text'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8341,7 +8068,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000866',
          'string_serialization': '{text}'} })
     host_body_product: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="host body product", description="""Substance produced by the body, e.g. Stool, mucus, where the sample was obtained from. For foundational model of anatomy ontology (fma) or Uber-anatomy ontology (UBERON) terms, please see https://www.ebi.ac.uk/ols/ontologies/fma or https://www.ebi.ac.uk/ols/ontologies/uberon""", json_schema_extra = { "linkml_meta": {'alias': 'host_body_product',
-         'aliases': ['host body product'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'FMA or UBERON'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8351,7 +8077,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000888',
          'string_serialization': '{termLabel} {[termID]}'} })
     host_body_site: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="host body site", description="""Name of body site where the sample was obtained from, such as a specific organ or tissue (tongue, lung etc...). For foundational model of anatomy ontology (fma) (v 4.11.0) or Uber-anatomy ontology (UBERON) (v releases/2014-06-15) terms, please see http://purl.bioontology.org/ontology/FMA or http://purl.bioontology.org/ontology/UBERON""", json_schema_extra = { "linkml_meta": {'alias': 'host_body_site',
-         'aliases': ['host body site'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'FMA or UBERON'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8361,7 +8086,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000867',
          'string_serialization': '{termLabel} {[termID]}'} })
     host_body_temp: Optional[QuantityValue] = Field(default=None, title="host body temperature", description="""Core body temperature of the host when sample was collected""", json_schema_extra = { "linkml_meta": {'alias': 'host_body_temp',
-         'aliases': ['host body temperature'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8373,7 +8097,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000274'} })
     host_color: Optional[TextValue] = Field(default=None, title="host color", description="""The color of host""", json_schema_extra = { "linkml_meta": {'alias': 'host_color',
-         'aliases': ['host color'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'color'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -8382,7 +8105,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000260',
          'string_serialization': '{text}'} })
     host_common_name: Optional[TextValue] = Field(default=None, title="host common name", description="""Common name of the host.""", json_schema_extra = { "linkml_meta": {'alias': 'host_common_name',
-         'aliases': ['host common name'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'common name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8392,7 +8114,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000248',
          'string_serialization': '{text}'} })
     host_diet: Optional[list[TextValue]] = Field(default=None, title="host diet", description="""Type of diet depending on the host, for animals omnivore, herbivore etc., for humans high-fat, meditteranean etc.; can include multiple diet types""", json_schema_extra = { "linkml_meta": {'alias': 'host_diet',
-         'aliases': ['host diet'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'diet type'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -8402,7 +8123,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000869',
          'string_serialization': '{text}'} })
     host_dry_mass: Optional[QuantityValue] = Field(default=None, title="host dry mass", description="""Measurement of dry mass""", json_schema_extra = { "linkml_meta": {'alias': 'host_dry_mass',
-         'aliases': ['host dry mass'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8414,7 +8134,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000257'} })
     host_family_relation: Optional[list[str]] = Field(default=None, title="host family relationship", description="""Familial relationships to other hosts in the same study; can include multiple relationships""", json_schema_extra = { "linkml_meta": {'alias': 'host_family_relation',
-         'aliases': ['host family relationship'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'relationship type;arbitrary '
                                                      'identifier'},
@@ -8425,7 +8144,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000872',
          'string_serialization': '{text};{text}'} })
     host_genotype: Optional[TextValue] = Field(default=None, title="host genotype", description="""Observed genotype""", json_schema_extra = { "linkml_meta": {'alias': 'host_genotype',
-         'aliases': ['host genotype'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'genotype'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8435,7 +8153,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000365',
          'string_serialization': '{text}'} })
     host_growth_cond: Optional[TextValue] = Field(default=None, title="host growth conditions", description="""Literature reference giving growth conditions of the host""", json_schema_extra = { "linkml_meta": {'alias': 'host_growth_cond',
-         'aliases': ['host growth conditions'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI,url or free text'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8445,7 +8162,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000871',
          'string_serialization': '{PMID}|{DOI}|{URL}|{text}'} })
     host_height: Optional[QuantityValue] = Field(default=None, title="host height", description="""The height of subject""", json_schema_extra = { "linkml_meta": {'alias': 'host_height',
-         'aliases': ['host height'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8457,7 +8173,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000264'} })
     host_last_meal: Optional[list[TextValue]] = Field(default=None, title="host last meal", description="""Content of last meal and time since feeding; can include multiple values""", json_schema_extra = { "linkml_meta": {'alias': 'host_last_meal',
-         'aliases': ['host last meal'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'content;duration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -8467,7 +8182,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000870',
          'string_serialization': '{text};{duration}'} })
     host_length: Optional[QuantityValue] = Field(default=None, title="host length", description="""The length of subject""", json_schema_extra = { "linkml_meta": {'alias': 'host_length',
-         'aliases': ['host length'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8479,7 +8193,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000256'} })
     host_life_stage: Optional[TextValue] = Field(default=None, title="host life stage", description="""Description of life stage of host""", json_schema_extra = { "linkml_meta": {'alias': 'host_life_stage',
-         'aliases': ['host life stage'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'stage'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -8488,7 +8201,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000251',
          'string_serialization': '{text}'} })
     host_phenotype: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="host phenotype", description="""Phenotype of human or other host. For phenotypic quality ontology (pato) (v 2018-03-27) terms, please see http://purl.bioontology.org/ontology/pato. For Human Phenotype Ontology (HP) (v 2018-06-13) please see http://purl.bioontology.org/ontology/HP""", json_schema_extra = { "linkml_meta": {'alias': 'host_phenotype',
-         'aliases': ['host phenotype'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PATO or HP'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8498,7 +8210,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000874',
          'string_serialization': '{termLabel} {[termID]}'} })
     host_sex: Optional[HostSexEnum] = Field(default=None, title="host sex", description="""Gender or physical sex of the host.""", json_schema_extra = { "linkml_meta": {'alias': 'host_sex',
-         'aliases': ['host sex'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8507,7 +8218,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000811'} })
     host_shape: Optional[TextValue] = Field(default=None, title="host shape", description="""Morphological shape of host""", json_schema_extra = { "linkml_meta": {'alias': 'host_shape',
-         'aliases': ['host shape'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'shape'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -8516,7 +8226,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000261',
          'string_serialization': '{text}'} })
     host_subject_id: Optional[TextValue] = Field(default=None, title="host subject id", description="""A unique identifier by which each subject can be referred to, de-identified.""", json_schema_extra = { "linkml_meta": {'alias': 'host_subject_id',
-         'aliases': ['host subject id'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'unique identifier'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8526,7 +8235,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000861',
          'string_serialization': '{text}'} })
     host_subspecf_genlin: Optional[list[str]] = Field(default=None, title="host subspecific genetic lineage", description="""Information about the genetic distinctness of the host organism below the subspecies level e.g., serovar, serotype, biotype, ecotype, variety, cultivar, or any relevant genetic typing schemes like Group I plasmid. Subspecies should not be recorded in this term, but in the NCBI taxonomy. Supply both the lineage name and the lineage rank separated by a colon, e.g., biovar:abc123.""", json_schema_extra = { "linkml_meta": {'alias': 'host_subspecf_genlin',
-         'aliases': ['host subspecific genetic lineage'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'Genetic lineage below lowest '
                                                      'rank of NCBI taxonomy, which is '
@@ -8541,7 +8249,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001318',
          'string_serialization': '{rank name}:{text}'} })
     host_substrate: Optional[TextValue] = Field(default=None, title="host substrate", description="""The growth substrate of the host.""", json_schema_extra = { "linkml_meta": {'alias': 'host_substrate',
-         'aliases': ['host substrate'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'substrate name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8551,7 +8258,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000252',
          'string_serialization': '{text}'} })
     host_symbiont: Optional[list[str]] = Field(default=None, title="observed host symbionts", description="""The taxonomic name of the organism(s) found living in mutualistic, commensalistic, or parasitic symbiosis with the specific host.""", json_schema_extra = { "linkml_meta": {'alias': 'host_symbiont',
-         'aliases': ['observed host symbionts'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'species name or common name'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -8561,7 +8267,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001298',
          'string_serialization': '{text}'} })
     host_taxid: Optional[ControlledIdentifiedTermValue] = Field(default=None, title="host taxid", description="""NCBI taxon id of the host, e.g. 9606""", json_schema_extra = { "linkml_meta": {'alias': 'host_taxid',
-         'aliases': ['host taxid'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'NCBI taxon identifier'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8571,7 +8276,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000250'} })
     host_tot_mass: Optional[QuantityValue] = Field(default=None, title="host total mass", description="""Total mass of the host at collection, the unit depends on host""", json_schema_extra = { "linkml_meta": {'alias': 'host_tot_mass',
-         'aliases': ['host total mass'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8583,7 +8287,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000263'} })
     host_wet_mass: Optional[QuantityValue] = Field(default=None, title="host wet mass", description="""Measurement of wet mass""", json_schema_extra = { "linkml_meta": {'alias': 'host_wet_mass',
-         'aliases': ['host wet mass'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8595,7 +8298,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000567'} })
     humidity: Optional[QuantityValue] = Field(default=None, title="humidity", description="""Amount of water vapour in the air, at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'humidity',
-         'aliases': ['humidity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8607,7 +8309,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000100'} })
     humidity_regm: Optional[list[TextValue]] = Field(default=None, title="humidity regimen", description="""Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'alias': 'humidity_regm',
-         'aliases': ['humidity regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'humidity value;treatment '
                                                      'interval and duration'},
@@ -8621,7 +8322,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000568',
          'string_serialization': '{float} {unit};{Rn/start_time/end_time/duration}'} })
     indoor_space: Optional[IndoorSpaceEnum] = Field(default=None, title="indoor space", description="""A distinguishable space within a structure, the purpose for which discrete areas of a building is used""", json_schema_extra = { "linkml_meta": {'alias': 'indoor_space',
-         'aliases': ['indoor space'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8630,7 +8330,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000763'} })
     indoor_surf: Optional[IndoorSurfEnum] = Field(default=None, title="indoor surface", description="""Type of indoor surface""", json_schema_extra = { "linkml_meta": {'alias': 'indoor_surf',
-         'aliases': ['indoor surface'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8639,7 +8338,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000764'} })
     indust_eff_percent: Optional[QuantityValue] = Field(default=None, title="industrial effluent percent", description="""Percentage of industrial effluents received by wastewater treatment plant""", json_schema_extra = { "linkml_meta": {'alias': 'indust_eff_percent',
-         'aliases': ['industrial effluent percent'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8651,7 +8349,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000662'} })
     inorg_particles: Optional[list[TextValue]] = Field(default=None, title="inorganic particles", description="""Concentration of particles such as sand, grit, metal particles, ceramics, etc.; can include multiple particles""", json_schema_extra = { "linkml_meta": {'alias': 'inorg_particles',
-         'aliases': ['inorganic particles'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'inorganic particle '
                                                      'name;measurement value'},
@@ -8665,7 +8362,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000664',
          'string_serialization': '{text};{float} {unit}'} })
     inside_lux: Optional[QuantityValue] = Field(default=None, title="inside lux light", description="""The recorded value at sampling time (power density)""", json_schema_extra = { "linkml_meta": {'alias': 'inside_lux',
-         'aliases': ['inside lux light'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8678,7 +8374,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000168'} })
     int_wall_cond: Optional[IntWallCondEnum] = Field(default=None, title="interior wall condition", description="""The physical condition of the wall at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas""", json_schema_extra = { "linkml_meta": {'alias': 'int_wall_cond',
-         'aliases': ['interior wall condition'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8687,7 +8382,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000813'} })
     iw_bt_date_well: Optional[TimestampValue] = Field(default=None, title="injection water breakthrough date of specific well", description="""Injection water breakthrough date per well following a secondary and/or tertiary recovery""", json_schema_extra = { "linkml_meta": {'alias': 'iw_bt_date_well',
-         'aliases': ['injection water breakthrough date of specific well'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'timestamp'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8696,7 +8390,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001010'} })
     iwf: Optional[QuantityValue] = Field(default=None, title="injection water fraction", description="""Proportion of the produced fluids derived from injected water at the time of sampling. (e.g. 87%)""", json_schema_extra = { "linkml_meta": {'alias': 'iwf',
-         'aliases': ['injection water fraction'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8708,7 +8401,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000455'} })
     last_clean: Optional[TimestampValue] = Field(default=None, title="last time swept/mopped/vacuumed", description="""The last time the floor was cleaned (swept, mopped, vacuumed)""", json_schema_extra = { "linkml_meta": {'alias': 'last_clean',
-         'aliases': ['last time swept/mopped/vacuumed'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'timestamp'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8717,7 +8409,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000814'} })
     lat_lon: Optional[GeolocationValue] = Field(default=None, title="geographic location (latitude and longitude)", description="""The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system""", json_schema_extra = { "linkml_meta": {'alias': 'lat_lon',
-         'aliases': ['geographic location (latitude and longitude)'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'decimal degrees,  limit to 8 '
                                                      'decimal points'}},
@@ -8729,7 +8420,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000009',
          'string_serialization': '{float} {float}'} })
     light_intensity: Optional[QuantityValue] = Field(default=None, title="light intensity", description="""Measurement of light intensity""", json_schema_extra = { "linkml_meta": {'alias': 'light_intensity',
-         'aliases': ['light intensity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8740,7 +8430,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000706'} })
     light_regm: Optional[TextValue] = Field(default=None, title="light regimen", description="""Information about treatment(s) involving exposure to light, including both light intensity and quality.""", json_schema_extra = { "linkml_meta": {'alias': 'light_regm',
-         'aliases': ['light regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'exposure type;light '
                                                      'intensity;light quality'},
@@ -8754,7 +8443,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000569',
          'string_serialization': '{text};{float} {unit};{float} {unit}'} })
     light_type: Optional[list[LightTypeEnum]] = Field(default=None, title="light type", description="""Application of light to achieve some practical or aesthetic effect. Lighting includes the use of both artificial light sources such as lamps and light fixtures, as well as natural illumination by capturing daylight. Can also include absence of light""", json_schema_extra = { "linkml_meta": {'alias': 'light_type',
-         'aliases': ['light type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -8763,7 +8451,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000769'} })
     link_addit_analys: Optional[TextValue] = Field(default=None, title="links to additional analysis", description="""Link to additional analysis results performed on the sample""", json_schema_extra = { "linkml_meta": {'alias': 'link_addit_analys',
-         'aliases': ['links to additional analysis'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8773,7 +8460,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000340',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     link_class_info: Optional[TextValue] = Field(default=None, title="link to classification information", description="""Link to digitized soil maps or other soil classification information""", json_schema_extra = { "linkml_meta": {'alias': 'link_class_info',
-         'aliases': ['link to classification information'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8783,7 +8469,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000329',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     link_climate_info: Optional[TextValue] = Field(default=None, title="link to climate information", description="""Link to climate resource""", json_schema_extra = { "linkml_meta": {'alias': 'link_climate_info',
-         'aliases': ['link to climate information'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8793,7 +8478,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000328',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     lithology: Optional[LithologyEnum] = Field(default=None, title="lithology", description="""Hydrocarbon resource main lithology (Additional information: http://petrowiki.org/Lithology_and_rock_type_determination). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'lithology',
-         'aliases': ['lithology'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8802,7 +8486,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000990'} })
     local_class: Optional[TextValue] = Field(default=None, title="soil_taxonomic/local classification", description="""Soil classification based on local soil classification system""", json_schema_extra = { "linkml_meta": {'alias': 'local_class',
-         'aliases': ['soil_taxonomic/local classification'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'local classification name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8812,7 +8495,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000330',
          'string_serialization': '{text}'} })
     local_class_meth: Optional[TextValue] = Field(default=None, title="soil_taxonomic/local classification method", description="""Reference or method used in determining the local soil classification""", json_schema_extra = { "linkml_meta": {'alias': 'local_class_meth',
-         'aliases': ['soil_taxonomic/local classification method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8822,7 +8504,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000331',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     magnesium: Optional[QuantityValue] = Field(default=None, title="magnesium", description="""Concentration of magnesium in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'magnesium',
-         'aliases': ['magnesium'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8837,7 +8518,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000431'} })
     max_occup: Optional[QuantityValue] = Field(default=None, title="maximum occupancy", description="""The maximum amount of people allowed in the indoor environment""", json_schema_extra = { "linkml_meta": {'alias': 'max_occup',
-         'aliases': ['maximum occupancy'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8847,7 +8527,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000229'} })
     mean_frict_vel: Optional[QuantityValue] = Field(default=None, title="mean friction velocity", description="""Measurement of mean friction velocity""", json_schema_extra = { "linkml_meta": {'alias': 'mean_frict_vel',
-         'aliases': ['mean friction velocity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8859,7 +8538,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000498'} })
     mean_peak_frict_vel: Optional[QuantityValue] = Field(default=None, title="mean peak friction velocity", description="""Measurement of mean peak friction velocity""", json_schema_extra = { "linkml_meta": {'alias': 'mean_peak_frict_vel',
-         'aliases': ['mean peak friction velocity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8871,7 +8549,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000502'} })
     mech_struc: Optional[MechStrucEnum] = Field(default=None, title="mechanical structure", description="""mechanical structure: a moving structure""", json_schema_extra = { "linkml_meta": {'alias': 'mech_struc',
-         'aliases': ['mechanical structure'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8880,7 +8557,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000815'} })
     mechanical_damage: Optional[list[TextValue]] = Field(default=None, title="mechanical damage", description="""Information about any mechanical damage exerted on the plant; can include multiple damages and sites""", json_schema_extra = { "linkml_meta": {'alias': 'mechanical_damage',
-         'aliases': ['mechanical damage'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'damage type;body site'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -8890,7 +8566,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001052',
          'string_serialization': '{text};{text}'} })
     methane: Optional[QuantityValue] = Field(default=None, title="methane", description="""Methane (gas) amount or concentration at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'methane',
-         'aliases': ['methane'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8904,7 +8579,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000101'} })
     micro_biomass_meth: Optional[str] = Field(default=None, title="microbial biomass method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'alias': 'micro_biomass_meth',
-         'aliases': ['microbial biomass method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -8914,7 +8588,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000339',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     microbial_biomass: Optional[QuantityValue] = Field(default=None, title="microbial biomass", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units""", json_schema_extra = { "linkml_meta": {'alias': 'microbial_biomass',
-         'aliases': ['microbial biomass'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8928,7 +8601,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000650'} })
     mineral_nutr_regm: Optional[list[TextValue]] = Field(default=None, title="mineral nutrient regimen", description="""Information about treatment involving the use of mineral supplements; should include the name of mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mineral nutrient regimens""", json_schema_extra = { "linkml_meta": {'alias': 'mineral_nutr_regm',
-         'aliases': ['mineral nutrient regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'mineral nutrient name;mineral '
                                                      'nutrient amount;treatment '
@@ -8944,8 +8616,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000570',
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
-    misc_param: Optional[list[PropertyAssertion]] = Field(default=None, title="miscellaneous parameter", description="""Structured miscellaneous property assertions for this Biosample. Use when a value cannot cleanly fit an existing, policy-governed slot.""", json_schema_extra = { "linkml_meta": {'alias': 'misc_param',
-         'aliases': ['miscellaneous parameter'],
+    misc_param: Optional[list[PropertyAssertion]] = Field(default=None, title="miscellaneous parameter", description="""Structured miscellaneous property assertions. Use when a value cannot cleanly fit an existing, policy-governed slot.""", json_schema_extra = { "linkml_meta": {'alias': 'misc_param',
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'parameter name;measurement '
                                                      'value'},
@@ -8958,7 +8629,6 @@ class Biosample(Sample):
          'string_serialization': '{text};{float} {unit}',
          'todos': ['This slot should not be available in the submission portal.']} })
     n_alkanes: Optional[list[TextValue]] = Field(default=None, title="n-alkanes", description="""Concentration of n-alkanes; can include multiple n-alkanes""", json_schema_extra = { "linkml_meta": {'alias': 'n_alkanes',
-         'aliases': ['n-alkanes'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'n-alkane name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
@@ -8970,7 +8640,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000503',
          'string_serialization': '{text};{float} {unit}'} })
     nitrate: Optional[QuantityValue] = Field(default=None, title="nitrate", description="""Concentration of nitrate in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'nitrate',
-         'aliases': ['nitrate'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8984,7 +8653,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000425'} })
     nitrite: Optional[QuantityValue] = Field(default=None, title="nitrite", description="""Concentration of nitrite in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'nitrite',
-         'aliases': ['nitrite'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -8998,7 +8666,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000426'} })
     nitro: Optional[QuantityValue] = Field(default=None, title="nitrogen", description="""Concentration of nitrogen (total)""", json_schema_extra = { "linkml_meta": {'alias': 'nitro',
-         'aliases': ['nitrogen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9011,7 +8678,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000504'} })
     non_min_nutr_regm: Optional[list[str]] = Field(default=None, title="non-mineral nutrient regimen", description="""Information about treatment involving the exposure of plant to non-mineral nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple non-mineral nutrient regimens""", json_schema_extra = { "linkml_meta": {'alias': 'non_min_nutr_regm',
-         'aliases': ['non-mineral nutrient regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'non-mineral nutrient '
                                                      'name;non-mineral nutrient '
@@ -9029,7 +8695,6 @@ class Biosample(Sample):
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
     number_pets: Optional[QuantityValue] = Field(default=None, title="number of pets", description="""The number of pets residing in the sampled space""", json_schema_extra = { "linkml_meta": {'alias': 'number_pets',
-         'aliases': ['number of pets'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9039,7 +8704,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000231'} })
     number_plants: Optional[QuantityValue] = Field(default=None, title="number of houseplants", description="""The number of plant(s) in the sampling space""", json_schema_extra = { "linkml_meta": {'alias': 'number_plants',
-         'aliases': ['number of houseplants'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9049,7 +8713,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000230'} })
     number_resident: Optional[QuantityValue] = Field(default=None, title="number of residents", description="""The number of individuals currently occupying in the sampling location""", json_schema_extra = { "linkml_meta": {'alias': 'number_resident',
-         'aliases': ['number of residents'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9059,7 +8722,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000232'} })
     occup_density_samp: Optional[QuantityValue] = Field(default=None, title="occupant density at sampling", description="""Average number of occupants at time of sampling per square footage""", json_schema_extra = { "linkml_meta": {'alias': 'occup_density_samp',
-         'aliases': ['occupant density at sampling'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9070,7 +8732,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000217'} })
     occup_document: Optional[OccupDocumentEnum] = Field(default=None, title="occupancy documentation", description="""The type of documentation of occupancy""", json_schema_extra = { "linkml_meta": {'alias': 'occup_document',
-         'aliases': ['occupancy documentation'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9079,7 +8740,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000816'} })
     occup_samp: Optional[QuantityValue] = Field(default=None, title="occupancy at sampling", description="""Number of occupants present at time of sample within the given space""", json_schema_extra = { "linkml_meta": {'alias': 'occup_samp',
-         'aliases': ['occupancy at sampling'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9089,7 +8749,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000772'} })
     org_carb: Optional[QuantityValue] = Field(default=None, title="organic carbon", description="""Concentration of organic carbon""", json_schema_extra = { "linkml_meta": {'alias': 'org_carb',
-         'aliases': ['organic carbon'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9102,7 +8761,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000508'} })
     org_count_qpcr_info: Optional[str] = Field(default=None, title="organism count qPCR information", description="""If qpcr was used for the cell count, the target gene name, the primer sequence and the cycling conditions should also be provided. (Example: 16S rrna; FWD:ACGTAGCTATGACGT REV:GTGCTAGTCGAGTAC; initial denaturation:90C_5min; denaturation:90C_2min; annealing:52C_30 sec; elongation:72C_30 sec; 90 C for 1 min; final elongation:72C_5min; 30 cycles)""", json_schema_extra = { "linkml_meta": {'alias': 'org_count_qpcr_info',
-         'aliases': ['organism count qPCR information'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'gene name;FWD:forward primer '
                                                      'sequence;REV:reverse primer '
@@ -9122,7 +8780,6 @@ class Biosample(Sample):
                                  'denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final '
                                  'elongation:degrees_minutes; total cycles'} })
     org_matter: Optional[QuantityValue] = Field(default=None, title="organic matter", description="""Concentration of organic matter""", json_schema_extra = { "linkml_meta": {'alias': 'org_matter',
-         'aliases': ['organic matter'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9134,7 +8791,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000204'} })
     org_nitro: Optional[QuantityValue] = Field(default=None, title="organic nitrogen", description="""Concentration of organic nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'org_nitro',
-         'aliases': ['organic nitrogen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9146,7 +8802,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000205'} })
     org_particles: Optional[list[TextValue]] = Field(default=None, title="organic particles", description="""Concentration of particles such as faeces, hairs, food, vomit, paper fibers, plant material, humus, etc.""", json_schema_extra = { "linkml_meta": {'alias': 'org_particles',
-         'aliases': ['organic particles'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'particle name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
@@ -9158,7 +8813,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000665',
          'string_serialization': '{text};{float} {unit}'} })
     organism_count: Optional[list[QuantityValue]] = Field(default=None, title="organism count", description="""Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)""", json_schema_extra = { "linkml_meta": {'alias': 'organism_count',
-         'aliases': ['organism count'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'organism name;measurement '
                                                      'value;enumeration'},
@@ -9174,7 +8828,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000103'} })
     owc_tvdss: Optional[QuantityValue] = Field(default=None, title="oil water contact depth", description="""Depth of the original oil water contact (OWC) zone (average) (m TVDSS)""", json_schema_extra = { "linkml_meta": {'alias': 'owc_tvdss',
-         'aliases': ['oil water contact depth'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9185,7 +8838,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000405'} })
     oxy_stat_samp: Optional[OxyStatSampEnum] = Field(default=None, title="oxygenation status of sample", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'alias': 'oxy_stat_samp',
-         'aliases': ['oxygenation status of sample'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9194,7 +8846,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000753'} })
     oxygen: Optional[QuantityValue] = Field(default=None, title="oxygen", description="""Oxygen (gas) amount or concentration at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'oxygen',
-         'aliases': ['oxygen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9208,7 +8859,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000104'} })
     part_org_carb: Optional[QuantityValue] = Field(default=None, title="particulate organic carbon", description="""Concentration of particulate organic carbon""", json_schema_extra = { "linkml_meta": {'alias': 'part_org_carb',
-         'aliases': ['particulate organic carbon'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9221,7 +8871,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000515'} })
     part_org_nitro: Optional[QuantityValue] = Field(default=None, title="particulate organic nitrogen", description="""Concentration of particulate organic nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'part_org_nitro',
-         'aliases': ['particulate organic nitrogen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9235,7 +8884,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000719'} })
     particle_class: Optional[list[TextValue]] = Field(default=None, title="particle classification", description="""Particles are classified, based on their size, into six general categories:clay, silt, sand, gravel, cobbles, and boulders; should include amount of particle preceded by the name of the particle type; can include multiple values""", json_schema_extra = { "linkml_meta": {'alias': 'particle_class',
-         'aliases': ['particle classification'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'particle name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'},
@@ -9247,7 +8895,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000206',
          'string_serialization': '{text};{float} {unit}'} })
     permeability: Optional[TextValue] = Field(default=None, title="permeability", description="""Measure of the ability of a hydrocarbon resource to allow fluids to pass through it. (Additional information: https://en.wikipedia.org/wiki/Permeability_(earth_sciences))""", json_schema_extra = { "linkml_meta": {'alias': 'permeability',
-         'aliases': ['permeability'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value range'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9258,7 +8905,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000404',
          'string_serialization': '{integer} - {integer} {unit}'} })
     perturbation: Optional[list[TextValue]] = Field(default=None, title="perturbation", description="""Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types""", json_schema_extra = { "linkml_meta": {'alias': 'perturbation',
-         'aliases': ['perturbation'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'perturbation type '
                                                      'name;perturbation interval and '
@@ -9271,7 +8917,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000754',
          'string_serialization': '{text};{Rn/start_time/end_time/duration}'} })
     pesticide_regm: Optional[list[TextValue]] = Field(default=None, title="pesticide regimen", description="""Information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple pesticide regimens""", json_schema_extra = { "linkml_meta": {'alias': 'pesticide_regm',
-         'aliases': ['pesticide regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'pesticide name;pesticide '
                                                      'amount;treatment interval and '
@@ -9288,7 +8933,6 @@ class Biosample(Sample):
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
     petroleum_hydrocarb: Optional[QuantityValue] = Field(default=None, title="petroleum hydrocarbon", description="""Concentration of petroleum hydrocarbon""", json_schema_extra = { "linkml_meta": {'alias': 'petroleum_hydrocarb',
-         'aliases': ['petroleum hydrocarbon'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9300,7 +8944,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000516'} })
     ph: Optional[float] = Field(default=None, title="pH", description="""Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid""", json_schema_extra = { "linkml_meta": {'alias': 'ph',
-         'aliases': ['pH'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9309,7 +8952,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001001'} })
     ph_meth: Optional[TextValue] = Field(default=None, title="pH method", description="""Reference or method used in determining ph""", json_schema_extra = { "linkml_meta": {'alias': 'ph_meth',
-         'aliases': ['pH method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9322,7 +8964,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001106',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     ph_regm: Optional[list[TextValue]] = Field(default=None, title="pH regimen", description="""Information about treatment involving exposure of plants to varying levels of ph of the growth media, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimen""", json_schema_extra = { "linkml_meta": {'alias': 'ph_regm',
-         'aliases': ['pH regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value;treatment '
                                                      'interval and duration'},
@@ -9333,7 +8974,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001056',
          'string_serialization': '{float};{Rn/start_time/end_time/duration}'} })
     phaeopigments: Optional[list[TextValue]] = Field(default=None, title="phaeopigments", description="""Concentration of phaeopigments; can include multiple phaeopigments""", json_schema_extra = { "linkml_meta": {'alias': 'phaeopigments',
-         'aliases': ['phaeopigments'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'phaeopigment name;measurement '
                                                      'value'},
@@ -9346,7 +8986,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000180',
          'string_serialization': '{text};{float} {unit}'} })
     phosphate: Optional[QuantityValue] = Field(default=None, title="phosphate", description="""Concentration of phosphate""", json_schema_extra = { "linkml_meta": {'alias': 'phosphate',
-         'aliases': ['phosphate'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9358,7 +8997,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000505'} })
     phosplipid_fatt_acid: Optional[list[TextValue]] = Field(default=None, title="phospholipid fatty acid", description="""Concentration of phospholipid fatty acids; can include multiple values""", json_schema_extra = { "linkml_meta": {'alias': 'phosplipid_fatt_acid',
-         'aliases': ['phospholipid fatty acid'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'phospholipid fatty acid '
                                                      'name;measurement value'},
@@ -9371,7 +9009,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000181',
          'string_serialization': '{text};{float} {unit}'} })
     photon_flux: Optional[QuantityValue] = Field(default=None, title="photon flux", description="""Measurement of photon flux""", json_schema_extra = { "linkml_meta": {'alias': 'photon_flux',
-         'aliases': ['photon flux'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9385,7 +9022,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000725'} })
     plant_growth_med: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="plant growth medium", description="""Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from EO:plant growth medium (follow this link for terms http://purl.obolibrary.org/obo/EO_0007147) or other controlled vocabulary""", json_schema_extra = { "linkml_meta": {'alias': 'plant_growth_med',
-         'aliases': ['plant growth medium'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'EO or enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9394,7 +9030,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001057'} })
     plant_product: Optional[TextValue] = Field(default=None, title="plant product", description="""Substance produced by the plant, where the sample was obtained from""", json_schema_extra = { "linkml_meta": {'alias': 'plant_product',
-         'aliases': ['plant product'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'product name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9404,7 +9039,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001058',
          'string_serialization': '{text}'} })
     plant_sex: Optional[PlantSexEnum] = Field(default=None, title="plant sex", description="""Sex of the reproductive parts on the whole plant, e.g. pistillate, staminate, monoecieous, hermaphrodite.""", json_schema_extra = { "linkml_meta": {'alias': 'plant_sex',
-         'aliases': ['plant sex'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9413,7 +9047,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001059'} })
     plant_struc: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="plant structure", description="""Name of plant structure the sample was obtained from; for Plant Ontology (PO) (v releases/2017-12-14) terms, see http://purl.bioontology.org/ontology/PO, e.g. petiole epidermis (PO_0000051). If an individual flower is sampled, the sex of it can be recorded here.""", json_schema_extra = { "linkml_meta": {'alias': 'plant_struc',
-         'aliases': ['plant structure'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'PO'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -9422,7 +9055,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001060',
          'string_serialization': '{termLabel} {[termID]}'} })
     pollutants: Optional[list[TextValue]] = Field(default=None, title="pollutants", description="""Pollutant types and, amount or concentrations measured at the time of sampling; can report multiple pollutants by entering numeric values preceded by name of pollutant""", json_schema_extra = { "linkml_meta": {'alias': 'pollutants',
-         'aliases': ['pollutants'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'pollutant name;measurement '
                                                      'value'},
@@ -9437,7 +9069,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000107',
          'string_serialization': '{text};{float} {unit}'} })
     porosity: Optional[TextValue] = Field(default=None, title="porosity", description="""Porosity of deposited sediment is volume of voids divided by the total volume of sample""", json_schema_extra = { "linkml_meta": {'alias': 'porosity',
-         'aliases': ['porosity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value or range'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9449,7 +9080,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000211',
          'string_serialization': '{float} - {float} {unit}'} })
     potassium: Optional[QuantityValue] = Field(default=None, title="potassium", description="""Concentration of potassium in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'potassium',
-         'aliases': ['potassium'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9463,7 +9093,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000430'} })
     pour_point: Optional[QuantityValue] = Field(default=None, title="pour point", description="""Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high¬†pour point¬†is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (soure: https://en.wikipedia.org/wiki/pour_point)""", json_schema_extra = { "linkml_meta": {'alias': 'pour_point',
-         'aliases': ['pour point'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9475,7 +9104,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000127'} })
     pre_treatment: Optional[TextValue] = Field(default=None, title="pre-treatment", description="""The process of pre-treatment removes materials that can be easily collected from the raw wastewater""", json_schema_extra = { "linkml_meta": {'alias': 'pre_treatment',
-         'aliases': ['pre-treatment'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'pre-treatment type'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9485,7 +9113,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000348',
          'string_serialization': '{text}'} })
     pres_animal_insect: Optional[str] = Field(default=None, title="presence of pets, animals, or insects", description="""The type and number of animals or insects present in the sampling space.""", json_schema_extra = { "linkml_meta": {'alias': 'pres_animal_insect',
-         'aliases': ['presence of pets, animals, or insects'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration;count'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9494,7 +9121,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000819'} })
     pressure: Optional[QuantityValue] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject to, in atmospheres""", json_schema_extra = { "linkml_meta": {'alias': 'pressure',
-         'aliases': ['pressure'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9506,7 +9132,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000412'} })
     prev_land_use_meth: Optional[str] = Field(default=None, title="history/previous land use method", description="""Reference or method used in determining previous land use and dates""", json_schema_extra = { "linkml_meta": {'alias': 'prev_land_use_meth',
-         'aliases': ['history/previous land use method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9516,7 +9141,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000316',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     previous_land_use: Optional[TextValue] = Field(default=None, title="history/previous land use", description="""Previous land use and dates""", json_schema_extra = { "linkml_meta": {'alias': 'previous_land_use',
-         'aliases': ['history/previous land use'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'land use name;date'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9526,7 +9150,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000315',
          'string_serialization': '{text};{timestamp}'} })
     primary_prod: Optional[QuantityValue] = Field(default=None, title="primary production", description="""Measurement of primary production, generally measured as isotope uptake""", json_schema_extra = { "linkml_meta": {'alias': 'primary_prod',
-         'aliases': ['primary production'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9541,7 +9164,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000728'} })
     primary_treatment: Optional[TextValue] = Field(default=None, title="primary treatment", description="""The process to produce both a generally homogeneous liquid capable of being treated biologically and a sludge that can be separately treated or processed""", json_schema_extra = { "linkml_meta": {'alias': 'primary_treatment',
-         'aliases': ['primary treatment'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'primary treatment type'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9551,7 +9173,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000349',
          'string_serialization': '{text}'} })
     prod_rate: Optional[QuantityValue] = Field(default=None, title="production rate", description="""Oil and/or gas production rates per well (e.g. 524 m3 / day)""", json_schema_extra = { "linkml_meta": {'alias': 'prod_rate',
-         'aliases': ['production rate'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9563,7 +9184,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000452'} })
     prod_start_date: Optional[TimestampValue] = Field(default=None, title="production start date", description="""Date of field's first production""", json_schema_extra = { "linkml_meta": {'alias': 'prod_start_date',
-         'aliases': ['production start date'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'timestamp'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9572,7 +9192,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001008'} })
     profile_position: Optional[ProfilePositionEnum] = Field(default=None, title="profile position", description="""Cross-sectional position in the hillslope where sample was collected.sample area position in relation to surrounding areas""", json_schema_extra = { "linkml_meta": {'alias': 'profile_position',
-         'aliases': ['profile position'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9581,7 +9200,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001084'} })
     quad_pos: Optional[QuadPosEnum] = Field(default=None, title="quadrant position", description="""The quadrant position of the sampling room within the building""", json_schema_extra = { "linkml_meta": {'alias': 'quad_pos',
-         'aliases': ['quadrant position'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9590,7 +9208,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000820'} })
     radiation_regm: Optional[list[TextValue]] = Field(default=None, title="radiation regimen", description="""Information about treatment involving exposure of plant or a plant part to a particular radiation regimen; should include the radiation type, amount or intensity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple radiation regimens""", json_schema_extra = { "linkml_meta": {'alias': 'radiation_regm',
-         'aliases': ['radiation regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'radiation type name;radiation '
                                                      'amount;treatment interval and '
@@ -9606,7 +9223,6 @@ class Biosample(Sample):
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
     rainfall_regm: Optional[list[TextValue]] = Field(default=None, title="rainfall regimen", description="""Information about treatment involving an exposure to a given amount of rainfall, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'alias': 'rainfall_regm',
-         'aliases': ['rainfall regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value;treatment '
                                                      'interval and duration'},
@@ -9620,7 +9236,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000576',
          'string_serialization': '{float} {unit};{Rn/start_time/end_time/duration}'} })
     reactor_type: Optional[TextValue] = Field(default=None, title="reactor type", description="""Anaerobic digesters can be designed and engineered to operate using a number of different process configurations, as batch or continuous, mesophilic, high solid or low solid, and single stage or multistage""", json_schema_extra = { "linkml_meta": {'alias': 'reactor_type',
-         'aliases': ['reactor type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'reactor type name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9630,7 +9245,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000350',
          'string_serialization': '{text}'} })
     redox_potential: Optional[QuantityValue] = Field(default=None, title="redox potential", description="""Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential""", json_schema_extra = { "linkml_meta": {'alias': 'redox_potential',
-         'aliases': ['redox potential'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9642,7 +9256,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000182'} })
     rel_air_humidity: Optional[QuantityValue] = Field(default=None, title="relative air humidity", description="""Partial vapor and air pressure, density of the vapor and air, or by the actual mass of the vapor and air""", json_schema_extra = { "linkml_meta": {'alias': 'rel_air_humidity',
-         'aliases': ['relative air humidity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9654,7 +9267,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000121'} })
     rel_humidity_out: Optional[QuantityValue] = Field(default=None, title="outside relative humidity", description="""The recorded outside relative humidity value at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'rel_humidity_out',
-         'aliases': ['outside relative humidity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9667,7 +9279,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000188'} })
     rel_samp_loc: Optional[RelSampLocEnum] = Field(default=None, title="relative sampling location", description="""The sampling location within the train car""", json_schema_extra = { "linkml_meta": {'alias': 'rel_samp_loc',
-         'aliases': ['relative sampling location'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9676,7 +9287,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000821'} })
     reservoir: Optional[TextValue] = Field(default=None, title="reservoir name", description="""Name of the reservoir (e.g. Carapebus)""", json_schema_extra = { "linkml_meta": {'alias': 'reservoir',
-         'aliases': ['reservoir name'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -9685,7 +9295,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000303',
          'string_serialization': '{text}'} })
     resins_pc: Optional[TextValue] = Field(default=None, title="resins wt%", description="""Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)""", json_schema_extra = { "linkml_meta": {'alias': 'resins_pc',
-         'aliases': ['resins wt%'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9697,7 +9306,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000134',
          'string_serialization': '{text};{float} {unit}'} })
     room_air_exch_rate: Optional[QuantityValue] = Field(default=None, title="room air exchange rate", description="""The rate at which outside air replaces indoor air in a given space""", json_schema_extra = { "linkml_meta": {'alias': 'room_air_exch_rate',
-         'aliases': ['room air exchange rate'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9709,7 +9317,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000169'} })
     room_architec_elem: Optional[str] = Field(default=None, title="room architectural elements", description="""The unique details and component parts that, together, form the architecture of a distinguisahable space within a built structure""", json_schema_extra = { "linkml_meta": {'alias': 'room_architec_elem',
-         'aliases': ['room architectural elements'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'free text'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9719,7 +9326,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000233',
          'string_serialization': '{text}'} })
     room_condt: Optional[RoomCondtEnum] = Field(default=None, title="room condition", description="""The condition of the room at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'room_condt',
-         'aliases': ['room condition'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9728,7 +9334,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000822'} })
     room_connected: Optional[RoomConnectedEnum] = Field(default=None, title="rooms connected by a doorway", description="""List of rooms connected to the sampling room by a doorway""", json_schema_extra = { "linkml_meta": {'alias': 'room_connected',
-         'aliases': ['rooms connected by a doorway'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9737,7 +9342,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000826'} })
     room_count: Optional[TextValue] = Field(default=None, title="room count", description="""The total count of rooms in the built structure including all room types""", json_schema_extra = { "linkml_meta": {'alias': 'room_count',
-         'aliases': ['room count'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -9745,7 +9349,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000234'} })
     room_dim: Optional[TextValue] = Field(default=None, title="room dimensions", description="""The length, width and height of sampling room""", json_schema_extra = { "linkml_meta": {'alias': 'room_dim',
-         'aliases': ['room dimensions'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9757,7 +9360,6 @@ class Biosample(Sample):
          'string_serialization': '{integer} {unit} x {integer} {unit} x {integer} '
                                  '{unit}'} })
     room_door_dist: Optional[TextValue] = Field(default=None, title="room door distance", description="""Distance between doors (meters) in the hallway between the sampling room and adjacent rooms""", json_schema_extra = { "linkml_meta": {'alias': 'room_door_dist',
-         'aliases': ['room door distance'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9768,7 +9370,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000193',
          'string_serialization': '{integer} {unit}'} })
     room_door_share: Optional[TextValue] = Field(default=None, title="rooms that share a door with sampling room", description="""List of room(s) (room number, room name) sharing a door with the sampling room""", json_schema_extra = { "linkml_meta": {'alias': 'room_door_share',
-         'aliases': ['rooms that share a door with sampling room'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'room name;room number'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9778,7 +9379,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000242',
          'string_serialization': '{text};{integer}'} })
     room_hallway: Optional[TextValue] = Field(default=None, title="rooms that are on the same hallway", description="""List of room(s) (room number, room name) located in the same hallway as sampling room""", json_schema_extra = { "linkml_meta": {'alias': 'room_hallway',
-         'aliases': ['rooms that are on the same hallway'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'room name;room number'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9788,7 +9388,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000238',
          'string_serialization': '{text};{integer}'} })
     room_loc: Optional[RoomLocEnum] = Field(default=None, title="room location in building", description="""The position of the room within the building""", json_schema_extra = { "linkml_meta": {'alias': 'room_loc',
-         'aliases': ['room location in building'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9797,7 +9396,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000823'} })
     room_moist_dam_hist: Optional[int] = Field(default=None, title="room moisture damage or mold history", description="""The history of moisture damage or mold in the past 12 months. Number of events of moisture damage or mold observed""", json_schema_extra = { "linkml_meta": {'alias': 'room_moist_dam_hist',
-         'aliases': ['room moisture damage or mold history'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -9805,7 +9403,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000235'} })
     room_net_area: Optional[TextValue] = Field(default=None, title="room net area", description="""The net floor area of sampling room. Net area excludes wall thicknesses""", json_schema_extra = { "linkml_meta": {'alias': 'room_net_area',
-         'aliases': ['room net area'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9817,7 +9414,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000194',
          'string_serialization': '{integer} {unit}'} })
     room_occup: Optional[QuantityValue] = Field(default=None, title="room occupancy", description="""Count of room occupancy at time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'room_occup',
-         'aliases': ['room occupancy'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9827,7 +9423,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000236'} })
     room_samp_pos: Optional[RoomSampPosEnum] = Field(default=None, title="room sampling position", description="""The horizontal sampling position in the room relative to architectural elements""", json_schema_extra = { "linkml_meta": {'alias': 'room_samp_pos',
-         'aliases': ['room sampling position'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9836,7 +9431,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000824'} })
     room_type: Optional[RoomTypeEnum] = Field(default=None, title="room type", description="""The main purpose or activity of the sampling room. A room is any distinguishable space within a structure""", json_schema_extra = { "linkml_meta": {'alias': 'room_type',
-         'aliases': ['room type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9845,7 +9439,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000825'} })
     room_vol: Optional[TextValue] = Field(default=None, title="room volume", description="""Volume of sampling room""", json_schema_extra = { "linkml_meta": {'alias': 'room_vol',
-         'aliases': ['room volume'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9857,7 +9450,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000195',
          'string_serialization': '{integer} {unit}'} })
     room_wall_share: Optional[TextValue] = Field(default=None, title="rooms that share a wall with sampling room", description="""List of room(s) (room number, room name) sharing a wall with the sampling room""", json_schema_extra = { "linkml_meta": {'alias': 'room_wall_share',
-         'aliases': ['rooms that share a wall with sampling room'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'room name;room number'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9867,7 +9459,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000243',
          'string_serialization': '{text};{integer}'} })
     room_window_count: Optional[int] = Field(default=None, title="room window count", description="""Number of windows in the room""", json_schema_extra = { "linkml_meta": {'alias': 'room_window_count',
-         'aliases': ['room window count'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -9875,7 +9466,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000237'} })
     root_cond: Optional[TextValue] = Field(default=None, title="rooting conditions", description="""Relevant rooting conditions such as field plot size, sowing density, container dimensions, number of plants per container.""", json_schema_extra = { "linkml_meta": {'alias': 'root_cond',
-         'aliases': ['rooting conditions'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI,url or free text'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9885,7 +9475,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001061',
          'string_serialization': '{PMID}|{DOI}|{URL}|{text}'} })
     root_med_carbon: Optional[TextValue] = Field(default=None, title="rooting medium carbon", description="""Source of organic carbon in the culture rooting medium; e.g. sucrose.""", json_schema_extra = { "linkml_meta": {'alias': 'root_med_carbon',
-         'aliases': ['rooting medium carbon'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'carbon source name;measurement '
                                                      'value'},
@@ -9898,7 +9487,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000577',
          'string_serialization': '{text};{float} {unit}'} })
     root_med_macronutr: Optional[TextValue] = Field(default=None, title="rooting medium macronutrients", description="""Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170¬†mg/L).""", json_schema_extra = { "linkml_meta": {'alias': 'root_med_macronutr',
-         'aliases': ['rooting medium macronutrients'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'macronutrient name;measurement '
                                                      'value'},
@@ -9911,7 +9499,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000578',
          'string_serialization': '{text};{float} {unit}'} })
     root_med_micronutr: Optional[TextValue] = Field(default=None, title="rooting medium micronutrients", description="""Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo); e.g. H3BO3 (6.2¬†mg/L).""", json_schema_extra = { "linkml_meta": {'alias': 'root_med_micronutr',
-         'aliases': ['rooting medium micronutrients'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'micronutrient name;measurement '
                                                      'value'},
@@ -9924,7 +9511,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000579',
          'string_serialization': '{text};{float} {unit}'} })
     root_med_ph: Optional[QuantityValue] = Field(default=None, title="rooting medium pH", description="""pH measurement of the culture rooting medium; e.g. 5.5.""", json_schema_extra = { "linkml_meta": {'alias': 'root_med_ph',
-         'aliases': ['rooting medium pH'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9934,7 +9520,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001062'} })
     root_med_regl: Optional[TextValue] = Field(default=None, title="rooting medium regulators", description="""Growth regulators in the culture rooting medium such as cytokinins, auxins, gybberellins, abscisic acid; e.g. 0.5¬†mg/L NAA.""", json_schema_extra = { "linkml_meta": {'alias': 'root_med_regl',
-         'aliases': ['rooting medium regulators'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'regulator name;measurement '
                                                      'value'},
@@ -9947,7 +9532,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000581',
          'string_serialization': '{text};{float} {unit}'} })
     root_med_solid: Optional[TextValue] = Field(default=None, title="rooting medium solidifier", description="""Specification of the solidifying agent in the culture rooting medium; e.g. agar.""", json_schema_extra = { "linkml_meta": {'alias': 'root_med_solid',
-         'aliases': ['rooting medium solidifier'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -9956,7 +9540,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001063',
          'string_serialization': '{text}'} })
     root_med_suppl: Optional[TextValue] = Field(default=None, title="rooting medium organic supplements", description="""Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid (0.5¬†mg/L).""", json_schema_extra = { "linkml_meta": {'alias': 'root_med_suppl',
-         'aliases': ['rooting medium organic supplements'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'supplement name;measurement '
                                                      'value'},
@@ -9969,7 +9552,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000580',
          'string_serialization': '{text};{float} {unit}'} })
     salinity: Optional[QuantityValue] = Field(default=None, title="salinity", description="""The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater.""", json_schema_extra = { "linkml_meta": {'alias': 'salinity',
-         'aliases': ['salinity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -9982,7 +9564,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000183'} })
     salinity_meth: Optional[TextValue] = Field(default=None, title="salinity method", description="""Reference or method used in determining salinity""", json_schema_extra = { "linkml_meta": {'alias': 'salinity_meth',
-         'aliases': ['salinity method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -9992,7 +9573,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000341',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     salt_regm: Optional[list[TextValue]] = Field(default=None, title="salt regimen", description="""Information about treatment involving use of salts as supplement to liquid and soil growth media; should include the name of salt, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple salt regimens""", json_schema_extra = { "linkml_meta": {'alias': 'salt_regm',
-         'aliases': ['salt regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'salt name;salt amount;treatment '
                                                      'interval and duration'},
@@ -10008,7 +9588,6 @@ class Biosample(Sample):
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
     samp_capt_status: Optional[SampCaptStatusEnum] = Field(default=None, title="sample capture status", description="""Reason for the sample""", json_schema_extra = { "linkml_meta": {'alias': 'samp_capt_status',
-         'aliases': ['sample capture status'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10017,7 +9596,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000860'} })
     samp_collec_device: Optional[str] = Field(default=None, title="sample collection device", description="""The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094).""", json_schema_extra = { "linkml_meta": {'alias': 'samp_collec_device',
-         'aliases': ['sample collection device'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'device name'}},
          'domain_of': ['Biosample'],
@@ -10027,7 +9605,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000002',
          'string_serialization': '{termLabel} {[termID]}|{text}'} })
     samp_collec_method: Optional[str] = Field(default=None, title="sample collection method", description="""The method employed for collecting the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'samp_collec_method',
-         'aliases': ['sample collection method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI,url , or text'}},
          'domain_of': ['Biosample'],
@@ -10036,7 +9613,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001225',
          'string_serialization': '{PMID}|{DOI}|{URL}|{text}'} })
     samp_collect_point: Optional[SampCollectPointEnum] = Field(default=None, title="sample collection point", description="""Sampling point on the asset were sample was collected (e.g. Wellhead, storage tank, separator, etc). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'samp_collect_point',
-         'aliases': ['sample collection point'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10045,7 +9621,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001015'} })
     samp_dis_stage: Optional[SampDisStageEnum] = Field(default=None, title="sample disease stage", description="""Stage of the disease at the time of sample collection, e.g. inoculation, penetration, infection, growth and reproduction, dissemination of pathogen.""", json_schema_extra = { "linkml_meta": {'alias': 'samp_dis_stage',
-         'aliases': ['sample disease stage'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10054,7 +9629,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000249'} })
     samp_floor: Optional[SampFloorEnum] = Field(default=None, title="sampling floor", description="""The floor of the building, where the sampling room is located""", json_schema_extra = { "linkml_meta": {'alias': 'samp_floor',
-         'aliases': ['sampling floor'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10063,7 +9637,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000828'} })
     samp_loc_corr_rate: Optional[TextValue] = Field(default=None, title="corrosion rate at sample location", description="""Metal corrosion rate is the speed of metal deterioration due to environmental conditions. As environmental conditions change corrosion rates change accordingly. Therefore, long term corrosion rates are generally more informative than short term rates and for that reason they are preferred during reporting. In the case of suspected MIC, corrosion rate measurements at the time of sampling might provide insights into the involvement of certain microbial community members in MIC as well as potential microbial interplays""", json_schema_extra = { "linkml_meta": {'alias': 'samp_loc_corr_rate',
-         'aliases': ['corrosion rate at sample location'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value range'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10075,7 +9648,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000136',
          'string_serialization': '{float} - {float} {unit}'} })
     samp_mat_process: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="sample material processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.""", json_schema_extra = { "linkml_meta": {'alias': 'samp_mat_process',
-         'aliases': ['sample material processing'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'text'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'filtering of seawater, storing samples in ethanol'}],
@@ -10083,7 +9655,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000016',
          'string_serialization': '{text}'} })
     samp_md: Optional[QuantityValue] = Field(default=None, title="sample measured depth", description="""In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'samp_md',
-         'aliases': ['sample measured depth'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value;enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10094,7 +9665,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000413'} })
     samp_name: Optional[str] = Field(default=None, title="sample name", description="""A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name.""", json_schema_extra = { "linkml_meta": {'alias': 'samp_name',
-         'aliases': ['sample name'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'text'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'ISDsoil1'}],
@@ -10102,7 +9672,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001107',
          'string_serialization': '{text}'} })
     samp_preserv: Optional[TextValue] = Field(default=None, title="preservative added to sample", description="""Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde, etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)""", json_schema_extra = { "linkml_meta": {'alias': 'samp_preserv',
-         'aliases': ['preservative added to sample'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10114,7 +9683,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000463',
          'string_serialization': '{text};{float} {unit}'} })
     samp_room_id: Optional[TextValue] = Field(default=None, title="sampling room ID or name", description="""Sampling room number. This ID should be consistent with the designations on the building floor plans""", json_schema_extra = { "linkml_meta": {'alias': 'samp_room_id',
-         'aliases': ['sampling room ID or name'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -10122,7 +9690,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000244'} })
     samp_size: Optional[QuantityValue] = Field(default=None, title="amount or size of sample collected", description="""The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected.""", json_schema_extra = { "linkml_meta": {'alias': 'samp_size',
-         'aliases': ['amount or size of sample collected'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'preferred_unit': {'tag': 'preferred_unit',
@@ -10135,7 +9702,6 @@ class Biosample(Sample):
          'is_a': 'nucleic acid sequence source field',
          'slot_uri': 'MIXS:0000001'} })
     samp_sort_meth: Optional[list[TextValue]] = Field(default=None, title="sample size sorting method", description="""Method by which samples are sorted; open face filter collecting total suspended particles, prefilter to remove particles larger than X micrometers in diameter, where common values of X would be 10 and 2.5 full size sorting in a cascade impactor.""", json_schema_extra = { "linkml_meta": {'alias': 'samp_sort_meth',
-         'aliases': ['sample size sorting method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'description of method'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -10145,7 +9711,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000216',
          'string_serialization': '{text}'} })
     samp_store_dur: Optional[TextValue] = Field(default=None, title="sample storage duration", description="""Duration for which the sample was stored""", json_schema_extra = { "linkml_meta": {'alias': 'samp_store_dur',
-         'aliases': ['sample storage duration'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'duration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10155,7 +9720,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000116',
          'string_serialization': '{duration}'} })
     samp_store_loc: Optional[TextValue] = Field(default=None, title="sample storage location", description="""Location at which sample was stored, usually name of a specific freezer/room""", json_schema_extra = { "linkml_meta": {'alias': 'samp_store_loc',
-         'aliases': ['sample storage location'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'location name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10165,7 +9729,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000755',
          'string_serialization': '{text}'} })
     samp_store_temp: Optional[QuantityValue] = Field(default=None, title="sample storage temperature", description="""Temperature at which sample was stored, e.g. -80 degree Celsius""", json_schema_extra = { "linkml_meta": {'alias': 'samp_store_temp',
-         'aliases': ['sample storage temperature'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10177,7 +9740,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000110'} })
     samp_subtype: Optional[SampSubtypeEnum] = Field(default=None, title="sample subtype", description="""Name of sample sub-type. For example if \"sample type\" is \"Produced Water\" then subtype could be \"Oil Phase\" or \"Water Phase\". If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'samp_subtype',
-         'aliases': ['sample subtype'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10186,7 +9748,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000999'} })
     samp_taxon_id: Optional[ControlledIdentifiedTermValue] = Field(default=None, title="Taxonomy ID of DNA sample", description="""NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome’ for mock community/positive controls, or 'blank sample' for negative controls.""", json_schema_extra = { "linkml_meta": {'alias': 'samp_taxon_id',
-         'aliases': ['Taxonomy ID of DNA sample'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'Taxonomy ID'}},
          'comments': ['coal metagenome [NCBITaxon:1260732] would be a reasonable '
@@ -10195,7 +9756,6 @@ class Biosample(Sample):
          'is_a': 'investigation field',
          'slot_uri': 'MIXS:0001320'} })
     samp_time_out: Optional[TextValue] = Field(default=None, title="sampling time outside", description="""The recent and long term history of outside sampling""", json_schema_extra = { "linkml_meta": {'alias': 'samp_time_out',
-         'aliases': ['sampling time outside'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'time'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit', 'value': 'hour'}},
@@ -10204,7 +9764,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000196'} })
     samp_transport_cond: Optional[TextValue] = Field(default=None, title="sample transport conditions", description="""Sample transport duration (in days or hrs) and temperature the sample was exposed to (e.g. 5.5 days; 20 ¬∞C)""", json_schema_extra = { "linkml_meta": {'alias': 'samp_transport_cond',
-         'aliases': ['sample transport conditions'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value;measurement '
                                                      'value'},
@@ -10217,7 +9776,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000410',
          'string_serialization': '{float} {unit};{float} {unit}'} })
     samp_tvdss: Optional[TextValue] = Field(default=None, title="sample true vertical depth subsea", description="""Depth of the sample i.e. The vertical distance between the sea level and the sampled position in the subsurface. Depth can be reported as an interval for subsurface samples e.g. 1325.75-1362.25 m""", json_schema_extra = { "linkml_meta": {'alias': 'samp_tvdss',
-         'aliases': ['sample true vertical depth subsea'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value or measurement '
                                                      'value range'},
@@ -10229,7 +9787,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000409',
          'string_serialization': '{float}-{float} {unit}'} })
     samp_type: Optional[TextValue] = Field(default=None, title="sample type", description="""The type of material from which the sample was obtained. For the Hydrocarbon package, samples include types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. For the Food Package, samples are usually categorized as food, body products or tissues, or environmental material. This field accepts terms listed under environmental specimen (http://purl.obolibrary.org/obo/GENEPIO_0001246).""", json_schema_extra = { "linkml_meta": {'alias': 'samp_type',
-         'aliases': ['sample type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'GENEPIO:0001246'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10239,7 +9796,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000998',
          'string_serialization': '{termLabel} {[termID]}'} })
     samp_weather: Optional[SampWeatherEnum] = Field(default=None, title="sampling day weather", description="""The weather on the sampling day""", json_schema_extra = { "linkml_meta": {'alias': 'samp_weather',
-         'aliases': ['sampling day weather'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10248,7 +9804,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000827'} })
     samp_well_name: Optional[TextValue] = Field(default=None, title="sample well name", description="""Name of the well (e.g. BXA1123) where sample was taken""", json_schema_extra = { "linkml_meta": {'alias': 'samp_well_name',
-         'aliases': ['sample well name'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -10257,7 +9812,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000296',
          'string_serialization': '{text}'} })
     saturates_pc: Optional[TextValue] = Field(default=None, title="saturates wt%", description="""Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)""", json_schema_extra = { "linkml_meta": {'alias': 'saturates_pc',
-         'aliases': ['saturates wt%'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'name;measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10269,7 +9823,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000131',
          'string_serialization': '{text};{float} {unit}'} })
     season: Optional[TextValue] = Field(default=None, title="season", description="""The season when sampling occurred. Any of the four periods into which the year is divided by the equinoxes and solstices. This field accepts terms listed under season (http://purl.obolibrary.org/obo/NCIT_C94729).""", json_schema_extra = { "linkml_meta": {'alias': 'season',
-         'aliases': ['season'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'NCIT:C94729'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10279,7 +9832,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000829',
          'string_serialization': '{termLabel} {[termID]}'} })
     season_environment: Optional[list[TextValue]] = Field(default=None, title="seasonal environment", description="""Treatment involving an exposure to a particular season (e.g. Winter, summer, rabi, rainy etc.), treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment""", json_schema_extra = { "linkml_meta": {'alias': 'season_environment',
-         'aliases': ['seasonal environment'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'seasonal environment '
                                                      'name;treatment interval and '
@@ -10291,7 +9843,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001068',
          'string_serialization': '{text};{Rn/start_time/end_time/duration}'} })
     season_precpt: Optional[QuantityValue] = Field(default=None, title="average seasonal precipitation", description="""The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.""", json_schema_extra = { "linkml_meta": {'alias': 'season_precpt',
-         'aliases': ['mean seasonal precipitation'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10310,7 +9861,6 @@ class Biosample(Sample):
          'todos': ['check validation & examples. always mm? so value only? Or value + '
                    'unit']} })
     season_temp: Optional[QuantityValue] = Field(default=None, title="mean seasonal temperature", description="""Mean seasonal temperature""", json_schema_extra = { "linkml_meta": {'alias': 'season_temp',
-         'aliases': ['mean seasonal temperature'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10322,7 +9872,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000643'} })
     season_use: Optional[SeasonUseEnum] = Field(default=None, title="seasonal use", description="""The seasons the space is occupied""", json_schema_extra = { "linkml_meta": {'alias': 'season_use',
-         'aliases': ['seasonal use'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10331,7 +9880,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000830'} })
     secondary_treatment: Optional[TextValue] = Field(default=None, title="secondary treatment", description="""The process for substantially degrading the biological content of the sewage""", json_schema_extra = { "linkml_meta": {'alias': 'secondary_treatment',
-         'aliases': ['secondary treatment'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'secondary treatment type'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10341,7 +9889,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000351',
          'string_serialization': '{text}'} })
     sediment_type: Optional[SedimentTypeEnum] = Field(default=None, title="sediment type", description="""Information about the sediment type based on major constituents""", json_schema_extra = { "linkml_meta": {'alias': 'sediment_type',
-         'aliases': ['sediment type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10350,7 +9897,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001078'} })
     sewage_type: Optional[TextValue] = Field(default=None, title="sewage type", description="""Type of wastewater treatment plant as municipial or industrial""", json_schema_extra = { "linkml_meta": {'alias': 'sewage_type',
-         'aliases': ['sewage type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'sewage type name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10360,7 +9906,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000215',
          'string_serialization': '{text}'} })
     shad_dev_water_mold: Optional[str] = Field(default=None, title="shading device signs of water/mold", description="""Signs of the presence of mold or mildew on the shading device""", json_schema_extra = { "linkml_meta": {'alias': 'shad_dev_water_mold',
-         'aliases': ['shading device signs of water/mold'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10371,7 +9916,6 @@ class Biosample(Sample):
          'string_serialization': '[presence of mold visible|no presence of mold '
                                  'visible]'} })
     shading_device_cond: Optional[ShadingDeviceCondEnum] = Field(default=None, title="shading device condition", description="""The physical condition of the shading device at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'shading_device_cond',
-         'aliases': ['shading device condition'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10380,7 +9924,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000831'} })
     shading_device_loc: Optional[TextValue] = Field(default=None, title="shading device location", description="""The location of the shading device in relation to the built structure""", json_schema_extra = { "linkml_meta": {'alias': 'shading_device_loc',
-         'aliases': ['shading device location'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10390,7 +9933,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000832',
          'string_serialization': '[exterior|interior]'} })
     shading_device_mat: Optional[TextValue] = Field(default=None, title="shading device material", description="""The material the shading device is composed of""", json_schema_extra = { "linkml_meta": {'alias': 'shading_device_mat',
-         'aliases': ['shading device material'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'material name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10400,7 +9942,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000245',
          'string_serialization': '{text}'} })
     shading_device_type: Optional[ShadingDeviceTypeEnum] = Field(default=None, title="shading device type", description="""The type of shading device""", json_schema_extra = { "linkml_meta": {'alias': 'shading_device_type',
-         'aliases': ['shading device type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10409,7 +9950,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000835'} })
     sieving: Optional[TextValue] = Field(default=None, title="composite design/sieving", description="""Collection design of pooled samples and/or sieve size and amount of sample sieved""", json_schema_extra = { "linkml_meta": {'alias': 'sieving',
-         'aliases': ['composite design/sieving'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'design name and/or size;amount'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10424,7 +9964,6 @@ class Biosample(Sample):
          'string_serialization': '{{text}|{float} {unit}};{float} {unit}',
          'todos': ['check validation and examples']} })
     silicate: Optional[QuantityValue] = Field(default=None, title="silicate", description="""Concentration of silicate""", json_schema_extra = { "linkml_meta": {'alias': 'silicate',
-         'aliases': ['silicate'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10436,7 +9975,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000184'} })
     size_frac: Optional[TextValue] = Field(default=None, title="size fraction selected", description="""Filtering pore size used in sample preparation""", json_schema_extra = { "linkml_meta": {'alias': 'size_frac',
-         'aliases': ['size fraction selected'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'filter size value range'}},
          'domain_of': ['Biosample'],
@@ -10445,7 +9983,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000017',
          'string_serialization': '{float}-{float} {unit}'} })
     size_frac_low: Optional[QuantityValue] = Field(default=None, title="size-fraction lower threshold", description="""Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample""", json_schema_extra = { "linkml_meta": {'alias': 'size_frac_low',
-         'aliases': ['size-fraction lower threshold'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
@@ -10456,7 +9993,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000735'} })
     size_frac_up: Optional[QuantityValue] = Field(default=None, title="size-fraction upper threshold", description="""Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample""", json_schema_extra = { "linkml_meta": {'alias': 'size_frac_up',
-         'aliases': ['size-fraction upper threshold'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
@@ -10467,7 +10003,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000736'} })
     slope_aspect: Optional[QuantityValue] = Field(default=None, title="slope aspect", description="""The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees). This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.""", json_schema_extra = { "linkml_meta": {'alias': 'slope_aspect',
-         'aliases': ['slope aspect'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10481,7 +10016,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000647'} })
     slope_gradient: Optional[QuantityValue] = Field(default=None, title="slope gradient", description="""Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer""", json_schema_extra = { "linkml_meta": {'alias': 'slope_gradient',
-         'aliases': ['slope gradient'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10495,7 +10029,6 @@ class Biosample(Sample):
          'todos': ['Slope is a percent. How does the validation work? Check to correct '
                    'examples']} })
     sludge_retent_time: Optional[QuantityValue] = Field(default=None, title="sludge retention time", description="""The time activated sludge remains in reactor""", json_schema_extra = { "linkml_meta": {'alias': 'sludge_retent_time',
-         'aliases': ['sludge retention time'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10506,7 +10039,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000669'} })
     sodium: Optional[QuantityValue] = Field(default=None, title="sodium", description="""Sodium concentration in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'sodium',
-         'aliases': ['sodium'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10520,7 +10052,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000428'} })
     soil_horizon: Optional[SoilHorizonEnum] = Field(default=None, title="soil horizon", description="""Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath""", json_schema_extra = { "linkml_meta": {'alias': 'soil_horizon',
-         'aliases': ['soil horizon'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10529,7 +10060,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001082'} })
     soil_text_measure: Optional[QuantityValue] = Field(default=None, title="soil texture measurement", description="""The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.""", json_schema_extra = { "linkml_meta": {'alias': 'soil_text_measure',
-         'aliases': ['soil texture measurement'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10540,7 +10070,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000335'} })
     soil_texture_meth: Optional[str] = Field(default=None, title="soil texture method", description="""Reference or method used in determining soil texture""", json_schema_extra = { "linkml_meta": {'alias': 'soil_texture_meth',
-         'aliases': ['soil texture method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10550,7 +10079,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000336',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     soil_type: Optional[TextValue] = Field(default=None, title="soil type", description="""Description of the soil type or classification. This field accepts terms under soil (http://purl.obolibrary.org/obo/ENVO_00001998).  Multiple terms can be separated by pipes.""", json_schema_extra = { "linkml_meta": {'alias': 'soil_type',
-         'aliases': ['soil type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'ENVO_00001998'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10560,7 +10088,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000332',
          'string_serialization': '{termLabel} {[termID]}'} })
     soil_type_meth: Optional[TextValue] = Field(default=None, title="soil type method", description="""Reference or method used in determining soil series name or other lower-level classification""", json_schema_extra = { "linkml_meta": {'alias': 'soil_type_meth',
-         'aliases': ['soil type method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10570,7 +10097,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000334',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     solar_irradiance: Optional[QuantityValue] = Field(default=None, title="solar irradiance", description="""The amount of solar energy that arrives at a specific area of a surface during a specific time interval""", json_schema_extra = { "linkml_meta": {'alias': 'solar_irradiance',
-         'aliases': ['solar irradiance'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10585,7 +10111,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000112'} })
     soluble_inorg_mat: Optional[list[TextValue]] = Field(default=None, title="soluble inorganic material", description="""Concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc.""", json_schema_extra = { "linkml_meta": {'alias': 'soluble_inorg_mat',
-         'aliases': ['soluble inorganic material'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'soluble inorganic material '
                                                      'name;measurement value'},
@@ -10600,7 +10125,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000672',
          'string_serialization': '{text};{float} {unit}'} })
     soluble_org_mat: Optional[list[TextValue]] = Field(default=None, title="soluble organic material", description="""Concentration of substances such as urea, fruit sugars, soluble proteins, drugs, pharmaceuticals, etc.""", json_schema_extra = { "linkml_meta": {'alias': 'soluble_org_mat',
-         'aliases': ['soluble organic material'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'soluble organic material '
                                                      'name;measurement value'},
@@ -10615,7 +10139,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000673',
          'string_serialization': '{text};{float} {unit}'} })
     soluble_react_phosp: Optional[QuantityValue] = Field(default=None, title="soluble reactive phosphorus", description="""Concentration of soluble reactive phosphorus""", json_schema_extra = { "linkml_meta": {'alias': 'soluble_react_phosp',
-         'aliases': ['soluble reactive phosphorus'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10629,7 +10152,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000738'} })
     source_mat_id: Optional[TextValue] = Field(default=None, title="source material identifier", description="""A globally unique identifier assigned to the biological sample.""", json_schema_extra = { "linkml_meta": {'alias': 'source_mat_id',
-         'aliases': ['source material identifiers'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'for cultures of microorganisms: '
                                                      'identifiers for two culture '
@@ -10642,7 +10164,7 @@ class Biosample(Sample):
                       'assigned FAIR identifiers to your samples, you can generate '
                       'UUIDs (https://www.uuidgenerator.net/).'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'IGSN:AU1243'},
+         'examples': [{'value': 'igsn:AU1243'},
                       {'value': 'UUID:24f1467a-40f4-11ed-b878-0242ac120002'}],
          'is_a': 'nucleic acid sequence source field',
          'slot_uri': 'MIXS:0000026',
@@ -10652,7 +10174,6 @@ class Biosample(Sample):
                    'a GUID. It can be an optional field to fill out only if they '
                    'already have a resolvable ID.']} })
     space_typ_state: Optional[TextValue] = Field(default=None, title="space typical state", description="""Customary or normal state of the space""", json_schema_extra = { "linkml_meta": {'alias': 'space_typ_state',
-         'aliases': ['space typical state'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10662,7 +10183,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000770',
          'string_serialization': '[typically occupied|typically unoccupied]'} })
     specific: Optional[SpecificEnum] = Field(default=None, title="specifications", description="""The building specifications. If design is chosen, indicate phase: conceptual, schematic, design development, construction documents""", json_schema_extra = { "linkml_meta": {'alias': 'specific',
-         'aliases': ['specifications'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10671,7 +10191,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000836'} })
     specific_humidity: Optional[QuantityValue] = Field(default=None, title="specific humidity", description="""The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound.""", json_schema_extra = { "linkml_meta": {'alias': 'specific_humidity',
-         'aliases': ['specific humidity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10684,7 +10203,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000214'} })
     sr_dep_env: Optional[SrDepEnvEnum] = Field(default=None, title="source rock depositional environment", description="""Source rock depositional environment (https://en.wikipedia.org/wiki/Source_rock). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'sr_dep_env',
-         'aliases': ['source rock depositional environment'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10693,7 +10211,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000996'} })
     sr_geol_age: Optional[SrGeolAgeEnum] = Field(default=None, title="source rock geological age", description="""Geological age of source rock (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'sr_geol_age',
-         'aliases': ['source rock geological age'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10702,7 +10219,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000997'} })
     sr_kerog_type: Optional[SrKerogTypeEnum] = Field(default=None, title="source rock kerogen type", description="""Origin of kerogen. Type I: Algal (aquatic), Type II: planktonic and soft plant material (aquatic or terrestrial), Type III: terrestrial woody/ fibrous plant material (terrestrial), Type IV: oxidized recycled woody debris (terrestrial) (additional information: https://en.wikipedia.org/wiki/Kerogen). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'sr_kerog_type',
-         'aliases': ['source rock kerogen type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10711,7 +10227,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000994'} })
     sr_lithology: Optional[SrLithologyEnum] = Field(default=None, title="source rock lithology", description="""Lithology of source rock (https://en.wikipedia.org/wiki/Source_rock). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'alias': 'sr_lithology',
-         'aliases': ['source rock lithology'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10720,7 +10235,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000995'} })
     standing_water_regm: Optional[list[TextValue]] = Field(default=None, title="standing water regimen", description="""Treatment involving an exposure to standing water during a plant's life span, types can be flood water or standing water, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'alias': 'standing_water_regm',
-         'aliases': ['standing water regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'standing water type;treatment '
                                                      'interval and duration'},
@@ -10732,7 +10246,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001069',
          'string_serialization': '{text};{Rn/start_time/end_time/duration}'} })
     store_cond: Optional[TextValue] = Field(default=None, title="storage conditions", description="""Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other).""", json_schema_extra = { "linkml_meta": {'alias': 'store_cond',
-         'aliases': ['storage conditions'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'storage condition type;duration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10742,7 +10255,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000327',
          'string_serialization': '{text};{duration}'} })
     substructure_type: Optional[list[SubstructureTypeEnum]] = Field(default=None, title="substructure type", description="""The substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level""", json_schema_extra = { "linkml_meta": {'alias': 'substructure_type',
-         'aliases': ['substructure type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -10751,7 +10263,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000767'} })
     sulfate: Optional[QuantityValue] = Field(default=None, title="sulfate", description="""Concentration of sulfate in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'sulfate',
-         'aliases': ['sulfate'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10765,7 +10276,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000423'} })
     sulfate_fw: Optional[QuantityValue] = Field(default=None, title="sulfate in formation water", description="""Original sulfate concentration in the hydrocarbon resource""", json_schema_extra = { "linkml_meta": {'alias': 'sulfate_fw',
-         'aliases': ['sulfate in formation water'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10777,7 +10287,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000407'} })
     sulfide: Optional[QuantityValue] = Field(default=None, title="sulfide", description="""Concentration of sulfide in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'sulfide',
-         'aliases': ['sulfide'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10791,7 +10300,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000424'} })
     surf_air_cont: Optional[list[SurfAirContEnum]] = Field(default=None, title="surface-air contaminant", description="""Contaminant identified on surface""", json_schema_extra = { "linkml_meta": {'alias': 'surf_air_cont',
-         'aliases': ['surface-air contaminant'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -10800,7 +10308,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000759'} })
     surf_humidity: Optional[QuantityValue] = Field(default=None, title="surface humidity", description="""Surfaces: water activity as a function of air and material moisture""", json_schema_extra = { "linkml_meta": {'alias': 'surf_humidity',
-         'aliases': ['surface humidity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10812,7 +10319,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000123'} })
     surf_material: Optional[SurfMaterialEnum] = Field(default=None, title="surface material", description="""Surface materials at the point of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'surf_material',
-         'aliases': ['surface material'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10821,7 +10327,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000758'} })
     surf_moisture: Optional[QuantityValue] = Field(default=None, title="surface moisture", description="""Water held on a surface""", json_schema_extra = { "linkml_meta": {'alias': 'surf_moisture',
-         'aliases': ['surface moisture'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10836,7 +10341,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000128'} })
     surf_moisture_ph: Optional[float] = Field(default=None, title="surface moisture pH", description="""ph measurement of surface""", json_schema_extra = { "linkml_meta": {'alias': 'surf_moisture_ph',
-         'aliases': ['surface moisture pH'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10845,7 +10349,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000760'} })
     surf_temp: Optional[QuantityValue] = Field(default=None, title="surface temperature", description="""Temperature of the surface at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'surf_temp',
-         'aliases': ['surface temperature'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10857,7 +10360,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000125'} })
     suspend_part_matter: Optional[QuantityValue] = Field(default=None, title="suspended particulate matter", description="""Concentration of suspended particulate matter""", json_schema_extra = { "linkml_meta": {'alias': 'suspend_part_matter',
-         'aliases': ['suspended particulate matter'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10869,7 +10371,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000741'} })
     suspend_solids: Optional[list[TextValue]] = Field(default=None, title="suspended solids", description="""Concentration of substances including a wide variety of material, such as silt, decaying plant and animal matter; can include multiple substances""", json_schema_extra = { "linkml_meta": {'alias': 'suspend_solids',
-         'aliases': ['suspended solids'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'suspended solid name;measurement '
                                                      'value'},
@@ -10884,7 +10385,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000150',
          'string_serialization': '{text};{float} {unit}'} })
     tan: Optional[QuantityValue] = Field(default=None, title="total acid number", description="""Total Acid Number¬†(TAN) is a measurement of acidity that is determined by the amount of¬†potassium hydroxide¬†in milligrams that is needed to neutralize the acids in one gram of oil.¬†It is an important quality measurement of¬†crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)""", json_schema_extra = { "linkml_meta": {'alias': 'tan',
-         'aliases': ['total acid number'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10896,7 +10396,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000120'} })
     temp: Optional[QuantityValue] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling.""", json_schema_extra = { "linkml_meta": {'alias': 'temp',
-         'aliases': ['temperature'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'preferred_unit': {'tag': 'preferred_unit',
@@ -10907,7 +10406,6 @@ class Biosample(Sample):
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000113'} })
     temp_out: Optional[QuantityValue] = Field(default=None, title="temperature outside house", description="""The recorded temperature value at sampling time outside""", json_schema_extra = { "linkml_meta": {'alias': 'temp_out',
-         'aliases': ['temperature outside house'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10919,7 +10417,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000197'} })
     tertiary_treatment: Optional[TextValue] = Field(default=None, title="tertiary treatment", description="""The process providing a final treatment stage to raise the effluent quality before it is discharged to the receiving environment""", json_schema_extra = { "linkml_meta": {'alias': 'tertiary_treatment',
-         'aliases': ['tertiary treatment'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'tertiary treatment type'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10929,7 +10426,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000352',
          'string_serialization': '{text}'} })
     tidal_stage: Optional[TidalStageEnum] = Field(default=None, title="tidal stage", description="""Stage of tide""", json_schema_extra = { "linkml_meta": {'alias': 'tidal_stage',
-         'aliases': ['tidal stage'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10938,7 +10434,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000750'} })
     tillage: Optional[list[TillageEnum]] = Field(default=None, title="history/tillage", description="""Note method(s) used for tilling""", json_schema_extra = { "linkml_meta": {'alias': 'tillage',
-         'aliases': ['history/tillage'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': 'm'}},
@@ -10947,7 +10442,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001081'} })
     tiss_cult_growth_med: Optional[TextValue] = Field(default=None, title="tissue culture growth media", description="""Description of plant tissue culture growth media used""", json_schema_extra = { "linkml_meta": {'alias': 'tiss_cult_growth_med',
-         'aliases': ['tissue culture growth media'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI,url or free text'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -10957,7 +10451,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001070',
          'string_serialization': '{PMID}|{DOI}|{URL}|{text}'} })
     toluene: Optional[QuantityValue] = Field(default=None, title="toluene", description="""Concentration of toluene in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'toluene',
-         'aliases': ['toluene'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10971,7 +10464,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000154'} })
     tot_carb: Optional[QuantityValue] = Field(default=None, title="total carbon", description="""Total carbon content""", json_schema_extra = { "linkml_meta": {'alias': 'tot_carb',
-         'aliases': ['total carbon'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10987,7 +10479,6 @@ class Biosample(Sample):
                    "usage in databases and re-evaluate. I couldn't find any references "
                    'that provided this data in this format']} })
     tot_depth_water_col: Optional[QuantityValue] = Field(default=None, title="total depth of water column", description="""Measurement of total depth of water column""", json_schema_extra = { "linkml_meta": {'alias': 'tot_depth_water_col',
-         'aliases': ['total depth of water column'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -10998,7 +10489,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000634'} })
     tot_diss_nitro: Optional[QuantityValue] = Field(default=None, title="total dissolved nitrogen", description="""Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'tot_diss_nitro',
-         'aliases': ['total dissolved nitrogen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11011,7 +10501,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000744'} })
     tot_inorg_nitro: Optional[QuantityValue] = Field(default=None, title="total inorganic nitrogen", description="""Total inorganic nitrogen content""", json_schema_extra = { "linkml_meta": {'alias': 'tot_inorg_nitro',
-         'aliases': ['total inorganic nitrogen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11023,7 +10512,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000745'} })
     tot_iron: Optional[QuantityValue] = Field(default=None, title="total iron", description="""Concentration of total iron in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'tot_iron',
-         'aliases': ['total iron'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11037,7 +10525,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000105'} })
     tot_nitro: Optional[QuantityValue] = Field(default=None, title="total nitrogen concentration", description="""Total nitrogen concentration of water samples, calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering, reported as nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'tot_nitro',
-         'aliases': ['total nitrogen concentration'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11051,7 +10538,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000102'} })
     tot_nitro_cont_meth: Optional[str] = Field(default=None, title="total nitrogen content method", description="""Reference or method used in determining the total nitrogen""", json_schema_extra = { "linkml_meta": {'alias': 'tot_nitro_cont_meth',
-         'aliases': ['total nitrogen content method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11062,7 +10548,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000338',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     tot_nitro_content: Optional[QuantityValue] = Field(default=None, title="total nitrogen content", description="""Total nitrogen content of the sample""", json_schema_extra = { "linkml_meta": {'alias': 'tot_nitro_content',
-         'aliases': ['total nitrogen content'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11076,7 +10561,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000530'} })
     tot_org_c_meth: Optional[TextValue] = Field(default=None, title="total organic carbon method", description="""Reference or method used in determining total organic carbon""", json_schema_extra = { "linkml_meta": {'alias': 'tot_org_c_meth',
-         'aliases': ['total organic carbon method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11086,7 +10570,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000337',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     tot_org_carb: Optional[QuantityValue] = Field(default=None, title="total organic carbon", description="""Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content""", json_schema_extra = { "linkml_meta": {'alias': 'tot_org_carb',
-         'aliases': ['total organic carbon'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11100,7 +10583,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000533',
          'todos': ['check description. How are they different?']} })
     tot_part_carb: Optional[QuantityValue] = Field(default=None, title="total particulate carbon", description="""Total particulate carbon content""", json_schema_extra = { "linkml_meta": {'alias': 'tot_part_carb',
-         'aliases': ['total particulate carbon'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11114,7 +10596,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000747'} })
     tot_phosp: Optional[QuantityValue] = Field(default=None, title="total phosphorus", description="""Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus""", json_schema_extra = { "linkml_meta": {'alias': 'tot_phosp',
-         'aliases': ['total phosphorus'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11128,7 +10609,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000117'} })
     tot_phosphate: Optional[QuantityValue] = Field(default=None, title="total phosphate", description="""Total amount or concentration of phosphate""", json_schema_extra = { "linkml_meta": {'alias': 'tot_phosphate',
-         'aliases': ['total phosphate'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11142,7 +10622,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000689'} })
     tot_sulfur: Optional[QuantityValue] = Field(default=None, title="total sulfur", description="""Concentration of total sulfur in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'tot_sulfur',
-         'aliases': ['total sulfur'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11156,7 +10635,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000419'} })
     train_line: Optional[TrainLineEnum] = Field(default=None, title="train line", description="""The subway line name""", json_schema_extra = { "linkml_meta": {'alias': 'train_line',
-         'aliases': ['train line'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11165,7 +10643,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000837'} })
     train_stat_loc: Optional[TrainStatLocEnum] = Field(default=None, title="train station collection location", description="""The train station collection location""", json_schema_extra = { "linkml_meta": {'alias': 'train_stat_loc',
-         'aliases': ['train station collection location'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11174,7 +10651,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000838'} })
     train_stop_loc: Optional[TrainStopLocEnum] = Field(default=None, title="train stop collection location", description="""The train stop collection location""", json_schema_extra = { "linkml_meta": {'alias': 'train_stop_loc',
-         'aliases': ['train stop collection location'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11183,7 +10659,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000839'} })
     turbidity: Optional[QuantityValue] = Field(default=None, title="turbidity", description="""Measure of the amount of cloudiness or haziness in water caused by individual particles""", json_schema_extra = { "linkml_meta": {'alias': 'turbidity',
-         'aliases': ['turbidity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11197,7 +10672,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000191'} })
     tvdss_of_hcr_press: Optional[QuantityValue] = Field(default=None, title="depth (TVDSS) of hydrocarbon resource pressure", description="""True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original pressure was measured (e.g. 1578 m).""", json_schema_extra = { "linkml_meta": {'alias': 'tvdss_of_hcr_press',
-         'aliases': ['depth (TVDSS) of hydrocarbon resource pressure'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11208,7 +10682,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000397'} })
     tvdss_of_hcr_temp: Optional[QuantityValue] = Field(default=None, title="depth (TVDSS) of hydrocarbon resource temperature", description="""True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m).""", json_schema_extra = { "linkml_meta": {'alias': 'tvdss_of_hcr_temp',
-         'aliases': ['depth (TVDSS) of hydrocarbon resource temperature'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11220,7 +10693,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000394'} })
     typ_occup_density: Optional[float] = Field(default=None, title="typical occupant density", description="""Customary or normal density of occupants""", json_schema_extra = { "linkml_meta": {'alias': 'typ_occup_density',
-         'aliases': ['typical occupant density'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11229,7 +10701,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000771'} })
     ventilation_rate: Optional[QuantityValue] = Field(default=None, title="ventilation rate", description="""Ventilation rate of the system in the sampled premises""", json_schema_extra = { "linkml_meta": {'alias': 'ventilation_rate',
-         'aliases': ['ventilation rate'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11243,7 +10714,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000114'} })
     ventilation_type: Optional[TextValue] = Field(default=None, title="ventilation type", description="""Ventilation system used in the sampled premises""", json_schema_extra = { "linkml_meta": {'alias': 'ventilation_type',
-         'aliases': ['ventilation type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'ventilation type name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11253,7 +10723,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000756',
          'string_serialization': '{text}'} })
     vfa: Optional[QuantityValue] = Field(default=None, title="volatile fatty acids", description="""Concentration of Volatile Fatty Acids in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'vfa',
-         'aliases': ['volatile fatty acids'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11267,7 +10736,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000152'} })
     vfa_fw: Optional[QuantityValue] = Field(default=None, title="vfa in formation water", description="""Original volatile fatty acid concentration in the hydrocarbon resource""", json_schema_extra = { "linkml_meta": {'alias': 'vfa_fw',
-         'aliases': ['vfa in formation water'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11279,7 +10747,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000408'} })
     vis_media: Optional[VisMediaEnum] = Field(default=None, title="visual media", description="""The building visual media""", json_schema_extra = { "linkml_meta": {'alias': 'vis_media',
-         'aliases': ['visual media'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11288,7 +10755,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000840'} })
     viscosity: Optional[TextValue] = Field(default=None, title="viscosity", description="""A measure of oil's resistance¬†to gradual deformation by¬†shear stress¬†or¬†tensile stress (e.g. 3.5 cp; 100 ¬∞C)""", json_schema_extra = { "linkml_meta": {'alias': 'viscosity',
-         'aliases': ['viscosity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value;measurement '
                                                      'value'},
@@ -11301,7 +10767,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000126',
          'string_serialization': '{float} {unit};{float} {unit}'} })
     volatile_org_comp: Optional[list[TextValue]] = Field(default=None, title="volatile organic compounds", description="""Concentration of carbon-based chemicals that easily evaporate at room temperature; can report multiple volatile organic compounds by entering numeric values preceded by name of compound""", json_schema_extra = { "linkml_meta": {'alias': 'volatile_org_comp',
-         'aliases': ['volatile organic compounds'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'volatile organic compound '
                                                      'name;measurement value'},
@@ -11316,7 +10781,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000115',
          'string_serialization': '{text};{float} {unit}'} })
     wall_area: Optional[QuantityValue] = Field(default=None, title="wall area", description="""The total area of the sampled room's walls""", json_schema_extra = { "linkml_meta": {'alias': 'wall_area',
-         'aliases': ['wall area'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11328,7 +10792,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000198'} })
     wall_const_type: Optional[WallConstTypeEnum] = Field(default=None, title="wall construction type", description="""The building class of the wall defined by the composition of the building elements and fire-resistance rating.""", json_schema_extra = { "linkml_meta": {'alias': 'wall_const_type',
-         'aliases': ['wall construction type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11337,7 +10800,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000841'} })
     wall_finish_mat: Optional[WallFinishMatEnum] = Field(default=None, title="wall finish material", description="""The material utilized to finish the outer most layer of the wall""", json_schema_extra = { "linkml_meta": {'alias': 'wall_finish_mat',
-         'aliases': ['wall finish material'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11346,7 +10808,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000842'} })
     wall_height: Optional[QuantityValue] = Field(default=None, title="wall height", description="""The average height of the walls in the sampled room""", json_schema_extra = { "linkml_meta": {'alias': 'wall_height',
-         'aliases': ['wall height'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
@@ -11357,7 +10818,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000221'} })
     wall_loc: Optional[WallLocEnum] = Field(default=None, title="wall location", description="""The relative location of the wall within the room""", json_schema_extra = { "linkml_meta": {'alias': 'wall_loc',
-         'aliases': ['wall location'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11366,7 +10826,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000843'} })
     wall_surf_treatment: Optional[WallSurfTreatmentEnum] = Field(default=None, title="wall surface treatment", description="""The surface treatment of interior wall""", json_schema_extra = { "linkml_meta": {'alias': 'wall_surf_treatment',
-         'aliases': ['wall surface treatment'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11375,7 +10834,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000845'} })
     wall_texture: Optional[WallTextureEnum] = Field(default=None, title="wall texture", description="""The feel, appearance, or consistency of a wall surface""", json_schema_extra = { "linkml_meta": {'alias': 'wall_texture',
-         'aliases': ['wall texture'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11384,7 +10842,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000846'} })
     wall_thermal_mass: Optional[QuantityValue] = Field(default=None, title="wall thermal mass", description="""The ability of the wall to provide inertia against temperature fluctuations. Generally this means concrete or concrete block that is either exposed or covered only with paint""", json_schema_extra = { "linkml_meta": {'alias': 'wall_thermal_mass',
-         'aliases': ['wall thermal mass'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11396,7 +10853,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000222'} })
     wall_water_mold: Optional[TextValue] = Field(default=None, title="wall signs of water/mold", description="""Signs of the presence of mold or mildew on a wall""", json_schema_extra = { "linkml_meta": {'alias': 'wall_water_mold',
-         'aliases': ['wall signs of water/mold'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11407,7 +10863,6 @@ class Biosample(Sample):
          'string_serialization': '[presence of mold visible|no presence of mold '
                                  'visible]'} })
     wastewater_type: Optional[TextValue] = Field(default=None, title="wastewater type", description="""The origin of wastewater such as human waste, rainfall, storm drains, etc.""", json_schema_extra = { "linkml_meta": {'alias': 'wastewater_type',
-         'aliases': ['wastewater type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'wastewater type name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11417,7 +10872,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000353',
          'string_serialization': '{text}'} })
     water_cont_soil_meth: Optional[str] = Field(default=None, title="water content method", description="""Reference or method used in determining the water content of soil""", json_schema_extra = { "linkml_meta": {'alias': 'water_cont_soil_meth',
-         'aliases': ['water content method'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID,DOI or url'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11436,7 +10890,6 @@ class Biosample(Sample):
                    'few).',
                    'Should this be multi valued? How to we manage and validate this?']} })
     water_content: Optional[list[str]] = Field(default=None, title="water content", description="""Water content measurement""", json_schema_extra = { "linkml_meta": {'alias': 'water_content',
-         'aliases': ['water content'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'string'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram per gram or cubic '
@@ -11453,7 +10906,6 @@ class Biosample(Sample):
                    'check and correct validation so examples are accepted',
                    'how to manage multiple water content methods?']} })
     water_current: Optional[QuantityValue] = Field(default=None, title="water current", description="""Measurement of magnitude and direction of flow within a fluid""", json_schema_extra = { "linkml_meta": {'alias': 'water_current',
-         'aliases': ['water current'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11466,7 +10918,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000203'} })
     water_cut: Optional[QuantityValue] = Field(default=None, title="water cut", description="""Current amount of water (%) in a produced fluid stream; or the average of the combined streams""", json_schema_extra = { "linkml_meta": {'alias': 'water_cut',
-         'aliases': ['water cut'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11478,7 +10929,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000454'} })
     water_feat_size: Optional[QuantityValue] = Field(default=None, title="water feature size", description="""The size of the water feature""", json_schema_extra = { "linkml_meta": {'alias': 'water_feat_size',
-         'aliases': ['water feature size'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11490,7 +10940,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000223'} })
     water_feat_type: Optional[WaterFeatTypeEnum] = Field(default=None, title="water feature type", description="""The type of water feature present within the building being sampled""", json_schema_extra = { "linkml_meta": {'alias': 'water_feat_type',
-         'aliases': ['water feature type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11499,7 +10948,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000847'} })
     water_prod_rate: Optional[QuantityValue] = Field(default=None, title="water production rate", description="""Water production rates per well (e.g. 987 m3 / day)""", json_schema_extra = { "linkml_meta": {'alias': 'water_prod_rate',
-         'aliases': ['water production rate'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11511,7 +10959,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000453'} })
     water_temp_regm: Optional[list[TextValue]] = Field(default=None, title="water temperature regimen", description="""Information about treatment involving an exposure to water with varying degree of temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'alias': 'water_temp_regm',
-         'aliases': ['water temperature regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value;treatment '
                                                      'interval and duration'},
@@ -11525,7 +10972,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000590',
          'string_serialization': '{float} {unit};{Rn/start_time/end_time/duration}'} })
     watering_regm: Optional[list[TextValue]] = Field(default=None, title="watering regimen", description="""Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens""", json_schema_extra = { "linkml_meta": {'alias': 'watering_regm',
-         'aliases': ['watering regimen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value;treatment '
                                                      'interval and duration'},
@@ -11539,7 +10985,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000591',
          'string_serialization': '{float} {unit};{Rn/start_time/end_time/duration}'} })
     weekday: Optional[WeekdayEnum] = Field(default=None, title="weekday", description="""The day of the week when sampling occurred""", json_schema_extra = { "linkml_meta": {'alias': 'weekday',
-         'aliases': ['weekday'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11548,7 +10993,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000848'} })
     win: Optional[TextValue] = Field(default=None, title="well identification number", description="""A unique identifier of a well or wellbore. This is part of the Global Framework for Well Identification initiative which is compiled by the Professional Petroleum Data Management Association (PPDM) in an effort to improve well identification systems. (Supporting information: https://ppdm.org/ and http://dl.ppdm.org/dl/690)""", json_schema_extra = { "linkml_meta": {'alias': 'win',
-         'aliases': ['well identification number'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'text'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -11557,7 +11001,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000297',
          'string_serialization': '{text}'} })
     wind_direction: Optional[TextValue] = Field(default=None, title="wind direction", description="""Wind direction is the direction from which a wind originates""", json_schema_extra = { "linkml_meta": {'alias': 'wind_direction',
-         'aliases': ['wind direction'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'wind direction name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11567,7 +11010,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000757',
          'string_serialization': '{text}'} })
     wind_speed: Optional[QuantityValue] = Field(default=None, title="wind speed", description="""Speed of wind measured at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'wind_speed',
-         'aliases': ['wind speed'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11581,7 +11023,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000118'} })
     window_cond: Optional[WindowCondEnum] = Field(default=None, title="window condition", description="""The physical condition of the window at the time of sampling""", json_schema_extra = { "linkml_meta": {'alias': 'window_cond',
-         'aliases': ['window condition'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11590,7 +11031,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000849'} })
     window_cover: Optional[WindowCoverEnum] = Field(default=None, title="window covering", description="""The type of window covering""", json_schema_extra = { "linkml_meta": {'alias': 'window_cover',
-         'aliases': ['window covering'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11599,7 +11039,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000850'} })
     window_horiz_pos: Optional[WindowHorizPosEnum] = Field(default=None, title="window horizontal position", description="""The horizontal position of the window on the wall""", json_schema_extra = { "linkml_meta": {'alias': 'window_horiz_pos',
-         'aliases': ['window horizontal position'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11608,7 +11047,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000851'} })
     window_loc: Optional[WindowLocEnum] = Field(default=None, title="window location", description="""The relative location of the window within the room""", json_schema_extra = { "linkml_meta": {'alias': 'window_loc',
-         'aliases': ['window location'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11617,7 +11055,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000852'} })
     window_mat: Optional[WindowMatEnum] = Field(default=None, title="window material", description="""The type of material used to finish a window""", json_schema_extra = { "linkml_meta": {'alias': 'window_mat',
-         'aliases': ['window material'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11626,7 +11063,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000853'} })
     window_open_freq: Optional[TextValue] = Field(default=None, title="window open frequency", description="""The number of times windows are opened per week""", json_schema_extra = { "linkml_meta": {'alias': 'window_open_freq',
-         'aliases': ['window open frequency'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
@@ -11634,7 +11070,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000246'} })
     window_size: Optional[TextValue] = Field(default=None, title="window area/size", description="""The window's length and width""", json_schema_extra = { "linkml_meta": {'alias': 'window_size',
-         'aliases': ['window area/size'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11646,7 +11081,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000224',
          'string_serialization': '{float} {unit} x {float} {unit}'} })
     window_status: Optional[TextValue] = Field(default=None, title="window status", description="""Defines whether the windows were open or closed during environmental testing""", json_schema_extra = { "linkml_meta": {'alias': 'window_status',
-         'aliases': ['window status'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11656,7 +11090,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000855',
          'string_serialization': '[closed|open]'} })
     window_type: Optional[WindowTypeEnum] = Field(default=None, title="window type", description="""The type of windows""", json_schema_extra = { "linkml_meta": {'alias': 'window_type',
-         'aliases': ['window type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11665,7 +11098,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000856'} })
     window_vert_pos: Optional[WindowVertPosEnum] = Field(default=None, title="window vertical position", description="""The vertical position of the window on the wall""", json_schema_extra = { "linkml_meta": {'alias': 'window_vert_pos',
-         'aliases': ['window vertical position'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11674,7 +11106,6 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000857'} })
     window_water_mold: Optional[TextValue] = Field(default=None, title="window signs of water/mold", description="""Signs of the presence of mold or mildew on the window.""", json_schema_extra = { "linkml_meta": {'alias': 'window_water_mold',
-         'aliases': ['window signs of water/mold'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'enumeration'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -11685,7 +11116,6 @@ class Biosample(Sample):
          'string_serialization': '[presence of mold visible|no presence of mold '
                                  'visible]'} })
     xylene: Optional[QuantityValue] = Field(default=None, title="xylene", description="""Concentration of xylene in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'xylene',
-         'aliases': ['xylene'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
@@ -11762,51 +11192,51 @@ class Biosample(Sample):
          'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample']} })
     dna_collect_site: Optional[str] = Field(default=None, title="DNA collection site", description="""Provide information on the site your DNA sample was collected from""", json_schema_extra = { "linkml_meta": {'alias': 'dna_collect_site',
+         'deprecated': "true; as of 2025-10-10, NMDC doesn't need to store this JGI "
+                       "metadata slot & it's now captured directly in the submission "
+                       'portal schema to support submissions',
          'domain_of': ['Biosample'],
          'examples': [{'value': 'untreated pond water'}],
          'rank': 15,
-         'recommended': True,
-         'slot_group': 'JGI-Metagenomics',
-         'string_serialization': '{text}'} })
+         'recommended': True} })
     dna_isolate_meth: Optional[str] = Field(default=None, title="DNA isolation method", description="""Describe the method/protocol/kit used to extract DNA/RNA.""", json_schema_extra = { "linkml_meta": {'alias': 'dna_isolate_meth',
          'aliases': ['Sample Isolation Method'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'phenol/chloroform extraction'}],
          'rank': 16,
-         'recommended': True,
-         'slot_group': 'JGI-Metagenomics',
-         'string_serialization': '{text}'} })
+         'recommended': True} })
     dna_organisms: Optional[str] = Field(default=None, title="DNA expected organisms", description="""List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.""", json_schema_extra = { "linkml_meta": {'alias': 'dna_organisms',
+         'deprecated': "true; as of 2025-10-10, NMDC doesn't need to store this JGI "
+                       "metadata slot & it's now captured directly in the submission "
+                       'portal schema to support submissions',
          'domain_of': ['Biosample'],
          'examples': [{'value': 'expected to contain microbes (59%) fungi (30%), '
                                 'viruses (10%), tadpoles (1%)'}],
          'rank': 14,
-         'recommended': True,
-         'slot_group': 'JGI-Metagenomics',
-         'string_serialization': '{text}'} })
+         'recommended': True} })
     rna_collect_site: Optional[str] = Field(default=None, title="RNA collection site", description="""Provide information on the site your RNA sample was collected from""", json_schema_extra = { "linkml_meta": {'alias': 'rna_collect_site',
+         'deprecated': "true; as of 2025-10-10, NMDC doesn't need to store this JGI "
+                       "metadata slot & it's now captured directly in the submission "
+                       'portal schema to support submissions',
          'domain_of': ['Biosample'],
          'examples': [{'value': 'untreated pond water'}],
          'rank': 15,
-         'recommended': True,
-         'slot_group': 'JGI-Metatranscriptomics',
-         'string_serialization': '{text}'} })
+         'recommended': True} })
     rna_isolate_meth: Optional[str] = Field(default=None, title="RNA isolation method", description="""Describe the method/protocol/kit used to extract DNA/RNA.""", json_schema_extra = { "linkml_meta": {'alias': 'rna_isolate_meth',
          'aliases': ['Sample Isolation Method'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'phenol/chloroform extraction'}],
          'rank': 16,
-         'recommended': True,
-         'slot_group': 'JGI-Metatranscriptomics',
-         'string_serialization': '{text}'} })
+         'recommended': True} })
     rna_organisms: Optional[str] = Field(default=None, title="RNA expected organisms", description="""List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.""", json_schema_extra = { "linkml_meta": {'alias': 'rna_organisms',
+         'deprecated': "true; as of 2025-10-10, NMDC doesn't need to store this JGI "
+                       "metadata slot & it's now captured directly in the submission "
+                       'portal schema to support submissions',
          'domain_of': ['Biosample'],
          'examples': [{'value': 'expected to contain microbes (59%) fungi (30%), '
                                 'viruses (10%), tadpoles (1%)'}],
          'rank': 14,
-         'recommended': True,
-         'slot_group': 'JGI-Metatranscriptomics',
-         'string_serialization': '{text}'} })
+         'recommended': True} })
     collection_date_inc: Optional[str] = Field(default=None, title="incubation collection date", description="""Date the incubation was harvested/collected/ended. Only relevant for incubation samples.""", json_schema_extra = { "linkml_meta": {'alias': 'collection_date_inc',
          'comments': ['Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, '
                       '2021-04 and 2021 are all acceptable.'],
@@ -11976,43 +11406,34 @@ class Biosample(Sample):
     project_id: Optional[str] = Field(default=None, title="project ID", description="""Proposal IDs or names associated with dataset""", json_schema_extra = { "linkml_meta": {'alias': 'project_id',
          'domain_of': ['Biosample'],
          'rank': 1,
-         'recommended': True,
-         'slot_group': 'EMSL',
-         'string_serialization': '{text}'} })
-    replicate_number: Optional[str] = Field(default=None, title="replicate number", description="""If sending biological replicates, indicate the rep number here.""", json_schema_extra = { "linkml_meta": {'alias': 'replicate_number',
+         'recommended': True} })
+    replicate_number: Optional[int] = Field(default=None, title="replicate number", description="""If sending biological replicates, indicate the rep number here.""", json_schema_extra = { "linkml_meta": {'alias': 'replicate_number',
          'comments': ['This will guide staff in ensuring your samples are blocked & '
                       'randomized correctly'],
          'domain_of': ['Biosample'],
          'rank': 6,
-         'recommended': True,
-         'slot_group': 'EMSL',
-         'string_serialization': '{integer}'} })
-    sample_shipped: Optional[str] = Field(default=None, title="sample shipped amount", description="""The total amount or size (volume (ml), mass (g) or area (m2) ) of sample sent to EMSL.""", json_schema_extra = { "linkml_meta": {'alias': 'sample_shipped',
+         'recommended': True} })
+    sample_shipped: Optional[str] = Field(default=None, title="sample shipped amount", description="""The total amount or size (volume, mass, or area) of sample sent to EMSL.""", json_schema_extra = { "linkml_meta": {'alias': 'sample_shipped',
          'comments': ['This field is only required when completing metadata for '
                       'samples being submitted to EMSL for analyses.'],
          'domain_of': ['Biosample'],
          'examples': [{'value': '15 g'}, {'value': '100 uL'}, {'value': '5 mL'}],
          'rank': 3,
-         'recommended': True,
-         'slot_group': 'EMSL',
-         'string_serialization': '{float} {unit}'} })
+         'recommended': True} })
     sample_type: Optional[SampleTypeEnum] = Field(default=None, title="sample type", description="""Type of sample being submitted""", json_schema_extra = { "linkml_meta": {'alias': 'sample_type',
          'comments': ["This can vary from 'environmental package' if the sample is an "
                       'extraction.'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'water extracted soil'}],
          'rank': 2,
-         'recommended': True,
-         'slot_group': 'EMSL'} })
-    technical_reps: Optional[str] = Field(default=None, title="number technical replicate", description="""If sending technical replicates of the same sample, indicate the replicate count.""", json_schema_extra = { "linkml_meta": {'alias': 'technical_reps',
+         'recommended': True} })
+    technical_reps: Optional[int] = Field(default=None, title="number technical replicate", description="""If sending technical replicates of the same sample, indicate the replicate count.""", json_schema_extra = { "linkml_meta": {'alias': 'technical_reps',
          'comments': ['This field is only required when completing metadata for '
                       'samples being submitted to EMSL for analyses.'],
          'domain_of': ['Biosample'],
          'examples': [{'value': '2'}],
          'rank': 5,
-         'recommended': True,
-         'slot_group': 'EMSL',
-         'string_serialization': '{integer}'} })
+         'recommended': True} })
     analysis_type: Optional[list[AnalysisTypeEnum]] = Field(default=None, title="analysis/data type", description="""Select all the data types associated or available for this biosample""", json_schema_extra = { "linkml_meta": {'alias': 'analysis_type',
          'comments': ['MIxS:investigation_type was included as a `see_also` but that '
                       "term doesn't resolve any more"],
@@ -12028,7 +11449,7 @@ class Biosample(Sample):
                       'sample. An original culture sample was transferred to a new '
                       'vial and generated a new sample)'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'IGSN:DSJ0284'}],
+         'examples': [{'value': 'igsn:DSJ0284'}],
          'rank': 5,
          'recommended': True,
          'slot_group': 'Sample ID',
@@ -12278,7 +11699,7 @@ class Biosample(Sample):
 
     @field_validator('igsn_biosample_identifiers')
     def pattern_igsn_biosample_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^igsn:[A-Za-z]{2,4}[A-Za-z0-9.-]{1,71}$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -12603,7 +12024,6 @@ class FieldResearchSite(Site):
          'title': 'Field Research Site'})
 
     cur_vegetation: Optional[TextValue] = Field(default=None, title="current vegetation", description="""Vegetation classification from one or more standard classification systems, or agricultural crop""", json_schema_extra = { "linkml_meta": {'alias': 'cur_vegetation',
-         'aliases': ['current vegetation'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'current vegetation type'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -12613,7 +12033,6 @@ class FieldResearchSite(Site):
          'slot_uri': 'MIXS:0000312',
          'string_serialization': '{text}'} })
     elev: Optional[float] = Field(default=None, title="elevation", description="""Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit.""", json_schema_extra = { "linkml_meta": {'alias': 'elev',
-         'aliases': ['elevation'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'}},
          'domain_of': ['FieldResearchSite', 'Biosample'],
@@ -12621,7 +12040,6 @@ class FieldResearchSite(Site):
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000093'} })
     geo_loc_name: Optional[TextValue] = Field(default=None, title="geographic location (country and/or sea,region)", description="""The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)""", json_schema_extra = { "linkml_meta": {'alias': 'geo_loc_name',
-         'aliases': ['geographic location (country and/or sea,region)'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'country or sea name (INSDC or '
                                                      'GAZ): region(GAZ), specific '
@@ -12633,7 +12051,6 @@ class FieldResearchSite(Site):
          'string_serialization': '{term}: {term}, {text}'} })
     habitat: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'habitat', 'domain_of': ['FieldResearchSite', 'Biosample']} })
     lat_lon: Optional[GeolocationValue] = Field(default=None, title="geographic location (latitude and longitude)", description="""The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system""", json_schema_extra = { "linkml_meta": {'alias': 'lat_lon',
-         'aliases': ['geographic location (latitude and longitude)'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'decimal degrees,  limit to 8 '
                                                      'decimal points'}},
@@ -12643,7 +12060,6 @@ class FieldResearchSite(Site):
          'slot_uri': 'MIXS:0000009',
          'string_serialization': '{float} {float}'} })
     local_class: Optional[TextValue] = Field(default=None, title="soil_taxonomic/local classification", description="""Soil classification based on local soil classification system""", json_schema_extra = { "linkml_meta": {'alias': 'local_class',
-         'aliases': ['soil_taxonomic/local classification'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'local classification name'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -12659,7 +12075,6 @@ class FieldResearchSite(Site):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'}} })
     soil_type: Optional[TextValue] = Field(default=None, title="soil type", description="""Description of the soil type or classification. This field accepts terms under soil (http://purl.obolibrary.org/obo/ENVO_00001998).  Multiple terms can be separated by pipes.""", json_schema_extra = { "linkml_meta": {'alias': 'soil_type',
-         'aliases': ['soil type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'ENVO_00001998'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
@@ -13913,7 +13328,6 @@ class LibraryPreparation(MaterialProcessing):
          'domain_of': ['LibraryPreparation'],
          'examples': [{'value': 'DNA'}]} })
     nucl_acid_amp: Optional[TextValue] = Field(default=None, title="nucleic acid amplification", description="""A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids""", json_schema_extra = { "linkml_meta": {'alias': 'nucl_acid_amp',
-         'aliases': ['nucleic acid amplification'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'PMID, DOI or URL'}},
          'domain_of': ['LibraryPreparation'],
@@ -13922,7 +13336,6 @@ class LibraryPreparation(MaterialProcessing):
          'slot_uri': 'MIXS:0000038',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     pcr_cond: Optional[TextValue] = Field(default=None, title="pcr conditions", description="""Description of reaction conditions and components of polymerase chain reaction performed during library preparation""", json_schema_extra = { "linkml_meta": {'alias': 'pcr_cond',
-         'aliases': ['pcr conditions'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'initial '
                                                      'denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final '
@@ -13941,7 +13354,6 @@ class LibraryPreparation(MaterialProcessing):
          'domain_of': ['LibraryPreparation'],
          'exact_mappings': ['OBI:0002475']} })
     pcr_primers: Optional[TextValue] = Field(default=None, title="pcr primers", description="""PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters""", json_schema_extra = { "linkml_meta": {'alias': 'pcr_primers',
-         'aliases': ['pcr primers'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'FWD: forward primer '
                                                      'sequence;REV:reverse primer '
@@ -13953,7 +13365,6 @@ class LibraryPreparation(MaterialProcessing):
          'string_serialization': 'FWD:{dna};REV:{dna}'} })
     stranded_orientation: Optional[StrandedOrientationEnum] = Field(default=None, description="""Lists the strand orientiation for a stranded RNA library preparation.""", json_schema_extra = { "linkml_meta": {'alias': 'stranded_orientation', 'domain_of': ['LibraryPreparation']} })
     target_gene: Optional[TargetGeneEnum] = Field(default=None, title="target gene", description="""Targeted gene or locus name for marker gene studies""", json_schema_extra = { "linkml_meta": {'alias': 'target_gene',
-         'aliases': ['target gene'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'gene name'}},
          'domain_of': ['LibraryPreparation'],
@@ -13962,7 +13373,6 @@ class LibraryPreparation(MaterialProcessing):
          'slot_uri': 'MIXS:0000044',
          'string_serialization': '{text}'} })
     target_subfragment: Optional[TextValue] = Field(default=None, title="target subfragment", description="""Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA""", json_schema_extra = { "linkml_meta": {'alias': 'target_subfragment',
-         'aliases': ['target subfragment'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'gene fragment name'}},
          'domain_of': ['LibraryPreparation'],
@@ -15879,7 +15289,7 @@ class Study(NamedThing):
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     study_category: StudyCategoryEnum = Field(default=..., description="""The type of research initiative""", json_schema_extra = { "linkml_meta": {'alias': 'study_category', 'domain_of': ['Study']} })
     study_image: Optional[list[ImageValue]] = Field(default=None, description="""Links a study to one or more images.""", json_schema_extra = { "linkml_meta": {'alias': 'study_image', 'domain_of': ['Study']} })
-    title: Optional[str] = Field(default=None, description="""A name given to the entity that differs from the name/label programmatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['Study'], 'exact_mappings': ['dcterms:title']} })
+    title: Optional[str] = Field(default=None, description="""A name given to the entity that differs from the name/label programmatically assigned to it.""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['Study'], 'exact_mappings': ['dcterms:title']} })
     websites: Optional[list[str]] = Field(default=None, description="""A list of websites that are associated with the entity.""", json_schema_extra = { "linkml_meta": {'alias': 'websites',
          'annotations': {'tooltip': {'tag': 'tooltip',
                                      'value': "Link to the Principal Investigator's "
@@ -16839,6 +16249,7 @@ class DataObject(InformationObject):
          'domain_of': ['DataObject'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'}} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by', 'domain_of': ['DataObject', 'WorkflowExecution']} })
     id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -17900,6 +17311,7 @@ class WorkflowExecution(DataEmitterProcess):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by', 'domain_of': ['DataObject', 'WorkflowExecution']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -18105,6 +17517,7 @@ class AnnotatingWorkflow(WorkflowExecution):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by', 'domain_of': ['DataObject', 'WorkflowExecution']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -18344,6 +17757,7 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by', 'domain_of': ['DataObject', 'WorkflowExecution']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -18557,6 +17971,11 @@ class MetagenomeAssembly(WorkflowExecution):
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'}},
+                        'superseded_by': {'name': 'superseded_by',
+                                          'pattern': '^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'range': 'MetagenomeAssembly',
+                                          'structured_pattern': {'interpolated': True,
+                                                                 'syntax': '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                             'range': 'NucleotideSequencing',
@@ -18644,7 +18063,7 @@ class MetagenomeAssembly(WorkflowExecution):
     num_aligned_reads: Optional[float] = Field(default=None, description="""The sequence count number of input reads aligned to assembled contigs.""", json_schema_extra = { "linkml_meta": {'alias': 'num_aligned_reads',
          'domain_of': ['MetagenomeAssembly', 'MetatranscriptomeAssembly'],
          'is_a': 'metagenome_assembly_parameter'} })
-    insdc_assembly_identifiers: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'insdc_assembly_identifiers',
+    insdc_assembly_identifiers: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'insdc_assembly_identifiers',
          'domain_of': ['MetagenomeAssembly', 'MetatranscriptomeAssembly'],
          'is_a': 'assembly_identifiers',
          'mixins': ['insdc_identifiers']} })
@@ -18688,6 +18107,10 @@ class MetagenomeAssembly(WorkflowExecution):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by',
+         'domain_of': ['DataObject', 'WorkflowExecution'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -18822,6 +18245,19 @@ class MetagenomeAssembly(WorkflowExecution):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('superseded_by')
+    def pattern_superseded_by(cls, v):
+        pattern=re.compile(r"^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid superseded_by format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid superseded_by format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
@@ -18883,6 +18319,11 @@ class MetatranscriptomeAssembly(WorkflowExecution):
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'}},
+                        'superseded_by': {'name': 'superseded_by',
+                                          'pattern': '^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'range': 'MetatranscriptomeAssembly',
+                                          'structured_pattern': {'interpolated': True,
+                                                                 'syntax': '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                             'range': 'NucleotideSequencing',
@@ -18970,7 +18411,7 @@ class MetatranscriptomeAssembly(WorkflowExecution):
     num_aligned_reads: Optional[float] = Field(default=None, description="""The sequence count number of input reads aligned to assembled contigs.""", json_schema_extra = { "linkml_meta": {'alias': 'num_aligned_reads',
          'domain_of': ['MetagenomeAssembly', 'MetatranscriptomeAssembly'],
          'is_a': 'metagenome_assembly_parameter'} })
-    insdc_assembly_identifiers: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'insdc_assembly_identifiers',
+    insdc_assembly_identifiers: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'insdc_assembly_identifiers',
          'domain_of': ['MetagenomeAssembly', 'MetatranscriptomeAssembly'],
          'is_a': 'assembly_identifiers',
          'mixins': ['insdc_identifiers']} })
@@ -19014,6 +18455,10 @@ class MetatranscriptomeAssembly(WorkflowExecution):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by',
+         'domain_of': ['DataObject', 'WorkflowExecution'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -19148,6 +18593,19 @@ class MetatranscriptomeAssembly(WorkflowExecution):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('superseded_by')
+    def pattern_superseded_by(cls, v):
+        pattern=re.compile(r"^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid superseded_by format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid superseded_by format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
@@ -19223,6 +18681,11 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
                                                       'syntax': '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'}},
                         'img_identifiers': {'maximum_cardinality': 1,
                                             'name': 'img_identifiers'},
+                        'superseded_by': {'name': 'superseded_by',
+                                          'pattern': '^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'range': 'MetatranscriptomeAnnotation',
+                                          'structured_pattern': {'interpolated': True,
+                                                                 'syntax': '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                             'range': 'NucleotideSequencing',
@@ -19286,6 +18749,10 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by',
+         'domain_of': ['DataObject', 'WorkflowExecution'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -19433,6 +18900,19 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('superseded_by')
+    def pattern_superseded_by(cls, v):
+        pattern=re.compile(r"^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid superseded_by format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid superseded_by format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
@@ -19499,6 +18979,11 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
                                                       'syntax': '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'}},
                         'img_identifiers': {'maximum_cardinality': 1,
                                             'name': 'img_identifiers'},
+                        'superseded_by': {'name': 'superseded_by',
+                                          'pattern': '^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'range': 'MetatranscriptomeExpressionAnalysis',
+                                          'structured_pattern': {'interpolated': True,
+                                                                 'syntax': '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                             'range': 'NucleotideSequencing',
@@ -19556,6 +19041,10 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by',
+         'domain_of': ['DataObject', 'WorkflowExecution'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -19690,6 +19179,19 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('superseded_by')
+    def pattern_superseded_by(cls, v):
+        pattern=re.compile(r"^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid superseded_by format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid superseded_by format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
@@ -19756,6 +19258,11 @@ class MagsAnalysis(WorkflowExecution):
                                                       'syntax': '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'}},
                         'img_identifiers': {'maximum_cardinality': 1,
                                             'name': 'img_identifiers'},
+                        'superseded_by': {'name': 'superseded_by',
+                                          'pattern': '^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'range': 'MagsAnalysis',
+                                          'structured_pattern': {'interpolated': True,
+                                                                 'syntax': '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                             'range': 'NucleotideSequencing',
@@ -19820,6 +19327,10 @@ class MagsAnalysis(WorkflowExecution):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by',
+         'domain_of': ['DataObject', 'WorkflowExecution'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -19954,6 +19465,19 @@ class MagsAnalysis(WorkflowExecution):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('superseded_by')
+    def pattern_superseded_by(cls, v):
+        pattern=re.compile(r"^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid superseded_by format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid superseded_by format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
@@ -20018,6 +19542,11 @@ class ReadQcAnalysis(WorkflowExecution):
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'}},
+                        'superseded_by': {'name': 'superseded_by',
+                                          'pattern': '^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'range': 'ReadQcAnalysis',
+                                          'structured_pattern': {'interpolated': True,
+                                                                 'syntax': '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                             'range': 'NucleotideSequencing',
@@ -20079,6 +19608,10 @@ class ReadQcAnalysis(WorkflowExecution):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by',
+         'domain_of': ['DataObject', 'WorkflowExecution'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -20200,6 +19733,19 @@ class ReadQcAnalysis(WorkflowExecution):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('superseded_by')
+    def pattern_superseded_by(cls, v):
+        pattern=re.compile(r"^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid superseded_by format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid superseded_by format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
@@ -20264,6 +19810,11 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'}},
+                        'superseded_by': {'name': 'superseded_by',
+                                          'pattern': '^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'range': 'ReadBasedTaxonomyAnalysis',
+                                          'structured_pattern': {'interpolated': True,
+                                                                 'syntax': '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                             'range': 'NucleotideSequencing',
@@ -20311,6 +19862,10 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by',
+         'domain_of': ['DataObject', 'WorkflowExecution'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -20432,6 +19987,19 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('superseded_by')
+    def pattern_superseded_by(cls, v):
+        pattern=re.compile(r"^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid superseded_by format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid superseded_by format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
@@ -20493,6 +20061,11 @@ class MetabolomicsAnalysis(WorkflowExecution):
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'}},
+                        'superseded_by': {'name': 'superseded_by',
+                                          'pattern': '^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'range': 'MetabolomicsAnalysis',
+                                          'structured_pattern': {'interpolated': True,
+                                                                 'syntax': '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                             'range': 'MassSpectrometry',
@@ -20550,6 +20123,10 @@ class MetabolomicsAnalysis(WorkflowExecution):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by',
+         'domain_of': ['DataObject', 'WorkflowExecution'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -20684,6 +20261,19 @@ class MetabolomicsAnalysis(WorkflowExecution):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('superseded_by')
+    def pattern_superseded_by(cls, v):
+        pattern=re.compile(r"^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid superseded_by format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid superseded_by format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
@@ -20745,6 +20335,11 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'}},
+                        'superseded_by': {'name': 'superseded_by',
+                                          'pattern': '^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'range': 'MetaproteomicsAnalysis',
+                                          'structured_pattern': {'interpolated': True,
+                                                                 'syntax': '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                             'range': 'MassSpectrometry',
@@ -20793,6 +20388,10 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by',
+         'domain_of': ['DataObject', 'WorkflowExecution'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -20914,6 +20513,19 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('superseded_by')
+    def pattern_superseded_by(cls, v):
+        pattern=re.compile(r"^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid superseded_by format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid superseded_by format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
@@ -20975,6 +20587,11 @@ class NomAnalysis(WorkflowExecution):
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'}},
+                        'superseded_by': {'name': 'superseded_by',
+                                          'pattern': '^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'range': 'NomAnalysis',
+                                          'structured_pattern': {'interpolated': True,
+                                                                 'syntax': '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                             'range': 'MassSpectrometry',
@@ -21028,6 +20645,10 @@ class NomAnalysis(WorkflowExecution):
          'examples': [{'value': 'metaspades v. 3.15.2'},
                       {'value': 'IMG Annotation Pipeline v.5.0.25'}],
          'mappings': ['NCIT:C165211']} })
+    superseded_by: Optional[str] = Field(default=None, description="""Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.""", json_schema_extra = { "linkml_meta": {'alias': 'superseded_by',
+         'domain_of': ['DataObject', 'WorkflowExecution'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'}} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -21162,6 +20783,19 @@ class NomAnalysis(WorkflowExecution):
             raise ValueError(err_msg)
         return v
 
+    @field_validator('superseded_by')
+    def pattern_superseded_by(cls, v):
+        pattern=re.compile(r"^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid superseded_by format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid superseded_by format: {v}"
+            raise ValueError(err_msg)
+        return v
+
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
@@ -21240,7 +20874,6 @@ NamedThing.model_rebuild()
 GeneProduct.model_rebuild()
 OntologyClass.model_rebuild()
 EnvironmentalMaterialTerm.model_rebuild()
-ChemicalEntity.model_rebuild()
 FunctionalAnnotationTerm.model_rebuild()
 Pathway.model_rebuild()
 OrthologyGroup.model_rebuild()

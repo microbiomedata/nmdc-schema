@@ -2903,6 +2903,18 @@
           "text": "Centrifuge Taxonomic Classification",
           "description": "Centrifuge output read classification file"
         },
+        "SingleM Taxonomic Classification": {
+          "text": "SingleM Taxonomic Classification",
+          "description": "SingleM taxonomic classification file"
+        },
+        "SingleM Krona Plot": {
+          "text": "SingleM Krona Plot",
+          "description": "SingleM krona plot HTML file"
+        },
+        "SingleM Clustered Report": {
+          "text": "SingleM Clustered Report",
+          "description": "SingleM taxonomic classification results, clustered by OTU"
+        },
         "Structural Annotation GFF": {
           "text": "Structural Annotation GFF",
           "description": "GFF3 format file with structural annotations",
@@ -7030,6 +7042,13 @@
             "Thermo Orbitrap IQ-X Tribrid"
           ]
         },
+        "orbitrap_exploris_120": {
+          "text": "orbitrap_exploris_120",
+          "aliases": [
+            "Orbitrap Exploris 120",
+            "Thermo Orbitrap Exploris 120"
+          ]
+        },
         "solarix_7T": {
           "text": "solarix_7T",
           "aliases": [
@@ -7223,8 +7242,8 @@
             "Illumina MiSeq"
           ],
           "structured_aliases": {
-            "ILLUMINA_MI_SEQ": {
-              "literal_form": "ILLUMINA_MI_SEQ",
+            "Illumina MiSeq": {
+              "literal_form": "Illumina MiSeq",
               "predicate": "EXACT_SYNONYM",
               "contexts": [
                 "https://gold.jgi.doe.gov/"
@@ -10023,7 +10042,7 @@
     },
     "title": {
       "name": "title",
-      "description": "A name given to the entity that differs from the name/label programmatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
+      "description": "A name given to the entity that differs from the name/label programmatically assigned to it.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "exact_mappings": [
         "dcterms:title"
@@ -10107,6 +10126,7 @@
     "igsn_identifiers": {
       "name": "igsn_identifiers",
       "from_schema": "https://w3id.org/nmdc/nmdc",
+      "is_a": "external_database_identifiers",
       "mixin": true
     },
     "gold_identifiers": {
@@ -10115,11 +10135,13 @@
       "see_also": [
         "https://gold.jgi.doe.gov/"
       ],
+      "is_a": "external_database_identifiers",
       "mixin": true
     },
     "emsl_identifiers": {
       "name": "emsl_identifiers",
       "from_schema": "https://w3id.org/nmdc/nmdc",
+      "is_a": "external_database_identifiers",
       "mixin": true
     },
     "mgnify_identifiers": {
@@ -10128,6 +10150,7 @@
       "see_also": [
         "https://www.ebi.ac.uk/metagenomics/"
       ],
+      "is_a": "external_database_identifiers",
       "mixin": true
     },
     "insdc_identifiers": {
@@ -10147,12 +10170,14 @@
         "NCBI identifiers",
         "DDBJ identifiers"
       ],
+      "is_a": "external_database_identifiers",
       "mixin": true
     },
     "neon_identifiers": {
       "name": "neon_identifiers",
       "description": "identifiers for entities according to NEON",
       "from_schema": "https://w3id.org/nmdc/nmdc",
+      "is_a": "external_database_identifiers",
       "mixin": true
     },
     "jgi_portal_identifiers": {
@@ -10162,11 +10187,13 @@
       "see_also": [
         "https://data.jgi.doe.gov/"
       ],
+      "is_a": "external_database_identifiers",
       "mixin": true
     },
     "gnps_identifiers": {
       "name": "gnps_identifiers",
       "from_schema": "https://w3id.org/nmdc/nmdc",
+      "is_a": "external_database_identifiers",
       "mixin": true
     },
     "study_identifiers": {
@@ -10448,7 +10475,8 @@
       "is_a": "biosample_identifiers",
       "mixins": [
         "igsn_identifiers"
-      ]
+      ],
+      "pattern": "^igsn:[A-Za-z]{2,4}[A-Za-z0-9.-]{1,71}$"
     },
     "omics_processing_identifiers": {
       "name": "omics_processing_identifiers",
@@ -10600,9 +10628,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "absolute air humidity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000122",
       "range": "QuantityValue",
@@ -10628,9 +10653,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "secondary and tertiary recovery methods and start date"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001009",
       "range": "TextValue",
@@ -10656,9 +10678,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "additional info"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000300",
@@ -10685,9 +10704,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "address"
-      ],
       "is_a": "core field",
       "string_serialization": "{integer}{text}",
       "slot_uri": "MIXS:0000218",
@@ -10714,9 +10730,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "adjacent rooms"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{integer}",
       "slot_uri": "MIXS:0000219",
@@ -10743,9 +10756,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "aerospace structure"
-      ],
       "is_a": "core field",
       "string_serialization": "[plane|glider]",
       "slot_uri": "MIXS:0000773",
@@ -10776,9 +10786,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "history/agrochemical additions"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{timestamp}",
       "slot_uri": "MIXS:0000639",
@@ -10810,9 +10817,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "air particulate matter concentration"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000108",
@@ -10848,9 +10852,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "air temperature"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000124",
       "range": "QuantityValue",
@@ -10880,9 +10881,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "air temperature regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000551",
@@ -10918,9 +10916,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "extreme_unusual_properties/Al saturation"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000607",
       "range": "QuantityValue",
@@ -10946,9 +10941,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "extreme_unusual_properties/Al saturation method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000324",
@@ -10983,9 +10975,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "alkalinity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000421",
       "range": "QuantityValue",
@@ -11011,9 +11000,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "alkalinity method"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000298",
@@ -11048,9 +11034,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "alkyl diethers"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000490",
       "range": "QuantityValue",
@@ -11076,9 +11059,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "altitude"
-      ],
       "is_a": "environment field",
       "slot_uri": "MIXS:0000094",
       "range": "QuantityValue",
@@ -11112,9 +11092,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "aminopeptidase activity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000172",
       "range": "QuantityValue",
@@ -11148,9 +11125,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ammonium"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000427",
       "range": "QuantityValue",
@@ -11184,9 +11158,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "amount of light"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000140",
       "range": "QuantityValue",
@@ -11212,9 +11183,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ancestral data"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000247",
@@ -11249,9 +11217,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "mean annual precipitation"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000644",
       "range": "QuantityValue",
@@ -11285,9 +11250,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "mean annual temperature"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000642",
       "range": "QuantityValue",
@@ -11317,9 +11279,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "antibiotic regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000553",
@@ -11355,9 +11314,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "API gravity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000157",
       "range": "QuantityValue",
@@ -11383,9 +11339,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "architectural structure"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000774",
       "range": "arch_struc_enum",
@@ -11415,9 +11368,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "aromatics wt%"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000133",
@@ -11448,9 +11398,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "asphaltenes wt%"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000135",
@@ -11477,9 +11424,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "atmospheric data"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0001097",
@@ -11515,9 +11459,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "average dew point"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000141",
       "range": "QuantityValue",
@@ -11543,9 +11484,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "average daily occupancy"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000775",
       "range": "TextValue",
@@ -11579,9 +11517,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "average temperature"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000142",
       "range": "QuantityValue",
@@ -11615,9 +11550,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "bacterial production"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000683",
       "range": "QuantityValue",
@@ -11651,9 +11583,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "bacterial respiration"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000684",
       "range": "QuantityValue",
@@ -11687,9 +11616,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "bacterial carbon production"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000173",
       "range": "QuantityValue",
@@ -11723,9 +11649,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "barometric pressure"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000096",
       "range": "QuantityValue",
@@ -11751,9 +11674,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "basin name"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000290",
@@ -11780,9 +11700,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "bathroom count"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000776",
       "range": "TextValue",
@@ -11808,9 +11725,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "bedroom count"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000777",
       "range": "TextValue",
@@ -11844,9 +11758,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "benzene"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000153",
       "range": "QuantityValue",
@@ -11880,9 +11791,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "biochemical oxygen demand"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000653",
       "range": "QuantityValue",
@@ -11908,9 +11816,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "biocide administration"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{text};{timestamp}",
       "slot_uri": "MIXS:0001011",
@@ -11941,9 +11846,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "biocide administration method"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} {unit};{Rn/start_time/end_time/duration};{duration}",
       "slot_uri": "MIXS:0000456",
@@ -11970,9 +11872,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "biological status"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000858",
       "range": "biol_stat_enum",
@@ -12002,9 +11901,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "biomass"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000174",
@@ -12032,9 +11928,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "biotic regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0001038",
@@ -12057,9 +11950,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "observed biotic relationship"
-      ],
       "is_a": "nucleic acid sequence source field",
       "slot_uri": "MIXS:0000028",
       "range": "biotic_relationship_enum",
@@ -12093,9 +11983,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "bishomohopanol"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000175",
       "range": "QuantityValue",
@@ -12129,9 +12016,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host blood pressure diastolic"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000258",
       "range": "QuantityValue",
@@ -12165,9 +12049,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host blood pressure systolic"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000259",
       "range": "QuantityValue",
@@ -12201,9 +12082,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "bromide"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000176",
       "range": "QuantityValue",
@@ -12229,9 +12107,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "design, construction, and operation documents"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000787",
       "range": "build_docs_enum",
@@ -12257,9 +12132,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "building occupancy type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000761",
       "range": "build_occup_type_enum",
@@ -12285,9 +12157,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "building setting"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000768",
       "range": "building_setting_enum",
@@ -12321,9 +12190,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "built structure age"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000145",
       "range": "QuantityValue",
@@ -12349,9 +12215,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "built structure setting"
-      ],
       "is_a": "core field",
       "string_serialization": "[urban|rural]",
       "slot_uri": "MIXS:0000778",
@@ -12378,9 +12241,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "built structure type"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000721",
@@ -12415,9 +12275,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "calcium"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000432",
       "range": "QuantityValue",
@@ -12451,9 +12308,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "carbon dioxide"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000097",
       "range": "QuantityValue",
@@ -12487,9 +12341,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "carbon monoxide"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000098",
       "range": "QuantityValue",
@@ -12519,9 +12370,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "carbon/nitrogen ratio"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000310",
       "range": "QuantityValue",
@@ -12555,9 +12403,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ceiling area"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000148",
       "range": "QuantityValue",
@@ -12583,9 +12428,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ceiling condition"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000779",
       "range": "ceil_cond_enum",
@@ -12611,9 +12453,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ceiling finish material"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000780",
       "range": "ceil_finish_mat_enum",
@@ -12639,9 +12478,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ceiling structure"
-      ],
       "is_a": "core field",
       "string_serialization": "[wood frame|concrete]",
       "slot_uri": "MIXS:0000782",
@@ -12668,9 +12504,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ceiling texture"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000783",
       "range": "ceil_texture_enum",
@@ -12704,9 +12537,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ceiling thermal mass"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000143",
       "range": "QuantityValue",
@@ -12732,9 +12562,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ceiling type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000784",
       "range": "ceil_type_enum",
@@ -12760,9 +12587,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ceiling signs of water/mold"
-      ],
       "is_a": "core field",
       "string_serialization": "[presence of mold visible|no presence of mold visible]",
       "slot_uri": "MIXS:0000781",
@@ -12789,9 +12613,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "chemical administration"
-      ],
       "is_a": "core field",
       "string_serialization": "{termLabel} {[termID]};{timestamp}",
       "slot_uri": "MIXS:0000751",
@@ -12823,9 +12644,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "chemical mutagen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000555",
@@ -12861,9 +12679,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "chemical oxygen demand"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000656",
       "range": "QuantityValue",
@@ -12893,9 +12708,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "chemical treatment method"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} {unit};{Rn/start_time/end_time/duration};{duration};{duration}",
       "slot_uri": "MIXS:0000457",
@@ -12922,9 +12734,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "chemical treatment"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{text};{timestamp}",
       "slot_uri": "MIXS:0001012",
@@ -12947,9 +12756,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "chimera check software"
-      ],
       "is_a": "sequencing field",
       "string_serialization": "{software};{version};{parameters}",
       "slot_uri": "MIXS:0000052",
@@ -12984,9 +12790,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "chloride"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000429",
       "range": "QuantityValue",
@@ -13020,9 +12823,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "chlorophyll"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000177",
       "range": "QuantityValue",
@@ -13048,9 +12848,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "climate environment"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0001040",
@@ -13074,9 +12871,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "collection date"
-      ],
       "is_a": "environment field",
       "slot_uri": "MIXS:0000011",
       "range": "TimestampValue",
@@ -13110,9 +12904,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "conductivity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000692",
       "range": "QuantityValue",
@@ -13138,9 +12929,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "cooling system identifier"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000785",
       "range": "TextValue",
@@ -13166,9 +12954,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "history/crop rotation"
-      ],
       "is_a": "core field",
       "string_serialization": "{boolean};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000318",
@@ -13195,9 +12980,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "culture rooting medium"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}|{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0001041",
@@ -13224,9 +13006,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "current land use"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001080",
       "range": "cur_land_use_enum",
@@ -13252,9 +13031,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "current vegetation"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000312",
@@ -13281,9 +13057,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "current vegetation method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000314",
@@ -13310,9 +13083,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "date last rain"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000786",
       "range": "TimestampValue",
@@ -13346,9 +13116,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "density"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000435",
       "range": "QuantityValue",
@@ -13374,9 +13141,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "depositional environment"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000992",
       "range": "depos_env_enum",
@@ -13402,9 +13166,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "depth"
-      ],
       "is_a": "environment field",
       "slot_uri": "MIXS:0000018",
       "range": "QuantityValue",
@@ -13438,9 +13199,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "dew point"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000129",
       "range": "QuantityValue",
@@ -13470,9 +13228,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "diether lipids"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000178",
@@ -13508,9 +13263,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "dissolved carbon dioxide"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000436",
       "range": "QuantityValue",
@@ -13544,9 +13296,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "dissolved hydrogen"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000179",
       "range": "QuantityValue",
@@ -13580,9 +13329,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "dissolved inorganic carbon"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000434",
       "range": "QuantityValue",
@@ -13616,9 +13362,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "dissolved inorganic nitrogen"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000698",
       "range": "QuantityValue",
@@ -13652,9 +13395,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "dissolved inorganic phosphorus"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000106",
       "range": "QuantityValue",
@@ -13688,9 +13428,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "dissolved iron"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000139",
       "range": "QuantityValue",
@@ -13724,9 +13461,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "dissolved organic carbon"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000433",
       "range": "QuantityValue",
@@ -13760,9 +13494,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "dissolved organic nitrogen"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000162",
       "range": "QuantityValue",
@@ -13796,9 +13527,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "dissolved oxygen"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000119",
       "range": "QuantityValue",
@@ -13832,9 +13560,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "dissolved oxygen in fluids"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000438",
       "range": "QuantityValue",
@@ -13860,9 +13585,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "door type, composite"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000795",
       "range": "door_comp_type_enum",
@@ -13888,9 +13610,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "door condition"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000788",
       "range": "door_cond_enum",
@@ -13916,9 +13635,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "door direction of opening"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000789",
       "range": "door_direct_enum",
@@ -13944,9 +13660,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "door location"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000790",
       "range": "door_loc_enum",
@@ -13972,9 +13685,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "door material"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000791",
       "range": "door_mat_enum",
@@ -14000,9 +13710,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "door movement"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000792",
       "range": "door_move_enum",
@@ -14036,9 +13743,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "door area or size"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000158",
       "range": "QuantityValue",
@@ -14064,9 +13768,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "door type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000794",
       "range": "door_type_enum",
@@ -14092,9 +13793,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "door type, metal"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000796",
       "range": "door_type_metal_enum",
@@ -14120,9 +13818,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "door type, wood"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000797",
       "range": "door_type_wood_enum",
@@ -14148,9 +13843,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "door signs of water/mold"
-      ],
       "is_a": "core field",
       "string_serialization": "[presence of mold visible|no presence of mold visible]",
       "slot_uri": "MIXS:0000793",
@@ -14185,9 +13877,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "downward PAR"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000703",
       "range": "QuantityValue",
@@ -14213,9 +13902,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "drainage classification"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001085",
       "range": "drainage_class_enum",
@@ -14241,9 +13927,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "drawings"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000798",
       "range": "drawings_enum",
@@ -14277,9 +13960,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "efficiency percent"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000657",
       "range": "QuantityValue",
@@ -14301,9 +13981,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "elevation"
-      ],
       "is_a": "environment field",
       "slot_uri": "MIXS:0000093",
       "range": "float",
@@ -14329,9 +14006,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "elevator count"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000799",
       "range": "TextValue",
@@ -14361,9 +14035,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "emulsions"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000660",
@@ -14391,9 +14062,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "broad-scale environmental context"
-      ],
       "is_a": "mixs_env_triad_field",
       "string_serialization": "{termLabel} {[termID]}",
       "slot_uri": "MIXS:0000012",
@@ -14420,9 +14088,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "local environmental context"
-      ],
       "is_a": "mixs_env_triad_field",
       "string_serialization": "{termLabel} {[termID]}",
       "slot_uri": "MIXS:0000013",
@@ -14449,9 +14114,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "environmental medium"
-      ],
       "is_a": "mixs_env_triad_field",
       "string_serialization": "{termLabel} {[termID]}",
       "slot_uri": "MIXS:0000014",
@@ -14478,9 +14140,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "escalator count"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000800",
       "range": "TextValue",
@@ -14514,9 +14173,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ethylbenzene"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000155",
       "range": "QuantityValue",
@@ -14550,9 +14206,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "exposed ductwork"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000144",
       "range": "QuantityValue",
@@ -14582,9 +14235,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "exposed pipes"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000220",
       "range": "QuantityValue",
@@ -14606,9 +14256,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "experimental factor"
-      ],
       "is_a": "investigation field",
       "string_serialization": "{termLabel} {[termID]}|{text}",
       "slot_uri": "MIXS:0000008",
@@ -14635,9 +14282,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "exterior door count"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000170",
       "range": "TextValue",
@@ -14663,9 +14307,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "orientations of exterior wall"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000817",
       "range": "ext_wall_orient_enum",
@@ -14691,9 +14332,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "orientations of exterior window"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000818",
       "range": "ext_window_orient_enum",
@@ -14719,9 +14357,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "history/extreme events"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000320",
       "range": "string",
@@ -14747,9 +14382,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "soil_taxonomic/FAO classification"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001083",
       "range": "fao_class_enum",
@@ -14779,9 +14411,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "fertilizer regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000556",
@@ -14809,9 +14438,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "field name"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000291",
@@ -14838,9 +14464,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "filter type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000765",
       "range": "filter_type_enum",
@@ -14866,9 +14489,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "history/fire"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001086",
       "range": "string",
@@ -14894,9 +14514,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "fireplace type"
-      ],
       "is_a": "core field",
       "string_serialization": "[gas burning|wood burning]",
       "slot_uri": "MIXS:0000802",
@@ -14923,9 +14540,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "history/flooding"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000319",
       "range": "string",
@@ -14959,9 +14573,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "floor age"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000164",
       "range": "QuantityValue",
@@ -14995,9 +14606,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "floor area"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000165",
       "range": "QuantityValue",
@@ -15023,9 +14631,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "floor condition"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000803",
       "range": "floor_cond_enum",
@@ -15051,9 +14656,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "floor count"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000225",
       "range": "TextValue",
@@ -15079,9 +14681,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "floor finish material"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000804",
       "range": "floor_finish_mat_enum",
@@ -15107,9 +14706,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "floor structure"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000806",
       "range": "floor_struc_enum",
@@ -15143,9 +14739,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "floor thermal mass"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000166",
       "range": "QuantityValue",
@@ -15171,9 +14764,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "floor signs of water/mold"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000805",
       "range": "floor_water_mold_enum",
@@ -15207,9 +14797,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "fluorescence"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000704",
       "range": "QuantityValue",
@@ -15239,9 +14826,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "frequency of cleaning"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000226",
       "range": "QuantityValue",
@@ -15271,9 +14855,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "frequency of cooking"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000227",
       "range": "QuantityValue",
@@ -15303,9 +14884,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "fungicide regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000557",
@@ -15333,9 +14911,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "furniture"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000807",
       "range": "furniture_enum",
@@ -15365,9 +14940,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "gaseous environment"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000558",
@@ -15399,9 +14971,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "gaseous substances"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000661",
@@ -15429,9 +14998,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "gender of restroom"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000808",
       "range": "gender_restroom_enum",
@@ -15457,9 +15023,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "genetic modification"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}|{text}",
       "slot_uri": "MIXS:0000859",
@@ -15482,9 +15045,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "geographic location (country and/or sea,region)"
-      ],
       "is_a": "environment field",
       "string_serialization": "{term}: {term}, {text}",
       "slot_uri": "MIXS:0000010",
@@ -15519,9 +15079,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "glucosidase activity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000137",
       "range": "QuantityValue",
@@ -15547,9 +15104,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "gravidity"
-      ],
       "is_a": "core field",
       "string_serialization": "{boolean};{timestamp}",
       "slot_uri": "MIXS:0000875",
@@ -15580,9 +15134,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "gravity"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000559",
@@ -15610,9 +15161,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "growth facility"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}|{termLabel} {[termID]}",
       "slot_uri": "MIXS:0001043",
@@ -15639,9 +15187,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "growth habit"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001044",
       "range": "growth_habit_enum",
@@ -15671,9 +15216,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "growth hormone regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000560",
@@ -15701,9 +15243,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "hallway/corridor count"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000228",
       "range": "TextValue",
@@ -15729,9 +15268,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "handidness"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000809",
       "range": "handidness_enum",
@@ -15757,9 +15293,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "hydrocarbon type produced"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000989",
       "range": "hc_produced_enum",
@@ -15785,9 +15318,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "hydrocarbon resource type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000988",
       "range": "hcr_enum",
@@ -15821,9 +15351,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "formation water salinity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000406",
       "range": "QuantityValue",
@@ -15849,9 +15376,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "hydrocarbon resource geological age"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000993",
       "range": "hcr_geol_age_enum",
@@ -15881,9 +15405,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "hydrocarbon resource original pressure"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} - {float} {unit}",
       "slot_uri": "MIXS:0000395",
@@ -15914,9 +15435,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "hydrocarbon resource original temperature"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} - {float} {unit}",
       "slot_uri": "MIXS:0000393",
@@ -15943,9 +15461,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "heating and cooling system type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000766",
       "range": "heat_cool_type_enum",
@@ -15971,9 +15486,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "heating delivery locations"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000810",
       "range": "heat_deliv_loc_enum",
@@ -15999,9 +15511,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "heating system delivery method"
-      ],
       "is_a": "core field",
       "string_serialization": "[conductive|radiant]",
       "slot_uri": "MIXS:0000812",
@@ -16028,9 +15537,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "heating system identifier"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000833",
       "range": "TextValue",
@@ -16060,9 +15566,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "extreme_unusual_properties/heavy metals"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000652",
@@ -16090,9 +15593,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "extreme_unusual_properties/heavy metals method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000343",
@@ -16128,9 +15628,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "height carpet fiber mat"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000167",
       "range": "QuantityValue",
@@ -16160,9 +15657,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "herbicide regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000561",
@@ -16190,9 +15684,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "soil horizon method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000321",
@@ -16227,9 +15718,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host age"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000255",
       "range": "QuantityValue",
@@ -16255,9 +15743,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host body habitat"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000866",
@@ -16284,9 +15769,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host body product"
-      ],
       "is_a": "core field",
       "string_serialization": "{termLabel} {[termID]}",
       "slot_uri": "MIXS:0000888",
@@ -16313,9 +15795,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host body site"
-      ],
       "is_a": "core field",
       "string_serialization": "{termLabel} {[termID]}",
       "slot_uri": "MIXS:0000867",
@@ -16350,9 +15829,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host body temperature"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000274",
       "range": "QuantityValue",
@@ -16378,9 +15854,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host color"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000260",
@@ -16407,9 +15880,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host common name"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000248",
@@ -16436,9 +15906,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host diet"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000869",
@@ -16462,9 +15929,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host disease status"
-      ],
       "is_a": "nucleic acid sequence source field",
       "string_serialization": "{termLabel} {[termID]}|{text}",
       "slot_uri": "MIXS:0000031",
@@ -16499,9 +15963,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host dry mass"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000257",
       "range": "QuantityValue",
@@ -16527,9 +15988,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host family relationship"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{text}",
       "slot_uri": "MIXS:0000872",
@@ -16556,9 +16014,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host genotype"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000365",
@@ -16585,9 +16040,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host growth conditions"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}|{text}",
       "slot_uri": "MIXS:0000871",
@@ -16622,9 +16074,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host height"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000264",
       "range": "QuantityValue",
@@ -16650,9 +16099,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host last meal"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{duration}",
       "slot_uri": "MIXS:0000870",
@@ -16688,9 +16134,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host length"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000256",
       "range": "QuantityValue",
@@ -16716,9 +16159,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host life stage"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000251",
@@ -16745,9 +16185,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host phenotype"
-      ],
       "is_a": "core field",
       "string_serialization": "{termLabel} {[termID]}",
       "slot_uri": "MIXS:0000874",
@@ -16774,9 +16211,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host sex"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000811",
       "range": "host_sex_enum",
@@ -16802,9 +16236,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host shape"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000261",
@@ -16831,9 +16262,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host subject id"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000861",
@@ -16860,9 +16288,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host subspecific genetic lineage"
-      ],
       "is_a": "core field",
       "string_serialization": "{rank name}:{text}",
       "slot_uri": "MIXS:0001318",
@@ -16889,9 +16314,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host substrate"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000252",
@@ -16918,9 +16340,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "observed host symbionts"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0001298",
@@ -16945,9 +16364,6 @@
         "Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host taxid"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000250",
       "range": "ControlledIdentifiedTermValue",
@@ -16981,9 +16397,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host total mass"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000263",
       "range": "QuantityValue",
@@ -17017,9 +16430,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "host wet mass"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000567",
       "range": "QuantityValue",
@@ -17053,9 +16463,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "humidity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000100",
       "range": "QuantityValue",
@@ -17085,9 +16492,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "humidity regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000568",
@@ -17115,9 +16519,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "indoor space"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000763",
       "range": "indoor_space_enum",
@@ -17143,9 +16544,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "indoor surface"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000764",
       "range": "indoor_surf_enum",
@@ -17179,9 +16577,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "industrial effluent percent"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000662",
       "range": "QuantityValue",
@@ -17211,9 +16606,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "inorganic particles"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000664",
@@ -17249,9 +16641,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "inside lux light"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000168",
       "range": "QuantityValue",
@@ -17277,9 +16666,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "interior wall condition"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000813",
       "range": "int_wall_cond_enum",
@@ -17305,9 +16691,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "injection water breakthrough date of specific well"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001010",
       "range": "TimestampValue",
@@ -17341,9 +16724,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "injection water fraction"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000455",
       "range": "QuantityValue",
@@ -17369,9 +16749,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "last time swept/mopped/vacuumed"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000814",
       "range": "TimestampValue",
@@ -17393,9 +16770,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "geographic location (latitude and longitude)"
-      ],
       "is_a": "environment field",
       "string_serialization": "{float} {float}",
       "slot_uri": "MIXS:0000009",
@@ -17430,9 +16804,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "light intensity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000706",
       "range": "QuantityValue",
@@ -17462,9 +16833,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "light regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{float} {unit}",
       "slot_uri": "MIXS:0000569",
@@ -17491,9 +16859,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "light type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000769",
       "range": "light_type_enum",
@@ -17519,9 +16884,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "links to additional analysis"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000340",
@@ -17548,9 +16910,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "link to classification information"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000329",
@@ -17577,9 +16936,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "link to climate information"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000328",
@@ -17606,9 +16962,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "lithology"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000990",
       "range": "lithology_enum",
@@ -17634,9 +16987,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "soil_taxonomic/local classification"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000330",
@@ -17663,9 +17013,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "soil_taxonomic/local classification method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000331",
@@ -17700,9 +17047,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "magnesium"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000431",
       "range": "QuantityValue",
@@ -17732,9 +17076,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "maximum occupancy"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000229",
       "range": "QuantityValue",
@@ -17768,9 +17109,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "mean friction velocity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000498",
       "range": "QuantityValue",
@@ -17804,9 +17142,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "mean peak friction velocity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000502",
       "range": "QuantityValue",
@@ -17832,9 +17167,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "mechanical structure"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000815",
       "range": "mech_struc_enum",
@@ -17860,9 +17192,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "mechanical damage"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{text}",
       "slot_uri": "MIXS:0001052",
@@ -17898,9 +17227,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "methane"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000101",
       "range": "QuantityValue",
@@ -17926,9 +17252,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "microbial biomass method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000339",
@@ -17963,9 +17286,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "microbial biomass"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000650",
       "range": "QuantityValue",
@@ -17995,9 +17315,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "mineral nutrient regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000570",
@@ -18017,7 +17334,7 @@
           "value": "m"
         }
       },
-      "description": "Structured miscellaneous property assertions for this Biosample. Use when a value cannot cleanly fit an existing, policy-governed slot.",
+      "description": "Structured miscellaneous property assertions. Use when a value cannot cleanly fit an existing, policy-governed slot.",
       "title": "miscellaneous parameter",
       "todos": [
         "This slot should not be available in the submission portal."
@@ -18028,9 +17345,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "miscellaneous parameter"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000752",
@@ -18062,9 +17376,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "n-alkanes"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000503",
@@ -18100,9 +17411,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "nitrate"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000425",
       "range": "QuantityValue",
@@ -18136,9 +17444,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "nitrite"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000426",
       "range": "QuantityValue",
@@ -18172,9 +17477,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "nitrogen"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000504",
       "range": "QuantityValue",
@@ -18204,9 +17506,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "non-mineral nutrient regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000571",
@@ -18229,9 +17528,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "nucleic acid amplification"
-      ],
       "is_a": "sequencing field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000038",
@@ -18254,9 +17550,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "nucleic acid extraction"
-      ],
       "is_a": "sequencing field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000037",
@@ -18287,9 +17580,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "number of pets"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000231",
       "range": "QuantityValue",
@@ -18319,9 +17609,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "number of houseplants"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000230",
       "range": "QuantityValue",
@@ -18351,9 +17638,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "number of residents"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000232",
       "range": "QuantityValue",
@@ -18383,9 +17667,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "occupant density at sampling"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000217",
       "range": "QuantityValue",
@@ -18411,9 +17692,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "occupancy documentation"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000816",
       "range": "occup_document_enum",
@@ -18443,9 +17721,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "occupancy at sampling"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000772",
       "range": "QuantityValue",
@@ -18479,9 +17754,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "organic carbon"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000508",
       "range": "QuantityValue",
@@ -18511,9 +17783,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "organism count qPCR information"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};FWD:{dna};REV:{dna};initial denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes; total cycles",
       "slot_uri": "MIXS:0000099",
@@ -18548,9 +17817,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "organic matter"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000204",
       "range": "QuantityValue",
@@ -18584,9 +17850,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "organic nitrogen"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000205",
       "range": "QuantityValue",
@@ -18616,9 +17879,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "organic particles"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000665",
@@ -18654,9 +17914,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "organism count"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000103",
       "range": "QuantityValue",
@@ -18691,9 +17948,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "oil water contact depth"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000405",
       "range": "QuantityValue",
@@ -18719,9 +17973,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "oxygenation status of sample"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000753",
       "range": "oxy_stat_samp_enum",
@@ -18755,9 +18006,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "oxygen"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000104",
       "range": "QuantityValue",
@@ -18791,9 +18039,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "particulate organic carbon"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000515",
       "range": "QuantityValue",
@@ -18827,9 +18072,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "particulate organic nitrogen"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000719",
       "range": "QuantityValue",
@@ -18859,9 +18101,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "particle classification"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000206",
@@ -18885,9 +18124,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "pcr conditions"
-      ],
       "is_a": "sequencing field",
       "string_serialization": "initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes;total cycles",
       "slot_uri": "MIXS:0000049",
@@ -18910,9 +18146,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "pcr primers"
-      ],
       "is_a": "sequencing field",
       "string_serialization": "FWD:{dna};REV:{dna}",
       "slot_uri": "MIXS:0000046",
@@ -18943,9 +18176,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "permeability"
-      ],
       "is_a": "core field",
       "string_serialization": "{integer} - {integer} {unit}",
       "slot_uri": "MIXS:0000404",
@@ -18972,9 +18202,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "perturbation"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000754",
@@ -19006,9 +18233,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "pesticide regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000573",
@@ -19044,9 +18268,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "petroleum hydrocarbon"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000516",
       "range": "QuantityValue",
@@ -19072,9 +18293,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "pH"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001001",
       "range": "double",
@@ -19100,9 +18318,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "pH method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0001106",
@@ -19129,9 +18344,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "pH regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{float};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0001056",
@@ -19163,9 +18375,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "phaeopigments"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000180",
@@ -19201,9 +18410,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "phosphate"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000505",
       "range": "QuantityValue",
@@ -19233,9 +18439,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "phospholipid fatty acid"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000181",
@@ -19271,9 +18474,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "photon flux"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000725",
       "range": "QuantityValue",
@@ -19299,9 +18499,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "plant growth medium"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001057",
       "range": "ControlledTermValue",
@@ -19327,9 +18524,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "plant product"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0001058",
@@ -19356,9 +18550,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "plant sex"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001059",
       "range": "plant_sex_enum",
@@ -19384,9 +18575,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "plant structure"
-      ],
       "is_a": "core field",
       "string_serialization": "{termLabel} {[termID]}",
       "slot_uri": "MIXS:0001060",
@@ -19417,9 +18605,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "pollutants"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000107",
@@ -19447,9 +18632,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "pooling of DNA extracts (if done)"
-      ],
       "is_a": "core field",
       "string_serialization": "{boolean};{integer}",
       "slot_uri": "MIXS:0000325",
@@ -19480,9 +18662,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "porosity"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} - {float} {unit}",
       "slot_uri": "MIXS:0000211",
@@ -19517,9 +18696,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "potassium"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000430",
       "range": "QuantityValue",
@@ -19553,9 +18729,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "pour point"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000127",
       "range": "QuantityValue",
@@ -19581,9 +18754,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "pre-treatment"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000348",
@@ -19610,9 +18780,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "presence of pets, animals, or insects"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000819",
       "range": "string",
@@ -19647,9 +18814,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "pressure"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000412",
       "range": "QuantityValue",
@@ -19675,9 +18839,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "history/previous land use method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000316",
@@ -19704,9 +18865,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "history/previous land use"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{timestamp}",
       "slot_uri": "MIXS:0000315",
@@ -19741,9 +18899,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "primary production"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000728",
       "range": "QuantityValue",
@@ -19769,9 +18924,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "primary treatment"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000349",
@@ -19806,9 +18958,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "production rate"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000452",
       "range": "QuantityValue",
@@ -19834,9 +18983,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "production start date"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001008",
       "range": "TimestampValue",
@@ -19862,9 +19008,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "profile position"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001084",
       "range": "profile_position_enum",
@@ -19890,9 +19033,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "quadrant position"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000820",
       "range": "quad_pos_enum",
@@ -19922,9 +19062,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "radiation regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000575",
@@ -19956,9 +19093,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rainfall regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000576",
@@ -19986,9 +19120,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "reactor type"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000350",
@@ -20023,9 +19154,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "redox potential"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000182",
       "range": "QuantityValue",
@@ -20059,9 +19187,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "relative air humidity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000121",
       "range": "QuantityValue",
@@ -20095,9 +19220,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "outside relative humidity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000188",
       "range": "QuantityValue",
@@ -20123,9 +19245,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "relative sampling location"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000821",
       "range": "rel_samp_loc_enum",
@@ -20151,9 +19270,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "reservoir name"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000303",
@@ -20184,9 +19300,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "resins wt%"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000134",
@@ -20221,9 +19334,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room air exchange rate"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000169",
       "range": "QuantityValue",
@@ -20249,9 +19359,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room architectural elements"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000233",
@@ -20278,9 +19385,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room condition"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000822",
       "range": "room_condt_enum",
@@ -20306,9 +19410,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rooms connected by a doorway"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000826",
       "range": "room_connected_enum",
@@ -20334,9 +19435,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room count"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000234",
       "range": "TextValue",
@@ -20366,9 +19464,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room dimensions"
-      ],
       "is_a": "core field",
       "string_serialization": "{integer} {unit} x {integer} {unit} x {integer} {unit}",
       "slot_uri": "MIXS:0000192",
@@ -20399,9 +19494,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room door distance"
-      ],
       "is_a": "core field",
       "string_serialization": "{integer} {unit}",
       "slot_uri": "MIXS:0000193",
@@ -20428,9 +19520,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rooms that share a door with sampling room"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{integer}",
       "slot_uri": "MIXS:0000242",
@@ -20457,9 +19546,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rooms that are on the same hallway"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{integer}",
       "slot_uri": "MIXS:0000238",
@@ -20486,9 +19572,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room location in building"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000823",
       "range": "room_loc_enum",
@@ -20514,9 +19597,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room moisture damage or mold history"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000235",
       "range": "integer",
@@ -20546,9 +19626,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room net area"
-      ],
       "is_a": "core field",
       "string_serialization": "{integer} {unit}",
       "slot_uri": "MIXS:0000194",
@@ -20579,9 +19656,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room occupancy"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000236",
       "range": "QuantityValue",
@@ -20607,9 +19681,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room sampling position"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000824",
       "range": "room_samp_pos_enum",
@@ -20635,9 +19706,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000825",
       "range": "room_type_enum",
@@ -20667,9 +19735,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room volume"
-      ],
       "is_a": "core field",
       "string_serialization": "{integer} {unit}",
       "slot_uri": "MIXS:0000195",
@@ -20696,9 +19761,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rooms that share a wall with sampling room"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{integer}",
       "slot_uri": "MIXS:0000243",
@@ -20725,9 +19787,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "room window count"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000237",
       "range": "integer",
@@ -20753,9 +19812,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rooting conditions"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}|{text}",
       "slot_uri": "MIXS:0001061",
@@ -20786,9 +19842,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rooting medium carbon"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000577",
@@ -20819,9 +19872,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rooting medium macronutrients"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000578",
@@ -20852,9 +19902,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rooting medium micronutrients"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000579",
@@ -20885,9 +19932,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rooting medium pH"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001062",
       "range": "QuantityValue",
@@ -20917,9 +19961,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rooting medium regulators"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000581",
@@ -20946,9 +19987,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rooting medium solidifier"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0001063",
@@ -20979,9 +20017,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "rooting medium organic supplements"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000580",
@@ -21016,9 +20051,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "salinity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000183",
       "range": "QuantityValue",
@@ -21044,9 +20076,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "salinity method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000341",
@@ -21077,9 +20106,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "salt regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000582",
@@ -21107,9 +20133,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample capture status"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000860",
       "range": "samp_capt_status_enum",
@@ -21131,9 +20154,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample collection device"
-      ],
       "is_a": "nucleic acid sequence source field",
       "string_serialization": "{termLabel} {[termID]}|{text}",
       "slot_uri": "MIXS:0000002",
@@ -21156,9 +20176,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample collection method"
-      ],
       "is_a": "nucleic acid sequence source field",
       "string_serialization": "{PMID}|{DOI}|{URL}|{text}",
       "slot_uri": "MIXS:0001225",
@@ -21185,9 +20202,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample collection point"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001015",
       "range": "samp_collect_point_enum",
@@ -21213,9 +20227,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample disease stage"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000249",
       "range": "samp_dis_stage_enum",
@@ -21241,9 +20252,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sampling floor"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000828",
       "range": "samp_floor_enum",
@@ -21273,9 +20281,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "corrosion rate at sample location"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} - {float} {unit}",
       "slot_uri": "MIXS:0000136",
@@ -21298,9 +20303,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample material processing"
-      ],
       "is_a": "nucleic acid sequence source field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000016",
@@ -21335,9 +20337,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample measured depth"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000413",
       "range": "QuantityValue",
@@ -21359,9 +20358,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample name"
-      ],
       "is_a": "investigation field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0001107",
@@ -21392,9 +20388,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "preservative added to sample"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000463",
@@ -21421,9 +20414,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sampling room ID or name"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000244",
       "range": "TextValue",
@@ -21453,9 +20443,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "amount or size of sample collected"
-      ],
       "is_a": "nucleic acid sequence source field",
       "slot_uri": "MIXS:0000001",
       "range": "QuantityValue",
@@ -21481,9 +20468,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample size sorting method"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000216",
@@ -21511,9 +20495,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample storage duration"
-      ],
       "is_a": "core field",
       "string_serialization": "{duration}",
       "slot_uri": "MIXS:0000116",
@@ -21540,9 +20521,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample storage location"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000755",
@@ -21577,9 +20555,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample storage temperature"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000110",
       "range": "QuantityValue",
@@ -21605,9 +20580,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample subtype"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000999",
       "range": "samp_subtype_enum",
@@ -21627,9 +20599,6 @@
         "coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "Taxonomy ID of DNA sample"
-      ],
       "is_a": "investigation field",
       "slot_uri": "MIXS:0001320",
       "range": "ControlledIdentifiedTermValue",
@@ -21659,9 +20628,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sampling time outside"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000196",
       "range": "TextValue",
@@ -21691,9 +20657,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample transport conditions"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} {unit};{float} {unit}",
       "slot_uri": "MIXS:0000410",
@@ -21724,9 +20687,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample true vertical depth subsea"
-      ],
       "is_a": "core field",
       "string_serialization": "{float}-{float} {unit}",
       "slot_uri": "MIXS:0000409",
@@ -21753,9 +20713,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample type"
-      ],
       "is_a": "core field",
       "string_serialization": "{termLabel} {[termID]}",
       "slot_uri": "MIXS:0000998",
@@ -21786,9 +20743,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample volume or weight for DNA extraction"
-      ],
       "is_a": "nucleic acid sequence source field",
       "slot_uri": "MIXS:0000111",
       "range": "QuantityValue",
@@ -21814,9 +20768,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sampling day weather"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000827",
       "range": "samp_weather_enum",
@@ -21842,9 +20793,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sample well name"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000296",
@@ -21875,9 +20823,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "saturates wt%"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000131",
@@ -21904,9 +20849,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "season"
-      ],
       "is_a": "core field",
       "string_serialization": "{termLabel} {[termID]}",
       "slot_uri": "MIXS:0000829",
@@ -21933,9 +20875,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "seasonal environment"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0001068",
@@ -21971,9 +20910,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "mean seasonal precipitation"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000645",
       "range": "QuantityValue",
@@ -22007,9 +20943,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "mean seasonal temperature"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000643",
       "range": "QuantityValue",
@@ -22035,9 +20968,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "seasonal use"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000830",
       "range": "season_use_enum",
@@ -22063,9 +20993,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "secondary treatment"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000351",
@@ -22092,9 +21019,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sediment type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001078",
       "range": "sediment_type_enum",
@@ -22116,9 +21040,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sequencing method"
-      ],
       "is_a": "sequencing field",
       "string_serialization": "{termLabel} {[termID]}|{text}",
       "slot_uri": "MIXS:0000050",
@@ -22141,9 +21062,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sequence quality check"
-      ],
       "is_a": "sequencing field",
       "string_serialization": "[none|manually edited]",
       "slot_uri": "MIXS:0000051",
@@ -22170,9 +21088,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sewage type"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000215",
@@ -22199,9 +21114,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "shading device signs of water/mold"
-      ],
       "is_a": "core field",
       "string_serialization": "[presence of mold visible|no presence of mold visible]",
       "slot_uri": "MIXS:0000834",
@@ -22228,9 +21140,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "shading device condition"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000831",
       "range": "shading_device_cond_enum",
@@ -22256,9 +21165,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "shading device location"
-      ],
       "is_a": "core field",
       "string_serialization": "[exterior|interior]",
       "slot_uri": "MIXS:0000832",
@@ -22285,9 +21191,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "shading device material"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000245",
@@ -22314,9 +21217,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "shading device type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000835",
       "range": "shading_device_type_enum",
@@ -22342,9 +21242,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "composite design/sieving"
-      ],
       "is_a": "core field",
       "string_serialization": "{{text}|{float} {unit}};{float} {unit}",
       "slot_uri": "MIXS:0000322",
@@ -22379,9 +21276,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "silicate"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000184",
       "range": "QuantityValue",
@@ -22403,9 +21297,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "size fraction selected"
-      ],
       "is_a": "nucleic acid sequence source field",
       "string_serialization": "{float}-{float} {unit}",
       "slot_uri": "MIXS:0000017",
@@ -22440,9 +21331,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "size-fraction lower threshold"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000735",
       "range": "QuantityValue",
@@ -22476,9 +21364,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "size-fraction upper threshold"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000736",
       "range": "QuantityValue",
@@ -22512,9 +21397,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "slope aspect"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000647",
       "range": "QuantityValue",
@@ -22548,9 +21430,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "slope gradient"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000646",
       "range": "QuantityValue",
@@ -22584,9 +21463,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sludge retention time"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000669",
       "range": "QuantityValue",
@@ -22620,9 +21496,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sodium"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000428",
       "range": "QuantityValue",
@@ -22648,9 +21521,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "soil horizon"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001082",
       "range": "soil_horizon_enum",
@@ -22680,9 +21550,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "soil texture measurement"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000335",
       "range": "QuantityValue",
@@ -22708,9 +21575,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "soil texture method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000336",
@@ -22737,9 +21601,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "soil type"
-      ],
       "is_a": "core field",
       "string_serialization": "{termLabel} {[termID]}",
       "slot_uri": "MIXS:0000332",
@@ -22766,9 +21627,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "soil type method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000334",
@@ -22803,9 +21661,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "solar irradiance"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000112",
       "range": "QuantityValue",
@@ -22835,9 +21690,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "soluble inorganic material"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000672",
@@ -22869,9 +21721,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "soluble organic material"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000673",
@@ -22907,9 +21756,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "soluble reactive phosphorus"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000738",
       "range": "QuantityValue",
@@ -22931,9 +21777,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "source material identifiers"
-      ],
       "is_a": "nucleic acid sequence source field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000026",
@@ -22960,9 +21803,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "space typical state"
-      ],
       "is_a": "core field",
       "string_serialization": "[typically occupied|typically unoccupied]",
       "slot_uri": "MIXS:0000770",
@@ -22989,9 +21829,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "specifications"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000836",
       "range": "specific_enum",
@@ -23025,9 +21862,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "specific humidity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000214",
       "range": "QuantityValue",
@@ -23053,9 +21887,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "source rock depositional environment"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000996",
       "range": "sr_dep_env_enum",
@@ -23081,9 +21912,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "source rock geological age"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000997",
       "range": "sr_geol_age_enum",
@@ -23109,9 +21937,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "source rock kerogen type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000994",
       "range": "sr_kerog_type_enum",
@@ -23137,9 +21962,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "source rock lithology"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000995",
       "range": "sr_lithology_enum",
@@ -23165,9 +21987,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "standing water regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0001069",
@@ -23195,9 +22014,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "storage conditions"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{duration}",
       "slot_uri": "MIXS:0000327",
@@ -23224,9 +22040,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "substructure type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000767",
       "range": "substructure_type_enum",
@@ -23260,9 +22073,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sulfate"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000423",
       "range": "QuantityValue",
@@ -23296,9 +22106,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sulfate in formation water"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000407",
       "range": "QuantityValue",
@@ -23332,9 +22139,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "sulfide"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000424",
       "range": "QuantityValue",
@@ -23360,9 +22164,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "surface-air contaminant"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000759",
       "range": "surf_air_cont_enum",
@@ -23396,9 +22197,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "surface humidity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000123",
       "range": "QuantityValue",
@@ -23424,9 +22222,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "surface material"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000758",
       "range": "surf_material_enum",
@@ -23460,9 +22255,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "surface moisture"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000128",
       "range": "QuantityValue",
@@ -23488,9 +22280,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "surface moisture pH"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000760",
       "range": "double",
@@ -23524,9 +22313,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "surface temperature"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000125",
       "range": "QuantityValue",
@@ -23560,9 +22346,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "suspended particulate matter"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000741",
       "range": "QuantityValue",
@@ -23592,9 +22375,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "suspended solids"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000150",
@@ -23630,9 +22410,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total acid number"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000120",
       "range": "QuantityValue",
@@ -23654,9 +22431,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "target gene"
-      ],
       "is_a": "sequencing field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000044",
@@ -23679,9 +22453,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "target subfragment"
-      ],
       "is_a": "sequencing field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000045",
@@ -23712,9 +22483,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "temperature"
-      ],
       "is_a": "environment field",
       "slot_uri": "MIXS:0000113",
       "range": "QuantityValue",
@@ -23748,9 +22516,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "temperature outside house"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000197",
       "range": "QuantityValue",
@@ -23776,9 +22541,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "tertiary treatment"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000352",
@@ -23805,9 +22567,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "tidal stage"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000750",
       "range": "tidal_stage_enum",
@@ -23833,9 +22592,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "history/tillage"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0001081",
       "range": "tillage_enum",
@@ -23861,9 +22617,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "tissue culture growth media"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}|{text}",
       "slot_uri": "MIXS:0001070",
@@ -23898,9 +22651,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "toluene"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000154",
       "range": "QuantityValue",
@@ -23934,9 +22684,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total carbon"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000525",
       "range": "QuantityValue",
@@ -23970,9 +22717,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total depth of water column"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000634",
       "range": "QuantityValue",
@@ -24006,9 +22750,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total dissolved nitrogen"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000744",
       "range": "QuantityValue",
@@ -24042,9 +22783,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total inorganic nitrogen"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000745",
       "range": "QuantityValue",
@@ -24078,9 +22816,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total iron"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000105",
       "range": "QuantityValue",
@@ -24114,9 +22849,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total nitrogen concentration"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000102",
       "range": "QuantityValue",
@@ -24142,9 +22874,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total nitrogen content method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000338",
@@ -24179,9 +22908,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total nitrogen content"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000530",
       "range": "QuantityValue",
@@ -24207,9 +22933,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total organic carbon method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000337",
@@ -24244,9 +22967,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total organic carbon"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000533",
       "range": "QuantityValue",
@@ -24280,9 +23000,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total particulate carbon"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000747",
       "range": "QuantityValue",
@@ -24316,9 +23033,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total phosphorus"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000117",
       "range": "QuantityValue",
@@ -24352,9 +23066,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total phosphate"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000689",
       "range": "QuantityValue",
@@ -24388,9 +23099,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "total sulfur"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000419",
       "range": "QuantityValue",
@@ -24416,9 +23124,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "train line"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000837",
       "range": "train_line_enum",
@@ -24444,9 +23149,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "train station collection location"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000838",
       "range": "train_stat_loc_enum",
@@ -24472,9 +23174,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "train stop collection location"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000839",
       "range": "train_stop_loc_enum",
@@ -24508,9 +23207,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "turbidity"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000191",
       "range": "QuantityValue",
@@ -24544,9 +23240,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "depth (TVDSS) of hydrocarbon resource pressure"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000397",
       "range": "QuantityValue",
@@ -24580,9 +23273,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "depth (TVDSS) of hydrocarbon resource temperature"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000394",
       "range": "QuantityValue",
@@ -24608,9 +23298,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "typical occupant density"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000771",
       "range": "double",
@@ -24644,9 +23331,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ventilation rate"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000114",
       "range": "QuantityValue",
@@ -24672,9 +23356,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "ventilation type"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000756",
@@ -24709,9 +23390,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "volatile fatty acids"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000152",
       "range": "QuantityValue",
@@ -24745,9 +23423,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "vfa in formation water"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000408",
       "range": "QuantityValue",
@@ -24773,9 +23448,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "visual media"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000840",
       "range": "vis_media_enum",
@@ -24805,9 +23477,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "viscosity"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} {unit};{float} {unit}",
       "slot_uri": "MIXS:0000126",
@@ -24838,9 +23507,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "volatile organic compounds"
-      ],
       "is_a": "core field",
       "string_serialization": "{text};{float} {unit}",
       "slot_uri": "MIXS:0000115",
@@ -24876,9 +23542,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "wall area"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000198",
       "range": "QuantityValue",
@@ -24904,9 +23567,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "wall construction type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000841",
       "range": "wall_const_type_enum",
@@ -24932,9 +23592,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "wall finish material"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000842",
       "range": "wall_finish_mat_enum",
@@ -24968,9 +23625,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "wall height"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000221",
       "range": "QuantityValue",
@@ -24996,9 +23650,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "wall location"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000843",
       "range": "wall_loc_enum",
@@ -25024,9 +23675,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "wall surface treatment"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000845",
       "range": "wall_surf_treatment_enum",
@@ -25052,9 +23700,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "wall texture"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000846",
       "range": "wall_texture_enum",
@@ -25088,9 +23733,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "wall thermal mass"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000222",
       "range": "QuantityValue",
@@ -25116,9 +23758,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "wall signs of water/mold"
-      ],
       "is_a": "core field",
       "string_serialization": "[presence of mold visible|no presence of mold visible]",
       "slot_uri": "MIXS:0000844",
@@ -25145,9 +23784,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "wastewater type"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000353",
@@ -25174,9 +23810,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "water content method"
-      ],
       "is_a": "core field",
       "string_serialization": "{PMID}|{DOI}|{URL}",
       "slot_uri": "MIXS:0000323",
@@ -25207,9 +23840,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "water content"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000185",
       "range": "string",
@@ -25243,9 +23873,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "water current"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000203",
       "range": "QuantityValue",
@@ -25279,9 +23906,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "water cut"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000454",
       "range": "QuantityValue",
@@ -25315,9 +23939,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "water feature size"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000223",
       "range": "QuantityValue",
@@ -25343,9 +23964,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "water feature type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000847",
       "range": "water_feat_type_enum",
@@ -25379,9 +23997,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "water production rate"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000453",
       "range": "QuantityValue",
@@ -25411,9 +24026,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "water temperature regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000590",
@@ -25445,9 +24057,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "watering regimen"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} {unit};{Rn/start_time/end_time/duration}",
       "slot_uri": "MIXS:0000591",
@@ -25475,9 +24084,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "weekday"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000848",
       "range": "weekday_enum",
@@ -25503,9 +24109,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "well identification number"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000297",
@@ -25532,9 +24135,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "wind direction"
-      ],
       "is_a": "core field",
       "string_serialization": "{text}",
       "slot_uri": "MIXS:0000757",
@@ -25569,9 +24169,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "wind speed"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000118",
       "range": "QuantityValue",
@@ -25597,9 +24194,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "window condition"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000849",
       "range": "window_cond_enum",
@@ -25625,9 +24219,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "window covering"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000850",
       "range": "window_cover_enum",
@@ -25653,9 +24244,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "window horizontal position"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000851",
       "range": "window_horiz_pos_enum",
@@ -25681,9 +24269,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "window location"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000852",
       "range": "window_loc_enum",
@@ -25709,9 +24294,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "window material"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000853",
       "range": "window_mat_enum",
@@ -25737,9 +24319,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "window open frequency"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000246",
       "range": "TextValue",
@@ -25769,9 +24348,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "window area/size"
-      ],
       "is_a": "core field",
       "string_serialization": "{float} {unit} x {float} {unit}",
       "slot_uri": "MIXS:0000224",
@@ -25798,9 +24374,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "window status"
-      ],
       "is_a": "core field",
       "string_serialization": "[closed|open]",
       "slot_uri": "MIXS:0000855",
@@ -25827,9 +24400,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "window type"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000856",
       "range": "window_type_enum",
@@ -25855,9 +24425,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "window vertical position"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000857",
       "range": "window_vert_pos_enum",
@@ -25883,9 +24450,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "window signs of water/mold"
-      ],
       "is_a": "core field",
       "string_serialization": "[presence of mold visible|no presence of mold visible]",
       "slot_uri": "MIXS:0000854",
@@ -25920,9 +24484,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "xylene"
-      ],
       "is_a": "core field",
       "slot_uri": "MIXS:0000156",
       "range": "QuantityValue",
@@ -25961,13 +24522,7 @@
       "annotations": {
         "tooltip": {
           "tag": "tooltip",
-          "value": "The MIxS environmental triad provides context about where a sample was collected and what it consists of.",
-          "annotations": {
-            "source": {
-              "tag": "source",
-              "value": "https://link.springer.com/protocol/10.1007/978-1-0716-3838-5_20"
-            }
-          }
+          "value": "The MIxS environmental triad provides context about where a sample was collected and what it consists of."
         }
       },
       "description": "The MIxS environmental triad provides context about where a sample was collected and what it consists of. Its component slots capture the biome that the sample was found in, nearby geographical features that might influence the organisms in the sample, and the substance that was displaced in the process of collecting the sample. Careful population of these slots makes it easier for data users to find samples that are similar, not just in terms of textual values, but through ontological relationships. Furthermore, NMDC requires that its three component slots are populated because the INSDC Biosample databases require that they are populated because the MIxS standard from the GSC requires that they are populated.",
@@ -26239,6 +24794,116 @@
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "ProtocolForEnum"
     },
+    "superseded_by": {
+      "name": "superseded_by",
+      "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "WorkflowExecution"
+    },
+    "rna_collect_site": {
+      "name": "rna_collect_site",
+      "description": "Provide information on the site your RNA sample was collected from",
+      "title": "RNA collection site",
+      "deprecated": "true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions",
+      "examples": [
+        {
+          "value": "untreated pond water"
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "rank": 15,
+      "recommended": true
+    },
+    "rna_isolate_meth": {
+      "name": "rna_isolate_meth",
+      "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
+      "title": "RNA isolation method",
+      "examples": [
+        {
+          "value": "phenol/chloroform extraction"
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "aliases": [
+        "Sample Isolation Method"
+      ],
+      "rank": 16,
+      "recommended": true
+    },
+    "rna_organisms": {
+      "name": "rna_organisms",
+      "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
+      "title": "RNA expected organisms",
+      "deprecated": "true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions",
+      "examples": [
+        {
+          "value": "expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles (1%)"
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "rank": 14,
+      "recommended": true
+    },
+    "dna_lr_isolate_meth": {
+      "name": "dna_lr_isolate_meth",
+      "description": "Describe the method/protocol/kit used to extract DNA/RNA for long read sequencing.",
+      "title": "DNA isolation method for long read sequencing",
+      "examples": [
+        {
+          "value": "phenol/chloroform extraction"
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "aliases": [
+        "Sample Isolation Method"
+      ],
+      "rank": 16,
+      "recommended": true
+    },
+    "dna_collect_site": {
+      "name": "dna_collect_site",
+      "description": "Provide information on the site your DNA sample was collected from",
+      "title": "DNA collection site",
+      "deprecated": "true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions",
+      "examples": [
+        {
+          "value": "untreated pond water"
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "rank": 15,
+      "recommended": true
+    },
+    "dna_isolate_meth": {
+      "name": "dna_isolate_meth",
+      "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
+      "title": "DNA isolation method",
+      "examples": [
+        {
+          "value": "phenol/chloroform extraction"
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "aliases": [
+        "Sample Isolation Method"
+      ],
+      "rank": 16,
+      "recommended": true
+    },
+    "dna_organisms": {
+      "name": "dna_organisms",
+      "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
+      "title": "DNA expected organisms",
+      "deprecated": "true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions",
+      "examples": [
+        {
+          "value": "expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles (1%)"
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "rank": 14,
+      "recommended": true
+    },
     "emsl_store_temp": {
       "name": "emsl_store_temp",
       "description": "The temperature at which the sample should be stored upon delivery to EMSL",
@@ -26256,8 +24921,7 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "rank": 4,
-      "string_serialization": "{float}",
-      "slot_group": "EMSL",
+      "range": "float",
       "recommended": true
     },
     "project_id": {
@@ -26266,26 +24930,11 @@
       "title": "project ID",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "rank": 1,
-      "string_serialization": "{text}",
-      "slot_group": "EMSL",
-      "recommended": true
-    },
-    "replicate_number": {
-      "name": "replicate_number",
-      "description": "If sending biological replicates, indicate the rep number here.",
-      "title": "replicate number",
-      "comments": [
-        "This will guide staff in ensuring your samples are blocked & randomized correctly"
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 6,
-      "string_serialization": "{integer}",
-      "slot_group": "EMSL",
       "recommended": true
     },
     "sample_shipped": {
       "name": "sample_shipped",
-      "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample sent to EMSL.",
+      "description": "The total amount or size (volume, mass, or area) of sample sent to EMSL.",
       "title": "sample shipped amount",
       "comments": [
         "This field is only required when completing metadata for samples being submitted to EMSL for analyses."
@@ -26303,8 +24952,6 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "rank": 3,
-      "string_serialization": "{float} {unit}",
-      "slot_group": "EMSL",
       "recommended": true
     },
     "sample_type": {
@@ -26321,8 +24968,19 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "rank": 2,
-      "slot_group": "EMSL",
       "range": "SampleTypeEnum",
+      "recommended": true
+    },
+    "replicate_number": {
+      "name": "replicate_number",
+      "description": "If sending biological replicates, indicate the rep number here.",
+      "title": "replicate number",
+      "comments": [
+        "This will guide staff in ensuring your samples are blocked & randomized correctly"
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "rank": 6,
+      "range": "integer",
       "recommended": true
     },
     "technical_reps": {
@@ -26339,104 +24997,7 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "rank": 5,
-      "string_serialization": "{integer}",
-      "slot_group": "EMSL",
-      "recommended": true
-    },
-    "dna_collect_site": {
-      "name": "dna_collect_site",
-      "description": "Provide information on the site your DNA sample was collected from",
-      "title": "DNA collection site",
-      "examples": [
-        {
-          "value": "untreated pond water"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 15,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metagenomics",
-      "recommended": true
-    },
-    "dna_isolate_meth": {
-      "name": "dna_isolate_meth",
-      "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
-      "title": "DNA isolation method",
-      "examples": [
-        {
-          "value": "phenol/chloroform extraction"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "Sample Isolation Method"
-      ],
-      "rank": 16,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metagenomics",
-      "recommended": true
-    },
-    "dna_organisms": {
-      "name": "dna_organisms",
-      "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
-      "title": "DNA expected organisms",
-      "examples": [
-        {
-          "value": "expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles (1%)"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 14,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metagenomics",
-      "recommended": true
-    },
-    "rna_collect_site": {
-      "name": "rna_collect_site",
-      "description": "Provide information on the site your RNA sample was collected from",
-      "title": "RNA collection site",
-      "examples": [
-        {
-          "value": "untreated pond water"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 15,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "recommended": true
-    },
-    "rna_isolate_meth": {
-      "name": "rna_isolate_meth",
-      "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
-      "title": "RNA isolation method",
-      "examples": [
-        {
-          "value": "phenol/chloroform extraction"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "Sample Isolation Method"
-      ],
-      "rank": 16,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "recommended": true
-    },
-    "rna_organisms": {
-      "name": "rna_organisms",
-      "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
-      "title": "RNA expected organisms",
-      "examples": [
-        {
-          "value": "expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles (1%)"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 14,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metatranscriptomics",
+      "range": "integer",
       "recommended": true
     },
     "collection_date_inc": {
@@ -26850,7 +25411,7 @@
       ],
       "examples": [
         {
-          "value": "IGSN:DSJ0284"
+          "value": "igsn:DSJ0284"
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
@@ -29274,7 +27835,7 @@
           ],
           "examples": [
             {
-              "value": "IGSN:AU1243"
+              "value": "igsn:AU1243"
             },
             {
               "value": "UUID:24f1467a-40f4-11ed-b878-0242ac120002"
@@ -29448,36 +28009,6 @@
         "type"
       ],
       "class_uri": "nmdc:MetaboliteIdentification"
-    },
-    "ChemicalEntity": {
-      "name": "ChemicalEntity",
-      "id_prefixes": [
-        "CHEBI",
-        "MS"
-      ],
-      "description": "An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a  physical entity that pertains to chemistry or biochemistry.",
-      "deprecated": "true; as of Jan 2025, NMDC only needs a handful of chemicals and its use cases can be served via an enumeration rather than supporting a full class.",
-      "comments": [
-        "As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class."
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html"
-      ],
-      "aliases": [
-        "metabolite",
-        "chemical substance",
-        "chemical compound",
-        "chemical"
-      ],
-      "exact_mappings": [
-        "biolink:ChemicalSubstance"
-      ],
-      "is_a": "OntologyClass",
-      "slots": [
-        "chemical_formula"
-      ],
-      "class_uri": "nmdc:ChemicalEntity"
     },
     "GeneProduct": {
       "name": "GeneProduct",
@@ -30349,7 +28880,8 @@
         "md5_checksum",
         "url",
         "was_generated_by",
-        "in_manifest"
+        "in_manifest",
+        "superseded_by"
       ],
       "slot_usage": {
         "name": {
@@ -30486,7 +29018,8 @@
         "started_at_time",
         "version",
         "was_informed_by",
-        "processing_institution_workflow_metadata"
+        "processing_institution_workflow_metadata",
+        "superseded_by"
       ],
       "slot_usage": {
         "started_at_time": {
@@ -30625,6 +29158,15 @@
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
           }
+        },
+        "superseded_by": {
+          "name": "superseded_by",
+          "range": "MetagenomeAssembly",
+          "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$",
+            "interpolated": true
+          }
         }
       },
       "class_uri": "nmdc:MetagenomeAssembly"
@@ -30679,6 +29221,15 @@
           "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
+            "interpolated": true
+          }
+        },
+        "superseded_by": {
+          "name": "superseded_by",
+          "range": "MetatranscriptomeAssembly",
+          "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
           }
         }
@@ -30739,6 +29290,15 @@
             "syntax": "^gold:Ga[0-9]+$",
             "interpolated": true
           }
+        },
+        "superseded_by": {
+          "name": "superseded_by",
+          "range": "MetatranscriptomeAnnotation",
+          "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$",
+            "interpolated": true
+          }
         }
       },
       "class_uri": "nmdc:MetatranscriptomeAnnotation"
@@ -30771,6 +29331,15 @@
           "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
+            "interpolated": true
+          }
+        },
+        "superseded_by": {
+          "name": "superseded_by",
+          "range": "MetatranscriptomeExpressionAnalysis",
+          "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
           }
         }
@@ -30814,6 +29383,15 @@
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
           }
+        },
+        "superseded_by": {
+          "name": "superseded_by",
+          "range": "MagsAnalysis",
+          "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$",
+            "interpolated": true
+          }
         }
       },
       "class_uri": "nmdc:MagsAnalysis"
@@ -30850,6 +29428,15 @@
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
           }
+        },
+        "superseded_by": {
+          "name": "superseded_by",
+          "range": "ReadQcAnalysis",
+          "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$",
+            "interpolated": true
+          }
         }
       },
       "class_uri": "nmdc:ReadQcAnalysis"
@@ -30876,6 +29463,15 @@
           "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$",
+            "interpolated": true
+          }
+        },
+        "superseded_by": {
+          "name": "superseded_by",
+          "range": "ReadBasedTaxonomyAnalysis",
+          "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
           }
         }
@@ -30909,6 +29505,15 @@
             "syntax": "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$",
             "interpolated": true
           }
+        },
+        "superseded_by": {
+          "name": "superseded_by",
+          "range": "MetabolomicsAnalysis",
+          "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$",
+            "interpolated": true
+          }
         }
       },
       "class_uri": "nmdc:MetabolomicsAnalysis"
@@ -30938,6 +29543,15 @@
             "syntax": "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$",
             "interpolated": true
           }
+        },
+        "superseded_by": {
+          "name": "superseded_by",
+          "range": "MetaproteomicsAnalysis",
+          "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$",
+            "interpolated": true
+          }
         }
       },
       "class_uri": "nmdc:MetaproteomicsAnalysis"
@@ -30965,6 +29579,15 @@
           "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$",
+            "interpolated": true
+          }
+        },
+        "superseded_by": {
+          "name": "superseded_by",
+          "range": "NomAnalysis",
+          "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
           }
         }

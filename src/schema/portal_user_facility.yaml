@@ -101,8 +101,7 @@ slots:
     rank: 1
     recommended: true
   sample_shipped:
-    description: The total amount or size (volume (ml), mass (g) or area (m2) ) of
-      sample sent to EMSL.
+    description: The total amount or size (volume, mass, or area) of sample sent to EMSL.
     title: sample shipped amount
     comments:
       - This field is only required when completing metadata for samples being submitted

@@ -368,6 +368,7 @@ classes:
       - url
       - was_generated_by
       - in_manifest
+      - superseded_by
     slot_usage:
       name:
         required: true
@@ -387,6 +388,7 @@ classes:
         required: true
       data_category:
         required: true
+
   DataEmitterProcess:
     class_uri: nmdc:DataEmitterProcess
     is_a: PlannedProcess
@@ -462,6 +464,7 @@ classes:
       - version
       - was_informed_by
       - processing_institution_workflow_metadata
+      - superseded_by
     rules:
       - title: qc_status_pass_has_output_required
         description: >-
@@ -687,6 +690,13 @@ slots:
     description: >-
       The type of planned process that the protocol describes.
 
+  superseded_by:
+    range: WorkflowExecution
+    description: >-
+      Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that 
+      supersedes it, marking this record as outdated. The linked WorkflowExecution or
+      resultant DataObjects should be used in favor of this record.
+
 enums:
   CreditEnum:
     permissible_values:
@@ -797,6 +807,11 @@ enums:
         aliases:
           - Orbitrap IQ-X Tribrid
           - Thermo Orbitrap IQ-X Tribrid
+      
+      orbitrap_exploris_120:
+        aliases:
+          - Orbitrap Exploris 120
+          - Thermo Orbitrap Exploris 120
 
       solarix_7T:
         aliases:

@@ -1484,8 +1484,7 @@ biosample_set:
     emsl_biosample_identifiers:
       - generic:abc123
     igsn_biosample_identifiers:
-      - any:curie_1
-      - any:curie_2
+      - igsn:AU124
     abs_air_humidity:
       has_numeric_value: 9.0
       has_raw_value: "9 gram per gram"
@@ -3041,7 +3040,7 @@ biosample_set:
       - natural organic matter
       - bulk chemistry
     sample_link:
-      - IGSN:DSJ0284
+      - igsn:DSJ0284
       - any:curie
     bulk_elect_conductivity:
       type: nmdc:QuantityValue
