@@ -29,7 +29,7 @@ material_processing_set:
           has_numeric_value: 37
     substances_volume:
       type: nmdc:QuantityValue
-      has_unit: 'uL'
+      has_unit: 'mL'
       has_numeric_value: 2
   - id: nmdc:filtpr-00-123
     type: nmdc:FiltrationProcess
@@ -114,5 +114,5 @@ material_processing_set:
           has_numeric_value: 37
     substances_volume:
       type: nmdc:QuantityValue
-      has_unit: 'uL'
+      has_unit: 'mL'
       has_numeric_value: 5
