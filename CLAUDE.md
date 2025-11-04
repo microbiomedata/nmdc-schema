@@ -28,3 +28,15 @@
 - Start env: `docker compose up --detach`
 - Connect: `docker compose exec app bash`
 - Working dir: `/nmdc-schema`
+
+## Troubleshooting
+
+### Poetry Entry Points
+If `poetry run <command>` fails with "Command not found":
+1. Force reinstall: `poetry run pip uninstall <package> -y && poetry install`
+2. Rebuild environment: `poetry env remove && poetry install`
+
+Essential commands that should work:
+- `poetry run do_shuttle --help` (from sheets-and-friends)
+- `poetry run gen-linkml --help` (from linkml)
+- `poetry run gen-pydantic --help` (from linkml)
