@@ -67,6 +67,7 @@ pydocstyle = "^6.3.0"
 pylint = "^3.2.2"
 pyroma = "^4.2"
 python-dotenv = "^0.21.0"
+pytest = "^8.4.2"
 # We use `refscan` to generate diagrams of inter-collection relationships
 # and diagrams of inter-class relationships.
 # Reference: https://github.com/microbiomedata/refscan
