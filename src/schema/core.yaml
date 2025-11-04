@@ -1161,7 +1161,7 @@ classes:
             If you have not assigned FAIR identifiers to your samples,
             you can generate UUIDs (https://www.uuidgenerator.net/).
         examples:
-          - value: IGSN:AU1243
+          - value: igsn:AU1243
           - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
         todos:
           - Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter

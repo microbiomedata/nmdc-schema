@@ -2255,7 +2255,7 @@
                 "igsn_biosample_identifiers": {
                     "description": "A list of identifiers for the biosample from the IGSN database.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^igsn:[A-Za-z]{2,4}[A-Za-z0-9.-]{1,71}$",
                         "type": "string"
                     },
                     "type": [
@@ -2647,7 +2647,7 @@
                     ]
                 },
                 "misc_param": {
-                    "description": "Structured miscellaneous property assertions for this Biosample. Use when a value cannot cleanly fit an existing, policy-governed slot.",
+                    "description": "Structured miscellaneous property assertions. Use when a value cannot cleanly fit an existing, policy-governed slot.",
                     "items": {
                         "$ref": "#/$defs/PropertyAssertion"
                     },
@@ -3348,7 +3348,7 @@
                 "replicate_number": {
                     "description": "If sending biological replicates, indicate the rep number here.",
                     "type": [
-                        "string",
+                        "integer",
                         "null"
                     ]
                 },
@@ -3913,7 +3913,7 @@
                     ]
                 },
                 "sample_shipped": {
-                    "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample sent to EMSL.",
+                    "description": "The total amount or size (volume, mass, or area) of sample sent to EMSL.",
                     "type": [
                         "string",
                         "null"
@@ -4472,7 +4472,7 @@
                 "technical_reps": {
                     "description": "If sending technical replicates of the same sample, indicate the replicate count.",
                     "type": [
-                        "string",
+                        "integer",
                         "null"
                     ]
                 },
@@ -5581,102 +5581,6 @@
             "title": "ChemicalConversionProcess",
             "type": "object"
         },
-        "ChemicalEntity": {
-            "additionalProperties": false,
-            "description": "An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a  physical entity that pertains to chemistry or biochemistry.",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "chemical_formula": {
-                    "description": "A generic grouping for molecular formulae and empirical formulae",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "definition": {
-                    "description": "The definition of the ontology term as provided by the ontology.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "is_obsolete": {
-                    "description": "A boolean value indicating whether the ontology term is obsolete.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "is_root": {
-                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "relations": {
-                    "items": {
-                        "$ref": "#/$defs/OntologyRelation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:ChemicalEntity"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "type"
-            ],
-            "title": "ChemicalEntity",
-            "type": "object"
-        },
         "ChemicalEntityEnum": {
             "description": "",
             "enum": [
@@ -6104,9 +6008,6 @@
                             "$ref": "#/$defs/EnvironmentalMaterialTerm"
                         },
                         {
-                            "$ref": "#/$defs/ChemicalEntity"
-                        },
-                        {
                             "$ref": "#/$defs/Pathway"
                         },
                         {
@@ -6148,9 +6049,6 @@
                         },
                         {
                             "$ref": "#/$defs/EnvironmentalMaterialTerm"
-                        },
-                        {
-                            "$ref": "#/$defs/ChemicalEntity"
                         },
                         {
                             "$ref": "#/$defs/Pathway"
@@ -6358,6 +6256,13 @@
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": "string"
+                },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -7714,6 +7619,9 @@
                 "Kraken2 Classification Report",
                 "Kraken2 Taxonomic Classification",
                 "Centrifuge Taxonomic Classification",
+                "SingleM Taxonomic Classification",
+                "SingleM Krona Plot",
+                "SingleM Clustered Report",
                 "Structural Annotation GFF",
                 "Structural Annotation Stats Json",
                 "Functional Annotation GFF",
@@ -8579,6 +8487,7 @@
                 "orbitrap_eclipse_tribid",
                 "orbitrap_q_exactive",
                 "orbitrap_iqx_tribrid",
+                "orbitrap_exploris_120",
                 "solarix_7T",
                 "solarix_12T",
                 "solarix_15T",
@@ -9275,6 +9184,13 @@
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
+                },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "too_short_contig_num": {
                     "description": "Number of contigs which were excluded from binning for length.",
@@ -10021,6 +9937,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -10262,6 +10185,13 @@
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
+                },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -10506,9 +10436,12 @@
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
-                    "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
+                    "items": {
+                        "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -10659,6 +10592,13 @@
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
+                },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -10864,6 +10804,13 @@
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
+                },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -11098,6 +11045,13 @@
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
+                },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -11342,9 +11296,12 @@
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
-                    "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
+                    "items": {
+                        "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -11495,6 +11452,13 @@
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
+                },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -11708,6 +11672,13 @@
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
+                },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -12097,6 +12068,13 @@
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
+                },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -13557,6 +13535,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -13799,6 +13784,13 @@
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
+                },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -14693,7 +14685,7 @@
                     ]
                 },
                 "title": {
-                    "description": "A name given to the entity that differs from the name/label programmatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
+                    "description": "A name given to the entity that differs from the name/label programmatically assigned to it.",
                     "type": [
                         "string",
                         "null"

@@ -696,6 +696,15 @@ enums:
       Centrifuge Taxonomic Classification:
         description: Centrifuge output read classification file
 
+      SingleM Taxonomic Classification:
+        description: SingleM taxonomic classification file
+
+      SingleM Krona Plot:
+        description: SingleM krona plot HTML file
+
+      SingleM Clustered Report:
+        description: SingleM taxonomic classification results, clustered by OTU
+
       Structural Annotation GFF:
         description: GFF3 format file with structural annotations
         annotations:
