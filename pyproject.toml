@@ -70,6 +70,7 @@ python-dotenv = "^0.21.0"
 # We use `refscan` to generate diagrams of inter-collection relationships
 # and diagrams of inter-class relationships.
 # Reference: https://github.com/microbiomedata/refscan
+pytest = "^8.4.2"
 refscan = "^0.2.3"
 ruamel-yaml = "^0.18.6"
 ruff = "^0.4.7"
