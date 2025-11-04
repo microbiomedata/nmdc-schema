@@ -96,7 +96,9 @@ pydantic:
 all: site
 site: clean site-clean gen-project gendoc \
 nmdc_schema/gold-to-mixs.sssom.tsv \
-nmdc_schema/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.yaml \
+nmdc_schema/nmdc_materialized_patterns.schema.json \
+nmdc_schema/nmdc_materialized_patterns.yaml \
+nmdc_schema/nmdc_materialized_patterns.json \
 migration-doctests \
 prefixmaps \
 pydantic
@@ -126,8 +128,9 @@ gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # 
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 
-test: examples-clean site test-python migration-doctests examples/output
+test: examples-clean site test-python migration-doctests examples/output gen-linkml-schema-files
 only-test: examples-clean test-python migration-doctests examples/output
+tests: squeaky-clean all test  # simply for convenience to wrap convention of running these three targets to test locally.
 
 test-schema:
 	$(RUN) gen-project \
@@ -282,6 +285,9 @@ nmdc_schema/nmdc_materialized_patterns.schema.json: nmdc_schema/nmdc_materialize
 		--include-range-class-descendants \
 		--top-class Database $< > $@
 
+nmdc_schema/nmdc_materialized_patterns.json: nmdc_schema/nmdc_materialized_patterns.yaml
+	yq -o json < $< > $@
+
 # the sssom/ files should be double checked too... they're probably not all SSSSOM files
 nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv
 	# just can't seem to tell pyproject.toml to bundle artifacts like these
@@ -307,3 +313,7 @@ check-invalids-for-single-failure:
 		echo "$$output" | sort | uniq; \
 	done
 
+# Generate linkml yaml for all schema files
+.PHONY: gen-linkml-schema-files
+gen-linkml-schema-files:
+	$(RUN) python src/scripts/check_schema_self_containment.py

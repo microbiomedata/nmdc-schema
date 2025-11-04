@@ -1,0 +1,23 @@
+data_object_set:
+- id: nmdc:dobj-01-abcXYZ
+  type: nmdc:DataObject
+  name: singlem_classification.csv
+  description: SingleM taxonomic classification results for sample XYZ
+  data_category: processed_data
+  file_size_bytes: 1234567
+  data_object_type: SingleM Taxonomic Classification
+- id: nmdc:dobj-02-defUVW
+  type: nmdc:DataObject
+  name: singlem_krona_plot.html
+  description: SingleM krona plot for sample XYZ
+  data_category: processed_data
+  file_size_bytes: 2345678
+  data_object_type: SingleM Krona Plot
+- id: nmdc:dobj-03-ghiRST
+  type: nmdc:DataObject
+  name: singlem_clustered_report.csv
+  description: SingleM taxonomic classification clustered report for sample XYZ
+  data_category: processed_data
+  file_size_bytes: 3456789
+  data_object_type: SingleM Clustered Report
+

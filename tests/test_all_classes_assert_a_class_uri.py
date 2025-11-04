@@ -1,32 +1,20 @@
-"""Data test."""
-import os
-import pprint
 import unittest
 
 import yaml
 
+from tests import SCHEMA_FILE
 
+
+# TODO: Follow best practices and switch to SchemaView for consistency,
+# though raw YAML access is safe here since class URIs don't involve inheritance
 def read_yaml(file_path):
     with open(file_path, 'r') as file:
-        try:
-            data = yaml.safe_load(file)
-            return data
-        except yaml.YAMLError as e:
-            print(f"Error reading YAML file {file_path}: {e}")
-            return None
-
-
-ROOT = os.path.join(os.path.dirname(__file__), '..')
-SCHEMA_DIR = os.path.join(ROOT, "nmdc_schema")
-
-SCHEMA_FILE = os.path.join(SCHEMA_DIR, 'nmdc_materialized_patterns.yaml')
+        return yaml.safe_load(file)
 
 
 class TestAllClassesAssertAClassUri(unittest.TestCase):
 
     def test_all_classes_assert_a_class_uri(self):
-        print("\n")
-
         schema_class_names = set()
         schema_classes_asserting_uri_names = set()
 

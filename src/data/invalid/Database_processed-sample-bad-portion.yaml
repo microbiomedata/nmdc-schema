@@ -1,0 +1,12 @@
+processed_sample_set:
+  - id: nmdc:procsm-99-dtTMNb
+    type: nmdc:ProcessedSample
+    name: WOOD_024-M-20190715-COMP-DNA1
+    description: Extracted DNA from WOOD_024-M-20190715-COMP
+    external_database_identifiers:
+      - neon.identifier:19S_31_2826
+    biomaterial_purity:
+      type: nmdc:QuantityValue
+      has_numeric_value: 2
+    sampled_portion: 
+      - eleven hard-boiled eggs

@@ -16,15 +16,16 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.10"
-
     - name: Install Poetry
       run: |
         pipx install poetry
         pipx inject poetry "poetry-dynamic-versioning[plugin]"
+
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.12'
+        cache: 'poetry'
 
     - name: Install project dependencies
       run: poetry install --no-interaction

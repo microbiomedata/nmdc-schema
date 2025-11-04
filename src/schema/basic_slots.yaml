@@ -34,6 +34,17 @@ default_range: string
 
 slots:
 
+  processing_institution_workflow_metadata:
+    range: string
+    description: >- 
+      Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such
+      as software tool name and version or pipeline name and version.
+    mappings:
+      - NCIT:C165211
+    examples:
+      - value: metaspades v. 3.15.2
+      - value: IMG Annotation Pipeline v.5.0.25
+      
   qc_comment:
     range: string
     description: >-
@@ -107,19 +118,6 @@ slots:
     examples:
       - value: NERSC-Cori
 
-  websites:
-    range: string
-    multivalued: true
-    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
-    description: A list of websites that are associated with the entity.
-    comments:
-      - DOIs should not be included as websites. Instead, use the associated_dois slot.
-      - A consortium's homepage website should be included in the homepage_website slot, not in websites.
-      - consortium is a convenience term for a Study whose study_category value is consortium
-      - the website slot and its subproperties are virtually identical to the url slot, except that they are multivalued and url is single-valued.
-    see_also:
-      - nmdc:url
-
   homepage_website:
     is_a: websites
     maximum_cardinality: 1
@@ -127,83 +125,9 @@ slots:
     examples:
       - value: https://www.neonscience.org/
 
-  profile_image_url:
-    description: A url that points to an image of a person.
-    range: string
-
-  orcid:
-    description: The ORCID of a person.
-    range: string
-
-  email:
-    description: >-
-      An email address for an entity such as a person.
-      This should be the primary email address used.
-    range: string
-    slot_uri: schema:email
-
-  display_order:
-    range: integer
-    description: When rendering information, this attribute to specify the order in which the information should be rendered.
-
-  url:
-    range: string
-    notes:
-      - See issue 207 - this clashes with the mixs field
-
-  language:
-    range: language_code
-    description: Should use ISO 639-1 code e.g. "en", "fr"
-
-  has_raw_value:
-    description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
-    range: string
-
-  has_unit:
-    description: Links a QuantityValue to a unit
-    aliases:
-      - scale
-    range: unit
-    mappings:
-      - qud:unit
-      - schema:unitCode
-
-  has_numeric_value:
-    description: Links a quantity value to a number
-    range: decimal
-    mappings:
-      - qud:quantityValue
-      - schema:value
-
-  has_minimum_numeric_value:
-    is_a: has_numeric_value
-    description: The minimum value part, expressed as number, of the quantity value when the value covers a range.
-
-  has_maximum_numeric_value:
-    is_a: has_numeric_value
-    description: The maximum value part, expressed as number, of the quantity value when the value covers a range.
-
   has_boolean_value:
     description: Links a quantity value to a boolean
     range: boolean
-
-  latitude:
-    range: decimal_degree
-    description: latitude
-    slot_uri: wgs84:lat
-    examples:
-      - value: "-33.460524"
-    mappings:
-      - schema:latitude
-
-  longitude:
-    range: decimal_degree
-    description: longitude
-    slot_uri: wgs84:long
-    examples:
-      - value: "150.168149"
-    mappings:
-      - schema:longitude
 
   infiltrations:
     description: The amount of time it takes to complete each infiltration activity
@@ -263,6 +187,13 @@ slots:
 
   version:
     range: string
+    description: >- 
+      The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution,
+      this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.
+    broad_mappings:
+      - NCIT:C182117
+    examples:
+      - value: v1.2.0
 
   doi_value:
     description: >-
@@ -427,31 +358,8 @@ slots:
   analyte_category:
     required: true
     description: >
-      The type of analyte(s) that were measured in the data generation process and analyzed
-        in the Workflow Chain
-
-
-  type:
-    required: true
-    range: uriorcurie
-    slot_uri: rdf:type
-    description: the class_uri of the class that has been instantiated
-    notes:
-      - makes it easier to read example data files
-      - required for polymorphic MongoDB collections
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/1048
-      - https://github.com/microbiomedata/nmdc-schema/issues/1233
-      - https://github.com/microbiomedata/nmdc-schema/issues/248
-    structured_aliases:
-      workflow_execution_class:
-       contexts:
-         -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-       predicate: NARROW_SYNONYM
-    examples:
-      - value: nmdc:Biosample
-      - value: nmdc:Study
-    designates_type: true
+      The type of analyte(s) that were measured in the data generation process
+      
 
   external_database_identifiers:
     abstract: true
@@ -518,23 +426,10 @@ slots:
         description: 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248'
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
-  name:
-    range: string
-    description: >-
-      A human readable label for an entity
-
-  description:
-    range: string
-    description: >-
-      a human-readable description of a thing
-    slot_uri: dcterms:description
-
   title:
     range: string
     description: >-
       A name given to the entity that differs from the name/label programmatically assigned to it.
-      For example, when extracting study information for GOLD, the GOLD system has assigned a name/label.
-      However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.
     exact_mappings:
       - dcterms:title
 
@@ -552,7 +447,8 @@ slots:
     multivalued: true
     description: >-
       A list of alternative names used to refer to the entity.
-      The distinction between name and alternative names is application-specific.
+      The distinction between name and alternative names is application-specific. 
+      This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)
     exact_mappings:
       - dcterms:alternative
       - skos:altLabel
@@ -606,18 +502,14 @@ enums:
         aliases:
           - Perlmutter
           - Saul
-      EMSL:
-        description: Environmental Molecular Sciences Laboratory
       EMSL-RZR:
         description: Environmental Molecular Sciences Laboratory RZR cluster
         aliases:
           - RZR
-      JGI:
-        description: Joint Genome Institute
-      LANL-B-div:
-        description: LANL Bioscience Division
+      EMSL-Tahoma:
+        description: Environmental Molecular Sciences Laboratory RZR Tahoma cluster
         aliases:
-          - B-div
+          - Tahoma 
 
   FileTypeEnum:
     permissible_values:
@@ -630,7 +522,7 @@ enums:
           file_name_pattern: '^_virus_summary\.tsv?$'
       
       Plasmid Summary:
-        description: Tab separated file listing the plasmids found be geNomad.
+        description: Tab separated file listing the plasmids found by geNomad.
         see_also: 
           - https://portal.nersc.gov/genomad/
         annotations:
@@ -646,7 +538,7 @@ enums:
           file_name_pattern: '^_aggregated_classification\.tsv?$'  
         
       Reference Calibration File:
-        description: A file that contains data used to calibrate a natural organic matter or metabalomics analysis.
+        description: A file that contains data used to calibrate a natural organic matter or metabolomics analysis.
       
       Metagenome Raw Reads:
         description: Interleaved paired-end raw metagenome sequencing data
@@ -705,6 +597,9 @@ enums:
 
       LC-MS Metabolomics Results:
         description: LC-MS-based metabolite assignment results table
+      
+      Mass Spectrometry Reference Spectral Library:
+        description: Spectral library used for mass spectrometry based metabolite identification
 
       Metaproteomics Workflow Statistics:
         description: Aggregate workflow statistics file
@@ -727,11 +622,8 @@ enums:
       QC non-rRNA R1:
         description: QC removed rRNA reads (R1) fastq
 
-      Metagenome Bins:
-        description: Metagenome bin contigs fasta
-
       Metagenome HQMQ Bins Compression File:
-        description: Compressed file containing high qulaity and medium quality metagenome bins and associated files
+        description: Compressed file containing high quality and medium quality metagenome bins and associated files
         annotations:
           file_name_pattern: "[mag_wf_activity_id]_hqmq_bin.zip"
 
@@ -801,11 +693,17 @@ enums:
       Kraken2 Taxonomic Classification:
         description: Kraken2 output read classification file
 
-      Centrifuge Classification Report:
-        description: Centrifuge output report file
-
       Centrifuge Taxonomic Classification:
         description: Centrifuge output read classification file
+
+      SingleM Taxonomic Classification:
+        description: SingleM taxonomic classification file
+
+      SingleM Krona Plot:
+        description: SingleM krona plot HTML file
+
+      SingleM Clustered Report:
+        description: SingleM taxonomic classification results, clustered by OTU
 
       Structural Annotation GFF:
         description: GFF3 format file with structural annotations
@@ -883,7 +781,7 @@ enums:
       Filtered Sequencing Reads:
         description: Reads QC result fastq (clean data)
         annotations:
-          file_name_pattern: "/.+?(?=filter)/filter-METAGENOME.fastq.gz "
+          file_name_pattern: "/.+?(?=filter)/filter-METAGENOME.fastq.gz"
 
       Read Filtering Info File:
         description: File containing read filtering information
@@ -1196,6 +1094,9 @@ enums:
     notes:
       - use ROR meanings like ror:0168r3w48 for UCSD
     permissible_values:
+      NMDC:
+        title: National Microbiome Data Collaborative
+        meaning: ror:05cwx3318
       UCSD:
         title: University of California, San Diego
         meaning: ror:0168r3w48

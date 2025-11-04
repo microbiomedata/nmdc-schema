@@ -1,12 +1,11 @@
 id: https://w3id.org/nmdc/attribute_values
 name: NMDC-Attribute-values
-title: NMDC Attribute Value Types
+title: NMDC Attribute Value
 description: Schema for National Microbiome Data Collaborative (NMDC), Attribute Value Types
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
-  - basic_classes # in cycle with external_identifier and mixs
   - basic_slots
 
 prefixes:
@@ -38,6 +37,8 @@ classes:
         description: Unnormalized atomic string representation, should in syntax {number} {unit}
       has_unit:
         description: The unit of the quantity
+        range: UnitEnum
+        required: true
       has_numeric_value:
         description: The number part of the quantity
     # range: double # MAM 2024-0405 I don't believe we have any data that requires this level of precision
@@ -128,10 +129,872 @@ classes:
         required: true
     mappings:
       - schema:GeoCoordinates
+
+  PropertyAssertion:
+    class_uri: nmdc:PropertyAssertion
+    is_a: AttributeValue
+    description: >-
+      A structured record of data that doesn't fit nicely within the constraints of other NMDC AttributeValues.
+      Uses primitive ranges only.
+    comments:
+      - >-
+        This class enables flexible metadata capture for properties that don't align with existing,
+        policy-governed slots in NMDC schema.
+      - >-
+        Interoperability note: This approach is aligned with the BERtron schema's 'properties' slot pattern
+        (see https://github.com/ber-data/bertron-schema), which uses any_of to support both TextValue
+        and QuantityValue ranges. NMDC's PropertyAssertion provides a more granular approach by using
+        primitive types with optional semantic annotations, enabling better validation while maintaining
+        flexibility for diverse metadata types.
+      - >-
+        PropertyAssertion supports both categorical values (via has_value_term_id) and numeric values
+        (via has_numeric_value with optional min/max ranges), along with temporal (has_datetime_value)
+        and boolean (has_boolean_value) data types.
+    slots:
+      - has_attribute_label
+      - has_attribute_id
+      - has_quantity_kind_id
+      - has_value_term_id
+      - has_boolean_value
+      - has_datetime_value
+      - has_numeric_value
+      - has_minimum_numeric_value
+      - has_maximum_numeric_value
+      - has_unit
+    slot_usage:
+      has_raw_value:
+        description: Original contributor string representation (unparsed)
+        required: true
+      has_unit:
+        description: UCUM unit code (required only when numeric value is present)
+        required: false
+    examples:
+      - object:
+          type: nmdc:PropertyAssertion
+          has_raw_value: "50 kPa"
+          has_attribute_id: MIXS:0000122
+          has_attribute_label: absolute air humidity
+          has_numeric_value: 50
+          has_unit: kPa
+        description: Data provided from submission that doesn't conform to required abs_air_humidity units
+      - object:
+          type: nmdc:PropertyAssertion
+          has_raw_value: "5.5 mL/L"
+          has_attribute_id: MIXS:0000119
+          has_attribute_label: dissolved oxygen
+          has_numeric_value: 5.5
+          has_unit: mL/L
+        description: Data provided from submission that doesn't conform to required UCUM unit
+      - object:
+          type: nmdc:PropertyAssertion
+          has_raw_value: "250 W/m2"
+          has_attribute_id: MIXS:0000112
+          has_attribute_label: solar irradiance
+          has_numeric_value: 250
+          has_unit: W/m2
+        description: Unit provided is invalid for UCUM and standard
+
+
 slots:
-  biomaterial_purity:
-    range: QuantityValue
+  name:
+    range: string
+    description: >-
+      A human readable label for an entity
+
   term:
     range: OntologyClass
     description: pointer to an ontology class
     inlined: true
+
+  description:
+    range: string
+    description: >-
+      a human-readable description of a thing
+    slot_uri: dcterms:description
+
+  display_order:
+    range: integer
+    description: When rendering information, this attribute to specify the order in which the information should be rendered.
+
+  email:
+    description: >-
+      An email address for an entity such as a person.
+      This should be the primary email address used.
+    range: string
+    slot_uri: schema:email
+
+  profile_image_url:
+    description: A url that points to an image of a person.
+    range: string
+
+  orcid:
+    description: The ORCID of a person.
+    range: string
+
+  language:
+    range: language_code
+    description: Should use ISO 639-1 code e.g. "en", "fr"
+
+  has_raw_value:
+    description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
+    range: string
+
+  has_unit:
+    description: Links a QuantityValue to a unit
+    aliases:
+      - scale
+    mappings:
+      - qud:unit
+      - schema:unitCode
+    range: string
+
+  type:
+    required: true
+    range: uriorcurie
+    slot_uri: rdf:type
+    description: the class_uri of the class that has been instantiated
+    notes:
+      - makes it easier to read example data files
+      - required for polymorphic MongoDB collections
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/1048
+      - https://github.com/microbiomedata/nmdc-schema/issues/1233
+      - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+      workflow_execution_class:
+       contexts:
+         -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+       predicate: NARROW_SYNONYM
+    examples:
+      - value: nmdc:Biosample
+      - value: nmdc:Study
+    designates_type: true
+
+  has_numeric_value:
+    description: Links a quantity value to a number
+    range: decimal
+    mappings:
+      - qud:quantityValue
+      - schema:value
+
+  has_minimum_numeric_value:
+    is_a: has_numeric_value
+    description: The minimum value part, expressed as number, of the quantity value when the value covers a range.
+
+  has_maximum_numeric_value:
+    is_a: has_numeric_value
+    description: The maximum value part, expressed as number, of the quantity value when the value covers a range.
+
+  latitude:
+    range: decimal_degree
+    description: The latitude of a location.
+    alt_descriptions:
+      wikipedia:
+        A geographic coordinate that specifies the north-south position of a point on the surface of the Earth or another celestial body.
+    slot_uri: wgs84:lat
+    examples:
+      - value: "-33.460524"
+    mappings:
+      - schema:latitude
+
+  longitude:
+    range: decimal_degree
+    description: The longitude of a location.
+    alt_descriptions:
+      wikipedia:
+        A geographic coordinate that specifies the east-west position of a point on the surface of the Earth, or another celestial body.
+    slot_uri: wgs84:long
+    examples:
+      - value: "150.168149"
+    mappings:
+      - schema:longitude
+
+  url:
+    range: string
+    notes:
+      - See issue 207 - this clashes with the mixs field
+
+  websites:
+    range: string
+    multivalued: true
+    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
+    description: A list of websites that are associated with the entity.
+    comments:
+      - DOIs should not be included as websites. Instead, use the associated_dois slot.
+      - A consortium's homepage website should be included in the homepage_website slot, not in websites.
+      - consortium is a convenience term for a Study whose study_category value is consortium
+      - the website slot and its subproperties are virtually identical to the url slot, except that they are multivalued and url is single-valued.
+    see_also:
+      - nmdc:url
+
+  has_attribute_label:
+    range: string
+    description: Human-readable label for the property (e.g., MIxS label, ENVO term label).
+    comments:
+      - >-
+        This provides a human-friendly name for the asserted property. For example, "bicarbonate ion concentration"
+        or "total phosphorus". The label helps with readability and data discovery.
+
+  has_attribute_id:
+    range: uriorcurie
+    description: CURIE or IRI for the property (MIxS slot, NMDC slot, ENVO/OBI term, etc.).
+    comments:
+      - >-
+        This provides a resolvable identifier for the property being asserted. Examples include MIXS:0000117
+        for total phosphorus, or ENVO:01001357 for bicarbonate ion concentration.
+      - >-
+        Prefer using standard ontology terms (ENVO, PATO, OBI, etc.) or MIxS identifiers when available
+        to enhance interoperability.
+
+  has_quantity_kind_id:
+    range: uriorcurie
+    description: Optional CURIE or IRI for the physical quantity kind (e.g., qudt:QuantityKind).
+    comments:
+      - >-
+        This slot enables precise semantic description of what physical quantity is being measured,
+        independent of the specific units used. For example, qudt:MassConcentration or qudt:Temperature.
+      - >-
+        Using quantity kind identifiers from QUDT or similar vocabularies improves data integration
+        and enables automated unit conversion.
+
+  has_value_term_id:
+    range: uriorcurie
+    description: CURIE or IRI for categorical values (ENVO, PATO, METPO, etc.).
+    comments:
+      - >-
+        Use this slot when the value of the property is a controlled vocabulary term rather than
+        a numeric or free-text value. For example, ENVO:00002297 for "desert ecosystem" or
+        PATO:0001199 for "dry".
+
+  has_datetime_value:
+    range: string
+    description: Date-time value for the property in ISO-8601 format.
+    comments:
+      - >-
+        Use this slot for temporal properties. The value should follow ISO-8601 format
+        (e.g., "2025-06-12T14:30:00Z").
+
+enums:
+  UnitEnum:
+    permissible_values:
+      "%":
+        aliases:
+          - percent
+          - Percent
+        description: The Unified Code for Units of Measure (UCUM) representation of percent.
+      "J/K":
+        title: "J/degree Celsius"
+        aliases:
+          - joule per kelvin
+          - joules per kelvin
+          - J/Kelvin
+          - J/Celvin
+          - "J/Cel"
+          - "J/C"
+        description: The Unified Code for Units of Measure (UCUM) representation of joule per kelvin.
+        comments:
+          - "UCUM-compliant unit for energy per temperature. J/Cel deprecated due to non-ratio temperature unit."
+      Cel:
+        title: degrees Celsius
+        aliases:
+          - Celsius
+          - C
+          - Celcius
+          - degreeCelsius
+          - degree Celsius
+        description: >-
+          The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature 
+          equal to one unit Kelvin.
+        exact_mappings:
+          - UO:0000027
+          - wikidata:Q25267
+          - qud:DEG_C
+          - OM:degreeCelsius
+      cm:
+        description: The Unified Code for Units of Measure (UCUM) representation of centimeter.
+      cP:
+        aliases:
+          - centipoise
+          - centiPoise
+        description: The Unified Code for Units of Measure (UCUM) representation of centipoise.
+      d:
+        aliases:
+          - days
+        description: The Unified Code for Units of Measure (UCUM) representation of day.
+      g:
+        description: The Unified Code for Units of Measure (UCUM) representation of gram.
+      h:
+        description: The Unified Code for Units of Measure (UCUM) representation of hour.
+      kPa:
+        description: The Unified Code for Units of Measure (UCUM) representation of kilopascal.
+      m:
+        aliases:
+          - meter
+          - meters
+        description: The Unified Code for Units of Measure (UCUM) representation of meter.
+      "m/s":
+        description: The Unified Code for Units of Measure (UCUM) representation of meters per second.
+      "mg/kg":
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams per kilogram.
+      "mg/L":
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams per liter.
+      min:
+        description: The Unified Code for Units of Measure (UCUM) representation of minute.
+        aliases:
+          - minutes
+          - minute
+      mL:
+        description: The Unified Code for Units of Measure (UCUM) representation of milliliter.
+      mm:
+        description: The Unified Code for Units of Measure (UCUM) representation of millimeter.
+      "mL/L":
+        description: The Unified Code for Units of Measure (UCUM) representation of milliliters per liter.
+        aliases:
+          - "ml/L"
+          - "milliliters per liter"
+      "mmol/L":
+        aliases:
+          - mM
+        description: The Unified Code for Units of Measure (UCUM) representation of millimolar.
+      "mS/cm":
+        aliases:
+          - "mS/cm"
+          - "millisiemens/cm"
+          - "millisiemens per centimeter"
+          - "milliSiemens/cm"
+          - "milliSiemens/cm"
+        description: The Unified Code for Units of Measure (UCUM) representation of millisiemens per centimeter.
+      "[ppm]":
+        description: The Unified Code for Units of Measure (UCUM) representation of parts per million.
+        see_also:
+          - https://terminology.hl7.org/5.1.0/ValueSet-v3-UnitsOfMeasureCaseSensitive.html
+          - https://ucum.org/ucum
+        aliases:
+          - "ppm"
+          - "1*10-6"
+      "uS/cm":
+        aliases:
+          - "μS/cm"
+          - "microsiemens/cm"
+          - "microsiemens per centimeter"
+          - "microSiemens/cm"
+        description: The Unified Code for Units of Measure (UCUM) representation of microsiemens per centimeter.
+      "W/m2":
+        description: The Unified Code for Units of Measure (UCUM) representation of watts per square meter.
+      a:
+        title: years
+        aliases:
+          - years
+        description: The Unified Code for Units of Measure (UCUM) representation of year.
+      "ug/L":
+        aliases:
+          - "μg/L"
+          - "microg/L"
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms per liter.
+      "ug/uL":
+        aliases:
+          - "μg/μL"
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms per microliter.
+      "uL":
+        aliases:
+          - "μL"
+          - "µL"
+        description: The Unified Code for Units of Measure (UCUM) representation of microliter.
+      "mol/L":
+        description: The Unified Code for Units of Measure (UCUM) representation of moles per liter.
+      "mol/L/h":
+        description: The Unified Code for Units of Measure (UCUM) representation of moles per liter per hour.
+      "ug/L/h":
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms per liter per hour.
+      "umol/L":
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles per liter.
+        aliases:
+          - "μmol/L"
+          - "micromol/L"
+      "umol/kg":
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram.
+      "umol/m2/s":
+        title: micromoles per square meter per second
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles per square meter per second.
+        aliases:
+          - "μmol/m2/s"
+          - "micromol/m2/s"
+          - "u[E]/m2/s"
+          - "micro Einsteins"
+      "mg/m3":
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter.
+      "m2/s":
+        description: The Unified Code for Units of Measure (UCUM) representation of square meters per second.
+      "kg/m3":
+        description: The Unified Code for Units of Measure (UCUM) representation of kilograms per cubic meter.
+      "g/m3":
+        description: The Unified Code for Units of Measure (UCUM) representation of grams per cubic meter.
+      "m2":
+        description: The Unified Code for Units of Measure (UCUM) representation of square meters.
+      atm:
+        description: The Unified Code for Units of Measure (UCUM) representation of atmosphere.
+      V:
+        description: The Unified Code for Units of Measure (UCUM) representation of volt.
+      mV:
+        description: The Unified Code for Units of Measure (UCUM) representation of millivolt.
+      L:
+        description: The Unified Code for Units of Measure (UCUM) representation of liter.
+      um:
+        aliases:
+          - μm
+          - µm
+        description: The Unified Code for Units of Measure (UCUM) representation of micrometer.
+      "1":
+        title: "ratio/unitless"
+        aliases:
+          - "ratio"
+          - "unitless"
+          - "dimensionless" 
+          - "people"
+          - "pets"
+          - "plants"
+        description: The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity.
+        comments:
+          - "Used for ratios, counts, and dimensionless measurements (e.g., number of people, pets, plants)."
+      "uL/kg":
+        description: The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram.
+      kg:
+        description: The Unified Code for Units of Measure (UCUM) representation of kilogram.
+      "[ppth]":
+        description: The Unified Code for Units of Measure (UCUM) representation of parts per thousand.
+        aliases:
+          - ppt
+          - parts per thousand
+      "g/g":
+        aliases:
+          - g/g
+        description: The Unified Code for Units of Measure (UCUM) representation of gram per gram.
+      lx:
+        title: lux
+        aliases:
+          - lx
+        description: The Unified Code for Units of Measure (UCUM) representation of lux.
+      "mg/m3/d":
+        aliases:
+          - mg/m3/d
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter per day.
+      "ng/h":
+        aliases:
+          - ng/h
+        description: The Unified Code for Units of Measure (UCUM) representation of nanograms per hour.
+      "mm[Hg]":
+        aliases:
+          - mm[Hg]
+          - mmHg
+        description: The Unified Code for Units of Measure (UCUM) representation of millimeters of mercury.
+      "[ppb]":
+        aliases:
+          - ppb
+        description: The Unified Code for Units of Measure (UCUM) representation of parts per billion.
+      "g/kg":
+        aliases:
+          - g/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of grams per kilogram.
+      "deg":
+        aliases:
+          - deg
+          - degree
+          - degrees
+        description: The Unified Code for Units of Measure (UCUM) representation of degree (angle).
+      "mg/g":
+        aliases:
+          - mg/g
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams per gram.
+      "ug/g":
+        aliases:
+          - ug/g
+          - μg/g
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms per gram.
+      "ng/g":
+        aliases:
+          - ng/g
+        description: The Unified Code for Units of Measure (UCUM) representation of nanograms per gram.
+      "pg/g":
+        aliases:
+          - pg/g
+        description: The Unified Code for Units of Measure (UCUM) representation of picograms per gram.
+      "ng/L":
+        aliases:
+          - ng/L
+        description: The Unified Code for Units of Measure (UCUM) representation of nanograms per liter.
+      "pg/L":
+        aliases:
+          - pg/L
+        description: The Unified Code for Units of Measure (UCUM) representation of picograms per liter.
+      "ug/mL":
+        aliases:
+          - ug/mL
+          - μg/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms per milliliter.
+      "ng/mL":
+        aliases:
+          - ng/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of nanograms per milliliter.
+      "pg/mL":
+        aliases:
+          - pg/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of picograms per milliliter.
+      "mol":
+        aliases:
+          - mol
+          - mole
+          - moles
+        description: The Unified Code for Units of Measure (UCUM) representation of mole.
+      "mmol":
+        aliases:
+          - mmol
+          - millimole
+          - millimoles
+        description: The Unified Code for Units of Measure (UCUM) representation of millimole.
+      "umol":
+        aliases:
+          - umol
+          - μmol
+          - micromole
+          - micromoles
+        description: The Unified Code for Units of Measure (UCUM) representation of micromole.
+      "nmol":
+        aliases:
+          - nmol
+          - nanomole
+          - nanomoles
+        description: The Unified Code for Units of Measure (UCUM) representation of nanomole.
+      "pmol":
+        aliases:
+          - pmol
+          - picomole
+          - picomoles
+        description: The Unified Code for Units of Measure (UCUM) representation of picomole.
+      "U":
+        aliases:
+          - U
+          - unit
+          - units
+        description: The Unified Code for Units of Measure (UCUM) representation of enzyme unit.
+      "mU":
+        aliases:
+          - mU
+          - milliunit
+          - milliunits
+        description: The Unified Code for Units of Measure (UCUM) representation of millienzyme unit.
+      "uU":
+        aliases:
+          - uU
+          - μU
+          - microunit
+          - microunits
+        description: The Unified Code for Units of Measure (UCUM) representation of microenzyme unit.
+      "nU":
+        aliases:
+          - nU
+          - nanounit
+          - nanounits
+        description: The Unified Code for Units of Measure (UCUM) representation of nanoenzyme unit.
+      "Bq":
+        aliases:
+          - Bq
+          - becquerel
+          - becquerels
+        description: The Unified Code for Units of Measure (UCUM) representation of becquerel.
+      "kBq":
+        aliases:
+          - kBq
+          - kilobecquerel
+          - kilobecquerels
+        description: The Unified Code for Units of Measure (UCUM) representation of kilobecquerel.
+      "MBq":
+        aliases:
+          - MBq
+          - megabecquerel
+          - megabecquerels
+        description: The Unified Code for Units of Measure (UCUM) representation of megabecquerel.
+      "GBq":
+        aliases:
+          - GBq
+          - gigabecquerel
+          - gigabecquerels
+        description: The Unified Code for Units of Measure (UCUM) representation of gigabecquerel.
+      "Ci":
+        aliases:
+          - Ci
+          - curie
+          - curies
+        description: The Unified Code for Units of Measure (UCUM) representation of curie.
+      "mCi":
+        aliases:
+          - mCi
+          - millicurie
+          - millicuries
+        description: The Unified Code for Units of Measure (UCUM) representation of millicurie.
+      "uCi":
+        aliases:
+          - uCi
+          - μCi
+          - microcurie
+          - microcuries
+        description: The Unified Code for Units of Measure (UCUM) representation of microcurie.
+      "nCi":
+        aliases:
+          - nCi
+          - nanocurie
+          - nanocuries
+        description: The Unified Code for Units of Measure (UCUM) representation of nanocurie.
+      "pCi":
+        aliases:
+          - pCi
+          - picocurie
+          - picocuries
+        description: The Unified Code for Units of Measure (UCUM) representation of picocurie.
+      "rad":
+        aliases:
+          - rad
+        description: The Unified Code for Units of Measure (UCUM) representation of radian.
+      "sr":
+        aliases:
+          - sr
+          - steradian
+          - steradians
+        description: The Unified Code for Units of Measure (UCUM) representation of steradian.
+      "Hz":
+        aliases:
+          - Hz
+          - hertz
+        description: The Unified Code for Units of Measure (UCUM) representation of hertz.
+      "1/d":
+        aliases:
+          - per day
+          - daily frequency
+        description: The Unified Code for Units of Measure (UCUM) representation of per day (frequency).
+      "kHz":
+        aliases:
+          - kHz
+          - kilohertz
+        description: The Unified Code for Units of Measure (UCUM) representation of kilohertz.
+      "MHz":
+        aliases:
+          - MHz
+          - megahertz
+        description: The Unified Code for Units of Measure (UCUM) representation of megahertz.
+      "GHz":
+        aliases:
+          - GHz
+          - gigahertz
+        description: The Unified Code for Units of Measure (UCUM) representation of gigahertz.
+      "N":
+        aliases:
+          - N
+          - newton
+          - newtons
+        description: The Unified Code for Units of Measure (UCUM) representation of newton.
+      "kN":
+        aliases:
+          - kN
+          - kilonewton
+          - kilonewtons
+        description: The Unified Code for Units of Measure (UCUM) representation of kilonewton.
+      "J":
+        aliases:
+          - J
+          - joule
+          - joules
+        description: The Unified Code for Units of Measure (UCUM) representation of joule.
+      "kJ":
+        aliases:
+          - kJ
+          - kilojoule
+          - kilojoules
+        description: The Unified Code for Units of Measure (UCUM) representation of kilojoule.
+      "MJ":
+        aliases:
+          - MJ
+          - megajoule
+          - megajoules
+        description: The Unified Code for Units of Measure (UCUM) representation of megajoule.
+      "W":
+        aliases:
+          - W
+          - watt
+          - watts
+        description: The Unified Code for Units of Measure (UCUM) representation of watt.
+      "kW":
+        aliases:
+          - kW
+          - kilowatt
+          - kilowatts
+        description: The Unified Code for Units of Measure (UCUM) representation of kilowatt.
+      mbar:
+        description: The Unified Code for Units of Measure (UCUM) representation of millibar.
+      "kW/m2":
+        description: The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter.
+      "umol/s/m2":
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles per second per square meter.
+        aliases:
+          - "umol{photon}/s/m2"
+      "m3/d":
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic meters per day.
+      "L/h":
+        description: The Unified Code for Units of Measure (UCUM) representation of liters per hour.
+      "[pH]":
+        description: The Unified Code for Units of Measure (UCUM) representation of pH units.
+        aliases:
+          - pH
+      "kW/m2/d":
+        description: The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter per day.
+      "[NTU]":
+        description: The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units.
+        title: Nephelometric Turbidity Units
+        aliases:
+          - NTU
+      "[FNU]":
+        description: The Unified Code for Units of Measure (UCUM) representation of Formazin Nephelometric Units.
+        title: Formazin Nephelometric Units
+        aliases:
+          - FNU
+      "m3/min":
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic meters per minute.
+      "km/h":
+        description: The Unified Code for Units of Measure (UCUM) representation of kilometers per hour.
+      "[lb_av]":
+        title: pounds (avoirdupois)
+        aliases:
+          - pound
+          - lb
+        description: The Unified Code for Units of Measure (UCUM) representation of pound (avoirdupois).
+      "kg/kg":
+        aliases:
+          - kilogram per kilogram
+        description: The Unified Code for Units of Measure (UCUM) representation of kilogram per kilogram.
+      "ug/m3":
+        aliases:
+          - μg/m3
+          - micrograms per cubic meter
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms per cubic meter.
+      "meq/L":
+        aliases:
+          - milliequivalents per liter
+        description: The Unified Code for Units of Measure (UCUM) representation of milliequivalents per liter.
+      "lm/m2":
+        aliases:
+          - lumens per square meter
+        description: The Unified Code for Units of Measure (UCUM) representation of lumens per square meter.
+      mg:
+        aliases:
+          - milligram
+          - milligrams
+        description: The Unified Code for Units of Measure (UCUM) representation of milligram.
+      "umol/L/h":
+        aliases:
+          - micromoles per liter per hour
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles per liter per hour.
+        comments: >-
+          For example, micromoles of oxygen created by photosynthesis per liter of water per hour.
+      "g/cm3":
+        aliases:
+          - grams per cubic centimeter
+        description: The Unified Code for Units of Measure (UCUM) representation of grams per cubic centimeter.
+      "g/L":
+        aliases:
+          - grams per liter
+        description: The Unified Code for Units of Measure (UCUM) representation of grams per liter.
+      wk:
+        aliases:
+          - week
+          - weeks
+        description: The Unified Code for Units of Measure (UCUM) representation of week.
+      "[g]":
+        title: standard gravity
+        aliases:
+          - standard gravity
+          - g-force
+        description: The Unified Code for Units of Measure (UCUM) representation of standard gravity.
+      "m/s2":
+        aliases:
+          - meters per second squared
+        description: The Unified Code for Units of Measure (UCUM) representation of meters per second squared.
+      "mol/g":
+        aliases:
+          - moles per gram
+        description: The Unified Code for Units of Measure (UCUM) representation of moles per gram.
+      "g/m2/d":
+        aliases:
+          - grams per square meter per day
+        description: The Unified Code for Units of Measure (UCUM) representation of grams per square meter per day.
+      Gy:
+        aliases:
+          - gray
+        description: The Unified Code for Units of Measure (UCUM) representation of gray (absorbed dose).
+      RAD:
+        title: rad (radiation absorbed dose)
+        aliases:
+          - radiation absorbed dose
+        description: The Unified Code for Units of Measure (UCUM) representation of rad (radiation absorbed dose).
+      "[sft_i]":
+        title: square feet
+        aliases:
+          - square feet
+          - sq ft
+        description: The Unified Code for Units of Measure (UCUM) representation of square feet.
+      "[cft_i]":
+        title: cubic feet
+        aliases:
+          - cubic feet
+          - cu ft
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic feet.
+      m3:
+        aliases:
+          - cubic meter
+          - cubic meters
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic meter.
+      ug:
+        aliases:
+          - μg
+          - microgram
+          - micrograms
+        description: The Unified Code for Units of Measure (UCUM) representation of microgram.
+      "mm/a":
+        title: millimeters per year
+        aliases:
+          - millimeters per year
+        description: The Unified Code for Units of Measure (UCUM) representation of millimeters per year.
+      cm2:
+        aliases:
+          - square centimeter
+          - square centimeters
+        description: The Unified Code for Units of Measure (UCUM) representation of square centimeter.
+      "erg/cm2/s":
+        aliases:
+          - ergs per square centimeter per second
+        description: The Unified Code for Units of Measure (UCUM) representation of ergs per square centimeter per second.
+      "g/m2":
+        aliases:
+          - grams per square meter
+        description: The Unified Code for Units of Measure (UCUM) representation of grams per square meter.
+      "L/s":
+        aliases:
+          - liters per second
+        description: The Unified Code for Units of Measure (UCUM) representation of liters per second.
+      "cm3/cm3":
+        aliases:
+          - cubic centimeters per cubic centimeter
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic centimeters per cubic centimeter.
+      "[kn_i]":
+        title: knots
+        aliases:
+          - knot
+          - knots
+        description: The Unified Code for Units of Measure (UCUM) representation of knot (nautical miles per hour).
+      "m3/s":
+        aliases:
+          - cubic meters per second
+        description: The Unified Code for Units of Measure (UCUM) representation of cubic meters per second.
+      "[in_i]":
+        title: inches
+        aliases:
+          - inch
+          - inches
+        description: The Unified Code for Units of Measure (UCUM) representation of inch.

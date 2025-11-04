@@ -56,7 +56,9 @@ workflow_execution_set:
   uses_calibration: nmdc:calib-14-93cjjw92
   ended_at_time: '2021-01-07T23:54:40Z'
   execution_resource: EMSL-RZR
+  processing_institution: NMDC
   git_url: https://github.com/microbiomedata/metaMS
   started_at_time: '2021-01-07T23:54:40Z'
-  was_informed_by: nmdc:dgms-13-122e4240
+  was_informed_by:
+    - nmdc:dgms-13-122e4240
   metabolomics_analysis_category: gc_ms_metabolomics

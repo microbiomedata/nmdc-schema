@@ -53,96 +53,6 @@
         },
         "Biosample": {
             "additionalProperties": false,
-            "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "dna_cont_well": {
-                                "pattern": ".+"
-                            }
-                        },
-                        "required": [
-                            "dna_cont_well"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "dna_cont_type": {
-                                "const": "plate"
-                            }
-                        },
-                        "required": [
-                            "dna_cont_type"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "dna_cont_type": {
-                                "const": "plate"
-                            }
-                        },
-                        "required": [
-                            "dna_cont_type"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "dna_cont_well": {
-                                "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$"
-                            }
-                        },
-                        "required": [
-                            "dna_cont_well"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "rna_cont_well": {
-                                "pattern": ".+"
-                            }
-                        },
-                        "required": [
-                            "rna_cont_well"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "rna_cont_type": {
-                                "const": "plate"
-                            }
-                        },
-                        "required": [
-                            "rna_cont_type"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "rna_cont_type": {
-                                "const": "plate"
-                            }
-                        },
-                        "required": [
-                            "rna_cont_type"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "rna_cont_well": {
-                                "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$"
-                            }
-                        },
-                        "required": [
-                            "rna_cont_well"
-                        ]
-                    }
-                }
-            ],
             "description": "Biological source material which can be characterized by an experiment.",
             "properties": {
                 "abs_air_humidity": {
@@ -329,6 +239,16 @@
                     "description": "Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC",
                     "items": {
                         "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
+                    "items": {
                         "type": "string"
                     },
                     "type": [
@@ -1044,13 +964,6 @@
                     ],
                     "description": "The cooling system identifier"
                 },
-                "core_field": {
-                    "description": "basic fields",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "crop_rotation": {
                     "anyOf": [
                         {
@@ -1274,54 +1187,12 @@
                     ],
                     "description": "Concentration of dissolved oxygen in the oil field produced fluids as it contributes to oxgen-corrosion and microbial activity (e.g. Mic)."
                 },
-                "dna_absorb1": {
-                    "description": "260/280 measurement of DNA sample purity",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "dna_absorb2": {
-                    "description": "260/230 measurement of DNA sample purity",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
                 "dna_collect_site": {
                     "description": "Provide information on the site your DNA sample was collected from",
                     "type": [
                         "string",
                         "null"
                     ]
-                },
-                "dna_concentration": {
-                    "maximum": 2000,
-                    "minimum": 0,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "dna_cont_type": {
-                    "$ref": "#/$defs/JgiContTypeEnum",
-                    "description": "Tube or plate (96-well)"
-                },
-                "dna_cont_well": {
-                    "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_container_id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_dnase": {
-                    "$ref": "#/$defs/YesNoEnum"
                 },
                 "dna_isolate_meth": {
                     "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
@@ -1336,58 +1207,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "dna_project_contact": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_samp_id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_sample_format": {
-                    "$ref": "#/$defs/DNASampleFormatEnum",
-                    "description": "Solution in which the DNA sample has been suspended"
-                },
-                "dna_sample_name": {
-                    "description": "Give the DNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_seq_project": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_seq_project_name": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_seq_project_pi": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_volume": {
-                    "maximum": 1000,
-                    "minimum": 0,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "dnase_rna": {
-                    "$ref": "#/$defs/YesNoEnum"
                 },
                 "door_comp_type": {
                     "$ref": "#/$defs/DoorCompTypeEnum",
@@ -1573,13 +1392,6 @@
                         }
                     ],
                     "description": "MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported"
-                },
-                "environment_field": {
-                    "description": "field describing environmental aspect of a sample",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "escalator": {
                     "anyOf": [
@@ -2443,7 +2255,7 @@
                 "igsn_biosample_identifiers": {
                     "description": "A list of identifiers for the biosample from the IGSN database.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^igsn:[A-Za-z]{2,4}[A-Za-z0-9.-]{1,71}$",
                         "type": "string"
                     },
                     "type": [
@@ -2527,13 +2339,6 @@
                 "int_wall_cond": {
                     "$ref": "#/$defs/IntWallCondEnum",
                     "description": "The physical condition of the wall at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas"
-                },
-                "investigation_field": {
-                    "description": "field describing aspect of the investigation/study to which the sample belongs",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "isotope_exposure": {
                     "description": "List isotope exposure or addition applied to your sample.",
@@ -2842,9 +2647,9 @@
                     ]
                 },
                 "misc_param": {
-                    "description": "Any other measurement performed or parameter collected, that is not listed here",
+                    "description": "Structured miscellaneous property assertions. Use when a value cannot cleanly fit an existing, policy-governed slot.",
                     "items": {
-                        "$ref": "#/$defs/TextValue"
+                        "$ref": "#/$defs/PropertyAssertion"
                     },
                     "type": [
                         "array",
@@ -2967,12 +2772,6 @@
                     },
                     "type": [
                         "array",
-                        "null"
-                    ]
-                },
-                "nucleic_acid_sequence_source_field": {
-                    "type": [
-                        "string",
                         "null"
                     ]
                 },
@@ -3474,18 +3273,6 @@
                         "null"
                     ]
                 },
-                "proposal_dna": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "proposal_rna": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "quad_pos": {
                     "$ref": "#/$defs/QuadPosEnum",
                     "description": "The quadrant position of the sampling room within the building"
@@ -3561,7 +3348,7 @@
                 "replicate_number": {
                     "description": "If sending biological replicates, indicate the rep number here.",
                     "type": [
-                        "string",
+                        "integer",
                         "null"
                     ]
                 },
@@ -3587,47 +3374,8 @@
                     ],
                     "description": "Saturate, Aromatic, Resin and Asphaltene\u00ac\u2020(SARA) is an analysis method that divides\u00ac\u2020crude oil\u00ac\u2020components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
                 },
-                "rna_absorb1": {
-                    "description": "260/280 measurement of RNA sample purity",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "rna_absorb2": {
-                    "description": "260/230 measurement of RNA sample purity",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
                 "rna_collect_site": {
                     "description": "Provide information on the site your RNA sample was collected from",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_concentration": {
-                    "maximum": 1000,
-                    "minimum": 0,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "rna_cont_type": {
-                    "$ref": "#/$defs/JgiContTypeEnum",
-                    "description": "Tube or plate (96-well)"
-                },
-                "rna_cont_well": {
-                    "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_container_id": {
                     "type": [
                         "string",
                         "null"
@@ -3644,57 +3392,6 @@
                     "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                },
-                "rna_project_contact": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_samp_id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_sample_format": {
-                    "$ref": "#/$defs/RNASampleFormatEnum",
-                    "description": "Solution in which the RNA sample has been suspended"
-                },
-                "rna_sample_name": {
-                    "description": "Give the RNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.",
-                    "maximum": 2000,
-                    "minimum": 0,
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_seq_project": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_seq_project_name": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_seq_project_pi": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_volume": {
-                    "maximum": 1000,
-                    "minimum": 0,
-                    "type": [
-                        "number",
                         "null"
                     ]
                 },
@@ -4216,7 +3913,7 @@
                     ]
                 },
                 "sample_shipped": {
-                    "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample sent to EMSL.",
+                    "description": "The total amount or size (volume, mass, or area) of sample sent to EMSL.",
                     "type": [
                         "string",
                         "null"
@@ -4298,12 +3995,6 @@
                 "sediment_type": {
                     "$ref": "#/$defs/SedimentTypeEnum",
                     "description": "Information about the sediment type based on major constituents"
-                },
-                "sequencing_field": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "sewage_type": {
                     "anyOf": [
@@ -4781,7 +4472,7 @@
                 "technical_reps": {
                     "description": "If sending technical replicates of the same sample, indicate the replicate count.",
                     "type": [
-                        "string",
+                        "integer",
                         "null"
                     ]
                 },
@@ -5890,120 +5581,33 @@
             "title": "ChemicalConversionProcess",
             "type": "object"
         },
-        "ChemicalEntity": {
-            "additionalProperties": false,
-            "description": "An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a  physical entity that pertains to chemistry or biochemistry.",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "chemical_formula": {
-                    "description": "A generic grouping for molecular formulae and empirical formulae",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "definition": {
-                    "description": "The definition of the ontology term as provided by the ontology.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "is_obsolete": {
-                    "description": "A boolean value indicating whether the ontology term is obsolete.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "is_root": {
-                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "relations": {
-                    "items": {
-                        "$ref": "#/$defs/OntologyRelation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:ChemicalEntity"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "type"
-            ],
-            "title": "ChemicalEntity",
-            "type": "object"
-        },
         "ChemicalEntityEnum": {
             "description": "",
             "enum": [
                 "acetonitrile",
+                "acetic_acid",
                 "alphaLP",
                 "ammonium_acetate",
                 "ammonium_bicarbonate",
+                "amitriptyline",
                 "Arg-C",
                 "Asp-N",
                 "chloroform",
                 "chymotrypsin",
+                "ethanol",
                 "formic_acid",
                 "glucose",
                 "Glu-C",
+                "hydrochloric_acid",
                 "isopropyl_alcohol",
                 "Lys-C",
                 "Lys-N",
+                "N-methyl-N-trimethylsilyltrifluoroacetamide",
                 "methanol",
+                "methoxyamine",
+                "medronic_acid",
+                "phosphoric_acid",
+                "trimethylchlorosilane",
                 "trypsin",
                 "water"
             ],
@@ -6218,6 +5822,16 @@
                         "null"
                     ]
                 },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
                 "stationary_phase": {
                     "$ref": "#/$defs/StationaryPhaseEnum",
                     "description": "The material the stationary phase is comprised of used in chromatography."
@@ -6242,6 +5856,8 @@
                 }
             },
             "required": [
+                "chromatographic_category",
+                "stationary_phase",
                 "id",
                 "name",
                 "description",
@@ -6392,9 +6008,6 @@
                             "$ref": "#/$defs/EnvironmentalMaterialTerm"
                         },
                         {
-                            "$ref": "#/$defs/ChemicalEntity"
-                        },
-                        {
                             "$ref": "#/$defs/Pathway"
                         },
                         {
@@ -6436,9 +6049,6 @@
                         },
                         {
                             "$ref": "#/$defs/EnvironmentalMaterialTerm"
-                        },
-                        {
-                            "$ref": "#/$defs/ChemicalEntity"
                         },
                         {
                             "$ref": "#/$defs/Pathway"
@@ -6560,25 +6170,6 @@
             "title": "CurLandUseEnum",
             "type": "string"
         },
-        "DNASampleFormatEnum": {
-            "description": "",
-            "enum": [
-                "10 mM Tris-HCl",
-                "DNAStable",
-                "Ethanol",
-                "Low EDTA TE",
-                "MDA reaction buffer",
-                "PBS",
-                "Pellet",
-                "RNAStable",
-                "TE",
-                "Water",
-                "Gentegra-DNA",
-                "Gentegra-RNA"
-            ],
-            "title": "DNASampleFormatEnum",
-            "type": "string"
-        },
         "DataCategoryEnum": {
             "description": "",
             "enum": [
@@ -6666,6 +6257,13 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -6687,6 +6285,8 @@
                 }
             },
             "required": [
+                "data_category",
+                "data_object_type",
                 "id",
                 "name",
                 "description",
@@ -6782,6 +6382,7 @@
                     ]
                 },
                 "functional_annotation_agg": {
+                    "description": "This property links a database object to a set of functional annotation aggregation (agg) results.",
                     "items": {
                         "$ref": "#/$defs/FunctionalAnnotationAggMember"
                     },
@@ -6913,9 +6514,6 @@
                             },
                             {
                                 "$ref": "#/$defs/MagsAnalysis"
-                            },
-                            {
-                                "$ref": "#/$defs/MetagenomeSequencing"
                             },
                             {
                                 "$ref": "#/$defs/ReadQcAnalysis"
@@ -7402,7 +7000,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -7529,10 +7127,8 @@
             "enum": [
                 "NERSC-Cori",
                 "NERSC-Perlmutter",
-                "EMSL",
                 "EMSL-RZR",
-                "JGI",
-                "LANL-B-div"
+                "EMSL-Tahoma"
             ],
             "title": "ExecutionResourceEnum",
             "type": "string"
@@ -7703,6 +7299,17 @@
                         "array",
                         "null"
                     ]
+                },
+                "temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The value of a temperature measurement or temperature used in a process."
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -7985,6 +7592,7 @@
                 "LC FT-ICR MS QC Plots",
                 "GC-MS Metabolomics Results",
                 "LC-MS Metabolomics Results",
+                "Mass Spectrometry Reference Spectral Library",
                 "Metaproteomics Workflow Statistics",
                 "Protein Report",
                 "Peptide Report",
@@ -7992,7 +7600,6 @@
                 "Read Count and RPKM",
                 "QC non-rRNA R2",
                 "QC non-rRNA R1",
-                "Metagenome Bins",
                 "Metagenome HQMQ Bins Compression File",
                 "Metagenome LQ Bins Compression File",
                 "Metagenome Bins Info File",
@@ -8011,8 +7618,10 @@
                 "Centrifuge output report file",
                 "Kraken2 Classification Report",
                 "Kraken2 Taxonomic Classification",
-                "Centrifuge Classification Report",
                 "Centrifuge Taxonomic Classification",
+                "SingleM Taxonomic Classification",
+                "SingleM Krona Plot",
+                "SingleM Clustered Report",
                 "Structural Annotation GFF",
                 "Structural Annotation Stats Json",
                 "Functional Annotation GFF",
@@ -8410,7 +8019,7 @@
         },
         "FunctionalAnnotationAggMember": {
             "additionalProperties": false,
-            "description": "",
+            "description": "This class is used to store aggregated results from workflows which produce functional annotations such as metaproteomics and metagenomics.",
             "properties": {
                 "count": {
                     "description": "The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.",
@@ -8418,6 +8027,7 @@
                 },
                 "gene_function_id": {
                     "description": "The identifier for the gene function.",
+                    "pattern": "(COG:COG\\d+|PFAM:PF\\d{5}|KEGG.ORTHOLOGY:K\\d+)",
                     "type": "string"
                 },
                 "type": {
@@ -8600,11 +8210,11 @@
                     ]
                 },
                 "latitude": {
-                    "description": "latitude",
+                    "description": "The latitude of a location.",
                     "type": "number"
                 },
                 "longitude": {
-                    "description": "longitude",
+                    "description": "The longitude of a location.",
                     "type": "number"
                 },
                 "type": {
@@ -8813,7 +8423,7 @@
         },
         "Instrument": {
             "additionalProperties": false,
-            "description": "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.",
+            "description": "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent. This class models the make and model of the instrument, not the specific instance of the instrument.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -8876,6 +8486,8 @@
                 "orbitrap_fusion_lumos",
                 "orbitrap_eclipse_tribid",
                 "orbitrap_q_exactive",
+                "orbitrap_iqx_tribrid",
+                "orbitrap_exploris_120",
                 "solarix_7T",
                 "solarix_12T",
                 "solarix_15T",
@@ -8951,15 +8563,6 @@
                 "electron_ionization"
             ],
             "title": "IonizationSourceEnum",
-            "type": "string"
-        },
-        "JgiContTypeEnum": {
-            "description": "",
-            "enum": [
-                "plate",
-                "tube"
-            ],
-            "title": "JgiContTypeEnum",
             "type": "string"
         },
         "LibraryPreparation": {
@@ -9126,6 +8729,21 @@
                 "stranded_orientation": {
                     "$ref": "#/$defs/StrandedOrientationEnum",
                     "description": "Lists the strand orientiation for a stranded RNA library preparation."
+                },
+                "target_gene": {
+                    "$ref": "#/$defs/TargetGeneEnum",
+                    "description": "Targeted gene or locus name for marker gene studies"
+                },
+                "target_subfragment": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA"
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -9528,6 +9146,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -9560,6 +9185,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "too_short_contig_num": {
                     "description": "Number of contigs which were excluded from binning for length.",
                     "minimum": 0,
@@ -9584,21 +9216,26 @@
                     ]
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -9767,7 +9404,7 @@
                 },
                 "analyte_category": {
                     "$ref": "#/$defs/MassSpectrometryEnum",
-                    "description": "The type of analyte(s) that were measured in the data generation process and analyzed\n  in the Workflow Chain\n"
+                    "description": "The type of analyte(s) that were measured in the data generation process\n"
                 },
                 "associated_studies": {
                     "description": "The study associated with a resource.",
@@ -9826,10 +9463,7 @@
                 },
                 "has_mass_spectrometry_configuration": {
                     "description": "The identifier of the associated MassSpectrometryConfiguration.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "has_output": {
                     "description": "An output from a process.",
@@ -9845,6 +9479,13 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
+                },
+                "instrument_instance_specifier": {
+                    "description": "A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
@@ -9922,6 +9563,8 @@
                 }
             },
             "required": [
+                "eluent_introduction_category",
+                "has_mass_spectrometry_configuration",
                 "analyte_category",
                 "associated_studies",
                 "has_input",
@@ -9974,10 +9617,7 @@
                     "items": {
                         "$ref": "#/$defs/MassAnalyzerEnum"
                     },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "type": "array"
                 },
                 "mass_spectrometry_acquisition_strategy": {
                     "$ref": "#/$defs/MassSpectrometryAcquisitionStrategyEnum",
@@ -9988,10 +9628,7 @@
                     "items": {
                         "$ref": "#/$defs/MassSpectrumCollectionModeEnum"
                     },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "type": "array"
                 },
                 "name": {
                     "description": "A human readable label for an entity",
@@ -10001,15 +9638,22 @@
                     "$ref": "#/$defs/PolarityModeEnum",
                     "description": "the polarity of which ions are generated and detected"
                 },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
                 "resolution_categories": {
                     "description": "The relative resolution at which spectra were collected.",
                     "items": {
                         "$ref": "#/$defs/ResolutionCategoryEnum"
                     },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "type": "array"
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -10020,6 +9664,12 @@
                 }
             },
             "required": [
+                "mass_spectrometry_acquisition_strategy",
+                "resolution_categories",
+                "mass_analyzers",
+                "ionization_source",
+                "mass_spectrum_collection_modes",
+                "polarity_mode",
                 "id",
                 "name",
                 "description",
@@ -10248,6 +9898,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -10280,6 +9937,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -10295,22 +9959,27 @@
                     ]
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
                 "metabolomics_analysis_category",
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -10478,6 +10147,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -10510,6 +10186,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -10518,21 +10201,26 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -10748,9 +10436,12 @@
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
-                    "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
+                    "items": {
+                        "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -10778,6 +10469,13 @@
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
+                },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "protocol_link": {
                     "anyOf": [
@@ -10895,6 +10593,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -10903,214 +10608,30 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "execution_resource",
-                "git_url",
-                "started_at_time",
-                "was_informed_by",
-                "has_input",
-                "id",
-                "type"
-            ],
-            "title": "MetagenomeAssembly",
-            "type": "object"
-        },
-        "MetagenomeSequencing": {
-            "additionalProperties": false,
-            "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "qc_status": {
-                                "const": "pass"
-                            }
-                        },
-                        "required": [
-                            "qc_status"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "has_output": {}
-                        },
-                        "required": [
-                            "has_output"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "not": {
-                            "required": [
-                                "qc_status"
-                            ]
-                        },
-                        "properties": {
-                            "qc_status": {}
-                        }
-                    },
-                    "then": {
-                        "properties": {
-                            "has_output": {}
-                        },
-                        "required": [
-                            "has_output"
-                        ]
-                    }
-                }
-            ],
-            "description": "Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "end_date": {
-                    "description": "The date on which any process or activity was ended",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "ended_at_time": {
-                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "execution_resource": {
-                    "$ref": "#/$defs/ExecutionResourceEnum",
-                    "description": "The computing resource or facility where the workflow was executed."
-                },
-                "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
-                    "type": "string"
-                },
-                "has_failure_categorization": {
-                    "items": {
-                        "$ref": "#/$defs/FailureCategorization"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_input": {
-                    "description": "An input to a process.",
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "has_output": {
-                    "description": "An output from a process.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "processing_institution": {
-                    "$ref": "#/$defs/ProcessingInstitutionEnum",
-                    "description": "The organization that processed the sample."
-                },
-                "protocol_link": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Protocol"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "qc_comment": {
-                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "qc_status": {
-                    "$ref": "#/$defs/StatusEnum",
-                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
-                },
-                "start_date": {
-                    "description": "The date on which any process or activity was started",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "started_at_time": {
-                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:MetagenomeSequencing"
-                    ],
-                    "type": "string"
-                },
-                "version": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "was_informed_by": {
-                    "type": "string"
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
-            "title": "MetagenomeSequencing",
+            "title": "MetagenomeAssembly",
             "type": "object"
         },
         "MetaproteomicsAnalysis": {
@@ -11245,6 +10766,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -11277,6 +10805,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -11285,22 +10820,27 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
                 "metaproteomics_analysis_category",
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -11467,6 +11007,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -11499,6 +11046,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -11507,21 +11061,26 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -11737,9 +11296,12 @@
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
-                    "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
+                    "items": {
+                        "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -11767,6 +11329,13 @@
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
+                },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "protocol_link": {
                     "anyOf": [
@@ -11884,6 +11453,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -11892,21 +11468,26 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -12053,6 +11634,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -12085,6 +11673,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -12093,21 +11688,26 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -12430,6 +12030,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -12462,6 +12069,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -12477,21 +12091,26 @@
                     ]
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -12522,7 +12141,7 @@
                 },
                 "analyte_category": {
                     "$ref": "#/$defs/NucleotideSequencingEnum",
-                    "description": "The type of analyte(s) that were measured in the data generation process and analyzed\n  in the Workflow Chain\n"
+                    "description": "The type of analyte(s) that were measured in the data generation process\n"
                 },
                 "associated_studies": {
                     "description": "The study associated with a resource.",
@@ -12608,6 +12227,13 @@
                         "null"
                     ]
                 },
+                "instrument_instance_specifier": {
+                    "description": "A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
@@ -12681,21 +12307,6 @@
                         "null"
                     ]
                 },
-                "target_gene": {
-                    "$ref": "#/$defs/TargetGeneEnum",
-                    "description": "Targeted gene or locus name for marker gene studies"
-                },
-                "target_subfragment": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA"
-                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -12751,7 +12362,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -12880,7 +12491,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -12979,7 +12590,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -13443,6 +13054,16 @@
                         "null"
                     ]
                 },
+                "sampled_portion": {
+                    "description": "The portion of the sample that is taken for downstream activity.",
+                    "items": {
+                        "$ref": "#/$defs/SamplePortionEnum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -13461,6 +13082,7 @@
         "ProcessingInstitutionEnum": {
             "description": "",
             "enum": [
+                "NMDC",
                 "UCSD",
                 "JGI",
                 "EMSL",
@@ -13484,16 +13106,130 @@
             "title": "ProfilePositionEnum",
             "type": "string"
         },
+        "PropertyAssertion": {
+            "additionalProperties": false,
+            "description": "A structured record of data that doesn't fit nicely within the constraints of other NMDC AttributeValues. Uses primitive ranges only.",
+            "properties": {
+                "has_attribute_id": {
+                    "description": "CURIE or IRI for the property (MIxS slot, NMDC slot, ENVO/OBI term, etc.).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_attribute_label": {
+                    "description": "Human-readable label for the property (e.g., MIxS label, ENVO term label).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_boolean_value": {
+                    "description": "Links a quantity value to a boolean",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "has_datetime_value": {
+                    "description": "Date-time value for the property in ISO-8601 format.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_maximum_numeric_value": {
+                    "description": "The maximum value part, expressed as number, of the quantity value when the value covers a range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "has_minimum_numeric_value": {
+                    "description": "The minimum value part, expressed as number, of the quantity value when the value covers a range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "has_numeric_value": {
+                    "description": "Links a quantity value to a number",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "has_quantity_kind_id": {
+                    "description": "Optional CURIE or IRI for the physical quantity kind (e.g., qudt:QuantityKind).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_raw_value": {
+                    "description": "Original contributor string representation (unparsed)",
+                    "type": "string"
+                },
+                "has_unit": {
+                    "description": "UCUM unit code (required only when numeric value is present)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_value_term_id": {
+                    "description": "CURIE or IRI for categorical values (ENVO, PATO, METPO, etc.).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:PropertyAssertion"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "has_raw_value",
+                "type"
+            ],
+            "title": "PropertyAssertion",
+            "type": "object"
+        },
         "Protocol": {
             "additionalProperties": false,
             "description": "",
             "properties": {
+                "analysis_type": {
+                    "description": "Select all the data types associated or available for this biosample",
+                    "items": {
+                        "$ref": "#/$defs/AnalysisTypeEnum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "protocol_for": {
+                    "$ref": "#/$defs/ProtocolForEnum",
+                    "description": "The type of planned process that the protocol describes."
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -13531,6 +13267,43 @@
                 "phenol_chloroform_extraction"
             ],
             "title": "ProtocolCategoryEnum",
+            "type": "string"
+        },
+        "ProtocolForEnum": {
+            "description": "The permitted values for describing the type of planned process that a protocol describes.",
+            "enum": [
+                "AnnotatingWorkflow",
+                "ChemicalConversionProcess",
+                "ChromatographicSeparationProcess",
+                "CollectingBiosamplesFromSite",
+                "DataEmitterProcess",
+                "DataGeneration",
+                "DissolvingProcess",
+                "Extraction",
+                "FiltrationProcess",
+                "LibraryPreparation",
+                "MagsAnalysis",
+                "MassSpectrometry",
+                "MaterialProcessing",
+                "MetabolomicsAnalysis",
+                "MetagenomeAnnotation",
+                "MetagenomeAssembly",
+                "MetaproteomicsAnalysis",
+                "MetatranscriptomeAnnotation",
+                "MetatranscriptomeAssembly",
+                "MetatranscriptomeExpressionAnalysis",
+                "MixingProcess",
+                "NomAnalysis",
+                "NucleotideSequencing",
+                "PlannedProcess",
+                "Pooling",
+                "ReadBasedTaxonomyAnalysis",
+                "ReadQcAnalysis",
+                "StorageProcess",
+                "SubSamplingProcess",
+                "WorkflowExecution"
+            ],
+            "title": "ProtocolForEnum",
             "type": "string"
         },
         "QuadPosEnum": {
@@ -13577,11 +13350,8 @@
                     ]
                 },
                 "has_unit": {
-                    "description": "The unit of the quantity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "$ref": "#/$defs/UnitEnum",
+                    "description": "The unit of the quantity"
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -13592,29 +13362,11 @@
                 }
             },
             "required": [
+                "has_unit",
                 "type"
             ],
             "title": "QuantityValue",
             "type": "object"
-        },
-        "RNASampleFormatEnum": {
-            "description": "",
-            "enum": [
-                "10 mM Tris-HCl",
-                "DNAStable",
-                "Ethanol",
-                "Low EDTA TE",
-                "MDA reaction buffer",
-                "PBS",
-                "Pellet",
-                "RNAStable",
-                "TE",
-                "Water",
-                "Gentegra-DNA",
-                "Gentegra-RNA"
-            ],
-            "title": "RNASampleFormatEnum",
-            "type": "string"
         },
         "ReadBasedTaxonomyAnalysis": {
             "additionalProperties": false,
@@ -13744,6 +13496,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -13776,6 +13535,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -13784,21 +13550,26 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -13975,6 +13746,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -14007,6 +13785,13 @@
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -14015,21 +13800,26 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -14241,7 +14031,9 @@
                 "pellet",
                 "organic_layer",
                 "aqueous_layer",
-                "non_polar_layer"
+                "interlayer",
+                "chloroform_layer",
+                "methanol_layer"
             ],
             "title": "SamplePortionEnum",
             "type": "string"
@@ -14434,6 +14226,7 @@
                 "CN",
                 "Diol",
                 "HILIC",
+                "HLB",
                 "NH2",
                 "Phenyl",
                 "Polysiloxane",
@@ -14636,7 +14429,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -14892,7 +14685,7 @@
                     ]
                 },
                 "title": {
-                    "description": "A name given to the entity that differs from the name/label programmatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
+                    "description": "A name given to the entity that differs from the name/label programmatically assigned to it.",
                     "type": [
                         "string",
                         "null"
@@ -15119,6 +14912,22 @@
             "title": "SubSamplingProcess",
             "type": "object"
         },
+        "SubmissionStatusEnum": {
+            "description": "",
+            "enum": [
+                "InProgress",
+                "SubmittedPendingReview",
+                "ResubmittedPendingReview",
+                "ApprovedHeld",
+                "PendingUserFacility",
+                "UpdatesRequired",
+                "InProgressUpdate",
+                "Denied",
+                "Released"
+            ],
+            "title": "SubmissionStatusEnum",
+            "type": "string"
+        },
         "SubstanceRoleEnum": {
             "description": "",
             "enum": [
@@ -15306,6 +15115,148 @@
                 "downtown"
             ],
             "title": "TrainStopLocEnum",
+            "type": "string"
+        },
+        "UnitEnum": {
+            "description": "",
+            "enum": [
+                "%",
+                "J/K",
+                "Cel",
+                "cm",
+                "cP",
+                "d",
+                "g",
+                "h",
+                "kPa",
+                "m",
+                "m/s",
+                "mg/kg",
+                "mg/L",
+                "min",
+                "mL",
+                "mm",
+                "mL/L",
+                "mmol/L",
+                "mS/cm",
+                "[ppm]",
+                "uS/cm",
+                "W/m2",
+                "a",
+                "ug/L",
+                "ug/uL",
+                "uL",
+                "mol/L",
+                "mol/L/h",
+                "ug/L/h",
+                "umol/L",
+                "umol/kg",
+                "umol/m2/s",
+                "mg/m3",
+                "m2/s",
+                "kg/m3",
+                "g/m3",
+                "m2",
+                "atm",
+                "V",
+                "mV",
+                "L",
+                "um",
+                "1",
+                "uL/kg",
+                "kg",
+                "[ppth]",
+                "g/g",
+                "lx",
+                "mg/m3/d",
+                "ng/h",
+                "mm[Hg]",
+                "[ppb]",
+                "g/kg",
+                "deg",
+                "mg/g",
+                "ug/g",
+                "ng/g",
+                "pg/g",
+                "ng/L",
+                "pg/L",
+                "ug/mL",
+                "ng/mL",
+                "pg/mL",
+                "mol",
+                "mmol",
+                "umol",
+                "nmol",
+                "pmol",
+                "U",
+                "mU",
+                "uU",
+                "nU",
+                "Bq",
+                "kBq",
+                "MBq",
+                "GBq",
+                "Ci",
+                "mCi",
+                "uCi",
+                "nCi",
+                "pCi",
+                "rad",
+                "sr",
+                "Hz",
+                "1/d",
+                "kHz",
+                "MHz",
+                "GHz",
+                "N",
+                "kN",
+                "J",
+                "kJ",
+                "MJ",
+                "W",
+                "kW",
+                "mbar",
+                "kW/m2",
+                "umol/s/m2",
+                "m3/d",
+                "L/h",
+                "[pH]",
+                "kW/m2/d",
+                "[NTU]",
+                "[FNU]",
+                "m3/min",
+                "km/h",
+                "[lb_av]",
+                "kg/kg",
+                "ug/m3",
+                "meq/L",
+                "lm/m2",
+                "mg",
+                "umol/L/h",
+                "g/cm3",
+                "g/L",
+                "wk",
+                "[g]",
+                "m/s2",
+                "mol/g",
+                "g/m2/d",
+                "Gy",
+                "RAD",
+                "[sft_i]",
+                "[cft_i]",
+                "m3",
+                "ug",
+                "mm/a",
+                "cm2",
+                "erg/cm2/s",
+                "g/m2",
+                "L/s",
+                "cm3/cm3",
+                "[kn_i]",
+                "m3/s",
+                "[in_i]"
+            ],
+            "title": "UnitEnum",
             "type": "string"
         },
         "VisMediaEnum": {
@@ -15600,6 +15551,7 @@
             ]
         },
         "functional_annotation_agg": {
+            "description": "This property links a database object to a set of functional annotation aggregation (agg) results.",
             "items": {
                 "$ref": "#/$defs/FunctionalAnnotationAggMember"
             },
@@ -15731,9 +15683,6 @@
                     },
                     {
                         "$ref": "#/$defs/MagsAnalysis"
-                    },
-                    {
-                        "$ref": "#/$defs/MetagenomeSequencing"
                     },
                     {
                         "$ref": "#/$defs/ReadQcAnalysis"

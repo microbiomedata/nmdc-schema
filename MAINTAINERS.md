@@ -76,3 +76,12 @@ The new documentation is deployed when changes are pushed to the main branch via
 
 After the GitHub action completes, the documentation will be available from a URL [https://microbiomedata.github.io/nmdc-schema](https://microbiomedata.github.io/nmdc-schema/)
 
+## Troubleshooting Documentation Deployment
+
+If https://microbiomedata.github.io/nmdc-schema/ returns 404:
+
+1. Check if GitHub Pages is enabled: `gh api repos/microbiomedata/nmdc-schema/pages`
+2. If it returns 404, go to Settings → Pages → Source → select "gh-pages" branch
+3. Manually trigger deployment at https://github.com/microbiomedata/nmdc-schema/actions/workflows/deploy-docs.yaml
+
+**Note:** Deleting the `gh-pages` branch disables GitHub Pages. You must re-enable it in Settings.

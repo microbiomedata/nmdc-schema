@@ -1,0 +1,44 @@
+# MongoDB Unit Validation Analysis Query
+#
+# This SPARQL query extracts unit usage data from RDF-converted MongoDB production data
+# to validate actual units against schema-acceptable units.
+#
+# Purpose: Generate input for the legacy MongoDB unit validation workflow
+# Output: CSV with columns: sc, p, l, su, u, count
+# Target file: mongodb-slots-to-units.csv (for use with units/analyze_units.py)
+#
+# Query logic:
+# - Finds instances (?s) with QuantityValue properties containing actual units (nmdc:has_unit ?u)
+# - Gets schema-acceptable units via nmdc:storage_units ?su 
+# - Aggregates by class, property, label, acceptable units, and actual unit
+# - Optional patterns handle missing labels and storage_units (explains empty CSV values)
+#
+# Usage:
+# 1. Run this query against RDF-converted MongoDB production data
+# 2. Export results as mongodb-slots-to-units.csv
+# 3. Process with: make mongodb-analysis (in units/ directory)
+#
+# Note: This SPARQL query validates storage_units compliance in production data.
+# Standard LinkML validation tools cannot validate slot-to-unit combinations 
+# expressed via storage_units annotations.
+# 
+# RDF approach: MongoDB dump → RDF conversion → this SPARQL query → validation
+# Python alternative: units/validate_production_units.py (direct YAML processing)
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX nmdc: <https://w3id.org/nmdc/>
+select 
+?sc ?p ?l ?su ?u (count(?s) as ?count)
+where {
+    ?s a ?sc ;
+    ?p ?qv .
+    ?qv a nmdc:QuantityValue ;
+    nmdc:has_unit ?u .
+    optional {
+        ?p rdfs:label ?l
+    }
+    optional {
+        ?p nmdc:storage_units ?su
+    }
+}
+group by ?sc ?p ?l ?su ?u

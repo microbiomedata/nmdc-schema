@@ -2,7 +2,8 @@ id: nmdc:wfmb-99-ABCDEF.1
 type: nmdc:MetabolomicsAnalysis
 started_at_time: '2021-08-05T14:48:51+00:00'
 ended_at_time: '2021-09-15T10:13:20+00:00'
-execution_resource: NERSC - Cori #did you mean NERSC-Cori?
+execution_resource: NERSC - Cori #invalid enum permissible value on purpose
+processing_institution: NMDC
 git_url: https://example.org/WorkflowExecutionActivity
 has_input:
   - nmdc:dobj-11-234d
@@ -10,5 +11,6 @@ has_input:
 has_output:
   - nmdc:dobj-11-123d
   - nmdc:dobj-11-34dj4
-was_informed_by: nmdc:omprc-11-284u7d
+was_informed_by:
+    - nmdc:omprc-11-284u7d
 metabolomics_analysis_category: gc_ms_metabolomics

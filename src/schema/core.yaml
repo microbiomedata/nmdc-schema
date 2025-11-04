@@ -7,9 +7,9 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
   - attribute_values
-  - portal_emsl
-  - portal_jgi_metagenomics
-  - portal_jgi_metatranscriptomics
+  - basic_slots
+  - basic_classes
+  - portal_user_facility
   - portal_mixs_inspired
   - portal_sample_id
 
@@ -37,6 +37,7 @@ prefixes:
   rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   schema: "http://schema.org/"
   wgs84: "http://www.w3.org/2003/01/geo/wgs84_pos#"
+  TAXRANK: "http://purl.obolibrary.org/obo/TAXRANK_"
 
 
 default_prefix: nmdc
@@ -141,6 +142,8 @@ enums:
     permissible_values:
       acetonitrile:
         meaning: CHEBI:38472
+      acetic_acid:
+        meaning: CHEBI:15366
       alphaLP:
         meaning: EC:3.4.21.12
         see_also: https://commonchemistry.cas.org/detail?cas_rn=37288-76-9&title= # CAS reference from wikipedia
@@ -150,6 +153,8 @@ enums:
         meaning: CHEBI:62947
       ammonium_bicarbonate:
         meaning: CHEBI:184335
+      amitriptyline:
+        meaning: CHEBI:2666
       Arg-C:
         meaning: MS:1001303
         comments: >-
@@ -166,6 +171,8 @@ enums:
         comments: >-
           A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine, 
           and phenylalanine.
+      ethanol:
+        meaning: CHEBI:16236
       formic_acid:
         meaning: CHEBI:30751
         comments: >-
@@ -179,6 +186,8 @@ enums:
         meaning: MS:1001917
         comments: >-
           A serine protease that hydrolyzes peptide and ester bonds at the C-terminus of aspartic acid or glutamic acid.
+      hydrochloric_acid:
+        meaning: CHEBI:17883
       isopropyl_alcohol:
         meaning: CHEBI:17824
       Lys-C:
@@ -189,8 +198,20 @@ enums:
         meaning: MS:1003093
         comments: >-
           A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
+      N-methyl-N-trimethylsilyltrifluoroacetamide:
+        meaning: CHEBI:85064
       methanol:
         meaning: CHEBI:17790
+      methoxyamine:
+        meaning: CHEBI:192842
+      medronic_acid:
+        meaning: CHEBI:43945
+        comments: >-
+          A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic acid groups, also known as methylenediphosphonic acid
+      phosphoric_acid:
+        meaning: CHEBI:26078
+      trimethylchlorosilane:
+        meaning: CHEBI:85069
       trypsin:
         meaning: MS:1001251
         comments: >-
@@ -306,53 +327,6 @@ classes:
 
   Biosample:
     class_uri: nmdc:Biosample
-    rules:
-      - title: dna_well_requires_plate
-        description: DNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
-        preconditions:
-          slot_conditions:
-            dna_cont_well:
-              pattern: ".+"
-        postconditions:
-          slot_conditions:
-            dna_cont_type:
-              equals_string: plate
-      - title: dna_plate_requires_well
-        description:
-          DNA samples in plates must have a plate position that matches the regex.
-          Note the requirement for an empty string in the tube case.
-          Waiting for value_present validation to be added to runtime
-        preconditions:
-          slot_conditions:
-            dna_cont_type:
-              equals_string: plate
-        postconditions:
-          slot_conditions:
-            dna_cont_well:
-              pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
-      - title: rna_well_requires_plate
-        description: RNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
-        preconditions:
-          slot_conditions:
-            rna_cont_well:
-              pattern: ".+"
-        postconditions:
-          slot_conditions:
-            rna_cont_type:
-              equals_string: plate
-      - title: rna_plate_requires_well
-        description:
-          RNA samples in plates must have a plate position that matches the regex.
-          Note the requirement for an empty string in the tube case.
-          Waiting for value_present validation to be added to runtime
-        preconditions:
-          slot_conditions:
-            rna_cont_type:
-              equals_string: plate
-        postconditions:
-          slot_conditions:
-            rna_cont_well:
-              pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
     unique_keys:
       samp_name_unique_key:
         unique_key_slots:
@@ -379,10 +353,9 @@ classes:
       - collected_from
       - embargoed
       - host_disease_stat
-      - host_taxid
       - img_identifiers
       - neon_biosample_identifiers
-      - samp_name
+      - alternative_names
 
       ## external IDs, alternate IDs
       - gold_biosample_identifiers
@@ -409,7 +382,6 @@ classes:
       - alt
       - aminopept_act
       - ammonium
-      - ammonium_nitrogen
       - amount_light
       - ances_data
       - annual_precpt
@@ -471,7 +443,6 @@ classes:
       - collection_date
       - conduc
       - cool_syst_id
-      - core field
       - crop_rotation
       - cult_root_med
       - cur_land_use
@@ -493,7 +464,6 @@ classes:
       - diss_org_nitro
       - diss_oxygen
       - diss_oxygen_fluid
-      - dna_cont_well
       - door_comp_type
       - door_cond
       - door_direct
@@ -508,10 +478,6 @@ classes:
       - down_par
       - drainage_class
       - drawings
-      - ecosystem
-      - ecosystem_category
-      - ecosystem_subtype
-      - ecosystem_type
       - efficiency_percent
       - elev
       - elevator
@@ -520,7 +486,6 @@ classes:
       - env_local_scale
       - env_medium
       - env_package
-      - environment field
       - escalator
       - ethylbenzene
       - exp_duct
@@ -612,13 +577,10 @@ classes:
       - inorg_particles
       - inside_lux
       - int_wall_cond
-      - investigation field
       - iw_bt_date_well
       - iwf
       - last_clean
       - lat_lon
-      - lbc_thirty
-      - lbceq
       - light_intensity
       - light_regm
       - light_type
@@ -629,7 +591,6 @@ classes:
       - local_class
       - local_class_meth
       - magnesium
-      - manganese
       - max_occup
       - mean_frict_vel
       - mean_peak_frict_vel
@@ -642,12 +603,9 @@ classes:
       - misc_param
       - n_alkanes
       - nitrate
-      - nitrate_nitrogen
       - nitrite
-      - nitrite_nitrogen
       - nitro
       - non_min_nutr_regm
-      - nucleic acid sequence source field
       - number_pets
       - number_plants
       - number_resident
@@ -767,7 +725,6 @@ classes:
       - season_use
       - secondary_treatment
       - sediment_type
-      - sequencing field
       - sewage_type
       - shad_dev_water_mold
       - shading_device_cond
@@ -795,7 +752,6 @@ classes:
       - source_mat_id
       - space_typ_state
       - specific
-      - specific_ecosystem
       - specific_humidity
       - sr_dep_env
       - sr_geol_age
@@ -886,7 +842,6 @@ classes:
       - window_vert_pos
       - window_water_mold
       - xylene
-      - zinc
 
       ## GOLD path fields
       - ecosystem
@@ -909,63 +864,14 @@ classes:
       - soluble_iron_micromol
       - subsurface_depth
 
-      ## MIxS terms initially used in
-      ## sample metadata submission portal (aka DataHarmonizer)
-      - air_temp_regm
-      - biotic_regm
-      - biotic_relationship
-      - climate_environment
-      - experimental_factor
-      - gaseous_environment
-      - growth_facil
-      - humidity_regm
-      - light_regm
-      - phosphate
-      - samp_collec_method
-      - samp_size
-      - source_mat_id
-      - watering_regm
-
       ## sample metadata submission portal (aka DataHarmonizer) terms (EMSL, JGI, etc.)
       ## JGI fields
-      - dna_absorb1
-      - dna_absorb2
       - dna_collect_site
-      - dna_concentration
-      - dna_cont_type
-      - dna_cont_well
-      - dna_container_id
-      - dna_dnase
       - dna_isolate_meth
       - dna_organisms
-      - dna_project_contact
-      - dna_samp_id
-      - dna_sample_format
-      - dna_sample_name
-      - dna_seq_project
-      - dna_seq_project_pi
-      - dna_seq_project_name
-      - dna_volume
-      - proposal_dna
-      - dnase_rna
-      - proposal_rna
-      - rna_absorb1
-      - rna_absorb2
       - rna_collect_site
-      - rna_concentration
-      - rna_cont_type
-      - rna_cont_well
-      - rna_container_id
       - rna_isolate_meth
       - rna_organisms
-      - rna_project_contact
-      - rna_samp_id
-      - rna_sample_format
-      - rna_sample_name
-      - rna_seq_project
-      - rna_seq_project_pi
-      - rna_seq_project_name
-      - rna_volume
 
       ## MIxS Inspired fields
       - collection_date_inc
@@ -1086,8 +992,6 @@ classes:
           expected_value: date, string
         range: string
       slope_aspect:
-        examples:
-          - value: 35
         comments:
           - Aspect is the orientation of slope, measured clockwise in degrees from 0 to 360,
             where 0 is north-facing, 90 is east-facing, 180 is south-facing, and 270 is west-facing.
@@ -1122,9 +1026,6 @@ classes:
           - value: https://doi.org/10.1371/journal.pone.0176357
         todos:
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts?
-      annual_precpt:
-        examples:
-          - value: 8.94 inch
       cur_vegetation:
         description:
           Vegetation classification from one or more standard classification
@@ -1170,9 +1071,6 @@ classes:
         comments:
           - Seasons are defined as spring (March, April, May), summer (June, July, August),
             autumn (September, October, November) and winter (December, January, February).
-        examples:
-          - value: 0.4 inch
-          - value: 10.16 mm
         notes:
           - mean and average are the same thing, but it seems like bad practice to not be consistent. Changed mean to average
         todos:
@@ -1219,15 +1117,10 @@ classes:
         examples:
           - value: https://doi.org/10.2134/agronmonogr9.2.c32
           - value: https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/sssaj2009.0389?casa_token=bm0pYIUdNMgAAAAA%3AOWVRR0STHaOe-afTcTdxn5m1hM8n2ltM0wY-b1iYpYdD9dhwppk5j3LvC2IO5yhOIvyLVeQz4NZRCZo
-      tot_nitro_content:
-        examples:
-          - value: 5 mg N/ L
       tot_org_c_meth:
         examples:
           - value: https://doi.org/10.1080/07352680902776556
       tot_org_carb:
-        examples:
-          - value: 5 mg N/ L
         todos:
           - check description. How are they different?
       salinity_meth:
@@ -1268,7 +1161,7 @@ classes:
             If you have not assigned FAIR identifiers to your samples,
             you can generate UUIDs (https://www.uuidgenerator.net/).
         examples:
-          - value: IGSN:AU1243
+          - value: igsn:AU1243
           - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
         todos:
           - Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter
@@ -1341,6 +1234,7 @@ classes:
       - dna_absorb1
       - dna_concentration
       - external_database_identifiers
+      - sampled_portion
 
     slot_usage:
       id:
@@ -1396,33 +1290,6 @@ classes:
       - metabolite_identified
       - type
 
-  ChemicalEntity:
-    deprecated: >- 
-      true; as of Jan 2025, NMDC only needs a handful of chemicals and its use cases can be served via an enumeration
-      rather than supporting a full class.
-    class_uri: nmdc:ChemicalEntity
-    aliases:
-      - metabolite
-      - chemical substance
-      - chemical compound
-      - chemical
-    is_a: OntologyClass
-    description: >-
-      An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
-      There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a 
-      physical entity that pertains to chemistry or biochemistry.
-    comments:
-      - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
-    slots:
-      - chemical_formula
-    see_also:
-      - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
-    id_prefixes:
-      - CHEBI
-      - MS
-    exact_mappings:
-      - biolink:ChemicalSubstance
-
   GeneProduct:
     class_uri: nmdc:GeneProduct
     is_a: NamedThing
@@ -1444,6 +1311,8 @@ slots:
   substances_volume:
     range: QuantityValue
     description: The volume of the combined substances that was included in a ChemicalConversionProcess.
+    annotations:
+      units_alignment_excuse: pending_analysis
 
   biosample_categories:
     title: Categories the biosample belongs to
@@ -1472,9 +1341,13 @@ slots:
         has_unit: mS/cm
       description: The conductivity measurement was 0.017 millisiemens per centimeter.
     range: QuantityValue
+    annotations:
+      units_alignment_excuse: pending_analysis
 
   subsurface_depth:
     range: QuantityValue
+    annotations:
+      storage_units: m
 
   env_package:
     aliases:
@@ -1492,12 +1365,11 @@ slots:
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
   #        environment|plant\-associated|sediment|soil|wastewater\/sludge|water]'
   zinc:
-    aliases:
-      - zinc
     annotations:
       expected_value: measurement value
       preferred_unit: mg/kg (ppm)
       occurrence: "1"
+      storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of zinc in the sample
     title: zinc
     examples:
@@ -1506,12 +1378,11 @@ slots:
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
   manganese:
-    aliases:
-      - manganese
     annotations:
       expected_value: measurement value
       preferred_unit: mg/kg (ppm)
       occurrence: "1"
+      storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of manganese in the sample
     title: manganese
     examples:
@@ -1522,12 +1393,12 @@ slots:
 
   ammonium_nitrogen:
     aliases:
-      - ammonium_nitrogen
       - NH4-N
     annotations:
       expected_value: measurement value
       preferred_unit: mg/kg
       occurrence: "1"
+      storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of ammonium nitrogen in the sample
     title: ammonium nitrogen
     examples:
@@ -1538,7 +1409,6 @@ slots:
 
   nitrate_nitrogen:
     aliases:
-      - nitrate_nitrogen
       - NO3-N
     comments:
       - often below some specified limit of detection
@@ -1546,6 +1416,7 @@ slots:
       expected_value: measurement value
       preferred_unit: mg/kg
       occurrence: "1"
+      storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of nitrate nitrogen in the sample
     title: nitrate_nitrogen
     examples:
@@ -1556,12 +1427,12 @@ slots:
 
   nitrite_nitrogen:
     aliases:
-      - nitrite_nitrogen
       - NO2-N
     annotations:
       expected_value: measurement value
       preferred_unit: mg/kg
       occurrence: "1"
+      storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of nitrite nitrogen in the sample
     title: nitrite_nitrogen
     examples:
@@ -1574,17 +1445,17 @@ slots:
     comments:
       - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by one pH unit
     aliases:
-      - lbc_thirty
       - lbc30
       - lime buffer capacity (at 30 minutes)
     annotations:
       expected_value: measurement value
       preferred_unit: ppm CaCO3/pH
       occurrence: "1"
+      storage_units: "[ppm]"
     description: lime buffer capacity, determined after 30 minute incubation
     title: lime buffer capacity (at 30 minutes)
     examples:
-      - value: 543 mg/kg
+      - value: 543 [ppm]
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
       - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
@@ -1594,16 +1465,16 @@ slots:
     comments:
       - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by one pH unit
     aliases:
-      - lbceq
       - lime buffer capacity (at 5-day equilibrium)
     annotations:
       expected_value: measurement value
       preferred_unit: ppm CaCO3/pH
       occurrence: "1"
+      storage_units: "[ppm]"
     description: lime buffer capacity, determined at equilibrium after 5 day incubation
     title: lime buffer capacity (after 5 day incubation)
     examples:
-      - value: 1575 mg/kg
+      - value: 1575 [ppm]
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
     range: QuantityValue
@@ -1640,6 +1511,8 @@ slots:
     exact_mappings:
       - PATO:0000125
     range: QuantityValue
+    annotations:
+      storage_units: g
 
   substances_used:
     range: PortionOfSubstance
@@ -1653,19 +1526,27 @@ slots:
   concentration:
     range: QuantityValue
     description: The concentration of a substance used in a process
+    annotations:
+      units_alignment_excuse: pending_analysis
   source_concentration:
     is_a: concentration
     description: When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in solution A
+    annotations:
+      storage_units: '%|mmol/L'
   final_concentration:
     is_a: concentration
     description: When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination
+    annotations:
+      storage_units: '%|mmol/L|umol/L|mg/L|g/L'
   duration: # or could be a ISO8601 period string
     range: QuantityValue
     description: The elapsed time of an activity.
     examples:
       - value:
           has_numeric_value: 2
-          has_unit: hours
+          has_unit: h
+    annotations:
+      storage_units: h|min
   temperature:
     range: QuantityValue
     notes:
@@ -1674,6 +1555,8 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
+    annotations:
+      storage_units: Cel
 
   total_bases:
     range: integer
@@ -1740,49 +1623,49 @@ slots:
       - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
-      - NCBITaxon:superkingdom
+      - TAXRANK:0000022
   gtdbtk_phylum:
     description: Taxonomic phylum assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
-      - NCBITaxon:phylum
+      - TAXRANK:0000001
   gtdbtk_class:
     description: Taxonomic class assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
-      - NCBITaxon:class
+      - TAXRANK:0000002
   gtdbtk_order:
     description: Taxonomic order assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
-      - NCBITaxon:order
+      - TAXRANK:0000003
   gtdbtk_family:
     description: Taxonomic family assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
-      - NCBITaxon:family
+      - TAXRANK:0000004
   gtdbtk_genus:
     range: string
     description: Taxonomic genus assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     exact_mappings:
-      - NCBITaxon:genus
+      - TAXRANK:0000005
   gtdbtk_species:
     description: Taxonomic genus assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
-      - NCBITaxon:species
+      - TAXRANK:0000006
 
   highest_similarity_score:
     todos:
@@ -1819,6 +1702,8 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
+    annotations:
+      storage_units: mL|uL
 
   known_as:
     range: ChemicalEntityEnum

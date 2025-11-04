@@ -1,5 +1,6 @@
 id: nmdc:wfnom-99-abcdefg.1
 execution_resource: EMSL-RZR
+processing_institution: NMDC
 git_url: xxx
 has_input:
   - nmdc:dobj-11-abcd
@@ -10,4 +11,5 @@ has_output:
 type: nmdc:NomAnalysis
 started_at_time: "2018-11-13T20:20:39+00:00"
 ended_at_time: "2018-11-111"
-was_informed_by: nmdc:omprc-11-4u7da8
+was_informed_by:
+  - nmdc:omprc-11-4u7da8

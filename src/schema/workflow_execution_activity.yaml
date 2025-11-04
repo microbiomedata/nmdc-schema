@@ -61,6 +61,11 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: NucleotideSequencing
+      superseded_by:
+        range: MetagenomeAssembly
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
 
   MetatranscriptomeAssembly:
     class_uri: nmdc:MetatranscriptomeAssembly
@@ -105,6 +110,11 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: NucleotideSequencing
+      superseded_by:
+        range: MetatranscriptomeAssembly
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
 
   MetatranscriptomeAnnotation:
     class_uri: nmdc:MetatranscriptomeAnnotation
@@ -137,6 +147,11 @@ classes:
         structured_pattern:
           syntax: "^gold:Ga[0-9]+$"
           interpolated: true
+      superseded_by:
+        range: MetatranscriptomeAnnotation
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
 
   MetatranscriptomeExpressionAnalysis:
     is_a: WorkflowExecution
@@ -157,6 +172,12 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: NucleotideSequencing
+      superseded_by:
+        range: MetatranscriptomeExpressionAnalysis
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
+        
     class_uri: nmdc:MetatranscriptomeExpressionAnalysis
 
 
@@ -186,28 +207,11 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: NucleotideSequencing
-
-  MetagenomeSequencing:
-    class_uri: nmdc:MetagenomeSequencing
-    description: Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.
-    title: Metagenome sequencing activity
-    is_a: WorkflowExecution
-    slot_usage:
-      id:
-        required: true
+      superseded_by:
+        range: MagsAnalysis
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
-      has_input:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-        range: Sample
-      was_informed_by:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-        range: NucleotideSequencing
 
   ReadQcAnalysis:
     class_uri: nmdc:ReadQcAnalysis
@@ -232,6 +236,11 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: NucleotideSequencing
+      superseded_by:
+        range: ReadQcAnalysis
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
 
   ReadBasedTaxonomyAnalysis:
     class_uri: nmdc:ReadBasedTaxonomyAnalysis
@@ -249,6 +258,11 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: NucleotideSequencing
+      superseded_by:
+        range: ReadBasedTaxonomyAnalysis
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
 
   MetabolomicsAnalysis:
     class_uri: nmdc:MetabolomicsAnalysis
@@ -268,6 +282,11 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: MassSpectrometry
+      superseded_by:
+        range: MetabolomicsAnalysis
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
 
   MetaproteomicsAnalysis:
     class_uri: nmdc:MetaproteomicsAnalysis
@@ -285,6 +304,11 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: MassSpectrometry
+      superseded_by:
+        range: MetaproteomicsAnalysis
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
 
   NomAnalysis:
     class_uri: nmdc:NomAnalysis
@@ -302,6 +326,11 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: MassSpectrometry
+      superseded_by:
+        range: NomAnalysis
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
 
 slots:
 

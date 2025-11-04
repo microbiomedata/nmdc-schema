@@ -3,8 +3,10 @@ workflow_execution_set:
     name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.1 '
     started_at_time: '2023-03-23T17:17:05.111689+00:00'
     ended_at_time: '2023-03-23T17:17:05.111725+00:00'
-    was_informed_by: nmdc:dgns-11-2398d4
+    was_informed_by:
+      - nmdc:dgns-11-2398d4
     execution_resource: NERSC-Cori
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/ReadsQC
     has_input:
       - nmdc:dobj-12-jdhk9537

@@ -31,7 +31,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 click = "^8"
 click-log = "^0.4.0"
 curies = "^0.9.0"
@@ -79,7 +79,7 @@ sheets_and_friends = "^0.5.0" # for do_shuttle (and possibly more)
 sparql-burger = "^1.0.2"
 sparql-dataframe = "^0.4"
 sparqlwrapper = "^2.0.0"
-tabulate = "^0.9.0"
+ucumvert = "^0.2.2"
 vulture = "^2.11"
 #networkx = "^3.4.2" # for src/scripts/experimental/partial_imports_graph.py # "^3.4.2" is incompatible with Python 3.9, which this file currently allows
 
@@ -130,6 +130,7 @@ anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
 check-examples-class-coverage = "src.scripts.check_examples_class_coverage:main"
 class-instantiation-counts = "src.scripts.class_instantiation_counts:process_data"
 create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
+run-migrator = 'nmdc_schema.migrators.cli.run_migrator:run_migrator'
 database-to-json-list-files = "src.scripts.database_to_json_list_files:split_yaml_to_json"
 date-created-blank-node = "src.scripts.date_created_blank_node:print_timestamp" # prints a RDF Turtle string, for copying into other RDF/TTL files. may need some parameterization.
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema" # todo recheck
@@ -147,6 +148,15 @@ schema-pattern-linting = "src.scripts.schema_pattern_linting:main"
 schema-view-relation-graph = "src.scripts.schema_view_relation_graph:cli"
 scrutinize-elements = "src.scripts.scrutinize_elements:process_schema_elements"
 slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
+# Units analysis CLI tools (consolidated in units/ directory)
+units-schema-extract = "units.scripts.schema_extract_preferred_units:main"
+units-schema-convert = "units.scripts.schema_convert_to_ucum:main"
+units-schema-generate = "units.scripts.schema_generate_yq_commands:main"
+units-testdata-extract = "units.scripts.testdata_extract_quantity_values:main"
+units-testdata-check = "units.scripts.testdata_check_has_unit:main"
+units-ucum-validate = "units.scripts.ucum_validate_units:main"
+units-mongodb-analyze = "units.scripts.mongodb_analyze_units:main"
+units-schema-extract-slot-unit-pairs = "units.scripts.schema_expand_storage_units:main"
 
 [tool.deptry]
 extend_exclude = [

@@ -165,8 +165,6 @@ classes:
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
       - ncbi_project_name
-      - target_gene
-      - target_subfragment
     slot_usage:
       id:
         structured_pattern:
@@ -246,6 +244,8 @@ classes:
     description: A set of parameters that define the actions of a process and is shared among multiple instances of the process.
     notes:
       - This class is intended to represent the parameters within a method file (or similar) that control a process.
+    slots:
+      - protocol_link
 
   MassSpectrometryConfiguration:
     is_a: Configuration
@@ -363,6 +363,8 @@ classes:
 
 
   FunctionalAnnotationAggMember:
+    description: >-
+      This class is used to store aggregated results from workflows which produce functional annotations such as metaproteomics and metagenomics.
     class_uri: nmdc:FunctionalAnnotationAggMember
     slots:
       - was_generated_by
@@ -378,7 +380,9 @@ classes:
         range: AnnotatingWorkflow
       count: 
           description: The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.
-
+      gene_function_id:
+        pattern: "(COG:COG\\d+|PFAM:PF\\d{5}|KEGG.ORTHOLOGY:K\\d+)"
+      
   Database:
     class_uri: nmdc:Database
     tree_root: true
@@ -447,6 +451,7 @@ classes:
       - extraction_targets
       - input_mass
       - volume
+      - temperature
     slot_usage:
       has_input:
         required: true
@@ -481,6 +486,8 @@ classes:
       - pcr_cycles
       - pcr_primers
       - stranded_orientation
+      - target_gene
+      - target_subfragment
     close_mappings:
       - OBI:0000711
     comments:
@@ -919,29 +926,59 @@ enums:
       - ORCID:0000-0002-4504-1039 #Katherine Heal
     permissible_values:
       BEH-HILIC:
+        description: Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged Ethylene Hybrid) particles as the stationary phase.
+        is_a: HILIC
       C18:
+        description: A stationary phase consisting of octadecyl chains (C18) bonded to silica particles.
       C8:
+        description: A stationary phase consisting of octyl chains (C8) bonded to silica particles.
       C4:
+        description: A stationary phase consisting of butyl chains (C4) bonded to silica particles.
       C2:
+        description: A stationary phase consisting of ethyl chains (C2) bonded to silica particles.
       C1:
+        description: A stationary phase consisting of methyl chains (C1) bonded to silica particles.
       C30:
+        description: A stationary phase consisting of triacontyl chains (C30) bonded to silica particles.
       C60:
+        description: A stationary phase consisting of hexatriacontyl chains (C60) bonded to silica particles.
       CNT:
+        description: Carbon Nanotube stationary phase.
       CN:
+        description: Cyano (CN) bonded stationary phase.
       Diol:
+        description: A stationary phase with diol (1,2-diol) functional groups.
       HILIC:
+        description: Hydrophilic Interaction Chromatography (HILIC) stationary phase.
+      HLB:
+        description: Hydrophilic-Lipophilic-Balance (HLB) stationary phase.
       NH2:
+        description: Amino (NH2) bonded stationary phase.
       Phenyl:
+        description: Phenyl bonded stationary phase.
       Polysiloxane:
+        description: A stationary phase made of polysiloxane, usually used in gas chromatography.
       PS-DVB:
+        description: Polystyrene-divinylbenzene stationary phase, often used in solid-phase extraction, including proprietary Priority PolLutant (PPL).
       SAX:
+        description: Strong Anion Exchange (SAX) stationary phase.
       SCX:
+        description: Strong Cation Exchange (SCX) stationary phase.
       Silica:
+        description: A stationary phase made of silica, commonly used in chromatography.
       WCX:
+        description: Weak Cation Exchange (WCX) stationary phase.
       WAX:
+        description: Weak Anion Exchange (WAX) stationary phase.
       ZIC-HILIC:
+        description: Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC) stationary phase.
+        is_a: HILIC
       ZIC-pHILIC:
+        description: Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography (ZIC-pHILIC) stationary phase.
+        is_a: ZIC-HILIC
       ZIC-cHILIC:
+        description: Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC) stationary phase.
+        is_a: ZIC-HILIC
 
   ProtocolCategoryEnum:
     description: The possible protocols that may be followed for an assay.
@@ -979,11 +1016,31 @@ enums:
         aliases:
           - bottom_layer
       organic_layer:
+        title: Organic layer
+        description: The portion of a mixture containing dissolved organic material
       aqueous_layer:
-      non_polar_layer:
-
+        title: Aqueous layer
+        description: The portion of a mixture containing molecules dissolved in water
+        aliases:
+          - water layer
+      interlayer:
+        title: Interlayer
+        description: The layer of material between liquid layers of a separated mixture
+      chloroform_layer:
+        title: Chloroform layer
+        description: The portion of a mixture containing molecules dissolved in chloroform
+        is_a: organic_layer
+      methanol_layer: 
+        title: Methanol layer
+        description: The portion of a mixture containing molecules dissolved in methanol
+        is_a: organic_layer
 
 slots:
+  biomaterial_purity:
+    range: QuantityValue
+    annotations:
+      units_alignment_excuse: pending_analysis
+
   generates_calibration:
     range: CalibrationInformation
     description: calibration information is generated a process
@@ -1103,6 +1160,7 @@ slots:
     required: true
 
   functional_annotation_agg:
+    description: This property links a database object to a set of functional annotation aggregation (agg) results.
     range: FunctionalAnnotationAggMember
     multivalued: true
     inlined: true
@@ -1148,6 +1206,8 @@ slots:
     narrow_mappings:
       - MIXS:0000111
     range: QuantityValue
+    annotations:
+      storage_units: g
 
   library_type:
     title: library type
@@ -1295,6 +1355,8 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
+    annotations:
+      units_alignment_excuse: pending_analysis
 
   filter_material:
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
@@ -1304,6 +1366,8 @@ slots:
   filter_pore_size:
     range: QuantityValue
     description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
+    annotations:
+      units_alignment_excuse: pending_analysis
   conditionings:
     range: string
     description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
@@ -1320,6 +1384,8 @@ slots:
     description: "A material processing in which components of an input material become segregated in space"
   value:
     range: QuantityValue
+    annotations:
+      units_alignment_excuse: pending_analysis
   modifier_substance:
     range: string
     description: The type of modification being done
@@ -1338,6 +1404,8 @@ slots:
   input_volume: # see also `volume`
     range: QuantityValue
     description: The volume of the input sample.
+    annotations:
+      units_alignment_excuse: pending_analysis
 
   ordered_mobile_phases:
     range: MobilePhaseSegment
