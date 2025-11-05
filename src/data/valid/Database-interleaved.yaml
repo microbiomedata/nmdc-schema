@@ -256,7 +256,7 @@ material_processing_set:
     substances_volume:
       type: nmdc:QuantityValue
       has_numeric_value: 75
-      has_unit: uL
+      has_unit: mL
     temperature:
       type: nmdc:QuantityValue
       has_numeric_value: 37
