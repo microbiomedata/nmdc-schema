@@ -4222,8 +4222,12 @@ slots:
     inlined_as_list: true
   misc_param:
     annotations:
-      expected_value: parameter name;measurement value
-      occurrence: m
+      expected_value:
+        tag: expected_value
+        value: parameter name;measurement value
+      occurrence:
+        tag: occurrence
+        value: m
     description: Structured miscellaneous property assertions. Use when a value cannot cleanly fit an existing, policy-governed slot.
     title: miscellaneous parameter
     examples:
@@ -6346,10 +6350,18 @@ slots:
     multivalued: false
   specific_humidity:
     annotations:
-      expected_value: measurement value
-      preferred_unit: gram of air, kilogram of air
-      occurrence: '1'
-      units_alignment_excuse: mixs_inconsistent
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: gram of air, kilogram of air
+      occurrence:
+        tag: occurrence
+        value: '1'
+      storage_units:
+        tag: storage_units
+        value: g/kg
     description: The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound.
     title: specific humidity
     examples:
@@ -6983,10 +6995,18 @@ slots:
     multivalued: false
   tvdss_of_hcr_temp:
     annotations:
-      expected_value: measurement value
-      preferred_unit: meter
-      occurrence: '1'
-      units_alignment_excuse: complex_unit
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: meter
+      occurrence:
+        tag: occurrence
+        value: '1'
+      storage_units:
+        tag: storage_units
+        value: m
     description: True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m).
     title: depth (TVDSS) of hydrocarbon resource temperature
     examples:
