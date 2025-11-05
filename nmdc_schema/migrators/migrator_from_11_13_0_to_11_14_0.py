@@ -1,5 +1,5 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
-from nmdc_schema.migrators.partials.migrator_from_11_11_0_to_11_13_0 import (
+from nmdc_schema.migrators.partials.migrator_from_11_13_0_to_11_14_0 import (
     get_migrator_classes,
 )
 

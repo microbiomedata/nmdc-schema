@@ -6,8 +6,8 @@ class Migrator(MigratorBase):
     Migrates a database between two schemas.
     """
 
-    _from_version = "11.13.0"
-    _to_version = "11.14.0"
+    _from_version = "11.14.0_part_1"
+    _to_version = "11.14.0_part_2"
 
     def upgrade(self, commit_changes: bool = False) -> None:
         r"""
