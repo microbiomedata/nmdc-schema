@@ -1524,10 +1524,11 @@ slots:
     range: SubstanceRoleEnum
     description: The role of a substance in a process
   concentration:
+    abstract: true
     range: QuantityValue
     description: The concentration of a substance used in a process
-    annotations:
-      units_alignment_excuse: pending_analysis
+    comments:
+      - Union of child units from source_concentration and final_concentration is %|mmol/L|umol/L|mg/L|g/L
   source_concentration:
     is_a: concentration
     description: When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in solution A

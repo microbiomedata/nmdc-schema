@@ -62,6 +62,7 @@ door_size
 down_par
 ethylbenzene
 exp_duct
+exp_pipe
 floor_age
 floor_area
 floor_thermal_mass
@@ -93,6 +94,7 @@ nitro
 number_pets
 number_plants
 number_resident
+occup_density_samp
 occup_samp
 org_carb
 org_matter
