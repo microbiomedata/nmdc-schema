@@ -516,6 +516,7 @@ classes:
       - git_url
       - version
       - record_of_origin
+      - type
 
 slots:
   record_of_origin:
