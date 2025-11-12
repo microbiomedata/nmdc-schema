@@ -356,6 +356,7 @@ classes:
       - img_identifiers
       - neon_biosample_identifiers
       - alternative_names
+      - provenance_metadata
 
       ## external IDs, alternate IDs
       - gold_biosample_identifiers
