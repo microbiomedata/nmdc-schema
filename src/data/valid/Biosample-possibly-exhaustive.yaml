@@ -1630,3 +1630,8 @@ nitrate_nitrogen:
   has_raw_value: 1.2 mg/kg
   has_numeric_value: 1.2
   has_unit: mg/kg
+provenance_metadata:
+  - git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+  - version: v2.12.0
+  - etl_category: submission_portal
+  
