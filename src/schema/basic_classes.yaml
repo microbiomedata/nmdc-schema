@@ -508,8 +508,20 @@ classes:
         required: true
       was_informed_by:
         required: true
+        
+  ProvenanceMetadata:
+    description: Metadata pertaining to how a record was created.
+    class_uri: nmdc:ProvenanceMetadata
+    slots:
+      - git_url
+      - version
+      - record_of_origin
 
 slots:
+  record_of_origin:
+    description: Identifies the system of origin for a record
+    range: SourceSystemEnum
+    
   associated_studies:
     description: The study associated with a resource.
     range: Study
@@ -697,7 +709,22 @@ slots:
       supersedes it, marking this record as outdated. The linked WorkflowExecution or
       resultant DataObjects should be used in favor of this record.
 
+  provenance_metadata: 
+    range: ProvenanceMetadata
+    description: Provides information about the provenance of a record.
+    
 enums:
+  SourceSystemEnum:
+    permissible_values:
+      submission_portal:
+        description: NMDC's Submission Portal
+      GOLD:
+        description: JGI's GOLD system
+      NEON: 
+        description: National Science Foundation National Ecologial Observatory Netowrk
+      NCBI:
+        description: The National Center for Biotechnology Information
+        
   CreditEnum:
     permissible_values:
       Conceptualization:
