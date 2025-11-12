@@ -720,6 +720,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../provenance_metadata/">provenance_metadata</a></td>
+<td>0..1 <br/> <a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
+<td>Provides information about the provenance of a record</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../gold_biosample_identifiers/">gold_biosample_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Unique identifier for a biosample submitted to GOLD that matches the NMDC sub...</td>
@@ -4061,6 +4067,7 @@ slots:
 - img_identifiers
 - neon_biosample_identifiers
 - alternative_names
+- provenance_metadata
 - gold_biosample_identifiers
 - insdc_biosample_identifiers
 - emsl_biosample_identifiers
@@ -5405,6 +5412,16 @@ attributes:
     - Study
     range: string
     multivalued: true
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provides information about the provenance of a record.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: provenance_metadata
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: ProvenanceMetadata
   gold_biosample_identifiers:
     name: gold_biosample_identifiers
     annotations:
