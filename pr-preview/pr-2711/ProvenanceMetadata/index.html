@@ -308,9 +308,9 @@
 
   ProvenanceMetadata : git_url
 
-  ProvenanceMetadata : record_of_origin
+  ProvenanceMetadata : source_system_of_record
 
-      ProvenanceMetadata --&gt; "0..1" SourceSystemEnum : record_of_origin
+      ProvenanceMetadata --&gt; "0..1" SourceSystemEnum : source_system_of_record
     click SourceSystemEnum href "../SourceSystemEnum"
 
   ProvenanceMetadata : type
@@ -345,7 +345,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../record_of_origin/">record_of_origin</a></td>
+<td><a href="../source_system_of_record/">source_system_of_record</a></td>
 <td>0..1 <br/> <a href="../SourceSystemEnum/">SourceSystemEnum</a></td>
 <td>Identifies the system of origin for a record</td>
 <td>direct</td>
@@ -388,7 +388,7 @@ from_schema: https://w3id.org/nmdc/nmdc
 slots:
 - git_url
 - version
-- record_of_origin
+- source_system_of_record
 - type
 class_uri: nmdc:ProvenanceMetadata
 
@@ -432,12 +432,12 @@ attributes:
     - WorkflowExecution
     - ProvenanceMetadata
     range: string
-  record_of_origin:
-    name: record_of_origin
+  source_system_of_record:
+    name: source_system_of_record
     description: Identifies the system of origin for a record
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: record_of_origin
+    alias: source_system_of_record
     owner: ProvenanceMetadata
     domain_of:
     - ProvenanceMetadata

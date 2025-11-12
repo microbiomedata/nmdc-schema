@@ -3469,10 +3469,6 @@
          <lastmod>2025-11-12</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/record_of_origin/</loc>
-         <lastmod>2025-11-12</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/redox_potential/</loc>
          <lastmod>2025-11-12</lastmod>
     </url>
@@ -4018,6 +4014,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/source_mat_id/</loc>
+         <lastmod>2025-11-12</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/source_system_of_record/</loc>
          <lastmod>2025-11-12</lastmod>
     </url>
     <url>
