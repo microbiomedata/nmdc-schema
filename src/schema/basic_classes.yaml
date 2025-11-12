@@ -717,14 +717,21 @@ slots:
 enums:
   SourceSystemEnum:
     permissible_values:
-      submission_portal:
-        description: NMDC's Submission Portal
+      NMDC_Submission_Portal:
+        description: The National Microbiome Data Collaborative's Submission Portal
+        see_also: https://data.microbiomedata.org/submission/home
       GOLD:
         description: JGI's GOLD system
-      NEON: 
-        description: National Science Foundation National Ecologial Observatory Netowrk
+        see_also: https://gold.jgi.doe.gov/
+      NEON_Data_Portal: 
+        description: National Science Foundation National Ecologial Observatory Network's Data Portal
+        see_also: https://data.neonscience.org/
       NCBI:
-        description: The National Center for Biotechnology Information
+        description: National Center for Biotechnology Information database
+        see_also: https://www.ncbi.nlm.nih.gov/biosample
+      nmdc_mass_spectrometry_metadata_generation:
+        description: NMDC repository for metadata generation focused on mass spectrometry datasets
+        see_also:
         
   CreditEnum:
     permissible_values:
