@@ -313,6 +313,8 @@
       ProvenanceMetadata --&gt; "0..1" SourceSystemEnum : record_of_origin
     click SourceSystemEnum href "../SourceSystemEnum"
 
+  ProvenanceMetadata : type
+
   ProvenanceMetadata : version
 
 
@@ -348,6 +350,12 @@
 <td>Identifies the system of origin for a record</td>
 <td>direct</td>
 </tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td>direct</td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -381,6 +389,7 @@ slots:
 - git_url
 - version
 - record_of_origin
+- type
 class_uri: nmdc:ProvenanceMetadata
 
 </code></pre>
@@ -433,6 +442,52 @@ attributes:
     domain_of:
     - ProvenanceMetadata
     range: SourceSystemEnum
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+      workflow_execution_class:
+        literal_form: workflow_execution_class
+        predicate: NARROW_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: ProvenanceMetadata
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - PeptideQuantification
+    - ProteinQuantification
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - OntologyRelation
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    - ProvenanceMetadata
+    range: uriorcurie
+    required: true
 class_uri: nmdc:ProvenanceMetadata
 
 </code></pre>
