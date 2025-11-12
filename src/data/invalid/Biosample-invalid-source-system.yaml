@@ -1,0 +1,28 @@
+#this file has an invalid permissible value for source_system_of_record
+id: nmdc:bsm-99-dtTMNb
+type: nmdc:Biosample
+associated_studies:
+  - nmdc:sty-00-abc123
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002030
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002030
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002169
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002169
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00005792
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00005792
+provenance_metadata:
+  type: nmdc:ProvenanceMetadata
+  git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+  version: v2.12.0
+  source_system_of_record: my_awesome_system
