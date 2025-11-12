@@ -519,7 +519,7 @@ classes:
       - type
 
 slots:
-  record_of_origin:
+  source_system_of_record:
     description: Identifies the system of origin for a record
     range: SourceSystemEnum
     
