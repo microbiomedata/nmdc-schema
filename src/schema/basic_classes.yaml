@@ -731,7 +731,7 @@ enums:
         see_also: https://www.ncbi.nlm.nih.gov/biosample
       nmdc_mass_spectrometry_metadata_generation:
         description: NMDC repository for metadata generation focused on mass spectrometry datasets
-        see_also:
+        see_also: https://github.com/microbiomedata/nmdc_mass_spectrometry_metadata_generation
         
   CreditEnum:
     permissible_values:
