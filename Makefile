@@ -19,7 +19,7 @@ PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 TEMPLATEDIR = doc-templates
 
-.PHONY: all clean examples-clean install site site-clean site-copy squeaky-clean test test-python test-with-examples
+.PHONY: all clean examples-clean install linkml-lint site site-clean site-copy squeaky-clean test test-python test-with-examples
 
 
 # note: "help" MUST be the first target in the file,
@@ -128,7 +128,7 @@ gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # 
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 
-test: examples-clean site test-python migration-doctests examples/output gen-linkml-schema-files
+test: examples-clean site test-python migration-doctests examples/output gen-linkml-schema-files linkml-lint
 only-test: examples-clean test-python migration-doctests examples/output
 tests: squeaky-clean all test  # simply for convenience to wrap convention of running these three targets to test locally.
 
@@ -155,8 +155,9 @@ test-python:
 	$(RUN) python -m doctest nmdc_schema/id_helpers.py
 	$(RUN) python -m doctest src/scripts/make_typecode_to_class_map.py
 
-lint:
-	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
+linkml-lint:
+	@mkdir -p local
+	$(RUN) linkml lint -f tsv $(SOURCE_SCHEMA_PATH) 2>&1 | tee local/lint.tsv || true
 
 .PHONY: check-dependencies
 check-dependencies:
