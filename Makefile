@@ -19,7 +19,7 @@ PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 TEMPLATEDIR = doc-templates
 
-.PHONY: all clean examples-clean install site site-clean site-copy squeaky-clean test test-python test-with-examples linkml-lint
+.PHONY: all clean examples-clean install site site-clean squeaky-clean test test-python linkml-lint
 
 
 # note: "help" MUST be the first target in the file,
@@ -36,12 +36,9 @@ help: status
 	@echo "make linkml-lint -- run LinkML schema linting (non-failing warnings)"
 	@echo ""
 
-status: check-config
+status:
 	@echo "Project: $(SCHEMA_NAME)"
 	@echo "Source: $(SOURCE_SCHEMA_PATH)"
-
-# generate products and add everything to github
-setup: install gen-project gendoc git-init-add
 
 # install any dependencies required for building
 install:
@@ -113,9 +110,6 @@ linkml-lint:
 check-dependencies:
 	$(RUN) deptry nmdc_schema --known-first-party nmdc_schema
 
-check-config:
-	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n - Remember to edit 'about.yaml'\n\n" || exit 0)
-
 # Test documentation locally
 serve: mkd-serve
 
@@ -160,39 +154,6 @@ mkd-%:
 	$(MKDOCS) $*
 
 PROJECT_FOLDERS = jsonldcontext jsonschema owl python rdf
-git-init-add: git-init git-add git-commit git-status
-git-init:
-	git init
-git-add:
-	git add \
-		*.md \
-		.github \
-		.gitignore \
-		CODE_OF_CONDUCT.md \
-		CONTRIBUTING.md \
-		LICENSE \
-		MAINTAINERS.md \
-		Makefile \
-		README.md \
-		about.yaml \
-		assets \
-		images \
-		mkdocs.yml \
-		nmdc_schema \
-		notebooks \
-		poetry.lock \
-		project/ \
-		pyproject.toml \
-		src/ \
-		tests \
-		utils
-	git add $(patsubst %, project/%, $(PROJECT_FOLDERS))
-
-git-commit:
-	git commit -m 'Initial commit' -a
-
-git-status:
-	git status
 
 clean:
 	rm -rf $(DEST)
