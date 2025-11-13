@@ -1,30 +1,38 @@
-[tool.poetry]
-
-description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
-changelog = "https://github.com/microbiomedata/nmdc-schema/releases"
-documentation = "https://microbiomedata.github.io/nmdc-schema/"
-homepage = "https://github.com/microbiomedata/nmdc-schema"
-keywords = ["NMDC", "schema", "metadata", "microbiome"]
-license = "MIT"
+[project]
 name = "nmdc_schema"
+description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 readme = "README.md"
-repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "0.0.0"
+license = { text = "MIT" }
 authors = [
-    "Bill Duncan <wdduncan@gmail.com>",
-    "Chris Mungall <cjmungall@lbl.gov>",
-    "Mark Andrew Miller <MAM@lbl.gov>",
-    "Patrick Kalita <pkalita@lbl.gov>",
-    "Sujay Patil <spatil@lbl.gov>",
+    { name = "Bill Duncan", email = "wdduncan@gmail.com" },
+    { name = "Chris Mungall", email = "cjmungall@lbl.gov" },
+    { name = "Mark Andrew Miller", email = "MAM@lbl.gov" },
+    { name = "Patrick Kalita", email = "pkalita@lbl.gov" },
+    { name = "Sujay Patil", email = "spatil@lbl.gov" },
 ]
-
+keywords = ["NMDC", "schema", "metadata", "microbiome"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
+requires-python = ">=3.10"
+dynamic = ["version", "dependencies"]
 
+[project.urls]
+Homepage = "https://github.com/microbiomedata/nmdc-schema"
+Documentation = "https://microbiomedata.github.io/nmdc-schema/"
+Repository = "https://github.com/microbiomedata/nmdc-schema"
+Changelog = "https://github.com/microbiomedata/nmdc-schema/releases"
+
+[tool.poetry]
+version = "0.0.0"  # Managed by poetry-dynamic-versioning
 packages = [
     { include = "nmdc_schema" }, # this is the package Poetry would have included by default
     { include = "migrators", from = "nmdc_schema" },
@@ -111,7 +119,7 @@ build-backend = "poetry_dynamic_versioning.backend"
 
 # For CLI script development guidelines, see CONTRIBUTING.md section "CLI Script Development Guidelines"
 
-[tool.poetry.scripts]
+[project.scripts]
 analyze-mentions-of-ids = "src.scripts.analyze_mentions_of_ids:main"
 anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
 check-examples-class-coverage = "src.scripts.check_examples_class_coverage:main"

@@ -1,4 +1,7 @@
 MAKEFLAGS += --warn-undefined-variables
+MAKEFLAGS += --no-builtin-rules
+MAKEFLAGS += --no-builtin-variables
+MAKEFLAGS += --no-print-directory
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail -c
 .DEFAULT_GOAL := help
@@ -12,11 +15,9 @@ RUN = poetry run
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 DOCDIR = docs
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
-SOURCE_SCHEMA_DIR = $(dir $(SOURCE_SCHEMA_PATH))
 SRC = src
 DEST = project
 PYMODEL = $(SCHEMA_NAME)
-EXAMPLEDIR = examples
 TEMPLATEDIR = doc-templates
 
 .PHONY: all clean examples-clean install site site-clean squeaky-clean test test-python linkml-lint
@@ -153,8 +154,6 @@ MKDOCS = $(RUN) mkdocs
 mkd-%:
 	$(MKDOCS) $*
 
-PROJECT_FOLDERS = jsonldcontext jsonschema owl python rdf
-
 clean:
 	rm -rf $(DEST)
 	rm -rf tmp
@@ -235,7 +234,7 @@ local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml
 		--log-file $@.log.txt \
 		--report-style exhaustive
 
-local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
+local/biosample-slot-range-type-report.tsv: $(SOURCE_SCHEMA_PATH)
 	$(RUN) slot-range-type-reporter \
 		--schema $< \
 		--output $@ \
@@ -252,10 +251,10 @@ local/gold-study-ids.json:
 		'https://api.microbiomedata.org/nmdcschema/study_set?max_page_size=999&projection=id%2Cgold_study_identifiers' \
 		-H 'accept: application/json'
 
-local/nmdc-no-use-native-uris.owl.ttl: src/schema/nmdc.yaml
+local/nmdc-no-use-native-uris.owl.ttl: $(SOURCE_SCHEMA_PATH)
 	$(RUN) linkml generate owl --no-use-native-uris $< > $@
 
-local/nmdc_materialized.ttl: src/schema/nmdc.yaml
+local/nmdc_materialized.ttl: $(SOURCE_SCHEMA_PATH)
 	$(RUN) schema-view-relation-graph \
 		--schema $< \
 		--output $@
@@ -276,22 +275,22 @@ local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-in
 assets/check_examples_class_coverage.txt:
 	$(RUN) check-examples-class-coverage \
 		--source_directory src/data/valid \
-		--schema_file src/schema/nmdc.yaml > $@
+		--schema_file $(SOURCE_SCHEMA_PATH) > $@
 
 assets/schema_pattern_linting.txt:
 	$(RUN) schema-pattern-linting \
- 		--schema-file src/schema/nmdc.yaml > $@
+ 		--schema-file $(SOURCE_SCHEMA_PATH) > $@
 
-assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
+assets/enum_pv_result.tsv: $(SOURCE_SCHEMA_PATH) assets/enum_pv_template.tsv
 	$(RUN) linkml2sheets \
 		--output $@ \
 		--schema $< $(word 2,$^)
 
-assets/mentions-of-ids-analysis.txt: src/schema/nmdc.yaml
+assets/mentions-of-ids-analysis.txt: $(SOURCE_SCHEMA_PATH)
 	$(RUN) analyze-mentions-of-ids \
 		--schema-file $< 1> $@ 2> $@.log
 
-assets/usages-report.txt: src/schema/nmdc.yaml
+assets/usages-report.txt: $(SOURCE_SCHEMA_PATH)
 	$(RUN) report-usages \
 		--schema-file $< > $@
 
@@ -312,7 +311,7 @@ assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv: assets/ncbi_mappings/nc
 	$(RUN) nmdc-ncbi-mapping ignore-import-schema-slots $@
 
 # EXPERIMENTAL
-assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
+assets/partial-imports-graph.pdf: $(SOURCE_SCHEMA_PATH)
 	$(RUN) python src/scripts/experimental/partial_imports_graph.py # needs networkx and plotly
 
 ###########################################################
@@ -326,7 +325,7 @@ generate-json-collections: src/data/valid/Database-interleaved.yaml
 		--yaml-input $< \
 		--output-dir assets/jsons-for-mongodb
 
-src/data/valid/Database-interleaved-new.yaml: src/schema/nmdc.yaml
+src/data/valid/Database-interleaved-new.yaml: $(SOURCE_SCHEMA_PATH)
 	$(RUN) interleave-yaml \
 		--directory-path src/data/valid \
 		--output-file $@ \
