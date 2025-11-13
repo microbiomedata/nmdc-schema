@@ -24,6 +24,56 @@ sample processing, data generation, workflows, and downstream data objects.
 The NMDC [Introduction to metadata and ontologies](https://microbiomedata.org/introduction-to-metadata-and-ontologies/)
 primer provides some the context for this project.
 
+## Installation
+
+### For End Users (pip)
+
+To use the NMDC schema in your Python project:
+
+```bash
+pip install nmdc-schema
+```
+
+This installs the core package with generated Python classes and validation support.
+
+**Optional Extras:**
+
+If you need additional functionality:
+
+```bash
+# MongoDB/migration support (for data managers)
+pip install nmdc-schema[migrators]
+
+# Jupyter notebook support (to run notebooks in notebooks/)
+pip install nmdc-schema[notebooks]
+
+# Install multiple extras
+pip install nmdc-schema[migrators,notebooks]
+```
+
+### For Contributors (Poetry)
+
+If you're developing the schema itself:
+
+```bash
+git clone https://github.com/microbiomedata/nmdc-schema.git
+cd nmdc-schema
+poetry install --all-extras  # Installs core + all optional dependencies
+```
+
+Or install specific extras as needed:
+
+```bash
+poetry install                           # Core dependencies only
+poetry install --extras migrators        # +MongoDB/migration support
+poetry install --extras notebooks        # +Jupyter support
+poetry install --extras "migrators notebooks"  # Both
+```
+
+See [DEVELOPMENT.md](DEVELOPMENT.md) and [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
+
+---
+
 The remainder of this page is primary for the internal maintainers and contributors to the NMDC schema
 
 ## Repository Contents Overview

@@ -119,6 +119,34 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
 While all PRs will be automatically checked using GitHub actions, core developers should understand how to run tests locally, as well as
 how to deploy a test version of the schema documentation. This requires some basic Python installation (e.g poetry)
 
+#### Installing Dependencies
+
+For most schema development work (recommended):
+
+```bash
+poetry install --all-extras
+```
+
+This installs all dependencies including:
+- Core dependencies (linkml, rdflib, etc.)
+- Development tools (linters, formatters, testing frameworks)
+- Optional extras (pymongo, jupyter)
+
+**For specific workflows, install only what you need:**
+
+```bash
+poetry install                      # Core + dev tools only
+poetry install --extras migrators   # +MongoDB/migration support
+poetry install --extras notebooks   # +Jupyter notebook support
+```
+
+**Note:** Optional dependencies like `pymongo`, `python-dotenv`, `jupyter`, and `ipython` are opt-in for BOTH pip and poetry users. Contributors who need to:
+- Run migrations or work with MongoDB → use `--extras migrators`
+- Run Jupyter notebooks in `notebooks/` → use `--extras notebooks`
+- Do both → use `--all-extras`
+
+#### Running Tests and Builds
+
  - Contributors should be comfortable running makefile targets, like `squeaky-clean`, `all`, `test`
  - Anyone who is involved in writing migrations or otherwise checking data from MongoDB against the schema should be comfortable running make `make-rdf`.
  - The build system is organized into specialized makefiles:

@@ -31,6 +31,20 @@ Documentation = "https://microbiomedata.github.io/nmdc-schema/"
 Repository = "https://github.com/microbiomedata/nmdc-schema"
 Changelog = "https://github.com/microbiomedata/nmdc-schema/releases"
 
+[project.optional-dependencies]
+# MongoDB/migration support - only needed for data managers using migrators framework
+# Install with: pip install nmdc-schema[migrators]
+migrators = [
+    "pymongo>=4.7.2",
+    "python-dotenv>=0.21.0"
+]
+# Jupyter notebook support - needed to run notebooks in notebooks/
+# Install with: pip install nmdc-schema[notebooks]
+notebooks = [
+    "jupyter>=1.0.0",
+    "ipython>=8.0.0"
+]
+
 [tool.poetry]
 version = "0.0.0"  # Managed by poetry-dynamic-versioning
 packages = [
@@ -47,10 +61,15 @@ deprecated = "^1"
 jsonschema = "^4"
 linkml = "^1.9.1"
 linkml-runtime = "^1.9.1"
-pymongo = "^4.7.2"
-python-dotenv = "^0.21.0"
 pyyaml = "^6"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
+# Optional dependencies - users must opt-in to install these
+# pip: pip install nmdc-schema[migrators] or [notebooks]
+# poetry: poetry install --extras migrators or --extras notebooks
+pymongo = {version = "^4.7.2", optional = true}
+python-dotenv = {version = "^0.21.0", optional = true}
+jupyter = {version = ">=1.0.0", optional = true}
+ipython = {version = ">=8.0.0", optional = true}
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "^2.2.0"
@@ -91,6 +110,11 @@ vulture = "^2.11"
 
 [tool.poetry.group.deps.dependencies]
 deptry = "^0.23.0"
+
+[tool.poetry.extras]
+# Map extras to optional dependencies
+migrators = ["pymongo", "python-dotenv"]
+notebooks = ["jupyter", "ipython"]
 
 [tool.poetry-dynamic-versioning]
 # We need poetry-dynamic-versioning to update the version in the src schema file,

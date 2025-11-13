@@ -22,8 +22,17 @@ import importlib
 import click
 import sys
 import os
-from dotenv import load_dotenv
-from pymongo import MongoClient
+
+try:
+    from dotenv import load_dotenv
+    from pymongo import MongoClient
+except ImportError as e:
+    raise ImportError(
+        "MongoDB support requires optional dependencies. "
+        "Install with: pip install nmdc-schema[migrators] "
+        "or: poetry install --extras migrators"
+    ) from e
+
 from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 
 # TODO: Is this script somewhat redundant with nmdc_schema/migration_recursion.py? Can they be
