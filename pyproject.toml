@@ -208,7 +208,22 @@ units-schema-extract-slot-unit-pairs = "units.scripts.schema_expand_storage_unit
 
 [tool.deptry]
 extend_exclude = [
+    "nmdc_schema/nmdc.py",
     "nmdc_schema/nmdc-pydantic.py"
 ]
-# NOTE: nmdc.py is a generated file that imports transitive dependencies (e.g., jsonasobj2).
+# NOTE: nmdc.py and nmdc-pydantic.py are generated files that import transitive dependencies (e.g., jsonasobj2).
 # DEP003 warnings from generated files are expected and can be ignored.
+
+# Ignore optional dependencies (dev tools, notebooks) that are not imported by code
+# Also ignore deps used in generated files (nmdc.py, nmdc-pydantic.py) that we exclude from scanning
+# DEP002 = "defined as a dependency but not used in the codebase"
+per_rule_ignores = { DEP002 = [
+    "rdflib",  # Used in excluded generated file nmdc.py
+    "autopep8", "bandit", "black", "curies", "deptry", "exhaustion-check",
+    "fastjsonschema", "flake8", "isort", "jinja2", "mkdocs", "mkdocs-material",
+    "mkdocs-mermaid2-plugin", "mkdocs-redirects", "mypy", "pandas", "psycopg2-binary",
+    "pydocstyle", "pylint", "pyroma", "pytest", "python-dotenv", "refscan", "requests",
+    "ruamel-yaml", "ruff", "schemasheets", "setuptools", "sheets_and_friends",
+    "sparql-burger", "sparql-dataframe", "sparqlwrapper", "ucumvert", "vulture",
+    "jupyter", "ipython"
+] }
