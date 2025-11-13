@@ -1,7 +1,14 @@
 from typing import Optional, Callable, List, Union
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
-from pymongo.database import Database
-from pymongo.client_session import ClientSession
+
+try:
+    from pymongo.database import Database
+    from pymongo.client_session import ClientSession
+except ImportError as e:
+    raise ImportError(
+        "MongoDB support requires optional dependencies. "
+        "Install with: poetry install --extras dev"
+    ) from e
 
 
 class MongoAdapter(AdapterBase):

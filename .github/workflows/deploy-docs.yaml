@@ -1,3 +1,23 @@
+###############################################################################
+# Purpose:
+# --------
+# Automatically deploys schema documentation to GitHub Pages whenever changes
+# are merged to main, keeping the public documentation in sync with the code.
+#
+# When it runs:
+# -------------
+# - Push to main branch (after PR merge)
+# - Manual trigger (workflow_dispatch)
+#
+# What it does:
+# -------------
+# - Builds complete schema documentation
+# - Generates mkdocs site
+# - Deploys to GitHub Pages at https://microbiomedata.github.io/nmdc-schema/
+#
+# Status: CRITICAL - Do not remove
+###############################################################################
+
 name: Auto-deployment of nmdc-schema Documentation
 on:
   push:
@@ -23,7 +43,7 @@ jobs:
           cache: 'poetry'
 
       - name: Install dependencies.
-        run: poetry install
+        run: poetry install --all-extras
 
       # Replace the `0.0.0` placeholder `version` number in various files (per the config in `pyproject.toml`).
       # Reference: https://github.com/mtkennerly/poetry-dynamic-versioning/blob/master/README.md#command-line-mode

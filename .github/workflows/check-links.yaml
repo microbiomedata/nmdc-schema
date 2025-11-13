@@ -33,7 +33,7 @@ jobs:
           python-version: '3.12'
           cache: 'poetry'
       - name: Install Python dependencies
-        run: poetry install
+        run: poetry install --all-extras
       - name: Build docs
         run: make gendoc
       - name: Use Lychee to check for broken links
