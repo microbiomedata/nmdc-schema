@@ -310,10 +310,6 @@ assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv: assets/ncbi_mappings/nc
 		--tsv-output $@
 	$(RUN) nmdc-ncbi-mapping ignore-import-schema-slots $@
 
-# EXPERIMENTAL
-assets/partial-imports-graph.pdf: $(SOURCE_SCHEMA_PATH)
-	$(RUN) python src/scripts/experimental/partial_imports_graph.py # needs networkx and plotly
-
 ###########################################################
 # JSON Collection Generation
 ###########################################################
