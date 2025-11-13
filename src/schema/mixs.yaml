@@ -4222,12 +4222,8 @@ slots:
     inlined_as_list: true
   misc_param:
     annotations:
-      expected_value:
-        tag: expected_value
-        value: parameter name;measurement value
-      occurrence:
-        tag: occurrence
-        value: m
+      expected_value: parameter name;measurement value
+      occurrence: m
     description: Structured miscellaneous property assertions. Use when a value cannot cleanly fit an existing, policy-governed slot.
     title: miscellaneous parameter
     examples:
@@ -6350,18 +6346,10 @@ slots:
     multivalued: false
   specific_humidity:
     annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: gram of air, kilogram of air
-      occurrence:
-        tag: occurrence
-        value: '1'
-      storage_units:
-        tag: storage_units
-        value: g/kg
+      expected_value: measurement value
+      preferred_unit: gram of air, kilogram of air
+      occurrence: '1'
+      storage_units: g/kg
     description: The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound.
     title: specific humidity
     examples:
@@ -6995,18 +6983,10 @@ slots:
     multivalued: false
   tvdss_of_hcr_temp:
     annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: meter
-      occurrence:
-        tag: occurrence
-        value: '1'
-      storage_units:
-        tag: storage_units
-        value: m
+      expected_value: measurement value
+      preferred_unit: meter
+      occurrence: '1'
+      storage_units: m
     description: True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m).
     title: depth (TVDSS) of hydrocarbon resource temperature
     examples:
