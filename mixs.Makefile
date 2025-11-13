@@ -9,7 +9,7 @@
 #   1. Extract MIxS slots from upstream source (do_shuttle)
 #   2. Apply global string replacements and slot-specific transformations
 #   3. Inject NMDC-specific enums (cur_land_use_enum, TargetGeneEnum)
-#   4. Inject NMDC-specific annotations (env_triad tooltips)
+#   4. Inject NMDC-specific annotations (environmental context triad tooltips)
 #   5. Inject NMDC-specific slots (mixs_env_triad_field)
 #   6. Dematerialize schema (remove redundant metadata)
 #   7. Generate final src/schema/mixs.yaml
@@ -103,14 +103,14 @@ assets/other_mixs_yaml_files/TargetGeneEnum.yaml
 	yq eval-all 'select(fileIndex==0).enums.TargetGeneEnum = select(fileIndex==1).enums.TargetGeneEnum | select(fileIndex==0)' $^ | cat > $@
 	yq -i '.slots.target_gene.range = "TargetGeneEnum"' $@
 
-# Step 5: Inject NMDC-specific environment triad annotations
+# Step 5: Inject NMDC-specific environmental context triad (env_triad) annotations
 local/mixs_regen/mixs_subset_modified_inj_env_triad.yaml: local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml \
 assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
-	# Inject tooltip annotations for env_broad_scale, env_local_scale, and env_medium slots
+	# Inject tooltip annotations for the MIxS environmental triad slots (env_broad_scale, env_local_scale, env_medium)
 	yq eval-all 'select(fileIndex==0).slots.env_broad_scale.annotations.tooltip = select(fileIndex==1).slots.env_broad_scale.annotations.tooltip | select(fileIndex==0).slots.env_local_scale.annotations.tooltip = select(fileIndex==1).slots.env_local_scale.annotations.tooltip | select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' $^ | cat > $@
 
-# Step 6: Inject NMDC-specific mixs_env_triad_field slot
+# Step 6: Inject NMDC-specific mixs_env_triad_field slot (environmental context triad)
 local/mixs_regen/mixs_minus_1.yaml: local/mixs_regen/mixs_subset_modified_inj_env_triad.yaml \
 assets/other_mixs_yaml_files/mixs_env_triad_field_slot.yaml
-	# Inject custom slot for environment triad field handling
+	# Inject custom slot for MIxS environmental context triad field handling
 	yq eval-all 'select(fileIndex==0).slots.mixs_env_triad_field = select(fileIndex==1).slots.mixs_env_triad_field | select(fileIndex==0)' $^ | cat > $@
