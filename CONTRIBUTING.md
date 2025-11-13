@@ -157,7 +157,7 @@ The repository includes several GitHub Actions workflows that can be triggered m
 
 #### Advanced Data Validation
 
-For maintainers working with production MongoDB data validation using RDF/SPARQL tools, see [docs/data-validation.md](docs/data-validation.md).
+For maintainers working with production MongoDB data validation using RDF/SPARQL tools, see [DATA-VALIDATION.md](DATA-VALIDATION.md).
 
 > Advanced testing instructions for migrators can be found [here](nmdc_schema/migrators/README.md).
 

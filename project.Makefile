@@ -16,9 +16,6 @@ SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 LATEST_RELEASE_TAG_FILE := local/latest_release_tag.txt
 
-PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
-
-
 ##### Rules related to grabbing the current schema release from Github #####
 
 REPO  := microbiomedata/nmdc-schema
@@ -438,80 +435,6 @@ local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_dat
 	rm local/date_created_blank_node.ttl
 
 ###
-
-diagrams-clean:
-	rm -rf assets/mermaid-erd* \
-		assets/plantuml*
-
-# requires java and the plantuml jar https://plantuml.com/download
-#   https://github.com/plantuml/plantuml/releases/download/v1.2024.3/plantuml-lgpl-1.2024.3.jar
-# requires npm and https://www.npmjs.com/package/@mermaid-js/mermaid-cli
-# requires inkscape
-diagrams-all: diagrams-clean assets/plantuml.png assets/plantuml.pdf assets/mermaid-erd.pdf assets/mermaid-erd.png
-
-#		--classes ChemicalConversionProcess \
-#		--classes ChemicalEntity \
-#		--classes ChromatographicSeparationProcess \
-#		--classes DissolvingProcess \
-#		--classes Extraction \
-#		--classes FluidHandling \
-#		--classes MassSpectrometry \
-#		--classes MaterialProcessing \
-#		--classes MetaboliteQuantification \
-#		--classes PlannedProcess \
-#		--classes PortionOfSubstance \
-#		--classes Solution \
-#		--classes SubstanceEntity
-
-assets/plantuml.puml: src/schema/nmdc.yaml
-	$(RUN) linkml generate plantuml \
-		--classes ChemicalConversionProcess \
-		--classes ChemicalEntity \
-		--classes ChromatographicSeparationProcess \
-		--classes DissolvingProcess \
-		--classes Extraction \
-		--classes MobilePhaseSegment \
-		--classes PortionOfSubstance \
-		$< > $@
-
-assets/plantuml.svg: assets/plantuml.puml # https://plantuml.com/download
-	java -jar $(PLANTUML_JAR) $< -tsvg
-
-assets/plantuml.png: assets/plantuml.puml # https://plantuml.com/download
-#	docker run \
-#		-v plantuml_diagrams:/plantuml/in \
-#		-v plantuml_images:/plantuml/out \
-#		plantuml/plantuml render /plantuml/in/chemistry.puml -f png -o /plantuml/out/chemistry.png
-	java -jar $(PLANTUML_JAR) $< -tpng
-
-assets/plantuml.pdf: assets/plantuml.svg
-	inkscape --export-filename=$@ $<
-
-assets/mermaid-erd.mmd: src/schema/nmdc.yaml
-	$(RUN) linkml generate erdiagram \
-		--format mermaid \
-		--classes ChemicalConversionProcess \
-		--classes ChemicalEntity \
-		--classes ChromatographicSeparationProcess \
-		--classes DissolvingProcess \
-		--classes Extraction \
-		--classes MobilePhaseSegment \
-		--classes PortionOfSubstance \
-		$< > $@.tmp
-	sed 's/language code/language_code/g' $@.tmp > $@
-	rm -rf $@.tmp
-
-assets/mermaid-erd.svg: assets/mermaid-erd.mmd
-	mmdc -i $< -o $@
-
-assets/mermaid-erd.pdf: assets/mermaid-erd.mmd
-	mmdc -i $< -o $@
-
-assets/mermaid-erd.png: assets/mermaid-erd.mmd
-	mmdc -i $< -o $@
-
-#assets/mermaid-erd.pdf: assets/mermaid-erd.svg # illegible
-#	inkscape --export-filename=$@ $<
 
 assets/check_examples_class_coverage.txt:
 	$(RUN) check-examples-class-coverage \
