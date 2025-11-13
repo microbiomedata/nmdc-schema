@@ -123,6 +123,42 @@ how to deploy a test version of the schema documentation. This requires some bas
  - Anyone who is involved in writing migrations or otherwise checking data from MongoDB against the schema should be comfortable running make `make-rdf`.
  - The main [Makefile](Makefile) should in general not be edited. Instead, edits should be made to [project.Makefile](project.Makefile) (advanced contributors only)
 
+#### LinkML Linting
+
+The schema is automatically linted using LinkML's linter as part of `make all` and `make test`. You can also run linting separately:
+
+```bash
+make linkml-lint
+```
+
+The linter configuration is in `.linkmllint.yaml`. It checks for:
+- Missing descriptions on classes and slots
+- Naming convention compliance (UpperCamelCase for classes, snake_case for slots)
+- Invalid slot_usage references
+- Canonical prefix mappings
+
+Linting warnings do not fail the build but should be addressed when possible. To exclude specific elements from certain rules, add them to the `exclude` list in `.linkmllint.yaml`.
+
+#### Manual GitHub Workflows
+
+The repository includes several GitHub Actions workflows that can be triggered manually from the Actions tab:
+
+**Check Links (`check-links.yaml`)**
+- Purpose: Checks for broken links in documentation
+- When to use: Before releasing documentation updates, or periodically to maintain doc quality
+- How to trigger: Go to Actions → "Check links" → "Run workflow"
+- Output: Creates a GitHub Issue if broken links are found
+
+**Deploy Documentation (`deploy-docs.yaml`)**
+- Purpose: Manually deploy documentation to GitHub Pages
+- When to use: Rarely needed (docs auto-deploy on merge to main)
+- How to trigger: Go to Actions → "Auto-deployment of nmdc-schema Documentation" → "Run workflow"
+- Note: Only use if automatic deployment fails
+
+#### Advanced Data Validation
+
+For maintainers working with production MongoDB data validation using RDF/SPARQL tools, see [docs/data-validation.md](docs/data-validation.md).
+
 > Advanced testing instructions for migrators can be found [here](nmdc_schema/migrators/README.md).
 
 ### Recording Decisions

@@ -1,3 +1,22 @@
+###############################################################################
+# Purpose:
+# --------
+# Publishes the nmdc-schema package to PyPI when a new GitHub release is created.
+# This is the distribution mechanism that allows users to 'pip install nmdc-schema'.
+#
+# When it runs:
+# -------------
+# - GitHub release created (manual action by maintainers)
+#
+# What it does:
+# -------------
+# - Builds source and wheel distributions
+# - Publishes to PyPI using trusted publishing (no credentials needed)
+# - Makes new version available to pip install
+#
+# Status: CRITICAL - Do not remove (breaks package distribution)
+###############################################################################
+
 name: Publish Python Package
 
 on:

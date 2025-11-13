@@ -19,7 +19,7 @@ PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 TEMPLATEDIR = doc-templates
 
-.PHONY: all clean examples-clean install site site-clean site-copy squeaky-clean test test-python test-with-examples
+.PHONY: all clean examples-clean install site site-clean site-copy squeaky-clean test test-python test-with-examples linkml-lint
 
 
 # note: "help" MUST be the first target in the file,
@@ -33,6 +33,7 @@ help: status
 	@echo "  but users can generate a local documentation site with 'make testdoc'"
 	@echo "Please excuse the currently verbose logging mode"
 	@echo "make help -- show this help"
+	@echo "make linkml-lint -- run LinkML schema linting (non-failing warnings)"
 	@echo ""
 
 cookiecutter-help: status
@@ -86,13 +87,13 @@ create-data-harmonizer:
 
 prefixmaps:
 	@mkdir -p $(DEST)/prefixmap
-	$(RUN) gen-prefix-map nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/prefixmap/nmdc-prefix-map.json
+	$(RUN) linkml generate prefix-map nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/prefixmap/nmdc-prefix-map.json
 
 pydantic:
 	@mkdir -p $(DEST)/pydantic
-	$(RUN) gen-pydantic nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/pydantic/nmdc-pydantic.py
+	$(RUN) linkml generate pydantic nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/pydantic/nmdc-pydantic.py
 
-# Note: `all` is an alias for `site`.
+# Note: `all` builds the project (site, docs, etc.) but doesn't run quality checks
 all: site
 site: clean site-clean gen-project gendoc \
 nmdc_schema/gold-to-mixs.sssom.tsv \
@@ -109,7 +110,7 @@ pydantic
 deploy: gendoc mkd-gh-deploy
 
 gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # can be nuked with mixs-yaml-clean
-	$(RUN) gen-project \
+	$(RUN) linkml generate project \
 		--exclude excel \
 		--exclude graphql \
 		--exclude jsonld \
@@ -128,12 +129,13 @@ gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # 
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 
-test: examples-clean site test-python migration-doctests examples/output gen-linkml-schema-files
+test: examples-clean site test-python migration-doctests examples/output gen-linkml-schema-files linkml-lint
+test-no-lint: examples-clean site test-python migration-doctests examples/output gen-linkml-schema-files
 only-test: examples-clean test-python migration-doctests examples/output
 tests: squeaky-clean all test  # simply for convenience to wrap convention of running these three targets to test locally.
 
 test-schema:
-	$(RUN) gen-project \
+	$(RUN) linkml generate project \
 		--exclude excel \
 		--exclude graphql \
 		--exclude jsonld \
@@ -155,8 +157,9 @@ test-python:
 	$(RUN) python -m doctest nmdc_schema/id_helpers.py
 	$(RUN) python -m doctest src/scripts/make_typecode_to_class_map.py
 
-lint:
-	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
+linkml-lint:
+	@mkdir -p local
+	$(RUN) linkml lint -f tsv $(SOURCE_SCHEMA_PATH) 2>&1 | tee local/lint.tsv || true
 
 .PHONY: check-dependencies
 check-dependencies:
@@ -190,8 +193,8 @@ gendoc: $(DOCDIR) prefixmaps
 	cp -rf $(SRC)/docs/* $(DOCDIR)
 	# Use `make_typecode_to_class_map.py` to make a Markdown page that can be used to map a typecode to a schema class.
 	$(RUN) python src/scripts/make_typecode_to_class_map.py > $(DOCDIR)/typecode-to-class-map.md
-	# Generate documentation using the gen-doc command
-	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
+	# Generate documentation using the linkml generate doc command
+	$(RUN) linkml generate doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
 	# Create directory for JavaScript files and copy them
 	# Added copying of prefixmaps output
 	cp -f $(DEST)/prefixmap/nmdc-prefix-map.json $(DOCDIR)
@@ -273,14 +276,14 @@ squeaky-clean: clean examples-clean rdf-clean shuttle-clean site-clean # does no
 	rm -rf local/biosample_slots_ranges_report.tsv
 
 nmdc_schema/nmdc_materialized_patterns.yaml:
-	$(RUN) gen-linkml \
+	$(RUN) linkml generate linkml \
 		--format yaml \
 		--materialize-patterns \
 		--no-materialize-attributes \
 		--output $@ $(SOURCE_SCHEMA_PATH)
 
 nmdc_schema/nmdc_materialized_patterns.schema.json: nmdc_schema/nmdc_materialized_patterns.yaml
-	$(RUN) gen-json-schema \
+	$(RUN) linkml generate json-schema \
 		--closed \
 		--include-range-class-descendants \
 		--top-class Database $< > $@
@@ -308,7 +311,7 @@ check-invalids-for-single-failure:
 	for file in src/data/invalid/*.yaml; do \
 		echo "$$file:"; \
 		target_class=$$(basename $$file | cut -d'-' -f1); \
-		cmd="poetry run linkml-validate --schema nmdc_schema/nmdc_materialized_patterns.yaml --target-class $$target_class $$file"; \
+		cmd="poetry run linkml validate --schema nmdc_schema/nmdc_materialized_patterns.yaml --target-class $$target_class $$file"; \
 		output=$$($$cmd 2>&1 || true); \
 		echo "$$output" | sort | uniq; \
 	done
@@ -316,4 +319,3 @@ check-invalids-for-single-failure:
 # Generate linkml yaml for all schema files
 .PHONY: gen-linkml-schema-files
 gen-linkml-schema-files:
-	$(RUN) python src/scripts/check_schema_self_containment.py

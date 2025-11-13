@@ -1,3 +1,22 @@
+###############################################################################
+# Purpose:
+# --------
+# Builds and previews documentation on pull requests without deploying to
+# production. Catches documentation build errors early in the PR review process.
+#
+# When it runs:
+# -------------
+# - Pull requests (opened, reopened, or synchronized)
+#
+# What it does:
+# -------------
+# - Builds complete documentation site
+# - Deploys preview to temporary gh-pages branch
+# - Provides preview URL in PR for reviewers to see doc changes
+#
+# Status: Important - Helps prevent broken doc deployments
+###############################################################################
+
 name: Preview documentation build
 
 on:
