@@ -40,13 +40,15 @@ Or install only what you need:
 
 ```bash
 poetry install                           # Core only
-poetry install --extras dev              # Core + dev tools
+poetry install --extras dev              # Core + dev tools (includes pymongo via refscan)
 poetry install --extras migrators        # Core + MongoDB support
 poetry install --extras notebooks        # Core + Jupyter support
 poetry install --extras "dev migrators"  # Mix and match
 ```
 
 **All extras are opt-in** - nothing is installed by default.
+
+**Note:** The `dev` extras includes `pymongo` as a transitive dependency of `refscan` (used for documentation visualizations).
 
 ### For End Users (pip - Alternative)
 

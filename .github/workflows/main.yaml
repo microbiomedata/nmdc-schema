@@ -47,7 +47,7 @@ jobs:
           cache: 'poetry'
 
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --all-extras
 
       - name: Run LinkML linting
         run: make linkml-lint
@@ -80,7 +80,7 @@ jobs:
       # install dependencies if cache does not exist 
       #----------------------------------------------
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --all-extras
 
       - name: Check project dependencies
         run: make check-dependencies

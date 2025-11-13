@@ -146,7 +146,7 @@ poetry install --extras "dev migrators"  # Core + dev + MongoDB
 ```
 
 **Note:** All extras work the same way - nothing is installed by default:
-- `dev` → Development tools (black, pytest, mkdocs, etc.)
+- `dev` → Development tools (black, pytest, mkdocs, refscan, etc.) - includes pymongo via refscan
 - `migrators` → MongoDB/migration support (pymongo, python-dotenv)
 - `notebooks` → Jupyter notebook support (jupyter, ipython)
 

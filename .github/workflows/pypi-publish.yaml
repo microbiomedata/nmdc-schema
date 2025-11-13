@@ -47,7 +47,7 @@ jobs:
         cache: 'poetry'
 
     - name: Install project dependencies
-      run: poetry install --no-interaction
+      run: poetry install --all-extras --no-interaction
 
     - name: Generate project files
       run: |
