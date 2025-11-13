@@ -26,48 +26,37 @@ primer provides some the context for this project.
 
 ## Installation
 
-### For End Users (pip)
+### For Contributors (Poetry - Recommended)
 
-To use the NMDC schema in your Python project:
-
-```bash
-pip install nmdc-schema
-```
-
-This installs the core package with generated Python classes and validation support.
-
-**Optional Extras:**
-
-If you need additional functionality:
-
-```bash
-# MongoDB/migration support (for data managers)
-pip install nmdc-schema[migrators]
-
-# Jupyter notebook support (to run notebooks in notebooks/)
-pip install nmdc-schema[notebooks]
-
-# Install multiple extras
-pip install nmdc-schema[migrators,notebooks]
-```
-
-### For Contributors (Poetry)
-
-If you're developing the schema itself:
+If you're developing the schema or using it in your own projects:
 
 ```bash
 git clone https://github.com/microbiomedata/nmdc-schema.git
 cd nmdc-schema
-poetry install --all-extras  # Installs core + all optional dependencies
+poetry install --all-extras  # Installs everything
 ```
 
-Or install specific extras as needed:
+Or install only what you need:
 
 ```bash
-poetry install                           # Core dependencies only
-poetry install --extras migrators        # +MongoDB/migration support
-poetry install --extras notebooks        # +Jupyter support
-poetry install --extras "migrators notebooks"  # Both
+poetry install                           # Core only
+poetry install --extras dev              # Core + dev tools
+poetry install --extras migrators        # Core + MongoDB support
+poetry install --extras notebooks        # Core + Jupyter support
+poetry install --extras "dev migrators"  # Mix and match
+```
+
+**All extras are opt-in** - nothing is installed by default.
+
+### For End Users (pip - Alternative)
+
+If you prefer pip:
+
+```bash
+pip install nmdc-schema              # Core only
+pip install nmdc-schema[dev]         # +dev tools
+pip install nmdc-schema[migrators]   # +MongoDB support
+pip install nmdc-schema[notebooks]   # +Jupyter support
 ```
 
 See [DEVELOPMENT.md](DEVELOPMENT.md) and [CONTRIBUTING.md](CONTRIBUTING.md) for more details.

@@ -121,29 +121,34 @@ how to deploy a test version of the schema documentation. This requires some bas
 
 #### Installing Dependencies
 
+**All optional dependencies are now opt-in for consistency.**
+
 For most schema development work (recommended):
 
 ```bash
 poetry install --all-extras
 ```
 
-This installs all dependencies including:
+This installs everything:
 - Core dependencies (linkml, rdflib, etc.)
-- Development tools (linters, formatters, testing frameworks)
-- Optional extras (pymongo, jupyter)
+- Dev tools (linters, formatters, testing frameworks)
+- MongoDB support (pymongo, python-dotenv)
+- Jupyter notebooks (jupyter, ipython)
 
 **For specific workflows, install only what you need:**
 
 ```bash
-poetry install                      # Core + dev tools only
-poetry install --extras migrators   # +MongoDB/migration support
-poetry install --extras notebooks   # +Jupyter notebook support
+poetry install                           # Core only
+poetry install --extras dev              # Core + dev tools
+poetry install --extras migrators        # Core + MongoDB support
+poetry install --extras notebooks        # Core + Jupyter support
+poetry install --extras "dev migrators"  # Core + dev + MongoDB
 ```
 
-**Note:** Optional dependencies like `pymongo`, `python-dotenv`, `jupyter`, and `ipython` are opt-in for BOTH pip and poetry users. Contributors who need to:
-- Run migrations or work with MongoDB → use `--extras migrators`
-- Run Jupyter notebooks in `notebooks/` → use `--extras notebooks`
-- Do both → use `--all-extras`
+**Note:** All extras work the same way - nothing is installed by default:
+- `dev` → Development tools (black, pytest, mkdocs, etc.)
+- `migrators` → MongoDB/migration support (pymongo, python-dotenv)
+- `notebooks` → Jupyter notebook support (jupyter, ipython)
 
 #### Running Tests and Builds
 

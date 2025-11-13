@@ -32,14 +32,51 @@ Repository = "https://github.com/microbiomedata/nmdc-schema"
 Changelog = "https://github.com/microbiomedata/nmdc-schema/releases"
 
 [project.optional-dependencies]
+# Development tools - linters, formatters, testing frameworks
+# Install with: poetry install --extras dev
+dev = [
+    "autopep8>=2.2.0",
+    "bandit>=1.7.8",
+    "black>=23.1,<25.0",
+    "curies>=0.9.0",
+    "deptry>=0.23.0",
+    "exhaustion-check>=0.1.1",
+    "fastjsonschema>=2.20.0",
+    "flake8>=7.0.0",
+    "isort>=5.13.2",
+    "jinja2>=3.1.6",
+    "mkdocs>=1.4.2",
+    "mkdocs-material>=9.0.12",
+    "mkdocs-mermaid2-plugin>=0.6.0",
+    "mkdocs-redirects>=1.2.1",
+    "mypy>=1.10.0",
+    "pandas>=2.2.3",
+    "psycopg2-binary>=2.9.10",
+    "pydocstyle>=6.3.0",
+    "pylint>=3.2.2",
+    "pyroma>=4.2",
+    "pytest>=8.4.2",
+    "refscan>=0.2.3",
+    "requests>=2",
+    "ruamel-yaml>=0.18.6",
+    "ruff>=0.4.7",
+    "schemasheets>=0.4.0",
+    "setuptools>=78.1.1",
+    "sheets_and_friends>=0.5.0",
+    "sparql-burger>=1.0.2",
+    "sparql-dataframe>=0.4",
+    "sparqlwrapper>=2.0.0",
+    "ucumvert>=0.2.2",
+    "vulture>=2.11"
+]
 # MongoDB/migration support - only needed for data managers using migrators framework
-# Install with: pip install nmdc-schema[migrators]
+# Install with: poetry install --extras migrators
 migrators = [
     "pymongo>=4.7.2",
     "python-dotenv>=0.21.0"
 ]
 # Jupyter notebook support - needed to run notebooks in notebooks/
-# Install with: pip install nmdc-schema[notebooks]
+# Install with: poetry install --extras notebooks
 notebooks = [
     "jupyter>=1.0.0",
     "ipython>=8.0.0"
@@ -63,56 +100,57 @@ linkml = "^1.9.5"
 linkml-runtime = "^1.9.5"
 pyyaml = "^6"
 rdflib = "^7.4.0"
-# Optional dependencies - users must opt-in to install these
-# pip: pip install nmdc-schema[migrators] or [notebooks]
-# poetry: poetry install --extras migrators or --extras notebooks
+# Optional dependencies - all extras are opt-in
+# Install with: poetry install --extras dev (or --extras migrators or --all-extras)
 pymongo = {version = "^4.7.2", optional = true}
 python-dotenv = {version = "^0.21.0", optional = true}
 jupyter = {version = ">=1.0.0", optional = true}
 ipython = {version = ">=8.0.0", optional = true}
-
-[tool.poetry.group.dev.dependencies]
-autopep8 = "^2.2.0"
-bandit = "^1.7.8"
-black = ">=23.1,<25.0"
-curies = "^0.9.0"
-exhaustion-check = "^0.1.1" # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
-fastjsonschema = "^2.20.0"
-flake8 = "^7.0.0"
-isort = "^5.13.2"
-jinja2 = "^3.1.6"
-mkdocs = "^1.4.2"
-mkdocs-material = "^9.0.12"
-mkdocs-mermaid2-plugin = "^0.6.0"
-mkdocs-redirects = "^1.2.1"
-mypy = "^1.10.0"
-pandas = "^2.2.3"
-psycopg2-binary = "^2.9.10"
-pydocstyle = "^6.3.0"
-pylint = "^3.2.2"
-pyroma = "^4.2"
-pytest = "^8.4.2"
-# We use `refscan` to generate diagrams of inter-collection relationships
-# and diagrams of inter-class relationships.
-# Reference: https://github.com/microbiomedata/refscan
-refscan = "^0.2.3"
-requests = "^2"
-ruamel-yaml = "^0.18.6"
-ruff = "^0.4.7"
-schemasheets = "^0.4.0"
-setuptools = "^78.1.1" # for https://github.com/microbiomedata/nmdc-schema/pull/2459
-sheets_and_friends = "^0.5.0" # for do_shuttle (and possibly more)
-sparql-burger = "^1.0.2"
-sparql-dataframe = "^0.4"
-sparqlwrapper = "^2.0.0"
-ucumvert = "^0.2.2"
-vulture = "^2.11"
-
-[tool.poetry.group.deps.dependencies]
-deptry = "^0.23.0"
+# Dev dependencies - all marked as optional
+autopep8 = {version = "^2.2.0", optional = true}
+bandit = {version = "^1.7.8", optional = true}
+black = {version = ">=23.1,<25.0", optional = true}
+curies = {version = "^0.9.0", optional = true}
+deptry = {version = "^0.23.0", optional = true}
+exhaustion-check = {version = "^0.1.1", optional = true}
+fastjsonschema = {version = "^2.20.0", optional = true}
+flake8 = {version = "^7.0.0", optional = true}
+isort = {version = "^5.13.2", optional = true}
+jinja2 = {version = "^3.1.6", optional = true}
+mkdocs = {version = "^1.4.2", optional = true}
+mkdocs-material = {version = "^9.0.12", optional = true}
+mkdocs-mermaid2-plugin = {version = "^0.6.0", optional = true}
+mkdocs-redirects = {version = "^1.2.1", optional = true}
+mypy = {version = "^1.10.0", optional = true}
+pandas = {version = "^2.2.3", optional = true}
+psycopg2-binary = {version = "^2.9.10", optional = true}
+pydocstyle = {version = "^6.3.0", optional = true}
+pylint = {version = "^3.2.2", optional = true}
+pyroma = {version = "^4.2", optional = true}
+pytest = {version = "^8.4.2", optional = true}
+refscan = {version = "^0.2.3", optional = true}
+requests = {version = "^2", optional = true}
+ruamel-yaml = {version = "^0.18.6", optional = true}
+ruff = {version = "^0.4.7", optional = true}
+schemasheets = {version = "^0.4.0", optional = true}
+setuptools = {version = "^78.1.1", optional = true}
+sheets_and_friends = {version = "^0.5.0", optional = true}
+sparql-burger = {version = "^1.0.2", optional = true}
+sparql-dataframe = {version = "^0.4", optional = true}
+sparqlwrapper = {version = "^2.0.0", optional = true}
+ucumvert = {version = "^0.2.2", optional = true}
+vulture = {version = "^2.11", optional = true}
 
 [tool.poetry.extras]
 # Map extras to optional dependencies
+dev = [
+    "autopep8", "bandit", "black", "curies", "deptry", "exhaustion-check",
+    "fastjsonschema", "flake8", "isort", "jinja2", "mkdocs", "mkdocs-material",
+    "mkdocs-mermaid2-plugin", "mkdocs-redirects", "mypy", "pandas", "psycopg2-binary",
+    "pydocstyle", "pylint", "pyroma", "pytest", "refscan", "requests", "ruamel-yaml",
+    "ruff", "schemasheets", "setuptools", "sheets_and_friends", "sparql-burger",
+    "sparql-dataframe", "sparqlwrapper", "ucumvert", "vulture"
+]
 migrators = ["pymongo", "python-dotenv"]
 notebooks = ["jupyter", "ipython"]
 
