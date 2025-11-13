@@ -252,7 +252,7 @@ examples-clean:
 
 examples/output: nmdc_schema/nmdc_materialized_patterns.yaml
 	mkdir -p $@
-	$(RUN) linkml run-examples \
+	$(RUN) linkml examples \
 		--schema $< \
 		--input-directory src/data/valid \
 		--counter-example-input-directory src/data/invalid \
