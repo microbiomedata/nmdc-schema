@@ -176,6 +176,36 @@ The release process for nmdc-schema is documented in the [NMDC Infrastructure Ad
 
 **Important:** Generated files in `nmdc_schema/` (such as `nmdc.py`, `nmdc-pydantic.py`, `nmdc_materialized_patterns.yaml`) should only be committed during the release process, not in regular PRs. These files are regenerated from the source schema during releases.
 
+### CLI Script Development Guidelines
+
+When creating or modifying CLI scripts for nmdc-schema, follow these conventions:
+
+**Script Structure:**
+- Scripts should use Click for CLI interfaces
+- Click parameters/options should use hyphens (e.g., `--input-file`, not `--input_file`)
+- Click parameters/options should use consistent naming across scripts
+- Entry points should typically be `main` or `cli` unless there's a compelling reason otherwise
+
+**Naming Conventions:**
+- Python file names: Use underscores as delimiters (e.g., `analyze_mentions_of_ids.py`)
+- CLI alias names: Use hyphens as delimiters (e.g., `analyze-mentions-of-ids`)
+- Input/output file names: Use hyphens as delimiters (e.g., `schema-output.yaml`)
+
+**Integration:**
+- All scripts must be registered in `[tool.poetry.scripts]` in `pyproject.toml`
+- Scripts should be illustrated/documented in a Makefile target where appropriate
+- Check existing NMDC code for usage patterns before changing conventions
+
+**Makefile Integration:**
+- Use `$<` for input files and `$@` for output files in Makefile targets
+- Document which CLI script the target uses
+
+**Output Location:**
+- Most outputs should go in `assets/` unless:
+  - The output is very large
+  - The output is likely to change independently of the schema (e.g., MongoDB summaries)
+  - The output is temporary (use `local/`)
+
 [about-branches]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
 [about-issues]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
 [about-pulls]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests

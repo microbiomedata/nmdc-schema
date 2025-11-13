@@ -1,8 +1,9 @@
 [tool.poetry]
 
 description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
+changelog = "https://github.com/microbiomedata/nmdc-schema/releases"
 documentation = "https://microbiomedata.github.io/nmdc-schema/"
-homepage = "https://microbiomedata.github.io/nmdc-schema/"
+homepage = "https://github.com/microbiomedata/nmdc-schema"
 keywords = ["NMDC", "schema", "metadata", "microbiome"]
 license = "MIT"
 name = "nmdc_schema"
@@ -58,6 +59,7 @@ mkdocs-material = "^9.0.12"
 mkdocs-mermaid2-plugin = "^0.6.0"
 mkdocs-redirects = "^1.2.1"
 mypy = "^1.10.0"
+networkx = "^3.4.2"  # for src/scripts/experimental/partial_imports_graph.py (Makefile: assets/partial-imports-graph.pdf)
 pandas = "^2.2.3"
 plotly = "^6.0.1"
 psycopg2-binary = "^2.9.10"
@@ -81,8 +83,6 @@ sparql-dataframe = "^0.4"
 sparqlwrapper = "^2.0.0"
 ucumvert = "^0.2.2"
 vulture = "^2.11"
-#networkx = "^3.4.2" # for src/scripts/experimental/partial_imports_graph.py # "^3.4.2" is incompatible with Python 3.9, which this file currently allows
-
 
 [tool.poetry.group.deps.dependencies]
 deptry = "^0.23.0"
@@ -109,20 +109,7 @@ patterns = [
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
 build-backend = "poetry_dynamic_versioning.backend"
 
-
-# scripts should have click clis
-# click parameters/options should be written out with hyphens
-# click parameters/options should use consistent names
-# scripts should be listed here in tool.poetry.scripts
-# use underscores to delimit file name
-# use hyphens to delimit CLI alias
-# scripts/aliases should be illustrated in a Makefile
-# Makefile targets should make use of $< etc for input and $@ for output
-# input and output files should use hyphens as delimiters in their names
-# check usages of these features in other NMDC code before changing
-# be intentional about output: most should go in assets unless its really large or likely to change independently of the schema, like MOngoDB summaries
-# cli entry points should probably all be main or cli unless there's a compelling reason to do otherwise
-
+# For CLI script development guidelines, see CONTRIBUTING.md section "CLI Script Development Guidelines"
 
 [tool.poetry.scripts]
 analyze-mentions-of-ids = "src.scripts.analyze_mentions_of_ids:main"
