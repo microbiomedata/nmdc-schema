@@ -202,7 +202,190 @@ clean:
 	rm -rf docs/*.md
 	rm -rf docs/*.html
 
-include project.Makefile
+###########################################################
+# Schema Release Tracking
+###########################################################
+
+REPO  := microbiomedata/nmdc-schema
+FILE  := nmdc_schema/nmdc_materialized_patterns.yaml
+LATEST_RELEASE_TAG_FILE := local/latest_release_tag.txt
+LATEST_TAG_SCHEMA_FILE   := local/nmdc_schema_last_release.yaml
+
+# Get the tag that belongs to the latest (non-prerelease) GitHub release
+LATEST_TAG = $(shell curl -fsSL https://api.github.com/repos/$(REPO)/releases/latest | jq -r '.tag_name')
+LATEST_TAG_SCHEMA_URL := https://raw.githubusercontent.com/$(REPO)/$(LATEST_TAG)/$(FILE)
+
+.PHONY: $(LATEST_TAG_SCHEMA_FILE) examples-clean
+
+# Rule to fetch the schema file if local/nmdc_schema_last_release.yaml does not exist OR if there is a new release
+$(LATEST_TAG_SCHEMA_FILE): $(LATEST_RELEASE_TAG_FILE)
+	@echo "Checking for schema updates..."
+	@if [ ! -f $@ ]; then \
+		echo "Schema file does not exist. Creating it..."; \
+		curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $@; \
+		echo "$(LATEST_TAG)" > $(LATEST_RELEASE_TAG_FILE); \
+	elif [ "$$(cat $(LATEST_RELEASE_TAG_FILE))" != "$(LATEST_TAG)" ]; then \
+		echo "New release detected ($(LATEST_TAG)). Downloading schema..."; \
+		curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $@; \
+		echo "$(LATEST_TAG)" > $(LATEST_RELEASE_TAG_FILE); \
+	else \
+		echo "Local copy of schema is already up to date with release $(LATEST_TAG)."; \
+	fi
+
+# Rule to store the latest release tag locally
+$(LATEST_RELEASE_TAG_FILE):
+	@if [ -f $(LATEST_TAG_SCHEMA_FILE) ]; then \
+	echo "ERROR: Tag file is missing. Recreating release tag and removing local schema file..."; \
+		rm -f $(LATEST_TAG_SCHEMA_FILE); \
+	fi
+	@echo "Creating release tag file..."
+	@curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $(LATEST_TAG_SCHEMA_FILE)
+	@echo "$(LATEST_TAG)" > $@
+	@echo "Release tag file created with tag: $(LATEST_TAG)"
+
+###########################################################
+# Example Data Validation
+###########################################################
+
+examples-clean:
+	rm -rf examples/output
+
+examples/output: nmdc_schema/nmdc_materialized_patterns.yaml
+	mkdir -p $@
+	$(RUN) linkml run-examples \
+		--schema $< \
+		--input-directory src/data/valid \
+		--counter-example-input-directory src/data/invalid \
+		--output-directory $@ > $@/README.md
+
+examples/output/Biosample-exhaustive-pretty-sorted.yaml: src/data/valid/Database-interleaved.yaml
+	$(RUN) pretty-sort-yaml \
+		-i $< \
+		-o $@
+
+###########################################################
+# Schema Analysis and Reporting
+###########################################################
+
+local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml
+	mkdir -p $(@D) # create parent directory
+	$(RUN) linkml2schemasheets-template \
+		--source-path $< \
+		--output-path $@ \
+		--debug-report-path $@.debug.txt \
+		--log-file $@.log.txt \
+		--report-style exhaustive
+
+local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
+	$(RUN) slot-range-type-reporter \
+		--schema $< \
+		--output $@ \
+		--schema-class Biosample
+
+local/biosamples-per-study.txt:
+	$(RUN) report-biosamples-per-study \
+		--api-server api \
+		--max-page-size 10000 > $@
+
+local/gold-study-ids.json:
+	curl -X 'GET' \
+		--output $@ \
+		'https://api.microbiomedata.org/nmdcschema/study_set?max_page_size=999&projection=id%2Cgold_study_identifiers' \
+		-H 'accept: application/json'
+
+local/nmdc-no-use-native-uris.owl.ttl: src/schema/nmdc.yaml
+	$(RUN) linkml generate owl --no-use-native-uris $< > $@
+
+local/nmdc_materialized.ttl: src/schema/nmdc.yaml
+	$(RUN) schema-view-relation-graph \
+		--schema $< \
+		--output $@
+
+local/Database-interleaved-class-count.tsv: src/data/valid/Database-interleaved.yaml
+	cat $< | grep ' type: ' | sed 's/.*type: //' | sort | uniq -c | awk '{ OFS="\t"; $$1=$$1; print $$0 }' > $@
+
+local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-interleaved-class-count.tsv
+	$(RUN) class-instantiation-counts \
+		--schemasheets-input $(word 1,$^) \
+		--counts-input $(word 2,$^) \
+		--output $@
+
+###########################################################
+# Asset Generation
+###########################################################
+
+assets/check_examples_class_coverage.txt:
+	$(RUN) check-examples-class-coverage \
+		--source_directory src/data/valid \
+		--schema_file src/schema/nmdc.yaml > $@
+
+assets/schema_pattern_linting.txt:
+	$(RUN) schema-pattern-linting \
+ 		--schema-file src/schema/nmdc.yaml > $@
+
+assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
+	$(RUN) linkml2sheets \
+		--output $@ \
+		--schema $< $(word 2,$^)
+
+assets/mentions-of-ids-analysis.txt: src/schema/nmdc.yaml
+	$(RUN) analyze-mentions-of-ids \
+		--schema-file $< 1> $@ 2> $@.log
+
+assets/usages-report.txt: src/schema/nmdc.yaml
+	$(RUN) report-usages \
+		--schema-file $< > $@
+
+assets/element-scrutiny.tsv: nmdc_schema/nmdc_materialized_patterns.yaml
+	$(RUN)  scrutinize-elements \
+		--schema-file $< \
+		--output-file assets/element-scrutiny.tsv
+
+# NCBI mapping process
+assets/ncbi_mappings/ncbi_attribute_mappings.tsv:
+	$(RUN) nmdc-ncbi-mapping create-unmapped-ncbi-mapping-file \
+		--tsv-output $@
+
+assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv: assets/ncbi_mappings/ncbi_attribute_mappings.tsv
+	$(RUN) nmdc-ncbi-mapping exact-term-matching \
+		--tsv-input $< \
+		--tsv-output $@
+	$(RUN) nmdc-ncbi-mapping ignore-import-schema-slots $@
+
+# EXPERIMENTAL
+assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
+	$(RUN) python src/scripts/experimental/partial_imports_graph.py # needs networkx and plotly
+
+###########################################################
+# JSON Collection Generation
+###########################################################
+
+.PHONY: generate-json-collections
+
+generate-json-collections: src/data/valid/Database-interleaved.yaml
+	$(RUN) database-to-json-list-files \
+		--yaml-input $< \
+		--output-dir assets/jsons-for-mongodb
+
+src/data/valid/Database-interleaved-new.yaml: src/schema/nmdc.yaml
+	$(RUN) interleave-yaml \
+		--directory-path src/data/valid \
+		--output-file $@ \
+		--schema-file $<
+
+###########################################################
+# Utility Targets
+###########################################################
+
+.PHONY: filtered-status
+
+filtered-status:
+	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
+		grep -v 'nmdc.py' | grep -v 'examples/output/'
+
+# Include specialized makefiles
+include mixs.Makefile
+include data-validation.Makefile
 
 # custom
 site-clean: clean
