@@ -182,7 +182,6 @@ git-add:
 		nmdc_schema \
 		notebooks \
 		poetry.lock \
-		project.Makefile \
 		project/ \
 		pyproject.toml \
 		src/ \
@@ -384,8 +383,9 @@ filtered-status:
 		grep -v 'nmdc.py' | grep -v 'examples/output/'
 
 # Include specialized makefiles
-include mixs.Makefile
-include data-validation.Makefile
+include makefiles/mixs.Makefile
+include makefiles/data-validation.Makefile
+include makefiles/migrators.Makefile
 
 # custom
 site-clean: clean

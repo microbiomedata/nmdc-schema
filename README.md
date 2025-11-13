@@ -51,9 +51,11 @@ See [MAINTAINERS.md](MAINTAINERS.md) for instructions on using that development 
 
 Makefiles are text files people can use to tell [`make`](https://www.gnu.org/software/make/manual/make.html#Introduction) (a computer program) how it can _make_ things (or—in general—_do_ things). In the world of Makefiles, those _things_ are called _targets_.
 
-This repo contains 2 Makefiles:
-- `Makefile`, based on the generic Makefile from the [LinkML cookiecutter](https://github.com/linkml/linkml-project-cookiecutter)
-- `project.Makefile`, which contains _targets_ that are specific to this project
+This repo contains specialized makefiles organized by concern:
+- `Makefile` - Core schema development, building, testing, and documentation (based on [LinkML cookiecutter](https://github.com/linkml/linkml-project-cookiecutter))
+- `makefiles/mixs.Makefile` - MIxS schema import and regeneration pipeline
+- `makefiles/data-validation.Makefile` - Production data validation workflows (MongoDB, RDF, SPARQL)
+- `makefiles/migrators.Makefile` - Migration framework (developing and running schema migrations)
 
 Here's an example of using `make` in this repo:
 
@@ -61,7 +63,7 @@ Here's an example of using `make` in this repo:
 # Deletes all files in `examples/output`.
 make examples-clean
 ```
-> The `examples-clean` _target_ is defined in the `project.Makefile`. In this repo, the `Makefile` `include`s the `project.Makefile`. As a result, `make` has access to the _targets_ defined in both files.
+> The `examples-clean` _target_ is defined in the main `Makefile`. The root `Makefile` `include`s the specialized makefiles in `makefiles/`, so `make` has access to _targets_ defined in all of them.
 
 ## Data downloads
 

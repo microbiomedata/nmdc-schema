@@ -3,7 +3,7 @@
 ###########################################################
 #
 # Purpose: Validate production MongoDB data against the schema using
-#          semantic web tools (RDF, Jena, SPARQL) and migration tools
+#          semantic web tools (RDF, Jena, SPARQL) and migration workflows
 #
 # Requirements:
 #   - 32GB+ RAM (MongoDB dumps are large)
@@ -18,9 +18,11 @@
 # Documentation: See DATA-VALIDATION.md for detailed setup instructions
 #
 # Main workflows:
-#   1. API-based validation: test-migrator-on-database
-#   2. MongoDB-based RDF: make-rdf, pure-export-and-validate
-#   3. Migration testing: migration-doctests, migrator, run-migrator
+#   1. API-based validation with migrations: test-migrator-on-database
+#   2. MongoDB-based RDF conversion: make-rdf, pure-export-and-validate
+#
+# Note: For migration development tools (migration-doctests, migrator,
+#       run-migrator), see makefiles/migrators.Makefile
 #
 ###########################################################
 
@@ -197,45 +199,6 @@ local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_dat
 	$(RUN) date-created-blank-node > local/date_created_blank_node.ttl
 	cat $^ local/date_created_blank_node.ttl > $@
 	rm local/date_created_blank_node.ttl
-
-###########################################################
-# Migration Framework
-###########################################################
-
-.PHONY: migration-doctests migrator run-migrator
-
-# Runs all doctests defined within the migrator modules, adapters, and CLI scripts.
-#
-# To run in non-verbose mode:
-# ```
-# $ make migration-doctests DOCTEST_OPT=''
-# ```
-DOCTEST_OPT ?= -v
-migration-doctests: nmdc_schema/nmdc_materialized_patterns.yaml
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/*.py
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/partials/**/*.py
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/adapters/*.py
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/cli/*.py
-
-# Generates a migrator skeleton for the specified schema versions.
-# Note: `create-migrator` is a Poetry script registered in `pyproject.toml`.
-migrator:
-	$(RUN) create-migrator
-
-# Runs a specific migrator against MongoDB
-# Usage: make run-migrator MIGRATOR=migrator_from_11_9_1_to_11_10_0 [ACTION=rollback|commit]
-# The migrator now resides in: nmdc_schema/migrators/partials/migrator_from_11_9_1_to_11_10_0/
-# MongoDB connection details are read from .env file or environment variables
-MIGRATOR ?= migrator_from_11_9_1_to_11_10_0
-ACTION ?=
-run-migrator:
-	@if [ -z "$(MIGRATOR)" ]; then \
-		echo "Error: MIGRATOR parameter is required"; \
-		echo "Usage: make run-migrator MIGRATOR=migrator_from_11_9_1_to_11_10_0 [ACTION=rollback|commit]"; \
-		echo "MongoDB connection details are read from .env file or environment variables"; \
-		exit 1; \
-	fi
-	$(RUN) run-migrator $(MIGRATOR) $(if $(ACTION),$(ACTION))
 
 ###########################################################
 # Utility Targets

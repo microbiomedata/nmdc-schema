@@ -121,7 +121,12 @@ how to deploy a test version of the schema documentation. This requires some bas
 
  - Contributors should be comfortable running makefile targets, like `squeaky-clean`, `all`, `test`
  - Anyone who is involved in writing migrations or otherwise checking data from MongoDB against the schema should be comfortable running make `make-rdf`.
- - The main [Makefile](Makefile) should in general not be edited. Instead, edits should be made to [project.Makefile](project.Makefile) (advanced contributors only)
+ - The build system is organized into specialized makefiles:
+   - [Makefile](Makefile) - Core schema development, building, testing, documentation
+   - [makefiles/mixs.Makefile](makefiles/mixs.Makefile) - MIxS schema import and regeneration
+   - [makefiles/data-validation.Makefile](makefiles/data-validation.Makefile) - Production data validation workflows
+   - [makefiles/migrators.Makefile](makefiles/migrators.Makefile) - Migration framework
+ - Advanced contributors may need to edit these specialized makefiles when adding new build targets, validation workflows, or migration tools
 
 #### LinkML Linting
 
@@ -167,7 +172,9 @@ For maintainers working with production MongoDB data validation using RDF/SPARQL
 
 ### Making Releases
 
-TODO: Add to this section later
+The release process for nmdc-schema is documented in the [NMDC Infrastructure Administration repository](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md).
+
+**Important:** Generated files in `nmdc_schema/` (such as `nmdc.py`, `nmdc-pydantic.py`, `nmdc_materialized_patterns.yaml`) should only be committed during the release process, not in regular PRs. These files are regenerated from the source schema during releases.
 
 [about-branches]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
 [about-issues]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
