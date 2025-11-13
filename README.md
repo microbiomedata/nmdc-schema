@@ -65,6 +65,70 @@ make examples-clean
 ```
 > The `examples-clean` _target_ is defined in the main `Makefile`. The root `Makefile` `include`s the specialized makefiles in `makefiles/`, so `make` has access to _targets_ defined in all of them.
 
+## Additional Workflows
+
+### Units Analysis
+
+The `units/` directory contains tools for analyzing and generating `storage_units` annotations for schema slots. This is a specialized maintainer workflow for ensuring UCUM-compliant unit metadata.
+
+See [units/docs/README.md](units/docs/README.md) for:
+- Schema-based units extraction
+- UCUM conversion and validation
+- Annotation generation
+
+**Who needs this**: Maintainers working on units metadata standardization
+**Who doesn't**: Contributors working on schema definitions
+
+### Analysis Notebooks
+
+The `notebooks/` directory contains Jupyter notebooks for exploring schema structure and usage patterns:
+- `find-ControlledTermValue-usages.ipynb` - Locate controlled term value usage
+- `mongo_doc_top_slot_usage_counts.ipynb` - MongoDB slot usage statistics
+- `schema-view-based-documentation.ipynb` - Documentation generation exploration
+- And others
+
+**Who needs this**: Contributors analyzing schema patterns and data usage
+**Who doesn't**: Contributors making straightforward schema edits
+
+### SSSOM Mappings
+
+The `sssom/` directory contains ontology mapping files in [SSSOM format](https://mapping-commons.github.io/sssom/):
+- `gold-to-mixs.sssom.tsv` - Mappings from GOLD database terms to MIxS standard terms
+
+These mappings are packaged with schema releases in `nmdc_schema/`.
+
+## Repository Structure
+
+```
+nmdc-schema/
+├── src/
+│   ├── schema/          # LinkML schema definitions (source of truth)
+│   ├── data/            # Example and test data
+│   ├── docs/            # Source documentation (published to docs/)
+│   └── scripts/         # Utility scripts
+├── nmdc_schema/         # Generated Python package (release artifacts only)
+├── project/             # Generated schema artifacts (JSON Schema, OWL, etc.)
+├── docs/                # Generated documentation (MkDocs output)
+├── tests/               # pytest test suite
+├── assets/              # Static assets for schema generation
+│   └── other_mixs_yaml_files/  # NMDC-specific MIxS customizations
+├── makefiles/           # Specialized build workflows
+│   ├── mixs.Makefile              # MIxS import pipeline
+│   ├── data-validation.Makefile   # MongoDB/RDF/SPARQL validation
+│   └── migrators.Makefile         # Migration framework
+├── units/               # Units analysis workflow (see units/docs/)
+├── notebooks/           # Jupyter notebooks for schema analysis
+├── sssom/               # Ontology mapping files (SSSOM format)
+├── examples/            # Schema usage examples
+├── utils/               # Build system utilities
+└── local/               # Temporary/generated files (gitignored)
+```
+
+**Key directories**:
+- **Source files** (`src/`, `assets/`): Edit these
+- **Generated files** (`nmdc_schema/`, `project/`, `docs/`): Don't commit except during releases
+- **Specialized workflows** (`units/`, `notebooks/`, `makefiles/`): See individual READMEs
+
 ## Data downloads
 
 The NMDC's metadata about biosamples, studies, bioinformatics workflows, etc. can be obtained from our nmdc-runtime API.

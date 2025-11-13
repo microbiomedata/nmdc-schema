@@ -174,7 +174,6 @@ git-add:
 		MAINTAINERS.md \
 		Makefile \
 		README.md \
-		RELEASE_NOTES_v7.7.2_to_v7.7.7.md \
 		about.yaml \
 		assets \
 		images \
