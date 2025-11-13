@@ -131,23 +131,19 @@ poetry install --all-extras
 
 This installs everything:
 - Core dependencies (linkml, rdflib, etc.)
-- Dev tools (linters, formatters, testing frameworks)
-- MongoDB support (pymongo, python-dotenv)
+- Dev tools (linters, formatters, testing frameworks, MongoDB support)
 - Jupyter notebooks (jupyter, ipython)
 
 **For specific workflows, install only what you need:**
 
 ```bash
-poetry install                           # Core only
-poetry install --extras dev              # Core + dev tools
-poetry install --extras migrators        # Core + MongoDB support
-poetry install --extras notebooks        # Core + Jupyter support
-poetry install --extras "dev migrators"  # Core + dev + MongoDB
+poetry install                    # Core only
+poetry install --extras dev       # Core + dev tools (includes MongoDB deps)
+poetry install --extras notebooks # Core + Jupyter support
 ```
 
 **Note:** All extras work the same way - nothing is installed by default:
-- `dev` → Development tools (black, pytest, mkdocs, refscan, etc.) - includes pymongo via refscan
-- `migrators` → MongoDB/migration support (pymongo, python-dotenv)
+- `dev` → Development tools (black, pytest, mkdocs, refscan, etc.) - includes pymongo and python-dotenv
 - `notebooks` → Jupyter notebook support (jupyter, ipython)
 
 #### Running Tests and Builds

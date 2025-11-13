@@ -29,8 +29,7 @@ try:
 except ImportError as e:
     raise ImportError(
         "MongoDB support requires optional dependencies. "
-        "Install with: pip install nmdc-schema[migrators] "
-        "or: poetry install --extras migrators"
+        "Install with: poetry install --extras dev"
     ) from e
 
 from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter

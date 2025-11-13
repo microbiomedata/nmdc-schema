@@ -39,26 +39,24 @@ poetry install --all-extras  # Installs everything
 Or install only what you need:
 
 ```bash
-poetry install                           # Core only
-poetry install --extras dev              # Core + dev tools (includes pymongo via refscan)
-poetry install --extras migrators        # Core + MongoDB support
-poetry install --extras notebooks        # Core + Jupyter support
-poetry install --extras "dev migrators"  # Mix and match
+poetry install                    # Core only
+poetry install --extras dev       # Core + dev tools (includes MongoDB deps)
+poetry install --extras notebooks # Core + Jupyter support
+poetry install --all-extras       # Everything
 ```
 
 **All extras are opt-in** - nothing is installed by default.
 
-**Note:** The `dev` extras includes `pymongo` as a transitive dependency of `refscan` (used for documentation visualizations).
+**Note:** The `dev` extras includes `pymongo` (via `refscan` for doc visualizations) and `python-dotenv` (for migration testing).
 
 ### For End Users (pip - Alternative)
 
 If you prefer pip:
 
 ```bash
-pip install nmdc-schema              # Core only
-pip install nmdc-schema[dev]         # +dev tools
-pip install nmdc-schema[migrators]   # +MongoDB support
-pip install nmdc-schema[notebooks]   # +Jupyter support
+pip install nmdc-schema            # Core only
+pip install nmdc-schema[dev]       # +dev tools (includes MongoDB deps)
+pip install nmdc-schema[notebooks] # +Jupyter support
 ```
 
 See [DEVELOPMENT.md](DEVELOPMENT.md) and [CONTRIBUTING.md](CONTRIBUTING.md) for more details.

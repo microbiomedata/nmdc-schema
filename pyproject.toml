@@ -56,6 +56,7 @@ dev = [
     "pylint>=3.2.2",
     "pyroma>=4.2",
     "pytest>=8.4.2",
+    "python-dotenv>=0.21.0",
     "refscan>=0.2.3",
     "requests>=2",
     "ruamel-yaml>=0.18.6",
@@ -68,12 +69,6 @@ dev = [
     "sparqlwrapper>=2.0.0",
     "ucumvert>=0.2.2",
     "vulture>=2.11"
-]
-# MongoDB/migration support - only needed for data managers using migrators framework
-# Install with: poetry install --extras migrators
-migrators = [
-    "pymongo>=4.7.2",
-    "python-dotenv>=0.21.0"
 ]
 # Jupyter notebook support - needed to run notebooks in notebooks/
 # Install with: poetry install --extras notebooks
@@ -101,7 +96,7 @@ linkml-runtime = "^1.9.5"
 pyyaml = "^6"
 rdflib = "^7.4.0"
 # Optional dependencies - all extras are opt-in
-# Install with: poetry install --extras dev (or --extras migrators or --all-extras)
+# Install with: poetry install --extras dev (or --extras notebooks or --all-extras)
 pymongo = {version = "^4.7.2", optional = true}
 python-dotenv = {version = "^0.21.0", optional = true}
 jupyter = {version = ">=1.0.0", optional = true}
@@ -147,11 +142,10 @@ dev = [
     "autopep8", "bandit", "black", "curies", "deptry", "exhaustion-check",
     "fastjsonschema", "flake8", "isort", "jinja2", "mkdocs", "mkdocs-material",
     "mkdocs-mermaid2-plugin", "mkdocs-redirects", "mypy", "pandas", "psycopg2-binary",
-    "pydocstyle", "pylint", "pyroma", "pytest", "refscan", "requests", "ruamel-yaml",
-    "ruff", "schemasheets", "setuptools", "sheets_and_friends", "sparql-burger",
-    "sparql-dataframe", "sparqlwrapper", "ucumvert", "vulture"
+    "pydocstyle", "pylint", "pyroma", "pytest", "python-dotenv", "refscan", "requests",
+    "ruamel-yaml", "ruff", "schemasheets", "setuptools", "sheets_and_friends",
+    "sparql-burger", "sparql-dataframe", "sparqlwrapper", "ucumvert", "vulture"
 ]
-migrators = ["pymongo", "python-dotenv"]
 notebooks = ["jupyter", "ipython"]
 
 [tool.poetry-dynamic-versioning]
