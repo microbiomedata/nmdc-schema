@@ -88,10 +88,7 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 	# may switch source of truth to the MIxS 6.2.2 release candidate
 
 	# First, apply global string replacements using yq (replacing sed)
-	yq eval '(.. | select(. == "quantity value")) |= "QuantityValue" | \
-		(.. | select(tag == "!!str" and . == "string")) |= "TextValue" | \
-		(.. | select(tag == "!!str" and . == "text value")) |= "TextValue"' \
-		$(word 1, $^) > $@
+	yq eval '(.. | select(. == "quantity value")) |= "QuantityValue" | (.. | select(tag == "!!str" and . == "string")) |= "TextValue" | (.. | select(tag == "!!str" and . == "text value")) |= "TextValue"' $(word 1, $^) > $@
 
 	# Then apply all slot-specific transformations from config file
 	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
@@ -101,30 +98,19 @@ local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: local/mixs_regen/mixs_s
 assets/other_mixs_yaml_files/cur_land_use_enum.yaml
 	# inject re-structured cur_land_use_enum
 	#   using '| cat > ' because yq doesn't seem to like redirecting out to a file
-	yq eval-all \
-		'select(fileIndex==0).enums.cur_land_use_enum = select(fileIndex==1).enums.cur_land_use_enum | select(fileIndex==0)' \
-		$^ | cat > $@
+	yq eval-all 'select(fileIndex==0).enums.cur_land_use_enum = select(fileIndex==1).enums.cur_land_use_enum | select(fileIndex==0)' $^ | cat > $@
 
 local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
 assets/other_mixs_yaml_files/TargetGeneEnum.yaml
-	yq eval-all \
-		'select(fileIndex==0).enums.TargetGeneEnum = select(fileIndex==1).enums.TargetGeneEnum | select(fileIndex==0)' \
-		$^ | cat > $@
+	yq eval-all 'select(fileIndex==0).enums.TargetGeneEnum = select(fileIndex==1).enums.TargetGeneEnum | select(fileIndex==0)' $^ | cat > $@
 	yq -i '.slots.target_gene.range = "TargetGeneEnum"' $@
 
 
 local/mixs_regen/mixs_subset_modified_inj_env_triad.yaml: local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml \
 assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 	# Inject all three environment triad tooltips in a single step
-	yq eval-all '\
-		select(fileIndex==0).slots.env_broad_scale.annotations.tooltip = select(fileIndex==1).slots.env_broad_scale.annotations.tooltip | \
-		select(fileIndex==0).slots.env_local_scale.annotations.tooltip = select(fileIndex==1).slots.env_local_scale.annotations.tooltip | \
-		select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | \
-		select(fileIndex==0)' \
-		$^ | cat > $@
+	yq eval-all 'select(fileIndex==0).slots.env_broad_scale.annotations.tooltip = select(fileIndex==1).slots.env_broad_scale.annotations.tooltip | select(fileIndex==0).slots.env_local_scale.annotations.tooltip = select(fileIndex==1).slots.env_local_scale.annotations.tooltip | select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' $^ | cat > $@
 
 local/mixs_regen/mixs_minus_1.yaml: local/mixs_regen/mixs_subset_modified_inj_env_triad.yaml \
 assets/other_mixs_yaml_files/mixs_env_triad_field_slot.yaml
-	yq eval-all \
-		'select(fileIndex==0).slots.mixs_env_triad_field = select(fileIndex==1).slots.mixs_env_triad_field | select(fileIndex==0)' \
-		$^ | cat > $@
+	yq eval-all 'select(fileIndex==0).slots.mixs_env_triad_field = select(fileIndex==1).slots.mixs_env_triad_field | select(fileIndex==0)' $^ | cat > $@
