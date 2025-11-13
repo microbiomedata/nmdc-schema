@@ -59,8 +59,8 @@ click = "^8"
 click-log = "^0.4.0"
 deprecated = "^1"
 jsonschema = "^4"
-linkml = "^1.9.1"
-linkml-runtime = "^1.9.1"
+linkml = "^1.9.5"
+linkml-runtime = "^1.9.5"
 pyyaml = "^6"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
 # Optional dependencies - users must opt-in to install these
