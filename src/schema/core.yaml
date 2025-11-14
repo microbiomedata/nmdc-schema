@@ -38,6 +38,7 @@ prefixes:
   schema: "http://schema.org/"
   wgs84: "http://www.w3.org/2003/01/geo/wgs84_pos#"
   TAXRANK: "http://purl.obolibrary.org/obo/TAXRANK_"
+  SCHEMAORG: "http://schema.org"
 
 
 default_prefix: nmdc
