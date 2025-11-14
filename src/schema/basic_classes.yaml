@@ -493,6 +493,7 @@ classes:
         required: true
       git_url:
         required: true
+        description: The url that points to the exact software repository location used to run a workflow
       has_input:
         required: true
         structured_pattern:
@@ -512,7 +513,6 @@ classes:
         description:  >- 
           The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution,
           this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.
-      git_url: The url that points to the exact software repository location used to run a workflow
         
   ProvenanceMetadata:
     description: Metadata pertaining to how a record was created.
