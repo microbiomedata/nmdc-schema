@@ -508,6 +508,10 @@ classes:
         required: true
       was_informed_by:
         required: true
+      version:
+        description:  >- The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution,
+      this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.
+      git_url: The url that points to the exact software repository location used to run a workflow
         
   ProvenanceMetadata:
     description: Metadata pertaining to how a record was created.
@@ -517,7 +521,11 @@ classes:
       - version
       - source_system_of_record
       - type
-
+    slot_usage:
+      version:
+        description: The version tag of the software used to generate the NMDC metadata record
+      git_url:
+        description: The url of the software repository used to generate the NMDC metadata record
 slots:
   source_system_of_record:
     description: Identifies the system of origin for a record
