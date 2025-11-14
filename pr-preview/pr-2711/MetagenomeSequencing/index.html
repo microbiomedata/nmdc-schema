@@ -433,7 +433,7 @@
 <tr>
 <td><a href="../git_url/">git_url</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>The url that points to the exact github location of a workflow</td>
+<td>The url that points to the exact software repository location used to run a w...</td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
@@ -672,7 +672,8 @@ attributes:
     range: ExecutionResourceEnum
   git_url:
     name: git_url
-    description: The url that points to the exact github location of a workflow.
+    description: The url that points to the exact software repository location used
+      to run a workflow
     examples:
     - value: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1
     - value: https://github.com/microbiomedata/metaMS/blob/master/metaMS/gcmsWorkflow.py
@@ -710,8 +711,8 @@ attributes:
     examples:
     - value: v1.2.0
     from_schema: https://w3id.org/nmdc/nmdc
-    broad_mappings:
-    - NCIT:C182117
+    exact_mappings:
+    - SCHEMAORG:HTTP_version
     rank: 1000
     alias: version
     owner: MetagenomeSequencing

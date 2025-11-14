@@ -342,13 +342,13 @@
 <tr>
 <td><a href="../git_url/">git_url</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The url that points to the exact github location of a workflow</td>
+<td>The url of the software repository used to generate the NMDC metadata record</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../version/">version</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The NMDC release tag for a given workflow release used for data processing</td>
+<td>The version tag of the software used to generate the NMDC metadata record</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -416,6 +416,15 @@ slots:
 - version
 - source_system_of_record
 - type
+slot_usage:
+  version:
+    name: version
+    description: The version tag of the software used to generate the NMDC metadata
+      record
+  git_url:
+    name: git_url
+    description: The url of the software repository used to generate the NMDC metadata
+      record
 class_uri: nmdc:ProvenanceMetadata
 
 </code></pre>
@@ -425,10 +434,20 @@ class_uri: nmdc:ProvenanceMetadata
 <pre><code class="language-yaml">name: ProvenanceMetadata
 description: Metadata pertaining to how a record was created.
 from_schema: https://w3id.org/nmdc/nmdc
+slot_usage:
+  version:
+    name: version
+    description: The version tag of the software used to generate the NMDC metadata
+      record
+  git_url:
+    name: git_url
+    description: The url of the software repository used to generate the NMDC metadata
+      record
 attributes:
   git_url:
     name: git_url
-    description: The url that points to the exact github location of a workflow.
+    description: The url of the software repository used to generate the NMDC metadata
+      record
     examples:
     - value: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1
     - value: https://github.com/microbiomedata/metaMS/blob/master/metaMS/gcmsWorkflow.py
@@ -442,15 +461,13 @@ attributes:
     range: string
   version:
     name: version
-    description: The NMDC release tag for a given workflow release used for data processing.
-      If workflows are processed externally, as denoted by processing_institution,
-      this value represents the best mapping between a processing institution's (e.g.,
-      JGI) workflow metadata and a NMDC tagged release.
+    description: The version tag of the software used to generate the NMDC metadata
+      record
     examples:
     - value: v1.2.0
     from_schema: https://w3id.org/nmdc/nmdc
-    broad_mappings:
-    - NCIT:C182117
+    exact_mappings:
+    - SCHEMAORG:HTTP_version
     rank: 1000
     alias: version
     owner: ProvenanceMetadata

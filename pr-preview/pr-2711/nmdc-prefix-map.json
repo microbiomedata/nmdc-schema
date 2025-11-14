@@ -46,6 +46,7 @@
    "RHEA": "https://bioregistry.io/rhea:",
    "RO": "http://purl.obolibrary.org/obo/RO_",
    "RetroRules": "http://example.org/retrorules/",
+   "SCHEMAORG": "http://example.org/UNKNOWN/SCHEMAORG/",
    "SEED": "https://bioregistry.io/seed:",
    "SIO": "http://semanticscience.org/resource/SIO_",
    "SO": "http://purl.obolibrary.org/obo/SO_",

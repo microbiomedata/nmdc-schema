@@ -489,7 +489,7 @@
 <tr>
 <td><a href="../git_url/">git_url</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>The url that points to the exact github location of a workflow</td>
+<td>The url that points to the exact software repository location used to run a w...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -719,6 +719,8 @@ slot_usage:
     required: true
   git_url:
     name: git_url
+    description: The url that points to the exact software repository location used
+      to run a workflow
     required: true
   has_input:
     name: has_input
@@ -739,6 +741,12 @@ slot_usage:
   was_informed_by:
     name: was_informed_by
     required: true
+  version:
+    name: version
+    description: The NMDC release tag for a given workflow release used for data processing.
+      If workflows are processed externally, as denoted by processing_institution,
+      this value represents the best mapping between a processing institution's (e.g.,
+      JGI) workflow metadata and a NMDC tagged release.
 class_uri: nmdc:WorkflowExecution
 rules:
 - preconditions:
@@ -791,6 +799,8 @@ slot_usage:
     required: true
   git_url:
     name: git_url
+    description: The url that points to the exact software repository location used
+      to run a workflow
     required: true
   has_input:
     name: has_input
@@ -811,6 +821,12 @@ slot_usage:
   was_informed_by:
     name: was_informed_by
     required: true
+  version:
+    name: version
+    description: The NMDC release tag for a given workflow release used for data processing.
+      If workflows are processed externally, as denoted by processing_institution,
+      this value represents the best mapping between a processing institution's (e.g.,
+      JGI) workflow metadata and a NMDC tagged release.
 attributes:
   ended_at_time:
     name: ended_at_time
@@ -841,7 +857,8 @@ attributes:
     range: ExecutionResourceEnum
   git_url:
     name: git_url
-    description: The url that points to the exact github location of a workflow.
+    description: The url that points to the exact software repository location used
+      to run a workflow
     examples:
     - value: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1
     - value: https://github.com/microbiomedata/metaMS/blob/master/metaMS/gcmsWorkflow.py
@@ -879,8 +896,8 @@ attributes:
     examples:
     - value: v1.2.0
     from_schema: https://w3id.org/nmdc/nmdc
-    broad_mappings:
-    - NCIT:C182117
+    exact_mappings:
+    - SCHEMAORG:HTTP_version
     rank: 1000
     alias: version
     owner: WorkflowExecution
