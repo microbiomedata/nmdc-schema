@@ -190,7 +190,7 @@ slots:
     description: >- 
       The version associated with a resource. 
     exact_mappings:
-      - SCHEMAORG:HTTP_version
+      - schema:version
     examples:
       - value: v1.2.0
 
