@@ -603,29 +603,19 @@
 <td>Submission is ready for NMDC review, the submitter cannot edit</td>
 </tr>
 <tr>
-<td>ResubmittedPendingReview</td>
-<td>None</td>
-<td>Submission has been resubmitted after updates</td>
-</tr>
-<tr>
 <td>ApprovedHeld</td>
 <td>None</td>
 <td>Submission has been reviewed and approved</td>
 </tr>
 <tr>
-<td>PendingUserFacility</td>
+<td>ApprovedPendingUserFacility</td>
 <td>None</td>
-<td>Submission has been reviewed and approved</td>
+<td>Submission has been reviewed and approved by NMDC</td>
 </tr>
 <tr>
 <td>UpdatesRequired</td>
 <td>None</td>
 <td>Submission has been reviewed and submitter edits are required for approval</td>
-</tr>
-<tr>
-<td>InProgressUpdate</td>
-<td>None</td>
-<td>NMDC reviewer has reopened submission on behalf of submitter</td>
 </tr>
 <tr>
 <td>Denied</td>
@@ -659,32 +649,22 @@ permissible_values:
     text: SubmittedPendingReview
     description: Submission is ready for NMDC review, the submitter cannot edit.
     title: Submitted - Pending Review
-  ResubmittedPendingReview:
-    text: ResubmittedPendingReview
-    description: Submission has been resubmitted after updates. It is now ready for
-      NMDC review. The submitter cannot edit.
-    title: Resubmitted - Pending review
   ApprovedHeld:
     text: ApprovedHeld
     description: Submission has been reviewed and approved. Information is complete,
       but not yet shared on the data portal. The submitter cannot edit.
     title: Approved - Held
-  PendingUserFacility:
-    text: PendingUserFacility
-    description: Submission has been reviewed and approved. Information is complete,
-      but not yet shared on the data portal. Sample information shared with designated
-      user facility and pending approvals. The submitter cannot edit.
-    title: Pending - Sent to User Facility
+  ApprovedPendingUserFacility:
+    text: ApprovedPendingUserFacility
+    description: Submission has been reviewed and approved by NMDC. Sample information
+      has been shared with designated user facility and is ready for their review.
+      The submitter cannot edit.
+    title: Approved - Sent to User Facility
   UpdatesRequired:
     text: UpdatesRequired
     description: Submission has been reviewed and submitter edits are required for
-      approval. The submitter can reopen and edit the submission.
+      approval. The submitter can edit the submission.
     title: Updates Required
-  InProgressUpdate:
-    text: InProgressUpdate
-    description: NMDC reviewer has reopened submission on behalf of submitter. The
-      submitter is currently editing the submission.
-    title: In Progress - Update/Addition
   Denied:
     text: Denied
     description: Submission has been reviewed and denied. The submitter cannot edit.
