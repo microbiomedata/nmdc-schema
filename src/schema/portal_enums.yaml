@@ -46,21 +46,15 @@ enums:
       SubmittedPendingReview:
         title: Submitted - Pending Review
         description: Submission is ready for NMDC review, the submitter cannot edit. 
-      ResubmittedPendingReview:
-        title: Resubmitted - Pending review
-        description: Submission has been resubmitted after updates. It is now ready for NMDC review. The submitter cannot edit. 
       ApprovedHeld:
         title: Approved - Held
         description: Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. The submitter cannot edit.  
-      PendingUserFacility:
-        title: Pending - Sent to User Facility
-        description: Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. The submitter cannot edit.
+      ApprovedPendingUserFacility:
+        title: Approved - Sent to User Facility
+        description: Submission has been reviewed and approved by NMDC. Sample information has been shared with designated user facility and is ready for their review. The submitter cannot edit.
       UpdatesRequired:
         title: Updates Required
-        description: Submission has been reviewed and submitter edits are required for approval. The submitter can reopen and edit the submission.
-      InProgressUpdate:
-        title: In Progress - Update/Addition
-        description: NMDC reviewer has reopened submission on behalf of submitter. The submitter is currently editing the submission.
+        description: Submission has been reviewed and submitter edits are required for approval. The submitter can edit the submission.
       Denied:
         title: Denied
         description: Submission has been reviewed and denied. The submitter cannot edit.
