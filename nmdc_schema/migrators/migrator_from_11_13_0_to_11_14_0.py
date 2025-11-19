@@ -1,113 +1,35 @@
-from linkml.validator import Validator
-
 from nmdc_schema.migrators.migrator_base import MigratorBase
-import sys
-from pathlib import Path
-from nmdc_schema.migrators.helpers import create_schema_view, get_classes_with_slots_by_range, \
-    get_database_collections_for_class
-from nmdc_schema import NmdcSchemaValidationPlugin
-
-project_root = Path(__file__).parent.parent.parent
-sys.path.insert(0, str(project_root))
+from nmdc_schema.migrators.partials.migrator_from_11_13_0_to_11_14_0 import (
+    get_migrator_classes,
+)
 
 
 class Migrator(MigratorBase):
-    r"""A check-only migrator that raises an exception if any QuantityValue's has_unit slot
-    is not valid against the slot's storage_unit or UnitEnum constraints."""
+    r"""
+    Migrates a database between two schemas.
+    """
 
-    _from_version = '11.13.0'
-    _to_version = '11.14.0'
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.schema_view = create_schema_view()
-        self.validator = Validator(
-            self.schema_view.schema,
-            # This is intentionally *only* using the NMDC plugin, because this migrator is *only*
-            # concerned with validating the QuantityValue-related constraints that the plugin
-            # implements.
-            validation_plugins=[
-                NmdcSchemaValidationPlugin()
-            ]
-        )
+    _from_version = "11.13.0"
+    _to_version = "11.14.0"
 
     def upgrade(self, commit_changes: bool = False) -> None:
-        r'''
+        r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
-        '''
 
-        # Get the schema classes which have slots with range QuantityValue
-        classes_with_qv_slots = get_classes_with_slots_by_range(self.schema_view, 'QuantityValue')
+        This migrator uses partial migrators. It runs them in the order in which they are returned by
+        the `get_migrator_classes` function.
+        
+        Args:
+            commit_changes: If True, commits the changes. If False (default), performs a dry run or rollback.
+        """
 
-        # Get the Database collection names that can hold these classes
-        eligible_collection_names = set()
-        for class_name in classes_with_qv_slots.keys():
-            collection_names = get_database_collections_for_class(self.schema_view, class_name)
-            eligible_collection_names.update(collection_names)
-
-        # Apply migrator through collections
-        self.logger.info("Checking QuantityValue units against UnitEnum and storage_units constraints")
-        for collection_name in eligible_collection_names:
-            self.logger.info(f"  Checking collection '{collection_name}'")
-            self.adapter.do_for_each_document(collection_name, self.confirm_units_fit_unitenum_and_storage_units)
-
-    def confirm_units_fit_unitenum_and_storage_units(self, document: dict) -> None:
-        r'''
-        Raise an exception if the QuantityValue's has_unit slot is not valid against slot's storage_unit or UnitEnum constraints.
-
-        >>> m = Migrator()
-
-        # Test: valid QuantityValue with proper units in biosample
-        >>> valid_biosample = {
-        ...     "id": "test1",
-        ...     "type": "nmdc:Biosample",
-        ...     "bulk_elect_conductivity": {
-        ...         "type": "nmdc:QuantityValue",
-        ...         "has_unit": "mS/cm",
-        ...         "has_numeric_value": 25.0
-        ...     }
-        ... }
-        >>> m.confirm_units_fit_unitenum_and_storage_units(valid_biosample)  # Should not raise
-
-        # Test: unit not allowed for bulk_elect_conductivity's storage_units
-        >>> invalid_biosample_storage = {
-        ...     "id": "test2",
-        ...     "type": "nmdc:Biosample",
-        ...     "bulk_elect_conductivity": {
-        ...         "type": "nmdc:QuantityValue",
-        ...         "has_unit": "Cel",
-        ...         "has_numeric_value": 25.0
-        ...     }
-        ... }
-        >>> m.confirm_units_fit_unitenum_and_storage_units(invalid_biosample_storage)
-        Traceback (most recent call last):
-            ...
-        ValueError: In test2:
-          QuantityValue at /bulk_elect_conductivity has unit 'Cel' which is not allowed for slot 'bulk_elect_conductivity' (allowed: mS/cm)
-
-        # Test: unit not allowed for substances_volume's storage_units
-        >>> invalid_chem_storage = {
-        ...     "id": "test3",
-        ...     "type": "nmdc:ChemicalConversionProcess",
-        ...     "substances_volume": {
-        ...         "type": "nmdc:QuantityValue",
-        ...         "has_unit": "J/K",  # Wrong unit type for substances_volume
-        ...         "has_numeric_value": 25.0
-        ...     }
-        ... }
-        >>> m.confirm_units_fit_unitenum_and_storage_units(invalid_chem_storage)
-        Traceback (most recent call last):
-            ...
-        ValueError: In test3:
-          QuantityValue at /substances_volume has unit 'J/K' which is not allowed for slot 'substances_volume' (allowed: mL)
-        '''
-
-        document_id = document.get('id', '<unknown id>')
-        document_type = document.get('type')
-        if not document_type:
-            raise ValueError(f"Unable to infer target_class for document with id '{document_id}'")
-        target_class = document_type.replace('nmdc:', '')
-        report = self.validator.validate(document, target_class)
-        if report.results:
-            raise ValueError(f"In {document_id}:\n" + "\n".join("  " + result.message for result in report.results))
+        migrator_classes = get_migrator_classes()
+        num_migrators = len(migrator_classes)
+        for idx, migrator_class in enumerate(migrator_classes):
+            self.logger.info(f"Running migrator {idx + 1} of {num_migrators}")
+            self.logger.debug(
+                f"Migrating from {migrator_class.get_origin_version()} "
+                f"to {migrator_class.get_destination_version()}"
+            )
+            migrator = migrator_class(adapter=self.adapter, logger=self.logger)
+            migrator.upgrade(commit_changes=commit_changes)

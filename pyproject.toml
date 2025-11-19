@@ -149,15 +149,13 @@ schema-pattern-linting = "src.scripts.schema_pattern_linting:main"
 schema-view-relation-graph = "src.scripts.schema_view_relation_graph:cli"
 scrutinize-elements = "src.scripts.scrutinize_elements:process_schema_elements"
 slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
-# Units analysis CLI tools (consolidated in units/ directory)
-units-schema-extract = "units.scripts.schema_extract_preferred_units:main"
-units-schema-convert = "units.scripts.schema_convert_to_ucum:main"
-units-schema-generate = "units.scripts.schema_generate_yq_commands:main"
-units-testdata-extract = "units.scripts.testdata_extract_quantity_values:main"
-units-testdata-check = "units.scripts.testdata_check_has_unit:main"
-units-ucum-validate = "units.scripts.ucum_validate_units:main"
-units-mongodb-analyze = "units.scripts.mongodb_analyze_units:main"
-units-schema-extract-slot-unit-pairs = "units.scripts.schema_expand_storage_units:main"
+# Units analysis uses yq queries in units/Makefile (Python scripts removed)
+
+[tool.pytest.ini_options]
+# Only run tests in tests/ directory to match original unittest discover behavior
+# (excludes MongoDB integration tests and other tests outside tests/)
+# Module independence is checked by check_schema_self_containment.py instead
+testpaths = ["tests"]
 
 [tool.deptry]
 extend_exclude = [
