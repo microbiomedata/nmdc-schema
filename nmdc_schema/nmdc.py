@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-29T21:40:26
+# Generation date: 2025-11-18T16:17:17
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -10473,21 +10473,15 @@ class SubmissionStatusEnum(EnumDefinitionImpl):
     SubmittedPendingReview = PermissibleValue(
         text="SubmittedPendingReview",
         description="Submission is ready for NMDC review, the submitter cannot edit.")
-    ResubmittedPendingReview = PermissibleValue(
-        text="ResubmittedPendingReview",
-        description="""Submission has been resubmitted after updates. It is now ready for NMDC review. The submitter cannot edit.""")
     ApprovedHeld = PermissibleValue(
         text="ApprovedHeld",
         description="""Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. The submitter cannot edit.""")
-    PendingUserFacility = PermissibleValue(
-        text="PendingUserFacility",
-        description="""Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. The submitter cannot edit.""")
+    ApprovedPendingUserFacility = PermissibleValue(
+        text="ApprovedPendingUserFacility",
+        description="""Submission has been reviewed and approved by NMDC. Sample information has been shared with designated user facility and is ready for their review. The submitter cannot edit.""")
     UpdatesRequired = PermissibleValue(
         text="UpdatesRequired",
-        description="""Submission has been reviewed and submitter edits are required for approval. The submitter can reopen and edit the submission.""")
-    InProgressUpdate = PermissibleValue(
-        text="InProgressUpdate",
-        description="""NMDC reviewer has reopened submission on behalf of submitter. The submitter is currently editing the submission.""")
+        description="""Submission has been reviewed and submitter edits are required for approval. The submitter can edit the submission.""")
     Denied = PermissibleValue(
         text="Denied",
         description="Submission has been reviewed and denied. The submitter cannot edit.")
