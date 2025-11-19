@@ -24,6 +24,45 @@ sample processing, data generation, workflows, and downstream data objects.
 The NMDC [Introduction to metadata and ontologies](https://microbiomedata.org/introduction-to-metadata-and-ontologies/)
 primer provides some the context for this project.
 
+## Installation
+
+### For Contributors (Poetry - Recommended)
+
+If you're developing the schema or using it in your own projects:
+
+```bash
+git clone https://github.com/microbiomedata/nmdc-schema.git
+cd nmdc-schema
+poetry install --all-extras  # Installs everything
+```
+
+Or install only what you need:
+
+```bash
+poetry install                    # Core only
+poetry install --extras dev       # Core + dev tools (includes MongoDB deps)
+poetry install --extras notebooks # Core + Jupyter support
+poetry install --all-extras       # Everything
+```
+
+**All extras are opt-in** - nothing is installed by default.
+
+**Note:** The `dev` extras includes `pymongo` (via `refscan` for doc visualizations) and `python-dotenv` (for migration testing).
+
+### For End Users (pip - Alternative)
+
+If you prefer pip:
+
+```bash
+pip install nmdc-schema            # Core only
+pip install nmdc-schema[dev]       # +dev tools (includes MongoDB deps)
+pip install nmdc-schema[notebooks] # +Jupyter support
+```
+
+See [DEVELOPMENT.md](DEVELOPMENT.md) and [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
+
+---
+
 The remainder of this page is primary for the internal maintainers and contributors to the NMDC schema
 
 ## Repository Contents Overview
@@ -51,9 +90,11 @@ See [MAINTAINERS.md](MAINTAINERS.md) for instructions on using that development 
 
 Makefiles are text files people can use to tell [`make`](https://www.gnu.org/software/make/manual/make.html#Introduction) (a computer program) how it can _make_ things (or—in general—_do_ things). In the world of Makefiles, those _things_ are called _targets_.
 
-This repo contains 2 Makefiles:
-- `Makefile`, based on the generic Makefile from the [LinkML cookiecutter](https://github.com/linkml/linkml-project-cookiecutter)
-- `project.Makefile`, which contains _targets_ that are specific to this project
+This repo contains specialized makefiles organized by concern:
+- `Makefile` - Core schema development, building, testing, and documentation (based on [LinkML cookiecutter](https://github.com/linkml/linkml-project-cookiecutter))
+- `makefiles/mixs.Makefile` - MIxS schema import and regeneration pipeline
+- `makefiles/data-validation.Makefile` - Production data validation workflows (MongoDB, RDF, SPARQL)
+- `makefiles/migrators.Makefile` - Migration framework (developing and running schema migrations)
 
 Here's an example of using `make` in this repo:
 
@@ -61,7 +102,71 @@ Here's an example of using `make` in this repo:
 # Deletes all files in `examples/output`.
 make examples-clean
 ```
-> The `examples-clean` _target_ is defined in the `project.Makefile`. In this repo, the `Makefile` `include`s the `project.Makefile`. As a result, `make` has access to the _targets_ defined in both files.
+> The `examples-clean` _target_ is defined in the main `Makefile`. The root `Makefile` `include`s the specialized makefiles in `makefiles/`, so `make` has access to _targets_ defined in all of them.
+
+## Additional Workflows
+
+### Units Analysis
+
+The `units/` directory contains tools for analyzing and generating `storage_units` annotations for schema slots. This is a specialized maintainer workflow for ensuring UCUM-compliant unit metadata.
+
+See [units/docs/README.md](units/docs/README.md) for:
+- Schema-based units extraction
+- UCUM conversion and validation
+- Annotation generation
+
+**Who needs this**: Maintainers working on units metadata standardization
+**Who doesn't**: Contributors working on schema definitions
+
+### Analysis Notebooks
+
+The `notebooks/` directory contains Jupyter notebooks for exploring schema structure and usage patterns:
+- `find-ControlledTermValue-usages.ipynb` - Locate controlled term value usage
+- `mongo_doc_top_slot_usage_counts.ipynb` - MongoDB slot usage statistics
+- `schema-view-based-documentation.ipynb` - Documentation generation exploration
+- And others
+
+**Who needs this**: Contributors analyzing schema patterns and data usage
+**Who doesn't**: Contributors making straightforward schema edits
+
+### SSSOM Mappings
+
+The `sssom/` directory contains ontology mapping files in [SSSOM format](https://mapping-commons.github.io/sssom/):
+- `gold-to-mixs.sssom.tsv` - Mappings from GOLD database terms to MIxS standard terms
+
+These mappings are packaged with schema releases in `nmdc_schema/`.
+
+## Repository Structure
+
+```
+nmdc-schema/
+├── src/
+│   ├── schema/          # LinkML schema definitions (source of truth)
+│   ├── data/            # Example and test data
+│   ├── docs/            # Source documentation (published to docs/)
+│   └── scripts/         # Utility scripts
+├── nmdc_schema/         # Generated Python package (release artifacts only)
+├── project/             # Generated schema artifacts (JSON Schema, OWL, etc.)
+├── docs/                # Generated documentation (MkDocs output)
+├── tests/               # pytest test suite
+├── assets/              # Static assets for schema generation
+│   └── other_mixs_yaml_files/  # NMDC-specific MIxS customizations
+├── makefiles/           # Specialized build workflows
+│   ├── mixs.Makefile              # MIxS import pipeline
+│   ├── data-validation.Makefile   # MongoDB/RDF/SPARQL validation
+│   └── migrators.Makefile         # Migration framework
+├── units/               # Units analysis workflow (see units/docs/)
+├── notebooks/           # Jupyter notebooks for schema analysis
+├── sssom/               # Ontology mapping files (SSSOM format)
+├── examples/            # Schema usage examples
+├── utils/               # Build system utilities
+└── local/               # Temporary/generated files (gitignored)
+```
+
+**Key directories**:
+- **Source files** (`src/`, `assets/`): Edit these
+- **Generated files** (`nmdc_schema/`, `project/`, `docs/`): Don't commit except during releases
+- **Specialized workflows** (`units/`, `notebooks/`, `makefiles/`): See individual READMEs
 
 ## Data downloads
 

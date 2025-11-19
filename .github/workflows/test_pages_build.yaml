@@ -1,3 +1,22 @@
+###############################################################################
+# Purpose:
+# --------
+# Builds and previews documentation on pull requests without deploying to
+# production. Catches documentation build errors early in the PR review process.
+#
+# When it runs:
+# -------------
+# - Pull requests (opened, reopened, or synchronized)
+#
+# What it does:
+# -------------
+# - Builds complete documentation site
+# - Deploys preview to temporary gh-pages branch
+# - Provides preview URL in PR for reviewers to see doc changes
+#
+# Status: Important - Helps prevent broken doc deployments
+###############################################################################
+
 name: Preview documentation build
 
 on:
@@ -28,7 +47,7 @@ jobs:
           cache: 'poetry'
 
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --all-extras
 
       # Replace the `0.0.0` placeholder `version` number in various files (per the config in `pyproject.toml`).
       # Reference: https://github.com/mtkennerly/poetry-dynamic-versioning/blob/master/README.md#command-line-mode
