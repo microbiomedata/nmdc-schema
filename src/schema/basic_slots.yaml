@@ -1040,14 +1040,6 @@ enums:
     permissible_values:
       pass: { }
       fail: { }
-  #      accepted: { }
-  #      archived: { }
-  #      deleted: { }
-  #      draft: { }
-  #      rejected: { }
-  #      submitted: { }
-  #      superseded: { }
-  #      withdrawn: { }
   
   NucleotideSequencingEnum:
     permissible_values:
