@@ -850,6 +850,7 @@ classes:
       - ecosystem_type
       - ecosystem_subtype
       - specific_ecosystem
+      - ecosystem_path_id
 
       ## GOLD specific fields
       - add_date
