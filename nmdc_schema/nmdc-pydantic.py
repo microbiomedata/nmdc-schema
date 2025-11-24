@@ -3422,25 +3422,17 @@ class SubmissionStatusEnum(str, Enum):
     """
     Submission is ready for NMDC review, the submitter cannot edit.
     """
-    Resubmitted___Pending_review = "ResubmittedPendingReview"
-    """
-    Submission has been resubmitted after updates. It is now ready for NMDC review. The submitter cannot edit.
-    """
     Approved___Held = "ApprovedHeld"
     """
     Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. The submitter cannot edit.
     """
-    Pending___Sent_to_User_Facility = "PendingUserFacility"
+    Approved___Sent_to_User_Facility = "ApprovedPendingUserFacility"
     """
-    Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. The submitter cannot edit.
+    Submission has been reviewed and approved by NMDC. Sample information has been shared with designated user facility and is ready for their review. The submitter cannot edit.
     """
     Updates_Required = "UpdatesRequired"
     """
-    Submission has been reviewed and submitter edits are required for approval. The submitter can reopen and edit the submission.
-    """
-    In_Progress___UpdateSOLIDUSAddition = "InProgressUpdate"
-    """
-    NMDC reviewer has reopened submission on behalf of submitter. The submitter is currently editing the submission.
+    Submission has been reviewed and submitter edits are required for approval. The submitter can edit the submission.
     """
     Denied = "Denied"
     """
@@ -10196,8 +10188,7 @@ class Biosample(Sample):
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit',
                                             'value': 'gram of air, kilogram of air'},
-                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
-                                                    'value': 'mixs_inconsistent'}},
+                         'storage_units': {'tag': 'storage_units', 'value': 'g/kg'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': '15 per kilogram of air'}],
          'is_a': 'core field',
@@ -10686,8 +10677,7 @@ class Biosample(Sample):
                                             'value': 'measurement value'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'},
                          'preferred_unit': {'tag': 'preferred_unit', 'value': 'meter'},
-                         'units_alignment_excuse': {'tag': 'units_alignment_excuse',
-                                                    'value': 'complex_unit'}},
+                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': ''}],
          'is_a': 'core field',
@@ -11455,8 +11445,7 @@ class Biosample(Sample):
          'slot_group': 'Sample ID',
          'string_serialization': '{text}:{text}'} })
     bulk_elect_conductivity: Optional[QuantityValue] = Field(default=None, title="bulk electrical conductivity", description="""Electrical conductivity is a measure of the ability to carry electric current, which is mostly dictated by the chemistry of and amount of water.""", json_schema_extra = { "linkml_meta": {'alias': 'bulk_elect_conductivity',
-         'annotations': {'units_alignment_excuse': {'tag': 'units_alignment_excuse',
-                                                    'value': 'pending_analysis'}},
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mS/cm'}},
          'comments': ['Provide the value output of the field instrument.'],
          'domain_of': ['Biosample'],
          'examples': [{'description': 'The conductivity measurement was 0.017 '
@@ -13575,8 +13564,7 @@ class SubSamplingProcess(MaterialProcessing):
                                    'name': 'volume'}}})
 
     container_size: Optional[QuantityValue] = Field(default=None, description="""The volume of the container an analyte is stored in or an activity takes place in""", json_schema_extra = { "linkml_meta": {'alias': 'container_size',
-         'annotations': {'units_alignment_excuse': {'tag': 'units_alignment_excuse',
-                                                    'value': 'pending_analysis'}},
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mL'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['SubSamplingProcess', 'FiltrationProcess']} })
     contained_in: Optional[ContainerCategoryEnum] = Field(default=None, description="""A type of container.""", json_schema_extra = { "linkml_meta": {'alias': 'contained_in',
@@ -13985,8 +13973,7 @@ class FiltrationProcess(MaterialProcessing):
          'domain_of': ['FiltrationProcess'],
          'list_elements_ordered': True} })
     container_size: Optional[QuantityValue] = Field(default=None, description="""The volume of the container an analyte is stored in or an activity takes place in""", json_schema_extra = { "linkml_meta": {'alias': 'container_size',
-         'annotations': {'units_alignment_excuse': {'tag': 'units_alignment_excuse',
-                                                    'value': 'pending_analysis'}},
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mL'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['SubSamplingProcess', 'FiltrationProcess']} })
     filter_material: Optional[str] = Field(default=None, description="""A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained.""", json_schema_extra = { "linkml_meta": {'alias': 'filter_material',
@@ -14002,8 +13989,7 @@ class FiltrationProcess(MaterialProcessing):
                       '(0.45−0.8 μm are commonly employed).'],
          'domain_of': ['FiltrationProcess']} })
     filter_pore_size: Optional[QuantityValue] = Field(default=None, description="""A quantitative or qualitative measurement of the physical dimensions of the pores in a material.""", json_schema_extra = { "linkml_meta": {'alias': 'filter_pore_size',
-         'annotations': {'units_alignment_excuse': {'tag': 'units_alignment_excuse',
-                                                    'value': 'pending_analysis'}},
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'um'}},
          'domain_of': ['FiltrationProcess']} })
     filtration_category: Optional[str] = Field(default=None, description="""The type of conditioning applied to a filter, device, etc.""", json_schema_extra = { "linkml_meta": {'alias': 'filtration_category', 'domain_of': ['FiltrationProcess']} })
     is_pressurized: Optional[bool] = Field(default=None, description="""Whether or not pressure was applied to a thing or process.""", json_schema_extra = { "linkml_meta": {'alias': 'is_pressurized', 'domain_of': ['FiltrationProcess']} })
@@ -14599,8 +14585,7 @@ class ChemicalConversionProcess(MaterialProcessing):
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment']} })
     substances_volume: Optional[QuantityValue] = Field(default=None, description="""The volume of the combined substances that was included in a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'alias': 'substances_volume',
-         'annotations': {'units_alignment_excuse': {'tag': 'units_alignment_excuse',
-                                                    'value': 'pending_analysis'}},
+         'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mL'}},
          'domain_of': ['ChemicalConversionProcess']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
