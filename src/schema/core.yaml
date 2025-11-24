@@ -340,8 +340,6 @@ classes:
       - biospecimen
     description: >-
       Biological source material which can be characterized by an experiment.
-    notes:
-      - could add GOLD and EBI's biosample definitions to the alt_descriptions?
     alt_descriptions:
       embl.ena:
         A sample contains information about the sequenced source material.
