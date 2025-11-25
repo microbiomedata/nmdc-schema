@@ -1,9 +1,14 @@
 import unittest
 from typing import Optional
 
-# TODO: pymongo is used here, but it is not listed as a production dependency of nmdc-schema (only as a dev-dependency).
-from pymongo import MongoClient, timeout
-from pymongo.database import Database
+try:
+    from pymongo import MongoClient, timeout
+    from pymongo.database import Database
+except ImportError as e:
+    raise ImportError(
+        "MongoDB support requires optional dependencies. "
+        "Install with: poetry install --extras dev"
+    ) from e
 
 from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 

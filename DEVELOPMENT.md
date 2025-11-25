@@ -129,6 +129,39 @@ Here's how you can instantiate the development environment on your computer.
 
 ---
 
+## Configuration Files
+
+### about.yaml
+
+The `about.yaml` file is a central configuration file inherited from the [LinkML cookiecutter template](https://github.com/linkml/linkml-project-cookiecutter). It makes the build system reusable across different LinkML projects without hardcoding project-specific values.
+
+**Purpose**: Provides metadata that the Makefile reads dynamically using `utils/get-value.sh`.
+
+**Key fields**:
+- `name`: Project name (→ `SCHEMA_NAME` variable, Python package name)
+- `source_schema_path`: Path to main schema file (→ `SOURCE_SCHEMA_PATH` variable)
+- `author`: Project author/maintainer (metadata only)
+- `description`: Project description (metadata only)
+
+**Example usage in Makefile**:
+```makefile
+SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
+SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
+```
+
+**Note**: The `google_sheet_id` and `google_sheet_tabs` fields are optional LinkML features for Google Sheets integration. NMDC does not use this workflow, so these fields remain empty.
+
+### gen-project-config.yaml
+
+Configuration for `linkml generate project` command, specifying generator-specific arguments:
+```yaml
+generator_args:
+  jsonschema:
+    include_range_class_descendants: true
+```
+
+---
+
 ## Tips
 
 ### Deriving release artifacts

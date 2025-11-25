@@ -1,29 +1,84 @@
-[tool.poetry]
-
-description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
-documentation = "https://microbiomedata.github.io/nmdc-schema/"
-homepage = "https://microbiomedata.github.io/nmdc-schema/"
-keywords = ["NMDC", "schema", "metadata", "microbiome"]
-license = "MIT"
+[project]
 name = "nmdc_schema"
+description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 readme = "README.md"
-repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "0.0.0"
+license = { text = "MIT" }
 authors = [
-    "Bill Duncan <wdduncan@gmail.com>",
-    "Chris Mungall <cjmungall@lbl.gov>",
-    "Mark Andrew Miller <MAM@lbl.gov>",
-    "Patrick Kalita <pkalita@lbl.gov>",
-    "Sujay Patil <spatil@lbl.gov>",
+    { name = "Bill Duncan", email = "wdduncan@gmail.com" },
+    { name = "Chris Mungall", email = "cjmungall@lbl.gov" },
+    { name = "Mark Andrew Miller", email = "MAM@lbl.gov" },
+    { name = "Patrick Kalita", email = "pkalita@lbl.gov" },
+    { name = "Sujay Patil", email = "spatil@lbl.gov" },
 ]
-
+keywords = ["NMDC", "schema", "metadata", "microbiome"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+requires-python = ">=3.10"
+dynamic = ["version", "dependencies"]
+
+[project.urls]
+Homepage = "https://github.com/microbiomedata/nmdc-schema"
+Documentation = "https://microbiomedata.github.io/nmdc-schema/"
+Repository = "https://github.com/microbiomedata/nmdc-schema"
+Changelog = "https://github.com/microbiomedata/nmdc-schema/releases"
+
+[project.optional-dependencies]
+# Development tools - linters, formatters, testing frameworks
+# Install with: poetry install --extras dev
+dev = [
+    "autopep8>=2.2.0",
+    "bandit>=1.7.8",
+    "black>=23.1,<25.0",
+    "curies>=0.9.0",
+    "deptry>=0.23.0",
+    "exhaustion-check>=0.1.1",
+    "fastjsonschema>=2.20.0",
+    "flake8>=7.0.0",
+    "isort>=5.13.2",
+    "jinja2>=3.1.6",
+    "mkdocs>=1.4.2",
+    "mkdocs-material>=9.0.12",
+    "mkdocs-mermaid2-plugin>=0.6.0",
+    "mkdocs-redirects>=1.2.1",
+    "mypy>=1.10.0",
+    "pandas>=2.2.3",
+    "psycopg2-binary>=2.9.10",
+    "pydocstyle>=6.3.0",
+    "pylint>=3.2.2",
+    "pyroma>=4.2",
+    "pytest>=8.4.2",
+    "python-dotenv>=0.21.0",
+    "refscan>=0.2.3",
+    "requests>=2",
+    "ruamel-yaml>=0.18.6",
+    "ruff>=0.4.7",
+    "schemasheets>=0.4.0",
+    "setuptools>=78.1.1",
+    "sheets_and_friends>=0.5.0",
+    "sparql-burger>=1.0.2",
+    "sparql-dataframe>=0.4",
+    "sparqlwrapper>=2.0.0",
+    "ucumvert>=0.2.2",
+    "vulture>=2.11"
+]
+# Jupyter notebook support - needed to run notebooks in notebooks/
+# Install with: poetry install --extras notebooks
+notebooks = [
+    "jupyter>=1.0.0",
+    "ipython>=8.0.0"
 ]
 
+[tool.poetry]
+version = "0.0.0"  # Managed by poetry-dynamic-versioning
 packages = [
     { include = "nmdc_schema" }, # this is the package Poetry would have included by default
     { include = "migrators", from = "nmdc_schema" },
@@ -34,59 +89,64 @@ packages = [
 python = "^3.10"
 click = "^8"
 click-log = "^0.4.0"
-curies = "^0.9.0"
 deprecated = "^1"
-jsonasobj2 = "^1"
 jsonschema = "^4"
-linkml = "^1.9.1"
-linkml-runtime = "^1.9.1"
-pymongo = "^4.7.2"
-python-dotenv = "*"
+linkml = "^1.9.5"
+linkml-runtime = "^1.9.5"
 pyyaml = "^6"
-rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
-requests = "^2"
+rdflib = "^7.4.0"
+# Optional dependencies - all extras are opt-in
+# Install with: poetry install --extras dev (or --extras notebooks or --all-extras)
+pymongo = {version = "^4.7.2", optional = true}
+python-dotenv = {version = "^0.21.0", optional = true}
+jupyter = {version = ">=1.0.0", optional = true}
+ipython = {version = ">=8.0.0", optional = true}
+# Dev dependencies - all marked as optional
+autopep8 = {version = "^2.2.0", optional = true}
+bandit = {version = "^1.7.8", optional = true}
+black = {version = ">=23.1,<25.0", optional = true}
+curies = {version = "^0.9.0", optional = true}
+deptry = {version = "^0.23.0", optional = true}
+exhaustion-check = {version = "^0.1.1", optional = true}
+fastjsonschema = {version = "^2.20.0", optional = true}
+flake8 = {version = "^7.0.0", optional = true}
+isort = {version = "^5.13.2", optional = true}
+jinja2 = {version = "^3.1.6", optional = true}
+mkdocs = {version = "^1.4.2", optional = true}
+mkdocs-material = {version = "^9.0.12", optional = true}
+mkdocs-mermaid2-plugin = {version = "^0.6.0", optional = true}
+mkdocs-redirects = {version = "^1.2.1", optional = true}
+mypy = {version = "^1.10.0", optional = true}
+pandas = {version = "^2.2.3", optional = true}
+psycopg2-binary = {version = "^2.9.10", optional = true}
+pydocstyle = {version = "^6.3.0", optional = true}
+pylint = {version = "^3.2.2", optional = true}
+pyroma = {version = "^4.2", optional = true}
+pytest = {version = "^8.4.2", optional = true}
+refscan = {version = "^0.2.3", optional = true}
+requests = {version = "^2", optional = true}
+ruamel-yaml = {version = "^0.18.6", optional = true}
+ruff = {version = "^0.4.7", optional = true}
+schemasheets = {version = "^0.4.0", optional = true}
+setuptools = {version = "^78.1.1", optional = true}
+sheets_and_friends = {version = "^0.5.0", optional = true}
+sparql-burger = {version = "^1.0.2", optional = true}
+sparql-dataframe = {version = "^0.4", optional = true}
+sparqlwrapper = {version = "^2.0.0", optional = true}
+ucumvert = {version = "^0.2.2", optional = true}
+vulture = {version = "^2.11", optional = true}
 
-[tool.poetry.group.dev.dependencies] # cruft for cookiecutter update could be installed with pipx?
-autopep8 = "^2.2.0"
-bandit = "^1.7.8"
-black = ">=23.1,<25.0"
-exhaustion-check = "^0.1.1" # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
-fastjsonschema = "^2.20.0"
-flake8 = "^7.0.0"
-isort = "^5.13.2"
-jinja2 = "^3.1.6"
-mkdocs = "^1.4.2"
-mkdocs-material = "^9.0.12"
-mkdocs-mermaid2-plugin = "^0.6.0"
-mkdocs-redirects = "^1.2.1"
-mypy = "^1.10.0"
-pandas = "^2.2.3"
-plotly = "^6.0.1"
-psycopg2-binary = "^2.9.10"
-pydocstyle = "^6.3.0"
-pylint = "^3.2.2"
-pyroma = "^4.2"
-python-dotenv = "^0.21.0"
-pytest = "^8.4.2"
-# We use `refscan` to generate diagrams of inter-collection relationships
-# and diagrams of inter-class relationships.
-# Reference: https://github.com/microbiomedata/refscan
-refscan = "^0.2.3"
-ruamel-yaml = "^0.18.6"
-ruff = "^0.4.7"
-schemasheets = "^0.1.24"
-setuptools = "^78.1.1" # for https://github.com/microbiomedata/nmdc-schema/pull/2459
-sheets_and_friends = "^0.5.0" # for do_shuttle (and possibly more)
-sparql-burger = "^1.0.2"
-sparql-dataframe = "^0.4"
-sparqlwrapper = "^2.0.0"
-ucumvert = "^0.2.2"
-vulture = "^2.11"
-#networkx = "^3.4.2" # for src/scripts/experimental/partial_imports_graph.py # "^3.4.2" is incompatible with Python 3.9, which this file currently allows
-
-
-[tool.poetry.group.deps.dependencies]
-deptry = "^0.23.0"
+[tool.poetry.extras]
+# Map extras to optional dependencies
+dev = [
+    "autopep8", "bandit", "black", "curies", "deptry", "exhaustion-check",
+    "fastjsonschema", "flake8", "isort", "jinja2", "mkdocs", "mkdocs-material",
+    "mkdocs-mermaid2-plugin", "mkdocs-redirects", "mypy", "pandas", "psycopg2-binary",
+    "pydocstyle", "pylint", "pyroma", "pytest", "python-dotenv", "refscan", "requests",
+    "ruamel-yaml", "ruff", "schemasheets", "setuptools", "sheets_and_friends",
+    "sparql-burger", "sparql-dataframe", "sparqlwrapper", "ucumvert", "vulture"
+]
+notebooks = ["jupyter", "ipython"]
 
 [tool.poetry-dynamic-versioning]
 # We need poetry-dynamic-versioning to update the version in the src schema file,
@@ -110,24 +170,11 @@ patterns = [
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
 build-backend = "poetry_dynamic_versioning.backend"
 
+# For CLI script development guidelines, see CONTRIBUTING.md section "CLI Script Development Guidelines"
 
-# scripts should have click clis
-# click parameters/options should be written out with hyphens
-# click parameters/options should use consistent names
-# scripts should be listed here in tool.poetry.scripts
-# use underscores to delimit file name
-# use hyphens to delimit CLI alias
-# scripts/aliases should be illustrated in a Makefile
-# Makefile targets should make use of $< etc for input and $@ for output
-# input and output files should use hyphens as delimiters in their names
-# check usages of these features in other NMDC code before changing
-# be intentional about output: most should go in assets unless its really large or likely to change independently of the schema, like MOngoDB summaries
-# cli entry points should probably all be main or cli unless there's a compelling reason to do otherwise
-
-
-[tool.poetry.scripts]
+[project.scripts]
 analyze-mentions-of-ids = "src.scripts.analyze_mentions_of_ids:main"
-anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
+anyuri-strings-to-iris = "src.scripts.anyuri_strings_to_iris:expand_curies"
 check-examples-class-coverage = "src.scripts.check_examples_class_coverage:main"
 class-instantiation-counts = "src.scripts.class_instantiation_counts:process_data"
 create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
@@ -142,7 +189,7 @@ migration-recursion = 'nmdc_schema.migration_recursion:main'
 nmdc-data = "nmdc_schema.nmdc_data:cli" # todo recheck
 nmdc-ncbi-mapping = "src.scripts.ncbi_nmdc_exact_term_matching:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli" # todo recheck
-pure-export = "nmdc_schema.dump_single_modality:cli"
+pure-export = "src.scripts.dump_single_modality:cli"
 report-biosamples-per-study = "src.scripts.report_biosamples_per_study:query_biosamples"
 report-usages = "src.scripts.report_usages:display_slot_usage"
 schema-pattern-linting = "src.scripts.schema_pattern_linting:main"
@@ -159,5 +206,22 @@ testpaths = ["tests"]
 
 [tool.deptry]
 extend_exclude = [
+    "nmdc_schema/nmdc.py",
     "nmdc_schema/nmdc-pydantic.py"
 ]
+# NOTE: nmdc.py and nmdc-pydantic.py are generated files that import transitive dependencies (e.g., jsonasobj2).
+# DEP003 warnings from generated files are expected and can be ignored.
+
+# Ignore optional dependencies (dev tools, notebooks) that are not imported by code
+# Also ignore deps used in generated files (nmdc.py, nmdc-pydantic.py) that we exclude from scanning
+# DEP002 = "defined as a dependency but not used in the codebase"
+per_rule_ignores = { DEP002 = [
+    "rdflib",  # Used in excluded generated file nmdc.py
+    "autopep8", "bandit", "black", "curies", "deptry", "exhaustion-check",
+    "fastjsonschema", "flake8", "isort", "jinja2", "mkdocs", "mkdocs-material",
+    "mkdocs-mermaid2-plugin", "mkdocs-redirects", "mypy", "pandas", "psycopg2-binary",
+    "pydocstyle", "pylint", "pyroma", "pytest", "python-dotenv", "refscan", "requests",
+    "ruamel-yaml", "ruff", "schemasheets", "setuptools", "sheets_and_friends",
+    "sparql-burger", "sparql-dataframe", "sparqlwrapper", "ucumvert", "vulture",
+    "jupyter", "ipython"
+] }

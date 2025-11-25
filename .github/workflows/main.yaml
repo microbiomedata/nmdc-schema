@@ -1,13 +1,59 @@
+###############################################################################
+# Purpose:
+# --------
+# Core CI/CD workflow that runs on every pull request to ensure changes don't
+# break the build or tests. This is the primary quality gate before merging.
+#
+# When it runs:
+# -------------
+# - Every pull request (all file changes)
+#
+# What it does:
+# -------------
+# - Runs full test suite on Python 3.10 and 3.13
+# - Validates dependencies
+# - Runs 'make test' which includes schema generation, examples, and linting
+#
+# Status: CRITICAL - Do not remove
+#
 # Built from:
 # https://docs.github.com/en/actions/guides/building-and-testing-python
+###############################################################################
 
 name: Build and test nmdc-schema
 
 on: [ pull_request ]
 
-jobs:
-  test:
+# Cancel in-progress runs when a new run is triggered on the same PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
+jobs:
+  # Linting runs once (not Python-version-specific)
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+          cache: 'poetry'
+
+      - name: Install dependencies
+        run: poetry install --all-extras
+
+      - name: Run LinkML linting
+        run: make linkml-lint
+
+  # Tests run on multiple Python versions
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -34,13 +80,15 @@ jobs:
       # install dependencies if cache does not exist 
       #----------------------------------------------
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --all-extras
 
       - name: Check project dependencies
         run: make check-dependencies
 
       #----------------------------------------------
-      #              run test suite   
+      #              run test suite
       #----------------------------------------------
       - name: Run tests
-        run: make squeaky-clean all test
+        # Use test-no-lint to avoid running linting twice (once per Python version)
+        # Linting runs separately in the 'lint' job above
+        run: make squeaky-clean test-no-lint

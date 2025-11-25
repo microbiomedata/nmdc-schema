@@ -24,6 +24,7 @@ src/scripts/cachedir/
 # emacs backup files
 *~
 
+# Generated documentation (authored docs go in root as *.md files)
 /docs/
 /project/docs/
 /tmp/

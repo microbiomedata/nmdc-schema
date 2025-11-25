@@ -119,9 +119,79 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
 While all PRs will be automatically checked using GitHub actions, core developers should understand how to run tests locally, as well as
 how to deploy a test version of the schema documentation. This requires some basic Python installation (e.g poetry)
 
+#### Installing Dependencies
+
+**All optional dependencies are now opt-in for consistency.**
+
+For most schema development work (recommended):
+
+```bash
+poetry install --all-extras
+```
+
+This installs everything:
+- Core dependencies (linkml, rdflib, etc.)
+- Dev tools (linters, formatters, testing frameworks, MongoDB support)
+- Jupyter notebooks (jupyter, ipython)
+
+**For specific workflows, install only what you need:**
+
+```bash
+poetry install                    # Core only
+poetry install --extras dev       # Core + dev tools (includes MongoDB deps)
+poetry install --extras notebooks # Core + Jupyter support
+```
+
+**Note:** All extras work the same way - nothing is installed by default:
+- `dev` → Development tools (black, pytest, mkdocs, refscan, etc.) - includes pymongo and python-dotenv
+- `notebooks` → Jupyter notebook support (jupyter, ipython)
+
+#### Running Tests and Builds
+
  - Contributors should be comfortable running makefile targets, like `squeaky-clean`, `all`, `test`
  - Anyone who is involved in writing migrations or otherwise checking data from MongoDB against the schema should be comfortable running make `make-rdf`.
- - The main [Makefile](Makefile) should in general not be edited. Instead, edits should be made to [project.Makefile](project.Makefile) (advanced contributors only)
+ - The build system is organized into specialized makefiles:
+   - [Makefile](Makefile) - Core schema development, building, testing, documentation
+   - [makefiles/mixs.Makefile](makefiles/mixs.Makefile) - MIxS schema import and regeneration
+   - [makefiles/data-validation.Makefile](makefiles/data-validation.Makefile) - Production data validation workflows
+   - [makefiles/migrators.Makefile](makefiles/migrators.Makefile) - Migration framework
+ - Advanced contributors may need to edit these specialized makefiles when adding new build targets, validation workflows, or migration tools
+
+#### LinkML Linting
+
+The schema is automatically linted using LinkML's linter as part of `make all` and `make test`. You can also run linting separately:
+
+```bash
+make linkml-lint
+```
+
+The linter configuration is in `.linkmllint.yaml`. It checks for:
+- Missing descriptions on classes and slots
+- Naming convention compliance (UpperCamelCase for classes, snake_case for slots)
+- Invalid slot_usage references
+- Canonical prefix mappings
+
+Linting warnings do not fail the build but should be addressed when possible. To exclude specific elements from certain rules, add them to the `exclude` list in `.linkmllint.yaml`.
+
+#### Manual GitHub Workflows
+
+The repository includes several GitHub Actions workflows that can be triggered manually from the Actions tab:
+
+**Check Links (`check-links.yaml`)**
+- Purpose: Checks for broken links in documentation
+- When to use: Before releasing documentation updates, or periodically to maintain doc quality
+- How to trigger: Go to Actions → "Check links" → "Run workflow"
+- Output: Creates a GitHub Issue if broken links are found
+
+**Deploy Documentation (`deploy-docs.yaml`)**
+- Purpose: Manually deploy documentation to GitHub Pages
+- When to use: Rarely needed (docs auto-deploy on merge to main)
+- How to trigger: Go to Actions → "Auto-deployment of nmdc-schema Documentation" → "Run workflow"
+- Note: Only use if automatic deployment fails
+
+#### Advanced Data Validation
+
+For maintainers working with production MongoDB data validation using RDF/SPARQL tools, see [DATA-VALIDATION.md](DATA-VALIDATION.md).
 
 > Advanced testing instructions for migrators can be found [here](nmdc_schema/migrators/README.md).
 
@@ -131,7 +201,39 @@ how to deploy a test version of the schema documentation. This requires some bas
 
 ### Making Releases
 
-TODO: Add to this section later
+The release process for nmdc-schema is documented in the [NMDC Infrastructure Administration repository](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md).
+
+**Important:** Generated files in `nmdc_schema/` (such as `nmdc.py`, `nmdc-pydantic.py`, `nmdc_materialized_patterns.yaml`) should only be committed during the release process, not in regular PRs. These files are regenerated from the source schema during releases.
+
+### CLI Script Development Guidelines
+
+When creating or modifying CLI scripts for nmdc-schema, follow these conventions:
+
+**Script Structure:**
+- Scripts should use Click for CLI interfaces
+- Click parameters/options should use hyphens (e.g., `--input-file`, not `--input_file`)
+- Click parameters/options should use consistent naming across scripts
+- Entry points should typically be `main` or `cli` unless there's a compelling reason otherwise
+
+**Naming Conventions:**
+- Python file names: Use underscores as delimiters (e.g., `analyze_mentions_of_ids.py`)
+- CLI alias names: Use hyphens as delimiters (e.g., `analyze-mentions-of-ids`)
+- Input/output file names: Use hyphens as delimiters (e.g., `schema-output.yaml`)
+
+**Integration:**
+- All scripts must be registered in `[tool.poetry.scripts]` in `pyproject.toml`
+- Scripts should be illustrated/documented in a Makefile target where appropriate
+- Check existing NMDC code for usage patterns before changing conventions
+
+**Makefile Integration:**
+- Use `$<` for input files and `$@` for output files in Makefile targets
+- Document which CLI script the target uses
+
+**Output Location:**
+- Most outputs should go in `assets/` unless:
+  - The output is very large
+  - The output is likely to change independently of the schema (e.g., MongoDB summaries)
+  - The output is temporary (use `local/`)
 
 [about-branches]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
 [about-issues]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
