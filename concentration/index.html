@@ -538,6 +538,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -546,15 +555,6 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Annotations
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -609,6 +609,10 @@
 
 <h1 id="slot-concentration">Slot: concentration</h1>
 <p><em>The concentration of a substance used in a process</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an abstract slot and should not be populated directly.</p>
+</div>
 <p>URI: <a href="https://w3id.org/nmdc/concentration">nmdc:concentration</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
@@ -622,22 +626,11 @@
 <ul>
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Union of child units from source_concentration and final_concentration is %|mmol/L|umol/L|mg/L|g/L</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>units_alignment_excuse</td>
-<td>pending_analysis</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -661,13 +654,12 @@
 <details>
 
 <pre><code class="language-yaml">name: concentration
-annotations:
-  units_alignment_excuse:
-    tag: units_alignment_excuse
-    value: pending_analysis
 description: The concentration of a substance used in a process
+comments:
+- Union of child units from source_concentration and final_concentration is %|mmol/L|umol/L|mg/L|g/L
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
+abstract: true
 alias: concentration
 range: QuantityValue
 

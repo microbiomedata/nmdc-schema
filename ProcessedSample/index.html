@@ -379,7 +379,7 @@
 <tr>
 <td><a href="../biomaterial_purity/">biomaterial_purity</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
-<td></td>
+<td>A measure of the purity of a biomaterial sample</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -584,12 +584,10 @@ slot_usage:
 attributes:
   biomaterial_purity:
     name: biomaterial_purity
-    annotations:
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: pending_analysis
+    description: A measure of the purity of a biomaterial sample
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    abstract: true
     alias: biomaterial_purity
     owner: ProcessedSample
     domain_of:

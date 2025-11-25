@@ -557,15 +557,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Annotations
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       Schema Source
@@ -617,6 +608,11 @@
 
 
 <h1 id="slot-biomaterial_purity">Slot: biomaterial_purity</h1>
+<p><em>A measure of the purity of a biomaterial sample</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an abstract slot and should not be populated directly.</p>
+</div>
 <p>URI: <a href="https://w3id.org/nmdc/biomaterial_purity">nmdc:biomaterial_purity</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
@@ -648,21 +644,6 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>units_alignment_excuse</td>
-<td>pending_analysis</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -686,12 +667,10 @@
 <details>
 
 <pre><code class="language-yaml">name: biomaterial_purity
-annotations:
-  units_alignment_excuse:
-    tag: units_alignment_excuse
-    value: pending_analysis
+description: A measure of the purity of a biomaterial sample
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
+abstract: true
 alias: biomaterial_purity
 domain_of:
 - ProcessedSample
