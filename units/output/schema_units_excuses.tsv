@@ -1,15 +1,11 @@
 api	non_ucum_unit
-biomaterial_purity	pending_analysis
 bulk_elect_conductivity	pending_analysis
-concentration	pending_analysis
 container_size	pending_analysis
 efficiency_percent	mixs_inconsistent
-exp_pipe	pending_analysis
 filter_pore_size	pending_analysis
 input_volume	pending_analysis
 inside_lux	mixs_inconsistent
 microbial_biomass	complex_unit
-occup_density_samp	pending_analysis
 rel_humidity_out	mixs_inconsistent
 soil_text_measure	pending_analysis
 specific_humidity	mixs_inconsistent

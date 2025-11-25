@@ -1037,9 +1037,9 @@ enums:
 
 slots:
   biomaterial_purity:
+    abstract: true
     range: QuantityValue
-    annotations:
-      units_alignment_excuse: pending_analysis
+    description: A measure of the purity of a biomaterial sample
 
   generates_calibration:
     range: CalibrationInformation
