@@ -770,6 +770,12 @@ enums:
           - per day
           - daily frequency
         description: The Unified Code for Units of Measure (UCUM) representation of per day (frequency).
+      "1/[sft_i]":
+        title: per square foot
+        aliases:
+          - per square foot
+          - occupants per square foot
+        description: The Unified Code for Units of Measure (UCUM) representation of per square foot.
       "kHz":
         aliases:
           - kHz

@@ -2751,9 +2751,15 @@ slots:
     multivalued: false
   exp_pipe:
     annotations:
-      expected_value: measurement value
-      occurrence: '1'
-      units_alignment_excuse: pending_analysis
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+      storage_units:
+        tag: storage_units
+        value: "1"
     description: The number of exposed pipes in the room
     title: exposed pipes
     examples:
@@ -4376,9 +4382,15 @@ slots:
     multivalued: false
   occup_density_samp:
     annotations:
-      expected_value: measurement value
-      occurrence: '1'
-      units_alignment_excuse: pending_analysis
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+      storage_units:
+        tag: storage_units
+        value: 1/[sft_i]
     description: Average number of occupants at time of sampling per square footage
     title: occupant density at sampling
     examples:

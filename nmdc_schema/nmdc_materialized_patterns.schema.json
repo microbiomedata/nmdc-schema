@@ -15013,11 +15013,9 @@
             "enum": [
                 "InProgress",
                 "SubmittedPendingReview",
-                "ResubmittedPendingReview",
                 "ApprovedHeld",
-                "PendingUserFacility",
+                "ApprovedPendingUserFacility",
                 "UpdatesRequired",
-                "InProgressUpdate",
                 "Denied",
                 "Released"
             ],

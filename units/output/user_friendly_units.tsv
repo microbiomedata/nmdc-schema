@@ -4,6 +4,7 @@ a	years
 umol/m2/s	micromoles per square meter per second
 1	ratio/unitless
 lx	lux
+1/[sft_i]	per square foot
 [NTU]	Nephelometric Turbidity Units
 [FNU]	Formazin Nephelometric Units
 [lb_av]	pounds (avoirdupois)

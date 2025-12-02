@@ -5693,32 +5693,22 @@ enums:
         text: SubmittedPendingReview
         description: Submission is ready for NMDC review, the submitter cannot edit.
         title: Submitted - Pending Review
-      ResubmittedPendingReview:
-        text: ResubmittedPendingReview
-        description: Submission has been resubmitted after updates. It is now ready
-          for NMDC review. The submitter cannot edit.
-        title: Resubmitted - Pending review
       ApprovedHeld:
         text: ApprovedHeld
         description: Submission has been reviewed and approved. Information is complete,
           but not yet shared on the data portal. The submitter cannot edit.
         title: Approved - Held
-      PendingUserFacility:
-        text: PendingUserFacility
-        description: Submission has been reviewed and approved. Information is complete,
-          but not yet shared on the data portal. Sample information shared with designated
-          user facility and pending approvals. The submitter cannot edit.
-        title: Pending - Sent to User Facility
+      ApprovedPendingUserFacility:
+        text: ApprovedPendingUserFacility
+        description: Submission has been reviewed and approved by NMDC. Sample information
+          has been shared with designated user facility and is ready for their review.
+          The submitter cannot edit.
+        title: Approved - Sent to User Facility
       UpdatesRequired:
         text: UpdatesRequired
         description: Submission has been reviewed and submitter edits are required
-          for approval. The submitter can reopen and edit the submission.
+          for approval. The submitter can edit the submission.
         title: Updates Required
-      InProgressUpdate:
-        text: InProgressUpdate
-        description: NMDC reviewer has reopened submission on behalf of submitter.
-          The submitter is currently editing the submission.
-        title: In Progress - Update/Addition
       Denied:
         text: Denied
         description: Submission has been reviewed and denied. The submitter cannot
@@ -6178,9 +6168,9 @@ slots:
   container_size:
     name: container_size
     annotations:
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: pending_analysis
+      storage_units:
+        tag: storage_units
+        value: mL
     description: The volume of the container an analyte is stored in or an activity
       takes place in
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6205,9 +6195,9 @@ slots:
   filter_pore_size:
     name: filter_pore_size
     annotations:
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: pending_analysis
+      storage_units:
+        tag: storage_units
+        value: um
     description: A quantitative or qualitative measurement of the physical dimensions
       of the pores in a material.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6269,9 +6259,9 @@ slots:
   input_volume:
     name: input_volume
     annotations:
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: pending_analysis
+      storage_units:
+        tag: storage_units
+        value: mL
     description: The volume of the input sample.
     from_schema: https://w3id.org/nmdc/nmdc
     range: QuantityValue
@@ -6307,9 +6297,9 @@ slots:
   substances_volume:
     name: substances_volume
     annotations:
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: pending_analysis
+      storage_units:
+        tag: storage_units
+        value: mL
     description: The volume of the combined substances that was included in a ChemicalConversionProcess.
     from_schema: https://w3id.org/nmdc/nmdc
     range: QuantityValue
@@ -6331,9 +6321,9 @@ slots:
   bulk_elect_conductivity:
     name: bulk_elect_conductivity
     annotations:
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: pending_analysis
+      storage_units:
+        tag: storage_units
+        value: mS/cm
     description: Electrical conductivity is a measure of the ability to carry electric
       current, which is mostly dictated by the chemistry of and amount of water.
     title: bulk electrical conductivity
@@ -16676,9 +16666,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: mixs_inconsistent
+      storage_units:
+        tag: storage_units
+        value: g/kg
     description: The mass of water vapour in a unit mass of moist air, usually expressed
       as grams of vapour per kilogram of air, or, in air conditioning, as grains per
       pound.
@@ -17729,9 +17719,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      units_alignment_excuse:
-        tag: units_alignment_excuse
-        value: complex_unit
+      storage_units:
+        tag: storage_units
+        value: m
     description: True vertical depth subsea (TVDSS) of the hydrocarbon resource where
       the original temperature was measured (e.g. 1345 m).
     title: depth (TVDSS) of hydrocarbon resource temperature

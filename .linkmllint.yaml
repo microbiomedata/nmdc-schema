@@ -23,7 +23,6 @@ rules:
       - LibraryPreparation
       - CollectingBiosamplesFromSite
       # Slots missing descriptions
-      - biomaterial_purity
       - has_failure_categorization
       - count
       - sample_collection_year
