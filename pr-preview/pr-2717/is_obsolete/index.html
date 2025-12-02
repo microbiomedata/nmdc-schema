@@ -623,18 +623,13 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../EnvironmentalMaterialTerm/">EnvironmentalMaterialTerm</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../FunctionalAnnotationTerm/">FunctionalAnnotationTerm</a></td>
 <td>Abstract grouping class for any term/descriptor that can be applied to a func...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Pathway/">Pathway</a></td>
-<td>A pathway is a sequence of steps/reactions carried out by an organism or comm...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OntologyClass/">OntologyClass</a></td>
-<td>A representation of class defined in an external ontology</td>
 <td>no</td>
 </tr>
 <tr>
@@ -643,13 +638,18 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EnvironmentalMaterialTerm/">EnvironmentalMaterialTerm</a></td>
-<td></td>
+<td><a href="../OntologyClass/">OntologyClass</a></td>
+<td>A representation of class defined in an external ontology</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../OrthologyGroup/">OrthologyGroup</a></td>
 <td>A set of genes or gene products in which all members are orthologous</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Pathway/">Pathway</a></td>
+<td>A pathway is a sequence of steps/reactions carried out by an organism or comm...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -660,7 +660,7 @@
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>If true (the ontology term is declared obsolete via the ontology source itself),  the term is no longer considered a valid term to use in an annotation at NMDC, and it no longer has ontology_relation_set records.</li>
+<li>If true (the ontology term is declared obsolete via the ontology source itself), the term is no longer considered a valid term to use in an annotation at NMDC, and it no longer has ontology_relation_set records.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -688,9 +688,9 @@
 <pre><code class="language-yaml">name: is_obsolete
 description: A boolean value indicating whether the ontology term is obsolete.
 comments:
-- If true (the ontology term is declared obsolete via the ontology source itself),  the
-  term is no longer considered a valid term to use in an annotation at NMDC, and it
-  no longer has ontology_relation_set records.
+- If true (the ontology term is declared obsolete via the ontology source itself),
+  the term is no longer considered a valid term to use in an annotation at NMDC, and
+  it no longer has ontology_relation_set records.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: is_obsolete
