@@ -128,7 +128,7 @@ gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # 
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 
-test: examples-clean site test-python migration-doctests examples/output gen-linkml-schema-files linkml-lint
+test: examples-clean site test-python migration-doctests examples/output gen-linkml-schema-files
 only-test: examples-clean test-python migration-doctests examples/output
 tests: squeaky-clean all test  # simply for convenience to wrap convention of running these three targets to test locally.
 
@@ -156,8 +156,7 @@ test-python:
 	$(RUN) python -m doctest src/scripts/make_typecode_to_class_map.py
 
 linkml-lint:
-	@mkdir -p local
-	$(RUN) linkml lint -f tsv $(SOURCE_SCHEMA_PATH) 2>&1 | tee local/lint.tsv || true
+	$(RUN) linkml-lint --ignore-warnings $(SOURCE_SCHEMA_PATH)
 
 .PHONY: check-dependencies
 check-dependencies:
