@@ -253,6 +253,14 @@ slots:
     close_mappings:
       - NCIT:C39409
 
+  ecosystem_path_id:
+    range: integer
+    description: A unique id representing the GOLD classifiers associated with a sample.
+    examples:
+      - value: 6026
+    see_also:
+    - https://gold.jgi.doe.gov/ecosystem_classification  
+
   ## GOLD PATHS
   gold_path_field:
     range: string
