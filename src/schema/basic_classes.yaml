@@ -69,18 +69,19 @@ classes:
       between them (the predicate). Because ontologies often have a plethora of relationships/axiom types and can have
       additional metadata on the relationship itself, these kinds of relationships are structured as a class instead
       of a simple set of slots on OntologyClass itself.
-    comments: >-
-      For example, the relationship between 'soil' and 'enriched soil' in the Environmental Ontology (ENVO)
-      is defined by the following axioms: 'enriched soil' subclass_of 'soil', and 'enriched soil' 
-      has_increased_levels_of (some) 'material entity.'  Converting these stat∂ements to OntologyAssociations 
-      so they can be used in the NMDC data stores, the subject of the first axiom or statement, 
-      would be 'soil', the predicate would be 'subclass_of', and the object would be 'enriched soil'.  For the second
-      axiom, the subject would be 'enriched soil', the predicate would be 'has_increased_levels_of', and the object
-      would be 'material entity.' (Note that text labels are used in this example for ease of understanding and 
-      the literal values of subject, predicate, and object in this class will be the id (curie) of the 
-      `OntologyClass` as defined below).  Not all ontology axioms (associations) between terms need to be 
-      ingested into the NMDC data stores.  In general, subclass_of and part_of relationships/axioms are often 
-      good default relations/associations to support ontology browsing in user interfaces.
+    comments:
+      - >-
+        For example, the relationship between 'soil' and 'enriched soil' in the Environmental Ontology (ENVO)
+        is defined by the following axioms: 'enriched soil' subclass_of 'soil', and 'enriched soil'
+        has_increased_levels_of (some) 'material entity.'  Converting these statements to OntologyAssociations
+        so they can be used in the NMDC data stores, the subject of the first axiom or statement,
+        would be 'soil', the predicate would be 'subclass_of', and the object would be 'enriched soil'.  For the second
+        axiom, the subject would be 'enriched soil', the predicate would be 'has_increased_levels_of', and the object
+        would be 'material entity.' (Note that text labels are used in this example for ease of understanding and
+        the literal values of subject, predicate, and object in this class will be the id (curie) of the
+        `OntologyClass` as defined below).  Not all ontology axioms (associations) between terms need to be
+        ingested into the NMDC data stores.  In general, subclass_of and part_of relationships/axioms are often
+        good default relations/associations to support ontology browsing in user interfaces.
     class_uri: nmdc:OntologyRelation
     slots:
       - type
@@ -552,18 +553,19 @@ slots:
     description: Links a resource to another resource that either logically or physically includes it.
   was_informed_by:
     description: The primary DataGeneration subclass that the WorkflowExecution subclass depends on.
-    comments: >-
-      For version 1 of the proteomics workflow there are input files both from the NucleotideSequencing
-      and MassSpectrometry, the MassSpectrometry record is considered the primary class to reference.
+    comments:
+      - >-
+        For version 1 of the proteomics workflow there are input files both from the NucleotideSequencing
+        and MassSpectrometry, the MassSpectrometry record is considered the primary class to reference.
     multivalued: true  
     range: DataGeneration
     narrow_mappings:
       - prov:wasInformedBy
     structured_aliases:
-      was_informed_by:
-        contexts:
-        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+      - literal_form: was_informed_by
         predicate: EXACT_SYNONYM
+        contexts:
+          - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
   principal_investigator:
     aliases:
       - PI
@@ -582,16 +584,20 @@ slots:
     multivalued: true
     inlined_as_list: true
     examples:
-      value:
-        - doi: doi:10.46936/intm.proj.2021.60141/60000423
+      - object:
+          doi: doi:10.46936/intm.proj.2021.60141/60000423
           doi_provider: emsl
           doi_category: award_doi
-        - doi: doi:10.1101/2022.12.12.520098
+        description: An EMSL award DOI.
+      - object:
+          doi: doi:10.1101/2022.12.12.520098
           doi_category: publication_doi
-        - doi: doi:10.48321/D1Z60Q
+        description: A publication DOI.
+      - object:
+          doi: doi:10.48321/D1Z60Q
           doi_category: data_management_plan_doi
           doi_provider: gsc
-      description: Provides a list of two DOIs; specifically, an EMSL award DOI and a publication DOI.
+        description: A data management plan DOI.
   has_credit_associations:
     range: CreditAssociation
     multivalued: true
@@ -638,10 +644,11 @@ slots:
     range: boolean
     description: >-
       A boolean value indicating whether the ontology term is obsolete.
-    comments: >-
-      If true (the ontology term is declared obsolete via the ontology source itself), 
-      the term is no longer considered a valid term to use in an annotation at NMDC,
-      and it no longer has ontology_relation_set records.
+    comments:
+      - >-
+        If true (the ontology term is declared obsolete via the ontology source itself),
+        the term is no longer considered a valid term to use in an annotation at NMDC,
+        and it no longer has ontology_relation_set records.
   is_root:
     range: boolean
     description: >-
@@ -912,18 +919,18 @@ enums:
         see_also: 
          - https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html
         structured_aliases:
-          Illumina NovaSeq S2:
-            contexts:
-            -  https://gold.jgi.doe.gov/
+          - literal_form: Illumina NovaSeq S2
             predicate: NARROW_SYNONYM
-          Illumina NovaSeq S4:
             contexts:
-            -  https://gold.jgi.doe.gov/
-            predicate: NARROW_SYNONYM    
-          Illumina NovaSeq SP:
+              - https://gold.jgi.doe.gov/
+          - literal_form: Illumina NovaSeq S4
+            predicate: NARROW_SYNONYM
             contexts:
-            -  https://gold.jgi.doe.gov/
-            predicate: NARROW_SYNONYM                
+              - https://gold.jgi.doe.gov/
+          - literal_form: Illumina NovaSeq SP
+            predicate: NARROW_SYNONYM
+            contexts:
+              - https://gold.jgi.doe.gov/
 
       novaseq_x:
         aliases:
@@ -962,15 +969,15 @@ enums:
           - Illumina HiSeq 2500
         meaning: OBI:0002002
         structured_aliases:
-          Illumina HiSeq 2500-1TB:
-            contexts:
-            -  https://gold.jgi.doe.gov/
+          - literal_form: Illumina HiSeq 2500-1TB
             predicate: NARROW_SYNONYM
-          Illumina HiSeq 2500-Rapid:
             contexts:
-            -  https://gold.jgi.doe.gov/
-            predicate: NARROW_SYNONYM    
-      
+              - https://gold.jgi.doe.gov/
+          - literal_form: Illumina HiSeq 2500-Rapid
+            predicate: NARROW_SYNONYM
+            contexts:
+              - https://gold.jgi.doe.gov/
+
       hiseq_3000:
         aliases:
           - Illumina HiSeq 3000
@@ -997,11 +1004,11 @@ enums:
           - Illumina MiSeq
         meaning: OBI:0002003
         structured_aliases:
-          Illumina MiSeq:
-            contexts:
-            -  https://gold.jgi.doe.gov/
+          - literal_form: Illumina MiSeq
             predicate: EXACT_SYNONYM
-        
+            contexts:
+              - https://gold.jgi.doe.gov/
+
       nextseq_1000:
         aliases:
           - Illumina NextSeq 1000
@@ -1012,15 +1019,15 @@ enums:
           - NextSeq
           - Illumina NextSeq
         structured_aliases:
-          Illumina NextSeq-HO:
-           contexts:
-            -  https://gold.jgi.doe.gov/
-           predicate: NARROW_SYNONYM
-          Illumina NextSeq-MO:
+          - literal_form: Illumina NextSeq-HO
+            predicate: NARROW_SYNONYM
             contexts:
-            -  https://gold.jgi.doe.gov/
-            predicate: NARROW_SYNONYM              
-      
+              - https://gold.jgi.doe.gov/
+          - literal_form: Illumina NextSeq-MO
+            predicate: NARROW_SYNONYM
+            contexts:
+              - https://gold.jgi.doe.gov/
+
       nextseq_500:
         aliases:
           - NextSeq 500

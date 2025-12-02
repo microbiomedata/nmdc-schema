@@ -156,7 +156,7 @@ test-python:
 	$(RUN) python -m doctest src/scripts/make_typecode_to_class_map.py
 
 linkml-lint:
-	$(RUN) linkml-lint --ignore-warnings $(SOURCE_SCHEMA_PATH)
+	$(RUN) linkml lint nmdc_schema/nmdc_materialized_patterns.yaml
 
 .PHONY: check-dependencies
 check-dependencies:
@@ -308,7 +308,7 @@ check-invalids-for-single-failure:
 	for file in src/data/invalid/*.yaml; do \
 		echo "$$file:"; \
 		target_class=$$(basename $$file | cut -d'-' -f1); \
-		cmd="poetry run linkml-validate --schema nmdc_schema/nmdc_materialized_patterns.yaml --target-class $$target_class $$file"; \
+		cmd="poetry run linkml validate --schema nmdc_schema/nmdc_materialized_patterns.yaml --target-class $$target_class $$file"; \
 		output=$$($$cmd 2>&1 || true); \
 		echo "$$output" | sort | uniq; \
 	done

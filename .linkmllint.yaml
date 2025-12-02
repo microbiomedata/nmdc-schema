@@ -16,7 +16,7 @@ rules:
 
   # Require recommended metamodel slots (like 'description')
   recommended:
-    level: warning
+    level: error
     # include: []  # default: check all elements
     exclude:
       # Classes missing descriptions
@@ -60,7 +60,7 @@ rules:
 
   # Enforce standard naming conventions
   standard_naming:
-    level: warning
+    level: error
     # class_pattern: uppercamel  # default: uppercamel pattern ([A-Z][a-zA-Z0-9]+)
     # slot_pattern: snake  # default: snake pattern ([a-z][_a-z0-9]+)
     permissible_values_upper_case: false  # default: false (snake_case for PVs, not UPPER_SNAKE)
@@ -73,7 +73,7 @@ rules:
 
   # Prefer xsd:integer over xsd:int
   no_xsd_int_type:
-    level: warning
+    level: error
 
   # Check prefix mappings against prefixmaps standards
   # DISABLED: NMDC intentionally uses bioregistry prefixes which differ from
@@ -89,7 +89,7 @@ rules:
 
   # Require titles on all schema elements
   no_empty_title:
-    level: warning
+    level: error
     # exclude_type: []  # default: check all types (class_definition, slot_definition, enum_definition, permissible_value)
 
   # Enforce consistent permissible value formatting
@@ -101,6 +101,6 @@ rules:
 
   # Require exactly one tree_root class
   tree_root_class:
-    level: warning
+    level: error
     root_class_name: Database  # default: Container
     validate_existing_class_name: true  # default: false

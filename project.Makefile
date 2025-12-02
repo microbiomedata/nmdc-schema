@@ -123,7 +123,9 @@ src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_minus_1.yaml
 		del(.slots[] | select(.domain != "MixsCompliantData") | .domain) | \
 		del(.slots.[].name) | \
 		del(.subsets.[].name) | \
-		del(.slots[] | select(.aliases and .title and (.aliases | length == 1) and .aliases[0] == .title) | .aliases)' \
+		del(.slots[] | select(.aliases and .title and (.aliases | length == 1) and .aliases[0] == .title) | .aliases) | \
+		del(.classes) | \
+		del(.settings)' \
 		$(word 2,$^) > $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
