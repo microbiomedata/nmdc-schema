@@ -86,12 +86,15 @@ classes:
       - type
     attributes:
       subject:
+        title: subject
         range: OntologyClass
         required: true
       predicate:
+        title: predicate
         range: OntologyClass
         required: true
       object:
+        title: object
         range: OntologyClass
         required: true
 

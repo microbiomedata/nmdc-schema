@@ -143,6 +143,7 @@ settings:
 classes:
 
   EukEval:
+    title: eukaryotic evaluation
     description: This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.
     comments:
       - A tool like eukCC (https://doi.org/10.1186/s13059-020-02155-4) would generate information for this class.
@@ -155,6 +156,7 @@ classes:
     class_uri: nmdc:EukEval
 
   NucleotideSequencing:
+    title: nucleotide sequencing
     class_uri: nmdc:NucleotideSequencing
     is_a: DataGeneration
     description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
@@ -174,6 +176,7 @@ classes:
         range: NucleotideSequencingEnum
 
   MassSpectrometry:
+    title: mass spectrometry
     class_uri: nmdc:MassSpectrometry
     is_a: DataGeneration
     description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
@@ -238,6 +241,7 @@ classes:
               required: true
 
   Configuration:
+    title: configuration
     abstract: true
     is_a: InformationObject
     class_uri: nmdc:Configuration
@@ -248,6 +252,7 @@ classes:
       - protocol_link
 
   MassSpectrometryConfiguration:
+    title: mass spectrometry configuration
     is_a: Configuration
     class_uri: nmdc:MassSpectrometryConfiguration
     description: A set of parameters that define and control the actions of a mass spectrometry process.
@@ -283,6 +288,7 @@ classes:
         required: true
   
   ChromatographyConfiguration:
+    title: chromatography configuration
     is_a: Configuration
     class_uri: nmdc:ChromatographyConfiguration
     description: A set of parameters that define and control the actions of a chromatography process.
@@ -308,6 +314,7 @@ classes:
         required: true
   
   Manifest:
+    title: manifest
     is_a: InformationObject
     class_uri: nmdc:Manifest
     description: A qualified collection of DataObjects that can be analyzed together in the same experimental context.
@@ -321,6 +328,7 @@ classes:
           syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$" 
 
   CalibrationInformation:
+      title: calibration information
       class_uri: nmdc:CalibrationInformation
       is_a: InformationObject
       description: A calibration object that is associated with a process.
@@ -363,6 +371,7 @@ classes:
 
 
   FunctionalAnnotationAggMember:
+    title: functional annotation aggregation member
     description: >-
       This class is used to store aggregated results from workflows which produce functional annotations such as metaproteomics and metagenomics.
     class_uri: nmdc:FunctionalAnnotationAggMember
@@ -384,6 +393,7 @@ classes:
         pattern: "(COG:COG\\d+|PFAM:PF\\d{5}|KEGG.ORTHOLOGY:K\\d+)"
       
   Database:
+    title: database
     class_uri: nmdc:Database
     tree_root: true
     aliases:
@@ -414,6 +424,7 @@ classes:
       - workflow_execution_set
 
   Pooling:
+    title: pooling
     class_uri: nmdc:Pooling
     is_a: MaterialProcessing
     description: physical combination of several instances of like material.
@@ -441,6 +452,7 @@ classes:
           interpolated: true
 
   Extraction:
+    title: extraction
     class_uri: nmdc:Extraction
     is_a: MaterialProcessing
     description: A material separation in which a desired component of an input material is separated from the remainder.
@@ -473,6 +485,7 @@ classes:
         description: The volume of the solvent/solute being used, not the input.
 
   LibraryPreparation:
+    title: library preparation
     class_uri: nmdc:LibraryPreparation
     aliases:
       - LibraryConstruction
@@ -539,6 +552,7 @@ classes:
           interpolated: true
 
   SubSamplingProcess:
+    title: sub-sampling process
     class_uri: nmdc:SubSamplingProcess
     description: >
       Separating a sample aliquot from the starting material for downstream activity.
@@ -586,6 +600,7 @@ classes:
           interpolated: true
 
   MixingProcess:
+    title: mixing process
     class_uri: nmdc:MixingProcess
     description: >
       The combining of components, particles or layers into a more homogeneous state.
@@ -619,6 +634,7 @@ classes:
           interpolated: true
 
   FiltrationProcess:
+    title: filtration process
     class_uri: nmdc:FiltrationProcess
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
@@ -659,9 +675,10 @@ classes:
           interpolated: true
 
   StorageProcess:
+    title: storage process
     class_uri: nmdc:StorageProcess
     description: >-
-      A planned process with the objective to preserve and protect material entities by placing them in an identified 
+      A planned process with the objective to preserve and protect material entities by placing them in an identified
       location which may have a controlled environment.
     is_a: PlannedProcess
     related_mappings:
@@ -690,6 +707,7 @@ classes:
         range: ProcessedSample
 
   ChromatographicSeparationProcess:
+    title: chromatographic separation process
     class_uri: nmdc:ChromatographicSeparationProcess
     description:
       The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
@@ -719,6 +737,7 @@ classes:
           interpolated: true
 
   DissolvingProcess:
+    title: dissolving process
     class_uri: nmdc:DissolvingProcess
     aliases:
       - Solubilization
@@ -743,6 +762,7 @@ classes:
 
 enums:
   CalibrationTargetEnum:
+    title: calibration target enum
     permissible_values:
       mass_charge_ratio:
         title: m/z
@@ -757,6 +777,7 @@ enums:
           - RI
 
   CalibrationStandardEnum:
+    title: calibration standard enum
     permissible_values:
       fames:
         aliases:
@@ -766,6 +787,7 @@ enums:
           - Alkanes
 
   StrandedOrientationEnum:
+    title: stranded orientation enum
     description: This enumeration specifies information about stranded RNA library preparations.
     permissible_values:
       antisense orientation:
@@ -778,6 +800,7 @@ enums:
         description: Orientation that corresponds to the coding sequence of messenger RNA.
 
   MassSpectrometryAcquisitionStrategyEnum:
+    title: mass spectrometry acquisition strategy enum
     permissible_values:
       data_independent_acquisition:
         description:
@@ -801,6 +824,7 @@ enums:
           Mass spectrometer data acquisition method wherein only MS1 data are acquired.
 
   ResolutionCategoryEnum:
+    title: resolution category enum
     permissible_values:
       high:
         description: higher than unit resolution
@@ -808,6 +832,7 @@ enums:
         description: at unit resolution
 
   MassAnalyzerEnum:
+    title: mass analyzer enum
     permissible_values:
       time_of_flight:
         aliases:
@@ -849,6 +874,7 @@ enums:
           - MS:1000264
 
   IonizationSourceEnum:
+    title: ionization source enum
     permissible_values:
       electrospray_ionization:
         aliases:
@@ -867,17 +893,20 @@ enums:
           - EI
 
   MassSpectrumCollectionModeEnum:
+    title: mass spectrum collection mode enum
     permissible_values:
       full_profile: { }
       reduced_profile: { }
       centroid: { }
 
   PolarityModeEnum:
+    title: polarity mode enum
     permissible_values:
       positive: { }
       negative: { }
 
   EluentIntroductionCategoryEnum:
+    title: eluent introduction category enum
     permissible_values:
       liquid_chromatography:
         aliases:
@@ -897,11 +926,13 @@ enums:
         description: The processed sample is introduced into the mass spectrometer through a direct infusion process using an autosampler.
 
   LibraryTypeEnum:
+    title: library type enum
     permissible_values:
       DNA: { }
       RNA: { }
 
   ContainerCategoryEnum:
+    title: container category enum
     description: The permitted types of containers used in processing metabolomic samples.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
@@ -911,6 +942,7 @@ enums:
       falcon_tube:
 
   SeparationMethodEnum:
+    title: separation method enum
     description: The tool/substance used to separate or filter a solution or mixture.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
@@ -920,6 +952,7 @@ enums:
       syringe:
 
   StationaryPhaseEnum:
+    title: stationary phase enum
     description: The type of stationary phase used in a chromatography process.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
@@ -981,6 +1014,7 @@ enums:
         is_a: ZIC-HILIC
 
   ProtocolCategoryEnum:
+    title: protocol category enum
     description: The possible protocols that may be followed for an assay.
     permissible_values:
       mplex:
@@ -996,6 +1030,7 @@ enums:
       phenol_chloroform_extraction: { }
 
   ChromatographicCategoryEnum:
+    title: chromatographic category enum
     permissible_values:
       liquid_chromatography:
         aliases:
@@ -1008,6 +1043,7 @@ enums:
           - SPE
   
   SamplePortionEnum:
+    title: sample portion enum
     permissible_values:
       supernatant:
         aliases:
@@ -1037,11 +1073,13 @@ enums:
 
 slots:
   biomaterial_purity:
+    title: biomaterial purity
     range: QuantityValue
     annotations:
       units_alignment_excuse: pending_analysis
 
   generates_calibration:
+    title: generates calibration
     range: CalibrationInformation
     description: calibration information is generated a process
     comments:
@@ -1051,6 +1089,7 @@ slots:
       interpolated: true
 
   uses_calibration:
+    title: uses calibration
     range: CalibrationInformation
     description: calibration information is used by a process
     comments:
@@ -1060,6 +1099,7 @@ slots:
       interpolated: true 
 
   calibration_object:
+    title: calibration object
     range: DataObject
     description: the file containing calibration data object
     structured_pattern:
@@ -1067,53 +1107,64 @@ slots:
       interpolated: true
 
   internal_calibration:
+    title: internal calibration
     range: boolean
     description: whether internal calibration was used, if false, external calibration was used
 
   calibration_target:
+    title: calibration target
     range: CalibrationTargetEnum
     description: the target measurement of the calibration
 
   calibration_standard:
+    title: calibration standard
     range: CalibrationStandardEnum
     description: the reference standard(s) used for calibration
 
   polarity_mode:
+    title: polarity mode
     range: PolarityModeEnum
     description: the polarity of which ions are generated and detected
 
   mass_spectrum_collection_modes:
+    title: mass spectrum collection modes
     range: MassSpectrumCollectionModeEnum
     description: Indicates whether mass spectra were collected in full profile, reduced profile, or centroid mode during acquisition.
     multivalued: true
 
   eukaryotic_evaluation:
+    title: eukaryotic evaluation
     range: EukEval
     description: Contains results from evaluating if a Metagenome-Assembled Genome is of eukaryotic lineage.
   ncbi_lineage_tax_ids:
+    title: NCBI lineage tax IDs
     range: string
     pattern: '^\d+(-\d+)*$'
     description: Dash-delimited ordered list of NCBI taxonomy identifiers (TaxId)
     examples:
       - value: 1-131567-2759-2611352-33682-191814-2603949
   ncbi_lineage:
+    title: NCBI lineage
     range: string
     description: Comma delimited ordered list of NCBI taxonomy names.
     examples:
       - value: root,cellular organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae
 
   has_failure_categorization:
+    title: has failure categorization
     range: FailureCategorization
     multivalued: true
     inlined_as_list: true
 
   ionization_source:
+    title: ionization source
     range: IonizationSourceEnum
     description: The ionization source used to introduce processed samples into a mass spectrometer
     exact_mappings:
       - MS:1000008
 
   mass_analyzers:
+    title: mass analyzers
     range: MassAnalyzerEnum
     description: The kind of mass analyzer(s) used during the spectra collection.
     multivalued: true
@@ -1121,6 +1172,7 @@ slots:
       - MS:1000443
 
   resolution_categories:
+    title: resolution categories
     range: ResolutionCategoryEnum
     description: The relative resolution at which spectra were collected.
     examples:
@@ -1128,12 +1180,14 @@ slots:
       - value: low
     multivalued: true
   mass_spectrometry_acquisition_strategy:
+    title: mass spectrometry acquisition strategy
     range: MassSpectrometryAcquisitionStrategyEnum
     description: Mode of running a mass spectrometer method by which m/z ranges are selected and ions possibly fragment.
     exact_mappings:
       - MS:1003213
 
   eluent_introduction_category:
+    title: eluent introduction category
     range: EluentIntroductionCategoryEnum
     description: A high-level categorization for how the processed sample is introduced into a mass spectrometer.
     examples:
@@ -1141,14 +1195,17 @@ slots:
       - value: direct_infusion_syringe
 
   has_mass_spectrometry_configuration:
+    title: has mass spectrometry configuration
     range: MassSpectrometryConfiguration
     description: The identifier of the associated MassSpectrometryConfiguration.
 
   has_chromatography_configuration:
+    title: has chromatography configuration
     range: ChromatographyConfiguration
     description: The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.
 
   gene_function_id:
+    title: gene function ID
     range: uriorcurie
     description: The identifier for the gene function.
     examples:
@@ -1156,10 +1213,12 @@ slots:
     required: true
 
   count:
+    title: count
     range: integer
     required: true
 
   functional_annotation_agg:
+    title: functional annotation aggregation
     description: This property links a database object to a set of functional annotation aggregation (agg) results.
     range: FunctionalAnnotationAggMember
     multivalued: true
@@ -1167,30 +1226,37 @@ slots:
     inlined_as_list: true
 
   ecosystem_path_id:
+    title: ecosystem path ID
     range: string
     description: A unique id representing the GOLD classifiers associated with a sample.
 
   sample_collection_year:
+    title: sample collection year
     range: integer
   sample_collection_month:
+    title: sample collection month
 
   library_preparation_kit:
+    title: library preparation kit
     range: string
     exact_mappings:
       - GENEPIO:0001450
 
   pcr_cycles:
+    title: PCR cycles
     range: integer
     exact_mappings:
       - OBI:0002475
 
   is_stranded:
+    title: is stranded
     description: Is the (RNA) library stranded or non-stranded (unstranded).
     range: boolean
     comments:
       - A value of true means the library is stranded, flase means non-stranded.
   
   stranded_orientation:
+    title: stranded orientation
     description: Lists the strand orientiation for a stranded RNA library preparation.
     range: StrandedOrientationEnum
 
@@ -1216,11 +1282,14 @@ slots:
     range: LibraryTypeEnum
 
   date_created:
+    title: date created
     description: from database class
   etl_software_version:
+    title: ETL software version
     description: from database class
 
   object_set:
+    title: object set
     inlined_as_list: true
     mixin: true
     multivalued: true
@@ -1229,6 +1298,7 @@ slots:
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
   chemical_entity_set:
+    title: chemical entity set
     deprecated: >-
       Deprecation of the ChemicalEntity class, means deprecation of the chemical_entity_set as well.
     mixins:
@@ -1237,6 +1307,7 @@ slots:
       This property links a database object to the set of chemical entities
       within it.
   ontology_class_set:
+    title: ontology class set
     mixins:
       - object_set
     range: OntologyClass
@@ -1244,26 +1315,31 @@ slots:
       This property links a database object to the set of ontology classes
       within it.
   biosample_set:
+    title: biosample set
     mixins: object_set
     range: Biosample
     description:
       This property links a database object to the set of samples within
       it.
   study_set:
+    title: study set
     mixins: object_set
     range: Study
     description:
       This property links a database object to the set of studies within
       it.
   field_research_site_set:
+    title: field research site set
     mixins: object_set
     range: FieldResearchSite
 
   collecting_biosamples_from_site_set:
+    title: collecting biosamples from site set
     mixins: object_set
     range: CollectingBiosamplesFromSite
 
   data_object_set:
+    title: data object set
     mixins: object_set
     range: DataObject
     description:
@@ -1271,11 +1347,13 @@ slots:
       within it.
 
   genome_feature_set:
+    title: genome feature set
     mixins: object_set
     range: GenomeFeature
     description: This property links a database object to the set of all features
 
   functional_annotation_set:
+    title: functional annotation set
     mixins: object_set
     range: FunctionalAnnotation
     description:
@@ -1283,11 +1361,13 @@ slots:
       annotations
 
   workflow_execution_set:
+    title: workflow execution set
     mixins: object_set
     range: WorkflowExecution
     description: This property links a database object to the set of workflow executions.
 
   data_generation_set:
+    title: data generation set
     mixins: object_set
     range: DataGeneration
     description:
@@ -1295,61 +1375,75 @@ slots:
       within it.
 
   processed_sample_set:
+    title: processed sample set
     mixins: object_set
     range: ProcessedSample
     description: This property links a database object to the set of processed samples within it.
 
   instrument_set:
+    title: instrument set
     mixins: object_set
     range: Instrument
     description: This property links a database object to the set of instruments within it.
 
   calibration_set:
+    title: calibration set
     mixins: object_set
     range: CalibrationInformation
     description: This property links a database object to the set of calibrations within it.
 
   configuration_set:
+    title: configuration set
     mixins: object_set
     range: Configuration
     description: This property links a database object to the set of configurations within it.
 
   manifest_set:
+    title: manifest set
     mixins: object_set
     range: Manifest
     description: This property links a database object to the set of manifests within it.
 
   storage_process_set:
+    title: storage process set
     mixins: object_set
     range: StorageProcess
     description: This property links a database object to the set of storage processes within it.
 
   material_processing_set:
+    title: material processing set
     mixins: object_set
     range: MaterialProcessing
     description: This property links a database object to the set of material processing within it.
 
   sample_collection_day:
+    title: sample collection day
     range: integer
   sample_collection_hour:
+    title: sample collection hour
     range: integer
   sample_collection_minute:
+    title: sample collection minute
     range: integer
 
   biogas_temperature:
-
+    title: biogas temperature
     range: string
   soil_annual_season_temp:
+    title: soil annual season temperature
     range: string
 
   biogas_retention_time:
+    title: biogas retention time
     range: string
 
   completion_date:
+    title: completion date
     range: string
 
 
   container_size:
+    title: container size
     range: QuantityValue
     description: The volume of the container an analyte is stored in or an activity takes place in
     contributors:
@@ -1359,41 +1453,51 @@ slots:
       storage_units: mL
 
   filter_material:
+    title: filter material
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
     comments:
       - "Filters are made with a variety of materials: cellulose and derivatives, glass fibre, ceramic, synthetic plastics and fibres. Filters may be naturally porous or be made so by mechanical or other means. Membrane/ceramic filters are prepared with highly controlled pore size in a sheet of suitable material such as polyfluoroethylene, polycarbonate or cellulose esters. Nylon mesh is sometimes used for reinforcement. The pores constitute 80–85% of the filter volume commonly and several pore sizes are available for air sampling (0.45−0.8 μm are commonly employed)."
     range: string
   filter_pore_size:
+    title: filter pore size
     range: QuantityValue
     description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
     annotations:
       storage_units: um
   conditionings:
+    title: conditionings
     range: string
     description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
     multivalued: true
     list_elements_ordered: true
   separation_method:
+    title: separation method
     range: SeparationMethodEnum
     description: The method that was used to separate a substance from a solution or mixture.
   filtration_category:
+    title: filtration category
     range: string
     description: The type of conditioning applied to a filter, device, etc.
   material_component_separation:
+    title: material component separation
     range: string
     description: "A material processing in which components of an input material become segregated in space"
   value:
+    title: value
     range: QuantityValue
     annotations:
       units_alignment_excuse: pending_analysis
   modifier_substance:
+    title: modifier substance
     range: string
     description: The type of modification being done
   is_pressurized:
+    title: is pressurized
     range: boolean
     description: Whether or not pressure was applied to a thing or process.
 
   contained_in:
+    title: contained in
     range: ContainerCategoryEnum
     description: A type of container.
     examples:
@@ -1402,12 +1506,14 @@ slots:
       - value: whirlpak
 
   input_volume: # see also `volume`
+    title: input volume
     range: QuantityValue
     description: The volume of the input sample.
     annotations:
       storage_units: mL
 
   ordered_mobile_phases:
+    title: ordered mobile phases
     range: MobilePhaseSegment
     description: The solution(s) that moves through a chromatography column.
     multivalued: true
@@ -1415,13 +1521,16 @@ slots:
     inlined_as_list: true
 
   stationary_phase:
+    title: stationary phase
     range: StationaryPhaseEnum
     description: The material the stationary phase is comprised of used in chromatography.
   chromatographic_category:
+    title: chromatographic category
     range: ChromatographicCategoryEnum
     description: The type of chromatography used in a process.
 
   sampled_portion:
+    title: sampled portion
     range: SamplePortionEnum
     multivalued: true
     description: The portion of the sample that is taken for downstream activity.

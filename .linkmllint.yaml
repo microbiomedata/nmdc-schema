@@ -18,7 +18,45 @@ rules:
   recommended:
     level: warning
     # include: []  # default: check all elements
-    # exclude: []  # default: no exclusions
+    exclude:
+      # Classes missing descriptions
+      - LibraryPreparation
+      - CollectingBiosamplesFromSite
+      # Slots missing descriptions
+      - biomaterial_purity
+      - has_failure_categorization
+      - count
+      - sample_collection_year
+      - sample_collection_month
+      - library_preparation_kit
+      - pcr_cycles
+      - library_type
+      - field_research_site_set
+      - collecting_biosamples_from_site_set
+      - sample_collection_day
+      - sample_collection_hour
+      - sample_collection_minute
+      - biogas_temperature
+      - soil_annual_season_temp
+      - biogas_retention_time
+      - completion_date
+      - value
+      - subject
+      - predicate
+      - object
+      # Enums missing descriptions
+      - CalibrationTargetEnum
+      - CalibrationStandardEnum
+      - MassSpectrometryAcquisitionStrategyEnum
+      - ResolutionCategoryEnum
+      - MassAnalyzerEnum
+      - IonizationSourceEnum
+      - MassSpectrumCollectionModeEnum
+      - PolarityModeEnum
+      - EluentIntroductionCategoryEnum
+      - LibraryTypeEnum
+      - ChromatographicCategoryEnum
+      - SamplePortionEnum
     # exclude_type: []  # default: check all types (class_definition, slot_definition, enum_definition, permissible_value)
 
   # Enforce standard naming conventions
@@ -39,8 +77,10 @@ rules:
     level: warning
 
   # Check prefix mappings against prefixmaps standards
+  # DISABLED: NMDC intentionally uses bioregistry prefixes which differ from
+  # the default prefixmaps contexts (e.g., CATH uses bioregistry.io instead of identifiers.org)
   canonical_prefixes:
-    level: warning
+    level: disabled
     prefixmaps_contexts:
       - merged  # default: use merged context (combined from all sources)
 

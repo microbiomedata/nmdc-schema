@@ -154,6 +154,7 @@ slots:
     description: A Sequence Ontology term that describes the category of a feature
 
   subject:
+    title: subject
     range: GeneProduct
 
   has_function:
