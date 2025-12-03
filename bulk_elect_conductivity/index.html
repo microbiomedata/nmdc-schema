@@ -660,7 +660,7 @@
 </thead>
 <tbody>
 <tr>
-<td>JsonObj(has_raw_value='0.017 mS/cm', has_numeric_value=0.017, has_unit='mS/cm')</td>
+<td>None</td>
 </tr>
 </tbody>
 </table>
@@ -717,8 +717,11 @@ title: bulk electrical conductivity
 comments:
 - Provide the value output of the field instrument.
 examples:
-- value: JsonObj(has_raw_value='0.017 mS/cm', has_numeric_value=0.017, has_unit='mS/cm')
-  description: The conductivity measurement was 0.017 millisiemens per centimeter.
+- description: The conductivity measurement was 0.017 millisiemens per centimeter.
+  object:
+    has_raw_value: 0.017 mS/cm
+    has_numeric_value: 0.017
+    has_unit: mS/cm
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: bulk_elect_conductivity

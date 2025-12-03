@@ -654,11 +654,8 @@
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>
-<ul>
-<li>"unenforced constraint: end &gt; start" - "For features that cross the origin of a circular feature,  end = the position of the end + the length of the landmark feature."</li>
-</ul>
-</li>
+<li>unenforced constraint: end &gt; start</li>
+<li>For features that cross the origin of a circular feature, end = the position of the end + the length of the landmark feature.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -686,9 +683,9 @@
 <pre><code class="language-yaml">name: end
 description: The end of the feature in positive 1-based integer coordinates
 comments:
-- '- &quot;unenforced constraint: end &gt; start&quot; - &quot;For features that cross the origin of
-  a circular feature,  end = the position of the end + the length of the landmark
-  feature.&quot;'
+- 'unenforced constraint: end &gt; start'
+- For features that cross the origin of a circular feature, end = the position of
+  the end + the length of the landmark feature.
 from_schema: https://w3id.org/nmdc/nmdc
 close_mappings:
 - biolink:end_interbase_coordinate

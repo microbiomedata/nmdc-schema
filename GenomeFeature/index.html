@@ -543,9 +543,9 @@ attributes:
     name: end
     description: The end of the feature in positive 1-based integer coordinates
     comments:
-    - '- "unenforced constraint: end &gt; start" - "For features that cross the origin
-      of a circular feature,  end = the position of the end + the length of the landmark
-      feature."'
+    - 'unenforced constraint: end &gt; start'
+    - For features that cross the origin of a circular feature, end = the position
+      of the end + the length of the landmark feature.
     from_schema: https://w3id.org/nmdc/nmdc
     close_mappings:
     - biolink:end_interbase_coordinate
