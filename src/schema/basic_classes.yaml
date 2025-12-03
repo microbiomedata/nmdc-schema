@@ -24,7 +24,9 @@ prefixes:
 imports:
   - external_identifiers
   - mixs
+  - nmdc  # for slots like has_failure_categorization used by PlannedProcess
 
+default_range: string
 
 classes:
 

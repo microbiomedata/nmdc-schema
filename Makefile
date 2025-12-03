@@ -41,7 +41,7 @@ cookiecutter-help: status
 	@echo "make site -- makes site locally"
 	@echo "make install -- install dependencies"
 	@echo "make test -- runs tests"
-	@echo "make lint -- perfom linting"
+	@echo "make linkml-lint -- run LinkML linting on schema modules"
 	@echo "make testdoc -- builds docs and runs local test server"
 	@echo "make deploy -- deploys site"
 	@echo "make update -- updates linkml version"
@@ -155,8 +155,53 @@ test-python:
 	$(RUN) python -m doctest nmdc_schema/id_helpers.py
 	$(RUN) python -m doctest src/scripts/make_typecode_to_class_map.py
 
-lint:
-	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
+# Lint all source schema modules and the materialized schema.
+# - Source modules (except deprecated.yaml): use .linkmllint.yaml
+# - nmdc.yaml and materialized patterns: use .linkmllint-root.yaml (includes tree_root check)
+# This target is suitable for CI/CD pipelines.
+.PHONY: linkml-lint
+linkml-lint: nmdc_schema/nmdc_materialized_patterns.yaml
+	@echo "Linting source schema modules..."
+	@failed=0; \
+	for f in $(SOURCE_SCHEMA_DIR)*.yaml; do \
+		if [ "$$(basename $$f)" = "deprecated.yaml" ]; then \
+			echo "Skipping $$f (deprecated module)"; \
+			continue; \
+		fi; \
+		if [ "$$(basename $$f)" = "nmdc.yaml" ]; then \
+			echo "Linting $$f (with tree_root check)..."; \
+			$(RUN) linkml lint --config .linkmllint-root.yaml "$$f" || failed=1; \
+		else \
+			echo "Linting $$f..."; \
+			$(RUN) linkml lint --config .linkmllint.yaml "$$f" || failed=1; \
+		fi; \
+	done; \
+	echo "Linting materialized schema (with tree_root check)..."; \
+	$(RUN) linkml lint --config .linkmllint-root.yaml nmdc_schema/nmdc_materialized_patterns.yaml || failed=1; \
+	if [ $$failed -eq 1 ]; then \
+		echo "Linting failed"; \
+		exit 1; \
+	fi; \
+	echo "All linting checks passed"
+
+# Run full linting (all rules, no config) on all schema files including materialized patterns.
+# This target is for generating reports to decide which rules to silence.
+# Not included in test target due to many existing warnings.
+.PHONY: linkml-lint-all
+linkml-lint-all:
+	@echo "Running full linting on all schema modules..."
+	@mkdir -p local
+	@echo "=== Source schema files ===" | tee local/linkml-lint-all.log
+	@for f in $(SOURCE_SCHEMA_DIR)*.yaml; do \
+		echo "--- $$f ---" | tee -a local/linkml-lint-all.log; \
+		$(RUN) linkml lint "$$f" 2>&1 | tee -a local/linkml-lint-all.log || true; \
+	done
+	@echo "" | tee -a local/linkml-lint-all.log
+	@echo "=== Materialized patterns ===" | tee -a local/linkml-lint-all.log
+	@echo "--- nmdc_schema/nmdc_materialized_patterns.yaml ---" | tee -a local/linkml-lint-all.log
+	$(RUN) linkml lint nmdc_schema/nmdc_materialized_patterns.yaml 2>&1 | tee -a local/linkml-lint-all.log || true
+	@echo ""
+	@echo "Full report saved to local/linkml-lint-all.log"
 
 # Validate source schema files against the LinkML metamodel.
 # This catches structural issues like incorrect types (e.g., arrays vs dicts).

@@ -7585,3 +7585,4 @@ slots:
     created_by: orcid:0000-0002-5004-3362 # Alicia Clum
     contributors:
       - orcid:0000-0001-9076-6066 # Mark Andrew Miller
+default_range: string

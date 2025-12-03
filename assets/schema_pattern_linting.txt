@@ -1,0 +1,113 @@
+Report of slots that aren't associated with any classes:
+
+No classes for parent slot analysis_identifiers
+No classes for parent slot assembly_identifiers
+No classes for slot biogas_retention_time
+No classes for slot biogas_temperature
+No classes for parent slot biosample_identifiers
+No classes for slot chemical_entity_set
+No classes for slot chemical_formula
+No classes for slot chimera_check, MIXS:0000052
+No classes for slot completion_date
+No classes for parent slot concentration
+No classes for parent slot core field
+No classes for slot date_created
+No classes for slot dna_absorb2
+No classes for slot dna_lr_isolate_meth
+No classes for slot ecosystem_path_id
+No classes for parent slot emsl_identifiers
+No classes for slot emsl_store_temp
+No classes for parent slot environment field
+No classes for slot etl_software_version
+No classes for parent slot gff_coordinate
+No classes for parent slot gnps_identifiers
+No classes for parent slot gold_identifiers
+No classes for parent slot gold_path_field
+No classes for parent slot igsn_identifiers
+No classes for slot inchi
+No classes for slot inchi_key
+No classes for slot input_volume
+No classes for slot insdc_analysis_identifiers
+No classes for parent slot insdc_identifiers
+No classes for slot insdc_secondary_sample_identifiers
+No classes for slot insdc_sra_ena_study_identifiers
+No classes for parent slot investigation field
+No classes for slot jgi_portal_analysis_project_identifiers
+No classes for parent slot jgi_portal_identifiers
+No classes for slot material_component_separation
+No classes for parent slot metagenome_assembly_parameter
+No classes for slot mgnify_analysis_identifiers
+No classes for parent slot mgnify_identifiers
+No classes for parent slot mixs_env_triad_field
+No classes for slot modifier_substance
+No classes for parent slot neon_identifiers
+No classes for slot nucl_acid_ext, MIXS:0000037
+No classes for parent slot nucleic acid sequence source field
+No classes for slot object
+No classes for parent slot object_set
+No classes for parent slot omics_processing_identifiers
+No classes for slot ontology_class_set
+No classes for slot pool_dna_extracts, MIXS:0000325
+No classes for slot predicate
+No classes for parent slot read_qc_analysis_statistic
+No classes for slot samp_vol_we_dna_ext, MIXS:0000111
+No classes for slot sample_collection_day
+No classes for slot sample_collection_hour
+No classes for slot sample_collection_minute
+No classes for slot sample_collection_month
+No classes for slot sample_collection_year
+No classes for slot seq_meth, MIXS:0000050
+No classes for slot seq_quality_check, MIXS:0000051
+No classes for parent slot sequencing field
+No classes for slot smiles
+No classes for slot soil_annual_season_temp
+No classes for parent slot study_identifiers
+No classes for slot value
+
+
+Report of enums that aren't associated with any slots:
+
+No slots for freq_clean_enum
+No slots for organism_count_enum
+No slots for plant_growth_med_enum
+No slots for samp_md_enum
+No slots for SampleStateEnum
+No slots for ProtocolCategoryEnum
+No slots for YesNoEnum
+No slots for SubmissionStatusEnum
+
+
+Report of all types. Manual review recommended:
+
+['string',
+ 'integer',
+ 'boolean',
+ 'float',
+ 'double',
+ 'decimal',
+ 'time',
+ 'date',
+ 'datetime',
+ 'date_or_datetime',
+ 'uriorcurie',
+ 'curie',
+ 'uri',
+ 'ncname',
+ 'objectidentifier',
+ 'nodeidentifier',
+ 'jsonpointer',
+ 'jsonpath',
+ 'sparqlpath',
+ 'external_identifier',
+ 'bytes',
+ 'decimal_degree',
+ 'language_code']
+
+
+Report of all elements whose names contain whitespace:
+
+
+
+Report of subsets usage:
+
+{}
