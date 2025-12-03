@@ -71,9 +71,9 @@ slots:
       - value: Direct Infusion FT-ICR MS Analysis Results
       - value: GC-MS Metabolomics Results
     structured_aliases:
-      data_object_type:
+      - literal_form: data_object_type
         contexts:
-        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+          - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
         predicate: EXACT_SYNONYM
   data_category:
     range: DataCategoryEnum
@@ -132,7 +132,8 @@ slots:
   infiltrations:
     description: The amount of time it takes to complete each infiltration activity
     examples:
-      - value: [ '00:01:32', '00:00:53' ]
+      - value: '00:01:32'
+      - value: '00:00:53'
     aliases:
       - infiltration_1
       - infiltration_2
@@ -279,7 +280,8 @@ slots:
         Ecosystem are Environmental, Host-associated, and Engineered. They represent
         samples collected from a natural environment or from another organism or from
         engineered environments like bioreactors respectively.
-    see_also: https://gold.jgi.doe.gov/help
+    see_also:
+      - https://gold.jgi.doe.gov/help
   ecosystem_category:
     is_a: gold_path_field
     description:
@@ -291,7 +293,8 @@ slots:
         and Terrestrial. Ecosystem categories for Host-associated samples can be individual
         hosts or phyla and for engineered samples it may be manipulated environments
         like bioreactors, solid waste etc.
-    see_also: https://gold.jgi.doe.gov/help
+    see_also:
+      - https://gold.jgi.doe.gov/help
   ecosystem_type:
     is_a: gold_path_field
     description:
@@ -305,7 +308,8 @@ slots:
         or Outdoor air as different Ecosystem Types. In the case of Host-associated
         samples, ecosystem type can represent Respiratory system, Digestive system,
         Roots etc.
-    see_also: https://gold.jgi.doe.gov/help
+    see_also:
+      - https://gold.jgi.doe.gov/help
   ecosystem_subtype:
     is_a: gold_path_field
     description:
@@ -316,7 +320,8 @@ slots:
       - Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is further
         divided (for example) into Intertidal zone, Coastal, Pelagic, Intertidal zone
         etc. in the Ecosystem subtype category.
-    see_also: https://gold.jgi.doe.gov/help
+    see_also:
+      - https://gold.jgi.doe.gov/help
   specific_ecosystem:
     is_a: gold_path_field
     description:
@@ -326,7 +331,8 @@ slots:
     comments:
       - Specific ecosystems help to define samples based on very specific characteristics
         of an environment under the five-level classification system.
-    see_also: https://gold.jgi.doe.gov/help
+    see_also:
+      - https://gold.jgi.doe.gov/help
 
 
   add_date:
@@ -407,13 +413,13 @@ slots:
       A unique identifier for a thing.
       Must be either a CURIE shorthand for a URI or a complete URI
     structured_aliases:
-      workflow_execution_id:
+      - literal_form: workflow_execution_id
         contexts:
-        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+          - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
         predicate: NARROW_SYNONYM
-      data_object_id:
+      - literal_form: data_object_id
         contexts:
-        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+          - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
         predicate: NARROW_SYNONYM
     notes:
       - "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?"
@@ -547,14 +553,14 @@ enums:
       Metagenome Raw Read 1:
         description: Read 1 raw metagenome sequencing data, aka forward reads
         examples:
-          value: "BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz"
+          - value: "BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz"
         annotations:
           file_name_pattern: '^.+_R1\.fastq(\.gz)?$'
 
       Metagenome Raw Read 2:
         description: Read 2 raw metagenome sequencing data, aka reverse reads
         examples:
-          value: "BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz"
+          - value: "BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz"
         annotations:
           file_name_pattern: '^.+_R2\.fastq(\.gz)?$'
 
@@ -566,14 +572,14 @@ enums:
       Metatranscriptome Raw Read 1:
         description: Read 1 raw metatranscriptome sequencing data, aka forward reads
         examples:
-          value: "BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz"
+          - value: "BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz"
         annotations:
           file_name_pattern: '^.+_R1\.fastq(\.gz)?$'
 
       Metatranscriptome Raw Read 2:
         description: Read 2 raw metatranscriptome sequencing data, aka reverse reads
         examples:
-          value: "BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz"
+          - value: "BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz"
         annotations:
           file_name_pattern: '^.+_R2\.fastq(\.gz)?$'
 

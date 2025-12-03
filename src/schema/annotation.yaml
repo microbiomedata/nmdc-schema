@@ -198,9 +198,9 @@ slots:
     range: integer
     is_a: gff_coordinate
     description: The end of the feature in positive 1-based integer coordinates
-    comments: >-
+    comments:
       - "unenforced constraint: end > start"
-      - "For features that cross the origin of a circular feature,  end = the position of the end + the length of the landmark feature."
+      - "For features that cross the origin of a circular feature, end = the position of the end + the length of the landmark feature."
     close_mappings:
       - biolink:end_interbase_coordinate
   feature_type:
@@ -218,4 +218,5 @@ slots:
   start:
     is_a: gff_coordinate
     description: The start of the feature in positive 1-based integer coordinates
-    close_mappings: biolink:start_interbase_coordinate
+    close_mappings:
+      - biolink:start_interbase_coordinate

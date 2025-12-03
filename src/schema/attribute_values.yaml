@@ -261,10 +261,10 @@ slots:
       - https://github.com/microbiomedata/nmdc-schema/issues/1233
       - https://github.com/microbiomedata/nmdc-schema/issues/248
     structured_aliases:
-      workflow_execution_class:
-       contexts:
-         -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-       predicate: NARROW_SYNONYM
+      - literal_form: workflow_execution_class
+        contexts:
+          - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+        predicate: NARROW_SYNONYM
     examples:
       - value: nmdc:Biosample
       - value: nmdc:Study
@@ -897,8 +897,8 @@ enums:
         aliases:
           - micromoles per liter per hour
         description: The Unified Code for Units of Measure (UCUM) representation of micromoles per liter per hour.
-        comments: >-
-          For example, micromoles of oxygen created by photosynthesis per liter of water per hour.
+        comments:
+          - For example, micromoles of oxygen created by photosynthesis per liter of water per hour.
       "g/cm3":
         aliases:
           - grams per cubic centimeter

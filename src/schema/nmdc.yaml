@@ -346,7 +346,8 @@ classes:
             If internal_calibration is false, a calibration_object is required.
           preconditions:
             slot_conditions:
-              internal_calibration: false
+              internal_calibration:
+                equals_expression: "False"
           postconditions:
             slot_conditions:
               calibration_object:
@@ -780,8 +781,7 @@ enums:
   MassSpectrometryAcquisitionStrategyEnum:
     permissible_values:
       data_independent_acquisition:
-        description:
-          - Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.
+        description: Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.
         aliases:
           - DIA
           - data independent acquisition from dissociation of full mass range
@@ -791,7 +791,7 @@ enums:
         description:
           Mass spectrometer data acquisition method wherein MSn spectra are triggered based on the m/z of precursor ions detected in the same run.
         aliases:
-          -DDA
+          - DDA
         exact_mappings:
           - MS:1003221
       full_scan_only:
@@ -1244,88 +1244,104 @@ slots:
       This property links a database object to the set of ontology classes
       within it.
   biosample_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: Biosample
     description:
       This property links a database object to the set of samples within
       it.
   study_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: Study
     description:
       This property links a database object to the set of studies within
       it.
   field_research_site_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: FieldResearchSite
 
   collecting_biosamples_from_site_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: CollectingBiosamplesFromSite
 
   data_object_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: DataObject
     description:
       This property links a database object to the set of data objects
       within it.
 
   genome_feature_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: GenomeFeature
     description: This property links a database object to the set of all features
 
   functional_annotation_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: FunctionalAnnotation
     description:
       This property links a database object to the set of all functional
       annotations
 
   workflow_execution_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: WorkflowExecution
     description: This property links a database object to the set of workflow executions.
 
   data_generation_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: DataGeneration
     description:
       This property links a database object to the set of data generations
       within it.
 
   processed_sample_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: ProcessedSample
     description: This property links a database object to the set of processed samples within it.
 
   instrument_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: Instrument
     description: This property links a database object to the set of instruments within it.
 
   calibration_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: CalibrationInformation
     description: This property links a database object to the set of calibrations within it.
 
   configuration_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: Configuration
     description: This property links a database object to the set of configurations within it.
 
   manifest_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: Manifest
     description: This property links a database object to the set of manifests within it.
 
   storage_process_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: StorageProcess
     description: This property links a database object to the set of storage processes within it.
 
   material_processing_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: MaterialProcessing
     description: This property links a database object to the set of material processing within it.
 
