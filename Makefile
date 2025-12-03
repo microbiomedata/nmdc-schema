@@ -41,7 +41,7 @@ cookiecutter-help: status
 	@echo "make site -- makes site locally"
 	@echo "make install -- install dependencies"
 	@echo "make test -- runs tests"
-	@echo "make lint -- perfom linting"
+	@echo "make linkml-lint -- run LinkML linting on schema modules"
 	@echo "make testdoc -- builds docs and runs local test server"
 	@echo "make deploy -- deploys site"
 	@echo "make update -- updates linkml version"
@@ -154,9 +154,6 @@ test-python:
 	$(RUN) python -m doctest nmdc_schema/nmdc_data.py
 	$(RUN) python -m doctest nmdc_schema/id_helpers.py
 	$(RUN) python -m doctest src/scripts/make_typecode_to_class_map.py
-
-lint:
-	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
 
 # Lint all source schema modules and the materialized schema.
 # - Source modules (except deprecated.yaml): use .linkmllint.yaml
