@@ -158,6 +158,25 @@ test-python:
 lint:
 	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
 
+# Run full linting (all rules) on all schema files including materialized patterns.
+# This target is for generating reports to decide which rules to silence.
+# Not included in test target due to many existing warnings.
+.PHONY: linkml-lint-all
+linkml-lint-all:
+	@echo "Running full linting on all schema modules..."
+	@mkdir -p local
+	@echo "=== Source schema files ===" | tee local/linkml-lint-all.log
+	@for f in $(SOURCE_SCHEMA_DIR)*.yaml; do \
+		echo "--- $$f ---" | tee -a local/linkml-lint-all.log; \
+		$(RUN) linkml lint "$$f" 2>&1 | tee -a local/linkml-lint-all.log || true; \
+	done
+	@echo "" | tee -a local/linkml-lint-all.log
+	@echo "=== Materialized patterns ===" | tee -a local/linkml-lint-all.log
+	@echo "--- nmdc_schema/nmdc_materialized_patterns.yaml ---" | tee -a local/linkml-lint-all.log
+	$(RUN) linkml lint nmdc_schema/nmdc_materialized_patterns.yaml 2>&1 | tee -a local/linkml-lint-all.log || true
+	@echo ""
+	@echo "Full report saved to local/linkml-lint-all.log"
+
 # Validate source schema files against the LinkML metamodel.
 # This catches structural issues like incorrect types (e.g., arrays vs dicts).
 # Note: We validate individual source files, not the materialized schema,
