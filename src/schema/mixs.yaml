@@ -1087,7 +1087,9 @@ enums:
           - 18S ribosomal RNA
         description: the small subunit of the eukaryotic ribosome
       28S_rRNA:
-        aliases: -28S rRNA - 28S ribosomal RNA
+        aliases:
+          - 28S rRNA
+          - 28S ribosomal RNA
         description: the large subunit of the eukaryotic ribosome
 slots:
   abs_air_humidity:
@@ -2751,15 +2753,9 @@ slots:
     multivalued: false
   exp_pipe:
     annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      occurrence:
-        tag: occurrence
-        value: '1'
-      storage_units:
-        tag: storage_units
-        value: "1"
+      expected_value: measurement value
+      occurrence: '1'
+      storage_units: "1"
     description: The number of exposed pipes in the room
     title: exposed pipes
     examples:
@@ -4228,12 +4224,8 @@ slots:
     inlined_as_list: true
   misc_param:
     annotations:
-      expected_value:
-        tag: expected_value
-        value: parameter name;measurement value
-      occurrence:
-        tag: occurrence
-        value: m
+      expected_value: parameter name;measurement value
+      occurrence: m
     description: Structured miscellaneous property assertions. Use when a value cannot cleanly fit an existing, policy-governed slot.
     title: miscellaneous parameter
     examples:
@@ -4382,15 +4374,9 @@ slots:
     multivalued: false
   occup_density_samp:
     annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      occurrence:
-        tag: occurrence
-        value: '1'
-      storage_units:
-        tag: storage_units
-        value: 1/[sft_i]
+      expected_value: measurement value
+      occurrence: '1'
+      storage_units: 1/[sft_i]
     description: Average number of occupants at time of sampling per square footage
     title: occupant density at sampling
     examples:
@@ -6362,18 +6348,10 @@ slots:
     multivalued: false
   specific_humidity:
     annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: gram of air, kilogram of air
-      occurrence:
-        tag: occurrence
-        value: '1'
-      storage_units:
-        tag: storage_units
-        value: g/kg
+      expected_value: measurement value
+      preferred_unit: gram of air, kilogram of air
+      occurrence: '1'
+      storage_units: g/kg
     description: The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound.
     title: specific humidity
     examples:
@@ -7007,18 +6985,10 @@ slots:
     multivalued: false
   tvdss_of_hcr_temp:
     annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: meter
-      occurrence:
-        tag: occurrence
-        value: '1'
-      storage_units:
-        tag: storage_units
-        value: m
+      expected_value: measurement value
+      preferred_unit: meter
+      occurrence: '1'
+      storage_units: m
     description: True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m).
     title: depth (TVDSS) of hydrocarbon resource temperature
     examples:
@@ -7615,5 +7585,3 @@ slots:
     created_by: orcid:0000-0002-5004-3362 # Alicia Clum
     contributors:
       - orcid:0000-0001-9076-6066 # Mark Andrew Miller
-classes: []
-settings: null

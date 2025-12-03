@@ -128,7 +128,7 @@ gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # 
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 
-test: examples-clean site test-python migration-doctests examples/output gen-linkml-schema-files
+test: examples-clean linkml-validate-schema site test-python migration-doctests examples/output gen-linkml-schema-files
 only-test: examples-clean test-python migration-doctests examples/output
 tests: squeaky-clean all test  # simply for convenience to wrap convention of running these three targets to test locally.
 
@@ -157,6 +157,19 @@ test-python:
 
 lint:
 	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
+
+# Validate source schema files against the LinkML metamodel.
+# This catches structural issues like incorrect types (e.g., arrays vs dicts).
+# Note: We validate individual source files, not the materialized schema,
+# due to https://github.com/linkml/linkml/issues/3016
+.PHONY: linkml-validate-schema
+linkml-validate-schema:
+	@echo "Validating source schema files against LinkML metamodel..."
+	@for f in $(SOURCE_SCHEMA_DIR)*.yaml; do \
+		echo "$$f" ; \
+		$(RUN) linkml lint --validate-only "$$f" || exit 1; \
+	done
+	@echo "All source schema files pass metamodel validation."
 
 .PHONY: check-dependencies
 check-dependencies:
