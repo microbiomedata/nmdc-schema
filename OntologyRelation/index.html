@@ -403,12 +403,6 @@
 <td><a href="./">OntologyRelation</a></td>
 </tr>
 <tr>
-<td><a href="../EnvironmentalMaterialTerm/">EnvironmentalMaterialTerm</a></td>
-<td><a href="../relations/">relations</a></td>
-<td>range</td>
-<td><a href="./">OntologyRelation</a></td>
-</tr>
-<tr>
 <td><a href="../FunctionalAnnotationTerm/">FunctionalAnnotationTerm</a></td>
 <td><a href="../relations/">relations</a></td>
 <td>range</td>
@@ -428,6 +422,12 @@
 </tr>
 <tr>
 <td><a href="../OntologyClass/">OntologyClass</a></td>
+<td><a href="../relations/">relations</a></td>
+<td>range</td>
+<td><a href="./">OntologyRelation</a></td>
+</tr>
+<tr>
+<td><a href="../EnvironmentalMaterialTerm/">EnvironmentalMaterialTerm</a></td>
 <td><a href="../relations/">relations</a></td>
 <td>range</td>
 <td><a href="./">OntologyRelation</a></td>
@@ -614,10 +614,6 @@ attributes:
     - FunctionalAnnotationAggMember
     - PeptideQuantification
     - ProteinQuantification
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
@@ -628,6 +624,10 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     range: uriorcurie
     required: true
 class_uri: nmdc:OntologyRelation

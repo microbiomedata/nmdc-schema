@@ -5277,8 +5277,8 @@ attributes:
     alias: associated_studies
     owner: Biosample
     domain_of:
-    - Biosample
     - DataGeneration
+    - Biosample
     range: Study
     required: true
     multivalued: true
@@ -5403,9 +5403,9 @@ attributes:
     alias: alternative_names
     owner: Biosample
     domain_of:
-    - Biosample
     - OntologyClass
     - Study
+    - Biosample
     range: string
     multivalued: true
   provenance_metadata:
@@ -18469,8 +18469,8 @@ attributes:
     alias: ecosystem
     owner: Biosample
     domain_of:
-    - Biosample
     - Study
+    - Biosample
     range: string
   ecosystem_category:
     name: ecosystem_category
@@ -18490,8 +18490,8 @@ attributes:
     alias: ecosystem_category
     owner: Biosample
     domain_of:
-    - Biosample
     - Study
+    - Biosample
     range: string
   ecosystem_type:
     name: ecosystem_type
@@ -18512,8 +18512,8 @@ attributes:
     alias: ecosystem_type
     owner: Biosample
     domain_of:
-    - Biosample
     - Study
+    - Biosample
     range: string
   ecosystem_subtype:
     name: ecosystem_subtype
@@ -18532,8 +18532,8 @@ attributes:
     alias: ecosystem_subtype
     owner: Biosample
     domain_of:
-    - Biosample
     - Study
+    - Biosample
     range: string
   specific_ecosystem:
     name: specific_ecosystem
@@ -18551,8 +18551,8 @@ attributes:
     alias: specific_ecosystem
     owner: Biosample
     domain_of:
-    - Biosample
     - Study
+    - Biosample
     range: string
   add_date:
     name: add_date
@@ -18562,8 +18562,8 @@ attributes:
     alias: add_date
     owner: Biosample
     domain_of:
-    - Biosample
     - DataGeneration
+    - Biosample
     range: string
   community:
     name: community
@@ -18610,8 +18610,8 @@ attributes:
     alias: mod_date
     owner: Biosample
     domain_of:
-    - Biosample
     - DataGeneration
+    - Biosample
     range: string
   ncbi_taxonomy_name:
     name: ncbi_taxonomy_name
@@ -19236,8 +19236,8 @@ attributes:
     alias: analysis_type
     owner: Biosample
     domain_of:
-    - Biosample
     - Protocol
+    - Biosample
     slot_group: Sample ID
     range: AnalysisTypeEnum
     recommended: true
@@ -19599,8 +19599,8 @@ attributes:
     alias: alternative_identifiers
     owner: Biosample
     domain_of:
-    - MetaboliteIdentification
     - NamedThing
+    - MetaboliteIdentification
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -19634,10 +19634,6 @@ attributes:
     - FunctionalAnnotationAggMember
     - PeptideQuantification
     - ProteinQuantification
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
@@ -19648,6 +19644,10 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     range: uriorcurie
     required: true
 class_uri: nmdc:Biosample

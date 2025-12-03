@@ -832,8 +832,8 @@ attributes:
     alias: add_date
     owner: MassSpectrometry
     domain_of:
-    - Biosample
     - DataGeneration
+    - Biosample
     range: string
   analyte_category:
     name: analyte_category
@@ -857,8 +857,8 @@ attributes:
     alias: associated_studies
     owner: MassSpectrometry
     domain_of:
-    - Biosample
     - DataGeneration
+    - Biosample
     range: Study
     required: true
     multivalued: true
@@ -873,8 +873,8 @@ attributes:
     alias: instrument_used
     owner: MassSpectrometry
     domain_of:
-    - MaterialProcessing
     - DataGeneration
+    - MaterialProcessing
     range: Instrument
     multivalued: true
     structured_pattern:
@@ -888,8 +888,8 @@ attributes:
     alias: mod_date
     owner: MassSpectrometry
     domain_of:
-    - Biosample
     - DataGeneration
+    - Biosample
     range: string
   principal_investigator:
     name: principal_investigator
@@ -1110,8 +1110,8 @@ attributes:
     alias: alternative_identifiers
     owner: MassSpectrometry
     domain_of:
-    - MetaboliteIdentification
     - NamedThing
+    - MetaboliteIdentification
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -1145,10 +1145,6 @@ attributes:
     - FunctionalAnnotationAggMember
     - PeptideQuantification
     - ProteinQuantification
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
@@ -1159,6 +1155,10 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     range: uriorcurie
     required: true
 class_uri: nmdc:MassSpectrometry

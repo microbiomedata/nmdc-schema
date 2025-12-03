@@ -614,13 +614,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td>A DataGeneration in which the sequence of DNA or RNA molecules is generated</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-<td>The methods and processes used to generate omics data from a biosample or org...</td>
+<td><a href="../Biosample/">Biosample</a></td>
+<td>Biological source material which can be characterized by an experiment</td>
 <td>no</td>
 </tr>
 <tr>
@@ -629,8 +624,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td>Biological source material which can be characterized by an experiment</td>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+<td>The methods and processes used to generate omics data from a biosample or org...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td>A DataGeneration in which the sequence of DNA or RNA molecules is generated</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -668,8 +668,8 @@ from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: add_date
 domain_of:
-- Biosample
 - DataGeneration
+- Biosample
 range: string
 
 </code></pre>

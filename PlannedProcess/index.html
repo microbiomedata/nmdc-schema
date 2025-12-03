@@ -332,10 +332,10 @@
       click StorageProcess href "../StorageProcess"
     PlannedProcess &lt;|-- ProtocolExecution
       click ProtocolExecution href "../ProtocolExecution"
-    PlannedProcess &lt;|-- MaterialProcessing
-      click MaterialProcessing href "../MaterialProcessing"
     PlannedProcess &lt;|-- DataEmitterProcess
       click DataEmitterProcess href "../DataEmitterProcess"
+    PlannedProcess &lt;|-- MaterialProcessing
+      click MaterialProcessing href "../MaterialProcessing"
 
 
 
@@ -395,8 +395,8 @@
 <li><a href="../CollectingBiosamplesFromSite/">CollectingBiosamplesFromSite</a></li>
 <li><a href="../StorageProcess/">StorageProcess</a></li>
 <li><a href="../ProtocolExecution/">ProtocolExecution</a></li>
-<li><a href="../MaterialProcessing/">MaterialProcessing</a></li>
 <li><a href="../DataEmitterProcess/">DataEmitterProcess</a></li>
+<li><a href="../MaterialProcessing/">MaterialProcessing</a></li>
 </ul>
 </li>
 </ul>
@@ -753,8 +753,8 @@ attributes:
     alias: alternative_identifiers
     owner: PlannedProcess
     domain_of:
-    - MetaboliteIdentification
     - NamedThing
+    - MetaboliteIdentification
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -788,10 +788,6 @@ attributes:
     - FunctionalAnnotationAggMember
     - PeptideQuantification
     - ProteinQuantification
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
@@ -802,6 +798,10 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     range: uriorcurie
     required: true
 class_uri: OBI:0000011

@@ -455,30 +455,6 @@
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
-<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
-<td>range</td>
-<td><a href="./">FailureCategorization</a></td>
-</tr>
-<tr>
-<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
-<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
-<td>range</td>
-<td><a href="./">FailureCategorization</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
-<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
-<td>range</td>
-<td><a href="./">FailureCategorization</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
-<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
-<td>range</td>
-<td><a href="./">FailureCategorization</a></td>
-</tr>
-<tr>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
@@ -498,6 +474,30 @@
 </tr>
 <tr>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
@@ -660,10 +660,6 @@ attributes:
     - FunctionalAnnotationAggMember
     - PeptideQuantification
     - ProteinQuantification
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
@@ -674,6 +670,10 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     range: uriorcurie
     required: true
 class_uri: nmdc:FailureCategorization

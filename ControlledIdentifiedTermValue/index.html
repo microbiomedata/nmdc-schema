@@ -389,6 +389,18 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../GenomeFeature/">GenomeFeature</a></td>
+<td><a href="../feature_category/">feature_category</a></td>
+<td>range</td>
+<td><a href="./">ControlledIdentifiedTermValue</a></td>
+</tr>
+<tr>
+<td><a href="../FunctionalAnnotation/">FunctionalAnnotation</a></td>
+<td><a href="../feature_category/">feature_category</a></td>
+<td>range</td>
+<td><a href="./">ControlledIdentifiedTermValue</a></td>
+</tr>
+<tr>
 <td><a href="../Biosample/">Biosample</a></td>
 <td><a href="../env_broad_scale/">env_broad_scale</a></td>
 <td>range</td>
@@ -415,18 +427,6 @@
 <tr>
 <td><a href="../Biosample/">Biosample</a></td>
 <td><a href="../samp_taxon_id/">samp_taxon_id</a></td>
-<td>range</td>
-<td><a href="./">ControlledIdentifiedTermValue</a></td>
-</tr>
-<tr>
-<td><a href="../GenomeFeature/">GenomeFeature</a></td>
-<td><a href="../feature_category/">feature_category</a></td>
-<td>range</td>
-<td><a href="./">ControlledIdentifiedTermValue</a></td>
-</tr>
-<tr>
-<td><a href="../FunctionalAnnotation/">FunctionalAnnotation</a></td>
-<td><a href="../feature_category/">feature_category</a></td>
 <td>range</td>
 <td><a href="./">ControlledIdentifiedTermValue</a></td>
 </tr>
@@ -534,10 +534,6 @@ attributes:
     - FunctionalAnnotationAggMember
     - PeptideQuantification
     - ProteinQuantification
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
@@ -548,6 +544,10 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     range: uriorcurie
     required: true
 class_uri: nmdc:ControlledIdentifiedTermValue

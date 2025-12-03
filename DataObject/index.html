@@ -527,30 +527,6 @@
 <td><a href="./">DataObject</a></td>
 </tr>
 <tr>
-<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>range</td>
-<td><a href="./">DataObject</a></td>
-</tr>
-<tr>
-<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
-<td><a href="../has_output/">has_output</a></td>
-<td>range</td>
-<td><a href="./">DataObject</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>range</td>
-<td><a href="./">DataObject</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
-<td><a href="../has_output/">has_output</a></td>
-<td>range</td>
-<td><a href="./">DataObject</a></td>
-</tr>
-<tr>
 <td><a href="../DataGeneration/">DataGeneration</a></td>
 <td><a href="../has_output/">has_output</a></td>
 <td>range</td>
@@ -564,6 +540,30 @@
 </tr>
 <tr>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td><a href="../has_output/">has_output</a></td>
+<td>range</td>
+<td><a href="./">DataObject</a></td>
+</tr>
+<tr>
+<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>range</td>
+<td><a href="./">DataObject</a></td>
+</tr>
+<tr>
+<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
+<td><a href="../has_output/">has_output</a></td>
+<td>range</td>
+<td><a href="./">DataObject</a></td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>range</td>
+<td><a href="./">DataObject</a></td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
 <td><a href="../has_output/">has_output</a></td>
 <td>range</td>
 <td><a href="./">DataObject</a></td>
@@ -1008,8 +1008,8 @@ attributes:
     alias: alternative_identifiers
     owner: DataObject
     domain_of:
-    - MetaboliteIdentification
     - NamedThing
+    - MetaboliteIdentification
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -1043,10 +1043,6 @@ attributes:
     - FunctionalAnnotationAggMember
     - PeptideQuantification
     - ProteinQuantification
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
@@ -1057,6 +1053,10 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     range: uriorcurie
     required: true
 class_uri: nmdc:DataObject
