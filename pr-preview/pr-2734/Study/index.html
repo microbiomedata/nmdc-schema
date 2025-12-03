@@ -684,12 +684,6 @@
 <td><a href="./">Study</a></td>
 </tr>
 <tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td><a href="../associated_studies/">associated_studies</a></td>
-<td>range</td>
-<td><a href="./">Study</a></td>
-</tr>
-<tr>
 <td><a href="./">Study</a></td>
 <td><a href="../part_of/">part_of</a></td>
 <td>range</td>
@@ -697,6 +691,12 @@
 </tr>
 <tr>
 <td><a href="../DataGeneration/">DataGeneration</a></td>
+<td><a href="../associated_studies/">associated_studies</a></td>
+<td>range</td>
+<td><a href="./">Study</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
 <td><a href="../associated_studies/">associated_studies</a></td>
 <td>range</td>
 <td><a href="./">Study</a></td>
@@ -1221,9 +1221,9 @@ attributes:
     alias: alternative_names
     owner: Study
     domain_of:
-    - Biosample
     - OntologyClass
     - Study
+    - Biosample
     range: string
     multivalued: true
   alternative_titles:
@@ -1261,8 +1261,8 @@ attributes:
     alias: ecosystem
     owner: Study
     domain_of:
-    - Biosample
     - Study
+    - Biosample
     range: string
   ecosystem_category:
     name: ecosystem_category
@@ -1282,8 +1282,8 @@ attributes:
     alias: ecosystem_category
     owner: Study
     domain_of:
-    - Biosample
     - Study
+    - Biosample
     range: string
   ecosystem_subtype:
     name: ecosystem_subtype
@@ -1302,8 +1302,8 @@ attributes:
     alias: ecosystem_subtype
     owner: Study
     domain_of:
-    - Biosample
     - Study
+    - Biosample
     range: string
   ecosystem_type:
     name: ecosystem_type
@@ -1324,8 +1324,8 @@ attributes:
     alias: ecosystem_type
     owner: Study
     domain_of:
-    - Biosample
     - Study
+    - Biosample
     range: string
   specific_ecosystem:
     name: specific_ecosystem
@@ -1343,8 +1343,8 @@ attributes:
     alias: specific_ecosystem
     owner: Study
     domain_of:
-    - Biosample
     - Study
+    - Biosample
     range: string
   associated_dois:
     name: associated_dois
@@ -1479,8 +1479,8 @@ attributes:
     alias: part_of
     owner: Study
     domain_of:
-    - FieldResearchSite
     - Study
+    - FieldResearchSite
     range: Study
     multivalued: true
     structured_pattern:
@@ -1660,8 +1660,8 @@ attributes:
     alias: alternative_identifiers
     owner: Study
     domain_of:
-    - MetaboliteIdentification
     - NamedThing
+    - MetaboliteIdentification
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -1695,10 +1695,6 @@ attributes:
     - FunctionalAnnotationAggMember
     - PeptideQuantification
     - ProteinQuantification
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
@@ -1709,6 +1705,10 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     range: uriorcurie
     required: true
 class_uri: nmdc:Study

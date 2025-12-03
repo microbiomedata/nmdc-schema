@@ -497,30 +497,6 @@
 <td><a href="./">Protocol</a></td>
 </tr>
 <tr>
-<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
-<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 <td><a href="../protocol_link/">protocol_link</a></td>
 <td>range</td>
@@ -546,6 +522,30 @@
 </tr>
 <tr>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
 <td><a href="../protocol_link/">protocol_link</a></td>
 <td>range</td>
 <td><a href="./">Protocol</a></td>
@@ -709,10 +709,6 @@ attributes:
     - FunctionalAnnotationAggMember
     - PeptideQuantification
     - ProteinQuantification
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
@@ -723,6 +719,10 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     range: uriorcurie
     required: true
   description:
@@ -762,8 +762,8 @@ attributes:
     alias: analysis_type
     owner: Protocol
     domain_of:
-    - Biosample
     - Protocol
+    - Biosample
     slot_group: Sample ID
     range: AnalysisTypeEnum
     recommended: true

@@ -325,10 +325,10 @@
 
     OntologyClass &lt;|-- ChemicalEntity
       click ChemicalEntity href "../ChemicalEntity"
-    OntologyClass &lt;|-- EnvironmentalMaterialTerm
-      click EnvironmentalMaterialTerm href "../EnvironmentalMaterialTerm"
     OntologyClass &lt;|-- FunctionalAnnotationTerm
       click FunctionalAnnotationTerm href "../FunctionalAnnotationTerm"
+    OntologyClass &lt;|-- EnvironmentalMaterialTerm
+      click EnvironmentalMaterialTerm href "../EnvironmentalMaterialTerm"
 
 
 
@@ -363,8 +363,8 @@
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><strong>OntologyClass</strong><ul>
 <li><a href="../ChemicalEntity/">ChemicalEntity</a></li>
-<li><a href="../EnvironmentalMaterialTerm/">EnvironmentalMaterialTerm</a></li>
 <li><a href="../FunctionalAnnotationTerm/">FunctionalAnnotationTerm</a></li>
+<li><a href="../EnvironmentalMaterialTerm/">EnvironmentalMaterialTerm</a></li>
 </ul>
 </li>
 </ul>
@@ -566,9 +566,9 @@ attributes:
     alias: alternative_names
     owner: OntologyClass
     domain_of:
-    - Biosample
     - OntologyClass
     - Study
+    - Biosample
     range: string
     multivalued: true
   relations:
@@ -682,8 +682,8 @@ attributes:
     alias: alternative_identifiers
     owner: OntologyClass
     domain_of:
-    - MetaboliteIdentification
     - NamedThing
+    - MetaboliteIdentification
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -717,10 +717,6 @@ attributes:
     - FunctionalAnnotationAggMember
     - PeptideQuantification
     - ProteinQuantification
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
@@ -731,6 +727,10 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     range: uriorcurie
     required: true
 class_uri: nmdc:OntologyClass

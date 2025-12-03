@@ -326,12 +326,12 @@
       click NamedThing href "../NamedThing"
 
 
+    MaterialEntity &lt;|-- Instrument
+      click Instrument href "../Instrument"
     MaterialEntity &lt;|-- Sample
       click Sample href "../Sample"
     MaterialEntity &lt;|-- Site
       click Site href "../Site"
-    MaterialEntity &lt;|-- Instrument
-      click Instrument href "../Instrument"
 
 
 
@@ -352,9 +352,9 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><strong>MaterialEntity</strong><ul>
+<li><a href="../Instrument/">Instrument</a></li>
 <li><a href="../Sample/">Sample</a></li>
 <li><a href="../Site/">Site</a></li>
-<li><a href="../Instrument/">Instrument</a></li>
 </ul>
 </li>
 </ul>
@@ -524,8 +524,8 @@ attributes:
     alias: alternative_identifiers
     owner: MaterialEntity
     domain_of:
-    - MetaboliteIdentification
     - NamedThing
+    - MetaboliteIdentification
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -559,10 +559,6 @@ attributes:
     - FunctionalAnnotationAggMember
     - PeptideQuantification
     - ProteinQuantification
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
@@ -573,6 +569,10 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     range: uriorcurie
     required: true
 class_uri: nmdc:MaterialEntity
