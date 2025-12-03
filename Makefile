@@ -158,7 +158,36 @@ test-python:
 lint:
 	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
 
-# Run full linting (all rules) on all schema files including materialized patterns.
+# Lint all source schema modules and the materialized schema.
+# - Source modules (except deprecated.yaml): use .linkmllint.yaml
+# - nmdc.yaml and materialized patterns: use .linkmllint-root.yaml (includes tree_root check)
+# This target is suitable for CI/CD pipelines.
+.PHONY: linkml-lint
+linkml-lint: nmdc_schema/nmdc_materialized_patterns.yaml
+	@echo "Linting source schema modules..."
+	@failed=0; \
+	for f in $(SOURCE_SCHEMA_DIR)*.yaml; do \
+		if [ "$$(basename $$f)" = "deprecated.yaml" ]; then \
+			echo "Skipping $$f (deprecated module)"; \
+			continue; \
+		fi; \
+		if [ "$$(basename $$f)" = "nmdc.yaml" ]; then \
+			echo "Linting $$f (with tree_root check)..."; \
+			$(RUN) linkml lint --config .linkmllint-root.yaml "$$f" || failed=1; \
+		else \
+			echo "Linting $$f..."; \
+			$(RUN) linkml lint --config .linkmllint.yaml "$$f" || failed=1; \
+		fi; \
+	done; \
+	echo "Linting materialized schema (with tree_root check)..."; \
+	$(RUN) linkml lint --config .linkmllint-root.yaml nmdc_schema/nmdc_materialized_patterns.yaml || failed=1; \
+	if [ $$failed -eq 1 ]; then \
+		echo "Linting failed"; \
+		exit 1; \
+	fi; \
+	echo "All linting checks passed"
+
+# Run full linting (all rules, no config) on all schema files including materialized patterns.
 # This target is for generating reports to decide which rules to silence.
 # Not included in test target due to many existing warnings.
 .PHONY: linkml-lint-all

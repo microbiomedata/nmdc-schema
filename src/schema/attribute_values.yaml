@@ -7,6 +7,9 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
   - basic_slots
+  - basic_classes  # for OntologyClass used as range
+
+default_range: string
 
 prefixes:
   schema: "http://schema.org/"

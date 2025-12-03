@@ -1,0 +1,33 @@
+# LinkML Schema Linting
+# Runs LinkML linting on all source schema modules and the materialized schema.
+# This is separate from the main test workflow per team preference.
+
+name: LinkML Lint
+
+on: [pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+          cache: 'poetry'
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Build materialized schema
+        run: make nmdc_schema/nmdc_materialized_patterns.yaml
+
+      - name: Run LinkML linting
+        run: make linkml-lint
