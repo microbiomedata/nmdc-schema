@@ -446,6 +446,7 @@ ecosystem: unconstrained text. should be validated against the controlled vocabu
 ecosystem_category: unconstrained text
 ecosystem_subtype: unconstrained text
 ecosystem_type: unconstrained text
+ecosystem_path_id: 6026
 efficiency_percent:
   type: nmdc:QuantityValue
   has_raw_value: xxx

@@ -1166,10 +1166,6 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  ecosystem_path_id:
-    range: string
-    description: A unique id representing the GOLD classifiers associated with a sample.
-
   sample_collection_year:
     range: integer
   sample_collection_month:
