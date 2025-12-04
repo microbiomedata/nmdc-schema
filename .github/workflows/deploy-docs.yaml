@@ -38,10 +38,14 @@ jobs:
           poetry dynamic-versioning
 
       # Note: `make all` includes `gendoc` (via site target), so no separate gendoc step needed
+      - name: Clean previous build artifacts
+        run: make squeaky-clean
+
       - name: Build schema and documentation
-        run: |
-          make squeaky-clean all
-          touch docs/.nojekyll
+        run: make all
+
+      - name: Create .nojekyll file
+        run: touch docs/.nojekyll
 
         # Deploy the docs to GitHub Pages.
         #
