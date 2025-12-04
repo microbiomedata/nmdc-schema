@@ -4,6 +4,11 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# Cancel outdated runs when new commits are pushed to main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-docs:
     runs-on: ubuntu-latest
@@ -32,15 +37,11 @@ jobs:
           poetry self add "poetry-dynamic-versioning[plugin]"
           poetry dynamic-versioning
 
-      - name: Derive files from sources
+      # Note: `make all` includes `gendoc` (via site target), so no separate gendoc step needed
+      - name: Build schema and documentation
         run: |
           make squeaky-clean all
-
-      - name: Generate web-based documentation
-        run: |
-          mkdir -p docs
           touch docs/.nojekyll
-          make gendoc
 
         # Deploy the docs to GitHub Pages.
         #
