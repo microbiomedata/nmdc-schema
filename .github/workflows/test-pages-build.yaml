@@ -37,15 +37,11 @@ jobs:
           poetry self add "poetry-dynamic-versioning[plugin]"
           poetry dynamic-versioning
 
-      - name: Derive files from sources
+      # Note: `make all` includes `gendoc` (via site target), so no separate gendoc step needed
+      - name: Build schema and documentation
         run: |
           make squeaky-clean all
-
-      - name: Generate web-based documentation
-        run: |
-          mkdir -p docs
           touch docs/.nojekyll
-          make gendoc
           poetry run mkdocs build -d site
 
       - name: Deploy preview
