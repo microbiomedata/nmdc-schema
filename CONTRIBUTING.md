@@ -127,7 +127,9 @@ The project uses two levels of schema linting:
 
 1. **`linkml-validate-schema`** - Validates schema files against the LinkML metamodel (catches structural errors like incorrect types). This runs as part of `make test`.
 
-2. **`linkml-lint`** - Full rules-based linting that checks naming conventions, documentation, and best practices. This runs only in CI via a separate GitHub Action to provide clear feedback on PRs.
+2. **`linkml-lint`** - Full rules-based linting that checks naming conventions, documentation, and best practices. This runs in CI after `make test` completes.
+
+In CI, the main workflow runs: `make squeaky-clean all test linkml-lint`
 
 To run full linting locally before pushing:
 ```bash
