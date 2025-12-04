@@ -6,6 +6,11 @@ name: LinkML Lint
 
 on: [pull_request]
 
+# Cancel outdated runs when new commits are pushed to the same PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     runs-on: ubuntu-latest

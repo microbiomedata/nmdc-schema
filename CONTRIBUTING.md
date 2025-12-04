@@ -120,6 +120,27 @@ While all PRs will be automatically checked using GitHub actions, core developer
 how to deploy a test version of the schema documentation. This requires some basic Python installation (e.g poetry)
 
  - Contributors should be comfortable running makefile targets, like `squeaky-clean`, `all`, `test`
+
+#### Schema Linting
+
+The project uses two levels of schema linting:
+
+1. **`linkml-validate-schema`** - Validates schema files against the LinkML metamodel (catches structural errors like incorrect types). This runs as part of `make test`.
+
+2. **`linkml-lint`** - Full rules-based linting that checks naming conventions, documentation, and best practices. This runs only in CI via a separate GitHub Action to provide clear feedback on PRs.
+
+To run full linting locally before pushing:
+```bash
+make linkml-lint
+```
+
+To generate a comprehensive linting report (all rules, no suppressions):
+```bash
+make linkml-lint-all
+# Report saved to local/linkml-lint-all.log
+```
+
+See `.linkmllint.yaml` and `.linkmllint-root.yaml` for the linting configuration.
  - Anyone who is involved in writing migrations or otherwise checking data from MongoDB against the schema should be comfortable running make `make-rdf`.
  - The main [Makefile](Makefile) should in general not be edited. Instead, edits should be made to [project.Makefile](project.Makefile) (advanced contributors only)
 
