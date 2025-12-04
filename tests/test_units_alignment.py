@@ -13,6 +13,23 @@ APPROVED_UNITS_ALIGNMENT_EXCUSES = {
     "pending_analysis"        # Temporary excuse during development
 }
 
+# Frozen list of slots allowed to have units_alignment_excuse annotations.
+# New slots should use storage_units instead of excuses.
+# To remove a slot from this list, add proper storage_units annotation to it.
+ALLOWED_SLOTS_WITH_UNITS_EXCUSE = {
+    "api",                 # non_ucum_unit
+    "biomaterial_purity",  # pending_analysis
+    "concentration",       # pending_analysis
+    "efficiency_percent",  # mixs_inconsistent
+    "exp_pipe",            # pending_analysis
+    "inside_lux",          # mixs_inconsistent
+    "microbial_biomass",   # complex_unit
+    "occup_density_samp",  # pending_analysis
+    "rel_humidity_out",    # mixs_inconsistent
+    "soil_text_measure",   # pending_analysis
+    "value",               # pending_analysis
+}
+
 
 class TestUnitsAlignment(unittest.TestCase):
 
@@ -157,4 +174,40 @@ class TestUnitsAlignment(unittest.TestCase):
                         msg=f"Found {len(misplaced_annotations)} non-QuantityValue slots with units annotations. "
                             f"Only QuantityValue slots should have storage_units or units_alignment_excuse annotations. "
                             f"Misplaced annotations: {misplaced_annotations}")
+
+    def test_no_new_units_alignment_excuses(self):
+        """Test that no new slots are given units_alignment_excuse annotations.
+
+        The list of slots with units_alignment_excuse is frozen. New QuantityValue slots
+        should have proper storage_units annotations instead of excuses.
+
+        To fix a slot that has an excuse:
+        1. Add a storage_units annotation with the correct UCUM unit(s)
+        2. Remove the units_alignment_excuse annotation
+        3. Remove the slot from ALLOWED_SLOTS_WITH_UNITS_EXCUSE in this file
+
+        If you believe a new slot genuinely needs an excuse, discuss with the team
+        before adding it to ALLOWED_SLOTS_WITH_UNITS_EXCUSE.
+        """
+        schema_view = SchemaView(SCHEMA_FILE)
+        new_excused_slots = []
+
+        for slot_name in schema_view.all_slots():
+            slot = schema_view.get_slot(slot_name)
+            if not slot or not slot.annotations:
+                continue
+
+            if 'units_alignment_excuse' in slot.annotations:
+                if slot_name not in ALLOWED_SLOTS_WITH_UNITS_EXCUSE:
+                    excuse_value = slot.annotations['units_alignment_excuse'].value
+                    new_excused_slots.append((slot_name, excuse_value))
+
+        new_excused_slots.sort()
+
+        self.assertEqual([], new_excused_slots,
+                        msg=f"Found {len(new_excused_slots)} NEW slots with units_alignment_excuse. "
+                            f"New slots should use storage_units instead of excuses. "
+                            f"If an excuse is genuinely needed, add the slot to ALLOWED_SLOTS_WITH_UNITS_EXCUSE "
+                            f"in tests/test_units_alignment.py after team discussion. "
+                            f"New excused slots: {new_excused_slots}")
     
