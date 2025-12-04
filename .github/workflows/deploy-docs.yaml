@@ -4,6 +4,11 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# Cancel outdated runs when new commits are pushed to main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-docs:
     runs-on: ubuntu-latest
