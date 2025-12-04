@@ -38,8 +38,7 @@ curies = "^0.9.0"
 deprecated = "^1"
 jsonasobj2 = "^1"
 jsonschema = "^4"
-linkml = "^1.9.6"
-linkml-runtime = "^1.9.5"
+linkml = {version = "1.10.0rc1", allow-prereleases = true}
 pymongo = "^4.7.2"
 python-dotenv = "*"
 pyyaml = "^6"
@@ -161,3 +160,6 @@ testpaths = ["tests"]
 extend_exclude = [
     "nmdc_schema/nmdc-pydantic.py"
 ]
+
+[tool.deptry.package_module_name_map]
+linkml = ["linkml", "linkml_runtime"]

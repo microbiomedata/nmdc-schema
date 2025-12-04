@@ -1396,14 +1396,14 @@ regex = ["regex"]
 
 [[package]]
 name = "linkml"
-version = "1.9.6"
+version = "1.10.0rc1"
 description = "Linked Open Data Modeling Language"
 optional = false
 python-versions = ">=3.9"
 groups = ["main", "dev"]
 files = [
-    {file = "linkml-1.9.6-py3-none-any.whl", hash = "sha256:4ac3d2b7b6ea38c9da70e264a434977281a655f5e6040b33e65be76c63ab95cd"},
-    {file = "linkml-1.9.6.tar.gz", hash = "sha256:d2ef74bbb52bf5e48b67b5d9319ca2e4acb8184dd40bf43d00635222b2dc1d4c"},
+    {file = "linkml-1.10.0rc1-py3-none-any.whl", hash = "sha256:6a86654c9ec7732de4674e9bcae9e081492fd9f0501df6feffc3a3fc0ebe63c4"},
+    {file = "linkml-1.10.0rc1.tar.gz", hash = "sha256:c8c802d8b6bc6a4a852061a2d67071c8633987a21fd2b672d4ecec4db59104ca"},
 ]
 
 [package.dependencies]
@@ -4379,4 +4379,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "27cf425fe5f2c03c3f1dc6fcfa8ab225406d0bfa6a6711044b47319e4f0e9d09"
+content-hash = "202363e31d91200153b9ba43a1f2dee0f3e6d91975f104d6c90a31bb867a7848"
