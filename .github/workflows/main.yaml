@@ -42,7 +42,19 @@ jobs:
         run: poetry install
 
       #----------------------------------------------
-      #              run test suite
+      #              build, test, and quality checks
       #----------------------------------------------
+      - name: Clean previous build artifacts
+        run: make squeaky-clean
+
+      - name: Build schema artifacts
+        run: make all
+
       - name: Run tests
-        run: make squeaky-clean all test linkml-lint
+        run: make test
+
+      - name: Run LinkML linting
+        run: make linkml-lint
+
+      - name: Check dependencies (deptry)
+        run: make check-dependencies
