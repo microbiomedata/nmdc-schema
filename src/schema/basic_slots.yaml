@@ -34,17 +34,6 @@ default_range: string
 
 slots:
 
-  test_slot_delete_me:
-    range: string
-    deprecated: "This slot was added to test documentation generation. Delete after verifying docs work."
-    description: >-
-      A temporary test slot to verify that documentation generation workflows are functioning correctly
-      after GitHub Actions cleanup (PR #2752). This slot should be removed after confirming that
-      the docs preview and deployment work as expected.
-    comments:
-      - "Added for issue #2751"
-      - "If you see this in production docs, something went wrong!"
-
   processing_institution_workflow_metadata:
     range: string
     description: >- 
