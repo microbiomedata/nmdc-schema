@@ -31,7 +31,9 @@ def create_unmapped_ncbi_mapping_file(tsv_output_filepath):
         "Biosample",
         "Extraction",
         "LibraryPreparation",
-        "OmicsProcessing",
+        "DataGeneration",
+        "NucleotideSequencing",
+        "MassSpectrometry",
         "DataObject",
     ]
 
@@ -66,7 +68,7 @@ def create_unmapped_ncbi_mapping_file(tsv_output_filepath):
 # ==================================================================================== #
 # Load dataframe containing all the slots from the NMDC schema that need to be mapped
 # to "names" of NCBI BioSample Attributes. The slots that are being mapped belong to
-# the following classes: Biosample, Extraction, LibraryPreparation, OmicsProcessing,
+# the following classes: Biosample, Extraction, LibraryPreparation, DataGeneration,
 # DataObject. The "names" of the NCBI BioSample Attributes can be either the
 # harmonized name, synonym, or attribute name (display name)
 # The file at assets/ncbi_mappings/ncbi_attribute_mappings.tsv has been created by
@@ -160,7 +162,9 @@ def ignore_import_schema_slots(tsv_filepath):
         "Biosample",
         "Extraction",
         "LibraryPreparation",
-        "OmicsProcessing",
+        "DataGeneration",
+        "NucleotideSequencing",
+        "MassSpectrometry",
         "DataObject",
     ]
     imports_to_be_ignored = [
