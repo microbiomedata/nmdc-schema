@@ -3648,6 +3648,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../ecosystem_path_id/">ecosystem_path_id</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>A unique id representing the GOLD classifiers associated with a sample</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../add_date/">add_date</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The date on which the information was added to the database</td>
@@ -4553,6 +4559,7 @@ slots:
 - ecosystem_type
 - ecosystem_subtype
 - specific_ecosystem
+- ecosystem_path_id
 - add_date
 - community
 - habitat
@@ -18554,6 +18561,20 @@ attributes:
     - Study
     - Biosample
     range: string
+  ecosystem_path_id:
+    name: ecosystem_path_id
+    description: A unique id representing the GOLD classifiers associated with a sample.
+    examples:
+    - value: '6026'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://gold.jgi.doe.gov/ecosystem_classification
+    rank: 1000
+    alias: ecosystem_path_id
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: integer
   add_date:
     name: add_date
     description: The date on which the information was added to the database.

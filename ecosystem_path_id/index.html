@@ -520,9 +520,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applicable Classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      See Also
     </span>
   </a>
   
@@ -594,9 +621,43 @@
 <p>URI: <a href="https://w3id.org/nmdc/ecosystem_path_id">nmdc:ecosystem_path_id</a></p>
 <!-- no inheritance hierarchy -->
 
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td>Biological source material which can be characterized by an experiment</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../Integer/">Integer</a></li>
+</ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6026</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://gold.jgi.doe.gov/ecosystem_classification">https://gold.jgi.doe.gov/ecosystem_classification</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -623,10 +684,16 @@
 
 <pre><code class="language-yaml">name: ecosystem_path_id
 description: A unique id representing the GOLD classifiers associated with a sample.
+examples:
+- value: '6026'
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://gold.jgi.doe.gov/ecosystem_classification
 rank: 1000
 alias: ecosystem_path_id
-range: string
+domain_of:
+- Biosample
+range: integer
 
 </code></pre>
 
