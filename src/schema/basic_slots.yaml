@@ -258,7 +258,7 @@ slots:
     range: integer
     description: A unique id representing the GOLD classifiers associated with a sample.
     examples:
-      - value: 6026
+      - value: "6026"
     see_also:
     - https://gold.jgi.doe.gov/ecosystem_classification  
 
