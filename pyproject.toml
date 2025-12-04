@@ -160,3 +160,6 @@ testpaths = ["tests"]
 extend_exclude = [
     "nmdc_schema/nmdc-pydantic.py"
 ]
+
+[tool.deptry.package_module_name_map]
+linkml = ["linkml", "linkml_runtime"]
