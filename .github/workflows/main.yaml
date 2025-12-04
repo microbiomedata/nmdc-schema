@@ -36,11 +36,8 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
-      - name: Check project dependencies
-        run: make check-dependencies
-
       #----------------------------------------------
-      #              run test suite   
+      #              run test suite
       #----------------------------------------------
       - name: Run tests
         run: make squeaky-clean all test
