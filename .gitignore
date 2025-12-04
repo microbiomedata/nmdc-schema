@@ -144,8 +144,15 @@ venv.bak/
 # mkdocs documentation
 /site
 
-# swap files
+# Vim swap files
+*.swp
 *.swo
+
+# MS Office temporary files
+~$*
+
+# LibreOffice lock files
+.~lock.*#
 
 # mypy
 .mypy_cache/
