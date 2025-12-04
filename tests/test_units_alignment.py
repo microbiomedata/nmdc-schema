@@ -210,4 +210,3 @@ class TestUnitsAlignment(unittest.TestCase):
                             f"If an excuse is genuinely needed, add the slot to ALLOWED_SLOTS_WITH_UNITS_EXCUSE "
                             f"in tests/test_units_alignment.py after team discussion. "
                             f"New excused slots: {new_excused_slots}")
-    
