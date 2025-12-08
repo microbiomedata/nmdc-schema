@@ -584,9 +584,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-structured-pattern-deletions-7-slots" class="md-nav__link">
+  <a href="#5-method-slot-consistency-_meth-slots" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Structured Pattern Deletions (7 slots)
+      5. Method Slot Consistency (_meth slots)
     </span>
   </a>
   
@@ -670,6 +670,15 @@
   <a href="#validation-results" class="md-nav__link">
     <span class="md-ellipsis">
       Validation Results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legacy-mixs-slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legacy MIxS Slots
     </span>
   </a>
   
@@ -789,8 +798,15 @@
 </tr>
 </tbody>
 </table>
-<h3 id="5-structured-pattern-deletions-7-slots">5. Structured Pattern Deletions (7 slots)</h3>
-<p>GSC MIxS commit <code>0368da8</code> has <code>structured_pattern: ^{PMID}|{DOI}|{URL}$</code> on method slots, but NMDC production data contains free-text values:</p>
+<h3 id="5-method-slot-consistency-_meth-slots">5. Method Slot Consistency (<code>_meth</code> slots)</h3>
+<p>GSC MIxS defines <code>_meth</code> slots with <code>string</code> range and <code>structured_pattern: ^{PMID}|{DOI}|{URL}$</code>. The default NMDC pipeline converts all <code>string</code> → <code>TextValue</code>, but we restore <code>string</code> range for <code>_meth</code> slots to:
+- Be faithful to GSC MIxS
+- Enable <code>structured_pattern</code> validation for new data</p>
+<p><strong>Slots set to string range</strong> (9 slots with no production data):
+<code>al_sat_meth</code>, <code>alkalinity_method</code>, <code>biocide_admin_method</code>, <code>cur_vegetation_meth</code>, <code>heavy_metals_meth</code>, <code>horizon_meth</code>, <code>local_class_meth</code>, <code>samp_sort_meth</code>, <code>seq_meth</code>, <code>tot_org_c_meth</code></p>
+<p><strong>Slots kept as TextValue</strong> (2 slots with production data as TextValue objects):
+<code>ph_meth</code>, <code>soil_type_meth</code> - These slots have production data stored as <code>{type: nmdc:TextValue, has_raw_value: ...}</code> objects, so they must remain TextValue range until a data migration is performed.</p>
+<p><strong>Structured Pattern Deletions</strong> (6 slots with non-conforming production data):</p>
 <table>
 <thead>
 <tr>
@@ -933,17 +949,48 @@
 5. Run migration on MongoDB</p>
 <h2 id="validation-results">Validation Results</h2>
 <p>After migration, all 13,847 production biosamples validate successfully against the updated schema.</p>
+<h2 id="legacy-mixs-slots">Legacy MIxS Slots</h2>
+<p>Three slots were removed from GSC MIxS commit <code>0368da8</code> but are retained in NMDC for backward compatibility with <code>submission-schema</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>host_family_relation</code></td>
+<td><code>string</code> (multivalued)</td>
+<td>Familial relationships to other hosts</td>
+</tr>
+<tr>
+<td><code>salinity_meth</code></td>
+<td><code>string</code> with <code>structured_pattern</code></td>
+<td>Reference or method for salinity determination</td>
+</tr>
+<tr>
+<td><code>soil_text_measure</code></td>
+<td><code>string</code></td>
+<td>Soil texture as % sand/silt/clay</td>
+</tr>
+</tbody>
+</table>
+<p>These slots are defined directly in <code>src/schema/nmdc.yaml</code> (not imported from MIxS) and have no production data.</p>
 <h2 id="files-modified">Files Modified</h2>
 <ul>
 <li><code>project.Makefile</code> - Updated MIxS import URL and added documentation</li>
 <li><code>assets/yq-for-mixs_subset_modified.txt</code> - All yq transformations</li>
-<li><code>src/schema/nmdc.yaml</code> - Added MIxS settings for pattern interpolation</li>
+<li><code>src/schema/nmdc.yaml</code> - Added MIxS settings for pattern interpolation and legacy slots</li>
 <li><code>src/schema/core.yaml</code> - Removed retired slot references</li>
 <li><code>src/data/valid/*.yaml</code> - Updated test data for new constraints</li>
 </ul>
 <h2 id="related-issues">Related Issues</h2>
 <ul>
 <li><a href="https://github.com/microbiomedata/nmdc-schema/issues/1368">#1368</a> - Original MIxS migration tracking issue</li>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2772">#2772</a> - TextValue to enum migration task</li>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2774">#2774</a> - Migrate ph_meth and soil_type_meth from TextValue to string</li>
 </ul>
 
 

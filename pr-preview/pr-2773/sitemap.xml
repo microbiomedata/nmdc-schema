@@ -2425,6 +2425,10 @@
          <lastmod>2025-12-08</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/host_family_relation/</loc>
+         <lastmod>2025-12-08</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/host_genotype/</loc>
          <lastmod>2025-12-08</lastmod>
     </url>
@@ -3585,6 +3589,10 @@
          <lastmod>2025-12-08</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/salinity_meth/</loc>
+         <lastmod>2025-12-08</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/salt_regm/</loc>
          <lastmod>2025-12-08</lastmod>
     </url>
@@ -3914,6 +3922,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/soil_horizon/</loc>
+         <lastmod>2025-12-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/soil_text_measure/</loc>
          <lastmod>2025-12-08</lastmod>
     </url>
     <url>

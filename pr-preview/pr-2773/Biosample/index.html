@@ -817,7 +817,7 @@
 </tr>
 <tr>
 <td><a href="../al_sat_meth/">al_sat_meth</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Reference or method used in determining Aluminum saturation</td>
 <td>direct</td>
 </tr>
@@ -829,7 +829,7 @@
 </tr>
 <tr>
 <td><a href="../alkalinity_method/">alkalinity_method</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Method used for alkalinity measurement</td>
 <td>direct</td>
 </tr>
@@ -997,7 +997,7 @@
 </tr>
 <tr>
 <td><a href="../biocide_admin_method/">biocide_admin_method</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
 <td>Method of biocide administration (dose, frequency, duration, time elapsed bet...</td>
 <td>direct</td>
 </tr>
@@ -1249,7 +1249,7 @@
 </tr>
 <tr>
 <td><a href="../cur_vegetation_meth/">cur_vegetation_meth</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Reference or method used in vegetation classification</td>
 <td>direct</td>
 </tr>
@@ -1801,7 +1801,7 @@
 </tr>
 <tr>
 <td><a href="../heavy_metals_meth/">heavy_metals_meth</a></td>
-<td>* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Reference or method used in determining heavy metals</td>
 <td>direct</td>
 </tr>
@@ -1819,7 +1819,7 @@
 </tr>
 <tr>
 <td><a href="../horizon_meth/">horizon_meth</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Reference or method used in determining the horizon</td>
 <td>direct</td>
 </tr>
@@ -1875,6 +1875,12 @@
 <td><a href="../host_dry_mass/">host_dry_mass</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Measurement of dry mass</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_family_relation/">host_family_relation</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>Familial relationships to other hosts in the same study; can include multiple...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -2095,7 +2101,7 @@
 </tr>
 <tr>
 <td><a href="../local_class_meth/">local_class_meth</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Reference or method used in determining the local soil classification</td>
 <td>direct</td>
 </tr>
@@ -2700,6 +2706,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../salinity_meth/">salinity_meth</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Reference or method used in determining salinity</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../salt_regm/">salt_regm</a></td>
 <td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving use of salts as supplement to liquid an...</td>
@@ -2785,7 +2797,7 @@
 </tr>
 <tr>
 <td><a href="../samp_sort_meth/">samp_sort_meth</a></td>
-<td>* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Method by which samples are sorted; open face filter collecting total suspend...</td>
 <td>direct</td>
 </tr>
@@ -2997,6 +3009,12 @@
 <td><a href="../soil_horizon/">soil_horizon</a></td>
 <td>0..1 <br/> <a href="../SoilHorizonEnum/">SoilHorizonEnum</a></td>
 <td>Specific layer in the land area which measures parallel to the soil surface a...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../soil_text_measure/">soil_text_measure</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The relative proportion of different grain sizes of mineral particles in a so...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -3271,7 +3289,7 @@
 </tr>
 <tr>
 <td><a href="../tot_org_c_meth/">tot_org_c_meth</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Reference or method used in determining total organic carbon</td>
 <td>direct</td>
 </tr>
@@ -4246,6 +4264,7 @@ slots:
 - host_common_name
 - host_diet
 - host_dry_mass
+- host_family_relation
 - host_genotype
 - host_growth_cond
 - host_height
@@ -4383,6 +4402,7 @@ slots:
 - root_med_solid
 - root_med_suppl
 - salinity
+- salinity_meth
 - salt_regm
 - samp_capt_status
 - samp_collec_device
@@ -4433,6 +4453,7 @@ slots:
 - sludge_retent_time
 - sodium
 - soil_horizon
+- soil_text_measure
 - soil_texture_meth
 - soil_type
 - soil_type_meth
@@ -5792,7 +5813,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: ^{PMID}|{DOI}|{URL}$
       interpolated: true
@@ -5841,7 +5862,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    range: TextValue
+    range: string
   alkyl_diethers:
     name: alkyl_diethers
     annotations:
@@ -6507,7 +6528,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    range: TextValue
+    range: string
     recommended: true
   biol_stat:
     name: biol_stat
@@ -7459,7 +7480,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: ^{PMID}|{DOI}|{URL}$
       interpolated: true
@@ -9545,7 +9566,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    range: TextValue
+    range: string
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -9619,7 +9640,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: ^{PMID}|{DOI}|{URL}$
       interpolated: true
@@ -9834,6 +9855,29 @@ attributes:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+  host_family_relation:
+    name: host_family_relation
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: relationship type;arbitrary identifier
+    description: Familial relationships to other hosts in the same study; can include
+      multiple relationships.
+    title: host family relationship
+    comments:
+    - Legacy MIxS slot removed from GSC MIxS commit 0368da8. Retained for submission-schema
+      compatibility.
+    examples:
+    - value: offspring;Mussel25
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0000872
+    alias: host_family_relation
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: string
+    multivalued: true
   host_genotype:
     name: host_genotype
     description: Observed genotype
@@ -10669,7 +10713,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: ^{PMID}|{DOI}|{URL}$
       interpolated: true
@@ -13006,6 +13050,29 @@ attributes:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+  salinity_meth:
+    name: salinity_meth
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: PMID,DOI or url
+    description: Reference or method used in determining salinity.
+    title: salinity method
+    comments:
+    - Legacy MIxS slot removed from GSC MIxS commit 0368da8. Retained for submission-schema
+      compatibility.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0000341
+    alias: salinity_meth
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: string
+    multivalued: false
+    structured_pattern:
+      syntax: ^{PMID}|{DOI}|{URL}$
+      interpolated: true
   salt_regm:
     name: salt_regm
     annotations:
@@ -13349,7 +13416,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    range: TextValue
+    range: string
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -14162,6 +14229,33 @@ attributes:
     domain_of:
     - Biosample
     range: SoilHorizonEnum
+  soil_text_measure:
+    name: soil_text_measure
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: measurement value
+    description: The relative proportion of different grain sizes of mineral particles
+      in a soil, as described using a standard system; express as % sand (50 um to
+      2 mm), silt (2 um to 50 um), and clay (&lt;2 um) with textural name (e.g., silty
+      clay loam) optional.
+    title: soil texture measurement
+    comments:
+    - Legacy MIxS slot removed from GSC MIxS commit 0368da8. Retained for submission-schema
+      compatibility.
+    - Old MIxS used 'quantity value' range but this is clearly structured text, not
+      a single quantity.
+    examples:
+    - value: ite loam; 20% sand; 40% silt; 40% clay
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0000335
+    alias: soil_text_measure
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: string
+    multivalued: false
   soil_texture_meth:
     name: soil_texture_meth
     description: Reference or method used in determining soil texture
@@ -15264,7 +15358,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: ^{PMID}|{DOI}|{URL}$
       interpolated: true
