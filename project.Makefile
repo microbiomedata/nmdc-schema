@@ -106,6 +106,13 @@ src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_minus_1.yaml
 	# Step 11: Remove redundant slot names
 	# Step 13: Remove redundant subset names
 	# Additional: Remove redundant aliases when they duplicate title
+	#
+	# IMPORTANT: Settings are deleted from mixs.yaml (del(.settings) at end of yq pipeline).
+	# The sheets-and-friends do_shuttle tool does not import settings from the source schema.
+	# MIxS structured_pattern syntax uses placeholders like {scientific_float}, {text}, {URL}
+	# that require settings for pattern interpolation. These settings are defined in
+	# src/schema/nmdc.yaml instead, so they're available during schema materialization.
+	# See: https://github.com/microbiomedata/nmdc-schema/issues/XXXX
 	yq eval 'del(.source_file, .definition_uri, .imported_from, .metamodel_version, .source_file_date, .source_file_size, .generation_date) | del(.. | select(has("from_schema")).from_schema) | del(.. | select(has("owner")).owner) | del(.. | select(has("domain_of")).domain_of) | del(.. | select(has("is_usage_slot")).is_usage_slot) | del(.. | select(has("usage_slot_name")).usage_slot_name) | (.classes[] | select(has("annotations")).annotations) |= map_values(.value) | .prefixes |= map_values(.prefix_reference) | (.settings // {}) |= map_values(.setting_value) | (.slots[] | select(has("annotations")).annotations) |= map_values(.value) | del(.classes.[].name) | del(.classes.[].slot_usage.[].name) | del(.enums.[].name) | del(.enums.[].permissible_values.[].text) | del(.slots[] | select(.domain != "MixsCompliantData") | .domain) | del(.slots.[].name) | del(.subsets.[].name) | del(.slots[] | select(.aliases and .title and (.aliases | length == 1) and .aliases[0] == .title) | .aliases) | del(.classes) | del(.settings)' $(word 2,$^) > $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
