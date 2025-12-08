@@ -2856,7 +2856,7 @@ biosample_set:
     water_cont_soil_meth: https://doi.org/10.2136/sssabookser5.1.2ed.c21
     water_content:
       - 25.5 g water/g dry soil
-      - 30.2 - 35.1 percent
+      - 30.2 percent
     water_current:
       type: nmdc:QuantityValue
       has_raw_value: xxx
