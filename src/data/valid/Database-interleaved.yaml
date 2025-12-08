@@ -1490,27 +1490,20 @@ biosample_set:
       has_raw_value: "9 gram per gram"
       has_unit: g/g
       type: nmdc:QuantityValue
-    add_recov_method:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    add_recov_method: Gas Injection;2023-05-15
     additional_info:
       type: nmdc:TextValue
       has_raw_value: xxx
-    address:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    address: 123 Main Street
     adj_room:
       type: nmdc:TextValue
       has_raw_value: xxx
-    aero_struc:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    aero_struc: glider
     agrochem_addition:
       - type: nmdc:TextValue
         has_raw_value: lime;1 kg/acre;2022-99-16T16:05:42+0000
     air_PM_concen:
-      - type: nmdc:TextValue
-        has_raw_value: xxx
+      - particulate matter 2.5;10 microgram per cubic meter
     air_temp:
       has_numeric_value: 20.0
       has_raw_value: "20 degree Celsius"
@@ -1524,17 +1517,13 @@ biosample_set:
       has_raw_value: 19 %
       has_unit: '%'
       type: nmdc:QuantityValue
-    al_sat_meth:
-      type: nmdc:TextValue
-      has_raw_value: https://journaljeai.com/index.php/JEAI/article/view/583
+    al_sat_meth: https://journaljeai.com/index.php/JEAI/article/view/583
     alkalinity:
       type: nmdc:QuantityValue
       has_raw_value: 50 milligram per liter
       has_unit: mg/L
       has_numeric_value: 50.0
-    alkalinity_method:
-      type: nmdc:TextValue
-      has_raw_value: https://wrrc.umass.edu/research/projects/acid-rain-monitoring-project/analysis-method-ph-and-alkalinity
+    alkalinity_method: https://wrrc.umass.edu/research/projects/acid-rain-monitoring-project/analysis-method-ph-and-alkalinity
     alkyl_diethers:
       type: nmdc:QuantityValue
       has_raw_value: 0.005 mole per liter
@@ -1642,12 +1631,8 @@ biosample_set:
       type: nmdc:QuantityValue
       has_raw_value: xxx
       has_unit: mg/L
-    biocide:
-      type: nmdc:TextValue
-      has_raw_value: xxx
-    biocide_admin_method:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    biocide: sodium hypochlorite
+    biocide_admin_method: https://doi.org/10.1016/j.watres.2019.115388
     biol_stat: wild
     biomass:
       - type: nmdc:TextValue
@@ -1655,7 +1640,7 @@ biosample_set:
     biotic_regm:
       type: nmdc:TextValue
       has_raw_value: sample inoculated with Rhizobium spp. Culture
-    biotic_relationship: parasite
+    biotic_relationship: parasitism
     bishomohopanol:
       type: nmdc:QuantityValue
       has_raw_value: 14 microgram per liter
@@ -1682,9 +1667,7 @@ biosample_set:
       has_raw_value: 7 years
       has_unit: a
       type: nmdc:QuantityValue
-    built_struc_set:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    built_struc_set: urban
     built_struc_type:
       type: nmdc:TextValue
       has_raw_value: xxx
@@ -1713,18 +1696,14 @@ biosample_set:
       has_unit: m2
     ceil_cond: new
     ceil_finish_mat: drywall
-    ceil_struc:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    ceil_struc: concrete
     ceil_texture: crows feet
     ceil_thermal_mass:
       type: nmdc:QuantityValue
       has_raw_value: xxx
       has_unit: J/K
     ceil_type: cathedral
-    ceil_water_mold:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    ceil_water_mold: no presence of mold visible
     chem_administration:
       - type: nmdc:ControlledTermValue
         has_raw_value: agar [CHEBI:2509];2018-05-11T20:00Z
@@ -1736,9 +1715,7 @@ biosample_set:
       has_raw_value: xxx
       has_unit: mg/L
     chem_treat_method: xxx
-    chem_treatment:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    chem_treatment: chlorination
     chloride:
       type: nmdc:QuantityValue
       has_raw_value: 5000 milligram per liter
@@ -1773,9 +1750,7 @@ biosample_set:
     cur_vegetation:
       type: nmdc:TextValue
       has_raw_value: MIxS doesn't provide any guidance more specific than "text"
-    cur_vegetation_meth:
-      type: nmdc:TextValue
-      has_raw_value: https://link.springer.com/article/10.1023/A:1011975321668
+    cur_vegetation_meth: https://link.springer.com/article/10.1023/A:1011975321668
     date_last_rain:
       type: nmdc:TimestampValue
       has_raw_value: xxx
@@ -1859,9 +1834,7 @@ biosample_set:
     door_type: composite
     door_type_metal: collapsible
     door_type_wood: battened
-    door_water_mold:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    door_water_mold: no presence of mold visible
     down_par:  # example: 28.71 microEinstein per square meter per second (Einstein is not in UCUM)
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -1923,9 +1896,7 @@ biosample_set:
     filter_type:
       - HEPA
     fire: 2000-11 to 2000-12
-    fireplace_type:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    fireplace_type: gas burning
     flooding: '2000-01-15'
     floor_age:
       has_numeric_value: 5
@@ -1970,9 +1941,7 @@ biosample_set:
       - type: nmdc:TextValue
         has_raw_value: xxx
     gender_restroom: female
-    genetic_mod:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    genetic_mod: https://example.org/not-genetically-modified
     geo_loc_name:
       type: nmdc:TextValue
       has_raw_value: 'USA: Maryland, Bethesda'
@@ -2022,8 +1991,7 @@ biosample_set:
       - type: nmdc:TextValue
         has_raw_value: arsenic;0.09 micrograms per gram
     heavy_metals_meth:
-      - type: nmdc:TextValue
-        has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
+      - https://link.springer.com/article/10.1007/s42452-019-1578-x
     height_carper_fiber:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -2031,9 +1999,7 @@ biosample_set:
     herbicide_regm:
       - type: nmdc:TextValue
         has_raw_value: xxx
-    horizon_meth:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    horizon_meth: https://doi.org/10.1016/j.geoderma.2019.113898
     host_age:
       has_numeric_value: 3
       has_raw_value: 3 years
@@ -2065,8 +2031,6 @@ biosample_set:
       type: nmdc:QuantityValue
       has_raw_value: xxx
       has_unit: kg
-    host_family_relation:
-      - xxx
     host_genotype:
       type: nmdc:TextValue
       has_raw_value: xxx
@@ -2078,8 +2042,7 @@ biosample_set:
       has_raw_value: xxx
       has_unit: cm
     host_last_meal:
-      - type: nmdc:TextValue
-        has_raw_value: xxx
+      - corn feed;P5H
     host_length:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -2172,9 +2135,7 @@ biosample_set:
     link_addit_analys:
       type: nmdc:TextValue
       has_raw_value: https://pubmed.ncbi.nlm.nih.gov/2315679/
-    link_class_info:
-      type: nmdc:TextValue
-      has_raw_value: https://wisconsindot.gov/Documents/doing-bus/eng-consultants/cnslt-rsrces/geotechmanual/gt-03-03.pdf
+    link_class_info: https://wisconsindot.gov/Documents/doing-bus/eng-consultants/cnslt-rsrces/geotechmanual/gt-03-03.pdf
     link_climate_info:
       type: nmdc:TextValue
       has_raw_value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
@@ -2182,9 +2143,7 @@ biosample_set:
     local_class:
       type: nmdc:TextValue
       has_raw_value: jicama soil
-    local_class_meth:
-      type: nmdc:TextValue
-      has_raw_value: https://www.sciencedirect.com/science/article/abs/pii/S0016706105003083
+    local_class_meth: https://www.sciencedirect.com/science/article/abs/pii/S0016706105003083
     magnesium:
       type: nmdc:QuantityValue
       has_raw_value: 52.8 micromole per kilogram
@@ -2212,14 +2171,13 @@ biosample_set:
       has_numeric_value: 1.0
     mech_struc: subway
     mechanical_damage:
-      - type: nmdc:TextValue
-        has_raw_value: xxx
+      - leaf damage;P5D
     methane:
       has_numeric_value: 1800.0
       has_raw_value: "1800 parts per billion"
       has_unit: '[ppb]'
       type: nmdc:QuantityValue
-    micro_biomass_meth: xxx
+    micro_biomass_meth: https://doi.org/10.1016/0038-0717(87)90052-6
     microbial_biomass:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -2358,7 +2316,7 @@ biosample_set:
     ph: 99.99
     ph_meth:
       type: nmdc:TextValue
-      has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf
+      has_raw_value: measured in 1:1 w/vol slurry (10.2136/sssabookser5.3.c16)
     ph_regm:
       - type: nmdc:TextValue
         has_raw_value: xxx
@@ -2412,10 +2370,8 @@ biosample_set:
       has_raw_value: 50 atmosphere
       has_unit: atm
       has_numeric_value: 50.0
-    prev_land_use_meth: xxx
-    previous_land_use:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    prev_land_use_meth: https://doi.org/10.1016/j.geoderma.2018.01.015
+    previous_land_use: forest
     primary_prod:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -2532,9 +2488,6 @@ biosample_set:
       has_raw_value: 25 practical salinity unit
       has_unit: '%'
       type: nmdc:QuantityValue
-    salinity_meth:
-      type: nmdc:TextValue
-      has_raw_value: PMID:22895776
     salt_regm:
       - type: nmdc:TextValue
         has_raw_value: xxx
@@ -2566,8 +2519,7 @@ biosample_set:
       has_unit: mL
       has_numeric_value: 5
     samp_sort_meth:
-      - type: nmdc:TextValue
-        has_raw_value: xxx
+      - https://doi.org/10.1038/s41596-019-0187-9
     samp_store_dur:
       type: nmdc:TextValue
       has_raw_value: P1Y6M
@@ -2606,9 +2558,7 @@ biosample_set:
     saturates_pc:
       type: nmdc:TextValue
       has_raw_value: xxx
-    season:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    season: summer [NCIT:C94732]
     season_environment:
       - type: nmdc:TextValue
         has_raw_value: xxx
@@ -2632,9 +2582,7 @@ biosample_set:
       has_raw_value: xxx
     shad_dev_water_mold: xxx
     shading_device_cond: damaged
-    shading_device_loc:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    shading_device_loc: exterior
     shading_device_mat:
       type: nmdc:TextValue
       has_raw_value: xxx
@@ -2680,17 +2628,13 @@ biosample_set:
       has_unit: mg/L
       has_numeric_value: 10.5
     soil_horizon: O horizon
-    soil_text_measure:  # soil_texture? soil_texture_class?
-      type: nmdc:QuantityValue
-      has_raw_value: xxx
-      has_unit: '1'
-    soil_texture_meth: xxx
+    soil_texture_meth: https://uwlab.soils.wisc.edu/wp-content/uploads/sites/17/2015/09/particle_size.pdf
     soil_type:
       type: nmdc:TextValue
       has_raw_value: plinthosol [ENVO:00002250]
     soil_type_meth:
       type: nmdc:TextValue
-      has_raw_value: Frederick series
+      has_raw_value: Textural Analysis Test (hydrometer)
     solar_irradiance:
       has_numeric_value: 1.36
       has_raw_value: "1.36 kilowatts per square meter per day"
@@ -2709,9 +2653,7 @@ biosample_set:
     source_mat_id:
       type: nmdc:TextValue
       has_raw_value: MPI012345
-    space_typ_state:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    space_typ_state: typically occupied
     specific: operation
     specific_ecosystem: unconstrained text
     specific_humidity:
@@ -2827,9 +2769,7 @@ biosample_set:
       has_raw_value: 35 milligrams Nitrogen per kilogram of soil
       has_unit: mg/L
       has_numeric_value: 35.0
-    tot_org_c_meth:
-      type: nmdc:TextValue
-      has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
+    tot_org_c_meth: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
     tot_org_carb:
       type: nmdc:QuantityValue
       has_raw_value: 2 mg/L
@@ -2909,16 +2849,14 @@ biosample_set:
       type: nmdc:QuantityValue
       has_raw_value: xxx
       has_unit: "J/K"
-    wall_water_mold:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    wall_water_mold: no presence of mold visible
     wastewater_type:
       type: nmdc:TextValue
       has_raw_value: xxx
-    water_cont_soil_meth: MIxS doesn't provide an example
+    water_cont_soil_meth: https://doi.org/10.2136/sssabookser5.1.2ed.c21
     water_content:
-      - MIxS doesn't provide an example 1
-      - MIxS doesn't provide an example 2
+      - 25.5 g water/g dry soil
+      - 30.2 percent
     water_current:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -2965,14 +2903,10 @@ biosample_set:
     window_size:
       type: nmdc:TextValue
       has_raw_value: xxx
-    window_status:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    window_status: open
     window_type: single-hung sash window
     window_vert_pos: bottom
-    window_water_mold:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    window_water_mold: no presence of mold visible
     xylene:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -3047,9 +2981,7 @@ biosample_set:
       has_raw_value: 0.5 millisiemens per centimeter
       has_numeric_value: 0.5
       has_unit: mS/cm
-    host_disease_stat:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    host_disease_stat: healthy
     infiltrations:
       - '00:01:32'
     neon_biosample_identifiers:

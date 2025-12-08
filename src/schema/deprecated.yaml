@@ -200,3 +200,4 @@ slots:
     range: SampleStateEnum
     deprecated: "not used https://github.com/microbiomedata/nmdc-schema/issues/2353"
     last_updated_on: "2025-04-15T00:00:00Z"
+

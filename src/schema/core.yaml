@@ -978,12 +978,12 @@ classes:
         todos:
           - is "to" acceptable? Is there a better way to request that be written?
         annotations:
-          expected_value: date string
+          Expected_value: date string
         range: string
         pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
       flooding:
         annotations:
-          expected_value: date string
+          Expected_value: date string
         comments:
           - Provide the date the flood occurred. If extended flooding occurred provide the date range.
         examples:
@@ -997,7 +997,7 @@ classes:
         examples:
           - value: 1980-05-18, volcanic eruption
         annotations:
-          expected_value: date, string
+          Expected_value: date, string
         range: string
       slope_aspect:
         comments:
@@ -1095,8 +1095,8 @@ classes:
           - Should this be multi valued? How to we manage and validate this?
       water_content:
         annotations:
-          expected_value: string
-          preferred_unit: gram per gram or cubic centimeter per cubic centimeter
+          Expected_value: string
+          Preferred_unit: gram per gram or cubic centimeter per cubic centimeter
         multivalued: true
         range: string
         examples:
@@ -1131,9 +1131,6 @@ classes:
       tot_org_carb:
         todos:
           - check description. How are they different?
-      salinity_meth:
-        examples:
-          - value: https://doi.org/10.1007/978-1-61779-986-0_28
       sieving:
         comments:
           - Describe how samples were composited or sieved.
@@ -1374,8 +1371,8 @@ slots:
   #        environment|plant\-associated|sediment|soil|wastewater\/sludge|water]'
   zinc:
     annotations:
-      expected_value: measurement value
-      preferred_unit: mg/kg (ppm)
+      Expected_value: measurement value
+      Preferred_unit: mg/kg (ppm)
       occurrence: "1"
       storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of zinc in the sample
@@ -1387,8 +1384,8 @@ slots:
       - https://www.ornl.gov/content/bio-scales-0
   manganese:
     annotations:
-      expected_value: measurement value
-      preferred_unit: mg/kg (ppm)
+      Expected_value: measurement value
+      Preferred_unit: mg/kg (ppm)
       occurrence: "1"
       storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of manganese in the sample
@@ -1403,8 +1400,8 @@ slots:
     aliases:
       - NH4-N
     annotations:
-      expected_value: measurement value
-      preferred_unit: mg/kg
+      Expected_value: measurement value
+      Preferred_unit: mg/kg
       occurrence: "1"
       storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of ammonium nitrogen in the sample
@@ -1421,8 +1418,8 @@ slots:
     comments:
       - often below some specified limit of detection
     annotations:
-      expected_value: measurement value
-      preferred_unit: mg/kg
+      Expected_value: measurement value
+      Preferred_unit: mg/kg
       occurrence: "1"
       storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of nitrate nitrogen in the sample
@@ -1437,8 +1434,8 @@ slots:
     aliases:
       - NO2-N
     annotations:
-      expected_value: measurement value
-      preferred_unit: mg/kg
+      Expected_value: measurement value
+      Preferred_unit: mg/kg
       occurrence: "1"
       storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of nitrite nitrogen in the sample
@@ -1456,8 +1453,8 @@ slots:
       - lbc30
       - lime buffer capacity (at 30 minutes)
     annotations:
-      expected_value: measurement value
-      preferred_unit: ppm CaCO3/pH
+      Expected_value: measurement value
+      Preferred_unit: ppm CaCO3/pH
       occurrence: "1"
       storage_units: "[ppm]"
     description: lime buffer capacity, determined after 30 minute incubation
@@ -1475,8 +1472,8 @@ slots:
     aliases:
       - lime buffer capacity (at 5-day equilibrium)
     annotations:
-      expected_value: measurement value
-      preferred_unit: ppm CaCO3/pH
+      Expected_value: measurement value
+      Preferred_unit: ppm CaCO3/pH
       occurrence: "1"
       storage_units: "[ppm]"
     description: lime buffer capacity, determined at equilibrium after 5 day incubation
