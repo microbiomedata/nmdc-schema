@@ -45,7 +45,6 @@ python-dotenv = "*"
 pyyaml = "^6"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
 requests = "^2"
-urllib3 = "2.6.0"
 
 [tool.poetry.group.dev.dependencies] # cruft for cookiecutter update could be installed with pipx?
 autopep8 = "^2.2.0"
