@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-18T16:17:17
+# Generation date: 2025-12-08T08:48:40
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -1642,6 +1642,7 @@ class Biosample(Sample):
     img_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     neon_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     alternative_names: Optional[Union[str, list[str]]] = empty_list()
+    provenance_metadata: Optional[Union[dict, "ProvenanceMetadata"]] = None
     gold_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     insdc_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     emsl_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
@@ -2126,6 +2127,7 @@ class Biosample(Sample):
     ecosystem_type: Optional[str] = None
     ecosystem_subtype: Optional[str] = None
     specific_ecosystem: Optional[str] = None
+    ecosystem_path_id: Optional[int] = None
     add_date: Optional[str] = None
     community: Optional[str] = None
     habitat: Optional[str] = None
@@ -2229,6 +2231,9 @@ class Biosample(Sample):
         if not isinstance(self.alternative_names, list):
             self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
         self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
+
+        if self.provenance_metadata is not None and not isinstance(self.provenance_metadata, ProvenanceMetadata):
+            self.provenance_metadata = ProvenanceMetadata(**as_dict(self.provenance_metadata))
 
         if not isinstance(self.gold_biosample_identifiers, list):
             self.gold_biosample_identifiers = [self.gold_biosample_identifiers] if self.gold_biosample_identifiers is not None else []
@@ -3746,6 +3751,9 @@ class Biosample(Sample):
 
         if self.specific_ecosystem is not None and not isinstance(self.specific_ecosystem, str):
             self.specific_ecosystem = str(self.specific_ecosystem)
+
+        if self.ecosystem_path_id is not None and not isinstance(self.ecosystem_path_id, int):
+            self.ecosystem_path_id = int(self.ecosystem_path_id)
 
         if self.add_date is not None and not isinstance(self.add_date, str):
             self.add_date = str(self.add_date)
@@ -6472,10 +6480,46 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
         self.type = str(self.class_class_curie)
 
 
+@dataclass(repr=False)
+class ProvenanceMetadata(YAMLRoot):
+    """
+    Metadata pertaining to how a record was created.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["ProvenanceMetadata"]
+    class_class_curie: ClassVar[str] = "nmdc:ProvenanceMetadata"
+    class_name: ClassVar[str] = "ProvenanceMetadata"
+    class_model_uri: ClassVar[URIRef] = NMDC.ProvenanceMetadata
+
+    type: Union[str, URIorCURIE] = None
+    git_url: Optional[str] = None
+    version: Optional[str] = None
+    source_system_of_record: Optional[Union[str, "SourceSystemEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+        if self.git_url is not None and not isinstance(self.git_url, str):
+            self.git_url = str(self.git_url)
+
+        if self.version is not None and not isinstance(self.version, str):
+            self.version = str(self.version)
+
+        if self.source_system_of_record is not None and not isinstance(self.source_system_of_record, SourceSystemEnum):
+            self.source_system_of_record = SourceSystemEnum(self.source_system_of_record)
+
+        super().__post_init__(**kwargs)
+
+
 # Enumerations
 class CalibrationTargetEnum(EnumDefinitionImpl):
 
-    mass_charge_ratio = PermissibleValue(text="mass_charge_ratio")
+    mass_charge_ratio = PermissibleValue(
+        text="mass_charge_ratio",
+        title="m/z")
     retention_time = PermissibleValue(text="retention_time")
     retention_index = PermissibleValue(text="retention_index")
 
@@ -6516,7 +6560,7 @@ class MassSpectrometryAcquisitionStrategyEnum(EnumDefinitionImpl):
 
     data_independent_acquisition = PermissibleValue(
         text="data_independent_acquisition",
-        description="""['Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.']""")
+        description="""Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.""")
     data_dependent_acquisition = PermissibleValue(
         text="data_dependent_acquisition",
         description="""Mass spectrometer data acquisition method wherein MSn spectra are triggered based on the m/z of precursor ions detected in the same run.""")
@@ -6598,15 +6642,19 @@ class EluentIntroductionCategoryEnum(EnumDefinitionImpl):
 
     liquid_chromatography = PermissibleValue(
         text="liquid_chromatography",
+        title="liquid chromatography",
         description="""The processed sample is introduced into the mass spectrometer through a liquid chromatography process.""")
     gas_chromatography = PermissibleValue(
         text="gas_chromatography",
+        title="gas chromatography",
         description="""The processed sample is introduced into the mass spectrometer through a gas chromatography process.""")
     direct_infusion_syringe = PermissibleValue(
         text="direct_infusion_syringe",
+        title="direct infusion syringe",
         description="""The processed sample is introduced into the mass spectrometer through a direct infusion process using a syringe.""")
     direct_infusion_autosampler = PermissibleValue(
         text="direct_infusion_autosampler",
+        title="direct infusion autosampler",
         description="""The processed sample is introduced into the mass spectrometer through a direct infusion process using an autosampler.""")
 
     _defn = EnumDefinition(
@@ -6780,18 +6828,23 @@ class SamplePortionEnum(EnumDefinitionImpl):
     pellet = PermissibleValue(text="pellet")
     organic_layer = PermissibleValue(
         text="organic_layer",
+        title="Organic layer",
         description="The portion of a mixture containing dissolved organic material")
     aqueous_layer = PermissibleValue(
         text="aqueous_layer",
+        title="Aqueous layer",
         description="The portion of a mixture containing molecules dissolved in water")
     interlayer = PermissibleValue(
         text="interlayer",
+        title="Interlayer",
         description="The layer of material between liquid layers of a separated mixture")
     chloroform_layer = PermissibleValue(
         text="chloroform_layer",
+        title="Chloroform layer",
         description="The portion of a mixture containing molecules dissolved in chloroform")
     methanol_layer = PermissibleValue(
         text="methanol_layer",
+        title="Methanol layer",
         description="The portion of a mixture containing molecules dissolved in methanol")
 
     _defn = EnumDefinition(
@@ -6872,20 +6925,25 @@ class BiosampleCategoryEnum(EnumDefinitionImpl):
     """
     LTER = PermissibleValue(
         text="LTER",
+        title="National Science Foundation's Long Term Ecological Research Network",
         meaning=None)
     SIP = PermissibleValue(text="SIP")
     SFA = PermissibleValue(
         text="SFA",
+        title="Department of Energy Office of Science Biological and Environmental Research Program Laboratory Science Focus Areas",
         description="""Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program""",
         meaning=None)
     FICUS = PermissibleValue(
         text="FICUS",
+        title="Facilities Integrating Collaborations for User Science",
         meaning=None)
     NEON = PermissibleValue(
         text="NEON",
+        title="National Science Foundation's National Ecological Observatory Network",
         meaning=None)
     BRC = PermissibleValue(
         text="BRC",
+        title="Bioenergy Research Centers",
         description="""Bioenergy Research Centers funded by the Biological Systems Science Division of the U.S. Department of Energy's Biological and Environmental Research Program.""",
         meaning=None)
 
@@ -7037,6 +7095,7 @@ class UnitEnum(EnumDefinitionImpl):
 
     Cel = PermissibleValue(
         text="Cel",
+        title="degrees Celsius",
         description="""The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.""")
     cm = PermissibleValue(
         text="cm",
@@ -7070,6 +7129,7 @@ class UnitEnum(EnumDefinitionImpl):
         description="The Unified Code for Units of Measure (UCUM) representation of millimeter.")
     a = PermissibleValue(
         text="a",
+        title="years",
         description="The Unified Code for Units of Measure (UCUM) representation of year.")
     uL = PermissibleValue(
         text="uL",
@@ -7097,6 +7157,7 @@ class UnitEnum(EnumDefinitionImpl):
         description="The Unified Code for Units of Measure (UCUM) representation of kilogram.")
     lx = PermissibleValue(
         text="lx",
+        title="lux",
         description="The Unified Code for Units of Measure (UCUM) representation of lux.")
     deg = PermissibleValue(
         text="deg",
@@ -7208,6 +7269,7 @@ class UnitEnum(EnumDefinitionImpl):
         description="The Unified Code for Units of Measure (UCUM) representation of gray (absorbed dose).")
     RAD = PermissibleValue(
         text="RAD",
+        title="rad (radiation absorbed dose)",
         description="The Unified Code for Units of Measure (UCUM) representation of rad (radiation absorbed dose).")
     m3 = PermissibleValue(
         text="m3",
@@ -7232,6 +7294,7 @@ class UnitEnum(EnumDefinitionImpl):
         setattr(cls, "J/K",
             PermissibleValue(
                 text="J/K",
+                title="J/degree Celsius",
                 description="The Unified Code for Units of Measure (UCUM) representation of joule per kelvin."))
         setattr(cls, "m/s",
             PermissibleValue(
@@ -7300,6 +7363,7 @@ class UnitEnum(EnumDefinitionImpl):
         setattr(cls, "umol/m2/s",
             PermissibleValue(
                 text="umol/m2/s",
+                title="micromoles per square meter per second",
                 description="""The Unified Code for Units of Measure (UCUM) representation of micromoles per square meter per second."""))
         setattr(cls, "mg/m3",
             PermissibleValue(
@@ -7320,6 +7384,7 @@ class UnitEnum(EnumDefinitionImpl):
         setattr(cls, "1",
             PermissibleValue(
                 text="1",
+                title="ratio/unitless",
                 description="The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity."))
         setattr(cls, "uL/kg",
             PermissibleValue(
@@ -7393,6 +7458,11 @@ class UnitEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="1/d",
                 description="The Unified Code for Units of Measure (UCUM) representation of per day (frequency)."))
+        setattr(cls, "1/[sft_i]",
+            PermissibleValue(
+                text="1/[sft_i]",
+                title="per square foot",
+                description="The Unified Code for Units of Measure (UCUM) representation of per square foot."))
         setattr(cls, "kW/m2",
             PermissibleValue(
                 text="kW/m2",
@@ -7420,10 +7490,12 @@ class UnitEnum(EnumDefinitionImpl):
         setattr(cls, "[NTU]",
             PermissibleValue(
                 text="[NTU]",
+                title="Nephelometric Turbidity Units",
                 description="""The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units."""))
         setattr(cls, "[FNU]",
             PermissibleValue(
                 text="[FNU]",
+                title="Formazin Nephelometric Units",
                 description="""The Unified Code for Units of Measure (UCUM) representation of Formazin Nephelometric Units."""))
         setattr(cls, "m3/min",
             PermissibleValue(
@@ -7436,6 +7508,7 @@ class UnitEnum(EnumDefinitionImpl):
         setattr(cls, "[lb_av]",
             PermissibleValue(
                 text="[lb_av]",
+                title="pounds (avoirdupois)",
                 description="The Unified Code for Units of Measure (UCUM) representation of pound (avoirdupois)."))
         setattr(cls, "kg/kg",
             PermissibleValue(
@@ -7468,6 +7541,7 @@ class UnitEnum(EnumDefinitionImpl):
         setattr(cls, "[g]",
             PermissibleValue(
                 text="[g]",
+                title="standard gravity",
                 description="The Unified Code for Units of Measure (UCUM) representation of standard gravity."))
         setattr(cls, "m/s2",
             PermissibleValue(
@@ -7484,14 +7558,17 @@ class UnitEnum(EnumDefinitionImpl):
         setattr(cls, "[sft_i]",
             PermissibleValue(
                 text="[sft_i]",
+                title="square feet",
                 description="The Unified Code for Units of Measure (UCUM) representation of square feet."))
         setattr(cls, "[cft_i]",
             PermissibleValue(
                 text="[cft_i]",
+                title="cubic feet",
                 description="The Unified Code for Units of Measure (UCUM) representation of cubic feet."))
         setattr(cls, "mm/a",
             PermissibleValue(
                 text="mm/a",
+                title="millimeters per year",
                 description="The Unified Code for Units of Measure (UCUM) representation of millimeters per year."))
         setattr(cls, "erg/cm2/s",
             PermissibleValue(
@@ -7512,6 +7589,7 @@ class UnitEnum(EnumDefinitionImpl):
         setattr(cls, "[kn_i]",
             PermissibleValue(
                 text="[kn_i]",
+                title="knots",
                 description="""The Unified Code for Units of Measure (UCUM) representation of knot (nautical miles per hour)."""))
         setattr(cls, "m3/s",
             PermissibleValue(
@@ -7520,6 +7598,7 @@ class UnitEnum(EnumDefinitionImpl):
         setattr(cls, "[in_i]",
             PermissibleValue(
                 text="[in_i]",
+                title="inches",
                 description="The Unified Code for Units of Measure (UCUM) representation of inch."))
 
 class ExecutionResourceEnum(EnumDefinitionImpl):
@@ -7960,27 +8039,40 @@ class DoiProviderEnum(EnumDefinitionImpl):
 
     emsl = PermissibleValue(
         text="emsl",
+        title="EMSL",
         meaning=ROR["04rc0xn13"])
     jgi = PermissibleValue(
         text="jgi",
+        title="JGI",
         meaning=ROR["04xm1d337"])
     kbase = PermissibleValue(
         text="kbase",
+        title="KBase",
         meaning=ROR["01znn6x10"])
     osti = PermissibleValue(
         text="osti",
+        title="OSTI",
         meaning=ROR["031478740"])
     ess_dive = PermissibleValue(
         text="ess_dive",
+        title="ESS-DIVE",
         meaning=ROR["01t14bp54"])
-    massive = PermissibleValue(text="massive")
-    gsc = PermissibleValue(text="gsc")
-    zenodo = PermissibleValue(text="zenodo")
+    massive = PermissibleValue(
+        text="massive",
+        title="MassIVE")
+    gsc = PermissibleValue(
+        text="gsc",
+        title="GSC")
+    zenodo = PermissibleValue(
+        text="zenodo",
+        title="Zenodo")
     edi = PermissibleValue(
         text="edi",
+        title="EDI",
         meaning=ROR["0330j0z60"])
     figshare = PermissibleValue(
         text="figshare",
+        title="Figshare",
         meaning=ROR["041mxqs23"])
 
     _defn = EnumDefinition(
@@ -8021,10 +8113,15 @@ class StatusEnum(EnumDefinitionImpl):
 
 class NucleotideSequencingEnum(EnumDefinitionImpl):
 
-    metagenome = PermissibleValue(text="metagenome")
-    metatranscriptome = PermissibleValue(text="metatranscriptome")
+    metagenome = PermissibleValue(
+        text="metagenome",
+        title="Metagenome")
+    metatranscriptome = PermissibleValue(
+        text="metatranscriptome",
+        title="Metatranscriptome")
     amplicon_sequencing_assay = PermissibleValue(
         text="amplicon_sequencing_assay",
+        title="Amplicon",
         meaning=OBI["0002767"])
 
     _defn = EnumDefinition(
@@ -8033,10 +8130,18 @@ class NucleotideSequencingEnum(EnumDefinitionImpl):
 
 class MassSpectrometryEnum(EnumDefinitionImpl):
 
-    metaproteome = PermissibleValue(text="metaproteome")
-    metabolome = PermissibleValue(text="metabolome")
-    lipidome = PermissibleValue(text="lipidome")
-    nom = PermissibleValue(text="nom")
+    metaproteome = PermissibleValue(
+        text="metaproteome",
+        title="Metaproteome")
+    metabolome = PermissibleValue(
+        text="metabolome",
+        title="Metabolome")
+    lipidome = PermissibleValue(
+        text="lipidome",
+        title="Lipidome")
+    nom = PermissibleValue(
+        text="nom",
+        title="Natural Organic Matter")
 
     _defn = EnumDefinition(
         name="MassSpectrometryEnum",
@@ -8063,27 +8168,35 @@ class ProcessingInstitutionEnum(EnumDefinitionImpl):
 
     NMDC = PermissibleValue(
         text="NMDC",
+        title="National Microbiome Data Collaborative",
         meaning=ROR["05cwx3318"])
     UCSD = PermissibleValue(
         text="UCSD",
+        title="University of California, San Diego",
         meaning=ROR["0168r3w48"])
     JGI = PermissibleValue(
         text="JGI",
+        title="Joint Genome Institute",
         meaning=ROR["04xm1d337"])
     EMSL = PermissibleValue(
         text="EMSL",
+        title="Environmental Molecular Sciences Laboratory",
         meaning=ROR["04rc0xn13"])
     Battelle = PermissibleValue(
         text="Battelle",
+        title="Battelle Memorial Institute",
         meaning=ROR["01h5tnr73"])
     ANL = PermissibleValue(
         text="ANL",
+        title="Argonne National Laboratory",
         meaning=ROR["05gvnxz63"])
     UCD_Genome_Center = PermissibleValue(
         text="UCD_Genome_Center",
+        title="University of California, Davis Genome Center",
         meaning=None)
     Azenta = PermissibleValue(
         text="Azenta",
+        title="Azenta Life Sciences",
         meaning=None)
 
     _defn = EnumDefinition(
@@ -8104,6 +8217,28 @@ class DataCategoryEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="DataCategoryEnum",
+    )
+
+class SourceSystemEnum(EnumDefinitionImpl):
+
+    NMDC_Submission_Portal = PermissibleValue(
+        text="NMDC_Submission_Portal",
+        description="The National Microbiome Data Collaborative's Submission Portal")
+    GOLD = PermissibleValue(
+        text="GOLD",
+        description="JGI's GOLD system")
+    NEON_Data_Portal = PermissibleValue(
+        text="NEON_Data_Portal",
+        description="National Science Foundation National Ecologial Observatory Network's Data Portal")
+    NCBI = PermissibleValue(
+        text="NCBI",
+        description="National Center for Biotechnology Information database")
+    custom = PermissibleValue(
+        text="custom",
+        description="""Metadata was generated by custom methods such as an offline spreadsheet provided by a user or staff member.""")
+
+    _defn = EnumDefinition(
+        name="SourceSystemEnum",
     )
 
 class CreditEnum(EnumDefinitionImpl):
@@ -10443,9 +10578,11 @@ class AnalysisTypeEnum(EnumDefinitionImpl):
     lipidomics = PermissibleValue(text="lipidomics")
     metagenomics = PermissibleValue(
         text="metagenomics",
+        title="Metagenomics",
         description="Standard short-read metagenomic sequencing")
     metagenomics_long_read = PermissibleValue(
         text="metagenomics_long_read",
+        title="Metagenomics (long read)",
         description="Long-read metagenomic sequencing")
     metaproteomics = PermissibleValue(text="metaproteomics")
     metatranscriptomics = PermissibleValue(text="metatranscriptomics")
@@ -10463,30 +10600,38 @@ class AnalysisTypeEnum(EnumDefinitionImpl):
         setattr(cls, "amplicon sequencing assay",
             PermissibleValue(
                 text="amplicon sequencing assay",
+                title="Amplicon sequencing assay",
                 meaning=OBI["0002767"]))
 
 class SubmissionStatusEnum(EnumDefinitionImpl):
 
     InProgress = PermissibleValue(
         text="InProgress",
+        title="In Progress",
         description="The submitter is currently working on the submission.")
     SubmittedPendingReview = PermissibleValue(
         text="SubmittedPendingReview",
+        title="Submitted - Pending Review",
         description="Submission is ready for NMDC review, the submitter cannot edit.")
     ApprovedHeld = PermissibleValue(
         text="ApprovedHeld",
+        title="Approved - Held",
         description="""Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. The submitter cannot edit.""")
     ApprovedPendingUserFacility = PermissibleValue(
         text="ApprovedPendingUserFacility",
+        title="Approved - Sent to User Facility",
         description="""Submission has been reviewed and approved by NMDC. Sample information has been shared with designated user facility and is ready for their review. The submitter cannot edit.""")
     UpdatesRequired = PermissibleValue(
         text="UpdatesRequired",
+        title="Updates Required",
         description="""Submission has been reviewed and submitter edits are required for approval. The submitter can edit the submission.""")
     Denied = PermissibleValue(
         text="Denied",
+        title="Denied",
         description="Submission has been reviewed and denied. The submitter cannot edit.")
     Released = PermissibleValue(
         text="Released",
+        title="Released",
         description="""Submission has been reviewed and approved and data is released on the data portal. The submitter cannot edit.""")
 
     _defn = EnumDefinition(
@@ -10566,9 +10711,6 @@ slots.count = Slot(uri=NMDC.count, name="count", curie=NMDC.curie('count'),
 
 slots.functional_annotation_agg = Slot(uri=NMDC.functional_annotation_agg, name="functional_annotation_agg", curie=NMDC.curie('functional_annotation_agg'),
                    model_uri=NMDC.functional_annotation_agg, domain=None, range=Optional[Union[Union[dict, FunctionalAnnotationAggMember], list[Union[dict, FunctionalAnnotationAggMember]]]])
-
-slots.ecosystem_path_id = Slot(uri=NMDC.ecosystem_path_id, name="ecosystem_path_id", curie=NMDC.curie('ecosystem_path_id'),
-                   model_uri=NMDC.ecosystem_path_id, domain=None, range=Optional[str])
 
 slots.sample_collection_year = Slot(uri=NMDC.sample_collection_year, name="sample_collection_year", curie=NMDC.curie('sample_collection_year'),
                    model_uri=NMDC.sample_collection_year, domain=None, range=Optional[int])
@@ -11210,6 +11352,9 @@ slots.notes = Slot(uri=NMDC.notes, name="notes", curie=NMDC.curie('notes'),
 slots.funding_sources = Slot(uri=NMDC.funding_sources, name="funding_sources", curie=NMDC.curie('funding_sources'),
                    model_uri=NMDC.funding_sources, domain=None, range=Optional[Union[str, list[str]]])
 
+slots.ecosystem_path_id = Slot(uri=NMDC.ecosystem_path_id, name="ecosystem_path_id", curie=NMDC.curie('ecosystem_path_id'),
+                   model_uri=NMDC.ecosystem_path_id, domain=None, range=Optional[int])
+
 slots.gold_path_field = Slot(uri=NMDC.gold_path_field, name="gold_path_field", curie=NMDC.curie('gold_path_field'),
                    model_uri=NMDC.gold_path_field, domain=None, range=Optional[str])
 
@@ -11287,6 +11432,9 @@ slots.start_date = Slot(uri=NMDC.start_date, name="start_date", curie=NMDC.curie
 
 slots.end_date = Slot(uri=NMDC.end_date, name="end_date", curie=NMDC.curie('end_date'),
                    model_uri=NMDC.end_date, domain=None, range=Optional[str])
+
+slots.source_system_of_record = Slot(uri=NMDC['basic_classes/source_system_of_record'], name="source_system_of_record", curie=NMDC.curie('basic_classes/source_system_of_record'),
+                   model_uri=NMDC.source_system_of_record, domain=None, range=Optional[Union[str, "SourceSystemEnum"]])
 
 slots.associated_studies = Slot(uri=NMDC['basic_classes/associated_studies'], name="associated_studies", curie=NMDC.curie('basic_classes/associated_studies'),
                    model_uri=NMDC.associated_studies, domain=None, range=Union[Union[str, StudyId], list[Union[str, StudyId]]])
@@ -11371,6 +11519,9 @@ slots.protocol_for = Slot(uri=NMDC['basic_classes/protocol_for'], name="protocol
 
 slots.superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.superseded_by, domain=None, range=Optional[Union[str, WorkflowExecutionId]])
+
+slots.provenance_metadata = Slot(uri=NMDC['basic_classes/provenance_metadata'], name="provenance_metadata", curie=NMDC.curie('basic_classes/provenance_metadata'),
+                   model_uri=NMDC.provenance_metadata, domain=None, range=Optional[Union[dict, ProvenanceMetadata]])
 
 slots.rna_collect_site = Slot(uri=NMDC.rna_collect_site, name="rna_collect_site", curie=NMDC.curie('rna_collect_site'),
                    model_uri=NMDC.rna_collect_site, domain=None, range=Optional[str])
@@ -13719,3 +13870,12 @@ slots.WorkflowExecution_processing_institution = Slot(uri=NMDC.processing_instit
 
 slots.WorkflowExecution_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="WorkflowExecution_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.WorkflowExecution_was_informed_by, domain=WorkflowExecution, range=Union[Union[str, DataGenerationId], list[Union[str, DataGenerationId]]])
+
+slots.WorkflowExecution_version = Slot(uri=NMDC.version, name="WorkflowExecution_version", curie=NMDC.curie('version'),
+                   model_uri=NMDC.WorkflowExecution_version, domain=WorkflowExecution, range=Optional[str])
+
+slots.ProvenanceMetadata_version = Slot(uri=NMDC.version, name="ProvenanceMetadata_version", curie=NMDC.curie('version'),
+                   model_uri=NMDC.ProvenanceMetadata_version, domain=ProvenanceMetadata, range=Optional[str])
+
+slots.ProvenanceMetadata_git_url = Slot(uri=NMDC.git_url, name="ProvenanceMetadata_git_url", curie=NMDC.curie('git_url'),
+                   model_uri=NMDC.ProvenanceMetadata_git_url, domain=ProvenanceMetadata, range=Optional[str])

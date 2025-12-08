@@ -1299,6 +1299,13 @@
                         "null"
                     ]
                 },
+                "ecosystem_path_id": {
+                    "description": "A unique id representing the GOLD classifiers associated with a sample.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "ecosystem_subtype": {
                     "description": "Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path.",
                     "type": [
@@ -3272,6 +3279,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "provenance_metadata": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ProvenanceMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Provides information about the provenance of a record."
                 },
                 "quad_pos": {
                     "$ref": "#/$defs/QuadPosEnum",
@@ -9063,7 +9081,7 @@
                     "description": "The computing resource or facility where the workflow was executed."
                 },
                 "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
+                    "description": "The url that points to the exact software repository location used to run a workflow",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -9840,7 +9858,7 @@
                     "description": "The computing resource or facility where the workflow was executed."
                 },
                 "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
+                    "description": "The url that points to the exact software repository location used to run a workflow",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -10079,7 +10097,7 @@
                     "description": "The computing resource or facility where the workflow was executed."
                 },
                 "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
+                    "description": "The url that points to the exact software repository location used to run a workflow",
                     "type": "string"
                 },
                 "gold_analysis_project_identifiers": {
@@ -10401,7 +10419,7 @@
                     ]
                 },
                 "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
+                    "description": "The url that points to the exact software repository location used to run a workflow",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -10717,7 +10735,7 @@
                     "description": "The computing resource or facility where the workflow was executed."
                 },
                 "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
+                    "description": "The url that points to the exact software repository location used to run a workflow",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -10939,7 +10957,7 @@
                     "description": "The computing resource or facility where the workflow was executed."
                 },
                 "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
+                    "description": "The url that points to the exact software repository location used to run a workflow",
                     "type": "string"
                 },
                 "gold_analysis_project_identifiers": {
@@ -11261,7 +11279,7 @@
                     ]
                 },
                 "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
+                    "description": "The url that points to the exact software repository location used to run a workflow",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -11577,7 +11595,7 @@
                     "description": "The computing resource or facility where the workflow was executed."
                 },
                 "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
+                    "description": "The url that points to the exact software repository location used to run a workflow",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -11985,7 +12003,7 @@
                     "description": "The computing resource or facility where the workflow was executed."
                 },
                 "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
+                    "description": "The url that points to the exact software repository location used to run a workflow",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -13007,7 +13025,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "A measure of the purity of a biomaterial sample"
                 },
                 "description": {
                     "description": "a human-readable description of a thing",
@@ -13306,6 +13325,42 @@
             "title": "ProtocolForEnum",
             "type": "string"
         },
+        "ProvenanceMetadata": {
+            "additionalProperties": false,
+            "description": "Metadata pertaining to how a record was created.",
+            "properties": {
+                "git_url": {
+                    "description": "The url of the software repository used to generate the NMDC metadata record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source_system_of_record": {
+                    "$ref": "#/$defs/SourceSystemEnum",
+                    "description": "Identifies the system of origin for a record"
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:ProvenanceMetadata"
+                    ],
+                    "type": "string"
+                },
+                "version": {
+                    "description": "The version tag of the software used to generate the NMDC metadata record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "title": "ProvenanceMetadata",
+            "type": "object"
+        },
         "QuadPosEnum": {
             "description": "",
             "enum": [
@@ -13451,7 +13506,7 @@
                     "description": "The computing resource or facility where the workflow was executed."
                 },
                 "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
+                    "description": "The url that points to the exact software repository location used to run a workflow",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -13659,7 +13714,7 @@
                     "description": "The computing resource or facility where the workflow was executed."
                 },
                 "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
+                    "description": "The url that points to the exact software repository location used to run a workflow",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -14135,6 +14190,18 @@
                 "M horizon"
             ],
             "title": "SoilHorizonEnum",
+            "type": "string"
+        },
+        "SourceSystemEnum": {
+            "description": "",
+            "enum": [
+                "NMDC_Submission_Portal",
+                "GOLD",
+                "NEON_Data_Portal",
+                "NCBI",
+                "custom"
+            ],
+            "title": "SourceSystemEnum",
             "type": "string"
         },
         "SpecificEnum": {
@@ -15203,6 +15270,7 @@
                 "sr",
                 "Hz",
                 "1/d",
+                "1/[sft_i]",
                 "kHz",
                 "MHz",
                 "GHz",
