@@ -56,9 +56,19 @@ GSC changed these slots to `multivalued: true`, but NMDC has single values:
 | `source_mat_id` | NMDC has single TextValue objects |
 | `ventilation_type` | NMDC has single TextValue objects |
 
-### 5. Structured Pattern Deletions (7 slots)
+### 5. Method Slot Consistency (`_meth` slots)
 
-GSC MIxS commit `0368da8` has `structured_pattern: ^{PMID}|{DOI}|{URL}$` on method slots, but NMDC production data contains free-text values:
+GSC MIxS defines `_meth` slots with `string` range and `structured_pattern: ^{PMID}|{DOI}|{URL}$`. The default NMDC pipeline converts all `string` → `TextValue`, but we restore `string` range for `_meth` slots to:
+- Be faithful to GSC MIxS
+- Enable `structured_pattern` validation for new data
+
+**Slots set to string range** (9 slots with no production data):
+`al_sat_meth`, `alkalinity_method`, `biocide_admin_method`, `cur_vegetation_meth`, `heavy_metals_meth`, `horizon_meth`, `local_class_meth`, `samp_sort_meth`, `seq_meth`, `tot_org_c_meth`
+
+**Slots kept as TextValue** (2 slots with production data as TextValue objects):
+`ph_meth`, `soil_type_meth` - These slots have production data stored as `{type: nmdc:TextValue, has_raw_value: ...}` objects, so they must remain TextValue range until a data migration is performed.
+
+**Structured Pattern Deletions** (6 slots with non-conforming production data):
 
 | Slot | Sample Data | Count |
 |------|-------------|-------|
@@ -135,14 +145,28 @@ The following slots have TextValue data that should eventually be migrated to en
 
 After migration, all 13,847 production biosamples validate successfully against the updated schema.
 
+## Legacy MIxS Slots
+
+Three slots were removed from GSC MIxS commit `0368da8` but are retained in NMDC for backward compatibility with `submission-schema`:
+
+| Slot | Range | Description |
+|------|-------|-------------|
+| `host_family_relation` | `string` (multivalued) | Familial relationships to other hosts |
+| `salinity_meth` | `string` with `structured_pattern` | Reference or method for salinity determination |
+| `soil_text_measure` | `string` | Soil texture as % sand/silt/clay |
+
+These slots are defined directly in `src/schema/nmdc.yaml` (not imported from MIxS) and have no production data.
+
 ## Files Modified
 
 - `project.Makefile` - Updated MIxS import URL and added documentation
 - `assets/yq-for-mixs_subset_modified.txt` - All yq transformations
-- `src/schema/nmdc.yaml` - Added MIxS settings for pattern interpolation
+- `src/schema/nmdc.yaml` - Added MIxS settings for pattern interpolation and legacy slots
 - `src/schema/core.yaml` - Removed retired slot references
 - `src/data/valid/*.yaml` - Updated test data for new constraints
 
 ## Related Issues
 
 - [#1368](https://github.com/microbiomedata/nmdc-schema/issues/1368) - Original MIxS migration tracking issue
+- [#2772](https://github.com/microbiomedata/nmdc-schema/issues/2772) - TextValue to enum migration task
+- [#2774](https://github.com/microbiomedata/nmdc-schema/issues/2774) - Migrate ph_meth and soil_type_meth from TextValue to string

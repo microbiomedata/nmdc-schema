@@ -1079,6 +1079,58 @@ enums:
         is_a: organic_layer
 
 slots:
+  # ============================================================================
+  # Legacy MIxS slots removed from GSC MIxS commit 0368da846b197bef1c0dd27a9cf337a8aeea17f2
+  # These slots were present in microbiomedata/mixs tag pre-2024-05-15 but removed
+  # from the current GSC MIxS. NMDC retains them for backward compatibility with
+  # submission-schema which references them. No production data uses these slots.
+  # ============================================================================
+  host_family_relation:
+    title: host family relationship
+    description: >-
+      Familial relationships to other hosts in the same study; can include multiple relationships.
+    comments:
+      - "Legacy MIxS slot removed from GSC MIxS commit 0368da8. Retained for submission-schema compatibility."
+    range: string
+    multivalued: true
+    examples:
+      - value: "offspring;Mussel25"
+    annotations:
+      Expected_value: "relationship type;arbitrary identifier"
+    slot_uri: MIXS:0000872
+
+  salinity_meth:
+    title: salinity method
+    description: >-
+      Reference or method used in determining salinity.
+    comments:
+      - "Legacy MIxS slot removed from GSC MIxS commit 0368da8. Retained for submission-schema compatibility."
+    range: string
+    multivalued: false
+    structured_pattern:
+      syntax: "^{PMID}|{DOI}|{URL}$"
+      interpolated: true
+    annotations:
+      Expected_value: "PMID,DOI or url"
+    slot_uri: MIXS:0000341
+
+  soil_text_measure:
+    title: soil texture measurement
+    description: >-
+      The relative proportion of different grain sizes of mineral particles in a soil,
+      as described using a standard system; express as % sand (50 um to 2 mm),
+      silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.
+    comments:
+      - "Legacy MIxS slot removed from GSC MIxS commit 0368da8. Retained for submission-schema compatibility."
+      - "Old MIxS used 'quantity value' range but this is clearly structured text, not a single quantity."
+    range: string
+    multivalued: false
+    examples:
+      - value: "ite loam; 20% sand; 40% silt; 40% clay"
+    annotations:
+      Expected_value: "measurement value"
+    slot_uri: MIXS:0000335
+
   biomaterial_purity:
     abstract: true
     range: QuantityValue

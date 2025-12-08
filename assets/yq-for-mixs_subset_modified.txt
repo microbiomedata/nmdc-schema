@@ -222,7 +222,8 @@
 '.slots.avg_occup.range |= "TextValue"'
 '.slots.bathroom_count.range |= "TextValue"'
 '.slots.bedroom_count.range |= "TextValue"'
-'.slots.biocide_admin_method.range |= "TextValue"'
+# biocide_admin_method: string range with structured_pattern (GSC MIxS default, no production data)
+'.slots.biocide_admin_method.range |= "string"'
 '.slots.biomass.range |= "TextValue"'
 '.slots.chem_administration.range |= "ControlledTermValue"'
 '.slots.chem_mutagen.range |= "TextValue"'
@@ -331,6 +332,22 @@
 
 '.slots.samp_collec_device.range |= "string"'
 '.slots.samp_collec_method.range |= "string"'
+# Set _meth slots to string range (matching GSC MIxS) with structured_pattern
+# The default pipeline converts all string -> TextValue, so we restore string for _meth slots
+# to be faithful to GSC MIxS and enable structured_pattern validation
+# Slots with no production data will validate against ^{PMID}|{DOI}|{URL}$ pattern
+'.slots.al_sat_meth.range |= "string"'
+'.slots.alkalinity_method.range |= "string"'
+'.slots.cur_vegetation_meth.range |= "string"'
+'.slots.heavy_metals_meth.range |= "string"'
+'.slots.horizon_meth.range |= "string"'
+'.slots.local_class_meth.range |= "string"'
+# ph_meth: keep TextValue range because production data uses TextValue objects
+'.slots.samp_sort_meth.range |= "string"'
+'.slots.seq_meth.range |= "string"'
+# soil_type_meth: keep TextValue range because production data uses TextValue objects
+'.slots.tot_org_c_meth.range |= "string"'
+
 # Remove structured_pattern from slots where NMDC MongoDB has data that doesn't match
 # the ^{PMID}|{DOI}|{URL} pattern. Create issue to migrate this data in the future.
 # micro_biomass_meth data: "Chloroform fumigation direct extraction"

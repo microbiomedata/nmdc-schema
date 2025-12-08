@@ -1152,7 +1152,7 @@ slots:
       - saturation
       - unusual
     slot_uri: MIXS:0000324
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: ^{PMID}|{DOI}|{URL}$
       interpolated: true
@@ -1182,7 +1182,7 @@ slots:
       - alkalinity
       - method
     slot_uri: MIXS:0000298
-    range: TextValue
+    range: string
   alkyl_diethers:
     description: Concentration of alkyl diethers
     title: alkyl diethers
@@ -1542,7 +1542,7 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration}'
     slot_uri: MIXS:0000456
     recommended: true
-    range: TextValue
+    range: string
   biol_stat:
     description: The level of genome modification
     title: biological status
@@ -2054,7 +2054,7 @@ slots:
       - method
       - vegetation
     slot_uri: MIXS:0000314
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: ^{PMID}|{DOI}|{URL}$
       interpolated: true
@@ -3156,7 +3156,7 @@ slots:
       - properties
       - unusual
     slot_uri: MIXS:0000343
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: ^{PMID}|{DOI}|{URL}$
       interpolated: true
@@ -3196,7 +3196,7 @@ slots:
       - horizon
       - method
     slot_uri: MIXS:0000321
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: ^{PMID}|{DOI}|{URL}$
       interpolated: true
@@ -3807,7 +3807,7 @@ slots:
       - classification
       - method
     slot_uri: MIXS:0000331
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: ^{PMID}|{DOI}|{URL}$
       interpolated: true
@@ -5308,7 +5308,7 @@ slots:
       - sample
       - size
     slot_uri: MIXS:0000216
-    range: TextValue
+    range: string
     multivalued: true
     inlined_as_list: true
   samp_store_dur:
@@ -5580,7 +5580,7 @@ slots:
     keywords:
       - method
     slot_uri: MIXS:0000050
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: ^{text}|({termLabel} \[{termID}\])$
       interpolated: true
@@ -6435,7 +6435,7 @@ slots:
       - organic
       - total
     slot_uri: MIXS:0000337
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: ^{PMID}|{DOI}|{URL}$
       interpolated: true

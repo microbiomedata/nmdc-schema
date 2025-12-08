@@ -1517,17 +1517,13 @@ biosample_set:
       has_raw_value: 19 %
       has_unit: '%'
       type: nmdc:QuantityValue
-    al_sat_meth:
-      type: nmdc:TextValue
-      has_raw_value: https://journaljeai.com/index.php/JEAI/article/view/583
+    al_sat_meth: https://journaljeai.com/index.php/JEAI/article/view/583
     alkalinity:
       type: nmdc:QuantityValue
       has_raw_value: 50 milligram per liter
       has_unit: mg/L
       has_numeric_value: 50.0
-    alkalinity_method:
-      type: nmdc:TextValue
-      has_raw_value: https://wrrc.umass.edu/research/projects/acid-rain-monitoring-project/analysis-method-ph-and-alkalinity
+    alkalinity_method: https://wrrc.umass.edu/research/projects/acid-rain-monitoring-project/analysis-method-ph-and-alkalinity
     alkyl_diethers:
       type: nmdc:QuantityValue
       has_raw_value: 0.005 mole per liter
@@ -1636,9 +1632,7 @@ biosample_set:
       has_raw_value: xxx
       has_unit: mg/L
     biocide: sodium hypochlorite
-    biocide_admin_method:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    biocide_admin_method: https://doi.org/10.1016/j.watres.2019.115388
     biol_stat: wild
     biomass:
       - type: nmdc:TextValue
@@ -1756,9 +1750,7 @@ biosample_set:
     cur_vegetation:
       type: nmdc:TextValue
       has_raw_value: MIxS doesn't provide any guidance more specific than "text"
-    cur_vegetation_meth:
-      type: nmdc:TextValue
-      has_raw_value: https://link.springer.com/article/10.1023/A:1011975321668
+    cur_vegetation_meth: https://link.springer.com/article/10.1023/A:1011975321668
     date_last_rain:
       type: nmdc:TimestampValue
       has_raw_value: xxx
@@ -1999,8 +1991,7 @@ biosample_set:
       - type: nmdc:TextValue
         has_raw_value: arsenic;0.09 micrograms per gram
     heavy_metals_meth:
-      - type: nmdc:TextValue
-        has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
+      - https://link.springer.com/article/10.1007/s42452-019-1578-x
     height_carper_fiber:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -2008,9 +1999,7 @@ biosample_set:
     herbicide_regm:
       - type: nmdc:TextValue
         has_raw_value: xxx
-    horizon_meth:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    horizon_meth: https://doi.org/10.1016/j.geoderma.2019.113898
     host_age:
       has_numeric_value: 3
       has_raw_value: 3 years
@@ -2154,9 +2143,7 @@ biosample_set:
     local_class:
       type: nmdc:TextValue
       has_raw_value: jicama soil
-    local_class_meth:
-      type: nmdc:TextValue
-      has_raw_value: https://www.sciencedirect.com/science/article/abs/pii/S0016706105003083
+    local_class_meth: https://www.sciencedirect.com/science/article/abs/pii/S0016706105003083
     magnesium:
       type: nmdc:QuantityValue
       has_raw_value: 52.8 micromole per kilogram
@@ -2329,7 +2316,7 @@ biosample_set:
     ph: 99.99
     ph_meth:
       type: nmdc:TextValue
-      has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf
+      has_raw_value: measured in 1:1 w/vol slurry (10.2136/sssabookser5.3.c16)
     ph_regm:
       - type: nmdc:TextValue
         has_raw_value: xxx
@@ -2532,8 +2519,7 @@ biosample_set:
       has_unit: mL
       has_numeric_value: 5
     samp_sort_meth:
-      - type: nmdc:TextValue
-        has_raw_value: xxx
+      - https://doi.org/10.1038/s41596-019-0187-9
     samp_store_dur:
       type: nmdc:TextValue
       has_raw_value: P1Y6M
@@ -2648,7 +2634,7 @@ biosample_set:
       has_raw_value: plinthosol [ENVO:00002250]
     soil_type_meth:
       type: nmdc:TextValue
-      has_raw_value: Frederick series
+      has_raw_value: Textural Analysis Test (hydrometer)
     solar_irradiance:
       has_numeric_value: 1.36
       has_raw_value: "1.36 kilowatts per square meter per day"
@@ -2783,9 +2769,7 @@ biosample_set:
       has_raw_value: 35 milligrams Nitrogen per kilogram of soil
       has_unit: mg/L
       has_numeric_value: 35.0
-    tot_org_c_meth:
-      type: nmdc:TextValue
-      has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
+    tot_org_c_meth: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
     tot_org_carb:
       type: nmdc:QuantityValue
       has_raw_value: 2 mg/L
