@@ -602,7 +602,12 @@
 </thead>
 <tbody>
 <tr>
-<td>urban</td>
+<td>exurban</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>rural</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -612,12 +617,7 @@
 <td></td>
 </tr>
 <tr>
-<td>exurban</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>rural</td>
+<td>urban</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -646,18 +646,18 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: building_setting_enum
+<pre><code class="language-yaml">name: BuildingSettingEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  urban:
-    text: urban
-  suburban:
-    text: suburban
   exurban:
     text: exurban
   rural:
     text: rural
+  suburban:
+    text: suburban
+  urban:
+    text: urban
 
 </code></pre>
 

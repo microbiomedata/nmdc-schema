@@ -602,16 +602,6 @@
 </thead>
 <tbody>
 <tr>
-<td>oil phase</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>water phase</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
 <td>biofilm</td>
 <td>None</td>
 <td></td>
@@ -622,7 +612,17 @@
 <td></td>
 </tr>
 <tr>
+<td>oil phase</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
 <td>other</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>water phase</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -651,20 +651,20 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: samp_subtype_enum
+<pre><code class="language-yaml">name: SampSubtypeEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  oil phase:
-    text: oil phase
-  water phase:
-    text: water phase
   biofilm:
     text: biofilm
   not applicable:
     text: not applicable
+  oil phase:
+    text: oil phase
   other:
     text: other
+  water phase:
+    text: water phase
 
 </code></pre>
 

@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -626,15 +617,10 @@
 
 
 <h1 id="slot-extreme_unusual_propertiesheavy-metals-heavy_metals">Slot: extreme_unusual_properties/heavy metals (heavy_metals)</h1>
-<p><em>Heavy metals present in the sequenced sample and their concentrations. For multiple heavy metals and concentrations, add multiple copies of this field.</em></p>
+<p><em>Heavy metals present in the sequenced sample and their concentrations. For multiple heavy metals and concentrations, add multiple copies of this field</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000652">MIXS:0000652</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>heavy_metals</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -685,7 +671,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>heavy metal name;measurement value unit</td>
 </tr>
 </tbody>
@@ -714,23 +700,23 @@
 
 <pre><code class="language-yaml">name: heavy_metals
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: heavy metal name;measurement value unit
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: microgram per gram
-  occurrence:
-    tag: occurrence
-    value: m
 description: Heavy metals present in the sequenced sample and their concentrations.
-  For multiple heavy metals and concentrations, add multiple copies of this field.
+  For multiple heavy metals and concentrations, add multiple copies of this field
 title: extreme_unusual_properties/heavy metals
 examples:
 - value: mercury;0.09 micrograms per gram
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- extreme
+- properties
+- unusual
 string_serialization: '{text};{float} {unit}'
 slot_uri: MIXS:0000652
 alias: heavy_metals

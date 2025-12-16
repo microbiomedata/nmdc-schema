@@ -602,22 +602,27 @@
 </thead>
 <tbody>
 <tr>
-<td>bedroom</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>office</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
 <td>bathroom</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
+<td>bedroom</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>elevator</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
 <td>foyer</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>hallway</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -632,12 +637,7 @@
 <td></td>
 </tr>
 <tr>
-<td>hallway</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>elevator</td>
+<td>office</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -666,26 +666,26 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: indoor_space_enum
+<pre><code class="language-yaml">name: IndoorSpaceEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  bedroom:
-    text: bedroom
-  office:
-    text: office
   bathroom:
     text: bathroom
+  bedroom:
+    text: bedroom
+  elevator:
+    text: elevator
   foyer:
     text: foyer
+  hallway:
+    text: hallway
   kitchen:
     text: kitchen
   locker room:
     text: locker room
-  hallway:
-    text: hallway
-  elevator:
-    text: elevator
+  office:
+    text: office
 
 </code></pre>
 

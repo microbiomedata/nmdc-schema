@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -628,13 +619,8 @@
 <h1 id="slot-humidity-regimen-humidity_regm">Slot: humidity regimen (humidity_regm)</h1>
 <p><em>Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000568">MIXS:0000568</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>humidity_regm</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -685,7 +671,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>humidity value;treatment interval and duration</td>
 </tr>
 </tbody>
@@ -714,15 +700,12 @@
 
 <pre><code class="language-yaml">name: humidity_regm
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: humidity value;treatment interval and duration
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: gram per cubic meter
-  occurrence:
-    tag: occurrence
-    value: m
 description: Information about treatment involving an exposure to varying degree of
   humidity; information about treatment involving use of growth hormones; should include
   amount of humidity administered, treatment regimen including how many times the
@@ -733,7 +716,9 @@ examples:
 - value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- humidity
+- regimen
 string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
 slot_uri: MIXS:0000568
 alias: humidity_regm

@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -550,6 +541,15 @@
   <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
     </span>
   </a>
   
@@ -626,15 +626,10 @@
 
 
 <h1 id="slot-absolute-air-humidity-abs_air_humidity">Slot: absolute air humidity (abs_air_humidity)</h1>
-<p><em>Actual mass of water vapor - mh20 - present in the air water vapor mixture</em></p>
+<p><em>Actual mass of water vapor present in the air water vapor mixture.</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000122">MIXS:0000122</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>abs_air_humidity</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -669,6 +664,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Can be calculated via mass of water vapor divided by the volume of the air and water vapor mixture.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -680,8 +679,8 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
-<td>measurement value</td>
+<td>Preferred_unit</td>
+<td>gram per gram, kilogram per kilogram, kilogram, pound, gram per cubic meter, kilogram per cubic meter, percent</td>
 </tr>
 </tbody>
 </table>
@@ -709,31 +708,35 @@
 
 <pre><code class="language-yaml">name: abs_air_humidity
 annotations:
-  expected_value:
-    tag: expected_value
-    value: measurement value
-  preferred_unit:
-    tag: preferred_unit
-    value: gram per gram, kilogram per kilogram, kilogram, pound
-  occurrence:
-    tag: occurrence
-    value: '1'
+  Preferred_unit:
+    tag: Preferred_unit
+    value: gram per gram, kilogram per kilogram, kilogram, pound, gram per cubic meter,
+      kilogram per cubic meter, percent
   storage_units:
     tag: storage_units
     value: '[lb_av]|g/g|kg|kg/kg'
-description: Actual mass of water vapor - mh20 - present in the air water vapor mixture
+description: Actual mass of water vapor present in the air water vapor mixture.
 title: absolute air humidity
+comments:
+- Can be calculated via mass of water vapor divided by the volume of the air and water
+  vapor mixture.
 examples:
 - value: 9 g/g
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- absolute
+- air
+- humidity
 slot_uri: MIXS:0000122
 alias: abs_air_humidity
 domain_of:
 - Biosample
 range: QuantityValue
-multivalued: false
+structured_pattern:
+  syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

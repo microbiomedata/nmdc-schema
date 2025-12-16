@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -541,15 +532,6 @@
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
     </span>
   </a>
   
@@ -628,13 +610,8 @@
 <h1 id="slot-sampling-time-outside-samp_time_out">Slot: sampling time outside (samp_time_out)</h1>
 <p><em>The recent and long term history of outside sampling</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000196">MIXS:0000196</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>samp_time_out</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -656,19 +633,6 @@
 <ul>
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -680,7 +644,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>time</td>
 </tr>
 </tbody>
@@ -709,28 +673,24 @@
 
 <pre><code class="language-yaml">name: samp_time_out
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: time
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: hour
-  occurrence:
-    tag: occurrence
-    value: '1'
 description: The recent and long term history of outside sampling
 title: sampling time outside
-examples:
-- value: ''
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- time
+string_serialization: '{float}'
 slot_uri: MIXS:0000196
 alias: samp_time_out
 domain_of:
 - Biosample
 range: TextValue
-multivalued: false
 
 </code></pre>
 

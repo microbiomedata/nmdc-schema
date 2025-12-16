@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -628,13 +619,8 @@
 <h1 id="slot-perturbation-perturbation">Slot: perturbation (perturbation)</h1>
 <p><em>Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000754">MIXS:0000754</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>perturbation</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -685,7 +671,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>perturbation type name;perturbation interval and duration</td>
 </tr>
 </tbody>
@@ -714,12 +700,9 @@
 
 <pre><code class="language-yaml">name: perturbation
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: perturbation type name;perturbation interval and duration
-  occurrence:
-    tag: occurrence
-    value: m
 description: Type of perturbation, e.g. chemical administration, physical disturbance,
   etc., coupled with perturbation regimen including how many times the perturbation
   was repeated, how long each perturbation lasted, and the start and end time of the
@@ -729,7 +712,8 @@ examples:
 - value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- perturbation
 string_serialization: '{text};{Rn/start_time/end_time/duration}'
 slot_uri: MIXS:0000754
 alias: perturbation

@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -550,6 +541,15 @@
   <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
     </span>
   </a>
   
@@ -628,13 +628,8 @@
 <h1 id="slot-surface-humidity-surf_humidity">Slot: surface humidity (surf_humidity)</h1>
 <p><em>Surfaces: water activity as a function of air and material moisture</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000123">MIXS:0000123</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>surf_humidity</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -654,7 +649,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
+<li>
+<p>Range: <a href="../QuantityValue/">QuantityValue</a></p>
+</li>
+<li>
+<p>Recommended: True</p>
+</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <table>
@@ -665,10 +665,14 @@
 </thead>
 <tbody>
 <tr>
-<td>10%</td>
+<td>0.1</td>
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>percent or float?</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -680,8 +684,8 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
-<td>measurement value</td>
+<td>Preferred_unit</td>
+<td>percentage</td>
 </tr>
 </tbody>
 </table>
@@ -709,31 +713,33 @@
 
 <pre><code class="language-yaml">name: surf_humidity
 annotations:
-  expected_value:
-    tag: expected_value
-    value: measurement value
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: percentage
-  occurrence:
-    tag: occurrence
-    value: '1'
   storage_units:
     tag: storage_units
     value: '%'
 description: 'Surfaces: water activity as a function of air and material moisture'
 title: surface humidity
+comments:
+- percent or float?
 examples:
-- value: 10%
+- value: '0.1'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- humidity
+- surface
 slot_uri: MIXS:0000123
 alias: surf_humidity
 domain_of:
 - Biosample
 range: QuantityValue
-multivalued: false
+recommended: true
+structured_pattern:
+  syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

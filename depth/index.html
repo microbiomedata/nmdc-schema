@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -626,15 +617,10 @@
 
 
 <h1 id="slot-depth-depth">Slot: depth (depth)</h1>
-<p><em>The vertical distance below local surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples.</em></p>
+<p><em>The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000018">MIXS:0000018</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../environment_field/">environment_field</a><ul>
-<li><strong>depth</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -680,8 +666,8 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
-<td>measurement value</td>
+<td>Preferred_unit</td>
+<td>meter</td>
 </tr>
 </tbody>
 </table>
@@ -709,27 +695,31 @@
 
 <pre><code class="language-yaml">name: depth
 annotations:
-  expected_value:
-    tag: expected_value
-    value: measurement value
+  Preferred_unit:
+    tag: Preferred_unit
+    value: meter
   storage_units:
     tag: storage_units
     value: m
-description: The vertical distance below local surface, e.g. for sediment or soil
-  samples depth is measured from sediment or soil surface, respectively. Depth can
-  be reported as an interval for subsurface samples.
+description: The vertical distance below local surface. For sediment or soil samples
+  depth is measured from sediment or soil surface, respectively. Depth can be reported
+  as an interval for subsurface samples
 title: depth
 examples:
 - value: 10 m
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: environment field
+keywords:
+- depth
 slot_uri: MIXS:0000018
 alias: depth
 domain_of:
 - Biosample
 range: QuantityValue
-multivalued: false
+structured_pattern:
+  syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

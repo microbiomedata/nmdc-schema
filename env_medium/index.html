@@ -626,7 +626,7 @@
 
 
 <h1 id="slot-environmental-medium-env_medium">Slot: environmental medium (env_medium)</h1>
-<p><em>Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (<a href="http://purl.obolibrary.org/obo/ENVO_00010483">http://purl.obolibrary.org/obo/ENVO_00010483</a>). EnvO documentation about how to use the field: <a href="https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS">https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS</a> . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).</em></p>
+<p><em>Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (<a href="http://purl.obolibrary.org/obo/ENVO_00010483">http://purl.obolibrary.org/obo/ENVO_00010483</a>). EnvO documentation about how to use the field: <a href="https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS">https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS</a> . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000014">MIXS:0000014</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
@@ -680,8 +680,8 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
-<td>The material displaced by the entity at time of sampling. Recommend subclasses of environmental material [ENVO:00010483].</td>
+<td>tooltip</td>
+<td>The predominant environmental material or substrate that directly surrounds or hosts the sample or specimen at the time of sampling. Choose values from subclasses of the 'environmental material' class [ENVO:00010483] in the Environment Ontology (ENVO). Values for this field should be measurable or mass material nouns, representing continuous environmental materials. For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to indicate a tissue, organ, or plant structure</td>
 </tr>
 </tbody>
 </table>
@@ -709,10 +709,6 @@
 
 <pre><code class="language-yaml">name: env_medium
 annotations:
-  expected_value:
-    tag: expected_value
-    value: The material displaced by the entity at time of sampling. Recommend subclasses
-      of environmental material [ENVO:00010483].
   tooltip:
     tag: tooltip
     value: The predominant environmental material or substrate that directly surrounds
@@ -728,20 +724,24 @@ description: 'Report the environmental material(s) immediately surrounding the s
   how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS
   . Terms from other OBO ontologies are permissible as long as they reference mass/volume
   nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree,
-  a leaf, a table top).'
+  a leaf, a table top)'
 title: environmental medium
 examples:
 - value: soil [ENVO:00001998]
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
+keywords:
+- environmental
 is_a: mixs_env_triad_field
-string_serialization: '{termLabel} {[termID]}'
 slot_uri: MIXS:0000014
 alias: env_medium
 domain_of:
 - Biosample
 range: ControlledIdentifiedTermValue
-multivalued: false
+structured_pattern:
+  syntax: ^{termLabel} \[{termID}\]$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

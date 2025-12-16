@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -564,15 +555,6 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Annotations
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -626,15 +608,10 @@
 
 
 <h1 id="slot-sample-storage-duration-samp_store_dur">Slot: sample storage duration (samp_store_dur)</h1>
-<p><em>Duration for which the sample was stored</em></p>
+<p><em>Duration for which the sample was stored. Indicate the duration for which the sample was stored written in ISO 8601 format</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000116">MIXS:0000116</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>samp_store_dur</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -670,21 +647,6 @@
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>expected_value</td>
-<td>duration</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -708,27 +670,27 @@
 <details>
 
 <pre><code class="language-yaml">name: samp_store_dur
-annotations:
-  expected_value:
-    tag: expected_value
-    value: duration
-  occurrence:
-    tag: occurrence
-    value: '1'
-description: Duration for which the sample was stored
+description: Duration for which the sample was stored. Indicate the duration for which
+  the sample was stored written in ISO 8601 format
 title: sample storage duration
 examples:
 - value: P1Y6M
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
-string_serialization: '{duration}'
+keywords:
+- duration
+- period
+- sample
+- storage
 slot_uri: MIXS:0000116
 alias: samp_store_dur
 domain_of:
 - Biosample
 range: TextValue
-multivalued: false
+structured_pattern:
+  syntax: ^{duration}$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

@@ -630,21 +630,16 @@ attributes:
   cur_vegetation:
     name: cur_vegetation
     annotations:
-      expected_value:
-        tag: expected_value
+      Expected_value:
+        tag: Expected_value
         value: current vegetation type
-      occurrence:
-        tag: occurrence
-        value: '1'
     description: Vegetation classification from one or more standard classification
       systems, or agricultural crop
     title: current vegetation
-    examples:
-    - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: core field
-    string_serialization: '{text}'
+    keywords:
+    - vegetation
     slot_uri: MIXS:0000312
     alias: cur_vegetation
     owner: FieldResearchSite
@@ -652,23 +647,23 @@ attributes:
     - FieldResearchSite
     - Biosample
     range: TextValue
-    multivalued: false
   elev:
     name: elev
     annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
+      Preferred_unit:
+        tag: Preferred_unit
+        value: meter
     description: Elevation of the sampling site is its height above a fixed reference
       point, most commonly the mean sea level. Elevation is mainly used when referring
       to points on the earth's surface, while altitude is used for points above the
-      surface, such as an aircraft in flight or a spacecraft in orbit.
+      surface, such as an aircraft in flight or a spacecraft in orbit
     title: elevation
     examples:
     - value: 100 meter
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: environment field
+    keywords:
+    - elevation
     slot_uri: MIXS:0000093
     alias: elev
     owner: FieldResearchSite
@@ -676,14 +671,12 @@ attributes:
     - FieldResearchSite
     - Biosample
     range: float
-    multivalued: false
+    structured_pattern:
+      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+      interpolated: true
+      partial_match: true
   geo_loc_name:
     name: geo_loc_name
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: 'country or sea name (INSDC or GAZ): region(GAZ), specific location
-          name'
     description: The geographical origin of the sample as defined by the country or
       sea name followed by specific region name. Country or sea names should be chosen
       from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology
@@ -693,8 +686,9 @@ attributes:
     - value: 'USA: Maryland, Bethesda'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: environment field
-    string_serialization: '{term}: {term}, {text}'
+    keywords:
+    - geographic
+    - location
     slot_uri: MIXS:0000010
     alias: geo_loc_name
     owner: FieldResearchSite
@@ -702,7 +696,10 @@ attributes:
     - FieldResearchSite
     - Biosample
     range: TextValue
-    multivalued: false
+    structured_pattern:
+      syntax: '^{country}: {region}, {specific_location}$'
+      interpolated: true
+      partial_match: true
   habitat:
     name: habitat
     from_schema: https://w3id.org/nmdc/nmdc
@@ -715,19 +712,17 @@ attributes:
     range: string
   lat_lon:
     name: lat_lon
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: decimal degrees,  limit to 8 decimal points
     description: The geographical origin of the sample as defined by latitude and
-      longitude. The values should be reported in decimal degrees and in WGS84 system
+      longitude. The values should be reported in decimal degrees, limited to 8 decimal
+      points, and in WGS84 system
     title: geographic location (latitude and longitude)
     examples:
     - value: 50.586825 6.408977
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: environment field
-    string_serialization: '{float} {float}'
+    keywords:
+    - geographic
+    - location
     slot_uri: MIXS:0000009
     alias: lat_lon
     owner: FieldResearchSite
@@ -735,24 +730,22 @@ attributes:
     - FieldResearchSite
     - Biosample
     range: GeolocationValue
-    multivalued: false
+    structured_pattern:
+      syntax: ^{lat} {lon}$
+      interpolated: true
+      partial_match: true
   local_class:
     name: local_class
     annotations:
-      expected_value:
-        tag: expected_value
+      Expected_value:
+        tag: Expected_value
         value: local classification name
-      occurrence:
-        tag: occurrence
-        value: '1'
     description: Soil classification based on local soil classification system
     title: soil_taxonomic/local classification
-    examples:
-    - value: ''
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: core field
-    string_serialization: '{text}'
+    keywords:
+    - classification
     slot_uri: MIXS:0000330
     alias: local_class
     owner: FieldResearchSite
@@ -760,7 +753,6 @@ attributes:
     - FieldResearchSite
     - Biosample
     range: TextValue
-    multivalued: false
   part_of:
     name: part_of
     description: Links a resource to another resource that either logically or physically
@@ -783,22 +775,20 @@ attributes:
   soil_type:
     name: soil_type
     annotations:
-      expected_value:
-        tag: expected_value
-        value: ENVO_00001998
-      occurrence:
-        tag: occurrence
-        value: '1'
+      Expected_value:
+        tag: Expected_value
+        value: ENVO:00001998
     description: Description of the soil type or classification. This field accepts
       terms under soil (http://purl.obolibrary.org/obo/ENVO_00001998).  Multiple terms
-      can be separated by pipes.
+      can be separated by pipes
     title: soil type
     examples:
     - value: plinthosol [ENVO:00002250]
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: core field
-    string_serialization: '{termLabel} {[termID]}'
+    keywords:
+    - soil
+    - type
     slot_uri: MIXS:0000332
     alias: soil_type
     owner: FieldResearchSite
@@ -806,7 +796,6 @@ attributes:
     - FieldResearchSite
     - Biosample
     range: TextValue
-    multivalued: false
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand

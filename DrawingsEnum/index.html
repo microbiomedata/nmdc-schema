@@ -602,17 +602,7 @@
 </thead>
 <tbody>
 <tr>
-<td>operation</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
 <td>as built</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>construction</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -622,17 +612,27 @@
 <td></td>
 </tr>
 <tr>
-<td>design</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
 <td>building navigation map</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
+<td>construction</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>design</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
 <td>diagram</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>operation</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -666,24 +666,24 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: drawings_enum
+<pre><code class="language-yaml">name: DrawingsEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  operation:
-    text: operation
   as built:
     text: as built
-  construction:
-    text: construction
   bid:
     text: bid
-  design:
-    text: design
   building navigation map:
     text: building navigation map
+  construction:
+    text: construction
+  design:
+    text: design
   diagram:
     text: diagram
+  operation:
+    text: operation
   sketch:
     text: sketch
 

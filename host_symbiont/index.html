@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -541,15 +532,6 @@
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
     </span>
   </a>
   
@@ -626,15 +608,10 @@
 
 
 <h1 id="slot-observed-host-symbionts-host_symbiont">Slot: observed host symbionts (host_symbiont)</h1>
-<p><em>The taxonomic name of the organism(s) found living in mutualistic, commensalistic, or parasitic symbiosis with the specific host.</em></p>
+<p><em>The taxonomic name of the organism(s) found living in mutualistic, commensalistic, or parasitic symbiosis with the specific host. The sampled symbiont can have its own symbionts. For example, parasites may have hyperparasites (=parasites of the parasite)</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0001298">MIXS:0001298</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>host_symbiont</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -661,19 +638,6 @@
 <p>Multivalued: True</p>
 </li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>flukeworms</td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -685,7 +649,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>species name or common name</td>
 </tr>
 </tbody>
@@ -714,21 +678,21 @@
 
 <pre><code class="language-yaml">name: host_symbiont
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: species name or common name
-  occurrence:
-    tag: occurrence
-    value: m
 description: The taxonomic name of the organism(s) found living in mutualistic, commensalistic,
-  or parasitic symbiosis with the specific host.
+  or parasitic symbiosis with the specific host. The sampled symbiont can have its
+  own symbionts. For example, parasites may have hyperparasites (=parasites of the
+  parasite)
 title: observed host symbionts
-examples:
-- value: flukeworms
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
-string_serialization: '{text}'
+keywords:
+- host
+- host.
+- observed
+- symbiosis
 slot_uri: MIXS:0001298
 alias: host_symbiont
 domain_of:

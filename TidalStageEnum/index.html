@@ -602,11 +602,6 @@
 </thead>
 <tbody>
 <tr>
-<td>low tide</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
 <td>ebb tide</td>
 <td>None</td>
 <td></td>
@@ -618,6 +613,11 @@
 </tr>
 <tr>
 <td>high tide</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>low tide</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -646,18 +646,18 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: tidal_stage_enum
+<pre><code class="language-yaml">name: TidalStageEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  low tide:
-    text: low tide
   ebb tide:
     text: ebb tide
   flood tide:
     text: flood tide
   high tide:
     text: high tide
+  low tide:
+    text: low tide
 
 </code></pre>
 

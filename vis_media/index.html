@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -628,13 +619,8 @@
 <h1 id="slot-visual-media-vis_media">Slot: visual media (vis_media)</h1>
 <p><em>The building visual media</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000840">MIXS:0000840</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>vis_media</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -654,7 +640,7 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../VisMediaEnum/">VisMediaEnum</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
 <table>
@@ -680,7 +666,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>enumeration</td>
 </tr>
 </tbody>
@@ -709,25 +695,22 @@
 
 <pre><code class="language-yaml">name: vis_media
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: enumeration
-  occurrence:
-    tag: occurrence
-    value: '1'
 description: The building visual media
 title: visual media
 examples:
 - value: 3D scans
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+string_serialization: '[photos|videos|commonly of the building|site context (adjacent
+  buildings, vegetation, terrain, streets)|interiors|equipment|3D scans]'
 slot_uri: MIXS:0000840
 alias: vis_media
 domain_of:
 - Biosample
-range: vis_media_enum
-multivalued: false
+range: string
 
 </code></pre>
 

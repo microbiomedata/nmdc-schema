@@ -626,7 +626,7 @@
 
 
 <h1 id="slot-broad-scale-environmental-context-env_broad_scale">Slot: broad-scale environmental context (env_broad_scale)</h1>
-<p><em>Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class:  <a href="http://purl.obolibrary.org/obo/ENVO_00000428">http://purl.obolibrary.org/obo/ENVO_00000428</a>. EnvO documentation about how to use the field: <a href="https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS">https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS</a></em></p>
+<p><em>Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO s biome class:  <a href="http://purl.obolibrary.org/obo/ENVO_00000428">http://purl.obolibrary.org/obo/ENVO_00000428</a>. EnvO documentation about how to use the field: <a href="https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS">https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS</a></em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000012">MIXS:0000012</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
@@ -680,8 +680,8 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
-<td>The major environment type(s) where the sample was collected. Recommend subclasses of biome [ENVO:00000428]. Multiple terms can be separated by one or more pipes.</td>
+<td>tooltip</td>
+<td>The biome or major environmental system where the sample or specimen originated. Choose values from subclasses of the 'biome' class [ENVO:00000428] in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe the broad anatomical or morphological context</td>
 </tr>
 </tbody>
 </table>
@@ -709,11 +709,6 @@
 
 <pre><code class="language-yaml">name: env_broad_scale
 annotations:
-  expected_value:
-    tag: expected_value
-    value: The major environment type(s) where the sample was collected. Recommend
-      subclasses of biome [ENVO:00000428]. Multiple terms can be separated by one
-      or more pipes.
   tooltip:
     tag: tooltip
     value: The biome or major environmental system where the sample or specimen originated.
@@ -724,21 +719,26 @@ annotations:
 description: 'Report the major environmental system the sample or specimen came from.
   The system(s) identified should have a coarse spatial grain, to provide the general
   environmental context of where the sampling was done (e.g. in the desert or a rainforest).
-  We recommend using subclasses of EnvO’s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428.
+  We recommend using subclasses of EnvO s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428.
   EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
 title: broad-scale environmental context
 examples:
 - value: oceanic epipelagic zone biome [ENVO:01000035]
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
+keywords:
+- context
+- environmental
 is_a: mixs_env_triad_field
-string_serialization: '{termLabel} {[termID]}'
 slot_uri: MIXS:0000012
 alias: env_broad_scale
 domain_of:
 - Biosample
 range: ControlledIdentifiedTermValue
-multivalued: false
+structured_pattern:
+  syntax: ^{termLabel} \[{termID}\]$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -541,15 +532,6 @@
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
     </span>
   </a>
   
@@ -628,13 +610,8 @@
 <h1 id="slot-hydrocarbon-resource-original-pressure-hcr_pressure">Slot: hydrocarbon resource original pressure (hcr_pressure)</h1>
 <p><em>Original pressure of the hydrocarbon resource</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000395">MIXS:0000395</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>hcr_pressure</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -656,19 +633,6 @@
 <ul>
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -680,8 +644,8 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
-<td>measurement value range</td>
+<td>Preferred_unit</td>
+<td>atmosphere, kilopascal</td>
 </tr>
 </tbody>
 </table>
@@ -709,29 +673,26 @@
 
 <pre><code class="language-yaml">name: hcr_pressure
 annotations:
-  expected_value:
-    tag: expected_value
-    value: measurement value range
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: atmosphere, kilopascal
-  occurrence:
-    tag: occurrence
-    value: '1'
 description: Original pressure of the hydrocarbon resource
 title: hydrocarbon resource original pressure
-examples:
-- value: ''
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
-string_serialization: '{float} - {float} {unit}'
+keywords:
+- hydrocarbon
+- pressure
+- resource
 slot_uri: MIXS:0000395
 alias: hcr_pressure
 domain_of:
 - Biosample
 range: TextValue
-multivalued: false
+structured_pattern:
+  syntax: ^{float} *- *{float} {unit}$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -564,15 +555,6 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Annotations
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -628,13 +610,8 @@
 <h1 id="slot-collection-date-collection_date">Slot: collection date (collection_date)</h1>
 <p><em>The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000011">MIXS:0000011</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../environment_field/">environment_field</a><ul>
-<li><strong>collection_date</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -665,26 +642,11 @@
 </thead>
 <tbody>
 <tr>
-<td>2018-05-11T10:00:00+01:00; 2018-05-11</td>
+<td>2013-03-25T12:42:31+01:00</td>
 </tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>expected_value</td>
-<td>date and time</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -708,26 +670,22 @@
 <details>
 
 <pre><code class="language-yaml">name: collection_date
-annotations:
-  expected_value:
-    tag: expected_value
-    value: date and time
 description: 'The time of sampling, either as an instance (single point in time) or
   interval. In case no exact time is available, the date/time can be right truncated
   i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10;
   2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant'
 title: collection date
 examples:
-- value: 2018-05-11T10:00:00+01:00; 2018-05-11
+- value: '2013-03-25T12:42:31+01:00'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: environment field
+keywords:
+- date
 slot_uri: MIXS:0000011
 alias: collection_date
 domain_of:
 - Biosample
 range: TimestampValue
-multivalued: false
 
 </code></pre>
 

@@ -602,22 +602,12 @@
 </thead>
 <tbody>
 <tr>
-<td>particulate air filter</td>
+<td>HEPA</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
 <td>chemical air filter</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>low-MERV pleated media</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>HEPA</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -628,6 +618,16 @@
 </tr>
 <tr>
 <td>gas-phase or ultraviolet air treatments</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>low-MERV pleated media</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>particulate air filter</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -656,22 +656,22 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: filter_type_enum
+<pre><code class="language-yaml">name: FilterTypeEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  particulate air filter:
-    text: particulate air filter
-  chemical air filter:
-    text: chemical air filter
-  low-MERV pleated media:
-    text: low-MERV pleated media
   HEPA:
     text: HEPA
+  chemical air filter:
+    text: chemical air filter
   electrostatic:
     text: electrostatic
   gas-phase or ultraviolet air treatments:
     text: gas-phase or ultraviolet air treatments
+  low-MERV pleated media:
+    text: low-MERV pleated media
+  particulate air filter:
+    text: particulate air filter
 
 </code></pre>
 

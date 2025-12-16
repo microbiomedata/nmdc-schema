@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
@@ -555,15 +546,6 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Annotations
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -617,15 +599,10 @@
 
 
 <h1 id="slot-chimera-check-software-chimera_check">Slot: chimera check software (chimera_check)</h1>
-<p><em>Tool(s) used for chimera checking, including version number and parameters, to discover and remove chimeric sequences. A chimeric sequence is comprised of two or more phylogenetically distinct parent sequences.</em></p>
+<p><em>Tool(s) used for chimera checking, including version number and parameters, to discover and remove chimeric sequences. A chimeric sequence is comprised of two or more phylogenetically distinct parent sequences</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000052">MIXS:0000052</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../sequencing_field/">sequencing_field</a><ul>
-<li><strong>chimera_check</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../TextValue/">TextValue</a></li>
@@ -644,21 +621,6 @@
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>expected_value</td>
-<td>name and version of software, parameters used</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -682,24 +644,23 @@
 <details>
 
 <pre><code class="language-yaml">name: chimera_check
-annotations:
-  expected_value:
-    tag: expected_value
-    value: name and version of software, parameters used
 description: Tool(s) used for chimera checking, including version number and parameters,
   to discover and remove chimeric sequences. A chimeric sequence is comprised of two
-  or more phylogenetically distinct parent sequences.
+  or more phylogenetically distinct parent sequences
 title: chimera check software
 examples:
 - value: uchime;v4.1;default parameters
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: sequencing field
-string_serialization: '{software};{version};{parameters}'
+keywords:
+- software
 slot_uri: MIXS:0000052
 alias: chimera_check
 range: TextValue
-multivalued: false
+structured_pattern:
+  syntax: ^{software};{version};{parameters}$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

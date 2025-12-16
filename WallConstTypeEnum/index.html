@@ -602,6 +602,11 @@
 </thead>
 <tbody>
 <tr>
+<td>fire resistive</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
 <td>frame construction</td>
 <td>None</td>
 <td></td>
@@ -623,11 +628,6 @@
 </tr>
 <tr>
 <td>modified fire resistive</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>fire resistive</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -656,10 +656,12 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: wall_const_type_enum
+<pre><code class="language-yaml">name: WallConstTypeEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
+  fire resistive:
+    text: fire resistive
   frame construction:
     text: frame construction
   joisted masonry:
@@ -670,8 +672,6 @@ permissible_values:
     text: masonry noncombustible
   modified fire resistive:
     text: modified fire resistive
-  fire resistive:
-    text: fire resistive
 
 </code></pre>
 

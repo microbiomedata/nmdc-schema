@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -628,13 +619,8 @@
 <h1 id="slot-biomass-biomass">Slot: biomass (biomass)</h1>
 <p><em>Amount of biomass; should include the name for the part of biomass measured, e.g. Microbial, total. Can include multiple measurements</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000174">MIXS:0000174</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>biomass</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -685,7 +671,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>biomass type;measurement value</td>
 </tr>
 </tbody>
@@ -714,15 +700,12 @@
 
 <pre><code class="language-yaml">name: biomass
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: biomass type;measurement value
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: ton, kilogram, gram
-  occurrence:
-    tag: occurrence
-    value: m
 description: Amount of biomass; should include the name for the part of biomass measured,
   e.g. Microbial, total. Can include multiple measurements
 title: biomass
@@ -730,7 +713,8 @@ examples:
 - value: total;20 gram
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- biomass
 string_serialization: '{text};{float} {unit}'
 slot_uri: MIXS:0000174
 alias: biomass

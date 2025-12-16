@@ -602,7 +602,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Oil Reservoir</td>
+<td>Coalbed</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -612,12 +612,12 @@
 <td></td>
 </tr>
 <tr>
-<td>Oil Sand</td>
+<td>Oil Reservoir</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>Coalbed</td>
+<td>Oil Sand</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -627,12 +627,12 @@
 <td></td>
 </tr>
 <tr>
-<td>Tight Oil Reservoir</td>
+<td>Tight Gas Reservoir</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>Tight Gas Reservoir</td>
+<td>Tight Oil Reservoir</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -666,24 +666,24 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: hcr_enum
+<pre><code class="language-yaml">name: HcrEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  Oil Reservoir:
-    text: Oil Reservoir
-  Gas Reservoir:
-    text: Gas Reservoir
-  Oil Sand:
-    text: Oil Sand
   Coalbed:
     text: Coalbed
+  Gas Reservoir:
+    text: Gas Reservoir
+  Oil Reservoir:
+    text: Oil Reservoir
+  Oil Sand:
+    text: Oil Sand
   Shale:
     text: Shale
-  Tight Oil Reservoir:
-    text: Tight Oil Reservoir
   Tight Gas Reservoir:
     text: Tight Gas Reservoir
+  Tight Oil Reservoir:
+    text: Tight Oil Reservoir
   other:
     text: other
 

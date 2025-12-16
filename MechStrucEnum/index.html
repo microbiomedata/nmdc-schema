@@ -602,17 +602,27 @@
 </thead>
 <tbody>
 <tr>
-<td>subway</td>
+<td>boat</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>coach</td>
+<td>bus</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>car</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
 <td>carriage</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>coach</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -627,22 +637,12 @@
 <td></td>
 </tr>
 <tr>
-<td>boat</td>
+<td>subway</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
 <td>train</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>car</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>bus</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -671,28 +671,28 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: mech_struc_enum
+<pre><code class="language-yaml">name: MechStrucEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  subway:
-    text: subway
-  coach:
-    text: coach
+  boat:
+    text: boat
+  bus:
+    text: bus
+  car:
+    text: car
   carriage:
     text: carriage
+  coach:
+    text: coach
   elevator:
     text: elevator
   escalator:
     text: escalator
-  boat:
-    text: boat
+  subway:
+    text: subway
   train:
     text: train
-  car:
-    text: car
-  bus:
-    text: bus
 
 </code></pre>
 

@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -541,15 +532,6 @@
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
     </span>
   </a>
   
@@ -628,13 +610,8 @@
 <h1 id="slot-organism-count-organism_count">Slot: organism count (organism_count)</h1>
 <p><em>Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000103">MIXS:0000103</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>organism_count</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -661,19 +638,6 @@
 <p>Multivalued: True</p>
 </li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>total prokaryotes;3.5e7 cells per milliliter;qPCR</td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -685,7 +649,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>organism name;measurement value;enumeration</td>
 </tr>
 </tbody>
@@ -714,16 +678,9 @@
 
 <pre><code class="language-yaml">name: organism_count
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: organism name;measurement value;enumeration
-  preferred_unit:
-    tag: preferred_unit
-    value: number of cells per cubic meter, number of cells per milliliter, number
-      of cells per cubic centimeter
-  occurrence:
-    tag: occurrence
-    value: m
   storage_units:
     tag: storage_units
     value: '1'
@@ -732,11 +689,12 @@ description: 'Total cell count of any organism (or group of organisms) per gram,
   that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided.
   (example: total prokaryotes; 3.5e7 cells per ml; qpcr)'
 title: organism count
-examples:
-- value: total prokaryotes;3.5e7 cells per milliliter;qPCR
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- count
+- organism
+string_serialization: '{text};{float} {unit};[ATP|MPN|qPCR|other]'
 slot_uri: MIXS:0000103
 alias: organism_count
 domain_of:

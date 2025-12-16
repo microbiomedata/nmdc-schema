@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -626,15 +617,10 @@
 
 
 <h1 id="slot-experimental-factor-experimental_factor">Slot: experimental factor (experimental_factor)</h1>
-<p><em>Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see <a href="http://purl.bioontology.org/ontology/EFO">http://purl.bioontology.org/ontology/EFO</a>; for a browser of OBI (v 2018-02-12) terms please see <a href="http://purl.bioontology.org/ontology/OBI">http://purl.bioontology.org/ontology/OBI</a></em></p>
+<p><em>Variable aspects of an experiment design that can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI)</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000008">MIXS:0000008</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../investigation_field/">investigation_field</a><ul>
-<li><strong>experimental_factor</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -654,7 +640,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../ControlledTermValue/">ControlledTermValue</a></li>
+<li>
+<p>Range: <a href="../ControlledTermValue/">ControlledTermValue</a></p>
+</li>
+<li>
+<p>Regex pattern: <code>^\S+.*\S+ \[[a-zA-Z]{2,}:\d+\]$</code></p>
+</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <table>
@@ -665,7 +656,7 @@
 </thead>
 <tbody>
 <tr>
-<td>time series design [EFO:EFO_0001779]</td>
+<td>time series design [EFO:0001779]</td>
 </tr>
 </tbody>
 </table>
@@ -680,7 +671,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>text or EFO and/or OBI</td>
 </tr>
 </tbody>
@@ -709,28 +700,29 @@
 
 <pre><code class="language-yaml">name: experimental_factor
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: text or EFO and/or OBI
-description: Experimental factors are essentially the variable aspects of an experiment
-  design which can be used to describe an experiment, or set of experiments, in an
-  increasingly detailed manner. This field accepts ontology terms from Experimental
-  Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a
-  browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO;
-  for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
+description: Variable aspects of an experiment design that can be used to describe
+  an experiment, or set of experiments, in an increasingly detailed manner. This field
+  accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for
+  Biomedical Investigations (OBI)
 title: experimental factor
 examples:
-- value: time series design [EFO:EFO_0001779]
+- value: time series design [EFO:0001779]
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: investigation field
-string_serialization: '{termLabel} {[termID]}|{text}'
+keywords:
+- experimental
+- factor
+string_serialization: '{termLabel} [{termID}]|{text}'
 slot_uri: MIXS:0000008
 alias: experimental_factor
 domain_of:
 - Biosample
 range: ControlledTermValue
 multivalued: false
+pattern: ^\S+.*\S+ \[[a-zA-Z]{2,}:\d+\]$
 
 </code></pre>
 

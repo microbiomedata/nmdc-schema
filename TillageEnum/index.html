@@ -602,12 +602,27 @@
 </thead>
 <tbody>
 <tr>
-<td>drill</td>
+<td>chisel</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
 <td>cutting disc</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>disc plough</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>drill</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>mouldboard</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -622,27 +637,12 @@
 <td></td>
 </tr>
 <tr>
-<td>zonal tillage</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>chisel</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
 <td>tined</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>mouldboard</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>disc plough</td>
+<td>zonal tillage</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -671,28 +671,28 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: tillage_enum
+<pre><code class="language-yaml">name: TillageEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  drill:
-    text: drill
+  chisel:
+    text: chisel
   cutting disc:
     text: cutting disc
+  disc plough:
+    text: disc plough
+  drill:
+    text: drill
+  mouldboard:
+    text: mouldboard
   ridge till:
     text: ridge till
   strip tillage:
     text: strip tillage
-  zonal tillage:
-    text: zonal tillage
-  chisel:
-    text: chisel
   tined:
     text: tined
-  mouldboard:
-    text: mouldboard
-  disc plough:
-    text: disc plough
+  zonal tillage:
+    text: zonal tillage
 
 </code></pre>
 

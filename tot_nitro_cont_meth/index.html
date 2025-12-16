@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -564,15 +555,6 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Annotations
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -628,13 +610,8 @@
 <h1 id="slot-total-nitrogen-content-method-tot_nitro_cont_meth">Slot: total nitrogen content method (tot_nitro_cont_meth)</h1>
 <p><em>Reference or method used in determining the total nitrogen</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000338">MIXS:0000338</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>tot_nitro_cont_meth</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -665,26 +642,11 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td><a href="https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00">https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00</a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>expected_value</td>
-<td>PMID,DOI or url</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -708,27 +670,26 @@
 <details>
 
 <pre><code class="language-yaml">name: tot_nitro_cont_meth
-annotations:
-  expected_value:
-    tag: expected_value
-    value: PMID,DOI or url
-  occurrence:
-    tag: occurrence
-    value: '1'
 description: Reference or method used in determining the total nitrogen
 title: total nitrogen content method
 examples:
-- value: ''
+- value: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
-string_serialization: '{PMID}|{DOI}|{URL}'
+keywords:
+- content
+- method
+- nitrogen
+- total
 slot_uri: MIXS:0000338
 alias: tot_nitro_cont_meth
 domain_of:
 - Biosample
 range: string
-multivalued: false
+structured_pattern:
+  syntax: ^{PMID}|{DOI}|{URL}$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -628,13 +619,8 @@
 <h1 id="slot-gaseous-environment-gaseous_environment">Slot: gaseous environment (gaseous_environment)</h1>
 <p><em>Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000558">MIXS:0000558</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>gaseous_environment</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -685,8 +671,8 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
-<td>gaseous compound name;gaseous compound amount;treatment interval and duration</td>
+<td>Preferred_unit</td>
+<td>micromole per liter</td>
 </tr>
 </tbody>
 </table>
@@ -714,15 +700,9 @@
 
 <pre><code class="language-yaml">name: gaseous_environment
 annotations:
-  expected_value:
-    tag: expected_value
-    value: gaseous compound name;gaseous compound amount;treatment interval and duration
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: micromole per liter
-  occurrence:
-    tag: occurrence
-    value: m
 description: Use of conditions with differing gaseous environments; should include
   the name of gaseous compound, amount administered, treatment duration, interval
   and total experimental duration; can include multiple gaseous environment regimens
@@ -731,8 +711,8 @@ examples:
 - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
-string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+keywords:
+- environment
 slot_uri: MIXS:0000558
 alias: gaseous_environment
 domain_of:

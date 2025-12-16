@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -626,15 +617,10 @@
 
 
 <h1 id="slot-presence-of-pets-animals-or-insects-pres_animal_insect">Slot: presence of pets, animals, or insects (pres_animal_insect)</h1>
-<p><em>The type and number of animals or insects present in the sampling space.</em></p>
+<p><em>The type and number of animals or insects present in the sampling space</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000819">MIXS:0000819</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>pres_animal_insect</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -654,12 +640,7 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../String/">String</a></p>
-</li>
-<li>
-<p>Regex pattern: <code>^(cat|dog|rodent|snake|other);\d+$</code></p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
 <table>
@@ -685,7 +666,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>enumeration;count</td>
 </tr>
 </tbody>
@@ -714,26 +695,24 @@
 
 <pre><code class="language-yaml">name: pres_animal_insect
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: enumeration;count
-  occurrence:
-    tag: occurrence
-    value: '1'
-description: The type and number of animals or insects present in the sampling space.
+description: The type and number of animals or insects present in the sampling space
 title: presence of pets, animals, or insects
 examples:
 - value: cat;5
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- animal
+- presence
+string_serialization: '[cat|dog|rodent|snake|other];{integer}'
 slot_uri: MIXS:0000819
 alias: pres_animal_insect
 domain_of:
 - Biosample
 range: string
-multivalued: false
-pattern: ^(cat|dog|rodent|snake|other);\d+$
 
 </code></pre>
 

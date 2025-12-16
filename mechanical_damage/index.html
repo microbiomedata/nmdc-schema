@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -628,13 +619,8 @@
 <h1 id="slot-mechanical-damage-mechanical_damage">Slot: mechanical damage (mechanical_damage)</h1>
 <p><em>Information about any mechanical damage exerted on the plant; can include multiple damages and sites</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0001052">MIXS:0001052</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>mechanical_damage</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -655,7 +641,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../TextValue/">TextValue</a></p>
+<p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -685,7 +671,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>damage type;body site</td>
 </tr>
 </tbody>
@@ -714,12 +700,9 @@
 
 <pre><code class="language-yaml">name: mechanical_damage
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: damage type;body site
-  occurrence:
-    tag: occurrence
-    value: m
 description: Information about any mechanical damage exerted on the plant; can include
   multiple damages and sites
 title: mechanical damage
@@ -727,13 +710,12 @@ examples:
 - value: pruning;bark
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
 string_serialization: '{text};{text}'
 slot_uri: MIXS:0001052
 alias: mechanical_damage
 domain_of:
 - Biosample
-range: TextValue
+range: string
 multivalued: true
 inlined: true
 inlined_as_list: true

@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -541,15 +532,6 @@
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
     </span>
   </a>
   
@@ -628,13 +610,8 @@
 <h1 id="slot-amount-of-light-amount_light">Slot: amount of light (amount_light)</h1>
 <p><em>The unit of illuminance and luminous emittance, measuring luminous flux per unit area</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000140">MIXS:0000140</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>amount_light</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -656,19 +633,6 @@
 <ul>
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -680,8 +644,8 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
-<td>measurement value</td>
+<td>Preferred_unit</td>
+<td>lux, lumens per square meter</td>
 </tr>
 </tbody>
 </table>
@@ -709,32 +673,28 @@
 
 <pre><code class="language-yaml">name: amount_light
 annotations:
-  expected_value:
-    tag: expected_value
-    value: measurement value
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: lux, lumens per square meter
-  occurrence:
-    tag: occurrence
-    value: '1'
   storage_units:
     tag: storage_units
     value: lm/m2|lx
 description: The unit of illuminance and luminous emittance, measuring luminous flux
   per unit area
 title: amount of light
-examples:
-- value: ''
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- light
 slot_uri: MIXS:0000140
 alias: amount_light
 domain_of:
 - Biosample
 range: QuantityValue
-multivalued: false
+structured_pattern:
+  syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

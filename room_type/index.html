@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -628,13 +619,8 @@
 <h1 id="slot-room-type-room_type">Slot: room type (room_type)</h1>
 <p><em>The main purpose or activity of the sampling room. A room is any distinguishable space within a structure</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000825">MIXS:0000825</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>room_type</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -654,7 +640,7 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../RoomTypeEnum/">RoomTypeEnum</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
 <table>
@@ -680,7 +666,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>enumeration</td>
 </tr>
 </tbody>
@@ -709,12 +695,9 @@
 
 <pre><code class="language-yaml">name: room_type
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: enumeration
-  occurrence:
-    tag: occurrence
-    value: '1'
 description: The main purpose or activity of the sampling room. A room is any distinguishable
   space within a structure
 title: room type
@@ -722,13 +705,17 @@ examples:
 - value: bathroom
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- room
+- type
+string_serialization: '[attic|bathroom|closet|conference room|elevator|examining room|hallway|kitchen|mail
+  room|private office|open office|stairwell|,restroom|lobby|vestibule|mechanical or
+  electrical room|data center|laboratory_wet|laboratory_dry|gymnasium|natatorium|auditorium|lockers|cafe|warehouse]'
 slot_uri: MIXS:0000825
 alias: room_type
 domain_of:
 - Biosample
-range: room_type_enum
-multivalued: false
+range: string
 
 </code></pre>
 

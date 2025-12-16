@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -550,6 +541,15 @@
   <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
     </span>
   </a>
   
@@ -628,13 +628,8 @@
 <h1 id="slot-soil-texture-measurement-soil_text_measure">Slot: soil texture measurement (soil_text_measure)</h1>
 <p><em>The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (&lt;2 um) with textural name (e.g., silty clay loam) optional.</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000335">MIXS:0000335</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>soil_text_measure</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -654,7 +649,7 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
 <table>
@@ -665,10 +660,15 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td>ite loam; 20% sand; 40% silt; 40% clay</td>
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility.</li>
+<li>Old MIxS used 'quantity value' range but this is clearly structured text, not a single quantity.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -680,7 +680,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>measurement value</td>
 </tr>
 </tbody>
@@ -709,30 +709,27 @@
 
 <pre><code class="language-yaml">name: soil_text_measure
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: measurement value
-  occurrence:
-    tag: occurrence
-    value: '1'
-  units_alignment_excuse:
-    tag: units_alignment_excuse
-    value: pending_analysis
 description: The relative proportion of different grain sizes of mineral particles
   in a soil, as described using a standard system; express as % sand (50 um to 2 mm),
   silt (2 um to 50 um), and clay (&lt;2 um) with textural name (e.g., silty clay loam)
   optional.
 title: soil texture measurement
+comments:
+- Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility.
+- Old MIxS used 'quantity value' range but this is clearly structured text, not a
+  single quantity.
 examples:
-- value: ''
+- value: ite loam; 20% sand; 40% silt; 40% clay
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
 slot_uri: MIXS:0000335
 alias: soil_text_measure
 domain_of:
 - Biosample
-range: QuantityValue
+range: string
 multivalued: false
 
 </code></pre>

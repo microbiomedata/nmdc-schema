@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -564,15 +555,6 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Annotations
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -626,15 +608,10 @@
 
 
 <h1 id="slot-sample-type-samp_type">Slot: sample type (samp_type)</h1>
-<p><em>The type of material from which the sample was obtained. For the Hydrocarbon package, samples include types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. For the Food Package, samples are usually categorized as food, body products or tissues, or environmental material. This field accepts terms listed under environmental specimen (<a href="http://purl.obolibrary.org/obo/GENEPIO_0001246">http://purl.obolibrary.org/obo/GENEPIO_0001246</a>).</em></p>
+<p><em>The type of material from which the sample was obtained. For the Hydrocarbon package, samples include types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. For the Food Package, samples are usually categorized as food, body products or tissues, or environmental material. This field accepts terms listed under environmental specimen (<a href="http://purl.obolibrary.org/obo/GENEPIO_0001246">http://purl.obolibrary.org/obo/GENEPIO_0001246</a>)</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000998">MIXS:0000998</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>samp_type</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -670,21 +647,6 @@
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>expected_value</td>
-<td>GENEPIO:0001246</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -708,32 +670,29 @@
 <details>
 
 <pre><code class="language-yaml">name: samp_type
-annotations:
-  expected_value:
-    tag: expected_value
-    value: GENEPIO:0001246
-  occurrence:
-    tag: occurrence
-    value: '1'
 description: The type of material from which the sample was obtained. For the Hydrocarbon
   package, samples include types like core, rock trimmings, drill cuttings, piping
   section, coupon, pigging debris, solid deposit, produced fluid, produced water,
   injected water, swabs, etc. For the Food Package, samples are usually categorized
   as food, body products or tissues, or environmental material. This field accepts
-  terms listed under environmental specimen (http://purl.obolibrary.org/obo/GENEPIO_0001246).
+  terms listed under environmental specimen (http://purl.obolibrary.org/obo/GENEPIO_0001246)
 title: sample type
 examples:
 - value: built environment sample [GENEPIO:0001248]
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
-string_serialization: '{termLabel} {[termID]}'
+keywords:
+- sample
+- type
 slot_uri: MIXS:0000998
 alias: samp_type
 domain_of:
 - Biosample
 range: TextValue
-multivalued: false
+structured_pattern:
+  syntax: ^{termLabel} \[{termID}\]$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

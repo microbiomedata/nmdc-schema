@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -550,6 +541,15 @@
   <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
     </span>
   </a>
   
@@ -628,13 +628,8 @@
 <h1 id="slot-water-cut-water_cut">Slot: water cut (water_cut)</h1>
 <p><em>Current amount of water (%) in a produced fluid stream; or the average of the combined streams</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000454">MIXS:0000454</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>water_cut</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -665,10 +660,14 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td>45%</td>
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>percent or float?</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -680,8 +679,8 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
-<td>measurement value</td>
+<td>Preferred_unit</td>
+<td>percent</td>
 </tr>
 </tbody>
 </table>
@@ -709,32 +708,32 @@
 
 <pre><code class="language-yaml">name: water_cut
 annotations:
-  expected_value:
-    tag: expected_value
-    value: measurement value
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: percent
-  occurrence:
-    tag: occurrence
-    value: '1'
   storage_units:
     tag: storage_units
     value: '%'
 description: Current amount of water (%) in a produced fluid stream; or the average
   of the combined streams
 title: water cut
+comments:
+- percent or float?
 examples:
-- value: ''
+- value: 45%
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- water
 slot_uri: MIXS:0000454
 alias: water_cut
 domain_of:
 - Biosample
 range: QuantityValue
-multivalued: false
+structured_pattern:
+  syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

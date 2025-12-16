@@ -602,22 +602,12 @@
 </thead>
 <tbody>
 <tr>
-<td>well</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>test well</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
 <td>drilling rig</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>wellhead</td>
+<td>other</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -632,7 +622,17 @@
 <td></td>
 </tr>
 <tr>
-<td>other</td>
+<td>test well</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>well</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>wellhead</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -661,24 +661,24 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: samp_collect_point_enum
+<pre><code class="language-yaml">name: SampCollectPointEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  well:
-    text: well
-  test well:
-    text: test well
   drilling rig:
     text: drilling rig
-  wellhead:
-    text: wellhead
+  other:
+    text: other
   separator:
     text: separator
   storage tank:
     text: storage tank
-  other:
-    text: other
+  test well:
+    text: test well
+  well:
+    text: well
+  wellhead:
+    text: wellhead
 
 </code></pre>
 

@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -626,15 +617,10 @@
 
 
 <h1 id="slot-source-material-identifiers-source_mat_id">Slot: source material identifiers (source_mat_id)</h1>
-<p><em>A unique identifier assigned to a material sample (as defined by <a href="http://rs.tdwg.org/dwc/terms/materialSampleID">http://rs.tdwg.org/dwc/terms/materialSampleID</a>, and as opposed to a particular digital record of a material sample) used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples. The INSDC qualifiers /specimen_voucher, /bio_material, or /culture_collection may or may not share the same value as the source_mat_id field. For instance, the /specimen_voucher qualifier and source_mat_id may both contain 'UAM:Herps:14' , referring to both the specimen voucher and sampled tissue with the same identifier. However, the /culture_collection qualifier may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id would refer to an identifier from some derived culture from which the nucleic acids were extracted (e.g. xatc123 or ark:/2154/R2).</em></p>
+<p><em>A unique identifier assigned to a material sample (as defined by <a href="http://rs.tdwg.org/dwc/terms/materialSampleID">http://rs.tdwg.org/dwc/terms/materialSampleID</a>, and as opposed to a particular digital record of a material sample) used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples. The INSDC qualifiers /specimen_voucher, /bio_material, or /culture_collection may or may not share the same value as the source_mat_id field. For instance, the /specimen_voucher qualifier and source_mat_id may both contain 'UAM:Herps:14' , referring to both the specimen voucher and sampled tissue with the same identifier. However, the /culture_collection qualifier may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id would refer to an identifier from some derived culture from which the nucleic acids were extracted (e.g. xatc123 or ark:/2154/R2)</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000026">MIXS:0000026</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../nucleic_acid_sequence_source_field/">nucleic_acid_sequence_source_field</a><ul>
-<li><strong>source_mat_id</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -680,7 +666,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>for cultures of microorganisms: identifiers for two culture collections; for other material a unique arbitrary identifer</td>
 </tr>
 </tbody>
@@ -709,8 +695,8 @@
 
 <pre><code class="language-yaml">name: source_mat_id
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: 'for cultures of microorganisms: identifiers for two culture collections;
       for other material a unique arbitrary identifer'
 description: A unique identifier assigned to a material sample (as defined by http://rs.tdwg.org/dwc/terms/materialSampleID,
@@ -723,14 +709,16 @@ description: A unique identifier assigned to a material sample (as defined by ht
   voucher and sampled tissue with the same identifier. However, the /culture_collection
   qualifier may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id
   would refer to an identifier from some derived culture from which the nucleic acids
-  were extracted (e.g. xatc123 or ark:/2154/R2).
+  were extracted (e.g. xatc123 or ark:/2154/R2)
 title: source material identifiers
 examples:
 - value: MPI012345
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: nucleic acid sequence source field
-string_serialization: '{text}'
+keywords:
+- identifier
+- material
+- source
 slot_uri: MIXS:0000026
 alias: source_mat_id
 domain_of:

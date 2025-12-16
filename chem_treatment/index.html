@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -628,13 +619,8 @@
 <h1 id="slot-chemical-treatment-chem_treatment">Slot: chemical treatment (chem_treatment)</h1>
 <p><em>List of chemical compounds administered upstream the sampling location where sampling occurred (e.g. Glycols, H2S scavenger, corrosion and scale inhibitors, demulsifiers, and other production chemicals etc.). The commercial name of the product and name of the supplier should be provided. The date of administration should also be included</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0001012">MIXS:0001012</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>chem_treatment</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -654,7 +640,7 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../TextValue/">TextValue</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
 <table>
@@ -680,7 +666,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>name;name;timestamp</td>
 </tr>
 </tbody>
@@ -709,12 +695,9 @@
 
 <pre><code class="language-yaml">name: chem_treatment
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: name;name;timestamp
-  occurrence:
-    tag: occurrence
-    value: '1'
 description: List of chemical compounds administered upstream the sampling location
   where sampling occurred (e.g. Glycols, H2S scavenger, corrosion and scale inhibitors,
   demulsifiers, and other production chemicals etc.). The commercial name of the product
@@ -725,14 +708,14 @@ examples:
 - value: ACCENT 1125;DOW;2010-11-17
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- treatment
 string_serialization: '{text};{text};{timestamp}'
 slot_uri: MIXS:0001012
 alias: chem_treatment
 domain_of:
 - Biosample
-range: TextValue
-multivalued: false
+range: string
 
 </code></pre>
 

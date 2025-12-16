@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -541,15 +532,6 @@
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
     </span>
   </a>
   
@@ -626,15 +608,10 @@
 
 
 <h1 id="slot-total-acid-number-tan">Slot: total acid number (tan)</h1>
-<p><em>Total Acid Number¬†(TAN) is a measurement of acidity that is determined by the amount of¬†potassium hydroxide¬†in milligrams that is needed to neutralize the acids in one gram of oil.¬†It is an important quality measurement of¬†crude oil. (source: <a href="https://en.wikipedia.org/wiki/Total_acid_number">https://en.wikipedia.org/wiki/Total_acid_number</a>)</em></p>
+<p><em>Total Acid Number  (TAN) is a measurement of acidity that is determined by the amount of  potassium hydroxide  in milligrams that is needed to neutralize the acids in one gram of oil.  It is an important quality measurement of  crude oil. (source: <a href="https://en.wikipedia.org/wiki/Total_acid_number">https://en.wikipedia.org/wiki/Total_acid_number</a>)</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000120">MIXS:0000120</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>tan</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -654,21 +631,13 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
+<li>
+<p>Range: <a href="../QuantityValue/">QuantityValue</a></p>
+</li>
+<li>
+<p>Recommended: True</p>
+</li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -680,8 +649,8 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
-<td>measurement value</td>
+<td>Preferred_unit</td>
+<td>milligram per liter</td>
 </tr>
 </tbody>
 </table>
@@ -709,34 +678,32 @@
 
 <pre><code class="language-yaml">name: tan
 annotations:
-  expected_value:
-    tag: expected_value
-    value: measurement value
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: milligram per liter
-  occurrence:
-    tag: occurrence
-    value: '1'
   storage_units:
     tag: storage_units
     value: mg/L
-description: 'Total Acid Number¬†(TAN) is a measurement of acidity that is determined
-  by the amount of¬†potassium hydroxide¬†in milligrams that is needed to neutralize
-  the acids in one gram of oil.¬†It is an important quality measurement of¬†crude
+description: 'Total Acid Number  (TAN) is a measurement of acidity that is determined
+  by the amount of  potassium hydroxide  in milligrams that is needed to neutralize
+  the acids in one gram of oil.  It is an important quality measurement of  crude
   oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)'
 title: total acid number
-examples:
-- value: ''
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- number
+- total
 slot_uri: MIXS:0000120
 alias: tan
 domain_of:
 - Biosample
 range: QuantityValue
-multivalued: false
+recommended: true
+structured_pattern:
+  syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

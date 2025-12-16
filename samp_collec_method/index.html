@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -547,15 +538,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -564,15 +546,6 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Annotations
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -626,15 +599,10 @@
 
 
 <h1 id="slot-sample-collection-method-samp_collec_method">Slot: sample collection method (samp_collec_method)</h1>
-<p><em>The method employed for collecting the sample.</em></p>
+<p><em>The method employed for collecting the sample</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0001225">MIXS:0001225</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../nucleic_acid_sequence_source_field/">nucleic_acid_sequence_source_field</a><ul>
-<li><strong>samp_collec_method</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -656,35 +624,7 @@
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>swabbing</td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>expected_value</td>
-<td>PMID,DOI,url , or text</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -708,24 +648,23 @@
 <details>
 
 <pre><code class="language-yaml">name: samp_collec_method
-annotations:
-  expected_value:
-    tag: expected_value
-    value: PMID,DOI,url , or text
-description: The method employed for collecting the sample.
+description: The method employed for collecting the sample
 title: sample collection method
-examples:
-- value: swabbing
 from_schema: https://w3id.org/nmdc/nmdc
+structured_aliases:
+  samp_collect_method:
+    literal_form: samp_collect_method
+    contexts:
+    - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
 rank: 1000
-is_a: nucleic acid sequence source field
-string_serialization: '{PMID}|{DOI}|{URL}|{text}'
+keywords:
+- method
+- sample
 slot_uri: MIXS:0001225
 alias: samp_collec_method
 domain_of:
 - Biosample
 range: string
-multivalued: false
 
 </code></pre>
 

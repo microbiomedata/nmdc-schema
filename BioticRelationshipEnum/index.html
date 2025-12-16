@@ -602,22 +602,27 @@
 </thead>
 <tbody>
 <tr>
+<td>commensalism</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
 <td>free living</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>parasite</td>
+<td>mutualism</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>commensal</td>
+<td>parasitism</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>symbiont</td>
+<td>symbiotic</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -646,18 +651,20 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: biotic_relationship_enum
+<pre><code class="language-yaml">name: BioticRelationshipEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
+  commensalism:
+    text: commensalism
   free living:
     text: free living
-  parasite:
-    text: parasite
-  commensal:
-    text: commensal
-  symbiont:
-    text: symbiont
+  mutualism:
+    text: mutualism
+  parasitism:
+    text: parasitism
+  symbiotic:
+    text: symbiotic
 
 </code></pre>
 

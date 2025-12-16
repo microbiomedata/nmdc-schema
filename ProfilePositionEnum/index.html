@@ -602,7 +602,12 @@
 </thead>
 <tbody>
 <tr>
-<td>summit</td>
+<td>backslope</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>footslope</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -612,12 +617,7 @@
 <td></td>
 </tr>
 <tr>
-<td>backslope</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>footslope</td>
+<td>summit</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -651,18 +651,18 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: profile_position_enum
+<pre><code class="language-yaml">name: ProfilePositionEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  summit:
-    text: summit
-  shoulder:
-    text: shoulder
   backslope:
     text: backslope
   footslope:
     text: footslope
+  shoulder:
+    text: shoulder
+  summit:
+    text: summit
   toeslope:
     text: toeslope
 

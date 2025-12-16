@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -626,15 +617,10 @@
 
 
 <h1 id="slot-dew-point-dew_point">Slot: dew point (dew_point)</h1>
-<p><em>The temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water.</em></p>
+<p><em>The temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000129">MIXS:0000129</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>dew_point</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -680,8 +666,8 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
-<td>measurement value</td>
+<td>Preferred_unit</td>
+<td>degree Celsius</td>
 </tr>
 </tbody>
 </table>
@@ -709,32 +695,28 @@
 
 <pre><code class="language-yaml">name: dew_point
 annotations:
-  expected_value:
-    tag: expected_value
-    value: measurement value
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: degree Celsius
-  occurrence:
-    tag: occurrence
-    value: '1'
   storage_units:
     tag: storage_units
     value: Cel
 description: The temperature to which a given parcel of humid air must be cooled,
-  at constant barometric pressure, for water vapor to condense into water.
+  at constant barometric pressure, for water vapor to condense into water
 title: dew point
 examples:
 - value: 22 Cel
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
 slot_uri: MIXS:0000129
 alias: dew_point
 domain_of:
 - Biosample
 range: QuantityValue
-multivalued: false
+structured_pattern:
+  syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

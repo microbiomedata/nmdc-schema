@@ -602,12 +602,12 @@
 </thead>
 <tbody>
 <tr>
-<td>Oil</td>
+<td>Bitumen</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>Gas-Condensate</td>
+<td>Coalbed Methane</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -617,12 +617,12 @@
 <td></td>
 </tr>
 <tr>
-<td>Bitumen</td>
+<td>Gas-Condensate</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>Coalbed Methane</td>
+<td>Oil</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -656,20 +656,20 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: hc_produced_enum
+<pre><code class="language-yaml">name: HcProducedEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  Oil:
-    text: Oil
-  Gas-Condensate:
-    text: Gas-Condensate
-  Gas:
-    text: Gas
   Bitumen:
     text: Bitumen
   Coalbed Methane:
     text: Coalbed Methane
+  Gas:
+    text: Gas
+  Gas-Condensate:
+    text: Gas-Condensate
+  Oil:
+    text: Oil
   other:
     text: other
 

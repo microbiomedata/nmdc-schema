@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -626,15 +617,10 @@
 
 
 <h1 id="slot-rooting-medium-macronutrients-root_med_macronutr">Slot: rooting medium macronutrients (root_med_macronutr)</h1>
-<p><em>Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170¬†mg/L).</em></p>
+<p><em>Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170 mg/L)</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000578">MIXS:0000578</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>root_med_macronutr</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -665,7 +651,7 @@
 </thead>
 <tbody>
 <tr>
-<td>KH2PO4;170¬†milligram per liter</td>
+<td>KH2PO4;170  milligram per liter</td>
 </tr>
 </tbody>
 </table>
@@ -680,7 +666,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>macronutrient name;measurement value</td>
 </tr>
 </tbody>
@@ -709,30 +695,27 @@
 
 <pre><code class="language-yaml">name: root_med_macronutr
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: macronutrient name;measurement value
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: milligram per liter
-  occurrence:
-    tag: occurrence
-    value: '1'
 description: Measurement of the culture rooting medium macronutrients (N,P, K, Ca,
-  Mg, S); e.g. KH2PO4 (170¬†mg/L).
+  Mg, S); e.g. KH2PO4 (170 mg/L)
 title: rooting medium macronutrients
 examples:
-- value: KH2PO4;170¬†milligram per liter
+- value: KH2PO4;170  milligram per liter
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- macronutrients
 string_serialization: '{text};{float} {unit}'
 slot_uri: MIXS:0000578
 alias: root_med_macronutr
 domain_of:
 - Biosample
 range: TextValue
-multivalued: false
 
 </code></pre>
 

@@ -593,12 +593,12 @@
 </thead>
 <tbody>
 <tr>
-<td>Daily</td>
+<td>Annually</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>Weekly</td>
+<td>Daily</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -613,7 +613,7 @@
 <td></td>
 </tr>
 <tr>
-<td>Annually</td>
+<td>Weekly</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -632,20 +632,20 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: freq_clean_enum
+<pre><code class="language-yaml">name: FreqCleanEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
+  Annually:
+    text: Annually
   Daily:
     text: Daily
-  Weekly:
-    text: Weekly
   Monthly:
     text: Monthly
   Quarterly:
     text: Quarterly
-  Annually:
-    text: Annually
+  Weekly:
+    text: Weekly
   other:
     text: other
 

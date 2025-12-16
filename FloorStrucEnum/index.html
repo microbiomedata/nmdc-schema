@@ -607,6 +607,11 @@
 <td></td>
 </tr>
 <tr>
+<td>concrete</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
 <td>floating floor</td>
 <td>None</td>
 <td></td>
@@ -628,11 +633,6 @@
 </tr>
 <tr>
 <td>wood-framed</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>concrete</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -661,12 +661,14 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: floor_struc_enum
+<pre><code class="language-yaml">name: FloorStrucEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
   balcony:
     text: balcony
+  concrete:
+    text: concrete
   floating floor:
     text: floating floor
   glass floor:
@@ -677,8 +679,6 @@ permissible_values:
     text: sprung floor
   wood-framed:
     text: wood-framed
-  concrete:
-    text: concrete
 
 </code></pre>
 

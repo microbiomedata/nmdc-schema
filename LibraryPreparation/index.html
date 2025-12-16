@@ -376,15 +376,9 @@
 
   LibraryPreparation : pcr_cond
 
-      LibraryPreparation --&gt; "0..1" TextValue : pcr_cond
-    click TextValue href "../TextValue"
-
   LibraryPreparation : pcr_cycles
 
   LibraryPreparation : pcr_primers
-
-      LibraryPreparation --&gt; "0..1" TextValue : pcr_primers
-    click TextValue href "../TextValue"
 
   LibraryPreparation : processing_institution
 
@@ -475,7 +469,7 @@
 </tr>
 <tr>
 <td><a href="../pcr_cond/">pcr_cond</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Description of reaction conditions and components of polymerase chain reactio...</td>
 <td>direct</td>
 </tr>
@@ -487,7 +481,7 @@
 </tr>
 <tr>
 <td><a href="../pcr_primers/">pcr_primers</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>PCR primers that were used to amplify the sequence of the targeted gene, locu...</td>
 <td>direct</td>
 </tr>
@@ -752,10 +746,6 @@ attributes:
     range: LibraryTypeEnum
   nucl_acid_amp:
     name: nucl_acid_amp
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: PMID, DOI or URL
     description: A link to a literature reference, electronic resource or a standard
       operating procedure (SOP), that describes the enzymatic amplification (PCR,
       TMA, NASBA) of specific nucleic acids
@@ -764,20 +754,21 @@ attributes:
     - value: https://phylogenomics.me/protocols/16s-pcr-protocol/
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: sequencing field
-    string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000038
     alias: nucl_acid_amp
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
     range: TextValue
-    multivalued: false
+    structured_pattern:
+      syntax: ^{PMID}|{DOI}|{URL}$
+      interpolated: true
+      partial_match: true
   pcr_cond:
     name: pcr_cond
     annotations:
-      expected_value:
-        tag: expected_value
+      Expected_value:
+        tag: Expected_value
         value: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
           elongation:degrees_minutes;total cycles
     description: Description of reaction conditions and components of polymerase chain
@@ -785,9 +776,12 @@ attributes:
     title: pcr conditions
     examples:
     - value: initial denaturation:94_3;annealing:50_1;elongation:72_1.5;final elongation:72_10;35
+    - value: initial denaturation:94degC_1.5min
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: sequencing field
+    keywords:
+    - condition
+    - pcr
     string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
       elongation:degrees_minutes;total cycles
     slot_uri: MIXS:0000049
@@ -795,8 +789,7 @@ attributes:
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
-    range: TextValue
-    multivalued: false
+    range: string
   pcr_cycles:
     name: pcr_cycles
     from_schema: https://w3id.org/nmdc/nmdc
@@ -810,10 +803,6 @@ attributes:
     range: integer
   pcr_primers:
     name: pcr_primers
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: 'FWD: forward primer sequence;REV:reverse primer sequence'
     description: PCR primers that were used to amplify the sequence of the targeted
       gene, locus or subfragment. This field should contain all the primers used for
       a single PCR reaction if multiple forward or reverse primers are present in
@@ -823,15 +812,17 @@ attributes:
     - value: FWD:GTGCCAGCMGCCGCGGTAA;REV:GGACTACHVGGGTWTCTAAT
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: sequencing field
-    string_serialization: FWD:{dna};REV:{dna}
+    keywords:
+    - pcr
     slot_uri: MIXS:0000046
     alias: pcr_primers
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
-    range: TextValue
-    multivalued: false
+    range: string
+    structured_pattern:
+      syntax: FWD:{dna_bases};REV:{dna_bases}
+      interpolated: true
   stranded_orientation:
     name: stranded_orientation
     description: Lists the strand orientiation for a stranded RNA library preparation.
@@ -844,31 +835,22 @@ attributes:
     range: StrandedOrientationEnum
   target_gene:
     name: target_gene
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: gene name
     description: Targeted gene or locus name for marker gene studies
     title: target gene
     examples:
     - value: 16S rRNA, 18S rRNA, nif, amoA, rpo
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: sequencing field
-    string_serialization: '{text}'
+    keywords:
+    - target
     slot_uri: MIXS:0000044
     alias: target_gene
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
     range: TargetGeneEnum
-    multivalued: false
   target_subfragment:
     name: target_subfragment
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: gene fragment name
     description: Name of subfragment of a gene or locus. Important to e.g. identify
       special regions on marker genes like V6 on 16S rRNA
     title: target subfragment
@@ -876,15 +858,14 @@ attributes:
     - value: V6, V9, ITS
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: sequencing field
-    string_serialization: '{text}'
+    keywords:
+    - target
     slot_uri: MIXS:0000045
     alias: target_subfragment
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
     range: TextValue
-    multivalued: false
   instrument_used:
     name: instrument_used
     description: What instrument was used during DataGeneration or MaterialProcessing.

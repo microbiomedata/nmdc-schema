@@ -602,7 +602,12 @@
 </thead>
 <tbody>
 <tr>
-<td>very poorly</td>
+<td>excessively drained</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>moderately well</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -617,17 +622,12 @@
 <td></td>
 </tr>
 <tr>
-<td>moderately well</td>
+<td>very poorly</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
 <td>well</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>excessively drained</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -656,22 +656,22 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: drainage_class_enum
+<pre><code class="language-yaml">name: DrainageClassEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  very poorly:
-    text: very poorly
+  excessively drained:
+    text: excessively drained
+  moderately well:
+    text: moderately well
   poorly:
     text: poorly
   somewhat poorly:
     text: somewhat poorly
-  moderately well:
-    text: moderately well
+  very poorly:
+    text: very poorly
   well:
     text: well
-  excessively drained:
-    text: excessively drained
 
 </code></pre>
 

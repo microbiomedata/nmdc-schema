@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: Taxonomy ID of DNA sample (samp_taxon_id) - NMDC Schema Documentation</title>
+        <title>Slot: taxonomy ID of DNA sample (samp_taxon_id) - NMDC Schema Documentation</title>
       
     
     
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: Taxonomy ID of DNA sample (samp_taxon_id)
+              Slot: taxonomy ID of DNA sample (samp_taxon_id)
             
           </span>
         </div>
@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -564,15 +555,6 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Annotations
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -625,16 +607,11 @@
   
 
 
-<h1 id="slot-taxonomy-id-of-dna-sample-samp_taxon_id">Slot: Taxonomy ID of DNA sample (samp_taxon_id)</h1>
-<p><em>NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome’ for mock community/positive controls, or 'blank sample' for negative controls.</em></p>
+<h1 id="slot-taxonomy-id-of-dna-sample-samp_taxon_id">Slot: taxonomy ID of DNA sample (samp_taxon_id)</h1>
+<p><em>NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome  for mock community/positive controls, or 'blank sample' for negative controls</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0001320">MIXS:0001320</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../investigation_field/">investigation_field</a><ul>
-<li><strong>samp_taxon_id</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -661,21 +638,6 @@
 <li>coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>expected_value</td>
-<td>Taxonomy ID</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -699,25 +661,28 @@
 <details>
 
 <pre><code class="language-yaml">name: samp_taxon_id
-annotations:
-  expected_value:
-    tag: expected_value
-    value: Taxonomy ID
 description: NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample.
-  Use 'synthetic metagenome’ for mock community/positive controls, or 'blank sample'
-  for negative controls.
-title: Taxonomy ID of DNA sample
+  Use 'synthetic metagenome  for mock community/positive controls, or 'blank sample'
+  for negative controls
+title: taxonomy ID of DNA sample
 comments:
 - coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: investigation field
+keywords:
+- dna
+- identifier
+- sample
+- taxon
 slot_uri: MIXS:0001320
 alias: samp_taxon_id
 domain_of:
 - Biosample
 range: ControlledIdentifiedTermValue
-multivalued: false
+structured_pattern:
+  syntax: ^{text} \[{NCBItaxon_id}\]$
+  interpolated: true
+  partial_match: true
 
 </code></pre>
 

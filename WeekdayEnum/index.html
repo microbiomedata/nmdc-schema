@@ -602,27 +602,12 @@
 </thead>
 <tbody>
 <tr>
-<td>Monday</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>Tuesday</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>Wednesday</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>Thursday</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
 <td>Friday</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>Monday</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -633,6 +618,21 @@
 </tr>
 <tr>
 <td>Sunday</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>Thursday</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>Tuesday</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>Wednesday</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -661,24 +661,24 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: weekday_enum
+<pre><code class="language-yaml">name: WeekdayEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  Monday:
-    text: Monday
-  Tuesday:
-    text: Tuesday
-  Wednesday:
-    text: Wednesday
-  Thursday:
-    text: Thursday
   Friday:
     text: Friday
+  Monday:
+    text: Monday
   Saturday:
     text: Saturday
   Sunday:
     text: Sunday
+  Thursday:
+    text: Thursday
+  Tuesday:
+    text: Tuesday
+  Wednesday:
+    text: Wednesday
 
 </code></pre>
 

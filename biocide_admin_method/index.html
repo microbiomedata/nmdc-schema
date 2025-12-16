@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -541,15 +532,6 @@
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
     </span>
   </a>
   
@@ -628,13 +610,8 @@
 <h1 id="slot-biocide-administration-method-biocide_admin_method">Slot: biocide administration method (biocide_admin_method)</h1>
 <p><em>Method of biocide administration (dose, frequency, duration, time elapsed between last biociding and sampling) (e.g. 150 mg/l; weekly; 4 hr; 3 days)</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000456">MIXS:0000456</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>biocide_admin_method</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -654,21 +631,13 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../TextValue/">TextValue</a></li>
+<li>
+<p>Range: <a href="../String/">String</a></p>
+</li>
+<li>
+<p>Recommended: True</p>
+</li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -680,7 +649,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>measurement value;frequency;duration;duration</td>
 </tr>
 </tbody>
@@ -709,30 +678,27 @@
 
 <pre><code class="language-yaml">name: biocide_admin_method
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: measurement value;frequency;duration;duration
-  preferred_unit:
-    tag: preferred_unit
+  Preferred_unit:
+    tag: Preferred_unit
     value: milligram per liter
-  occurrence:
-    tag: occurrence
-    value: '1'
 description: Method of biocide administration (dose, frequency, duration, time elapsed
   between last biociding and sampling) (e.g. 150 mg/l; weekly; 4 hr; 3 days)
 title: biocide administration method
-examples:
-- value: ''
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- administration
+- method
 string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration}'
 slot_uri: MIXS:0000456
 alias: biocide_admin_method
 domain_of:
 - Biosample
-range: TextValue
-multivalued: false
+range: string
+recommended: true
 
 </code></pre>
 

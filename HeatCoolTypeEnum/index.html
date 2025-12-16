@@ -602,7 +602,7 @@
 </thead>
 <tbody>
 <tr>
-<td>radiant system</td>
+<td>forced air system</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -612,7 +612,7 @@
 <td></td>
 </tr>
 <tr>
-<td>forced air system</td>
+<td>radiant system</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -651,16 +651,16 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: heat_cool_type_enum
+<pre><code class="language-yaml">name: HeatCoolTypeEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  radiant system:
-    text: radiant system
-  heat pump:
-    text: heat pump
   forced air system:
     text: forced air system
+  heat pump:
+    text: heat pump
+  radiant system:
+    text: radiant system
   steam forced heat:
     text: steam forced heat
   wood stove:

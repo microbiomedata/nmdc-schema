@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -547,9 +538,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
+  <a href="#comments" class="md-nav__link">
     <span class="md-ellipsis">
-      Examples
+      Comments
     </span>
   </a>
   
@@ -626,15 +617,10 @@
 
 
 <h1 id="slot-host-sex-host_sex">Slot: host sex (host_sex)</h1>
-<p><em>Gender or physical sex of the host.</em></p>
+<p><em>Gender or physical sex of the host</em></p>
 <p>URI: <a href="https://w3id.org/mixs/0000811">MIXS:0000811</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../core_field/">core_field</a><ul>
-<li><strong>host_sex</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -654,21 +640,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../HostSexEnum/">HostSexEnum</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>non-binary</td>
-</tr>
-</tbody>
-</table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>example of non-binary from Excel sheets does not match any of the enumerated values</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -680,7 +657,7 @@
 </thead>
 <tbody>
 <tr>
-<td>expected_value</td>
+<td>Expected_value</td>
 <td>enumeration</td>
 </tr>
 </tbody>
@@ -709,25 +686,25 @@
 
 <pre><code class="language-yaml">name: host_sex
 annotations:
-  expected_value:
-    tag: expected_value
+  Expected_value:
+    tag: Expected_value
     value: enumeration
-  occurrence:
-    tag: occurrence
-    value: '1'
-description: Gender or physical sex of the host.
+description: Gender or physical sex of the host
 title: host sex
-examples:
-- value: non-binary
+comments:
+- example of non-binary from Excel sheets does not match any of the enumerated values
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: core field
+keywords:
+- host
+- host.
+string_serialization: '[female|hermaphrodite|non-binary|male|transgender|transgender
+  (female to male)|transgender (male to female) |undeclared]'
 slot_uri: MIXS:0000811
 alias: host_sex
 domain_of:
 - Biosample
-range: host_sex_enum
-multivalued: false
+range: string
 
 </code></pre>
 

@@ -602,12 +602,7 @@
 </thead>
 <tbody>
 <tr>
-<td>new</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>visible wear</td>
+<td>damaged</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -617,7 +612,7 @@
 <td></td>
 </tr>
 <tr>
-<td>damaged</td>
+<td>new</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -628,6 +623,11 @@
 </tr>
 <tr>
 <td>visible signs of mold/mildew</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>visible wear</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -656,22 +656,22 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: room_condt_enum
+<pre><code class="language-yaml">name: RoomCondtEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  new:
-    text: new
-  visible wear:
-    text: visible wear
-  needs repair:
-    text: needs repair
   damaged:
     text: damaged
+  needs repair:
+    text: needs repair
+  new:
+    text: new
   rupture:
     text: rupture
   visible signs of mold/mildew:
     text: visible signs of mold/mildew
+  visible wear:
+    text: visible wear
 
 </code></pre>
 
