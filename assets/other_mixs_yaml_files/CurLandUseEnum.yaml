@@ -1,7 +1,7 @@
-id: http:/example.com/cur_land_use_enum_schema
-name: cur_land_use_enum_schema
+id: http:/example.com/CurLandUseEnum_schema
+name: CurLandUseEnum_schema
 enums:
-  cur_land_use_enum:
+  CurLandUseEnum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       badlands: { }

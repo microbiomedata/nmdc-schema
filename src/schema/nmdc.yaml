@@ -134,11 +134,54 @@ emit_prefixes:
   - xsd
 
 settings:
+  # NMDC ID pattern components
   id_nmdc_prefix: "^(nmdc)"
   id_shoulder: "([0-9][a-z]{0,6}[0-9])"
   id_blade: "([A-Za-z0-9]{1,})"
   id_version: "(\\.[0-9]{1,})"
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
+  # MIxS structured_pattern settings for pattern interpolation.
+  # These settings define regex patterns for placeholders like {scientific_float}, {text}, {URL}
+  # used in MIxS slot structured_pattern definitions.
+  #
+  # IMPORTANT: These settings are defined here (not in mixs.yaml) because:
+  # 1. The sheets-and-friends do_shuttle tool does not import settings from source schemas
+  # 2. The MIxS import pipeline explicitly deletes settings (see project.Makefile)
+  # When updating MIxS import, these settings must be manually synced if the source changes.
+  #
+  # Source: GSC MIxS v6.2.0-nmdc.1 (commit 0368da846b197bef1c0dd27a9cf337a8aeea17f2)
+  add_recov_methods: "Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other"
+  agrochemical_name: ".*"
+  amount: "[-+]?[0-9]*\\.?[0-9]+"
+  boolean: "(?:yes|no)"
+  country: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
+  date_time_stamp: "(\\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\\d|3[01])(T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d)(\\.\\d+)?(Z|([+-][01]\\d:[0-5]\\d))?)?)?)?$"
+  dna_bases: "[ACGT]"
+  DOI: "^doi:10.\\d{2,9}/.*$"
+  duration: "P(?:(?:\\d+D|\\d+M(?:\\d+D)?|\\d+Y(?:\\d+M(?:\\d+D)?)?)(?:T(?:\\d+H(?:\\d+M(?:\\d+S)?)?|\\d+M(?:\\d+S)?|\\d+S))?|T(?:\\d+H(?:\\d+M(?:\\d+S)?)?|\\d+M(?:\\d+S)?|\\d+S)|\\d+W)"
+  float: "[-+]?[0-9]*\\.?[0-9]+"
+  integer: "[1-9][0-9]*"
+  lat: "(-?((?:[0-8]?[0-9](?:\\.\\d{0,8})?)|90))"
+  lon: "-?[0-9]+(?:\\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})"
+  name: ".*"
+  NCBItaxon_id: "NCBITaxon:\\d+"
+  parameters: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
+  particulate_matter_name: ".*"
+  PMID: "^PMID:\\d+$"
+  primer_adapter_codes: "[ACGTRYSWKMBDHVNI]"
+  region: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
+  room_name: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
+  room_number: "[1-9][0-9]*"
+  scientific_float: "[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?"
+  software: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
+  specific_location: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
+  storage_condition_type: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
+  termID: "[a-zA-Z]{2,}:[a-zA-Z0-9]\\d+"
+  termLabel: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
+  text: ".*"
+  unit: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
+  URL: "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
+  version: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
 
 classes:
 
@@ -1036,6 +1079,58 @@ enums:
         is_a: organic_layer
 
 slots:
+  # ============================================================================
+  # Legacy MIxS slots removed from GSC MIxS commit 0368da846b197bef1c0dd27a9cf337a8aeea17f2
+  # These slots were present in microbiomedata/mixs tag pre-2024-05-15 but removed
+  # from the current GSC MIxS. NMDC retains them for backward compatibility with
+  # submission-schema which references them. No production data uses these slots.
+  # ============================================================================
+  host_family_relation:
+    title: host family relationship
+    description: >-
+      Familial relationships to other hosts in the same study; can include multiple relationships.
+    comments:
+      - "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
+    range: string
+    multivalued: true
+    examples:
+      - value: "offspring;Mussel25"
+    annotations:
+      Expected_value: "relationship type;arbitrary identifier"
+    slot_uri: MIXS:0000872
+
+  salinity_meth:
+    title: salinity method
+    description: >-
+      Reference or method used in determining salinity.
+    comments:
+      - "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
+    range: string
+    multivalued: false
+    structured_pattern:
+      syntax: "^{PMID}|{DOI}|{URL}$"
+      interpolated: true
+    annotations:
+      Expected_value: "PMID,DOI or url"
+    slot_uri: MIXS:0000341
+
+  soil_text_measure:
+    title: soil texture measurement
+    description: >-
+      The relative proportion of different grain sizes of mineral particles in a soil,
+      as described using a standard system; express as % sand (50 um to 2 mm),
+      silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.
+    comments:
+      - "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
+      - "Old MIxS used 'quantity value' range but this is clearly structured text, not a single quantity."
+    range: string
+    multivalued: false
+    examples:
+      - value: "ite loam; 20% sand; 40% silt; 40% clay"
+    annotations:
+      Expected_value: "measurement value"
+    slot_uri: MIXS:0000335
+
   biomaterial_purity:
     abstract: true
     range: QuantityValue

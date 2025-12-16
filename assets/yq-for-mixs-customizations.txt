@@ -1,7 +1,225 @@
+# =============================================================================
+# MIxS Customizations for NMDC Schema
+# =============================================================================
+# Target: GSC MIxS v6.2.2
+# Documentation: src/docs/mixs-v6.2.2-customizations.md
+# =============================================================================
+
+# Rename GSC MIxS slots to preserve NMDC backward compatibility
+# These slots were renamed in GSC MIxS but NMDC data uses the old names
+# See https://github.com/microbiomedata/nmdc-schema/issues/1368
+'.slots.samp_collec_device = .slots.samp_collect_device | del(.slots.samp_collect_device)'
+'.slots.samp_collec_method = .slots.samp_collect_method | del(.slots.samp_collect_method)'
+
+# Add structured aliases to document the GSC canonical names for renamed slots
+'.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
+'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
+
 '.slots.env_broad_scale.is_a |= "mixs_env_triad_field"'
 '.slots.env_local_scale.is_a |= "mixs_env_triad_field"'
 '.slots.env_medium.is_a |= "mixs_env_triad_field"'
 
+# Restore QuantityValue range for slots that had it in the old NMDC MIxS fork
+# The old fork (pre-2024-05-15) used "quantity value" range for ~184 slots
+# GSC MIxS 6.2.0 changed these to "string" - we restore QuantityValue for NMDC compatibility
+'.slots.abs_air_humidity.range |= "QuantityValue"'
+'.slots.air_temp.range |= "QuantityValue"'
+'.slots.al_sat.range |= "QuantityValue"'
+'.slots.alkalinity.range |= "QuantityValue"'
+'.slots.alkyl_diethers.range |= "QuantityValue"'
+'.slots.alt.range |= "QuantityValue"'
+'.slots.aminopept_act.range |= "QuantityValue"'
+'.slots.ammonium.range |= "QuantityValue"'
+'.slots.amount_light.range |= "QuantityValue"'
+'.slots.annual_precpt.range |= "QuantityValue"'
+'.slots.annual_temp.range |= "QuantityValue"'
+'.slots.api.range |= "QuantityValue"'
+'.slots.avg_dew_point.range |= "QuantityValue"'
+'.slots.avg_temp.range |= "QuantityValue"'
+'.slots.bac_prod.range |= "QuantityValue"'
+'.slots.bac_resp.range |= "QuantityValue"'
+'.slots.bacteria_carb_prod.range |= "QuantityValue"'
+'.slots.barometric_press.range |= "QuantityValue"'
+'.slots.benzene.range |= "QuantityValue"'
+'.slots.biochem_oxygen_dem.range |= "QuantityValue"'
+'.slots.bishomohopanol.range |= "QuantityValue"'
+'.slots.blood_press_diast.range |= "QuantityValue"'
+'.slots.blood_press_syst.range |= "QuantityValue"'
+'.slots.bromide.range |= "QuantityValue"'
+'.slots.built_struc_age.range |= "QuantityValue"'
+'.slots.calcium.range |= "QuantityValue"'
+'.slots.carb_dioxide.range |= "QuantityValue"'
+'.slots.carb_monoxide.range |= "QuantityValue"'
+'.slots.carb_nitro_ratio.range |= "QuantityValue"'
+'.slots.ceil_area.range |= "QuantityValue"'
+'.slots.ceil_thermal_mass.range |= "QuantityValue"'
+'.slots.chem_oxygen_dem.range |= "QuantityValue"'
+'.slots.chloride.range |= "QuantityValue"'
+'.slots.chlorophyll.range |= "QuantityValue"'
+'.slots.conduc.range |= "QuantityValue"'
+'.slots.density.range |= "QuantityValue"'
+'.slots.depth.range |= "QuantityValue"'
+'.slots.dew_point.range |= "QuantityValue"'
+'.slots.diss_carb_dioxide.range |= "QuantityValue"'
+'.slots.diss_hydrogen.range |= "QuantityValue"'
+'.slots.diss_inorg_carb.range |= "QuantityValue"'
+'.slots.diss_inorg_nitro.range |= "QuantityValue"'
+'.slots.diss_inorg_phosp.range |= "QuantityValue"'
+'.slots.diss_iron.range |= "QuantityValue"'
+'.slots.diss_org_carb.range |= "QuantityValue"'
+'.slots.diss_org_nitro.range |= "QuantityValue"'
+'.slots.diss_oxygen.range |= "QuantityValue"'
+'.slots.diss_oxygen_fluid.range |= "QuantityValue"'
+'.slots.door_size.range |= "QuantityValue"'
+'.slots.down_par.range |= "QuantityValue"'
+'.slots.efficiency_percent.range |= "QuantityValue"'
+'.slots.ethylbenzene.range |= "QuantityValue"'
+'.slots.exp_duct.range |= "QuantityValue"'
+'.slots.floor_age.range |= "QuantityValue"'
+'.slots.floor_area.range |= "QuantityValue"'
+'.slots.floor_thermal_mass.range |= "QuantityValue"'
+'.slots.fluor.range |= "QuantityValue"'
+'.slots.glucosidase_act.range |= "QuantityValue"'
+'.slots.hcr_fw_salinity.range |= "QuantityValue"'
+'.slots.height_carper_fiber.range |= "QuantityValue"'
+'.slots.host_age.range |= "QuantityValue"'
+'.slots.host_body_temp.range |= "QuantityValue"'
+'.slots.host_dry_mass.range |= "QuantityValue"'
+'.slots.host_height.range |= "QuantityValue"'
+'.slots.host_length.range |= "QuantityValue"'
+'.slots.host_tot_mass.range |= "QuantityValue"'
+'.slots.host_wet_mass.range |= "QuantityValue"'
+'.slots.humidity.range |= "QuantityValue"'
+'.slots.indust_eff_percent.range |= "QuantityValue"'
+'.slots.inside_lux.range |= "QuantityValue"'
+'.slots.iwf.range |= "QuantityValue"'
+'.slots.light_intensity.range |= "QuantityValue"'
+'.slots.magnesium.range |= "QuantityValue"'
+'.slots.mean_frict_vel.range |= "QuantityValue"'
+'.slots.mean_peak_frict_vel.range |= "QuantityValue"'
+'.slots.methane.range |= "QuantityValue"'
+'.slots.microbial_biomass.range |= "QuantityValue"'
+'.slots.nitrate.range |= "QuantityValue"'
+'.slots.nitrite.range |= "QuantityValue"'
+'.slots.nitro.range |= "QuantityValue"'
+'.slots.org_carb.range |= "QuantityValue"'
+'.slots.org_matter.range |= "QuantityValue"'
+'.slots.org_nitro.range |= "QuantityValue"'
+'.slots.owc_tvdss.range |= "QuantityValue"'
+'.slots.oxygen.range |= "QuantityValue"'
+'.slots.part_org_carb.range |= "QuantityValue"'
+'.slots.part_org_nitro.range |= "QuantityValue"'
+'.slots.petroleum_hydrocarb.range |= "QuantityValue"'
+'.slots.phosphate.range |= "QuantityValue"'
+'.slots.photon_flux.range |= "QuantityValue"'
+'.slots.potassium.range |= "QuantityValue"'
+'.slots.pour_point.range |= "QuantityValue"'
+'.slots.pressure.range |= "QuantityValue"'
+'.slots.primary_prod.range |= "QuantityValue"'
+'.slots.prod_rate.range |= "QuantityValue"'
+'.slots.redox_potential.range |= "QuantityValue"'
+'.slots.rel_air_humidity.range |= "QuantityValue"'
+'.slots.rel_humidity_out.range |= "QuantityValue"'
+'.slots.room_air_exch_rate.range |= "QuantityValue"'
+'.slots.salinity.range |= "QuantityValue"'
+'.slots.samp_size.range |= "QuantityValue"'
+'.slots.samp_store_temp.range |= "QuantityValue"'
+'.slots.samp_vol_we_dna_ext.range |= "QuantityValue"'
+'.slots.season_precpt.range |= "QuantityValue"'
+'.slots.season_temp.range |= "QuantityValue"'
+'.slots.silicate.range |= "QuantityValue"'
+'.slots.size_frac_low.range |= "QuantityValue"'
+'.slots.size_frac_up.range |= "QuantityValue"'
+'.slots.slope_aspect.range |= "QuantityValue"'
+'.slots.slope_gradient.range |= "QuantityValue"'
+'.slots.sludge_retent_time.range |= "QuantityValue"'
+'.slots.sodium.range |= "QuantityValue"'
+'.slots.solar_irradiance.range |= "QuantityValue"'
+'.slots.soluble_react_phosp.range |= "QuantityValue"'
+'.slots.specific_humidity.range |= "QuantityValue"'
+'.slots.sulfate.range |= "QuantityValue"'
+'.slots.sulfate_fw.range |= "QuantityValue"'
+'.slots.sulfide.range |= "QuantityValue"'
+'.slots.surf_humidity.range |= "QuantityValue"'
+'.slots.surf_moisture.range |= "QuantityValue"'
+'.slots.surf_temp.range |= "QuantityValue"'
+'.slots.suspend_part_matter.range |= "QuantityValue"'
+'.slots.tan.range |= "QuantityValue"'
+'.slots.temp.range |= "QuantityValue"'
+'.slots.temp_out.range |= "QuantityValue"'
+'.slots.toluene.range |= "QuantityValue"'
+'.slots.tot_carb.range |= "QuantityValue"'
+'.slots.tot_depth_water_col.range |= "QuantityValue"'
+'.slots.tot_diss_nitro.range |= "QuantityValue"'
+'.slots.tot_inorg_nitro.range |= "QuantityValue"'
+'.slots.tot_iron.range |= "QuantityValue"'
+'.slots.tot_nitro.range |= "QuantityValue"'
+'.slots.tot_nitro_content.range |= "QuantityValue"'
+'.slots.tot_org_carb.range |= "QuantityValue"'
+'.slots.tot_part_carb.range |= "QuantityValue"'
+'.slots.tot_phosp.range |= "QuantityValue"'
+'.slots.tot_phosphate.range |= "QuantityValue"'
+'.slots.tot_sulfur.range |= "QuantityValue"'
+'.slots.turbidity.range |= "QuantityValue"'
+'.slots.tvdss_of_hcr_press.range |= "QuantityValue"'
+'.slots.tvdss_of_hcr_temp.range |= "QuantityValue"'
+'.slots.ventilation_rate.range |= "QuantityValue"'
+'.slots.vfa.range |= "QuantityValue"'
+'.slots.vfa_fw.range |= "QuantityValue"'
+'.slots.wall_area.range |= "QuantityValue"'
+'.slots.wall_height.range |= "QuantityValue"'
+'.slots.wall_thermal_mass.range |= "QuantityValue"'
+'.slots.water_current.range |= "QuantityValue"'
+'.slots.water_cut.range |= "QuantityValue"'
+'.slots.water_feat_size.range |= "QuantityValue"'
+'.slots.water_prod_rate.range |= "QuantityValue"'
+'.slots.wind_speed.range |= "QuantityValue"'
+'.slots.xylene.range |= "QuantityValue"'
+
+# Restore multivalued: false for slots that changed from microbiomedata/mixs tag pre-2024-05-15
+# to GSC MIxS v6.2.2 (release tag v6.2.2, commit 1243e22a7565f36f0955cb9c6806e80efe41cc28).
+# NMDC data uses single values for these slots.
+'.slots.biotic_regm.multivalued |= false'
+'.slots.experimental_factor.multivalued |= false'
+'.slots.solar_irradiance.multivalued |= false'
+'.slots.source_mat_id.multivalued |= false'
+'.slots.ventilation_type.multivalued |= false'
+
+# Remove required: true from slots that gained it in GSC MIxS v6.2.2
+# (release tag v6.2.2, commit 1243e22a7565f36f0955cb9c6806e80efe41cc28).
+# Not present in tag pre-2024-05-15. NMDC doesn't require these slots.
+'del(.slots.abs_air_humidity.required)'
+'del(.slots.add_recov_method.required)'
+'del(.slots.api.required)'
+'del(.slots.basin.required)'
+'del(.slots.build_occup_type.required)'
+'del(.slots.building_setting.required)'
+'del(.slots.collection_date.required)'
+'del(.slots.env_broad_scale.required)'
+'del(.slots.env_local_scale.required)'
+'del(.slots.env_medium.required)'
+'del(.slots.filter_type.required)'
+'del(.slots.geo_loc_name.required)'
+'del(.slots.hc_produced.required)'
+'del(.slots.hcr.required)'
+'del(.slots.heat_cool_type.required)'
+'del(.slots.indoor_space.required)'
+'del(.slots.iwf.required)'
+'del(.slots.lat_lon.required)'
+'del(.slots.light_type.required)'
+'del(.slots.occup_density_samp.required)'
+'del(.slots.occup_samp.required)'
+'del(.slots.rel_air_humidity.required)'
+'del(.slots.samp_collect_point.required)'
+'del(.slots.samp_name.required)'
+'del(.slots.samp_taxon_id.required)'
+'del(.slots.samp_type.required)'
+'del(.slots.seq_meth.required)'
+'del(.slots.space_typ_state.required)'
+'del(.slots.typ_occup_density.required)'
+'del(.slots.water_cut.required)'
+
+# Set TextValue range for slots that need structured text wrapping
 '.slots.agrochem_addition.range |= "TextValue"'
 '.slots.air_temp_regm.range |= "TextValue"'
 '.slots.antibiotic_regm.range |= "TextValue"'
@@ -11,7 +229,8 @@
 '.slots.avg_occup.range |= "TextValue"'
 '.slots.bathroom_count.range |= "TextValue"'
 '.slots.bedroom_count.range |= "TextValue"'
-'.slots.biocide_admin_method.range |= "TextValue"'
+# biocide_admin_method: string range with structured_pattern (GSC MIxS default, no production data)
+'.slots.biocide_admin_method.range |= "string"'
 '.slots.biomass.range |= "TextValue"'
 '.slots.chem_administration.range |= "ControlledTermValue"'
 '.slots.chem_mutagen.range |= "TextValue"'
@@ -52,7 +271,7 @@
 '.slots.herbicide_regm.range |= "TextValue"'
 '.slots.host_body_product.range |= "ControlledTermValue"'
 '.slots.host_body_site.range |= "ControlledTermValue"'
-'.slots.host_family_relation.range |= "string"'
+# '.slots.host_family_relation.range |= "string"'  # Removed from GSC MIxS v6.2.2 - see issue #1368
 '.slots.host_phenotype.range |= "ControlledTermValue"'
 '.slots.host_subspecf_genlin.range |= "string"'
 '.slots.host_symbiont.range |= "string"'
@@ -108,8 +327,48 @@
 '.slots.root_med_regl.range |= "TextValue"'
 '.slots.root_med_suppl.range |= "TextValue"'
 '.slots.salt_regm.range |= "TextValue"'
+# Restore TextValue range for slots where NMDC MongoDB has TextValue data
+# These slots have production data using {type: nmdc:TextValue, has_raw_value: ...} format
+# Future migration to enums tracked in GitHub issue
+'.slots.crop_rotation.range |= "TextValue"'
+'.slots.cult_root_med.range |= "TextValue"'
+'.slots.gravidity.range |= "TextValue"'
+'.slots.perturbation.range |= "TextValue"'
+'.slots.soil_type.range |= "TextValue"'
+'.slots.store_cond.range |= "TextValue"'
+
 '.slots.samp_collec_device.range |= "string"'
 '.slots.samp_collec_method.range |= "string"'
+# Set _meth slots to string range (matching GSC MIxS) with structured_pattern
+# The default pipeline converts all string -> TextValue, so we restore string for _meth slots
+# to be faithful to GSC MIxS and enable structured_pattern validation
+# Slots with no production data will validate against ^{PMID}|{DOI}|{URL}$ pattern
+'.slots.al_sat_meth.range |= "string"'
+'.slots.alkalinity_method.range |= "string"'
+'.slots.cur_vegetation_meth.range |= "string"'
+'.slots.heavy_metals_meth.range |= "string"'
+'.slots.horizon_meth.range |= "string"'
+'.slots.local_class_meth.range |= "string"'
+# ph_meth: keep TextValue range because production data uses TextValue objects
+'.slots.samp_sort_meth.range |= "string"'
+'.slots.seq_meth.range |= "string"'
+# soil_type_meth: keep TextValue range because production data uses TextValue objects
+'.slots.tot_org_c_meth.range |= "string"'
+
+# Remove structured_pattern from slots where NMDC MongoDB has data that doesn't match
+# the ^{PMID}|{DOI}|{URL} pattern. Create issue to migrate this data in the future.
+# micro_biomass_meth data: "Chloroform fumigation direct extraction"
+'del(.slots.micro_biomass_meth.structured_pattern)'
+# samp_collec_method data: "Seawater", "Kit 1", "Kit 2"
+'del(.slots.samp_collec_method.structured_pattern)'
+# soil_texture_meth data: "Textural Analysis Test (hydrometer)"
+'del(.slots.soil_texture_meth.structured_pattern)'
+# soil_type_meth data: "Textural Analysis Test (hydrometer)" (same 30 biosamples as soil_texture_meth)
+'del(.slots.soil_type_meth.structured_pattern)'
+# ph_meth data: "measured in 1:1 w/vol slurry (10.2136/sssabookser5.3.c16)" (250 biosamples)
+'del(.slots.ph_meth.structured_pattern)'
+# water_cont_soil_meth data: "volumetric soil water content; ..."
+'del(.slots.water_cont_soil_meth.structured_pattern)'
 '.slots.samp_loc_corr_rate.range |= "TextValue"'
 '.slots.samp_mat_process.range |= "ControlledTermValue"'
 '.slots.samp_md.range |= "QuantityValue"'
@@ -188,11 +447,12 @@
 
 'del(.subsets)'
 'del(.classes)'
-'del(.enums.[].name)' 
-'del(.enums.[].permissible_values.[].text)' 
+'del(.enums.[].name)'
+'del(.enums.[].permissible_values.[].text)'
 'del(.slots.[].name)'
 'del(.slots.[].domain_of)'
-'del(.slots.add_recov_method.pattern)' 
+'del(.slots.[].in_subset)'
+'del(.slots.add_recov_method.pattern)'
 'del(.subsets.[].name)' 
 
 '.id |= "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"'
@@ -213,19 +473,24 @@
 'del(.slots.["has raw value"])'
 'del(.slots.["has unit"])'
 
-# add "M horizon" to soil_horizon_enum
-'.enums.soil_horizon_enum.permissible_values.["M horizon"] = {}'
+# add "M horizon" to SoilHorizonEnum
+# Note: GSC MIxS v6.2.2 (release tag v6.2.2, commit 1243e22a7565f36f0955cb9c6806e80efe41cc28)
+# renamed this from soil_horizon_enum to SoilHorizonEnum
+'.enums.SoilHorizonEnum.permissible_values.["M horizon"] = {}'
 
-# replace host_sex_enum permissible values
-'del(.enums.host_sex_enum.permissible_values)'
-'.enums.host_sex_enum.permissible_values.["female"] = {}'
-'.enums.host_sex_enum.permissible_values.["hermaphrodite"] = {}'
-'.enums.host_sex_enum.permissible_values.["non-binary"] = {}'
-'.enums.host_sex_enum.permissible_values.["male"] = {}'
-'.enums.host_sex_enum.permissible_values.["transgender"] = {}'
-'.enums.host_sex_enum.permissible_values.["transgender (female to male)"] = {}'
-'.enums.host_sex_enum.permissible_values.["transgender (male to female)"] = {}'
-'.enums.host_sex_enum.permissible_values.["undeclared"] = {}'
+# rename host_sex_enum to HostSexEnum for consistency with other GSC MIxS v6.2.2 enums
+'.enums.HostSexEnum = .enums.host_sex_enum | del(.enums.host_sex_enum)'
+
+# replace HostSexEnum permissible values
+'del(.enums.HostSexEnum.permissible_values)'
+'.enums.HostSexEnum.permissible_values.["female"] = {}'
+'.enums.HostSexEnum.permissible_values.["hermaphrodite"] = {}'
+'.enums.HostSexEnum.permissible_values.["non-binary"] = {}'
+'.enums.HostSexEnum.permissible_values.["male"] = {}'
+'.enums.HostSexEnum.permissible_values.["transgender"] = {}'
+'.enums.HostSexEnum.permissible_values.["transgender (female to male)"] = {}'
+'.enums.HostSexEnum.permissible_values.["transgender (male to female)"] = {}'
+'.enums.HostSexEnum.permissible_values.["undeclared"] = {}'
 
 # Fix a few examples so that they are validatable
 'del(.slots.env_broad_scale.examples)'
@@ -566,7 +831,7 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.api.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "non_ucum_unit"}'
 
 # Units alignment excuses for MIxS slots with zero occurrences in production data
-'.slots.soil_text_measure.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "pending_analysis"}'
+# '.slots.soil_text_measure.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "pending_analysis"}'  # Removed from GSC MIxS v6.2.2 - see issue #1368
 
 # Complex measurement slots that combine numeric and text data
 '.slots.microbial_biomass.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "complex_unit"}'

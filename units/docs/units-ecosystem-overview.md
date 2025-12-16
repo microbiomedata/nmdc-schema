@@ -47,7 +47,7 @@ units/
 - RDF/OWL compatible unit representations maintained
 
 ### MIxS Integration ✅  
-- Comprehensive yq commands in `assets/yq-for-mixs_subset_modified.txt` ensure MIxS preferred units preserved
+- Comprehensive yq commands in `assets/yq-for-mixs-customizations.txt` ensure MIxS preferred units preserved
 - Multi-unit storage_units accommodate MIxS diversity (e.g., `calcium: "[ppm]|mg/L|umol/L|mg/kg"`)
 
 ### Production Data Coverage ✅
@@ -64,7 +64,7 @@ units/
    - `src/schema/mixs.yaml` - Generated from MIxS with storage_units annotations
 
 2. **Units Processing Pipeline**
-   - `assets/yq-for-mixs_subset_modified.txt` - Comprehensive yq commands for MIxS integration
+   - `assets/yq-for-mixs-customizations.txt` - Comprehensive yq commands for MIxS integration
    - `units/Makefile` - Validation and reporting targets
    - `src/scripts/check_quantity_value_units.py` - YAML validation
 
@@ -78,7 +78,7 @@ units/
 
 ### Schema Files Analysis
 
-#### MIxS Integration (`assets/yq-for-mixs_subset_modified.txt`)
+#### MIxS Integration (`assets/yq-for-mixs-customizations.txt`)
 **Contributors**: MAM
 **Function**: Transform upstream MIxS schema for NMDC compatibility
 
