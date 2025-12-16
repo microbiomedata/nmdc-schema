@@ -246,7 +246,7 @@ Schema updates recommended:
 #### `mixs_inconsistent` Category (4 slots):
 - Coordinate with MIxS consortium to resolve specification inconsistencies
 
-#### `non_ucum_unit` Category (2 slots):
+#### `non_ucum_unit` Category (1 slot):
 - Consider creating domain-specific unit enums or accepting as legitimate exceptions
 
 ## Resolution Progress
