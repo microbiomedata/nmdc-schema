@@ -7,6 +7,11 @@
 - Let the user run make targets, or let GitHub Actions handle it on PR submission
 - Exception: Quick targets like `make squeaky-clean` or `make help` are safe to run
 
+**Full rebuild command** (for users to run, includes MIxS regeneration and units reports):
+```bash
+clear && make squeaky-clean mixs-yaml-clean && make src/schema/mixs.yaml && make squeaky-clean all test && make -C units fast
+```
+
 ## Schema Structure
 
 - **Main schema**: `src/schema/nmdc.yaml` (imports other schema files)

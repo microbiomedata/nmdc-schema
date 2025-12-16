@@ -20,7 +20,8 @@ SCHEMA_FILE ?= $(if $(filter prod,$(ENV)),../local/nmdc_schema_last_release.yaml
 # Report slots with units excuses (very fast: <1 second)
 output/schema_units_excuses.tsv: $(SCHEMA_FILE)
 	@mkdir -p output
-	yq eval '(.slots // {}) | to_entries[] | select(.value.annotations.units_alignment_excuse) | .key + "	" + (.value.annotations.units_alignment_excuse.value // .value.annotations.units_alignment_excuse)' $< | sort > $@
+	@echo "slot_name	units_alignment_excuse" > $@
+	yq eval '(.slots // {}) | to_entries[] | select(.value.annotations.units_alignment_excuse) | .key + "	" + (.value.annotations.units_alignment_excuse.value // .value.annotations.units_alignment_excuse)' $< | sort >> $@
 
 # Extract user-friendly unit titles (very fast: <1 second)
 output/user_friendly_units.tsv: $(SCHEMA_FILE)
