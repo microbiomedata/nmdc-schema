@@ -1,14 +1,7 @@
+slot_name	units_alignment_excuse
 api	non_ucum_unit
-bulk_elect_conductivity	pending_analysis
-container_size	pending_analysis
 efficiency_percent	mixs_inconsistent
-filter_pore_size	pending_analysis
-input_volume	pending_analysis
 inside_lux	mixs_inconsistent
 microbial_biomass	complex_unit
 rel_humidity_out	mixs_inconsistent
-soil_text_measure	pending_analysis
-specific_humidity	mixs_inconsistent
-substances_volume	pending_analysis
-tvdss_of_hcr_temp	complex_unit
 value	pending_analysis

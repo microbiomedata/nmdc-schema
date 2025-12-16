@@ -34,6 +34,7 @@ jobs:
       run: |
         poetry dynamic-versioning
         make squeaky-clean all
+        make -C units fast
 
     - name: Build source and wheel archives
       run: poetry build

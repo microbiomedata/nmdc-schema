@@ -18,15 +18,10 @@ APPROVED_UNITS_ALIGNMENT_EXCUSES = {
 # To remove a slot from this list, add proper storage_units annotation to it.
 ALLOWED_SLOTS_WITH_UNITS_EXCUSE = {
     "api",                 # non_ucum_unit
-    "biomaterial_purity",  # pending_analysis
-    "concentration",       # pending_analysis
     "efficiency_percent",  # mixs_inconsistent
-    "exp_pipe",            # pending_analysis
     "inside_lux",          # mixs_inconsistent
     "microbial_biomass",   # complex_unit
-    "occup_density_samp",  # pending_analysis
     "rel_humidity_out",    # mixs_inconsistent
-    "soil_text_measure",   # pending_analysis
     "value",               # pending_analysis
 }
 

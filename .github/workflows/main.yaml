@@ -50,6 +50,9 @@ jobs:
       - name: Build schema artifacts
         run: make all
 
+      - name: Regenerate units reports
+        run: make -C units fast
+
       - name: Run tests
         run: make test
 
