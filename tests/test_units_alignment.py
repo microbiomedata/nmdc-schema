@@ -26,8 +26,8 @@ ALLOWED_SLOTS_WITH_UNITS_EXCUSE = {
     "microbial_biomass",   # complex_unit
     "occup_density_samp",  # pending_analysis
     "rel_humidity_out",    # mixs_inconsistent
-    "soil_text_measure",   # pending_analysis
     "value",               # pending_analysis
+    # Note: soil_text_measure removed - now range: string (not QuantityValue) in nmdc.yaml
 }
 
 
