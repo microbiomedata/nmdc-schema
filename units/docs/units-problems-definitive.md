@@ -67,27 +67,21 @@ Current state after recent fixes and regeneration.
 **Why no storage_units**: These represent structured measurements that cannot be reduced to simple UCUM units while preserving their semantic meaning.
 
 
-### `pending_analysis` Category (10 slots)
+### `pending_analysis` Category (1 slot)
 
 **Problem Statement**: These slots require further investigation to determine appropriate units or whether they should have QuantityValue range at all.
 
 **Affected Slots**:
-- `biomaterial_purity`, `bulk_elect_conductivity`, `concentration`, `container_size`, `exp_pipe`, `filter_pore_size`, `input_volume`, `occup_density_samp`, `substances_volume`, `value`
+- `value`
 
-**Key Examples**:
-- **`biomaterial_purity`**:
-  - **Issue**: [#2548](https://github.com/microbiomedata/nmdc-schema/issues/2548)
-  - **Problem**: Parent of DNA absorbance slots, may need to be abstract
-  - **Range conflict**: Has QuantityValue range but children have float range
+**Key Example**:
 - **`value`**:
   - **Problem**: Generic slot name requires range clarification
   - **Too broad**: Could be any type of value
 
-**Note**: `soil_text_measure` was removed from this category - it was removed from GSC MIxS v6.2.2 and is now hardcoded in nmdc.yaml with `range: string` instead of QuantityValue (see [#1368](https://github.com/microbiomedata/nmdc-schema/issues/1368)).
+**Validation Status**: Production analysis confirmed **zero usage** in NMDC data for pending_analysis slots.
 
-**Validation Status**: Production analysis confirmed **zero usage** in NMDC data for all pending_analysis slots, validating their "pending" status and allowing time for proper schema design decisions.
-
-**Why no storage_units**: Require schema design decisions about whether these should have QuantityValue range or use different modeling approaches (TextValue, categorical enums, etc.).
+**Why no storage_units**: Require schema design decisions about whether these should have QuantityValue range or use different modeling approaches.
 
 
 ### `mixs_inconsistent` Category (4 slots)
@@ -242,8 +236,8 @@ Schema updates recommended:
 
 ### 8. **Category-Specific Actions**
 
-#### `pending_analysis` Category (10 slots):
-1. Review each slot's semantic meaning and intended use
+#### `pending_analysis` Category (1 slot):
+1. Review `value` slot's semantic meaning and intended use
 2. Determine appropriate LinkML range (QuantityValue, TextValue, string, enum)
 3. Add storage_units if keeping QuantityValue range
 4. Update range if measurement nature is non-quantitative
@@ -260,10 +254,10 @@ Schema updates recommended:
 **Current Goal**: [Issue #2646](https://github.com/microbiomedata/nmdc-schema/issues/2646) - "decrease the number of QuantityValue slots that have excuses"
 
 **Priority Order**:
-1. **`pending_analysis`** - Highest impact (10 slots), zero production usage allows safe changes
-2. **`mixs_inconsistent`** - Requires MIxS coordination but clear technical resolution path  
+1. **`pending_analysis`** - Only 1 slot (`value`) remains, zero production usage allows safe changes
+2. **`mixs_inconsistent`** - Requires MIxS coordination but clear technical resolution path (4 slots)
 3. **`protocol_slot`** - May require range changes from QuantityValue to TextValue
-4. **`non_ucum_unit`** - Lowest priority, represent legitimate domain-specific standards
+4. **`non_ucum_unit`** - Lowest priority, represent legitimate domain-specific standards (1 slot)
 
 ### Strategic Insights
 
