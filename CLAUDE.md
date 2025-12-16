@@ -1,58 +1,45 @@
-# Poetry Entry Point Diagnostics
+# NMDC Schema Development Guide
 
-## Diagnostic Commands for Poetry Entry Point Issues
+## Build Instructions
 
-When `poetry run <command>` says "Command not found" but the package is installed:
+**Do not run make targets directly** - most are long-running (10+ minutes). Instead:
+- Inform the user when make targets are needed: "This change requires running `make all` to regenerate artifacts."
+- Let the user run make targets, or let GitHub Actions handle it on PR submission
+- Exception: Quick targets like `make squeaky-clean` or `make help` are safe to run
 
-### 1. Check if package is installed
+## Schema Structure
+
+- **Main schema**: `src/schema/nmdc.yaml` (imports other schema files)
+- **Schema modules**: `src/schema/*.yaml` (core.yaml, mixs.yaml, etc.)
+- **MIxS import**: `src/schema/mixs.yaml` is generated from GSC MIxS via yq transformations
+- **Generated artifacts**: `nmdc_schema/` directory (JSON Schema, Pydantic, etc.)
+
+## MIxS Customizations
+
+NMDC imports GSC MIxS and applies customizations:
+- **Import mapping**: `assets/import_mixs_slots_regardless.tsv`
+- **yq transformations**: `assets/yq-for-mixs-customizations.txt`
+- **Documentation**: `src/docs/mixs-v6.2.2-customizations.md`
+
+## Validation and Testing
+
+Quick validation commands (safe to run):
 ```bash
-poetry show | grep <package-name>
+poetry run linkml-validate -s src/schema/nmdc.yaml src/data/valid/SomeFile.yaml
+poetry run linkml-lint --config .linkmllint.yaml src/schema/nmdc.yaml
 ```
 
-### 2. Check if script exists in venv
-```bash
-ls -la .venv/bin/ | grep <command-name>
-```
+For full test suite, ask the user to run `make test` or let CI handle it.
 
-### 3. Check if entry points are registered
-```bash
-poetry run python -c "import pkg_resources; [print(f'{ep.name}: {ep.module_name}:{ep.attrs[0]}') for ep in pkg_resources.iter_entry_points('console_scripts') if '<command>' in ep.name]"
-```
+## Test Data
 
-### 4. Verify entry points in package metadata
-```bash
-find .venv/lib/python*/site-packages/<package>*.dist-info/ -name "entry_points.txt" -exec cat {} \;
-```
+- **Valid examples**: `src/data/valid/*.yaml`
+- **Invalid examples**: `src/data/invalid/*.yaml`
+- **Database-interleaved.yaml**: Large test file with production-like data
 
-## Solutions (in order of preference)
+## Poetry Environment
 
-### 1. Force reinstall specific package
-```bash
-poetry run pip uninstall <package-name> -y && poetry install
-```
-
-### 2. Force reinstall all dependencies
-```bash
-poetry install --force
-```
-
-### 3. Rebuild entire environment
-```bash
-poetry env remove
-poetry install
-```
-
-## Prevention
-
-- Run `poetry check` periodically to catch configuration issues
-- Avoid mixing `pip install` and `poetry install` in the same environment
-- Consider using `poetry shell` instead of `poetry run` for interactive work
-
-## Test Commands
-
-Essential commands that should work in this project:
-- `poetry run do_shuttle --help` (from sheets-and-friends)
-- `poetry run gen-linkml --help` (from linkml)
-- `poetry run gen-pydantic --help` (from linkml)
-
-If any of these fail with "Command not found", use the diagnostic steps above.
+If `poetry run <command>` fails with "Command not found":
+1. Check installation: `poetry show | grep <package-name>`
+2. Force reinstall: `poetry run pip uninstall <package> -y && poetry install`
+3. Last resort: `poetry env remove && poetry install`

@@ -8,7 +8,7 @@ from linkml_runtime.linkml_model import Element
 from tests import SCHEMA_FILE
 
 # Allowed annotation keys based on the provided whitelist
-# Note: Expected_value and Preferred_unit use GSC MIxS 6.2.0 capitalization
+# Note: Expected_value and Preferred_unit use GSC MIxS v6.2.2 capitalization
 ALLOWED_ANNOTATION_KEYS = {
     "Expected_value",
     "file_name_pattern",

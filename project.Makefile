@@ -122,7 +122,7 @@ local/mixs_regen/mixs_subset.yaml: assets/import_mixs_slots_regardless.tsv
 		--config_tsv $< \
 		--yaml_output $@
 
-local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml assets/yq-for-mixs_subset_modified.txt
+local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml assets/yq-for-mixs-customizations.txt
 	# switching to TextValue may not add any value. the other range changes do improve the structure of the data.
 	# ironically changing back to strings for the submission-schema, data harmonizer, submission portal etc.
 	# may switch source of truth to the MIxS 6.2.2 release candidate
@@ -135,11 +135,11 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 
 
 local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: local/mixs_regen/mixs_subset_modified.yaml \
-assets/other_mixs_yaml_files/cur_land_use_enum.yaml
-	# inject re-structured cur_land_use_enum
+assets/other_mixs_yaml_files/CurLandUseEnum.yaml
+	# inject re-structured CurLandUseEnum
 	#   using '| cat > ' because yq doesn't seem to like redirecting out to a file
 	yq eval-all \
-		'select(fileIndex==0).enums.cur_land_use_enum = select(fileIndex==1).enums.cur_land_use_enum | select(fileIndex==0)' \
+		'select(fileIndex==0).enums.CurLandUseEnum = select(fileIndex==1).enums.CurLandUseEnum | select(fileIndex==0)' \
 		$^ | cat > $@
 
 local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \

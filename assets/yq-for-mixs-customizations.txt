@@ -1,3 +1,10 @@
+# =============================================================================
+# MIxS Customizations for NMDC Schema
+# =============================================================================
+# Target: GSC MIxS v6.2.2
+# Documentation: src/docs/mixs-v6.2.2-customizations.md
+# =============================================================================
+
 # Rename GSC MIxS slots to preserve NMDC backward compatibility
 # These slots were renamed in GSC MIxS but NMDC data uses the old names
 # See https://github.com/microbiomedata/nmdc-schema/issues/1368
@@ -5,8 +12,8 @@
 '.slots.samp_collec_method = .slots.samp_collect_method | del(.slots.samp_collect_method)'
 
 # Add structured aliases to document the GSC canonical names for renamed slots
-'.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/tree/0368da846b197bef1c0dd27a9cf337a8aeea17f2"]}]'
-'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/tree/0368da846b197bef1c0dd27a9cf337a8aeea17f2"]}]'
+'.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
+'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
 
 '.slots.env_broad_scale.is_a |= "mixs_env_triad_field"'
 '.slots.env_local_scale.is_a |= "mixs_env_triad_field"'
@@ -170,7 +177,7 @@
 '.slots.xylene.range |= "QuantityValue"'
 
 # Restore multivalued: false for slots that changed from microbiomedata/mixs tag pre-2024-05-15
-# to tag v6.2.0-nmdc.1 (mirrors GSC MIxS v6.2.0 commit 0368da846b197bef1c0dd27a9cf337a8aeea17f2).
+# to GSC MIxS v6.2.2 (release tag v6.2.2, commit 1243e22a7565f36f0955cb9c6806e80efe41cc28).
 # NMDC data uses single values for these slots.
 '.slots.biotic_regm.multivalued |= false'
 '.slots.experimental_factor.multivalued |= false'
@@ -178,8 +185,8 @@
 '.slots.source_mat_id.multivalued |= false'
 '.slots.ventilation_type.multivalued |= false'
 
-# Remove required: true from slots that gained it in microbiomedata/mixs tag v6.2.0-nmdc.1
-# (mirrors GSC MIxS v6.2.0 commit 0368da846b197bef1c0dd27a9cf337a8aeea17f2).
+# Remove required: true from slots that gained it in GSC MIxS v6.2.2
+# (release tag v6.2.2, commit 1243e22a7565f36f0955cb9c6806e80efe41cc28).
 # Not present in tag pre-2024-05-15. NMDC doesn't require these slots.
 'del(.slots.abs_air_humidity.required)'
 'del(.slots.add_recov_method.required)'
@@ -264,7 +271,7 @@
 '.slots.herbicide_regm.range |= "TextValue"'
 '.slots.host_body_product.range |= "ControlledTermValue"'
 '.slots.host_body_site.range |= "ControlledTermValue"'
-# '.slots.host_family_relation.range |= "string"'  # Removed from GSC MIxS v6.2.0-nmdc.1 - see issue #1368
+# '.slots.host_family_relation.range |= "string"'  # Removed from GSC MIxS v6.2.2 - see issue #1368
 '.slots.host_phenotype.range |= "ControlledTermValue"'
 '.slots.host_subspecf_genlin.range |= "string"'
 '.slots.host_symbiont.range |= "string"'
@@ -467,20 +474,23 @@
 'del(.slots.["has unit"])'
 
 # add "M horizon" to SoilHorizonEnum
-# Note: microbiomedata/mixs tag v6.2.0-nmdc.1 (mirrors GSC MIxS commit 0368da846b197bef1c0dd27a9cf337a8aeea17f2)
+# Note: GSC MIxS v6.2.2 (release tag v6.2.2, commit 1243e22a7565f36f0955cb9c6806e80efe41cc28)
 # renamed this from soil_horizon_enum to SoilHorizonEnum
 '.enums.SoilHorizonEnum.permissible_values.["M horizon"] = {}'
 
-# replace host_sex_enum permissible values
-'del(.enums.host_sex_enum.permissible_values)'
-'.enums.host_sex_enum.permissible_values.["female"] = {}'
-'.enums.host_sex_enum.permissible_values.["hermaphrodite"] = {}'
-'.enums.host_sex_enum.permissible_values.["non-binary"] = {}'
-'.enums.host_sex_enum.permissible_values.["male"] = {}'
-'.enums.host_sex_enum.permissible_values.["transgender"] = {}'
-'.enums.host_sex_enum.permissible_values.["transgender (female to male)"] = {}'
-'.enums.host_sex_enum.permissible_values.["transgender (male to female)"] = {}'
-'.enums.host_sex_enum.permissible_values.["undeclared"] = {}'
+# rename host_sex_enum to HostSexEnum for consistency with other GSC MIxS v6.2.2 enums
+'.enums.HostSexEnum = .enums.host_sex_enum | del(.enums.host_sex_enum)'
+
+# replace HostSexEnum permissible values
+'del(.enums.HostSexEnum.permissible_values)'
+'.enums.HostSexEnum.permissible_values.["female"] = {}'
+'.enums.HostSexEnum.permissible_values.["hermaphrodite"] = {}'
+'.enums.HostSexEnum.permissible_values.["non-binary"] = {}'
+'.enums.HostSexEnum.permissible_values.["male"] = {}'
+'.enums.HostSexEnum.permissible_values.["transgender"] = {}'
+'.enums.HostSexEnum.permissible_values.["transgender (female to male)"] = {}'
+'.enums.HostSexEnum.permissible_values.["transgender (male to female)"] = {}'
+'.enums.HostSexEnum.permissible_values.["undeclared"] = {}'
 
 # Fix a few examples so that they are validatable
 'del(.slots.env_broad_scale.examples)'
@@ -821,7 +831,7 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.api.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "non_ucum_unit"}'
 
 # Units alignment excuses for MIxS slots with zero occurrences in production data
-# '.slots.soil_text_measure.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "pending_analysis"}'  # Removed from GSC MIxS v6.2.0-nmdc.1 - see issue #1368
+# '.slots.soil_text_measure.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "pending_analysis"}'  # Removed from GSC MIxS v6.2.2 - see issue #1368
 
 # Complex measurement slots that combine numeric and text data
 '.slots.microbial_biomass.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "complex_unit"}'

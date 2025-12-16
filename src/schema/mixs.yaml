@@ -827,7 +827,7 @@ enums:
       low: {}
       middle: {}
       top: {}
-  host_sex_enum:
+  HostSexEnum:
     permissible_values:
       female: {}
       hermaphrodite: {}
@@ -837,7 +837,7 @@ enums:
       transgender (female to male): {}
       transgender (male to female): {}
       undeclared: {}
-  cur_land_use_enum:
+  CurLandUseEnum:
     permissible_values:
       badlands: {}
       cities: {}
@@ -7116,7 +7116,7 @@ slots:
     structured_aliases:
       - literal_form: samp_collect_device
         contexts:
-          - https://github.com/GenomicsStandardsConsortium/mixs/tree/0368da846b197bef1c0dd27a9cf337a8aeea17f2
+          - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
     range: string
   samp_collec_method:
     description: The method employed for collecting the sample
@@ -7129,7 +7129,7 @@ slots:
     structured_aliases:
       - literal_form: samp_collect_method
         contexts:
-          - https://github.com/GenomicsStandardsConsortium/mixs/tree/0368da846b197bef1c0dd27a9cf337a8aeea17f2
+          - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
   mixs_env_triad_field:
     annotations:
       tooltip: >-
