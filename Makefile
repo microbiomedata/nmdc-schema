@@ -90,7 +90,7 @@ prefixmaps:
 
 pydantic:
 	@mkdir -p $(DEST)/pydantic
-	$(RUN) gen-pydantic nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/pydantic/nmdc-pydantic.py
+	$(RUN) gen-pydantic nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/pydantic/nmdc_pydantic.py
 
 # Note: `all` is an alias for `site`.
 all: site
@@ -124,7 +124,7 @@ gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # 
 		--include python \
 		--include rdf \
 		--config-file gen-project-config.yaml \
-		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL) && cp $(DEST)/pydantic/*.py $(PYMODEL)/nmdc-pydantic.py
+		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL) && cp $(DEST)/pydantic/*.py $(PYMODEL)/nmdc_pydantic.py
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 
@@ -323,7 +323,7 @@ site-clean: clean
 
 squeaky-clean: clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
 	rm -rf $(PYMODEL)/nmdc.py
-	rm -rf $(PYMODEL)/nmdc-pydantic.py
+	rm -rf $(PYMODEL)/nmdc_pydantic.py
 	mkdir project
 	rm -rf local/biosample_slots_ranges_report.tsv
 
