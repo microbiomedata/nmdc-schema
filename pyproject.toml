@@ -160,7 +160,7 @@ testpaths = ["tests"]
 
 [tool.deptry]
 extend_exclude = [
-    "nmdc_schema/nmdc-pydantic.py"
+    "nmdc_schema/nmdc_pydantic.py"
 ]
 # urllib3 is a transitive dependency (via requests) but we pin it directly
 # to ensure users get security fixes (CVE-2025-66471, CVE-2025-66418)
