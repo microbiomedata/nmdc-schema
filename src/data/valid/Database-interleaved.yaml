@@ -2669,7 +2669,7 @@ biosample_set:
         has_raw_value: xxx
     store_cond:
       type: nmdc:TextValue
-      has_raw_value: -20 degree Celsius freezer;P2Y10D
+      has_raw_value: frozen
     substructure_type:
       - basement
     sulfate:

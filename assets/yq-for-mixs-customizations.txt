@@ -336,6 +336,8 @@
 '.slots.perturbation.range |= "TextValue"'
 '.slots.soil_type.range |= "TextValue"'
 '.slots.store_cond.range |= "TextValue"'
+# submission-schema has historically used an enum for store_cond, which doesn't align with the MIxS pattern
+'del(.slots.store_cond.structured_pattern)'
 
 '.slots.samp_collec_device.range |= "string"'
 '.slots.samp_collec_method.range |= "string"'
