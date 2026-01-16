@@ -816,6 +816,8 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.room_occup.annotations.storage_units = {"tag": "storage_units", "value": "1"}'
 '.slots.occup_samp.annotations.storage_units = {"tag": "storage_units", "value": "1"}'
 '.slots.freq_clean.annotations.storage_units = {"tag": "storage_units", "value": "1/d"}'
+'.slots.freq_clean.examples = [{"value": "2 1/d"}]'
+'.slots.freq_clean.description = "The number of times the sample location is cleaned per day."'
 '.slots.freq_cook.annotations.storage_units = {"tag": "storage_units", "value": "1/d"}'
 '.slots.exp_pipe.annotations.storage_units = {"tag": "storage_units", "value": "1"}'
 '.slots.occup_density_samp.annotations.storage_units = {"tag": "storage_units", "value": "1/[sft_i]"}'
