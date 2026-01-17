@@ -1634,7 +1634,7 @@
 <tr>
 <td><a href="../freq_clean/">freq_clean</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
-<td>The number of times the sample location is cleaned</td>
+<td>The number of times the sample location is cleaned per day</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -4795,11 +4795,10 @@ slot_usage:
     title: heavy metals method/ extreme unusual properties
     comments:
     - Required when heavy metals are provided
-    - If different methods are used for multiple metals, indicate the metal and method.
-      Separate metals by ;
     examples:
     - value: https://doi.org/10.3390/ijms9040434
-    - value: mercury https://doi.org/10.1007/BF01056090; chromium https://doi.org/10.1007/s00216-006-0322-8
+    - value: doi:10.1007/BF01056090
+    - value: https://doi.org/10.1007/s00216-006-0322-8
     multivalued: true
   season_precpt:
     name: season_precpt
@@ -5140,11 +5139,10 @@ slot_usage:
     title: heavy metals method/ extreme unusual properties
     comments:
     - Required when heavy metals are provided
-    - If different methods are used for multiple metals, indicate the metal and method.
-      Separate metals by ;
     examples:
     - value: https://doi.org/10.3390/ijms9040434
-    - value: mercury https://doi.org/10.1007/BF01056090; chromium https://doi.org/10.1007/s00216-006-0322-8
+    - value: doi:10.1007/BF01056090
+    - value: https://doi.org/10.1007/s00216-006-0322-8
     multivalued: true
   season_precpt:
     name: season_precpt
@@ -8936,11 +8934,10 @@ attributes:
       storage_units:
         tag: storage_units
         value: 1/d
-    description: The number of times the sample location is cleaned. Frequency of
-      cleaning might be on a Daily basis, Weekly, Monthly, Quarterly or Annually
+    description: The number of times the sample location is cleaned per day.
     title: frequency of cleaning
     examples:
-    - value: Daily
+    - value: 2 1/d
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -9549,11 +9546,10 @@ attributes:
     title: heavy metals method/ extreme unusual properties
     comments:
     - Required when heavy metals are provided
-    - If different methods are used for multiple metals, indicate the metal and method.
-      Separate metals by ;
     examples:
     - value: https://doi.org/10.3390/ijms9040434
-    - value: mercury https://doi.org/10.1007/BF01056090; chromium https://doi.org/10.1007/s00216-006-0322-8
+    - value: doi:10.1007/BF01056090
+    - value: https://doi.org/10.1007/s00216-006-0322-8
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -14637,8 +14633,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    structured_pattern:
-      syntax: ^{storage_condition_type};{duration}$
   substructure_type:
     name: substructure_type
     description: The substructure or under building is that largely hidden section
