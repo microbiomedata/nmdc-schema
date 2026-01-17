@@ -2825,10 +2825,10 @@ slots:
       interpolated: true
       partial_match: true
   freq_clean:
-    description: The number of times the sample location is cleaned. Frequency of cleaning might be on a Daily basis, Weekly, Monthly, Quarterly or Annually
+    description: The number of times the sample location is cleaned per day.
     title: frequency of cleaning
     examples:
-      - value: Daily
+      - value: 2 1/d
     keywords:
       - frequency
     slot_uri: MIXS:0000226
@@ -5991,8 +5991,6 @@ slots:
       - condition
       - storage
     slot_uri: MIXS:0000327
-    structured_pattern:
-      syntax: ^{storage_condition_type};{duration}$
     range: TextValue
   substructure_type:
     description: The substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level

@@ -1070,10 +1070,10 @@ classes:
         multivalued: true
         comments:
           - Required when heavy metals are provided
-          - If different methods are used for multiple metals, indicate the metal and method. Separate metals by ;
         examples:
           - value: https://doi.org/10.3390/ijms9040434
-          - value: mercury https://doi.org/10.1007/BF01056090; chromium https://doi.org/10.1007/s00216-006-0322-8
+          - value: doi:10.1007/BF01056090
+          - value: https://doi.org/10.1007/s00216-006-0322-8
       season_precpt:
         title: average seasonal precipitation
         comments:
