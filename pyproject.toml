@@ -46,6 +46,8 @@ pyyaml = "^6"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
 requests = "^2"
 urllib3 = ">=2.6.0"
+pyasn1 = ">=0.6.2"
+pymdown-extensions = ">=10.16.1"
 
 [tool.poetry.group.dev.dependencies] # cruft for cookiecutter update could be installed with pipx?
 autopep8 = "^2.2.0"
@@ -162,6 +164,6 @@ testpaths = ["tests"]
 extend_exclude = [
     "nmdc_schema/nmdc_pydantic.py"
 ]
-# urllib3 is a transitive dependency (via requests) but we pin it directly
-# to ensure users get security fixes (CVE-2025-66471, CVE-2025-66418)
-per_rule_ignores = {DEP002 = ["urllib3"]}
+# These are transitive dependencies but we pin them directly
+# to ensure users get security fixes from Dependabot alerts
+per_rule_ignores = {DEP002 = ["urllib3", "pyasn1", "pymdown-extensions"]}
