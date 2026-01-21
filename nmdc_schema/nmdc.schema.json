@@ -1584,7 +1584,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The number of times the sample location is cleaned. Frequency of cleaning might be on a Daily basis, Weekly, Monthly, Quarterly or Annually"
+                    "description": "The number of times the sample location is cleaned per day."
                 },
                 "freq_cook": {
                     "anyOf": [

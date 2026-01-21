@@ -5584,7 +5584,7 @@ slots:
     slot_uri: MIXS:0000341
     range: string
     multivalued: false
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$
     structured_pattern:
       syntax: ^{PMID}|{DOI}|{URL}$
       interpolated: true
@@ -7640,7 +7640,7 @@ slots:
     - start
     slot_uri: MIXS:0001009
     pattern: ^(Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer
-      Addition|Surfactant Addition|Not Applicable|other);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d):([0-5]\d)(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$$
+      Addition|Surfactant Addition|Not Applicable|other);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$
     structured_pattern:
       syntax: ^({add_recov_methods});{date_time_stamp}$
       interpolated: true
@@ -7710,7 +7710,7 @@ slots:
     range: TextValue
     multivalued: true
     inlined_as_list: true
-    pattern: ^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d):([0-5]\d)(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$$
+    pattern: ^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$
     structured_pattern:
       syntax: ^{agrochemical_name};{amount} {unit};{date_time_stamp}$
       interpolated: true
@@ -7826,9 +7826,9 @@ slots:
     - unusual
     slot_uri: MIXS:0000324
     range: string
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   alkalinity:
@@ -9132,9 +9132,9 @@ slots:
     - culture
     slot_uri: MIXS:0001041
     range: TextValue
-    pattern: ^.*|^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(.*|PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{text}|{PMID}|{DOI}|{URL}$
+      syntax: ^({text}|{PMID}|{DOI}|{URL})$
       interpolated: true
   cur_land_use:
     name: cur_land_use
@@ -9188,9 +9188,9 @@ slots:
     - vegetation
     slot_uri: MIXS:0000314
     range: string
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   date_last_rain:
@@ -10321,11 +10321,10 @@ slots:
       storage_units:
         tag: storage_units
         value: 1/d
-    description: The number of times the sample location is cleaned. Frequency of
-      cleaning might be on a Daily basis, Weekly, Monthly, Quarterly or Annually
+    description: The number of times the sample location is cleaned per day.
     title: frequency of cleaning
     examples:
-    - value: Daily
+    - value: 2 1/d
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - frequency
@@ -10435,9 +10434,9 @@ slots:
     - value: PMID:19497774
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000859
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
   geo_loc_name:
     name: geo_loc_name
@@ -10788,9 +10787,9 @@ slots:
     slot_uri: MIXS:0000343
     range: string
     inlined_as_list: true
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   height_carper_fiber:
@@ -10846,9 +10845,9 @@ slots:
     - method
     slot_uri: MIXS:0000321
     range: string
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   host_age:
@@ -11064,9 +11063,9 @@ slots:
     - host.
     slot_uri: MIXS:0000871
     range: TextValue
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$|.*$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}|{text}$
+      syntax: ^({PMID}|{DOI}|{URL}|{text})$
       interpolated: true
       partial_match: true
   host_height:
@@ -11631,9 +11630,9 @@ slots:
     - link
     slot_uri: MIXS:0000340
     range: TextValue
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   link_class_info:
@@ -11661,9 +11660,9 @@ slots:
     - link
     slot_uri: MIXS:0000328
     range: TextValue
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   lithology:
@@ -11702,9 +11701,9 @@ slots:
     - method
     slot_uri: MIXS:0000331
     range: string
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   magnesium:
@@ -12056,9 +12055,9 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000038
     range: TextValue
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   nucl_acid_ext:
@@ -12072,9 +12071,9 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000037
     range: TextValue
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   number_pets:
@@ -12925,9 +12924,9 @@ slots:
     - use
     slot_uri: MIXS:0000316
     range: string
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   previous_land_use:
@@ -12939,7 +12938,7 @@ slots:
     description: Previous land use and dates
     title: history/previous land use
     examples:
-    - value: fallow; 2018-05-11:T14:30Z
+    - value: fallow;2018-05-11T14:30Z
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - history
@@ -13521,9 +13520,9 @@ slots:
     - condition
     slot_uri: MIXS:0001061
     range: TextValue
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$|.*$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}|{text}$
+      syntax: ^({PMID}|{DOI}|{URL}|{text})$
       interpolated: true
       partial_match: true
   root_med_carbon:
@@ -14907,9 +14906,6 @@ slots:
     - storage
     slot_uri: MIXS:0000327
     range: TextValue
-    pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)$
-    structured_pattern:
-      syntax: ^{storage_condition_type};{duration}$
   substructure_type:
     name: substructure_type
     description: The substructure or under building is that largely hidden section
@@ -15305,9 +15301,9 @@ slots:
     - growth
     slot_uri: MIXS:0001070
     range: TextValue
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$|.*$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}|{text}$
+      syntax: ^({PMID}|{DOI}|{URL}|{text})$
       interpolated: true
       partial_match: true
   toluene:
@@ -15495,9 +15491,9 @@ slots:
     - total
     slot_uri: MIXS:0000338
     range: string
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   tot_nitro_content:
@@ -15537,9 +15533,9 @@ slots:
     - total
     slot_uri: MIXS:0000337
     range: string
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   tot_org_carb:
@@ -20427,11 +20423,10 @@ classes:
         title: heavy metals method/ extreme unusual properties
         comments:
         - Required when heavy metals are provided
-        - If different methods are used for multiple metals, indicate the metal and
-          method. Separate metals by ;
         examples:
         - value: https://doi.org/10.3390/ijms9040434
-        - value: mercury https://doi.org/10.1007/BF01056090; chromium https://doi.org/10.1007/s00216-006-0322-8
+        - value: doi:10.1007/BF01056090
+        - value: https://doi.org/10.1007/s00216-006-0322-8
         multivalued: true
       season_precpt:
         name: season_precpt
@@ -21149,13 +21144,13 @@ settings:
     setting_value: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
   date_time_stamp:
     setting_key: date_time_stamp
-    setting_value: (\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d):([0-5]\d)(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$
+    setting_value: (\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?
   dna_bases:
     setting_key: dna_bases
     setting_value: '[ACGT]'
   DOI:
     setting_key: DOI
-    setting_value: ^doi:10.\d{2,9}/.*$
+    setting_value: doi:10.\d{2,9}/.*
   duration:
     setting_key: duration
     setting_value: P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)
@@ -21185,7 +21180,7 @@ settings:
     setting_value: .*
   PMID:
     setting_key: PMID
-    setting_value: ^PMID:\d+$
+    setting_value: PMID:\d+
   primer_adapter_codes:
     setting_key: primer_adapter_codes
     setting_value: '[ACGTRYSWKMBDHVNI]'
@@ -21219,12 +21214,15 @@ settings:
   text:
     setting_key: text
     setting_value: .*
+  timestamp:
+    setting_key: timestamp
+    setting_value: (\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?
   unit:
     setting_key: unit
     setting_value: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
   URL:
     setting_key: URL
-    setting_value: ^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$
+    setting_value: https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)
   version:
     setting_key: version
     setting_value: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)

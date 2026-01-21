@@ -307,12 +307,12 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'xsd': {'prefix_prefix': 'xsd',
                           'prefix_reference': 'http://www.w3.org/2001/XMLSchema#'}},
      'settings': {'DOI': {'setting_key': 'DOI',
-                          'setting_value': '^doi:10.\\d{2,9}/.*$'},
+                          'setting_value': 'doi:10.\\d{2,9}/.*'},
                   'NCBItaxon_id': {'setting_key': 'NCBItaxon_id',
                                    'setting_value': 'NCBITaxon:\\d+'},
-                  'PMID': {'setting_key': 'PMID', 'setting_value': '^PMID:\\d+$'},
+                  'PMID': {'setting_key': 'PMID', 'setting_value': 'PMID:\\d+'},
                   'URL': {'setting_key': 'URL',
-                          'setting_value': '^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$'},
+                          'setting_value': 'https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)'},
                   'add_recov_methods': {'setting_key': 'add_recov_methods',
                                         'setting_value': 'Water Injection|Dump '
                                                          'Flood|Gas Injection|Wag '
@@ -330,7 +330,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'country': {'setting_key': 'country',
                               'setting_value': '([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)'},
                   'date_time_stamp': {'setting_key': 'date_time_stamp',
-                                      'setting_value': '(\\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\\d|3[01])(T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d)(\\.\\d+)?(Z|([+-][01]\\d:[0-5]\\d))?)?)?)?$'},
+                                      'setting_value': '(\\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\\d|3[01])(T([01]\\d|2[0-3]):([0-5]\\d)(:([0-5]\\d))?(\\.\\d+)?(Z|([+-][01]\\d:[0-5]\\d))?)?)?)?'},
                   'dna_bases': {'setting_key': 'dna_bases',
                                 'setting_value': '[ACGT]'},
                   'duration': {'setting_key': 'duration',
@@ -379,6 +379,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'termLabel': {'setting_key': 'termLabel',
                                 'setting_value': '([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)'},
                   'text': {'setting_key': 'text', 'setting_value': '.*'},
+                  'timestamp': {'setting_key': 'timestamp',
+                                'setting_value': '(\\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\\d|3[01])(T([01]\\d|2[0-3]):([0-5]\\d)(:([0-5]\\d))?(\\.\\d+)?(Z|([+-][01]\\d:[0-5]\\d))?)?)?)?'},
                   'unit': {'setting_key': 'unit',
                            'setting_value': '([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)'},
                   'version': {'setting_key': 'version',
@@ -8937,17 +8939,10 @@ class Biosample(Sample):
                                                    "property. It's just a "
                                                    'biogeochemical measurement.']},
                         'heavy_metals_meth': {'comments': ['Required when heavy metals '
-                                                           'are provided',
-                                                           'If different methods are '
-                                                           'used for multiple metals, '
-                                                           'indicate the metal and '
-                                                           'method. Separate metals by '
-                                                           ';'],
+                                                           'are provided'],
                                               'examples': [{'value': 'https://doi.org/10.3390/ijms9040434'},
-                                                           {'value': 'mercury '
-                                                                     'https://doi.org/10.1007/BF01056090; '
-                                                                     'chromium '
-                                                                     'https://doi.org/10.1007/s00216-006-0322-8'}],
+                                                           {'value': 'doi:10.1007/BF01056090'},
+                                                           {'value': 'https://doi.org/10.1007/s00216-006-0322-8'}],
                                               'multivalued': True,
                                               'name': 'heavy_metals_meth',
                                               'title': 'heavy metals method/ extreme '
@@ -9305,7 +9300,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000324',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}$'},
+                                'syntax': '^({PMID}|{DOI}|{URL})$'},
          'todos': ["I think it's weird the way GSC writes the title. I recommend this "
                    'change. Thoughts?']} })
     alkalinity: Optional[QuantityValue] = Field(default=None, title="alkalinity", description="""Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
@@ -9864,7 +9859,7 @@ class Biosample(Sample):
          'keywords': ['culture'],
          'slot_uri': 'MIXS:0001041',
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{text}|{PMID}|{DOI}|{URL}$'}} })
+                                'syntax': '^({text}|{PMID}|{DOI}|{URL})$'}} })
     cur_land_use: Optional[str] = Field(default=None, title="current land use", description="""Present state of sample site""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'enumeration'}},
          'domain_of': ['Biosample'],
@@ -9914,7 +9909,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000314',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}$'},
+                                'syntax': '^({PMID}|{DOI}|{URL})$'},
          'todos': ["I'm not sure this is a DOI, PMID, or URI. Should pool the "
                    'community and find out how they accomplish this if provided.']} })
     date_last_rain: Optional[TimestampValue] = Field(default=None, title="date last rain", description="""The date of the last time it rained""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
@@ -10444,9 +10439,9 @@ class Biosample(Sample):
                                 'partial_match': True,
                                 'syntax': '^{scientific_float}( *- '
                                           '*{scientific_float})? *{text}$'}} })
-    freq_clean: Optional[QuantityValue] = Field(default=None, title="frequency of cleaning", description="""The number of times the sample location is cleaned. Frequency of cleaning might be on a Daily basis, Weekly, Monthly, Quarterly or Annually""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': '1/d'}},
+    freq_clean: Optional[QuantityValue] = Field(default=None, title="frequency of cleaning", description="""The number of times the sample location is cleaned per day.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': '1/d'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'Daily'}],
+         'examples': [{'value': '2 1/d'}],
          'keywords': ['frequency'],
          'slot_uri': 'MIXS:0000226'} })
     freq_cook: Optional[QuantityValue] = Field(default=None, title="frequency of cooking", description="""The number of times a meal is cooked per week""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': '1/d'}},
@@ -10494,7 +10489,8 @@ class Biosample(Sample):
     genetic_mod: Optional[str] = Field(default=None, title="genetic modification", description="""Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'PMID:19497774'}],
          'slot_uri': 'MIXS:0000859',
-         'structured_pattern': {'interpolated': True, 'syntax': '^{PMID}|{DOI}|{URL}$'}} })
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
     geo_loc_name: Optional[TextValue] = Field(default=None, title="geographic location (country and/or sea,region)", description="""The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample'],
          'examples': [{'value': 'USA: Maryland, Bethesda'}],
          'keywords': ['geographic', 'location'],
@@ -10629,18 +10625,16 @@ class Biosample(Sample):
                    "I think it's weird the way GSC writes the title. I recommend this "
                    "change. Thoughts? I would argue this isn't an extreme unusual "
                    "property. It's just a biogeochemical measurement."]} })
-    heavy_metals_meth: Optional[list[str]] = Field(default=[], title="heavy metals method/ extreme unusual properties", description="""Reference or method used in determining heavy metals""", json_schema_extra = { "linkml_meta": {'comments': ['Required when heavy metals are provided',
-                      'If different methods are used for multiple metals, indicate the '
-                      'metal and method. Separate metals by ;'],
+    heavy_metals_meth: Optional[list[str]] = Field(default=[], title="heavy metals method/ extreme unusual properties", description="""Reference or method used in determining heavy metals""", json_schema_extra = { "linkml_meta": {'comments': ['Required when heavy metals are provided'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'https://doi.org/10.3390/ijms9040434'},
-                      {'value': 'mercury https://doi.org/10.1007/BF01056090; chromium '
-                                'https://doi.org/10.1007/s00216-006-0322-8'}],
+                      {'value': 'doi:10.1007/BF01056090'},
+                      {'value': 'https://doi.org/10.1007/s00216-006-0322-8'}],
          'keywords': ['extreme', 'method', 'properties', 'unusual'],
          'slot_uri': 'MIXS:0000343',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}$'}} })
+                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
     height_carper_fiber: Optional[QuantityValue] = Field(default=None, title="height carpet fiber mat", description="""The average carpet fiber height in the indoor environment""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'centimeter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'cm'}},
@@ -10664,7 +10658,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000321',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}$'}} })
+                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
     host_age: Optional[QuantityValue] = Field(default=None, title="host age", description="""Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'year, day, hour'},
                          'storage_units': {'tag': 'storage_units', 'value': 'a|d|h'}},
@@ -10741,7 +10735,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000871',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}|{text}$'}} })
+                                'syntax': '^({PMID}|{DOI}|{URL}|{text})$'}} })
     host_height: Optional[QuantityValue] = Field(default=None, title="host height", description="""The height of subject""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'centimeter, millimeter, meter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'cm|m|mm'}},
@@ -10969,7 +10963,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000340',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}$'}} })
+                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
     link_class_info: Optional[str] = Field(default=None, title="link to classification information", description="""Link to digitized soil maps or other soil classification information""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'PMID,DOI or url'}},
          'domain_of': ['Biosample'],
@@ -10981,7 +10975,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000328',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}$'}} })
+                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
     lithology: Optional[LithologyEnum] = Field(default=None, title="lithology", description="""Hydrocarbon resource main lithology (Additional information: http://petrowiki.org/Lithology_and_rock_type_determination). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'Volcanic'}],
          'keywords': ['lithology'],
@@ -10997,7 +10991,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000331',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}$'}} })
+                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
     magnesium: Optional[QuantityValue] = Field(default=None, title="magnesium", description="""Concentration of magnesium in the sample""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'mole per liter, milligram per '
                                                      'liter, parts per million, '
@@ -11492,11 +11486,11 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000316',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}$'}} })
+                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
     previous_land_use: Optional[str] = Field(default=None, title="history/previous land use", description="""Previous land use and dates""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'land use name;date'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'fallow; 2018-05-11:T14:30Z'}],
+         'examples': [{'value': 'fallow;2018-05-11T14:30Z'}],
          'keywords': ['history', 'land', 'use'],
          'slot_uri': 'MIXS:0000315',
          'string_serialization': '{text};{timestamp}'} })
@@ -11728,7 +11722,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001061',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}|{text}$'}} })
+                                'syntax': '^({PMID}|{DOI}|{URL}|{text})$'}} })
     root_med_carbon: Optional[TextValue] = Field(default=None, title="rooting medium carbon", description="""Source of organic carbon in the culture rooting medium; e.g. sucrose""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'carbon source name;measurement '
                                                      'value'},
@@ -12290,8 +12284,7 @@ class Biosample(Sample):
     store_cond: Optional[TextValue] = Field(default=None, title="storage conditions", description="""Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': '-20 degree Celsius freezer;P2Y10D'}],
          'keywords': ['condition', 'storage'],
-         'slot_uri': 'MIXS:0000327',
-         'structured_pattern': {'syntax': '^{storage_condition_type};{duration}$'}} })
+         'slot_uri': 'MIXS:0000327'} })
     substructure_type: Optional[list[SubstructureTypeEnum]] = Field(default=[], title="substructure type", description="""The substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'basement'}],
          'keywords': ['type'],
@@ -12458,7 +12451,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0001070',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}|{text}$'}} })
+                                'syntax': '^({PMID}|{DOI}|{URL}|{text})$'}} })
     toluene: Optional[QuantityValue] = Field(default=None, title="toluene", description="""Concentration of toluene in the sample""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'milligram per liter, parts per '
                                                      'million'},
@@ -12550,7 +12543,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000338',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}$'}} })
+                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
     tot_nitro_content: Optional[QuantityValue] = Field(default=None, title="total nitrogen content", description="""Total nitrogen content of the sample""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units',
                                            'value': 'mg/L|ug/L|umol/L|%'}},
          'domain_of': ['Biosample'],
@@ -12567,7 +12560,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000337',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}$'}} })
+                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
     tot_org_carb: Optional[QuantityValue] = Field(default=None, title="total organic carbon", description="""Total organic carbon content""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'gram Carbon per kilogram sample '
                                                      'material'},
@@ -13529,7 +13522,7 @@ class Biosample(Sample):
 
     @field_validator('add_recov_method')
     def pattern_add_recov_method(cls, v):
-        pattern=re.compile(r"^(Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d):([0-5]\d)(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$$")
+        pattern=re.compile(r"^(Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -13568,7 +13561,7 @@ class Biosample(Sample):
 
     @field_validator('agrochem_addition')
     def pattern_agrochem_addition(cls, v):
-        pattern=re.compile(r"^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d):([0-5]\d)(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$$")
+        pattern=re.compile(r"^.*;[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+);(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -13620,7 +13613,7 @@ class Biosample(Sample):
 
     @field_validator('al_sat_meth')
     def pattern_al_sat_meth(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14062,7 +14055,7 @@ class Biosample(Sample):
 
     @field_validator('cult_root_med')
     def pattern_cult_root_med(cls, v):
-        pattern=re.compile(r"^.*|^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(.*|PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14075,7 +14068,7 @@ class Biosample(Sample):
 
     @field_validator('cur_vegetation_meth')
     def pattern_cur_vegetation_meth(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14478,7 +14471,7 @@ class Biosample(Sample):
 
     @field_validator('genetic_mod')
     def pattern_genetic_mod(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14556,7 +14549,7 @@ class Biosample(Sample):
 
     @field_validator('heavy_metals_meth')
     def pattern_heavy_metals_meth(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14582,7 +14575,7 @@ class Biosample(Sample):
 
     @field_validator('horizon_meth')
     def pattern_horizon_meth(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14634,7 +14627,7 @@ class Biosample(Sample):
 
     @field_validator('host_growth_cond')
     def pattern_host_growth_cond(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$|.*$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14777,7 +14770,7 @@ class Biosample(Sample):
 
     @field_validator('link_addit_analys')
     def pattern_link_addit_analys(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14790,7 +14783,7 @@ class Biosample(Sample):
 
     @field_validator('link_climate_info')
     def pattern_link_climate_info(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14803,7 +14796,7 @@ class Biosample(Sample):
 
     @field_validator('local_class_meth')
     def pattern_local_class_meth(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -15167,7 +15160,7 @@ class Biosample(Sample):
 
     @field_validator('prev_land_use_meth')
     def pattern_prev_land_use_meth(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -15362,7 +15355,7 @@ class Biosample(Sample):
 
     @field_validator('root_cond')
     def pattern_root_cond(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$|.*$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -15388,7 +15381,7 @@ class Biosample(Sample):
 
     @field_validator('salinity_meth')
     def pattern_salinity_meth(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -15672,19 +15665,6 @@ class Biosample(Sample):
             raise ValueError(err_msg)
         return v
 
-    @field_validator('store_cond')
-    def pattern_store_cond(cls, v):
-        pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid store_cond format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid store_cond format: {v}"
-            raise ValueError(err_msg)
-        return v
-
     @field_validator('sulfate')
     def pattern_sulfate(cls, v):
         pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
@@ -15817,7 +15797,7 @@ class Biosample(Sample):
 
     @field_validator('tiss_cult_growth_med')
     def pattern_tiss_cult_growth_med(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$|.*$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -15921,7 +15901,7 @@ class Biosample(Sample):
 
     @field_validator('tot_nitro_cont_meth')
     def pattern_tot_nitro_cont_meth(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -15947,7 +15927,7 @@ class Biosample(Sample):
 
     @field_validator('tot_org_c_meth')
     def pattern_tot_org_c_meth(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -16902,7 +16882,7 @@ class LibraryPreparation(MaterialProcessing):
          'slot_uri': 'MIXS:0000038',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{PMID}|{DOI}|{URL}$'}} })
+                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
     pcr_cond: Optional[str] = Field(default=None, title="pcr conditions", description="""Description of reaction conditions and components of polymerase chain reaction performed during library preparation""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'initial '
                                                      'denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final '
@@ -17013,7 +16993,7 @@ class LibraryPreparation(MaterialProcessing):
 
     @field_validator('nucl_acid_amp')
     def pattern_nucl_acid_amp(cls, v):
-        pattern=re.compile(r"^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
