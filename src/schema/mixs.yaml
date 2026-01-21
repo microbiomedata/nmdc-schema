@@ -1154,7 +1154,7 @@ slots:
     slot_uri: MIXS:0000324
     range: string
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   alkalinity:
@@ -2023,7 +2023,7 @@ slots:
       - culture
     slot_uri: MIXS:0001041
     structured_pattern:
-      syntax: ^{text}|{PMID}|{DOI}|{URL}$
+      syntax: ^({text}|{PMID}|{DOI}|{URL})$
       interpolated: true
     range: TextValue
   cur_land_use:
@@ -2056,7 +2056,7 @@ slots:
     slot_uri: MIXS:0000314
     range: string
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   date_last_rain:
@@ -2906,7 +2906,7 @@ slots:
       - value: PMID:19497774
     slot_uri: MIXS:0000859
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
   geo_loc_name:
     description: The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)
@@ -3158,7 +3158,7 @@ slots:
     slot_uri: MIXS:0000343
     range: string
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
     inlined_as_list: true
@@ -3198,7 +3198,7 @@ slots:
     slot_uri: MIXS:0000321
     range: string
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   host_age:
@@ -3356,7 +3356,7 @@ slots:
     slot_uri: MIXS:0000871
     range: TextValue
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}|{text}$
+      syntax: ^({PMID}|{DOI}|{URL}|{text})$
       interpolated: true
       partial_match: true
   host_height:
@@ -3755,7 +3755,7 @@ slots:
     slot_uri: MIXS:0000340
     range: TextValue
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   link_class_info:
@@ -3778,7 +3778,7 @@ slots:
     slot_uri: MIXS:0000328
     range: TextValue
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   lithology:
@@ -3809,7 +3809,7 @@ slots:
     slot_uri: MIXS:0000331
     range: string
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   magnesium:
@@ -4049,7 +4049,7 @@ slots:
     slot_uri: MIXS:0000038
     range: TextValue
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   nucl_acid_ext:
@@ -4060,7 +4060,7 @@ slots:
     slot_uri: MIXS:0000037
     range: TextValue
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   number_pets:
@@ -4635,7 +4635,7 @@ slots:
     slot_uri: MIXS:0000316
     range: string
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   previous_land_use:
@@ -4644,7 +4644,7 @@ slots:
     description: Previous land use and dates
     title: history/previous land use
     examples:
-      - value: fallow; 2018-05-11:T14:30Z
+      - value: fallow;2018-05-11T14:30Z
     keywords:
       - history
       - land
@@ -5055,7 +5055,7 @@ slots:
     slot_uri: MIXS:0001061
     range: TextValue
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}|{text}$
+      syntax: ^({PMID}|{DOI}|{URL}|{text})$
       interpolated: true
       partial_match: true
   root_med_carbon:
@@ -6272,7 +6272,7 @@ slots:
     slot_uri: MIXS:0001070
     range: TextValue
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}|{text}$
+      syntax: ^({PMID}|{DOI}|{URL}|{text})$
       interpolated: true
       partial_match: true
   toluene:
@@ -6402,7 +6402,7 @@ slots:
     slot_uri: MIXS:0000338
     range: string
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   tot_nitro_content:
@@ -6435,7 +6435,7 @@ slots:
     slot_uri: MIXS:0000337
     range: string
     structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
+      syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
   tot_org_carb:

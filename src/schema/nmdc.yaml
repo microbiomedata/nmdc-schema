@@ -149,39 +149,40 @@ settings:
   # 2. The MIxS import pipeline explicitly deletes settings (see project.Makefile)
   # When updating MIxS import, these settings must be manually synced if the source changes.
   #
-  # Source: GSC MIxS v6.2.0-nmdc.1 (commit 0368da846b197bef1c0dd27a9cf337a8aeea17f2)
-  add_recov_methods: "Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other"
+  # Source: GSC MIxS v6.2.3 (commit 77cd78836ee01ee8ba2ad10724871a962e3ad694)
+  add_recov_methods: 'Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other'
   agrochemical_name: ".*"
-  amount: "[-+]?[0-9]*\\.?[0-9]+"
-  boolean: "(?:yes|no)"
-  country: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
-  date_time_stamp: "(\\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\\d|3[01])(T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d)(\\.\\d+)?(Z|([+-][01]\\d:[0-5]\\d))?)?)?)?$"
-  dna_bases: "[ACGT]"
-  DOI: "^doi:10.\\d{2,9}/.*$"
-  duration: "P(?:(?:\\d+D|\\d+M(?:\\d+D)?|\\d+Y(?:\\d+M(?:\\d+D)?)?)(?:T(?:\\d+H(?:\\d+M(?:\\d+S)?)?|\\d+M(?:\\d+S)?|\\d+S))?|T(?:\\d+H(?:\\d+M(?:\\d+S)?)?|\\d+M(?:\\d+S)?|\\d+S)|\\d+W)"
-  float: "[-+]?[0-9]*\\.?[0-9]+"
-  integer: "[1-9][0-9]*"
-  lat: "(-?((?:[0-8]?[0-9](?:\\.\\d{0,8})?)|90))"
-  lon: "-?[0-9]+(?:\\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})"
-  name: ".*"
-  NCBItaxon_id: "NCBITaxon:\\d+"
-  parameters: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
-  particulate_matter_name: ".*"
-  PMID: "^PMID:\\d+$"
-  primer_adapter_codes: "[ACGTRYSWKMBDHVNI]"
-  region: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
-  room_name: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
-  room_number: "[1-9][0-9]*"
-  scientific_float: "[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?"
-  software: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
-  specific_location: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
-  storage_condition_type: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
-  termID: "[a-zA-Z]{2,}:[a-zA-Z0-9]\\d+"
-  termLabel: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
-  text: ".*"
-  unit: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
-  URL: "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
-  version: "([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)"
+  amount: '[-+]?[0-9]*\.?[0-9]+'
+  boolean: '(?:yes|no)'  # a non-capturing group matching either 'yes' or 'no'
+  country: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  date_time_stamp: '(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?'  # ISO 8601 timestamp; seconds optional; alias of 'timestamp'
+  dna_bases: '[ACGT]'
+  DOI: 'doi:10.\d{2,9}/.*'
+  duration: P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)
+  float: '[-+]?[0-9]*\.?[0-9]+'
+  integer: '[1-9][0-9]*'
+  lat: (-?((?:[0-8]?[0-9](?:\.\d{0,8})?)|90))
+  lon: -?[0-9]+(?:\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})
+  name: '.*'
+  NCBItaxon_id: NCBITaxon:\d+
+  parameters: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  particulate_matter_name: '.*'
+  PMID: 'PMID:\d+'
+  primer_adapter_codes: '[ACGTRYSWKMBDHVNI]'
+  region: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  room_name: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  room_number: '[1-9][0-9]*'
+  scientific_float: '[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?'
+  software: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  specific_location: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  storage_condition_type: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  termID: '[a-zA-Z]{2,}:[a-zA-Z0-9]\d+'
+  termLabel: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  text: '.*'
+  timestamp: '(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?'  # ISO 8601 timestamp; seconds optional; alias of 'date_time_stamp'
+  unit: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  URL: 'https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)'
+  version: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
 
 classes:
 
