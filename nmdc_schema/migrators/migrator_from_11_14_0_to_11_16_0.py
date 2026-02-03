@@ -14,7 +14,7 @@ class Migrator(MigratorBase):
 
     def make_uses_calibration_multivalued(self, workflow_execution: dict) -> dict:
         r"""
-        If a WorkflowExection record in the workflow_execution_set has a 'uses_calibration' field, convert it to a list containing the original value.
+        If a WorkflowExecution record in the workflow_execution_set has a 'uses_calibration' field, convert it to a list containing the original value.
 
         >>> m = Migrator()
         >>> m.make_uses_calibration_multivalued({'id': 123})  # no `extraction_target` field
