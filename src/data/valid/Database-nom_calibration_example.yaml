@@ -50,7 +50,8 @@ workflow_execution_set:
   has_input:
   - nmdc:dobj-11-cp4p5602
   type: nmdc:NomAnalysis
-  uses_calibration: nmdc:calib-14-hhn3qb47
+  uses_calibration: 
+  - nmdc:calib-14-hhn3qb47
   has_output:
   - nmdc:dobj-11-wkvtnj47
   alternative_identifiers:
