@@ -809,6 +809,9 @@ enums:
       alkanes:
         aliases:
           - Alkanes
+      srfa:
+        aliases:
+          - Suwannee River fulvic acid
 
   StrandedOrientationEnum:
     description: This enumeration specifies information about stranded RNA library preparations.
