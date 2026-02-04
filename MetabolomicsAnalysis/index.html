@@ -399,7 +399,7 @@
 
   MetabolomicsAnalysis : uses_calibration
 
-      MetabolomicsAnalysis --&gt; "0..1" CalibrationInformation : uses_calibration
+      MetabolomicsAnalysis --&gt; "*" CalibrationInformation : uses_calibration
     click CalibrationInformation href "../CalibrationInformation"
 
   MetabolomicsAnalysis : version
@@ -447,7 +447,7 @@
 </tr>
 <tr>
 <td><a href="../uses_calibration/">uses_calibration</a></td>
-<td>0..1 <br/> <a href="../CalibrationInformation/">CalibrationInformation</a></td>
+<td>* <br/> <a href="../CalibrationInformation/">CalibrationInformation</a></td>
 <td>calibration information is used by a process</td>
 <td>direct</td>
 </tr>
@@ -715,6 +715,7 @@ attributes:
     - MetabolomicsAnalysis
     - NomAnalysis
     range: CalibrationInformation
+    multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
       interpolated: true

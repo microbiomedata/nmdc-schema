@@ -623,12 +623,12 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NomAnalysis/">NomAnalysis</a></td>
+<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
+<td><a href="../NomAnalysis/">NomAnalysis</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -636,7 +636,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../CalibrationInformation/">CalibrationInformation</a></li>
+<li>
+<p>Range: <a href="../CalibrationInformation/">CalibrationInformation</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
+</li>
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
@@ -677,6 +682,7 @@ domain_of:
 - MetabolomicsAnalysis
 - NomAnalysis
 range: CalibrationInformation
+multivalued: true
 structured_pattern:
   syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
   interpolated: true
