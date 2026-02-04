@@ -7,7 +7,7 @@ class Migrator(MigratorBase):
     _from_version = "11.15.1"
     _to_version = "11.16.0"
 
-    def upgrade(self) -> None:
+    def upgrade(self, commit_changes: bool = False) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
         self.adapter.process_each_document("workflow_execution_set", [self.make_uses_calibration_multivalued])
@@ -24,7 +24,5 @@ class Migrator(MigratorBase):
         """
 
         if workflow_execution.get("uses_calibration") is not None:
-            workflow_execution[
-                "uses_calibration"
-            ] = [workflow_execution["uses_calibration"]]
+            workflow_execution["uses_calibration"] = [workflow_execution["uses_calibration"]]
         return workflow_execution
