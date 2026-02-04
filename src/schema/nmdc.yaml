@@ -809,6 +809,13 @@ enums:
       alkanes:
         aliases:
           - Alkanes
+      srfa:
+        aliases:
+          - Suwannee River fulvic acid
+        see_also:
+          - https://humic-substances.org/source-materials-for-ihss-samples/
+        comments:
+          - Reference standard Suwannee River Fulvic Acid Standard II (2S101F) from International Humic Substances Society
 
   StrandedOrientationEnum:
     description: This enumeration specifies information about stranded RNA library preparations.

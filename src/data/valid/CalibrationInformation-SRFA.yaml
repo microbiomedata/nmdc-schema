@@ -1,0 +1,6 @@
+id: nmdc:calib-99-srfa01
+type: nmdc:CalibrationInformation
+calibration_object: nmdc:dobj-12-srfa01
+internal_calibration: false
+calibration_target: mass_charge_ratio
+calibration_standard: srfa
