@@ -5222,7 +5222,8 @@
             "description": "",
             "enum": [
                 "fames",
-                "alkanes"
+                "alkanes",
+                "srfa"
             ],
             "title": "CalibrationStandardEnum",
             "type": "string"
@@ -9787,8 +9788,11 @@
                 },
                 "uses_calibration": {
                     "description": "calibration information is used by a process",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -11928,8 +11932,11 @@
                 },
                 "uses_calibration": {
                     "description": "calibration information is used by a process",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },

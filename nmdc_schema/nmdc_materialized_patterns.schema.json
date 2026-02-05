@@ -5430,7 +5430,8 @@
             "description": "",
             "enum": [
                 "fames",
-                "alkanes"
+                "alkanes",
+                "srfa"
             ],
             "title": "CalibrationStandardEnum",
             "type": "string"
@@ -10039,9 +10040,12 @@
                 },
                 "uses_calibration": {
                     "description": "calibration information is used by a process",
-                    "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                    "items": {
+                        "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -12211,9 +12215,12 @@
                 },
                 "uses_calibration": {
                     "description": "calibration information is used by a process",
-                    "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                    "items": {
+                        "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },

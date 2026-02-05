@@ -619,6 +619,15 @@ enums:
         text: alkanes
         aliases:
         - Alkanes
+      srfa:
+        text: srfa
+        comments:
+        - Reference standard Suwannee River Fulvic Acid Standard II (2S101F) from
+          International Humic Substances Society
+        see_also:
+        - https://humic-substances.org/source-materials-for-ihss-samples/
+        aliases:
+        - Suwannee River fulvic acid
   StrandedOrientationEnum:
     name: StrandedOrientationEnum
     description: This enumeration specifies information about stranded RNA library
@@ -5636,6 +5645,7 @@ slots:
       run is used when analyzing metabolomics data
     from_schema: https://w3id.org/nmdc/nmdc
     range: CalibrationInformation
+    multivalued: true
     pattern: ^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
     structured_pattern:
       syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
