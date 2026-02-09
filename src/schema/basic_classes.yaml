@@ -866,7 +866,7 @@ enums:
           - Orbitrap IQ-X Tribrid
           - Thermo Orbitrap IQ-X Tribrid
       
-      orbitrap_idx_tribrid
+      orbitrap_idx_tribrid:
         aliases:
           - Orbitrap ID-X Tribrid
           - Thermo Orbitrap ID-X Tribrid
