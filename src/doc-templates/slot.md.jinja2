@@ -1,3 +1,8 @@
+---
+search:
+  boost: 1.8
+---
+
 {%- if element.title %}
     {%- set title = element.title ~ ' (' ~ element.name ~ ')' -%}
 {%- else %}
@@ -34,6 +39,8 @@ _{{ element_description_line }}_
 {% endfor %}
 {% endif %}
 
+<div data-search-exclude markdown>
+
 {% if element.abstract %}
 !!! note
     This is an abstract slot and should not be populated directly.
@@ -45,7 +52,6 @@ URI: {{ gen.uri_link(element) }}
 {% if schemaview.slot_parents(element.name) or schemaview.slot_children(element.name, mixins=False) %}
 
 ## Inheritance
-
 {{ gen.inheritance_tree(element, mixins=True) }}
 {% else %}
 <!-- no inheritance hierarchy -->
@@ -55,7 +61,6 @@ URI: {{ gen.uri_link(element) }}
 {% if classes_by_slot %}
 
 ## Applicable Classes
-
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 {% for c in classes_by_slot -%}
@@ -67,7 +72,6 @@ URI: {{ gen.uri_link(element) }}
 
 {% if schemaview.is_mixin(element.name) %}
 ## Mixin Usage
-
 | mixed into | description | range | domain |
 | --- | --- | --- | --- |
 {% for s in schemaview.slot_children(element.name, is_a=False) -%}
@@ -76,7 +80,6 @@ URI: {{ gen.uri_link(element) }}
 {% endif %}
 
 ## Properties
-
 * Range: {{ compute_range(element) }}
 {% if element.multivalued %}
 * Multivalued: {{ element.multivalued }}
@@ -102,7 +105,6 @@ URI: {{ gen.uri_link(element) }}
 
 {% if schemaview.usage_index().get(element.name) %}
 ## Usages
-
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 {% for usage in schemaview.usage_index().get(element.name) -%}
@@ -113,7 +115,6 @@ URI: {{ gen.uri_link(element) }}
 {% include "common_metadata.md.jinja2" %}
 
 ## LinkML Source
-
 <details>
 ```yaml
 {{ gen.yaml(element) }}
@@ -123,3 +124,5 @@ URI: {{ gen.uri_link(element) }}
 {%- if footer -%}
 {{footer}}
 {%- endif -%}
+
+</div>
