@@ -2918,6 +2918,11 @@ enums:
         aliases:
         - Orbitrap IQ-X Tribrid
         - Thermo Orbitrap IQ-X Tribrid
+      orbitrap_idx_tribrid:
+        text: orbitrap_idx_tribrid
+        aliases:
+        - Orbitrap ID-X Tribrid
+        - Thermo Orbitrap ID-X Tribrid
       orbitrap_exploris_120:
         text: orbitrap_exploris_120
         aliases:

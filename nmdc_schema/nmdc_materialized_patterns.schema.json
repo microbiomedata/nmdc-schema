@@ -8575,6 +8575,7 @@
                 "orbitrap_eclipse_tribid",
                 "orbitrap_q_exactive",
                 "orbitrap_iqx_tribrid",
+                "orbitrap_idx_tribrid",
                 "orbitrap_exploris_120",
                 "solarix_7T",
                 "solarix_12T",

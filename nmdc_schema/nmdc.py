@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-05T15:17:34
+# Generation date: 2026-02-09T12:52:05
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -8353,6 +8353,7 @@ class InstrumentModelEnum(EnumDefinitionImpl):
     orbitrap_eclipse_tribid = PermissibleValue(text="orbitrap_eclipse_tribid")
     orbitrap_q_exactive = PermissibleValue(text="orbitrap_q_exactive")
     orbitrap_iqx_tribrid = PermissibleValue(text="orbitrap_iqx_tribrid")
+    orbitrap_idx_tribrid = PermissibleValue(text="orbitrap_idx_tribrid")
     orbitrap_exploris_120 = PermissibleValue(text="orbitrap_exploris_120")
     solarix_7T = PermissibleValue(text="solarix_7T")
     solarix_12T = PermissibleValue(text="solarix_12T")
