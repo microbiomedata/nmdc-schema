@@ -524,6 +524,7 @@ classes:
       - git_url
       - version
       - source_system_of_record
+      - submission_portal_identifier
       - type
     slot_usage:
       version:
@@ -534,7 +535,16 @@ slots:
   source_system_of_record:
     description: Identifies the system of origin for a record
     range: SourceSystemEnum
-    
+
+  submission_portal_identifier:
+    description: The UUID of the NMDC Submission Portal entry that generated this record.
+    range: string
+    pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+    see_also:
+      - https://data.microbiomedata.org/submission/home
+    examples:
+      - value: c41dfeac-102e-43b2-adae-6a67f25791f0
+
   associated_studies:
     description: The study associated with a resource.
     range: Study
