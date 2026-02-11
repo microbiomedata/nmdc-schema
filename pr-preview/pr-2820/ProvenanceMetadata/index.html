@@ -361,7 +361,7 @@
 </tr>
 <tr>
 <td><a href="../submission_portal_identifier/">submission_portal_identifier</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>The UUID of the NMDC Submission Portal entry that generated this record</td>
 <td>direct</td>
 </tr>
@@ -384,6 +384,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../Study/">Study</a></td>
+<td><a href="../provenance_metadata/">provenance_metadata</a></td>
+<td>range</td>
+<td><a href="./">ProvenanceMetadata</a></td>
+</tr>
 <tr>
 <td><a href="../Biosample/">Biosample</a></td>
 <td><a href="../provenance_metadata/">provenance_metadata</a></td>
@@ -509,6 +515,7 @@ attributes:
     domain_of:
     - ProvenanceMetadata
     range: string
+    multivalued: true
     pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
   type:
     name: type
