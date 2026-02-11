@@ -251,6 +251,7 @@ classes:
 
       - alternative_descriptions
       - alternative_names
+      - provenance_metadata
       - alternative_titles
 
       - ecosystem
@@ -539,6 +540,7 @@ slots:
   submission_portal_identifier:
     description: The UUID of the NMDC Submission Portal entry that generated this record.
     range: string
+    multivalued: true
     pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
     see_also:
       - https://data.microbiomedata.org/submission/home
