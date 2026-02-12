@@ -456,13 +456,13 @@
 <tr>
 <td><a href="../peptide_to_spectrum_match_count/">peptide_to_spectrum_match_count</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Total number of MS2 spectra with an false discovery rate passing peptide matc...</td>
+<td>Total number of MS2 spectra with a false discovery rate passing peptide match</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../peptide_to_spectrum_match_rate/">peptide_to_spectrum_match_rate</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
-<td>The rate or percentage of peptide-to-spectrum matches relative to the total n...</td>
+<td>The percentage of peptide-to-spectrum matches relative to the total number of...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -738,8 +738,8 @@ attributes:
     required: true
   peptide_to_spectrum_match_count:
     name: peptide_to_spectrum_match_count
-    description: Total number of MS2 spectra with an false discovery rate passing
-      peptide match.
+    description: Total number of MS2 spectra with a false discovery rate passing peptide
+      match.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: peptide_to_spectrum_match_count
@@ -752,9 +752,9 @@ attributes:
     annotations:
       storage_units:
         tag: storage_units
-        value: mL
-    description: The rate or percentage of peptide-to-spectrum matches relative to
-      the total number of spectra analyzed.
+        value: '%'
+    description: The percentage of peptide-to-spectrum matches relative to the total
+      number of spectra analyzed.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: peptide_to_spectrum_match_rate
