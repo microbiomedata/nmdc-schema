@@ -349,13 +349,13 @@ slots:
 
   peptide_to_spectrum_match_count:
     range: integer
-    description: Total number of MS2 spectra with an false discovery rate passing peptide match.
+    description: Total number of MS2 spectra with a false discovery rate passing peptide match.
 
   peptide_to_spectrum_match_rate:
     range: QuantityValue
-    description: The rate or percentage of peptide-to-spectrum matches relative to the total number of spectra analyzed.
+    description: The percentage of peptide-to-spectrum matches relative to the total number of spectra analyzed.
     annotations:
-      storage_units: mL
+      storage_units: '%'
 
   mean_peptide_count:
     range: float
