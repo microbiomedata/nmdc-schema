@@ -1,0 +1,35 @@
+id: nmdc:wfmb-11-abc456de.1
+started_at_time: '2022-06-15T09:00:00+00:00'
+ended_at_time: '2022-06-15T14:15:00+00:00'
+execution_resource: EMSL-RZR
+processing_institution: NMDC
+git_url: https://github.com/microbiomedata/metabolomics_analysis/releases/tag/v1.0.0
+has_input:
+  - nmdc:dobj-11-abc456df
+  - nmdc:dobj-11-abc456dg
+has_output:
+  - nmdc:dobj-11-abc456dh
+type: nmdc:MetabolomicsAnalysis
+was_informed_by:
+  - nmdc:dgms-11-abc456dc
+metabolomics_analysis_category: lc_ms_metabolomics
+qc_status: fail
+has_failure_categorization:
+  - qc_failure_what: low_metabolite_assignment
+    qc_failure_where: MetabolomicsAnalysis
+    type: nmdc:FailureCategorization
+  - qc_failure_what: low_c13_isotopologue_assignment
+    qc_failure_where: MetabolomicsAnalysis
+    type: nmdc:FailureCategorization
+qc_comment: Insufficient metabolite identifications detected (only 250 out of 2000 peaks assigned, 12.5%) and low 13C isotopologue assignment (15%), likely due to poor sample quality or instrument calibration issues
+peak_count: 2000
+peak_assignment_count: 250
+peak_assignment_rate:
+  type: nmdc:QuantityValue
+  has_numeric_value: 12.5
+  has_unit: '%'
+c13_isotopologue_count: 300
+c13_isotopologue_ratio:
+  type: nmdc:QuantityValue
+  has_numeric_value: 15
+  has_unit: '%'

@@ -1130,6 +1130,10 @@ enums:
         description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
       low_molecular_formula_assignment:
         description: Number of peaks with assigned molecular formulas during the NOM analysis workflow is not sufficient.
+      low_metabolite_assignment:
+        description: Number of metabolites identified during the Metabolomics or Lipidomics workflow is not sufficient.
+      low_c13_isotopologue_assignment:
+        description: Number of 13C isotopologues identified during the Metabolomics or Lipidomics workflow is not sufficient.
 
   FailureWhereEnum:
     description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
