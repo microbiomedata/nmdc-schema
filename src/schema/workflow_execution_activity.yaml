@@ -274,7 +274,6 @@ classes:
       - peak_count
       - peak_assignment_count
       - c13_isotopologue_count
-      - c13_isotopologue_ratio
     slot_usage:
       id:
         required: true
@@ -604,13 +603,7 @@ slots:
 
   c13_isotopologue_count:
     range: integer
-    description: "The number of two dimensional mass to charge (m/z) : retention time features identified as a 13C isotopologue or monoisotopic feature."
-
-  c13_isotopologue_ratio:
-    range: QuantityValue
-    description: "The percentage of two dimensional mass to charge (m/z) : retention time features identified as a 13C isotopologue or monoisotopic feature."
-    annotations:
-      storage_units: '%'
+    description: "The number of two dimensional mass to charge (m/z) : retention time features identified as a 13C isotopologue or monoisotopic feature."s
 
 enums:
   MetaproteomicsAnalysisCategoryEnum:

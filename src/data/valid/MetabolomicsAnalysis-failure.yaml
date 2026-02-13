@@ -25,7 +25,3 @@ qc_comment: Insufficient metabolite identifications detected (only 250 out of 20
 peak_count: 2000
 peak_assignment_count: 250
 c13_isotopologue_count: 300
-c13_isotopologue_ratio:
-  type: nmdc:QuantityValue
-  has_numeric_value: 15
-  has_unit: '%'

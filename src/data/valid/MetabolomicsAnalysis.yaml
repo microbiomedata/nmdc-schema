@@ -21,7 +21,3 @@ peak_assignment_rate:
   has_numeric_value: 80
   has_unit: '%'
 c13_isotopologue_count: 3200
-c13_isotopologue_ratio:
-  type: nmdc:QuantityValue
-  has_numeric_value: 71.1
-  has_unit: '%'
