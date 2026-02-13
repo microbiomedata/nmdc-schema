@@ -359,11 +359,6 @@
 
   NomAnalysis : peak_assignment_count
 
-  NomAnalysis : peak_assignment_rate
-
-      NomAnalysis --&gt; "0..1" QuantityValue : peak_assignment_rate
-    click QuantityValue href "../QuantityValue"
-
   NomAnalysis : peak_count
 
   NomAnalysis : processing_institution
@@ -454,12 +449,6 @@
 <td><a href="../peak_assignment_count/">peak_assignment_count</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>The number of peaks with assigned molecular formulas in the NOM analysis</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../peak_assignment_rate/">peak_assignment_rate</a></td>
-<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
-<td>The percentage of peaks with assigned molecular formulas relative to the tota...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -646,7 +635,6 @@ slots:
 - uses_calibration
 - peak_count
 - peak_assignment_count
-- peak_assignment_rate
 slot_usage:
   id:
     name: id
@@ -733,21 +721,6 @@ attributes:
     domain_of:
     - NomAnalysis
     range: integer
-  peak_assignment_rate:
-    name: peak_assignment_rate
-    annotations:
-      storage_units:
-        tag: storage_units
-        value: '%'
-    description: The percentage of peaks with assigned molecular formulas relative
-      to the total number of peaks detected.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: peak_assignment_rate
-    owner: NomAnalysis
-    domain_of:
-    - NomAnalysis
-    range: QuantityValue
   ended_at_time:
     name: ended_at_time
     notes:
