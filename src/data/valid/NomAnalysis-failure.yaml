@@ -20,7 +20,3 @@ has_failure_categorization:
 qc_comment: Insufficient molecular formula assignments detected (only 200 out of 1500 peaks assigned, 13.3%), likely due to poor sample quality or instrument calibration issues
 peak_count: 1500
 peak_assignment_count: 200
-peak_assignment_rate:
-  type: nmdc:QuantityValue
-  has_numeric_value: 13.3
-  has_unit: '%'

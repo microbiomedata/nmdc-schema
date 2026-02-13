@@ -317,7 +317,6 @@ classes:
       - uses_calibration
       - peak_count
       - peak_assignment_count
-      - peak_assignment_rate
     slot_usage:
       id:
         required: true
@@ -594,12 +593,6 @@ slots:
   peak_assignment_count:
     range: integer
     description: The number of peaks with assigned molecular formulas in the NOM analysis.
-
-  peak_assignment_rate:
-    range: QuantityValue
-    description: The percentage of peaks with assigned molecular formulas relative to the total number of peaks detected.
-    annotations:
-      storage_units: '%'
 
 enums:
   MetaproteomicsAnalysisCategoryEnum:

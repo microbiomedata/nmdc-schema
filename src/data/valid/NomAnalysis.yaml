@@ -15,7 +15,3 @@ was_informed_by:
   - nmdc:dgms-11-xyz123aa
 peak_count: 5000
 peak_assignment_count: 3800
-peak_assignment_rate:
-  type: nmdc:QuantityValue
-  has_numeric_value: 76
-  has_unit: '%'
