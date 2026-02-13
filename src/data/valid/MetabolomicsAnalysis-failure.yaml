@@ -24,10 +24,6 @@ has_failure_categorization:
 qc_comment: Insufficient metabolite identifications detected (only 250 out of 2000 peaks assigned, 12.5%) and low 13C isotopologue assignment (15%), likely due to poor sample quality or instrument calibration issues
 peak_count: 2000
 peak_assignment_count: 250
-peak_assignment_rate:
-  type: nmdc:QuantityValue
-  has_numeric_value: 12.5
-  has_unit: '%'
 c13_isotopologue_count: 300
 c13_isotopologue_ratio:
   type: nmdc:QuantityValue

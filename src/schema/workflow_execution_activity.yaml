@@ -273,7 +273,6 @@ classes:
       - metabolomics_analysis_category
       - peak_count
       - peak_assignment_count
-      - peak_assignment_rate
       - c13_isotopologue_count
       - c13_isotopologue_ratio
     slot_usage:
@@ -296,8 +295,6 @@ classes:
         description: "The total number of two dimensional mass to charge (m/z) : retention time features detected in the metabolomics analysis."
       peak_assignment_count:
         description: "The total number of two dimensional mass to charge (m/z) : retention time features with associated metabolite identification in the metabolomics or lipidomics analysis."
-      peak_assignment_rate:
-        description: "The percentage of two dimensional mass to charge (m/z) : retention time features with associated metabolite identification in the metabolomics or lipidomics analysis."
 
   MetaproteomicsAnalysis:
     class_uri: nmdc:MetaproteomicsAnalysis
