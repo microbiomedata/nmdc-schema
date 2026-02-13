@@ -19,14 +19,6 @@ default_prefix: nmdc
 default_range: string
 
 slots:
-  rna_collect_site:
-    description: Provide information on the site your RNA sample was collected from
-    title: RNA collection site
-    examples:
-      - value: untreated pond water
-    rank: 15
-    recommended: true
-    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions
   rna_isolate_meth:
     description: Describe the method/protocol/kit used to extract DNA/RNA.
     title: RNA isolation method
@@ -36,16 +28,6 @@ slots:
       - Sample Isolation Method
     rank: 16
     recommended: true
-  rna_organisms:
-    description: List any organisms known or suspected to grow in co-culture, as well
-      as estimated % of the organism in that culture.
-    title: RNA expected organisms
-    examples:
-      - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-          (1%)
-    rank: 14
-    recommended: true
-    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions
   dna_lr_isolate_meth:
     description: Describe the method/protocol/kit used to extract DNA/RNA for long read sequencing.
     title: DNA isolation method for long read sequencing
