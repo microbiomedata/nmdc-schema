@@ -37,14 +37,6 @@ slots:
     recommended: true
     aliases:
       - Sample Isolation Method
-  dna_collect_site:
-    description: Provide information on the site your DNA sample was collected from
-    title: DNA collection site
-    examples:
-      - value: untreated pond water
-    rank: 15
-    recommended: true
-    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions
   dna_isolate_meth:
     description: Describe the method/protocol/kit used to extract DNA/RNA.
     title: DNA isolation method
@@ -54,16 +46,7 @@ slots:
     recommended: true
     aliases:
       - Sample Isolation Method
-  dna_organisms:
-    description: List any organisms known or suspected to grow in co-culture, as well
-      as estimated % of the organism in that culture.
-    title: DNA expected organisms
-    examples:
-      - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-          (1%)
-    rank: 14
-    recommended: true
-    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions
+
   emsl_store_temp:
     description: The temperature at which the sample should be stored upon delivery
       to EMSL

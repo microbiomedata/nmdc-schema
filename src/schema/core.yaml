@@ -874,13 +874,9 @@ classes:
 
       ## sample metadata submission portal (aka DataHarmonizer) terms (EMSL, JGI, etc.)
       ## JGI fields
-      - dna_collect_site
       - dna_isolate_meth
-      - dna_organisms
-      - rna_collect_site
       - rna_isolate_meth
-      - rna_organisms
-
+      
       ## MIxS Inspired fields
       - collection_date_inc
       - collection_time
