@@ -327,11 +327,6 @@
 
   MetabolomicsAnalysis : c13_isotopologue_count
 
-  MetabolomicsAnalysis : c13_isotopologue_ratio
-
-      MetabolomicsAnalysis --&gt; "0..1" QuantityValue : c13_isotopologue_ratio
-    click QuantityValue href "../QuantityValue"
-
   MetabolomicsAnalysis : description
 
   MetabolomicsAnalysis : end_date
@@ -375,11 +370,6 @@
   MetabolomicsAnalysis : name
 
   MetabolomicsAnalysis : peak_assignment_count
-
-  MetabolomicsAnalysis : peak_assignment_rate
-
-      MetabolomicsAnalysis --&gt; "0..1" QuantityValue : peak_assignment_rate
-    click QuantityValue href "../QuantityValue"
 
   MetabolomicsAnalysis : peak_count
 
@@ -486,21 +476,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../peak_assignment_rate/">peak_assignment_rate</a></td>
-<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
-<td>The percentage of two dimensional mass to charge (m/z) : retention time featu...</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../c13_isotopologue_count/">c13_isotopologue_count</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>The number of two dimensional mass to charge (m/z) : retention time features ...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../c13_isotopologue_ratio/">c13_isotopologue_ratio</a></td>
-<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
-<td>The percentage of two dimensional mass to charge (m/z) : retention time featu...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -689,9 +667,7 @@ slots:
 - metabolomics_analysis_category
 - peak_count
 - peak_assignment_count
-- peak_assignment_rate
 - c13_isotopologue_count
-- c13_isotopologue_ratio
 slot_usage:
   id:
     name: id
@@ -718,11 +694,6 @@ slot_usage:
   peak_assignment_count:
     name: peak_assignment_count
     description: 'The total number of two dimensional mass to charge (m/z) : retention
-      time features with associated metabolite identification in the metabolomics
-      or lipidomics analysis.'
-  peak_assignment_rate:
-    name: peak_assignment_rate
-    description: 'The percentage of two dimensional mass to charge (m/z) : retention
       time features with associated metabolite identification in the metabolomics
       or lipidomics analysis.'
 class_uri: nmdc:MetabolomicsAnalysis
@@ -760,11 +731,6 @@ slot_usage:
   peak_assignment_count:
     name: peak_assignment_count
     description: 'The total number of two dimensional mass to charge (m/z) : retention
-      time features with associated metabolite identification in the metabolomics
-      or lipidomics analysis.'
-  peak_assignment_rate:
-    name: peak_assignment_rate
-    description: 'The percentage of two dimensional mass to charge (m/z) : retention
       time features with associated metabolite identification in the metabolomics
       or lipidomics analysis.'
 attributes:
@@ -834,23 +800,6 @@ attributes:
     - MetabolomicsAnalysis
     - NomAnalysis
     range: integer
-  peak_assignment_rate:
-    name: peak_assignment_rate
-    annotations:
-      storage_units:
-        tag: storage_units
-        value: '%'
-    description: 'The percentage of two dimensional mass to charge (m/z) : retention
-      time features with associated metabolite identification in the metabolomics
-      or lipidomics analysis.'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: peak_assignment_rate
-    owner: MetabolomicsAnalysis
-    domain_of:
-    - MetabolomicsAnalysis
-    - NomAnalysis
-    range: QuantityValue
   c13_isotopologue_count:
     name: c13_isotopologue_count
     description: 'The number of two dimensional mass to charge (m/z) : retention time
@@ -862,21 +811,6 @@ attributes:
     domain_of:
     - MetabolomicsAnalysis
     range: integer
-  c13_isotopologue_ratio:
-    name: c13_isotopologue_ratio
-    annotations:
-      storage_units:
-        tag: storage_units
-        value: '%'
-    description: 'The percentage of two dimensional mass to charge (m/z) : retention
-      time features identified as a 13C isotopologue or monoisotopic feature.'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: c13_isotopologue_ratio
-    owner: MetabolomicsAnalysis
-    domain_of:
-    - MetabolomicsAnalysis
-    range: QuantityValue
   ended_at_time:
     name: ended_at_time
     notes:
