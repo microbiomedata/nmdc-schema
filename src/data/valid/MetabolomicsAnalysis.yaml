@@ -16,8 +16,4 @@ was_informed_by:
 metabolomics_analysis_category: lc_ms_metabolomics
 peak_count: 4500
 peak_assignment_count: 3600
-peak_assignment_rate:
-  type: nmdc:QuantityValue
-  has_numeric_value: 80
-  has_unit: '%'
 c13_isotopologue_count: 3200
