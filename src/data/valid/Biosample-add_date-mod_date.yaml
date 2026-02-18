@@ -1,5 +1,6 @@
-# Tests that ISO 8601 dates (YYYY-MM-DD) are accepted for add_date and mod_date
-# within provenance_metadata, where slot_usage constrains the range to date.
+# Tests that YYYY-MM-DD dates are accepted for add_date and mod_date within
+# provenance_metadata, where slot_usage constrains range to linkml:date (mapped
+# to xsd:date, generates JSON Schema "format": "date").
 # Dates must be quoted to prevent PyYAML (YAML 1.1) from parsing them as
 # native datetime.date objects, which linkml-validate's JSON Schema pathway rejects.
 id: nmdc:bsm-99-dateTest

@@ -1,6 +1,6 @@
 # Tests that GOLD-format dates are rejected for add_date within provenance_metadata.
-# The slot_usage on ProvenanceMetadata constrains add_date to range: date (xsd:date),
-# so only ISO 8601 YYYY-MM-DD strings are accepted.
+# The slot_usage on ProvenanceMetadata constrains add_date to range: date
+# (linkml:date, mapped to xsd:date), so only YYYY-MM-DD strings are accepted.
 id: nmdc:bsm-99-badDate1
 type: nmdc:Biosample
 associated_studies:

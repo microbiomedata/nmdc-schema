@@ -1,6 +1,7 @@
 # Tests that datetime values are rejected for mod_date within provenance_metadata.
-# The slot_usage on ProvenanceMetadata constrains mod_date to range: date (xsd:date),
-# so only ISO 8601 YYYY-MM-DD strings are accepted. An unquoted ISO datetime like
+# The slot_usage on ProvenanceMetadata constrains mod_date to range: date
+# (linkml:date, mapped to xsd:date), so only YYYY-MM-DD strings are accepted.
+# An unquoted datetime like
 # 2023-01-25T00:00:00 is parsed by PyYAML as a native datetime.datetime object,
 # which fails JSON Schema validation.
 id: nmdc:bsm-99-badDate2
