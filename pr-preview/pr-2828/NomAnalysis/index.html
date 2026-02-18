@@ -442,13 +442,13 @@
 <tr>
 <td><a href="../peak_count/">peak_count</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The total number of peaks detected in the NOM analysis</td>
+<td>The total number of peaks detected in the analysis</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../peak_assignment_count/">peak_assignment_count</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The number of peaks with assigned molecular formulas in the NOM analysis</td>
+<td>The number of peaks with assigned molecular formulas in the analysis</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -703,9 +703,10 @@ attributes:
       interpolated: true
   peak_count:
     name: peak_count
-    description: The total number of peaks detected in the NOM analysis.
+    description: The total number of peaks detected in the analysis.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    is_a: ms_analysis_qc_metric
     alias: peak_count
     owner: NomAnalysis
     domain_of:
@@ -714,9 +715,10 @@ attributes:
     range: integer
   peak_assignment_count:
     name: peak_assignment_count
-    description: The number of peaks with assigned molecular formulas in the NOM analysis.
+    description: The number of peaks with assigned molecular formulas in the analysis.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    is_a: ms_analysis_qc_metric
     alias: peak_assignment_count
     owner: NomAnalysis
     domain_of:
