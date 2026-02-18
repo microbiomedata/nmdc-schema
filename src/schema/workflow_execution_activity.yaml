@@ -603,7 +603,9 @@ slots:
 
   c13_isotopologue_count:
     range: integer
-    description: "The number of two dimensional mass to charge (m/z) : retention time features identified as a 13C isotopologue or monoisotopic feature."
+    description: >-
+      The number of two-dimensional mass-to-charge (m/z) versus retention time features that have been
+      isotopically characterized as either 13C-containing isotopologues or monoisotopic (12C-only) features.
 
 enums:
   MetaproteomicsAnalysisCategoryEnum:
