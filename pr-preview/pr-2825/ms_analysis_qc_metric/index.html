@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/add_date/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/ms_analysis_qc_metric/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: add_date - NMDC Schema Documentation</title>
+        <title>Slot: ms_analysis_qc_metric - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-add_date" class="md-skip">
+        <a href="#slot-ms_analysis_qc_metric" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: add_date
+              Slot: ms_analysis_qc_metric
             
           </span>
         </div>
@@ -520,9 +520,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
+  <a href="#inheritance" class="md-nav__link">
     <span class="md-ellipsis">
-      Applicable Classes
+      Inheritance
     </span>
   </a>
   
@@ -598,43 +598,21 @@
   
 
 
-<h1 id="slot-add_date">Slot: add_date</h1>
-<p><em>The date on which the information was added to the database.</em></p>
-<p>URI: <a href="https://w3id.org/nmdc/add_date">nmdc:add_date</a></p>
-<!-- no inheritance hierarchy -->
-
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-<td>The methods and processes used to generate omics data from a biosample or org...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td>Spectrometry where the sample is converted into gaseous ions which are charac...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td>A DataGeneration in which the sequence of DNA or RNA molecules is generated</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td>Biological source material which can be characterized by an experiment</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
+<h1 id="slot-ms_analysis_qc_metric">Slot: ms_analysis_qc_metric</h1>
+<p><em>A quality control metric for mass spectrometry-based analyses.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an abstract slot and should not be populated directly.</p>
+</div>
+<p>URI: <a href="https://w3id.org/nmdc/ms_analysis_qc_metric">nmdc:ms_analysis_qc_metric</a></p>
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><strong>ms_analysis_qc_metric</strong><ul>
+<li><a href="../peak_count/">peak_count</a></li>
+<li><a href="../peak_assignment_count/">peak_assignment_count</a></li>
+</ul>
+</li>
+</ul>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
@@ -662,14 +640,12 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: add_date
-description: The date on which the information was added to the database.
+<pre><code class="language-yaml">name: ms_analysis_qc_metric
+description: A quality control metric for mass spectrometry-based analyses.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-alias: add_date
-domain_of:
-- DataGeneration
-- Biosample
+abstract: true
+alias: ms_analysis_qc_metric
 range: string
 
 </code></pre>
