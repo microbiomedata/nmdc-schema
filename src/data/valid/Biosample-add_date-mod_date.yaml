@@ -1,0 +1,30 @@
+# Tests that ISO 8601 dates (YYYY-MM-DD) are accepted for add_date and mod_date
+# within provenance_metadata, where slot_usage constrains the range to date.
+# Dates must be quoted to prevent PyYAML (YAML 1.1) from parsing them as
+# native datetime.date objects, which linkml-validate's JSON Schema pathway rejects.
+id: nmdc:bsm-99-dateTest
+type: nmdc:Biosample
+associated_studies:
+  - nmdc:sty-00-abc123
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002030
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002030
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002169
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002169
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00005792
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00005792
+provenance_metadata:
+  type: nmdc:ProvenanceMetadata
+  add_date: '2021-03-31'
+  mod_date: '2023-01-25'

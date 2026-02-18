@@ -1,0 +1,29 @@
+# Tests that GOLD-format dates are rejected for add_date within provenance_metadata.
+# The slot_usage on ProvenanceMetadata constrains add_date to range: date (xsd:date),
+# so only ISO 8601 YYYY-MM-DD strings are accepted.
+id: nmdc:bsm-99-badDate1
+type: nmdc:Biosample
+associated_studies:
+  - nmdc:sty-00-abc123
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002030
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002030
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002169
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002169
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00005792
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00005792
+provenance_metadata:
+  type: nmdc:ProvenanceMetadata
+  add_date: 28-JUL-14 12.00.00.000000000 AM
+  mod_date: '2023-01-25'
