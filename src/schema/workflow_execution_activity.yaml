@@ -609,6 +609,7 @@ slots:
     description: The number of peaks with assigned molecular formulas in the analysis.
 
   c13_isotopologue_count:
+    is_a: ms_analysis_qc_metric
     range: integer
     description: >-
       The number of two-dimensional mass-to-charge (m/z) versus retention time features that have been

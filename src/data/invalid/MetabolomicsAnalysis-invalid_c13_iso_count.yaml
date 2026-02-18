@@ -1,0 +1,20 @@
+# This example file is invalid because the c13_isotopologue_count is a float instead of an integer as defined in the schema.
+id: nmdc:wfmb-11-xyz789ab.1
+started_at_time: '2022-05-10T08:00:00+00:00'
+ended_at_time: '2022-05-10T16:30:00+00:00'
+execution_resource: EMSL-RZR
+processing_institution: NMDC
+git_url: https://github.com/microbiomedata/metabolomics_analysis/releases/tag/v1.0.0
+has_input:
+  - nmdc:dobj-11-xyz789ac
+  - nmdc:dobj-11-xyz789ad
+has_output:
+  - nmdc:dobj-11-xyz789ae
+  - nmdc:dobj-11-xyz789af
+type: nmdc:MetabolomicsAnalysis
+was_informed_by:
+  - nmdc:dgms-11-xyz789aa
+metabolomics_analysis_category: lc_ms_metabolomics
+peak_count: 4500
+peak_assignment_count: 3600
+c13_isotopologue_count: 1.2
