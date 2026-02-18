@@ -595,11 +595,11 @@ slots:
 
   peak_count:
     range: integer
-    description: The total number of peaks detected in the NOM analysis.
+    description: The total number of peaks detected in the analysis.
 
   peak_assignment_count:
     range: integer
-    description: The number of peaks with assigned molecular formulas in the NOM analysis.
+    description: The number of peaks with assigned molecular formulas in the analysis.
 
   c13_isotopologue_count:
     range: integer
