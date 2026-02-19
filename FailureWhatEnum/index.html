@@ -627,6 +627,11 @@
 <td>None</td>
 <td>A lab process or analysis workflow has failed in a way that has not been capt...</td>
 </tr>
+<tr>
+<td>low_molecular_formula_assignment</td>
+<td>None</td>
+<td>Number of peaks with assigned molecular formulas during the workflow is not s...</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -678,6 +683,10 @@ permissible_values:
     description: A lab process or analysis workflow has failed in a way that has not
       been captured by the available values yet. Please use slot 'qc_comment' to specify
       details.
+  low_molecular_formula_assignment:
+    text: low_molecular_formula_assignment
+    description: Number of peaks with assigned molecular formulas during the workflow
+      is not sufficient.
 
 </code></pre>
 

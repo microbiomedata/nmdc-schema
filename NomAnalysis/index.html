@@ -357,6 +357,10 @@
 
   NomAnalysis : name
 
+  NomAnalysis : peak_assignment_count
+
+  NomAnalysis : peak_count
+
   NomAnalysis : processing_institution
 
       NomAnalysis --&gt; "1" ProcessingInstitutionEnum : processing_institution
@@ -433,6 +437,18 @@
 <td><a href="../uses_calibration/">uses_calibration</a></td>
 <td>* <br/> <a href="../CalibrationInformation/">CalibrationInformation</a></td>
 <td>calibration information is used by a process</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../peak_count/">peak_count</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The total number of peaks detected in the analysis</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../peak_assignment_count/">peak_assignment_count</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The number of peaks with assigned molecular formulas in the analysis</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -617,6 +633,8 @@ from_schema: https://w3id.org/nmdc/nmdc
 is_a: WorkflowExecution
 slots:
 - uses_calibration
+- peak_count
+- peak_assignment_count
 slot_usage:
   id:
     name: id
@@ -683,6 +701,28 @@ attributes:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
       interpolated: true
+  peak_count:
+    name: peak_count
+    description: The total number of peaks detected in the analysis.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ms_analysis_qc_metric
+    alias: peak_count
+    owner: NomAnalysis
+    domain_of:
+    - NomAnalysis
+    range: integer
+  peak_assignment_count:
+    name: peak_assignment_count
+    description: The number of peaks with assigned molecular formulas in the analysis.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ms_analysis_qc_metric
+    alias: peak_assignment_count
+    owner: NomAnalysis
+    domain_of:
+    - NomAnalysis
+    range: integer
   ended_at_time:
     name: ended_at_time
     notes:

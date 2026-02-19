@@ -2937,6 +2937,10 @@
          <lastmod>2026-02-19</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/ms_analysis_qc_metric/</loc>
+         <lastmod>2026-02-19</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/n_alkanes/</loc>
          <lastmod>2026-02-19</lastmod>
     </url>
@@ -3182,6 +3186,14 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/pcr_primers/</loc>
+         <lastmod>2026-02-19</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/peak_assignment_count/</loc>
+         <lastmod>2026-02-19</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/peak_count/</loc>
          <lastmod>2026-02-19</lastmod>
     </url>
     <url>
