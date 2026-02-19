@@ -342,28 +342,34 @@ classes:
 
 slots:
   unique_peptide_seq_count:
+    is_a: ms_analysis_qc_metric
     range: integer
     description: The number of distinct peptide sequences identified in the LC-MS/MS file.
 
   razor_protein_count:
+    is_a: ms_analysis_qc_metric
     range: integer
     description: The minimal protein set that describes the unique peptide sequences identified after applying Razor Protein parsimony.
 
   peptide_to_spectrum_match_count:
+    is_a: ms_analysis_qc_metric
     range: integer
     description: Total number of MS2 spectra with a false discovery rate passing peptide match.
 
   peptide_to_spectrum_match_rate:
+    is_a: ms_analysis_qc_metric
     range: QuantityValue
     description: The percentage of peptide-to-spectrum matches relative to the total number of spectra analyzed.
     annotations:
       storage_units: '%'
 
   mean_peptide_count:
+    is_a: ms_analysis_qc_metric
     range: float
     description: The average number of peptides per protein identified in the metaproteomics analysis.
 
   total_protein_count:
+    is_a: ms_analysis_qc_metric
     range: integer
     description: The total number of distinct proteins identified in the metaproteomics analysis.
 
