@@ -321,6 +321,8 @@ classes:
     is_a: WorkflowExecution
     slots:
       - uses_calibration
+      - peak_count
+      - peak_assignment_count
     slot_usage:
       id:
         required: true
@@ -614,6 +616,21 @@ slots:
     range: MetaboliteIdentification
     multivalued: true
     inlined_as_list: true
+
+  ms_analysis_qc_metric:
+    abstract: true
+    description: >-
+      A quality control metric for mass spectrometry-based analyses.
+  
+  peak_count:
+    is_a: ms_analysis_qc_metric
+    range: integer
+    description: The total number of peaks detected in the analysis.
+
+  peak_assignment_count:
+    is_a: ms_analysis_qc_metric
+    range: integer
+    description: The number of peaks with assigned molecular formulas in the analysis.
 
 enums:
   MetaproteomicsAnalysisCategoryEnum:

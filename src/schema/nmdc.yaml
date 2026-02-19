@@ -1328,14 +1328,6 @@ slots:
       Applies to a property that links a database object to a set of objects.
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
-  chemical_entity_set:
-    deprecated: >-
-      Deprecation of the ChemicalEntity class, means deprecation of the chemical_entity_set as well.
-    mixins:
-      - object_set
-    description:
-      This property links a database object to the set of chemical entities
-      within it.
   ontology_class_set:
     mixins:
       - object_set

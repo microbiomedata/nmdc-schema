@@ -1132,6 +1132,8 @@ enums:
         description: Number of peptides identified during the Metaproteomics workflow is not sufficient.
       low_protein_count:
         description: Number of proteins identified during the Metaproteomics workflow is not sufficient.
+      low_molecular_formula_assignment:
+        description: Number of peaks with assigned molecular formulas during the workflow is not sufficient.
 
   FailureWhereEnum:
     description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
