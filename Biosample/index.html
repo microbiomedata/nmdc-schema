@@ -3726,39 +3726,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../dna_collect_site/">dna_collect_site</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
-<td>Provide information on the site your DNA sample was collected from</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../dna_isolate_meth/">dna_isolate_meth</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
 <td>Describe the method/protocol/kit used to extract DNA/RNA</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../dna_organisms/">dna_organisms</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
-<td>List any organisms known or suspected to grow in co-culture, as well as estim...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../rna_collect_site/">rna_collect_site</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
-<td>Provide information on the site your RNA sample was collected from</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../rna_isolate_meth/">rna_isolate_meth</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
 <td>Describe the method/protocol/kit used to extract DNA/RNA</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../rna_organisms/">rna_organisms</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
-<td>List any organisms known or suspected to grow in co-culture, as well as estim...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -4572,12 +4548,8 @@ slots:
 - sample_collection_site
 - soluble_iron_micromol
 - subsurface_depth
-- dna_collect_site
 - dna_isolate_meth
-- dna_organisms
-- rna_collect_site
 - rna_isolate_meth
-- rna_organisms
 - collection_date_inc
 - collection_time
 - collection_time_inc
@@ -16798,23 +16770,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-  dna_collect_site:
-    name: dna_collect_site
-    description: Provide information on the site your DNA sample was collected from
-    title: DNA collection site
-    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
-      slot &amp; it's now captured directly in the submission portal schema to support
-      submissions
-    examples:
-    - value: untreated pond water
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 15
-    alias: dna_collect_site
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
-    recommended: true
   dna_isolate_meth:
     name: dna_isolate_meth
     description: Describe the method/protocol/kit used to extract DNA/RNA.
@@ -16831,42 +16786,6 @@ attributes:
     - Biosample
     range: string
     recommended: true
-  dna_organisms:
-    name: dna_organisms
-    description: List any organisms known or suspected to grow in co-culture, as well
-      as estimated % of the organism in that culture.
-    title: DNA expected organisms
-    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
-      slot &amp; it's now captured directly in the submission portal schema to support
-      submissions
-    examples:
-    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-        (1%)
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 14
-    alias: dna_organisms
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
-    recommended: true
-  rna_collect_site:
-    name: rna_collect_site
-    description: Provide information on the site your RNA sample was collected from
-    title: RNA collection site
-    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
-      slot &amp; it's now captured directly in the submission portal schema to support
-      submissions
-    examples:
-    - value: untreated pond water
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 15
-    alias: rna_collect_site
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
-    recommended: true
   rna_isolate_meth:
     name: rna_isolate_meth
     description: Describe the method/protocol/kit used to extract DNA/RNA.
@@ -16878,25 +16797,6 @@ attributes:
     - Sample Isolation Method
     rank: 16
     alias: rna_isolate_meth
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
-    recommended: true
-  rna_organisms:
-    name: rna_organisms
-    description: List any organisms known or suspected to grow in co-culture, as well
-      as estimated % of the organism in that culture.
-    title: RNA expected organisms
-    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
-      slot &amp; it's now captured directly in the submission portal schema to support
-      submissions
-    examples:
-    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-        (1%)
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 14
-    alias: rna_organisms
     owner: Biosample
     domain_of:
     - Biosample
