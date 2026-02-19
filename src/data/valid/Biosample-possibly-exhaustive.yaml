@@ -1517,13 +1517,7 @@ subsurface_depth:
   has_raw_value: 10.0 m
   has_unit: m
   type: nmdc:QuantityValue
-dna_collect_site: untreated pond water
 dna_isolate_meth: DNA
-dna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-  (1%)
-rna_collect_site: untreated pond water
-rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-  (1%)
 collection_date_inc: '2023-01-29'
 collection_time: 05:42+0000
 collection_time_inc: 13:42+0000
