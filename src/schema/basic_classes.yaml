@@ -1128,6 +1128,8 @@ enums:
         description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
       other:
         description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
+      low_molecular_formula_assignment:
+        description: Number of peaks with assigned molecular formulas during the workflow is not sufficient.
 
   FailureWhereEnum:
     description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
