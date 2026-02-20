@@ -340,6 +340,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+      peak_assignment_count:
+        description: "The number of m/z peaks with assigned molecular formulas in the analysis."
 
 slots:
 
@@ -606,7 +608,7 @@ slots:
   peak_assignment_count:
     is_a: ms_analysis_qc_metric
     range: integer
-    description: The number of peaks with assigned molecular formulas in the analysis.
+    description: The number of m/z peaks with assignments in an analysis.
 
   c13_isotopologue_count:
     is_a: ms_analysis_qc_metric
