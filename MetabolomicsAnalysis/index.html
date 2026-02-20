@@ -325,6 +325,8 @@
 
   MetabolomicsAnalysis : alternative_identifiers
 
+  MetabolomicsAnalysis : c13_isotopologue_count
+
   MetabolomicsAnalysis : description
 
   MetabolomicsAnalysis : end_date
@@ -366,6 +368,10 @@
     click MetabolomicsAnalysisCategoryEnum href "../MetabolomicsAnalysisCategoryEnum"
 
   MetabolomicsAnalysis : name
+
+  MetabolomicsAnalysis : peak_assignment_count
+
+  MetabolomicsAnalysis : peak_count
 
   MetabolomicsAnalysis : processing_institution
 
@@ -455,6 +461,24 @@
 <td><a href="../metabolomics_analysis_category/">metabolomics_analysis_category</a></td>
 <td>1 <br/> <a href="../MetabolomicsAnalysisCategoryEnum/">MetabolomicsAnalysisCategoryEnum</a></td>
 <td>The category of metabolomics analysis being performed</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../peak_count/">peak_count</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The total number of two dimensional mass to charge (m/z) : retention time fea...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../peak_assignment_count/">peak_assignment_count</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The total number of two dimensional mass to charge (m/z) : retention time fea...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../c13_isotopologue_count/">c13_isotopologue_count</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The number of two-dimensional mass-to-charge (m/z) versus retention time feat...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -641,6 +665,9 @@ slots:
 - has_metabolite_identifications
 - uses_calibration
 - metabolomics_analysis_category
+- peak_count
+- peak_assignment_count
+- c13_isotopologue_count
 slot_usage:
   id:
     name: id
@@ -660,6 +687,15 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+  peak_count:
+    name: peak_count
+    description: 'The total number of two dimensional mass to charge (m/z) : retention
+      time features detected in the metabolomics analysis.'
+  peak_assignment_count:
+    name: peak_assignment_count
+    description: 'The total number of two dimensional mass to charge (m/z) : retention
+      time features with associated metabolite identification in the metabolomics
+      or lipidomics analysis.'
 class_uri: nmdc:MetabolomicsAnalysis
 
 </code></pre>
@@ -688,6 +724,15 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+  peak_count:
+    name: peak_count
+    description: 'The total number of two dimensional mass to charge (m/z) : retention
+      time features detected in the metabolomics analysis.'
+  peak_assignment_count:
+    name: peak_assignment_count
+    description: 'The total number of two dimensional mass to charge (m/z) : retention
+      time features with associated metabolite identification in the metabolomics
+      or lipidomics analysis.'
 attributes:
   has_metabolite_identifications:
     name: has_metabolite_identifications
@@ -730,6 +775,46 @@ attributes:
     - MetabolomicsAnalysis
     range: MetabolomicsAnalysisCategoryEnum
     required: true
+  peak_count:
+    name: peak_count
+    description: 'The total number of two dimensional mass to charge (m/z) : retention
+      time features detected in the metabolomics analysis.'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ms_analysis_qc_metric
+    alias: peak_count
+    owner: MetabolomicsAnalysis
+    domain_of:
+    - MetabolomicsAnalysis
+    - NomAnalysis
+    range: integer
+  peak_assignment_count:
+    name: peak_assignment_count
+    description: 'The total number of two dimensional mass to charge (m/z) : retention
+      time features with associated metabolite identification in the metabolomics
+      or lipidomics analysis.'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ms_analysis_qc_metric
+    alias: peak_assignment_count
+    owner: MetabolomicsAnalysis
+    domain_of:
+    - MetabolomicsAnalysis
+    - NomAnalysis
+    range: integer
+  c13_isotopologue_count:
+    name: c13_isotopologue_count
+    description: The number of two-dimensional mass-to-charge (m/z) versus retention
+      time features that have been isotopically characterized as either 13C-containing
+      isotopologues or monoisotopic (12C-only) features.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ms_analysis_qc_metric
+    alias: c13_isotopologue_count
+    owner: MetabolomicsAnalysis
+    domain_of:
+    - MetabolomicsAnalysis
+    range: integer
   ended_at_time:
     name: ended_at_time
     notes:
