@@ -1,5 +1,6 @@
 # This file is invalid because it uses the value `low_peptide_count` for `qc_failure_what`, which is not a permissible value in the `FailureWhatEnum` class.
-
+id: nmdc:wfmp-99-74d83.1
+type: nmdc:MetaproteomicsAnalysis
 ended_at_time: '2021-10-12T15:45:00+00:00'
 execution_resource: EMSL-Tahoma
 processing_institution: NMDC
