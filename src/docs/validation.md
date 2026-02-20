@@ -20,6 +20,12 @@ linkml validate \
   src/data/valid/Biosample-minimal.yaml
 ```
 
+The Makefile provides a convenience target that runs the above command:
+
+```bash
+make linkml-validate-example
+```
+
 Validating a file that contains a schema violation (output shows the error):
 
 ```bash
