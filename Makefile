@@ -355,6 +355,18 @@ nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
 
 ####
 
+# Example of using `linkml validate` from the command line.
+# Validates a single valid Biosample instance against the materialized schema.
+# A passing validation produces no output; a failing one prints the violation(s).
+.PHONY: linkml-validate-example
+linkml-validate-example:
+	$(RUN) linkml validate \
+		--schema nmdc_schema/nmdc_materialized_patterns.yaml \
+		--target-class Biosample \
+		src/data/valid/Biosample-minimal.yaml
+
+####
+
 .PHONY: check-invalids-for-single-failure
 
 # 		echo "Running command: $$cmd"; \
