@@ -164,9 +164,9 @@ testpaths = ["tests"]
 extend_exclude = [
     "nmdc_schema/nmdc_pydantic.py"
 ]
-# linkml 1.10.0+ monorepo includes linkml-runtime
-[tool.deptry.package_module_name_map]
-linkml = ["linkml", "linkml_runtime"]
 # These are transitive dependencies but we pin them directly
 # to ensure users get security fixes from Dependabot alerts
 per_rule_ignores = {DEP002 = ["urllib3", "pyasn1", "pymdown-extensions"]}
+# linkml 1.10.0+ monorepo includes linkml-runtime
+[tool.deptry.package_module_name_map]
+linkml = ["linkml", "linkml_runtime"]
