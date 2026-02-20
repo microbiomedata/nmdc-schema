@@ -1,5 +1,5 @@
-id: nmdc:wfmp-11-fh8dk922.1
-started_at_time: '2021-10-12T09:30:00+00:00'
+# This file is invalid because it uses the value `low_peptide_count` for `qc_failure_what`, which is not a permissible value in the `FailureWhatEnum` class.
+
 ended_at_time: '2021-10-12T15:45:00+00:00'
 execution_resource: EMSL-Tahoma
 processing_institution: NMDC
@@ -15,10 +15,10 @@ was_informed_by:
 metaproteomics_analysis_category: matched_metagenome
 qc_status: fail
 has_failure_categorization:
-  - qc_failure_what: low_peptide_to_spectrum_match_rate
+  - qc_failure_what: low_peptide_count
     qc_failure_where: MetaproteomicsAnalysis
     type: nmdc:FailureCategorization
-qc_comment: Insufficient peptide to spectrum match rate (only 12%)
+qc_comment: Insufficient peptides identified (only 250 peptides), likely due to low sample biomass
 peptide_to_spectrum_match_count: 450
 peptide_to_spectrum_match_rate:
   type: nmdc:QuantityValue

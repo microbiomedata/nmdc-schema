@@ -1128,10 +1128,8 @@ enums:
         description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
       other:
         description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
-      low_peptide_count:
-        description: Number of peptides identified during the Metaproteomics workflow is not sufficient.
-      low_protein_count:
-        description: Number of proteins identified during the Metaproteomics workflow is not sufficient.
+      low_peptide_to_spectrum_match_rate:
+        description: Rate of peptide assignment during the analysis is not sufficient.
       low_molecular_formula_assignment:
         description: Number of peaks with assigned molecular formulas during the workflow is not sufficient.
       low_metabolite_assignment:
