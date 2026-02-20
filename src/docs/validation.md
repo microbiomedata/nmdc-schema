@@ -6,6 +6,34 @@ Please see LinkML Validation documentation for general information on validation
 It has several good examples of how to use linkml-validate in a python script or from the command line.
 https://linkml.io/linkml/data/validating-data.html
 
+## Validating from the command line
+
+The `linkml validate` CLI command can be used to validate a YAML data file against the NMDC schema.
+The `--target-class` option specifies the class that the top-level object in the data file should conform to.
+
+Validating a valid file (no output means success):
+
+```bash
+linkml validate \
+  --schema nmdc_schema/nmdc_materialized_patterns.yaml \
+  --target-class Biosample \
+  src/data/valid/Biosample-minimal.yaml
+```
+
+Validating a file that contains a schema violation (output shows the error):
+
+```bash
+linkml validate \
+  --schema nmdc_schema/nmdc_materialized_patterns.yaml \
+  --target-class Biosample \
+  src/data/invalid/Biosample-minimal-invalid-type.yaml
+```
+
+Note: `nmdc_schema/nmdc_materialized_patterns.yaml` is the pre-built schema artifact used for validation.
+If you have not already built the schema, you can use `src/schema/nmdc.yaml` as the `--schema` value instead,
+though this requires all schema imports to be resolvable.
+
+## Validating from Python
 
 Using the examples in src/docs/examples, we can validate the data against the schema in python:
 
