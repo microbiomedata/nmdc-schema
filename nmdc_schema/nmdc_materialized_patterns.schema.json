@@ -1198,22 +1198,8 @@
                     "description": "Concentration of dissolved oxygen in the oil field produced fluids as it contributes to oxygen-corrosion and microbial activity (e.g. Mic)",
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
-                "dna_collect_site": {
-                    "description": "Provide information on the site your DNA sample was collected from",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "dna_isolate_meth": {
                     "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_organisms": {
-                    "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
                     "type": [
                         "string",
                         "null"
@@ -3449,22 +3435,8 @@
                     "description": "Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
                     "pattern": "^.*;[-+]?[0-9]*\\.?[0-9]+ ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$"
                 },
-                "rna_collect_site": {
-                    "description": "Provide information on the site your RNA sample was collected from",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "rna_isolate_meth": {
                     "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_organisms": {
-                    "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
                     "type": [
                         "string",
                         "null"
@@ -6141,12 +6113,6 @@
                             "$ref": "#/$defs/OntologyClass"
                         },
                         {
-                            "$ref": "#/$defs/EnvironmentalMaterialTerm"
-                        },
-                        {
-                            "$ref": "#/$defs/Pathway"
-                        },
-                        {
                             "$ref": "#/$defs/OrthologyGroup"
                         }
                     ],
@@ -6182,12 +6148,6 @@
                     "anyOf": [
                         {
                             "$ref": "#/$defs/OntologyClass"
-                        },
-                        {
-                            "$ref": "#/$defs/EnvironmentalMaterialTerm"
-                        },
-                        {
-                            "$ref": "#/$defs/Pathway"
                         },
                         {
                             "$ref": "#/$defs/OrthologyGroup"
@@ -7109,95 +7069,6 @@
             "title": "EluentIntroductionCategoryEnum",
             "type": "string"
         },
-        "EnvironmentalMaterialTerm": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "definition": {
-                    "description": "The definition of the ontology term as provided by the ontology.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "is_obsolete": {
-                    "description": "A boolean value indicating whether the ontology term is obsolete.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "is_root": {
-                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "relations": {
-                    "items": {
-                        "$ref": "#/$defs/OntologyRelation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:EnvironmentalMaterialTerm"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "type"
-            ],
-            "title": "EnvironmentalMaterialTerm",
-            "type": "object"
-        },
         "EukEval": {
             "additionalProperties": false,
             "description": "This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.",
@@ -7483,7 +7354,10 @@
                 "malformed_data",
                 "assembly_size_too_small",
                 "no_valid_data_generated",
-                "other"
+                "other",
+                "low_molecular_formula_assignment",
+                "low_metabolite_assignment",
+                "low_c13_isotopologue_assignment"
             ],
             "title": "FailureWhatEnum",
             "type": "string"
@@ -9899,6 +9773,13 @@
                         "null"
                     ]
                 },
+                "c13_isotopologue_count": {
+                    "description": "The number of two-dimensional mass-to-charge (m/z) versus retention time features that have been isotopically characterized as either 13C-containing isotopologues or monoisotopic (12C-only) features.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -9978,6 +9859,20 @@
                     "description": "A human readable label for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "peak_assignment_count": {
+                    "description": "The total number of two dimensional mass to charge (m/z) : retention time features with associated metabolite identification in the metabolomics or lipidomics analysis.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "peak_count": {
+                    "description": "The total number of two dimensional mass to charge (m/z) : retention time features detected in the metabolomics analysis.",
+                    "type": [
+                        "integer",
                         "null"
                     ]
                 },
@@ -12156,6 +12051,20 @@
                         "null"
                     ]
                 },
+                "peak_assignment_count": {
+                    "description": "The number of peaks with assigned molecular formulas in the analysis.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "peak_count": {
+                    "description": "The total number of peaks detected in the analysis.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -12703,95 +12612,6 @@
             ],
             "title": "OxyStatSampEnum",
             "type": "string"
-        },
-        "Pathway": {
-            "additionalProperties": false,
-            "description": "A pathway is a sequence of steps/reactions carried out by an organism or community of organisms",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "definition": {
-                    "description": "The definition of the ontology term as provided by the ontology.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "is_obsolete": {
-                    "description": "A boolean value indicating whether the ontology term is obsolete.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "is_root": {
-                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "relations": {
-                    "items": {
-                        "$ref": "#/$defs/OntologyRelation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:Pathway"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "type"
-            ],
-            "title": "Pathway",
-            "type": "object"
         },
         "PersonValue": {
             "additionalProperties": false,
