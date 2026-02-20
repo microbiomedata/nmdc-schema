@@ -163,7 +163,7 @@ assets/other_mixs_yaml_files/mixs_env_triad_field_slot.yaml
 
 examples/output: nmdc_schema/nmdc_materialized_patterns.yaml
 	mkdir -p $@
-	$(RUN) linkml-run-examples \
+	$(RUN) linkml examples \
 		--schema $< \
 		--input-directory src/data/valid \
 		--counter-example-input-directory src/data/invalid \
@@ -261,7 +261,7 @@ local/mongo_via_api_as_nmdc_database_after_migrator.yaml: nmdc_schema/nmdc_mater
 .PRECIOUS: local/mongo_via_api_as_nmdc_database_validation.log
 local/mongo_via_api_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_via_api_as_nmdc_database_after_migrator.yaml
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) linkml-validate --schema $^ > $@
+	time $(RUN) linkml validate --schema $^ > $@
 
 #### Combined Command ####
 .PHONY: test-migrator-on-database
@@ -299,7 +299,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 
 local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) linkml-convert --output $@ --schema $^
+	time $(RUN) linkml convert --output $@ --schema $^
 	mv $@ $@.tmp
 	cat  assets/my_emsl_prefix.ttl $@.tmp  > $@
 	rm -rf $@.tmp
@@ -381,7 +381,7 @@ local/gold-study-ids.json:
 		-H 'accept: application/json'
 
 local/nmdc-no-use-native-uris.owl.ttl: src/schema/nmdc.yaml
-	$(RUN) gen-owl --no-use-native-uris $< > $@
+	$(RUN) linkml generate owl --no-use-native-uris $< > $@
 
 
 local/nmdc_materialized.ttl: src/schema/nmdc.yaml
@@ -421,7 +421,7 @@ diagrams-all: diagrams-clean assets/plantuml.png assets/plantuml.pdf assets/merm
 #		--classes SubstanceEntity
 
 assets/plantuml.puml: src/schema/nmdc.yaml
-	$(RUN) gen-plantuml \
+	$(RUN) linkml generate plantuml \
 		--classes ChemicalConversionProcess \
 		--classes ChemicalEntity \
 		--classes ChromatographicSeparationProcess \
@@ -445,7 +445,7 @@ assets/plantuml.pdf: assets/plantuml.svg
 	inkscape --export-filename=$@ $<
 
 assets/mermaid-erd.mmd: src/schema/nmdc.yaml
-	$(RUN) gen-erdiagram \
+	$(RUN) linkml generate erdiagram \
 		--format mermaid \
 		--classes ChemicalConversionProcess \
 		--classes ChemicalEntity \
