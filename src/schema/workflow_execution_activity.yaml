@@ -271,6 +271,9 @@ classes:
       - has_metabolite_identifications
       - uses_calibration
       - metabolomics_analysis_category
+      - peak_count
+      - peak_assignment_count
+      - c13_isotopologue_count
     slot_usage:
       id:
         required: true
@@ -287,6 +290,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+      peak_count:
+        description: "The total number of two dimensional mass to charge (m/z) : retention time features detected in the metabolomics analysis."
+      peak_assignment_count:
+        description: "The total number of two dimensional mass to charge (m/z) : retention time features with associated metabolite identification in the metabolomics or lipidomics analysis."
 
   MetaproteomicsAnalysis:
     class_uri: nmdc:MetaproteomicsAnalysis
@@ -339,6 +346,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+      peak_assignment_count:
+        description: "The number of m/z peaks with assigned molecular formulas in the analysis."
 
 slots:
   unique_peptide_seq_count:
@@ -636,7 +645,14 @@ slots:
   peak_assignment_count:
     is_a: ms_analysis_qc_metric
     range: integer
-    description: The number of peaks with assigned molecular formulas in the analysis.
+    description: The number of m/z peaks with assignments in an analysis.
+
+  c13_isotopologue_count:
+    is_a: ms_analysis_qc_metric
+    range: integer
+    description: >-
+      The number of two-dimensional mass-to-charge (m/z) versus retention time features that have been
+      isotopically characterized as either 13C-containing isotopologues or monoisotopic (12C-only) features.
 
 enums:
   MetaproteomicsAnalysisCategoryEnum:
