@@ -448,7 +448,7 @@
 <tr>
 <td><a href="../peak_assignment_count/">peak_assignment_count</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The number of peaks with assigned molecular formulas in the analysis</td>
+<td>The number of m/z peaks with assigned molecular formulas in the analysis</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -654,6 +654,9 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+  peak_assignment_count:
+    name: peak_assignment_count
+    description: The number of m/z peaks with assigned molecular formulas in the analysis.
 class_uri: nmdc:NomAnalysis
 
 </code></pre>
@@ -682,6 +685,9 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+  peak_assignment_count:
+    name: peak_assignment_count
+    description: The number of m/z peaks with assigned molecular formulas in the analysis.
 attributes:
   uses_calibration:
     name: uses_calibration
@@ -715,7 +721,7 @@ attributes:
     range: integer
   peak_assignment_count:
     name: peak_assignment_count
-    description: The number of peaks with assigned molecular formulas in the analysis.
+    description: The number of m/z peaks with assigned molecular formulas in the analysis.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     is_a: ms_analysis_qc_metric
