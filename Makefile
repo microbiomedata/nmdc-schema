@@ -125,7 +125,7 @@ gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # 
 		--include rdf \
 		--config-file gen-project-config.yaml \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL) && cp $(DEST)/pydantic/*.py $(PYMODEL)/nmdc_pydantic.py
-		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
+	cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 
 test: examples-clean linkml-validate-schema site test-python migration-doctests examples/output
@@ -236,10 +236,6 @@ $(DOCDIR):
 # One of the diagrams is a graph showing all the _inter-collection_ relationships the schema says can exist,
 # and the other diagram is a graph showing all the _inter-class_ relationships the schema says can exist.
 #
-# Note: Using `refgraph` in this way requires the `nmdc_schema/nmdc_materialized_patterns.yaml`
-#       file to already have been generated. That dependency is currently not reflected in
-#       the dependency list of this `make` target.
-#
 gendoc: $(DOCDIR) prefixmaps nmdc_schema/nmdc.schema.json nmdc_schema/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.yaml
 	# Copy all documentation files to the documentation directory
 	cp -rf $(SRC)/docs/* $(DOCDIR)
@@ -253,10 +249,12 @@ gendoc: $(DOCDIR) prefixmaps nmdc_schema/nmdc.schema.json nmdc_schema/nmdc_mater
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
 	# Copy schema-derived files into a "downloads" directory within the documentation website.
-	rm -rf $(DOCDIR)/downloads && mkdir -p $(DOCDIR)/downloads && cp nmdc_schema/nmdc.schema.json \
-		nmdc_schema/nmdc_materialized_patterns.schema.json \
-		nmdc_schema/nmdc_materialized_patterns.yaml \
-		$(DOCDIR)/downloads/
+	rm -rf $(DOCDIR)/downloads
+	mkdir -p $(DOCDIR)/downloads
+	cp nmdc_schema/nmdc.schema.json \
+	   nmdc_schema/nmdc_materialized_patterns.schema.json \
+	   nmdc_schema/nmdc_materialized_patterns.yaml \
+	   $(DOCDIR)/downloads/
 	# Use `refscan graph` to generate diagrams within the website's file tree.
 	mkdir -p $(DOCDIR)/visualizations
 	$(RUN) refscan graph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
@@ -331,6 +329,13 @@ squeaky-clean: clean examples-clean rdf-clean shuttle-clean site-clean # does no
 	rm -rf $(PYMODEL)/nmdc_pydantic.py
 	mkdir project
 	rm -rf local/biosample_slots_ranges_report.tsv
+
+
+# Note: The `gen-project` target creates the `nmdc_schema/nmdc.schema.json` file.
+#       We define this "no-op" Make target here so we can specify that file as
+#       a dependency of other Make targets in a self-documenting way.
+nmdc_schema/nmdc.schema.json: gen-project
+	true
 
 nmdc_schema/nmdc_materialized_patterns.yaml:
 	$(RUN) gen-linkml \
