@@ -1134,7 +1134,9 @@ enums:
         description: Number of metabolites identified during the Metabolomics or Lipidomics workflow is not sufficient.
       low_c13_isotopologue_assignment:
         description: Number of 13C isotopologues identified during the Metabolomics or Lipidomics workflow is not sufficient.
-
+      low_peptide_to_spectrum_match_rate:
+        description: Rate of peptide assignment during the analysis is not sufficient.
+        
   FailureWhereEnum:
     description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
     comments:

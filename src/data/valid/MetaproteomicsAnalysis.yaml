@@ -1,0 +1,25 @@
+id: nmdc:wfmp-11-ndgg7v31.1
+started_at_time: '2021-08-05T14:48:51+00:00'
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: EMSL-Tahoma
+processing_institution: NMDC
+git_url: https://github.com/microbiomedata/metaproteomics_analysis/releases/tag/v0.6.3
+has_input:
+  - nmdc:dobj-11-ndgg7b33
+  - nmdc:dobj-11-ndgg7b34
+has_output:
+  - nmdc:dobj-11-ndgg7b37
+  - nmdc:dobj-11-ndgg7b38
+type: nmdc:MetaproteomicsAnalysis
+was_informed_by:
+  - nmdc:dgms-11-dj832d
+metaproteomics_analysis_category: matched_metagenome
+peptide_to_spectrum_match_count: 12500
+peptide_to_spectrum_match_rate:
+  type: nmdc:QuantityValue
+  has_numeric_value: 85
+  has_unit: '%'
+unique_peptide_seq_count: 3200
+razor_protein_count: 1500
+mean_peptide_count: 8.33
+total_protein_count: 1800
