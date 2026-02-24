@@ -363,12 +363,21 @@
 
   MetaproteomicsAnalysis : id
 
+  MetaproteomicsAnalysis : mean_peptide_count
+
   MetaproteomicsAnalysis : metaproteomics_analysis_category
 
       MetaproteomicsAnalysis --&gt; "1" MetaproteomicsAnalysisCategoryEnum : metaproteomics_analysis_category
     click MetaproteomicsAnalysisCategoryEnum href "../MetaproteomicsAnalysisCategoryEnum"
 
   MetaproteomicsAnalysis : name
+
+  MetaproteomicsAnalysis : peptide_to_spectrum_match_count
+
+  MetaproteomicsAnalysis : peptide_to_spectrum_match_rate
+
+      MetaproteomicsAnalysis --&gt; "0..1" QuantityValue : peptide_to_spectrum_match_rate
+    click QuantityValue href "../QuantityValue"
 
   MetaproteomicsAnalysis : processing_institution
 
@@ -389,6 +398,8 @@
       MetaproteomicsAnalysis --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
+  MetaproteomicsAnalysis : razor_protein_count
+
   MetaproteomicsAnalysis : start_date
 
   MetaproteomicsAnalysis : started_at_time
@@ -398,7 +409,11 @@
       MetaproteomicsAnalysis --&gt; "0..1" MetaproteomicsAnalysis : superseded_by
     click MetaproteomicsAnalysis href "../MetaproteomicsAnalysis"
 
+  MetaproteomicsAnalysis : total_protein_count
+
   MetaproteomicsAnalysis : type
+
+  MetaproteomicsAnalysis : unique_peptide_seq_count
 
   MetaproteomicsAnalysis : version
 
@@ -444,6 +459,42 @@
 <td><a href="../metaproteomics_analysis_category/">metaproteomics_analysis_category</a></td>
 <td>1 <br/> <a href="../MetaproteomicsAnalysisCategoryEnum/">MetaproteomicsAnalysisCategoryEnum</a></td>
 <td>The category of metaproteomics analysis being performed</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../peptide_to_spectrum_match_count/">peptide_to_spectrum_match_count</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Total number of MS2 spectra with a false discovery rate passing peptide match</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../peptide_to_spectrum_match_rate/">peptide_to_spectrum_match_rate</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>The percentage of peptide-to-spectrum matches relative to the total number of...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../unique_peptide_seq_count/">unique_peptide_seq_count</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The number of distinct peptide sequences identified in the LC-MS/MS file</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../razor_protein_count/">razor_protein_count</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The minimal protein set that describes the unique peptide sequences identifie...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../mean_peptide_count/">mean_peptide_count</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>The average number of peptides per protein identified in the metaproteomics a...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../total_protein_count/">total_protein_count</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The total number of distinct proteins identified in the metaproteomics analys...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -628,6 +679,12 @@ from_schema: https://w3id.org/nmdc/nmdc
 is_a: AnnotatingWorkflow
 slots:
 - metaproteomics_analysis_category
+- peptide_to_spectrum_match_count
+- peptide_to_spectrum_match_rate
+- unique_peptide_seq_count
+- razor_protein_count
+- mean_peptide_count
+- total_protein_count
 slot_usage:
   id:
     name: id
@@ -687,6 +744,82 @@ attributes:
     - MetaproteomicsAnalysis
     range: MetaproteomicsAnalysisCategoryEnum
     required: true
+  peptide_to_spectrum_match_count:
+    name: peptide_to_spectrum_match_count
+    description: Total number of MS2 spectra with a false discovery rate passing peptide
+      match.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ms_analysis_qc_metric
+    alias: peptide_to_spectrum_match_count
+    owner: MetaproteomicsAnalysis
+    domain_of:
+    - MetaproteomicsAnalysis
+    range: integer
+  peptide_to_spectrum_match_rate:
+    name: peptide_to_spectrum_match_rate
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '%'
+    description: The percentage of peptide-to-spectrum matches relative to the total
+      number of spectra analyzed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ms_analysis_qc_metric
+    alias: peptide_to_spectrum_match_rate
+    owner: MetaproteomicsAnalysis
+    domain_of:
+    - MetaproteomicsAnalysis
+    range: QuantityValue
+  unique_peptide_seq_count:
+    name: unique_peptide_seq_count
+    description: The number of distinct peptide sequences identified in the LC-MS/MS
+      file.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ms_analysis_qc_metric
+    alias: unique_peptide_seq_count
+    owner: MetaproteomicsAnalysis
+    domain_of:
+    - MetaproteomicsAnalysis
+    range: integer
+  razor_protein_count:
+    name: razor_protein_count
+    description: The minimal protein set that describes the unique peptide sequences
+      identified after applying Razor Protein parsimony.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ms_analysis_qc_metric
+    alias: razor_protein_count
+    owner: MetaproteomicsAnalysis
+    domain_of:
+    - MetaproteomicsAnalysis
+    range: integer
+  mean_peptide_count:
+    name: mean_peptide_count
+    description: The average number of peptides per protein identified in the metaproteomics
+      analysis.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ms_analysis_qc_metric
+    alias: mean_peptide_count
+    owner: MetaproteomicsAnalysis
+    domain_of:
+    - MetaproteomicsAnalysis
+    range: float
+  total_protein_count:
+    name: total_protein_count
+    description: The total number of distinct proteins identified in the metaproteomics
+      analysis.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ms_analysis_qc_metric
+    alias: total_protein_count
+    owner: MetaproteomicsAnalysis
+    domain_of:
+    - MetaproteomicsAnalysis
+    range: integer
   ended_at_time:
     name: ended_at_time
     notes:

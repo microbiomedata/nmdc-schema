@@ -7357,7 +7357,8 @@
                 "other",
                 "low_molecular_formula_assignment",
                 "low_metabolite_assignment",
-                "low_c13_isotopologue_assignment"
+                "low_c13_isotopologue_assignment",
+                "low_peptide_to_spectrum_match_rate"
             ],
             "title": "FailureWhatEnum",
             "type": "string"
@@ -10748,6 +10749,13 @@
                     "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
                     "type": "string"
                 },
+                "mean_peptide_count": {
+                    "description": "The average number of peptides per protein identified in the metaproteomics analysis.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "metaproteomics_analysis_category": {
                     "$ref": "#/$defs/MetaproteomicsAnalysisCategoryEnum",
                     "description": "The category of metaproteomics analysis being performed."
@@ -10758,6 +10766,24 @@
                         "string",
                         "null"
                     ]
+                },
+                "peptide_to_spectrum_match_count": {
+                    "description": "Total number of MS2 spectra with a false discovery rate passing peptide match.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "peptide_to_spectrum_match_rate": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The percentage of peptide-to-spectrum matches relative to the total number of spectra analyzed."
                 },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
@@ -10791,6 +10817,13 @@
                     "$ref": "#/$defs/StatusEnum",
                     "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
                 },
+                "razor_protein_count": {
+                    "description": "The minimal protein set that describes the unique peptide sequences identified after applying Razor Protein parsimony.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
                     "type": [
@@ -10810,12 +10843,26 @@
                         "null"
                     ]
                 },
+                "total_protein_count": {
+                    "description": "The total number of distinct proteins identified in the metaproteomics analysis.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
                         "nmdc:MetaproteomicsAnalysis"
                     ],
                     "type": "string"
+                },
+                "unique_peptide_seq_count": {
+                    "description": "The number of distinct peptide sequences identified in the LC-MS/MS file.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "version": {
                     "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
@@ -15600,6 +15647,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.16.1.post40.dev0+712e3c553"
+    "version": "11.16.1.post50.dev0+a13beecfb"
 }
 

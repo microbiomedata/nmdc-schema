@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.16.1.post40.dev0+712e3c553
+version: 11.16.1.post50.dev0+a13beecfb
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -3228,6 +3228,9 @@ enums:
         text: low_c13_isotopologue_assignment
         description: Number of 13C isotopologues identified during the Metabolomics
           or Lipidomics workflow is not sufficient.
+      low_peptide_to_spectrum_match_rate:
+        text: low_peptide_to_spectrum_match_rate
+        description: Rate of peptide assignment during the analysis is not sufficient.
   FailureWhereEnum:
     name: FailureWhereEnum
     description: The permitted values for describing where in the process, either
@@ -17096,6 +17099,52 @@ slots:
     description: The substance from which a portion was taken.
     from_schema: https://w3id.org/nmdc/nmdc
     range: ChemicalEntityEnum
+  unique_peptide_seq_count:
+    name: unique_peptide_seq_count
+    description: The number of distinct peptide sequences identified in the LC-MS/MS
+      file.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: integer
+  razor_protein_count:
+    name: razor_protein_count
+    description: The minimal protein set that describes the unique peptide sequences
+      identified after applying Razor Protein parsimony.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: integer
+  peptide_to_spectrum_match_count:
+    name: peptide_to_spectrum_match_count
+    description: Total number of MS2 spectra with a false discovery rate passing peptide
+      match.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: integer
+  peptide_to_spectrum_match_rate:
+    name: peptide_to_spectrum_match_rate
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '%'
+    description: The percentage of peptide-to-spectrum matches relative to the total
+      number of spectra analyzed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: QuantityValue
+  mean_peptide_count:
+    name: mean_peptide_count
+    description: The average number of peptides per protein identified in the metaproteomics
+      analysis.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: float
+  total_protein_count:
+    name: total_protein_count
+    description: The total number of distinct proteins identified in the metaproteomics
+      analysis.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: integer
   metaproteomics_analysis_category:
     name: metaproteomics_analysis_category
     description: The category of metaproteomics analysis being performed.
@@ -21005,6 +21054,12 @@ classes:
     is_a: AnnotatingWorkflow
     slots:
     - metaproteomics_analysis_category
+    - peptide_to_spectrum_match_count
+    - peptide_to_spectrum_match_rate
+    - unique_peptide_seq_count
+    - razor_protein_count
+    - mean_peptide_count
+    - total_protein_count
     slot_usage:
       id:
         name: id
