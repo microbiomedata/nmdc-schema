@@ -1,6 +1,6 @@
 ---
 search:
-  boost: 2.0
+  boost: {% if element.deprecated %}0.5{% else %}2.0{% endif %}
 ---
 
 # Enum: {{ gen.name(element) }} {% if element.deprecated %} <span style="color: red;"><strong> (DEPRECATED) </strong> {% endif %}

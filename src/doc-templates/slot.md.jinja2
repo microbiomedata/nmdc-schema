@@ -1,6 +1,6 @@
 ---
 search:
-  boost: 5.0
+  boost: {% if element.deprecated %}0.5{% else %}5.0{% endif %}
 ---
 
 {%- if element.title %}
