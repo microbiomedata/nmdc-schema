@@ -271,6 +271,9 @@ classes:
       - has_metabolite_identifications
       - uses_calibration
       - metabolomics_analysis_category
+      - peak_count
+      - peak_assignment_count
+      - c13_isotopologue_count
     slot_usage:
       id:
         required: true
@@ -287,12 +290,22 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+      peak_count:
+        description: "The total number of two dimensional mass to charge (m/z) : retention time features detected in the metabolomics analysis."
+      peak_assignment_count:
+        description: "The total number of two dimensional mass to charge (m/z) : retention time features with associated metabolite identification in the metabolomics or lipidomics analysis."
 
   MetaproteomicsAnalysis:
     class_uri: nmdc:MetaproteomicsAnalysis
     is_a: AnnotatingWorkflow
     slots:
       - metaproteomics_analysis_category
+      - peptide_to_spectrum_match_count
+      - peptide_to_spectrum_match_rate
+      - unique_peptide_seq_count
+      - razor_protein_count
+      - mean_peptide_count
+      - total_protein_count
     slot_usage:
       id:
         required: true
@@ -315,6 +328,8 @@ classes:
     is_a: WorkflowExecution
     slots:
       - uses_calibration
+      - peak_count
+      - peak_assignment_count
     slot_usage:
       id:
         required: true
@@ -331,8 +346,41 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+      peak_assignment_count:
+        description: "The number of m/z peaks with assigned molecular formulas in the analysis."
 
 slots:
+  unique_peptide_seq_count:
+    is_a: ms_analysis_qc_metric
+    range: integer
+    description: The number of distinct peptide sequences identified in the LC-MS/MS file.
+
+  razor_protein_count:
+    is_a: ms_analysis_qc_metric
+    range: integer
+    description: The minimal protein set that describes the unique peptide sequences identified after applying Razor Protein parsimony.
+
+  peptide_to_spectrum_match_count:
+    is_a: ms_analysis_qc_metric
+    range: integer
+    description: Total number of MS2 spectra with a false discovery rate passing peptide match.
+
+  peptide_to_spectrum_match_rate:
+    is_a: ms_analysis_qc_metric
+    range: QuantityValue
+    description: The percentage of peptide-to-spectrum matches relative to the total number of spectra analyzed.
+    annotations:
+      storage_units: '%'
+
+  mean_peptide_count:
+    is_a: ms_analysis_qc_metric
+    range: float
+    description: The average number of peptides per protein identified in the metaproteomics analysis.
+
+  total_protein_count:
+    is_a: ms_analysis_qc_metric
+    range: integer
+    description: The total number of distinct proteins identified in the metaproteomics analysis.
 
   metaproteomics_analysis_category:
     range: MetaproteomicsAnalysisCategoryEnum
@@ -583,6 +631,28 @@ slots:
     range: MetaboliteIdentification
     multivalued: true
     inlined_as_list: true
+
+  ms_analysis_qc_metric:
+    abstract: true
+    description: >-
+      A quality control metric for mass spectrometry-based analyses.
+  
+  peak_count:
+    is_a: ms_analysis_qc_metric
+    range: integer
+    description: The total number of peaks detected in the analysis.
+
+  peak_assignment_count:
+    is_a: ms_analysis_qc_metric
+    range: integer
+    description: The number of m/z peaks with assignments in an analysis.
+
+  c13_isotopologue_count:
+    is_a: ms_analysis_qc_metric
+    range: integer
+    description: >-
+      The number of two-dimensional mass-to-charge (m/z) versus retention time features that have been
+      isotopically characterized as either 13C-containing isotopologues or monoisotopic (12C-only) features.
 
 enums:
   MetaproteomicsAnalysisCategoryEnum:

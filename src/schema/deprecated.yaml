@@ -13,6 +13,30 @@ default_prefix: nmdc
 default_range: string
 
 classes:
+  EnvironmentalMaterialTerm:
+    is_a: OntologyClass
+    class_uri: nmdc:EnvironmentalMaterialTerm
+    deprecated: "not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881"
+
+  Pathway:
+    class_uri: nmdc:Pathway
+    aliases:
+      - biological process
+      - metabolic pathway
+      - signaling pathway
+    is_a: FunctionalAnnotationTerm
+    description: >-
+      A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
+    id_prefixes:
+      - KEGG_PATHWAY
+      - COG
+    exact_mappings:
+      - biolink:Pathway
+    todos:
+      - If we reverted to including Reaction in the schema, then a Reaction would be a reasonable part_of a Pathway
+      - is Pathway instantiated in an MongoDB collection? Aren't Pathways searchable in the Data Portal?
+    deprecated: "not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881"
+
   PeptideQuantification:
     class_uri: nmdc:PeptideQuantification
     description: This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
@@ -120,6 +144,67 @@ classes:
       - biolink:ChemicalSubstance
 
 slots:
+  dna_organisms:
+    description: List any organisms known or suspected to grow in co-culture, as well
+      as estimated % of the organism in that culture.
+    title: DNA expected organisms
+    examples:
+      - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
+          (1%)
+    rank: 14
+    recommended: true
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions
+  dna_collect_site:
+    description: Provide information on the site your DNA sample was collected from
+    title: DNA collection site
+    examples:
+      - value: untreated pond water
+    rank: 15
+    recommended: true
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions
+  rna_organisms:
+    description: List any organisms known or suspected to grow in co-culture, as well
+      as estimated % of the organism in that culture.
+    title: RNA expected organisms
+    examples:
+      - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
+          (1%)
+    rank: 14
+    recommended: true
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions
+  rna_collect_site:
+    description: Provide information on the site your RNA sample was collected from
+    title: RNA collection site
+    examples:
+      - value: untreated pond water
+    rank: 15
+    recommended: true
+    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata slot & it's now captured directly in the submission portal schema to support submissions
+  chemical_entity_set:
+    deprecated: >-
+      Deprecation of the ChemicalEntity class, means deprecation of the chemical_entity_set as well.
+      https://github.com/microbiomedata/nmdc-schema/pull/2324
+    mixins:
+      - object_set
+    description:
+      This property links a database object to the set of chemical entities
+      within it.
+  inchi_key:
+    deprecated: "not used 2025-01-28, https://github.com/microbiomedata/nmdc-schema/pull/2324"
+    range: string
+    notes:
+      - "key set to false due to rare collisions: Pletnev I, Erin A, McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental testing. J Cheminform. 4:12"
+  inchi:
+    deprecated: "not used 2025-01-28, https://github.com/microbiomedata/nmdc-schema/pull/2324"
+    range: string
+
+  smiles:
+    deprecated: "not used 2025-01-28, https://github.com/microbiomedata/nmdc-schema/pull/2324"
+    description: >-
+      A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.
+    multivalued: true
+    range: string
+  
   omics_type:
     deprecated_element_has_exact_replacement: analyte_category
     deprecated: "true"

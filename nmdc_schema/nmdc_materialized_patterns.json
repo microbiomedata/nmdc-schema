@@ -752,6 +752,18 @@
           "aliases": [
             "Alkanes"
           ]
+        },
+        "srfa": {
+          "text": "srfa",
+          "comments": [
+            "Reference standard Suwannee River Fulvic Acid Standard II (2S101F) from International Humic Substances Society"
+          ],
+          "see_also": [
+            "https://humic-substances.org/source-materials-for-ihss-samples/"
+          ],
+          "aliases": [
+            "Suwannee River fulvic acid"
+          ]
         }
       }
     },
@@ -3592,6 +3604,13 @@
           "aliases": [
             "Orbitrap IQ-X Tribrid",
             "Thermo Orbitrap IQ-X Tribrid"
+          ]
+        },
+        "orbitrap_idx_tribrid": {
+          "text": "orbitrap_idx_tribrid",
+          "aliases": [
+            "Orbitrap ID-X Tribrid",
+            "Thermo Orbitrap ID-X Tribrid"
           ]
         },
         "orbitrap_exploris_120": {
@@ -7539,6 +7558,7 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "CalibrationInformation",
+      "multivalued": true,
       "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
       "structured_pattern": {
         "syntax": "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$",

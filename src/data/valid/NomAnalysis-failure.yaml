@@ -1,0 +1,22 @@
+id: nmdc:wfnom-11-abc456de.1
+started_at_time: '2022-04-20T09:00:00+00:00'
+ended_at_time: '2022-04-20T14:15:00+00:00'
+execution_resource: EMSL-RZR
+processing_institution: NMDC
+git_url: https://github.com/microbiomedata/nom_analysis/releases/tag/v1.0.0
+has_input:
+  - nmdc:dobj-11-abc456df
+  - nmdc:dobj-11-abc456dg
+has_output:
+  - nmdc:dobj-11-abc456dh
+type: nmdc:NomAnalysis
+was_informed_by:
+  - nmdc:dgms-11-abc456dc
+qc_status: fail
+has_failure_categorization:
+  - qc_failure_what: low_molecular_formula_assignment
+    qc_failure_where: NomAnalysis
+    type: nmdc:FailureCategorization
+qc_comment: Insufficient molecular formula assignments detected (only 200 out of 1500 peaks assigned, 13.3%), likely due to poor sample quality or instrument calibration issues
+peak_count: 1500
+peak_assignment_count: 200
