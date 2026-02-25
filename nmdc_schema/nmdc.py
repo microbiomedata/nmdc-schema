@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-21T11:30:07
+# Generation date: 2026-02-09T12:52:05
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -6231,7 +6231,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
     processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     metabolomics_analysis_category: Union[str, "MetabolomicsAnalysisCategoryEnum"] = None
     has_metabolite_identifications: Optional[Union[Union[dict, MetaboliteIdentification], list[Union[dict, MetaboliteIdentification]]]] = empty_list()
-    uses_calibration: Optional[Union[str, CalibrationInformationId]] = None
+    uses_calibration: Optional[Union[Union[str, CalibrationInformationId], list[Union[str, CalibrationInformationId]]]] = empty_list()
     was_informed_by: Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]] = empty_list()
     superseded_by: Optional[Union[str, MetabolomicsAnalysisId]] = None
 
@@ -6250,8 +6250,9 @@ class MetabolomicsAnalysis(WorkflowExecution):
             self.has_metabolite_identifications = [self.has_metabolite_identifications] if self.has_metabolite_identifications is not None else []
         self.has_metabolite_identifications = [v if isinstance(v, MetaboliteIdentification) else MetaboliteIdentification(**as_dict(v)) for v in self.has_metabolite_identifications]
 
-        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationInformationId):
-            self.uses_calibration = CalibrationInformationId(self.uses_calibration)
+        if not isinstance(self.uses_calibration, list):
+            self.uses_calibration = [self.uses_calibration] if self.uses_calibration is not None else []
+        self.uses_calibration = [v if isinstance(v, CalibrationInformationId) else CalibrationInformationId(v) for v in self.uses_calibration]
 
         if not isinstance(self.was_informed_by, list):
             self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
@@ -6281,7 +6282,7 @@ class NomAnalysis(WorkflowExecution):
     started_at_time: str = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
     processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
-    uses_calibration: Optional[Union[str, CalibrationInformationId]] = None
+    uses_calibration: Optional[Union[Union[str, CalibrationInformationId], list[Union[str, CalibrationInformationId]]]] = empty_list()
     was_informed_by: Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]] = empty_list()
     superseded_by: Optional[Union[str, NomAnalysisId]] = None
 
@@ -6291,8 +6292,9 @@ class NomAnalysis(WorkflowExecution):
         if not isinstance(self.id, NomAnalysisId):
             self.id = NomAnalysisId(self.id)
 
-        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationInformationId):
-            self.uses_calibration = CalibrationInformationId(self.uses_calibration)
+        if not isinstance(self.uses_calibration, list):
+            self.uses_calibration = [self.uses_calibration] if self.uses_calibration is not None else []
+        self.uses_calibration = [v if isinstance(v, CalibrationInformationId) else CalibrationInformationId(v) for v in self.uses_calibration]
 
         if not isinstance(self.was_informed_by, list):
             self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
@@ -6531,6 +6533,7 @@ class CalibrationStandardEnum(EnumDefinitionImpl):
 
     fames = PermissibleValue(text="fames")
     alkanes = PermissibleValue(text="alkanes")
+    srfa = PermissibleValue(text="srfa")
 
     _defn = EnumDefinition(
         name="CalibrationStandardEnum",
@@ -8350,6 +8353,7 @@ class InstrumentModelEnum(EnumDefinitionImpl):
     orbitrap_eclipse_tribid = PermissibleValue(text="orbitrap_eclipse_tribid")
     orbitrap_q_exactive = PermissibleValue(text="orbitrap_q_exactive")
     orbitrap_iqx_tribrid = PermissibleValue(text="orbitrap_iqx_tribrid")
+    orbitrap_idx_tribrid = PermissibleValue(text="orbitrap_idx_tribrid")
     orbitrap_exploris_120 = PermissibleValue(text="orbitrap_exploris_120")
     solarix_7T = PermissibleValue(text="solarix_7T")
     solarix_12T = PermissibleValue(text="solarix_12T")
@@ -10450,7 +10454,7 @@ slots.generates_calibration = Slot(uri=NMDC.generates_calibration, name="generat
                    model_uri=NMDC.generates_calibration, domain=None, range=Optional[Union[str, CalibrationInformationId]])
 
 slots.uses_calibration = Slot(uri=NMDC.uses_calibration, name="uses_calibration", curie=NMDC.curie('uses_calibration'),
-                   model_uri=NMDC.uses_calibration, domain=None, range=Optional[Union[str, CalibrationInformationId]])
+                   model_uri=NMDC.uses_calibration, domain=None, range=Optional[Union[Union[str, CalibrationInformationId], list[Union[str, CalibrationInformationId]]]])
 
 slots.calibration_object = Slot(uri=NMDC.calibration_object, name="calibration_object", curie=NMDC.curie('calibration_object'),
                    model_uri=NMDC.calibration_object, domain=None, range=Optional[Union[str, DataObjectId]])

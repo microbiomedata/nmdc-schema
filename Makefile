@@ -86,11 +86,11 @@ create-data-harmonizer:
 
 prefixmaps:
 	@mkdir -p $(DEST)/prefixmap
-	$(RUN) gen-prefix-map nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/prefixmap/nmdc-prefix-map.json
+	$(RUN) linkml generate prefix-map nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/prefixmap/nmdc-prefix-map.json
 
 pydantic:
 	@mkdir -p $(DEST)/pydantic
-	$(RUN) gen-pydantic nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/pydantic/nmdc_pydantic.py
+	$(RUN) linkml generate pydantic nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/pydantic/nmdc_pydantic.py
 
 # Note: `all` is an alias for `site`.
 all: site
@@ -109,7 +109,7 @@ pydantic
 deploy: gendoc mkd-gh-deploy
 
 gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # can be nuked with mixs-yaml-clean
-	$(RUN) gen-project \
+	$(RUN) linkml generate project \
 		--exclude excel \
 		--exclude graphql \
 		--exclude jsonld \
@@ -125,7 +125,7 @@ gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # 
 		--include rdf \
 		--config-file gen-project-config.yaml \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL) && cp $(DEST)/pydantic/*.py $(PYMODEL)/nmdc_pydantic.py
-		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
+	cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 
 test: examples-clean linkml-validate-schema site test-python migration-doctests examples/output
@@ -133,7 +133,7 @@ only-test: examples-clean test-python migration-doctests examples/output
 tests: squeaky-clean all test  # simply for convenience to wrap convention of running these three targets to test locally.
 
 test-schema:
-	$(RUN) gen-project \
+	$(RUN) linkml generate project \
 		--exclude excel \
 		--exclude graphql \
 		--exclude jsonld \
@@ -236,22 +236,25 @@ $(DOCDIR):
 # One of the diagrams is a graph showing all the _inter-collection_ relationships the schema says can exist,
 # and the other diagram is a graph showing all the _inter-class_ relationships the schema says can exist.
 #
-# Note: Using `refgraph` in this way requires the `nmdc_schema/nmdc_materialized_patterns.yaml`
-#       file to already have been generated. That dependency is currently not reflected in
-#       the dependency list of this `make` target.
-#
-gendoc: $(DOCDIR) prefixmaps
+gendoc: $(DOCDIR) prefixmaps nmdc_schema/nmdc.schema.json nmdc_schema/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.yaml
 	# Copy all documentation files to the documentation directory
 	cp -rf $(SRC)/docs/* $(DOCDIR)
 	# Use `make_typecode_to_class_map.py` to make a Markdown page that can be used to map a typecode to a schema class.
 	$(RUN) python src/scripts/make_typecode_to_class_map.py > $(DOCDIR)/typecode-to-class-map.md
-	# Generate documentation using the gen-doc command
-	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
+	# Generate documentation
+	$(RUN) linkml generate doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
 	# Create directory for JavaScript files and copy them
 	# Added copying of prefixmaps output
 	cp -f $(DEST)/prefixmap/nmdc-prefix-map.json $(DOCDIR)
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
+	# Copy schema-derived files into a "downloads" directory within the documentation website.
+	rm -rf $(DOCDIR)/downloads
+	mkdir -p $(DOCDIR)/downloads
+	cp nmdc_schema/nmdc.schema.json \
+	   nmdc_schema/nmdc_materialized_patterns.schema.json \
+	   nmdc_schema/nmdc_materialized_patterns.yaml \
+	   $(DOCDIR)/downloads/
 	# Use `refscan graph` to generate diagrams within the website's file tree.
 	mkdir -p $(DOCDIR)/visualizations
 	$(RUN) refscan graph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
@@ -327,15 +330,22 @@ squeaky-clean: clean examples-clean rdf-clean shuttle-clean site-clean # does no
 	mkdir project
 	rm -rf local/biosample_slots_ranges_report.tsv
 
+
+# Note: The `gen-project` target creates the `nmdc_schema/nmdc.schema.json` file.
+#       We define this "no-op" Make target here so we can specify that file as
+#       a dependency of other Make targets in a self-documenting way.
+nmdc_schema/nmdc.schema.json: gen-project
+	true
+
 nmdc_schema/nmdc_materialized_patterns.yaml:
-	$(RUN) gen-linkml \
+	$(RUN) linkml generate linkml \
 		--format yaml \
 		--materialize-patterns \
 		--no-materialize-attributes \
 		--output $@ $(SOURCE_SCHEMA_PATH)
 
 nmdc_schema/nmdc_materialized_patterns.schema.json: nmdc_schema/nmdc_materialized_patterns.yaml
-	$(RUN) gen-json-schema \
+	$(RUN) linkml generate json-schema \
 		--closed \
 		--include-range-class-descendants \
 		--top-class Database $< > $@
@@ -363,7 +373,7 @@ check-invalids-for-single-failure:
 	for file in src/data/invalid/*.yaml; do \
 		echo "$$file:"; \
 		target_class=$$(basename $$file | cut -d'-' -f1); \
-		cmd="poetry run linkml-validate --schema nmdc_schema/nmdc_materialized_patterns.yaml --target-class $$target_class $$file"; \
+		cmd="poetry run linkml validate --schema nmdc_schema/nmdc_materialized_patterns.yaml --target-class $$target_class $$file"; \
 		output=$$($$cmd 2>&1 || true); \
 		echo "$$output" | sort | uniq; \
 	done

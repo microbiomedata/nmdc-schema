@@ -5430,7 +5430,8 @@
             "description": "",
             "enum": [
                 "fames",
-                "alkanes"
+                "alkanes",
+                "srfa"
             ],
             "title": "CalibrationStandardEnum",
             "type": "string"
@@ -8574,6 +8575,7 @@
                 "orbitrap_eclipse_tribid",
                 "orbitrap_q_exactive",
                 "orbitrap_iqx_tribrid",
+                "orbitrap_idx_tribrid",
                 "orbitrap_exploris_120",
                 "solarix_7T",
                 "solarix_12T",
@@ -10039,9 +10041,12 @@
                 },
                 "uses_calibration": {
                     "description": "calibration information is used by a process",
-                    "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                    "items": {
+                        "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -12211,9 +12216,12 @@
                 },
                 "uses_calibration": {
                     "description": "calibration information is used by a process",
-                    "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                    "items": {
+                        "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },

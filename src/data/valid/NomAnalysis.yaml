@@ -1,0 +1,17 @@
+id: nmdc:wfnom-11-xyz123ab.1
+started_at_time: '2022-03-15T10:00:00+00:00'
+ended_at_time: '2022-03-15T16:30:00+00:00'
+execution_resource: EMSL-RZR
+processing_institution: NMDC
+git_url: https://github.com/microbiomedata/nom_analysis/releases/tag/v1.0.0
+has_input:
+  - nmdc:dobj-11-xyz123ac
+  - nmdc:dobj-11-xyz123ad
+has_output:
+  - nmdc:dobj-11-xyz123ae
+  - nmdc:dobj-11-xyz123af
+type: nmdc:NomAnalysis
+was_informed_by:
+  - nmdc:dgms-11-xyz123aa
+peak_count: 5000
+peak_assignment_count: 3800
