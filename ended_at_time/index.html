@@ -621,9 +621,9 @@
 
 
 <h1 id="slot-ended_at_time">Slot: ended_at_time</h1>
+<div>
 <p>URI: <a href="https://w3id.org/nmdc/ended_at_time">nmdc:ended_at_time</a></p>
 <!-- no inheritance hierarchy -->
-
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -635,28 +635,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
-<td>Initial sequencing activity that precedes any analysis</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
-<td>A workflow execution activity that provides functional and structural annotat...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
-<td>Represents an instance of an execution of a particular workflow</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NomAnalysis/">NomAnalysis</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
-<td>A workflow execution activity that performs taxonomy classification using seq...</td>
+<td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
+<td>A workflow execution activity that uses computational binning tools to group ...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -670,18 +650,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
-<td>A workflow process that provides expression values and read counts for gene f...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
+<td><a href="../NomAnalysis/">NomAnalysis</a></td>
 <td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td>A workflow execution activity that provides functional and structural annotat...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -690,18 +665,43 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
-<td>A workflow execution activity that uses computational binning tools to group ...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
 <td>A WorkflowExecution whose output indicates the potential functions of genes o...</td>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
+<td>A workflow process that provides expression values and read counts for gene f...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
 <td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
+<td>A workflow execution activity that performs taxonomy classification using seq...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td>Represents an instance of an execution of a particular workflow</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
+<td>Initial sequencing activity that precedes any analysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
+<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -755,12 +755,16 @@ pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))
 </code></pre>
 
 </details>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 

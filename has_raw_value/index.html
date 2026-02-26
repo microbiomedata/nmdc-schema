@@ -622,9 +622,9 @@
 
 <h1 id="slot-has_raw_value">Slot: has_raw_value</h1>
 <p><em>The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"</em></p>
+<div>
 <p>URI: <a href="https://w3id.org/nmdc/has_raw_value">nmdc:has_raw_value</a></p>
 <!-- no inheritance hierarchy -->
-
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -636,18 +636,28 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ControlledTermValue/">ControlledTermValue</a></td>
-<td>A controlled term or class from an ontology</td>
+<td><a href="../ImageValue/">ImageValue</a></td>
+<td>An attribute value representing an image</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PersonValue/">PersonValue</a></td>
-<td>An attribute value representing a person</td>
-<td>yes</td>
+<td><a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
+<td>A controlled term or class from an ontology, requiring the presence of term w...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TimestampValue/">TimestampValue</a></td>
+<td>A value that is a timestamp</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../GeolocationValue/">GeolocationValue</a></td>
 <td>A normalized value for a location on the earth's surface</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../QuantityValue/">QuantityValue</a></td>
+<td>A simple quantity, e</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -656,8 +666,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
-<td>A controlled term or class from an ontology, requiring the presence of term w...</td>
+<td><a href="../ControlledTermValue/">ControlledTermValue</a></td>
+<td>A controlled term or class from an ontology</td>
 <td>no</td>
 </tr>
 <tr>
@@ -671,18 +681,8 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../ImageValue/">ImageValue</a></td>
-<td>An attribute value representing an image</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TimestampValue/">TimestampValue</a></td>
-<td>A value that is a timestamp</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../QuantityValue/">QuantityValue</a></td>
-<td>A simple quantity, e</td>
+<td><a href="../PersonValue/">PersonValue</a></td>
+<td>An attribute value representing a person</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -727,12 +727,16 @@ range: string
 </code></pre>
 
 </details>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
