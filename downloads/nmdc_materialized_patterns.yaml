@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.16.1.post53.dev0+3f7b30351
+version: 11.16.1.post57.dev0+3e3b5c98f
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -2976,21 +2976,18 @@ enums:
         - NovaSeq 6000
         - Illumina NovaSeq 6000
         structured_aliases:
-          Illumina NovaSeq S2:
-            literal_form: Illumina NovaSeq S2
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-          Illumina NovaSeq S4:
-            literal_form: Illumina NovaSeq S4
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-          Illumina NovaSeq SP:
-            literal_form: Illumina NovaSeq SP
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
+        - literal_form: Illumina NovaSeq S2
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
+        - literal_form: Illumina NovaSeq S4
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
+        - literal_form: Illumina NovaSeq SP
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
       novaseq_x:
         text: novaseq_x
         comments:
@@ -3030,16 +3027,14 @@ enums:
         aliases:
         - Illumina HiSeq 2500
         structured_aliases:
-          Illumina HiSeq 2500-1TB:
-            literal_form: Illumina HiSeq 2500-1TB
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-          Illumina HiSeq 2500-Rapid:
-            literal_form: Illumina HiSeq 2500-Rapid
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
+        - literal_form: Illumina HiSeq 2500-1TB
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
+        - literal_form: Illumina HiSeq 2500-Rapid
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
       hiseq_3000:
         text: hiseq_3000
         meaning: OBI:0002048
@@ -3067,11 +3062,10 @@ enums:
         - MiSeq
         - Illumina MiSeq
         structured_aliases:
-          Illumina MiSeq:
-            literal_form: Illumina MiSeq
-            predicate: EXACT_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
+        - literal_form: Illumina MiSeq
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
       nextseq_1000:
         text: nextseq_1000
         meaning: OBI:0003606
@@ -3083,16 +3077,14 @@ enums:
         - NextSeq
         - Illumina NextSeq
         structured_aliases:
-          Illumina NextSeq-HO:
-            literal_form: Illumina NextSeq-HO
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-          Illumina NextSeq-MO:
-            literal_form: Illumina NextSeq-MO
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
+        - literal_form: Illumina NextSeq-HO
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
+        - literal_form: Illumina NextSeq-MO
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
       nextseq_500:
         text: nextseq_500
         meaning: OBI:0002021
@@ -6329,11 +6321,10 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/issues/1233
     - https://github.com/microbiomedata/nmdc-schema/issues/248
     structured_aliases:
-      workflow_execution_class:
-        literal_form: workflow_execution_class
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: workflow_execution_class
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     slot_uri: rdf:type
     designates_type: true
     range: uriorcurie
@@ -6500,11 +6491,10 @@ slots:
     - value: GC-MS Metabolomics Results
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      data_object_type:
-        literal_form: data_object_type
-        predicate: EXACT_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: data_object_type
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     range: FileTypeEnum
   data_category:
     name: data_category
@@ -6904,16 +6894,14 @@ slots:
       description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      workflow_execution_id:
-        literal_form: workflow_execution_id
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-      data_object_id:
-        literal_form: data_object_id
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: workflow_execution_id
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: data_object_id
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     identifier: true
     range: uriorcurie
     required: true
@@ -7394,11 +7382,10 @@ slots:
       the primary class to reference.
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      was_informed_by:
-        literal_form: was_informed_by
-        predicate: EXACT_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: was_informed_by
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     narrow_mappings:
     - prov:wasInformedBy
     range: DataGeneration
@@ -16509,10 +16496,9 @@ slots:
     title: sample collection device
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      samp_collect_device:
-        literal_form: samp_collect_device
-        contexts:
-        - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+    - literal_form: samp_collect_device
+      contexts:
+      - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
     keywords:
     - device
     - sample
@@ -16525,10 +16511,9 @@ slots:
     title: sample collection method
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      samp_collect_method:
-        literal_form: samp_collect_method
-        contexts:
-        - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+    - literal_form: samp_collect_method
+      contexts:
+      - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
     keywords:
     - method
     - sample
@@ -21118,6 +21103,7 @@ classes:
         description: The number of m/z peaks with assigned molecular formulas in the
           analysis.
     class_uri: nmdc:NomAnalysis
+metamodel_version: 1.7.0
 source_file: src/schema/nmdc.yaml
 settings:
   id_nmdc_prefix:

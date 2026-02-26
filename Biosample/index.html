@@ -13120,10 +13120,9 @@ attributes:
     title: sample collection device
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      samp_collect_device:
-        literal_form: samp_collect_device
-        contexts:
-        - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+    - literal_form: samp_collect_device
+      contexts:
+      - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
     rank: 1000
     keywords:
     - device
@@ -13141,10 +13140,9 @@ attributes:
     title: sample collection method
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      samp_collect_method:
-        literal_form: samp_collect_method
-        contexts:
-        - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+    - literal_form: samp_collect_method
+      contexts:
+      - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
     rank: 1000
     keywords:
     - method
@@ -17586,16 +17584,14 @@ attributes:
       description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      workflow_execution_id:
-        literal_form: workflow_execution_id
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-      data_object_id:
-        literal_form: data_object_id
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: workflow_execution_id
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: data_object_id
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
     alias: id
@@ -17662,11 +17658,10 @@ attributes:
     - https://github.com/microbiomedata/nmdc-schema/issues/1233
     - https://github.com/microbiomedata/nmdc-schema/issues/248
     structured_aliases:
-      workflow_execution_class:
-        literal_form: workflow_execution_class
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: workflow_execution_class
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     slot_uri: rdf:type
     designates_type: true

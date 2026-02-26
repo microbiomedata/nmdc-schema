@@ -826,11 +826,10 @@ attributes:
       the primary class to reference.
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      was_informed_by:
-        literal_form: was_informed_by
-        predicate: EXACT_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: was_informed_by
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     narrow_mappings:
     - prov:wasInformedBy
     rank: 1000
@@ -1017,16 +1016,14 @@ attributes:
       description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      workflow_execution_id:
-        literal_form: workflow_execution_id
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-      data_object_id:
-        literal_form: data_object_id
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: workflow_execution_id
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: data_object_id
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
     alias: id
@@ -1092,11 +1089,10 @@ attributes:
     - https://github.com/microbiomedata/nmdc-schema/issues/1233
     - https://github.com/microbiomedata/nmdc-schema/issues/248
     structured_aliases:
-      workflow_execution_class:
-        literal_form: workflow_execution_class
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: workflow_execution_class
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
