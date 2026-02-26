@@ -23,7 +23,6 @@ keywords = ["NMDC", "schema", "metadata", "microbiome"]
 dependencies = [
     "click>=8.0.0,<9.0.0",
     "click-log>=0.4.0,<0.5.0",
-    "curies>=0.9.0,<0.10.0",
     "deprecated>=1.0.0,<2.0.0",
     "jsonasobj2>=1.0.0,<2.0.0",
     "jsonschema>=4.0.0,<5.0.0",
@@ -33,8 +32,6 @@ dependencies = [
     "pyyaml>=6.0.0,<7.0.0",
     "rdflib>=6.2.0,<7.0.0",  # some LinkML components are not compatible with rdflib 7+ yet
     "requests>=2.0.0,<3.0.0",
-    "urllib3>=2.6.0,<3.0.0",
-    "pyasn1>=0.6.2,<1.0.0",
     "pymdown-extensions>=10.16.1,<11.0.0",
     "pymongo>=4.7.2,<5.0.0",
 ]
@@ -73,14 +70,12 @@ dev = [
     "fastjsonschema>=2.20.0,<3.0.0",
     "flake8>=7.0.0,<8.0.0",
     "isort>=5.13.2,<6.0.0",
-    "jinja2>=3.1.6,<4.0.0",
     "mkdocs>=1.4.2,<2.0.0",
     "mkdocs-material>=9.0.12,<10.0.0",
     "mkdocs-mermaid2-plugin>=0.6.0,<0.7.0",
     "mkdocs-redirects>=1.2.1,<2.0.0",
     "mypy>=1.10.0,<2.0.0",
     "pandas>=2.2.3,<3.0.0",
-    "plotly>=6.0.1,<7.0.0",
     "psycopg2-binary>=2.9.10,<3.0.0",
     "pydocstyle>=6.3.0,<7.0.0",
     "pylint>=3.2.2,<4.0.0",
@@ -90,14 +85,9 @@ dev = [
     # and diagrams of inter-class relationships.
     # Reference: https://github.com/microbiomedata/refscan
     "refscan>=0.2.3,<0.3.0",
-    "ruamel-yaml>=0.18.6,<0.19.0",
     "ruff>=0.4.7,<1.0.0",
     "schemasheets>=0.1.24,<0.2.0",
-    "setuptools>=78.1.1,<79.0.0",  # for https://github.com/microbiomedata/nmdc-schema/pull/2459
     "sheets-and-friends>=0.5.0,<0.6.0",  # for do_shuttle (and possibly more)
-    "sparql-burger>=1.0.2,<2.0.0",
-    "sparql-dataframe>=0.4,<0.5",
-    "sparqlwrapper>=2.0.0,<3.0.0",
     "ucumvert>=0.2.2,<0.3.0",
     "vulture>=2.11,<3.0.0",
 ]
@@ -146,7 +136,7 @@ extend_exclude = [
 ]
 # These are transitive dependencies but we pin them directly
 # to ensure users get security fixes from Dependabot alerts
-per_rule_ignores = {DEP002 = ["urllib3", "pyasn1", "pymdown-extensions", "curies"]}
+per_rule_ignores = {DEP002 = ["pymdown-extensions"]}
 
 # linkml 1.10.0+ monorepo includes linkml-runtime
 [tool.deptry.package_module_name_map]
