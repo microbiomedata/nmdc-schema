@@ -38,8 +38,8 @@ curies = "^0.9.0"
 deprecated = "^1"
 jsonasobj2 = "^1"
 jsonschema = "^4"
-linkml = {version = ">=1.10.0rc5", allow-prereleases = true}
-linkml-runtime = {version = ">=1.10.0rc5", allow-prereleases = true}
+linkml = ">=1.10.0"
+linkml-runtime = ">=1.10.0"
 pymongo = "^4.7.2"
 python-dotenv = "*"
 pyyaml = "^6"

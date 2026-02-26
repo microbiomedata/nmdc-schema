@@ -1396,14 +1396,14 @@ regex = ["regex"]
 
 [[package]]
 name = "linkml"
-version = "1.10.0rc5"
+version = "1.10.0"
 description = "Linked Open Data Modeling Language"
 optional = false
 python-versions = ">=3.10"
 groups = ["main", "dev"]
 files = [
-    {file = "linkml-1.10.0rc5-py3-none-any.whl", hash = "sha256:80f087d98aa6beb65cd33c0f6b6b663e1e815d3915972d339558aa633f93dbf3"},
-    {file = "linkml-1.10.0rc5.tar.gz", hash = "sha256:521a161c9de1444764716b19ad3787b1579d155644fde26d1ae473b5c498fa7c"},
+    {file = "linkml-1.10.0-py3-none-any.whl", hash = "sha256:2d4934f000977489352307336267a8a4270de3156187c3394d542a0a4b8130e5"},
+    {file = "linkml-1.10.0.tar.gz", hash = "sha256:ca70bba1474bc7de37edd33005a8a556d4718190584ab2c88f7c46d090477d55"},
 ]
 
 [package.dependencies]
@@ -1435,14 +1435,14 @@ watchdog = ">=0.9.0"
 
 [[package]]
 name = "linkml-runtime"
-version = "1.10.0rc5"
+version = "1.10.0"
 description = "Runtime environment for LinkML, the Linked open data modeling language"
 optional = false
 python-versions = ">=3.10"
 groups = ["main", "dev"]
 files = [
-    {file = "linkml_runtime-1.10.0rc5-py3-none-any.whl", hash = "sha256:9db9bbbedb419d77a6831c03b2c16bd927655ad8543d6b14d581646096186a64"},
-    {file = "linkml_runtime-1.10.0rc5.tar.gz", hash = "sha256:23990e5a49bc53932faa6d66e37a89818d75d237a8449b50b841db4b30505ab9"},
+    {file = "linkml_runtime-1.10.0-py3-none-any.whl", hash = "sha256:b7caf806e1b49bf62005d8f398b070c282742c5f6626469fdc1660add0c9da58"},
+    {file = "linkml_runtime-1.10.0.tar.gz", hash = "sha256:899889d584ce8056c5c44512b2d247bdc84a8484c3aa228aeb2db283e3a9d2ec"},
 ]
 
 [package.dependencies]
@@ -4383,4 +4383,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "5e404c8108698b74e7874a0252c67e9d56bd618779f187137446631218868351"
+content-hash = "19982e907538573166b55bfd974fd1080153f9857ac85926885c9946f99f813e"
