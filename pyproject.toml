@@ -34,7 +34,6 @@ packages = [
 python = "^3.10"
 click = "^8"
 click-log = "^0.4.0"
-curies = "^0.9.0"
 deprecated = "^1"
 jsonasobj2 = "^1"
 jsonschema = "^4"
@@ -129,13 +128,13 @@ build-backend = "poetry_dynamic_versioning.backend"
 
 [tool.poetry.scripts]
 analyze-mentions-of-ids = "src.scripts.analyze_mentions_of_ids:main"
-anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
+# anyuri-strings-to-iris removed — RDF CURIE repair tool, last modified in commit c0252a03d (2024-07-01)
 check-examples-class-coverage = "src.scripts.check_examples_class_coverage:main"
 class-instantiation-counts = "src.scripts.class_instantiation_counts:process_data"
 create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
 run-migrator = 'nmdc_schema.migrators.cli.run_migrator:run_migrator'
 database-to-json-list-files = "src.scripts.database_to_json_list_files:split_yaml_to_json"
-date-created-blank-node = "src.scripts.date_created_blank_node:print_timestamp" # prints a RDF Turtle string, for copying into other RDF/TTL files. may need some parameterization.
+# date-created-blank-node removed — RDF timestamp tool, last modified in commit 9e428b3db (2024-06-13)
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema" # todo recheck
 get-study-id-from-filename = "src.scripts.get_study_id_from_filename:main" # todo not used in makefiles
 get-study-related-records = "src.scripts.nmdc_database_tools:cli" # todo recheck
