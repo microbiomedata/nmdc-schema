@@ -1,16 +1,8 @@
 
-# ⚠️ WARNING: Do NOT commit any local edits to `project.Makefile`!
-# The `project.Makefile` is a shared build and automation file for the entire project. 
-# Any changes made for local testing or experimentation should **never** be committed to version control. 
-# Committing edits may break CI/CD pipelines or disrupt other developers' workflows.
-# If you want to make contributions or add commands that would be helpful for wider use, create an issue and PR. 
-
-
-### Rules and variables used in different places in the makefile ###
-
-RUN=poetry run
-
-JENA_DIR=~/apache-jena/bin/
+# project.Makefile — Project-specific targets
+#
+# MIxS pipeline targets are in makefiles/mixs.Makefile
+# Migrator targets are in makefiles/migrators.Makefile
 
 SCHEMA_NAME = nmdc_schema
 SOURCE_SCHEMA_PATH = src/schema/nmdc.yaml
@@ -62,104 +54,10 @@ $(LATEST_RELEASE_TAG_FILE):
 	@echo "Release tag file created with tag: $(LATEST_TAG)"
 
 
-.PHONY: examples-clean mixs-yaml-clean rdf-clean shuttle-clean
+.PHONY: examples-clean
 
 examples-clean:
 	rm -rf examples/output
-
-mixs-yaml-clean:
-	rm -rf src/schema/mixs.yaml
-	rm -rf local/mixs_regen/mixs_subset_modified*yaml
-
-rdf-clean:
-	rm -rf \
-		OmicsProcessing.rq \
-		local/mongo_as_nmdc_database.ttl \
-		local/mongo_as_nmdc_database_cuire_repaired.ttl \
-		local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl \
-		local/mongo_as_nmdc_database_rdf_safe.yaml \
-		local/mongo_as_nmdc_database_validation.log \
-		local/mongo_as_unvalidated_nmdc_database.yaml
-
-shuttle-clean:
-	#rm -rf local/mixs_regen/mixs_subset_modified.yaml # triggers complete regeneration
-	rm -rf local/mixs_regen/*.yaml
-	rm -rf $@.bak
-	mkdir -p local/mixs_regen
-	touch local/mixs_regen/.gitkeep
-
-
-src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_minus_1.yaml
-	# Remove all readonly metaslot assertions (these should only be set by schema loader)
-	# Schema-level: definition_uri, from_schema, imported_from, metamodel_version, source_file, source_file_date, source_file_size, generation_date
-	# Element-level: owner, domain_of, is_usage_slot, usage_slot_name
-	# Then apply ALL dematerialization transformations from SCHEMA_MATERIALIZATION_GUIDE.md:
-	# Step 2: Simplify annotations in classes
-	# Step 3: Simplify prefixes (ExpandedDict -> SimpleDict)
-	# Step 4: Simplify settings (ExpandedDict -> SimpleDict)
-	# Step 5: Simplify annotations in slots
-	# Step 6: Remove redundant class names
-	# Step 7: Remove redundant slot_usage names
-	# Step 8: Remove redundant enum names
-	# Step 9: Remove redundant permissible_values text
-	# Step 10: Remove domain (except MixsCompliantData)
-	# Step 11: Remove redundant slot names
-	# Step 13: Remove redundant subset names
-	# Additional: Remove redundant aliases when they duplicate title
-	#
-	# IMPORTANT: Settings are deleted from mixs.yaml (del(.settings) at end of yq pipeline).
-	# The sheets-and-friends do_shuttle tool does not import settings from the source schema.
-	# MIxS structured_pattern syntax uses placeholders like {scientific_float}, {text}, {URL}
-	# that require settings for pattern interpolation. These settings are defined in
-	# src/schema/nmdc.yaml instead, so they're available during schema materialization.
-	# See: https://github.com/microbiomedata/nmdc-schema/issues/1368
-	yq eval 'del(.source_file, .definition_uri, .imported_from, .metamodel_version, .source_file_date, .source_file_size, .generation_date) | del(.. | select(has("from_schema")).from_schema) | del(.. | select(has("owner")).owner) | del(.. | select(has("domain_of")).domain_of) | del(.. | select(has("is_usage_slot")).is_usage_slot) | del(.. | select(has("usage_slot_name")).usage_slot_name) | (.classes[] | select(has("annotations")).annotations) |= map_values(.value) | .prefixes |= map_values(.prefix_reference) | (.settings // {}) |= map_values(.setting_value) | (.slots[] | select(has("annotations")).annotations) |= map_values(.value) | del(.classes.[].name) | del(.classes.[].slot_usage.[].name) | del(.enums.[].name) | del(.enums.[].permissible_values.[].text) | del(.slots[] | select(.domain != "MixsCompliantData") | .domain) | del(.slots.[].name) | del(.subsets.[].name) | del(.slots[] | select(.aliases and .title and (.aliases | length == 1) and .aliases[0] == .title) | .aliases) | del(.classes) | del(.settings)' $(word 2,$^) > $@
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
-
-local/mixs_regen/mixs_subset.yaml: assets/import_mixs_slots_regardless.tsv
-	$(RUN) do_shuttle \
-		--recipient_model assets/other_mixs_yaml_files/mixs_template.yaml \
-		--config_tsv $< \
-		--yaml_output $@
-
-local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml assets/yq-for-mixs-customizations.txt
-	# switching to TextValue may not add any value. the other range changes do improve the structure of the data.
-	# ironically changing back to strings for the submission-schema, data harmonizer, submission portal etc.
-	# may switch source of truth to the MIxS 6.2.2 release candidate
-
-	# First, apply global string replacements using yq (replacing sed)
-	yq eval '(.. | select(. == "quantity value")) |= "QuantityValue" | (.. | select(tag == "!!str" and . == "string")) |= "TextValue" | (.. | select(tag == "!!str" and . == "text value")) |= "TextValue"' $(word 1, $^) > $@
-
-	# Then apply all slot-specific transformations from config file
-	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
-
-
-local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: local/mixs_regen/mixs_subset_modified.yaml \
-assets/other_mixs_yaml_files/CurLandUseEnum.yaml
-	# inject re-structured CurLandUseEnum
-	#   using '| cat > ' because yq doesn't seem to like redirecting out to a file
-	yq eval-all \
-		'select(fileIndex==0).enums.CurLandUseEnum = select(fileIndex==1).enums.CurLandUseEnum | select(fileIndex==0)' \
-		$^ | cat > $@
-
-local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
-assets/other_mixs_yaml_files/TargetGeneEnum.yaml
-	yq eval-all \
-		'select(fileIndex==0).enums.TargetGeneEnum = select(fileIndex==1).enums.TargetGeneEnum | select(fileIndex==0)' \
-		$^ | cat > $@
-	yq -i '.slots.target_gene.range = "TargetGeneEnum"' $@
-
-
-local/mixs_regen/mixs_subset_modified_inj_env_triad.yaml: local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml \
-assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
-	# Inject all three environment triad tooltips in a single step
-	yq eval-all 'select(fileIndex==0).slots.env_broad_scale.annotations.tooltip = select(fileIndex==1).slots.env_broad_scale.annotations.tooltip | select(fileIndex==0).slots.env_local_scale.annotations.tooltip = select(fileIndex==1).slots.env_local_scale.annotations.tooltip | select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' $^ | cat > $@
-
-local/mixs_regen/mixs_minus_1.yaml: local/mixs_regen/mixs_subset_modified_inj_env_triad.yaml \
-assets/other_mixs_yaml_files/mixs_env_triad_field_slot.yaml
-	yq eval-all \
-		'select(fileIndex==0).slots.mixs_env_triad_field = select(fileIndex==1).slots.mixs_env_triad_field | select(fileIndex==0)' \
-		$^ | cat > $@
 
 examples/output: nmdc_schema/nmdc_materialized_patterns.yaml
 	mkdir -p $@
@@ -191,16 +89,17 @@ examples/output/Biosample-exhaustive-pretty-sorted.yaml: src/data/valid/Database
 
 pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
 
-make-rdf: rdf-clean \
-	local/mongo_as_nmdc_database_validation.log \
-	local/mongo_as_nmdc_database_cuire_repaired.ttl \
-	local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl # could omit rdf-clean. then this could build incrementally on top of pure-export-and-validate
+local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_unvalidated_nmdc_database.yaml
+	date
+	time $(RUN) migration-recursion \
+		--input-path $(word 2,$^) \
+		--schema-path $(word 1,$^) \
+		--output-path $@
 
-# statistics of large collections as of 2024-05-17
-#ns	size	count	avgObjSize	storageSize	totalIndexSize	totalSize	scaleFactor
-#nmdc.functional_annotation_agg	2194573252	16167688	135	567922688	1772920832	2340843520	1
-#nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
-#nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
+.PRECIOUS: local/mongo_as_nmdc_database_validation.log
+local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+	date
+	time $(RUN) linkml validate --schema $^ > $@
 
 ###########################################################
 #
@@ -297,62 +196,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--mongo-port 27777 \
 		--direct-connection
 
-local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
-	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) linkml convert --output $@ --schema $^
-	mv $@ $@.tmp
-	cat  assets/my_emsl_prefix.ttl $@.tmp  > $@
-	rm -rf $@.tmp
-	- export _JAVA_OPTIONS=-Djava.io.tmpdir=local ; $(JENA_DIR)/riot --validate $@ # < 1 minute
-	date
-
-
-# todo: still getting anyurl typed string statement objects in RDF. I added a workaround in anyuri-strings-to-iris
-local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
-	date
-	time $(RUN) anyuri-strings-to-iris \
-		--input-ttl $< \
-		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-		--emsl-uuid-replacement emsl_uuid_like \
-		--output-ttl $@
-	- export _JAVA_OPTIONS=-Djava.io.tmpdir=local && $(JENA_DIR)/riot --validate $@ # < 1 minute
-	date
-
-.PHONY: migration-doctests migrator
-
-# Runs all doctests defined within the migrator modules, adapters, and CLI scripts.
-#
-# To run in non-verbose mode:
-# ```
-# $ make migration-doctests DOCTEST_OPT=''
-# ```
-DOCTEST_OPT ?= -v
-migration-doctests: nmdc_schema/nmdc_materialized_patterns.yaml
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/*.py
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/partials/**/*.py
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/adapters/*.py
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/cli/*.py
-
-# Generates a migrator skeleton for the specified schema versions.
-# Note: `create-migrator` is a Poetry script registered in `pyproject.toml`.
-migrator:
-	$(RUN) create-migrator
-
-# Runs a specific migrator against MongoDB
-# Usage: make run-migrator MIGRATOR=migrator_from_11_9_1_to_11_10_0 [ACTION=rollback|commit]
-# The migrator now resides in: nmdc_schema/migrators/partials/migrator_from_11_9_1_to_11_10_0/
-# MongoDB connection details are read from .env file or environment variables
-MIGRATOR ?= migrator_from_11_9_1_to_11_10_0
-ACTION ?=
-.PHONY: run-migrator
-run-migrator:
-	@if [ -z "$(MIGRATOR)" ]; then \
-		echo "Error: MIGRATOR parameter is required"; \
-		echo "Usage: make run-migrator MIGRATOR=migrator_from_11_9_1_to_11_10_0 [ACTION=rollback|commit]"; \
-		echo "MongoDB connection details are read from .env file or environment variables"; \
-		exit 1; \
-	fi
-	$(RUN) run-migrator $(MIGRATOR) $(if $(ACTION),$(ACTION))
 
 .PHONY: filtered-status
 filtered-status:
@@ -388,11 +231,6 @@ local/nmdc_materialized.ttl: src/schema/nmdc.yaml
 	$(RUN) schema-view-relation-graph \
 		--schema $< \
 		--output $@
-
-local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_database_cuire_repaired.ttl
-	$(RUN) date-created-blank-node > local/date_created_blank_node.ttl
-	cat $^ local/date_created_blank_node.ttl > $@
-	rm local/date_created_blank_node.ttl
 
 ###
 

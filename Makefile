@@ -42,7 +42,6 @@ cookiecutter-help: status
 	@echo "make linkml-lint -- run LinkML linting on schema modules"
 	@echo "make testdoc -- builds docs and runs local test server"
 	@echo "make deploy -- deploys site"
-	@echo "make update -- updates linkml version"
 	@echo "make cookiecutter-help -- show this help"
 	@echo ""
 
@@ -57,26 +56,6 @@ setup: install gen-project gendoc git-init-add
 install:
 	poetry install
 
-
-# ---
-# Project Synchronization
-# ---
-#
-# check we are up to date
-check: cruft-check
-cruft-check:
-	# added cruft to poetry env and added poetry wrapper to cruft invocations
-	$(RUN) cruft check
-cruft-diff:
-	$(RUN) cruft diff
-
-update: update-template update-linkml
-update-template:
-	$(RUN) cruft update
-
-# todo: consider pinning to template
-update-linkml:
-	poetry add -D linkml@latest
 
 # EXPERIMENTAL
 create-data-harmonizer:
@@ -310,6 +289,8 @@ clean:
 	rm -rf docs/*.html
 
 include project.Makefile
+include makefiles/mixs.Makefile
+include makefiles/migrators.Makefile
 
 # custom
 site-clean: clean
@@ -318,7 +299,7 @@ site-clean: clean
 	rm -rf nmdc_schema/*.yaml
 
 
-squeaky-clean: clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
+squeaky-clean: clean examples-clean shuttle-clean site-clean # does not include mixs-yaml-clean
 	rm -rf $(PYMODEL)/nmdc.py
 	rm -rf $(PYMODEL)/nmdc_pydantic.py
 	mkdir project
