@@ -1,50 +1,42 @@
-# NMDC Schema Development Guide
+# NMDC-Schema Development Guide
 
-## Build Instructions
+## Build/Lint/Test Commands
+- Install: `poetry install`
+- Build: `make all` or `make site`
+- Clean: `make squeaky-clean`
+- All tests: `make test`
+- Python tests: `make test-python`
+- Schema tests: `make test-schema`
+- Run single test: `poetry run pytest tests/test_file.py -v`
+- Run doctest: `poetry run python -m doctest -v path/to/file.py`
+- Lint: `make linkml-lint` or `make linkml-lint-all` (outputs to local/linkml-lint-all.log)
+- Check schema patterns: `poetry run schema-pattern-linting --schema-file src/schema/nmdc.yaml`
+- View docs locally: `make serve` (in Docker: `poetry run mkdocs serve --dev-addr 0.0.0.0:8000`)
 
-**Do not run make targets directly** - most are long-running (10+ minutes). Instead:
-- Inform the user when make targets are needed: "This change requires running `make all` to regenerate artifacts."
-- Let the user run make targets, or let GitHub Actions handle it on PR submission
-- Exception: Quick targets like `make squeaky-clean` or `make help` are safe to run
+## Code Style Guidelines
+- Follow PEP8 conventions and Black formatting
+- Use snake_case for variables/functions, PascalCase for classes
+- Type annotations required for all parameters and returns
+- Imports: stdlib first, third-party next, local modules last
+- Docstrings use triple double quotes with examples
+- Prefer specific exception handling with descriptive messages
+- Use pathlib for file operations instead of os.path
+- Write verbose, descriptive variable and function names
+- Use None return values to indicate absence of a result
 
-**Full rebuild command** (for users to run, includes MIxS regeneration and units reports):
-```bash
-clear && make squeaky-clean mixs-yaml-clean && make src/schema/mixs.yaml && make squeaky-clean all test && make -C units fast
-```
+## Docker Development
+- Start env: `docker compose up --detach`
+- Connect: `docker compose exec app bash`
+- Working dir: `/nmdc-schema`
 
-## Schema Structure
+## Troubleshooting
 
-- **Main schema**: `src/schema/nmdc.yaml` (imports other schema files)
-- **Schema modules**: `src/schema/*.yaml` (core.yaml, mixs.yaml, etc.)
-- **MIxS import**: `src/schema/mixs.yaml` is generated from GSC MIxS via yq transformations
-- **Generated artifacts**: `nmdc_schema/` directory (JSON Schema, Pydantic, etc.)
-
-## MIxS Customizations
-
-NMDC imports GSC MIxS and applies customizations:
-- **Import mapping**: `assets/import_mixs_slots_regardless.tsv`
-- **yq transformations**: `assets/yq-for-mixs-customizations.txt`
-- **Documentation**: `src/docs/mixs-v6.2.2-customizations.md`
-
-## Validation and Testing
-
-Quick validation commands (safe to run):
-```bash
-poetry run linkml-validate -s src/schema/nmdc.yaml src/data/valid/SomeFile.yaml
-poetry run linkml-lint --config .linkmllint.yaml src/schema/nmdc.yaml
-```
-
-For full test suite, ask the user to run `make test` or let CI handle it.
-
-## Test Data
-
-- **Valid examples**: `src/data/valid/*.yaml`
-- **Invalid examples**: `src/data/invalid/*.yaml`
-- **Database-interleaved.yaml**: Large test file with production-like data
-
-## Poetry Environment
-
+### Poetry Entry Points
 If `poetry run <command>` fails with "Command not found":
-1. Check installation: `poetry show | grep <package-name>`
-2. Force reinstall: `poetry run pip uninstall <package> -y && poetry install`
-3. Last resort: `poetry env remove && poetry install`
+1. Force reinstall: `poetry run pip uninstall <package> -y && poetry install`
+2. Rebuild environment: `poetry env remove && poetry install`
+
+Essential commands that should work:
+- `poetry run do_shuttle --help` (from sheets-and-friends)
+- `poetry run gen-linkml --help` (from linkml)
+- `poetry run gen-pydantic --help` (from linkml)
