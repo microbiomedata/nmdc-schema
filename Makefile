@@ -7,11 +7,9 @@ SHELL := bash
 .SECONDARY:
 
 RUN = poetry run
-# get values from about.yaml file
-# replaced sh with bash esp for linux
-SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
+SCHEMA_NAME = nmdc_schema
 DOCDIR = docs
-SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
+SOURCE_SCHEMA_PATH = src/schema/nmdc.yaml
 SOURCE_SCHEMA_DIR = $(dir $(SOURCE_SCHEMA_PATH))
 SRC = src
 DEST = project
@@ -48,7 +46,7 @@ cookiecutter-help: status
 	@echo "make cookiecutter-help -- show this help"
 	@echo ""
 
-status: check-config
+status:
 	@echo "Project: $(SCHEMA_NAME)"
 	@echo "Source: $(SOURCE_SCHEMA_PATH)"
 
@@ -217,9 +215,6 @@ linkml-validate-schema:
 check-dependencies:
 	$(RUN) deptry nmdc_schema --known-first-party nmdc_schema
 
-check-config:
-	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n - Remember to edit 'about.yaml'\n\n" || exit 0)
-
 # Test documentation locally
 serve: mkd-serve
 
@@ -283,7 +278,6 @@ git-add: .cruft.json
 		Makefile \
 		README.md \
 		RELEASE_NOTES_v7.7.2_to_v7.7.7.md \
-		about.yaml \
 		assets \
 		images \
 		mkdocs.yml \

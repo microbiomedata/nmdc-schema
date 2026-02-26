@@ -85,7 +85,6 @@ sparql-dataframe = "^0.4"
 sparqlwrapper = "^2.0.0"
 ucumvert = "^0.2.2"
 vulture = "^2.11"
-#networkx = "^3.4.2" # for src/scripts/experimental/partial_imports_graph.py # "^3.4.2" is incompatible with Python 3.9, which this file currently allows
 
 
 [tool.poetry.group.deps.dependencies]

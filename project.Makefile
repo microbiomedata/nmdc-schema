@@ -12,8 +12,8 @@ RUN=poetry run
 
 JENA_DIR=~/apache-jena/bin/
 
-SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
-SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
+SCHEMA_NAME = nmdc_schema
+SOURCE_SCHEMA_PATH = src/schema/nmdc.yaml
 LATEST_RELEASE_TAG_FILE := local/latest_release_tag.txt
 
 PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
@@ -537,6 +537,3 @@ assets/element-scrutiny.tsv: nmdc_schema/nmdc_materialized_patterns.yaml
 		--schema-file $< \
 		--output-file assets/element-scrutiny.tsv
 
-# EXPERIMENTAL
-assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
-	$(RUN) python src/scripts/experimental/partial_imports_graph.py # needs networkx and plotly
