@@ -1,6 +1,5 @@
 {% if element.aliases %}
 ## Aliases
-
 {% for alias in element.aliases %}
 * {{ alias }}
 {%- endfor %}
@@ -9,7 +8,6 @@
 
 {% if element.examples %}
 ## Examples
-
 | Value |
 | --- |
 {% for x in element.examples -%}
@@ -19,7 +17,6 @@
 
 {% if element.comments -%}
 ## Comments
-
 {% for x in element.comments -%}
 * {{x}}
 {% endfor %}
@@ -27,14 +24,12 @@
 
 {% if element.see_also -%}
 ## See Also
-
 {% for x in element.see_also -%}
 * {{ gen.uri_link(x) }}
 {% endfor %}
 {% endif -%}
 
 ## Identifier and Mapping Information
-
 {% if element.id_prefixes %}
 ### Valid ID Prefixes
 
@@ -71,7 +66,6 @@ Instances of this class *should* have identifiers with one of the following pref
 
 {% if schemaview.get_mappings(element.name).items() -%}
 ## Mappings
-
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 {% set native_mappings = schemaview.get_mappings(element.name).get('native', []) %}
