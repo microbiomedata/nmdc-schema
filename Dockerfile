@@ -52,7 +52,7 @@ RUN mkdir -p /root/apache-jena && \
     ln --symbolic "${JENAROOT}/bin" /root/apache-jena/bin
 
 # Install Poetry, a package manager for Python (an alternative to pip).
-RUN pip install poetry
+RUN pip install "poetry>=2.3.0"
 
 # Install the project's Python dependencies.
 ADD ./poetry.lock    /nmdc-schema/poetry.lock

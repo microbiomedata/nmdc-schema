@@ -18,7 +18,7 @@ jobs:
 
     - name: Install Poetry
       run: |
-        pipx install poetry
+        pipx install "poetry>=2.3.0"
         pipx inject poetry "poetry-dynamic-versioning[plugin]"
 
     - name: Set up Python
@@ -28,7 +28,7 @@ jobs:
         cache: 'poetry'
 
     - name: Install project dependencies
-      run: poetry install --no-interaction
+      run: poetry install --with dev,deps --no-interaction
 
     - name: Generate project files
       run: |

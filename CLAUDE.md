@@ -10,7 +10,7 @@
 - Run single test: `poetry run pytest tests/test_file.py -v`
 - Run doctest: `poetry run python -m doctest -v path/to/file.py`
 - Lint: `make linkml-lint` or `make linkml-lint-all` (outputs to local/linkml-lint-all.log)
-- Check schema patterns: `poetry run schema-pattern-linting --schema-file src/schema/nmdc.yaml`
+- Check schema patterns: `poetry run python src/scripts/schema_pattern_linting.py --schema-file src/schema/nmdc.yaml`
 - View docs locally: `make serve` (in Docker: `poetry run mkdocs serve --dev-addr 0.0.0.0:8000`)
 
 ## Code Style Guidelines

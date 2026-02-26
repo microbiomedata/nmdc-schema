@@ -1,5 +1,22 @@
 # Development
 
+## Prerequisites
+
+This project requires **Poetry >=2.3.0** for local development. The `pyproject.toml` uses
+[PEP 735 dependency groups](https://peps.python.org/pep-0735/) (`[dependency-groups]`), which
+require Poetry 2.3.0 or later.
+
+```shell
+# Check your version
+poetry --version
+
+# Upgrade if needed
+pipx upgrade poetry
+```
+
+> **Note:** This requirement only applies to developers working on the schema.
+> Downstream users who `pip install nmdc-schema` are unaffected.
+
 ## Development environment
 
 This repository includes a container-based development environment. That environment consists of two containers:

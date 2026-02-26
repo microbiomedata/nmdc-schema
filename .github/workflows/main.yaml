@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Poetry
-        run: pipx install poetry
+        run: pipx install "poetry>=2.3.0"
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v6
@@ -39,7 +39,7 @@ jobs:
       # install dependencies if cache does not exist 
       #----------------------------------------------
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --with dev,deps
 
       #----------------------------------------------
       #              build, test, and quality checks

@@ -26,14 +26,14 @@ jobs:
         # Reference: https://github.com/actions/checkout
         uses: actions/checkout@v5
       - name: Install Poetry
-        run: pipx install poetry
+        run: pipx install "poetry>=2.3.0"
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
           cache: 'poetry'
       - name: Install Python dependencies
-        run: poetry install
+        run: poetry install --with dev,deps
       - name: Build docs
         run: make gendoc
       - name: Use Lychee to check for broken links
