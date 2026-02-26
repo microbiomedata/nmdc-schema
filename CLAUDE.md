@@ -7,11 +7,11 @@
 - All tests: `make test`
 - Python tests: `make test-python`
 - Schema tests: `make test-schema`
-- Run single test: `poetry run python -m unittest tests/test_file.py`
+- Run single test: `poetry run pytest tests/test_file.py -v`
 - Run doctest: `poetry run python -m doctest -v path/to/file.py`
-- Lint: `make lint` (outputs to local/lint.log)
-- Check schema patterns: `make schema-pattern-linting`
-- View docs locally: `make serve`
+- Lint: `make linkml-lint` or `make linkml-lint-all` (outputs to local/linkml-lint-all.log)
+- Check schema patterns: `poetry run schema-pattern-linting --schema-file src/schema/nmdc.yaml`
+- View docs locally: `make serve` (in Docker: `poetry run mkdocs serve --dev-addr 0.0.0.0:8000`)
 
 ## Code Style Guidelines
 - Follow PEP8 conventions and Black formatting
