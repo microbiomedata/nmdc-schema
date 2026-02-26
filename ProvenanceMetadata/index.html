@@ -329,6 +329,8 @@
       ProvenanceMetadata --&gt; "0..1" SourceSystemEnum : source_system_of_record
     click SourceSystemEnum href "../SourceSystemEnum"
 
+  ProvenanceMetadata : submission_portal_identifier
+
   ProvenanceMetadata : type
 
   ProvenanceMetadata : version
@@ -367,6 +369,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../submission_portal_identifier/">submission_portal_identifier</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>The UUID of the NMDC Submission Portal entry that generated this record</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../type/">type</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>the class_uri of the class that has been instantiated</td>
@@ -385,6 +393,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../Study/">Study</a></td>
+<td><a href="../provenance_metadata/">provenance_metadata</a></td>
+<td>range</td>
+<td><a href="./">ProvenanceMetadata</a></td>
+</tr>
 <tr>
 <td><a href="../Biosample/">Biosample</a></td>
 <td><a href="../provenance_metadata/">provenance_metadata</a></td>
@@ -424,6 +438,7 @@ slots:
 - git_url
 - version
 - source_system_of_record
+- submission_portal_identifier
 - type
 slot_usage:
   version:
@@ -494,6 +509,23 @@ attributes:
     domain_of:
     - ProvenanceMetadata
     range: SourceSystemEnum
+  submission_portal_identifier:
+    name: submission_portal_identifier
+    description: The UUID of the NMDC Submission Portal entry that generated this
+      record.
+    examples:
+    - value: c41dfeac-102e-43b2-adae-6a67f25791f0
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://data.microbiomedata.org/submission/home
+    rank: 1000
+    alias: submission_portal_identifier
+    owner: ProvenanceMetadata
+    domain_of:
+    - ProvenanceMetadata
+    range: string
+    multivalued: true
+    pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
   type:
     name: type
     description: the class_uri of the class that has been instantiated

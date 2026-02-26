@@ -13014,6 +13014,17 @@
                     "$ref": "#/$defs/SourceSystemEnum",
                     "description": "Identifies the system of origin for a record"
                 },
+                "submission_portal_identifier": {
+                    "description": "The UUID of the NMDC Submission Portal entry that generated this record.",
+                    "items": {
+                        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -14343,6 +14354,17 @@
                         "null"
                     ]
                 },
+                "provenance_metadata": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ProvenanceMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Provides information about the provenance of a record."
+                },
                 "related_identifiers": {
                     "description": "Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC",
                     "type": [
@@ -15341,5 +15363,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.16.1.post70.dev0+b5ea9f0a8"
+    "version": "11.16.1.post75.dev0+3b0df149d"
 }

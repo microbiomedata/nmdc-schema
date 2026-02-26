@@ -416,6 +416,11 @@
       Study --&gt; "*" Protocol : protocol_link
     click Protocol href "../Protocol"
 
+  Study : provenance_metadata
+
+      Study --&gt; "0..1" ProvenanceMetadata : provenance_metadata
+    click ProvenanceMetadata href "../ProvenanceMetadata"
+
   Study : related_identifiers
 
   Study : specific_ecosystem
@@ -515,6 +520,12 @@
 <td><a href="../alternative_names/">alternative_names</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
 <td>A list of alternative names used to refer to the entity</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../provenance_metadata/">provenance_metadata</a></td>
+<td>0..1 <br/> <a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
+<td>Provides information about the provenance of a record</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -801,6 +812,7 @@ slots:
 - related_identifiers
 - alternative_descriptions
 - alternative_names
+- provenance_metadata
 - alternative_titles
 - ecosystem
 - ecosystem_category
@@ -1235,6 +1247,17 @@ attributes:
     - Biosample
     range: string
     multivalued: true
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provides information about the provenance of a record.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: provenance_metadata
+    owner: Study
+    domain_of:
+    - Study
+    - Biosample
+    range: ProvenanceMetadata
   alternative_titles:
     name: alternative_titles
     description: A list of alternative titles for the entity. The distinction between
