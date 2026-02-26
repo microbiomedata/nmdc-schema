@@ -44,14 +44,15 @@ Repository = "https://github.com/microbiomedata/nmdc-schema"
 # scripts should have click clis
 # click parameters/options should be written out with hyphens
 # click parameters/options should use consistent names
-# scripts should be listed here in project.scripts
+# only package-backed, stable CLIs should be listed in project.scripts
+# prefer invoking repo-local scripts from Makefiles via `poetry run python src/scripts/<name>.py`
 # use underscores to delimit file name
 # use hyphens to delimit CLI alias
 # scripts/aliases should be illustrated in a Makefile
 # Makefile targets should make use of $< etc for input and $@ for output
 # input and output files should use hyphens as delimiters in their names
 # check usages of these features in other NMDC code before changing
-# be intentional about output: most should go in assets unless its really large or likely to change independently of the schema, like MOngoDB summaries
+# be intentional about output location: prefer destination by purpose (`docs/`, `local/`, `project/`, package artifacts), not a blanket `assets/` default
 # cli entry points should probably all be main or cli unless there's a compelling reason to do otherwise
 
 [project.scripts]

@@ -155,6 +155,7 @@ current policy below when adding or modifying developer tooling.
 
 | Topic | Current policy | Legacy guidance (for context) |
 |---|---|---|
+| `src/schema/mixs.yaml` edits | Treat as generated. Change generator inputs/transformations (`makefiles/mixs.Makefile`, `assets/*`, related config) and regenerate. | Hand-edit `mixs.yaml` directly. |
 | Script registration | Keep `[project.scripts]` limited to package-backed, stable CLIs intended for default installs. | Add most repo scripts as CLI aliases. |
 | Repo-local scripts | Invoke explicitly from Makefiles using `poetry run python src/scripts/<name>.py ...`. | Expose `src/scripts/*` commands through Poetry script aliases. |
 | Scripts table location | Use `[project.scripts]` (PEP 621). | Use `[tool.poetry.scripts]` (Poetry-specific). |
@@ -173,4 +174,3 @@ TODO: Add to this section later
 [about-branches]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
 [about-issues]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
 [about-pulls]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
-

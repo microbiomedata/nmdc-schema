@@ -1,7 +1,7 @@
 # NMDC-Schema Development Guide
 
 ## Build/Lint/Test Commands
-- Install: `poetry install`
+- Install: `poetry install --with dev,deps`
 - Build: `make all` or `make site`
 - Clean: `make squeaky-clean`
 - All tests: `make test`
@@ -12,6 +12,11 @@
 - Lint: `make linkml-lint` or `make linkml-lint-all` (outputs to local/linkml-lint-all.log)
 - Check schema patterns: `poetry run python src/scripts/schema_pattern_linting.py --schema-file src/schema/nmdc.yaml`
 - View docs locally: `make serve` (in Docker: `poetry run mkdocs serve --dev-addr 0.0.0.0:8000`)
+
+## Script Entry Point Policy
+- Keep `[project.scripts]` limited to package-backed, stable CLIs intended for default installs.
+- Do not add ad-hoc aliases for `src/scripts/*` into `[project.scripts]`.
+- For repo-local automation scripts, call them explicitly from Makefiles, e.g. `poetry run python src/scripts/<name>.py`.
 
 ## Code Style Guidelines
 - Follow PEP8 conventions and Black formatting
