@@ -148,6 +148,20 @@ See `.linkmllint.yaml` and `.linkmllint-root.yaml` for the linting configuration
 
 > Advanced testing instructions for migrators can be found [here](nmdc_schema/migrators/README.md).
 
+### Current Policy vs Legacy Guidance
+
+The repository has evolved in how CLI scripts and automation are organized. Use the
+current policy below when adding or modifying developer tooling.
+
+| Topic | Current policy | Legacy guidance (for context) |
+|---|---|---|
+| Script registration | Keep `[project.scripts]` limited to package-backed, stable CLIs intended for default installs. | Add most repo scripts as CLI aliases. |
+| Repo-local scripts | Invoke explicitly from Makefiles using `poetry run python src/scripts/<name>.py ...`. | Expose `src/scripts/*` commands through Poetry script aliases. |
+| Scripts table location | Use `[project.scripts]` (PEP 621). | Use `[tool.poetry.scripts]` (Poetry-specific). |
+| Output destinations | Choose destination by purpose (`docs/`, `local/`, `project/`, package artifacts). | Default most generated output to `assets/`. |
+| Makefile ergonomics | Prefer `$<`/`$@` where it improves clarity and correctness; not every target can use them. | Apply `$<`/`$@` universally. |
+| CLI naming | Keep hyphenated CLI aliases and consistent option naming when defining public CLIs. | Same intent, now applied only to stable/public entry points. |
+
 ### Recording Decisions
 
 - Use the [NMDC ADR Log](https://github.com/microbiomedata/NMDC_documentation/tree/main/decisions)
@@ -159,5 +173,4 @@ TODO: Add to this section later
 [about-branches]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
 [about-issues]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
 [about-pulls]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
-
 
