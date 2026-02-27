@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.16.1.post88.dev0+990031e15
+version: 11.16.1.post89.dev0+e08fae5d9
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
