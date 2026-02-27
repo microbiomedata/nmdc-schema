@@ -356,10 +356,18 @@ assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv: assets/ncbi_mappings/nc
 	
 
 src/data/valid/Database-interleaved.yaml: src/schema/nmdc.yaml
-	$(RUN) interleave-yaml \
+	$(RUN) python src/scripts/interleave_yaml.py \
 		--directory-path src/data/valid \
 		--output-file $@ \
 		--schema-file $<
+
+.PHONY: interleave-yaml
+interleave-yaml: src/data/valid/Database-interleaved.yaml
+
+.PHONY: check-references
+check-references:
+	$(RUN) python src/scripts/check_references.py \
+		--schema-file $(SOURCE_SCHEMA_PATH)
 
 assets/mentions-of-ids-analysis.txt: src/schema/nmdc.yaml
 	$(RUN) analyze-mentions-of-ids \
