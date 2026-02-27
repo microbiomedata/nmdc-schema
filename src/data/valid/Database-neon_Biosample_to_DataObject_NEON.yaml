@@ -2,9 +2,9 @@ material_processing_set:
   - id: nmdc:libprp-99-abcdef
     name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
     has_input:
-      - nmdc:procsm-99-xyz2
+      - nmdc:procsm-99-xyz22
     has_output:
-      - nmdc:procsm-99-xyz3
+      - nmdc:procsm-99-xyz32
     start_date: '2021-01-15'
     end_date: '2021-01-15'
     library_type: DNA
@@ -23,9 +23,9 @@ material_processing_set:
   - id: nmdc:extrp-99-abcdef
     name: first dna extraction set
     has_input:
-      - nmdc:procsm-99-xyz1
+      - nmdc:procsm-99-xyz12
     has_output:
-      - nmdc:procsm-99-xyz2
+      - nmdc:procsm-99-xyz22
     start_date: '2021-01-15'
     end_date: '2021-01-15'
     extraction_targets: 
@@ -103,7 +103,7 @@ data_generation_set:
     analyte_category: metagenome
     name: Test NEON data
     has_input:
-      - nmdc:procsm-99-xyz3
+      - nmdc:procsm-99-xyz32
     has_output:
       - nmdc:dobj-12-jdhk9537
       - nmdc:dobj-12-yx0tfp52
@@ -121,7 +121,7 @@ instrument_set:
     type: nmdc:Instrument
 workflow_execution_set:
   - id: nmdc:wfrqc-12-63da5n74.12
-    name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.1 '
+    name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.12 '
     started_at_time: '2023-03-23T17:17:05.111689+00:00'
     ended_at_time: '2023-03-23T17:17:05.111725+00:00'
     execution_resource: NERSC-Cori
@@ -166,11 +166,11 @@ material_processing_set:
     name: first pooling process
     description: This is the first pooling process that has ever occurred on earth
     has_input:
-      - nmdc:bsm-99-abcdef1
-      - nmdc:bsm-99-abcdef2
-      - nmdc:bsm-99-abcdef3
+      - nmdc:bsm-99-abcdef12
+      - nmdc:bsm-99-abcdef22
+      - nmdc:bsm-99-abcdef32
     has_output:
-      - nmdc:procsm-99-xyz1
+      - nmdc:procsm-99-xyz12
     start_date: '2021-01-14'
     end_date: '2021-01-14'
 

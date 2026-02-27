@@ -42,7 +42,7 @@ data_generation_set:
 data_object_set:
   - id: nmdc:dobj-00-msdem1
     name: EMSL_49991_Brodie_122_Lipids_POS_09Aug19_Lola-WCSH417820
-    description: raw instrument file for nmdc:dgms-99-zUCd5N
+    description: raw instrument file for nmdc:dgms-99-zUCd5N3
     file_size_bytes: 1150434379
     url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exisit for lcms metabolite data, this is just an example resolvable url
     md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E

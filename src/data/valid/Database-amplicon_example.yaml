@@ -2,7 +2,7 @@ data_generation_set:
 - id: nmdc:dgns-11-abcd2
   analyte_category: amplicon_sequencing_assay
   has_input: 
-    - nmdc:procsm-11-def124
+    - nmdc:procsm-11-def1242
   associated_studies: 
    - nmdc:sty-00-abc123
   name: 16s amplicon sequencing of nmdc:bsm-99-dtTMNb
@@ -26,7 +26,7 @@ material_processing_set:
   has_input: 
    - nmdc:procsm-11-def123
   has_output: 
-   - nmdc:procsm-11-def124
+   - nmdc:procsm-11-def1242
 
 processed_sample_set:
 - id: nmdc:procsm-11-def123

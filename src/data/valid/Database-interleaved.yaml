@@ -991,7 +991,7 @@ data_generation_set:
   type: nmdc:NucleotideSequencing
   name: 16s amplicon sequencing of nmdc:bsm-99-dtTMNb
   has_input:
-  - nmdc:procsm-11-def124
+  - nmdc:procsm-11-def1242
   analyte_category: amplicon_sequencing_assay
   associated_studies:
   - nmdc:sty-00-abc123
@@ -1174,7 +1174,7 @@ data_generation_set:
   type: nmdc:NucleotideSequencing
   name: Test NEON data
   has_input:
-  - nmdc:procsm-99-xyz3
+  - nmdc:procsm-99-xyz32
   has_output:
   - nmdc:dobj-12-jdhk9537
   - nmdc:dobj-12-yx0tfp52
@@ -1398,7 +1398,7 @@ data_object_set:
 - id: nmdc:dobj-00-msdem1
   type: nmdc:DataObject
   name: EMSL_49991_Brodie_122_Lipids_POS_09Aug19_Lola-WCSH417820
-  description: raw instrument file for nmdc:dgms-99-zUCd5N
+  description: raw instrument file for nmdc:dgms-99-zUCd5N3
   alternative_identifiers:
   - my_emsl:1826381
   data_category: instrument_data
@@ -1839,7 +1839,7 @@ material_processing_set:
   has_input:
   - nmdc:procsm-11-def123
   has_output:
-  - nmdc:procsm-11-def124
+  - nmdc:procsm-11-def1242
   target_gene: 16S_rRNA
   target_subfragment:
     type: nmdc:TextValue
@@ -1960,11 +1960,11 @@ material_processing_set:
   name: first pooling process
   description: This is the first pooling process that has ever occurred on earth
   has_input:
-  - nmdc:bsm-99-abcdef1
-  - nmdc:bsm-99-abcdef2
-  - nmdc:bsm-99-abcdef3
+  - nmdc:bsm-99-abcdef12
+  - nmdc:bsm-99-abcdef22
+  - nmdc:bsm-99-abcdef32
   has_output:
-  - nmdc:procsm-99-xyz1
+  - nmdc:procsm-99-xyz12
   start_date: '2021-01-14'
   end_date: '2021-01-14'
 - id: nmdc:extrp-99-abcdef3
@@ -2495,7 +2495,7 @@ workflow_execution_set:
   metabolomics_analysis_category: gc_ms_metabolomics
 - id: nmdc:wfmb-99-ABCDEF.12
   type: nmdc:MetabolomicsAnalysis
-  name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF.1
+  name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF.12
   has_input:
   - nmdc:dobj-99-xxxxxx1
   - nmdc:dobj-99-xxxxxx2
@@ -2938,7 +2938,7 @@ workflow_execution_set:
   version: v0.0.1
 - id: nmdc:wfrqc-12-63da5n74.12
   type: nmdc:ReadQcAnalysis
-  name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.1 '
+  name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.12 '
   has_input:
   - nmdc:dobj-12-jdhk9537
   - nmdc:dobj-12-yx0tfp52
