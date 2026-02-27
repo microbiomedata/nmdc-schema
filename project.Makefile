@@ -356,6 +356,7 @@ assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv: assets/ncbi_mappings/nc
 	
 
 src/data/valid/Database-interleaved.yaml: src/schema/nmdc.yaml
+	rm -f $@
 	$(RUN) python src/scripts/interleave_yaml.py \
 		--directory-path src/data/valid \
 		--output-file $@ \

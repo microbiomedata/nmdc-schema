@@ -44,7 +44,7 @@ def get_collection_names_from_schema(schema_view: SchemaView) -> list[str]:
         slot_definition = schema_view.induced_slot(slot_name, DATABASE_CLASS_NAME)
         if slot_definition.multivalued and slot_definition.inlined_as_list:
             collection_names.append(slot_name)
-    return list(set(collection_names))
+    return sorted(set(collection_names))
 
 
 def get_names_of_classes_in_effective_range_of_slot(
