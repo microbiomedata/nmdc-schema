@@ -15,3 +15,7 @@ Some frequently asked questions about developing the NMDC Schema.
 
 [NMDC SchemaView Documentation](schemaview.md)
 [SchemaView Documentation](https://linkml.github.io/linkml/schemaview.html)
+
+### Is there an experimental OWL generation profile for OLS-style output?
+
+[OWL generation experiments](owl-generation-experiments.md)

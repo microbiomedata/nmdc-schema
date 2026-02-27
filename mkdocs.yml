@@ -42,6 +42,7 @@ nav:
   - Visualizations: visualizations.md
   - Data Validation: validation.md
   - Developer Docs: developer-docs.md
+  - OWL Generation Experiments: owl-generation-experiments.md
   - Downloads: downloads.md
 
 
