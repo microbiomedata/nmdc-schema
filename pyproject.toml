@@ -1,93 +1,107 @@
-[tool.poetry]
-
-description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
-documentation = "https://microbiomedata.github.io/nmdc-schema/"
-homepage = "https://microbiomedata.github.io/nmdc-schema/"
-keywords = ["NMDC", "schema", "metadata", "microbiome"]
-license = "MIT"
+[project]
 name = "nmdc_schema"
-readme = "README.md"
-repository = "https://github.com/microbiomedata/nmdc-schema"
 version = "0.0.0"
+description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10,<4.0"
 authors = [
-    "Bill Duncan <wdduncan@gmail.com>",
-    "Chris Mungall <cjmungall@lbl.gov>",
-    "Mark Andrew Miller <MAM@lbl.gov>",
-    "Patrick Kalita <pkalita@lbl.gov>",
-    "Sujay Patil <spatil@lbl.gov>",
+    { name = "Bill Duncan", email = "wdduncan@gmail.com" },
+    { name = "Chris Mungall", email = "cjmungall@lbl.gov" },
+    { name = "Mark Andrew Miller", email = "MAM@lbl.gov" },
+    { name = "Patrick Kalita", email = "pkalita@lbl.gov" },
+    { name = "Sujay Patil", email = "spatil@lbl.gov" },
 ]
-
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
     "Programming Language :: Python :: 3 :: Only",
 ]
+keywords = ["NMDC", "schema", "metadata", "microbiome"]
 
+dependencies = [
+    "click>=8.0.0,<9.0.0",
+    "click-log>=0.4.0,<0.5.0",
+    "deprecated>=1.0.0,<2.0.0",
+    "jsonasobj2>=1.0.0,<2.0.0",
+    "jsonschema>=4.0.0,<5.0.0",
+    "linkml>=1.10.0,<2.0.0",
+    "linkml-runtime>=1.10.0,<2.0.0",
+    "python-dotenv>=0.21.0,<2.0.0",
+    "pyyaml>=6.0.0,<7.0.0",
+    "rdflib>=6.2.0,<7.0.0",  # some LinkML components are not compatible with rdflib 7+ yet
+    "requests>=2.0.0,<3.0.0",
+    "pymdown-extensions>=10.16.1,<11.0.0",
+    "pymongo>=4.7.2,<5.0.0",
+]
+
+[project.urls]
+Homepage = "https://microbiomedata.github.io/nmdc-schema/"
+Documentation = "https://microbiomedata.github.io/nmdc-schema/"
+Repository = "https://github.com/microbiomedata/nmdc-schema"
+
+# scripts should have click clis
+# click parameters/options should be written out with hyphens
+# click parameters/options should use consistent names
+# only package-backed, stable CLIs should be listed in project.scripts
+# prefer invoking repo-local scripts from Makefiles via `poetry run python src/scripts/<name>.py`
+# use underscores to delimit file name
+# use hyphens to delimit CLI alias
+# scripts/aliases should be illustrated in a Makefile
+# Makefile targets should make use of $< etc for input and $@ for output
+# input and output files should use hyphens as delimiters in their names
+# check usages of these features in other NMDC code before changing
+# be intentional about output location: prefer destination by purpose (`docs/`, `local/`, `project/`, package artifacts), not a blanket `assets/` default
+# cli entry points should probably all be main or cli unless there's a compelling reason to do otherwise
+
+[project.scripts]
+create-migrator = "nmdc_schema.migrators.cli.create_migrator:create_migrator"
+run-migrator = "nmdc_schema.migrators.cli.run_migrator:run_migrator"
+migration-recursion = "nmdc_schema.migration_recursion:main"
+pure-export = "nmdc_schema.dump_single_modality:cli"
+# Units analysis uses yq queries in units/Makefile (Python scripts removed)
+
+[dependency-groups]
+dev = [
+    "autopep8>=2.2.0,<3.0.0",
+    "bandit>=1.7.8,<2.0.0",
+    "black>=23.1,<25.0",
+    "exhaustion-check>=0.1.1,<0.2.0",  # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
+    "fastjsonschema>=2.20.0,<3.0.0",
+    "flake8>=7.0.0,<8.0.0",
+    "isort>=5.13.2,<6.0.0",
+    "mkdocs>=1.4.2,<2.0.0",
+    "mkdocs-material>=9.0.12,<10.0.0",
+    "mkdocs-mermaid2-plugin>=0.6.0,<0.7.0",
+    "mkdocs-redirects>=1.2.1,<2.0.0",
+    "mypy>=1.10.0,<2.0.0",
+    "pandas>=2.2.3,<3.0.0",
+    "psycopg2-binary>=2.9.10,<3.0.0",
+    "pydocstyle>=6.3.0,<7.0.0",
+    "pylint>=3.2.2,<4.0.0",
+    "pyroma>=4.2,<5.0",
+    "pytest>=8.4.2,<9.0.0",
+    # We use `refscan` to generate diagrams of inter-collection relationships
+    # and diagrams of inter-class relationships.
+    # Reference: https://github.com/microbiomedata/refscan
+    "refscan>=0.2.3,<0.3.0",
+    "ruff>=0.4.7,<1.0.0",
+    "schemasheets>=0.1.24,<0.2.0",
+    "sheets-and-friends>=0.5.0,<0.6.0",  # for do_shuttle (and possibly more)
+    "ucumvert>=0.2.2,<0.3.0",
+    "vulture>=2.11,<3.0.0",
+]
+deps = [
+    "deptry>=0.23.0,<1.0.0",
+]
+
+[tool.poetry]
 packages = [
-    { include = "nmdc_schema" }, # this is the package Poetry would have included by default
+    { include = "nmdc_schema" },  # this is the package Poetry would have included by default
     { include = "migrators", from = "nmdc_schema" },
     { include = "adapters", from = "nmdc_schema/migrators" },
 ]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-click = "^8"
-click-log = "^0.4.0"
-deprecated = "^1"
-jsonasobj2 = "^1"
-jsonschema = "^4"
-linkml = ">=1.10.0"
-linkml-runtime = ">=1.10.0"
-pymongo = "^4.7.2"
-python-dotenv = "*"
-pyyaml = "^6"
-rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
-requests = "^2"
-urllib3 = ">=2.6.0"
-pyasn1 = ">=0.6.2"
-pymdown-extensions = ">=10.16.1"
-
-[tool.poetry.group.dev.dependencies] # cruft for cookiecutter update could be installed with pipx?
-autopep8 = "^2.2.0"
-bandit = "^1.7.8"
-black = ">=23.1,<25.0"
-exhaustion-check = "^0.1.1" # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
-fastjsonschema = "^2.20.0"
-flake8 = "^7.0.0"
-isort = "^5.13.2"
-jinja2 = "^3.1.6"
-mkdocs = "^1.4.2"
-mkdocs-material = "^9.0.12"
-mkdocs-mermaid2-plugin = "^0.6.0"
-mkdocs-redirects = "^1.2.1"
-mypy = "^1.10.0"
-pandas = "^2.2.3"
-plotly = "^6.0.1"
-psycopg2-binary = "^2.9.10"
-pydocstyle = "^6.3.0"
-pylint = "^3.2.2"
-pyroma = "^4.2"
-python-dotenv = "^0.21.0"
-pytest = "^8.4.2"
-# We use `refscan` to generate diagrams of inter-collection relationships
-# and diagrams of inter-class relationships.
-# Reference: https://github.com/microbiomedata/refscan
-refscan = "^0.2.3"
-ruamel-yaml = "^0.18.6"
-ruff = "^0.4.7"
-schemasheets = "^0.1.24"
-setuptools = "^78.1.1" # for https://github.com/microbiomedata/nmdc-schema/pull/2459
-sheets_and_friends = "^0.5.0" # for do_shuttle (and possibly more)
-sparql-burger = "^1.0.2"
-sparql-dataframe = "^0.4"
-sparqlwrapper = "^2.0.0"
-ucumvert = "^0.2.2"
-vulture = "^2.11"
-
-
-[tool.poetry.group.deps.dependencies]
-deptry = "^0.23.0"
 
 [tool.poetry-dynamic-versioning]
 # We need poetry-dynamic-versioning to update the version in the src schema file,
@@ -111,47 +125,6 @@ patterns = [
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
 build-backend = "poetry_dynamic_versioning.backend"
 
-
-# scripts should have click clis
-# click parameters/options should be written out with hyphens
-# click parameters/options should use consistent names
-# scripts should be listed here in tool.poetry.scripts
-# use underscores to delimit file name
-# use hyphens to delimit CLI alias
-# scripts/aliases should be illustrated in a Makefile
-# Makefile targets should make use of $< etc for input and $@ for output
-# input and output files should use hyphens as delimiters in their names
-# check usages of these features in other NMDC code before changing
-# be intentional about output: most should go in assets unless its really large or likely to change independently of the schema, like MOngoDB summaries
-# cli entry points should probably all be main or cli unless there's a compelling reason to do otherwise
-
-
-[tool.poetry.scripts]
-analyze-mentions-of-ids = "src.scripts.analyze_mentions_of_ids:main"
-# anyuri-strings-to-iris removed — RDF CURIE repair tool, last modified in commit c0252a03d (2024-07-01)
-check-examples-class-coverage = "src.scripts.check_examples_class_coverage:main"
-class-instantiation-counts = "src.scripts.class_instantiation_counts:process_data"
-create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
-run-migrator = 'nmdc_schema.migrators.cli.run_migrator:run_migrator'
-database-to-json-list-files = "src.scripts.database_to_json_list_files:split_yaml_to_json"
-# date-created-blank-node removed — RDF timestamp tool, last modified in commit 9e428b3db (2024-06-13)
-fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema" # todo recheck
-get-study-id-from-filename = "src.scripts.get_study_id_from_filename:main" # todo not used in makefiles
-get-study-related-records = "src.scripts.nmdc_database_tools:cli" # todo recheck
-interleave-yaml = "src.scripts.interleave_yaml:process_yaml" # todo recheck
-migration-recursion = 'nmdc_schema.migration_recursion:main'
-nmdc-data = "nmdc_schema.nmdc_data:cli" # todo recheck
-nmdc-ncbi-mapping = "src.scripts.ncbi_nmdc_exact_term_matching:cli"
-nmdc-version = "nmdc_schema.nmdc_version:cli" # todo recheck
-pure-export = "nmdc_schema.dump_single_modality:cli"
-report-biosamples-per-study = "src.scripts.report_biosamples_per_study:query_biosamples"
-report-usages = "src.scripts.report_usages:display_slot_usage"
-schema-pattern-linting = "src.scripts.schema_pattern_linting:main"
-schema-view-relation-graph = "src.scripts.schema_view_relation_graph:cli"
-scrutinize-elements = "src.scripts.scrutinize_elements:process_schema_elements"
-slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
-# Units analysis uses yq queries in units/Makefile (Python scripts removed)
-
 [tool.pytest.ini_options]
 # Only run tests in tests/ directory to match original unittest discover behavior
 # (excludes MongoDB integration tests and other tests outside tests/)
@@ -164,7 +137,7 @@ extend_exclude = [
 ]
 # These are transitive dependencies but we pin them directly
 # to ensure users get security fixes from Dependabot alerts
-per_rule_ignores = {DEP002 = ["urllib3", "pyasn1", "pymdown-extensions"]}
+per_rule_ignores = {DEP002 = ["pymdown-extensions"]}
 
 # linkml 1.10.0+ monorepo includes linkml-runtime
 [tool.deptry.package_module_name_map]

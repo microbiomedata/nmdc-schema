@@ -54,7 +54,7 @@ setup: install gen-project gendoc git-init-add
 
 # install any dependencies required for building
 install:
-	poetry install
+	poetry install --with dev,deps
 
 
 # EXPERIMENTAL
