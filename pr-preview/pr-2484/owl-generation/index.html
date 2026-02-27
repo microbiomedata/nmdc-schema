@@ -1,0 +1,1393 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/owl-generation/">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>OWL Generation - NMDC Schema Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#owl-generation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="NMDC Schema Documentation" class="md-header__button md-logo" aria-label="NMDC Schema Documentation" data-md-component="logo">
+      
+  <img src="../images/NMDC_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NMDC Schema Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OWL Generation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="NMDC Schema Documentation" class="md-nav__button md-logo" aria-label="NMDC Schema Documentation" data-md-component="logo">
+      
+  <img src="../images/NMDC_logo.png" alt="logo">
+
+    </a>
+    NMDC Schema Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funding and Acknowledgements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collaboration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Metadata_Documentation_Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Metadata Standards Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintaining-the-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintaining the NMDC Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema_element_deprecation_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schema element deprecation guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NMDC Schema Validation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identifiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Identifiers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typecode-to-class-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Typecode to class map
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Version Migration Guides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visualizations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Validation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer-docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Developer Docs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Downloads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#current-owl-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current OWL generation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-owl-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended OWL config
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-owl-config-yaml-vs-cli-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring OWL: config YAML vs CLI flags
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring OWL: config YAML vs CLI flags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owl-specific-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      OWL-specific options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-generator-common-options-also-work-under-owl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-generator common options (also work under owl:)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options-that-can-only-be-passed-via-cli-not-config-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Options that can ONLY be passed via CLI (not config YAML)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-equivalent-config-for-the-pr-2484-experimental-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: equivalent config for the PR #2484 experimental profile
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-to-ontology-portals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submitting to ontology portals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Submitting to ontology portals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bioportal" class="md-nav__link">
+    <span class="md-ellipsis">
+      BioPortal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ols4" class="md-nav__link">
+    <span class="md-ellipsis">
+      OLS4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schemas-vs-ontologies-in-ols4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schemas vs ontologies in OLS4
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mixs-as-a-worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      MIxS as a worked example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MIxS as a worked example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#submission-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submission timeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-went-right" class="md-nav__link">
+    <span class="md-ellipsis">
+      What went right
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-mistakes-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration mistakes to avoid
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zero-named-individuals-requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zero Named Individuals requirement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ols-display-bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      OLS display bugs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation checklist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upcoming-linkml-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upcoming LinkML changes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-questions-and-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open questions and next steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="owl-generation">OWL Generation</h1>
+<p>This page documents how nmdc-schema generates OWL, configuration options,
+portal submission guidance, and upcoming changes.</p>
+<hr />
+<h2 id="current-owl-generation">Current OWL generation</h2>
+<p>The Makefile <code>gen-project</code> target runs <code>linkml generate project</code> with <code>--include owl</code>:</p>
+<pre><code class="language-makefile">$(RUN) linkml generate project \
+    --exclude excel --exclude graphql --exclude jsonld \
+    --exclude markdown --exclude proto --exclude shacl \
+    --exclude shex --exclude sqlddl \
+    --include jsonldcontext --include jsonschema \
+    --include owl \
+    --include python --include rdf \
+    --config-file gen-project-config.yaml \
+    -d $(DEST) $(SOURCE_SCHEMA_PATH)
+</code></pre>
+<p>This produces <code>project/owl/nmdc.owl.ttl</code> (~1.3 MB). The config file
+(<code>gen-project-config.yaml</code>) currently has <strong>no OWL-specific settings</strong> -- only a
+JSON Schema option:</p>
+<pre><code class="language-yaml">generator_args:
+  jsonschema:
+    include_range_class_descendants: true
+</code></pre>
+<p>The OWL output is gitignored, not included in the PyPI package, and not published
+in the docs. Per <a href="https://github.com/microbiomedata/nmdc-schema/issues/2749">#2749</a>,
+nobody appears to consume it. There is no standalone <code>linkml generate owl</code>
+Makefile target -- OWL is only produced as a side effect of <code>gen-project</code>.</p>
+<hr />
+<h2 id="recommended-owl-config">Recommended OWL config</h2>
+<p>The following config is used by Biolink, Biostride, NAMO, COMET, and MIxS
+(established in <a href="https://github.com/linkml/linkml-project-copier/pull/96">linkml-project-copier PR #96</a>):</p>
+<pre><code class="language-yaml">generator_args:
+  owl:
+    mergeimports: true
+    metaclasses: false
+    type_objects: false
+    add_root_classes: true
+    mixins_as_expressions: true
+</code></pre>
+<p>Key settings explained:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mergeimports: true</code></td>
+<td>Inlines imported schemas so the OWL is self-contained (portals won't resolve import chains)</td>
+</tr>
+<tr>
+<td><code>metaclasses: false</code></td>
+<td>Avoids OWL punning from LinkML metamodel classes</td>
+</tr>
+<tr>
+<td><code>type_objects: false</code></td>
+<td>Don't model types as class shadows</td>
+</tr>
+<tr>
+<td><code>add_root_classes: true</code></td>
+<td>Adds metamodel supertypes for a browsable hierarchy in portals</td>
+</tr>
+<tr>
+<td><code>mixins_as_expressions: true</code></td>
+<td>Mixins become existential restrictions instead of subClassOf</td>
+</tr>
+</tbody>
+</table>
+<p>PR #2484's experimental profile diverges from this standard in two ways:
+it sets <code>metaclasses: true</code> (adds metamodel categorization at the cost of
+OWL punning) and <code>mixins_as_expressions: false</code> (keeps mixin subClassOf
+relationships). For portal submission, the standard config above is the
+safer starting point.</p>
+<hr />
+<h2 id="configuring-owl-config-yaml-vs-cli-flags">Configuring OWL: config YAML vs CLI flags</h2>
+<p>OWL generation options can be passed two ways:</p>
+<ol>
+<li><strong><code>gen-project-config.yaml</code></strong> -- per-generator settings under <code>generator_args</code>
+   (preferred for <code>linkml generate project</code>)</li>
+<li><strong>CLI flags</strong> -- required for standalone <code>linkml generate owl</code></li>
+</ol>
+<p>The <code>generator_args</code> dictionary maps generator names to keyword arguments passed
+to each generator's class constructor. For OWL, the key is <code>owl</code>. Internally,
+the project generator merges default args with config args and passes them as
+<code>**kwargs</code> to <code>OwlSchemaGenerator(schema, **all_gen_args)</code>.</p>
+<p>CLI dashes become underscores. Boolean <code>--flag/--no-flag</code> pairs become
+<code>flag: true/false</code>.</p>
+<h3 id="owl-specific-options">OWL-specific options</h3>
+<table>
+<thead>
+<tr>
+<th>CLI Flag</th>
+<th>Config YAML Key</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--metadata-profile</code></td>
+<td><code>metadata_profile</code></td>
+<td><code>str</code> (<code>linkml</code>, <code>rdfs</code>, <code>ols</code>)</td>
+<td><code>linkml</code></td>
+</tr>
+<tr>
+<td><code>--add-root-classes / --no-add-root-classes</code></td>
+<td><code>add_root_classes</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>--metaclasses / --no-metaclasses</code></td>
+<td><code>metaclasses</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>--add-ols-annotations / --no-add-ols-annotations</code></td>
+<td><code>add_ols_annotations</code></td>
+<td><code>bool</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>--type-objects / --no-type-objects</code></td>
+<td><code>type_objects</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>--assert-equivalent-classes / --no-...</code></td>
+<td><code>assert_equivalent_classes</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>--mixins-as-expressions / --no-...</code></td>
+<td><code>mixins_as_expressions</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>--use-native-uris / --no-use-native-uris</code></td>
+<td><code>use_native_uris</code></td>
+<td><code>bool</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>--default-permissible-value-type</code></td>
+<td><code>default_permissible_value_type</code></td>
+<td><code>str</code></td>
+<td><code>owl:Class</code></td>
+</tr>
+<tr>
+<td><code>--enum-iri-separator</code></td>
+<td><code>enum_iri_separator</code></td>
+<td><code>str</code></td>
+<td><code>#</code></td>
+</tr>
+<tr>
+<td><code>--ontology-uri-suffix</code></td>
+<td><code>ontology_uri_suffix</code></td>
+<td><code>str</code></td>
+<td><code>.owl.ttl</code></td>
+</tr>
+<tr>
+<td><code>--enum-inherits-as-subclass-of</code></td>
+<td><code>enum_inherits_as_subclass_of</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><em>(no CLI flag)</em></td>
+<td><code>simplify</code></td>
+<td><code>bool</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><em>(no CLI flag)</em></td>
+<td><code>use_swrl</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><em>(no CLI flag)</em></td>
+<td><code>target_profile</code></td>
+<td><code>str</code> (<code>dl</code>, <code>full</code>)</td>
+<td><code>dl</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cross-generator-common-options-also-work-under-owl">Cross-generator common options (also work under <code>owl:</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>CLI Flag</th>
+<th>Config YAML Key</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--format</code></td>
+<td><code>format</code></td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td><code>--metadata / --no-metadata</code></td>
+<td><code>metadata</code></td>
+<td><code>bool</code></td>
+</tr>
+<tr>
+<td><code>--mergeimports / --no-mergeimports</code></td>
+<td><code>mergeimports</code></td>
+<td><code>bool</code></td>
+</tr>
+<tr>
+<td><code>--useuris / --metauris</code></td>
+<td><code>useuris</code></td>
+<td><code>bool</code></td>
+</tr>
+<tr>
+<td><code>--log_level</code></td>
+<td><code>log_level</code></td>
+<td><code>str</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="options-that-can-only-be-passed-via-cli-not-config-yaml">Options that can ONLY be passed via CLI (not config YAML)</h3>
+<table>
+<thead>
+<tr>
+<th>CLI Flag</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--include / --exclude</code></td>
+<td>Project-level generator selection, not per-generator</td>
+</tr>
+<tr>
+<td><code>--config-file</code></td>
+<td>The config file path itself</td>
+</tr>
+<tr>
+<td><code>-d</code> (output directory)</td>
+<td>Project-level setting</td>
+</tr>
+<tr>
+<td><code>-o</code> (output file)</td>
+<td>Passed to <code>serialize()</code>, not constructor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-equivalent-config-for-the-pr-2484-experimental-profile">Example: equivalent config for the PR #2484 experimental profile</h3>
+<p>The experimental CLI command from PR #2484:</p>
+<pre><code class="language-bash">poetry run linkml generate owl \
+  --add-ols-annotations --metadata-profile ols --add-root-classes \
+  --metaclasses --mergeimports --use-native-uris --useuris \
+  --default-permissible-value-type &quot;http://www.w3.org/2002/07/owl#Class&quot; \
+  --enum-iri-separator &quot;#&quot; --format owl --metadata \
+  --no-assert-equivalent-classes --no-mixins-as-expressions \
+  --no-type-objects --no-stacktrace \
+  --ontology-uri-suffix .owl.ttl --log_level WARNING \
+  src/schema/nmdc.yaml &gt; local/nmdc-schema.ols.owl.ttl
+</code></pre>
+<p>Could instead be expressed in <code>gen-project-config.yaml</code> as:</p>
+<pre><code class="language-yaml">generator_args:
+  jsonschema:
+    include_range_class_descendants: true
+  owl:
+    metadata_profile: ols
+    add_ols_annotations: true
+    add_root_classes: true
+    metaclasses: true
+    mergeimports: true
+    use_native_uris: true
+    useuris: true
+    metadata: true
+    type_objects: false
+    assert_equivalent_classes: false
+    mixins_as_expressions: false
+    default_permissible_value_type: &quot;http://www.w3.org/2002/07/owl#Class&quot;
+    enum_iri_separator: &quot;#&quot;
+    ontology_uri_suffix: &quot;.owl.ttl&quot;
+    format: owl
+    log_level: WARNING
+</code></pre>
+<p>No CLI changes to the Makefile <code>gen-project</code> target would be needed -- just
+updating the config YAML would change the OWL output.</p>
+<hr />
+<h2 id="submitting-to-ontology-portals">Submitting to ontology portals</h2>
+<pre><code>LinkML YAML schema (src/schema/nmdc.yaml)
+    |
+    v
+linkml generate owl (with OLS-tuned config)
+    |
+    v
+OWL file (nmdc-schema.ols.owl.ttl)
+    |
+    +---&gt; BioPortal (self-service upload or pull URL)
+    |       - Low barrier, immediate
+    |
+    +---&gt; OLS4 (GitHub issue + spreadsheet at EBISPOT/ols4)
+            - Curated, weeks-to-months review
+            - Embeddings, semantic search, AI integration
+            - Fill spreadsheet carefully (learn from MIxS mistakes)
+            - May eventually separate schemas from ontologies (#1039)
+</code></pre>
+<h3 id="bioportal">BioPortal</h3>
+<p>Self-service submission at <a href="https://bioportal.bioontology.org/">bioportal.bioontology.org</a>.
+Upload the OWL file or point to a stable URL. Display is immediate after
+processing.</p>
+<h3 id="ols4">OLS4</h3>
+<p>Curated submission via <a href="https://github.com/EBISPOT/ols4">EBISPOT/ols4</a>. Requires
+filling the <a href="https://github.com/EBISPOT/ols4/blob/dev/New%20OLS%20ontology%20request.xlsx">OLS submission spreadsheet</a>
+and opening a GitHub issue.</p>
+<p>Recommended spreadsheet values for nmdc-schema:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>nmdcschema</code> (or similar, 5+ chars, lowercase)</td>
+<td>Must be unique across OLS</td>
+</tr>
+<tr>
+<td><code>preferredPrefix</code></td>
+<td><code>nmdc</code> or <code>NMDC</code></td>
+<td>Controls CURIE display. Match your actual CURIE pattern.</td>
+</tr>
+<tr>
+<td><code>base_uri</code></td>
+<td><code>https://w3id.org/nmdc/</code></td>
+<td><strong>Full URI, NOT a CURIE</strong> (MIxS got this wrong)</td>
+</tr>
+<tr>
+<td><code>ontology_purl</code></td>
+<td>Stable URL where OLS fetches the OWL</td>
+<td>Could be raw GitHub URL or w3id redirect</td>
+</tr>
+<tr>
+<td><code>definition_property</code></td>
+<td><code>skos:definition</code> or <code>IAO:0000115</code></td>
+<td>Whichever your OWL uses</td>
+</tr>
+<tr>
+<td><code>label_property</code></td>
+<td><code>rdfs:label</code></td>
+<td><strong>Only annotation properties</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="schemas-vs-ontologies-in-ols4">Schemas vs ontologies in OLS4</h3>
+<p><a href="https://github.com/EBISPOT/ols4/issues/1039">EBISPOT/ols4#1039</a> proposes
+separating schema-like artifacts (schema.org, biolink, MIxS) from ontologies in
+OLS4, potentially with a separate "Schemas" tab and lower search boosting.
+This doesn't block submission but is worth tracking.</p>
+<hr />
+<h2 id="mixs-as-a-worked-example">MIxS as a worked example</h2>
+<p>MIxS is the closest precedent for getting a LinkML schema into ontology portals.</p>
+<h3 id="submission-timeline">Submission timeline</h3>
+<p>MIxS was submitted to OLS4 via <a href="https://github.com/EBISPOT/ols4/issues/951">EBISPOT/ols4#951</a>
+(Aug 2025, by Peter Woollard / EBI). The OWL file is published at a stable GitHub
+raw URL from the MIxS repository.</p>
+<h3 id="what-went-right">What went right</h3>
+<ul>
+<li>OWL file at a stable URL with 625 DatatypeProperty terms</li>
+<li>Permanent URL at <code>https://w3id.org/mixs</code></li>
+<li>Labels via <code>rdfs:label</code>, definitions via <code>skos:definition</code></li>
+</ul>
+<h3 id="configuration-mistakes-to-avoid">Configuration mistakes to avoid</h3>
+<p>The OWL file itself was correct -- the OLS4 intake spreadsheet had wrong values
+(<a href="https://github.com/EBISPOT/ols4/issues/1136">EBISPOT/ols4#1136</a>):</p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CURIEs show as bare numbers (<code>0001107</code> not <code>MIXS:0001107</code>)</td>
+<td><code>preferredPrefix</code> set to <code>gscmixs</code> instead of <code>MIXS</code></td>
+<td>Use uppercase prefix matching your CURIE pattern</td>
+</tr>
+<tr>
+<td>Labels/definitions not displaying</td>
+<td><code>base_uri</code> used CURIE (<code>MIXS:</code>) instead of full URI (<code>https://w3id.org/mixs/</code>)</td>
+<td>Always use full URI</td>
+</tr>
+<tr>
+<td>Wrong label_property</td>
+<td>Array included <code>owl:DatatypeProperty</code> (an RDF type, not a label property)</td>
+<td>Use <code>rdfs:label</code> only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="zero-named-individuals-requirement">Zero Named Individuals requirement</h3>
+<p>OLS and other ontology browsers expect schemas to have zero Named Individuals.
+If individuals are present, the OWL may be treated as instance data rather than
+a schema/TBox. Verify this in Protege before submission.</p>
+<h3 id="ols-display-bugs">OLS display bugs</h3>
+<p>Chris Mungall and Nico Matentzoglu identified that display bugs in OLS for MIxS
+(<a href="https://github.com/EBISPOT/ols4/issues/1136">EBISPOT/ols4#1136</a>) were all
+OLS configuration problems, not OWL generation problems. Nico contributed an
+<code>owl:Class</code> syntax fix upstream.</p>
+<hr />
+<h2 id="validation-checklist">Validation checklist</h2>
+<p>Before submitting to portals:</p>
+<ul>
+<li>[ ] <strong>Protege</strong>: Open the OWL file, check for parse errors, confirm zero Named Individuals</li>
+<li>[ ] <strong>ROBOT report</strong>: Run if pursuing OBO Foundry compliance</li>
+<li>[ ] <strong>Automated checks</strong>: Compare class/property counts against expectations, review warnings from gen-owl</li>
+<li>[ ] <strong>Known nmdc-schema OWL issues</strong>:<ul>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2771">#2771</a>: <code>equals_string</code> warnings, "Multiple owl types" error</li>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2614">#2614</a>: Un-escaped UCUM unit brackets break OWL syntax</li>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/1728">#1728</a>: MIxS slot URIs use names instead of numeric IDs</li>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/1467">#1467</a>: Long-standing goal to produce error-free OWL</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="upcoming-linkml-changes">Upcoming LinkML changes</h2>
+<p>Three open PRs (all by @mgskjaeveland, updated 2026-02-26) will change OWL
+generation behavior in the next LinkML release:</p>
+<table>
+<thead>
+<tr>
+<th>PR</th>
+<th>What</th>
+<th>Impact</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/linkml/linkml/pull/3187">#3187</a></td>
+<td><code>children_are_mutually_disjoint</code> implemented</td>
+<td>Previously silently ignored. Will emit <code>owl:AllDisjointClasses</code>. If any nmdc-schema class uses this flag, OWL output changes.</td>
+<td>Respects existing flag</td>
+</tr>
+<tr>
+<td><a href="https://github.com/linkml/linkml/pull/3219">#3219</a></td>
+<td>Covering axiom for abstract classes</td>
+<td>Every <code>abstract: true</code> class with children gets <code>AbstractClass rdfs:subClassOf (Child1 or Child2 or ...)</code>. Significant change for nmdc-schema which has abstract classes.</td>
+<td><strong>On by default</strong>. Suppress with <code>--skip-abstract-class-as-unionof-subclasses</code>.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/linkml/linkml/pull/3221">#3221</a></td>
+<td><code>xsd:anyURI</code> emitted as URIRef instead of typed literal</td>
+<td>Changes RDF serialization of URI-typed slots. nmdc-schema has many URI-typed identifiers.</td>
+<td>By Corey Cox</td>
+</tr>
+</tbody>
+</table>
+<p>Already available in v1.10.0 (nmdc-schema's current version):</p>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>PR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--enum-inherits-as-subclass-of</code> flag</td>
+<td><a href="https://github.com/linkml/linkml/pull/3189">#3189</a></td>
+</tr>
+<tr>
+<td><code>subproperty_of</code> support in generators</td>
+<td><a href="https://github.com/linkml/linkml/pull/3065">#3065</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="open-questions-and-next-steps">Open questions and next steps</h2>
+<ul>
+<li>
+<p><strong>Should <code>--include owl</code> stay in gen-project?</strong>
+  <a href="https://github.com/microbiomedata/nmdc-schema/issues/2749">#2749</a> asks whether
+  anyone uses the current OWL output. If submitting to portals, the OLS-tuned
+  profile should be a separate Makefile target rather than the <code>gen-project</code> side
+  effect.</p>
+</li>
+<li>
+<p><strong>Should the OLS-tuned config go into gen-project-config.yaml?</strong>
+  Adding an <code>owl:</code> block to the existing config would change the default OWL
+  output without any Makefile changes. This is the lowest-friction path but
+  conflates the "build" OWL with the "portal submission" OWL.</p>
+</li>
+<li>
+<p><strong>Portal submission timeline</strong>: BioPortal first (low barrier, iterate), then
+  OLS4 using the MIxS submission as a template. Resolve existing OWL issues
+  (<a href="https://github.com/microbiomedata/nmdc-schema/issues/2771">#2771</a>,
+  <a href="https://github.com/microbiomedata/nmdc-schema/issues/2614">#2614</a>) before
+  submitting.</p>
+</li>
+<li>
+<p><strong>Wait for LinkML PRs #3187 and #3219 to merge</strong> before generating a
+  portal-ready OWL -- they will change output for abstract classes and disjoint
+  children.</p>
+</li>
+<li>
+<p><strong>Test <code>--enum-inherits-as-subclass-of</code></strong> (available now in v1.10.0) to see
+  if enum hierarchies improve portal browsability.</p>
+</li>
+</ul>
+<hr />
+<h2 id="references">References</h2>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LinkML OWL generator docs</td>
+<td><a href="https://linkml.io/linkml/generators/owl.html">https://linkml.io/linkml/generators/owl.html</a></td>
+</tr>
+<tr>
+<td>linkml-project-copier standard config</td>
+<td><a href="https://github.com/linkml/linkml-project-copier/pull/96">PR #96</a></td>
+</tr>
+<tr>
+<td>MIxS OLS submission</td>
+<td><a href="https://github.com/EBISPOT/ols4/issues/951">EBISPOT/ols4#951</a></td>
+</tr>
+<tr>
+<td>MIxS OLS display bugs</td>
+<td><a href="https://github.com/EBISPOT/ols4/issues/1136">EBISPOT/ols4#1136</a></td>
+</tr>
+<tr>
+<td>Schemas vs ontologies in OLS</td>
+<td><a href="https://github.com/EBISPOT/ols4/issues/1039">EBISPOT/ols4#1039</a></td>
+</tr>
+<tr>
+<td>nmdc-schema OWL usage question</td>
+<td><a href="https://github.com/microbiomedata/nmdc-schema/issues/2749">#2749</a></td>
+</tr>
+<tr>
+<td>OWL generation warnings</td>
+<td><a href="https://github.com/microbiomedata/nmdc-schema/issues/2771">#2771</a></td>
+</tr>
+<tr>
+<td>OLS submission spreadsheet</td>
+<td><a href="https://github.com/EBISPOT/ols4/blob/dev/New%20OLS%20ontology%20request.xlsx">New OLS ontology request.xlsx</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "hide_page_title"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
+      
+    
+  </body>
+</html>

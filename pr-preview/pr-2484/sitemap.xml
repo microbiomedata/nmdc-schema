@@ -3165,7 +3165,7 @@
          <lastmod>2026-02-27</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/owl-generation-experiments/</loc>
+         <loc>https://microbiomedata.github.io/nmdc-schema/owl-generation/</loc>
          <lastmod>2026-02-27</lastmod>
     </url>
     <url>
@@ -3502,10 +3502,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/resolution_categories/</loc>
-         <lastmod>2026-02-27</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/retained-ideas-from-pr-2484/</loc>
          <lastmod>2026-02-27</lastmod>
     </url>
     <url>
