@@ -66,7 +66,9 @@ through Feb 2026) that affect the build system and project layout:
 ## Pre-release Process
 
 Use pre-releases to test schema changes on PyPI before a full release.
-See `MAINTAINERS.md` for the full release workflow.
+The authoritative publish workflow is `.github/workflows/pypi-publish.yaml`.
+See also `MAINTAINERS.md` for general release guidance (note: some details
+there may be outdated).
 
 ### Tag format
 
@@ -89,8 +91,11 @@ The existing `pypi-publish.yaml` workflow triggers on any release
 
 ### PyPI behavior
 
-Pre-release versions (containing `rc`) are **not installed by default**.
-Users must opt in:
+The git tag `v11.17.0-rc.1` is normalized to PEP 440 version `11.17.0rc1`
+on PyPI (the `v` prefix and `-rc.` punctuation are stripped/collapsed by
+`poetry-dynamic-versioning`).
+
+Pre-release versions are **not installed by default**. Users must opt in:
 ```bash
 pip install nmdc-schema==11.17.0rc1   # specific version
 pip install --pre nmdc-schema          # latest including pre-releases
