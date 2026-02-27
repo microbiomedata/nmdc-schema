@@ -233,7 +233,7 @@ MIxS is the closest precedent for getting a LinkML schema into ontology portals.
 
 MIxS was submitted to OLS4 via [EBISPOT/ols4#951](https://github.com/EBISPOT/ols4/issues/951)
 (Aug 2025, by Peter Woollard / EBI). The OWL file is published at a stable GitHub
-raw URL from the MIxS repository.
+raw URL from the MIxS repository (`https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/project/owl/mixs.owl.ttl`).
 
 ### What went right
 
@@ -291,7 +291,7 @@ generation behavior in the next LinkML release:
 |----|------|--------|---------|
 | [#3187](https://github.com/linkml/linkml/pull/3187) | `children_are_mutually_disjoint` implemented | Previously silently ignored. Will emit `owl:AllDisjointClasses`. If any nmdc-schema class uses this flag, OWL output changes. | Respects existing flag |
 | [#3219](https://github.com/linkml/linkml/pull/3219) | Covering axiom for abstract classes | Every `abstract: true` class with children gets `AbstractClass rdfs:subClassOf (Child1 or Child2 or ...)`. Significant change for nmdc-schema which has abstract classes. | **On by default**. Suppress with `--skip-abstract-class-as-unionof-subclasses`. |
-| [#3221](https://github.com/linkml/linkml/pull/3221) | `xsd:anyURI` emitted as URIRef instead of typed literal | Changes RDF serialization of URI-typed slots. nmdc-schema has many URI-typed identifiers. | By Corey Cox |
+| [#3221](https://github.com/linkml/linkml/pull/3221) | `xsd:anyURI` emitted as URIRef instead of typed literal | Changes RDF serialization of URI-typed slots. nmdc-schema has many URI-typed identifiers. | N/A -- behavior change (by Corey Cox) |
 
 Already available in v1.10.0 (nmdc-schema's current version):
 
