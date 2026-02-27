@@ -1139,22 +1139,8 @@
                     ],
                     "description": "Concentration of dissolved oxygen in the oil field produced fluids as it contributes to oxygen-corrosion and microbial activity (e.g. Mic)"
                 },
-                "dna_collect_site": {
-                    "description": "Provide information on the site your DNA sample was collected from",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "dna_isolate_meth": {
                     "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_organisms": {
-                    "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
                     "type": [
                         "string",
                         "null"
@@ -3315,22 +3301,8 @@
                     ],
                     "description": "Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
                 },
-                "rna_collect_site": {
-                    "description": "Provide information on the site your RNA sample was collected from",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "rna_isolate_meth": {
                     "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_organisms": {
-                    "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
                     "type": [
                         "string",
                         "null"
@@ -5925,12 +5897,6 @@
                             "$ref": "#/$defs/OntologyClass"
                         },
                         {
-                            "$ref": "#/$defs/EnvironmentalMaterialTerm"
-                        },
-                        {
-                            "$ref": "#/$defs/Pathway"
-                        },
-                        {
                             "$ref": "#/$defs/OrthologyGroup"
                         }
                     ],
@@ -5966,12 +5932,6 @@
                     "anyOf": [
                         {
                             "$ref": "#/$defs/OntologyClass"
-                        },
-                        {
-                            "$ref": "#/$defs/EnvironmentalMaterialTerm"
-                        },
-                        {
-                            "$ref": "#/$defs/Pathway"
                         },
                         {
                             "$ref": "#/$defs/OrthologyGroup"
@@ -6888,95 +6848,6 @@
             "title": "EluentIntroductionCategoryEnum",
             "type": "string"
         },
-        "EnvironmentalMaterialTerm": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "definition": {
-                    "description": "The definition of the ontology term as provided by the ontology.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "is_obsolete": {
-                    "description": "A boolean value indicating whether the ontology term is obsolete.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "is_root": {
-                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "relations": {
-                    "items": {
-                        "$ref": "#/$defs/OntologyRelation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:EnvironmentalMaterialTerm"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "type"
-            ],
-            "title": "EnvironmentalMaterialTerm",
-            "type": "object"
-        },
         "EukEval": {
             "additionalProperties": false,
             "description": "This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.",
@@ -7259,7 +7130,11 @@
                 "malformed_data",
                 "assembly_size_too_small",
                 "no_valid_data_generated",
-                "other"
+                "other",
+                "low_molecular_formula_assignment",
+                "low_metabolite_assignment",
+                "low_c13_isotopologue_assignment",
+                "low_peptide_to_spectrum_match_rate"
             ],
             "title": "FailureWhatEnum",
             "type": "string"
@@ -9650,6 +9525,13 @@
                         "null"
                     ]
                 },
+                "c13_isotopologue_count": {
+                    "description": "The number of two-dimensional mass-to-charge (m/z) versus retention time features that have been isotopically characterized as either 13C-containing isotopologues or monoisotopic (12C-only) features.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -9727,6 +9609,20 @@
                     "description": "A human readable label for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "peak_assignment_count": {
+                    "description": "The total number of two dimensional mass to charge (m/z) : retention time features with associated metabolite identification in the metabolomics or lipidomics analysis.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "peak_count": {
+                    "description": "The total number of two dimensional mass to charge (m/z) : retention time features detected in the metabolomics analysis.",
+                    "type": [
+                        "integer",
                         "null"
                     ]
                 },
@@ -10590,6 +10486,13 @@
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
+                "mean_peptide_count": {
+                    "description": "The average number of peptides per protein identified in the metaproteomics analysis.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "metaproteomics_analysis_category": {
                     "$ref": "#/$defs/MetaproteomicsAnalysisCategoryEnum",
                     "description": "The category of metaproteomics analysis being performed."
@@ -10600,6 +10503,24 @@
                         "string",
                         "null"
                     ]
+                },
+                "peptide_to_spectrum_match_count": {
+                    "description": "Total number of MS2 spectra with a false discovery rate passing peptide match.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "peptide_to_spectrum_match_rate": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The percentage of peptide-to-spectrum matches relative to the total number of spectra analyzed."
                 },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
@@ -10633,6 +10554,13 @@
                     "$ref": "#/$defs/StatusEnum",
                     "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
                 },
+                "razor_protein_count": {
+                    "description": "The minimal protein set that describes the unique peptide sequences identified after applying Razor Protein parsimony.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
                     "type": [
@@ -10651,12 +10579,26 @@
                         "null"
                     ]
                 },
+                "total_protein_count": {
+                    "description": "The total number of distinct proteins identified in the metaproteomics analysis.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
                         "nmdc:MetaproteomicsAnalysis"
                     ],
                     "type": "string"
+                },
+                "unique_peptide_seq_count": {
+                    "description": "The number of distinct peptide sequences identified in the LC-MS/MS file.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "version": {
                     "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
@@ -11874,6 +11816,20 @@
                         "null"
                     ]
                 },
+                "peak_assignment_count": {
+                    "description": "The number of m/z peaks with assigned molecular formulas in the analysis.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "peak_count": {
+                    "description": "The total number of peaks detected in the analysis.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -12414,95 +12370,6 @@
             ],
             "title": "OxyStatSampEnum",
             "type": "string"
-        },
-        "Pathway": {
-            "additionalProperties": false,
-            "description": "A pathway is a sequence of steps/reactions carried out by an organism or community of organisms",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "definition": {
-                    "description": "The definition of the ontology term as provided by the ontology.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "is_obsolete": {
-                    "description": "A boolean value indicating whether the ontology term is obsolete.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "is_root": {
-                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "relations": {
-                    "items": {
-                        "$ref": "#/$defs/OntologyRelation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:Pathway"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "type"
-            ],
-            "title": "Pathway",
-            "type": "object"
         },
         "PersonValue": {
             "additionalProperties": false,
@@ -13146,6 +13013,17 @@
                 "source_system_of_record": {
                     "$ref": "#/$defs/SourceSystemEnum",
                     "description": "Identifies the system of origin for a record"
+                },
+                "submission_portal_identifier": {
+                    "description": "The UUID of the NMDC Submission Portal entry that generated this record.",
+                    "items": {
+                        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -14475,6 +14353,17 @@
                         "array",
                         "null"
                     ]
+                },
+                "provenance_metadata": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ProvenanceMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Provides information about the provenance of a record."
                 },
                 "related_identifiers": {
                     "description": "Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC",
