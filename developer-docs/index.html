@@ -567,6 +567,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#what-are-linkml-readonly-metaslots-and-why-shouldnt-i-assert-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are LinkML readonly metaslots and why shouldn't I assert them?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-architectural-changes-were-made-between-oct-2025-and-feb-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      What architectural changes were made between Oct 2025 and Feb 2026?
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -659,6 +677,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#what-are-linkml-readonly-metaslots-and-why-shouldnt-i-assert-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are LinkML readonly metaslots and why shouldn't I assert them?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-architectural-changes-were-made-between-oct-2025-and-feb-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      What architectural changes were made between Oct 2025 and Feb 2026?
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -691,6 +727,60 @@
 <h3 id="where-is-the-owl-generation-documentation">Where is the OWL generation documentation?</h3>
 <p><a href="../owl-generation/">OWL Generation</a> -- covers current build process, recommended
 config, CLI/YAML flag mapping, portal submission guidance, and upcoming LinkML changes.</p>
+<h3 id="what-are-linkml-readonly-metaslots-and-why-shouldnt-i-assert-them">What are LinkML readonly metaslots and why shouldn't I assert them?</h3>
+<p>The LinkML metamodel defines 12 <strong>readonly</strong> slots that are automatically populated
+by the schema loader or generators: <code>definition_uri</code>, <code>domain_of</code>, <code>from_schema</code>,
+<code>generation_date</code>, <code>imported_from</code>, <code>is_usage_slot</code>, <code>metamodel_version</code>, <code>owner</code>,
+<code>source_file</code>, <code>source_file_date</code>, <code>source_file_size</code>, <code>usage_slot_name</code>.</p>
+<p><strong>Do not add these to hand-edited schema YAML files</strong> under <code>src/schema/</code>. The
+loader fills them in at runtime, so asserting them is redundant and can cause
+confusion when values drift from what the loader would compute.</p>
+<p>For generated files like <code>src/schema/mixs.yaml</code>, the MIxS build pipeline
+(<code>makefiles/mixs.Makefile</code>) strips all 12 readonly slots via <code>yq eval</code> as part
+of the dematerialization step
+(<a href="https://github.com/microbiomedata/nmdc-schema/pull/2696">PR #2696</a>).</p>
+<h3 id="what-architectural-changes-were-made-between-oct-2025-and-feb-2026">What architectural changes were made between Oct 2025 and Feb 2026?</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>PR</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-02-26</td>
+<td><a href="https://github.com/microbiomedata/nmdc-schema/pull/2848">#2848</a></td>
+<td><strong>Makefile reorganization</strong>: MIxS pipeline moved to <code>makefiles/mixs.Makefile</code>, migrator targets to <code>makefiles/migrators.Makefile</code>. RDF conversion tooling removed.</td>
+</tr>
+<tr>
+<td>2026-02-26</td>
+<td><a href="https://github.com/microbiomedata/nmdc-schema/pull/2849">#2849</a></td>
+<td><strong>LinkML 1.10.0 upgrade</strong>: new OWL flags (<code>--enum-inherits-as-subclass-of</code>), Python 3.9 dropped.</td>
+</tr>
+<tr>
+<td>2026-02-26</td>
+<td><a href="https://github.com/microbiomedata/nmdc-schema/pull/2846">#2846</a></td>
+<td><strong>Dead code removal</strong>: <code>about.yaml</code> and experimental scripts removed.</td>
+</tr>
+<tr>
+<td>2026-02-21</td>
+<td><a href="https://github.com/microbiomedata/nmdc-schema/pull/2302">#2302</a></td>
+<td><strong>Downloads page</strong>: schema-derived JSON and YAML files downloadable via docs website.</td>
+</tr>
+<tr>
+<td>2026-02-20</td>
+<td><a href="https://github.com/microbiomedata/nmdc-schema/pull/2839">#2839</a></td>
+<td><strong>Unified LinkML CLI</strong>: build uses <code>linkml generate owl</code>, <code>linkml generate json-schema</code>, etc. instead of legacy <code>gen-owl</code>, <code>gen-json-schema</code>.</td>
+</tr>
+<tr>
+<td>2025-10-28</td>
+<td><a href="https://github.com/microbiomedata/nmdc-schema/pull/2696">#2696</a></td>
+<td><strong>Dematerialize mixs.yaml</strong>: all 12 readonly metaslots stripped from generated <code>mixs.yaml</code> (35% line reduction).</td>
+</tr>
+</tbody>
+</table>
 
 
 
