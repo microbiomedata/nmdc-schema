@@ -1,5 +1,5 @@
 workflow_execution_set:
-  - id: nmdc:wfnom-11-547rwq94.1
+  - id: nmdc:wfnom-11-547rwq94.12
     type: nmdc:NomAnalysis
     execution_resource: EMSL-RZR
     processing_institution: NMDC

@@ -10,13 +10,13 @@ material_processing_set:
     library_type: DNA
     type: nmdc:LibraryPreparation
 processed_sample_set:
-  - id: nmdc:procsm-99-xyz1
+  - id: nmdc:procsm-99-xyz12
     name: first processed sample set
     type: nmdc:ProcessedSample
-  - id: nmdc:procsm-99-xyz2
+  - id: nmdc:procsm-99-xyz22
     name: first DNA extract
     type: nmdc:ProcessedSample
-  - id: nmdc:procsm-99-xyz3
+  - id: nmdc:procsm-99-xyz32
     name: first library
     type: nmdc:ProcessedSample
 material_processing_set:
@@ -32,7 +32,7 @@ material_processing_set:
       - DNA
     type: nmdc:Extraction
 biosample_set:
-  - id: nmdc:bsm-99-abcdef1
+  - id: nmdc:bsm-99-abcdef12
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-11-34xj1150
@@ -54,7 +54,7 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-  - id: nmdc:bsm-99-abcdef2
+  - id: nmdc:bsm-99-abcdef22
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-11-34xj1150
@@ -76,7 +76,7 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-  - id: nmdc:bsm-99-abcdef3
+  - id: nmdc:bsm-99-abcdef32
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-11-34xj1150
@@ -120,7 +120,7 @@ instrument_set:
     vendor: illumina
     type: nmdc:Instrument
 workflow_execution_set:
-  - id: nmdc:wfrqc-12-63da5n74.1
+  - id: nmdc:wfrqc-12-63da5n74.12
     name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.1 '
     started_at_time: '2023-03-23T17:17:05.111689+00:00'
     ended_at_time: '2023-03-23T17:17:05.111725+00:00'

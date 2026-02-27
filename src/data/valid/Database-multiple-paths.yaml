@@ -1,5 +1,5 @@
 biosample_set:
-  - id: nmdc:bsm-99-dtTMNb
+  - id: nmdc:bsm-99-dtTMNb4
     name: real biosample from the field
     associated_studies:
       - nmdc:sty-00-abc123
@@ -46,7 +46,7 @@ biosample_set:
         id: ENVO:00005792
     type: nmdc:Biosample
 data_generation_set:
-  - id: nmdc:dgns-99-zUCd5N
+  - id: nmdc:dgns-99-zUCd5N2
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108335
