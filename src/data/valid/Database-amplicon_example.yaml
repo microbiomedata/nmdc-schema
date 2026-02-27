@@ -1,8 +1,8 @@
 data_generation_set:
-- id: nmdc:dgns-11-abcd
+- id: nmdc:dgns-11-abcd2
   analyte_category: amplicon_sequencing_assay
   has_input: 
-    - nmdc:procsm-11-def124
+    - nmdc:procsm-11-def1242
   associated_studies: 
    - nmdc:sty-00-abc123
   name: 16s amplicon sequencing of nmdc:bsm-99-dtTMNb
@@ -17,7 +17,7 @@ material_processing_set:
     - nmdc:bsm-99-dtTMNb
   has_output: 
     - nmdc:procsm-11-def123
-- id: nmdc:libprp-11-abcdef
+- id: nmdc:libprp-11-abcdef2
   target_gene: 16S_rRNA
   target_subfragment: 
     has_raw_value: V9
@@ -26,12 +26,12 @@ material_processing_set:
   has_input: 
    - nmdc:procsm-11-def123
   has_output: 
-   - nmdc:procsm-11-def124
+   - nmdc:procsm-11-def1242
 
 processed_sample_set:
 - id: nmdc:procsm-11-def123
   type: nmdc:ProcessedSample
   name: Extrated DNA for nmdc:bsm-99-dtTMNb
-- id: nmdc:procsm-11-def124
+- id: nmdc:procsm-11-def1242
   type: nmdc:ProcessedSample
   name: 16S amplicon library for nmdc:bsm-99-dtTMNb

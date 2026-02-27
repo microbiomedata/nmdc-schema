@@ -17,7 +17,7 @@ data_generation_set:
     type: nmdc:NucleotideSequencing
     associated_studies:
       - nmdc:sty-00-555xxx
-  - id: nmdc:dgns-99-gKlQlF
+  - id: nmdc:dgns-99-gKlQlF2
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108340

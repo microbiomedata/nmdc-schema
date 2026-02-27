@@ -1,6 +1,6 @@
 #example populated by w/example mostly from NEON.D16.WREF.DP1.10107.001.mms_metagenomeDnaExtraction.2019-06.expanded.20230113T225219Z.csv
 material_processing_set:
-  - id: nmdc:extrp-99-abcdef
+  - id: nmdc:extrp-99-abcdef2
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
     has_input:
       - nmdc:procsm-99-123456

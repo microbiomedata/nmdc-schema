@@ -1,5 +1,5 @@
 biosample_set:
-  - id: nmdc:bsm-99-dtTMNb
+  - id: nmdc:bsm-99-dtTMNb3
     associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
