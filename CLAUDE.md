@@ -80,14 +80,37 @@ all new pre-releases.
 
 ### Steps
 
+Follow the authoritative checklist at
+[`infra-admin/releases/nmdc-schema.md`](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md).
+The key steps are:
+
 1. Ensure `make squeaky-clean all test` passes locally.
-2. Go to **Releases → Draft a new release** on GitHub.
-3. Create a new tag matching the format above (e.g. `v11.17.0-rc.1`).
-4. Check the **"Set as a pre-release"** box.
-5. Click **Publish release**.
+2. **Commit the regenerated artifacts** (`git add . && git commit`) and
+   push to the branch you are releasing from. The build produces files
+   like JSON Schema, OWL, and `nmdc_schema/nmdc_pydantic.py` that must
+   be checked in before tagging — otherwise the published package will
+   be missing them.
+3. Go to **Releases → Draft a new release** on GitHub.
+4. Create a new tag matching the format above (e.g. `v11.17.0-rc.1`).
+5. Check the **"Set as a pre-release"** box (for pre-releases only).
+6. Click **Publish release**.
 
 The existing `pypi-publish.yaml` workflow triggers on any release
 (including pre-releases) and publishes to PyPI via trusted publishing.
+
+### Dynamic versioning
+
+The build uses `poetry-dynamic-versioning` to derive the package version
+from the git tag. This requires specific `pyproject.toml` structure:
+
+- `[project]` must have `dynamic = ["version"]` and **no** hardcoded
+  `version` field.
+- `[tool.poetry]` must have `version = "0.0.0"` as a placeholder.
+- `[build-system]` uses `poetry_dynamic_versioning.backend`.
+
+If `version = "0.0.0"` is in `[project]` instead of `[tool.poetry]`,
+the plugin cannot substitute the version and the package builds as
+`nmdc_schema-0.0.0`, which PyPI will reject. See PR #2869 for context.
 
 ### PyPI behavior
 
