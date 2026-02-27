@@ -522,12 +522,24 @@ classes:
     description: Metadata pertaining to how a record was created.
     class_uri: nmdc:ProvenanceMetadata
     slots:
+      - add_date
       - git_url
+      - mod_date
       - version
       - source_system_of_record
       - submission_portal_identifier
       - type
     slot_usage:
+      add_date:
+        range: date
+        comments:
+          - "range: date is the LinkML date type (linkml:date, mapped to xsd:date), which accepts YYYY-MM-DD strings. Constrained here within ProvenanceMetadata; the global range remains string for backward compatibility with GOLD-format dates on DataGeneration."
+          - In YAML data files, date values must be quoted (e.g., '2021-03-31') to prevent PyYAML from parsing them as native datetime.date objects, which linkml-validate rejects.
+      mod_date:
+        range: date
+        comments:
+          - "range: date is the LinkML date type (linkml:date, mapped to xsd:date), which accepts YYYY-MM-DD strings. Constrained here within ProvenanceMetadata; the global range remains string for backward compatibility with GOLD-format dates on DataGeneration."
+          - In YAML data files, date values must be quoted (e.g., '2023-01-25') to prevent PyYAML from parsing them as native datetime.date objects, which linkml-validate rejects.
       version:
         description: The version tag of the software used to generate the NMDC metadata record
       git_url:

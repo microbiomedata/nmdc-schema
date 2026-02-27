@@ -167,12 +167,10 @@ biosample_set:
     ecosystem_type: Soil
     ecosystem_subtype: Wetlands
     specific_ecosystem: Permafrost
-    add_date: 17-MAR-17 04.55.54.717000000 PM
     community: microbial communities
     habitat: Fen
     samp_name: 11E1M metaG
     location: Stordalen Mire, Sweden
-    mod_date: '08-JAN-20 02.49.23.000000000 PM'
     ncbi_taxonomy_name: permafrost metagenome
     sample_collection_site: Mire fen
   - id: nmdc:bsm-99-dge3H9
@@ -217,13 +215,11 @@ biosample_set:
     ecosystem_type: Soil
     ecosystem_subtype: Unclassified
     specific_ecosystem: Forest Soil
-    add_date: 17-AUG-17 05.38.34.719000000 PM
     community: microbial communities
     habitat: soil
     samp_name: Inc-BW-C-14-O
     location: Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United
       States
-    mod_date: '08-JAN-20 02.49.23.000000000 PM'
     ncbi_taxonomy_name: soil metagenome
     sample_collection_site: forest soil
   - id: nmdc:bsm-99-dc6tg6
@@ -267,13 +263,11 @@ biosample_set:
     ecosystem_type: Rhizosphere
     ecosystem_subtype: Soil
     specific_ecosystem: Unclassified
-    add_date: 29-MAR-18 01.27.40.709000000 PM
     community: microbial communities
     habitat: rhizosphere
     host_name: Carex aquatilis
     samp_name: 4-1-23 metaG
     location: University of Washington, Seatle, WA, United States
-    mod_date: '08-JAN-20 02.49.25.000000000 PM'
     ncbi_taxonomy_name: rhizosphere metagenome
     sample_collection_site: Peat Soil
 data_object_set:

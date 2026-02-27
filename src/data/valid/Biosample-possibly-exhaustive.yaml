@@ -1499,13 +1499,11 @@ zinc:
   has_raw_value: 2.5 mg/kg
   has_unit: mg/kg
   has_numeric_value: 2.5
-add_date: '2021-03-31'
 community: no_example_from_mixs
 habitat: unconstrained text
 host_name: snail is an example value, but unconstrained text is accepted at this point
 location: unconstrained text. should we even keep this slot? check if it has been
   used in MongoDB.
-mod_date: '2023-01-25'
 ncbi_taxonomy_name: soil metagenome
 proport_woa_temperature: no example from MIxS
 salinity_category: halotolerant is an example from the schema, but MIxS doesn't provide
@@ -1569,6 +1567,8 @@ nitrate_nitrogen:
   has_unit: mg/kg
 provenance_metadata:
   type: nmdc:ProvenanceMetadata
+  add_date: '2021-03-31'
+  mod_date: '2023-01-25'
   git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
   version: v2.12.0
   source_system_of_record: NMDC_Submission_Portal

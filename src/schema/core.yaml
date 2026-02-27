@@ -859,12 +859,10 @@ classes:
       - ecosystem_path_id
 
       ## GOLD specific fields
-      - add_date
       - community
       - habitat
       - host_name
       - location
-      - mod_date
       - ncbi_taxonomy_name
       - proport_woa_temperature
       - salinity_category

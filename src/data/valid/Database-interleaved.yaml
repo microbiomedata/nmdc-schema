@@ -45,11 +45,9 @@ biosample_set:
   ecosystem_type: Freshwater
   ecosystem_subtype: Groundwater
   specific_ecosystem: Coalbed water
-  add_date: 28-JUL-14 12.00.00.000000000 AM
   community: microbial communities
   habitat: Coalbed water
   location: from the Lithgow State Coal Mine, New South Wales, Australia
-  mod_date: 26-AUG-16 01.50.27.000000000 PM
   ncbi_taxonomy_name: coal metagenome
   sample_collection_site: Lithgow State Coal Mine
 - id: nmdc:bsm-99-AtTUOs
@@ -101,11 +99,9 @@ biosample_set:
   ecosystem_type: Freshwater
   ecosystem_subtype: Groundwater
   specific_ecosystem: Coalbed water
-  add_date: 28-JUL-14 12.00.00.000000000 AM
   community: microbial communities
   habitat: Coalbed water
   location: from the Lithgow State Coal Mine, New South Wales, Australia
-  mod_date: 26-AUG-16 01.50.27.000000000 PM
   ncbi_taxonomy_name: coal metagenome
   sample_collection_site: Lithgow State Coal Mine
 - id: nmdc:bsm-99-eBVHjN
@@ -154,11 +150,9 @@ biosample_set:
   ecosystem_type: Freshwater
   ecosystem_subtype: Groundwater
   specific_ecosystem: Coalbed water
-  add_date: 28-JUL-14 12.00.00.000000000 AM
   community: microbial communities
   habitat: Coalbed water
   location: from the Lithgow State Coal Mine, New South Wales, Australia
-  mod_date: 26-AUG-16 01.50.27.000000000 PM
   ncbi_taxonomy_name: coal metagenome
   sample_collection_site: Lithgow State Coal Mine
 - id: nmdc:bsm-99-TDPHTh
@@ -207,11 +201,9 @@ biosample_set:
   ecosystem_type: Freshwater
   ecosystem_subtype: Groundwater
   specific_ecosystem: Coalbed water
-  add_date: 28-JUL-14 12.00.00.000000000 AM
   community: microbial communities
   habitat: Coalbed water
   location: from the Lithgow State Coal Mine, New South Wales, Australia
-  mod_date: 26-AUG-16 01.50.27.000000000 PM
   ncbi_taxonomy_name: coal metagenome
   sample_collection_site: Lithgow State Coal Mine
 - id: nmdc:bsm-99-dtTMNb2
@@ -702,11 +694,9 @@ biosample_set:
   ecosystem_type: Soil
   ecosystem_subtype: Wetlands
   specific_ecosystem: Permafrost
-  add_date: 17-MAR-17 04.55.54.717000000 PM
   community: microbial communities
   habitat: Fen
   location: Stordalen Mire, Sweden
-  mod_date: 08-JAN-20 02.49.23.000000000 PM
   ncbi_taxonomy_name: permafrost metagenome
   sample_collection_site: Mire fen
 - id: nmdc:bsm-99-dge3H9
@@ -752,12 +742,10 @@ biosample_set:
   ecosystem_type: Soil
   ecosystem_subtype: Unclassified
   specific_ecosystem: Forest Soil
-  add_date: 17-AUG-17 05.38.34.719000000 PM
   community: microbial communities
   habitat: soil
   location: Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United
     States
-  mod_date: 08-JAN-20 02.49.23.000000000 PM
   ncbi_taxonomy_name: soil metagenome
   sample_collection_site: forest soil
 - id: nmdc:bsm-99-dc6tg6
@@ -802,12 +790,10 @@ biosample_set:
   ecosystem_type: Rhizosphere
   ecosystem_subtype: Soil
   specific_ecosystem: Unclassified
-  add_date: 29-MAR-18 01.27.40.709000000 PM
   community: microbial communities
   habitat: rhizosphere
   host_name: Carex aquatilis
   location: University of Washington, Seatle, WA, United States
-  mod_date: 08-JAN-20 02.49.25.000000000 PM
   ncbi_taxonomy_name: rhizosphere metagenome
   sample_collection_site: Peat Soil
 calibration_set:
