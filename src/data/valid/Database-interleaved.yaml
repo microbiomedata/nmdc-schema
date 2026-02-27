@@ -941,11 +941,13 @@ data_generation_set:
   analyte_category: amplicon_sequencing_assay
   associated_studies:
   - nmdc:sty-11-547rwq94
-  add_date: '2022-04-02'
   principal_investigator:
     type: nmdc:PersonValue
     email: janet.jansson@pnnl.gov
     name: Janet Jansson
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2022-04-02'
   insdc_experiment_identifiers:
   - insdc.sra:ERX4806872
 - id: nmdc:dgms-99-zUCd5N
@@ -997,8 +999,10 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-555xxx
-  add_date: 30-OCT-14 12.00.00.000000000 AM
-  mod_date: 22-MAY-20 06.13.12.927000000 PM
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2014-10-30'
+    mod_date: '2020-05-22'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 712P3D
 - id: nmdc:dgns-99-gKlQlF2
@@ -1015,8 +1019,10 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-555xxx
-  add_date: 30-OCT-14 12.00.00.000000000 AM
-  mod_date: 22-MAY-20 06.10.59.590000000 PM
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2014-10-30'
+    mod_date: '2020-05-22'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 612S3M
 - id: nmdc:dgns-99-5kgIJR
@@ -1033,8 +1039,10 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-555xxx
-  add_date: 30-OCT-14 12.00.00.000000000 AM
-  mod_date: 22-MAY-20 06.09.46.171000000 PM
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2014-10-30'
+    mod_date: '2020-05-22'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 712S3S
 - id: nmdc:omprc-99-123456
@@ -1050,8 +1058,10 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-123456
-  add_date: 30-OCT-14 12.00.00.000000000 AM
-  mod_date: 22-MAY-20 06.13.12.927000000 PM
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2014-10-30'
+    mod_date: '2020-05-22'
 - id: nmdc:dgms-99-zUCd5N3
   type: nmdc:MassSpectrometry
   has_input:
@@ -1063,11 +1073,13 @@ data_generation_set:
   analyte_category: lipidome
   associated_studies:
   - nmdc:sty-00-555xxx
-  add_date: 07-MAY-24 12.00.00.000000000 AM
   instrument_used:
   - nmdc:inst-14-njkx0e66
-  mod_date: 07-MAY-24 12.00.00.000000000 AM
   instrument_instance_specifier: PNNL_VOrbiETD04
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2024-05-07'
+    mod_date: '2024-05-07'
   eluent_introduction_category: liquid_chromatography
   has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG1
   has_chromatography_configuration: nmdc:chrcon-11-oW43DzG0
@@ -1082,11 +1094,13 @@ data_generation_set:
   analyte_category: lipidome
   associated_studies:
   - nmdc:sty-00-555xxx
-  add_date: 07-MAY-24 12.00.00.000000000 AM
   instrument_used:
   - nmdc:inst-14-njkx0e66
-  mod_date: 07-MAY-24 12.00.00.000000000 AM
   instrument_instance_specifier: PNNL_VOrbiETD04
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2024-05-07'
+    mod_date: '2024-05-07'
   eluent_introduction_category: liquid_chromatography
   has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG2
   has_chromatography_configuration: nmdc:chrcon-11-oW43DzG0
@@ -1134,7 +1148,9 @@ data_generation_set:
   - nmdc:sty-11-aygzgv51
   instrument_used:
   - nmdc:inst-14-fas8ny90
-  mod_date: '2024-11-07T15:02:18'
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    mod_date: '2024-11-07'
   eluent_introduction_category: gas_chromatography
   has_mass_spectrometry_configuration: nmdc:mscon-14-5jk7rg60
   generates_calibration: nmdc:calib-14-dy7mc666
@@ -1152,8 +1168,10 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-555xxx
-  add_date: 30-OCT-14 12.00.00.000000000 AM
-  mod_date: 22-MAY-20 06.13.12.927000000 PM
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2014-10-30'
+    mod_date: '2020-05-22'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 712P3D
 - id: nmdc:dgns-11-s9xj2r24
@@ -1187,8 +1205,10 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-31415
-  add_date: 17-AUG-17 05.08.38.451000000 PM
-  mod_date: 16-OCT-20 02.04.01.374000000 AM
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2017-08-17'
+    mod_date: '2020-10-16'
   ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
     LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
 - id: nmdc:dgns-99-dk9vgI
@@ -1205,8 +1225,10 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-8675309
-  add_date: 17-MAR-17 04.55.44.822000000 PM
-  mod_date: 22-MAY-20 06.38.19.576000000 PM
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2017-03-17'
+    mod_date: '2020-05-22'
   ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
     - 611E1M metaG
 - id: nmdc:dgns-99-MVW1FV
@@ -1225,8 +1247,10 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-avacado
-  add_date: 29-MAR-18 01.27.30.036000000 PM
-  mod_date: 04-APR-20 08.26.35.067000000 AM
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2018-03-29'
+    mod_date: '2020-04-04'
   ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
     in University of Washington, Seatle, WA, United States - 4-1-23 metaG
 - id: nmdc:dgms-11-0003fm52
@@ -1245,7 +1269,9 @@ data_generation_set:
   - nmdc:sty-11-28tm5d36
   instrument_used:
   - nmdc:inst-14-mwrrj632
-  mod_date: '2024-11-07T15:02:18'
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    mod_date: '2024-11-07'
   eluent_introduction_category: direct_infusion_autosampler
   has_mass_spectrometry_configuration: nmdc:mscon-14-j5y11q51
 data_object_set:

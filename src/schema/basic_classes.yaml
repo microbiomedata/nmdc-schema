@@ -417,13 +417,12 @@ classes:
         An experiment contains information about a sequencing experiment including
         library and instrument details.
     slots:
-      - add_date
       - analyte_category
       - associated_studies
       - instrument_used
-      - mod_date
       - principal_investigator
       - instrument_instance_specifier
+      - provenance_metadata
     slot_usage:
       has_input:
         required: true

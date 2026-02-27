@@ -19410,13 +19410,12 @@ classes:
     is_a: DataEmitterProcess
     abstract: true
     slots:
-    - add_date
     - analyte_category
     - associated_studies
     - instrument_used
-    - mod_date
     - principal_investigator
     - instrument_instance_specifier
+    - provenance_metadata
     slot_usage:
       has_input:
         name: has_input
