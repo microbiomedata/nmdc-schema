@@ -19,3 +19,7 @@ Some frequently asked questions about developing the NMDC Schema.
 ### Is there an experimental OWL generation profile for OLS-style output?
 
 [OWL generation experiments](owl-generation-experiments.md)
+
+### Is there a curated summary of durable ideas from the historical PR #2484 notes?
+
+[Retained ideas from PR #2484](retained-ideas-from-pr-2484.md)
