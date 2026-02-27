@@ -2,9 +2,13 @@
 
 ## Prerequisites
 
-This project requires **Poetry >=2.3.0** for local development. The `pyproject.toml` uses
+This project requires **Poetry >=2.2.0** for local development. The `pyproject.toml` uses
 [PEP 735 dependency groups](https://peps.python.org/pep-0735/) (`[dependency-groups]`), which
-require Poetry 2.3.0 or later.
+require Poetry 2.2.0 or later. Poetry 2.3.0+ is recommended — earlier 2.2.x versions have
+[known bugs](https://github.com/python-poetry/poetry/issues/10632) with `poetry add -G` and
+`poetry remove` on PEP 735 groups, and the lock file hash doesn't track dependency-group
+changes until 2.3.0. These bugs don't affect `poetry install` (which is all CI needs), but
+they can bite local development workflows.
 
 ```shell
 # Check your version
