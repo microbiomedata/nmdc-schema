@@ -49,7 +49,7 @@ through Feb 2026) that affect the build system and project layout:
   three via `include` directives.
 - **Unified LinkML CLI** (PR #2839, 2026-02-20): Build commands switched
   from legacy `gen-owl`, `gen-json-schema`, etc. to `linkml generate owl`,
-  `linkml generate jsonschema`, etc. Old `gen-*` entry points still exist
+  `linkml generate json-schema`, etc. Old `gen-*` entry points still exist
   in linkml but are no longer used here.
 - **LinkML 1.10.0 upgrade** (PR #2849, 2026-02-26): Adds new OWL flags
   like `--enum-inherits-as-subclass-of`. Drops Python 3.9.

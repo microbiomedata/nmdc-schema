@@ -44,6 +44,6 @@ of the dematerialization step
 | 2026-02-26 | [#2848](https://github.com/microbiomedata/nmdc-schema/pull/2848) | **Makefile reorganization**: MIxS pipeline moved to `makefiles/mixs.Makefile`, migrator targets to `makefiles/migrators.Makefile`. RDF conversion tooling removed. |
 | 2026-02-26 | [#2849](https://github.com/microbiomedata/nmdc-schema/pull/2849) | **LinkML 1.10.0 upgrade**: new OWL flags (`--enum-inherits-as-subclass-of`), Python 3.9 dropped. |
 | 2026-02-26 | [#2846](https://github.com/microbiomedata/nmdc-schema/pull/2846) | **Dead code removal**: `about.yaml` and experimental scripts removed. |
-| 2026-02-20 | [#2839](https://github.com/microbiomedata/nmdc-schema/pull/2839) | **Unified LinkML CLI**: build uses `linkml generate owl`, `linkml generate jsonschema`, etc. instead of legacy `gen-owl`, `gen-json-schema`. |
 | 2026-02-21 | [#2302](https://github.com/microbiomedata/nmdc-schema/pull/2302) | **Downloads page**: schema-derived JSON and YAML files downloadable via docs website. |
+| 2026-02-20 | [#2839](https://github.com/microbiomedata/nmdc-schema/pull/2839) | **Unified LinkML CLI**: build uses `linkml generate owl`, `linkml generate json-schema`, etc. instead of legacy `gen-owl`, `gen-json-schema`. |
 | 2025-10-28 | [#2696](https://github.com/microbiomedata/nmdc-schema/pull/2696) | **Dematerialize mixs.yaml**: all 12 readonly metaslots stripped from generated `mixs.yaml` (35% line reduction). |
