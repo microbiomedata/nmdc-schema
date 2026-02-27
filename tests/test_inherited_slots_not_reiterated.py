@@ -1,14 +1,8 @@
-"""Data test."""
-import os
-import pprint
 import unittest
 
 from linkml_runtime import SchemaView
 
-ROOT = os.path.join(os.path.dirname(__file__), '..')
-SCHEMA_DIR = os.path.join(ROOT, "src", "schema")
-
-SCHEMA_FILE = os.path.join(SCHEMA_DIR, 'nmdc.yaml')
+from tests import SCHEMA_FILE
 
 
 class TestInheritedSlotsNotReiterated(unittest.TestCase):
@@ -17,7 +11,6 @@ class TestInheritedSlotsNotReiterated(unittest.TestCase):
         class_parents = {}
 
         view = SchemaView(SCHEMA_FILE)
-        print("\n")
         all_classes = view.all_classes()
         for ck, cv in all_classes.items():
             if "is_a" in cv and cv["is_a"] is not None:

@@ -2,6 +2,12 @@ name: Auto-deployment of nmdc-schema Documentation
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
+
+# Cancel outdated runs when new commits are pushed to main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-docs:
@@ -12,13 +18,14 @@ jobs:
         with:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
-      - name: Set up Python 3.
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.9
-
       - name: Install Poetry.
-        uses: snok/install-poetry@v1.3
+        run: pipx install poetry
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'poetry'
 
       - name: Install dependencies.
         run: poetry install
@@ -30,15 +37,15 @@ jobs:
           poetry self add "poetry-dynamic-versioning[plugin]"
           poetry dynamic-versioning
 
-      - name: Derive files from sources
-        run: |
-          make squeaky-clean all
+      # Note: `make all` includes `gendoc` (via site target), so no separate gendoc step needed
+      - name: Clean previous build artifacts
+        run: make squeaky-clean
 
-      - name: Generate web-based documentation
-        run: |
-          mkdir -p docs
-          touch docs/.nojekyll
-          make gendoc
+      - name: Build schema and documentation
+        run: make all
+
+      - name: Create .nojekyll file
+        run: touch docs/.nojekyll
 
         # Deploy the docs to GitHub Pages.
         #
@@ -50,6 +57,8 @@ jobs:
         #
         # Reference: https://www.mkdocs.org/user-guide/deploying-your-docs/
         #
+        # MAM 2025-10-20 switching back from `make mkd-gh-deploy` to invocation
+        # outside of make in order to use the --force option
       - name: Deploy web-based documentation to GitHub Pages
         run: |
-          make mkd-gh-deploy
+          poetry run mkdocs gh-deploy --force

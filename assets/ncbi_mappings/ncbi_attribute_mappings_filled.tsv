@@ -93,7 +93,7 @@ Biosample	cool_syst_id	TextValue	cool_syst_id
 Biosample	core field	string			
 Biosample	crop_rotation	TextValue	crop_rotation		
 Biosample	cult_root_med	TextValue	cult_root_med		
-Biosample	cur_land_use	cur_land_use_enum	cur_land_use		
+Biosample	cur_land_use	CurLandUseEnum	cur_land_use		
 Biosample	cur_vegetation	TextValue	cur_vegetation		
 Biosample	cur_vegetation_meth	TextValue	cur_vegetation_meth		
 Biosample	date_last_rain	TimestampValue	date_last_rain		
@@ -241,7 +241,7 @@ Biosample	host_length	QuantityValue	host_length
 Biosample	host_life_stage	TextValue	host_life_stage		
 Biosample	host_name	string			
 Biosample	host_phenotype	ControlledTermValue	host_phenotype		
-Biosample	host_sex	host_sex_enum	host_sex		
+Biosample	host_sex	HostSexEnum	host_sex		
 Biosample	host_shape	TextValue	host_shape		
 Biosample	host_subject_id	TextValue	host_subject_id		
 Biosample	host_subspecf_genlin	string	host_subspecf_genlin		

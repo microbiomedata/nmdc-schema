@@ -2,6 +2,7 @@ import unittest
 
 from nmdc_schema.nmdc import Database
 
+
 class TestDatabase(unittest.TestCase):
     def test_database(self):
         """Test that a nmdc:Database instance can be created."""

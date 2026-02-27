@@ -22,9 +22,11 @@ prefixes:
 
 
 imports:
-  - external_identifiers # in cycle with attribute_values
-  - mixs # in cycle with attribute_values
+  - external_identifiers
+  - mixs
+  - nmdc  # for slots like has_failure_categorization used by PlannedProcess
 
+default_range: string
 
 classes:
 
@@ -69,18 +71,19 @@ classes:
       between them (the predicate). Because ontologies often have a plethora of relationships/axiom types and can have
       additional metadata on the relationship itself, these kinds of relationships are structured as a class instead
       of a simple set of slots on OntologyClass itself.
-    comments: >-
-      For example, the relationship between 'soil' and 'enriched soil' in the Environmental Ontology (ENVO)
-      is defined by the following axioms: 'enriched soil' subclass_of 'soil', and 'enriched soil' 
-      has_increased_levels_of (some) 'material entity.'  Converting these stat∂ements to OntologyAssociations 
-      so they can be used in the NMDC data stores, the subject of the first axiom or statement, 
-      would be 'soil', the predicate would be 'subclass_of', and the object would be 'enriched soil'.  For the second
-      axiom, the subject would be 'enriched soil', the predicate would be 'has_increased_levels_of', and the object
-      would be 'material entity.' (Note that text labels are used in this example for ease of understanding and 
-      the literal values of subject, predicate, and object in this class will be the id (curie) of the 
-      `OntologyClass` as defined below).  Not all ontology axioms (associations) between terms need to be 
-      ingested into the NMDC data stores.  In general, subclass_of and part_of relationships/axioms are often 
-      good default relations/associations to support ontology browsing in user interfaces.
+    comments:
+      - >-
+        For example, the relationship between 'soil' and 'enriched soil' in the Environmental Ontology (ENVO)
+        is defined by the following axioms: 'enriched soil' subclass_of 'soil', and 'enriched soil'
+        has_increased_levels_of (some) 'material entity.' Converting these statements to OntologyAssociations
+        so they can be used in the NMDC data stores, the subject of the first axiom or statement,
+        would be 'soil', the predicate would be 'subclass_of', and the object would be 'enriched soil'. For the second
+        axiom, the subject would be 'enriched soil', the predicate would be 'has_increased_levels_of', and the object
+        would be 'material entity.' (Note that text labels are used in this example for ease of understanding and
+        the literal values of subject, predicate, and object in this class will be the id (curie) of the
+        `OntologyClass` as defined below). Not all ontology axioms (associations) between terms need to be
+        ingested into the NMDC data stores. In general, subclass_of and part_of relationships/axioms are often
+        good default relations/associations to support ontology browsing in user interfaces.
     class_uri: nmdc:OntologyRelation
     slots:
       - type
@@ -113,11 +116,17 @@ classes:
     title: Material Entity
   Instrument:
     class_uri: nmdc:Instrument
-    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent. This class models the make and model of the instrument, not the specific instance of the instrument.
     is_a: MaterialEntity
     slots:
       - vendor
       - model
+    unique_keys:
+      main:
+        description: A unique instrument is defined by its vendor and model.
+        unique_key_slots:
+          - vendor
+          - model
     aliases:
       - device
     exact_mappings:
@@ -148,6 +157,9 @@ classes:
       - url
       - name
       - type
+      - description
+      - protocol_for
+      - analysis_type
   CreditAssociation:
     aliases:
       - study role
@@ -239,6 +251,7 @@ classes:
 
       - alternative_descriptions
       - alternative_names
+      - provenance_metadata
       - alternative_titles
 
       - ecosystem
@@ -359,6 +372,7 @@ classes:
       - url
       - was_generated_by
       - in_manifest
+      - superseded_by
     slot_usage:
       name:
         required: true
@@ -378,6 +392,7 @@ classes:
         required: true
       data_category:
         required: true
+
   DataEmitterProcess:
     class_uri: nmdc:DataEmitterProcess
     is_a: PlannedProcess
@@ -408,6 +423,7 @@ classes:
       - instrument_used
       - mod_date
       - principal_investigator
+      - instrument_instance_specifier
     slot_usage:
       has_input:
         required: true
@@ -451,6 +467,8 @@ classes:
       - started_at_time
       - version
       - was_informed_by
+      - processing_institution_workflow_metadata
+      - superseded_by
     rules:
       - title: qc_status_pass_has_output_required
         description: >-
@@ -479,6 +497,7 @@ classes:
         required: true
       git_url:
         required: true
+        description: The url that points to the exact software repository location used to run a workflow
       has_input:
         required: true
         structured_pattern:
@@ -490,11 +509,44 @@ classes:
           syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: DataObject
-      execution_resource:
+      processing_institution:
         required: true
       was_informed_by:
         required: true
+      version:
+        description:  >- 
+          The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution,
+          this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.
+        
+  ProvenanceMetadata:
+    description: Metadata pertaining to how a record was created.
+    class_uri: nmdc:ProvenanceMetadata
+    slots:
+      - git_url
+      - version
+      - source_system_of_record
+      - submission_portal_identifier
+      - type
+    slot_usage:
+      version:
+        description: The version tag of the software used to generate the NMDC metadata record
+      git_url:
+        description: The url of the software repository used to generate the NMDC metadata record
 slots:
+  source_system_of_record:
+    description: Identifies the system of origin for a record
+    range: SourceSystemEnum
+
+  submission_portal_identifier:
+    description: The UUID of the NMDC Submission Portal entry that generated this record.
+    range: string
+    multivalued: true
+    pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+    see_also:
+      - https://data.microbiomedata.org/submission/home
+    examples:
+      - value: c41dfeac-102e-43b2-adae-6a67f25791f0
+
   associated_studies:
     description: The study associated with a resource.
     range: Study
@@ -511,13 +563,19 @@ slots:
     slot_uri: dcterms:isPartOf
     description: Links a resource to another resource that either logically or physically includes it.
   was_informed_by:
+    description: The primary DataGeneration subclass that the WorkflowExecution subclass depends on.
+    comments:
+      - >-
+        For version 1 of the proteomics workflow there are input files both from the NucleotideSequencing
+        and MassSpectrometry, the MassSpectrometry record is considered the primary class to reference.
+    multivalued: true  
     range: DataGeneration
-    mappings:
+    narrow_mappings:
       - prov:wasInformedBy
     structured_aliases:
-      was_informed_by:
+      - literal_form: was_informed_by
         contexts:
-        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+          - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
         predicate: EXACT_SYNONYM
   principal_investigator:
     aliases:
@@ -537,16 +595,20 @@ slots:
     multivalued: true
     inlined_as_list: true
     examples:
-      value:
-        - doi: doi:10.46936/intm.proj.2021.60141/60000423
+      - object:
+          doi: doi:10.46936/intm.proj.2021.60141/60000423
           doi_provider: emsl
           doi_category: award_doi
-        - doi: doi:10.1101/2022.12.12.520098
+        description: An EMSL award DOI.
+      - object:
+          doi: doi:10.1101/2022.12.12.520098
           doi_category: publication_doi
-        - doi: doi:10.48321/D1Z60Q
+        description: A publication DOI.
+      - object:
+          doi: doi:10.48321/D1Z60Q
           doi_category: data_management_plan_doi
           doi_provider: gsc
-      description: Provides a list of two DOIs; specifically, an EMSL award DOI and a publication DOI.
+        description: A data management plan DOI.
   has_credit_associations:
     range: CreditAssociation
     multivalued: true
@@ -593,10 +655,11 @@ slots:
     range: boolean
     description: >-
       A boolean value indicating whether the ontology term is obsolete.
-    comments: >-
-      If true (the ontology term is declared obsolete via the ontology source itself), 
-      the term is no longer considered a valid term to use in an annotation at NMDC,
-      and it no longer has ontology_relation_set records.
+    comments:
+      - >-
+        If true (the ontology term is declared obsolete via the ontology source itself),
+        the term is no longer considered a valid term to use in an annotation at NMDC,
+        and it no longer has ontology_relation_set records.
   is_root:
     range: boolean
     description: >-
@@ -625,6 +688,10 @@ slots:
       syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
       interpolated: true
 
+  instrument_instance_specifier:
+    description: >-
+      A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.
+  
   in_manifest:
     range: Manifest
     multivalued: true
@@ -661,7 +728,46 @@ slots:
     comments:
       - For example, low read count from a sequencer, malformed fastq files, etc.
 
+  protocol_for:
+    range: ProtocolForEnum
+    description: >-
+      The type of planned process that the protocol describes.
+
+  superseded_by:
+    range: WorkflowExecution
+    description: >-
+      Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that 
+      supersedes it, marking this record as outdated. The linked WorkflowExecution or
+      resultant DataObjects should be used in favor of this record.
+
+  provenance_metadata: 
+    range: ProvenanceMetadata
+    description: Provides information about the provenance of a record.
+    
 enums:
+  SourceSystemEnum:
+    permissible_values:
+      NMDC_Submission_Portal:
+        description: The National Microbiome Data Collaborative's Submission Portal
+        see_also: 
+          - https://data.microbiomedata.org/submission/home
+      GOLD:
+        description: JGI's GOLD system
+        see_also: 
+          - https://gold.jgi.doe.gov/
+      NEON_Data_Portal: 
+        description: National Science Foundation National Ecologial Observatory Network's Data Portal
+        see_also: 
+          - https://data.neonscience.org/
+      NCBI:
+        description: National Center for Biotechnology Information database
+        see_also: 
+          - https://www.ncbi.nlm.nih.gov/biosample
+      custom:
+        description: Metadata was generated by custom methods such as an offline spreadsheet provided by a user or staff member.
+        see_also: 
+          - https://github.com/microbiomedata/nmdc_mass_spectrometry_metadata_generation
+        
   CreditEnum:
     permissible_values:
       Conceptualization:
@@ -767,6 +873,21 @@ enums:
           - Orbitrap Q-Exactive HF
           - Orbitrap Q-Exactive HF-X
 
+      orbitrap_iqx_tribrid:
+        aliases:
+          - Orbitrap IQ-X Tribrid
+          - Thermo Orbitrap IQ-X Tribrid
+      
+      orbitrap_idx_tribrid:
+        aliases:
+          - Orbitrap ID-X Tribrid
+          - Thermo Orbitrap ID-X Tribrid
+
+      orbitrap_exploris_120:
+        aliases:
+          - Orbitrap Exploris 120
+          - Thermo Orbitrap Exploris 120
+
       solarix_7T:
         aliases:
           - 7T Solarix
@@ -814,28 +935,32 @@ enums:
         see_also: 
          - https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html
         structured_aliases:
-          Illumina NovaSeq S2:
+          - literal_form: Illumina NovaSeq S2
             contexts:
-            -  https://gold.jgi.doe.gov/
+              - https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM
-          Illumina NovaSeq S4:
+          - literal_form: Illumina NovaSeq S4
             contexts:
-            -  https://gold.jgi.doe.gov/
-            predicate: NARROW_SYNONYM    
-          Illumina NovaSeq SP:
+              - https://gold.jgi.doe.gov/
+            predicate: NARROW_SYNONYM
+          - literal_form: Illumina NovaSeq SP
             contexts:
-            -  https://gold.jgi.doe.gov/
+              - https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM                
 
       novaseq_x:
         aliases:
           - Illumina NovaSeq X
-          - Illumina NovaSeq X Plus 
+          - Illumina NovaSeq X Plus
         comments:
           - Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X and X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
         see_also: 
           - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
-      
+        exact_mappings:
+          - OBI:0003663
+        narrow_mappings:
+          - OBI:0003664
+          
       hiseq:
         aliases:
           - Illumina HiSeq
@@ -860,13 +985,13 @@ enums:
           - Illumina HiSeq 2500
         meaning: OBI:0002002
         structured_aliases:
-          Illumina HiSeq 2500-1TB:
+          - literal_form: Illumina HiSeq 2500-1TB
             contexts:
-            -  https://gold.jgi.doe.gov/
+              - https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM
-          Illumina HiSeq 2500-Rapid:
+          - literal_form: Illumina HiSeq 2500-Rapid
             contexts:
-            -  https://gold.jgi.doe.gov/
+              - https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM    
       
       hiseq_3000:
@@ -894,6 +1019,11 @@ enums:
           - MiSeq
           - Illumina MiSeq
         meaning: OBI:0002003
+        structured_aliases:
+          - literal_form: Illumina MiSeq
+            contexts:
+              - https://gold.jgi.doe.gov/
+            predicate: EXACT_SYNONYM
         
       nextseq_1000:
         aliases:
@@ -905,13 +1035,13 @@ enums:
           - NextSeq
           - Illumina NextSeq
         structured_aliases:
-          Illumina NextSeq-HO:
-           contexts:
-            -  https://gold.jgi.doe.gov/
-           predicate: NARROW_SYNONYM
-          Illumina NextSeq-MO:
+          - literal_form: Illumina NextSeq-HO
             contexts:
-            -  https://gold.jgi.doe.gov/
+              - https://gold.jgi.doe.gov/
+            predicate: NARROW_SYNONYM
+          - literal_form: Illumina NextSeq-MO
+            contexts:
+              - https://gold.jgi.doe.gov/
             predicate: NARROW_SYNONYM              
       
       nextseq_500:
@@ -1010,7 +1140,15 @@ enums:
         description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
       other:
         description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
-
+      low_molecular_formula_assignment:
+        description: Number of peaks with assigned molecular formulas during the workflow is not sufficient.
+      low_metabolite_assignment:
+        description: Number of metabolites identified during the Metabolomics or Lipidomics workflow is not sufficient.
+      low_c13_isotopologue_assignment:
+        description: Number of 13C isotopologues identified during the Metabolomics or Lipidomics workflow is not sufficient.
+      low_peptide_to_spectrum_match_rate:
+        description: Rate of peptide assignment during the analysis is not sufficient.
+        
   FailureWhereEnum:
     description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
     comments:
@@ -1048,3 +1186,40 @@ enums:
         description: A failure has occurred in analyzing metaproteomics data.
       NomAnalysis:
         description: A failure has occurred in analyzing NOM data.
+
+  ProtocolForEnum:
+    description: >-
+      The permitted values for describing the type of planned process that a protocol describes.
+    comments:
+      - These are the non-abstract class descendants of PlannedProcess.
+    permissible_values:
+      AnnotatingWorkflow:
+      ChemicalConversionProcess:
+      ChromatographicSeparationProcess:
+      CollectingBiosamplesFromSite:
+      DataEmitterProcess:
+      DataGeneration:
+      DissolvingProcess:
+      Extraction:
+      FiltrationProcess:
+      LibraryPreparation:
+      MagsAnalysis:
+      MassSpectrometry:
+      MaterialProcessing:
+      MetabolomicsAnalysis:
+      MetagenomeAnnotation:
+      MetagenomeAssembly:
+      MetaproteomicsAnalysis:
+      MetatranscriptomeAnnotation:
+      MetatranscriptomeAssembly:
+      MetatranscriptomeExpressionAnalysis:
+      MixingProcess:
+      NomAnalysis:
+      NucleotideSequencing:
+      PlannedProcess:
+      Pooling:
+      ReadBasedTaxonomyAnalysis:
+      ReadQcAnalysis:
+      StorageProcess:
+      SubSamplingProcess:
+      WorkflowExecution:

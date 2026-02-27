@@ -1,0 +1,5 @@
+#This file is invalid b/c the Pfam identifier has 4 digits, 5 are expected
+was_generated_by: nmdc:wfmgan-99-123456.1
+gene_function_id: PFAM:PF2080
+count: 120
+type: nmdc:FunctionalAnnotationAggMember

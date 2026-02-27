@@ -5,13 +5,18 @@ name: Build and test nmdc-schema
 
 on: [ pull_request ]
 
+# Cancel outdated runs when new commits are pushed to the same PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
 
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ "3.9", "3.10" ]
+        python-version: [ '3.10', '3.13' ]
 
     steps:
 
@@ -25,7 +30,7 @@ jobs:
         run: pipx install poetry
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'poetry'
@@ -36,11 +41,23 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
-      - name: Check project dependencies
-        run: make check-dependencies
+      #----------------------------------------------
+      #              build, test, and quality checks
+      #----------------------------------------------
+      - name: Clean previous build artifacts
+        run: make squeaky-clean
 
-      #----------------------------------------------
-      #              run test suite   
-      #----------------------------------------------
+      - name: Build schema artifacts
+        run: make all
+
+      - name: Regenerate units reports
+        run: make -C units fast
+
       - name: Run tests
-        run: make squeaky-clean all test
+        run: make test
+
+      - name: Run LinkML linting
+        run: make linkml-lint
+
+      - name: Check dependencies (deptry)
+        run: make check-dependencies

@@ -14,6 +14,8 @@ from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
 
+# TODO: Is this script somewhat redundant with nmdc_schema/migrators/cli/run_migrator.py? Can they
+#       be consolidated?
 
 # todo: log before and after states of migration
 

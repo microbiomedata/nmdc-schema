@@ -1,13 +1,17 @@
-## Add your own custom Makefile targets here
 
-RUN=poetry run
+# project.Makefile — Project-specific targets
+#
+# MIxS pipeline targets are in makefiles/mixs.Makefile
+# Migrator targets are in makefiles/migrators.Makefile
 
-JENA_DIR=~/apache-jena/bin/
-
-SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
-SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
+SCHEMA_NAME = nmdc_schema
+SOURCE_SCHEMA_PATH = src/schema/nmdc.yaml
+LATEST_RELEASE_TAG_FILE := local/latest_release_tag.txt
 
 PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
+
+
+##### Rules related to grabbing the current schema release from Github #####
 
 REPO  := microbiomedata/nmdc-schema
 FILE  := nmdc_schema/nmdc_materialized_patterns.yaml
@@ -16,110 +20,48 @@ LATEST_TAG_SCHEMA_FILE   := local/nmdc_schema_last_release.yaml
 
 # Get the tag that belongs to the latest (non-prerelease) GitHub release.
 #  - ‘!=’ executes the shell command only once, when the Makefile is read.
-LATEST_TAG != curl -fsSL https://api.github.com/repos/$(REPO)/releases/latest | jq -r '.tag_name'
+LATEST_TAG = $(shell curl -fsSL https://api.github.com/repos/$(REPO)/releases/latest | jq -r '.tag_name')
 
 # Build the raw.githubusercontent.com URL
 LATEST_TAG_SCHEMA_URL := https://raw.githubusercontent.com/$(REPO)/$(LATEST_TAG)/$(FILE)
 
-# The rule that fetches the file
-$(LATEST_TAG_SCHEMA_FILE):
-	@echo "Downloading $(LATEST_TAG_SCHEMA_URL)"
-	@curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $@
+.PHONY: $(LATEST_TAG_SCHEMA_FILE)
+
+# Rule to fetch the schema file if local/nmdc_schema_last_release.yaml does not exist OR if there is a new release 
+$(LATEST_TAG_SCHEMA_FILE): $(LATEST_RELEASE_TAG_FILE)
+	@echo "Checking for schema updates..."
+	@if [ ! -f $@ ]; then \
+		echo "Schema file does not exist. Creating it..."; \
+		curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $@; \
+		echo "$(LATEST_TAG)" > $(LATEST_RELEASE_TAG_FILE); \
+	elif [ "$$(cat $(LATEST_RELEASE_TAG_FILE))" != "$(LATEST_TAG)" ]; then \
+		echo "New release detected ($(LATEST_TAG)). Downloading schema..."; \
+		curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $@; \
+		echo "$(LATEST_TAG)" > $(LATEST_RELEASE_TAG_FILE); \
+	else \
+		echo "Local copy of schema is already up to date with release $(LATEST_TAG)."; \
+	fi
+
+# Rule to store the latest release tag locally
+$(LATEST_RELEASE_TAG_FILE):
+	@if [ -f $(LATEST_TAG_SCHEMA_FILE) ]; then \
+	echo "ERROR: Tag file is missing. Recreating release tag and removing local schema file..."; \
+		rm -f $(LATEST_TAG_SCHEMA_FILE); \
+	fi
+	@echo "Creating release tag file..."
+	@curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $(LATEST_TAG_SCHEMA_FILE)
+	@echo "$(LATEST_TAG)" > $@
+	@echo "Release tag file created with tag: $(LATEST_TAG)"
 
 
-.PHONY: examples-clean mixs-yaml-clean rdf-clean shuttle-clean
+.PHONY: examples-clean
 
 examples-clean:
 	rm -rf examples/output
 
-mixs-yaml-clean:
-	rm -rf src/schema/mixs.yaml
-	rm -rf local/mixs_regen/mixs_subset_modified*yaml
-
-rdf-clean:
-	rm -rf \
-		OmicsProcessing.rq \
-		local/mongo_as_nmdc_database.ttl \
-		local/mongo_as_nmdc_database_cuire_repaired.ttl \
-		local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl \
-		local/mongo_as_nmdc_database_rdf_safe.yaml \
-		local/mongo_as_nmdc_database_validation.log \
-		local/mongo_as_unvalidated_nmdc_database.yaml
-
-shuttle-clean:
-	#rm -rf local/mixs_regen/mixs_subset_modified.yaml # triggers complete regeneration
-	rm -rf local/mixs_regen/*.yaml
-	rm -rf $@.bak
-	mkdir -p local/mixs_regen
-	touch local/mixs_regen/.gitkeep
-
-
-src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_minus_1.yaml
-	mv $(word 2,$^) $@
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
-
-local/mixs_regen/mixs_subset.yaml: assets/import_mixs_slots_regardless.tsv
-	$(RUN) do_shuttle \
-		--recipient_model assets/other_mixs_yaml_files/mixs_template.yaml \
-		--config_tsv $< \
-		--yaml_output $@
-
-local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml assets/yq-for-mixs_subset_modified.txt
-	# switching to TextValue may not add any value. the other range changes do improve the structure of the data.
-	# ironically changing back to strings for the submission-schema, data harmonizer, submission portal etc.
-	# may switch source of truth to the MIxS 6.2.2 release candidate
-	sed 's/quantity value/QuantityValue/' $(word 1, $^) > $@
-	sed -i.bak 's/range: string/range: TextValue/' $@
-	sed -i.bak 's/range: text value/range: TextValue/' $@
-
-	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
-	rm -rf $@.bak
-
-
-local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: local/mixs_regen/mixs_subset_modified.yaml \
-assets/other_mixs_yaml_files/cur_land_use_enum.yaml
-	# inject re-structured cur_land_use_enum
-	#   using '| cat > ' because yq doesn't seem to like redirecting out to a file
-	yq eval-all \
-		'select(fileIndex==0).enums.cur_land_use_enum = select(fileIndex==1).enums.cur_land_use_enum | select(fileIndex==0)' \
-		$^ | cat > $@
-
-local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
-assets/other_mixs_yaml_files/TargetGeneEnum.yaml
-	yq eval-all \
-		'select(fileIndex==0).enums.TargetGeneEnum = select(fileIndex==1).enums.TargetGeneEnum | select(fileIndex==0)' \
-		$^ | cat > $@
-	yq -i '.slots.target_gene.range = "TargetGeneEnum"' $@
-
-
-local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml \
-assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
-	yq eval-all \
-		'select(fileIndex==0).slots.env_broad_scale.annotations.tooltip = select(fileIndex==1).slots.env_broad_scale.annotations.tooltip | select(fileIndex==0)' \
-		$^ | cat > $@
-
-local/mixs_regen/mixs_subset_modified_inj_env_local_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml \
-assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
-	yq eval-all \
-		'select(fileIndex==0).slots.env_local_scale.annotations.tooltip = select(fileIndex==1).slots.env_local_scale.annotations.tooltip | select(fileIndex==0)' \
-		$^ | cat > $@
-
-local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_env_local_scale_alt_description.yaml \
-assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
-	yq eval-all \
-		'select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' \
-		$^ | cat > $@
-
-
-local/mixs_regen/mixs_minus_1.yaml: local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml \
-assets/other_mixs_yaml_files/mixs_env_triad_field_slot.yaml
-	yq eval-all \
-		'select(fileIndex==0).slots.mixs_env_triad_field = select(fileIndex==1).slots.mixs_env_triad_field | select(fileIndex==0)' \
-		$^ | cat > $@
-
 examples/output: nmdc_schema/nmdc_materialized_patterns.yaml
 	mkdir -p $@
-	$(RUN) linkml-run-examples \
+	$(RUN) linkml examples \
 		--schema $< \
 		--input-directory src/data/valid \
 		--counter-example-input-directory src/data/invalid \
@@ -147,116 +89,113 @@ examples/output/Biosample-exhaustive-pretty-sorted.yaml: src/data/valid/Database
 
 pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
 
-make-rdf: rdf-clean \
-	local/mongo_as_nmdc_database_validation.log \
-	local/mongo_as_nmdc_database_cuire_repaired.ttl \
-	local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl # could omit rdf-clean. then this could build incrementally on top of pure-export-and-validate
-
-# statistics of large collections as of 2024-05-17
-#ns	size	count	avgObjSize	storageSize	totalIndexSize	totalSize	scaleFactor
-#nmdc.functional_annotation_agg	2194573252	16167688	135	567922688	1772920832	2340843520	1
-#nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
-#nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
-
-local/mongo_as_unvalidated_nmdc_database.yaml:
+local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date
-	time $(RUN) pure-export \
-		--max-docs-per-coll 200000 \
-		--output-yaml $@ \
-		--schema-source $(LATEST_TAG_SCHEMA_FILE) \
-		--selected-collections biosample_set \
-		--selected-collections calibration_set \
-		--selected-collections chemical_entity_set \
-		--selected-collections collecting_biosamples_from_site_set \
-		--selected-collections configuration_set \
-		--selected-collections data_generation_set \
-		--selected-collections data_object_set \
-		--selected-collections field_research_site_set \
-		--selected-collections functional_annotation_set \
-		--selected-collections genome_feature_set \
-		--selected-collections instrument_set \
-		--selected-collections manifest_set \
-		--selected-collections material_processing_set \
-		--selected-collections processed_sample_set \
-		--selected-collections storage_process_set \
-		--selected-collections study_set \
-		--selected-collections workflow_execution_set \
-		dump-from-api \
-		--client-base-url "https://api.microbiomedata.org" \
-		--endpoint-prefix nmdcschema \
-		--page-size 200000
-
-## ALTERNATIVELY:
-#local/mongo_as_unvalidated_nmdc_database.yaml:
-#	date
-#	time $(RUN) pure-export \
-#		--max-docs-per-coll 200000 \
-#		--output-yaml $@ \
-#		--schema-source src/schema/nmdc.yaml \
-#		--selected-collections biosample_set \
-#		--selected-collections study_set \
-#		dump-from-database \
-#		--admin-db "admin" \
-#		--auth-mechanism "DEFAULT" \
-#		--env-file local/.env \
-#		--mongo-db-name nmdc \
-#		--mongo-host localhost \
-#		--mongo-port 27777 \
-#		--direct-connection
-
-local/mongo_as_nmdc_database_rdf_safe.yaml: $(LATEST_TAG_SCHEMA_FILE) local/mongo_as_unvalidated_nmdc_database.yaml
-	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
 		--input-path $(word 2,$^) \
 		--schema-path $(word 1,$^) \
 		--output-path $@
 
 .PRECIOUS: local/mongo_as_nmdc_database_validation.log
-
-local/mongo_as_nmdc_database_validation.log: $(LATEST_TAG_SCHEMA_FILE) local/mongo_as_nmdc_database_rdf_safe.yaml
-	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) linkml-validate --schema $^ > $@
-
-local/mongo_as_nmdc_database.ttl: $(LATEST_TAG_SCHEMA_FILE) local/mongo_as_nmdc_database_rdf_safe.yaml
-	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) linkml-convert --output $@ --schema $^
-	mv $@ $@.tmp
-	cat  assets/my_emsl_prefix.ttl $@.tmp  > $@
-	rm -rf $@.tmp
-	- export _JAVA_OPTIONS=-Djava.io.tmpdir=local ; $(JENA_DIR)/riot --validate $@ # < 1 minute
+local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date
+	time $(RUN) linkml validate --schema $^ > $@
 
-
-# todo: still getting anyurl typed string statement objects in RDF. I added a workaround in anyuri-strings-to-iris
-local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
-	date
-	time $(RUN) anyuri-strings-to-iris \
-		--input-ttl $< \
-		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-		--emsl-uuid-replacement emsl_uuid_like \
-		--output-ttl $@
-	- export _JAVA_OPTIONS=-Djava.io.tmpdir=local && $(JENA_DIR)/riot --validate $@ # < 1 minute
-	date
-
-.PHONY: migration-doctests migrator
-
-# Runs all doctests defined within the migrator modules, adapters, and CLI scripts.
+###########################################################
 #
-# To run in non-verbose mode:
-# ```
-# $ make migration-doctests DOCTEST_OPT=''
-# ```
-DOCTEST_OPT ?= -v
-migration-doctests: nmdc_schema/nmdc_materialized_patterns.yaml
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/*.py
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/partials/**/*.py
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/adapters/*.py
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/cli/*.py
+# MIGRATOR TEST COMMANDS VIA THE API. COMMANDS ARE IN ORDER
+#
+###########################################################
 
-# Generates a migrator skeleton for the specified schema versions.
-# Note: `create-migrator` is a Poetry script registered in `pyproject.toml`.
-migrator:
-	$(RUN) create-migrator
+# Define API URLs for different environments
+API_PROD_URL = https://api.microbiomedata.org
+API_DEV_URL = https://api-dev.microbiomedata.org
+
+# Dynamically set the API url based on the ENV variable
+API_URL = $(if $(filter dev,$(ENV)),$(API_DEV_URL),$(API_PROD_URL))
+
+#### Target 1: Run selected collections with local/mongo_via_api_as_unvalidated_nmdc_database.yaml ####
+DEFAULT_COLLECTIONS = biosample_set \
+	calibration_set \
+	collecting_biosamples_from_site_set \
+	configuration_set \
+	data_generation_set \
+	data_object_set \
+	field_research_site_set \
+	functional_annotation_set \
+	genome_feature_set \
+	instrument_set \
+	manifest_set \
+	material_processing_set \
+	processed_sample_set \
+	storage_process_set \
+	study_set \
+	workflow_execution_set
+local/mongo_via_api_as_unvalidated_nmdc_database.yaml: SELECTED_COLLECTIONS=
+local/mongo_via_api_as_unvalidated_nmdc_database.yaml:
+	date
+	time $(RUN) pure-export \
+		--max-docs-per-coll 200000 \
+		--output-yaml $@ \
+		--schema-source nmdc_schema/nmdc_materialized_patterns.yaml \
+		$(if $(SELECTED_COLLECTIONS),$(foreach coll,$(SELECTED_COLLECTIONS),--selected-collections $(coll)),\
+			$(foreach coll,$(DEFAULT_COLLECTIONS),--selected-collections $(coll))) \
+        dump-from-api \
+		--client-base-url "$(API_URL)" \
+		--endpoint-prefix nmdcschema \
+		--page-size 200000
+
+#### Target 2: Run migrator with local/mongo_via_api_as_nmdc_database_after_migrator.yaml ####
+local/mongo_via_api_as_nmdc_database_after_migrator.yaml: MIGRATOR=
+local/mongo_via_api_as_nmdc_database_after_migrator.yaml: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_via_api_as_unvalidated_nmdc_database.yaml
+	date
+	time $(RUN) migration-recursion \
+		--input-path $(word 2,$^) \
+		--schema-path $(word 1,$^) \
+		--output-path $@ \
+		$(if $(MIGRATOR),--migrator-name $(MIGRATOR),)
+
+
+#### Target 3: Validation with local/mongo_via_api_as_nmdc_database_validation.log ####
+.PRECIOUS: local/mongo_via_api_as_nmdc_database_validation.log
+local/mongo_via_api_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_via_api_as_nmdc_database_after_migrator.yaml
+	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
+	time $(RUN) linkml validate --schema $^ > $@
+
+#### Combined Command ####
+.PHONY: test-migrator-on-database
+test-migrator-on-database: SELECTED_COLLECTIONS=  # Default empty, user can override
+test-migrator-on-database: MIGRATOR=             # Default empty, user can override
+test-migrator-on-database: ENV=prod              # Default to prod if not specified
+test-migrator-on-database: local/mongo_via_api_as_unvalidated_nmdc_database.yaml \
+		local/mongo_via_api_as_nmdc_database_after_migrator.yaml \
+		local/mongo_via_api_as_nmdc_database_validation.log
+	@echo "Combined workflow executed successfully."
+
+###########################################################
+#
+# END MIGRATOR TEST COMMANDS VIA THE API
+#
+###########################################################
+
+## ALTERNATIVELY TO TEST WITH THE MONGODB:
+local/mongo_as_unvalidated_nmdc_database.yaml:
+	date
+	time $(RUN) pure-export \
+		--max-docs-per-coll 200000 \
+		--output-yaml $@ \
+		--schema-source src/schema/nmdc.yaml \
+		--selected-collections biosample_set \
+		--selected-collections study_set \
+		dump-from-database \
+		--admin-db "admin" \
+		--auth-mechanism "DEFAULT" \
+		--env-file local/.env \
+		--mongo-db-name nmdc \
+		--mongo-host localhost \
+		--mongo-port 27777 \
+		--direct-connection
+
 
 .PHONY: filtered-status
 filtered-status:
@@ -285,18 +224,13 @@ local/gold-study-ids.json:
 		-H 'accept: application/json'
 
 local/nmdc-no-use-native-uris.owl.ttl: src/schema/nmdc.yaml
-	$(RUN) gen-owl --no-use-native-uris $< > $@
+	$(RUN) linkml generate owl --no-use-native-uris $< > $@
 
 
 local/nmdc_materialized.ttl: src/schema/nmdc.yaml
 	$(RUN) schema-view-relation-graph \
 		--schema $< \
 		--output $@
-
-local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_database_cuire_repaired.ttl
-	$(RUN) date-created-blank-node > local/date_created_blank_node.ttl
-	cat $^ local/date_created_blank_node.ttl > $@
-	rm local/date_created_blank_node.ttl
 
 ###
 
@@ -325,7 +259,7 @@ diagrams-all: diagrams-clean assets/plantuml.png assets/plantuml.pdf assets/merm
 #		--classes SubstanceEntity
 
 assets/plantuml.puml: src/schema/nmdc.yaml
-	$(RUN) gen-plantuml \
+	$(RUN) linkml generate plantuml \
 		--classes ChemicalConversionProcess \
 		--classes ChemicalEntity \
 		--classes ChromatographicSeparationProcess \
@@ -349,7 +283,7 @@ assets/plantuml.pdf: assets/plantuml.svg
 	inkscape --export-filename=$@ $<
 
 assets/mermaid-erd.mmd: src/schema/nmdc.yaml
-	$(RUN) gen-erdiagram \
+	$(RUN) linkml generate erdiagram \
 		--format mermaid \
 		--classes ChemicalConversionProcess \
 		--classes ChemicalEntity \
@@ -441,6 +375,3 @@ assets/element-scrutiny.tsv: nmdc_schema/nmdc_materialized_patterns.yaml
 		--schema-file $< \
 		--output-file assets/element-scrutiny.tsv
 
-# EXPERIMENTAL
-assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
-	$(RUN) python src/scripts/experimental/partial_imports_graph.py # needs networkx and plotly

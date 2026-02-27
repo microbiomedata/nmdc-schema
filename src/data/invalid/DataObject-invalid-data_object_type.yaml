@@ -1,14 +1,7 @@
-alternative_identifiers:
-  - prefix:value1
-  - prefix:value2
-compression_type: any string
-data_object_type: undefined permissible value for `file type enum`
+id: nmdc:dobj-99-PqBJvW
+name: assembly_scaffolds.fna
+description: Assembled scaffold fasta for gold:Gp0061273
+file_size_bytes: 205297945
 data_category: processed_data
-description: "Crispr Terms for nmdc:ann0vx38"
-file_size_bytes: 1234
-id: "nmdc:dobj-11-dtTMNb"
-md5_checksum: "22afa3d49b73eaec2e9787a6b88fbdc3"
-name: Crispr Terms
-type: "nmdc:DataObject"
-url: http://example.com
-#was_generated_by: "nmdc:invalid_id" - only one error allowed per file!
+type: nmdc:DataObject
+data_object_type: Metagenome Bins

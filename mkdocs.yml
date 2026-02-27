@@ -11,7 +11,8 @@ theme:
 extra:
   favicon: images/favicon.ico
 plugins:
-  - search
+  - search:
+      separator: '[\s\-\._()\[\]]+'
   - mermaid2:
       version: 10.9.0
   - redirects: # reference: https://github.com/mkdocs/mkdocs-redirects
@@ -21,6 +22,8 @@ markdown_extensions:
   - admonition
   - tables
   - pymdownx.magiclink
+  - attr_list
+  - md_in_html
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
   - javascripts/tablesort.js
@@ -39,6 +42,7 @@ nav:
   - Visualizations: visualizations.md
   - Data Validation: validation.md
   - Developer Docs: developer-docs.md
+  - Downloads: downloads.md
 
 
 site_url: https://microbiomedata.github.io/nmdc-schema
