@@ -9323,13 +9323,6 @@
             ],
             "description": "Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.",
             "properties": {
-                "add_date": {
-                    "description": "The date on which the information was added to the database.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
@@ -9443,13 +9436,6 @@
                         "null"
                     ]
                 },
-                "mod_date": {
-                    "description": "The last date on which the database information was modified.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -9481,6 +9467,17 @@
                             "type": "null"
                         }
                     ]
+                },
+                "provenance_metadata": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ProvenanceMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Provides information about the provenance of a record."
                 },
                 "qc_comment": {
                     "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
@@ -12199,13 +12196,6 @@
             "additionalProperties": false,
             "description": "A DataGeneration in which the sequence of DNA or RNA molecules is generated.",
             "properties": {
-                "add_date": {
-                    "description": "The date on which the information was added to the database.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
@@ -12326,13 +12316,6 @@
                         "null"
                     ]
                 },
-                "mod_date": {
-                    "description": "The last date on which the database information was modified.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -12370,6 +12353,17 @@
                             "type": "null"
                         }
                     ]
+                },
+                "provenance_metadata": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ProvenanceMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Provides information about the provenance of a record."
                 },
                 "qc_comment": {
                     "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
@@ -15671,6 +15665,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.16.1.post95.dev0+e9070ee41"
+    "version": "11.16.1.post96.dev0+c31d829c9"
 }
 

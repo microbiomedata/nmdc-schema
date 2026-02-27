@@ -333,8 +333,6 @@
 
 
 
-  MassSpectrometry : add_date
-
   MassSpectrometry : alternative_identifiers
 
   MassSpectrometry : analyte_category
@@ -395,8 +393,6 @@
       MassSpectrometry --&gt; "*" Instrument : instrument_used
     click Instrument href "../Instrument"
 
-  MassSpectrometry : mod_date
-
   MassSpectrometry : name
 
   MassSpectrometry : principal_investigator
@@ -413,6 +409,11 @@
 
       MassSpectrometry --&gt; "0..1" Protocol : protocol_link
     click Protocol href "../Protocol"
+
+  MassSpectrometry : provenance_metadata
+
+      MassSpectrometry --&gt; "0..1" ProvenanceMetadata : provenance_metadata
+    click ProvenanceMetadata href "../ProvenanceMetadata"
 
   MassSpectrometry : qc_comment
 
@@ -480,12 +481,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../add_date/">add_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The date on which the information was added to the database</td>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-</tr>
-<tr>
 <td><a href="../analyte_category/">analyte_category</a></td>
 <td>1 <br/> <a href="../MassSpectrometryEnum/">MassSpectrometryEnum</a></td>
 <td>The type of analyte(s) that were measured in the data generation process</td>
@@ -504,12 +499,6 @@
 <td><a href="../DataGeneration/">DataGeneration</a></td>
 </tr>
 <tr>
-<td><a href="../mod_date/">mod_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The last date on which the database information was modified</td>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-</tr>
-<tr>
 <td><a href="../principal_investigator/">principal_investigator</a></td>
 <td>0..1 <br/> <a href="../PersonValue/">PersonValue</a></td>
 <td>Principal Investigator who led the study and/or generated the dataset</td>
@@ -519,6 +508,12 @@
 <td><a href="../instrument_instance_specifier/">instrument_instance_specifier</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A unique value that identifies an individual instrument instance, such as a s...</td>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+</tr>
+<tr>
+<td><a href="../provenance_metadata/">provenance_metadata</a></td>
+<td>0..1 <br/> <a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
+<td>Provides information about the provenance of a record</td>
 <td><a href="../DataGeneration/">DataGeneration</a></td>
 </tr>
 <tr>
@@ -833,17 +828,6 @@ attributes:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
       interpolated: true
-  add_date:
-    name: add_date
-    description: The date on which the information was added to the database.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: add_date
-    owner: MassSpectrometry
-    domain_of:
-    - DataGeneration
-    - ProvenanceMetadata
-    range: string
   analyte_category:
     name: analyte_category
     description: 'The type of analyte(s) that were measured in the data generation
@@ -889,17 +873,6 @@ attributes:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
       interpolated: true
-  mod_date:
-    name: mod_date
-    description: The last date on which the database information was modified.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: mod_date
-    owner: MassSpectrometry
-    domain_of:
-    - DataGeneration
-    - ProvenanceMetadata
-    range: string
   principal_investigator:
     name: principal_investigator
     description: Principal Investigator who led the study and/or generated the dataset.
@@ -925,6 +898,18 @@ attributes:
     domain_of:
     - DataGeneration
     range: string
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provides information about the provenance of a record.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: provenance_metadata
+    owner: MassSpectrometry
+    domain_of:
+    - Study
+    - DataGeneration
+    - Biosample
+    range: ProvenanceMetadata
   has_input:
     name: has_input
     description: An input to a process.
