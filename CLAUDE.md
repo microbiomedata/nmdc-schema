@@ -72,17 +72,17 @@ there may be outdated).
 
 ### Tag format
 
-Use **`v{major}.{minor}.{patch}-rc{N}`**, e.g. `v11.17.0-rc1`.
+Use **`v{major}.{minor}.{patch}-rc.{N}`**, e.g. `v11.17.0-rc.1`.
 
-GitHub's tag creation UI rejects dots within the RC suffix, so use
-`-rc1`, `-rc2`, etc. (not `-rc.1`). Historical tags used various
-formats; `-rcN` is the standard going forward.
+Historical tags used inconsistent formats (`rc1`, `-rc2`, `-rc.1`).
+The hyphen-dot format (`-rc.N`) is the current standard — use it for
+all new pre-releases.
 
 ### Steps
 
 1. Ensure `make squeaky-clean all test` passes locally.
 2. Go to **Releases → Draft a new release** on GitHub.
-3. Create a new tag matching the format above (e.g. `v11.17.0-rc1`).
+3. Create a new tag matching the format above (e.g. `v11.17.0-rc.1`).
 4. Check the **"Set as a pre-release"** box.
 5. Click **Publish release**.
 
@@ -91,8 +91,8 @@ The existing `pypi-publish.yaml` workflow triggers on any release
 
 ### PyPI behavior
 
-The git tag `v11.17.0-rc1` is normalized to PEP 440 version `11.17.0rc1`
-on PyPI (the `v` prefix and `-` are stripped by
+The git tag `v11.17.0-rc.1` is normalized to PEP 440 version `11.17.0rc1`
+on PyPI (the `v` prefix and `-rc.` punctuation are stripped/collapsed by
 `poetry-dynamic-versioning`).
 
 Pre-release versions are **not installed by default**. Users must opt in:
