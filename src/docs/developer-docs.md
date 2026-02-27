@@ -15,3 +15,8 @@ Some frequently asked questions about developing the NMDC Schema.
 
 [NMDC SchemaView Documentation](schemaview.md)
 [SchemaView Documentation](https://linkml.github.io/linkml/schemaview.html)
+
+### Where is the OWL generation documentation?
+
+[OWL Generation](owl-generation.md) -- covers current build process, recommended
+config, CLI/YAML flag mapping, portal submission guidance, and upcoming LinkML changes.
