@@ -16,10 +16,7 @@ Some frequently asked questions about developing the NMDC Schema.
 [NMDC SchemaView Documentation](schemaview.md)
 [SchemaView Documentation](https://linkml.github.io/linkml/schemaview.html)
 
-### Is there an experimental OWL generation profile for OLS-style output?
+### Where is the OWL generation documentation?
 
-[OWL generation experiments](owl-generation-experiments.md)
-
-### Is there a curated summary of durable ideas from the historical PR #2484 notes?
-
-[Retained ideas from PR #2484](retained-ideas-from-pr-2484.md)
+[OWL Generation](owl-generation.md) -- covers current build process, recommended
+config, CLI/YAML flag mapping, portal submission guidance, and upcoming LinkML changes.
