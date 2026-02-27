@@ -63,6 +63,52 @@ through Feb 2026) that affect the build system and project layout:
 - **Downloads page** (PR #2302, 2026-02-21): Schema-derived JSON and YAML
   files are now downloadable via the docs website.
 
+## Pre-release Process
+
+Use pre-releases to test schema changes on PyPI before a full release.
+The authoritative publish workflow is `.github/workflows/pypi-publish.yaml`.
+See also `MAINTAINERS.md` for general release guidance (note: some details
+there may be outdated).
+
+### Tag format
+
+Use **`v{major}.{minor}.{patch}-rc.{N}`**, e.g. `v11.17.0-rc.1`.
+
+Historical tags used inconsistent formats (`rc1`, `-rc2`, `-rc.1`).
+The hyphen-dot format (`-rc.N`) is the current standard — use it for
+all new pre-releases.
+
+### Steps
+
+1. Ensure `make squeaky-clean all test` passes locally.
+2. Go to **Releases → Draft a new release** on GitHub.
+3. Create a new tag matching the format above (e.g. `v11.17.0-rc.1`).
+4. Check the **"Set as a pre-release"** box.
+5. Click **Publish release**.
+
+The existing `pypi-publish.yaml` workflow triggers on any release
+(including pre-releases) and publishes to PyPI via trusted publishing.
+
+### PyPI behavior
+
+The git tag `v11.17.0-rc.1` is normalized to PEP 440 version `11.17.0rc1`
+on PyPI (the `v` prefix and `-rc.` punctuation are stripped/collapsed by
+`poetry-dynamic-versioning`).
+
+Pre-release versions are **not installed by default**. Users must opt in:
+```bash
+pip install nmdc-schema==11.17.0rc1   # specific version
+pip install --pre nmdc-schema          # latest including pre-releases
+```
+
+### When to pre-release
+
+- Schema changes that affect downstream consumers (nmdc-runtime,
+  nmdc-server) and need integration testing before committing to a
+  full release.
+- Large structural changes (new classes, slot migrations) where you
+  want reviewers to `pip install` and test before merging follow-up PRs.
+
 ## Docker Development
 - Start env: `docker compose up --detach`
 - Connect: `docker compose exec app bash`
