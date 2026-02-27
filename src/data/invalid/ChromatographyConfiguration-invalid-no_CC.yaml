@@ -1,0 +1,6 @@
+#this is invalid because it is missing the chromatographic_category field
+id: nmdc:chrcon-99-oW43DzG0
+type: nmdc:ChromatographyConfiguration
+name: "EMSL LC method for non-polar metabolites"
+description: "EMSL's LC method for non-polar metabolites"
+stationary_phase: C18

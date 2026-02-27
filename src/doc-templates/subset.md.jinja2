@@ -1,3 +1,8 @@
+---
+search:
+  boost: {% if element.deprecated %}0.5{% else %}1.0{% endif %}
+---
+
 # Subset: {{ gen.name(element) }}
 
 {%- if header -%}
@@ -10,6 +15,8 @@
 _{{ element_description_line }}_
 {% endfor %}
 {% endif %}
+
+<div data-search-exclude markdown>
 
 URI: {{ gen.link(element) }}
 
@@ -40,7 +47,6 @@ URI: {{ gen.link(element) }}
 
 {% if classes_in_subset %}
 ## Classes in subset
-
 | Class | Description |
 | --- | --- |
 {% for c in classes_in_subset -%}
@@ -80,7 +86,6 @@ URI: {{ gen.link(element) }}
 
 {% if slots_in_subset %}
 ## Slots in subset
-
 | Slot | Description |
 | --- | --- |
 {% for s in slots_in_subset|sort(attribute=sort_by) -%}
@@ -94,7 +99,6 @@ URI: {{ gen.link(element) }}
 
 {% if enums_in_subset %}
 ## Enumerations in subset
-
 | Enumeration | Description |
 | --- | --- |
 {% for e in enums_in_subset|sort(attribute='name') -%}
@@ -104,3 +108,5 @@ URI: {{ gen.link(element) }}
 {% endfor %}
 
 {%- endif %}
+
+</div>

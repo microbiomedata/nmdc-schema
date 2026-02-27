@@ -22,6 +22,6 @@ enums:
         description: the small subunit of the eukaryotic ribosome
       28S_rRNA:
         aliases:
-          -28S rRNA
+          - 28S rRNA
           - 28S ribosomal RNA
         description: the large subunit of the eukaryotic ribosome

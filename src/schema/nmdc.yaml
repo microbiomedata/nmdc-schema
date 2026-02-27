@@ -4,15 +4,12 @@ title: NMDC Schema
 notes:
   - not importing any MIxS terms where the relationship between the name (SCN) and the id isn't 1:1
 description: >-
-  Schema for National Microbiome Data Collaborative (NMDC).
-
-  This schema is organized into multiple modules, such as:
-
-   * a set of core types for representing data values
-   * a subset of the mixs schema
-   * an annotation schema
-   * the NMDC schema itself, into which the other modules are imported
-
+  The NMDC Schema is a foundational framework designed to standardize metadata for the National Microbiome Data 
+  Collaborative (NMDC) and collaborating data providors. By establishing a structured approach to metadata, the NMDC Schema enables researchers to organize, 
+  share, and interpret complex datasets with consistency and clarity. The NMDC Schema is critical substrate used to facilitate 
+  interoperability and collaboration, as it provide a common language for data exchange across systems and disciplines. 
+  In the context of the NMDC, this schema supports the integration of microbiome data from medicine, agriculture, 
+  bioenergy, and environmental science into a cohesive platform.
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 0.0.0
 
@@ -21,75 +18,101 @@ imports:
   - workflow_execution_activity
 
 prefixes:
+  BFO: "http://purl.obolibrary.org/obo/BFO_"
   CATH: "https://bioregistry.io/cath:"
   CHEBI: "http://purl.obolibrary.org/obo/CHEBI_"
   CHEMBL.COMPOUND: "https://bioregistry.io/chembl.compound:" # https://bioregistry.io/chembl.compound:CHEMBL465070
   CHMO: "http://purl.obolibrary.org/obo/CHMO_"
-  Contaminant: http://example.org/contaminant/ # present in MongoDB
+  COG: "https://bioregistry.io/cog:"
+  Contaminant: "http://example.org/contaminant/" # only because it is present in MongoDB
   DRUGBANK: "https://bioregistry.io/drugbank:" # https://bioregistry.io/drugbank:DB14938
   EC: "https://bioregistry.io/eccode:" # https://bioregistry.io/eccode:1.1.1.1
-  EFO: http://www.ebi.ac.uk/efo/
+  EFO: "http://www.ebi.ac.uk/efo/"
   EGGNOG: "https://bioregistry.io/eggnog:" # https://bioregistry.io/eggnog:veNOG12876
   ENVO: "http://purl.obolibrary.org/obo/ENVO_"
-  FBcv: "http://purl.obolibrary.org/obo/FBcv_"
+  FBcv: "http://purl.obolibrary.org/obo/FBcv_" # for Biosample only
   FMA: "http://purl.obolibrary.org/obo/FMA_"
+  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_" # for library_preparation_kit, contig identifier and count only
   GO: "http://purl.obolibrary.org/obo/GO_"
   HMDB: "https://bioregistry.io/hmdb:" # https://bioregistry.io/hmdb:HMDB00001
-  ISA: http://example.org/isa/
+  ISA: "http://example.org/isa/"
+  KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
+  KEGG.MODULE: "https://bioregistry.io/kegg.module:" #https://bioregistry.io/kegg.module:M00002
   KEGG.ORTHOLOGY: "https://bioregistry.io/kegg.orthology:"  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  KEGG.REACTION: "https://bioregistry.io/kegg.reaction:"
+  KEGG_PATHWAY: "https://bioregistry.io/kegg.pathway:"
   MASSIVE: "https://bioregistry.io/reference/massive:"
+  MCO: "http://purl.obolibrary.org/obo/MICRO_"
   MESH: "https://bioregistry.io/mesh:" # https://bioregistry.io/mesh:C063233
+  MISO: "http://purl.obolibrary.org/obo/MISO_"
+  MIXS: "https://w3id.org/mixs/"
   MS: "http://purl.obolibrary.org/obo/MS_"
-  MetaNetX: http://example.org/metanetx/
+  MetaCyc: "https://bioregistry.io/metacyc.compound:"
+  MetaNetX: "http://example.org/metanetx/"
+  NCBI: "http://example.org/ncbitaxon/" # temporary. see https://github.com/microbiomedata/issues/issues/893
   NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_"
-  NCBI: "http://example.com/ncbitaxon/" # temporary. see https://github.com/microbiomedata/issues/issues/893
-  NCIT: "http://purl.obolibrary.org/obo/NCIT_"
-  OBI: http://purl.obolibrary.org/obo/OBI_
-  ORCID: https://orcid.org/
+  NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
+  OBI: "http://purl.obolibrary.org/obo/OBI_"
+  OMIT: "http://purl.obolibrary.org/obo/OMIT_" # for RNA subtypes only
+  ORCID: "https://orcid.org/"
   PANTHER.FAMILY: "https://bioregistry.io/panther.family:" # https://bioregistry.io/panther.family:PTHR12345
   PATO: "http://purl.obolibrary.org/obo/PATO_"
-  PFAM: "https://bioregistry.io/pfam:" # https://bioregistry.io/pfam:PF11779
   PFAM.CLAN: "https://bioregistry.io/pfam.clan:" # https://bioregistry.io/pfam.clan:CL0192
+  PFAM: "https://bioregistry.io/pfam:" # https://bioregistry.io/pfam:PF11779
   PO: "http://purl.obolibrary.org/obo/PO_"
   PR: "http://purl.obolibrary.org/obo/PR_"
   PUBCHEM.COMPOUND: "https://bioregistry.io/pubchem.compound:"
+  RHEA: "https://bioregistry.io/rhea:"
   RO: "http://purl.obolibrary.org/obo/RO_"
-  RetroRules: http://example.org/retrorules/
+  RetroRules: "http://example.org/retrorules/"
+  SEED: "https://bioregistry.io/seed:"
+  SIO: "http://semanticscience.org/resource/SIO_" # for Study, StudyCategoryEnum PVs, objective
   SO: "http://purl.obolibrary.org/obo/SO_"
   SUPFAM: "https://bioregistry.io/supfam:" # 	https://bioregistry.io/supfam:SSF57615
   TIGRFAM: "https://bioregistry.io/tigrfam:" # https://bioregistry.io/tigrfam:TIGR00010
   UBERON: "http://purl.obolibrary.org/obo/UBERON_"
   UO: "http://purl.obolibrary.org/obo/UO_"
-  bioproject: "https://identifiers.org/bioproject:"
+  UniProtKB: "https://bioregistry.io/uniprot:"
+  biolink: "https://w3id.org/biolink/vocab/"
+  bioproject: "https://bioregistry.io/bioproject:"
   biosample: "https://bioregistry.io/biosample:"
   cas: "https://bioregistry.io/cas:"
+  dcterms: "http://purl.org/dc/terms/"
   doi: "https://bioregistry.io/doi:"
-  edam.data: "http://edamontology.org/data_"
+  edam.data: "http://edamontology.org/data_" # for doi_value and DataCategoryEnum only
+  edam.format: "http://edamontology.org/format_" # for 'Configuration toml' PV only only
   emsl.project: "https://bioregistry.io/emsl.project:"
   emsl: "http://example.org/emsl_in_mongodb/"
   emsl_uuid_like: "http://example.org/emsl_uuid_like/"
-  generic: https://example.org/generic/
+  generic: "http://example.org/generic/"
   gnps.task: "https://bioregistry.io/gnps.task:"
-  gtpo: http://example.org/gtpo/
-  igsn: https://app.geosamples.org/sample/igsn/
+  gold: "https://bioregistry.io/gold:"
+  gtpo: "http://example.org/gtpo/"
+  igsn: "https://app.geosamples.org/sample/igsn/"
   img.taxon: "https://bioregistry.io/img.taxon:"
+  insdc.sra: "https://bioregistry.io/insdc.sra:"
   jgi.analysis: "https://data.jgi.doe.gov/search?q="
-  jgi.proposal: "https://bioregistry.io/jgi.proposal:"
-  jgi: http://example.org/jgi/
+  jgi.proposal: 'https://bioregistry.io/jgi.proposal:'
+  jgi: "http://example.org/jgi/"
   kegg: "https://bioregistry.io/kegg:" # https://bioregistry.io/kegg:hsa00190
-  KEGG.MODULE: "https://bioregistry.io/kegg.module:" #https://bioregistry.io/kegg.module:M00002
-  linkml: https://w3id.org/linkml/
+  linkml: "https://w3id.org/linkml/"
+  mgnify.analysis: "https://bioregistry.io/mgnify.analysis:" # https://www.ebi.ac.uk/metagenomics/analyses/MGYA00002270
   mgnify.proj: "https://bioregistry.io/mgnify.proj:"
   my_emsl: "https://release.my.emsl.pnnl.gov/released_data/"
-  neon.identifier: http://example.org/neon/identifier/
-  neon.schema: http://example.org/neon/schema/
-  nmdc: https://w3id.org/nmdc/
-  prov: http://www.w3.org/ns/prov#
-  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-  rdfs: http://www.w3.org/2000/01/rdf-schema#
-  skos: http://www.w3.org/2004/02/skos/core#
+  neon.identifier: "http://example.org/neon/identifier/"
+  neon.schema: "http://example.org/neon/schema/"
+  nmdc: "https://w3id.org/nmdc/"
+  owl: "http://www.w3.org/2002/07/owl#"
+  prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
+  qud: "http://qudt.org/1.1/schema/qudt#"
+  rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  ror: 'https://bioregistry.io/ror:' # https://ror.org/
+  schema: "http://schema.org/"
+  skos: "http://www.w3.org/2004/02/skos/core#"
+  wgs84: "http://www.w3.org/2003/01/geo/wgs84_pos#"
   wikidata: "http://www.wikidata.org/entity/"
-  xsd: http://www.w3.org/2001/XMLSchema#
+  xsd: "http://www.w3.org/2001/XMLSchema#"
 
 default_prefix: nmdc
 default_range: string
@@ -111,11 +134,55 @@ emit_prefixes:
   - xsd
 
 settings:
+  # NMDC ID pattern components
   id_nmdc_prefix: "^(nmdc)"
   id_shoulder: "([0-9][a-z]{0,6}[0-9])"
   id_blade: "([A-Za-z0-9]{1,})"
   id_version: "(\\.[0-9]{1,})"
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
+  # MIxS structured_pattern settings for pattern interpolation.
+  # These settings define regex patterns for placeholders like {scientific_float}, {text}, {URL}
+  # used in MIxS slot structured_pattern definitions.
+  #
+  # IMPORTANT: These settings are defined here (not in mixs.yaml) because:
+  # 1. The sheets-and-friends do_shuttle tool does not import settings from source schemas
+  # 2. The MIxS import pipeline explicitly deletes settings (see project.Makefile)
+  # When updating MIxS import, these settings must be manually synced if the source changes.
+  #
+  # Source: GSC MIxS v6.2.3 (commit 77cd78836ee01ee8ba2ad10724871a962e3ad694)
+  add_recov_methods: 'Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other'
+  agrochemical_name: ".*"
+  amount: '[-+]?[0-9]*\.?[0-9]+'
+  boolean: '(?:yes|no)'  # a non-capturing group matching either 'yes' or 'no'
+  country: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  date_time_stamp: '(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?'  # ISO 8601 timestamp; seconds optional; alias of 'timestamp'
+  dna_bases: '[ACGT]'
+  DOI: 'doi:10.\d{2,9}/.*'
+  duration: P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)
+  float: '[-+]?[0-9]*\.?[0-9]+'
+  integer: '[1-9][0-9]*'
+  lat: (-?((?:[0-8]?[0-9](?:\.\d{0,8})?)|90))
+  lon: -?[0-9]+(?:\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})
+  name: '.*'
+  NCBItaxon_id: NCBITaxon:\d+
+  parameters: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  particulate_matter_name: '.*'
+  PMID: 'PMID:\d+'
+  primer_adapter_codes: '[ACGTRYSWKMBDHVNI]'
+  region: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  room_name: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  room_number: '[1-9][0-9]*'
+  scientific_float: '[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?'
+  software: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  specific_location: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  storage_condition_type: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  termID: '[a-zA-Z]{2,}:[a-zA-Z0-9]\d+'
+  termLabel: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  text: '.*'
+  timestamp: '(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?'  # ISO 8601 timestamp; seconds optional; alias of 'date_time_stamp'
+  unit: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  URL: 'https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)'
+  version: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
 
 classes:
 
@@ -135,14 +202,13 @@ classes:
     class_uri: nmdc:NucleotideSequencing
     is_a: DataGeneration
     description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
-    comments: For example data generated from an Illumina or Pacific Biosciences instrument.
+    comments:
+      - For example data generated from an Illumina or Pacific Biosciences instrument.
     slots:
       - gold_sequencing_project_identifiers
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
       - ncbi_project_name
-      - target_gene
-      - target_subfragment
     slot_usage:
       id:
         structured_pattern:
@@ -175,8 +241,11 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
           interpolated: true
+        required: true
       analyte_category: 
         range: MassSpectrometryEnum
+      eluent_introduction_category:
+        required: true
     rules:
       - title: generates_calibration_required_if_gc
         description: >-
@@ -189,15 +258,24 @@ classes:
           slot_conditions:
             generates_calibration:
               required: true
-      - title: has_chromatography_configuration_required_if_lc_or_gc
+      - title: has_chromatography_configuration_required_if_lc
         description: >-
-          If eluent_introduction_category is liquid_chromatography or gas_chromatography, then has_chromatography_configuration is required.
+          If eluent_introduction_category is liquid_chromatography, then has_chromatography_configuration is required.
         preconditions:
           slot_conditions:
             eluent_introduction_category:
-              any_of:
-                - equals_string: liquid_chromatography
-                - equals_string: gas_chromatography
+              equals_string: liquid_chromatography
+        postconditions:
+          slot_conditions:
+            has_chromatography_configuration:
+              required: true
+      - title: has_chromatography_configuration_required_if_gc
+        description: >-
+          If eluent_introduction_category is gas_chromatography, then has_chromatography_configuration is required.
+        preconditions:
+          slot_conditions:
+            eluent_introduction_category:
+              equals_string: gas_chromatography
         postconditions:
           slot_conditions:
             has_chromatography_configuration:
@@ -210,6 +288,8 @@ classes:
     description: A set of parameters that define the actions of a process and is shared among multiple instances of the process.
     notes:
       - This class is intended to represent the parameters within a method file (or similar) that control a process.
+    slots:
+      - protocol_link
 
   MassSpectrometryConfiguration:
     is_a: Configuration
@@ -233,6 +313,18 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
           interpolated: true
+      mass_spectrometry_acquisition_strategy:
+        required: true
+      resolution_categories:
+        required: true
+      mass_analyzers:
+        required: true
+      ionization_source:
+        required: true
+      mass_spectrum_collection_modes:
+        required: true
+      polarity_mode:
+        required: true
   
   ChromatographyConfiguration:
     is_a: Configuration
@@ -254,6 +346,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
+      chromatographic_category:
+        required: true
+      stationary_phase:
+        required: true
   
   Manifest:
     is_a: InformationObject
@@ -294,7 +390,8 @@ classes:
             If internal_calibration is false, a calibration_object is required.
           preconditions:
             slot_conditions:
-              internal_calibration: false
+              internal_calibration:
+                equals_expression: "False"
           postconditions:
             slot_conditions:
               calibration_object:
@@ -311,6 +408,8 @@ classes:
 
 
   FunctionalAnnotationAggMember:
+    description: >-
+      This class is used to store aggregated results from workflows which produce functional annotations such as metaproteomics and metagenomics.
     class_uri: nmdc:FunctionalAnnotationAggMember
     slots:
       - was_generated_by
@@ -323,9 +422,12 @@ classes:
           syntax: "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
         required: true
+        range: AnnotatingWorkflow
       count: 
           description: The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.
-
+      gene_function_id:
+        pattern: "(COG:COG\\d+|PFAM:PF\\d{5}|KEGG.ORTHOLOGY:K\\d+)"
+      
   Database:
     class_uri: nmdc:Database
     tree_root: true
@@ -340,7 +442,6 @@ classes:
     slots:
       - biosample_set
       - calibration_set
-      - chemical_entity_set
       - collecting_biosamples_from_site_set
       - configuration_set
       - data_generation_set
@@ -353,7 +454,6 @@ classes:
       - manifest_set
       - material_processing_set
       - processed_sample_set
-      - protocol_execution_set
       - storage_process_set
       - study_set
       - workflow_execution_set
@@ -396,6 +496,7 @@ classes:
       - extraction_targets
       - input_mass
       - volume
+      - temperature
     slot_usage:
       has_input:
         required: true
@@ -430,6 +531,8 @@ classes:
       - pcr_cycles
       - pcr_primers
       - stranded_orientation
+      - target_gene
+      - target_subfragment
     close_mappings:
       - OBI:0000711
     comments:
@@ -480,36 +583,8 @@ classes:
           syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$"
           interpolated: true
 
-  ProtocolExecution:
-    class_uri: 'nmdc:ProtocolExecution'
-    is_a: PlannedProcess
-    description: A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
-    slots:
-      - has_process_parts
-      - protocol_execution_category
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$"
-          interpolated: true
-      has_input:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-      has_output:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-      has_process_parts:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-        description: The MaterialProcessing steps that are discrete parts of the ProtocolExecution.
-
   SubSamplingProcess:
-    class_uri: 'nmdc:SubSamplingProcess'
+    class_uri: nmdc:SubSamplingProcess
     description: >
       Separating a sample aliquot from the starting material for downstream activity.
     related_mappings:
@@ -556,7 +631,7 @@ classes:
           interpolated: true
 
   MixingProcess:
-    class_uri: 'nmdc:MixingProcess'
+    class_uri: nmdc:MixingProcess
     description: >
       The combining of components, particles or layers into a more homogeneous state.
     contributors:
@@ -589,7 +664,7 @@ classes:
           interpolated: true
 
   FiltrationProcess:
-    class_uri: 'nmdc:FiltrationProcess'
+    class_uri: nmdc:FiltrationProcess
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
     related_mappings:
@@ -629,7 +704,7 @@ classes:
           interpolated: true
 
   StorageProcess:
-    class_uri: 'nmdc:StorageProcess'
+    class_uri: nmdc:StorageProcess
     description: >-
       A planned process with the objective to preserve and protect material entities by placing them in an identified 
       location which may have a controlled environment.
@@ -652,13 +727,15 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: Sample
       has_output:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: ProcessedSample
 
   ChromatographicSeparationProcess:
-    class_uri: 'nmdc:ChromatographicSeparationProcess'
+    class_uri: nmdc:ChromatographicSeparationProcess
     description:
       The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
     contributors:
@@ -687,7 +764,7 @@ classes:
           interpolated: true
 
   DissolvingProcess:
-    class_uri: 'nmdc:DissolvingProcess'
+    class_uri: nmdc:DissolvingProcess
     aliases:
       - Solubilization
     description: >
@@ -732,6 +809,13 @@ enums:
       alkanes:
         aliases:
           - Alkanes
+      srfa:
+        aliases:
+          - Suwannee River fulvic acid
+        see_also:
+          - https://humic-substances.org/source-materials-for-ihss-samples/
+        comments:
+          - Reference standard Suwannee River Fulvic Acid Standard II (2S101F) from International Humic Substances Society
 
   StrandedOrientationEnum:
     description: This enumeration specifies information about stranded RNA library preparations.
@@ -748,8 +832,7 @@ enums:
   MassSpectrometryAcquisitionStrategyEnum:
     permissible_values:
       data_independent_acquisition:
-        description:
-          - Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.
+        description: Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.
         aliases:
           - DIA
           - data independent acquisition from dissociation of full mass range
@@ -759,7 +842,7 @@ enums:
         description:
           Mass spectrometer data acquisition method wherein MSn spectra are triggered based on the m/z of precursor ions detected in the same run.
         aliases:
-          -DDA
+          - DDA
         exact_mappings:
           - MS:1003221
       full_scan_only:
@@ -850,14 +933,18 @@ enums:
       liquid_chromatography:
         aliases:
           - LC
+        title: liquid chromatography
         description: The processed sample is introduced into the mass spectrometer through a liquid chromatography process.
       gas_chromatography:
         aliases:
           - GC
+        title: gas chromatography
         description: The processed sample is introduced into the mass spectrometer through a gas chromatography process.
       direct_infusion_syringe:
+        title: direct infusion syringe
         description: The processed sample is introduced into the mass spectrometer through a direct infusion process using a syringe.
       direct_infusion_autosampler:
+        title: direct infusion autosampler
         description: The processed sample is introduced into the mass spectrometer through a direct infusion process using an autosampler.
 
   LibraryTypeEnum:
@@ -890,29 +977,59 @@ enums:
       - ORCID:0000-0002-4504-1039 #Katherine Heal
     permissible_values:
       BEH-HILIC:
+        description: Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged Ethylene Hybrid) particles as the stationary phase.
+        is_a: HILIC
       C18:
+        description: A stationary phase consisting of octadecyl chains (C18) bonded to silica particles.
       C8:
+        description: A stationary phase consisting of octyl chains (C8) bonded to silica particles.
       C4:
+        description: A stationary phase consisting of butyl chains (C4) bonded to silica particles.
       C2:
+        description: A stationary phase consisting of ethyl chains (C2) bonded to silica particles.
       C1:
+        description: A stationary phase consisting of methyl chains (C1) bonded to silica particles.
       C30:
+        description: A stationary phase consisting of triacontyl chains (C30) bonded to silica particles.
       C60:
+        description: A stationary phase consisting of hexatriacontyl chains (C60) bonded to silica particles.
       CNT:
+        description: Carbon Nanotube stationary phase.
       CN:
+        description: Cyano (CN) bonded stationary phase.
       Diol:
+        description: A stationary phase with diol (1,2-diol) functional groups.
       HILIC:
+        description: Hydrophilic Interaction Chromatography (HILIC) stationary phase.
+      HLB:
+        description: Hydrophilic-Lipophilic-Balance (HLB) stationary phase.
       NH2:
+        description: Amino (NH2) bonded stationary phase.
       Phenyl:
+        description: Phenyl bonded stationary phase.
       Polysiloxane:
+        description: A stationary phase made of polysiloxane, usually used in gas chromatography.
       PS-DVB:
+        description: Polystyrene-divinylbenzene stationary phase, often used in solid-phase extraction, including proprietary Priority PolLutant (PPL).
       SAX:
+        description: Strong Anion Exchange (SAX) stationary phase.
       SCX:
+        description: Strong Cation Exchange (SCX) stationary phase.
       Silica:
+        description: A stationary phase made of silica, commonly used in chromatography.
       WCX:
+        description: Weak Cation Exchange (WCX) stationary phase.
       WAX:
+        description: Weak Anion Exchange (WAX) stationary phase.
       ZIC-HILIC:
+        description: Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC) stationary phase.
+        is_a: HILIC
       ZIC-pHILIC:
+        description: Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography (ZIC-pHILIC) stationary phase.
+        is_a: ZIC-HILIC
       ZIC-cHILIC:
+        description: Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC) stationary phase.
+        is_a: ZIC-HILIC
 
   ProtocolCategoryEnum:
     description: The possible protocols that may be followed for an assay.
@@ -950,11 +1067,83 @@ enums:
         aliases:
           - bottom_layer
       organic_layer:
+        title: Organic layer
+        description: The portion of a mixture containing dissolved organic material
       aqueous_layer:
-      non_polar_layer:
-
+        title: Aqueous layer
+        description: The portion of a mixture containing molecules dissolved in water
+        aliases:
+          - water layer
+      interlayer:
+        title: Interlayer
+        description: The layer of material between liquid layers of a separated mixture
+      chloroform_layer:
+        title: Chloroform layer
+        description: The portion of a mixture containing molecules dissolved in chloroform
+        is_a: organic_layer
+      methanol_layer: 
+        title: Methanol layer
+        description: The portion of a mixture containing molecules dissolved in methanol
+        is_a: organic_layer
 
 slots:
+  # ============================================================================
+  # Legacy MIxS slots removed from GSC MIxS commit 0368da846b197bef1c0dd27a9cf337a8aeea17f2
+  # These slots were present in microbiomedata/mixs tag pre-2024-05-15 but removed
+  # from the current GSC MIxS. NMDC retains them for backward compatibility with
+  # submission-schema which references them. No production data uses these slots.
+  # ============================================================================
+  host_family_relation:
+    title: host family relationship
+    description: >-
+      Familial relationships to other hosts in the same study; can include multiple relationships.
+    comments:
+      - "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
+    range: string
+    multivalued: true
+    examples:
+      - value: "offspring;Mussel25"
+    annotations:
+      Expected_value: "relationship type;arbitrary identifier"
+    slot_uri: MIXS:0000872
+
+  salinity_meth:
+    title: salinity method
+    description: >-
+      Reference or method used in determining salinity.
+    comments:
+      - "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
+    range: string
+    multivalued: false
+    structured_pattern:
+      syntax: "^{PMID}|{DOI}|{URL}$"
+      interpolated: true
+    annotations:
+      Expected_value: "PMID,DOI or url"
+    slot_uri: MIXS:0000341
+
+  soil_text_measure:
+    title: soil texture measurement
+    description: >-
+      The relative proportion of different grain sizes of mineral particles in a soil,
+      as described using a standard system; express as % sand (50 um to 2 mm),
+      silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.
+    comments:
+      - "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
+      - "Old MIxS used 'quantity value' range but this is clearly structured text, not a single quantity."
+    range: string
+    multivalued: false
+    examples:
+      - value: "ite loam; 20% sand; 40% silt; 40% clay"
+    annotations:
+      Expected_value: "measurement value"
+    slot_uri: MIXS:0000335
+
+  biomaterial_purity:
+    abstract: true
+    range: QuantityValue
+    description: A measure of the purity of a biomaterial sample
+
   generates_calibration:
     range: CalibrationInformation
     description: calibration information is generated a process
@@ -966,6 +1155,7 @@ slots:
 
   uses_calibration:
     range: CalibrationInformation
+    multivalued: true
     description: calibration information is used by a process
     comments:
       - Retenion index calibration data generated by a gas chromatography mass spectromery run is used when analyzing metabolomics data 
@@ -1008,13 +1198,13 @@ slots:
     range: string
     pattern: '^\d+(-\d+)*$'
     description: Dash-delimited ordered list of NCBI taxonomy identifiers (TaxId)
-    comments:
-      - Example 1-131567-2759-2611352-33682-191814-2603949
+    examples:
+      - value: 1-131567-2759-2611352-33682-191814-2603949
   ncbi_lineage:
     range: string
     description: Comma delimited ordered list of NCBI taxonomy names.
-    comments:
-      - Example root,cellular organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae
+    examples:
+      - value: root,cellular organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae
 
   has_failure_categorization:
     range: FailureCategorization
@@ -1038,9 +1228,8 @@ slots:
     range: ResolutionCategoryEnum
     description: The relative resolution at which spectra were collected.
     examples:
-      - value:
-          - high
-          - low
+      - value: high
+      - value: low
     multivalued: true
   mass_spectrometry_acquisition_strategy:
     range: MassSpectrometryAcquisitionStrategyEnum
@@ -1075,14 +1264,11 @@ slots:
     required: true
 
   functional_annotation_agg:
+    description: This property links a database object to a set of functional annotation aggregation (agg) results.
     range: FunctionalAnnotationAggMember
     multivalued: true
     inlined: true
     inlined_as_list: true
-
-  ecosystem_path_id:
-    range: string
-    description: A unique id representing the GOLD classifiers associated with a sample.
 
   sample_collection_year:
     range: integer
@@ -1090,16 +1276,8 @@ slots:
 
   library_preparation_kit:
     range: string
-
-  ## WHY ARE THESE COMMENTED OUT?
-  #    exact_mappings:
-  #      - GENEPIO:0001450
-  #  processed_date: # can we move this or infer this from the date of some other process?
-  #    #    range: date
-  #    range: string
-  #  extraction_date: # replacing with start_ and end_date
-  #    #    range: date
-  #    range: string
+    exact_mappings:
+      - GENEPIO:0001450
 
   pcr_cycles:
     range: integer
@@ -1128,6 +1306,8 @@ slots:
     narrow_mappings:
       - MIXS:0000111
     range: QuantityValue
+    annotations:
+      storage_units: g
 
   library_type:
     title: library type
@@ -1148,13 +1328,6 @@ slots:
       Applies to a property that links a database object to a set of objects.
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
-  chemical_entity_set:
-    mixins:
-      - object_set
-    range: ChemicalEntity
-    description:
-      This property links a database object to the set of chemical entities
-      within it.
   ontology_class_set:
     mixins:
       - object_set
@@ -1163,93 +1336,104 @@ slots:
       This property links a database object to the set of ontology classes
       within it.
   biosample_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: Biosample
     description:
       This property links a database object to the set of samples within
       it.
   study_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: Study
     description:
       This property links a database object to the set of studies within
       it.
   field_research_site_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: FieldResearchSite
 
   collecting_biosamples_from_site_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: CollectingBiosamplesFromSite
 
   data_object_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: DataObject
     description:
       This property links a database object to the set of data objects
       within it.
 
   genome_feature_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: GenomeFeature
     description: This property links a database object to the set of all features
 
   functional_annotation_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: FunctionalAnnotation
     description:
       This property links a database object to the set of all functional
       annotations
 
   workflow_execution_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: WorkflowExecution
     description: This property links a database object to the set of workflow executions.
 
   data_generation_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: DataGeneration
     description:
       This property links a database object to the set of data generations
       within it.
 
   processed_sample_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: ProcessedSample
     description: This property links a database object to the set of processed samples within it.
 
   instrument_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: Instrument
     description: This property links a database object to the set of instruments within it.
 
   calibration_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: CalibrationInformation
     description: This property links a database object to the set of calibrations within it.
 
   configuration_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: Configuration
     description: This property links a database object to the set of configurations within it.
 
   manifest_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: Manifest
     description: This property links a database object to the set of manifests within it.
 
-  protocol_execution_set:
-    mixins: object_set
-    range: ProtocolExecution
-    description: This property links a database object to the set of protocol executions within it.
-
   storage_process_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: StorageProcess
     description: This property links a database object to the set of storage processes within it.
 
   material_processing_set:
-    mixins: object_set
+    mixins:
+      - object_set
     range: MaterialProcessing
     description: This property links a database object to the set of material processing within it.
 
@@ -1279,17 +1463,8 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
-
-  protocol_execution_category:
-    range: ProtocolCategoryEnum
-    required: true
-
-  has_process_parts:
-    range: PlannedProcess
-    description: A list of process parts that make up a protocol.
-    required: true
-    multivalued: true
-    list_elements_ordered: true
+    annotations:
+      storage_units: mL
 
   filter_material:
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
@@ -1299,6 +1474,8 @@ slots:
   filter_pore_size:
     range: QuantityValue
     description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
+    annotations:
+      storage_units: um
   conditionings:
     range: string
     description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
@@ -1315,6 +1492,8 @@ slots:
     description: "A material processing in which components of an input material become segregated in space"
   value:
     range: QuantityValue
+    annotations:
+      units_alignment_excuse: pending_analysis
   modifier_substance:
     range: string
     description: The type of modification being done
@@ -1333,6 +1512,8 @@ slots:
   input_volume: # see also `volume`
     range: QuantityValue
     description: The volume of the input sample.
+    annotations:
+      storage_units: mL
 
   ordered_mobile_phases:
     range: MobilePhaseSegment

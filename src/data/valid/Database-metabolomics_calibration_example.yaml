@@ -35,9 +35,17 @@ data_object_set:
 - id: nmdc:dobj-13-rf3br219
   name: 'output: GCMS_FAMEs_01_GCMS01_20160523'
   description: Full scan GC-MS (but not GC QExactive, which is EI-HMS)
+  data_category: workflow_parameter_data
   file_size_bytes: 1818624
   type: nmdc:DataObject
   data_object_type: Reference Calibration File
+- id: nmdc:dobj-13-vws2zc98
+  name: Froze_Core_2015_S1_20_30_19_Metab.cdf
+  description: Full scan GC-MS raw data file
+  file_size_bytes: 1818624
+  data_category: instrument_data
+  type: nmdc:DataObject
+  data_object_type: GC-MS Raw Data
 workflow_execution_set:
 - type: nmdc:MetabolomicsAnalysis
   has_input:
@@ -45,9 +53,13 @@ workflow_execution_set:
   has_output:
   - nmdc:dobj-13-hrf1h918
   id: nmdc:wfmb-13-r954ws43.1
-  uses_calibration: nmdc:calib-14-93cjjw92
+  uses_calibration: 
+  - nmdc:calib-14-93cjjw92
   ended_at_time: '2021-01-07T23:54:40Z'
   execution_resource: EMSL-RZR
+  processing_institution: NMDC
   git_url: https://github.com/microbiomedata/metaMS
   started_at_time: '2021-01-07T23:54:40Z'
-  was_informed_by: nmdc:dgms-13-122e4240
+  was_informed_by:
+    - nmdc:dgms-13-122e4240
+  metabolomics_analysis_category: gc_ms_metabolomics

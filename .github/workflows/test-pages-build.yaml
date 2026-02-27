@@ -1,0 +1,57 @@
+name: Preview documentation build
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+concurrency: preview-${{ github.ref }}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'poetry'
+
+      - name: Install dependencies
+        run: poetry install
+
+      # Replace the `0.0.0` placeholder `version` number in various files (per the config in `pyproject.toml`).
+      # Reference: https://github.com/mtkennerly/poetry-dynamic-versioning/blob/master/README.md#command-line-mode
+      - name: Replace placeholder version number
+        run: |
+          poetry self add "poetry-dynamic-versioning[plugin]"
+          poetry dynamic-versioning
+
+      # Note: `make all` includes `gendoc` (via site target), so no separate gendoc step needed
+      - name: Clean previous build artifacts
+        run: make squeaky-clean
+
+      - name: Build schema and documentation
+        run: make all
+
+      - name: Create .nojekyll file
+        run: touch docs/.nojekyll
+
+      - name: Build mkdocs site
+        run: poetry run mkdocs build -d site
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: site/
+          preview-branch: gh-pages

@@ -5,6 +5,7 @@ description: Overall statistics from MSGF+ search results filtered to ~5% FDR
 file_size_bytes: 173
 md5_checksum: 299fa9e3ce6b29edc515146fdd452acd
 data_object_type: Metaproteomics Workflow Statistics
+data_category: processed_data
 url: https://nmdcdemo.emsl.pnnl.gov/proteomics/results/nmdc_dobj-11-agsd2f41_nmdc_dobj-11-8yvaz057_QC_metrics.tsv
 type: nmdc:DataObject
 in_manifest:

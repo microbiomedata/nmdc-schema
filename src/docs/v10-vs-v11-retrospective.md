@@ -1,6 +1,6 @@
-# Merging the Berkeley schema into the NMDC schema
+# Merging the Berkeley schema into the NMDC Schema
 
-This document is a retrospective on the changes made to the NMDC schema between major versions 10 and 11.
+This document is a retrospective on the changes made to the NMDC Schema between major versions 10 and 11.
 
 Motivations for the Berkeley schema development included:
 
@@ -306,7 +306,7 @@ replaced with `has_metabolite_identifications` and `metabolite_quantified` has b
 The `part_of` slots have been replaced in many cases with more specific slots. For example, `Biosample` now has an
 `associated_studies` relationship with `Study`.
 
-The NMDC schema has always imported many slots from the MIxS standard, and has generally associated them with the
+The NMDC Schema has always imported many slots from the MIxS standard, and has generally associated them with the
 `Biosample` class. In schema v11, several of those have been de-associated with `Biosample` as they are arguably
 attributes of laboratory methods, not about samples of biological materials that are extracted from some environment.
 

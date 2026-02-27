@@ -5,14 +5,14 @@ has_input:
 has_output:
   - nmdc:procsm-99-123456
 substances_used:
-  - known_as: nmdc:chem-99-000005  # see src/data/valid/Database-chemical_entity_set-1.yaml
+  - known_as: water
     type: nmdc:PortionOfSubstance
-  - known_as: nmdc:chem-99-000002
+  - known_as: glucose
     type: nmdc:PortionOfSubstance
-  - known_as: nmdc:chem-99-000014
+  - known_as: acetonitrile
     type: nmdc:PortionOfSubstance
     final_concentration:
       type: nmdc:QuantityValue
       has_numeric_value: 0.05
-      has_unit: "μg/μL"
+      has_unit: "umol/L"
 

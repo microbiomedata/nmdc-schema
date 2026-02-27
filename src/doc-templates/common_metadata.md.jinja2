@@ -1,6 +1,5 @@
 {% if element.aliases %}
 ## Aliases
-
 {% for alias in element.aliases %}
 * {{ alias }}
 {%- endfor %}
@@ -9,7 +8,6 @@
 
 {% if element.examples %}
 ## Examples
-
 | Value |
 | --- |
 {% for x in element.examples -%}
@@ -19,30 +17,19 @@
 
 {% if element.comments -%}
 ## Comments
-
 {% for x in element.comments -%}
-* {{x}}
-{% endfor %}
-{% endif -%}
-
-{% if element.todos -%}
-## TODOs
-
-{% for x in element.todos -%}
 * {{x}}
 {% endfor %}
 {% endif -%}
 
 {% if element.see_also -%}
 ## See Also
-
 {% for x in element.see_also -%}
 * {{ gen.uri_link(x) }}
 {% endfor %}
 {% endif -%}
 
 ## Identifier and Mapping Information
-
 {% if element.id_prefixes %}
 ### Valid ID Prefixes
 
@@ -79,12 +66,16 @@ Instances of this class *should* have identifiers with one of the following pref
 
 {% if schemaview.get_mappings(element.name).items() -%}
 ## Mappings
-
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-{% for m, mt in schemaview.get_mappings(element.name).items() -%}
+{% set native_mappings = schemaview.get_mappings(element.name).get('native', []) %}
+{%- for m, mt in schemaview.get_mappings(element.name).items() -%}
 {% if mt|length > 0 -%}
-| {{ m }} | {{ mt|join(', ') }} |
+    {% set display_key = 'mappings' if m == 'undefined' else m -%}
+    {% set filtered_mt = mt | reject('in', native_mappings) | list -%}
+    {% if filtered_mt|length > 0 -%}
+| {{ display_key }} | {{ filtered_mt|join(', ') }} |
+    {% endif -%}
 {% endif -%}
 {% endfor %}
 

@@ -7,11 +7,9 @@ SHELL := bash
 .SECONDARY:
 
 RUN = poetry run
-# get values from about.yaml file
-# replaced sh with bash esp for linux
-SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
+SCHEMA_NAME = nmdc_schema
 DOCDIR = docs
-SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
+SOURCE_SCHEMA_PATH = src/schema/nmdc.yaml
 SOURCE_SCHEMA_DIR = $(dir $(SOURCE_SCHEMA_PATH))
 SRC = src
 DEST = project
@@ -41,14 +39,13 @@ cookiecutter-help: status
 	@echo "make site -- makes site locally"
 	@echo "make install -- install dependencies"
 	@echo "make test -- runs tests"
-	@echo "make lint -- perfom linting"
+	@echo "make linkml-lint -- run LinkML linting on schema modules"
 	@echo "make testdoc -- builds docs and runs local test server"
 	@echo "make deploy -- deploys site"
-	@echo "make update -- updates linkml version"
 	@echo "make cookiecutter-help -- show this help"
 	@echo ""
 
-status: check-config
+status:
 	@echo "Project: $(SCHEMA_NAME)"
 	@echo "Source: $(SOURCE_SCHEMA_PATH)"
 
@@ -60,43 +57,25 @@ install:
 	poetry install
 
 
-# ---
-# Project Synchronization
-# ---
-#
-# check we are up to date
-check: cruft-check
-cruft-check:
-	# added cruft to poetry env and added poetry wrapper to cruft invocations
-	$(RUN) cruft check
-cruft-diff:
-	$(RUN) cruft diff
-
-update: update-template update-linkml
-update-template:
-	$(RUN) cruft update
-
-# todo: consider pinning to template
-update-linkml:
-	poetry add -D linkml@latest
-
 # EXPERIMENTAL
 create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 prefixmaps:
 	@mkdir -p $(DEST)/prefixmap
-	$(RUN) gen-prefix-map nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/prefixmap/nmdc-prefix-map.json
+	$(RUN) linkml generate prefix-map nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/prefixmap/nmdc-prefix-map.json
 
 pydantic:
 	@mkdir -p $(DEST)/pydantic
-	$(RUN) gen-pydantic nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/pydantic/nmdc-pydantic.py
+	$(RUN) linkml generate pydantic nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/pydantic/nmdc_pydantic.py
 
 # Note: `all` is an alias for `site`.
 all: site
 site: clean site-clean gen-project gendoc \
 nmdc_schema/gold-to-mixs.sssom.tsv \
-nmdc_schema/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.yaml \
+nmdc_schema/nmdc_materialized_patterns.schema.json \
+nmdc_schema/nmdc_materialized_patterns.yaml \
+nmdc_schema/nmdc_materialized_patterns.json \
 migration-doctests \
 prefixmaps \
 pydantic
@@ -107,7 +86,7 @@ pydantic
 deploy: gendoc mkd-gh-deploy
 
 gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # can be nuked with mixs-yaml-clean
-	$(RUN) gen-project \
+	$(RUN) linkml generate project \
 		--exclude excel \
 		--exclude graphql \
 		--exclude jsonld \
@@ -122,15 +101,16 @@ gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # 
 		--include python \
 		--include rdf \
 		--config-file gen-project-config.yaml \
-		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL) && cp $(DEST)/pydantic/*.py $(PYMODEL)/nmdc-pydantic.py
-		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
+		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL) && cp $(DEST)/pydantic/*.py $(PYMODEL)/nmdc_pydantic.py
+	cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 
-test: examples-clean site test-python migration-doctests examples/output
+test: examples-clean linkml-validate-schema site test-python migration-doctests examples/output
 only-test: examples-clean test-python migration-doctests examples/output
+tests: squeaky-clean all test  # simply for convenience to wrap convention of running these three targets to test locally.
 
 test-schema:
-	$(RUN) gen-project \
+	$(RUN) linkml generate project \
 		--exclude excel \
 		--exclude graphql \
 		--exclude jsonld \
@@ -147,14 +127,72 @@ test-schema:
 		-d tmp $(SOURCE_SCHEMA_PATH)
 
 test-python:
-	$(RUN) python -m unittest discover
+	$(RUN) pytest tests/
 	$(RUN) python -m doctest nmdc_schema/nmdc_data.py
+	$(RUN) python -m doctest nmdc_schema/id_helpers.py
+	$(RUN) python -m doctest src/scripts/make_typecode_to_class_map.py
 
-lint:
-	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
+# Lint all source schema modules and the materialized schema.
+# - Source modules (except deprecated.yaml): use .linkmllint.yaml
+# - nmdc.yaml and materialized patterns: use .linkmllint-root.yaml (includes tree_root check)
+# This target is suitable for CI/CD pipelines.
+.PHONY: linkml-lint
+linkml-lint: nmdc_schema/nmdc_materialized_patterns.yaml
+	@echo "Linting source schema modules..."
+	@failed=0; \
+	for f in $(SOURCE_SCHEMA_DIR)*.yaml; do \
+		if [ "$$(basename $$f)" = "deprecated.yaml" ]; then \
+			echo "Skipping $$f (deprecated module)"; \
+			continue; \
+		fi; \
+		if [ "$$(basename $$f)" = "nmdc.yaml" ]; then \
+			echo "Linting $$f (with tree_root check)..."; \
+			$(RUN) linkml lint --config .linkmllint-root.yaml "$$f" || failed=1; \
+		else \
+			echo "Linting $$f..."; \
+			$(RUN) linkml lint --config .linkmllint.yaml "$$f" || failed=1; \
+		fi; \
+	done; \
+	echo "Linting materialized schema (with tree_root check)..."; \
+	$(RUN) linkml lint --config .linkmllint-root.yaml nmdc_schema/nmdc_materialized_patterns.yaml || failed=1; \
+	if [ $$failed -eq 1 ]; then \
+		echo "Linting failed"; \
+		exit 1; \
+	fi; \
+	echo "All linting checks passed"
 
-check-config:
-	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n - Remember to edit 'about.yaml'\n\n" || exit 0)
+# Run full linting (all rules, no config) on all schema files including materialized patterns.
+# This target is for generating reports to decide which rules to silence.
+# Not included in test target due to many existing warnings.
+.PHONY: linkml-lint-all
+linkml-lint-all:
+	@echo "Running full linting on all schema modules..."
+	@mkdir -p local
+	@echo "=== Source schema files ===" | tee local/linkml-lint-all.log
+	@for f in $(SOURCE_SCHEMA_DIR)*.yaml; do \
+		echo "--- $$f ---" | tee -a local/linkml-lint-all.log; \
+		$(RUN) linkml lint "$$f" 2>&1 | tee -a local/linkml-lint-all.log || true; \
+	done
+	@echo "" | tee -a local/linkml-lint-all.log
+	@echo "=== Materialized patterns ===" | tee -a local/linkml-lint-all.log
+	@echo "--- nmdc_schema/nmdc_materialized_patterns.yaml ---" | tee -a local/linkml-lint-all.log
+	$(RUN) linkml lint nmdc_schema/nmdc_materialized_patterns.yaml 2>&1 | tee -a local/linkml-lint-all.log || true
+	@echo ""
+	@echo "Full report saved to local/linkml-lint-all.log"
+
+# Validate source schema files against the LinkML metamodel.
+# This catches structural issues like incorrect types (e.g., arrays vs dicts).
+# Note: We validate individual source files, not the materialized schema,
+# due to https://github.com/linkml/linkml/issues/3016
+.PHONY: linkml-validate-schema
+linkml-validate-schema:
+	@echo "Validating source schema files against LinkML metamodel..."
+	$(RUN) linkml lint --validate-only src/schema
+	@echo "All source schema files pass metamodel validation."
+
+.PHONY: check-dependencies
+check-dependencies:
+	$(RUN) deptry nmdc_schema --known-first-party nmdc_schema
 
 # Test documentation locally
 serve: mkd-serve
@@ -168,22 +206,34 @@ $(DOCDIR):
 
 # Compile static Markdown files, images, and JavaScript scripts, into a documentation website.
 #
-# Then, use `refgraph` (part of `refscan`) to generate a diagram (i.e. a graph that depicts
-# inter-collection relationships) in the documentation website's file tree.
-gendoc: $(DOCDIR) prefixmaps
+# Then, use `refscan graph` to generate a pair of diagrams within the website's file tree.
+# One of the diagrams is a graph showing all the _inter-collection_ relationships the schema says can exist,
+# and the other diagram is a graph showing all the _inter-class_ relationships the schema says can exist.
+#
+gendoc: $(DOCDIR) prefixmaps nmdc_schema/nmdc.schema.json nmdc_schema/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.yaml
 	# Copy all documentation files to the documentation directory
 	cp -rf $(SRC)/docs/* $(DOCDIR)
-	# Added copying of images and renaming of TEMP.md
-	cp $(SRC)/docs/*md $(DOCDIR)
-	cp -r $(SRC)/docs/images $(DOCDIR)
-	# Generate documentation using the gen-doc command
-	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
+	# Use `make_typecode_to_class_map.py` to make a Markdown page that can be used to map a typecode to a schema class.
+	$(RUN) python src/scripts/make_typecode_to_class_map.py > $(DOCDIR)/typecode-to-class-map.md
+	# Generate documentation
+	$(RUN) linkml generate doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
 	# Create directory for JavaScript files and copy them
+	# Added copying of prefixmaps output
+	cp -f $(DEST)/prefixmap/nmdc-prefix-map.json $(DOCDIR)
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
-	# Use `refgraph` to generate an interactive diagram within the compiled documentation website file tree.
+	# Copy schema-derived files into a "downloads" directory within the documentation website.
+	rm -rf $(DOCDIR)/downloads
+	mkdir -p $(DOCDIR)/downloads
+	cp nmdc_schema/nmdc.schema.json \
+	   nmdc_schema/nmdc_materialized_patterns.schema.json \
+	   nmdc_schema/nmdc_materialized_patterns.yaml \
+	   $(DOCDIR)/downloads/
+	# Use `refscan graph` to generate diagrams within the website's file tree.
 	mkdir -p $(DOCDIR)/visualizations
-	$(RUN) refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
+	$(RUN) refscan graph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
+	$(RUN) refscan graph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class      --graph $(DOCDIR)/visualizations/class-graph.html
+
 testdoc: gendoc serve
 
 MKDOCS = $(RUN) mkdocs
@@ -207,7 +257,6 @@ git-add: .cruft.json
 		Makefile \
 		README.md \
 		RELEASE_NOTES_v7.7.2_to_v7.7.7.md \
-		about.yaml \
 		assets \
 		images \
 		mkdocs.yml \
@@ -240,6 +289,8 @@ clean:
 	rm -rf docs/*.html
 
 include project.Makefile
+include makefiles/mixs.Makefile
+include makefiles/migrators.Makefile
 
 # custom
 site-clean: clean
@@ -248,24 +299,34 @@ site-clean: clean
 	rm -rf nmdc_schema/*.yaml
 
 
-squeaky-clean: clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
+squeaky-clean: clean examples-clean shuttle-clean site-clean # does not include mixs-yaml-clean
 	rm -rf $(PYMODEL)/nmdc.py
-	rm -rf $(PYMODEL)/nmdc-pydantic.py
+	rm -rf $(PYMODEL)/nmdc_pydantic.py
 	mkdir project
 	rm -rf local/biosample_slots_ranges_report.tsv
 
+
+# Note: The `gen-project` target creates the `nmdc_schema/nmdc.schema.json` file.
+#       We define this "no-op" Make target here so we can specify that file as
+#       a dependency of other Make targets in a self-documenting way.
+nmdc_schema/nmdc.schema.json: gen-project
+	true
+
 nmdc_schema/nmdc_materialized_patterns.yaml:
-	$(RUN) gen-linkml \
+	$(RUN) linkml generate linkml \
 		--format yaml \
 		--materialize-patterns \
 		--no-materialize-attributes \
 		--output $@ $(SOURCE_SCHEMA_PATH)
 
 nmdc_schema/nmdc_materialized_patterns.schema.json: nmdc_schema/nmdc_materialized_patterns.yaml
-	$(RUN) gen-json-schema \
+	$(RUN) linkml generate json-schema \
 		--closed \
 		--include-range-class-descendants \
 		--top-class Database $< > $@
+
+nmdc_schema/nmdc_materialized_patterns.json: nmdc_schema/nmdc_materialized_patterns.yaml
+	yq -o json < $< > $@
 
 # the sssom/ files should be double checked too... they're probably not all SSSSOM files
 nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv
@@ -287,7 +348,7 @@ check-invalids-for-single-failure:
 	for file in src/data/invalid/*.yaml; do \
 		echo "$$file:"; \
 		target_class=$$(basename $$file | cut -d'-' -f1); \
-		cmd="poetry run linkml-validate --schema nmdc_schema/nmdc_materialized_patterns.yaml --target-class $$target_class $$file"; \
+		cmd="poetry run linkml validate --schema nmdc_schema/nmdc_materialized_patterns.yaml --target-class $$target_class $$file"; \
 		output=$$($$cmd 2>&1 || true); \
 		echo "$$output" | sort | uniq; \
 	done

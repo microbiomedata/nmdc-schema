@@ -1,0 +1,74 @@
+Clusters of Orthologous Groups (COG) Annotation GFF: processed_data
+Annotation Statistics: processed_data
+KO_EC Annotation GFF: processed_data
+Metagenome LQ Bins Compression File: processed_data
+Assembly Contigs: processed_data
+CRT Annotation GFF: processed_data
+Filtered Sequencing Reads: processed_data
+Kraken2 Taxonomic Classification: processed_data
+Read Filtering Info File: processed_data
+SMART Annotation GFF: processed_data
+Functional Annotation GFF: processed_data
+Prodigal Annotation GFF: processed_data
+Pfam Annotation GFF: processed_data
+Crispr Terms: processed_data
+Scaffold Lineage tsv: processed_data
+Gene Phylogeny tsv: processed_data
+TIGRFam Annotation GFF: processed_data
+Contig Mapping File: processed_data
+QC Statistics: processed_data
+Kraken2 Classification Report: processed_data
+GOTTCHA2 Krona Plot: processed_data
+Annotation Enzyme Commission: processed_data
+Metagenome HQMQ Bins Compression File: processed_data
+FT ICR-MS Analysis Results: processed_data
+Annotation KEGG Orthology: processed_data
+Assembly Coverage BAM: processed_data
+Read Based Analysis Info File: processed_data
+Product Names: processed_data
+Direct Infusion FT ICR-MS Raw Data: instrument_data
+GTDBTK Bacterial Summary: processed_data
+Assembly Info File: processed_data
+CheckM Statistics: processed_data
+Annotation Info File: processed_data
+Annotation Amino Acid FASTA: processed_data
+RFAM Annotation GFF: processed_data
+Assembly AGP: processed_data
+Metagenome Raw Read 2: instrument_data
+GOTTCHA2 Report Full: processed_data
+Assembly Coverage Stats: processed_data
+Kraken2 Krona Plot: processed_data
+SUPERFam Annotation GFF: processed_data
+Metagenome Bins Krona Plot: processed_data
+Genemark Annotation GFF: processed_data
+TRNA Annotation GFF: processed_data
+CATH FunFams (Functional Families) Annotation GFF: processed_data
+Metagenome Raw Read 1: instrument_data
+Structural Annotation GFF: processed_data
+Centrifuge Krona Plot: processed_data
+Metagenome Bins Info File: processed_data
+Assembly Scaffolds: processed_data
+Metaproteomics Workflow Statistics: processed_data
+GOTTCHA2 Classification Report: processed_data
+Centrifuge output report file: processed_data
+Metagenome Bins Barplot: processed_data
+Metagenome Bins Heatmap: processed_data
+Protein Report: processed_data
+Metagenome Raw Reads: instrument_data
+Centrifuge Taxonomic Classification: processed_data
+GTDBTK Archaeal Summary: processed_data
+Unfiltered Metaproteomics Results: processed_data
+Error Corrected Reads: processed_data
+Centrifuge Classification Report: processed_data
+Metatranscriptome Raw Reads: instrument_data
+Peptide Report: processed_data
+TMRNA Annotation GFF: processed_data
+Misc Annotation GFF: processed_data
+Structural Annotation Stats Json: processed_data
+LC-DDA-MS/MS Raw Data: instrument_data
+Analysis Tool Parameter File: workflow_parameter_data
+Contaminants Amino Acid FASTA: workflow_parameter_data
+GC-MS Raw Data: instrument_data
+GC-MS Metabolomics Results: processed_data
+Direct Infusion FT-ICR MS Analysis Results: processed_data
+rRNA Filtered Sequencing Reads: processed_data

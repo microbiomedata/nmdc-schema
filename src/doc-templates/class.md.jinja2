@@ -1,3 +1,8 @@
+---
+search:
+  boost: {% if element.deprecated %}0.5{% else %}10.0{% endif %}
+---
+
 {%- if element.title %}
     {%- set title = element.title ~ ' (' ~ element.name ~ ')' -%}
 {%- else %}
@@ -35,6 +40,8 @@ _{{ element_description_line }}_
 {% endfor %}
 {% endif %}
 
+<div data-search-exclude markdown>
+
 {% if element.abstract %}
 !!! note
     This is an abstract class and should not be instantiated directly.
@@ -64,7 +71,6 @@ URI: {{ gen.uri_link(element) }}
 {% endif %}
 
 ## Slots
-
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 {% if gen.get_direct_slots(element)|length > 0 %}
@@ -80,7 +86,6 @@ URI: {{ gen.uri_link(element) }}
 
 {% if schemaview.is_mixin(element.name) %}
 ## Mixin Usage
-
 | mixed into | description |
 | --- | --- |
 {% for c in schemaview.class_children(element.name, is_a=False) -%}
@@ -90,7 +95,6 @@ URI: {{ gen.uri_link(element) }}
 
 {% if schemaview.usage_index().get(element.name) %}
 ## Usages
-
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 {% for usage in schemaview.usage_index().get(element.name) -%}
@@ -113,7 +117,6 @@ URI: {{ gen.uri_link(element) }}
 
 
 ## LinkML Source
-
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 
 ### Direct
@@ -135,3 +138,5 @@ URI: {{ gen.uri_link(element) }}
 {%- if footer -%}
 {{footer}}
 {%- endif -%}
+
+</div>

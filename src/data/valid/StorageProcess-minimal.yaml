@@ -1,7 +1,7 @@
 
 id: nmdc:storpr-99-zUCd5N
 substances_used:
-  - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+  - known_as: water
     type: nmdc:PortionOfSubstance
     final_concentration:
       type: nmdc:QuantityValue
@@ -11,7 +11,7 @@ contained_in: falcon_tube
 start_date: "2021-01-14"
 temperature:
   type: nmdc:QuantityValue
-  has_unit: degrees Celsius
+  has_unit: Cel
   has_numeric_value: 80
 has_input: 
   - nmdc:procsm-99-dtTMNb

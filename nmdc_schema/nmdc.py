@@ -1,15 +1,9 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-12-07T20:12:39
+# Generation date: 2026-02-09T12:52:05
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
-# description: Schema for National Microbiome Data Collaborative (NMDC).
-#   This schema is organized into multiple modules, such as:
-#
-#    * a set of core types for representing data values
-#    * a subset of the mixs schema
-#    * an annotation schema
-#    * the NMDC schema itself, into which the other modules are imported
+# description: The NMDC Schema is a foundational framework designed to standardize metadata for the National Microbiome Data  Collaborative (NMDC) and collaborating data providors. By establishing a structured approach to metadata, the NMDC Schema enables researchers to organize,  share, and interpret complex datasets with consistency and clarity. The NMDC Schema is critical substrate used to facilitate  interoperability and collaboration, as it provide a common language for data exchange across systems and disciplines.  In the context of the NMDC, this schema supports the integration of microbiome data from medicine, agriculture,  bioenergy, and environmental science into a cohesive platform.
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
@@ -39,7 +33,6 @@ from linkml_runtime.linkml_model.meta import (
     PvFormulaOptions
 )
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from linkml_runtime.utils.formatutils import (
     camelcase,
@@ -63,16 +56,14 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Boolean, Decimal, Double, Float, Integer, String, Uriorcurie
+from linkml_runtime.linkml_model.types import Boolean, Decimal, Float, Integer, String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import Bool, Decimal, URIorCURIE
 
 metamodel_version = "1.7.0"
 version = "0.0.0"
 
-# Overwrite dataclasses _init_fn to add **kwargs in __init__
-dataclasses._init_fn = dataclasses_init_fn_with_kwargs
-
 # Namespaces
+BFO = CurieNamespace('BFO', 'http://purl.obolibrary.org/obo/BFO_')
 CATH = CurieNamespace('CATH', 'https://bioregistry.io/cath:')
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
 CHEMBL_COMPOUND = CurieNamespace('CHEMBL_COMPOUND', 'https://bioregistry.io/chembl.compound:')
@@ -86,25 +77,28 @@ EGGNOG = CurieNamespace('EGGNOG', 'https://bioregistry.io/eggnog:')
 ENVO = CurieNamespace('ENVO', 'http://purl.obolibrary.org/obo/ENVO_')
 FBCV = CurieNamespace('FBcv', 'http://purl.obolibrary.org/obo/FBcv_')
 FMA = CurieNamespace('FMA', 'http://purl.obolibrary.org/obo/FMA_')
-GENEPIO = CurieNamespace('GENEPIO', 'http://example.org/UNKNOWN/GENEPIO/')
+GENEPIO = CurieNamespace('GENEPIO', 'http://purl.obolibrary.org/obo/GENEPIO_')
 GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
 HMDB = CurieNamespace('HMDB', 'https://bioregistry.io/hmdb:')
 ISA = CurieNamespace('ISA', 'http://example.org/isa/')
 KEGG_COMPOUND = CurieNamespace('KEGG_COMPOUND', 'https://bioregistry.io/kegg.compound:')
 KEGG_MODULE = CurieNamespace('KEGG_MODULE', 'https://bioregistry.io/kegg.module:')
 KEGG_ORTHOLOGY = CurieNamespace('KEGG_ORTHOLOGY', 'https://bioregistry.io/kegg.orthology:')
+KEGG_REACTION = CurieNamespace('KEGG_REACTION', 'https://bioregistry.io/kegg.reaction:')
 KEGG_PATHWAY = CurieNamespace('KEGG_PATHWAY', 'https://bioregistry.io/kegg.pathway:')
 MASSIVE = CurieNamespace('MASSIVE', 'https://bioregistry.io/reference/massive:')
+MCO = CurieNamespace('MCO', 'http://purl.obolibrary.org/obo/MICRO_')
 MESH = CurieNamespace('MESH', 'https://bioregistry.io/mesh:')
 MISO = CurieNamespace('MISO', 'http://purl.obolibrary.org/obo/MISO_')
 MIXS = CurieNamespace('MIXS', 'https://w3id.org/mixs/')
 MS = CurieNamespace('MS', 'http://purl.obolibrary.org/obo/MS_')
+METACYC = CurieNamespace('MetaCyc', 'https://bioregistry.io/metacyc.compound:')
 METANETX = CurieNamespace('MetaNetX', 'http://example.org/metanetx/')
-NCBI = CurieNamespace('NCBI', 'http://example.com/ncbitaxon/')
+NCBI = CurieNamespace('NCBI', 'http://example.org/ncbitaxon/')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
 NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
-OMIT = CurieNamespace('OMIT', 'http://example.org/UNKNOWN/OMIT/')
+OMIT = CurieNamespace('OMIT', 'http://purl.obolibrary.org/obo/OMIT_')
 ORCID = CurieNamespace('ORCID', 'https://orcid.org/')
 PANTHER_FAMILY = CurieNamespace('PANTHER_FAMILY', 'https://bioregistry.io/panther.family:')
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
@@ -113,36 +107,42 @@ PFAM_CLAN = CurieNamespace('PFAM_CLAN', 'https://bioregistry.io/pfam.clan:')
 PO = CurieNamespace('PO', 'http://purl.obolibrary.org/obo/PO_')
 PR = CurieNamespace('PR', 'http://purl.obolibrary.org/obo/PR_')
 PUBCHEM_COMPOUND = CurieNamespace('PUBCHEM_COMPOUND', 'https://bioregistry.io/pubchem.compound:')
+RHEA = CurieNamespace('RHEA', 'https://bioregistry.io/rhea:')
 RO = CurieNamespace('RO', 'http://purl.obolibrary.org/obo/RO_')
 RETRORULES = CurieNamespace('RetroRules', 'http://example.org/retrorules/')
+SEED = CurieNamespace('SEED', 'https://bioregistry.io/seed:')
 SIO = CurieNamespace('SIO', 'http://semanticscience.org/resource/SIO_')
 SO = CurieNamespace('SO', 'http://purl.obolibrary.org/obo/SO_')
 SUPFAM = CurieNamespace('SUPFAM', 'https://bioregistry.io/supfam:')
+TAXRANK = CurieNamespace('TAXRANK', 'http://purl.obolibrary.org/obo/TAXRANK_')
 TIGRFAM = CurieNamespace('TIGRFAM', 'https://bioregistry.io/tigrfam:')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 UO = CurieNamespace('UO', 'http://purl.obolibrary.org/obo/UO_')
 UNIPROTKB = CurieNamespace('UniProtKB', 'https://bioregistry.io/uniprot:')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
-BIOPROJECT = CurieNamespace('bioproject', 'https://identifiers.org/bioproject:')
+BIOPROJECT = CurieNamespace('bioproject', 'https://bioregistry.io/bioproject:')
 BIOSAMPLE = CurieNamespace('biosample', 'https://bioregistry.io/biosample:')
 CAS = CurieNamespace('cas', 'https://bioregistry.io/cas:')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://bioregistry.io/doi:')
 EDAM_DATA = CurieNamespace('edam_data', 'http://edamontology.org/data_')
+EDAM_FORMAT = CurieNamespace('edam_format', 'http://edamontology.org/format_')
 EMSL = CurieNamespace('emsl', 'http://example.org/emsl_in_mongodb/')
 EMSL_PROJECT = CurieNamespace('emsl_project', 'https://bioregistry.io/emsl.project:')
 EMSL_UUID_LIKE = CurieNamespace('emsl_uuid_like', 'http://example.org/emsl_uuid_like/')
-GENERIC = CurieNamespace('generic', 'https://example.org/generic/')
+GENERIC = CurieNamespace('generic', 'http://example.org/generic/')
 GNPS_TASK = CurieNamespace('gnps_task', 'https://bioregistry.io/gnps.task:')
 GOLD = CurieNamespace('gold', 'https://bioregistry.io/gold:')
 GTPO = CurieNamespace('gtpo', 'http://example.org/gtpo/')
 IGSN = CurieNamespace('igsn', 'https://app.geosamples.org/sample/igsn/')
 IMG_TAXON = CurieNamespace('img_taxon', 'https://bioregistry.io/img.taxon:')
+INSDC_SRA = CurieNamespace('insdc_sra', 'https://bioregistry.io/insdc.sra:')
 JGI = CurieNamespace('jgi', 'http://example.org/jgi/')
 JGI_ANALYSIS = CurieNamespace('jgi_analysis', 'https://data.jgi.doe.gov/search?q=')
 JGI_PROPOSAL = CurieNamespace('jgi_proposal', 'https://bioregistry.io/jgi.proposal:')
 KEGG = CurieNamespace('kegg', 'https://bioregistry.io/kegg:')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
+MGNIFY_ANALYSIS = CurieNamespace('mgnify_analysis', 'https://bioregistry.io/mgnify.analysis:')
 MGNIFY_PROJ = CurieNamespace('mgnify_proj', 'https://bioregistry.io/mgnify.proj:')
 MY_EMSL = CurieNamespace('my_emsl', 'https://release.my.emsl.pnnl.gov/released_data/')
 NEON_IDENTIFIER = CurieNamespace('neon_identifier', 'http://example.org/neon/identifier/')
@@ -153,6 +153,7 @@ PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
+ROR = CurieNamespace('ror', 'https://bioregistry.io/ror:')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 WGS84 = CurieNamespace('wgs84', 'http://www.w3.org/2003/01/geo/wgs84_pos#')
@@ -184,13 +185,6 @@ class LanguageCode(str):
     type_class_curie = "xsd:language"
     type_name = "language_code"
     type_model_uri = NMDC.LanguageCode
-
-
-class Unit(str):
-    type_class_uri = XSD["string"]
-    type_class_curie = "xsd:string"
-    type_name = "unit"
-    type_model_uri = NMDC.Unit
 
 
 class ExternalIdentifier(Uriorcurie):
@@ -230,10 +224,6 @@ class EnvironmentalMaterialTermId(OntologyClassId):
     pass
 
 
-class ChemicalEntityId(OntologyClassId):
-    pass
-
-
 class MaterialEntityId(NamedThingId):
     pass
 
@@ -267,10 +257,6 @@ class PlannedProcessId(NamedThingId):
 
 
 class CollectingBiosamplesFromSiteId(PlannedProcessId):
-    pass
-
-
-class ProtocolExecutionId(PlannedProcessId):
     pass
 
 
@@ -350,7 +336,11 @@ class DataObjectId(InformationObjectId):
     pass
 
 
-class DataGenerationId(PlannedProcessId):
+class DataEmitterProcessId(PlannedProcessId):
+    pass
+
+
+class DataGenerationId(DataEmitterProcessId):
     pass
 
 
@@ -362,7 +352,7 @@ class MassSpectrometryId(DataGenerationId):
     pass
 
 
-class WorkflowExecutionId(PlannedProcessId):
+class WorkflowExecutionId(DataEmitterProcessId):
     pass
 
 
@@ -374,19 +364,11 @@ class MetatranscriptomeAssemblyId(WorkflowExecutionId):
     pass
 
 
-class MetatranscriptomeAnnotationId(WorkflowExecutionId):
-    pass
-
-
 class MetatranscriptomeExpressionAnalysisId(WorkflowExecutionId):
     pass
 
 
 class MagsAnalysisId(WorkflowExecutionId):
-    pass
-
-
-class MetagenomeSequencingId(WorkflowExecutionId):
     pass
 
 
@@ -402,15 +384,23 @@ class MetabolomicsAnalysisId(WorkflowExecutionId):
     pass
 
 
-class MetaproteomicsAnalysisId(WorkflowExecutionId):
-    pass
-
-
 class NomAnalysisId(WorkflowExecutionId):
     pass
 
 
-class MetagenomeAnnotationId(WorkflowExecutionId):
+class AnnotatingWorkflowId(WorkflowExecutionId):
+    pass
+
+
+class MetatranscriptomeAnnotationId(AnnotatingWorkflowId):
+    pass
+
+
+class MetaproteomicsAnalysisId(AnnotatingWorkflowId):
+    pass
+
+
+class MetagenomeAnnotationId(AnnotatingWorkflowId):
     pass
 
 
@@ -419,7 +409,7 @@ class EukEval(YAMLRoot):
     """
     This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["EukEval"]
     class_class_curie: ClassVar[str] = "nmdc:EukEval"
@@ -432,7 +422,7 @@ class EukEval(YAMLRoot):
     ncbi_lineage_tax_ids: Optional[str] = None
     ncbi_lineage: Optional[str] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
@@ -454,23 +444,27 @@ class EukEval(YAMLRoot):
 
 @dataclass(repr=False)
 class FunctionalAnnotationAggMember(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
+    """
+    This class is used to store aggregated results from workflows which produce functional annotations such as
+    metaproteomics and metagenomics.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["FunctionalAnnotationAggMember"]
     class_class_curie: ClassVar[str] = "nmdc:FunctionalAnnotationAggMember"
     class_name: ClassVar[str] = "FunctionalAnnotationAggMember"
     class_model_uri: ClassVar[URIRef] = NMDC.FunctionalAnnotationAggMember
 
-    was_generated_by: Union[str, WorkflowExecutionId] = None
+    was_generated_by: Union[str, AnnotatingWorkflowId] = None
     gene_function_id: Union[str, URIorCURIE] = None
     count: int = None
     type: Union[str, URIorCURIE] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.was_generated_by):
             self.MissingRequiredField("was_generated_by")
-        if not isinstance(self.was_generated_by, WorkflowExecutionId):
-            self.was_generated_by = WorkflowExecutionId(self.was_generated_by)
+        if not isinstance(self.was_generated_by, AnnotatingWorkflowId):
+            self.was_generated_by = AnnotatingWorkflowId(self.was_generated_by)
 
         if self._is_empty(self.gene_function_id):
             self.MissingRequiredField("gene_function_id")
@@ -497,39 +491,35 @@ class Database(YAMLRoot):
     other objects of interest. For MongoDB, the lists of objects that Database slots point to correspond to
     **collections**.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Database"]
     class_class_curie: ClassVar[str] = "nmdc:Database"
     class_name: ClassVar[str] = "Database"
     class_model_uri: ClassVar[URIRef] = NMDC.Database
 
-    biosample_set: Optional[Union[Dict[Union[str, BiosampleId], Union[dict, "Biosample"]], List[Union[dict, "Biosample"]]]] = empty_dict()
-    calibration_set: Optional[Union[Dict[Union[str, CalibrationInformationId], Union[dict, "CalibrationInformation"]], List[Union[dict, "CalibrationInformation"]]]] = empty_dict()
-    chemical_entity_set: Optional[Union[Dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], List[Union[dict, "ChemicalEntity"]]]] = empty_dict()
-    collecting_biosamples_from_site_set: Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, "CollectingBiosamplesFromSite"]], List[Union[dict, "CollectingBiosamplesFromSite"]]]] = empty_dict()
-    configuration_set: Optional[Union[Dict[Union[str, ConfigurationId], Union[dict, "Configuration"]], List[Union[dict, "Configuration"]]]] = empty_dict()
-    data_generation_set: Optional[Union[Dict[Union[str, DataGenerationId], Union[dict, "DataGeneration"]], List[Union[dict, "DataGeneration"]]]] = empty_dict()
-    data_object_set: Optional[Union[Dict[Union[str, DataObjectId], Union[dict, "DataObject"]], List[Union[dict, "DataObject"]]]] = empty_dict()
-    field_research_site_set: Optional[Union[Dict[Union[str, FieldResearchSiteId], Union[dict, "FieldResearchSite"]], List[Union[dict, "FieldResearchSite"]]]] = empty_dict()
-    functional_annotation_agg: Optional[Union[Union[dict, FunctionalAnnotationAggMember], List[Union[dict, FunctionalAnnotationAggMember]]]] = empty_list()
-    functional_annotation_set: Optional[Union[Union[dict, "FunctionalAnnotation"], List[Union[dict, "FunctionalAnnotation"]]]] = empty_list()
-    genome_feature_set: Optional[Union[Union[dict, "GenomeFeature"], List[Union[dict, "GenomeFeature"]]]] = empty_list()
-    instrument_set: Optional[Union[Dict[Union[str, InstrumentId], Union[dict, "Instrument"]], List[Union[dict, "Instrument"]]]] = empty_dict()
-    manifest_set: Optional[Union[Dict[Union[str, ManifestId], Union[dict, "Manifest"]], List[Union[dict, "Manifest"]]]] = empty_dict()
-    material_processing_set: Optional[Union[Dict[Union[str, MaterialProcessingId], Union[dict, "MaterialProcessing"]], List[Union[dict, "MaterialProcessing"]]]] = empty_dict()
-    processed_sample_set: Optional[Union[Dict[Union[str, ProcessedSampleId], Union[dict, "ProcessedSample"]], List[Union[dict, "ProcessedSample"]]]] = empty_dict()
-    protocol_execution_set: Optional[Union[Dict[Union[str, ProtocolExecutionId], Union[dict, "ProtocolExecution"]], List[Union[dict, "ProtocolExecution"]]]] = empty_dict()
-    storage_process_set: Optional[Union[Dict[Union[str, StorageProcessId], Union[dict, "StorageProcess"]], List[Union[dict, "StorageProcess"]]]] = empty_dict()
-    study_set: Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]] = empty_dict()
-    workflow_execution_set: Optional[Union[Dict[Union[str, WorkflowExecutionId], Union[dict, "WorkflowExecution"]], List[Union[dict, "WorkflowExecution"]]]] = empty_dict()
+    biosample_set: Optional[Union[dict[Union[str, BiosampleId], Union[dict, "Biosample"]], list[Union[dict, "Biosample"]]]] = empty_dict()
+    calibration_set: Optional[Union[dict[Union[str, CalibrationInformationId], Union[dict, "CalibrationInformation"]], list[Union[dict, "CalibrationInformation"]]]] = empty_dict()
+    collecting_biosamples_from_site_set: Optional[Union[dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, "CollectingBiosamplesFromSite"]], list[Union[dict, "CollectingBiosamplesFromSite"]]]] = empty_dict()
+    configuration_set: Optional[Union[dict[Union[str, ConfigurationId], Union[dict, "Configuration"]], list[Union[dict, "Configuration"]]]] = empty_dict()
+    data_generation_set: Optional[Union[dict[Union[str, DataGenerationId], Union[dict, "DataGeneration"]], list[Union[dict, "DataGeneration"]]]] = empty_dict()
+    data_object_set: Optional[Union[dict[Union[str, DataObjectId], Union[dict, "DataObject"]], list[Union[dict, "DataObject"]]]] = empty_dict()
+    field_research_site_set: Optional[Union[dict[Union[str, FieldResearchSiteId], Union[dict, "FieldResearchSite"]], list[Union[dict, "FieldResearchSite"]]]] = empty_dict()
+    functional_annotation_agg: Optional[Union[Union[dict, FunctionalAnnotationAggMember], list[Union[dict, FunctionalAnnotationAggMember]]]] = empty_list()
+    functional_annotation_set: Optional[Union[Union[dict, "FunctionalAnnotation"], list[Union[dict, "FunctionalAnnotation"]]]] = empty_list()
+    genome_feature_set: Optional[Union[Union[dict, "GenomeFeature"], list[Union[dict, "GenomeFeature"]]]] = empty_list()
+    instrument_set: Optional[Union[dict[Union[str, InstrumentId], Union[dict, "Instrument"]], list[Union[dict, "Instrument"]]]] = empty_dict()
+    manifest_set: Optional[Union[dict[Union[str, ManifestId], Union[dict, "Manifest"]], list[Union[dict, "Manifest"]]]] = empty_dict()
+    material_processing_set: Optional[Union[dict[Union[str, MaterialProcessingId], Union[dict, "MaterialProcessing"]], list[Union[dict, "MaterialProcessing"]]]] = empty_dict()
+    processed_sample_set: Optional[Union[dict[Union[str, ProcessedSampleId], Union[dict, "ProcessedSample"]], list[Union[dict, "ProcessedSample"]]]] = empty_dict()
+    storage_process_set: Optional[Union[dict[Union[str, StorageProcessId], Union[dict, "StorageProcess"]], list[Union[dict, "StorageProcess"]]]] = empty_dict()
+    study_set: Optional[Union[dict[Union[str, StudyId], Union[dict, "Study"]], list[Union[dict, "Study"]]]] = empty_dict()
+    workflow_execution_set: Optional[Union[dict[Union[str, WorkflowExecutionId], Union[dict, "WorkflowExecution"]], list[Union[dict, "WorkflowExecution"]]]] = empty_dict()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         self._normalize_inlined_as_list(slot_name="biosample_set", slot_type=Biosample, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="calibration_set", slot_type=CalibrationInformation, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="chemical_entity_set", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="collecting_biosamples_from_site_set", slot_type=CollectingBiosamplesFromSite, key_name="id", keyed=True)
 
@@ -561,8 +551,6 @@ class Database(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="processed_sample_set", slot_type=ProcessedSample, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="protocol_execution_set", slot_type=ProtocolExecution, key_name="id", keyed=True)
-
         self._normalize_inlined_as_list(slot_name="storage_process_set", slot_type=StorageProcess, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="study_set", slot_type=Study, key_name="id", keyed=True)
@@ -577,7 +565,7 @@ class GenomeFeature(YAMLRoot):
     """
     A feature localized to an interval along a genome
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["GenomeFeature"]
     class_class_curie: ClassVar[str] = "nmdc:GenomeFeature"
@@ -594,7 +582,7 @@ class GenomeFeature(YAMLRoot):
     strand: Optional[str] = None
     feature_category: Optional[Union[dict, "ControlledIdentifiedTermValue"]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.end):
             self.MissingRequiredField("end")
         if not isinstance(self.end, int):
@@ -640,7 +628,7 @@ class FunctionalAnnotation(YAMLRoot):
     workflows. In the context of NMDC, all function annotation is performed automatically, typically using HMM or
     Blast type methods
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["FunctionalAnnotation"]
     class_class_curie: ClassVar[str] = "nmdc:FunctionalAnnotation"
@@ -653,7 +641,7 @@ class FunctionalAnnotation(YAMLRoot):
     was_generated_by: Optional[Union[str, MetagenomeAnnotationId]] = None
     feature_category: Optional[Union[dict, "ControlledIdentifiedTermValue"]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
@@ -678,7 +666,7 @@ class MobilePhaseSegment(YAMLRoot):
     """
     A fluid mixture of substances that flow though a chromatographic stationary phase.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MobilePhaseSegment"]
     class_class_curie: ClassVar[str] = "nmdc:MobilePhaseSegment"
@@ -687,10 +675,10 @@ class MobilePhaseSegment(YAMLRoot):
 
     type: Union[str, URIorCURIE] = None
     duration: Optional[Union[dict, "QuantityValue"]] = None
-    substances_used: Optional[Union[Union[dict, "PortionOfSubstance"], List[Union[dict, "PortionOfSubstance"]]]] = empty_list()
+    substances_used: Optional[Union[Union[dict, "PortionOfSubstance"], list[Union[dict, "PortionOfSubstance"]]]] = empty_list()
     volume: Optional[Union[dict, "QuantityValue"]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
@@ -714,7 +702,7 @@ class PortionOfSubstance(YAMLRoot):
     A portion of any matter of defined composition that has discrete existence, whose origin may be biological,
     mineral or chemical.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["PortionOfSubstance"]
     class_class_curie: ClassVar[str] = "nmdc:PortionOfSubstance"
@@ -723,14 +711,13 @@ class PortionOfSubstance(YAMLRoot):
 
     type: Union[str, URIorCURIE] = None
     final_concentration: Optional[Union[dict, "QuantityValue"]] = None
-    known_as: Optional[Union[str, ChemicalEntityId]] = None
     mass: Optional[Union[dict, "QuantityValue"]] = None
-    sample_state_information: Optional[Union[str, "SampleStateEnum"]] = None
     source_concentration: Optional[Union[dict, "QuantityValue"]] = None
+    known_as: Optional[Union[str, "ChemicalEntityEnum"]] = None
     substance_role: Optional[Union[str, "SubstanceRoleEnum"]] = None
     volume: Optional[Union[dict, "QuantityValue"]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
@@ -738,17 +725,14 @@ class PortionOfSubstance(YAMLRoot):
         if self.final_concentration is not None and not isinstance(self.final_concentration, QuantityValue):
             self.final_concentration = QuantityValue(**as_dict(self.final_concentration))
 
-        if self.known_as is not None and not isinstance(self.known_as, ChemicalEntityId):
-            self.known_as = ChemicalEntityId(self.known_as)
-
         if self.mass is not None and not isinstance(self.mass, QuantityValue):
             self.mass = QuantityValue(**as_dict(self.mass))
 
-        if self.sample_state_information is not None and not isinstance(self.sample_state_information, SampleStateEnum):
-            self.sample_state_information = SampleStateEnum(self.sample_state_information)
-
         if self.source_concentration is not None and not isinstance(self.source_concentration, QuantityValue):
             self.source_concentration = QuantityValue(**as_dict(self.source_concentration))
+
+        if self.known_as is not None and not isinstance(self.known_as, ChemicalEntityEnum):
+            self.known_as = ChemicalEntityEnum(self.known_as)
 
         if self.substance_role is not None and not isinstance(self.substance_role, SubstanceRoleEnum):
             self.substance_role = SubstanceRoleEnum(self.substance_role)
@@ -761,7 +745,7 @@ class PortionOfSubstance(YAMLRoot):
 
 @dataclass(repr=False)
 class MagBin(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MagBin"]
     class_class_curie: ClassVar[str] = "nmdc:MagBin"
@@ -781,7 +765,7 @@ class MagBin(YAMLRoot):
     gtdbtk_order: Optional[str] = None
     gtdbtk_phylum: Optional[str] = None
     gtdbtk_species: Optional[str] = None
-    members_id: Optional[Union[str, List[str]]] = empty_list()
+    members_id: Optional[Union[str, list[str]]] = empty_list()
     num_16s: Optional[int] = None
     num_23s: Optional[int] = None
     num_5s: Optional[int] = None
@@ -790,7 +774,7 @@ class MagBin(YAMLRoot):
     total_bases: Optional[int] = None
     eukaryotic_evaluation: Optional[Union[dict, EukEval]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.bin_name):
             self.MissingRequiredField("bin_name")
         if not isinstance(self.bin_name, str):
@@ -866,7 +850,7 @@ class MetaboliteIdentification(YAMLRoot):
     """
     This is used to link a metabolomics analysis workflow to a specific metabolite
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MetaboliteIdentification"]
     class_class_curie: ClassVar[str] = "nmdc:MetaboliteIdentification"
@@ -874,11 +858,11 @@ class MetaboliteIdentification(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = NMDC.MetaboliteIdentification
 
     type: Union[str, URIorCURIE] = None
-    alternative_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    alternative_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     highest_similarity_score: Optional[float] = None
-    metabolite_identified: Optional[Union[str, ChemicalEntityId]] = None
+    metabolite_identified: Optional[str] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
@@ -890,8 +874,8 @@ class MetaboliteIdentification(YAMLRoot):
         if self.highest_similarity_score is not None and not isinstance(self.highest_similarity_score, float):
             self.highest_similarity_score = float(self.highest_similarity_score)
 
-        if self.metabolite_identified is not None and not isinstance(self.metabolite_identified, ChemicalEntityId):
-            self.metabolite_identified = ChemicalEntityId(self.metabolite_identified)
+        if self.metabolite_identified is not None and not isinstance(self.metabolite_identified, str):
+            self.metabolite_identified = str(self.metabolite_identified)
 
         super().__post_init__(**kwargs)
 
@@ -902,7 +886,7 @@ class AttributeValue(YAMLRoot):
     The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and
     the structured value
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["AttributeValue"]
     class_class_curie: ClassVar[str] = "nmdc:AttributeValue"
@@ -912,7 +896,7 @@ class AttributeValue(YAMLRoot):
     type: Union[str, URIorCURIE] = None
     has_raw_value: Optional[str] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
@@ -953,7 +937,7 @@ class QuantityValue(AttributeValue):
     """
     A simple quantity, e.g. 2cm
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["QuantityValue"]
     class_class_curie: ClassVar[str] = "nmdc:QuantityValue"
@@ -961,13 +945,18 @@ class QuantityValue(AttributeValue):
     class_model_uri: ClassVar[URIRef] = NMDC.QuantityValue
 
     type: Union[str, URIorCURIE] = None
+    has_unit: Union[str, "UnitEnum"] = None
     has_maximum_numeric_value: Optional[Decimal] = None
     has_minimum_numeric_value: Optional[Decimal] = None
     has_numeric_value: Optional[Decimal] = None
-    has_unit: Optional[str] = None
     has_raw_value: Optional[str] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.has_unit):
+            self.MissingRequiredField("has_unit")
+        if not isinstance(self.has_unit, UnitEnum):
+            self.has_unit = UnitEnum(self.has_unit)
+
         if self.has_maximum_numeric_value is not None and not isinstance(self.has_maximum_numeric_value, Decimal):
             self.has_maximum_numeric_value = Decimal(self.has_maximum_numeric_value)
 
@@ -976,9 +965,6 @@ class QuantityValue(AttributeValue):
 
         if self.has_numeric_value is not None and not isinstance(self.has_numeric_value, Decimal):
             self.has_numeric_value = Decimal(self.has_numeric_value)
-
-        if self.has_unit is not None and not isinstance(self.has_unit, str):
-            self.has_unit = str(self.has_unit)
 
         if self.has_raw_value is not None and not isinstance(self.has_raw_value, str):
             self.has_raw_value = str(self.has_raw_value)
@@ -994,7 +980,7 @@ class ImageValue(AttributeValue):
     """
     An attribute value representing an image.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["ImageValue"]
     class_class_curie: ClassVar[str] = "nmdc:ImageValue"
@@ -1006,7 +992,7 @@ class ImageValue(AttributeValue):
     description: Optional[str] = None
     display_order: Optional[int] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self.url is not None and not isinstance(self.url, str):
             self.url = str(self.url)
 
@@ -1027,7 +1013,7 @@ class PersonValue(AttributeValue):
     """
     An attribute value representing a person
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["PersonValue"]
     class_class_curie: ClassVar[str] = "nmdc:PersonValue"
@@ -1039,10 +1025,10 @@ class PersonValue(AttributeValue):
     name: Optional[str] = None
     orcid: Optional[str] = None
     profile_image_url: Optional[str] = None
-    websites: Optional[Union[str, List[str]]] = empty_list()
+    websites: Optional[Union[str, list[str]]] = empty_list()
     has_raw_value: Optional[str] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self.email is not None and not isinstance(self.email, str):
             self.email = str(self.email)
 
@@ -1073,7 +1059,7 @@ class TextValue(AttributeValue):
     """
     A basic string value
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["TextValue"]
     class_class_curie: ClassVar[str] = "nmdc:TextValue"
@@ -1083,7 +1069,7 @@ class TextValue(AttributeValue):
     type: Union[str, URIorCURIE] = None
     language: Optional[str] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self.language is not None and not isinstance(self.language, str):
             self.language = str(self.language)
 
@@ -1098,7 +1084,7 @@ class TimestampValue(AttributeValue):
     """
     A value that is a timestamp. The range should be ISO-8601
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["TimestampValue"]
     class_class_curie: ClassVar[str] = "nmdc:TimestampValue"
@@ -1107,7 +1093,7 @@ class TimestampValue(AttributeValue):
 
     type: Union[str, URIorCURIE] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -1120,7 +1106,7 @@ class ControlledTermValue(AttributeValue):
     """
     A controlled term or class from an ontology
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["ControlledTermValue"]
     class_class_curie: ClassVar[str] = "nmdc:ControlledTermValue"
@@ -1130,7 +1116,7 @@ class ControlledTermValue(AttributeValue):
     type: Union[str, URIorCURIE] = None
     term: Optional[Union[dict, "OntologyClass"]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self.term is not None and not isinstance(self.term, OntologyClass):
             self.term = OntologyClass(**as_dict(self.term))
 
@@ -1145,7 +1131,7 @@ class ControlledIdentifiedTermValue(ControlledTermValue):
     """
     A controlled term or class from an ontology, requiring the presence of term with an id
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["ControlledIdentifiedTermValue"]
     class_class_curie: ClassVar[str] = "nmdc:ControlledIdentifiedTermValue"
@@ -1155,7 +1141,7 @@ class ControlledIdentifiedTermValue(ControlledTermValue):
     type: Union[str, URIorCURIE] = None
     term: Union[dict, "OntologyClass"] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.term):
             self.MissingRequiredField("term")
         if not isinstance(self.term, OntologyClass):
@@ -1172,7 +1158,7 @@ class GeolocationValue(AttributeValue):
     """
     A normalized value for a location on the earth's surface
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["GeolocationValue"]
     class_class_curie: ClassVar[str] = "nmdc:GeolocationValue"
@@ -1184,7 +1170,7 @@ class GeolocationValue(AttributeValue):
     longitude: float = None
     has_raw_value: Optional[str] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.latitude):
             self.MissingRequiredField("latitude")
         if not isinstance(self.latitude, float):
@@ -1205,11 +1191,79 @@ class GeolocationValue(AttributeValue):
 
 
 @dataclass(repr=False)
+class PropertyAssertion(AttributeValue):
+    """
+    A structured record of data that doesn't fit nicely within the constraints of other NMDC AttributeValues. Uses
+    primitive ranges only.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["PropertyAssertion"]
+    class_class_curie: ClassVar[str] = "nmdc:PropertyAssertion"
+    class_name: ClassVar[str] = "PropertyAssertion"
+    class_model_uri: ClassVar[URIRef] = NMDC.PropertyAssertion
+
+    type: Union[str, URIorCURIE] = None
+    has_raw_value: str = None
+    has_attribute_label: Optional[str] = None
+    has_attribute_id: Optional[Union[str, URIorCURIE]] = None
+    has_quantity_kind_id: Optional[Union[str, URIorCURIE]] = None
+    has_value_term_id: Optional[Union[str, URIorCURIE]] = None
+    has_boolean_value: Optional[Union[bool, Bool]] = None
+    has_datetime_value: Optional[str] = None
+    has_numeric_value: Optional[Decimal] = None
+    has_minimum_numeric_value: Optional[Decimal] = None
+    has_maximum_numeric_value: Optional[Decimal] = None
+    has_unit: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.has_raw_value):
+            self.MissingRequiredField("has_raw_value")
+        if not isinstance(self.has_raw_value, str):
+            self.has_raw_value = str(self.has_raw_value)
+
+        if self.has_attribute_label is not None and not isinstance(self.has_attribute_label, str):
+            self.has_attribute_label = str(self.has_attribute_label)
+
+        if self.has_attribute_id is not None and not isinstance(self.has_attribute_id, URIorCURIE):
+            self.has_attribute_id = URIorCURIE(self.has_attribute_id)
+
+        if self.has_quantity_kind_id is not None and not isinstance(self.has_quantity_kind_id, URIorCURIE):
+            self.has_quantity_kind_id = URIorCURIE(self.has_quantity_kind_id)
+
+        if self.has_value_term_id is not None and not isinstance(self.has_value_term_id, URIorCURIE):
+            self.has_value_term_id = URIorCURIE(self.has_value_term_id)
+
+        if self.has_boolean_value is not None and not isinstance(self.has_boolean_value, Bool):
+            self.has_boolean_value = Bool(self.has_boolean_value)
+
+        if self.has_datetime_value is not None and not isinstance(self.has_datetime_value, str):
+            self.has_datetime_value = str(self.has_datetime_value)
+
+        if self.has_numeric_value is not None and not isinstance(self.has_numeric_value, Decimal):
+            self.has_numeric_value = Decimal(self.has_numeric_value)
+
+        if self.has_minimum_numeric_value is not None and not isinstance(self.has_minimum_numeric_value, Decimal):
+            self.has_minimum_numeric_value = Decimal(self.has_minimum_numeric_value)
+
+        if self.has_maximum_numeric_value is not None and not isinstance(self.has_maximum_numeric_value, Decimal):
+            self.has_maximum_numeric_value = Decimal(self.has_maximum_numeric_value)
+
+        if self.has_unit is not None and not isinstance(self.has_unit, str):
+            self.has_unit = str(self.has_unit)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
 class NamedThing(YAMLRoot):
     """
     a databased entity or concept/class
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["NamedThing"]
     class_class_curie: ClassVar[str] = "nmdc:NamedThing"
@@ -1220,9 +1274,9 @@ class NamedThing(YAMLRoot):
     type: Union[str, URIorCURIE] = None
     name: Optional[str] = None
     description: Optional[str] = None
-    alternative_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    alternative_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, NamedThingId):
@@ -1275,7 +1329,7 @@ class GeneProduct(NamedThing):
     """
     A molecule encoded by a gene that has an evolved function
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["GeneProduct"]
     class_class_curie: ClassVar[str] = "nmdc:GeneProduct"
@@ -1285,7 +1339,7 @@ class GeneProduct(NamedThing):
     id: Union[str, GeneProductId] = None
     type: Union[str, URIorCURIE] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, GeneProductId):
@@ -1302,7 +1356,7 @@ class OntologyClass(NamedThing):
     """
     A representation of class defined in an external ontology.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["OntologyClass"]
     class_class_curie: ClassVar[str] = "nmdc:OntologyClass"
@@ -1311,11 +1365,13 @@ class OntologyClass(NamedThing):
 
     id: Union[str, OntologyClassId] = None
     type: Union[str, URIorCURIE] = None
-    alternative_names: Optional[Union[str, List[str]]] = empty_list()
+    alternative_names: Optional[Union[str, list[str]]] = empty_list()
+    relations: Optional[Union[Union[dict, "OntologyRelation"], list[Union[dict, "OntologyRelation"]]]] = empty_list()
     definition: Optional[str] = None
-    relations: Optional[Union[Union[dict, "OntologyRelation"], List[Union[dict, "OntologyRelation"]]]] = empty_list()
+    is_obsolete: Optional[Union[bool, Bool]] = None
+    is_root: Optional[Union[bool, Bool]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, OntologyClassId):
@@ -1325,12 +1381,18 @@ class OntologyClass(NamedThing):
             self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
         self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
 
-        if self.definition is not None and not isinstance(self.definition, str):
-            self.definition = str(self.definition)
-
         if not isinstance(self.relations, list):
             self.relations = [self.relations] if self.relations is not None else []
         self.relations = [v if isinstance(v, OntologyRelation) else OntologyRelation(**as_dict(v)) for v in self.relations]
+
+        if self.definition is not None and not isinstance(self.definition, str):
+            self.definition = str(self.definition)
+
+        if self.is_obsolete is not None and not isinstance(self.is_obsolete, Bool):
+            self.is_obsolete = Bool(self.is_obsolete)
+
+        if self.is_root is not None and not isinstance(self.is_root, Bool):
+            self.is_root = Bool(self.is_root)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -1344,7 +1406,7 @@ class FunctionalAnnotationTerm(OntologyClass):
     Abstract grouping class for any term/descriptor that can be applied to a functional unit of a genome (protein,
     ncRNA, complex).
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["FunctionalAnnotationTerm"]
     class_class_curie: ClassVar[str] = "nmdc:FunctionalAnnotationTerm"
@@ -1354,7 +1416,7 @@ class FunctionalAnnotationTerm(OntologyClass):
     id: Union[str, FunctionalAnnotationTermId] = None
     type: Union[str, URIorCURIE] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -1367,7 +1429,7 @@ class Pathway(FunctionalAnnotationTerm):
     """
     A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Pathway"]
     class_class_curie: ClassVar[str] = "nmdc:Pathway"
@@ -1377,7 +1439,7 @@ class Pathway(FunctionalAnnotationTerm):
     id: Union[str, PathwayId] = None
     type: Union[str, URIorCURIE] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, PathwayId):
@@ -1394,7 +1456,7 @@ class OrthologyGroup(FunctionalAnnotationTerm):
     """
     A set of genes or gene products in which all members are orthologous
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["OrthologyGroup"]
     class_class_curie: ClassVar[str] = "nmdc:OrthologyGroup"
@@ -1404,7 +1466,7 @@ class OrthologyGroup(FunctionalAnnotationTerm):
     id: Union[str, OrthologyGroupId] = None
     type: Union[str, URIorCURIE] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, OrthologyGroupId):
@@ -1418,7 +1480,7 @@ class OrthologyGroup(FunctionalAnnotationTerm):
 
 @dataclass(repr=False)
 class EnvironmentalMaterialTerm(OntologyClass):
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["EnvironmentalMaterialTerm"]
     class_class_curie: ClassVar[str] = "nmdc:EnvironmentalMaterialTerm"
@@ -1428,56 +1490,11 @@ class EnvironmentalMaterialTerm(OntologyClass):
     id: Union[str, EnvironmentalMaterialTermId] = None
     type: Union[str, URIorCURIE] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, EnvironmentalMaterialTermId):
             self.id = EnvironmentalMaterialTermId(self.id)
-
-        super().__post_init__(**kwargs)
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        self.type = str(self.class_class_curie)
-
-
-@dataclass(repr=False)
-class ChemicalEntity(OntologyClass):
-    """
-    An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products,
-    drugs. There may be different terms for distinct acid-base forms, protonation states
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC["ChemicalEntity"]
-    class_class_curie: ClassVar[str] = "nmdc:ChemicalEntity"
-    class_name: ClassVar[str] = "ChemicalEntity"
-    class_model_uri: ClassVar[URIRef] = NMDC.ChemicalEntity
-
-    id: Union[str, ChemicalEntityId] = None
-    type: Union[str, URIorCURIE] = None
-    chemical_formula: Optional[str] = None
-    inchi: Optional[str] = None
-    inchi_key: Optional[str] = None
-    smiles: Optional[Union[str, List[str]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ChemicalEntityId):
-            self.id = ChemicalEntityId(self.id)
-
-        if self.chemical_formula is not None and not isinstance(self.chemical_formula, str):
-            self.chemical_formula = str(self.chemical_formula)
-
-        if self.inchi is not None and not isinstance(self.inchi, str):
-            self.inchi = str(self.inchi)
-
-        if self.inchi_key is not None and not isinstance(self.inchi_key, str):
-            self.inchi_key = str(self.inchi_key)
-
-        if not isinstance(self.smiles, list):
-            self.smiles = [self.smiles] if self.smiles is not None else []
-        self.smiles = [v if isinstance(v, str) else str(v) for v in self.smiles]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -1495,7 +1512,7 @@ class OntologyRelation(YAMLRoot):
     on the relationship itself, these kinds of relationships are structured as a class instead of a simple set of
     slots on OntologyClass itself.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["OntologyRelation"]
     class_class_curie: ClassVar[str] = "nmdc:OntologyRelation"
@@ -1507,7 +1524,7 @@ class OntologyRelation(YAMLRoot):
     predicate: Union[str, OntologyClassId] = None
     object: Union[str, OntologyClassId] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
@@ -1532,7 +1549,7 @@ class OntologyRelation(YAMLRoot):
 
 @dataclass(repr=False)
 class FailureCategorization(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["FailureCategorization"]
     class_class_curie: ClassVar[str] = "nmdc:FailureCategorization"
@@ -1543,7 +1560,7 @@ class FailureCategorization(YAMLRoot):
     qc_failure_what: Optional[Union[str, "FailureWhatEnum"]] = None
     qc_failure_where: Optional[Union[str, "FailureWhereEnum"]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
@@ -1559,7 +1576,7 @@ class FailureCategorization(YAMLRoot):
 
 @dataclass(repr=False)
 class MaterialEntity(NamedThing):
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MaterialEntity"]
     class_class_curie: ClassVar[str] = "nmdc:MaterialEntity"
@@ -1569,7 +1586,7 @@ class MaterialEntity(NamedThing):
     id: Union[str, MaterialEntityId] = None
     type: Union[str, URIorCURIE] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -1582,7 +1599,7 @@ class Sample(MaterialEntity):
     """
     A sample is a material entity that can be characterized by an experiment.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Sample"]
     class_class_curie: ClassVar[str] = "nmdc:Sample"
@@ -1592,7 +1609,7 @@ class Sample(MaterialEntity):
     id: Union[str, SampleId] = None
     type: Union[str, URIorCURIE] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -1605,7 +1622,7 @@ class Biosample(Sample):
     """
     Biological source material which can be characterized by an experiment.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Biosample"]
     class_class_curie: ClassVar[str] = "nmdc:Biosample"
@@ -1614,51 +1631,50 @@ class Biosample(Sample):
 
     id: Union[str, BiosampleId] = None
     type: Union[str, URIorCURIE] = None
-    associated_studies: Union[Union[str, StudyId], List[Union[str, StudyId]]] = None
+    associated_studies: Union[Union[str, StudyId], list[Union[str, StudyId]]] = None
     env_broad_scale: Union[dict, ControlledIdentifiedTermValue] = None
     env_local_scale: Union[dict, ControlledIdentifiedTermValue] = None
     env_medium: Union[dict, ControlledIdentifiedTermValue] = None
-    biosample_categories: Optional[Union[Union[str, "BiosampleCategoryEnum"], List[Union[str, "BiosampleCategoryEnum"]]]] = empty_list()
+    biosample_categories: Optional[Union[Union[str, "BiosampleCategoryEnum"], list[Union[str, "BiosampleCategoryEnum"]]]] = empty_list()
     collected_from: Optional[Union[str, FieldResearchSiteId]] = None
     embargoed: Optional[Union[bool, Bool]] = None
-    host_disease_stat: Optional[Union[dict, TextValue]] = None
-    host_taxid: Optional[Union[dict, ControlledIdentifiedTermValue]] = None
-    img_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    neon_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    samp_name: Optional[str] = None
-    gold_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    insdc_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    emsl_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    igsn_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    host_disease_stat: Optional[str] = None
+    img_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    neon_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    alternative_names: Optional[Union[str, list[str]]] = empty_list()
+    provenance_metadata: Optional[Union[dict, "ProvenanceMetadata"]] = None
+    gold_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
+    insdc_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    emsl_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    igsn_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     abs_air_humidity: Optional[Union[dict, QuantityValue]] = None
-    add_recov_method: Optional[Union[dict, TextValue]] = None
+    add_recov_method: Optional[str] = None
     additional_info: Optional[Union[dict, TextValue]] = None
-    address: Optional[Union[dict, TextValue]] = None
+    address: Optional[str] = None
     adj_room: Optional[Union[dict, TextValue]] = None
-    aero_struc: Optional[Union[dict, TextValue]] = None
-    agrochem_addition: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
-    air_PM_concen: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    aero_struc: Optional[Union[str, "AeroStrucEnum"]] = None
+    agrochem_addition: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    air_PM_concen: Optional[Union[str, list[str]]] = empty_list()
     air_temp: Optional[Union[dict, QuantityValue]] = None
-    air_temp_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    air_temp_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     al_sat: Optional[Union[dict, QuantityValue]] = None
-    al_sat_meth: Optional[Union[dict, TextValue]] = None
+    al_sat_meth: Optional[str] = None
     alkalinity: Optional[Union[dict, QuantityValue]] = None
-    alkalinity_method: Optional[Union[dict, TextValue]] = None
+    alkalinity_method: Optional[str] = None
     alkyl_diethers: Optional[Union[dict, QuantityValue]] = None
     alt: Optional[Union[dict, QuantityValue]] = None
     aminopept_act: Optional[Union[dict, QuantityValue]] = None
     ammonium: Optional[Union[dict, QuantityValue]] = None
-    ammonium_nitrogen: Optional[Union[dict, QuantityValue]] = None
     amount_light: Optional[Union[dict, QuantityValue]] = None
     ances_data: Optional[Union[dict, TextValue]] = None
     annual_precpt: Optional[Union[dict, QuantityValue]] = None
     annual_temp: Optional[Union[dict, QuantityValue]] = None
-    antibiotic_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    antibiotic_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     api: Optional[Union[dict, QuantityValue]] = None
     arch_struc: Optional[Union[str, "ArchStrucEnum"]] = None
     aromatics_pc: Optional[Union[dict, TextValue]] = None
     asphaltenes_pc: Optional[Union[dict, TextValue]] = None
-    atmospheric_data: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    atmospheric_data: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     avg_dew_point: Optional[Union[dict, QuantityValue]] = None
     avg_occup: Optional[Union[dict, TextValue]] = None
     avg_temp: Optional[Union[dict, QuantityValue]] = None
@@ -1671,10 +1687,10 @@ class Biosample(Sample):
     bedroom_count: Optional[Union[dict, TextValue]] = None
     benzene: Optional[Union[dict, QuantityValue]] = None
     biochem_oxygen_dem: Optional[Union[dict, QuantityValue]] = None
-    biocide: Optional[Union[dict, TextValue]] = None
-    biocide_admin_method: Optional[Union[dict, TextValue]] = None
+    biocide: Optional[str] = None
+    biocide_admin_method: Optional[str] = None
     biol_stat: Optional[Union[str, "BiolStatEnum"]] = None
-    biomass: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    biomass: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     biotic_regm: Optional[Union[dict, TextValue]] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
     bishomohopanol: Optional[Union[dict, QuantityValue]] = None
@@ -1682,46 +1698,45 @@ class Biosample(Sample):
     blood_press_syst: Optional[Union[dict, QuantityValue]] = None
     bromide: Optional[Union[dict, QuantityValue]] = None
     build_docs: Optional[Union[str, "BuildDocsEnum"]] = None
-    build_occup_type: Optional[Union[Union[str, "BuildOccupTypeEnum"], List[Union[str, "BuildOccupTypeEnum"]]]] = empty_list()
+    build_occup_type: Optional[Union[Union[str, "BuildOccupTypeEnum"], list[Union[str, "BuildOccupTypeEnum"]]]] = empty_list()
     building_setting: Optional[Union[str, "BuildingSettingEnum"]] = None
     built_struc_age: Optional[Union[dict, QuantityValue]] = None
-    built_struc_set: Optional[Union[dict, TextValue]] = None
+    built_struc_set: Optional[Union[str, "BuiltStrucSetEnum"]] = None
     built_struc_type: Optional[Union[dict, TextValue]] = None
     calcium: Optional[Union[dict, QuantityValue]] = None
     carb_dioxide: Optional[Union[dict, QuantityValue]] = None
     carb_monoxide: Optional[Union[dict, QuantityValue]] = None
     carb_nitro_ratio: Optional[Union[dict, QuantityValue]] = None
     ceil_area: Optional[Union[dict, QuantityValue]] = None
-    ceil_cond: Optional[Union[str, "CeilCondEnum"]] = None
+    ceil_cond: Optional[Union[str, "DamagedEnum"]] = None
     ceil_finish_mat: Optional[Union[str, "CeilFinishMatEnum"]] = None
-    ceil_struc: Optional[Union[dict, TextValue]] = None
-    ceil_texture: Optional[Union[str, "CeilTextureEnum"]] = None
+    ceil_struc: Optional[Union[str, "CeilStrucEnum"]] = None
+    ceil_texture: Optional[Union[str, "CeilingWallTextureEnum"]] = None
     ceil_thermal_mass: Optional[Union[dict, QuantityValue]] = None
     ceil_type: Optional[Union[str, "CeilTypeEnum"]] = None
-    ceil_water_mold: Optional[Union[dict, TextValue]] = None
-    chem_administration: Optional[Union[Union[dict, ControlledTermValue], List[Union[dict, ControlledTermValue]]]] = empty_list()
-    chem_mutagen: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    ceil_water_mold: Optional[Union[str, "MoldVisibilityEnum"]] = None
+    chem_administration: Optional[Union[Union[dict, ControlledTermValue], list[Union[dict, ControlledTermValue]]]] = empty_list()
+    chem_mutagen: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     chem_oxygen_dem: Optional[Union[dict, QuantityValue]] = None
     chem_treat_method: Optional[str] = None
-    chem_treatment: Optional[Union[dict, TextValue]] = None
+    chem_treatment: Optional[str] = None
     chloride: Optional[Union[dict, QuantityValue]] = None
     chlorophyll: Optional[Union[dict, QuantityValue]] = None
-    climate_environment: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    climate_environment: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     collection_date: Optional[Union[dict, TimestampValue]] = None
     conduc: Optional[Union[dict, QuantityValue]] = None
     cool_syst_id: Optional[Union[dict, TextValue]] = None
-    core_field: Optional[str] = None
     crop_rotation: Optional[Union[dict, TextValue]] = None
     cult_root_med: Optional[Union[dict, TextValue]] = None
-    cur_land_use: Optional[Union[str, "CurLandUseEnum"]] = None
+    cur_land_use: Optional[str] = None
     cur_vegetation: Optional[Union[dict, TextValue]] = None
-    cur_vegetation_meth: Optional[Union[dict, TextValue]] = None
+    cur_vegetation_meth: Optional[str] = None
     date_last_rain: Optional[Union[dict, TimestampValue]] = None
     density: Optional[Union[dict, QuantityValue]] = None
     depos_env: Optional[Union[str, "DeposEnvEnum"]] = None
     depth: Optional[Union[dict, QuantityValue]] = None
     dew_point: Optional[Union[dict, QuantityValue]] = None
-    diether_lipids: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    diether_lipids: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     diss_carb_dioxide: Optional[Union[dict, QuantityValue]] = None
     diss_hydrogen: Optional[Union[dict, QuantityValue]] = None
     diss_inorg_carb: Optional[Union[dict, QuantityValue]] = None
@@ -1732,88 +1747,82 @@ class Biosample(Sample):
     diss_org_nitro: Optional[Union[dict, QuantityValue]] = None
     diss_oxygen: Optional[Union[dict, QuantityValue]] = None
     diss_oxygen_fluid: Optional[Union[dict, QuantityValue]] = None
-    dna_cont_well: Optional[str] = None
     door_comp_type: Optional[Union[str, "DoorCompTypeEnum"]] = None
-    door_cond: Optional[Union[str, "DoorCondEnum"]] = None
+    door_cond: Optional[Union[str, "DamagedRupturedEnum"]] = None
     door_direct: Optional[Union[str, "DoorDirectEnum"]] = None
-    door_loc: Optional[Union[str, "DoorLocEnum"]] = None
+    door_loc: Optional[Union[str, "CompassDirections8Enum"]] = None
     door_mat: Optional[Union[str, "DoorMatEnum"]] = None
     door_move: Optional[Union[str, "DoorMoveEnum"]] = None
     door_size: Optional[Union[dict, QuantityValue]] = None
     door_type: Optional[Union[str, "DoorTypeEnum"]] = None
     door_type_metal: Optional[Union[str, "DoorTypeMetalEnum"]] = None
-    door_type_wood: Optional[Union[str, "DoorTypeWoodEnum"]] = None
-    door_water_mold: Optional[Union[dict, TextValue]] = None
+    door_type_wood: Optional[str] = None
+    door_water_mold: Optional[Union[str, "MoldVisibilityEnum"]] = None
     down_par: Optional[Union[dict, QuantityValue]] = None
     drainage_class: Optional[Union[str, "DrainageClassEnum"]] = None
     drawings: Optional[Union[str, "DrawingsEnum"]] = None
-    ecosystem: Optional[str] = None
-    ecosystem_category: Optional[str] = None
-    ecosystem_subtype: Optional[str] = None
-    ecosystem_type: Optional[str] = None
     efficiency_percent: Optional[Union[dict, QuantityValue]] = None
     elev: Optional[float] = None
     elevator: Optional[Union[dict, TextValue]] = None
-    emulsions: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    emulsions: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     env_package: Optional[Union[dict, TextValue]] = None
-    environment_field: Optional[str] = None
     escalator: Optional[Union[dict, TextValue]] = None
     ethylbenzene: Optional[Union[dict, QuantityValue]] = None
     exp_duct: Optional[Union[dict, QuantityValue]] = None
     exp_pipe: Optional[Union[dict, QuantityValue]] = None
     experimental_factor: Optional[Union[dict, ControlledTermValue]] = None
     ext_door: Optional[Union[dict, TextValue]] = None
-    ext_wall_orient: Optional[Union[str, "ExtWallOrientEnum"]] = None
-    ext_window_orient: Optional[Union[str, "ExtWindowOrientEnum"]] = None
+    ext_wall_orient: Optional[Union[str, "CompassDirections8Enum"]] = None
+    ext_window_orient: Optional[Union[str, "CompassDirections8Enum"]] = None
     extreme_event: Optional[str] = None
     fao_class: Optional[Union[str, "FaoClassEnum"]] = None
-    fertilizer_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    fertilizer_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     field: Optional[Union[dict, TextValue]] = None
-    filter_type: Optional[Union[Union[str, "FilterTypeEnum"], List[Union[str, "FilterTypeEnum"]]]] = empty_list()
+    filter_type: Optional[Union[Union[str, "FilterTypeEnum"], list[Union[str, "FilterTypeEnum"]]]] = empty_list()
     fire: Optional[str] = None
-    fireplace_type: Optional[Union[dict, TextValue]] = None
+    fireplace_type: Optional[Union[str, "FireplaceTypeEnum"]] = None
     flooding: Optional[str] = None
     floor_age: Optional[Union[dict, QuantityValue]] = None
     floor_area: Optional[Union[dict, QuantityValue]] = None
-    floor_cond: Optional[Union[str, "FloorCondEnum"]] = None
+    floor_cond: Optional[Union[str, "DamagedEnum"]] = None
     floor_count: Optional[Union[dict, TextValue]] = None
-    floor_finish_mat: Optional[Union[str, "FloorFinishMatEnum"]] = None
+    floor_finish_mat: Optional[str] = None
     floor_struc: Optional[Union[str, "FloorStrucEnum"]] = None
     floor_thermal_mass: Optional[Union[dict, QuantityValue]] = None
     floor_water_mold: Optional[Union[str, "FloorWaterMoldEnum"]] = None
     fluor: Optional[Union[dict, QuantityValue]] = None
     freq_clean: Optional[Union[dict, QuantityValue]] = None
     freq_cook: Optional[Union[dict, QuantityValue]] = None
-    fungicide_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    fungicide_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     furniture: Optional[Union[str, "FurnitureEnum"]] = None
-    gaseous_environment: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
-    gaseous_substances: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    gaseous_environment: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    gaseous_substances: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     gender_restroom: Optional[Union[str, "GenderRestroomEnum"]] = None
-    genetic_mod: Optional[Union[dict, TextValue]] = None
+    genetic_mod: Optional[str] = None
     geo_loc_name: Optional[Union[dict, TextValue]] = None
     glucosidase_act: Optional[Union[dict, QuantityValue]] = None
     gravidity: Optional[Union[dict, TextValue]] = None
-    gravity: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    gravity: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     growth_facil: Optional[Union[dict, ControlledTermValue]] = None
     growth_habit: Optional[Union[str, "GrowthHabitEnum"]] = None
-    growth_hormone_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    growth_hormone_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     hall_count: Optional[Union[dict, TextValue]] = None
     handidness: Optional[Union[str, "HandidnessEnum"]] = None
     hc_produced: Optional[Union[str, "HcProducedEnum"]] = None
     hcr: Optional[Union[str, "HcrEnum"]] = None
     hcr_fw_salinity: Optional[Union[dict, QuantityValue]] = None
-    hcr_geol_age: Optional[Union[str, "HcrGeolAgeEnum"]] = None
+    hcr_geol_age: Optional[Union[str, "GeolAgeEnum"]] = None
     hcr_pressure: Optional[Union[dict, TextValue]] = None
     hcr_temp: Optional[Union[dict, TextValue]] = None
-    heat_cool_type: Optional[Union[Union[str, "HeatCoolTypeEnum"], List[Union[str, "HeatCoolTypeEnum"]]]] = empty_list()
-    heat_deliv_loc: Optional[Union[str, "HeatDelivLocEnum"]] = None
+    heat_cool_type: Optional[Union[Union[str, "HeatCoolTypeEnum"], list[Union[str, "HeatCoolTypeEnum"]]]] = empty_list()
+    heat_deliv_loc: Optional[Union[str, "CompassDirections8Enum"]] = None
     heat_sys_deliv_meth: Optional[str] = None
     heat_system_id: Optional[Union[dict, TextValue]] = None
-    heavy_metals: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
-    heavy_metals_meth: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    heavy_metals: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    heavy_metals_meth: Optional[Union[str, list[str]]] = empty_list()
     height_carper_fiber: Optional[Union[dict, QuantityValue]] = None
-    herbicide_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
-    horizon_meth: Optional[Union[dict, TextValue]] = None
+    herbicide_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    horizon_meth: Optional[str] = None
     host_age: Optional[Union[dict, QuantityValue]] = None
     host_body_habitat: Optional[Union[dict, TextValue]] = None
     host_body_product: Optional[Union[dict, ControlledTermValue]] = None
@@ -1821,68 +1830,62 @@ class Biosample(Sample):
     host_body_temp: Optional[Union[dict, QuantityValue]] = None
     host_color: Optional[Union[dict, TextValue]] = None
     host_common_name: Optional[Union[dict, TextValue]] = None
-    host_diet: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    host_diet: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     host_dry_mass: Optional[Union[dict, QuantityValue]] = None
-    host_family_relation: Optional[Union[str, List[str]]] = empty_list()
+    host_family_relation: Optional[Union[str, list[str]]] = empty_list()
     host_genotype: Optional[Union[dict, TextValue]] = None
     host_growth_cond: Optional[Union[dict, TextValue]] = None
     host_height: Optional[Union[dict, QuantityValue]] = None
-    host_last_meal: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    host_last_meal: Optional[Union[str, list[str]]] = empty_list()
     host_length: Optional[Union[dict, QuantityValue]] = None
     host_life_stage: Optional[Union[dict, TextValue]] = None
     host_phenotype: Optional[Union[dict, ControlledTermValue]] = None
-    host_sex: Optional[Union[str, "HostSexEnum"]] = None
+    host_sex: Optional[str] = None
     host_shape: Optional[Union[dict, TextValue]] = None
     host_subject_id: Optional[Union[dict, TextValue]] = None
-    host_subspecf_genlin: Optional[Union[str, List[str]]] = empty_list()
+    host_subspecf_genlin: Optional[Union[str, list[str]]] = empty_list()
     host_substrate: Optional[Union[dict, TextValue]] = None
-    host_symbiont: Optional[Union[str, List[str]]] = empty_list()
+    host_symbiont: Optional[Union[str, list[str]]] = empty_list()
+    host_taxid: Optional[Union[dict, ControlledIdentifiedTermValue]] = None
     host_tot_mass: Optional[Union[dict, QuantityValue]] = None
     host_wet_mass: Optional[Union[dict, QuantityValue]] = None
     humidity: Optional[Union[dict, QuantityValue]] = None
-    humidity_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    humidity_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     indoor_space: Optional[Union[str, "IndoorSpaceEnum"]] = None
     indoor_surf: Optional[Union[str, "IndoorSurfEnum"]] = None
     indust_eff_percent: Optional[Union[dict, QuantityValue]] = None
-    inorg_particles: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    inorg_particles: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     inside_lux: Optional[Union[dict, QuantityValue]] = None
-    int_wall_cond: Optional[Union[str, "IntWallCondEnum"]] = None
-    investigation_field: Optional[str] = None
+    int_wall_cond: Optional[Union[str, "DamagedEnum"]] = None
     iw_bt_date_well: Optional[Union[dict, TimestampValue]] = None
     iwf: Optional[Union[dict, QuantityValue]] = None
     last_clean: Optional[Union[dict, TimestampValue]] = None
     lat_lon: Optional[Union[dict, GeolocationValue]] = None
-    lbc_thirty: Optional[Union[dict, QuantityValue]] = None
-    lbceq: Optional[Union[dict, QuantityValue]] = None
     light_intensity: Optional[Union[dict, QuantityValue]] = None
     light_regm: Optional[Union[dict, TextValue]] = None
-    light_type: Optional[Union[Union[str, "LightTypeEnum"], List[Union[str, "LightTypeEnum"]]]] = empty_list()
+    light_type: Optional[Union[Union[str, "LightTypeEnum"], list[Union[str, "LightTypeEnum"]]]] = empty_list()
     link_addit_analys: Optional[Union[dict, TextValue]] = None
-    link_class_info: Optional[Union[dict, TextValue]] = None
+    link_class_info: Optional[str] = None
     link_climate_info: Optional[Union[dict, TextValue]] = None
     lithology: Optional[Union[str, "LithologyEnum"]] = None
     local_class: Optional[Union[dict, TextValue]] = None
-    local_class_meth: Optional[Union[dict, TextValue]] = None
+    local_class_meth: Optional[str] = None
     magnesium: Optional[Union[dict, QuantityValue]] = None
-    manganese: Optional[Union[dict, QuantityValue]] = None
     max_occup: Optional[Union[dict, QuantityValue]] = None
     mean_frict_vel: Optional[Union[dict, QuantityValue]] = None
     mean_peak_frict_vel: Optional[Union[dict, QuantityValue]] = None
     mech_struc: Optional[Union[str, "MechStrucEnum"]] = None
-    mechanical_damage: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    mechanical_damage: Optional[Union[str, list[str]]] = empty_list()
     methane: Optional[Union[dict, QuantityValue]] = None
     micro_biomass_meth: Optional[str] = None
     microbial_biomass: Optional[Union[dict, QuantityValue]] = None
-    mineral_nutr_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
-    misc_param: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
-    n_alkanes: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    mineral_nutr_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    misc_param: Optional[Union[Union[dict, PropertyAssertion], list[Union[dict, PropertyAssertion]]]] = empty_list()
+    n_alkanes: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     nitrate: Optional[Union[dict, QuantityValue]] = None
-    nitrate_nitrogen: Optional[Union[dict, QuantityValue]] = None
     nitrite: Optional[Union[dict, QuantityValue]] = None
-    nitrite_nitrogen: Optional[Union[dict, QuantityValue]] = None
     nitro: Optional[Union[dict, QuantityValue]] = None
-    non_min_nutr_regm: Optional[Union[str, List[str]]] = empty_list()
-    nucleic_acid_sequence_source_field: Optional[str] = None
+    non_min_nutr_regm: Optional[Union[str, list[str]]] = empty_list()
     number_pets: Optional[Union[dict, QuantityValue]] = None
     number_plants: Optional[Union[dict, QuantityValue]] = None
     number_resident: Optional[Union[dict, QuantityValue]] = None
@@ -1893,30 +1896,30 @@ class Biosample(Sample):
     org_count_qpcr_info: Optional[str] = None
     org_matter: Optional[Union[dict, QuantityValue]] = None
     org_nitro: Optional[Union[dict, QuantityValue]] = None
-    org_particles: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
-    organism_count: Optional[Union[Union[dict, QuantityValue], List[Union[dict, QuantityValue]]]] = empty_list()
+    org_particles: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    organism_count: Optional[Union[Union[dict, QuantityValue], list[Union[dict, QuantityValue]]]] = empty_list()
     owc_tvdss: Optional[Union[dict, QuantityValue]] = None
     oxy_stat_samp: Optional[Union[str, "OxyStatSampEnum"]] = None
     oxygen: Optional[Union[dict, QuantityValue]] = None
     part_org_carb: Optional[Union[dict, QuantityValue]] = None
     part_org_nitro: Optional[Union[dict, QuantityValue]] = None
-    particle_class: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    particle_class: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     permeability: Optional[Union[dict, TextValue]] = None
-    perturbation: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
-    pesticide_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    perturbation: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    pesticide_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     petroleum_hydrocarb: Optional[Union[dict, QuantityValue]] = None
     ph: Optional[float] = None
     ph_meth: Optional[Union[dict, TextValue]] = None
-    ph_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
-    phaeopigments: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    ph_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    phaeopigments: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     phosphate: Optional[Union[dict, QuantityValue]] = None
-    phosplipid_fatt_acid: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    phosplipid_fatt_acid: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     photon_flux: Optional[Union[dict, QuantityValue]] = None
     plant_growth_med: Optional[Union[dict, ControlledTermValue]] = None
     plant_product: Optional[Union[dict, TextValue]] = None
     plant_sex: Optional[Union[str, "PlantSexEnum"]] = None
     plant_struc: Optional[Union[dict, ControlledTermValue]] = None
-    pollutants: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    pollutants: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     porosity: Optional[Union[dict, TextValue]] = None
     potassium: Optional[Union[dict, QuantityValue]] = None
     pour_point: Optional[Union[dict, QuantityValue]] = None
@@ -1924,15 +1927,15 @@ class Biosample(Sample):
     pres_animal_insect: Optional[str] = None
     pressure: Optional[Union[dict, QuantityValue]] = None
     prev_land_use_meth: Optional[str] = None
-    previous_land_use: Optional[Union[dict, TextValue]] = None
+    previous_land_use: Optional[str] = None
     primary_prod: Optional[Union[dict, QuantityValue]] = None
     primary_treatment: Optional[Union[dict, TextValue]] = None
     prod_rate: Optional[Union[dict, QuantityValue]] = None
     prod_start_date: Optional[Union[dict, TimestampValue]] = None
     profile_position: Optional[Union[str, "ProfilePositionEnum"]] = None
     quad_pos: Optional[Union[str, "QuadPosEnum"]] = None
-    radiation_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
-    rainfall_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    radiation_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    rainfall_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     reactor_type: Optional[Union[dict, TextValue]] = None
     redox_potential: Optional[Union[dict, QuantityValue]] = None
     rel_air_humidity: Optional[Union[dict, QuantityValue]] = None
@@ -1954,7 +1957,7 @@ class Biosample(Sample):
     room_net_area: Optional[Union[dict, TextValue]] = None
     room_occup: Optional[Union[dict, QuantityValue]] = None
     room_samp_pos: Optional[Union[str, "RoomSampPosEnum"]] = None
-    room_type: Optional[Union[str, "RoomTypeEnum"]] = None
+    room_type: Optional[str] = None
     room_vol: Optional[Union[dict, TextValue]] = None
     room_wall_share: Optional[Union[dict, TextValue]] = None
     room_window_count: Optional[int] = None
@@ -1967,21 +1970,22 @@ class Biosample(Sample):
     root_med_solid: Optional[Union[dict, TextValue]] = None
     root_med_suppl: Optional[Union[dict, TextValue]] = None
     salinity: Optional[Union[dict, QuantityValue]] = None
-    salinity_meth: Optional[Union[dict, TextValue]] = None
-    salt_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    salinity_meth: Optional[str] = None
+    salt_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     samp_capt_status: Optional[Union[str, "SampCaptStatusEnum"]] = None
     samp_collec_device: Optional[str] = None
     samp_collec_method: Optional[str] = None
     samp_collect_point: Optional[Union[str, "SampCollectPointEnum"]] = None
     samp_dis_stage: Optional[Union[str, "SampDisStageEnum"]] = None
-    samp_floor: Optional[Union[str, "SampFloorEnum"]] = None
+    samp_floor: Optional[str] = None
     samp_loc_corr_rate: Optional[Union[dict, TextValue]] = None
     samp_mat_process: Optional[Union[dict, ControlledTermValue]] = None
     samp_md: Optional[Union[dict, QuantityValue]] = None
+    samp_name: Optional[str] = None
     samp_preserv: Optional[Union[dict, TextValue]] = None
     samp_room_id: Optional[Union[dict, TextValue]] = None
     samp_size: Optional[Union[dict, QuantityValue]] = None
-    samp_sort_meth: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    samp_sort_meth: Optional[Union[str, list[str]]] = empty_list()
     samp_store_dur: Optional[Union[dict, TextValue]] = None
     samp_store_loc: Optional[Union[dict, TextValue]] = None
     samp_store_temp: Optional[Union[dict, QuantityValue]] = None
@@ -1994,18 +1998,17 @@ class Biosample(Sample):
     samp_weather: Optional[Union[str, "SampWeatherEnum"]] = None
     samp_well_name: Optional[Union[dict, TextValue]] = None
     saturates_pc: Optional[Union[dict, TextValue]] = None
-    season: Optional[Union[dict, TextValue]] = None
-    season_environment: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    season: Optional[Union[str, "SeasonEnum"]] = None
+    season_environment: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     season_precpt: Optional[Union[dict, QuantityValue]] = None
     season_temp: Optional[Union[dict, QuantityValue]] = None
     season_use: Optional[Union[str, "SeasonUseEnum"]] = None
     secondary_treatment: Optional[Union[dict, TextValue]] = None
     sediment_type: Optional[Union[str, "SedimentTypeEnum"]] = None
-    sequencing_field: Optional[str] = None
     sewage_type: Optional[Union[dict, TextValue]] = None
     shad_dev_water_mold: Optional[str] = None
-    shading_device_cond: Optional[Union[str, "ShadingDeviceCondEnum"]] = None
-    shading_device_loc: Optional[Union[dict, TextValue]] = None
+    shading_device_cond: Optional[Union[str, "DamagedRupturedEnum"]] = None
+    shading_device_loc: Optional[Union[str, "ShadingDeviceLocEnum"]] = None
     shading_device_mat: Optional[Union[dict, TextValue]] = None
     shading_device_type: Optional[Union[str, "ShadingDeviceTypeEnum"]] = None
     sieving: Optional[Union[dict, TextValue]] = None
@@ -2018,43 +2021,42 @@ class Biosample(Sample):
     sludge_retent_time: Optional[Union[dict, QuantityValue]] = None
     sodium: Optional[Union[dict, QuantityValue]] = None
     soil_horizon: Optional[Union[str, "SoilHorizonEnum"]] = None
-    soil_text_measure: Optional[Union[dict, QuantityValue]] = None
+    soil_text_measure: Optional[str] = None
     soil_texture_meth: Optional[str] = None
     soil_type: Optional[Union[dict, TextValue]] = None
     soil_type_meth: Optional[Union[dict, TextValue]] = None
     solar_irradiance: Optional[Union[dict, QuantityValue]] = None
-    soluble_inorg_mat: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
-    soluble_org_mat: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    soluble_inorg_mat: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    soluble_org_mat: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     soluble_react_phosp: Optional[Union[dict, QuantityValue]] = None
     source_mat_id: Optional[Union[dict, TextValue]] = None
-    space_typ_state: Optional[Union[dict, TextValue]] = None
+    space_typ_state: Optional[Union[str, "SpaceTypStateEnum"]] = None
     specific: Optional[Union[str, "SpecificEnum"]] = None
-    specific_ecosystem: Optional[str] = None
     specific_humidity: Optional[Union[dict, QuantityValue]] = None
     sr_dep_env: Optional[Union[str, "SrDepEnvEnum"]] = None
-    sr_geol_age: Optional[Union[str, "SrGeolAgeEnum"]] = None
+    sr_geol_age: Optional[Union[str, "GeolAgeEnum"]] = None
     sr_kerog_type: Optional[Union[str, "SrKerogTypeEnum"]] = None
     sr_lithology: Optional[Union[str, "SrLithologyEnum"]] = None
-    standing_water_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    standing_water_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     store_cond: Optional[Union[dict, TextValue]] = None
-    substructure_type: Optional[Union[Union[str, "SubstructureTypeEnum"], List[Union[str, "SubstructureTypeEnum"]]]] = empty_list()
+    substructure_type: Optional[Union[Union[str, "SubstructureTypeEnum"], list[Union[str, "SubstructureTypeEnum"]]]] = empty_list()
     sulfate: Optional[Union[dict, QuantityValue]] = None
     sulfate_fw: Optional[Union[dict, QuantityValue]] = None
     sulfide: Optional[Union[dict, QuantityValue]] = None
-    surf_air_cont: Optional[Union[Union[str, "SurfAirContEnum"], List[Union[str, "SurfAirContEnum"]]]] = empty_list()
+    surf_air_cont: Optional[Union[Union[str, "SurfAirContEnum"], list[Union[str, "SurfAirContEnum"]]]] = empty_list()
     surf_humidity: Optional[Union[dict, QuantityValue]] = None
     surf_material: Optional[Union[str, "SurfMaterialEnum"]] = None
     surf_moisture: Optional[Union[dict, QuantityValue]] = None
     surf_moisture_ph: Optional[float] = None
     surf_temp: Optional[Union[dict, QuantityValue]] = None
     suspend_part_matter: Optional[Union[dict, QuantityValue]] = None
-    suspend_solids: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    suspend_solids: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     tan: Optional[Union[dict, QuantityValue]] = None
     temp: Optional[Union[dict, QuantityValue]] = None
     temp_out: Optional[Union[dict, QuantityValue]] = None
     tertiary_treatment: Optional[Union[dict, TextValue]] = None
     tidal_stage: Optional[Union[str, "TidalStageEnum"]] = None
-    tillage: Optional[Union[Union[str, "TillageEnum"], List[Union[str, "TillageEnum"]]]] = empty_list()
+    tillage: Optional[Union[Union[str, "TillageEnum"], list[Union[str, "TillageEnum"]]]] = empty_list()
     tiss_cult_growth_med: Optional[Union[dict, TextValue]] = None
     toluene: Optional[Union[dict, QuantityValue]] = None
     tot_carb: Optional[Union[dict, QuantityValue]] = None
@@ -2065,7 +2067,7 @@ class Biosample(Sample):
     tot_nitro: Optional[Union[dict, QuantityValue]] = None
     tot_nitro_cont_meth: Optional[str] = None
     tot_nitro_content: Optional[Union[dict, QuantityValue]] = None
-    tot_org_c_meth: Optional[Union[dict, TextValue]] = None
+    tot_org_c_meth: Optional[str] = None
     tot_org_carb: Optional[Union[dict, QuantityValue]] = None
     tot_part_carb: Optional[Union[dict, QuantityValue]] = None
     tot_phosp: Optional[Union[dict, QuantityValue]] = None
@@ -2082,45 +2084,50 @@ class Biosample(Sample):
     ventilation_type: Optional[Union[dict, TextValue]] = None
     vfa: Optional[Union[dict, QuantityValue]] = None
     vfa_fw: Optional[Union[dict, QuantityValue]] = None
-    vis_media: Optional[Union[str, "VisMediaEnum"]] = None
+    vis_media: Optional[str] = None
     viscosity: Optional[Union[dict, TextValue]] = None
-    volatile_org_comp: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    volatile_org_comp: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     wall_area: Optional[Union[dict, QuantityValue]] = None
     wall_const_type: Optional[Union[str, "WallConstTypeEnum"]] = None
     wall_finish_mat: Optional[Union[str, "WallFinishMatEnum"]] = None
     wall_height: Optional[Union[dict, QuantityValue]] = None
-    wall_loc: Optional[Union[str, "WallLocEnum"]] = None
+    wall_loc: Optional[Union[str, "CompassDirections8Enum"]] = None
     wall_surf_treatment: Optional[Union[str, "WallSurfTreatmentEnum"]] = None
-    wall_texture: Optional[Union[str, "WallTextureEnum"]] = None
+    wall_texture: Optional[Union[str, "CeilingWallTextureEnum"]] = None
     wall_thermal_mass: Optional[Union[dict, QuantityValue]] = None
-    wall_water_mold: Optional[Union[dict, TextValue]] = None
+    wall_water_mold: Optional[Union[str, "MoldVisibilityEnum"]] = None
     wastewater_type: Optional[Union[dict, TextValue]] = None
     water_cont_soil_meth: Optional[str] = None
-    water_content: Optional[Union[str, List[str]]] = empty_list()
+    water_content: Optional[Union[str, list[str]]] = empty_list()
     water_current: Optional[Union[dict, QuantityValue]] = None
     water_cut: Optional[Union[dict, QuantityValue]] = None
     water_feat_size: Optional[Union[dict, QuantityValue]] = None
     water_feat_type: Optional[Union[str, "WaterFeatTypeEnum"]] = None
     water_prod_rate: Optional[Union[dict, QuantityValue]] = None
-    water_temp_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
-    watering_regm: Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]] = empty_list()
+    water_temp_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
+    watering_regm: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     weekday: Optional[Union[str, "WeekdayEnum"]] = None
     win: Optional[Union[dict, TextValue]] = None
     wind_direction: Optional[Union[dict, TextValue]] = None
     wind_speed: Optional[Union[dict, QuantityValue]] = None
-    window_cond: Optional[Union[str, "WindowCondEnum"]] = None
+    window_cond: Optional[Union[str, "DamagedRupturedEnum"]] = None
     window_cover: Optional[Union[str, "WindowCoverEnum"]] = None
     window_horiz_pos: Optional[Union[str, "WindowHorizPosEnum"]] = None
-    window_loc: Optional[Union[str, "WindowLocEnum"]] = None
+    window_loc: Optional[Union[str, "CompassDirections8Enum"]] = None
     window_mat: Optional[Union[str, "WindowMatEnum"]] = None
     window_open_freq: Optional[Union[dict, TextValue]] = None
     window_size: Optional[Union[dict, TextValue]] = None
-    window_status: Optional[Union[dict, TextValue]] = None
+    window_status: Optional[Union[str, "WindowStatusEnum"]] = None
     window_type: Optional[Union[str, "WindowTypeEnum"]] = None
     window_vert_pos: Optional[Union[str, "WindowVertPosEnum"]] = None
-    window_water_mold: Optional[Union[dict, TextValue]] = None
+    window_water_mold: Optional[Union[str, "MoldVisibilityEnum"]] = None
     xylene: Optional[Union[dict, QuantityValue]] = None
-    zinc: Optional[Union[dict, QuantityValue]] = None
+    ecosystem: Optional[str] = None
+    ecosystem_category: Optional[str] = None
+    ecosystem_type: Optional[str] = None
+    ecosystem_subtype: Optional[str] = None
+    specific_ecosystem: Optional[str] = None
+    ecosystem_path_id: Optional[int] = None
     add_date: Optional[str] = None
     community: Optional[str] = None
     habitat: Optional[str] = None
@@ -2133,43 +2140,12 @@ class Biosample(Sample):
     sample_collection_site: Optional[str] = None
     soluble_iron_micromol: Optional[str] = None
     subsurface_depth: Optional[Union[dict, QuantityValue]] = None
-    dna_absorb1: Optional[float] = None
-    dna_absorb2: Optional[float] = None
     dna_collect_site: Optional[str] = None
-    dna_concentration: Optional[float] = None
-    dna_cont_type: Optional[Union[str, "JgiContTypeEnum"]] = None
-    dna_container_id: Optional[str] = None
-    dna_dnase: Optional[Union[str, "YesNoEnum"]] = None
     dna_isolate_meth: Optional[str] = None
     dna_organisms: Optional[str] = None
-    dna_project_contact: Optional[str] = None
-    dna_samp_id: Optional[str] = None
-    dna_sample_format: Optional[Union[str, "DNASampleFormatEnum"]] = None
-    dna_sample_name: Optional[str] = None
-    dna_seq_project: Optional[str] = None
-    dna_seq_project_pi: Optional[str] = None
-    dna_seq_project_name: Optional[str] = None
-    dna_volume: Optional[float] = None
-    proposal_dna: Optional[str] = None
-    dnase_rna: Optional[Union[str, "YesNoEnum"]] = None
-    proposal_rna: Optional[str] = None
-    rna_absorb1: Optional[float] = None
-    rna_absorb2: Optional[float] = None
     rna_collect_site: Optional[str] = None
-    rna_concentration: Optional[float] = None
-    rna_cont_type: Optional[Union[str, "JgiContTypeEnum"]] = None
-    rna_cont_well: Optional[str] = None
-    rna_container_id: Optional[str] = None
     rna_isolate_meth: Optional[str] = None
     rna_organisms: Optional[str] = None
-    rna_project_contact: Optional[str] = None
-    rna_samp_id: Optional[str] = None
-    rna_sample_format: Optional[Union[str, "RNASampleFormatEnum"]] = None
-    rna_sample_name: Optional[str] = None
-    rna_seq_project: Optional[str] = None
-    rna_seq_project_pi: Optional[str] = None
-    rna_seq_project_name: Optional[str] = None
-    rna_volume: Optional[float] = None
     collection_date_inc: Optional[str] = None
     collection_time: Optional[str] = None
     collection_time_inc: Optional[str] = None
@@ -2187,17 +2163,24 @@ class Biosample(Sample):
     start_date_inc: Optional[str] = None
     start_time_inc: Optional[str] = None
     project_id: Optional[str] = None
-    replicate_number: Optional[str] = None
+    replicate_number: Optional[int] = None
     sample_shipped: Optional[str] = None
     sample_type: Optional[Union[str, "SampleTypeEnum"]] = None
-    technical_reps: Optional[str] = None
-    analysis_type: Optional[Union[Union[str, "AnalysisTypeEnum"], List[Union[str, "AnalysisTypeEnum"]]]] = empty_list()
-    sample_link: Optional[Union[str, List[str]]] = empty_list()
+    technical_reps: Optional[int] = None
+    analysis_type: Optional[Union[Union[str, "AnalysisTypeEnum"], list[Union[str, "AnalysisTypeEnum"]]]] = empty_list()
+    sample_link: Optional[Union[str, list[str]]] = empty_list()
     bulk_elect_conductivity: Optional[Union[dict, QuantityValue]] = None
-    infiltrations: Optional[Union[str, List[str]]] = empty_list()
-    alternative_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    infiltrations: Optional[Union[str, list[str]]] = empty_list()
+    zinc: Optional[Union[dict, QuantityValue]] = None
+    manganese: Optional[Union[dict, QuantityValue]] = None
+    ammonium_nitrogen: Optional[Union[dict, QuantityValue]] = None
+    nitrate_nitrogen: Optional[Union[dict, QuantityValue]] = None
+    nitrite_nitrogen: Optional[Union[dict, QuantityValue]] = None
+    lbc_thirty: Optional[Union[dict, QuantityValue]] = None
+    lbceq: Optional[Union[dict, QuantityValue]] = None
+    alternative_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, BiosampleId):
@@ -2234,11 +2217,8 @@ class Biosample(Sample):
         if self.embargoed is not None and not isinstance(self.embargoed, Bool):
             self.embargoed = Bool(self.embargoed)
 
-        if self.host_disease_stat is not None and not isinstance(self.host_disease_stat, TextValue):
-            self.host_disease_stat = TextValue(**as_dict(self.host_disease_stat))
-
-        if self.host_taxid is not None and not isinstance(self.host_taxid, ControlledIdentifiedTermValue):
-            self.host_taxid = ControlledIdentifiedTermValue(**as_dict(self.host_taxid))
+        if self.host_disease_stat is not None and not isinstance(self.host_disease_stat, str):
+            self.host_disease_stat = str(self.host_disease_stat)
 
         if not isinstance(self.img_identifiers, list):
             self.img_identifiers = [self.img_identifiers] if self.img_identifiers is not None else []
@@ -2248,8 +2228,12 @@ class Biosample(Sample):
             self.neon_biosample_identifiers = [self.neon_biosample_identifiers] if self.neon_biosample_identifiers is not None else []
         self.neon_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.neon_biosample_identifiers]
 
-        if self.samp_name is not None and not isinstance(self.samp_name, str):
-            self.samp_name = str(self.samp_name)
+        if not isinstance(self.alternative_names, list):
+            self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
+        self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
+
+        if self.provenance_metadata is not None and not isinstance(self.provenance_metadata, ProvenanceMetadata):
+            self.provenance_metadata = ProvenanceMetadata(**as_dict(self.provenance_metadata))
 
         if not isinstance(self.gold_biosample_identifiers, list):
             self.gold_biosample_identifiers = [self.gold_biosample_identifiers] if self.gold_biosample_identifiers is not None else []
@@ -2270,20 +2254,20 @@ class Biosample(Sample):
         if self.abs_air_humidity is not None and not isinstance(self.abs_air_humidity, QuantityValue):
             self.abs_air_humidity = QuantityValue(**as_dict(self.abs_air_humidity))
 
-        if self.add_recov_method is not None and not isinstance(self.add_recov_method, TextValue):
-            self.add_recov_method = TextValue(**as_dict(self.add_recov_method))
+        if self.add_recov_method is not None and not isinstance(self.add_recov_method, str):
+            self.add_recov_method = str(self.add_recov_method)
 
         if self.additional_info is not None and not isinstance(self.additional_info, TextValue):
             self.additional_info = TextValue(**as_dict(self.additional_info))
 
-        if self.address is not None and not isinstance(self.address, TextValue):
-            self.address = TextValue(**as_dict(self.address))
+        if self.address is not None and not isinstance(self.address, str):
+            self.address = str(self.address)
 
         if self.adj_room is not None and not isinstance(self.adj_room, TextValue):
             self.adj_room = TextValue(**as_dict(self.adj_room))
 
-        if self.aero_struc is not None and not isinstance(self.aero_struc, TextValue):
-            self.aero_struc = TextValue(**as_dict(self.aero_struc))
+        if self.aero_struc is not None and not isinstance(self.aero_struc, AeroStrucEnum):
+            self.aero_struc = AeroStrucEnum(self.aero_struc)
 
         if not isinstance(self.agrochem_addition, list):
             self.agrochem_addition = [self.agrochem_addition] if self.agrochem_addition is not None else []
@@ -2291,7 +2275,7 @@ class Biosample(Sample):
 
         if not isinstance(self.air_PM_concen, list):
             self.air_PM_concen = [self.air_PM_concen] if self.air_PM_concen is not None else []
-        self.air_PM_concen = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.air_PM_concen]
+        self.air_PM_concen = [v if isinstance(v, str) else str(v) for v in self.air_PM_concen]
 
         if self.air_temp is not None and not isinstance(self.air_temp, QuantityValue):
             self.air_temp = QuantityValue(**as_dict(self.air_temp))
@@ -2303,14 +2287,14 @@ class Biosample(Sample):
         if self.al_sat is not None and not isinstance(self.al_sat, QuantityValue):
             self.al_sat = QuantityValue(**as_dict(self.al_sat))
 
-        if self.al_sat_meth is not None and not isinstance(self.al_sat_meth, TextValue):
-            self.al_sat_meth = TextValue(**as_dict(self.al_sat_meth))
+        if self.al_sat_meth is not None and not isinstance(self.al_sat_meth, str):
+            self.al_sat_meth = str(self.al_sat_meth)
 
         if self.alkalinity is not None and not isinstance(self.alkalinity, QuantityValue):
             self.alkalinity = QuantityValue(**as_dict(self.alkalinity))
 
-        if self.alkalinity_method is not None and not isinstance(self.alkalinity_method, TextValue):
-            self.alkalinity_method = TextValue(**as_dict(self.alkalinity_method))
+        if self.alkalinity_method is not None and not isinstance(self.alkalinity_method, str):
+            self.alkalinity_method = str(self.alkalinity_method)
 
         if self.alkyl_diethers is not None and not isinstance(self.alkyl_diethers, QuantityValue):
             self.alkyl_diethers = QuantityValue(**as_dict(self.alkyl_diethers))
@@ -2323,9 +2307,6 @@ class Biosample(Sample):
 
         if self.ammonium is not None and not isinstance(self.ammonium, QuantityValue):
             self.ammonium = QuantityValue(**as_dict(self.ammonium))
-
-        if self.ammonium_nitrogen is not None and not isinstance(self.ammonium_nitrogen, QuantityValue):
-            self.ammonium_nitrogen = QuantityValue(**as_dict(self.ammonium_nitrogen))
 
         if self.amount_light is not None and not isinstance(self.amount_light, QuantityValue):
             self.amount_light = QuantityValue(**as_dict(self.amount_light))
@@ -2395,11 +2376,11 @@ class Biosample(Sample):
         if self.biochem_oxygen_dem is not None and not isinstance(self.biochem_oxygen_dem, QuantityValue):
             self.biochem_oxygen_dem = QuantityValue(**as_dict(self.biochem_oxygen_dem))
 
-        if self.biocide is not None and not isinstance(self.biocide, TextValue):
-            self.biocide = TextValue(**as_dict(self.biocide))
+        if self.biocide is not None and not isinstance(self.biocide, str):
+            self.biocide = str(self.biocide)
 
-        if self.biocide_admin_method is not None and not isinstance(self.biocide_admin_method, TextValue):
-            self.biocide_admin_method = TextValue(**as_dict(self.biocide_admin_method))
+        if self.biocide_admin_method is not None and not isinstance(self.biocide_admin_method, str):
+            self.biocide_admin_method = str(self.biocide_admin_method)
 
         if self.biol_stat is not None and not isinstance(self.biol_stat, BiolStatEnum):
             self.biol_stat = BiolStatEnum(self.biol_stat)
@@ -2439,8 +2420,8 @@ class Biosample(Sample):
         if self.built_struc_age is not None and not isinstance(self.built_struc_age, QuantityValue):
             self.built_struc_age = QuantityValue(**as_dict(self.built_struc_age))
 
-        if self.built_struc_set is not None and not isinstance(self.built_struc_set, TextValue):
-            self.built_struc_set = TextValue(**as_dict(self.built_struc_set))
+        if self.built_struc_set is not None and not isinstance(self.built_struc_set, BuiltStrucSetEnum):
+            self.built_struc_set = BuiltStrucSetEnum(self.built_struc_set)
 
         if self.built_struc_type is not None and not isinstance(self.built_struc_type, TextValue):
             self.built_struc_type = TextValue(**as_dict(self.built_struc_type))
@@ -2460,17 +2441,17 @@ class Biosample(Sample):
         if self.ceil_area is not None and not isinstance(self.ceil_area, QuantityValue):
             self.ceil_area = QuantityValue(**as_dict(self.ceil_area))
 
-        if self.ceil_cond is not None and not isinstance(self.ceil_cond, CeilCondEnum):
-            self.ceil_cond = CeilCondEnum(self.ceil_cond)
+        if self.ceil_cond is not None and not isinstance(self.ceil_cond, DamagedEnum):
+            self.ceil_cond = DamagedEnum(self.ceil_cond)
 
         if self.ceil_finish_mat is not None and not isinstance(self.ceil_finish_mat, CeilFinishMatEnum):
             self.ceil_finish_mat = CeilFinishMatEnum(self.ceil_finish_mat)
 
-        if self.ceil_struc is not None and not isinstance(self.ceil_struc, TextValue):
-            self.ceil_struc = TextValue(**as_dict(self.ceil_struc))
+        if self.ceil_struc is not None and not isinstance(self.ceil_struc, CeilStrucEnum):
+            self.ceil_struc = CeilStrucEnum(self.ceil_struc)
 
-        if self.ceil_texture is not None and not isinstance(self.ceil_texture, CeilTextureEnum):
-            self.ceil_texture = CeilTextureEnum(self.ceil_texture)
+        if self.ceil_texture is not None and not isinstance(self.ceil_texture, CeilingWallTextureEnum):
+            self.ceil_texture = CeilingWallTextureEnum(self.ceil_texture)
 
         if self.ceil_thermal_mass is not None and not isinstance(self.ceil_thermal_mass, QuantityValue):
             self.ceil_thermal_mass = QuantityValue(**as_dict(self.ceil_thermal_mass))
@@ -2478,8 +2459,8 @@ class Biosample(Sample):
         if self.ceil_type is not None and not isinstance(self.ceil_type, CeilTypeEnum):
             self.ceil_type = CeilTypeEnum(self.ceil_type)
 
-        if self.ceil_water_mold is not None and not isinstance(self.ceil_water_mold, TextValue):
-            self.ceil_water_mold = TextValue(**as_dict(self.ceil_water_mold))
+        if self.ceil_water_mold is not None and not isinstance(self.ceil_water_mold, MoldVisibilityEnum):
+            self.ceil_water_mold = MoldVisibilityEnum(self.ceil_water_mold)
 
         if not isinstance(self.chem_administration, list):
             self.chem_administration = [self.chem_administration] if self.chem_administration is not None else []
@@ -2495,8 +2476,8 @@ class Biosample(Sample):
         if self.chem_treat_method is not None and not isinstance(self.chem_treat_method, str):
             self.chem_treat_method = str(self.chem_treat_method)
 
-        if self.chem_treatment is not None and not isinstance(self.chem_treatment, TextValue):
-            self.chem_treatment = TextValue(**as_dict(self.chem_treatment))
+        if self.chem_treatment is not None and not isinstance(self.chem_treatment, str):
+            self.chem_treatment = str(self.chem_treatment)
 
         if self.chloride is not None and not isinstance(self.chloride, QuantityValue):
             self.chloride = QuantityValue(**as_dict(self.chloride))
@@ -2517,23 +2498,20 @@ class Biosample(Sample):
         if self.cool_syst_id is not None and not isinstance(self.cool_syst_id, TextValue):
             self.cool_syst_id = TextValue(**as_dict(self.cool_syst_id))
 
-        if self.core_field is not None and not isinstance(self.core_field, str):
-            self.core_field = str(self.core_field)
-
         if self.crop_rotation is not None and not isinstance(self.crop_rotation, TextValue):
             self.crop_rotation = TextValue(**as_dict(self.crop_rotation))
 
         if self.cult_root_med is not None and not isinstance(self.cult_root_med, TextValue):
             self.cult_root_med = TextValue(**as_dict(self.cult_root_med))
 
-        if self.cur_land_use is not None and not isinstance(self.cur_land_use, CurLandUseEnum):
-            self.cur_land_use = CurLandUseEnum(self.cur_land_use)
+        if self.cur_land_use is not None and not isinstance(self.cur_land_use, str):
+            self.cur_land_use = str(self.cur_land_use)
 
         if self.cur_vegetation is not None and not isinstance(self.cur_vegetation, TextValue):
             self.cur_vegetation = TextValue(**as_dict(self.cur_vegetation))
 
-        if self.cur_vegetation_meth is not None and not isinstance(self.cur_vegetation_meth, TextValue):
-            self.cur_vegetation_meth = TextValue(**as_dict(self.cur_vegetation_meth))
+        if self.cur_vegetation_meth is not None and not isinstance(self.cur_vegetation_meth, str):
+            self.cur_vegetation_meth = str(self.cur_vegetation_meth)
 
         if self.date_last_rain is not None and not isinstance(self.date_last_rain, TimestampValue):
             self.date_last_rain = TimestampValue(**as_dict(self.date_last_rain))
@@ -2584,20 +2562,17 @@ class Biosample(Sample):
         if self.diss_oxygen_fluid is not None and not isinstance(self.diss_oxygen_fluid, QuantityValue):
             self.diss_oxygen_fluid = QuantityValue(**as_dict(self.diss_oxygen_fluid))
 
-        if self.dna_cont_well is not None and not isinstance(self.dna_cont_well, str):
-            self.dna_cont_well = str(self.dna_cont_well)
-
         if self.door_comp_type is not None and not isinstance(self.door_comp_type, DoorCompTypeEnum):
             self.door_comp_type = DoorCompTypeEnum(self.door_comp_type)
 
-        if self.door_cond is not None and not isinstance(self.door_cond, DoorCondEnum):
-            self.door_cond = DoorCondEnum(self.door_cond)
+        if self.door_cond is not None and not isinstance(self.door_cond, DamagedRupturedEnum):
+            self.door_cond = DamagedRupturedEnum(self.door_cond)
 
         if self.door_direct is not None and not isinstance(self.door_direct, DoorDirectEnum):
             self.door_direct = DoorDirectEnum(self.door_direct)
 
-        if self.door_loc is not None and not isinstance(self.door_loc, DoorLocEnum):
-            self.door_loc = DoorLocEnum(self.door_loc)
+        if self.door_loc is not None and not isinstance(self.door_loc, CompassDirections8Enum):
+            self.door_loc = CompassDirections8Enum(self.door_loc)
 
         if self.door_mat is not None and not isinstance(self.door_mat, DoorMatEnum):
             self.door_mat = DoorMatEnum(self.door_mat)
@@ -2614,11 +2589,11 @@ class Biosample(Sample):
         if self.door_type_metal is not None and not isinstance(self.door_type_metal, DoorTypeMetalEnum):
             self.door_type_metal = DoorTypeMetalEnum(self.door_type_metal)
 
-        if self.door_type_wood is not None and not isinstance(self.door_type_wood, DoorTypeWoodEnum):
-            self.door_type_wood = DoorTypeWoodEnum(self.door_type_wood)
+        if self.door_type_wood is not None and not isinstance(self.door_type_wood, str):
+            self.door_type_wood = str(self.door_type_wood)
 
-        if self.door_water_mold is not None and not isinstance(self.door_water_mold, TextValue):
-            self.door_water_mold = TextValue(**as_dict(self.door_water_mold))
+        if self.door_water_mold is not None and not isinstance(self.door_water_mold, MoldVisibilityEnum):
+            self.door_water_mold = MoldVisibilityEnum(self.door_water_mold)
 
         if self.down_par is not None and not isinstance(self.down_par, QuantityValue):
             self.down_par = QuantityValue(**as_dict(self.down_par))
@@ -2628,18 +2603,6 @@ class Biosample(Sample):
 
         if self.drawings is not None and not isinstance(self.drawings, DrawingsEnum):
             self.drawings = DrawingsEnum(self.drawings)
-
-        if self.ecosystem is not None and not isinstance(self.ecosystem, str):
-            self.ecosystem = str(self.ecosystem)
-
-        if self.ecosystem_category is not None and not isinstance(self.ecosystem_category, str):
-            self.ecosystem_category = str(self.ecosystem_category)
-
-        if self.ecosystem_subtype is not None and not isinstance(self.ecosystem_subtype, str):
-            self.ecosystem_subtype = str(self.ecosystem_subtype)
-
-        if self.ecosystem_type is not None and not isinstance(self.ecosystem_type, str):
-            self.ecosystem_type = str(self.ecosystem_type)
 
         if self.efficiency_percent is not None and not isinstance(self.efficiency_percent, QuantityValue):
             self.efficiency_percent = QuantityValue(**as_dict(self.efficiency_percent))
@@ -2656,9 +2619,6 @@ class Biosample(Sample):
 
         if self.env_package is not None and not isinstance(self.env_package, TextValue):
             self.env_package = TextValue(**as_dict(self.env_package))
-
-        if self.environment_field is not None and not isinstance(self.environment_field, str):
-            self.environment_field = str(self.environment_field)
 
         if self.escalator is not None and not isinstance(self.escalator, TextValue):
             self.escalator = TextValue(**as_dict(self.escalator))
@@ -2678,11 +2638,11 @@ class Biosample(Sample):
         if self.ext_door is not None and not isinstance(self.ext_door, TextValue):
             self.ext_door = TextValue(**as_dict(self.ext_door))
 
-        if self.ext_wall_orient is not None and not isinstance(self.ext_wall_orient, ExtWallOrientEnum):
-            self.ext_wall_orient = ExtWallOrientEnum(self.ext_wall_orient)
+        if self.ext_wall_orient is not None and not isinstance(self.ext_wall_orient, CompassDirections8Enum):
+            self.ext_wall_orient = CompassDirections8Enum(self.ext_wall_orient)
 
-        if self.ext_window_orient is not None and not isinstance(self.ext_window_orient, ExtWindowOrientEnum):
-            self.ext_window_orient = ExtWindowOrientEnum(self.ext_window_orient)
+        if self.ext_window_orient is not None and not isinstance(self.ext_window_orient, CompassDirections8Enum):
+            self.ext_window_orient = CompassDirections8Enum(self.ext_window_orient)
 
         if self.extreme_event is not None and not isinstance(self.extreme_event, str):
             self.extreme_event = str(self.extreme_event)
@@ -2704,8 +2664,8 @@ class Biosample(Sample):
         if self.fire is not None and not isinstance(self.fire, str):
             self.fire = str(self.fire)
 
-        if self.fireplace_type is not None and not isinstance(self.fireplace_type, TextValue):
-            self.fireplace_type = TextValue(**as_dict(self.fireplace_type))
+        if self.fireplace_type is not None and not isinstance(self.fireplace_type, FireplaceTypeEnum):
+            self.fireplace_type = FireplaceTypeEnum(self.fireplace_type)
 
         if self.flooding is not None and not isinstance(self.flooding, str):
             self.flooding = str(self.flooding)
@@ -2716,14 +2676,14 @@ class Biosample(Sample):
         if self.floor_area is not None and not isinstance(self.floor_area, QuantityValue):
             self.floor_area = QuantityValue(**as_dict(self.floor_area))
 
-        if self.floor_cond is not None and not isinstance(self.floor_cond, FloorCondEnum):
-            self.floor_cond = FloorCondEnum(self.floor_cond)
+        if self.floor_cond is not None and not isinstance(self.floor_cond, DamagedEnum):
+            self.floor_cond = DamagedEnum(self.floor_cond)
 
         if self.floor_count is not None and not isinstance(self.floor_count, TextValue):
             self.floor_count = TextValue(**as_dict(self.floor_count))
 
-        if self.floor_finish_mat is not None and not isinstance(self.floor_finish_mat, FloorFinishMatEnum):
-            self.floor_finish_mat = FloorFinishMatEnum(self.floor_finish_mat)
+        if self.floor_finish_mat is not None and not isinstance(self.floor_finish_mat, str):
+            self.floor_finish_mat = str(self.floor_finish_mat)
 
         if self.floor_struc is not None and not isinstance(self.floor_struc, FloorStrucEnum):
             self.floor_struc = FloorStrucEnum(self.floor_struc)
@@ -2761,8 +2721,8 @@ class Biosample(Sample):
         if self.gender_restroom is not None and not isinstance(self.gender_restroom, GenderRestroomEnum):
             self.gender_restroom = GenderRestroomEnum(self.gender_restroom)
 
-        if self.genetic_mod is not None and not isinstance(self.genetic_mod, TextValue):
-            self.genetic_mod = TextValue(**as_dict(self.genetic_mod))
+        if self.genetic_mod is not None and not isinstance(self.genetic_mod, str):
+            self.genetic_mod = str(self.genetic_mod)
 
         if self.geo_loc_name is not None and not isinstance(self.geo_loc_name, TextValue):
             self.geo_loc_name = TextValue(**as_dict(self.geo_loc_name))
@@ -2802,8 +2762,8 @@ class Biosample(Sample):
         if self.hcr_fw_salinity is not None and not isinstance(self.hcr_fw_salinity, QuantityValue):
             self.hcr_fw_salinity = QuantityValue(**as_dict(self.hcr_fw_salinity))
 
-        if self.hcr_geol_age is not None and not isinstance(self.hcr_geol_age, HcrGeolAgeEnum):
-            self.hcr_geol_age = HcrGeolAgeEnum(self.hcr_geol_age)
+        if self.hcr_geol_age is not None and not isinstance(self.hcr_geol_age, GeolAgeEnum):
+            self.hcr_geol_age = GeolAgeEnum(self.hcr_geol_age)
 
         if self.hcr_pressure is not None and not isinstance(self.hcr_pressure, TextValue):
             self.hcr_pressure = TextValue(**as_dict(self.hcr_pressure))
@@ -2815,8 +2775,8 @@ class Biosample(Sample):
             self.heat_cool_type = [self.heat_cool_type] if self.heat_cool_type is not None else []
         self.heat_cool_type = [v if isinstance(v, HeatCoolTypeEnum) else HeatCoolTypeEnum(v) for v in self.heat_cool_type]
 
-        if self.heat_deliv_loc is not None and not isinstance(self.heat_deliv_loc, HeatDelivLocEnum):
-            self.heat_deliv_loc = HeatDelivLocEnum(self.heat_deliv_loc)
+        if self.heat_deliv_loc is not None and not isinstance(self.heat_deliv_loc, CompassDirections8Enum):
+            self.heat_deliv_loc = CompassDirections8Enum(self.heat_deliv_loc)
 
         if self.heat_sys_deliv_meth is not None and not isinstance(self.heat_sys_deliv_meth, str):
             self.heat_sys_deliv_meth = str(self.heat_sys_deliv_meth)
@@ -2830,7 +2790,7 @@ class Biosample(Sample):
 
         if not isinstance(self.heavy_metals_meth, list):
             self.heavy_metals_meth = [self.heavy_metals_meth] if self.heavy_metals_meth is not None else []
-        self.heavy_metals_meth = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.heavy_metals_meth]
+        self.heavy_metals_meth = [v if isinstance(v, str) else str(v) for v in self.heavy_metals_meth]
 
         if self.height_carper_fiber is not None and not isinstance(self.height_carper_fiber, QuantityValue):
             self.height_carper_fiber = QuantityValue(**as_dict(self.height_carper_fiber))
@@ -2839,8 +2799,8 @@ class Biosample(Sample):
             self.herbicide_regm = [self.herbicide_regm] if self.herbicide_regm is not None else []
         self.herbicide_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.herbicide_regm]
 
-        if self.horizon_meth is not None and not isinstance(self.horizon_meth, TextValue):
-            self.horizon_meth = TextValue(**as_dict(self.horizon_meth))
+        if self.horizon_meth is not None and not isinstance(self.horizon_meth, str):
+            self.horizon_meth = str(self.horizon_meth)
 
         if self.host_age is not None and not isinstance(self.host_age, QuantityValue):
             self.host_age = QuantityValue(**as_dict(self.host_age))
@@ -2885,7 +2845,7 @@ class Biosample(Sample):
 
         if not isinstance(self.host_last_meal, list):
             self.host_last_meal = [self.host_last_meal] if self.host_last_meal is not None else []
-        self.host_last_meal = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.host_last_meal]
+        self.host_last_meal = [v if isinstance(v, str) else str(v) for v in self.host_last_meal]
 
         if self.host_length is not None and not isinstance(self.host_length, QuantityValue):
             self.host_length = QuantityValue(**as_dict(self.host_length))
@@ -2896,8 +2856,8 @@ class Biosample(Sample):
         if self.host_phenotype is not None and not isinstance(self.host_phenotype, ControlledTermValue):
             self.host_phenotype = ControlledTermValue(**as_dict(self.host_phenotype))
 
-        if self.host_sex is not None and not isinstance(self.host_sex, HostSexEnum):
-            self.host_sex = HostSexEnum(self.host_sex)
+        if self.host_sex is not None and not isinstance(self.host_sex, str):
+            self.host_sex = str(self.host_sex)
 
         if self.host_shape is not None and not isinstance(self.host_shape, TextValue):
             self.host_shape = TextValue(**as_dict(self.host_shape))
@@ -2948,11 +2908,8 @@ class Biosample(Sample):
         if self.inside_lux is not None and not isinstance(self.inside_lux, QuantityValue):
             self.inside_lux = QuantityValue(**as_dict(self.inside_lux))
 
-        if self.int_wall_cond is not None and not isinstance(self.int_wall_cond, IntWallCondEnum):
-            self.int_wall_cond = IntWallCondEnum(self.int_wall_cond)
-
-        if self.investigation_field is not None and not isinstance(self.investigation_field, str):
-            self.investigation_field = str(self.investigation_field)
+        if self.int_wall_cond is not None and not isinstance(self.int_wall_cond, DamagedEnum):
+            self.int_wall_cond = DamagedEnum(self.int_wall_cond)
 
         if self.iw_bt_date_well is not None and not isinstance(self.iw_bt_date_well, TimestampValue):
             self.iw_bt_date_well = TimestampValue(**as_dict(self.iw_bt_date_well))
@@ -2965,12 +2922,6 @@ class Biosample(Sample):
 
         if self.lat_lon is not None and not isinstance(self.lat_lon, GeolocationValue):
             self.lat_lon = GeolocationValue(**as_dict(self.lat_lon))
-
-        if self.lbc_thirty is not None and not isinstance(self.lbc_thirty, QuantityValue):
-            self.lbc_thirty = QuantityValue(**as_dict(self.lbc_thirty))
-
-        if self.lbceq is not None and not isinstance(self.lbceq, QuantityValue):
-            self.lbceq = QuantityValue(**as_dict(self.lbceq))
 
         if self.light_intensity is not None and not isinstance(self.light_intensity, QuantityValue):
             self.light_intensity = QuantityValue(**as_dict(self.light_intensity))
@@ -2985,8 +2936,8 @@ class Biosample(Sample):
         if self.link_addit_analys is not None and not isinstance(self.link_addit_analys, TextValue):
             self.link_addit_analys = TextValue(**as_dict(self.link_addit_analys))
 
-        if self.link_class_info is not None and not isinstance(self.link_class_info, TextValue):
-            self.link_class_info = TextValue(**as_dict(self.link_class_info))
+        if self.link_class_info is not None and not isinstance(self.link_class_info, str):
+            self.link_class_info = str(self.link_class_info)
 
         if self.link_climate_info is not None and not isinstance(self.link_climate_info, TextValue):
             self.link_climate_info = TextValue(**as_dict(self.link_climate_info))
@@ -2997,14 +2948,11 @@ class Biosample(Sample):
         if self.local_class is not None and not isinstance(self.local_class, TextValue):
             self.local_class = TextValue(**as_dict(self.local_class))
 
-        if self.local_class_meth is not None and not isinstance(self.local_class_meth, TextValue):
-            self.local_class_meth = TextValue(**as_dict(self.local_class_meth))
+        if self.local_class_meth is not None and not isinstance(self.local_class_meth, str):
+            self.local_class_meth = str(self.local_class_meth)
 
         if self.magnesium is not None and not isinstance(self.magnesium, QuantityValue):
             self.magnesium = QuantityValue(**as_dict(self.magnesium))
-
-        if self.manganese is not None and not isinstance(self.manganese, QuantityValue):
-            self.manganese = QuantityValue(**as_dict(self.manganese))
 
         if self.max_occup is not None and not isinstance(self.max_occup, QuantityValue):
             self.max_occup = QuantityValue(**as_dict(self.max_occup))
@@ -3020,7 +2968,7 @@ class Biosample(Sample):
 
         if not isinstance(self.mechanical_damage, list):
             self.mechanical_damage = [self.mechanical_damage] if self.mechanical_damage is not None else []
-        self.mechanical_damage = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.mechanical_damage]
+        self.mechanical_damage = [v if isinstance(v, str) else str(v) for v in self.mechanical_damage]
 
         if self.methane is not None and not isinstance(self.methane, QuantityValue):
             self.methane = QuantityValue(**as_dict(self.methane))
@@ -3037,7 +2985,7 @@ class Biosample(Sample):
 
         if not isinstance(self.misc_param, list):
             self.misc_param = [self.misc_param] if self.misc_param is not None else []
-        self.misc_param = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.misc_param]
+        self.misc_param = [v if isinstance(v, PropertyAssertion) else PropertyAssertion(**as_dict(v)) for v in self.misc_param]
 
         if not isinstance(self.n_alkanes, list):
             self.n_alkanes = [self.n_alkanes] if self.n_alkanes is not None else []
@@ -3046,14 +2994,8 @@ class Biosample(Sample):
         if self.nitrate is not None and not isinstance(self.nitrate, QuantityValue):
             self.nitrate = QuantityValue(**as_dict(self.nitrate))
 
-        if self.nitrate_nitrogen is not None and not isinstance(self.nitrate_nitrogen, QuantityValue):
-            self.nitrate_nitrogen = QuantityValue(**as_dict(self.nitrate_nitrogen))
-
         if self.nitrite is not None and not isinstance(self.nitrite, QuantityValue):
             self.nitrite = QuantityValue(**as_dict(self.nitrite))
-
-        if self.nitrite_nitrogen is not None and not isinstance(self.nitrite_nitrogen, QuantityValue):
-            self.nitrite_nitrogen = QuantityValue(**as_dict(self.nitrite_nitrogen))
 
         if self.nitro is not None and not isinstance(self.nitro, QuantityValue):
             self.nitro = QuantityValue(**as_dict(self.nitro))
@@ -3061,9 +3003,6 @@ class Biosample(Sample):
         if not isinstance(self.non_min_nutr_regm, list):
             self.non_min_nutr_regm = [self.non_min_nutr_regm] if self.non_min_nutr_regm is not None else []
         self.non_min_nutr_regm = [v if isinstance(v, str) else str(v) for v in self.non_min_nutr_regm]
-
-        if self.nucleic_acid_sequence_source_field is not None and not isinstance(self.nucleic_acid_sequence_source_field, str):
-            self.nucleic_acid_sequence_source_field = str(self.nucleic_acid_sequence_source_field)
 
         if self.number_pets is not None and not isinstance(self.number_pets, QuantityValue):
             self.number_pets = QuantityValue(**as_dict(self.number_pets))
@@ -3197,8 +3136,8 @@ class Biosample(Sample):
         if self.prev_land_use_meth is not None and not isinstance(self.prev_land_use_meth, str):
             self.prev_land_use_meth = str(self.prev_land_use_meth)
 
-        if self.previous_land_use is not None and not isinstance(self.previous_land_use, TextValue):
-            self.previous_land_use = TextValue(**as_dict(self.previous_land_use))
+        if self.previous_land_use is not None and not isinstance(self.previous_land_use, str):
+            self.previous_land_use = str(self.previous_land_use)
 
         if self.primary_prod is not None and not isinstance(self.primary_prod, QuantityValue):
             self.primary_prod = QuantityValue(**as_dict(self.primary_prod))
@@ -3289,8 +3228,8 @@ class Biosample(Sample):
         if self.room_samp_pos is not None and not isinstance(self.room_samp_pos, RoomSampPosEnum):
             self.room_samp_pos = RoomSampPosEnum(self.room_samp_pos)
 
-        if self.room_type is not None and not isinstance(self.room_type, RoomTypeEnum):
-            self.room_type = RoomTypeEnum(self.room_type)
+        if self.room_type is not None and not isinstance(self.room_type, str):
+            self.room_type = str(self.room_type)
 
         if self.room_vol is not None and not isinstance(self.room_vol, TextValue):
             self.room_vol = TextValue(**as_dict(self.room_vol))
@@ -3328,8 +3267,8 @@ class Biosample(Sample):
         if self.salinity is not None and not isinstance(self.salinity, QuantityValue):
             self.salinity = QuantityValue(**as_dict(self.salinity))
 
-        if self.salinity_meth is not None and not isinstance(self.salinity_meth, TextValue):
-            self.salinity_meth = TextValue(**as_dict(self.salinity_meth))
+        if self.salinity_meth is not None and not isinstance(self.salinity_meth, str):
+            self.salinity_meth = str(self.salinity_meth)
 
         if not isinstance(self.salt_regm, list):
             self.salt_regm = [self.salt_regm] if self.salt_regm is not None else []
@@ -3350,8 +3289,8 @@ class Biosample(Sample):
         if self.samp_dis_stage is not None and not isinstance(self.samp_dis_stage, SampDisStageEnum):
             self.samp_dis_stage = SampDisStageEnum(self.samp_dis_stage)
 
-        if self.samp_floor is not None and not isinstance(self.samp_floor, SampFloorEnum):
-            self.samp_floor = SampFloorEnum(self.samp_floor)
+        if self.samp_floor is not None and not isinstance(self.samp_floor, str):
+            self.samp_floor = str(self.samp_floor)
 
         if self.samp_loc_corr_rate is not None and not isinstance(self.samp_loc_corr_rate, TextValue):
             self.samp_loc_corr_rate = TextValue(**as_dict(self.samp_loc_corr_rate))
@@ -3376,7 +3315,7 @@ class Biosample(Sample):
 
         if not isinstance(self.samp_sort_meth, list):
             self.samp_sort_meth = [self.samp_sort_meth] if self.samp_sort_meth is not None else []
-        self.samp_sort_meth = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.samp_sort_meth]
+        self.samp_sort_meth = [v if isinstance(v, str) else str(v) for v in self.samp_sort_meth]
 
         if self.samp_store_dur is not None and not isinstance(self.samp_store_dur, TextValue):
             self.samp_store_dur = TextValue(**as_dict(self.samp_store_dur))
@@ -3414,8 +3353,8 @@ class Biosample(Sample):
         if self.saturates_pc is not None and not isinstance(self.saturates_pc, TextValue):
             self.saturates_pc = TextValue(**as_dict(self.saturates_pc))
 
-        if self.season is not None and not isinstance(self.season, TextValue):
-            self.season = TextValue(**as_dict(self.season))
+        if self.season is not None and not isinstance(self.season, SeasonEnum):
+            self.season = SeasonEnum(self.season)
 
         if not isinstance(self.season_environment, list):
             self.season_environment = [self.season_environment] if self.season_environment is not None else []
@@ -3436,20 +3375,17 @@ class Biosample(Sample):
         if self.sediment_type is not None and not isinstance(self.sediment_type, SedimentTypeEnum):
             self.sediment_type = SedimentTypeEnum(self.sediment_type)
 
-        if self.sequencing_field is not None and not isinstance(self.sequencing_field, str):
-            self.sequencing_field = str(self.sequencing_field)
-
         if self.sewage_type is not None and not isinstance(self.sewage_type, TextValue):
             self.sewage_type = TextValue(**as_dict(self.sewage_type))
 
         if self.shad_dev_water_mold is not None and not isinstance(self.shad_dev_water_mold, str):
             self.shad_dev_water_mold = str(self.shad_dev_water_mold)
 
-        if self.shading_device_cond is not None and not isinstance(self.shading_device_cond, ShadingDeviceCondEnum):
-            self.shading_device_cond = ShadingDeviceCondEnum(self.shading_device_cond)
+        if self.shading_device_cond is not None and not isinstance(self.shading_device_cond, DamagedRupturedEnum):
+            self.shading_device_cond = DamagedRupturedEnum(self.shading_device_cond)
 
-        if self.shading_device_loc is not None and not isinstance(self.shading_device_loc, TextValue):
-            self.shading_device_loc = TextValue(**as_dict(self.shading_device_loc))
+        if self.shading_device_loc is not None and not isinstance(self.shading_device_loc, ShadingDeviceLocEnum):
+            self.shading_device_loc = ShadingDeviceLocEnum(self.shading_device_loc)
 
         if self.shading_device_mat is not None and not isinstance(self.shading_device_mat, TextValue):
             self.shading_device_mat = TextValue(**as_dict(self.shading_device_mat))
@@ -3487,8 +3423,8 @@ class Biosample(Sample):
         if self.soil_horizon is not None and not isinstance(self.soil_horizon, SoilHorizonEnum):
             self.soil_horizon = SoilHorizonEnum(self.soil_horizon)
 
-        if self.soil_text_measure is not None and not isinstance(self.soil_text_measure, QuantityValue):
-            self.soil_text_measure = QuantityValue(**as_dict(self.soil_text_measure))
+        if self.soil_text_measure is not None and not isinstance(self.soil_text_measure, str):
+            self.soil_text_measure = str(self.soil_text_measure)
 
         if self.soil_texture_meth is not None and not isinstance(self.soil_texture_meth, str):
             self.soil_texture_meth = str(self.soil_texture_meth)
@@ -3516,14 +3452,11 @@ class Biosample(Sample):
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, TextValue):
             self.source_mat_id = TextValue(**as_dict(self.source_mat_id))
 
-        if self.space_typ_state is not None and not isinstance(self.space_typ_state, TextValue):
-            self.space_typ_state = TextValue(**as_dict(self.space_typ_state))
+        if self.space_typ_state is not None and not isinstance(self.space_typ_state, SpaceTypStateEnum):
+            self.space_typ_state = SpaceTypStateEnum(self.space_typ_state)
 
         if self.specific is not None and not isinstance(self.specific, SpecificEnum):
             self.specific = SpecificEnum(self.specific)
-
-        if self.specific_ecosystem is not None and not isinstance(self.specific_ecosystem, str):
-            self.specific_ecosystem = str(self.specific_ecosystem)
 
         if self.specific_humidity is not None and not isinstance(self.specific_humidity, QuantityValue):
             self.specific_humidity = QuantityValue(**as_dict(self.specific_humidity))
@@ -3531,8 +3464,8 @@ class Biosample(Sample):
         if self.sr_dep_env is not None and not isinstance(self.sr_dep_env, SrDepEnvEnum):
             self.sr_dep_env = SrDepEnvEnum(self.sr_dep_env)
 
-        if self.sr_geol_age is not None and not isinstance(self.sr_geol_age, SrGeolAgeEnum):
-            self.sr_geol_age = SrGeolAgeEnum(self.sr_geol_age)
+        if self.sr_geol_age is not None and not isinstance(self.sr_geol_age, GeolAgeEnum):
+            self.sr_geol_age = GeolAgeEnum(self.sr_geol_age)
 
         if self.sr_kerog_type is not None and not isinstance(self.sr_kerog_type, SrKerogTypeEnum):
             self.sr_kerog_type = SrKerogTypeEnum(self.sr_kerog_type)
@@ -3635,8 +3568,8 @@ class Biosample(Sample):
         if self.tot_nitro_content is not None and not isinstance(self.tot_nitro_content, QuantityValue):
             self.tot_nitro_content = QuantityValue(**as_dict(self.tot_nitro_content))
 
-        if self.tot_org_c_meth is not None and not isinstance(self.tot_org_c_meth, TextValue):
-            self.tot_org_c_meth = TextValue(**as_dict(self.tot_org_c_meth))
+        if self.tot_org_c_meth is not None and not isinstance(self.tot_org_c_meth, str):
+            self.tot_org_c_meth = str(self.tot_org_c_meth)
 
         if self.tot_org_carb is not None and not isinstance(self.tot_org_carb, QuantityValue):
             self.tot_org_carb = QuantityValue(**as_dict(self.tot_org_carb))
@@ -3686,8 +3619,8 @@ class Biosample(Sample):
         if self.vfa_fw is not None and not isinstance(self.vfa_fw, QuantityValue):
             self.vfa_fw = QuantityValue(**as_dict(self.vfa_fw))
 
-        if self.vis_media is not None and not isinstance(self.vis_media, VisMediaEnum):
-            self.vis_media = VisMediaEnum(self.vis_media)
+        if self.vis_media is not None and not isinstance(self.vis_media, str):
+            self.vis_media = str(self.vis_media)
 
         if self.viscosity is not None and not isinstance(self.viscosity, TextValue):
             self.viscosity = TextValue(**as_dict(self.viscosity))
@@ -3708,20 +3641,20 @@ class Biosample(Sample):
         if self.wall_height is not None and not isinstance(self.wall_height, QuantityValue):
             self.wall_height = QuantityValue(**as_dict(self.wall_height))
 
-        if self.wall_loc is not None and not isinstance(self.wall_loc, WallLocEnum):
-            self.wall_loc = WallLocEnum(self.wall_loc)
+        if self.wall_loc is not None and not isinstance(self.wall_loc, CompassDirections8Enum):
+            self.wall_loc = CompassDirections8Enum(self.wall_loc)
 
         if self.wall_surf_treatment is not None and not isinstance(self.wall_surf_treatment, WallSurfTreatmentEnum):
             self.wall_surf_treatment = WallSurfTreatmentEnum(self.wall_surf_treatment)
 
-        if self.wall_texture is not None and not isinstance(self.wall_texture, WallTextureEnum):
-            self.wall_texture = WallTextureEnum(self.wall_texture)
+        if self.wall_texture is not None and not isinstance(self.wall_texture, CeilingWallTextureEnum):
+            self.wall_texture = CeilingWallTextureEnum(self.wall_texture)
 
         if self.wall_thermal_mass is not None and not isinstance(self.wall_thermal_mass, QuantityValue):
             self.wall_thermal_mass = QuantityValue(**as_dict(self.wall_thermal_mass))
 
-        if self.wall_water_mold is not None and not isinstance(self.wall_water_mold, TextValue):
-            self.wall_water_mold = TextValue(**as_dict(self.wall_water_mold))
+        if self.wall_water_mold is not None and not isinstance(self.wall_water_mold, MoldVisibilityEnum):
+            self.wall_water_mold = MoldVisibilityEnum(self.wall_water_mold)
 
         if self.wastewater_type is not None and not isinstance(self.wastewater_type, TextValue):
             self.wastewater_type = TextValue(**as_dict(self.wastewater_type))
@@ -3768,8 +3701,8 @@ class Biosample(Sample):
         if self.wind_speed is not None and not isinstance(self.wind_speed, QuantityValue):
             self.wind_speed = QuantityValue(**as_dict(self.wind_speed))
 
-        if self.window_cond is not None and not isinstance(self.window_cond, WindowCondEnum):
-            self.window_cond = WindowCondEnum(self.window_cond)
+        if self.window_cond is not None and not isinstance(self.window_cond, DamagedRupturedEnum):
+            self.window_cond = DamagedRupturedEnum(self.window_cond)
 
         if self.window_cover is not None and not isinstance(self.window_cover, WindowCoverEnum):
             self.window_cover = WindowCoverEnum(self.window_cover)
@@ -3777,8 +3710,8 @@ class Biosample(Sample):
         if self.window_horiz_pos is not None and not isinstance(self.window_horiz_pos, WindowHorizPosEnum):
             self.window_horiz_pos = WindowHorizPosEnum(self.window_horiz_pos)
 
-        if self.window_loc is not None and not isinstance(self.window_loc, WindowLocEnum):
-            self.window_loc = WindowLocEnum(self.window_loc)
+        if self.window_loc is not None and not isinstance(self.window_loc, CompassDirections8Enum):
+            self.window_loc = CompassDirections8Enum(self.window_loc)
 
         if self.window_mat is not None and not isinstance(self.window_mat, WindowMatEnum):
             self.window_mat = WindowMatEnum(self.window_mat)
@@ -3789,8 +3722,8 @@ class Biosample(Sample):
         if self.window_size is not None and not isinstance(self.window_size, TextValue):
             self.window_size = TextValue(**as_dict(self.window_size))
 
-        if self.window_status is not None and not isinstance(self.window_status, TextValue):
-            self.window_status = TextValue(**as_dict(self.window_status))
+        if self.window_status is not None and not isinstance(self.window_status, WindowStatusEnum):
+            self.window_status = WindowStatusEnum(self.window_status)
 
         if self.window_type is not None and not isinstance(self.window_type, WindowTypeEnum):
             self.window_type = WindowTypeEnum(self.window_type)
@@ -3798,14 +3731,11 @@ class Biosample(Sample):
         if self.window_vert_pos is not None and not isinstance(self.window_vert_pos, WindowVertPosEnum):
             self.window_vert_pos = WindowVertPosEnum(self.window_vert_pos)
 
-        if self.window_water_mold is not None and not isinstance(self.window_water_mold, TextValue):
-            self.window_water_mold = TextValue(**as_dict(self.window_water_mold))
+        if self.window_water_mold is not None and not isinstance(self.window_water_mold, MoldVisibilityEnum):
+            self.window_water_mold = MoldVisibilityEnum(self.window_water_mold)
 
         if self.xylene is not None and not isinstance(self.xylene, QuantityValue):
             self.xylene = QuantityValue(**as_dict(self.xylene))
-
-        if self.zinc is not None and not isinstance(self.zinc, QuantityValue):
-            self.zinc = QuantityValue(**as_dict(self.zinc))
 
         if self.ecosystem is not None and not isinstance(self.ecosystem, str):
             self.ecosystem = str(self.ecosystem)
@@ -3821,6 +3751,9 @@ class Biosample(Sample):
 
         if self.specific_ecosystem is not None and not isinstance(self.specific_ecosystem, str):
             self.specific_ecosystem = str(self.specific_ecosystem)
+
+        if self.ecosystem_path_id is not None and not isinstance(self.ecosystem_path_id, int):
+            self.ecosystem_path_id = int(self.ecosystem_path_id)
 
         if self.add_date is not None and not isinstance(self.add_date, str):
             self.add_date = str(self.add_date)
@@ -3858,76 +3791,8 @@ class Biosample(Sample):
         if self.subsurface_depth is not None and not isinstance(self.subsurface_depth, QuantityValue):
             self.subsurface_depth = QuantityValue(**as_dict(self.subsurface_depth))
 
-        if not isinstance(self.air_temp_regm, list):
-            self.air_temp_regm = [self.air_temp_regm] if self.air_temp_regm is not None else []
-        self.air_temp_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.air_temp_regm]
-
-        if self.biotic_regm is not None and not isinstance(self.biotic_regm, TextValue):
-            self.biotic_regm = TextValue(**as_dict(self.biotic_regm))
-
-        if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
-            self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
-
-        if not isinstance(self.climate_environment, list):
-            self.climate_environment = [self.climate_environment] if self.climate_environment is not None else []
-        self.climate_environment = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.climate_environment]
-
-        if self.experimental_factor is not None and not isinstance(self.experimental_factor, ControlledTermValue):
-            self.experimental_factor = ControlledTermValue(**as_dict(self.experimental_factor))
-
-        if not isinstance(self.gaseous_environment, list):
-            self.gaseous_environment = [self.gaseous_environment] if self.gaseous_environment is not None else []
-        self.gaseous_environment = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.gaseous_environment]
-
-        if self.growth_facil is not None and not isinstance(self.growth_facil, ControlledTermValue):
-            self.growth_facil = ControlledTermValue(**as_dict(self.growth_facil))
-
-        if not isinstance(self.humidity_regm, list):
-            self.humidity_regm = [self.humidity_regm] if self.humidity_regm is not None else []
-        self.humidity_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.humidity_regm]
-
-        if self.light_regm is not None and not isinstance(self.light_regm, TextValue):
-            self.light_regm = TextValue(**as_dict(self.light_regm))
-
-        if self.phosphate is not None and not isinstance(self.phosphate, QuantityValue):
-            self.phosphate = QuantityValue(**as_dict(self.phosphate))
-
-        if self.samp_collec_method is not None and not isinstance(self.samp_collec_method, str):
-            self.samp_collec_method = str(self.samp_collec_method)
-
-        if self.samp_size is not None and not isinstance(self.samp_size, QuantityValue):
-            self.samp_size = QuantityValue(**as_dict(self.samp_size))
-
-        if self.source_mat_id is not None and not isinstance(self.source_mat_id, TextValue):
-            self.source_mat_id = TextValue(**as_dict(self.source_mat_id))
-
-        if not isinstance(self.watering_regm, list):
-            self.watering_regm = [self.watering_regm] if self.watering_regm is not None else []
-        self.watering_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.watering_regm]
-
-        if self.dna_absorb1 is not None and not isinstance(self.dna_absorb1, float):
-            self.dna_absorb1 = float(self.dna_absorb1)
-
-        if self.dna_absorb2 is not None and not isinstance(self.dna_absorb2, float):
-            self.dna_absorb2 = float(self.dna_absorb2)
-
         if self.dna_collect_site is not None and not isinstance(self.dna_collect_site, str):
             self.dna_collect_site = str(self.dna_collect_site)
-
-        if self.dna_concentration is not None and not isinstance(self.dna_concentration, float):
-            self.dna_concentration = float(self.dna_concentration)
-
-        if self.dna_cont_type is not None and not isinstance(self.dna_cont_type, JgiContTypeEnum):
-            self.dna_cont_type = JgiContTypeEnum(self.dna_cont_type)
-
-        if self.dna_cont_well is not None and not isinstance(self.dna_cont_well, str):
-            self.dna_cont_well = str(self.dna_cont_well)
-
-        if self.dna_container_id is not None and not isinstance(self.dna_container_id, str):
-            self.dna_container_id = str(self.dna_container_id)
-
-        if self.dna_dnase is not None and not isinstance(self.dna_dnase, YesNoEnum):
-            self.dna_dnase = YesNoEnum(self.dna_dnase)
 
         if self.dna_isolate_meth is not None and not isinstance(self.dna_isolate_meth, str):
             self.dna_isolate_meth = str(self.dna_isolate_meth)
@@ -3935,89 +3800,14 @@ class Biosample(Sample):
         if self.dna_organisms is not None and not isinstance(self.dna_organisms, str):
             self.dna_organisms = str(self.dna_organisms)
 
-        if self.dna_project_contact is not None and not isinstance(self.dna_project_contact, str):
-            self.dna_project_contact = str(self.dna_project_contact)
-
-        if self.dna_samp_id is not None and not isinstance(self.dna_samp_id, str):
-            self.dna_samp_id = str(self.dna_samp_id)
-
-        if self.dna_sample_format is not None and not isinstance(self.dna_sample_format, DNASampleFormatEnum):
-            self.dna_sample_format = DNASampleFormatEnum(self.dna_sample_format)
-
-        if self.dna_sample_name is not None and not isinstance(self.dna_sample_name, str):
-            self.dna_sample_name = str(self.dna_sample_name)
-
-        if self.dna_seq_project is not None and not isinstance(self.dna_seq_project, str):
-            self.dna_seq_project = str(self.dna_seq_project)
-
-        if self.dna_seq_project_pi is not None and not isinstance(self.dna_seq_project_pi, str):
-            self.dna_seq_project_pi = str(self.dna_seq_project_pi)
-
-        if self.dna_seq_project_name is not None and not isinstance(self.dna_seq_project_name, str):
-            self.dna_seq_project_name = str(self.dna_seq_project_name)
-
-        if self.dna_volume is not None and not isinstance(self.dna_volume, float):
-            self.dna_volume = float(self.dna_volume)
-
-        if self.proposal_dna is not None and not isinstance(self.proposal_dna, str):
-            self.proposal_dna = str(self.proposal_dna)
-
-        if self.dnase_rna is not None and not isinstance(self.dnase_rna, YesNoEnum):
-            self.dnase_rna = YesNoEnum(self.dnase_rna)
-
-        if self.proposal_rna is not None and not isinstance(self.proposal_rna, str):
-            self.proposal_rna = str(self.proposal_rna)
-
-        if self.rna_absorb1 is not None and not isinstance(self.rna_absorb1, float):
-            self.rna_absorb1 = float(self.rna_absorb1)
-
-        if self.rna_absorb2 is not None and not isinstance(self.rna_absorb2, float):
-            self.rna_absorb2 = float(self.rna_absorb2)
-
         if self.rna_collect_site is not None and not isinstance(self.rna_collect_site, str):
             self.rna_collect_site = str(self.rna_collect_site)
-
-        if self.rna_concentration is not None and not isinstance(self.rna_concentration, float):
-            self.rna_concentration = float(self.rna_concentration)
-
-        if self.rna_cont_type is not None and not isinstance(self.rna_cont_type, JgiContTypeEnum):
-            self.rna_cont_type = JgiContTypeEnum(self.rna_cont_type)
-
-        if self.rna_cont_well is not None and not isinstance(self.rna_cont_well, str):
-            self.rna_cont_well = str(self.rna_cont_well)
-
-        if self.rna_container_id is not None and not isinstance(self.rna_container_id, str):
-            self.rna_container_id = str(self.rna_container_id)
 
         if self.rna_isolate_meth is not None and not isinstance(self.rna_isolate_meth, str):
             self.rna_isolate_meth = str(self.rna_isolate_meth)
 
         if self.rna_organisms is not None and not isinstance(self.rna_organisms, str):
             self.rna_organisms = str(self.rna_organisms)
-
-        if self.rna_project_contact is not None and not isinstance(self.rna_project_contact, str):
-            self.rna_project_contact = str(self.rna_project_contact)
-
-        if self.rna_samp_id is not None and not isinstance(self.rna_samp_id, str):
-            self.rna_samp_id = str(self.rna_samp_id)
-
-        if self.rna_sample_format is not None and not isinstance(self.rna_sample_format, RNASampleFormatEnum):
-            self.rna_sample_format = RNASampleFormatEnum(self.rna_sample_format)
-
-        if self.rna_sample_name is not None and not isinstance(self.rna_sample_name, str):
-            self.rna_sample_name = str(self.rna_sample_name)
-
-        if self.rna_seq_project is not None and not isinstance(self.rna_seq_project, str):
-            self.rna_seq_project = str(self.rna_seq_project)
-
-        if self.rna_seq_project_pi is not None and not isinstance(self.rna_seq_project_pi, str):
-            self.rna_seq_project_pi = str(self.rna_seq_project_pi)
-
-        if self.rna_seq_project_name is not None and not isinstance(self.rna_seq_project_name, str):
-            self.rna_seq_project_name = str(self.rna_seq_project_name)
-
-        if self.rna_volume is not None and not isinstance(self.rna_volume, float):
-            self.rna_volume = float(self.rna_volume)
 
         if self.collection_date_inc is not None and not isinstance(self.collection_date_inc, str):
             self.collection_date_inc = str(self.collection_date_inc)
@@ -4070,8 +3860,8 @@ class Biosample(Sample):
         if self.project_id is not None and not isinstance(self.project_id, str):
             self.project_id = str(self.project_id)
 
-        if self.replicate_number is not None and not isinstance(self.replicate_number, str):
-            self.replicate_number = str(self.replicate_number)
+        if self.replicate_number is not None and not isinstance(self.replicate_number, int):
+            self.replicate_number = int(self.replicate_number)
 
         if self.sample_shipped is not None and not isinstance(self.sample_shipped, str):
             self.sample_shipped = str(self.sample_shipped)
@@ -4079,8 +3869,8 @@ class Biosample(Sample):
         if self.sample_type is not None and not isinstance(self.sample_type, SampleTypeEnum):
             self.sample_type = SampleTypeEnum(self.sample_type)
 
-        if self.technical_reps is not None and not isinstance(self.technical_reps, str):
-            self.technical_reps = str(self.technical_reps)
+        if self.technical_reps is not None and not isinstance(self.technical_reps, int):
+            self.technical_reps = int(self.technical_reps)
 
         if not isinstance(self.analysis_type, list):
             self.analysis_type = [self.analysis_type] if self.analysis_type is not None else []
@@ -4130,7 +3920,7 @@ class Biosample(Sample):
 
 @dataclass(repr=False)
 class ProcessedSample(Sample):
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["ProcessedSample"]
     class_class_curie: ClassVar[str] = "nmdc:ProcessedSample"
@@ -4142,9 +3932,10 @@ class ProcessedSample(Sample):
     biomaterial_purity: Optional[Union[dict, QuantityValue]] = None
     dna_absorb1: Optional[float] = None
     dna_concentration: Optional[float] = None
-    external_database_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    external_database_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    sampled_portion: Optional[Union[Union[str, "SamplePortionEnum"], list[Union[str, "SamplePortionEnum"]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ProcessedSampleId):
@@ -4163,6 +3954,10 @@ class ProcessedSample(Sample):
             self.external_database_identifiers = [self.external_database_identifiers] if self.external_database_identifiers is not None else []
         self.external_database_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.external_database_identifiers]
 
+        if not isinstance(self.sampled_portion, list):
+            self.sampled_portion = [self.sampled_portion] if self.sampled_portion is not None else []
+        self.sampled_portion = [v if isinstance(v, SamplePortionEnum) else SamplePortionEnum(v) for v in self.sampled_portion]
+
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
@@ -4171,7 +3966,7 @@ class ProcessedSample(Sample):
 
 @dataclass(repr=False)
 class Site(MaterialEntity):
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Site"]
     class_class_curie: ClassVar[str] = "nmdc:Site"
@@ -4181,7 +3976,7 @@ class Site(MaterialEntity):
     id: Union[str, SiteId] = None
     type: Union[str, URIorCURIE] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -4194,7 +3989,7 @@ class FieldResearchSite(Site):
     """
     A site, outside of a laboratory, from which biosamples may be collected.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["FieldResearchSite"]
     class_class_curie: ClassVar[str] = "nmdc:FieldResearchSite"
@@ -4209,10 +4004,10 @@ class FieldResearchSite(Site):
     habitat: Optional[str] = None
     lat_lon: Optional[Union[dict, GeolocationValue]] = None
     local_class: Optional[Union[dict, TextValue]] = None
-    part_of: Optional[Union[Union[str, FieldResearchSiteId], List[Union[str, FieldResearchSiteId]]]] = empty_list()
+    part_of: Optional[Union[Union[str, FieldResearchSiteId], list[Union[str, FieldResearchSiteId]]]] = empty_list()
     soil_type: Optional[Union[dict, TextValue]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, FieldResearchSiteId):
@@ -4252,9 +4047,10 @@ class FieldResearchSite(Site):
 @dataclass(repr=False)
 class Instrument(MaterialEntity):
     """
-    A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    A material entity that is designed to perform a function in a scientific investigation, but is not a reagent. This
+    class models the make and model of the instrument, not the specific instance of the instrument.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Instrument"]
     class_class_curie: ClassVar[str] = "nmdc:Instrument"
@@ -4266,7 +4062,7 @@ class Instrument(MaterialEntity):
     vendor: Optional[Union[str, "InstrumentVendorEnum"]] = None
     model: Optional[Union[str, "InstrumentModelEnum"]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, InstrumentId):
@@ -4286,7 +4082,7 @@ class Instrument(MaterialEntity):
 
 @dataclass(repr=False)
 class PlannedProcess(NamedThing):
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = OBI["0000011"]
     class_class_curie: ClassVar[str] = "OBI:0000011"
@@ -4295,17 +4091,17 @@ class PlannedProcess(NamedThing):
 
     id: Union[str, PlannedProcessId] = None
     type: Union[str, URIorCURIE] = None
-    has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    has_input: Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]] = empty_list()
     processing_institution: Optional[Union[str, "ProcessingInstitutionEnum"]] = None
     protocol_link: Optional[Union[dict, "Protocol"]] = None
     start_date: Optional[str] = None
     end_date: Optional[str] = None
     qc_status: Optional[Union[str, "StatusEnum"]] = None
     qc_comment: Optional[str] = None
-    has_failure_categorization: Optional[Union[Union[dict, FailureCategorization], List[Union[dict, FailureCategorization]]]] = empty_list()
+    has_failure_categorization: Optional[Union[Union[dict, FailureCategorization], list[Union[dict, FailureCategorization]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if not isinstance(self.has_input, list):
             self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
@@ -4344,7 +4140,7 @@ class PlannedProcess(NamedThing):
 
 @dataclass(repr=False)
 class CollectingBiosamplesFromSite(PlannedProcess):
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["CollectingBiosamplesFromSite"]
     class_class_curie: ClassVar[str] = "nmdc:CollectingBiosamplesFromSite"
@@ -4353,10 +4149,10 @@ class CollectingBiosamplesFromSite(PlannedProcess):
 
     id: Union[str, CollectingBiosamplesFromSiteId] = None
     type: Union[str, URIorCURIE] = None
-    has_input: Union[Union[str, SiteId], List[Union[str, SiteId]]] = None
-    has_output: Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]] = None
+    has_input: Union[Union[str, SiteId], list[Union[str, SiteId]]] = None
+    has_output: Union[Union[str, BiosampleId], list[Union[str, BiosampleId]]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, CollectingBiosamplesFromSiteId):
@@ -4381,62 +4177,12 @@ class CollectingBiosamplesFromSite(PlannedProcess):
 
 
 @dataclass(repr=False)
-class ProtocolExecution(PlannedProcess):
-    """
-    A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC["ProtocolExecution"]
-    class_class_curie: ClassVar[str] = "nmdc:ProtocolExecution"
-    class_name: ClassVar[str] = "ProtocolExecution"
-    class_model_uri: ClassVar[URIRef] = NMDC.ProtocolExecution
-
-    id: Union[str, ProtocolExecutionId] = None
-    type: Union[str, URIorCURIE] = None
-    has_process_parts: Union[Union[str, PlannedProcessId], List[Union[str, PlannedProcessId]]] = None
-    protocol_execution_category: Union[str, "ProtocolCategoryEnum"] = None
-    has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ProtocolExecutionId):
-            self.id = ProtocolExecutionId(self.id)
-
-        if self._is_empty(self.has_process_parts):
-            self.MissingRequiredField("has_process_parts")
-        if not isinstance(self.has_process_parts, list):
-            self.has_process_parts = [self.has_process_parts] if self.has_process_parts is not None else []
-        self.has_process_parts = [v if isinstance(v, PlannedProcessId) else PlannedProcessId(v) for v in self.has_process_parts]
-
-        if self._is_empty(self.protocol_execution_category):
-            self.MissingRequiredField("protocol_execution_category")
-        if not isinstance(self.protocol_execution_category, ProtocolCategoryEnum):
-            self.protocol_execution_category = ProtocolCategoryEnum(self.protocol_execution_category)
-
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
-
-        if not isinstance(self.has_output, list):
-            self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
-
-        super().__post_init__(**kwargs)
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        self.type = str(self.class_class_curie)
-
-
-@dataclass(repr=False)
 class StorageProcess(PlannedProcess):
     """
     A planned process with the objective to preserve and protect material entities by placing them in an identified
     location which may have a controlled environment.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["StorageProcess"]
     class_class_curie: ClassVar[str] = "nmdc:StorageProcess"
@@ -4445,13 +4191,13 @@ class StorageProcess(PlannedProcess):
 
     id: Union[str, StorageProcessId] = None
     type: Union[str, URIorCURIE] = None
-    substances_used: Optional[Union[Union[dict, PortionOfSubstance], List[Union[dict, PortionOfSubstance]]]] = empty_list()
+    substances_used: Optional[Union[Union[dict, PortionOfSubstance], list[Union[dict, PortionOfSubstance]]]] = empty_list()
     contained_in: Optional[Union[str, "ContainerCategoryEnum"]] = None
     temperature: Optional[Union[dict, QuantityValue]] = None
-    has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    has_input: Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, StorageProcessId):
@@ -4469,11 +4215,11 @@ class StorageProcess(PlannedProcess):
 
         if not isinstance(self.has_input, list):
             self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
+        self.has_input = [v if isinstance(v, SampleId) else SampleId(v) for v in self.has_input]
 
         if not isinstance(self.has_output, list):
             self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
+        self.has_output = [v if isinstance(v, ProcessedSampleId) else ProcessedSampleId(v) for v in self.has_output]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -4486,7 +4232,7 @@ class MaterialProcessing(PlannedProcess):
     """
     A process that takes one or more samples as inputs and generates one or more samples as outputs.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MaterialProcessing"]
     class_class_curie: ClassVar[str] = "nmdc:MaterialProcessing"
@@ -4495,11 +4241,11 @@ class MaterialProcessing(PlannedProcess):
 
     id: Union[str, MaterialProcessingId] = None
     type: Union[str, URIorCURIE] = None
-    instrument_used: Optional[Union[Union[str, InstrumentId], List[Union[str, InstrumentId]]]] = empty_list()
-    has_input: Optional[Union[Union[str, SampleId], List[Union[str, SampleId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, ProcessedSampleId], List[Union[str, ProcessedSampleId]]]] = empty_list()
+    instrument_used: Optional[Union[Union[str, InstrumentId], list[Union[str, InstrumentId]]]] = empty_list()
+    has_input: Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if not isinstance(self.instrument_used, list):
             self.instrument_used = [self.instrument_used] if self.instrument_used is not None else []
         self.instrument_used = [v if isinstance(v, InstrumentId) else InstrumentId(v) for v in self.instrument_used]
@@ -4523,7 +4269,7 @@ class Pooling(MaterialProcessing):
     """
     physical combination of several instances of like material.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Pooling"]
     class_class_curie: ClassVar[str] = "nmdc:Pooling"
@@ -4532,10 +4278,10 @@ class Pooling(MaterialProcessing):
 
     id: Union[str, PoolingId] = None
     type: Union[str, URIorCURIE] = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_input: Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, PoolingId):
@@ -4564,7 +4310,7 @@ class Extraction(MaterialProcessing):
     """
     A material separation in which a desired component of an input material is separated from the remainder.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Extraction"]
     class_class_curie: ClassVar[str] = "nmdc:Extraction"
@@ -4573,14 +4319,15 @@ class Extraction(MaterialProcessing):
 
     id: Union[str, ExtractionId] = None
     type: Union[str, URIorCURIE] = None
-    has_input: Union[Union[str, SampleId], List[Union[str, SampleId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    substances_used: Optional[Union[Union[dict, PortionOfSubstance], List[Union[dict, PortionOfSubstance]]]] = empty_list()
-    extraction_targets: Optional[Union[Union[str, "ExtractionTargetEnum"], List[Union[str, "ExtractionTargetEnum"]]]] = empty_list()
+    has_input: Union[Union[str, SampleId], list[Union[str, SampleId]]] = None
+    has_output: Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]] = None
+    substances_used: Optional[Union[Union[dict, PortionOfSubstance], list[Union[dict, PortionOfSubstance]]]] = empty_list()
+    extraction_targets: Optional[Union[Union[str, "ExtractionTargetEnum"], list[Union[str, "ExtractionTargetEnum"]]]] = empty_list()
     input_mass: Optional[Union[dict, QuantityValue]] = None
     volume: Optional[Union[dict, QuantityValue]] = None
+    temperature: Optional[Union[dict, QuantityValue]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ExtractionId):
@@ -4612,6 +4359,9 @@ class Extraction(MaterialProcessing):
         if self.volume is not None and not isinstance(self.volume, QuantityValue):
             self.volume = QuantityValue(**as_dict(self.volume))
 
+        if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
+            self.temperature = QuantityValue(**as_dict(self.temperature))
+
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
@@ -4620,7 +4370,7 @@ class Extraction(MaterialProcessing):
 
 @dataclass(repr=False)
 class LibraryPreparation(MaterialProcessing):
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["LibraryPreparation"]
     class_class_curie: ClassVar[str] = "nmdc:LibraryPreparation"
@@ -4629,18 +4379,20 @@ class LibraryPreparation(MaterialProcessing):
 
     id: Union[str, LibraryPreparationId] = None
     type: Union[str, URIorCURIE] = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_input: Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]] = None
     is_stranded: Optional[Union[bool, Bool]] = None
     library_preparation_kit: Optional[str] = None
     library_type: Optional[Union[str, "LibraryTypeEnum"]] = None
     nucl_acid_amp: Optional[Union[dict, TextValue]] = None
-    pcr_cond: Optional[Union[dict, TextValue]] = None
+    pcr_cond: Optional[str] = None
     pcr_cycles: Optional[int] = None
-    pcr_primers: Optional[Union[dict, TextValue]] = None
+    pcr_primers: Optional[str] = None
     stranded_orientation: Optional[Union[str, "StrandedOrientationEnum"]] = None
+    target_gene: Optional[Union[str, "TargetGeneEnum"]] = None
+    target_subfragment: Optional[Union[dict, TextValue]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, LibraryPreparationId):
@@ -4670,17 +4422,23 @@ class LibraryPreparation(MaterialProcessing):
         if self.nucl_acid_amp is not None and not isinstance(self.nucl_acid_amp, TextValue):
             self.nucl_acid_amp = TextValue(**as_dict(self.nucl_acid_amp))
 
-        if self.pcr_cond is not None and not isinstance(self.pcr_cond, TextValue):
-            self.pcr_cond = TextValue(**as_dict(self.pcr_cond))
+        if self.pcr_cond is not None and not isinstance(self.pcr_cond, str):
+            self.pcr_cond = str(self.pcr_cond)
 
         if self.pcr_cycles is not None and not isinstance(self.pcr_cycles, int):
             self.pcr_cycles = int(self.pcr_cycles)
 
-        if self.pcr_primers is not None and not isinstance(self.pcr_primers, TextValue):
-            self.pcr_primers = TextValue(**as_dict(self.pcr_primers))
+        if self.pcr_primers is not None and not isinstance(self.pcr_primers, str):
+            self.pcr_primers = str(self.pcr_primers)
 
         if self.stranded_orientation is not None and not isinstance(self.stranded_orientation, StrandedOrientationEnum):
             self.stranded_orientation = StrandedOrientationEnum(self.stranded_orientation)
+
+        if self.target_gene is not None and not isinstance(self.target_gene, TargetGeneEnum):
+            self.target_gene = TargetGeneEnum(self.target_gene)
+
+        if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
+            self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -4693,7 +4451,7 @@ class SubSamplingProcess(MaterialProcessing):
     """
     Separating a sample aliquot from the starting material for downstream activity.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["SubSamplingProcess"]
     class_class_curie: ClassVar[str] = "nmdc:SubSamplingProcess"
@@ -4707,11 +4465,11 @@ class SubSamplingProcess(MaterialProcessing):
     temperature: Optional[Union[dict, QuantityValue]] = None
     volume: Optional[Union[dict, QuantityValue]] = None
     mass: Optional[Union[dict, QuantityValue]] = None
-    sampled_portion: Optional[Union[Union[str, "SamplePortionEnum"], List[Union[str, "SamplePortionEnum"]]]] = empty_list()
-    has_input: Optional[Union[Union[str, SampleId], List[Union[str, SampleId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, ProcessedSampleId], List[Union[str, ProcessedSampleId]]]] = empty_list()
+    sampled_portion: Optional[Union[Union[str, "SamplePortionEnum"], list[Union[str, "SamplePortionEnum"]]]] = empty_list()
+    has_input: Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, SubSamplingProcessId):
@@ -4755,7 +4513,7 @@ class MixingProcess(MaterialProcessing):
     """
     The combining of components, particles or layers into a more homogeneous state.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MixingProcess"]
     class_class_curie: ClassVar[str] = "nmdc:MixingProcess"
@@ -4765,10 +4523,10 @@ class MixingProcess(MaterialProcessing):
     id: Union[str, MixingProcessId] = None
     type: Union[str, URIorCURIE] = None
     duration: Optional[Union[dict, QuantityValue]] = None
-    has_input: Optional[Union[Union[str, SampleId], List[Union[str, SampleId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, ProcessedSampleId], List[Union[str, ProcessedSampleId]]]] = empty_list()
+    has_input: Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MixingProcessId):
@@ -4797,7 +4555,7 @@ class FiltrationProcess(MaterialProcessing):
     The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by
     forcing a carrier gas or liquid through a porous medium.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["FiltrationProcess"]
     class_class_curie: ClassVar[str] = "nmdc:FiltrationProcess"
@@ -4806,7 +4564,7 @@ class FiltrationProcess(MaterialProcessing):
 
     id: Union[str, FiltrationProcessId] = None
     type: Union[str, URIorCURIE] = None
-    conditionings: Optional[Union[str, List[str]]] = empty_list()
+    conditionings: Optional[Union[str, list[str]]] = empty_list()
     container_size: Optional[Union[dict, QuantityValue]] = None
     filter_material: Optional[str] = None
     filter_pore_size: Optional[Union[dict, QuantityValue]] = None
@@ -4814,10 +4572,10 @@ class FiltrationProcess(MaterialProcessing):
     is_pressurized: Optional[Union[bool, Bool]] = None
     separation_method: Optional[Union[str, "SeparationMethodEnum"]] = None
     volume: Optional[Union[dict, QuantityValue]] = None
-    has_input: Optional[Union[Union[str, SampleId], List[Union[str, SampleId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, ProcessedSampleId], List[Union[str, ProcessedSampleId]]]] = empty_list()
+    has_input: Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, FiltrationProcessId):
@@ -4867,7 +4625,7 @@ class ChromatographicSeparationProcess(MaterialProcessing):
     """
     The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["ChromatographicSeparationProcess"]
     class_class_curie: ClassVar[str] = "nmdc:ChromatographicSeparationProcess"
@@ -4877,13 +4635,13 @@ class ChromatographicSeparationProcess(MaterialProcessing):
     id: Union[str, ChromatographicSeparationProcessId] = None
     type: Union[str, URIorCURIE] = None
     chromatographic_category: Optional[Union[str, "ChromatographicCategoryEnum"]] = None
-    ordered_mobile_phases: Optional[Union[Union[dict, MobilePhaseSegment], List[Union[dict, MobilePhaseSegment]]]] = empty_list()
+    ordered_mobile_phases: Optional[Union[Union[dict, MobilePhaseSegment], list[Union[dict, MobilePhaseSegment]]]] = empty_list()
     stationary_phase: Optional[Union[str, "StationaryPhaseEnum"]] = None
     temperature: Optional[Union[dict, QuantityValue]] = None
-    has_input: Optional[Union[Union[str, SampleId], List[Union[str, SampleId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, ProcessedSampleId], List[Union[str, ProcessedSampleId]]]] = empty_list()
+    has_input: Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ChromatographicSeparationProcessId):
@@ -4921,7 +4679,7 @@ class DissolvingProcess(MaterialProcessing):
     """
     A mixing step where a soluble component is mixed with a liquid component.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["DissolvingProcess"]
     class_class_curie: ClassVar[str] = "nmdc:DissolvingProcess"
@@ -4932,9 +4690,9 @@ class DissolvingProcess(MaterialProcessing):
     type: Union[str, URIorCURIE] = None
     duration: Optional[Union[dict, QuantityValue]] = None
     temperature: Optional[Union[dict, QuantityValue]] = None
-    substances_used: Optional[Union[Union[dict, PortionOfSubstance], List[Union[dict, PortionOfSubstance]]]] = empty_list()
+    substances_used: Optional[Union[Union[dict, PortionOfSubstance], list[Union[dict, PortionOfSubstance]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, DissolvingProcessId):
@@ -4962,7 +4720,7 @@ class ChemicalConversionProcess(MaterialProcessing):
     A process that results in the interconversion of chemical species by a reaction to transform the reagents into
     products.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["ChemicalConversionProcess"]
     class_class_curie: ClassVar[str] = "nmdc:ChemicalConversionProcess"
@@ -4974,10 +4732,10 @@ class ChemicalConversionProcess(MaterialProcessing):
     chemical_conversion_category: Optional[Union[str, "ChemicalConversionCategoryEnum"]] = None
     duration: Optional[Union[dict, QuantityValue]] = None
     temperature: Optional[Union[dict, QuantityValue]] = None
-    substances_used: Optional[Union[Union[dict, PortionOfSubstance], List[Union[dict, PortionOfSubstance]]]] = empty_list()
+    substances_used: Optional[Union[Union[dict, PortionOfSubstance], list[Union[dict, PortionOfSubstance]]]] = empty_list()
     substances_volume: Optional[Union[dict, QuantityValue]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ChemicalConversionProcessId):
@@ -5007,7 +4765,7 @@ class ChemicalConversionProcess(MaterialProcessing):
 
 @dataclass(repr=False)
 class Protocol(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Protocol"]
     class_class_curie: ClassVar[str] = "nmdc:Protocol"
@@ -5017,8 +4775,11 @@ class Protocol(YAMLRoot):
     type: Union[str, URIorCURIE] = None
     url: Optional[str] = None
     name: Optional[str] = None
+    description: Optional[str] = None
+    protocol_for: Optional[Union[str, "ProtocolForEnum"]] = None
+    analysis_type: Optional[Union[Union[str, "AnalysisTypeEnum"], list[Union[str, "AnalysisTypeEnum"]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
@@ -5028,6 +4789,16 @@ class Protocol(YAMLRoot):
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.protocol_for is not None and not isinstance(self.protocol_for, ProtocolForEnum):
+            self.protocol_for = ProtocolForEnum(self.protocol_for)
+
+        if not isinstance(self.analysis_type, list):
+            self.analysis_type = [self.analysis_type] if self.analysis_type is not None else []
+        self.analysis_type = [v if isinstance(v, AnalysisTypeEnum) else AnalysisTypeEnum(v) for v in self.analysis_type]
 
         super().__post_init__(**kwargs)
 
@@ -5040,7 +4811,7 @@ class CreditAssociation(YAMLRoot):
     NMDC_SampleMetadata-V4_CommentsForUpdates at
     https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = PROV["Association"]
     class_class_curie: ClassVar[str] = "prov:Association"
@@ -5048,10 +4819,10 @@ class CreditAssociation(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = NMDC.CreditAssociation
 
     applies_to_person: Union[dict, PersonValue] = None
-    applied_roles: Union[Union[str, "CreditEnum"], List[Union[str, "CreditEnum"]]] = None
+    applied_roles: Union[Union[str, "CreditEnum"], list[Union[str, "CreditEnum"]]] = None
     type: Union[str, URIorCURIE] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.applies_to_person):
             self.MissingRequiredField("applies_to_person")
         if not isinstance(self.applies_to_person, PersonValue):
@@ -5076,7 +4847,7 @@ class Doi(YAMLRoot):
     A centrally registered identifier symbol used to uniquely identify objects given by the International DOI
     Foundation. The DOI system is particularly used for electronic documents.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Doi"]
     class_class_curie: ClassVar[str] = "nmdc:Doi"
@@ -5088,7 +4859,7 @@ class Doi(YAMLRoot):
     type: Union[str, URIorCURIE] = None
     doi_provider: Optional[Union[str, "DoiProviderEnum"]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.doi_value):
             self.MissingRequiredField("doi_value")
         if not isinstance(self.doi_value, URIorCURIE):
@@ -5115,7 +4886,7 @@ class Study(NamedThing):
     A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying
     projects.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Study"]
     class_class_curie: ClassVar[str] = "nmdc:Study"
@@ -5125,39 +4896,39 @@ class Study(NamedThing):
     id: Union[str, StudyId] = None
     type: Union[str, URIorCURIE] = None
     study_category: Union[str, "StudyCategoryEnum"] = None
-    emsl_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    gnps_task_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    gold_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    insdc_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    jgi_portal_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    mgnify_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    neon_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    emsl_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    gnps_task_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    gold_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    insdc_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    jgi_portal_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    mgnify_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    neon_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     related_identifiers: Optional[str] = None
-    alternative_descriptions: Optional[Union[str, List[str]]] = empty_list()
-    alternative_names: Optional[Union[str, List[str]]] = empty_list()
-    alternative_titles: Optional[Union[str, List[str]]] = empty_list()
+    alternative_descriptions: Optional[Union[str, list[str]]] = empty_list()
+    alternative_names: Optional[Union[str, list[str]]] = empty_list()
+    alternative_titles: Optional[Union[str, list[str]]] = empty_list()
     ecosystem: Optional[str] = None
     ecosystem_category: Optional[str] = None
     ecosystem_subtype: Optional[str] = None
     ecosystem_type: Optional[str] = None
     specific_ecosystem: Optional[str] = None
-    associated_dois: Optional[Union[Union[dict, Doi], List[Union[dict, Doi]]]] = empty_list()
-    funding_sources: Optional[Union[str, List[str]]] = empty_list()
-    has_credit_associations: Optional[Union[Union[dict, CreditAssociation], List[Union[dict, CreditAssociation]]]] = empty_list()
-    homepage_website: Optional[Union[str, List[str]]] = empty_list()
+    associated_dois: Optional[Union[Union[dict, Doi], list[Union[dict, Doi]]]] = empty_list()
+    funding_sources: Optional[Union[str, list[str]]] = empty_list()
+    has_credit_associations: Optional[Union[Union[dict, CreditAssociation], list[Union[dict, CreditAssociation]]]] = empty_list()
+    homepage_website: Optional[Union[str, list[str]]] = empty_list()
     notes: Optional[str] = None
     objective: Optional[str] = None
-    part_of: Optional[Union[Union[str, StudyId], List[Union[str, StudyId]]]] = empty_list()
+    part_of: Optional[Union[Union[str, StudyId], list[Union[str, StudyId]]]] = empty_list()
     principal_investigator: Optional[Union[dict, PersonValue]] = None
-    protocol_link: Optional[Union[Union[dict, Protocol], List[Union[dict, Protocol]]]] = empty_list()
-    study_image: Optional[Union[Union[dict, ImageValue], List[Union[dict, ImageValue]]]] = empty_list()
+    protocol_link: Optional[Union[Union[dict, Protocol], list[Union[dict, Protocol]]]] = empty_list()
+    study_image: Optional[Union[Union[dict, ImageValue], list[Union[dict, ImageValue]]]] = empty_list()
     title: Optional[str] = None
-    websites: Optional[Union[str, List[str]]] = empty_list()
+    websites: Optional[Union[str, list[str]]] = empty_list()
     name: Optional[str] = None
     description: Optional[str] = None
-    alternative_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    alternative_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, StudyId):
@@ -5291,7 +5062,7 @@ class InformationObject(NamedThing):
     """
     Any data or knowledge that reduces uncertainty or enhances understanding about a system, process, or entity.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["InformationObject"]
     class_class_curie: ClassVar[str] = "nmdc:InformationObject"
@@ -5301,7 +5072,7 @@ class InformationObject(NamedThing):
     id: Union[str, InformationObjectId] = None
     type: Union[str, URIorCURIE] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -5314,7 +5085,7 @@ class Configuration(InformationObject):
     """
     A set of parameters that define the actions of a process and is shared among multiple instances of the process.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Configuration"]
     class_class_curie: ClassVar[str] = "nmdc:Configuration"
@@ -5323,8 +5094,11 @@ class Configuration(InformationObject):
 
     id: Union[str, ConfigurationId] = None
     type: Union[str, URIorCURIE] = None
+    protocol_link: Optional[Union[dict, Protocol]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.protocol_link is not None and not isinstance(self.protocol_link, Protocol):
+            self.protocol_link = Protocol(**as_dict(self.protocol_link))
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -5337,7 +5111,7 @@ class MassSpectrometryConfiguration(Configuration):
     """
     A set of parameters that define and control the actions of a mass spectrometry process.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MassSpectrometryConfiguration"]
     class_class_curie: ClassVar[str] = "nmdc:MassSpectrometryConfiguration"
@@ -5346,20 +5120,53 @@ class MassSpectrometryConfiguration(Configuration):
 
     id: Union[str, MassSpectrometryConfigurationId] = None
     type: Union[str, URIorCURIE] = None
+    mass_spectrometry_acquisition_strategy: Union[str, "MassSpectrometryAcquisitionStrategyEnum"] = None
+    resolution_categories: Union[Union[str, "ResolutionCategoryEnum"], list[Union[str, "ResolutionCategoryEnum"]]] = None
+    mass_analyzers: Union[Union[str, "MassAnalyzerEnum"], list[Union[str, "MassAnalyzerEnum"]]] = None
+    ionization_source: Union[str, "IonizationSourceEnum"] = None
+    mass_spectrum_collection_modes: Union[Union[str, "MassSpectrumCollectionModeEnum"], list[Union[str, "MassSpectrumCollectionModeEnum"]]] = None
+    polarity_mode: Union[str, "PolarityModeEnum"] = None
     name: str = None
     description: str = None
-    mass_spectrometry_acquisition_strategy: Optional[Union[str, "MassSpectrometryAcquisitionStrategyEnum"]] = None
-    resolution_categories: Optional[Union[Union[str, "ResolutionCategoryEnum"], List[Union[str, "ResolutionCategoryEnum"]]]] = empty_list()
-    mass_analyzers: Optional[Union[Union[str, "MassAnalyzerEnum"], List[Union[str, "MassAnalyzerEnum"]]]] = empty_list()
-    ionization_source: Optional[Union[str, "IonizationSourceEnum"]] = None
-    mass_spectrum_collection_modes: Optional[Union[Union[str, "MassSpectrumCollectionModeEnum"], List[Union[str, "MassSpectrumCollectionModeEnum"]]]] = empty_list()
-    polarity_mode: Optional[Union[str, "PolarityModeEnum"]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MassSpectrometryConfigurationId):
             self.id = MassSpectrometryConfigurationId(self.id)
+
+        if self._is_empty(self.mass_spectrometry_acquisition_strategy):
+            self.MissingRequiredField("mass_spectrometry_acquisition_strategy")
+        if not isinstance(self.mass_spectrometry_acquisition_strategy, MassSpectrometryAcquisitionStrategyEnum):
+            self.mass_spectrometry_acquisition_strategy = MassSpectrometryAcquisitionStrategyEnum(self.mass_spectrometry_acquisition_strategy)
+
+        if self._is_empty(self.resolution_categories):
+            self.MissingRequiredField("resolution_categories")
+        if not isinstance(self.resolution_categories, list):
+            self.resolution_categories = [self.resolution_categories] if self.resolution_categories is not None else []
+        self.resolution_categories = [v if isinstance(v, ResolutionCategoryEnum) else ResolutionCategoryEnum(v) for v in self.resolution_categories]
+
+        if self._is_empty(self.mass_analyzers):
+            self.MissingRequiredField("mass_analyzers")
+        if not isinstance(self.mass_analyzers, list):
+            self.mass_analyzers = [self.mass_analyzers] if self.mass_analyzers is not None else []
+        self.mass_analyzers = [v if isinstance(v, MassAnalyzerEnum) else MassAnalyzerEnum(v) for v in self.mass_analyzers]
+
+        if self._is_empty(self.ionization_source):
+            self.MissingRequiredField("ionization_source")
+        if not isinstance(self.ionization_source, IonizationSourceEnum):
+            self.ionization_source = IonizationSourceEnum(self.ionization_source)
+
+        if self._is_empty(self.mass_spectrum_collection_modes):
+            self.MissingRequiredField("mass_spectrum_collection_modes")
+        if not isinstance(self.mass_spectrum_collection_modes, list):
+            self.mass_spectrum_collection_modes = [self.mass_spectrum_collection_modes] if self.mass_spectrum_collection_modes is not None else []
+        self.mass_spectrum_collection_modes = [v if isinstance(v, MassSpectrumCollectionModeEnum) else MassSpectrumCollectionModeEnum(v) for v in self.mass_spectrum_collection_modes]
+
+        if self._is_empty(self.polarity_mode):
+            self.MissingRequiredField("polarity_mode")
+        if not isinstance(self.polarity_mode, PolarityModeEnum):
+            self.polarity_mode = PolarityModeEnum(self.polarity_mode)
 
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
@@ -5370,27 +5177,6 @@ class MassSpectrometryConfiguration(Configuration):
             self.MissingRequiredField("description")
         if not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if self.mass_spectrometry_acquisition_strategy is not None and not isinstance(self.mass_spectrometry_acquisition_strategy, MassSpectrometryAcquisitionStrategyEnum):
-            self.mass_spectrometry_acquisition_strategy = MassSpectrometryAcquisitionStrategyEnum(self.mass_spectrometry_acquisition_strategy)
-
-        if not isinstance(self.resolution_categories, list):
-            self.resolution_categories = [self.resolution_categories] if self.resolution_categories is not None else []
-        self.resolution_categories = [v if isinstance(v, ResolutionCategoryEnum) else ResolutionCategoryEnum(v) for v in self.resolution_categories]
-
-        if not isinstance(self.mass_analyzers, list):
-            self.mass_analyzers = [self.mass_analyzers] if self.mass_analyzers is not None else []
-        self.mass_analyzers = [v if isinstance(v, MassAnalyzerEnum) else MassAnalyzerEnum(v) for v in self.mass_analyzers]
-
-        if self.ionization_source is not None and not isinstance(self.ionization_source, IonizationSourceEnum):
-            self.ionization_source = IonizationSourceEnum(self.ionization_source)
-
-        if not isinstance(self.mass_spectrum_collection_modes, list):
-            self.mass_spectrum_collection_modes = [self.mass_spectrum_collection_modes] if self.mass_spectrum_collection_modes is not None else []
-        self.mass_spectrum_collection_modes = [v if isinstance(v, MassSpectrumCollectionModeEnum) else MassSpectrumCollectionModeEnum(v) for v in self.mass_spectrum_collection_modes]
-
-        if self.polarity_mode is not None and not isinstance(self.polarity_mode, PolarityModeEnum):
-            self.polarity_mode = PolarityModeEnum(self.polarity_mode)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -5403,7 +5189,7 @@ class ChromatographyConfiguration(Configuration):
     """
     A set of parameters that define and control the actions of a chromatography process.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["ChromatographyConfiguration"]
     class_class_curie: ClassVar[str] = "nmdc:ChromatographyConfiguration"
@@ -5412,18 +5198,28 @@ class ChromatographyConfiguration(Configuration):
 
     id: Union[str, ChromatographyConfigurationId] = None
     type: Union[str, URIorCURIE] = None
+    chromatographic_category: Union[str, "ChromatographicCategoryEnum"] = None
+    stationary_phase: Union[str, "StationaryPhaseEnum"] = None
     name: str = None
     description: str = None
-    chromatographic_category: Optional[Union[str, "ChromatographicCategoryEnum"]] = None
-    ordered_mobile_phases: Optional[Union[Union[dict, MobilePhaseSegment], List[Union[dict, MobilePhaseSegment]]]] = empty_list()
-    stationary_phase: Optional[Union[str, "StationaryPhaseEnum"]] = None
+    ordered_mobile_phases: Optional[Union[Union[dict, MobilePhaseSegment], list[Union[dict, MobilePhaseSegment]]]] = empty_list()
     temperature: Optional[Union[dict, QuantityValue]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ChromatographyConfigurationId):
             self.id = ChromatographyConfigurationId(self.id)
+
+        if self._is_empty(self.chromatographic_category):
+            self.MissingRequiredField("chromatographic_category")
+        if not isinstance(self.chromatographic_category, ChromatographicCategoryEnum):
+            self.chromatographic_category = ChromatographicCategoryEnum(self.chromatographic_category)
+
+        if self._is_empty(self.stationary_phase):
+            self.MissingRequiredField("stationary_phase")
+        if not isinstance(self.stationary_phase, StationaryPhaseEnum):
+            self.stationary_phase = StationaryPhaseEnum(self.stationary_phase)
 
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
@@ -5435,15 +5231,9 @@ class ChromatographyConfiguration(Configuration):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.chromatographic_category is not None and not isinstance(self.chromatographic_category, ChromatographicCategoryEnum):
-            self.chromatographic_category = ChromatographicCategoryEnum(self.chromatographic_category)
-
         if not isinstance(self.ordered_mobile_phases, list):
             self.ordered_mobile_phases = [self.ordered_mobile_phases] if self.ordered_mobile_phases is not None else []
         self.ordered_mobile_phases = [v if isinstance(v, MobilePhaseSegment) else MobilePhaseSegment(**as_dict(v)) for v in self.ordered_mobile_phases]
-
-        if self.stationary_phase is not None and not isinstance(self.stationary_phase, StationaryPhaseEnum):
-            self.stationary_phase = StationaryPhaseEnum(self.stationary_phase)
 
         if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
             self.temperature = QuantityValue(**as_dict(self.temperature))
@@ -5459,7 +5249,7 @@ class Manifest(InformationObject):
     """
     A qualified collection of DataObjects that can be analyzed together in the same experimental context.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["Manifest"]
     class_class_curie: ClassVar[str] = "nmdc:Manifest"
@@ -5470,7 +5260,7 @@ class Manifest(InformationObject):
     type: Union[str, URIorCURIE] = None
     manifest_category: Union[str, "ManifestCategoryEnum"] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ManifestId):
@@ -5492,7 +5282,7 @@ class CalibrationInformation(InformationObject):
     """
     A calibration object that is associated with a process.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["CalibrationInformation"]
     class_class_curie: ClassVar[str] = "nmdc:CalibrationInformation"
@@ -5506,7 +5296,7 @@ class CalibrationInformation(InformationObject):
     calibration_object: Optional[Union[str, DataObjectId]] = None
     calibration_standard: Optional[Union[str, "CalibrationStandardEnum"]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, CalibrationInformationId):
@@ -5540,7 +5330,7 @@ class DataObject(InformationObject):
     An object that primarily consists of symbols that represent information. Files, records, and omics data are
     examples of data objects.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["DataObject"]
     class_class_curie: ClassVar[str] = "nmdc:DataObject"
@@ -5549,23 +5339,34 @@ class DataObject(InformationObject):
 
     id: Union[str, DataObjectId] = None
     type: Union[str, URIorCURIE] = None
+    data_category: Union[str, "DataCategoryEnum"] = None
+    data_object_type: Union[str, "FileTypeEnum"] = None
     name: str = None
     description: str = None
     compression_type: Optional[str] = None
-    data_category: Optional[Union[str, "DataCategoryEnum"]] = None
-    data_object_type: Optional[Union[str, "FileTypeEnum"]] = None
     file_size_bytes: Optional[int] = None
-    insdc_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    insdc_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     md5_checksum: Optional[str] = None
     url: Optional[str] = None
-    was_generated_by: Optional[Union[str, WorkflowExecutionId]] = None
-    in_manifest: Optional[Union[Union[str, ManifestId], List[Union[str, ManifestId]]]] = empty_list()
+    was_generated_by: Optional[Union[str, DataEmitterProcessId]] = None
+    in_manifest: Optional[Union[Union[str, ManifestId], list[Union[str, ManifestId]]]] = empty_list()
+    superseded_by: Optional[Union[str, WorkflowExecutionId]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, DataObjectId):
             self.id = DataObjectId(self.id)
+
+        if self._is_empty(self.data_category):
+            self.MissingRequiredField("data_category")
+        if not isinstance(self.data_category, DataCategoryEnum):
+            self.data_category = DataCategoryEnum(self.data_category)
+
+        if self._is_empty(self.data_object_type):
+            self.MissingRequiredField("data_object_type")
+        if not isinstance(self.data_object_type, FileTypeEnum):
+            self.data_object_type = FileTypeEnum(self.data_object_type)
 
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
@@ -5580,12 +5381,6 @@ class DataObject(InformationObject):
         if self.compression_type is not None and not isinstance(self.compression_type, str):
             self.compression_type = str(self.compression_type)
 
-        if self.data_category is not None and not isinstance(self.data_category, DataCategoryEnum):
-            self.data_category = DataCategoryEnum(self.data_category)
-
-        if self.data_object_type is not None and not isinstance(self.data_object_type, FileTypeEnum):
-            self.data_object_type = FileTypeEnum(self.data_object_type)
-
         if self.file_size_bytes is not None and not isinstance(self.file_size_bytes, int):
             self.file_size_bytes = int(self.file_size_bytes)
 
@@ -5599,12 +5394,15 @@ class DataObject(InformationObject):
         if self.url is not None and not isinstance(self.url, str):
             self.url = str(self.url)
 
-        if self.was_generated_by is not None and not isinstance(self.was_generated_by, WorkflowExecutionId):
-            self.was_generated_by = WorkflowExecutionId(self.was_generated_by)
+        if self.was_generated_by is not None and not isinstance(self.was_generated_by, DataEmitterProcessId):
+            self.was_generated_by = DataEmitterProcessId(self.was_generated_by)
 
         if not isinstance(self.in_manifest, list):
             self.in_manifest = [self.in_manifest] if self.in_manifest is not None else []
         self.in_manifest = [v if isinstance(v, ManifestId) else ManifestId(v) for v in self.in_manifest]
+
+        if self.superseded_by is not None and not isinstance(self.superseded_by, WorkflowExecutionId):
+            self.superseded_by = WorkflowExecutionId(self.superseded_by)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -5613,11 +5411,34 @@ class DataObject(InformationObject):
 
 
 @dataclass(repr=False)
-class DataGeneration(PlannedProcess):
+class DataEmitterProcess(PlannedProcess):
+    """
+    A process that generates data objects as output.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["DataEmitterProcess"]
+    class_class_curie: ClassVar[str] = "nmdc:DataEmitterProcess"
+    class_name: ClassVar[str] = "DataEmitterProcess"
+    class_model_uri: ClassVar[URIRef] = NMDC.DataEmitterProcess
+
+    id: Union[str, DataEmitterProcessId] = None
+    type: Union[str, URIorCURIE] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
+class DataGeneration(DataEmitterProcess):
     """
     The methods and processes used to generate omics data from a biosample or organism.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["DataGeneration"]
     class_class_curie: ClassVar[str] = "nmdc:DataGeneration"
@@ -5626,20 +5447,21 @@ class DataGeneration(PlannedProcess):
 
     id: Union[str, DataGenerationId] = None
     type: Union[str, URIorCURIE] = None
-    analyte_category: Union[str, "AnalyteCategoryEnum"] = None
-    associated_studies: Union[Union[str, StudyId], List[Union[str, StudyId]]] = None
-    has_input: Union[Union[str, SampleId], List[Union[str, SampleId]]] = None
+    analyte_category: str = None
+    associated_studies: Union[Union[str, StudyId], list[Union[str, StudyId]]] = None
+    has_input: Union[Union[str, SampleId], list[Union[str, SampleId]]] = None
     add_date: Optional[str] = None
-    instrument_used: Optional[Union[Union[str, InstrumentId], List[Union[str, InstrumentId]]]] = empty_list()
+    instrument_used: Optional[Union[Union[str, InstrumentId], list[Union[str, InstrumentId]]]] = empty_list()
     mod_date: Optional[str] = None
     principal_investigator: Optional[Union[dict, PersonValue]] = None
-    has_output: Optional[Union[Union[str, DataObjectId], List[Union[str, DataObjectId]]]] = empty_list()
+    instrument_instance_specifier: Optional[str] = None
+    has_output: Optional[Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.analyte_category):
             self.MissingRequiredField("analyte_category")
-        if not isinstance(self.analyte_category, AnalyteCategoryEnum):
-            self.analyte_category = AnalyteCategoryEnum(self.analyte_category)
+        if not isinstance(self.analyte_category, str):
+            self.analyte_category = str(self.analyte_category)
 
         if self._is_empty(self.associated_studies):
             self.MissingRequiredField("associated_studies")
@@ -5666,6 +5488,9 @@ class DataGeneration(PlannedProcess):
         if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
             self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
 
+        if self.instrument_instance_specifier is not None and not isinstance(self.instrument_instance_specifier, str):
+            self.instrument_instance_specifier = str(self.instrument_instance_specifier)
+
         if not isinstance(self.has_output, list):
             self.has_output = [self.has_output] if self.has_output is not None else []
         self.has_output = [v if isinstance(v, DataObjectId) else DataObjectId(v) for v in self.has_output]
@@ -5681,7 +5506,7 @@ class NucleotideSequencing(DataGeneration):
     """
     A DataGeneration in which the sequence of DNA or RNA molecules is generated.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["NucleotideSequencing"]
     class_class_curie: ClassVar[str] = "nmdc:NucleotideSequencing"
@@ -5690,21 +5515,24 @@ class NucleotideSequencing(DataGeneration):
 
     id: Union[str, NucleotideSequencingId] = None
     type: Union[str, URIorCURIE] = None
-    analyte_category: Union[str, "AnalyteCategoryEnum"] = None
-    associated_studies: Union[Union[str, StudyId], List[Union[str, StudyId]]] = None
-    has_input: Union[Union[str, SampleId], List[Union[str, SampleId]]] = None
-    gold_sequencing_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    insdc_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    insdc_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    associated_studies: Union[Union[str, StudyId], list[Union[str, StudyId]]] = None
+    has_input: Union[Union[str, SampleId], list[Union[str, SampleId]]] = None
+    analyte_category: Union[str, "NucleotideSequencingEnum"] = None
+    gold_sequencing_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    insdc_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    insdc_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     ncbi_project_name: Optional[str] = None
-    target_gene: Optional[Union[str, "TargetGeneEnum"]] = None
-    target_subfragment: Optional[Union[dict, TextValue]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, NucleotideSequencingId):
             self.id = NucleotideSequencingId(self.id)
+
+        if self._is_empty(self.analyte_category):
+            self.MissingRequiredField("analyte_category")
+        if not isinstance(self.analyte_category, NucleotideSequencingEnum):
+            self.analyte_category = NucleotideSequencingEnum(self.analyte_category)
 
         if not isinstance(self.gold_sequencing_project_identifiers, list):
             self.gold_sequencing_project_identifiers = [self.gold_sequencing_project_identifiers] if self.gold_sequencing_project_identifiers is not None else []
@@ -5721,12 +5549,6 @@ class NucleotideSequencing(DataGeneration):
         if self.ncbi_project_name is not None and not isinstance(self.ncbi_project_name, str):
             self.ncbi_project_name = str(self.ncbi_project_name)
 
-        if self.target_gene is not None and not isinstance(self.target_gene, TargetGeneEnum):
-            self.target_gene = TargetGeneEnum(self.target_gene)
-
-        if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
-            self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
-
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
@@ -5739,7 +5561,7 @@ class MassSpectrometry(DataGeneration):
     Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio
     and relative abundance.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MassSpectrometry"]
     class_class_curie: ClassVar[str] = "nmdc:MassSpectrometry"
@@ -5748,31 +5570,40 @@ class MassSpectrometry(DataGeneration):
 
     id: Union[str, MassSpectrometryId] = None
     type: Union[str, URIorCURIE] = None
-    analyte_category: Union[str, "AnalyteCategoryEnum"] = None
-    associated_studies: Union[Union[str, StudyId], List[Union[str, StudyId]]] = None
-    has_input: Union[Union[str, SampleId], List[Union[str, SampleId]]] = None
-    eluent_introduction_category: Optional[Union[str, "EluentIntroductionCategoryEnum"]] = None
+    associated_studies: Union[Union[str, StudyId], list[Union[str, StudyId]]] = None
+    has_input: Union[Union[str, SampleId], list[Union[str, SampleId]]] = None
+    eluent_introduction_category: Union[str, "EluentIntroductionCategoryEnum"] = None
+    has_mass_spectrometry_configuration: Union[str, MassSpectrometryConfigurationId] = None
+    analyte_category: Union[str, "MassSpectrometryEnum"] = None
     generates_calibration: Optional[Union[str, CalibrationInformationId]] = None
     has_chromatography_configuration: Optional[Union[str, ChromatographyConfigurationId]] = None
-    has_mass_spectrometry_configuration: Optional[Union[str, MassSpectrometryConfigurationId]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MassSpectrometryId):
             self.id = MassSpectrometryId(self.id)
 
-        if self.eluent_introduction_category is not None and not isinstance(self.eluent_introduction_category, EluentIntroductionCategoryEnum):
+        if self._is_empty(self.eluent_introduction_category):
+            self.MissingRequiredField("eluent_introduction_category")
+        if not isinstance(self.eluent_introduction_category, EluentIntroductionCategoryEnum):
             self.eluent_introduction_category = EluentIntroductionCategoryEnum(self.eluent_introduction_category)
+
+        if self._is_empty(self.has_mass_spectrometry_configuration):
+            self.MissingRequiredField("has_mass_spectrometry_configuration")
+        if not isinstance(self.has_mass_spectrometry_configuration, MassSpectrometryConfigurationId):
+            self.has_mass_spectrometry_configuration = MassSpectrometryConfigurationId(self.has_mass_spectrometry_configuration)
+
+        if self._is_empty(self.analyte_category):
+            self.MissingRequiredField("analyte_category")
+        if not isinstance(self.analyte_category, MassSpectrometryEnum):
+            self.analyte_category = MassSpectrometryEnum(self.analyte_category)
 
         if self.generates_calibration is not None and not isinstance(self.generates_calibration, CalibrationInformationId):
             self.generates_calibration = CalibrationInformationId(self.generates_calibration)
 
         if self.has_chromatography_configuration is not None and not isinstance(self.has_chromatography_configuration, ChromatographyConfigurationId):
             self.has_chromatography_configuration = ChromatographyConfigurationId(self.has_chromatography_configuration)
-
-        if self.has_mass_spectrometry_configuration is not None and not isinstance(self.has_mass_spectrometry_configuration, MassSpectrometryConfigurationId):
-            self.has_mass_spectrometry_configuration = MassSpectrometryConfigurationId(self.has_mass_spectrometry_configuration)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -5781,11 +5612,11 @@ class MassSpectrometry(DataGeneration):
 
 
 @dataclass(repr=False)
-class WorkflowExecution(PlannedProcess):
+class WorkflowExecution(DataEmitterProcess):
     """
     Represents an instance of an execution of a particular workflow
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["WorkflowExecution"]
     class_class_curie: ClassVar[str] = "nmdc:WorkflowExecution"
@@ -5794,21 +5625,19 @@ class WorkflowExecution(PlannedProcess):
 
     id: Union[str, WorkflowExecutionId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
-    was_informed_by: Union[str, DataGenerationId] = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    was_informed_by: Union[Union[str, DataGenerationId], list[Union[str, DataGenerationId]]] = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     ended_at_time: Optional[str] = None
+    execution_resource: Optional[Union[str, "ExecutionResourceEnum"]] = None
     version: Optional[str] = None
-    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    processing_institution_workflow_metadata: Optional[str] = None
+    superseded_by: Optional[Union[str, WorkflowExecutionId]] = None
+    has_output: Optional[Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.execution_resource):
-            self.MissingRequiredField("execution_resource")
-        if not isinstance(self.execution_resource, ExecutionResourceEnum):
-            self.execution_resource = ExecutionResourceEnum(self.execution_resource)
-
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.git_url):
             self.MissingRequiredField("git_url")
         if not isinstance(self.git_url, str):
@@ -5821,24 +5650,39 @@ class WorkflowExecution(PlannedProcess):
 
         if self._is_empty(self.was_informed_by):
             self.MissingRequiredField("was_informed_by")
-        if not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
+        if not isinstance(self.was_informed_by, list):
+            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
+        self.was_informed_by = [v if isinstance(v, DataGenerationId) else DataGenerationId(v) for v in self.was_informed_by]
 
         if self._is_empty(self.has_input):
             self.MissingRequiredField("has_input")
         if not isinstance(self.has_input, list):
             self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
+        self.has_input = [v if isinstance(v, DataObjectId) else DataObjectId(v) for v in self.has_input]
+
+        if self._is_empty(self.processing_institution):
+            self.MissingRequiredField("processing_institution")
+        if not isinstance(self.processing_institution, ProcessingInstitutionEnum):
+            self.processing_institution = ProcessingInstitutionEnum(self.processing_institution)
 
         if self.ended_at_time is not None and not isinstance(self.ended_at_time, str):
             self.ended_at_time = str(self.ended_at_time)
 
+        if self.execution_resource is not None and not isinstance(self.execution_resource, ExecutionResourceEnum):
+            self.execution_resource = ExecutionResourceEnum(self.execution_resource)
+
         if self.version is not None and not isinstance(self.version, str):
             self.version = str(self.version)
 
+        if self.processing_institution_workflow_metadata is not None and not isinstance(self.processing_institution_workflow_metadata, str):
+            self.processing_institution_workflow_metadata = str(self.processing_institution_workflow_metadata)
+
+        if self.superseded_by is not None and not isinstance(self.superseded_by, WorkflowExecutionId):
+            self.superseded_by = WorkflowExecutionId(self.superseded_by)
+
         if not isinstance(self.has_output, list):
             self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
+        self.has_output = [v if isinstance(v, DataObjectId) else DataObjectId(v) for v in self.has_output]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -5851,7 +5695,7 @@ class MetagenomeAssembly(WorkflowExecution):
     """
     A workflow execution activity that converts sequencing reads into an assembled metagenome.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MetagenomeAssembly"]
     class_class_curie: ClassVar[str] = "nmdc:MetagenomeAssembly"
@@ -5860,10 +5704,10 @@ class MetagenomeAssembly(WorkflowExecution):
 
     id: Union[str, MetagenomeAssemblyId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     asm_score: Optional[float] = None
     scaffolds: Optional[float] = None
     scaf_logsum: Optional[float] = None
@@ -5891,10 +5735,11 @@ class MetagenomeAssembly(WorkflowExecution):
     gc_avg: Optional[float] = None
     num_input_reads: Optional[float] = None
     num_aligned_reads: Optional[float] = None
-    insdc_assembly_identifiers: Optional[str] = None
-    was_informed_by: Optional[Union[str, DataGenerationId]] = None
+    insdc_assembly_identifiers: Optional[Union[str, list[str]]] = empty_list()
+    was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
+    superseded_by: Optional[Union[str, MetagenomeAssemblyId]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MetagenomeAssemblyId):
@@ -5981,11 +5826,16 @@ class MetagenomeAssembly(WorkflowExecution):
         if self.num_aligned_reads is not None and not isinstance(self.num_aligned_reads, float):
             self.num_aligned_reads = float(self.num_aligned_reads)
 
-        if self.insdc_assembly_identifiers is not None and not isinstance(self.insdc_assembly_identifiers, str):
-            self.insdc_assembly_identifiers = str(self.insdc_assembly_identifiers)
+        if not isinstance(self.insdc_assembly_identifiers, list):
+            self.insdc_assembly_identifiers = [self.insdc_assembly_identifiers] if self.insdc_assembly_identifiers is not None else []
+        self.insdc_assembly_identifiers = [v if isinstance(v, str) else str(v) for v in self.insdc_assembly_identifiers]
 
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
+        if not isinstance(self.was_informed_by, list):
+            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
+        self.was_informed_by = [v if isinstance(v, NucleotideSequencingId) else NucleotideSequencingId(v) for v in self.was_informed_by]
+
+        if self.superseded_by is not None and not isinstance(self.superseded_by, MetagenomeAssemblyId):
+            self.superseded_by = MetagenomeAssemblyId(self.superseded_by)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -5995,7 +5845,7 @@ class MetagenomeAssembly(WorkflowExecution):
 
 @dataclass(repr=False)
 class MetatranscriptomeAssembly(WorkflowExecution):
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeAssembly"]
     class_class_curie: ClassVar[str] = "nmdc:MetatranscriptomeAssembly"
@@ -6004,10 +5854,10 @@ class MetatranscriptomeAssembly(WorkflowExecution):
 
     id: Union[str, MetatranscriptomeAssemblyId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     asm_score: Optional[float] = None
     scaffolds: Optional[float] = None
     scaf_logsum: Optional[float] = None
@@ -6035,10 +5885,11 @@ class MetatranscriptomeAssembly(WorkflowExecution):
     gc_avg: Optional[float] = None
     num_input_reads: Optional[float] = None
     num_aligned_reads: Optional[float] = None
-    insdc_assembly_identifiers: Optional[str] = None
-    was_informed_by: Optional[Union[str, DataGenerationId]] = None
+    insdc_assembly_identifiers: Optional[Union[str, list[str]]] = empty_list()
+    was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
+    superseded_by: Optional[Union[str, MetatranscriptomeAssemblyId]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MetatranscriptomeAssemblyId):
@@ -6125,62 +5976,16 @@ class MetatranscriptomeAssembly(WorkflowExecution):
         if self.num_aligned_reads is not None and not isinstance(self.num_aligned_reads, float):
             self.num_aligned_reads = float(self.num_aligned_reads)
 
-        if self.insdc_assembly_identifiers is not None and not isinstance(self.insdc_assembly_identifiers, str):
-            self.insdc_assembly_identifiers = str(self.insdc_assembly_identifiers)
+        if not isinstance(self.insdc_assembly_identifiers, list):
+            self.insdc_assembly_identifiers = [self.insdc_assembly_identifiers] if self.insdc_assembly_identifiers is not None else []
+        self.insdc_assembly_identifiers = [v if isinstance(v, str) else str(v) for v in self.insdc_assembly_identifiers]
 
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
+        if not isinstance(self.was_informed_by, list):
+            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
+        self.was_informed_by = [v if isinstance(v, NucleotideSequencingId) else NucleotideSequencingId(v) for v in self.was_informed_by]
 
-        super().__post_init__(**kwargs)
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        self.type = str(self.class_class_curie)
-
-
-@dataclass(repr=False)
-class MetatranscriptomeAnnotation(WorkflowExecution):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeAnnotation"]
-    class_class_curie: ClassVar[str] = "nmdc:MetatranscriptomeAnnotation"
-    class_name: ClassVar[str] = "MetatranscriptomeAnnotation"
-    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAnnotation
-
-    id: Union[str, MetatranscriptomeAnnotationId] = None
-    type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
-    git_url: str = None
-    started_at_time: str = None
-    img_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    gold_analysis_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    was_informed_by: Optional[Union[str, DataGenerationId]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, MetatranscriptomeAnnotationId):
-            self.id = MetatranscriptomeAnnotationId(self.id)
-
-        if not isinstance(self.img_identifiers, list):
-            self.img_identifiers = [self.img_identifiers] if self.img_identifiers is not None else []
-        self.img_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.img_identifiers]
-
-        if not isinstance(self.gold_analysis_project_identifiers, list):
-            self.gold_analysis_project_identifiers = [self.gold_analysis_project_identifiers] if self.gold_analysis_project_identifiers is not None else []
-        self.gold_analysis_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.gold_analysis_project_identifiers]
-
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
-
-        if not isinstance(self.has_output, list):
-            self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
-
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
+        if self.superseded_by is not None and not isinstance(self.superseded_by, MetatranscriptomeAssemblyId):
+            self.superseded_by = MetatranscriptomeAssemblyId(self.superseded_by)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -6193,7 +5998,7 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
     """
     A workflow process that provides expression values and read counts for gene features predicted on the contigs.
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeExpressionAnalysis"]
     class_class_curie: ClassVar[str] = "nmdc:MetatranscriptomeExpressionAnalysis"
@@ -6202,14 +6007,15 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
 
     id: Union[str, MetatranscriptomeExpressionAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    img_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    was_informed_by: Optional[Union[str, DataGenerationId]] = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
+    img_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
+    superseded_by: Optional[Union[str, MetatranscriptomeExpressionAnalysisId]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MetatranscriptomeExpressionAnalysisId):
@@ -6219,8 +6025,12 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
             self.img_identifiers = [self.img_identifiers] if self.img_identifiers is not None else []
         self.img_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.img_identifiers]
 
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
+        if not isinstance(self.was_informed_by, list):
+            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
+        self.was_informed_by = [v if isinstance(v, NucleotideSequencingId) else NucleotideSequencingId(v) for v in self.was_informed_by]
+
+        if self.superseded_by is not None and not isinstance(self.superseded_by, MetatranscriptomeExpressionAnalysisId):
+            self.superseded_by = MetatranscriptomeExpressionAnalysisId(self.superseded_by)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -6233,7 +6043,7 @@ class MagsAnalysis(WorkflowExecution):
     """
     A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MagsAnalysis"]
     class_class_curie: ClassVar[str] = "nmdc:MagsAnalysis"
@@ -6242,20 +6052,21 @@ class MagsAnalysis(WorkflowExecution):
 
     id: Union[str, MagsAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     binned_contig_num: Optional[int] = None
     input_contig_num: Optional[int] = None
     low_depth_contig_num: Optional[int] = None
-    mags_list: Optional[Union[Union[dict, MagBin], List[Union[dict, MagBin]]]] = empty_list()
+    mags_list: Optional[Union[Union[dict, MagBin], list[Union[dict, MagBin]]]] = empty_list()
     too_short_contig_num: Optional[int] = None
     unbinned_contig_num: Optional[int] = None
-    img_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    was_informed_by: Optional[Union[str, DataGenerationId]] = None
+    img_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
+    superseded_by: Optional[Union[str, MagsAnalysisId]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MagsAnalysisId):
@@ -6284,48 +6095,12 @@ class MagsAnalysis(WorkflowExecution):
             self.img_identifiers = [self.img_identifiers] if self.img_identifiers is not None else []
         self.img_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.img_identifiers]
 
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
+        if not isinstance(self.was_informed_by, list):
+            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
+        self.was_informed_by = [v if isinstance(v, NucleotideSequencingId) else NucleotideSequencingId(v) for v in self.was_informed_by]
 
-        super().__post_init__(**kwargs)
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        self.type = str(self.class_class_curie)
-
-
-@dataclass(repr=False)
-class MetagenomeSequencing(WorkflowExecution):
-    """
-    Initial sequencing activity that precedes any analysis. This activity has output(s) that are the raw sequencing
-    data.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC["MetagenomeSequencing"]
-    class_class_curie: ClassVar[str] = "nmdc:MetagenomeSequencing"
-    class_name: ClassVar[str] = "MetagenomeSequencing"
-    class_model_uri: ClassVar[URIRef] = NMDC.MetagenomeSequencing
-
-    id: Union[str, MetagenomeSequencingId] = None
-    type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
-    git_url: str = None
-    started_at_time: str = None
-    has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    was_informed_by: Optional[Union[str, DataGenerationId]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, MetagenomeSequencingId):
-            self.id = MetagenomeSequencingId(self.id)
-
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
-
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
+        if self.superseded_by is not None and not isinstance(self.superseded_by, MagsAnalysisId):
+            self.superseded_by = MagsAnalysisId(self.superseded_by)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -6340,7 +6115,7 @@ class ReadQcAnalysis(WorkflowExecution):
     artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant
     removal
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["ReadQcAnalysis"]
     class_class_curie: ClassVar[str] = "nmdc:ReadQcAnalysis"
@@ -6349,19 +6124,20 @@ class ReadQcAnalysis(WorkflowExecution):
 
     id: Union[str, ReadQcAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     input_base_count: Optional[float] = None
     input_read_bases: Optional[float] = None
     input_read_count: Optional[float] = None
     output_base_count: Optional[float] = None
     output_read_bases: Optional[float] = None
     output_read_count: Optional[float] = None
-    was_informed_by: Optional[Union[str, DataGenerationId]] = None
+    was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
+    superseded_by: Optional[Union[str, ReadQcAnalysisId]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ReadQcAnalysisId):
@@ -6385,8 +6161,12 @@ class ReadQcAnalysis(WorkflowExecution):
         if self.output_read_count is not None and not isinstance(self.output_read_count, float):
             self.output_read_count = float(self.output_read_count)
 
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
+        if not isinstance(self.was_informed_by, list):
+            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
+        self.was_informed_by = [v if isinstance(v, NucleotideSequencingId) else NucleotideSequencingId(v) for v in self.was_informed_by]
+
+        if self.superseded_by is not None and not isinstance(self.superseded_by, ReadQcAnalysisId):
+            self.superseded_by = ReadQcAnalysisId(self.superseded_by)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -6399,7 +6179,7 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
     """
     A workflow execution activity that performs taxonomy classification using sequencing reads
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["ReadBasedTaxonomyAnalysis"]
     class_class_curie: ClassVar[str] = "nmdc:ReadBasedTaxonomyAnalysis"
@@ -6408,20 +6188,25 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
 
     id: Union[str, ReadBasedTaxonomyAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    was_informed_by: Optional[Union[str, DataGenerationId]] = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
+    was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
+    superseded_by: Optional[Union[str, ReadBasedTaxonomyAnalysisId]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ReadBasedTaxonomyAnalysisId):
             self.id = ReadBasedTaxonomyAnalysisId(self.id)
 
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
+        if not isinstance(self.was_informed_by, list):
+            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
+        self.was_informed_by = [v if isinstance(v, NucleotideSequencingId) else NucleotideSequencingId(v) for v in self.was_informed_by]
+
+        if self.superseded_by is not None and not isinstance(self.superseded_by, ReadBasedTaxonomyAnalysisId):
+            self.superseded_by = ReadBasedTaxonomyAnalysisId(self.superseded_by)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -6431,7 +6216,7 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
 
 @dataclass(repr=False)
 class MetabolomicsAnalysis(WorkflowExecution):
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MetabolomicsAnalysis"]
     class_class_curie: ClassVar[str] = "nmdc:MetabolomicsAnalysis"
@@ -6440,29 +6225,41 @@ class MetabolomicsAnalysis(WorkflowExecution):
 
     id: Union[str, MetabolomicsAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_metabolite_identifications: Optional[Union[Union[dict, MetaboliteIdentification], List[Union[dict, MetaboliteIdentification]]]] = empty_list()
-    uses_calibration: Optional[Union[str, CalibrationInformationId]] = None
-    was_informed_by: Optional[Union[str, DataGenerationId]] = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
+    metabolomics_analysis_category: Union[str, "MetabolomicsAnalysisCategoryEnum"] = None
+    has_metabolite_identifications: Optional[Union[Union[dict, MetaboliteIdentification], list[Union[dict, MetaboliteIdentification]]]] = empty_list()
+    uses_calibration: Optional[Union[Union[str, CalibrationInformationId], list[Union[str, CalibrationInformationId]]]] = empty_list()
+    was_informed_by: Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]] = empty_list()
+    superseded_by: Optional[Union[str, MetabolomicsAnalysisId]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MetabolomicsAnalysisId):
             self.id = MetabolomicsAnalysisId(self.id)
 
+        if self._is_empty(self.metabolomics_analysis_category):
+            self.MissingRequiredField("metabolomics_analysis_category")
+        if not isinstance(self.metabolomics_analysis_category, MetabolomicsAnalysisCategoryEnum):
+            self.metabolomics_analysis_category = MetabolomicsAnalysisCategoryEnum(self.metabolomics_analysis_category)
+
         if not isinstance(self.has_metabolite_identifications, list):
             self.has_metabolite_identifications = [self.has_metabolite_identifications] if self.has_metabolite_identifications is not None else []
         self.has_metabolite_identifications = [v if isinstance(v, MetaboliteIdentification) else MetaboliteIdentification(**as_dict(v)) for v in self.has_metabolite_identifications]
 
-        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationInformationId):
-            self.uses_calibration = CalibrationInformationId(self.uses_calibration)
+        if not isinstance(self.uses_calibration, list):
+            self.uses_calibration = [self.uses_calibration] if self.uses_calibration is not None else []
+        self.uses_calibration = [v if isinstance(v, CalibrationInformationId) else CalibrationInformationId(v) for v in self.uses_calibration]
 
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
+        if not isinstance(self.was_informed_by, list):
+            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
+        self.was_informed_by = [v if isinstance(v, MassSpectrometryId) else MassSpectrometryId(v) for v in self.was_informed_by]
+
+        if self.superseded_by is not None and not isinstance(self.superseded_by, MetabolomicsAnalysisId):
+            self.superseded_by = MetabolomicsAnalysisId(self.superseded_by)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -6471,8 +6268,134 @@ class MetabolomicsAnalysis(WorkflowExecution):
 
 
 @dataclass(repr=False)
-class MetaproteomicsAnalysis(WorkflowExecution):
-    _inherited_slots: ClassVar[List[str]] = []
+class NomAnalysis(WorkflowExecution):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["NomAnalysis"]
+    class_class_curie: ClassVar[str] = "nmdc:NomAnalysis"
+    class_name: ClassVar[str] = "NomAnalysis"
+    class_model_uri: ClassVar[URIRef] = NMDC.NomAnalysis
+
+    id: Union[str, NomAnalysisId] = None
+    type: Union[str, URIorCURIE] = None
+    git_url: str = None
+    started_at_time: str = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
+    uses_calibration: Optional[Union[Union[str, CalibrationInformationId], list[Union[str, CalibrationInformationId]]]] = empty_list()
+    was_informed_by: Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]] = empty_list()
+    superseded_by: Optional[Union[str, NomAnalysisId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, NomAnalysisId):
+            self.id = NomAnalysisId(self.id)
+
+        if not isinstance(self.uses_calibration, list):
+            self.uses_calibration = [self.uses_calibration] if self.uses_calibration is not None else []
+        self.uses_calibration = [v if isinstance(v, CalibrationInformationId) else CalibrationInformationId(v) for v in self.uses_calibration]
+
+        if not isinstance(self.was_informed_by, list):
+            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
+        self.was_informed_by = [v if isinstance(v, MassSpectrometryId) else MassSpectrometryId(v) for v in self.was_informed_by]
+
+        if self.superseded_by is not None and not isinstance(self.superseded_by, NomAnalysisId):
+            self.superseded_by = NomAnalysisId(self.superseded_by)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
+class AnnotatingWorkflow(WorkflowExecution):
+    """
+    A WorkflowExecution whose output indicates the potential functions of genes or gene products
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["AnnotatingWorkflow"]
+    class_class_curie: ClassVar[str] = "nmdc:AnnotatingWorkflow"
+    class_name: ClassVar[str] = "AnnotatingWorkflow"
+    class_model_uri: ClassVar[URIRef] = NMDC.AnnotatingWorkflow
+
+    id: Union[str, AnnotatingWorkflowId] = None
+    type: Union[str, URIorCURIE] = None
+    git_url: str = None
+    started_at_time: str = None
+    was_informed_by: Union[Union[str, DataGenerationId], list[Union[str, DataGenerationId]]] = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
+class MetatranscriptomeAnnotation(AnnotatingWorkflow):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeAnnotation"]
+    class_class_curie: ClassVar[str] = "nmdc:MetatranscriptomeAnnotation"
+    class_name: ClassVar[str] = "MetatranscriptomeAnnotation"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAnnotation
+
+    id: Union[str, MetatranscriptomeAnnotationId] = None
+    type: Union[str, URIorCURIE] = None
+    git_url: str = None
+    started_at_time: str = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
+    img_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    gold_analysis_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    has_input: Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]] = empty_list()
+    was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
+    superseded_by: Optional[Union[str, MetatranscriptomeAnnotationId]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MetatranscriptomeAnnotationId):
+            self.id = MetatranscriptomeAnnotationId(self.id)
+
+        if not isinstance(self.img_identifiers, list):
+            self.img_identifiers = [self.img_identifiers] if self.img_identifiers is not None else []
+        self.img_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.img_identifiers]
+
+        if not isinstance(self.gold_analysis_project_identifiers, list):
+            self.gold_analysis_project_identifiers = [self.gold_analysis_project_identifiers] if self.gold_analysis_project_identifiers is not None else []
+        self.gold_analysis_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.gold_analysis_project_identifiers]
+
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
+        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
+
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
+
+        if not isinstance(self.was_informed_by, list):
+            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
+        self.was_informed_by = [v if isinstance(v, NucleotideSequencingId) else NucleotideSequencingId(v) for v in self.was_informed_by]
+
+        if self.superseded_by is not None and not isinstance(self.superseded_by, MetatranscriptomeAnnotationId):
+            self.superseded_by = MetatranscriptomeAnnotationId(self.superseded_by)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
+class MetaproteomicsAnalysis(AnnotatingWorkflow):
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MetaproteomicsAnalysis"]
     class_class_curie: ClassVar[str] = "nmdc:MetaproteomicsAnalysis"
@@ -6481,14 +6404,15 @@ class MetaproteomicsAnalysis(WorkflowExecution):
 
     id: Union[str, MetaproteomicsAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     metaproteomics_analysis_category: Union[str, "MetaproteomicsAnalysisCategoryEnum"] = None
-    was_informed_by: Optional[Union[str, DataGenerationId]] = None
+    was_informed_by: Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]] = empty_list()
+    superseded_by: Optional[Union[str, MetaproteomicsAnalysisId]] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MetaproteomicsAnalysisId):
@@ -6499,8 +6423,12 @@ class MetaproteomicsAnalysis(WorkflowExecution):
         if not isinstance(self.metaproteomics_analysis_category, MetaproteomicsAnalysisCategoryEnum):
             self.metaproteomics_analysis_category = MetaproteomicsAnalysisCategoryEnum(self.metaproteomics_analysis_category)
 
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
+        if not isinstance(self.was_informed_by, list):
+            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
+        self.was_informed_by = [v if isinstance(v, MassSpectrometryId) else MassSpectrometryId(v) for v in self.was_informed_by]
+
+        if self.superseded_by is not None and not isinstance(self.superseded_by, MetaproteomicsAnalysisId):
+            self.superseded_by = MetaproteomicsAnalysisId(self.superseded_by)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -6509,47 +6437,11 @@ class MetaproteomicsAnalysis(WorkflowExecution):
 
 
 @dataclass(repr=False)
-class NomAnalysis(WorkflowExecution):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC["NomAnalysis"]
-    class_class_curie: ClassVar[str] = "nmdc:NomAnalysis"
-    class_name: ClassVar[str] = "NomAnalysis"
-    class_model_uri: ClassVar[URIRef] = NMDC.NomAnalysis
-
-    id: Union[str, NomAnalysisId] = None
-    type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
-    git_url: str = None
-    started_at_time: str = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    uses_calibration: Optional[Union[str, CalibrationInformationId]] = None
-    was_informed_by: Optional[Union[str, DataGenerationId]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NomAnalysisId):
-            self.id = NomAnalysisId(self.id)
-
-        if self.uses_calibration is not None and not isinstance(self.uses_calibration, CalibrationInformationId):
-            self.uses_calibration = CalibrationInformationId(self.uses_calibration)
-
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
-
-        super().__post_init__(**kwargs)
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        self.type = str(self.class_class_curie)
-
-
-@dataclass(repr=False)
-class MetagenomeAnnotation(WorkflowExecution):
+class MetagenomeAnnotation(AnnotatingWorkflow):
     """
     A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MetagenomeAnnotation"]
     class_class_curie: ClassVar[str] = "nmdc:MetagenomeAnnotation"
@@ -6558,15 +6450,15 @@ class MetagenomeAnnotation(WorkflowExecution):
 
     id: Union[str, MetagenomeAnnotationId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    img_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    gold_analysis_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    was_informed_by: Optional[Union[str, DataGenerationId]] = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
+    img_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    gold_analysis_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MetagenomeAnnotationId):
@@ -6580,8 +6472,9 @@ class MetagenomeAnnotation(WorkflowExecution):
             self.gold_analysis_project_identifiers = [self.gold_analysis_project_identifiers] if self.gold_analysis_project_identifiers is not None else []
         self.gold_analysis_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.gold_analysis_project_identifiers]
 
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
-            self.was_informed_by = DataGenerationId(self.was_informed_by)
+        if not isinstance(self.was_informed_by, list):
+            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
+        self.was_informed_by = [v if isinstance(v, NucleotideSequencingId) else NucleotideSequencingId(v) for v in self.was_informed_by]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -6589,10 +6482,46 @@ class MetagenomeAnnotation(WorkflowExecution):
         self.type = str(self.class_class_curie)
 
 
+@dataclass(repr=False)
+class ProvenanceMetadata(YAMLRoot):
+    """
+    Metadata pertaining to how a record was created.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["ProvenanceMetadata"]
+    class_class_curie: ClassVar[str] = "nmdc:ProvenanceMetadata"
+    class_name: ClassVar[str] = "ProvenanceMetadata"
+    class_model_uri: ClassVar[URIRef] = NMDC.ProvenanceMetadata
+
+    type: Union[str, URIorCURIE] = None
+    git_url: Optional[str] = None
+    version: Optional[str] = None
+    source_system_of_record: Optional[Union[str, "SourceSystemEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+        if self.git_url is not None and not isinstance(self.git_url, str):
+            self.git_url = str(self.git_url)
+
+        if self.version is not None and not isinstance(self.version, str):
+            self.version = str(self.version)
+
+        if self.source_system_of_record is not None and not isinstance(self.source_system_of_record, SourceSystemEnum):
+            self.source_system_of_record = SourceSystemEnum(self.source_system_of_record)
+
+        super().__post_init__(**kwargs)
+
+
 # Enumerations
 class CalibrationTargetEnum(EnumDefinitionImpl):
 
-    mass_charge_ratio = PermissibleValue(text="mass_charge_ratio")
+    mass_charge_ratio = PermissibleValue(
+        text="mass_charge_ratio",
+        title="m/z")
     retention_time = PermissibleValue(text="retention_time")
     retention_index = PermissibleValue(text="retention_index")
 
@@ -6604,6 +6533,7 @@ class CalibrationStandardEnum(EnumDefinitionImpl):
 
     fames = PermissibleValue(text="fames")
     alkanes = PermissibleValue(text="alkanes")
+    srfa = PermissibleValue(text="srfa")
 
     _defn = EnumDefinition(
         name="CalibrationStandardEnum",
@@ -6633,7 +6563,7 @@ class MassSpectrometryAcquisitionStrategyEnum(EnumDefinitionImpl):
 
     data_independent_acquisition = PermissibleValue(
         text="data_independent_acquisition",
-        description="""['Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.']""")
+        description="""Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.""")
     data_dependent_acquisition = PermissibleValue(
         text="data_dependent_acquisition",
         description="""Mass spectrometer data acquisition method wherein MSn spectra are triggered based on the m/z of precursor ions detected in the same run.""")
@@ -6715,15 +6645,19 @@ class EluentIntroductionCategoryEnum(EnumDefinitionImpl):
 
     liquid_chromatography = PermissibleValue(
         text="liquid_chromatography",
+        title="liquid chromatography",
         description="""The processed sample is introduced into the mass spectrometer through a liquid chromatography process.""")
     gas_chromatography = PermissibleValue(
         text="gas_chromatography",
+        title="gas chromatography",
         description="""The processed sample is introduced into the mass spectrometer through a gas chromatography process.""")
     direct_infusion_syringe = PermissibleValue(
         text="direct_infusion_syringe",
+        title="direct infusion syringe",
         description="""The processed sample is introduced into the mass spectrometer through a direct infusion process using a syringe.""")
     direct_infusion_autosampler = PermissibleValue(
         text="direct_infusion_autosampler",
+        title="direct infusion autosampler",
         description="""The processed sample is introduced into the mass spectrometer through a direct infusion process using an autosampler.""")
 
     _defn = EnumDefinition(
@@ -6771,25 +6705,66 @@ class StationaryPhaseEnum(EnumDefinitionImpl):
     """
     The type of stationary phase used in a chromatography process.
     """
-    C18 = PermissibleValue(text="C18")
-    C8 = PermissibleValue(text="C8")
-    C4 = PermissibleValue(text="C4")
-    C2 = PermissibleValue(text="C2")
-    C1 = PermissibleValue(text="C1")
-    C30 = PermissibleValue(text="C30")
-    C60 = PermissibleValue(text="C60")
-    CNT = PermissibleValue(text="CNT")
-    CN = PermissibleValue(text="CN")
-    Diol = PermissibleValue(text="Diol")
-    HILIC = PermissibleValue(text="HILIC")
-    NH2 = PermissibleValue(text="NH2")
-    Phenyl = PermissibleValue(text="Phenyl")
-    Polysiloxane = PermissibleValue(text="Polysiloxane")
-    SAX = PermissibleValue(text="SAX")
-    SCX = PermissibleValue(text="SCX")
-    Silica = PermissibleValue(text="Silica")
-    WCX = PermissibleValue(text="WCX")
-    WAX = PermissibleValue(text="WAX")
+    C18 = PermissibleValue(
+        text="C18",
+        description="A stationary phase consisting of octadecyl chains (C18) bonded to silica particles.")
+    C8 = PermissibleValue(
+        text="C8",
+        description="A stationary phase consisting of octyl chains (C8) bonded to silica particles.")
+    C4 = PermissibleValue(
+        text="C4",
+        description="A stationary phase consisting of butyl chains (C4) bonded to silica particles.")
+    C2 = PermissibleValue(
+        text="C2",
+        description="A stationary phase consisting of ethyl chains (C2) bonded to silica particles.")
+    C1 = PermissibleValue(
+        text="C1",
+        description="A stationary phase consisting of methyl chains (C1) bonded to silica particles.")
+    C30 = PermissibleValue(
+        text="C30",
+        description="A stationary phase consisting of triacontyl chains (C30) bonded to silica particles.")
+    C60 = PermissibleValue(
+        text="C60",
+        description="A stationary phase consisting of hexatriacontyl chains (C60) bonded to silica particles.")
+    CNT = PermissibleValue(
+        text="CNT",
+        description="Carbon Nanotube stationary phase.")
+    CN = PermissibleValue(
+        text="CN",
+        description="Cyano (CN) bonded stationary phase.")
+    Diol = PermissibleValue(
+        text="Diol",
+        description="A stationary phase with diol (1,2-diol) functional groups.")
+    HILIC = PermissibleValue(
+        text="HILIC",
+        description="Hydrophilic Interaction Chromatography (HILIC) stationary phase.")
+    HLB = PermissibleValue(
+        text="HLB",
+        description="Hydrophilic-Lipophilic-Balance (HLB) stationary phase.")
+    NH2 = PermissibleValue(
+        text="NH2",
+        description="Amino (NH2) bonded stationary phase.")
+    Phenyl = PermissibleValue(
+        text="Phenyl",
+        description="Phenyl bonded stationary phase.")
+    Polysiloxane = PermissibleValue(
+        text="Polysiloxane",
+        description="A stationary phase made of polysiloxane, usually used in gas chromatography.")
+    SAX = PermissibleValue(
+        text="SAX",
+        description="Strong Anion Exchange (SAX) stationary phase.")
+    SCX = PermissibleValue(
+        text="SCX",
+        description="Strong Cation Exchange (SCX) stationary phase.")
+    Silica = PermissibleValue(
+        text="Silica",
+        description="A stationary phase made of silica, commonly used in chromatography.")
+    WCX = PermissibleValue(
+        text="WCX",
+        description="Weak Cation Exchange (WCX) stationary phase.")
+    WAX = PermissibleValue(
+        text="WAX",
+        description="Weak Anion Exchange (WAX) stationary phase.")
 
     _defn = EnumDefinition(
         name="StationaryPhaseEnum",
@@ -6799,15 +6774,25 @@ class StationaryPhaseEnum(EnumDefinitionImpl):
     @classmethod
     def _addvals(cls):
         setattr(cls, "BEH-HILIC",
-            PermissibleValue(text="BEH-HILIC"))
+            PermissibleValue(
+                text="BEH-HILIC",
+                description="""Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged Ethylene Hybrid) particles as the stationary phase."""))
         setattr(cls, "PS-DVB",
-            PermissibleValue(text="PS-DVB"))
+            PermissibleValue(
+                text="PS-DVB",
+                description="""Polystyrene-divinylbenzene stationary phase, often used in solid-phase extraction, including proprietary Priority PolLutant (PPL)."""))
         setattr(cls, "ZIC-HILIC",
-            PermissibleValue(text="ZIC-HILIC"))
+            PermissibleValue(
+                text="ZIC-HILIC",
+                description="Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC) stationary phase."))
         setattr(cls, "ZIC-pHILIC",
-            PermissibleValue(text="ZIC-pHILIC"))
+            PermissibleValue(
+                text="ZIC-pHILIC",
+                description="""Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography (ZIC-pHILIC) stationary phase."""))
         setattr(cls, "ZIC-cHILIC",
-            PermissibleValue(text="ZIC-cHILIC"))
+            PermissibleValue(
+                text="ZIC-cHILIC",
+                description="""Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC) stationary phase."""))
 
 class ProtocolCategoryEnum(EnumDefinitionImpl):
     """
@@ -6844,9 +6829,26 @@ class SamplePortionEnum(EnumDefinitionImpl):
 
     supernatant = PermissibleValue(text="supernatant")
     pellet = PermissibleValue(text="pellet")
-    organic_layer = PermissibleValue(text="organic_layer")
-    aqueous_layer = PermissibleValue(text="aqueous_layer")
-    non_polar_layer = PermissibleValue(text="non_polar_layer")
+    organic_layer = PermissibleValue(
+        text="organic_layer",
+        title="Organic layer",
+        description="The portion of a mixture containing dissolved organic material")
+    aqueous_layer = PermissibleValue(
+        text="aqueous_layer",
+        title="Aqueous layer",
+        description="The portion of a mixture containing molecules dissolved in water")
+    interlayer = PermissibleValue(
+        text="interlayer",
+        title="Interlayer",
+        description="The layer of material between liquid layers of a separated mixture")
+    chloroform_layer = PermissibleValue(
+        text="chloroform_layer",
+        title="Chloroform layer",
+        description="The portion of a mixture containing molecules dissolved in chloroform")
+    methanol_layer = PermissibleValue(
+        text="methanol_layer",
+        title="Methanol layer",
+        description="The portion of a mixture containing molecules dissolved in methanol")
 
     _defn = EnumDefinition(
         name="SamplePortionEnum",
@@ -6866,6 +6868,25 @@ class MetaproteomicsAnalysisCategoryEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="MetaproteomicsAnalysisCategoryEnum",
         description="The category of metaproteomics analysis being performed.",
+    )
+
+class MetabolomicsAnalysisCategoryEnum(EnumDefinitionImpl):
+    """
+    The category of metabolomics analysis being performed.
+    """
+    gc_ms_metabolomics = PermissibleValue(
+        text="gc_ms_metabolomics",
+        description="A metabolomics analysis that is performed on gas chromatography mass spectrometry data.")
+    lc_ms_lipidomics = PermissibleValue(
+        text="lc_ms_lipidomics",
+        description="""A metabolomics analysis that is performed on liquid chromatography mass spectrometry data for lipidomics annotation.""")
+    lc_ms_metabolomics = PermissibleValue(
+        text="lc_ms_metabolomics",
+        description="A metabolomics analysis that is performed on liquid chromatography mass spectrometry data.")
+
+    _defn = EnumDefinition(
+        name="MetabolomicsAnalysisCategoryEnum",
+        description="The category of metabolomics analysis being performed.",
     )
 
 class BinQualityEnum(EnumDefinitionImpl):
@@ -6907,17 +6928,26 @@ class BiosampleCategoryEnum(EnumDefinitionImpl):
     """
     LTER = PermissibleValue(
         text="LTER",
+        title="National Science Foundation's Long Term Ecological Research Network",
         meaning=None)
     SIP = PermissibleValue(text="SIP")
     SFA = PermissibleValue(
         text="SFA",
+        title="Department of Energy Office of Science Biological and Environmental Research Program Laboratory Science Focus Areas",
         description="""Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program""",
         meaning=None)
     FICUS = PermissibleValue(
         text="FICUS",
+        title="Facilities Integrating Collaborations for User Science",
         meaning=None)
     NEON = PermissibleValue(
         text="NEON",
+        title="National Science Foundation's National Ecological Observatory Network",
+        meaning=None)
+    BRC = PermissibleValue(
+        text="BRC",
+        title="Bioenergy Research Centers",
+        description="""Bioenergy Research Centers funded by the Biological Systems Science Division of the U.S. Department of Energy's Biological and Environmental Research Program.""",
         meaning=None)
 
     _defn = EnumDefinition(
@@ -6968,6 +6998,1250 @@ class SampleStateEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="SampleStateEnum",
+    )
+
+class ChemicalEntityEnum(EnumDefinitionImpl):
+
+    acetonitrile = PermissibleValue(
+        text="acetonitrile",
+        meaning=CHEBI["38472"])
+    acetic_acid = PermissibleValue(
+        text="acetic_acid",
+        meaning=CHEBI["15366"])
+    alphaLP = PermissibleValue(
+        text="alphaLP",
+        meaning=EC["3.4.21.12"])
+    ammonium_acetate = PermissibleValue(
+        text="ammonium_acetate",
+        meaning=CHEBI["62947"])
+    ammonium_bicarbonate = PermissibleValue(
+        text="ammonium_bicarbonate",
+        meaning=CHEBI["184335"])
+    amitriptyline = PermissibleValue(
+        text="amitriptyline",
+        meaning=CHEBI["2666"])
+    chloroform = PermissibleValue(
+        text="chloroform",
+        meaning=CHEBI["35255"])
+    chymotrypsin = PermissibleValue(
+        text="chymotrypsin",
+        meaning=MS["1001306"])
+    ethanol = PermissibleValue(
+        text="ethanol",
+        meaning=CHEBI["16236"])
+    formic_acid = PermissibleValue(
+        text="formic_acid",
+        meaning=CHEBI["30751"])
+    glucose = PermissibleValue(
+        text="glucose",
+        meaning=CHEBI["17234"])
+    hydrochloric_acid = PermissibleValue(
+        text="hydrochloric_acid",
+        meaning=CHEBI["17883"])
+    isopropyl_alcohol = PermissibleValue(
+        text="isopropyl_alcohol",
+        meaning=CHEBI["17824"])
+    methanol = PermissibleValue(
+        text="methanol",
+        meaning=CHEBI["17790"])
+    methoxyamine = PermissibleValue(
+        text="methoxyamine",
+        meaning=CHEBI["192842"])
+    medronic_acid = PermissibleValue(
+        text="medronic_acid",
+        meaning=CHEBI["43945"])
+    phosphoric_acid = PermissibleValue(
+        text="phosphoric_acid",
+        meaning=CHEBI["26078"])
+    trimethylchlorosilane = PermissibleValue(
+        text="trimethylchlorosilane",
+        meaning=CHEBI["85069"])
+    trypsin = PermissibleValue(
+        text="trypsin",
+        meaning=MS["1001251"])
+    water = PermissibleValue(
+        text="water",
+        meaning=CHEBI["15377"])
+
+    _defn = EnumDefinition(
+        name="ChemicalEntityEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Arg-C",
+            PermissibleValue(
+                text="Arg-C",
+                meaning=MS["1001303"]))
+        setattr(cls, "Asp-N",
+            PermissibleValue(
+                text="Asp-N",
+                meaning=MS["1001304"]))
+        setattr(cls, "Glu-C",
+            PermissibleValue(
+                text="Glu-C",
+                meaning=MS["1001917"]))
+        setattr(cls, "Lys-C",
+            PermissibleValue(
+                text="Lys-C",
+                meaning=MS["1001309"]))
+        setattr(cls, "Lys-N",
+            PermissibleValue(
+                text="Lys-N",
+                meaning=MS["1003093"]))
+        setattr(cls, "N-methyl-N-trimethylsilyltrifluoroacetamide",
+            PermissibleValue(
+                text="N-methyl-N-trimethylsilyltrifluoroacetamide",
+                meaning=CHEBI["85064"]))
+
+class UnitEnum(EnumDefinitionImpl):
+
+    Cel = PermissibleValue(
+        text="Cel",
+        title="degrees Celsius",
+        description="""The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.""")
+    cm = PermissibleValue(
+        text="cm",
+        description="The Unified Code for Units of Measure (UCUM) representation of centimeter.")
+    cP = PermissibleValue(
+        text="cP",
+        description="The Unified Code for Units of Measure (UCUM) representation of centipoise.")
+    d = PermissibleValue(
+        text="d",
+        description="The Unified Code for Units of Measure (UCUM) representation of day.")
+    g = PermissibleValue(
+        text="g",
+        description="The Unified Code for Units of Measure (UCUM) representation of gram.")
+    h = PermissibleValue(
+        text="h",
+        description="The Unified Code for Units of Measure (UCUM) representation of hour.")
+    kPa = PermissibleValue(
+        text="kPa",
+        description="The Unified Code for Units of Measure (UCUM) representation of kilopascal.")
+    m = PermissibleValue(
+        text="m",
+        description="The Unified Code for Units of Measure (UCUM) representation of meter.")
+    min = PermissibleValue(
+        text="min",
+        description="The Unified Code for Units of Measure (UCUM) representation of minute.")
+    mL = PermissibleValue(
+        text="mL",
+        description="The Unified Code for Units of Measure (UCUM) representation of milliliter.")
+    mm = PermissibleValue(
+        text="mm",
+        description="The Unified Code for Units of Measure (UCUM) representation of millimeter.")
+    a = PermissibleValue(
+        text="a",
+        title="years",
+        description="The Unified Code for Units of Measure (UCUM) representation of year.")
+    uL = PermissibleValue(
+        text="uL",
+        description="The Unified Code for Units of Measure (UCUM) representation of microliter.")
+    m2 = PermissibleValue(
+        text="m2",
+        description="The Unified Code for Units of Measure (UCUM) representation of square meters.")
+    atm = PermissibleValue(
+        text="atm",
+        description="The Unified Code for Units of Measure (UCUM) representation of atmosphere.")
+    V = PermissibleValue(
+        text="V",
+        description="The Unified Code for Units of Measure (UCUM) representation of volt.")
+    mV = PermissibleValue(
+        text="mV",
+        description="The Unified Code for Units of Measure (UCUM) representation of millivolt.")
+    L = PermissibleValue(
+        text="L",
+        description="The Unified Code for Units of Measure (UCUM) representation of liter.")
+    um = PermissibleValue(
+        text="um",
+        description="The Unified Code for Units of Measure (UCUM) representation of micrometer.")
+    kg = PermissibleValue(
+        text="kg",
+        description="The Unified Code for Units of Measure (UCUM) representation of kilogram.")
+    lx = PermissibleValue(
+        text="lx",
+        title="lux",
+        description="The Unified Code for Units of Measure (UCUM) representation of lux.")
+    deg = PermissibleValue(
+        text="deg",
+        description="The Unified Code for Units of Measure (UCUM) representation of degree (angle).")
+    mol = PermissibleValue(
+        text="mol",
+        description="The Unified Code for Units of Measure (UCUM) representation of mole.")
+    mmol = PermissibleValue(
+        text="mmol",
+        description="The Unified Code for Units of Measure (UCUM) representation of millimole.")
+    umol = PermissibleValue(
+        text="umol",
+        description="The Unified Code for Units of Measure (UCUM) representation of micromole.")
+    nmol = PermissibleValue(
+        text="nmol",
+        description="The Unified Code for Units of Measure (UCUM) representation of nanomole.")
+    pmol = PermissibleValue(
+        text="pmol",
+        description="The Unified Code for Units of Measure (UCUM) representation of picomole.")
+    U = PermissibleValue(
+        text="U",
+        description="The Unified Code for Units of Measure (UCUM) representation of enzyme unit.")
+    mU = PermissibleValue(
+        text="mU",
+        description="The Unified Code for Units of Measure (UCUM) representation of millienzyme unit.")
+    uU = PermissibleValue(
+        text="uU",
+        description="The Unified Code for Units of Measure (UCUM) representation of microenzyme unit.")
+    nU = PermissibleValue(
+        text="nU",
+        description="The Unified Code for Units of Measure (UCUM) representation of nanoenzyme unit.")
+    Bq = PermissibleValue(
+        text="Bq",
+        description="The Unified Code for Units of Measure (UCUM) representation of becquerel.")
+    kBq = PermissibleValue(
+        text="kBq",
+        description="The Unified Code for Units of Measure (UCUM) representation of kilobecquerel.")
+    MBq = PermissibleValue(
+        text="MBq",
+        description="The Unified Code for Units of Measure (UCUM) representation of megabecquerel.")
+    GBq = PermissibleValue(
+        text="GBq",
+        description="The Unified Code for Units of Measure (UCUM) representation of gigabecquerel.")
+    Ci = PermissibleValue(
+        text="Ci",
+        description="The Unified Code for Units of Measure (UCUM) representation of curie.")
+    mCi = PermissibleValue(
+        text="mCi",
+        description="The Unified Code for Units of Measure (UCUM) representation of millicurie.")
+    uCi = PermissibleValue(
+        text="uCi",
+        description="The Unified Code for Units of Measure (UCUM) representation of microcurie.")
+    nCi = PermissibleValue(
+        text="nCi",
+        description="The Unified Code for Units of Measure (UCUM) representation of nanocurie.")
+    pCi = PermissibleValue(
+        text="pCi",
+        description="The Unified Code for Units of Measure (UCUM) representation of picocurie.")
+    rad = PermissibleValue(
+        text="rad",
+        description="The Unified Code for Units of Measure (UCUM) representation of radian.")
+    sr = PermissibleValue(
+        text="sr",
+        description="The Unified Code for Units of Measure (UCUM) representation of steradian.")
+    Hz = PermissibleValue(
+        text="Hz",
+        description="The Unified Code for Units of Measure (UCUM) representation of hertz.")
+    kHz = PermissibleValue(
+        text="kHz",
+        description="The Unified Code for Units of Measure (UCUM) representation of kilohertz.")
+    MHz = PermissibleValue(
+        text="MHz",
+        description="The Unified Code for Units of Measure (UCUM) representation of megahertz.")
+    GHz = PermissibleValue(
+        text="GHz",
+        description="The Unified Code for Units of Measure (UCUM) representation of gigahertz.")
+    N = PermissibleValue(
+        text="N",
+        description="The Unified Code for Units of Measure (UCUM) representation of newton.")
+    kN = PermissibleValue(
+        text="kN",
+        description="The Unified Code for Units of Measure (UCUM) representation of kilonewton.")
+    J = PermissibleValue(
+        text="J",
+        description="The Unified Code for Units of Measure (UCUM) representation of joule.")
+    kJ = PermissibleValue(
+        text="kJ",
+        description="The Unified Code for Units of Measure (UCUM) representation of kilojoule.")
+    MJ = PermissibleValue(
+        text="MJ",
+        description="The Unified Code for Units of Measure (UCUM) representation of megajoule.")
+    W = PermissibleValue(
+        text="W",
+        description="The Unified Code for Units of Measure (UCUM) representation of watt.")
+    kW = PermissibleValue(
+        text="kW",
+        description="The Unified Code for Units of Measure (UCUM) representation of kilowatt.")
+    mbar = PermissibleValue(
+        text="mbar",
+        description="The Unified Code for Units of Measure (UCUM) representation of millibar.")
+    mg = PermissibleValue(
+        text="mg",
+        description="The Unified Code for Units of Measure (UCUM) representation of milligram.")
+    wk = PermissibleValue(
+        text="wk",
+        description="The Unified Code for Units of Measure (UCUM) representation of week.")
+    Gy = PermissibleValue(
+        text="Gy",
+        description="The Unified Code for Units of Measure (UCUM) representation of gray (absorbed dose).")
+    RAD = PermissibleValue(
+        text="RAD",
+        title="rad (radiation absorbed dose)",
+        description="The Unified Code for Units of Measure (UCUM) representation of rad (radiation absorbed dose).")
+    m3 = PermissibleValue(
+        text="m3",
+        description="The Unified Code for Units of Measure (UCUM) representation of cubic meter.")
+    ug = PermissibleValue(
+        text="ug",
+        description="The Unified Code for Units of Measure (UCUM) representation of microgram.")
+    cm2 = PermissibleValue(
+        text="cm2",
+        description="The Unified Code for Units of Measure (UCUM) representation of square centimeter.")
+
+    _defn = EnumDefinition(
+        name="UnitEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "%",
+            PermissibleValue(
+                text="%",
+                description="The Unified Code for Units of Measure (UCUM) representation of percent."))
+        setattr(cls, "J/K",
+            PermissibleValue(
+                text="J/K",
+                title="J/degree Celsius",
+                description="The Unified Code for Units of Measure (UCUM) representation of joule per kelvin."))
+        setattr(cls, "m/s",
+            PermissibleValue(
+                text="m/s",
+                description="The Unified Code for Units of Measure (UCUM) representation of meters per second."))
+        setattr(cls, "mg/kg",
+            PermissibleValue(
+                text="mg/kg",
+                description="""The Unified Code for Units of Measure (UCUM) representation of milligrams per kilogram."""))
+        setattr(cls, "mg/L",
+            PermissibleValue(
+                text="mg/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of milligrams per liter."))
+        setattr(cls, "mL/L",
+            PermissibleValue(
+                text="mL/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of milliliters per liter."))
+        setattr(cls, "mmol/L",
+            PermissibleValue(
+                text="mmol/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of millimolar."))
+        setattr(cls, "mS/cm",
+            PermissibleValue(
+                text="mS/cm",
+                description="""The Unified Code for Units of Measure (UCUM) representation of millisiemens per centimeter."""))
+        setattr(cls, "[ppm]",
+            PermissibleValue(
+                text="[ppm]",
+                description="The Unified Code for Units of Measure (UCUM) representation of parts per million."))
+        setattr(cls, "uS/cm",
+            PermissibleValue(
+                text="uS/cm",
+                description="""The Unified Code for Units of Measure (UCUM) representation of microsiemens per centimeter."""))
+        setattr(cls, "W/m2",
+            PermissibleValue(
+                text="W/m2",
+                description="The Unified Code for Units of Measure (UCUM) representation of watts per square meter."))
+        setattr(cls, "ug/L",
+            PermissibleValue(
+                text="ug/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of micrograms per liter."))
+        setattr(cls, "ug/uL",
+            PermissibleValue(
+                text="ug/uL",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micrograms per microliter."""))
+        setattr(cls, "mol/L",
+            PermissibleValue(
+                text="mol/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of moles per liter."))
+        setattr(cls, "mol/L/h",
+            PermissibleValue(
+                text="mol/L/h",
+                description="""The Unified Code for Units of Measure (UCUM) representation of moles per liter per hour."""))
+        setattr(cls, "ug/L/h",
+            PermissibleValue(
+                text="ug/L/h",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micrograms per liter per hour."""))
+        setattr(cls, "umol/L",
+            PermissibleValue(
+                text="umol/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of micromoles per liter."))
+        setattr(cls, "umol/kg",
+            PermissibleValue(
+                text="umol/kg",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram."""))
+        setattr(cls, "umol/m2/s",
+            PermissibleValue(
+                text="umol/m2/s",
+                title="micromoles per square meter per second",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micromoles per square meter per second."""))
+        setattr(cls, "mg/m3",
+            PermissibleValue(
+                text="mg/m3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter."""))
+        setattr(cls, "m2/s",
+            PermissibleValue(
+                text="m2/s",
+                description="""The Unified Code for Units of Measure (UCUM) representation of square meters per second."""))
+        setattr(cls, "kg/m3",
+            PermissibleValue(
+                text="kg/m3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of kilograms per cubic meter."""))
+        setattr(cls, "g/m3",
+            PermissibleValue(
+                text="g/m3",
+                description="The Unified Code for Units of Measure (UCUM) representation of grams per cubic meter."))
+        setattr(cls, "1",
+            PermissibleValue(
+                text="1",
+                title="ratio/unitless",
+                description="The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity."))
+        setattr(cls, "uL/kg",
+            PermissibleValue(
+                text="uL/kg",
+                description="""The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram."""))
+        setattr(cls, "[ppth]",
+            PermissibleValue(
+                text="[ppth]",
+                description="The Unified Code for Units of Measure (UCUM) representation of parts per thousand."))
+        setattr(cls, "g/g",
+            PermissibleValue(
+                text="g/g",
+                description="The Unified Code for Units of Measure (UCUM) representation of gram per gram."))
+        setattr(cls, "mg/m3/d",
+            PermissibleValue(
+                text="mg/m3/d",
+                description="""The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter per day."""))
+        setattr(cls, "ng/h",
+            PermissibleValue(
+                text="ng/h",
+                description="The Unified Code for Units of Measure (UCUM) representation of nanograms per hour."))
+        setattr(cls, "mm[Hg]",
+            PermissibleValue(
+                text="mm[Hg]",
+                description="The Unified Code for Units of Measure (UCUM) representation of millimeters of mercury."))
+        setattr(cls, "[ppb]",
+            PermissibleValue(
+                text="[ppb]",
+                description="The Unified Code for Units of Measure (UCUM) representation of parts per billion."))
+        setattr(cls, "g/kg",
+            PermissibleValue(
+                text="g/kg",
+                description="The Unified Code for Units of Measure (UCUM) representation of grams per kilogram."))
+        setattr(cls, "mg/g",
+            PermissibleValue(
+                text="mg/g",
+                description="The Unified Code for Units of Measure (UCUM) representation of milligrams per gram."))
+        setattr(cls, "ug/g",
+            PermissibleValue(
+                text="ug/g",
+                description="The Unified Code for Units of Measure (UCUM) representation of micrograms per gram."))
+        setattr(cls, "ng/g",
+            PermissibleValue(
+                text="ng/g",
+                description="The Unified Code for Units of Measure (UCUM) representation of nanograms per gram."))
+        setattr(cls, "pg/g",
+            PermissibleValue(
+                text="pg/g",
+                description="The Unified Code for Units of Measure (UCUM) representation of picograms per gram."))
+        setattr(cls, "ng/L",
+            PermissibleValue(
+                text="ng/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of nanograms per liter."))
+        setattr(cls, "pg/L",
+            PermissibleValue(
+                text="pg/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of picograms per liter."))
+        setattr(cls, "ug/mL",
+            PermissibleValue(
+                text="ug/mL",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micrograms per milliliter."""))
+        setattr(cls, "ng/mL",
+            PermissibleValue(
+                text="ng/mL",
+                description="""The Unified Code for Units of Measure (UCUM) representation of nanograms per milliliter."""))
+        setattr(cls, "pg/mL",
+            PermissibleValue(
+                text="pg/mL",
+                description="""The Unified Code for Units of Measure (UCUM) representation of picograms per milliliter."""))
+        setattr(cls, "1/d",
+            PermissibleValue(
+                text="1/d",
+                description="The Unified Code for Units of Measure (UCUM) representation of per day (frequency)."))
+        setattr(cls, "1/[sft_i]",
+            PermissibleValue(
+                text="1/[sft_i]",
+                title="per square foot",
+                description="The Unified Code for Units of Measure (UCUM) representation of per square foot."))
+        setattr(cls, "kW/m2",
+            PermissibleValue(
+                text="kW/m2",
+                description="""The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter."""))
+        setattr(cls, "umol/s/m2",
+            PermissibleValue(
+                text="umol/s/m2",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micromoles per second per square meter."""))
+        setattr(cls, "m3/d",
+            PermissibleValue(
+                text="m3/d",
+                description="The Unified Code for Units of Measure (UCUM) representation of cubic meters per day."))
+        setattr(cls, "L/h",
+            PermissibleValue(
+                text="L/h",
+                description="The Unified Code for Units of Measure (UCUM) representation of liters per hour."))
+        setattr(cls, "[pH]",
+            PermissibleValue(
+                text="[pH]",
+                description="The Unified Code for Units of Measure (UCUM) representation of pH units."))
+        setattr(cls, "kW/m2/d",
+            PermissibleValue(
+                text="kW/m2/d",
+                description="""The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter per day."""))
+        setattr(cls, "[NTU]",
+            PermissibleValue(
+                text="[NTU]",
+                title="Nephelometric Turbidity Units",
+                description="""The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units."""))
+        setattr(cls, "[FNU]",
+            PermissibleValue(
+                text="[FNU]",
+                title="Formazin Nephelometric Units",
+                description="""The Unified Code for Units of Measure (UCUM) representation of Formazin Nephelometric Units."""))
+        setattr(cls, "m3/min",
+            PermissibleValue(
+                text="m3/min",
+                description="""The Unified Code for Units of Measure (UCUM) representation of cubic meters per minute."""))
+        setattr(cls, "km/h",
+            PermissibleValue(
+                text="km/h",
+                description="The Unified Code for Units of Measure (UCUM) representation of kilometers per hour."))
+        setattr(cls, "[lb_av]",
+            PermissibleValue(
+                text="[lb_av]",
+                title="pounds (avoirdupois)",
+                description="The Unified Code for Units of Measure (UCUM) representation of pound (avoirdupois)."))
+        setattr(cls, "kg/kg",
+            PermissibleValue(
+                text="kg/kg",
+                description="The Unified Code for Units of Measure (UCUM) representation of kilogram per kilogram."))
+        setattr(cls, "ug/m3",
+            PermissibleValue(
+                text="ug/m3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micrograms per cubic meter."""))
+        setattr(cls, "meq/L",
+            PermissibleValue(
+                text="meq/L",
+                description="""The Unified Code for Units of Measure (UCUM) representation of milliequivalents per liter."""))
+        setattr(cls, "lm/m2",
+            PermissibleValue(
+                text="lm/m2",
+                description="""The Unified Code for Units of Measure (UCUM) representation of lumens per square meter."""))
+        setattr(cls, "umol/L/h",
+            PermissibleValue(
+                text="umol/L/h",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micromoles per liter per hour."""))
+        setattr(cls, "g/cm3",
+            PermissibleValue(
+                text="g/cm3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of grams per cubic centimeter."""))
+        setattr(cls, "g/L",
+            PermissibleValue(
+                text="g/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of grams per liter."))
+        setattr(cls, "[g]",
+            PermissibleValue(
+                text="[g]",
+                title="standard gravity",
+                description="The Unified Code for Units of Measure (UCUM) representation of standard gravity."))
+        setattr(cls, "m/s2",
+            PermissibleValue(
+                text="m/s2",
+                description="""The Unified Code for Units of Measure (UCUM) representation of meters per second squared."""))
+        setattr(cls, "mol/g",
+            PermissibleValue(
+                text="mol/g",
+                description="The Unified Code for Units of Measure (UCUM) representation of moles per gram."))
+        setattr(cls, "g/m2/d",
+            PermissibleValue(
+                text="g/m2/d",
+                description="""The Unified Code for Units of Measure (UCUM) representation of grams per square meter per day."""))
+        setattr(cls, "[sft_i]",
+            PermissibleValue(
+                text="[sft_i]",
+                title="square feet",
+                description="The Unified Code for Units of Measure (UCUM) representation of square feet."))
+        setattr(cls, "[cft_i]",
+            PermissibleValue(
+                text="[cft_i]",
+                title="cubic feet",
+                description="The Unified Code for Units of Measure (UCUM) representation of cubic feet."))
+        setattr(cls, "mm/a",
+            PermissibleValue(
+                text="mm/a",
+                title="millimeters per year",
+                description="The Unified Code for Units of Measure (UCUM) representation of millimeters per year."))
+        setattr(cls, "erg/cm2/s",
+            PermissibleValue(
+                text="erg/cm2/s",
+                description="""The Unified Code for Units of Measure (UCUM) representation of ergs per square centimeter per second."""))
+        setattr(cls, "g/m2",
+            PermissibleValue(
+                text="g/m2",
+                description="The Unified Code for Units of Measure (UCUM) representation of grams per square meter."))
+        setattr(cls, "L/s",
+            PermissibleValue(
+                text="L/s",
+                description="The Unified Code for Units of Measure (UCUM) representation of liters per second."))
+        setattr(cls, "cm3/cm3",
+            PermissibleValue(
+                text="cm3/cm3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of cubic centimeters per cubic centimeter."""))
+        setattr(cls, "[kn_i]",
+            PermissibleValue(
+                text="[kn_i]",
+                title="knots",
+                description="""The Unified Code for Units of Measure (UCUM) representation of knot (nautical miles per hour)."""))
+        setattr(cls, "m3/s",
+            PermissibleValue(
+                text="m3/s",
+                description="""The Unified Code for Units of Measure (UCUM) representation of cubic meters per second."""))
+        setattr(cls, "[in_i]",
+            PermissibleValue(
+                text="[in_i]",
+                title="inches",
+                description="The Unified Code for Units of Measure (UCUM) representation of inch."))
+
+class ExecutionResourceEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="ExecutionResourceEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "NERSC-Cori",
+            PermissibleValue(
+                text="NERSC-Cori",
+                description="NERSC Cori supercomputer"))
+        setattr(cls, "NERSC-Perlmutter",
+            PermissibleValue(
+                text="NERSC-Perlmutter",
+                description="NERSC Perlmutter supercomputer"))
+        setattr(cls, "EMSL-RZR",
+            PermissibleValue(
+                text="EMSL-RZR",
+                description="Environmental Molecular Sciences Laboratory RZR cluster"))
+        setattr(cls, "EMSL-Tahoma",
+            PermissibleValue(
+                text="EMSL-Tahoma",
+                description="Environmental Molecular Sciences Laboratory RZR Tahoma cluster"))
+
+class FileTypeEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="FileTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Virus Summary",
+            PermissibleValue(
+                text="Virus Summary",
+                description="Tab separated file listing the viruses found by geNomad."))
+        setattr(cls, "Plasmid Summary",
+            PermissibleValue(
+                text="Plasmid Summary",
+                description="Tab separated file listing the plasmids found by geNomad."))
+        setattr(cls, "GeNomad Aggregated Classification",
+            PermissibleValue(
+                text="GeNomad Aggregated Classification",
+                description="""Tab separated file which combines the results from neural network-based classification and marker-based classification for virus and plasmid detection with geNomad."""))
+        setattr(cls, "Reference Calibration File",
+            PermissibleValue(
+                text="Reference Calibration File",
+                description="""A file that contains data used to calibrate a natural organic matter or metabolomics analysis."""))
+        setattr(cls, "Metagenome Raw Reads",
+            PermissibleValue(
+                text="Metagenome Raw Reads",
+                description="Interleaved paired-end raw metagenome sequencing data"))
+        setattr(cls, "Metagenome Raw Read 1",
+            PermissibleValue(
+                text="Metagenome Raw Read 1",
+                description="Read 1 raw metagenome sequencing data, aka forward reads"))
+        setattr(cls, "Metagenome Raw Read 2",
+            PermissibleValue(
+                text="Metagenome Raw Read 2",
+                description="Read 2 raw metagenome sequencing data, aka reverse reads"))
+        setattr(cls, "Metatranscriptome Raw Reads",
+            PermissibleValue(
+                text="Metatranscriptome Raw Reads",
+                description="Interleaved paired-end raw metatranscriptome sequencing data"))
+        setattr(cls, "Metatranscriptome Raw Read 1",
+            PermissibleValue(
+                text="Metatranscriptome Raw Read 1",
+                description="Read 1 raw metatranscriptome sequencing data, aka forward reads"))
+        setattr(cls, "Metatranscriptome Raw Read 2",
+            PermissibleValue(
+                text="Metatranscriptome Raw Read 2",
+                description="Read 2 raw metatranscriptome sequencing data, aka reverse reads"))
+        setattr(cls, "Direct Infusion FT-ICR MS Analysis Results",
+            PermissibleValue(
+                text="Direct Infusion FT-ICR MS Analysis Results",
+                description="FT-ICR MS based molecular formula assignment results table"))
+        setattr(cls, "Direct Infusion FT-ICR MS QC Plots",
+            PermissibleValue(
+                text="Direct Infusion FT-ICR MS QC Plots",
+                description="Quality control plots for FT-ICR MS raw data acquired by direct infusion"))
+        setattr(cls, "LC FT-ICR MS Analysis Results",
+            PermissibleValue(
+                text="LC FT-ICR MS Analysis Results",
+                description="LC FT-ICR MS-based molecular formula assignment results tables"))
+        setattr(cls, "LC FT-ICR MS QC Plots",
+            PermissibleValue(
+                text="LC FT-ICR MS QC Plots",
+                description="Quality control plots for FT-ICR MS raw data acquired with liquid chromatography"))
+        setattr(cls, "GC-MS Metabolomics Results",
+            PermissibleValue(
+                text="GC-MS Metabolomics Results",
+                description="GC-MS-based metabolite assignment results table"))
+        setattr(cls, "LC-MS Metabolomics Results",
+            PermissibleValue(
+                text="LC-MS Metabolomics Results",
+                description="LC-MS-based metabolite assignment results table"))
+        setattr(cls, "Mass Spectrometry Reference Spectral Library",
+            PermissibleValue(
+                text="Mass Spectrometry Reference Spectral Library",
+                description="Spectral library used for mass spectrometry based metabolite identification"))
+        setattr(cls, "Metaproteomics Workflow Statistics",
+            PermissibleValue(
+                text="Metaproteomics Workflow Statistics",
+                description="Aggregate workflow statistics file"))
+        setattr(cls, "Protein Report",
+            PermissibleValue(
+                text="Protein Report",
+                description="Filtered protein report file"))
+        setattr(cls, "Peptide Report",
+            PermissibleValue(
+                text="Peptide Report",
+                description="Filtered peptide report file"))
+        setattr(cls, "Unfiltered Metaproteomics Results",
+            PermissibleValue(
+                text="Unfiltered Metaproteomics Results",
+                description="MSGFjobs and MASIC output file"))
+        setattr(cls, "Read Count and RPKM",
+            PermissibleValue(
+                text="Read Count and RPKM",
+                description="Annotation read count and RPKM per feature JSON"))
+        setattr(cls, "QC non-rRNA R2",
+            PermissibleValue(
+                text="QC non-rRNA R2",
+                description="QC removed rRNA reads (R2) fastq"))
+        setattr(cls, "QC non-rRNA R1",
+            PermissibleValue(
+                text="QC non-rRNA R1",
+                description="QC removed rRNA reads (R1) fastq"))
+        setattr(cls, "Metagenome HQMQ Bins Compression File",
+            PermissibleValue(
+                text="Metagenome HQMQ Bins Compression File",
+                description="""Compressed file containing high quality and medium quality metagenome bins and associated files"""))
+        setattr(cls, "Metagenome LQ Bins Compression File",
+            PermissibleValue(
+                text="Metagenome LQ Bins Compression File",
+                description="Compressed file containing low quality metagenome bins and associated files"))
+        setattr(cls, "Metagenome Bins Info File",
+            PermissibleValue(
+                text="Metagenome Bins Info File",
+                description="File containing version information on the binning workflow"))
+        setattr(cls, "CheckM Statistics",
+            PermissibleValue(
+                text="CheckM Statistics",
+                description="CheckM statistics report"))
+        setattr(cls, "Metagenome Bins Heatmap",
+            PermissibleValue(
+                text="Metagenome Bins Heatmap",
+                description="""The Heatmap presents the pdf file containing the KO analysis results for metagenome bins"""))
+        setattr(cls, "Metagenome Bins Barplot",
+            PermissibleValue(
+                text="Metagenome Bins Barplot",
+                description="""The Bar chart presents the pdf file containing the KO analysis results for metagenome bins"""))
+        setattr(cls, "Metagenome Bins Krona Plot",
+            PermissibleValue(
+                text="Metagenome Bins Krona Plot",
+                description="""The Krona plot presents the HTML file containing the KO analysis results for metagenome bins"""))
+        setattr(cls, "Read Based Analysis Info File",
+            PermissibleValue(
+                text="Read Based Analysis Info File",
+                description="File containing reads based analysis information"))
+        setattr(cls, "GTDBTK Bacterial Summary",
+            PermissibleValue(
+                text="GTDBTK Bacterial Summary",
+                description="GTDBTK bacterial summary"))
+        setattr(cls, "GTDBTK Archaeal Summary",
+            PermissibleValue(
+                text="GTDBTK Archaeal Summary",
+                description="GTDBTK archaeal summary"))
+        setattr(cls, "GOTTCHA2 Krona Plot",
+            PermissibleValue(
+                text="GOTTCHA2 Krona Plot",
+                description="GOTTCHA2 krona plot HTML file"))
+        setattr(cls, "GOTTCHA2 Classification Report",
+            PermissibleValue(
+                text="GOTTCHA2 Classification Report",
+                description="GOTTCHA2 classification report file"))
+        setattr(cls, "GOTTCHA2 Report Full",
+            PermissibleValue(
+                text="GOTTCHA2 Report Full",
+                description="GOTTCHA2 report file"))
+        setattr(cls, "Kraken2 Krona Plot",
+            PermissibleValue(
+                text="Kraken2 Krona Plot",
+                description="Kraken2 krona plot HTML file"))
+        setattr(cls, "Centrifuge Krona Plot",
+            PermissibleValue(
+                text="Centrifuge Krona Plot",
+                description="Centrifuge krona plot HTML file"))
+        setattr(cls, "Centrifuge output report file",
+            PermissibleValue(
+                text="Centrifuge output report file",
+                description="Centrifuge output report file"))
+        setattr(cls, "Kraken2 Classification Report",
+            PermissibleValue(
+                text="Kraken2 Classification Report",
+                description="Kraken2 output report file"))
+        setattr(cls, "Kraken2 Taxonomic Classification",
+            PermissibleValue(
+                text="Kraken2 Taxonomic Classification",
+                description="Kraken2 output read classification file"))
+        setattr(cls, "Centrifuge Taxonomic Classification",
+            PermissibleValue(
+                text="Centrifuge Taxonomic Classification",
+                description="Centrifuge output read classification file"))
+        setattr(cls, "SingleM Taxonomic Classification",
+            PermissibleValue(
+                text="SingleM Taxonomic Classification",
+                description="SingleM taxonomic classification file"))
+        setattr(cls, "SingleM Krona Plot",
+            PermissibleValue(
+                text="SingleM Krona Plot",
+                description="SingleM krona plot HTML file"))
+        setattr(cls, "SingleM Clustered Report",
+            PermissibleValue(
+                text="SingleM Clustered Report",
+                description="SingleM taxonomic classification results, clustered by OTU"))
+        setattr(cls, "Structural Annotation GFF",
+            PermissibleValue(
+                text="Structural Annotation GFF",
+                description="GFF3 format file with structural annotations"))
+        setattr(cls, "Structural Annotation Stats Json",
+            PermissibleValue(
+                text="Structural Annotation Stats Json",
+                description="Structural annotations stats json"))
+        setattr(cls, "Functional Annotation GFF",
+            PermissibleValue(
+                text="Functional Annotation GFF",
+                description="GFF3 format file with functional annotations"))
+        setattr(cls, "Annotation Info File",
+            PermissibleValue(
+                text="Annotation Info File",
+                description="File containing annotation info"))
+        setattr(cls, "Annotation Amino Acid FASTA",
+            PermissibleValue(
+                text="Annotation Amino Acid FASTA",
+                description="FASTA amino acid file for annotated proteins"))
+        setattr(cls, "Annotation Enzyme Commission",
+            PermissibleValue(
+                text="Annotation Enzyme Commission",
+                description="Tab delimited file for EC annotation"))
+        setattr(cls, "Annotation KEGG Orthology",
+            PermissibleValue(
+                text="Annotation KEGG Orthology",
+                description="Tab delimited file for KO annotation"))
+        setattr(cls, "Assembly Info File",
+            PermissibleValue(
+                text="Assembly Info File",
+                description="File containing assembly info"))
+        setattr(cls, "Assembly Coverage BAM",
+            PermissibleValue(
+                text="Assembly Coverage BAM",
+                description="Sorted bam file of reads mapping back to the final assembly"))
+        setattr(cls, "Assembly AGP",
+            PermissibleValue(
+                text="Assembly AGP",
+                description="An AGP format file that describes the assembly"))
+        setattr(cls, "Assembly Scaffolds",
+            PermissibleValue(
+                text="Assembly Scaffolds",
+                description="Final assembly scaffolds fasta"))
+        setattr(cls, "Assembly Contigs",
+            PermissibleValue(
+                text="Assembly Contigs",
+                description="Final assembly contigs fasta"))
+        setattr(cls, "Assembly Coverage Stats",
+            PermissibleValue(
+                text="Assembly Coverage Stats",
+                description="Assembled contigs coverage information"))
+        setattr(cls, "Contig Mapping File",
+            PermissibleValue(
+                text="Contig Mapping File",
+                description="Contig mappings between contigs and scaffolds"))
+        setattr(cls, "Error Corrected Reads",
+            PermissibleValue(
+                text="Error Corrected Reads",
+                description="Error corrected reads fastq"))
+        setattr(cls, "Filtered Sequencing Reads",
+            PermissibleValue(
+                text="Filtered Sequencing Reads",
+                description="Reads QC result fastq (clean data)"))
+        setattr(cls, "Read Filtering Info File",
+            PermissibleValue(
+                text="Read Filtering Info File",
+                description="File containing read filtering information"))
+        setattr(cls, "QC Statistics Extended",
+            PermissibleValue(
+                text="QC Statistics Extended",
+                description="Extended report including methods and results for read filtering"))
+        setattr(cls, "QC Statistics",
+            PermissibleValue(
+                text="QC Statistics",
+                description="Reads QC summary statistics"))
+        setattr(cls, "TIGRFam Annotation GFF",
+            PermissibleValue(
+                text="TIGRFam Annotation GFF",
+                description="GFF3 format file with TIGRfam"))
+        setattr(cls, "CRT Annotation GFF",
+            PermissibleValue(
+                text="CRT Annotation GFF",
+                description="GFF3 format file with CRT"))
+        setattr(cls, "Genemark Annotation GFF",
+            PermissibleValue(
+                text="Genemark Annotation GFF",
+                description="GFF3 format file with Genemark"))
+        setattr(cls, "Prodigal Annotation GFF",
+            PermissibleValue(
+                text="Prodigal Annotation GFF",
+                description="GFF3 format file with Prodigal"))
+        setattr(cls, "TRNA Annotation GFF",
+            PermissibleValue(
+                text="TRNA Annotation GFF",
+                description="GFF3 format file with TRNA"))
+        setattr(cls, "Misc Annotation GFF",
+            PermissibleValue(
+                text="Misc Annotation GFF",
+                description="GFF3 format file with Misc"))
+        setattr(cls, "RFAM Annotation GFF",
+            PermissibleValue(
+                text="RFAM Annotation GFF",
+                description="GFF3 format file with RFAM"))
+        setattr(cls, "TMRNA Annotation GFF",
+            PermissibleValue(
+                text="TMRNA Annotation GFF",
+                description="GFF3 format file with TMRNA"))
+        setattr(cls, "Crispr Terms",
+            PermissibleValue(
+                text="Crispr Terms",
+                description="Crispr Terms"))
+        setattr(cls, "Product Names",
+            PermissibleValue(
+                text="Product Names",
+                description="Product names file"))
+        setattr(cls, "Gene Phylogeny tsv",
+            PermissibleValue(
+                text="Gene Phylogeny tsv",
+                description="Gene Phylogeny tsv"))
+        setattr(cls, "Scaffold Lineage tsv",
+            PermissibleValue(
+                text="Scaffold Lineage tsv",
+                description="phylogeny at the scaffold level"))
+        setattr(cls, "Clusters of Orthologous Groups (COG) Annotation GFF",
+            PermissibleValue(
+                text="Clusters of Orthologous Groups (COG) Annotation GFF",
+                description="GFF3 format file with COGs"))
+        setattr(cls, "KO_EC Annotation GFF",
+            PermissibleValue(
+                text="KO_EC Annotation GFF",
+                description="GFF3 format file with KO_EC"))
+        setattr(cls, "CATH FunFams (Functional Families) Annotation GFF",
+            PermissibleValue(
+                text="CATH FunFams (Functional Families) Annotation GFF",
+                description="GFF3 format file with CATH FunFams"))
+        setattr(cls, "SUPERFam Annotation GFF",
+            PermissibleValue(
+                text="SUPERFam Annotation GFF",
+                description="GFF3 format file with SUPERFam"))
+        setattr(cls, "SMART Annotation GFF",
+            PermissibleValue(
+                text="SMART Annotation GFF",
+                description="GFF3 format file with SMART"))
+        setattr(cls, "Pfam Annotation GFF",
+            PermissibleValue(
+                text="Pfam Annotation GFF",
+                description="GFF3 format file with Pfam"))
+        setattr(cls, "Annotation Statistics",
+            PermissibleValue(
+                text="Annotation Statistics",
+                description="Annotation statistics report"))
+        setattr(cls, "Direct Infusion FT ICR-MS Raw Data",
+            PermissibleValue(
+                text="Direct Infusion FT ICR-MS Raw Data",
+                description="Direct infusion Fourier transform ion cyclotron resonance mass spectrometry raw data"))
+        setattr(cls, "LC FT-ICR MS Raw Data",
+            PermissibleValue(
+                text="LC FT-ICR MS Raw Data",
+                description="""Fourier transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography"""))
+        setattr(cls, "LC-DDA-MS/MS Raw Data",
+            PermissibleValue(
+                text="LC-DDA-MS/MS Raw Data",
+                description="Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file"))
+        setattr(cls, "GC-MS Raw Data",
+            PermissibleValue(
+                text="GC-MS Raw Data",
+                description="Gas chromatography-mass spectrometry raw data, full scan mode."))
+        setattr(cls, "Configuration toml",
+            PermissibleValue(
+                text="Configuration toml",
+                description="""A configuration toml file used by various programs to store settings that are specific to their respective software."""))
+        setattr(cls, "LC-MS Lipidomics Results",
+            PermissibleValue(
+                text="LC-MS Lipidomics Results",
+                description="LC-MS-based lipidomics analysis results table"))
+        setattr(cls, "LC-MS Lipidomics Processed Data",
+            PermissibleValue(
+                text="LC-MS Lipidomics Processed Data",
+                description="Processed data for the LC-MS-based lipidomics analysis in hdf5 format"))
+        setattr(cls, "LC-MS Metabolomics Processed Data",
+            PermissibleValue(
+                text="LC-MS Metabolomics Processed Data",
+                description="Processed data for the LC-MS-based metabolomics analysis in hdf5 format"))
+        setattr(cls, "Contaminants Amino Acid FASTA",
+            PermissibleValue(
+                text="Contaminants Amino Acid FASTA",
+                description="FASTA amino acid file for contaminant proteins commonly observed in proteomics data."))
+        setattr(cls, "Analysis Tool Parameter File",
+            PermissibleValue(
+                text="Analysis Tool Parameter File",
+                description="""A configuration file used by a single computational software tool that stores settings that are specific to that tool."""))
+        setattr(cls, "Workflow Operation Summary",
+            PermissibleValue(
+                text="Workflow Operation Summary",
+                description="""A human readable record of analysis steps applied during an instance of a workflow operation."""))
+        setattr(cls, "Metatranscriptome Expression",
+            PermissibleValue(
+                text="Metatranscriptome Expression",
+                description="""Metatranscriptome expression values and read counts for gene features predicted on contigs"""))
+        setattr(cls, "Metatranscriptome Expression Intergenic",
+            PermissibleValue(
+                text="Metatranscriptome Expression Intergenic",
+                description="Metatranscriptome expression values and read counts for intergenic regions."))
+        setattr(cls, "Metatranscriptome Expression Info File",
+            PermissibleValue(
+                text="Metatranscriptome Expression Info File",
+                description="File containing version information on the expression workflow"))
+        setattr(cls, "rRNA Filtered Sequencing Reads",
+            PermissibleValue(
+                text="rRNA Filtered Sequencing Reads",
+                description="File containing ribosomal reads from the read qc filtering step."))
+        setattr(cls, "BAI File",
+            PermissibleValue(
+                text="BAI File",
+                description="""An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file."""))
+
+class DoiProviderEnum(EnumDefinitionImpl):
+
+    emsl = PermissibleValue(
+        text="emsl",
+        title="EMSL",
+        meaning=ROR["04rc0xn13"])
+    jgi = PermissibleValue(
+        text="jgi",
+        title="JGI",
+        meaning=ROR["04xm1d337"])
+    kbase = PermissibleValue(
+        text="kbase",
+        title="KBase",
+        meaning=ROR["01znn6x10"])
+    osti = PermissibleValue(
+        text="osti",
+        title="OSTI",
+        meaning=ROR["031478740"])
+    ess_dive = PermissibleValue(
+        text="ess_dive",
+        title="ESS-DIVE",
+        meaning=ROR["01t14bp54"])
+    massive = PermissibleValue(
+        text="massive",
+        title="MassIVE")
+    gsc = PermissibleValue(
+        text="gsc",
+        title="GSC")
+    zenodo = PermissibleValue(
+        text="zenodo",
+        title="Zenodo")
+    edi = PermissibleValue(
+        text="edi",
+        title="EDI",
+        meaning=ROR["0330j0z60"])
+    figshare = PermissibleValue(
+        text="figshare",
+        title="Figshare",
+        meaning=ROR["041mxqs23"])
+
+    _defn = EnumDefinition(
+        name="DoiProviderEnum",
+    )
+
+class DoiCategoryEnum(EnumDefinitionImpl):
+
+    award_doi = PermissibleValue(
+        text="award_doi",
+        description="A type of DOI that resolves to a funding authority.")
+    dataset_doi = PermissibleValue(
+        text="dataset_doi",
+        description="A type of DOI that resolves to generated data.")
+    publication_doi = PermissibleValue(
+        text="publication_doi",
+        description="A type of DOI that resolves to a publication.")
+    data_management_plan_doi = PermissibleValue(
+        text="data_management_plan_doi",
+        description="A type of DOI that resolves to a data management plan.")
+
+    _defn = EnumDefinition(
+        name="DoiCategoryEnum",
+    )
+
+class StatusEnum(EnumDefinitionImpl):
+
+    fail = PermissibleValue(text="fail")
+
+    _defn = EnumDefinition(
+        name="StatusEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "pass",
+            PermissibleValue(text="pass"))
+
+class NucleotideSequencingEnum(EnumDefinitionImpl):
+
+    metagenome = PermissibleValue(
+        text="metagenome",
+        title="Metagenome")
+    metatranscriptome = PermissibleValue(
+        text="metatranscriptome",
+        title="Metatranscriptome")
+    amplicon_sequencing_assay = PermissibleValue(
+        text="amplicon_sequencing_assay",
+        title="Amplicon",
+        meaning=OBI["0002767"])
+
+    _defn = EnumDefinition(
+        name="NucleotideSequencingEnum",
+    )
+
+class MassSpectrometryEnum(EnumDefinitionImpl):
+
+    metaproteome = PermissibleValue(
+        text="metaproteome",
+        title="Metaproteome")
+    metabolome = PermissibleValue(
+        text="metabolome",
+        title="Metabolome")
+    lipidome = PermissibleValue(
+        text="lipidome",
+        title="Lipidome")
+    nom = PermissibleValue(
+        text="nom",
+        title="Natural Organic Matter")
+
+    _defn = EnumDefinition(
+        name="MassSpectrometryEnum",
+    )
+
+class ExtractionTargetEnum(EnumDefinitionImpl):
+
+    DNA = PermissibleValue(text="DNA")
+    RNA = PermissibleValue(text="RNA")
+    metabolite = PermissibleValue(text="metabolite")
+    protein = PermissibleValue(text="protein")
+    lipid = PermissibleValue(text="lipid")
+
+    _defn = EnumDefinition(
+        name="ExtractionTargetEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "natural organic matter",
+            PermissibleValue(text="natural organic matter"))
+
+class ProcessingInstitutionEnum(EnumDefinitionImpl):
+
+    NMDC = PermissibleValue(
+        text="NMDC",
+        title="National Microbiome Data Collaborative",
+        meaning=ROR["05cwx3318"])
+    UCSD = PermissibleValue(
+        text="UCSD",
+        title="University of California, San Diego",
+        meaning=ROR["0168r3w48"])
+    JGI = PermissibleValue(
+        text="JGI",
+        title="Joint Genome Institute",
+        meaning=ROR["04xm1d337"])
+    EMSL = PermissibleValue(
+        text="EMSL",
+        title="Environmental Molecular Sciences Laboratory",
+        meaning=ROR["04rc0xn13"])
+    Battelle = PermissibleValue(
+        text="Battelle",
+        title="Battelle Memorial Institute",
+        meaning=ROR["01h5tnr73"])
+    ANL = PermissibleValue(
+        text="ANL",
+        title="Argonne National Laboratory",
+        meaning=ROR["05gvnxz63"])
+    UCD_Genome_Center = PermissibleValue(
+        text="UCD_Genome_Center",
+        title="University of California, Davis Genome Center",
+        meaning=None)
+    Azenta = PermissibleValue(
+        text="Azenta",
+        title="Azenta Life Sciences",
+        meaning=None)
+
+    _defn = EnumDefinition(
+        name="ProcessingInstitutionEnum",
+    )
+
+class DataCategoryEnum(EnumDefinitionImpl):
+
+    instrument_data = PermissibleValue(
+        text="instrument_data",
+        description="Data generated by a DataGeneration PlannedProcess")
+    processed_data = PermissibleValue(
+        text="processed_data",
+        description="Data generated by a WorkflowExecution PlannedProcess")
+    workflow_parameter_data = PermissibleValue(
+        text="workflow_parameter_data",
+        description="Data used as input into a workflow providing workflow specification.")
+
+    _defn = EnumDefinition(
+        name="DataCategoryEnum",
+    )
+
+class SourceSystemEnum(EnumDefinitionImpl):
+
+    NMDC_Submission_Portal = PermissibleValue(
+        text="NMDC_Submission_Portal",
+        description="The National Microbiome Data Collaborative's Submission Portal")
+    GOLD = PermissibleValue(
+        text="GOLD",
+        description="JGI's GOLD system")
+    NEON_Data_Portal = PermissibleValue(
+        text="NEON_Data_Portal",
+        description="National Science Foundation National Ecologial Observatory Network's Data Portal")
+    NCBI = PermissibleValue(
+        text="NCBI",
+        description="National Center for Biotechnology Information database")
+    custom = PermissibleValue(
+        text="custom",
+        description="""Metadata was generated by custom methods such as an offline spreadsheet provided by a user or staff member.""")
+
+    _defn = EnumDefinition(
+        name="SourceSystemEnum",
     )
 
 class CreditEnum(EnumDefinitionImpl):
@@ -7078,6 +8352,9 @@ class InstrumentModelEnum(EnumDefinitionImpl):
     orbitrap_fusion_lumos = PermissibleValue(text="orbitrap_fusion_lumos")
     orbitrap_eclipse_tribid = PermissibleValue(text="orbitrap_eclipse_tribid")
     orbitrap_q_exactive = PermissibleValue(text="orbitrap_q_exactive")
+    orbitrap_iqx_tribrid = PermissibleValue(text="orbitrap_iqx_tribrid")
+    orbitrap_idx_tribrid = PermissibleValue(text="orbitrap_idx_tribrid")
+    orbitrap_exploris_120 = PermissibleValue(text="orbitrap_exploris_120")
     solarix_7T = PermissibleValue(text="solarix_7T")
     solarix_12T = PermissibleValue(text="solarix_12T")
     solarix_15T = PermissibleValue(text="solarix_15T")
@@ -7261,654 +8538,60 @@ class FailureWhereEnum(EnumDefinitionImpl):
         description="""The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.""",
     )
 
-class ExecutionResourceEnum(EnumDefinitionImpl):
-
-    EMSL = PermissibleValue(
-        text="EMSL",
-        description="Environmental Molecular Sciences Laboratory")
-    JGI = PermissibleValue(
-        text="JGI",
-        description="Joint Genome Institute")
-
-    _defn = EnumDefinition(
-        name="ExecutionResourceEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "NERSC-Cori",
-            PermissibleValue(
-                text="NERSC-Cori",
-                description="NERSC Cori supercomputer"))
-        setattr(cls, "NERSC-Perlmutter",
-            PermissibleValue(
-                text="NERSC-Perlmutter",
-                description="NERSC Perlmutter supercomputer"))
-        setattr(cls, "EMSL-RZR",
-            PermissibleValue(
-                text="EMSL-RZR",
-                description="Environmental Molecular Sciences Laboratory RZR cluster"))
-        setattr(cls, "LANL-B-div",
-            PermissibleValue(
-                text="LANL-B-div",
-                description="LANL Bioscience Division"))
-
-class FileTypeEnum(EnumDefinitionImpl):
-
-    _defn = EnumDefinition(
-        name="FileTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Virus Summary",
-            PermissibleValue(
-                text="Virus Summary",
-                description="Tab separated file listing the viruses found by geNomad."))
-        setattr(cls, "Plasmid Summary",
-            PermissibleValue(
-                text="Plasmid Summary",
-                description="Tab separated file listing the plasmids found be geNomad."))
-        setattr(cls, "GeNomad Aggregated Classification",
-            PermissibleValue(
-                text="GeNomad Aggregated Classification",
-                description="""Tab separated file which combines the results from neural network-based classification and marker-based classification for virus and plasmid detection with geNomad."""))
-        setattr(cls, "Reference Calibration File",
-            PermissibleValue(
-                text="Reference Calibration File",
-                description="""A file that contains data used to calibrate a natural organic matter or metabalomics analysis."""))
-        setattr(cls, "Metagenome Raw Reads",
-            PermissibleValue(
-                text="Metagenome Raw Reads",
-                description="Interleaved paired-end raw sequencing data"))
-        setattr(cls, "Metagenome Raw Read 1",
-            PermissibleValue(
-                text="Metagenome Raw Read 1",
-                description="Read 1 raw sequencing data, aka forward reads"))
-        setattr(cls, "Metagenome Raw Read 2",
-            PermissibleValue(
-                text="Metagenome Raw Read 2",
-                description="Read 2 raw sequencing data, aka reverse reads"))
-        setattr(cls, "FT ICR-MS Analysis Results",
-            PermissibleValue(
-                text="FT ICR-MS Analysis Results",
-                description="FT ICR-MS-based molecular formula assignment results table"))
-        setattr(cls, "GC-MS Metabolomics Results",
-            PermissibleValue(
-                text="GC-MS Metabolomics Results",
-                description="GC-MS-based metabolite assignment results table"))
-        setattr(cls, "Metaproteomics Workflow Statistics",
-            PermissibleValue(
-                text="Metaproteomics Workflow Statistics",
-                description="Aggregate workflow statistics file"))
-        setattr(cls, "Protein Report",
-            PermissibleValue(
-                text="Protein Report",
-                description="Filtered protein report file"))
-        setattr(cls, "Peptide Report",
-            PermissibleValue(
-                text="Peptide Report",
-                description="Filtered peptide report file"))
-        setattr(cls, "Unfiltered Metaproteomics Results",
-            PermissibleValue(
-                text="Unfiltered Metaproteomics Results",
-                description="MSGFjobs and MASIC output file"))
-        setattr(cls, "Read Count and RPKM",
-            PermissibleValue(
-                text="Read Count and RPKM",
-                description="Annotation read count and RPKM per feature JSON"))
-        setattr(cls, "QC non-rRNA R2",
-            PermissibleValue(
-                text="QC non-rRNA R2",
-                description="QC removed rRNA reads (R2) fastq"))
-        setattr(cls, "QC non-rRNA R1",
-            PermissibleValue(
-                text="QC non-rRNA R1",
-                description="QC removed rRNA reads (R1) fastq"))
-        setattr(cls, "Metagenome Bins",
-            PermissibleValue(
-                text="Metagenome Bins",
-                description="Metagenome bin contigs fasta"))
-        setattr(cls, "Metagenome HQMQ Bins Compression File",
-            PermissibleValue(
-                text="Metagenome HQMQ Bins Compression File",
-                description="""Compressed file containing high qulaity and medium quality metagenome bins and associated files"""))
-        setattr(cls, "Metagenome LQ Bins Compression File",
-            PermissibleValue(
-                text="Metagenome LQ Bins Compression File",
-                description="Compressed file containing low quality metagenome bins and associated files"))
-        setattr(cls, "Metagenome Bins Info File",
-            PermissibleValue(
-                text="Metagenome Bins Info File",
-                description="File containing version information on the binning workflow"))
-        setattr(cls, "CheckM Statistics",
-            PermissibleValue(
-                text="CheckM Statistics",
-                description="CheckM statistics report"))
-        setattr(cls, "Metagenome Bins Heatmap",
-            PermissibleValue(
-                text="Metagenome Bins Heatmap",
-                description="""The Heatmap presents the pdf file containing the KO analysis results for metagenome bins"""))
-        setattr(cls, "Metagenome Bins Barplot",
-            PermissibleValue(
-                text="Metagenome Bins Barplot",
-                description="""The Bar chart presents the pdf file containing the KO analysis results for metagenome bins"""))
-        setattr(cls, "Metagenome Bins Krona Plot",
-            PermissibleValue(
-                text="Metagenome Bins Krona Plot",
-                description="""The Krona plot presents the HTML file containing the KO analysis results for metagenome bins"""))
-        setattr(cls, "Read Based Analysis Info File",
-            PermissibleValue(
-                text="Read Based Analysis Info File",
-                description="File containing reads based analysis information"))
-        setattr(cls, "GTDBTK Bacterial Summary",
-            PermissibleValue(
-                text="GTDBTK Bacterial Summary",
-                description="GTDBTK bacterial summary"))
-        setattr(cls, "GTDBTK Archaeal Summary",
-            PermissibleValue(
-                text="GTDBTK Archaeal Summary",
-                description="GTDBTK archaeal summary"))
-        setattr(cls, "GOTTCHA2 Krona Plot",
-            PermissibleValue(
-                text="GOTTCHA2 Krona Plot",
-                description="GOTTCHA2 krona plot HTML file"))
-        setattr(cls, "GOTTCHA2 Classification Report",
-            PermissibleValue(
-                text="GOTTCHA2 Classification Report",
-                description="GOTTCHA2 classification report file"))
-        setattr(cls, "GOTTCHA2 Report Full",
-            PermissibleValue(
-                text="GOTTCHA2 Report Full",
-                description="GOTTCHA2 report file"))
-        setattr(cls, "Kraken2 Krona Plot",
-            PermissibleValue(
-                text="Kraken2 Krona Plot",
-                description="Kraken2 krona plot HTML file"))
-        setattr(cls, "Centrifuge Krona Plot",
-            PermissibleValue(
-                text="Centrifuge Krona Plot",
-                description="Centrifuge krona plot HTML file"))
-        setattr(cls, "Centrifuge output report file",
-            PermissibleValue(
-                text="Centrifuge output report file",
-                description="Centrifuge output report file"))
-        setattr(cls, "Kraken2 Classification Report",
-            PermissibleValue(
-                text="Kraken2 Classification Report",
-                description="Kraken2 output report file"))
-        setattr(cls, "Kraken2 Taxonomic Classification",
-            PermissibleValue(
-                text="Kraken2 Taxonomic Classification",
-                description="Kraken2 output read classification file"))
-        setattr(cls, "Centrifuge Classification Report",
-            PermissibleValue(
-                text="Centrifuge Classification Report",
-                description="Centrifuge output report file"))
-        setattr(cls, "Centrifuge Taxonomic Classification",
-            PermissibleValue(
-                text="Centrifuge Taxonomic Classification",
-                description="Centrifuge output read classification file"))
-        setattr(cls, "Structural Annotation GFF",
-            PermissibleValue(
-                text="Structural Annotation GFF",
-                description="GFF3 format file with structural annotations"))
-        setattr(cls, "Structural Annotation Stats Json",
-            PermissibleValue(
-                text="Structural Annotation Stats Json",
-                description="Structural annotations stats json"))
-        setattr(cls, "Functional Annotation GFF",
-            PermissibleValue(
-                text="Functional Annotation GFF",
-                description="GFF3 format file with functional annotations"))
-        setattr(cls, "Annotation Info File",
-            PermissibleValue(
-                text="Annotation Info File",
-                description="File containing annotation info"))
-        setattr(cls, "Annotation Amino Acid FASTA",
-            PermissibleValue(
-                text="Annotation Amino Acid FASTA",
-                description="FASTA amino acid file for annotated proteins"))
-        setattr(cls, "Annotation Enzyme Commission",
-            PermissibleValue(
-                text="Annotation Enzyme Commission",
-                description="Tab delimited file for EC annotation"))
-        setattr(cls, "Annotation KEGG Orthology",
-            PermissibleValue(
-                text="Annotation KEGG Orthology",
-                description="Tab delimited file for KO annotation"))
-        setattr(cls, "Assembly Info File",
-            PermissibleValue(
-                text="Assembly Info File",
-                description="File containing assembly info"))
-        setattr(cls, "Assembly Coverage BAM",
-            PermissibleValue(
-                text="Assembly Coverage BAM",
-                description="Sorted bam file of reads mapping back to the final assembly"))
-        setattr(cls, "Assembly AGP",
-            PermissibleValue(
-                text="Assembly AGP",
-                description="An AGP format file that describes the assembly"))
-        setattr(cls, "Assembly Scaffolds",
-            PermissibleValue(
-                text="Assembly Scaffolds",
-                description="Final assembly scaffolds fasta"))
-        setattr(cls, "Assembly Contigs",
-            PermissibleValue(
-                text="Assembly Contigs",
-                description="Final assembly contigs fasta"))
-        setattr(cls, "Assembly Coverage Stats",
-            PermissibleValue(
-                text="Assembly Coverage Stats",
-                description="Assembled contigs coverage information"))
-        setattr(cls, "Contig Mapping File",
-            PermissibleValue(
-                text="Contig Mapping File",
-                description="Contig mappings between contigs and scaffolds"))
-        setattr(cls, "Error Corrected Reads",
-            PermissibleValue(
-                text="Error Corrected Reads",
-                description="Error corrected reads fastq"))
-        setattr(cls, "Filtered Sequencing Reads",
-            PermissibleValue(
-                text="Filtered Sequencing Reads",
-                description="Reads QC result fastq (clean data)"))
-        setattr(cls, "Read Filtering Info File",
-            PermissibleValue(
-                text="Read Filtering Info File",
-                description="File containing read filtering information"))
-        setattr(cls, "QC Statistics Extended",
-            PermissibleValue(
-                text="QC Statistics Extended",
-                description="Extended report including methods and results for read filtering"))
-        setattr(cls, "QC Statistics",
-            PermissibleValue(
-                text="QC Statistics",
-                description="Reads QC summary statistics"))
-        setattr(cls, "TIGRFam Annotation GFF",
-            PermissibleValue(
-                text="TIGRFam Annotation GFF",
-                description="GFF3 format file with TIGRfam"))
-        setattr(cls, "CRT Annotation GFF",
-            PermissibleValue(
-                text="CRT Annotation GFF",
-                description="GFF3 format file with CRT"))
-        setattr(cls, "Genemark Annotation GFF",
-            PermissibleValue(
-                text="Genemark Annotation GFF",
-                description="GFF3 format file with Genemark"))
-        setattr(cls, "Prodigal Annotation GFF",
-            PermissibleValue(
-                text="Prodigal Annotation GFF",
-                description="GFF3 format file with Prodigal"))
-        setattr(cls, "TRNA Annotation GFF",
-            PermissibleValue(
-                text="TRNA Annotation GFF",
-                description="GFF3 format file with TRNA"))
-        setattr(cls, "Misc Annotation GFF",
-            PermissibleValue(
-                text="Misc Annotation GFF",
-                description="GFF3 format file with Misc"))
-        setattr(cls, "RFAM Annotation GFF",
-            PermissibleValue(
-                text="RFAM Annotation GFF",
-                description="GFF3 format file with RFAM"))
-        setattr(cls, "TMRNA Annotation GFF",
-            PermissibleValue(
-                text="TMRNA Annotation GFF",
-                description="GFF3 format file with TMRNA"))
-        setattr(cls, "Crispr Terms",
-            PermissibleValue(
-                text="Crispr Terms",
-                description="Crispr Terms"))
-        setattr(cls, "Product Names",
-            PermissibleValue(
-                text="Product Names",
-                description="Product names file"))
-        setattr(cls, "Gene Phylogeny tsv",
-            PermissibleValue(
-                text="Gene Phylogeny tsv",
-                description="Gene Phylogeny tsv"))
-        setattr(cls, "Scaffold Lineage tsv",
-            PermissibleValue(
-                text="Scaffold Lineage tsv",
-                description="phylogeny at the scaffold level"))
-        setattr(cls, "Clusters of Orthologous Groups (COG) Annotation GFF",
-            PermissibleValue(
-                text="Clusters of Orthologous Groups (COG) Annotation GFF",
-                description="GFF3 format file with COGs"))
-        setattr(cls, "KO_EC Annotation GFF",
-            PermissibleValue(
-                text="KO_EC Annotation GFF",
-                description="GFF3 format file with KO_EC"))
-        setattr(cls, "CATH FunFams (Functional Families) Annotation GFF",
-            PermissibleValue(
-                text="CATH FunFams (Functional Families) Annotation GFF",
-                description="GFF3 format file with CATH FunFams"))
-        setattr(cls, "SUPERFam Annotation GFF",
-            PermissibleValue(
-                text="SUPERFam Annotation GFF",
-                description="GFF3 format file with SUPERFam"))
-        setattr(cls, "SMART Annotation GFF",
-            PermissibleValue(
-                text="SMART Annotation GFF",
-                description="GFF3 format file with SMART"))
-        setattr(cls, "Pfam Annotation GFF",
-            PermissibleValue(
-                text="Pfam Annotation GFF",
-                description="GFF3 format file with Pfam"))
-        setattr(cls, "Annotation Statistics",
-            PermissibleValue(
-                text="Annotation Statistics",
-                description="Annotation statistics report"))
-        setattr(cls, "Direct Infusion FT ICR-MS Raw Data",
-            PermissibleValue(
-                text="Direct Infusion FT ICR-MS Raw Data",
-                description="""Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired in broadband full scan mode"""))
-        setattr(cls, "LC-DDA-MS/MS Raw Data",
-            PermissibleValue(
-                text="LC-DDA-MS/MS Raw Data",
-                description="Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file"))
-        setattr(cls, "Configuration toml",
-            PermissibleValue(
-                text="Configuration toml",
-                description="""A configuration toml file used by various programs to store settings that are specific to their respective software."""))
-        setattr(cls, "LC-MS Lipidomics Results",
-            PermissibleValue(
-                text="LC-MS Lipidomics Results",
-                description="LC-MS-based lipid assignment results table."))
-        setattr(cls, "Contaminants Amino Acid FASTA",
-            PermissibleValue(
-                text="Contaminants Amino Acid FASTA",
-                description="FASTA amino acid file for contaminant proteins commonly observed in proteomics data."))
-        setattr(cls, "Analysis Tool Parameter File",
-            PermissibleValue(
-                text="Analysis Tool Parameter File",
-                description="""A configuration file used by a single computational software tool that stores settings that are specific to that tool."""))
-        setattr(cls, "Workflow Operation Summary",
-            PermissibleValue(
-                text="Workflow Operation Summary",
-                description="""A human readable record of analysis steps applied during an instance of a workflow operation."""))
-        setattr(cls, "Metatranscriptome Expression",
-            PermissibleValue(
-                text="Metatranscriptome Expression",
-                description="""Metatranscriptome expression values and read counts for gene features predicted on contigs"""))
-        setattr(cls, "Metatranscriptome Expression Intergenic",
-            PermissibleValue(
-                text="Metatranscriptome Expression Intergenic",
-                description="Metatranscriptome expression values and read counts for intergenic regions."))
-        setattr(cls, "Metatranscriptome Expression Info File",
-            PermissibleValue(
-                text="Metatranscriptome Expression Info File",
-                description="File containing version information on the expression workflow"))
-        setattr(cls, "rRNA Filtered Sequencing Reads",
-            PermissibleValue(
-                text="rRNA Filtered Sequencing Reads",
-                description="File containing ribosomal reads from the read qc filtering step."))
-        setattr(cls, "BAI File",
-            PermissibleValue(
-                text="BAI File",
-                description="""An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file."""))
-
-class DoiProviderEnum(EnumDefinitionImpl):
-
-    emsl = PermissibleValue(
-        text="emsl",
-        meaning=None)
-    jgi = PermissibleValue(
-        text="jgi",
-        meaning=None)
-    kbase = PermissibleValue(
-        text="kbase",
-        meaning=None)
-    osti = PermissibleValue(
-        text="osti",
-        meaning=None)
-    ess_dive = PermissibleValue(
-        text="ess_dive",
-        meaning=None)
-    massive = PermissibleValue(text="massive")
-    gsc = PermissibleValue(text="gsc")
-    zenodo = PermissibleValue(text="zenodo")
-    edi = PermissibleValue(
-        text="edi",
-        meaning=None)
-    figshare = PermissibleValue(
-        text="figshare",
-        meaning=None)
-
-    _defn = EnumDefinition(
-        name="DoiProviderEnum",
-    )
-
-class DoiCategoryEnum(EnumDefinitionImpl):
-
-    award_doi = PermissibleValue(
-        text="award_doi",
-        description="A type of DOI that resolves to a funding authority.")
-    dataset_doi = PermissibleValue(
-        text="dataset_doi",
-        description="A type of DOI that resolves to generated data.")
-    publication_doi = PermissibleValue(
-        text="publication_doi",
-        description="A type of DOI that resolves to a publication.")
-    data_management_plan_doi = PermissibleValue(
-        text="data_management_plan_doi",
-        description="A type of DOI that resolves to a data management plan.")
-
-    _defn = EnumDefinition(
-        name="DoiCategoryEnum",
-    )
-
-class StatusEnum(EnumDefinitionImpl):
-
-    fail = PermissibleValue(text="fail")
-
-    _defn = EnumDefinition(
-        name="StatusEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "pass",
-            PermissibleValue(text="pass"))
-
-class AnalyteCategoryEnum(EnumDefinitionImpl):
-
-    metagenome = PermissibleValue(text="metagenome")
-    metatranscriptome = PermissibleValue(text="metatranscriptome")
-    metaproteome = PermissibleValue(text="metaproteome")
-    metabolome = PermissibleValue(text="metabolome")
-    lipidome = PermissibleValue(text="lipidome")
-    nom = PermissibleValue(text="nom")
-    amplicon_sequencing_assay = PermissibleValue(
-        text="amplicon_sequencing_assay",
-        meaning=OBI["0002767"])
-
-    _defn = EnumDefinition(
-        name="AnalyteCategoryEnum",
-    )
-
-class ExtractionTargetEnum(EnumDefinitionImpl):
-
-    DNA = PermissibleValue(text="DNA")
-    RNA = PermissibleValue(text="RNA")
-    metabolite = PermissibleValue(text="metabolite")
-    protein = PermissibleValue(text="protein")
-    lipid = PermissibleValue(text="lipid")
-
-    _defn = EnumDefinition(
-        name="ExtractionTargetEnum",
-    )
-
-class ProcessingInstitutionEnum(EnumDefinitionImpl):
-
-    UCSD = PermissibleValue(
-        text="UCSD",
-        meaning=None)
-    JGI = PermissibleValue(
-        text="JGI",
-        meaning=None)
-    EMSL = PermissibleValue(
-        text="EMSL",
-        meaning=None)
-    Battelle = PermissibleValue(
-        text="Battelle",
-        meaning=None)
-    ANL = PermissibleValue(
-        text="ANL",
-        meaning=None)
-    UCD_Genome_Center = PermissibleValue(
-        text="UCD_Genome_Center",
-        meaning=None)
-    Azenta = PermissibleValue(
-        text="Azenta",
-        meaning=None)
-
-    _defn = EnumDefinition(
-        name="ProcessingInstitutionEnum",
-    )
-
-class DataCategoryEnum(EnumDefinitionImpl):
-
-    instrument_data = PermissibleValue(
-        text="instrument_data",
-        description="Data generated by a DataGeneration PlannedProcess")
-    processed_data = PermissibleValue(
-        text="processed_data",
-        description="Data generated by a WorkflowExecution PlannedProcess")
-    workflow_parameter_data = PermissibleValue(
-        text="workflow_parameter_data",
-        description="Data used as input into a workflow providing workflow specification.")
-
-    _defn = EnumDefinition(
-        name="DataCategoryEnum",
-    )
-
-class SampleTypeEnum(EnumDefinitionImpl):
-
-    soil = PermissibleValue(text="soil")
-    sediment = PermissibleValue(text="sediment")
-    water = PermissibleValue(text="water")
-
-    _defn = EnumDefinition(
-        name="SampleTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "soil - water extract",
-            PermissibleValue(text="soil - water extract"))
-        setattr(cls, "plant associated",
-            PermissibleValue(text="plant associated"))
-
-class DNASampleFormatEnum(EnumDefinitionImpl):
-
-    DNAStable = PermissibleValue(text="DNAStable")
-    Ethanol = PermissibleValue(text="Ethanol")
-    PBS = PermissibleValue(text="PBS")
-    Pellet = PermissibleValue(text="Pellet")
-    RNAStable = PermissibleValue(text="RNAStable")
-    TE = PermissibleValue(text="TE")
-    Water = PermissibleValue(text="Water")
-
-    _defn = EnumDefinition(
-        name="DNASampleFormatEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "10 mM Tris-HCl",
-            PermissibleValue(text="10 mM Tris-HCl"))
-        setattr(cls, "Low EDTA TE",
-            PermissibleValue(text="Low EDTA TE"))
-        setattr(cls, "MDA reaction buffer",
-            PermissibleValue(text="MDA reaction buffer"))
-        setattr(cls, "Gentegra-DNA",
-            PermissibleValue(text="Gentegra-DNA"))
-        setattr(cls, "Gentegra-RNA",
-            PermissibleValue(text="Gentegra-RNA"))
-
-class JgiContTypeEnum(EnumDefinitionImpl):
-
-    plate = PermissibleValue(text="plate")
-    tube = PermissibleValue(text="tube")
-
-    _defn = EnumDefinition(
-        name="JgiContTypeEnum",
-    )
-
-class YesNoEnum(EnumDefinitionImpl):
+class ProtocolForEnum(EnumDefinitionImpl):
     """
-    replaces DnaDnaseEnum and DnaseRnaEnum
+    The permitted values for describing the type of planned process that a protocol describes.
     """
-    no = PermissibleValue(text="no")
-    yes = PermissibleValue(text="yes")
+    AnnotatingWorkflow = PermissibleValue(text="AnnotatingWorkflow")
+    ChemicalConversionProcess = PermissibleValue(text="ChemicalConversionProcess")
+    ChromatographicSeparationProcess = PermissibleValue(text="ChromatographicSeparationProcess")
+    CollectingBiosamplesFromSite = PermissibleValue(text="CollectingBiosamplesFromSite")
+    DataEmitterProcess = PermissibleValue(text="DataEmitterProcess")
+    DataGeneration = PermissibleValue(text="DataGeneration")
+    DissolvingProcess = PermissibleValue(text="DissolvingProcess")
+    Extraction = PermissibleValue(text="Extraction")
+    FiltrationProcess = PermissibleValue(text="FiltrationProcess")
+    LibraryPreparation = PermissibleValue(text="LibraryPreparation")
+    MagsAnalysis = PermissibleValue(text="MagsAnalysis")
+    MassSpectrometry = PermissibleValue(text="MassSpectrometry")
+    MaterialProcessing = PermissibleValue(text="MaterialProcessing")
+    MetabolomicsAnalysis = PermissibleValue(text="MetabolomicsAnalysis")
+    MetagenomeAnnotation = PermissibleValue(text="MetagenomeAnnotation")
+    MetagenomeAssembly = PermissibleValue(text="MetagenomeAssembly")
+    MetaproteomicsAnalysis = PermissibleValue(text="MetaproteomicsAnalysis")
+    MetatranscriptomeAnnotation = PermissibleValue(text="MetatranscriptomeAnnotation")
+    MetatranscriptomeAssembly = PermissibleValue(text="MetatranscriptomeAssembly")
+    MetatranscriptomeExpressionAnalysis = PermissibleValue(text="MetatranscriptomeExpressionAnalysis")
+    MixingProcess = PermissibleValue(text="MixingProcess")
+    NomAnalysis = PermissibleValue(text="NomAnalysis")
+    NucleotideSequencing = PermissibleValue(text="NucleotideSequencing")
+    PlannedProcess = PermissibleValue(text="PlannedProcess")
+    Pooling = PermissibleValue(text="Pooling")
+    ReadBasedTaxonomyAnalysis = PermissibleValue(text="ReadBasedTaxonomyAnalysis")
+    ReadQcAnalysis = PermissibleValue(text="ReadQcAnalysis")
+    StorageProcess = PermissibleValue(text="StorageProcess")
+    SubSamplingProcess = PermissibleValue(text="SubSamplingProcess")
+    WorkflowExecution = PermissibleValue(text="WorkflowExecution")
 
     _defn = EnumDefinition(
-        name="YesNoEnum",
-        description="replaces DnaDnaseEnum and DnaseRnaEnum",
+        name="ProtocolForEnum",
+        description="The permitted values for describing the type of planned process that a protocol describes.",
     )
 
-class RNASampleFormatEnum(EnumDefinitionImpl):
+class AeroStrucEnum(EnumDefinitionImpl):
 
-    DNAStable = PermissibleValue(text="DNAStable")
-    Ethanol = PermissibleValue(text="Ethanol")
-    PBS = PermissibleValue(text="PBS")
-    Pellet = PermissibleValue(text="Pellet")
-    RNAStable = PermissibleValue(text="RNAStable")
-    TE = PermissibleValue(text="TE")
-    Water = PermissibleValue(text="Water")
+    glider = PermissibleValue(text="glider")
+    plane = PermissibleValue(text="plane")
 
     _defn = EnumDefinition(
-        name="RNASampleFormatEnum",
+        name="AeroStrucEnum",
     )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "10 mM Tris-HCl",
-            PermissibleValue(text="10 mM Tris-HCl"))
-        setattr(cls, "Low EDTA TE",
-            PermissibleValue(text="Low EDTA TE"))
-        setattr(cls, "MDA reaction buffer",
-            PermissibleValue(text="MDA reaction buffer"))
-        setattr(cls, "Gentegra-DNA",
-            PermissibleValue(text="Gentegra-DNA"))
-        setattr(cls, "Gentegra-RNA",
-            PermissibleValue(text="Gentegra-RNA"))
-
-class AnalysisTypeEnum(EnumDefinitionImpl):
-
-    metabolomics = PermissibleValue(text="metabolomics")
-    metagenomics = PermissibleValue(
-        text="metagenomics",
-        description="Standard short-read metagenomic sequencing")
-    metagenomics_long_read = PermissibleValue(
-        text="metagenomics_long_read",
-        description="Long-read metagenomic sequencing")
-    metaproteomics = PermissibleValue(text="metaproteomics")
-    metatranscriptomics = PermissibleValue(text="metatranscriptomics")
-
-    _defn = EnumDefinition(
-        name="AnalysisTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "natural organic matter",
-            PermissibleValue(text="natural organic matter"))
-        setattr(cls, "bulk chemistry",
-            PermissibleValue(text="bulk chemistry"))
-        setattr(cls, "amplicon sequencing assay",
-            PermissibleValue(
-                text="amplicon sequencing assay",
-                meaning=OBI["0002767"]))
 
 class ArchStrucEnum(EnumDefinitionImpl):
 
     building = PermissibleValue(text="building")
-    shed = PermissibleValue(text="shed")
     home = PermissibleValue(text="home")
+    shed = PermissibleValue(text="shed")
 
     _defn = EnumDefinition(
         name="ArchStrucEnum",
@@ -7916,10 +8599,10 @@ class ArchStrucEnum(EnumDefinitionImpl):
 
 class BiolStatEnum(EnumDefinitionImpl):
 
-    wild = PermissibleValue(text="wild")
-    natural = PermissibleValue(text="natural")
     hybrid = PermissibleValue(text="hybrid")
     mutant = PermissibleValue(text="mutant")
+    natural = PermissibleValue(text="natural")
+    wild = PermissibleValue(text="wild")
 
     _defn = EnumDefinition(
         name="BiolStatEnum",
@@ -7927,20 +8610,21 @@ class BiolStatEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "semi-natural",
-            PermissibleValue(text="semi-natural"))
-        setattr(cls, "inbred line",
-            PermissibleValue(text="inbred line"))
         setattr(cls, "breeder's line",
             PermissibleValue(text="breeder's line"))
         setattr(cls, "clonal selection",
             PermissibleValue(text="clonal selection"))
+        setattr(cls, "inbred line",
+            PermissibleValue(text="inbred line"))
+        setattr(cls, "semi-natural",
+            PermissibleValue(text="semi-natural"))
 
 class BioticRelationshipEnum(EnumDefinitionImpl):
 
-    parasite = PermissibleValue(text="parasite")
-    commensal = PermissibleValue(text="commensal")
-    symbiont = PermissibleValue(text="symbiont")
+    commensalism = PermissibleValue(text="commensalism")
+    mutualism = PermissibleValue(text="mutualism")
+    parasitism = PermissibleValue(text="parasitism")
+    symbiotic = PermissibleValue(text="symbiotic")
 
     _defn = EnumDefinition(
         name="BioticRelationshipEnum",
@@ -7985,14 +8669,14 @@ class BuildDocsEnum(EnumDefinitionImpl):
 
 class BuildOccupTypeEnum(EnumDefinitionImpl):
 
-    office = PermissibleValue(text="office")
-    market = PermissibleValue(text="market")
-    restaurant = PermissibleValue(text="restaurant")
-    residence = PermissibleValue(text="residence")
-    school = PermissibleValue(text="school")
-    residential = PermissibleValue(text="residential")
-    commercial = PermissibleValue(text="commercial")
     airport = PermissibleValue(text="airport")
+    commercial = PermissibleValue(text="commercial")
+    market = PermissibleValue(text="market")
+    office = PermissibleValue(text="office")
+    residence = PermissibleValue(text="residence")
+    residential = PermissibleValue(text="residential")
+    restaurant = PermissibleValue(text="restaurant")
+    school = PermissibleValue(text="school")
 
     _defn = EnumDefinition(
         name="BuildOccupTypeEnum",
@@ -8000,54 +8684,46 @@ class BuildOccupTypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "low rise",
-            PermissibleValue(text="low rise"))
-        setattr(cls, "high rise",
-            PermissibleValue(text="high rise"))
-        setattr(cls, "wood framed",
-            PermissibleValue(text="wood framed"))
         setattr(cls, "health care",
             PermissibleValue(text="health care"))
+        setattr(cls, "high rise",
+            PermissibleValue(text="high rise"))
+        setattr(cls, "low rise",
+            PermissibleValue(text="low rise"))
         setattr(cls, "sports complex",
             PermissibleValue(text="sports complex"))
+        setattr(cls, "wood framed",
+            PermissibleValue(text="wood framed"))
 
 class BuildingSettingEnum(EnumDefinitionImpl):
 
-    urban = PermissibleValue(text="urban")
-    suburban = PermissibleValue(text="suburban")
     exurban = PermissibleValue(text="exurban")
     rural = PermissibleValue(text="rural")
+    suburban = PermissibleValue(text="suburban")
+    urban = PermissibleValue(text="urban")
 
     _defn = EnumDefinition(
         name="BuildingSettingEnum",
     )
 
-class CeilCondEnum(EnumDefinitionImpl):
+class BuiltStrucSetEnum(EnumDefinitionImpl):
 
-    new = PermissibleValue(text="new")
-    damaged = PermissibleValue(text="damaged")
-    rupture = PermissibleValue(text="rupture")
+    rural = PermissibleValue(text="rural")
+    urban = PermissibleValue(text="urban")
 
     _defn = EnumDefinition(
-        name="CeilCondEnum",
+        name="BuiltStrucSetEnum",
     )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "visible wear",
-            PermissibleValue(text="visible wear"))
-        setattr(cls, "needs repair",
-            PermissibleValue(text="needs repair"))
 
 class CeilFinishMatEnum(EnumDefinitionImpl):
 
-    drywall = PermissibleValue(text="drywall")
-    tiles = PermissibleValue(text="tiles")
     PVC = PermissibleValue(text="PVC")
-    plasterboard = PermissibleValue(text="plasterboard")
-    metal = PermissibleValue(text="metal")
+    drywall = PermissibleValue(text="drywall")
     fiberglass = PermissibleValue(text="fiberglass")
+    metal = PermissibleValue(text="metal")
+    plasterboard = PermissibleValue(text="plasterboard")
     stucco = PermissibleValue(text="stucco")
+    tiles = PermissibleValue(text="tiles")
     wood = PermissibleValue(text="wood")
 
     _defn = EnumDefinition(
@@ -8061,7 +8737,38 @@ class CeilFinishMatEnum(EnumDefinitionImpl):
         setattr(cls, "mineral wool/calcium silicate",
             PermissibleValue(text="mineral wool/calcium silicate"))
 
-class CeilTextureEnum(EnumDefinitionImpl):
+class CeilStrucEnum(EnumDefinitionImpl):
+
+    concrete = PermissibleValue(text="concrete")
+
+    _defn = EnumDefinition(
+        name="CeilStrucEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "wood frame",
+            PermissibleValue(text="wood frame"))
+
+class CeilTypeEnum(EnumDefinitionImpl):
+
+    cathedral = PermissibleValue(text="cathedral")
+    coffered = PermissibleValue(text="coffered")
+    concave = PermissibleValue(text="concave")
+    cove = PermissibleValue(text="cove")
+    dropped = PermissibleValue(text="dropped")
+    stretched = PermissibleValue(text="stretched")
+
+    _defn = EnumDefinition(
+        name="CeilTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "barrel-shaped",
+            PermissibleValue(text="barrel-shaped"))
+
+class CeilingWallTextureEnum(EnumDefinitionImpl):
 
     knockdown = PermissibleValue(text="knockdown")
     popcorn = PermissibleValue(text="popcorn")
@@ -8069,11 +8776,13 @@ class CeilTextureEnum(EnumDefinitionImpl):
     swirl = PermissibleValue(text="swirl")
 
     _defn = EnumDefinition(
-        name="CeilTextureEnum",
+        name="CeilingWallTextureEnum",
     )
 
     @classmethod
     def _addvals(cls):
+        setattr(cls, "Santa-Fe texture",
+            PermissibleValue(text="Santa-Fe texture"))
         setattr(cls, "crows feet",
             PermissibleValue(text="crows feet"))
         setattr(cls, "crows-foot stomp",
@@ -8086,92 +8795,59 @@ class CeilTextureEnum(EnumDefinitionImpl):
             PermissibleValue(text="orange peel"))
         setattr(cls, "rosebud stomp",
             PermissibleValue(text="rosebud stomp"))
-        setattr(cls, "Santa-Fe texture",
-            PermissibleValue(text="Santa-Fe texture"))
         setattr(cls, "skip trowel",
             PermissibleValue(text="skip trowel"))
         setattr(cls, "stomp knockdown",
             PermissibleValue(text="stomp knockdown"))
 
-class CeilTypeEnum(EnumDefinitionImpl):
+class CompassDirections8Enum(EnumDefinitionImpl):
 
-    cathedral = PermissibleValue(text="cathedral")
-    dropped = PermissibleValue(text="dropped")
-    concave = PermissibleValue(text="concave")
-    coffered = PermissibleValue(text="coffered")
-    cove = PermissibleValue(text="cove")
-    stretched = PermissibleValue(text="stretched")
+    east = PermissibleValue(text="east")
+    north = PermissibleValue(text="north")
+    northeast = PermissibleValue(text="northeast")
+    northwest = PermissibleValue(text="northwest")
+    south = PermissibleValue(text="south")
+    southeast = PermissibleValue(text="southeast")
+    southwest = PermissibleValue(text="southwest")
+    west = PermissibleValue(text="west")
 
     _defn = EnumDefinition(
-        name="CeilTypeEnum",
+        name="CompassDirections8Enum",
+    )
+
+class DamagedEnum(EnumDefinitionImpl):
+
+    damaged = PermissibleValue(text="damaged")
+    new = PermissibleValue(text="new")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="DamagedEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "barrel-shaped",
-            PermissibleValue(text="barrel-shaped"))
+        setattr(cls, "needs repair",
+            PermissibleValue(text="needs repair"))
+        setattr(cls, "visible wear",
+            PermissibleValue(text="visible wear"))
 
-class CurLandUseEnum(EnumDefinitionImpl):
+class DamagedRupturedEnum(EnumDefinitionImpl):
 
-    badlands = PermissibleValue(text="badlands")
-    cities = PermissibleValue(text="cities")
-    conifers = PermissibleValue(text="conifers")
-    farmstead = PermissibleValue(text="farmstead")
-    gravel = PermissibleValue(text="gravel")
-    hardwoods = PermissibleValue(text="hardwoods")
-    hayland = PermissibleValue(text="hayland")
-    marshlands = PermissibleValue(text="marshlands")
-    meadows = PermissibleValue(text="meadows")
-    mudflats = PermissibleValue(text="mudflats")
-    pastureland = PermissibleValue(text="pastureland")
-    rainforest = PermissibleValue(text="rainforest")
-    rangeland = PermissibleValue(text="rangeland")
-    rock = PermissibleValue(text="rock")
-    sand = PermissibleValue(text="sand")
-    swamp = PermissibleValue(text="swamp")
-    tropical = PermissibleValue(text="tropical")
-    tundra = PermissibleValue(text="tundra")
+    damaged = PermissibleValue(text="damaged")
+    new = PermissibleValue(text="new")
+    rupture = PermissibleValue(text="rupture")
 
     _defn = EnumDefinition(
-        name="CurLandUseEnum",
+        name="DamagedRupturedEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "crop trees",
-            PermissibleValue(text="crop trees"))
-        setattr(cls, "horticultural plants",
-            PermissibleValue(text="horticultural plants"))
-        setattr(cls, "industrial areas",
-            PermissibleValue(text="industrial areas"))
-        setattr(cls, "intermixed hardwood and conifers",
-            PermissibleValue(text="intermixed hardwood and conifers"))
-        setattr(cls, "mines/quarries",
-            PermissibleValue(text="mines/quarries"))
-        setattr(cls, "oil waste areas",
-            PermissibleValue(text="oil waste areas"))
-        setattr(cls, "permanent snow or ice",
-            PermissibleValue(text="permanent snow or ice"))
-        setattr(cls, "roads/railroads",
-            PermissibleValue(text="roads/railroads"))
-        setattr(cls, "row crops",
-            PermissibleValue(text="row crops"))
-        setattr(cls, "saline seeps",
-            PermissibleValue(text="saline seeps"))
-        setattr(cls, "salt flats",
-            PermissibleValue(text="salt flats"))
-        setattr(cls, "shrub crops",
-            PermissibleValue(text="shrub crops"))
-        setattr(cls, "shrub land",
-            PermissibleValue(text="shrub land"))
-        setattr(cls, "small grains",
-            PermissibleValue(text="small grains"))
-        setattr(cls, "successional shrub land",
-            PermissibleValue(text="successional shrub land"))
-        setattr(cls, "vegetable crops",
-            PermissibleValue(text="vegetable crops"))
-        setattr(cls, "vine crops",
-            PermissibleValue(text="vine crops"))
+        setattr(cls, "needs repair",
+            PermissibleValue(text="needs repair"))
+        setattr(cls, "visible wear",
+            PermissibleValue(text="visible wear"))
 
 class DeposEnvEnum(EnumDefinitionImpl):
 
@@ -8183,36 +8859,36 @@ class DeposEnvEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Continental - Alluvial",
-            PermissibleValue(text="Continental - Alluvial"))
         setattr(cls, "Continental - Aeolian",
             PermissibleValue(text="Continental - Aeolian"))
+        setattr(cls, "Continental - Alluvial",
+            PermissibleValue(text="Continental - Alluvial"))
         setattr(cls, "Continental - Fluvial",
             PermissibleValue(text="Continental - Fluvial"))
         setattr(cls, "Continental - Lacustrine",
             PermissibleValue(text="Continental - Lacustrine"))
-        setattr(cls, "Transitional - Deltaic",
-            PermissibleValue(text="Transitional - Deltaic"))
-        setattr(cls, "Transitional - Tidal",
-            PermissibleValue(text="Transitional - Tidal"))
-        setattr(cls, "Transitional - Lagoonal",
-            PermissibleValue(text="Transitional - Lagoonal"))
-        setattr(cls, "Transitional - Beach",
-            PermissibleValue(text="Transitional - Beach"))
-        setattr(cls, "Transitional - Lake",
-            PermissibleValue(text="Transitional - Lake"))
-        setattr(cls, "Marine - Shallow",
-            PermissibleValue(text="Marine - Shallow"))
         setattr(cls, "Marine - Deep",
             PermissibleValue(text="Marine - Deep"))
         setattr(cls, "Marine - Reef",
             PermissibleValue(text="Marine - Reef"))
+        setattr(cls, "Marine - Shallow",
+            PermissibleValue(text="Marine - Shallow"))
         setattr(cls, "Other - Evaporite",
             PermissibleValue(text="Other - Evaporite"))
         setattr(cls, "Other - Glacial",
             PermissibleValue(text="Other - Glacial"))
         setattr(cls, "Other - Volcanic",
             PermissibleValue(text="Other - Volcanic"))
+        setattr(cls, "Transitional - Beach",
+            PermissibleValue(text="Transitional - Beach"))
+        setattr(cls, "Transitional - Deltaic",
+            PermissibleValue(text="Transitional - Deltaic"))
+        setattr(cls, "Transitional - Lagoonal",
+            PermissibleValue(text="Transitional - Lagoonal"))
+        setattr(cls, "Transitional - Lake",
+            PermissibleValue(text="Transitional - Lake"))
+        setattr(cls, "Transitional - Tidal",
+            PermissibleValue(text="Transitional - Tidal"))
 
 class DoorCompTypeEnum(EnumDefinitionImpl):
 
@@ -8229,23 +8905,6 @@ class DoorCompTypeEnum(EnumDefinitionImpl):
         setattr(cls, "metal covered",
             PermissibleValue(text="metal covered"))
 
-class DoorCondEnum(EnumDefinitionImpl):
-
-    damaged = PermissibleValue(text="damaged")
-    new = PermissibleValue(text="new")
-    rupture = PermissibleValue(text="rupture")
-
-    _defn = EnumDefinition(
-        name="DoorCondEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "needs repair",
-            PermissibleValue(text="needs repair"))
-        setattr(cls, "visible wear",
-            PermissibleValue(text="visible wear"))
-
 class DoorDirectEnum(EnumDefinitionImpl):
 
     inward = PermissibleValue(text="inward")
@@ -8254,17 +8913,6 @@ class DoorDirectEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="DoorDirectEnum",
-    )
-
-class DoorLocEnum(EnumDefinitionImpl):
-
-    north = PermissibleValue(text="north")
-    south = PermissibleValue(text="south")
-    east = PermissibleValue(text="east")
-    west = PermissibleValue(text="west")
-
-    _defn = EnumDefinition(
-        name="DoorLocEnum",
     )
 
 class DoorMatEnum(EnumDefinitionImpl):
@@ -8336,33 +8984,6 @@ class DoorTypeMetalEnum(EnumDefinitionImpl):
         setattr(cls, "steel plate",
             PermissibleValue(text="steel plate"))
 
-class DoorTypeWoodEnum(EnumDefinitionImpl):
-
-    battened = PermissibleValue(text="battened")
-    flush = PermissibleValue(text="flush")
-    louvered = PermissibleValue(text="louvered")
-
-    _defn = EnumDefinition(
-        name="DoorTypeWoodEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "bettened and ledged",
-            PermissibleValue(text="bettened and ledged"))
-        setattr(cls, "ledged and braced",
-            PermissibleValue(text="ledged and braced"))
-        setattr(cls, "ledged and framed",
-            PermissibleValue(text="ledged and framed"))
-        setattr(cls, "ledged, braced and frame",
-            PermissibleValue(text="ledged, braced and frame"))
-        setattr(cls, "framed and paneled",
-            PermissibleValue(text="framed and paneled"))
-        setattr(cls, "glashed or sash",
-            PermissibleValue(text="glashed or sash"))
-        setattr(cls, "wire gauged",
-            PermissibleValue(text="wire gauged"))
-
 class DrainageClassEnum(EnumDefinitionImpl):
 
     poorly = PermissibleValue(text="poorly")
@@ -8374,22 +8995,22 @@ class DrainageClassEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "very poorly",
-            PermissibleValue(text="very poorly"))
-        setattr(cls, "somewhat poorly",
-            PermissibleValue(text="somewhat poorly"))
-        setattr(cls, "moderately well",
-            PermissibleValue(text="moderately well"))
         setattr(cls, "excessively drained",
             PermissibleValue(text="excessively drained"))
+        setattr(cls, "moderately well",
+            PermissibleValue(text="moderately well"))
+        setattr(cls, "somewhat poorly",
+            PermissibleValue(text="somewhat poorly"))
+        setattr(cls, "very poorly",
+            PermissibleValue(text="very poorly"))
 
 class DrawingsEnum(EnumDefinitionImpl):
 
-    operation = PermissibleValue(text="operation")
-    construction = PermissibleValue(text="construction")
     bid = PermissibleValue(text="bid")
+    construction = PermissibleValue(text="construction")
     design = PermissibleValue(text="design")
     diagram = PermissibleValue(text="diagram")
+    operation = PermissibleValue(text="operation")
     sketch = PermissibleValue(text="sketch")
 
     _defn = EnumDefinition(
@@ -8403,43 +9024,18 @@ class DrawingsEnum(EnumDefinitionImpl):
         setattr(cls, "building navigation map",
             PermissibleValue(text="building navigation map"))
 
-class ExtWallOrientEnum(EnumDefinitionImpl):
-
-    north = PermissibleValue(text="north")
-    south = PermissibleValue(text="south")
-    east = PermissibleValue(text="east")
-    west = PermissibleValue(text="west")
-    northeast = PermissibleValue(text="northeast")
-    southeast = PermissibleValue(text="southeast")
-    southwest = PermissibleValue(text="southwest")
-    northwest = PermissibleValue(text="northwest")
-
-    _defn = EnumDefinition(
-        name="ExtWallOrientEnum",
-    )
-
-class ExtWindowOrientEnum(EnumDefinitionImpl):
-
-    north = PermissibleValue(text="north")
-    south = PermissibleValue(text="south")
-    east = PermissibleValue(text="east")
-    west = PermissibleValue(text="west")
-    northeast = PermissibleValue(text="northeast")
-    southeast = PermissibleValue(text="southeast")
-    southwest = PermissibleValue(text="southwest")
-    northwest = PermissibleValue(text="northwest")
-
-    _defn = EnumDefinition(
-        name="ExtWindowOrientEnum",
-    )
-
 class FaoClassEnum(EnumDefinitionImpl):
 
     Acrisols = PermissibleValue(text="Acrisols")
+    Alisols = PermissibleValue(text="Alisols")
     Andosols = PermissibleValue(text="Andosols")
+    Anthrosols = PermissibleValue(text="Anthrosols")
     Arenosols = PermissibleValue(text="Arenosols")
+    Calcisols = PermissibleValue(text="Calcisols")
     Cambisols = PermissibleValue(text="Cambisols")
     Chernozems = PermissibleValue(text="Chernozems")
+    Cryosols = PermissibleValue(text="Cryosols")
+    Durisols = PermissibleValue(text="Durisols")
     Ferralsols = PermissibleValue(text="Ferralsols")
     Fluvisols = PermissibleValue(text="Fluvisols")
     Gleysols = PermissibleValue(text="Gleysols")
@@ -8448,10 +9044,13 @@ class FaoClassEnum(EnumDefinitionImpl):
     Histosols = PermissibleValue(text="Histosols")
     Kastanozems = PermissibleValue(text="Kastanozems")
     Lithosols = PermissibleValue(text="Lithosols")
+    Leptosols = PermissibleValue(text="Leptosols")
+    Lixisols = PermissibleValue(text="Lixisols")
     Luvisols = PermissibleValue(text="Luvisols")
     Nitosols = PermissibleValue(text="Nitosols")
     Phaeozems = PermissibleValue(text="Phaeozems")
     Planosols = PermissibleValue(text="Planosols")
+    Plinthosols = PermissibleValue(text="Plinthosols")
     Podzols = PermissibleValue(text="Podzols")
     Podzoluvisols = PermissibleValue(text="Podzoluvisols")
     Rankers = PermissibleValue(text="Rankers")
@@ -8459,6 +9058,9 @@ class FaoClassEnum(EnumDefinitionImpl):
     Rendzinas = PermissibleValue(text="Rendzinas")
     Solonchaks = PermissibleValue(text="Solonchaks")
     Solonetz = PermissibleValue(text="Solonetz")
+    Stagnosols = PermissibleValue(text="Stagnosols")
+    Technosols = PermissibleValue(text="Technosols")
+    Umbrisols = PermissibleValue(text="Umbrisols")
     Vertisols = PermissibleValue(text="Vertisols")
     Yermosols = PermissibleValue(text="Yermosols")
 
@@ -8477,65 +9079,27 @@ class FilterTypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "particulate air filter",
-            PermissibleValue(text="particulate air filter"))
         setattr(cls, "chemical air filter",
             PermissibleValue(text="chemical air filter"))
-        setattr(cls, "low-MERV pleated media",
-            PermissibleValue(text="low-MERV pleated media"))
         setattr(cls, "gas-phase or ultraviolet air treatments",
             PermissibleValue(text="gas-phase or ultraviolet air treatments"))
+        setattr(cls, "low-MERV pleated media",
+            PermissibleValue(text="low-MERV pleated media"))
+        setattr(cls, "particulate air filter",
+            PermissibleValue(text="particulate air filter"))
 
-class FloorCondEnum(EnumDefinitionImpl):
-
-    new = PermissibleValue(text="new")
-    damaged = PermissibleValue(text="damaged")
-    rupture = PermissibleValue(text="rupture")
+class FireplaceTypeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
-        name="FloorCondEnum",
+        name="FireplaceTypeEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "visible wear",
-            PermissibleValue(text="visible wear"))
-        setattr(cls, "needs repair",
-            PermissibleValue(text="needs repair"))
-
-class FloorFinishMatEnum(EnumDefinitionImpl):
-
-    tile = PermissibleValue(text="tile")
-    carpet = PermissibleValue(text="carpet")
-    rug = PermissibleValue(text="rug")
-    lineoleum = PermissibleValue(text="lineoleum")
-    stone = PermissibleValue(text="stone")
-    bamboo = PermissibleValue(text="bamboo")
-    cork = PermissibleValue(text="cork")
-    terrazo = PermissibleValue(text="terrazo")
-    concrete = PermissibleValue(text="concrete")
-    none = PermissibleValue(text="none")
-    sealed = PermissibleValue(text="sealed")
-    paint = PermissibleValue(text="paint")
-
-    _defn = EnumDefinition(
-        name="FloorFinishMatEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "wood strip or parquet",
-            PermissibleValue(text="wood strip or parquet"))
-        setattr(cls, "laminate wood",
-            PermissibleValue(text="laminate wood"))
-        setattr(cls, "vinyl composition tile",
-            PermissibleValue(text="vinyl composition tile"))
-        setattr(cls, "sheet vinyl",
-            PermissibleValue(text="sheet vinyl"))
-        setattr(cls, "clear finish",
-            PermissibleValue(text="clear finish"))
-        setattr(cls, "none or unfinished",
-            PermissibleValue(text="none or unfinished"))
+        setattr(cls, "gas burning",
+            PermissibleValue(text="gas burning"))
+        setattr(cls, "wood burning",
+            PermissibleValue(text="wood burning"))
 
 class FloorStrucEnum(EnumDefinitionImpl):
 
@@ -8569,30 +9133,30 @@ class FloorWaterMoldEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "mold odor",
-            PermissibleValue(text="mold odor"))
-        setattr(cls, "wet floor",
-            PermissibleValue(text="wet floor"))
-        setattr(cls, "water stains",
-            PermissibleValue(text="water stains"))
-        setattr(cls, "wall discoloration",
-            PermissibleValue(text="wall discoloration"))
-        setattr(cls, "floor discoloration",
-            PermissibleValue(text="floor discoloration"))
-        setattr(cls, "ceiling discoloration",
-            PermissibleValue(text="ceiling discoloration"))
-        setattr(cls, "peeling paint or wallpaper",
-            PermissibleValue(text="peeling paint or wallpaper"))
         setattr(cls, "bulging walls",
             PermissibleValue(text="bulging walls"))
+        setattr(cls, "ceiling discoloration",
+            PermissibleValue(text="ceiling discoloration"))
+        setattr(cls, "floor discoloration",
+            PermissibleValue(text="floor discoloration"))
+        setattr(cls, "mold odor",
+            PermissibleValue(text="mold odor"))
+        setattr(cls, "peeling paint or wallpaper",
+            PermissibleValue(text="peeling paint or wallpaper"))
+        setattr(cls, "wall discoloration",
+            PermissibleValue(text="wall discoloration"))
+        setattr(cls, "water stains",
+            PermissibleValue(text="water stains"))
+        setattr(cls, "wet floor",
+            PermissibleValue(text="wet floor"))
 
 class FreqCleanEnum(EnumDefinitionImpl):
 
+    Annually = PermissibleValue(text="Annually")
     Daily = PermissibleValue(text="Daily")
-    Weekly = PermissibleValue(text="Weekly")
     Monthly = PermissibleValue(text="Monthly")
     Quarterly = PermissibleValue(text="Quarterly")
-    Annually = PermissibleValue(text="Annually")
+    Weekly = PermissibleValue(text="Weekly")
     other = PermissibleValue(text="other")
 
     _defn = EnumDefinition(
@@ -8623,16 +9187,41 @@ class GenderRestroomEnum(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "all gender",
             PermissibleValue(text="all gender"))
-        setattr(cls, "gender neurtral",
-            PermissibleValue(text="gender neurtral"))
+        setattr(cls, "gender neutral",
+            PermissibleValue(text="gender neutral"))
         setattr(cls, "male and female",
             PermissibleValue(text="male and female"))
+
+class GeolAgeEnum(EnumDefinitionImpl):
+
+    Archean = PermissibleValue(text="Archean")
+    Cambrian = PermissibleValue(text="Cambrian")
+    Carboniferous = PermissibleValue(text="Carboniferous")
+    Cenozoic = PermissibleValue(text="Cenozoic")
+    Cretaceous = PermissibleValue(text="Cretaceous")
+    Devonian = PermissibleValue(text="Devonian")
+    Jurassic = PermissibleValue(text="Jurassic")
+    Mesozoic = PermissibleValue(text="Mesozoic")
+    Neogene = PermissibleValue(text="Neogene")
+    Ordovician = PermissibleValue(text="Ordovician")
+    Paleogene = PermissibleValue(text="Paleogene")
+    Paleozoic = PermissibleValue(text="Paleozoic")
+    Permian = PermissibleValue(text="Permian")
+    Precambrian = PermissibleValue(text="Precambrian")
+    Proterozoic = PermissibleValue(text="Proterozoic")
+    Silurian = PermissibleValue(text="Silurian")
+    Triassic = PermissibleValue(text="Triassic")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="GeolAgeEnum",
+    )
 
 class GrowthHabitEnum(EnumDefinitionImpl):
 
     erect = PermissibleValue(text="erect")
-    spreading = PermissibleValue(text="spreading")
     prostrate = PermissibleValue(text="prostrate")
+    spreading = PermissibleValue(text="spreading")
 
     _defn = EnumDefinition(
         name="GrowthHabitEnum",
@@ -8662,9 +9251,9 @@ class HandidnessEnum(EnumDefinitionImpl):
 
 class HcProducedEnum(EnumDefinitionImpl):
 
-    Oil = PermissibleValue(text="Oil")
-    Gas = PermissibleValue(text="Gas")
     Bitumen = PermissibleValue(text="Bitumen")
+    Gas = PermissibleValue(text="Gas")
+    Oil = PermissibleValue(text="Oil")
     other = PermissibleValue(text="other")
 
     _defn = EnumDefinition(
@@ -8673,10 +9262,10 @@ class HcProducedEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Gas-Condensate",
-            PermissibleValue(text="Gas-Condensate"))
         setattr(cls, "Coalbed Methane",
             PermissibleValue(text="Coalbed Methane"))
+        setattr(cls, "Gas-Condensate",
+            PermissibleValue(text="Gas-Condensate"))
 
 class HcrEnum(EnumDefinitionImpl):
 
@@ -8690,41 +9279,16 @@ class HcrEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Oil Reservoir",
-            PermissibleValue(text="Oil Reservoir"))
         setattr(cls, "Gas Reservoir",
             PermissibleValue(text="Gas Reservoir"))
+        setattr(cls, "Oil Reservoir",
+            PermissibleValue(text="Oil Reservoir"))
         setattr(cls, "Oil Sand",
             PermissibleValue(text="Oil Sand"))
-        setattr(cls, "Tight Oil Reservoir",
-            PermissibleValue(text="Tight Oil Reservoir"))
         setattr(cls, "Tight Gas Reservoir",
             PermissibleValue(text="Tight Gas Reservoir"))
-
-class HcrGeolAgeEnum(EnumDefinitionImpl):
-
-    Archean = PermissibleValue(text="Archean")
-    Cambrian = PermissibleValue(text="Cambrian")
-    Carboniferous = PermissibleValue(text="Carboniferous")
-    Cenozoic = PermissibleValue(text="Cenozoic")
-    Cretaceous = PermissibleValue(text="Cretaceous")
-    Devonian = PermissibleValue(text="Devonian")
-    Jurassic = PermissibleValue(text="Jurassic")
-    Mesozoic = PermissibleValue(text="Mesozoic")
-    Neogene = PermissibleValue(text="Neogene")
-    Ordovician = PermissibleValue(text="Ordovician")
-    Paleogene = PermissibleValue(text="Paleogene")
-    Paleozoic = PermissibleValue(text="Paleozoic")
-    Permian = PermissibleValue(text="Permian")
-    Precambrian = PermissibleValue(text="Precambrian")
-    Proterozoic = PermissibleValue(text="Proterozoic")
-    Silurian = PermissibleValue(text="Silurian")
-    Triassic = PermissibleValue(text="Triassic")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="HcrGeolAgeEnum",
-    )
+        setattr(cls, "Tight Oil Reservoir",
+            PermissibleValue(text="Tight Oil Reservoir"))
 
 class HeatCoolTypeEnum(EnumDefinitionImpl):
 
@@ -8734,58 +9298,35 @@ class HeatCoolTypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "radiant system",
-            PermissibleValue(text="radiant system"))
-        setattr(cls, "heat pump",
-            PermissibleValue(text="heat pump"))
         setattr(cls, "forced air system",
             PermissibleValue(text="forced air system"))
+        setattr(cls, "heat pump",
+            PermissibleValue(text="heat pump"))
+        setattr(cls, "radiant system",
+            PermissibleValue(text="radiant system"))
         setattr(cls, "steam forced heat",
             PermissibleValue(text="steam forced heat"))
         setattr(cls, "wood stove",
             PermissibleValue(text="wood stove"))
 
-class HeatDelivLocEnum(EnumDefinitionImpl):
+class HeatSysDelivMethEnum(EnumDefinitionImpl):
 
-    north = PermissibleValue(text="north")
-    south = PermissibleValue(text="south")
-    east = PermissibleValue(text="east")
-    west = PermissibleValue(text="west")
+    conductive = PermissibleValue(text="conductive")
+    radiant = PermissibleValue(text="radiant")
 
     _defn = EnumDefinition(
-        name="HeatDelivLocEnum",
+        name="HeatSysDelivMethEnum",
     )
-
-class HostSexEnum(EnumDefinitionImpl):
-
-    female = PermissibleValue(text="female")
-    hermaphrodite = PermissibleValue(text="hermaphrodite")
-    male = PermissibleValue(text="male")
-    transgender = PermissibleValue(text="transgender")
-    undeclared = PermissibleValue(text="undeclared")
-
-    _defn = EnumDefinition(
-        name="HostSexEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "non-binary",
-            PermissibleValue(text="non-binary"))
-        setattr(cls, "transgender (female to male)",
-            PermissibleValue(text="transgender (female to male)"))
-        setattr(cls, "transgender (male to female)",
-            PermissibleValue(text="transgender (male to female)"))
 
 class IndoorSpaceEnum(EnumDefinitionImpl):
 
-    bedroom = PermissibleValue(text="bedroom")
-    office = PermissibleValue(text="office")
     bathroom = PermissibleValue(text="bathroom")
-    foyer = PermissibleValue(text="foyer")
-    kitchen = PermissibleValue(text="kitchen")
-    hallway = PermissibleValue(text="hallway")
+    bedroom = PermissibleValue(text="bedroom")
     elevator = PermissibleValue(text="elevator")
+    foyer = PermissibleValue(text="foyer")
+    hallway = PermissibleValue(text="hallway")
+    kitchen = PermissibleValue(text="kitchen")
+    office = PermissibleValue(text="office")
 
     _defn = EnumDefinition(
         name="IndoorSpaceEnum",
@@ -8802,8 +9343,8 @@ class IndoorSurfEnum(EnumDefinitionImpl):
     ceiling = PermissibleValue(text="ceiling")
     door = PermissibleValue(text="door")
     shelving = PermissibleValue(text="shelving")
-    window = PermissibleValue(text="window")
     wall = PermissibleValue(text="wall")
+    window = PermissibleValue(text="window")
 
     _defn = EnumDefinition(
         name="IndoorSurfEnum",
@@ -8816,23 +9357,6 @@ class IndoorSurfEnum(EnumDefinitionImpl):
         setattr(cls, "vent cover",
             PermissibleValue(text="vent cover"))
 
-class IntWallCondEnum(EnumDefinitionImpl):
-
-    new = PermissibleValue(text="new")
-    damaged = PermissibleValue(text="damaged")
-    rupture = PermissibleValue(text="rupture")
-
-    _defn = EnumDefinition(
-        name="IntWallCondEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "visible wear",
-            PermissibleValue(text="visible wear"))
-        setattr(cls, "needs repair",
-            PermissibleValue(text="needs repair"))
-
 class LightTypeEnum(EnumDefinitionImpl):
 
     none = PermissibleValue(text="none")
@@ -8843,14 +9367,14 @@ class LightTypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "natural light",
-            PermissibleValue(text="natural light"))
-        setattr(cls, "electric light",
-            PermissibleValue(text="electric light"))
         setattr(cls, "desk lamp",
             PermissibleValue(text="desk lamp"))
-        setattr(cls, "flourescent lights",
-            PermissibleValue(text="flourescent lights"))
+        setattr(cls, "electric light",
+            PermissibleValue(text="electric light"))
+        setattr(cls, "fluorescent lights",
+            PermissibleValue(text="fluorescent lights"))
+        setattr(cls, "natural light",
+            PermissibleValue(text="natural light"))
 
 class LithologyEnum(EnumDefinitionImpl):
 
@@ -8874,19 +9398,32 @@ class LithologyEnum(EnumDefinitionImpl):
 
 class MechStrucEnum(EnumDefinitionImpl):
 
-    subway = PermissibleValue(text="subway")
-    coach = PermissibleValue(text="coach")
+    boat = PermissibleValue(text="boat")
+    bus = PermissibleValue(text="bus")
+    car = PermissibleValue(text="car")
     carriage = PermissibleValue(text="carriage")
+    coach = PermissibleValue(text="coach")
     elevator = PermissibleValue(text="elevator")
     escalator = PermissibleValue(text="escalator")
-    boat = PermissibleValue(text="boat")
+    subway = PermissibleValue(text="subway")
     train = PermissibleValue(text="train")
-    car = PermissibleValue(text="car")
-    bus = PermissibleValue(text="bus")
 
     _defn = EnumDefinition(
         name="MechStrucEnum",
     )
+
+class MoldVisibilityEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="MoldVisibilityEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "no presence of mold visible",
+            PermissibleValue(text="no presence of mold visible"))
+        setattr(cls, "presence of mold visible",
+            PermissibleValue(text="presence of mold visible"))
 
 class OccupDocumentEnum(EnumDefinitionImpl):
 
@@ -8904,16 +9441,6 @@ class OccupDocumentEnum(EnumDefinitionImpl):
         setattr(cls, "manual count",
             PermissibleValue(text="manual count"))
 
-class OrganismCountEnum(EnumDefinitionImpl):
-
-    ATP = PermissibleValue(text="ATP")
-    MPN = PermissibleValue(text="MPN")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="OrganismCountEnum",
-    )
-
 class OxyStatSampEnum(EnumDefinitionImpl):
 
     aerobic = PermissibleValue(text="aerobic")
@@ -8924,34 +9451,12 @@ class OxyStatSampEnum(EnumDefinitionImpl):
         name="OxyStatSampEnum",
     )
 
-class PlantGrowthMedEnum(EnumDefinitionImpl):
-
-    perlite = PermissibleValue(text="perlite")
-    pumice = PermissibleValue(text="pumice")
-    sand = PermissibleValue(text="sand")
-    soil = PermissibleValue(text="soil")
-    vermiculite = PermissibleValue(text="vermiculite")
-    water = PermissibleValue(text="water")
-
-    _defn = EnumDefinition(
-        name="PlantGrowthMedEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "other artificial liquid medium",
-            PermissibleValue(text="other artificial liquid medium"))
-        setattr(cls, "other artificial solid medium",
-            PermissibleValue(text="other artificial solid medium"))
-        setattr(cls, "peat moss",
-            PermissibleValue(text="peat moss"))
-
 class PlantSexEnum(EnumDefinitionImpl):
 
     Androdioecious = PermissibleValue(text="Androdioecious")
     Androecious = PermissibleValue(text="Androecious")
-    Androgynous = PermissibleValue(text="Androgynous")
     Androgynomonoecious = PermissibleValue(text="Androgynomonoecious")
+    Androgynous = PermissibleValue(text="Androgynous")
     Andromonoecious = PermissibleValue(text="Andromonoecious")
     Bisexual = PermissibleValue(text="Bisexual")
     Dichogamous = PermissibleValue(text="Dichogamous")
@@ -8984,10 +9489,10 @@ class PlantSexEnum(EnumDefinitionImpl):
 
 class ProfilePositionEnum(EnumDefinitionImpl):
 
-    summit = PermissibleValue(text="summit")
-    shoulder = PermissibleValue(text="shoulder")
     backslope = PermissibleValue(text="backslope")
     footslope = PermissibleValue(text="footslope")
+    shoulder = PermissibleValue(text="shoulder")
+    summit = PermissibleValue(text="summit")
     toeslope = PermissibleValue(text="toeslope")
 
     _defn = EnumDefinition(
@@ -9002,14 +9507,14 @@ class QuadPosEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "North side",
-            PermissibleValue(text="North side"))
-        setattr(cls, "West side",
-            PermissibleValue(text="West side"))
-        setattr(cls, "South side",
-            PermissibleValue(text="South side"))
         setattr(cls, "East side",
             PermissibleValue(text="East side"))
+        setattr(cls, "North side",
+            PermissibleValue(text="North side"))
+        setattr(cls, "South side",
+            PermissibleValue(text="South side"))
+        setattr(cls, "West side",
+            PermissibleValue(text="West side"))
 
 class RelSampLocEnum(EnumDefinitionImpl):
 
@@ -9019,17 +9524,17 @@ class RelSampLocEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "edge of car",
-            PermissibleValue(text="edge of car"))
         setattr(cls, "center of car",
             PermissibleValue(text="center of car"))
+        setattr(cls, "edge of car",
+            PermissibleValue(text="edge of car"))
         setattr(cls, "under a seat",
             PermissibleValue(text="under a seat"))
 
 class RoomCondtEnum(EnumDefinitionImpl):
 
-    new = PermissibleValue(text="new")
     damaged = PermissibleValue(text="damaged")
+    new = PermissibleValue(text="new")
     rupture = PermissibleValue(text="rupture")
 
     _defn = EnumDefinition(
@@ -9038,12 +9543,12 @@ class RoomCondtEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "visible wear",
-            PermissibleValue(text="visible wear"))
         setattr(cls, "needs repair",
             PermissibleValue(text="needs repair"))
         setattr(cls, "visible signs of mold/mildew",
             PermissibleValue(text="visible signs of mold/mildew"))
+        setattr(cls, "visible wear",
+            PermissibleValue(text="visible wear"))
 
 class RoomConnectedEnum(EnumDefinitionImpl):
 
@@ -9079,10 +9584,10 @@ class RoomLocEnum(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "corner room",
             PermissibleValue(text="corner room"))
-        setattr(cls, "interior room",
-            PermissibleValue(text="interior room"))
         setattr(cls, "exterior wall",
             PermissibleValue(text="exterior wall"))
+        setattr(cls, "interior room",
+            PermissibleValue(text="interior room"))
 
 class RoomSampPosEnum(EnumDefinitionImpl):
 
@@ -9094,65 +9599,22 @@ class RoomSampPosEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "north corner",
-            PermissibleValue(text="north corner"))
-        setattr(cls, "south corner",
-            PermissibleValue(text="south corner"))
-        setattr(cls, "west corner",
-            PermissibleValue(text="west corner"))
         setattr(cls, "east corner",
             PermissibleValue(text="east corner"))
+        setattr(cls, "north corner",
+            PermissibleValue(text="north corner"))
         setattr(cls, "northeast corner",
             PermissibleValue(text="northeast corner"))
         setattr(cls, "northwest corner",
             PermissibleValue(text="northwest corner"))
+        setattr(cls, "south corner",
+            PermissibleValue(text="south corner"))
         setattr(cls, "southeast corner",
             PermissibleValue(text="southeast corner"))
         setattr(cls, "southwest corner",
             PermissibleValue(text="southwest corner"))
-
-class RoomTypeEnum(EnumDefinitionImpl):
-
-    attic = PermissibleValue(text="attic")
-    bathroom = PermissibleValue(text="bathroom")
-    closet = PermissibleValue(text="closet")
-    elevator = PermissibleValue(text="elevator")
-    hallway = PermissibleValue(text="hallway")
-    kitchen = PermissibleValue(text="kitchen")
-    stairwell = PermissibleValue(text="stairwell")
-    lobby = PermissibleValue(text="lobby")
-    vestibule = PermissibleValue(text="vestibule")
-    laboratory_wet = PermissibleValue(text="laboratory_wet")
-    laboratory_dry = PermissibleValue(text="laboratory_dry")
-    gymnasium = PermissibleValue(text="gymnasium")
-    natatorium = PermissibleValue(text="natatorium")
-    auditorium = PermissibleValue(text="auditorium")
-    lockers = PermissibleValue(text="lockers")
-    cafe = PermissibleValue(text="cafe")
-    warehouse = PermissibleValue(text="warehouse")
-
-    _defn = EnumDefinition(
-        name="RoomTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "conference room",
-            PermissibleValue(text="conference room"))
-        setattr(cls, "examining room",
-            PermissibleValue(text="examining room"))
-        setattr(cls, "mail room",
-            PermissibleValue(text="mail room"))
-        setattr(cls, "private office",
-            PermissibleValue(text="private office"))
-        setattr(cls, "open office",
-            PermissibleValue(text="open office"))
-        setattr(cls, ",restroom",
-            PermissibleValue(text=",restroom"))
-        setattr(cls, "mechanical or electrical room",
-            PermissibleValue(text="mechanical or electrical room"))
-        setattr(cls, "data center",
-            PermissibleValue(text="data center"))
+        setattr(cls, "west corner",
+            PermissibleValue(text="west corner"))
 
 class SampCaptStatusEnum(EnumDefinitionImpl):
 
@@ -9175,10 +9637,10 @@ class SampCaptStatusEnum(EnumDefinitionImpl):
 
 class SampCollectPointEnum(EnumDefinitionImpl):
 
+    other = PermissibleValue(text="other")
+    separator = PermissibleValue(text="separator")
     well = PermissibleValue(text="well")
     wellhead = PermissibleValue(text="wellhead")
-    separator = PermissibleValue(text="separator")
-    other = PermissibleValue(text="other")
 
     _defn = EnumDefinition(
         name="SampCollectPointEnum",
@@ -9186,20 +9648,20 @@ class SampCollectPointEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "test well",
-            PermissibleValue(text="test well"))
         setattr(cls, "drilling rig",
             PermissibleValue(text="drilling rig"))
         setattr(cls, "storage tank",
             PermissibleValue(text="storage tank"))
+        setattr(cls, "test well",
+            PermissibleValue(text="test well"))
 
 class SampDisStageEnum(EnumDefinitionImpl):
 
     dissemination = PermissibleValue(text="dissemination")
     infection = PermissibleValue(text="infection")
     inoculation = PermissibleValue(text="inoculation")
-    penetration = PermissibleValue(text="penetration")
     other = PermissibleValue(text="other")
+    penetration = PermissibleValue(text="penetration")
 
     _defn = EnumDefinition(
         name="SampDisStageEnum",
@@ -9209,34 +9671,6 @@ class SampDisStageEnum(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "growth and reproduction",
             PermissibleValue(text="growth and reproduction"))
-
-class SampFloorEnum(EnumDefinitionImpl):
-
-    basement = PermissibleValue(text="basement")
-    lobby = PermissibleValue(text="lobby")
-
-    _defn = EnumDefinition(
-        name="SampFloorEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "1st floor",
-            PermissibleValue(text="1st floor"))
-        setattr(cls, "2nd floor",
-            PermissibleValue(text="2nd floor"))
-
-class SampMdEnum(EnumDefinitionImpl):
-
-    DF = PermissibleValue(text="DF")
-    RT = PermissibleValue(text="RT")
-    KB = PermissibleValue(text="KB")
-    MSL = PermissibleValue(text="MSL")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="SampMdEnum",
-    )
 
 class SampSubtypeEnum(EnumDefinitionImpl):
 
@@ -9249,12 +9683,12 @@ class SampSubtypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
+        setattr(cls, "not applicable",
+            PermissibleValue(text="not applicable"))
         setattr(cls, "oil phase",
             PermissibleValue(text="oil phase"))
         setattr(cls, "water phase",
             PermissibleValue(text="water phase"))
-        setattr(cls, "not applicable",
-            PermissibleValue(text="not applicable"))
 
 class SampWeatherEnum(EnumDefinitionImpl):
 
@@ -9262,8 +9696,8 @@ class SampWeatherEnum(EnumDefinitionImpl):
     foggy = PermissibleValue(text="foggy")
     hail = PermissibleValue(text="hail")
     rain = PermissibleValue(text="rain")
-    snow = PermissibleValue(text="snow")
     sleet = PermissibleValue(text="sleet")
+    snow = PermissibleValue(text="snow")
     sunny = PermissibleValue(text="sunny")
     windy = PermissibleValue(text="windy")
 
@@ -9276,11 +9710,36 @@ class SampWeatherEnum(EnumDefinitionImpl):
         setattr(cls, "clear sky",
             PermissibleValue(text="clear sky"))
 
+class SeasonEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="SeasonEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "autumn [NCIT:C94733]",
+            PermissibleValue(
+                text="autumn [NCIT:C94733]",
+                meaning=NCIT["C94733"]))
+        setattr(cls, "spring [NCIT:C94731]",
+            PermissibleValue(
+                text="spring [NCIT:C94731]",
+                meaning=NCIT["C94731"]))
+        setattr(cls, "summer [NCIT:C94732]",
+            PermissibleValue(
+                text="summer [NCIT:C94732]",
+                meaning=NCIT["C94732"]))
+        setattr(cls, "winter [NCIT:C94730]",
+            PermissibleValue(
+                text="winter [NCIT:C94730]",
+                meaning=NCIT["C94730"]))
+
 class SeasonUseEnum(EnumDefinitionImpl):
 
+    Fall = PermissibleValue(text="Fall")
     Spring = PermissibleValue(text="Spring")
     Summer = PermissibleValue(text="Summer")
-    Fall = PermissibleValue(text="Fall")
     Winter = PermissibleValue(text="Winter")
 
     _defn = EnumDefinition(
@@ -9298,22 +9757,27 @@ class SedimentTypeEnum(EnumDefinitionImpl):
         name="SedimentTypeEnum",
     )
 
-class ShadingDeviceCondEnum(EnumDefinitionImpl):
+class SeqQualityCheckEnum(EnumDefinitionImpl):
 
-    damaged = PermissibleValue(text="damaged")
-    new = PermissibleValue(text="new")
-    rupture = PermissibleValue(text="rupture")
+    none = PermissibleValue(text="none")
 
     _defn = EnumDefinition(
-        name="ShadingDeviceCondEnum",
+        name="SeqQualityCheckEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "needs repair",
-            PermissibleValue(text="needs repair"))
-        setattr(cls, "visible wear",
-            PermissibleValue(text="visible wear"))
+        setattr(cls, "manually edited",
+            PermissibleValue(text="manually edited"))
+
+class ShadingDeviceLocEnum(EnumDefinitionImpl):
+
+    exterior = PermissibleValue(text="exterior")
+    interior = PermissibleValue(text="interior")
+
+    _defn = EnumDefinition(
+        name="ShadingDeviceLocEnum",
+    )
 
 class ShadingDeviceTypeEnum(EnumDefinitionImpl):
 
@@ -9349,7 +9813,9 @@ class ShadingDeviceTypeEnum(EnumDefinitionImpl):
 
 class SoilHorizonEnum(EnumDefinitionImpl):
 
-    Permafrost = PermissibleValue(text="Permafrost")
+    Permafrost = PermissibleValue(
+        text="Permafrost",
+        description="Soil that continuously remains below 0 °C (32 °F) for two years or more.")
 
     _defn = EnumDefinition(
         name="SoilHorizonEnum",
@@ -9357,27 +9823,53 @@ class SoilHorizonEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "O horizon",
-            PermissibleValue(text="O horizon"))
         setattr(cls, "A horizon",
-            PermissibleValue(text="A horizon"))
-        setattr(cls, "E horizon",
-            PermissibleValue(text="E horizon"))
+            PermissibleValue(
+                text="A horizon",
+                description="""The surface horizon, also called topsoil. It has a defined soil structure, and is mostly made up of humus (decayed organic matter)."""))
         setattr(cls, "B horizon",
-            PermissibleValue(text="B horizon"))
+            PermissibleValue(
+                text="B horizon",
+                description="""Also known as the subsoil. It is greatly composed of material illuviated (washed in from) layers above it. It is typically denser than the A horizon and has a clayey texture."""))
         setattr(cls, "C horizon",
-            PermissibleValue(text="C horizon"))
+            PermissibleValue(
+                text="C horizon",
+                description="""Also known as the substratum is unconsolidated material deepest in the pit and closest to the bedrock."""))
+        setattr(cls, "E horizon",
+            PermissibleValue(
+                text="E horizon",
+                description="""Used to refer to subsurface horizons that have undergone a significant loss of minerals, also known as Eluviation (or leaching)."""))
+        setattr(cls, "O horizon",
+            PermissibleValue(
+                text="O horizon",
+                description="""The organic horizon. Typically at the top of the soil structure and is made up of mostly organic matter.""",
+                meaning=ENVO["03600018"]))
         setattr(cls, "R layer",
-            PermissibleValue(text="R layer"))
+            PermissibleValue(
+                text="R layer",
+                description="""Hard bedrock, which is usually the lowest layer. It is characterized by tightly bound and unbreakable materials."""))
         setattr(cls, "M horizon",
             PermissibleValue(text="M horizon"))
 
+class SpaceTypStateEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="SpaceTypStateEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "typically occupied",
+            PermissibleValue(text="typically occupied"))
+        setattr(cls, "typically unoccupied",
+            PermissibleValue(text="typically unoccupied"))
+
 class SpecificEnum(EnumDefinitionImpl):
 
-    operation = PermissibleValue(text="operation")
-    construction = PermissibleValue(text="construction")
     bid = PermissibleValue(text="bid")
+    construction = PermissibleValue(text="construction")
     design = PermissibleValue(text="design")
+    operation = PermissibleValue(text="operation")
     photos = PermissibleValue(text="photos")
 
     _defn = EnumDefinition(
@@ -9391,39 +9883,14 @@ class SpecificEnum(EnumDefinitionImpl):
 
 class SrDepEnvEnum(EnumDefinitionImpl):
 
-    Lacustine = PermissibleValue(text="Lacustine")
     Fluvioldeltaic = PermissibleValue(text="Fluvioldeltaic")
     Fluviomarine = PermissibleValue(text="Fluviomarine")
+    Lacustine = PermissibleValue(text="Lacustine")
     Marine = PermissibleValue(text="Marine")
     other = PermissibleValue(text="other")
 
     _defn = EnumDefinition(
         name="SrDepEnvEnum",
-    )
-
-class SrGeolAgeEnum(EnumDefinitionImpl):
-
-    Archean = PermissibleValue(text="Archean")
-    Cambrian = PermissibleValue(text="Cambrian")
-    Carboniferous = PermissibleValue(text="Carboniferous")
-    Cenozoic = PermissibleValue(text="Cenozoic")
-    Cretaceous = PermissibleValue(text="Cretaceous")
-    Devonian = PermissibleValue(text="Devonian")
-    Jurassic = PermissibleValue(text="Jurassic")
-    Mesozoic = PermissibleValue(text="Mesozoic")
-    Neogene = PermissibleValue(text="Neogene")
-    Ordovician = PermissibleValue(text="Ordovician")
-    Paleogene = PermissibleValue(text="Paleogene")
-    Paleozoic = PermissibleValue(text="Paleozoic")
-    Permian = PermissibleValue(text="Permian")
-    Precambrian = PermissibleValue(text="Precambrian")
-    Proterozoic = PermissibleValue(text="Proterozoic")
-    Silurian = PermissibleValue(text="Silurian")
-    Triassic = PermissibleValue(text="Triassic")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="SrGeolAgeEnum",
     )
 
 class SrKerogTypeEnum(EnumDefinitionImpl):
@@ -9447,10 +9914,10 @@ class SrKerogTypeEnum(EnumDefinitionImpl):
 
 class SrLithologyEnum(EnumDefinitionImpl):
 
-    Clastic = PermissibleValue(text="Clastic")
-    Carbonate = PermissibleValue(text="Carbonate")
-    Coal = PermissibleValue(text="Coal")
     Biosilicieous = PermissibleValue(text="Biosilicieous")
+    Carbonate = PermissibleValue(text="Carbonate")
+    Clastic = PermissibleValue(text="Clastic")
+    Coal = PermissibleValue(text="Coal")
     other = PermissibleValue(text="other")
 
     _defn = EnumDefinition(
@@ -9459,8 +9926,8 @@ class SrLithologyEnum(EnumDefinitionImpl):
 
 class SubstructureTypeEnum(EnumDefinitionImpl):
 
-    crawlspace = PermissibleValue(text="crawlspace")
     basement = PermissibleValue(text="basement")
+    crawlspace = PermissibleValue(text="crawlspace")
 
     _defn = EnumDefinition(
         name="SubstructureTypeEnum",
@@ -9473,10 +9940,10 @@ class SubstructureTypeEnum(EnumDefinitionImpl):
 
 class SurfAirContEnum(EnumDefinitionImpl):
 
-    dust = PermissibleValue(text="dust")
-    radon = PermissibleValue(text="radon")
-    nutrients = PermissibleValue(text="nutrients")
     biocides = PermissibleValue(text="biocides")
+    dust = PermissibleValue(text="dust")
+    nutrients = PermissibleValue(text="nutrients")
+    radon = PermissibleValue(text="radon")
 
     _defn = EnumDefinition(
         name="SurfAirContEnum",
@@ -9484,14 +9951,14 @@ class SurfAirContEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
+        setattr(cls, "biological contaminants",
+            PermissibleValue(text="biological contaminants"))
         setattr(cls, "organic matter",
             PermissibleValue(text="organic matter"))
         setattr(cls, "particulate matter",
             PermissibleValue(text="particulate matter"))
         setattr(cls, "volatile organic compounds",
             PermissibleValue(text="volatile organic compounds"))
-        setattr(cls, "biological contaminants",
-            PermissibleValue(text="biological contaminants"))
 
 class SurfMaterialEnum(EnumDefinitionImpl):
 
@@ -9529,21 +9996,21 @@ class TidalStageEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "low tide",
-            PermissibleValue(text="low tide"))
         setattr(cls, "ebb tide",
             PermissibleValue(text="ebb tide"))
         setattr(cls, "flood tide",
             PermissibleValue(text="flood tide"))
         setattr(cls, "high tide",
             PermissibleValue(text="high tide"))
+        setattr(cls, "low tide",
+            PermissibleValue(text="low tide"))
 
 class TillageEnum(EnumDefinitionImpl):
 
-    drill = PermissibleValue(text="drill")
     chisel = PermissibleValue(text="chisel")
-    tined = PermissibleValue(text="tined")
+    drill = PermissibleValue(text="drill")
     mouldboard = PermissibleValue(text="mouldboard")
+    tined = PermissibleValue(text="tined")
 
     _defn = EnumDefinition(
         name="TillageEnum",
@@ -9553,20 +10020,20 @@ class TillageEnum(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "cutting disc",
             PermissibleValue(text="cutting disc"))
+        setattr(cls, "disc plough",
+            PermissibleValue(text="disc plough"))
         setattr(cls, "ridge till",
             PermissibleValue(text="ridge till"))
         setattr(cls, "strip tillage",
             PermissibleValue(text="strip tillage"))
         setattr(cls, "zonal tillage",
             PermissibleValue(text="zonal tillage"))
-        setattr(cls, "disc plough",
-            PermissibleValue(text="disc plough"))
 
 class TrainLineEnum(EnumDefinitionImpl):
 
-    red = PermissibleValue(text="red")
     green = PermissibleValue(text="green")
     orange = PermissibleValue(text="orange")
+    red = PermissibleValue(text="red")
 
     _defn = EnumDefinition(
         name="TrainLineEnum",
@@ -9582,44 +10049,24 @@ class TrainStatLocEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "south station above ground",
-            PermissibleValue(text="south station above ground"))
-        setattr(cls, "south station underground",
-            PermissibleValue(text="south station underground"))
-        setattr(cls, "south station amtrak",
-            PermissibleValue(text="south station amtrak"))
         setattr(cls, "forest hills",
             PermissibleValue(text="forest hills"))
+        setattr(cls, "south station above ground",
+            PermissibleValue(text="south station above ground"))
+        setattr(cls, "south station amtrak",
+            PermissibleValue(text="south station amtrak"))
+        setattr(cls, "south station underground",
+            PermissibleValue(text="south station underground"))
 
 class TrainStopLocEnum(EnumDefinitionImpl):
 
+    downtown = PermissibleValue(text="downtown")
     end = PermissibleValue(text="end")
     mid = PermissibleValue(text="mid")
-    downtown = PermissibleValue(text="downtown")
 
     _defn = EnumDefinition(
         name="TrainStopLocEnum",
     )
-
-class VisMediaEnum(EnumDefinitionImpl):
-
-    photos = PermissibleValue(text="photos")
-    videos = PermissibleValue(text="videos")
-    interiors = PermissibleValue(text="interiors")
-    equipment = PermissibleValue(text="equipment")
-
-    _defn = EnumDefinition(
-        name="VisMediaEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "commonly of the building",
-            PermissibleValue(text="commonly of the building"))
-        setattr(cls, "site context (adjacent buildings, vegetation, terrain, streets)",
-            PermissibleValue(text="site context (adjacent buildings, vegetation, terrain, streets)"))
-        setattr(cls, "3D scans",
-            PermissibleValue(text="3D scans"))
 
 class WallConstTypeEnum(EnumDefinitionImpl):
 
@@ -9629,6 +10076,8 @@ class WallConstTypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
+        setattr(cls, "fire resistive",
+            PermissibleValue(text="fire resistive"))
         setattr(cls, "frame construction",
             PermissibleValue(text="frame construction"))
         setattr(cls, "joisted masonry",
@@ -9639,17 +10088,15 @@ class WallConstTypeEnum(EnumDefinitionImpl):
             PermissibleValue(text="masonry noncombustible"))
         setattr(cls, "modified fire resistive",
             PermissibleValue(text="modified fire resistive"))
-        setattr(cls, "fire resistive",
-            PermissibleValue(text="fire resistive"))
 
 class WallFinishMatEnum(EnumDefinitionImpl):
 
-    plaster = PermissibleValue(text="plaster")
-    tile = PermissibleValue(text="tile")
-    terrazzo = PermissibleValue(text="terrazzo")
-    wood = PermissibleValue(text="wood")
-    metal = PermissibleValue(text="metal")
     masonry = PermissibleValue(text="masonry")
+    metal = PermissibleValue(text="metal")
+    plaster = PermissibleValue(text="plaster")
+    terrazzo = PermissibleValue(text="terrazzo")
+    tile = PermissibleValue(text="tile")
+    wood = PermissibleValue(text="wood")
 
     _defn = EnumDefinition(
         name="WallFinishMatEnum",
@@ -9657,34 +10104,23 @@ class WallFinishMatEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "gypsum plaster",
-            PermissibleValue(text="gypsum plaster"))
-        setattr(cls, "veneer plaster",
-            PermissibleValue(text="veneer plaster"))
-        setattr(cls, "gypsum board",
-            PermissibleValue(text="gypsum board"))
-        setattr(cls, "stone facing",
-            PermissibleValue(text="stone facing"))
         setattr(cls, "acoustical treatment",
             PermissibleValue(text="acoustical treatment"))
-
-class WallLocEnum(EnumDefinitionImpl):
-
-    north = PermissibleValue(text="north")
-    south = PermissibleValue(text="south")
-    east = PermissibleValue(text="east")
-    west = PermissibleValue(text="west")
-
-    _defn = EnumDefinition(
-        name="WallLocEnum",
-    )
+        setattr(cls, "gypsum board",
+            PermissibleValue(text="gypsum board"))
+        setattr(cls, "gypsum plaster",
+            PermissibleValue(text="gypsum plaster"))
+        setattr(cls, "stone facing",
+            PermissibleValue(text="stone facing"))
+        setattr(cls, "veneer plaster",
+            PermissibleValue(text="veneer plaster"))
 
 class WallSurfTreatmentEnum(EnumDefinitionImpl):
 
+    fabric = PermissibleValue(text="fabric")
     painted = PermissibleValue(text="painted")
     paneling = PermissibleValue(text="paneling")
     stucco = PermissibleValue(text="stucco")
-    fabric = PermissibleValue(text="fabric")
 
     _defn = EnumDefinition(
         name="WallSurfTreatmentEnum",
@@ -9692,44 +10128,10 @@ class WallSurfTreatmentEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "wall paper",
-            PermissibleValue(text="wall paper"))
         setattr(cls, "no treatment",
             PermissibleValue(text="no treatment"))
-
-class WallTextureEnum(EnumDefinitionImpl):
-
-    knockdown = PermissibleValue(text="knockdown")
-    popcorn = PermissibleValue(text="popcorn")
-    smooth = PermissibleValue(text="smooth")
-    swirl = PermissibleValue(text="swirl")
-
-    _defn = EnumDefinition(
-        name="WallTextureEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "crows feet",
-            PermissibleValue(text="crows feet"))
-        setattr(cls, "crows-foot stomp",
-            PermissibleValue(text="crows-foot stomp"))
-        setattr(cls, "",
-            PermissibleValue(text=""))
-        setattr(cls, "double skip",
-            PermissibleValue(text="double skip"))
-        setattr(cls, "hawk and trowel",
-            PermissibleValue(text="hawk and trowel"))
-        setattr(cls, "orange peel",
-            PermissibleValue(text="orange peel"))
-        setattr(cls, "rosebud stomp",
-            PermissibleValue(text="rosebud stomp"))
-        setattr(cls, "Santa-Fe texture",
-            PermissibleValue(text="Santa-Fe texture"))
-        setattr(cls, "skip trowel",
-            PermissibleValue(text="skip trowel"))
-        setattr(cls, "stomp knockdown",
-            PermissibleValue(text="stomp knockdown"))
+        setattr(cls, "wall paper",
+            PermissibleValue(text="wall paper"))
 
 class WaterFeatTypeEnum(EnumDefinitionImpl):
 
@@ -9749,34 +10151,17 @@ class WaterFeatTypeEnum(EnumDefinitionImpl):
 
 class WeekdayEnum(EnumDefinitionImpl):
 
-    Monday = PermissibleValue(text="Monday")
-    Tuesday = PermissibleValue(text="Tuesday")
-    Wednesday = PermissibleValue(text="Wednesday")
-    Thursday = PermissibleValue(text="Thursday")
     Friday = PermissibleValue(text="Friday")
+    Monday = PermissibleValue(text="Monday")
     Saturday = PermissibleValue(text="Saturday")
     Sunday = PermissibleValue(text="Sunday")
+    Thursday = PermissibleValue(text="Thursday")
+    Tuesday = PermissibleValue(text="Tuesday")
+    Wednesday = PermissibleValue(text="Wednesday")
 
     _defn = EnumDefinition(
         name="WeekdayEnum",
     )
-
-class WindowCondEnum(EnumDefinitionImpl):
-
-    damaged = PermissibleValue(text="damaged")
-    new = PermissibleValue(text="new")
-    rupture = PermissibleValue(text="rupture")
-
-    _defn = EnumDefinition(
-        name="WindowCondEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "needs repair",
-            PermissibleValue(text="needs repair"))
-        setattr(cls, "visible wear",
-            PermissibleValue(text="visible wear"))
 
 class WindowCoverEnum(EnumDefinitionImpl):
 
@@ -9798,17 +10183,6 @@ class WindowHorizPosEnum(EnumDefinitionImpl):
         name="WindowHorizPosEnum",
     )
 
-class WindowLocEnum(EnumDefinitionImpl):
-
-    north = PermissibleValue(text="north")
-    south = PermissibleValue(text="south")
-    east = PermissibleValue(text="east")
-    west = PermissibleValue(text="west")
-
-    _defn = EnumDefinition(
-        name="WindowLocEnum",
-    )
-
 class WindowMatEnum(EnumDefinitionImpl):
 
     clad = PermissibleValue(text="clad")
@@ -9821,6 +10195,15 @@ class WindowMatEnum(EnumDefinitionImpl):
         name="WindowMatEnum",
     )
 
+class WindowStatusEnum(EnumDefinitionImpl):
+
+    closed = PermissibleValue(text="closed")
+    open = PermissibleValue(text="open")
+
+    _defn = EnumDefinition(
+        name="WindowStatusEnum",
+    )
+
 class WindowTypeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
@@ -9829,24 +10212,107 @@ class WindowTypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "single-hung sash window",
-            PermissibleValue(text="single-hung sash window"))
-        setattr(cls, "horizontal sash window",
-            PermissibleValue(text="horizontal sash window"))
         setattr(cls, "fixed window",
             PermissibleValue(text="fixed window"))
+        setattr(cls, "horizontal sash window",
+            PermissibleValue(text="horizontal sash window"))
+        setattr(cls, "single-hung sash window",
+            PermissibleValue(text="single-hung sash window"))
 
 class WindowVertPosEnum(EnumDefinitionImpl):
 
     bottom = PermissibleValue(text="bottom")
+    high = PermissibleValue(text="high")
+    low = PermissibleValue(text="low")
     middle = PermissibleValue(text="middle")
     top = PermissibleValue(text="top")
-    low = PermissibleValue(text="low")
-    high = PermissibleValue(text="high")
 
     _defn = EnumDefinition(
         name="WindowVertPosEnum",
     )
+
+class HostSexEnum(EnumDefinitionImpl):
+
+    female = PermissibleValue(text="female")
+    hermaphrodite = PermissibleValue(text="hermaphrodite")
+    male = PermissibleValue(text="male")
+    transgender = PermissibleValue(text="transgender")
+    undeclared = PermissibleValue(text="undeclared")
+
+    _defn = EnumDefinition(
+        name="HostSexEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "non-binary",
+            PermissibleValue(text="non-binary"))
+        setattr(cls, "transgender (female to male)",
+            PermissibleValue(text="transgender (female to male)"))
+        setattr(cls, "transgender (male to female)",
+            PermissibleValue(text="transgender (male to female)"))
+
+class CurLandUseEnum(EnumDefinitionImpl):
+
+    badlands = PermissibleValue(text="badlands")
+    cities = PermissibleValue(text="cities")
+    conifers = PermissibleValue(text="conifers")
+    farmstead = PermissibleValue(text="farmstead")
+    gravel = PermissibleValue(text="gravel")
+    hardwoods = PermissibleValue(text="hardwoods")
+    hayland = PermissibleValue(text="hayland")
+    marshlands = PermissibleValue(text="marshlands")
+    meadows = PermissibleValue(text="meadows")
+    mudflats = PermissibleValue(text="mudflats")
+    pastureland = PermissibleValue(text="pastureland")
+    rainforest = PermissibleValue(text="rainforest")
+    rangeland = PermissibleValue(text="rangeland")
+    rock = PermissibleValue(text="rock")
+    sand = PermissibleValue(text="sand")
+    swamp = PermissibleValue(text="swamp")
+    tropical = PermissibleValue(text="tropical")
+    tundra = PermissibleValue(text="tundra")
+
+    _defn = EnumDefinition(
+        name="CurLandUseEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "crop trees",
+            PermissibleValue(text="crop trees"))
+        setattr(cls, "horticultural plants",
+            PermissibleValue(text="horticultural plants"))
+        setattr(cls, "industrial areas",
+            PermissibleValue(text="industrial areas"))
+        setattr(cls, "intermixed hardwood and conifers",
+            PermissibleValue(text="intermixed hardwood and conifers"))
+        setattr(cls, "mines/quarries",
+            PermissibleValue(text="mines/quarries"))
+        setattr(cls, "oil waste areas",
+            PermissibleValue(text="oil waste areas"))
+        setattr(cls, "permanent snow or ice",
+            PermissibleValue(text="permanent snow or ice"))
+        setattr(cls, "roads/railroads",
+            PermissibleValue(text="roads/railroads"))
+        setattr(cls, "row crops",
+            PermissibleValue(text="row crops"))
+        setattr(cls, "saline seeps",
+            PermissibleValue(text="saline seeps"))
+        setattr(cls, "salt flats",
+            PermissibleValue(text="salt flats"))
+        setattr(cls, "shrub crops",
+            PermissibleValue(text="shrub crops"))
+        setattr(cls, "shrub land",
+            PermissibleValue(text="shrub land"))
+        setattr(cls, "small grains",
+            PermissibleValue(text="small grains"))
+        setattr(cls, "successional shrub land",
+            PermissibleValue(text="successional shrub land"))
+        setattr(cls, "vegetable crops",
+            PermissibleValue(text="vegetable crops"))
+        setattr(cls, "vine crops",
+            PermissibleValue(text="vine crops"))
 
 class TargetGeneEnum(EnumDefinitionImpl):
 
@@ -9873,15 +10339,122 @@ class TargetGeneEnum(EnumDefinitionImpl):
                 text="28S_rRNA",
                 description="the large subunit of the eukaryotic ribosome"))
 
+class SampleTypeEnum(EnumDefinitionImpl):
+
+    soil = PermissibleValue(text="soil")
+    sediment = PermissibleValue(text="sediment")
+    water = PermissibleValue(text="water")
+
+    _defn = EnumDefinition(
+        name="SampleTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "soil - water extract",
+            PermissibleValue(text="soil - water extract"))
+        setattr(cls, "plant associated",
+            PermissibleValue(text="plant associated"))
+
+class YesNoEnum(EnumDefinitionImpl):
+    """
+    replaces DnaDnaseEnum and DnaseRnaEnum
+    """
+    no = PermissibleValue(text="no")
+    yes = PermissibleValue(text="yes")
+
+    _defn = EnumDefinition(
+        name="YesNoEnum",
+        description="replaces DnaDnaseEnum and DnaseRnaEnum",
+    )
+
+class AnalysisTypeEnum(EnumDefinitionImpl):
+
+    metabolomics = PermissibleValue(text="metabolomics")
+    lipidomics = PermissibleValue(text="lipidomics")
+    metagenomics = PermissibleValue(
+        text="metagenomics",
+        title="Metagenomics",
+        description="Standard short-read metagenomic sequencing")
+    metagenomics_long_read = PermissibleValue(
+        text="metagenomics_long_read",
+        title="Metagenomics (long read)",
+        description="Long-read metagenomic sequencing")
+    metaproteomics = PermissibleValue(text="metaproteomics")
+    metatranscriptomics = PermissibleValue(text="metatranscriptomics")
+
+    _defn = EnumDefinition(
+        name="AnalysisTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "natural organic matter",
+            PermissibleValue(text="natural organic matter"))
+        setattr(cls, "bulk chemistry",
+            PermissibleValue(text="bulk chemistry"))
+        setattr(cls, "amplicon sequencing assay",
+            PermissibleValue(
+                text="amplicon sequencing assay",
+                title="Amplicon sequencing assay",
+                meaning=OBI["0002767"]))
+
+class SubmissionStatusEnum(EnumDefinitionImpl):
+
+    InProgress = PermissibleValue(
+        text="InProgress",
+        title="In Progress",
+        description="The submitter is currently working on the submission.")
+    SubmittedPendingReview = PermissibleValue(
+        text="SubmittedPendingReview",
+        title="Submitted - Pending Review",
+        description="Submission is ready for NMDC review, the submitter cannot edit.")
+    ApprovedHeld = PermissibleValue(
+        text="ApprovedHeld",
+        title="Approved - Held",
+        description="""Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. The submitter cannot edit.""")
+    ApprovedPendingUserFacility = PermissibleValue(
+        text="ApprovedPendingUserFacility",
+        title="Approved - Sent to User Facility",
+        description="""Submission has been reviewed and approved by NMDC. Sample information has been shared with designated user facility and is ready for their review. The submitter cannot edit.""")
+    UpdatesRequired = PermissibleValue(
+        text="UpdatesRequired",
+        title="Updates Required",
+        description="""Submission has been reviewed and submitter edits are required for approval. The submitter can edit the submission.""")
+    Denied = PermissibleValue(
+        text="Denied",
+        title="Denied",
+        description="Submission has been reviewed and denied. The submitter cannot edit.")
+    Released = PermissibleValue(
+        text="Released",
+        title="Released",
+        description="""Submission has been reviewed and approved and data is released on the data portal. The submitter cannot edit.""")
+
+    _defn = EnumDefinition(
+        name="SubmissionStatusEnum",
+    )
+
 # Slots
 class slots:
     pass
+
+slots.host_family_relation = Slot(uri=MIXS['0000872'], name="host_family_relation", curie=MIXS.curie('0000872'),
+                   model_uri=NMDC.host_family_relation, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.salinity_meth = Slot(uri=MIXS['0000341'], name="salinity_meth", curie=MIXS.curie('0000341'),
+                   model_uri=NMDC.salinity_meth, domain=None, range=Optional[str])
+
+slots.soil_text_measure = Slot(uri=MIXS['0000335'], name="soil_text_measure", curie=MIXS.curie('0000335'),
+                   model_uri=NMDC.soil_text_measure, domain=None, range=Optional[str])
+
+slots.biomaterial_purity = Slot(uri=NMDC.biomaterial_purity, name="biomaterial_purity", curie=NMDC.curie('biomaterial_purity'),
+                   model_uri=NMDC.biomaterial_purity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.generates_calibration = Slot(uri=NMDC.generates_calibration, name="generates_calibration", curie=NMDC.curie('generates_calibration'),
                    model_uri=NMDC.generates_calibration, domain=None, range=Optional[Union[str, CalibrationInformationId]])
 
 slots.uses_calibration = Slot(uri=NMDC.uses_calibration, name="uses_calibration", curie=NMDC.curie('uses_calibration'),
-                   model_uri=NMDC.uses_calibration, domain=None, range=Optional[Union[str, CalibrationInformationId]])
+                   model_uri=NMDC.uses_calibration, domain=None, range=Optional[Union[Union[str, CalibrationInformationId], list[Union[str, CalibrationInformationId]]]])
 
 slots.calibration_object = Slot(uri=NMDC.calibration_object, name="calibration_object", curie=NMDC.curie('calibration_object'),
                    model_uri=NMDC.calibration_object, domain=None, range=Optional[Union[str, DataObjectId]])
@@ -9899,7 +10472,7 @@ slots.polarity_mode = Slot(uri=NMDC.polarity_mode, name="polarity_mode", curie=N
                    model_uri=NMDC.polarity_mode, domain=None, range=Optional[Union[str, "PolarityModeEnum"]])
 
 slots.mass_spectrum_collection_modes = Slot(uri=NMDC.mass_spectrum_collection_modes, name="mass_spectrum_collection_modes", curie=NMDC.curie('mass_spectrum_collection_modes'),
-                   model_uri=NMDC.mass_spectrum_collection_modes, domain=None, range=Optional[Union[Union[str, "MassSpectrumCollectionModeEnum"], List[Union[str, "MassSpectrumCollectionModeEnum"]]]])
+                   model_uri=NMDC.mass_spectrum_collection_modes, domain=None, range=Optional[Union[Union[str, "MassSpectrumCollectionModeEnum"], list[Union[str, "MassSpectrumCollectionModeEnum"]]]])
 
 slots.eukaryotic_evaluation = Slot(uri=NMDC.eukaryotic_evaluation, name="eukaryotic_evaluation", curie=NMDC.curie('eukaryotic_evaluation'),
                    model_uri=NMDC.eukaryotic_evaluation, domain=None, range=Optional[Union[dict, EukEval]])
@@ -9912,16 +10485,16 @@ slots.ncbi_lineage = Slot(uri=NMDC.ncbi_lineage, name="ncbi_lineage", curie=NMDC
                    model_uri=NMDC.ncbi_lineage, domain=None, range=Optional[str])
 
 slots.has_failure_categorization = Slot(uri=NMDC.has_failure_categorization, name="has_failure_categorization", curie=NMDC.curie('has_failure_categorization'),
-                   model_uri=NMDC.has_failure_categorization, domain=None, range=Optional[Union[Union[dict, FailureCategorization], List[Union[dict, FailureCategorization]]]])
+                   model_uri=NMDC.has_failure_categorization, domain=None, range=Optional[Union[Union[dict, FailureCategorization], list[Union[dict, FailureCategorization]]]])
 
 slots.ionization_source = Slot(uri=NMDC.ionization_source, name="ionization_source", curie=NMDC.curie('ionization_source'),
                    model_uri=NMDC.ionization_source, domain=None, range=Optional[Union[str, "IonizationSourceEnum"]])
 
 slots.mass_analyzers = Slot(uri=NMDC.mass_analyzers, name="mass_analyzers", curie=NMDC.curie('mass_analyzers'),
-                   model_uri=NMDC.mass_analyzers, domain=None, range=Optional[Union[Union[str, "MassAnalyzerEnum"], List[Union[str, "MassAnalyzerEnum"]]]])
+                   model_uri=NMDC.mass_analyzers, domain=None, range=Optional[Union[Union[str, "MassAnalyzerEnum"], list[Union[str, "MassAnalyzerEnum"]]]])
 
 slots.resolution_categories = Slot(uri=NMDC.resolution_categories, name="resolution_categories", curie=NMDC.curie('resolution_categories'),
-                   model_uri=NMDC.resolution_categories, domain=None, range=Optional[Union[Union[str, "ResolutionCategoryEnum"], List[Union[str, "ResolutionCategoryEnum"]]]])
+                   model_uri=NMDC.resolution_categories, domain=None, range=Optional[Union[Union[str, "ResolutionCategoryEnum"], list[Union[str, "ResolutionCategoryEnum"]]]])
 
 slots.mass_spectrometry_acquisition_strategy = Slot(uri=NMDC.mass_spectrometry_acquisition_strategy, name="mass_spectrometry_acquisition_strategy", curie=NMDC.curie('mass_spectrometry_acquisition_strategy'),
                    model_uri=NMDC.mass_spectrometry_acquisition_strategy, domain=None, range=Optional[Union[str, "MassSpectrometryAcquisitionStrategyEnum"]])
@@ -9942,10 +10515,7 @@ slots.count = Slot(uri=NMDC.count, name="count", curie=NMDC.curie('count'),
                    model_uri=NMDC.count, domain=None, range=int)
 
 slots.functional_annotation_agg = Slot(uri=NMDC.functional_annotation_agg, name="functional_annotation_agg", curie=NMDC.curie('functional_annotation_agg'),
-                   model_uri=NMDC.functional_annotation_agg, domain=None, range=Optional[Union[Union[dict, FunctionalAnnotationAggMember], List[Union[dict, FunctionalAnnotationAggMember]]]])
-
-slots.ecosystem_path_id = Slot(uri=NMDC.ecosystem_path_id, name="ecosystem_path_id", curie=NMDC.curie('ecosystem_path_id'),
-                   model_uri=NMDC.ecosystem_path_id, domain=None, range=Optional[str])
+                   model_uri=NMDC.functional_annotation_agg, domain=None, range=Optional[Union[Union[dict, FunctionalAnnotationAggMember], list[Union[dict, FunctionalAnnotationAggMember]]]])
 
 slots.sample_collection_year = Slot(uri=NMDC.sample_collection_year, name="sample_collection_year", curie=NMDC.curie('sample_collection_year'),
                    model_uri=NMDC.sample_collection_year, domain=None, range=Optional[int])
@@ -9978,64 +10548,61 @@ slots.etl_software_version = Slot(uri=NMDC.etl_software_version, name="etl_softw
                    model_uri=NMDC.etl_software_version, domain=None, range=Optional[str])
 
 slots.object_set = Slot(uri=NMDC.object_set, name="object_set", curie=NMDC.curie('object_set'),
-                   model_uri=NMDC.object_set, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.object_set, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.chemical_entity_set = Slot(uri=NMDC.chemical_entity_set, name="chemical_entity_set", curie=NMDC.curie('chemical_entity_set'),
-                   model_uri=NMDC.chemical_entity_set, domain=None, range=Optional[Union[Dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], List[Union[dict, ChemicalEntity]]]])
+                   model_uri=NMDC.chemical_entity_set, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.ontology_class_set = Slot(uri=NMDC.ontology_class_set, name="ontology_class_set", curie=NMDC.curie('ontology_class_set'),
-                   model_uri=NMDC.ontology_class_set, domain=None, range=Optional[Union[Dict[Union[str, OntologyClassId], Union[dict, OntologyClass]], List[Union[dict, OntologyClass]]]])
+                   model_uri=NMDC.ontology_class_set, domain=None, range=Optional[Union[dict[Union[str, OntologyClassId], Union[dict, OntologyClass]], list[Union[dict, OntologyClass]]]])
 
 slots.biosample_set = Slot(uri=NMDC.biosample_set, name="biosample_set", curie=NMDC.curie('biosample_set'),
-                   model_uri=NMDC.biosample_set, domain=None, range=Optional[Union[Dict[Union[str, BiosampleId], Union[dict, Biosample]], List[Union[dict, Biosample]]]])
+                   model_uri=NMDC.biosample_set, domain=None, range=Optional[Union[dict[Union[str, BiosampleId], Union[dict, Biosample]], list[Union[dict, Biosample]]]])
 
 slots.study_set = Slot(uri=NMDC.study_set, name="study_set", curie=NMDC.curie('study_set'),
-                   model_uri=NMDC.study_set, domain=None, range=Optional[Union[Dict[Union[str, StudyId], Union[dict, Study]], List[Union[dict, Study]]]])
+                   model_uri=NMDC.study_set, domain=None, range=Optional[Union[dict[Union[str, StudyId], Union[dict, Study]], list[Union[dict, Study]]]])
 
 slots.field_research_site_set = Slot(uri=NMDC.field_research_site_set, name="field_research_site_set", curie=NMDC.curie('field_research_site_set'),
-                   model_uri=NMDC.field_research_site_set, domain=None, range=Optional[Union[Dict[Union[str, FieldResearchSiteId], Union[dict, FieldResearchSite]], List[Union[dict, FieldResearchSite]]]])
+                   model_uri=NMDC.field_research_site_set, domain=None, range=Optional[Union[dict[Union[str, FieldResearchSiteId], Union[dict, FieldResearchSite]], list[Union[dict, FieldResearchSite]]]])
 
 slots.collecting_biosamples_from_site_set = Slot(uri=NMDC.collecting_biosamples_from_site_set, name="collecting_biosamples_from_site_set", curie=NMDC.curie('collecting_biosamples_from_site_set'),
-                   model_uri=NMDC.collecting_biosamples_from_site_set, domain=None, range=Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, CollectingBiosamplesFromSite]], List[Union[dict, CollectingBiosamplesFromSite]]]])
+                   model_uri=NMDC.collecting_biosamples_from_site_set, domain=None, range=Optional[Union[dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, CollectingBiosamplesFromSite]], list[Union[dict, CollectingBiosamplesFromSite]]]])
 
 slots.data_object_set = Slot(uri=NMDC.data_object_set, name="data_object_set", curie=NMDC.curie('data_object_set'),
-                   model_uri=NMDC.data_object_set, domain=None, range=Optional[Union[Dict[Union[str, DataObjectId], Union[dict, DataObject]], List[Union[dict, DataObject]]]])
+                   model_uri=NMDC.data_object_set, domain=None, range=Optional[Union[dict[Union[str, DataObjectId], Union[dict, DataObject]], list[Union[dict, DataObject]]]])
 
 slots.genome_feature_set = Slot(uri=NMDC.genome_feature_set, name="genome_feature_set", curie=NMDC.curie('genome_feature_set'),
-                   model_uri=NMDC.genome_feature_set, domain=None, range=Optional[Union[Union[dict, GenomeFeature], List[Union[dict, GenomeFeature]]]])
+                   model_uri=NMDC.genome_feature_set, domain=None, range=Optional[Union[Union[dict, GenomeFeature], list[Union[dict, GenomeFeature]]]])
 
 slots.functional_annotation_set = Slot(uri=NMDC.functional_annotation_set, name="functional_annotation_set", curie=NMDC.curie('functional_annotation_set'),
-                   model_uri=NMDC.functional_annotation_set, domain=None, range=Optional[Union[Union[dict, FunctionalAnnotation], List[Union[dict, FunctionalAnnotation]]]])
+                   model_uri=NMDC.functional_annotation_set, domain=None, range=Optional[Union[Union[dict, FunctionalAnnotation], list[Union[dict, FunctionalAnnotation]]]])
 
 slots.workflow_execution_set = Slot(uri=NMDC.workflow_execution_set, name="workflow_execution_set", curie=NMDC.curie('workflow_execution_set'),
-                   model_uri=NMDC.workflow_execution_set, domain=None, range=Optional[Union[Dict[Union[str, WorkflowExecutionId], Union[dict, WorkflowExecution]], List[Union[dict, WorkflowExecution]]]])
+                   model_uri=NMDC.workflow_execution_set, domain=None, range=Optional[Union[dict[Union[str, WorkflowExecutionId], Union[dict, WorkflowExecution]], list[Union[dict, WorkflowExecution]]]])
 
 slots.data_generation_set = Slot(uri=NMDC.data_generation_set, name="data_generation_set", curie=NMDC.curie('data_generation_set'),
-                   model_uri=NMDC.data_generation_set, domain=None, range=Optional[Union[Dict[Union[str, DataGenerationId], Union[dict, DataGeneration]], List[Union[dict, DataGeneration]]]])
+                   model_uri=NMDC.data_generation_set, domain=None, range=Optional[Union[dict[Union[str, DataGenerationId], Union[dict, DataGeneration]], list[Union[dict, DataGeneration]]]])
 
 slots.processed_sample_set = Slot(uri=NMDC.processed_sample_set, name="processed_sample_set", curie=NMDC.curie('processed_sample_set'),
-                   model_uri=NMDC.processed_sample_set, domain=None, range=Optional[Union[Dict[Union[str, ProcessedSampleId], Union[dict, ProcessedSample]], List[Union[dict, ProcessedSample]]]])
+                   model_uri=NMDC.processed_sample_set, domain=None, range=Optional[Union[dict[Union[str, ProcessedSampleId], Union[dict, ProcessedSample]], list[Union[dict, ProcessedSample]]]])
 
 slots.instrument_set = Slot(uri=NMDC.instrument_set, name="instrument_set", curie=NMDC.curie('instrument_set'),
-                   model_uri=NMDC.instrument_set, domain=None, range=Optional[Union[Dict[Union[str, InstrumentId], Union[dict, Instrument]], List[Union[dict, Instrument]]]])
+                   model_uri=NMDC.instrument_set, domain=None, range=Optional[Union[dict[Union[str, InstrumentId], Union[dict, Instrument]], list[Union[dict, Instrument]]]])
 
 slots.calibration_set = Slot(uri=NMDC.calibration_set, name="calibration_set", curie=NMDC.curie('calibration_set'),
-                   model_uri=NMDC.calibration_set, domain=None, range=Optional[Union[Dict[Union[str, CalibrationInformationId], Union[dict, CalibrationInformation]], List[Union[dict, CalibrationInformation]]]])
+                   model_uri=NMDC.calibration_set, domain=None, range=Optional[Union[dict[Union[str, CalibrationInformationId], Union[dict, CalibrationInformation]], list[Union[dict, CalibrationInformation]]]])
 
 slots.configuration_set = Slot(uri=NMDC.configuration_set, name="configuration_set", curie=NMDC.curie('configuration_set'),
-                   model_uri=NMDC.configuration_set, domain=None, range=Optional[Union[Dict[Union[str, ConfigurationId], Union[dict, Configuration]], List[Union[dict, Configuration]]]])
+                   model_uri=NMDC.configuration_set, domain=None, range=Optional[Union[dict[Union[str, ConfigurationId], Union[dict, Configuration]], list[Union[dict, Configuration]]]])
 
 slots.manifest_set = Slot(uri=NMDC.manifest_set, name="manifest_set", curie=NMDC.curie('manifest_set'),
-                   model_uri=NMDC.manifest_set, domain=None, range=Optional[Union[Dict[Union[str, ManifestId], Union[dict, Manifest]], List[Union[dict, Manifest]]]])
-
-slots.protocol_execution_set = Slot(uri=NMDC.protocol_execution_set, name="protocol_execution_set", curie=NMDC.curie('protocol_execution_set'),
-                   model_uri=NMDC.protocol_execution_set, domain=None, range=Optional[Union[Dict[Union[str, ProtocolExecutionId], Union[dict, ProtocolExecution]], List[Union[dict, ProtocolExecution]]]])
+                   model_uri=NMDC.manifest_set, domain=None, range=Optional[Union[dict[Union[str, ManifestId], Union[dict, Manifest]], list[Union[dict, Manifest]]]])
 
 slots.storage_process_set = Slot(uri=NMDC.storage_process_set, name="storage_process_set", curie=NMDC.curie('storage_process_set'),
-                   model_uri=NMDC.storage_process_set, domain=None, range=Optional[Union[Dict[Union[str, StorageProcessId], Union[dict, StorageProcess]], List[Union[dict, StorageProcess]]]])
+                   model_uri=NMDC.storage_process_set, domain=None, range=Optional[Union[dict[Union[str, StorageProcessId], Union[dict, StorageProcess]], list[Union[dict, StorageProcess]]]])
 
 slots.material_processing_set = Slot(uri=NMDC.material_processing_set, name="material_processing_set", curie=NMDC.curie('material_processing_set'),
-                   model_uri=NMDC.material_processing_set, domain=None, range=Optional[Union[Dict[Union[str, MaterialProcessingId], Union[dict, MaterialProcessing]], List[Union[dict, MaterialProcessing]]]])
+                   model_uri=NMDC.material_processing_set, domain=None, range=Optional[Union[dict[Union[str, MaterialProcessingId], Union[dict, MaterialProcessing]], list[Union[dict, MaterialProcessing]]]])
 
 slots.sample_collection_day = Slot(uri=NMDC.sample_collection_day, name="sample_collection_day", curie=NMDC.curie('sample_collection_day'),
                    model_uri=NMDC.sample_collection_day, domain=None, range=Optional[int])
@@ -10061,12 +10628,6 @@ slots.completion_date = Slot(uri=NMDC.completion_date, name="completion_date", c
 slots.container_size = Slot(uri=NMDC.container_size, name="container_size", curie=NMDC.curie('container_size'),
                    model_uri=NMDC.container_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.protocol_execution_category = Slot(uri=NMDC.protocol_execution_category, name="protocol_execution_category", curie=NMDC.curie('protocol_execution_category'),
-                   model_uri=NMDC.protocol_execution_category, domain=None, range=Union[str, "ProtocolCategoryEnum"])
-
-slots.has_process_parts = Slot(uri=NMDC.has_process_parts, name="has_process_parts", curie=NMDC.curie('has_process_parts'),
-                   model_uri=NMDC.has_process_parts, domain=None, range=Union[Union[str, PlannedProcessId], List[Union[str, PlannedProcessId]]])
-
 slots.filter_material = Slot(uri=NMDC.filter_material, name="filter_material", curie=NMDC.curie('filter_material'),
                    model_uri=NMDC.filter_material, domain=None, range=Optional[str])
 
@@ -10074,7 +10635,7 @@ slots.filter_pore_size = Slot(uri=NMDC.filter_pore_size, name="filter_pore_size"
                    model_uri=NMDC.filter_pore_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.conditionings = Slot(uri=NMDC.conditionings, name="conditionings", curie=NMDC.curie('conditionings'),
-                   model_uri=NMDC.conditionings, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.conditionings, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.separation_method = Slot(uri=NMDC.separation_method, name="separation_method", curie=NMDC.curie('separation_method'),
                    model_uri=NMDC.separation_method, domain=None, range=Optional[Union[str, "SeparationMethodEnum"]])
@@ -10101,7 +10662,7 @@ slots.input_volume = Slot(uri=NMDC.input_volume, name="input_volume", curie=NMDC
                    model_uri=NMDC.input_volume, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ordered_mobile_phases = Slot(uri=NMDC.ordered_mobile_phases, name="ordered_mobile_phases", curie=NMDC.curie('ordered_mobile_phases'),
-                   model_uri=NMDC.ordered_mobile_phases, domain=None, range=Optional[Union[Union[dict, MobilePhaseSegment], List[Union[dict, MobilePhaseSegment]]]])
+                   model_uri=NMDC.ordered_mobile_phases, domain=None, range=Optional[Union[Union[dict, MobilePhaseSegment], list[Union[dict, MobilePhaseSegment]]]])
 
 slots.stationary_phase = Slot(uri=NMDC.stationary_phase, name="stationary_phase", curie=NMDC.curie('stationary_phase'),
                    model_uri=NMDC.stationary_phase, domain=None, range=Optional[Union[str, "StationaryPhaseEnum"]])
@@ -10110,7 +10671,7 @@ slots.chromatographic_category = Slot(uri=NMDC.chromatographic_category, name="c
                    model_uri=NMDC.chromatographic_category, domain=None, range=Optional[Union[str, "ChromatographicCategoryEnum"]])
 
 slots.sampled_portion = Slot(uri=NMDC.sampled_portion, name="sampled_portion", curie=NMDC.curie('sampled_portion'),
-                   model_uri=NMDC.sampled_portion, domain=None, range=Optional[Union[Union[str, "SamplePortionEnum"], List[Union[str, "SamplePortionEnum"]]]])
+                   model_uri=NMDC.sampled_portion, domain=None, range=Optional[Union[Union[str, "SamplePortionEnum"], list[Union[str, "SamplePortionEnum"]]]])
 
 slots.feature_category = Slot(uri=NMDC.feature_category, name="feature_category", curie=NMDC.curie('feature_category'),
                    model_uri=NMDC.feature_category, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
@@ -10148,6 +10709,9 @@ slots.start = Slot(uri=NMDC.start, name="start", curie=NMDC.curie('start'),
 
 slots.metaproteomics_analysis_category = Slot(uri=NMDC.metaproteomics_analysis_category, name="metaproteomics_analysis_category", curie=NMDC.curie('metaproteomics_analysis_category'),
                    model_uri=NMDC.metaproteomics_analysis_category, domain=None, range=Union[str, "MetaproteomicsAnalysisCategoryEnum"])
+
+slots.metabolomics_analysis_category = Slot(uri=NMDC.metabolomics_analysis_category, name="metabolomics_analysis_category", curie=NMDC.curie('metabolomics_analysis_category'),
+                   model_uri=NMDC.metabolomics_analysis_category, domain=None, range=Union[str, "MetabolomicsAnalysisCategoryEnum"])
 
 slots.metagenome_assembly_parameter = Slot(uri=NMDC.metagenome_assembly_parameter, name="metagenome_assembly_parameter", curie=NMDC.curie('metagenome_assembly_parameter'),
                    model_uri=NMDC.metagenome_assembly_parameter, domain=None, range=Optional[str])
@@ -10237,7 +10801,7 @@ slots.read_qc_analysis_statistic = Slot(uri=NMDC.read_qc_analysis_statistic, nam
                    model_uri=NMDC.read_qc_analysis_statistic, domain=None, range=Optional[str])
 
 slots.mags_list = Slot(uri=NMDC.mags_list, name="mags_list", curie=NMDC.curie('mags_list'),
-                   model_uri=NMDC.mags_list, domain=None, range=Optional[Union[Union[dict, MagBin], List[Union[dict, MagBin]]]])
+                   model_uri=NMDC.mags_list, domain=None, range=Optional[Union[Union[dict, MagBin], list[Union[dict, MagBin]]]])
 
 slots.too_short_contig_num = Slot(uri=NMDC.too_short_contig_num, name="too_short_contig_num", curie=NMDC.curie('too_short_contig_num'),
                    model_uri=NMDC.too_short_contig_num, domain=None, range=Optional[int])
@@ -10273,7 +10837,7 @@ slots.input_read_bases = Slot(uri=NMDC.input_read_bases, name="input_read_bases"
                    model_uri=NMDC.input_read_bases, domain=None, range=Optional[float])
 
 slots.has_metabolite_identifications = Slot(uri=NMDC.has_metabolite_identifications, name="has_metabolite_identifications", curie=NMDC.curie('has_metabolite_identifications'),
-                   model_uri=NMDC.has_metabolite_identifications, domain=None, range=Optional[Union[Union[dict, MetaboliteIdentification], List[Union[dict, MetaboliteIdentification]]]])
+                   model_uri=NMDC.has_metabolite_identifications, domain=None, range=Optional[Union[Union[dict, MetaboliteIdentification], list[Union[dict, MetaboliteIdentification]]]])
 
 slots.chemical_conversion_category = Slot(uri=NMDC.chemical_conversion_category, name="chemical_conversion_category", curie=NMDC.curie('chemical_conversion_category'),
                    model_uri=NMDC.chemical_conversion_category, domain=None, range=Optional[Union[str, "ChemicalConversionCategoryEnum"]])
@@ -10282,7 +10846,7 @@ slots.substances_volume = Slot(uri=NMDC.substances_volume, name="substances_volu
                    model_uri=NMDC.substances_volume, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.biosample_categories = Slot(uri=NMDC.biosample_categories, name="biosample_categories", curie=NMDC.curie('biosample_categories'),
-                   model_uri=NMDC.biosample_categories, domain=None, range=Optional[Union[Union[str, "BiosampleCategoryEnum"], List[Union[str, "BiosampleCategoryEnum"]]]])
+                   model_uri=NMDC.biosample_categories, domain=None, range=Optional[Union[Union[str, "BiosampleCategoryEnum"], list[Union[str, "BiosampleCategoryEnum"]]]])
 
 slots.collected_from = Slot(uri=NMDC.collected_from, name="collected_from", curie=NMDC.curie('collected_from'),
                    model_uri=NMDC.collected_from, domain=None, range=Optional[Union[str, FieldResearchSiteId]])
@@ -10327,10 +10891,7 @@ slots.mass = Slot(uri=NMDC.mass, name="mass", curie=NMDC.curie('mass'),
                    model_uri=NMDC.mass, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.substances_used = Slot(uri=NMDC.substances_used, name="substances_used", curie=NMDC.curie('substances_used'),
-                   model_uri=NMDC.substances_used, domain=None, range=Optional[Union[Union[dict, PortionOfSubstance], List[Union[dict, PortionOfSubstance]]]])
-
-slots.known_as = Slot(uri=NMDC.known_as, name="known_as", curie=NMDC.curie('known_as'),
-                   model_uri=NMDC.known_as, domain=None, range=Optional[Union[str, ChemicalEntityId]])
+                   model_uri=NMDC.substances_used, domain=None, range=Optional[Union[Union[dict, PortionOfSubstance], list[Union[dict, PortionOfSubstance]]]])
 
 slots.substance_role = Slot(uri=NMDC.substance_role, name="substance_role", curie=NMDC.curie('substance_role'),
                    model_uri=NMDC.substance_role, domain=None, range=Optional[Union[str, "SubstanceRoleEnum"]])
@@ -10354,7 +10915,7 @@ slots.total_bases = Slot(uri=NMDC.total_bases, name="total_bases", curie=NMDC.cu
                    model_uri=NMDC.total_bases, domain=None, range=Optional[int])
 
 slots.members_id = Slot(uri=NMDC.members_id, name="members_id", curie=NMDC.curie('members_id'),
-                   model_uri=NMDC.members_id, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.members_id, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.bin_name = Slot(uri=NMDC.bin_name, name="bin_name", curie=NMDC.curie('bin_name'),
                    model_uri=NMDC.bin_name, domain=None, range=str)
@@ -10411,7 +10972,7 @@ slots.highest_similarity_score = Slot(uri=NMDC.highest_similarity_score, name="h
                    model_uri=NMDC.highest_similarity_score, domain=None, range=Optional[float])
 
 slots.metabolite_identified = Slot(uri=NMDC.metabolite_identified, name="metabolite_identified", curie=NMDC.curie('metabolite_identified'),
-                   model_uri=NMDC.metabolite_identified, domain=None, range=Optional[Union[str, ChemicalEntityId]])
+                   model_uri=NMDC.metabolite_identified, domain=None, range=Optional[str])
 
 slots.chemical_formula = Slot(uri=NMDC.chemical_formula, name="chemical_formula", curie=NMDC.curie('chemical_formula'),
                    model_uri=NMDC.chemical_formula, domain=None, range=Optional[str])
@@ -10423,114 +10984,352 @@ slots.inchi = Slot(uri=NMDC.inchi, name="inchi", curie=NMDC.curie('inchi'),
                    model_uri=NMDC.inchi, domain=None, range=Optional[str])
 
 slots.smiles = Slot(uri=NMDC.smiles, name="smiles", curie=NMDC.curie('smiles'),
-                   model_uri=NMDC.smiles, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.smiles, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.volume = Slot(uri=NMDC.volume, name="volume", curie=NMDC.curie('volume'),
                    model_uri=NMDC.volume, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.sample_state_information = Slot(uri=NMDC.sample_state_information, name="sample_state_information", curie=NMDC.curie('sample_state_information'),
-                   model_uri=NMDC.sample_state_information, domain=None, range=Optional[Union[str, "SampleStateEnum"]])
+slots.known_as = Slot(uri=NMDC.known_as, name="known_as", curie=NMDC.curie('known_as'),
+                   model_uri=NMDC.known_as, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
 
-slots.biomaterial_purity = Slot(uri=NMDC['attribute_values/biomaterial_purity'], name="biomaterial_purity", curie=NMDC.curie('attribute_values/biomaterial_purity'),
-                   model_uri=NMDC.biomaterial_purity, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.name = Slot(uri=NMDC['attribute_values/name'], name="name", curie=NMDC.curie('attribute_values/name'),
+                   model_uri=NMDC.name, domain=None, range=Optional[str])
 
 slots.term = Slot(uri=NMDC['attribute_values/term'], name="term", curie=NMDC.curie('attribute_values/term'),
                    model_uri=NMDC.term, domain=None, range=Optional[Union[dict, OntologyClass]])
 
-slots.emsl_store_temp = Slot(uri=NMDC.emsl_store_temp, name="emsl_store_temp", curie=NMDC.curie('emsl_store_temp'),
-                   model_uri=NMDC.emsl_store_temp, domain=None, range=Optional[str])
+slots.description = Slot(uri=DCTERMS.description, name="description", curie=DCTERMS.curie('description'),
+                   model_uri=NMDC.description, domain=None, range=Optional[str])
 
-slots.project_id = Slot(uri=NMDC.project_id, name="project_id", curie=NMDC.curie('project_id'),
-                   model_uri=NMDC.project_id, domain=None, range=Optional[str])
+slots.display_order = Slot(uri=NMDC['attribute_values/display_order'], name="display_order", curie=NMDC.curie('attribute_values/display_order'),
+                   model_uri=NMDC.display_order, domain=None, range=Optional[int])
 
-slots.replicate_number = Slot(uri=NMDC.replicate_number, name="replicate_number", curie=NMDC.curie('replicate_number'),
-                   model_uri=NMDC.replicate_number, domain=None, range=Optional[str])
+slots.email = Slot(uri=SCHEMA.email, name="email", curie=SCHEMA.curie('email'),
+                   model_uri=NMDC.email, domain=None, range=Optional[str])
 
-slots.sample_shipped = Slot(uri=NMDC.sample_shipped, name="sample_shipped", curie=NMDC.curie('sample_shipped'),
-                   model_uri=NMDC.sample_shipped, domain=None, range=Optional[str])
+slots.profile_image_url = Slot(uri=NMDC['attribute_values/profile_image_url'], name="profile_image_url", curie=NMDC.curie('attribute_values/profile_image_url'),
+                   model_uri=NMDC.profile_image_url, domain=None, range=Optional[str])
 
-slots.sample_type = Slot(uri=NMDC.sample_type, name="sample_type", curie=NMDC.curie('sample_type'),
-                   model_uri=NMDC.sample_type, domain=None, range=Optional[Union[str, "SampleTypeEnum"]])
+slots.orcid = Slot(uri=NMDC['attribute_values/orcid'], name="orcid", curie=NMDC.curie('attribute_values/orcid'),
+                   model_uri=NMDC.orcid, domain=None, range=Optional[str])
 
-slots.technical_reps = Slot(uri=NMDC.technical_reps, name="technical_reps", curie=NMDC.curie('technical_reps'),
-                   model_uri=NMDC.technical_reps, domain=None, range=Optional[str])
+slots.language = Slot(uri=NMDC['attribute_values/language'], name="language", curie=NMDC.curie('attribute_values/language'),
+                   model_uri=NMDC.language, domain=None, range=Optional[str])
 
-slots.dna_collect_site = Slot(uri=NMDC.dna_collect_site, name="dna_collect_site", curie=NMDC.curie('dna_collect_site'),
-                   model_uri=NMDC.dna_collect_site, domain=None, range=Optional[str])
+slots.has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_value'], name="has_raw_value", curie=NMDC.curie('attribute_values/has_raw_value'),
+                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
 
-slots.dna_cont_type = Slot(uri=NMDC.dna_cont_type, name="dna_cont_type", curie=NMDC.curie('dna_cont_type'),
-                   model_uri=NMDC.dna_cont_type, domain=None, range=Optional[Union[str, "JgiContTypeEnum"]])
+slots.has_unit = Slot(uri=NMDC['attribute_values/has_unit'], name="has_unit", curie=NMDC.curie('attribute_values/has_unit'),
+                   model_uri=NMDC.has_unit, domain=None, range=Optional[str], mappings = [QUD["unit"], SCHEMA["unitCode"]])
 
-slots.dna_cont_well = Slot(uri=NMDC.dna_cont_well, name="dna_cont_well", curie=NMDC.curie('dna_cont_well'),
-                   model_uri=NMDC.dna_cont_well, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$'))
+slots.type = Slot(uri=RDF.type, name="type", curie=RDF.curie('type'),
+                   model_uri=NMDC.type, domain=None, range=Union[str, URIorCURIE])
 
-slots.dna_container_id = Slot(uri=NMDC.dna_container_id, name="dna_container_id", curie=NMDC.curie('dna_container_id'),
-                   model_uri=NMDC.dna_container_id, domain=None, range=Optional[str])
+slots.has_numeric_value = Slot(uri=NMDC['attribute_values/has_numeric_value'], name="has_numeric_value", curie=NMDC.curie('attribute_values/has_numeric_value'),
+                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[Decimal], mappings = [QUD["quantityValue"], SCHEMA["value"]])
 
-slots.dna_dnase = Slot(uri=NMDC.dna_dnase, name="dna_dnase", curie=NMDC.curie('dna_dnase'),
-                   model_uri=NMDC.dna_dnase, domain=None, range=Optional[Union[str, "YesNoEnum"]])
+slots.has_minimum_numeric_value = Slot(uri=NMDC['attribute_values/has_minimum_numeric_value'], name="has_minimum_numeric_value", curie=NMDC.curie('attribute_values/has_minimum_numeric_value'),
+                   model_uri=NMDC.has_minimum_numeric_value, domain=None, range=Optional[Decimal])
 
-slots.dna_isolate_meth = Slot(uri=NMDC.dna_isolate_meth, name="dna_isolate_meth", curie=NMDC.curie('dna_isolate_meth'),
-                   model_uri=NMDC.dna_isolate_meth, domain=None, range=Optional[str])
+slots.has_maximum_numeric_value = Slot(uri=NMDC['attribute_values/has_maximum_numeric_value'], name="has_maximum_numeric_value", curie=NMDC.curie('attribute_values/has_maximum_numeric_value'),
+                   model_uri=NMDC.has_maximum_numeric_value, domain=None, range=Optional[Decimal])
 
-slots.dna_organisms = Slot(uri=NMDC.dna_organisms, name="dna_organisms", curie=NMDC.curie('dna_organisms'),
-                   model_uri=NMDC.dna_organisms, domain=None, range=Optional[str])
+slots.latitude = Slot(uri=WGS84.lat, name="latitude", curie=WGS84.curie('lat'),
+                   model_uri=NMDC.latitude, domain=None, range=Optional[float], mappings = [SCHEMA["latitude"]])
 
-slots.dna_project_contact = Slot(uri=NMDC.dna_project_contact, name="dna_project_contact", curie=NMDC.curie('dna_project_contact'),
-                   model_uri=NMDC.dna_project_contact, domain=None, range=Optional[str])
+slots.longitude = Slot(uri=WGS84.long, name="longitude", curie=WGS84.curie('long'),
+                   model_uri=NMDC.longitude, domain=None, range=Optional[float], mappings = [SCHEMA["longitude"]])
 
-slots.dna_samp_id = Slot(uri=NMDC.dna_samp_id, name="dna_samp_id", curie=NMDC.curie('dna_samp_id'),
-                   model_uri=NMDC.dna_samp_id, domain=None, range=Optional[str])
+slots.url = Slot(uri=NMDC['attribute_values/url'], name="url", curie=NMDC.curie('attribute_values/url'),
+                   model_uri=NMDC.url, domain=None, range=Optional[str])
 
-slots.dna_sample_format = Slot(uri=NMDC.dna_sample_format, name="dna_sample_format", curie=NMDC.curie('dna_sample_format'),
-                   model_uri=NMDC.dna_sample_format, domain=None, range=Optional[Union[str, "DNASampleFormatEnum"]])
+slots.websites = Slot(uri=NMDC['attribute_values/websites'], name="websites", curie=NMDC.curie('attribute_values/websites'),
+                   model_uri=NMDC.websites, domain=None, range=Optional[Union[str, list[str]]],
+                   pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
 
-slots.dna_sample_name = Slot(uri=NMDC.dna_sample_name, name="dna_sample_name", curie=NMDC.curie('dna_sample_name'),
-                   model_uri=NMDC.dna_sample_name, domain=None, range=Optional[str])
+slots.has_attribute_label = Slot(uri=NMDC['attribute_values/has_attribute_label'], name="has_attribute_label", curie=NMDC.curie('attribute_values/has_attribute_label'),
+                   model_uri=NMDC.has_attribute_label, domain=None, range=Optional[str])
 
-slots.dna_seq_project = Slot(uri=NMDC.dna_seq_project, name="dna_seq_project", curie=NMDC.curie('dna_seq_project'),
-                   model_uri=NMDC.dna_seq_project, domain=None, range=Optional[str])
+slots.has_attribute_id = Slot(uri=NMDC['attribute_values/has_attribute_id'], name="has_attribute_id", curie=NMDC.curie('attribute_values/has_attribute_id'),
+                   model_uri=NMDC.has_attribute_id, domain=None, range=Optional[Union[str, URIorCURIE]])
 
-slots.dna_seq_project_pi = Slot(uri=NMDC.dna_seq_project_pi, name="dna_seq_project_pi", curie=NMDC.curie('dna_seq_project_pi'),
-                   model_uri=NMDC.dna_seq_project_pi, domain=None, range=Optional[str])
+slots.has_quantity_kind_id = Slot(uri=NMDC['attribute_values/has_quantity_kind_id'], name="has_quantity_kind_id", curie=NMDC.curie('attribute_values/has_quantity_kind_id'),
+                   model_uri=NMDC.has_quantity_kind_id, domain=None, range=Optional[Union[str, URIorCURIE]])
 
-slots.dna_seq_project_name = Slot(uri=NMDC.dna_seq_project_name, name="dna_seq_project_name", curie=NMDC.curie('dna_seq_project_name'),
-                   model_uri=NMDC.dna_seq_project_name, domain=None, range=Optional[str])
+slots.has_value_term_id = Slot(uri=NMDC['attribute_values/has_value_term_id'], name="has_value_term_id", curie=NMDC.curie('attribute_values/has_value_term_id'),
+                   model_uri=NMDC.has_value_term_id, domain=None, range=Optional[Union[str, URIorCURIE]])
 
-slots.dna_volume = Slot(uri=NMDC.dna_volume, name="dna_volume", curie=NMDC.curie('dna_volume'),
-                   model_uri=NMDC.dna_volume, domain=None, range=Optional[float])
+slots.has_datetime_value = Slot(uri=NMDC['attribute_values/has_datetime_value'], name="has_datetime_value", curie=NMDC.curie('attribute_values/has_datetime_value'),
+                   model_uri=NMDC.has_datetime_value, domain=None, range=Optional[str])
 
-slots.proposal_dna = Slot(uri=NMDC.proposal_dna, name="proposal_dna", curie=NMDC.curie('proposal_dna'),
-                   model_uri=NMDC.proposal_dna, domain=None, range=Optional[str])
+slots.processing_institution_workflow_metadata = Slot(uri=NMDC.processing_institution_workflow_metadata, name="processing_institution_workflow_metadata", curie=NMDC.curie('processing_institution_workflow_metadata'),
+                   model_uri=NMDC.processing_institution_workflow_metadata, domain=None, range=Optional[str], mappings = [NCIT["C165211"]])
 
-slots.dnase_rna = Slot(uri=NMDC.dnase_rna, name="dnase_rna", curie=NMDC.curie('dnase_rna'),
-                   model_uri=NMDC.dnase_rna, domain=None, range=Optional[Union[str, "YesNoEnum"]])
+slots.qc_comment = Slot(uri=NMDC.qc_comment, name="qc_comment", curie=NMDC.curie('qc_comment'),
+                   model_uri=NMDC.qc_comment, domain=None, range=Optional[str])
 
-slots.proposal_rna = Slot(uri=NMDC.proposal_rna, name="proposal_rna", curie=NMDC.curie('proposal_rna'),
-                   model_uri=NMDC.proposal_rna, domain=None, range=Optional[str])
+slots.objective = Slot(uri=NMDC.objective, name="objective", curie=NMDC.curie('objective'),
+                   model_uri=NMDC.objective, domain=None, range=Optional[str], mappings = [SIO["000337"]])
 
-slots.rna_absorb1 = Slot(uri=NMDC.rna_absorb1, name="rna_absorb1", curie=NMDC.curie('rna_absorb1'),
-                   model_uri=NMDC.rna_absorb1, domain=None, range=Optional[float])
+slots.md5_checksum = Slot(uri=NMDC.md5_checksum, name="md5_checksum", curie=NMDC.curie('md5_checksum'),
+                   model_uri=NMDC.md5_checksum, domain=None, range=Optional[str])
 
-slots.rna_absorb2 = Slot(uri=NMDC.rna_absorb2, name="rna_absorb2", curie=NMDC.curie('rna_absorb2'),
-                   model_uri=NMDC.rna_absorb2, domain=None, range=Optional[float])
+slots.data_object_type = Slot(uri=NMDC.data_object_type, name="data_object_type", curie=NMDC.curie('data_object_type'),
+                   model_uri=NMDC.data_object_type, domain=None, range=Optional[Union[str, "FileTypeEnum"]])
+
+slots.data_category = Slot(uri=NMDC.data_category, name="data_category", curie=NMDC.curie('data_category'),
+                   model_uri=NMDC.data_category, domain=None, range=Optional[Union[str, "DataCategoryEnum"]])
+
+slots.compression_type = Slot(uri=NMDC.compression_type, name="compression_type", curie=NMDC.curie('compression_type'),
+                   model_uri=NMDC.compression_type, domain=None, range=Optional[str])
+
+slots.started_at_time = Slot(uri=NMDC.started_at_time, name="started_at_time", curie=NMDC.curie('started_at_time'),
+                   model_uri=NMDC.started_at_time, domain=None, range=Optional[str], mappings = [PROV["startedAtTime"]],
+                   pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
+
+slots.ended_at_time = Slot(uri=NMDC.ended_at_time, name="ended_at_time", curie=NMDC.curie('ended_at_time'),
+                   model_uri=NMDC.ended_at_time, domain=None, range=Optional[str], mappings = [PROV["endedAtTime"]],
+                   pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
+
+slots.git_url = Slot(uri=NMDC.git_url, name="git_url", curie=NMDC.curie('git_url'),
+                   model_uri=NMDC.git_url, domain=None, range=Optional[str])
+
+slots.execution_resource = Slot(uri=NMDC.execution_resource, name="execution_resource", curie=NMDC.curie('execution_resource'),
+                   model_uri=NMDC.execution_resource, domain=None, range=Optional[Union[str, "ExecutionResourceEnum"]])
+
+slots.homepage_website = Slot(uri=NMDC.homepage_website, name="homepage_website", curie=NMDC.curie('homepage_website'),
+                   model_uri=NMDC.homepage_website, domain=None, range=Optional[Union[str, list[str]]],
+                   pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
+
+slots.has_boolean_value = Slot(uri=NMDC.has_boolean_value, name="has_boolean_value", curie=NMDC.curie('has_boolean_value'),
+                   model_uri=NMDC.has_boolean_value, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.infiltrations = Slot(uri=NMDC.infiltrations, name="infiltrations", curie=NMDC.curie('infiltrations'),
+                   model_uri=NMDC.infiltrations, domain=None, range=Optional[Union[str, list[str]]],
+                   pattern=re.compile(r'^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$'))
+
+slots.soluble_iron_micromol = Slot(uri=NMDC.soluble_iron_micromol, name="soluble_iron_micromol", curie=NMDC.curie('soluble_iron_micromol'),
+                   model_uri=NMDC.soluble_iron_micromol, domain=None, range=Optional[str])
+
+slots.sample_collection_site = Slot(uri=NMDC.sample_collection_site, name="sample_collection_site", curie=NMDC.curie('sample_collection_site'),
+                   model_uri=NMDC.sample_collection_site, domain=None, range=Optional[str])
+
+slots.salinity_category = Slot(uri=NMDC.salinity_category, name="salinity_category", curie=NMDC.curie('salinity_category'),
+                   model_uri=NMDC.salinity_category, domain=None, range=Optional[str])
+
+slots.proport_woa_temperature = Slot(uri=NMDC.proport_woa_temperature, name="proport_woa_temperature", curie=NMDC.curie('proport_woa_temperature'),
+                   model_uri=NMDC.proport_woa_temperature, domain=None, range=Optional[str])
+
+slots.location = Slot(uri=NMDC.location, name="location", curie=NMDC.curie('location'),
+                   model_uri=NMDC.location, domain=None, range=Optional[str])
+
+slots.host_name = Slot(uri=NMDC.host_name, name="host_name", curie=NMDC.curie('host_name'),
+                   model_uri=NMDC.host_name, domain=None, range=Optional[str])
+
+slots.community = Slot(uri=NMDC.community, name="community", curie=NMDC.curie('community'),
+                   model_uri=NMDC.community, domain=None, range=Optional[str])
+
+slots.embargoed = Slot(uri=NMDC.embargoed, name="embargoed", curie=NMDC.curie('embargoed'),
+                   model_uri=NMDC.embargoed, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.habitat = Slot(uri=NMDC.habitat, name="habitat", curie=NMDC.curie('habitat'),
+                   model_uri=NMDC.habitat, domain=None, range=Optional[str])
+
+slots.version = Slot(uri=NMDC.version, name="version", curie=NMDC.curie('version'),
+                   model_uri=NMDC.version, domain=None, range=Optional[str])
+
+slots.doi_value = Slot(uri=NMDC.doi_value, name="doi_value", curie=NMDC.curie('doi_value'),
+                   model_uri=NMDC.doi_value, domain=None, range=Union[str, URIorCURIE],
+                   pattern=re.compile(r'^doi:10.\d{2,9}/.*$'))
+
+slots.doi_provider = Slot(uri=NMDC.doi_provider, name="doi_provider", curie=NMDC.curie('doi_provider'),
+                   model_uri=NMDC.doi_provider, domain=None, range=Optional[Union[str, "DoiProviderEnum"]])
+
+slots.doi_category = Slot(uri=NMDC.doi_category, name="doi_category", curie=NMDC.curie('doi_category'),
+                   model_uri=NMDC.doi_category, domain=None, range=Union[str, "DoiCategoryEnum"])
+
+slots.related_identifiers = Slot(uri=NMDC.related_identifiers, name="related_identifiers", curie=NMDC.curie('related_identifiers'),
+                   model_uri=NMDC.related_identifiers, domain=None, range=Optional[str])
+
+slots.notes = Slot(uri=NMDC.notes, name="notes", curie=NMDC.curie('notes'),
+                   model_uri=NMDC.notes, domain=None, range=Optional[str])
+
+slots.funding_sources = Slot(uri=NMDC.funding_sources, name="funding_sources", curie=NMDC.curie('funding_sources'),
+                   model_uri=NMDC.funding_sources, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.ecosystem_path_id = Slot(uri=NMDC.ecosystem_path_id, name="ecosystem_path_id", curie=NMDC.curie('ecosystem_path_id'),
+                   model_uri=NMDC.ecosystem_path_id, domain=None, range=Optional[int])
+
+slots.gold_path_field = Slot(uri=NMDC.gold_path_field, name="gold_path_field", curie=NMDC.curie('gold_path_field'),
+                   model_uri=NMDC.gold_path_field, domain=None, range=Optional[str])
+
+slots.ecosystem = Slot(uri=NMDC.ecosystem, name="ecosystem", curie=NMDC.curie('ecosystem'),
+                   model_uri=NMDC.ecosystem, domain=None, range=Optional[str])
+
+slots.ecosystem_category = Slot(uri=NMDC.ecosystem_category, name="ecosystem_category", curie=NMDC.curie('ecosystem_category'),
+                   model_uri=NMDC.ecosystem_category, domain=None, range=Optional[str])
+
+slots.ecosystem_type = Slot(uri=NMDC.ecosystem_type, name="ecosystem_type", curie=NMDC.curie('ecosystem_type'),
+                   model_uri=NMDC.ecosystem_type, domain=None, range=Optional[str])
+
+slots.ecosystem_subtype = Slot(uri=NMDC.ecosystem_subtype, name="ecosystem_subtype", curie=NMDC.curie('ecosystem_subtype'),
+                   model_uri=NMDC.ecosystem_subtype, domain=None, range=Optional[str])
+
+slots.specific_ecosystem = Slot(uri=NMDC.specific_ecosystem, name="specific_ecosystem", curie=NMDC.curie('specific_ecosystem'),
+                   model_uri=NMDC.specific_ecosystem, domain=None, range=Optional[str])
+
+slots.add_date = Slot(uri=NMDC.add_date, name="add_date", curie=NMDC.curie('add_date'),
+                   model_uri=NMDC.add_date, domain=None, range=Optional[str])
+
+slots.mod_date = Slot(uri=NMDC.mod_date, name="mod_date", curie=NMDC.curie('mod_date'),
+                   model_uri=NMDC.mod_date, domain=None, range=Optional[str])
+
+slots.ncbi_taxonomy_name = Slot(uri=NMDC.ncbi_taxonomy_name, name="ncbi_taxonomy_name", curie=NMDC.curie('ncbi_taxonomy_name'),
+                   model_uri=NMDC.ncbi_taxonomy_name, domain=None, range=Optional[str])
+
+slots.ncbi_project_name = Slot(uri=NMDC.ncbi_project_name, name="ncbi_project_name", curie=NMDC.curie('ncbi_project_name'),
+                   model_uri=NMDC.ncbi_project_name, domain=None, range=Optional[str])
+
+slots.processing_institution = Slot(uri=NMDC.processing_institution, name="processing_institution", curie=NMDC.curie('processing_institution'),
+                   model_uri=NMDC.processing_institution, domain=None, range=Optional[Union[str, "ProcessingInstitutionEnum"]])
+
+slots.qc_status = Slot(uri=NMDC.qc_status, name="qc_status", curie=NMDC.curie('qc_status'),
+                   model_uri=NMDC.qc_status, domain=None, range=Optional[Union[str, "StatusEnum"]])
+
+slots.file_size_bytes = Slot(uri=NMDC.file_size_bytes, name="file_size_bytes", curie=NMDC.curie('file_size_bytes'),
+                   model_uri=NMDC.file_size_bytes, domain=None, range=Optional[int])
+
+slots.analyte_category = Slot(uri=NMDC.analyte_category, name="analyte_category", curie=NMDC.curie('analyte_category'),
+                   model_uri=NMDC.analyte_category, domain=None, range=str)
+
+slots.external_database_identifiers = Slot(uri=NMDC.external_database_identifiers, name="external_database_identifiers", curie=NMDC.curie('external_database_identifiers'),
+                   model_uri=NMDC.external_database_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
+slots.dna_concentration = Slot(uri=NMDC.dna_concentration, name="dna_concentration", curie=NMDC.curie('dna_concentration'),
+                   model_uri=NMDC.dna_concentration, domain=None, range=Optional[float])
+
+slots.extraction_targets = Slot(uri=NMDC.extraction_targets, name="extraction_targets", curie=NMDC.curie('extraction_targets'),
+                   model_uri=NMDC.extraction_targets, domain=None, range=Optional[Union[Union[str, "ExtractionTargetEnum"], list[Union[str, "ExtractionTargetEnum"]]]])
+
+slots.id = Slot(uri=NMDC.id, name="id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.id, domain=None, range=URIRef,
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
+slots.title = Slot(uri=NMDC.title, name="title", curie=NMDC.curie('title'),
+                   model_uri=NMDC.title, domain=None, range=Optional[str])
+
+slots.alternative_titles = Slot(uri=NMDC.alternative_titles, name="alternative_titles", curie=NMDC.curie('alternative_titles'),
+                   model_uri=NMDC.alternative_titles, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.alternative_names = Slot(uri=NMDC.alternative_names, name="alternative_names", curie=NMDC.curie('alternative_names'),
+                   model_uri=NMDC.alternative_names, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="alternative_descriptions", curie=NMDC.curie('alternative_descriptions'),
+                   model_uri=NMDC.alternative_descriptions, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
+                   model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$'))
+
+slots.start_date = Slot(uri=NMDC.start_date, name="start_date", curie=NMDC.curie('start_date'),
+                   model_uri=NMDC.start_date, domain=None, range=Optional[str])
+
+slots.end_date = Slot(uri=NMDC.end_date, name="end_date", curie=NMDC.curie('end_date'),
+                   model_uri=NMDC.end_date, domain=None, range=Optional[str])
+
+slots.source_system_of_record = Slot(uri=NMDC['basic_classes/source_system_of_record'], name="source_system_of_record", curie=NMDC.curie('basic_classes/source_system_of_record'),
+                   model_uri=NMDC.source_system_of_record, domain=None, range=Optional[Union[str, "SourceSystemEnum"]])
+
+slots.associated_studies = Slot(uri=NMDC['basic_classes/associated_studies'], name="associated_studies", curie=NMDC.curie('basic_classes/associated_studies'),
+                   model_uri=NMDC.associated_studies, domain=None, range=Union[Union[str, StudyId], list[Union[str, StudyId]]])
+
+slots.part_of = Slot(uri=DCTERMS.isPartOf, name="part_of", curie=DCTERMS.curie('isPartOf'),
+                   model_uri=NMDC.part_of, domain=None, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]])
+
+slots.was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
+                   model_uri=NMDC.was_informed_by, domain=None, range=Optional[Union[Union[str, DataGenerationId], list[Union[str, DataGenerationId]]]])
+
+slots.principal_investigator = Slot(uri=NMDC['basic_classes/principal_investigator'], name="principal_investigator", curie=NMDC.curie('basic_classes/principal_investigator'),
+                   model_uri=NMDC.principal_investigator, domain=None, range=Optional[Union[dict, PersonValue]])
+
+slots.was_generated_by = Slot(uri=NMDC['basic_classes/was_generated_by'], name="was_generated_by", curie=NMDC.curie('basic_classes/was_generated_by'),
+                   model_uri=NMDC.was_generated_by, domain=None, range=Optional[Union[str, DataEmitterProcessId]], mappings = [PROV["wasGeneratedBy"]])
+
+slots.associated_dois = Slot(uri=NMDC['basic_classes/associated_dois'], name="associated_dois", curie=NMDC.curie('basic_classes/associated_dois'),
+                   model_uri=NMDC.associated_dois, domain=None, range=Optional[Union[Union[dict, Doi], list[Union[dict, Doi]]]])
+
+slots.has_credit_associations = Slot(uri=PROV.qualifiedAssociation, name="has_credit_associations", curie=PROV.curie('qualifiedAssociation'),
+                   model_uri=NMDC.has_credit_associations, domain=None, range=Optional[Union[Union[dict, CreditAssociation], list[Union[dict, CreditAssociation]]]])
+
+slots.protocol_link = Slot(uri=NMDC['basic_classes/protocol_link'], name="protocol_link", curie=NMDC.curie('basic_classes/protocol_link'),
+                   model_uri=NMDC.protocol_link, domain=None, range=Optional[Union[dict, Protocol]])
+
+slots.study_category = Slot(uri=NMDC['basic_classes/study_category'], name="study_category", curie=NMDC.curie('basic_classes/study_category'),
+                   model_uri=NMDC.study_category, domain=None, range=Union[str, "StudyCategoryEnum"])
+
+slots.study_image = Slot(uri=NMDC['basic_classes/study_image'], name="study_image", curie=NMDC.curie('basic_classes/study_image'),
+                   model_uri=NMDC.study_image, domain=None, range=Optional[Union[Union[dict, ImageValue], list[Union[dict, ImageValue]]]])
+
+slots.applies_to_person = Slot(uri=NMDC['basic_classes/applies_to_person'], name="applies_to_person", curie=NMDC.curie('basic_classes/applies_to_person'),
+                   model_uri=NMDC.applies_to_person, domain=None, range=Union[dict, PersonValue])
+
+slots.applied_roles = Slot(uri=NMDC['basic_classes/applied_roles'], name="applied_roles", curie=NMDC.curie('basic_classes/applied_roles'),
+                   model_uri=NMDC.applied_roles, domain=None, range=Union[Union[str, "CreditEnum"], list[Union[str, "CreditEnum"]]])
+
+slots.definition = Slot(uri=NMDC['basic_classes/definition'], name="definition", curie=NMDC.curie('basic_classes/definition'),
+                   model_uri=NMDC.definition, domain=None, range=Optional[str])
+
+slots.relations = Slot(uri=NMDC['basic_classes/relations'], name="relations", curie=NMDC.curie('basic_classes/relations'),
+                   model_uri=NMDC.relations, domain=None, range=Optional[Union[Union[dict, OntologyRelation], list[Union[dict, OntologyRelation]]]])
+
+slots.is_obsolete = Slot(uri=NMDC['basic_classes/is_obsolete'], name="is_obsolete", curie=NMDC.curie('basic_classes/is_obsolete'),
+                   model_uri=NMDC.is_obsolete, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.is_root = Slot(uri=NMDC['basic_classes/is_root'], name="is_root", curie=NMDC.curie('basic_classes/is_root'),
+                   model_uri=NMDC.is_root, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.has_input = Slot(uri=NMDC['basic_classes/has_input'], name="has_input", curie=NMDC.curie('basic_classes/has_input'),
+                   model_uri=NMDC.has_input, domain=None, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]])
+
+slots.has_output = Slot(uri=NMDC['basic_classes/has_output'], name="has_output", curie=NMDC.curie('basic_classes/has_output'),
+                   model_uri=NMDC.has_output, domain=None, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]])
+
+slots.instrument_used = Slot(uri=NMDC['basic_classes/instrument_used'], name="instrument_used", curie=NMDC.curie('basic_classes/instrument_used'),
+                   model_uri=NMDC.instrument_used, domain=None, range=Optional[Union[Union[str, InstrumentId], list[Union[str, InstrumentId]]]])
+
+slots.instrument_instance_specifier = Slot(uri=NMDC['basic_classes/instrument_instance_specifier'], name="instrument_instance_specifier", curie=NMDC.curie('basic_classes/instrument_instance_specifier'),
+                   model_uri=NMDC.instrument_instance_specifier, domain=None, range=Optional[str])
+
+slots.in_manifest = Slot(uri=NMDC['basic_classes/in_manifest'], name="in_manifest", curie=NMDC.curie('basic_classes/in_manifest'),
+                   model_uri=NMDC.in_manifest, domain=None, range=Optional[Union[Union[str, ManifestId], list[Union[str, ManifestId]]]])
+
+slots.manifest_category = Slot(uri=NMDC['basic_classes/manifest_category'], name="manifest_category", curie=NMDC.curie('basic_classes/manifest_category'),
+                   model_uri=NMDC.manifest_category, domain=None, range=Union[str, "ManifestCategoryEnum"])
+
+slots.model = Slot(uri=NMDC['basic_classes/model'], name="model", curie=NMDC.curie('basic_classes/model'),
+                   model_uri=NMDC.model, domain=None, range=Optional[Union[str, "InstrumentModelEnum"]])
+
+slots.vendor = Slot(uri=NMDC['basic_classes/vendor'], name="vendor", curie=NMDC.curie('basic_classes/vendor'),
+                   model_uri=NMDC.vendor, domain=None, range=Optional[Union[str, "InstrumentVendorEnum"]])
+
+slots.qc_failure_where = Slot(uri=NMDC['basic_classes/qc_failure_where'], name="qc_failure_where", curie=NMDC.curie('basic_classes/qc_failure_where'),
+                   model_uri=NMDC.qc_failure_where, domain=None, range=Optional[Union[str, "FailureWhereEnum"]])
+
+slots.qc_failure_what = Slot(uri=NMDC['basic_classes/qc_failure_what'], name="qc_failure_what", curie=NMDC.curie('basic_classes/qc_failure_what'),
+                   model_uri=NMDC.qc_failure_what, domain=None, range=Optional[Union[str, "FailureWhatEnum"]])
+
+slots.protocol_for = Slot(uri=NMDC['basic_classes/protocol_for'], name="protocol_for", curie=NMDC.curie('basic_classes/protocol_for'),
+                   model_uri=NMDC.protocol_for, domain=None, range=Optional[Union[str, "ProtocolForEnum"]])
+
+slots.superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
+                   model_uri=NMDC.superseded_by, domain=None, range=Optional[Union[str, WorkflowExecutionId]])
+
+slots.provenance_metadata = Slot(uri=NMDC['basic_classes/provenance_metadata'], name="provenance_metadata", curie=NMDC.curie('basic_classes/provenance_metadata'),
+                   model_uri=NMDC.provenance_metadata, domain=None, range=Optional[Union[dict, ProvenanceMetadata]])
 
 slots.rna_collect_site = Slot(uri=NMDC.rna_collect_site, name="rna_collect_site", curie=NMDC.curie('rna_collect_site'),
                    model_uri=NMDC.rna_collect_site, domain=None, range=Optional[str])
-
-slots.rna_concentration = Slot(uri=NMDC.rna_concentration, name="rna_concentration", curie=NMDC.curie('rna_concentration'),
-                   model_uri=NMDC.rna_concentration, domain=None, range=Optional[float])
-
-slots.rna_cont_type = Slot(uri=NMDC.rna_cont_type, name="rna_cont_type", curie=NMDC.curie('rna_cont_type'),
-                   model_uri=NMDC.rna_cont_type, domain=None, range=Optional[Union[str, "JgiContTypeEnum"]])
-
-slots.rna_cont_well = Slot(uri=NMDC.rna_cont_well, name="rna_cont_well", curie=NMDC.curie('rna_cont_well'),
-                   model_uri=NMDC.rna_cont_well, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$'))
-
-slots.rna_container_id = Slot(uri=NMDC.rna_container_id, name="rna_container_id", curie=NMDC.curie('rna_container_id'),
-                   model_uri=NMDC.rna_container_id, domain=None, range=Optional[str])
 
 slots.rna_isolate_meth = Slot(uri=NMDC.rna_isolate_meth, name="rna_isolate_meth", curie=NMDC.curie('rna_isolate_meth'),
                    model_uri=NMDC.rna_isolate_meth, domain=None, range=Optional[str])
@@ -10538,29 +11337,35 @@ slots.rna_isolate_meth = Slot(uri=NMDC.rna_isolate_meth, name="rna_isolate_meth"
 slots.rna_organisms = Slot(uri=NMDC.rna_organisms, name="rna_organisms", curie=NMDC.curie('rna_organisms'),
                    model_uri=NMDC.rna_organisms, domain=None, range=Optional[str])
 
-slots.rna_project_contact = Slot(uri=NMDC.rna_project_contact, name="rna_project_contact", curie=NMDC.curie('rna_project_contact'),
-                   model_uri=NMDC.rna_project_contact, domain=None, range=Optional[str])
+slots.dna_lr_isolate_meth = Slot(uri=NMDC.dna_lr_isolate_meth, name="dna_lr_isolate_meth", curie=NMDC.curie('dna_lr_isolate_meth'),
+                   model_uri=NMDC.dna_lr_isolate_meth, domain=None, range=Optional[str])
 
-slots.rna_samp_id = Slot(uri=NMDC.rna_samp_id, name="rna_samp_id", curie=NMDC.curie('rna_samp_id'),
-                   model_uri=NMDC.rna_samp_id, domain=None, range=Optional[str])
+slots.dna_collect_site = Slot(uri=NMDC.dna_collect_site, name="dna_collect_site", curie=NMDC.curie('dna_collect_site'),
+                   model_uri=NMDC.dna_collect_site, domain=None, range=Optional[str])
 
-slots.rna_sample_format = Slot(uri=NMDC.rna_sample_format, name="rna_sample_format", curie=NMDC.curie('rna_sample_format'),
-                   model_uri=NMDC.rna_sample_format, domain=None, range=Optional[Union[str, "RNASampleFormatEnum"]])
+slots.dna_isolate_meth = Slot(uri=NMDC.dna_isolate_meth, name="dna_isolate_meth", curie=NMDC.curie('dna_isolate_meth'),
+                   model_uri=NMDC.dna_isolate_meth, domain=None, range=Optional[str])
 
-slots.rna_sample_name = Slot(uri=NMDC.rna_sample_name, name="rna_sample_name", curie=NMDC.curie('rna_sample_name'),
-                   model_uri=NMDC.rna_sample_name, domain=None, range=Optional[str])
+slots.dna_organisms = Slot(uri=NMDC.dna_organisms, name="dna_organisms", curie=NMDC.curie('dna_organisms'),
+                   model_uri=NMDC.dna_organisms, domain=None, range=Optional[str])
 
-slots.rna_seq_project = Slot(uri=NMDC.rna_seq_project, name="rna_seq_project", curie=NMDC.curie('rna_seq_project'),
-                   model_uri=NMDC.rna_seq_project, domain=None, range=Optional[str])
+slots.emsl_store_temp = Slot(uri=NMDC.emsl_store_temp, name="emsl_store_temp", curie=NMDC.curie('emsl_store_temp'),
+                   model_uri=NMDC.emsl_store_temp, domain=None, range=Optional[float])
 
-slots.rna_seq_project_pi = Slot(uri=NMDC.rna_seq_project_pi, name="rna_seq_project_pi", curie=NMDC.curie('rna_seq_project_pi'),
-                   model_uri=NMDC.rna_seq_project_pi, domain=None, range=Optional[str])
+slots.project_id = Slot(uri=NMDC.project_id, name="project_id", curie=NMDC.curie('project_id'),
+                   model_uri=NMDC.project_id, domain=None, range=Optional[str])
 
-slots.rna_seq_project_name = Slot(uri=NMDC.rna_seq_project_name, name="rna_seq_project_name", curie=NMDC.curie('rna_seq_project_name'),
-                   model_uri=NMDC.rna_seq_project_name, domain=None, range=Optional[str])
+slots.sample_shipped = Slot(uri=NMDC.sample_shipped, name="sample_shipped", curie=NMDC.curie('sample_shipped'),
+                   model_uri=NMDC.sample_shipped, domain=None, range=Optional[str])
 
-slots.rna_volume = Slot(uri=NMDC.rna_volume, name="rna_volume", curie=NMDC.curie('rna_volume'),
-                   model_uri=NMDC.rna_volume, domain=None, range=Optional[float])
+slots.sample_type = Slot(uri=NMDC.sample_type, name="sample_type", curie=NMDC.curie('sample_type'),
+                   model_uri=NMDC.sample_type, domain=None, range=Optional[Union[str, "SampleTypeEnum"]])
+
+slots.replicate_number = Slot(uri=NMDC.replicate_number, name="replicate_number", curie=NMDC.curie('replicate_number'),
+                   model_uri=NMDC.replicate_number, domain=None, range=Optional[int])
+
+slots.technical_reps = Slot(uri=NMDC.technical_reps, name="technical_reps", curie=NMDC.curie('technical_reps'),
+                   model_uri=NMDC.technical_reps, domain=None, range=Optional[int])
 
 slots.collection_date_inc = Slot(uri=NMDC.collection_date_inc, name="collection_date_inc", curie=NMDC.curie('collection_date_inc'),
                    model_uri=NMDC.collection_date_inc, domain=None, range=Optional[str])
@@ -10611,468 +11416,191 @@ slots.start_time_inc = Slot(uri=NMDC.start_time_inc, name="start_time_inc", curi
                    model_uri=NMDC.start_time_inc, domain=None, range=Optional[str])
 
 slots.analysis_type = Slot(uri=NMDC.analysis_type, name="analysis_type", curie=NMDC.curie('analysis_type'),
-                   model_uri=NMDC.analysis_type, domain=None, range=Optional[Union[Union[str, "AnalysisTypeEnum"], List[Union[str, "AnalysisTypeEnum"]]]])
+                   model_uri=NMDC.analysis_type, domain=None, range=Optional[Union[Union[str, "AnalysisTypeEnum"], list[Union[str, "AnalysisTypeEnum"]]]])
 
 slots.sample_link = Slot(uri=NMDC.sample_link, name="sample_link", curie=NMDC.curie('sample_link'),
-                   model_uri=NMDC.sample_link, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.associated_studies = Slot(uri=NMDC['basic_classes/associated_studies'], name="associated_studies", curie=NMDC.curie('basic_classes/associated_studies'),
-                   model_uri=NMDC.associated_studies, domain=None, range=Union[Union[str, StudyId], List[Union[str, StudyId]]])
-
-slots.part_of = Slot(uri=DCTERMS.isPartOf, name="part_of", curie=DCTERMS.curie('isPartOf'),
-                   model_uri=NMDC.part_of, domain=None, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
-
-slots.was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.was_informed_by, domain=None, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
-
-slots.principal_investigator = Slot(uri=NMDC['basic_classes/principal_investigator'], name="principal_investigator", curie=NMDC.curie('basic_classes/principal_investigator'),
-                   model_uri=NMDC.principal_investigator, domain=None, range=Optional[Union[dict, PersonValue]])
-
-slots.was_generated_by = Slot(uri=NMDC['basic_classes/was_generated_by'], name="was_generated_by", curie=NMDC.curie('basic_classes/was_generated_by'),
-                   model_uri=NMDC.was_generated_by, domain=None, range=Optional[Union[str, WorkflowExecutionId]], mappings = [PROV["wasGeneratedBy"]])
-
-slots.associated_dois = Slot(uri=NMDC['basic_classes/associated_dois'], name="associated_dois", curie=NMDC.curie('basic_classes/associated_dois'),
-                   model_uri=NMDC.associated_dois, domain=None, range=Optional[Union[Union[dict, Doi], List[Union[dict, Doi]]]])
-
-slots.has_credit_associations = Slot(uri=PROV.qualifiedAssociation, name="has_credit_associations", curie=PROV.curie('qualifiedAssociation'),
-                   model_uri=NMDC.has_credit_associations, domain=None, range=Optional[Union[Union[dict, CreditAssociation], List[Union[dict, CreditAssociation]]]])
-
-slots.protocol_link = Slot(uri=NMDC['basic_classes/protocol_link'], name="protocol_link", curie=NMDC.curie('basic_classes/protocol_link'),
-                   model_uri=NMDC.protocol_link, domain=None, range=Optional[Union[dict, Protocol]])
-
-slots.study_category = Slot(uri=NMDC['basic_classes/study_category'], name="study_category", curie=NMDC.curie('basic_classes/study_category'),
-                   model_uri=NMDC.study_category, domain=None, range=Union[str, "StudyCategoryEnum"])
-
-slots.study_image = Slot(uri=NMDC['basic_classes/study_image'], name="study_image", curie=NMDC.curie('basic_classes/study_image'),
-                   model_uri=NMDC.study_image, domain=None, range=Optional[Union[Union[dict, ImageValue], List[Union[dict, ImageValue]]]])
-
-slots.applies_to_person = Slot(uri=NMDC['basic_classes/applies_to_person'], name="applies_to_person", curie=NMDC.curie('basic_classes/applies_to_person'),
-                   model_uri=NMDC.applies_to_person, domain=None, range=Union[dict, PersonValue])
-
-slots.applied_roles = Slot(uri=NMDC['basic_classes/applied_roles'], name="applied_roles", curie=NMDC.curie('basic_classes/applied_roles'),
-                   model_uri=NMDC.applied_roles, domain=None, range=Union[Union[str, "CreditEnum"], List[Union[str, "CreditEnum"]]])
-
-slots.has_input = Slot(uri=NMDC['basic_classes/has_input'], name="has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.has_input, domain=None, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
-
-slots.has_output = Slot(uri=NMDC['basic_classes/has_output'], name="has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.has_output, domain=None, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
-
-slots.instrument_used = Slot(uri=NMDC['basic_classes/instrument_used'], name="instrument_used", curie=NMDC.curie('basic_classes/instrument_used'),
-                   model_uri=NMDC.instrument_used, domain=None, range=Optional[Union[Union[str, InstrumentId], List[Union[str, InstrumentId]]]])
-
-slots.in_manifest = Slot(uri=NMDC['basic_classes/in_manifest'], name="in_manifest", curie=NMDC.curie('basic_classes/in_manifest'),
-                   model_uri=NMDC.in_manifest, domain=None, range=Optional[Union[Union[str, ManifestId], List[Union[str, ManifestId]]]])
-
-slots.manifest_category = Slot(uri=NMDC['basic_classes/manifest_category'], name="manifest_category", curie=NMDC.curie('basic_classes/manifest_category'),
-                   model_uri=NMDC.manifest_category, domain=None, range=Union[str, "ManifestCategoryEnum"])
-
-slots.model = Slot(uri=NMDC['basic_classes/model'], name="model", curie=NMDC.curie('basic_classes/model'),
-                   model_uri=NMDC.model, domain=None, range=Optional[Union[str, "InstrumentModelEnum"]])
-
-slots.vendor = Slot(uri=NMDC['basic_classes/vendor'], name="vendor", curie=NMDC.curie('basic_classes/vendor'),
-                   model_uri=NMDC.vendor, domain=None, range=Optional[Union[str, "InstrumentVendorEnum"]])
-
-slots.qc_failure_where = Slot(uri=NMDC['basic_classes/qc_failure_where'], name="qc_failure_where", curie=NMDC.curie('basic_classes/qc_failure_where'),
-                   model_uri=NMDC.qc_failure_where, domain=None, range=Optional[Union[str, "FailureWhereEnum"]])
-
-slots.qc_failure_what = Slot(uri=NMDC['basic_classes/qc_failure_what'], name="qc_failure_what", curie=NMDC.curie('basic_classes/qc_failure_what'),
-                   model_uri=NMDC.qc_failure_what, domain=None, range=Optional[Union[str, "FailureWhatEnum"]])
-
-slots.qc_comment = Slot(uri=NMDC.qc_comment, name="qc_comment", curie=NMDC.curie('qc_comment'),
-                   model_uri=NMDC.qc_comment, domain=None, range=Optional[str])
-
-slots.objective = Slot(uri=NMDC.objective, name="objective", curie=NMDC.curie('objective'),
-                   model_uri=NMDC.objective, domain=None, range=Optional[str], mappings = [SIO["000337"]])
-
-slots.md5_checksum = Slot(uri=NMDC.md5_checksum, name="md5_checksum", curie=NMDC.curie('md5_checksum'),
-                   model_uri=NMDC.md5_checksum, domain=None, range=Optional[str])
-
-slots.data_object_type = Slot(uri=NMDC.data_object_type, name="data_object_type", curie=NMDC.curie('data_object_type'),
-                   model_uri=NMDC.data_object_type, domain=None, range=Optional[Union[str, "FileTypeEnum"]])
-
-slots.data_category = Slot(uri=NMDC.data_category, name="data_category", curie=NMDC.curie('data_category'),
-                   model_uri=NMDC.data_category, domain=None, range=Optional[Union[str, "DataCategoryEnum"]])
-
-slots.compression_type = Slot(uri=NMDC.compression_type, name="compression_type", curie=NMDC.curie('compression_type'),
-                   model_uri=NMDC.compression_type, domain=None, range=Optional[str])
-
-slots.started_at_time = Slot(uri=NMDC.started_at_time, name="started_at_time", curie=NMDC.curie('started_at_time'),
-                   model_uri=NMDC.started_at_time, domain=None, range=Optional[str], mappings = [PROV["startedAtTime"]],
-                   pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
-
-slots.ended_at_time = Slot(uri=NMDC.ended_at_time, name="ended_at_time", curie=NMDC.curie('ended_at_time'),
-                   model_uri=NMDC.ended_at_time, domain=None, range=Optional[str], mappings = [PROV["endedAtTime"]],
-                   pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
-
-slots.git_url = Slot(uri=NMDC.git_url, name="git_url", curie=NMDC.curie('git_url'),
-                   model_uri=NMDC.git_url, domain=None, range=Optional[str])
-
-slots.execution_resource = Slot(uri=NMDC.execution_resource, name="execution_resource", curie=NMDC.curie('execution_resource'),
-                   model_uri=NMDC.execution_resource, domain=None, range=Optional[Union[str, "ExecutionResourceEnum"]])
-
-slots.websites = Slot(uri=NMDC.websites, name="websites", curie=NMDC.curie('websites'),
-                   model_uri=NMDC.websites, domain=None, range=Optional[Union[str, List[str]]],
-                   pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
-
-slots.homepage_website = Slot(uri=NMDC.homepage_website, name="homepage_website", curie=NMDC.curie('homepage_website'),
-                   model_uri=NMDC.homepage_website, domain=None, range=Optional[Union[str, List[str]]],
-                   pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
-
-slots.profile_image_url = Slot(uri=NMDC.profile_image_url, name="profile_image_url", curie=NMDC.curie('profile_image_url'),
-                   model_uri=NMDC.profile_image_url, domain=None, range=Optional[str])
-
-slots.orcid = Slot(uri=NMDC.orcid, name="orcid", curie=NMDC.curie('orcid'),
-                   model_uri=NMDC.orcid, domain=None, range=Optional[str])
-
-slots.email = Slot(uri=SCHEMA.email, name="email", curie=SCHEMA.curie('email'),
-                   model_uri=NMDC.email, domain=None, range=Optional[str])
-
-slots.display_order = Slot(uri=NMDC.display_order, name="display_order", curie=NMDC.curie('display_order'),
-                   model_uri=NMDC.display_order, domain=None, range=Optional[int])
-
-slots.url = Slot(uri=NMDC.url, name="url", curie=NMDC.curie('url'),
-                   model_uri=NMDC.url, domain=None, range=Optional[str])
-
-slots.language = Slot(uri=NMDC.language, name="language", curie=NMDC.curie('language'),
-                   model_uri=NMDC.language, domain=None, range=Optional[str])
-
-slots.has_raw_value = Slot(uri=NMDC.has_raw_value, name="has_raw_value", curie=NMDC.curie('has_raw_value'),
-                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
-
-slots.has_unit = Slot(uri=NMDC.has_unit, name="has_unit", curie=NMDC.curie('has_unit'),
-                   model_uri=NMDC.has_unit, domain=None, range=Optional[str], mappings = [QUD["unit"], SCHEMA["unitCode"]])
-
-slots.has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="has_numeric_value", curie=NMDC.curie('has_numeric_value'),
-                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[Decimal], mappings = [QUD["quantityValue"], SCHEMA["value"]])
-
-slots.has_minimum_numeric_value = Slot(uri=NMDC.has_minimum_numeric_value, name="has_minimum_numeric_value", curie=NMDC.curie('has_minimum_numeric_value'),
-                   model_uri=NMDC.has_minimum_numeric_value, domain=None, range=Optional[Decimal])
-
-slots.has_maximum_numeric_value = Slot(uri=NMDC.has_maximum_numeric_value, name="has_maximum_numeric_value", curie=NMDC.curie('has_maximum_numeric_value'),
-                   model_uri=NMDC.has_maximum_numeric_value, domain=None, range=Optional[Decimal])
-
-slots.has_boolean_value = Slot(uri=NMDC.has_boolean_value, name="has_boolean_value", curie=NMDC.curie('has_boolean_value'),
-                   model_uri=NMDC.has_boolean_value, domain=None, range=Optional[Union[bool, Bool]])
-
-slots.latitude = Slot(uri=WGS84.lat, name="latitude", curie=WGS84.curie('lat'),
-                   model_uri=NMDC.latitude, domain=None, range=Optional[float], mappings = [SCHEMA["latitude"]])
-
-slots.longitude = Slot(uri=WGS84.long, name="longitude", curie=WGS84.curie('long'),
-                   model_uri=NMDC.longitude, domain=None, range=Optional[float], mappings = [SCHEMA["longitude"]])
-
-slots.infiltrations = Slot(uri=NMDC.infiltrations, name="infiltrations", curie=NMDC.curie('infiltrations'),
-                   model_uri=NMDC.infiltrations, domain=None, range=Optional[Union[str, List[str]]],
-                   pattern=re.compile(r'^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$'))
-
-slots.soluble_iron_micromol = Slot(uri=NMDC.soluble_iron_micromol, name="soluble_iron_micromol", curie=NMDC.curie('soluble_iron_micromol'),
-                   model_uri=NMDC.soluble_iron_micromol, domain=None, range=Optional[str])
-
-slots.sample_collection_site = Slot(uri=NMDC.sample_collection_site, name="sample_collection_site", curie=NMDC.curie('sample_collection_site'),
-                   model_uri=NMDC.sample_collection_site, domain=None, range=Optional[str])
-
-slots.salinity_category = Slot(uri=NMDC.salinity_category, name="salinity_category", curie=NMDC.curie('salinity_category'),
-                   model_uri=NMDC.salinity_category, domain=None, range=Optional[str])
-
-slots.proport_woa_temperature = Slot(uri=NMDC.proport_woa_temperature, name="proport_woa_temperature", curie=NMDC.curie('proport_woa_temperature'),
-                   model_uri=NMDC.proport_woa_temperature, domain=None, range=Optional[str])
-
-slots.location = Slot(uri=NMDC.location, name="location", curie=NMDC.curie('location'),
-                   model_uri=NMDC.location, domain=None, range=Optional[str])
-
-slots.host_name = Slot(uri=NMDC.host_name, name="host_name", curie=NMDC.curie('host_name'),
-                   model_uri=NMDC.host_name, domain=None, range=Optional[str])
-
-slots.community = Slot(uri=NMDC.community, name="community", curie=NMDC.curie('community'),
-                   model_uri=NMDC.community, domain=None, range=Optional[str])
-
-slots.embargoed = Slot(uri=NMDC.embargoed, name="embargoed", curie=NMDC.curie('embargoed'),
-                   model_uri=NMDC.embargoed, domain=None, range=Optional[Union[bool, Bool]])
-
-slots.habitat = Slot(uri=NMDC.habitat, name="habitat", curie=NMDC.curie('habitat'),
-                   model_uri=NMDC.habitat, domain=None, range=Optional[str])
-
-slots.version = Slot(uri=NMDC.version, name="version", curie=NMDC.curie('version'),
-                   model_uri=NMDC.version, domain=None, range=Optional[str])
-
-slots.doi_value = Slot(uri=NMDC.doi_value, name="doi_value", curie=NMDC.curie('doi_value'),
-                   model_uri=NMDC.doi_value, domain=None, range=Union[str, URIorCURIE],
-                   pattern=re.compile(r'^doi:10.\d{2,9}/.*$'))
-
-slots.doi_provider = Slot(uri=NMDC.doi_provider, name="doi_provider", curie=NMDC.curie('doi_provider'),
-                   model_uri=NMDC.doi_provider, domain=None, range=Optional[Union[str, "DoiProviderEnum"]])
-
-slots.doi_category = Slot(uri=NMDC.doi_category, name="doi_category", curie=NMDC.curie('doi_category'),
-                   model_uri=NMDC.doi_category, domain=None, range=Union[str, "DoiCategoryEnum"])
-
-slots.related_identifiers = Slot(uri=NMDC.related_identifiers, name="related_identifiers", curie=NMDC.curie('related_identifiers'),
-                   model_uri=NMDC.related_identifiers, domain=None, range=Optional[str])
-
-slots.notes = Slot(uri=NMDC.notes, name="notes", curie=NMDC.curie('notes'),
-                   model_uri=NMDC.notes, domain=None, range=Optional[str])
-
-slots.funding_sources = Slot(uri=NMDC.funding_sources, name="funding_sources", curie=NMDC.curie('funding_sources'),
-                   model_uri=NMDC.funding_sources, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.gold_path_field = Slot(uri=NMDC.gold_path_field, name="gold_path_field", curie=NMDC.curie('gold_path_field'),
-                   model_uri=NMDC.gold_path_field, domain=None, range=Optional[str])
-
-slots.ecosystem = Slot(uri=NMDC.ecosystem, name="ecosystem", curie=NMDC.curie('ecosystem'),
-                   model_uri=NMDC.ecosystem, domain=None, range=Optional[str])
-
-slots.ecosystem_category = Slot(uri=NMDC.ecosystem_category, name="ecosystem_category", curie=NMDC.curie('ecosystem_category'),
-                   model_uri=NMDC.ecosystem_category, domain=None, range=Optional[str])
-
-slots.ecosystem_type = Slot(uri=NMDC.ecosystem_type, name="ecosystem_type", curie=NMDC.curie('ecosystem_type'),
-                   model_uri=NMDC.ecosystem_type, domain=None, range=Optional[str])
-
-slots.ecosystem_subtype = Slot(uri=NMDC.ecosystem_subtype, name="ecosystem_subtype", curie=NMDC.curie('ecosystem_subtype'),
-                   model_uri=NMDC.ecosystem_subtype, domain=None, range=Optional[str])
-
-slots.specific_ecosystem = Slot(uri=NMDC.specific_ecosystem, name="specific_ecosystem", curie=NMDC.curie('specific_ecosystem'),
-                   model_uri=NMDC.specific_ecosystem, domain=None, range=Optional[str])
-
-slots.add_date = Slot(uri=NMDC.add_date, name="add_date", curie=NMDC.curie('add_date'),
-                   model_uri=NMDC.add_date, domain=None, range=Optional[str])
-
-slots.mod_date = Slot(uri=NMDC.mod_date, name="mod_date", curie=NMDC.curie('mod_date'),
-                   model_uri=NMDC.mod_date, domain=None, range=Optional[str])
-
-slots.ncbi_taxonomy_name = Slot(uri=NMDC.ncbi_taxonomy_name, name="ncbi_taxonomy_name", curie=NMDC.curie('ncbi_taxonomy_name'),
-                   model_uri=NMDC.ncbi_taxonomy_name, domain=None, range=Optional[str])
-
-slots.ncbi_project_name = Slot(uri=NMDC.ncbi_project_name, name="ncbi_project_name", curie=NMDC.curie('ncbi_project_name'),
-                   model_uri=NMDC.ncbi_project_name, domain=None, range=Optional[str])
-
-slots.processing_institution = Slot(uri=NMDC.processing_institution, name="processing_institution", curie=NMDC.curie('processing_institution'),
-                   model_uri=NMDC.processing_institution, domain=None, range=Optional[Union[str, "ProcessingInstitutionEnum"]])
-
-slots.qc_status = Slot(uri=NMDC.qc_status, name="qc_status", curie=NMDC.curie('qc_status'),
-                   model_uri=NMDC.qc_status, domain=None, range=Optional[Union[str, "StatusEnum"]])
-
-slots.file_size_bytes = Slot(uri=NMDC.file_size_bytes, name="file_size_bytes", curie=NMDC.curie('file_size_bytes'),
-                   model_uri=NMDC.file_size_bytes, domain=None, range=Optional[int])
-
-slots.analyte_category = Slot(uri=NMDC.analyte_category, name="analyte_category", curie=NMDC.curie('analyte_category'),
-                   model_uri=NMDC.analyte_category, domain=None, range=Union[str, "AnalyteCategoryEnum"])
-
-slots.type = Slot(uri=RDF.type, name="type", curie=RDF.curie('type'),
-                   model_uri=NMDC.type, domain=None, range=Union[str, URIorCURIE])
-
-slots.external_database_identifiers = Slot(uri=NMDC.external_database_identifiers, name="external_database_identifiers", curie=NMDC.curie('external_database_identifiers'),
-                   model_uri=NMDC.external_database_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
-
-slots.dna_concentration = Slot(uri=NMDC.dna_concentration, name="dna_concentration", curie=NMDC.curie('dna_concentration'),
-                   model_uri=NMDC.dna_concentration, domain=None, range=Optional[float])
-
-slots.extraction_targets = Slot(uri=NMDC.extraction_targets, name="extraction_targets", curie=NMDC.curie('extraction_targets'),
-                   model_uri=NMDC.extraction_targets, domain=None, range=Optional[Union[Union[str, "ExtractionTargetEnum"], List[Union[str, "ExtractionTargetEnum"]]]])
-
-slots.id = Slot(uri=NMDC.id, name="id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.id, domain=None, range=URIRef,
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
-
-slots.name = Slot(uri=NMDC.name, name="name", curie=NMDC.curie('name'),
-                   model_uri=NMDC.name, domain=None, range=Optional[str])
-
-slots.description = Slot(uri=DCTERMS.description, name="description", curie=DCTERMS.curie('description'),
-                   model_uri=NMDC.description, domain=None, range=Optional[str])
-
-slots.title = Slot(uri=NMDC.title, name="title", curie=NMDC.curie('title'),
-                   model_uri=NMDC.title, domain=None, range=Optional[str])
-
-slots.alternative_titles = Slot(uri=NMDC.alternative_titles, name="alternative_titles", curie=NMDC.curie('alternative_titles'),
-                   model_uri=NMDC.alternative_titles, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.alternative_names = Slot(uri=NMDC.alternative_names, name="alternative_names", curie=NMDC.curie('alternative_names'),
-                   model_uri=NMDC.alternative_names, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="alternative_descriptions", curie=NMDC.curie('alternative_descriptions'),
-                   model_uri=NMDC.alternative_descriptions, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
-                   model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$'))
-
-slots.start_date = Slot(uri=NMDC.start_date, name="start_date", curie=NMDC.curie('start_date'),
-                   model_uri=NMDC.start_date, domain=None, range=Optional[str])
-
-slots.end_date = Slot(uri=NMDC.end_date, name="end_date", curie=NMDC.curie('end_date'),
-                   model_uri=NMDC.end_date, domain=None, range=Optional[str])
+                   model_uri=NMDC.sample_link, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.img_identifiers = Slot(uri=NMDC.img_identifiers, name="img_identifiers", curie=NMDC.curie('img_identifiers'),
-                   model_uri=NMDC.img_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.img_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'))
 
 slots.igsn_identifiers = Slot(uri=NMDC.igsn_identifiers, name="igsn_identifiers", curie=NMDC.curie('igsn_identifiers'),
-                   model_uri=NMDC.igsn_identifiers, domain=None, range=Optional[str])
+                   model_uri=NMDC.igsn_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.gold_identifiers = Slot(uri=NMDC.gold_identifiers, name="gold_identifiers", curie=NMDC.curie('gold_identifiers'),
-                   model_uri=NMDC.gold_identifiers, domain=None, range=Optional[str])
+                   model_uri=NMDC.gold_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.emsl_identifiers = Slot(uri=NMDC.emsl_identifiers, name="emsl_identifiers", curie=NMDC.curie('emsl_identifiers'),
-                   model_uri=NMDC.emsl_identifiers, domain=None, range=Optional[str])
+                   model_uri=NMDC.emsl_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.mgnify_identifiers = Slot(uri=NMDC.mgnify_identifiers, name="mgnify_identifiers", curie=NMDC.curie('mgnify_identifiers'),
-                   model_uri=NMDC.mgnify_identifiers, domain=None, range=Optional[str])
+                   model_uri=NMDC.mgnify_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.insdc_identifiers = Slot(uri=NMDC.insdc_identifiers, name="insdc_identifiers", curie=NMDC.curie('insdc_identifiers'),
-                   model_uri=NMDC.insdc_identifiers, domain=None, range=Optional[str])
+                   model_uri=NMDC.insdc_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.neon_identifiers = Slot(uri=NMDC.neon_identifiers, name="neon_identifiers", curie=NMDC.curie('neon_identifiers'),
-                   model_uri=NMDC.neon_identifiers, domain=None, range=Optional[str])
+                   model_uri=NMDC.neon_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.jgi_portal_identifiers = Slot(uri=NMDC.jgi_portal_identifiers, name="jgi_portal_identifiers", curie=NMDC.curie('jgi_portal_identifiers'),
-                   model_uri=NMDC.jgi_portal_identifiers, domain=None, range=Optional[str])
+                   model_uri=NMDC.jgi_portal_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.gnps_identifiers = Slot(uri=NMDC.gnps_identifiers, name="gnps_identifiers", curie=NMDC.curie('gnps_identifiers'),
-                   model_uri=NMDC.gnps_identifiers, domain=None, range=Optional[str])
+                   model_uri=NMDC.gnps_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.study_identifiers = Slot(uri=NMDC.study_identifiers, name="study_identifiers", curie=NMDC.curie('study_identifiers'),
-                   model_uri=NMDC.study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.jgi_portal_study_identifiers = Slot(uri=NMDC.jgi_portal_study_identifiers, name="jgi_portal_study_identifiers", curie=NMDC.curie('jgi_portal_study_identifiers'),
-                   model_uri=NMDC.jgi_portal_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.jgi_portal_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^jgi.proposal:\d+$'))
 
 slots.neon_study_identifiers = Slot(uri=NMDC.neon_study_identifiers, name="neon_study_identifiers", curie=NMDC.curie('neon_study_identifiers'),
-                   model_uri=NMDC.neon_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.neon_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.insdc_sra_ena_study_identifiers = Slot(uri=NMDC.insdc_sra_ena_study_identifiers, name="insdc_sra_ena_study_identifiers", curie=NMDC.curie('insdc_sra_ena_study_identifiers'),
-                   model_uri=NMDC.insdc_sra_ena_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.insdc_sra_ena_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^insdc.sra:(E|D|S)RP[0-9]{6,}$'))
 
 slots.insdc_bioproject_identifiers = Slot(uri=NMDC.insdc_bioproject_identifiers, name="insdc_bioproject_identifiers", curie=NMDC.curie('insdc_bioproject_identifiers'),
-                   model_uri=NMDC.insdc_bioproject_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.insdc_bioproject_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^bioproject:PRJ[DEN][A-Z][0-9]+$'))
 
 slots.gold_study_identifiers = Slot(uri=NMDC.gold_study_identifiers, name="gold_study_identifiers", curie=NMDC.curie('gold_study_identifiers'),
-                   model_uri=NMDC.gold_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.gold_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^gold:Gs[0-9]+$'))
 
 slots.mgnify_project_identifiers = Slot(uri=NMDC.mgnify_project_identifiers, name="mgnify_project_identifiers", curie=NMDC.curie('mgnify_project_identifiers'),
-                   model_uri=NMDC.mgnify_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.mgnify_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^mgnify.proj:[A-Z]+[0-9]+$'))
 
 slots.gnps_task_identifiers = Slot(uri=NMDC.gnps_task_identifiers, name="gnps_task_identifiers", curie=NMDC.curie('gnps_task_identifiers'),
-                   model_uri=NMDC.gnps_task_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.gnps_task_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^gnps\.task:[a-f0-9]+$'))
 
 slots.emsl_project_identifiers = Slot(uri=NMDC.emsl_project_identifiers, name="emsl_project_identifiers", curie=NMDC.curie('emsl_project_identifiers'),
-                   model_uri=NMDC.emsl_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.emsl_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^emsl\.project:[0-9]{5}$'))
 
 slots.biosample_identifiers = Slot(uri=NMDC.biosample_identifiers, name="biosample_identifiers", curie=NMDC.curie('biosample_identifiers'),
-                   model_uri=NMDC.biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.neon_biosample_identifiers = Slot(uri=NMDC.neon_biosample_identifiers, name="neon_biosample_identifiers", curie=NMDC.curie('neon_biosample_identifiers'),
-                   model_uri=NMDC.neon_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.neon_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.gold_biosample_identifiers = Slot(uri=NMDC.gold_biosample_identifiers, name="gold_biosample_identifiers", curie=NMDC.curie('gold_biosample_identifiers'),
-                   model_uri=NMDC.gold_biosample_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.gold_biosample_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]],
                    pattern=re.compile(r'^gold:Gb[0-9]+$'))
 
 slots.insdc_biosample_identifiers = Slot(uri=NMDC.insdc_biosample_identifiers, name="insdc_biosample_identifiers", curie=NMDC.curie('insdc_biosample_identifiers'),
-                   model_uri=NMDC.insdc_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.insdc_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^biosample:SAM[NED]([A-Z])?[0-9]+$'))
 
 slots.insdc_secondary_sample_identifiers = Slot(uri=NMDC.insdc_secondary_sample_identifiers, name="insdc_secondary_sample_identifiers", curie=NMDC.curie('insdc_secondary_sample_identifiers'),
-                   model_uri=NMDC.insdc_secondary_sample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.insdc_secondary_sample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^biosample:(E|D|S)RS[0-9]{6,}$'))
 
 slots.emsl_biosample_identifiers = Slot(uri=NMDC.emsl_biosample_identifiers, name="emsl_biosample_identifiers", curie=NMDC.curie('emsl_biosample_identifiers'),
-                   model_uri=NMDC.emsl_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.emsl_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.igsn_biosample_identifiers = Slot(uri=NMDC.igsn_biosample_identifiers, name="igsn_biosample_identifiers", curie=NMDC.curie('igsn_biosample_identifiers'),
-                   model_uri=NMDC.igsn_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+                   model_uri=NMDC.igsn_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^igsn:[A-Za-z]{2,4}[A-Za-z0-9.-]{1,71}$'))
 
 slots.omics_processing_identifiers = Slot(uri=NMDC.omics_processing_identifiers, name="omics_processing_identifiers", curie=NMDC.curie('omics_processing_identifiers'),
-                   model_uri=NMDC.omics_processing_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.omics_processing_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.gold_sequencing_project_identifiers = Slot(uri=NMDC.gold_sequencing_project_identifiers, name="gold_sequencing_project_identifiers", curie=NMDC.curie('gold_sequencing_project_identifiers'),
-                   model_uri=NMDC.gold_sequencing_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.gold_sequencing_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^gold:Gp[0-9]+$'))
 
 slots.insdc_experiment_identifiers = Slot(uri=NMDC.insdc_experiment_identifiers, name="insdc_experiment_identifiers", curie=NMDC.curie('insdc_experiment_identifiers'),
-                   model_uri=NMDC.insdc_experiment_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.insdc_experiment_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^insdc.sra:(E|D|S)RX[0-9]{6,}$'))
 
 slots.analysis_identifiers = Slot(uri=NMDC.analysis_identifiers, name="analysis_identifiers", curie=NMDC.curie('analysis_identifiers'),
-                   model_uri=NMDC.analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.gold_analysis_project_identifiers = Slot(uri=NMDC.gold_analysis_project_identifiers, name="gold_analysis_project_identifiers", curie=NMDC.curie('gold_analysis_project_identifiers'),
-                   model_uri=NMDC.gold_analysis_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.gold_analysis_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^gold:Ga[0-9]+$'))
 
 slots.jgi_portal_analysis_project_identifiers = Slot(uri=NMDC.jgi_portal_analysis_project_identifiers, name="jgi_portal_analysis_project_identifiers", curie=NMDC.curie('jgi_portal_analysis_project_identifiers'),
-                   model_uri=NMDC.jgi_portal_analysis_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.jgi_portal_analysis_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^jgi.analysis:[0-9]+$'))
 
 slots.insdc_analysis_identifiers = Slot(uri=NMDC.insdc_analysis_identifiers, name="insdc_analysis_identifiers", curie=NMDC.curie('insdc_analysis_identifiers'),
-                   model_uri=NMDC.insdc_analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.insdc_analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^insdc.sra:(E|D|S)RR[0-9]{6,}$'))
 
 slots.mgnify_analysis_identifiers = Slot(uri=NMDC.mgnify_analysis_identifiers, name="mgnify_analysis_identifiers", curie=NMDC.curie('mgnify_analysis_identifiers'),
-                   model_uri=NMDC.mgnify_analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.mgnify_analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.assembly_identifiers = Slot(uri=NMDC.assembly_identifiers, name="assembly_identifiers", curie=NMDC.curie('assembly_identifiers'),
                    model_uri=NMDC.assembly_identifiers, domain=None, range=Optional[str])
 
 slots.insdc_assembly_identifiers = Slot(uri=NMDC.insdc_assembly_identifiers, name="insdc_assembly_identifiers", curie=NMDC.curie('insdc_assembly_identifiers'),
-                   model_uri=NMDC.insdc_assembly_identifiers, domain=None, range=Optional[str],
+                   model_uri=NMDC.insdc_assembly_identifiers, domain=None, range=Optional[Union[str, list[str]]],
                    pattern=re.compile(r'^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$'))
 
 slots.abs_air_humidity = Slot(uri=MIXS['0000122'], name="abs_air_humidity", curie=MIXS.curie('0000122'),
                    model_uri=NMDC.abs_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.add_recov_method = Slot(uri=MIXS['0001009'], name="add_recov_method", curie=MIXS.curie('0001009'),
-                   model_uri=NMDC.add_recov_method, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.add_recov_method, domain=None, range=Optional[str])
 
 slots.additional_info = Slot(uri=MIXS['0000300'], name="additional_info", curie=MIXS.curie('0000300'),
                    model_uri=NMDC.additional_info, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.address = Slot(uri=MIXS['0000218'], name="address", curie=MIXS.curie('0000218'),
-                   model_uri=NMDC.address, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.address, domain=None, range=Optional[str])
 
 slots.adj_room = Slot(uri=MIXS['0000219'], name="adj_room", curie=MIXS.curie('0000219'),
                    model_uri=NMDC.adj_room, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.aero_struc = Slot(uri=MIXS['0000773'], name="aero_struc", curie=MIXS.curie('0000773'),
-                   model_uri=NMDC.aero_struc, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.aero_struc, domain=None, range=Optional[Union[str, "AeroStrucEnum"]])
 
 slots.agrochem_addition = Slot(uri=MIXS['0000639'], name="agrochem_addition", curie=MIXS.curie('0000639'),
-                   model_uri=NMDC.agrochem_addition, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.agrochem_addition, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.air_PM_concen = Slot(uri=MIXS['0000108'], name="air_PM_concen", curie=MIXS.curie('0000108'),
-                   model_uri=NMDC.air_PM_concen, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.air_PM_concen, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.air_temp = Slot(uri=MIXS['0000124'], name="air_temp", curie=MIXS.curie('0000124'),
                    model_uri=NMDC.air_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.air_temp_regm = Slot(uri=MIXS['0000551'], name="air_temp_regm", curie=MIXS.curie('0000551'),
-                   model_uri=NMDC.air_temp_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.air_temp_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.al_sat = Slot(uri=MIXS['0000607'], name="al_sat", curie=MIXS.curie('0000607'),
                    model_uri=NMDC.al_sat, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.al_sat_meth = Slot(uri=MIXS['0000324'], name="al_sat_meth", curie=MIXS.curie('0000324'),
-                   model_uri=NMDC.al_sat_meth, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.al_sat_meth, domain=None, range=Optional[str])
 
 slots.alkalinity = Slot(uri=MIXS['0000421'], name="alkalinity", curie=MIXS.curie('0000421'),
                    model_uri=NMDC.alkalinity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.alkalinity_method = Slot(uri=MIXS['0000298'], name="alkalinity_method", curie=MIXS.curie('0000298'),
-                   model_uri=NMDC.alkalinity_method, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.alkalinity_method, domain=None, range=Optional[str])
 
 slots.alkyl_diethers = Slot(uri=MIXS['0000490'], name="alkyl_diethers", curie=MIXS.curie('0000490'),
                    model_uri=NMDC.alkyl_diethers, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11099,7 +11627,7 @@ slots.annual_temp = Slot(uri=MIXS['0000642'], name="annual_temp", curie=MIXS.cur
                    model_uri=NMDC.annual_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.antibiotic_regm = Slot(uri=MIXS['0000553'], name="antibiotic_regm", curie=MIXS.curie('0000553'),
-                   model_uri=NMDC.antibiotic_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.antibiotic_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.api = Slot(uri=MIXS['0000157'], name="api", curie=MIXS.curie('0000157'),
                    model_uri=NMDC.api, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11114,7 +11642,7 @@ slots.asphaltenes_pc = Slot(uri=MIXS['0000135'], name="asphaltenes_pc", curie=MI
                    model_uri=NMDC.asphaltenes_pc, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.atmospheric_data = Slot(uri=MIXS['0001097'], name="atmospheric_data", curie=MIXS.curie('0001097'),
-                   model_uri=NMDC.atmospheric_data, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.atmospheric_data, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.avg_dew_point = Slot(uri=MIXS['0000141'], name="avg_dew_point", curie=MIXS.curie('0000141'),
                    model_uri=NMDC.avg_dew_point, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11153,16 +11681,16 @@ slots.biochem_oxygen_dem = Slot(uri=MIXS['0000653'], name="biochem_oxygen_dem", 
                    model_uri=NMDC.biochem_oxygen_dem, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.biocide = Slot(uri=MIXS['0001011'], name="biocide", curie=MIXS.curie('0001011'),
-                   model_uri=NMDC.biocide, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.biocide, domain=None, range=Optional[str])
 
 slots.biocide_admin_method = Slot(uri=MIXS['0000456'], name="biocide_admin_method", curie=MIXS.curie('0000456'),
-                   model_uri=NMDC.biocide_admin_method, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.biocide_admin_method, domain=None, range=Optional[str])
 
 slots.biol_stat = Slot(uri=MIXS['0000858'], name="biol_stat", curie=MIXS.curie('0000858'),
                    model_uri=NMDC.biol_stat, domain=None, range=Optional[Union[str, "BiolStatEnum"]])
 
 slots.biomass = Slot(uri=MIXS['0000174'], name="biomass", curie=MIXS.curie('0000174'),
-                   model_uri=NMDC.biomass, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.biomass, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.biotic_regm = Slot(uri=MIXS['0001038'], name="biotic_regm", curie=MIXS.curie('0001038'),
                    model_uri=NMDC.biotic_regm, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11186,7 +11714,7 @@ slots.build_docs = Slot(uri=MIXS['0000787'], name="build_docs", curie=MIXS.curie
                    model_uri=NMDC.build_docs, domain=None, range=Optional[Union[str, "BuildDocsEnum"]])
 
 slots.build_occup_type = Slot(uri=MIXS['0000761'], name="build_occup_type", curie=MIXS.curie('0000761'),
-                   model_uri=NMDC.build_occup_type, domain=None, range=Optional[Union[Union[str, "BuildOccupTypeEnum"], List[Union[str, "BuildOccupTypeEnum"]]]])
+                   model_uri=NMDC.build_occup_type, domain=None, range=Optional[Union[Union[str, "BuildOccupTypeEnum"], list[Union[str, "BuildOccupTypeEnum"]]]])
 
 slots.building_setting = Slot(uri=MIXS['0000768'], name="building_setting", curie=MIXS.curie('0000768'),
                    model_uri=NMDC.building_setting, domain=None, range=Optional[Union[str, "BuildingSettingEnum"]])
@@ -11195,7 +11723,7 @@ slots.built_struc_age = Slot(uri=MIXS['0000145'], name="built_struc_age", curie=
                    model_uri=NMDC.built_struc_age, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.built_struc_set = Slot(uri=MIXS['0000778'], name="built_struc_set", curie=MIXS.curie('0000778'),
-                   model_uri=NMDC.built_struc_set, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.built_struc_set, domain=None, range=Optional[Union[str, "BuiltStrucSetEnum"]])
 
 slots.built_struc_type = Slot(uri=MIXS['0000721'], name="built_struc_type", curie=MIXS.curie('0000721'),
                    model_uri=NMDC.built_struc_type, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11216,16 +11744,16 @@ slots.ceil_area = Slot(uri=MIXS['0000148'], name="ceil_area", curie=MIXS.curie('
                    model_uri=NMDC.ceil_area, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ceil_cond = Slot(uri=MIXS['0000779'], name="ceil_cond", curie=MIXS.curie('0000779'),
-                   model_uri=NMDC.ceil_cond, domain=None, range=Optional[Union[str, "CeilCondEnum"]])
+                   model_uri=NMDC.ceil_cond, domain=None, range=Optional[Union[str, "DamagedEnum"]])
 
 slots.ceil_finish_mat = Slot(uri=MIXS['0000780'], name="ceil_finish_mat", curie=MIXS.curie('0000780'),
                    model_uri=NMDC.ceil_finish_mat, domain=None, range=Optional[Union[str, "CeilFinishMatEnum"]])
 
 slots.ceil_struc = Slot(uri=MIXS['0000782'], name="ceil_struc", curie=MIXS.curie('0000782'),
-                   model_uri=NMDC.ceil_struc, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.ceil_struc, domain=None, range=Optional[Union[str, "CeilStrucEnum"]])
 
 slots.ceil_texture = Slot(uri=MIXS['0000783'], name="ceil_texture", curie=MIXS.curie('0000783'),
-                   model_uri=NMDC.ceil_texture, domain=None, range=Optional[Union[str, "CeilTextureEnum"]])
+                   model_uri=NMDC.ceil_texture, domain=None, range=Optional[Union[str, "CeilingWallTextureEnum"]])
 
 slots.ceil_thermal_mass = Slot(uri=MIXS['0000143'], name="ceil_thermal_mass", curie=MIXS.curie('0000143'),
                    model_uri=NMDC.ceil_thermal_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11234,13 +11762,13 @@ slots.ceil_type = Slot(uri=MIXS['0000784'], name="ceil_type", curie=MIXS.curie('
                    model_uri=NMDC.ceil_type, domain=None, range=Optional[Union[str, "CeilTypeEnum"]])
 
 slots.ceil_water_mold = Slot(uri=MIXS['0000781'], name="ceil_water_mold", curie=MIXS.curie('0000781'),
-                   model_uri=NMDC.ceil_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.ceil_water_mold, domain=None, range=Optional[Union[str, "MoldVisibilityEnum"]])
 
 slots.chem_administration = Slot(uri=MIXS['0000751'], name="chem_administration", curie=MIXS.curie('0000751'),
-                   model_uri=NMDC.chem_administration, domain=None, range=Optional[Union[Union[dict, ControlledTermValue], List[Union[dict, ControlledTermValue]]]])
+                   model_uri=NMDC.chem_administration, domain=None, range=Optional[Union[Union[dict, ControlledTermValue], list[Union[dict, ControlledTermValue]]]])
 
 slots.chem_mutagen = Slot(uri=MIXS['0000555'], name="chem_mutagen", curie=MIXS.curie('0000555'),
-                   model_uri=NMDC.chem_mutagen, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.chem_mutagen, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.chem_oxygen_dem = Slot(uri=MIXS['0000656'], name="chem_oxygen_dem", curie=MIXS.curie('0000656'),
                    model_uri=NMDC.chem_oxygen_dem, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11249,7 +11777,7 @@ slots.chem_treat_method = Slot(uri=MIXS['0000457'], name="chem_treat_method", cu
                    model_uri=NMDC.chem_treat_method, domain=None, range=Optional[str])
 
 slots.chem_treatment = Slot(uri=MIXS['0001012'], name="chem_treatment", curie=MIXS.curie('0001012'),
-                   model_uri=NMDC.chem_treatment, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.chem_treatment, domain=None, range=Optional[str])
 
 slots.chimera_check = Slot(uri=MIXS['0000052'], name="chimera_check", curie=MIXS.curie('0000052'),
                    model_uri=NMDC.chimera_check, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11261,7 +11789,7 @@ slots.chlorophyll = Slot(uri=MIXS['0000177'], name="chlorophyll", curie=MIXS.cur
                    model_uri=NMDC.chlorophyll, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.climate_environment = Slot(uri=MIXS['0001040'], name="climate_environment", curie=MIXS.curie('0001040'),
-                   model_uri=NMDC.climate_environment, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.climate_environment, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.collection_date = Slot(uri=MIXS['0000011'], name="collection_date", curie=MIXS.curie('0000011'),
                    model_uri=NMDC.collection_date, domain=None, range=Optional[Union[dict, TimestampValue]])
@@ -11279,13 +11807,13 @@ slots.cult_root_med = Slot(uri=MIXS['0001041'], name="cult_root_med", curie=MIXS
                    model_uri=NMDC.cult_root_med, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.cur_land_use = Slot(uri=MIXS['0001080'], name="cur_land_use", curie=MIXS.curie('0001080'),
-                   model_uri=NMDC.cur_land_use, domain=None, range=Optional[Union[str, "CurLandUseEnum"]])
+                   model_uri=NMDC.cur_land_use, domain=None, range=Optional[str])
 
 slots.cur_vegetation = Slot(uri=MIXS['0000312'], name="cur_vegetation", curie=MIXS.curie('0000312'),
                    model_uri=NMDC.cur_vegetation, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.cur_vegetation_meth = Slot(uri=MIXS['0000314'], name="cur_vegetation_meth", curie=MIXS.curie('0000314'),
-                   model_uri=NMDC.cur_vegetation_meth, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.cur_vegetation_meth, domain=None, range=Optional[str])
 
 slots.date_last_rain = Slot(uri=MIXS['0000786'], name="date_last_rain", curie=MIXS.curie('0000786'),
                    model_uri=NMDC.date_last_rain, domain=None, range=Optional[Union[dict, TimestampValue]])
@@ -11303,7 +11831,7 @@ slots.dew_point = Slot(uri=MIXS['0000129'], name="dew_point", curie=MIXS.curie('
                    model_uri=NMDC.dew_point, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.diether_lipids = Slot(uri=MIXS['0000178'], name="diether_lipids", curie=MIXS.curie('0000178'),
-                   model_uri=NMDC.diether_lipids, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.diether_lipids, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.diss_carb_dioxide = Slot(uri=MIXS['0000436'], name="diss_carb_dioxide", curie=MIXS.curie('0000436'),
                    model_uri=NMDC.diss_carb_dioxide, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11339,13 +11867,13 @@ slots.door_comp_type = Slot(uri=MIXS['0000795'], name="door_comp_type", curie=MI
                    model_uri=NMDC.door_comp_type, domain=None, range=Optional[Union[str, "DoorCompTypeEnum"]])
 
 slots.door_cond = Slot(uri=MIXS['0000788'], name="door_cond", curie=MIXS.curie('0000788'),
-                   model_uri=NMDC.door_cond, domain=None, range=Optional[Union[str, "DoorCondEnum"]])
+                   model_uri=NMDC.door_cond, domain=None, range=Optional[Union[str, "DamagedRupturedEnum"]])
 
 slots.door_direct = Slot(uri=MIXS['0000789'], name="door_direct", curie=MIXS.curie('0000789'),
                    model_uri=NMDC.door_direct, domain=None, range=Optional[Union[str, "DoorDirectEnum"]])
 
 slots.door_loc = Slot(uri=MIXS['0000790'], name="door_loc", curie=MIXS.curie('0000790'),
-                   model_uri=NMDC.door_loc, domain=None, range=Optional[Union[str, "DoorLocEnum"]])
+                   model_uri=NMDC.door_loc, domain=None, range=Optional[Union[str, "CompassDirections8Enum"]])
 
 slots.door_mat = Slot(uri=MIXS['0000791'], name="door_mat", curie=MIXS.curie('0000791'),
                    model_uri=NMDC.door_mat, domain=None, range=Optional[Union[str, "DoorMatEnum"]])
@@ -11363,10 +11891,10 @@ slots.door_type_metal = Slot(uri=MIXS['0000796'], name="door_type_metal", curie=
                    model_uri=NMDC.door_type_metal, domain=None, range=Optional[Union[str, "DoorTypeMetalEnum"]])
 
 slots.door_type_wood = Slot(uri=MIXS['0000797'], name="door_type_wood", curie=MIXS.curie('0000797'),
-                   model_uri=NMDC.door_type_wood, domain=None, range=Optional[Union[str, "DoorTypeWoodEnum"]])
+                   model_uri=NMDC.door_type_wood, domain=None, range=Optional[str])
 
 slots.door_water_mold = Slot(uri=MIXS['0000793'], name="door_water_mold", curie=MIXS.curie('0000793'),
-                   model_uri=NMDC.door_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.door_water_mold, domain=None, range=Optional[Union[str, "MoldVisibilityEnum"]])
 
 slots.down_par = Slot(uri=MIXS['0000703'], name="down_par", curie=MIXS.curie('0000703'),
                    model_uri=NMDC.down_par, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11387,7 +11915,7 @@ slots.elevator = Slot(uri=MIXS['0000799'], name="elevator", curie=MIXS.curie('00
                    model_uri=NMDC.elevator, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.emulsions = Slot(uri=MIXS['0000660'], name="emulsions", curie=MIXS.curie('0000660'),
-                   model_uri=NMDC.emulsions, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.emulsions, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.env_broad_scale = Slot(uri=MIXS['0000012'], name="env_broad_scale", curie=MIXS.curie('0000012'),
                    model_uri=NMDC.env_broad_scale, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
@@ -11411,16 +11939,17 @@ slots.exp_pipe = Slot(uri=MIXS['0000220'], name="exp_pipe", curie=MIXS.curie('00
                    model_uri=NMDC.exp_pipe, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.experimental_factor = Slot(uri=MIXS['0000008'], name="experimental_factor", curie=MIXS.curie('0000008'),
-                   model_uri=NMDC.experimental_factor, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+                   model_uri=NMDC.experimental_factor, domain=None, range=Optional[Union[dict, ControlledTermValue]],
+                   pattern=re.compile(r'^\S+.*\S+ \[[a-zA-Z]{2,}:\d+\]$'))
 
 slots.ext_door = Slot(uri=MIXS['0000170'], name="ext_door", curie=MIXS.curie('0000170'),
                    model_uri=NMDC.ext_door, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.ext_wall_orient = Slot(uri=MIXS['0000817'], name="ext_wall_orient", curie=MIXS.curie('0000817'),
-                   model_uri=NMDC.ext_wall_orient, domain=None, range=Optional[Union[str, "ExtWallOrientEnum"]])
+                   model_uri=NMDC.ext_wall_orient, domain=None, range=Optional[Union[str, "CompassDirections8Enum"]])
 
 slots.ext_window_orient = Slot(uri=MIXS['0000818'], name="ext_window_orient", curie=MIXS.curie('0000818'),
-                   model_uri=NMDC.ext_window_orient, domain=None, range=Optional[Union[str, "ExtWindowOrientEnum"]])
+                   model_uri=NMDC.ext_window_orient, domain=None, range=Optional[Union[str, "CompassDirections8Enum"]])
 
 slots.extreme_event = Slot(uri=MIXS['0000320'], name="extreme_event", curie=MIXS.curie('0000320'),
                    model_uri=NMDC.extreme_event, domain=None, range=Optional[str])
@@ -11429,19 +11958,19 @@ slots.fao_class = Slot(uri=MIXS['0001083'], name="fao_class", curie=MIXS.curie('
                    model_uri=NMDC.fao_class, domain=None, range=Optional[Union[str, "FaoClassEnum"]])
 
 slots.fertilizer_regm = Slot(uri=MIXS['0000556'], name="fertilizer_regm", curie=MIXS.curie('0000556'),
-                   model_uri=NMDC.fertilizer_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.fertilizer_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.field = Slot(uri=MIXS['0000291'], name="field", curie=MIXS.curie('0000291'),
                    model_uri=NMDC.field, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.filter_type = Slot(uri=MIXS['0000765'], name="filter_type", curie=MIXS.curie('0000765'),
-                   model_uri=NMDC.filter_type, domain=None, range=Optional[Union[Union[str, "FilterTypeEnum"], List[Union[str, "FilterTypeEnum"]]]])
+                   model_uri=NMDC.filter_type, domain=None, range=Optional[Union[Union[str, "FilterTypeEnum"], list[Union[str, "FilterTypeEnum"]]]])
 
 slots.fire = Slot(uri=MIXS['0001086'], name="fire", curie=MIXS.curie('0001086'),
                    model_uri=NMDC.fire, domain=None, range=Optional[str])
 
 slots.fireplace_type = Slot(uri=MIXS['0000802'], name="fireplace_type", curie=MIXS.curie('0000802'),
-                   model_uri=NMDC.fireplace_type, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.fireplace_type, domain=None, range=Optional[Union[str, "FireplaceTypeEnum"]])
 
 slots.flooding = Slot(uri=MIXS['0000319'], name="flooding", curie=MIXS.curie('0000319'),
                    model_uri=NMDC.flooding, domain=None, range=Optional[str])
@@ -11453,13 +11982,13 @@ slots.floor_area = Slot(uri=MIXS['0000165'], name="floor_area", curie=MIXS.curie
                    model_uri=NMDC.floor_area, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.floor_cond = Slot(uri=MIXS['0000803'], name="floor_cond", curie=MIXS.curie('0000803'),
-                   model_uri=NMDC.floor_cond, domain=None, range=Optional[Union[str, "FloorCondEnum"]])
+                   model_uri=NMDC.floor_cond, domain=None, range=Optional[Union[str, "DamagedEnum"]])
 
 slots.floor_count = Slot(uri=MIXS['0000225'], name="floor_count", curie=MIXS.curie('0000225'),
                    model_uri=NMDC.floor_count, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.floor_finish_mat = Slot(uri=MIXS['0000804'], name="floor_finish_mat", curie=MIXS.curie('0000804'),
-                   model_uri=NMDC.floor_finish_mat, domain=None, range=Optional[Union[str, "FloorFinishMatEnum"]])
+                   model_uri=NMDC.floor_finish_mat, domain=None, range=Optional[str])
 
 slots.floor_struc = Slot(uri=MIXS['0000806'], name="floor_struc", curie=MIXS.curie('0000806'),
                    model_uri=NMDC.floor_struc, domain=None, range=Optional[Union[str, "FloorStrucEnum"]])
@@ -11480,22 +12009,22 @@ slots.freq_cook = Slot(uri=MIXS['0000227'], name="freq_cook", curie=MIXS.curie('
                    model_uri=NMDC.freq_cook, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.fungicide_regm = Slot(uri=MIXS['0000557'], name="fungicide_regm", curie=MIXS.curie('0000557'),
-                   model_uri=NMDC.fungicide_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.fungicide_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.furniture = Slot(uri=MIXS['0000807'], name="furniture", curie=MIXS.curie('0000807'),
                    model_uri=NMDC.furniture, domain=None, range=Optional[Union[str, "FurnitureEnum"]])
 
 slots.gaseous_environment = Slot(uri=MIXS['0000558'], name="gaseous_environment", curie=MIXS.curie('0000558'),
-                   model_uri=NMDC.gaseous_environment, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.gaseous_environment, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.gaseous_substances = Slot(uri=MIXS['0000661'], name="gaseous_substances", curie=MIXS.curie('0000661'),
-                   model_uri=NMDC.gaseous_substances, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.gaseous_substances, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.gender_restroom = Slot(uri=MIXS['0000808'], name="gender_restroom", curie=MIXS.curie('0000808'),
                    model_uri=NMDC.gender_restroom, domain=None, range=Optional[Union[str, "GenderRestroomEnum"]])
 
 slots.genetic_mod = Slot(uri=MIXS['0000859'], name="genetic_mod", curie=MIXS.curie('0000859'),
-                   model_uri=NMDC.genetic_mod, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.genetic_mod, domain=None, range=Optional[str])
 
 slots.geo_loc_name = Slot(uri=MIXS['0000010'], name="geo_loc_name", curie=MIXS.curie('0000010'),
                    model_uri=NMDC.geo_loc_name, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11507,7 +12036,7 @@ slots.gravidity = Slot(uri=MIXS['0000875'], name="gravidity", curie=MIXS.curie('
                    model_uri=NMDC.gravidity, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.gravity = Slot(uri=MIXS['0000559'], name="gravity", curie=MIXS.curie('0000559'),
-                   model_uri=NMDC.gravity, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.gravity, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.growth_facil = Slot(uri=MIXS['0001043'], name="growth_facil", curie=MIXS.curie('0001043'),
                    model_uri=NMDC.growth_facil, domain=None, range=Optional[Union[dict, ControlledTermValue]])
@@ -11516,7 +12045,7 @@ slots.growth_habit = Slot(uri=MIXS['0001044'], name="growth_habit", curie=MIXS.c
                    model_uri=NMDC.growth_habit, domain=None, range=Optional[Union[str, "GrowthHabitEnum"]])
 
 slots.growth_hormone_regm = Slot(uri=MIXS['0000560'], name="growth_hormone_regm", curie=MIXS.curie('0000560'),
-                   model_uri=NMDC.growth_hormone_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.growth_hormone_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.hall_count = Slot(uri=MIXS['0000228'], name="hall_count", curie=MIXS.curie('0000228'),
                    model_uri=NMDC.hall_count, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11534,7 +12063,7 @@ slots.hcr_fw_salinity = Slot(uri=MIXS['0000406'], name="hcr_fw_salinity", curie=
                    model_uri=NMDC.hcr_fw_salinity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.hcr_geol_age = Slot(uri=MIXS['0000993'], name="hcr_geol_age", curie=MIXS.curie('0000993'),
-                   model_uri=NMDC.hcr_geol_age, domain=None, range=Optional[Union[str, "HcrGeolAgeEnum"]])
+                   model_uri=NMDC.hcr_geol_age, domain=None, range=Optional[Union[str, "GeolAgeEnum"]])
 
 slots.hcr_pressure = Slot(uri=MIXS['0000395'], name="hcr_pressure", curie=MIXS.curie('0000395'),
                    model_uri=NMDC.hcr_pressure, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11543,10 +12072,10 @@ slots.hcr_temp = Slot(uri=MIXS['0000393'], name="hcr_temp", curie=MIXS.curie('00
                    model_uri=NMDC.hcr_temp, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.heat_cool_type = Slot(uri=MIXS['0000766'], name="heat_cool_type", curie=MIXS.curie('0000766'),
-                   model_uri=NMDC.heat_cool_type, domain=None, range=Optional[Union[Union[str, "HeatCoolTypeEnum"], List[Union[str, "HeatCoolTypeEnum"]]]])
+                   model_uri=NMDC.heat_cool_type, domain=None, range=Optional[Union[Union[str, "HeatCoolTypeEnum"], list[Union[str, "HeatCoolTypeEnum"]]]])
 
 slots.heat_deliv_loc = Slot(uri=MIXS['0000810'], name="heat_deliv_loc", curie=MIXS.curie('0000810'),
-                   model_uri=NMDC.heat_deliv_loc, domain=None, range=Optional[Union[str, "HeatDelivLocEnum"]])
+                   model_uri=NMDC.heat_deliv_loc, domain=None, range=Optional[Union[str, "CompassDirections8Enum"]])
 
 slots.heat_sys_deliv_meth = Slot(uri=MIXS['0000812'], name="heat_sys_deliv_meth", curie=MIXS.curie('0000812'),
                    model_uri=NMDC.heat_sys_deliv_meth, domain=None, range=Optional[str])
@@ -11555,19 +12084,19 @@ slots.heat_system_id = Slot(uri=MIXS['0000833'], name="heat_system_id", curie=MI
                    model_uri=NMDC.heat_system_id, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.heavy_metals = Slot(uri=MIXS['0000652'], name="heavy_metals", curie=MIXS.curie('0000652'),
-                   model_uri=NMDC.heavy_metals, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.heavy_metals, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.heavy_metals_meth = Slot(uri=MIXS['0000343'], name="heavy_metals_meth", curie=MIXS.curie('0000343'),
-                   model_uri=NMDC.heavy_metals_meth, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.heavy_metals_meth, domain=None, range=Optional[str])
 
 slots.height_carper_fiber = Slot(uri=MIXS['0000167'], name="height_carper_fiber", curie=MIXS.curie('0000167'),
                    model_uri=NMDC.height_carper_fiber, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.herbicide_regm = Slot(uri=MIXS['0000561'], name="herbicide_regm", curie=MIXS.curie('0000561'),
-                   model_uri=NMDC.herbicide_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.herbicide_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.horizon_meth = Slot(uri=MIXS['0000321'], name="horizon_meth", curie=MIXS.curie('0000321'),
-                   model_uri=NMDC.horizon_meth, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.horizon_meth, domain=None, range=Optional[str])
 
 slots.host_age = Slot(uri=MIXS['0000255'], name="host_age", curie=MIXS.curie('0000255'),
                    model_uri=NMDC.host_age, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11591,16 +12120,13 @@ slots.host_common_name = Slot(uri=MIXS['0000248'], name="host_common_name", curi
                    model_uri=NMDC.host_common_name, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.host_diet = Slot(uri=MIXS['0000869'], name="host_diet", curie=MIXS.curie('0000869'),
-                   model_uri=NMDC.host_diet, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.host_diet, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.host_disease_stat = Slot(uri=MIXS['0000031'], name="host_disease_stat", curie=MIXS.curie('0000031'),
-                   model_uri=NMDC.host_disease_stat, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.host_disease_stat, domain=None, range=Optional[str])
 
 slots.host_dry_mass = Slot(uri=MIXS['0000257'], name="host_dry_mass", curie=MIXS.curie('0000257'),
                    model_uri=NMDC.host_dry_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.host_family_relation = Slot(uri=MIXS['0000872'], name="host_family_relation", curie=MIXS.curie('0000872'),
-                   model_uri=NMDC.host_family_relation, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.host_genotype = Slot(uri=MIXS['0000365'], name="host_genotype", curie=MIXS.curie('0000365'),
                    model_uri=NMDC.host_genotype, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11612,7 +12138,7 @@ slots.host_height = Slot(uri=MIXS['0000264'], name="host_height", curie=MIXS.cur
                    model_uri=NMDC.host_height, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.host_last_meal = Slot(uri=MIXS['0000870'], name="host_last_meal", curie=MIXS.curie('0000870'),
-                   model_uri=NMDC.host_last_meal, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.host_last_meal, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.host_length = Slot(uri=MIXS['0000256'], name="host_length", curie=MIXS.curie('0000256'),
                    model_uri=NMDC.host_length, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11624,7 +12150,7 @@ slots.host_phenotype = Slot(uri=MIXS['0000874'], name="host_phenotype", curie=MI
                    model_uri=NMDC.host_phenotype, domain=None, range=Optional[Union[dict, ControlledTermValue]])
 
 slots.host_sex = Slot(uri=MIXS['0000811'], name="host_sex", curie=MIXS.curie('0000811'),
-                   model_uri=NMDC.host_sex, domain=None, range=Optional[Union[str, "HostSexEnum"]])
+                   model_uri=NMDC.host_sex, domain=None, range=Optional[str])
 
 slots.host_shape = Slot(uri=MIXS['0000261'], name="host_shape", curie=MIXS.curie('0000261'),
                    model_uri=NMDC.host_shape, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11633,13 +12159,13 @@ slots.host_subject_id = Slot(uri=MIXS['0000861'], name="host_subject_id", curie=
                    model_uri=NMDC.host_subject_id, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.host_subspecf_genlin = Slot(uri=MIXS['0001318'], name="host_subspecf_genlin", curie=MIXS.curie('0001318'),
-                   model_uri=NMDC.host_subspecf_genlin, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.host_subspecf_genlin, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.host_substrate = Slot(uri=MIXS['0000252'], name="host_substrate", curie=MIXS.curie('0000252'),
                    model_uri=NMDC.host_substrate, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.host_symbiont = Slot(uri=MIXS['0001298'], name="host_symbiont", curie=MIXS.curie('0001298'),
-                   model_uri=NMDC.host_symbiont, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.host_symbiont, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.host_taxid = Slot(uri=MIXS['0000250'], name="host_taxid", curie=MIXS.curie('0000250'),
                    model_uri=NMDC.host_taxid, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
@@ -11654,7 +12180,7 @@ slots.humidity = Slot(uri=MIXS['0000100'], name="humidity", curie=MIXS.curie('00
                    model_uri=NMDC.humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.humidity_regm = Slot(uri=MIXS['0000568'], name="humidity_regm", curie=MIXS.curie('0000568'),
-                   model_uri=NMDC.humidity_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.humidity_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.indoor_space = Slot(uri=MIXS['0000763'], name="indoor_space", curie=MIXS.curie('0000763'),
                    model_uri=NMDC.indoor_space, domain=None, range=Optional[Union[str, "IndoorSpaceEnum"]])
@@ -11666,13 +12192,13 @@ slots.indust_eff_percent = Slot(uri=MIXS['0000662'], name="indust_eff_percent", 
                    model_uri=NMDC.indust_eff_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.inorg_particles = Slot(uri=MIXS['0000664'], name="inorg_particles", curie=MIXS.curie('0000664'),
-                   model_uri=NMDC.inorg_particles, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.inorg_particles, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.inside_lux = Slot(uri=MIXS['0000168'], name="inside_lux", curie=MIXS.curie('0000168'),
                    model_uri=NMDC.inside_lux, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.int_wall_cond = Slot(uri=MIXS['0000813'], name="int_wall_cond", curie=MIXS.curie('0000813'),
-                   model_uri=NMDC.int_wall_cond, domain=None, range=Optional[Union[str, "IntWallCondEnum"]])
+                   model_uri=NMDC.int_wall_cond, domain=None, range=Optional[Union[str, "DamagedEnum"]])
 
 slots.iw_bt_date_well = Slot(uri=MIXS['0001010'], name="iw_bt_date_well", curie=MIXS.curie('0001010'),
                    model_uri=NMDC.iw_bt_date_well, domain=None, range=Optional[Union[dict, TimestampValue]])
@@ -11693,13 +12219,13 @@ slots.light_regm = Slot(uri=MIXS['0000569'], name="light_regm", curie=MIXS.curie
                    model_uri=NMDC.light_regm, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.light_type = Slot(uri=MIXS['0000769'], name="light_type", curie=MIXS.curie('0000769'),
-                   model_uri=NMDC.light_type, domain=None, range=Optional[Union[Union[str, "LightTypeEnum"], List[Union[str, "LightTypeEnum"]]]])
+                   model_uri=NMDC.light_type, domain=None, range=Optional[Union[Union[str, "LightTypeEnum"], list[Union[str, "LightTypeEnum"]]]])
 
 slots.link_addit_analys = Slot(uri=MIXS['0000340'], name="link_addit_analys", curie=MIXS.curie('0000340'),
                    model_uri=NMDC.link_addit_analys, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.link_class_info = Slot(uri=MIXS['0000329'], name="link_class_info", curie=MIXS.curie('0000329'),
-                   model_uri=NMDC.link_class_info, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.link_class_info, domain=None, range=Optional[str])
 
 slots.link_climate_info = Slot(uri=MIXS['0000328'], name="link_climate_info", curie=MIXS.curie('0000328'),
                    model_uri=NMDC.link_climate_info, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11711,7 +12237,7 @@ slots.local_class = Slot(uri=MIXS['0000330'], name="local_class", curie=MIXS.cur
                    model_uri=NMDC.local_class, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.local_class_meth = Slot(uri=MIXS['0000331'], name="local_class_meth", curie=MIXS.curie('0000331'),
-                   model_uri=NMDC.local_class_meth, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.local_class_meth, domain=None, range=Optional[str])
 
 slots.magnesium = Slot(uri=MIXS['0000431'], name="magnesium", curie=MIXS.curie('0000431'),
                    model_uri=NMDC.magnesium, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11729,7 +12255,7 @@ slots.mech_struc = Slot(uri=MIXS['0000815'], name="mech_struc", curie=MIXS.curie
                    model_uri=NMDC.mech_struc, domain=None, range=Optional[Union[str, "MechStrucEnum"]])
 
 slots.mechanical_damage = Slot(uri=MIXS['0001052'], name="mechanical_damage", curie=MIXS.curie('0001052'),
-                   model_uri=NMDC.mechanical_damage, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.mechanical_damage, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.methane = Slot(uri=MIXS['0000101'], name="methane", curie=MIXS.curie('0000101'),
                    model_uri=NMDC.methane, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11741,13 +12267,13 @@ slots.microbial_biomass = Slot(uri=MIXS['0000650'], name="microbial_biomass", cu
                    model_uri=NMDC.microbial_biomass, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.mineral_nutr_regm = Slot(uri=MIXS['0000570'], name="mineral_nutr_regm", curie=MIXS.curie('0000570'),
-                   model_uri=NMDC.mineral_nutr_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.mineral_nutr_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.misc_param = Slot(uri=MIXS['0000752'], name="misc_param", curie=MIXS.curie('0000752'),
-                   model_uri=NMDC.misc_param, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.misc_param, domain=None, range=Optional[Union[Union[dict, PropertyAssertion], list[Union[dict, PropertyAssertion]]]])
 
 slots.n_alkanes = Slot(uri=MIXS['0000503'], name="n_alkanes", curie=MIXS.curie('0000503'),
-                   model_uri=NMDC.n_alkanes, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.n_alkanes, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.nitrate = Slot(uri=MIXS['0000425'], name="nitrate", curie=MIXS.curie('0000425'),
                    model_uri=NMDC.nitrate, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11759,7 +12285,7 @@ slots.nitro = Slot(uri=MIXS['0000504'], name="nitro", curie=MIXS.curie('0000504'
                    model_uri=NMDC.nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.non_min_nutr_regm = Slot(uri=MIXS['0000571'], name="non_min_nutr_regm", curie=MIXS.curie('0000571'),
-                   model_uri=NMDC.non_min_nutr_regm, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.non_min_nutr_regm, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.nucl_acid_amp = Slot(uri=MIXS['0000038'], name="nucl_acid_amp", curie=MIXS.curie('0000038'),
                    model_uri=NMDC.nucl_acid_amp, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11798,10 +12324,10 @@ slots.org_nitro = Slot(uri=MIXS['0000205'], name="org_nitro", curie=MIXS.curie('
                    model_uri=NMDC.org_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.org_particles = Slot(uri=MIXS['0000665'], name="org_particles", curie=MIXS.curie('0000665'),
-                   model_uri=NMDC.org_particles, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.org_particles, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.organism_count = Slot(uri=MIXS['0000103'], name="organism_count", curie=MIXS.curie('0000103'),
-                   model_uri=NMDC.organism_count, domain=None, range=Optional[Union[Union[dict, QuantityValue], List[Union[dict, QuantityValue]]]])
+                   model_uri=NMDC.organism_count, domain=None, range=Optional[Union[Union[dict, QuantityValue], list[Union[dict, QuantityValue]]]])
 
 slots.owc_tvdss = Slot(uri=MIXS['0000405'], name="owc_tvdss", curie=MIXS.curie('0000405'),
                    model_uri=NMDC.owc_tvdss, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11819,22 +12345,22 @@ slots.part_org_nitro = Slot(uri=MIXS['0000719'], name="part_org_nitro", curie=MI
                    model_uri=NMDC.part_org_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.particle_class = Slot(uri=MIXS['0000206'], name="particle_class", curie=MIXS.curie('0000206'),
-                   model_uri=NMDC.particle_class, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.particle_class, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.pcr_cond = Slot(uri=MIXS['0000049'], name="pcr_cond", curie=MIXS.curie('0000049'),
-                   model_uri=NMDC.pcr_cond, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.pcr_cond, domain=None, range=Optional[str])
 
 slots.pcr_primers = Slot(uri=MIXS['0000046'], name="pcr_primers", curie=MIXS.curie('0000046'),
-                   model_uri=NMDC.pcr_primers, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.pcr_primers, domain=None, range=Optional[str])
 
 slots.permeability = Slot(uri=MIXS['0000404'], name="permeability", curie=MIXS.curie('0000404'),
                    model_uri=NMDC.permeability, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.perturbation = Slot(uri=MIXS['0000754'], name="perturbation", curie=MIXS.curie('0000754'),
-                   model_uri=NMDC.perturbation, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.perturbation, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.pesticide_regm = Slot(uri=MIXS['0000573'], name="pesticide_regm", curie=MIXS.curie('0000573'),
-                   model_uri=NMDC.pesticide_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.pesticide_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.petroleum_hydrocarb = Slot(uri=MIXS['0000516'], name="petroleum_hydrocarb", curie=MIXS.curie('0000516'),
                    model_uri=NMDC.petroleum_hydrocarb, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11846,16 +12372,16 @@ slots.ph_meth = Slot(uri=MIXS['0001106'], name="ph_meth", curie=MIXS.curie('0001
                    model_uri=NMDC.ph_meth, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.ph_regm = Slot(uri=MIXS['0001056'], name="ph_regm", curie=MIXS.curie('0001056'),
-                   model_uri=NMDC.ph_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.ph_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.phaeopigments = Slot(uri=MIXS['0000180'], name="phaeopigments", curie=MIXS.curie('0000180'),
-                   model_uri=NMDC.phaeopigments, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.phaeopigments, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.phosphate = Slot(uri=MIXS['0000505'], name="phosphate", curie=MIXS.curie('0000505'),
                    model_uri=NMDC.phosphate, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.phosplipid_fatt_acid = Slot(uri=MIXS['0000181'], name="phosplipid_fatt_acid", curie=MIXS.curie('0000181'),
-                   model_uri=NMDC.phosplipid_fatt_acid, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.phosplipid_fatt_acid, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.photon_flux = Slot(uri=MIXS['0000725'], name="photon_flux", curie=MIXS.curie('0000725'),
                    model_uri=NMDC.photon_flux, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11873,10 +12399,10 @@ slots.plant_struc = Slot(uri=MIXS['0001060'], name="plant_struc", curie=MIXS.cur
                    model_uri=NMDC.plant_struc, domain=None, range=Optional[Union[dict, ControlledTermValue]])
 
 slots.pollutants = Slot(uri=MIXS['0000107'], name="pollutants", curie=MIXS.curie('0000107'),
-                   model_uri=NMDC.pollutants, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.pollutants, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.pool_dna_extracts = Slot(uri=MIXS['0000325'], name="pool_dna_extracts", curie=MIXS.curie('0000325'),
-                   model_uri=NMDC.pool_dna_extracts, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.pool_dna_extracts, domain=None, range=Optional[str])
 
 slots.porosity = Slot(uri=MIXS['0000211'], name="porosity", curie=MIXS.curie('0000211'),
                    model_uri=NMDC.porosity, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11891,8 +12417,7 @@ slots.pre_treatment = Slot(uri=MIXS['0000348'], name="pre_treatment", curie=MIXS
                    model_uri=NMDC.pre_treatment, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.pres_animal_insect = Slot(uri=MIXS['0000819'], name="pres_animal_insect", curie=MIXS.curie('0000819'),
-                   model_uri=NMDC.pres_animal_insect, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(cat|dog|rodent|snake|other);\d+$'))
+                   model_uri=NMDC.pres_animal_insect, domain=None, range=Optional[str])
 
 slots.pressure = Slot(uri=MIXS['0000412'], name="pressure", curie=MIXS.curie('0000412'),
                    model_uri=NMDC.pressure, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11901,7 +12426,7 @@ slots.prev_land_use_meth = Slot(uri=MIXS['0000316'], name="prev_land_use_meth", 
                    model_uri=NMDC.prev_land_use_meth, domain=None, range=Optional[str])
 
 slots.previous_land_use = Slot(uri=MIXS['0000315'], name="previous_land_use", curie=MIXS.curie('0000315'),
-                   model_uri=NMDC.previous_land_use, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.previous_land_use, domain=None, range=Optional[str])
 
 slots.primary_prod = Slot(uri=MIXS['0000728'], name="primary_prod", curie=MIXS.curie('0000728'),
                    model_uri=NMDC.primary_prod, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11922,10 +12447,10 @@ slots.quad_pos = Slot(uri=MIXS['0000820'], name="quad_pos", curie=MIXS.curie('00
                    model_uri=NMDC.quad_pos, domain=None, range=Optional[Union[str, "QuadPosEnum"]])
 
 slots.radiation_regm = Slot(uri=MIXS['0000575'], name="radiation_regm", curie=MIXS.curie('0000575'),
-                   model_uri=NMDC.radiation_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.radiation_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.rainfall_regm = Slot(uri=MIXS['0000576'], name="rainfall_regm", curie=MIXS.curie('0000576'),
-                   model_uri=NMDC.rainfall_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.rainfall_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.reactor_type = Slot(uri=MIXS['0000350'], name="reactor_type", curie=MIXS.curie('0000350'),
                    model_uri=NMDC.reactor_type, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11991,7 +12516,7 @@ slots.room_samp_pos = Slot(uri=MIXS['0000824'], name="room_samp_pos", curie=MIXS
                    model_uri=NMDC.room_samp_pos, domain=None, range=Optional[Union[str, "RoomSampPosEnum"]])
 
 slots.room_type = Slot(uri=MIXS['0000825'], name="room_type", curie=MIXS.curie('0000825'),
-                   model_uri=NMDC.room_type, domain=None, range=Optional[Union[str, "RoomTypeEnum"]])
+                   model_uri=NMDC.room_type, domain=None, range=Optional[str])
 
 slots.room_vol = Slot(uri=MIXS['0000195'], name="room_vol", curie=MIXS.curie('0000195'),
                    model_uri=NMDC.room_vol, domain=None, range=Optional[Union[dict, TextValue]])
@@ -12029,20 +12554,11 @@ slots.root_med_suppl = Slot(uri=MIXS['0000580'], name="root_med_suppl", curie=MI
 slots.salinity = Slot(uri=MIXS['0000183'], name="salinity", curie=MIXS.curie('0000183'),
                    model_uri=NMDC.salinity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.salinity_meth = Slot(uri=MIXS['0000341'], name="salinity_meth", curie=MIXS.curie('0000341'),
-                   model_uri=NMDC.salinity_meth, domain=None, range=Optional[Union[dict, TextValue]])
-
 slots.salt_regm = Slot(uri=MIXS['0000582'], name="salt_regm", curie=MIXS.curie('0000582'),
-                   model_uri=NMDC.salt_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.salt_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.samp_capt_status = Slot(uri=MIXS['0000860'], name="samp_capt_status", curie=MIXS.curie('0000860'),
                    model_uri=NMDC.samp_capt_status, domain=None, range=Optional[Union[str, "SampCaptStatusEnum"]])
-
-slots.samp_collec_device = Slot(uri=MIXS['0000002'], name="samp_collec_device", curie=MIXS.curie('0000002'),
-                   model_uri=NMDC.samp_collec_device, domain=None, range=Optional[str])
-
-slots.samp_collec_method = Slot(uri=MIXS['0001225'], name="samp_collec_method", curie=MIXS.curie('0001225'),
-                   model_uri=NMDC.samp_collec_method, domain=None, range=Optional[str])
 
 slots.samp_collect_point = Slot(uri=MIXS['0001015'], name="samp_collect_point", curie=MIXS.curie('0001015'),
                    model_uri=NMDC.samp_collect_point, domain=None, range=Optional[Union[str, "SampCollectPointEnum"]])
@@ -12051,7 +12567,8 @@ slots.samp_dis_stage = Slot(uri=MIXS['0000249'], name="samp_dis_stage", curie=MI
                    model_uri=NMDC.samp_dis_stage, domain=None, range=Optional[Union[str, "SampDisStageEnum"]])
 
 slots.samp_floor = Slot(uri=MIXS['0000828'], name="samp_floor", curie=MIXS.curie('0000828'),
-                   model_uri=NMDC.samp_floor, domain=None, range=Optional[Union[str, "SampFloorEnum"]])
+                   model_uri=NMDC.samp_floor, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^(?:(?:\d*1[1-3]th|\d*1st|\d*2nd|\d*3rd|\d*[04-9]th) floor|basement|lobby)$'))
 
 slots.samp_loc_corr_rate = Slot(uri=MIXS['0000136'], name="samp_loc_corr_rate", curie=MIXS.curie('0000136'),
                    model_uri=NMDC.samp_loc_corr_rate, domain=None, range=Optional[Union[dict, TextValue]])
@@ -12075,7 +12592,7 @@ slots.samp_size = Slot(uri=MIXS['0000001'], name="samp_size", curie=MIXS.curie('
                    model_uri=NMDC.samp_size, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samp_sort_meth = Slot(uri=MIXS['0000216'], name="samp_sort_meth", curie=MIXS.curie('0000216'),
-                   model_uri=NMDC.samp_sort_meth, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.samp_sort_meth, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.samp_store_dur = Slot(uri=MIXS['0000116'], name="samp_store_dur", curie=MIXS.curie('0000116'),
                    model_uri=NMDC.samp_store_dur, domain=None, range=Optional[Union[dict, TextValue]])
@@ -12117,10 +12634,10 @@ slots.saturates_pc = Slot(uri=MIXS['0000131'], name="saturates_pc", curie=MIXS.c
                    model_uri=NMDC.saturates_pc, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.season = Slot(uri=MIXS['0000829'], name="season", curie=MIXS.curie('0000829'),
-                   model_uri=NMDC.season, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.season, domain=None, range=Optional[Union[str, "SeasonEnum"]])
 
 slots.season_environment = Slot(uri=MIXS['0001068'], name="season_environment", curie=MIXS.curie('0001068'),
-                   model_uri=NMDC.season_environment, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.season_environment, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.season_precpt = Slot(uri=MIXS['0000645'], name="season_precpt", curie=MIXS.curie('0000645'),
                    model_uri=NMDC.season_precpt, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -12138,10 +12655,10 @@ slots.sediment_type = Slot(uri=MIXS['0001078'], name="sediment_type", curie=MIXS
                    model_uri=NMDC.sediment_type, domain=None, range=Optional[Union[str, "SedimentTypeEnum"]])
 
 slots.seq_meth = Slot(uri=MIXS['0000050'], name="seq_meth", curie=MIXS.curie('0000050'),
-                   model_uri=NMDC.seq_meth, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.seq_meth, domain=None, range=Optional[str])
 
 slots.seq_quality_check = Slot(uri=MIXS['0000051'], name="seq_quality_check", curie=MIXS.curie('0000051'),
-                   model_uri=NMDC.seq_quality_check, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.seq_quality_check, domain=None, range=Optional[Union[str, "SeqQualityCheckEnum"]])
 
 slots.sewage_type = Slot(uri=MIXS['0000215'], name="sewage_type", curie=MIXS.curie('0000215'),
                    model_uri=NMDC.sewage_type, domain=None, range=Optional[Union[dict, TextValue]])
@@ -12150,10 +12667,10 @@ slots.shad_dev_water_mold = Slot(uri=MIXS['0000834'], name="shad_dev_water_mold"
                    model_uri=NMDC.shad_dev_water_mold, domain=None, range=Optional[str])
 
 slots.shading_device_cond = Slot(uri=MIXS['0000831'], name="shading_device_cond", curie=MIXS.curie('0000831'),
-                   model_uri=NMDC.shading_device_cond, domain=None, range=Optional[Union[str, "ShadingDeviceCondEnum"]])
+                   model_uri=NMDC.shading_device_cond, domain=None, range=Optional[Union[str, "DamagedRupturedEnum"]])
 
 slots.shading_device_loc = Slot(uri=MIXS['0000832'], name="shading_device_loc", curie=MIXS.curie('0000832'),
-                   model_uri=NMDC.shading_device_loc, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.shading_device_loc, domain=None, range=Optional[Union[str, "ShadingDeviceLocEnum"]])
 
 slots.shading_device_mat = Slot(uri=MIXS['0000245'], name="shading_device_mat", curie=MIXS.curie('0000245'),
                    model_uri=NMDC.shading_device_mat, domain=None, range=Optional[Union[dict, TextValue]])
@@ -12191,9 +12708,6 @@ slots.sodium = Slot(uri=MIXS['0000428'], name="sodium", curie=MIXS.curie('000042
 slots.soil_horizon = Slot(uri=MIXS['0001082'], name="soil_horizon", curie=MIXS.curie('0001082'),
                    model_uri=NMDC.soil_horizon, domain=None, range=Optional[Union[str, "SoilHorizonEnum"]])
 
-slots.soil_text_measure = Slot(uri=MIXS['0000335'], name="soil_text_measure", curie=MIXS.curie('0000335'),
-                   model_uri=NMDC.soil_text_measure, domain=None, range=Optional[Union[dict, QuantityValue]])
-
 slots.soil_texture_meth = Slot(uri=MIXS['0000336'], name="soil_texture_meth", curie=MIXS.curie('0000336'),
                    model_uri=NMDC.soil_texture_meth, domain=None, range=Optional[str])
 
@@ -12207,10 +12721,10 @@ slots.solar_irradiance = Slot(uri=MIXS['0000112'], name="solar_irradiance", curi
                    model_uri=NMDC.solar_irradiance, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.soluble_inorg_mat = Slot(uri=MIXS['0000672'], name="soluble_inorg_mat", curie=MIXS.curie('0000672'),
-                   model_uri=NMDC.soluble_inorg_mat, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.soluble_inorg_mat, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.soluble_org_mat = Slot(uri=MIXS['0000673'], name="soluble_org_mat", curie=MIXS.curie('0000673'),
-                   model_uri=NMDC.soluble_org_mat, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.soluble_org_mat, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.soluble_react_phosp = Slot(uri=MIXS['0000738'], name="soluble_react_phosp", curie=MIXS.curie('0000738'),
                    model_uri=NMDC.soluble_react_phosp, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -12219,7 +12733,7 @@ slots.source_mat_id = Slot(uri=MIXS['0000026'], name="source_mat_id", curie=MIXS
                    model_uri=NMDC.source_mat_id, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.space_typ_state = Slot(uri=MIXS['0000770'], name="space_typ_state", curie=MIXS.curie('0000770'),
-                   model_uri=NMDC.space_typ_state, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.space_typ_state, domain=None, range=Optional[Union[str, "SpaceTypStateEnum"]])
 
 slots.specific = Slot(uri=MIXS['0000836'], name="specific", curie=MIXS.curie('0000836'),
                    model_uri=NMDC.specific, domain=None, range=Optional[Union[str, "SpecificEnum"]])
@@ -12231,7 +12745,7 @@ slots.sr_dep_env = Slot(uri=MIXS['0000996'], name="sr_dep_env", curie=MIXS.curie
                    model_uri=NMDC.sr_dep_env, domain=None, range=Optional[Union[str, "SrDepEnvEnum"]])
 
 slots.sr_geol_age = Slot(uri=MIXS['0000997'], name="sr_geol_age", curie=MIXS.curie('0000997'),
-                   model_uri=NMDC.sr_geol_age, domain=None, range=Optional[Union[str, "SrGeolAgeEnum"]])
+                   model_uri=NMDC.sr_geol_age, domain=None, range=Optional[Union[str, "GeolAgeEnum"]])
 
 slots.sr_kerog_type = Slot(uri=MIXS['0000994'], name="sr_kerog_type", curie=MIXS.curie('0000994'),
                    model_uri=NMDC.sr_kerog_type, domain=None, range=Optional[Union[str, "SrKerogTypeEnum"]])
@@ -12240,13 +12754,13 @@ slots.sr_lithology = Slot(uri=MIXS['0000995'], name="sr_lithology", curie=MIXS.c
                    model_uri=NMDC.sr_lithology, domain=None, range=Optional[Union[str, "SrLithologyEnum"]])
 
 slots.standing_water_regm = Slot(uri=MIXS['0001069'], name="standing_water_regm", curie=MIXS.curie('0001069'),
-                   model_uri=NMDC.standing_water_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.standing_water_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.store_cond = Slot(uri=MIXS['0000327'], name="store_cond", curie=MIXS.curie('0000327'),
                    model_uri=NMDC.store_cond, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.substructure_type = Slot(uri=MIXS['0000767'], name="substructure_type", curie=MIXS.curie('0000767'),
-                   model_uri=NMDC.substructure_type, domain=None, range=Optional[Union[Union[str, "SubstructureTypeEnum"], List[Union[str, "SubstructureTypeEnum"]]]])
+                   model_uri=NMDC.substructure_type, domain=None, range=Optional[Union[Union[str, "SubstructureTypeEnum"], list[Union[str, "SubstructureTypeEnum"]]]])
 
 slots.sulfate = Slot(uri=MIXS['0000423'], name="sulfate", curie=MIXS.curie('0000423'),
                    model_uri=NMDC.sulfate, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -12258,7 +12772,7 @@ slots.sulfide = Slot(uri=MIXS['0000424'], name="sulfide", curie=MIXS.curie('0000
                    model_uri=NMDC.sulfide, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.surf_air_cont = Slot(uri=MIXS['0000759'], name="surf_air_cont", curie=MIXS.curie('0000759'),
-                   model_uri=NMDC.surf_air_cont, domain=None, range=Optional[Union[Union[str, "SurfAirContEnum"], List[Union[str, "SurfAirContEnum"]]]])
+                   model_uri=NMDC.surf_air_cont, domain=None, range=Optional[Union[Union[str, "SurfAirContEnum"], list[Union[str, "SurfAirContEnum"]]]])
 
 slots.surf_humidity = Slot(uri=MIXS['0000123'], name="surf_humidity", curie=MIXS.curie('0000123'),
                    model_uri=NMDC.surf_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -12279,7 +12793,7 @@ slots.suspend_part_matter = Slot(uri=MIXS['0000741'], name="suspend_part_matter"
                    model_uri=NMDC.suspend_part_matter, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.suspend_solids = Slot(uri=MIXS['0000150'], name="suspend_solids", curie=MIXS.curie('0000150'),
-                   model_uri=NMDC.suspend_solids, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.suspend_solids, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.tan = Slot(uri=MIXS['0000120'], name="tan", curie=MIXS.curie('0000120'),
                    model_uri=NMDC.tan, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -12303,7 +12817,7 @@ slots.tidal_stage = Slot(uri=MIXS['0000750'], name="tidal_stage", curie=MIXS.cur
                    model_uri=NMDC.tidal_stage, domain=None, range=Optional[Union[str, "TidalStageEnum"]])
 
 slots.tillage = Slot(uri=MIXS['0001081'], name="tillage", curie=MIXS.curie('0001081'),
-                   model_uri=NMDC.tillage, domain=None, range=Optional[Union[Union[str, "TillageEnum"], List[Union[str, "TillageEnum"]]]])
+                   model_uri=NMDC.tillage, domain=None, range=Optional[Union[Union[str, "TillageEnum"], list[Union[str, "TillageEnum"]]]])
 
 slots.tiss_cult_growth_med = Slot(uri=MIXS['0001070'], name="tiss_cult_growth_med", curie=MIXS.curie('0001070'),
                    model_uri=NMDC.tiss_cult_growth_med, domain=None, range=Optional[Union[dict, TextValue]])
@@ -12336,7 +12850,7 @@ slots.tot_nitro_content = Slot(uri=MIXS['0000530'], name="tot_nitro_content", cu
                    model_uri=NMDC.tot_nitro_content, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.tot_org_c_meth = Slot(uri=MIXS['0000337'], name="tot_org_c_meth", curie=MIXS.curie('0000337'),
-                   model_uri=NMDC.tot_org_c_meth, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.tot_org_c_meth, domain=None, range=Optional[str])
 
 slots.tot_org_carb = Slot(uri=MIXS['0000533'], name="tot_org_carb", curie=MIXS.curie('0000533'),
                    model_uri=NMDC.tot_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -12387,13 +12901,13 @@ slots.vfa_fw = Slot(uri=MIXS['0000408'], name="vfa_fw", curie=MIXS.curie('000040
                    model_uri=NMDC.vfa_fw, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.vis_media = Slot(uri=MIXS['0000840'], name="vis_media", curie=MIXS.curie('0000840'),
-                   model_uri=NMDC.vis_media, domain=None, range=Optional[Union[str, "VisMediaEnum"]])
+                   model_uri=NMDC.vis_media, domain=None, range=Optional[str])
 
 slots.viscosity = Slot(uri=MIXS['0000126'], name="viscosity", curie=MIXS.curie('0000126'),
                    model_uri=NMDC.viscosity, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.volatile_org_comp = Slot(uri=MIXS['0000115'], name="volatile_org_comp", curie=MIXS.curie('0000115'),
-                   model_uri=NMDC.volatile_org_comp, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.volatile_org_comp, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.wall_area = Slot(uri=MIXS['0000198'], name="wall_area", curie=MIXS.curie('0000198'),
                    model_uri=NMDC.wall_area, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -12408,19 +12922,19 @@ slots.wall_height = Slot(uri=MIXS['0000221'], name="wall_height", curie=MIXS.cur
                    model_uri=NMDC.wall_height, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.wall_loc = Slot(uri=MIXS['0000843'], name="wall_loc", curie=MIXS.curie('0000843'),
-                   model_uri=NMDC.wall_loc, domain=None, range=Optional[Union[str, "WallLocEnum"]])
+                   model_uri=NMDC.wall_loc, domain=None, range=Optional[Union[str, "CompassDirections8Enum"]])
 
 slots.wall_surf_treatment = Slot(uri=MIXS['0000845'], name="wall_surf_treatment", curie=MIXS.curie('0000845'),
                    model_uri=NMDC.wall_surf_treatment, domain=None, range=Optional[Union[str, "WallSurfTreatmentEnum"]])
 
 slots.wall_texture = Slot(uri=MIXS['0000846'], name="wall_texture", curie=MIXS.curie('0000846'),
-                   model_uri=NMDC.wall_texture, domain=None, range=Optional[Union[str, "WallTextureEnum"]])
+                   model_uri=NMDC.wall_texture, domain=None, range=Optional[Union[str, "CeilingWallTextureEnum"]])
 
 slots.wall_thermal_mass = Slot(uri=MIXS['0000222'], name="wall_thermal_mass", curie=MIXS.curie('0000222'),
                    model_uri=NMDC.wall_thermal_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.wall_water_mold = Slot(uri=MIXS['0000844'], name="wall_water_mold", curie=MIXS.curie('0000844'),
-                   model_uri=NMDC.wall_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.wall_water_mold, domain=None, range=Optional[Union[str, "MoldVisibilityEnum"]])
 
 slots.wastewater_type = Slot(uri=MIXS['0000353'], name="wastewater_type", curie=MIXS.curie('0000353'),
                    model_uri=NMDC.wastewater_type, domain=None, range=Optional[Union[dict, TextValue]])
@@ -12447,10 +12961,10 @@ slots.water_prod_rate = Slot(uri=MIXS['0000453'], name="water_prod_rate", curie=
                    model_uri=NMDC.water_prod_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.water_temp_regm = Slot(uri=MIXS['0000590'], name="water_temp_regm", curie=MIXS.curie('0000590'),
-                   model_uri=NMDC.water_temp_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.water_temp_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.watering_regm = Slot(uri=MIXS['0000591'], name="watering_regm", curie=MIXS.curie('0000591'),
-                   model_uri=NMDC.watering_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.watering_regm, domain=None, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.weekday = Slot(uri=MIXS['0000848'], name="weekday", curie=MIXS.curie('0000848'),
                    model_uri=NMDC.weekday, domain=None, range=Optional[Union[str, "WeekdayEnum"]])
@@ -12465,7 +12979,7 @@ slots.wind_speed = Slot(uri=MIXS['0000118'], name="wind_speed", curie=MIXS.curie
                    model_uri=NMDC.wind_speed, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.window_cond = Slot(uri=MIXS['0000849'], name="window_cond", curie=MIXS.curie('0000849'),
-                   model_uri=NMDC.window_cond, domain=None, range=Optional[Union[str, "WindowCondEnum"]])
+                   model_uri=NMDC.window_cond, domain=None, range=Optional[Union[str, "DamagedRupturedEnum"]])
 
 slots.window_cover = Slot(uri=MIXS['0000850'], name="window_cover", curie=MIXS.curie('0000850'),
                    model_uri=NMDC.window_cover, domain=None, range=Optional[Union[str, "WindowCoverEnum"]])
@@ -12474,7 +12988,7 @@ slots.window_horiz_pos = Slot(uri=MIXS['0000851'], name="window_horiz_pos", curi
                    model_uri=NMDC.window_horiz_pos, domain=None, range=Optional[Union[str, "WindowHorizPosEnum"]])
 
 slots.window_loc = Slot(uri=MIXS['0000852'], name="window_loc", curie=MIXS.curie('0000852'),
-                   model_uri=NMDC.window_loc, domain=None, range=Optional[Union[str, "WindowLocEnum"]])
+                   model_uri=NMDC.window_loc, domain=None, range=Optional[Union[str, "CompassDirections8Enum"]])
 
 slots.window_mat = Slot(uri=MIXS['0000853'], name="window_mat", curie=MIXS.curie('0000853'),
                    model_uri=NMDC.window_mat, domain=None, range=Optional[Union[str, "WindowMatEnum"]])
@@ -12486,7 +13000,7 @@ slots.window_size = Slot(uri=MIXS['0000224'], name="window_size", curie=MIXS.cur
                    model_uri=NMDC.window_size, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.window_status = Slot(uri=MIXS['0000855'], name="window_status", curie=MIXS.curie('0000855'),
-                   model_uri=NMDC.window_status, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.window_status, domain=None, range=Optional[Union[str, "WindowStatusEnum"]])
 
 slots.window_type = Slot(uri=MIXS['0000856'], name="window_type", curie=MIXS.curie('0000856'),
                    model_uri=NMDC.window_type, domain=None, range=Optional[Union[str, "WindowTypeEnum"]])
@@ -12495,31 +13009,19 @@ slots.window_vert_pos = Slot(uri=MIXS['0000857'], name="window_vert_pos", curie=
                    model_uri=NMDC.window_vert_pos, domain=None, range=Optional[Union[str, "WindowVertPosEnum"]])
 
 slots.window_water_mold = Slot(uri=MIXS['0000854'], name="window_water_mold", curie=MIXS.curie('0000854'),
-                   model_uri=NMDC.window_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.window_water_mold, domain=None, range=Optional[Union[str, "MoldVisibilityEnum"]])
 
 slots.xylene = Slot(uri=MIXS['0000156'], name="xylene", curie=MIXS.curie('0000156'),
                    model_uri=NMDC.xylene, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.core_field = Slot(uri=MIXS.core_field, name="core field", curie=MIXS.curie('core_field'),
-                   model_uri=NMDC.core_field, domain=None, range=Optional[str])
+slots.samp_collec_device = Slot(uri=MIXS['0000002'], name="samp_collec_device", curie=MIXS.curie('0000002'),
+                   model_uri=NMDC.samp_collec_device, domain=None, range=Optional[str])
 
-slots.environment_field = Slot(uri=MIXS.environment_field, name="environment field", curie=MIXS.curie('environment_field'),
-                   model_uri=NMDC.environment_field, domain=None, range=Optional[str])
+slots.samp_collec_method = Slot(uri=MIXS['0001225'], name="samp_collec_method", curie=MIXS.curie('0001225'),
+                   model_uri=NMDC.samp_collec_method, domain=None, range=Optional[str])
 
-slots.investigation_field = Slot(uri=MIXS.investigation_field, name="investigation field", curie=MIXS.curie('investigation_field'),
-                   model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
-
-slots.nucleic_acid_sequence_source_field = Slot(uri=MIXS.nucleic_acid_sequence_source_field, name="nucleic acid sequence source field", curie=MIXS.curie('nucleic_acid_sequence_source_field'),
-                   model_uri=NMDC.nucleic_acid_sequence_source_field, domain=None, range=Optional[str])
-
-slots.sequencing_field = Slot(uri=MIXS.sequencing_field, name="sequencing field", curie=MIXS.curie('sequencing_field'),
-                   model_uri=NMDC.sequencing_field, domain=None, range=Optional[str])
-
-slots.ontologyClass__definition = Slot(uri=NMDC['basic_classes/definition'], name="ontologyClass__definition", curie=NMDC.curie('basic_classes/definition'),
-                   model_uri=NMDC.ontologyClass__definition, domain=None, range=Optional[str])
-
-slots.ontologyClass__relations = Slot(uri=NMDC['basic_classes/relations'], name="ontologyClass__relations", curie=NMDC.curie('basic_classes/relations'),
-                   model_uri=NMDC.ontologyClass__relations, domain=None, range=Optional[Union[Union[dict, OntologyRelation], List[Union[dict, OntologyRelation]]]])
+slots.mixs_env_triad_field = Slot(uri=MIXS.mixs_env_triad_field, name="mixs_env_triad_field", curie=MIXS.curie('mixs_env_triad_field'),
+                   model_uri=NMDC.mixs_env_triad_field, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
 
 slots.ontologyRelation__subject = Slot(uri=NMDC['basic_classes/subject'], name="ontologyRelation__subject", curie=NMDC.curie('basic_classes/subject'),
                    model_uri=NMDC.ontologyRelation__subject, domain=None, range=Union[str, OntologyClassId])
@@ -12534,6 +13036,9 @@ slots.NucleotideSequencing_id = Slot(uri=NMDC.id, name="NucleotideSequencing_id"
                    model_uri=NMDC.NucleotideSequencing_id, domain=NucleotideSequencing, range=Union[str, NucleotideSequencingId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
+slots.NucleotideSequencing_analyte_category = Slot(uri=NMDC.analyte_category, name="NucleotideSequencing_analyte_category", curie=NMDC.curie('analyte_category'),
+                   model_uri=NMDC.NucleotideSequencing_analyte_category, domain=NucleotideSequencing, range=Union[str, "NucleotideSequencingEnum"])
+
 slots.MassSpectrometry_id = Slot(uri=NMDC.id, name="MassSpectrometry_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MassSpectrometry_id, domain=MassSpectrometry, range=Union[str, MassSpectrometryId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
@@ -12542,9 +13047,15 @@ slots.MassSpectrometry_has_chromatography_configuration = Slot(uri=NMDC.has_chro
                    model_uri=NMDC.MassSpectrometry_has_chromatography_configuration, domain=MassSpectrometry, range=Optional[Union[str, ChromatographyConfigurationId]])
 
 slots.MassSpectrometry_has_mass_spectrometry_configuration = Slot(uri=NMDC.has_mass_spectrometry_configuration, name="MassSpectrometry_has_mass_spectrometry_configuration", curie=NMDC.curie('has_mass_spectrometry_configuration'),
-                   model_uri=NMDC.MassSpectrometry_has_mass_spectrometry_configuration, domain=MassSpectrometry, range=Optional[Union[str, MassSpectrometryConfigurationId]])
+                   model_uri=NMDC.MassSpectrometry_has_mass_spectrometry_configuration, domain=MassSpectrometry, range=Union[str, MassSpectrometryConfigurationId])
 
-slots.MassSpectrometryConfiguration_name = Slot(uri=NMDC.name, name="MassSpectrometryConfiguration_name", curie=NMDC.curie('name'),
+slots.MassSpectrometry_analyte_category = Slot(uri=NMDC.analyte_category, name="MassSpectrometry_analyte_category", curie=NMDC.curie('analyte_category'),
+                   model_uri=NMDC.MassSpectrometry_analyte_category, domain=MassSpectrometry, range=Union[str, "MassSpectrometryEnum"])
+
+slots.MassSpectrometry_eluent_introduction_category = Slot(uri=NMDC.eluent_introduction_category, name="MassSpectrometry_eluent_introduction_category", curie=NMDC.curie('eluent_introduction_category'),
+                   model_uri=NMDC.MassSpectrometry_eluent_introduction_category, domain=MassSpectrometry, range=Union[str, "EluentIntroductionCategoryEnum"])
+
+slots.MassSpectrometryConfiguration_name = Slot(uri=NMDC['attribute_values/name'], name="MassSpectrometryConfiguration_name", curie=NMDC.curie('attribute_values/name'),
                    model_uri=NMDC.MassSpectrometryConfiguration_name, domain=MassSpectrometryConfiguration, range=str)
 
 slots.MassSpectrometryConfiguration_description = Slot(uri=DCTERMS.description, name="MassSpectrometryConfiguration_description", curie=DCTERMS.curie('description'),
@@ -12554,7 +13065,25 @@ slots.MassSpectrometryConfiguration_id = Slot(uri=NMDC.id, name="MassSpectrometr
                    model_uri=NMDC.MassSpectrometryConfiguration_id, domain=MassSpectrometryConfiguration, range=Union[str, MassSpectrometryConfigurationId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
-slots.ChromatographyConfiguration_name = Slot(uri=NMDC.name, name="ChromatographyConfiguration_name", curie=NMDC.curie('name'),
+slots.MassSpectrometryConfiguration_mass_spectrometry_acquisition_strategy = Slot(uri=NMDC.mass_spectrometry_acquisition_strategy, name="MassSpectrometryConfiguration_mass_spectrometry_acquisition_strategy", curie=NMDC.curie('mass_spectrometry_acquisition_strategy'),
+                   model_uri=NMDC.MassSpectrometryConfiguration_mass_spectrometry_acquisition_strategy, domain=MassSpectrometryConfiguration, range=Union[str, "MassSpectrometryAcquisitionStrategyEnum"])
+
+slots.MassSpectrometryConfiguration_resolution_categories = Slot(uri=NMDC.resolution_categories, name="MassSpectrometryConfiguration_resolution_categories", curie=NMDC.curie('resolution_categories'),
+                   model_uri=NMDC.MassSpectrometryConfiguration_resolution_categories, domain=MassSpectrometryConfiguration, range=Union[Union[str, "ResolutionCategoryEnum"], list[Union[str, "ResolutionCategoryEnum"]]])
+
+slots.MassSpectrometryConfiguration_mass_analyzers = Slot(uri=NMDC.mass_analyzers, name="MassSpectrometryConfiguration_mass_analyzers", curie=NMDC.curie('mass_analyzers'),
+                   model_uri=NMDC.MassSpectrometryConfiguration_mass_analyzers, domain=MassSpectrometryConfiguration, range=Union[Union[str, "MassAnalyzerEnum"], list[Union[str, "MassAnalyzerEnum"]]])
+
+slots.MassSpectrometryConfiguration_ionization_source = Slot(uri=NMDC.ionization_source, name="MassSpectrometryConfiguration_ionization_source", curie=NMDC.curie('ionization_source'),
+                   model_uri=NMDC.MassSpectrometryConfiguration_ionization_source, domain=MassSpectrometryConfiguration, range=Union[str, "IonizationSourceEnum"])
+
+slots.MassSpectrometryConfiguration_mass_spectrum_collection_modes = Slot(uri=NMDC.mass_spectrum_collection_modes, name="MassSpectrometryConfiguration_mass_spectrum_collection_modes", curie=NMDC.curie('mass_spectrum_collection_modes'),
+                   model_uri=NMDC.MassSpectrometryConfiguration_mass_spectrum_collection_modes, domain=MassSpectrometryConfiguration, range=Union[Union[str, "MassSpectrumCollectionModeEnum"], list[Union[str, "MassSpectrumCollectionModeEnum"]]])
+
+slots.MassSpectrometryConfiguration_polarity_mode = Slot(uri=NMDC.polarity_mode, name="MassSpectrometryConfiguration_polarity_mode", curie=NMDC.curie('polarity_mode'),
+                   model_uri=NMDC.MassSpectrometryConfiguration_polarity_mode, domain=MassSpectrometryConfiguration, range=Union[str, "PolarityModeEnum"])
+
+slots.ChromatographyConfiguration_name = Slot(uri=NMDC['attribute_values/name'], name="ChromatographyConfiguration_name", curie=NMDC.curie('attribute_values/name'),
                    model_uri=NMDC.ChromatographyConfiguration_name, domain=ChromatographyConfiguration, range=str)
 
 slots.ChromatographyConfiguration_description = Slot(uri=DCTERMS.description, name="ChromatographyConfiguration_description", curie=DCTERMS.curie('description'),
@@ -12563,6 +13092,12 @@ slots.ChromatographyConfiguration_description = Slot(uri=DCTERMS.description, na
 slots.ChromatographyConfiguration_id = Slot(uri=NMDC.id, name="ChromatographyConfiguration_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ChromatographyConfiguration_id, domain=ChromatographyConfiguration, range=Union[str, ChromatographyConfigurationId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
+slots.ChromatographyConfiguration_chromatographic_category = Slot(uri=NMDC.chromatographic_category, name="ChromatographyConfiguration_chromatographic_category", curie=NMDC.curie('chromatographic_category'),
+                   model_uri=NMDC.ChromatographyConfiguration_chromatographic_category, domain=ChromatographyConfiguration, range=Union[str, "ChromatographicCategoryEnum"])
+
+slots.ChromatographyConfiguration_stationary_phase = Slot(uri=NMDC.stationary_phase, name="ChromatographyConfiguration_stationary_phase", curie=NMDC.curie('stationary_phase'),
+                   model_uri=NMDC.ChromatographyConfiguration_stationary_phase, domain=ChromatographyConfiguration, range=Union[str, "StationaryPhaseEnum"])
 
 slots.Manifest_id = Slot(uri=NMDC.id, name="Manifest_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Manifest_id, domain=Manifest, range=Union[str, ManifestId],
@@ -12579,26 +13114,30 @@ slots.CalibrationInformation_id = Slot(uri=NMDC.id, name="CalibrationInformation
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.FunctionalAnnotationAggMember_was_generated_by = Slot(uri=NMDC['basic_classes/was_generated_by'], name="FunctionalAnnotationAggMember_was_generated_by", curie=NMDC.curie('basic_classes/was_generated_by'),
-                   model_uri=NMDC.FunctionalAnnotationAggMember_was_generated_by, domain=FunctionalAnnotationAggMember, range=Union[str, WorkflowExecutionId], mappings = [PROV["wasGeneratedBy"]])
+                   model_uri=NMDC.FunctionalAnnotationAggMember_was_generated_by, domain=FunctionalAnnotationAggMember, range=Union[str, AnnotatingWorkflowId], mappings = [PROV["wasGeneratedBy"]])
 
 slots.FunctionalAnnotationAggMember_count = Slot(uri=NMDC.count, name="FunctionalAnnotationAggMember_count", curie=NMDC.curie('count'),
                    model_uri=NMDC.FunctionalAnnotationAggMember_count, domain=FunctionalAnnotationAggMember, range=int)
 
+slots.FunctionalAnnotationAggMember_gene_function_id = Slot(uri=NMDC.gene_function_id, name="FunctionalAnnotationAggMember_gene_function_id", curie=NMDC.curie('gene_function_id'),
+                   model_uri=NMDC.FunctionalAnnotationAggMember_gene_function_id, domain=FunctionalAnnotationAggMember, range=Union[str, URIorCURIE],
+                   pattern=re.compile(r'(COG:COG\d+|PFAM:PF\d{5}|KEGG.ORTHOLOGY:K\d+)'))
+
 slots.Pooling_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="Pooling_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.Pooling_has_input, domain=Pooling, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+                   model_uri=NMDC.Pooling_has_input, domain=Pooling, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
 
 slots.Pooling_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="Pooling_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.Pooling_has_output, domain=Pooling, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+                   model_uri=NMDC.Pooling_has_output, domain=Pooling, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
 
 slots.Pooling_id = Slot(uri=NMDC.id, name="Pooling_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Pooling_id, domain=Pooling, range=Union[str, PoolingId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.Extraction_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="Extraction_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.Extraction_has_input, domain=Extraction, range=Union[Union[str, SampleId], List[Union[str, SampleId]]])
+                   model_uri=NMDC.Extraction_has_input, domain=Extraction, range=Union[Union[str, SampleId], list[Union[str, SampleId]]])
 
 slots.Extraction_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="Extraction_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.Extraction_has_output, domain=Extraction, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+                   model_uri=NMDC.Extraction_has_output, domain=Extraction, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
 
 slots.Extraction_id = Slot(uri=NMDC.id, name="Extraction_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Extraction_id, domain=Extraction, range=Union[str, ExtractionId],
@@ -12608,40 +13147,27 @@ slots.Extraction_volume = Slot(uri=NMDC.volume, name="Extraction_volume", curie=
                    model_uri=NMDC.Extraction_volume, domain=Extraction, range=Optional[Union[dict, QuantityValue]])
 
 slots.LibraryPreparation_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="LibraryPreparation_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.LibraryPreparation_has_input, domain=LibraryPreparation, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+                   model_uri=NMDC.LibraryPreparation_has_input, domain=LibraryPreparation, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
 
 slots.LibraryPreparation_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="LibraryPreparation_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.LibraryPreparation_has_output, domain=LibraryPreparation, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+                   model_uri=NMDC.LibraryPreparation_has_output, domain=LibraryPreparation, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
 
 slots.LibraryPreparation_id = Slot(uri=NMDC.id, name="LibraryPreparation_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.LibraryPreparation_id, domain=LibraryPreparation, range=Union[str, LibraryPreparationId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.LibraryPreparation_pcr_cond = Slot(uri=MIXS['0000049'], name="LibraryPreparation_pcr_cond", curie=MIXS.curie('0000049'),
-                   model_uri=NMDC.LibraryPreparation_pcr_cond, domain=LibraryPreparation, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.LibraryPreparation_pcr_cond, domain=LibraryPreparation, range=Optional[str])
 
 slots.CollectingBiosamplesFromSite_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="CollectingBiosamplesFromSite_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.CollectingBiosamplesFromSite_has_input, domain=CollectingBiosamplesFromSite, range=Union[Union[str, SiteId], List[Union[str, SiteId]]])
+                   model_uri=NMDC.CollectingBiosamplesFromSite_has_input, domain=CollectingBiosamplesFromSite, range=Union[Union[str, SiteId], list[Union[str, SiteId]]])
 
 slots.CollectingBiosamplesFromSite_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="CollectingBiosamplesFromSite_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.CollectingBiosamplesFromSite_has_output, domain=CollectingBiosamplesFromSite, range=Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]])
+                   model_uri=NMDC.CollectingBiosamplesFromSite_has_output, domain=CollectingBiosamplesFromSite, range=Union[Union[str, BiosampleId], list[Union[str, BiosampleId]]])
 
 slots.CollectingBiosamplesFromSite_id = Slot(uri=NMDC.id, name="CollectingBiosamplesFromSite_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.CollectingBiosamplesFromSite_id, domain=CollectingBiosamplesFromSite, range=Union[str, CollectingBiosamplesFromSiteId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
-
-slots.ProtocolExecution_id = Slot(uri=NMDC.id, name="ProtocolExecution_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.ProtocolExecution_id, domain=ProtocolExecution, range=Union[str, ProtocolExecutionId],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
-
-slots.ProtocolExecution_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="ProtocolExecution_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.ProtocolExecution_has_input, domain=ProtocolExecution, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
-
-slots.ProtocolExecution_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="ProtocolExecution_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.ProtocolExecution_has_output, domain=ProtocolExecution, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
-
-slots.ProtocolExecution_has_process_parts = Slot(uri=NMDC.has_process_parts, name="ProtocolExecution_has_process_parts", curie=NMDC.curie('has_process_parts'),
-                   model_uri=NMDC.ProtocolExecution_has_process_parts, domain=ProtocolExecution, range=Union[Union[str, PlannedProcessId], List[Union[str, PlannedProcessId]]])
 
 slots.SubSamplingProcess_id = Slot(uri=NMDC.id, name="SubSamplingProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.SubSamplingProcess_id, domain=SubSamplingProcess, range=Union[str, SubSamplingProcessId],
@@ -12654,20 +13180,20 @@ slots.SubSamplingProcess_mass = Slot(uri=NMDC.mass, name="SubSamplingProcess_mas
                    model_uri=NMDC.SubSamplingProcess_mass, domain=SubSamplingProcess, range=Optional[Union[dict, QuantityValue]])
 
 slots.SubSamplingProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="SubSamplingProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.SubSamplingProcess_has_input, domain=SubSamplingProcess, range=Optional[Union[Union[str, SampleId], List[Union[str, SampleId]]]])
+                   model_uri=NMDC.SubSamplingProcess_has_input, domain=SubSamplingProcess, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]])
 
 slots.SubSamplingProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="SubSamplingProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.SubSamplingProcess_has_output, domain=SubSamplingProcess, range=Optional[Union[Union[str, ProcessedSampleId], List[Union[str, ProcessedSampleId]]]])
+                   model_uri=NMDC.SubSamplingProcess_has_output, domain=SubSamplingProcess, range=Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]])
 
 slots.MixingProcess_id = Slot(uri=NMDC.id, name="MixingProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MixingProcess_id, domain=MixingProcess, range=Union[str, MixingProcessId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MixingProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="MixingProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.MixingProcess_has_input, domain=MixingProcess, range=Optional[Union[Union[str, SampleId], List[Union[str, SampleId]]]])
+                   model_uri=NMDC.MixingProcess_has_input, domain=MixingProcess, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]])
 
 slots.MixingProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="MixingProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.MixingProcess_has_output, domain=MixingProcess, range=Optional[Union[Union[str, ProcessedSampleId], List[Union[str, ProcessedSampleId]]]])
+                   model_uri=NMDC.MixingProcess_has_output, domain=MixingProcess, range=Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]])
 
 slots.FiltrationProcess_id = Slot(uri=NMDC.id, name="FiltrationProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.FiltrationProcess_id, domain=FiltrationProcess, range=Union[str, FiltrationProcessId],
@@ -12677,33 +13203,33 @@ slots.FiltrationProcess_volume = Slot(uri=NMDC.volume, name="FiltrationProcess_v
                    model_uri=NMDC.FiltrationProcess_volume, domain=FiltrationProcess, range=Optional[Union[dict, QuantityValue]])
 
 slots.FiltrationProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="FiltrationProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.FiltrationProcess_has_input, domain=FiltrationProcess, range=Optional[Union[Union[str, SampleId], List[Union[str, SampleId]]]])
+                   model_uri=NMDC.FiltrationProcess_has_input, domain=FiltrationProcess, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]])
 
 slots.FiltrationProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="FiltrationProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.FiltrationProcess_has_output, domain=FiltrationProcess, range=Optional[Union[Union[str, ProcessedSampleId], List[Union[str, ProcessedSampleId]]]])
+                   model_uri=NMDC.FiltrationProcess_has_output, domain=FiltrationProcess, range=Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]])
 
 slots.StorageProcess_substances_used = Slot(uri=NMDC.substances_used, name="StorageProcess_substances_used", curie=NMDC.curie('substances_used'),
-                   model_uri=NMDC.StorageProcess_substances_used, domain=StorageProcess, range=Optional[Union[Union[dict, PortionOfSubstance], List[Union[dict, PortionOfSubstance]]]])
+                   model_uri=NMDC.StorageProcess_substances_used, domain=StorageProcess, range=Optional[Union[Union[dict, PortionOfSubstance], list[Union[dict, PortionOfSubstance]]]])
 
 slots.StorageProcess_id = Slot(uri=NMDC.id, name="StorageProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.StorageProcess_id, domain=StorageProcess, range=Union[str, StorageProcessId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.StorageProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="StorageProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.StorageProcess_has_input, domain=StorageProcess, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+                   model_uri=NMDC.StorageProcess_has_input, domain=StorageProcess, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]])
 
 slots.StorageProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="StorageProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.StorageProcess_has_output, domain=StorageProcess, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+                   model_uri=NMDC.StorageProcess_has_output, domain=StorageProcess, range=Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]])
 
 slots.ChromatographicSeparationProcess_id = Slot(uri=NMDC.id, name="ChromatographicSeparationProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ChromatographicSeparationProcess_id, domain=ChromatographicSeparationProcess, range=Union[str, ChromatographicSeparationProcessId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.ChromatographicSeparationProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="ChromatographicSeparationProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.ChromatographicSeparationProcess_has_input, domain=ChromatographicSeparationProcess, range=Optional[Union[Union[str, SampleId], List[Union[str, SampleId]]]])
+                   model_uri=NMDC.ChromatographicSeparationProcess_has_input, domain=ChromatographicSeparationProcess, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]])
 
 slots.ChromatographicSeparationProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="ChromatographicSeparationProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.ChromatographicSeparationProcess_has_output, domain=ChromatographicSeparationProcess, range=Optional[Union[Union[str, ProcessedSampleId], List[Union[str, ProcessedSampleId]]]])
+                   model_uri=NMDC.ChromatographicSeparationProcess_has_output, domain=ChromatographicSeparationProcess, range=Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]])
 
 slots.DissolvingProcess_id = Slot(uri=NMDC.id, name="DissolvingProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.DissolvingProcess_id, domain=DissolvingProcess, range=Union[str, DissolvingProcessId],
@@ -12730,102 +13256,122 @@ slots.MetagenomeAssembly_id = Slot(uri=NMDC.id, name="MetagenomeAssembly_id", cu
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetagenomeAssembly_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetagenomeAssembly_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.MetagenomeAssembly_was_informed_by, domain=MetagenomeAssembly, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
+                   model_uri=NMDC.MetagenomeAssembly_was_informed_by, domain=MetagenomeAssembly, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]])
+
+slots.MetagenomeAssembly_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetagenomeAssembly_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
+                   model_uri=NMDC.MetagenomeAssembly_superseded_by, domain=MetagenomeAssembly, range=Optional[Union[str, MetagenomeAssemblyId]])
 
 slots.MetatranscriptomeAssembly_id = Slot(uri=NMDC.id, name="MetatranscriptomeAssembly_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetatranscriptomeAssembly_id, domain=MetatranscriptomeAssembly, range=Union[str, MetatranscriptomeAssemblyId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetatranscriptomeAssembly_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetatranscriptomeAssembly_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.MetatranscriptomeAssembly_was_informed_by, domain=MetatranscriptomeAssembly, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
+                   model_uri=NMDC.MetatranscriptomeAssembly_was_informed_by, domain=MetatranscriptomeAssembly, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]])
+
+slots.MetatranscriptomeAssembly_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetatranscriptomeAssembly_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
+                   model_uri=NMDC.MetatranscriptomeAssembly_superseded_by, domain=MetatranscriptomeAssembly, range=Optional[Union[str, MetatranscriptomeAssemblyId]])
 
 slots.MetatranscriptomeAnnotation_id = Slot(uri=NMDC.id, name="MetatranscriptomeAnnotation_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetatranscriptomeAnnotation_id, domain=MetatranscriptomeAnnotation, range=Union[str, MetatranscriptomeAnnotationId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetatranscriptomeAnnotation_img_identifiers = Slot(uri=NMDC.img_identifiers, name="MetatranscriptomeAnnotation_img_identifiers", curie=NMDC.curie('img_identifiers'),
-                   model_uri=NMDC.MetatranscriptomeAnnotation_img_identifiers, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.MetatranscriptomeAnnotation_img_identifiers, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'))
 
 slots.MetatranscriptomeAnnotation_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="MetatranscriptomeAnnotation_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.MetatranscriptomeAnnotation_has_input, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+                   model_uri=NMDC.MetatranscriptomeAnnotation_has_input, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]])
 
 slots.MetatranscriptomeAnnotation_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="MetatranscriptomeAnnotation_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.MetatranscriptomeAnnotation_has_output, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+                   model_uri=NMDC.MetatranscriptomeAnnotation_has_output, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]])
 
 slots.MetatranscriptomeAnnotation_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetatranscriptomeAnnotation_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.MetatranscriptomeAnnotation_was_informed_by, domain=MetatranscriptomeAnnotation, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
+                   model_uri=NMDC.MetatranscriptomeAnnotation_was_informed_by, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]])
 
 slots.MetatranscriptomeAnnotation_gold_analysis_project_identifiers = Slot(uri=NMDC.gold_analysis_project_identifiers, name="MetatranscriptomeAnnotation_gold_analysis_project_identifiers", curie=NMDC.curie('gold_analysis_project_identifiers'),
-                   model_uri=NMDC.MetatranscriptomeAnnotation_gold_analysis_project_identifiers, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.MetatranscriptomeAnnotation_gold_analysis_project_identifiers, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^gold:Ga[0-9]+$'))
+
+slots.MetatranscriptomeAnnotation_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetatranscriptomeAnnotation_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
+                   model_uri=NMDC.MetatranscriptomeAnnotation_superseded_by, domain=MetatranscriptomeAnnotation, range=Optional[Union[str, MetatranscriptomeAnnotationId]])
 
 slots.MetatranscriptomeExpressionAnalysis_id = Slot(uri=NMDC.id, name="MetatranscriptomeExpressionAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetatranscriptomeExpressionAnalysis_id, domain=MetatranscriptomeExpressionAnalysis, range=Union[str, MetatranscriptomeExpressionAnalysisId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetatranscriptomeExpressionAnalysis_img_identifiers = Slot(uri=NMDC.img_identifiers, name="MetatranscriptomeExpressionAnalysis_img_identifiers", curie=NMDC.curie('img_identifiers'),
-                   model_uri=NMDC.MetatranscriptomeExpressionAnalysis_img_identifiers, domain=MetatranscriptomeExpressionAnalysis, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.MetatranscriptomeExpressionAnalysis_img_identifiers, domain=MetatranscriptomeExpressionAnalysis, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'))
 
 slots.MetatranscriptomeExpressionAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetatranscriptomeExpressionAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.MetatranscriptomeExpressionAnalysis_was_informed_by, domain=MetatranscriptomeExpressionAnalysis, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
+                   model_uri=NMDC.MetatranscriptomeExpressionAnalysis_was_informed_by, domain=MetatranscriptomeExpressionAnalysis, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]])
+
+slots.MetatranscriptomeExpressionAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetatranscriptomeExpressionAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
+                   model_uri=NMDC.MetatranscriptomeExpressionAnalysis_superseded_by, domain=MetatranscriptomeExpressionAnalysis, range=Optional[Union[str, MetatranscriptomeExpressionAnalysisId]])
 
 slots.MagsAnalysis_id = Slot(uri=NMDC.id, name="MagsAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MagsAnalysis_id, domain=MagsAnalysis, range=Union[str, MagsAnalysisId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MagsAnalysis_img_identifiers = Slot(uri=NMDC.img_identifiers, name="MagsAnalysis_img_identifiers", curie=NMDC.curie('img_identifiers'),
-                   model_uri=NMDC.MagsAnalysis_img_identifiers, domain=MagsAnalysis, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.MagsAnalysis_img_identifiers, domain=MagsAnalysis, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'))
 
 slots.MagsAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MagsAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.MagsAnalysis_was_informed_by, domain=MagsAnalysis, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
+                   model_uri=NMDC.MagsAnalysis_was_informed_by, domain=MagsAnalysis, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]])
 
-slots.MetagenomeSequencing_id = Slot(uri=NMDC.id, name="MetagenomeSequencing_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.MetagenomeSequencing_id, domain=MetagenomeSequencing, range=Union[str, MetagenomeSequencingId],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
-
-slots.MetagenomeSequencing_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="MetagenomeSequencing_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.MetagenomeSequencing_has_input, domain=MetagenomeSequencing, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
-
-slots.MetagenomeSequencing_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetagenomeSequencing_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.MetagenomeSequencing_was_informed_by, domain=MetagenomeSequencing, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
+slots.MagsAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MagsAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
+                   model_uri=NMDC.MagsAnalysis_superseded_by, domain=MagsAnalysis, range=Optional[Union[str, MagsAnalysisId]])
 
 slots.ReadQcAnalysis_id = Slot(uri=NMDC.id, name="ReadQcAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ReadQcAnalysis_id, domain=ReadQcAnalysis, range=Union[str, ReadQcAnalysisId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.ReadQcAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="ReadQcAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.ReadQcAnalysis_was_informed_by, domain=ReadQcAnalysis, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
+                   model_uri=NMDC.ReadQcAnalysis_was_informed_by, domain=ReadQcAnalysis, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]])
+
+slots.ReadQcAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="ReadQcAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
+                   model_uri=NMDC.ReadQcAnalysis_superseded_by, domain=ReadQcAnalysis, range=Optional[Union[str, ReadQcAnalysisId]])
 
 slots.ReadBasedTaxonomyAnalysis_id = Slot(uri=NMDC.id, name="ReadBasedTaxonomyAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ReadBasedTaxonomyAnalysis_id, domain=ReadBasedTaxonomyAnalysis, range=Union[str, ReadBasedTaxonomyAnalysisId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.ReadBasedTaxonomyAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="ReadBasedTaxonomyAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.ReadBasedTaxonomyAnalysis_was_informed_by, domain=ReadBasedTaxonomyAnalysis, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
+                   model_uri=NMDC.ReadBasedTaxonomyAnalysis_was_informed_by, domain=ReadBasedTaxonomyAnalysis, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]])
+
+slots.ReadBasedTaxonomyAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="ReadBasedTaxonomyAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
+                   model_uri=NMDC.ReadBasedTaxonomyAnalysis_superseded_by, domain=ReadBasedTaxonomyAnalysis, range=Optional[Union[str, ReadBasedTaxonomyAnalysisId]])
 
 slots.MetabolomicsAnalysis_id = Slot(uri=NMDC.id, name="MetabolomicsAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetabolomicsAnalysis_id, domain=MetabolomicsAnalysis, range=Union[str, MetabolomicsAnalysisId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetabolomicsAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetabolomicsAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.MetabolomicsAnalysis_was_informed_by, domain=MetabolomicsAnalysis, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
+                   model_uri=NMDC.MetabolomicsAnalysis_was_informed_by, domain=MetabolomicsAnalysis, range=Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]])
+
+slots.MetabolomicsAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetabolomicsAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
+                   model_uri=NMDC.MetabolomicsAnalysis_superseded_by, domain=MetabolomicsAnalysis, range=Optional[Union[str, MetabolomicsAnalysisId]])
 
 slots.MetaproteomicsAnalysis_id = Slot(uri=NMDC.id, name="MetaproteomicsAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetaproteomicsAnalysis_id, domain=MetaproteomicsAnalysis, range=Union[str, MetaproteomicsAnalysisId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetaproteomicsAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetaproteomicsAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.MetaproteomicsAnalysis_was_informed_by, domain=MetaproteomicsAnalysis, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
+                   model_uri=NMDC.MetaproteomicsAnalysis_was_informed_by, domain=MetaproteomicsAnalysis, range=Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]])
+
+slots.MetaproteomicsAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetaproteomicsAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
+                   model_uri=NMDC.MetaproteomicsAnalysis_superseded_by, domain=MetaproteomicsAnalysis, range=Optional[Union[str, MetaproteomicsAnalysisId]])
 
 slots.NomAnalysis_id = Slot(uri=NMDC.id, name="NomAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.NomAnalysis_id, domain=NomAnalysis, range=Union[str, NomAnalysisId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.NomAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="NomAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.NomAnalysis_was_informed_by, domain=NomAnalysis, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
+                   model_uri=NMDC.NomAnalysis_was_informed_by, domain=NomAnalysis, range=Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]])
+
+slots.NomAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="NomAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
+                   model_uri=NMDC.NomAnalysis_superseded_by, domain=NomAnalysis, range=Optional[Union[str, NomAnalysisId]])
 
 slots.ChemicalConversionProcess_id = Slot(uri=NMDC.id, name="ChemicalConversionProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ChemicalConversionProcess_id, domain=ChemicalConversionProcess, range=Union[str, ChemicalConversionProcessId],
@@ -12836,14 +13382,14 @@ slots.MetagenomeAnnotation_id = Slot(uri=NMDC.id, name="MetagenomeAnnotation_id"
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetagenomeAnnotation_img_identifiers = Slot(uri=NMDC.img_identifiers, name="MetagenomeAnnotation_img_identifiers", curie=NMDC.curie('img_identifiers'),
-                   model_uri=NMDC.MetagenomeAnnotation_img_identifiers, domain=MetagenomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.MetagenomeAnnotation_img_identifiers, domain=MetagenomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'))
 
 slots.MetagenomeAnnotation_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetagenomeAnnotation_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.MetagenomeAnnotation_was_informed_by, domain=MetagenomeAnnotation, range=Optional[Union[str, DataGenerationId]], mappings = [PROV["wasInformedBy"]])
+                   model_uri=NMDC.MetagenomeAnnotation_was_informed_by, domain=MetagenomeAnnotation, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]])
 
 slots.MetagenomeAnnotation_gold_analysis_project_identifiers = Slot(uri=NMDC.gold_analysis_project_identifiers, name="MetagenomeAnnotation_gold_analysis_project_identifiers", curie=NMDC.curie('gold_analysis_project_identifiers'),
-                   model_uri=NMDC.MetagenomeAnnotation_gold_analysis_project_identifiers, domain=MetagenomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.MetagenomeAnnotation_gold_analysis_project_identifiers, domain=MetagenomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^gold:Ga[0-9]+$'))
 
 slots.FieldResearchSite_id = Slot(uri=NMDC.id, name="FieldResearchSite_id", curie=NMDC.curie('id'),
@@ -12851,7 +13397,7 @@ slots.FieldResearchSite_id = Slot(uri=NMDC.id, name="FieldResearchSite_id", curi
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.FieldResearchSite_part_of = Slot(uri=DCTERMS.isPartOf, name="FieldResearchSite_part_of", curie=DCTERMS.curie('isPartOf'),
-                   model_uri=NMDC.FieldResearchSite_part_of, domain=FieldResearchSite, range=Optional[Union[Union[str, FieldResearchSiteId], List[Union[str, FieldResearchSiteId]]]])
+                   model_uri=NMDC.FieldResearchSite_part_of, domain=FieldResearchSite, range=Optional[Union[Union[str, FieldResearchSiteId], list[Union[str, FieldResearchSiteId]]]])
 
 slots.Biosample_collected_from = Slot(uri=NMDC.collected_from, name="Biosample_collected_from", curie=NMDC.curie('collected_from'),
                    model_uri=NMDC.Biosample_collected_from, domain=Biosample, range=Optional[Union[str, FieldResearchSiteId]])
@@ -12864,11 +13410,11 @@ slots.Biosample_id = Slot(uri=NMDC.id, name="Biosample_id", curie=NMDC.curie('id
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.Biosample_gold_biosample_identifiers = Slot(uri=NMDC.gold_biosample_identifiers, name="Biosample_gold_biosample_identifiers", curie=NMDC.curie('gold_biosample_identifiers'),
-                   model_uri=NMDC.Biosample_gold_biosample_identifiers, domain=Biosample, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.Biosample_gold_biosample_identifiers, domain=Biosample, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]],
                    pattern=re.compile(r'^gold:Gb[0-9]+$'))
 
 slots.Biosample_alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="Biosample_alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
-                   model_uri=NMDC.Biosample_alternative_identifiers, domain=Biosample, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.Biosample_alternative_identifiers, domain=Biosample, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$'))
 
 slots.Biosample_lat_lon = Slot(uri=MIXS['0000009'], name="Biosample_lat_lon", curie=MIXS.curie('0000009'),
@@ -12884,7 +13430,7 @@ slots.Biosample_env_medium = Slot(uri=MIXS['0000014'], name="Biosample_env_mediu
                    model_uri=NMDC.Biosample_env_medium, domain=Biosample, range=Union[dict, ControlledIdentifiedTermValue])
 
 slots.Biosample_associated_studies = Slot(uri=NMDC['basic_classes/associated_studies'], name="Biosample_associated_studies", curie=NMDC.curie('basic_classes/associated_studies'),
-                   model_uri=NMDC.Biosample_associated_studies, domain=Biosample, range=Union[Union[str, StudyId], List[Union[str, StudyId]]])
+                   model_uri=NMDC.Biosample_associated_studies, domain=Biosample, range=Union[Union[str, StudyId], list[Union[str, StudyId]]])
 
 slots.Biosample_fire = Slot(uri=MIXS['0001086'], name="Biosample_fire", curie=MIXS.curie('0001086'),
                    model_uri=NMDC.Biosample_fire, domain=Biosample, range=Optional[str],
@@ -12906,22 +13452,19 @@ slots.Biosample_al_sat = Slot(uri=MIXS['0000607'], name="Biosample_al_sat", curi
                    model_uri=NMDC.Biosample_al_sat, domain=Biosample, range=Optional[Union[dict, QuantityValue]])
 
 slots.Biosample_al_sat_meth = Slot(uri=MIXS['0000324'], name="Biosample_al_sat_meth", curie=MIXS.curie('0000324'),
-                   model_uri=NMDC.Biosample_al_sat_meth, domain=Biosample, range=Optional[Union[dict, TextValue]])
-
-slots.Biosample_annual_precpt = Slot(uri=MIXS['0000644'], name="Biosample_annual_precpt", curie=MIXS.curie('0000644'),
-                   model_uri=NMDC.Biosample_annual_precpt, domain=Biosample, range=Optional[Union[dict, QuantityValue]])
+                   model_uri=NMDC.Biosample_al_sat_meth, domain=Biosample, range=Optional[str])
 
 slots.Biosample_cur_vegetation = Slot(uri=MIXS['0000312'], name="Biosample_cur_vegetation", curie=MIXS.curie('0000312'),
                    model_uri=NMDC.Biosample_cur_vegetation, domain=Biosample, range=Optional[Union[dict, TextValue]])
 
 slots.Biosample_cur_vegetation_meth = Slot(uri=MIXS['0000314'], name="Biosample_cur_vegetation_meth", curie=MIXS.curie('0000314'),
-                   model_uri=NMDC.Biosample_cur_vegetation_meth, domain=Biosample, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.Biosample_cur_vegetation_meth, domain=Biosample, range=Optional[str])
 
 slots.Biosample_heavy_metals = Slot(uri=MIXS['0000652'], name="Biosample_heavy_metals", curie=MIXS.curie('0000652'),
-                   model_uri=NMDC.Biosample_heavy_metals, domain=Biosample, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.Biosample_heavy_metals, domain=Biosample, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.Biosample_heavy_metals_meth = Slot(uri=MIXS['0000343'], name="Biosample_heavy_metals_meth", curie=MIXS.curie('0000343'),
-                   model_uri=NMDC.Biosample_heavy_metals_meth, domain=Biosample, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.Biosample_heavy_metals_meth, domain=Biosample, range=Optional[Union[str, list[str]]])
 
 slots.Biosample_season_precpt = Slot(uri=MIXS['0000645'], name="Biosample_season_precpt", curie=MIXS.curie('0000645'),
                    model_uri=NMDC.Biosample_season_precpt, domain=Biosample, range=Optional[Union[dict, QuantityValue]])
@@ -12930,7 +13473,7 @@ slots.Biosample_water_cont_soil_meth = Slot(uri=MIXS['0000323'], name="Biosample
                    model_uri=NMDC.Biosample_water_cont_soil_meth, domain=Biosample, range=Optional[str])
 
 slots.Biosample_water_content = Slot(uri=MIXS['0000185'], name="Biosample_water_content", curie=MIXS.curie('0000185'),
-                   model_uri=NMDC.Biosample_water_content, domain=Biosample, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.Biosample_water_content, domain=Biosample, range=Optional[Union[str, list[str]]])
 
 slots.Biosample_ph_meth = Slot(uri=MIXS['0001106'], name="Biosample_ph_meth", curie=MIXS.curie('0001106'),
                    model_uri=NMDC.Biosample_ph_meth, domain=Biosample, range=Optional[Union[dict, TextValue]])
@@ -12941,68 +13484,62 @@ slots.Biosample_tot_carb = Slot(uri=MIXS['0000525'], name="Biosample_tot_carb", 
 slots.Biosample_tot_nitro_cont_meth = Slot(uri=MIXS['0000338'], name="Biosample_tot_nitro_cont_meth", curie=MIXS.curie('0000338'),
                    model_uri=NMDC.Biosample_tot_nitro_cont_meth, domain=Biosample, range=Optional[str])
 
-slots.Biosample_tot_nitro_content = Slot(uri=MIXS['0000530'], name="Biosample_tot_nitro_content", curie=MIXS.curie('0000530'),
-                   model_uri=NMDC.Biosample_tot_nitro_content, domain=Biosample, range=Optional[Union[dict, QuantityValue]])
-
 slots.Biosample_tot_org_c_meth = Slot(uri=MIXS['0000337'], name="Biosample_tot_org_c_meth", curie=MIXS.curie('0000337'),
-                   model_uri=NMDC.Biosample_tot_org_c_meth, domain=Biosample, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.Biosample_tot_org_c_meth, domain=Biosample, range=Optional[str])
 
 slots.Biosample_tot_org_carb = Slot(uri=MIXS['0000533'], name="Biosample_tot_org_carb", curie=MIXS.curie('0000533'),
                    model_uri=NMDC.Biosample_tot_org_carb, domain=Biosample, range=Optional[Union[dict, QuantityValue]])
-
-slots.Biosample_salinity_meth = Slot(uri=MIXS['0000341'], name="Biosample_salinity_meth", curie=MIXS.curie('0000341'),
-                   model_uri=NMDC.Biosample_salinity_meth, domain=Biosample, range=Optional[Union[dict, TextValue]])
 
 slots.Biosample_sieving = Slot(uri=MIXS['0000322'], name="Biosample_sieving", curie=MIXS.curie('0000322'),
                    model_uri=NMDC.Biosample_sieving, domain=Biosample, range=Optional[Union[dict, TextValue]])
 
 slots.Biosample_climate_environment = Slot(uri=MIXS['0001040'], name="Biosample_climate_environment", curie=MIXS.curie('0001040'),
-                   model_uri=NMDC.Biosample_climate_environment, domain=Biosample, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.Biosample_climate_environment, domain=Biosample, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.Biosample_gaseous_environment = Slot(uri=MIXS['0000558'], name="Biosample_gaseous_environment", curie=MIXS.curie('0000558'),
-                   model_uri=NMDC.Biosample_gaseous_environment, domain=Biosample, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.Biosample_gaseous_environment, domain=Biosample, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.Biosample_watering_regm = Slot(uri=MIXS['0000591'], name="Biosample_watering_regm", curie=MIXS.curie('0000591'),
-                   model_uri=NMDC.Biosample_watering_regm, domain=Biosample, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+                   model_uri=NMDC.Biosample_watering_regm, domain=Biosample, range=Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]])
 
 slots.Biosample_source_mat_id = Slot(uri=MIXS['0000026'], name="Biosample_source_mat_id", curie=MIXS.curie('0000026'),
                    model_uri=NMDC.Biosample_source_mat_id, domain=Biosample, range=Optional[Union[dict, TextValue]])
 
 slots.MaterialProcessing_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="MaterialProcessing_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.MaterialProcessing_has_input, domain=MaterialProcessing, range=Optional[Union[Union[str, SampleId], List[Union[str, SampleId]]]])
+                   model_uri=NMDC.MaterialProcessing_has_input, domain=MaterialProcessing, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]])
 
 slots.MaterialProcessing_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="MaterialProcessing_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.MaterialProcessing_has_output, domain=MaterialProcessing, range=Optional[Union[Union[str, ProcessedSampleId], List[Union[str, ProcessedSampleId]]]])
+                   model_uri=NMDC.MaterialProcessing_has_output, domain=MaterialProcessing, range=Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]])
 
 slots.ProcessedSample_id = Slot(uri=NMDC.id, name="ProcessedSample_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ProcessedSample_id, domain=ProcessedSample, range=Union[str, ProcessedSampleId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
-slots.QuantityValue_has_raw_value = Slot(uri=NMDC.has_raw_value, name="QuantityValue_has_raw_value", curie=NMDC.curie('has_raw_value'),
+slots.QuantityValue_has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_value'], name="QuantityValue_has_raw_value", curie=NMDC.curie('attribute_values/has_raw_value'),
                    model_uri=NMDC.QuantityValue_has_raw_value, domain=QuantityValue, range=Optional[str])
 
-slots.QuantityValue_has_unit = Slot(uri=NMDC.has_unit, name="QuantityValue_has_unit", curie=NMDC.curie('has_unit'),
-                   model_uri=NMDC.QuantityValue_has_unit, domain=QuantityValue, range=Optional[str], mappings = [QUD["unit"], SCHEMA["unitCode"]])
+slots.QuantityValue_has_unit = Slot(uri=NMDC['attribute_values/has_unit'], name="QuantityValue_has_unit", curie=NMDC.curie('attribute_values/has_unit'),
+                   model_uri=NMDC.QuantityValue_has_unit, domain=QuantityValue, range=Union[str, "UnitEnum"], mappings = [QUD["unit"], SCHEMA["unitCode"]])
 
-slots.QuantityValue_has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="QuantityValue_has_numeric_value", curie=NMDC.curie('has_numeric_value'),
+slots.QuantityValue_has_numeric_value = Slot(uri=NMDC['attribute_values/has_numeric_value'], name="QuantityValue_has_numeric_value", curie=NMDC.curie('attribute_values/has_numeric_value'),
                    model_uri=NMDC.QuantityValue_has_numeric_value, domain=QuantityValue, range=Optional[Decimal], mappings = [QUD["quantityValue"], SCHEMA["value"]])
 
-slots.PersonValue_orcid = Slot(uri=NMDC.orcid, name="PersonValue_orcid", curie=NMDC.curie('orcid'),
+slots.PersonValue_orcid = Slot(uri=NMDC['attribute_values/orcid'], name="PersonValue_orcid", curie=NMDC.curie('attribute_values/orcid'),
                    model_uri=NMDC.PersonValue_orcid, domain=PersonValue, range=Optional[str])
 
 slots.PersonValue_email = Slot(uri=SCHEMA.email, name="PersonValue_email", curie=SCHEMA.curie('email'),
                    model_uri=NMDC.PersonValue_email, domain=PersonValue, range=Optional[str])
 
-slots.PersonValue_has_raw_value = Slot(uri=NMDC.has_raw_value, name="PersonValue_has_raw_value", curie=NMDC.curie('has_raw_value'),
+slots.PersonValue_has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_value'], name="PersonValue_has_raw_value", curie=NMDC.curie('attribute_values/has_raw_value'),
                    model_uri=NMDC.PersonValue_has_raw_value, domain=PersonValue, range=Optional[str])
 
-slots.PersonValue_name = Slot(uri=NMDC.name, name="PersonValue_name", curie=NMDC.curie('name'),
+slots.PersonValue_name = Slot(uri=NMDC['attribute_values/name'], name="PersonValue_name", curie=NMDC.curie('attribute_values/name'),
                    model_uri=NMDC.PersonValue_name, domain=PersonValue, range=Optional[str])
 
 slots.ControlledIdentifiedTermValue_term = Slot(uri=NMDC['attribute_values/term'], name="ControlledIdentifiedTermValue_term", curie=NMDC.curie('attribute_values/term'),
                    model_uri=NMDC.ControlledIdentifiedTermValue_term, domain=ControlledIdentifiedTermValue, range=Union[dict, "OntologyClass"])
 
-slots.GeolocationValue_has_raw_value = Slot(uri=NMDC.has_raw_value, name="GeolocationValue_has_raw_value", curie=NMDC.curie('has_raw_value'),
+slots.GeolocationValue_has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_value'], name="GeolocationValue_has_raw_value", curie=NMDC.curie('attribute_values/has_raw_value'),
                    model_uri=NMDC.GeolocationValue_has_raw_value, domain=GeolocationValue, range=Optional[str])
 
 slots.GeolocationValue_latitude = Slot(uri=WGS84.lat, name="GeolocationValue_latitude", curie=WGS84.curie('lat'),
@@ -13010,6 +13547,12 @@ slots.GeolocationValue_latitude = Slot(uri=WGS84.lat, name="GeolocationValue_lat
 
 slots.GeolocationValue_longitude = Slot(uri=WGS84.long, name="GeolocationValue_longitude", curie=WGS84.curie('long'),
                    model_uri=NMDC.GeolocationValue_longitude, domain=GeolocationValue, range=float, mappings = [SCHEMA["longitude"]])
+
+slots.PropertyAssertion_has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_value'], name="PropertyAssertion_has_raw_value", curie=NMDC.curie('attribute_values/has_raw_value'),
+                   model_uri=NMDC.PropertyAssertion_has_raw_value, domain=PropertyAssertion, range=str)
+
+slots.PropertyAssertion_has_unit = Slot(uri=NMDC['attribute_values/has_unit'], name="PropertyAssertion_has_unit", curie=NMDC.curie('attribute_values/has_unit'),
+                   model_uri=NMDC.PropertyAssertion_has_unit, domain=PropertyAssertion, range=Optional[str], mappings = [QUD["unit"], SCHEMA["unitCode"]])
 
 slots.OntologyClass_id = Slot(uri=NMDC.id, name="OntologyClass_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.OntologyClass_id, domain=OntologyClass, range=Union[str, OntologyClassId],
@@ -13023,15 +13566,15 @@ slots.Study_id = Slot(uri=NMDC.id, name="Study_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Study_id, domain=Study, range=Union[str, StudyId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
-slots.Study_name = Slot(uri=NMDC.name, name="Study_name", curie=NMDC.curie('name'),
+slots.Study_name = Slot(uri=NMDC['attribute_values/name'], name="Study_name", curie=NMDC.curie('attribute_values/name'),
                    model_uri=NMDC.Study_name, domain=Study, range=Optional[str])
 
-slots.Study_websites = Slot(uri=NMDC.websites, name="Study_websites", curie=NMDC.curie('websites'),
-                   model_uri=NMDC.Study_websites, domain=Study, range=Optional[Union[str, List[str]]],
+slots.Study_websites = Slot(uri=NMDC['attribute_values/websites'], name="Study_websites", curie=NMDC.curie('attribute_values/websites'),
+                   model_uri=NMDC.Study_websites, domain=Study, range=Optional[Union[str, list[str]]],
                    pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
 
 slots.Study_homepage_website = Slot(uri=NMDC.homepage_website, name="Study_homepage_website", curie=NMDC.curie('homepage_website'),
-                   model_uri=NMDC.Study_homepage_website, domain=Study, range=Optional[Union[str, List[str]]],
+                   model_uri=NMDC.Study_homepage_website, domain=Study, range=Optional[Union[str, list[str]]],
                    pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
 
 slots.Study_description = Slot(uri=DCTERMS.description, name="Study_description", curie=DCTERMS.curie('description'),
@@ -13041,26 +13584,26 @@ slots.Study_notes = Slot(uri=NMDC.notes, name="Study_notes", curie=NMDC.curie('n
                    model_uri=NMDC.Study_notes, domain=Study, range=Optional[str])
 
 slots.Study_alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="Study_alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
-                   model_uri=NMDC.Study_alternative_identifiers, domain=Study, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.Study_alternative_identifiers, domain=Study, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$'))
 
 slots.Study_alternative_names = Slot(uri=NMDC.alternative_names, name="Study_alternative_names", curie=NMDC.curie('alternative_names'),
-                   model_uri=NMDC.Study_alternative_names, domain=Study, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.Study_alternative_names, domain=Study, range=Optional[Union[str, list[str]]])
 
 slots.Study_related_identifiers = Slot(uri=NMDC.related_identifiers, name="Study_related_identifiers", curie=NMDC.curie('related_identifiers'),
                    model_uri=NMDC.Study_related_identifiers, domain=Study, range=Optional[str])
 
 slots.Study_insdc_bioproject_identifiers = Slot(uri=NMDC.insdc_bioproject_identifiers, name="Study_insdc_bioproject_identifiers", curie=NMDC.curie('insdc_bioproject_identifiers'),
-                   model_uri=NMDC.Study_insdc_bioproject_identifiers, domain=Study, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   model_uri=NMDC.Study_insdc_bioproject_identifiers, domain=Study, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^bioproject:PRJ[DEN][A-Z][0-9]+$'))
 
 slots.Study_part_of = Slot(uri=DCTERMS.isPartOf, name="Study_part_of", curie=DCTERMS.curie('isPartOf'),
-                   model_uri=NMDC.Study_part_of, domain=Study, range=Optional[Union[Union[str, StudyId], List[Union[str, StudyId]]]])
+                   model_uri=NMDC.Study_part_of, domain=Study, range=Optional[Union[Union[str, StudyId], list[Union[str, StudyId]]]])
 
 slots.Study_protocol_link = Slot(uri=NMDC['basic_classes/protocol_link'], name="Study_protocol_link", curie=NMDC.curie('basic_classes/protocol_link'),
-                   model_uri=NMDC.Study_protocol_link, domain=Study, range=Optional[Union[Union[dict, Protocol], List[Union[dict, Protocol]]]])
+                   model_uri=NMDC.Study_protocol_link, domain=Study, range=Optional[Union[Union[dict, Protocol], list[Union[dict, Protocol]]]])
 
-slots.DataObject_name = Slot(uri=NMDC.name, name="DataObject_name", curie=NMDC.curie('name'),
+slots.DataObject_name = Slot(uri=NMDC['attribute_values/name'], name="DataObject_name", curie=NMDC.curie('attribute_values/name'),
                    model_uri=NMDC.DataObject_name, domain=DataObject, range=str)
 
 slots.DataObject_description = Slot(uri=DCTERMS.description, name="DataObject_description", curie=DCTERMS.curie('description'),
@@ -13071,16 +13614,22 @@ slots.DataObject_id = Slot(uri=NMDC.id, name="DataObject_id", curie=NMDC.curie('
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.DataObject_was_generated_by = Slot(uri=NMDC['basic_classes/was_generated_by'], name="DataObject_was_generated_by", curie=NMDC.curie('basic_classes/was_generated_by'),
-                   model_uri=NMDC.DataObject_was_generated_by, domain=DataObject, range=Optional[Union[str, WorkflowExecutionId]], mappings = [PROV["wasGeneratedBy"]])
+                   model_uri=NMDC.DataObject_was_generated_by, domain=DataObject, range=Optional[Union[str, DataEmitterProcessId]], mappings = [PROV["wasGeneratedBy"]])
+
+slots.DataObject_data_object_type = Slot(uri=NMDC.data_object_type, name="DataObject_data_object_type", curie=NMDC.curie('data_object_type'),
+                   model_uri=NMDC.DataObject_data_object_type, domain=DataObject, range=Union[str, "FileTypeEnum"])
+
+slots.DataObject_data_category = Slot(uri=NMDC.data_category, name="DataObject_data_category", curie=NMDC.curie('data_category'),
+                   model_uri=NMDC.DataObject_data_category, domain=DataObject, range=Union[str, "DataCategoryEnum"])
 
 slots.DataGeneration_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="DataGeneration_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.DataGeneration_has_input, domain=DataGeneration, range=Union[Union[str, SampleId], List[Union[str, SampleId]]])
+                   model_uri=NMDC.DataGeneration_has_input, domain=DataGeneration, range=Union[Union[str, SampleId], list[Union[str, SampleId]]])
 
 slots.DataGeneration_associated_studies = Slot(uri=NMDC['basic_classes/associated_studies'], name="DataGeneration_associated_studies", curie=NMDC.curie('basic_classes/associated_studies'),
-                   model_uri=NMDC.DataGeneration_associated_studies, domain=DataGeneration, range=Union[Union[str, StudyId], List[Union[str, StudyId]]])
+                   model_uri=NMDC.DataGeneration_associated_studies, domain=DataGeneration, range=Union[Union[str, StudyId], list[Union[str, StudyId]]])
 
 slots.DataGeneration_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="DataGeneration_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.DataGeneration_has_output, domain=DataGeneration, range=Optional[Union[Union[str, DataObjectId], List[Union[str, DataObjectId]]]])
+                   model_uri=NMDC.DataGeneration_has_output, domain=DataGeneration, range=Optional[Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]]])
 
 slots.WorkflowExecution_started_at_time = Slot(uri=NMDC.started_at_time, name="WorkflowExecution_started_at_time", curie=NMDC.curie('started_at_time'),
                    model_uri=NMDC.WorkflowExecution_started_at_time, domain=WorkflowExecution, range=str, mappings = [PROV["startedAtTime"]],
@@ -13090,13 +13639,22 @@ slots.WorkflowExecution_git_url = Slot(uri=NMDC.git_url, name="WorkflowExecution
                    model_uri=NMDC.WorkflowExecution_git_url, domain=WorkflowExecution, range=str)
 
 slots.WorkflowExecution_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="WorkflowExecution_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.WorkflowExecution_has_input, domain=WorkflowExecution, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+                   model_uri=NMDC.WorkflowExecution_has_input, domain=WorkflowExecution, range=Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]])
 
 slots.WorkflowExecution_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="WorkflowExecution_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.WorkflowExecution_has_output, domain=WorkflowExecution, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+                   model_uri=NMDC.WorkflowExecution_has_output, domain=WorkflowExecution, range=Optional[Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]]])
 
-slots.WorkflowExecution_execution_resource = Slot(uri=NMDC.execution_resource, name="WorkflowExecution_execution_resource", curie=NMDC.curie('execution_resource'),
-                   model_uri=NMDC.WorkflowExecution_execution_resource, domain=WorkflowExecution, range=Union[str, "ExecutionResourceEnum"])
+slots.WorkflowExecution_processing_institution = Slot(uri=NMDC.processing_institution, name="WorkflowExecution_processing_institution", curie=NMDC.curie('processing_institution'),
+                   model_uri=NMDC.WorkflowExecution_processing_institution, domain=WorkflowExecution, range=Union[str, "ProcessingInstitutionEnum"])
 
 slots.WorkflowExecution_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="WorkflowExecution_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.WorkflowExecution_was_informed_by, domain=WorkflowExecution, range=Union[str, DataGenerationId], mappings = [PROV["wasInformedBy"]])
+                   model_uri=NMDC.WorkflowExecution_was_informed_by, domain=WorkflowExecution, range=Union[Union[str, DataGenerationId], list[Union[str, DataGenerationId]]])
+
+slots.WorkflowExecution_version = Slot(uri=NMDC.version, name="WorkflowExecution_version", curie=NMDC.curie('version'),
+                   model_uri=NMDC.WorkflowExecution_version, domain=WorkflowExecution, range=Optional[str])
+
+slots.ProvenanceMetadata_version = Slot(uri=NMDC.version, name="ProvenanceMetadata_version", curie=NMDC.curie('version'),
+                   model_uri=NMDC.ProvenanceMetadata_version, domain=ProvenanceMetadata, range=Optional[str])
+
+slots.ProvenanceMetadata_git_url = Slot(uri=NMDC.git_url, name="ProvenanceMetadata_git_url", curie=NMDC.curie('git_url'),
+                   model_uri=NMDC.ProvenanceMetadata_git_url, domain=ProvenanceMetadata, range=Optional[str])

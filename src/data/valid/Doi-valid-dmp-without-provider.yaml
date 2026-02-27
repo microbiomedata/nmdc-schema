@@ -1,0 +1,5 @@
+type: nmdc:Doi
+doi_value: doi:10.123/abcd
+doi_category: data_management_plan_doi # ['award_doi', 'dataset_doi', 'publication_doi', 'data_management_plan_doi']
+# if doi_category is a publication_doi, then doi_provider is not required. Otherwise, doi_provider is required.
+#doi_provider: emsl # ['emsl', 'jgi', 'kbase', 'osti', 'ess_dive', 'massive', 'gsc', 'zenodo', 'edi', 'figshare']

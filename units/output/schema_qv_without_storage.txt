@@ -1,0 +1,8 @@
+biomaterial_purity | MISSING
+value | MISSING
+api | MISSING
+efficiency_percent | MISSING
+inside_lux | MISSING
+microbial_biomass | MISSING
+rel_humidity_out | MISSING
+concentration | MISSING

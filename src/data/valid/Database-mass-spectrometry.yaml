@@ -15,6 +15,9 @@ data_generation_set:
       - nmdc:dobj-00-msdem1
     associated_studies:
       - nmdc:sty-00-555xxx
+    instrument_used:
+      - nmdc:inst-14-njkx0e66
+    instrument_instance_specifier: PNNL_VOrbiETD04
   - id: nmdc:dgms-99-zUCd5x
     type: nmdc:MassSpectrometry
     eluent_introduction_category: liquid_chromatography
@@ -31,6 +34,9 @@ data_generation_set:
       - nmdc:dobj-00-msdem2
     associated_studies:
       - nmdc:sty-00-555xxx
+    instrument_used:
+      - nmdc:inst-14-njkx0e66
+    instrument_instance_specifier: PNNL_VOrbiETD04
 #
 # example data objects for the mass spectrometry data generation set
 data_object_set:
@@ -41,6 +47,7 @@ data_object_set:
     url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exisit for lcms metabolite data, this is just an example resolvable url
     md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
     data_object_type: LC-DDA-MS/MS Raw Data
+    data_category: instrument_data
     type: nmdc:DataObject
     alternative_identifiers:
       - my_emsl:1826381
@@ -51,6 +58,7 @@ data_object_set:
     url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exisit for lipid data, this is just an example resolvable url
     md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
     data_object_type: LC-DDA-MS/MS Raw Data
+    data_category: instrument_data
     type: nmdc:DataObject
     alternative_identifiers:
       - my_emsl:1826333
@@ -106,7 +114,7 @@ configuration_set:
           has_unit: min
           has_numeric_value: 60
         substances_used:
-          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+          - known_as: water
             type: nmdc:PortionOfSubstance
             final_concentration:
               type: nmdc:QuantityValue
@@ -114,9 +122,9 @@ configuration_set:
               has_numeric_value: 10
       - type: nmdc:MobilePhaseSegment
         substances_used:
-          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+          - known_as: glucose
             type: nmdc:PortionOfSubstance
             final_concentration:
               type: nmdc:QuantityValue
-              has_unit: mM
+              has_unit: mmol/L
               has_numeric_value: 15

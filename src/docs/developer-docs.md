@@ -1,0 +1,22 @@
+# Schema Developer FAQs
+
+Some frequently asked questions about developing the NMDC Schema.
+
+### What are some effective strategies for collaborative schema development?
+
+[LinkML Collaborative Development](https://linkml.io/linkml/howtos/collaborative-development.html)
+[Google Slides Presentation](https://docs.google.com/presentation/d/1ZH41QAoESUwAkdHyUxlrmSKS5M-bT0TOulBgX4rBx2A/edit#slide=id.g26390794265_0_693)
+
+### How do I migrate from one version of the NMDC schema to another?
+
+[Version 10 to 11 migration](v10-vs-v11-retrospective.md)
+
+### How do I view the NMDC schema programmatically?
+
+[NMDC SchemaView Documentation](schemaview.md)
+[SchemaView Documentation](https://linkml.github.io/linkml/schemaview.html)
+
+### Where is the OWL generation documentation?
+
+[OWL Generation](owl-generation.md) -- covers current build process, recommended
+config, CLI/YAML flag mapping, portal submission guidance, and upcoming LinkML changes.

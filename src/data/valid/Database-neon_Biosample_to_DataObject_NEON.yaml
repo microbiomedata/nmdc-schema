@@ -125,6 +125,7 @@ workflow_execution_set:
     started_at_time: '2023-03-23T17:17:05.111689+00:00'
     ended_at_time: '2023-03-23T17:17:05.111725+00:00'
     execution_resource: NERSC-Cori
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/ReadsQC
     has_input:
       - nmdc:dobj-12-jdhk9537
@@ -134,22 +135,26 @@ workflow_execution_set:
       - nmdc:dobj-12-y236qp68
     type: nmdc:ReadQcAnalysis
     version: b1.0.7 
-    was_informed_by: nmdc:dgns-11-s9xj2r24
+    was_informed_by:
+      - nmdc:dgns-11-s9xj2r24
 data_object_set:
   - id: nmdc:dobj-12-jdhk9537
     data_object_type: Metagenome Raw Read 1
+    data_category: instrument_data
     description: Test R1 data
     name: BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
     type: nmdc:DataObject
     url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R1/BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
   - id: nmdc:dobj-12-yx0tfp52
     data_object_type: Metagenome Raw Read 2
+    data_category: instrument_data
     description: Test R2 data
     name: W2BGXG_Plate19S_13WellG10_R2.fastq.gz
     type: nmdc:DataObject
     url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R2/BMI_HY7W2BGXG_Plate19S_13WellG10_R2.fastq.gz
   - id: nmdc:dobj-12-71q7wv80
     data_object_type: Filtered Sequencing Reads
+    data_category: processed_data
     description: Test filtered data for NEON
     name: 1472_51293.filtered.fastq.gz
     type: nmdc:DataObject

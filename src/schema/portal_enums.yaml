@@ -4,7 +4,9 @@ title: 'NMDC Schema supplement for Submission Portal: shared enumerations'
 id: https://w3id.org/nmdc/portal_enums
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
-  nmdc: https://w3id.org/nmdc/
+  OBI: "http://purl.obolibrary.org/obo/OBI_"
+  nmdc: "https://w3id.org/nmdc/"
+
 default_prefix: nmdc
 enums:
   SampleTypeEnum:
@@ -14,60 +16,15 @@ enums:
       plant associated:
       sediment:
       water:
-  DNASampleFormatEnum:
-    permissible_values:
-      10 mM Tris-HCl: { }
-      DNAStable: { }
-      Ethanol: { }
-      Low EDTA TE: { }
-      MDA reaction buffer: { }
-      PBS: { }
-      Pellet: { }
-      RNAStable: { }
-      TE: { }
-      Water: { }
-      Gentegra-DNA: { }
-      Gentegra-RNA: { }
-  JgiContTypeEnum:
-    permissible_values:
-      plate: { }
-      tube: { }
   YesNoEnum:
     description: replaces DnaDnaseEnum and DnaseRnaEnum
     permissible_values:
       'no': { }
       'yes': { }
-  RNASampleFormatEnum:
-    name: RNASampleFormatEnum
-    from_schema: https://w3id.org/nmdc/portal/jgi_metatranscriptomics
-    permissible_values:
-      10 mM Tris-HCl:
-        text: 10 mM Tris-HCl
-      DNAStable:
-        text: DNAStable
-      Ethanol:
-        text: Ethanol
-      Low EDTA TE:
-        text: Low EDTA TE
-      MDA reaction buffer:
-        text: MDA reaction buffer
-      PBS:
-        text: PBS
-      Pellet:
-        text: Pellet
-      RNAStable:
-        text: RNAStable
-      TE:
-        text: TE
-      Water:
-        text: Water
-      Gentegra-DNA:
-        text: Gentegra-DNA
-      Gentegra-RNA:
-        text: Gentegra-RNA
   AnalysisTypeEnum:
     permissible_values:
       metabolomics:
+      lipidomics:
       metagenomics:
         description: Standard short-read metagenomic sequencing
         title: Metagenomics
@@ -81,3 +38,26 @@ enums:
       amplicon sequencing assay:
         meaning: OBI:0002767
         title: Amplicon sequencing assay
+  SubmissionStatusEnum:
+    permissible_values:
+      InProgress:
+        title: In Progress
+        description: The submitter is currently working on the submission. 
+      SubmittedPendingReview:
+        title: Submitted - Pending Review
+        description: Submission is ready for NMDC review, the submitter cannot edit. 
+      ApprovedHeld:
+        title: Approved - Held
+        description: Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. The submitter cannot edit.  
+      ApprovedPendingUserFacility:
+        title: Approved - Sent to User Facility
+        description: Submission has been reviewed and approved by NMDC. Sample information has been shared with designated user facility and is ready for their review. The submitter cannot edit.
+      UpdatesRequired:
+        title: Updates Required
+        description: Submission has been reviewed and submitter edits are required for approval. The submitter can edit the submission.
+      Denied:
+        title: Denied
+        description: Submission has been reviewed and denied. The submitter cannot edit.
+      Released:
+        title: Released
+        description: Submission has been reviewed and approved and data is released on the data portal. The submitter cannot edit. 

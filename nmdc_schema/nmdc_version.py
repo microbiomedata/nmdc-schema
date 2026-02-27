@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 """Provides CLI to return versions of the NMDC Schema, meta model and pypi package."""
 
-import pkg_resources, click
+from importlib import metadata
+
+import click
 from .nmdc_data import get_nmdc_schema_definition
 
 
@@ -15,7 +17,7 @@ def get_nmdc_schema_package_version() -> str:
     str
         The version of the nmdc_schema package.
     """
-    return pkg_resources.get_distribution("nmdc_schema").version
+    return metadata.version("nmdc_schema")
 
 
 def get_nmdc_schema_version() -> str:
