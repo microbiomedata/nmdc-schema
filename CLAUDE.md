@@ -94,7 +94,7 @@ The key steps are:
    commits directly to `main`**, even if you have admin access to bypass
    branch protection.
 5. Go to **Releases → Draft a new release** on GitHub.
-6. Create a new tag matching the format above (e.g. `v11.17.0-rc.1`),
+6. Create a new tag matching the format above (e.g. `v11.17.0-rc.3`),
    targeting `main`.
 7. Check the **"Set as a pre-release"** box (for pre-releases only).
 8. Click **Publish release**.
