@@ -84,16 +84,20 @@ Follow the authoritative checklist at
 [`infra-admin/releases/nmdc-schema.md`](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md).
 The key steps are:
 
-1. Ensure `make squeaky-clean all test` passes locally.
-2. **Commit the regenerated artifacts** (`git add . && git commit`) and
-   push to the branch you are releasing from. The build produces files
-   like JSON Schema, OWL, and `nmdc_schema/nmdc_pydantic.py` that must
-   be checked in before tagging — otherwise the published package will
-   be missing them.
-3. Go to **Releases → Draft a new release** on GitHub.
-4. Create a new tag matching the format above (e.g. `v11.17.0-rc.1`).
-5. Check the **"Set as a pre-release"** box (for pre-releases only).
-6. Click **Publish release**.
+1. Create a release-prep branch (e.g. `release/v11.17.0-rc.3`).
+2. Run `make squeaky-clean all test` locally.
+3. **Commit the regenerated artifacts** on the branch. The build produces
+   files like JSON Schema, OWL, and `nmdc_schema/nmdc_pydantic.py` that
+   must be checked in before tagging — otherwise the published package
+   will be missing them.
+4. Open a PR into `main` and get it merged. **Never push release-prep
+   commits directly to `main`**, even if you have admin access to bypass
+   branch protection.
+5. Go to **Releases → Draft a new release** on GitHub.
+6. Create a new tag matching the format above (e.g. `v11.17.0-rc.3`),
+   targeting `main`.
+7. Check the **"Set as a pre-release"** box (for pre-releases only).
+8. Click **Publish release**.
 
 The existing `pypi-publish.yaml` workflow triggers on any release
 (including pre-releases) and publishes to PyPI via trusted publishing.
