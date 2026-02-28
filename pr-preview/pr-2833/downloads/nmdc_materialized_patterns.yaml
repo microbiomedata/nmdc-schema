@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.0rc3.post9.dev0+430f26daf
+version: 11.17.0rc3.post10.dev0+be4319dc9
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19530,8 +19530,8 @@ classes:
         comments:
         - 'range: date is the LinkML date type (linkml:date, mapped to xsd:date),
           which accepts YYYY-MM-DD strings. Constrained here within ProvenanceMetadata;
-          the global range remains string for backward compatibility with GOLD-format
-          dates on DataGeneration.'
+          the global range remains string for backward compatibility with legacy exported
+          data.'
         - In YAML data files, date values must be quoted (e.g., '2021-03-31') to prevent
           PyYAML from parsing them as native datetime.date objects, which linkml-validate
           rejects.
@@ -19541,8 +19541,8 @@ classes:
         comments:
         - 'range: date is the LinkML date type (linkml:date, mapped to xsd:date),
           which accepts YYYY-MM-DD strings. Constrained here within ProvenanceMetadata;
-          the global range remains string for backward compatibility with GOLD-format
-          dates on DataGeneration.'
+          the global range remains string for backward compatibility with legacy exported
+          data.'
         - In YAML data files, date values must be quoted (e.g., '2023-01-25') to prevent
           PyYAML from parsing them as native datetime.date objects, which linkml-validate
           rejects.
