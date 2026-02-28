@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-27T18:01:43
+# Generation date: 2026-02-28T11:37:08
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -56,8 +56,8 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Boolean, Decimal, Float, Integer, String, Uriorcurie
-from linkml_runtime.utils.metamodelcore import Bool, Decimal, URIorCURIE
+from linkml_runtime.linkml_model.types import Boolean, Date, Decimal, Float, Integer, String, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, Decimal, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
 version = "0.0.0"
@@ -2069,12 +2069,10 @@ class Biosample(Sample):
     ecosystem_subtype: Optional[str] = None
     specific_ecosystem: Optional[str] = None
     ecosystem_path_id: Optional[int] = None
-    add_date: Optional[str] = None
     community: Optional[str] = None
     habitat: Optional[str] = None
     host_name: Optional[str] = None
     location: Optional[str] = None
-    mod_date: Optional[str] = None
     ncbi_taxonomy_name: Optional[str] = None
     proport_woa_temperature: Optional[str] = None
     salinity_category: Optional[str] = None
@@ -3692,9 +3690,6 @@ class Biosample(Sample):
         if self.ecosystem_path_id is not None and not isinstance(self.ecosystem_path_id, int):
             self.ecosystem_path_id = int(self.ecosystem_path_id)
 
-        if self.add_date is not None and not isinstance(self.add_date, str):
-            self.add_date = str(self.add_date)
-
         if self.community is not None and not isinstance(self.community, str):
             self.community = str(self.community)
 
@@ -3706,9 +3701,6 @@ class Biosample(Sample):
 
         if self.location is not None and not isinstance(self.location, str):
             self.location = str(self.location)
-
-        if self.mod_date is not None and not isinstance(self.mod_date, str):
-            self.mod_date = str(self.mod_date)
 
         if self.ncbi_taxonomy_name is not None and not isinstance(self.ncbi_taxonomy_name, str):
             self.ncbi_taxonomy_name = str(self.ncbi_taxonomy_name)
@@ -5379,11 +5371,10 @@ class DataGeneration(DataEmitterProcess):
     analyte_category: str = None
     associated_studies: Union[Union[str, StudyId], list[Union[str, StudyId]]] = None
     has_input: Union[Union[str, SampleId], list[Union[str, SampleId]]] = None
-    add_date: Optional[str] = None
     instrument_used: Optional[Union[Union[str, InstrumentId], list[Union[str, InstrumentId]]]] = empty_list()
-    mod_date: Optional[str] = None
     principal_investigator: Optional[Union[dict, PersonValue]] = None
     instrument_instance_specifier: Optional[str] = None
+    provenance_metadata: Optional[Union[dict, "ProvenanceMetadata"]] = None
     has_output: Optional[Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -5404,21 +5395,18 @@ class DataGeneration(DataEmitterProcess):
             self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, SampleId) else SampleId(v) for v in self.has_input]
 
-        if self.add_date is not None and not isinstance(self.add_date, str):
-            self.add_date = str(self.add_date)
-
         if not isinstance(self.instrument_used, list):
             self.instrument_used = [self.instrument_used] if self.instrument_used is not None else []
         self.instrument_used = [v if isinstance(v, InstrumentId) else InstrumentId(v) for v in self.instrument_used]
-
-        if self.mod_date is not None and not isinstance(self.mod_date, str):
-            self.mod_date = str(self.mod_date)
 
         if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
             self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
 
         if self.instrument_instance_specifier is not None and not isinstance(self.instrument_instance_specifier, str):
             self.instrument_instance_specifier = str(self.instrument_instance_specifier)
+
+        if self.provenance_metadata is not None and not isinstance(self.provenance_metadata, ProvenanceMetadata):
+            self.provenance_metadata = ProvenanceMetadata(**as_dict(self.provenance_metadata))
 
         if not isinstance(self.has_output, list):
             self.has_output = [self.has_output] if self.has_output is not None else []
@@ -6468,7 +6456,9 @@ class ProvenanceMetadata(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = NMDC.ProvenanceMetadata
 
     type: Union[str, URIorCURIE] = None
+    add_date: Optional[Union[str, XSDDate]] = None
     git_url: Optional[str] = None
+    mod_date: Optional[Union[str, XSDDate]] = None
     version: Optional[str] = None
     source_system_of_record: Optional[Union[str, "SourceSystemEnum"]] = None
     submission_portal_identifier: Optional[Union[str, list[str]]] = empty_list()
@@ -6478,8 +6468,14 @@ class ProvenanceMetadata(YAMLRoot):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
 
+        if self.add_date is not None and not isinstance(self.add_date, XSDDate):
+            self.add_date = XSDDate(self.add_date)
+
         if self.git_url is not None and not isinstance(self.git_url, str):
             self.git_url = str(self.git_url)
+
+        if self.mod_date is not None and not isinstance(self.mod_date, XSDDate):
+            self.mod_date = XSDDate(self.mod_date)
 
         if self.version is not None and not isinstance(self.version, str):
             self.version = str(self.version)
@@ -13661,6 +13657,12 @@ slots.WorkflowExecution_was_informed_by = Slot(uri=NMDC['basic_classes/was_infor
 
 slots.WorkflowExecution_version = Slot(uri=NMDC.version, name="WorkflowExecution_version", curie=NMDC.curie('version'),
                    model_uri=NMDC.WorkflowExecution_version, domain=WorkflowExecution, range=Optional[str])
+
+slots.ProvenanceMetadata_add_date = Slot(uri=NMDC.add_date, name="ProvenanceMetadata_add_date", curie=NMDC.curie('add_date'),
+                   model_uri=NMDC.ProvenanceMetadata_add_date, domain=ProvenanceMetadata, range=Optional[Union[str, XSDDate]])
+
+slots.ProvenanceMetadata_mod_date = Slot(uri=NMDC.mod_date, name="ProvenanceMetadata_mod_date", curie=NMDC.curie('mod_date'),
+                   model_uri=NMDC.ProvenanceMetadata_mod_date, domain=ProvenanceMetadata, range=Optional[Union[str, XSDDate]])
 
 slots.ProvenanceMetadata_version = Slot(uri=NMDC.version, name="ProvenanceMetadata_version", curie=NMDC.curie('version'),
                    model_uri=NMDC.ProvenanceMetadata_version, domain=ProvenanceMetadata, range=Optional[str])
