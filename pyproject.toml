@@ -1,6 +1,6 @@
 [project]
 name = "nmdc_schema"
-version = "0.0.0"
+dynamic = ["version"]
 description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 readme = "README.md"
 license = "MIT"
@@ -97,6 +97,7 @@ deps = [
 ]
 
 [tool.poetry]
+version = "0.0.0"
 packages = [
     { include = "nmdc_schema" },  # this is the package Poetry would have included by default
     { include = "migrators", from = "nmdc_schema" },

@@ -3216,6 +3216,21 @@ enums:
         description: A lab process or analysis workflow has failed in a way that has
           not been captured by the available values yet. Please use slot 'qc_comment'
           to specify details.
+      low_molecular_formula_assignment:
+        text: low_molecular_formula_assignment
+        description: Number of peaks with assigned molecular formulas during the workflow
+          is not sufficient.
+      low_metabolite_assignment:
+        text: low_metabolite_assignment
+        description: Number of metabolites identified during the Metabolomics or Lipidomics
+          workflow is not sufficient.
+      low_c13_isotopologue_assignment:
+        text: low_c13_isotopologue_assignment
+        description: Number of 13C isotopologues identified during the Metabolomics
+          or Lipidomics workflow is not sufficient.
+      low_peptide_to_spectrum_match_rate:
+        text: low_peptide_to_spectrum_match_rate
+        description: Rate of peptide assignment during the analysis is not sufficient.
   FailureWhereEnum:
     name: FailureWhereEnum
     description: The permitted values for describing where in the process, either
@@ -5866,15 +5881,6 @@ slots:
     mixin: true
     multivalued: true
     inlined_as_list: true
-  chemical_entity_set:
-    name: chemical_entity_set
-    description: This property links a database object to the set of chemical entities
-      within it.
-    deprecated: Deprecation of the ChemicalEntity class, means deprecation of the
-      chemical_entity_set as well.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
   ontology_class_set:
     name: ontology_class_set
     description: This property links a database object to the set of ontology classes
@@ -7357,6 +7363,18 @@ slots:
     description: Identifies the system of origin for a record
     from_schema: https://w3id.org/nmdc/nmdc
     range: SourceSystemEnum
+  submission_portal_identifier:
+    name: submission_portal_identifier
+    description: The UUID of the NMDC Submission Portal entry that generated this
+      record.
+    examples:
+    - value: c41dfeac-102e-43b2-adae-6a67f25791f0
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://data.microbiomedata.org/submission/home
+    range: string
+    multivalued: true
+    pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
   associated_studies:
     name: associated_studies
     description: The study associated with a resource.
@@ -17076,29 +17094,6 @@ slots:
     description: A generic grouping for molecular formulae and empirical formulae
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
-  inchi_key:
-    name: inchi_key
-    deprecated: 'true'
-    notes:
-    - 'key set to false due to rare collisions: Pletnev I, Erin A, McNaught A, Blinov
-      K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental
-      testing. J Cheminform. 4:12'
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
-  inchi:
-    name: inchi
-    deprecated: 'true'
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
-  smiles:
-    name: smiles
-    description: A string encoding of a molecular graph, no chiral or isotopic information.
-      There are usually a large number of valid SMILES which represent a given structure.
-      For example, CCO, OCC and C(O)C all specify the structure of ethanol.
-    deprecated: 'true'
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
-    multivalued: true
   volume:
     name: volume
     annotations:
@@ -17116,6 +17111,52 @@ slots:
     description: The substance from which a portion was taken.
     from_schema: https://w3id.org/nmdc/nmdc
     range: ChemicalEntityEnum
+  unique_peptide_seq_count:
+    name: unique_peptide_seq_count
+    description: The number of distinct peptide sequences identified in the LC-MS/MS
+      file.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: integer
+  razor_protein_count:
+    name: razor_protein_count
+    description: The minimal protein set that describes the unique peptide sequences
+      identified after applying Razor Protein parsimony.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: integer
+  peptide_to_spectrum_match_count:
+    name: peptide_to_spectrum_match_count
+    description: Total number of MS2 spectra with a false discovery rate passing peptide
+      match.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: integer
+  peptide_to_spectrum_match_rate:
+    name: peptide_to_spectrum_match_rate
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '%'
+    description: The percentage of peptide-to-spectrum matches relative to the total
+      number of spectra analyzed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: QuantityValue
+  mean_peptide_count:
+    name: mean_peptide_count
+    description: The average number of peptides per protein identified in the metaproteomics
+      analysis.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: float
+  total_protein_count:
+    name: total_protein_count
+    description: The total number of distinct proteins identified in the metaproteomics
+      analysis.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: integer
   metaproteomics_analysis_category:
     name: metaproteomics_analysis_category
     description: The category of metaproteomics analysis being performed.
@@ -17394,18 +17435,31 @@ slots:
     range: MetaboliteIdentification
     multivalued: true
     inlined_as_list: true
-  rna_collect_site:
-    name: rna_collect_site
-    description: Provide information on the site your RNA sample was collected from
-    title: RNA collection site
-    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
-      slot & it's now captured directly in the submission portal schema to support
-      submissions
-    examples:
-    - value: untreated pond water
+  ms_analysis_qc_metric:
+    name: ms_analysis_qc_metric
+    description: A quality control metric for mass spectrometry-based analyses.
     from_schema: https://w3id.org/nmdc/nmdc
-    rank: 15
-    recommended: true
+    abstract: true
+  peak_count:
+    name: peak_count
+    description: The total number of peaks detected in the analysis.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: integer
+  peak_assignment_count:
+    name: peak_assignment_count
+    description: The number of m/z peaks with assignments in an analysis.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: integer
+  c13_isotopologue_count:
+    name: c13_isotopologue_count
+    description: The number of two-dimensional mass-to-charge (m/z) versus retention
+      time features that have been isotopically characterized as either 13C-containing
+      isotopologues or monoisotopic (12C-only) features.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ms_analysis_qc_metric
+    range: integer
   rna_isolate_meth:
     name: rna_isolate_meth
     description: Describe the method/protocol/kit used to extract DNA/RNA.
@@ -17416,20 +17470,6 @@ slots:
     aliases:
     - Sample Isolation Method
     rank: 16
-    recommended: true
-  rna_organisms:
-    name: rna_organisms
-    description: List any organisms known or suspected to grow in co-culture, as well
-      as estimated % of the organism in that culture.
-    title: RNA expected organisms
-    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
-      slot & it's now captured directly in the submission portal schema to support
-      submissions
-    examples:
-    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-        (1%)
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 14
     recommended: true
   dna_lr_isolate_meth:
     name: dna_lr_isolate_meth
@@ -17443,18 +17483,6 @@ slots:
     - Sample Isolation Method
     rank: 16
     recommended: true
-  dna_collect_site:
-    name: dna_collect_site
-    description: Provide information on the site your DNA sample was collected from
-    title: DNA collection site
-    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
-      slot & it's now captured directly in the submission portal schema to support
-      submissions
-    examples:
-    - value: untreated pond water
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 15
-    recommended: true
   dna_isolate_meth:
     name: dna_isolate_meth
     description: Describe the method/protocol/kit used to extract DNA/RNA.
@@ -17465,20 +17493,6 @@ slots:
     aliases:
     - Sample Isolation Method
     rank: 16
-    recommended: true
-  dna_organisms:
-    name: dna_organisms
-    description: List any organisms known or suspected to grow in co-culture, as well
-      as estimated % of the organism in that culture.
-    title: DNA expected organisms
-    deprecated: true; as of 2025-10-10, NMDC doesn't need to store this JGI metadata
-      slot & it's now captured directly in the submission portal schema to support
-      submissions
-    examples:
-    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-        (1%)
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 14
     recommended: true
   emsl_store_temp:
     name: emsl_store_temp
@@ -18658,28 +18672,6 @@ classes:
     is_a: OntologyClass
     abstract: true
     class_uri: nmdc:FunctionalAnnotationTerm
-  Pathway:
-    name: Pathway
-    id_prefixes:
-    - KEGG_PATHWAY
-    - COG
-    description: A pathway is a sequence of steps/reactions carried out by an organism
-      or community of organisms
-    deprecated: not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881
-    todos:
-    - If we reverted to including Reaction in the schema, then a Reaction would be
-      a reasonable part_of a Pathway
-    - is Pathway instantiated in an MongoDB collection? Aren't Pathways searchable
-      in the Data Portal?
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - biological process
-    - metabolic pathway
-    - signaling pathway
-    exact_mappings:
-    - biolink:Pathway
-    is_a: FunctionalAnnotationTerm
-    class_uri: nmdc:Pathway
   OrthologyGroup:
     name: OrthologyGroup
     id_prefixes:
@@ -19218,6 +19210,7 @@ classes:
     - related_identifiers
     - alternative_descriptions
     - alternative_names
+    - provenance_metadata
     - alternative_titles
     - ecosystem
     - ecosystem_category
@@ -19543,6 +19536,7 @@ classes:
     - git_url
     - version
     - source_system_of_record
+    - submission_portal_identifier
     - type
     slot_usage:
       version:
@@ -20207,12 +20201,8 @@ classes:
     - sample_collection_site
     - soluble_iron_micromol
     - subsurface_depth
-    - dna_collect_site
     - dna_isolate_meth
-    - dna_organisms
-    - rna_collect_site
     - rna_isolate_meth
-    - rna_organisms
     - collection_date_inc
     - collection_time
     - collection_time_inc
@@ -20665,12 +20655,6 @@ classes:
     is_a: MaterialEntity
     abstract: true
     class_uri: nmdc:Site
-  EnvironmentalMaterialTerm:
-    name: EnvironmentalMaterialTerm
-    deprecated: not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: OntologyClass
-    class_uri: nmdc:EnvironmentalMaterialTerm
   MagBin:
     name: MagBin
     from_schema: https://w3id.org/nmdc/nmdc
@@ -21043,6 +21027,9 @@ classes:
     - has_metabolite_identifications
     - uses_calibration
     - metabolomics_analysis_category
+    - peak_count
+    - peak_assignment_count
+    - c13_isotopologue_count
     slot_usage:
       id:
         name: id
@@ -21065,6 +21052,15 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
+      peak_count:
+        name: peak_count
+        description: 'The total number of two dimensional mass to charge (m/z) : retention
+          time features detected in the metabolomics analysis.'
+      peak_assignment_count:
+        name: peak_assignment_count
+        description: 'The total number of two dimensional mass to charge (m/z) : retention
+          time features with associated metabolite identification in the metabolomics
+          or lipidomics analysis.'
     class_uri: nmdc:MetabolomicsAnalysis
   MetaproteomicsAnalysis:
     name: MetaproteomicsAnalysis
@@ -21072,6 +21068,12 @@ classes:
     is_a: AnnotatingWorkflow
     slots:
     - metaproteomics_analysis_category
+    - peptide_to_spectrum_match_count
+    - peptide_to_spectrum_match_rate
+    - unique_peptide_seq_count
+    - razor_protein_count
+    - mean_peptide_count
+    - total_protein_count
     slot_usage:
       id:
         name: id
@@ -21101,6 +21103,8 @@ classes:
     is_a: WorkflowExecution
     slots:
     - uses_calibration
+    - peak_count
+    - peak_assignment_count
     slot_usage:
       id:
         name: id
@@ -21123,6 +21127,10 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
+      peak_assignment_count:
+        name: peak_assignment_count
+        description: The number of m/z peaks with assigned molecular formulas in the
+          analysis.
     class_uri: nmdc:NomAnalysis
 source_file: src/schema/nmdc.yaml
 settings:

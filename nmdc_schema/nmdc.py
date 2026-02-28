@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-09T12:52:05
+# Generation date: 2026-02-27T18:01:43
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -212,15 +212,7 @@ class FunctionalAnnotationTermId(OntologyClassId):
     pass
 
 
-class PathwayId(FunctionalAnnotationTermId):
-    pass
-
-
 class OrthologyGroupId(FunctionalAnnotationTermId):
-    pass
-
-
-class EnvironmentalMaterialTermId(OntologyClassId):
     pass
 
 
@@ -1425,33 +1417,6 @@ class FunctionalAnnotationTerm(OntologyClass):
 
 
 @dataclass(repr=False)
-class Pathway(FunctionalAnnotationTerm):
-    """
-    A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC["Pathway"]
-    class_class_curie: ClassVar[str] = "nmdc:Pathway"
-    class_name: ClassVar[str] = "Pathway"
-    class_model_uri: ClassVar[URIRef] = NMDC.Pathway
-
-    id: Union[str, PathwayId] = None
-    type: Union[str, URIorCURIE] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, PathwayId):
-            self.id = PathwayId(self.id)
-
-        super().__post_init__(**kwargs)
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        self.type = str(self.class_class_curie)
-
-
-@dataclass(repr=False)
 class OrthologyGroup(FunctionalAnnotationTerm):
     """
     A set of genes or gene products in which all members are orthologous
@@ -1471,30 +1436,6 @@ class OrthologyGroup(FunctionalAnnotationTerm):
             self.MissingRequiredField("id")
         if not isinstance(self.id, OrthologyGroupId):
             self.id = OrthologyGroupId(self.id)
-
-        super().__post_init__(**kwargs)
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        self.type = str(self.class_class_curie)
-
-
-@dataclass(repr=False)
-class EnvironmentalMaterialTerm(OntologyClass):
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC["EnvironmentalMaterialTerm"]
-    class_class_curie: ClassVar[str] = "nmdc:EnvironmentalMaterialTerm"
-    class_name: ClassVar[str] = "EnvironmentalMaterialTerm"
-    class_model_uri: ClassVar[URIRef] = NMDC.EnvironmentalMaterialTerm
-
-    id: Union[str, EnvironmentalMaterialTermId] = None
-    type: Union[str, URIorCURIE] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, EnvironmentalMaterialTermId):
-            self.id = EnvironmentalMaterialTermId(self.id)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -2140,12 +2081,8 @@ class Biosample(Sample):
     sample_collection_site: Optional[str] = None
     soluble_iron_micromol: Optional[str] = None
     subsurface_depth: Optional[Union[dict, QuantityValue]] = None
-    dna_collect_site: Optional[str] = None
     dna_isolate_meth: Optional[str] = None
-    dna_organisms: Optional[str] = None
-    rna_collect_site: Optional[str] = None
     rna_isolate_meth: Optional[str] = None
-    rna_organisms: Optional[str] = None
     collection_date_inc: Optional[str] = None
     collection_time: Optional[str] = None
     collection_time_inc: Optional[str] = None
@@ -3791,23 +3728,11 @@ class Biosample(Sample):
         if self.subsurface_depth is not None and not isinstance(self.subsurface_depth, QuantityValue):
             self.subsurface_depth = QuantityValue(**as_dict(self.subsurface_depth))
 
-        if self.dna_collect_site is not None and not isinstance(self.dna_collect_site, str):
-            self.dna_collect_site = str(self.dna_collect_site)
-
         if self.dna_isolate_meth is not None and not isinstance(self.dna_isolate_meth, str):
             self.dna_isolate_meth = str(self.dna_isolate_meth)
 
-        if self.dna_organisms is not None and not isinstance(self.dna_organisms, str):
-            self.dna_organisms = str(self.dna_organisms)
-
-        if self.rna_collect_site is not None and not isinstance(self.rna_collect_site, str):
-            self.rna_collect_site = str(self.rna_collect_site)
-
         if self.rna_isolate_meth is not None and not isinstance(self.rna_isolate_meth, str):
             self.rna_isolate_meth = str(self.rna_isolate_meth)
-
-        if self.rna_organisms is not None and not isinstance(self.rna_organisms, str):
-            self.rna_organisms = str(self.rna_organisms)
 
         if self.collection_date_inc is not None and not isinstance(self.collection_date_inc, str):
             self.collection_date_inc = str(self.collection_date_inc)
@@ -4906,6 +4831,7 @@ class Study(NamedThing):
     related_identifiers: Optional[str] = None
     alternative_descriptions: Optional[Union[str, list[str]]] = empty_list()
     alternative_names: Optional[Union[str, list[str]]] = empty_list()
+    provenance_metadata: Optional[Union[dict, "ProvenanceMetadata"]] = None
     alternative_titles: Optional[Union[str, list[str]]] = empty_list()
     ecosystem: Optional[str] = None
     ecosystem_category: Optional[str] = None
@@ -4977,6 +4903,9 @@ class Study(NamedThing):
         if not isinstance(self.alternative_names, list):
             self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
         self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
+
+        if self.provenance_metadata is not None and not isinstance(self.provenance_metadata, ProvenanceMetadata):
+            self.provenance_metadata = ProvenanceMetadata(**as_dict(self.provenance_metadata))
 
         if not isinstance(self.alternative_titles, list):
             self.alternative_titles = [self.alternative_titles] if self.alternative_titles is not None else []
@@ -6232,6 +6161,9 @@ class MetabolomicsAnalysis(WorkflowExecution):
     metabolomics_analysis_category: Union[str, "MetabolomicsAnalysisCategoryEnum"] = None
     has_metabolite_identifications: Optional[Union[Union[dict, MetaboliteIdentification], list[Union[dict, MetaboliteIdentification]]]] = empty_list()
     uses_calibration: Optional[Union[Union[str, CalibrationInformationId], list[Union[str, CalibrationInformationId]]]] = empty_list()
+    peak_count: Optional[int] = None
+    peak_assignment_count: Optional[int] = None
+    c13_isotopologue_count: Optional[int] = None
     was_informed_by: Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]] = empty_list()
     superseded_by: Optional[Union[str, MetabolomicsAnalysisId]] = None
 
@@ -6253,6 +6185,15 @@ class MetabolomicsAnalysis(WorkflowExecution):
         if not isinstance(self.uses_calibration, list):
             self.uses_calibration = [self.uses_calibration] if self.uses_calibration is not None else []
         self.uses_calibration = [v if isinstance(v, CalibrationInformationId) else CalibrationInformationId(v) for v in self.uses_calibration]
+
+        if self.peak_count is not None and not isinstance(self.peak_count, int):
+            self.peak_count = int(self.peak_count)
+
+        if self.peak_assignment_count is not None and not isinstance(self.peak_assignment_count, int):
+            self.peak_assignment_count = int(self.peak_assignment_count)
+
+        if self.c13_isotopologue_count is not None and not isinstance(self.c13_isotopologue_count, int):
+            self.c13_isotopologue_count = int(self.c13_isotopologue_count)
 
         if not isinstance(self.was_informed_by, list):
             self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
@@ -6283,6 +6224,8 @@ class NomAnalysis(WorkflowExecution):
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
     processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     uses_calibration: Optional[Union[Union[str, CalibrationInformationId], list[Union[str, CalibrationInformationId]]]] = empty_list()
+    peak_count: Optional[int] = None
+    peak_assignment_count: Optional[int] = None
     was_informed_by: Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]] = empty_list()
     superseded_by: Optional[Union[str, NomAnalysisId]] = None
 
@@ -6295,6 +6238,12 @@ class NomAnalysis(WorkflowExecution):
         if not isinstance(self.uses_calibration, list):
             self.uses_calibration = [self.uses_calibration] if self.uses_calibration is not None else []
         self.uses_calibration = [v if isinstance(v, CalibrationInformationId) else CalibrationInformationId(v) for v in self.uses_calibration]
+
+        if self.peak_count is not None and not isinstance(self.peak_count, int):
+            self.peak_count = int(self.peak_count)
+
+        if self.peak_assignment_count is not None and not isinstance(self.peak_assignment_count, int):
+            self.peak_assignment_count = int(self.peak_assignment_count)
 
         if not isinstance(self.was_informed_by, list):
             self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
@@ -6409,6 +6358,12 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
     processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     metaproteomics_analysis_category: Union[str, "MetaproteomicsAnalysisCategoryEnum"] = None
+    peptide_to_spectrum_match_count: Optional[int] = None
+    peptide_to_spectrum_match_rate: Optional[Union[dict, QuantityValue]] = None
+    unique_peptide_seq_count: Optional[int] = None
+    razor_protein_count: Optional[int] = None
+    mean_peptide_count: Optional[float] = None
+    total_protein_count: Optional[int] = None
     was_informed_by: Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]] = empty_list()
     superseded_by: Optional[Union[str, MetaproteomicsAnalysisId]] = None
 
@@ -6422,6 +6377,24 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
             self.MissingRequiredField("metaproteomics_analysis_category")
         if not isinstance(self.metaproteomics_analysis_category, MetaproteomicsAnalysisCategoryEnum):
             self.metaproteomics_analysis_category = MetaproteomicsAnalysisCategoryEnum(self.metaproteomics_analysis_category)
+
+        if self.peptide_to_spectrum_match_count is not None and not isinstance(self.peptide_to_spectrum_match_count, int):
+            self.peptide_to_spectrum_match_count = int(self.peptide_to_spectrum_match_count)
+
+        if self.peptide_to_spectrum_match_rate is not None and not isinstance(self.peptide_to_spectrum_match_rate, QuantityValue):
+            self.peptide_to_spectrum_match_rate = QuantityValue(**as_dict(self.peptide_to_spectrum_match_rate))
+
+        if self.unique_peptide_seq_count is not None and not isinstance(self.unique_peptide_seq_count, int):
+            self.unique_peptide_seq_count = int(self.unique_peptide_seq_count)
+
+        if self.razor_protein_count is not None and not isinstance(self.razor_protein_count, int):
+            self.razor_protein_count = int(self.razor_protein_count)
+
+        if self.mean_peptide_count is not None and not isinstance(self.mean_peptide_count, float):
+            self.mean_peptide_count = float(self.mean_peptide_count)
+
+        if self.total_protein_count is not None and not isinstance(self.total_protein_count, int):
+            self.total_protein_count = int(self.total_protein_count)
 
         if not isinstance(self.was_informed_by, list):
             self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
@@ -6498,6 +6471,7 @@ class ProvenanceMetadata(YAMLRoot):
     git_url: Optional[str] = None
     version: Optional[str] = None
     source_system_of_record: Optional[Union[str, "SourceSystemEnum"]] = None
+    submission_portal_identifier: Optional[Union[str, list[str]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
@@ -6512,6 +6486,10 @@ class ProvenanceMetadata(YAMLRoot):
 
         if self.source_system_of_record is not None and not isinstance(self.source_system_of_record, SourceSystemEnum):
             self.source_system_of_record = SourceSystemEnum(self.source_system_of_record)
+
+        if not isinstance(self.submission_portal_identifier, list):
+            self.submission_portal_identifier = [self.submission_portal_identifier] if self.submission_portal_identifier is not None else []
+        self.submission_portal_identifier = [v if isinstance(v, str) else str(v) for v in self.submission_portal_identifier]
 
         super().__post_init__(**kwargs)
 
@@ -8473,6 +8451,18 @@ class FailureWhatEnum(EnumDefinitionImpl):
     other = PermissibleValue(
         text="other",
         description="""A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.""")
+    low_molecular_formula_assignment = PermissibleValue(
+        text="low_molecular_formula_assignment",
+        description="Number of peaks with assigned molecular formulas during the workflow is not sufficient.")
+    low_metabolite_assignment = PermissibleValue(
+        text="low_metabolite_assignment",
+        description="""Number of metabolites identified during the Metabolomics or Lipidomics workflow is not sufficient.""")
+    low_c13_isotopologue_assignment = PermissibleValue(
+        text="low_c13_isotopologue_assignment",
+        description="""Number of 13C isotopologues identified during the Metabolomics or Lipidomics workflow is not sufficient.""")
+    low_peptide_to_spectrum_match_rate = PermissibleValue(
+        text="low_peptide_to_spectrum_match_rate",
+        description="Rate of peptide assignment during the analysis is not sufficient.")
 
     _defn = EnumDefinition(
         name="FailureWhatEnum",
@@ -10550,9 +10540,6 @@ slots.etl_software_version = Slot(uri=NMDC.etl_software_version, name="etl_softw
 slots.object_set = Slot(uri=NMDC.object_set, name="object_set", curie=NMDC.curie('object_set'),
                    model_uri=NMDC.object_set, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.chemical_entity_set = Slot(uri=NMDC.chemical_entity_set, name="chemical_entity_set", curie=NMDC.curie('chemical_entity_set'),
-                   model_uri=NMDC.chemical_entity_set, domain=None, range=Optional[Union[str, list[str]]])
-
 slots.ontology_class_set = Slot(uri=NMDC.ontology_class_set, name="ontology_class_set", curie=NMDC.curie('ontology_class_set'),
                    model_uri=NMDC.ontology_class_set, domain=None, range=Optional[Union[dict[Union[str, OntologyClassId], Union[dict, OntologyClass]], list[Union[dict, OntologyClass]]]])
 
@@ -10707,6 +10694,24 @@ slots.phase = Slot(uri=NMDC.phase, name="phase", curie=NMDC.curie('phase'),
 slots.start = Slot(uri=NMDC.start, name="start", curie=NMDC.curie('start'),
                    model_uri=NMDC.start, domain=None, range=Optional[int])
 
+slots.unique_peptide_seq_count = Slot(uri=NMDC.unique_peptide_seq_count, name="unique_peptide_seq_count", curie=NMDC.curie('unique_peptide_seq_count'),
+                   model_uri=NMDC.unique_peptide_seq_count, domain=None, range=Optional[int])
+
+slots.razor_protein_count = Slot(uri=NMDC.razor_protein_count, name="razor_protein_count", curie=NMDC.curie('razor_protein_count'),
+                   model_uri=NMDC.razor_protein_count, domain=None, range=Optional[int])
+
+slots.peptide_to_spectrum_match_count = Slot(uri=NMDC.peptide_to_spectrum_match_count, name="peptide_to_spectrum_match_count", curie=NMDC.curie('peptide_to_spectrum_match_count'),
+                   model_uri=NMDC.peptide_to_spectrum_match_count, domain=None, range=Optional[int])
+
+slots.peptide_to_spectrum_match_rate = Slot(uri=NMDC.peptide_to_spectrum_match_rate, name="peptide_to_spectrum_match_rate", curie=NMDC.curie('peptide_to_spectrum_match_rate'),
+                   model_uri=NMDC.peptide_to_spectrum_match_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mean_peptide_count = Slot(uri=NMDC.mean_peptide_count, name="mean_peptide_count", curie=NMDC.curie('mean_peptide_count'),
+                   model_uri=NMDC.mean_peptide_count, domain=None, range=Optional[float])
+
+slots.total_protein_count = Slot(uri=NMDC.total_protein_count, name="total_protein_count", curie=NMDC.curie('total_protein_count'),
+                   model_uri=NMDC.total_protein_count, domain=None, range=Optional[int])
+
 slots.metaproteomics_analysis_category = Slot(uri=NMDC.metaproteomics_analysis_category, name="metaproteomics_analysis_category", curie=NMDC.curie('metaproteomics_analysis_category'),
                    model_uri=NMDC.metaproteomics_analysis_category, domain=None, range=Union[str, "MetaproteomicsAnalysisCategoryEnum"])
 
@@ -10838,6 +10843,18 @@ slots.input_read_bases = Slot(uri=NMDC.input_read_bases, name="input_read_bases"
 
 slots.has_metabolite_identifications = Slot(uri=NMDC.has_metabolite_identifications, name="has_metabolite_identifications", curie=NMDC.curie('has_metabolite_identifications'),
                    model_uri=NMDC.has_metabolite_identifications, domain=None, range=Optional[Union[Union[dict, MetaboliteIdentification], list[Union[dict, MetaboliteIdentification]]]])
+
+slots.ms_analysis_qc_metric = Slot(uri=NMDC.ms_analysis_qc_metric, name="ms_analysis_qc_metric", curie=NMDC.curie('ms_analysis_qc_metric'),
+                   model_uri=NMDC.ms_analysis_qc_metric, domain=None, range=Optional[str])
+
+slots.peak_count = Slot(uri=NMDC.peak_count, name="peak_count", curie=NMDC.curie('peak_count'),
+                   model_uri=NMDC.peak_count, domain=None, range=Optional[int])
+
+slots.peak_assignment_count = Slot(uri=NMDC.peak_assignment_count, name="peak_assignment_count", curie=NMDC.curie('peak_assignment_count'),
+                   model_uri=NMDC.peak_assignment_count, domain=None, range=Optional[int])
+
+slots.c13_isotopologue_count = Slot(uri=NMDC.c13_isotopologue_count, name="c13_isotopologue_count", curie=NMDC.curie('c13_isotopologue_count'),
+                   model_uri=NMDC.c13_isotopologue_count, domain=None, range=Optional[int])
 
 slots.chemical_conversion_category = Slot(uri=NMDC.chemical_conversion_category, name="chemical_conversion_category", curie=NMDC.curie('chemical_conversion_category'),
                    model_uri=NMDC.chemical_conversion_category, domain=None, range=Optional[Union[str, "ChemicalConversionCategoryEnum"]])
@@ -10976,15 +10993,6 @@ slots.metabolite_identified = Slot(uri=NMDC.metabolite_identified, name="metabol
 
 slots.chemical_formula = Slot(uri=NMDC.chemical_formula, name="chemical_formula", curie=NMDC.curie('chemical_formula'),
                    model_uri=NMDC.chemical_formula, domain=None, range=Optional[str])
-
-slots.inchi_key = Slot(uri=NMDC.inchi_key, name="inchi_key", curie=NMDC.curie('inchi_key'),
-                   model_uri=NMDC.inchi_key, domain=None, range=Optional[str])
-
-slots.inchi = Slot(uri=NMDC.inchi, name="inchi", curie=NMDC.curie('inchi'),
-                   model_uri=NMDC.inchi, domain=None, range=Optional[str])
-
-slots.smiles = Slot(uri=NMDC.smiles, name="smiles", curie=NMDC.curie('smiles'),
-                   model_uri=NMDC.smiles, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.volume = Slot(uri=NMDC.volume, name="volume", curie=NMDC.curie('volume'),
                    model_uri=NMDC.volume, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -11241,6 +11249,10 @@ slots.end_date = Slot(uri=NMDC.end_date, name="end_date", curie=NMDC.curie('end_
 slots.source_system_of_record = Slot(uri=NMDC['basic_classes/source_system_of_record'], name="source_system_of_record", curie=NMDC.curie('basic_classes/source_system_of_record'),
                    model_uri=NMDC.source_system_of_record, domain=None, range=Optional[Union[str, "SourceSystemEnum"]])
 
+slots.submission_portal_identifier = Slot(uri=NMDC['basic_classes/submission_portal_identifier'], name="submission_portal_identifier", curie=NMDC.curie('basic_classes/submission_portal_identifier'),
+                   model_uri=NMDC.submission_portal_identifier, domain=None, range=Optional[Union[str, list[str]]],
+                   pattern=re.compile(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'))
+
 slots.associated_studies = Slot(uri=NMDC['basic_classes/associated_studies'], name="associated_studies", curie=NMDC.curie('basic_classes/associated_studies'),
                    model_uri=NMDC.associated_studies, domain=None, range=Union[Union[str, StudyId], list[Union[str, StudyId]]])
 
@@ -11328,26 +11340,14 @@ slots.superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="supers
 slots.provenance_metadata = Slot(uri=NMDC['basic_classes/provenance_metadata'], name="provenance_metadata", curie=NMDC.curie('basic_classes/provenance_metadata'),
                    model_uri=NMDC.provenance_metadata, domain=None, range=Optional[Union[dict, ProvenanceMetadata]])
 
-slots.rna_collect_site = Slot(uri=NMDC.rna_collect_site, name="rna_collect_site", curie=NMDC.curie('rna_collect_site'),
-                   model_uri=NMDC.rna_collect_site, domain=None, range=Optional[str])
-
 slots.rna_isolate_meth = Slot(uri=NMDC.rna_isolate_meth, name="rna_isolate_meth", curie=NMDC.curie('rna_isolate_meth'),
                    model_uri=NMDC.rna_isolate_meth, domain=None, range=Optional[str])
-
-slots.rna_organisms = Slot(uri=NMDC.rna_organisms, name="rna_organisms", curie=NMDC.curie('rna_organisms'),
-                   model_uri=NMDC.rna_organisms, domain=None, range=Optional[str])
 
 slots.dna_lr_isolate_meth = Slot(uri=NMDC.dna_lr_isolate_meth, name="dna_lr_isolate_meth", curie=NMDC.curie('dna_lr_isolate_meth'),
                    model_uri=NMDC.dna_lr_isolate_meth, domain=None, range=Optional[str])
 
-slots.dna_collect_site = Slot(uri=NMDC.dna_collect_site, name="dna_collect_site", curie=NMDC.curie('dna_collect_site'),
-                   model_uri=NMDC.dna_collect_site, domain=None, range=Optional[str])
-
 slots.dna_isolate_meth = Slot(uri=NMDC.dna_isolate_meth, name="dna_isolate_meth", curie=NMDC.curie('dna_isolate_meth'),
                    model_uri=NMDC.dna_isolate_meth, domain=None, range=Optional[str])
-
-slots.dna_organisms = Slot(uri=NMDC.dna_organisms, name="dna_organisms", curie=NMDC.curie('dna_organisms'),
-                   model_uri=NMDC.dna_organisms, domain=None, range=Optional[str])
 
 slots.emsl_store_temp = Slot(uri=NMDC.emsl_store_temp, name="emsl_store_temp", curie=NMDC.curie('emsl_store_temp'),
                    model_uri=NMDC.emsl_store_temp, domain=None, range=Optional[float])
@@ -13353,6 +13353,12 @@ slots.MetabolomicsAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_in
 slots.MetabolomicsAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="MetabolomicsAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.MetabolomicsAnalysis_superseded_by, domain=MetabolomicsAnalysis, range=Optional[Union[str, MetabolomicsAnalysisId]])
 
+slots.MetabolomicsAnalysis_peak_count = Slot(uri=NMDC.peak_count, name="MetabolomicsAnalysis_peak_count", curie=NMDC.curie('peak_count'),
+                   model_uri=NMDC.MetabolomicsAnalysis_peak_count, domain=MetabolomicsAnalysis, range=Optional[int])
+
+slots.MetabolomicsAnalysis_peak_assignment_count = Slot(uri=NMDC.peak_assignment_count, name="MetabolomicsAnalysis_peak_assignment_count", curie=NMDC.curie('peak_assignment_count'),
+                   model_uri=NMDC.MetabolomicsAnalysis_peak_assignment_count, domain=MetabolomicsAnalysis, range=Optional[int])
+
 slots.MetaproteomicsAnalysis_id = Slot(uri=NMDC.id, name="MetaproteomicsAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetaproteomicsAnalysis_id, domain=MetaproteomicsAnalysis, range=Union[str, MetaproteomicsAnalysisId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
@@ -13372,6 +13378,9 @@ slots.NomAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by
 
 slots.NomAnalysis_superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="NomAnalysis_superseded_by", curie=NMDC.curie('basic_classes/superseded_by'),
                    model_uri=NMDC.NomAnalysis_superseded_by, domain=NomAnalysis, range=Optional[Union[str, NomAnalysisId]])
+
+slots.NomAnalysis_peak_assignment_count = Slot(uri=NMDC.peak_assignment_count, name="NomAnalysis_peak_assignment_count", curie=NMDC.curie('peak_assignment_count'),
+                   model_uri=NMDC.NomAnalysis_peak_assignment_count, domain=NomAnalysis, range=Optional[int])
 
 slots.ChemicalConversionProcess_id = Slot(uri=NMDC.id, name="ChemicalConversionProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ChemicalConversionProcess_id, domain=ChemicalConversionProcess, range=Union[str, ChemicalConversionProcessId],
