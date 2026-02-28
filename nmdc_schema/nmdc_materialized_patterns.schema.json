@@ -76,13 +76,6 @@
                     "description": "Actual mass of water vapor present in the air water vapor mixture.",
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
-                "add_date": {
-                    "description": "The date on which the information was added to the database.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "add_recov_method": {
                     "description": "Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for increase of hydrocarbon recovery from resource and start date for each one of them. If \"other\" is specified, please propose entry in \"additional info\" field",
                     "pattern": "^(Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other);(\\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\\d|3[01])(T([01]\\d|2[0-3]):([0-5]\\d)(:([0-5]\\d))?(\\.\\d+)?(Z|([+-][01]\\d:[0-5]\\d))?)?)?)?$",
@@ -2680,13 +2673,6 @@
                     },
                     "type": [
                         "array",
-                        "null"
-                    ]
-                },
-                "mod_date": {
-                    "description": "The last date on which the database information was modified.",
-                    "type": [
-                        "string",
                         "null"
                     ]
                 },
@@ -9337,13 +9323,6 @@
             ],
             "description": "Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.",
             "properties": {
-                "add_date": {
-                    "description": "The date on which the information was added to the database.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
@@ -9457,13 +9436,6 @@
                         "null"
                     ]
                 },
-                "mod_date": {
-                    "description": "The last date on which the database information was modified.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -9495,6 +9467,17 @@
                             "type": "null"
                         }
                     ]
+                },
+                "provenance_metadata": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ProvenanceMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Provides information about the provenance of a record."
                 },
                 "qc_comment": {
                     "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
@@ -12213,13 +12196,6 @@
             "additionalProperties": false,
             "description": "A DataGeneration in which the sequence of DNA or RNA molecules is generated.",
             "properties": {
-                "add_date": {
-                    "description": "The date on which the information was added to the database.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
@@ -12340,13 +12316,6 @@
                         "null"
                     ]
                 },
-                "mod_date": {
-                    "description": "The last date on which the database information was modified.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -12384,6 +12353,17 @@
                             "type": "null"
                         }
                     ]
+                },
+                "provenance_metadata": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ProvenanceMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Provides information about the provenance of a record."
                 },
                 "qc_comment": {
                     "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
@@ -13295,8 +13275,24 @@
             "additionalProperties": false,
             "description": "Metadata pertaining to how a record was created.",
             "properties": {
+                "add_date": {
+                    "description": "The date on which the information was added to the database.",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "git_url": {
                     "description": "The url of the software repository used to generate the NMDC metadata record",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "mod_date": {
+                    "description": "The last date on which the database information was modified.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
