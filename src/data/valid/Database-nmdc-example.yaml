@@ -81,8 +81,8 @@ data_generation_set:
       - nmdc:bsm-00-yellow
     provenance_metadata:
       type: nmdc:ProvenanceMetadata
-      add_date: '2017-08-17'
-      mod_date: '2020-10-16'
+      add_date: '2017-08-17T00:00:00'
+      mod_date: '2020-10-16T00:00:00'
     has_output:
       - nmdc:dobj-00-90125
     ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
@@ -101,8 +101,8 @@ data_generation_set:
       - nmdc:bsm-00-green
     provenance_metadata:
       type: nmdc:ProvenanceMetadata
-      add_date: '2017-03-17'
-      mod_date: '2020-05-22'
+      add_date: '2017-03-17T00:00:00'
+      mod_date: '2020-05-22T00:00:00'
     has_output:
       - nmdc:dobj-00-pizza
     ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
@@ -123,8 +123,8 @@ data_generation_set:
       - nmdc:bsm-00-blue
     provenance_metadata:
       type: nmdc:ProvenanceMetadata
-      add_date: '2018-03-29'
-      mod_date: '2020-04-04'
+      add_date: '2018-03-29T00:00:00'
+      mod_date: '2020-04-04T00:00:00'
     has_output:
       - nmdc:dobj-00-mobydick
     ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown

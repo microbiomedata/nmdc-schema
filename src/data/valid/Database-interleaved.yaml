@@ -947,7 +947,7 @@ data_generation_set:
     name: Janet Jansson
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2022-04-02'
+    add_date: '2022-04-02T00:00:00'
   insdc_experiment_identifiers:
   - insdc.sra:ERX4806872
 - id: nmdc:dgms-99-zUCd5N
@@ -1001,8 +1001,8 @@ data_generation_set:
   - nmdc:sty-00-555xxx
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30'
-    mod_date: '2020-05-22'
+    add_date: '2014-10-30T00:00:00'
+    mod_date: '2020-05-22T00:00:00'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 712P3D
 - id: nmdc:dgns-99-gKlQlF2
@@ -1021,8 +1021,8 @@ data_generation_set:
   - nmdc:sty-00-555xxx
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30'
-    mod_date: '2020-05-22'
+    add_date: '2014-10-30T00:00:00'
+    mod_date: '2020-05-22T00:00:00'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 612S3M
 - id: nmdc:dgns-99-5kgIJR
@@ -1041,8 +1041,8 @@ data_generation_set:
   - nmdc:sty-00-555xxx
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30'
-    mod_date: '2020-05-22'
+    add_date: '2014-10-30T00:00:00'
+    mod_date: '2020-05-22T00:00:00'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 712S3S
 - id: nmdc:omprc-99-123456
@@ -1060,8 +1060,8 @@ data_generation_set:
   - nmdc:sty-00-123456
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30'
-    mod_date: '2020-05-22'
+    add_date: '2014-10-30T00:00:00'
+    mod_date: '2020-05-22T00:00:00'
 - id: nmdc:dgms-99-zUCd5N3
   type: nmdc:MassSpectrometry
   has_input:
@@ -1078,8 +1078,8 @@ data_generation_set:
   instrument_instance_specifier: PNNL_VOrbiETD04
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2024-05-07'
-    mod_date: '2024-05-07'
+    add_date: '2024-05-07T00:00:00'
+    mod_date: '2024-05-07T00:00:00'
   eluent_introduction_category: liquid_chromatography
   has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG1
   has_chromatography_configuration: nmdc:chrcon-11-oW43DzG0
@@ -1099,8 +1099,8 @@ data_generation_set:
   instrument_instance_specifier: PNNL_VOrbiETD04
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2024-05-07'
-    mod_date: '2024-05-07'
+    add_date: '2024-05-07T00:00:00'
+    mod_date: '2024-05-07T00:00:00'
   eluent_introduction_category: liquid_chromatography
   has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG2
   has_chromatography_configuration: nmdc:chrcon-11-oW43DzG0
@@ -1150,7 +1150,7 @@ data_generation_set:
   - nmdc:inst-14-fas8ny90
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    mod_date: '2024-11-07'
+    mod_date: '2024-11-07T00:00:00'
   eluent_introduction_category: gas_chromatography
   has_mass_spectrometry_configuration: nmdc:mscon-14-5jk7rg60
   generates_calibration: nmdc:calib-14-dy7mc666
@@ -1170,8 +1170,8 @@ data_generation_set:
   - nmdc:sty-00-555xxx
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30'
-    mod_date: '2020-05-22'
+    add_date: '2014-10-30T00:00:00'
+    mod_date: '2020-05-22T00:00:00'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 712P3D
 - id: nmdc:dgns-11-s9xj2r24
@@ -1207,8 +1207,8 @@ data_generation_set:
   - nmdc:sty-00-31415
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2017-08-17'
-    mod_date: '2020-10-16'
+    add_date: '2017-08-17T00:00:00'
+    mod_date: '2020-10-16T00:00:00'
   ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
     LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
 - id: nmdc:dgns-99-dk9vgI
@@ -1227,8 +1227,8 @@ data_generation_set:
   - nmdc:sty-00-8675309
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2017-03-17'
-    mod_date: '2020-05-22'
+    add_date: '2017-03-17T00:00:00'
+    mod_date: '2020-05-22T00:00:00'
   ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
     - 611E1M metaG
 - id: nmdc:dgns-99-MVW1FV
@@ -1249,8 +1249,8 @@ data_generation_set:
   - nmdc:sty-00-avacado
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2018-03-29'
-    mod_date: '2020-04-04'
+    add_date: '2018-03-29T00:00:00'
+    mod_date: '2020-04-04T00:00:00'
   ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
     in University of Washington, Seatle, WA, United States - 4-1-23 metaG
 - id: nmdc:dgms-11-0003fm52
@@ -1271,7 +1271,7 @@ data_generation_set:
   - nmdc:inst-14-mwrrj632
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    mod_date: '2024-11-07'
+    mod_date: '2024-11-07T00:00:00'
   eluent_introduction_category: direct_infusion_autosampler
   has_mass_spectrometry_configuration: nmdc:mscon-14-j5y11q51
 data_object_set:

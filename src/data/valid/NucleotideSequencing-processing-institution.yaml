@@ -8,8 +8,8 @@ has_input:
   - nmdc:bsm-00-red
 provenance_metadata:
   type: nmdc:ProvenanceMetadata
-  add_date: '2014-10-30'
-  mod_date: '2020-05-22'
+  add_date: '2014-10-30T00:00:00'
+  mod_date: '2020-05-22T00:00:00'
 has_output:
   - nmdc:dobj-00-9n9n9n
 ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying

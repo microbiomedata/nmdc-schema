@@ -1,56 +1,74 @@
+import re
 from datetime import datetime
 
 from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
-# GOLD-format timestamp pattern: DD-MON-YY HH.MM.SS.NNNNNNNNN AM/PM
+# Gold-sourced timestamp pattern: DD-MON-YY HH.MM.SS.NNNNNNNNN AM/PM
 # Example: "30-OCT-14 12.00.00.000000000 AM"
+# These are legacy dates from GOLD that were passed through by the Gold translator.
+# Going forward, add_date/mod_date reflect when records were added/modified in NMDC.
 _GOLD_DATE_FORMAT = "%d-%b-%y %I.%M.%S.%f000 %p"
 
+_ISO_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+_ISO_DATETIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}")
 
-def normalize_gold_date(value: str) -> str:
+
+def normalize_date_to_datetime(value: str) -> str:
     r"""
-    Normalizes a date string to ISO 8601 date format (YYYY-MM-DD).
+    Normalizes a date string to ISO 8601 datetime format (YYYY-MM-DDTHH:MM:SS).
 
-    If the value is already in ISO date format, returns it unchanged.
-    If the value is an ISO datetime string, extracts just the date portion.
-    If the value is a GOLD-format timestamp, parses and converts to ISO date.
+    If the value is already an ISO datetime string, returns it unchanged.
+    If the value is an ISO date (YYYY-MM-DD), appends T00:00:00.
+    If the value is a Gold-sourced timestamp, parses and converts to ISO datetime.
+    Raises ValueError for empty strings or unparseable values.
 
-    >>> normalize_gold_date('2021-03-31')
-    '2021-03-31'
-    >>> normalize_gold_date('2024-11-07T15:02:18')
-    '2024-11-07'
-    >>> normalize_gold_date('30-OCT-14 12.00.00.000000000 AM')
-    '2014-10-30'
-    >>> normalize_gold_date('22-MAY-20 06.13.12.927000000 PM')
-    '2020-05-22'
-    >>> normalize_gold_date('17-AUG-17 05.38.34.719000000 PM')
-    '2017-08-17'
-    >>> normalize_gold_date('07-MAY-24 12.00.00.000000000 AM')
-    '2024-05-07'
-    >>> normalize_gold_date('04-APR-20 08.26.35.067000000 AM')
-    '2020-04-04'
+    >>> normalize_date_to_datetime('2024-11-07T15:02:18')
+    '2024-11-07T15:02:18'
+    >>> normalize_date_to_datetime('2021-03-31')
+    '2021-03-31T00:00:00'
+    >>> normalize_date_to_datetime('30-OCT-14 12.00.00.000000000 AM')
+    '2014-10-30T00:00:00'
+    >>> normalize_date_to_datetime('22-MAY-20 06.13.12.927000000 PM')
+    '2020-05-22T18:13:12'
+    >>> normalize_date_to_datetime('17-AUG-17 05.38.34.719000000 PM')
+    '2017-08-17T17:38:34'
+    >>> normalize_date_to_datetime('07-MAY-24 12.00.00.000000000 AM')
+    '2024-05-07T00:00:00'
+    >>> normalize_date_to_datetime('04-APR-20 08.26.35.067000000 AM')
+    '2020-04-04T08:26:35'
+    >>> normalize_date_to_datetime('')
+    Traceback (most recent call last):
+        ...
+    ValueError: Cannot normalize empty date string
+    >>> normalize_date_to_datetime('foo')
+    Traceback (most recent call last):
+        ...
+    ValueError: Cannot normalize date string: 'foo'
+    >>> normalize_date_to_datetime('fooo-ba-ar')
+    Traceback (most recent call last):
+        ...
+    ValueError: Cannot normalize date string: 'fooo-ba-ar'
     """
-    if not value or not isinstance(value, str):
+    if not value:
+        raise ValueError("Cannot normalize empty date string")
+
+    # Already ISO datetime (YYYY-MM-DDTHH:MM:SS...)
+    if _ISO_DATETIME_RE.match(value):
         return value
 
-    # Already ISO date (YYYY-MM-DD)
-    if len(value) == 10 and value[4] == "-" and value[7] == "-":
-        return value
+    # ISO date (YYYY-MM-DD) — append conventional midnight time
+    if _ISO_DATE_RE.match(value):
+        return value + "T00:00:00"
 
-    # ISO datetime (YYYY-MM-DDTHH:MM:SS...) — extract date portion
-    if len(value) > 10 and value[4] == "-" and value[7] == "-" and value[10] == "T":
-        return value[:10]
-
-    # GOLD-format: DD-MON-YY HH.MM.SS.NNNNNNNNN AM/PM
+    # Gold-sourced format: DD-MON-YY HH.MM.SS.NNNNNNNNN AM/PM
     # The fractional seconds field is 9 digits; strptime %f handles 6 digits,
     # so we treat the last 3 as literal zeros in the format string.
     try:
         dt = datetime.strptime(value, _GOLD_DATE_FORMAT)
-        return dt.strftime("%Y-%m-%d")
+        return dt.strftime("%Y-%m-%dT%H:%M:%S")
     except ValueError:
-        # Return as-is if we can't parse — the validator will catch it
-        return value
+        raise ValueError(f"Cannot normalize date string: {value!r}")
 
 
 class Migrator(MigratorBase):
@@ -72,18 +90,18 @@ class Migrator(MigratorBase):
     def move_dates_to_provenance_metadata(self, document: dict) -> dict:
         r"""
         Moves top-level `add_date` and `mod_date` fields from a document
-        into its `provenance_metadata` sub-document, normalizing GOLD-format
-        timestamps to ISO date strings (YYYY-MM-DD).
+        into its `provenance_metadata` sub-document, normalizing all date
+        formats to ISO 8601 datetime strings (YYYY-MM-DDTHH:MM:SS).
 
         >>> m = Migrator()
 
-        Document with both ISO dates — moved into provenance_metadata:
+        Document with both ISO dates — moved and promoted to datetime:
         >>> m.move_dates_to_provenance_metadata({'id': 'nmdc:bsm-99-abc', 'add_date': '2021-03-31', 'mod_date': '2023-01-25'})
-        {'id': 'nmdc:bsm-99-abc', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'add_date': '2021-03-31', 'mod_date': '2023-01-25'}}
+        {'id': 'nmdc:bsm-99-abc', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'add_date': '2021-03-31T00:00:00', 'mod_date': '2023-01-25T00:00:00'}}
 
         Document with existing provenance_metadata — preserves other fields:
         >>> m.move_dates_to_provenance_metadata({'id': 'nmdc:bsm-99-def', 'add_date': '2021-03-31', 'mod_date': '2023-01-25', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'source_system_of_record': 'NMDC_Submission_Portal'}})
-        {'id': 'nmdc:bsm-99-def', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'source_system_of_record': 'NMDC_Submission_Portal', 'add_date': '2021-03-31', 'mod_date': '2023-01-25'}}
+        {'id': 'nmdc:bsm-99-def', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'source_system_of_record': 'NMDC_Submission_Portal', 'add_date': '2021-03-31T00:00:00', 'mod_date': '2023-01-25T00:00:00'}}
 
         Document with neither date — no change:
         >>> m.move_dates_to_provenance_metadata({'id': 'nmdc:bsm-99-ghi'})
@@ -91,19 +109,19 @@ class Migrator(MigratorBase):
 
         Document with only add_date — moves just that one:
         >>> m.move_dates_to_provenance_metadata({'id': 'nmdc:bsm-99-jkl', 'add_date': '2021-03-31'})
-        {'id': 'nmdc:bsm-99-jkl', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'add_date': '2021-03-31'}}
+        {'id': 'nmdc:bsm-99-jkl', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'add_date': '2021-03-31T00:00:00'}}
 
         Document with only mod_date — moves just that one:
         >>> m.move_dates_to_provenance_metadata({'id': 'nmdc:bsm-99-mno', 'mod_date': '2023-01-25'})
-        {'id': 'nmdc:bsm-99-mno', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'mod_date': '2023-01-25'}}
+        {'id': 'nmdc:bsm-99-mno', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'mod_date': '2023-01-25T00:00:00'}}
 
-        GOLD-format dates are normalized to ISO date:
+        Gold-sourced dates are normalized to ISO datetime:
         >>> m.move_dates_to_provenance_metadata({'id': 'nmdc:dgns-99-pqr', 'add_date': '30-OCT-14 12.00.00.000000000 AM', 'mod_date': '22-MAY-20 06.13.12.927000000 PM'})
-        {'id': 'nmdc:dgns-99-pqr', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'add_date': '2014-10-30', 'mod_date': '2020-05-22'}}
+        {'id': 'nmdc:dgns-99-pqr', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'add_date': '2014-10-30T00:00:00', 'mod_date': '2020-05-22T18:13:12'}}
 
-        ISO datetime is normalized to date only:
+        ISO datetime is preserved as-is:
         >>> m.move_dates_to_provenance_metadata({'id': 'nmdc:dgns-99-stu', 'mod_date': '2024-11-07T15:02:18'})
-        {'id': 'nmdc:dgns-99-stu', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'mod_date': '2024-11-07'}}
+        {'id': 'nmdc:dgns-99-stu', 'provenance_metadata': {'type': 'nmdc:ProvenanceMetadata', 'mod_date': '2024-11-07T15:02:18'}}
         """
 
         add_date = document.pop("add_date", None)
@@ -116,8 +134,8 @@ class Migrator(MigratorBase):
                 }
 
             if add_date is not None:
-                document["provenance_metadata"]["add_date"] = normalize_gold_date(add_date)
+                document["provenance_metadata"]["add_date"] = normalize_date_to_datetime(add_date)
             if mod_date is not None:
-                document["provenance_metadata"]["mod_date"] = normalize_gold_date(mod_date)
+                document["provenance_metadata"]["mod_date"] = normalize_date_to_datetime(mod_date)
 
         return document

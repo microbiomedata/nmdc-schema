@@ -11,8 +11,8 @@ data_generation_set:
     end_date: 30-OCT-14 01.30.00.000000000 AM
     provenance_metadata:
       type: nmdc:ProvenanceMetadata
-      add_date: '2024-05-07'
-      mod_date: '2024-05-07'
+      add_date: '2024-05-07T00:00:00'
+      mod_date: '2024-05-07T00:00:00'
     has_output:
       - nmdc:dobj-00-msdem1
     associated_studies:
@@ -32,8 +32,8 @@ data_generation_set:
     end_date: 31-OCT-14 01.30.00.000000000 AM
     provenance_metadata:
       type: nmdc:ProvenanceMetadata
-      add_date: '2024-05-07'
-      mod_date: '2024-05-07'
+      add_date: '2024-05-07T00:00:00'
+      mod_date: '2024-05-07T00:00:00'
     has_output:
       - nmdc:dobj-00-msdem2
     associated_studies:
