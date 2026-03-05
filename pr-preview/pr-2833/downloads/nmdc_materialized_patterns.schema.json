@@ -13276,8 +13276,8 @@
             "description": "Metadata pertaining to how a record was created.",
             "properties": {
                 "add_date": {
-                    "description": "The date on which the information was added to the database.",
-                    "format": "date",
+                    "description": "The date and time at which a record was added to the NMDC database. Note: legacy records may contain Gold-sourced dates that predate this convention; going forward this slot reflects NMDC-internal provenance.",
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
@@ -13291,8 +13291,8 @@
                     ]
                 },
                 "mod_date": {
-                    "description": "The last date on which the database information was modified.",
-                    "format": "date",
+                    "description": "The date and time at which a record was last modified in the NMDC database. Note: legacy records may contain Gold-sourced dates that predate this convention; going forward this slot reflects NMDC-internal provenance.",
+                    "format": "date-time",
                     "type": [
                         "string",
                         "null"
@@ -15665,6 +15665,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.17.0rc3.post12.dev0+642b7fad4"
+    "version": "11.17.0rc4.post5.dev0+72e91ab97"
 }
 
