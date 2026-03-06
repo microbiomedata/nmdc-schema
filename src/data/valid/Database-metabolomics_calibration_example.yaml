@@ -22,7 +22,7 @@ data_generation_set:
   has_mass_spectrometry_configuration: nmdc:mscon-14-5jk7rg60
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    mod_date: '2024-11-07T00:00:00'
+    mod_date: '2024-11-07T00:00:00Z'
   start_date: '2016-05-24 18:17:00.000'
 calibration_set:
 - id: nmdc:calib-14-93cjjw92

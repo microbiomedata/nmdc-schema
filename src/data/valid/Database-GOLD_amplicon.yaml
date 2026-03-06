@@ -9,7 +9,7 @@ data_generation_set:
     type: nmdc:PersonValue
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2022-04-02T00:00:00'
+    add_date: '2022-04-02T00:00:00Z'
   insdc_experiment_identifiers: 
     - insdc.sra:ERX4806872
   analyte_category: amplicon_sequencing_assay

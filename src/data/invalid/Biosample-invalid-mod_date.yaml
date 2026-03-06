@@ -26,5 +26,5 @@ env_medium:
     id: ENVO:00005792
 provenance_metadata:
   type: nmdc:ProvenanceMetadata
-  add_date: '2023-01-25T00:00:00'
+  add_date: '2023-01-25T00:00:00Z'
   mod_date: 28-JUL-14 12.00.00.000000000 AM

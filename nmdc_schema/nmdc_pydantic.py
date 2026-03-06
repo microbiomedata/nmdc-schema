@@ -8058,63 +8058,73 @@ class ProvenanceMetadata(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ProvenanceMetadata',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'slot_usage': {'add_date': {'comments': ['range: date is the LinkML date type '
-                                                  '(linkml:date, mapped to xsd:date), '
-                                                  'which accepts YYYY-MM-DD strings. '
-                                                  'Constrained here within '
-                                                  'ProvenanceMetadata; the global '
-                                                  'range remains string for backward '
-                                                  'compatibility with legacy exported '
-                                                  'data.',
-                                                  'In YAML data files, date values '
-                                                  "must be quoted (e.g., '2021-03-31') "
-                                                  'to prevent PyYAML from parsing them '
-                                                  'as native datetime.date objects, '
-                                                  'which linkml-validate rejects.'],
+         'slot_usage': {'add_date': {'comments': ['range: datetime is the LinkML '
+                                                  'datetime type (linkml:datetime, '
+                                                  'mapped to xsd:dateTime). JSON '
+                                                  'Schema validates this as RFC 3339 '
+                                                  'date-time, which requires a '
+                                                  'timezone designator (e.g. '
+                                                  '2021-03-31T00:00:00Z). Constrained '
+                                                  'here within ProvenanceMetadata; the '
+                                                  'global range remains string for '
+                                                  'backward compatibility with legacy '
+                                                  'exported data.',
+                                                  'Legacy records migrated from '
+                                                  'date-only values use a conventional '
+                                                  'T00:00:00Z time component, which '
+                                                  'should not be interpreted as an '
+                                                  'actual time of day.'],
                                      'name': 'add_date',
-                                     'range': 'date'},
+                                     'range': 'datetime'},
                         'git_url': {'description': 'The url of the software repository '
                                                    'used to generate the NMDC metadata '
                                                    'record',
                                     'name': 'git_url'},
-                        'mod_date': {'comments': ['range: date is the LinkML date type '
-                                                  '(linkml:date, mapped to xsd:date), '
-                                                  'which accepts YYYY-MM-DD strings. '
-                                                  'Constrained here within '
-                                                  'ProvenanceMetadata; the global '
-                                                  'range remains string for backward '
-                                                  'compatibility with legacy exported '
-                                                  'data.',
-                                                  'In YAML data files, date values '
-                                                  "must be quoted (e.g., '2023-01-25') "
-                                                  'to prevent PyYAML from parsing them '
-                                                  'as native datetime.date objects, '
-                                                  'which linkml-validate rejects.'],
+                        'mod_date': {'comments': ['range: datetime is the LinkML '
+                                                  'datetime type (linkml:datetime, '
+                                                  'mapped to xsd:dateTime). JSON '
+                                                  'Schema validates this as RFC 3339 '
+                                                  'date-time, which requires a '
+                                                  'timezone designator (e.g. '
+                                                  '2021-03-31T00:00:00Z). Constrained '
+                                                  'here within ProvenanceMetadata; the '
+                                                  'global range remains string for '
+                                                  'backward compatibility with legacy '
+                                                  'exported data.',
+                                                  'Legacy records migrated from '
+                                                  'date-only values use a conventional '
+                                                  'T00:00:00Z time component, which '
+                                                  'should not be interpreted as an '
+                                                  'actual time of day.'],
                                      'name': 'mod_date',
-                                     'range': 'date'},
+                                     'range': 'datetime'},
                         'version': {'description': 'The version tag of the software '
                                                    'used to generate the NMDC metadata '
                                                    'record',
                                     'name': 'version'}}})
 
-    add_date: Optional[date] = Field(default=None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'comments': ['range: date is the LinkML date type (linkml:date, mapped to '
-                      'xsd:date), which accepts YYYY-MM-DD strings. Constrained here '
-                      'within ProvenanceMetadata; the global range remains string for '
+    add_date: Optional[datetime ] = Field(default=None, description="""The date and time at which a record was added to the NMDC database. Note: legacy records may contain Gold-sourced dates that predate this convention; going forward this slot reflects NMDC-internal provenance.""", json_schema_extra = { "linkml_meta": {'comments': ['range: datetime is the LinkML datetime type (linkml:datetime, '
+                      'mapped to xsd:dateTime). JSON Schema validates this as RFC 3339 '
+                      'date-time, which requires a timezone designator (e.g. '
+                      '2021-03-31T00:00:00Z). Constrained here within '
+                      'ProvenanceMetadata; the global range remains string for '
                       'backward compatibility with legacy exported data.',
-                      'In YAML data files, date values must be quoted (e.g., '
-                      "'2021-03-31') to prevent PyYAML from parsing them as native "
-                      'datetime.date objects, which linkml-validate rejects.'],
+                      'Legacy records migrated from date-only values use a '
+                      'conventional T00:00:00Z time component, which should not be '
+                      'interpreted as an actual time of day.'],
          'domain_of': ['ProvenanceMetadata']} })
     git_url: Optional[str] = Field(default=None, description="""The url of the software repository used to generate the NMDC metadata record""", json_schema_extra = { "linkml_meta": {'domain_of': ['WorkflowExecution', 'ProvenanceMetadata'],
          'examples': [{'value': 'https://github.com/microbiomedata/mg_annotation/releases/tag/0.1'},
                       {'value': 'https://github.com/microbiomedata/metaMS/blob/master/metaMS/gcmsWorkflow.py'}]} })
-    mod_date: Optional[date] = Field(default=None, description="""The last date on which the database information was modified.""", json_schema_extra = { "linkml_meta": {'comments': ['range: date is the LinkML date type (linkml:date, mapped to '
-                      'xsd:date), which accepts YYYY-MM-DD strings. Constrained here '
-                      'within ProvenanceMetadata; the global range remains string for '
+    mod_date: Optional[datetime ] = Field(default=None, description="""The date and time at which a record was last modified in the NMDC database. Note: legacy records may contain Gold-sourced dates that predate this convention; going forward this slot reflects NMDC-internal provenance.""", json_schema_extra = { "linkml_meta": {'comments': ['range: datetime is the LinkML datetime type (linkml:datetime, '
+                      'mapped to xsd:dateTime). JSON Schema validates this as RFC 3339 '
+                      'date-time, which requires a timezone designator (e.g. '
+                      '2021-03-31T00:00:00Z). Constrained here within '
+                      'ProvenanceMetadata; the global range remains string for '
                       'backward compatibility with legacy exported data.',
-                      'In YAML data files, date values must be quoted (e.g., '
-                      "'2023-01-25') to prevent PyYAML from parsing them as native "
-                      'datetime.date objects, which linkml-validate rejects.'],
+                      'Legacy records migrated from date-only values use a '
+                      'conventional T00:00:00Z time component, which should not be '
+                      'interpreted as an actual time of day.'],
          'domain_of': ['ProvenanceMetadata']} })
     version: Optional[str] = Field(default=None, description="""The version tag of the software used to generate the NMDC metadata record""", json_schema_extra = { "linkml_meta": {'domain_of': ['WorkflowExecution', 'ProvenanceMetadata'],
          'exact_mappings': ['schema:version'],

@@ -532,13 +532,13 @@ classes:
       add_date:
         range: datetime
         comments:
-          - "range: datetime is the LinkML datetime type (linkml:datetime, mapped to xsd:dateTime), which accepts ISO 8601 datetime strings (YYYY-MM-DDTHH:MM:SS). Constrained here within ProvenanceMetadata; the global range remains string for backward compatibility with legacy exported data."
-          - Legacy records migrated from date-only values use a conventional T00:00:00 time component, which should not be interpreted as an actual time of day.
+          - "range: datetime is the LinkML datetime type (linkml:datetime, mapped to xsd:dateTime). JSON Schema validates this as RFC 3339 date-time, which requires a timezone designator (e.g. 2021-03-31T00:00:00Z). Constrained here within ProvenanceMetadata; the global range remains string for backward compatibility with legacy exported data."
+          - Legacy records migrated from date-only values use a conventional T00:00:00Z time component, which should not be interpreted as an actual time of day.
       mod_date:
         range: datetime
         comments:
-          - "range: datetime is the LinkML datetime type (linkml:datetime, mapped to xsd:dateTime), which accepts ISO 8601 datetime strings (YYYY-MM-DDTHH:MM:SS). Constrained here within ProvenanceMetadata; the global range remains string for backward compatibility with legacy exported data."
-          - Legacy records migrated from date-only values use a conventional T00:00:00 time component, which should not be interpreted as an actual time of day.
+          - "range: datetime is the LinkML datetime type (linkml:datetime, mapped to xsd:dateTime). JSON Schema validates this as RFC 3339 date-time, which requires a timezone designator (e.g. 2021-03-31T00:00:00Z). Constrained here within ProvenanceMetadata; the global range remains string for backward compatibility with legacy exported data."
+          - Legacy records migrated from date-only values use a conventional T00:00:00Z time component, which should not be interpreted as an actual time of day.
       version:
         description: The version tag of the software used to generate the NMDC metadata record
       git_url:

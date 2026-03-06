@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-28T11:37:08
+# Generation date: 2026-03-06T13:49:01
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -56,8 +56,8 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Boolean, Date, Decimal, Float, Integer, String, Uriorcurie
-from linkml_runtime.utils.metamodelcore import Bool, Decimal, URIorCURIE, XSDDate
+from linkml_runtime.linkml_model.types import Boolean, Datetime, Decimal, Float, Integer, String, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, Decimal, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
 version = "0.0.0"
@@ -6456,9 +6456,9 @@ class ProvenanceMetadata(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = NMDC.ProvenanceMetadata
 
     type: Union[str, URIorCURIE] = None
-    add_date: Optional[Union[str, XSDDate]] = None
+    add_date: Optional[Union[str, XSDDateTime]] = None
     git_url: Optional[str] = None
-    mod_date: Optional[Union[str, XSDDate]] = None
+    mod_date: Optional[Union[str, XSDDateTime]] = None
     version: Optional[str] = None
     source_system_of_record: Optional[Union[str, "SourceSystemEnum"]] = None
     submission_portal_identifier: Optional[Union[str, list[str]]] = empty_list()
@@ -6468,14 +6468,14 @@ class ProvenanceMetadata(YAMLRoot):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
 
-        if self.add_date is not None and not isinstance(self.add_date, XSDDate):
-            self.add_date = XSDDate(self.add_date)
+        if self.add_date is not None and not isinstance(self.add_date, XSDDateTime):
+            self.add_date = XSDDateTime(self.add_date)
 
         if self.git_url is not None and not isinstance(self.git_url, str):
             self.git_url = str(self.git_url)
 
-        if self.mod_date is not None and not isinstance(self.mod_date, XSDDate):
-            self.mod_date = XSDDate(self.mod_date)
+        if self.mod_date is not None and not isinstance(self.mod_date, XSDDateTime):
+            self.mod_date = XSDDateTime(self.mod_date)
 
         if self.version is not None and not isinstance(self.version, str):
             self.version = str(self.version)
@@ -13659,10 +13659,10 @@ slots.WorkflowExecution_version = Slot(uri=NMDC.version, name="WorkflowExecution
                    model_uri=NMDC.WorkflowExecution_version, domain=WorkflowExecution, range=Optional[str])
 
 slots.ProvenanceMetadata_add_date = Slot(uri=NMDC.add_date, name="ProvenanceMetadata_add_date", curie=NMDC.curie('add_date'),
-                   model_uri=NMDC.ProvenanceMetadata_add_date, domain=ProvenanceMetadata, range=Optional[Union[str, XSDDate]])
+                   model_uri=NMDC.ProvenanceMetadata_add_date, domain=ProvenanceMetadata, range=Optional[Union[str, XSDDateTime]])
 
 slots.ProvenanceMetadata_mod_date = Slot(uri=NMDC.mod_date, name="ProvenanceMetadata_mod_date", curie=NMDC.curie('mod_date'),
-                   model_uri=NMDC.ProvenanceMetadata_mod_date, domain=ProvenanceMetadata, range=Optional[Union[str, XSDDate]])
+                   model_uri=NMDC.ProvenanceMetadata_mod_date, domain=ProvenanceMetadata, range=Optional[Union[str, XSDDateTime]])
 
 slots.ProvenanceMetadata_version = Slot(uri=NMDC.version, name="ProvenanceMetadata_version", curie=NMDC.curie('version'),
                    model_uri=NMDC.ProvenanceMetadata_version, domain=ProvenanceMetadata, range=Optional[str])
