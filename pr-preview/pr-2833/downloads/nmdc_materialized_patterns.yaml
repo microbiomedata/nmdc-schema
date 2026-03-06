@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.0rc4.post5.dev0+72e91ab97
+version: 11.17.0rc4.post6.dev0+4349c606a
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19533,20 +19533,22 @@ classes:
         name: add_date
         comments:
         - 'range: datetime is the LinkML datetime type (linkml:datetime, mapped to
-          xsd:dateTime), which accepts ISO 8601 datetime strings (YYYY-MM-DDTHH:MM:SS).
-          Constrained here within ProvenanceMetadata; the global range remains string
-          for backward compatibility with legacy exported data.'
-        - Legacy records migrated from date-only values use a conventional T00:00:00
+          xsd:dateTime). JSON Schema validates this as RFC 3339 date-time, which requires
+          a timezone designator (e.g. 2021-03-31T00:00:00Z). Constrained here within
+          ProvenanceMetadata; the global range remains string for backward compatibility
+          with legacy exported data.'
+        - Legacy records migrated from date-only values use a conventional T00:00:00Z
           time component, which should not be interpreted as an actual time of day.
         range: datetime
       mod_date:
         name: mod_date
         comments:
         - 'range: datetime is the LinkML datetime type (linkml:datetime, mapped to
-          xsd:dateTime), which accepts ISO 8601 datetime strings (YYYY-MM-DDTHH:MM:SS).
-          Constrained here within ProvenanceMetadata; the global range remains string
-          for backward compatibility with legacy exported data.'
-        - Legacy records migrated from date-only values use a conventional T00:00:00
+          xsd:dateTime). JSON Schema validates this as RFC 3339 date-time, which requires
+          a timezone designator (e.g. 2021-03-31T00:00:00Z). Constrained here within
+          ProvenanceMetadata; the global range remains string for backward compatibility
+          with legacy exported data.'
+        - Legacy records migrated from date-only values use a conventional T00:00:00Z
           time component, which should not be interpreted as an actual time of day.
         range: datetime
       version:
