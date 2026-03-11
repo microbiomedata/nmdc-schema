@@ -706,7 +706,7 @@
 
 
 <h1 id="slot-mod_date">Slot: mod_date</h1>
-<p><em>The last date on which the database information was modified.</em></p>
+<p><em>The date on which information was last modified in a database.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/mod_date">nmdc:mod_date</a></p>
 <!-- no inheritance hierarchy -->
@@ -721,24 +721,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td>Biological source material which can be characterized by an experiment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td>A DataGeneration in which the sequence of DNA or RNA molecules is generated</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-<td>The methods and processes used to generate omics data from a biosample or org...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td>Spectrometry where the sample is converted into gaseous ions which are charac...</td>
-<td>no</td>
+<td><a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
+<td>Metadata pertaining to how a record was created</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -770,13 +755,12 @@
 <details>
 
 <pre><code class="language-yaml">name: mod_date
-description: The last date on which the database information was modified.
+description: The date on which information was last modified in a database.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: mod_date
 domain_of:
-- DataGeneration
-- Biosample
+- ProvenanceMetadata
 range: string
 
 </code></pre>

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.0rc3.post6.dev0+5639e1807
+version: 11.17.0rc4.post11.dev0+f5a8c1b95
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6793,12 +6793,12 @@ slots:
     is_a: gold_path_field
   add_date:
     name: add_date
-    description: The date on which the information was added to the database.
+    description: The date on which information was added to a database.
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   mod_date:
     name: mod_date
-    description: The last date on which the database information was modified.
+    description: The date on which information was last modified in a database.
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   ncbi_taxonomy_name:
@@ -19298,6 +19298,10 @@ classes:
         name: protocol_link
         multivalued: true
         inlined_as_list: true
+      provenance_metadata:
+        name: provenance_metadata
+        description: Provenance metadata for this Study, including when the record
+          was added to and last modified in the NMDC database.
     class_uri: nmdc:Study
   InformationObject:
     name: InformationObject
@@ -19395,13 +19399,12 @@ classes:
     is_a: DataEmitterProcess
     abstract: true
     slots:
-    - add_date
     - analyte_category
     - associated_studies
     - instrument_used
-    - mod_date
     - principal_investigator
     - instrument_instance_specifier
+    - provenance_metadata
     slot_usage:
       has_input:
         name: has_input
@@ -19425,6 +19428,10 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
           interpolated: true
+      provenance_metadata:
+        name: provenance_metadata
+        description: Provenance metadata for this DataGeneration, including when the
+          record was added to and last modified in the NMDC database.
     class_uri: nmdc:DataGeneration
   WorkflowExecution:
     name: WorkflowExecution
@@ -19518,12 +19525,29 @@ classes:
     description: Metadata pertaining to how a record was created.
     from_schema: https://w3id.org/nmdc/nmdc
     slots:
+    - add_date
     - git_url
+    - mod_date
     - version
     - source_system_of_record
     - submission_portal_identifier
     - type
     slot_usage:
+      add_date:
+        name: add_date
+        description: The date and time at which a record was added to the NMDC database.
+        comments:
+        - Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23
+          may carry GOLD-sourced dates rather than NMDC-asserted timestamps.
+        range: datetime
+      mod_date:
+        name: mod_date
+        description: The date and time at which a record was last modified in the
+          NMDC database.
+        comments:
+        - Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23
+          may carry GOLD-sourced dates rather than NMDC-asserted timestamps.
+        range: datetime
       version:
         name: version
         description: The version tag of the software used to generate the NMDC metadata
@@ -20174,12 +20198,10 @@ classes:
     - ecosystem_subtype
     - specific_ecosystem
     - ecosystem_path_id
-    - add_date
     - community
     - habitat
     - host_name
     - location
-    - mod_date
     - ncbi_taxonomy_name
     - proport_woa_temperature
     - salinity_category
@@ -20221,6 +20243,10 @@ classes:
     - lbc_thirty
     - lbceq
     slot_usage:
+      provenance_metadata:
+        name: provenance_metadata
+        description: Provenance metadata for this Biosample, including when the record
+          was added to and last modified in the NMDC database.
       collected_from:
         name: collected_from
         pattern: ^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$

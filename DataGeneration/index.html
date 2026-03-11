@@ -426,8 +426,6 @@
 
 
 
-  DataGeneration : add_date
-
   DataGeneration : alternative_identifiers
 
   DataGeneration : analyte_category
@@ -465,8 +463,6 @@
       DataGeneration --&gt; "*" Instrument : instrument_used
     click Instrument href "../Instrument"
 
-  DataGeneration : mod_date
-
   DataGeneration : name
 
   DataGeneration : principal_investigator
@@ -483,6 +479,11 @@
 
       DataGeneration --&gt; "0..1" Protocol : protocol_link
     click Protocol href "../Protocol"
+
+  DataGeneration : provenance_metadata
+
+      DataGeneration --&gt; "0..1" ProvenanceMetadata : provenance_metadata
+    click ProvenanceMetadata href "../ProvenanceMetadata"
 
   DataGeneration : qc_comment
 
@@ -527,12 +528,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../add_date/">add_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The date on which the information was added to the database</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../analyte_category/">analyte_category</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>The type of analyte(s) that were measured in the data generation process</td>
@@ -551,12 +546,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../mod_date/">mod_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The last date on which the database information was modified</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../principal_investigator/">principal_investigator</a></td>
 <td>0..1 <br/> <a href="../PersonValue/">PersonValue</a></td>
 <td>Principal Investigator who led the study and/or generated the dataset</td>
@@ -566,6 +555,12 @@
 <td><a href="../instrument_instance_specifier/">instrument_instance_specifier</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A unique value that identifies an individual instrument instance, such as a s...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../provenance_metadata/">provenance_metadata</a></td>
+<td>0..1 <br/> <a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
+<td>Provenance metadata for this DataGeneration, including when the record was ad...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -738,13 +733,12 @@ broad_mappings:
 is_a: DataEmitterProcess
 abstract: true
 slots:
-- add_date
 - analyte_category
 - associated_studies
 - instrument_used
-- mod_date
 - principal_investigator
 - instrument_instance_specifier
+- provenance_metadata
 slot_usage:
   has_input:
     name: has_input
@@ -765,6 +759,10 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provenance metadata for this DataGeneration, including when the record
+      was added to and last modified in the NMDC database.
 class_uri: nmdc:DataGeneration
 
 </code></pre>
@@ -811,18 +809,11 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provenance metadata for this DataGeneration, including when the record
+      was added to and last modified in the NMDC database.
 attributes:
-  add_date:
-    name: add_date
-    description: The date on which the information was added to the database.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: add_date
-    owner: DataGeneration
-    domain_of:
-    - DataGeneration
-    - Biosample
-    range: string
   analyte_category:
     name: analyte_category
     description: 'The type of analyte(s) that were measured in the data generation
@@ -868,17 +859,6 @@ attributes:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
       interpolated: true
-  mod_date:
-    name: mod_date
-    description: The last date on which the database information was modified.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: mod_date
-    owner: DataGeneration
-    domain_of:
-    - DataGeneration
-    - Biosample
-    range: string
   principal_investigator:
     name: principal_investigator
     description: Principal Investigator who led the study and/or generated the dataset.
@@ -904,6 +884,19 @@ attributes:
     domain_of:
     - DataGeneration
     range: string
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provenance metadata for this DataGeneration, including when the record
+      was added to and last modified in the NMDC database.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: provenance_metadata
+    owner: DataGeneration
+    domain_of:
+    - Study
+    - DataGeneration
+    - Biosample
+    range: ProvenanceMetadata
   has_input:
     name: has_input
     description: An input to a process.

@@ -603,7 +603,7 @@
 <tr>
 <td><a href="../provenance_metadata/">provenance_metadata</a></td>
 <td>0..1 <br/> <a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
-<td>Provides information about the provenance of a record</td>
+<td>Provenance metadata for this Study, including when the record was added to an...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -989,6 +989,10 @@ slot_usage:
     name: protocol_link
     multivalued: true
     inlined_as_list: true
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provenance metadata for this Study, including when the record was
+      added to and last modified in the NMDC database.
 class_uri: nmdc:Study
 
 </code></pre>
@@ -1110,6 +1114,10 @@ slot_usage:
     name: protocol_link
     multivalued: true
     inlined_as_list: true
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provenance metadata for this Study, including when the record was
+      added to and last modified in the NMDC database.
 attributes:
   emsl_project_identifiers:
     name: emsl_project_identifiers
@@ -1327,13 +1335,15 @@ attributes:
     multivalued: true
   provenance_metadata:
     name: provenance_metadata
-    description: Provides information about the provenance of a record.
+    description: Provenance metadata for this Study, including when the record was
+      added to and last modified in the NMDC database.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: provenance_metadata
     owner: Study
     domain_of:
     - Study
+    - DataGeneration
     - Biosample
     range: ProvenanceMetadata
   alternative_titles:

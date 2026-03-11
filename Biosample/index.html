@@ -838,7 +838,7 @@
 <tr>
 <td><a href="../provenance_metadata/">provenance_metadata</a></td>
 <td>0..1 <br/> <a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
-<td>Provides information about the provenance of a record</td>
+<td>Provenance metadata for this Biosample, including when the record was added t...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -3770,12 +3770,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../add_date/">add_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The date on which the information was added to the database</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../community/">community</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
@@ -3797,12 +3791,6 @@
 <td><a href="../location/">location</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../mod_date/">mod_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The last date on which the database information was modified</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -4651,12 +4639,10 @@ slots:
 - ecosystem_subtype
 - specific_ecosystem
 - ecosystem_path_id
-- add_date
 - community
 - habitat
 - host_name
 - location
-- mod_date
 - ncbi_taxonomy_name
 - proport_woa_temperature
 - salinity_category
@@ -4698,6 +4684,10 @@ slots:
 - lbc_thirty
 - lbceq
 slot_usage:
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provenance metadata for this Biosample, including when the record
+      was added to and last modified in the NMDC database.
   collected_from:
     name: collected_from
     structured_pattern:
@@ -5041,6 +5031,10 @@ exact_mappings:
 - http://purl.obolibrary.org/obo/FBcv_0003024
 is_a: Sample
 slot_usage:
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provenance metadata for this Biosample, including when the record
+      was added to and last modified in the NMDC database.
   collected_from:
     name: collected_from
     structured_pattern:
@@ -5494,13 +5488,15 @@ attributes:
     multivalued: true
   provenance_metadata:
     name: provenance_metadata
-    description: Provides information about the provenance of a record.
+    description: Provenance metadata for this Biosample, including when the record
+      was added to and last modified in the NMDC database.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: provenance_metadata
     owner: Biosample
     domain_of:
     - Study
+    - DataGeneration
     - Biosample
     range: ProvenanceMetadata
   gold_biosample_identifiers:
@@ -16760,17 +16756,6 @@ attributes:
     domain_of:
     - Biosample
     range: integer
-  add_date:
-    name: add_date
-    description: The date on which the information was added to the database.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: add_date
-    owner: Biosample
-    domain_of:
-    - DataGeneration
-    - Biosample
-    range: string
   community:
     name: community
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16806,17 +16791,6 @@ attributes:
     alias: location
     owner: Biosample
     domain_of:
-    - Biosample
-    range: string
-  mod_date:
-    name: mod_date
-    description: The last date on which the database information was modified.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: mod_date
-    owner: Biosample
-    domain_of:
-    - DataGeneration
     - Biosample
     range: string
   ncbi_taxonomy_name:
