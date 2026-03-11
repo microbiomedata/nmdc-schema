@@ -58,6 +58,12 @@ def normalize_date_to_datetime(value: str) -> str:
         ...
     ValueError: Cannot normalize date string: 'fooo-ba-ar'
 
+    ISO datetime with timezone offset is preserved as-is:
+    >>> normalize_date_to_datetime('2024-11-07T15:02:18+00:00')
+    '2024-11-07T15:02:18+00:00'
+    >>> normalize_date_to_datetime('2024-11-07T15:02:18-05:00')
+    '2024-11-07T15:02:18-05:00'
+
     Compact ISO 8601 (no separators) is not matched by the regex and raises ValueError:
     >>> normalize_date_to_datetime('20260310T042405')
     Traceback (most recent call last):
@@ -69,7 +75,11 @@ def normalize_date_to_datetime(value: str) -> str:
 
     # Already ISO datetime (YYYY-MM-DDTHH:MM:SS...)
     if _ISO_DATETIME_RE.match(value):
-        return value.rstrip("Z") + "Z"
+        # If a timezone designator is already present (trailing Z or numeric offset),
+        # return the value unchanged; otherwise, append Z to indicate UTC.
+        if value.endswith("Z") or re.search(r"[+-]\d{2}:\d{2}$", value):
+            return value
+        return value + "Z"
 
     # ISO date (YYYY-MM-DD) — append conventional midnight time
     if _ISO_DATE_RE.match(value):
