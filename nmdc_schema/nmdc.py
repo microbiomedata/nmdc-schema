@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-06T13:49:01
+# Generation date: 2026-03-11T17:37:51
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -523,17 +523,11 @@ class Database(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="field_research_site_set", slot_type=FieldResearchSite, key_name="id", keyed=True)
 
-        if not isinstance(self.functional_annotation_agg, list):
-            self.functional_annotation_agg = [self.functional_annotation_agg] if self.functional_annotation_agg is not None else []
-        self.functional_annotation_agg = [v if isinstance(v, FunctionalAnnotationAggMember) else FunctionalAnnotationAggMember(**as_dict(v)) for v in self.functional_annotation_agg]
+        self._normalize_inlined_as_list(slot_name="functional_annotation_agg", slot_type=FunctionalAnnotationAggMember, key_name="gene_function_id", keyed=False)
 
-        if not isinstance(self.functional_annotation_set, list):
-            self.functional_annotation_set = [self.functional_annotation_set] if self.functional_annotation_set is not None else []
-        self.functional_annotation_set = [v if isinstance(v, FunctionalAnnotation) else FunctionalAnnotation(**as_dict(v)) for v in self.functional_annotation_set]
+        self._normalize_inlined_as_list(slot_name="functional_annotation_set", slot_type=FunctionalAnnotation, key_name="type", keyed=False)
 
-        if not isinstance(self.genome_feature_set, list):
-            self.genome_feature_set = [self.genome_feature_set] if self.genome_feature_set is not None else []
-        self.genome_feature_set = [v if isinstance(v, GenomeFeature) else GenomeFeature(**as_dict(v)) for v in self.genome_feature_set]
+        self._normalize_inlined_as_list(slot_name="genome_feature_set", slot_type=GenomeFeature, key_name="end", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="instrument_set", slot_type=Instrument, key_name="id", keyed=True)
 
@@ -678,9 +672,7 @@ class MobilePhaseSegment(YAMLRoot):
         if self.duration is not None and not isinstance(self.duration, QuantityValue):
             self.duration = QuantityValue(**as_dict(self.duration))
 
-        if not isinstance(self.substances_used, list):
-            self.substances_used = [self.substances_used] if self.substances_used is not None else []
-        self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
+        self._normalize_inlined_as_list(slot_name="substances_used", slot_type=PortionOfSubstance, key_name="type", keyed=False)
 
         if self.volume is not None and not isinstance(self.volume, QuantityValue):
             self.volume = QuantityValue(**as_dict(self.volume))
@@ -1373,9 +1365,7 @@ class OntologyClass(NamedThing):
             self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
         self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
 
-        if not isinstance(self.relations, list):
-            self.relations = [self.relations] if self.relations is not None else []
-        self.relations = [v if isinstance(v, OntologyRelation) else OntologyRelation(**as_dict(v)) for v in self.relations]
+        self._normalize_inlined_as_list(slot_name="relations", slot_type=OntologyRelation, key_name="type", keyed=False)
 
         if self.definition is not None and not isinstance(self.definition, str):
             self.definition = str(self.definition)
@@ -2204,9 +2194,7 @@ class Biosample(Sample):
         if self.aero_struc is not None and not isinstance(self.aero_struc, AeroStrucEnum):
             self.aero_struc = AeroStrucEnum(self.aero_struc)
 
-        if not isinstance(self.agrochem_addition, list):
-            self.agrochem_addition = [self.agrochem_addition] if self.agrochem_addition is not None else []
-        self.agrochem_addition = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.agrochem_addition]
+        self._normalize_inlined_as_list(slot_name="agrochem_addition", slot_type=TextValue, key_name="type", keyed=False)
 
         if not isinstance(self.air_PM_concen, list):
             self.air_PM_concen = [self.air_PM_concen] if self.air_PM_concen is not None else []
@@ -2215,9 +2203,7 @@ class Biosample(Sample):
         if self.air_temp is not None and not isinstance(self.air_temp, QuantityValue):
             self.air_temp = QuantityValue(**as_dict(self.air_temp))
 
-        if not isinstance(self.air_temp_regm, list):
-            self.air_temp_regm = [self.air_temp_regm] if self.air_temp_regm is not None else []
-        self.air_temp_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.air_temp_regm]
+        self._normalize_inlined_as_list(slot_name="air_temp_regm", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.al_sat is not None and not isinstance(self.al_sat, QuantityValue):
             self.al_sat = QuantityValue(**as_dict(self.al_sat))
@@ -2255,9 +2241,7 @@ class Biosample(Sample):
         if self.annual_temp is not None and not isinstance(self.annual_temp, QuantityValue):
             self.annual_temp = QuantityValue(**as_dict(self.annual_temp))
 
-        if not isinstance(self.antibiotic_regm, list):
-            self.antibiotic_regm = [self.antibiotic_regm] if self.antibiotic_regm is not None else []
-        self.antibiotic_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.antibiotic_regm]
+        self._normalize_inlined_as_list(slot_name="antibiotic_regm", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.api is not None and not isinstance(self.api, QuantityValue):
             self.api = QuantityValue(**as_dict(self.api))
@@ -2271,9 +2255,7 @@ class Biosample(Sample):
         if self.asphaltenes_pc is not None and not isinstance(self.asphaltenes_pc, TextValue):
             self.asphaltenes_pc = TextValue(**as_dict(self.asphaltenes_pc))
 
-        if not isinstance(self.atmospheric_data, list):
-            self.atmospheric_data = [self.atmospheric_data] if self.atmospheric_data is not None else []
-        self.atmospheric_data = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.atmospheric_data]
+        self._normalize_inlined_as_list(slot_name="atmospheric_data", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.avg_dew_point is not None and not isinstance(self.avg_dew_point, QuantityValue):
             self.avg_dew_point = QuantityValue(**as_dict(self.avg_dew_point))
@@ -2320,9 +2302,7 @@ class Biosample(Sample):
         if self.biol_stat is not None and not isinstance(self.biol_stat, BiolStatEnum):
             self.biol_stat = BiolStatEnum(self.biol_stat)
 
-        if not isinstance(self.biomass, list):
-            self.biomass = [self.biomass] if self.biomass is not None else []
-        self.biomass = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.biomass]
+        self._normalize_inlined_as_list(slot_name="biomass", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.biotic_regm is not None and not isinstance(self.biotic_regm, TextValue):
             self.biotic_regm = TextValue(**as_dict(self.biotic_regm))
@@ -2397,13 +2377,9 @@ class Biosample(Sample):
         if self.ceil_water_mold is not None and not isinstance(self.ceil_water_mold, MoldVisibilityEnum):
             self.ceil_water_mold = MoldVisibilityEnum(self.ceil_water_mold)
 
-        if not isinstance(self.chem_administration, list):
-            self.chem_administration = [self.chem_administration] if self.chem_administration is not None else []
-        self.chem_administration = [v if isinstance(v, ControlledTermValue) else ControlledTermValue(**as_dict(v)) for v in self.chem_administration]
+        self._normalize_inlined_as_list(slot_name="chem_administration", slot_type=ControlledTermValue, key_name="type", keyed=False)
 
-        if not isinstance(self.chem_mutagen, list):
-            self.chem_mutagen = [self.chem_mutagen] if self.chem_mutagen is not None else []
-        self.chem_mutagen = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.chem_mutagen]
+        self._normalize_inlined_as_list(slot_name="chem_mutagen", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.chem_oxygen_dem is not None and not isinstance(self.chem_oxygen_dem, QuantityValue):
             self.chem_oxygen_dem = QuantityValue(**as_dict(self.chem_oxygen_dem))
@@ -2420,9 +2396,7 @@ class Biosample(Sample):
         if self.chlorophyll is not None and not isinstance(self.chlorophyll, QuantityValue):
             self.chlorophyll = QuantityValue(**as_dict(self.chlorophyll))
 
-        if not isinstance(self.climate_environment, list):
-            self.climate_environment = [self.climate_environment] if self.climate_environment is not None else []
-        self.climate_environment = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.climate_environment]
+        self._normalize_inlined_as_list(slot_name="climate_environment", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.collection_date is not None and not isinstance(self.collection_date, TimestampValue):
             self.collection_date = TimestampValue(**as_dict(self.collection_date))
@@ -2463,9 +2437,7 @@ class Biosample(Sample):
         if self.dew_point is not None and not isinstance(self.dew_point, QuantityValue):
             self.dew_point = QuantityValue(**as_dict(self.dew_point))
 
-        if not isinstance(self.diether_lipids, list):
-            self.diether_lipids = [self.diether_lipids] if self.diether_lipids is not None else []
-        self.diether_lipids = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.diether_lipids]
+        self._normalize_inlined_as_list(slot_name="diether_lipids", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.diss_carb_dioxide is not None and not isinstance(self.diss_carb_dioxide, QuantityValue):
             self.diss_carb_dioxide = QuantityValue(**as_dict(self.diss_carb_dioxide))
@@ -2548,9 +2520,7 @@ class Biosample(Sample):
         if self.elevator is not None and not isinstance(self.elevator, TextValue):
             self.elevator = TextValue(**as_dict(self.elevator))
 
-        if not isinstance(self.emulsions, list):
-            self.emulsions = [self.emulsions] if self.emulsions is not None else []
-        self.emulsions = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.emulsions]
+        self._normalize_inlined_as_list(slot_name="emulsions", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.env_package is not None and not isinstance(self.env_package, TextValue):
             self.env_package = TextValue(**as_dict(self.env_package))
@@ -2585,9 +2555,7 @@ class Biosample(Sample):
         if self.fao_class is not None and not isinstance(self.fao_class, FaoClassEnum):
             self.fao_class = FaoClassEnum(self.fao_class)
 
-        if not isinstance(self.fertilizer_regm, list):
-            self.fertilizer_regm = [self.fertilizer_regm] if self.fertilizer_regm is not None else []
-        self.fertilizer_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.fertilizer_regm]
+        self._normalize_inlined_as_list(slot_name="fertilizer_regm", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.field is not None and not isinstance(self.field, TextValue):
             self.field = TextValue(**as_dict(self.field))
@@ -2638,20 +2606,14 @@ class Biosample(Sample):
         if self.freq_cook is not None and not isinstance(self.freq_cook, QuantityValue):
             self.freq_cook = QuantityValue(**as_dict(self.freq_cook))
 
-        if not isinstance(self.fungicide_regm, list):
-            self.fungicide_regm = [self.fungicide_regm] if self.fungicide_regm is not None else []
-        self.fungicide_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.fungicide_regm]
+        self._normalize_inlined_as_list(slot_name="fungicide_regm", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.furniture is not None and not isinstance(self.furniture, FurnitureEnum):
             self.furniture = FurnitureEnum(self.furniture)
 
-        if not isinstance(self.gaseous_environment, list):
-            self.gaseous_environment = [self.gaseous_environment] if self.gaseous_environment is not None else []
-        self.gaseous_environment = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.gaseous_environment]
+        self._normalize_inlined_as_list(slot_name="gaseous_environment", slot_type=TextValue, key_name="type", keyed=False)
 
-        if not isinstance(self.gaseous_substances, list):
-            self.gaseous_substances = [self.gaseous_substances] if self.gaseous_substances is not None else []
-        self.gaseous_substances = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.gaseous_substances]
+        self._normalize_inlined_as_list(slot_name="gaseous_substances", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.gender_restroom is not None and not isinstance(self.gender_restroom, GenderRestroomEnum):
             self.gender_restroom = GenderRestroomEnum(self.gender_restroom)
@@ -2668,9 +2630,7 @@ class Biosample(Sample):
         if self.gravidity is not None and not isinstance(self.gravidity, TextValue):
             self.gravidity = TextValue(**as_dict(self.gravidity))
 
-        if not isinstance(self.gravity, list):
-            self.gravity = [self.gravity] if self.gravity is not None else []
-        self.gravity = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.gravity]
+        self._normalize_inlined_as_list(slot_name="gravity", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.growth_facil is not None and not isinstance(self.growth_facil, ControlledTermValue):
             self.growth_facil = ControlledTermValue(**as_dict(self.growth_facil))
@@ -2678,9 +2638,7 @@ class Biosample(Sample):
         if self.growth_habit is not None and not isinstance(self.growth_habit, GrowthHabitEnum):
             self.growth_habit = GrowthHabitEnum(self.growth_habit)
 
-        if not isinstance(self.growth_hormone_regm, list):
-            self.growth_hormone_regm = [self.growth_hormone_regm] if self.growth_hormone_regm is not None else []
-        self.growth_hormone_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.growth_hormone_regm]
+        self._normalize_inlined_as_list(slot_name="growth_hormone_regm", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.hall_count is not None and not isinstance(self.hall_count, TextValue):
             self.hall_count = TextValue(**as_dict(self.hall_count))
@@ -2719,9 +2677,7 @@ class Biosample(Sample):
         if self.heat_system_id is not None and not isinstance(self.heat_system_id, TextValue):
             self.heat_system_id = TextValue(**as_dict(self.heat_system_id))
 
-        if not isinstance(self.heavy_metals, list):
-            self.heavy_metals = [self.heavy_metals] if self.heavy_metals is not None else []
-        self.heavy_metals = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.heavy_metals]
+        self._normalize_inlined_as_list(slot_name="heavy_metals", slot_type=TextValue, key_name="type", keyed=False)
 
         if not isinstance(self.heavy_metals_meth, list):
             self.heavy_metals_meth = [self.heavy_metals_meth] if self.heavy_metals_meth is not None else []
@@ -2730,9 +2686,7 @@ class Biosample(Sample):
         if self.height_carper_fiber is not None and not isinstance(self.height_carper_fiber, QuantityValue):
             self.height_carper_fiber = QuantityValue(**as_dict(self.height_carper_fiber))
 
-        if not isinstance(self.herbicide_regm, list):
-            self.herbicide_regm = [self.herbicide_regm] if self.herbicide_regm is not None else []
-        self.herbicide_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.herbicide_regm]
+        self._normalize_inlined_as_list(slot_name="herbicide_regm", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.horizon_meth is not None and not isinstance(self.horizon_meth, str):
             self.horizon_meth = str(self.horizon_meth)
@@ -2758,9 +2712,7 @@ class Biosample(Sample):
         if self.host_common_name is not None and not isinstance(self.host_common_name, TextValue):
             self.host_common_name = TextValue(**as_dict(self.host_common_name))
 
-        if not isinstance(self.host_diet, list):
-            self.host_diet = [self.host_diet] if self.host_diet is not None else []
-        self.host_diet = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.host_diet]
+        self._normalize_inlined_as_list(slot_name="host_diet", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.host_dry_mass is not None and not isinstance(self.host_dry_mass, QuantityValue):
             self.host_dry_mass = QuantityValue(**as_dict(self.host_dry_mass))
@@ -2823,9 +2775,7 @@ class Biosample(Sample):
         if self.humidity is not None and not isinstance(self.humidity, QuantityValue):
             self.humidity = QuantityValue(**as_dict(self.humidity))
 
-        if not isinstance(self.humidity_regm, list):
-            self.humidity_regm = [self.humidity_regm] if self.humidity_regm is not None else []
-        self.humidity_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.humidity_regm]
+        self._normalize_inlined_as_list(slot_name="humidity_regm", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.indoor_space is not None and not isinstance(self.indoor_space, IndoorSpaceEnum):
             self.indoor_space = IndoorSpaceEnum(self.indoor_space)
@@ -2836,9 +2786,7 @@ class Biosample(Sample):
         if self.indust_eff_percent is not None and not isinstance(self.indust_eff_percent, QuantityValue):
             self.indust_eff_percent = QuantityValue(**as_dict(self.indust_eff_percent))
 
-        if not isinstance(self.inorg_particles, list):
-            self.inorg_particles = [self.inorg_particles] if self.inorg_particles is not None else []
-        self.inorg_particles = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.inorg_particles]
+        self._normalize_inlined_as_list(slot_name="inorg_particles", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.inside_lux is not None and not isinstance(self.inside_lux, QuantityValue):
             self.inside_lux = QuantityValue(**as_dict(self.inside_lux))
@@ -2914,17 +2862,11 @@ class Biosample(Sample):
         if self.microbial_biomass is not None and not isinstance(self.microbial_biomass, QuantityValue):
             self.microbial_biomass = QuantityValue(**as_dict(self.microbial_biomass))
 
-        if not isinstance(self.mineral_nutr_regm, list):
-            self.mineral_nutr_regm = [self.mineral_nutr_regm] if self.mineral_nutr_regm is not None else []
-        self.mineral_nutr_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.mineral_nutr_regm]
+        self._normalize_inlined_as_list(slot_name="mineral_nutr_regm", slot_type=TextValue, key_name="type", keyed=False)
 
-        if not isinstance(self.misc_param, list):
-            self.misc_param = [self.misc_param] if self.misc_param is not None else []
-        self.misc_param = [v if isinstance(v, PropertyAssertion) else PropertyAssertion(**as_dict(v)) for v in self.misc_param]
+        self._normalize_inlined_as_list(slot_name="misc_param", slot_type=PropertyAssertion, key_name="type", keyed=False)
 
-        if not isinstance(self.n_alkanes, list):
-            self.n_alkanes = [self.n_alkanes] if self.n_alkanes is not None else []
-        self.n_alkanes = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.n_alkanes]
+        self._normalize_inlined_as_list(slot_name="n_alkanes", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.nitrate is not None and not isinstance(self.nitrate, QuantityValue):
             self.nitrate = QuantityValue(**as_dict(self.nitrate))
@@ -2969,13 +2911,9 @@ class Biosample(Sample):
         if self.org_nitro is not None and not isinstance(self.org_nitro, QuantityValue):
             self.org_nitro = QuantityValue(**as_dict(self.org_nitro))
 
-        if not isinstance(self.org_particles, list):
-            self.org_particles = [self.org_particles] if self.org_particles is not None else []
-        self.org_particles = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.org_particles]
+        self._normalize_inlined_as_list(slot_name="org_particles", slot_type=TextValue, key_name="type", keyed=False)
 
-        if not isinstance(self.organism_count, list):
-            self.organism_count = [self.organism_count] if self.organism_count is not None else []
-        self.organism_count = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.organism_count]
+        self._normalize_inlined_as_list(slot_name="organism_count", slot_type=QuantityValue, key_name="type", keyed=False)
 
         if self.owc_tvdss is not None and not isinstance(self.owc_tvdss, QuantityValue):
             self.owc_tvdss = QuantityValue(**as_dict(self.owc_tvdss))
@@ -2992,20 +2930,14 @@ class Biosample(Sample):
         if self.part_org_nitro is not None and not isinstance(self.part_org_nitro, QuantityValue):
             self.part_org_nitro = QuantityValue(**as_dict(self.part_org_nitro))
 
-        if not isinstance(self.particle_class, list):
-            self.particle_class = [self.particle_class] if self.particle_class is not None else []
-        self.particle_class = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.particle_class]
+        self._normalize_inlined_as_list(slot_name="particle_class", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.permeability is not None and not isinstance(self.permeability, TextValue):
             self.permeability = TextValue(**as_dict(self.permeability))
 
-        if not isinstance(self.perturbation, list):
-            self.perturbation = [self.perturbation] if self.perturbation is not None else []
-        self.perturbation = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.perturbation]
+        self._normalize_inlined_as_list(slot_name="perturbation", slot_type=TextValue, key_name="type", keyed=False)
 
-        if not isinstance(self.pesticide_regm, list):
-            self.pesticide_regm = [self.pesticide_regm] if self.pesticide_regm is not None else []
-        self.pesticide_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.pesticide_regm]
+        self._normalize_inlined_as_list(slot_name="pesticide_regm", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.petroleum_hydrocarb is not None and not isinstance(self.petroleum_hydrocarb, QuantityValue):
             self.petroleum_hydrocarb = QuantityValue(**as_dict(self.petroleum_hydrocarb))
@@ -3016,20 +2948,14 @@ class Biosample(Sample):
         if self.ph_meth is not None and not isinstance(self.ph_meth, TextValue):
             self.ph_meth = TextValue(**as_dict(self.ph_meth))
 
-        if not isinstance(self.ph_regm, list):
-            self.ph_regm = [self.ph_regm] if self.ph_regm is not None else []
-        self.ph_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.ph_regm]
+        self._normalize_inlined_as_list(slot_name="ph_regm", slot_type=TextValue, key_name="type", keyed=False)
 
-        if not isinstance(self.phaeopigments, list):
-            self.phaeopigments = [self.phaeopigments] if self.phaeopigments is not None else []
-        self.phaeopigments = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.phaeopigments]
+        self._normalize_inlined_as_list(slot_name="phaeopigments", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.phosphate is not None and not isinstance(self.phosphate, QuantityValue):
             self.phosphate = QuantityValue(**as_dict(self.phosphate))
 
-        if not isinstance(self.phosplipid_fatt_acid, list):
-            self.phosplipid_fatt_acid = [self.phosplipid_fatt_acid] if self.phosplipid_fatt_acid is not None else []
-        self.phosplipid_fatt_acid = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.phosplipid_fatt_acid]
+        self._normalize_inlined_as_list(slot_name="phosplipid_fatt_acid", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.photon_flux is not None and not isinstance(self.photon_flux, QuantityValue):
             self.photon_flux = QuantityValue(**as_dict(self.photon_flux))
@@ -3046,9 +2972,7 @@ class Biosample(Sample):
         if self.plant_struc is not None and not isinstance(self.plant_struc, ControlledTermValue):
             self.plant_struc = ControlledTermValue(**as_dict(self.plant_struc))
 
-        if not isinstance(self.pollutants, list):
-            self.pollutants = [self.pollutants] if self.pollutants is not None else []
-        self.pollutants = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.pollutants]
+        self._normalize_inlined_as_list(slot_name="pollutants", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.porosity is not None and not isinstance(self.porosity, TextValue):
             self.porosity = TextValue(**as_dict(self.porosity))
@@ -3092,13 +3016,9 @@ class Biosample(Sample):
         if self.quad_pos is not None and not isinstance(self.quad_pos, QuadPosEnum):
             self.quad_pos = QuadPosEnum(self.quad_pos)
 
-        if not isinstance(self.radiation_regm, list):
-            self.radiation_regm = [self.radiation_regm] if self.radiation_regm is not None else []
-        self.radiation_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.radiation_regm]
+        self._normalize_inlined_as_list(slot_name="radiation_regm", slot_type=TextValue, key_name="type", keyed=False)
 
-        if not isinstance(self.rainfall_regm, list):
-            self.rainfall_regm = [self.rainfall_regm] if self.rainfall_regm is not None else []
-        self.rainfall_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.rainfall_regm]
+        self._normalize_inlined_as_list(slot_name="rainfall_regm", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.reactor_type is not None and not isinstance(self.reactor_type, TextValue):
             self.reactor_type = TextValue(**as_dict(self.reactor_type))
@@ -3205,9 +3125,7 @@ class Biosample(Sample):
         if self.salinity_meth is not None and not isinstance(self.salinity_meth, str):
             self.salinity_meth = str(self.salinity_meth)
 
-        if not isinstance(self.salt_regm, list):
-            self.salt_regm = [self.salt_regm] if self.salt_regm is not None else []
-        self.salt_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.salt_regm]
+        self._normalize_inlined_as_list(slot_name="salt_regm", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.samp_capt_status is not None and not isinstance(self.samp_capt_status, SampCaptStatusEnum):
             self.samp_capt_status = SampCaptStatusEnum(self.samp_capt_status)
@@ -3291,9 +3209,7 @@ class Biosample(Sample):
         if self.season is not None and not isinstance(self.season, SeasonEnum):
             self.season = SeasonEnum(self.season)
 
-        if not isinstance(self.season_environment, list):
-            self.season_environment = [self.season_environment] if self.season_environment is not None else []
-        self.season_environment = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.season_environment]
+        self._normalize_inlined_as_list(slot_name="season_environment", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.season_precpt is not None and not isinstance(self.season_precpt, QuantityValue):
             self.season_precpt = QuantityValue(**as_dict(self.season_precpt))
@@ -3373,13 +3289,9 @@ class Biosample(Sample):
         if self.solar_irradiance is not None and not isinstance(self.solar_irradiance, QuantityValue):
             self.solar_irradiance = QuantityValue(**as_dict(self.solar_irradiance))
 
-        if not isinstance(self.soluble_inorg_mat, list):
-            self.soluble_inorg_mat = [self.soluble_inorg_mat] if self.soluble_inorg_mat is not None else []
-        self.soluble_inorg_mat = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.soluble_inorg_mat]
+        self._normalize_inlined_as_list(slot_name="soluble_inorg_mat", slot_type=TextValue, key_name="type", keyed=False)
 
-        if not isinstance(self.soluble_org_mat, list):
-            self.soluble_org_mat = [self.soluble_org_mat] if self.soluble_org_mat is not None else []
-        self.soluble_org_mat = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.soluble_org_mat]
+        self._normalize_inlined_as_list(slot_name="soluble_org_mat", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.soluble_react_phosp is not None and not isinstance(self.soluble_react_phosp, QuantityValue):
             self.soluble_react_phosp = QuantityValue(**as_dict(self.soluble_react_phosp))
@@ -3408,9 +3320,7 @@ class Biosample(Sample):
         if self.sr_lithology is not None and not isinstance(self.sr_lithology, SrLithologyEnum):
             self.sr_lithology = SrLithologyEnum(self.sr_lithology)
 
-        if not isinstance(self.standing_water_regm, list):
-            self.standing_water_regm = [self.standing_water_regm] if self.standing_water_regm is not None else []
-        self.standing_water_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.standing_water_regm]
+        self._normalize_inlined_as_list(slot_name="standing_water_regm", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.store_cond is not None and not isinstance(self.store_cond, TextValue):
             self.store_cond = TextValue(**as_dict(self.store_cond))
@@ -3450,9 +3360,7 @@ class Biosample(Sample):
         if self.suspend_part_matter is not None and not isinstance(self.suspend_part_matter, QuantityValue):
             self.suspend_part_matter = QuantityValue(**as_dict(self.suspend_part_matter))
 
-        if not isinstance(self.suspend_solids, list):
-            self.suspend_solids = [self.suspend_solids] if self.suspend_solids is not None else []
-        self.suspend_solids = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.suspend_solids]
+        self._normalize_inlined_as_list(slot_name="suspend_solids", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.tan is not None and not isinstance(self.tan, QuantityValue):
             self.tan = QuantityValue(**as_dict(self.tan))
@@ -3560,9 +3468,7 @@ class Biosample(Sample):
         if self.viscosity is not None and not isinstance(self.viscosity, TextValue):
             self.viscosity = TextValue(**as_dict(self.viscosity))
 
-        if not isinstance(self.volatile_org_comp, list):
-            self.volatile_org_comp = [self.volatile_org_comp] if self.volatile_org_comp is not None else []
-        self.volatile_org_comp = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.volatile_org_comp]
+        self._normalize_inlined_as_list(slot_name="volatile_org_comp", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.wall_area is not None and not isinstance(self.wall_area, QuantityValue):
             self.wall_area = QuantityValue(**as_dict(self.wall_area))
@@ -3616,13 +3522,9 @@ class Biosample(Sample):
         if self.water_prod_rate is not None and not isinstance(self.water_prod_rate, QuantityValue):
             self.water_prod_rate = QuantityValue(**as_dict(self.water_prod_rate))
 
-        if not isinstance(self.water_temp_regm, list):
-            self.water_temp_regm = [self.water_temp_regm] if self.water_temp_regm is not None else []
-        self.water_temp_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.water_temp_regm]
+        self._normalize_inlined_as_list(slot_name="water_temp_regm", slot_type=TextValue, key_name="type", keyed=False)
 
-        if not isinstance(self.watering_regm, list):
-            self.watering_regm = [self.watering_regm] if self.watering_regm is not None else []
-        self.watering_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.watering_regm]
+        self._normalize_inlined_as_list(slot_name="watering_regm", slot_type=TextValue, key_name="type", keyed=False)
 
         if self.weekday is not None and not isinstance(self.weekday, WeekdayEnum):
             self.weekday = WeekdayEnum(self.weekday)
@@ -4045,9 +3947,7 @@ class PlannedProcess(NamedThing):
         if self.qc_comment is not None and not isinstance(self.qc_comment, str):
             self.qc_comment = str(self.qc_comment)
 
-        if not isinstance(self.has_failure_categorization, list):
-            self.has_failure_categorization = [self.has_failure_categorization] if self.has_failure_categorization is not None else []
-        self.has_failure_categorization = [v if isinstance(v, FailureCategorization) else FailureCategorization(**as_dict(v)) for v in self.has_failure_categorization]
+        self._normalize_inlined_as_list(slot_name="has_failure_categorization", slot_type=FailureCategorization, key_name="type", keyed=False)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -4120,9 +4020,7 @@ class StorageProcess(PlannedProcess):
         if not isinstance(self.id, StorageProcessId):
             self.id = StorageProcessId(self.id)
 
-        if not isinstance(self.substances_used, list):
-            self.substances_used = [self.substances_used] if self.substances_used is not None else []
-        self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
+        self._normalize_inlined_as_list(slot_name="substances_used", slot_type=PortionOfSubstance, key_name="type", keyed=False)
 
         if self.contained_in is not None and not isinstance(self.contained_in, ContainerCategoryEnum):
             self.contained_in = ContainerCategoryEnum(self.contained_in)
@@ -4262,9 +4160,7 @@ class Extraction(MaterialProcessing):
             self.has_output = [self.has_output] if self.has_output is not None else []
         self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
-        if not isinstance(self.substances_used, list):
-            self.substances_used = [self.substances_used] if self.substances_used is not None else []
-        self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
+        self._normalize_inlined_as_list(slot_name="substances_used", slot_type=PortionOfSubstance, key_name="type", keyed=False)
 
         if not isinstance(self.extraction_targets, list):
             self.extraction_targets = [self.extraction_targets] if self.extraction_targets is not None else []
@@ -4567,9 +4463,7 @@ class ChromatographicSeparationProcess(MaterialProcessing):
         if self.chromatographic_category is not None and not isinstance(self.chromatographic_category, ChromatographicCategoryEnum):
             self.chromatographic_category = ChromatographicCategoryEnum(self.chromatographic_category)
 
-        if not isinstance(self.ordered_mobile_phases, list):
-            self.ordered_mobile_phases = [self.ordered_mobile_phases] if self.ordered_mobile_phases is not None else []
-        self.ordered_mobile_phases = [v if isinstance(v, MobilePhaseSegment) else MobilePhaseSegment(**as_dict(v)) for v in self.ordered_mobile_phases]
+        self._normalize_inlined_as_list(slot_name="ordered_mobile_phases", slot_type=MobilePhaseSegment, key_name="type", keyed=False)
 
         if self.stationary_phase is not None and not isinstance(self.stationary_phase, StationaryPhaseEnum):
             self.stationary_phase = StationaryPhaseEnum(self.stationary_phase)
@@ -4621,9 +4515,7 @@ class DissolvingProcess(MaterialProcessing):
         if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
             self.temperature = QuantityValue(**as_dict(self.temperature))
 
-        if not isinstance(self.substances_used, list):
-            self.substances_used = [self.substances_used] if self.substances_used is not None else []
-        self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
+        self._normalize_inlined_as_list(slot_name="substances_used", slot_type=PortionOfSubstance, key_name="type", keyed=False)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -4667,9 +4559,7 @@ class ChemicalConversionProcess(MaterialProcessing):
         if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
             self.temperature = QuantityValue(**as_dict(self.temperature))
 
-        if not isinstance(self.substances_used, list):
-            self.substances_used = [self.substances_used] if self.substances_used is not None else []
-        self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
+        self._normalize_inlined_as_list(slot_name="substances_used", slot_type=PortionOfSubstance, key_name="type", keyed=False)
 
         if self.substances_volume is not None and not isinstance(self.substances_volume, QuantityValue):
             self.substances_volume = QuantityValue(**as_dict(self.substances_volume))
@@ -4918,17 +4808,13 @@ class Study(NamedThing):
         if self.specific_ecosystem is not None and not isinstance(self.specific_ecosystem, str):
             self.specific_ecosystem = str(self.specific_ecosystem)
 
-        if not isinstance(self.associated_dois, list):
-            self.associated_dois = [self.associated_dois] if self.associated_dois is not None else []
-        self.associated_dois = [v if isinstance(v, Doi) else Doi(**as_dict(v)) for v in self.associated_dois]
+        self._normalize_inlined_as_list(slot_name="associated_dois", slot_type=Doi, key_name="doi_value", keyed=False)
 
         if not isinstance(self.funding_sources, list):
             self.funding_sources = [self.funding_sources] if self.funding_sources is not None else []
         self.funding_sources = [v if isinstance(v, str) else str(v) for v in self.funding_sources]
 
-        if not isinstance(self.has_credit_associations, list):
-            self.has_credit_associations = [self.has_credit_associations] if self.has_credit_associations is not None else []
-        self.has_credit_associations = [v if isinstance(v, CreditAssociation) else CreditAssociation(**as_dict(v)) for v in self.has_credit_associations]
+        self._normalize_inlined_as_list(slot_name="has_credit_associations", slot_type=CreditAssociation, key_name="applied_roles", keyed=False)
 
         if not isinstance(self.homepage_website, list):
             self.homepage_website = [self.homepage_website] if self.homepage_website is not None else []
@@ -4947,13 +4833,9 @@ class Study(NamedThing):
         if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
             self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
 
-        if not isinstance(self.protocol_link, list):
-            self.protocol_link = [self.protocol_link] if self.protocol_link is not None else []
-        self.protocol_link = [v if isinstance(v, Protocol) else Protocol(**as_dict(v)) for v in self.protocol_link]
+        self._normalize_inlined_as_list(slot_name="protocol_link", slot_type=Protocol, key_name="type", keyed=False)
 
-        if not isinstance(self.study_image, list):
-            self.study_image = [self.study_image] if self.study_image is not None else []
-        self.study_image = [v if isinstance(v, ImageValue) else ImageValue(**as_dict(v)) for v in self.study_image]
+        self._normalize_inlined_as_list(slot_name="study_image", slot_type=ImageValue, key_name="type", keyed=False)
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -5152,9 +5034,7 @@ class ChromatographyConfiguration(Configuration):
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if not isinstance(self.ordered_mobile_phases, list):
-            self.ordered_mobile_phases = [self.ordered_mobile_phases] if self.ordered_mobile_phases is not None else []
-        self.ordered_mobile_phases = [v if isinstance(v, MobilePhaseSegment) else MobilePhaseSegment(**as_dict(v)) for v in self.ordered_mobile_phases]
+        self._normalize_inlined_as_list(slot_name="ordered_mobile_phases", slot_type=MobilePhaseSegment, key_name="type", keyed=False)
 
         if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
             self.temperature = QuantityValue(**as_dict(self.temperature))
@@ -5998,9 +5878,7 @@ class MagsAnalysis(WorkflowExecution):
         if self.low_depth_contig_num is not None and not isinstance(self.low_depth_contig_num, int):
             self.low_depth_contig_num = int(self.low_depth_contig_num)
 
-        if not isinstance(self.mags_list, list):
-            self.mags_list = [self.mags_list] if self.mags_list is not None else []
-        self.mags_list = [v if isinstance(v, MagBin) else MagBin(**as_dict(v)) for v in self.mags_list]
+        self._normalize_inlined_as_list(slot_name="mags_list", slot_type=MagBin, key_name="bin_name", keyed=False)
 
         if self.too_short_contig_num is not None and not isinstance(self.too_short_contig_num, int):
             self.too_short_contig_num = int(self.too_short_contig_num)
@@ -6166,9 +6044,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
         if not isinstance(self.metabolomics_analysis_category, MetabolomicsAnalysisCategoryEnum):
             self.metabolomics_analysis_category = MetabolomicsAnalysisCategoryEnum(self.metabolomics_analysis_category)
 
-        if not isinstance(self.has_metabolite_identifications, list):
-            self.has_metabolite_identifications = [self.has_metabolite_identifications] if self.has_metabolite_identifications is not None else []
-        self.has_metabolite_identifications = [v if isinstance(v, MetaboliteIdentification) else MetaboliteIdentification(**as_dict(v)) for v in self.has_metabolite_identifications]
+        self._normalize_inlined_as_list(slot_name="has_metabolite_identifications", slot_type=MetaboliteIdentification, key_name="type", keyed=False)
 
         if not isinstance(self.uses_calibration, list):
             self.uses_calibration = [self.uses_calibration] if self.uses_calibration is not None else []
@@ -13404,6 +13280,9 @@ slots.FieldResearchSite_id = Slot(uri=NMDC.id, name="FieldResearchSite_id", curi
 slots.FieldResearchSite_part_of = Slot(uri=DCTERMS.isPartOf, name="FieldResearchSite_part_of", curie=DCTERMS.curie('isPartOf'),
                    model_uri=NMDC.FieldResearchSite_part_of, domain=FieldResearchSite, range=Optional[Union[Union[str, FieldResearchSiteId], list[Union[str, FieldResearchSiteId]]]])
 
+slots.Biosample_provenance_metadata = Slot(uri=NMDC['basic_classes/provenance_metadata'], name="Biosample_provenance_metadata", curie=NMDC.curie('basic_classes/provenance_metadata'),
+                   model_uri=NMDC.Biosample_provenance_metadata, domain=Biosample, range=Optional[Union[dict, "ProvenanceMetadata"]])
+
 slots.Biosample_collected_from = Slot(uri=NMDC.collected_from, name="Biosample_collected_from", curie=NMDC.curie('collected_from'),
                    model_uri=NMDC.Biosample_collected_from, domain=Biosample, range=Optional[Union[str, FieldResearchSiteId]])
 
@@ -13608,6 +13487,9 @@ slots.Study_part_of = Slot(uri=DCTERMS.isPartOf, name="Study_part_of", curie=DCT
 slots.Study_protocol_link = Slot(uri=NMDC['basic_classes/protocol_link'], name="Study_protocol_link", curie=NMDC.curie('basic_classes/protocol_link'),
                    model_uri=NMDC.Study_protocol_link, domain=Study, range=Optional[Union[Union[dict, Protocol], list[Union[dict, Protocol]]]])
 
+slots.Study_provenance_metadata = Slot(uri=NMDC['basic_classes/provenance_metadata'], name="Study_provenance_metadata", curie=NMDC.curie('basic_classes/provenance_metadata'),
+                   model_uri=NMDC.Study_provenance_metadata, domain=Study, range=Optional[Union[dict, "ProvenanceMetadata"]])
+
 slots.DataObject_name = Slot(uri=NMDC['attribute_values/name'], name="DataObject_name", curie=NMDC.curie('attribute_values/name'),
                    model_uri=NMDC.DataObject_name, domain=DataObject, range=str)
 
@@ -13635,6 +13517,9 @@ slots.DataGeneration_associated_studies = Slot(uri=NMDC['basic_classes/associate
 
 slots.DataGeneration_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="DataGeneration_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.DataGeneration_has_output, domain=DataGeneration, range=Optional[Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]]])
+
+slots.DataGeneration_provenance_metadata = Slot(uri=NMDC['basic_classes/provenance_metadata'], name="DataGeneration_provenance_metadata", curie=NMDC.curie('basic_classes/provenance_metadata'),
+                   model_uri=NMDC.DataGeneration_provenance_metadata, domain=DataGeneration, range=Optional[Union[dict, "ProvenanceMetadata"]])
 
 slots.WorkflowExecution_started_at_time = Slot(uri=NMDC.started_at_time, name="WorkflowExecution_started_at_time", curie=NMDC.curie('started_at_time'),
                    model_uri=NMDC.WorkflowExecution_started_at_time, domain=WorkflowExecution, range=str, mappings = [PROV["startedAtTime"]],

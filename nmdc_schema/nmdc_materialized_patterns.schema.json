@@ -3314,7 +3314,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Provides information about the provenance of a record."
+                    "description": "Provenance metadata for this Biosample, including when the record was added to and last modified in the NMDC database."
                 },
                 "quad_pos": {
                     "$ref": "#/$defs/QuadPosEnum",
@@ -9477,7 +9477,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Provides information about the provenance of a record."
+                    "description": "Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database."
                 },
                 "qc_comment": {
                     "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
@@ -12363,7 +12363,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Provides information about the provenance of a record."
+                    "description": "Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database."
                 },
                 "qc_comment": {
                     "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
@@ -13276,7 +13276,7 @@
             "description": "Metadata pertaining to how a record was created.",
             "properties": {
                 "add_date": {
-                    "description": "The date and time at which a record was added to the NMDC database. Note: legacy records may contain Gold-sourced dates that predate this convention; going forward this slot reflects NMDC-internal provenance.",
+                    "description": "The date and time at which a record was added to the NMDC database.",
                     "format": "date-time",
                     "type": [
                         "string",
@@ -13291,7 +13291,7 @@
                     ]
                 },
                 "mod_date": {
-                    "description": "The date and time at which a record was last modified in the NMDC database. Note: legacy records may contain Gold-sourced dates that predate this convention; going forward this slot reflects NMDC-internal provenance.",
+                    "description": "The date and time at which a record was last modified in the NMDC database.",
                     "format": "date-time",
                     "type": [
                         "string",
@@ -14662,7 +14662,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Provides information about the provenance of a record."
+                    "description": "Provenance metadata for this Study, including when the record was added to and last modified in the NMDC database."
                 },
                 "related_identifiers": {
                     "description": "Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC",

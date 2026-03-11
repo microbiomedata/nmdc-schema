@@ -2976,21 +2976,18 @@ enums:
         - NovaSeq 6000
         - Illumina NovaSeq 6000
         structured_aliases:
-          Illumina NovaSeq S2:
-            literal_form: Illumina NovaSeq S2
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-          Illumina NovaSeq S4:
-            literal_form: Illumina NovaSeq S4
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-          Illumina NovaSeq SP:
-            literal_form: Illumina NovaSeq SP
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
+        - literal_form: Illumina NovaSeq S2
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
+        - literal_form: Illumina NovaSeq S4
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
+        - literal_form: Illumina NovaSeq SP
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
       novaseq_x:
         text: novaseq_x
         comments:
@@ -3030,16 +3027,14 @@ enums:
         aliases:
         - Illumina HiSeq 2500
         structured_aliases:
-          Illumina HiSeq 2500-1TB:
-            literal_form: Illumina HiSeq 2500-1TB
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-          Illumina HiSeq 2500-Rapid:
-            literal_form: Illumina HiSeq 2500-Rapid
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
+        - literal_form: Illumina HiSeq 2500-1TB
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
+        - literal_form: Illumina HiSeq 2500-Rapid
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
       hiseq_3000:
         text: hiseq_3000
         meaning: OBI:0002048
@@ -3067,11 +3062,10 @@ enums:
         - MiSeq
         - Illumina MiSeq
         structured_aliases:
-          Illumina MiSeq:
-            literal_form: Illumina MiSeq
-            predicate: EXACT_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
+        - literal_form: Illumina MiSeq
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
       nextseq_1000:
         text: nextseq_1000
         meaning: OBI:0003606
@@ -3083,16 +3077,14 @@ enums:
         - NextSeq
         - Illumina NextSeq
         structured_aliases:
-          Illumina NextSeq-HO:
-            literal_form: Illumina NextSeq-HO
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-          Illumina NextSeq-MO:
-            literal_form: Illumina NextSeq-MO
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
+        - literal_form: Illumina NextSeq-HO
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
+        - literal_form: Illumina NextSeq-MO
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://gold.jgi.doe.gov/
       nextseq_500:
         text: nextseq_500
         meaning: OBI:0002021
@@ -6329,11 +6321,10 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/issues/1233
     - https://github.com/microbiomedata/nmdc-schema/issues/248
     structured_aliases:
-      workflow_execution_class:
-        literal_form: workflow_execution_class
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: workflow_execution_class
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     slot_uri: rdf:type
     designates_type: true
     range: uriorcurie
@@ -6500,11 +6491,10 @@ slots:
     - value: GC-MS Metabolomics Results
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      data_object_type:
-        literal_form: data_object_type
-        predicate: EXACT_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: data_object_type
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     range: FileTypeEnum
   data_category:
     name: data_category
@@ -6803,16 +6793,12 @@ slots:
     is_a: gold_path_field
   add_date:
     name: add_date
-    description: 'The date and time at which a record was added to the NMDC database.
-      Note: legacy records may contain Gold-sourced dates that predate this convention;
-      going forward this slot reflects NMDC-internal provenance.'
+    description: The date on which information was added to a database.
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   mod_date:
     name: mod_date
-    description: 'The date and time at which a record was last modified in the NMDC
-      database. Note: legacy records may contain Gold-sourced dates that predate this
-      convention; going forward this slot reflects NMDC-internal provenance.'
+    description: The date on which information was last modified in a database.
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   ncbi_taxonomy_name:
@@ -6908,16 +6894,14 @@ slots:
       description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      workflow_execution_id:
-        literal_form: workflow_execution_id
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-      data_object_id:
-        literal_form: data_object_id
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: workflow_execution_id
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: data_object_id
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     identifier: true
     range: uriorcurie
     required: true
@@ -7410,11 +7394,10 @@ slots:
       the primary class to reference.
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      was_informed_by:
-        literal_form: was_informed_by
-        predicate: EXACT_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: was_informed_by
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     narrow_mappings:
     - prov:wasInformedBy
     range: DataGeneration
@@ -16525,10 +16508,9 @@ slots:
     title: sample collection device
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      samp_collect_device:
-        literal_form: samp_collect_device
-        contexts:
-        - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+    - literal_form: samp_collect_device
+      contexts:
+      - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
     keywords:
     - device
     - sample
@@ -16541,10 +16523,9 @@ slots:
     title: sample collection method
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
-      samp_collect_method:
-        literal_form: samp_collect_method
-        contexts:
-        - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+    - literal_form: samp_collect_method
+      contexts:
+      - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
     keywords:
     - method
     - sample
@@ -19317,6 +19298,10 @@ classes:
         name: protocol_link
         multivalued: true
         inlined_as_list: true
+      provenance_metadata:
+        name: provenance_metadata
+        description: Provenance metadata for this Study, including when the record
+          was added to and last modified in the NMDC database.
     class_uri: nmdc:Study
   InformationObject:
     name: InformationObject
@@ -19443,6 +19428,10 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
           interpolated: true
+      provenance_metadata:
+        name: provenance_metadata
+        description: Provenance metadata for this DataGeneration, including when the
+          record was added to and last modified in the NMDC database.
     class_uri: nmdc:DataGeneration
   WorkflowExecution:
     name: WorkflowExecution
@@ -19546,25 +19535,18 @@ classes:
     slot_usage:
       add_date:
         name: add_date
+        description: The date and time at which a record was added to the NMDC database.
         comments:
-        - 'range: datetime is the LinkML datetime type (linkml:datetime, mapped to
-          xsd:dateTime). JSON Schema validates this as RFC 3339 date-time, which requires
-          a timezone designator (e.g. 2021-03-31T00:00:00Z). Constrained here within
-          ProvenanceMetadata; the global range remains string for backward compatibility
-          with legacy exported data.'
-        - Legacy records migrated from date-only values use a conventional T00:00:00Z
-          time component, which should not be interpreted as an actual time of day.
+        - Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23
+          may carry GOLD-sourced dates rather than NMDC-asserted timestamps.
         range: datetime
       mod_date:
         name: mod_date
+        description: The date and time at which a record was last modified in the
+          NMDC database.
         comments:
-        - 'range: datetime is the LinkML datetime type (linkml:datetime, mapped to
-          xsd:dateTime). JSON Schema validates this as RFC 3339 date-time, which requires
-          a timezone designator (e.g. 2021-03-31T00:00:00Z). Constrained here within
-          ProvenanceMetadata; the global range remains string for backward compatibility
-          with legacy exported data.'
-        - Legacy records migrated from date-only values use a conventional T00:00:00Z
-          time component, which should not be interpreted as an actual time of day.
+        - Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23
+          may carry GOLD-sourced dates rather than NMDC-asserted timestamps.
         range: datetime
       version:
         name: version
@@ -20261,6 +20243,10 @@ classes:
     - lbc_thirty
     - lbceq
     slot_usage:
+      provenance_metadata:
+        name: provenance_metadata
+        description: Provenance metadata for this Biosample, including when the record
+          was added to and last modified in the NMDC database.
       collected_from:
         name: collected_from
         pattern: ^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
@@ -21157,6 +21143,7 @@ classes:
         description: The number of m/z peaks with assigned molecular formulas in the
           analysis.
     class_uri: nmdc:NomAnalysis
+metamodel_version: 1.7.0
 source_file: src/schema/nmdc.yaml
 settings:
   id_nmdc_prefix:

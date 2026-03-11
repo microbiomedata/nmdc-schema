@@ -3684,29 +3684,29 @@
             "NovaSeq 6000",
             "Illumina NovaSeq 6000"
           ],
-          "structured_aliases": {
-            "Illumina NovaSeq S2": {
+          "structured_aliases": [
+            {
               "literal_form": "Illumina NovaSeq S2",
               "predicate": "NARROW_SYNONYM",
               "contexts": [
                 "https://gold.jgi.doe.gov/"
               ]
             },
-            "Illumina NovaSeq S4": {
+            {
               "literal_form": "Illumina NovaSeq S4",
               "predicate": "NARROW_SYNONYM",
               "contexts": [
                 "https://gold.jgi.doe.gov/"
               ]
             },
-            "Illumina NovaSeq SP": {
+            {
               "literal_form": "Illumina NovaSeq SP",
               "predicate": "NARROW_SYNONYM",
               "contexts": [
                 "https://gold.jgi.doe.gov/"
               ]
             }
-          }
+          ]
         },
         "novaseq_x": {
           "text": "novaseq_x",
@@ -3760,22 +3760,22 @@
           "aliases": [
             "Illumina HiSeq 2500"
           ],
-          "structured_aliases": {
-            "Illumina HiSeq 2500-1TB": {
+          "structured_aliases": [
+            {
               "literal_form": "Illumina HiSeq 2500-1TB",
               "predicate": "NARROW_SYNONYM",
               "contexts": [
                 "https://gold.jgi.doe.gov/"
               ]
             },
-            "Illumina HiSeq 2500-Rapid": {
+            {
               "literal_form": "Illumina HiSeq 2500-Rapid",
               "predicate": "NARROW_SYNONYM",
               "contexts": [
                 "https://gold.jgi.doe.gov/"
               ]
             }
-          }
+          ]
         },
         "hiseq_3000": {
           "text": "hiseq_3000",
@@ -3812,15 +3812,15 @@
             "MiSeq",
             "Illumina MiSeq"
           ],
-          "structured_aliases": {
-            "Illumina MiSeq": {
+          "structured_aliases": [
+            {
               "literal_form": "Illumina MiSeq",
               "predicate": "EXACT_SYNONYM",
               "contexts": [
                 "https://gold.jgi.doe.gov/"
               ]
             }
-          }
+          ]
         },
         "nextseq_1000": {
           "text": "nextseq_1000",
@@ -3835,22 +3835,22 @@
             "NextSeq",
             "Illumina NextSeq"
           ],
-          "structured_aliases": {
-            "Illumina NextSeq-HO": {
+          "structured_aliases": [
+            {
               "literal_form": "Illumina NextSeq-HO",
               "predicate": "NARROW_SYNONYM",
               "contexts": [
                 "https://gold.jgi.doe.gov/"
               ]
             },
-            "Illumina NextSeq-MO": {
+            {
               "literal_form": "Illumina NextSeq-MO",
               "predicate": "NARROW_SYNONYM",
               "contexts": [
                 "https://gold.jgi.doe.gov/"
               ]
             }
-          }
+          ]
         },
         "nextseq_500": {
           "text": "nextseq_500",
@@ -8368,15 +8368,15 @@
         "https://github.com/microbiomedata/nmdc-schema/issues/1233",
         "https://github.com/microbiomedata/nmdc-schema/issues/248"
       ],
-      "structured_aliases": {
-        "workflow_execution_class": {
+      "structured_aliases": [
+        {
           "literal_form": "workflow_execution_class",
           "predicate": "NARROW_SYNONYM",
           "contexts": [
             "https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml"
           ]
         }
-      },
+      ],
       "slot_uri": "rdf:type",
       "designates_type": true,
       "range": "uriorcurie",
@@ -8568,15 +8568,15 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "structured_aliases": {
-        "data_object_type": {
+      "structured_aliases": [
+        {
           "literal_form": "data_object_type",
           "predicate": "EXACT_SYNONYM",
           "contexts": [
             "https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml"
           ]
         }
-      },
+      ],
       "range": "FileTypeEnum"
     },
     "data_category": {
@@ -8941,13 +8941,13 @@
     },
     "add_date": {
       "name": "add_date",
-      "description": "The date and time at which a record was added to the NMDC database. Note: legacy records may contain Gold-sourced dates that predate this convention; going forward this slot reflects NMDC-internal provenance.",
+      "description": "The date on which information was added to a database.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "string"
     },
     "mod_date": {
       "name": "mod_date",
-      "description": "The date and time at which a record was last modified in the NMDC database. Note: legacy records may contain Gold-sourced dates that predate this convention; going forward this slot reflects NMDC-internal provenance.",
+      "description": "The date on which information was last modified in a database.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "string"
     },
@@ -9054,22 +9054,22 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "structured_aliases": {
-        "workflow_execution_id": {
+      "structured_aliases": [
+        {
           "literal_form": "workflow_execution_id",
           "predicate": "NARROW_SYNONYM",
           "contexts": [
             "https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml"
           ]
         },
-        "data_object_id": {
+        {
           "literal_form": "data_object_id",
           "predicate": "NARROW_SYNONYM",
           "contexts": [
             "https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml"
           ]
         }
-      },
+      ],
       "identifier": true,
       "range": "uriorcurie",
       "required": true,
@@ -9688,15 +9688,15 @@
         "For version 1 of the proteomics workflow there are input files both from the NucleotideSequencing and MassSpectrometry, the MassSpectrometry record is considered the primary class to reference."
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "structured_aliases": {
-        "was_informed_by": {
+      "structured_aliases": [
+        {
           "literal_form": "was_informed_by",
           "predicate": "EXACT_SYNONYM",
           "contexts": [
             "https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml"
           ]
         }
-      },
+      ],
       "narrow_mappings": [
         "prov:wasInformedBy"
       ],
@@ -21082,14 +21082,14 @@
       "description": "The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)",
       "title": "sample collection device",
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "structured_aliases": {
-        "samp_collect_device": {
+      "structured_aliases": [
+        {
           "literal_form": "samp_collect_device",
           "contexts": [
             "https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"
           ]
         }
-      },
+      ],
       "keywords": [
         "device",
         "sample"
@@ -21103,14 +21103,14 @@
       "description": "The method employed for collecting the sample",
       "title": "sample collection method",
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "structured_aliases": {
-        "samp_collect_method": {
+      "structured_aliases": [
+        {
           "literal_form": "samp_collect_method",
           "contexts": [
             "https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"
           ]
         }
-      },
+      ],
       "keywords": [
         "method",
         "sample"
@@ -24514,6 +24514,10 @@
           "name": "protocol_link",
           "multivalued": true,
           "inlined_as_list": true
+        },
+        "provenance_metadata": {
+          "name": "provenance_metadata",
+          "description": "Provenance metadata for this Study, including when the record was added to and last modified in the NMDC database."
         }
       },
       "class_uri": "nmdc:Study"
@@ -24658,6 +24662,10 @@
             "syntax": "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$",
             "interpolated": true
           }
+        },
+        "provenance_metadata": {
+          "name": "provenance_metadata",
+          "description": "Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database."
         }
       },
       "class_uri": "nmdc:DataGeneration"
@@ -24792,17 +24800,17 @@
       "slot_usage": {
         "add_date": {
           "name": "add_date",
+          "description": "The date and time at which a record was added to the NMDC database.",
           "comments": [
-            "range: datetime is the LinkML datetime type (linkml:datetime, mapped to xsd:dateTime). JSON Schema validates this as RFC 3339 date-time, which requires a timezone designator (e.g. 2021-03-31T00:00:00Z). Constrained here within ProvenanceMetadata; the global range remains string for backward compatibility with legacy exported data.",
-            "Legacy records migrated from date-only values use a conventional T00:00:00Z time component, which should not be interpreted as an actual time of day."
+            "Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23 may carry GOLD-sourced dates rather than NMDC-asserted timestamps."
           ],
           "range": "datetime"
         },
         "mod_date": {
           "name": "mod_date",
+          "description": "The date and time at which a record was last modified in the NMDC database.",
           "comments": [
-            "range: datetime is the LinkML datetime type (linkml:datetime, mapped to xsd:dateTime). JSON Schema validates this as RFC 3339 date-time, which requires a timezone designator (e.g. 2021-03-31T00:00:00Z). Constrained here within ProvenanceMetadata; the global range remains string for backward compatibility with legacy exported data.",
-            "Legacy records migrated from date-only values use a conventional T00:00:00Z time component, which should not be interpreted as an actual time of day."
+            "Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23 may carry GOLD-sourced dates rather than NMDC-asserted timestamps."
           ],
           "range": "datetime"
         },
@@ -25527,6 +25535,10 @@
         "lbceq"
       ],
       "slot_usage": {
+        "provenance_metadata": {
+          "name": "provenance_metadata",
+          "description": "Provenance metadata for this Biosample, including when the record was added to and last modified in the NMDC database."
+        },
         "collected_from": {
           "name": "collected_from",
           "pattern": "^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
@@ -26686,6 +26698,7 @@
       "class_uri": "nmdc:NomAnalysis"
     }
   },
+  "metamodel_version": "1.7.0",
   "source_file": "src/schema/nmdc.yaml",
   "settings": {
     "id_nmdc_prefix": {
