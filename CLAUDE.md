@@ -63,6 +63,34 @@ through Feb 2026) that affect the build system and project layout:
 - **Downloads page** (PR #2302, 2026-02-21): Schema-derived JSON and YAML
   files are now downloadable via the docs website.
 
+## Example Data Guidelines
+
+### Invalid examples: single point of failure
+Each file in `src/data/invalid/` must be invalid for **exactly one
+reason**. When modifying the schema (moving, removing, or renaming
+slots), check whether any invalid example files use those slots
+incidentally. If so, remove or update those fields so each file
+continues to fail for only its originally intended reason.
+
+To find affected files:
+```bash
+grep -rl 'slot_name' src/data/invalid/
+```
+
+### Valid examples: handling derived files in PRs
+Do not manually edit generated/derived files like `nmdc_schema/nmdc.py`
+or `nmdc_schema/nmdc_materialized_patterns.yaml`. These are regenerated
+by `make all` and are part of the packaged artifacts.
+
+- If your PR changes the schema (e.g., files under `src/schema/`) or the
+  code that generates these artifacts, run `make all` and commit the
+  resulting updates to the generated files so the repo stays consistent
+  with what will be published.
+- If your PR does **not** change the schema or generators, the generated
+  files should not change. If they show up in your diff unexpectedly,
+  restore them from `main`:
+  `git checkout origin/main -- nmdc_schema/nmdc.py nmdc_schema/nmdc_materialized_patterns.yaml`
+
 ## Pre-release Process
 
 Use pre-releases to test schema changes on PyPI before a full release.

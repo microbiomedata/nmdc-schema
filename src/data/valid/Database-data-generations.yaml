@@ -7,8 +7,10 @@ data_generation_set:
       transformations - Permafrost 712P3D
     has_input:
       - nmdc:bsm-00-red
-    add_date: 30-OCT-14 12.00.00.000000000 AM
-    mod_date: 22-MAY-20 06.13.12.927000000 PM
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: '2014-10-30T00:00:00Z'
+      mod_date: '2020-05-22T00:00:00Z'
     has_output:
       - nmdc:dobj-00-9n9n9n
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
@@ -25,8 +27,10 @@ data_generation_set:
       transformations - Permafrost 612S3M
     has_input:
       - nmdc:bsm-00-orange0
-    add_date: 30-OCT-14 12.00.00.000000000 AM
-    mod_date: 22-MAY-20 06.10.59.590000000 PM
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: '2014-10-30T00:00:00Z'
+      mod_date: '2020-05-22T00:00:00Z'
     has_output:
       - nmdc:dobj-00-123456
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
@@ -43,8 +47,10 @@ data_generation_set:
       transformations - Permafrost 712S3S
     has_input:
       - nmdc:bsm-00-orange1
-    add_date: 30-OCT-14 12.00.00.000000000 AM
-    mod_date: 22-MAY-20 06.09.46.171000000 PM
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: '2014-10-30T00:00:00Z'
+      mod_date: '2020-05-22T00:00:00Z'
     has_output:
       - nmdc:dobj-00-thx1198
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying

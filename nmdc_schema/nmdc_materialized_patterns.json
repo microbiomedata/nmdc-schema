@@ -8941,13 +8941,13 @@
     },
     "add_date": {
       "name": "add_date",
-      "description": "The date on which the information was added to the database.",
+      "description": "The date and time at which a record was added to the NMDC database. Note: legacy records may contain Gold-sourced dates that predate this convention; going forward this slot reflects NMDC-internal provenance.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "string"
     },
     "mod_date": {
       "name": "mod_date",
-      "description": "The last date on which the database information was modified.",
+      "description": "The date and time at which a record was last modified in the NMDC database. Note: legacy records may contain Gold-sourced dates that predate this convention; going forward this slot reflects NMDC-internal provenance.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "string"
     },
@@ -24623,13 +24623,12 @@
       "is_a": "DataEmitterProcess",
       "abstract": true,
       "slots": [
-        "add_date",
         "analyte_category",
         "associated_studies",
         "instrument_used",
-        "mod_date",
         "principal_investigator",
-        "instrument_instance_specifier"
+        "instrument_instance_specifier",
+        "provenance_metadata"
       ],
       "slot_usage": {
         "has_input": {
@@ -24782,13 +24781,31 @@
       "description": "Metadata pertaining to how a record was created.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slots": [
+        "add_date",
         "git_url",
+        "mod_date",
         "version",
         "source_system_of_record",
         "submission_portal_identifier",
         "type"
       ],
       "slot_usage": {
+        "add_date": {
+          "name": "add_date",
+          "comments": [
+            "range: datetime is the LinkML datetime type (linkml:datetime, mapped to xsd:dateTime). JSON Schema validates this as RFC 3339 date-time, which requires a timezone designator (e.g. 2021-03-31T00:00:00Z). Constrained here within ProvenanceMetadata; the global range remains string for backward compatibility with legacy exported data.",
+            "Legacy records migrated from date-only values use a conventional T00:00:00Z time component, which should not be interpreted as an actual time of day."
+          ],
+          "range": "datetime"
+        },
+        "mod_date": {
+          "name": "mod_date",
+          "comments": [
+            "range: datetime is the LinkML datetime type (linkml:datetime, mapped to xsd:dateTime). JSON Schema validates this as RFC 3339 date-time, which requires a timezone designator (e.g. 2021-03-31T00:00:00Z). Constrained here within ProvenanceMetadata; the global range remains string for backward compatibility with legacy exported data.",
+            "Legacy records migrated from date-only values use a conventional T00:00:00Z time component, which should not be interpreted as an actual time of day."
+          ],
+          "range": "datetime"
+        },
         "version": {
           "name": "version",
           "description": "The version tag of the software used to generate the NMDC metadata record"
@@ -25464,12 +25481,10 @@
         "ecosystem_subtype",
         "specific_ecosystem",
         "ecosystem_path_id",
-        "add_date",
         "community",
         "habitat",
         "host_name",
         "location",
-        "mod_date",
         "ncbi_taxonomy_name",
         "proport_woa_temperature",
         "salinity_category",

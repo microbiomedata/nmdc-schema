@@ -859,12 +859,10 @@ classes:
       - ecosystem_path_id
 
       ## GOLD specific fields
-      - add_date
       - community
       - habitat
       - host_name
       - location
-      - mod_date
       - ncbi_taxonomy_name
       - proport_woa_temperature
       - salinity_category
@@ -915,6 +913,9 @@ classes:
       - lbc_thirty
       - lbceq
     slot_usage:
+
+      provenance_metadata:
+        description: Provenance metadata for this Biosample, including when the record was added to and last modified in the NMDC database.
 
       collected_from:
         structured_pattern:

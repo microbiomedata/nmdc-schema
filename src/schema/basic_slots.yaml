@@ -345,11 +345,11 @@ slots:
 
   add_date:
     range: string
-    description: The date on which the information was added to the database.
+    description: The date on which information was added to a database.
 
   mod_date:
     range: string
-    description: The last date on which the database information was modified.
+    description: The date on which information was last modified in a database.
 
   ncbi_taxonomy_name:
     range: string

@@ -1,0 +1,29 @@
+# Tests that ISO 8601 datetime strings are accepted for add_date and mod_date
+# within provenance_metadata, where slot_usage constrains range to
+# linkml:datetime (mapped to xsd:dateTime).
+id: nmdc:bsm-99-dateTest
+type: nmdc:Biosample
+associated_studies:
+  - nmdc:sty-00-abc123
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002030
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002030
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002169
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002169
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00005792
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00005792
+provenance_metadata:
+  type: nmdc:ProvenanceMetadata
+  add_date: '2021-03-31T00:00:00Z'
+  mod_date: '2023-01-25T00:00:00Z'

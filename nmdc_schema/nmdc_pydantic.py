@@ -5878,7 +5878,7 @@ class Study(NamedThing):
                                               'for this study.'}},
          'domain_of': ['OntologyClass', 'Study', 'Biosample'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
-    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provides information about the provenance of a record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'Biosample']} })
+    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provides information about the provenance of a record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample']} })
     alternative_titles: Optional[list[str]] = Field(default=[], description="""A list of alternative titles for the entity. The distinction between title and alternative titles is application-specific.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study'], 'exact_mappings': ['dcterms:alternative']} })
     ecosystem: Optional[str] = Field(default=None, description="""An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['The abiotic factors play a profound role on the type and '
                       'composition of organisms in a given environment. The GOLD '
@@ -7142,7 +7142,6 @@ class DataGeneration(DataEmitterProcess):
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}}}})
 
-    add_date: Optional[str] = Field(default=None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample']} })
     analyte_category: str = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
     associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample'],
@@ -7151,9 +7150,9 @@ class DataGeneration(DataEmitterProcess):
     instrument_used: Optional[list[str]] = Field(default=[], description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
-    mod_date: Optional[str] = Field(default=None, description="""The last date on which the database information was modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample']} })
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'aliases': ['PI'], 'domain_of': ['Study', 'DataGeneration']} })
     instrument_instance_specifier: Optional[str] = Field(default=None, description="""A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
+    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provides information about the provenance of a record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
@@ -7339,7 +7338,6 @@ class NucleotideSequencing(DataGeneration):
          'is_a': 'external_database_identifiers',
          'mixins': ['insdc_identifiers']} })
     ncbi_project_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NucleotideSequencing']} })
-    add_date: Optional[str] = Field(default=None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample']} })
     analyte_category: NucleotideSequencingEnum = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
     associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample'],
@@ -7348,9 +7346,9 @@ class NucleotideSequencing(DataGeneration):
     instrument_used: Optional[list[str]] = Field(default=[], description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
-    mod_date: Optional[str] = Field(default=None, description="""The last date on which the database information was modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample']} })
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'aliases': ['PI'], 'domain_of': ['Study', 'DataGeneration']} })
     instrument_instance_specifier: Optional[str] = Field(default=None, description="""A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
+    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provides information about the provenance of a record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
@@ -7606,7 +7604,6 @@ class MassSpectrometry(DataGeneration):
     has_mass_spectrometry_configuration: str = Field(default=..., description="""The identifier of the associated MassSpectrometryConfiguration.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MassSpectrometry'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'}} })
-    add_date: Optional[str] = Field(default=None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample']} })
     analyte_category: MassSpectrometryEnum = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
     associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample'],
@@ -7615,9 +7612,9 @@ class MassSpectrometry(DataGeneration):
     instrument_used: Optional[list[str]] = Field(default=[], description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
-    mod_date: Optional[str] = Field(default=None, description="""The last date on which the database information was modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample']} })
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'aliases': ['PI'], 'domain_of': ['Study', 'DataGeneration']} })
     instrument_instance_specifier: Optional[str] = Field(default=None, description="""A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
+    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provides information about the provenance of a record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
@@ -8061,18 +8058,74 @@ class ProvenanceMetadata(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ProvenanceMetadata',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'slot_usage': {'git_url': {'description': 'The url of the software repository '
+         'slot_usage': {'add_date': {'comments': ['range: datetime is the LinkML '
+                                                  'datetime type (linkml:datetime, '
+                                                  'mapped to xsd:dateTime). JSON '
+                                                  'Schema validates this as RFC 3339 '
+                                                  'date-time, which requires a '
+                                                  'timezone designator (e.g. '
+                                                  '2021-03-31T00:00:00Z). Constrained '
+                                                  'here within ProvenanceMetadata; the '
+                                                  'global range remains string for '
+                                                  'backward compatibility with legacy '
+                                                  'exported data.',
+                                                  'Legacy records migrated from '
+                                                  'date-only values use a conventional '
+                                                  'T00:00:00Z time component, which '
+                                                  'should not be interpreted as an '
+                                                  'actual time of day.'],
+                                     'name': 'add_date',
+                                     'range': 'datetime'},
+                        'git_url': {'description': 'The url of the software repository '
                                                    'used to generate the NMDC metadata '
                                                    'record',
                                     'name': 'git_url'},
+                        'mod_date': {'comments': ['range: datetime is the LinkML '
+                                                  'datetime type (linkml:datetime, '
+                                                  'mapped to xsd:dateTime). JSON '
+                                                  'Schema validates this as RFC 3339 '
+                                                  'date-time, which requires a '
+                                                  'timezone designator (e.g. '
+                                                  '2021-03-31T00:00:00Z). Constrained '
+                                                  'here within ProvenanceMetadata; the '
+                                                  'global range remains string for '
+                                                  'backward compatibility with legacy '
+                                                  'exported data.',
+                                                  'Legacy records migrated from '
+                                                  'date-only values use a conventional '
+                                                  'T00:00:00Z time component, which '
+                                                  'should not be interpreted as an '
+                                                  'actual time of day.'],
+                                     'name': 'mod_date',
+                                     'range': 'datetime'},
                         'version': {'description': 'The version tag of the software '
                                                    'used to generate the NMDC metadata '
                                                    'record',
                                     'name': 'version'}}})
 
+    add_date: Optional[datetime ] = Field(default=None, description="""The date and time at which a record was added to the NMDC database. Note: legacy records may contain Gold-sourced dates that predate this convention; going forward this slot reflects NMDC-internal provenance.""", json_schema_extra = { "linkml_meta": {'comments': ['range: datetime is the LinkML datetime type (linkml:datetime, '
+                      'mapped to xsd:dateTime). JSON Schema validates this as RFC 3339 '
+                      'date-time, which requires a timezone designator (e.g. '
+                      '2021-03-31T00:00:00Z). Constrained here within '
+                      'ProvenanceMetadata; the global range remains string for '
+                      'backward compatibility with legacy exported data.',
+                      'Legacy records migrated from date-only values use a '
+                      'conventional T00:00:00Z time component, which should not be '
+                      'interpreted as an actual time of day.'],
+         'domain_of': ['ProvenanceMetadata']} })
     git_url: Optional[str] = Field(default=None, description="""The url of the software repository used to generate the NMDC metadata record""", json_schema_extra = { "linkml_meta": {'domain_of': ['WorkflowExecution', 'ProvenanceMetadata'],
          'examples': [{'value': 'https://github.com/microbiomedata/mg_annotation/releases/tag/0.1'},
                       {'value': 'https://github.com/microbiomedata/metaMS/blob/master/metaMS/gcmsWorkflow.py'}]} })
+    mod_date: Optional[datetime ] = Field(default=None, description="""The date and time at which a record was last modified in the NMDC database. Note: legacy records may contain Gold-sourced dates that predate this convention; going forward this slot reflects NMDC-internal provenance.""", json_schema_extra = { "linkml_meta": {'comments': ['range: datetime is the LinkML datetime type (linkml:datetime, '
+                      'mapped to xsd:dateTime). JSON Schema validates this as RFC 3339 '
+                      'date-time, which requires a timezone designator (e.g. '
+                      '2021-03-31T00:00:00Z). Constrained here within '
+                      'ProvenanceMetadata; the global range remains string for '
+                      'backward compatibility with legacy exported data.',
+                      'Legacy records migrated from date-only values use a '
+                      'conventional T00:00:00Z time component, which should not be '
+                      'interpreted as an actual time of day.'],
+         'domain_of': ['ProvenanceMetadata']} })
     version: Optional[str] = Field(default=None, description="""The version tag of the software used to generate the NMDC metadata record""", json_schema_extra = { "linkml_meta": {'domain_of': ['WorkflowExecution', 'ProvenanceMetadata'],
          'exact_mappings': ['schema:version'],
          'examples': [{'value': 'v1.2.0'}]} })
@@ -9101,7 +9154,7 @@ class Biosample(Sample):
          'mixins': ['neon_identifiers']} })
     alternative_names: Optional[list[str]] = Field(default=[], description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OntologyClass', 'Study', 'Biosample'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
-    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provides information about the provenance of a record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'Biosample']} })
+    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provides information about the provenance of a record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample']} })
     gold_biosample_identifiers: Optional[list[str]] = Field(default=[], description="""Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample""", json_schema_extra = { "linkml_meta": {'annotations': {'tooltip': {'tag': 'tooltip',
                                      'value': 'Provide the GOLD biosample IDs '
                                               'associated with this biosample.'}},
@@ -12955,12 +13008,10 @@ class Biosample(Sample):
     ecosystem_path_id: Optional[int] = Field(default=None, description="""A unique id representing the GOLD classifiers associated with a sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': '6026'}],
          'see_also': ['https://gold.jgi.doe.gov/ecosystem_classification']} })
-    add_date: Optional[str] = Field(default=None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample']} })
     community: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
     habitat: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample']} })
     host_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
     location: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
-    mod_date: Optional[str] = Field(default=None, description="""The last date on which the database information was modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample']} })
     ncbi_taxonomy_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
     proport_woa_temperature: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
     salinity_category: Optional[str] = Field(default=None, description="""Categorical description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, huryhaline""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
