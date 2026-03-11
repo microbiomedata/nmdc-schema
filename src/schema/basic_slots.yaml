@@ -345,17 +345,11 @@ slots:
 
   add_date:
     range: string
-    description: >-
-      The date and time at which a record was added to the NMDC database.
-      Note: legacy records may contain Gold-sourced dates that predate this
-      convention; going forward this slot reflects NMDC-internal provenance.
+    description: The date on which information was added to a database.
 
   mod_date:
     range: string
-    description: >-
-      The date and time at which a record was last modified in the NMDC database.
-      Note: legacy records may contain Gold-sourced dates that predate this
-      convention; going forward this slot reflects NMDC-internal provenance.
+    description: The date on which information was last modified in a database.
 
   ncbi_taxonomy_name:
     range: string

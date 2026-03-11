@@ -7,6 +7,7 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 # GOLD-sourced timestamp pattern: DD-MON-YY HH.MM.SS.NNNNNNNNN AM/PM
 # Example: "30-OCT-14 12.00.00.000000000 AM"
 # These are legacy dates from GOLD that were passed through by the GOLD translator.
+# Reference: https://github.com/microbiomedata/nmdc-runtime/blob/5b418100f24667616173285555b233b5dad9f43f/nmdc_runtime/site/translation/gold_translator.py
 # Going forward, add_date/mod_date reflect when records were added/modified in NMDC.
 _GOLD_DATE_FORMAT = "%d-%b-%y %I.%M.%S.%f000 %p"
 
@@ -16,12 +17,14 @@ _ISO_DATETIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}")
 
 def normalize_date_to_datetime(value: str) -> str:
     r"""
-    Normalizes a date string to RFC 3339 datetime format (YYYY-MM-DDTHH:MM:SSZ).
+    Normalizes a date string to RFC 3339 datetime format (YYYY-MM-DDTHH:MM:SSZ),
+    setting its time to midnight if it lacks time info, and setting—not
+    converting—its time zone to UTC (i.e. "Z") if it lacks time zone info.
 
     All output values are UTC with a trailing Z designator, as required by
     JSON Schema's date-time format (RFC 3339).
 
-    If the value is already an ISO datetime string, appends Z if missing.
+    If the value is already an ISO datetime string (YYYY-MM-DDTHH:MM:SS), appends Z if missing.
     If the value is an ISO date (YYYY-MM-DD), appends T00:00:00Z.
     If the value is a GOLD-sourced timestamp, parses and converts to datetime.
     Raises ValueError for empty strings or unparseable values.
@@ -54,6 +57,12 @@ def normalize_date_to_datetime(value: str) -> str:
     Traceback (most recent call last):
         ...
     ValueError: Cannot normalize date string: 'fooo-ba-ar'
+
+    Compact ISO 8601 (no separators) is not matched by the regex and raises ValueError:
+    >>> normalize_date_to_datetime('20260310T042405')
+    Traceback (most recent call last):
+        ...
+    ValueError: Cannot normalize date string: '20260310T042405'
     """
     if not value:
         raise ValueError("Cannot normalize empty date string")

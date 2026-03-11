@@ -325,6 +325,8 @@ classes:
       protocol_link:
         multivalued: true
         inlined_as_list: true
+      provenance_metadata:
+        description: Provenance metadata for this Study, including when the record was added to and last modified in the NMDC database.
     exact_mappings:
       - OBI:0000066
       - SIO:000747
@@ -442,6 +444,8 @@ classes:
           syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
           interpolated:
             true
+      provenance_metadata:
+        description: Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database.
     broad_mappings:
       - OBI:0000070
       - ISA:Assay
@@ -531,14 +535,14 @@ classes:
     slot_usage:
       add_date:
         range: datetime
+        description: The date and time at which a record was added to the NMDC database.
         comments:
-          - "range: datetime is the LinkML datetime type (linkml:datetime, mapped to xsd:dateTime). JSON Schema validates this as RFC 3339 date-time, which requires a timezone designator (e.g. 2021-03-31T00:00:00Z). Constrained here within ProvenanceMetadata; the global range remains string for backward compatibility with legacy exported data."
-          - Legacy records migrated from date-only values use a conventional T00:00:00Z time component, which should not be interpreted as an actual time of day.
+          - Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23 may carry GOLD-sourced dates rather than NMDC-asserted timestamps.
       mod_date:
         range: datetime
+        description: The date and time at which a record was last modified in the NMDC database.
         comments:
-          - "range: datetime is the LinkML datetime type (linkml:datetime, mapped to xsd:dateTime). JSON Schema validates this as RFC 3339 date-time, which requires a timezone designator (e.g. 2021-03-31T00:00:00Z). Constrained here within ProvenanceMetadata; the global range remains string for backward compatibility with legacy exported data."
-          - Legacy records migrated from date-only values use a conventional T00:00:00Z time component, which should not be interpreted as an actual time of day.
+          - Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23 may carry GOLD-sourced dates rather than NMDC-asserted timestamps.
       version:
         description: The version tag of the software used to generate the NMDC metadata record
       git_url:

@@ -914,6 +914,9 @@ classes:
       - lbceq
     slot_usage:
 
+      provenance_metadata:
+        description: Provenance metadata for this Biosample, including when the record was added to and last modified in the NMDC database.
+
       collected_from:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
