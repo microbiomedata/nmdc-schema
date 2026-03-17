@@ -1259,12 +1259,63 @@ classes:
         An OrganismSample might be isolated from an environmental Biosample
         by culturing and isolating colonies.
     slots:
+      ## study linkage
+      - associated_studies
+      - embargoed
+      - provenance_metadata
+
+      ## external IDs
       - external_database_identifiers
+      - gold_biosample_identifiers
+      - insdc_biosample_identifiers
+
+      ## taxonomy and organism identity
+      - samp_taxon_id
+      - samp_name
+      - source_mat_id
+      - host_taxid
+      - ncbi_taxonomy_name
+
+      ## collection and provenance
+      - collection_date
+      - geo_loc_name
+      - lat_lon
+      - collected_from
+      - sample_collection_site
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
+
+      ## organism biology
+      - biotic_relationship
+      - oxy_stat_samp
+      - biol_stat
+      - genetic_mod
+      - host_disease_stat
+
+      ## storage and handling
+      - samp_store_temp
+      - samp_store_loc
+      - samp_store_dur
+      - store_cond
+
     slot_usage:
       id:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:orgsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
+      associated_studies:
+        required: true
+        range: Study
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
+      collected_from:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   Site:
