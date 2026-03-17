@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.0.post14.dev0+e0f8235f9
+version: 11.17.0.post15.dev0+f3b8fae71
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -4962,6 +4962,100 @@ enums:
         text: middle
       top:
         text: top
+  RelToOxygenEnum:
+    name: RelToOxygenEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      aerobe:
+        text: aerobe
+      anaerobe:
+        text: anaerobe
+      facultative:
+        text: facultative
+      microaerophilic:
+        text: microaerophilic
+      microanaerobe:
+        text: microanaerobe
+      obligate aerobe:
+        text: obligate aerobe
+      obligate anaerobe:
+        text: obligate anaerobe
+  TaxIdentEnum:
+    name: TaxIdentEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      16S rRNA gene:
+        text: 16S rRNA gene
+      multi-marker approach:
+        text: multi-marker approach
+      other:
+        text: other
+  TrophicLevelEnum:
+    name: TrophicLevelEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      autotroph:
+        text: autotroph
+      carboxydotroph:
+        text: carboxydotroph
+      chemoautolithotroph:
+        text: chemoautolithotroph
+      chemoautotroph:
+        text: chemoautotroph
+      chemoheterotroph:
+        text: chemoheterotroph
+      chemolithoautotroph:
+        text: chemolithoautotroph
+      chemolithotroph:
+        text: chemolithotroph
+      chemoorganoheterotroph:
+        text: chemoorganoheterotroph
+      chemoorganotroph:
+        text: chemoorganotroph
+      chemosynthetic:
+        text: chemosynthetic
+      chemotroph:
+        text: chemotroph
+      copiotroph:
+        text: copiotroph
+      diazotroph:
+        text: diazotroph
+      facultative:
+        text: facultative
+      heterotroph:
+        text: heterotroph
+      lithoautotroph:
+        text: lithoautotroph
+      lithoheterotroph:
+        text: lithoheterotroph
+      lithotroph:
+        text: lithotroph
+      methanotroph:
+        text: methanotroph
+      methylotroph:
+        text: methylotroph
+      mixotroph:
+        text: mixotroph
+      obligate:
+        text: obligate
+      oligotroph:
+        text: oligotroph
+      organoheterotroph:
+        text: organoheterotroph
+      organotroph:
+        text: organotroph
+      photoautotroph:
+        text: photoautotroph
+      photoheterotroph:
+        text: photoheterotroph
+      photolithoautotroph:
+        text: photolithoautotroph
+      photolithotroph:
+        text: photolithotroph
+      photosynthetic:
+        text: photosynthetic
+      phototroph:
+        text: phototroph
   HostSexEnum:
     name: HostSexEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16509,6 +16603,113 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+  encoded_traits:
+    name: encoded_traits
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: 'for plasmid: antibiotic resistance; for phage: converting genes'
+    description: Should include key traits like antibiotic resistance or xenobiotic
+      degradation phenotypes for plasmids, converting genes for phage
+    title: encoded traits
+    examples:
+    - value: beta-lactamase class A
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0000034
+    range: TextValue
+  isol_growth_condt:
+    name: isol_growth_condt
+    description: Publication reference in the form of pubmed ID (pmid), digital object
+      identifier (doi) or url for isolation and growth condition specifications of
+      the organism/material
+    title: isolation and growth condition
+    examples:
+    - value: doi:10.1016/j.syapm.2018.01.009
+    from_schema: https://w3id.org/nmdc/nmdc
+    keywords:
+    - condition
+    - growth
+    - isolation
+    slot_uri: MIXS:0000003
+    range: TextValue
+    pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+      partial_match: true
+  pathogenicity:
+    name: pathogenicity
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: names of organisms that the entity is pathogenic to
+    description: To what is the entity pathogenic
+    title: known pathogenicity
+    examples:
+    - value: human, animal, plant, fungi, bacteria
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0000027
+    range: TextValue
+  rel_to_oxygen:
+    name: rel_to_oxygen
+    description: Is this organism an aerobe, anaerobe? Please note that aerobic and
+      anaerobic are valid descriptors for microbial environments
+    title: relationship to oxygen
+    examples:
+    - value: aerobe
+    from_schema: https://w3id.org/nmdc/nmdc
+    keywords:
+    - oxygen
+    - relationship
+    slot_uri: MIXS:0000015
+    range: RelToOxygenEnum
+  subspecf_gen_lin:
+    name: subspecf_gen_lin
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: Genetic lineage below lowest rank of NCBI taxonomy, which is subspecies,
+          e.g. serovar, biotype, ecotype, variety, cultivar
+    description: Information about the genetic distinctness of the sequenced organism
+      below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or any
+      relevant genetic typing schemes like Group I plasmid. Subspecies should not
+      be recorded in this term, but in the NCBI taxonomy. Supply both the lineage
+      name and the lineage rank separated by a colon, e.g., biovar:abc123
+    title: subspecific genetic lineage
+    examples:
+    - value: serovar:Newport
+    from_schema: https://w3id.org/nmdc/nmdc
+    keywords:
+    - lineage
+    string_serialization: '{rank name}:{text}'
+    slot_uri: MIXS:0000020
+  tax_ident:
+    name: tax_ident
+    description: The phylogenetic marker(s) used to assign an organism name to the
+      SAG or MAG
+    title: taxonomic identity marker
+    examples:
+    - value: other
+      description: was other <colon> rpoB gene
+    from_schema: https://w3id.org/nmdc/nmdc
+    keywords:
+    - identifier
+    - marker
+    - taxon
+    slot_uri: MIXS:0000053
+    range: TaxIdentEnum
+  trophic_level:
+    name: trophic_level
+    description: Trophic levels are the feeding position in a food chain. Microbes
+      can be a range of producers (e.g. chemolithotroph)
+    title: trophic level
+    examples:
+    - value: heterotroph
+    from_schema: https://w3id.org/nmdc/nmdc
+    keywords:
+    - level
+    slot_uri: MIXS:0000032
+    range: TrophicLevelEnum
   samp_collec_device:
     name: samp_collec_device
     annotations:
@@ -20707,6 +20908,13 @@ classes:
     - biol_stat
     - genetic_mod
     - host_disease_stat
+    - encoded_traits
+    - isol_growth_condt
+    - pathogenicity
+    - rel_to_oxygen
+    - subspecf_gen_lin
+    - tax_ident
+    - trophic_level
     - samp_store_temp
     - samp_store_loc
     - samp_store_dur

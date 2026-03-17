@@ -741,6 +741,10 @@
          <lastmod>2026-03-17</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/RelToOxygenEnum/</loc>
+         <lastmod>2026-03-17</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/ResolutionCategoryEnum/</loc>
          <lastmod>2026-03-17</lastmod>
     </url>
@@ -917,6 +921,10 @@
          <lastmod>2026-03-17</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/TaxIdentEnum/</loc>
+         <lastmod>2026-03-17</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/TextValue/</loc>
          <lastmod>2026-03-17</lastmod>
     </url>
@@ -946,6 +954,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/TrainStopLocEnum/</loc>
+         <lastmod>2026-03-17</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/TrophicLevelEnum/</loc>
          <lastmod>2026-03-17</lastmod>
     </url>
     <url>
@@ -1873,6 +1885,10 @@
          <lastmod>2026-03-17</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/encoded_traits/</loc>
+         <lastmod>2026-03-17</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/encodes/</loc>
          <lastmod>2026-03-17</lastmod>
     </url>
@@ -2669,6 +2685,10 @@
          <lastmod>2026-03-17</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/isol_growth_condt/</loc>
+         <lastmod>2026-03-17</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/isotope_exposure/</loc>
          <lastmod>2026-03-17</lastmod>
     </url>
@@ -3201,6 +3221,10 @@
          <lastmod>2026-03-17</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/pathogenicity/</loc>
+         <lastmod>2026-03-17</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/pcr_cond/</loc>
          <lastmod>2026-03-17</lastmod>
     </url>
@@ -3486,6 +3510,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/rel_samp_loc/</loc>
+         <lastmod>2026-03-17</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/rel_to_oxygen/</loc>
          <lastmod>2026-03-17</lastmod>
     </url>
     <url>
@@ -4121,6 +4149,10 @@
          <lastmod>2026-03-17</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/subspecf_gen_lin/</loc>
+         <lastmod>2026-03-17</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/substance_role/</loc>
          <lastmod>2026-03-17</lastmod>
     </url>
@@ -4198,6 +4230,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/target_subfragment/</loc>
+         <lastmod>2026-03-17</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/tax_ident/</loc>
          <lastmod>2026-03-17</lastmod>
     </url>
     <url>
@@ -4322,6 +4358,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/train_stop_loc/</loc>
+         <lastmod>2026-03-17</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/trophic_level/</loc>
          <lastmod>2026-03-17</lastmod>
     </url>
     <url>

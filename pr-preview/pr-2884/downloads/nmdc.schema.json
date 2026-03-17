@@ -12324,6 +12324,17 @@
                         "null"
                     ]
                 },
+                "encoded_traits": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Should include key traits like antibiotic resistance or xenobiotic degradation phenotypes for plasmids, converting genes for phage"
+                },
                 "env_broad_scale": {
                     "anyOf": [
                         {
@@ -12431,6 +12442,17 @@
                         "null"
                     ]
                 },
+                "isol_growth_condt": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material"
+                },
                 "lat_lon": {
                     "anyOf": [
                         {
@@ -12459,6 +12481,17 @@
                     "$ref": "#/$defs/OxyStatSampEnum",
                     "description": "Oxygenation status of sample"
                 },
+                "pathogenicity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "To what is the entity pathogenic"
+                },
                 "provenance_metadata": {
                     "anyOf": [
                         {
@@ -12469,6 +12502,10 @@
                         }
                     ],
                     "description": "Provides information about the provenance of a record."
+                },
+                "rel_to_oxygen": {
+                    "$ref": "#/$defs/RelToOxygenEnum",
+                    "description": "Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments"
                 },
                 "samp_name": {
                     "description": "A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name",
@@ -12548,6 +12585,21 @@
                         }
                     ],
                     "description": "Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other)"
+                },
+                "subspecf_gen_lin": {
+                    "description": "Information about the genetic distinctness of the sequenced organism below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or any relevant genetic typing schemes like Group I plasmid. Subspecies should not be recorded in this term, but in the NCBI taxonomy. Supply both the lineage name and the lineage rank separated by a colon, e.g., biovar:abc123",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "tax_ident": {
+                    "$ref": "#/$defs/TaxIdentEnum",
+                    "description": "The phylogenetic marker(s) used to assign an organism name to the SAG or MAG"
+                },
+                "trophic_level": {
+                    "$ref": "#/$defs/TrophicLevelEnum",
+                    "description": "Trophic levels are the feeding position in a food chain. Microbes can be a range of producers (e.g. chemolithotroph)"
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -13885,6 +13937,20 @@
             "title": "RelSampLocEnum",
             "type": "string"
         },
+        "RelToOxygenEnum": {
+            "description": "",
+            "enum": [
+                "aerobe",
+                "anaerobe",
+                "facultative",
+                "microaerophilic",
+                "microanaerobe",
+                "obligate aerobe",
+                "obligate anaerobe"
+            ],
+            "title": "RelToOxygenEnum",
+            "type": "string"
+        },
         "ResolutionCategoryEnum": {
             "description": "",
             "enum": [
@@ -15017,6 +15083,16 @@
             "title": "TargetGeneEnum",
             "type": "string"
         },
+        "TaxIdentEnum": {
+            "description": "",
+            "enum": [
+                "16S rRNA gene",
+                "multi-marker approach",
+                "other"
+            ],
+            "title": "TaxIdentEnum",
+            "type": "string"
+        },
         "TextValue": {
             "additionalProperties": false,
             "description": "A basic string value",
@@ -15131,6 +15207,44 @@
                 "mid"
             ],
             "title": "TrainStopLocEnum",
+            "type": "string"
+        },
+        "TrophicLevelEnum": {
+            "description": "",
+            "enum": [
+                "autotroph",
+                "carboxydotroph",
+                "chemoautolithotroph",
+                "chemoautotroph",
+                "chemoheterotroph",
+                "chemolithoautotroph",
+                "chemolithotroph",
+                "chemoorganoheterotroph",
+                "chemoorganotroph",
+                "chemosynthetic",
+                "chemotroph",
+                "copiotroph",
+                "diazotroph",
+                "facultative",
+                "heterotroph",
+                "lithoautotroph",
+                "lithoheterotroph",
+                "lithotroph",
+                "methanotroph",
+                "methylotroph",
+                "mixotroph",
+                "obligate",
+                "oligotroph",
+                "organoheterotroph",
+                "organotroph",
+                "photoautotroph",
+                "photoheterotroph",
+                "photolithoautotroph",
+                "photolithotroph",
+                "photosynthetic",
+                "phototroph"
+            ],
+            "title": "TrophicLevelEnum",
             "type": "string"
         },
         "UnitEnum": {
@@ -15682,5 +15796,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.17.0.post14.dev0+e0f8235f9"
+    "version": "11.17.0.post15.dev0+f3b8fae71"
 }
