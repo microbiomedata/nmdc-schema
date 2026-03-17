@@ -1293,6 +1293,15 @@ classes:
       - genetic_mod
       - host_disease_stat
 
+      ## MIGS-Ba checklist slots (newly imported from MIxS)
+      - encoded_traits
+      - isol_growth_condt
+      - pathogenicity
+      - rel_to_oxygen
+      - subspecf_gen_lin
+      - tax_ident
+      - trophic_level
+
       ## storage and handling
       - samp_store_temp
       - samp_store_loc

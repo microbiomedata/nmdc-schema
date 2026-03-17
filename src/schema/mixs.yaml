@@ -827,6 +827,53 @@ enums:
       low: {}
       middle: {}
       top: {}
+  RelToOxygenEnum:
+    permissible_values:
+      aerobe: {}
+      anaerobe: {}
+      facultative: {}
+      microaerophilic: {}
+      microanaerobe: {}
+      obligate aerobe: {}
+      obligate anaerobe: {}
+  TaxIdentEnum:
+    permissible_values:
+      16S rRNA gene: {}
+      multi-marker approach: {}
+      other: {}
+  TrophicLevelEnum:
+    permissible_values:
+      autotroph: {}
+      carboxydotroph: {}
+      chemoautolithotroph: {}
+      chemoautotroph: {}
+      chemoheterotroph: {}
+      chemolithoautotroph: {}
+      chemolithotroph: {}
+      chemoorganoheterotroph: {}
+      chemoorganotroph: {}
+      chemosynthetic: {}
+      chemotroph: {}
+      copiotroph: {}
+      diazotroph: {}
+      facultative: {}
+      heterotroph: {}
+      lithoautotroph: {}
+      lithoheterotroph: {}
+      lithotroph: {}
+      methanotroph: {}
+      methylotroph: {}
+      mixotroph: {}
+      obligate: {}
+      oligotroph: {}
+      organoheterotroph: {}
+      organotroph: {}
+      photoautotroph: {}
+      photoheterotroph: {}
+      photolithoautotroph: {}
+      photolithotroph: {}
+      photosynthetic: {}
+      phototroph: {}
   HostSexEnum:
     permissible_values:
       female: {}
@@ -7101,6 +7148,81 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+  encoded_traits:
+    annotations:
+      Expected_value: 'for plasmid: antibiotic resistance; for phage: converting genes'
+    description: Should include key traits like antibiotic resistance or xenobiotic degradation phenotypes for plasmids, converting genes for phage
+    title: encoded traits
+    examples:
+      - value: beta-lactamase class A
+    slot_uri: MIXS:0000034
+    range: TextValue
+  isol_growth_condt:
+    description: Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material
+    title: isolation and growth condition
+    examples:
+      - value: doi:10.1016/j.syapm.2018.01.009
+    keywords:
+      - condition
+      - growth
+      - isolation
+    slot_uri: MIXS:0000003
+    range: TextValue
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+      partial_match: true
+  pathogenicity:
+    annotations:
+      Expected_value: names of organisms that the entity is pathogenic to
+    description: To what is the entity pathogenic
+    title: known pathogenicity
+    examples:
+      - value: human, animal, plant, fungi, bacteria
+    slot_uri: MIXS:0000027
+    range: TextValue
+  rel_to_oxygen:
+    description: Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments
+    title: relationship to oxygen
+    examples:
+      - value: aerobe
+    keywords:
+      - oxygen
+      - relationship
+    slot_uri: MIXS:0000015
+    range: RelToOxygenEnum
+  subspecf_gen_lin:
+    annotations:
+      Expected_value: Genetic lineage below lowest rank of NCBI taxonomy, which is subspecies, e.g. serovar, biotype, ecotype, variety, cultivar
+    description: Information about the genetic distinctness of the sequenced organism below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or any relevant genetic typing schemes like Group I plasmid. Subspecies should not be recorded in this term, but in the NCBI taxonomy. Supply both the lineage name and the lineage rank separated by a colon, e.g., biovar:abc123
+    title: subspecific genetic lineage
+    examples:
+      - value: serovar:Newport
+    keywords:
+      - lineage
+    string_serialization: '{rank name}:{text}'
+    slot_uri: MIXS:0000020
+  tax_ident:
+    description: The phylogenetic marker(s) used to assign an organism name to the SAG or MAG
+    title: taxonomic identity marker
+    examples:
+      - value: other
+        description: was other <colon> rpoB gene
+    keywords:
+      - identifier
+      - marker
+      - taxon
+    slot_uri: MIXS:0000053
+    range: TaxIdentEnum
+  trophic_level:
+    description: Trophic levels are the feeding position in a food chain. Microbes can be a range of producers (e.g. chemolithotroph)
+    title: trophic level
+    examples:
+      - value: heterotroph
+    keywords:
+      - level
+    slot_uri: MIXS:0000032
+    range: TrophicLevelEnum
   samp_collec_device:
     annotations:
       Expected_value: device name
