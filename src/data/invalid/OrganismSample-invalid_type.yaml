@@ -1,0 +1,3 @@
+# invalid b/c of wrong type (Biosample instead of OrganismSample)
+id: nmdc:orgsm-99-abc123
+type: nmdc:Biosample

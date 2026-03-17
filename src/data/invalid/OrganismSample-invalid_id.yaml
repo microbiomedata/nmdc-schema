@@ -1,0 +1,3 @@
+# invalid b/c of wrong typecode in ID (uses bsm instead of orgsm)
+id: nmdc:bsm-99-abc123
+type: nmdc:OrganismSample
