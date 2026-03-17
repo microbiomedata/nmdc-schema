@@ -1256,7 +1256,7 @@ classes:
       cultures, and single cells.
     comments:
       - >-
-        An OrganismSample can be isolated from an environmental Biosample
+        An OrganismSample might be isolated from an environmental Biosample
         by culturing and isolating colonies.
     slots:
       - external_database_identifiers
