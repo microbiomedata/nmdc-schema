@@ -12,6 +12,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   linkml: "https://w3id.org/linkml/"
   nmdc: "https://w3id.org/nmdc/"
+  nmdc_sub_schema: "https://example.com/nmdc_sub_schema/"
 
 imports:
   - linkml:types
@@ -209,6 +210,8 @@ slots:
       General category of organism or material for biosafety classification.
     title: biosafety material category
     range: BiosafetyMaterialCategoryEnum
+    exact_mappings:
+      - nmdc_sub_schema:biosafety_mat_cat
     comments:
       - "JGI: Required field. Choose from Alga, Animal, Archaea, Bacteria, Fungi,
         Plant, Plasmid, Protist, Virus, Synthetic Construct."
@@ -243,6 +246,8 @@ slots:
       fluorometry.
     title: concentration (ng/ul)
     range: float
+    exact_mappings:
+      - nmdc_sub_schema:nuc_acid_concentration
     comments:
       - "JGI: Must be calculated using a fluorometric method; value >0 and <2000."
 
@@ -251,6 +256,8 @@ slots:
       Volume of the sample being provided, in ul.
     title: volume (ul)
     range: float
+    exact_mappings:
+      - nmdc_sub_schema:jgi_sample_volume
     comments:
       - "JGI: Value must be >0 and <1000."
 
@@ -259,6 +266,8 @@ slots:
       Absorbance ratio at 260/280 nm, used to assess sample purity.
     title: absorbance 260/280
     range: float
+    exact_mappings:
+      - nmdc_sub_schema:nuc_acid_absorb1
     comments:
       - "JGI: Recommended value is between 1 and 3."
 
@@ -268,6 +277,8 @@ slots:
       detect contamination with organic compounds.
     title: absorbance 260/230
     range: float
+    exact_mappings:
+      - nmdc_sub_schema:nuc_acid_absorb2
     comments:
       - "JGI: Recommended value is between 1 and 3."
 
@@ -276,18 +287,24 @@ slots:
       Physical container type for sample shipment.
     title: sample container
     range: SampleContainerEnum
+    exact_mappings:
+      - nmdc_sub_schema:cont_type
 
   sample_format:
     description: >-
       Format or buffer in which the physical sample is provided.
     title: sample format
     range: SampleFormatEnum
+    exact_mappings:
+      - nmdc_sub_schema:jgi_sample_format
 
   dnase_treated:
     description: >-
       Whether the sample was treated with DNAse.
     title: was sample DNAse treated
     range: YesNoEnum
+    exact_mappings:
+      - nmdc_sub_schema:dnase
     comments:
       - "JGI: DNAse treatment is required for all RNA samples."
 
@@ -296,14 +313,20 @@ slots:
       Method, protocol, or kit used to extract DNA/RNA from the organism.
     title: sample isolation method
     range: string
+    close_mappings:
+      - nmdc:dna_isolate_meth
     comments:
-      - Maps to dna_isolate_meth in submission-schema context.
+      - >-
+        Close mapping to dna_isolate_meth (nmdc-schema/submission-schema): this
+        slot is nucleic-acid-type agnostic while dna_isolate_meth is DNA-specific.
 
   tube_or_plate_label:
     description: >-
       Label on the tube or plate. Must be unique across all tubes and plates.
     title: tube or plate label
     range: string
+    exact_mappings:
+      - nmdc_sub_schema:container_name
     comments:
       - "JGI: Must be unique across all tubes and plates, and <20 characters."
 
@@ -313,3 +336,5 @@ slots:
       blank.
     title: plate location (well #)
     range: string
+    exact_mappings:
+      - nmdc_sub_schema:cont_well
