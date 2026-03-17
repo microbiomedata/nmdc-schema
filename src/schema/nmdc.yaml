@@ -453,6 +453,7 @@ classes:
       - instrument_set
       - manifest_set
       - material_processing_set
+      - organism_sample_set
       - processed_sample_set
       - storage_process_set
       - study_set
@@ -1400,6 +1401,12 @@ slots:
       - object_set
     range: ProcessedSample
     description: This property links a database object to the set of processed samples within it.
+
+  organism_sample_set:
+    mixins:
+      - object_set
+    range: OrganismSample
+    description: This property links a database object to the set of organism samples within it.
 
   instrument_set:
     mixins:

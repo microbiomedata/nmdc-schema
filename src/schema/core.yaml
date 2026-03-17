@@ -1245,6 +1245,24 @@ classes:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
 
+  OrganismSample:
+    class_uri: nmdc:OrganismSample
+    is_a: Sample
+    title: Organism Sample
+    description: >-
+      A material sample representing a cultured isolate or other organism that
+      has been identified and separated from an environmental sample.
+      Distinct from Biosample, which represents environmental source material,
+      and ProcessedSample, which represents extracted or prepared material.
+    slots:
+      - external_database_identifiers
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:orgsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
   Site:
     class_uri: nmdc:Site
     abstract: true
