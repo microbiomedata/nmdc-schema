@@ -9,6 +9,7 @@ imports:
   - attribute_values
   - basic_slots
   - basic_classes
+  - organism_sample
   - portal_user_facility
   - portal_mixs_inspired
   - portal_sample_id
@@ -1301,6 +1302,49 @@ classes:
       - subspecf_gen_lin
       - tax_ident
       - trophic_level
+
+      ## genome characteristics (estimated_size from MIxS MIGS-Ba)
+      - estimated_size
+      - gc_content
+      - ploidy
+      - reference_genome
+
+      ## organism identity — separate fields per JGI convention
+      - organism_genus
+      - organism_species
+      - isolate_name
+
+      ## strain verification
+      - ribosomal_sequence
+      - ribosomal_sequence_type
+      - ribosomal_sequence_comments
+      - second_ribosomal_sequence
+      - second_ribosomal_sequence_type
+      - second_ribosomal_sequence_comments
+      - single_colony_isolation
+      - known_suspected_organisms
+      - fungal_16s_screening
+      - its_match_unite
+
+      ## biosafety
+      - biosafety_material_category
+
+      ## viral host identity
+      - viral_host_genus
+      - viral_host_species
+      - viral_host_strain
+
+      ## physical sample / analyte properties
+      - analyte_concentration
+      - analyte_volume
+      - absorbance_260_280
+      - absorbance_260_230
+      - sample_container
+      - sample_format
+      - dnase_treated
+      - sample_isolation_method
+      - tube_or_plate_label
+      - plate_well_location
 
       ## storage and handling
       - samp_store_temp

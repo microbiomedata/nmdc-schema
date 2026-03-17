@@ -1,0 +1,315 @@
+id: https://w3id.org/nmdc/organism_sample
+name: organism-sample-slots
+title: Organism Sample Slots
+description: >-
+  Slots specific to OrganismSample that are not derived from MIxS or other
+  existing schema modules. Many of these originate from the JGI Isolate (NA) v19
+  submission form and capture organism identity, genome characteristics, strain
+  verification, biosafety, and physical sample properties for extracted analytes.
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: "https://w3id.org/linkml/"
+  nmdc: "https://w3id.org/nmdc/"
+
+imports:
+  - linkml:types
+
+default_prefix: nmdc
+
+enums:
+  BiosafetyMaterialCategoryEnum:
+    description: >-
+      General category of organism or material, as used by JGI for biosafety
+      classification.
+    permissible_values:
+      Alga: {}
+      Animal: {}
+      Archaea: {}
+      Bacteria: {}
+      Fungi: {}
+      Plant: {}
+      Plasmid: {}
+      Protist: {}
+      Virus: {}
+      Synthetic Construct: {}
+
+  SampleFormatEnum:
+    description: >-
+      Format or buffer in which the physical sample is provided.
+      Values from JGI Isolate (NA) v19.
+    permissible_values:
+      Pellet: {}
+      Ethanol: {}
+      MDA Reaction Buffer: {}
+      PBS: {}
+      TE: {}
+      Water: {}
+      Low EDTA TE: {}
+      10 mM Tris-HCl: {}
+      Gentegra-DNA: {}
+      Gentegra-RNA: {}
+
+  SampleContainerEnum:
+    description: >-
+      Physical container type for sample shipment.
+    permissible_values:
+      tube: {}
+      plate (96-well): {}
+
+  RibosomalSequenceTypeEnum:
+    description: >-
+      Type of ribosomal sequence used for strain verification.
+    permissible_values:
+      16S: {}
+      ITS: {}
+      ITS-AGI: {}
+      28S: {}
+      Other: {}
+
+  YesNoEnum:
+    description: >-
+      Simple yes/no value.
+    permissible_values:
+      "Y": {}
+      "N": {}
+
+slots:
+  ## Organism identity — separate fields as JGI requires
+  organism_genus:
+    description: Genus of the organism.
+    title: genus
+    range: string
+    comments:
+      - JGI Isolate v19 required field.
+
+  organism_species:
+    description: Species of the organism.
+    title: species
+    range: string
+    comments:
+      - JGI Isolate v19 required field.
+
+  isolate_name:
+    description: >-
+      Isolate or mutant name, if applicable. Distinct from strain/cultivar
+      and from culture collection identifiers.
+    title: isolate name
+    range: string
+    comments:
+      - "JGI: The culture collection ID should be entered in the Culture Collection
+        and ID field, not the Isolate field."
+
+  ## Genome characteristics
+  gc_content:
+    description: >-
+      Estimated GC content of the genome, as a percentage.
+    title: GC content %
+    range: float
+    comments:
+      - "JGI: Give an estimate of the GC content of the genome in decimal format
+        (e.g. 45.2)."
+
+  ploidy:
+    description: >-
+      Genome ploidy, e.g. haploid, diploid, octaploid.
+    title: ploidy comments
+    range: string
+
+  reference_genome:
+    description: >-
+      Reference genome to be used for analysis. Preferred formats are IMG taxon
+      OID, Mycocosm/Phycocosm/Phytozome ID.
+    title: reference genome
+    range: string
+    comments:
+      - "JGI: Required for resequencing, gene expression, IsoSeq, and methylation."
+
+  ## Strain verification
+  ribosomal_sequence:
+    description: >-
+      Nucleotide sequence used for strain verification. Must contain only
+      A, C, G, T, or N characters with no header. At least one ribosomal
+      sequence is required for all microbial and fungal genome projects.
+    title: ribosomal sequence
+    range: string
+    comments:
+      - "JGI: 16S sequence MUST be >1300 nt with <10% Ns for microbial drafts.
+        ITS sequence must be >450 nt with <2% Ns for fungal drafts."
+
+  ribosomal_sequence_type:
+    description: >-
+      Type of ribosomal sequence provided for strain verification.
+    title: ribosomal sequence type
+    range: RibosomalSequenceTypeEnum
+
+  ribosomal_sequence_comments:
+    description: >-
+      Additional information about the ribosomal sequence. Required if
+      ribosomal sequence type is Other.
+    title: ribosomal sequence comments
+    range: string
+
+  second_ribosomal_sequence:
+    description: >-
+      Optional secondary ribosomal sequence for additional verification.
+      Must contain only A, C, G, T, or N characters with no header.
+    title: second ribosomal sequence
+    range: string
+
+  second_ribosomal_sequence_type:
+    description: >-
+      Type of the secondary ribosomal sequence.
+    title: second ribosomal sequence type
+    range: RibosomalSequenceTypeEnum
+
+  second_ribosomal_sequence_comments:
+    description: >-
+      Additional information about the secondary ribosomal sequence.
+    title: second ribosomal sequence comments
+    range: string
+
+  single_colony_isolation:
+    description: >-
+      Whether the sample was isolated from an axenic/strain pure culture
+      (single colony or equivalent).
+    title: is sample from single colony
+    range: YesNoEnum
+    comments:
+      - "JGI: Was the sample isolated from an axenic/strain pure culture?"
+
+  known_suspected_organisms:
+    description: >-
+      Organisms known or suspected to grow in co-culture or that may be
+      contaminating the culture, with estimated percentages.
+    title: known/suspected organisms
+    range: string
+
+  fungal_16s_screening:
+    description: >-
+      Whether 16S screening was performed to identify bacterial contamination
+      in fungal samples.
+    title: fungal 16S screening
+    range: YesNoEnum
+    comments:
+      - "JGI: Required for all fungal draft samples."
+
+  its_match_unite:
+    description: >-
+      Whether the ITS sequence matches taxonomy in the UNITE database.
+    title: ITS match in UNITE
+    range: YesNoEnum
+    comments:
+      - "JGI: Required for all fungal draft samples."
+
+  ## Biosafety
+  biosafety_material_category:
+    description: >-
+      General category of organism or material for biosafety classification.
+    title: biosafety material category
+    range: BiosafetyMaterialCategoryEnum
+    comments:
+      - "JGI: Required field. Choose from Alga, Animal, Archaea, Bacteria, Fungi,
+        Plant, Plasmid, Protist, Virus, Synthetic Construct."
+
+  ## Viral host — separate fields as JGI requires
+  viral_host_genus:
+    description: Genus of the viral host.
+    title: host genus
+    range: string
+    comments:
+      - "JGI: Required for viral minimal draft projects."
+
+  viral_host_species:
+    description: Species of the viral host.
+    title: host species
+    range: string
+    comments:
+      - "JGI: Required for viral minimal draft projects."
+
+  viral_host_strain:
+    description: Strain of the viral host.
+    title: host strain
+    range: string
+    comments:
+      - "JGI: Required for viral minimal draft projects."
+
+  ## Physical sample / analyte properties
+  ## These describe what JGI actually receives in the vial — extracted DNA/RNA.
+  analyte_concentration:
+    description: >-
+      Concentration of DNA/RNA in the sample, in ng/ul, as determined by
+      fluorometry.
+    title: concentration (ng/ul)
+    range: float
+    comments:
+      - "JGI: Must be calculated using a fluorometric method; value >0 and <2000."
+
+  analyte_volume:
+    description: >-
+      Volume of the sample being provided, in ul.
+    title: volume (ul)
+    range: float
+    comments:
+      - "JGI: Value must be >0 and <1000."
+
+  absorbance_260_280:
+    description: >-
+      Absorbance ratio at 260/280 nm, used to assess sample purity.
+    title: absorbance 260/280
+    range: float
+    comments:
+      - "JGI: Recommended value is between 1 and 3."
+
+  absorbance_260_230:
+    description: >-
+      Absorbance ratio at 260/230 nm, used to assess sample purity and
+      detect contamination with organic compounds.
+    title: absorbance 260/230
+    range: float
+    comments:
+      - "JGI: Recommended value is between 1 and 3."
+
+  sample_container:
+    description: >-
+      Physical container type for sample shipment.
+    title: sample container
+    range: SampleContainerEnum
+
+  sample_format:
+    description: >-
+      Format or buffer in which the physical sample is provided.
+    title: sample format
+    range: SampleFormatEnum
+
+  dnase_treated:
+    description: >-
+      Whether the sample was treated with DNAse.
+    title: was sample DNAse treated
+    range: YesNoEnum
+    comments:
+      - "JGI: DNAse treatment is required for all RNA samples."
+
+  sample_isolation_method:
+    description: >-
+      Method, protocol, or kit used to extract DNA/RNA from the organism.
+    title: sample isolation method
+    range: string
+    comments:
+      - Maps to dna_isolate_meth in submission-schema context.
+
+  tube_or_plate_label:
+    description: >-
+      Label on the tube or plate. Must be unique across all tubes and plates.
+    title: tube or plate label
+    range: string
+    comments:
+      - "JGI: Must be unique across all tubes and plates, and <20 characters."
+
+  plate_well_location:
+    description: >-
+      Well location in a 96-well plate, e.g. A4, B5. Corner wells must be
+      blank.
+    title: plate location (well #)
+    range: string
