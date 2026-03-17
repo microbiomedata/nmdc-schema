@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.0.post9.dev0+28d9bd95d
+version: 11.17.0.post10.dev0+b6732a7de
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -20678,7 +20678,7 @@ classes:
       heterogeneous tissues and cell types), nominally pure cultures, and single cells.
     title: Organism Sample
     comments:
-    - An OrganismSample can be isolated from an environmental Biosample by culturing
+    - An OrganismSample might be isolated from an environmental Biosample by culturing
       and isolating colonies.
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: Sample
