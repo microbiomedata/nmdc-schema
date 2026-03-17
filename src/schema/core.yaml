@@ -1250,10 +1250,14 @@ classes:
     is_a: Sample
     title: Organism Sample
     description: >-
-      A material sample representing a cultured isolate or other organism that
-      has been identified and separated from an environmental sample.
-      Distinct from Biosample, which represents environmental source material,
-      and ProcessedSample, which represents extracted or prepared material.
+      A material sample in which all cells are expected to share the same
+      genome. This includes individual multicellular organisms (which may
+      comprise heterogeneous tissues and cell types), nominally pure
+      cultures, and single cells.
+    comments:
+      - >-
+        An OrganismSample can be isolated from an environmental Biosample
+        by culturing and isolating colonies.
     slots:
       - external_database_identifiers
     slot_usage:
