@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: subsurface_depth - NMDC Schema Documentation</title>
+        <title>Slot: subsurface depth (subsurface_depth) - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-subsurface_depth" class="md-skip">
+        <a href="#slot-subsurface-depth-subsurface_depth" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: subsurface_depth
+              Slot: subsurface depth (subsurface_depth)
             
           </span>
         </div>
@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -716,7 +727,8 @@
   
 
 
-<h1 id="slot-subsurface_depth">Slot: subsurface_depth</h1>
+<h1 id="slot-subsurface-depth-subsurface_depth">Slot: subsurface depth (subsurface_depth)</h1>
+<p><em>Subsurface depth at the isolation site. Use has_minimum_numeric_value and has_maximum_numeric_value to represent a range (GOLD subsurface_depth1 and subsurface_depth2).</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/subsurface_depth">nmdc:subsurface_depth</a></p>
 <!-- no inheritance hierarchy -->
@@ -735,11 +747,20 @@
 <td>Biological source material which can be characterized by an experiment</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../OrganismSample/">OrganismSample</a></td>
+<td>A material sample in which all cells are expected to share the same genome</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
+</ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>GOLD subsurface_depth2 maps to has_maximum_numeric_value.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
@@ -771,8 +792,8 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>exact</td>
+<td>gold:subsurface_depth1</td>
 </tr>
 </tbody>
 </table>
@@ -784,11 +805,21 @@ annotations:
   storage_units:
     tag: storage_units
     value: m
+description: Subsurface depth at the isolation site. Use has_minimum_numeric_value
+  and has_maximum_numeric_value to represent a range (GOLD subsurface_depth1 and subsurface_depth2).
+title: subsurface depth
+comments:
+- GOLD subsurface_depth2 maps to has_maximum_numeric_value.
+in_subset:
+- gold_organism
 from_schema: https://w3id.org/nmdc/nmdc
+exact_mappings:
+- gold:subsurface_depth1
 rank: 1000
 alias: subsurface_depth
 domain_of:
 - Biosample
+- OrganismSample
 range: QuantityValue
 
 </code></pre>

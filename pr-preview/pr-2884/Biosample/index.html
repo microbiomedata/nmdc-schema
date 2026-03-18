@@ -3826,7 +3826,7 @@
 <tr>
 <td><a href="../subsurface_depth/">subsurface_depth</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
-<td></td>
+<td>Subsurface depth at the isolation site</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -5997,6 +5997,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: QuantityValue
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -7661,6 +7662,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: QuantityValue
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -8313,6 +8315,7 @@ attributes:
     domain_of:
     - FieldResearchSite
     - Biosample
+    - OrganismSample
     range: float
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -8606,6 +8609,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: ControlledTermValue
     multivalued: false
     pattern: ^\S+.*\S+ \[[a-zA-Z]{2,}:\d+\]$
@@ -9764,6 +9768,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: QuantityValue
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -9811,6 +9816,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: ControlledTermValue
   host_body_site:
     name: host_body_site
@@ -9834,6 +9840,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: ControlledTermValue
   host_body_temp:
     name: host_body_temp
@@ -12177,6 +12184,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: QuantityValue
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -13142,6 +13150,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: QuantityValue
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -13240,6 +13249,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: string
   samp_collec_method:
     name: samp_collec_method
@@ -13259,6 +13269,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: string
   samp_collect_point:
     name: samp_collect_point
@@ -13367,6 +13378,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: ControlledTermValue
   samp_md:
     name: samp_md
@@ -13489,6 +13501,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: QuantityValue
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -15087,6 +15100,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: QuantityValue
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -16684,6 +16698,7 @@ attributes:
     domain_of:
     - Study
     - Biosample
+    - OrganismSample
     range: string
   ecosystem_category:
     name: ecosystem_category
@@ -16705,6 +16720,7 @@ attributes:
     domain_of:
     - Study
     - Biosample
+    - OrganismSample
     range: string
   ecosystem_type:
     name: ecosystem_type
@@ -16727,6 +16743,7 @@ attributes:
     domain_of:
     - Study
     - Biosample
+    - OrganismSample
     range: string
   ecosystem_subtype:
     name: ecosystem_subtype
@@ -16747,6 +16764,7 @@ attributes:
     domain_of:
     - Study
     - Biosample
+    - OrganismSample
     range: string
   specific_ecosystem:
     name: specific_ecosystem
@@ -16766,6 +16784,7 @@ attributes:
     domain_of:
     - Study
     - Biosample
+    - OrganismSample
     range: string
   ecosystem_path_id:
     name: ecosystem_path_id
@@ -16780,6 +16799,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: integer
   community:
     name: community
@@ -16870,6 +16890,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: string
   subsurface_depth:
     name: subsurface_depth
@@ -16877,12 +16898,23 @@ attributes:
       storage_units:
         tag: storage_units
         value: m
+    description: Subsurface depth at the isolation site. Use has_minimum_numeric_value
+      and has_maximum_numeric_value to represent a range (GOLD subsurface_depth1 and
+      subsurface_depth2).
+    title: subsurface depth
+    comments:
+    - GOLD subsurface_depth2 maps to has_maximum_numeric_value.
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:subsurface_depth1
     rank: 1000
     alias: subsurface_depth
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: QuantityValue
   dna_isolate_meth:
     name: dna_isolate_meth

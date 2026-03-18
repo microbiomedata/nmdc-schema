@@ -84,6 +84,7 @@
    "neon.identifier": "http://example.org/neon/identifier/",
    "neon.schema": "http://example.org/neon/schema/",
    "nmdc": "https://w3id.org/nmdc/",
+   "nmdc_sub_schema": "https://example.com/nmdc_sub_schema/",
    "owl": "http://www.w3.org/2002/07/owl#",
    "prov": "http://www.w3.org/ns/prov#",
    "qud": "http://qudt.org/1.1/schema/qudt#",
