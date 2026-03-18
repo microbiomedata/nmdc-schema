@@ -1287,6 +1287,15 @@ classes:
       - env_local_scale
       - env_medium
 
+      ## GOLD organism differentia
+      - gold_organism_type
+      - cultured
+      - culture_type
+      - uncultured_type
+      - type_strain
+      - organism_domain
+      - gold_phylogeny
+
       ## organism biology
       - biotic_relationship
       - encoded_traits
@@ -1305,17 +1314,89 @@ classes:
       - tax_ident
       - trophic_level
 
+      ## GOLD taxonomy extras
+      - genbank_16s_id
+      - clade
+      - organism_common_name
+      - genus_synonyms
+      - species_synonyms
+
+      ## organism phenotype and morphology (from GOLD)
+      - gram_stain
+      - carbon_source
+      - cell_shape
+      - cell_length
+      - cell_diameter
+      - motility
+      - sporulation
+      - temperature_range
+      - organism_color
+
       ## sample collection
       - alt
       - depth
+      - depth2
       - elev
       - experimental_factor
+      - lat_long_inferred
+      - sample_isolation_comments
       - samp_collec_device
       - samp_collec_method
       - samp_mat_process
       - samp_size
       - temp
+      - growth_temperature2
+      - sample_collection_temperature2
       - sop
+      - subsurface_depth1
+      - subsurface_depth2
+      - altitude2
+      - elevation2
+
+      ## GOLD ecosystem hierarchy
+      - ecosystem
+      - ecosystem_category
+      - ecosystem_type
+      - ecosystem_subtype
+      - specific_ecosystem
+      - ecosystem_path_id
+      - other_ecosystem
+
+      ## isolation site environmental chemistry (from GOLD)
+      - salinity
+      - pressure
+      - isolation_site_ph1
+      - isolation_site_ph2
+      - chlorophyll_concentration
+      - nitrate_concentration
+      - oxygen_concentration
+      - salinity_concentration
+      - tot_org_carbon
+      - tot_nitrogen
+      - bicarbonate_millimol
+      - soluble_iron_micromol
+      - h2s_millimol
+      - h2s_present
+      - irradiance
+      - methane_conc_millimol
+      - sample_conductivity
+
+      ## host details (from GOLD)
+      - host_age
+      - host_body_site
+      - host_body_subsite
+      - host_body_product
+      - host_body_site_id
+      - host_body_subsite_id
+      - host_body_product_id
+      - host_gender
+      - host_race
+      - host_medication
+      - host_comments
+      - patient_visit_number
+      - medical_record_number
+      - known_non_hosts
+      - other_hosts
 
       ## sequencing and assembly
       - adapters

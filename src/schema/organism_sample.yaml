@@ -76,6 +76,40 @@ enums:
       "Y": {}
       "N": {}
 
+  GramStainEnum:
+    description: >-
+      Gram stain classification of a bacterium.
+    permissible_values:
+      Gram+: {}
+      Gram-: {}
+      indeterminate: {}
+
+  CultureTypeEnum:
+    description: >-
+      Type of cultivation used to grow the organism. Values from GOLD.
+    permissible_values:
+      isolate: {}
+      enrichment: {}
+      mixed culture: {}
+
+  UnculturedTypeEnum:
+    description: >-
+      Type of uncultured organism assembly. Values from GOLD.
+    permissible_values:
+      MAG: {}
+      SAG: {}
+      other: {}
+
+  TemperatureRangeEnum:
+    description: >-
+      Temperature classification of the organism.
+    permissible_values:
+      Cryophilic: {}
+      Psychrophilic: {}
+      Mesophilic: {}
+      Thermophilic: {}
+      Hyperthermophilic: {}
+
 slots:
   ## Organism identity — separate fields as JGI requires
   organism_genus:
@@ -338,3 +372,469 @@ slots:
     range: string
     exact_mappings:
       - nmdc_sub_schema:cont_well
+
+  ## GOLD organism differentia
+  gold_organism_type:
+    description: >-
+      Organism type classification from GOLD controlled vocabulary.
+    title: organism type
+    range: string
+    exact_mappings:
+      - gold:organism_type
+
+  cultured:
+    description: >-
+      Whether the organism has been cultured.
+    title: cultured
+    range: boolean
+    exact_mappings:
+      - gold:cultured
+
+  culture_type:
+    description: >-
+      Type of cultivation used to grow the organism, e.g. isolate,
+      enrichment, mixed culture.
+    title: culture type
+    range: CultureTypeEnum
+    exact_mappings:
+      - gold:culture_type
+
+  uncultured_type:
+    description: >-
+      For uncultured organisms, the type of genome assembly, e.g. MAG, SAG.
+    title: uncultured type
+    range: UnculturedTypeEnum
+    exact_mappings:
+      - gold:uncultured_type
+
+  type_strain:
+    description: >-
+      Whether this organism is a type strain.
+    title: type strain
+    range: boolean
+    exact_mappings:
+      - gold:type_strain
+
+  organism_domain:
+    description: >-
+      Taxonomic domain of the organism, e.g. Bacteria, Archaea, Eukarya.
+    title: domain
+    range: string
+    exact_mappings:
+      - gold:domain
+    comments:
+      - Can be derived from samp_taxon_id via NCBI taxonomy.
+
+  gold_phylogeny:
+    description: >-
+      GOLD phylogeny string for the organism.
+    title: GOLD phylogeny
+    range: string
+    exact_mappings:
+      - gold:gold_phylogeny
+
+  ## GOLD taxonomy extras
+  genbank_16s_id:
+    description: >-
+      GenBank accession for the 16S rRNA gene sequence.
+    title: GenBank 16S ID
+    range: string
+    exact_mappings:
+      - gold:genbank_16s_id
+
+  clade:
+    description: >-
+      Clade assignment for the organism.
+    title: clade
+    range: string
+    exact_mappings:
+      - gold:clade
+
+  organism_common_name:
+    description: >-
+      Common name of the organism.
+    title: common name
+    range: string
+    exact_mappings:
+      - gold:common_name
+
+  genus_synonyms:
+    description: >-
+      Alternative or historical genus names for the organism.
+    title: genus synonyms
+    range: string
+    exact_mappings:
+      - gold:genus_synonyms
+
+  species_synonyms:
+    description: >-
+      Alternative or historical species names for the organism.
+    title: species synonyms
+    range: string
+    exact_mappings:
+      - gold:species_synonyms
+
+  ## GOLD isolation/collection extras
+  lat_long_inferred:
+    description: >-
+      Whether the latitude/longitude was inferred rather than directly measured.
+    title: lat/long inferred
+    range: boolean
+    exact_mappings:
+      - gold:lat_long_inferred
+
+  sample_isolation_comments:
+    description: >-
+      Free-text comments about the isolation of the organism.
+    title: sample isolation comments
+    range: string
+    exact_mappings:
+      - gold:sample_isolation_comments
+
+  other_ecosystem:
+    description: >-
+      Ecosystem classification that does not fit the standard GOLD hierarchy.
+    title: other ecosystem
+    range: string
+    exact_mappings:
+      - gold:other_ecosystem
+
+  ## GOLD organism phenotype and morphology
+  gram_stain:
+    description: >-
+      Gram stain result for the organism.
+    title: gram stain
+    range: GramStainEnum
+    exact_mappings:
+      - gold:gram_stain
+
+  carbon_source:
+    description: >-
+      Carbon source(s) used by the organism.
+    title: carbon source
+    range: string
+    exact_mappings:
+      - gold:carbon_source
+
+  cell_shape:
+    description: >-
+      Morphological shape of the cell, e.g. rod, coccus, spirillum, filamentous.
+    title: cell shape
+    range: string
+    exact_mappings:
+      - gold:cell_shape
+
+  cell_length:
+    description: >-
+      Length of the cell in micrometers.
+    title: cell length
+    range: string
+    exact_mappings:
+      - gold:cell_length
+
+  cell_diameter:
+    description: >-
+      Diameter of the cell in micrometers.
+    title: cell diameter
+    range: string
+    exact_mappings:
+      - gold:cell_diameter
+
+  motility:
+    description: >-
+      Whether the organism is motile.
+    title: motility
+    range: string
+    exact_mappings:
+      - gold:motility
+
+  sporulation:
+    description: >-
+      Whether the organism forms spores.
+    title: sporulation
+    range: string
+    exact_mappings:
+      - gold:sporulation
+
+  temperature_range:
+    description: >-
+      Temperature classification of the organism, e.g. mesophilic,
+      thermophilic, hyperthermophilic.
+    title: temperature range
+    range: TemperatureRangeEnum
+    exact_mappings:
+      - gold:temperature_range
+
+  growth_temperature2:
+    description: >-
+      Secondary or upper bound growth temperature in degrees Celsius.
+    title: growth temperature 2
+    range: float
+    exact_mappings:
+      - gold:growth_temperature2
+
+  sample_collection_temperature2:
+    description: >-
+      Secondary or upper bound sample collection temperature in degrees Celsius.
+    title: sample collection temperature 2
+    range: float
+    exact_mappings:
+      - gold:sample_collection_temperature2
+
+  organism_color:
+    description: >-
+      Color of the organism or colony.
+    title: color
+    range: string
+    exact_mappings:
+      - gold:color
+
+  ## GOLD environmental chemistry (isolation site)
+  depth2:
+    description: >-
+      Secondary or upper bound depth measurement in meters.
+    title: depth 2
+    range: float
+    exact_mappings:
+      - gold:depth2
+
+  subsurface_depth1:
+    description: >-
+      Primary subsurface depth in meters.
+    title: subsurface depth 1
+    range: float
+    exact_mappings:
+      - gold:subsurface_depth1
+
+  subsurface_depth2:
+    description: >-
+      Secondary subsurface depth in meters.
+    title: subsurface depth 2
+    range: float
+    exact_mappings:
+      - gold:subsurface_depth2
+
+  altitude2:
+    description: >-
+      Secondary or upper bound altitude in meters.
+    title: altitude 2
+    range: float
+    exact_mappings:
+      - gold:altitude2
+
+  elevation2:
+    description: >-
+      Secondary or upper bound elevation in meters.
+    title: elevation 2
+    range: float
+    exact_mappings:
+      - gold:elevation2
+
+  isolation_site_ph1:
+    description: >-
+      Primary pH measurement at the isolation site.
+    title: pH 1
+    range: float
+    exact_mappings:
+      - gold:ph1
+
+  isolation_site_ph2:
+    description: >-
+      Secondary pH measurement at the isolation site.
+    title: pH 2
+    range: float
+    exact_mappings:
+      - gold:ph2
+
+  chlorophyll_concentration:
+    description: >-
+      Chlorophyll concentration at the isolation site.
+    title: chlorophyll concentration
+    range: string
+    exact_mappings:
+      - gold:chlorophyll_concentration
+
+  nitrate_concentration:
+    description: >-
+      Nitrate concentration at the isolation site.
+    title: nitrate concentration
+    range: string
+    exact_mappings:
+      - gold:nitrate_concentration
+
+  oxygen_concentration:
+    description: >-
+      Oxygen concentration at the isolation site.
+    title: oxygen concentration
+    range: string
+    exact_mappings:
+      - gold:oxygen_concentration
+
+  salinity_concentration:
+    description: >-
+      Salinity concentration at the isolation site.
+    title: salinity concentration
+    range: string
+    exact_mappings:
+      - gold:salinity_concentration
+
+  tot_org_carbon:
+    description: >-
+      Total organic carbon at the isolation site.
+    title: total organic carbon
+    range: string
+    exact_mappings:
+      - gold:tot_org_carbon
+
+  tot_nitrogen:
+    description: >-
+      Total nitrogen at the isolation site.
+    title: total nitrogen
+    range: string
+    exact_mappings:
+      - gold:tot_nitrogen
+
+  bicarbonate_millimol:
+    description: >-
+      Bicarbonate concentration in millimoles at the isolation site.
+    title: bicarbonate (mmol)
+    range: float
+    exact_mappings:
+      - gold:bicarbonate_millimol
+
+  h2s_millimol:
+    description: >-
+      Hydrogen sulfide concentration in millimoles at the isolation site.
+    title: H2S (mmol)
+    range: float
+    exact_mappings:
+      - gold:h2s_millimol
+
+  h2s_present:
+    description: >-
+      Whether hydrogen sulfide is present at the isolation site.
+    title: H2S present
+    range: string
+    exact_mappings:
+      - gold:h2s_present
+
+  irradiance:
+    description: >-
+      Irradiance at the isolation site.
+    title: irradiance
+    range: string
+    exact_mappings:
+      - gold:irradiance
+
+  methane_conc_millimol:
+    description: >-
+      Methane concentration in millimoles at the isolation site.
+    title: methane concentration (mmol)
+    range: float
+    exact_mappings:
+      - gold:methane_conc_millimol
+
+  sample_conductivity:
+    description: >-
+      Electrical conductivity of the sample or isolation site.
+    title: sample conductivity
+    range: string
+    exact_mappings:
+      - gold:sample_conductivity
+
+  ## GOLD host details
+  host_gender:
+    description: >-
+      Gender of the host organism.
+    title: host gender
+    range: string
+    exact_mappings:
+      - gold:host_gender
+
+  host_race:
+    description: >-
+      Race/ethnicity of the host (for human hosts).
+    title: host race
+    range: string
+    exact_mappings:
+      - gold:host_race
+
+  host_medication:
+    description: >-
+      Medications being taken by the host at time of sampling.
+    title: host medication
+    range: string
+    exact_mappings:
+      - gold:host_medication
+
+  host_body_subsite:
+    description: >-
+      More specific body site within the host body site.
+    title: host body subsite
+    range: string
+    exact_mappings:
+      - gold:host_body_subsite
+
+  host_body_site_id:
+    description: >-
+      Ontology term identifier for the host body site.
+    title: host body site ID
+    range: string
+    exact_mappings:
+      - gold:host_body_site_id
+
+  host_body_subsite_id:
+    description: >-
+      Ontology term identifier for the host body subsite.
+    title: host body subsite ID
+    range: string
+    exact_mappings:
+      - gold:host_body_subsite_id
+
+  host_body_product_id:
+    description: >-
+      Ontology term identifier for the host body product.
+    title: host body product ID
+    range: string
+    exact_mappings:
+      - gold:host_body_product_id
+
+  host_comments:
+    description: >-
+      Free-text comments about the host organism.
+    title: host comments
+    range: string
+    exact_mappings:
+      - gold:host_comments
+
+  patient_visit_number:
+    description: >-
+      Visit number for clinical/patient samples.
+    title: patient visit number
+    range: integer
+    exact_mappings:
+      - gold:patient_visit_number
+
+  medical_record_number:
+    description: >-
+      Medical record number for clinical samples.
+    title: MRN
+    range: string
+    exact_mappings:
+      - gold:mrn
+
+  known_non_hosts:
+    description: >-
+      Organisms known to not be hosts of this organism.
+    title: known non-hosts
+    range: string
+    exact_mappings:
+      - gold:known_non_hosts
+
+  other_hosts:
+    description: >-
+      Other host organisms associated with this organism.
+    title: other hosts
+    range: string
+    exact_mappings:
+      - gold:other_hosts
