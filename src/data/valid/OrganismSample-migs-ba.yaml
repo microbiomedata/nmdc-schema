@@ -1,0 +1,116 @@
+# MIGS-Ba authority example: Halalkalibacterium halodurans from Egyptian salt lake
+# Based on NCBI BioSample SAMN19778444 (MIGS.ba.water.6.0)
+# Demonstrates all MIGS-Ba Minimum + Recommended slots that OrganismSample carries
+id: nmdc:orgsm-99-migsba
+type: nmdc:OrganismSample
+name: Halalkalibacterium halodurans isolate from Egyptian salt lake
+description: >-
+  Alkaliphilic bacterium isolated from a salt lake in the western desert of Egypt.
+  Xylanase and acylase producer. NCBI BioSample SAMN19778444.
+associated_studies:
+  - nmdc:sty-99-abc123
+
+# Taxonomy and organism identity
+samp_taxon_id:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: NCBITaxon:86665
+  term:
+    id: NCBITaxon:86665
+    type: nmdc:OntologyClass
+samp_name: Halalkalibacterium halodurans Bacillus
+ncbi_taxonomy_name: Halalkalibacterium halodurans
+source_mat_id:
+  type: nmdc:TextValue
+  has_raw_value: GenBank MH050344
+
+# Collection and provenance (all MIGS-Ba Minimum)
+collection_date:
+  type: nmdc:TimestampValue
+  has_raw_value: "2015-05-08"
+geo_loc_name:
+  type: nmdc:TextValue
+  has_raw_value: "Egypt: western desert"
+lat_lon:
+  type: nmdc:GeolocationValue
+  has_raw_value: "30.27 N 30.10 E"
+  latitude: 30.27
+  longitude: 30.10
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00000015
+  term:
+    id: ENVO:00000015
+    type: nmdc:OntologyClass
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00000019
+  term:
+    id: ENVO:00000019
+    type: nmdc:OntologyClass
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002010
+  term:
+    id: ENVO:00002010
+    type: nmdc:OntologyClass
+
+# Organism biology (MIGS-Ba Minimum + Recommended)
+isol_growth_condt:
+  type: nmdc:TextValue
+  has_raw_value: "alkaliphilic pH 9-11"
+num_replicons: 2
+ref_biomaterial:
+  type: nmdc:TextValue
+  has_raw_value: "GenBank accession MH050344"
+biotic_relationship: free living
+encoded_traits:
+  type: nmdc:TextValue
+  has_raw_value: "xylanase and acylase producer"
+pathogenicity:
+  type: nmdc:TextValue
+  has_raw_value: non pathogenic
+rel_to_oxygen: aerobe
+trophic_level: heterotroph
+subspecf_gen_lin: "Halalkalibacterium halodurans"
+oxy_stat_samp: aerobic
+estimated_size: "1000000"
+
+# Sample collection (MIGS-Ba Recommended/Optional)
+depth:
+  has_numeric_value: 0.2
+  has_raw_value: "0.2 m"
+  has_unit: m
+  type: nmdc:QuantityValue
+temp:
+  has_numeric_value: 30.0
+  has_raw_value: "30 Cel"
+  has_unit: Cel
+  type: nmdc:QuantityValue
+samp_size:
+  has_numeric_value: 50.0
+  has_raw_value: "50 milliliter"
+  has_unit: mL
+  type: nmdc:QuantityValue
+samp_collec_device: sterile tube tools
+samp_mat_process:
+  type: nmdc:ControlledTermValue
+  has_raw_value: "isolated under aseptic conditions"
+# Storage
+samp_store_dur:
+  type: nmdc:TextValue
+  has_raw_value: "3 days"
+samp_store_loc:
+  type: nmdc:TextValue
+  has_raw_value: lab
+samp_store_temp:
+  has_numeric_value: 4.0
+  has_raw_value: "4 Cel"
+  has_unit: Cel
+  type: nmdc:QuantityValue
+
+# Salinity (from isolation site)
+salinity:
+  has_numeric_value: 6000.0
+  has_raw_value: "6000 mg/L"
+  has_unit: mg/L
+  type: nmdc:QuantityValue

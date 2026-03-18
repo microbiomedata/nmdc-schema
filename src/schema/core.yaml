@@ -9,6 +9,8 @@ imports:
   - attribute_values
   - basic_slots
   - basic_classes
+  - nmdc_subsets
+  - organism_sample
   - portal_user_facility
   - portal_mixs_inspired
   - portal_sample_id
@@ -1245,6 +1247,246 @@ classes:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
 
+  OrganismSample:
+    class_uri: nmdc:OrganismSample
+    is_a: Sample
+    title: Organism Sample
+    description: >-
+      A material sample in which all cells are expected to share the same
+      genome. This includes individual multicellular organisms (which may
+      comprise heterogeneous tissues and cell types), nominally pure
+      cultures, and single cells.
+    comments:
+      - >-
+        An OrganismSample might be isolated from an environmental Biosample
+        by culturing and isolating colonies.
+    slots:
+      ## study linkage
+      - associated_studies
+      - embargoed
+      - provenance_metadata
+
+      ## external IDs
+      - external_database_identifiers
+      - gold_organism_identifiers
+      - insdc_biosample_identifiers
+
+      ## taxonomy and organism identity
+      - samp_taxon_id
+      - samp_name
+      - source_mat_id
+      - host_taxid
+      - ncbi_taxonomy_name
+
+      ## collection and provenance
+      - collection_date
+      - geo_loc_name
+      - lat_lon
+      - collected_from
+      - sample_collection_site
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
+
+      ## GOLD organism differentia
+      - gold_organism_type
+      - cultured
+      - culture_type
+      - uncultured_type
+      - type_strain
+      - organism_domain
+      - gold_phylogeny
+
+      ## organism biology
+      - biotic_relationship
+      - encoded_traits
+      - host_disease_stat
+      - host_spec_range
+      - isol_growth_condt
+      - oxy_stat_samp
+      - pathogenicity
+      - biol_stat
+      - genetic_mod
+      - ref_biomaterial
+      - rel_to_oxygen
+      - specific_host
+      - subspecf_gen_lin
+      - tax_class
+      - tax_ident
+      - trophic_level
+
+      ## GOLD taxonomy extras
+      - genbank_16s_id
+      - clade
+      - organism_common_name
+      - genus_synonyms
+      - species_synonyms
+
+      ## organism phenotype and morphology (from GOLD)
+      - gram_stain
+      - carbon_source
+      - cell_shape
+      - cell_length
+      - cell_diameter
+      - motility
+      - sporulation
+      - temperature_range
+      - organism_color
+
+      ## sample collection
+      - alt
+      - depth
+      - elev
+      - experimental_factor
+      - lat_long_inferred
+      - sample_isolation_comments
+      - samp_collec_device
+      - samp_collec_method
+      - samp_mat_process
+      - samp_size
+      - temp
+      - sop
+      - subsurface_depth
+
+      ## GOLD ecosystem hierarchy
+      - ecosystem
+      - ecosystem_category
+      - ecosystem_type
+      - ecosystem_subtype
+      - specific_ecosystem
+      - ecosystem_path_id
+      - other_ecosystem
+
+      ## isolation site environmental chemistry (from GOLD)
+      - salinity
+      - pressure
+      - isolation_site_ph
+      - chlorophyll_concentration
+      - nitrate_concentration
+      - oxygen_concentration
+      - salinity_concentration
+      - tot_org_carbon
+      - tot_nitrogen
+      - bicarbonate_millimol
+      - soluble_iron_micromol
+      - h2s_millimol
+      - h2s_present
+      - irradiance
+      - methane_conc_millimol
+      - sample_conductivity
+
+      ## host details (from GOLD)
+      - host_age
+      - host_body_site
+      - host_body_subsite
+      - host_body_product
+      - host_body_site_id
+      - host_body_subsite_id
+      - host_body_product_id
+      - host_gender
+      - host_race
+      - host_medication
+      - host_comments
+      - patient_visit_number
+      - medical_record_number
+      - known_non_hosts
+      - other_hosts
+
+      ## genome characteristics
+      ## Note: MIGS-Ba sequencing/assembly slots (seq_meth, assembly_software,
+      ## number_contig, adapters, lib_layout, etc.) are intentionally NOT on
+      ## OrganismSample. In NMDC, these are carried by DataGeneration,
+      ## LibraryPreparation, and WorkflowExecution classes. MIGS-Ba checklist
+      ## completeness spans multiple NMDC classes.
+      - estimated_size
+      - extrachrom_elements
+      - num_replicons
+      - gc_content
+      - ploidy
+      - reference_genome
+
+      ## organism identity — separate fields per JGI convention
+      - organism_genus
+      - organism_species
+      - isolate_name
+
+      ## strain verification
+      - ribosomal_sequence
+      - ribosomal_sequence_type
+      - ribosomal_sequence_comments
+      - second_ribosomal_sequence
+      - second_ribosomal_sequence_type
+      - second_ribosomal_sequence_comments
+      - single_colony_isolation
+      - known_suspected_organisms
+      - fungal_16s_screening
+      - its_match_unite
+
+      ## biosafety
+      - biosafety_material_category
+
+      ## viral host identity
+      - viral_host_genus
+      - viral_host_species
+      - viral_host_strain
+
+      ## physical sample / analyte properties
+      - dna_concentration
+      - analyte_volume
+      - dna_absorb1
+      - dna_absorb2
+      - sample_container
+      - sample_format
+      - dnase_treated
+      - tube_or_plate_label
+      - plate_well_location
+
+      ## storage and handling
+      - samp_store_temp
+      - samp_store_loc
+      - samp_store_dur
+      - store_cond
+
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:orgsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
+      associated_studies:
+        required: true
+        range: Study
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
+      collected_from:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
+      dna_concentration:
+        aliases:
+          - concentration (ng/ul)
+        exact_mappings:
+          - nmdc_sub_schema:nuc_acid_concentration
+        comments:
+          - "JGI: Must be calculated using a fluorometric method; value >0 and <2000."
+          - "Replaces analyte_concentration for OrganismSample."
+
+      dna_absorb1:
+        aliases:
+          - absorbance 260/280
+        exact_mappings:
+          - nmdc_sub_schema:nuc_acid_absorb1
+
+      dna_absorb2:
+        aliases:
+          - absorbance 260/230
+        exact_mappings:
+          - nmdc_sub_schema:nuc_acid_absorb2
+
   Site:
     class_uri: nmdc:Site
     abstract: true
@@ -1340,11 +1582,6 @@ slots:
     range: QuantityValue
     annotations:
       storage_units: mS/cm
-
-  subsurface_depth:
-    range: QuantityValue
-    annotations:
-      storage_units: m
 
   env_package:
     aliases:

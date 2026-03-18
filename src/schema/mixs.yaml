@@ -827,6 +827,75 @@ enums:
       low: {}
       middle: {}
       top: {}
+  AssemblyQualEnum:
+    permissible_values:
+      Finished genome: {}
+      High-quality draft genome: {}
+      Medium-quality draft genome: {}
+      Low-quality draft genome: {}
+      Genome fragment(s): {}
+  LibLayoutEnum:
+    permissible_values:
+      other: {}
+      paired: {}
+      single: {}
+      vector: {}
+  NegContTypeEnum:
+    permissible_values:
+      DNA-free PCR mix: {}
+      distilled water: {}
+      empty collection device: {}
+      empty collection tube: {}
+      phosphate buffer: {}
+      sterile swab: {}
+      sterile syringe: {}
+  RelToOxygenEnum:
+    permissible_values:
+      aerobe: {}
+      anaerobe: {}
+      facultative: {}
+      microaerophilic: {}
+      microanaerobe: {}
+      obligate aerobe: {}
+      obligate anaerobe: {}
+  TaxIdentEnum:
+    permissible_values:
+      16S rRNA gene: {}
+      multi-marker approach: {}
+      other: {}
+  TrophicLevelEnum:
+    permissible_values:
+      autotroph: {}
+      carboxydotroph: {}
+      chemoautolithotroph: {}
+      chemoautotroph: {}
+      chemoheterotroph: {}
+      chemolithoautotroph: {}
+      chemolithotroph: {}
+      chemoorganoheterotroph: {}
+      chemoorganotroph: {}
+      chemosynthetic: {}
+      chemotroph: {}
+      copiotroph: {}
+      diazotroph: {}
+      facultative: {}
+      heterotroph: {}
+      lithoautotroph: {}
+      lithoheterotroph: {}
+      lithotroph: {}
+      methanotroph: {}
+      methylotroph: {}
+      mixotroph: {}
+      obligate: {}
+      oligotroph: {}
+      organoheterotroph: {}
+      organotroph: {}
+      photoautotroph: {}
+      photoheterotroph: {}
+      photolithoautotroph: {}
+      photolithotroph: {}
+      photosynthetic: {}
+      phototroph: {}
   HostSexEnum:
     permissible_values:
       female: {}
@@ -1210,6 +1279,9 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - migs_ba
+      - gold_organism
   aminopept_act:
     annotations:
       Preferred_unit: mole per liter per hour
@@ -1552,6 +1624,8 @@ slots:
       - status
     slot_uri: MIXS:0000858
     range: BiolStatEnum
+    in_subset:
+      - gold_organism
   biomass:
     annotations:
       Expected_value: biomass type;measurement value
@@ -1587,6 +1661,9 @@ slots:
       - relationship
     slot_uri: MIXS:0000028
     range: BioticRelationshipEnum
+    in_subset:
+      - migs_ba
+      - gold_organism
   bishomohopanol:
     annotations:
       Preferred_unit: microgram per liter, microgram per gram
@@ -1980,6 +2057,9 @@ slots:
       - date
     slot_uri: MIXS:0000011
     range: TimestampValue
+    in_subset:
+      - migs_ba
+      - gold_organism
   conduc:
     annotations:
       Preferred_unit: milliSiemens per centimeter
@@ -2109,6 +2189,9 @@ slots:
       partial_match: true
     examples:
       - value: 10 m
+    in_subset:
+      - migs_ba
+      - gold_organism
   dew_point:
     annotations:
       Preferred_unit: degree Celsius
@@ -2483,6 +2566,9 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - migs_ba
+      - gold_organism
   elevator:
     description: The number of elevators within the built structure
     title: elevator count
@@ -2518,6 +2604,9 @@ slots:
     is_a: mixs_env_triad_field
     examples:
       - value: oceanic epipelagic zone biome [ENVO:01000035]
+    in_subset:
+      - migs_ba
+      - gold_organism
     annotations:
       tooltip: The biome or major environmental system where the sample or specimen originated. Choose values from subclasses of the 'biome' class [ENVO:00000428] in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe the broad anatomical or morphological context
   env_local_scale:
@@ -2538,6 +2627,9 @@ slots:
     range: ControlledIdentifiedTermValue
     examples:
       - value: litter layer [ENVO:01000338]
+    in_subset:
+      - migs_ba
+      - gold_organism
   env_medium:
     description: 'Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)'
     title: environmental medium
@@ -2552,6 +2644,9 @@ slots:
     is_a: mixs_env_triad_field
     examples:
       - value: soil [ENVO:00001998]
+    in_subset:
+      - migs_ba
+      - gold_organism
     annotations:
       tooltip: The predominant environmental material or substrate that directly surrounds or hosts the sample or specimen at the time of sampling. Choose values from subclasses of the 'environmental material' class [ENVO:00010483] in the Environment Ontology (ENVO). Values for this field should be measurable or mass material nouns, representing continuous environmental materials. For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to indicate a tissue, organ, or plant structure
   escalator:
@@ -2616,6 +2711,8 @@ slots:
     range: ControlledTermValue
     multivalued: false
     pattern: ^\S+.*\S+ \[[a-zA-Z]{2,}:\d+\]$
+    in_subset:
+      - migs_ba
   ext_door:
     description: The number of exterior doors in the built structure
     title: exterior door count
@@ -2908,6 +3005,8 @@ slots:
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
+    in_subset:
+      - gold_organism
   geo_loc_name:
     description: The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)
     title: geographic location (country and/or sea,region)
@@ -2922,6 +3021,9 @@ slots:
       syntax: '^{country}: {region}, {specific_location}$'
       interpolated: true
       partial_match: true
+    in_subset:
+      - migs_ba
+      - gold_organism
   glucosidase_act:
     annotations:
       Preferred_unit: mol per liter per hour
@@ -3219,6 +3321,8 @@ slots:
       partial_match: true
     examples:
       - value: 10 d
+    in_subset:
+      - gold_organism
   host_body_habitat:
     description: Original body habitat where the sample was obtained from
     title: host body habitat
@@ -3244,6 +3348,8 @@ slots:
     range: ControlledTermValue
     examples:
       - value: mucus [UBERON:0000912]
+    in_subset:
+      - gold_organism
   host_body_site:
     annotations:
       Expected_value: FMA or UBERON
@@ -3256,6 +3362,8 @@ slots:
     string_serialization: '{termLabel} [{termID}]'
     slot_uri: MIXS:0000867
     range: ControlledTermValue
+    in_subset:
+      - gold_organism
   host_body_temp:
     annotations:
       Preferred_unit: degree Celsius
@@ -3316,6 +3424,9 @@ slots:
       - status
     string_serialization: '{termLabel} [{termID}]|{text}'
     slot_uri: MIXS:0000031
+    in_subset:
+      - migs_ba
+      - gold_organism
   host_dry_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -3511,6 +3622,8 @@ slots:
     comments:
       - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
     range: ControlledIdentifiedTermValue
+    in_subset:
+      - gold_organism
   host_tot_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -3705,6 +3818,9 @@ slots:
       interpolated: true
       partial_match: true
     range: GeolocationValue
+    in_subset:
+      - migs_ba
+      - gold_organism
   light_intensity:
     annotations:
       Preferred_unit: lux
@@ -4052,6 +4168,8 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    in_subset:
+      - migs_ba
   nucl_acid_ext:
     description: A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample
     title: nucleic acid extraction
@@ -4063,6 +4181,8 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    in_subset:
+      - migs_ba
   number_pets:
     description: The number of pets residing in the sampled space
     title: number of pets
@@ -4251,6 +4371,8 @@ slots:
       - status
     slot_uri: MIXS:0000753
     range: OxyStatSampEnum
+    in_subset:
+      - gold_organism
   oxygen:
     annotations:
       Preferred_unit: milligram per liter, parts per million
@@ -4624,6 +4746,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - gold_organism
   prev_land_use_meth:
     description: Reference or method used in determining previous land use and dates
     title: history/previous land use method
@@ -5155,6 +5279,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - gold_organism
   salt_regm:
     annotations:
       Preferred_unit: gram, microgram, mole per liter, gram per liter
@@ -5236,6 +5362,9 @@ slots:
       - sample
     slot_uri: MIXS:0000016
     range: ControlledTermValue
+    in_subset:
+      - migs_ba
+      - gold_organism
   samp_md:
     annotations:
       Expected_value: measurement value;enumeration
@@ -5263,6 +5392,9 @@ slots:
       - sample
     slot_uri: MIXS:0001107
     range: string
+    in_subset:
+      - migs_ba
+      - gold_organism
   samp_preserv:
     annotations:
       Preferred_unit: milliliter
@@ -5300,6 +5432,9 @@ slots:
       partial_match: true
     annotations:
       storage_units: L|g|mL|mg
+    in_subset:
+      - migs_ba
+      - gold_organism
   samp_sort_meth:
     description: Method by which samples are sorted; open face filter collecting total suspended particles, prefilter to remove particles larger than X micrometers in diameter, where common values of X would be 10 and 2.5 full size sorting in a cascade impactor
     title: sample size sorting method
@@ -5327,6 +5462,8 @@ slots:
       syntax: ^{duration}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - gold_organism
   samp_store_loc:
     annotations:
       Expected_value: location name
@@ -5340,6 +5477,8 @@ slots:
       - storage
     slot_uri: MIXS:0000755
     range: TextValue
+    in_subset:
+      - gold_organism
   samp_store_temp:
     annotations:
       Preferred_unit: degree Celsius
@@ -5358,6 +5497,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - gold_organism
   samp_subtype:
     description: Name of sample sub-type. For example if "sample type" is "Produced Water" then subtype could be "Oil Phase" or "Water Phase". If "other" is specified, please propose entry in "additional info" field
     title: sample subtype
@@ -5384,6 +5525,9 @@ slots:
       partial_match: true
     comments:
       - coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value
+    in_subset:
+      - migs_ba
+      - gold_organism
   samp_time_out:
     annotations:
       Expected_value: time
@@ -5456,6 +5600,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - migs_ba
   samp_weather:
     description: The weather on the sampling day
     title: sampling day weather
@@ -5585,6 +5731,8 @@ slots:
       syntax: ^{text}|({termLabel} \[{termID}\])$
       interpolated: true
       partial_match: true
+    in_subset:
+      - migs_ba
   seq_quality_check:
     annotations:
       Expected_value: none or manually edited
@@ -5900,6 +6048,9 @@ slots:
     slot_uri: MIXS:0000026
     range: TextValue
     multivalued: false
+    in_subset:
+      - migs_ba
+      - gold_organism
   space_typ_state:
     description: Customary or normal state of the space
     title: space typical state
@@ -5992,6 +6143,8 @@ slots:
       - storage
     slot_uri: MIXS:0000327
     range: TextValue
+    in_subset:
+      - gold_organism
   substructure_type:
     description: The substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level
     title: substructure type
@@ -6218,6 +6371,9 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - migs_ba
+      - gold_organism
   temp_out:
     annotations:
       Preferred_unit: degree Celsius
@@ -7101,6 +7257,466 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+  estimated_size:
+    annotations:
+      Expected_value: number of base pairs
+    description: The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period
+    title: estimated size
+    examples:
+      - value: 300000 bp
+    keywords:
+      - size
+    string_serialization: '{integer} bp'
+    slot_uri: MIXS:0000024
+    in_subset:
+      - migs_ba
+  encoded_traits:
+    annotations:
+      Expected_value: 'for plasmid: antibiotic resistance; for phage: converting genes'
+    description: Should include key traits like antibiotic resistance or xenobiotic degradation phenotypes for plasmids, converting genes for phage
+    title: encoded traits
+    examples:
+      - value: beta-lactamase class A
+    slot_uri: MIXS:0000034
+    range: TextValue
+    in_subset:
+      - migs_ba
+      - gold_organism
+  isol_growth_condt:
+    description: Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material
+    title: isolation and growth condition
+    examples:
+      - value: doi:10.1016/j.syapm.2018.01.009
+    keywords:
+      - condition
+      - growth
+      - isolation
+    slot_uri: MIXS:0000003
+    range: TextValue
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+      partial_match: true
+    in_subset:
+      - migs_ba
+      - gold_organism
+  pathogenicity:
+    annotations:
+      Expected_value: names of organisms that the entity is pathogenic to
+    description: To what is the entity pathogenic
+    title: known pathogenicity
+    examples:
+      - value: human, animal, plant, fungi, bacteria
+    slot_uri: MIXS:0000027
+    range: TextValue
+    in_subset:
+      - migs_ba
+      - gold_organism
+  rel_to_oxygen:
+    description: Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments
+    title: relationship to oxygen
+    examples:
+      - value: aerobe
+    keywords:
+      - oxygen
+      - relationship
+    slot_uri: MIXS:0000015
+    range: RelToOxygenEnum
+    in_subset:
+      - migs_ba
+      - gold_organism
+  subspecf_gen_lin:
+    annotations:
+      Expected_value: Genetic lineage below lowest rank of NCBI taxonomy, which is subspecies, e.g. serovar, biotype, ecotype, variety, cultivar
+    description: Information about the genetic distinctness of the sequenced organism below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or any relevant genetic typing schemes like Group I plasmid. Subspecies should not be recorded in this term, but in the NCBI taxonomy. Supply both the lineage name and the lineage rank separated by a colon, e.g., biovar:abc123
+    title: subspecific genetic lineage
+    examples:
+      - value: serovar:Newport
+    keywords:
+      - lineage
+    string_serialization: '{rank name}:{text}'
+    slot_uri: MIXS:0000020
+    in_subset:
+      - migs_ba
+      - gold_organism
+  tax_ident:
+    description: The phylogenetic marker(s) used to assign an organism name to the SAG or MAG
+    title: taxonomic identity marker
+    examples:
+      - value: other
+        description: was other <colon> rpoB gene
+    keywords:
+      - identifier
+      - marker
+      - taxon
+    slot_uri: MIXS:0000053
+    range: TaxIdentEnum
+    in_subset:
+      - migs_ba
+      - gold_organism
+  trophic_level:
+    description: Trophic levels are the feeding position in a food chain. Microbes can be a range of producers (e.g. chemolithotroph)
+    title: trophic level
+    examples:
+      - value: heterotroph
+    keywords:
+      - level
+    slot_uri: MIXS:0000032
+    range: TrophicLevelEnum
+    in_subset:
+      - migs_ba
+      - gold_organism
+  adapters:
+    description: Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters
+    title: adapters
+    examples:
+      - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
+    slot_uri: MIXS:0000048
+    structured_pattern:
+      syntax: ^{dna_bases};{dna_bases}$
+      interpolated: true
+      partial_match: true
+    in_subset:
+      - migs_ba
+  annot:
+    annotations:
+      Expected_value: name of tool or pipeline used, or annotation source description
+    description: Tool used for annotation, or for cases where annotation was provided by a community jamboree or model organism database rather than by a specific submitter
+    title: annotation
+    examples:
+      - value: prokka
+    slot_uri: MIXS:0000059
+    range: TextValue
+    in_subset:
+      - migs_ba
+  assembly_name:
+    annotations:
+      Expected_value: name and version of assembly
+    description: Name/version of the assembly provided by the submitter that is used in the genome browsers and in the community
+    title: assembly name
+    examples:
+      - value: HuRef, JCVI_ISG_i3_1.0
+    string_serialization: '{text} {text}'
+    slot_uri: MIXS:0000057
+    in_subset:
+      - migs_ba
+  assembly_qual:
+    description: 'The assembly quality category is based on sets of criteria outlined for each assembly quality category. For MISAG/MIMAG; Finished: Single, validated, contiguous sequence per replicon without gaps or ambiguities with a consensus error rate equivalent to Q50 or better. High Quality Draft:Multiple fragments where gaps span repetitive regions. Presence of the large subunit (LSU) RNA, small subunit (SSU) and the presence of 5.8S rRNA or 5S rRNA depending on whether it is a eukaryotic or prokaryotic genome, respectively. Medium Quality Draft:Many fragments with little to no review of assembly other than reporting of standard assembly statistics. Low Quality Draft:Many fragments with little to no review of assembly other than reporting of standard assembly statistics. Assembly statistics include, but are not limited to total assembly size, number of contigs, contig N50/L50, and maximum contig length. For MIUVIG; Finished: Single, validated, contiguous sequence per replicon without gaps or ambiguities, with extensive manual review and editing to annotate putative gene functions and transcriptional units. High-quality draft genome: One or multiple fragments, totaling   90% of the expected genome or replicon sequence or predicted complete. Genome fragment(s): One or multiple fragments, totalling < 90% of the expected genome or replicon sequence, or for which no genome size could be estimated'
+    title: assembly quality
+    examples:
+      - value: High-quality draft genome
+    keywords:
+      - quality
+    slot_uri: MIXS:0000056
+    range: AssemblyQualEnum
+    in_subset:
+      - migs_ba
+  assembly_software:
+    description: Tool(s) used for assembly, including version number and parameters
+    title: assembly software
+    examples:
+      - value: metaSPAdes;3.11.0;kmer set 21,33,55,77,99,121, default parameters otherwise
+    keywords:
+      - software
+    slot_uri: MIXS:0000058
+    range: TextValue
+    structured_pattern:
+      syntax: ^{software};{version};{parameters}$
+      interpolated: true
+      partial_match: true
+    in_subset:
+      - migs_ba
+  associated_resource:
+    annotations:
+      Expected_value: reference to resource
+    description: A related resource that is referenced, cited, or otherwise associated to the sequence
+    title: relevant electronic resources
+    examples:
+      - value: http://www.earthmicrobiome.org/
+    keywords:
+      - resource
+    slot_uri: MIXS:0000091
+    recommended: true
+    multivalued: true
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+    in_subset:
+      - migs_ba
+  compl_score:
+    annotations:
+      Expected_value: quality;percent completeness
+    description: 'Completeness score is typically based on either the fraction of markers found as compared to a database or the percent of a genome found as compared to a closely related reference genome. High Quality Draft: >90%, Medium Quality Draft: >50%, and Low Quality Draft: < 50% should have the indicated completeness scores'
+    title: completeness score
+    examples:
+      - value: med;60%
+    keywords:
+      - score
+    string_serialization: '[high|med|low];{percentage}'
+    slot_uri: MIXS:0000069
+    in_subset:
+      - migs_ba
+  compl_software:
+    annotations:
+      Expected_value: names and versions of software(s) used
+    description: Tools used for completion estimate, i.e. checkm, anvi'o, busco
+    title: completeness software
+    examples:
+      - value: checkm
+    keywords:
+      - software
+    string_serialization: '{software};{version}'
+    slot_uri: MIXS:0000070
+    in_subset:
+      - migs_ba
+  extrachrom_elements:
+    description: Do plasmids exist of significant phenotypic consequence (e.g. ones that determine virulence or antibiotic resistance). Megaplasmids? Other plasmids (borrelia has 15+ plasmids)
+    title: extrachromosomal elements
+    examples:
+      - value: '5'
+    slot_uri: MIXS:0000023
+    range: integer
+    in_subset:
+      - migs_ba
+  feat_pred:
+    description: Method used to predict UViGs features such as ORFs, integration site, etc
+    title: feature prediction
+    examples:
+      - value: Prodigal;2.6.3;default parameters
+    keywords:
+      - feature
+      - predict
+    slot_uri: MIXS:0000061
+    range: TextValue
+    structured_pattern:
+      syntax: ^{software};{version};{parameters}$
+      interpolated: true
+      partial_match: true
+    in_subset:
+      - migs_ba
+  host_spec_range:
+    annotations:
+      Expected_value: NCBI taxid
+    description: The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier
+    title: host specificity or range
+    examples:
+      - value: '9606'
+    keywords:
+      - host
+      - host.
+      - range
+    string_serialization: '{integer}'
+    slot_uri: MIXS:0000030
+    multivalued: true
+    in_subset:
+      - migs_ba
+      - gold_organism
+  lib_layout:
+    description: Specify whether to expect single, paired, or other configuration of reads
+    title: library layout
+    examples:
+      - value: paired
+    keywords:
+      - library
+    slot_uri: MIXS:0000041
+    range: LibLayoutEnum
+    in_subset:
+      - migs_ba
+  lib_reads_seqd:
+    description: Total number of clones sequenced from the library
+    title: library reads sequenced
+    examples:
+      - value: '20'
+    keywords:
+      - library
+    slot_uri: MIXS:0000040
+    range: integer
+    in_subset:
+      - migs_ba
+  lib_screen:
+    annotations:
+      Expected_value: screening strategy name
+    description: Specific enrichment or screening methods applied before and/or after creating libraries
+    title: library screening strategy
+    examples:
+      - value: enriched, screened, normalized
+    keywords:
+      - library
+    slot_uri: MIXS:0000043
+    range: TextValue
+    in_subset:
+      - migs_ba
+  lib_size:
+    description: Total number of clones in the library prepared for the project
+    title: library size
+    examples:
+      - value: '50'
+    keywords:
+      - library
+      - size
+    slot_uri: MIXS:0000039
+    range: integer
+    in_subset:
+      - migs_ba
+  lib_vector:
+    annotations:
+      Expected_value: vector
+    description: Cloning vector type(s) used in construction of libraries
+    title: library vector
+    examples:
+      - value: Bacteriophage P1
+    keywords:
+      - library
+    slot_uri: MIXS:0000042
+    range: TextValue
+    in_subset:
+      - migs_ba
+  neg_cont_type:
+    annotations:
+      Expected_value: enumeration or text
+    description: The substance or equipment used as a negative control in an investigation
+    title: negative control type
+    keywords:
+      - type
+    slot_uri: MIXS:0001321
+    range: NegContTypeEnum
+    recommended: true
+    in_subset:
+      - migs_ba
+  number_contig:
+    description: Total number of contigs in the cleaned/submitted assembly that makes up a given genome, SAG, MAG, or UViG
+    title: number of contigs
+    examples:
+      - value: '40'
+    keywords:
+      - number
+    slot_uri: MIXS:0000060
+    range: integer
+    in_subset:
+      - migs_ba
+  num_replicons:
+    annotations:
+      Expected_value: 'for eukaryotes and bacteria: chromosomes (haploid count); for viruses: segments'
+    description: Reports the number of replicons in a nuclear genome of eukaryotes, in the genome of a bacterium or archaea or the number of segments in a segmented virus. Always applied to the haploid chromosome count of a eukaryote
+    title: number of replicons
+    examples:
+      - value: '2'
+    keywords:
+      - number
+    string_serialization: '{integer}'
+    slot_uri: MIXS:0000022
+    range: integer
+    in_subset:
+      - migs_ba
+  pos_cont_type:
+    description: The substance, mixture, product, or apparatus used to verify that a process which is part of an investigation delivers a true positive
+    title: positive control type
+    keywords:
+      - type
+    string_serialization: '{term} or {text}'
+    slot_uri: MIXS:0001322
+    recommended: true
+    in_subset:
+      - migs_ba
+  project_name:
+    description: Name of the project within which the sequencing was organized
+    title: project name
+    examples:
+      - value: Forest soil metagenome
+    keywords:
+      - project
+    slot_uri: MIXS:0000092
+    range: TextValue
+    required: true
+    in_subset:
+      - migs_ba
+  ref_biomaterial:
+    description: Primary publication if isolated before genome publication; otherwise, primary genome report
+    title: reference for biomaterial
+    examples:
+      - value: doi:10.1016/j.syapm.2018.01.009
+    slot_uri: MIXS:0000025
+    range: TextValue
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+      partial_match: true
+    in_subset:
+      - migs_ba
+      - gold_organism
+  ref_db:
+    annotations:
+      Expected_value: names, versions, and references of databases
+    description: List of database(s) used for ORF annotation, along with version number and reference to website or publication
+    title: reference database(s)
+    examples:
+      - value: pVOGs;5;http://dmk-brain.ecn.uiowa.edu/pVOGs/ Grazziotin et al. 2017 doi:10.1093/nar/gkw975
+    keywords:
+      - database
+    string_serialization: '{database};{version};{reference}'
+    slot_uri: MIXS:0000062
+    in_subset:
+      - migs_ba
+  sim_search_meth:
+    description: Tool used to compare ORFs with database, along with version and cutoffs used
+    title: similarity search method
+    examples:
+      - value: HMMER3;3.1b2;hmmsearch, cutoff of 50 on score
+    keywords:
+      - method
+    slot_uri: MIXS:0000063
+    range: TextValue
+    structured_pattern:
+      syntax: ^{software};{version};{parameters}$
+      interpolated: true
+      partial_match: true
+    in_subset:
+      - migs_ba
+  sop:
+    annotations:
+      Expected_value: reference to SOP
+    description: Standard operating procedures used in assembly and/or annotation of genomes, metagenomes or environmental sequences
+    title: relevant standard operating procedures
+    examples:
+      - value: http://press.igsb.anl.gov/earthmicrobiome/protocols-and-standards/its/
+    keywords:
+      - procedures
+    slot_uri: MIXS:0000090
+    multivalued: true
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+    in_subset:
+      - migs_ba
+      - gold_organism
+  specific_host:
+    annotations:
+      Expected_value: host scientific name, taxonomy ID
+    description: Report the host's taxonomic name and/or NCBI taxonomy ID
+    title: host scientific name
+    examples:
+      - value: Homo sapiens and/or 9606
+    keywords:
+      - host
+      - host.
+    string_serialization: '{text}|{NCBI taxid}'
+    slot_uri: MIXS:0000029
+    in_subset:
+      - migs_ba
+      - gold_organism
+  tax_class:
+    description: Method used for taxonomic classification, along with reference database used, classification rank, and thresholds used to classify new genomes
+    title: taxonomic classification
+    examples:
+      - value: vConTACT vContact2 (references from NCBI RefSeq v83, genus rank classification, default parameters)
+    keywords:
+      - classification
+      - taxon
+    slot_uri: MIXS:0000064
+    range: TextValue
+    in_subset:
+      - migs_ba
+      - gold_organism
   samp_collec_device:
     annotations:
       Expected_value: device name
@@ -7116,6 +7732,9 @@ slots:
         contexts:
           - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
     range: string
+    in_subset:
+      - migs_ba
+      - gold_organism
   samp_collec_method:
     description: The method employed for collecting the sample
     title: sample collection method
@@ -7128,6 +7747,9 @@ slots:
       - literal_form: samp_collect_method
         contexts:
           - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+    in_subset:
+      - migs_ba
+      - gold_organism
   mixs_env_triad_field:
     annotations:
       tooltip: >-

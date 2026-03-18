@@ -1,0 +1,7 @@
+organism_sample_set:
+  - id: nmdc:orgsm-99-abc123
+    name: Pseudomonas fluorescens SBW25
+    description: Pure culture isolate from sugar beet rhizosphere
+    type: nmdc:OrganismSample
+    associated_studies:
+      - nmdc:sty-99-abc123

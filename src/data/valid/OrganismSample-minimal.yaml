@@ -1,0 +1,4 @@
+id: nmdc:orgsm-99-abc123
+type: nmdc:OrganismSample
+associated_studies:
+  - nmdc:sty-99-abc123

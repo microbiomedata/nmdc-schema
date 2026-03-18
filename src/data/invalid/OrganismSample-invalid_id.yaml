@@ -1,0 +1,8 @@
+# invalid b/c of wrong typecode in ID (uses bsm instead of orgsm)
+id: nmdc:bsm-99-abc123
+type: nmdc:OrganismSample
+associated_studies:
+  - nmdc:sty-99-abc123
+project_name:
+  type: nmdc:TextValue
+  has_raw_value: Example organism sample project

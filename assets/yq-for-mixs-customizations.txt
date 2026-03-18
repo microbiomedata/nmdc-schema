@@ -839,3 +839,90 @@ make: *** [Makefile:102: gen-project] Error 1
 
 # Complex measurement slots that combine numeric and text data
 '.slots.microbial_biomass.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "complex_unit"}'
+
+# =============================================================================
+# OrganismSample authority subset annotations
+# =============================================================================
+# Tag MIxS slots with the authority subsets they belong to:
+#   migs_ba       — MIxS MIGS-Ba checklist (cultured bacteria/archaea)
+#   gold_organism — GOLD organism_v2 table fields
+#   jgi_isolate   — JGI Isolate (NA) v19 submission form
+#
+# These subsets are defined in src/schema/nmdc_subsets.yaml.
+# Slots in organism_sample.yaml already have their subset annotations;
+# these yq commands cover the MIxS-derived slots that overlap with
+# GOLD and/or JGI authorities.
+# See: https://genomicsstandardsconsortium.github.io/mixs/0010003/
+# =============================================================================
+'.slots.adapters.in_subset = ["migs_ba"]'
+'.slots.alt.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.annot.in_subset = ["migs_ba"]'
+'.slots.assembly_name.in_subset = ["migs_ba"]'
+'.slots.assembly_qual.in_subset = ["migs_ba"]'
+'.slots.assembly_software.in_subset = ["migs_ba"]'
+'.slots.associated_resource.in_subset = ["migs_ba"]'
+'.slots.biol_stat.in_subset = ["gold_organism"]'
+'.slots.biotic_relationship.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.collection_date.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.compl_score.in_subset = ["migs_ba"]'
+'.slots.compl_software.in_subset = ["migs_ba"]'
+'.slots.depth.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.elev.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.encoded_traits.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.env_broad_scale.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.env_local_scale.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.env_medium.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.estimated_size.in_subset = ["migs_ba"]'
+'.slots.experimental_factor.in_subset = ["migs_ba"]'
+'.slots.extrachrom_elements.in_subset = ["migs_ba"]'
+'.slots.feat_pred.in_subset = ["migs_ba"]'
+'.slots.genetic_mod.in_subset = ["gold_organism"]'
+'.slots.geo_loc_name.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.host_age.in_subset = ["gold_organism"]'
+'.slots.host_body_product.in_subset = ["gold_organism"]'
+'.slots.host_body_site.in_subset = ["gold_organism"]'
+'.slots.host_disease_stat.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.host_spec_range.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.host_taxid.in_subset = ["gold_organism"]'
+'.slots.isol_growth_condt.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.lat_lon.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.lib_layout.in_subset = ["migs_ba"]'
+'.slots.lib_reads_seqd.in_subset = ["migs_ba"]'
+'.slots.lib_screen.in_subset = ["migs_ba"]'
+'.slots.lib_size.in_subset = ["migs_ba"]'
+'.slots.lib_vector.in_subset = ["migs_ba"]'
+'.slots.neg_cont_type.in_subset = ["migs_ba"]'
+'.slots.nucl_acid_amp.in_subset = ["migs_ba"]'
+'.slots.nucl_acid_ext.in_subset = ["migs_ba"]'
+'.slots.num_replicons.in_subset = ["migs_ba"]'
+'.slots.number_contig.in_subset = ["migs_ba"]'
+'.slots.oxy_stat_samp.in_subset = ["gold_organism"]'
+'.slots.pathogenicity.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.pos_cont_type.in_subset = ["migs_ba"]'
+'.slots.pressure.in_subset = ["gold_organism"]'
+'.slots.project_name.in_subset = ["migs_ba"]'
+'.slots.ref_biomaterial.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.ref_db.in_subset = ["migs_ba"]'
+'.slots.rel_to_oxygen.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.salinity.in_subset = ["gold_organism"]'
+'.slots.samp_collec_device.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.samp_collec_method.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.samp_mat_process.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.samp_name.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.samp_size.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.samp_store_dur.in_subset = ["gold_organism"]'
+'.slots.samp_store_loc.in_subset = ["gold_organism"]'
+'.slots.samp_store_temp.in_subset = ["gold_organism"]'
+'.slots.samp_taxon_id.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.samp_vol_we_dna_ext.in_subset = ["migs_ba"]'
+'.slots.seq_meth.in_subset = ["migs_ba"]'
+'.slots.sim_search_meth.in_subset = ["migs_ba"]'
+'.slots.sop.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.source_mat_id.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.specific_host.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.store_cond.in_subset = ["gold_organism"]'
+'.slots.subspecf_gen_lin.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.tax_class.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.tax_ident.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.temp.in_subset = ["migs_ba", "gold_organism"]'
+'.slots.trophic_level.in_subset = ["migs_ba", "gold_organism"]'

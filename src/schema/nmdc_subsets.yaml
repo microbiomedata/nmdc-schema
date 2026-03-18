@@ -34,3 +34,20 @@ subsets:
   sequencing:
   workflow subset:
     description: Subset consisting of just the workflow execution activities
+
+  migs_ba:
+    description: >-
+      Slots from the MIxS MIGS-Ba (Minimum Information about a Genome Sequence:
+      cultured bacteria/archaea) checklist.
+    see_also:
+      - https://genomicsstandardsconsortium.github.io/mixs/0010003/
+
+  gold_organism:
+    description: >-
+      Slots corresponding to fields in the GOLD organism_v2 table.
+    see_also:
+      - https://gold.jgi.doe.gov/
+
+  jgi_isolate:
+    description: >-
+      Slots from the JGI Isolate (NA) v19 submission form.
