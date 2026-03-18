@@ -16,6 +16,7 @@ prefixes:
 
 imports:
   - linkml:types
+  - attribute_values
 
 default_prefix: nmdc
 
@@ -116,6 +117,18 @@ slots:
     description: Genus of the organism.
     title: genus
     range: string
+    in_subset:
+      - jgi_isolate
+      - gold_organism
+    structured_aliases:
+      - literal_form: Genus
+        predicate: EXACT_SYNONYM
+        contexts:
+          - https://jgi.doe.gov/
+      - literal_form: genus
+        predicate: EXACT_SYNONYM
+        contexts:
+          - https://gold.jgi.doe.gov/
     comments:
       - JGI Isolate v19 required field.
 
@@ -123,6 +136,18 @@ slots:
     description: Species of the organism.
     title: species
     range: string
+    in_subset:
+      - jgi_isolate
+      - gold_organism
+    structured_aliases:
+      - literal_form: Species
+        predicate: EXACT_SYNONYM
+        contexts:
+          - https://jgi.doe.gov/
+      - literal_form: species
+        predicate: EXACT_SYNONYM
+        contexts:
+          - https://gold.jgi.doe.gov/
     comments:
       - JGI Isolate v19 required field.
 
@@ -132,6 +157,13 @@ slots:
       and from culture collection identifiers.
     title: isolate name
     range: string
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Isolate Name
+        predicate: EXACT_SYNONYM
+        contexts:
+          - https://jgi.doe.gov/
     comments:
       - "JGI: The culture collection ID should be entered in the Culture Collection
         and ID field, not the Isolate field."
@@ -141,7 +173,9 @@ slots:
     description: >-
       Estimated GC content of the genome, as a percentage.
     title: GC content %
-    range: float
+    range: QuantityValue
+    in_subset:
+      - jgi_isolate
     comments:
       - "JGI: Give an estimate of the GC content of the genome in decimal format
         (e.g. 45.2)."
@@ -151,6 +185,8 @@ slots:
       Genome ploidy, e.g. haploid, diploid, octaploid.
     title: ploidy comments
     range: string
+    in_subset:
+      - jgi_isolate
 
   reference_genome:
     description: >-
@@ -158,6 +194,8 @@ slots:
       OID, Mycocosm/Phycocosm/Phytozome ID.
     title: reference genome
     range: string
+    in_subset:
+      - jgi_isolate
     comments:
       - "JGI: Required for resequencing, gene expression, IsoSeq, and methylation."
 
@@ -169,6 +207,8 @@ slots:
       sequence is required for all microbial and fungal genome projects.
     title: ribosomal sequence
     range: string
+    in_subset:
+      - jgi_isolate
     comments:
       - "JGI: 16S sequence MUST be >1300 nt with <10% Ns for microbial drafts.
         ITS sequence must be >450 nt with <2% Ns for fungal drafts."
@@ -178,6 +218,8 @@ slots:
       Type of ribosomal sequence provided for strain verification.
     title: ribosomal sequence type
     range: RibosomalSequenceTypeEnum
+    in_subset:
+      - jgi_isolate
 
   ribosomal_sequence_comments:
     description: >-
@@ -185,25 +227,36 @@ slots:
       ribosomal sequence type is Other.
     title: ribosomal sequence comments
     range: string
+    in_subset:
+      - jgi_isolate
 
   second_ribosomal_sequence:
+    is_a: ribosomal_sequence
     description: >-
       Optional secondary ribosomal sequence for additional verification.
       Must contain only A, C, G, T, or N characters with no header.
     title: second ribosomal sequence
     range: string
+    in_subset:
+      - jgi_isolate
 
   second_ribosomal_sequence_type:
+    is_a: ribosomal_sequence_type
     description: >-
       Type of the secondary ribosomal sequence.
     title: second ribosomal sequence type
     range: RibosomalSequenceTypeEnum
+    in_subset:
+      - jgi_isolate
 
   second_ribosomal_sequence_comments:
+    is_a: ribosomal_sequence_comments
     description: >-
       Additional information about the secondary ribosomal sequence.
     title: second ribosomal sequence comments
     range: string
+    in_subset:
+      - jgi_isolate
 
   single_colony_isolation:
     description: >-
@@ -211,6 +264,8 @@ slots:
       (single colony or equivalent).
     title: is sample from single colony
     range: YesNoEnum
+    in_subset:
+      - jgi_isolate
     comments:
       - "JGI: Was the sample isolated from an axenic/strain pure culture?"
 
@@ -220,6 +275,8 @@ slots:
       contaminating the culture, with estimated percentages.
     title: known/suspected organisms
     range: string
+    in_subset:
+      - jgi_isolate
 
   fungal_16s_screening:
     description: >-
@@ -227,6 +284,8 @@ slots:
       in fungal samples.
     title: fungal 16S screening
     range: YesNoEnum
+    in_subset:
+      - jgi_isolate
     comments:
       - "JGI: Required for all fungal draft samples."
 
@@ -235,6 +294,8 @@ slots:
       Whether the ITS sequence matches taxonomy in the UNITE database.
     title: ITS match in UNITE
     range: YesNoEnum
+    in_subset:
+      - jgi_isolate
     comments:
       - "JGI: Required for all fungal draft samples."
 
@@ -244,8 +305,15 @@ slots:
       General category of organism or material for biosafety classification.
     title: biosafety material category
     range: BiosafetyMaterialCategoryEnum
+    in_subset:
+      - jgi_isolate
     exact_mappings:
       - nmdc_sub_schema:biosafety_mat_cat
+    structured_aliases:
+      - literal_form: Biosafety Material Category
+        predicate: EXACT_SYNONYM
+        contexts:
+          - https://jgi.doe.gov/
     comments:
       - "JGI: Required field. Choose from Alga, Animal, Archaea, Bacteria, Fungi,
         Plant, Plasmid, Protist, Virus, Synthetic Construct."
@@ -255,6 +323,8 @@ slots:
     description: Genus of the viral host.
     title: host genus
     range: string
+    in_subset:
+      - jgi_isolate
     comments:
       - "JGI: Required for viral minimal draft projects."
 
@@ -262,6 +332,8 @@ slots:
     description: Species of the viral host.
     title: host species
     range: string
+    in_subset:
+      - jgi_isolate
     comments:
       - "JGI: Required for viral minimal draft projects."
 
@@ -269,58 +341,32 @@ slots:
     description: Strain of the viral host.
     title: host strain
     range: string
+    in_subset:
+      - jgi_isolate
     comments:
       - "JGI: Required for viral minimal draft projects."
 
   ## Physical sample / analyte properties
   ## These describe what JGI actually receives in the vial — extracted DNA/RNA.
-  analyte_concentration:
-    description: >-
-      Concentration of DNA/RNA in the sample, in ng/ul, as determined by
-      fluorometry.
-    title: concentration (ng/ul)
-    range: float
-    exact_mappings:
-      - nmdc_sub_schema:nuc_acid_concentration
-    comments:
-      - "JGI: Must be calculated using a fluorometric method; value >0 and <2000."
-
   analyte_volume:
     description: >-
-      Volume of the sample being provided, in ul.
-    title: volume (ul)
-    range: float
+      Volume of the sample being provided.
+    title: volume
+    range: QuantityValue
+    in_subset:
+      - jgi_isolate
     exact_mappings:
       - nmdc_sub_schema:jgi_sample_volume
     comments:
-      - "JGI: Value must be >0 and <1000."
-
-  absorbance_260_280:
-    description: >-
-      Absorbance ratio at 260/280 nm, used to assess sample purity.
-    title: absorbance 260/280
-    range: float
-    exact_mappings:
-      - nmdc_sub_schema:nuc_acid_absorb1
-    comments:
-      - "JGI: Recommended value is between 1 and 3."
-
-  absorbance_260_230:
-    description: >-
-      Absorbance ratio at 260/230 nm, used to assess sample purity and
-      detect contamination with organic compounds.
-    title: absorbance 260/230
-    range: float
-    exact_mappings:
-      - nmdc_sub_schema:nuc_acid_absorb2
-    comments:
-      - "JGI: Recommended value is between 1 and 3."
+      - "JGI: Value must be >0 and <1000 ul."
 
   sample_container:
     description: >-
       Physical container type for sample shipment.
     title: sample container
     range: SampleContainerEnum
+    in_subset:
+      - jgi_isolate
     exact_mappings:
       - nmdc_sub_schema:cont_type
 
@@ -329,6 +375,8 @@ slots:
       Format or buffer in which the physical sample is provided.
     title: sample format
     range: SampleFormatEnum
+    in_subset:
+      - jgi_isolate
     exact_mappings:
       - nmdc_sub_schema:jgi_sample_format
 
@@ -337,28 +385,20 @@ slots:
       Whether the sample was treated with DNAse.
     title: was sample DNAse treated
     range: YesNoEnum
+    in_subset:
+      - jgi_isolate
     exact_mappings:
       - nmdc_sub_schema:dnase
     comments:
       - "JGI: DNAse treatment is required for all RNA samples."
-
-  sample_isolation_method:
-    description: >-
-      Method, protocol, or kit used to extract DNA/RNA from the organism.
-    title: sample isolation method
-    range: string
-    close_mappings:
-      - nmdc:dna_isolate_meth
-    comments:
-      - >-
-        Close mapping to dna_isolate_meth (nmdc-schema/submission-schema): this
-        slot is nucleic-acid-type agnostic while dna_isolate_meth is DNA-specific.
 
   tube_or_plate_label:
     description: >-
       Label on the tube or plate. Must be unique across all tubes and plates.
     title: tube or plate label
     range: string
+    in_subset:
+      - jgi_isolate
     exact_mappings:
       - nmdc_sub_schema:container_name
     comments:
@@ -370,6 +410,8 @@ slots:
       blank.
     title: plate location (well #)
     range: string
+    in_subset:
+      - jgi_isolate
     exact_mappings:
       - nmdc_sub_schema:cont_well
 
@@ -379,6 +421,8 @@ slots:
       Organism type classification from GOLD controlled vocabulary.
     title: organism type
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:organism_type
 
@@ -387,6 +431,8 @@ slots:
       Whether the organism has been cultured.
     title: cultured
     range: boolean
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:cultured
 
@@ -396,6 +442,8 @@ slots:
       enrichment, mixed culture.
     title: culture type
     range: CultureTypeEnum
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:culture_type
 
@@ -404,6 +452,8 @@ slots:
       For uncultured organisms, the type of genome assembly, e.g. MAG, SAG.
     title: uncultured type
     range: UnculturedTypeEnum
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:uncultured_type
 
@@ -412,6 +462,8 @@ slots:
       Whether this organism is a type strain.
     title: type strain
     range: boolean
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:type_strain
 
@@ -420,6 +472,8 @@ slots:
       Taxonomic domain of the organism, e.g. Bacteria, Archaea, Eukarya.
     title: domain
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:domain
     comments:
@@ -430,6 +484,8 @@ slots:
       GOLD phylogeny string for the organism.
     title: GOLD phylogeny
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:gold_phylogeny
 
@@ -439,6 +495,8 @@ slots:
       GenBank accession for the 16S rRNA gene sequence.
     title: GenBank 16S ID
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:genbank_16s_id
 
@@ -447,6 +505,8 @@ slots:
       Clade assignment for the organism.
     title: clade
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:clade
 
@@ -455,6 +515,8 @@ slots:
       Common name of the organism.
     title: common name
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:common_name
 
@@ -463,6 +525,8 @@ slots:
       Alternative or historical genus names for the organism.
     title: genus synonyms
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:genus_synonyms
 
@@ -471,6 +535,8 @@ slots:
       Alternative or historical species names for the organism.
     title: species synonyms
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:species_synonyms
 
@@ -480,6 +546,8 @@ slots:
       Whether the latitude/longitude was inferred rather than directly measured.
     title: lat/long inferred
     range: boolean
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:lat_long_inferred
 
@@ -488,6 +556,8 @@ slots:
       Free-text comments about the isolation of the organism.
     title: sample isolation comments
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:sample_isolation_comments
 
@@ -496,6 +566,8 @@ slots:
       Ecosystem classification that does not fit the standard GOLD hierarchy.
     title: other ecosystem
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:other_ecosystem
 
@@ -505,14 +577,23 @@ slots:
       Gram stain result for the organism.
     title: gram stain
     range: GramStainEnum
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:gram_stain
+    structured_aliases:
+      - literal_form: gram_stain
+        predicate: EXACT_SYNONYM
+        contexts:
+          - https://gold.jgi.doe.gov/
 
   carbon_source:
     description: >-
       Carbon source(s) used by the organism.
     title: carbon source
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:carbon_source
 
@@ -521,22 +602,28 @@ slots:
       Morphological shape of the cell, e.g. rod, coccus, spirillum, filamentous.
     title: cell shape
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:cell_shape
 
   cell_length:
     description: >-
-      Length of the cell in micrometers.
+      Length of the cell.
     title: cell length
-    range: string
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:cell_length
 
   cell_diameter:
     description: >-
-      Diameter of the cell in micrometers.
+      Diameter of the cell.
     title: cell diameter
-    range: string
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:cell_diameter
 
@@ -545,6 +632,8 @@ slots:
       Whether the organism is motile.
     title: motility
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:motility
 
@@ -553,6 +642,8 @@ slots:
       Whether the organism forms spores.
     title: sporulation
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:sporulation
 
@@ -562,95 +653,62 @@ slots:
       thermophilic, hyperthermophilic.
     title: temperature range
     range: TemperatureRangeEnum
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:temperature_range
 
-  growth_temperature2:
-    description: >-
-      Secondary or upper bound growth temperature in degrees Celsius.
-    title: growth temperature 2
-    range: float
-    exact_mappings:
-      - gold:growth_temperature2
-
-  sample_collection_temperature2:
-    description: >-
-      Secondary or upper bound sample collection temperature in degrees Celsius.
-    title: sample collection temperature 2
-    range: float
-    exact_mappings:
-      - gold:sample_collection_temperature2
+  ## growth_temperature2 and sample_collection_temperature2 from GOLD are
+  ## represented as has_maximum_numeric_value on the existing temp QuantityValue slot.
 
   organism_color:
     description: >-
       Color of the organism or colony.
     title: color
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:color
 
   ## GOLD environmental chemistry (isolation site)
-  depth2:
-    description: >-
-      Secondary or upper bound depth measurement in meters.
-    title: depth 2
-    range: float
-    exact_mappings:
-      - gold:depth2
+  ## depth2, altitude2, elevation2 from GOLD are represented as
+  ## has_maximum_numeric_value on the existing depth, alt, elev QuantityValue slots.
 
-  subsurface_depth1:
+  subsurface_depth:
     description: >-
-      Primary subsurface depth in meters.
-    title: subsurface depth 1
-    range: float
+      Subsurface depth at the isolation site. Use has_minimum_numeric_value
+      and has_maximum_numeric_value to represent a range (GOLD subsurface_depth1
+      and subsurface_depth2).
+    title: subsurface depth
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:subsurface_depth1
+    comments:
+      - "GOLD subsurface_depth2 maps to has_maximum_numeric_value."
 
-  subsurface_depth2:
+  isolation_site_ph:
     description: >-
-      Secondary subsurface depth in meters.
-    title: subsurface depth 2
-    range: float
-    exact_mappings:
-      - gold:subsurface_depth2
-
-  altitude2:
-    description: >-
-      Secondary or upper bound altitude in meters.
-    title: altitude 2
-    range: float
-    exact_mappings:
-      - gold:altitude2
-
-  elevation2:
-    description: >-
-      Secondary or upper bound elevation in meters.
-    title: elevation 2
-    range: float
-    exact_mappings:
-      - gold:elevation2
-
-  isolation_site_ph1:
-    description: >-
-      Primary pH measurement at the isolation site.
-    title: pH 1
-    range: float
+      pH measurement at the isolation site. Use has_minimum_numeric_value
+      and has_maximum_numeric_value to represent a range (GOLD ph1 and ph2).
+    title: isolation site pH
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:ph1
-
-  isolation_site_ph2:
-    description: >-
-      Secondary pH measurement at the isolation site.
-    title: pH 2
-    range: float
-    exact_mappings:
-      - gold:ph2
+    comments:
+      - "GOLD ph2 maps to has_maximum_numeric_value."
 
   chlorophyll_concentration:
     description: >-
       Chlorophyll concentration at the isolation site.
     title: chlorophyll concentration
-    range: string
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:chlorophyll_concentration
 
@@ -658,7 +716,9 @@ slots:
     description: >-
       Nitrate concentration at the isolation site.
     title: nitrate concentration
-    range: string
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:nitrate_concentration
 
@@ -666,7 +726,9 @@ slots:
     description: >-
       Oxygen concentration at the isolation site.
     title: oxygen concentration
-    range: string
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:oxygen_concentration
 
@@ -674,7 +736,9 @@ slots:
     description: >-
       Salinity concentration at the isolation site.
     title: salinity concentration
-    range: string
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:salinity_concentration
 
@@ -682,7 +746,9 @@ slots:
     description: >-
       Total organic carbon at the isolation site.
     title: total organic carbon
-    range: string
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:tot_org_carbon
 
@@ -690,23 +756,29 @@ slots:
     description: >-
       Total nitrogen at the isolation site.
     title: total nitrogen
-    range: string
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:tot_nitrogen
 
   bicarbonate_millimol:
     description: >-
-      Bicarbonate concentration in millimoles at the isolation site.
-    title: bicarbonate (mmol)
-    range: float
+      Bicarbonate concentration at the isolation site.
+    title: bicarbonate concentration
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:bicarbonate_millimol
 
   h2s_millimol:
     description: >-
-      Hydrogen sulfide concentration in millimoles at the isolation site.
-    title: H2S (mmol)
-    range: float
+      Hydrogen sulfide concentration at the isolation site.
+    title: H2S concentration
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:h2s_millimol
 
@@ -715,6 +787,8 @@ slots:
       Whether hydrogen sulfide is present at the isolation site.
     title: H2S present
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:h2s_present
 
@@ -722,15 +796,19 @@ slots:
     description: >-
       Irradiance at the isolation site.
     title: irradiance
-    range: string
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:irradiance
 
   methane_conc_millimol:
     description: >-
-      Methane concentration in millimoles at the isolation site.
-    title: methane concentration (mmol)
-    range: float
+      Methane concentration at the isolation site.
+    title: methane concentration
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:methane_conc_millimol
 
@@ -738,7 +816,9 @@ slots:
     description: >-
       Electrical conductivity of the sample or isolation site.
     title: sample conductivity
-    range: string
+    range: QuantityValue
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:sample_conductivity
 
@@ -748,6 +828,8 @@ slots:
       Gender of the host organism.
     title: host gender
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:host_gender
 
@@ -756,6 +838,8 @@ slots:
       Race/ethnicity of the host (for human hosts).
     title: host race
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:host_race
 
@@ -764,6 +848,8 @@ slots:
       Medications being taken by the host at time of sampling.
     title: host medication
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:host_medication
 
@@ -772,6 +858,8 @@ slots:
       More specific body site within the host body site.
     title: host body subsite
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:host_body_subsite
 
@@ -780,6 +868,8 @@ slots:
       Ontology term identifier for the host body site.
     title: host body site ID
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:host_body_site_id
 
@@ -788,6 +878,8 @@ slots:
       Ontology term identifier for the host body subsite.
     title: host body subsite ID
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:host_body_subsite_id
 
@@ -796,6 +888,8 @@ slots:
       Ontology term identifier for the host body product.
     title: host body product ID
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:host_body_product_id
 
@@ -804,6 +898,8 @@ slots:
       Free-text comments about the host organism.
     title: host comments
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:host_comments
 
@@ -812,6 +908,8 @@ slots:
       Visit number for clinical/patient samples.
     title: patient visit number
     range: integer
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:patient_visit_number
 
@@ -820,6 +918,8 @@ slots:
       Medical record number for clinical samples.
     title: MRN
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:mrn
 
@@ -828,6 +928,8 @@ slots:
       Organisms known to not be hosts of this organism.
     title: known non-hosts
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:known_non_hosts
 
@@ -836,5 +938,7 @@ slots:
       Other host organisms associated with this organism.
     title: other hosts
     range: string
+    in_subset:
+      - gold_organism
     exact_mappings:
       - gold:other_hosts

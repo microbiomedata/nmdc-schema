@@ -1335,7 +1335,6 @@ classes:
       ## sample collection
       - alt
       - depth
-      - depth2
       - elev
       - experimental_factor
       - lat_long_inferred
@@ -1345,13 +1344,8 @@ classes:
       - samp_mat_process
       - samp_size
       - temp
-      - growth_temperature2
-      - sample_collection_temperature2
       - sop
-      - subsurface_depth1
-      - subsurface_depth2
-      - altitude2
-      - elevation2
+      - subsurface_depth
 
       ## GOLD ecosystem hierarchy
       - ecosystem
@@ -1365,8 +1359,7 @@ classes:
       ## isolation site environmental chemistry (from GOLD)
       - salinity
       - pressure
-      - isolation_site_ph1
-      - isolation_site_ph2
+      - isolation_site_ph
       - chlorophyll_concentration
       - nitrate_concentration
       - oxygen_concentration
@@ -1458,14 +1451,13 @@ classes:
       - viral_host_strain
 
       ## physical sample / analyte properties
-      - analyte_concentration
+      - dna_concentration
       - analyte_volume
-      - absorbance_260_280
-      - absorbance_260_230
+      - dna_absorb1
+      - dna_absorb2
       - sample_container
       - sample_format
       - dnase_treated
-      - sample_isolation_method
       - tube_or_plate_label
       - plate_well_location
 
@@ -1493,6 +1485,27 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
           interpolated: true
+
+      dna_concentration:
+        aliases:
+          - concentration (ng/ul)
+        exact_mappings:
+          - nmdc_sub_schema:nuc_acid_concentration
+        comments:
+          - "JGI: Must be calculated using a fluorometric method; value >0 and <2000."
+          - "Replaces analyte_concentration for OrganismSample."
+
+      dna_absorb1:
+        aliases:
+          - absorbance 260/280
+        exact_mappings:
+          - nmdc_sub_schema:nuc_acid_absorb1
+
+      dna_absorb2:
+        aliases:
+          - absorbance 260/230
+        exact_mappings:
+          - nmdc_sub_schema:nuc_acid_absorb2
 
   Site:
     class_uri: nmdc:Site
