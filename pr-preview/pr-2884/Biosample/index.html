@@ -5420,6 +5420,9 @@ attributes:
       should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org,
       non-human host diseases are free text
     title: host disease status
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -5990,6 +5993,9 @@ attributes:
     title: altitude
     examples:
     - value: 100 m
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000094
@@ -6625,6 +6631,8 @@ attributes:
     title: biological status
     examples:
     - value: natural
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -6691,6 +6699,9 @@ attributes:
     title: observed biotic relationship
     examples:
     - value: free living
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -7394,6 +7405,10 @@ attributes:
     title: collection date
     examples:
     - value: '2013-03-25T12:42:31+01:00'
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -7653,6 +7668,9 @@ attributes:
     title: depth
     examples:
     - value: 10 m
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -8305,6 +8323,9 @@ attributes:
       if needed, to help estimate the elevation based on latitude and longitude coordinates.
     examples:
     - value: '100'
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -8380,6 +8401,10 @@ attributes:
     title: broad-scale environmental context
     examples:
     - value: oceanic epipelagic zone biome [ENVO:01000035]
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -8425,6 +8450,10 @@ attributes:
     title: local environmental context
     examples:
     - value: litter layer [ENVO:01000338]
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -8465,6 +8494,10 @@ attributes:
     title: environmental medium
     examples:
     - value: soil [ENVO:00001998]
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -8598,6 +8631,8 @@ attributes:
     title: experimental factor
     examples:
     - value: time series design [EFO:0001779]
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -9188,6 +9223,8 @@ attributes:
     title: genetic modification
     examples:
     - value: PMID:19497774
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000859
@@ -9209,6 +9246,10 @@ attributes:
     title: geographic location (country and/or sea,region)
     examples:
     - value: 'USA: Maryland, Bethesda'
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -9757,6 +9798,8 @@ attributes:
     title: host age
     examples:
     - value: 10 d
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -9803,6 +9846,8 @@ attributes:
     title: host body product
     examples:
     - value: mucus [UBERON:0000912]
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -9828,6 +9873,8 @@ attributes:
       organ or tissue (tongue, lung etc...). Use terms from the foundational model
       of anatomy ontology (fma) or the Uber-anatomy ontology (UBERON)
     title: host body site
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10278,6 +10325,9 @@ attributes:
     title: host taxid
     comments:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
+    in_subset:
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10615,6 +10665,10 @@ attributes:
       for human hosts
     examples:
     - value: 50.586825 6.408977
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -11548,6 +11602,8 @@ attributes:
     title: oxygenation status of sample
     examples:
     - value: aerobic
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -12175,6 +12231,8 @@ attributes:
     title: pressure
     examples:
     - value: 50 atm
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -13141,6 +13199,8 @@ attributes:
     title: salinity
     examples:
     - value: 70 mg/L
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -13234,6 +13294,9 @@ attributes:
       terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO).
       This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)
     title: sample collection device
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: samp_collect_device
@@ -13255,6 +13318,9 @@ attributes:
     name: samp_collec_method
     description: The method employed for collecting the sample
     title: sample collection method
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: samp_collect_method
@@ -13367,6 +13433,9 @@ attributes:
     title: sample material processing
     examples:
     - value: filtering of seawater, storing samples in ethanol
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -13430,6 +13499,10 @@ attributes:
     title: sample name
     examples:
     - value: ISDsoil1
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -13491,6 +13564,10 @@ attributes:
     title: amount or size of sample collected
     examples:
     - value: 5 L
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -13536,6 +13613,9 @@ attributes:
     title: sample storage duration
     examples:
     - value: P1Y6M
+    in_subset:
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -13564,6 +13644,9 @@ attributes:
     title: sample storage location
     examples:
     - value: Freezer no:5
+    in_subset:
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -13590,6 +13673,9 @@ attributes:
     title: sample storage temperature
     examples:
     - value: -80 Cel
+    in_subset:
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -13634,6 +13720,10 @@ attributes:
     title: taxonomy ID of DNA sample
     comments:
     - coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -14563,6 +14653,10 @@ attributes:
     examples:
     - value: igsn:AU1243
     - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -14740,6 +14834,9 @@ attributes:
     title: storage conditions
     examples:
     - value: -20 degree Celsius freezer;P2Y10D
+    in_subset:
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -15091,6 +15188,9 @@ attributes:
     title: temperature
     examples:
     - value: 25 Cel
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:

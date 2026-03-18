@@ -743,13 +743,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../FieldResearchSite/">FieldResearchSite</a></td>
-<td>A site, outside of a laboratory, from which biosamples may be collected</td>
+<td><a href="../OrganismSample/">OrganismSample</a></td>
+<td>A material sample in which all cells are expected to share the same genome</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OrganismSample/">OrganismSample</a></td>
-<td>A material sample in which all cells are expected to share the same genome</td>
+<td><a href="../FieldResearchSite/">FieldResearchSite</a></td>
+<td>A site, outside of a laboratory, from which biosamples may be collected</td>
 <td>no</td>
 </tr>
 <tr>
@@ -826,6 +826,9 @@ description: Elevation of the sampling site is its height above a fixed referenc
 title: elevation
 examples:
 - value: 100 meter
+in_subset:
+- migs_ba
+- gold_organism
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

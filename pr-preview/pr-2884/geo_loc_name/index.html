@@ -732,13 +732,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../FieldResearchSite/">FieldResearchSite</a></td>
-<td>A site, outside of a laboratory, from which biosamples may be collected</td>
+<td><a href="../OrganismSample/">OrganismSample</a></td>
+<td>A material sample in which all cells are expected to share the same genome</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OrganismSample/">OrganismSample</a></td>
-<td>A material sample in which all cells are expected to share the same genome</td>
+<td><a href="../FieldResearchSite/">FieldResearchSite</a></td>
+<td>A site, outside of a laboratory, from which biosamples may be collected</td>
 <td>no</td>
 </tr>
 <tr>
@@ -795,6 +795,10 @@ description: The geographical origin of the sample as defined by the country or 
 title: geographic location (country and/or sea,region)
 examples:
 - value: 'USA: Maryland, Bethesda'
+in_subset:
+- migs_ba
+- gold_organism
+- jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.0.post23.dev0+31243ad38
+version: 11.17.0.post24.dev0+0634e04a4
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -8268,6 +8268,9 @@ slots:
     title: altitude
     examples:
     - value: 100 m
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000094
     range: QuantityValue
@@ -8796,6 +8799,8 @@ slots:
     title: biological status
     examples:
     - value: natural
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - status
@@ -8845,6 +8850,9 @@ slots:
     title: observed biotic relationship
     examples:
     - value: free living
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - observed
@@ -9429,6 +9437,10 @@ slots:
     title: collection date
     examples:
     - value: '2013-03-25T12:42:31+01:00'
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - date
@@ -9620,6 +9632,9 @@ slots:
     title: depth
     examples:
     - value: 10 m
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - depth
@@ -10155,6 +10170,9 @@ slots:
     title: elevation
     examples:
     - value: 100 meter
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - elevation
@@ -10214,6 +10232,10 @@ slots:
     title: broad-scale environmental context
     examples:
     - value: oceanic epipelagic zone biome [ENVO:01000035]
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - context
@@ -10253,6 +10275,10 @@ slots:
     title: local environmental context
     examples:
     - value: litter layer [ENVO:01000338]
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - context
@@ -10287,6 +10313,10 @@ slots:
     title: environmental medium
     examples:
     - value: soil [ENVO:00001998]
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - environmental
@@ -10381,6 +10411,8 @@ slots:
     title: experimental factor
     examples:
     - value: time series design [EFO:0001779]
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - experimental
@@ -10796,6 +10828,8 @@ slots:
     title: genetic modification
     examples:
     - value: PMID:19497774
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000859
     pattern: ^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
@@ -10811,6 +10845,10 @@ slots:
     title: geographic location (country and/or sea,region)
     examples:
     - value: 'USA: Maryland, Bethesda'
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - geographic
@@ -11228,6 +11266,8 @@ slots:
     title: host age
     examples:
     - value: 10 d
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - age
@@ -11265,6 +11305,8 @@ slots:
     title: host body product
     examples:
     - value: mucus [UBERON:0000912]
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - body
@@ -11284,6 +11326,8 @@ slots:
       organ or tissue (tongue, lung etc...). Use terms from the foundational model
       of anatomy ontology (fma) or the Uber-anatomy ontology (UBERON)
     title: host body site
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - body
@@ -11368,6 +11412,9 @@ slots:
       should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org,
       non-human host diseases are free text
     title: host disease status
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - disease
@@ -11639,6 +11686,9 @@ slots:
     title: host taxid
     comments:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
+    in_subset:
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -11912,6 +11962,10 @@ slots:
     title: geographic location (latitude and longitude)
     examples:
     - value: 50.586825 6.408977
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - geographic
@@ -12416,6 +12470,8 @@ slots:
     title: nucleic acid amplification
     examples:
     - value: https://phylogenomics.me/protocols/16s-pcr-protocol/
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000038
     range: TextValue
@@ -12432,6 +12488,9 @@ slots:
     title: nucleic acid extraction
     examples:
     - value: https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf
+    in_subset:
+    - migs_ba
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000037
     range: TextValue
@@ -12706,6 +12765,8 @@ slots:
     title: oxygenation status of sample
     examples:
     - value: aerobic
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - oxygen
@@ -13265,6 +13326,8 @@ slots:
     title: pressure
     examples:
     - value: 50 atm
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - pressure
@@ -14030,6 +14093,8 @@ slots:
     title: salinity
     examples:
     - value: 70 mg/L
+    in_subset:
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - salinity
@@ -14151,6 +14216,9 @@ slots:
     title: sample material processing
     examples:
     - value: filtering of seawater, storing samples in ethanol
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - material
@@ -14203,6 +14271,10 @@ slots:
     title: sample name
     examples:
     - value: ISDsoil1
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - sample
@@ -14249,6 +14321,10 @@ slots:
     title: amount or size of sample collected
     examples:
     - value: 5 L
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - sample
@@ -14284,6 +14360,9 @@ slots:
     title: sample storage duration
     examples:
     - value: P1Y6M
+    in_subset:
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - duration
@@ -14307,6 +14386,9 @@ slots:
     title: sample storage location
     examples:
     - value: Freezer no:5
+    in_subset:
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - location
@@ -14327,6 +14409,9 @@ slots:
     title: sample storage temperature
     examples:
     - value: -80 Cel
+    in_subset:
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - sample
@@ -14362,6 +14447,10 @@ slots:
     title: taxonomy ID of DNA sample
     comments:
     - coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - dna
@@ -14472,6 +14561,9 @@ slots:
     title: sample volume or weight for DNA extraction
     examples:
     - value: 1500 mL
+    in_subset:
+    - migs_ba
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - dna
@@ -14657,6 +14749,8 @@ slots:
     title: sequencing method
     examples:
     - value: 454 Genome Sequencer FLX [OBI:0000702]
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - method
@@ -15132,6 +15226,10 @@ slots:
     title: source material identifiers
     examples:
     - value: MPI012345
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - identifier
@@ -15264,6 +15362,9 @@ slots:
     title: storage conditions
     examples:
     - value: -20 degree Celsius freezer;P2Y10D
+    in_subset:
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - condition
@@ -15582,6 +15683,9 @@ slots:
     title: temperature
     examples:
     - value: 25 Cel
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - temperature
@@ -16852,6 +16956,8 @@ slots:
     title: estimated size
     examples:
     - value: 300000 bp
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - size
@@ -16868,6 +16974,9 @@ slots:
     title: encoded traits
     examples:
     - value: beta-lactamase class A
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000034
     range: TextValue
@@ -16879,6 +16988,10 @@ slots:
     title: isolation and growth condition
     examples:
     - value: doi:10.1016/j.syapm.2018.01.009
+    in_subset:
+    - migs_ba
+    - gold_organism
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - condition
@@ -16901,6 +17014,9 @@ slots:
     title: known pathogenicity
     examples:
     - value: human, animal, plant, fungi, bacteria
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000027
     range: TextValue
@@ -16911,6 +17027,9 @@ slots:
     title: relationship to oxygen
     examples:
     - value: aerobe
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - oxygen
@@ -16932,6 +17051,9 @@ slots:
     title: subspecific genetic lineage
     examples:
     - value: serovar:Newport
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - lineage
@@ -16945,6 +17067,9 @@ slots:
     examples:
     - value: other
       description: was other <colon> rpoB gene
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - identifier
@@ -16959,6 +17084,9 @@ slots:
     title: trophic level
     examples:
     - value: heterotroph
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - level
@@ -16972,6 +17100,8 @@ slots:
     title: adapters
     examples:
     - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000048
     pattern: ^[ACGT];[ACGT]$
@@ -16991,6 +17121,8 @@ slots:
     title: annotation
     examples:
     - value: prokka
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000059
     range: TextValue
@@ -17005,6 +17137,8 @@ slots:
     title: assembly name
     examples:
     - value: HuRef, JCVI_ISG_i3_1.0
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     string_serialization: '{text} {text}'
     slot_uri: MIXS:0000057
@@ -17031,6 +17165,8 @@ slots:
     title: assembly quality
     examples:
     - value: High-quality draft genome
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - quality
@@ -17042,6 +17178,8 @@ slots:
     title: assembly software
     examples:
     - value: metaSPAdes;3.11.0;kmer set 21,33,55,77,99,121, default parameters otherwise
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - software
@@ -17063,6 +17201,8 @@ slots:
     title: relevant electronic resources
     examples:
     - value: http://www.earthmicrobiome.org/
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - resource
@@ -17087,6 +17227,8 @@ slots:
     title: completeness score
     examples:
     - value: med;60%
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - score
@@ -17102,6 +17244,8 @@ slots:
     title: completeness software
     examples:
     - value: checkm
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - software
@@ -17115,6 +17259,8 @@ slots:
     title: extrachromosomal elements
     examples:
     - value: '5'
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000023
     range: integer
@@ -17125,6 +17271,8 @@ slots:
     title: feature prediction
     examples:
     - value: Prodigal;2.6.3;default parameters
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - feature
@@ -17147,6 +17295,9 @@ slots:
     title: host specificity or range
     examples:
     - value: '9606'
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -17162,6 +17313,8 @@ slots:
     title: library layout
     examples:
     - value: paired
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - library
@@ -17173,6 +17326,8 @@ slots:
     title: library reads sequenced
     examples:
     - value: '20'
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - library
@@ -17189,6 +17344,8 @@ slots:
     title: library screening strategy
     examples:
     - value: enriched, screened, normalized
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - library
@@ -17200,6 +17357,8 @@ slots:
     title: library size
     examples:
     - value: '50'
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - library
@@ -17216,6 +17375,8 @@ slots:
     title: library vector
     examples:
     - value: Bacteriophage P1
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - library
@@ -17229,6 +17390,8 @@ slots:
         value: enumeration or text
     description: The substance or equipment used as a negative control in an investigation
     title: negative control type
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - type
@@ -17242,6 +17405,8 @@ slots:
     title: number of contigs
     examples:
     - value: '40'
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - number
@@ -17260,6 +17425,8 @@ slots:
     title: number of replicons
     examples:
     - value: '2'
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - number
@@ -17271,6 +17438,8 @@ slots:
     description: The substance, mixture, product, or apparatus used to verify that
       a process which is part of an investigation delivers a true positive
     title: positive control type
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - type
@@ -17283,6 +17452,8 @@ slots:
     title: project name
     examples:
     - value: Forest soil metagenome
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - project
@@ -17296,6 +17467,9 @@ slots:
     title: reference for biomaterial
     examples:
     - value: doi:10.1016/j.syapm.2018.01.009
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000025
     range: TextValue
@@ -17316,6 +17490,8 @@ slots:
     examples:
     - value: pVOGs;5;http://dmk-brain.ecn.uiowa.edu/pVOGs/ Grazziotin et al. 2017
         doi:10.1093/nar/gkw975
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - database
@@ -17328,6 +17504,8 @@ slots:
     title: similarity search method
     examples:
     - value: HMMER3;3.1b2;hmmsearch, cutoff of 50 on score
+    in_subset:
+    - migs_ba
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - method
@@ -17349,6 +17527,9 @@ slots:
     title: relevant standard operating procedures
     examples:
     - value: http://press.igsb.anl.gov/earthmicrobiome/protocols-and-standards/its/
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - procedures
@@ -17368,6 +17549,9 @@ slots:
     title: host scientific name
     examples:
     - value: Homo sapiens and/or 9606
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -17382,6 +17566,9 @@ slots:
     examples:
     - value: vConTACT vContact2 (references from NCBI RefSeq v83, genus rank classification,
         default parameters)
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - classification
@@ -17398,6 +17585,9 @@ slots:
       terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO).
       This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)
     title: sample collection device
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: samp_collect_device
@@ -17413,6 +17603,9 @@ slots:
     name: samp_collec_method
     description: The method employed for collecting the sample
     title: sample collection method
+    in_subset:
+    - migs_ba
+    - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: samp_collect_method
