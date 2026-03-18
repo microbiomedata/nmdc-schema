@@ -2060,7 +2060,6 @@ slots:
     in_subset:
       - migs_ba
       - gold_organism
-      - jgi_isolate
   conduc:
     annotations:
       Preferred_unit: milliSiemens per centimeter
@@ -2608,7 +2607,6 @@ slots:
     in_subset:
       - migs_ba
       - gold_organism
-      - jgi_isolate
     annotations:
       tooltip: The biome or major environmental system where the sample or specimen originated. Choose values from subclasses of the 'biome' class [ENVO:00000428] in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe the broad anatomical or morphological context
   env_local_scale:
@@ -2632,7 +2630,6 @@ slots:
     in_subset:
       - migs_ba
       - gold_organism
-      - jgi_isolate
   env_medium:
     description: 'Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)'
     title: environmental medium
@@ -2650,7 +2647,6 @@ slots:
     in_subset:
       - migs_ba
       - gold_organism
-      - jgi_isolate
     annotations:
       tooltip: The predominant environmental material or substrate that directly surrounds or hosts the sample or specimen at the time of sampling. Choose values from subclasses of the 'environmental material' class [ENVO:00010483] in the Environment Ontology (ENVO). Values for this field should be measurable or mass material nouns, representing continuous environmental materials. For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to indicate a tissue, organ, or plant structure
   escalator:
@@ -3028,7 +3024,6 @@ slots:
     in_subset:
       - migs_ba
       - gold_organism
-      - jgi_isolate
   glucosidase_act:
     annotations:
       Preferred_unit: mol per liter per hour
@@ -3629,7 +3624,6 @@ slots:
     range: ControlledIdentifiedTermValue
     in_subset:
       - gold_organism
-      - jgi_isolate
   host_tot_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -3827,7 +3821,6 @@ slots:
     in_subset:
       - migs_ba
       - gold_organism
-      - jgi_isolate
   light_intensity:
     annotations:
       Preferred_unit: lux
@@ -4190,7 +4183,6 @@ slots:
       partial_match: true
     in_subset:
       - migs_ba
-      - jgi_isolate
   number_pets:
     description: The number of pets residing in the sampled space
     title: number of pets
@@ -5403,7 +5395,6 @@ slots:
     in_subset:
       - migs_ba
       - gold_organism
-      - jgi_isolate
   samp_preserv:
     annotations:
       Preferred_unit: milliliter
@@ -5444,7 +5435,6 @@ slots:
     in_subset:
       - migs_ba
       - gold_organism
-      - jgi_isolate
   samp_sort_meth:
     description: Method by which samples are sorted; open face filter collecting total suspended particles, prefilter to remove particles larger than X micrometers in diameter, where common values of X would be 10 and 2.5 full size sorting in a cascade impactor
     title: sample size sorting method
@@ -5474,7 +5464,6 @@ slots:
       partial_match: true
     in_subset:
       - gold_organism
-      - jgi_isolate
   samp_store_loc:
     annotations:
       Expected_value: location name
@@ -5490,7 +5479,6 @@ slots:
     range: TextValue
     in_subset:
       - gold_organism
-      - jgi_isolate
   samp_store_temp:
     annotations:
       Preferred_unit: degree Celsius
@@ -5511,7 +5499,6 @@ slots:
       partial_match: true
     in_subset:
       - gold_organism
-      - jgi_isolate
   samp_subtype:
     description: Name of sample sub-type. For example if "sample type" is "Produced Water" then subtype could be "Oil Phase" or "Water Phase". If "other" is specified, please propose entry in "additional info" field
     title: sample subtype
@@ -5541,7 +5528,6 @@ slots:
     in_subset:
       - migs_ba
       - gold_organism
-      - jgi_isolate
   samp_time_out:
     annotations:
       Expected_value: time
@@ -5616,7 +5602,6 @@ slots:
       partial_match: true
     in_subset:
       - migs_ba
-      - jgi_isolate
   samp_weather:
     description: The weather on the sampling day
     title: sampling day weather
@@ -6066,7 +6051,6 @@ slots:
     in_subset:
       - migs_ba
       - gold_organism
-      - jgi_isolate
   space_typ_state:
     description: Customary or normal state of the space
     title: space typical state
@@ -6161,7 +6145,6 @@ slots:
     range: TextValue
     in_subset:
       - gold_organism
-      - jgi_isolate
   substructure_type:
     description: The substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level
     title: substructure type
@@ -7317,7 +7300,6 @@ slots:
     in_subset:
       - migs_ba
       - gold_organism
-      - jgi_isolate
   pathogenicity:
     annotations:
       Expected_value: names of organisms that the entity is pathogenic to

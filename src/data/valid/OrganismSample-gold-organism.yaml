@@ -80,8 +80,3 @@ isolation_site_ph:
   has_raw_value: "6.0-7.75"
   has_unit: "[pH]"
   type: nmdc:QuantityValue
-
-# Sequencing (minimal, not the focus of this authority)
-project_name:
-  type: nmdc:TextValue
-  has_raw_value: "Desulfofaba fastidiosa DSM 15249 genome sequencing"

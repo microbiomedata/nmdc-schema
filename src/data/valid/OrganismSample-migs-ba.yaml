@@ -77,9 +77,9 @@ estimated_size: "1000000"
 
 # Sample collection (MIGS-Ba Recommended/Optional)
 depth:
-  has_numeric_value: 20.0
-  has_raw_value: "20 cm below surface"
-  has_unit: cm
+  has_numeric_value: 0.2
+  has_raw_value: "0.2 m"
+  has_unit: m
   type: nmdc:QuantityValue
 temp:
   has_numeric_value: 30.0
@@ -117,11 +117,6 @@ samp_store_temp:
 # Salinity (from isolation site)
 salinity:
   has_numeric_value: 6000.0
-  has_raw_value: "6000 parts per million"
-  has_unit: "[ppm]"
+  has_raw_value: "6000 mg/L"
+  has_unit: mg/L
   type: nmdc:QuantityValue
-
-# Sequencing (MIGS-Ba Minimum) — placeholder values
-project_name:
-  type: nmdc:TextValue
-  has_raw_value: "Halalkalibacterium halodurans genome sequencing"

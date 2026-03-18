@@ -5,6 +5,3 @@ organism_sample_set:
     type: nmdc:OrganismSample
     associated_studies:
       - nmdc:sty-99-abc123
-    project_name:
-      type: nmdc:TextValue
-      has_raw_value: Example organism sample project

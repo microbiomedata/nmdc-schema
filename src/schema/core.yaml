@@ -1268,7 +1268,7 @@ classes:
 
       ## external IDs
       - external_database_identifiers
-      - gold_biosample_identifiers
+      - gold_organism_identifiers
       - insdc_biosample_identifiers
 
       ## taxonomy and organism identity
@@ -1392,33 +1392,12 @@ classes:
       - known_non_hosts
       - other_hosts
 
-      ## sequencing and assembly
-      - adapters
-      - annot
-      - assembly_name
-      - assembly_qual
-      - assembly_software
-      - associated_resource
-      - compl_score
-      - compl_software
-      - feat_pred
-      - lib_layout
-      - lib_reads_seqd
-      - lib_screen
-      - lib_size
-      - lib_vector
-      - neg_cont_type
-      - nucl_acid_amp
-      - nucl_acid_ext
-      - number_contig
-      - pos_cont_type
-      - project_name
-      - ref_db
-      - samp_vol_we_dna_ext
-      - seq_meth
-      - sim_search_meth
-
       ## genome characteristics
+      ## Note: MIGS-Ba sequencing/assembly slots (seq_meth, assembly_software,
+      ## number_contig, adapters, lib_layout, etc.) are intentionally NOT on
+      ## OrganismSample. In NMDC, these are carried by DataGeneration,
+      ## LibraryPreparation, and WorkflowExecution classes. MIGS-Ba checklist
+      ## completeness spans multiple NMDC classes.
       - estimated_size
       - extrachrom_elements
       - num_replicons

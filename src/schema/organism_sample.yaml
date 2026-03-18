@@ -70,13 +70,6 @@ enums:
       28S: {}
       Other: {}
 
-  GoldYesNoEnum:
-    description: >-
-      Simple yes/no value.
-    permissible_values:
-      "Y": {}
-      "N": {}
-
   GramStainEnum:
     description: >-
       Gram stain classification of a bacterium.
@@ -185,7 +178,7 @@ slots:
   ploidy:
     description: >-
       Genome ploidy, e.g. haploid, diploid, octaploid.
-    title: ploidy comments
+    title: ploidy
     range: string
     in_subset:
       - jgi_isolate
@@ -265,7 +258,7 @@ slots:
       Whether the sample was isolated from an axenic/strain pure culture
       (single colony or equivalent).
     title: is sample from single colony
-    range: GoldYesNoEnum
+    range: YesNoEnum
     in_subset:
       - jgi_isolate
     comments:
@@ -285,7 +278,7 @@ slots:
       Whether 16S screening was performed to identify bacterial contamination
       in fungal samples.
     title: fungal 16S screening
-    range: GoldYesNoEnum
+    range: YesNoEnum
     in_subset:
       - jgi_isolate
     comments:
@@ -295,7 +288,7 @@ slots:
     description: >-
       Whether the ITS sequence matches taxonomy in the UNITE database.
     title: ITS match in UNITE
-    range: GoldYesNoEnum
+    range: YesNoEnum
     in_subset:
       - jgi_isolate
     comments:
@@ -386,15 +379,15 @@ slots:
 
   dnase_treated:
     description: >-
-      Whether the sample was treated with DNAse.
-    title: was sample DNAse treated
-    range: GoldYesNoEnum
+      Whether the sample was treated with DNase.
+    title: was sample DNase treated
+    range: YesNoEnum
     in_subset:
       - jgi_isolate
     exact_mappings:
       - nmdc_sub_schema:dnase
     comments:
-      - "JGI: DNAse treatment is required for all RNA samples."
+      - "JGI: DNase treatment is required for all RNA samples."
 
   tube_or_plate_label:
     description: >-
