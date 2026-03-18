@@ -1289,22 +1289,64 @@ classes:
 
       ## organism biology
       - biotic_relationship
+      - encoded_traits
+      - host_disease_stat
+      - host_spec_range
+      - isol_growth_condt
       - oxy_stat_samp
+      - pathogenicity
       - biol_stat
       - genetic_mod
-      - host_disease_stat
-
-      ## MIGS-Ba checklist slots (newly imported from MIxS)
-      - encoded_traits
-      - isol_growth_condt
-      - pathogenicity
+      - ref_biomaterial
       - rel_to_oxygen
+      - specific_host
       - subspecf_gen_lin
+      - tax_class
       - tax_ident
       - trophic_level
 
-      ## genome characteristics (estimated_size from MIxS MIGS-Ba)
+      ## sample collection
+      - alt
+      - depth
+      - elev
+      - experimental_factor
+      - samp_collec_device
+      - samp_collec_method
+      - samp_mat_process
+      - samp_size
+      - temp
+      - sop
+
+      ## sequencing and assembly
+      - adapters
+      - annot
+      - assembly_name
+      - assembly_qual
+      - assembly_software
+      - associated_resource
+      - compl_score
+      - compl_software
+      - feat_pred
+      - lib_layout
+      - lib_reads_seqd
+      - lib_screen
+      - lib_size
+      - lib_vector
+      - neg_cont_type
+      - nucl_acid_amp
+      - nucl_acid_ext
+      - number_contig
+      - pos_cont_type
+      - project_name
+      - ref_db
+      - samp_vol_we_dna_ext
+      - seq_meth
+      - sim_search_meth
+
+      ## genome characteristics
       - estimated_size
+      - extrachrom_elements
+      - num_replicons
       - gc_content
       - ploidy
       - reference_genome

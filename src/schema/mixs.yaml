@@ -827,6 +827,28 @@ enums:
       low: {}
       middle: {}
       top: {}
+  AssemblyQualEnum:
+    permissible_values:
+      Finished genome: {}
+      High-quality draft genome: {}
+      Medium-quality draft genome: {}
+      Low-quality draft genome: {}
+      Genome fragment(s): {}
+  LibLayoutEnum:
+    permissible_values:
+      other: {}
+      paired: {}
+      single: {}
+      vector: {}
+  NegContTypeEnum:
+    permissible_values:
+      DNA-free PCR mix: {}
+      distilled water: {}
+      empty collection device: {}
+      empty collection tube: {}
+      phosphate buffer: {}
+      sterile swab: {}
+      sterile syringe: {}
   RelToOxygenEnum:
     permissible_values:
       aerobe: {}
@@ -7234,6 +7256,298 @@ slots:
       - level
     slot_uri: MIXS:0000032
     range: TrophicLevelEnum
+  adapters:
+    description: Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters
+    title: adapters
+    examples:
+      - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
+    slot_uri: MIXS:0000048
+    structured_pattern:
+      syntax: ^{dna_bases};{dna_bases}$
+      interpolated: true
+      partial_match: true
+  annot:
+    annotations:
+      Expected_value: name of tool or pipeline used, or annotation source description
+    description: Tool used for annotation, or for cases where annotation was provided by a community jamboree or model organism database rather than by a specific submitter
+    title: annotation
+    examples:
+      - value: prokka
+    slot_uri: MIXS:0000059
+    range: TextValue
+  assembly_name:
+    annotations:
+      Expected_value: name and version of assembly
+    description: Name/version of the assembly provided by the submitter that is used in the genome browsers and in the community
+    title: assembly name
+    examples:
+      - value: HuRef, JCVI_ISG_i3_1.0
+    string_serialization: '{text} {text}'
+    slot_uri: MIXS:0000057
+  assembly_qual:
+    description: 'The assembly quality category is based on sets of criteria outlined for each assembly quality category. For MISAG/MIMAG; Finished: Single, validated, contiguous sequence per replicon without gaps or ambiguities with a consensus error rate equivalent to Q50 or better. High Quality Draft:Multiple fragments where gaps span repetitive regions. Presence of the large subunit (LSU) RNA, small subunit (SSU) and the presence of 5.8S rRNA or 5S rRNA depending on whether it is a eukaryotic or prokaryotic genome, respectively. Medium Quality Draft:Many fragments with little to no review of assembly other than reporting of standard assembly statistics. Low Quality Draft:Many fragments with little to no review of assembly other than reporting of standard assembly statistics. Assembly statistics include, but are not limited to total assembly size, number of contigs, contig N50/L50, and maximum contig length. For MIUVIG; Finished: Single, validated, contiguous sequence per replicon without gaps or ambiguities, with extensive manual review and editing to annotate putative gene functions and transcriptional units. High-quality draft genome: One or multiple fragments, totaling   90% of the expected genome or replicon sequence or predicted complete. Genome fragment(s): One or multiple fragments, totalling < 90% of the expected genome or replicon sequence, or for which no genome size could be estimated'
+    title: assembly quality
+    examples:
+      - value: High-quality draft genome
+    keywords:
+      - quality
+    slot_uri: MIXS:0000056
+    range: AssemblyQualEnum
+  assembly_software:
+    description: Tool(s) used for assembly, including version number and parameters
+    title: assembly software
+    examples:
+      - value: metaSPAdes;3.11.0;kmer set 21,33,55,77,99,121, default parameters otherwise
+    keywords:
+      - software
+    slot_uri: MIXS:0000058
+    range: TextValue
+    structured_pattern:
+      syntax: ^{software};{version};{parameters}$
+      interpolated: true
+      partial_match: true
+  associated_resource:
+    annotations:
+      Expected_value: reference to resource
+    description: A related resource that is referenced, cited, or otherwise associated to the sequence
+    title: relevant electronic resources
+    examples:
+      - value: http://www.earthmicrobiome.org/
+    keywords:
+      - resource
+    slot_uri: MIXS:0000091
+    recommended: true
+    multivalued: true
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+  compl_score:
+    annotations:
+      Expected_value: quality;percent completeness
+    description: 'Completeness score is typically based on either the fraction of markers found as compared to a database or the percent of a genome found as compared to a closely related reference genome. High Quality Draft: >90%, Medium Quality Draft: >50%, and Low Quality Draft: < 50% should have the indicated completeness scores'
+    title: completeness score
+    examples:
+      - value: med;60%
+    keywords:
+      - score
+    string_serialization: '[high|med|low];{percentage}'
+    slot_uri: MIXS:0000069
+  compl_software:
+    annotations:
+      Expected_value: names and versions of software(s) used
+    description: Tools used for completion estimate, i.e. checkm, anvi'o, busco
+    title: completeness software
+    examples:
+      - value: checkm
+    keywords:
+      - software
+    string_serialization: '{software};{version}'
+    slot_uri: MIXS:0000070
+  extrachrom_elements:
+    description: Do plasmids exist of significant phenotypic consequence (e.g. ones that determine virulence or antibiotic resistance). Megaplasmids? Other plasmids (borrelia has 15+ plasmids)
+    title: extrachromosomal elements
+    examples:
+      - value: '5'
+    slot_uri: MIXS:0000023
+    range: integer
+  feat_pred:
+    description: Method used to predict UViGs features such as ORFs, integration site, etc
+    title: feature prediction
+    examples:
+      - value: Prodigal;2.6.3;default parameters
+    keywords:
+      - feature
+      - predict
+    slot_uri: MIXS:0000061
+    range: TextValue
+    structured_pattern:
+      syntax: ^{software};{version};{parameters}$
+      interpolated: true
+      partial_match: true
+  host_spec_range:
+    annotations:
+      Expected_value: NCBI taxid
+    description: The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier
+    title: host specificity or range
+    examples:
+      - value: '9606'
+    keywords:
+      - host
+      - host.
+      - range
+    string_serialization: '{integer}'
+    slot_uri: MIXS:0000030
+    multivalued: true
+  lib_layout:
+    description: Specify whether to expect single, paired, or other configuration of reads
+    title: library layout
+    examples:
+      - value: paired
+    keywords:
+      - library
+    slot_uri: MIXS:0000041
+    range: LibLayoutEnum
+  lib_reads_seqd:
+    description: Total number of clones sequenced from the library
+    title: library reads sequenced
+    examples:
+      - value: '20'
+    keywords:
+      - library
+    slot_uri: MIXS:0000040
+    range: integer
+  lib_screen:
+    annotations:
+      Expected_value: screening strategy name
+    description: Specific enrichment or screening methods applied before and/or after creating libraries
+    title: library screening strategy
+    examples:
+      - value: enriched, screened, normalized
+    keywords:
+      - library
+    slot_uri: MIXS:0000043
+    range: TextValue
+  lib_size:
+    description: Total number of clones in the library prepared for the project
+    title: library size
+    examples:
+      - value: '50'
+    keywords:
+      - library
+      - size
+    slot_uri: MIXS:0000039
+    range: integer
+  lib_vector:
+    annotations:
+      Expected_value: vector
+    description: Cloning vector type(s) used in construction of libraries
+    title: library vector
+    examples:
+      - value: Bacteriophage P1
+    keywords:
+      - library
+    slot_uri: MIXS:0000042
+    range: TextValue
+  neg_cont_type:
+    annotations:
+      Expected_value: enumeration or text
+    description: The substance or equipment used as a negative control in an investigation
+    title: negative control type
+    keywords:
+      - type
+    slot_uri: MIXS:0001321
+    range: NegContTypeEnum
+    recommended: true
+  number_contig:
+    description: Total number of contigs in the cleaned/submitted assembly that makes up a given genome, SAG, MAG, or UViG
+    title: number of contigs
+    examples:
+      - value: '40'
+    keywords:
+      - number
+    slot_uri: MIXS:0000060
+    range: integer
+  num_replicons:
+    annotations:
+      Expected_value: 'for eukaryotes and bacteria: chromosomes (haploid count); for viruses: segments'
+    description: Reports the number of replicons in a nuclear genome of eukaryotes, in the genome of a bacterium or archaea or the number of segments in a segmented virus. Always applied to the haploid chromosome count of a eukaryote
+    title: number of replicons
+    examples:
+      - value: '2'
+    keywords:
+      - number
+    string_serialization: '{integer}'
+    slot_uri: MIXS:0000022
+    range: integer
+  pos_cont_type:
+    description: The substance, mixture, product, or apparatus used to verify that a process which is part of an investigation delivers a true positive
+    title: positive control type
+    keywords:
+      - type
+    string_serialization: '{term} or {text}'
+    slot_uri: MIXS:0001322
+    recommended: true
+  project_name:
+    description: Name of the project within which the sequencing was organized
+    title: project name
+    examples:
+      - value: Forest soil metagenome
+    keywords:
+      - project
+    slot_uri: MIXS:0000092
+    range: TextValue
+    required: true
+  ref_biomaterial:
+    description: Primary publication if isolated before genome publication; otherwise, primary genome report
+    title: reference for biomaterial
+    examples:
+      - value: doi:10.1016/j.syapm.2018.01.009
+    slot_uri: MIXS:0000025
+    range: TextValue
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+      partial_match: true
+  ref_db:
+    annotations:
+      Expected_value: names, versions, and references of databases
+    description: List of database(s) used for ORF annotation, along with version number and reference to website or publication
+    title: reference database(s)
+    examples:
+      - value: pVOGs;5;http://dmk-brain.ecn.uiowa.edu/pVOGs/ Grazziotin et al. 2017 doi:10.1093/nar/gkw975
+    keywords:
+      - database
+    string_serialization: '{database};{version};{reference}'
+    slot_uri: MIXS:0000062
+  sim_search_meth:
+    description: Tool used to compare ORFs with database, along with version and cutoffs used
+    title: similarity search method
+    examples:
+      - value: HMMER3;3.1b2;hmmsearch, cutoff of 50 on score
+    keywords:
+      - method
+    slot_uri: MIXS:0000063
+    range: TextValue
+    structured_pattern:
+      syntax: ^{software};{version};{parameters}$
+      interpolated: true
+      partial_match: true
+  sop:
+    annotations:
+      Expected_value: reference to SOP
+    description: Standard operating procedures used in assembly and/or annotation of genomes, metagenomes or environmental sequences
+    title: relevant standard operating procedures
+    examples:
+      - value: http://press.igsb.anl.gov/earthmicrobiome/protocols-and-standards/its/
+    keywords:
+      - procedures
+    slot_uri: MIXS:0000090
+    multivalued: true
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+  specific_host:
+    annotations:
+      Expected_value: host scientific name, taxonomy ID
+    description: Report the host's taxonomic name and/or NCBI taxonomy ID
+    title: host scientific name
+    examples:
+      - value: Homo sapiens and/or 9606
+    keywords:
+      - host
+      - host.
+    string_serialization: '{text}|{NCBI taxid}'
+    slot_uri: MIXS:0000029
+  tax_class:
+    description: Method used for taxonomic classification, along with reference database used, classification rank, and thresholds used to classify new genomes
+    title: taxonomic classification
+    examples:
+      - value: vConTACT vContact2 (references from NCBI RefSeq v83, genus rank classification, default parameters)
+    keywords:
+      - classification
+      - taxon
+    slot_uri: MIXS:0000064
+    range: TextValue
   samp_collec_device:
     annotations:
       Expected_value: device name
