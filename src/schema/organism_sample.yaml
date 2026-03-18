@@ -17,6 +17,7 @@ prefixes:
 imports:
   - linkml:types
   - attribute_values
+  - nmdc_subsets
 
 default_prefix: nmdc
 
