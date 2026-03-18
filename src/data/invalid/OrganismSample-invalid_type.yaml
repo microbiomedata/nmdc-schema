@@ -1,3 +1,8 @@
 # invalid b/c of wrong type (Biosample instead of OrganismSample)
 id: nmdc:orgsm-99-abc123
 type: nmdc:Biosample
+associated_studies:
+  - nmdc:sty-99-abc123
+project_name:
+  type: nmdc:TextValue
+  has_raw_value: Example organism sample project

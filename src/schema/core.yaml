@@ -9,6 +9,7 @@ imports:
   - attribute_values
   - basic_slots
   - basic_classes
+  - nmdc_subsets
   - organism_sample
   - portal_user_facility
   - portal_mixs_inspired
@@ -1602,11 +1603,6 @@ slots:
     range: QuantityValue
     annotations:
       storage_units: mS/cm
-
-  subsurface_depth:
-    range: QuantityValue
-    annotations:
-      storage_units: m
 
   env_package:
     aliases:

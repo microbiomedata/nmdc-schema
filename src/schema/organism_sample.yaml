@@ -17,7 +17,6 @@ prefixes:
 imports:
   - linkml:types
   - attribute_values
-  - nmdc_subsets
 
 default_prefix: nmdc
 
@@ -71,7 +70,7 @@ enums:
       28S: {}
       Other: {}
 
-  YesNoEnum:
+  GoldYesNoEnum:
     description: >-
       Simple yes/no value.
     permissible_values:
@@ -175,6 +174,8 @@ slots:
       Estimated GC content of the genome, as a percentage.
     title: GC content %
     range: QuantityValue
+    annotations:
+      storage_units: '%'
     in_subset:
       - jgi_isolate
     comments:
@@ -264,7 +265,7 @@ slots:
       Whether the sample was isolated from an axenic/strain pure culture
       (single colony or equivalent).
     title: is sample from single colony
-    range: YesNoEnum
+    range: GoldYesNoEnum
     in_subset:
       - jgi_isolate
     comments:
@@ -284,7 +285,7 @@ slots:
       Whether 16S screening was performed to identify bacterial contamination
       in fungal samples.
     title: fungal 16S screening
-    range: YesNoEnum
+    range: GoldYesNoEnum
     in_subset:
       - jgi_isolate
     comments:
@@ -294,7 +295,7 @@ slots:
     description: >-
       Whether the ITS sequence matches taxonomy in the UNITE database.
     title: ITS match in UNITE
-    range: YesNoEnum
+    range: GoldYesNoEnum
     in_subset:
       - jgi_isolate
     comments:
@@ -354,6 +355,8 @@ slots:
       Volume of the sample being provided.
     title: volume
     range: QuantityValue
+    annotations:
+      storage_units: uL
     in_subset:
       - jgi_isolate
     exact_mappings:
@@ -385,7 +388,7 @@ slots:
     description: >-
       Whether the sample was treated with DNAse.
     title: was sample DNAse treated
-    range: YesNoEnum
+    range: GoldYesNoEnum
     in_subset:
       - jgi_isolate
     exact_mappings:
@@ -613,6 +616,8 @@ slots:
       Length of the cell.
     title: cell length
     range: QuantityValue
+    annotations:
+      storage_units: um
     in_subset:
       - gold_organism
     exact_mappings:
@@ -623,6 +628,8 @@ slots:
       Diameter of the cell.
     title: cell diameter
     range: QuantityValue
+    annotations:
+      storage_units: um
     in_subset:
       - gold_organism
     exact_mappings:
@@ -683,6 +690,8 @@ slots:
       and subsurface_depth2).
     title: subsurface depth
     range: QuantityValue
+    annotations:
+      storage_units: m
     in_subset:
       - gold_organism
     exact_mappings:
@@ -696,6 +705,8 @@ slots:
       and has_maximum_numeric_value to represent a range (GOLD ph1 and ph2).
     title: isolation site pH
     range: QuantityValue
+    annotations:
+      storage_units: '[pH]'
     in_subset:
       - gold_organism
     exact_mappings:
@@ -708,6 +719,8 @@ slots:
       Chlorophyll concentration at the isolation site.
     title: chlorophyll concentration
     range: QuantityValue
+    annotations:
+      storage_units: mg/L
     in_subset:
       - gold_organism
     exact_mappings:
@@ -718,6 +731,8 @@ slots:
       Nitrate concentration at the isolation site.
     title: nitrate concentration
     range: QuantityValue
+    annotations:
+      storage_units: mg/L
     in_subset:
       - gold_organism
     exact_mappings:
@@ -728,6 +743,8 @@ slots:
       Oxygen concentration at the isolation site.
     title: oxygen concentration
     range: QuantityValue
+    annotations:
+      storage_units: mg/L
     in_subset:
       - gold_organism
     exact_mappings:
@@ -738,6 +755,8 @@ slots:
       Salinity concentration at the isolation site.
     title: salinity concentration
     range: QuantityValue
+    annotations:
+      storage_units: '[ppm]'
     in_subset:
       - gold_organism
     exact_mappings:
@@ -748,6 +767,8 @@ slots:
       Total organic carbon at the isolation site.
     title: total organic carbon
     range: QuantityValue
+    annotations:
+      storage_units: mg/kg
     in_subset:
       - gold_organism
     exact_mappings:
@@ -758,6 +779,8 @@ slots:
       Total nitrogen at the isolation site.
     title: total nitrogen
     range: QuantityValue
+    annotations:
+      storage_units: mg/kg
     in_subset:
       - gold_organism
     exact_mappings:
@@ -768,6 +791,8 @@ slots:
       Bicarbonate concentration at the isolation site.
     title: bicarbonate concentration
     range: QuantityValue
+    annotations:
+      storage_units: mmol/L
     in_subset:
       - gold_organism
     exact_mappings:
@@ -778,6 +803,8 @@ slots:
       Hydrogen sulfide concentration at the isolation site.
     title: H2S concentration
     range: QuantityValue
+    annotations:
+      storage_units: mmol/L
     in_subset:
       - gold_organism
     exact_mappings:
@@ -798,6 +825,8 @@ slots:
       Irradiance at the isolation site.
     title: irradiance
     range: QuantityValue
+    annotations:
+      storage_units: W/m2
     in_subset:
       - gold_organism
     exact_mappings:
@@ -808,6 +837,8 @@ slots:
       Methane concentration at the isolation site.
     title: methane concentration
     range: QuantityValue
+    annotations:
+      storage_units: mmol/L
     in_subset:
       - gold_organism
     exact_mappings:
@@ -818,6 +849,8 @@ slots:
       Electrical conductivity of the sample or isolation site.
     title: sample conductivity
     range: QuantityValue
+    annotations:
+      storage_units: mS/cm
     in_subset:
       - gold_organism
     exact_mappings:
