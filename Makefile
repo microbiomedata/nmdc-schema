@@ -6,7 +6,8 @@ SHELL := bash
 .SUFFIXES:
 .SECONDARY:
 
-RUN = poetry run
+# Suppress false RequestsDependencyWarning from requests — see #2889
+RUN = PYTHONWARNINGS="ignore:::requests" poetry run
 SCHEMA_NAME = nmdc_schema
 DOCDIR = docs
 SOURCE_SCHEMA_PATH = src/schema/nmdc.yaml
