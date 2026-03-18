@@ -82,14 +82,14 @@ Do not manually edit generated/derived files like `nmdc_schema/nmdc.py`
 or `nmdc_schema/nmdc_materialized_patterns.yaml`. These are regenerated
 by `make all` and are part of the packaged artifacts.
 
-- If your PR changes the schema (e.g., files under `src/schema/`) or the
-  code that generates these artifacts, run `make all` and commit the
-  resulting updates to the generated files so the repo stays consistent
-  with what will be published.
-- If your PR does **not** change the schema or generators, the generated
-  files should not change. If they show up in your diff unexpectedly,
+- **Do not commit generated `nmdc_schema/` files during feature
+  development.** These artifacts are updated immediately before merge
+  or release, not in development PRs. If they show up in your diff,
   restore them from `main`:
-  `git checkout origin/main -- nmdc_schema/nmdc.py nmdc_schema/nmdc_materialized_patterns.yaml`
+  `git checkout origin/main -- nmdc_schema/nmdc.py nmdc_schema/nmdc_materialized_patterns.yaml nmdc_schema/nmdc_pydantic.py nmdc_schema/nmdc.schema.json nmdc_schema/nmdc_materialized_patterns.json nmdc_schema/nmdc_materialized_patterns.schema.json`
+- You should still run `make all` locally to verify your schema changes
+  build correctly, but do not stage or commit the resulting generated
+  files.
 
 ## Pre-release Process
 
