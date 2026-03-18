@@ -12773,11 +12773,8 @@
                     "description": "Type of cultivation used to grow the organism, e.g. isolate, enrichment, mixed culture."
                 },
                 "cultured": {
-                    "description": "Whether the organism has been cultured.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
+                    "$ref": "#/$defs/YesNoUnknownEnum",
+                    "description": "Whether the organism has been cultured."
                 },
                 "depth": {
                     "anyOf": [
@@ -13819,11 +13816,8 @@
                     "type": "string"
                 },
                 "type_strain": {
-                    "description": "Whether this organism is a type strain.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
+                    "$ref": "#/$defs/YesNoUnknownEnum",
+                    "description": "Whether this organism is a type strain."
                 },
                 "uncultured_type": {
                     "$ref": "#/$defs/UnculturedTypeEnum",
@@ -16850,6 +16844,16 @@
             ],
             "title": "YesNoEnum",
             "type": "string"
+        },
+        "YesNoUnknownEnum": {
+            "description": "Tri-state value for fields where the answer may not be known. Used for GOLD organism_v2 fields that store \"Yes\"/\"No\"/\"Unknown\".",
+            "enum": [
+                "yes",
+                "no",
+                "unknown"
+            ],
+            "title": "YesNoUnknownEnum",
+            "type": "string"
         }
     },
     "$id": "https://w3id.org/nmdc/nmdc",
@@ -17115,6 +17119,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.17.0.post36.dev0+ca597c8e7"
+    "version": "11.17.0.post37.dev0+b3a736c0a"
 }
 

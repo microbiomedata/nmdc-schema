@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.0.post36.dev0+ca597c8e7
+version: 11.17.0.post37.dev0+b3a736c0a
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -5761,6 +5761,18 @@ enums:
         text: 28S
       Other:
         text: Other
+  YesNoUnknownEnum:
+    name: YesNoUnknownEnum
+    description: Tri-state value for fields where the answer may not be known. Used
+      for GOLD organism_v2 fields that store "Yes"/"No"/"Unknown".
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      'yes':
+        text: 'yes'
+      'no':
+        text: 'no'
+      unknown:
+        text: unknown
   GramStainEnum:
     name: GramStainEnum
     description: Gram stain classification of a bacterium.
@@ -18830,12 +18842,14 @@ slots:
     name: cultured
     description: Whether the organism has been cultured.
     title: cultured
+    comments:
+    - GOLD stores as Yes/No/Unknown. Use yes/no/unknown.
     in_subset:
     - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - gold:cultured
-    range: boolean
+    range: YesNoUnknownEnum
   culture_type:
     name: culture_type
     description: Type of cultivation used to grow the organism, e.g. isolate, enrichment,
@@ -18862,12 +18876,14 @@ slots:
     name: type_strain
     description: Whether this organism is a type strain.
     title: type strain
+    comments:
+    - GOLD stores as Yes/No/Unknown. Use yes/no/unknown.
     in_subset:
     - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - gold:type_strain
-    range: boolean
+    range: YesNoUnknownEnum
   organism_domain:
     name: organism_domain
     description: Taxonomic domain of the organism, e.g. Bacteria, Archaea, Eukarya.

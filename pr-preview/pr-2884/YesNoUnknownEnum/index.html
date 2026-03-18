@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/relations/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/YesNoUnknownEnum/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: relations - NMDC Schema Documentation</title>
+        <title>Enum: YesNoUnknownEnum - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-relations" class="md-skip">
+        <a href="#enum-yesnounknownenum" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: relations
+              Enum: YesNoUnknownEnum
             
           </span>
         </div>
@@ -614,10 +614,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
+  <a href="#permissible-values" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Applicable Classes
+        Permissible Values
       
     </span>
   </a>
@@ -625,10 +625,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
+  <a href="#slots" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Properties
+        Slots
       
     </span>
   </a>
@@ -664,17 +664,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -705,94 +694,76 @@
   
 
 
-<h1 id="slot-relations">Slot: relations</h1>
+<h1 id="enum-yesnounknownenum">Enum: YesNoUnknownEnum</h1>
+<p><em>Tri-state value for fields where the answer may not be known. Used for GOLD organism_v2 fields that store "Yes"/"No"/"Unknown".</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/relations">nmdc:relations</a></p>
-<!-- no inheritance hierarchy -->
-<h2 id="applicable-classes">Applicable Classes</h2>
+<p>URI: <a href="./">YesNoUnknownEnum</a></p>
+<h2 id="permissible-values">Permissible Values</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>yes</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>no</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>unknown</td>
+<td>None</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Description</th>
-<th>Modifies Slot</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>An atom or molecule that can be represented with a chemical formula</td>
-<td>no</td>
+<td><a href="../cultured/">cultured</a></td>
+<td>Whether the organism has been cultured</td>
 </tr>
 <tr>
-<td><a href="../OrthologyGroup/">OrthologyGroup</a></td>
-<td>A set of genes or gene products in which all members are orthologous</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../FunctionalAnnotationTerm/">FunctionalAnnotationTerm</a></td>
-<td>Abstract grouping class for any term/descriptor that can be applied to a func...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EnvironmentalMaterialTerm/">EnvironmentalMaterialTerm</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OntologyClass/">OntologyClass</a></td>
-<td>A representation of class defined in an external ontology</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Pathway/">Pathway</a></td>
-<td>A pathway is a sequence of steps/reactions carried out by an organism or comm...</td>
-<td>no</td>
+<td><a href="../type_strain/">type_strain</a></td>
+<td>Whether this organism is a type strain</td>
 </tr>
 </tbody>
 </table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>
-<p>Range: <a href="../OntologyRelation/">OntologyRelation</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: relations
+<pre><code class="language-yaml">name: YesNoUnknownEnum
+description: Tri-state value for fields where the answer may not be known. Used for
+  GOLD organism_v2 fields that store &quot;Yes&quot;/&quot;No&quot;/&quot;Unknown&quot;.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-alias: relations
-domain_of:
-- OntologyClass
-range: OntologyRelation
-multivalued: true
-inlined: true
-inlined_as_list: true
+permissible_values:
+  'yes':
+    text: 'yes'
+  'no':
+    text: 'no'
+  unknown:
+    text: unknown
 
 </code></pre>
 

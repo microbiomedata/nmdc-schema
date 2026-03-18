@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -729,7 +740,11 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Boolean/">Boolean</a></li>
+<li>Range: <a href="../YesNoUnknownEnum/">YesNoUnknownEnum</a></li>
+</ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>GOLD stores as Yes/No/Unknown. Use yes/no/unknown.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -757,6 +772,8 @@
 <pre><code class="language-yaml">name: type_strain
 description: Whether this organism is a type strain.
 title: type strain
+comments:
+- GOLD stores as Yes/No/Unknown. Use yes/no/unknown.
 in_subset:
 - gold_organism
 from_schema: https://w3id.org/nmdc/nmdc
@@ -766,7 +783,7 @@ rank: 1000
 alias: type_strain
 domain_of:
 - OrganismSample
-range: boolean
+range: YesNoUnknownEnum
 
 </code></pre>
 

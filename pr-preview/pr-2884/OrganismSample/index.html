@@ -909,7 +909,7 @@
 </tr>
 <tr>
 <td><a href="../cultured/">cultured</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>0..1 <br/> <a href="../YesNoUnknownEnum/">YesNoUnknownEnum</a></td>
 <td>Whether the organism has been cultured</td>
 <td>direct</td>
 </tr>
@@ -927,7 +927,7 @@
 </tr>
 <tr>
 <td><a href="../type_strain/">type_strain</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>0..1 <br/> <a href="../YesNoUnknownEnum/">YesNoUnknownEnum</a></td>
 <td>Whether this organism is a type strain</td>
 <td>direct</td>
 </tr>
@@ -2477,6 +2477,8 @@ attributes:
     name: cultured
     description: Whether the organism has been cultured.
     title: cultured
+    comments:
+    - GOLD stores as Yes/No/Unknown. Use yes/no/unknown.
     in_subset:
     - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
@@ -2487,7 +2489,7 @@ attributes:
     owner: OrganismSample
     domain_of:
     - OrganismSample
-    range: boolean
+    range: YesNoUnknownEnum
   culture_type:
     name: culture_type
     description: Type of cultivation used to grow the organism, e.g. isolate, enrichment,
@@ -2524,6 +2526,8 @@ attributes:
     name: type_strain
     description: Whether this organism is a type strain.
     title: type strain
+    comments:
+    - GOLD stores as Yes/No/Unknown. Use yes/no/unknown.
     in_subset:
     - gold_organism
     from_schema: https://w3id.org/nmdc/nmdc
@@ -2534,7 +2538,7 @@ attributes:
     owner: OrganismSample
     domain_of:
     - OrganismSample
-    range: boolean
+    range: YesNoUnknownEnum
   organism_domain:
     name: organism_domain
     description: Taxonomic domain of the organism, e.g. Bacteria, Archaea, Eukarya.

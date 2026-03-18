@@ -669,6 +669,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#boolean-and-yesno-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boolean and yes/no conventions
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1056,6 +1067,67 @@ Check the schema for exact values:</p>
 </tr>
 </tbody>
 </table>
+<h3 id="boolean-and-yesno-conventions">Boolean and yes/no conventions</h3>
+<p>NMDC uses three different patterns for true/false/unknown values:</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Range</th>
+<th>Values</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code>, <code>false</code></td>
+<td>Slots that are genuinely binary with no unknown state (e.g., <code>embargoed</code>, <code>lat_long_inferred</code>)</td>
+</tr>
+<tr>
+<td><code>YesNoEnum</code></td>
+<td><code>YesNoEnum</code></td>
+<td><code>yes</code>, <code>no</code></td>
+<td>Slots from the submission portal and JGI Isolate form (e.g., <code>dnase_treated</code>, <code>single_colony_isolation</code>). Defined in <code>portal_enums.yaml</code>.</td>
+</tr>
+<tr>
+<td><code>YesNoUnknownEnum</code></td>
+<td><code>YesNoUnknownEnum</code></td>
+<td><code>yes</code>, <code>no</code>, <code>unknown</code></td>
+<td>Slots from GOLD organism_v2 where the source data has a tri-state (e.g., <code>cultured</code>, <code>type_strain</code>). Defined in <code>organism_sample.yaml</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Source system conversions:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Source values</th>
+<th>NMDC target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GOLD organism_v2</td>
+<td><code>"Yes"</code> / <code>"No"</code> / <code>"Unknown"</code> (strings)</td>
+<td><code>yes</code> / <code>no</code> / <code>unknown</code> (<code>YesNoUnknownEnum</code>)</td>
+</tr>
+<tr>
+<td>JGI Isolate v19</td>
+<td><code>Y</code> / <code>N</code></td>
+<td><code>yes</code> / <code>no</code> (<code>YesNoEnum</code>)</td>
+</tr>
+<tr>
+<td>NCBI BioSample</td>
+<td>varies</td>
+<td>Use <code>boolean</code> or <code>YesNoEnum</code> as appropriate</td>
+</tr>
+</tbody>
+</table>
+<p>Do <strong>not</strong> use <code>boolean</code> for GOLD fields that can be <code>"Unknown"</code> — the
+unknown state would be lost.</p>
 <hr />
 <h2 id="source-1-ncbi-biosample-migsba-package">Source 1: NCBI BioSample (MIGS.ba package)</h2>
 <h3 id="how-to-identify-migs-ba-samples">How to identify MIGS-Ba samples</h3>
@@ -1371,8 +1443,8 @@ as strings (<code>"Yes"</code>, <code>"No"</code>, <code>"Unknown"</code>), not 
 <tr>
 <td><code>cultured</code></td>
 <td><code>cultured</code></td>
-<td>boolean</td>
-<td><code>"Yes"</code> → <code>true</code>, <code>"No"</code> → <code>false</code></td>
+<td>YesNoUnknownEnum</td>
+<td><code>"Yes"</code> → <code>yes</code>, <code>"No"</code> → <code>no</code>, <code>"Unknown"</code> → <code>unknown</code></td>
 </tr>
 <tr>
 <td><code>culture_type</code></td>
@@ -1389,8 +1461,8 @@ as strings (<code>"Yes"</code>, <code>"No"</code>, <code>"Unknown"</code>), not 
 <tr>
 <td><code>type_strain</code></td>
 <td><code>type_strain</code></td>
-<td>boolean</td>
-<td><code>"Yes"</code> → <code>true</code></td>
+<td>YesNoUnknownEnum</td>
+<td><code>"Yes"</code> → <code>yes</code>, <code>"No"</code> → <code>no</code>, <code>"Unknown"</code> → <code>unknown</code></td>
 </tr>
 <tr>
 <td><code>domain</code></td>
@@ -1819,8 +1891,10 @@ as strings (<code>"Yes"</code>, <code>"No"</code>, <code>"Unknown"</code>), not 
 <li><strong>Range pairs</strong>: GOLD stores min/max as separate columns (<code>depth</code>/<code>depth2</code>,
   <code>ph1</code>/<code>ph2</code>, etc.). NMDC collapses these into a single <code>QuantityValue</code>
   using <code>has_numeric_value</code> and <code>has_maximum_numeric_value</code>.</li>
-<li><strong>Boolean-as-string</strong>: <code>cultured</code>, <code>type_strain</code>, <code>active</code>, <code>is_public</code>,
-  <code>is_virocell</code> store <code>"Yes"</code>/<code>"No"</code>/<code>"Unknown"</code> as VARCHAR.</li>
+<li><strong>Tri-state strings</strong>: <code>cultured</code>, <code>type_strain</code> store
+  <code>"Yes"</code>/<code>"No"</code>/<code>"Unknown"</code> as VARCHAR in GOLD. NMDC maps these to
+  <code>YesNoUnknownEnum</code> (<code>yes</code>/<code>no</code>/<code>unknown</code>), not boolean.
+  <code>lat_long_inferred</code> is truly binary and uses <code>boolean</code>.</li>
 <li><strong><code>temperature_range</code> enum mismatch</strong>: GOLD uses <code>"Mesophile"</code> but NMDC
   enum values end in <code>-ic</code> (<code>Mesophilic</code>). Same for <code>Thermophile</code> →
   <code>Thermophilic</code>, etc.</li>
