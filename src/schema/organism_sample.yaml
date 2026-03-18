@@ -70,6 +70,15 @@ enums:
       28S: {}
       Other: {}
 
+  YesNoUnknownEnum:
+    description: >-
+      Tri-state value for fields where the answer may not be known.
+      Used for GOLD organism_v2 fields that store "Yes"/"No"/"Unknown".
+    permissible_values:
+      "yes": {}
+      "no": {}
+      "unknown": {}
+
   GramStainEnum:
     description: >-
       Gram stain classification of a bacterium.
@@ -427,11 +436,13 @@ slots:
     description: >-
       Whether the organism has been cultured.
     title: cultured
-    range: boolean
+    range: YesNoUnknownEnum
     in_subset:
       - gold_organism
     exact_mappings:
       - gold:cultured
+    comments:
+      - "GOLD stores as Yes/No/Unknown. Use yes/no/unknown."
 
   culture_type:
     description: >-
@@ -458,11 +469,13 @@ slots:
     description: >-
       Whether this organism is a type strain.
     title: type strain
-    range: boolean
+    range: YesNoUnknownEnum
     in_subset:
       - gold_organism
     exact_mappings:
       - gold:type_strain
+    comments:
+      - "GOLD stores as Yes/No/Unknown. Use yes/no/unknown."
 
   organism_domain:
     description: >-

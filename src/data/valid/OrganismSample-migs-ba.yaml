@@ -95,12 +95,6 @@ samp_collec_device: sterile tube tools
 samp_mat_process:
   type: nmdc:ControlledTermValue
   has_raw_value: "isolated under aseptic conditions"
-samp_vol_we_dna_ext:
-  has_numeric_value: 3.0
-  has_raw_value: "3 milliliter"
-  has_unit: mL
-  type: nmdc:QuantityValue
-
 # Storage
 samp_store_dur:
   type: nmdc:TextValue

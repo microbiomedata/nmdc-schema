@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-11T17:37:51
+# Generation date: 2026-03-18T13:43:53
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -148,6 +148,7 @@ MY_EMSL = CurieNamespace('my_emsl', 'https://release.my.emsl.pnnl.gov/released_d
 NEON_IDENTIFIER = CurieNamespace('neon_identifier', 'http://example.org/neon/identifier/')
 NEON_SCHEMA = CurieNamespace('neon_schema', 'http://example.org/neon/schema/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
+NMDC_SUB_SCHEMA = CurieNamespace('nmdc_sub_schema', 'https://example.com/nmdc_sub_schema/')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
@@ -229,6 +230,10 @@ class BiosampleId(SampleId):
 
 
 class ProcessedSampleId(SampleId):
+    pass
+
+
+class OrganismSampleId(SampleId):
     pass
 
 
@@ -503,6 +508,7 @@ class Database(YAMLRoot):
     instrument_set: Optional[Union[dict[Union[str, InstrumentId], Union[dict, "Instrument"]], list[Union[dict, "Instrument"]]]] = empty_dict()
     manifest_set: Optional[Union[dict[Union[str, ManifestId], Union[dict, "Manifest"]], list[Union[dict, "Manifest"]]]] = empty_dict()
     material_processing_set: Optional[Union[dict[Union[str, MaterialProcessingId], Union[dict, "MaterialProcessing"]], list[Union[dict, "MaterialProcessing"]]]] = empty_dict()
+    organism_sample_set: Optional[Union[dict[Union[str, OrganismSampleId], Union[dict, "OrganismSample"]], list[Union[dict, "OrganismSample"]]]] = empty_dict()
     processed_sample_set: Optional[Union[dict[Union[str, ProcessedSampleId], Union[dict, "ProcessedSample"]], list[Union[dict, "ProcessedSample"]]]] = empty_dict()
     storage_process_set: Optional[Union[dict[Union[str, StorageProcessId], Union[dict, "StorageProcess"]], list[Union[dict, "StorageProcess"]]]] = empty_dict()
     study_set: Optional[Union[dict[Union[str, StudyId], Union[dict, "Study"]], list[Union[dict, "Study"]]]] = empty_dict()
@@ -534,6 +540,8 @@ class Database(YAMLRoot):
         self._normalize_inlined_as_list(slot_name="manifest_set", slot_type=Manifest, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="material_processing_set", slot_type=MaterialProcessing, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="organism_sample_set", slot_type=OrganismSample, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="processed_sample_set", slot_type=ProcessedSample, key_name="id", keyed=True)
 
@@ -3776,6 +3784,614 @@ class ProcessedSample(Sample):
         if not isinstance(self.sampled_portion, list):
             self.sampled_portion = [self.sampled_portion] if self.sampled_portion is not None else []
         self.sampled_portion = [v if isinstance(v, SamplePortionEnum) else SamplePortionEnum(v) for v in self.sampled_portion]
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
+class OrganismSample(Sample):
+    """
+    A material sample in which all cells are expected to share the same genome. This includes individual multicellular
+    organisms (which may comprise heterogeneous tissues and cell types), nominally pure cultures, and single cells.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["OrganismSample"]
+    class_class_curie: ClassVar[str] = "nmdc:OrganismSample"
+    class_name: ClassVar[str] = "OrganismSample"
+    class_model_uri: ClassVar[URIRef] = NMDC.OrganismSample
+
+    id: Union[str, OrganismSampleId] = None
+    type: Union[str, URIorCURIE] = None
+    associated_studies: Union[Union[str, StudyId], list[Union[str, StudyId]]] = None
+    embargoed: Optional[Union[bool, Bool]] = None
+    provenance_metadata: Optional[Union[dict, "ProvenanceMetadata"]] = None
+    external_database_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    gold_organism_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
+    insdc_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    samp_taxon_id: Optional[Union[dict, ControlledIdentifiedTermValue]] = None
+    samp_name: Optional[str] = None
+    source_mat_id: Optional[Union[dict, TextValue]] = None
+    host_taxid: Optional[Union[dict, ControlledIdentifiedTermValue]] = None
+    ncbi_taxonomy_name: Optional[str] = None
+    collection_date: Optional[Union[dict, TimestampValue]] = None
+    geo_loc_name: Optional[Union[dict, TextValue]] = None
+    lat_lon: Optional[Union[dict, GeolocationValue]] = None
+    collected_from: Optional[Union[str, FieldResearchSiteId]] = None
+    sample_collection_site: Optional[str] = None
+    env_broad_scale: Optional[Union[dict, ControlledIdentifiedTermValue]] = None
+    env_local_scale: Optional[Union[dict, ControlledIdentifiedTermValue]] = None
+    env_medium: Optional[Union[dict, ControlledIdentifiedTermValue]] = None
+    gold_organism_type: Optional[str] = None
+    cultured: Optional[Union[bool, Bool]] = None
+    culture_type: Optional[Union[str, "CultureTypeEnum"]] = None
+    uncultured_type: Optional[Union[str, "UnculturedTypeEnum"]] = None
+    type_strain: Optional[Union[bool, Bool]] = None
+    organism_domain: Optional[str] = None
+    gold_phylogeny: Optional[str] = None
+    biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
+    encoded_traits: Optional[Union[dict, TextValue]] = None
+    host_disease_stat: Optional[str] = None
+    host_spec_range: Optional[Union[str, list[str]]] = empty_list()
+    isol_growth_condt: Optional[Union[dict, TextValue]] = None
+    oxy_stat_samp: Optional[Union[str, "OxyStatSampEnum"]] = None
+    pathogenicity: Optional[Union[dict, TextValue]] = None
+    biol_stat: Optional[Union[str, "BiolStatEnum"]] = None
+    genetic_mod: Optional[str] = None
+    ref_biomaterial: Optional[Union[dict, TextValue]] = None
+    rel_to_oxygen: Optional[Union[str, "RelToOxygenEnum"]] = None
+    specific_host: Optional[str] = None
+    subspecf_gen_lin: Optional[str] = None
+    tax_class: Optional[Union[dict, TextValue]] = None
+    tax_ident: Optional[Union[str, "TaxIdentEnum"]] = None
+    trophic_level: Optional[Union[str, "TrophicLevelEnum"]] = None
+    genbank_16s_id: Optional[str] = None
+    clade: Optional[str] = None
+    organism_common_name: Optional[str] = None
+    genus_synonyms: Optional[str] = None
+    species_synonyms: Optional[str] = None
+    gram_stain: Optional[Union[str, "GramStainEnum"]] = None
+    carbon_source: Optional[str] = None
+    cell_shape: Optional[str] = None
+    cell_length: Optional[Union[dict, QuantityValue]] = None
+    cell_diameter: Optional[Union[dict, QuantityValue]] = None
+    motility: Optional[str] = None
+    sporulation: Optional[str] = None
+    temperature_range: Optional[Union[str, "TemperatureRangeEnum"]] = None
+    organism_color: Optional[str] = None
+    alt: Optional[Union[dict, QuantityValue]] = None
+    depth: Optional[Union[dict, QuantityValue]] = None
+    elev: Optional[float] = None
+    experimental_factor: Optional[Union[dict, ControlledTermValue]] = None
+    lat_long_inferred: Optional[Union[bool, Bool]] = None
+    sample_isolation_comments: Optional[str] = None
+    samp_collec_device: Optional[str] = None
+    samp_collec_method: Optional[str] = None
+    samp_mat_process: Optional[Union[dict, ControlledTermValue]] = None
+    samp_size: Optional[Union[dict, QuantityValue]] = None
+    temp: Optional[Union[dict, QuantityValue]] = None
+    sop: Optional[Union[str, list[str]]] = empty_list()
+    subsurface_depth: Optional[Union[dict, QuantityValue]] = None
+    ecosystem: Optional[str] = None
+    ecosystem_category: Optional[str] = None
+    ecosystem_type: Optional[str] = None
+    ecosystem_subtype: Optional[str] = None
+    specific_ecosystem: Optional[str] = None
+    ecosystem_path_id: Optional[int] = None
+    other_ecosystem: Optional[str] = None
+    salinity: Optional[Union[dict, QuantityValue]] = None
+    pressure: Optional[Union[dict, QuantityValue]] = None
+    isolation_site_ph: Optional[Union[dict, QuantityValue]] = None
+    chlorophyll_concentration: Optional[Union[dict, QuantityValue]] = None
+    nitrate_concentration: Optional[Union[dict, QuantityValue]] = None
+    oxygen_concentration: Optional[Union[dict, QuantityValue]] = None
+    salinity_concentration: Optional[Union[dict, QuantityValue]] = None
+    tot_org_carbon: Optional[Union[dict, QuantityValue]] = None
+    tot_nitrogen: Optional[Union[dict, QuantityValue]] = None
+    bicarbonate_millimol: Optional[Union[dict, QuantityValue]] = None
+    soluble_iron_micromol: Optional[str] = None
+    h2s_millimol: Optional[Union[dict, QuantityValue]] = None
+    h2s_present: Optional[str] = None
+    irradiance: Optional[Union[dict, QuantityValue]] = None
+    methane_conc_millimol: Optional[Union[dict, QuantityValue]] = None
+    sample_conductivity: Optional[Union[dict, QuantityValue]] = None
+    host_age: Optional[Union[dict, QuantityValue]] = None
+    host_body_site: Optional[Union[dict, ControlledTermValue]] = None
+    host_body_subsite: Optional[str] = None
+    host_body_product: Optional[Union[dict, ControlledTermValue]] = None
+    host_body_site_id: Optional[str] = None
+    host_body_subsite_id: Optional[str] = None
+    host_body_product_id: Optional[str] = None
+    host_gender: Optional[str] = None
+    host_race: Optional[str] = None
+    host_medication: Optional[str] = None
+    host_comments: Optional[str] = None
+    patient_visit_number: Optional[int] = None
+    medical_record_number: Optional[str] = None
+    known_non_hosts: Optional[str] = None
+    other_hosts: Optional[str] = None
+    estimated_size: Optional[str] = None
+    extrachrom_elements: Optional[int] = None
+    num_replicons: Optional[int] = None
+    gc_content: Optional[Union[dict, QuantityValue]] = None
+    ploidy: Optional[str] = None
+    reference_genome: Optional[str] = None
+    organism_genus: Optional[str] = None
+    organism_species: Optional[str] = None
+    isolate_name: Optional[str] = None
+    ribosomal_sequence: Optional[str] = None
+    ribosomal_sequence_type: Optional[Union[str, "RibosomalSequenceTypeEnum"]] = None
+    ribosomal_sequence_comments: Optional[str] = None
+    second_ribosomal_sequence: Optional[str] = None
+    second_ribosomal_sequence_type: Optional[Union[str, "RibosomalSequenceTypeEnum"]] = None
+    second_ribosomal_sequence_comments: Optional[str] = None
+    single_colony_isolation: Optional[Union[str, "YesNoEnum"]] = None
+    known_suspected_organisms: Optional[str] = None
+    fungal_16s_screening: Optional[Union[str, "YesNoEnum"]] = None
+    its_match_unite: Optional[Union[str, "YesNoEnum"]] = None
+    biosafety_material_category: Optional[Union[str, "BiosafetyMaterialCategoryEnum"]] = None
+    viral_host_genus: Optional[str] = None
+    viral_host_species: Optional[str] = None
+    viral_host_strain: Optional[str] = None
+    dna_concentration: Optional[float] = None
+    analyte_volume: Optional[Union[dict, QuantityValue]] = None
+    dna_absorb1: Optional[float] = None
+    dna_absorb2: Optional[float] = None
+    sample_container: Optional[Union[str, "SampleContainerEnum"]] = None
+    sample_format: Optional[Union[str, "SampleFormatEnum"]] = None
+    dnase_treated: Optional[Union[str, "YesNoEnum"]] = None
+    tube_or_plate_label: Optional[str] = None
+    plate_well_location: Optional[str] = None
+    samp_store_temp: Optional[Union[dict, QuantityValue]] = None
+    samp_store_loc: Optional[Union[dict, TextValue]] = None
+    samp_store_dur: Optional[Union[dict, TextValue]] = None
+    store_cond: Optional[Union[dict, TextValue]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, OrganismSampleId):
+            self.id = OrganismSampleId(self.id)
+
+        if self._is_empty(self.associated_studies):
+            self.MissingRequiredField("associated_studies")
+        if not isinstance(self.associated_studies, list):
+            self.associated_studies = [self.associated_studies] if self.associated_studies is not None else []
+        self.associated_studies = [v if isinstance(v, StudyId) else StudyId(v) for v in self.associated_studies]
+
+        if self.embargoed is not None and not isinstance(self.embargoed, Bool):
+            self.embargoed = Bool(self.embargoed)
+
+        if self.provenance_metadata is not None and not isinstance(self.provenance_metadata, ProvenanceMetadata):
+            self.provenance_metadata = ProvenanceMetadata(**as_dict(self.provenance_metadata))
+
+        if not isinstance(self.external_database_identifiers, list):
+            self.external_database_identifiers = [self.external_database_identifiers] if self.external_database_identifiers is not None else []
+        self.external_database_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.external_database_identifiers]
+
+        if not isinstance(self.gold_organism_identifiers, list):
+            self.gold_organism_identifiers = [self.gold_organism_identifiers] if self.gold_organism_identifiers is not None else []
+        self.gold_organism_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gold_organism_identifiers]
+
+        if not isinstance(self.insdc_biosample_identifiers, list):
+            self.insdc_biosample_identifiers = [self.insdc_biosample_identifiers] if self.insdc_biosample_identifiers is not None else []
+        self.insdc_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.insdc_biosample_identifiers]
+
+        if self.samp_taxon_id is not None and not isinstance(self.samp_taxon_id, ControlledIdentifiedTermValue):
+            self.samp_taxon_id = ControlledIdentifiedTermValue(**as_dict(self.samp_taxon_id))
+
+        if self.samp_name is not None and not isinstance(self.samp_name, str):
+            self.samp_name = str(self.samp_name)
+
+        if self.source_mat_id is not None and not isinstance(self.source_mat_id, TextValue):
+            self.source_mat_id = TextValue(**as_dict(self.source_mat_id))
+
+        if self.host_taxid is not None and not isinstance(self.host_taxid, ControlledIdentifiedTermValue):
+            self.host_taxid = ControlledIdentifiedTermValue(**as_dict(self.host_taxid))
+
+        if self.ncbi_taxonomy_name is not None and not isinstance(self.ncbi_taxonomy_name, str):
+            self.ncbi_taxonomy_name = str(self.ncbi_taxonomy_name)
+
+        if self.collection_date is not None and not isinstance(self.collection_date, TimestampValue):
+            self.collection_date = TimestampValue(**as_dict(self.collection_date))
+
+        if self.geo_loc_name is not None and not isinstance(self.geo_loc_name, TextValue):
+            self.geo_loc_name = TextValue(**as_dict(self.geo_loc_name))
+
+        if self.lat_lon is not None and not isinstance(self.lat_lon, GeolocationValue):
+            self.lat_lon = GeolocationValue(**as_dict(self.lat_lon))
+
+        if self.collected_from is not None and not isinstance(self.collected_from, FieldResearchSiteId):
+            self.collected_from = FieldResearchSiteId(self.collected_from)
+
+        if self.sample_collection_site is not None and not isinstance(self.sample_collection_site, str):
+            self.sample_collection_site = str(self.sample_collection_site)
+
+        if self.env_broad_scale is not None and not isinstance(self.env_broad_scale, ControlledIdentifiedTermValue):
+            self.env_broad_scale = ControlledIdentifiedTermValue(**as_dict(self.env_broad_scale))
+
+        if self.env_local_scale is not None and not isinstance(self.env_local_scale, ControlledIdentifiedTermValue):
+            self.env_local_scale = ControlledIdentifiedTermValue(**as_dict(self.env_local_scale))
+
+        if self.env_medium is not None and not isinstance(self.env_medium, ControlledIdentifiedTermValue):
+            self.env_medium = ControlledIdentifiedTermValue(**as_dict(self.env_medium))
+
+        if self.gold_organism_type is not None and not isinstance(self.gold_organism_type, str):
+            self.gold_organism_type = str(self.gold_organism_type)
+
+        if self.cultured is not None and not isinstance(self.cultured, Bool):
+            self.cultured = Bool(self.cultured)
+
+        if self.culture_type is not None and not isinstance(self.culture_type, CultureTypeEnum):
+            self.culture_type = CultureTypeEnum(self.culture_type)
+
+        if self.uncultured_type is not None and not isinstance(self.uncultured_type, UnculturedTypeEnum):
+            self.uncultured_type = UnculturedTypeEnum(self.uncultured_type)
+
+        if self.type_strain is not None and not isinstance(self.type_strain, Bool):
+            self.type_strain = Bool(self.type_strain)
+
+        if self.organism_domain is not None and not isinstance(self.organism_domain, str):
+            self.organism_domain = str(self.organism_domain)
+
+        if self.gold_phylogeny is not None and not isinstance(self.gold_phylogeny, str):
+            self.gold_phylogeny = str(self.gold_phylogeny)
+
+        if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
+            self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
+
+        if self.encoded_traits is not None and not isinstance(self.encoded_traits, TextValue):
+            self.encoded_traits = TextValue(**as_dict(self.encoded_traits))
+
+        if self.host_disease_stat is not None and not isinstance(self.host_disease_stat, str):
+            self.host_disease_stat = str(self.host_disease_stat)
+
+        if not isinstance(self.host_spec_range, list):
+            self.host_spec_range = [self.host_spec_range] if self.host_spec_range is not None else []
+        self.host_spec_range = [v if isinstance(v, str) else str(v) for v in self.host_spec_range]
+
+        if self.isol_growth_condt is not None and not isinstance(self.isol_growth_condt, TextValue):
+            self.isol_growth_condt = TextValue(**as_dict(self.isol_growth_condt))
+
+        if self.oxy_stat_samp is not None and not isinstance(self.oxy_stat_samp, OxyStatSampEnum):
+            self.oxy_stat_samp = OxyStatSampEnum(self.oxy_stat_samp)
+
+        if self.pathogenicity is not None and not isinstance(self.pathogenicity, TextValue):
+            self.pathogenicity = TextValue(**as_dict(self.pathogenicity))
+
+        if self.biol_stat is not None and not isinstance(self.biol_stat, BiolStatEnum):
+            self.biol_stat = BiolStatEnum(self.biol_stat)
+
+        if self.genetic_mod is not None and not isinstance(self.genetic_mod, str):
+            self.genetic_mod = str(self.genetic_mod)
+
+        if self.ref_biomaterial is not None and not isinstance(self.ref_biomaterial, TextValue):
+            self.ref_biomaterial = TextValue(**as_dict(self.ref_biomaterial))
+
+        if self.rel_to_oxygen is not None and not isinstance(self.rel_to_oxygen, RelToOxygenEnum):
+            self.rel_to_oxygen = RelToOxygenEnum(self.rel_to_oxygen)
+
+        if self.specific_host is not None and not isinstance(self.specific_host, str):
+            self.specific_host = str(self.specific_host)
+
+        if self.subspecf_gen_lin is not None and not isinstance(self.subspecf_gen_lin, str):
+            self.subspecf_gen_lin = str(self.subspecf_gen_lin)
+
+        if self.tax_class is not None and not isinstance(self.tax_class, TextValue):
+            self.tax_class = TextValue(**as_dict(self.tax_class))
+
+        if self.tax_ident is not None and not isinstance(self.tax_ident, TaxIdentEnum):
+            self.tax_ident = TaxIdentEnum(self.tax_ident)
+
+        if self.trophic_level is not None and not isinstance(self.trophic_level, TrophicLevelEnum):
+            self.trophic_level = TrophicLevelEnum(self.trophic_level)
+
+        if self.genbank_16s_id is not None and not isinstance(self.genbank_16s_id, str):
+            self.genbank_16s_id = str(self.genbank_16s_id)
+
+        if self.clade is not None and not isinstance(self.clade, str):
+            self.clade = str(self.clade)
+
+        if self.organism_common_name is not None and not isinstance(self.organism_common_name, str):
+            self.organism_common_name = str(self.organism_common_name)
+
+        if self.genus_synonyms is not None and not isinstance(self.genus_synonyms, str):
+            self.genus_synonyms = str(self.genus_synonyms)
+
+        if self.species_synonyms is not None and not isinstance(self.species_synonyms, str):
+            self.species_synonyms = str(self.species_synonyms)
+
+        if self.gram_stain is not None and not isinstance(self.gram_stain, GramStainEnum):
+            self.gram_stain = GramStainEnum(self.gram_stain)
+
+        if self.carbon_source is not None and not isinstance(self.carbon_source, str):
+            self.carbon_source = str(self.carbon_source)
+
+        if self.cell_shape is not None and not isinstance(self.cell_shape, str):
+            self.cell_shape = str(self.cell_shape)
+
+        if self.cell_length is not None and not isinstance(self.cell_length, QuantityValue):
+            self.cell_length = QuantityValue(**as_dict(self.cell_length))
+
+        if self.cell_diameter is not None and not isinstance(self.cell_diameter, QuantityValue):
+            self.cell_diameter = QuantityValue(**as_dict(self.cell_diameter))
+
+        if self.motility is not None and not isinstance(self.motility, str):
+            self.motility = str(self.motility)
+
+        if self.sporulation is not None and not isinstance(self.sporulation, str):
+            self.sporulation = str(self.sporulation)
+
+        if self.temperature_range is not None and not isinstance(self.temperature_range, TemperatureRangeEnum):
+            self.temperature_range = TemperatureRangeEnum(self.temperature_range)
+
+        if self.organism_color is not None and not isinstance(self.organism_color, str):
+            self.organism_color = str(self.organism_color)
+
+        if self.alt is not None and not isinstance(self.alt, QuantityValue):
+            self.alt = QuantityValue(**as_dict(self.alt))
+
+        if self.depth is not None and not isinstance(self.depth, QuantityValue):
+            self.depth = QuantityValue(**as_dict(self.depth))
+
+        if self.elev is not None and not isinstance(self.elev, float):
+            self.elev = float(self.elev)
+
+        if self.experimental_factor is not None and not isinstance(self.experimental_factor, ControlledTermValue):
+            self.experimental_factor = ControlledTermValue(**as_dict(self.experimental_factor))
+
+        if self.lat_long_inferred is not None and not isinstance(self.lat_long_inferred, Bool):
+            self.lat_long_inferred = Bool(self.lat_long_inferred)
+
+        if self.sample_isolation_comments is not None and not isinstance(self.sample_isolation_comments, str):
+            self.sample_isolation_comments = str(self.sample_isolation_comments)
+
+        if self.samp_collec_device is not None and not isinstance(self.samp_collec_device, str):
+            self.samp_collec_device = str(self.samp_collec_device)
+
+        if self.samp_collec_method is not None and not isinstance(self.samp_collec_method, str):
+            self.samp_collec_method = str(self.samp_collec_method)
+
+        if self.samp_mat_process is not None and not isinstance(self.samp_mat_process, ControlledTermValue):
+            self.samp_mat_process = ControlledTermValue(**as_dict(self.samp_mat_process))
+
+        if self.samp_size is not None and not isinstance(self.samp_size, QuantityValue):
+            self.samp_size = QuantityValue(**as_dict(self.samp_size))
+
+        if self.temp is not None and not isinstance(self.temp, QuantityValue):
+            self.temp = QuantityValue(**as_dict(self.temp))
+
+        if not isinstance(self.sop, list):
+            self.sop = [self.sop] if self.sop is not None else []
+        self.sop = [v if isinstance(v, str) else str(v) for v in self.sop]
+
+        if self.subsurface_depth is not None and not isinstance(self.subsurface_depth, QuantityValue):
+            self.subsurface_depth = QuantityValue(**as_dict(self.subsurface_depth))
+
+        if self.ecosystem is not None and not isinstance(self.ecosystem, str):
+            self.ecosystem = str(self.ecosystem)
+
+        if self.ecosystem_category is not None and not isinstance(self.ecosystem_category, str):
+            self.ecosystem_category = str(self.ecosystem_category)
+
+        if self.ecosystem_type is not None and not isinstance(self.ecosystem_type, str):
+            self.ecosystem_type = str(self.ecosystem_type)
+
+        if self.ecosystem_subtype is not None and not isinstance(self.ecosystem_subtype, str):
+            self.ecosystem_subtype = str(self.ecosystem_subtype)
+
+        if self.specific_ecosystem is not None and not isinstance(self.specific_ecosystem, str):
+            self.specific_ecosystem = str(self.specific_ecosystem)
+
+        if self.ecosystem_path_id is not None and not isinstance(self.ecosystem_path_id, int):
+            self.ecosystem_path_id = int(self.ecosystem_path_id)
+
+        if self.other_ecosystem is not None and not isinstance(self.other_ecosystem, str):
+            self.other_ecosystem = str(self.other_ecosystem)
+
+        if self.salinity is not None and not isinstance(self.salinity, QuantityValue):
+            self.salinity = QuantityValue(**as_dict(self.salinity))
+
+        if self.pressure is not None and not isinstance(self.pressure, QuantityValue):
+            self.pressure = QuantityValue(**as_dict(self.pressure))
+
+        if self.isolation_site_ph is not None and not isinstance(self.isolation_site_ph, QuantityValue):
+            self.isolation_site_ph = QuantityValue(**as_dict(self.isolation_site_ph))
+
+        if self.chlorophyll_concentration is not None and not isinstance(self.chlorophyll_concentration, QuantityValue):
+            self.chlorophyll_concentration = QuantityValue(**as_dict(self.chlorophyll_concentration))
+
+        if self.nitrate_concentration is not None and not isinstance(self.nitrate_concentration, QuantityValue):
+            self.nitrate_concentration = QuantityValue(**as_dict(self.nitrate_concentration))
+
+        if self.oxygen_concentration is not None and not isinstance(self.oxygen_concentration, QuantityValue):
+            self.oxygen_concentration = QuantityValue(**as_dict(self.oxygen_concentration))
+
+        if self.salinity_concentration is not None and not isinstance(self.salinity_concentration, QuantityValue):
+            self.salinity_concentration = QuantityValue(**as_dict(self.salinity_concentration))
+
+        if self.tot_org_carbon is not None and not isinstance(self.tot_org_carbon, QuantityValue):
+            self.tot_org_carbon = QuantityValue(**as_dict(self.tot_org_carbon))
+
+        if self.tot_nitrogen is not None and not isinstance(self.tot_nitrogen, QuantityValue):
+            self.tot_nitrogen = QuantityValue(**as_dict(self.tot_nitrogen))
+
+        if self.bicarbonate_millimol is not None and not isinstance(self.bicarbonate_millimol, QuantityValue):
+            self.bicarbonate_millimol = QuantityValue(**as_dict(self.bicarbonate_millimol))
+
+        if self.soluble_iron_micromol is not None and not isinstance(self.soluble_iron_micromol, str):
+            self.soluble_iron_micromol = str(self.soluble_iron_micromol)
+
+        if self.h2s_millimol is not None and not isinstance(self.h2s_millimol, QuantityValue):
+            self.h2s_millimol = QuantityValue(**as_dict(self.h2s_millimol))
+
+        if self.h2s_present is not None and not isinstance(self.h2s_present, str):
+            self.h2s_present = str(self.h2s_present)
+
+        if self.irradiance is not None and not isinstance(self.irradiance, QuantityValue):
+            self.irradiance = QuantityValue(**as_dict(self.irradiance))
+
+        if self.methane_conc_millimol is not None and not isinstance(self.methane_conc_millimol, QuantityValue):
+            self.methane_conc_millimol = QuantityValue(**as_dict(self.methane_conc_millimol))
+
+        if self.sample_conductivity is not None and not isinstance(self.sample_conductivity, QuantityValue):
+            self.sample_conductivity = QuantityValue(**as_dict(self.sample_conductivity))
+
+        if self.host_age is not None and not isinstance(self.host_age, QuantityValue):
+            self.host_age = QuantityValue(**as_dict(self.host_age))
+
+        if self.host_body_site is not None and not isinstance(self.host_body_site, ControlledTermValue):
+            self.host_body_site = ControlledTermValue(**as_dict(self.host_body_site))
+
+        if self.host_body_subsite is not None and not isinstance(self.host_body_subsite, str):
+            self.host_body_subsite = str(self.host_body_subsite)
+
+        if self.host_body_product is not None and not isinstance(self.host_body_product, ControlledTermValue):
+            self.host_body_product = ControlledTermValue(**as_dict(self.host_body_product))
+
+        if self.host_body_site_id is not None and not isinstance(self.host_body_site_id, str):
+            self.host_body_site_id = str(self.host_body_site_id)
+
+        if self.host_body_subsite_id is not None and not isinstance(self.host_body_subsite_id, str):
+            self.host_body_subsite_id = str(self.host_body_subsite_id)
+
+        if self.host_body_product_id is not None and not isinstance(self.host_body_product_id, str):
+            self.host_body_product_id = str(self.host_body_product_id)
+
+        if self.host_gender is not None and not isinstance(self.host_gender, str):
+            self.host_gender = str(self.host_gender)
+
+        if self.host_race is not None and not isinstance(self.host_race, str):
+            self.host_race = str(self.host_race)
+
+        if self.host_medication is not None and not isinstance(self.host_medication, str):
+            self.host_medication = str(self.host_medication)
+
+        if self.host_comments is not None and not isinstance(self.host_comments, str):
+            self.host_comments = str(self.host_comments)
+
+        if self.patient_visit_number is not None and not isinstance(self.patient_visit_number, int):
+            self.patient_visit_number = int(self.patient_visit_number)
+
+        if self.medical_record_number is not None and not isinstance(self.medical_record_number, str):
+            self.medical_record_number = str(self.medical_record_number)
+
+        if self.known_non_hosts is not None and not isinstance(self.known_non_hosts, str):
+            self.known_non_hosts = str(self.known_non_hosts)
+
+        if self.other_hosts is not None and not isinstance(self.other_hosts, str):
+            self.other_hosts = str(self.other_hosts)
+
+        if self.estimated_size is not None and not isinstance(self.estimated_size, str):
+            self.estimated_size = str(self.estimated_size)
+
+        if self.extrachrom_elements is not None and not isinstance(self.extrachrom_elements, int):
+            self.extrachrom_elements = int(self.extrachrom_elements)
+
+        if self.num_replicons is not None and not isinstance(self.num_replicons, int):
+            self.num_replicons = int(self.num_replicons)
+
+        if self.gc_content is not None and not isinstance(self.gc_content, QuantityValue):
+            self.gc_content = QuantityValue(**as_dict(self.gc_content))
+
+        if self.ploidy is not None and not isinstance(self.ploidy, str):
+            self.ploidy = str(self.ploidy)
+
+        if self.reference_genome is not None and not isinstance(self.reference_genome, str):
+            self.reference_genome = str(self.reference_genome)
+
+        if self.organism_genus is not None and not isinstance(self.organism_genus, str):
+            self.organism_genus = str(self.organism_genus)
+
+        if self.organism_species is not None and not isinstance(self.organism_species, str):
+            self.organism_species = str(self.organism_species)
+
+        if self.isolate_name is not None and not isinstance(self.isolate_name, str):
+            self.isolate_name = str(self.isolate_name)
+
+        if self.ribosomal_sequence is not None and not isinstance(self.ribosomal_sequence, str):
+            self.ribosomal_sequence = str(self.ribosomal_sequence)
+
+        if self.ribosomal_sequence_type is not None and not isinstance(self.ribosomal_sequence_type, RibosomalSequenceTypeEnum):
+            self.ribosomal_sequence_type = RibosomalSequenceTypeEnum(self.ribosomal_sequence_type)
+
+        if self.ribosomal_sequence_comments is not None and not isinstance(self.ribosomal_sequence_comments, str):
+            self.ribosomal_sequence_comments = str(self.ribosomal_sequence_comments)
+
+        if self.second_ribosomal_sequence is not None and not isinstance(self.second_ribosomal_sequence, str):
+            self.second_ribosomal_sequence = str(self.second_ribosomal_sequence)
+
+        if self.second_ribosomal_sequence_type is not None and not isinstance(self.second_ribosomal_sequence_type, RibosomalSequenceTypeEnum):
+            self.second_ribosomal_sequence_type = RibosomalSequenceTypeEnum(self.second_ribosomal_sequence_type)
+
+        if self.second_ribosomal_sequence_comments is not None and not isinstance(self.second_ribosomal_sequence_comments, str):
+            self.second_ribosomal_sequence_comments = str(self.second_ribosomal_sequence_comments)
+
+        if self.single_colony_isolation is not None and not isinstance(self.single_colony_isolation, YesNoEnum):
+            self.single_colony_isolation = YesNoEnum(self.single_colony_isolation)
+
+        if self.known_suspected_organisms is not None and not isinstance(self.known_suspected_organisms, str):
+            self.known_suspected_organisms = str(self.known_suspected_organisms)
+
+        if self.fungal_16s_screening is not None and not isinstance(self.fungal_16s_screening, YesNoEnum):
+            self.fungal_16s_screening = YesNoEnum(self.fungal_16s_screening)
+
+        if self.its_match_unite is not None and not isinstance(self.its_match_unite, YesNoEnum):
+            self.its_match_unite = YesNoEnum(self.its_match_unite)
+
+        if self.biosafety_material_category is not None and not isinstance(self.biosafety_material_category, BiosafetyMaterialCategoryEnum):
+            self.biosafety_material_category = BiosafetyMaterialCategoryEnum(self.biosafety_material_category)
+
+        if self.viral_host_genus is not None and not isinstance(self.viral_host_genus, str):
+            self.viral_host_genus = str(self.viral_host_genus)
+
+        if self.viral_host_species is not None and not isinstance(self.viral_host_species, str):
+            self.viral_host_species = str(self.viral_host_species)
+
+        if self.viral_host_strain is not None and not isinstance(self.viral_host_strain, str):
+            self.viral_host_strain = str(self.viral_host_strain)
+
+        if self.dna_concentration is not None and not isinstance(self.dna_concentration, float):
+            self.dna_concentration = float(self.dna_concentration)
+
+        if self.analyte_volume is not None and not isinstance(self.analyte_volume, QuantityValue):
+            self.analyte_volume = QuantityValue(**as_dict(self.analyte_volume))
+
+        if self.dna_absorb1 is not None and not isinstance(self.dna_absorb1, float):
+            self.dna_absorb1 = float(self.dna_absorb1)
+
+        if self.dna_absorb2 is not None and not isinstance(self.dna_absorb2, float):
+            self.dna_absorb2 = float(self.dna_absorb2)
+
+        if self.sample_container is not None and not isinstance(self.sample_container, SampleContainerEnum):
+            self.sample_container = SampleContainerEnum(self.sample_container)
+
+        if self.sample_format is not None and not isinstance(self.sample_format, SampleFormatEnum):
+            self.sample_format = SampleFormatEnum(self.sample_format)
+
+        if self.dnase_treated is not None and not isinstance(self.dnase_treated, YesNoEnum):
+            self.dnase_treated = YesNoEnum(self.dnase_treated)
+
+        if self.tube_or_plate_label is not None and not isinstance(self.tube_or_plate_label, str):
+            self.tube_or_plate_label = str(self.tube_or_plate_label)
+
+        if self.plate_well_location is not None and not isinstance(self.plate_well_location, str):
+            self.plate_well_location = str(self.plate_well_location)
+
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, QuantityValue):
+            self.samp_store_temp = QuantityValue(**as_dict(self.samp_store_temp))
+
+        if self.samp_store_loc is not None and not isinstance(self.samp_store_loc, TextValue):
+            self.samp_store_loc = TextValue(**as_dict(self.samp_store_loc))
+
+        if self.samp_store_dur is not None and not isinstance(self.samp_store_dur, TextValue):
+            self.samp_store_dur = TextValue(**as_dict(self.samp_store_dur))
+
+        if self.store_cond is not None and not isinstance(self.store_cond, TextValue):
+            self.store_cond = TextValue(**as_dict(self.store_cond))
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -8440,6 +9056,172 @@ class ProtocolForEnum(EnumDefinitionImpl):
         description="The permitted values for describing the type of planned process that a protocol describes.",
     )
 
+class BiosafetyMaterialCategoryEnum(EnumDefinitionImpl):
+    """
+    General category of organism or material, as used by JGI for biosafety classification.
+    """
+    Alga = PermissibleValue(text="Alga")
+    Animal = PermissibleValue(text="Animal")
+    Archaea = PermissibleValue(text="Archaea")
+    Bacteria = PermissibleValue(text="Bacteria")
+    Fungi = PermissibleValue(text="Fungi")
+    Plant = PermissibleValue(text="Plant")
+    Plasmid = PermissibleValue(text="Plasmid")
+    Protist = PermissibleValue(text="Protist")
+    Virus = PermissibleValue(text="Virus")
+
+    _defn = EnumDefinition(
+        name="BiosafetyMaterialCategoryEnum",
+        description="General category of organism or material, as used by JGI for biosafety classification.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Synthetic Construct",
+            PermissibleValue(text="Synthetic Construct"))
+
+class SampleFormatEnum(EnumDefinitionImpl):
+    """
+    Format or buffer in which the physical sample is provided. Values from JGI Isolate (NA) v19.
+    """
+    Pellet = PermissibleValue(text="Pellet")
+    Ethanol = PermissibleValue(text="Ethanol")
+    PBS = PermissibleValue(text="PBS")
+    TE = PermissibleValue(text="TE")
+    Water = PermissibleValue(text="Water")
+
+    _defn = EnumDefinition(
+        name="SampleFormatEnum",
+        description="Format or buffer in which the physical sample is provided. Values from JGI Isolate (NA) v19.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "MDA Reaction Buffer",
+            PermissibleValue(text="MDA Reaction Buffer"))
+        setattr(cls, "Low EDTA TE",
+            PermissibleValue(text="Low EDTA TE"))
+        setattr(cls, "10 mM Tris-HCl",
+            PermissibleValue(text="10 mM Tris-HCl"))
+        setattr(cls, "Gentegra-DNA",
+            PermissibleValue(text="Gentegra-DNA"))
+        setattr(cls, "Gentegra-RNA",
+            PermissibleValue(text="Gentegra-RNA"))
+
+class SampleContainerEnum(EnumDefinitionImpl):
+    """
+    Physical container type for sample shipment.
+    """
+    tube = PermissibleValue(text="tube")
+
+    _defn = EnumDefinition(
+        name="SampleContainerEnum",
+        description="Physical container type for sample shipment.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "plate (96-well)",
+            PermissibleValue(text="plate (96-well)"))
+
+class RibosomalSequenceTypeEnum(EnumDefinitionImpl):
+    """
+    Type of ribosomal sequence used for strain verification.
+    """
+    ITS = PermissibleValue(text="ITS")
+    Other = PermissibleValue(text="Other")
+
+    _defn = EnumDefinition(
+        name="RibosomalSequenceTypeEnum",
+        description="Type of ribosomal sequence used for strain verification.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "16S",
+            PermissibleValue(text="16S"))
+        setattr(cls, "ITS-AGI",
+            PermissibleValue(text="ITS-AGI"))
+        setattr(cls, "28S",
+            PermissibleValue(text="28S"))
+
+class YesNoUnknownEnum(EnumDefinitionImpl):
+    """
+    Tri-state value for fields where the answer may not be known. Used for GOLD organism_v2 fields that store
+    "Yes"/"No"/"Unknown".
+    """
+    yes = PermissibleValue(text="yes")
+    no = PermissibleValue(text="no")
+    unknown = PermissibleValue(text="unknown")
+
+    _defn = EnumDefinition(
+        name="YesNoUnknownEnum",
+        description="""Tri-state value for fields where the answer may not be known. Used for GOLD organism_v2 fields that store \"Yes\"/\"No\"/\"Unknown\".""",
+    )
+
+class GramStainEnum(EnumDefinitionImpl):
+    """
+    Gram stain classification of a bacterium.
+    """
+    indeterminate = PermissibleValue(text="indeterminate")
+
+    _defn = EnumDefinition(
+        name="GramStainEnum",
+        description="Gram stain classification of a bacterium.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Gram+",
+            PermissibleValue(text="Gram+"))
+        setattr(cls, "Gram-",
+            PermissibleValue(text="Gram-"))
+
+class CultureTypeEnum(EnumDefinitionImpl):
+    """
+    Type of cultivation used to grow the organism. Values from GOLD.
+    """
+    isolate = PermissibleValue(text="isolate")
+    enrichment = PermissibleValue(text="enrichment")
+
+    _defn = EnumDefinition(
+        name="CultureTypeEnum",
+        description="Type of cultivation used to grow the organism. Values from GOLD.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "mixed culture",
+            PermissibleValue(text="mixed culture"))
+
+class UnculturedTypeEnum(EnumDefinitionImpl):
+    """
+    Type of uncultured organism assembly. Values from GOLD.
+    """
+    MAG = PermissibleValue(text="MAG")
+    SAG = PermissibleValue(text="SAG")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="UnculturedTypeEnum",
+        description="Type of uncultured organism assembly. Values from GOLD.",
+    )
+
+class TemperatureRangeEnum(EnumDefinitionImpl):
+    """
+    Temperature classification of the organism.
+    """
+    Cryophilic = PermissibleValue(text="Cryophilic")
+    Psychrophilic = PermissibleValue(text="Psychrophilic")
+    Mesophilic = PermissibleValue(text="Mesophilic")
+    Thermophilic = PermissibleValue(text="Thermophilic")
+    Hyperthermophilic = PermissibleValue(text="Hyperthermophilic")
+
+    _defn = EnumDefinition(
+        name="TemperatureRangeEnum",
+        description="Temperature classification of the organism.",
+    )
+
 class AeroStrucEnum(EnumDefinitionImpl):
 
     glider = PermissibleValue(text="glider")
@@ -10093,6 +10875,131 @@ class WindowVertPosEnum(EnumDefinitionImpl):
         name="WindowVertPosEnum",
     )
 
+class AssemblyQualEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="AssemblyQualEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Finished genome",
+            PermissibleValue(text="Finished genome"))
+        setattr(cls, "High-quality draft genome",
+            PermissibleValue(text="High-quality draft genome"))
+        setattr(cls, "Medium-quality draft genome",
+            PermissibleValue(text="Medium-quality draft genome"))
+        setattr(cls, "Low-quality draft genome",
+            PermissibleValue(text="Low-quality draft genome"))
+        setattr(cls, "Genome fragment(s)",
+            PermissibleValue(text="Genome fragment(s)"))
+
+class LibLayoutEnum(EnumDefinitionImpl):
+
+    other = PermissibleValue(text="other")
+    paired = PermissibleValue(text="paired")
+    single = PermissibleValue(text="single")
+    vector = PermissibleValue(text="vector")
+
+    _defn = EnumDefinition(
+        name="LibLayoutEnum",
+    )
+
+class NegContTypeEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="NegContTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "DNA-free PCR mix",
+            PermissibleValue(text="DNA-free PCR mix"))
+        setattr(cls, "distilled water",
+            PermissibleValue(text="distilled water"))
+        setattr(cls, "empty collection device",
+            PermissibleValue(text="empty collection device"))
+        setattr(cls, "empty collection tube",
+            PermissibleValue(text="empty collection tube"))
+        setattr(cls, "phosphate buffer",
+            PermissibleValue(text="phosphate buffer"))
+        setattr(cls, "sterile swab",
+            PermissibleValue(text="sterile swab"))
+        setattr(cls, "sterile syringe",
+            PermissibleValue(text="sterile syringe"))
+
+class RelToOxygenEnum(EnumDefinitionImpl):
+
+    aerobe = PermissibleValue(text="aerobe")
+    anaerobe = PermissibleValue(text="anaerobe")
+    facultative = PermissibleValue(text="facultative")
+    microaerophilic = PermissibleValue(text="microaerophilic")
+    microanaerobe = PermissibleValue(text="microanaerobe")
+
+    _defn = EnumDefinition(
+        name="RelToOxygenEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "obligate aerobe",
+            PermissibleValue(text="obligate aerobe"))
+        setattr(cls, "obligate anaerobe",
+            PermissibleValue(text="obligate anaerobe"))
+
+class TaxIdentEnum(EnumDefinitionImpl):
+
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="TaxIdentEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "16S rRNA gene",
+            PermissibleValue(text="16S rRNA gene"))
+        setattr(cls, "multi-marker approach",
+            PermissibleValue(text="multi-marker approach"))
+
+class TrophicLevelEnum(EnumDefinitionImpl):
+
+    autotroph = PermissibleValue(text="autotroph")
+    carboxydotroph = PermissibleValue(text="carboxydotroph")
+    chemoautolithotroph = PermissibleValue(text="chemoautolithotroph")
+    chemoautotroph = PermissibleValue(text="chemoautotroph")
+    chemoheterotroph = PermissibleValue(text="chemoheterotroph")
+    chemolithoautotroph = PermissibleValue(text="chemolithoautotroph")
+    chemolithotroph = PermissibleValue(text="chemolithotroph")
+    chemoorganoheterotroph = PermissibleValue(text="chemoorganoheterotroph")
+    chemoorganotroph = PermissibleValue(text="chemoorganotroph")
+    chemosynthetic = PermissibleValue(text="chemosynthetic")
+    chemotroph = PermissibleValue(text="chemotroph")
+    copiotroph = PermissibleValue(text="copiotroph")
+    diazotroph = PermissibleValue(text="diazotroph")
+    facultative = PermissibleValue(text="facultative")
+    heterotroph = PermissibleValue(text="heterotroph")
+    lithoautotroph = PermissibleValue(text="lithoautotroph")
+    lithoheterotroph = PermissibleValue(text="lithoheterotroph")
+    lithotroph = PermissibleValue(text="lithotroph")
+    methanotroph = PermissibleValue(text="methanotroph")
+    methylotroph = PermissibleValue(text="methylotroph")
+    mixotroph = PermissibleValue(text="mixotroph")
+    obligate = PermissibleValue(text="obligate")
+    oligotroph = PermissibleValue(text="oligotroph")
+    organoheterotroph = PermissibleValue(text="organoheterotroph")
+    organotroph = PermissibleValue(text="organotroph")
+    photoautotroph = PermissibleValue(text="photoautotroph")
+    photoheterotroph = PermissibleValue(text="photoheterotroph")
+    photolithoautotroph = PermissibleValue(text="photolithoautotroph")
+    photolithotroph = PermissibleValue(text="photolithotroph")
+    photosynthetic = PermissibleValue(text="photosynthetic")
+    phototroph = PermissibleValue(text="phototroph")
+
+    _defn = EnumDefinition(
+        name="TrophicLevelEnum",
+    )
+
 class HostSexEnum(EnumDefinitionImpl):
 
     female = PermissibleValue(text="female")
@@ -10445,6 +11352,9 @@ slots.data_generation_set = Slot(uri=NMDC.data_generation_set, name="data_genera
 slots.processed_sample_set = Slot(uri=NMDC.processed_sample_set, name="processed_sample_set", curie=NMDC.curie('processed_sample_set'),
                    model_uri=NMDC.processed_sample_set, domain=None, range=Optional[Union[dict[Union[str, ProcessedSampleId], Union[dict, ProcessedSample]], list[Union[dict, ProcessedSample]]]])
 
+slots.organism_sample_set = Slot(uri=NMDC.organism_sample_set, name="organism_sample_set", curie=NMDC.curie('organism_sample_set'),
+                   model_uri=NMDC.organism_sample_set, domain=None, range=Optional[Union[dict[Union[str, OrganismSampleId], Union[dict, OrganismSample]], list[Union[dict, OrganismSample]]]])
+
 slots.instrument_set = Slot(uri=NMDC.instrument_set, name="instrument_set", curie=NMDC.curie('instrument_set'),
                    model_uri=NMDC.instrument_set, domain=None, range=Optional[Union[dict[Union[str, InstrumentId], Union[dict, Instrument]], list[Union[dict, Instrument]]]])
 
@@ -10742,9 +11652,6 @@ slots.collected_from = Slot(uri=NMDC.collected_from, name="collected_from", curi
 
 slots.bulk_elect_conductivity = Slot(uri=NMDC.bulk_elect_conductivity, name="bulk_elect_conductivity", curie=NMDC.curie('bulk_elect_conductivity'),
                    model_uri=NMDC.bulk_elect_conductivity, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.subsurface_depth = Slot(uri=NMDC.subsurface_depth, name="subsurface_depth", curie=NMDC.curie('subsurface_depth'),
-                   model_uri=NMDC.subsurface_depth, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.env_package = Slot(uri=NMDC.env_package, name="env_package", curie=NMDC.curie('env_package'),
                    model_uri=NMDC.env_package, domain=None, range=Optional[Union[dict, TextValue]])
@@ -11212,6 +12119,234 @@ slots.superseded_by = Slot(uri=NMDC['basic_classes/superseded_by'], name="supers
 slots.provenance_metadata = Slot(uri=NMDC['basic_classes/provenance_metadata'], name="provenance_metadata", curie=NMDC.curie('basic_classes/provenance_metadata'),
                    model_uri=NMDC.provenance_metadata, domain=None, range=Optional[Union[dict, ProvenanceMetadata]])
 
+slots.organism_genus = Slot(uri=NMDC.organism_genus, name="organism_genus", curie=NMDC.curie('organism_genus'),
+                   model_uri=NMDC.organism_genus, domain=None, range=Optional[str])
+
+slots.organism_species = Slot(uri=NMDC.organism_species, name="organism_species", curie=NMDC.curie('organism_species'),
+                   model_uri=NMDC.organism_species, domain=None, range=Optional[str])
+
+slots.isolate_name = Slot(uri=NMDC.isolate_name, name="isolate_name", curie=NMDC.curie('isolate_name'),
+                   model_uri=NMDC.isolate_name, domain=None, range=Optional[str])
+
+slots.gc_content = Slot(uri=NMDC.gc_content, name="gc_content", curie=NMDC.curie('gc_content'),
+                   model_uri=NMDC.gc_content, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ploidy = Slot(uri=NMDC.ploidy, name="ploidy", curie=NMDC.curie('ploidy'),
+                   model_uri=NMDC.ploidy, domain=None, range=Optional[str])
+
+slots.reference_genome = Slot(uri=NMDC.reference_genome, name="reference_genome", curie=NMDC.curie('reference_genome'),
+                   model_uri=NMDC.reference_genome, domain=None, range=Optional[str])
+
+slots.ribosomal_sequence = Slot(uri=NMDC.ribosomal_sequence, name="ribosomal_sequence", curie=NMDC.curie('ribosomal_sequence'),
+                   model_uri=NMDC.ribosomal_sequence, domain=None, range=Optional[str])
+
+slots.ribosomal_sequence_type = Slot(uri=NMDC.ribosomal_sequence_type, name="ribosomal_sequence_type", curie=NMDC.curie('ribosomal_sequence_type'),
+                   model_uri=NMDC.ribosomal_sequence_type, domain=None, range=Optional[Union[str, "RibosomalSequenceTypeEnum"]])
+
+slots.ribosomal_sequence_comments = Slot(uri=NMDC.ribosomal_sequence_comments, name="ribosomal_sequence_comments", curie=NMDC.curie('ribosomal_sequence_comments'),
+                   model_uri=NMDC.ribosomal_sequence_comments, domain=None, range=Optional[str])
+
+slots.second_ribosomal_sequence = Slot(uri=NMDC.second_ribosomal_sequence, name="second_ribosomal_sequence", curie=NMDC.curie('second_ribosomal_sequence'),
+                   model_uri=NMDC.second_ribosomal_sequence, domain=None, range=Optional[str])
+
+slots.second_ribosomal_sequence_type = Slot(uri=NMDC.second_ribosomal_sequence_type, name="second_ribosomal_sequence_type", curie=NMDC.curie('second_ribosomal_sequence_type'),
+                   model_uri=NMDC.second_ribosomal_sequence_type, domain=None, range=Optional[Union[str, "RibosomalSequenceTypeEnum"]])
+
+slots.second_ribosomal_sequence_comments = Slot(uri=NMDC.second_ribosomal_sequence_comments, name="second_ribosomal_sequence_comments", curie=NMDC.curie('second_ribosomal_sequence_comments'),
+                   model_uri=NMDC.second_ribosomal_sequence_comments, domain=None, range=Optional[str])
+
+slots.single_colony_isolation = Slot(uri=NMDC.single_colony_isolation, name="single_colony_isolation", curie=NMDC.curie('single_colony_isolation'),
+                   model_uri=NMDC.single_colony_isolation, domain=None, range=Optional[Union[str, "YesNoEnum"]])
+
+slots.known_suspected_organisms = Slot(uri=NMDC.known_suspected_organisms, name="known_suspected_organisms", curie=NMDC.curie('known_suspected_organisms'),
+                   model_uri=NMDC.known_suspected_organisms, domain=None, range=Optional[str])
+
+slots.fungal_16s_screening = Slot(uri=NMDC.fungal_16s_screening, name="fungal_16s_screening", curie=NMDC.curie('fungal_16s_screening'),
+                   model_uri=NMDC.fungal_16s_screening, domain=None, range=Optional[Union[str, "YesNoEnum"]])
+
+slots.its_match_unite = Slot(uri=NMDC.its_match_unite, name="its_match_unite", curie=NMDC.curie('its_match_unite'),
+                   model_uri=NMDC.its_match_unite, domain=None, range=Optional[Union[str, "YesNoEnum"]])
+
+slots.biosafety_material_category = Slot(uri=NMDC.biosafety_material_category, name="biosafety_material_category", curie=NMDC.curie('biosafety_material_category'),
+                   model_uri=NMDC.biosafety_material_category, domain=None, range=Optional[Union[str, "BiosafetyMaterialCategoryEnum"]])
+
+slots.viral_host_genus = Slot(uri=NMDC.viral_host_genus, name="viral_host_genus", curie=NMDC.curie('viral_host_genus'),
+                   model_uri=NMDC.viral_host_genus, domain=None, range=Optional[str])
+
+slots.viral_host_species = Slot(uri=NMDC.viral_host_species, name="viral_host_species", curie=NMDC.curie('viral_host_species'),
+                   model_uri=NMDC.viral_host_species, domain=None, range=Optional[str])
+
+slots.viral_host_strain = Slot(uri=NMDC.viral_host_strain, name="viral_host_strain", curie=NMDC.curie('viral_host_strain'),
+                   model_uri=NMDC.viral_host_strain, domain=None, range=Optional[str])
+
+slots.analyte_volume = Slot(uri=NMDC.analyte_volume, name="analyte_volume", curie=NMDC.curie('analyte_volume'),
+                   model_uri=NMDC.analyte_volume, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sample_container = Slot(uri=NMDC.sample_container, name="sample_container", curie=NMDC.curie('sample_container'),
+                   model_uri=NMDC.sample_container, domain=None, range=Optional[Union[str, "SampleContainerEnum"]])
+
+slots.sample_format = Slot(uri=NMDC.sample_format, name="sample_format", curie=NMDC.curie('sample_format'),
+                   model_uri=NMDC.sample_format, domain=None, range=Optional[Union[str, "SampleFormatEnum"]])
+
+slots.dnase_treated = Slot(uri=NMDC.dnase_treated, name="dnase_treated", curie=NMDC.curie('dnase_treated'),
+                   model_uri=NMDC.dnase_treated, domain=None, range=Optional[Union[str, "YesNoEnum"]])
+
+slots.tube_or_plate_label = Slot(uri=NMDC.tube_or_plate_label, name="tube_or_plate_label", curie=NMDC.curie('tube_or_plate_label'),
+                   model_uri=NMDC.tube_or_plate_label, domain=None, range=Optional[str])
+
+slots.plate_well_location = Slot(uri=NMDC.plate_well_location, name="plate_well_location", curie=NMDC.curie('plate_well_location'),
+                   model_uri=NMDC.plate_well_location, domain=None, range=Optional[str])
+
+slots.gold_organism_type = Slot(uri=NMDC.gold_organism_type, name="gold_organism_type", curie=NMDC.curie('gold_organism_type'),
+                   model_uri=NMDC.gold_organism_type, domain=None, range=Optional[str])
+
+slots.cultured = Slot(uri=NMDC.cultured, name="cultured", curie=NMDC.curie('cultured'),
+                   model_uri=NMDC.cultured, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.culture_type = Slot(uri=NMDC.culture_type, name="culture_type", curie=NMDC.curie('culture_type'),
+                   model_uri=NMDC.culture_type, domain=None, range=Optional[Union[str, "CultureTypeEnum"]])
+
+slots.uncultured_type = Slot(uri=NMDC.uncultured_type, name="uncultured_type", curie=NMDC.curie('uncultured_type'),
+                   model_uri=NMDC.uncultured_type, domain=None, range=Optional[Union[str, "UnculturedTypeEnum"]])
+
+slots.type_strain = Slot(uri=NMDC.type_strain, name="type_strain", curie=NMDC.curie('type_strain'),
+                   model_uri=NMDC.type_strain, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.organism_domain = Slot(uri=NMDC.organism_domain, name="organism_domain", curie=NMDC.curie('organism_domain'),
+                   model_uri=NMDC.organism_domain, domain=None, range=Optional[str])
+
+slots.gold_phylogeny = Slot(uri=NMDC.gold_phylogeny, name="gold_phylogeny", curie=NMDC.curie('gold_phylogeny'),
+                   model_uri=NMDC.gold_phylogeny, domain=None, range=Optional[str])
+
+slots.genbank_16s_id = Slot(uri=NMDC.genbank_16s_id, name="genbank_16s_id", curie=NMDC.curie('genbank_16s_id'),
+                   model_uri=NMDC.genbank_16s_id, domain=None, range=Optional[str])
+
+slots.clade = Slot(uri=NMDC.clade, name="clade", curie=NMDC.curie('clade'),
+                   model_uri=NMDC.clade, domain=None, range=Optional[str])
+
+slots.organism_common_name = Slot(uri=NMDC.organism_common_name, name="organism_common_name", curie=NMDC.curie('organism_common_name'),
+                   model_uri=NMDC.organism_common_name, domain=None, range=Optional[str])
+
+slots.genus_synonyms = Slot(uri=NMDC.genus_synonyms, name="genus_synonyms", curie=NMDC.curie('genus_synonyms'),
+                   model_uri=NMDC.genus_synonyms, domain=None, range=Optional[str])
+
+slots.species_synonyms = Slot(uri=NMDC.species_synonyms, name="species_synonyms", curie=NMDC.curie('species_synonyms'),
+                   model_uri=NMDC.species_synonyms, domain=None, range=Optional[str])
+
+slots.lat_long_inferred = Slot(uri=NMDC.lat_long_inferred, name="lat_long_inferred", curie=NMDC.curie('lat_long_inferred'),
+                   model_uri=NMDC.lat_long_inferred, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.sample_isolation_comments = Slot(uri=NMDC.sample_isolation_comments, name="sample_isolation_comments", curie=NMDC.curie('sample_isolation_comments'),
+                   model_uri=NMDC.sample_isolation_comments, domain=None, range=Optional[str])
+
+slots.other_ecosystem = Slot(uri=NMDC.other_ecosystem, name="other_ecosystem", curie=NMDC.curie('other_ecosystem'),
+                   model_uri=NMDC.other_ecosystem, domain=None, range=Optional[str])
+
+slots.gram_stain = Slot(uri=NMDC.gram_stain, name="gram_stain", curie=NMDC.curie('gram_stain'),
+                   model_uri=NMDC.gram_stain, domain=None, range=Optional[Union[str, "GramStainEnum"]])
+
+slots.carbon_source = Slot(uri=NMDC.carbon_source, name="carbon_source", curie=NMDC.curie('carbon_source'),
+                   model_uri=NMDC.carbon_source, domain=None, range=Optional[str])
+
+slots.cell_shape = Slot(uri=NMDC.cell_shape, name="cell_shape", curie=NMDC.curie('cell_shape'),
+                   model_uri=NMDC.cell_shape, domain=None, range=Optional[str])
+
+slots.cell_length = Slot(uri=NMDC.cell_length, name="cell_length", curie=NMDC.curie('cell_length'),
+                   model_uri=NMDC.cell_length, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.cell_diameter = Slot(uri=NMDC.cell_diameter, name="cell_diameter", curie=NMDC.curie('cell_diameter'),
+                   model_uri=NMDC.cell_diameter, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.motility = Slot(uri=NMDC.motility, name="motility", curie=NMDC.curie('motility'),
+                   model_uri=NMDC.motility, domain=None, range=Optional[str])
+
+slots.sporulation = Slot(uri=NMDC.sporulation, name="sporulation", curie=NMDC.curie('sporulation'),
+                   model_uri=NMDC.sporulation, domain=None, range=Optional[str])
+
+slots.temperature_range = Slot(uri=NMDC.temperature_range, name="temperature_range", curie=NMDC.curie('temperature_range'),
+                   model_uri=NMDC.temperature_range, domain=None, range=Optional[Union[str, "TemperatureRangeEnum"]])
+
+slots.organism_color = Slot(uri=NMDC.organism_color, name="organism_color", curie=NMDC.curie('organism_color'),
+                   model_uri=NMDC.organism_color, domain=None, range=Optional[str])
+
+slots.subsurface_depth = Slot(uri=NMDC.subsurface_depth, name="subsurface_depth", curie=NMDC.curie('subsurface_depth'),
+                   model_uri=NMDC.subsurface_depth, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.isolation_site_ph = Slot(uri=NMDC.isolation_site_ph, name="isolation_site_ph", curie=NMDC.curie('isolation_site_ph'),
+                   model_uri=NMDC.isolation_site_ph, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.chlorophyll_concentration = Slot(uri=NMDC.chlorophyll_concentration, name="chlorophyll_concentration", curie=NMDC.curie('chlorophyll_concentration'),
+                   model_uri=NMDC.chlorophyll_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.nitrate_concentration = Slot(uri=NMDC.nitrate_concentration, name="nitrate_concentration", curie=NMDC.curie('nitrate_concentration'),
+                   model_uri=NMDC.nitrate_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.oxygen_concentration = Slot(uri=NMDC.oxygen_concentration, name="oxygen_concentration", curie=NMDC.curie('oxygen_concentration'),
+                   model_uri=NMDC.oxygen_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.salinity_concentration = Slot(uri=NMDC.salinity_concentration, name="salinity_concentration", curie=NMDC.curie('salinity_concentration'),
+                   model_uri=NMDC.salinity_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_org_carbon = Slot(uri=NMDC.tot_org_carbon, name="tot_org_carbon", curie=NMDC.curie('tot_org_carbon'),
+                   model_uri=NMDC.tot_org_carbon, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_nitrogen = Slot(uri=NMDC.tot_nitrogen, name="tot_nitrogen", curie=NMDC.curie('tot_nitrogen'),
+                   model_uri=NMDC.tot_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.bicarbonate_millimol = Slot(uri=NMDC.bicarbonate_millimol, name="bicarbonate_millimol", curie=NMDC.curie('bicarbonate_millimol'),
+                   model_uri=NMDC.bicarbonate_millimol, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.h2s_millimol = Slot(uri=NMDC.h2s_millimol, name="h2s_millimol", curie=NMDC.curie('h2s_millimol'),
+                   model_uri=NMDC.h2s_millimol, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.h2s_present = Slot(uri=NMDC.h2s_present, name="h2s_present", curie=NMDC.curie('h2s_present'),
+                   model_uri=NMDC.h2s_present, domain=None, range=Optional[str])
+
+slots.irradiance = Slot(uri=NMDC.irradiance, name="irradiance", curie=NMDC.curie('irradiance'),
+                   model_uri=NMDC.irradiance, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.methane_conc_millimol = Slot(uri=NMDC.methane_conc_millimol, name="methane_conc_millimol", curie=NMDC.curie('methane_conc_millimol'),
+                   model_uri=NMDC.methane_conc_millimol, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sample_conductivity = Slot(uri=NMDC.sample_conductivity, name="sample_conductivity", curie=NMDC.curie('sample_conductivity'),
+                   model_uri=NMDC.sample_conductivity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_gender = Slot(uri=NMDC.host_gender, name="host_gender", curie=NMDC.curie('host_gender'),
+                   model_uri=NMDC.host_gender, domain=None, range=Optional[str])
+
+slots.host_race = Slot(uri=NMDC.host_race, name="host_race", curie=NMDC.curie('host_race'),
+                   model_uri=NMDC.host_race, domain=None, range=Optional[str])
+
+slots.host_medication = Slot(uri=NMDC.host_medication, name="host_medication", curie=NMDC.curie('host_medication'),
+                   model_uri=NMDC.host_medication, domain=None, range=Optional[str])
+
+slots.host_body_subsite = Slot(uri=NMDC.host_body_subsite, name="host_body_subsite", curie=NMDC.curie('host_body_subsite'),
+                   model_uri=NMDC.host_body_subsite, domain=None, range=Optional[str])
+
+slots.host_body_site_id = Slot(uri=NMDC.host_body_site_id, name="host_body_site_id", curie=NMDC.curie('host_body_site_id'),
+                   model_uri=NMDC.host_body_site_id, domain=None, range=Optional[str])
+
+slots.host_body_subsite_id = Slot(uri=NMDC.host_body_subsite_id, name="host_body_subsite_id", curie=NMDC.curie('host_body_subsite_id'),
+                   model_uri=NMDC.host_body_subsite_id, domain=None, range=Optional[str])
+
+slots.host_body_product_id = Slot(uri=NMDC.host_body_product_id, name="host_body_product_id", curie=NMDC.curie('host_body_product_id'),
+                   model_uri=NMDC.host_body_product_id, domain=None, range=Optional[str])
+
+slots.host_comments = Slot(uri=NMDC.host_comments, name="host_comments", curie=NMDC.curie('host_comments'),
+                   model_uri=NMDC.host_comments, domain=None, range=Optional[str])
+
+slots.patient_visit_number = Slot(uri=NMDC.patient_visit_number, name="patient_visit_number", curie=NMDC.curie('patient_visit_number'),
+                   model_uri=NMDC.patient_visit_number, domain=None, range=Optional[int])
+
+slots.medical_record_number = Slot(uri=NMDC.medical_record_number, name="medical_record_number", curie=NMDC.curie('medical_record_number'),
+                   model_uri=NMDC.medical_record_number, domain=None, range=Optional[str])
+
+slots.known_non_hosts = Slot(uri=NMDC.known_non_hosts, name="known_non_hosts", curie=NMDC.curie('known_non_hosts'),
+                   model_uri=NMDC.known_non_hosts, domain=None, range=Optional[str])
+
+slots.other_hosts = Slot(uri=NMDC.other_hosts, name="other_hosts", curie=NMDC.curie('other_hosts'),
+                   model_uri=NMDC.other_hosts, domain=None, range=Optional[str])
+
 slots.rna_isolate_meth = Slot(uri=NMDC.rna_isolate_meth, name="rna_isolate_meth", curie=NMDC.curie('rna_isolate_meth'),
                    model_uri=NMDC.rna_isolate_meth, domain=None, range=Optional[str])
 
@@ -11376,6 +12511,10 @@ slots.neon_biosample_identifiers = Slot(uri=NMDC.neon_biosample_identifiers, nam
 slots.gold_biosample_identifiers = Slot(uri=NMDC.gold_biosample_identifiers, name="gold_biosample_identifiers", curie=NMDC.curie('gold_biosample_identifiers'),
                    model_uri=NMDC.gold_biosample_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]],
                    pattern=re.compile(r'^gold:Gb[0-9]+$'))
+
+slots.gold_organism_identifiers = Slot(uri=NMDC.gold_organism_identifiers, name="gold_organism_identifiers", curie=NMDC.curie('gold_organism_identifiers'),
+                   model_uri=NMDC.gold_organism_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]],
+                   pattern=re.compile(r'^gold:Go[0-9]+$'))
 
 slots.insdc_biosample_identifiers = Slot(uri=NMDC.insdc_biosample_identifiers, name="insdc_biosample_identifiers", curie=NMDC.curie('insdc_biosample_identifiers'),
                    model_uri=NMDC.insdc_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
@@ -12886,6 +14025,111 @@ slots.window_water_mold = Slot(uri=MIXS['0000854'], name="window_water_mold", cu
 slots.xylene = Slot(uri=MIXS['0000156'], name="xylene", curie=MIXS.curie('0000156'),
                    model_uri=NMDC.xylene, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.estimated_size = Slot(uri=MIXS['0000024'], name="estimated_size", curie=MIXS.curie('0000024'),
+                   model_uri=NMDC.estimated_size, domain=None, range=Optional[str])
+
+slots.encoded_traits = Slot(uri=MIXS['0000034'], name="encoded_traits", curie=MIXS.curie('0000034'),
+                   model_uri=NMDC.encoded_traits, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.isol_growth_condt = Slot(uri=MIXS['0000003'], name="isol_growth_condt", curie=MIXS.curie('0000003'),
+                   model_uri=NMDC.isol_growth_condt, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.pathogenicity = Slot(uri=MIXS['0000027'], name="pathogenicity", curie=MIXS.curie('0000027'),
+                   model_uri=NMDC.pathogenicity, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.rel_to_oxygen = Slot(uri=MIXS['0000015'], name="rel_to_oxygen", curie=MIXS.curie('0000015'),
+                   model_uri=NMDC.rel_to_oxygen, domain=None, range=Optional[Union[str, "RelToOxygenEnum"]])
+
+slots.subspecf_gen_lin = Slot(uri=MIXS['0000020'], name="subspecf_gen_lin", curie=MIXS.curie('0000020'),
+                   model_uri=NMDC.subspecf_gen_lin, domain=None, range=Optional[str])
+
+slots.tax_ident = Slot(uri=MIXS['0000053'], name="tax_ident", curie=MIXS.curie('0000053'),
+                   model_uri=NMDC.tax_ident, domain=None, range=Optional[Union[str, "TaxIdentEnum"]])
+
+slots.trophic_level = Slot(uri=MIXS['0000032'], name="trophic_level", curie=MIXS.curie('0000032'),
+                   model_uri=NMDC.trophic_level, domain=None, range=Optional[Union[str, "TrophicLevelEnum"]])
+
+slots.adapters = Slot(uri=MIXS['0000048'], name="adapters", curie=MIXS.curie('0000048'),
+                   model_uri=NMDC.adapters, domain=None, range=Optional[str])
+
+slots.annot = Slot(uri=MIXS['0000059'], name="annot", curie=MIXS.curie('0000059'),
+                   model_uri=NMDC.annot, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.assembly_name = Slot(uri=MIXS['0000057'], name="assembly_name", curie=MIXS.curie('0000057'),
+                   model_uri=NMDC.assembly_name, domain=None, range=Optional[str])
+
+slots.assembly_qual = Slot(uri=MIXS['0000056'], name="assembly_qual", curie=MIXS.curie('0000056'),
+                   model_uri=NMDC.assembly_qual, domain=None, range=Optional[Union[str, "AssemblyQualEnum"]])
+
+slots.assembly_software = Slot(uri=MIXS['0000058'], name="assembly_software", curie=MIXS.curie('0000058'),
+                   model_uri=NMDC.assembly_software, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.associated_resource = Slot(uri=MIXS['0000091'], name="associated_resource", curie=MIXS.curie('0000091'),
+                   model_uri=NMDC.associated_resource, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.compl_score = Slot(uri=MIXS['0000069'], name="compl_score", curie=MIXS.curie('0000069'),
+                   model_uri=NMDC.compl_score, domain=None, range=Optional[str])
+
+slots.compl_software = Slot(uri=MIXS['0000070'], name="compl_software", curie=MIXS.curie('0000070'),
+                   model_uri=NMDC.compl_software, domain=None, range=Optional[str])
+
+slots.extrachrom_elements = Slot(uri=MIXS['0000023'], name="extrachrom_elements", curie=MIXS.curie('0000023'),
+                   model_uri=NMDC.extrachrom_elements, domain=None, range=Optional[int])
+
+slots.feat_pred = Slot(uri=MIXS['0000061'], name="feat_pred", curie=MIXS.curie('0000061'),
+                   model_uri=NMDC.feat_pred, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_spec_range = Slot(uri=MIXS['0000030'], name="host_spec_range", curie=MIXS.curie('0000030'),
+                   model_uri=NMDC.host_spec_range, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.lib_layout = Slot(uri=MIXS['0000041'], name="lib_layout", curie=MIXS.curie('0000041'),
+                   model_uri=NMDC.lib_layout, domain=None, range=Optional[Union[str, "LibLayoutEnum"]])
+
+slots.lib_reads_seqd = Slot(uri=MIXS['0000040'], name="lib_reads_seqd", curie=MIXS.curie('0000040'),
+                   model_uri=NMDC.lib_reads_seqd, domain=None, range=Optional[int])
+
+slots.lib_screen = Slot(uri=MIXS['0000043'], name="lib_screen", curie=MIXS.curie('0000043'),
+                   model_uri=NMDC.lib_screen, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.lib_size = Slot(uri=MIXS['0000039'], name="lib_size", curie=MIXS.curie('0000039'),
+                   model_uri=NMDC.lib_size, domain=None, range=Optional[int])
+
+slots.lib_vector = Slot(uri=MIXS['0000042'], name="lib_vector", curie=MIXS.curie('0000042'),
+                   model_uri=NMDC.lib_vector, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.neg_cont_type = Slot(uri=MIXS['0001321'], name="neg_cont_type", curie=MIXS.curie('0001321'),
+                   model_uri=NMDC.neg_cont_type, domain=None, range=Optional[Union[str, "NegContTypeEnum"]])
+
+slots.number_contig = Slot(uri=MIXS['0000060'], name="number_contig", curie=MIXS.curie('0000060'),
+                   model_uri=NMDC.number_contig, domain=None, range=Optional[int])
+
+slots.num_replicons = Slot(uri=MIXS['0000022'], name="num_replicons", curie=MIXS.curie('0000022'),
+                   model_uri=NMDC.num_replicons, domain=None, range=Optional[int])
+
+slots.pos_cont_type = Slot(uri=MIXS['0001322'], name="pos_cont_type", curie=MIXS.curie('0001322'),
+                   model_uri=NMDC.pos_cont_type, domain=None, range=Optional[str])
+
+slots.project_name = Slot(uri=MIXS['0000092'], name="project_name", curie=MIXS.curie('0000092'),
+                   model_uri=NMDC.project_name, domain=None, range=Union[dict, TextValue])
+
+slots.ref_biomaterial = Slot(uri=MIXS['0000025'], name="ref_biomaterial", curie=MIXS.curie('0000025'),
+                   model_uri=NMDC.ref_biomaterial, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ref_db = Slot(uri=MIXS['0000062'], name="ref_db", curie=MIXS.curie('0000062'),
+                   model_uri=NMDC.ref_db, domain=None, range=Optional[str])
+
+slots.sim_search_meth = Slot(uri=MIXS['0000063'], name="sim_search_meth", curie=MIXS.curie('0000063'),
+                   model_uri=NMDC.sim_search_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.sop = Slot(uri=MIXS['0000090'], name="sop", curie=MIXS.curie('0000090'),
+                   model_uri=NMDC.sop, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.specific_host = Slot(uri=MIXS['0000029'], name="specific_host", curie=MIXS.curie('0000029'),
+                   model_uri=NMDC.specific_host, domain=None, range=Optional[str])
+
+slots.tax_class = Slot(uri=MIXS['0000064'], name="tax_class", curie=MIXS.curie('0000064'),
+                   model_uri=NMDC.tax_class, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.samp_collec_device = Slot(uri=MIXS['0000002'], name="samp_collec_device", curie=MIXS.curie('0000002'),
                    model_uri=NMDC.samp_collec_device, domain=None, range=Optional[str])
 
@@ -13398,6 +14642,25 @@ slots.MaterialProcessing_has_output = Slot(uri=NMDC['basic_classes/has_output'],
 slots.ProcessedSample_id = Slot(uri=NMDC.id, name="ProcessedSample_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ProcessedSample_id, domain=ProcessedSample, range=Union[str, ProcessedSampleId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
+slots.OrganismSample_id = Slot(uri=NMDC.id, name="OrganismSample_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.OrganismSample_id, domain=OrganismSample, range=Union[str, OrganismSampleId],
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
+slots.OrganismSample_associated_studies = Slot(uri=NMDC['basic_classes/associated_studies'], name="OrganismSample_associated_studies", curie=NMDC.curie('basic_classes/associated_studies'),
+                   model_uri=NMDC.OrganismSample_associated_studies, domain=OrganismSample, range=Union[Union[str, StudyId], list[Union[str, StudyId]]])
+
+slots.OrganismSample_collected_from = Slot(uri=NMDC.collected_from, name="OrganismSample_collected_from", curie=NMDC.curie('collected_from'),
+                   model_uri=NMDC.OrganismSample_collected_from, domain=OrganismSample, range=Optional[Union[str, FieldResearchSiteId]])
+
+slots.OrganismSample_dna_concentration = Slot(uri=NMDC.dna_concentration, name="OrganismSample_dna_concentration", curie=NMDC.curie('dna_concentration'),
+                   model_uri=NMDC.OrganismSample_dna_concentration, domain=OrganismSample, range=Optional[float])
+
+slots.OrganismSample_dna_absorb1 = Slot(uri=NMDC.dna_absorb1, name="OrganismSample_dna_absorb1", curie=NMDC.curie('dna_absorb1'),
+                   model_uri=NMDC.OrganismSample_dna_absorb1, domain=OrganismSample, range=Optional[float])
+
+slots.OrganismSample_dna_absorb2 = Slot(uri=NMDC.dna_absorb2, name="OrganismSample_dna_absorb2", curie=NMDC.curie('dna_absorb2'),
+                   model_uri=NMDC.OrganismSample_dna_absorb2, domain=OrganismSample, range=Optional[float])
 
 slots.QuantityValue_has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_value'], name="QuantityValue_has_raw_value", curie=NMDC.curie('attribute_values/has_raw_value'),
                    model_uri=NMDC.QuantityValue_has_raw_value, domain=QuantityValue, range=Optional[str])

@@ -26,9 +26,9 @@ source_mat_id:
 
 # GOLD organism differentia
 gold_organism_type: Natural
-cultured: true
+cultured: "yes"
 culture_type: isolate
-type_strain: true
+type_strain: "yes"
 organism_domain: Bacteria
 
 # GOLD taxonomy extras

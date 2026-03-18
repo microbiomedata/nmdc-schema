@@ -69,6 +69,27 @@ Check the schema for exact values:
 | `Mesophile` | `Mesophilic` | `TemperatureRangeEnum` |
 | `wild_type` | `wild type` | `BiolStatEnum` |
 
+### Boolean and yes/no conventions
+
+NMDC uses three different patterns for true/false/unknown values:
+
+| Pattern | Range | Values | When to use |
+|---|---|---|---|
+| `boolean` | `boolean` | `true`, `false` | Slots that are genuinely binary with no unknown state (e.g., `embargoed`, `lat_long_inferred`) |
+| `YesNoEnum` | `YesNoEnum` | `yes`, `no` | Slots from the submission portal and JGI Isolate form (e.g., `dnase_treated`, `single_colony_isolation`). Defined in `portal_enums.yaml`. |
+| `YesNoUnknownEnum` | `YesNoUnknownEnum` | `yes`, `no`, `unknown` | Slots from GOLD organism_v2 where the source data has a tri-state (e.g., `cultured`, `type_strain`). Defined in `organism_sample.yaml`. |
+
+Source system conversions:
+
+| Source | Source values | NMDC target |
+|---|---|---|
+| GOLD organism_v2 | `"Yes"` / `"No"` / `"Unknown"` (strings) | `yes` / `no` / `unknown` (`YesNoUnknownEnum`) |
+| JGI Isolate v19 | `Y` / `N` | `yes` / `no` (`YesNoEnum`) |
+| NCBI BioSample | varies | Use `boolean` or `YesNoEnum` as appropriate |
+
+Do **not** use `boolean` for GOLD fields that can be `"Unknown"` — the
+unknown state would be lost.
+
 ---
 
 ## Source 1: NCBI BioSample (MIGS.ba package)
@@ -162,10 +183,10 @@ as strings (`"Yes"`, `"No"`, `"Unknown"`), not actual booleans.
 | `ncbi_taxonomy_name` | `ncbi_taxonomy_name` | string | Direct |
 | `gold_id` | `gold_biosample_identifiers` | — | **Do not use** — `gold_id` is `Go*` (organism), not `Gb*` (biosample). Store in description or `external_database_identifiers` instead. |
 | `organism_type` | `gold_organism_type` | string | Direct (e.g., "Natural") |
-| `cultured` | `cultured` | boolean | `"Yes"` → `true`, `"No"` → `false` |
+| `cultured` | `cultured` | YesNoUnknownEnum | `"Yes"` → `yes`, `"No"` → `no`, `"Unknown"` → `unknown` |
 | `culture_type` | `culture_type` | CultureTypeEnum | Lowercase: `"Isolate"` → `isolate` |
 | `uncultured_type` | `uncultured_type` | UnculturedTypeEnum | |
-| `type_strain` | `type_strain` | boolean | `"Yes"` → `true` |
+| `type_strain` | `type_strain` | YesNoUnknownEnum | `"Yes"` → `yes`, `"No"` → `no`, `"Unknown"` → `unknown` |
 | `domain` | `organism_domain` | string | Direct (e.g., "BACTERIAL" → "Bacteria") |
 | `gold_phylogeny` | `gold_phylogeny` | string | Direct |
 | `genbank_16s_id` | `genbank_16s_id` | string | Direct |
@@ -242,8 +263,10 @@ as strings (`"Yes"`, `"No"`, `"Unknown"`), not actual booleans.
 - **Range pairs**: GOLD stores min/max as separate columns (`depth`/`depth2`,
   `ph1`/`ph2`, etc.). NMDC collapses these into a single `QuantityValue`
   using `has_numeric_value` and `has_maximum_numeric_value`.
-- **Boolean-as-string**: `cultured`, `type_strain`, `active`, `is_public`,
-  `is_virocell` store `"Yes"`/`"No"`/`"Unknown"` as VARCHAR.
+- **Tri-state strings**: `cultured`, `type_strain` store
+  `"Yes"`/`"No"`/`"Unknown"` as VARCHAR in GOLD. NMDC maps these to
+  `YesNoUnknownEnum` (`yes`/`no`/`unknown`), not boolean.
+  `lat_long_inferred` is truly binary and uses `boolean`.
 - **`temperature_range` enum mismatch**: GOLD uses `"Mesophile"` but NMDC
   enum values end in `-ic` (`Mesophilic`). Same for `Thermophile` →
   `Thermophilic`, etc.
