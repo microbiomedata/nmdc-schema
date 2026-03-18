@@ -9634,316 +9634,6 @@
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "string"
     },
-    "source_system_of_record": {
-      "name": "source_system_of_record",
-      "description": "Identifies the system of origin for a record",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "SourceSystemEnum"
-    },
-    "submission_portal_identifier": {
-      "name": "submission_portal_identifier",
-      "description": "The UUID of the NMDC Submission Portal entry that generated this record.",
-      "examples": [
-        {
-          "value": "c41dfeac-102e-43b2-adae-6a67f25791f0"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "https://data.microbiomedata.org/submission/home"
-      ],
-      "range": "string",
-      "multivalued": true,
-      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
-    },
-    "associated_studies": {
-      "name": "associated_studies",
-      "description": "The study associated with a resource.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "Study",
-      "required": true,
-      "multivalued": true,
-      "pattern": "^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-      "structured_pattern": {
-        "syntax": "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$",
-        "interpolated": true
-      }
-    },
-    "part_of": {
-      "name": "part_of",
-      "description": "Links a resource to another resource that either logically or physically includes it.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "is part of"
-      ],
-      "slot_uri": "dcterms:isPartOf",
-      "range": "NamedThing",
-      "multivalued": true
-    },
-    "was_informed_by": {
-      "name": "was_informed_by",
-      "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
-      "comments": [
-        "For version 1 of the proteomics workflow there are input files both from the NucleotideSequencing and MassSpectrometry, the MassSpectrometry record is considered the primary class to reference."
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "structured_aliases": [
-        {
-          "literal_form": "was_informed_by",
-          "predicate": "EXACT_SYNONYM",
-          "contexts": [
-            "https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml"
-          ]
-        }
-      ],
-      "narrow_mappings": [
-        "prov:wasInformedBy"
-      ],
-      "range": "DataGeneration",
-      "multivalued": true
-    },
-    "principal_investigator": {
-      "name": "principal_investigator",
-      "description": "Principal Investigator who led the study and/or generated the dataset.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "PI"
-      ],
-      "range": "PersonValue"
-    },
-    "was_generated_by": {
-      "name": "was_generated_by",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "mappings": [
-        "prov:wasGeneratedBy"
-      ],
-      "range": "DataEmitterProcess"
-    },
-    "associated_dois": {
-      "name": "associated_dois",
-      "description": "A list of DOIs associated with a resource, such as a list of DOIS associated with a Study.",
-      "examples": [
-        {
-          "description": "An EMSL award DOI.",
-          "object": {
-            "doi": "doi:10.46936/intm.proj.2021.60141/60000423",
-            "doi_provider": "emsl",
-            "doi_category": "award_doi"
-          }
-        },
-        {
-          "description": "A publication DOI.",
-          "object": {
-            "doi": "doi:10.1101/2022.12.12.520098",
-            "doi_category": "publication_doi"
-          }
-        },
-        {
-          "description": "A data management plan DOI.",
-          "object": {
-            "doi": "doi:10.48321/D1Z60Q",
-            "doi_category": "data_management_plan_doi",
-            "doi_provider": "gsc"
-          }
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "Associated DOIs",
-        "Associated digital object identifiers"
-      ],
-      "range": "Doi",
-      "multivalued": true,
-      "inlined_as_list": true
-    },
-    "has_credit_associations": {
-      "name": "has_credit_associations",
-      "annotations": {
-        "tooltip": {
-          "tag": "tooltip",
-          "value": "Other researchers associated with this study."
-        }
-      },
-      "description": "This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "slot_uri": "prov:qualifiedAssociation",
-      "range": "CreditAssociation",
-      "multivalued": true,
-      "inlined_as_list": true
-    },
-    "protocol_link": {
-      "name": "protocol_link",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "Protocol"
-    },
-    "study_category": {
-      "name": "study_category",
-      "description": "The type of research initiative",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "StudyCategoryEnum",
-      "required": true
-    },
-    "study_image": {
-      "name": "study_image",
-      "description": "Links a study to one or more images.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "ImageValue",
-      "multivalued": true,
-      "inlined_as_list": true
-    },
-    "applies_to_person": {
-      "name": "applies_to_person",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "PersonValue",
-      "required": true
-    },
-    "applied_roles": {
-      "name": "applied_roles",
-      "annotations": {
-        "tooltip": {
-          "tag": "tooltip",
-          "value": "Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/"
-        }
-      },
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "CreditEnum",
-      "required": true,
-      "multivalued": true
-    },
-    "definition": {
-      "name": "definition",
-      "description": "The definition of the ontology term as provided by the ontology.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "string"
-    },
-    "relations": {
-      "name": "relations",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "OntologyRelation",
-      "multivalued": true,
-      "inlined": true,
-      "inlined_as_list": true
-    },
-    "is_obsolete": {
-      "name": "is_obsolete",
-      "description": "A boolean value indicating whether the ontology term is obsolete.",
-      "comments": [
-        "If true (the ontology term is declared obsolete via the ontology source itself), the term is no longer considered a valid term to use in an annotation at NMDC, and it no longer has ontology_relation_set records."
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "boolean"
-    },
-    "is_root": {
-      "name": "is_root",
-      "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "boolean"
-    },
-    "has_input": {
-      "name": "has_input",
-      "description": "An input to a process.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "input"
-      ],
-      "range": "NamedThing",
-      "multivalued": true
-    },
-    "has_output": {
-      "name": "has_output",
-      "description": "An output from a process.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "output"
-      ],
-      "range": "NamedThing",
-      "multivalued": true
-    },
-    "instrument_used": {
-      "name": "instrument_used",
-      "description": "What instrument was used during DataGeneration or MaterialProcessing.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "Instrument",
-      "multivalued": true,
-      "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-      "structured_pattern": {
-        "syntax": "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$",
-        "interpolated": true
-      }
-    },
-    "instrument_instance_specifier": {
-      "name": "instrument_instance_specifier",
-      "description": "A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.",
-      "from_schema": "https://w3id.org/nmdc/nmdc"
-    },
-    "in_manifest": {
-      "name": "in_manifest",
-      "description": "one or more combinations of other DataObjects that can be analyzed together",
-      "comments": [
-        "A DataObject can be part of multiple manifests, for example, a DataObject could be part of a manifest for a single run of an instrument and a manifest for technical replicates of a single sample."
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "Manifest",
-      "multivalued": true,
-      "pattern": "^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-      "structured_pattern": {
-        "syntax": "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$",
-        "interpolated": true
-      }
-    },
-    "manifest_category": {
-      "name": "manifest_category",
-      "description": "The type of context in which the constituent DataObjects can be analyzed together.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "ManifestCategoryEnum",
-      "required": true
-    },
-    "model": {
-      "name": "model",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "InstrumentModelEnum"
-    },
-    "vendor": {
-      "name": "vendor",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "InstrumentVendorEnum"
-    },
-    "qc_failure_where": {
-      "name": "qc_failure_where",
-      "description": "Describes the nmdc schema class that corresonds to where the failure occurred. Most commonly this would be the same as Class that generated the results.",
-      "comments": [
-        "If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly."
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "FailureWhereEnum"
-    },
-    "qc_failure_what": {
-      "name": "qc_failure_what",
-      "description": "Provides a summary about what caused a lab or workflow process to fail",
-      "comments": [
-        "For example, low read count from a sequencer, malformed fastq files, etc."
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "FailureWhatEnum"
-    },
-    "protocol_for": {
-      "name": "protocol_for",
-      "description": "The type of planned process that the protocol describes.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "ProtocolForEnum"
-    },
-    "superseded_by": {
-      "name": "superseded_by",
-      "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "WorkflowExecution"
-    },
-    "provenance_metadata": {
-      "name": "provenance_metadata",
-      "description": "Provides information about the provenance of a record.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "ProvenanceMetadata"
-    },
     "img_identifiers": {
       "name": "img_identifiers",
       "description": "A list of identifiers that relate the biosample to records in the IMG database.",
@@ -10433,6 +10123,316 @@
       ],
       "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$"
     },
+    "source_system_of_record": {
+      "name": "source_system_of_record",
+      "description": "Identifies the system of origin for a record",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "SourceSystemEnum"
+    },
+    "submission_portal_identifier": {
+      "name": "submission_portal_identifier",
+      "description": "The UUID of the NMDC Submission Portal entry that generated this record.",
+      "examples": [
+        {
+          "value": "c41dfeac-102e-43b2-adae-6a67f25791f0"
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "see_also": [
+        "https://data.microbiomedata.org/submission/home"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "associated_studies": {
+      "name": "associated_studies",
+      "description": "The study associated with a resource.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "Study",
+      "required": true,
+      "multivalued": true,
+      "pattern": "^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+      "structured_pattern": {
+        "syntax": "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$",
+        "interpolated": true
+      }
+    },
+    "part_of": {
+      "name": "part_of",
+      "description": "Links a resource to another resource that either logically or physically includes it.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "aliases": [
+        "is part of"
+      ],
+      "slot_uri": "dcterms:isPartOf",
+      "range": "NamedThing",
+      "multivalued": true
+    },
+    "was_informed_by": {
+      "name": "was_informed_by",
+      "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+      "comments": [
+        "For version 1 of the proteomics workflow there are input files both from the NucleotideSequencing and MassSpectrometry, the MassSpectrometry record is considered the primary class to reference."
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "structured_aliases": [
+        {
+          "literal_form": "was_informed_by",
+          "predicate": "EXACT_SYNONYM",
+          "contexts": [
+            "https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml"
+          ]
+        }
+      ],
+      "narrow_mappings": [
+        "prov:wasInformedBy"
+      ],
+      "range": "DataGeneration",
+      "multivalued": true
+    },
+    "principal_investigator": {
+      "name": "principal_investigator",
+      "description": "Principal Investigator who led the study and/or generated the dataset.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "aliases": [
+        "PI"
+      ],
+      "range": "PersonValue"
+    },
+    "was_generated_by": {
+      "name": "was_generated_by",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "mappings": [
+        "prov:wasGeneratedBy"
+      ],
+      "range": "DataEmitterProcess"
+    },
+    "associated_dois": {
+      "name": "associated_dois",
+      "description": "A list of DOIs associated with a resource, such as a list of DOIS associated with a Study.",
+      "examples": [
+        {
+          "description": "An EMSL award DOI.",
+          "object": {
+            "doi": "doi:10.46936/intm.proj.2021.60141/60000423",
+            "doi_provider": "emsl",
+            "doi_category": "award_doi"
+          }
+        },
+        {
+          "description": "A publication DOI.",
+          "object": {
+            "doi": "doi:10.1101/2022.12.12.520098",
+            "doi_category": "publication_doi"
+          }
+        },
+        {
+          "description": "A data management plan DOI.",
+          "object": {
+            "doi": "doi:10.48321/D1Z60Q",
+            "doi_category": "data_management_plan_doi",
+            "doi_provider": "gsc"
+          }
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "aliases": [
+        "Associated DOIs",
+        "Associated digital object identifiers"
+      ],
+      "range": "Doi",
+      "multivalued": true,
+      "inlined_as_list": true
+    },
+    "has_credit_associations": {
+      "name": "has_credit_associations",
+      "annotations": {
+        "tooltip": {
+          "tag": "tooltip",
+          "value": "Other researchers associated with this study."
+        }
+      },
+      "description": "This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "slot_uri": "prov:qualifiedAssociation",
+      "range": "CreditAssociation",
+      "multivalued": true,
+      "inlined_as_list": true
+    },
+    "protocol_link": {
+      "name": "protocol_link",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "Protocol"
+    },
+    "study_category": {
+      "name": "study_category",
+      "description": "The type of research initiative",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "StudyCategoryEnum",
+      "required": true
+    },
+    "study_image": {
+      "name": "study_image",
+      "description": "Links a study to one or more images.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "ImageValue",
+      "multivalued": true,
+      "inlined_as_list": true
+    },
+    "applies_to_person": {
+      "name": "applies_to_person",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "PersonValue",
+      "required": true
+    },
+    "applied_roles": {
+      "name": "applied_roles",
+      "annotations": {
+        "tooltip": {
+          "tag": "tooltip",
+          "value": "Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/"
+        }
+      },
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "CreditEnum",
+      "required": true,
+      "multivalued": true
+    },
+    "definition": {
+      "name": "definition",
+      "description": "The definition of the ontology term as provided by the ontology.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "string"
+    },
+    "relations": {
+      "name": "relations",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "OntologyRelation",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true
+    },
+    "is_obsolete": {
+      "name": "is_obsolete",
+      "description": "A boolean value indicating whether the ontology term is obsolete.",
+      "comments": [
+        "If true (the ontology term is declared obsolete via the ontology source itself), the term is no longer considered a valid term to use in an annotation at NMDC, and it no longer has ontology_relation_set records."
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "boolean"
+    },
+    "is_root": {
+      "name": "is_root",
+      "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "boolean"
+    },
+    "has_input": {
+      "name": "has_input",
+      "description": "An input to a process.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "aliases": [
+        "input"
+      ],
+      "range": "NamedThing",
+      "multivalued": true
+    },
+    "has_output": {
+      "name": "has_output",
+      "description": "An output from a process.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "aliases": [
+        "output"
+      ],
+      "range": "NamedThing",
+      "multivalued": true
+    },
+    "instrument_used": {
+      "name": "instrument_used",
+      "description": "What instrument was used during DataGeneration or MaterialProcessing.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "Instrument",
+      "multivalued": true,
+      "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+      "structured_pattern": {
+        "syntax": "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$",
+        "interpolated": true
+      }
+    },
+    "instrument_instance_specifier": {
+      "name": "instrument_instance_specifier",
+      "description": "A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.",
+      "from_schema": "https://w3id.org/nmdc/nmdc"
+    },
+    "in_manifest": {
+      "name": "in_manifest",
+      "description": "one or more combinations of other DataObjects that can be analyzed together",
+      "comments": [
+        "A DataObject can be part of multiple manifests, for example, a DataObject could be part of a manifest for a single run of an instrument and a manifest for technical replicates of a single sample."
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "Manifest",
+      "multivalued": true,
+      "pattern": "^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+      "structured_pattern": {
+        "syntax": "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$",
+        "interpolated": true
+      }
+    },
+    "manifest_category": {
+      "name": "manifest_category",
+      "description": "The type of context in which the constituent DataObjects can be analyzed together.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "ManifestCategoryEnum",
+      "required": true
+    },
+    "model": {
+      "name": "model",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "InstrumentModelEnum"
+    },
+    "vendor": {
+      "name": "vendor",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "InstrumentVendorEnum"
+    },
+    "qc_failure_where": {
+      "name": "qc_failure_where",
+      "description": "Describes the nmdc schema class that corresonds to where the failure occurred. Most commonly this would be the same as Class that generated the results.",
+      "comments": [
+        "If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly."
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "FailureWhereEnum"
+    },
+    "qc_failure_what": {
+      "name": "qc_failure_what",
+      "description": "Provides a summary about what caused a lab or workflow process to fail",
+      "comments": [
+        "For example, low read count from a sequencer, malformed fastq files, etc."
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "FailureWhatEnum"
+    },
+    "protocol_for": {
+      "name": "protocol_for",
+      "description": "The type of planned process that the protocol describes.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "ProtocolForEnum"
+    },
+    "superseded_by": {
+      "name": "superseded_by",
+      "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "WorkflowExecution"
+    },
+    "provenance_metadata": {
+      "name": "provenance_metadata",
+      "description": "Provides information about the provenance of a record.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "ProvenanceMetadata"
+    },
     "abs_air_humidity": {
       "name": "abs_air_humidity",
       "annotations": {
@@ -10813,6 +10813,10 @@
         {
           "value": "100 m"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000094",
@@ -11473,6 +11477,9 @@
           "value": "natural"
         }
       ],
+      "in_subset": [
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "status"
@@ -11534,6 +11541,10 @@
         {
           "value": "free living"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -12275,6 +12286,11 @@
           "value": "2013-03-25T12:42:31+01:00"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism",
+        "jgi_isolate"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "date"
@@ -12507,6 +12523,10 @@
         {
           "value": "10 m"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -13203,6 +13223,10 @@
           "value": "100 meter"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "elevation"
@@ -13268,6 +13292,11 @@
           "value": "oceanic epipelagic zone biome [ENVO:01000035]"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism",
+        "jgi_isolate"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "context",
@@ -13302,6 +13331,11 @@
           "value": "litter layer [ENVO:01000338]"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism",
+        "jgi_isolate"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "context",
@@ -13331,6 +13365,11 @@
         {
           "value": "soil [ENVO:00001998]"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism",
+        "jgi_isolate"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -13448,6 +13487,9 @@
         {
           "value": "time series design [EFO:0001779]"
         }
+      ],
+      "in_subset": [
+        "migs_ba"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -13975,6 +14017,9 @@
           "value": "PMID:19497774"
         }
       ],
+      "in_subset": [
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000859",
       "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
@@ -13991,6 +14036,11 @@
         {
           "value": "USA: Maryland, Bethesda"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism",
+        "jgi_isolate"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -14512,6 +14562,9 @@
           "value": "10 d"
         }
       ],
+      "in_subset": [
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "age",
@@ -14556,6 +14609,9 @@
           "value": "mucus [UBERON:0000912]"
         }
       ],
+      "in_subset": [
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "body",
@@ -14577,6 +14633,9 @@
       },
       "description": "Name of body site where the sample was obtained from, such as a specific organ or tissue (tongue, lung etc...). Use terms from the foundational model of anatomy ontology (fma) or the Uber-anatomy ontology (UBERON)",
       "title": "host body site",
+      "in_subset": [
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "body",
@@ -14677,6 +14736,10 @@
       },
       "description": "List of diseases with which the host has been diagnosed; can include multiple diagnoses. The value of the field depends on host; for humans the terms should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org, non-human host diseases are free text",
       "title": "host disease status",
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "disease",
@@ -15012,6 +15075,10 @@
       "title": "host taxid",
       "comments": [
         "Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value"
+      ],
+      "in_subset": [
+        "gold_organism",
+        "jgi_isolate"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -15358,6 +15425,11 @@
         {
           "value": "50.586825 6.408977"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism",
+        "jgi_isolate"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -16000,6 +16072,9 @@
           "value": "https://phylogenomics.me/protocols/16s-pcr-protocol/"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000038",
       "range": "TextValue",
@@ -16018,6 +16093,10 @@
         {
           "value": "https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "jgi_isolate"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000037",
@@ -16362,6 +16441,9 @@
         {
           "value": "aerobic"
         }
+      ],
+      "in_subset": [
+        "gold_organism"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -17066,6 +17148,9 @@
         {
           "value": "50 atm"
         }
+      ],
+      "in_subset": [
+        "gold_organism"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -18025,6 +18110,9 @@
           "value": "70 mg/L"
         }
       ],
+      "in_subset": [
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "salinity"
@@ -18170,6 +18258,10 @@
           "value": "filtering of seawater, storing samples in ethanol"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "material",
@@ -18226,6 +18318,11 @@
         {
           "value": "ISDsoil1"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism",
+        "jgi_isolate"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -18284,6 +18381,11 @@
           "value": "5 L"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism",
+        "jgi_isolate"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "sample",
@@ -18322,6 +18424,10 @@
           "value": "P1Y6M"
         }
       ],
+      "in_subset": [
+        "gold_organism",
+        "jgi_isolate"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "duration",
@@ -18353,6 +18459,10 @@
           "value": "Freezer no:5"
         }
       ],
+      "in_subset": [
+        "gold_organism",
+        "jgi_isolate"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "location",
@@ -18380,6 +18490,10 @@
         {
           "value": "-80 Cel"
         }
+      ],
+      "in_subset": [
+        "gold_organism",
+        "jgi_isolate"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -18419,6 +18533,11 @@
       "title": "taxonomy ID of DNA sample",
       "comments": [
         "coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value"
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism",
+        "jgi_isolate"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -18552,6 +18671,10 @@
         {
           "value": "1500 mL"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "jgi_isolate"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -18781,6 +18904,9 @@
         {
           "value": "454 Genome Sequencer FLX [OBI:0000702]"
         }
+      ],
+      "in_subset": [
+        "migs_ba"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -19373,6 +19499,11 @@
           "value": "MPI012345"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism",
+        "jgi_isolate"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "identifier",
@@ -19536,6 +19667,10 @@
         {
           "value": "-20 degree Celsius freezer;P2Y10D"
         }
+      ],
+      "in_subset": [
+        "gold_organism",
+        "jgi_isolate"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -19948,6 +20083,10 @@
         {
           "value": "25 Cel"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -21574,6 +21713,9 @@
           "value": "300000 bp"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "size"
@@ -21596,6 +21738,10 @@
           "value": "beta-lactamase class A"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000034",
       "range": "TextValue"
@@ -21608,6 +21754,11 @@
         {
           "value": "doi:10.1016/j.syapm.2018.01.009"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism",
+        "jgi_isolate"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -21639,6 +21790,10 @@
           "value": "human, animal, plant, fungi, bacteria"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000027",
       "range": "TextValue"
@@ -21651,6 +21806,10 @@
         {
           "value": "aerobe"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -21675,6 +21834,10 @@
           "value": "serovar:Newport"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "lineage"
@@ -21691,6 +21854,10 @@
           "value": "other",
           "description": "was other <colon> rpoB gene"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -21710,6 +21877,10 @@
           "value": "heterotroph"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "level"
@@ -21725,6 +21896,9 @@
         {
           "value": "AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT"
         }
+      ],
+      "in_subset": [
+        "migs_ba"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000048",
@@ -21750,6 +21924,9 @@
           "value": "prokka"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000059",
       "range": "TextValue"
@@ -21769,6 +21946,9 @@
           "value": "HuRef, JCVI_ISG_i3_1.0"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "string_serialization": "{text} {text}",
       "slot_uri": "MIXS:0000057"
@@ -21781,6 +21961,9 @@
         {
           "value": "High-quality draft genome"
         }
+      ],
+      "in_subset": [
+        "migs_ba"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -21797,6 +21980,9 @@
         {
           "value": "metaSPAdes;3.11.0;kmer set 21,33,55,77,99,121, default parameters otherwise"
         }
+      ],
+      "in_subset": [
+        "migs_ba"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -21826,6 +22012,9 @@
           "value": "http://www.earthmicrobiome.org/"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "resource"
@@ -21854,6 +22043,9 @@
           "value": "med;60%"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "score"
@@ -21876,6 +22068,9 @@
           "value": "checkm"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "software"
@@ -21892,6 +22087,9 @@
           "value": "5"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000023",
       "range": "integer"
@@ -21904,6 +22102,9 @@
         {
           "value": "Prodigal;2.6.3;default parameters"
         }
+      ],
+      "in_subset": [
+        "migs_ba"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -21934,6 +22135,10 @@
           "value": "9606"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "host",
@@ -21953,6 +22158,9 @@
           "value": "paired"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "library"
@@ -21968,6 +22176,9 @@
         {
           "value": "20"
         }
+      ],
+      "in_subset": [
+        "migs_ba"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -21991,6 +22202,9 @@
           "value": "enriched, screened, normalized"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "library"
@@ -22006,6 +22220,9 @@
         {
           "value": "50"
         }
+      ],
+      "in_subset": [
+        "migs_ba"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -22030,6 +22247,9 @@
           "value": "Bacteriophage P1"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "library"
@@ -22047,6 +22267,9 @@
       },
       "description": "The substance or equipment used as a negative control in an investigation",
       "title": "negative control type",
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "type"
@@ -22063,6 +22286,9 @@
         {
           "value": "40"
         }
+      ],
+      "in_subset": [
+        "migs_ba"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -22086,6 +22312,9 @@
           "value": "2"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "number"
@@ -22098,6 +22327,9 @@
       "name": "pos_cont_type",
       "description": "The substance, mixture, product, or apparatus used to verify that a process which is part of an investigation delivers a true positive",
       "title": "positive control type",
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "type"
@@ -22115,6 +22347,9 @@
           "value": "Forest soil metagenome"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "project"
@@ -22131,6 +22366,10 @@
         {
           "value": "doi:10.1016/j.syapm.2018.01.009"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000025",
@@ -22157,6 +22396,9 @@
           "value": "pVOGs;5;http://dmk-brain.ecn.uiowa.edu/pVOGs/ Grazziotin et al. 2017 doi:10.1093/nar/gkw975"
         }
       ],
+      "in_subset": [
+        "migs_ba"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "database"
@@ -22172,6 +22414,9 @@
         {
           "value": "HMMER3;3.1b2;hmmsearch, cutoff of 50 on score"
         }
+      ],
+      "in_subset": [
+        "migs_ba"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -22201,6 +22446,10 @@
           "value": "http://press.igsb.anl.gov/earthmicrobiome/protocols-and-standards/its/"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "procedures"
@@ -22228,6 +22477,10 @@
           "value": "Homo sapiens and/or 9606"
         }
       ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
         "host",
@@ -22244,6 +22497,10 @@
         {
           "value": "vConTACT vContact2 (references from NCBI RefSeq v83, genus rank classification, default parameters)"
         }
+      ],
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "keywords": [
@@ -22263,6 +22520,10 @@
       },
       "description": "The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)",
       "title": "sample collection device",
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "structured_aliases": [
         {
@@ -22284,6 +22545,10 @@
       "name": "samp_collec_method",
       "description": "The method employed for collecting the sample",
       "title": "sample collection method",
+      "in_subset": [
+        "migs_ba",
+        "gold_organism"
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "structured_aliases": [
         {
