@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.0.post22.dev0+910b4e654
+version: 11.17.0.post23.dev0+31243ad38
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7314,272 +7314,6 @@ slots:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
-  source_system_of_record:
-    name: source_system_of_record
-    description: Identifies the system of origin for a record
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: SourceSystemEnum
-  submission_portal_identifier:
-    name: submission_portal_identifier
-    description: The UUID of the NMDC Submission Portal entry that generated this
-      record.
-    examples:
-    - value: c41dfeac-102e-43b2-adae-6a67f25791f0
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://data.microbiomedata.org/submission/home
-    range: string
-    multivalued: true
-    pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-  associated_studies:
-    name: associated_studies
-    description: The study associated with a resource.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: Study
-    required: true
-    multivalued: true
-    pattern: ^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  part_of:
-    name: part_of
-    description: Links a resource to another resource that either logically or physically
-      includes it.
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - is part of
-    slot_uri: dcterms:isPartOf
-    range: NamedThing
-    multivalued: true
-  was_informed_by:
-    name: was_informed_by
-    description: The primary DataGeneration subclass that the WorkflowExecution subclass
-      depends on.
-    comments:
-    - For version 1 of the proteomics workflow there are input files both from the
-      NucleotideSequencing and MassSpectrometry, the MassSpectrometry record is considered
-      the primary class to reference.
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: was_informed_by
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-    narrow_mappings:
-    - prov:wasInformedBy
-    range: DataGeneration
-    multivalued: true
-  principal_investigator:
-    name: principal_investigator
-    description: Principal Investigator who led the study and/or generated the dataset.
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - PI
-    range: PersonValue
-  was_generated_by:
-    name: was_generated_by
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:wasGeneratedBy
-    range: DataEmitterProcess
-  associated_dois:
-    name: associated_dois
-    description: A list of DOIs associated with a resource, such as a list of DOIS
-      associated with a Study.
-    examples:
-    - description: An EMSL award DOI.
-      object:
-        doi: doi:10.46936/intm.proj.2021.60141/60000423
-        doi_provider: emsl
-        doi_category: award_doi
-    - description: A publication DOI.
-      object:
-        doi: doi:10.1101/2022.12.12.520098
-        doi_category: publication_doi
-    - description: A data management plan DOI.
-      object:
-        doi: doi:10.48321/D1Z60Q
-        doi_category: data_management_plan_doi
-        doi_provider: gsc
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Associated DOIs
-    - Associated digital object identifiers
-    range: Doi
-    multivalued: true
-    inlined_as_list: true
-  has_credit_associations:
-    name: has_credit_associations
-    annotations:
-      tooltip:
-        tag: tooltip
-        value: Other researchers associated with this study.
-    description: 'This slot links a study to a credit association.  The credit association
-      will be linked to a person value and to a CRediT Contributor Roles term. Overall
-      semantics: person should get credit X for their participation in the study'
-    from_schema: https://w3id.org/nmdc/nmdc
-    slot_uri: prov:qualifiedAssociation
-    range: CreditAssociation
-    multivalued: true
-    inlined_as_list: true
-  protocol_link:
-    name: protocol_link
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: Protocol
-  study_category:
-    name: study_category
-    description: The type of research initiative
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: StudyCategoryEnum
-    required: true
-  study_image:
-    name: study_image
-    description: Links a study to one or more images.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: ImageValue
-    multivalued: true
-    inlined_as_list: true
-  applies_to_person:
-    name: applies_to_person
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: PersonValue
-    required: true
-  applied_roles:
-    name: applied_roles
-    annotations:
-      tooltip:
-        tag: tooltip
-        value: 'Identify all CRediT roles associated with this contributor. CRediT
-          Information: https://info.orcid.org/credit-for-research-contribution ; CRediT:
-          https://credit.niso.org/'
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: CreditEnum
-    required: true
-    multivalued: true
-  definition:
-    name: definition
-    description: The definition of the ontology term as provided by the ontology.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
-  relations:
-    name: relations
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: OntologyRelation
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  is_obsolete:
-    name: is_obsolete
-    description: A boolean value indicating whether the ontology term is obsolete.
-    comments:
-    - If true (the ontology term is declared obsolete via the ontology source itself),
-      the term is no longer considered a valid term to use in an annotation at NMDC,
-      and it no longer has ontology_relation_set records.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: boolean
-  is_root:
-    name: is_root
-    description: A boolean value indicating whether the ontology term is a root term;
-      it is not a subclass of  any other term.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: boolean
-  has_input:
-    name: has_input
-    description: An input to a process.
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - input
-    range: NamedThing
-    multivalued: true
-  has_output:
-    name: has_output
-    description: An output from a process.
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - output
-    range: NamedThing
-    multivalued: true
-  instrument_used:
-    name: instrument_used
-    description: What instrument was used during DataGeneration or MaterialProcessing.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: Instrument
-    multivalued: true
-    pattern: ^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  instrument_instance_specifier:
-    name: instrument_instance_specifier
-    description: A unique value that identifies an individual instrument instance,
-      such as a serial number or similar identifiers assigned by the manufacturer
-      or user.
-    from_schema: https://w3id.org/nmdc/nmdc
-  in_manifest:
-    name: in_manifest
-    description: one or more combinations of other DataObjects that can be analyzed
-      together
-    comments:
-    - A DataObject can be part of multiple manifests, for example, a DataObject could
-      be part of a manifest for a single run of an instrument and a manifest for technical
-      replicates of a single sample.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: Manifest
-    multivalued: true
-    pattern: ^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  manifest_category:
-    name: manifest_category
-    description: The type of context in which the constituent DataObjects can be analyzed
-      together.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: ManifestCategoryEnum
-    required: true
-  model:
-    name: model
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: InstrumentModelEnum
-  vendor:
-    name: vendor
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: InstrumentVendorEnum
-  qc_failure_where:
-    name: qc_failure_where
-    description: Describes the nmdc schema class that corresonds to where the failure
-      occurred. Most commonly this would be the same as Class that generated the results.
-    comments:
-    - If the assembly size was too small to proceed to annotation failure_where would
-      be MetagenomeAssembly.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: FailureWhereEnum
-  qc_failure_what:
-    name: qc_failure_what
-    description: Provides a summary about what caused a lab or workflow process to
-      fail
-    comments:
-    - For example, low read count from a sequencer, malformed fastq files, etc.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: FailureWhatEnum
-  protocol_for:
-    name: protocol_for
-    description: The type of planned process that the protocol describes.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: ProtocolForEnum
-  superseded_by:
-    name: superseded_by
-    description: Links a DataObject or WorkflowExecution record to a newer WorkflowExecution
-      that  supersedes it, marking this record as outdated. The linked WorkflowExecution
-      or resultant DataObjects should be used in favor of this record.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: WorkflowExecution
-  provenance_metadata:
-    name: provenance_metadata
-    description: Provides information about the provenance of a record.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: ProvenanceMetadata
   img_identifiers:
     name: img_identifiers
     description: A list of identifiers that relate the biosample to records in the
@@ -7956,6 +7690,272 @@ slots:
     mixins:
     - insdc_identifiers
     pattern: ^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
+  source_system_of_record:
+    name: source_system_of_record
+    description: Identifies the system of origin for a record
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: SourceSystemEnum
+  submission_portal_identifier:
+    name: submission_portal_identifier
+    description: The UUID of the NMDC Submission Portal entry that generated this
+      record.
+    examples:
+    - value: c41dfeac-102e-43b2-adae-6a67f25791f0
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://data.microbiomedata.org/submission/home
+    range: string
+    multivalued: true
+    pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+  associated_studies:
+    name: associated_studies
+    description: The study associated with a resource.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: Study
+    required: true
+    multivalued: true
+    pattern: ^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  part_of:
+    name: part_of
+    description: Links a resource to another resource that either logically or physically
+      includes it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - is part of
+    slot_uri: dcterms:isPartOf
+    range: NamedThing
+    multivalued: true
+  was_informed_by:
+    name: was_informed_by
+    description: The primary DataGeneration subclass that the WorkflowExecution subclass
+      depends on.
+    comments:
+    - For version 1 of the proteomics workflow there are input files both from the
+      NucleotideSequencing and MassSpectrometry, the MassSpectrometry record is considered
+      the primary class to reference.
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: was_informed_by
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    narrow_mappings:
+    - prov:wasInformedBy
+    range: DataGeneration
+    multivalued: true
+  principal_investigator:
+    name: principal_investigator
+    description: Principal Investigator who led the study and/or generated the dataset.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - PI
+    range: PersonValue
+  was_generated_by:
+    name: was_generated_by
+    from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - prov:wasGeneratedBy
+    range: DataEmitterProcess
+  associated_dois:
+    name: associated_dois
+    description: A list of DOIs associated with a resource, such as a list of DOIS
+      associated with a Study.
+    examples:
+    - description: An EMSL award DOI.
+      object:
+        doi: doi:10.46936/intm.proj.2021.60141/60000423
+        doi_provider: emsl
+        doi_category: award_doi
+    - description: A publication DOI.
+      object:
+        doi: doi:10.1101/2022.12.12.520098
+        doi_category: publication_doi
+    - description: A data management plan DOI.
+      object:
+        doi: doi:10.48321/D1Z60Q
+        doi_category: data_management_plan_doi
+        doi_provider: gsc
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Associated DOIs
+    - Associated digital object identifiers
+    range: Doi
+    multivalued: true
+    inlined_as_list: true
+  has_credit_associations:
+    name: has_credit_associations
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: Other researchers associated with this study.
+    description: 'This slot links a study to a credit association.  The credit association
+      will be linked to a person value and to a CRediT Contributor Roles term. Overall
+      semantics: person should get credit X for their participation in the study'
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: prov:qualifiedAssociation
+    range: CreditAssociation
+    multivalued: true
+    inlined_as_list: true
+  protocol_link:
+    name: protocol_link
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: Protocol
+  study_category:
+    name: study_category
+    description: The type of research initiative
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: StudyCategoryEnum
+    required: true
+  study_image:
+    name: study_image
+    description: Links a study to one or more images.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: ImageValue
+    multivalued: true
+    inlined_as_list: true
+  applies_to_person:
+    name: applies_to_person
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: PersonValue
+    required: true
+  applied_roles:
+    name: applied_roles
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: 'Identify all CRediT roles associated with this contributor. CRediT
+          Information: https://info.orcid.org/credit-for-research-contribution ; CRediT:
+          https://credit.niso.org/'
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: CreditEnum
+    required: true
+    multivalued: true
+  definition:
+    name: definition
+    description: The definition of the ontology term as provided by the ontology.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
+  relations:
+    name: relations
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: OntologyRelation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  is_obsolete:
+    name: is_obsolete
+    description: A boolean value indicating whether the ontology term is obsolete.
+    comments:
+    - If true (the ontology term is declared obsolete via the ontology source itself),
+      the term is no longer considered a valid term to use in an annotation at NMDC,
+      and it no longer has ontology_relation_set records.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: boolean
+  is_root:
+    name: is_root
+    description: A boolean value indicating whether the ontology term is a root term;
+      it is not a subclass of  any other term.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: boolean
+  has_input:
+    name: has_input
+    description: An input to a process.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - input
+    range: NamedThing
+    multivalued: true
+  has_output:
+    name: has_output
+    description: An output from a process.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - output
+    range: NamedThing
+    multivalued: true
+  instrument_used:
+    name: instrument_used
+    description: What instrument was used during DataGeneration or MaterialProcessing.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: Instrument
+    multivalued: true
+    pattern: ^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  instrument_instance_specifier:
+    name: instrument_instance_specifier
+    description: A unique value that identifies an individual instrument instance,
+      such as a serial number or similar identifiers assigned by the manufacturer
+      or user.
+    from_schema: https://w3id.org/nmdc/nmdc
+  in_manifest:
+    name: in_manifest
+    description: one or more combinations of other DataObjects that can be analyzed
+      together
+    comments:
+    - A DataObject can be part of multiple manifests, for example, a DataObject could
+      be part of a manifest for a single run of an instrument and a manifest for technical
+      replicates of a single sample.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: Manifest
+    multivalued: true
+    pattern: ^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  manifest_category:
+    name: manifest_category
+    description: The type of context in which the constituent DataObjects can be analyzed
+      together.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: ManifestCategoryEnum
+    required: true
+  model:
+    name: model
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: InstrumentModelEnum
+  vendor:
+    name: vendor
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: InstrumentVendorEnum
+  qc_failure_where:
+    name: qc_failure_where
+    description: Describes the nmdc schema class that corresonds to where the failure
+      occurred. Most commonly this would be the same as Class that generated the results.
+    comments:
+    - If the assembly size was too small to proceed to annotation failure_where would
+      be MetagenomeAssembly.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: FailureWhereEnum
+  qc_failure_what:
+    name: qc_failure_what
+    description: Provides a summary about what caused a lab or workflow process to
+      fail
+    comments:
+    - For example, low read count from a sequencer, malformed fastq files, etc.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: FailureWhatEnum
+  protocol_for:
+    name: protocol_for
+    description: The type of planned process that the protocol describes.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: ProtocolForEnum
+  superseded_by:
+    name: superseded_by
+    description: Links a DataObject or WorkflowExecution record to a newer WorkflowExecution
+      that  supersedes it, marking this record as outdated. The linked WorkflowExecution
+      or resultant DataObjects should be used in favor of this record.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: WorkflowExecution
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provides information about the provenance of a record.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: ProvenanceMetadata
   abs_air_humidity:
     name: abs_air_humidity
     annotations:
