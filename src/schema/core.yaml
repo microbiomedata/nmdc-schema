@@ -908,14 +908,17 @@ classes:
       - lbc_thirty
       - lbceq
     slot_usage:
+    
       name:
-      required: true
+        required: true
         description: ->
           A local identifier or name that for the material sample collected. 
           It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. 
           For NMDC this should be unique within a study.
           INSDC requires every sample name from a single Submitter to be unique. 
           Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name.
+        examples:
+          - value: "BW-H-17-M"
       
       provenance_metadata:
         description: Provenance metadata for this Biosample, including when the record was added to and last modified in the NMDC database.
