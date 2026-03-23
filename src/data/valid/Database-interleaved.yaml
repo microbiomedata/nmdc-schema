@@ -233,6 +233,7 @@ biosample_set:
   - 00:00:53
 - id: nmdc:bsm-99-abcdef
   type: nmdc:Biosample
+  name: my_awesome_biosample
   associated_studies:
   - nmdc:sty-00-abc123
   env_broad_scale:
@@ -527,6 +528,7 @@ biosample_set:
       type: nmdc:OntologyClass
 - id: nmdc:bsm-99-abcdef1
   type: nmdc:Biosample
+  name: awesome_biosample_1
   associated_studies:
   - nmdc:sty-00-abc123
   env_broad_scale:
@@ -549,6 +551,7 @@ biosample_set:
       type: nmdc:OntologyClass
 - id: nmdc:bsm-99-abcdef2
   type: nmdc:Biosample
+  name: awesome_biosample_2
   associated_studies:
   - nmdc:sty-00-abc123
   env_broad_scale:
@@ -571,6 +574,7 @@ biosample_set:
       type: nmdc:OntologyClass
 - id: nmdc:bsm-99-abcdef3
   type: nmdc:Biosample
+  name: awesome_biosample_3
   associated_studies:
   - nmdc:sty-00-abc123
   env_broad_scale:
@@ -593,6 +597,7 @@ biosample_set:
       type: nmdc:OntologyClass
 - id: nmdc:bsm-99-abcdef12
   type: nmdc:Biosample
+  name: awesome_biosample_4
   associated_studies:
   - nmdc:sty-11-34xj1150
   env_broad_scale:
@@ -615,6 +620,7 @@ biosample_set:
       type: nmdc:OntologyClass
 - id: nmdc:bsm-99-abcdef22
   type: nmdc:Biosample
+  name: awesome_biosample_5
   associated_studies:
   - nmdc:sty-11-34xj1150
   env_broad_scale:
@@ -637,6 +643,7 @@ biosample_set:
       type: nmdc:OntologyClass
 - id: nmdc:bsm-99-abcdef32
   type: nmdc:Biosample
+  name: awesome_biosample_6
   associated_studies:
   - nmdc:sty-11-34xj1150
   env_broad_scale:
