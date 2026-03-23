@@ -1,5 +1,6 @@
 biosample_set:
   - id: nmdc:local
+    name: my_awesome_biosample
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-00-8675309
