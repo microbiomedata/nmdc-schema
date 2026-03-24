@@ -1,5 +1,6 @@
 biosample_set:
   - id: nmdc:bsm-99-dtTMNb2
+    name: my_awesome_biosample
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-00-abc123
@@ -26,6 +27,7 @@ biosample_set:
       - 00:00:53
   - id: nmdc:bsm-99-abcdef
     type: nmdc:Biosample
+    name: my_awesome_biosample_2
     associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
@@ -50,6 +52,7 @@ biosample_set:
       - 00:02:54
   - id: nmdc:bsm-99-qwerty
     type: nmdc:Biosample
+    name: my_awesome_biosample_3
     associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:

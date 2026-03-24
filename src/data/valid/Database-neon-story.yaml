@@ -59,6 +59,7 @@ material_processing_set:
 
 biosample_set:
   - id: nmdc:bsm-99-abcdef1
+    name: my_awesome_biosample
     associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
@@ -81,6 +82,7 @@ biosample_set:
         id: ENVO:00005792
     type: nmdc:Biosample
   - id: nmdc:bsm-99-abcdef2
+    name: wind river sept 24
     associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
@@ -103,6 +105,7 @@ biosample_set:
         id: ENVO:00005792
     type: nmdc:Biosample
   - id: nmdc:bsm-99-abcdef3
+    name: my_awesome_biosample_2
     associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
