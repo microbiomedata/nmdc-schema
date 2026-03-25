@@ -119,10 +119,10 @@ NCBI attributes use `harmonized_name` when available, falling back to
 | `env_medium` | `env_medium` | ControlledIdentifiedTermValue | May need ENVO CURIE lookup |
 | `isol_growth_condt` | `isol_growth_condt` | TextValue | Wrap |
 | `num_replicons` | `num_replicons` | integer | Parse to int |
-| `ref_biomaterial` | `ref_biomaterial` | TextValue | Wrap |
+| `ref_biomaterial` | `ref_biomaterial` | Doi | Wrap as Doi with doi_category: publication_doi |
 | `biotic_relationship` | `biotic_relationship` | BioticRelationshipEnum | Normalize case/spacing |
 | `encoded_traits` | `encoded_traits` | TextValue | Wrap |
-| `estimated_size` | `estimated_size` | string | Parse; NCBI may say "1M bp" → "1000000" |
+| `estimated_size` | `estimated_size` | QuantityValue | Parse to numeric; has_unit: '1' (base pair count) |
 | `pathogenicity` | `pathogenicity` | TextValue | Wrap |
 | `rel_to_oxygen` | `rel_to_oxygen` | RelToOxygenEnum | Direct (values match) |
 | `trophic_level` | `trophic_level` | TrophicLevelEnum | Direct |
@@ -321,11 +321,11 @@ spreadsheet, not on programmatic data access.
 | Reference Genome | `reference_genome` | string | IMG taxon OID preferred |
 | Ribosomal Sequence | `ribosomal_sequence` | string | Only ACGTN, no header |
 | Ribosomal Sequence Type | `ribosomal_sequence_type` | RibosomalSequenceTypeEnum | 16S, ITS, etc. |
-| Is Sample from Single Colony | `single_colony_isolation` | GoldYesNoEnum | Y/N |
+| Is Sample from Single Colony | `single_colony_isolation` | YesNoEnum | Y/N |
 | Volume | `analyte_volume` | QuantityValue | Unit `uL` |
 | Sample Container | `sample_container` | SampleContainerEnum | tube or plate |
 | Sample Format | `sample_format` | SampleFormatEnum | Pellet, Ethanol, etc. |
-| Was Sample DNAse Treated | `dnase_treated` | GoldYesNoEnum | Y/N |
+| Was Sample DNAse Treated | `dnase_treated` | YesNoEnum | Y/N |
 | Tube or Plate Label | `tube_or_plate_label` | string | Must be unique, <20 chars |
 | Plate Location (Well #) | `plate_well_location` | string | e.g., A4, B5 |
 

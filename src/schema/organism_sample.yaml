@@ -206,10 +206,11 @@ slots:
   ribosomal_sequence:
     description: >-
       Nucleotide sequence used for strain verification. Must contain only
-      A, C, G, T, or N characters with no header. At least one ribosomal
+      A, C, G, T, or N characters (case-insensitive) with no header. At least one ribosomal
       sequence is required for all microbial and fungal genome projects.
     title: ribosomal sequence
     range: string
+    pattern: '^[ACGTNacgtn]+$'
     in_subset:
       - jgi_isolate
     comments:
@@ -237,9 +238,10 @@ slots:
     is_a: ribosomal_sequence
     description: >-
       Optional secondary ribosomal sequence for additional verification.
-      Must contain only A, C, G, T, or N characters with no header.
+      Must contain only A, C, G, T, or N characters (case-insensitive) with no header.
     title: second ribosomal sequence
     range: string
+    pattern: '^[ACGTNacgtn]+$'
     in_subset:
       - jgi_isolate
 

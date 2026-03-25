@@ -270,8 +270,6 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                                   'prefix_reference': 'http://example.org/neon/schema/'},
                   'nmdc': {'prefix_prefix': 'nmdc',
                            'prefix_reference': 'https://w3id.org/nmdc/'},
-                  'nmdc_sub_schema': {'prefix_prefix': 'nmdc_sub_schema',
-                                      'prefix_reference': 'https://example.com/nmdc_sub_schema/'},
                   'owl': {'prefix_prefix': 'owl',
                           'prefix_reference': 'http://www.w3.org/2002/07/owl#'},
                   'prov': {'prefix_prefix': 'prov',
@@ -376,66 +374,6 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'version': {'setting_key': 'version',
                               'setting_value': '([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)'}},
      'source_file': 'nmdc_schema/nmdc_materialized_patterns.yaml',
-     'subsets': {'data object subset': {'description': 'Subset consisting of the '
-                                                       'data objects that either '
-                                                       'inputs or outputs of '
-                                                       'processes or workflows.',
-                                        'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                        'name': 'data object subset'},
-                 'data_portal_subset': {'comments': ['Schema authors are '
-                                                     'responsible for alerting and '
-                                                     'supporting Kitware and '
-                                                     'nmdc-server authors about '
-                                                     'changes they will have to '
-                                                     'make if entities labeled '
-                                                     'with data_portal_subset are '
-                                                     'modified.',
-                                                     'Assignment of the '
-                                                     'data_portal_subset is '
-                                                     'incomplete in the schema.'],
-                                        'description': 'Subset consisting of '
-                                                       'entities that '
-                                                       'Kitware/nmdc-server use to '
-                                                       'populate the data portal.',
-                                        'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                        'name': 'data_portal_subset'},
-                 'environment': {'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                 'name': 'environment'},
-                 'gold_organism': {'description': 'Slots corresponding to fields '
-                                                  'in the GOLD organism_v2 table.',
-                                   'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                   'name': 'gold_organism',
-                                   'see_also': ['https://gold.jgi.doe.gov/']},
-                 'investigation': {'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                   'name': 'investigation'},
-                 'jgi_isolate': {'description': 'Slots from the JGI Isolate (NA) '
-                                                'v19 submission form.',
-                                 'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                 'name': 'jgi_isolate'},
-                 'migs_ba': {'description': 'Slots from the MIxS MIGS-Ba (Minimum '
-                                            'Information about a Genome Sequence: '
-                                            'cultured bacteria/archaea) checklist.',
-                             'from_schema': 'https://w3id.org/nmdc/nmdc',
-                             'name': 'migs_ba',
-                             'see_also': ['https://genomicsstandardsconsortium.github.io/mixs/0010003/']},
-                 'nucleic acid sequence source': {'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                                  'name': 'nucleic acid sequence '
-                                                          'source'},
-                 'proteases': {'from_schema': 'https://w3id.org/nmdc/nmdc',
-                               'name': 'proteases'},
-                 'sample subset': {'description': 'Subset consisting of entities '
-                                                  'linked to the processing of '
-                                                  'samples.  Currently, this '
-                                                  'subset consists of study, omics '
-                                                  'process, and biosample.',
-                                   'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                   'name': 'sample subset'},
-                 'sequencing': {'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                'name': 'sequencing'},
-                 'workflow subset': {'description': 'Subset consisting of just the '
-                                                    'workflow execution activities',
-                                     'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                     'name': 'workflow subset'}},
      'title': 'NMDC Schema',
      'types': {'boolean': {'base': 'Bool',
                            'description': 'A binary (true or false) value',
@@ -3255,81 +3193,6 @@ class WindowVertPosEnum(str, Enum):
     top = "top"
 
 
-class AssemblyQualEnum(str, Enum):
-    Finished_genome = "Finished genome"
-    High_quality_draft_genome = "High-quality draft genome"
-    Medium_quality_draft_genome = "Medium-quality draft genome"
-    Low_quality_draft_genome = "Low-quality draft genome"
-    Genome_fragmentLEFT_PARENTHESISsRIGHT_PARENTHESIS = "Genome fragment(s)"
-
-
-class LibLayoutEnum(str, Enum):
-    other = "other"
-    paired = "paired"
-    single = "single"
-    vector = "vector"
-
-
-class NegContTypeEnum(str, Enum):
-    DNA_free_PCR_mix = "DNA-free PCR mix"
-    distilled_water = "distilled water"
-    empty_collection_device = "empty collection device"
-    empty_collection_tube = "empty collection tube"
-    phosphate_buffer = "phosphate buffer"
-    sterile_swab = "sterile swab"
-    sterile_syringe = "sterile syringe"
-
-
-class RelToOxygenEnum(str, Enum):
-    aerobe = "aerobe"
-    anaerobe = "anaerobe"
-    facultative = "facultative"
-    microaerophilic = "microaerophilic"
-    microanaerobe = "microanaerobe"
-    obligate_aerobe = "obligate aerobe"
-    obligate_anaerobe = "obligate anaerobe"
-
-
-class TaxIdentEnum(str, Enum):
-    number_16S_rRNA_gene = "16S rRNA gene"
-    multi_marker_approach = "multi-marker approach"
-    other = "other"
-
-
-class TrophicLevelEnum(str, Enum):
-    autotroph = "autotroph"
-    carboxydotroph = "carboxydotroph"
-    chemoautolithotroph = "chemoautolithotroph"
-    chemoautotroph = "chemoautotroph"
-    chemoheterotroph = "chemoheterotroph"
-    chemolithoautotroph = "chemolithoautotroph"
-    chemolithotroph = "chemolithotroph"
-    chemoorganoheterotroph = "chemoorganoheterotroph"
-    chemoorganotroph = "chemoorganotroph"
-    chemosynthetic = "chemosynthetic"
-    chemotroph = "chemotroph"
-    copiotroph = "copiotroph"
-    diazotroph = "diazotroph"
-    facultative = "facultative"
-    heterotroph = "heterotroph"
-    lithoautotroph = "lithoautotroph"
-    lithoheterotroph = "lithoheterotroph"
-    lithotroph = "lithotroph"
-    methanotroph = "methanotroph"
-    methylotroph = "methylotroph"
-    mixotroph = "mixotroph"
-    obligate = "obligate"
-    oligotroph = "oligotroph"
-    organoheterotroph = "organoheterotroph"
-    organotroph = "organotroph"
-    photoautotroph = "photoautotroph"
-    photoheterotroph = "photoheterotroph"
-    photolithoautotroph = "photolithoautotroph"
-    photolithotroph = "photolithotroph"
-    photosynthetic = "photosynthetic"
-    phototroph = "phototroph"
-
-
 class HostSexEnum(str, Enum):
     female = "female"
     hermaphrodite = "hermaphrodite"
@@ -3541,95 +3404,6 @@ class MetabolomicsAnalysisCategoryEnum(str, Enum):
     """
     A metabolomics analysis that is performed on liquid chromatography mass spectrometry data.
     """
-
-
-class BiosafetyMaterialCategoryEnum(str, Enum):
-    """
-    General category of organism or material, as used by JGI for biosafety classification.
-    """
-    Alga = "Alga"
-    Animal = "Animal"
-    Archaea = "Archaea"
-    Bacteria = "Bacteria"
-    Fungi = "Fungi"
-    Plant = "Plant"
-    Plasmid = "Plasmid"
-    Protist = "Protist"
-    Virus = "Virus"
-    Synthetic_Construct = "Synthetic Construct"
-
-
-class SampleFormatEnum(str, Enum):
-    """
-    Format or buffer in which the physical sample is provided. Values from JGI Isolate (NA) v19.
-    """
-    Pellet = "Pellet"
-    Ethanol = "Ethanol"
-    MDA_Reaction_Buffer = "MDA Reaction Buffer"
-    PBS = "PBS"
-    TE = "TE"
-    Water = "Water"
-    Low_EDTA_TE = "Low EDTA TE"
-    number_10_mM_Tris_HCl = "10 mM Tris-HCl"
-    Gentegra_DNA = "Gentegra-DNA"
-    Gentegra_RNA = "Gentegra-RNA"
-
-
-class SampleContainerEnum(str, Enum):
-    """
-    Physical container type for sample shipment.
-    """
-    tube = "tube"
-    plate_LEFT_PARENTHESIS96_wellRIGHT_PARENTHESIS = "plate (96-well)"
-
-
-class RibosomalSequenceTypeEnum(str, Enum):
-    """
-    Type of ribosomal sequence used for strain verification.
-    """
-    number_16S = "16S"
-    ITS = "ITS"
-    ITS_AGI = "ITS-AGI"
-    number_28S = "28S"
-    Other = "Other"
-
-
-class GramStainEnum(str, Enum):
-    """
-    Gram stain classification of a bacterium.
-    """
-    GramPLUS_SIGN = "Gram+"
-    Gram_ = "Gram-"
-    indeterminate = "indeterminate"
-
-
-class CultureTypeEnum(str, Enum):
-    """
-    Type of cultivation used to grow the organism. Values from GOLD.
-    """
-    isolate = "isolate"
-    enrichment = "enrichment"
-    mixed_culture = "mixed culture"
-
-
-class UnculturedTypeEnum(str, Enum):
-    """
-    Type of uncultured organism assembly. Values from GOLD.
-    """
-    MAG = "MAG"
-    SAG = "SAG"
-    other = "other"
-
-
-class TemperatureRangeEnum(str, Enum):
-    """
-    Temperature classification of the organism.
-    """
-    Cryophilic = "Cryophilic"
-    Psychrophilic = "Psychrophilic"
-    Mesophilic = "Mesophilic"
-    Thermophilic = "Thermophilic"
-    Hyperthermophilic = "Hyperthermophilic"
 
 
 class SampleTypeEnum(str, Enum):
@@ -3863,7 +3637,6 @@ class Database(ConfiguredBaseModel):
     instrument_set: Optional[list[Instrument]] = Field(default=None, description="""This property links a database object to the set of instruments within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     manifest_set: Optional[list[Manifest]] = Field(default=None, description="""This property links a database object to the set of manifests within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     material_processing_set: Optional[list[Union[MaterialProcessing,Pooling,Extraction,LibraryPreparation,SubSamplingProcess,MixingProcess,FiltrationProcess,ChromatographicSeparationProcess,DissolvingProcess,ChemicalConversionProcess]]] = Field(default=None, description="""This property links a database object to the set of material processing within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
-    organism_sample_set: Optional[list[OrganismSample]] = Field(default=None, description="""This property links a database object to the set of organism samples within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     processed_sample_set: Optional[list[ProcessedSample]] = Field(default=None, description="""This property links a database object to the set of processed samples within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     storage_process_set: Optional[list[StorageProcess]] = Field(default=None, description="""This property links a database object to the set of storage processes within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
     study_set: Optional[list[Study]] = Field(default=None, description="""This property links a database object to the set of studies within it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Database'], 'mixins': ['object_set']} })
@@ -6100,7 +5873,7 @@ class Study(NamedThing):
                                               'for this study.'}},
          'domain_of': ['OntologyClass', 'Study', 'Biosample'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
-    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provenance metadata for this Study, including when the record was added to and last modified in the NMDC database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample', 'OrganismSample']} })
+    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provenance metadata for this Study, including when the record was added to and last modified in the NMDC database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample']} })
     alternative_titles: Optional[list[str]] = Field(default=None, description="""A list of alternative titles for the entity. The distinction between title and alternative titles is application-specific.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study'], 'exact_mappings': ['dcterms:alternative']} })
     ecosystem: Optional[str] = Field(default=None, description="""An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['The abiotic factors play a profound role on the type and '
                       'composition of organisms in a given environment. The GOLD '
@@ -6111,7 +5884,7 @@ class Study(NamedThing):
                       'Engineered. They represent samples collected from a natural '
                       'environment or from another organism or from engineered '
                       'environments like bioreactors respectively.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
+         'domain_of': ['Study', 'Biosample'],
          'is_a': 'gold_path_field',
          'see_also': ['https://gold.jgi.doe.gov/help']} })
     ecosystem_category: Optional[str] = Field(default=None, description="""Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. Ecosystem category is in position 2/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['The Environmental ecosystem (for example) is divided into Air, '
@@ -6119,14 +5892,14 @@ class Study(NamedThing):
                       'Host-associated samples can be individual hosts or phyla and '
                       'for engineered samples it may be manipulated environments like '
                       'bioreactors, solid waste etc.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
+         'domain_of': ['Study', 'Biosample'],
          'is_a': 'gold_path_field',
          'see_also': ['https://gold.jgi.doe.gov/help']} })
     ecosystem_subtype: Optional[str] = Field(default=None, description="""Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is '
                       'further divided (for example) into Intertidal zone, Coastal, '
                       'Pelagic, Intertidal zone etc. in the Ecosystem subtype '
                       'category.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
+         'domain_of': ['Study', 'Biosample'],
          'is_a': 'gold_path_field',
          'see_also': ['https://gold.jgi.doe.gov/help']} })
     ecosystem_type: Optional[str] = Field(default=None, description="""Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['The Aquatic ecosystem category (for example) may have ecosystem '
@@ -6134,13 +5907,13 @@ class Study(NamedThing):
                       'Air may have Indoor air or Outdoor air as different Ecosystem '
                       'Types. In the case of Host-associated samples, ecosystem type '
                       'can represent Respiratory system, Digestive system, Roots etc.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
+         'domain_of': ['Study', 'Biosample'],
          'is_a': 'gold_path_field',
          'see_also': ['https://gold.jgi.doe.gov/help']} })
     specific_ecosystem: Optional[str] = Field(default=None, description="""Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['Specific ecosystems help to define samples based on very '
                       'specific characteristics of an environment under the five-level '
                       'classification system.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
+         'domain_of': ['Study', 'Biosample'],
          'is_a': 'gold_path_field',
          'see_also': ['https://gold.jgi.doe.gov/help']} })
     associated_dois: Optional[list[Doi]] = Field(default=None, description="""A list of DOIs associated with a resource, such as a list of DOIS associated with a Study.""", json_schema_extra = { "linkml_meta": {'aliases': ['Associated DOIs', 'Associated digital object identifiers'],
@@ -7374,7 +7147,7 @@ class DataGeneration(DataEmitterProcess):
 
     analyte_category: str = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
-    associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample', 'OrganismSample'],
+    associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'}} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
@@ -7382,7 +7155,7 @@ class DataGeneration(DataEmitterProcess):
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'aliases': ['PI'], 'domain_of': ['Study', 'DataGeneration']} })
     instrument_instance_specifier: Optional[str] = Field(default=None, description="""A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
-    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample', 'OrganismSample']} })
+    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
@@ -7570,7 +7343,7 @@ class NucleotideSequencing(DataGeneration):
     ncbi_project_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NucleotideSequencing']} })
     analyte_category: NucleotideSequencingEnum = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
-    associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample', 'OrganismSample'],
+    associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'}} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
@@ -7578,7 +7351,7 @@ class NucleotideSequencing(DataGeneration):
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'aliases': ['PI'], 'domain_of': ['Study', 'DataGeneration']} })
     instrument_instance_specifier: Optional[str] = Field(default=None, description="""A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
-    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample', 'OrganismSample']} })
+    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
@@ -7836,7 +7609,7 @@ class MassSpectrometry(DataGeneration):
                                 'syntax': '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'}} })
     analyte_category: MassSpectrometryEnum = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
-    associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample', 'OrganismSample'],
+    associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'}} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
@@ -7844,7 +7617,7 @@ class MassSpectrometry(DataGeneration):
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'aliases': ['PI'], 'domain_of': ['Study', 'DataGeneration']} })
     instrument_instance_specifier: Optional[str] = Field(default=None, description="""A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
-    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample', 'OrganismSample']} })
+    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
@@ -9324,17 +9097,17 @@ class Biosample(Sample):
          'unique_keys': {'samp_name_unique_key': {'unique_key_name': 'samp_name_unique_key',
                                                   'unique_key_slots': ['samp_name']}}})
 
-    associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample', 'OrganismSample'],
+    associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'}} })
     biosample_categories: Optional[list[BiosampleCategoryEnum]] = Field(default=None, title="Categories the biosample belongs to", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
     collected_from: Optional[str] = Field(default=None, description="""The Site from which a Biosample was collected""", json_schema_extra = { "linkml_meta": {'comments': ['this illustrates implementing a Biosample relation with a '
                       '(binary) slot'],
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'},
          'todos': ['add an OBO slot_uri ?']} })
-    embargoed: Optional[bool] = Field(default=None, description="""If true, the data are embargoed and not available for public access.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
+    embargoed: Optional[bool] = Field(default=None, description="""If true, the data are embargoed and not available for public access.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'recommended': True,
          'todos': ['make this required?',
                    'first apply to Biosample',
@@ -9344,8 +9117,7 @@ class Biosample(Sample):
     host_disease_stat: Optional[str] = Field(default=None, title="host disease status", description="""List of diseases with which the host has been diagnosed; can include multiple diagnoses. The value of the field depends on host; for humans the terms should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org, non-human host diseases are free text""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'disease name or Disease Ontology '
                                                      'term'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'in_subset': ['migs_ba', 'gold_organism'],
+         'domain_of': ['Biosample'],
          'keywords': ['disease', 'host', 'host.', 'status'],
          'slot_uri': 'MIXS:0000031',
          'string_serialization': '{termLabel} [{termID}]|{text}'} })
@@ -9364,7 +9136,7 @@ class Biosample(Sample):
          'mixins': ['neon_identifiers']} })
     alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OntologyClass', 'Study', 'Biosample'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
-    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provenance metadata for this Biosample, including when the record was added to and last modified in the NMDC database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample', 'OrganismSample']} })
+    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provenance metadata for this Biosample, including when the record was added to and last modified in the NMDC database.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample']} })
     gold_biosample_identifiers: Optional[list[str]] = Field(default=None, description="""Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample""", json_schema_extra = { "linkml_meta": {'annotations': {'tooltip': {'tag': 'tooltip',
                                      'value': 'Provide the GOLD biosample IDs '
                                               'associated with this biosample.'}},
@@ -9376,7 +9148,7 @@ class Biosample(Sample):
     insdc_biosample_identifiers: Optional[list[str]] = Field(default=None, description="""identifiers for corresponding sample in INSDC""", json_schema_extra = { "linkml_meta": {'aliases': ['EBI biosample identifiers',
                      'NCBI biosample identifiers',
                      'DDBJ biosample identifiers'],
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': 'biosample:SAMEA5989477'},
                       {'description': 'I13_N_5-10 sample from Soil fungal diversity '
                                       'along elevational gradients',
@@ -9532,9 +9304,8 @@ class Biosample(Sample):
                                           '*{scientific_float})? *{text}$'}} })
     alt: Optional[QuantityValue] = Field(default=None, title="altitude", description="""Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit', 'value': 'meter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'm'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': '100 m'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'slot_uri': 'MIXS:0000094',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -9770,9 +9541,8 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000456',
          'string_serialization': '{float} '
                                  '{unit};{Rn/start_time/end_time/duration};{duration}'} })
-    biol_stat: Optional[BiolStatEnum] = Field(default=None, title="biological status", description="""The level of genome modification""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
+    biol_stat: Optional[BiolStatEnum] = Field(default=None, title="biological status", description="""The level of genome modification""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'natural'}],
-         'in_subset': ['gold_organism'],
          'keywords': ['status'],
          'slot_uri': 'MIXS:0000858'} })
     biomass: Optional[list[TextValue]] = Field(default=None, title="biomass", description="""Amount of biomass; should include the name for the part of biomass measured, e.g. Microbial, total. Can include multiple measurements""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
@@ -9788,9 +9558,8 @@ class Biosample(Sample):
          'examples': [{'value': 'sample inoculated with Rhizobium spp. Culture'}],
          'keywords': ['regimen'],
          'slot_uri': 'MIXS:0001038'} })
-    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
+    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'free living'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['observed', 'relationship'],
          'slot_uri': 'MIXS:0000028'} })
     bishomohopanol: Optional[QuantityValue] = Field(default=None, title="bishomohopanol", description="""Concentration of bishomohopanol""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
@@ -10034,9 +9803,8 @@ class Biosample(Sample):
                    'is set to false',
                    'add examples, i need to see some examples to add correctly '
                    'formatted example.']} })
-    collection_date: Optional[TimestampValue] = Field(default=None, title="collection date", description="""The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
+    collection_date: Optional[TimestampValue] = Field(default=None, title="collection date", description="""The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': '2013-03-25T12:42:31+01:00'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['date'],
          'slot_uri': 'MIXS:0000011'} })
     conduc: Optional[QuantityValue] = Field(default=None, title="conductivity", description="""Electrical conductivity of water""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
@@ -10141,9 +9909,8 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000992'} })
     depth: Optional[QuantityValue] = Field(default=None, title="depth", description="""The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit', 'value': 'meter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'm'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': '10 m'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['depth'],
          'slot_uri': 'MIXS:0000018',
          'structured_pattern': {'interpolated': True,
@@ -10384,9 +10151,8 @@ class Biosample(Sample):
                       'https://www.advancedconverter.com/map-tools/find-altitude-by-coordinates, '
                       'if needed, to help estimate the elevation based on latitude and '
                       'longitude coordinates.'],
-         'domain_of': ['FieldResearchSite', 'Biosample', 'OrganismSample'],
+         'domain_of': ['FieldResearchSite', 'Biosample'],
          'examples': [{'value': '100'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['elevation'],
          'slot_uri': 'MIXS:0000093',
          'structured_pattern': {'interpolated': True,
@@ -10415,9 +10181,8 @@ class Biosample(Sample):
                                               'from the UBERON or Plant Ontology to '
                                               'describe the broad anatomical or '
                                               'morphological context'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': 'oceanic epipelagic zone biome [ENVO:01000035]'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'is_a': 'mixs_env_triad_field',
          'keywords': ['context', 'environmental'],
          'slot_uri': 'MIXS:0000012',
@@ -10444,9 +10209,8 @@ class Biosample(Sample):
                                               'samples, use terms from the UBERON or '
                                               'Plant Ontology to describe specific '
                                               'anatomical structures or plant parts.'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': 'litter layer [ENVO:01000338]'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'is_a': 'mixs_env_triad_field',
          'keywords': ['context', 'environmental'],
          'slot_uri': 'MIXS:0000013',
@@ -10468,9 +10232,8 @@ class Biosample(Sample):
                                               'samples, use terms from the UBERON or '
                                               'Plant Ontology to indicate a tissue, '
                                               'organ, or plant structure'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': 'soil [ENVO:00001998]'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'is_a': 'mixs_env_triad_field',
          'keywords': ['environmental'],
          'slot_uri': 'MIXS:0000014',
@@ -10514,9 +10277,8 @@ class Biosample(Sample):
                                 'syntax': '^{integer} {text}$'}} })
     experimental_factor: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="experimental factor", description="""Variable aspects of an experiment design that can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI)""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'text or EFO and/or OBI'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': 'time series design [EFO:0001779]'}],
-         'in_subset': ['migs_ba'],
          'keywords': ['experimental', 'factor'],
          'slot_uri': 'MIXS:0000008',
          'string_serialization': '{termLabel} [{termID}]|{text}'} })
@@ -10698,15 +10460,13 @@ class Biosample(Sample):
     gender_restroom: Optional[GenderRestroomEnum] = Field(default=None, title="gender of restroom", description="""The gender type of the restroom""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'male'}],
          'slot_uri': 'MIXS:0000808'} })
-    genetic_mod: Optional[str] = Field(default=None, title="genetic modification", description="""Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
+    genetic_mod: Optional[str] = Field(default=None, title="genetic modification", description="""Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'PMID:19497774'}],
-         'in_subset': ['gold_organism'],
          'slot_uri': 'MIXS:0000859',
          'structured_pattern': {'interpolated': True,
                                 'syntax': '^({PMID}|{DOI}|{URL})$'}} })
-    geo_loc_name: Optional[TextValue] = Field(default=None, title="geographic location (country and/or sea,region)", description="""The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample', 'OrganismSample'],
+    geo_loc_name: Optional[TextValue] = Field(default=None, title="geographic location (country and/or sea,region)", description="""The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample'],
          'examples': [{'value': 'USA: Maryland, Bethesda'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['geographic', 'location'],
          'slot_uri': 'MIXS:0000010',
          'structured_pattern': {'interpolated': True,
@@ -10876,9 +10636,8 @@ class Biosample(Sample):
     host_age: Optional[QuantityValue] = Field(default=None, title="host age", description="""Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'year, day, hour'},
                          'storage_units': {'tag': 'storage_units', 'value': 'a|d|h'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': '10 d'}],
-         'in_subset': ['gold_organism'],
          'keywords': ['age', 'host', 'host.'],
          'slot_uri': 'MIXS:0000255',
          'structured_pattern': {'interpolated': True,
@@ -10890,16 +10649,14 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000866'} })
     host_body_product: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="host body product", description="""Substance produced by the body, e.g. Stool, mucus, where the sample was obtained from. Use terms from the foundational model of anatomy ontology (fma) or Uber-anatomy ontology (UBERON)""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'FMA or UBERON'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': 'mucus [UBERON:0000912]'}],
-         'in_subset': ['gold_organism'],
          'keywords': ['body', 'host', 'host.', 'product'],
          'slot_uri': 'MIXS:0000888',
          'string_serialization': '{termLabel} [{termID}]'} })
     host_body_site: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="host body site", description="""Name of body site where the sample was obtained from, such as a specific organ or tissue (tongue, lung etc...). Use terms from the foundational model of anatomy ontology (fma) or the Uber-anatomy ontology (UBERON)""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'FMA or UBERON'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'in_subset': ['gold_organism'],
+         'domain_of': ['Biosample'],
          'keywords': ['body', 'host', 'site'],
          'slot_uri': 'MIXS:0000867',
          'string_serialization': '{termLabel} [{termID}]'} })
@@ -11033,8 +10790,7 @@ class Biosample(Sample):
                                             'value': 'NCBI taxon identifier'}},
          'comments': ['Homo sapiens [NCBITaxon:9606] would be a reasonable '
                       'has_raw_value'],
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'in_subset': ['gold_organism'],
+         'domain_of': ['Biosample'],
          'keywords': ['host', 'host.', 'taxon'],
          'slot_uri': 'MIXS:0000250'} })
     host_tot_mass: Optional[QuantityValue] = Field(default=None, title="host total mass", description="""Total mass of the host at collection, the unit depends on host""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
@@ -11142,9 +10898,8 @@ class Biosample(Sample):
          'examples': [{'value': '2013-03-25T12:42:31+01:00'}],
          'keywords': ['time'],
          'slot_uri': 'MIXS:0000814'} })
-    lat_lon: Optional[GeolocationValue] = Field(default=None, title="geographic location (latitude and longitude)", description="""The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample', 'OrganismSample'],
+    lat_lon: Optional[GeolocationValue] = Field(default=None, title="geographic location (latitude and longitude)", description="""The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample'],
          'examples': [{'value': '50.586825 6.408977'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['geographic', 'location'],
          'notes': ["This is currently a required field but it's not clear if this "
                    'should be required for human hosts'],
@@ -11476,9 +11231,8 @@ class Biosample(Sample):
                                 'partial_match': True,
                                 'syntax': '^{scientific_float}( *- '
                                           '*{scientific_float})? *{text}$'}} })
-    oxy_stat_samp: Optional[OxyStatSampEnum] = Field(default=None, title="oxygenation status of sample", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
+    oxy_stat_samp: Optional[OxyStatSampEnum] = Field(default=None, title="oxygenation status of sample", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'aerobic'}],
-         'in_subset': ['gold_organism'],
          'keywords': ['oxygen', 'sample', 'status'],
          'slot_uri': 'MIXS:0000753'} })
     oxygen: Optional[QuantityValue] = Field(default=None, title="oxygen", description="""Oxygen (gas) amount or concentration at the time of sampling""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
@@ -11693,9 +11447,8 @@ class Biosample(Sample):
     pressure: Optional[QuantityValue] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject to, in atmospheres""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'atmosphere'},
                          'storage_units': {'tag': 'storage_units', 'value': 'atm'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': '50 atm'}],
-         'in_subset': ['gold_organism'],
          'keywords': ['pressure'],
          'slot_uri': 'MIXS:0000412',
          'structured_pattern': {'interpolated': True,
@@ -12005,9 +11758,8 @@ class Biosample(Sample):
                                             'value': 'practical salinity unit, '
                                                      'percentage'},
                          'storage_units': {'tag': 'storage_units', 'value': '%|mg/L'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': '70 mg/L'}],
-         'in_subset': ['gold_organism'],
          'keywords': ['salinity'],
          'slot_uri': 'MIXS:0000183',
          'structured_pattern': {'interpolated': True,
@@ -12035,15 +11787,13 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000860'} })
     samp_collec_device: Optional[str] = Field(default=None, title="sample collection device", description="""The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'device name'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'in_subset': ['migs_ba', 'gold_organism'],
+         'domain_of': ['Biosample'],
          'keywords': ['device', 'sample'],
          'slot_uri': 'MIXS:0000002',
          'string_serialization': '{termLabel} [{termID}]|{text}',
          'structured_aliases': [{'contexts': ['https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2'],
                                  'literal_form': 'samp_collect_device'}]} })
-    samp_collec_method: Optional[str] = Field(default=None, title="sample collection method", description="""The method employed for collecting the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
-         'in_subset': ['migs_ba', 'gold_organism'],
+    samp_collec_method: Optional[str] = Field(default=None, title="sample collection method", description="""The method employed for collecting the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'keywords': ['method', 'sample'],
          'slot_uri': 'MIXS:0001225',
          'structured_aliases': [{'contexts': ['https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2'],
@@ -12071,9 +11821,8 @@ class Biosample(Sample):
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
                                 'syntax': '^{float} *- *{float} {unit}$'}} })
-    samp_mat_process: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="sample material processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
+    samp_mat_process: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="sample material processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'filtering of seawater, storing samples in ethanol'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['material', 'process', 'sample'],
          'slot_uri': 'MIXS:0000016'} })
     samp_md: Optional[QuantityValue] = Field(default=None, title="sample measured depth", description="""In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
@@ -12086,9 +11835,8 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000413',
          'string_serialization': '{float} {unit};[GL|DF|RT|KB|MSL|other]'} })
     samp_name: Optional[str] = Field(default=None, title="sample name", description="""A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit', 'value': ''}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': 'ISDsoil1'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['sample'],
          'slot_uri': 'MIXS:0001107'} })
     samp_preserv: Optional[TextValue] = Field(default=None, title="preservative added to sample", description="""Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde, etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
@@ -12104,9 +11852,8 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000244'} })
     samp_size: Optional[QuantityValue] = Field(default=None, title="amount or size of sample collected", description="""The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units',
                                            'value': 'L|g|mL|mg'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': '5 L'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['sample', 'size'],
          'slot_uri': 'MIXS:0000001',
          'structured_pattern': {'interpolated': True,
@@ -12116,9 +11863,8 @@ class Biosample(Sample):
     samp_sort_meth: Optional[list[str]] = Field(default=None, title="sample size sorting method", description="""Method by which samples are sorted; open face filter collecting total suspended particles, prefilter to remove particles larger than X micrometers in diameter, where common values of X would be 10 and 2.5 full size sorting in a cascade impactor""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'keywords': ['method', 'sample', 'size'],
          'slot_uri': 'MIXS:0000216'} })
-    samp_store_dur: Optional[TextValue] = Field(default=None, title="sample storage duration", description="""Duration for which the sample was stored. Indicate the duration for which the sample was stored written in ISO 8601 format""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
+    samp_store_dur: Optional[TextValue] = Field(default=None, title="sample storage duration", description="""Duration for which the sample was stored. Indicate the duration for which the sample was stored written in ISO 8601 format""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'P1Y6M'}],
-         'in_subset': ['gold_organism'],
          'keywords': ['duration', 'period', 'sample', 'storage'],
          'slot_uri': 'MIXS:0000116',
          'structured_pattern': {'interpolated': True,
@@ -12126,17 +11872,15 @@ class Biosample(Sample):
                                 'syntax': '^{duration}$'}} })
     samp_store_loc: Optional[TextValue] = Field(default=None, title="sample storage location", description="""Location at which sample was stored, usually name of a specific freezer/room""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'location name'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': 'Freezer no:5'}],
-         'in_subset': ['gold_organism'],
          'keywords': ['location', 'sample', 'storage'],
          'slot_uri': 'MIXS:0000755'} })
     samp_store_temp: Optional[QuantityValue] = Field(default=None, title="sample storage temperature", description="""Temperature at which sample was stored, e.g. -80 degree Celsius""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': '-80 Cel'}],
-         'in_subset': ['gold_organism'],
          'keywords': ['sample', 'storage', 'temperature'],
          'slot_uri': 'MIXS:0000110',
          'structured_pattern': {'interpolated': True,
@@ -12150,8 +11894,7 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000999'} })
     samp_taxon_id: Optional[ControlledIdentifiedTermValue] = Field(default=None, title="taxonomy ID of DNA sample", description="""NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome  for mock community/positive controls, or 'blank sample' for negative controls""", json_schema_extra = { "linkml_meta": {'comments': ['coal metagenome [NCBITaxon:1260732] would be a reasonable '
                       'has_raw_value'],
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'in_subset': ['migs_ba', 'gold_organism'],
+         'domain_of': ['Biosample'],
          'keywords': ['dna', 'identifier', 'sample', 'taxon'],
          'slot_uri': 'MIXS:0001320',
          'structured_pattern': {'interpolated': True,
@@ -12465,10 +12208,9 @@ class Biosample(Sample):
                       'linking to derived analytes and subsamples. If you have not '
                       'assigned FAIR identifiers to your samples, you can generate '
                       'UUIDs (https://www.uuidgenerator.net/).'],
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': 'igsn:AU1243'},
                       {'value': 'UUID:24f1467a-40f4-11ed-b878-0242ac120002'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['identifier', 'material', 'source'],
          'slot_uri': 'MIXS:0000026',
          'todos': ['Currently, the comments say to use UUIDs. However, if we implement '
@@ -12513,9 +12255,8 @@ class Biosample(Sample):
                                 'water;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
          'keywords': ['regimen', 'water'],
          'slot_uri': 'MIXS:0001069'} })
-    store_cond: Optional[TextValue] = Field(default=None, title="storage conditions", description="""Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
+    store_cond: Optional[TextValue] = Field(default=None, title="storage conditions", description="""Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': '-20 degree Celsius freezer;P2Y10D'}],
-         'in_subset': ['gold_organism'],
          'keywords': ['condition', 'storage'],
          'slot_uri': 'MIXS:0000327'} })
     substructure_type: Optional[list[SubstructureTypeEnum]] = Field(default=None, title="substructure type", description="""The substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
@@ -12647,9 +12388,8 @@ class Biosample(Sample):
     temp: Optional[QuantityValue] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': '25 Cel'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['temperature'],
          'slot_uri': 'MIXS:0000113',
          'structured_pattern': {'interpolated': True,
@@ -13215,7 +12955,7 @@ class Biosample(Sample):
                       'Engineered. They represent samples collected from a natural '
                       'environment or from another organism or from engineered '
                       'environments like bioreactors respectively.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
+         'domain_of': ['Study', 'Biosample'],
          'is_a': 'gold_path_field',
          'see_also': ['https://gold.jgi.doe.gov/help']} })
     ecosystem_category: Optional[str] = Field(default=None, description="""Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. Ecosystem category is in position 2/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['The Environmental ecosystem (for example) is divided into Air, '
@@ -13223,7 +12963,7 @@ class Biosample(Sample):
                       'Host-associated samples can be individual hosts or phyla and '
                       'for engineered samples it may be manipulated environments like '
                       'bioreactors, solid waste etc.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
+         'domain_of': ['Study', 'Biosample'],
          'is_a': 'gold_path_field',
          'see_also': ['https://gold.jgi.doe.gov/help']} })
     ecosystem_type: Optional[str] = Field(default=None, description="""Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['The Aquatic ecosystem category (for example) may have ecosystem '
@@ -13231,41 +12971,38 @@ class Biosample(Sample):
                       'Air may have Indoor air or Outdoor air as different Ecosystem '
                       'Types. In the case of Host-associated samples, ecosystem type '
                       'can represent Respiratory system, Digestive system, Roots etc.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
+         'domain_of': ['Study', 'Biosample'],
          'is_a': 'gold_path_field',
          'see_also': ['https://gold.jgi.doe.gov/help']} })
     ecosystem_subtype: Optional[str] = Field(default=None, description="""Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is '
                       'further divided (for example) into Intertidal zone, Coastal, '
                       'Pelagic, Intertidal zone etc. in the Ecosystem subtype '
                       'category.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
+         'domain_of': ['Study', 'Biosample'],
          'is_a': 'gold_path_field',
          'see_also': ['https://gold.jgi.doe.gov/help']} })
     specific_ecosystem: Optional[str] = Field(default=None, description="""Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['Specific ecosystems help to define samples based on very '
                       'specific characteristics of an environment under the five-level '
                       'classification system.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
+         'domain_of': ['Study', 'Biosample'],
          'is_a': 'gold_path_field',
          'see_also': ['https://gold.jgi.doe.gov/help']} })
-    ecosystem_path_id: Optional[int] = Field(default=None, description="""A unique id representing the GOLD classifiers associated with a sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
+    ecosystem_path_id: Optional[int] = Field(default=None, description="""A unique id representing the GOLD classifiers associated with a sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': '6026'}],
          'see_also': ['https://gold.jgi.doe.gov/ecosystem_classification']} })
     community: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
     habitat: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample']} })
     host_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
     location: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
-    ncbi_taxonomy_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample']} })
+    ncbi_taxonomy_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
     proport_woa_temperature: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
     salinity_category: Optional[str] = Field(default=None, description="""Categorical description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, huryhaline""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'notes': ['maps to gold:salinity'],
          'see_also': ['https://github.com/microbiomedata/nmdc-metadata/pull/297']} })
-    sample_collection_site: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample']} })
-    soluble_iron_micromol: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample']} })
-    subsurface_depth: Optional[QuantityValue] = Field(default=None, title="subsurface depth", description="""Subsurface depth at the isolation site. Use has_minimum_numeric_value and has_maximum_numeric_value to represent a range (GOLD subsurface_depth1 and subsurface_depth2).""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'm'}},
-         'comments': ['GOLD subsurface_depth2 maps to has_maximum_numeric_value.'],
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'exact_mappings': ['gold:subsurface_depth1'],
-         'in_subset': ['gold_organism']} })
+    sample_collection_site: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
+    soluble_iron_micromol: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
+    subsurface_depth: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'm'}},
+         'domain_of': ['Biosample']} })
     dna_isolate_meth: Optional[str] = Field(default=None, title="DNA isolation method", description="""Describe the method/protocol/kit used to extract DNA/RNA.""", json_schema_extra = { "linkml_meta": {'aliases': ['Sample Isolation Method'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'phenol/chloroform extraction'}],
@@ -17084,7 +16821,6 @@ class LibraryPreparation(MaterialProcessing):
     library_type: Optional[LibraryTypeEnum] = Field(default=None, title="library type", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation'], 'examples': [{'value': 'DNA'}]} })
     nucl_acid_amp: Optional[TextValue] = Field(default=None, title="nucleic acid amplification", description="""A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation'],
          'examples': [{'value': 'https://phylogenomics.me/protocols/16s-pcr-protocol/'}],
-         'in_subset': ['migs_ba'],
          'slot_uri': 'MIXS:0000038',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
@@ -18498,7 +18234,7 @@ class ProcessedSample(Sample):
 
     biomaterial_purity: Optional[QuantityValue] = Field(default=None, description="""A measure of the purity of a biomaterial sample""", json_schema_extra = { "linkml_meta": {'abstract': True, 'domain_of': ['ProcessedSample']} })
     dna_absorb1: Optional[float] = Field(default=None, title="DNA absorbance 260/280", description="""260/280 measurement of DNA sample purity""", json_schema_extra = { "linkml_meta": {'comments': ['Recommended value is between 1 and 3.'],
-         'domain_of': ['ProcessedSample', 'OrganismSample'],
+         'domain_of': ['ProcessedSample'],
          'examples': [{'value': '2.02'}],
          'is_a': 'biomaterial_purity',
          'rank': 7,
@@ -18507,7 +18243,7 @@ class ProcessedSample(Sample):
     dna_concentration: Optional[float] = Field(default=None, title="DNA concentration in ng/ul", ge=0, le=2000, json_schema_extra = { "linkml_meta": {'comments': ['Units must be in ng/uL. Enter the numerical part only. Must be '
                       'calculated using a fluorometric method. Acceptable values are '
                       '0-2000.'],
-         'domain_of': ['ProcessedSample', 'OrganismSample'],
+         'domain_of': ['ProcessedSample'],
          'examples': [{'value': '100'}],
          'rank': 5,
          'recommended': True,
@@ -18516,7 +18252,7 @@ class ProcessedSample(Sample):
     external_database_identifiers: Optional[list[str]] = Field(default=None, description="""Link to corresponding identifier in external database""", json_schema_extra = { "linkml_meta": {'abstract': True,
          'close_mappings': ['skos:closeMatch'],
          'comments': ['The value of this field is always a registered CURIE'],
-         'domain_of': ['ProcessedSample', 'OrganismSample'],
+         'domain_of': ['ProcessedSample'],
          'is_a': 'alternative_identifiers'} })
     sampled_portion: Optional[list[SamplePortionEnum]] = Field(default=None, description="""The portion of the sample that is taken for downstream activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SubSamplingProcess', 'ProcessedSample']} })
     id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'],
@@ -18586,1286 +18322,6 @@ class ProcessedSample(Sample):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('alternative_identifiers')
-    def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-
-class OrganismSample(Sample):
-    """
-    A material sample in which all cells are expected to share the same genome. This includes individual multicellular organisms (which may comprise heterogeneous tissues and cell types), nominally pure cultures, and single cells.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:OrganismSample',
-         'comments': ['An OrganismSample might be isolated from an environmental '
-                      'Biosample by culturing and isolating colonies.'],
-         'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'slot_usage': {'associated_studies': {'name': 'associated_studies',
-                                               'pattern': '^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
-                                               'range': 'Study',
-                                               'required': True,
-                                               'structured_pattern': {'interpolated': True,
-                                                                      'syntax': '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'}},
-                        'collected_from': {'name': 'collected_from',
-                                           'pattern': '^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
-                                           'structured_pattern': {'interpolated': True,
-                                                                  'syntax': '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'}},
-                        'dna_absorb1': {'aliases': ['absorbance 260/280'],
-                                        'exact_mappings': ['nmdc_sub_schema:nuc_acid_absorb1'],
-                                        'name': 'dna_absorb1'},
-                        'dna_absorb2': {'aliases': ['absorbance 260/230'],
-                                        'exact_mappings': ['nmdc_sub_schema:nuc_acid_absorb2'],
-                                        'name': 'dna_absorb2'},
-                        'dna_concentration': {'aliases': ['concentration (ng/ul)'],
-                                              'comments': ['JGI: Must be calculated '
-                                                           'using a fluorometric '
-                                                           'method; value >0 and '
-                                                           '<2000.',
-                                                           'Replaces '
-                                                           'analyte_concentration for '
-                                                           'OrganismSample.'],
-                                              'exact_mappings': ['nmdc_sub_schema:nuc_acid_concentration'],
-                                              'name': 'dna_concentration'},
-                        'id': {'name': 'id',
-                               'pattern': '^(nmdc):orgsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
-                               'required': True,
-                               'structured_pattern': {'interpolated': True,
-                                                      'syntax': '{id_nmdc_prefix}:orgsm-{id_shoulder}-{id_blade}$'}}},
-         'title': 'Organism Sample'})
-
-    associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample', 'OrganismSample'],
-         'structured_pattern': {'interpolated': True,
-                                'syntax': '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'}} })
-    embargoed: Optional[bool] = Field(default=None, description="""If true, the data are embargoed and not available for public access.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
-         'recommended': True,
-         'todos': ['make this required?',
-                   'first apply to Biosample',
-                   'try to apply to all Biosamples in a particular nmdc-server '
-                   'SubmissionMetadata?',
-                   'applying to a Study may not be granular enough']} })
-    provenance_metadata: Optional[ProvenanceMetadata] = Field(default=None, description="""Provides information about the provenance of a record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Study', 'DataGeneration', 'Biosample', 'OrganismSample']} })
-    external_database_identifiers: Optional[list[str]] = Field(default=None, description="""Link to corresponding identifier in external database""", json_schema_extra = { "linkml_meta": {'abstract': True,
-         'close_mappings': ['skos:closeMatch'],
-         'comments': ['The value of this field is always a registered CURIE'],
-         'domain_of': ['ProcessedSample', 'OrganismSample'],
-         'is_a': 'alternative_identifiers'} })
-    gold_organism_identifiers: Optional[list[str]] = Field(default=None, description="""identifiers for corresponding organism in GOLD""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'examples': [{'value': 'gold:Go0013823'}],
-         'is_a': 'external_database_identifiers',
-         'mixins': ['gold_identifiers']} })
-    insdc_biosample_identifiers: Optional[list[str]] = Field(default=None, description="""identifiers for corresponding sample in INSDC""", json_schema_extra = { "linkml_meta": {'aliases': ['EBI biosample identifiers',
-                     'NCBI biosample identifiers',
-                     'DDBJ biosample identifiers'],
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'biosample:SAMEA5989477'},
-                      {'description': 'I13_N_5-10 sample from Soil fungal diversity '
-                                      'along elevational gradients',
-                       'value': 'biosample:SAMD00212331'}],
-         'is_a': 'biosample_identifiers',
-         'mixins': ['insdc_identifiers'],
-         'see_also': ['https://github.com/bioregistry/bioregistry/issues/108',
-                      'https://www.ebi.ac.uk/biosamples/',
-                      'https://www.ncbi.nlm.nih.gov/biosample',
-                      'https://www.ddbj.nig.ac.jp/biosample/index-e.html']} })
-    samp_taxon_id: Optional[ControlledIdentifiedTermValue] = Field(default=None, title="taxonomy ID of DNA sample", description="""NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome  for mock community/positive controls, or 'blank sample' for negative controls""", json_schema_extra = { "linkml_meta": {'comments': ['coal metagenome [NCBITaxon:1260732] would be a reasonable '
-                      'has_raw_value'],
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['dna', 'identifier', 'sample', 'taxon'],
-         'slot_uri': 'MIXS:0001320',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{text} \\[{NCBItaxon_id}\\]$'}} })
-    samp_name: Optional[str] = Field(default=None, title="sample name", description="""A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit', 'value': ''}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'ISDsoil1'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['sample'],
-         'slot_uri': 'MIXS:0001107'} })
-    source_mat_id: Optional[TextValue] = Field(default=None, title="source material identifiers", description="""A unique identifier assigned to a material sample (as defined by http://rs.tdwg.org/dwc/terms/materialSampleID, and as opposed to a particular digital record of a material sample) used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples. The INSDC qualifiers /specimen_voucher, /bio_material, or /culture_collection may or may not share the same value as the source_mat_id field. For instance, the /specimen_voucher qualifier and source_mat_id may both contain 'UAM:Herps:14' , referring to both the specimen voucher and sampled tissue with the same identifier. However, the /culture_collection qualifier may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id would refer to an identifier from some derived culture from which the nucleic acids were extracted (e.g. xatc123 or ark:/2154/R2)""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'for cultures of microorganisms: '
-                                                     'identifiers for two culture '
-                                                     'collections; for other material '
-                                                     'a unique arbitrary identifer'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'MPI012345'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['identifier', 'material', 'source'],
-         'slot_uri': 'MIXS:0000026'} })
-    host_taxid: Optional[ControlledIdentifiedTermValue] = Field(default=None, title="host taxid", description="""NCBI taxon id of the host, e.g. 9606""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'NCBI taxon identifier'}},
-         'comments': ['Homo sapiens [NCBITaxon:9606] would be a reasonable '
-                      'has_raw_value'],
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'in_subset': ['gold_organism'],
-         'keywords': ['host', 'host.', 'taxon'],
-         'slot_uri': 'MIXS:0000250'} })
-    ncbi_taxonomy_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample']} })
-    collection_date: Optional[TimestampValue] = Field(default=None, title="collection date", description="""The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': '2013-03-25T12:42:31+01:00'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['date'],
-         'slot_uri': 'MIXS:0000011'} })
-    geo_loc_name: Optional[TextValue] = Field(default=None, title="geographic location (country and/or sea,region)", description="""The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample', 'OrganismSample'],
-         'examples': [{'value': 'USA: Maryland, Bethesda'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['geographic', 'location'],
-         'slot_uri': 'MIXS:0000010',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{country}: {region}, {specific_location}$'}} })
-    lat_lon: Optional[GeolocationValue] = Field(default=None, title="geographic location (latitude and longitude)", description="""The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample', 'OrganismSample'],
-         'examples': [{'value': '50.586825 6.408977'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['geographic', 'location'],
-         'slot_uri': 'MIXS:0000009',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{lat} {lon}$'}} })
-    collected_from: Optional[str] = Field(default=None, description="""The Site from which a Biosample was collected""", json_schema_extra = { "linkml_meta": {'comments': ['this illustrates implementing a Biosample relation with a '
-                      '(binary) slot'],
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'structured_pattern': {'interpolated': True,
-                                'syntax': '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'},
-         'todos': ['add an OBO slot_uri ?']} })
-    sample_collection_site: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample']} })
-    env_broad_scale: Optional[ControlledIdentifiedTermValue] = Field(default=None, title="broad-scale environmental context", description="""Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS""", json_schema_extra = { "linkml_meta": {'annotations': {'tooltip': {'tag': 'tooltip',
-                                     'value': 'The biome or major environmental system '
-                                              'where the sample or specimen '
-                                              'originated. Choose values from '
-                                              "subclasses of the 'biome' class "
-                                              '[ENVO:00000428] in the Environment '
-                                              'Ontology (ENVO). For host-associated or '
-                                              'plant-associated samples, use terms '
-                                              'from the UBERON or Plant Ontology to '
-                                              'describe the broad anatomical or '
-                                              'morphological context'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'oceanic epipelagic zone biome [ENVO:01000035]'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'is_a': 'mixs_env_triad_field',
-         'keywords': ['context', 'environmental'],
-         'slot_uri': 'MIXS:0000012',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{termLabel} \\[{termID}\\]$'}} })
-    env_local_scale: Optional[ControlledIdentifiedTermValue] = Field(default=None, title="local environmental context", description="""Report the entity or entities which are in the sample or specimen s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'Environmental entities having '
-                                                     'causal influences upon the '
-                                                     'entity at time of sampling'},
-                         'tooltip': {'tag': 'tooltip',
-                                     'value': 'The specific environmental entities or '
-                                              'features near the sample or specimen '
-                                              'that significantly influence its '
-                                              'characteristics or composition. These '
-                                              'entities are typically smaller in scale '
-                                              'than the broad environmental context. '
-                                              'Values for this field should be '
-                                              'countable, material nouns and must be '
-                                              'chosen from subclasses of BFO:0000040 '
-                                              '(material entity) that appear in the '
-                                              'Environment Ontology (ENVO). For '
-                                              'host-associated or plant-associated '
-                                              'samples, use terms from the UBERON or '
-                                              'Plant Ontology to describe specific '
-                                              'anatomical structures or plant parts.'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'litter layer [ENVO:01000338]'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'is_a': 'mixs_env_triad_field',
-         'keywords': ['context', 'environmental'],
-         'slot_uri': 'MIXS:0000013',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{termLabel} \\[{termID}\\]$'}} })
-    env_medium: Optional[ControlledIdentifiedTermValue] = Field(default=None, title="environmental medium", description="""Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)""", json_schema_extra = { "linkml_meta": {'annotations': {'tooltip': {'tag': 'tooltip',
-                                     'value': 'The predominant environmental material '
-                                              'or substrate that directly surrounds or '
-                                              'hosts the sample or specimen at the '
-                                              'time of sampling. Choose values from '
-                                              "subclasses of the 'environmental "
-                                              "material' class [ENVO:00010483] in the "
-                                              'Environment Ontology (ENVO). Values for '
-                                              'this field should be measurable or mass '
-                                              'material nouns, representing continuous '
-                                              'environmental materials. For '
-                                              'host-associated or plant-associated '
-                                              'samples, use terms from the UBERON or '
-                                              'Plant Ontology to indicate a tissue, '
-                                              'organ, or plant structure'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'soil [ENVO:00001998]'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'is_a': 'mixs_env_triad_field',
-         'keywords': ['environmental'],
-         'slot_uri': 'MIXS:0000014',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{termLabel} \\[{termID}\\]$'}} })
-    gold_organism_type: Optional[str] = Field(default=None, title="organism type", description="""Organism type classification from GOLD controlled vocabulary.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:organism_type'],
-         'in_subset': ['gold_organism']} })
-    cultured: Optional[bool] = Field(default=None, title="cultured", description="""Whether the organism has been cultured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:cultured'],
-         'in_subset': ['gold_organism']} })
-    culture_type: Optional[CultureTypeEnum] = Field(default=None, title="culture type", description="""Type of cultivation used to grow the organism, e.g. isolate, enrichment, mixed culture.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:culture_type'],
-         'in_subset': ['gold_organism']} })
-    uncultured_type: Optional[UnculturedTypeEnum] = Field(default=None, title="uncultured type", description="""For uncultured organisms, the type of genome assembly, e.g. MAG, SAG.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:uncultured_type'],
-         'in_subset': ['gold_organism']} })
-    type_strain: Optional[bool] = Field(default=None, title="type strain", description="""Whether this organism is a type strain.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:type_strain'],
-         'in_subset': ['gold_organism']} })
-    organism_domain: Optional[str] = Field(default=None, title="domain", description="""Taxonomic domain of the organism, e.g. Bacteria, Archaea, Eukarya.""", json_schema_extra = { "linkml_meta": {'comments': ['Can be derived from samp_taxon_id via NCBI taxonomy.'],
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:domain'],
-         'in_subset': ['gold_organism']} })
-    gold_phylogeny: Optional[str] = Field(default=None, title="GOLD phylogeny", description="""GOLD phylogeny string for the organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:gold_phylogeny'],
-         'in_subset': ['gold_organism']} })
-    biotic_relationship: Optional[BioticRelationshipEnum] = Field(default=None, title="observed biotic relationship", description="""Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'free living'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['observed', 'relationship'],
-         'slot_uri': 'MIXS:0000028'} })
-    encoded_traits: Optional[TextValue] = Field(default=None, title="encoded traits", description="""Should include key traits like antibiotic resistance or xenobiotic degradation phenotypes for plasmids, converting genes for phage""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'for plasmid: antibiotic '
-                                                     'resistance; for phage: '
-                                                     'converting genes'}},
-         'domain_of': ['OrganismSample'],
-         'examples': [{'value': 'beta-lactamase class A'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'slot_uri': 'MIXS:0000034'} })
-    host_disease_stat: Optional[str] = Field(default=None, title="host disease status", description="""List of diseases with which the host has been diagnosed; can include multiple diagnoses. The value of the field depends on host; for humans the terms should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org, non-human host diseases are free text""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'disease name or Disease Ontology '
-                                                     'term'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['disease', 'host', 'host.', 'status'],
-         'slot_uri': 'MIXS:0000031',
-         'string_serialization': '{termLabel} [{termID}]|{text}'} })
-    host_spec_range: Optional[list[str]] = Field(default=None, title="host specificity or range", description="""The range and diversity of host species that an organism is capable of infecting, defined by NCBI taxonomy identifier""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'NCBI taxid'}},
-         'domain_of': ['OrganismSample'],
-         'examples': [{'value': '9606'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['host', 'host.', 'range'],
-         'slot_uri': 'MIXS:0000030',
-         'string_serialization': '{integer}'} })
-    isol_growth_condt: Optional[TextValue] = Field(default=None, title="isolation and growth condition", description="""Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'examples': [{'value': 'doi:10.1016/j.syapm.2018.01.009'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['condition', 'growth', 'isolation'],
-         'slot_uri': 'MIXS:0000003',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
-    oxy_stat_samp: Optional[OxyStatSampEnum] = Field(default=None, title="oxygenation status of sample", description="""Oxygenation status of sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'aerobic'}],
-         'in_subset': ['gold_organism'],
-         'keywords': ['oxygen', 'sample', 'status'],
-         'slot_uri': 'MIXS:0000753'} })
-    pathogenicity: Optional[TextValue] = Field(default=None, title="known pathogenicity", description="""To what is the entity pathogenic""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'names of organisms that the '
-                                                     'entity is pathogenic to'}},
-         'domain_of': ['OrganismSample'],
-         'examples': [{'value': 'human, animal, plant, fungi, bacteria'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'slot_uri': 'MIXS:0000027'} })
-    biol_stat: Optional[BiolStatEnum] = Field(default=None, title="biological status", description="""The level of genome modification""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'natural'}],
-         'in_subset': ['gold_organism'],
-         'keywords': ['status'],
-         'slot_uri': 'MIXS:0000858'} })
-    genetic_mod: Optional[str] = Field(default=None, title="genetic modification", description="""Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'PMID:19497774'}],
-         'in_subset': ['gold_organism'],
-         'slot_uri': 'MIXS:0000859',
-         'structured_pattern': {'interpolated': True,
-                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
-    ref_biomaterial: Optional[TextValue] = Field(default=None, title="reference for biomaterial", description="""Primary publication if isolated before genome publication; otherwise, primary genome report""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'examples': [{'value': 'doi:10.1016/j.syapm.2018.01.009'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'slot_uri': 'MIXS:0000025',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
-    rel_to_oxygen: Optional[RelToOxygenEnum] = Field(default=None, title="relationship to oxygen", description="""Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'examples': [{'value': 'aerobe'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['oxygen', 'relationship'],
-         'slot_uri': 'MIXS:0000015'} })
-    specific_host: Optional[str] = Field(default=None, title="host scientific name", description="""Report the host's taxonomic name and/or NCBI taxonomy ID""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'host scientific name, taxonomy '
-                                                     'ID'}},
-         'domain_of': ['OrganismSample'],
-         'examples': [{'value': 'Homo sapiens and/or 9606'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['host', 'host.'],
-         'slot_uri': 'MIXS:0000029',
-         'string_serialization': '{text}|{NCBI taxid}'} })
-    subspecf_gen_lin: Optional[str] = Field(default=None, title="subspecific genetic lineage", description="""Information about the genetic distinctness of the sequenced organism below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or any relevant genetic typing schemes like Group I plasmid. Subspecies should not be recorded in this term, but in the NCBI taxonomy. Supply both the lineage name and the lineage rank separated by a colon, e.g., biovar:abc123""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'Genetic lineage below lowest '
-                                                     'rank of NCBI taxonomy, which is '
-                                                     'subspecies, e.g. serovar, '
-                                                     'biotype, ecotype, variety, '
-                                                     'cultivar'}},
-         'domain_of': ['OrganismSample'],
-         'examples': [{'value': 'serovar:Newport'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['lineage'],
-         'slot_uri': 'MIXS:0000020',
-         'string_serialization': '{rank name}:{text}'} })
-    tax_class: Optional[TextValue] = Field(default=None, title="taxonomic classification", description="""Method used for taxonomic classification, along with reference database used, classification rank, and thresholds used to classify new genomes""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'examples': [{'value': 'vConTACT vContact2 (references from NCBI RefSeq v83, '
-                                'genus rank classification, default parameters)'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['classification', 'taxon'],
-         'slot_uri': 'MIXS:0000064'} })
-    tax_ident: Optional[TaxIdentEnum] = Field(default=None, title="taxonomic identity marker", description="""The phylogenetic marker(s) used to assign an organism name to the SAG or MAG""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'examples': [{'description': 'was other <colon> rpoB gene', 'value': 'other'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['identifier', 'marker', 'taxon'],
-         'slot_uri': 'MIXS:0000053'} })
-    trophic_level: Optional[TrophicLevelEnum] = Field(default=None, title="trophic level", description="""Trophic levels are the feeding position in a food chain. Microbes can be a range of producers (e.g. chemolithotroph)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'examples': [{'value': 'heterotroph'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['level'],
-         'slot_uri': 'MIXS:0000032'} })
-    genbank_16s_id: Optional[str] = Field(default=None, title="GenBank 16S ID", description="""GenBank accession for the 16S rRNA gene sequence.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:genbank_16s_id'],
-         'in_subset': ['gold_organism']} })
-    clade: Optional[str] = Field(default=None, title="clade", description="""Clade assignment for the organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:clade'],
-         'in_subset': ['gold_organism']} })
-    organism_common_name: Optional[str] = Field(default=None, title="common name", description="""Common name of the organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:common_name'],
-         'in_subset': ['gold_organism']} })
-    genus_synonyms: Optional[str] = Field(default=None, title="genus synonyms", description="""Alternative or historical genus names for the organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:genus_synonyms'],
-         'in_subset': ['gold_organism']} })
-    species_synonyms: Optional[str] = Field(default=None, title="species synonyms", description="""Alternative or historical species names for the organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:species_synonyms'],
-         'in_subset': ['gold_organism']} })
-    gram_stain: Optional[GramStainEnum] = Field(default=None, title="gram stain", description="""Gram stain result for the organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:gram_stain'],
-         'in_subset': ['gold_organism'],
-         'structured_aliases': [{'contexts': ['https://gold.jgi.doe.gov/'],
-                                 'literal_form': 'gram_stain',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
-    carbon_source: Optional[str] = Field(default=None, title="carbon source", description="""Carbon source(s) used by the organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:carbon_source'],
-         'in_subset': ['gold_organism']} })
-    cell_shape: Optional[str] = Field(default=None, title="cell shape", description="""Morphological shape of the cell, e.g. rod, coccus, spirillum, filamentous.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:cell_shape'],
-         'in_subset': ['gold_organism']} })
-    cell_length: Optional[QuantityValue] = Field(default=None, title="cell length", description="""Length of the cell.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'um'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:cell_length'],
-         'in_subset': ['gold_organism']} })
-    cell_diameter: Optional[QuantityValue] = Field(default=None, title="cell diameter", description="""Diameter of the cell.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'um'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:cell_diameter'],
-         'in_subset': ['gold_organism']} })
-    motility: Optional[str] = Field(default=None, title="motility", description="""Whether the organism is motile.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:motility'],
-         'in_subset': ['gold_organism']} })
-    sporulation: Optional[str] = Field(default=None, title="sporulation", description="""Whether the organism forms spores.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:sporulation'],
-         'in_subset': ['gold_organism']} })
-    temperature_range: Optional[TemperatureRangeEnum] = Field(default=None, title="temperature range", description="""Temperature classification of the organism, e.g. mesophilic, thermophilic, hyperthermophilic.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:temperature_range'],
-         'in_subset': ['gold_organism']} })
-    organism_color: Optional[str] = Field(default=None, title="color", description="""Color of the organism or colony.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:color'],
-         'in_subset': ['gold_organism']} })
-    alt: Optional[QuantityValue] = Field(default=None, title="altitude", description="""Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit', 'value': 'meter'},
-                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': '100 m'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'slot_uri': 'MIXS:0000094',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{scientific_float}( *- '
-                                          '*{scientific_float})? *{text}$'}} })
-    depth: Optional[QuantityValue] = Field(default=None, title="depth", description="""The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit', 'value': 'meter'},
-                         'storage_units': {'tag': 'storage_units', 'value': 'm'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': '10 m'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['depth'],
-         'slot_uri': 'MIXS:0000018',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{scientific_float}( *- '
-                                          '*{scientific_float})? *{text}$'}} })
-    elev: Optional[float] = Field(default=None, title="elevation", description="""Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit', 'value': 'meter'}},
-         'domain_of': ['FieldResearchSite', 'Biosample', 'OrganismSample'],
-         'examples': [{'value': '100 meter'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['elevation'],
-         'slot_uri': 'MIXS:0000093',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{scientific_float}( *- '
-                                          '*{scientific_float})? *{text}$'}} })
-    experimental_factor: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="experimental factor", description="""Variable aspects of an experiment design that can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI)""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'text or EFO and/or OBI'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'time series design [EFO:0001779]'}],
-         'in_subset': ['migs_ba'],
-         'keywords': ['experimental', 'factor'],
-         'slot_uri': 'MIXS:0000008',
-         'string_serialization': '{termLabel} [{termID}]|{text}'} })
-    lat_long_inferred: Optional[bool] = Field(default=None, title="lat/long inferred", description="""Whether the latitude/longitude was inferred rather than directly measured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:lat_long_inferred'],
-         'in_subset': ['gold_organism']} })
-    sample_isolation_comments: Optional[str] = Field(default=None, title="sample isolation comments", description="""Free-text comments about the isolation of the organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:sample_isolation_comments'],
-         'in_subset': ['gold_organism']} })
-    samp_collec_device: Optional[str] = Field(default=None, title="sample collection device", description="""The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'device name'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['device', 'sample'],
-         'slot_uri': 'MIXS:0000002',
-         'string_serialization': '{termLabel} [{termID}]|{text}',
-         'structured_aliases': [{'contexts': ['https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2'],
-                                 'literal_form': 'samp_collect_device'}]} })
-    samp_collec_method: Optional[str] = Field(default=None, title="sample collection method", description="""The method employed for collecting the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['method', 'sample'],
-         'slot_uri': 'MIXS:0001225',
-         'structured_aliases': [{'contexts': ['https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2'],
-                                 'literal_form': 'samp_collect_method'}]} })
-    samp_mat_process: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="sample material processing", description="""A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'filtering of seawater, storing samples in ethanol'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['material', 'process', 'sample'],
-         'slot_uri': 'MIXS:0000016'} })
-    samp_size: Optional[QuantityValue] = Field(default=None, title="amount or size of sample collected", description="""The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units',
-                                           'value': 'L|g|mL|mg'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': '5 L'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['sample', 'size'],
-         'slot_uri': 'MIXS:0000001',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{scientific_float}( *- '
-                                          '*{scientific_float})? *{text}$'}} })
-    temp: Optional[QuantityValue] = Field(default=None, title="temperature", description="""Temperature of the sample at the time of sampling""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
-                                            'value': 'degree Celsius'},
-                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': '25 Cel'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['temperature'],
-         'slot_uri': 'MIXS:0000113',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{scientific_float}( *- '
-                                          '*{scientific_float})? *{text}$'}} })
-    sop: Optional[list[str]] = Field(default=None, title="relevant standard operating procedures", description="""Standard operating procedures used in assembly and/or annotation of genomes, metagenomes or environmental sequences""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'reference to SOP'}},
-         'domain_of': ['OrganismSample'],
-         'examples': [{'value': 'http://press.igsb.anl.gov/earthmicrobiome/protocols-and-standards/its/'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
-         'keywords': ['procedures'],
-         'slot_uri': 'MIXS:0000090',
-         'structured_pattern': {'interpolated': True,
-                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
-    subsurface_depth: Optional[QuantityValue] = Field(default=None, title="subsurface depth", description="""Subsurface depth at the isolation site. Use has_minimum_numeric_value and has_maximum_numeric_value to represent a range (GOLD subsurface_depth1 and subsurface_depth2).""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'm'}},
-         'comments': ['GOLD subsurface_depth2 maps to has_maximum_numeric_value.'],
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'exact_mappings': ['gold:subsurface_depth1'],
-         'in_subset': ['gold_organism']} })
-    ecosystem: Optional[str] = Field(default=None, description="""An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['The abiotic factors play a profound role on the type and '
-                      'composition of organisms in a given environment. The GOLD '
-                      'Ecosystem at the top of the five-level classification system is '
-                      'aimed at capturing the broader environment from which an '
-                      'organism or environmental sample is collected. The three broad '
-                      'groups under Ecosystem are Environmental, Host-associated, and '
-                      'Engineered. They represent samples collected from a natural '
-                      'environment or from another organism or from engineered '
-                      'environments like bioreactors respectively.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
-         'is_a': 'gold_path_field',
-         'see_also': ['https://gold.jgi.doe.gov/help']} })
-    ecosystem_category: Optional[str] = Field(default=None, description="""Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. Ecosystem category is in position 2/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['The Environmental ecosystem (for example) is divided into Air, '
-                      'Aquatic and Terrestrial. Ecosystem categories for '
-                      'Host-associated samples can be individual hosts or phyla and '
-                      'for engineered samples it may be manipulated environments like '
-                      'bioreactors, solid waste etc.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
-         'is_a': 'gold_path_field',
-         'see_also': ['https://gold.jgi.doe.gov/help']} })
-    ecosystem_type: Optional[str] = Field(default=None, description="""Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['The Aquatic ecosystem category (for example) may have ecosystem '
-                      'types like Marine or Thermal springs etc. Ecosystem category '
-                      'Air may have Indoor air or Outdoor air as different Ecosystem '
-                      'Types. In the case of Host-associated samples, ecosystem type '
-                      'can represent Respiratory system, Digestive system, Roots etc.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
-         'is_a': 'gold_path_field',
-         'see_also': ['https://gold.jgi.doe.gov/help']} })
-    ecosystem_subtype: Optional[str] = Field(default=None, description="""Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is '
-                      'further divided (for example) into Intertidal zone, Coastal, '
-                      'Pelagic, Intertidal zone etc. in the Ecosystem subtype '
-                      'category.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
-         'is_a': 'gold_path_field',
-         'see_also': ['https://gold.jgi.doe.gov/help']} })
-    specific_ecosystem: Optional[str] = Field(default=None, description="""Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'comments': ['Specific ecosystems help to define samples based on very '
-                      'specific characteristics of an environment under the five-level '
-                      'classification system.'],
-         'domain_of': ['Study', 'Biosample', 'OrganismSample'],
-         'is_a': 'gold_path_field',
-         'see_also': ['https://gold.jgi.doe.gov/help']} })
-    ecosystem_path_id: Optional[int] = Field(default=None, description="""A unique id representing the GOLD classifiers associated with a sample.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': '6026'}],
-         'see_also': ['https://gold.jgi.doe.gov/ecosystem_classification']} })
-    other_ecosystem: Optional[str] = Field(default=None, title="other ecosystem", description="""Ecosystem classification that does not fit the standard GOLD hierarchy.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:other_ecosystem'],
-         'in_subset': ['gold_organism']} })
-    salinity: Optional[QuantityValue] = Field(default=None, title="salinity", description="""The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
-                                            'value': 'practical salinity unit, '
-                                                     'percentage'},
-                         'storage_units': {'tag': 'storage_units', 'value': '%|mg/L'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': '70 mg/L'}],
-         'in_subset': ['gold_organism'],
-         'keywords': ['salinity'],
-         'slot_uri': 'MIXS:0000183',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{scientific_float}( *- '
-                                          '*{scientific_float})? *{text}$'}} })
-    pressure: Optional[QuantityValue] = Field(default=None, title="pressure", description="""Pressure to which the sample is subject to, in atmospheres""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
-                                            'value': 'atmosphere'},
-                         'storage_units': {'tag': 'storage_units', 'value': 'atm'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': '50 atm'}],
-         'in_subset': ['gold_organism'],
-         'keywords': ['pressure'],
-         'slot_uri': 'MIXS:0000412',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{scientific_float}( *- '
-                                          '*{scientific_float})? *{text}$'}} })
-    isolation_site_ph: Optional[QuantityValue] = Field(default=None, title="isolation site pH", description="""pH measurement at the isolation site. Use has_minimum_numeric_value and has_maximum_numeric_value to represent a range (GOLD ph1 and ph2).""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': '[pH]'}},
-         'comments': ['GOLD ph2 maps to has_maximum_numeric_value.'],
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:ph1'],
-         'in_subset': ['gold_organism']} })
-    chlorophyll_concentration: Optional[QuantityValue] = Field(default=None, title="chlorophyll concentration", description="""Chlorophyll concentration at the isolation site.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:chlorophyll_concentration'],
-         'in_subset': ['gold_organism']} })
-    nitrate_concentration: Optional[QuantityValue] = Field(default=None, title="nitrate concentration", description="""Nitrate concentration at the isolation site.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:nitrate_concentration'],
-         'in_subset': ['gold_organism']} })
-    oxygen_concentration: Optional[QuantityValue] = Field(default=None, title="oxygen concentration", description="""Oxygen concentration at the isolation site.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:oxygen_concentration'],
-         'in_subset': ['gold_organism']} })
-    salinity_concentration: Optional[QuantityValue] = Field(default=None, title="salinity concentration", description="""Salinity concentration at the isolation site.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': '[ppm]'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:salinity_concentration'],
-         'in_subset': ['gold_organism']} })
-    tot_org_carbon: Optional[QuantityValue] = Field(default=None, title="total organic carbon", description="""Total organic carbon at the isolation site.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mg/kg'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:tot_org_carbon'],
-         'in_subset': ['gold_organism']} })
-    tot_nitrogen: Optional[QuantityValue] = Field(default=None, title="total nitrogen", description="""Total nitrogen at the isolation site.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mg/kg'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:tot_nitrogen'],
-         'in_subset': ['gold_organism']} })
-    bicarbonate_millimol: Optional[QuantityValue] = Field(default=None, title="bicarbonate concentration", description="""Bicarbonate concentration at the isolation site.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mmol/L'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:bicarbonate_millimol'],
-         'in_subset': ['gold_organism']} })
-    soluble_iron_micromol: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample']} })
-    h2s_millimol: Optional[QuantityValue] = Field(default=None, title="H2S concentration", description="""Hydrogen sulfide concentration at the isolation site.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mmol/L'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:h2s_millimol'],
-         'in_subset': ['gold_organism']} })
-    h2s_present: Optional[str] = Field(default=None, title="H2S present", description="""Whether hydrogen sulfide is present at the isolation site.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:h2s_present'],
-         'in_subset': ['gold_organism']} })
-    irradiance: Optional[QuantityValue] = Field(default=None, title="irradiance", description="""Irradiance at the isolation site.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'W/m2'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:irradiance'],
-         'in_subset': ['gold_organism']} })
-    methane_conc_millimol: Optional[QuantityValue] = Field(default=None, title="methane concentration", description="""Methane concentration at the isolation site.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mmol/L'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:methane_conc_millimol'],
-         'in_subset': ['gold_organism']} })
-    sample_conductivity: Optional[QuantityValue] = Field(default=None, title="sample conductivity", description="""Electrical conductivity of the sample or isolation site.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mS/cm'}},
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:sample_conductivity'],
-         'in_subset': ['gold_organism']} })
-    host_age: Optional[QuantityValue] = Field(default=None, title="host age", description="""Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
-                                            'value': 'year, day, hour'},
-                         'storage_units': {'tag': 'storage_units', 'value': 'a|d|h'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': '10 d'}],
-         'in_subset': ['gold_organism'],
-         'keywords': ['age', 'host', 'host.'],
-         'slot_uri': 'MIXS:0000255',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{scientific_float}( *- '
-                                          '*{scientific_float})? *{text}$'}} })
-    host_body_site: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="host body site", description="""Name of body site where the sample was obtained from, such as a specific organ or tissue (tongue, lung etc...). Use terms from the foundational model of anatomy ontology (fma) or the Uber-anatomy ontology (UBERON)""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'FMA or UBERON'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'in_subset': ['gold_organism'],
-         'keywords': ['body', 'host', 'site'],
-         'slot_uri': 'MIXS:0000867',
-         'string_serialization': '{termLabel} [{termID}]'} })
-    host_body_subsite: Optional[str] = Field(default=None, title="host body subsite", description="""More specific body site within the host body site.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:host_body_subsite'],
-         'in_subset': ['gold_organism']} })
-    host_body_product: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="host body product", description="""Substance produced by the body, e.g. Stool, mucus, where the sample was obtained from. Use terms from the foundational model of anatomy ontology (fma) or Uber-anatomy ontology (UBERON)""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'FMA or UBERON'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'mucus [UBERON:0000912]'}],
-         'in_subset': ['gold_organism'],
-         'keywords': ['body', 'host', 'host.', 'product'],
-         'slot_uri': 'MIXS:0000888',
-         'string_serialization': '{termLabel} [{termID}]'} })
-    host_body_site_id: Optional[str] = Field(default=None, title="host body site ID", description="""Ontology term identifier for the host body site.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:host_body_site_id'],
-         'in_subset': ['gold_organism']} })
-    host_body_subsite_id: Optional[str] = Field(default=None, title="host body subsite ID", description="""Ontology term identifier for the host body subsite.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:host_body_subsite_id'],
-         'in_subset': ['gold_organism']} })
-    host_body_product_id: Optional[str] = Field(default=None, title="host body product ID", description="""Ontology term identifier for the host body product.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:host_body_product_id'],
-         'in_subset': ['gold_organism']} })
-    host_gender: Optional[str] = Field(default=None, title="host gender", description="""Gender of the host organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:host_gender'],
-         'in_subset': ['gold_organism']} })
-    host_race: Optional[str] = Field(default=None, title="host race", description="""Race/ethnicity of the host (for human hosts).""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:host_race'],
-         'in_subset': ['gold_organism']} })
-    host_medication: Optional[str] = Field(default=None, title="host medication", description="""Medications being taken by the host at time of sampling.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:host_medication'],
-         'in_subset': ['gold_organism']} })
-    host_comments: Optional[str] = Field(default=None, title="host comments", description="""Free-text comments about the host organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:host_comments'],
-         'in_subset': ['gold_organism']} })
-    patient_visit_number: Optional[int] = Field(default=None, title="patient visit number", description="""Visit number for clinical/patient samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:patient_visit_number'],
-         'in_subset': ['gold_organism']} })
-    medical_record_number: Optional[str] = Field(default=None, title="MRN", description="""Medical record number for clinical samples.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:mrn'],
-         'in_subset': ['gold_organism']} })
-    known_non_hosts: Optional[str] = Field(default=None, title="known non-hosts", description="""Organisms known to not be hosts of this organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:known_non_hosts'],
-         'in_subset': ['gold_organism']} })
-    other_hosts: Optional[str] = Field(default=None, title="other hosts", description="""Other host organisms associated with this organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['gold:other_hosts'],
-         'in_subset': ['gold_organism']} })
-    estimated_size: Optional[str] = Field(default=None, title="estimated size", description="""The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'number of base pairs'}},
-         'domain_of': ['OrganismSample'],
-         'examples': [{'value': '300000 bp'}],
-         'in_subset': ['migs_ba'],
-         'keywords': ['size'],
-         'slot_uri': 'MIXS:0000024',
-         'string_serialization': '{integer} bp'} })
-    extrachrom_elements: Optional[int] = Field(default=None, title="extrachromosomal elements", description="""Do plasmids exist of significant phenotypic consequence (e.g. ones that determine virulence or antibiotic resistance). Megaplasmids? Other plasmids (borrelia has 15+ plasmids)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'examples': [{'value': '5'}],
-         'in_subset': ['migs_ba'],
-         'slot_uri': 'MIXS:0000023'} })
-    num_replicons: Optional[int] = Field(default=None, title="number of replicons", description="""Reports the number of replicons in a nuclear genome of eukaryotes, in the genome of a bacterium or archaea or the number of segments in a segmented virus. Always applied to the haploid chromosome count of a eukaryote""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'for eukaryotes and bacteria: '
-                                                     'chromosomes (haploid count); for '
-                                                     'viruses: segments'}},
-         'domain_of': ['OrganismSample'],
-         'examples': [{'value': '2'}],
-         'in_subset': ['migs_ba'],
-         'keywords': ['number'],
-         'slot_uri': 'MIXS:0000022',
-         'string_serialization': '{integer}'} })
-    gc_content: Optional[QuantityValue] = Field(default=None, title="GC content %", description="""Estimated GC content of the genome, as a percentage.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': '%'}},
-         'comments': ['JGI: Give an estimate of the GC content of the genome in '
-                      'decimal format (e.g. 45.2).'],
-         'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate']} })
-    ploidy: Optional[str] = Field(default=None, title="ploidy", description="""Genome ploidy, e.g. haploid, diploid, octaploid.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'], 'in_subset': ['jgi_isolate']} })
-    reference_genome: Optional[str] = Field(default=None, title="reference genome", description="""Reference genome to be used for analysis. Preferred formats are IMG taxon OID, Mycocosm/Phycocosm/Phytozome ID.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI: Required for resequencing, gene expression, IsoSeq, and '
-                      'methylation.'],
-         'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate']} })
-    organism_genus: Optional[str] = Field(default=None, title="genus", description="""Genus of the organism.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI Isolate v19 required field.'],
-         'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate', 'gold_organism'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/'],
-                                 'literal_form': 'Genus',
-                                 'predicate': 'EXACT_SYNONYM'},
-                                {'contexts': ['https://gold.jgi.doe.gov/'],
-                                 'literal_form': 'genus',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
-    organism_species: Optional[str] = Field(default=None, title="species", description="""Species of the organism.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI Isolate v19 required field.'],
-         'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate', 'gold_organism'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/'],
-                                 'literal_form': 'Species',
-                                 'predicate': 'EXACT_SYNONYM'},
-                                {'contexts': ['https://gold.jgi.doe.gov/'],
-                                 'literal_form': 'species',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
-    isolate_name: Optional[str] = Field(default=None, title="isolate name", description="""Isolate or mutant name, if applicable. Distinct from strain/cultivar and from culture collection identifiers.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI: The culture collection ID should be entered in the Culture '
-                      'Collection and ID field, not the Isolate field.'],
-         'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/'],
-                                 'literal_form': 'Isolate Name',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
-    ribosomal_sequence: Optional[str] = Field(default=None, title="ribosomal sequence", description="""Nucleotide sequence used for strain verification. Must contain only A, C, G, T, or N characters with no header. At least one ribosomal sequence is required for all microbial and fungal genome projects.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI: 16S sequence MUST be >1300 nt with <10% Ns for microbial '
-                      'drafts. ITS sequence must be >450 nt with <2% Ns for fungal '
-                      'drafts.'],
-         'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate']} })
-    ribosomal_sequence_type: Optional[RibosomalSequenceTypeEnum] = Field(default=None, title="ribosomal sequence type", description="""Type of ribosomal sequence provided for strain verification.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'], 'in_subset': ['jgi_isolate']} })
-    ribosomal_sequence_comments: Optional[str] = Field(default=None, title="ribosomal sequence comments", description="""Additional information about the ribosomal sequence. Required if ribosomal sequence type is Other.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'], 'in_subset': ['jgi_isolate']} })
-    second_ribosomal_sequence: Optional[str] = Field(default=None, title="second ribosomal sequence", description="""Optional secondary ribosomal sequence for additional verification. Must contain only A, C, G, T, or N characters with no header.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate'],
-         'is_a': 'ribosomal_sequence'} })
-    second_ribosomal_sequence_type: Optional[RibosomalSequenceTypeEnum] = Field(default=None, title="second ribosomal sequence type", description="""Type of the secondary ribosomal sequence.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate'],
-         'is_a': 'ribosomal_sequence_type'} })
-    second_ribosomal_sequence_comments: Optional[str] = Field(default=None, title="second ribosomal sequence comments", description="""Additional information about the secondary ribosomal sequence.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate'],
-         'is_a': 'ribosomal_sequence_comments'} })
-    single_colony_isolation: Optional[YesNoEnum] = Field(default=None, title="is sample from single colony", description="""Whether the sample was isolated from an axenic/strain pure culture (single colony or equivalent).""", json_schema_extra = { "linkml_meta": {'comments': ['JGI: Was the sample isolated from an axenic/strain pure '
-                      'culture?'],
-         'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate']} })
-    known_suspected_organisms: Optional[str] = Field(default=None, title="known/suspected organisms", description="""Organisms known or suspected to grow in co-culture or that may be contaminating the culture, with estimated percentages.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'], 'in_subset': ['jgi_isolate']} })
-    fungal_16s_screening: Optional[YesNoEnum] = Field(default=None, title="fungal 16S screening", description="""Whether 16S screening was performed to identify bacterial contamination in fungal samples.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI: Required for all fungal draft samples.'],
-         'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate']} })
-    its_match_unite: Optional[YesNoEnum] = Field(default=None, title="ITS match in UNITE", description="""Whether the ITS sequence matches taxonomy in the UNITE database.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI: Required for all fungal draft samples.'],
-         'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate']} })
-    biosafety_material_category: Optional[BiosafetyMaterialCategoryEnum] = Field(default=None, title="biosafety material category", description="""General category of organism or material for biosafety classification.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI: Required field. Choose from Alga, Animal, Archaea, '
-                      'Bacteria, Fungi, Plant, Plasmid, Protist, Virus, Synthetic '
-                      'Construct.'],
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['nmdc_sub_schema:biosafety_mat_cat'],
-         'in_subset': ['jgi_isolate'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/'],
-                                 'literal_form': 'Biosafety Material Category',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
-    viral_host_genus: Optional[str] = Field(default=None, title="host genus", description="""Genus of the viral host.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI: Required for viral minimal draft projects.'],
-         'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate']} })
-    viral_host_species: Optional[str] = Field(default=None, title="host species", description="""Species of the viral host.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI: Required for viral minimal draft projects.'],
-         'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate']} })
-    viral_host_strain: Optional[str] = Field(default=None, title="host strain", description="""Strain of the viral host.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI: Required for viral minimal draft projects.'],
-         'domain_of': ['OrganismSample'],
-         'in_subset': ['jgi_isolate']} })
-    dna_concentration: Optional[float] = Field(default=None, title="DNA concentration in ng/ul", ge=0, le=2000, json_schema_extra = { "linkml_meta": {'aliases': ['concentration (ng/ul)'],
-         'comments': ['JGI: Must be calculated using a fluorometric method; value >0 '
-                      'and <2000.',
-                      'Replaces analyte_concentration for OrganismSample.'],
-         'domain_of': ['ProcessedSample', 'OrganismSample'],
-         'exact_mappings': ['nmdc_sub_schema:nuc_acid_concentration'],
-         'examples': [{'value': '100'}],
-         'rank': 5,
-         'recommended': True,
-         'see_also': ['nmdc:nucleic_acid_concentration'],
-         'slot_group': 'JGI-Metagenomics'} })
-    analyte_volume: Optional[QuantityValue] = Field(default=None, title="volume", description="""Volume of the sample being provided.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'uL'}},
-         'comments': ['JGI: Value must be >0 and <1000 ul.'],
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['nmdc_sub_schema:jgi_sample_volume'],
-         'in_subset': ['jgi_isolate']} })
-    dna_absorb1: Optional[float] = Field(default=None, title="DNA absorbance 260/280", description="""260/280 measurement of DNA sample purity""", json_schema_extra = { "linkml_meta": {'aliases': ['absorbance 260/280'],
-         'comments': ['Recommended value is between 1 and 3.'],
-         'domain_of': ['ProcessedSample', 'OrganismSample'],
-         'exact_mappings': ['nmdc_sub_schema:nuc_acid_absorb1'],
-         'examples': [{'value': '2.02'}],
-         'is_a': 'biomaterial_purity',
-         'rank': 7,
-         'recommended': True,
-         'slot_group': 'JGI-Metagenomics'} })
-    dna_absorb2: Optional[float] = Field(default=None, title="DNA absorbance 260/230", description="""260/230 measurement of DNA sample purity""", json_schema_extra = { "linkml_meta": {'aliases': ['absorbance 260/230'],
-         'comments': ['Recommended value is between 1 and 3.'],
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['nmdc_sub_schema:nuc_acid_absorb2'],
-         'examples': [{'value': '2.02'}],
-         'is_a': 'biomaterial_purity',
-         'rank': 8,
-         'recommended': True,
-         'slot_group': 'JGI-Metagenomics'} })
-    sample_container: Optional[SampleContainerEnum] = Field(default=None, title="sample container", description="""Physical container type for sample shipment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['nmdc_sub_schema:cont_type'],
-         'in_subset': ['jgi_isolate']} })
-    sample_format: Optional[SampleFormatEnum] = Field(default=None, title="sample format", description="""Format or buffer in which the physical sample is provided.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['nmdc_sub_schema:jgi_sample_format'],
-         'in_subset': ['jgi_isolate']} })
-    dnase_treated: Optional[YesNoEnum] = Field(default=None, title="was sample DNase treated", description="""Whether the sample was treated with DNase.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI: DNase treatment is required for all RNA samples.'],
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['nmdc_sub_schema:dnase'],
-         'in_subset': ['jgi_isolate']} })
-    tube_or_plate_label: Optional[str] = Field(default=None, title="tube or plate label", description="""Label on the tube or plate. Must be unique across all tubes and plates.""", json_schema_extra = { "linkml_meta": {'comments': ['JGI: Must be unique across all tubes and plates, and <20 '
-                      'characters.'],
-         'domain_of': ['OrganismSample'],
-         'exact_mappings': ['nmdc_sub_schema:container_name'],
-         'in_subset': ['jgi_isolate']} })
-    plate_well_location: Optional[str] = Field(default=None, title="plate location (well", description="""Well location in a 96-well plate, e.g. A4, B5. Corner wells must be blank.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'],
-         'exact_mappings': ['nmdc_sub_schema:cont_well'],
-         'in_subset': ['jgi_isolate']} })
-    samp_store_temp: Optional[QuantityValue] = Field(default=None, title="sample storage temperature", description="""Temperature at which sample was stored, e.g. -80 degree Celsius""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
-                                            'value': 'degree Celsius'},
-                         'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': '-80 Cel'}],
-         'in_subset': ['gold_organism'],
-         'keywords': ['sample', 'storage', 'temperature'],
-         'slot_uri': 'MIXS:0000110',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{scientific_float}( *- '
-                                          '*{scientific_float})? *{text}$'}} })
-    samp_store_loc: Optional[TextValue] = Field(default=None, title="sample storage location", description="""Location at which sample was stored, usually name of a specific freezer/room""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'location name'}},
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'Freezer no:5'}],
-         'in_subset': ['gold_organism'],
-         'keywords': ['location', 'sample', 'storage'],
-         'slot_uri': 'MIXS:0000755'} })
-    samp_store_dur: Optional[TextValue] = Field(default=None, title="sample storage duration", description="""Duration for which the sample was stored. Indicate the duration for which the sample was stored written in ISO 8601 format""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': 'P1Y6M'}],
-         'in_subset': ['gold_organism'],
-         'keywords': ['duration', 'period', 'sample', 'storage'],
-         'slot_uri': 'MIXS:0000116',
-         'structured_pattern': {'interpolated': True,
-                                'partial_match': True,
-                                'syntax': '^{duration}$'}} })
-    store_cond: Optional[TextValue] = Field(default=None, title="storage conditions", description="""Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample', 'OrganismSample'],
-         'examples': [{'value': '-20 degree Celsius freezer;P2Y10D'}],
-         'in_subset': ['gold_organism'],
-         'keywords': ['condition', 'storage'],
-         'slot_uri': 'MIXS:0000327'} })
-    id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'],
-         'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
-                       'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
-         'notes': ['abstracted pattern: '
-                   'prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?',
-                   'a minimum length of 3 characters is suggested for typecodes, but 1 '
-                   'or 2 characters will be accepted',
-                   'typecodes must correspond 1:1 to a class in the NMDC schema. this '
-                   'will be checked via per-class id slot usage assertions',
-                   'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern'],
-         'structured_aliases': [{'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                 'literal_form': 'workflow_execution_id',
-                                 'predicate': 'NARROW_SYNONYM'},
-                                {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                 'literal_form': 'data_object_id',
-                                 'predicate': 'NARROW_SYNONYM'}],
-         'structured_pattern': {'interpolated': True,
-                                'syntax': '{id_nmdc_prefix}:orgsm-{id_shoulder}-{id_blade}$'}} })
-    name: Optional[str] = Field(default=None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
-    description: Optional[str] = Field(default=None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImageValue', 'NamedThing', 'Protocol'],
-         'slot_uri': 'dcterms:description'} })
-    alternative_identifiers: Optional[list[str]] = Field(default=None, description="""A list of alternative identifiers for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing', 'MetaboliteIdentification']} })
-    type: Literal["https://w3id.org/nmdc/OrganismSample","nmdc:OrganismSample"] = Field(default="nmdc:OrganismSample", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'designates_type': True,
-         'domain_of': ['EukEval',
-                       'FunctionalAnnotationAggMember',
-                       'GenomeFeature',
-                       'FunctionalAnnotation',
-                       'AttributeValue',
-                       'NamedThing',
-                       'OntologyRelation',
-                       'FailureCategorization',
-                       'Protocol',
-                       'CreditAssociation',
-                       'Doi',
-                       'ProvenanceMetadata',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance',
-                       'MagBin',
-                       'MetaboliteIdentification'],
-         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['makes it easier to read example data files',
-                   'required for polymorphic MongoDB collections'],
-         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type',
-         'structured_aliases': [{'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                 'literal_form': 'workflow_execution_class',
-                                 'predicate': 'NARROW_SYNONYM'}]} })
-
-    @field_validator('associated_studies')
-    def pattern_associated_studies(cls, v):
-        pattern=re.compile(r"^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid associated_studies format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid associated_studies format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('external_database_identifiers')
-    def pattern_external_database_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid external_database_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid external_database_identifiers format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('gold_organism_identifiers')
-    def pattern_gold_organism_identifiers(cls, v):
-        pattern=re.compile(r"^gold:Go[0-9]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid gold_organism_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid gold_organism_identifiers format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('insdc_biosample_identifiers')
-    def pattern_insdc_biosample_identifiers(cls, v):
-        pattern=re.compile(r"^biosample:SAM[NED]([A-Z])?[0-9]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid insdc_biosample_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid insdc_biosample_identifiers format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('samp_taxon_id')
-    def pattern_samp_taxon_id(cls, v):
-        pattern=re.compile(r"^.* \[NCBITaxon:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid samp_taxon_id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid samp_taxon_id format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('geo_loc_name')
-    def pattern_geo_loc_name(cls, v):
-        pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid geo_loc_name format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid geo_loc_name format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('lat_lon')
-    def pattern_lat_lon(cls, v):
-        pattern=re.compile(r"^(-?((?:[0-8]?[0-9](?:\.\d{0,8})?)|90)) -?[0-9]+(?:\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid lat_lon format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid lat_lon format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('collected_from')
-    def pattern_collected_from(cls, v):
-        pattern=re.compile(r"^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collected_from format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collected_from format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_broad_scale')
-    def pattern_env_broad_scale(cls, v):
-        pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_broad_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_broad_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_local_scale')
-    def pattern_env_local_scale(cls, v):
-        pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_local_scale format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_local_scale format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('env_medium')
-    def pattern_env_medium(cls, v):
-        pattern=re.compile(r"^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid env_medium format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid env_medium format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('isol_growth_condt')
-    def pattern_isol_growth_condt(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid isol_growth_condt format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid isol_growth_condt format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('genetic_mod')
-    def pattern_genetic_mod(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid genetic_mod format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid genetic_mod format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('ref_biomaterial')
-    def pattern_ref_biomaterial(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ref_biomaterial format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ref_biomaterial format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('alt')
-    def pattern_alt(cls, v):
-        pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alt format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alt format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('depth')
-    def pattern_depth(cls, v):
-        pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid depth format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid depth format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('elev')
-    def pattern_elev(cls, v):
-        pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid elev format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid elev format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('experimental_factor')
-    def pattern_experimental_factor(cls, v):
-        pattern=re.compile(r"^\S+.*\S+ \[[a-zA-Z]{2,}:\d+\]$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid experimental_factor format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid experimental_factor format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('samp_size')
-    def pattern_samp_size(cls, v):
-        pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid samp_size format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid samp_size format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('temp')
-    def pattern_temp(cls, v):
-        pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('sop')
-    def pattern_sop(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid sop format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid sop format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('salinity')
-    def pattern_salinity(cls, v):
-        pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid salinity format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid salinity format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('pressure')
-    def pattern_pressure(cls, v):
-        pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid pressure format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid pressure format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('host_age')
-    def pattern_host_age(cls, v):
-        pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid host_age format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid host_age format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('samp_store_temp')
-    def pattern_samp_store_temp(cls, v):
-        pattern=re.compile(r"^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid samp_store_temp format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid samp_store_temp format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('samp_store_dur')
-    def pattern_samp_store_dur(cls, v):
-        pattern=re.compile(r"^P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid samp_store_dur format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid samp_store_dur format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('id')
-    def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):orgsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -20006,27 +18462,24 @@ class FieldResearchSite(Site):
          'keywords': ['vegetation'],
          'slot_uri': 'MIXS:0000312'} })
     elev: Optional[float] = Field(default=None, title="elevation", description="""Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit', 'value': 'meter'}},
-         'domain_of': ['FieldResearchSite', 'Biosample', 'OrganismSample'],
+         'domain_of': ['FieldResearchSite', 'Biosample'],
          'examples': [{'value': '100 meter'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['elevation'],
          'slot_uri': 'MIXS:0000093',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
                                 'syntax': '^{scientific_float}( *- '
                                           '*{scientific_float})? *{text}$'}} })
-    geo_loc_name: Optional[TextValue] = Field(default=None, title="geographic location (country and/or sea,region)", description="""The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample', 'OrganismSample'],
+    geo_loc_name: Optional[TextValue] = Field(default=None, title="geographic location (country and/or sea,region)", description="""The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample'],
          'examples': [{'value': 'USA: Maryland, Bethesda'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['geographic', 'location'],
          'slot_uri': 'MIXS:0000010',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
                                 'syntax': '^{country}: {region}, {specific_location}$'}} })
     habitat: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample']} })
-    lat_lon: Optional[GeolocationValue] = Field(default=None, title="geographic location (latitude and longitude)", description="""The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample', 'OrganismSample'],
+    lat_lon: Optional[GeolocationValue] = Field(default=None, title="geographic location (latitude and longitude)", description="""The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system""", json_schema_extra = { "linkml_meta": {'domain_of': ['FieldResearchSite', 'Biosample'],
          'examples': [{'value': '50.586825 6.408977'}],
-         'in_subset': ['migs_ba', 'gold_organism'],
          'keywords': ['geographic', 'location'],
          'slot_uri': 'MIXS:0000009',
          'structured_pattern': {'interpolated': True,
@@ -23133,7 +21586,6 @@ DissolvingProcess.model_rebuild()
 ChemicalConversionProcess.model_rebuild()
 PortionOfSubstance.model_rebuild()
 ProcessedSample.model_rebuild()
-OrganismSample.model_rebuild()
 Site.model_rebuild()
 FieldResearchSite.model_rebuild()
 MagBin.model_rebuild()
