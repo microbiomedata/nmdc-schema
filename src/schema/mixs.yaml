@@ -7640,16 +7640,22 @@ slots:
     in_subset:
       - migs_ba
   ref_biomaterial:
-    description: Primary publication if isolated before genome publication; otherwise, primary genome report
+    description: >-
+      Primary publication if isolated before genome publication; otherwise, primary genome report.
+      Uses NMDC's Doi class for consistency with associated_dois on Study.
     title: reference for biomaterial
     examples:
-      - value: doi:10.1016/j.syapm.2018.01.009
+      - value: ''
+        object:
+          doi_value: doi:10.1016/j.syapm.2018.01.009
+          doi_category: publication_doi
+          type: nmdc:Doi
+        description: A publication DOI for the isolation conditions of Desulfofaba fastidiosa.
+    comments:
+      - "MIxS MIGS-Ba allows PMID, DOI, or URL. NMDC narrows this to DOI using the Doi class for consistency (see #2895). PMIDs should be converted to their corresponding DOIs."
     slot_uri: MIXS:0000025
-    range: TextValue
-    structured_pattern:
-      syntax: ^({PMID}|{DOI}|{URL})$
-      interpolated: true
-      partial_match: true
+    range: Doi
+    inlined: true
     in_subset:
       - migs_ba
       - gold_organism

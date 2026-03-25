@@ -60,8 +60,9 @@ isol_growth_condt:
   has_raw_value: "alkaliphilic pH 9-11"
 num_replicons: 2
 ref_biomaterial:
-  type: nmdc:TextValue
-  has_raw_value: "GenBank accession MH050344"
+  doi_value: doi:10.1016/j.syapm.2018.01.009
+  doi_category: publication_doi
+  type: nmdc:Doi
 biotic_relationship: free living
 encoded_traits:
   type: nmdc:TextValue
