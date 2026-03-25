@@ -1,0 +1,2225 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/organism-sample-data-mapping/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>OrganismSample Data Mapping Guide - NMDC Schema Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#organismsample-data-mapping-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="NMDC Schema Documentation" class="md-header__button md-logo" aria-label="NMDC Schema Documentation" data-md-component="logo">
+      
+  <img src="../images/NMDC_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NMDC Schema Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OrganismSample Data Mapping Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="NMDC Schema Documentation" class="md-nav__button md-logo" aria-label="NMDC Schema Documentation" data-md-component="logo">
+      
+  <img src="../images/NMDC_logo.png" alt="logo">
+
+    </a>
+    NMDC Schema Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funding and Acknowledgements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collaboration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Metadata_Documentation_Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadata Standards Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintaining-the-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maintaining the NMDC Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema_element_deprecation_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema element deprecation guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NMDC Schema Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identifiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identifiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typecode-to-class-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Typecode to class map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version Migration Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer-docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Downloads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#range-wrapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Range wrapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unit-normalization-ucum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unit normalization (UCUM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taxonomy-curies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Taxonomy CURIEs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enum values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-and-yesno-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boolean and yes/no conventions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-1-ncbi-biosample-migsba-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source 1: NCBI BioSample (MIGS.ba package)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Source 1: NCBI BioSample (MIGS.ba package)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-identify-migs-ba-samples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to identify MIGS-Ba samples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ncbi-quirks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NCBI quirks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data access
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-2-gold-organism_v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source 2: GOLD organism_v2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Source 2: GOLD organism_v2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-identify-organism-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to identify organism records
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-mapping_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gold-quirks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GOLD quirks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-access_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data access
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-3-jgi-isolate-na-v19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source 3: JGI Isolate (NA) v19
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Source 3: JGI Isolate (NA) v19">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-mapping-from-spreadsheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field mapping (from spreadsheet)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jgi-quirks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JGI quirks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-authority-slot-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Authority Slot Overlap
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="organismsample-data-mapping-guide">OrganismSample Data Mapping Guide</h1>
+<p>This guide documents how to convert organism/isolate records from three
+source systems into NMDC <code>OrganismSample</code> instances. Each source uses
+different field names, value formats, and structural conventions.</p>
+<p>See also:</p>
+<ul>
+<li><a href="https://microbiomedata.github.io/nmdc-schema/OrganismSample/">OrganismSample class definition</a></li>
+<li>Example data files in <code>src/data/valid/OrganismSample-*.yaml</code></li>
+<li>Subset definitions in <code>src/schema/nmdc_subsets.yaml</code> (<code>migs_ba</code>, <code>gold_organism</code>, <code>jgi_isolate</code>)</li>
+</ul>
+<h2 id="general-principles">General Principles</h2>
+<h3 id="range-wrapping">Range wrapping</h3>
+<p>NMDC slots have typed ranges. Plain values from source systems must be
+wrapped in the appropriate type:</p>
+<table>
+<thead>
+<tr>
+<th>NMDC Range</th>
+<th>YAML Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string</code></td>
+<td><code>slot_name: "value"</code></td>
+</tr>
+<tr>
+<td><code>integer</code></td>
+<td><code>slot_name: 42</code></td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>slot_name: true</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><code>slot_name: 3.14</code></td>
+</tr>
+<tr>
+<td><code>TextValue</code></td>
+<td><code>slot_name:</code> / <code>type: nmdc:TextValue</code> / <code>has_raw_value: "value"</code></td>
+</tr>
+<tr>
+<td><code>QuantityValue</code></td>
+<td><code>slot_name:</code> / <code>type: nmdc:QuantityValue</code> / <code>has_numeric_value: 30.0</code> / <code>has_raw_value: "30 Cel"</code> / <code>has_unit: Cel</code></td>
+</tr>
+<tr>
+<td><code>ControlledIdentifiedTermValue</code></td>
+<td><code>slot_name:</code> / <code>type: nmdc:ControlledIdentifiedTermValue</code> / <code>has_raw_value: "ENVO:00000015"</code> / <code>term:</code> / <code>id: ENVO:00000015</code> / <code>type: nmdc:OntologyClass</code></td>
+</tr>
+<tr>
+<td><code>TimestampValue</code></td>
+<td><code>slot_name:</code> / <code>type: nmdc:TimestampValue</code> / <code>has_raw_value: "2015-05-08"</code></td>
+</tr>
+<tr>
+<td><code>GeolocationValue</code></td>
+<td><code>slot_name:</code> / <code>type: nmdc:GeolocationValue</code> / <code>has_raw_value: "30.27 N 30.10 E"</code> / <code>latitude: 30.27</code> / <code>longitude: 30.10</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="unit-normalization-ucum">Unit normalization (UCUM)</h3>
+<p>NMDC uses <a href="https://ucum.org/ucum">UCUM</a> unit codes. Common conversions:</p>
+<table>
+<thead>
+<tr>
+<th>Human-readable</th>
+<th>UCUM code</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>degree Celsius</td>
+<td><code>Cel</code></td>
+<td>Not <code>°C</code> or <code>degree Celsius</code></td>
+</tr>
+<tr>
+<td>micrometer</td>
+<td><code>um</code></td>
+<td>Not <code>µm</code> or <code>micrometer</code></td>
+</tr>
+<tr>
+<td>milligram per liter</td>
+<td><code>mg/L</code></td>
+<td></td>
+</tr>
+<tr>
+<td>parts per million</td>
+<td><code>[ppm]</code></td>
+<td>Brackets required</td>
+</tr>
+<tr>
+<td>pH</td>
+<td><code>[pH]</code></td>
+<td>Brackets required</td>
+</tr>
+<tr>
+<td>meter</td>
+<td><code>m</code></td>
+<td></td>
+</tr>
+<tr>
+<td>centimeter</td>
+<td><code>cm</code></td>
+<td></td>
+</tr>
+<tr>
+<td>milliliter</td>
+<td><code>mL</code></td>
+<td></td>
+</tr>
+<tr>
+<td>microliter</td>
+<td><code>uL</code></td>
+<td></td>
+</tr>
+<tr>
+<td>percent</td>
+<td><code>%</code></td>
+<td></td>
+</tr>
+<tr>
+<td>atmosphere</td>
+<td><code>atm</code></td>
+<td></td>
+</tr>
+<tr>
+<td>watt per square meter</td>
+<td><code>W/m2</code></td>
+<td></td>
+</tr>
+<tr>
+<td>millimoles per liter</td>
+<td><code>mmol/L</code></td>
+<td></td>
+</tr>
+<tr>
+<td>millisiemens per centimeter</td>
+<td><code>mS/cm</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="taxonomy-curies">Taxonomy CURIEs</h3>
+<p>Source systems store NCBI taxonomy IDs as plain integers. NMDC wraps them
+as <code>ControlledIdentifiedTermValue</code> with a <code>NCBITaxon:</code> CURIE prefix:</p>
+<ul>
+<li>NCBI <code>taxonomy_id: 86665</code> → <code>NCBITaxon:86665</code></li>
+<li>GOLD <code>ncbi_taxonomy_id: 247157</code> → <code>NCBITaxon:247157</code></li>
+</ul>
+<h3 id="enum-values">Enum values</h3>
+<p>Enum permissible values are <strong>space-separated words</strong>, not snake_case.
+Check the schema for exact values:</p>
+<table>
+<thead>
+<tr>
+<th>Wrong</th>
+<th>Correct</th>
+<th>Enum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>free_living</code></td>
+<td><code>free living</code></td>
+<td><code>BioticRelationshipEnum</code></td>
+</tr>
+<tr>
+<td><code>Mesophile</code></td>
+<td><code>Mesophilic</code></td>
+<td><code>TemperatureRangeEnum</code></td>
+</tr>
+<tr>
+<td><code>wild_type</code></td>
+<td><code>wild type</code></td>
+<td><code>BiolStatEnum</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="boolean-and-yesno-conventions">Boolean and yes/no conventions</h3>
+<p>NMDC uses three different patterns for true/false/unknown values:</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Range</th>
+<th>Values</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code>, <code>false</code></td>
+<td>Slots that are genuinely binary with no unknown state (e.g., <code>embargoed</code>, <code>lat_long_inferred</code>)</td>
+</tr>
+<tr>
+<td><code>YesNoEnum</code></td>
+<td><code>YesNoEnum</code></td>
+<td><code>yes</code>, <code>no</code></td>
+<td>Slots from the submission portal and JGI Isolate form (e.g., <code>dnase_treated</code>, <code>single_colony_isolation</code>). Defined in <code>portal_enums.yaml</code>.</td>
+</tr>
+<tr>
+<td><code>YesNoUnknownEnum</code></td>
+<td><code>YesNoUnknownEnum</code></td>
+<td><code>yes</code>, <code>no</code>, <code>unknown</code></td>
+<td>Slots from GOLD organism_v2 where the source data has a tri-state (e.g., <code>cultured</code>, <code>type_strain</code>). Defined in <code>organism_sample.yaml</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Source system conversions:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Source values</th>
+<th>NMDC target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GOLD organism_v2</td>
+<td><code>"Yes"</code> / <code>"No"</code> / <code>"Unknown"</code> (strings)</td>
+<td><code>yes</code> / <code>no</code> / <code>unknown</code> (<code>YesNoUnknownEnum</code>)</td>
+</tr>
+<tr>
+<td>JGI Isolate v19</td>
+<td><code>Y</code> / <code>N</code></td>
+<td><code>yes</code> / <code>no</code> (<code>YesNoEnum</code>)</td>
+</tr>
+<tr>
+<td>NCBI BioSample</td>
+<td>varies</td>
+<td>Use <code>boolean</code> or <code>YesNoEnum</code> as appropriate</td>
+</tr>
+</tbody>
+</table>
+<p>Do <strong>not</strong> use <code>boolean</code> for GOLD fields that can be <code>"Unknown"</code> — the
+unknown state would be lost.</p>
+<hr />
+<h2 id="source-1-ncbi-biosample-migsba-package">Source 1: NCBI BioSample (MIGS.ba package)</h2>
+<h3 id="how-to-identify-migs-ba-samples">How to identify MIGS-Ba samples</h3>
+<p>NCBI BioSample <code>Package</code> field matches <code>MIGS.ba.*</code>. The package includes
+the environmental package suffix (e.g., <code>MIGS.ba.soil.6.0</code>,
+<code>MIGS.ba.water.6.0</code>, <code>MIGS.ba.host-associated.6.0</code>).</p>
+<h3 id="field-mapping">Field mapping</h3>
+<p>NCBI attributes use <code>harmonized_name</code> when available, falling back to
+<code>attribute_name</code>. Most map directly to NMDC MIxS slot names.</p>
+<table>
+<thead>
+<tr>
+<th>NCBI attribute</th>
+<th>NMDC slot</th>
+<th>Range</th>
+<th>Transformation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Package.content</code></td>
+<td><em>(not stored directly)</em></td>
+<td>—</td>
+<td>Use to identify MIGS-Ba samples</td>
+</tr>
+<tr>
+<td><code>Organism.taxonomy_id</code></td>
+<td><code>samp_taxon_id</code></td>
+<td>ControlledIdentifiedTermValue</td>
+<td>Prefix with <code>NCBITaxon:</code></td>
+</tr>
+<tr>
+<td><code>Organism.OrganismName</code></td>
+<td><code>ncbi_taxonomy_name</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>sample_name</code></td>
+<td><code>samp_name</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>collection_date</code></td>
+<td><code>collection_date</code></td>
+<td>TimestampValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>geo_loc_name</code></td>
+<td><code>geo_loc_name</code></td>
+<td>TextValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>lat_lon</code></td>
+<td><code>lat_lon</code></td>
+<td>GeolocationValue</td>
+<td>Parse "30.27 N 30.10 E" into lat/lon floats</td>
+</tr>
+<tr>
+<td><code>env_broad_scale</code></td>
+<td><code>env_broad_scale</code></td>
+<td>ControlledIdentifiedTermValue</td>
+<td>May need ENVO CURIE lookup</td>
+</tr>
+<tr>
+<td><code>env_local_scale</code></td>
+<td><code>env_local_scale</code></td>
+<td>ControlledIdentifiedTermValue</td>
+<td>May need ENVO CURIE lookup</td>
+</tr>
+<tr>
+<td><code>env_medium</code></td>
+<td><code>env_medium</code></td>
+<td>ControlledIdentifiedTermValue</td>
+<td>May need ENVO CURIE lookup</td>
+</tr>
+<tr>
+<td><code>isol_growth_condt</code></td>
+<td><code>isol_growth_condt</code></td>
+<td>TextValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>num_replicons</code></td>
+<td><code>num_replicons</code></td>
+<td>integer</td>
+<td>Parse to int</td>
+</tr>
+<tr>
+<td><code>ref_biomaterial</code></td>
+<td><code>ref_biomaterial</code></td>
+<td>TextValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>biotic_relationship</code></td>
+<td><code>biotic_relationship</code></td>
+<td>BioticRelationshipEnum</td>
+<td>Normalize case/spacing</td>
+</tr>
+<tr>
+<td><code>encoded_traits</code></td>
+<td><code>encoded_traits</code></td>
+<td>TextValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>estimated_size</code></td>
+<td><code>estimated_size</code></td>
+<td>string</td>
+<td>Parse; NCBI may say "1M bp" → "1000000"</td>
+</tr>
+<tr>
+<td><code>pathogenicity</code></td>
+<td><code>pathogenicity</code></td>
+<td>TextValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>rel_to_oxygen</code></td>
+<td><code>rel_to_oxygen</code></td>
+<td>RelToOxygenEnum</td>
+<td>Direct (values match)</td>
+</tr>
+<tr>
+<td><code>trophic_level</code></td>
+<td><code>trophic_level</code></td>
+<td>TrophicLevelEnum</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>subspecf_gen_lin</code></td>
+<td><code>subspecf_gen_lin</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>oxy_stat_samp</code></td>
+<td><code>oxy_stat_samp</code></td>
+<td>OxyStatSampEnum</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>depth</code></td>
+<td><code>depth</code></td>
+<td>QuantityValue</td>
+<td>Parse value and unit</td>
+</tr>
+<tr>
+<td><code>temp</code></td>
+<td><code>temp</code></td>
+<td>QuantityValue</td>
+<td>Parse; convert unit to UCUM <code>Cel</code></td>
+</tr>
+<tr>
+<td><code>samp_size</code></td>
+<td><code>samp_size</code></td>
+<td>QuantityValue</td>
+<td>Parse value and unit</td>
+</tr>
+<tr>
+<td><code>samp_collect_device</code></td>
+<td><code>samp_collec_device</code></td>
+<td>string</td>
+<td>Note NMDC name uses <code>collec</code> not <code>collect</code></td>
+</tr>
+<tr>
+<td><code>samp_collect_method</code></td>
+<td><code>samp_collec_method</code></td>
+<td>string</td>
+<td>Note NMDC name uses <code>collec</code> not <code>collect</code></td>
+</tr>
+<tr>
+<td><code>samp_mat_process</code></td>
+<td><code>samp_mat_process</code></td>
+<td>ControlledTermValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>samp_vol_we_dna_ext</code></td>
+<td><code>samp_vol_we_dna_ext</code></td>
+<td>QuantityValue</td>
+<td>Parse value and unit</td>
+</tr>
+<tr>
+<td><code>samp_store_dur</code></td>
+<td><code>samp_store_dur</code></td>
+<td>TextValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>samp_store_loc</code></td>
+<td><code>samp_store_loc</code></td>
+<td>TextValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>samp_store_temp</code></td>
+<td><code>samp_store_temp</code></td>
+<td>QuantityValue</td>
+<td>Parse; convert unit to UCUM <code>Cel</code></td>
+</tr>
+<tr>
+<td><code>source_material_id</code></td>
+<td><code>source_mat_id</code></td>
+<td>TextValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>salinity</code></td>
+<td><code>salinity</code></td>
+<td>QuantityValue</td>
+<td>Parse value and unit; use UCUM <code>[ppm]</code></td>
+</tr>
+<tr>
+<td><code>host_taxid</code></td>
+<td><code>host_taxid</code></td>
+<td>ControlledIdentifiedTermValue</td>
+<td>Prefix with <code>NCBITaxon:</code></td>
+</tr>
+<tr>
+<td><code>strain</code></td>
+<td><em>(use in <code>samp_name</code> or <code>subspecf_gen_lin</code>)</em></td>
+<td>—</td>
+<td>No direct NMDC slot for strain alone</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ncbi-quirks">NCBI quirks</h3>
+<ul>
+<li><strong><code>env_broad_scale</code>, <code>env_local_scale</code>, <code>env_medium</code></strong>: NCBI stores these
+  as free text (e.g., "salty lack"). NMDC requires ENVO ontology CURIEs.
+  Human curation or automated ontology lookup is needed.</li>
+<li><strong><code>missing</code> / <code>not collected</code> / <code>not applicable</code> / <code>not determined</code></strong>:
+  NCBI uses these sentinel values. Omit these slots from NMDC rather than
+  storing the sentinel.</li>
+<li><strong><code>source_material_id</code></strong>: NCBI submitters often put extraction method here
+  (e.g., "qiagen DNA isolation kit") rather than a culture collection ID.
+  Validate before mapping.</li>
+</ul>
+<h3 id="data-access">Data access</h3>
+<p>Local MongoDB: <code>ncbi_metadata.biosamples</code> collection. Filter with
+<code>{"Package.content": /^MIGS\.ba/}</code>. Attributes are in
+<code>Attributes.Attribute</code> array with <code>{harmonized_name, attribute_name, content}</code>.</p>
+<hr />
+<h2 id="source-2-gold-organism_v2">Source 2: GOLD organism_v2</h2>
+<h3 id="how-to-identify-organism-records">How to identify organism records</h3>
+<p>Every row in the <code>organism_v2</code> table is an organism record. Filter with
+<code>cultured = 'Yes'</code> for cultured isolates. Note: boolean fields are stored
+as strings (<code>"Yes"</code>, <code>"No"</code>, <code>"Unknown"</code>), not actual booleans.</p>
+<h3 id="field-mapping_1">Field mapping</h3>
+<table>
+<thead>
+<tr>
+<th>GOLD column</th>
+<th>NMDC slot</th>
+<th>Range</th>
+<th>Transformation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>organism_name</code></td>
+<td><code>name</code> (on OrganismSample)</td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>genus</code></td>
+<td><code>organism_genus</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>species</code></td>
+<td><code>organism_species</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>strain</code></td>
+<td><em>(use in <code>name</code> or <code>source_mat_id</code>)</em></td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ncbi_taxonomy_id</code></td>
+<td><code>samp_taxon_id</code></td>
+<td>ControlledIdentifiedTermValue</td>
+<td>Prefix with <code>NCBITaxon:</code></td>
+</tr>
+<tr>
+<td><code>ncbi_taxonomy_name</code></td>
+<td><code>ncbi_taxonomy_name</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>gold_id</code></td>
+<td><code>gold_biosample_identifiers</code></td>
+<td>—</td>
+<td><strong>Do not use</strong> — <code>gold_id</code> is <code>Go*</code> (organism), not <code>Gb*</code> (biosample). Store in description or <code>external_database_identifiers</code> instead.</td>
+</tr>
+<tr>
+<td><code>organism_type</code></td>
+<td><code>gold_organism_type</code></td>
+<td>string</td>
+<td>Direct (e.g., "Natural")</td>
+</tr>
+<tr>
+<td><code>cultured</code></td>
+<td><code>cultured</code></td>
+<td>YesNoUnknownEnum</td>
+<td><code>"Yes"</code> → <code>yes</code>, <code>"No"</code> → <code>no</code>, <code>"Unknown"</code> → <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>culture_type</code></td>
+<td><code>culture_type</code></td>
+<td>CultureTypeEnum</td>
+<td>Lowercase: <code>"Isolate"</code> → <code>isolate</code></td>
+</tr>
+<tr>
+<td><code>uncultured_type</code></td>
+<td><code>uncultured_type</code></td>
+<td>UnculturedTypeEnum</td>
+<td></td>
+</tr>
+<tr>
+<td><code>type_strain</code></td>
+<td><code>type_strain</code></td>
+<td>YesNoUnknownEnum</td>
+<td><code>"Yes"</code> → <code>yes</code>, <code>"No"</code> → <code>no</code>, <code>"Unknown"</code> → <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>domain</code></td>
+<td><code>organism_domain</code></td>
+<td>string</td>
+<td>Direct (e.g., "BACTERIAL" → "Bacteria")</td>
+</tr>
+<tr>
+<td><code>gold_phylogeny</code></td>
+<td><code>gold_phylogeny</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>genbank_16s_id</code></td>
+<td><code>genbank_16s_id</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>clade</code></td>
+<td><code>clade</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>common_name</code></td>
+<td><code>organism_common_name</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>genus_synonyms</code></td>
+<td><code>genus_synonyms</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>species_synonyms</code></td>
+<td><code>species_synonyms</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>culture_collection_id</code></td>
+<td><code>source_mat_id</code></td>
+<td>TextValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>gram_stain</code></td>
+<td><code>gram_stain</code></td>
+<td>GramStainEnum</td>
+<td>Direct (<code>"Gram-"</code>, <code>"Gram+"</code>)</td>
+</tr>
+<tr>
+<td><code>cell_shape</code></td>
+<td><code>cell_shape</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>cell_length</code></td>
+<td><code>cell_length</code></td>
+<td>QuantityValue</td>
+<td>Parse; use UCUM <code>um</code></td>
+</tr>
+<tr>
+<td><code>cell_diameter</code></td>
+<td><code>cell_diameter</code></td>
+<td>QuantityValue</td>
+<td>Parse; use UCUM <code>um</code></td>
+</tr>
+<tr>
+<td><code>motility</code></td>
+<td><code>motility</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>sporulation</code></td>
+<td><code>sporulation</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>temperature_range</code></td>
+<td><code>temperature_range</code></td>
+<td>TemperatureRangeEnum</td>
+<td>Add <code>-ic</code> suffix: <code>"Mesophile"</code> → <code>Mesophilic</code></td>
+</tr>
+<tr>
+<td><code>oxygen_requirement</code></td>
+<td><code>rel_to_oxygen</code></td>
+<td>RelToOxygenEnum</td>
+<td>Lowercase: <code>"Anaerobe"</code> → <code>anaerobe</code></td>
+</tr>
+<tr>
+<td><code>carbon_source</code></td>
+<td><code>carbon_source</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td><code>organism_color</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>geographic_location</code></td>
+<td><code>geo_loc_name</code></td>
+<td>TextValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>latitude</code> / <code>longitude</code></td>
+<td><code>lat_lon</code></td>
+<td>GeolocationValue</td>
+<td>Combine into lat_lon</td>
+</tr>
+<tr>
+<td><code>lat_long_inferred</code></td>
+<td><code>lat_long_inferred</code></td>
+<td>boolean</td>
+<td><code>"Yes"</code> → <code>true</code></td>
+</tr>
+<tr>
+<td><code>sample_collection_site</code></td>
+<td><code>sample_collection_site</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>sample_isolation_comments</code></td>
+<td><code>sample_isolation_comments</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>sample_collection_year</code>/<code>month</code>/<code>day</code></td>
+<td><code>collection_date</code></td>
+<td>TimestampValue</td>
+<td>Combine into ISO date</td>
+</tr>
+<tr>
+<td><code>ecosystem</code></td>
+<td><code>ecosystem</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>ecosystem_category</code></td>
+<td><code>ecosystem_category</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>ecosystem_type</code></td>
+<td><code>ecosystem_type</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>ecosystem_subtype</code></td>
+<td><code>ecosystem_subtype</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>specific_ecosystem</code></td>
+<td><code>specific_ecosystem</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>ecosystem_path_id</code></td>
+<td><code>ecosystem_path_id</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>other_ecosystem</code></td>
+<td><code>other_ecosystem</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>depth</code> / <code>depth2</code></td>
+<td><code>depth</code></td>
+<td>QuantityValue</td>
+<td><code>depth</code> → <code>has_numeric_value</code>, <code>depth2</code> → <code>has_maximum_numeric_value</code>, unit <code>m</code></td>
+</tr>
+<tr>
+<td><code>altitude</code> / <code>altitude2</code></td>
+<td><code>alt</code></td>
+<td>QuantityValue</td>
+<td>Same range pattern, unit <code>m</code></td>
+</tr>
+<tr>
+<td><code>elevation</code> / <code>elevation2</code></td>
+<td><code>elev</code></td>
+<td>float</td>
+<td><code>elevation</code> → value, <code>elevation2</code> unused</td>
+</tr>
+<tr>
+<td><code>subsurface_depth1</code> / <code>subsurface_depth2</code></td>
+<td><code>subsurface_depth</code></td>
+<td>QuantityValue</td>
+<td>Same range pattern, unit <code>m</code></td>
+</tr>
+<tr>
+<td><code>ph1</code> / <code>ph2</code></td>
+<td><code>isolation_site_ph</code></td>
+<td>QuantityValue</td>
+<td><code>ph1</code> → <code>has_numeric_value</code>, <code>ph2</code> → <code>has_maximum_numeric_value</code>, unit <code>[pH]</code></td>
+</tr>
+<tr>
+<td><code>growth_temperature</code> / <code>growth_temperature2</code></td>
+<td><code>temp</code></td>
+<td>QuantityValue</td>
+<td>Range pattern, unit <code>Cel</code></td>
+</tr>
+<tr>
+<td><code>sample_collection_temperature</code> / <code>sample_collection_temperature2</code></td>
+<td><em>(same as <code>temp</code> or separate slot)</em></td>
+<td>QuantityValue</td>
+<td>Context-dependent</td>
+</tr>
+<tr>
+<td><code>salinity</code></td>
+<td><code>salinity</code></td>
+<td>QuantityValue</td>
+<td>Parse value and unit</td>
+</tr>
+<tr>
+<td><code>pressure</code></td>
+<td><code>pressure</code></td>
+<td>QuantityValue</td>
+<td>Parse; use UCUM <code>atm</code></td>
+</tr>
+<tr>
+<td><code>chlorophyll_concentration</code></td>
+<td><code>chlorophyll_concentration</code></td>
+<td>QuantityValue</td>
+<td>Parse; unit <code>mg/L</code></td>
+</tr>
+<tr>
+<td><code>nitrate_concentration</code></td>
+<td><code>nitrate_concentration</code></td>
+<td>QuantityValue</td>
+<td>Parse; unit <code>mg/L</code></td>
+</tr>
+<tr>
+<td><code>oxygen_concentration</code></td>
+<td><code>oxygen_concentration</code></td>
+<td>QuantityValue</td>
+<td>Parse; unit <code>mg/L</code></td>
+</tr>
+<tr>
+<td><code>salinity_concentration</code></td>
+<td><code>salinity_concentration</code></td>
+<td>QuantityValue</td>
+<td>Parse; unit <code>[ppm]</code></td>
+</tr>
+<tr>
+<td><code>tot_org_carbon</code></td>
+<td><code>tot_org_carbon</code></td>
+<td>QuantityValue</td>
+<td>Unit <code>mg/kg</code></td>
+</tr>
+<tr>
+<td><code>tot_nitrogen</code></td>
+<td><code>tot_nitrogen</code></td>
+<td>QuantityValue</td>
+<td>Unit <code>mg/kg</code></td>
+</tr>
+<tr>
+<td><code>bicarbonate_millimol</code></td>
+<td><code>bicarbonate_millimol</code></td>
+<td>QuantityValue</td>
+<td>Unit <code>mmol/L</code></td>
+</tr>
+<tr>
+<td><code>h2s_millimol</code></td>
+<td><code>h2s_millimol</code></td>
+<td>QuantityValue</td>
+<td>Unit <code>mmol/L</code></td>
+</tr>
+<tr>
+<td><code>h2s_present</code></td>
+<td><code>h2s_present</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>irradiance</code></td>
+<td><code>irradiance</code></td>
+<td>QuantityValue</td>
+<td>Unit <code>W/m2</code></td>
+</tr>
+<tr>
+<td><code>methane_conc_millimol</code></td>
+<td><code>methane_conc_millimol</code></td>
+<td>QuantityValue</td>
+<td>Unit <code>mmol/L</code></td>
+</tr>
+<tr>
+<td><code>sample_conductivity</code></td>
+<td><code>sample_conductivity</code></td>
+<td>QuantityValue</td>
+<td>Unit <code>mS/cm</code></td>
+</tr>
+<tr>
+<td><code>host_name</code></td>
+<td><code>specific_host</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>host_taxonomy_id</code></td>
+<td><code>host_taxid</code></td>
+<td>ControlledIdentifiedTermValue</td>
+<td>Prefix with <code>NCBITaxon:</code></td>
+</tr>
+<tr>
+<td><code>host_gender</code></td>
+<td><code>host_gender</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>host_race</code></td>
+<td><code>host_race</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>host_age</code></td>
+<td><code>host_age</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>host_medication</code></td>
+<td><code>host_medication</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>host_body_site</code></td>
+<td><code>host_body_site</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>host_body_subsite</code></td>
+<td><code>host_body_subsite</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>host_body_product</code></td>
+<td><code>host_body_product</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>host_comments</code></td>
+<td><code>host_comments</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>patient_visit_number</code></td>
+<td><code>patient_visit_number</code></td>
+<td>integer</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>mrn</code></td>
+<td><code>medical_record_number</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>known_non_hosts</code></td>
+<td><code>known_non_hosts</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>other_hosts</code></td>
+<td><code>other_hosts</code></td>
+<td>string</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td><code>pathogenicity</code></td>
+<td><code>pathogenicity</code></td>
+<td>TextValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>encoded_traits</code></td>
+<td><code>encoded_traits</code></td>
+<td>TextValue</td>
+<td>Wrap</td>
+</tr>
+<tr>
+<td><code>env_broad_scale</code> / <code>env_local_scale</code> / <code>env_medium</code></td>
+<td>same</td>
+<td>ControlledIdentifiedTermValue</td>
+<td>GOLD stores as free text; needs ENVO CURIE lookup</td>
+</tr>
+<tr>
+<td><code>biosample_id</code></td>
+<td><em>(FK to GOLD biosample)</em></td>
+<td>—</td>
+<td>Use to link to GOLD biosample if needed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gold-quirks">GOLD quirks</h3>
+<ul>
+<li><strong>Range pairs</strong>: GOLD stores min/max as separate columns (<code>depth</code>/<code>depth2</code>,
+  <code>ph1</code>/<code>ph2</code>, etc.). NMDC collapses these into a single <code>QuantityValue</code>
+  using <code>has_numeric_value</code> and <code>has_maximum_numeric_value</code>.</li>
+<li><strong>Tri-state strings</strong>: <code>cultured</code>, <code>type_strain</code> store
+  <code>"Yes"</code>/<code>"No"</code>/<code>"Unknown"</code> as VARCHAR in GOLD. NMDC maps these to
+  <code>YesNoUnknownEnum</code> (<code>yes</code>/<code>no</code>/<code>unknown</code>), not boolean.
+  <code>lat_long_inferred</code> is truly binary and uses <code>boolean</code>.</li>
+<li><strong><code>temperature_range</code> enum mismatch</strong>: GOLD uses <code>"Mesophile"</code> but NMDC
+  enum values end in <code>-ic</code> (<code>Mesophilic</code>). Same for <code>Thermophile</code> →
+  <code>Thermophilic</code>, etc.</li>
+<li><strong><code>domain</code> values</strong>: GOLD uses <code>"BACTERIAL"</code>, NMDC uses <code>"Bacteria"</code>.</li>
+<li><strong><code>gold_id</code> (Go<em>) vs <code>gold_biosample_identifiers</code> (Gb</em>)</strong>: The organism
+  <code>gold_id</code> uses a <code>Go</code> prefix. Do not store it in
+  <code>gold_biosample_identifiers</code> which expects <code>Gb</code> (biosample) identifiers.</li>
+<li><strong>Junction tables</strong>: Multi-valued attributes (biotic_rel, metabolism,
+  energy_source, habitat, disease, phenotype, cell_arrangement) are in
+  separate junction tables keyed by <code>organism_id</code>. Query these separately
+  and resolve CV IDs via <code>cv*</code> lookup tables.</li>
+</ul>
+<h3 id="data-access_1">Data access</h3>
+<p>JGI Dremio lakehouse: <code>"gold-db-2 postgresql".gold.organism_v2</code></p>
+<p>Requires <code>DREMIO_URL</code>, <code>DREMIO_USER</code>, <code>DREMIO_PASSWORD</code>, and
+<code>CF_AUTHORIZATION</code> environment variables. See <code>~/.env</code>.</p>
+<p>Inferred LinkML schema:
+<code>~/gitrepos/bridge-schemas/src/bridge_schemas/schema/jgi/gold.linkml.yaml</code></p>
+<hr />
+<h2 id="source-3-jgi-isolate-na-v19">Source 3: JGI Isolate (NA) v19</h2>
+<h3 id="status">Status</h3>
+<p>The JGI Isolate submission form metadata has <strong>not yet been located</strong> in
+the JGI Dremio lakehouse. It may reside in:</p>
+<ul>
+<li><code>"gold-db-2 postgresql".gold.biosample_submission_2</code></li>
+<li><code>portal-db-1</code> (JGI portal database)</li>
+<li>An internal JGI submission system not exposed via Dremio</li>
+</ul>
+<p>Slots defined in <code>src/schema/organism_sample.yaml</code> with <code>in_subset:
+jgi_isolate</code> are modeled from the JGI Isolate (NA) v19 spreadsheet
+attached to issue #2803. The mapping table below is based on that
+spreadsheet, not on programmatic data access.</p>
+<h3 id="field-mapping-from-spreadsheet">Field mapping (from spreadsheet)</h3>
+<table>
+<thead>
+<tr>
+<th>JGI Form Field</th>
+<th>NMDC slot</th>
+<th>Range</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Genus</td>
+<td><code>organism_genus</code></td>
+<td>string</td>
+<td>JGI requires separate genus/species</td>
+</tr>
+<tr>
+<td>Species</td>
+<td><code>organism_species</code></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>Strain</td>
+<td><em>(use in <code>name</code>)</em></td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Isolate Name</td>
+<td><code>isolate_name</code></td>
+<td>string</td>
+<td>Distinct from strain</td>
+</tr>
+<tr>
+<td>Biosafety Material Category</td>
+<td><code>biosafety_material_category</code></td>
+<td>BiosafetyMaterialCategoryEnum</td>
+<td></td>
+</tr>
+<tr>
+<td>GC Content %</td>
+<td><code>gc_content</code></td>
+<td>QuantityValue</td>
+<td>Unit <code>%</code></td>
+</tr>
+<tr>
+<td>Ploidy Comments</td>
+<td><code>ploidy</code></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>Reference Genome</td>
+<td><code>reference_genome</code></td>
+<td>string</td>
+<td>IMG taxon OID preferred</td>
+</tr>
+<tr>
+<td>Ribosomal Sequence</td>
+<td><code>ribosomal_sequence</code></td>
+<td>string</td>
+<td>Only ACGTN, no header</td>
+</tr>
+<tr>
+<td>Ribosomal Sequence Type</td>
+<td><code>ribosomal_sequence_type</code></td>
+<td>RibosomalSequenceTypeEnum</td>
+<td>16S, ITS, etc.</td>
+</tr>
+<tr>
+<td>Is Sample from Single Colony</td>
+<td><code>single_colony_isolation</code></td>
+<td>GoldYesNoEnum</td>
+<td>Y/N</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td><code>analyte_volume</code></td>
+<td>QuantityValue</td>
+<td>Unit <code>uL</code></td>
+</tr>
+<tr>
+<td>Sample Container</td>
+<td><code>sample_container</code></td>
+<td>SampleContainerEnum</td>
+<td>tube or plate</td>
+</tr>
+<tr>
+<td>Sample Format</td>
+<td><code>sample_format</code></td>
+<td>SampleFormatEnum</td>
+<td>Pellet, Ethanol, etc.</td>
+</tr>
+<tr>
+<td>Was Sample DNAse Treated</td>
+<td><code>dnase_treated</code></td>
+<td>GoldYesNoEnum</td>
+<td>Y/N</td>
+</tr>
+<tr>
+<td>Tube or Plate Label</td>
+<td><code>tube_or_plate_label</code></td>
+<td>string</td>
+<td>Must be unique, &lt;20 chars</td>
+</tr>
+<tr>
+<td>Plate Location (Well #)</td>
+<td><code>plate_well_location</code></td>
+<td>string</td>
+<td>e.g., A4, B5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="jgi-quirks">JGI quirks</h3>
+<ul>
+<li><strong>What JGI calls an "isolate sample"</strong> is really a vial of extracted
+  DNA/RNA. The form conflates organism identity with physical analyte
+  properties (concentration, volume, absorbance). In NMDC terms, a JGI
+  isolate submission spans both <code>OrganismSample</code> and <code>ProcessedSample</code>.</li>
+<li><strong>Genus/Species as separate fields</strong>: MIxS lumps these into
+  <code>subspecf_gen_lin</code> or derives from <code>samp_taxon_id</code>. JGI requires
+  separate fields.</li>
+<li><strong>Ribosomal sequence verification</strong>: JGI requires actual nucleotide
+  sequence data (16S &gt;1300 nt or ITS &gt;450 nt) for strain verification.
+  No other source system requires this.</li>
+</ul>
+<hr />
+<h2 id="cross-authority-slot-overlap">Cross-Authority Slot Overlap</h2>
+<p>Many slots are shared across authorities. The <code>in_subset</code> annotations on
+each slot indicate which authorities use it. When populating an
+OrganismSample, you may draw data from multiple sources for the same
+record:</p>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>MIGS-Ba</th>
+<th>GOLD</th>
+<th>JGI</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>samp_taxon_id</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>All three provide NCBI taxonomy</td>
+</tr>
+<tr>
+<td><code>collection_date</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>GOLD splits into year/month/day</td>
+</tr>
+<tr>
+<td><code>geo_loc_name</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lat_lon</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>GOLD has separate lat/lon columns</td>
+</tr>
+<tr>
+<td><code>env_broad_scale</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>Often free text; needs ENVO curation</td>
+</tr>
+<tr>
+<td><code>isol_growth_condt</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>biotic_relationship</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td><code>rel_to_oxygen</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>—</td>
+<td>GOLD calls it <code>oxygen_requirement</code></td>
+</tr>
+<tr>
+<td><code>temp</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>—</td>
+<td>GOLD has growth + collection temps</td>
+</tr>
+<tr>
+<td><code>depth</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>—</td>
+<td>GOLD has range (depth/depth2)</td>
+</tr>
+<tr>
+<td><code>nucl_acid_ext</code></td>
+<td>yes</td>
+<td>—</td>
+<td>yes</td>
+<td>JGI captures extraction method</td>
+</tr>
+<tr>
+<td><code>samp_store_temp</code></td>
+<td>—</td>
+<td>yes</td>
+<td>yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>See <code>assets/yq-for-mixs-customizations.txt</code> for the complete subset
+assignments on MIxS-derived slots.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "hide_page_title"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
+      
+    
+  </body>
+</html>
