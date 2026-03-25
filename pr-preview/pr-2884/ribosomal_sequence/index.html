@@ -728,7 +728,7 @@
 
 
 <h1 id="slot-ribosomal-sequence-ribosomal_sequence">Slot: ribosomal sequence (ribosomal_sequence)</h1>
-<p><em>Nucleotide sequence used for strain verification. Must contain only A, C, G, T, or N characters with no header. At least one ribosomal sequence is required for all microbial and fungal genome projects.</em></p>
+<p><em>Nucleotide sequence used for strain verification. Must contain only A, C, G, T, or N characters (case-insensitive) with no header. At least one ribosomal sequence is required for all microbial and fungal genome projects.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/ribosomal_sequence">nmdc:ribosomal_sequence</a></p>
 <h2 id="inheritance">Inheritance</h2>
@@ -757,7 +757,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../String/">String</a></p>
+</li>
+<li>
+<p>Regex pattern: <code>^[ACGTNacgtn]+$</code></p>
+</li>
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
@@ -788,8 +793,8 @@
 
 <pre><code class="language-yaml">name: ribosomal_sequence
 description: Nucleotide sequence used for strain verification. Must contain only A,
-  C, G, T, or N characters with no header. At least one ribosomal sequence is required
-  for all microbial and fungal genome projects.
+  C, G, T, or N characters (case-insensitive) with no header. At least one ribosomal
+  sequence is required for all microbial and fungal genome projects.
 title: ribosomal sequence
 comments:
 - 'JGI: 16S sequence MUST be &gt;1300 nt with &lt;10% Ns for microbial drafts. ITS sequence
@@ -802,6 +807,7 @@ alias: ribosomal_sequence
 domain_of:
 - OrganismSample
 range: string
+pattern: ^[ACGTNacgtn]+$
 
 </code></pre>
 

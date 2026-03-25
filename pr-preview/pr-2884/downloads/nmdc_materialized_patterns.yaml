@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.1.post25.dev0+06c206f32
+version: 11.17.1.post26.dev0+e0a5b666d
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -18633,8 +18633,8 @@ slots:
   ribosomal_sequence:
     name: ribosomal_sequence
     description: Nucleotide sequence used for strain verification. Must contain only
-      A, C, G, T, or N characters with no header. At least one ribosomal sequence
-      is required for all microbial and fungal genome projects.
+      A, C, G, T, or N characters (case-insensitive) with no header. At least one
+      ribosomal sequence is required for all microbial and fungal genome projects.
     title: ribosomal sequence
     comments:
     - 'JGI: 16S sequence MUST be >1300 nt with <10% Ns for microbial drafts. ITS sequence
@@ -18643,6 +18643,7 @@ slots:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
+    pattern: ^[ACGTNacgtn]+$
   ribosomal_sequence_type:
     name: ribosomal_sequence_type
     description: Type of ribosomal sequence provided for strain verification.
@@ -18663,13 +18664,14 @@ slots:
   second_ribosomal_sequence:
     name: second_ribosomal_sequence
     description: Optional secondary ribosomal sequence for additional verification.
-      Must contain only A, C, G, T, or N characters with no header.
+      Must contain only A, C, G, T, or N characters (case-insensitive) with no header.
     title: second ribosomal sequence
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: ribosomal_sequence
     range: string
+    pattern: ^[ACGTNacgtn]+$
   second_ribosomal_sequence_type:
     name: second_ribosomal_sequence_type
     description: Type of the secondary ribosomal sequence.

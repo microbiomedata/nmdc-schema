@@ -13474,7 +13474,8 @@
                     "description": "Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments"
                 },
                 "ribosomal_sequence": {
-                    "description": "Nucleotide sequence used for strain verification. Must contain only A, C, G, T, or N characters with no header. At least one ribosomal sequence is required for all microbial and fungal genome projects.",
+                    "description": "Nucleotide sequence used for strain verification. Must contain only A, C, G, T, or N characters (case-insensitive) with no header. At least one ribosomal sequence is required for all microbial and fungal genome projects.",
+                    "pattern": "^[ACGTNacgtn]+$",
                     "type": [
                         "string",
                         "null"
@@ -13641,7 +13642,8 @@
                     ]
                 },
                 "second_ribosomal_sequence": {
-                    "description": "Optional secondary ribosomal sequence for additional verification. Must contain only A, C, G, T, or N characters with no header.",
+                    "description": "Optional secondary ribosomal sequence for additional verification. Must contain only A, C, G, T, or N characters (case-insensitive) with no header.",
+                    "pattern": "^[ACGTNacgtn]+$",
                     "type": [
                         "string",
                         "null"
@@ -17122,6 +17124,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.17.1.post25.dev0+06c206f32"
+    "version": "11.17.1.post26.dev0+e0a5b666d"
 }
 

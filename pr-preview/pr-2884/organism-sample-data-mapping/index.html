@@ -1222,8 +1222,8 @@ the environmental package suffix (e.g., <code>MIGS.ba.soil.6.0</code>,
 <tr>
 <td><code>ref_biomaterial</code></td>
 <td><code>ref_biomaterial</code></td>
-<td>TextValue</td>
-<td>Wrap</td>
+<td>Doi</td>
+<td>Wrap as Doi with doi_category: publication_doi</td>
 </tr>
 <tr>
 <td><code>biotic_relationship</code></td>
@@ -1240,8 +1240,8 @@ the environmental package suffix (e.g., <code>MIGS.ba.soil.6.0</code>,
 <tr>
 <td><code>estimated_size</code></td>
 <td><code>estimated_size</code></td>
-<td>string</td>
-<td>Parse; NCBI may say "1M bp" → "1000000"</td>
+<td>QuantityValue</td>
+<td>Parse to numeric; has_unit: '1' (base pair count)</td>
 </tr>
 <tr>
 <td><code>pathogenicity</code></td>
@@ -2001,7 +2001,7 @@ spreadsheet, not on programmatic data access.</p>
 <tr>
 <td>Is Sample from Single Colony</td>
 <td><code>single_colony_isolation</code></td>
-<td>GoldYesNoEnum</td>
+<td>YesNoEnum</td>
 <td>Y/N</td>
 </tr>
 <tr>
@@ -2025,7 +2025,7 @@ spreadsheet, not on programmatic data access.</p>
 <tr>
 <td>Was Sample DNAse Treated</td>
 <td><code>dnase_treated</code></td>
-<td>GoldYesNoEnum</td>
+<td>YesNoEnum</td>
 <td>Y/N</td>
 </tr>
 <tr>

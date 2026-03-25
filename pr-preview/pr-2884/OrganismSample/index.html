@@ -4464,8 +4464,8 @@ attributes:
   ribosomal_sequence:
     name: ribosomal_sequence
     description: Nucleotide sequence used for strain verification. Must contain only
-      A, C, G, T, or N characters with no header. At least one ribosomal sequence
-      is required for all microbial and fungal genome projects.
+      A, C, G, T, or N characters (case-insensitive) with no header. At least one
+      ribosomal sequence is required for all microbial and fungal genome projects.
     title: ribosomal sequence
     comments:
     - 'JGI: 16S sequence MUST be &gt;1300 nt with &lt;10% Ns for microbial drafts. ITS sequence
@@ -4479,6 +4479,7 @@ attributes:
     domain_of:
     - OrganismSample
     range: string
+    pattern: ^[ACGTNacgtn]+$
   ribosomal_sequence_type:
     name: ribosomal_sequence_type
     description: Type of ribosomal sequence provided for strain verification.
@@ -4509,7 +4510,7 @@ attributes:
   second_ribosomal_sequence:
     name: second_ribosomal_sequence
     description: Optional secondary ribosomal sequence for additional verification.
-      Must contain only A, C, G, T, or N characters with no header.
+      Must contain only A, C, G, T, or N characters (case-insensitive) with no header.
     title: second ribosomal sequence
     in_subset:
     - jgi_isolate
@@ -4521,6 +4522,7 @@ attributes:
     domain_of:
     - OrganismSample
     range: string
+    pattern: ^[ACGTNacgtn]+$
   second_ribosomal_sequence_type:
     name: second_ribosomal_sequence_type
     description: Type of the secondary ribosomal sequence.
