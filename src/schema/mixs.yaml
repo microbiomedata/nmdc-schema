@@ -7260,14 +7260,23 @@ slots:
   estimated_size:
     annotations:
       Expected_value: number of base pairs
-    description: The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period
+      Preferred_unit: base pairs (UCUM has no bp unit; use dimensionless count '1'. See also UO:0000244)
+      storage_units: '1'
+    description: The estimated size of the genome (in base pairs) prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period
     title: estimated size
     examples:
-      - value: 300000 bp
+      - value: ''
+        object:
+          has_numeric_value: 300000
+          has_raw_value: "300000 bp"
+          has_unit: '1'
+          type: nmdc:QuantityValue
+    comments:
+      - "Unit is UCUM dimensionless '1' because UCUM has no base pair unit. The count represents base pairs per nmdc-schema#2896."
     keywords:
       - size
-    string_serialization: '{integer} bp'
     slot_uri: MIXS:0000024
+    range: QuantityValue
     in_subset:
       - migs_ba
   encoded_traits:

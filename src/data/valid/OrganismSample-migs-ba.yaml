@@ -73,7 +73,11 @@ rel_to_oxygen: aerobe
 trophic_level: heterotroph
 subspecf_gen_lin: "Halalkalibacterium halodurans"
 oxy_stat_samp: aerobic
-estimated_size: "1000000"
+estimated_size:
+  has_numeric_value: 1000000
+  has_raw_value: "1000000 bp"
+  has_unit: '1'
+  type: nmdc:QuantityValue
 
 # Sample collection (MIGS-Ba Recommended/Optional)
 depth:
