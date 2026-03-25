@@ -873,6 +873,13 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.env_local_scale.in_subset = ["migs_ba", "gold_organism"]'
 '.slots.env_medium.in_subset = ["migs_ba", "gold_organism"]'
 '.slots.estimated_size.in_subset = ["migs_ba"]'
+# Change estimated_size from string to QuantityValue (#2896, #2902)
+# UCUM has no base pair unit — use dimensionless '1'. See also UO:0000244.
+'.slots.estimated_size.range = "QuantityValue"'
+'.slots.estimated_size.annotations.Preferred_unit = "base pairs (UCUM has no bp unit; use dimensionless count 1. See also UO:0000244)"'
+'.slots.estimated_size.annotations.storage_units = "1"'
+'.slots.estimated_size.comments = ["Unit is UCUM dimensionless 1 because UCUM has no base pair unit. The count represents base pairs. See nmdc-schema#2896."]'
+'del(.slots.estimated_size.string_serialization)'
 '.slots.experimental_factor.in_subset = ["migs_ba"]'
 '.slots.extrachrom_elements.in_subset = ["migs_ba"]'
 '.slots.feat_pred.in_subset = ["migs_ba"]'
@@ -902,6 +909,12 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.pressure.in_subset = ["gold_organism"]'
 '.slots.project_name.in_subset = ["migs_ba"]'
 '.slots.ref_biomaterial.in_subset = ["migs_ba", "gold_organism"]'
+# Change ref_biomaterial from TextValue to Doi class (#2895)
+# MIxS allows PMID/DOI/URL; NMDC narrows to DOI for consistency with associated_dois on Study.
+'.slots.ref_biomaterial.range = "Doi"'
+'.slots.ref_biomaterial.inlined = true'
+'.slots.ref_biomaterial.comments = ["MIxS MIGS-Ba allows PMID, DOI, or URL. NMDC narrows to DOI using the Doi class for consistency. See nmdc-schema#2895. PMIDs should be converted to their corresponding DOIs."]'
+'del(.slots.ref_biomaterial.structured_pattern)'
 '.slots.ref_db.in_subset = ["migs_ba"]'
 '.slots.rel_to_oxygen.in_subset = ["migs_ba", "gold_organism"]'
 '.slots.salinity.in_subset = ["gold_organism"]'
