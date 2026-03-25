@@ -1,0 +1,83 @@
+# JGI Isolate (NA) v19 submission example: Amycolatopsis sp. ICBG1012
+# Based on real data from row 3 of Danielle Graham's JGI isolate submission
+# spreadsheet "JGI isolate metadata_Pupo.xlsx" (Pupo project, 2017)
+# Bacterium isolated from a fungus-growing ant (Apterostigma) in Brazil
+# Demonstrates jgi_isolate subset slots on OrganismSample
+id: nmdc:orgsm-99-jgiisolate
+type: nmdc:OrganismSample
+name: Amycolatopsis sp. ICBG1012
+description: >-
+  Amycolatopsis sp. strain ICBG1012, isolated from the fungus-growing ant
+  Apterostigma in Parque Nacional de Anavilhanas, Amazonas, Brazil.
+  JGI Isolate (NA) v19 submission from Danielle Graham (Pupo project).
+associated_studies:
+  - nmdc:sty-99-abc123
+
+# Taxonomy and organism identity
+samp_taxon_id:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: NCBITaxon:1813
+  term:
+    id: NCBITaxon:1813
+    type: nmdc:OntologyClass
+samp_name: Amycolatopsis_sp_ICBG1012
+ncbi_taxonomy_name: Amycolatopsis sp.
+source_mat_id:
+  type: nmdc:TextValue
+  has_raw_value: "ICBG1012"
+organism_genus: Amycolatopsis
+organism_species: sp.
+
+# Genome characteristics
+estimated_size: "10000000"
+
+# Strain verification
+ribosomal_sequence: "TTCGGGTGTTACCGACTTTCTGACGTGACGGGCGGTGTGTACAAGGCCCGGGAACGTATTCACCGCAGCGTTGCTGATCTGCGATTACTAGCGACTCCGACTTCACGCAGTCGAGTTGCAGACTGCGATCCGAACTGAGACCGGCTTTAAGGGATTCGCTCCACCTCACGGTATCGCAGCCCTCTGTACCAGCCATTGTAGCATGTGTGAAGCCCTGGACATAAGGGGCATGATGACTTGACGTCATCCCCACCTTCCTCCGAGTTGACCCCGGCAGTCTCCCACGAGTCCCCGGCCGAACCGCTGGCAACATAGGATAAGGGTTGCGCTCGTTGCGGGACTTAACCCAACATCTCACGACACGAGCTGACGACAGCCATGCACCACCTGTACACCAACCACAGGGAAGCCCTATCTCTAGGGATGTCTGGCGCATGTCAAGCCCAGGTAAGGTTCTTCGCGTTGCATCGAATTAATCCACATGCTCCGCCGCTTGTGCGGGCCCCCGTCAATTCCTTTGAGTTTTAGCCTTGCGGCCGTACTCCCCAGGCGGGGCGCCTTAATGCGTTAGCTACGGCACGGACAACGTGGATGTCGCCCACACCTAGCGCCCAACGTTTACAGCGTGGACTACCAGGGTATCTAATCCTGTTCGCTCCCCACCGCTTTCGCTCTCAGCGTCAGTATCGGCCCAGAGACCCGCCTTCGCCACCGGTGTTCCTCCTGATATCTGCGCATTTCACCGCTACACCAGGAATTCCAGTCTCCCCTACCGAACTCAAGTCTGCCCGTATCGACTGCAAGCTGAAGGTTAAGCCTCCAGTTTTCACAGCCGACGCCGACAAACCGCCTACGAGCTCTTTACGCCCAATAATTCCGGACAACGCTCGCACCCTACGTATTACCGCGGCTGCTGGCACGTAGTTAGCCGTGCTTCTTCTACAGGTACCGTCAGTCACCCTTCGTCCCTGTCGAAAGAGGTTTACAACCCGAAGGCCGTCATCCCTCACGCGGCGTCGCTGCATCAGGCTTGCGCCCATTGTGCAATATTCCCCACTGCTGCCTCCCGTAGGAGTCTGGGCCGTGTCTCAGTCCCAGTGTGGCCGGTCGCCCTCTCAGGCCGGCTACCCGTCGTCGCCTTGGTGGGCCATTACCCCACCAACAAGCTGATAGGCCGCGGGTTCATCCTGTACCGCCGGAGCTTTCCACCACACACCATGCGATGCGCGGTCATATCCGGATTATAGACCCGTTGGNCAGGGCTTATCCCAAAGTACAGGGCAGATACCCCGTTGCTCACCCGTTCGCCACTAATCCACCCCTTTAACGGTTACCTTGTTACCGACTTGCATGTTAA"
+ribosomal_sequence_type: 16S
+
+# Biosafety
+biosafety_material_category: Bacteria
+
+# Organism biology
+single_colony_isolation: "yes"
+isol_growth_condt:
+  type: nmdc:TextValue
+  has_raw_value: "Parque Nacional de Anavilhanas, Amazonas, Brazil; isolated from the fungus-growing ant Apterostigma"
+
+# Collection and provenance
+collection_date:
+  type: nmdc:TimestampValue
+  has_raw_value: "2017-01-20"
+geo_loc_name:
+  type: nmdc:TextValue
+  has_raw_value: "Brazil: Amazonas, Parque Nacional de Anavilhanas"
+lat_lon:
+  type: nmdc:GeolocationValue
+  has_raw_value: "-2.35 S 60.73 W"
+  latitude: -2.35
+  longitude: -60.73
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:01000228
+  term:
+    id: ENVO:01000228
+    type: nmdc:OntologyClass
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00000062
+  term:
+    id: ENVO:00000062
+    type: nmdc:OntologyClass
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:01001055
+  term:
+    id: ENVO:01001055
+    type: nmdc:OntologyClass
+sample_collection_site: Parque Nacional de Anavilhanas
+
+# Analyte / physical sample slots intentionally excluded from this example.
+# Slots like analyte_volume, sample_container, sample_format, tube_or_plate_label,
+# plate_well_location, and dnase_treated describe the extracted DNA vial rather
+# than the organism. Their placement on OrganismSample is under review per
+# Alicia Clum's feedback on PR #2884.

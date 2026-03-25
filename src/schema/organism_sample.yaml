@@ -73,7 +73,6 @@ enums:
   YesNoUnknownEnum:
     description: >-
       Tri-state value for fields where the answer may not be known.
-      Used for GOLD organism_v2 fields that store "Yes"/"No"/"Unknown".
     permissible_values:
       "yes": {}
       "no": {}
