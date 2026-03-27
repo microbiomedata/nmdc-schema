@@ -2687,7 +2687,7 @@
                     ]
                 },
                 "name": {
-                    "description": "-> A local identifier or name that for the material sample collected. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. For NMDC this should be unique within a study. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name.",
+                    "description": "A local identifier or name for the material sample collected. It can have any format, but we suggest that you make it concise, unique, and consistent within your lab, and as informative as possible. For NMDC this should be unique within a study. INSDC requires every sample name from a single submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to the name slot.",
                     "type": "string"
                 },
                 "ncbi_taxonomy_name": {
@@ -15663,6 +15663,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.17.1.post25.dev0+066d82893"
+    "version": "11.17.1.post26.dev0+682d81845"
 }
 
