@@ -61,10 +61,11 @@ from nmdc_schema.ontology_alignment_prototype import (
     help="Comma-separated quotas per match type to keep the shortlist informative",
 )
 @click.option(
-    "--resolve-review-metadata/--skip-review-metadata",
-    default=True,
+    "--metadata-backend",
+    type=click.Choice(["ols4", "oaklib", "none"], case_sensitive=False),
+    default="ols4",
     show_default=True,
-    help="Fetch richer metadata only for shortlisted rows",
+    help="Metadata backend for shortlisted rows",
 )
 def cli(
     enriched_results: str,
@@ -74,7 +75,7 @@ def cli(
     preferred_buckets: str,
     max_per_subject: int,
     match_type_quotas: str,
-    resolve_review_metadata: bool,
+    metadata_backend: str,
 ) -> None:
     """Build a human-review shortlist from enriched alignment rows."""
     rows = read_alignment_rows(enriched_results)
@@ -85,7 +86,7 @@ def cli(
         max_per_subject=max_per_subject,
         match_type_quotas=parse_quota_option(match_type_quotas),
     )
-    review_rows = enrich_review_rows(shortlist, resolve_ols_metadata=resolve_review_metadata)
+    review_rows = enrich_review_rows(shortlist, metadata_backend=metadata_backend)
 
     Path(output).parent.mkdir(parents=True, exist_ok=True)
     Path(summary_json).parent.mkdir(parents=True, exist_ok=True)

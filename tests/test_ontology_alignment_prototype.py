@@ -1,12 +1,15 @@
 from nmdc_schema.ontology_alignment_prototype import (
     OlsEntityMetadata,
     SchemaElementRecord,
+    MetadataResolution,
     classify_alignment,
     enrich_review_rows,
     lexical_profile,
     match_type,
     normalize_text,
+    oaklib_available,
     parse_quota_option,
+    resolve_entity_metadata,
     review_flags,
     shortlist_alignment_rows,
     structural_support,
@@ -183,7 +186,7 @@ def test_shortlist_respects_match_type_quotas():
 
 def test_enrich_review_rows_without_metadata_leaves_rows_unchanged():
     rows = [{"subject_id": "nmdc:a", "object_id": "OBI:1", "object_source": "OBI"}]
-    enriched = enrich_review_rows(rows, resolve_ols_metadata=False)
+    enriched = enrich_review_rows(rows, metadata_backend="none")
     assert enriched == rows
 
 
@@ -232,3 +235,28 @@ def test_parse_quota_option():
         "slot->class": 10,
         "pv->class": 15,
     }
+
+
+def test_oaklib_available_returns_boolean():
+    assert isinstance(oaklib_available(), bool)
+
+
+def test_resolve_entity_metadata_falls_back_when_oaklib_unavailable():
+    resolution = resolve_entity_metadata("OBI:0000366", "OBI", backend="oaklib")
+    assert isinstance(resolution, MetadataResolution)
+    assert resolution.requested_backend == "oaklib"
+    assert resolution.resolved_backend == "ols4_fallback"
+
+
+def test_summarize_review_rows_counts_metadata_backend():
+    rows = [
+        {
+            "structural_bucket": "strong_semantic_weak_lexical_structurally_supported",
+            "object_source": "OBI",
+            "match_type": "slot->class",
+            "metadata_backend_resolved": "ols4",
+            "review_flags": "semantic_rescue",
+        }
+    ]
+    summary = summarize_review_rows(rows)
+    assert summary["by_metadata_backend"]["ols4"] == 1

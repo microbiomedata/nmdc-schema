@@ -1,8 +1,8 @@
 """Helpers for comparing semantic alignment hits against lexical strength.
 
 This module is intentionally lightweight so it can run in the base nmdc-schema
-environment while exposing optional hooks for oaklib, schema-automator, and
-linkml-store when those packages are available.
+environment while supporting an oaklib-backed metadata path and leaving room
+for additional LinkML ecosystem backends.
 """
 
 from __future__ import annotations
@@ -88,6 +88,15 @@ class OlsEntityMetadata:
     description: str = ""
     is_obsolete: bool = False
     synonyms: tuple[str, ...] = tuple()
+
+
+@dataclass(frozen=True)
+class MetadataResolution:
+    """Resolved metadata plus provenance about how it was obtained."""
+
+    metadata: OlsEntityMetadata
+    requested_backend: str
+    resolved_backend: str
 
 
 def normalize_text(text: str) -> str:
@@ -382,6 +391,11 @@ def parse_quota_option(value: str | None) -> dict[str, int]:
     return quotas
 
 
+def oaklib_available() -> bool:
+    """Return True when oaklib is importable in the current environment."""
+    return importlib.util.find_spec("oaklib") is not None
+
+
 def ols_entity_metadata(
     object_id: str,
     object_source: str,
@@ -424,6 +438,100 @@ def ols_entity_metadata(
 
     cache[cache_key] = metadata
     return metadata
+
+
+def oaklib_entity_metadata(
+    object_id: str,
+    object_source: str,
+    cache: dict[tuple[str, str], OlsEntityMetadata],
+) -> OlsEntityMetadata:
+    """Resolve minimal metadata through oaklib when available in the environment.
+
+    This is intentionally conservative for the first integration step:
+    - if oaklib is not installed in the current environment, return empty metadata
+    - if oaklib is available, try label/definition/synonym access without
+      forcing a specific backend configuration
+    """
+    cache_key = (object_id, object_source)
+    if cache_key in cache:
+        return cache[cache_key]
+
+    metadata = OlsEntityMetadata(
+        object_id=object_id,
+        object_source=object_source,
+        object_kind="class",
+        label="",
+        iri="",
+        description="",
+    )
+    if not oaklib_available():
+        cache[cache_key] = metadata
+        return metadata
+
+    try:
+        from oaklib import get_adapter
+    except Exception:
+        cache[cache_key] = metadata
+        return metadata
+
+    try:
+        adapter = get_adapter(object_id)
+        label = adapter.label(object_id) or ""
+        definition = ""
+        if hasattr(adapter, "definition"):
+            definition = adapter.definition(object_id) or ""
+        synonyms: tuple[str, ...] = tuple()
+        if hasattr(adapter, "entity_aliases"):
+            aliases = adapter.entity_aliases(object_id) or []
+            synonyms = tuple(str(alias) for alias in aliases if alias)
+        metadata = OlsEntityMetadata(
+            object_id=object_id,
+            object_source=object_source,
+            object_kind="class",
+            label=label,
+            iri="",
+            description=definition,
+            synonyms=synonyms,
+        )
+    except Exception:
+        pass
+
+    cache[cache_key] = metadata
+    return metadata
+
+
+def resolve_entity_metadata(
+    object_id: str,
+    object_source: str,
+    backend: str,
+    ols_cache: dict[tuple[str, str], OlsEntityMetadata] | None = None,
+    oaklib_cache: dict[tuple[str, str], OlsEntityMetadata] | None = None,
+) -> MetadataResolution:
+    """Resolve metadata from the requested backend with graceful fallback."""
+    requested_backend = (backend or "none").lower()
+    ols_cache = ols_cache or {}
+    oaklib_cache = oaklib_cache or {}
+
+    if requested_backend == "none":
+        metadata = OlsEntityMetadata(
+            object_id=object_id,
+            object_source=object_source,
+            object_kind="class",
+            label="",
+            iri="",
+            description="",
+        )
+        return MetadataResolution(metadata=metadata, requested_backend=requested_backend, resolved_backend="none")
+
+    if requested_backend == "oaklib":
+        if oaklib_available():
+            metadata = oaklib_entity_metadata(object_id, object_source, oaklib_cache)
+            return MetadataResolution(metadata=metadata, requested_backend=requested_backend, resolved_backend="oaklib")
+        metadata = ols_entity_metadata(object_id, object_source, ols_cache)
+        return MetadataResolution(metadata=metadata, requested_backend=requested_backend, resolved_backend="ols4_fallback")
+
+    metadata = ols_entity_metadata(object_id, object_source, ols_cache)
+    return MetadataResolution(metadata=metadata, requested_backend=requested_backend, resolved_backend="ols4")
 
 
 def match_type(subject_category: str, object_kind: str) -> str:
@@ -674,17 +782,25 @@ def review_flags(row: dict[str, Any]) -> tuple[str, ...]:
 
 def enrich_review_rows(
     rows: list[dict[str, Any]],
-    resolve_ols_metadata: bool = True,
+    metadata_backend: str = "ols4",
 ) -> list[dict[str, Any]]:
     """Enrich a small review shortlist with more term metadata."""
-    if not resolve_ols_metadata:
+    if (metadata_backend or "none").lower() == "none":
         return rows
 
-    metadata_cache: dict[tuple[str, str], OlsEntityMetadata] = {}
+    ols_cache: dict[tuple[str, str], OlsEntityMetadata] = {}
+    oaklib_cache: dict[tuple[str, str], OlsEntityMetadata] = {}
     enriched_rows: list[dict[str, Any]] = []
     for rank, row in enumerate(rows, start=1):
         source = (row.get("object_source") or "").upper()
-        metadata = ols_entity_metadata(row.get("object_id", ""), source, metadata_cache)
+        resolution = resolve_entity_metadata(
+            row.get("object_id", ""),
+            source,
+            backend=metadata_backend,
+            ols_cache=ols_cache,
+            oaklib_cache=oaklib_cache,
+        )
+        metadata = resolution.metadata
         updated = {
             **row,
             "review_rank": rank,
@@ -694,6 +810,8 @@ def enrich_review_rows(
             "object_description": metadata.description[:500],
             "object_is_obsolete": metadata.is_obsolete,
             "object_synonyms": "|".join(metadata.synonyms[:20]),
+            "metadata_backend_requested": resolution.requested_backend,
+            "metadata_backend_resolved": resolution.resolved_backend,
             "review_flags": "",
         }
         updated["review_flags"] = "|".join(review_flags(updated))
@@ -708,15 +826,19 @@ def summarize_review_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "by_structural_bucket": {},
         "by_object_source": {},
         "by_match_type": {},
+        "by_metadata_backend": {},
         "by_review_flag": {},
     }
     for row in rows:
         bucket = row.get("structural_bucket", "")
         source = row.get("object_source", "")
         match_type_value = row.get("match_type", "")
+        resolved_backend = row.get("metadata_backend_resolved", "")
         summary["by_structural_bucket"][bucket] = summary["by_structural_bucket"].get(bucket, 0) + 1
         summary["by_object_source"][source] = summary["by_object_source"].get(source, 0) + 1
         summary["by_match_type"][match_type_value] = summary["by_match_type"].get(match_type_value, 0) + 1
+        if resolved_backend:
+            summary["by_metadata_backend"][resolved_backend] = summary["by_metadata_backend"].get(resolved_backend, 0) + 1
         for flag in (row.get("review_flags", "") or "").split("|"):
             if flag:
                 summary["by_review_flag"][flag] = summary["by_review_flag"].get(flag, 0) + 1
@@ -724,9 +846,9 @@ def summarize_review_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
 
 def available_tooling() -> dict[str, bool]:
-    """Report whether optional ecosystem tools are importable."""
+    """Report whether ecosystem backends are importable in the current environment."""
     return {
-        "oaklib": importlib.util.find_spec("oaklib") is not None,
+        "oaklib": oaklib_available(),
         "schema_automator": importlib.util.find_spec("schema_automator") is not None,
         "linkml_store": importlib.util.find_spec("linkml_store") is not None,
     }
