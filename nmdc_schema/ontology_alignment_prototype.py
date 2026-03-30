@@ -99,6 +99,28 @@ class MetadataResolution:
     resolved_backend: str
 
 
+@dataclass(frozen=True)
+class SubjectQueryRecord:
+    """Minimal representation of an NMDC subject used for retrieval."""
+
+    subject_id: str
+    subject_label: str
+    subject_category: str
+    subject_description: str
+
+
+@dataclass(frozen=True)
+class OntologyTermRecord:
+    """Minimal local ontology record used for LinkML-side semantic search."""
+
+    object_id: str
+    object_label: str
+    object_source: str
+    object_kind: str
+    object_description: str = ""
+    object_synonyms: tuple[str, ...] = tuple()
+
+
 def normalize_text(text: str) -> str:
     """Normalize text for rough lexical comparison."""
     text = text or ""
@@ -396,6 +418,11 @@ def oaklib_available() -> bool:
     return importlib.util.find_spec("oaklib") is not None
 
 
+def linkml_store_available() -> bool:
+    """Return True when linkml-store is importable in the current environment."""
+    return importlib.util.find_spec("linkml_store") is not None
+
+
 def ols_entity_metadata(
     object_id: str,
     object_source: str,
@@ -532,6 +559,222 @@ def resolve_entity_metadata(
 
     metadata = ols_entity_metadata(object_id, object_source, ols_cache)
     return MetadataResolution(metadata=metadata, requested_backend=requested_backend, resolved_backend="ols4")
+
+
+def read_unique_subjects(
+    alignment_results_path: str | Path,
+    allowed_subject_categories: set[str] | None = None,
+    max_subjects: int | None = None,
+) -> list[SubjectQueryRecord]:
+    """Read distinct NMDC subjects from an alignment TSV while preserving first-seen order."""
+    allowed_subject_categories = {item.lower() for item in (allowed_subject_categories or set())}
+    unique: dict[str, SubjectQueryRecord] = {}
+    for row in read_alignment_rows(alignment_results_path):
+        subject_category = (row.get("subject_category") or "").lower()
+        if allowed_subject_categories and subject_category not in allowed_subject_categories:
+            continue
+        subject_id = row.get("subject_id", "")
+        if not subject_id or subject_id in unique:
+            continue
+        unique[subject_id] = SubjectQueryRecord(
+            subject_id=subject_id,
+            subject_label=row.get("subject_label", ""),
+            subject_category=subject_category,
+            subject_description=row.get("subject_description", ""),
+        )
+        if max_subjects is not None and len(unique) >= max_subjects:
+            break
+    return list(unique.values())
+
+
+def compose_subject_query_text(subject: SubjectQueryRecord) -> str:
+    """Compose a stable semantic-search query for an NMDC schema subject."""
+    category = subject.subject_category.replace("_", " ").strip()
+    label = (subject.subject_label or "").strip()
+    description = (subject.subject_description or "").strip()
+    parts = [part for part in (label, description) if part]
+    if category:
+        parts.append(f"schema element type: {category}")
+    return " :: ".join(parts)
+
+
+def compose_ontology_term_search_text(term: OntologyTermRecord) -> str:
+    """Compose the text payload indexed for a local ontology term."""
+    parts = [part for part in (term.object_label, "; ".join(term.object_synonyms), term.object_description) if part]
+    return " :: ".join(parts)
+
+
+def harvest_oaklib_ontology_terms(
+    adapter_handle: str,
+    ontology_prefix: str,
+    max_terms: int | None = None,
+) -> list[OntologyTermRecord]:
+    """Harvest local ontology terms through oaklib for LinkML-side retrieval."""
+    if not oaklib_available():
+        raise RuntimeError("oaklib is required to harvest ontology terms")
+
+    from oaklib import get_adapter
+
+    adapter = get_adapter(adapter_handle)
+    prefix = ontology_prefix.upper()
+    harvested: list[OntologyTermRecord] = []
+    for curie in adapter.entities(filter_obsoletes=True):
+        if not curie.startswith(f"{prefix}:"):
+            continue
+        label = adapter.label(curie) or ""
+        if not label:
+            continue
+        description = adapter.definition(curie) if hasattr(adapter, "definition") else ""
+        aliases = adapter.entity_aliases(curie) if hasattr(adapter, "entity_aliases") else []
+        harvested.append(
+            OntologyTermRecord(
+                object_id=curie,
+                object_label=label,
+                object_source=prefix,
+                object_kind="class",
+                object_description=description or "",
+                object_synonyms=tuple(str(alias) for alias in (aliases or []) if alias),
+            )
+        )
+        if max_terms is not None and len(harvested) >= max_terms:
+            break
+    return harvested
+
+
+def _linkml_store_similarity_search(
+    query_text: str,
+    vectors: list[tuple[str, Any]],
+    indexer: Any,
+    limit: int,
+    cache_queries: bool = True,
+) -> list[tuple[float, str]]:
+    """Search precomputed vectors with a cached linkml-store query embedding."""
+    if not vectors:
+        return []
+
+    if cache_queries:
+        query_vector = indexer.text_to_vector(query_text, cache=True)
+    else:
+        query_vector = indexer.text_to_vector(query_text, cache=False)
+
+    from linkml_store.utils.vector_utils import pairwise_cosine_similarity
+
+    distances = [(float(pairwise_cosine_similarity(query_vector, item_vector)), item_id) for item_id, item_vector in vectors]
+    distances.sort(key=lambda item: -item[0])
+    return distances[:limit]
+
+
+def run_linkml_store_semantic_search(
+    subjects: list[SubjectQueryRecord],
+    ontology_terms: list[OntologyTermRecord],
+    top_k: int,
+    embedding_model_name: str,
+    cache_db_path: str | Path,
+    cache_collection_name: str,
+    corpus_batch_size: int = 250,
+) -> list[dict[str, Any]]:
+    """Run semantic retrieval with linkml-store embeddings over a locally harvested ontology corpus."""
+    if not linkml_store_available():
+        raise RuntimeError("linkml-store is required for LinkML-side semantic retrieval")
+
+    from linkml_store.index.implementations.llm_indexer import LLMIndexer
+
+    cache_db_path = str(cache_db_path)
+    indexed_terms = [
+        {
+            "id": term.object_id,
+            "search_text": compose_ontology_term_search_text(term),
+        }
+        for term in ontology_terms
+    ]
+    term_by_id = {term.object_id: term for term in ontology_terms}
+    indexer = LLMIndexer(
+        embedding_model_name=embedding_model_name,
+        cached_embeddings_database=cache_db_path,
+        cached_embeddings_collection=cache_collection_name,
+        index_attributes=["search_text"],
+    )
+    vectors: list[Any] = []
+    for start in range(0, len(indexed_terms), corpus_batch_size):
+        chunk = indexed_terms[start : start + corpus_batch_size]
+        vectors.extend(indexer.objects_to_vectors(chunk))
+    indexed_vectors = list(zip([term["id"] for term in indexed_terms], vectors))
+
+    rows: list[dict[str, Any]] = []
+    for subject in subjects:
+        query_text = compose_subject_query_text(subject)
+        hits = _linkml_store_similarity_search(query_text, indexed_vectors, indexer, limit=top_k)
+        for score, object_id in hits:
+            term = term_by_id[object_id]
+            rows.append(
+                {
+                    "subject_id": subject.subject_id,
+                    "subject_label": subject.subject_label,
+                    "subject_category": subject.subject_category,
+                    "subject_description": subject.subject_description,
+                    "object_id": term.object_id,
+                    "object_label": term.object_label,
+                    "object_source": term.object_source,
+                    "predicate_id": "skos:closeMatch",
+                    "mapping_justification": SEMANTIC_JUSTIFICATION,
+                    "confidence": round(score, 4),
+                    "comment": (
+                        f"retrieval_backend=linkml_store_llm;"
+                        f"embedding_model={embedding_model_name};"
+                        f"cache_collection={cache_collection_name};"
+                        f"query_text={query_text}"
+                    ),
+                }
+            )
+    return rows
+
+
+def summarize_backend_overlap(
+    reference_rows: list[dict[str, Any]],
+    candidate_rows: list[dict[str, Any]],
+    object_source: str,
+    top_k: int,
+) -> dict[str, Any]:
+    """Compare top-k object overlap between two retrieval backends for one ontology source."""
+    source = object_source.upper()
+    reference_by_subject: dict[str, list[dict[str, Any]]] = {}
+    candidate_by_subject: dict[str, list[dict[str, Any]]] = {}
+
+    for row in reference_rows:
+        if (row.get("object_source") or "").upper() != source:
+            continue
+        reference_by_subject.setdefault(row.get("subject_id", ""), []).append(row)
+    for row in candidate_rows:
+        if (row.get("object_source") or "").upper() != source:
+            continue
+        candidate_by_subject.setdefault(row.get("subject_id", ""), []).append(row)
+
+    overlapping_subjects = sorted(set(reference_by_subject) & set(candidate_by_subject))
+    subjects_with_any_overlap = 0
+    subjects_with_top1_overlap = 0
+    cumulative_overlap = 0
+    for subject_id in overlapping_subjects:
+        ref_rows = sorted(reference_by_subject[subject_id], key=lambda row: -float(row.get("confidence", 0.0) or 0.0))[:top_k]
+        cand_rows = sorted(candidate_by_subject[subject_id], key=lambda row: -float(row.get("confidence", 0.0) or 0.0))[:top_k]
+        ref_ids = {row.get("object_id", "") for row in ref_rows}
+        cand_ids = {row.get("object_id", "") for row in cand_rows}
+        overlap = len(ref_ids & cand_ids)
+        cumulative_overlap += overlap
+        if overlap:
+            subjects_with_any_overlap += 1
+        if ref_rows and cand_rows and ref_rows[0].get("object_id") == cand_rows[0].get("object_id"):
+            subjects_with_top1_overlap += 1
+
+    return {
+        "reference_subjects": len(reference_by_subject),
+        "candidate_subjects": len(candidate_by_subject),
+        "subjects_compared": len(overlapping_subjects),
+        "subjects_with_any_top_k_overlap": subjects_with_any_overlap,
+        "subjects_with_top1_overlap": subjects_with_top1_overlap,
+        "mean_exact_overlap_per_subject": round(cumulative_overlap / len(overlapping_subjects), 4) if overlapping_subjects else 0.0,
+        "top_k": top_k,
+        "object_source": source,
+    }
 
 
 def match_type(subject_category: str, object_kind: str) -> str:
@@ -850,7 +1093,7 @@ def available_tooling() -> dict[str, bool]:
     return {
         "oaklib": oaklib_available(),
         "schema_automator": importlib.util.find_spec("schema_automator") is not None,
-        "linkml_store": importlib.util.find_spec("linkml_store") is not None,
+        "linkml_store": linkml_store_available(),
     }
 
 

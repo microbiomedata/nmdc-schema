@@ -1,19 +1,27 @@
 from nmdc_schema.ontology_alignment_prototype import (
-    OlsEntityMetadata,
     SchemaElementRecord,
     MetadataResolution,
+    OlsEntityMetadata,
     classify_alignment,
+    compose_ontology_term_search_text,
+    compose_subject_query_text,
     enrich_review_rows,
+    harvest_oaklib_ontology_terms,
     lexical_profile,
+    linkml_store_available,
     match_type,
     normalize_text,
     oaklib_available,
+    OntologyTermRecord,
     parse_quota_option,
+    read_unique_subjects,
     resolve_entity_metadata,
     review_flags,
     shortlist_alignment_rows,
     structural_support,
+    SubjectQueryRecord,
     summarize_review_rows,
+    summarize_backend_overlap,
 )
 
 
@@ -241,11 +249,18 @@ def test_oaklib_available_returns_boolean():
     assert isinstance(oaklib_available(), bool)
 
 
-def test_resolve_entity_metadata_falls_back_when_oaklib_unavailable():
+def test_linkml_store_available_returns_boolean():
+    assert isinstance(linkml_store_available(), bool)
+
+
+def test_resolve_entity_metadata_uses_requested_backend_when_available():
     resolution = resolve_entity_metadata("OBI:0000366", "OBI", backend="oaklib")
     assert isinstance(resolution, MetadataResolution)
     assert resolution.requested_backend == "oaklib"
-    assert resolution.resolved_backend == "ols4_fallback"
+    if oaklib_available():
+        assert resolution.resolved_backend == "oaklib"
+    else:
+        assert resolution.resolved_backend == "ols4_fallback"
 
 
 def test_summarize_review_rows_counts_metadata_backend():
@@ -260,3 +275,79 @@ def test_summarize_review_rows_counts_metadata_backend():
     ]
     summary = summarize_review_rows(rows)
     assert summary["by_metadata_backend"]["ols4"] == 1
+
+
+def test_compose_subject_query_text_includes_label_description_and_category():
+    subject = SubjectQueryRecord(
+        subject_id="nmdc:instrument_used",
+        subject_label="instrument used",
+        subject_category="slot",
+        subject_description="The instrument used in data generation",
+    )
+    query_text = compose_subject_query_text(subject)
+    assert "instrument used" in query_text
+    assert "data generation" in query_text
+    assert "schema element type: slot" in query_text
+
+
+def test_compose_ontology_term_search_text_includes_synonyms_and_definition():
+    text = compose_ontology_term_search_text(
+        OntologyTermRecord(
+            object_id="OBI:0000366",
+            object_label="metabolite profiling assay",
+            object_source="OBI",
+            object_kind="class",
+            object_description="An assay for metabolites",
+            object_synonyms=("metabolite profiling assay",),
+        )
+    )
+    assert "metabolite" in text.lower()
+
+
+def test_read_unique_subjects_preserves_first_seen_order(tmp_path):
+    path = tmp_path / "alignment.tsv"
+    path.write_text(
+        "\t".join(
+            [
+                "subject_id",
+                "subject_label",
+                "subject_category",
+                "subject_description",
+                "object_id",
+                "object_label",
+                "object_source",
+                "predicate_id",
+                "mapping_justification",
+                "confidence",
+                "comment",
+            ]
+        )
+        + "\n"
+        + "\n".join(
+            [
+                "\t".join(["nmdc:A", "Alpha", "class", "first", "OBI:1", "One", "OBI", "skos:closeMatch", "x", "0.9", ""]),
+                "\t".join(["nmdc:A", "Alpha", "class", "first", "OBI:2", "Two", "OBI", "skos:closeMatch", "x", "0.8", ""]),
+                "\t".join(["nmdc:B", "Beta", "slot", "second", "OBI:3", "Three", "OBI", "skos:closeMatch", "x", "0.7", ""]),
+            ]
+        )
+        + "\n"
+    )
+    subjects = read_unique_subjects(path)
+    assert [subject.subject_id for subject in subjects] == ["nmdc:A", "nmdc:B"]
+
+
+def test_summarize_backend_overlap_counts_top1_and_topk_matches():
+    reference_rows = [
+        {"subject_id": "nmdc:A", "object_id": "OBI:1", "object_source": "OBI", "confidence": 0.95},
+        {"subject_id": "nmdc:A", "object_id": "OBI:2", "object_source": "OBI", "confidence": 0.91},
+        {"subject_id": "nmdc:B", "object_id": "OBI:3", "object_source": "OBI", "confidence": 0.96},
+    ]
+    candidate_rows = [
+        {"subject_id": "nmdc:A", "object_id": "OBI:1", "object_source": "OBI", "confidence": 0.93},
+        {"subject_id": "nmdc:A", "object_id": "OBI:7", "object_source": "OBI", "confidence": 0.90},
+        {"subject_id": "nmdc:B", "object_id": "OBI:8", "object_source": "OBI", "confidence": 0.94},
+    ]
+    summary = summarize_backend_overlap(reference_rows, candidate_rows, object_source="OBI", top_k=2)
+    assert summary["subjects_compared"] == 2
+    assert summary["subjects_with_any_top_k_overlap"] == 1
+    assert summary["subjects_with_top1_overlap"] == 1

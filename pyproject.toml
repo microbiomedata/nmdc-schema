@@ -36,6 +36,7 @@ dependencies = [
     "requests>=2.0.0,<3.0.0",
     "pymdown-extensions>=10.16.1,<11.0.0",
     "pymongo>=4.7.2,<5.0.0",
+    "linkml-store[llm] (>=0.3.0,<0.4.0)",
 ]
 
 [project.urls]
