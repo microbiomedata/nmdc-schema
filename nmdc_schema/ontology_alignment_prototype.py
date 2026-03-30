@@ -85,6 +85,8 @@ class OlsEntityMetadata:
     object_kind: str
     iri: str
     description: str
+    is_obsolete: bool = False
+    synonyms: tuple[str, ...] = tuple()
 
 
 def normalize_text(text: str) -> str:
@@ -285,6 +287,7 @@ def _pv_record(enum_name: str, pv_name: str, pv: PermissibleValue) -> SchemaElem
     if pv.meaning:
         mappings.append(str(pv.meaning))
     existing_mappings = _sorted_mappings(mappings)
+    owner_mapping_sources = tuple(sorted({mapping_source(value) for value in existing_mappings if mapping_source(value)}))
     return SchemaElementRecord(
         subject_id=f"nmdc:{enum_name}#{pv_name}",
         subject_label=pv.text or pv_name,
@@ -294,7 +297,7 @@ def _pv_record(enum_name: str, pv_name: str, pv: PermissibleValue) -> SchemaElem
         range_name="",
         range_kind="none",
         owners=(enum_name,),
-        owner_mapping_sources=tuple(),
+        owner_mapping_sources=owner_mapping_sources,
         range_mapping_sources=tuple(),
         existing_mappings=existing_mappings,
         existing_mapping_sources=_sources_from_mappings(existing_mappings),
@@ -386,6 +389,8 @@ def ols_entity_metadata(
                     object_kind=(doc.get("type") or "class").lower(),
                     iri=doc.get("iri") or "",
                     description=" ".join(doc.get("description") or []),
+                    is_obsolete=bool(doc.get("is_obsolete") or doc.get("isObsolete") or False),
+                    synonyms=tuple(doc.get("synonym") or doc.get("synonyms") or []),
                 )
                 break
     except requests.RequestException:
@@ -418,12 +423,16 @@ def structural_support(record: SchemaElementRecord | None, metadata: OlsEntityMe
         return (metadata.object_kind == "class", "class_to_class" if metadata.object_kind == "class" else "class_to_nonclass")
 
     if record.subject_category == "permissible_value":
-        return (metadata.object_kind == "class", "pv_to_class" if metadata.object_kind == "class" else "pv_to_nonclass")
+        source_overlap = metadata.object_source in set(record.existing_mapping_sources) | set(record.owner_mapping_sources)
+        if metadata.object_kind != "class":
+            return (False, "pv_to_nonclass")
+        return (source_overlap, "pv_source_overlap" if source_overlap else "pv_source_mismatch")
 
     if record.subject_category == "enum":
-        if metadata.object_kind == "class":
-            return (True, "enum_to_class")
-        return (False, "enum_to_nonclass")
+        source_overlap = metadata.object_source in set(record.existing_mapping_sources)
+        if metadata.object_kind != "class":
+            return (False, "enum_to_nonclass")
+        return (source_overlap, "enum_source_overlap" if source_overlap else "enum_source_mismatch")
 
     if record.subject_category == "slot":
         source_overlap = metadata.object_source in set(record.existing_mapping_sources) | set(record.owner_mapping_sources) | set(
@@ -509,6 +518,8 @@ def enrich_alignment_rows(
                 "object_kind": metadata.object_kind,
                 "object_iri": metadata.iri,
                 "object_description": metadata.description[:200],
+                "object_is_obsolete": metadata.is_obsolete,
+                "object_synonyms": "|".join(metadata.synonyms[:10]),
                 "schema_range": record.range_name if record else "",
                 "schema_range_kind": record.range_kind if record else "",
                 "schema_expected_alignment_type": record.expected_alignment_type if record else "",
@@ -559,6 +570,67 @@ def summarize_alignment_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
             bucket = summary["structurally_supported_semantic_weak_lexical_by_source"]
             bucket[source] = bucket.get(source, 0) + 1
     return summary
+
+
+def shortlist_alignment_rows(
+    rows: list[dict[str, Any]],
+    top_n: int = 50,
+    preferred_buckets: tuple[str, ...] = ("strong_semantic_weak_lexical_structurally_supported",),
+    max_per_subject: int = 3,
+) -> list[dict[str, Any]]:
+    """Return a small review-focused shortlist from enriched rows."""
+    preferred = {bucket: idx for idx, bucket in enumerate(preferred_buckets)}
+
+    def sort_key(row: dict[str, Any]) -> tuple[Any, ...]:
+        bucket = row.get("structural_bucket", "")
+        preferred_rank = preferred.get(bucket, len(preferred) + 1)
+        semantic_confidence = float(row.get("semantic_confidence", 0.0) or 0.0)
+        lexical_score_value = float(row.get("lexical_score", 0.0) or 0.0)
+        return (
+            preferred_rank,
+            -semantic_confidence,
+            lexical_score_value,
+            row.get("subject_id", ""),
+            row.get("object_id", ""),
+        )
+
+    selected: list[dict[str, Any]] = []
+    counts_by_subject: dict[str, int] = {}
+    for row in sorted(rows, key=sort_key):
+        subject_id = row.get("subject_id", "")
+        if counts_by_subject.get(subject_id, 0) >= max_per_subject:
+            continue
+        selected.append(row)
+        counts_by_subject[subject_id] = counts_by_subject.get(subject_id, 0) + 1
+        if len(selected) >= top_n:
+            break
+    return selected
+
+
+def enrich_review_rows(
+    rows: list[dict[str, Any]],
+    resolve_ols_metadata: bool = True,
+) -> list[dict[str, Any]]:
+    """Enrich a small review shortlist with more term metadata."""
+    if not resolve_ols_metadata:
+        return rows
+
+    metadata_cache: dict[tuple[str, str], OlsEntityMetadata] = {}
+    enriched_rows: list[dict[str, Any]] = []
+    for rank, row in enumerate(rows, start=1):
+        source = (row.get("object_source") or "").upper()
+        metadata = ols_entity_metadata(row.get("object_id", ""), source, metadata_cache)
+        updated = {
+            **row,
+            "review_rank": rank,
+            "object_kind": metadata.object_kind,
+            "object_iri": metadata.iri,
+            "object_description": metadata.description[:500],
+            "object_is_obsolete": metadata.is_obsolete,
+            "object_synonyms": "|".join(metadata.synonyms[:20]),
+        }
+        enriched_rows.append(updated)
+    return enriched_rows
 
 
 def available_tooling() -> dict[str, bool]:
