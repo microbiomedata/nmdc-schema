@@ -2,10 +2,13 @@ from nmdc_schema.ontology_alignment_prototype import (
     SchemaElementRecord,
     MetadataResolution,
     OlsEntityMetadata,
+    _extract_bioportal_class_rows,
+    _normalize_bioportal_object_id,
     classify_alignment,
     compose_ontology_term_search_text,
     compose_subject_query_text,
     enrich_review_rows,
+    harvest_bioportal_ontology_terms,
     harvest_oaklib_ontology_terms,
     lexical_profile,
     linkml_store_available,
@@ -304,6 +307,84 @@ def test_compose_ontology_term_search_text_includes_synonyms_and_definition():
         )
     )
     assert "metabolite" in text.lower()
+
+
+def test_extract_bioportal_class_rows_supports_collection_payload():
+    rows = _extract_bioportal_class_rows({"collection": [{"prefLabel": "alpha"}]})
+    assert rows == [{"prefLabel": "alpha"}]
+
+
+def test_normalize_bioportal_object_id_uses_registry_conversion_for_obo_iris():
+    assert (
+        _normalize_bioportal_object_id("http://purl.obolibrary.org/obo/OBI_0001", "OBI")
+        == "OBI:0001"
+    )
+
+
+def test_harvest_bioportal_ontology_terms_uses_minimal_payload(monkeypatch):
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    calls = []
+
+    def fake_get(url, params=None, timeout=None):
+        calls.append((url, params, timeout))
+        page = int(params["page"])
+        if page == 1:
+            return FakeResponse(
+                [
+                    {
+                        "@id": "http://example.org/obo/OBI_0001",
+                        "prefLabel": "instrument model",
+                        "definition": ["A type of instrument."],
+                        "synonym": ["device model"],
+                    }
+                ]
+            )
+        return FakeResponse([])
+
+    monkeypatch.setattr("nmdc_schema.ontology_alignment_prototype.requests.get", fake_get)
+    rows = harvest_bioportal_ontology_terms(["OBI"], api_key="test-key", page_size=2)
+    assert len(rows) == 1
+    assert rows[0].object_id == "OBI:0001"
+    assert rows[0].object_source == "OBI"
+    assert rows[0].object_label == "instrument model"
+    assert "device model" in rows[0].object_synonyms
+    assert calls[0][1]["include"] == "prefLabel,synonym,definition,obsolete,@id"
+
+
+def test_harvest_bioportal_ontology_terms_excludes_imports_by_default(monkeypatch):
+    class FakeResponse:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return self._payload
+
+    def fake_get(url, params=None, timeout=None):
+        page = int(params["page"])
+        if page == 1:
+            return FakeResponse(
+                [
+                    {"@id": "http://purl.obolibrary.org/obo/OBI_0001", "prefLabel": "kept"},
+                    {"@id": "http://purl.obolibrary.org/obo/GO_0008150", "prefLabel": "filtered"},
+                ]
+            )
+        return FakeResponse([])
+
+    monkeypatch.setattr("nmdc_schema.ontology_alignment_prototype.requests.get", fake_get)
+    rows = harvest_bioportal_ontology_terms(["OBI"], api_key="test-key", page_size=2)
+    assert [row.object_id for row in rows] == ["OBI:0001"]
 
 
 def test_read_unique_subjects_preserves_first_seen_order(tmp_path):

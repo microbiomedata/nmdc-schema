@@ -10,6 +10,7 @@ from __future__ import annotations
 import csv
 import importlib.util
 import json
+import os
 import re
 from dataclasses import dataclass
 from difflib import SequenceMatcher
@@ -23,6 +24,7 @@ from linkml_runtime.utils.schemaview import SchemaView
 
 SEMANTIC_JUSTIFICATION = "semapv:SemanticSimilarityThresholdMatching"
 OLS4_SEARCH_URL = "https://www.ebi.ac.uk/ols4/api/search"
+BIOPORTAL_CLASSES_URL_TEMPLATE = "https://data.bioontology.org/ontologies/{acronym}/classes"
 SCALAR_TYPES = {
     "string",
     "integer",
@@ -638,6 +640,153 @@ def harvest_oaklib_ontology_terms(
         )
         if max_terms is not None and len(harvested) >= max_terms:
             break
+    return harvested
+
+
+def _extract_bioportal_class_rows(payload: Any) -> list[dict[str, Any]]:
+    """Normalize BioPortal class responses into a list of row dicts."""
+    if isinstance(payload, list):
+        return [item for item in payload if isinstance(item, dict)]
+    if isinstance(payload, dict):
+        collection = payload.get("collection")
+        if isinstance(collection, list):
+            return [item for item in collection if isinstance(item, dict)]
+    return []
+
+
+def _normalize_bioportal_object_id(raw_object_id: str, ontology_acronym: str) -> str:
+    """Convert BioPortal IDs to CURIEs with LinkML-adjacent registry tooling first."""
+    if not raw_object_id:
+        return ""
+    if ":" in raw_object_id and not raw_object_id.startswith("http"):
+        return raw_object_id
+
+    compact_match = re.search(r"/obo/([A-Za-z][A-Za-z0-9]*)[_:]([A-Za-z0-9_\\-]+)$", raw_object_id)
+    if compact_match:
+        return f"{compact_match.group(1).upper()}:{compact_match.group(2)}"
+
+    fragment = raw_object_id.rsplit("/", 1)[-1].rsplit("#", 1)[-1]
+    if fragment.startswith(f"{ontology_acronym.upper()}_"):
+        return f"{ontology_acronym.upper()}:{fragment.split('_', 1)[1]}"
+
+    try:
+        import bioregistry
+
+        normalized_curie = bioregistry.normalize_curie(raw_object_id)
+        if normalized_curie:
+            return normalize_curie_prefix_case(normalized_curie)
+    except Exception:
+        pass
+
+    try:
+        import curies
+
+        converter = curies.get_bioregistry_converter()
+        compacted = converter.compress(raw_object_id)
+        if compacted:
+            return normalize_curie_prefix_case(compacted)
+    except Exception:
+        pass
+    return normalize_curie_prefix_case(raw_object_id)
+
+
+def normalize_curie_prefix_case(curie_or_iri: str) -> str:
+    """Uppercase the CURIE prefix while leaving the local ID untouched."""
+    if ":" not in curie_or_iri or curie_or_iri.startswith("http"):
+        return curie_or_iri
+    prefix, local_id = curie_or_iri.split(":", 1)
+    return f"{prefix.upper()}:{local_id}"
+
+
+def harvest_bioportal_ontology_terms(
+    ontology_acronyms: list[str],
+    api_key: str | None = None,
+    max_terms: int | None = None,
+    page_size: int = 250,
+    include_views: bool = False,
+    include_imported_terms: bool = False,
+) -> list[OntologyTermRecord]:
+    """Harvest ontology terms directly from BioPortal for local semantic retrieval.
+
+    This keeps BioPortal as a corpus source only. Embeddings and retrieval still
+    run locally through linkml-store.
+    """
+    resolved_api_key = api_key or os.environ.get("BIOPORTAL_API_KEY", "")
+    if not resolved_api_key:
+        raise RuntimeError("BIOPORTAL_API_KEY is required to harvest BioPortal terms")
+
+    harvested: list[OntologyTermRecord] = []
+    per_ontology_cap = max_terms if max_terms is not None and len(ontology_acronyms) == 1 else None
+
+    for ontology_acronym in ontology_acronyms:
+        acronym = ontology_acronym.strip().upper()
+        if not acronym:
+            continue
+        page = 1
+        harvested_for_acronym = 0
+        while True:
+            params = {
+                "apikey": resolved_api_key,
+                "include": "prefLabel,synonym,definition,obsolete,@id",
+                "display_context": "false",
+                "display_links": "false",
+                "include_views": "true" if include_views else "false",
+                "page": page,
+                "pagesize": page_size,
+            }
+            response = requests.get(
+                BIOPORTAL_CLASSES_URL_TEMPLATE.format(acronym=acronym),
+                params=params,
+                timeout=60,
+            )
+            response.raise_for_status()
+            rows = _extract_bioportal_class_rows(response.json())
+            if not rows:
+                break
+
+            for row in rows:
+                raw_object_id = extract_first(row.get("@id")) or extract_first(row.get("id"))
+                object_id = _normalize_bioportal_object_id(raw_object_id, acronym)
+                object_label = extract_first(row.get("prefLabel")) or extract_first(row.get("label"))
+                if not object_id or not object_label:
+                    continue
+                if not include_imported_terms and ":" in object_id:
+                    object_prefix = object_id.split(":", 1)[0].upper()
+                    if object_prefix != acronym:
+                        continue
+                definitions = row.get("definition") or []
+                synonyms = row.get("synonym") or row.get("synonyms") or []
+                if isinstance(definitions, str):
+                    description = definitions
+                else:
+                    description = " ".join(str(item) for item in definitions if item)
+                if isinstance(synonyms, str):
+                    synonyms_tuple = (synonyms,) if synonyms else tuple()
+                else:
+                    synonyms_tuple = tuple(str(item) for item in synonyms if item)
+
+                harvested.append(
+                    OntologyTermRecord(
+                        object_id=object_id,
+                        object_label=object_label,
+                        object_source=acronym,
+                        object_kind="class",
+                        object_description=description,
+                        object_synonyms=synonyms_tuple,
+                    )
+                )
+                harvested_for_acronym += 1
+                if per_ontology_cap is not None and harvested_for_acronym >= per_ontology_cap:
+                    break
+                if max_terms is not None and per_ontology_cap is None and len(harvested) >= max_terms:
+                    return harvested
+
+            if per_ontology_cap is not None and harvested_for_acronym >= per_ontology_cap:
+                break
+            if len(rows) < page_size:
+                break
+            page += 1
+
     return harvested
 
 
