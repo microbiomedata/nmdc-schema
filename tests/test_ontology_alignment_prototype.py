@@ -6,6 +6,7 @@ from nmdc_schema.ontology_alignment_prototype import (
     lexical_profile,
     match_type,
     normalize_text,
+    parse_quota_option,
     review_flags,
     shortlist_alignment_rows,
     structural_support,
@@ -147,6 +148,39 @@ def test_shortlist_prefers_structurally_supported_rows():
     assert shortlisted[0]["subject_id"] == "nmdc:b"
 
 
+def test_shortlist_respects_match_type_quotas():
+    rows = [
+        {
+            "subject_id": "nmdc:a",
+            "object_id": "X:1",
+            "match_type": "pv->class",
+            "structural_bucket": "strong_semantic_strong_lexical",
+            "semantic_confidence": 0.99,
+            "lexical_score": 0.90,
+        },
+        {
+            "subject_id": "nmdc:b",
+            "object_id": "X:2",
+            "match_type": "pv->class",
+            "structural_bucket": "strong_semantic_strong_lexical",
+            "semantic_confidence": 0.98,
+            "lexical_score": 0.85,
+        },
+        {
+            "subject_id": "nmdc:c",
+            "object_id": "X:3",
+            "match_type": "slot->class",
+            "structural_bucket": "strong_semantic_strong_lexical",
+            "semantic_confidence": 0.90,
+            "lexical_score": 0.60,
+        },
+    ]
+    shortlisted = shortlist_alignment_rows(rows, top_n=3, match_type_quotas={"pv->class": 1})
+    assert len(shortlisted) == 2
+    assert sum(1 for row in shortlisted if row["match_type"] == "pv->class") == 1
+    assert sum(1 for row in shortlisted if row["match_type"] == "slot->class") == 1
+
+
 def test_enrich_review_rows_without_metadata_leaves_rows_unchanged():
     rows = [{"subject_id": "nmdc:a", "object_id": "OBI:1", "object_source": "OBI"}]
     enriched = enrich_review_rows(rows, resolve_ols_metadata=False)
@@ -191,3 +225,10 @@ def test_summarize_review_rows_counts_flags():
     assert summary["total_rows"] == 2
     assert summary["by_review_flag"]["semantic_rescue"] == 1
     assert summary["by_object_source"]["OBI"] == 1
+
+
+def test_parse_quota_option():
+    assert parse_quota_option("slot->class=10,pv->class=15") == {
+        "slot->class": 10,
+        "pv->class": 15,
+    }

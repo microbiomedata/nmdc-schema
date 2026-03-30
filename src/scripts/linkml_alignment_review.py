@@ -8,6 +8,7 @@ import click
 
 from nmdc_schema.ontology_alignment_prototype import (
     enrich_review_rows,
+    parse_quota_option,
     read_alignment_rows,
     shortlist_alignment_rows,
     summarize_review_rows,
@@ -54,6 +55,12 @@ from nmdc_schema.ontology_alignment_prototype import (
     help="Maximum shortlisted rows per NMDC subject",
 )
 @click.option(
+    "--match-type-quotas",
+    default="slot->class=15,class->class=10,pv->class=15,enum->class=10",
+    show_default=True,
+    help="Comma-separated quotas per match type to keep the shortlist informative",
+)
+@click.option(
     "--resolve-review-metadata/--skip-review-metadata",
     default=True,
     show_default=True,
@@ -66,6 +73,7 @@ def cli(
     top_n: int,
     preferred_buckets: str,
     max_per_subject: int,
+    match_type_quotas: str,
     resolve_review_metadata: bool,
 ) -> None:
     """Build a human-review shortlist from enriched alignment rows."""
@@ -75,6 +83,7 @@ def cli(
         top_n=top_n,
         preferred_buckets=tuple(item.strip() for item in preferred_buckets.split(",") if item.strip()),
         max_per_subject=max_per_subject,
+        match_type_quotas=parse_quota_option(match_type_quotas),
     )
     review_rows = enrich_review_rows(shortlist, resolve_ols_metadata=resolve_review_metadata)
 

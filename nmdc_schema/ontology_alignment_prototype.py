@@ -359,6 +359,29 @@ def parse_csv_option(value: str | None) -> set[str]:
     return {item.strip().upper() for item in value.split(",") if item.strip()}
 
 
+def parse_quota_option(value: str | None) -> dict[str, int]:
+    """Parse a comma-separated quota option like 'slot->class=10,pv->class=15'."""
+    quotas: dict[str, int] = {}
+    if not value:
+        return quotas
+    for item in value.split(","):
+        item = item.strip()
+        if not item or "=" not in item:
+            continue
+        key, raw_limit = item.split("=", 1)
+        key = key.strip()
+        raw_limit = raw_limit.strip()
+        if not key or not raw_limit:
+            continue
+        try:
+            limit = int(raw_limit)
+        except ValueError:
+            continue
+        if limit >= 0:
+            quotas[key] = limit
+    return quotas
+
+
 def ols_entity_metadata(
     object_id: str,
     object_source: str,
@@ -582,9 +605,11 @@ def shortlist_alignment_rows(
     top_n: int = 50,
     preferred_buckets: tuple[str, ...] = ("strong_semantic_weak_lexical_structurally_supported",),
     max_per_subject: int = 3,
+    match_type_quotas: dict[str, int] | None = None,
 ) -> list[dict[str, Any]]:
     """Return a small review-focused shortlist from enriched rows."""
     preferred = {bucket: idx for idx, bucket in enumerate(preferred_buckets)}
+    match_type_quotas = match_type_quotas or {}
 
     def sort_key(row: dict[str, Any]) -> tuple[Any, ...]:
         bucket = row.get("structural_bucket", "")
@@ -601,12 +626,18 @@ def shortlist_alignment_rows(
 
     selected: list[dict[str, Any]] = []
     counts_by_subject: dict[str, int] = {}
+    counts_by_match_type: dict[str, int] = {}
     for row in sorted(rows, key=sort_key):
         subject_id = row.get("subject_id", "")
+        match_type_value = row.get("match_type", "")
         if counts_by_subject.get(subject_id, 0) >= max_per_subject:
+            continue
+        quota = match_type_quotas.get(match_type_value)
+        if quota is not None and counts_by_match_type.get(match_type_value, 0) >= quota:
             continue
         selected.append(row)
         counts_by_subject[subject_id] = counts_by_subject.get(subject_id, 0) + 1
+        counts_by_match_type[match_type_value] = counts_by_match_type.get(match_type_value, 0) + 1
         if len(selected) >= top_n:
             break
     return selected
