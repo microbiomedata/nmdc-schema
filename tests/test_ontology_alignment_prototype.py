@@ -20,7 +20,9 @@ from nmdc_schema.ontology_alignment_prototype import (
     shortlist_alignment_rows,
     structural_support,
     SubjectQueryRecord,
+    summarize_property_like_gap,
     summarize_review_rows,
+    summarize_source_distribution,
     summarize_backend_overlap,
 )
 
@@ -351,3 +353,61 @@ def test_summarize_backend_overlap_counts_top1_and_topk_matches():
     assert summary["subjects_compared"] == 2
     assert summary["subjects_with_any_top_k_overlap"] == 1
     assert summary["subjects_with_top1_overlap"] == 1
+
+
+def test_summarize_source_distribution_counts_rows_and_subjects():
+    rows = [
+        {"subject_id": "nmdc:A", "object_source": "OBI"},
+        {"subject_id": "nmdc:B", "object_source": "OBI"},
+        {"subject_id": "nmdc:A", "object_source": "OBI"},
+        {"subject_id": "nmdc:C", "object_source": "ENVO"},
+    ]
+    summary = summarize_source_distribution(rows, top_n=2)
+    assert summary["distinct_sources"] == 2
+    assert summary["top_sources"][0]["object_source"] == "OBI"
+    assert summary["top_sources"][0]["row_count"] == 3
+    assert summary["top_sources"][0]["subject_count"] == 2
+
+
+def test_summarize_property_like_gap_counts_property_like_slot_hits():
+    schema_index = {
+        "nmdc:slot_a": SchemaElementRecord(
+            subject_id="nmdc:slot_a",
+            subject_label="slot_a",
+            subject_category="slot",
+            subject_description="",
+            element_name="slot_a",
+            range_name="string",
+            range_kind="scalar",
+            owners=("Study",),
+            owner_mapping_sources=tuple(),
+            range_mapping_sources=tuple(),
+            existing_mappings=tuple(),
+            existing_mapping_sources=tuple(),
+            expected_alignment_type="property_like",
+        ),
+        "nmdc:slot_b": SchemaElementRecord(
+            subject_id="nmdc:slot_b",
+            subject_label="slot_b",
+            subject_category="slot",
+            subject_description="",
+            element_name="slot_b",
+            range_name="InstrumentEnum",
+            range_kind="enum",
+            owners=("Study",),
+            owner_mapping_sources=tuple(),
+            range_mapping_sources=tuple(),
+            existing_mappings=tuple(),
+            existing_mapping_sources=tuple(),
+            expected_alignment_type="class_filler",
+        ),
+    }
+    baseline_rows = [
+        {"subject_id": "nmdc:slot_a", "subject_category": "slot", "object_source": "OBI"},
+        {"subject_id": "nmdc:slot_b", "subject_category": "slot", "object_source": "OBI"},
+    ]
+    summary = summarize_property_like_gap(schema_index, baseline_rows, ontology_prefix="OBI")
+    assert summary["property_like_slot_subjects"] == 1
+    assert summary["class_filler_slot_subjects"] == 1
+    assert summary["property_like_slots_with_retrieval_hits"] == 1
+    assert summary["class_filler_slots_with_retrieval_hits"] == 1

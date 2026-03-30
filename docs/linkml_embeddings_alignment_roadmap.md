@@ -16,6 +16,7 @@ This roadmap turns `#2910` into a layered prototype rather than a single retriev
 - OLS4 embeddings search as the baseline candidate generator
 - local vectorized ontology corpora as the non-OLS alternative
 - possible future BioPortal-backed retrieval for broader non-OBO coverage
+- explicit gap reporting so we do not confuse current backend coverage with actual semantic recall
 
 ### 2. Ontology access
 
@@ -48,14 +49,26 @@ This roadmap turns `#2910` into a layered prototype rather than a single retriev
 2. Enrich it with schema-aware diagnostics and structural buckets.
 3. Shortlist a small review set and fetch richer term metadata only for that subset.
 4. Add `oaklib` and test local ontology access independently of OLS4.
-5. Evaluate whether semsql-backed local databases improve closure and property inspection.
-6. Add a local embedding/index path so OLS4 is no longer the only retrieval backend.
+5. Add a local embedding/index path so OLS4 is no longer the only retrieval backend.
+6. Add explicit gap reporting for backend coverage and property-like slots.
+7. Evaluate whether semsql-backed local databases improve closure and property inspection.
+8. Add BioPortal or other non-OLS repository coverage when we want broader ontology families.
 
 ## What this patch adds
 
 - schema-aware enrichment and structural bucketing
 - a review-shortlist script that can fetch richer metadata only for shortlisted rows
 - a cleaner separation between candidate generation, reranking, and review
+- a local `oaklib + linkml-store` retrieval path so OLS4 is no longer the only semantic backend
+- a gap-report script that makes class-only and backend-coverage limitations explicit
+
+## Current gaps made explicit
+
+- The current OLS4 baseline is class-oriented and does not cover `slot -> property` retrieval.
+- In the current schema snapshot, `302 / 851` NMDC slots are `property_like`, so class-only retrieval is structurally incomplete.
+- The current OLS4 baseline is heavily concentrated in sources such as `SNOMED`, `NCIT`, and `NCBITaxon`, which means OLS4-driven review is not the same thing as repository-complete review.
+- The current LinkML-side retrieval experiment uses `oaklib + linkml-store` over local ontology corpora, but it does not yet include BioPortal-backed retrieval.
+- `semsql` is most likely to help after retrieval by expanding property, relationship, and neighborhood context around candidate classes.
 
 ## Open questions
 

@@ -777,6 +777,73 @@ def summarize_backend_overlap(
     }
 
 
+def summarize_source_distribution(
+    rows: list[dict[str, Any]],
+    top_n: int = 20,
+) -> dict[str, Any]:
+    """Summarize ontology-source concentration in a retrieval result set."""
+    counts: dict[str, int] = {}
+    subjects_by_source: dict[str, set[str]] = {}
+    for row in rows:
+        source = (row.get("object_source") or "").upper()
+        subject_id = row.get("subject_id", "")
+        counts[source] = counts.get(source, 0) + 1
+        subjects_by_source.setdefault(source, set()).add(subject_id)
+    ranked = sorted(counts.items(), key=lambda item: (-item[1], item[0]))
+    return {
+        "total_rows": len(rows),
+        "distinct_sources": len(counts),
+        "top_sources": [
+            {
+                "object_source": source,
+                "row_count": row_count,
+                "subject_count": len(subjects_by_source.get(source, set())),
+            }
+            for source, row_count in ranked[:top_n]
+        ],
+    }
+
+
+def summarize_property_like_gap(
+    schema_index: dict[str, SchemaElementRecord],
+    baseline_rows: list[dict[str, Any]],
+    ontology_prefix: str | None = None,
+) -> dict[str, Any]:
+    """Summarize the gap between property-like NMDC slots and class-oriented retrieval baselines."""
+    property_like_slots = {
+        record.subject_id
+        for record in schema_index.values()
+        if record.subject_category == "slot" and record.expected_alignment_type == "property_like"
+    }
+    class_filler_slots = {
+        record.subject_id
+        for record in schema_index.values()
+        if record.subject_category == "slot" and record.expected_alignment_type == "class_filler"
+    }
+    filtered_rows = baseline_rows
+    if ontology_prefix:
+        prefix = ontology_prefix.upper()
+        filtered_rows = [row for row in baseline_rows if (row.get("object_source") or "").upper() == prefix]
+    slot_subjects_with_hits = {row.get("subject_id", "") for row in filtered_rows if (row.get("subject_category") or "").lower() == "slot"}
+    property_like_with_hits = property_like_slots & slot_subjects_with_hits
+    class_filler_with_hits = class_filler_slots & slot_subjects_with_hits
+    return {
+        "ontology_prefix": ontology_prefix.upper() if ontology_prefix else "ALL",
+        "total_slot_subjects": sum(1 for record in schema_index.values() if record.subject_category == "slot"),
+        "property_like_slot_subjects": len(property_like_slots),
+        "class_filler_slot_subjects": len(class_filler_slots),
+        "slot_subjects_with_retrieval_hits": len(slot_subjects_with_hits),
+        "property_like_slots_with_retrieval_hits": len(property_like_with_hits),
+        "class_filler_slots_with_retrieval_hits": len(class_filler_with_hits),
+        "property_like_hit_fraction": round(len(property_like_with_hits) / len(property_like_slots), 4) if property_like_slots else 0.0,
+        "class_filler_hit_fraction": round(len(class_filler_with_hits) / len(class_filler_slots), 4) if class_filler_slots else 0.0,
+        "current_baseline_bias": (
+            "current comparison inputs are class-oriented; property_like slots may need property retrieval or "
+            "relationship-neighborhood expansion rather than class-only semantic search"
+        ),
+    }
+
+
 def match_type(subject_category: str, object_kind: str) -> str:
     """Derive a coarse match type."""
     normalized_object_kind = object_kind or "class"
