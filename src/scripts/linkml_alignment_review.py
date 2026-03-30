@@ -10,6 +10,8 @@ from nmdc_schema.ontology_alignment_prototype import (
     enrich_review_rows,
     read_alignment_rows,
     shortlist_alignment_rows,
+    summarize_review_rows,
+    write_json,
     write_tsv,
 )
 
@@ -26,6 +28,12 @@ from nmdc_schema.ontology_alignment_prototype import (
     default="local/linkml_alignment_review.tsv",
     show_default=True,
     help="Review TSV path",
+)
+@click.option(
+    "--summary-json",
+    default="local/linkml_alignment_review_summary.json",
+    show_default=True,
+    help="Review summary JSON path",
 )
 @click.option(
     "--top-n",
@@ -54,6 +62,7 @@ from nmdc_schema.ontology_alignment_prototype import (
 def cli(
     enriched_results: str,
     output: str,
+    summary_json: str,
     top_n: int,
     preferred_buckets: str,
     max_per_subject: int,
@@ -70,12 +79,14 @@ def cli(
     review_rows = enrich_review_rows(shortlist, resolve_ols_metadata=resolve_review_metadata)
 
     Path(output).parent.mkdir(parents=True, exist_ok=True)
+    Path(summary_json).parent.mkdir(parents=True, exist_ok=True)
     write_tsv(review_rows, output)
+    write_json(summarize_review_rows(review_rows), summary_json)
 
     click.echo(f"Shortlisted rows: {len(review_rows)}")
     click.echo(f"Wrote review TSV: {output}")
+    click.echo(f"Wrote review summary JSON: {summary_json}")
 
 
 if __name__ == "__main__":
     cli()
-

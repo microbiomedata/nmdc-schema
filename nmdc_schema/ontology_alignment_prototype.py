@@ -83,8 +83,9 @@ class OlsEntityMetadata:
     object_id: str
     object_source: str
     object_kind: str
-    iri: str
-    description: str
+    label: str = ""
+    iri: str = ""
+    description: str = ""
     is_obsolete: bool = False
     synonyms: tuple[str, ...] = tuple()
 
@@ -373,6 +374,7 @@ def ols_entity_metadata(
         object_id=object_id,
         object_source=object_source,
         object_kind="class",
+        label="",
         iri="",
         description="",
     )
@@ -387,6 +389,7 @@ def ols_entity_metadata(
                     object_id=object_id,
                     object_source=object_source,
                     object_kind=(doc.get("type") or "class").lower(),
+                    label=extract_first(doc.get("label")),
                     iri=doc.get("iri") or "",
                     description=" ".join(doc.get("description") or []),
                     is_obsolete=bool(doc.get("is_obsolete") or doc.get("isObsolete") or False),
@@ -497,6 +500,7 @@ def enrich_alignment_rows(
                 object_id=row.get("object_id", ""),
                 object_source=source,
                 object_kind="class",
+                label=row.get("object_label", ""),
                 iri="",
                 description="",
             )
@@ -516,6 +520,7 @@ def enrich_alignment_rows(
                 "semantic_vs_lexical": classification,
                 "match_type": match_type_value,
                 "object_kind": metadata.object_kind,
+                "object_label_resolved": metadata.label or row.get("object_label", ""),
                 "object_iri": metadata.iri,
                 "object_description": metadata.description[:200],
                 "object_is_obsolete": metadata.is_obsolete,
@@ -607,6 +612,35 @@ def shortlist_alignment_rows(
     return selected
 
 
+def extract_first(value: Any) -> str:
+    """Extract a displayable first string value."""
+    if isinstance(value, list):
+        return str(value[0]) if value else ""
+    return str(value or "")
+
+
+def review_flags(row: dict[str, Any]) -> tuple[str, ...]:
+    """Derive concise review flags for a shortlisted row."""
+    flags: list[str] = []
+    if str(row.get("object_is_obsolete", "")).lower() in {"true", "1"}:
+        flags.append("obsolete_term")
+    if row.get("structural_bucket") == "strong_semantic_weak_lexical_structurally_supported":
+        flags.append("semantic_rescue")
+    if row.get("match_type") == "slot->class":
+        flags.append("slot_to_class")
+    if row.get("match_type") == "pv->class":
+        flags.append("pv_to_class")
+    if row.get("schema_expected_alignment_type") == "property_like":
+        flags.append("property_like_slot")
+    if float(row.get("lexical_score", 0.0) or 0.0) < 0.2:
+        flags.append("very_weak_lexical")
+    if row.get("object_description"):
+        flags.append("has_definition")
+    if row.get("object_synonyms"):
+        flags.append("has_synonyms")
+    return tuple(flags)
+
+
 def enrich_review_rows(
     rows: list[dict[str, Any]],
     resolve_ols_metadata: bool = True,
@@ -624,13 +658,38 @@ def enrich_review_rows(
             **row,
             "review_rank": rank,
             "object_kind": metadata.object_kind,
+            "object_label_resolved": metadata.label or row.get("object_label", ""),
             "object_iri": metadata.iri,
             "object_description": metadata.description[:500],
             "object_is_obsolete": metadata.is_obsolete,
             "object_synonyms": "|".join(metadata.synonyms[:20]),
+            "review_flags": "",
         }
+        updated["review_flags"] = "|".join(review_flags(updated))
         enriched_rows.append(updated)
     return enriched_rows
+
+
+def summarize_review_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Summarize a review shortlist."""
+    summary: dict[str, Any] = {
+        "total_rows": len(rows),
+        "by_structural_bucket": {},
+        "by_object_source": {},
+        "by_match_type": {},
+        "by_review_flag": {},
+    }
+    for row in rows:
+        bucket = row.get("structural_bucket", "")
+        source = row.get("object_source", "")
+        match_type_value = row.get("match_type", "")
+        summary["by_structural_bucket"][bucket] = summary["by_structural_bucket"].get(bucket, 0) + 1
+        summary["by_object_source"][source] = summary["by_object_source"].get(source, 0) + 1
+        summary["by_match_type"][match_type_value] = summary["by_match_type"].get(match_type_value, 0) + 1
+        for flag in (row.get("review_flags", "") or "").split("|"):
+            if flag:
+                summary["by_review_flag"][flag] = summary["by_review_flag"].get(flag, 0) + 1
+    return summary
 
 
 def available_tooling() -> dict[str, bool]:

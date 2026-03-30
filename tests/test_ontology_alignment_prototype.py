@@ -6,8 +6,10 @@ from nmdc_schema.ontology_alignment_prototype import (
     lexical_profile,
     match_type,
     normalize_text,
+    review_flags,
     shortlist_alignment_rows,
     structural_support,
+    summarize_review_rows,
 )
 
 
@@ -149,3 +151,43 @@ def test_enrich_review_rows_without_metadata_leaves_rows_unchanged():
     rows = [{"subject_id": "nmdc:a", "object_id": "OBI:1", "object_source": "OBI"}]
     enriched = enrich_review_rows(rows, resolve_ols_metadata=False)
     assert enriched == rows
+
+
+def test_review_flags_capture_semantic_rescue_and_slot_shape():
+    row = {
+        "structural_bucket": "strong_semantic_weak_lexical_structurally_supported",
+        "match_type": "slot->class",
+        "schema_expected_alignment_type": "property_like",
+        "lexical_score": 0.1,
+        "object_description": "definition",
+        "object_synonyms": "alias one|alias two",
+        "object_is_obsolete": False,
+    }
+    flags = review_flags(row)
+    assert "semantic_rescue" in flags
+    assert "slot_to_class" in flags
+    assert "property_like_slot" in flags
+    assert "very_weak_lexical" in flags
+    assert "has_definition" in flags
+    assert "has_synonyms" in flags
+
+
+def test_summarize_review_rows_counts_flags():
+    rows = [
+        {
+            "structural_bucket": "strong_semantic_weak_lexical_structurally_supported",
+            "object_source": "OBI",
+            "match_type": "slot->class",
+            "review_flags": "semantic_rescue|slot_to_class",
+        },
+        {
+            "structural_bucket": "strong_semantic_strong_lexical",
+            "object_source": "MI",
+            "match_type": "class->class",
+            "review_flags": "has_definition",
+        },
+    ]
+    summary = summarize_review_rows(rows)
+    assert summary["total_rows"] == 2
+    assert summary["by_review_flag"]["semantic_rescue"] == 1
+    assert summary["by_object_source"]["OBI"] == 1
