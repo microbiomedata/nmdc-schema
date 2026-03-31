@@ -251,35 +251,35 @@ lxml = ["lxml"]
 
 [[package]]
 name = "bioregistry"
-version = "0.12.46"
+version = "0.13.31"
 description = "Integrated registry of biological databases and nomenclatures"
 optional = false
 python-versions = ">=3.10"
-groups = ["dev"]
+groups = ["main", "dev"]
 files = [
-    {file = "bioregistry-0.12.46-py3-none-any.whl", hash = "sha256:098c29b167cf97fe246f3c44ea59f4e1ad4b7ce870a9c5fc0f6825169b482770"},
-    {file = "bioregistry-0.12.46.tar.gz", hash = "sha256:88f1e5fba8fc9ac29c6f4441bf383376378ceb297da68505044103e2856cb398"},
+    {file = "bioregistry-0.13.31-py3-none-any.whl", hash = "sha256:9e9c99f4df6400042cd107456c22259ce85f8761e7edf165182c78fa44244c5d"},
+    {file = "bioregistry-0.13.31.tar.gz", hash = "sha256:407ec9b9b959aeeeb141b954d726b1b2fc5511b9110d4673f01b308b216b8507"},
 ]
 
 [package.dependencies]
 click = "*"
-curies = ">=0.9.0"
-more_click = ">=0.1.2"
+curies = ">=0.13.0"
+more-click = ">=0.1.2"
 pydantic = {version = ">=2.0", extras = ["email"]}
-pystow = ">=0.7.7"
+pystow = ">=0.8.2"
 requests = "*"
+sssom-pydantic = "*"
 tqdm = "*"
 
 [package.extras]
-align = ["beautifulsoup4", "class-resolver", "defusedxml", "fairsharing-client (>=0.1.0)", "pandas", "pyyaml", "tabulate"]
-charts = ["jinja2", "matplotlib", "matplotlib_venn", "pandas", "seaborn"]
-docs = ["autodoc_pydantic", "sphinx (>=8)", "sphinx-click", "sphinx-rtd-theme (>=3.0)", "sphinx_automodapi"]
+align = ["beautifulsoup4", "class-resolver", "defusedxml", "fairsharing-client (>=0.1.0)", "pandas (<3.0)", "pyyaml", "tabulate", "wikidata-client"]
+charts = ["jinja2", "matplotlib", "matplotlib-venn", "pandas (<3.0)", "seaborn"]
+docs = ["autodoc-pydantic", "sphinx (>=8)", "sphinx-automodapi", "sphinx-click", "sphinx-rtd-theme (>=3.0)"]
 export = ["ndex2", "pyyaml", "rdflib", "rdflib-jsonld"]
-gha = ["more_itertools"]
-health = ["click_default_group", "jinja2", "pandas", "pyyaml", "tabulate"]
-mapping-checking = ["pandas", "sentence_transformers"]
-paper-ranking = ["pandas", "pubmed-downloader (>=0.0.12)", "scikit-learn", "tabulate"]
-tests = ["coverage", "httpx", "more_itertools", "pytest", "scikit-learn"]
+gha = ["more-itertools"]
+health = ["click-default-group", "jinja2", "pandas (<3.0)", "pyyaml", "tabulate"]
+mapping-checking = ["pandas (<3.0)", "sentence-transformers"]
+paper-ranking = ["pandas (<3.0)", "pubmed-downloader (>=0.0.12)", "scikit-learn", "tabulate"]
 web = ["a2wsgi", "api-analytics[fastapi]", "bootstrap-flask", "curies[fastapi]", "fastapi", "flask (>=3.0.0)", "markdown", "pyyaml", "rdflib", "rdflib-endpoint (>=0.5.3)", "rdflib-jsonld", "uvicorn", "werkzeug (>=3.0.0)"]
 
 [[package]]
@@ -847,28 +847,28 @@ test-randomorder = ["pytest-randomly"]
 
 [[package]]
 name = "curies"
-version = "0.9.2"
+version = "0.13.1"
 description = "Idiomatic conversion between URIs and compact URIs (CURIEs)"
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.10"
 groups = ["main", "dev"]
 files = [
-    {file = "curies-0.9.2-py3-none-any.whl", hash = "sha256:102ab6c3e55394744019eeac3b4775c47178a6023cdbb58f58f920b5f571fcc3"},
-    {file = "curies-0.9.2.tar.gz", hash = "sha256:938527aab5f6d2d952297848d73ef7d715f4a45d5c9904653e47d33ae60d385f"},
+    {file = "curies-0.13.1-py3-none-any.whl", hash = "sha256:e8680d5d2396afd3d3ed476617db41133f568209015b8e31ad691617fca92dcc"},
+    {file = "curies-0.13.1.tar.gz", hash = "sha256:358d8fccb2564639e6cba012115fe51210c3cd40518a7d9667a28abe6db3a8b3"},
 ]
 
 [package.dependencies]
 pydantic = ">=2.0"
-pytrie = "*"
+pystow = ">=0.8.0"
 typing-extensions = "*"
 
 [package.extras]
-docs = ["sphinx (>=8)", "sphinx-rtd-theme (>=3.0)", "sphinx_automodapi"]
 fastapi = ["defusedxml", "fastapi", "httpx", "python-multipart", "uvicorn"]
 flask = ["defusedxml", "flask"]
 pandas = ["pandas"]
 rdflib = ["rdflib"]
-tests = ["coverage", "pytest", "requests"]
+sqlalchemy = ["sqlalchemy"]
+sqlmodel = ["sqlmodel"]
 
 [[package]]
 name = "daff"
@@ -1107,7 +1107,7 @@ version = "2.3.0"
 description = "A robust email address syntax and deliverability validation library."
 optional = false
 python-versions = ">=3.8"
-groups = ["dev"]
+groups = ["main", "dev"]
 files = [
     {file = "email_validator-2.3.0-py3-none-any.whl", hash = "sha256:80f13f623413e6b197ae73bb10bf4eb0908faf509ad8362c5edeb0be7fd450b4"},
     {file = "email_validator-2.3.0.tar.gz", hash = "sha256:9fc05c37f2f6cf439ff414f8fc46d917929974a82244c20eb10231ba60c54426"},
@@ -4862,31 +4862,29 @@ solrcloud = ["kazoo (>=2.5.0)"]
 
 [[package]]
 name = "pystow"
-version = "0.7.28"
+version = "0.8.3"
 description = "Easily pick a place to store data for your Python code"
 optional = false
 python-versions = ">=3.10"
 groups = ["main", "dev"]
 files = [
-    {file = "pystow-0.7.28-py3-none-any.whl", hash = "sha256:aa73dec0f6dea8bfc844f3abd3d985d6d3594291ebd234d9ec05b16884b13336"},
-    {file = "pystow-0.7.28.tar.gz", hash = "sha256:7c043bda2e4d6d8de8ae8e3944d2caeef5dd370e81df31e2e74557eaa574946a"},
+    {file = "pystow-0.8.3-py3-none-any.whl", hash = "sha256:022cc481b77d02b2df746f778a6d5014f3ed7b3abed96aacf46bc4333d61d2b6"},
+    {file = "pystow-0.8.3.tar.gz", hash = "sha256:90d927cfaa6172aaa0677005763b32f98ee5d9e0c4f243fc02943a90c08f2b98"},
 ]
 
 [package.dependencies]
-click = "*"
-requests = "*"
 tqdm = "*"
 typing-extensions = "*"
 
 [package.extras]
 aws = ["boto3"]
-bs4 = ["bs4"]
-docs = ["sphinx (>=8)", "sphinx-automodapi", "sphinx-click", "sphinx-rtd-theme (>=3.0)"]
+bs4 = ["bs4", "requests"]
+cli = ["click"]
 pandas = ["pandas"]
 pydantic = ["pydantic"]
-ratelimit = ["ratelimit"]
+ratelimit = ["ratelimit", "requests"]
 rdf = ["rdflib"]
-tests = ["coverage[toml]", "pytest", "requests-file"]
+requests = ["requests"]
 xml = ["lxml"]
 yaml = ["pyyaml"]
 
@@ -5027,21 +5025,6 @@ files = [
 
 [package.extras]
 dev = ["black", "build", "mypy", "pytest", "pytest-cov", "setuptools", "tox", "twine", "wheel"]
-
-[[package]]
-name = "pytrie"
-version = "0.4.0"
-description = "A pure Python implementation of the trie data structure."
-optional = false
-python-versions = "*"
-groups = ["main", "dev"]
-files = [
-    {file = "PyTrie-0.4.0-py3-none-any.whl", hash = "sha256:f687c224ee8c66cda8e8628a903011b692635ffbb08d4b39c5f92b18eb78c950"},
-    {file = "PyTrie-0.4.0.tar.gz", hash = "sha256:8f4488f402d3465993fb6b6efa09866849ed8cda7903b50647b7d0342b805379"},
-]
-
-[package.dependencies]
-sortedcontainers = "*"
 
 [[package]]
 name = "pytz"
@@ -5964,18 +5947,6 @@ files = [
 ]
 
 [[package]]
-name = "sortedcontainers"
-version = "2.4.0"
-description = "Sorted Containers -- Sorted List, Sorted Dict, Sorted Set"
-optional = false
-python-versions = "*"
-groups = ["main", "dev"]
-files = [
-    {file = "sortedcontainers-2.4.0-py2.py3-none-any.whl", hash = "sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0"},
-    {file = "sortedcontainers-2.4.0.tar.gz", hash = "sha256:25caa5a06cc30b6b83d11423433f65d1f9d76c4c6a0c90e3379eaa43b9bfdb88"},
-]
-
-[[package]]
 name = "soupsieve"
 version = "2.8.3"
 description = "A modern CSS selector implementation for Beautiful Soup."
@@ -6391,6 +6362,33 @@ scipy = {version = "*", extras = ["scipy"]}
 sparqlwrapper = ">=2.0.0"
 sssom-schema = ">=1.0.0,<2.0.0"
 validators = ">=0.20.0"
+
+[[package]]
+name = "sssom-pydantic"
+version = "0.2.0"
+description = "Pydantic models for SSSOM"
+optional = false
+python-versions = ">=3.10"
+groups = ["main", "dev"]
+files = [
+    {file = "sssom_pydantic-0.2.0-py3-none-any.whl", hash = "sha256:672bcec7f9690fe05ddaa2a7447e0d2781521701c7460ed96486b41646d40f92"},
+    {file = "sssom_pydantic-0.2.0.tar.gz", hash = "sha256:a5584b0604afefb46a4b3d6be7518f7c26dbf00bffba85a93b9a71a20b5db37f"},
+]
+
+[package.dependencies]
+curies = ">=0.12.9"
+pydantic = "*"
+pystow = "*"
+pyyaml = "*"
+
+[package.extras]
+database = ["sqlmodel"]
+fastapi = ["fastapi"]
+jskos = ["jskos (>=0.0.5)"]
+ndex = ["ndex2"]
+ontoportal = ["ontoportal-client (>0.0.6)"]
+sssompy = ["pandas", "sssom"]
+wikidata = ["bioregistry", "quickstatements-client", "wikidata-client"]
 
 [[package]]
 name = "sssom-schema"
@@ -7018,4 +7016,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<4.0"
-content-hash = "70f2a0d2fca7e508ce448cc448c429d7986182e3145a38c18dd10c84f409b2fd"
+content-hash = "3777251594be41a43692aedafd66d9da8f47e11f141be0eb15b837736bec471b"
