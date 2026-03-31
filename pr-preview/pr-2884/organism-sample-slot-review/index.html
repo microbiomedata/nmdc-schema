@@ -1,0 +1,1053 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/organism-sample-slot-review/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>OrganismSample Slot Review - NMDC Schema Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#organismsample-slot-review" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="NMDC Schema Documentation" class="md-header__button md-logo" aria-label="NMDC Schema Documentation" data-md-component="logo">
+      
+  <img src="../images/NMDC_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NMDC Schema Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OrganismSample Slot Review
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="NMDC Schema Documentation" class="md-nav__button md-logo" aria-label="NMDC Schema Documentation" data-md-component="logo">
+      
+  <img src="../images/NMDC_logo.png" alt="logo">
+
+    </a>
+    NMDC Schema Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funding and Acknowledgements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collaboration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Metadata_Documentation_Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadata Standards Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintaining-the-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maintaining the NMDC Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema_element_deprecation_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema element deprecation guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NMDC Schema Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identifiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identifiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typecode-to-class-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Typecode to class map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version Migration Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer-docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Downloads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#schema-element-delta-vs-v11171" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema element delta vs v11.17.1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#action-1-remove-facility-logistics-slots-7-slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action 1: Remove facility logistics slots (7 slots)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#action-2-move-sequencingassemblylibrary-slots-18-slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action 2: Move sequencing/assembly/library slots (18 slots)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#action-3-collapse-redundant-slots-6-slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action 3: Collapse redundant slots (6 slots)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#action-4-needs-discussion-not-clear-cut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action 4: Needs discussion (not clear-cut)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related issues
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="organismsample-slot-review">OrganismSample Slot Review</h1>
+<p>PR #2884 introduces 112 new slot definitions and assigns 143 total slots
+to OrganismSample. This document reviews which slots belong on
+OrganismSample, which should move to other classes, and which can be
+collapsed with existing slots.</p>
+<h2 id="schema-element-delta-vs-v11171">Schema element delta vs v11.17.1</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>main (v11.17.1)</th>
+<th>PR branch</th>
+<th>delta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>slots</strong></td>
+<td>873</td>
+<td>985</td>
+<td>+112</td>
+</tr>
+<tr>
+<td><strong>classes</strong></td>
+<td>82</td>
+<td>83</td>
+<td>+1 (OrganismSample)</td>
+</tr>
+<tr>
+<td><strong>enums</strong></td>
+<td>143</td>
+<td>158</td>
+<td>+15</td>
+</tr>
+</tbody>
+</table>
+<p>Of the 143 slots assigned to OrganismSample, 31 already exist on main
+(reused from Biosample, MIxS, etc.) and 112 are new definitions. The
+new definitions are drawn from three authority standards:</p>
+<ul>
+<li><strong>MIxS MIGS-Ba</strong> — Minimum Information about a Genome Sequence: bacteria/archaea</li>
+<li><strong>GOLD organism_v2</strong> — JGI's Genomes OnLine Database organism table</li>
+<li><strong>JGI Isolate v19</strong> — JGI's isolate submission form</li>
+</ul>
+<h2 id="action-1-remove-facility-logistics-slots-7-slots">Action 1: Remove facility logistics slots (7 slots)</h2>
+<p>These slots describe the physical vial shipped to JGI, not the organism.
+The submission-schema (<code>nmdc_submission_schema.yaml</code>) already defines
+equivalent slots on <code>JgiMgInterface</code> / <code>JgiMtInterface</code> /
+<code>JgiMgLrInterface</code>. They live in the portal Postgres database and are
+passed to JGI — they do not belong in nmdc-schema (MongoDB).</p>
+<table>
+<thead>
+<tr>
+<th>PR #2884 slot</th>
+<th>submission-schema equivalent</th>
+<th>What it describes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>analyte_volume</code></td>
+<td><code>jgi_sample_volume</code></td>
+<td>DNA volume shipped</td>
+</tr>
+<tr>
+<td><code>sample_container</code></td>
+<td><code>cont_type</code></td>
+<td>tube vs plate</td>
+</tr>
+<tr>
+<td><code>sample_format</code></td>
+<td><code>jgi_sample_format</code></td>
+<td>pellet, ethanol, etc.</td>
+</tr>
+<tr>
+<td><code>dnase_treated</code></td>
+<td><code>dnase</code></td>
+<td>Y/N DNase treatment</td>
+</tr>
+<tr>
+<td><code>tube_or_plate_label</code></td>
+<td><code>container_name</code></td>
+<td>shipping label</td>
+</tr>
+<tr>
+<td><code>plate_well_location</code></td>
+<td><code>cont_well</code></td>
+<td>well position</td>
+</tr>
+<tr>
+<td><code>biosafety_material_category</code></td>
+<td><code>biosafety_mat_cat</code></td>
+<td>BSL category</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Remove these 7 slots from OrganismSample and from
+<code>organism_sample.yaml</code>. Also remove <code>SampleContainerEnum</code>,
+<code>SampleFormatEnum</code>, and <code>BiosafetyMaterialCategoryEnum</code> if they are
+only used by these slots.</p>
+<h2 id="action-2-move-sequencingassemblylibrary-slots-18-slots">Action 2: Move sequencing/assembly/library slots (18 slots)</h2>
+<p>These slots describe workflows, library preparation, and assembly
+outputs — not the organism itself. The PR description already says
+"Sequencing/assembly slots belong on DataGeneration /
+LibraryPreparation / WorkflowExecution" but 18 remain.</p>
+<p><strong>Assembly and annotation (belong on WorkflowExecution):</strong>
+- <code>assembly_name</code>
+- <code>assembly_qual</code>
+- <code>assembly_software</code>
+- <code>compl_score</code>
+- <code>compl_software</code>
+- <code>number_contig</code>
+- <code>feat_pred</code>
+- <code>annot</code>
+- <code>sim_search_meth</code>
+- <code>ref_db</code></p>
+<p><strong>Library preparation (belong on DataGeneration or LibraryPreparation):</strong>
+- <code>adapters</code>
+- <code>lib_layout</code>
+- <code>lib_reads_seqd</code>
+- <code>lib_screen</code>
+- <code>lib_size</code>
+- <code>lib_vector</code></p>
+<p><strong>Controls and project linkage:</strong>
+- <code>neg_cont_type</code>
+- <code>pos_cont_type</code></p>
+<p><strong>Action:</strong> Remove these 18 slots from OrganismSample. They may need to
+be assigned to existing workflow/data generation classes in a follow-up
+PR, or filed as issues if those classes don't have them yet.</p>
+<p>Also remove <code>AssemblyQualEnum</code>, <code>LibLayoutEnum</code>, <code>NegContTypeEnum</code>,
+and <code>TaxIdentEnum</code> if they are only used by slots being removed.</p>
+<h2 id="action-3-collapse-redundant-slots-6-slots">Action 3: Collapse redundant slots (6 slots)</h2>
+<p>These new slots overlap semantically with slots already on main. Using
+the existing slot avoids introducing a near-duplicate.</p>
+<table>
+<thead>
+<tr>
+<th>New slot</th>
+<th>Existing slot on main</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>host_gender</code></td>
+<td><code>host_sex</code></td>
+<td>Use <code>host_sex</code>. MIxS standard name; same concept.</td>
+</tr>
+<tr>
+<td><code>specific_host</code></td>
+<td><code>host_name</code></td>
+<td>Use <code>host_name</code>. Already defined on main; same concept (free-text host organism name).</td>
+</tr>
+<tr>
+<td><code>isolation_site_ph</code></td>
+<td><code>ph</code></td>
+<td>Use <code>ph</code>. Both are QuantityValue measurements of pH. GOLD's min/max pattern fits in <code>has_numeric_value</code> / <code>has_maximum_numeric_value</code>.</td>
+</tr>
+<tr>
+<td><code>salinity_concentration</code></td>
+<td><code>salinity</code></td>
+<td>Use <code>salinity</code>. Already defined on main with QuantityValue range.</td>
+</tr>
+<tr>
+<td><code>host_body_site_id</code></td>
+<td><em>(drop)</em></td>
+<td>GOLD-internal integer FK. Not meaningful outside GOLD.</td>
+</tr>
+<tr>
+<td><code>host_body_subsite_id</code></td>
+<td><em>(drop)</em></td>
+<td>GOLD-internal integer FK. Not meaningful outside GOLD.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Also consider dropping</strong> <code>host_body_product_id</code> — same rationale as
+the other GOLD-internal integer FKs.</p>
+<p><strong>Action:</strong> Remove these 6–7 slots. For <code>host_gender</code>, <code>specific_host</code>,
+<code>isolation_site_ph</code>, and <code>salinity_concentration</code>, update the data
+mapping guide to map source data to the existing slot name instead.</p>
+<h2 id="action-4-needs-discussion-not-clear-cut">Action 4: Needs discussion (not clear-cut)</h2>
+<p>These overlaps need team input before deciding:</p>
+<table>
+<thead>
+<tr>
+<th>New slot</th>
+<th>Overlaps with</th>
+<th>Question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>organism_domain</code></td>
+<td><code>gtdbtk_domain</code> (on MagBin)</td>
+<td>Different provenance (GOLD vs GTDB). Could one <code>taxonomic_domain</code> slot serve both? Or are GOLD organism domain and GTDB-tk assignment semantically distinct?</td>
+</tr>
+<tr>
+<td><code>organism_genus</code> / <code>organism_species</code></td>
+<td>derivable from <code>samp_taxon_id</code></td>
+<td>JGI requires separate genus/species fields. Are these convenience slots for ingest, or do they carry information beyond what the NCBITaxon CURIE provides?</td>
+</tr>
+<tr>
+<td><code>tot_nitrogen</code> / <code>tot_org_carbon</code></td>
+<td><code>nitrate_nitrogen</code>, <code>ammonium_nitrogen</code> on main</td>
+<td>Different measurements (total vs specific forms). Probably not duplicates, but worth confirming.</td>
+</tr>
+<tr>
+<td><code>single_colony_isolation</code></td>
+<td><em>(no equivalent)</em></td>
+<td>Describes how the organism was obtained. Arguably belongs on OrganismSample (it defines what it <em>is</em>), but could also be a MaterialProcessing attribute.</td>
+</tr>
+<tr>
+<td><code>project_name</code></td>
+<td><code>name</code> on Study</td>
+<td>What is this slot capturing that isn't already on Study?</td>
+</tr>
+<tr>
+<td><code>associated_resource</code></td>
+<td><code>associated_studies</code> (already assigned)</td>
+<td>MIxS slot; may overlap with NMDC's study linkage pattern.</td>
+</tr>
+<tr>
+<td><code>ribosomal_sequence</code> / <code>second_ribosomal_sequence</code></td>
+<td><em>(no equivalent)</em></td>
+<td>JGI requires actual nucleotide data for strain verification. Does NMDC want to store raw sequences, or just GenBank accession references?</td>
+</tr>
+</tbody>
+</table>
+<h2 id="summary">Summary</h2>
+<p>If actions 1–3 are applied:</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Slots removed</th>
+<th>Enums removed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Facility logistics</td>
+<td>7</td>
+<td>up to 3</td>
+</tr>
+<tr>
+<td>Sequencing/assembly</td>
+<td>18</td>
+<td>up to 4</td>
+</tr>
+<tr>
+<td>Collapse redundant</td>
+<td>6–7</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>31–32</strong></td>
+<td><strong>up to 7</strong></td>
+</tr>
+</tbody>
+</table>
+<p>This would bring the new slot count from 112 down to ~80, and the total
+OrganismSample slot assignments from 143 down to ~111.</p>
+<h2 id="related-issues">Related issues</h2>
+<ul>
+<li>
+<h1 id="2892-analyte-slot-scope">2892 — Analyte slot scope</h1>
+</li>
+<li>
+<h1 id="2893-jgi-validation-rules">2893 — JGI validation rules</h1>
+</li>
+<li>
+<h1 id="2803-model-isolatesorganisms-as-distinct-from-environmental-biosamples">2803 — Model isolates/organisms as distinct from environmental Biosamples</h1>
+</li>
+<li>
+<h1 id="1769-need-clarity-on-yaml-files-that-have-nmdc-schema-elements">1769 — Need clarity on .yaml files that have NMDC schema elements</h1>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "hide_page_title"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
+      
+    
+  </body>
+</html>
