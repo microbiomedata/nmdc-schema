@@ -1,0 +1,165 @@
+# Ontology alignment via embeddings — OLS4 baseline + LinkML-side comparison
+#
+# Prerequisites:
+#   poetry install --with dev,deps
+#
+# For OLS4 targets: no API key needed (public endpoint)
+# For linkml-store targets: OPENAI_API_KEY and optionally BIOPORTAL_API_KEY
+#
+# Quick start:
+#   make alignment-enrich             # enrich OLS4 baseline with schema context (no API calls)
+#   make alignment-review             # generate review shortlist from enriched results
+#   make alignment-gap-report         # property-like and source coverage gap report
+#   make alignment-linkml-store-smoke # small OBI test via linkml-store (needs OPENAI_API_KEY)
+
+# The OLS4 baseline TSV. On the 2907 branch this is committed at src/scripts/.
+# On the 2908 branch it must be copied or symlinked to local/.
+OLS4_BASELINE = $(firstword $(wildcard src/scripts/ols4_embeddings_results.tsv) $(wildcard local/ols4_embeddings_results.tsv))
+
+ALIGNMENT_ENRICHED = local/linkml_embeddings_alignment_enriched.tsv
+ALIGNMENT_SUMMARY = local/linkml_embeddings_alignment_summary.json
+ALIGNMENT_REVIEW = local/linkml_alignment_review.tsv
+ALIGNMENT_GAP = local/linkml_alignment_gap_report.json
+
+.PHONY: alignment-enrich alignment-enrich-obi alignment-enrich-slots
+.PHONY: alignment-review alignment-gap-report
+.PHONY: alignment-linkml-store-smoke alignment-linkml-store-obi alignment-linkml-store-bioportal
+.PHONY: ols4-embeddings-search ols4-embeddings-smoke ols4-embeddings-postprocess
+.PHONY: ols4-embeddings-postprocess-obi ols4-embeddings-postprocess-slots
+
+# ---------- OLS4 retrieval (requires src/scripts/ols4_embeddings_search.py on this branch) ----------
+
+# Full exhaustive search: all element types, full OLS4 corpus
+# ~2,300 queries x 0.5s = ~19 min. Overwrites committed results TSV.
+ols4-embeddings-search:
+	$(RUN) python src/scripts/ols4_embeddings_search.py \
+		--schema $(SOURCE_SCHEMA_PATH) \
+		--element-types classes,slots,enums,pvs \
+		--rows 5 \
+		-o src/scripts/ols4_embeddings_results.tsv
+
+# Smoke test: classes only, OBI only (~60 queries, ~30s)
+ols4-embeddings-smoke:
+	$(RUN) python src/scripts/ols4_embeddings_search.py \
+		--schema $(SOURCE_SCHEMA_PATH) \
+		--element-types classes \
+		--ontology obi \
+		--rows 3 \
+		-o local/ols4_embeddings_smoke_obi.tsv -v
+
+# ---------- OLS4 post-processing (thin wrapper, requires ols4_embeddings_postprocess.py) ----------
+
+ols4-embeddings-postprocess:
+	$(RUN) python src/scripts/ols4_embeddings_postprocess.py \
+		--schema $(SOURCE_SCHEMA_PATH) \
+		--semantic-results src/scripts/ols4_embeddings_results.tsv \
+		-o local/ols4_embeddings_enriched.tsv \
+		--summary-json local/ols4_embeddings_summary.json
+
+ols4-embeddings-postprocess-obi:
+	$(RUN) python src/scripts/ols4_embeddings_postprocess.py \
+		--schema $(SOURCE_SCHEMA_PATH) \
+		--semantic-results src/scripts/ols4_embeddings_results.tsv \
+		--allowed-ontologies OBI \
+		-o local/ols4_embeddings_obi_enriched.tsv \
+		--summary-json local/ols4_embeddings_obi_summary.json
+
+ols4-embeddings-postprocess-slots:
+	$(RUN) python src/scripts/ols4_embeddings_postprocess.py \
+		--schema $(SOURCE_SCHEMA_PATH) \
+		--semantic-results src/scripts/ols4_embeddings_results.tsv \
+		--subject-categories slot \
+		-o local/ols4_embeddings_slots_enriched.tsv \
+		--summary-json local/ols4_embeddings_slots_summary.json
+
+# ---------- Schema-aware enrichment ----------
+
+# Enrich OLS4 baseline with schema context and lexical diagnostics (no API calls)
+alignment-enrich:
+	@if [ -z "$(OLS4_BASELINE)" ]; then echo "ERROR: No OLS4 baseline TSV found. Copy or symlink ols4_embeddings_results.tsv to local/ or src/scripts/."; exit 1; fi
+	$(RUN) python src/scripts/linkml_embeddings_alignment_prototype.py \
+		--schema $(SOURCE_SCHEMA_PATH) \
+		--semantic-results $(OLS4_BASELINE) \
+		-o $(ALIGNMENT_ENRICHED) \
+		--summary-json $(ALIGNMENT_SUMMARY)
+
+# Enrich filtered to OBI only
+alignment-enrich-obi:
+	@if [ -z "$(OLS4_BASELINE)" ]; then echo "ERROR: No OLS4 baseline TSV found."; exit 1; fi
+	$(RUN) python src/scripts/linkml_embeddings_alignment_prototype.py \
+		--schema $(SOURCE_SCHEMA_PATH) \
+		--semantic-results $(OLS4_BASELINE) \
+		--allowed-ontologies OBI \
+		-o local/linkml_embeddings_alignment_obi.tsv \
+		--summary-json local/linkml_embeddings_alignment_obi_summary.json
+
+# Enrich filtered to slots only
+alignment-enrich-slots:
+	@if [ -z "$(OLS4_BASELINE)" ]; then echo "ERROR: No OLS4 baseline TSV found."; exit 1; fi
+	$(RUN) python src/scripts/linkml_embeddings_alignment_prototype.py \
+		--schema $(SOURCE_SCHEMA_PATH) \
+		--semantic-results $(OLS4_BASELINE) \
+		--subject-categories slot \
+		-o local/linkml_embeddings_alignment_slots.tsv \
+		--summary-json local/linkml_embeddings_alignment_slots_summary.json
+
+# ---------- Review shortlist ----------
+
+# Generate a small review-oriented shortlist from enriched results
+alignment-review: $(ALIGNMENT_ENRICHED)
+	$(RUN) python src/scripts/linkml_alignment_review.py \
+		--enriched-results $(ALIGNMENT_ENRICHED) \
+		-o $(ALIGNMENT_REVIEW) \
+		--summary-json local/linkml_alignment_review_summary.json
+
+# ---------- Gap report ----------
+
+# Property-like slot and source coverage gap analysis
+alignment-gap-report:
+	@if [ -z "$(OLS4_BASELINE)" ]; then echo "ERROR: No OLS4 baseline TSV found."; exit 1; fi
+	$(RUN) python src/scripts/linkml_alignment_gap_report.py \
+		--schema $(SOURCE_SCHEMA_PATH) \
+		--baseline-results $(OLS4_BASELINE) \
+		--summary-json $(ALIGNMENT_GAP)
+
+# ---------- LinkML-store local retrieval ----------
+
+# Smoke test: OBI via oaklib, 5 subjects (needs OPENAI_API_KEY)
+alignment-linkml-store-smoke:
+	@if [ -z "$(OLS4_BASELINE)" ]; then echo "ERROR: No OLS4 baseline TSV found."; exit 1; fi
+	$(RUN) python src/scripts/linkml_store_embeddings_search.py \
+		--ols4-results $(OLS4_BASELINE) \
+		--ontology-prefix OBI \
+		--max-subjects 5 \
+		--max-ontology-terms 500 \
+		--top-k 10 \
+		-o local/linkml_store_smoke.tsv \
+		--summary-json local/linkml_store_smoke_summary.json
+
+# Full OBI comparison via oaklib (all baseline subjects with OBI hits)
+alignment-linkml-store-obi:
+	@if [ -z "$(OLS4_BASELINE)" ]; then echo "ERROR: No OLS4 baseline TSV found."; exit 1; fi
+	$(RUN) python src/scripts/linkml_store_embeddings_search.py \
+		--ols4-results $(OLS4_BASELINE) \
+		--ontology-prefix OBI \
+		--all-baseline-subjects \
+		--top-k 20 \
+		-o local/linkml_store_embeddings_obi.tsv \
+		--summary-json local/linkml_store_embeddings_obi_summary.json \
+		--enriched-output local/linkml_store_embeddings_obi_enriched.tsv \
+		--enriched-summary-json local/linkml_store_embeddings_obi_enriched_summary.json
+
+# BioPortal-backed retrieval (needs OPENAI_API_KEY + BIOPORTAL_API_KEY)
+alignment-linkml-store-bioportal:
+	@if [ -z "$(OLS4_BASELINE)" ]; then echo "ERROR: No OLS4 baseline TSV found."; exit 1; fi
+	$(RUN) python src/scripts/linkml_store_embeddings_search.py \
+		--ols4-results $(OLS4_BASELINE) \
+		--corpus-source bioportal \
+		--bioportal-acronyms OBI \
+		--bioportal-exclude-imports \
+		--all-baseline-subjects \
+		--top-k 20 \
+		-o local/linkml_store_bioportal_obi.tsv \
+		--summary-json local/linkml_store_bioportal_obi_summary.json \
+		--enriched-output local/linkml_store_bioportal_obi_enriched.tsv \
+		--enriched-summary-json local/linkml_store_bioportal_obi_enriched_summary.json
