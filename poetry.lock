@@ -255,7 +255,7 @@ version = "0.13.31"
 description = "Integrated registry of biological databases and nomenclatures"
 optional = false
 python-versions = ">=3.10"
-groups = ["main", "dev"]
+groups = ["dev"]
 files = [
     {file = "bioregistry-0.13.31-py3-none-any.whl", hash = "sha256:9e9c99f4df6400042cd107456c22259ce85f8761e7edf165182c78fa44244c5d"},
     {file = "bioregistry-0.13.31.tar.gz", hash = "sha256:407ec9b9b959aeeeb141b954d726b1b2fc5511b9110d4673f01b308b216b8507"},
@@ -1107,7 +1107,7 @@ version = "2.3.0"
 description = "A robust email address syntax and deliverability validation library."
 optional = false
 python-versions = ">=3.8"
-groups = ["main", "dev"]
+groups = ["dev"]
 files = [
     {file = "email_validator-2.3.0-py3-none-any.whl", hash = "sha256:80f13f623413e6b197ae73bb10bf4eb0908faf509ad8362c5edeb0be7fd450b4"},
     {file = "email_validator-2.3.0.tar.gz", hash = "sha256:9fc05c37f2f6cf439ff414f8fc46d917929974a82244c20eb10231ba60c54426"},
@@ -6369,7 +6369,7 @@ version = "0.2.0"
 description = "Pydantic models for SSSOM"
 optional = false
 python-versions = ">=3.10"
-groups = ["main", "dev"]
+groups = ["dev"]
 files = [
     {file = "sssom_pydantic-0.2.0-py3-none-any.whl", hash = "sha256:672bcec7f9690fe05ddaa2a7447e0d2781521701c7460ed96486b41646d40f92"},
     {file = "sssom_pydantic-0.2.0.tar.gz", hash = "sha256:a5584b0604afefb46a4b3d6be7518f7c26dbf00bffba85a93b9a71a20b5db37f"},
@@ -7016,4 +7016,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<4.0"
-content-hash = "3777251594be41a43692aedafd66d9da8f47e11f141be0eb15b837736bec471b"
+content-hash = "8f534b30b80bc396f1c115f4256db9d5059efb2f9ab1f04258aa2c30bf7b40f1"

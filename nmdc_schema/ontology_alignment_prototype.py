@@ -17,6 +17,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any
 
+import curies
 import requests
 from linkml_runtime.linkml_model.meta import PermissibleValue
 from linkml_runtime.utils.schemaview import SchemaView
@@ -712,24 +713,9 @@ def _normalize_bioportal_object_id(raw_object_id: str, ontology_acronym: str) ->
     if fragment.startswith(f"{ontology_acronym.upper()}_"):
         return f"{ontology_acronym.upper()}:{fragment.split('_', 1)[1]}"
 
-    try:
-        import bioregistry
-
-        normalized_curie = bioregistry.normalize_curie(raw_object_id)
-        if normalized_curie:
-            return normalize_curie_prefix_case(normalized_curie)
-    except Exception:
-        pass
-
-    try:
-        import curies
-
-        converter = curies.get_bioregistry_converter()
-        compacted = converter.compress(raw_object_id)
-        if compacted:
-            return normalize_curie_prefix_case(compacted)
-    except Exception:
-        pass
+    compacted = curies.get_bioregistry_converter().compress(raw_object_id)
+    if compacted:
+        return normalize_curie_prefix_case(compacted)
     return normalize_curie_prefix_case(raw_object_id)
 
 
