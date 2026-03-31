@@ -55,6 +55,7 @@ class SchemaElementRecord:
     subject_label: str
     subject_category: str
     subject_description: str
+    subject_synonyms: tuple[str, ...]
     element_name: str
     range_name: str
     range_kind: str
@@ -109,6 +110,7 @@ class SubjectQueryRecord:
     subject_label: str
     subject_category: str
     subject_description: str
+    subject_synonyms: tuple[str, ...] = tuple()
 
 
 @dataclass(frozen=True)
@@ -199,6 +201,41 @@ def _sources_from_mappings(mappings: tuple[str, ...]) -> tuple[str, ...]:
     return tuple(sorted({mapping_source(value) for value in mappings if mapping_source(value)}))
 
 
+def _string_values(*candidates: Any) -> tuple[str, ...]:
+    values: list[str] = []
+    for candidate in candidates:
+        if not candidate:
+            continue
+        if isinstance(candidate, str):
+            if candidate.strip():
+                values.append(candidate.strip())
+            continue
+        if isinstance(candidate, dict):
+            for key, value in candidate.items():
+                values.extend(_string_values(key, value))
+            continue
+        if isinstance(candidate, (list, tuple, set)):
+            for item in candidate:
+                values.extend(_string_values(item))
+            continue
+    unique: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        normalized = normalize_text(value)
+        if not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        unique.append(value)
+    return tuple(unique)
+
+
+def _schema_aliases(element: Any) -> tuple[str, ...]:
+    return _string_values(
+        getattr(element, "aliases", None),
+        getattr(element, "structured_aliases", None),
+    )
+
+
 def _range_kind(sv: SchemaView, range_name: str) -> str:
     if not range_name:
         return "none"
@@ -239,6 +276,7 @@ def _class_record(sv: SchemaView, class_name: str) -> SchemaElementRecord:
         subject_label=class_def.title or class_name,
         subject_category="class",
         subject_description=class_def.description or "",
+        subject_synonyms=_schema_aliases(class_def),
         element_name=class_name,
         range_name="",
         range_kind="none",
@@ -279,6 +317,7 @@ def _slot_record(sv: SchemaView, slot_name: str) -> SchemaElementRecord:
         subject_label=slot_def.title or slot_name,
         subject_category="slot",
         subject_description=slot_def.description or "",
+        subject_synonyms=_schema_aliases(slot_def),
         element_name=slot_name,
         range_name=range_name,
         range_kind=range_kind,
@@ -302,6 +341,7 @@ def _enum_record(sv: SchemaView, enum_name: str) -> SchemaElementRecord:
         subject_label=enum_def.title or enum_name,
         subject_category="enum",
         subject_description=enum_def.description or "",
+        subject_synonyms=_schema_aliases(enum_def),
         element_name=enum_name,
         range_name="",
         range_kind="none",
@@ -327,6 +367,7 @@ def _pv_record(enum_name: str, pv_name: str, pv: PermissibleValue) -> SchemaElem
         subject_label=pv.text or pv_name,
         subject_category="permissible_value",
         subject_description=pv.description or "",
+        subject_synonyms=_schema_aliases(pv),
         element_name=pv_name,
         range_name="",
         range_kind="none",
@@ -567,9 +608,11 @@ def read_unique_subjects(
     alignment_results_path: str | Path,
     allowed_subject_categories: set[str] | None = None,
     max_subjects: int | None = None,
+    schema_index: dict[str, SchemaElementRecord] | None = None,
 ) -> list[SubjectQueryRecord]:
     """Read distinct NMDC subjects from an alignment TSV while preserving first-seen order."""
     allowed_subject_categories = {item.lower() for item in (allowed_subject_categories or set())}
+    schema_index = schema_index or {}
     unique: dict[str, SubjectQueryRecord] = {}
     for row in read_alignment_rows(alignment_results_path):
         subject_category = (row.get("subject_category") or "").lower()
@@ -578,11 +621,13 @@ def read_unique_subjects(
         subject_id = row.get("subject_id", "")
         if not subject_id or subject_id in unique:
             continue
+        schema_record = schema_index.get(subject_id)
         unique[subject_id] = SubjectQueryRecord(
             subject_id=subject_id,
-            subject_label=row.get("subject_label", ""),
+            subject_label=schema_record.subject_label if schema_record else row.get("subject_label", ""),
             subject_category=subject_category,
-            subject_description=row.get("subject_description", ""),
+            subject_description=schema_record.subject_description if schema_record else row.get("subject_description", ""),
+            subject_synonyms=schema_record.subject_synonyms if schema_record else tuple(),
         )
         if max_subjects is not None and len(unique) >= max_subjects:
             break
@@ -591,12 +636,10 @@ def read_unique_subjects(
 
 def compose_subject_query_text(subject: SubjectQueryRecord) -> str:
     """Compose a stable semantic-search query for an NMDC schema subject."""
-    category = subject.subject_category.replace("_", " ").strip()
     label = (subject.subject_label or "").strip()
+    synonyms = "; ".join(item for item in subject.subject_synonyms if item).strip()
     description = (subject.subject_description or "").strip()
-    parts = [part for part in (label, description) if part]
-    if category:
-        parts.append(f"schema element type: {category}")
+    parts = [part for part in (label, synonyms, description) if part]
     return " :: ".join(parts)
 
 

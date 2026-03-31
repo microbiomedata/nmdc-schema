@@ -179,6 +179,7 @@ def cli(
     """Compare a local LinkML-side semantic retrieval run against the OLS4 baseline query set."""
     allowed_subject_categories = {item.lower() for item in parse_csv_option(subject_categories)}
     baseline_rows = read_alignment_rows(ols4_results)
+    schema_index = build_schema_index(schema_path)
     ontology_prefixes = (
         [prefix.strip().upper() for prefix in bioportal_acronyms.split(",") if prefix.strip()]
         if bioportal_acronyms
@@ -189,6 +190,7 @@ def cli(
     subjects = read_unique_subjects(
         ols4_results,
         allowed_subject_categories=allowed_subject_categories,
+        schema_index=schema_index,
     )
     if restrict_to_baseline_source_hits:
         eligible_subject_ids = {
@@ -254,7 +256,6 @@ def cli(
     write_json(summary, summary_json)
 
     if enriched_output or enriched_summary_json:
-        schema_index = build_schema_index(schema_path)
         enriched_rows = enrich_alignment_rows(
             rows=rows,
             schema_index=schema_index,

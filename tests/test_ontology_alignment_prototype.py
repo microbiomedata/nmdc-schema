@@ -65,6 +65,7 @@ def test_structural_support_for_scalar_slot_to_class_is_false():
         subject_label="test_slot",
         subject_category="slot",
         subject_description="",
+        subject_synonyms=tuple(),
         element_name="test_slot",
         range_name="string",
         range_kind="scalar",
@@ -93,6 +94,7 @@ def test_structural_support_for_enum_backed_slot_to_class_is_true():
         subject_label="test_slot",
         subject_category="slot",
         subject_description="",
+        subject_synonyms=tuple(),
         element_name="test_slot",
         range_name="InstrumentModelEnum",
         range_kind="enum",
@@ -121,6 +123,7 @@ def test_structural_support_for_pv_without_source_overlap_is_false():
         subject_label="value",
         subject_category="permissible_value",
         subject_description="",
+        subject_synonyms=tuple(),
         element_name="value",
         range_name="",
         range_kind="none",
@@ -282,17 +285,19 @@ def test_summarize_review_rows_counts_metadata_backend():
     assert summary["by_metadata_backend"]["ols4"] == 1
 
 
-def test_compose_subject_query_text_includes_label_description_and_category():
+def test_compose_subject_query_text_includes_label_synonyms_and_description():
     subject = SubjectQueryRecord(
         subject_id="nmdc:instrument_used",
         subject_label="instrument used",
         subject_category="slot",
         subject_description="The instrument used in data generation",
+        subject_synonyms=("sequencer", "assay device"),
     )
     query_text = compose_subject_query_text(subject)
     assert "instrument used" in query_text
+    assert "sequencer" in query_text
     assert "data generation" in query_text
-    assert "schema element type: slot" in query_text
+    assert "schema element type" not in query_text
 
 
 def test_compose_ontology_term_search_text_includes_synonyms_and_definition():
@@ -419,6 +424,52 @@ def test_read_unique_subjects_preserves_first_seen_order(tmp_path):
     assert [subject.subject_id for subject in subjects] == ["nmdc:A", "nmdc:B"]
 
 
+def test_read_unique_subjects_prefers_schema_synonyms_when_available(tmp_path):
+    path = tmp_path / "alignment.tsv"
+    path.write_text(
+        "\t".join(
+            [
+                "subject_id",
+                "subject_label",
+                "subject_category",
+                "subject_description",
+                "object_id",
+                "object_label",
+                "object_source",
+                "predicate_id",
+                "mapping_justification",
+                "confidence",
+                "comment",
+            ]
+        )
+        + "\n"
+        + "\t".join(["nmdc:A", "Alpha", "class", "first", "OBI:1", "One", "OBI", "skos:closeMatch", "x", "0.9", ""])
+        + "\n"
+    )
+    schema_index = {
+        "nmdc:A": SchemaElementRecord(
+            subject_id="nmdc:A",
+            subject_label="Alpha schema",
+            subject_category="class",
+            subject_description="schema description",
+            subject_synonyms=("alpha alias",),
+            element_name="A",
+            range_name="",
+            range_kind="none",
+            owners=tuple(),
+            owner_mapping_sources=tuple(),
+            range_mapping_sources=tuple(),
+            existing_mappings=tuple(),
+            existing_mapping_sources=tuple(),
+            expected_alignment_type="class_like",
+        )
+    }
+    subjects = read_unique_subjects(path, schema_index=schema_index)
+    assert subjects[0].subject_label == "Alpha schema"
+    assert subjects[0].subject_synonyms == ("alpha alias",)
+    assert subjects[0].subject_description == "schema description"
+
+
 def test_summarize_backend_overlap_counts_top1_and_topk_matches():
     reference_rows = [
         {"subject_id": "nmdc:A", "object_id": "OBI:1", "object_source": "OBI", "confidence": 0.95},
@@ -457,6 +508,7 @@ def test_summarize_property_like_gap_counts_property_like_slot_hits():
             subject_label="slot_a",
             subject_category="slot",
             subject_description="",
+            subject_synonyms=tuple(),
             element_name="slot_a",
             range_name="string",
             range_kind="scalar",
@@ -472,6 +524,7 @@ def test_summarize_property_like_gap_counts_property_like_slot_hits():
             subject_label="slot_b",
             subject_category="slot",
             subject_description="",
+            subject_synonyms=tuple(),
             element_name="slot_b",
             range_name="InstrumentEnum",
             range_kind="enum",
