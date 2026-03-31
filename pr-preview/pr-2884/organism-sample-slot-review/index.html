@@ -944,7 +944,8 @@ mapping guide to map source data to the existing slot name instead.</p>
 <thead>
 <tr>
 <th>Action</th>
-<th>Slots removed</th>
+<th>Slots removed from OrganismSample</th>
+<th>Slots removed from schema</th>
 <th>Enums removed</th>
 </tr>
 </thead>
@@ -952,27 +953,33 @@ mapping guide to map source data to the existing slot name instead.</p>
 <tr>
 <td>Facility logistics</td>
 <td>7</td>
+<td>7 (already in submission-schema)</td>
 <td>up to 3</td>
 </tr>
 <tr>
 <td>Sequencing/assembly</td>
-<td>18</td>
+<td>18 (moved to other classes)</td>
+<td>0 (still new definitions)</td>
 <td>up to 4</td>
 </tr>
 <tr>
 <td>Collapse redundant</td>
 <td>6–7</td>
+<td>6–7 (use existing slots)</td>
 <td>0</td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
 <td><strong>31–32</strong></td>
+<td><strong>13–14</strong></td>
 <td><strong>up to 7</strong></td>
 </tr>
 </tbody>
 </table>
-<p>This would bring the new slot count from 112 down to ~80, and the total
-OrganismSample slot assignments from 143 down to ~111.</p>
+<p>OrganismSample slot assignments would drop from 143 to ~111. The number
+of new slot definitions introduced by this PR would drop from 112 to
+~98. The 18 sequencing/assembly slots are still new to the schema — they
+just move to more appropriate classes.</p>
 <h2 id="related-issues">Related issues</h2>
 <ul>
 <li>
