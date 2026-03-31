@@ -121,15 +121,17 @@ These overlaps need team input before deciding:
 
 If actions 1–3 are applied:
 
-| Action | Slots removed | Enums removed |
-|---|---|---|
-| Facility logistics | 7 | up to 3 |
-| Sequencing/assembly | 18 | up to 4 |
-| Collapse redundant | 6–7 | 0 |
-| **Total** | **31–32** | **up to 7** |
+| Action | Slots removed from OrganismSample | Slots removed from schema | Enums removed |
+|---|---|---|---|
+| Facility logistics | 7 | 7 (already in submission-schema) | up to 3 |
+| Sequencing/assembly | 18 (moved to other classes) | 0 (still new definitions) | up to 4 |
+| Collapse redundant | 6–7 | 6–7 (use existing slots) | 0 |
+| **Total** | **31–32** | **13–14** | **up to 7** |
 
-This would bring the new slot count from 112 down to ~80, and the total
-OrganismSample slot assignments from 143 down to ~111.
+OrganismSample slot assignments would drop from 143 to ~111. The number
+of new slot definitions introduced by this PR would drop from 112 to
+~98. The 18 sequencing/assembly slots are still new to the schema — they
+just move to more appropriate classes.
 
 ## Related issues
 
