@@ -18,10 +18,12 @@ The closest thing to a formal policy statement is from closed issue
 
 ## How prefixes work in this schema
 
-The `prefixes:` block in `src/schema/nmdc.yaml` is the **operational allowlist**.
-Any CURIE used in a `meaning:`, mapping, or `id_prefixes:` declaration must resolve
-through a declared prefix. There is no `default_curi_maps:` — resolution depends
-entirely on what is explicitly declared.
+The effective **operational allowlist** of prefixes is the union of all `prefixes:`
+blocks across the materialized schema (the root `src/schema/nmdc.yaml` plus its
+imported modules such as `src/schema/core.yaml`). Any CURIE used in a `meaning:`,
+mapping, or `id_prefixes:` declaration must resolve through one of these declared
+prefixes. There is no `default_curi_maps:` — resolution depends entirely on what
+is explicitly declared somewhere in the schema, not on any implicit or external defaults.
 
 There are three separate enforcement contexts:
 
@@ -75,7 +77,7 @@ These prefixes are used throughout the schema without documented restrictions.
 | `CHMO` | `http://purl.obolibrary.org/obo/CHMO_` | Yes | 3 mappings — chemical methods |
 | `BFO` | `http://purl.obolibrary.org/obo/BFO_` | Yes | Declared; ~3 indirect references via OBI |
 | `MS` | `http://purl.obolibrary.org/obo/MS_` | Yes | 8 `meaning:` + 11 mappings — mass spectrometry terms |
-| `TAXRANK` | bioregistry | Yes | 7 mappings — taxonomic ranks |
+| `TAXRANK` | `http://purl.obolibrary.org/obo/TAXRANK_` | Yes | 7 mappings — taxonomic ranks; prefix declared in `core.yaml` |
 
 #### Scoped (inline comments limit where they may be used)
 
@@ -116,8 +118,10 @@ One `meaning: CFo000000033` reference survived in a commented-out slot — not a
 
 These are identifier namespaces used in `has_function` and related slots.
 They are not ontologies in the semantic grounding sense.
-The `has_function` slot enforces these prefixes via an explicit regex pattern
-(the only place in the schema where ontology prefix is actually machine-enforced).
+The `has_function` slot enforces these prefixes via an explicit regex pattern,
+making it one of the few places in the schema where identifier prefix is
+machine-enforced (alongside MIxS structured patterns such as `NCBITaxon:\d+`
+used in taxon-bearing fields).
 
 `KEGG_PATHWAY`, `KEGG.REACTION`, `RHEA`, `MetaCyc`, `EC`, `GO`, `MetaNetX`,
 `SEED`, `KEGG.ORTHOLOGY`, `EGGNOG`, `PFAM`, `TIGRFAM`, `SUPFAM`, `CATH`,
