@@ -54,7 +54,7 @@ processed_sample_set:
    name: output of Isolation
    cultured: true
    cultured_type: Isolate
-   organism_id: nmdc:org-11-123z
+   contains: nmdc:org-11-123z
    - id: nmdc:psam-13-134z
      name: extracted DNA of Bacillus
      type: nmdc:ProcessedSample
