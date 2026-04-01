@@ -28,8 +28,7 @@ biosample_set:
   name: Bacillus subtius 
   description: output of culturing process
 
-
-material_processing_set
+material_processing_set:
   - type: nmdc:Isolation
     id: nmdc:isp-11-1234
     has_input: 
@@ -49,10 +48,18 @@ material_processing_set
        - nmdc:bsm-99-1234 
      has_output:
        - nmdc:psam-13-134z
-processed_sample_set
+processed_sample_set:
  - id: nmdc:XXX
    type: nmdc:ProcessedSample
    name: output of Isolation
+   cultured: true
+   cultured_type: Isolate
+   organism_id: nmdc:org-11-123z
+   - id: nmdc:psam-13-134z
+     name: extracted DNA of Bacillus
+     type: nmdc:ProcessedSample
+organism_set:
+   id: nmdc:org-11-123z
    cultured: true
    cultured_type: Isolate
    organism_metadata:
@@ -64,6 +71,3 @@ processed_sample_set
            genus: Bacillus
            species: Bacillus subtius
            taxonomy_id: NCBITaxon:12356
-   - id: nmdc:psam-13-134z
-     name: extracted DNA of Bacillus
-     type: nmdc:ProcessedSample
