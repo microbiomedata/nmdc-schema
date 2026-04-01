@@ -1,74 +1,80 @@
-#example data file for a user collecting a sample and isolating an organism from that.
+# Example data file for a user collecting a sample and isolating an organism from it.
 biosample_set:
-- id: nmdc:bsm-99-dtTMNb
-  type: nmdc:Biosample
-  name: my_awesome_soil_sample
-  associated_studies:
-    - nmdc:sty-00-abc123
-  env_broad_scale:
-   type: nmdc:ControlledIdentifiedTermValue
-   has_raw_value: ENVO:00002030
-   term:
-     type: nmdc:OntologyClass
-     id: ENVO:00002030
-  env_local_scale:
-    type: nmdc:ControlledIdentifiedTermValue
-    has_raw_value: ENVO:00002169
-    term:
-      type: nmdc:OntologyClass
-      id: ENVO:00002169
-  env_medium:
-    type: nmdc:ControlledIdentifiedTermValue
-    has_raw_value: ENVO:00005792
-    term:
-      type: nmdc:OntologyClass
-      id: ENVO:00005792
-   tot_phosp: 0.03 mg/L  
-- id: nmdc:bsm-99-1234  
-  type: nmdc:Biosample
-  name: Bacillus subtius 
-  description: output of culturing process
+  - id: nmdc:bsm-99-dtTMNb
+    type: nmdc:Biosample
+    name: my_awesome_soil_sample
+    associated_studies:
+      - nmdc:sty-00-abc123
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002030
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002030
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002169
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002169
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00005792
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00005792
+    tot_phosp:
+      type: nmdc:QuantityValue
+      has_raw_value: 0.03 mg/L
+      has_numeric_value: 0.03
+      has_unit: mg/L
+  - id: nmdc:bsm-99-1234
+    type: nmdc:Biosample
+    name: Bacillus subtius
+    description: output of culturing process
 
 material_processing_set:
   - type: nmdc:Isolation
     id: nmdc:isp-11-1234
-    has_input: 
+    has_input:
       - nmdc:bsm-99-dtTMNb
     has_output:
       - nmdc:XXX
   - type: nmdc:CultureProcess
     id: nmdc:cex-11-1234
-    name: culturing of Bacillus 
+    name: culturing of Bacillus
     has_input:
       - nmdc:XXX
-    has_output: 
+    has_output:
       - nmdc:bsm-99-1234
-   - type: nmdc:Extraction
-     id: nmdc:extrc-13-12agc
-     has_input:
-       - nmdc:bsm-99-1234 
-     has_output:
-       - nmdc:psam-13-134z
+  - type: nmdc:Extraction
+    id: nmdc:extrc-13-12agc
+    has_input:
+      - nmdc:bsm-99-1234
+    has_output:
+      - nmdc:psam-13-134z
+
 processed_sample_set:
- - id: nmdc:XXX
-   type: nmdc:ProcessedSample
-   name: output of Isolation
-   cultured: true
-   cultured_type: Isolate
-   contains: nmdc:org-11-123z
-   - id: nmdc:psam-13-134z
-     name: extracted DNA of Bacillus
-     type: nmdc:ProcessedSample
+  - id: nmdc:XXX
+    type: nmdc:ProcessedSample
+    name: output of Isolation
+    cultured: true
+    cultured_type: Isolate
+    contains: nmdc:org-11-123z
+  - id: nmdc:psam-13-134z
+    type: nmdc:ProcessedSample
+    name: extracted DNA of Bacillus
+
 organism_set:
-   id: nmdc:org-11-123z
-   cultured: true
-   cultured_type: Isolate
-   organism_metadata:
-     - genbank_accession_information: 
-         accesion_id: genbank:ADCT1
-         type: ribosomal_sequencing
+  - id: nmdc:org-11-123z
+    cultured: true
+    cultured_type: Isolate
+    organism_metadata:
+      - genbank_accession_information:
+          accesion_id: genbank:ADCT1
+          type: ribosomal_sequencing
       - ncbi_taxonomy:
-           kingdom: Bacteria
-           genus: Bacillus
-           species: Bacillus subtius
-           taxonomy_id: NCBITaxon:12356
+          kingdom: Bacteria
+          genus: Bacillus
+          species: Bacillus subtius
+          taxonomy_id: NCBITaxon:12356
