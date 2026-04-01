@@ -1,9 +1,8 @@
-# Workflow example: collecting a soil sample, isolating an organism, culturing it,
-# and extracting DNA. Demonstrates Biosample → Isolation → CultureProcess → Extraction
-# with ProcessedSample and (proposed) Organism intermediates.
+# Same workflow as Database-cultured_isolate.yaml, but with organism metadata
+# flattened into direct slots instead of nested typed sub-objects.
 #
-# NOTE: Isolation, CultureProcess, organism_set, and several slots below are not yet
-# modeled in the NMDC schema. This file captures the intended data flow for discussion.
+# Compare organism_set here vs. Database-cultured_isolate.yaml to evaluate
+# the tradeoff between nesting depth and slot proliferation.
 
 biosample_set:
   - id: nmdc:bsm-99-dtTMNb
@@ -70,19 +69,16 @@ processed_sample_set:
     type: nmdc:ProcessedSample
     name: extracted DNA of Bacillus subtilis
 
-# NOTE: organism_metadata uses nested typed sub-objects. See
-# Database-cultured_isolate_flat.yaml for a flattened alternative.
+# Flat alternative: genbank and taxonomy as direct slots on the organism,
+# avoiding the nested organism_metadata → typed sub-object pattern.
 organism_set:
   - id: nmdc:org-11-bs6Tr
     name: Bacillus subtilis
     associated_studies:
       - nmdc:sty-00-abc123
-    organism_metadata:
-      - genbank_accession_information:
-          accession_id: genbank:ADCT1
-          type: ribosomal_sequencing
-      - ncbi_taxonomy:
-          kingdom: Bacteria
-          genus: Bacillus
-          species: Bacillus subtilis
-          taxonomy_id: NCBITaxon:1423
+    genbank_accession_id: genbank:ADCT1
+    genbank_sequence_type: ribosomal_sequencing
+    ncbi_taxonomy_id: NCBITaxon:1423
+    ncbi_taxonomy_kingdom: Bacteria
+    ncbi_taxonomy_genus: Bacillus
+    ncbi_taxonomy_species: Bacillus subtilis
