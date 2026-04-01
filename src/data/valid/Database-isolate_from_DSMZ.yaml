@@ -1,0 +1,46 @@
+#example data file for a user ordering from a culture collection.
+biosample_set:
+- id: nmdc:bsm-99-1234  
+  type: nmdc:Biosample
+  name: Bacillus subtius 
+  description: output of culturing process
+
+material_processing_set:
+
+  - type: nmdc:CultureProcess
+    id: nmdc:cex-11-1234
+    name: culturing of Bacillus 
+    has_input:
+      - nmdc:psam-11-123w
+    has_output: 
+      - nmdc:bsm-99-1234
+   - type: nmdc:Extraction
+     id: nmdc:extrc-13-12agc
+     has_input:
+       - nmdc:bsm-99-1234 
+     has_output:
+       - nmdc:psam-13-134z
+processed_sample_set:
+ - id: nmdc:psam-11-123w
+   type: nmdc:ProcessedSample
+   name: Bacillus subtius cells
+   description: output of Isolation, ordered from DSMZ
+   cultured: true
+   cultured_type: Isolate
+   contains: nmdc:org-11-123z
+   - id: nmdc:psam-13-134z
+     name: extracted DNA of Bacillus
+     type: nmdc:ProcessedSample
+organism_set:
+   id: nmdc:org-11-123z
+   cultured: true
+   cultured_type: Isolate
+   organism_metadata:
+     - genbank_accession_information: 
+         accesion_id: genbank:ADCT1
+         type: ribosomal_sequencing
+      - ncbi_taxonomy:
+           kingdom: Bacteria
+           genus: Bacillus
+           species: Bacillus subtius
+           taxonomy_id: NCBITaxon:12356
