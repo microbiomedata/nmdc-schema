@@ -64,3 +64,6 @@ processed_sample_set
            genus: Bacillus
            species: Bacillus subtius
            taxonomy_id: NCBITaxon:12356
+   - id: nmdc:psam-13-134z
+     name: extracted DNA of Bacillus
+     type: nmdc:ProcessedSample
