@@ -1,3 +1,4 @@
+#example data file for a user collecting a sample and isolating an organism from that.
 biosample_set:
 - id: nmdc:bsm-99-dtTMNb
   type: nmdc:Biosample
