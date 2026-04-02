@@ -37,6 +37,7 @@ organism_set:
    id: nmdc:org-11-123z
    cultured: true
    cultured_type: Isolate
+   type: nmdc:Organism
    organism_metadata:
      - genbank_accession_information: 
          accesion_id: genbank:ADCT1
