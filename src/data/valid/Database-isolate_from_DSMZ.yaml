@@ -7,12 +7,12 @@ material_processing_set:
       - nmdc:osam-11-123w
     has_output: 
       - nmdc:psm-99-1234
-   - type: nmdc:Extraction
-     id: nmdc:extrc-13-12agc
-     has_input:
-       - nmdc:bsm-99-1234 
-     has_output:
-       - nmdc:psam-13-134z
+  - type: nmdc:Extraction
+    id: nmdc:extrc-13-12agc
+    has_input:
+     - nmdc:bsm-99-1234 
+    has_output:
+     - nmdc:psam-13-134z
        
 sample_set:
 #Biosample and OrganismSample would be sibling under an abstract Class Sample & would share a slot in Class Database, sample_set.
@@ -41,8 +41,8 @@ organism_set:
      - genbank_accession_information: 
          accesion_id: genbank:ADCT1
          type: ribosomal_sequencing
-      - ncbi_taxonomy:
-           kingdom: Bacteria
-           genus: Bacillus
-           species: Bacillus subtius
-           taxonomy_id: NCBITaxon:12356
+    - ncbi_taxonomy:
+        kingdom: Bacteria
+        genus: Bacillus
+        species: Bacillus subtius
+        taxonomy_id: NCBITaxon:12356
