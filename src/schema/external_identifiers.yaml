@@ -387,7 +387,6 @@ slots:
     description: >-
       GenBank accession for the 16S rRNA gene sequence.
     title: GenBank 16S ID
-    range: string
     in_subset:
       - gold_organism
     pattern: "^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$"  
