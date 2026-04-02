@@ -42,8 +42,8 @@ organism_set:
      - genbank_accession_information: 
          accesion_id: genbank:ADCT1
          type: ribosomal_sequencing
-    - ncbi_taxonomy:
-        kingdom: Bacteria
-        genus: Bacillus
-        species: Bacillus subtius
-        taxonomy_id: NCBITaxon:12356
+     - ncbi_taxonomy:
+         kingdom: Bacteria
+         genus: Bacillus
+         species: Bacillus subtius
+         taxonomy_id: NCBITaxon:12356
