@@ -1,0 +1,5157 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/OrganismSample/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>Class: Organism Sample (OrganismSample) - NMDC Schema Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#class-organism-sample-organismsample" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="NMDC Schema Documentation" class="md-header__button md-logo" aria-label="NMDC Schema Documentation" data-md-component="logo">
+      
+  <img src="../images/NMDC_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NMDC Schema Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Class: Organism Sample (OrganismSample)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="NMDC Schema Documentation" class="md-nav__button md-logo" aria-label="NMDC Schema Documentation" data-md-component="logo">
+      
+  <img src="../images/NMDC_logo.png" alt="logo">
+
+    </a>
+    NMDC Schema Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funding and Acknowledgements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collaboration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Metadata_Documentation_Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadata Standards Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintaining-the-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maintaining the NMDC Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema_element_deprecation_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema element deprecation guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NMDC Schema Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identifiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identifiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typecode-to-class-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Typecode to class map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version Migration Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer-docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Downloads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inheritance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-and-mapping-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mappings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linkml-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LinkML Source
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LinkML Source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#direct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#induced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Induced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="class-organism-sample-organismsample">Class: Organism Sample (OrganismSample)</h1>
+<p><em>A material sample in which all cells are expected to share the same genome. This includes individual multicellular organisms (which may comprise heterogeneous tissues and cell types), nominally pure cultures, and single cells.</em></p>
+<div>
+<p>URI: <a href="https://w3id.org/nmdc/OrganismSample">nmdc:OrganismSample</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mermaid class diagram too large to render.</p>
+</div>
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../NamedThing/">NamedThing</a><ul>
+<li><a href="../MaterialEntity/">MaterialEntity</a><ul>
+<li><a href="../Sample/">Sample</a><ul>
+<li><strong>OrganismSample</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../associated_studies/">associated_studies</a></td>
+<td>1..* <br/> <a href="../Study/">Study</a></td>
+<td>The study associated with a resource</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../embargoed/">embargoed</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Boolean/">Boolean</a></td>
+<td>If true, the data are embargoed and not available for public access</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../provenance_metadata/">provenance_metadata</a></td>
+<td>0..1 <br/> <a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
+<td>Provides information about the provenance of a record</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../external_database_identifiers/">external_database_identifiers</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>Link to corresponding identifier in external database</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gold_organism_identifiers/">gold_organism_identifiers</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>identifiers for corresponding organism in GOLD</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../insdc_biosample_identifiers/">insdc_biosample_identifiers</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>identifiers for corresponding sample in INSDC</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samp_taxon_id/">samp_taxon_id</a></td>
+<td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
+<td>NCBI taxon id of the sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samp_name/">samp_name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A local identifier or name that for the material sample used for extracting n...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../source_mat_id/">source_mat_id</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>A unique identifier assigned to a material sample (as defined by <a href="http://rs">http://rs</a></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_taxid/">host_taxid</a></td>
+<td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
+<td>NCBI taxon id of the host, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ncbi_taxonomy_name/">ncbi_taxonomy_name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../collection_date/">collection_date</a></td>
+<td>0..1 <br/> <a href="../TimestampValue/">TimestampValue</a></td>
+<td>The time of sampling, either as an instance (single point in time) or interva...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../geo_loc_name/">geo_loc_name</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>The geographical origin of the sample as defined by the country or sea name f...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../lat_lon/">lat_lon</a></td>
+<td>0..1 <br/> <a href="../GeolocationValue/">GeolocationValue</a></td>
+<td>The geographical origin of the sample as defined by latitude and longitude</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../collected_from/">collected_from</a></td>
+<td>0..1 <br/> <a href="../FieldResearchSite/">FieldResearchSite</a></td>
+<td>The Site from which a Biosample was collected</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_collection_site/">sample_collection_site</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../env_broad_scale/">env_broad_scale</a></td>
+<td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
+<td>Report the major environmental system the sample or specimen came from</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../env_local_scale/">env_local_scale</a></td>
+<td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
+<td>Report the entity or entities which are in the sample or specimen s local vic...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../env_medium/">env_medium</a></td>
+<td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
+<td>Report the environmental material(s) immediately surrounding the sample or sp...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gold_organism_type/">gold_organism_type</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Organism type classification from GOLD controlled vocabulary</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../cultured/">cultured</a></td>
+<td>0..1 <br/> <a href="../YesNoUnknownEnum/">YesNoUnknownEnum</a></td>
+<td>Whether the organism has been cultured</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../culture_type/">culture_type</a></td>
+<td>0..1 <br/> <a href="../CultureTypeEnum/">CultureTypeEnum</a></td>
+<td>Type of cultivation used to grow the organism, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../uncultured_type/">uncultured_type</a></td>
+<td>0..1 <br/> <a href="../UnculturedTypeEnum/">UnculturedTypeEnum</a></td>
+<td>For uncultured organisms, the type of genome assembly, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../type_strain/">type_strain</a></td>
+<td>0..1 <br/> <a href="../YesNoUnknownEnum/">YesNoUnknownEnum</a></td>
+<td>Whether this organism is a type strain</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../organism_domain/">organism_domain</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Taxonomic domain of the organism, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gold_phylogeny/">gold_phylogeny</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>GOLD phylogeny string for the organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../biotic_relationship/">biotic_relationship</a></td>
+<td>0..1 <br/> <a href="../BioticRelationshipEnum/">BioticRelationshipEnum</a></td>
+<td>Description of relationship(s) between the subject organism and other organis...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../encoded_traits/">encoded_traits</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Should include key traits like antibiotic resistance or xenobiotic degradatio...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_disease_stat/">host_disease_stat</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>List of diseases with which the host has been diagnosed; can include multiple...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_spec_range/">host_spec_range</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>The range and diversity of host species that an organism is capable of infect...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../isol_growth_condt/">isol_growth_condt</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Publication reference in the form of pubmed ID (pmid), digital object identif...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../oxy_stat_samp/">oxy_stat_samp</a></td>
+<td>0..1 <br/> <a href="../OxyStatSampEnum/">OxyStatSampEnum</a></td>
+<td>Oxygenation status of sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pathogenicity/">pathogenicity</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>To what is the entity pathogenic</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../biol_stat/">biol_stat</a></td>
+<td>0..1 <br/> <a href="../BiolStatEnum/">BiolStatEnum</a></td>
+<td>The level of genome modification</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../genetic_mod/">genetic_mod</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Genetic modifications of the genome of an organism, which may occur naturally...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ref_biomaterial/">ref_biomaterial</a></td>
+<td>0..1 <br/> <a href="../Doi/">Doi</a></td>
+<td>Primary publication if isolated before genome publication; otherwise, primary...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../rel_to_oxygen/">rel_to_oxygen</a></td>
+<td>0..1 <br/> <a href="../RelToOxygenEnum/">RelToOxygenEnum</a></td>
+<td>Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic ...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../specific_host/">specific_host</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Report the host's taxonomic name and/or NCBI taxonomy ID</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../subspecf_gen_lin/">subspecf_gen_lin</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Information about the genetic distinctness of the sequenced organism below th...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../tax_class/">tax_class</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Method used for taxonomic classification, along with reference database used,...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../tax_ident/">tax_ident</a></td>
+<td>0..1 <br/> <a href="../TaxIdentEnum/">TaxIdentEnum</a></td>
+<td>The phylogenetic marker(s) used to assign an organism name to the SAG or MAG</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../trophic_level/">trophic_level</a></td>
+<td>0..1 <br/> <a href="../TrophicLevelEnum/">TrophicLevelEnum</a></td>
+<td>Trophic levels are the feeding position in a food chain</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../genbank_16s_id/">genbank_16s_id</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>GenBank accession for the 16S rRNA gene sequence</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../clade/">clade</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Clade assignment for the organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../organism_common_name/">organism_common_name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Common name of the organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../genus_synonyms/">genus_synonyms</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Alternative or historical genus names for the organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../species_synonyms/">species_synonyms</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Alternative or historical species names for the organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gram_stain/">gram_stain</a></td>
+<td>0..1 <br/> <a href="../GramStainEnum/">GramStainEnum</a></td>
+<td>Gram stain result for the organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../carbon_source/">carbon_source</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Carbon source(s) used by the organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../cell_shape/">cell_shape</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Morphological shape of the cell, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../cell_length/">cell_length</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Length of the cell</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../cell_diameter/">cell_diameter</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Diameter of the cell</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../motility/">motility</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Whether the organism is motile</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sporulation/">sporulation</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Whether the organism forms spores</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../temperature_range/">temperature_range</a></td>
+<td>0..1 <br/> <a href="../TemperatureRangeEnum/">TemperatureRangeEnum</a></td>
+<td>Temperature classification of the organism, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../organism_color/">organism_color</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Color of the organism or colony</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../alt/">alt</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Heights of objects such as airplanes, space shuttles, rockets, atmospheric ba...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../depth/">depth</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>The vertical distance below local surface</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../elev/">elev</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Elevation of the sampling site is its height above a fixed reference point, m...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../experimental_factor/">experimental_factor</a></td>
+<td>0..1 <br/> <a href="../ControlledTermValue/">ControlledTermValue</a></td>
+<td>Variable aspects of an experiment design that can be used to describe an expe...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../lat_long_inferred/">lat_long_inferred</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>Whether the latitude/longitude was inferred rather than directly measured</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_isolation_comments/">sample_isolation_comments</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Free-text comments about the isolation of the organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samp_collec_device/">samp_collec_device</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The device used to collect an environmental sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samp_collec_method/">samp_collec_method</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The method employed for collecting the sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samp_mat_process/">samp_mat_process</a></td>
+<td>0..1 <br/> <a href="../ControlledTermValue/">ControlledTermValue</a></td>
+<td>A brief description of any processing applied to the sample during or after r...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samp_size/">samp_size</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>The total amount or size (volume (ml), mass (g) or area (m2) ) of sample coll...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../temp/">temp</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Temperature of the sample at the time of sampling</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sop/">sop</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>Standard operating procedures used in assembly and/or annotation of genomes, ...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../subsurface_depth/">subsurface_depth</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Subsurface depth at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ecosystem/">ecosystem</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>An ecosystem is a combination of a physical environment (abiotic factors) and...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ecosystem_category/">ecosystem_category</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Ecosystem categories represent divisions within the ecosystem based on specif...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ecosystem_type/">ecosystem_type</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Ecosystem types represent things having common characteristics within the Eco...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ecosystem_subtype/">ecosystem_subtype</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Ecosystem subtypes represent further subdivision of Ecosystem types into more...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../specific_ecosystem/">specific_ecosystem</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Specific ecosystems represent specific features of the environment like aphot...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ecosystem_path_id/">ecosystem_path_id</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>A unique id representing the GOLD classifiers associated with a sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../other_ecosystem/">other_ecosystem</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Ecosystem classification that does not fit the standard GOLD hierarchy</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../salinity/">salinity</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>The total concentration of all dissolved salts in a liquid or solid sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pressure/">pressure</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Pressure to which the sample is subject to, in atmospheres</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../isolation_site_ph/">isolation_site_ph</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>pH measurement at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../chlorophyll_concentration/">chlorophyll_concentration</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Chlorophyll concentration at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../nitrate_concentration/">nitrate_concentration</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Nitrate concentration at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../oxygen_concentration/">oxygen_concentration</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Oxygen concentration at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../salinity_concentration/">salinity_concentration</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Salinity concentration at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../tot_org_carbon/">tot_org_carbon</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Total organic carbon at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../tot_nitrogen/">tot_nitrogen</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Total nitrogen at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../bicarbonate_millimol/">bicarbonate_millimol</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Bicarbonate concentration at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../soluble_iron_micromol/">soluble_iron_micromol</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../h2s_millimol/">h2s_millimol</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Hydrogen sulfide concentration at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../h2s_present/">h2s_present</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Whether hydrogen sulfide is present at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../irradiance/">irradiance</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Irradiance at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../methane_conc_millimol/">methane_conc_millimol</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Methane concentration at the isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_conductivity/">sample_conductivity</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Electrical conductivity of the sample or isolation site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_age/">host_age</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Age of host at the time of sampling; relevant scale depends on species and st...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_body_site/">host_body_site</a></td>
+<td>0..1 <br/> <a href="../ControlledTermValue/">ControlledTermValue</a></td>
+<td>Name of body site where the sample was obtained from, such as a specific orga...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_body_subsite/">host_body_subsite</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>More specific body site within the host body site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_body_product/">host_body_product</a></td>
+<td>0..1 <br/> <a href="../ControlledTermValue/">ControlledTermValue</a></td>
+<td>Substance produced by the body, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_body_site_id/">host_body_site_id</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Ontology term identifier for the host body site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_body_subsite_id/">host_body_subsite_id</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Ontology term identifier for the host body subsite</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_body_product_id/">host_body_product_id</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Ontology term identifier for the host body product</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_gender/">host_gender</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Gender of the host organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_race/">host_race</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Race/ethnicity of the host (for human hosts)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_medication/">host_medication</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Medications being taken by the host at time of sampling</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_comments/">host_comments</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Free-text comments about the host organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../patient_visit_number/">patient_visit_number</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Visit number for clinical/patient samples</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../medical_record_number/">medical_record_number</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Medical record number for clinical samples</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../known_non_hosts/">known_non_hosts</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Organisms known to not be hosts of this organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../other_hosts/">other_hosts</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Other host organisms associated with this organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../estimated_size/">estimated_size</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>The estimated size of the genome (in base pairs) prior to sequencing</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../extrachrom_elements/">extrachrom_elements</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Do plasmids exist of significant phenotypic consequence (e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../num_replicons/">num_replicons</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Reports the number of replicons in a nuclear genome of eukaryotes, in the gen...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gc_content/">gc_content</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Estimated GC content of the genome, as a percentage</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ploidy/">ploidy</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Genome ploidy, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../reference_genome/">reference_genome</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Reference genome to be used for analysis</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../organism_genus/">organism_genus</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Genus of the organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../organism_species/">organism_species</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Species of the organism</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../isolate_name/">isolate_name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Isolate or mutant name, if applicable</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ribosomal_sequence/">ribosomal_sequence</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Nucleotide sequence used for strain verification</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ribosomal_sequence_type/">ribosomal_sequence_type</a></td>
+<td>0..1 <br/> <a href="../RibosomalSequenceTypeEnum/">RibosomalSequenceTypeEnum</a></td>
+<td>Type of ribosomal sequence provided for strain verification</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ribosomal_sequence_comments/">ribosomal_sequence_comments</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Additional information about the ribosomal sequence</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../second_ribosomal_sequence/">second_ribosomal_sequence</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Optional secondary ribosomal sequence for additional verification</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../second_ribosomal_sequence_type/">second_ribosomal_sequence_type</a></td>
+<td>0..1 <br/> <a href="../RibosomalSequenceTypeEnum/">RibosomalSequenceTypeEnum</a></td>
+<td>Type of the secondary ribosomal sequence</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../second_ribosomal_sequence_comments/">second_ribosomal_sequence_comments</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Additional information about the secondary ribosomal sequence</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../single_colony_isolation/">single_colony_isolation</a></td>
+<td>0..1 <br/> <a href="../YesNoEnum/">YesNoEnum</a></td>
+<td>Whether the sample was isolated from an axenic/strain pure culture (single co...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../known_suspected_organisms/">known_suspected_organisms</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Organisms known or suspected to grow in co-culture or that may be contaminati...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../fungal_16s_screening/">fungal_16s_screening</a></td>
+<td>0..1 <br/> <a href="../YesNoEnum/">YesNoEnum</a></td>
+<td>Whether 16S screening was performed to identify bacterial contamination in fu...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../its_match_unite/">its_match_unite</a></td>
+<td>0..1 <br/> <a href="../YesNoEnum/">YesNoEnum</a></td>
+<td>Whether the ITS sequence matches taxonomy in the UNITE database</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../biosafety_material_category/">biosafety_material_category</a></td>
+<td>0..1 <br/> <a href="../BiosafetyMaterialCategoryEnum/">BiosafetyMaterialCategoryEnum</a></td>
+<td>General category of organism or material for biosafety classification</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../viral_host_genus/">viral_host_genus</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Genus of the viral host</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../viral_host_species/">viral_host_species</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Species of the viral host</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../viral_host_strain/">viral_host_strain</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Strain of the viral host</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../dna_concentration/">dna_concentration</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Float/">Float</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../analyte_volume/">analyte_volume</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Volume of the sample being provided</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../dna_absorb1/">dna_absorb1</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Float/">Float</a></td>
+<td>260/280 measurement of DNA sample purity</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../dna_absorb2/">dna_absorb2</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Float/">Float</a></td>
+<td>260/230 measurement of DNA sample purity</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_container/">sample_container</a></td>
+<td>0..1 <br/> <a href="../SampleContainerEnum/">SampleContainerEnum</a></td>
+<td>Physical container type for sample shipment</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_format/">sample_format</a></td>
+<td>0..1 <br/> <a href="../SampleFormatEnum/">SampleFormatEnum</a></td>
+<td>Format or buffer in which the physical sample is provided</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../dnase_treated/">dnase_treated</a></td>
+<td>0..1 <br/> <a href="../YesNoEnum/">YesNoEnum</a></td>
+<td>Whether the sample was treated with DNase</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../tube_or_plate_label/">tube_or_plate_label</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Label on the tube or plate</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../plate_well_location/">plate_well_location</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Well location in a 96-well plate, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samp_store_temp/">samp_store_temp</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Temperature at which sample was stored, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samp_store_loc/">samp_store_loc</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Location at which sample was stored, usually name of a specific freezer/room</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samp_store_dur/">samp_store_dur</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Duration for which the sample was stored</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../store_cond/">store_cond</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Explain how and for how long the soil sample was stored before DNA extraction...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A unique identifier for a thing</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A human readable label for an entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>a human-readable description of a thing</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of alternative identifiers for the entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Database/">Database</a></td>
+<td><a href="../organism_sample_set/">organism_sample_set</a></td>
+<td>range</td>
+<td><a href="./">OrganismSample</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>An OrganismSample might be isolated from an environmental Biosample by culturing and isolating colonies.</li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+<h3 id="direct">Direct</h3>
+<details>
+
+<pre><code class="language-yaml">name: OrganismSample
+description: A material sample in which all cells are expected to share the same genome.
+  This includes individual multicellular organisms (which may comprise heterogeneous
+  tissues and cell types), nominally pure cultures, and single cells.
+title: Organism Sample
+comments:
+- An OrganismSample might be isolated from an environmental Biosample by culturing
+  and isolating colonies.
+from_schema: https://w3id.org/nmdc/nmdc
+is_a: Sample
+slots:
+- associated_studies
+- embargoed
+- provenance_metadata
+- external_database_identifiers
+- gold_organism_identifiers
+- insdc_biosample_identifiers
+- samp_taxon_id
+- samp_name
+- source_mat_id
+- host_taxid
+- ncbi_taxonomy_name
+- collection_date
+- geo_loc_name
+- lat_lon
+- collected_from
+- sample_collection_site
+- env_broad_scale
+- env_local_scale
+- env_medium
+- gold_organism_type
+- cultured
+- culture_type
+- uncultured_type
+- type_strain
+- organism_domain
+- gold_phylogeny
+- biotic_relationship
+- encoded_traits
+- host_disease_stat
+- host_spec_range
+- isol_growth_condt
+- oxy_stat_samp
+- pathogenicity
+- biol_stat
+- genetic_mod
+- ref_biomaterial
+- rel_to_oxygen
+- specific_host
+- subspecf_gen_lin
+- tax_class
+- tax_ident
+- trophic_level
+- genbank_16s_id
+- clade
+- organism_common_name
+- genus_synonyms
+- species_synonyms
+- gram_stain
+- carbon_source
+- cell_shape
+- cell_length
+- cell_diameter
+- motility
+- sporulation
+- temperature_range
+- organism_color
+- alt
+- depth
+- elev
+- experimental_factor
+- lat_long_inferred
+- sample_isolation_comments
+- samp_collec_device
+- samp_collec_method
+- samp_mat_process
+- samp_size
+- temp
+- sop
+- subsurface_depth
+- ecosystem
+- ecosystem_category
+- ecosystem_type
+- ecosystem_subtype
+- specific_ecosystem
+- ecosystem_path_id
+- other_ecosystem
+- salinity
+- pressure
+- isolation_site_ph
+- chlorophyll_concentration
+- nitrate_concentration
+- oxygen_concentration
+- salinity_concentration
+- tot_org_carbon
+- tot_nitrogen
+- bicarbonate_millimol
+- soluble_iron_micromol
+- h2s_millimol
+- h2s_present
+- irradiance
+- methane_conc_millimol
+- sample_conductivity
+- host_age
+- host_body_site
+- host_body_subsite
+- host_body_product
+- host_body_site_id
+- host_body_subsite_id
+- host_body_product_id
+- host_gender
+- host_race
+- host_medication
+- host_comments
+- patient_visit_number
+- medical_record_number
+- known_non_hosts
+- other_hosts
+- estimated_size
+- extrachrom_elements
+- num_replicons
+- gc_content
+- ploidy
+- reference_genome
+- organism_genus
+- organism_species
+- isolate_name
+- ribosomal_sequence
+- ribosomal_sequence_type
+- ribosomal_sequence_comments
+- second_ribosomal_sequence
+- second_ribosomal_sequence_type
+- second_ribosomal_sequence_comments
+- single_colony_isolation
+- known_suspected_organisms
+- fungal_16s_screening
+- its_match_unite
+- biosafety_material_category
+- viral_host_genus
+- viral_host_species
+- viral_host_strain
+- dna_concentration
+- analyte_volume
+- dna_absorb1
+- dna_absorb2
+- sample_container
+- sample_format
+- dnase_treated
+- tube_or_plate_label
+- plate_well_location
+- samp_store_temp
+- samp_store_loc
+- samp_store_dur
+- store_cond
+slot_usage:
+  id:
+    name: id
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:orgsm-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  associated_studies:
+    name: associated_studies
+    range: Study
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  collected_from:
+    name: collected_from
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  dna_concentration:
+    name: dna_concentration
+    comments:
+    - 'JGI: Must be calculated using a fluorometric method; value &gt;0 and &lt;2000.'
+    - Replaces analyte_concentration for OrganismSample.
+    aliases:
+    - concentration (ng/ul)
+    exact_mappings:
+    - nmdc_sub_schema:nuc_acid_concentration
+  dna_absorb1:
+    name: dna_absorb1
+    aliases:
+    - absorbance 260/280
+    exact_mappings:
+    - nmdc_sub_schema:nuc_acid_absorb1
+  dna_absorb2:
+    name: dna_absorb2
+    aliases:
+    - absorbance 260/230
+    exact_mappings:
+    - nmdc_sub_schema:nuc_acid_absorb2
+class_uri: nmdc:OrganismSample
+
+</code></pre>
+
+</details>
+<h3 id="induced">Induced</h3>
+<details>
+
+<pre><code class="language-yaml">name: OrganismSample
+description: A material sample in which all cells are expected to share the same genome.
+  This includes individual multicellular organisms (which may comprise heterogeneous
+  tissues and cell types), nominally pure cultures, and single cells.
+title: Organism Sample
+comments:
+- An OrganismSample might be isolated from an environmental Biosample by culturing
+  and isolating colonies.
+from_schema: https://w3id.org/nmdc/nmdc
+is_a: Sample
+slot_usage:
+  id:
+    name: id
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:orgsm-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  associated_studies:
+    name: associated_studies
+    range: Study
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  collected_from:
+    name: collected_from
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  dna_concentration:
+    name: dna_concentration
+    comments:
+    - 'JGI: Must be calculated using a fluorometric method; value &gt;0 and &lt;2000.'
+    - Replaces analyte_concentration for OrganismSample.
+    aliases:
+    - concentration (ng/ul)
+    exact_mappings:
+    - nmdc_sub_schema:nuc_acid_concentration
+  dna_absorb1:
+    name: dna_absorb1
+    aliases:
+    - absorbance 260/280
+    exact_mappings:
+    - nmdc_sub_schema:nuc_acid_absorb1
+  dna_absorb2:
+    name: dna_absorb2
+    aliases:
+    - absorbance 260/230
+    exact_mappings:
+    - nmdc_sub_schema:nuc_acid_absorb2
+attributes:
+  associated_studies:
+    name: associated_studies
+    description: The study associated with a resource.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: associated_studies
+    owner: OrganismSample
+    domain_of:
+    - DataGeneration
+    - Biosample
+    - OrganismSample
+    range: Study
+    required: true
+    multivalued: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  embargoed:
+    name: embargoed
+    description: If true, the data are embargoed and not available for public access.
+    todos:
+    - make this required?
+    - first apply to Biosample
+    - try to apply to all Biosamples in a particular nmdc-server SubmissionMetadata?
+    - applying to a Study may not be granular enough
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: embargoed
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: boolean
+    recommended: true
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provides information about the provenance of a record.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: provenance_metadata
+    owner: OrganismSample
+    domain_of:
+    - Study
+    - DataGeneration
+    - Biosample
+    - OrganismSample
+    range: ProvenanceMetadata
+  external_database_identifiers:
+    name: external_database_identifiers
+    description: Link to corresponding identifier in external database
+    comments:
+    - The value of this field is always a registered CURIE
+    from_schema: https://w3id.org/nmdc/nmdc
+    close_mappings:
+    - skos:closeMatch
+    rank: 1000
+    is_a: alternative_identifiers
+    abstract: true
+    alias: external_database_identifiers
+    owner: OrganismSample
+    domain_of:
+    - ProcessedSample
+    - OrganismSample
+    range: external_identifier
+    multivalued: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  gold_organism_identifiers:
+    name: gold_organism_identifiers
+    description: identifiers for corresponding organism in GOLD
+    examples:
+    - value: gold:Go0013823
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: external_database_identifiers
+    mixins:
+    - gold_identifiers
+    alias: gold_organism_identifiers
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: uriorcurie
+    multivalued: true
+    pattern: ^gold:Go[0-9]+$
+  insdc_biosample_identifiers:
+    name: insdc_biosample_identifiers
+    description: identifiers for corresponding sample in INSDC
+    examples:
+    - value: biosample:SAMEA5989477
+    - value: biosample:SAMD00212331
+      description: I13_N_5-10 sample from Soil fungal diversity along elevational
+        gradients
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/bioregistry/bioregistry/issues/108
+    - https://www.ebi.ac.uk/biosamples/
+    - https://www.ncbi.nlm.nih.gov/biosample
+    - https://www.ddbj.nig.ac.jp/biosample/index-e.html
+    aliases:
+    - EBI biosample identifiers
+    - NCBI biosample identifiers
+    - DDBJ biosample identifiers
+    rank: 1000
+    is_a: biosample_identifiers
+    mixins:
+    - insdc_identifiers
+    alias: insdc_biosample_identifiers
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: external_identifier
+    multivalued: true
+    pattern: ^biosample:SAM[NED]([A-Z])?[0-9]+$
+  samp_taxon_id:
+    name: samp_taxon_id
+    description: NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa
+      sample. Use 'synthetic metagenome  for mock community/positive controls, or
+      'blank sample' for negative controls
+    title: taxonomy ID of DNA sample
+    comments:
+    - coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - dna
+    - identifier
+    - sample
+    - taxon
+    slot_uri: MIXS:0001320
+    alias: samp_taxon_id
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: ControlledIdentifiedTermValue
+    structured_pattern:
+      syntax: ^{text} \[{NCBItaxon_id}\]$
+      interpolated: true
+      partial_match: true
+  samp_name:
+    name: samp_name
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: ''
+    description: A local identifier or name that for the material sample used for
+      extracting nucleic acids, and subsequent sequencing. It can refer either to
+      the original material collected or to any derived sub-samples. It can have any
+      format, but we suggest that you make it concise, unique and consistent within
+      your lab, and as informative as possible. INSDC requires every sample name from
+      a single Submitter to be unique. Use of a globally unique identifier for the
+      field source_mat_id is recommended in addition to sample_name
+    title: sample name
+    examples:
+    - value: ISDsoil1
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - sample
+    slot_uri: MIXS:0001107
+    alias: samp_name
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: string
+  source_mat_id:
+    name: source_mat_id
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: 'for cultures of microorganisms: identifiers for two culture collections;
+          for other material a unique arbitrary identifer'
+    description: A unique identifier assigned to a material sample (as defined by
+      http://rs.tdwg.org/dwc/terms/materialSampleID, and as opposed to a particular
+      digital record of a material sample) used for extracting nucleic acids, and
+      subsequent sequencing. The identifier can refer either to the original material
+      collected or to any derived sub-samples. The INSDC qualifiers /specimen_voucher,
+      /bio_material, or /culture_collection may or may not share the same value as
+      the source_mat_id field. For instance, the /specimen_voucher qualifier and source_mat_id
+      may both contain 'UAM:Herps:14' , referring to both the specimen voucher and
+      sampled tissue with the same identifier. However, the /culture_collection qualifier
+      may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id
+      would refer to an identifier from some derived culture from which the nucleic
+      acids were extracted (e.g. xatc123 or ark:/2154/R2)
+    title: source material identifiers
+    examples:
+    - value: MPI012345
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - identifier
+    - material
+    - source
+    slot_uri: MIXS:0000026
+    alias: source_mat_id
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: TextValue
+    multivalued: false
+  host_taxid:
+    name: host_taxid
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: NCBI taxon identifier
+    description: NCBI taxon id of the host, e.g. 9606
+    title: host taxid
+    comments:
+    - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - host
+    - host.
+    - taxon
+    slot_uri: MIXS:0000250
+    alias: host_taxid
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: ControlledIdentifiedTermValue
+  ncbi_taxonomy_name:
+    name: ncbi_taxonomy_name
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: ncbi_taxonomy_name
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: string
+  collection_date:
+    name: collection_date
+    description: 'The time of sampling, either as an instance (single point in time)
+      or interval. In case no exact time is available, the date/time can be right
+      truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10;
+      2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant'
+    title: collection date
+    examples:
+    - value: '2013-03-25T12:42:31+01:00'
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - date
+    slot_uri: MIXS:0000011
+    alias: collection_date
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: TimestampValue
+  geo_loc_name:
+    name: geo_loc_name
+    description: The geographical origin of the sample as defined by the country or
+      sea name followed by specific region name. Country or sea names should be chosen
+      from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology
+      (http://purl.bioontology.org/ontology/GAZ)
+    title: geographic location (country and/or sea,region)
+    examples:
+    - value: 'USA: Maryland, Bethesda'
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - geographic
+    - location
+    slot_uri: MIXS:0000010
+    alias: geo_loc_name
+    owner: OrganismSample
+    domain_of:
+    - FieldResearchSite
+    - Biosample
+    - OrganismSample
+    range: TextValue
+    structured_pattern:
+      syntax: '^{country}: {region}, {specific_location}$'
+      interpolated: true
+      partial_match: true
+  lat_lon:
+    name: lat_lon
+    description: The geographical origin of the sample as defined by latitude and
+      longitude. The values should be reported in decimal degrees, limited to 8 decimal
+      points, and in WGS84 system
+    title: geographic location (latitude and longitude)
+    examples:
+    - value: 50.586825 6.408977
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - geographic
+    - location
+    slot_uri: MIXS:0000009
+    alias: lat_lon
+    owner: OrganismSample
+    domain_of:
+    - FieldResearchSite
+    - Biosample
+    - OrganismSample
+    range: GeolocationValue
+    structured_pattern:
+      syntax: ^{lat} {lon}$
+      interpolated: true
+      partial_match: true
+  collected_from:
+    name: collected_from
+    description: The Site from which a Biosample was collected
+    todos:
+    - add an OBO slot_uri ?
+    comments:
+    - this illustrates implementing a Biosample relation with a (binary) slot
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: collected_from
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: FieldResearchSite
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  sample_collection_site:
+    name: sample_collection_site
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: sample_collection_site
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: string
+  env_broad_scale:
+    name: env_broad_scale
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: The biome or major environmental system where the sample or specimen
+          originated. Choose values from subclasses of the 'biome' class [ENVO:00000428]
+          in the Environment Ontology (ENVO). For host-associated or plant-associated
+          samples, use terms from the UBERON or Plant Ontology to describe the broad
+          anatomical or morphological context
+    description: 'Report the major environmental system the sample or specimen came
+      from. The system(s) identified should have a coarse spatial grain, to provide
+      the general environmental context of where the sampling was done (e.g. in the
+      desert or a rainforest). We recommend using subclasses of EnvO s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428.
+      EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
+    title: broad-scale environmental context
+    examples:
+    - value: oceanic epipelagic zone biome [ENVO:01000035]
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - context
+    - environmental
+    is_a: mixs_env_triad_field
+    slot_uri: MIXS:0000012
+    alias: env_broad_scale
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: ControlledIdentifiedTermValue
+    structured_pattern:
+      syntax: ^{termLabel} \[{termID}\]$
+      interpolated: true
+      partial_match: true
+  env_local_scale:
+    name: env_local_scale
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: Environmental entities having causal influences upon the entity at
+          time of sampling
+      tooltip:
+        tag: tooltip
+        value: The specific environmental entities or features near the sample or
+          specimen that significantly influence its characteristics or composition.
+          These entities are typically smaller in scale than the broad environmental
+          context. Values for this field should be countable, material nouns and must
+          be chosen from subclasses of BFO:0000040 (material entity) that appear in
+          the Environment Ontology (ENVO). For host-associated or plant-associated
+          samples, use terms from the UBERON or Plant Ontology to describe specific
+          anatomical structures or plant parts.
+    description: 'Report the entity or entities which are in the sample or specimen
+      s local vicinity and which you believe have significant causal influences on
+      your sample or specimen. We recommend using EnvO terms which are of smaller
+      spatial grain than your entry for env_broad_scale. Terms, such as anatomical
+      sites, from other OBO Library ontologies which interoperate with EnvO (e.g.
+      UBERON) are accepted in this field. EnvO documentation about how to use the
+      field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
+    title: local environmental context
+    examples:
+    - value: litter layer [ENVO:01000338]
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - context
+    - environmental
+    is_a: mixs_env_triad_field
+    slot_uri: MIXS:0000013
+    alias: env_local_scale
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: ControlledIdentifiedTermValue
+    structured_pattern:
+      syntax: ^{termLabel} \[{termID}\]$
+      interpolated: true
+      partial_match: true
+  env_medium:
+    name: env_medium
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: The predominant environmental material or substrate that directly surrounds
+          or hosts the sample or specimen at the time of sampling. Choose values from
+          subclasses of the 'environmental material' class [ENVO:00010483] in the
+          Environment Ontology (ENVO). Values for this field should be measurable
+          or mass material nouns, representing continuous environmental materials.
+          For host-associated or plant-associated samples, use terms from the UBERON
+          or Plant Ontology to indicate a tissue, organ, or plant structure
+    description: 'Report the environmental material(s) immediately surrounding the
+      sample or specimen at the time of sampling. We recommend using subclasses of
+      ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO
+      documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS
+      . Terms from other OBO ontologies are permissible as long as they reference
+      mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities
+      (e.g. a tree, a leaf, a table top)'
+    title: environmental medium
+    examples:
+    - value: soil [ENVO:00001998]
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - environmental
+    is_a: mixs_env_triad_field
+    slot_uri: MIXS:0000014
+    alias: env_medium
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: ControlledIdentifiedTermValue
+    structured_pattern:
+      syntax: ^{termLabel} \[{termID}\]$
+      interpolated: true
+      partial_match: true
+  gold_organism_type:
+    name: gold_organism_type
+    description: Organism type classification from GOLD controlled vocabulary.
+    title: organism type
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:organism_type
+    rank: 1000
+    alias: gold_organism_type
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  cultured:
+    name: cultured
+    description: Whether the organism has been cultured.
+    title: cultured
+    comments:
+    - GOLD stores as Yes/No/Unknown. Use yes/no/unknown.
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:cultured
+    rank: 1000
+    alias: cultured
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: YesNoUnknownEnum
+  culture_type:
+    name: culture_type
+    description: Type of cultivation used to grow the organism, e.g. isolate, enrichment,
+      mixed culture.
+    title: culture type
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:culture_type
+    rank: 1000
+    alias: culture_type
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: CultureTypeEnum
+  uncultured_type:
+    name: uncultured_type
+    description: For uncultured organisms, the type of genome assembly, e.g. MAG,
+      SAG.
+    title: uncultured type
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:uncultured_type
+    rank: 1000
+    alias: uncultured_type
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: UnculturedTypeEnum
+  type_strain:
+    name: type_strain
+    description: Whether this organism is a type strain.
+    title: type strain
+    comments:
+    - GOLD stores as Yes/No/Unknown. Use yes/no/unknown.
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:type_strain
+    rank: 1000
+    alias: type_strain
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: YesNoUnknownEnum
+  organism_domain:
+    name: organism_domain
+    description: Taxonomic domain of the organism, e.g. Bacteria, Archaea, Eukarya.
+    title: domain
+    comments:
+    - Can be derived from samp_taxon_id via NCBI taxonomy.
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:domain
+    rank: 1000
+    alias: organism_domain
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  gold_phylogeny:
+    name: gold_phylogeny
+    description: GOLD phylogeny string for the organism.
+    title: GOLD phylogeny
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:gold_phylogeny
+    rank: 1000
+    alias: gold_phylogeny
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  biotic_relationship:
+    name: biotic_relationship
+    description: Description of relationship(s) between the subject organism and other
+      organism(s) it is associated with. E.g., parasite on species X; mutualist with
+      species Y. The target organism is the subject of the relationship, and the other
+      organism(s) is the object
+    title: observed biotic relationship
+    examples:
+    - value: free living
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - observed
+    - relationship
+    slot_uri: MIXS:0000028
+    alias: biotic_relationship
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: BioticRelationshipEnum
+  encoded_traits:
+    name: encoded_traits
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: 'for plasmid: antibiotic resistance; for phage: converting genes'
+    description: Should include key traits like antibiotic resistance or xenobiotic
+      degradation phenotypes for plasmids, converting genes for phage
+    title: encoded traits
+    examples:
+    - value: beta-lactamase class A
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0000034
+    alias: encoded_traits
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: TextValue
+  host_disease_stat:
+    name: host_disease_stat
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: disease name or Disease Ontology term
+    description: List of diseases with which the host has been diagnosed; can include
+      multiple diagnoses. The value of the field depends on host; for humans the terms
+      should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org,
+      non-human host diseases are free text
+    title: host disease status
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - disease
+    - host
+    - host.
+    - status
+    string_serialization: '{termLabel} [{termID}]|{text}'
+    slot_uri: MIXS:0000031
+    alias: host_disease_stat
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: string
+  host_spec_range:
+    name: host_spec_range
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: NCBI taxid
+    description: The range and diversity of host species that an organism is capable
+      of infecting, defined by NCBI taxonomy identifier
+    title: host specificity or range
+    examples:
+    - value: '9606'
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - host
+    - host.
+    - range
+    string_serialization: '{integer}'
+    slot_uri: MIXS:0000030
+    alias: host_spec_range
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+    multivalued: true
+  isol_growth_condt:
+    name: isol_growth_condt
+    description: Publication reference in the form of pubmed ID (pmid), digital object
+      identifier (doi) or url for isolation and growth condition specifications of
+      the organism/material
+    title: isolation and growth condition
+    examples:
+    - value: doi:10.1016/j.syapm.2018.01.009
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - condition
+    - growth
+    - isolation
+    slot_uri: MIXS:0000003
+    alias: isol_growth_condt
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: TextValue
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+      partial_match: true
+  oxy_stat_samp:
+    name: oxy_stat_samp
+    description: Oxygenation status of sample
+    title: oxygenation status of sample
+    examples:
+    - value: aerobic
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - oxygen
+    - sample
+    - status
+    slot_uri: MIXS:0000753
+    alias: oxy_stat_samp
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: OxyStatSampEnum
+  pathogenicity:
+    name: pathogenicity
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: names of organisms that the entity is pathogenic to
+    description: To what is the entity pathogenic
+    title: known pathogenicity
+    examples:
+    - value: human, animal, plant, fungi, bacteria
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0000027
+    alias: pathogenicity
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: TextValue
+  biol_stat:
+    name: biol_stat
+    description: The level of genome modification
+    title: biological status
+    examples:
+    - value: natural
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - status
+    slot_uri: MIXS:0000858
+    alias: biol_stat
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: BiolStatEnum
+  genetic_mod:
+    name: genetic_mod
+    description: Genetic modifications of the genome of an organism, which may occur
+      naturally by spontaneous mutation, or be introduced by some experimental means,
+      e.g. specification of a transgene or the gene knocked-out or details of transient
+      transfection
+    title: genetic modification
+    examples:
+    - value: PMID:19497774
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0000859
+    alias: genetic_mod
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: string
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+  ref_biomaterial:
+    name: ref_biomaterial
+    description: Primary publication if isolated before genome publication; otherwise,
+      primary genome report. Uses NMDC's Doi class for consistency with associated_dois
+      on Study.
+    title: reference for biomaterial
+    comments:
+    - 'MIxS MIGS-Ba allows PMID, DOI, or URL. NMDC narrows this to DOI using the Doi
+      class for consistency (see #2895). PMIDs should be converted to their corresponding
+      DOIs.'
+    examples:
+    - value: ''
+      description: A publication DOI for the isolation conditions of Desulfofaba fastidiosa.
+      object:
+        doi_value: doi:10.1016/j.syapm.2018.01.009
+        doi_category: publication_doi
+        type: nmdc:Doi
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0000025
+    alias: ref_biomaterial
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: Doi
+    inlined: true
+  rel_to_oxygen:
+    name: rel_to_oxygen
+    description: Is this organism an aerobe, anaerobe? Please note that aerobic and
+      anaerobic are valid descriptors for microbial environments
+    title: relationship to oxygen
+    examples:
+    - value: aerobe
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - oxygen
+    - relationship
+    slot_uri: MIXS:0000015
+    alias: rel_to_oxygen
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: RelToOxygenEnum
+  specific_host:
+    name: specific_host
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: host scientific name, taxonomy ID
+    description: Report the host's taxonomic name and/or NCBI taxonomy ID
+    title: host scientific name
+    examples:
+    - value: Homo sapiens and/or 9606
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - host
+    - host.
+    string_serialization: '{text}|{NCBI taxid}'
+    slot_uri: MIXS:0000029
+    alias: specific_host
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  subspecf_gen_lin:
+    name: subspecf_gen_lin
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: Genetic lineage below lowest rank of NCBI taxonomy, which is subspecies,
+          e.g. serovar, biotype, ecotype, variety, cultivar
+    description: Information about the genetic distinctness of the sequenced organism
+      below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or any
+      relevant genetic typing schemes like Group I plasmid. Subspecies should not
+      be recorded in this term, but in the NCBI taxonomy. Supply both the lineage
+      name and the lineage rank separated by a colon, e.g., biovar:abc123
+    title: subspecific genetic lineage
+    examples:
+    - value: serovar:Newport
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - lineage
+    string_serialization: '{rank name}:{text}'
+    slot_uri: MIXS:0000020
+    alias: subspecf_gen_lin
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  tax_class:
+    name: tax_class
+    description: Method used for taxonomic classification, along with reference database
+      used, classification rank, and thresholds used to classify new genomes
+    title: taxonomic classification
+    examples:
+    - value: vConTACT vContact2 (references from NCBI RefSeq v83, genus rank classification,
+        default parameters)
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - classification
+    - taxon
+    slot_uri: MIXS:0000064
+    alias: tax_class
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: TextValue
+  tax_ident:
+    name: tax_ident
+    description: The phylogenetic marker(s) used to assign an organism name to the
+      SAG or MAG
+    title: taxonomic identity marker
+    examples:
+    - value: other
+      description: was other &lt;colon&gt; rpoB gene
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - identifier
+    - marker
+    - taxon
+    slot_uri: MIXS:0000053
+    alias: tax_ident
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: TaxIdentEnum
+  trophic_level:
+    name: trophic_level
+    description: Trophic levels are the feeding position in a food chain. Microbes
+      can be a range of producers (e.g. chemolithotroph)
+    title: trophic level
+    examples:
+    - value: heterotroph
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - level
+    slot_uri: MIXS:0000032
+    alias: trophic_level
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: TrophicLevelEnum
+  genbank_16s_id:
+    name: genbank_16s_id
+    description: GenBank accession for the 16S rRNA gene sequence.
+    title: GenBank 16S ID
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:genbank_16s_id
+    narrow_mappings:
+    - edam.data:2292
+    rank: 1000
+    mixins:
+    - insdc_identifiers
+    alias: genbank_16s_id
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+    multivalued: true
+    pattern: ^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$
+  clade:
+    name: clade
+    description: Clade assignment for the organism.
+    title: clade
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:clade
+    rank: 1000
+    alias: clade
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  organism_common_name:
+    name: organism_common_name
+    description: Common name of the organism.
+    title: common name
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:common_name
+    rank: 1000
+    alias: organism_common_name
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  genus_synonyms:
+    name: genus_synonyms
+    description: Alternative or historical genus names for the organism.
+    title: genus synonyms
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:genus_synonyms
+    rank: 1000
+    alias: genus_synonyms
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  species_synonyms:
+    name: species_synonyms
+    description: Alternative or historical species names for the organism.
+    title: species synonyms
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:species_synonyms
+    rank: 1000
+    alias: species_synonyms
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  gram_stain:
+    name: gram_stain
+    description: Gram stain result for the organism.
+    title: gram stain
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: gram_stain
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://gold.jgi.doe.gov/
+    exact_mappings:
+    - gold:gram_stain
+    rank: 1000
+    alias: gram_stain
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: GramStainEnum
+  carbon_source:
+    name: carbon_source
+    description: Carbon source(s) used by the organism.
+    title: carbon source
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:carbon_source
+    rank: 1000
+    alias: carbon_source
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  cell_shape:
+    name: cell_shape
+    description: Morphological shape of the cell, e.g. rod, coccus, spirillum, filamentous.
+    title: cell shape
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:cell_shape
+    rank: 1000
+    alias: cell_shape
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  cell_length:
+    name: cell_length
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: um
+    description: Length of the cell.
+    title: cell length
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:cell_length
+    rank: 1000
+    alias: cell_length
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  cell_diameter:
+    name: cell_diameter
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: um
+    description: Diameter of the cell.
+    title: cell diameter
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:cell_diameter
+    rank: 1000
+    alias: cell_diameter
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  motility:
+    name: motility
+    description: Whether the organism is motile.
+    title: motility
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:motility
+    rank: 1000
+    alias: motility
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  sporulation:
+    name: sporulation
+    description: Whether the organism forms spores.
+    title: sporulation
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:sporulation
+    rank: 1000
+    alias: sporulation
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  temperature_range:
+    name: temperature_range
+    description: Temperature classification of the organism, e.g. mesophilic, thermophilic,
+      hyperthermophilic.
+    title: temperature range
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:temperature_range
+    rank: 1000
+    alias: temperature_range
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: TemperatureRangeEnum
+  organism_color:
+    name: organism_color
+    description: Color of the organism or colony.
+    title: color
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:color
+    rank: 1000
+    alias: organism_color
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  alt:
+    name: alt
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: meter
+      storage_units:
+        tag: storage_units
+        value: m
+    description: Heights of objects such as airplanes, space shuttles, rockets, atmospheric
+      balloons and heights of places such as atmospheric layers and clouds. It is
+      used to measure the height of an object which is above the earth's surface.
+      In this context, the altitude measurement is the vertical distance between the
+      earth's surface above sea level and the sampled position in the air
+    title: altitude
+    examples:
+    - value: 100 m
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0000094
+    alias: alt
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: QuantityValue
+    structured_pattern:
+      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+      interpolated: true
+      partial_match: true
+  depth:
+    name: depth
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: meter
+      storage_units:
+        tag: storage_units
+        value: m
+    description: The vertical distance below local surface. For sediment or soil samples
+      depth is measured from sediment or soil surface, respectively. Depth can be
+      reported as an interval for subsurface samples
+    title: depth
+    examples:
+    - value: 10 m
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - depth
+    slot_uri: MIXS:0000018
+    alias: depth
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: QuantityValue
+    structured_pattern:
+      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+      interpolated: true
+      partial_match: true
+  elev:
+    name: elev
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: meter
+    description: Elevation of the sampling site is its height above a fixed reference
+      point, most commonly the mean sea level. Elevation is mainly used when referring
+      to points on the earth's surface, while altitude is used for points above the
+      surface, such as an aircraft in flight or a spacecraft in orbit
+    title: elevation
+    examples:
+    - value: 100 meter
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - elevation
+    slot_uri: MIXS:0000093
+    alias: elev
+    owner: OrganismSample
+    domain_of:
+    - FieldResearchSite
+    - Biosample
+    - OrganismSample
+    range: float
+    structured_pattern:
+      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+      interpolated: true
+      partial_match: true
+  experimental_factor:
+    name: experimental_factor
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: text or EFO and/or OBI
+    description: Variable aspects of an experiment design that can be used to describe
+      an experiment, or set of experiments, in an increasingly detailed manner. This
+      field accepts ontology terms from Experimental Factor Ontology (EFO) and/or
+      Ontology for Biomedical Investigations (OBI)
+    title: experimental factor
+    examples:
+    - value: time series design [EFO:0001779]
+    in_subset:
+    - migs_ba
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - experimental
+    - factor
+    string_serialization: '{termLabel} [{termID}]|{text}'
+    slot_uri: MIXS:0000008
+    alias: experimental_factor
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: ControlledTermValue
+    multivalued: false
+    pattern: ^\S+.*\S+ \[[a-zA-Z]{2,}:\d+\]$
+  lat_long_inferred:
+    name: lat_long_inferred
+    description: Whether the latitude/longitude was inferred rather than directly
+      measured.
+    title: lat/long inferred
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:lat_long_inferred
+    rank: 1000
+    alias: lat_long_inferred
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: boolean
+  sample_isolation_comments:
+    name: sample_isolation_comments
+    description: Free-text comments about the isolation of the organism.
+    title: sample isolation comments
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:sample_isolation_comments
+    rank: 1000
+    alias: sample_isolation_comments
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  samp_collec_device:
+    name: samp_collec_device
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: device name
+    description: The device used to collect an environmental sample. This field accepts
+      terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO).
+      This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)
+    title: sample collection device
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: samp_collect_device
+      contexts:
+      - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+    rank: 1000
+    keywords:
+    - device
+    - sample
+    string_serialization: '{termLabel} [{termID}]|{text}'
+    slot_uri: MIXS:0000002
+    alias: samp_collec_device
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: string
+  samp_collec_method:
+    name: samp_collec_method
+    description: The method employed for collecting the sample
+    title: sample collection method
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: samp_collect_method
+      contexts:
+      - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+    rank: 1000
+    keywords:
+    - method
+    - sample
+    slot_uri: MIXS:0001225
+    alias: samp_collec_method
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: string
+  samp_mat_process:
+    name: samp_mat_process
+    description: A brief description of any processing applied to the sample during
+      or after retrieving the sample from environment, or a link to the relevant protocol(s)
+      performed
+    title: sample material processing
+    examples:
+    - value: filtering of seawater, storing samples in ethanol
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - material
+    - process
+    - sample
+    slot_uri: MIXS:0000016
+    alias: samp_mat_process
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: ControlledTermValue
+  samp_size:
+    name: samp_size
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: L|g|mL|mg
+    description: The total amount or size (volume (ml), mass (g) or area (m2) ) of
+      sample collected
+    title: amount or size of sample collected
+    examples:
+    - value: 5 L
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - sample
+    - size
+    slot_uri: MIXS:0000001
+    alias: samp_size
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: QuantityValue
+    structured_pattern:
+      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+      interpolated: true
+      partial_match: true
+  temp:
+    name: temp
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: degree Celsius
+      storage_units:
+        tag: storage_units
+        value: Cel
+    description: Temperature of the sample at the time of sampling
+    title: temperature
+    examples:
+    - value: 25 Cel
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - temperature
+    slot_uri: MIXS:0000113
+    alias: temp
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: QuantityValue
+    structured_pattern:
+      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+      interpolated: true
+      partial_match: true
+  sop:
+    name: sop
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: reference to SOP
+    description: Standard operating procedures used in assembly and/or annotation
+      of genomes, metagenomes or environmental sequences
+    title: relevant standard operating procedures
+    examples:
+    - value: http://press.igsb.anl.gov/earthmicrobiome/protocols-and-standards/its/
+    in_subset:
+    - migs_ba
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - procedures
+    slot_uri: MIXS:0000090
+    alias: sop
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+    multivalued: true
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+  subsurface_depth:
+    name: subsurface_depth
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: m
+    description: Subsurface depth at the isolation site. Use has_minimum_numeric_value
+      and has_maximum_numeric_value to represent a range (GOLD subsurface_depth1 and
+      subsurface_depth2).
+    title: subsurface depth
+    comments:
+    - GOLD subsurface_depth2 maps to has_maximum_numeric_value.
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:subsurface_depth1
+    rank: 1000
+    alias: subsurface_depth
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: QuantityValue
+  ecosystem:
+    name: ecosystem
+    description: An ecosystem is a combination of a physical environment (abiotic
+      factors) and all the organisms (biotic factors) that interact with this environment.
+      Ecosystem is in position 1/5 in a GOLD path.
+    comments:
+    - The abiotic factors play a profound role on the type and composition of organisms
+      in a given environment. The GOLD Ecosystem at the top of the five-level classification
+      system is aimed at capturing the broader environment from which an organism
+      or environmental sample is collected. The three broad groups under Ecosystem
+      are Environmental, Host-associated, and Engineered. They represent samples collected
+      from a natural environment or from another organism or from engineered environments
+      like bioreactors respectively.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://gold.jgi.doe.gov/help
+    rank: 1000
+    is_a: gold_path_field
+    alias: ecosystem
+    owner: OrganismSample
+    domain_of:
+    - Study
+    - Biosample
+    - OrganismSample
+    range: string
+  ecosystem_category:
+    name: ecosystem_category
+    description: Ecosystem categories represent divisions within the ecosystem based
+      on specific characteristics of the environment from where an organism or sample
+      is isolated. Ecosystem category is in position 2/5 in a GOLD path.
+    comments:
+    - The Environmental ecosystem (for example) is divided into Air, Aquatic and Terrestrial.
+      Ecosystem categories for Host-associated samples can be individual hosts or
+      phyla and for engineered samples it may be manipulated environments like bioreactors,
+      solid waste etc.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://gold.jgi.doe.gov/help
+    rank: 1000
+    is_a: gold_path_field
+    alias: ecosystem_category
+    owner: OrganismSample
+    domain_of:
+    - Study
+    - Biosample
+    - OrganismSample
+    range: string
+  ecosystem_type:
+    name: ecosystem_type
+    description: Ecosystem types represent things having common characteristics within
+      the Ecosystem Category. These common characteristics based grouping is still
+      broad but specific to the characteristics of a given environment. Ecosystem
+      type is in position 3/5 in a GOLD path.
+    comments:
+    - The Aquatic ecosystem category (for example) may have ecosystem types like Marine
+      or Thermal springs etc. Ecosystem category Air may have Indoor air or Outdoor
+      air as different Ecosystem Types. In the case of Host-associated samples, ecosystem
+      type can represent Respiratory system, Digestive system, Roots etc.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://gold.jgi.doe.gov/help
+    rank: 1000
+    is_a: gold_path_field
+    alias: ecosystem_type
+    owner: OrganismSample
+    domain_of:
+    - Study
+    - Biosample
+    - OrganismSample
+    range: string
+  ecosystem_subtype:
+    name: ecosystem_subtype
+    description: Ecosystem subtypes represent further subdivision of Ecosystem types
+      into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD
+      path.
+    comments:
+    - Ecosystem Type Marine (Environmental -&gt; Aquatic -&gt; Marine) is further divided
+      (for example) into Intertidal zone, Coastal, Pelagic, Intertidal zone etc. in
+      the Ecosystem subtype category.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://gold.jgi.doe.gov/help
+    rank: 1000
+    is_a: gold_path_field
+    alias: ecosystem_subtype
+    owner: OrganismSample
+    domain_of:
+    - Study
+    - Biosample
+    - OrganismSample
+    range: string
+  specific_ecosystem:
+    name: specific_ecosystem
+    description: Specific ecosystems represent specific features of the environment
+      like aphotic zone in an ocean or gastric mucosa within a host digestive system.
+      Specific ecosystem is in position 5/5 in a GOLD path.
+    comments:
+    - Specific ecosystems help to define samples based on very specific characteristics
+      of an environment under the five-level classification system.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://gold.jgi.doe.gov/help
+    rank: 1000
+    is_a: gold_path_field
+    alias: specific_ecosystem
+    owner: OrganismSample
+    domain_of:
+    - Study
+    - Biosample
+    - OrganismSample
+    range: string
+  ecosystem_path_id:
+    name: ecosystem_path_id
+    description: A unique id representing the GOLD classifiers associated with a sample.
+    examples:
+    - value: '6026'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://gold.jgi.doe.gov/ecosystem_classification
+    rank: 1000
+    alias: ecosystem_path_id
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: integer
+  other_ecosystem:
+    name: other_ecosystem
+    description: Ecosystem classification that does not fit the standard GOLD hierarchy.
+    title: other ecosystem
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:other_ecosystem
+    rank: 1000
+    alias: other_ecosystem
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  salinity:
+    name: salinity
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: practical salinity unit, percentage
+      storage_units:
+        tag: storage_units
+        value: '%|mg/L'
+    description: The total concentration of all dissolved salts in a liquid or solid
+      sample. While salinity can be measured by a complete chemical analysis, this
+      method is difficult and time consuming. More often, it is instead derived from
+      the conductivity measurement. This is known as practical salinity. These derivations
+      compare the specific conductance of the sample to a salinity standard such as
+      seawater
+    title: salinity
+    examples:
+    - value: 70 mg/L
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - salinity
+    slot_uri: MIXS:0000183
+    alias: salinity
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: QuantityValue
+    structured_pattern:
+      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+      interpolated: true
+      partial_match: true
+  pressure:
+    name: pressure
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: atmosphere
+      storage_units:
+        tag: storage_units
+        value: atm
+    description: Pressure to which the sample is subject to, in atmospheres
+    title: pressure
+    examples:
+    - value: 50 atm
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - pressure
+    slot_uri: MIXS:0000412
+    alias: pressure
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: QuantityValue
+    structured_pattern:
+      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+      interpolated: true
+      partial_match: true
+  isolation_site_ph:
+    name: isolation_site_ph
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '[pH]'
+    description: pH measurement at the isolation site. Use has_minimum_numeric_value
+      and has_maximum_numeric_value to represent a range (GOLD ph1 and ph2).
+    title: isolation site pH
+    comments:
+    - GOLD ph2 maps to has_maximum_numeric_value.
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:ph1
+    rank: 1000
+    alias: isolation_site_ph
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  chlorophyll_concentration:
+    name: chlorophyll_concentration
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mg/L
+    description: Chlorophyll concentration at the isolation site.
+    title: chlorophyll concentration
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:chlorophyll_concentration
+    rank: 1000
+    alias: chlorophyll_concentration
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  nitrate_concentration:
+    name: nitrate_concentration
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mg/L
+    description: Nitrate concentration at the isolation site.
+    title: nitrate concentration
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:nitrate_concentration
+    rank: 1000
+    alias: nitrate_concentration
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  oxygen_concentration:
+    name: oxygen_concentration
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mg/L
+    description: Oxygen concentration at the isolation site.
+    title: oxygen concentration
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:oxygen_concentration
+    rank: 1000
+    alias: oxygen_concentration
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  salinity_concentration:
+    name: salinity_concentration
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '[ppm]'
+    description: Salinity concentration at the isolation site.
+    title: salinity concentration
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:salinity_concentration
+    rank: 1000
+    alias: salinity_concentration
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  tot_org_carbon:
+    name: tot_org_carbon
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mg/kg
+    description: Total organic carbon at the isolation site.
+    title: total organic carbon
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:tot_org_carbon
+    rank: 1000
+    alias: tot_org_carbon
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  tot_nitrogen:
+    name: tot_nitrogen
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mg/kg
+    description: Total nitrogen at the isolation site.
+    title: total nitrogen
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:tot_nitrogen
+    rank: 1000
+    alias: tot_nitrogen
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  bicarbonate_millimol:
+    name: bicarbonate_millimol
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mmol/L
+    description: Bicarbonate concentration at the isolation site.
+    title: bicarbonate concentration
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:bicarbonate_millimol
+    rank: 1000
+    alias: bicarbonate_millimol
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  soluble_iron_micromol:
+    name: soluble_iron_micromol
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: soluble_iron_micromol
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: string
+  h2s_millimol:
+    name: h2s_millimol
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mmol/L
+    description: Hydrogen sulfide concentration at the isolation site.
+    title: H2S concentration
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:h2s_millimol
+    rank: 1000
+    alias: h2s_millimol
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  h2s_present:
+    name: h2s_present
+    description: Whether hydrogen sulfide is present at the isolation site.
+    title: H2S present
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:h2s_present
+    rank: 1000
+    alias: h2s_present
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  irradiance:
+    name: irradiance
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: W/m2
+    description: Irradiance at the isolation site.
+    title: irradiance
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:irradiance
+    rank: 1000
+    alias: irradiance
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  methane_conc_millimol:
+    name: methane_conc_millimol
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mmol/L
+    description: Methane concentration at the isolation site.
+    title: methane concentration
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:methane_conc_millimol
+    rank: 1000
+    alias: methane_conc_millimol
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  sample_conductivity:
+    name: sample_conductivity
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mS/cm
+    description: Electrical conductivity of the sample or isolation site.
+    title: sample conductivity
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:sample_conductivity
+    rank: 1000
+    alias: sample_conductivity
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  host_age:
+    name: host_age
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: year, day, hour
+      storage_units:
+        tag: storage_units
+        value: a|d|h
+    description: Age of host at the time of sampling; relevant scale depends on species
+      and study, e.g. Could be seconds for amoebae or centuries for trees
+    title: host age
+    examples:
+    - value: 10 d
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - age
+    - host
+    - host.
+    slot_uri: MIXS:0000255
+    alias: host_age
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: QuantityValue
+    structured_pattern:
+      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+      interpolated: true
+      partial_match: true
+  host_body_site:
+    name: host_body_site
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: FMA or UBERON
+    description: Name of body site where the sample was obtained from, such as a specific
+      organ or tissue (tongue, lung etc...). Use terms from the foundational model
+      of anatomy ontology (fma) or the Uber-anatomy ontology (UBERON)
+    title: host body site
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - body
+    - host
+    - site
+    string_serialization: '{termLabel} [{termID}]'
+    slot_uri: MIXS:0000867
+    alias: host_body_site
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: ControlledTermValue
+  host_body_subsite:
+    name: host_body_subsite
+    description: More specific body site within the host body site.
+    title: host body subsite
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:host_body_subsite
+    rank: 1000
+    alias: host_body_subsite
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  host_body_product:
+    name: host_body_product
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: FMA or UBERON
+    description: Substance produced by the body, e.g. Stool, mucus, where the sample
+      was obtained from. Use terms from the foundational model of anatomy ontology
+      (fma) or Uber-anatomy ontology (UBERON)
+    title: host body product
+    examples:
+    - value: mucus [UBERON:0000912]
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - body
+    - host
+    - host.
+    - product
+    string_serialization: '{termLabel} [{termID}]'
+    slot_uri: MIXS:0000888
+    alias: host_body_product
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: ControlledTermValue
+  host_body_site_id:
+    name: host_body_site_id
+    description: Ontology term identifier for the host body site.
+    title: host body site ID
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:host_body_site_id
+    rank: 1000
+    alias: host_body_site_id
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  host_body_subsite_id:
+    name: host_body_subsite_id
+    description: Ontology term identifier for the host body subsite.
+    title: host body subsite ID
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:host_body_subsite_id
+    rank: 1000
+    alias: host_body_subsite_id
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  host_body_product_id:
+    name: host_body_product_id
+    description: Ontology term identifier for the host body product.
+    title: host body product ID
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:host_body_product_id
+    rank: 1000
+    alias: host_body_product_id
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  host_gender:
+    name: host_gender
+    description: Gender of the host organism.
+    title: host gender
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:host_gender
+    rank: 1000
+    alias: host_gender
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  host_race:
+    name: host_race
+    description: Race/ethnicity of the host (for human hosts).
+    title: host race
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:host_race
+    rank: 1000
+    alias: host_race
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  host_medication:
+    name: host_medication
+    description: Medications being taken by the host at time of sampling.
+    title: host medication
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:host_medication
+    rank: 1000
+    alias: host_medication
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  host_comments:
+    name: host_comments
+    description: Free-text comments about the host organism.
+    title: host comments
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:host_comments
+    rank: 1000
+    alias: host_comments
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  patient_visit_number:
+    name: patient_visit_number
+    description: Visit number for clinical/patient samples.
+    title: patient visit number
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:patient_visit_number
+    rank: 1000
+    alias: patient_visit_number
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: integer
+  medical_record_number:
+    name: medical_record_number
+    description: Medical record number for clinical samples.
+    title: MRN
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:mrn
+    rank: 1000
+    alias: medical_record_number
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  known_non_hosts:
+    name: known_non_hosts
+    description: Organisms known to not be hosts of this organism.
+    title: known non-hosts
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:known_non_hosts
+    rank: 1000
+    alias: known_non_hosts
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  other_hosts:
+    name: other_hosts
+    description: Other host organisms associated with this organism.
+    title: other hosts
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - gold:other_hosts
+    rank: 1000
+    alias: other_hosts
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  estimated_size:
+    name: estimated_size
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: number of base pairs
+      Preferred_unit:
+        tag: Preferred_unit
+        value: base pairs (UCUM has no bp unit; use dimensionless count '1'. See also
+          UO:0000244)
+      storage_units:
+        tag: storage_units
+        value: '1'
+    description: The estimated size of the genome (in base pairs) prior to sequencing.
+      Of particular importance in the sequencing of (eukaryotic) genome which could
+      remain in draft form for a long or unspecified period
+    title: estimated size
+    comments:
+    - Unit is UCUM dimensionless '1' because UCUM has no base pair unit. The count
+      represents base pairs per nmdc-schema#2896.
+    examples:
+    - value: ''
+      object:
+        has_numeric_value: 300000
+        has_raw_value: 300000 bp
+        has_unit: '1'
+        type: nmdc:QuantityValue
+    in_subset:
+    - migs_ba
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - size
+    slot_uri: MIXS:0000024
+    alias: estimated_size
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  extrachrom_elements:
+    name: extrachrom_elements
+    description: Do plasmids exist of significant phenotypic consequence (e.g. ones
+      that determine virulence or antibiotic resistance). Megaplasmids? Other plasmids
+      (borrelia has 15+ plasmids)
+    title: extrachromosomal elements
+    examples:
+    - value: '5'
+    in_subset:
+    - migs_ba
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0000023
+    alias: extrachrom_elements
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: integer
+  num_replicons:
+    name: num_replicons
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: 'for eukaryotes and bacteria: chromosomes (haploid count); for viruses:
+          segments'
+    description: Reports the number of replicons in a nuclear genome of eukaryotes,
+      in the genome of a bacterium or archaea or the number of segments in a segmented
+      virus. Always applied to the haploid chromosome count of a eukaryote
+    title: number of replicons
+    examples:
+    - value: '2'
+    in_subset:
+    - migs_ba
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - number
+    string_serialization: '{integer}'
+    slot_uri: MIXS:0000022
+    alias: num_replicons
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: integer
+  gc_content:
+    name: gc_content
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '%'
+    description: Estimated GC content of the genome, as a percentage.
+    title: GC content %
+    comments:
+    - 'JGI: Give an estimate of the GC content of the genome in decimal format (e.g.
+      45.2).'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: gc_content
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  ploidy:
+    name: ploidy
+    description: Genome ploidy, e.g. haploid, diploid, octaploid.
+    title: ploidy
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: ploidy
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  reference_genome:
+    name: reference_genome
+    description: Reference genome to be used for analysis. Preferred formats are IMG
+      taxon OID, Mycocosm/Phycocosm/Phytozome ID.
+    title: reference genome
+    comments:
+    - 'JGI: Required for resequencing, gene expression, IsoSeq, and methylation.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: reference_genome
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  organism_genus:
+    name: organism_genus
+    description: Genus of the organism.
+    title: genus
+    comments:
+    - JGI Isolate v19 required field.
+    in_subset:
+    - jgi_isolate
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Genus
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/
+    - literal_form: genus
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://gold.jgi.doe.gov/
+    rank: 1000
+    alias: organism_genus
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  organism_species:
+    name: organism_species
+    description: Species of the organism.
+    title: species
+    comments:
+    - JGI Isolate v19 required field.
+    in_subset:
+    - jgi_isolate
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Species
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/
+    - literal_form: species
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://gold.jgi.doe.gov/
+    rank: 1000
+    alias: organism_species
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  isolate_name:
+    name: isolate_name
+    description: Isolate or mutant name, if applicable. Distinct from strain/cultivar
+      and from culture collection identifiers.
+    title: isolate name
+    comments:
+    - 'JGI: The culture collection ID should be entered in the Culture Collection
+      and ID field, not the Isolate field.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Isolate Name
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/
+    rank: 1000
+    alias: isolate_name
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  ribosomal_sequence:
+    name: ribosomal_sequence
+    description: Nucleotide sequence used for strain verification. Must contain only
+      A, C, G, T, or N characters (case-insensitive) with no header. At least one
+      ribosomal sequence is required for all microbial and fungal genome projects.
+    title: ribosomal sequence
+    comments:
+    - 'JGI: 16S sequence MUST be &gt;1300 nt with &lt;10% Ns for microbial drafts. ITS sequence
+      must be &gt;450 nt with &lt;2% Ns for fungal drafts.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: ribosomal_sequence
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+    pattern: ^[ACGTNacgtn]+$
+  ribosomal_sequence_type:
+    name: ribosomal_sequence_type
+    description: Type of ribosomal sequence provided for strain verification.
+    title: ribosomal sequence type
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: ribosomal_sequence_type
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: RibosomalSequenceTypeEnum
+  ribosomal_sequence_comments:
+    name: ribosomal_sequence_comments
+    description: Additional information about the ribosomal sequence. Required if
+      ribosomal sequence type is Other.
+    title: ribosomal sequence comments
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: ribosomal_sequence_comments
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  second_ribosomal_sequence:
+    name: second_ribosomal_sequence
+    description: Optional secondary ribosomal sequence for additional verification.
+      Must contain only A, C, G, T, or N characters (case-insensitive) with no header.
+    title: second ribosomal sequence
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ribosomal_sequence
+    alias: second_ribosomal_sequence
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+    pattern: ^[ACGTNacgtn]+$
+  second_ribosomal_sequence_type:
+    name: second_ribosomal_sequence_type
+    description: Type of the secondary ribosomal sequence.
+    title: second ribosomal sequence type
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ribosomal_sequence_type
+    alias: second_ribosomal_sequence_type
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: RibosomalSequenceTypeEnum
+  second_ribosomal_sequence_comments:
+    name: second_ribosomal_sequence_comments
+    description: Additional information about the secondary ribosomal sequence.
+    title: second ribosomal sequence comments
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: ribosomal_sequence_comments
+    alias: second_ribosomal_sequence_comments
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  single_colony_isolation:
+    name: single_colony_isolation
+    description: Whether the sample was isolated from an axenic/strain pure culture
+      (single colony or equivalent).
+    title: is sample from single colony
+    comments:
+    - 'JGI: Was the sample isolated from an axenic/strain pure culture?'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: single_colony_isolation
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: YesNoEnum
+  known_suspected_organisms:
+    name: known_suspected_organisms
+    description: Organisms known or suspected to grow in co-culture or that may be
+      contaminating the culture, with estimated percentages.
+    title: known/suspected organisms
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: known_suspected_organisms
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  fungal_16s_screening:
+    name: fungal_16s_screening
+    description: Whether 16S screening was performed to identify bacterial contamination
+      in fungal samples.
+    title: fungal 16S screening
+    comments:
+    - 'JGI: Required for all fungal draft samples.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: fungal_16s_screening
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: YesNoEnum
+  its_match_unite:
+    name: its_match_unite
+    description: Whether the ITS sequence matches taxonomy in the UNITE database.
+    title: ITS match in UNITE
+    comments:
+    - 'JGI: Required for all fungal draft samples.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: its_match_unite
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: YesNoEnum
+  biosafety_material_category:
+    name: biosafety_material_category
+    description: General category of organism or material for biosafety classification.
+    title: biosafety material category
+    comments:
+    - 'JGI: Required field. Choose from Alga, Animal, Archaea, Bacteria, Fungi, Plant,
+      Plasmid, Protist, Virus, Synthetic Construct.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Biosafety Material Category
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/
+    exact_mappings:
+    - nmdc_sub_schema:biosafety_mat_cat
+    rank: 1000
+    alias: biosafety_material_category
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: BiosafetyMaterialCategoryEnum
+  viral_host_genus:
+    name: viral_host_genus
+    description: Genus of the viral host.
+    title: host genus
+    comments:
+    - 'JGI: Required for viral minimal draft projects.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: viral_host_genus
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  viral_host_species:
+    name: viral_host_species
+    description: Species of the viral host.
+    title: host species
+    comments:
+    - 'JGI: Required for viral minimal draft projects.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: viral_host_species
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  viral_host_strain:
+    name: viral_host_strain
+    description: Strain of the viral host.
+    title: host strain
+    comments:
+    - 'JGI: Required for viral minimal draft projects.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: viral_host_strain
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  dna_concentration:
+    name: dna_concentration
+    title: DNA concentration in ng/ul
+    comments:
+    - 'JGI: Must be calculated using a fluorometric method; value &gt;0 and &lt;2000.'
+    - Replaces analyte_concentration for OrganismSample.
+    examples:
+    - value: '100'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - nmdc:nucleic_acid_concentration
+    aliases:
+    - concentration (ng/ul)
+    exact_mappings:
+    - nmdc_sub_schema:nuc_acid_concentration
+    rank: 5
+    alias: dna_concentration
+    owner: OrganismSample
+    domain_of:
+    - ProcessedSample
+    - OrganismSample
+    slot_group: JGI-Metagenomics
+    range: float
+    recommended: true
+    minimum_value: 0
+    maximum_value: 2000
+  analyte_volume:
+    name: analyte_volume
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: uL
+    description: Volume of the sample being provided.
+    title: volume
+    comments:
+    - 'JGI: Value must be &gt;0 and &lt;1000 ul.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - nmdc_sub_schema:jgi_sample_volume
+    rank: 1000
+    alias: analyte_volume
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: QuantityValue
+  dna_absorb1:
+    name: dna_absorb1
+    description: 260/280 measurement of DNA sample purity
+    title: DNA absorbance 260/280
+    comments:
+    - Recommended value is between 1 and 3.
+    examples:
+    - value: '2.02'
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - absorbance 260/280
+    exact_mappings:
+    - nmdc_sub_schema:nuc_acid_absorb1
+    rank: 7
+    is_a: biomaterial_purity
+    alias: dna_absorb1
+    owner: OrganismSample
+    domain_of:
+    - ProcessedSample
+    - OrganismSample
+    slot_group: JGI-Metagenomics
+    range: float
+    recommended: true
+  dna_absorb2:
+    name: dna_absorb2
+    description: 260/230 measurement of DNA sample purity
+    title: DNA absorbance 260/230
+    comments:
+    - Recommended value is between 1 and 3.
+    examples:
+    - value: '2.02'
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - absorbance 260/230
+    exact_mappings:
+    - nmdc_sub_schema:nuc_acid_absorb2
+    rank: 8
+    is_a: biomaterial_purity
+    alias: dna_absorb2
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    slot_group: JGI-Metagenomics
+    range: float
+    recommended: true
+  sample_container:
+    name: sample_container
+    description: Physical container type for sample shipment.
+    title: sample container
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - nmdc_sub_schema:cont_type
+    rank: 1000
+    alias: sample_container
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: SampleContainerEnum
+  sample_format:
+    name: sample_format
+    description: Format or buffer in which the physical sample is provided.
+    title: sample format
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - nmdc_sub_schema:jgi_sample_format
+    rank: 1000
+    alias: sample_format
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: SampleFormatEnum
+  dnase_treated:
+    name: dnase_treated
+    description: Whether the sample was treated with DNase.
+    title: was sample DNase treated
+    comments:
+    - 'JGI: DNase treatment is required for all RNA samples.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - nmdc_sub_schema:dnase
+    rank: 1000
+    alias: dnase_treated
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: YesNoEnum
+  tube_or_plate_label:
+    name: tube_or_plate_label
+    description: Label on the tube or plate. Must be unique across all tubes and plates.
+    title: tube or plate label
+    comments:
+    - 'JGI: Must be unique across all tubes and plates, and &lt;20 characters.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - nmdc_sub_schema:container_name
+    rank: 1000
+    alias: tube_or_plate_label
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  plate_well_location:
+    name: plate_well_location
+    description: Well location in a 96-well plate, e.g. A4, B5. Corner wells must
+      be blank.
+    title: plate location (well
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - nmdc_sub_schema:cont_well
+    rank: 1000
+    alias: plate_well_location
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  samp_store_temp:
+    name: samp_store_temp
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: degree Celsius
+      storage_units:
+        tag: storage_units
+        value: Cel
+    description: Temperature at which sample was stored, e.g. -80 degree Celsius
+    title: sample storage temperature
+    examples:
+    - value: -80 Cel
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - sample
+    - storage
+    - temperature
+    slot_uri: MIXS:0000110
+    alias: samp_store_temp
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: QuantityValue
+    structured_pattern:
+      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+      interpolated: true
+      partial_match: true
+  samp_store_loc:
+    name: samp_store_loc
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: location name
+    description: Location at which sample was stored, usually name of a specific freezer/room
+    title: sample storage location
+    examples:
+    - value: Freezer no:5
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - location
+    - sample
+    - storage
+    slot_uri: MIXS:0000755
+    alias: samp_store_loc
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: TextValue
+  samp_store_dur:
+    name: samp_store_dur
+    description: Duration for which the sample was stored. Indicate the duration for
+      which the sample was stored written in ISO 8601 format
+    title: sample storage duration
+    examples:
+    - value: P1Y6M
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - duration
+    - period
+    - sample
+    - storage
+    slot_uri: MIXS:0000116
+    alias: samp_store_dur
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: TextValue
+    structured_pattern:
+      syntax: ^{duration}$
+      interpolated: true
+      partial_match: true
+  store_cond:
+    name: store_cond
+    description: Explain how and for how long the soil sample was stored before DNA
+      extraction (fresh/frozen/other)
+    title: storage conditions
+    examples:
+    - value: -20 degree Celsius freezer;P2Y10D
+    in_subset:
+    - gold_organism
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - condition
+    - storage
+    slot_uri: MIXS:0000327
+    alias: store_cond
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: TextValue
+  id:
+    name: id
+    description: A unique identifier for a thing. Must be either a CURIE shorthand
+      for a URI or a complete URI
+    notes:
+    - 'abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?'
+    - a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters
+      will be accepted
+    - typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked
+      via per-class id slot usage assertions
+    - minting authority shoulders should probably be enumerated and checked in the
+      pattern
+    examples:
+    - value: nmdc:mgmag-00-x012.1_7_c1
+      description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: workflow_execution_id
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: data_object_id
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: OrganismSample
+    domain_of:
+    - NamedThing
+    range: uriorcurie
+    required: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:orgsm-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  name:
+    name: name
+    description: A human readable label for an entity
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: name
+    owner: OrganismSample
+    domain_of:
+    - PersonValue
+    - NamedThing
+    - Protocol
+    range: string
+  description:
+    name: description
+    description: a human-readable description of a thing
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: dcterms:description
+    alias: description
+    owner: OrganismSample
+    domain_of:
+    - ImageValue
+    - NamedThing
+    - Protocol
+    range: string
+  alternative_identifiers:
+    name: alternative_identifiers
+    description: A list of alternative identifiers for the entity.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: alternative_identifiers
+    owner: OrganismSample
+    domain_of:
+    - NamedThing
+    - MetaboliteIdentification
+    range: uriorcurie
+    multivalued: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+    - literal_form: workflow_execution_class
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: OrganismSample
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - OntologyRelation
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    range: uriorcurie
+    required: true
+class_uri: nmdc:OrganismSample
+
+</code></pre>
+
+</details>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "hide_page_title"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
+      
+    
+  </body>
+</html>
