@@ -1041,7 +1041,7 @@
 </tr>
 <tr>
 <td><a href="../genbank_16s_id/">genbank_16s_id</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td>GenBank accession for the 16S rRNA gene sequence</td>
 <td>direct</td>
 </tr>
@@ -2972,7 +2972,7 @@ attributes:
     owner: OrganismSample
     domain_of:
     - OrganismSample
-    range: string
+    range: external_identifier
     multivalued: true
     pattern: ^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$
   clade:

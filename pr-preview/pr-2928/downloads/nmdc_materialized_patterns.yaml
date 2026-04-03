@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.1.post38.dev0+7277fa338
+version: 11.17.1.post30.dev0+683ff42d7
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7720,7 +7720,6 @@ slots:
     - edam.data:2292
     mixins:
     - insdc_identifiers
-    range: string
     pattern: ^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$
   source_system_of_record:
     name: source_system_of_record
