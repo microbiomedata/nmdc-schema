@@ -1080,7 +1080,8 @@ classes:
           - value: doi:10.1016/j.geoderma.2019.113898
       link_addit_analys:
         examples:
-          - value: https://pubmed.ncbi.nlm.nih.gov/2315679/
+          - value: https://doi.org/10.1111/j.1574-6941.2011.01140.x
+          - value: doi:10.1111/j.1574-6941.2011.01140.x
       link_climate_info:
         examples:
           - value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
@@ -1089,8 +1090,8 @@ classes:
           - value: https://www.nrcs.usda.gov/resources/education-and-teaching-materials/the-twelve-orders-of-soil-taxonomy
       prev_land_use_meth:
         examples:
-          - value: https://doi.org/10.1016/j.agee.2006.05.012
-          - value: doi:10.1016/j.agee.2006.05.012
+          - value: https://doi.org/10.2737/SRS-GTR-155
+          - value: doi:10.2737/SRS-GTR-155
       season_precpt:
         title: average seasonal precipitation
         comments:
