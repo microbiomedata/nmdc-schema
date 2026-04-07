@@ -1085,9 +1085,14 @@ classes:
       link_climate_info:
         examples:
           - value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
+          - value: doi:10.3354/cr014161
       local_class_meth:
         examples:
           - value: https://www.nrcs.usda.gov/resources/education-and-teaching-materials/the-twelve-orders-of-soil-taxonomy
+      micro_biomass_meth:
+        examples:
+          - value: https://doi.org/10.1016/j.soilbio.2005.01.021
+          - value: doi:10.1016/j.soilbio.2005.01.021
       prev_land_use_meth:
         examples:
           - value: https://doi.org/10.2737/SRS-GTR-155
