@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.1.post13.dev0+5d9efa32c
+version: 11.17.1.post14.dev0+249e297b7
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -20457,6 +20457,28 @@ classes:
         - value: doi:10.1007/BF01056090
         - value: https://doi.org/10.1007/s00216-006-0322-8
         multivalued: true
+      horizon_meth:
+        name: horizon_meth
+        examples:
+        - value: https://doi.org/10.1016/j.geoderma.2019.113898
+        - value: doi:10.1016/j.geoderma.2019.113898
+      link_addit_analys:
+        name: link_addit_analys
+        examples:
+        - value: https://pubmed.ncbi.nlm.nih.gov/2315679/
+      link_climate_info:
+        name: link_climate_info
+        examples:
+        - value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
+      local_class_meth:
+        name: local_class_meth
+        examples:
+        - value: https://www.nrcs.usda.gov/resources/education-and-teaching-materials/the-twelve-orders-of-soil-taxonomy
+      prev_land_use_meth:
+        name: prev_land_use_meth
+        examples:
+        - value: https://doi.org/10.1016/j.agee.2006.05.012
+        - value: doi:10.1016/j.agee.2006.05.012
       season_precpt:
         name: season_precpt
         title: average seasonal precipitation
