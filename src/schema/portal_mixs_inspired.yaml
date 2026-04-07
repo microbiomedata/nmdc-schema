@@ -126,7 +126,8 @@ slots:
       - required if "microbial_biomass_c" is provided
     examples:
       - value: https://doi.org/10.1016/0038-0717(87)90052-6
-      - value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
+      - value: doi:10.1016/0038-0717(87)90052-6
+      - value: PMID:24478572
     see_also:
       - MIXS:0000339
     rank: 11
@@ -140,7 +141,8 @@ slots:
       - required if "microbial_biomass_n" is provided
     examples:
       - value: https://doi.org/10.1016/0038-0717(87)90052-6
-      - value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
+      - value: doi:10.1016/0038-0717(87)90052-6
+      - value: PMID:24478572
     see_also:
       - MIXS:0000339
     rank: 13
@@ -194,6 +196,8 @@ slots:
       - required if "non-microbial biomass" is provided
     examples:
       - value: https://doi.org/10.1038/s41467-021-26181-3
+      - value: doi:10.1038/s41467-021-26181-3
+      - value: PMID:34611155
     see_also:
       - MIXS:0000650
     rank: 9
@@ -206,6 +210,8 @@ slots:
       - required if "org_nitro" is provided
     examples:
       - value: https://doi.org/10.1016/0038-0717(85)90144-0
+      - value: doi:10.1016/0038-0717(85)90144-0
+      - value: PMID:25024123
     see_also:
       - MIXS:0000338
       - MIXS:0000205

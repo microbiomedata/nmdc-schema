@@ -1029,6 +1029,8 @@ classes:
           - Required when aluminum saturation is provided.
         examples:
           - value: https://doi.org/10.1371/journal.pone.0176357
+          - value: doi:10.1371/journal.pone.0176357
+          - value: PMID:28253264
         todos:
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts?
       cur_vegetation:
@@ -1049,6 +1051,8 @@ classes:
           - Required when current vegetation is provided.
         examples:
           - value: https://doi.org/10.1111/j.1654-109X.2011.01154.x
+          - value: doi:10.1111/j.1654-109X.2011.01154.x
+          - value: PMID:33829527
         todos:
           - I'm not sure this is a DOI, PMID, or URI. Should pool the community and find out how they accomplish this if provided.
       heavy_metals:
@@ -1084,8 +1088,9 @@ classes:
         comments:
           - Required if providing water content
         examples:
-          - value: J. Nat. Prod. Plant Resour., 2012, 2 (4):500-503
           - value: https://dec.alaska.gov/applications/spar/webcalc/definitions.htm
+          - value: doi:10.1016/j.geoderma.2019.113898
+          - value: PMID:25024123
         todos:
           - Why is it soil water content method in the name but not the title? Is this slot used in other samples?
           - Soil water content can be measure MANY ways and often, multiple ways are used in one experiment (gravimetric water content and water holding capacity and water filled pore space, to name a few).
@@ -1107,8 +1112,9 @@ classes:
           - how to manage multiple water content methods?
       ph_meth:
         examples:
-          - value: https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html?gclid=Cj0KCQiAwJWdBhCYARIsAJc4idCO5vtvbVMf545fcvdROFqa6zjzNSoywNx6K4k9Coo9cCc2pybtvGsaAiR0EALw_wcB
           - value: https://doi.org/10.2136/sssabookser5.3.c16
+          - value: doi:10.2136/sssabookser5.3.c16
+          - value: https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html
         comments:
           - This can include a link to the instrument used or a citation for the method.
       tot_carb:
@@ -1121,10 +1127,13 @@ classes:
       tot_nitro_cont_meth:
         examples:
           - value: https://doi.org/10.2134/agronmonogr9.2.c32
-          - value: https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/sssaj2009.0389?casa_token=bm0pYIUdNMgAAAAA%3AOWVRR0STHaOe-afTcTdxn5m1hM8n2ltM0wY-b1iYpYdD9dhwppk5j3LvC2IO5yhOIvyLVeQz4NZRCZo
+          - value: doi:10.2136/sssaj2009.0389
+          - value: PMID:19965651
       tot_org_c_meth:
         examples:
           - value: https://doi.org/10.1080/07352680902776556
+          - value: doi:10.1080/07352680902776556
+          - value: PMID:20941901
       tot_org_carb:
         todos:
           - check description. How are they different?
