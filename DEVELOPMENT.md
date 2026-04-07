@@ -23,7 +23,7 @@ pipx upgrade poetry
 
 ## Development environment
 
-This repository includes a container-based development environment. That environment consists of a custom container—running Linux—in which all the dependencies of this project are present (e.g. [OpenJDK](https://openjdk.org/), [Apache Jena](https://jena.apache.org/), [GNU make](https://www.gnu.org/software/make/manual/make.html), [yq](https://mikefarah.gitbook.io/yq/)).
+This repository includes a container-based development environment. That environment consists of a custom container—running Linux—in which all the dependencies of this project are present (e.g. [GNU make](https://www.gnu.org/software/make/manual/make.html), [yq](https://mikefarah.gitbook.io/yq/)).
 
 Here's a diagram showing how a developer can access various parts of the development environment from a terminal running in the host environment (i.e. the environment _hosting_ the container). 
 
@@ -95,7 +95,6 @@ Here's how you can instantiate the development environment on your computer.
    $ uname -a
    # ...
    $ yq --version
-   $ jena --version
    $ make --version
    $ python --version
    $ poetry --version
