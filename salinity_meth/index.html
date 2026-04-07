@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#comments" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -753,6 +764,22 @@
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>doi:10.1016/j.ecss.2011.11.024</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1016/j.ecss.2011.11.024">https://doi.org/10.1016/j.ecss.2011.11.024</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="comments">Comments</h2>
 <ul>
 <li>Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility.</li>
@@ -804,6 +831,9 @@ description: Reference or method used in determining salinity.
 title: salinity method
 comments:
 - Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility.
+examples:
+- value: doi:10.1016/j.ecss.2011.11.024
+- value: https://doi.org/10.1016/j.ecss.2011.11.024
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0000341
@@ -813,7 +843,7 @@ domain_of:
 range: string
 multivalued: false
 structured_pattern:
-  syntax: ^{PMID}|{DOI}|{URL}$
+  syntax: ^({PMID}|{DOI}|{URL})$
   interpolated: true
 
 </code></pre>

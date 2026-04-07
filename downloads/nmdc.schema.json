@@ -6675,7 +6675,7 @@
                 },
                 "doi_value": {
                     "description": "A digital object identifier, which is intended to persistantly identify some resource on the web.",
-                    "pattern": "^doi:10.\\d{2,9}/.*$",
+                    "pattern": "^doi:10\\.\\d{2,9}/.*$",
                     "type": "string"
                 },
                 "type": {
@@ -15359,5 +15359,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.17.1.post9.dev0+2f76c285e"
+    "version": "11.17.1.post16.dev0+c820e1d60"
 }
