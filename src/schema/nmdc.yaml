@@ -1116,7 +1116,6 @@ slots:
     range: string
     multivalued: false
     examples:
-      - value: PMID:22412351
       - value: doi:10.1016/j.ecss.2011.11.024
       - value: https://doi.org/10.1016/j.ecss.2011.11.024
     structured_pattern:
