@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.1.post11.dev0+186e2e971
+version: 11.17.1.post12.dev0+5ccee6d23
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -5607,7 +5607,6 @@ slots:
     - Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema
       compatibility.
     examples:
-    - value: PMID:22412351
     - value: doi:10.1016/j.ecss.2011.11.024
     - value: https://doi.org/10.1016/j.ecss.2011.11.024
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17687,7 +17686,6 @@ slots:
     examples:
     - value: https://doi.org/10.1016/0038-0717(87)90052-6
     - value: doi:10.1016/0038-0717(87)90052-6
-    - value: PMID:24478572
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000339
@@ -17704,7 +17702,6 @@ slots:
     examples:
     - value: https://doi.org/10.1016/0038-0717(87)90052-6
     - value: doi:10.1016/0038-0717(87)90052-6
-    - value: PMID:24478572
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000339
@@ -17767,7 +17764,6 @@ slots:
     examples:
     - value: https://doi.org/10.1038/s41467-021-26181-3
     - value: doi:10.1038/s41467-021-26181-3
-    - value: PMID:34611155
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000650
@@ -17783,7 +17779,6 @@ slots:
     examples:
     - value: https://doi.org/10.1016/0038-0717(85)90144-0
     - value: doi:10.1016/0038-0717(85)90144-0
-    - value: PMID:25024123
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000338
@@ -20412,7 +20407,7 @@ classes:
         examples:
         - value: https://doi.org/10.1371/journal.pone.0176357
         - value: doi:10.1371/journal.pone.0176357
-        - value: PMID:28253264
+        - value: PMID:28448589
       cur_vegetation:
         name: cur_vegetation
         description: Vegetation classification from one or more standard classification
@@ -20437,7 +20432,6 @@ classes:
         examples:
         - value: https://doi.org/10.1111/j.1654-109X.2011.01154.x
         - value: doi:10.1111/j.1654-109X.2011.01154.x
-        - value: PMID:33829527
       heavy_metals:
         name: heavy_metals
         description: Heavy metals present in the sample and their concentrations.
@@ -20486,9 +20480,9 @@ classes:
         comments:
         - Required if providing water content
         examples:
+        - value: J. Nat. Prod. Plant Resour., 2012, 2 (4):500-503
         - value: https://dec.alaska.gov/applications/spar/webcalc/definitions.htm
         - value: doi:10.1016/j.geoderma.2019.113898
-        - value: PMID:25024123
       water_content:
         name: water_content
         annotations:
@@ -20531,13 +20525,11 @@ classes:
         examples:
         - value: https://doi.org/10.2134/agronmonogr9.2.c32
         - value: doi:10.2136/sssaj2009.0389
-        - value: PMID:19965651
       tot_org_c_meth:
         name: tot_org_c_meth
         examples:
         - value: https://doi.org/10.1080/07352680902776556
         - value: doi:10.1080/07352680902776556
-        - value: PMID:20941901
       tot_org_carb:
         name: tot_org_carb
         todos:
