@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.1.post14.dev0+249e297b7
+version: 11.17.1.post15.dev0+e9bad8f3f
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -20465,7 +20465,8 @@ classes:
       link_addit_analys:
         name: link_addit_analys
         examples:
-        - value: https://pubmed.ncbi.nlm.nih.gov/2315679/
+        - value: https://doi.org/10.1111/j.1574-6941.2011.01140.x
+        - value: doi:10.1111/j.1574-6941.2011.01140.x
       link_climate_info:
         name: link_climate_info
         examples:
@@ -20477,8 +20478,8 @@ classes:
       prev_land_use_meth:
         name: prev_land_use_meth
         examples:
-        - value: https://doi.org/10.1016/j.agee.2006.05.012
-        - value: doi:10.1016/j.agee.2006.05.012
+        - value: https://doi.org/10.2737/SRS-GTR-155
+        - value: doi:10.2737/SRS-GTR-155
       season_precpt:
         name: season_precpt
         title: average seasonal precipitation
