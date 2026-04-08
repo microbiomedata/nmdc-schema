@@ -33,6 +33,8 @@ class Migrator(MigratorBase):
             action=self.validate_biosample_name,
         )
 
+        self.map_from_study_id_to_biosample_names = {}  # ensure it's initially empty
+
         self.adapter.do_for_each_document(
             collection_name="biosample_set",
             action=self.add_biosample_name_to_map_of_study_id_to_biosample_names,
@@ -103,10 +105,11 @@ class Migrator(MigratorBase):
         >>> m.fail_if_any_study_has_duplicate_biosample_names()
         Traceback (most recent call last):
         ...
-        ValueError: Study nmdc:sty-00-2 has duplicate biosample names: {'apple'}
+        ValueError: Study nmdc:sty-00-2 has duplicate biosample names: ['apple']
         """
 
         for study_id, biosample_names in self.map_from_study_id_to_biosample_names.items():
             duplicate_biosample_names = {s for s in biosample_names if biosample_names.count(s) > 1}
             if len(duplicate_biosample_names) > 0:
-                raise ValueError(f"Study {study_id} has duplicate biosample names: {duplicate_biosample_names}")
+                sorted_names: list = sorted(duplicate_biosample_names)  # sorting helps with testing
+                raise ValueError(f"Study {study_id} has duplicate biosample names: {sorted_names}")
