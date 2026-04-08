@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.1.post20.dev0+b398280c2
+version: 11.17.1.post52.dev0+a59d7095c
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -20253,6 +20253,18 @@ classes:
     - lbc_thirty
     - lbceq
     slot_usage:
+      name:
+        name: name
+        description: A local identifier or name for the material sample collected.
+          It can have any format, but we suggest that you make it concise, unique,
+          and consistent within your lab, and as informative as possible. For NMDC
+          this should be unique within a study. International Nucleotide Sequence
+          Database Collaboration (INSDC) requires every sample name from a single
+          submitter to be unique. Use of a globally unique identifier for the field
+          source_mat_id is recommended in addition to the name slot.
+        examples:
+        - value: BW-H-17-M
+        required: true
       provenance_metadata:
         name: provenance_metadata
         description: Provenance metadata for this Biosample, including when the record
@@ -20612,11 +20624,6 @@ classes:
         - value: igsn:AU1243
         - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
     class_uri: nmdc:Biosample
-    unique_keys:
-      samp_name_unique_key:
-        unique_key_name: samp_name_unique_key
-        unique_key_slots:
-        - samp_name
   MobilePhaseSegment:
     name: MobilePhaseSegment
     description: A fluid mixture of substances that flow though a chromatographic

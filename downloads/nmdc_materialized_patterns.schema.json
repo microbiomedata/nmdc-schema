@@ -2687,11 +2687,8 @@
                     ]
                 },
                 "name": {
-                    "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "A local identifier or name for the material sample collected. It can have any format, but we suggest that you make it concise, unique, and consistent within your lab, and as informative as possible. For NMDC this should be unique within a study. International Nucleotide Sequence Database Collaboration (INSDC) requires every sample name from a single submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to the name slot.",
+                    "type": "string"
                 },
                 "ncbi_taxonomy_name": {
                     "type": [
@@ -5183,6 +5180,7 @@
                 "env_local_scale",
                 "env_medium",
                 "id",
+                "name",
                 "type"
             ],
             "title": "Biosample",
@@ -15665,6 +15663,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.17.1.post20.dev0+b398280c2"
+    "version": "11.17.1.post52.dev0+a59d7095c"
 }
 

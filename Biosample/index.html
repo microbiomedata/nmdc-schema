@@ -4041,8 +4041,8 @@
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A human readable label for an entity</td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>A local identifier or name for the material sample collected</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
@@ -4684,6 +4684,18 @@ slots:
 - lbc_thirty
 - lbceq
 slot_usage:
+  name:
+    name: name
+    description: A local identifier or name for the material sample collected. It
+      can have any format, but we suggest that you make it concise, unique, and consistent
+      within your lab, and as informative as possible. For NMDC this should be unique
+      within a study. International Nucleotide Sequence Database Collaboration (INSDC)
+      requires every sample name from a single submitter to be unique. Use of a globally
+      unique identifier for the field source_mat_id is recommended in addition to
+      the name slot.
+    examples:
+    - value: BW-H-17-M
+    required: true
   provenance_metadata:
     name: provenance_metadata
     description: Provenance metadata for this Biosample, including when the record
@@ -5033,11 +5045,6 @@ slot_usage:
     - value: igsn:AU1243
     - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
 class_uri: nmdc:Biosample
-unique_keys:
-  samp_name_unique_key:
-    unique_key_name: samp_name_unique_key
-    unique_key_slots:
-    - samp_name
 
 </code></pre>
 
@@ -5065,6 +5072,18 @@ exact_mappings:
 - http://purl.obolibrary.org/obo/FBcv_0003024
 is_a: Sample
 slot_usage:
+  name:
+    name: name
+    description: A local identifier or name for the material sample collected. It
+      can have any format, but we suggest that you make it concise, unique, and consistent
+      within your lab, and as informative as possible. For NMDC this should be unique
+      within a study. International Nucleotide Sequence Database Collaboration (INSDC)
+      requires every sample name from a single submitter to be unique. Use of a globally
+      unique identifier for the field source_mat_id is recommended in addition to
+      the name slot.
+    examples:
+    - value: BW-H-17-M
+    required: true
   provenance_metadata:
     name: provenance_metadata
     description: Provenance metadata for this Biosample, including when the record
@@ -17766,7 +17785,15 @@ attributes:
       interpolated: true
   name:
     name: name
-    description: A human readable label for an entity
+    description: A local identifier or name for the material sample collected. It
+      can have any format, but we suggest that you make it concise, unique, and consistent
+      within your lab, and as informative as possible. For NMDC this should be unique
+      within a study. International Nucleotide Sequence Database Collaboration (INSDC)
+      requires every sample name from a single submitter to be unique. Use of a globally
+      unique identifier for the field source_mat_id is recommended in addition to
+      the name slot.
+    examples:
+    - value: BW-H-17-M
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: name
@@ -17776,6 +17803,7 @@ attributes:
     - NamedThing
     - Protocol
     range: string
+    required: true
   description:
     name: description
     description: a human-readable description of a thing
@@ -17849,11 +17877,6 @@ attributes:
     range: uriorcurie
     required: true
 class_uri: nmdc:Biosample
-unique_keys:
-  samp_name_unique_key:
-    unique_key_name: samp_name_unique_key
-    unique_key_slots:
-    - samp_name
 
 </code></pre>
 
