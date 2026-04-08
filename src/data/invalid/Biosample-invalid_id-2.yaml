@@ -1,5 +1,6 @@
 # invalid b/c of locus id
 id: nmdc:bsm-99-dtTMNb_scf_1000_c1_466_1380
+name: my_awesome_biosample
 type: nmdc:Biosample
 associated_studies:
   - nmdc:sty-00-abc123

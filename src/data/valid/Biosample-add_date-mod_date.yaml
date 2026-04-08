@@ -2,6 +2,7 @@
 # within provenance_metadata, where slot_usage constrains range to
 # linkml:datetime (mapped to xsd:dateTime).
 id: nmdc:bsm-99-dateTest
+name: my_awesome_biosample
 type: nmdc:Biosample
 associated_studies:
   - nmdc:sty-00-abc123
