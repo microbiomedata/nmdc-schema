@@ -19,7 +19,8 @@ class Migrator(MigratorBase):
     # "picky" about the last part of the `id` value (i.e. the suffix).
     #
     # Reference: The definition of the `id_version` "settings" item, and the
-    #            materialized pattern used for `MetagenomeAnnotation.id`.
+    #            materialized pattern used for the `id` slot of a class that
+    #            inherits from `WorkflowExecution` (e.g. `MetagenomeAnnotation`).
     #
     _target_workflow_execution_id_pattern = r"^.+\.[1-9]{1}[0-9]{0,}$"
 
