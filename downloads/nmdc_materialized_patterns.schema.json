@@ -6383,7 +6383,7 @@
                     ]
                 },
                 "was_generated_by": {
-                    "pattern": "^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                    "pattern": "^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
                         "string",
                         "null"
@@ -7952,7 +7952,7 @@
                 },
                 "was_generated_by": {
                     "description": "provenance for the annotation.",
-                    "pattern": "^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -7986,7 +7986,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "pattern": "^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 }
             },
@@ -9029,7 +9029,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -9122,7 +9122,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -9830,7 +9830,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "metabolomics_analysis_category": {
@@ -9903,7 +9903,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -10093,7 +10093,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -10407,7 +10407,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
@@ -10570,7 +10570,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -10727,7 +10727,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "mean_peptide_count": {
@@ -10818,7 +10818,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -11010,7 +11010,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -11077,7 +11077,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -11325,7 +11325,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
@@ -11488,7 +11488,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -11645,7 +11645,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -11712,7 +11712,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -12069,7 +12069,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "name": {
@@ -12138,7 +12138,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -13510,7 +13510,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "name": {
@@ -13565,7 +13565,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -13722,7 +13722,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": "string"
                 },
                 "input_base_count": {
@@ -13819,7 +13819,7 @@
                 },
                 "superseded_by": {
                     "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
-                    "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
                     "type": [
                         "string",
                         "null"
@@ -15663,6 +15663,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.17.1.post52.dev0+a59d7095c"
+    "version": "11.17.1.post66.dev0+8c1598158"
 }
 
