@@ -225,21 +225,21 @@ class Migrator(MigratorBase):
         ...     {'id': 'nmdc:wfe-00-1.10'},
         ... ]}
         >>> m = Migrator(adapter=DictionaryAdapter(database=database))
-        >>> m.validate_workflow_execution_id(database['workflow_execution_set'][0])  # invalid: no suffix
+        >>> m.validate_workflow_execution_id_suffix(database['workflow_execution_set'][0])  # invalid: no suffix
         Traceback (most recent call last):
         ...
-        ValueError: WorkflowExecution nmdc:wfe-00-1 has an invalid ID
-        >>> m.validate_workflow_execution_id(database['workflow_execution_set'][1])  # valid
-        >>> m.validate_workflow_execution_id(database['workflow_execution_set'][2])  # valid
-        >>> m.validate_workflow_execution_id(database['workflow_execution_set'][3])  # invalid: suffix has 0 as first digit
+        ValueError: WorkflowExecution nmdc:wfe-00-1 has an invalid ID suffix
+        >>> m.validate_workflow_execution_id_suffix(database['workflow_execution_set'][1])  # valid
+        >>> m.validate_workflow_execution_id_suffix(database['workflow_execution_set'][2])  # valid
+        >>> m.validate_workflow_execution_id_suffix(database['workflow_execution_set'][3])  # invalid: suffix has 0 as first digit
         Traceback (most recent call last):
         ...
-        ValueError: WorkflowExecution nmdc:wfe-00-1.0 has an invalid ID
-        >>> m.validate_workflow_execution_id(database['workflow_execution_set'][4])  # invalid: suffix has 0 as first digit
+        ValueError: WorkflowExecution nmdc:wfe-00-1.0 has an invalid ID suffix
+        >>> m.validate_workflow_execution_id_suffix(database['workflow_execution_set'][4])  # invalid: suffix has 0 as first digit
         Traceback (most recent call last):
         ...
-        ValueError: WorkflowExecution nmdc:wfe-00-1.01 has an invalid ID
-        >>> m.validate_workflow_execution_id(database['workflow_execution_set'][5])  # valid
+        ValueError: WorkflowExecution nmdc:wfe-00-1.01 has an invalid ID suffix
+        >>> m.validate_workflow_execution_id_suffix(database['workflow_execution_set'][5])  # valid
         """
         if not re.match(self._target_workflow_execution_id_pattern, workflow_execution["id"]):
-            raise ValueError(f"WorkflowExecution {workflow_execution['id']} has an invalid ID")
+            raise ValueError(f"WorkflowExecution {workflow_execution['id']} has an invalid ID suffix")
