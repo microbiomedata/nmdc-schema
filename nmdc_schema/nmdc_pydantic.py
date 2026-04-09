@@ -295,7 +295,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'xsd': {'prefix_prefix': 'xsd',
                           'prefix_reference': 'http://www.w3.org/2001/XMLSchema#'}},
      'settings': {'DOI': {'setting_key': 'DOI',
-                          'setting_value': 'doi:10.\\d{2,9}/.*'},
+                          'setting_value': 'doi:10\\.\\d{2,9}/.*'},
                   'NCBItaxon_id': {'setting_key': 'NCBItaxon_id',
                                    'setting_value': 'NCBITaxon:\\d+'},
                   'PMID': {'setting_key': 'PMID', 'setting_value': 'PMID:\\d+'},
@@ -334,7 +334,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'id_shoulder': {'setting_key': 'id_shoulder',
                                   'setting_value': '([0-9][a-z]{0,6}[0-9])'},
                   'id_version': {'setting_key': 'id_version',
-                                 'setting_value': '(\\.[0-9]{1,})'},
+                                 'setting_value': '(\\.[1-9]{1}[0-9]{0,})'},
                   'integer': {'setting_key': 'integer',
                               'setting_value': '[1-9][0-9]*'},
                   'lat': {'setting_key': 'lat',
@@ -3545,7 +3545,7 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
                         'gene_function_id': {'name': 'gene_function_id',
                                              'pattern': '(COG:COG\\d+|PFAM:PF\\d{5}|KEGG.ORTHOLOGY:K\\d+)'},
                         'was_generated_by': {'name': 'was_generated_by',
-                                             'pattern': '^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                             'pattern': '^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                              'range': 'AnnotatingWorkflow',
                                              'required': True,
                                              'structured_pattern': {'interpolated': True,
@@ -3590,7 +3590,7 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
 
     @field_validator('was_generated_by')
     def pattern_was_generated_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -3727,7 +3727,7 @@ class FunctionalAnnotation(ConfiguredBaseModel):
                                                        'of the NMDC schema we use the '
                                                        'PROV annotation model, rather '
                                                        'than GPAD'],
-                                             'pattern': '^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                             'pattern': '^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                              'range': 'MetagenomeAnnotation',
                                              'structured_pattern': {'interpolated': True,
                                                                     'syntax': '{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$'}}}})
@@ -3789,7 +3789,7 @@ class FunctionalAnnotation(ConfiguredBaseModel):
 
     @field_validator('was_generated_by')
     def pattern_was_generated_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -5611,7 +5611,7 @@ class Doi(ConfiguredBaseModel):
 
     @field_validator('doi_value')
     def pattern_doi_value(cls, v):
-        pattern=re.compile(r"^doi:10.\d{2,9}/.*$")
+        pattern=re.compile(r"^doi:10\.\d{2,9}/.*$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -6847,7 +6847,7 @@ class DataObject(InformationObject):
                                                       'syntax': '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'}},
                         'name': {'name': 'name', 'required': True},
                         'was_generated_by': {'name': 'was_generated_by',
-                                             'pattern': '^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                             'pattern': '^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                              'range': 'DataEmitterProcess',
                                              'structured_pattern': {'interpolated': True,
                                                                     'syntax': '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'}}}})
@@ -6949,7 +6949,7 @@ class DataObject(InformationObject):
 
     @field_validator('was_generated_by')
     def pattern_was_generated_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -8351,7 +8351,7 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
                                                               'structured_pattern': {'interpolated': True,
                                                                                      'syntax': '^gold:Ga[0-9]+$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                               'pattern': '^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -8578,7 +8578,7 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -8731,7 +8731,9 @@ class Biosample(Sample):
                                         'description': 'Reference or method used in '
                                                        'determining Aluminum '
                                                        'saturation',
-                                        'examples': [{'value': 'https://doi.org/10.1371/journal.pone.0176357'}],
+                                        'examples': [{'value': 'https://doi.org/10.1371/journal.pone.0176357'},
+                                                     {'value': 'doi:10.1371/journal.pone.0176357'},
+                                                     {'value': 'PMID:28448589'}],
                                         'name': 'al_sat_meth',
                                         'title': 'aluminum saturation method/ extreme '
                                                  'unusual properties',
@@ -8786,7 +8788,8 @@ class Biosample(Sample):
                                                      'ontology?']},
                         'cur_vegetation_meth': {'comments': ['Required when current '
                                                              'vegetation is provided.'],
-                                                'examples': [{'value': 'https://doi.org/10.1111/j.1654-109X.2011.01154.x'}],
+                                                'examples': [{'value': 'https://doi.org/10.1111/j.1654-109X.2011.01154.x'},
+                                                             {'value': 'doi:10.1111/j.1654-109X.2011.01154.x'}],
                                                 'name': 'cur_vegetation_meth',
                                                 'todos': ["I'm not sure this is a DOI, "
                                                           'PMID, or URI. Should pool '
@@ -8914,6 +8917,9 @@ class Biosample(Sample):
                                               'name': 'heavy_metals_meth',
                                               'title': 'heavy metals method/ extreme '
                                                        'unusual properties'},
+                        'horizon_meth': {'examples': [{'value': 'https://doi.org/10.1016/j.geoderma.2019.113898'},
+                                                      {'value': 'doi:10.1016/j.geoderma.2019.113898'}],
+                                         'name': 'horizon_meth'},
                         'id': {'description': 'An NMDC assigned unique identifier for '
                                               'a biosample submitted to NMDC.',
                                'name': 'id',
@@ -8925,12 +8931,44 @@ class Biosample(Sample):
                                     'notes': ['This is currently a required field but '
                                               "it's not clear if this should be "
                                               'required for human hosts']},
+                        'link_addit_analys': {'examples': [{'value': 'https://doi.org/10.1111/j.1574-6941.2011.01140.x'},
+                                                           {'value': 'doi:10.1111/j.1574-6941.2011.01140.x'}],
+                                              'name': 'link_addit_analys'},
+                        'link_climate_info': {'examples': [{'value': 'https://www.int-res.com/abstracts/cr/v14/n3/p161-173/'},
+                                                           {'value': 'doi:10.3354/cr014161'}],
+                                              'name': 'link_climate_info'},
+                        'local_class_meth': {'examples': [{'value': 'https://www.nrcs.usda.gov/resources/education-and-teaching-materials/the-twelve-orders-of-soil-taxonomy'}],
+                                             'name': 'local_class_meth'},
+                        'micro_biomass_meth': {'examples': [{'value': 'https://doi.org/10.1016/j.soilbio.2005.01.021'},
+                                                            {'value': 'doi:10.1016/j.soilbio.2005.01.021'}],
+                                               'name': 'micro_biomass_meth'},
+                        'name': {'description': 'A local identifier or name for the '
+                                                'material sample collected. It can '
+                                                'have any format, but we suggest that '
+                                                'you make it concise, unique, and '
+                                                'consistent within your lab, and as '
+                                                'informative as possible. For NMDC '
+                                                'this should be unique within a study. '
+                                                'International Nucleotide Sequence '
+                                                'Database Collaboration (INSDC) '
+                                                'requires every sample name from a '
+                                                'single submitter to be unique. Use of '
+                                                'a globally unique identifier for the '
+                                                'field source_mat_id is recommended in '
+                                                'addition to the name slot.',
+                                 'examples': [{'value': 'BW-H-17-M'}],
+                                 'name': 'name',
+                                 'required': True},
                         'ph_meth': {'comments': ['This can include a link to the '
                                                  'instrument used or a citation for '
                                                  'the method.'],
-                                    'examples': [{'value': 'https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html?gclid=Cj0KCQiAwJWdBhCYARIsAJc4idCO5vtvbVMf545fcvdROFqa6zjzNSoywNx6K4k9Coo9cCc2pybtvGsaAiR0EALw_wcB'},
-                                                 {'value': 'https://doi.org/10.2136/sssabookser5.3.c16'}],
+                                    'examples': [{'value': 'https://doi.org/10.2136/sssabookser5.3.c16'},
+                                                 {'value': 'doi:10.2136/sssabookser5.3.c16'},
+                                                 {'value': 'https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html'}],
                                     'name': 'ph_meth'},
+                        'prev_land_use_meth': {'examples': [{'value': 'https://doi.org/10.2737/SRS-GTR-155'},
+                                                            {'value': 'doi:10.2737/SRS-GTR-155'}],
+                                               'name': 'prev_land_use_meth'},
                         'provenance_metadata': {'description': 'Provenance metadata '
                                                                'for this Biosample, '
                                                                'including when the '
@@ -9028,21 +9066,18 @@ class Biosample(Sample):
                                                "couldn't find any references that "
                                                'provided this data in this format']},
                         'tot_nitro_cont_meth': {'examples': [{'value': 'https://doi.org/10.2134/agronmonogr9.2.c32'},
-                                                             {'value': 'https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/sssaj2009.0389?casa_token=bm0pYIUdNMgAAAAA%3AOWVRR0STHaOe-afTcTdxn5m1hM8n2ltM0wY-b1iYpYdD9dhwppk5j3LvC2IO5yhOIvyLVeQz4NZRCZo'}],
+                                                             {'value': 'doi:10.2136/sssaj2009.0389'}],
                                                 'name': 'tot_nitro_cont_meth'},
-                        'tot_org_c_meth': {'examples': [{'value': 'https://doi.org/10.1080/07352680902776556'}],
+                        'tot_org_c_meth': {'examples': [{'value': 'https://doi.org/10.1080/07352680902776556'},
+                                                        {'value': 'doi:10.1080/07352680902776556'}],
                                            'name': 'tot_org_c_meth'},
                         'tot_org_carb': {'name': 'tot_org_carb',
                                          'todos': ['check description. How are they '
                                                    'different?']},
                         'water_cont_soil_meth': {'comments': ['Required if providing '
                                                               'water content'],
-                                                 'examples': [{'value': 'J. Nat. Prod. '
-                                                                        'Plant '
-                                                                        'Resour., '
-                                                                        '2012, 2 '
-                                                                        '(4):500-503'},
-                                                              {'value': 'https://dec.alaska.gov/applications/spar/webcalc/definitions.htm'}],
+                                                 'examples': [{'value': 'https://dec.alaska.gov/applications/spar/webcalc/definitions.htm'},
+                                                              {'value': 'doi:10.1016/j.geoderma.2019.113898'}],
                                                  'name': 'water_cont_soil_meth',
                                                  'todos': ['Why is it soil water '
                                                            'content method in the name '
@@ -9093,9 +9128,7 @@ class Biosample(Sample):
                                                                  'liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'},
                                                        {'value': '75% water holding '
                                                                  'capacity; constant'}],
-                                          'name': 'watering_regm'}},
-         'unique_keys': {'samp_name_unique_key': {'unique_key_name': 'samp_name_unique_key',
-                                                  'unique_key_slots': ['samp_name']}}})
+                                          'name': 'watering_regm'}}})
 
     associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample'],
          'structured_pattern': {'interpolated': True,
@@ -9269,7 +9302,9 @@ class Biosample(Sample):
                    "property. It's just a biogeochemical measurement."]} })
     al_sat_meth: Optional[str] = Field(default=None, title="aluminum saturation method/ extreme unusual properties", description="""Reference or method used in determining Aluminum saturation""", json_schema_extra = { "linkml_meta": {'comments': ['Required when aluminum saturation is provided.'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'https://doi.org/10.1371/journal.pone.0176357'}],
+         'examples': [{'value': 'https://doi.org/10.1371/journal.pone.0176357'},
+                      {'value': 'doi:10.1371/journal.pone.0176357'},
+                      {'value': 'PMID:28448589'}],
          'keywords': ['extreme', 'method', 'properties', 'saturation', 'unusual'],
          'slot_uri': 'MIXS:0000324',
          'structured_pattern': {'interpolated': True,
@@ -9878,7 +9913,8 @@ class Biosample(Sample):
          'todos': ['Recommend changing this from text value to some king of ontology?']} })
     cur_vegetation_meth: Optional[str] = Field(default=None, title="current vegetation method", description="""Reference or method used in vegetation classification""", json_schema_extra = { "linkml_meta": {'comments': ['Required when current vegetation is provided.'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'https://doi.org/10.1111/j.1654-109X.2011.01154.x'}],
+         'examples': [{'value': 'https://doi.org/10.1111/j.1654-109X.2011.01154.x'},
+                      {'value': 'doi:10.1111/j.1654-109X.2011.01154.x'}],
          'keywords': ['method', 'vegetation'],
          'slot_uri': 'MIXS:0000314',
          'structured_pattern': {'interpolated': True,
@@ -10628,6 +10664,8 @@ class Biosample(Sample):
          'keywords': ['regimen'],
          'slot_uri': 'MIXS:0000561'} })
     horizon_meth: Optional[str] = Field(default=None, title="horizon method", description="""Reference or method used in determining the horizon""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
+         'examples': [{'value': 'https://doi.org/10.1016/j.geoderma.2019.113898'},
+                      {'value': 'doi:10.1016/j.geoderma.2019.113898'}],
          'keywords': ['horizon', 'method'],
          'slot_uri': 'MIXS:0000321',
          'structured_pattern': {'interpolated': True,
@@ -10933,6 +10971,8 @@ class Biosample(Sample):
          'keywords': ['light', 'type'],
          'slot_uri': 'MIXS:0000769'} })
     link_addit_analys: Optional[TextValue] = Field(default=None, title="links to additional analysis", description="""Link to additional analysis results performed on the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
+         'examples': [{'value': 'https://doi.org/10.1111/j.1574-6941.2011.01140.x'},
+                      {'value': 'doi:10.1111/j.1574-6941.2011.01140.x'}],
          'keywords': ['link'],
          'slot_uri': 'MIXS:0000340',
          'structured_pattern': {'interpolated': True,
@@ -10945,6 +10985,8 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000329',
          'string_serialization': '{termLabel} [{termID}]'} })
     link_climate_info: Optional[TextValue] = Field(default=None, title="link to climate information", description="""Link to climate resource""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
+         'examples': [{'value': 'https://www.int-res.com/abstracts/cr/v14/n3/p161-173/'},
+                      {'value': 'doi:10.3354/cr014161'}],
          'keywords': ['information', 'link'],
          'slot_uri': 'MIXS:0000328',
          'structured_pattern': {'interpolated': True,
@@ -10961,6 +11003,7 @@ class Biosample(Sample):
          'keywords': ['classification'],
          'slot_uri': 'MIXS:0000330'} })
     local_class_meth: Optional[str] = Field(default=None, title="soil_taxonomic/local classification method", description="""Reference or method used in determining the local soil classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
+         'examples': [{'value': 'https://www.nrcs.usda.gov/resources/education-and-teaching-materials/the-twelve-orders-of-soil-taxonomy'}],
          'keywords': ['classification', 'method'],
          'slot_uri': 'MIXS:0000331',
          'structured_pattern': {'interpolated': True,
@@ -11031,7 +11074,8 @@ class Biosample(Sample):
                                           '*{scientific_float})? *{text}$'}} })
     micro_biomass_meth: Optional[str] = Field(default=None, title="microbial biomass method", description="""Reference or method used in determining microbial biomass""", json_schema_extra = { "linkml_meta": {'comments': ['slot name/scn was microbial_biomass_meth'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'http://dx.doi.org/10.1016/j.soilbio.2005.01.021'}],
+         'examples': [{'value': 'https://doi.org/10.1016/j.soilbio.2005.01.021'},
+                      {'value': 'doi:10.1016/j.soilbio.2005.01.021'}],
          'keywords': ['biomass', 'method', 'microbial'],
          'slot_uri': 'MIXS:0000339'} })
     microbial_biomass: Optional[QuantityValue] = Field(default=None, title="microbial biomass", description="""The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
@@ -11321,8 +11365,9 @@ class Biosample(Sample):
     ph_meth: Optional[TextValue] = Field(default=None, title="pH method", description="""Reference or method used in determining pH""", json_schema_extra = { "linkml_meta": {'comments': ['This can include a link to the instrument used or a citation '
                       'for the method.'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html?gclid=Cj0KCQiAwJWdBhCYARIsAJc4idCO5vtvbVMf545fcvdROFqa6zjzNSoywNx6K4k9Coo9cCc2pybtvGsaAiR0EALw_wcB'},
-                      {'value': 'https://doi.org/10.2136/sssabookser5.3.c16'}],
+         'examples': [{'value': 'https://doi.org/10.2136/sssabookser5.3.c16'},
+                      {'value': 'doi:10.2136/sssabookser5.3.c16'},
+                      {'value': 'https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html'}],
          'keywords': ['method', 'ph'],
          'slot_uri': 'MIXS:0001106'} })
     ph_regm: Optional[list[TextValue]] = Field(default=None, title="pH regimen", description="""Information about treatment involving exposure of plants to varying levels of ph of the growth media, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimen""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
@@ -11456,6 +11501,8 @@ class Biosample(Sample):
                                 'syntax': '^{scientific_float}( *- '
                                           '*{scientific_float})? *{text}$'}} })
     prev_land_use_meth: Optional[str] = Field(default=None, title="history/previous land use method", description="""Reference or method used in determining previous land use and dates""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
+         'examples': [{'value': 'https://doi.org/10.2737/SRS-GTR-155'},
+                      {'value': 'doi:10.2737/SRS-GTR-155'}],
          'keywords': ['history', 'land', 'method', 'use'],
          'slot_uri': 'MIXS:0000316',
          'structured_pattern': {'interpolated': True,
@@ -11771,8 +11818,11 @@ class Biosample(Sample):
          'comments': ['Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for '
                       'submission-schema compatibility.'],
          'domain_of': ['Biosample'],
+         'examples': [{'value': 'doi:10.1016/j.ecss.2011.11.024'},
+                      {'value': 'https://doi.org/10.1016/j.ecss.2011.11.024'}],
          'slot_uri': 'MIXS:0000341',
-         'structured_pattern': {'interpolated': True, 'syntax': '^{PMID}|{DOI}|{URL}$'}} })
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '^({PMID}|{DOI}|{URL})$'}} })
     salt_regm: Optional[list[TextValue]] = Field(default=None, title="salt regimen", description="""Information about treatment involving use of salts as supplement to liquid and soil growth media; should include the name of salt, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple salt regimens""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'gram, microgram, mole per liter, '
                                                      'gram per liter'}},
@@ -12512,7 +12562,7 @@ class Biosample(Sample):
                                           '*{scientific_float})? *{text}$'}} })
     tot_nitro_cont_meth: Optional[str] = Field(default=None, title="total nitrogen content method", description="""Reference or method used in determining the total nitrogen""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'https://doi.org/10.2134/agronmonogr9.2.c32'},
-                      {'value': 'https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/sssaj2009.0389?casa_token=bm0pYIUdNMgAAAAA%3AOWVRR0STHaOe-afTcTdxn5m1hM8n2ltM0wY-b1iYpYdD9dhwppk5j3LvC2IO5yhOIvyLVeQz4NZRCZo'}],
+                      {'value': 'doi:10.2136/sssaj2009.0389'}],
          'keywords': ['content', 'method', 'nitrogen', 'total'],
          'slot_uri': 'MIXS:0000338',
          'structured_pattern': {'interpolated': True,
@@ -12529,7 +12579,8 @@ class Biosample(Sample):
                                 'syntax': '^{scientific_float}( *- '
                                           '*{scientific_float})? *{text}$'}} })
     tot_org_c_meth: Optional[str] = Field(default=None, title="total organic carbon method", description="""Reference or method used in determining total organic carbon""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
-         'examples': [{'value': 'https://doi.org/10.1080/07352680902776556'}],
+         'examples': [{'value': 'https://doi.org/10.1080/07352680902776556'},
+                      {'value': 'doi:10.1080/07352680902776556'}],
          'keywords': ['carbon', 'method', 'organic', 'total'],
          'slot_uri': 'MIXS:0000337',
          'structured_pattern': {'interpolated': True,
@@ -12772,8 +12823,8 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000353'} })
     water_cont_soil_meth: Optional[str] = Field(default=None, title="water content method", description="""Reference or method used in determining the water content of soil""", json_schema_extra = { "linkml_meta": {'comments': ['Required if providing water content'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'J. Nat. Prod. Plant Resour., 2012, 2 (4):500-503'},
-                      {'value': 'https://dec.alaska.gov/applications/spar/webcalc/definitions.htm'}],
+         'examples': [{'value': 'https://dec.alaska.gov/applications/spar/webcalc/definitions.htm'},
+                      {'value': 'doi:10.1016/j.geoderma.2019.113898'}],
          'keywords': ['content', 'method', 'water'],
          'slot_uri': 'MIXS:0000323',
          'todos': ['Why is it soil water content method in the name but not the title? '
@@ -13078,8 +13129,7 @@ class Biosample(Sample):
     micro_biomass_c_meth: Optional[str] = Field(default=None, title="microbial biomass carbon method", description="""Reference or method used in determining microbial biomass carbon""", json_schema_extra = { "linkml_meta": {'comments': ['required if "microbial_biomass_c" is provided'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'https://doi.org/10.1016/0038-0717(87)90052-6'},
-                      {'value': 'https://doi.org/10.1016/0038-0717(87)90052-6 | '
-                                'https://www.sciencedirect.com/science/article/abs/pii/0038071787900526'}],
+                      {'value': 'doi:10.1016/0038-0717(87)90052-6'}],
          'rank': 11,
          'recommended': True,
          'see_also': ['MIXS:0000339'],
@@ -13089,8 +13139,7 @@ class Biosample(Sample):
     micro_biomass_n_meth: Optional[str] = Field(default=None, title="microbial biomass nitrogen method", description="""Reference or method used in determining microbial biomass nitrogen""", json_schema_extra = { "linkml_meta": {'comments': ['required if "microbial_biomass_n" is provided'],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'https://doi.org/10.1016/0038-0717(87)90052-6'},
-                      {'value': 'https://doi.org/10.1016/0038-0717(87)90052-6 | '
-                                'https://www.sciencedirect.com/science/article/abs/pii/0038071787900526'}],
+                      {'value': 'doi:10.1016/0038-0717(87)90052-6'}],
          'rank': 13,
          'see_also': ['MIXS:0000339'],
          'slot_group': 'MIxS Inspired',
@@ -13119,14 +13168,16 @@ class Biosample(Sample):
          'string_serialization': '{text};{float} {unit}'} })
     non_microb_biomass_method: Optional[str] = Field(default=None, title="non-microbial biomass method", description="""Reference or method used in determining biomass""", json_schema_extra = { "linkml_meta": {'comments': ['required if "non-microbial biomass" is provided'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'https://doi.org/10.1038/s41467-021-26181-3'}],
+         'examples': [{'value': 'https://doi.org/10.1038/s41467-021-26181-3'},
+                      {'value': 'doi:10.1038/s41467-021-26181-3'}],
          'rank': 9,
          'see_also': ['MIXS:0000650'],
          'slot_group': 'MIxS Inspired',
          'string_serialization': '{PMID}|{DOI}|{URL}'} })
     org_nitro_method: Optional[str] = Field(default=None, title="organic nitrogen method", description="""Method used for obtaining organic nitrogen""", json_schema_extra = { "linkml_meta": {'comments': ['required if "org_nitro" is provided'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'https://doi.org/10.1016/0038-0717(85)90144-0'}],
+         'examples': [{'value': 'https://doi.org/10.1016/0038-0717(85)90144-0'},
+                      {'value': 'doi:10.1016/0038-0717(85)90144-0'}],
          'rank': 14,
          'see_also': ['MIXS:0000338', 'MIXS:0000205'],
          'slot_group': 'MIxS Inspired',
@@ -13313,7 +13364,8 @@ class Biosample(Sample):
                                  'predicate': 'NARROW_SYNONYM'}],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'}} })
-    name: Optional[str] = Field(default=None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
+    name: str = Field(default=..., description="""A local identifier or name for the material sample collected. It can have any format, but we suggest that you make it concise, unique, and consistent within your lab, and as informative as possible. For NMDC this should be unique within a study. International Nucleotide Sequence Database Collaboration (INSDC) requires every sample name from a single submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to the name slot.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PersonValue', 'NamedThing', 'Protocol'],
+         'examples': [{'value': 'BW-H-17-M'}]} })
     description: Optional[str] = Field(default=None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImageValue', 'NamedThing', 'Protocol'],
          'slot_uri': 'dcterms:description'} })
     alternative_identifiers: Optional[list[str]] = Field(default=None, description="""Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing', 'MetaboliteIdentification']} })
@@ -13555,7 +13607,7 @@ class Biosample(Sample):
 
     @field_validator('al_sat_meth')
     def pattern_al_sat_meth(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -13997,7 +14049,7 @@ class Biosample(Sample):
 
     @field_validator('cult_root_med')
     def pattern_cult_root_med(cls, v):
-        pattern=re.compile(r"^(.*|PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(.*|PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14010,7 +14062,7 @@ class Biosample(Sample):
 
     @field_validator('cur_vegetation_meth')
     def pattern_cur_vegetation_meth(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14413,7 +14465,7 @@ class Biosample(Sample):
 
     @field_validator('genetic_mod')
     def pattern_genetic_mod(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14491,7 +14543,7 @@ class Biosample(Sample):
 
     @field_validator('heavy_metals_meth')
     def pattern_heavy_metals_meth(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14517,7 +14569,7 @@ class Biosample(Sample):
 
     @field_validator('horizon_meth')
     def pattern_horizon_meth(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14569,7 +14621,7 @@ class Biosample(Sample):
 
     @field_validator('host_growth_cond')
     def pattern_host_growth_cond(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14712,7 +14764,7 @@ class Biosample(Sample):
 
     @field_validator('link_addit_analys')
     def pattern_link_addit_analys(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14725,7 +14777,7 @@ class Biosample(Sample):
 
     @field_validator('link_climate_info')
     def pattern_link_climate_info(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -14738,7 +14790,7 @@ class Biosample(Sample):
 
     @field_validator('local_class_meth')
     def pattern_local_class_meth(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -15102,7 +15154,7 @@ class Biosample(Sample):
 
     @field_validator('prev_land_use_meth')
     def pattern_prev_land_use_meth(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -15297,7 +15349,7 @@ class Biosample(Sample):
 
     @field_validator('root_cond')
     def pattern_root_cond(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -15323,7 +15375,7 @@ class Biosample(Sample):
 
     @field_validator('salinity_meth')
     def pattern_salinity_meth(cls, v):
-        pattern=re.compile(r"^PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -15739,7 +15791,7 @@ class Biosample(Sample):
 
     @field_validator('tiss_cult_growth_med')
     def pattern_tiss_cult_growth_med(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)|.*)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -15843,7 +15895,7 @@ class Biosample(Sample):
 
     @field_validator('tot_nitro_cont_meth')
     def pattern_tot_nitro_cont_meth(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -15869,7 +15921,7 @@ class Biosample(Sample):
 
     @field_validator('tot_org_c_meth')
     def pattern_tot_org_c_meth(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -16935,7 +16987,7 @@ class LibraryPreparation(MaterialProcessing):
 
     @field_validator('nucl_acid_amp')
     def pattern_nucl_acid_amp(cls, v):
-        pattern=re.compile(r"^(PMID:\d+|doi:10.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
+        pattern=re.compile(r"^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -18846,12 +18898,12 @@ class MetagenomeAssembly(WorkflowExecution):
                       'most or all cases relevant to NMDC'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                               'pattern': '^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'}},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'pattern': '^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                           'range': 'MetagenomeAssembly',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -19081,7 +19133,7 @@ class MetagenomeAssembly(WorkflowExecution):
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -19120,7 +19172,7 @@ class MetagenomeAssembly(WorkflowExecution):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -19149,12 +19201,12 @@ class MetatranscriptomeAssembly(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetatranscriptomeAssembly',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                               'pattern': '^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'}},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'pattern': '^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                           'range': 'MetatranscriptomeAssembly',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -19384,7 +19436,7 @@ class MetatranscriptomeAssembly(WorkflowExecution):
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -19423,7 +19475,7 @@ class MetatranscriptomeAssembly(WorkflowExecution):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -19464,14 +19516,14 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                               'pattern': '^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'}},
                         'img_identifiers': {'maximum_cardinality': 1,
                                             'name': 'img_identifiers'},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'pattern': '^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                           'range': 'MetatranscriptomeAnnotation',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -19672,7 +19724,7 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -19711,7 +19763,7 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -19743,14 +19795,14 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetatranscriptomeExpressionAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                               'pattern': '^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'}},
                         'img_identifiers': {'maximum_cardinality': 1,
                                             'name': 'img_identifiers'},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'pattern': '^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                           'range': 'MetatranscriptomeExpressionAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -19933,7 +19985,7 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -19972,7 +20024,7 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -20004,14 +20056,14 @@ class MagsAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MagsAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                               'pattern': '^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'}},
                         'img_identifiers': {'maximum_cardinality': 1,
                                             'name': 'img_identifiers'},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'pattern': '^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                           'range': 'MagsAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -20201,7 +20253,7 @@ class MagsAnalysis(WorkflowExecution):
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -20240,7 +20292,7 @@ class MagsAnalysis(WorkflowExecution):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -20272,12 +20324,12 @@ class ReadQcAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ReadQcAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                               'pattern': '^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'}},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'pattern': '^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                           'range': 'ReadQcAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -20444,7 +20496,7 @@ class ReadQcAnalysis(WorkflowExecution):
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -20483,7 +20535,7 @@ class ReadQcAnalysis(WorkflowExecution):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -20515,12 +20567,12 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ReadBasedTaxonomyAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                               'pattern': '^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'}},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'pattern': '^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                           'range': 'ReadBasedTaxonomyAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -20681,7 +20733,7 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -20720,7 +20772,7 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -20749,7 +20801,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetabolomicsAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                               'pattern': '^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -20771,7 +20823,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
                                                       'analysis.',
                                        'name': 'peak_count'},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'pattern': '^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                           'range': 'MetabolomicsAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -20957,7 +21009,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -20996,7 +21048,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -21025,12 +21077,12 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetaproteomicsAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                               'pattern': '^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'}},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'pattern': '^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                           'range': 'MetaproteomicsAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -21199,7 +21251,7 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -21238,7 +21290,7 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -21267,7 +21319,7 @@ class NomAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:NomAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
-                               'pattern': '^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                               'pattern': '^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                'required': True,
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -21277,7 +21329,7 @@ class NomAnalysis(WorkflowExecution):
                                                                  'in the analysis.',
                                                   'name': 'peak_assignment_count'},
                         'superseded_by': {'name': 'superseded_by',
-                                          'pattern': '^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                          'pattern': '^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                           'range': 'NomAnalysis',
                                           'structured_pattern': {'interpolated': True,
                                                                  'syntax': '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'}},
@@ -21460,7 +21512,7 @@ class NomAnalysis(WorkflowExecution):
 
     @field_validator('superseded_by')
     def pattern_superseded_by(cls, v):
-        pattern=re.compile(r"^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -21499,7 +21551,7 @@ class NomAnalysis(WorkflowExecution):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
