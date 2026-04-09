@@ -87,20 +87,22 @@ class Migrator(MigratorBase):
     def validate_biosample_fields_containing_dois(self, biosample: dict) -> None:
         r"""
         Validates the format of each DOI in the specified biosample's fields that contain DOIs.
+        Distinguishes a DOI from a PMID and a URL by its prefix (out of those three kinds of
+        strings, only a DOI can begin with `doi:`—in fact, it _must_ begin with that prefix).
 
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> database = {'biosample_set': [
         ...     {'id': 'nmdc:bsm-00-1', 'salinity_meth': 'doi:10.1234/abc'},
         ...     {'id': 'nmdc:bsm-00-2', 'salinity_meth': 'doi:10_1234/abc'},
-        ...     {'id': 'nmdc:bsm-00-3'}
+        ...     {'id': 'nmdc:bsm-00-3', 'salinity_meth': 'foobarbaz'},
         ... ]}
         >>> m = Migrator(adapter=DictionaryAdapter(database=database))
         >>> m.validate_biosample_fields_containing_dois(database['biosample_set'][0])  # valid
-        >>> m.validate_biosample_fields_containing_dois(database['biosample_set'][1])  # invalid: salinity_meth has invalid format
+        >>> m.validate_biosample_fields_containing_dois(database['biosample_set'][1])  # invalid: DOI has invalid format
         Traceback (most recent call last):
         ...
         ValueError: Biosample nmdc:bsm-00-2 has a salinity_meth DOI having an invalid format: doi:10_1234/abc
-        >>> m.validate_biosample_fields_containing_dois(database['biosample_set'][2])  # valid: no fields containing DOI
+        >>> m.validate_biosample_fields_containing_dois(database['biosample_set'][2])  # ignored by this function
         """
 
         names_of_fields_that_can_contain_doi = [
@@ -113,9 +115,12 @@ class Migrator(MigratorBase):
 
         for field_name in names_of_fields_that_can_contain_doi:
             if field_name in biosample:
-                doi = biosample[field_name]
-                if not isinstance(doi, str) or not re.match(self._target_doi_pattern, doi):
-                    raise ValueError(f"Biosample {biosample['id']} has a {field_name} DOI having an invalid format: {doi}")
+                potential_doi: str = biosample[field_name]
+                # Check whether the string begins with "doi:" — otherwise, we'll ignore it
+                if potential_doi.startswith("doi:"):
+                    doi = potential_doi
+                    if not re.match(self._target_doi_pattern, doi):
+                        raise ValueError(f"Biosample {biosample['id']} has a {field_name} DOI having an invalid format: {doi}")
 
     def validate_biosample_name(self, biosample: dict) -> None:
         r"""
