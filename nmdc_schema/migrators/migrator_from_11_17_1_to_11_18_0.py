@@ -28,21 +28,13 @@ class Migrator(MigratorBase):
               as a performance improvement.
         """
 
-        # Confirm all DOIs in all studies' `associated_dois` fields conform to the new schema,
-        # which requires that the "10" be followed by a "." character (not just _any_ character).
+        # Validate the format of DOIs in studies.
         self.adapter.do_for_each_document(
             collection_name="study_set",
-            action=self.validate_associated_dois,
+            action=self.validate_study_fields_containing_dois,
         )
 
-        # Confirm all DOIs in the following fields (all of which are optional, single-values, string
-        # fields) of all biosamples confirm to the new schema:
-        # - salinity_meth
-        # - micro_biomass_c_meth
-        # - micro_biomass_n_meth
-        # - non_microb_biomass_method
-        # - org_nitro_method
-        #
+        # Validate the format of DOIs in biosamples.
         self.adapter.do_for_each_document(
             collection_name="biosample_set",
             action=self.validate_biosample_fields_containing_dois,
@@ -64,29 +56,33 @@ class Migrator(MigratorBase):
         # Confirm no study has multiple associated biosamples having the same name.
         self.fail_if_any_study_has_duplicate_biosample_names()
 
-    def validate_associated_dois(self, study: dict) -> None:
+    def validate_study_fields_containing_dois(self, study: dict) -> None:
         r"""
-        Validates the format of each DOI in the specified study's `associated_dois` field.
+        Validates the format of the `doi_value` value of each `Doi` instance, if any, in
+        the specified study's `associated_dois` field.
+
+        Reference: https://microbiomedata.github.io/nmdc-schema/doi_value/
 
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> database = {'study_set': [
-        ...     {'id': 'nmdc:sty-00-1', 'associated_dois': ['doi:10.1234/abc', 'doi:10.5678/def']},
-        ...     {'id': 'nmdc:sty-00-2', 'associated_dois': ['doi:10.1234/abc', 'doi:10_5678/def']},
+        ...     {'id': 'nmdc:sty-00-1', 'associated_dois': [{'doi_value': 'doi:10.1234/abc'}]},
+        ...     {'id': 'nmdc:sty-00-2', 'associated_dois': [{'doi_value': 'doi:10_1234/abc'}]},
         ...     {'id': 'nmdc:sty-00-3'}
         ... ]}
         >>> m = Migrator(adapter=DictionaryAdapter(database=database))
-        >>> m.validate_associated_dois(database['study_set'][0])  # valid
-        >>> m.validate_associated_dois(database['study_set'][1])  # invalid: second DOI has invalid format
+        >>> m.validate_study_fields_containing_dois(database['study_set'][0])  # valid
+        >>> m.validate_study_fields_containing_dois(database['study_set'][1])  # invalid: doi_value has invalid format
         Traceback (most recent call last):
         ...
-        ValueError: Study nmdc:sty-00-2 has an associated DOI having an invalid format: doi:10_5678/def
-        >>> m.validate_associated_dois(database['study_set'][2])  # valid: no associated DOIs
+        ValueError: Study nmdc:sty-00-2 has an associated DOI whose value has an invalid format: doi:10_1234/abc
+        >>> m.validate_study_fields_containing_dois(database['study_set'][2])  # valid: no associated_dois field
         """
 
         if "associated_dois" in study:
-            for doi in study["associated_dois"]:
+            for doi_instance in study["associated_dois"]:
+                doi = doi_instance["doi_value"]
                 if not isinstance(doi, str) or not re.match(self._target_doi_pattern, doi):
-                    raise ValueError(f"Study {study['id']} has an associated DOI having an invalid format: {doi}")
+                    raise ValueError(f"Study {study['id']} has an associated DOI whose value has an invalid format: {doi}")
 
     def validate_biosample_fields_containing_dois(self, biosample: dict) -> None:
         r"""
