@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.1.post60.dev0+445073c64
+version: 11.17.1.post66.dev0+2869b9173
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -18176,7 +18176,7 @@ classes:
         name: was_generated_by
         range: AnnotatingWorkflow
         required: true
-        pattern: ^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -18721,7 +18721,7 @@ classes:
         - To be consistent with the rest of the NMDC schema we use the PROV annotation
           model, rather than GPAD
         range: MetagenomeAnnotation
-        pattern: ^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -19369,7 +19369,7 @@ classes:
       was_generated_by:
         name: was_generated_by
         range: DataEmitterProcess
-        pattern: ^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        pattern: ^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'
           interpolated: true
@@ -19621,7 +19621,7 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -20811,7 +20811,7 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -20825,7 +20825,7 @@ classes:
       superseded_by:
         name: superseded_by
         range: MetagenomeAssembly
-        pattern: ^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -20867,7 +20867,7 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -20881,7 +20881,7 @@ classes:
       superseded_by:
         name: superseded_by
         range: MetatranscriptomeAssembly
-        pattern: ^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -20897,7 +20897,7 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -20932,7 +20932,7 @@ classes:
       superseded_by:
         name: superseded_by
         range: MetatranscriptomeAnnotation
-        pattern: ^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -20949,7 +20949,7 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -20966,7 +20966,7 @@ classes:
       superseded_by:
         name: superseded_by
         range: MetatranscriptomeExpressionAnalysis
-        pattern: ^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -20990,7 +20990,7 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -21007,7 +21007,7 @@ classes:
       superseded_by:
         name: superseded_by
         range: MagsAnalysis
-        pattern: ^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -21032,7 +21032,7 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -21046,7 +21046,7 @@ classes:
       superseded_by:
         name: superseded_by
         range: ReadQcAnalysis
-        pattern: ^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -21062,7 +21062,7 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -21076,7 +21076,7 @@ classes:
       superseded_by:
         name: superseded_by
         range: ReadBasedTaxonomyAnalysis
-        pattern: ^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -21096,7 +21096,7 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -21110,7 +21110,7 @@ classes:
       superseded_by:
         name: superseded_by
         range: MetabolomicsAnalysis
-        pattern: ^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -21140,7 +21140,7 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -21154,7 +21154,7 @@ classes:
       superseded_by:
         name: superseded_by
         range: MetaproteomicsAnalysis
-        pattern: ^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -21171,7 +21171,7 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -21185,7 +21185,7 @@ classes:
       superseded_by:
         name: superseded_by
         range: NomAnalysis
-        pattern: ^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[1-9]{1}[0-9]{0,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
@@ -21208,7 +21208,7 @@ settings:
     setting_value: ([A-Za-z0-9]{1,})
   id_version:
     setting_key: id_version
-    setting_value: (\.[0-9]{1,})
+    setting_value: (\.[1-9]{1}[0-9]{0,})
   id_locus:
     setting_key: id_locus
     setting_value: (_[A-Za-z0-9_\.-]+)?$
