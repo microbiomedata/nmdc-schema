@@ -138,7 +138,7 @@ settings:
   id_nmdc_prefix: "^(nmdc)"
   id_shoulder: "([0-9][a-z]{0,6}[0-9])"
   id_blade: "([A-Za-z0-9]{1,})"
-  id_version: "(\\.[0-9]{1,})"
+  id_version: "(\\.[1-9]{1}[0-9]{0,})"  # first digit must be > 0;  e.g. ".1", ".2", ".10"
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
   # MIxS structured_pattern settings for pattern interpolation.
   # These settings define regex patterns for placeholders like {scientific_float}, {text}, {URL}

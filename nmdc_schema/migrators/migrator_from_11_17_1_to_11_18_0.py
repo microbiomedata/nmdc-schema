@@ -14,6 +14,16 @@ class Migrator(MigratorBase):
     # Reference: The definition of the slot named `doi_value`.
     _target_doi_pattern = r"^doi:10\.\d{2,9}/.*$"
 
+    # This is a variant of regex pattern defined in the schema we're migrating _to_.
+    # This variant is "agnostic" to the first part of the `id` value, and is only
+    # "picky" about the last part of the `id` value (i.e. the suffix).
+    #
+    # Reference: The definition of the `id_version` "settings" item, and the
+    #            materialized pattern used for the `id` slot of a class that
+    #            inherits from `WorkflowExecution` (e.g. `MetagenomeAnnotation`).
+    #
+    _target_workflow_execution_id_pattern = r"^.+\.[1-9]{1}[0-9]{0,}$"
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -55,6 +65,12 @@ class Migrator(MigratorBase):
 
         # Confirm no study has multiple associated biosamples having the same name.
         self.fail_if_any_study_has_duplicate_biosample_names()
+
+        # Confirm that the suffix of the `id` of each `WorkflowExecution` conforms to the new schema.
+        self.adapter.do_for_each_document(
+            collection_name="workflow_execution_set",
+            action=self.validate_workflow_execution_id_suffix,
+        )
 
     def validate_study_fields_containing_dois(self, study: dict) -> None:
         r"""
@@ -194,3 +210,37 @@ class Migrator(MigratorBase):
             if len(duplicate_biosample_names) > 0:
                 sorted_names: list = sorted(duplicate_biosample_names)  # sorting helps with testing
                 raise ValueError(f"Study {study_id} has duplicate biosample names: {sorted_names}")
+
+    def validate_workflow_execution_id_suffix(self, workflow_execution: dict) -> None:
+        r"""
+        Validates that the suffix of the `id` of the specified `WorkflowExecution` conforms to the
+        new schema, which says that the first digit of the suffix cannot be 0.
+
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> database = {'workflow_execution_set': [
+        ...     {'id': 'nmdc:wfe-00-1'},
+        ...     {'id': 'nmdc:wfe-00-1.1'},
+        ...     {'id': 'nmdc:wfe-00-1.2'},
+        ...     {'id': 'nmdc:wfe-00-1.0'},
+        ...     {'id': 'nmdc:wfe-00-1.01'},
+        ...     {'id': 'nmdc:wfe-00-1.10'},
+        ... ]}
+        >>> m = Migrator(adapter=DictionaryAdapter(database=database))
+        >>> m.validate_workflow_execution_id_suffix(database['workflow_execution_set'][0])  # invalid: no suffix
+        Traceback (most recent call last):
+        ...
+        ValueError: WorkflowExecution nmdc:wfe-00-1 has an invalid ID suffix
+        >>> m.validate_workflow_execution_id_suffix(database['workflow_execution_set'][1])  # valid
+        >>> m.validate_workflow_execution_id_suffix(database['workflow_execution_set'][2])  # valid
+        >>> m.validate_workflow_execution_id_suffix(database['workflow_execution_set'][3])  # invalid: suffix has 0 as first digit
+        Traceback (most recent call last):
+        ...
+        ValueError: WorkflowExecution nmdc:wfe-00-1.0 has an invalid ID suffix
+        >>> m.validate_workflow_execution_id_suffix(database['workflow_execution_set'][4])  # invalid: suffix has 0 as first digit
+        Traceback (most recent call last):
+        ...
+        ValueError: WorkflowExecution nmdc:wfe-00-1.01 has an invalid ID suffix
+        >>> m.validate_workflow_execution_id_suffix(database['workflow_execution_set'][5])  # valid
+        """
+        if not re.match(self._target_workflow_execution_id_pattern, workflow_execution["id"]):
+            raise ValueError(f"WorkflowExecution {workflow_execution['id']} has an invalid ID suffix")
