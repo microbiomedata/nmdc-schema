@@ -94,7 +94,7 @@ class Migrator(MigratorBase):
         >>> database = {'biosample_set': [
         ...     {'id': 'nmdc:bsm-00-1', 'salinity_meth': 'doi:10.1234/abc'},
         ...     {'id': 'nmdc:bsm-00-2', 'salinity_meth': 'doi:10_1234/abc'},
-        ...     {'id': 'nmdc:bsm-00-3', 'salinity_meth': 'foobarbaz'},
+        ...     {'id': 'nmdc:bsm-00-3', 'salinity_meth': 'https://www.example.com'},
         ... ]}
         >>> m = Migrator(adapter=DictionaryAdapter(database=database))
         >>> m.validate_biosample_fields_containing_dois(database['biosample_set'][0])  # valid
@@ -115,10 +115,11 @@ class Migrator(MigratorBase):
 
         for field_name in names_of_fields_that_can_contain_doi:
             if field_name in biosample:
-                potential_doi: str = biosample[field_name]
-                # Check whether the string begins with "doi:" — otherwise, we'll ignore it
-                if potential_doi.startswith("doi:"):
-                    doi = potential_doi
+                field_value = biosample[field_name]
+
+                # Check whether this is a value this migrator is responsible for checking.
+                if isinstance(field_value, str) and field_value.startswith("doi:"):
+                    doi = biosample[field_name]  # concise alias
                     if not re.match(self._target_doi_pattern, doi):
                         raise ValueError(f"Biosample {biosample['id']} has a {field_name} DOI having an invalid format: {doi}")
 
