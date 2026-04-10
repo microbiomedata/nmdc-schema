@@ -33,6 +33,7 @@ material_processing_set:
     type: nmdc:Extraction
 biosample_set:
   - id: nmdc:bsm-99-abcdef12
+    name: my_awesome_sample_1
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-11-34xj1150
@@ -55,6 +56,7 @@ biosample_set:
         type: nmdc:OntologyClass
         id: ENVO:00005792
   - id: nmdc:bsm-99-abcdef22
+    name: my_awesome_sample_2
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-11-34xj1150
@@ -77,6 +79,7 @@ biosample_set:
         type: nmdc:OntologyClass
         id: ENVO:00005792
   - id: nmdc:bsm-99-abcdef32
+    name: my_awesome_sample_3
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-11-34xj1150

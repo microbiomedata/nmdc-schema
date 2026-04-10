@@ -1,4 +1,5 @@
 type: nmdc:Biosample
+name: my_awesome_biosample
 associated_studies:
   - nmdc:sty-00-abc123
 env_broad_scale:

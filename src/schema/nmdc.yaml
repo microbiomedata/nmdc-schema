@@ -138,7 +138,7 @@ settings:
   id_nmdc_prefix: "^(nmdc)"
   id_shoulder: "([0-9][a-z]{0,6}[0-9])"
   id_blade: "([A-Za-z0-9]{1,})"
-  id_version: "(\\.[0-9]{1,})"
+  id_version: "(\\.[1-9]{1}[0-9]{0,})"  # first digit must be > 0;  e.g. ".1", ".2", ".10"
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
   # MIxS structured_pattern settings for pattern interpolation.
   # These settings define regex patterns for placeholders like {scientific_float}, {text}, {URL}
@@ -157,7 +157,7 @@ settings:
   country: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
   date_time_stamp: '(\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?'  # ISO 8601 timestamp; seconds optional; alias of 'timestamp'
   dna_bases: '[ACGT]'
-  DOI: 'doi:10.\d{2,9}/.*'
+  DOI: 'doi:10\.\d{2,9}/.*'
   duration: P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)
   float: '[-+]?[0-9]*\.?[0-9]+'
   integer: '[1-9][0-9]*'
@@ -1115,8 +1115,11 @@ slots:
       - "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
     range: string
     multivalued: false
+    examples:
+      - value: doi:10.1016/j.ecss.2011.11.024
+      - value: https://doi.org/10.1016/j.ecss.2011.11.024
     structured_pattern:
-      syntax: "^{PMID}|{DOI}|{URL}$"
+      syntax: "^({PMID}|{DOI}|{URL})$"
       interpolated: true
     annotations:
       Expected_value: "PMID,DOI or url"

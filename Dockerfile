@@ -11,46 +11,6 @@ RUN apt-get update && \
 RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && \
     chmod +x /usr/bin/yq
 
-# Download and install a Java Development Kit >= 11.
-#
-# Note: This is a dependency of Apache Jena.
-#
-# Note: While developing this Dockerfile, we found that we could not get an ARM64 build of the JDK to run
-#       in a container running in an amd64 environment, and vice versa. For that reason, here, we check the
-#       environment type and use that information to decide which build of the JDK we will download.
-#
-# Reference: https://jdk.java.net/21/
-#
-RUN echo "Architecture: $(uname -m)"
-RUN mkdir -p /downloads/tmp/
-RUN if [ "$(uname -m)" = "aarch64" ]; \
-    then wget -O /downloads/tmp/openjdk-21.0.2.tar.gz "https://download.java.net/java/GA/jdk21.0.2/f2283984656d49d69e91c558476027ac/13/GPL/openjdk-21.0.2_linux-aarch64_bin.tar.gz"; \
-    else wget -O /downloads/tmp/openjdk-21.0.2.tar.gz "https://download.java.net/java/GA/jdk21.0.2/f2283984656d49d69e91c558476027ac/13/GPL/openjdk-21.0.2_linux-x64_bin.tar.gz"; \
-    fi
-RUN mkdir -p /downloads/openjdk && \
-    tar -xvzf /downloads/tmp/openjdk-21.0.2.tar.gz -C /downloads/openjdk
-RUN rm -rf /downloads/tmp/openjdk-21.0.2.tar.gz
-ENV JAVA_HOME="/downloads/openjdk/jdk-21.0.2/"
-
-# Download and install Apache Jena.
-#
-# Note: The path, `~/apache-jena/bin`, is currently hard-coded in `project.Makefile`. So, here,
-#       we create a symbolic link (i.e. filesystem shortcut) from that hard-coded path to where
-#       we are storing Apache Jena, which is `/downloads/apache-jena/apache-jena-4.9.0/bin`.
-#
-# References:
-# - https://archive.apache.org/dist/jena/binaries/ (older binaries, but download URLs remain constant)
-# - https://dlcdn.apache.org/jena/binaries/        (newer binaries, but download URLs change over time)
-#
-RUN wget -P /downloads/tmp "https://archive.apache.org/dist/jena/binaries/apache-jena-4.9.0.zip"
-RUN mkdir -p /downloads/apache-jena && \
-    unzip /downloads/tmp/apache-jena-4.9.0.zip -d /downloads/apache-jena
-RUN rm -rf /downloads/tmp/apache-jena-4.9.0.zip
-ENV JENAROOT="/downloads/apache-jena/apache-jena-4.9.0"
-ENV PATH="$JENAROOT/bin:$PATH"
-RUN mkdir -p /root/apache-jena && \
-    ln --symbolic "${JENAROOT}/bin" /root/apache-jena/bin
-
 # Install Poetry, a package manager for Python (an alternative to pip).
 RUN pip install "poetry>=2.3.0"
 

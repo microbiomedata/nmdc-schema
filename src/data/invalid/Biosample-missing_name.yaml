@@ -1,7 +1,6 @@
+#invalid because name slot is missing
 id: nmdc:bsm-99-dtTMNb
 type: nmdc:Biosample
-name: my_awesome_biosample
-fire: 1871-10-01 to 1871-10-31
 associated_studies:
   - nmdc:sty-00-abc123
 env_broad_scale:

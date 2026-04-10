@@ -2,6 +2,7 @@
 # The slot_usage on ProvenanceMetadata constrains add_date to range: datetime
 # (linkml:datetime, mapped to xsd:dateTime), so only ISO 8601 datetime strings are accepted.
 id: nmdc:bsm-99-badDate1
+name: my_awesome_biosample
 type: nmdc:Biosample
 associated_studies:
   - nmdc:sty-00-abc123

@@ -1,5 +1,6 @@
 # invalid b/c of ID version
 id: nmdc:bsm-99-dtTMNb.1
+name: my_awesome_biosample
 type: nmdc:Biosample
 env_broad_scale:
   type: nmdc:ControlledIdentifiedTermValue

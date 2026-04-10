@@ -21,6 +21,14 @@ Some frequently asked questions about developing the NMDC Schema.
 [OWL Generation](owl-generation.md) -- covers current build process, recommended
 config, CLI/YAML flag mapping, portal submission guidance, and upcoming LinkML changes.
 
+### Where should I put hand-written documentation?
+
+The `docs/` directory is a **build output directory** — `make clean` deletes
+`docs/*.md` and `docs/*.html`. Tracked files in `docs/` that have no
+counterpart in `src/docs/` will trigger a warning during `make clean`, but
+untracked files will be silently removed. Place all hand-written documentation
+in `src/docs/` instead; the build copies it into `docs/` automatically.
+
 ### How do I configure environment variables for development scripts?
 
 Some scripts need API keys or database credentials. All scripts load from
