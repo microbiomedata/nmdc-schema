@@ -60,7 +60,7 @@ Enriches raw search results with schema context and lexical diagnostics.
 
 ```bash
 poetry run python src/scripts/ols4_embeddings_postprocess.py \
-  --semantic-results src/scripts/ols4_embeddings_results.tsv
+  --semantic-results assets/ontology_alignment/ols4_embeddings_results.tsv
 ```
 
 Key options:
@@ -162,7 +162,7 @@ All heavily-used prefixes (OBI, CHEBI, MS, NCIT, ENVO, GO, NCBITaxon) are covere
 
 ## Current results summary
 
-The committed baseline (`src/scripts/ols4_embeddings_results.tsv`) contains:
+The committed baseline (`assets/ontology_alignment/ols4_embeddings_results.tsv`) contains:
 - **45,940 rows** from **2,298 schema elements** across 210 ontologies
 - **2,284 rows** with confidence > 0.90
 - **1,959** strong semantic + strong lexical
