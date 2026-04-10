@@ -21,6 +21,20 @@ Some frequently asked questions about developing the NMDC Schema.
 [OWL Generation](owl-generation.md) -- covers current build process, recommended
 config, CLI/YAML flag mapping, portal submission guidance, and upcoming LinkML changes.
 
+### How do I configure environment variables for development scripts?
+
+Some scripts need API keys or database credentials. All scripts load from
+`local/.env` via `python-dotenv`. To get started:
+
+```bash
+cp local/.env.example local/.env
+# Edit local/.env with your values
+```
+
+`local/.env` is gitignored. `local/.env.example` documents every variable,
+which script uses it, and where to get credentials. You only need to fill in
+the variables for the scripts you actually run.
+
 ### What are LinkML readonly metaslots and why shouldn't I assert them?
 
 The LinkML metamodel defines 12 **readonly** slots that are automatically populated
