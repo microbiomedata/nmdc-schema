@@ -27,13 +27,13 @@ Some scripts need API keys or database credentials. All scripts load from
 `local/.env` via `python-dotenv`. To get started:
 
 ```bash
-cp local/.env.example local/.env
+cp .env.example local/.env
 # Edit local/.env with your values
 ```
 
-`local/.env` is gitignored. `local/.env.example` documents every variable,
-which script uses it, and where to get credentials. You only need to fill in
-the variables for the scripts you actually run.
+`local/` is gitignored. `.env.example` in the repo root documents every
+variable, which script uses it, and where to get credentials. You only need
+to fill in the variables for the scripts you actually run.
 
 ### What are LinkML readonly metaslots and why shouldn't I assert them?
 
