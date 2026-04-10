@@ -874,7 +874,7 @@ appended after a colon: <code>"Biosample: A material sample..."</code>.</p>
 <h3 id="srcscriptsols4_embeddings_postprocesspy"><code>src/scripts/ols4_embeddings_postprocess.py</code></h3>
 <p>Enriches raw search results with schema context and lexical diagnostics.</p>
 <pre><code class="language-bash">poetry run python src/scripts/ols4_embeddings_postprocess.py \
-  --semantic-results src/scripts/ols4_embeddings_results.tsv
+  --semantic-results assets/ontology_alignment/ols4_embeddings_results.tsv
 </code></pre>
 <p>Key options:</p>
 <table>
@@ -1037,7 +1037,7 @@ OLS4 embeddings corpus:</p>
 </ul>
 <p>All heavily-used prefixes (OBI, CHEBI, MS, NCIT, ENVO, GO, NCBITaxon) are covered.</p>
 <h2 id="current-results-summary">Current results summary</h2>
-<p>The committed baseline (<code>src/scripts/ols4_embeddings_results.tsv</code>) contains:
+<p>The committed baseline (<code>assets/ontology_alignment/ols4_embeddings_results.tsv</code>) contains:
 - <strong>45,940 rows</strong> from <strong>2,298 schema elements</strong> across 210 ontologies
 - <strong>2,284 rows</strong> with confidence &gt; 0.90
 - <strong>1,959</strong> strong semantic + strong lexical
