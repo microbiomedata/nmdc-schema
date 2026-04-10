@@ -299,6 +299,7 @@ clean:
 include project.Makefile
 include makefiles/mixs.Makefile
 include makefiles/migrators.Makefile
+include makefiles/ontology-alignment.Makefile
 
 # custom
 site-clean: clean
