@@ -101,11 +101,13 @@ The post-processor checks whether a match is structurally plausible given
 the NMDC element type:
 
 - **class -> class**: always supported
-- **slot -> class**: supported only if the slot's range is an enum or class
-  (i.e., it expects a `class_filler`). Scalar-range slots mapped to classes
-  get `slot_class_scalar_mismatch`.
+- **slot -> property**: supported if the slot has a scalar range
+  (`property_like`), or if there's ontology source overlap
+- **slot -> class**: supported if the slot's range is an enum or class
+  (`class_filler`), or if there's ontology source overlap. Scalar-range
+  slots with no source overlap get `slot_class_scalar_mismatch`.
 - **PV -> class**: supported if there's ontology source overlap with
-  existing mappings
+  existing mappings or owner mappings
 - **enum -> class**: supported if source overlap with existing mappings
 
 ### Key columns in the enriched TSV

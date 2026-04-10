@@ -196,8 +196,9 @@ def _class_record(sv: SchemaView, class_name: str) -> SchemaElementRecord:
     for field_name in ("exact_mappings", "close_mappings", "related_mappings", "narrow_mappings", "broad_mappings"):
         mappings.extend(getattr(class_def, field_name, []) or [])
     existing_mappings = _sorted_mappings(mappings)
+    subject_id = class_def.class_uri or f"nmdc:{class_name}"
     return SchemaElementRecord(
-        subject_id=f"nmdc:{class_name}",
+        subject_id=subject_id,
         subject_label=class_def.title or class_name,
         subject_category="class",
         subject_description=class_def.description or "",
@@ -236,8 +237,9 @@ def _slot_record(sv: SchemaView, slot_name: str) -> SchemaElementRecord:
         for field_name in ("exact_mappings", "close_mappings", "related_mappings", "narrow_mappings", "broad_mappings"):
             range_mapping_sources.update(mapping_source(value) for value in (getattr(class_def, field_name, []) or []))
     existing_mappings = _sorted_mappings(mappings)
+    subject_id = slot_def.slot_uri or f"nmdc:{slot_name}"
     return SchemaElementRecord(
-        subject_id=f"nmdc:{slot_name}",
+        subject_id=subject_id,
         subject_label=slot_def.title or slot_name,
         subject_category="slot",
         subject_description=slot_def.description or "",
@@ -276,6 +278,11 @@ def _enum_record(sv: SchemaView, enum_name: str) -> SchemaElementRecord:
     )
 
 
+def _sanitize_pv_text(text: str) -> str:
+    """Sanitize permissible value text to produce valid CURIE-like identifiers."""
+    return re.sub(r"[^A-Za-z0-9._-]", "_", text)
+
+
 def _pv_record(enum_name: str, pv_name: str, pv: PermissibleValue) -> SchemaElementRecord:
     mappings = []
     for field_name in ("exact_mappings", "close_mappings", "related_mappings", "narrow_mappings", "broad_mappings"):
@@ -284,8 +291,9 @@ def _pv_record(enum_name: str, pv_name: str, pv: PermissibleValue) -> SchemaElem
         mappings.append(str(pv.meaning))
     existing_mappings = _sorted_mappings(mappings)
     owner_mapping_sources = tuple(sorted({mapping_source(value) for value in existing_mappings if mapping_source(value)}))
+    sanitized_pv = _sanitize_pv_text(pv_name)
     return SchemaElementRecord(
-        subject_id=f"nmdc:{enum_name}.{pv_name}",
+        subject_id=f"nmdc:{enum_name}.{sanitized_pv}",
         subject_label=pv.text or pv_name,
         subject_category="permissible_value",
         subject_description=pv.description or "",
@@ -542,7 +550,7 @@ def summarize_alignment_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "by_object_kind": {},
         "by_object_source": {},
         "strong_semantic_weak_lexical_by_source": {},
-        "structurally_supported_semantic_weak_lexical_by_source": {},
+        "strong_semantic_weak_lexical_structurally_supported_by_source": {},
     }
     for row in rows:
         classification = row["semantic_vs_lexical"]
@@ -559,7 +567,7 @@ def summarize_alignment_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
             bucket = summary["strong_semantic_weak_lexical_by_source"]
             bucket[source] = bucket.get(source, 0) + 1
         if structural_bucket == "strong_semantic_weak_lexical_structurally_supported":
-            bucket = summary["structurally_supported_semantic_weak_lexical_by_source"]
+            bucket = summary["strong_semantic_weak_lexical_structurally_supported_by_source"]
             bucket[source] = bucket.get(source, 0) + 1
     return summary
 

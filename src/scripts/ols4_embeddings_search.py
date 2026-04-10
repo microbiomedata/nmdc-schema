@@ -12,7 +12,7 @@ See --help for options.
 
 import csv
 import logging
-import sys
+import re
 import time
 from pathlib import Path
 from typing import Optional
@@ -78,10 +78,11 @@ def extract_curie(element: dict) -> Optional[str]:
     short_form = element.get("shortForm")
     if short_form:
         return short_form
-    # Fall back to IRI
+    # Fall back to full IRI prefixed with "iri:" so downstream consumers
+    # can distinguish it from a real CURIE (intentional for traceability).
     iri = element.get("iri")
     if iri:
-        return iri
+        return f"iri:{iri}"
     return None
 
 
@@ -317,7 +318,8 @@ def main(
                 if skip_mapped and pv.meaning:
                     skipped += 1
                     continue
-                subject_id = f"nmdc:{enum_name}.{pv_text}"
+                sanitized_pv = re.sub(r"[^A-Za-z0-9._-]", "_", pv_text)
+                subject_id = f"nmdc:{enum_name}.{sanitized_pv}"
                 results = search_element(
                     subject_id,
                     pv_text,
