@@ -955,7 +955,7 @@ They are the primary interest for ontology alignment work.</p>
 <td><code>NCBITaxon</code></td>
 <td><code>http://purl.obolibrary.org/obo/NCBITaxon_</code></td>
 <td>Yes</td>
-<td>Taxonomy; <code>id_prefixes</code> on Biosample</td>
+<td>Taxonomy; used in MIxS <code>structured_patterns</code> and <code>ControlledIdentifiedTermValue</code> examples</td>
 </tr>
 <tr>
 <td><code>GO</code></td>
@@ -1025,7 +1025,7 @@ They are the primary interest for ontology alignment work.</p>
 </tr>
 <tr>
 <td><code>TAXRANK</code></td>
-<td>bioregistry</td>
+<td><code>http://purl.obolibrary.org/obo/TAXRANK_</code></td>
 <td>Yes</td>
 <td>7 mappings — taxonomic ranks</td>
 </tr>
@@ -1246,7 +1246,7 @@ during RDF serialization. See <a href="https://github.com/microbiomedata/nmdc-sc
 <tr>
 <td><code>id_prefixes</code> on classes</td>
 <td>Medium — some validators check this; not universally enforced</td>
-<td>Biosample accepts <code>NCIT:</code>, <code>GOLD:</code>, etc.</td>
+<td><code>OrthologyGroup</code> constrains identifiers to its declared prefixes</td>
 </tr>
 <tr>
 <td>OBO Foundry preference</td>
@@ -1296,7 +1296,7 @@ during RDF serialization. See <a href="https://github.com/microbiomedata/nmdc-sc
 <td><code>id_prefixes:</code> on a class</td>
 <td>What CURIE prefixes valid instances may use</td>
 <td>Advisory/conditional</td>
-<td><code>id_prefixes: - GOLD</code></td>
+<td><code>id_prefixes: - PR</code></td>
 </tr>
 <tr>
 <td>Value in a CURIE-typed slot (data)</td>
