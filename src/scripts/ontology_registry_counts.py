@@ -69,7 +69,11 @@ def cli(
     """Count ontology registries and emit reproducible counts plus prefix lists."""
     load_dotenv("local/.env")
     ols_overall = fetch_ols_overall_registry()
-    ols_embeddings_corpus = read_ols_embeddings_corpus(ols_embeddings_results)
+    ols_embeddings_corpus = None
+    if Path(ols_embeddings_results).exists():
+        ols_embeddings_corpus = read_ols_embeddings_corpus(ols_embeddings_results)
+    else:
+        click.echo(f"WARNING: {ols_embeddings_results} not found; skipping OLS embeddings corpus.", err=True)
     obo_foundry_registry = fetch_obo_foundry_registry()
     semsql_registry = fetch_semsql_registry()
     bioportal_registry = None

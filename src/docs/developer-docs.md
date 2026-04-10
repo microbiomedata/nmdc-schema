@@ -31,8 +31,8 @@ in `src/docs/` instead; the build copies it into `docs/` automatically.
 
 ### How do I configure environment variables for development scripts?
 
-Some scripts need API keys or database credentials. All scripts load from
-`local/.env` via `python-dotenv`. To get started:
+Some scripts need API keys or database credentials. Scripts that need them
+load from `local/.env` via `python-dotenv`. To get started:
 
 ```bash
 # IMPORTANT: Do NOT overwrite an existing local/.env — it may contain
