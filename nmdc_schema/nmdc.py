@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-23T10:18:59
+# Generation date: 2026-04-09T20:29:15
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -1566,6 +1566,7 @@ class Biosample(Sample):
     env_broad_scale: Union[dict, ControlledIdentifiedTermValue] = None
     env_local_scale: Union[dict, ControlledIdentifiedTermValue] = None
     env_medium: Union[dict, ControlledIdentifiedTermValue] = None
+    name: str = None
     biosample_categories: Optional[Union[Union[str, "BiosampleCategoryEnum"], list[Union[str, "BiosampleCategoryEnum"]]]] = empty_list()
     collected_from: Optional[Union[str, FieldResearchSiteId]] = None
     embargoed: Optional[Union[bool, Bool]] = None
@@ -2131,6 +2132,11 @@ class Biosample(Sample):
             self.MissingRequiredField("env_medium")
         if not isinstance(self.env_medium, ControlledIdentifiedTermValue):
             self.env_medium = ControlledIdentifiedTermValue(**as_dict(self.env_medium))
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
 
         if not isinstance(self.biosample_categories, list):
             self.biosample_categories = [self.biosample_categories] if self.biosample_categories is not None else []
@@ -11020,7 +11026,7 @@ slots.version = Slot(uri=NMDC.version, name="version", curie=NMDC.curie('version
 
 slots.doi_value = Slot(uri=NMDC.doi_value, name="doi_value", curie=NMDC.curie('doi_value'),
                    model_uri=NMDC.doi_value, domain=None, range=Union[str, URIorCURIE],
-                   pattern=re.compile(r'^doi:10.\d{2,9}/.*$'))
+                   pattern=re.compile(r'^doi:10\.\d{2,9}/.*$'))
 
 slots.doi_provider = Slot(uri=NMDC.doi_provider, name="doi_provider", curie=NMDC.curie('doi_provider'),
                    model_uri=NMDC.doi_provider, domain=None, range=Optional[Union[str, "DoiProviderEnum"]])
@@ -13280,6 +13286,9 @@ slots.FieldResearchSite_id = Slot(uri=NMDC.id, name="FieldResearchSite_id", curi
 slots.FieldResearchSite_part_of = Slot(uri=DCTERMS.isPartOf, name="FieldResearchSite_part_of", curie=DCTERMS.curie('isPartOf'),
                    model_uri=NMDC.FieldResearchSite_part_of, domain=FieldResearchSite, range=Optional[Union[Union[str, FieldResearchSiteId], list[Union[str, FieldResearchSiteId]]]])
 
+slots.Biosample_name = Slot(uri=NMDC['attribute_values/name'], name="Biosample_name", curie=NMDC.curie('attribute_values/name'),
+                   model_uri=NMDC.Biosample_name, domain=Biosample, range=str)
+
 slots.Biosample_provenance_metadata = Slot(uri=NMDC['basic_classes/provenance_metadata'], name="Biosample_provenance_metadata", curie=NMDC.curie('basic_classes/provenance_metadata'),
                    model_uri=NMDC.Biosample_provenance_metadata, domain=Biosample, range=Optional[Union[dict, "ProvenanceMetadata"]])
 
@@ -13349,6 +13358,24 @@ slots.Biosample_heavy_metals = Slot(uri=MIXS['0000652'], name="Biosample_heavy_m
 
 slots.Biosample_heavy_metals_meth = Slot(uri=MIXS['0000343'], name="Biosample_heavy_metals_meth", curie=MIXS.curie('0000343'),
                    model_uri=NMDC.Biosample_heavy_metals_meth, domain=Biosample, range=Optional[Union[str, list[str]]])
+
+slots.Biosample_horizon_meth = Slot(uri=MIXS['0000321'], name="Biosample_horizon_meth", curie=MIXS.curie('0000321'),
+                   model_uri=NMDC.Biosample_horizon_meth, domain=Biosample, range=Optional[str])
+
+slots.Biosample_link_addit_analys = Slot(uri=MIXS['0000340'], name="Biosample_link_addit_analys", curie=MIXS.curie('0000340'),
+                   model_uri=NMDC.Biosample_link_addit_analys, domain=Biosample, range=Optional[Union[dict, TextValue]])
+
+slots.Biosample_link_climate_info = Slot(uri=MIXS['0000328'], name="Biosample_link_climate_info", curie=MIXS.curie('0000328'),
+                   model_uri=NMDC.Biosample_link_climate_info, domain=Biosample, range=Optional[Union[dict, TextValue]])
+
+slots.Biosample_local_class_meth = Slot(uri=MIXS['0000331'], name="Biosample_local_class_meth", curie=MIXS.curie('0000331'),
+                   model_uri=NMDC.Biosample_local_class_meth, domain=Biosample, range=Optional[str])
+
+slots.Biosample_micro_biomass_meth = Slot(uri=MIXS['0000339'], name="Biosample_micro_biomass_meth", curie=MIXS.curie('0000339'),
+                   model_uri=NMDC.Biosample_micro_biomass_meth, domain=Biosample, range=Optional[str])
+
+slots.Biosample_prev_land_use_meth = Slot(uri=MIXS['0000316'], name="Biosample_prev_land_use_meth", curie=MIXS.curie('0000316'),
+                   model_uri=NMDC.Biosample_prev_land_use_meth, domain=Biosample, range=Optional[str])
 
 slots.Biosample_season_precpt = Slot(uri=MIXS['0000645'], name="Biosample_season_precpt", curie=MIXS.curie('0000645'),
                    model_uri=NMDC.Biosample_season_precpt, domain=Biosample, range=Optional[Union[dict, QuantityValue]])

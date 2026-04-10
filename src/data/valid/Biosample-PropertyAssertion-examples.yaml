@@ -11,6 +11,7 @@
 # schema validation and enabling data integration through semantic annotations.
 
 id: nmdc:bsm-99-noncompliant
+name: my_awesome_name
 type: nmdc:Biosample
 associated_studies:
   - nmdc:sty-00-abc123

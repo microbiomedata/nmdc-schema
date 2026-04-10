@@ -711,7 +711,7 @@ light_type:
   - none
 link_addit_analys:
   type: nmdc:TextValue
-  has_raw_value: https://pubmed.ncbi.nlm.nih.gov/2315679/
+  has_raw_value: https://doi.org/10.1111/j.1574-6941.2011.01140.x
 link_class_info: https://wisconsindot.gov/Documents/doing-bus/eng-consultants/cnslt-rsrces/geotechmanual/gt-03-03.pdf
 link_climate_info:
   type: nmdc:TextValue
@@ -754,7 +754,7 @@ methane:
   has_raw_value: "1800 parts per billion"
   has_unit: '[ppb]'
   type: nmdc:QuantityValue
-micro_biomass_meth: xxx
+micro_biomass_meth: https://doi.org/10.1016/j.soilbio.2005.01.021
 microbial_biomass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -948,7 +948,7 @@ pressure:
   has_raw_value: 50 atmosphere
   has_unit: atm
   has_numeric_value: 50.0
-prev_land_use_meth: https://doi.org/10.1016/j.agee.2006.05.012
+prev_land_use_meth: https://doi.org/10.2737/SRS-GTR-155
 previous_land_use: forest
 primary_prod:
   type: nmdc:QuantityValue
@@ -1436,7 +1436,7 @@ wall_water_mold: no presence of mold visible
 wastewater_type:
   type: nmdc:TextValue
   has_raw_value: xxx
-water_cont_soil_meth: MIxS doesn't provide an example
+water_cont_soil_meth: https://doi.org/10.1016/j.geoderma.2019.113898
 water_content:
   - 25.5 g water/g dry soil
   - 30.2 g water/g dry soil

@@ -7520,13 +7520,21 @@
       "comments": [
         "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
       ],
+      "examples": [
+        {
+          "value": "doi:10.1016/j.ecss.2011.11.024"
+        },
+        {
+          "value": "https://doi.org/10.1016/j.ecss.2011.11.024"
+        }
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000341",
       "range": "string",
       "multivalued": false,
-      "pattern": "^PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
-        "syntax": "^{PMID}|{DOI}|{URL}$",
+        "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true
       }
     },
@@ -8794,7 +8802,7 @@
       ],
       "range": "uriorcurie",
       "required": true,
-      "pattern": "^doi:10.\\d{2,9}/.*$"
+      "pattern": "^doi:10\\.\\d{2,9}/.*$"
     },
     "doi_provider": {
       "name": "doi_provider",
@@ -10235,7 +10243,7 @@
       ],
       "slot_uri": "MIXS:0000324",
       "range": "string",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true,
@@ -11885,7 +11893,7 @@
       ],
       "slot_uri": "MIXS:0001041",
       "range": "TextValue",
-      "pattern": "^(.*|PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(.*|PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({text}|{PMID}|{DOI}|{URL})$",
         "interpolated": true
@@ -11942,7 +11950,7 @@
       ],
       "slot_uri": "MIXS:0000314",
       "range": "string",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true,
@@ -13498,7 +13506,7 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000859",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true
@@ -13938,7 +13946,7 @@
       "slot_uri": "MIXS:0000343",
       "range": "string",
       "inlined_as_list": true,
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true,
@@ -14007,7 +14015,7 @@
       ],
       "slot_uri": "MIXS:0000321",
       "range": "string",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true,
@@ -14273,7 +14281,7 @@
       ],
       "slot_uri": "MIXS:0000871",
       "range": "TextValue",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)|.*)$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)|.*)$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL}|{text})$",
         "interpolated": true,
@@ -14983,7 +14991,7 @@
       ],
       "slot_uri": "MIXS:0000340",
       "range": "TextValue",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true,
@@ -15020,7 +15028,7 @@
       ],
       "slot_uri": "MIXS:0000328",
       "range": "TextValue",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true,
@@ -15072,7 +15080,7 @@
       ],
       "slot_uri": "MIXS:0000331",
       "range": "string",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true,
@@ -15524,7 +15532,7 @@
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000038",
       "range": "TextValue",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true,
@@ -15543,7 +15551,7 @@
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "slot_uri": "MIXS:0000037",
       "range": "TextValue",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true,
@@ -16614,7 +16622,7 @@
       ],
       "slot_uri": "MIXS:0000316",
       "range": "string",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true,
@@ -17353,7 +17361,7 @@
       ],
       "slot_uri": "MIXS:0001061",
       "range": "TextValue",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)|.*)$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)|.*)$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL}|{text})$",
         "interpolated": true,
@@ -19579,7 +19587,7 @@
       ],
       "slot_uri": "MIXS:0001070",
       "range": "TextValue",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)|.*)$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)|.*)$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL}|{text})$",
         "interpolated": true,
@@ -19817,7 +19825,7 @@
       ],
       "slot_uri": "MIXS:0000338",
       "range": "string",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true,
@@ -19872,7 +19880,7 @@
       ],
       "slot_uri": "MIXS:0000337",
       "range": "string",
-      "pattern": "^(PMID:\\d+|doi:10.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
+      "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$",
       "structured_pattern": {
         "syntax": "^({PMID}|{DOI}|{URL})$",
         "interpolated": true,
@@ -22553,7 +22561,7 @@
           "value": "https://doi.org/10.1016/0038-0717(87)90052-6"
         },
         {
-          "value": "https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526"
+          "value": "doi:10.1016/0038-0717(87)90052-6"
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
@@ -22577,7 +22585,7 @@
           "value": "https://doi.org/10.1016/0038-0717(87)90052-6"
         },
         {
-          "value": "https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526"
+          "value": "doi:10.1016/0038-0717(87)90052-6"
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
@@ -22656,6 +22664,9 @@
       "examples": [
         {
           "value": "https://doi.org/10.1038/s41467-021-26181-3"
+        },
+        {
+          "value": "doi:10.1038/s41467-021-26181-3"
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
@@ -22676,6 +22687,9 @@
       "examples": [
         {
           "value": "https://doi.org/10.1016/0038-0717(85)90144-0"
+        },
+        {
+          "value": "doi:10.1016/0038-0717(85)90144-0"
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
@@ -23188,7 +23202,7 @@
           "name": "was_generated_by",
           "range": "AnnotatingWorkflow",
           "required": true,
-          "pattern": "^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -23838,7 +23852,7 @@
             "To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD"
           ],
           "range": "MetagenomeAnnotation",
-          "pattern": "^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -24587,7 +24601,7 @@
         "was_generated_by": {
           "name": "was_generated_by",
           "range": "DataEmitterProcess",
-          "pattern": "^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+          "pattern": "^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$",
             "interpolated": true
@@ -24893,7 +24907,7 @@
         "id": {
           "name": "id",
           "required": true,
-          "pattern": "^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -25544,6 +25558,16 @@
         "lbceq"
       ],
       "slot_usage": {
+        "name": {
+          "name": "name",
+          "description": "A local identifier or name for the material sample collected. It can have any format, but we suggest that you make it concise, unique, and consistent within your lab, and as informative as possible. For NMDC this should be unique within a study. International Nucleotide Sequence Database Collaboration (INSDC) requires every sample name from a single submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to the name slot.",
+          "examples": [
+            {
+              "value": "BW-H-17-M"
+            }
+          ],
+          "required": true
+        },
         "provenance_metadata": {
           "name": "provenance_metadata",
           "description": "Provenance metadata for this Biosample, including when the record was added to and last modified in the NMDC database."
@@ -25744,6 +25768,12 @@
           "examples": [
             {
               "value": "https://doi.org/10.1371/journal.pone.0176357"
+            },
+            {
+              "value": "doi:10.1371/journal.pone.0176357"
+            },
+            {
+              "value": "PMID:28448589"
             }
           ]
         },
@@ -25780,6 +25810,9 @@
           "examples": [
             {
               "value": "https://doi.org/10.1111/j.1654-109X.2011.01154.x"
+            },
+            {
+              "value": "doi:10.1111/j.1654-109X.2011.01154.x"
             }
           ]
         },
@@ -25822,6 +25855,69 @@
           ],
           "multivalued": true
         },
+        "horizon_meth": {
+          "name": "horizon_meth",
+          "examples": [
+            {
+              "value": "https://doi.org/10.1016/j.geoderma.2019.113898"
+            },
+            {
+              "value": "doi:10.1016/j.geoderma.2019.113898"
+            }
+          ]
+        },
+        "link_addit_analys": {
+          "name": "link_addit_analys",
+          "examples": [
+            {
+              "value": "https://doi.org/10.1111/j.1574-6941.2011.01140.x"
+            },
+            {
+              "value": "doi:10.1111/j.1574-6941.2011.01140.x"
+            }
+          ]
+        },
+        "link_climate_info": {
+          "name": "link_climate_info",
+          "examples": [
+            {
+              "value": "https://www.int-res.com/abstracts/cr/v14/n3/p161-173/"
+            },
+            {
+              "value": "doi:10.3354/cr014161"
+            }
+          ]
+        },
+        "local_class_meth": {
+          "name": "local_class_meth",
+          "examples": [
+            {
+              "value": "https://www.nrcs.usda.gov/resources/education-and-teaching-materials/the-twelve-orders-of-soil-taxonomy"
+            }
+          ]
+        },
+        "micro_biomass_meth": {
+          "name": "micro_biomass_meth",
+          "examples": [
+            {
+              "value": "https://doi.org/10.1016/j.soilbio.2005.01.021"
+            },
+            {
+              "value": "doi:10.1016/j.soilbio.2005.01.021"
+            }
+          ]
+        },
+        "prev_land_use_meth": {
+          "name": "prev_land_use_meth",
+          "examples": [
+            {
+              "value": "https://doi.org/10.2737/SRS-GTR-155"
+            },
+            {
+              "value": "doi:10.2737/SRS-GTR-155"
+            }
+          ]
+        },
         "season_precpt": {
           "name": "season_precpt",
           "title": "average seasonal precipitation",
@@ -25847,10 +25943,10 @@
           ],
           "examples": [
             {
-              "value": "J. Nat. Prod. Plant Resour., 2012, 2 (4):500-503"
+              "value": "https://dec.alaska.gov/applications/spar/webcalc/definitions.htm"
             },
             {
-              "value": "https://dec.alaska.gov/applications/spar/webcalc/definitions.htm"
+              "value": "doi:10.1016/j.geoderma.2019.113898"
             }
           ]
         },
@@ -25895,10 +25991,13 @@
           ],
           "examples": [
             {
-              "value": "https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html?gclid=Cj0KCQiAwJWdBhCYARIsAJc4idCO5vtvbVMf545fcvdROFqa6zjzNSoywNx6K4k9Coo9cCc2pybtvGsaAiR0EALw_wcB"
+              "value": "https://doi.org/10.2136/sssabookser5.3.c16"
             },
             {
-              "value": "https://doi.org/10.2136/sssabookser5.3.c16"
+              "value": "doi:10.2136/sssabookser5.3.c16"
+            },
+            {
+              "value": "https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html"
             }
           ]
         },
@@ -25921,7 +26020,7 @@
               "value": "https://doi.org/10.2134/agronmonogr9.2.c32"
             },
             {
-              "value": "https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/sssaj2009.0389?casa_token=bm0pYIUdNMgAAAAA%3AOWVRR0STHaOe-afTcTdxn5m1hM8n2ltM0wY-b1iYpYdD9dhwppk5j3LvC2IO5yhOIvyLVeQz4NZRCZo"
+              "value": "doi:10.2136/sssaj2009.0389"
             }
           ]
         },
@@ -25930,6 +26029,9 @@
           "examples": [
             {
               "value": "https://doi.org/10.1080/07352680902776556"
+            },
+            {
+              "value": "doi:10.1080/07352680902776556"
             }
           ]
         },
@@ -26013,15 +26115,7 @@
           ]
         }
       },
-      "class_uri": "nmdc:Biosample",
-      "unique_keys": {
-        "samp_name_unique_key": {
-          "unique_key_name": "samp_name_unique_key",
-          "unique_key_slots": [
-            "samp_name"
-          ]
-        }
-      }
+      "class_uri": "nmdc:Biosample"
     },
     "MobilePhaseSegment": {
       "name": "MobilePhaseSegment",
@@ -26233,7 +26327,7 @@
         "id": {
           "name": "id",
           "required": true,
-          "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26251,7 +26345,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MetagenomeAssembly",
-          "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26298,7 +26392,7 @@
         "id": {
           "name": "id",
           "required": true,
-          "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26316,7 +26410,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MetatranscriptomeAssembly",
-          "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26337,7 +26431,7 @@
         "id": {
           "name": "id",
           "required": true,
-          "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26383,7 +26477,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MetatranscriptomeAnnotation",
-          "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26404,7 +26498,7 @@
         "id": {
           "name": "id",
           "required": true,
-          "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26426,7 +26520,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MetatranscriptomeExpressionAnalysis",
-          "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26454,7 +26548,7 @@
         "id": {
           "name": "id",
           "required": true,
-          "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26476,7 +26570,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MagsAnalysis",
-          "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26503,7 +26597,7 @@
         "id": {
           "name": "id",
           "required": true,
-          "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26521,7 +26615,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "ReadQcAnalysis",
-          "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26540,7 +26634,7 @@
         "id": {
           "name": "id",
           "required": true,
-          "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26558,7 +26652,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "ReadBasedTaxonomyAnalysis",
-          "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26583,7 +26677,7 @@
         "id": {
           "name": "id",
           "required": true,
-          "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26601,7 +26695,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MetabolomicsAnalysis",
-          "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26635,7 +26729,7 @@
         "id": {
           "name": "id",
           "required": true,
-          "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26653,7 +26747,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "MetaproteomicsAnalysis",
-          "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26675,7 +26769,7 @@
         "id": {
           "name": "id",
           "required": true,
-          "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26693,7 +26787,7 @@
         "superseded_by": {
           "name": "superseded_by",
           "range": "NomAnalysis",
-          "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+          "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$",
             "interpolated": true
@@ -26724,7 +26818,7 @@
     },
     "id_version": {
       "setting_key": "id_version",
-      "setting_value": "(\\.[0-9]{1,})"
+      "setting_value": "(\\.[1-9]{1}[0-9]{0,})"
     },
     "id_locus": {
       "setting_key": "id_locus",
@@ -26760,7 +26854,7 @@
     },
     "DOI": {
       "setting_key": "DOI",
-      "setting_value": "doi:10.\\d{2,9}/.*"
+      "setting_value": "doi:10\\.\\d{2,9}/.*"
     },
     "duration": {
       "setting_key": "duration",

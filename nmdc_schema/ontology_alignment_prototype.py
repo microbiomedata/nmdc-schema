@@ -272,8 +272,9 @@ def _class_record(sv: SchemaView, class_name: str) -> SchemaElementRecord:
     for field_name in ("exact_mappings", "close_mappings", "related_mappings", "narrow_mappings", "broad_mappings"):
         mappings.extend(getattr(class_def, field_name, []) or [])
     existing_mappings = _sorted_mappings(mappings)
+    subject_id = getattr(class_def, "class_uri", None) or f"nmdc:{class_name}"
     return SchemaElementRecord(
-        subject_id=f"nmdc:{class_name}",
+        subject_id=subject_id,
         subject_label=class_def.title or class_name,
         subject_category="class",
         subject_description=class_def.description or "",
@@ -313,8 +314,9 @@ def _slot_record(sv: SchemaView, slot_name: str) -> SchemaElementRecord:
         for field_name in ("exact_mappings", "close_mappings", "related_mappings", "narrow_mappings", "broad_mappings"):
             range_mapping_sources.update(mapping_source(value) for value in (getattr(class_def, field_name, []) or []))
     existing_mappings = _sorted_mappings(mappings)
+    subject_id = getattr(slot_def, "slot_uri", None) or f"nmdc:{slot_name}"
     return SchemaElementRecord(
-        subject_id=f"nmdc:{slot_name}",
+        subject_id=subject_id,
         subject_label=slot_def.title or slot_name,
         subject_category="slot",
         subject_description=slot_def.description or "",
@@ -364,7 +366,7 @@ def _pv_record(enum_name: str, pv_name: str, pv: PermissibleValue) -> SchemaElem
     existing_mappings = _sorted_mappings(mappings)
     owner_mapping_sources = tuple(sorted({mapping_source(value) for value in existing_mappings if mapping_source(value)}))
     return SchemaElementRecord(
-        subject_id=f"nmdc:{enum_name}#{pv_name}",
+        subject_id=f"nmdc:{enum_name}#{re.sub(r'[^A-Za-z0-9._-]', '_', pv_name)}",
         subject_label=pv.text or pv_name,
         subject_category="permissible_value",
         subject_description=pv.description or "",

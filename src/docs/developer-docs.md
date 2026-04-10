@@ -21,6 +21,40 @@ Some frequently asked questions about developing the NMDC Schema.
 [OWL Generation](owl-generation.md) -- covers current build process, recommended
 config, CLI/YAML flag mapping, portal submission guidance, and upcoming LinkML changes.
 
+### Where should I put hand-written documentation?
+
+The `docs/` directory is a **build output directory** — `make clean` deletes
+`docs/*.md` and `docs/*.html`. Tracked files in `docs/` that have no
+counterpart in `src/docs/` will trigger a warning during `make clean`, but
+untracked files will be silently removed. Place all hand-written documentation
+in `src/docs/` instead; the build copies it into `docs/` automatically.
+
+### How do I configure environment variables for development scripts?
+
+Some scripts need API keys or database credentials. Scripts that need them
+load from `local/.env` via `python-dotenv`. To get started:
+
+```bash
+# IMPORTANT: Do NOT overwrite an existing local/.env — it may contain
+# real credentials that are not recoverable from this repo.
+if [ ! -f local/.env ]; then
+    cp .env.example local/.env
+else
+    echo "local/.env already exists — not overwriting."
+    echo "Compare with .env.example to see if you need to add new variables:"
+    echo "  diff <(sed 's/=.*//' .env.example) <(sed 's/=.*//' local/.env)"
+fi
+```
+
+`local/` is gitignored. `.env.example` in the repo root documents every
+variable, which script uses it, and where to get credentials. You only need
+to fill in the variables for the scripts you actually run.
+
+The Docker-based migrator workflow has its own separate env file at
+`nmdc_schema/migrators/.docker/.env.example` — see the
+[migrators README](https://github.com/microbiomedata/nmdc-schema/blob/main/nmdc_schema/migrators/README.md)
+for details.
+
 ### What are LinkML readonly metaslots and why shouldn't I assert them?
 
 The LinkML metamodel defines 12 **readonly** slots that are automatically populated
