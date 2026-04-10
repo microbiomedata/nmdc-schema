@@ -285,9 +285,12 @@ git-status:
 
 clean:
 	@# Warn if docs/ contains tracked files not originating from src/docs/
-	@comm -23 <(git ls-files 'docs/*.md' 2>/dev/null | xargs -I{} basename {} | sort) \
-		<(ls src/docs/*.md 2>/dev/null | xargs -I{} basename {} | sort) \
-		| while read f; do echo "WARNING: docs/$$f is tracked but has no source in src/docs/. It will be deleted by clean."; done
+	@if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then \
+		for f in $$(comm -23 <(git ls-files 'docs/*.md' 2>/dev/null | xargs -I{} basename {} | sort) \
+			<(ls src/docs/*.md 2>/dev/null | xargs -I{} basename {} | sort)); do \
+			echo "WARNING: docs/$$f is tracked but has no source in src/docs/. It will be deleted by clean."; \
+		done; \
+	fi
 	rm -rf $(DEST)
 	rm -rf tmp
 	rm -rf docs/*.md
