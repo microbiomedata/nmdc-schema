@@ -63,7 +63,7 @@ These prefixes are used throughout the schema without documented restrictions.
 | `OBI` | `http://purl.obolibrary.org/obo/OBI_` | Yes | 26 `meaning:` + 19 mappings — planned processes, assays, instruments |
 | `CHEBI` | `http://purl.obolibrary.org/obo/CHEBI_` | Yes | 23 `meaning:` — chemical substances |
 | `ENVO` | `http://purl.obolibrary.org/obo/ENVO_` | Yes | env triad guidance (prose); ~1,319 rows in OLS4 results |
-| `NCBITaxon` | `http://purl.obolibrary.org/obo/NCBITaxon_` | Yes | Taxonomy; `id_prefixes` on Biosample |
+| `NCBITaxon` | `http://purl.obolibrary.org/obo/NCBITaxon_` | Yes | Taxonomy; used in MIxS `structured_patterns` and `ControlledIdentifiedTermValue` examples |
 | `GO` | `http://purl.obolibrary.org/obo/GO_` | Yes | `has_function` pattern (enforced via regex) |
 | `UBERON` | `http://purl.obolibrary.org/obo/UBERON_` | Yes | Accepted alongside ENVO for env triad (anatomy) |
 | `PATO` | `http://purl.obolibrary.org/obo/PATO_` | Yes | 1 `meaning:` — quality/attribute terms |
@@ -75,7 +75,7 @@ These prefixes are used throughout the schema without documented restrictions.
 | `CHMO` | `http://purl.obolibrary.org/obo/CHMO_` | Yes | 3 mappings — chemical methods |
 | `BFO` | `http://purl.obolibrary.org/obo/BFO_` | Yes | Declared; ~3 indirect references via OBI |
 | `MS` | `http://purl.obolibrary.org/obo/MS_` | Yes | 8 `meaning:` + 11 mappings — mass spectrometry terms |
-| `TAXRANK` | bioregistry | Yes | 7 mappings — taxonomic ranks |
+| `TAXRANK` | `http://purl.obolibrary.org/obo/TAXRANK_` | Yes | 7 mappings — taxonomic ranks |
 
 #### Scoped (inline comments limit where they may be used)
 
@@ -179,7 +179,7 @@ during RDF serialization. See [#2920](https://github.com/microbiomedata/nmdc-sch
 | `has_function` regex pattern | Hard — data validation rejects non-matching CURIEs | `PFAM:PF11779` passes; `METACYC:RXN-123` fails |
 | `structured_pattern` on env triad | Medium — enforces `label [CURIE]` format; does NOT constrain which prefix | `forest biome [ENVO:01000174]` passes; `forest biome` fails |
 | Scoping comments on prefixes | Advisory only — no enforcement | Nothing stops using NCIT outside its documented scope |
-| `id_prefixes` on classes | Medium — some validators check this; not universally enforced | Biosample accepts `NCIT:`, `GOLD:`, etc. |
+| `id_prefixes` on classes | Medium — some validators check this; not universally enforced | `OrthologyGroup` constrains identifiers to its declared prefixes |
 | OBO Foundry preference | Advisory only — no automated check | Anything with a declared prefix compiles |
 
 ---
@@ -194,7 +194,7 @@ Different placement contexts have different implications:
 | `class_uri:` / `slot_uri:` | Schema element identity in RDF/OWL | Yes | `class_uri: OBI:0000011` |
 | `exact_mappings:` | This element IS that term | Yes (for OWL generation) | `exact_mappings: - TAXRANK:0000006` |
 | `close_mappings:` / `related_mappings:` / `broad_mappings:` / `narrow_mappings:` | Looser alignment, informative | Yes (for OWL) | `close_mappings: - NCIT:C16551` |
-| `id_prefixes:` on a class | What CURIE prefixes valid instances may use | Advisory/conditional | `id_prefixes: - GOLD` |
+| `id_prefixes:` on a class | What CURIE prefixes valid instances may use | Advisory/conditional | `id_prefixes: - PR` |
 | Value in a CURIE-typed slot (data) | Instance identifier | String pattern only | `type: ENVO:00002030` |
 | Free-text description or annotation | Documentation only | No — just a string | `Expected_value: FMA or UBERON` |
 
