@@ -108,7 +108,10 @@ def extract_score(element: dict) -> str:
     """Extract the similarity score from an OLS4 result."""
     score = element.get("score")
     if score is not None:
-        return f"{score:.4f}"
+        try:
+            return f"{float(score):.4f}"
+        except (TypeError, ValueError):
+            return str(score)
     return ""
 
 
@@ -238,7 +241,7 @@ def main(
         format="%(levelname)s %(message)s",
     )
 
-    types = set(element_types.split(","))
+    types = {t.strip().lower() for t in element_types.split(",")}
     sv = SchemaView(schema)
     all_rows: list[dict] = []
     total_queries = 0
