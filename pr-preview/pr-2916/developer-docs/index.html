@@ -659,6 +659,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-do-i-configure-environment-variables-for-development-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I configure environment variables for development scripts?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-are-linkml-readonly-metaslots-and-why-shouldnt-i-assert-them" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -797,6 +808,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-do-i-configure-environment-variables-for-development-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I configure environment variables for development scripts?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-are-linkml-readonly-metaslots-and-why-shouldnt-i-assert-them" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -857,6 +879,26 @@ config, CLI/YAML flag mapping, portal submission guidance, and upcoming LinkML c
 counterpart in <code>src/docs/</code> will trigger a warning during <code>make clean</code>, but
 untracked files will be silently removed. Place all hand-written documentation
 in <code>src/docs/</code> instead; the build copies it into <code>docs/</code> automatically.</p>
+<h3 id="how-do-i-configure-environment-variables-for-development-scripts">How do I configure environment variables for development scripts?</h3>
+<p>Some scripts need API keys or database credentials. All scripts load from
+<code>local/.env</code> via <code>python-dotenv</code>. To get started:</p>
+<pre><code class="language-bash"># IMPORTANT: Do NOT overwrite an existing local/.env — it may contain
+# real credentials that are not recoverable from this repo.
+if [ ! -f local/.env ]; then
+    cp .env.example local/.env
+else
+    echo &quot;local/.env already exists — not overwriting.&quot;
+    echo &quot;Compare with .env.example to see if you need to add new variables:&quot;
+    echo &quot;  diff &lt;(sed 's/=.*//' .env.example) &lt;(sed 's/=.*//' local/.env)&quot;
+fi
+</code></pre>
+<p><code>local/</code> is gitignored. <code>.env.example</code> in the repo root documents every
+variable, which script uses it, and where to get credentials. You only need
+to fill in the variables for the scripts you actually run.</p>
+<p>The Docker-based migrator workflow has its own separate env file at
+<code>nmdc_schema/migrators/.docker/.env.example</code> — see the
+<a href="https://github.com/microbiomedata/nmdc-schema/blob/main/nmdc_schema/migrators/README.md">migrators README</a>
+for details.</p>
 <h3 id="what-are-linkml-readonly-metaslots-and-why-shouldnt-i-assert-them">What are LinkML readonly metaslots and why shouldn't I assert them?</h3>
 <p>The LinkML metamodel defines 12 <strong>readonly</strong> slots that are automatically populated
 by the schema loader or generators: <code>definition_uri</code>, <code>domain_of</code>, <code>from_schema</code>,
