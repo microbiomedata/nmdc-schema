@@ -13,8 +13,8 @@ PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
 
 ##### Ontology registry counts #####
 # On-demand target — fetches from external APIs (OLS, OBO Foundry, semantic-sql).
-# BioPortal requires BIOPORTAL_API_KEY in the environment; skipped by default.
-# Outputs go to local/ (gitignored).
+# BioPortal included automatically when BIOPORTAL_API_KEY is set in local/.env
+# or the environment. Outputs go to local/ (gitignored).
 
 ONTOLOGY_REGISTRY_JSON := local/ontology_registry_counts.json
 ONTOLOGY_REGISTRY_TSV := local/ontology_registry_prefixes.tsv
@@ -24,7 +24,6 @@ ontology-registry-counts: $(ONTOLOGY_REGISTRY_JSON)
 
 $(ONTOLOGY_REGISTRY_JSON):
 	$(RUN) python src/scripts/ontology_registry_counts.py \
-		--skip-bioportal \
 		--output-json $(ONTOLOGY_REGISTRY_JSON) \
 		--output-prefixes-tsv $(ONTOLOGY_REGISTRY_TSV)
 

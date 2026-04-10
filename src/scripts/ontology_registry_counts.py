@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 
 import click
+from dotenv import load_dotenv
 
 from nmdc_schema.ontology_registry_counts import (
     fetch_bioportal_registry,
@@ -66,6 +67,7 @@ def cli(
     output_prefixes_tsv: str,
 ) -> None:
     """Count ontology registries and emit reproducible counts plus prefix lists."""
+    load_dotenv("local/.env")
     ols_overall = fetch_ols_overall_registry()
     ols_embeddings_corpus = read_ols_embeddings_corpus(ols_embeddings_results)
     obo_foundry_registry = fetch_obo_foundry_registry()
