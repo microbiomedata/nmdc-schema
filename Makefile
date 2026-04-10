@@ -284,6 +284,10 @@ git-status:
 	touch $@
 
 clean:
+	@# Warn if docs/ contains tracked files not originating from src/docs/
+	@comm -23 <(git ls-files 'docs/*.md' 2>/dev/null | xargs -I{} basename {} | sort) \
+		<(ls src/docs/*.md 2>/dev/null | xargs -I{} basename {} | sort) \
+		| while read f; do echo "WARNING: docs/$$f is tracked but has no source in src/docs/. It will be deleted by clean."; done
 	rm -rf $(DEST)
 	rm -rf tmp
 	rm -rf docs/*.md
