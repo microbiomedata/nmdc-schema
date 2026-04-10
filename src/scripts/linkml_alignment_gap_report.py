@@ -54,7 +54,7 @@ def cli(
             "OLS4 embeddings baseline is class-oriented and may miss slot->property alignments.",
             "BioPortal and other non-OLS repositories may expose additional ontology families not emphasized by the OLS4 baseline.",
             "semsql and oaklib help most after retrieval by expanding graph context, relationships, and domain/range neighborhoods.",
-            "Current LinkML-side retrieval experiment uses oaklib + linkml-store over a local ontology corpus, but not BioPortal yet.",
+            "LinkML-side retrieval uses oaklib + linkml-store, with BioPortal-backed corpus harvesting available via `make alignment-linkml-store-bioportal`.",
         ],
     }
     Path(summary_json).parent.mkdir(parents=True, exist_ok=True)

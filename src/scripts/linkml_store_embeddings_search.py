@@ -5,6 +5,9 @@ from __future__ import annotations
 from pathlib import Path
 
 import click
+from dotenv import load_dotenv
+
+load_dotenv("local/.env")
 
 from nmdc_schema.ontology_alignment_prototype import (
     available_tooling,

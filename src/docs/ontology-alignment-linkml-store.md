@@ -27,16 +27,12 @@ poetry install --with dev,deps
 - `OPENAI_API_KEY` — required for all linkml-store targets
 - `BIOPORTAL_API_KEY` — required only for BioPortal corpus harvesting
 
-Both can be sourced from `~/gitrepos/metpo/.env`.
+Both are loaded automatically from `local/.env` via python-dotenv (see `.env.example`).
 
 **OLS4 baseline results:** This pipeline uses the OLS4 results TSV as its
-query set (the list of NMDC schema elements to search). On the `2907` branch
-this file is committed at `src/scripts/ols4_embeddings_results.tsv`. On the
-`2908` branch, copy or symlink it:
-
-```bash
-cp path/to/ols4_embeddings_results.tsv local/ols4_embeddings_results.tsv
-```
+query set (the list of NMDC schema elements to search). The committed baseline
+is at `assets/ontology_alignment/ols4_embeddings_results.tsv`. Fresh search
+results go to `local/ols4_embeddings_results.tsv`.
 
 ## Quick start
 

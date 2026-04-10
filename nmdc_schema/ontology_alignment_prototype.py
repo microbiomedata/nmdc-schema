@@ -546,7 +546,9 @@ def oaklib_entity_metadata(
         return metadata
 
     try:
-        adapter = get_adapter(object_id)
+        # get_adapter expects a handle like "sqlite:obo:obi", not a CURIE
+        adapter_handle = f"sqlite:obo:{object_source.lower()}"
+        adapter = get_adapter(adapter_handle)
         label = adapter.label(object_id) or ""
         definition = ""
         if hasattr(adapter, "definition"):

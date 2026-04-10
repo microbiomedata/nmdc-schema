@@ -67,7 +67,7 @@ This roadmap turns `#2910` into a layered prototype rather than a single retriev
 - The current OLS4 baseline is class-oriented and does not cover `slot -> property` retrieval.
 - In the current schema snapshot, `302 / 851` NMDC slots are `property_like`, so class-only retrieval is structurally incomplete.
 - The current OLS4 baseline is heavily concentrated in sources such as `SNOMED`, `NCIT`, and `NCBITaxon`, which means OLS4-driven review is not the same thing as repository-complete review.
-- The current LinkML-side retrieval experiment uses `oaklib + linkml-store` over local ontology corpora, but it does not yet include BioPortal-backed retrieval.
+- The LinkML-side retrieval experiment uses `oaklib + linkml-store` over local ontology corpora, with BioPortal-backed corpus harvesting available (`make alignment-linkml-store-bioportal`).
 - `semsql` is most likely to help after retrieval by expanding property, relationship, and neighborhood context around candidate classes.
 
 ## Open questions
