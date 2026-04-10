@@ -648,6 +648,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#where-should-i-put-hand-written-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where should I put hand-written documentation?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-are-linkml-readonly-metaslots-and-why-shouldnt-i-assert-them" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -775,6 +786,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#where-should-i-put-hand-written-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where should I put hand-written documentation?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-are-linkml-readonly-metaslots-and-why-shouldnt-i-assert-them" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -829,6 +851,12 @@
 <h3 id="where-is-the-owl-generation-documentation">Where is the OWL generation documentation?</h3>
 <p><a href="../owl-generation/">OWL Generation</a> -- covers current build process, recommended
 config, CLI/YAML flag mapping, portal submission guidance, and upcoming LinkML changes.</p>
+<h3 id="where-should-i-put-hand-written-documentation">Where should I put hand-written documentation?</h3>
+<p>The <code>docs/</code> directory is a <strong>build output directory</strong> — <code>make clean</code> deletes
+<code>docs/*.md</code> and <code>docs/*.html</code>. Tracked files in <code>docs/</code> that have no
+counterpart in <code>src/docs/</code> will trigger a warning during <code>make clean</code>, but
+untracked files will be silently removed. Place all hand-written documentation
+in <code>src/docs/</code> instead; the build copies it into <code>docs/</code> automatically.</p>
 <h3 id="what-are-linkml-readonly-metaslots-and-why-shouldnt-i-assert-them">What are LinkML readonly metaslots and why shouldn't I assert them?</h3>
 <p>The LinkML metamodel defines 12 <strong>readonly</strong> slots that are automatically populated
 by the schema loader or generators: <code>definition_uri</code>, <code>domain_of</code>, <code>from_schema</code>,
