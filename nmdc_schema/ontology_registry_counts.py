@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import logging
 import os
 from collections import Counter
 from pathlib import Path
@@ -10,6 +11,8 @@ from typing import Any
 
 import requests
 import yaml
+
+logger = logging.getLogger(__name__)
 
 
 OLS4_ONTOLOGIES_URL = "https://www.ebi.ac.uk/ols4/api/ontologies"
@@ -22,7 +25,8 @@ SEMSQL_REGISTRY_RAW_URL = (
 
 def read_ols_embeddings_corpus(semantic_results_path: str | Path) -> dict[str, Any]:
     """Count and summarize the ontology prefixes present in an OLS-derived embeddings TSV."""
-    rows = list(csv.DictReader(Path(semantic_results_path).open(), delimiter="\t"))
+    with Path(semantic_results_path).open() as fh:
+        rows = list(csv.DictReader(fh, delimiter="\t"))
     counts = Counter((row.get("object_source") or "").upper() for row in rows if row.get("object_source"))
     return {
         "source_name": "ols_embeddings_corpus",
@@ -40,6 +44,16 @@ def fetch_ols_overall_registry(timeout: int = 120) -> dict[str, Any]:
     response.raise_for_status()
     payload = response.json()
     ontologies = payload.get("_embedded", {}).get("ontologies", [])
+    total_elements = int(payload.get("page", {}).get("totalElements", len(ontologies)))
+    page_size = int(payload.get("page", {}).get("size", 500))
+    if total_elements > page_size:
+        logger.warning(
+            "OLS4 registry has %d ontologies but only %d were fetched (page size %d). "
+            "Prefix list is incomplete. Consider adding pagination.",
+            total_elements,
+            len(ontologies),
+            page_size,
+        )
     prefixes = sorted(
         {
             (
@@ -118,7 +132,7 @@ def fetch_semsql_registry(timeout: int = 120) -> dict[str, Any]:
     response.raise_for_status()
     payload = yaml.safe_load(response.text)
     ontologies = payload.get("ontologies", {})
-    prefixes = sorted(ontologies)
+    prefixes = sorted({prefix.upper() for prefix in ontologies})
     return {
         "source_name": "semantic_sql_registry",
         "count": len(prefixes),

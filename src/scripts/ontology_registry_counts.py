@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 from pathlib import Path
 
 import click
@@ -69,7 +70,12 @@ def cli(
     ols_embeddings_corpus = read_ols_embeddings_corpus(ols_embeddings_results)
     obo_foundry_registry = fetch_obo_foundry_registry()
     semsql_registry = fetch_semsql_registry()
-    bioportal_registry = fetch_bioportal_registry() if include_bioportal else None
+    bioportal_registry = None
+    if include_bioportal:
+        if os.environ.get("BIOPORTAL_API_KEY"):
+            bioportal_registry = fetch_bioportal_registry()
+        else:
+            click.echo("WARNING: BIOPORTAL_API_KEY not set; skipping BioPortal registry.", err=True)
 
     summary = {
         "ols_overall": ols_overall,

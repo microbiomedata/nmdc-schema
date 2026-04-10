@@ -27,8 +27,7 @@ Run:
 
 ```bash
 cd ~/gitrepos/nmdc-schema
-set -a
-source ~/gitrepos/metpo/.env
+export BIOPORTAL_API_KEY=your-key-here  # or load from your preferred secrets manager
 poetry run python src/scripts/ontology_registry_counts.py \
   --ols-embeddings-results /tmp/ols4_embeddings_results.tsv \
   --output-json local/ontology_registry_counts.json \
