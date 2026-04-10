@@ -880,8 +880,8 @@ counterpart in <code>src/docs/</code> will trigger a warning during <code>make c
 untracked files will be silently removed. Place all hand-written documentation
 in <code>src/docs/</code> instead; the build copies it into <code>docs/</code> automatically.</p>
 <h3 id="how-do-i-configure-environment-variables-for-development-scripts">How do I configure environment variables for development scripts?</h3>
-<p>Some scripts need API keys or database credentials. All scripts load from
-<code>local/.env</code> via <code>python-dotenv</code>. To get started:</p>
+<p>Some scripts need API keys or database credentials. Scripts that need them
+load from <code>local/.env</code> via <code>python-dotenv</code>. To get started:</p>
 <pre><code class="language-bash"># IMPORTANT: Do NOT overwrite an existing local/.env — it may contain
 # real credentials that are not recoverable from this repo.
 if [ ! -f local/.env ]; then
