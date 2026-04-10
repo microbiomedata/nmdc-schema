@@ -35,6 +35,11 @@ cp .env.example local/.env
 variable, which script uses it, and where to get credentials. You only need
 to fill in the variables for the scripts you actually run.
 
+The Docker-based migrator workflow has its own separate env file at
+`nmdc_schema/migrators/.docker/.env.example` — see the
+[migrators README](https://github.com/microbiomedata/nmdc-schema/blob/main/nmdc_schema/migrators/README.md)
+for details.
+
 ### What are LinkML readonly metaslots and why shouldn't I assert them?
 
 The LinkML metamodel defines 12 **readonly** slots that are automatically populated
