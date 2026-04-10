@@ -12,7 +12,7 @@ Those are not the same thing.
 ## Sources
 
 - OLS overall: `https://www.ebi.ac.uk/ols4/api/ontologies?page=0&size=500`
-- OLS embeddings corpus: `/tmp/ols4_embeddings_results.tsv` or another checked results TSV from the current workflow
+- OLS embeddings corpus: `assets/ontology_alignment/ols4_embeddings_results.tsv` (committed baseline from OLS4 embeddings search)
 - BioPortal: `https://data.bioontology.org/ontologies` with:
   - `include=acronym,name`
   - `display_context=false`
@@ -27,11 +27,8 @@ Run:
 
 ```bash
 cd ~/gitrepos/nmdc-schema
-export BIOPORTAL_API_KEY=your-key-here  # or load from your preferred secrets manager
-poetry run python src/scripts/ontology_registry_counts.py \
-  --ols-embeddings-results /tmp/ols4_embeddings_results.tsv \
-  --output-json local/ontology_registry_counts.json \
-  --output-prefixes-tsv local/ontology_registry_prefixes.tsv
+# Uses BIOPORTAL_API_KEY from local/.env automatically (see .env.example)
+make ontology-registry-counts
 ```
 
 This writes:

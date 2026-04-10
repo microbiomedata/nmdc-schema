@@ -38,7 +38,7 @@ def write_tsv(rows: list[dict[str, str]], output_path: str | Path) -> None:
 @click.command()
 @click.option(
     "--ols-embeddings-results",
-    default="/tmp/ols4_embeddings_results.tsv",
+    default="assets/ontology_alignment/ols4_embeddings_results.tsv",
     show_default=True,
     help="OLS-derived semantic results TSV used to define the current embeddings corpus",
 )
