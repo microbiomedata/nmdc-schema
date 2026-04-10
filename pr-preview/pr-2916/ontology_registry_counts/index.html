@@ -688,7 +688,7 @@
 <h2 id="sources">Sources</h2>
 <ul>
 <li>OLS overall: <code>https://www.ebi.ac.uk/ols4/api/ontologies?page=0&amp;size=500</code></li>
-<li>OLS embeddings corpus: <code>/tmp/ols4_embeddings_results.tsv</code> or another checked results TSV from the current workflow</li>
+<li>OLS embeddings corpus: <code>assets/ontology_alignment/ols4_embeddings_results.tsv</code> (committed baseline from OLS4 embeddings search)</li>
 <li>BioPortal: <code>https://data.bioontology.org/ontologies</code> with:</li>
 <li><code>include=acronym,name</code></li>
 <li><code>display_context=false</code></li>
@@ -700,11 +700,8 @@
 <h2 id="reproducible-script">Reproducible script</h2>
 <p>Run:</p>
 <pre><code class="language-bash">cd ~/gitrepos/nmdc-schema
-export BIOPORTAL_API_KEY=your-key-here  # or load from your preferred secrets manager
-poetry run python src/scripts/ontology_registry_counts.py \
-  --ols-embeddings-results /tmp/ols4_embeddings_results.tsv \
-  --output-json local/ontology_registry_counts.json \
-  --output-prefixes-tsv local/ontology_registry_prefixes.tsv
+# Uses BIOPORTAL_API_KEY from local/.env automatically (see .env.example)
+make ontology-registry-counts
 </code></pre>
 <p>This writes:</p>
 <ul>
