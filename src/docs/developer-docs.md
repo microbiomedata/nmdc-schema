@@ -27,8 +27,15 @@ Some scripts need API keys or database credentials. All scripts load from
 `local/.env` via `python-dotenv`. To get started:
 
 ```bash
-cp .env.example local/.env
-# Edit local/.env with your values
+# IMPORTANT: Do NOT overwrite an existing local/.env — it may contain
+# real credentials that are not recoverable from this repo.
+if [ ! -f local/.env ]; then
+    cp .env.example local/.env
+else
+    echo "local/.env already exists — not overwriting."
+    echo "Compare with .env.example to see if you need to add new variables:"
+    echo "  diff <(sed 's/=.*//' .env.example) <(sed 's/=.*//' local/.env)"
+fi
 ```
 
 `local/` is gitignored. `.env.example` in the repo root documents every
