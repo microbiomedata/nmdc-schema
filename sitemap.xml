@@ -3105,11 +3105,19 @@
          <lastmod>2026-04-10</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/ontology-alignment-ols4/</loc>
+         <lastmod>2026-04-10</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/ontology-governance-current-state/</loc>
          <lastmod>2026-04-10</lastmod>
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/ontology_class_set/</loc>
+         <lastmod>2026-04-10</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/ontology_registry_counts/</loc>
          <lastmod>2026-04-10</lastmod>
     </url>
     <url>
