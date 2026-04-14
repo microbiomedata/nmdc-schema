@@ -189,6 +189,8 @@ classes:
     slots:
       - classified_as
       - biosafety_material_category
+      - gold_organism_identifiers
+      - insdc_nucleotide_identifiers
     slot_usage:
       id:
         required: true
@@ -592,7 +594,7 @@ classes:
         required: true
         range: Sample
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       associated_studies:
         range: Study
