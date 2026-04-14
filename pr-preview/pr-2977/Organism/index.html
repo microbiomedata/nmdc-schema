@@ -489,12 +489,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../type/">type</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>the class_uri of the class that has been instantiated</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A unique identifier for a thing</td>
@@ -516,6 +510,12 @@
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of alternative identifiers for the entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -594,7 +594,6 @@ is_a: MaterialEntity
 slots:
 - classified_as
 - biosafety_material_category
-- type
 slot_usage:
   id:
     name: id
@@ -635,11 +634,11 @@ attributes:
       term from an ontology or taxonomy. Each value wraps a reference to an OntologyClass
       instance (or subclass such as Taxon) in ontology_class_set.
     comments:
-    - On OrganismSample, this slot captures the taxonomic classification of the organism
-      in the sample. The term should reference a Taxon instance identified by an NCBITaxon
-      CURIE (or another supported taxonomy prefix). The slot is multivalued to allow
-      classifications from multiple authorities (e.g. both NCBITaxon and GTDB) for
-      the same organism.
+    - On Organism (and inherited by Strain), this slot captures the taxonomic classification
+      of the organism. The term should reference a Taxon instance identified by an
+      NCBITaxon CURIE (or another supported taxonomy prefix). The slot is multivalued
+      to allow classifications from multiple authorities (e.g. both NCBITaxon and
+      GTDB) for the same organism. OrganismSample is classified indirectly via expected_content.classified_as.
     - This slot is intended to replace known_as on PortionOfSubstance in a future
       deprecation.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -654,6 +653,8 @@ attributes:
     - Organism
     range: ControlledIdentifiedTermValue
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   biosafety_material_category:
     name: biosafety_material_category
     annotations:
@@ -670,52 +671,6 @@ attributes:
     domain_of:
     - Organism
     range: BiosafetyMaterialCategoryEnum
-  type:
-    name: type
-    description: the class_uri of the class that has been instantiated
-    notes:
-    - makes it easier to read example data files
-    - required for polymorphic MongoDB collections
-    examples:
-    - value: nmdc:Biosample
-    - value: nmdc:Study
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
-    structured_aliases:
-    - literal_form: workflow_execution_class
-      predicate: NARROW_SYNONYM
-      contexts:
-      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-    rank: 1000
-    slot_uri: rdf:type
-    designates_type: true
-    alias: type
-    owner: Organism
-    domain_of:
-    - EukEval
-    - FunctionalAnnotationAggMember
-    - PeptideQuantification
-    - ProteinQuantification
-    - GenomeFeature
-    - FunctionalAnnotation
-    - AttributeValue
-    - NamedThing
-    - OntologyRelation
-    - FailureCategorization
-    - Organism
-    - Protocol
-    - CreditAssociation
-    - Doi
-    - ProvenanceMetadata
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
-    range: uriorcurie
-    required: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -791,6 +746,51 @@ attributes:
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+    - literal_form: workflow_execution_class
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: Organism
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - OntologyRelation
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    range: uriorcurie
+    required: true
 class_uri: nmdc:Organism
 
 </code></pre>

@@ -467,11 +467,6 @@
 
   OrganismSample : id
 
-  OrganismSample : isol_growth_condt
-
-      OrganismSample --&gt; "0..1" TextValue : isol_growth_condt
-    click TextValue href "../TextValue"
-
   OrganismSample : its_match_unite
 
       OrganismSample --&gt; "0..1" YesNoEnum : its_match_unite
@@ -688,12 +683,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../isol_growth_condt/">isol_growth_condt</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
-<td>Publication reference in the form of pubmed ID (pmid), digital object identif...</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A unique identifier for a thing</td>
@@ -819,13 +808,17 @@ slots:
 - its_match_unite
 - sample_isolation_method
 - sample_isolated_from
-- isol_growth_condt
 slot_usage:
   id:
     name: id
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  expected_content:
+    name: expected_content
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(orgn|strn)-{id_shoulder}-{id_blade}$'
       interpolated: true
 class_uri: nmdc:OrganismSample
 
@@ -856,6 +849,11 @@ slot_usage:
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  expected_content:
+    name: expected_content
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(orgn|strn)-{id_shoulder}-{id_blade}$'
       interpolated: true
 attributes:
   associated_studies:
@@ -889,6 +887,9 @@ attributes:
     domain_of:
     - OrganismSample
     range: Organism
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(orgn|strn)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   embargoed:
     name: embargoed
     description: If true, the data are embargoed and not available for public access.
@@ -1292,30 +1293,6 @@ attributes:
     domain_of:
     - OrganismSample
     range: string
-  isol_growth_condt:
-    name: isol_growth_condt
-    description: Publication reference in the form of pubmed ID (pmid), digital object
-      identifier (doi) or url for isolation and growth condition specifications of
-      the organism/material
-    title: isolation and growth condition
-    examples:
-    - value: doi:10.1016/j.syapm.2018.01.009
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    keywords:
-    - condition
-    - growth
-    - isolation
-    slot_uri: MIXS:0000003
-    alias: isol_growth_condt
-    owner: OrganismSample
-    domain_of:
-    - OrganismSample
-    range: TextValue
-    structured_pattern:
-      syntax: ^({PMID}|{DOI}|{URL})$
-      interpolated: true
-      partial_match: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -1426,7 +1403,6 @@ attributes:
     - NamedThing
     - OntologyRelation
     - FailureCategorization
-    - Organism
     - Protocol
     - CreditAssociation
     - Doi

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post48.dev0+f682840f2
+version: 11.18.0.post49.dev0+7cf2d80e5
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7682,11 +7682,11 @@ slots:
       term from an ontology or taxonomy. Each value wraps a reference to an OntologyClass
       instance (or subclass such as Taxon) in ontology_class_set.
     comments:
-    - On OrganismSample, this slot captures the taxonomic classification of the organism
-      in the sample. The term should reference a Taxon instance identified by an NCBITaxon
-      CURIE (or another supported taxonomy prefix). The slot is multivalued to allow
-      classifications from multiple authorities (e.g. both NCBITaxon and GTDB) for
-      the same organism.
+    - On Organism (and inherited by Strain), this slot captures the taxonomic classification
+      of the organism. The term should reference a Taxon instance identified by an
+      NCBITaxon CURIE (or another supported taxonomy prefix). The slot is multivalued
+      to allow classifications from multiple authorities (e.g. both NCBITaxon and
+      GTDB) for the same organism. OrganismSample is classified indirectly via expected_content.classified_as.
     - This slot is intended to replace known_as on PortionOfSubstance in a future
       deprecation.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -7696,6 +7696,7 @@ slots:
     - biolink:in_taxon
     range: ControlledIdentifiedTermValue
     multivalued: true
+    inlined_as_list: true
   source_system_of_record:
     name: source_system_of_record
     description: Identifies the system of origin for a record
@@ -19532,7 +19533,6 @@ classes:
     slots:
     - classified_as
     - biosafety_material_category
-    - type
     slot_usage:
       id:
         name: id
@@ -19550,7 +19550,7 @@ classes:
     comments:
     - Strain instances are stored in organism_set alongside Organism instances (polymorphic
       collection). Strain inherits classified_as from Organism for taxonomic classification
-      via CURIE (e.g. NCBITaxon:511145). Strain-level identity (strain_name, culture_collection_id)
+      via CURIE (e.g. NCBITaxon:511145). Strain-level identity (strain_name, source_mat_id)
       captures detail that no formal taxonomy covers.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
@@ -21304,7 +21304,6 @@ classes:
     - its_match_unite
     - sample_isolation_method
     - sample_isolated_from
-    - isol_growth_condt
     slot_usage:
       id:
         name: id
@@ -21312,6 +21311,12 @@ classes:
         pattern: ^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      expected_content:
+        name: expected_content
+        pattern: ^(nmdc):(orgn|strn)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:(orgn|strn)-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:OrganismSample
   Site:

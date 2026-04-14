@@ -688,8 +688,8 @@
 <li>
 <p><strong><code>classified_as</code> slot</strong> (<code>range: ControlledIdentifiedTermValue</code>, multivalued) — a
   general-purpose classification slot. When used for taxonomy, the <code>term</code> should
-  reference a <code>Taxon</code> instance. Not yet assigned to any class; OrganismSample (#2884)
-  will be the first consumer.</p>
+  reference a <code>Taxon</code> instance. In the current schema, <code>Organism</code> includes
+  <code>classified_as</code>, and <code>Strain</code> inherits it.</p>
 </li>
 </ul>
 <h2 id="what-is-not-in-this-pr-and-where-it-goes">What is NOT in this PR — and where it goes</h2>
@@ -729,8 +729,8 @@
 </tr>
 <tr>
 <td>Organism genus/species as separate text fields (JGI requirement)</td>
-<td>Slots on OrganismSample (<code>organism_genus</code>, <code>organism_species</code>)</td>
-<td>#2884</td>
+<td>Slots on Strain (<code>organism_genus</code>, <code>organism_species</code>)</td>
+<td>#2977</td>
 </tr>
 <tr>
 <td>GOLD organism identifiers (<code>Go*</code>)</td>

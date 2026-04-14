@@ -783,8 +783,8 @@ to nmdc-schema classes, submission-schema, or deferred.</p>
 <tr>
 <td>45</td>
 <td>Collection Site or Growth Conditions*</td>
-<td><code>isol_growth_condt</code></td>
-<td>MIxS (newly imported)</td>
+<td><code>sample_isolated_from</code></td>
+<td>JGI-native (new) — combined with field 44. MIxS isol_growth_condt (MIXS:0000003) was considered but its semantics are "publication reference for growth conditions," not free text</td>
 </tr>
 <tr>
 <td>41-43</td>
@@ -1061,14 +1061,12 @@ to nmdc-schema classes, submission-schema, or deferred.</p>
 <td>Strain</td>
 <td>Reference Genome</td>
 </tr>
-<tr>
-<td><code>isol_growth_condt</code></td>
-<td>MIXS:0000003</td>
-<td>OrganismSample</td>
-<td>Collection Site or Growth Conditions</td>
-</tr>
 </tbody>
 </table>
+<p><code>isol_growth_condt</code> (MIXS:0000003) was imported but not assigned. Its MIxS semantics are
+"publication reference for isolation/growth conditions" (DOI/PMID/URL pattern), which does
+not match the JGI free-text field. It remains available for future use where a publication
+reference is appropriate.</p>
 <p>Note: <code>ref_biomaterial</code> may be renamed in a future MIxS release. Montana Smith has
 ongoing MIxS renaming work that may affect this slot.</p>
 

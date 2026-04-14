@@ -12357,8 +12357,8 @@
                 }
             },
             "required": [
-                "type",
-                "id"
+                "id",
+                "type"
             ],
             "title": "Organism",
             "type": "object"
@@ -12465,17 +12465,6 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
-                },
-                "isol_growth_condt": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material"
                 },
                 "its_match_unite": {
                     "$ref": "#/$defs/YesNoEnum",
@@ -14606,8 +14595,8 @@
                 }
             },
             "required": [
-                "type",
-                "id"
+                "id",
+                "type"
             ],
             "title": "Strain",
             "type": "object"
@@ -15999,5 +15988,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post48.dev0+f682840f2"
+    "version": "11.18.0.post49.dev0+7cf2d80e5"
 }

@@ -12646,8 +12646,8 @@
                 }
             },
             "required": [
-                "type",
-                "id"
+                "id",
+                "type"
             ],
             "title": "Organism",
             "type": "object"
@@ -12722,6 +12722,7 @@
                 },
                 "expected_content": {
                     "description": "The organism or strain that the submitter expects to be present in this sample. May be contradicted by sequencing results.",
+                    "pattern": "^(nmdc):(orgn|strn)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
                         "string",
                         "null"
@@ -12758,18 +12759,6 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
-                },
-                "isol_growth_condt": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material",
-                    "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$"
                 },
                 "its_match_unite": {
                     "$ref": "#/$defs/YesNoEnum",
@@ -14916,8 +14905,8 @@
                 }
             },
             "required": [
-                "type",
-                "id"
+                "id",
+                "type"
             ],
             "title": "Strain",
             "type": "object"
@@ -16313,6 +16302,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post48.dev0+f682840f2"
+    "version": "11.18.0.post49.dev0+7cf2d80e5"
 }
 
