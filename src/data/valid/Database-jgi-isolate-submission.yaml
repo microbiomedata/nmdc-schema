@@ -27,11 +27,7 @@ organism_set:
     organism_species: sp.
     strain_name: ICBG1012
     isolate_name: Isolate
-    estimated_size:
-      type: nmdc:QuantityValue
-      has_numeric_value: 10000000
-      has_raw_value: 10 Mb
-      has_unit: bp
+    estimated_size: 10000000 bp
     gc_content: 72.0
 
 organism_sample_set:
