@@ -23,7 +23,7 @@
 | Organism genus/species as separate text fields (JGI requirement) | Slots on OrganismSample (`organism_genus`, `organism_species`) | #2884 |
 | GOLD organism identifiers (`Go*`) | `gold_organism_identifiers` slot | #2973 |
 | Genbank 16S / INSDC accessions | String or external identifier slots | #2960 |
-| Deprecation of `known_as` on ChemicalSubstance | Replace with `classified_as` | Future issue |
+| Deprecation of `known_as` on PortionOfSubstance | Replace with `classified_as` | Future issue |
 | Example data for `classified_as` | Valid example YAML | #2974 |
 
 ## Relationship to existing taxonomy slots

@@ -67,9 +67,10 @@ classes:
     class_uri: nmdc:Taxon
     is_a: OntologyClass
     description: >-
-      A classification term from a formal taxonomy such as NCBITaxon, GTDB, or LPSN. Taxon instances
-      are identified by external CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set
-      alongside other OntologyClass instances. No NMDC-minted identifiers are assigned to taxa.
+      A classification term from a formal taxonomy. Taxon instances are currently identified by
+      NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other
+      OntologyClass instances. No NMDC-minted identifiers are assigned to taxa. Support for
+      additional taxonomic authorities (GTDB, LPSN, SeqCode) can be added by expanding id_prefixes.
     id_prefixes:
       - NCBITaxon
     comments:
@@ -605,7 +606,7 @@ slots:
         (or another supported taxonomy prefix). The slot is multivalued to allow classifications
         from multiple authorities (e.g. both NCBITaxon and GTDB) for the same organism.
       - >-
-        This slot is intended to replace known_as on ChemicalSubstance in a future deprecation.
+        This slot is intended to replace known_as on PortionOfSubstance in a future deprecation.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/2959
     narrow_mappings:
