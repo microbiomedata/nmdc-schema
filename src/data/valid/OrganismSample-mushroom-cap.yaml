@@ -1,0 +1,21 @@
+# Sierra's scenario: a mushroom cap.
+# All cells share the same fungal genome. Bacteria are present on the
+# surface but the submitter's intent is to sequence the fungus.
+# This is an OrganismSample, not a Biosample, because genomic homogeneity
+# is expected.
+# See: https://github.com/microbiomedata/nmdc-schema/pull/2884#issuecomment-4166566640
+id: nmdc:osm-99-mushroom
+type: nmdc:OrganismSample
+name: Agaricus bisporus fruiting body cap
+samp_name: Abisp_cap_01
+expected_content: nmdc:orgn-99-abisp001
+single_colony_isolation: "no"
+sample_isolated_from: Fruiting body cap collected from commercial cultivation facility
+collection_date:
+  type: nmdc:TimestampValue
+  has_raw_value: "2025-09-20"
+geo_loc_name:
+  type: nmdc:TextValue
+  has_raw_value: USA
+associated_studies:
+  - nmdc:sty-99-fungalstudy

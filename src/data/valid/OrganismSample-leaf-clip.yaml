@@ -1,0 +1,21 @@
+# Sierra's scenario: a leaf clip from a greenhouse.
+# All cells in the leaf share the same plant genome. Microbes are present
+# but the submitter's intent is to sequence the plant.
+# This is an OrganismSample, not a Biosample, because genomic homogeneity
+# is expected.
+# See: https://github.com/microbiomedata/nmdc-schema/pull/2884#issuecomment-4166566640
+id: nmdc:osm-99-leafclip
+type: nmdc:OrganismSample
+name: Arabidopsis thaliana Col-0 leaf clip
+samp_name: Athal_Col0_leaf_01
+expected_content: nmdc:orgn-99-athal001
+single_colony_isolation: "no"
+sample_isolated_from: Leaf tissue clipped from greenhouse-grown Arabidopsis thaliana Col-0
+collection_date:
+  type: nmdc:TimestampValue
+  has_raw_value: "2025-06-15"
+geo_loc_name:
+  type: nmdc:TextValue
+  has_raw_value: USA
+associated_studies:
+  - nmdc:sty-99-greenhouse
