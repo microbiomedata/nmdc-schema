@@ -11,19 +11,23 @@ flowchart LR
     STRN["Strain\nAmycolatopsis sp.\nICBG1012"]
     TAX["Taxon\nNCBITaxon:1813"]
 
-    Site -->|has_input| CBFS -->|has_output| BSM
-    BSM -->|has_input| ISN -->|has_output| OSM1
-    OSM1 -->|has_input| CULT -->|has_output| OSM2
-    OSM2 -->|has_input| EXT -->|has_output| PSM
+    CBFS -->|has_input| Site
+    CBFS -->|has_output| BSM
+    ISN -->|has_input| BSM
+    ISN -->|has_output| OSM1
+    CULT -->|has_input| OSM1
+    CULT -->|has_output| OSM2
+    EXT -->|has_input| OSM2
+    EXT -->|has_output| PSM
     OSM1 -.->|expected_content| STRN
     STRN -.->|classified_as| TAX
 
-    style OSM1 fill:#fff3e0,stroke:#e65100,stroke-width:3px
-    style OSM2 fill:#fff3e0,stroke:#e65100,stroke-width:3px
-    style ISN fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
-    style CULT fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
-    style STRN fill:#e1f5fe,stroke:#0277bd,stroke-width:3px
-    style TAX fill:#e8f5e9,stroke:#2e7d32,stroke-width:3px
+    style OSM1 fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    style OSM2 fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    style ISN fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    style CULT fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    style STRN fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    style TAX fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
     style Site fill:#fafafa,stroke:#9e9e9e
     style BSM fill:#fafafa,stroke:#9e9e9e
     style CBFS fill:#fafafa,stroke:#9e9e9e
