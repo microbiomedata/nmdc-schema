@@ -3,19 +3,22 @@
 # surface but the submitter's intent is to sequence the fungus.
 # This is an OrganismSample, not a Biosample, because genomic homogeneity
 # is expected.
+# Organism data from GOLD organism_v2: Lentinula edodes NBRC 111202
+# (Go0372970, NCBITaxon:5353, queried 2026-04-14). Shiitake mushroom.
+# No Agaricus bisporus in GOLD; Lentinula edodes is the closest available.
 # See: https://github.com/microbiomedata/nmdc-schema/pull/2884#issuecomment-4166566640
-id: nmdc:osm-99-mushroom
+id: nmdc:osm-99-shiitake01
 type: nmdc:OrganismSample
-name: Agaricus bisporus fruiting body cap
-samp_name: Abisp_cap_01
-expected_content: nmdc:orgn-99-abisp001
+name: Lentinula edodes NBRC 111202 fruiting body cap
+samp_name: Ledodes_NBRC111202_cap_01
+expected_content: nmdc:orgn-99-ledodes001
 single_colony_isolation: "no"
-sample_isolated_from: Fruiting body cap collected from commercial cultivation facility
+sample_isolated_from: Fruiting body cap of cultivated Lentinula edodes (shiitake)
 collection_date:
   type: nmdc:TimestampValue
   has_raw_value: "2025-09-20"
 geo_loc_name:
   type: nmdc:TextValue
-  has_raw_value: USA
+  has_raw_value: Japan
 associated_studies:
   - nmdc:sty-99-fungalstudy
