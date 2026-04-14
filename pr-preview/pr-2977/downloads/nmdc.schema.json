@@ -13532,11 +13532,13 @@
                 "ChemicalConversionProcess",
                 "ChromatographicSeparationProcess",
                 "CollectingBiosamplesFromSite",
+                "Culturing",
                 "DataEmitterProcess",
                 "DataGeneration",
                 "DissolvingProcess",
                 "Extraction",
                 "FiltrationProcess",
+                "Isolation",
                 "LibraryPreparation",
                 "MagsAnalysis",
                 "MassSpectrometry",
@@ -16246,5 +16248,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post56.dev0+7ada387c6"
+    "version": "11.18.0.post57.dev0+3372486e6"
 }
