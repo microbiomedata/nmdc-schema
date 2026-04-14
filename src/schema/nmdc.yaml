@@ -508,6 +508,7 @@ classes:
           interpolated: true
       has_output:
         required: true
+        range: OrganismSample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -529,11 +530,13 @@ classes:
           interpolated: true
       has_input:
         required: true
+        range: OrganismSample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_output:
         required: true
+        range: OrganismSample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$"
           interpolated: true
