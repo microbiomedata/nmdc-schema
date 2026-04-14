@@ -2229,6 +2229,10 @@
          <lastmod>2026-04-14</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/gold_organism_identifiers/</loc>
+         <lastmod>2026-04-14</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/gold_path_field/</loc>
          <lastmod>2026-04-14</lastmod>
     </url>
@@ -2670,6 +2674,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/insdc_identifiers/</loc>
+         <lastmod>2026-04-14</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/insdc_nucleotide_identifiers/</loc>
          <lastmod>2026-04-14</lastmod>
     </url>
     <url>

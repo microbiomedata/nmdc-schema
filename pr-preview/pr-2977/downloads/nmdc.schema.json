@@ -12588,10 +12588,32 @@
                         "null"
                     ]
                 },
+                "gold_organism_identifiers": {
+                    "description": "identifiers for corresponding organism in GOLD",
+                    "items": {
+                        "pattern": "^gold:Go[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
+                },
+                "insdc_nucleotide_identifiers": {
+                    "description": "INSDC nucleotide sequence accessions for marker genes or other sequences associated with this organism or strain (e.g. 16S rRNA, ITS). These are GenBank/ENA/DDBJ accession numbers, not GI numbers.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "name": {
                     "description": "A human readable label for an entity",
@@ -14735,6 +14757,17 @@
                         "null"
                     ]
                 },
+                "gold_organism_identifiers": {
+                    "description": "identifiers for corresponding organism in GOLD",
+                    "items": {
+                        "pattern": "^gold:Go[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "host_taxid": {
                     "anyOf": [
                         {
@@ -14750,6 +14783,17 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
+                },
+                "insdc_nucleotide_identifiers": {
+                    "description": "INSDC nucleotide sequence accessions for marker genes or other sequences associated with this organism or strain (e.g. 16S rRNA, ITS). These are GenBank/ENA/DDBJ accession numbers, not GI numbers.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "isolate_name": {
                     "description": "Isolate or mutant name.",
@@ -16248,5 +16292,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post59.dev0+e04194051"
+    "version": "11.18.0.post60.dev0+1be0385ec"
 }
