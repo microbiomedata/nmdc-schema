@@ -1,11 +1,12 @@
-id: nmdc:orgn-99-xyz789
+# Campylobacter concisus from GOLD organism_v2 (Go0000058, queried 2026-04-14)
+id: nmdc:orgn-99-camp0058
 type: nmdc:Organism
-name: Stenotrophomonas lactitubi
+name: Campylobacter concisus
 classified_as:
   - type: nmdc:ControlledIdentifiedTermValue
-    has_raw_value: Stenotrophomonas lactitubi [NCBITaxon:2811860]
+    has_raw_value: Campylobacter concisus [NCBITaxon:360104]
     term:
-      id: NCBITaxon:2811860
-      name: Stenotrophomonas lactitubi
+      id: NCBITaxon:360104
+      name: Campylobacter concisus
       type: nmdc:Taxon
 biosafety_material_category: Bacteria
