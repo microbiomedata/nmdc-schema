@@ -1,37 +1,31 @@
-graph TD
-    NT[NamedThing]
-    ME[MaterialEntity]
-    S[Sample]
-    PP[PlannedProcess]
-    OC[OntologyClass]
+graph BT
+    ME -->|is_a| NT[NamedThing]
+    S -->|is_a| NT
+    PP -->|is_a| NT
+    OC -->|is_a| NT
 
-    NT -->|is_a| ME
-    NT -->|is_a| S
-    NT -->|is_a| PP
-    NT -->|is_a| OC
+    Instrument -->|is_a| ME[MaterialEntity]
+    Organism -->|is_a| ME
+    Site -->|is_a| ME
 
-    ME -->|is_a| Instrument
-    ME -->|is_a| Organism
-    ME -->|is_a| Site
+    Strain -->|is_a| Organism
 
-    Organism -->|is_a| Strain
+    Biosample -->|is_a| S[Sample]
+    OrganismSample -->|is_a| S
+    ProcessedSample -->|is_a| S
 
-    S -->|is_a| Biosample
-    S -->|is_a| OrganismSample
-    S -->|is_a| ProcessedSample
+    MP[MaterialProcessing] -->|is_a| PP[PlannedProcess]
+    DEP[DataEmitterProcess] -->|is_a| PP
+    CBFS[CollectingBiosamplesFromSite] -->|is_a| PP
 
-    PP -->|is_a| MP[MaterialProcessing]
-    PP -->|is_a| DEP[DataEmitterProcess]
-    PP -->|is_a| CBFS[CollectingBiosamplesFromSite]
+    Extraction -->|is_a| MP
+    Isolation -->|is_a| MP
+    Culturing -->|is_a| MP
 
-    MP -->|is_a| Extraction
-    MP -->|is_a| Isolation
-    MP -->|is_a| Culturing
+    DataGeneration -->|is_a| DEP
 
-    DEP -->|is_a| DataGeneration
-
-    OC -->|is_a| Taxon
-    OC -->|is_a| FAT[FunctionalAnnotationTerm]
+    Taxon -->|is_a| OC[OntologyClass]
+    FAT[FunctionalAnnotationTerm] -->|is_a| OC
 
     %% New in this PR
     style Organism fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
