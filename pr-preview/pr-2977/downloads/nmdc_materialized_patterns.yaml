@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post54.dev0+aefe0f0be
+version: 11.18.0.post55.dev0+43b39356a
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6339,6 +6339,8 @@ slots:
       description: JGI Isolate spreadsheet (Pupo project, row 3)
     - value: Micromonospora
       description: JGI Isolate spreadsheet (Pupo project, row 10)
+    - value: Campylobacter
+      description: GOLD organism_v2 (Go0000058, queried 2026-04-14)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6374,6 +6376,8 @@ slots:
     - value: ICBG1321
       description: JGI Isolate spreadsheet (Pupo project, row 10) — Micromonospora
         strain
+    - value: DSM 6724
+      description: GOLD organism_v2 Dictyoglomus turgidum (Go0000002, queried 2026-04-14)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6401,7 +6405,8 @@ slots:
     description: Estimated GC content as a percentage.
     examples:
     - value: '72.0'
-      description: Typical high-GC actinobacterium (Amycolatopsis)
+      description: Amycolatopsis sp. ICBG1012, JGI Isolate spreadsheet (Pupo project,
+        row 3)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6413,9 +6418,14 @@ slots:
         tag: jgi_isolate_field
         value: Host Genus
     description: Genus of the viral host. Required for viral minimal drafts.
+    comments:
+    - Viral host fields are present on the JGI Isolate (NA) v19 form but not in the
+      GOLD organism_v2 or dw_samples lakehouse tables. No real lakehouse examples
+      available; value shown is from the JGI form field specification.
     examples:
     - value: Escherichia
-      description: Common bacterial host for phage submissions
+      description: JGI Isolate form field specification — bacterial host for phage
+        submissions
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6429,7 +6439,8 @@ slots:
     description: Species of the viral host. Required for viral minimal drafts.
     examples:
     - value: coli
-      description: Common bacterial host for phage submissions
+      description: JGI Isolate form field specification — bacterial host for phage
+        submissions
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6443,7 +6454,7 @@ slots:
     description: Strain of the viral host. Required for viral minimal drafts.
     examples:
     - value: K-12 MG1655
-      description: Common lab strain used as phage host
+      description: JGI Isolate form field specification — common lab strain
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6499,8 +6510,9 @@ slots:
     description: Organisms known or suspected to grow in co-culture or that may be
       contaminants.
     examples:
-    - value: Pseudomonas sp. detected as minor contaminant by 16S
-      description: Hypothetical example — field is empty in the Pupo project spreadsheet
+    - value: culture is a microbial community
+      description: GOLD dw_samples.culture_strain_pure_descr (52 occurrences in lakehouse,
+        queried 2026-04-14)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc

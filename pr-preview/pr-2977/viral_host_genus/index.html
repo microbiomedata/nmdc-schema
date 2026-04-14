@@ -647,6 +647,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -766,6 +777,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Viral host fields are present on the JGI Isolate (NA) v19 form but not in the GOLD organism_v2 or dw_samples lakehouse tables. No real lakehouse examples available; value shown is from the JGI form field specification.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -810,9 +825,13 @@ annotations:
     tag: jgi_isolate_field
     value: Host Genus
 description: Genus of the viral host. Required for viral minimal drafts.
+comments:
+- Viral host fields are present on the JGI Isolate (NA) v19 form but not in the GOLD
+  organism_v2 or dw_samples lakehouse tables. No real lakehouse examples available;
+  value shown is from the JGI form field specification.
 examples:
 - value: Escherichia
-  description: Common bacterial host for phage submissions
+  description: JGI Isolate form field specification — bacterial host for phage submissions
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc
