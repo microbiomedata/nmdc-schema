@@ -12,6 +12,7 @@ from tests import SCHEMA_FILE
 ALLOWED_ANNOTATION_KEYS = {
     "Expected_value",
     "file_name_pattern",
+    "jgi_isolate_field",
     "units_alignment_excuse",
     "occurrence",
     "originally",

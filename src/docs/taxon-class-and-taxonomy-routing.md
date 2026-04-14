@@ -21,7 +21,7 @@
 | GTDB taxonomy | New class or widen `NcbiTaxon.id_prefixes`; needs a GTDB-to-OntologyClass loader (GTDB ships as TSV, not OWL) | Future |
 | LPSN / SeqCode nomenclature | Same pattern — CURIE-identified taxon instances | Future |
 | Novel organisms with no taxon ID | Strain-level text slots; `classified_as` left empty or pointed at nearest ancestor | Strain class PR |
-| Organism genus/species as separate text fields (JGI requirement) | Slots on OrganismSample (`organism_genus`, `organism_species`) | #2884 |
+| Organism genus/species as separate text fields (JGI requirement) | Slots on Strain (`organism_genus`, `organism_species`) | #2977 |
 | GOLD organism identifiers (`Go*`) | `gold_organism_identifiers` slot | #2973 |
 | Genbank 16S / INSDC accessions | String or external identifier slots | #2960 |
 | Deprecation of `known_as` on PortionOfSubstance | Replace with `classified_as` | #2976 |
