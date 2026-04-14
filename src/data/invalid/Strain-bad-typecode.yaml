@@ -1,0 +1,7 @@
+# Invalid: Strain with wrong typecode prefix (orgn instead of strn)
+id: nmdc:orgn-99-abc123
+type: nmdc:Strain
+name: Wrong typecode strain
+organism_genus: Escherichia
+organism_species: coli
+strain_name: K-12

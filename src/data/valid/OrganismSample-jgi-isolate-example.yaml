@@ -1,0 +1,18 @@
+id: nmdc:osm-99-def456
+type: nmdc:OrganismSample
+name: C-FC-06-B-C1 isolate submission
+samp_name: C-FC-06-B-C1
+expected_content: nmdc:strn-99-abc123
+single_colony_isolation: yes
+ribosomal_sequence: AGAGTTTGATCCTGGCTCAGATTGAACGCTGGCGGCATGCCTAACACATGCAAG
+ribosomal_sequence_type: 16S
+sample_isolation_method: Qiagen DNeasy Blood and Tissue Kit
+sample_isolated_from: Cheese production facility drain
+collection_date:
+  type: nmdc:TimestampValue
+  has_raw_value: 2023-06-15
+geo_loc_name:
+  type: nmdc:TextValue
+  has_raw_value: France
+associated_studies:
+  - nmdc:sty-00-abc123
