@@ -1,15 +1,18 @@
-id: nmdc:strn-99-abc123
+# Amycolatopsis sp. ICBG1012 from JGI Isolate spreadsheet (Pupo project, row 3)
+id: nmdc:strn-99-pupo1012
 type: nmdc:Strain
-name: Stenotrophomonas lactitubi C-FC-06-B-C1
+name: Amycolatopsis sp. ICBG1012
 classified_as:
   - type: nmdc:ControlledIdentifiedTermValue
-    has_raw_value: Stenotrophomonas lactitubi [NCBITaxon:2811860]
+    has_raw_value: Amycolatopsis [NCBITaxon:1813]
     term:
-      id: NCBITaxon:2811860
-      name: Stenotrophomonas lactitubi
+      id: NCBITaxon:1813
+      name: Amycolatopsis
       type: nmdc:Taxon
 biosafety_material_category: Bacteria
-organism_genus: Stenotrophomonas
-organism_species: lactitubi
-strain_name: C-FC-06-B-C1
-gc_content: 66.8
+organism_genus: Amycolatopsis
+organism_species: sp.
+strain_name: ICBG1012
+isolate_name: Isolate
+gc_content: 72.0
+estimated_size: 10000000 bp

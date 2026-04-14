@@ -1,18 +1,20 @@
-id: nmdc:osm-99-def456
+# Micromonospora sp. ICBG1321 from JGI Isolate spreadsheet (Pupo project, row 10)
+# Isolated from nurse bees of Melipona scutellaris, Ribeirão Preto, Brazil
+id: nmdc:osm-99-pupo1321
 type: nmdc:OrganismSample
-name: C-FC-06-B-C1 isolate submission
-samp_name: C-FC-06-B-C1
-expected_content: nmdc:strn-99-abc123
+name: Micromonospora sp. ICBG1321 isolate submission
+samp_name: Micromonospora_sp_ICBG1321
+expected_content: nmdc:strn-99-pupo1321
 single_colony_isolation: "yes"
-ribosomal_sequence: AGAGTTTGATCCTGGCTCAGATTGAACGCTGGCGGCATGCCTAACACATGCAAG
+ribosomal_sequence: AGCGGTAAAGGCCCTTTCGGGGTACTCGAGCGGCGAACGGGTGAGTAACACGTGAGCAACCTTGCCCC
 ribosomal_sequence_type: 16S
-sample_isolation_method: Qiagen DNeasy Blood and Tissue Kit
-sample_isolated_from: Cheese production facility drain
+sample_isolation_method: Wizard Genomic DNA Purification Kit
+sample_isolated_from: Isolated from nurse bees of Melipona scutellaris
 collection_date:
   type: nmdc:TimestampValue
-  has_raw_value: "2023-06-15"
+  has_raw_value: "2014-10-10"
 geo_loc_name:
   type: nmdc:TextValue
-  has_raw_value: France
+  has_raw_value: Brazil
 associated_studies:
-  - nmdc:sty-00-abc123
+  - nmdc:sty-99-pupoproject
