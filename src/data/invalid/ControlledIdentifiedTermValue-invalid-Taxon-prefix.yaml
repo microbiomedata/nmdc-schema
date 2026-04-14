@@ -1,9 +1,11 @@
 # This example should fail validation because GTDB is not in Taxon.id_prefixes.
 # Only NCBITaxon is currently allowed. GTDB may be added in the future by
 # expanding id_prefixes on the Taxon class.
+# Note: the local name uses underscores/commas (not semicolons) to avoid also
+# violating the OntologyClass id pattern — single point of failure.
 type: nmdc:ControlledIdentifiedTermValue
-has_raw_value: Escherichia coli [GTDB:d__Bacteria;p__Pseudomonadota;c__Gammaproteobacteria;o__Enterobacterales;f__Enterobacteriaceae;g__Escherichia;s__Escherichia coli]
+has_raw_value: Escherichia coli [GTDB:s__Escherichia_coli]
 term:
-  id: GTDB:d__Bacteria;p__Pseudomonadota;c__Gammaproteobacteria;o__Enterobacterales;f__Enterobacteriaceae;g__Escherichia;s__Escherichia coli
+  id: GTDB:s__Escherichia_coli
   name: Escherichia coli
   type: nmdc:Taxon
