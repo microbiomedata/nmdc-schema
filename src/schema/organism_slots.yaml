@@ -68,6 +68,11 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Genus"
+    examples:
+      - value: Amycolatopsis
+        description: JGI Isolate spreadsheet (Pupo project, row 3)
+      - value: Micromonospora
+        description: JGI Isolate spreadsheet (Pupo project, row 10)
     comments:
       - >-
         Free-text submitter-provided genus name. For formal taxonomic classification,
@@ -80,6 +85,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Species"
+    examples:
+      - value: sp.
+        description: JGI Isolate spreadsheet (Pupo project) — novel species, not yet named
     comments:
       - >-
         Free-text submitter-provided species name. For formal taxonomic classification,
@@ -92,6 +100,11 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Strain or cultivar"
+    examples:
+      - value: ICBG1012
+        description: JGI Isolate spreadsheet (Pupo project, row 3)
+      - value: ICBG1321
+        description: JGI Isolate spreadsheet (Pupo project, row 10) — Micromonospora strain
 
   isolate_name:
     range: string
@@ -100,6 +113,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Isolate"
+    examples:
+      - value: Isolate
+        description: JGI Isolate spreadsheet (Pupo project) — generic isolate designation
 
   gc_content:
     range: float
@@ -108,6 +124,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "GC Content %"
+    examples:
+      - value: "72.0"
+        description: Typical high-GC actinobacterium (Amycolatopsis)
 
   viral_host_genus:
     range: string
@@ -116,6 +135,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Host Genus"
+    examples:
+      - value: Escherichia
+        description: Common bacterial host for phage submissions
 
   viral_host_species:
     range: string
@@ -124,6 +146,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Host Species"
+    examples:
+      - value: coli
+        description: Common bacterial host for phage submissions
 
   viral_host_strain:
     range: string
@@ -132,6 +157,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Host Strain"
+    examples:
+      - value: K-12 MG1655
+        description: Common lab strain used as phage host
 
   biosafety_material_category:
     range: BiosafetyMaterialCategoryEnum
@@ -140,6 +168,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Biosafety Material Category"
+    examples:
+      - value: Bacteria
+        description: JGI Isolate spreadsheet (Pupo project) — all rows are Bacteria
 
   # --- OrganismSample slots ---
   expected_content:
@@ -147,6 +178,9 @@ slots:
     description: >-
       The organism or strain that the submitter expects to be present in this
       sample. May be contradicted by sequencing results.
+    examples:
+      - value: nmdc:strn-99-abc123
+        description: Reference to a Strain instance in organism_set
     comments:
       - >-
         Range is Organism, which includes Strain as a subclass. The organism_set
@@ -161,6 +195,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Is the sample isolated from a single colony or equivalent?"
+    examples:
+      - value: "yes"
+        description: JGI Isolate spreadsheet (Pupo project) — all rows report single-colony isolation
 
   known_suspected_organisms:
     range: string
@@ -170,6 +207,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Known / Suspected Organisms"
+    examples:
+      - value: Pseudomonas sp. detected as minor contaminant by 16S
+        description: Hypothetical example — field is empty in the Pupo project spreadsheet
 
   ribosomal_sequence:
     range: string
@@ -180,6 +220,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "First ribosomal sequence"
+    examples:
+      - value: AGCGGTAAAGGCCCTTTCGGGGTACTCGAGCGGCGAACGGGTGAGTAACACGTGAGCAACCTTGCCCC
+        description: First 67 bp of 16S from Micromonospora sp. ICBG1321 (Pupo project, row 10). Full sequences are typically >1300 bp.
 
   ribosomal_sequence_type:
     range: RibosomalSequenceTypeEnum
@@ -188,6 +231,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "First ribosomal sequence type"
+    examples:
+      - value: 16S
+        description: JGI Isolate spreadsheet (Pupo project) — all bacterial rows use 16S
 
   ribosomal_sequence_comments:
     range: string
@@ -228,6 +274,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "For fungal draft samples, was 16S screening performed?"
+    examples:
+      - value: "yes"
+        description: Required by JGI for all fungal draft samples
 
   its_match_unite:
     range: YesNoEnum
@@ -236,6 +285,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "For fungal draft samples, does ITS match taxonomy in UNITE?"
+    examples:
+      - value: "yes"
+        description: Required by JGI for all fungal draft samples
 
   sample_isolation_method:
     range: string
@@ -244,6 +296,9 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Sample Isolation Method"
+    examples:
+      - value: Wizard Genomic DNA Purification Kit
+        description: JGI Isolate spreadsheet (Pupo project) — all rows use the Promega Wizard kit
     comments:
       - See also dna_isolate_meth in submission-schema for the equivalent portal field.
 
@@ -254,3 +309,8 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Sample Isolated From"
+    examples:
+      - value: Isolated from the fungus-growing ant Apterostigma
+        description: JGI Isolate spreadsheet (Pupo project, row 3)
+      - value: Isolated from nurse bees of Melipona scutellaris
+        description: JGI Isolate spreadsheet (Pupo project, row 10) — different insect source
