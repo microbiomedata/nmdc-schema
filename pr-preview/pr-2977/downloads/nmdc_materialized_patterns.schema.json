@@ -12899,17 +12899,6 @@
                     "pattern": "^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
-                "insdc_nucleotide_identifiers": {
-                    "description": "INSDC nucleotide sequence accessions for marker genes or other sequences associated with this organism or strain (e.g. 16S rRNA, ITS). These are GenBank/ENA/DDBJ accession numbers, not GI numbers.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -15098,17 +15087,6 @@
                     "pattern": "^(nmdc):strn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
-                "insdc_nucleotide_identifiers": {
-                    "description": "INSDC nucleotide sequence accessions for marker genes or other sequences associated with this organism or strain (e.g. 16S rRNA, ITS). These are GenBank/ENA/DDBJ accession numbers, not GI numbers.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "isolate_name": {
                     "description": "Isolate or mutant name.",
                     "type": [
@@ -16612,6 +16590,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post60.dev0+1be0385ec"
+    "version": "11.18.0.post61.dev0+a319f35fd"
 }
 

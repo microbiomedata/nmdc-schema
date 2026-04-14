@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post60.dev0+1be0385ec
+version: 11.18.0.post61.dev0+a319f35fd
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7636,26 +7636,6 @@ slots:
     range: uriorcurie
     multivalued: true
     pattern: ^gold:Go[0-9]+$
-  insdc_nucleotide_identifiers:
-    name: insdc_nucleotide_identifiers
-    description: INSDC nucleotide sequence accessions for marker genes or other sequences
-      associated with this organism or strain (e.g. 16S rRNA, ITS). These are GenBank/ENA/DDBJ
-      accession numbers, not GI numbers.
-    comments:
-    - GOLD stores these in the genbank_16s_id column of organism_v2, but that field
-      mixes raw accession numbers with free-text descriptions. Values should be normalized
-      to CURIE form before storage.
-    examples:
-    - value: insdc.sra:GU441533
-      description: GOLD organism_v2 genbank_16s_id (queried 2026-04-14)
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/2960
-    is_a: external_database_identifiers
-    mixins:
-    - insdc_identifiers
-    range: uriorcurie
-    multivalued: true
   insdc_biosample_identifiers:
     name: insdc_biosample_identifiers
     description: identifiers for corresponding sample in INSDC
@@ -19723,7 +19703,6 @@ classes:
     - classified_as
     - biosafety_material_category
     - gold_organism_identifiers
-    - insdc_nucleotide_identifiers
     slot_usage:
       id:
         name: id

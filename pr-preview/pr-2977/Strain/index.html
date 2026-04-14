@@ -443,8 +443,6 @@
 
   Strain : id
 
-  Strain : insdc_nucleotide_identifiers
-
   Strain : isolate_name
 
   Strain : name
@@ -599,12 +597,6 @@
 <td><a href="../gold_organism_identifiers/">gold_organism_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>identifiers for corresponding organism in GOLD</td>
-<td><a href="../Organism/">Organism</a></td>
-</tr>
-<tr>
-<td><a href="../insdc_nucleotide_identifiers/">insdc_nucleotide_identifiers</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>INSDC nucleotide sequence accessions for marker genes or other sequences asso...</td>
 <td><a href="../Organism/">Organism</a></td>
 </tr>
 <tr>
@@ -1222,32 +1214,6 @@ attributes:
     range: uriorcurie
     multivalued: true
     pattern: ^gold:Go[0-9]+$
-  insdc_nucleotide_identifiers:
-    name: insdc_nucleotide_identifiers
-    description: INSDC nucleotide sequence accessions for marker genes or other sequences
-      associated with this organism or strain (e.g. 16S rRNA, ITS). These are GenBank/ENA/DDBJ
-      accession numbers, not GI numbers.
-    comments:
-    - GOLD stores these in the genbank_16s_id column of organism_v2, but that field
-      mixes raw accession numbers with free-text descriptions. Values should be normalized
-      to CURIE form before storage.
-    examples:
-    - value: insdc.sra:GU441533
-      description: GOLD organism_v2 genbank_16s_id (queried 2026-04-14)
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/2960
-    rank: 1000
-    is_a: external_database_identifiers
-    mixins:
-    - insdc_identifiers
-    alias: insdc_nucleotide_identifiers
-    owner: Strain
-    domain_of:
-    - Organism
-    range: uriorcurie
-    multivalued: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
