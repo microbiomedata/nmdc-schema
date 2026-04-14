@@ -1,4 +1,7 @@
 # Amycolatopsis sp. ICBG1012 from JGI Isolate spreadsheet (Pupo project, row 3)
+# GOLD organism record Go0658917 (Micromonospora parastrephiae STR1-7) used for
+# gold_organism_identifiers and insdc_nucleotide_identifiers examples since
+# the Pupo project organisms lack GOLD records.
 id: nmdc:strn-99-pupo1012
 type: nmdc:Strain
 name: Amycolatopsis sp. ICBG1012
@@ -16,3 +19,5 @@ strain_name: ICBG1012
 isolate_name: Isolate
 gc_content: 72.0
 estimated_size: 10000000 bp
+gold_organism_identifiers:
+  - gold:Go0658917

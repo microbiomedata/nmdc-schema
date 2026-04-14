@@ -29,6 +29,8 @@ organism_set:
     isolate_name: Isolate
     estimated_size: 10000000 bp
     gc_content: 72.0
+    gold_organism_identifiers:
+      - gold:Go0658917
 
 organism_sample_set:
   - id: nmdc:osm-99-pupo1012

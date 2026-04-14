@@ -190,7 +190,6 @@ classes:
       - classified_as
       - biosafety_material_category
       - gold_organism_identifiers
-      - insdc_nucleotide_identifiers
     slot_usage:
       id:
         required: true
