@@ -14710,7 +14710,7 @@
         },
         "Taxon": {
             "additionalProperties": false,
-            "description": "A classification term from a formal taxonomy such as NCBITaxon, GTDB, or LPSN. Taxon instances are identified by external CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass instances. No NMDC-minted identifiers are assigned to taxa.",
+            "description": "A classification term from a formal taxonomy. Taxon instances are currently identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass instances. No NMDC-minted identifiers are assigned to taxa. Support for additional taxonomic authorities (GTDB, LPSN, SeqCode) can be added by expanding id_prefixes.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -15452,5 +15452,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post49.dev0+b7430cc77"
+    "version": "11.18.0.post50.dev0+e41e52328"
 }
