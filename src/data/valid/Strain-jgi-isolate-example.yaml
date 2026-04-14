@@ -1,0 +1,15 @@
+id: nmdc:strn-99-abc123
+type: nmdc:Strain
+name: Stenotrophomonas lactitubi C-FC-06-B-C1
+classified_as:
+  - type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: Stenotrophomonas lactitubi [NCBITaxon:2811860]
+    term:
+      id: NCBITaxon:2811860
+      name: Stenotrophomonas lactitubi
+      type: nmdc:Taxon
+biosafety_material_category: Bacteria
+organism_genus: Stenotrophomonas
+organism_species: lactitubi
+strain_name: C-FC-06-B-C1
+gc_content: 66.8

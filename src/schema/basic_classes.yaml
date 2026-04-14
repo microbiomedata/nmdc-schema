@@ -180,6 +180,101 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
           interpolated: true
+  Organism:
+    class_uri: nmdc:Organism
+    is_a: MaterialEntity
+    description: >-
+      A material entity that is a living or once-living individual. Organism instances
+      represent the biological identity of what is in a sample, not the sample itself.
+    slots:
+      - classified_as
+      - biosafety_material_category
+      - type
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
+          interpolated: true
+    comments:
+      - >-
+        Organism instances are stored in organism_set, which is polymorphic and also holds
+        Strain instances. An Organism is not a sample — it is the biological entity that an
+        OrganismSample is expected to contain, linked via expected_content.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2959
+      - https://github.com/microbiomedata/nmdc-schema/issues/2803
+
+  Strain:
+    class_uri: nmdc:Strain
+    is_a: Organism
+    description: >-
+      A sub-species lineage of an organism, identified by a culture collection reference,
+      strain designator, or lab-internal name. Strains carry detail below the resolution of
+      formal taxonomies.
+    slots:
+      ## strain identity (new, JGI Isolate form)
+      - organism_genus
+      - organism_species
+      - strain_name
+      - isolate_name
+      ## reused MIxS slots
+      - source_mat_id
+      - host_taxid
+      - estimated_size
+      - ploidy
+      - ref_biomaterial
+      ## new slots
+      - gc_content
+      - viral_host_genus
+      - viral_host_species
+      - viral_host_strain
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:strn-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      source_mat_id:
+        description: >-
+          Culture collection name and identifier for this strain. Reuses MIxS source_mat_id
+          (MIXS:0000026).
+        annotations:
+          jgi_isolate_field: "Culture Collection and ID"
+      host_taxid:
+        description: >-
+          NCBI taxon ID of the host organism. Reuses MIxS host_taxid (MIXS:0000250).
+        annotations:
+          jgi_isolate_field: "Host NCBI Taxonomy ID"
+      estimated_size:
+        description: >-
+          Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
+        annotations:
+          jgi_isolate_field: "Estimated Genome Size (Mb)"
+      ploidy:
+        description: >-
+          Genome ploidy. Reuses MIxS ploidy (MIXS:0000021).
+        annotations:
+          jgi_isolate_field: "Ploidy Comments"
+      ref_biomaterial:
+        description: >-
+          Reference genome or primary publication for this strain. Reuses MIxS ref_biomaterial
+          (MIXS:0000025).
+        annotations:
+          jgi_isolate_field: "Reference Genome"
+        comments:
+          - >-
+            The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
+            MIxS renaming work.
+    comments:
+      - >-
+        Strain instances are stored in organism_set alongside Organism instances (polymorphic
+        collection). Strain inherits classified_as from Organism for taxonomic classification
+        via CURIE (e.g. NCBITaxon:511145). Strain-level identity (strain_name,
+        culture_collection_id) captures detail that no formal taxonomy covers.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2971
+
   PlannedProcess:
     description: >-
       A named thing that is executed according to a plan.

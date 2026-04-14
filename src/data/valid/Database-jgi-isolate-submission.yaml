@@ -1,0 +1,58 @@
+# Complete JGI isolate submission round-trip using real data from
+# Danielle Graham's JGI Isolate (NA) v19 spreadsheet (Pupo project, 2017).
+# Organism: Amycolatopsis sp. ICBG1012, isolated from the fungus-growing ant
+# Apterostigma in Parque Nacional de Anavilhanas, Amazonas, Brazil.
+#
+# This example demonstrates:
+# - Strain in organism_set with classified_as → Taxon
+# - OrganismSample in organism_sample_set with expected_content → Strain
+# - Every supported JGI field populated from real spreadsheet data
+# - Fields routed to submission-schema are NOT shown (concentration, volume,
+#   absorbance, tube/plate label, container, plate location, sample format,
+#   DNAse treatment, JGI project IDs, PI/contact names)
+
+organism_set:
+  - id: nmdc:strn-99-pupo1012
+    type: nmdc:Strain
+    name: Amycolatopsis sp. ICBG1012
+    classified_as:
+      - type: nmdc:ControlledIdentifiedTermValue
+        has_raw_value: Amycolatopsis [NCBITaxon:1813]
+        term:
+          id: NCBITaxon:1813
+          name: Amycolatopsis
+          type: nmdc:Taxon
+    biosafety_material_category: Bacteria
+    organism_genus: Amycolatopsis
+    organism_species: sp.
+    strain_name: ICBG1012
+    isolate_name: Isolate
+    estimated_size:
+      type: nmdc:QuantityValue
+      has_numeric_value: 10000000
+      has_raw_value: 10 Mb
+      has_unit: bp
+    gc_content: 72.0
+
+organism_sample_set:
+  - id: nmdc:osm-99-pupo1012
+    type: nmdc:OrganismSample
+    name: Amycolatopsis sp. ICBG1012 isolate submission
+    associated_studies:
+      - nmdc:sty-99-pupoproject
+    expected_content: nmdc:strn-99-pupo1012
+    samp_name: Amycolatopsis_sp_ICBG1012
+    single_colony_isolation: yes
+    ribosomal_sequence: TTCGGGTGTTACCGACTTTCTGACGTGACGGGCGGTGTGTACAAGGCCCGGGAACGTATTCACCGCAGCGTTGCTGATCTGCGATTACTAGCGACTCCGACTTCACGCAGTCGAGTTGCAGACTGCGATCCGAACTGAGACCGGCTTTAAGGGATTCGCTCCACCTCACGGTATCGCAGCCCTCTGTACCAGCCATTGTAGCATGTGTGAAGCCCTGGACATAAGGGGCATGATGACTTGACGTCATCCCCACCTTCCTCCGAGTTGACCCCGGCAGTCTCCCACGAGTCCCCGGCCGAACCGCTGGCAACATAGGATAAGGGTTGCGCTCGTTGCGGGACTTAACCCAACATCTCACGACACGAGCTGACGACAGCCATGCACCACCTGTACACCAACCACAAAGGGAAGCCCTATCTCTAGGGATGTCTGGCGCATGTCAAGCCCAGGTAAGGTTCTTCGCGTTGCATCGAATTAATCCACATGCTCCGCCGCTTGTGCGGGCCCCCGTCAATTCCTTTGAGTTTTAGCCTTGCGGCCGTACTCCCCAGGCGGGGCGCCTTAATGCGTTAGCTACGGCACGGACAACGTGGATGTCGCCCACACCTAGCGCCCAACGTTTACAGCGTGGACTACCAGGGTATCTAATCCTGTTCGCTCCCCACCGCTTTCGCTCTCAGCGTCAGTATCGGCCCAGAGACCCGCCTTCGCCACCGGTGTTCCTCCTGATATCTGCGCATTTCACCGCTACACCAGGAATTCCAGTCTCCCCTACCGAACTCAAGTCTGCCCGTATCGACTGCAAGCTGAAGGTTAAGCCTCCAGTTTTCACAGCCGACGCCGACAAACCGCCTACGAGCTCTTTACGCCCAATAATTCCGGACAACGCTCGCACCCTACGTATTACCGCGGCTGCTGGCACGTAGTTAGCCGTGCTTCTTCTACAGGTACCGTCAGTCACCCTTCGTCCCTGTCGAAAGAGGTTTACAACCCGAAGGCCGTCATCCCTCACGCGGCGTCGCTGCATCAGGCTTGCGCCCATTGTGCAATATTCCCCACTGCTGCCTCCCGTAGGAGTCTGGGCCGTGTCTCAGTCCCAGTGTGGCCGGTCGCCCTCTCAGGCCGGCTACCCGTCGTCGCCTTGGTGGGCCATTACCCCACCAACAAGCTGATAGGCCGCGGGTTCATCCTGTACCGCCGGAGCTTTCCACCACACACCATGCGATGCGCGGTCATATCCGGATTATAGACCCGTTGGNCAGGGCTTATCCCAAAGTACAGGGCAGATACCCCGTTGCTCACCCGTTCGCCACTAATCCACCCCTTTAACGGTTACCTTGTTACCGACTTGCATGTTAA
+    ribosomal_sequence_type: 16S
+    sample_isolation_method: Wizard Genomic DNA Purification Kit
+    sample_isolated_from: Isolated from the fungus-growing ant Apterostigma
+    isol_growth_condt:
+      type: nmdc:TextValue
+      has_raw_value: Parque Nacional de Anavilhanas, Amazonas, Brazil
+    collection_date:
+      type: nmdc:TimestampValue
+      has_raw_value: 2017-01-20
+    geo_loc_name:
+      type: nmdc:TextValue
+      has_raw_value: Brazil

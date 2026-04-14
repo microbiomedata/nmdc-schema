@@ -1,0 +1,256 @@
+id: https://w3id.org/nmdc/organism_slots
+name: organism-slots
+title: Organism and Strain Slots
+description: >-
+  Slots and enums specific to Organism, Strain, and OrganismSample classes.
+  Many originate from the JGI Isolate (NA) v19 submission form. Provenance
+  is tracked via in_subset (jgi_isolate) and annotations (jgi_isolate_field).
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: "https://w3id.org/linkml/"
+  nmdc: "https://w3id.org/nmdc/"
+
+imports:
+  - linkml:types
+
+default_prefix: nmdc
+
+subsets:
+  jgi_isolate:
+    description: >-
+      Slots originating from the JGI Isolate (NA) v19 submission form that are not
+      already captured by MIxS or other existing standards. These slots support
+      organism identity, strain verification, purity assessment, and biosafety
+      classification for cultured isolate submissions to JGI.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2803
+    comments:
+      - >-
+        Slots in this subset carry a jgi_isolate_field annotation with the exact
+        field name from the JGI Isolate (NA) v19 spreadsheet.
+
+enums:
+  RibosomalSequenceTypeEnum:
+    description: >-
+      Type of ribosomal sequence used for strain verification.
+      Values from JGI Isolate (NA) v19.
+    permissible_values:
+      16S: {}
+      ITS: {}
+      ITS-AGI: {}
+      28S: {}
+      Other: {}
+
+  BiosafetyMaterialCategoryEnum:
+    description: >-
+      General category of organism or material, as used by JGI for biosafety
+      classification.
+    permissible_values:
+      Alga: {}
+      Animal: {}
+      Archaea: {}
+      Bacteria: {}
+      Fungi: {}
+      Plant: {}
+      Plasmid: {}
+      Protist: {}
+      Virus: {}
+      Synthetic Construct: {}
+
+slots:
+  # --- Strain slots (from JGI Isolate form) ---
+  organism_genus:
+    range: string
+    description: Genus of the organism.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Genus"
+    comments:
+      - >-
+        Free-text submitter-provided genus name. For formal taxonomic classification,
+        use classified_as with a Taxon CURIE on the parent Organism class.
+
+  organism_species:
+    range: string
+    description: Species of the organism.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Species"
+    comments:
+      - >-
+        Free-text submitter-provided species name. For formal taxonomic classification,
+        use classified_as with a Taxon CURIE on the parent Organism class.
+
+  strain_name:
+    range: string
+    description: Strain or cultivar name of the organism.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Strain or cultivar"
+
+  isolate_name:
+    range: string
+    description: Isolate or mutant name.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Isolate"
+
+  gc_content:
+    range: float
+    description: Estimated GC content as a percentage.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "GC Content %"
+
+  viral_host_genus:
+    range: string
+    description: Genus of the viral host. Required for viral minimal drafts.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Host Genus"
+
+  viral_host_species:
+    range: string
+    description: Species of the viral host. Required for viral minimal drafts.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Host Species"
+
+  viral_host_strain:
+    range: string
+    description: Strain of the viral host. Required for viral minimal drafts.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Host Strain"
+
+  biosafety_material_category:
+    range: BiosafetyMaterialCategoryEnum
+    description: General category of organism for biosafety classification.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Biosafety Material Category"
+
+  # --- OrganismSample slots ---
+  expected_content:
+    range: Organism
+    description: >-
+      The organism or strain that the submitter expects to be present in this
+      sample. May be contradicted by sequencing results.
+    comments:
+      - >-
+        Range is Organism, which includes Strain as a subclass. The organism_set
+        collection is polymorphic.
+
+  single_colony_isolation:
+    range: YesNoEnum
+    description: >-
+      Whether the sample was isolated from a single colony or axenic/strain-pure
+      culture.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Is the sample isolated from a single colony or equivalent?"
+
+  known_suspected_organisms:
+    range: string
+    description: >-
+      Organisms known or suspected to grow in co-culture or that may be contaminants.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Known / Suspected Organisms"
+
+  ribosomal_sequence:
+    range: string
+    description: >-
+      Ribosomal nucleotide sequence for strain verification. At least one is
+      required by JGI for all microbial and fungal genome projects.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "First ribosomal sequence"
+
+  ribosomal_sequence_type:
+    range: RibosomalSequenceTypeEnum
+    description: Type of the ribosomal sequence (16S, ITS, ITS-AGI, 28S, or Other).
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "First ribosomal sequence type"
+
+  ribosomal_sequence_comments:
+    range: string
+    description: Comments on the ribosomal sequence. Required if type is "Other".
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "First ribosomal sequence comments"
+
+  second_ribosomal_sequence:
+    range: string
+    description: A second ribosomal sequence for additional strain verification.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Second ribosomal sequence"
+
+  second_ribosomal_sequence_type:
+    range: RibosomalSequenceTypeEnum
+    description: Type of the second ribosomal sequence.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Second ribosomal sequence type"
+
+  second_ribosomal_sequence_comments:
+    range: string
+    description: Comments on the second ribosomal sequence.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Second ribosomal sequence comments"
+
+  fungal_16s_screening:
+    range: YesNoEnum
+    description: Whether 16S screening was performed for fungal draft samples.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "For fungal draft samples, was 16S screening performed?"
+
+  its_match_unite:
+    range: YesNoEnum
+    description: Whether the ITS sequence matches taxonomy in the UNITE database.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "For fungal draft samples, does ITS match taxonomy in UNITE?"
+
+  sample_isolation_method:
+    range: string
+    description: Method, protocol, or kit used to extract DNA/RNA from the sample.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Sample Isolation Method"
+    comments:
+      - See also dna_isolate_meth in submission-schema for the equivalent portal field.
+
+  sample_isolated_from:
+    range: string
+    description: Description of where the sample originated.
+    in_subset:
+      - jgi_isolate
+    annotations:
+      jgi_isolate_field: "Sample Isolated From"

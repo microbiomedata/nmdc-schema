@@ -15,6 +15,7 @@ version: 0.0.0
 
 imports:
   - annotation # also brings core and portal_*
+  - organism_slots
   - workflow_execution_activity
 
 prefixes:
@@ -453,6 +454,8 @@ classes:
       - instrument_set
       - manifest_set
       - material_processing_set
+      - organism_sample_set
+      - organism_set
       - processed_sample_set
       - storage_process_set
       - study_set
@@ -1439,6 +1442,21 @@ slots:
       - object_set
     range: MaterialProcessing
     description: This property links a database object to the set of material processing within it.
+
+  organism_sample_set:
+    mixins:
+      - object_set
+    range: OrganismSample
+    description: >-
+      This property links a database object to the set of organism samples within it.
+
+  organism_set:
+    mixins:
+      - object_set
+    range: Organism
+    description: >-
+      This property links a database object to the set of organisms within it.
+      This collection is polymorphic and holds both Organism and Strain instances.
 
   sample_collection_day:
     range: integer

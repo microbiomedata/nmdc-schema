@@ -1293,6 +1293,61 @@ classes:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
 
+  OrganismSample:
+    class_uri: nmdc:OrganismSample
+    is_a: Sample
+    title: Organism Sample
+    description: >-
+      A material sample in which all cells are expected to share the same genome.
+      This includes colony picks, pellets from presumably pure liquid cultures, and
+      similar isolate-derived materials. The purity expectation may be contradicted
+      by sequencing results.
+    slots:
+      - associated_studies
+      - expected_content
+      - embargoed
+      - provenance_metadata
+      - external_database_identifiers
+      ## collection and provenance (reused from Biosample)
+      - collection_date
+      - lat_lon
+      - depth
+      - elev
+      - geo_loc_name
+      - samp_name
+      ## purity and verification (new, from JGI Isolate form)
+      - single_colony_isolation
+      - known_suspected_organisms
+      - ribosomal_sequence
+      - ribosomal_sequence_type
+      - ribosomal_sequence_comments
+      - second_ribosomal_sequence
+      - second_ribosomal_sequence_type
+      - second_ribosomal_sequence_comments
+      - fungal_16s_screening
+      - its_match_unite
+      ## isolation provenance
+      - sample_isolation_method
+      - sample_isolated_from
+      - isol_growth_condt
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$"
+          interpolated: true
+    comments:
+      - >-
+        An OrganismSample is not necessarily pure. The submitter expects it to contain a single
+        organism, but sequencing may reveal contamination. Purity status is captured by
+        single_colony_isolation and known_suspected_organisms, not by the class itself.
+      - >-
+        The expected_content slot links to an Organism or Strain instance representing what the
+        submitter believes is in the sample.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2803
+      - https://github.com/microbiomedata/nmdc-schema/issues/2961
+
   Site:
     class_uri: nmdc:Site
     abstract: true

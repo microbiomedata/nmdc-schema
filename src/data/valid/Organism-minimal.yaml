@@ -1,0 +1,11 @@
+id: nmdc:orgn-99-xyz789
+type: nmdc:Organism
+name: Stenotrophomonas lactitubi
+classified_as:
+  - type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: Stenotrophomonas lactitubi [NCBITaxon:2811860]
+    term:
+      id: NCBITaxon:2811860
+      name: Stenotrophomonas lactitubi
+      type: nmdc:Taxon
+biosafety_material_category: Bacteria
