@@ -14722,7 +14722,7 @@
                     ]
                 },
                 "estimated_size": {
-                    "description": "Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).",
+                    "description": "Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024). The JGI isolate field reports in megabases (Mb); values must be converted to the MIxS base-pair representation before validation and storage.",
                     "type": [
                         "string",
                         "null"
@@ -14788,7 +14788,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Genome ploidy. Reuses MIxS ploidy (MIXS:0000021)."
+                    "description": "Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured pattern expects a PATO term label with CURIE (e.g. \"haploid [PATO:0001375]\"). The JGI isolate field is free-text comments; values from that field need conversion to the ontology-valued form for MIxS compliance."
                 },
                 "ref_biomaterial": {
                     "anyOf": [
@@ -16248,5 +16248,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post57.dev0+3372486e6"
+    "version": "11.18.0.post58.dev0+7afc46e73"
 }

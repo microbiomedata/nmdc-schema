@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post57.dev0+3372486e6
+version: 11.18.0.post58.dev0+7afc46e73
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19747,13 +19747,18 @@ classes:
             tag: jgi_isolate_field
             value: Estimated Genome Size (Mb)
         description: Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
+          The JGI isolate field reports in megabases (Mb); values must be converted
+          to the MIxS base-pair representation before validation and storage.
       ploidy:
         name: ploidy
         annotations:
           jgi_isolate_field:
             tag: jgi_isolate_field
             value: Ploidy Comments
-        description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021).
+        description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
+          pattern expects a PATO term label with CURIE (e.g. "haploid [PATO:0001375]").
+          The JGI isolate field is free-text comments; values from that field need
+          conversion to the ontology-valued form for MIxS compliance.
       ref_biomaterial:
         name: ref_biomaterial
         annotations:

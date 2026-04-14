@@ -711,13 +711,18 @@ slot_usage:
         tag: jgi_isolate_field
         value: Estimated Genome Size (Mb)
     description: Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
+      The JGI isolate field reports in megabases (Mb); values must be converted to
+      the MIxS base-pair representation before validation and storage.
   ploidy:
     name: ploidy
     annotations:
       jgi_isolate_field:
         tag: jgi_isolate_field
         value: Ploidy Comments
-    description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021).
+    description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
+      pattern expects a PATO term label with CURIE (e.g. "haploid [PATO:0001375]").
+      The JGI isolate field is free-text comments; values from that field need conversion
+      to the ontology-valued form for MIxS compliance.
   ref_biomaterial:
     name: ref_biomaterial
     annotations:
@@ -777,13 +782,18 @@ slot_usage:
         tag: jgi_isolate_field
         value: Estimated Genome Size (Mb)
     description: Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
+      The JGI isolate field reports in megabases (Mb); values must be converted to
+      the MIxS base-pair representation before validation and storage.
   ploidy:
     name: ploidy
     annotations:
       jgi_isolate_field:
         tag: jgi_isolate_field
         value: Ploidy Comments
-    description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021).
+    description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
+      pattern expects a PATO term label with CURIE (e.g. "haploid [PATO:0001375]").
+      The JGI isolate field is free-text comments; values from that field need conversion
+      to the ontology-valued form for MIxS compliance.
   ref_biomaterial:
     name: ref_biomaterial
     annotations:
@@ -943,6 +953,8 @@ attributes:
         tag: jgi_isolate_field
         value: Estimated Genome Size (Mb)
     description: Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
+      The JGI isolate field reports in megabases (Mb); values must be converted to
+      the MIxS base-pair representation before validation and storage.
     title: estimated size
     examples:
     - value: 300000 bp
@@ -963,7 +975,10 @@ attributes:
       jgi_isolate_field:
         tag: jgi_isolate_field
         value: Ploidy Comments
-    description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021).
+    description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
+      pattern expects a PATO term label with CURIE (e.g. "haploid [PATO:0001375]").
+      The JGI isolate field is free-text comments; values from that field need conversion
+      to the ontology-valued form for MIxS compliance.
     title: ploidy
     examples:
     - value: allopolyploidy [PATO:0001379]
