@@ -666,7 +666,7 @@ slot_usage:
     range: Sample
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
   has_output:
     name: has_output
@@ -702,7 +702,7 @@ slot_usage:
     range: Sample
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
   has_output:
     name: has_output
@@ -852,7 +852,7 @@ attributes:
     required: true
     multivalued: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
   has_output:
     name: has_output

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post52.dev0+4a2e6e00a
+version: 11.18.0.post53.dev0+6fcab9d53
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -18667,6 +18667,70 @@ classes:
           syntax: '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:Pooling
+  Isolation:
+    name: Isolation
+    description: A material processing that separates an organism from a mixed sample
+      by selection techniques such as serial dilution, plating on selective media,
+      and colony picking.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/2978
+    is_a: MaterialProcessing
+    slot_usage:
+      id:
+        name: id
+        required: true
+        pattern: ^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      has_input:
+        name: has_input
+        required: true
+        pattern: ^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      has_output:
+        name: has_output
+        required: true
+        pattern: ^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+          interpolated: true
+    class_uri: nmdc:Isolation
+  Culturing:
+    name: Culturing
+    description: A material processing that grows an organism under controlled conditions.
+      The input and output are both organism samples; the output is an expanded or
+      maintained culture of the input organism.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/2978
+    is_a: MaterialProcessing
+    slot_usage:
+      id:
+        name: id
+        required: true
+        pattern: ^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      has_input:
+        name: has_input
+        required: true
+        pattern: ^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      has_output:
+        name: has_output
+        required: true
+        pattern: ^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+          interpolated: true
+    class_uri: nmdc:Culturing
   Extraction:
     name: Extraction
     description: A material separation in which a desired component of an input material
@@ -18686,9 +18750,9 @@ classes:
         name: has_input
         range: Sample
         required: true
-        pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        pattern: ^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
       has_output:
         name: has_output

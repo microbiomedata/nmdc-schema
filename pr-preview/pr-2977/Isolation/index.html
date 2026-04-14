@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/Instrument/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/Isolation/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
-<title>Class: Instrument - NMDC Schema Documentation</title>
+<title>Class: Isolation - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-instrument">
+<a class="md-skip" href="#class-isolation">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: Instrument
+              Class: Isolation
             
           </span>
 </div>
@@ -318,19 +318,10 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
+<a class="md-nav__link" href="#see-also">
 <span class="md-ellipsis">
       
-        Usages
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#aliases">
-<span class="md-ellipsis">
-      
-        Aliases
+        See Also
       
     </span>
 </a>
@@ -404,37 +395,68 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-instrument">Class: Instrument</h1>
-<p><em>A material entity that is designed to perform a function in a scientific investigation, but is not a reagent. This class models the make and model of the instrument, not the specific instance of the instrument.</em></p>
+<h1 id="class-isolation">Class: Isolation</h1>
+<p><em>A material processing that separates an organism from a mixed sample by selection techniques such as serial dilution, plating on selective media, and colony picking.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/Instrument">nmdc:Instrument</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/Isolation">nmdc:Isolation</a></p>
 <div class="mermaid">classDiagram
-  class Instrument
-  click Instrument href "../Instrument"
-    MaterialEntity &lt;|-- Instrument
-      click MaterialEntity href "../MaterialEntity"
+  class Isolation
+  click Isolation href "../Isolation"
+    MaterialProcessing &lt;|-- Isolation
+      click MaterialProcessing href "../MaterialProcessing"
 
 
 
-  Instrument : alternative_identifiers
+  Isolation : alternative_identifiers
 
-  Instrument : description
+  Isolation : description
 
-  Instrument : id
+  Isolation : end_date
 
-  Instrument : model
+  Isolation : has_failure_categorization
 
-      Instrument --&gt; "0..1" InstrumentModelEnum : model
-    click InstrumentModelEnum href "../InstrumentModelEnum"
+      Isolation --&gt; "*" FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
-  Instrument : name
+  Isolation : has_input
 
-  Instrument : type
+      Isolation --&gt; "1..*" Sample : has_input
+    click Sample href "../Sample"
 
-  Instrument : vendor
+  Isolation : has_output
 
-      Instrument --&gt; "0..1" InstrumentVendorEnum : vendor
-    click InstrumentVendorEnum href "../InstrumentVendorEnum"
+      Isolation --&gt; "1..*" ProcessedSample : has_output
+    click ProcessedSample href "../ProcessedSample"
+
+  Isolation : id
+
+  Isolation : instrument_used
+
+      Isolation --&gt; "*" Instrument : instrument_used
+    click Instrument href "../Instrument"
+
+  Isolation : name
+
+  Isolation : processing_institution
+
+      Isolation --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
+    click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
+
+  Isolation : protocol_link
+
+      Isolation --&gt; "0..1" Protocol : protocol_link
+    click Protocol href "../Protocol"
+
+  Isolation : qc_comment
+
+  Isolation : qc_status
+
+      Isolation --&gt; "0..1" StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
+
+  Isolation : start_date
+
+  Isolation : type
 
 
 
@@ -442,8 +464,11 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
-<li><a href="../MaterialEntity/">MaterialEntity</a><ul>
-<li><strong>Instrument</strong></li>
+<li><a href="../PlannedProcess/">PlannedProcess</a><ul>
+<li><a href="../MaterialProcessing/">MaterialProcessing</a><ul>
+<li><strong>Isolation</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -461,16 +486,64 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../vendor/">vendor</a></td>
-<td>0..1 <br/> <a href="../InstrumentVendorEnum/">InstrumentVendorEnum</a></td>
-<td></td>
-<td>direct</td>
+<td><a href="../instrument_used/">instrument_used</a></td>
+<td>* <br/> <a href="../Instrument/">Instrument</a></td>
+<td>What instrument was used during DataGeneration or MaterialProcessing</td>
+<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
 </tr>
 <tr>
-<td><a href="../model/">model</a></td>
-<td>0..1 <br/> <a href="../InstrumentModelEnum/">InstrumentModelEnum</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>1..* <br/> <a href="../Sample/">Sample</a></td>
+<td>An input to a process</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../has_output/">has_output</a></td>
+<td>1..* <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
+<td>An output from a process</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../processing_institution/">processing_institution</a></td>
+<td>0..1 <br/> <a href="../ProcessingInstitutionEnum/">ProcessingInstitutionEnum</a></td>
+<td>The organization that processed the sample</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>0..1 <br/> <a href="../Protocol/">Protocol</a></td>
 <td></td>
-<td>direct</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../start_date/">start_date</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The date on which any process or activity was started</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../end_date/">end_date</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The date on which any process or activity was ended</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../qc_status/">qc_status</a></td>
+<td>0..1 <br/> <a href="../StatusEnum/">StatusEnum</a></td>
+<td>Stores information about the result of a process (ie the process of sequencin...</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../qc_comment/">qc_comment</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Slot to store additional comments about laboratory or workflow output</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>* <br/> <a href="../FailureCategorization/">FailureCategorization</a></td>
+<td></td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
@@ -504,118 +577,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../Database/">Database</a></td>
-<td><a href="../instrument_set/">instrument_set</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../Pooling/">Pooling</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../Isolation/">Isolation</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../Culturing/">Culturing</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../Extraction/">Extraction</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../MixingProcess/">MixingProcess</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../DissolvingProcess/">DissolvingProcess</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="aliases">Aliases</h2>
+<h2 id="see-also">See Also</h2>
 <ul>
-<li>device</li>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2978">https://github.com/microbiomedata/nmdc-schema/issues/2978</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -632,8 +596,8 @@
 </thead>
 <tbody>
 <tr>
-<td>exact</td>
-<td>OBI:0000968</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -641,73 +605,205 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Instrument
-description: A material entity that is designed to perform a function in a scientific
-  investigation, but is not a reagent. This class models the make and model of the
-  instrument, not the specific instance of the instrument.
+<pre><code class="language-yaml">name: Isolation
+description: A material processing that separates an organism from a mixed sample
+  by selection techniques such as serial dilution, plating on selective media, and
+  colony picking.
 from_schema: https://w3id.org/nmdc/nmdc
-aliases:
-- device
-exact_mappings:
-- OBI:0000968
-is_a: MaterialEntity
-slots:
-- vendor
-- model
+see_also:
+- https://github.com/microbiomedata/nmdc-schema/issues/2978
+is_a: MaterialProcessing
 slot_usage:
   id:
     name: id
+    required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$'
       interpolated: true
-class_uri: nmdc:Instrument
-unique_keys:
-  main:
-    unique_key_name: main
-    unique_key_slots:
-    - vendor
-    - model
-    description: A unique instrument is defined by its vendor and model.
+  has_input:
+    name: has_input
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  has_output:
+    name: has_output
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+class_uri: nmdc:Isolation
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Instrument
-description: A material entity that is designed to perform a function in a scientific
-  investigation, but is not a reagent. This class models the make and model of the
-  instrument, not the specific instance of the instrument.
+<pre><code class="language-yaml">name: Isolation
+description: A material processing that separates an organism from a mixed sample
+  by selection techniques such as serial dilution, plating on selective media, and
+  colony picking.
 from_schema: https://w3id.org/nmdc/nmdc
-aliases:
-- device
-exact_mappings:
-- OBI:0000968
-is_a: MaterialEntity
+see_also:
+- https://github.com/microbiomedata/nmdc-schema/issues/2978
+is_a: MaterialProcessing
 slot_usage:
   id:
     name: id
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  has_input:
+    name: has_input
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  has_output:
+    name: has_output
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+attributes:
+  instrument_used:
+    name: instrument_used
+    description: What instrument was used during DataGeneration or MaterialProcessing.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: instrument_used
+    owner: Isolation
+    domain_of:
+    - DataGeneration
+    - MaterialProcessing
+    range: Instrument
+    multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
       interpolated: true
-attributes:
-  vendor:
-    name: vendor
+  has_input:
+    name: has_input
+    description: An input to a process.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - input
+    rank: 1000
+    alias: has_input
+    owner: Isolation
+    domain_of:
+    - PlannedProcess
+    range: Sample
+    required: true
+    multivalued: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  has_output:
+    name: has_output
+    description: An output from a process.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - output
+    rank: 1000
+    alias: has_output
+    owner: Isolation
+    domain_of:
+    - PlannedProcess
+    range: ProcessedSample
+    required: true
+    multivalued: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  processing_institution:
+    name: processing_institution
+    description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: vendor
-    owner: Instrument
+    alias: processing_institution
+    owner: Isolation
     domain_of:
-    - Instrument
-    range: InstrumentVendorEnum
-  model:
-    name: model
+    - PlannedProcess
+    range: ProcessingInstitutionEnum
+  protocol_link:
+    name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: model
-    owner: Instrument
+    alias: protocol_link
+    owner: Isolation
     domain_of:
-    - Instrument
-    range: InstrumentModelEnum
+    - Configuration
+    - PlannedProcess
+    - Study
+    range: Protocol
+  start_date:
+    name: start_date
+    description: The date on which any process or activity was started
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: start_date
+    owner: Isolation
+    domain_of:
+    - PlannedProcess
+    range: string
+  end_date:
+    name: end_date
+    description: The date on which any process or activity was ended
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: end_date
+    owner: Isolation
+    domain_of:
+    - PlannedProcess
+    range: string
+  qc_status:
+    name: qc_status
+    description: Stores information about the result of a process (ie the process
+      of sequencing a library may have for qc_status of 'fail' if not enough data
+      was generated)
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_status
+    owner: Isolation
+    domain_of:
+    - PlannedProcess
+    range: StatusEnum
+  qc_comment:
+    name: qc_comment
+    description: Slot to store additional comments about laboratory or workflow output.
+      For workflow output it may describe the particular workflow stage that failed.
+      (ie Failed at call-stage due to a malformed fastq file).
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_comment
+    owner: Isolation
+    domain_of:
+    - PlannedProcess
+    range: string
+  has_failure_categorization:
+    name: has_failure_categorization
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: has_failure_categorization
+    owner: Isolation
+    domain_of:
+    - PlannedProcess
+    range: FailureCategorization
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -736,14 +832,14 @@ attributes:
     rank: 1000
     identifier: true
     alias: id
-    owner: Instrument
+    owner: Isolation
     domain_of:
     - NamedThing
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$'
       interpolated: true
   name:
     name: name
@@ -751,7 +847,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: name
-    owner: Instrument
+    owner: Isolation
     domain_of:
     - PersonValue
     - NamedThing
@@ -764,7 +860,7 @@ attributes:
     rank: 1000
     slot_uri: dcterms:description
     alias: description
-    owner: Instrument
+    owner: Isolation
     domain_of:
     - ImageValue
     - NamedThing
@@ -776,7 +872,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: alternative_identifiers
-    owner: Instrument
+    owner: Isolation
     domain_of:
     - NamedThing
     - MetaboliteIdentification
@@ -806,7 +902,7 @@ attributes:
     slot_uri: rdf:type
     designates_type: true
     alias: type
-    owner: Instrument
+    owner: Isolation
     domain_of:
     - EukEval
     - FunctionalAnnotationAggMember
@@ -828,14 +924,7 @@ attributes:
     - MetaboliteIdentification
     range: uriorcurie
     required: true
-class_uri: nmdc:Instrument
-unique_keys:
-  main:
-    unique_key_name: main
-    unique_key_slots:
-    - vendor
-    - model
-    description: A unique instrument is defined by its vendor and model.
+class_uri: nmdc:Isolation
 
 </code></pre>
 </details>

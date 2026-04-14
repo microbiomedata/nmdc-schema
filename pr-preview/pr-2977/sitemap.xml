@@ -161,6 +161,10 @@
          <lastmod>2026-04-14</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/Culturing/</loc>
+         <lastmod>2026-04-14</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/CurLandUseEnum/</loc>
          <lastmod>2026-04-14</lastmod>
     </url>
@@ -454,6 +458,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/IonizationSourceEnum/</loc>
+         <lastmod>2026-04-14</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/Isolation/</loc>
          <lastmod>2026-04-14</lastmod>
     </url>
     <url>
