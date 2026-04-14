@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post64.dev0+7c0746d75
+version: 11.18.0.post65.dev0+a936cb01b
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -18798,6 +18798,7 @@ classes:
           interpolated: true
       has_output:
         name: has_output
+        range: OrganismSample
         required: true
         pattern: ^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
@@ -18823,6 +18824,7 @@ classes:
           interpolated: true
       has_input:
         name: has_input
+        range: OrganismSample
         required: true
         pattern: ^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
@@ -18830,6 +18832,7 @@ classes:
           interpolated: true
       has_output:
         name: has_output
+        range: OrganismSample
         required: true
         pattern: ^(nmdc):(osm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:

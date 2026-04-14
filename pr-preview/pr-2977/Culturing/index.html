@@ -420,13 +420,13 @@
 
   Culturing : has_input
 
-      Culturing --&gt; "1..*" Sample : has_input
-    click Sample href "../Sample"
+      Culturing --&gt; "1..*" OrganismSample : has_input
+    click OrganismSample href "../OrganismSample"
 
   Culturing : has_output
 
-      Culturing --&gt; "1..*" ProcessedSample : has_output
-    click ProcessedSample href "../ProcessedSample"
+      Culturing --&gt; "1..*" OrganismSample : has_output
+    click OrganismSample href "../OrganismSample"
 
   Culturing : id
 
@@ -493,13 +493,13 @@
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>1..* <br/> <a href="../Sample/">Sample</a></td>
+<td>1..* <br/> <a href="../OrganismSample/">OrganismSample</a></td>
 <td>An input to a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>1..* <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
+<td>1..* <br/> <a href="../OrganismSample/">OrganismSample</a></td>
 <td>An output from a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
@@ -622,12 +622,14 @@ slot_usage:
       interpolated: true
   has_input:
     name: has_input
+    range: OrganismSample
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
       interpolated: true
   has_output:
     name: has_output
+    range: OrganismSample
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
@@ -655,12 +657,14 @@ slot_usage:
       interpolated: true
   has_input:
     name: has_input
+    range: OrganismSample
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
       interpolated: true
   has_output:
     name: has_output
+    range: OrganismSample
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$'
@@ -692,7 +696,7 @@ attributes:
     owner: Culturing
     domain_of:
     - PlannedProcess
-    range: Sample
+    range: OrganismSample
     required: true
     multivalued: true
     structured_pattern:
@@ -709,7 +713,7 @@ attributes:
     owner: Culturing
     domain_of:
     - PlannedProcess
-    range: ProcessedSample
+    range: OrganismSample
     required: true
     multivalued: true
     structured_pattern:
