@@ -63,6 +63,40 @@ classes:
       - owl:Class
       - schema:Class
 
+  Taxon:
+    class_uri: nmdc:Taxon
+    is_a: OntologyClass
+    description: >-
+      A classification term from a formal taxonomy such as NCBITaxon, GTDB, or LPSN. Taxon instances
+      are identified by external CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set
+      alongside other OntologyClass instances. No NMDC-minted identifiers are assigned to taxa.
+    id_prefixes:
+      - NCBITaxon
+    comments:
+      - >-
+        Follows the FunctionalAnnotationTerm pattern: a semantic subclass of OntologyClass with no
+        additional slots, no typecode, and no dedicated Database collection. Instances go into
+        ontology_class_set and are referenced from sample slots via ControlledIdentifiedTermValue.
+      - >-
+        NCBITaxon is the primary authority. Other taxonomic authorities (GTDB, LPSN, SeqCode) can be
+        supported by adding their CURIE prefixes to id_prefixes and loading their terms into
+        ontology_class_set. No schema changes would be required.
+      - >-
+        Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution
+        of most formal taxonomies. Strain identity should be captured via dedicated text slots on
+        OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or a future Strain
+        class — not by minting Taxon instances for strains.
+      - >-
+        Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
+        with range OntologyClass. The intent is that these slots point to Taxon instances specifically,
+        but LinkML does not currently support constraining the term slot of a ControlledIdentifiedTermValue
+        to a particular OntologyClass subclass.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2959
+      - https://github.com/microbiomedata/nmdc-schema/issues/2971
+    close_mappings:
+      - biolink:OrganismTaxon
+
   OntologyRelation:
     aliases: ["OntologyAssociation"]
     description: >-
@@ -557,6 +591,26 @@ classes:
       git_url:
         description: The url of the software repository used to generate the NMDC metadata record
 slots:
+  classified_as:
+    range: ControlledIdentifiedTermValue
+    multivalued: true
+    description: >-
+      A formal classification for this entity, expressed as a controlled term from an ontology
+      or taxonomy. Each value wraps a reference to an OntologyClass instance (or subclass such
+      as Taxon) in ontology_class_set.
+    comments:
+      - >-
+        On OrganismSample, this slot captures the taxonomic classification of the organism in
+        the sample. The term should reference a Taxon instance identified by an NCBITaxon CURIE
+        (or another supported taxonomy prefix). The slot is multivalued to allow classifications
+        from multiple authorities (e.g. both NCBITaxon and GTDB) for the same organism.
+      - >-
+        This slot is intended to replace known_as on ChemicalSubstance in a future deprecation.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2959
+    narrow_mappings:
+      - biolink:in_taxon
+
   source_system_of_record:
     description: Identifies the system of origin for a record
     range: SourceSystemEnum
