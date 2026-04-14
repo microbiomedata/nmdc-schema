@@ -4,7 +4,8 @@ title: Organism and Strain Slots
 description: >-
   Slots and enums specific to Organism, Strain, and OrganismSample classes.
   Many originate from the JGI Isolate (NA) v19 submission form. Provenance
-  is tracked via in_subset (jgi_isolate) and annotations (jgi_isolate_field).
+  is tracked via in_subset (jgi_isolate) and structured_aliases with context
+  https://jgi.doe.gov/isolate-submission-form/v19.
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -16,6 +17,7 @@ imports:
   - linkml:types
 
 default_prefix: nmdc
+default_range: string
 
 subsets:
   jgi_isolate:
@@ -28,8 +30,9 @@ subsets:
       - https://github.com/microbiomedata/nmdc-schema/issues/2803
     comments:
       - >-
-        Slots in this subset carry a jgi_isolate_field annotation with the exact
-        field name from the JGI Isolate (NA) v19 spreadsheet.
+        Slots in this subset carry structured_aliases with context
+        https://jgi.doe.gov/isolate-submission-form/v19 mapping to the
+        exact field name on the JGI Isolate (NA) v19 spreadsheet.
 
 enums:
   RibosomalSequenceTypeEnum:
@@ -62,12 +65,14 @@ enums:
 slots:
   # --- Strain slots (from JGI Isolate form) ---
   organism_genus:
-    range: string
     description: Genus of the organism.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Genus"
+    structured_aliases:
+      - literal_form: Genus
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: Amycolatopsis
         description: JGI Isolate spreadsheet (Pupo project, row 3)
@@ -81,12 +86,14 @@ slots:
         use classified_as with a Taxon CURIE on the parent Organism class.
 
   organism_species:
-    range: string
     description: Species of the organism.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Species"
+    structured_aliases:
+      - literal_form: Species
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: sp.
         description: JGI Isolate spreadsheet (Pupo project) — novel species, not yet named
@@ -96,12 +103,14 @@ slots:
         use classified_as with a Taxon CURIE on the parent Organism class.
 
   strain_name:
-    range: string
     description: Strain or cultivar name of the organism.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Strain or cultivar"
+    structured_aliases:
+      - literal_form: Strain or cultivar
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: ICBG1012
         description: JGI Isolate spreadsheet (Pupo project, row 3)
@@ -111,12 +120,14 @@ slots:
         description: GOLD organism_v2 Dictyoglomus turgidum (Go0000002, queried 2026-04-14)
 
   isolate_name:
-    range: string
     description: Isolate or mutant name.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Isolate"
+    structured_aliases:
+      - literal_form: Isolate
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: Isolate
         description: JGI Isolate spreadsheet (Pupo project) — generic isolate designation
@@ -126,19 +137,24 @@ slots:
     description: Estimated GC content as a percentage.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "GC Content %"
+    structured_aliases:
+      - literal_form: GC Content %
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: "72.0"
         description: Amycolatopsis sp. ICBG1012, JGI Isolate spreadsheet (Pupo project, row 3)
 
   viral_host_genus:
-    range: string
     description: Genus of the viral host. Required for viral minimal drafts.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Host Genus"
+    structured_aliases:
+      - literal_form: Host Genus
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     comments:
       - >-
         Viral host fields are present on the JGI Isolate (NA) v19 form but not
@@ -149,23 +165,27 @@ slots:
         description: JGI Isolate form field specification — bacterial host for phage submissions
 
   viral_host_species:
-    range: string
     description: Species of the viral host. Required for viral minimal drafts.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Host Species"
+    structured_aliases:
+      - literal_form: Host Species
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: coli
         description: JGI Isolate form field specification — bacterial host for phage submissions
 
   viral_host_strain:
-    range: string
     description: Strain of the viral host. Required for viral minimal drafts.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Host Strain"
+    structured_aliases:
+      - literal_form: Host Strain
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: K-12 MG1655
         description: JGI Isolate form field specification — common lab strain
@@ -175,8 +195,11 @@ slots:
     description: General category of organism for biosafety classification.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Biosafety Material Category"
+    structured_aliases:
+      - literal_form: Biosafety Material Category
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: Bacteria
         description: JGI Isolate spreadsheet (Pupo project) — all rows are Bacteria
@@ -202,33 +225,40 @@ slots:
       culture.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Is the sample isolated from a single colony or equivalent?"
+    structured_aliases:
+      - literal_form: Is the sample isolated from a single colony or equivalent?
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: "yes"
         description: JGI Isolate spreadsheet (Pupo project) — all rows report single-colony isolation
 
   known_suspected_organisms:
-    range: string
     description: >-
       Organisms known or suspected to grow in co-culture or that may be contaminants.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Known / Suspected Organisms"
+    structured_aliases:
+      - literal_form: Known / Suspected Organisms
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: culture is a microbial community
         description: GOLD dw_samples.culture_strain_pure_descr (52 occurrences in lakehouse, queried 2026-04-14)
 
   ribosomal_sequence:
-    range: string
     description: >-
       Ribosomal nucleotide sequence for strain verification. At least one is
       required by JGI for all microbial and fungal genome projects.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "First ribosomal sequence"
+    structured_aliases:
+      - literal_form: First ribosomal sequence
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: AGCGGTAAAGGCCCTTTCGGGGTACTCGAGCGGCGAACGGGTGAGTAACACGTGAGCAACCTTGCCCC
         description: First 67 bp of 16S from Micromonospora sp. ICBG1321 (Pupo project, row 10). Full sequences are typically >1300 bp.
@@ -238,51 +268,66 @@ slots:
     description: Type of the ribosomal sequence (16S, ITS, ITS-AGI, 28S, or Other).
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "First ribosomal sequence type"
+    structured_aliases:
+      - literal_form: First ribosomal sequence type
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: 16S
         description: JGI Isolate spreadsheet (Pupo project) — all bacterial rows use 16S
 
   ribosomal_sequence_comments:
-    range: string
     description: Comments on the ribosomal sequence. Required if type is "Other".
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "First ribosomal sequence comments"
+    structured_aliases:
+      - literal_form: First ribosomal sequence comments
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
 
   second_ribosomal_sequence:
-    range: string
     description: A second ribosomal sequence for additional strain verification.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Second ribosomal sequence"
+    structured_aliases:
+      - literal_form: Second ribosomal sequence
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
 
   second_ribosomal_sequence_type:
     range: RibosomalSequenceTypeEnum
     description: Type of the second ribosomal sequence.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Second ribosomal sequence type"
+    structured_aliases:
+      - literal_form: Second ribosomal sequence type
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
 
   second_ribosomal_sequence_comments:
-    range: string
     description: Comments on the second ribosomal sequence.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Second ribosomal sequence comments"
+    structured_aliases:
+      - literal_form: Second ribosomal sequence comments
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
 
   fungal_16s_screening:
     range: YesNoEnum
     description: Whether 16S screening was performed for fungal draft samples.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "For fungal draft samples, was 16S screening performed?"
+    structured_aliases:
+      - literal_form: For fungal draft samples, was 16S screening performed?
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: "yes"
         description: Required by JGI for all fungal draft samples
@@ -292,19 +337,24 @@ slots:
     description: Whether the ITS sequence matches taxonomy in the UNITE database.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "For fungal draft samples, does ITS match taxonomy in UNITE?"
+    structured_aliases:
+      - literal_form: For fungal draft samples, does ITS match taxonomy in UNITE?
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: "yes"
         description: Required by JGI for all fungal draft samples
 
   sample_isolation_method:
-    range: string
     description: Method, protocol, or kit used to extract DNA/RNA from the sample.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Sample Isolation Method"
+    structured_aliases:
+      - literal_form: Sample Isolation Method
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: Wizard Genomic DNA Purification Kit
         description: JGI Isolate spreadsheet (Pupo project) — all rows use the Promega Wizard kit
@@ -312,12 +362,14 @@ slots:
       - See also dna_isolate_meth in submission-schema for the equivalent portal field.
 
   sample_isolated_from:
-    range: string
     description: Description of where the sample originated.
     in_subset:
       - jgi_isolate
-    annotations:
-      jgi_isolate_field: "Sample Isolated From"
+    structured_aliases:
+      - literal_form: Sample Isolated From
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
     examples:
       - value: Isolated from the fungus-growing ant Apterostigma
         description: JGI Isolate spreadsheet (Pupo project, row 3)
