@@ -1,0 +1,9 @@
+# This example should fail validation because GTDB is not in Taxon.id_prefixes.
+# Only NCBITaxon is currently allowed. GTDB may be added in the future by
+# expanding id_prefixes on the Taxon class.
+type: nmdc:ControlledIdentifiedTermValue
+has_raw_value: "Escherichia coli str. K-12 substr. MG1655 [GTDB:d__Bacteria;p__Pseudomonadota;c__Gammaproteobacteria;o__Enterobacterales;f__Enterobacteriaceae;g__Escherichia;s__Escherichia coli]"
+term:
+  id: "GTDB:d__Bacteria;p__Pseudomonadota;c__Gammaproteobacteria;o__Enterobacterales;f__Enterobacteriaceae;g__Escherichia;s__Escherichia coli"
+  name: "Escherichia coli"
+  type: "nmdc:Taxon"
