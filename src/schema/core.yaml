@@ -1329,12 +1329,15 @@ classes:
       ## isolation provenance
       - sample_isolation_method
       - sample_isolated_from
-      - isol_growth_condt
     slot_usage:
       id:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      expected_content:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(orgn|strn)-{id_shoulder}-{id_blade}$"
           interpolated: true
     comments:
       - >-

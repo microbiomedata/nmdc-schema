@@ -20,7 +20,7 @@ to nmdc-schema classes, submission-schema, or deferred.
 | 30 | ITS match UNITE?* | `its_match_unite` | JGI-native (new) |
 | 40 | Sample Isolation Method* | `sample_isolation_method` | JGI-native (new) |
 | 44 | Sample Isolated From* | `sample_isolated_from` | JGI-native (new) |
-| 45 | Collection Site or Growth Conditions* | `isol_growth_condt` | MIxS (newly imported) |
+| 45 | Collection Site or Growth Conditions* | `sample_isolated_from` | JGI-native (new) — combined with field 44. MIxS isol_growth_condt (MIXS:0000003) was considered but its semantics are "publication reference for growth conditions," not free text |
 | 41-43 | Collection Year/Month/Day* | `collection_date` | MIxS (existing) |
 | 46-47 | Latitude/Longitude* | `lat_lon` | MIxS (existing) |
 | 48-49 | Depth/Max depth* | `depth` | MIxS (existing) |
@@ -81,7 +81,11 @@ to nmdc-schema classes, submission-schema, or deferred.
 | `estimated_size` | MIXS:0000024 | Strain | Estimated Genome Size |
 | `ploidy` | MIXS:0000021 | Strain | Ploidy Comments |
 | `ref_biomaterial` | MIXS:0000025 | Strain | Reference Genome |
-| `isol_growth_condt` | MIXS:0000003 | OrganismSample | Collection Site or Growth Conditions |
+
+`isol_growth_condt` (MIXS:0000003) was imported but not assigned. Its MIxS semantics are
+"publication reference for isolation/growth conditions" (DOI/PMID/URL pattern), which does
+not match the JGI free-text field. It remains available for future use where a publication
+reference is appropriate.
 
 Note: `ref_biomaterial` may be renamed in a future MIxS release. Montana Smith has
 ongoing MIxS renaming work that may affect this slot.

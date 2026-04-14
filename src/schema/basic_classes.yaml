@@ -189,7 +189,6 @@ classes:
     slots:
       - classified_as
       - biosafety_material_category
-      - type
     slot_usage:
       id:
         required: true
@@ -271,7 +270,7 @@ classes:
         Strain instances are stored in organism_set alongside Organism instances (polymorphic
         collection). Strain inherits classified_as from Organism for taxonomic classification
         via CURIE (e.g. NCBITaxon:511145). Strain-level identity (strain_name,
-        culture_collection_id) captures detail that no formal taxonomy covers.
+        source_mat_id) captures detail that no formal taxonomy covers.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/2971
 
@@ -694,6 +693,7 @@ slots:
   classified_as:
     range: OntologyClass
     multivalued: true
+    inlined_as_list: true
     description: >-
       A formal classification for this entity, expressed directly as an ontology-backed class
       instance stored in ontology_class_set.
