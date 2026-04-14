@@ -414,7 +414,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-organism-sample-organismsample">Class: Organism Sample (OrganismSample)</h1>
-<p><em>A material sample in which all cells are expected to share the same genome. This includes colony picks, pellets from presumably pure liquid cultures, and similar isolate-derived materials. The purity expectation may be contradicted by sequencing results.</em></p>
+<p><em>A material sample in which all cells are expected to share the same genome. This includes microbial colony picks, pellets from presumably pure liquid cultures, plant tissue clips, fungal fruiting body sections, and similar materials where the submitter intends to study a single organism. The purity expectation may be contradicted by sequencing results.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/OrganismSample">nmdc:OrganismSample</a></p>
 <div class="mermaid">classDiagram
@@ -737,6 +737,7 @@
 <ul>
 <li>An OrganismSample is not necessarily pure. The submitter expects it to contain a single organism, but sequencing may reveal contamination. Purity status is captured by single_colony_isolation and known_suspected_organisms, not by the class itself.</li>
 <li>The expected_content slot links to an Organism or Strain instance representing what the submitter believes is in the sample.</li>
+<li>The defining criterion is genomic homogeneity of intent, not material type. A bacterial colony pick, a plant leaf clip, and a fungal fruiting body section are all OrganismSamples because the submitter expects one genome. An algal mat, a cat fecal sample for microbiome study, or a soil sample are Biosamples because they contain communities of organisms.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -769,9 +770,10 @@
 <details>
 <pre><code class="language-yaml">name: OrganismSample
 description: A material sample in which all cells are expected to share the same genome.
-  This includes colony picks, pellets from presumably pure liquid cultures, and similar
-  isolate-derived materials. The purity expectation may be contradicted by sequencing
-  results.
+  This includes microbial colony picks, pellets from presumably pure liquid cultures,
+  plant tissue clips, fungal fruiting body sections, and similar materials where the
+  submitter intends to study a single organism. The purity expectation may be contradicted
+  by sequencing results.
 title: Organism Sample
 comments:
 - An OrganismSample is not necessarily pure. The submitter expects it to contain a
@@ -779,6 +781,10 @@ comments:
   by single_colony_isolation and known_suspected_organisms, not by the class itself.
 - The expected_content slot links to an Organism or Strain instance representing what
   the submitter believes is in the sample.
+- The defining criterion is genomic homogeneity of intent, not material type. A bacterial
+  colony pick, a plant leaf clip, and a fungal fruiting body section are all OrganismSamples
+  because the submitter expects one genome. An algal mat, a cat fecal sample for microbiome
+  study, or a soil sample are Biosamples because they contain communities of organisms.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2803
@@ -828,9 +834,10 @@ class_uri: nmdc:OrganismSample
 <details>
 <pre><code class="language-yaml">name: OrganismSample
 description: A material sample in which all cells are expected to share the same genome.
-  This includes colony picks, pellets from presumably pure liquid cultures, and similar
-  isolate-derived materials. The purity expectation may be contradicted by sequencing
-  results.
+  This includes microbial colony picks, pellets from presumably pure liquid cultures,
+  plant tissue clips, fungal fruiting body sections, and similar materials where the
+  submitter intends to study a single organism. The purity expectation may be contradicted
+  by sequencing results.
 title: Organism Sample
 comments:
 - An OrganismSample is not necessarily pure. The submitter expects it to contain a
@@ -838,6 +845,10 @@ comments:
   by single_colony_isolation and known_suspected_organisms, not by the class itself.
 - The expected_content slot links to an Organism or Strain instance representing what
   the submitter believes is in the sample.
+- The defining criterion is genomic homogeneity of intent, not material type. A bacterial
+  colony pick, a plant leaf clip, and a fungal fruiting body section are all OrganismSamples
+  because the submitter expects one genome. An algal mat, a cat fecal sample for microbiome
+  study, or a soil sample are Biosamples because they contain communities of organisms.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2803

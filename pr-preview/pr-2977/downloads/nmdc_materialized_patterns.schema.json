@@ -12923,7 +12923,7 @@
         },
         "OrganismSample": {
             "additionalProperties": false,
-            "description": "A material sample in which all cells are expected to share the same genome. This includes colony picks, pellets from presumably pure liquid cultures, and similar isolate-derived materials. The purity expectation may be contradicted by sequencing results.",
+            "description": "A material sample in which all cells are expected to share the same genome. This includes microbial colony picks, pellets from presumably pure liquid cultures, plant tissue clips, fungal fruiting body sections, and similar materials where the submitter intends to study a single organism. The purity expectation may be contradicted by sequencing results.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -16590,6 +16590,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post62.dev0+2492eef1d"
+    "version": "11.18.0.post63.dev0+49f90749c"
 }
 
