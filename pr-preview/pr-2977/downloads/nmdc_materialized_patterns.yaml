@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post53.dev0+6fcab9d53
+version: 11.18.0.post54.dev0+aefe0f0be
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6334,6 +6334,11 @@ slots:
     comments:
     - Free-text submitter-provided genus name. For formal taxonomic classification,
       use classified_as with a Taxon CURIE on the parent Organism class.
+    examples:
+    - value: Amycolatopsis
+      description: JGI Isolate spreadsheet (Pupo project, row 3)
+    - value: Micromonospora
+      description: JGI Isolate spreadsheet (Pupo project, row 10)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6348,6 +6353,10 @@ slots:
     comments:
     - Free-text submitter-provided species name. For formal taxonomic classification,
       use classified_as with a Taxon CURIE on the parent Organism class.
+    examples:
+    - value: sp.
+      description: JGI Isolate spreadsheet (Pupo project) — novel species, not yet
+        named
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6359,6 +6368,12 @@ slots:
         tag: jgi_isolate_field
         value: Strain or cultivar
     description: Strain or cultivar name of the organism.
+    examples:
+    - value: ICBG1012
+      description: JGI Isolate spreadsheet (Pupo project, row 3)
+    - value: ICBG1321
+      description: JGI Isolate spreadsheet (Pupo project, row 10) — Micromonospora
+        strain
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6370,6 +6385,9 @@ slots:
         tag: jgi_isolate_field
         value: Isolate
     description: Isolate or mutant name.
+    examples:
+    - value: Isolate
+      description: JGI Isolate spreadsheet (Pupo project) — generic isolate designation
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6381,6 +6399,9 @@ slots:
         tag: jgi_isolate_field
         value: GC Content %
     description: Estimated GC content as a percentage.
+    examples:
+    - value: '72.0'
+      description: Typical high-GC actinobacterium (Amycolatopsis)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6392,6 +6413,9 @@ slots:
         tag: jgi_isolate_field
         value: Host Genus
     description: Genus of the viral host. Required for viral minimal drafts.
+    examples:
+    - value: Escherichia
+      description: Common bacterial host for phage submissions
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6403,6 +6427,9 @@ slots:
         tag: jgi_isolate_field
         value: Host Species
     description: Species of the viral host. Required for viral minimal drafts.
+    examples:
+    - value: coli
+      description: Common bacterial host for phage submissions
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6414,6 +6441,9 @@ slots:
         tag: jgi_isolate_field
         value: Host Strain
     description: Strain of the viral host. Required for viral minimal drafts.
+    examples:
+    - value: K-12 MG1655
+      description: Common lab strain used as phage host
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6425,6 +6455,9 @@ slots:
         tag: jgi_isolate_field
         value: Biosafety Material Category
     description: General category of organism for biosafety classification.
+    examples:
+    - value: Bacteria
+      description: JGI Isolate spreadsheet (Pupo project) — all rows are Bacteria
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6436,6 +6469,9 @@ slots:
     comments:
     - Range is Organism, which includes Strain as a subclass. The organism_set collection
       is polymorphic.
+    examples:
+    - value: nmdc:strn-99-abc123
+      description: Reference to a Strain instance in organism_set
     from_schema: https://w3id.org/nmdc/nmdc
     range: Organism
   single_colony_isolation:
@@ -6446,6 +6482,10 @@ slots:
         value: Is the sample isolated from a single colony or equivalent?
     description: Whether the sample was isolated from a single colony or axenic/strain-pure
       culture.
+    examples:
+    - value: 'yes'
+      description: JGI Isolate spreadsheet (Pupo project) — all rows report single-colony
+        isolation
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6458,6 +6498,9 @@ slots:
         value: Known / Suspected Organisms
     description: Organisms known or suspected to grow in co-culture or that may be
       contaminants.
+    examples:
+    - value: Pseudomonas sp. detected as minor contaminant by 16S
+      description: Hypothetical example — field is empty in the Pupo project spreadsheet
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6470,6 +6513,10 @@ slots:
         value: First ribosomal sequence
     description: Ribosomal nucleotide sequence for strain verification. At least one
       is required by JGI for all microbial and fungal genome projects.
+    examples:
+    - value: AGCGGTAAAGGCCCTTTCGGGGTACTCGAGCGGCGAACGGGTGAGTAACACGTGAGCAACCTTGCCCC
+      description: First 67 bp of 16S from Micromonospora sp. ICBG1321 (Pupo project,
+        row 10). Full sequences are typically >1300 bp.
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6481,6 +6528,10 @@ slots:
         tag: jgi_isolate_field
         value: First ribosomal sequence type
     description: Type of the ribosomal sequence (16S, ITS, ITS-AGI, 28S, or Other).
+    examples:
+    - value: 16S
+      description: JGI Isolate spreadsheet (Pupo project) — all bacterial rows use
+        16S
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6536,6 +6587,9 @@ slots:
         tag: jgi_isolate_field
         value: For fungal draft samples, was 16S screening performed?
     description: Whether 16S screening was performed for fungal draft samples.
+    examples:
+    - value: 'yes'
+      description: Required by JGI for all fungal draft samples
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6547,6 +6601,9 @@ slots:
         tag: jgi_isolate_field
         value: For fungal draft samples, does ITS match taxonomy in UNITE?
     description: Whether the ITS sequence matches taxonomy in the UNITE database.
+    examples:
+    - value: 'yes'
+      description: Required by JGI for all fungal draft samples
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6560,6 +6617,10 @@ slots:
     description: Method, protocol, or kit used to extract DNA/RNA from the sample.
     comments:
     - See also dna_isolate_meth in submission-schema for the equivalent portal field.
+    examples:
+    - value: Wizard Genomic DNA Purification Kit
+      description: JGI Isolate spreadsheet (Pupo project) — all rows use the Promega
+        Wizard kit
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6571,6 +6632,12 @@ slots:
         tag: jgi_isolate_field
         value: Sample Isolated From
     description: Description of where the sample originated.
+    examples:
+    - value: Isolated from the fungus-growing ant Apterostigma
+      description: JGI Isolate spreadsheet (Pupo project, row 3)
+    - value: Isolated from nurse bees of Melipona scutellaris
+      description: JGI Isolate spreadsheet (Pupo project, row 10) — different insect
+        source
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc

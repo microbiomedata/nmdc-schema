@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -742,6 +753,19 @@
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AGCGGTAAAGGCCCTTTCGGGGTACTCGAGCGGCGAACGGGTGAGTAACACGTGAGCAACCTTGCCCC</td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -787,6 +811,10 @@ annotations:
     value: First ribosomal sequence
 description: Ribosomal nucleotide sequence for strain verification. At least one is
   required by JGI for all microbial and fungal genome projects.
+examples:
+- value: AGCGGTAAAGGCCCTTTCGGGGTACTCGAGCGGCGAACGGGTGAGTAACACGTGAGCAACCTTGCCCC
+  description: First 67 bp of 16S from Micromonospora sp. ICBG1321 (Pupo project,
+    row 10). Full sequences are typically &gt;1300 bp.
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc
