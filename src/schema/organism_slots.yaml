@@ -73,6 +73,8 @@ slots:
         description: JGI Isolate spreadsheet (Pupo project, row 3)
       - value: Micromonospora
         description: JGI Isolate spreadsheet (Pupo project, row 10)
+      - value: Campylobacter
+        description: GOLD organism_v2 (Go0000058, queried 2026-04-14)
     comments:
       - >-
         Free-text submitter-provided genus name. For formal taxonomic classification,
@@ -105,6 +107,8 @@ slots:
         description: JGI Isolate spreadsheet (Pupo project, row 3)
       - value: ICBG1321
         description: JGI Isolate spreadsheet (Pupo project, row 10) — Micromonospora strain
+      - value: DSM 6724
+        description: GOLD organism_v2 Dictyoglomus turgidum (Go0000002, queried 2026-04-14)
 
   isolate_name:
     range: string
@@ -126,7 +130,7 @@ slots:
       jgi_isolate_field: "GC Content %"
     examples:
       - value: "72.0"
-        description: Typical high-GC actinobacterium (Amycolatopsis)
+        description: Amycolatopsis sp. ICBG1012, JGI Isolate spreadsheet (Pupo project, row 3)
 
   viral_host_genus:
     range: string
@@ -135,9 +139,14 @@ slots:
       - jgi_isolate
     annotations:
       jgi_isolate_field: "Host Genus"
+    comments:
+      - >-
+        Viral host fields are present on the JGI Isolate (NA) v19 form but not
+        in the GOLD organism_v2 or dw_samples lakehouse tables. No real lakehouse
+        examples available; value shown is from the JGI form field specification.
     examples:
       - value: Escherichia
-        description: Common bacterial host for phage submissions
+        description: JGI Isolate form field specification — bacterial host for phage submissions
 
   viral_host_species:
     range: string
@@ -148,7 +157,7 @@ slots:
       jgi_isolate_field: "Host Species"
     examples:
       - value: coli
-        description: Common bacterial host for phage submissions
+        description: JGI Isolate form field specification — bacterial host for phage submissions
 
   viral_host_strain:
     range: string
@@ -159,7 +168,7 @@ slots:
       jgi_isolate_field: "Host Strain"
     examples:
       - value: K-12 MG1655
-        description: Common lab strain used as phage host
+        description: JGI Isolate form field specification — common lab strain
 
   biosafety_material_category:
     range: BiosafetyMaterialCategoryEnum
@@ -208,8 +217,8 @@ slots:
     annotations:
       jgi_isolate_field: "Known / Suspected Organisms"
     examples:
-      - value: Pseudomonas sp. detected as minor contaminant by 16S
-        description: Hypothetical example — field is empty in the Pupo project spreadsheet
+      - value: culture is a microbial community
+        description: GOLD dw_samples.culture_strain_pure_descr (52 occurrences in lakehouse, queried 2026-04-14)
 
   ribosomal_sequence:
     range: string
