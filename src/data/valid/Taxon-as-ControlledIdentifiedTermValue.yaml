@@ -1,0 +1,6 @@
+type: nmdc:ControlledIdentifiedTermValue
+has_raw_value: "Escherichia coli str. K-12 substr. MG1655 [NCBITaxon:511145]"
+term:
+  id: "NCBITaxon:511145"
+  name: "Escherichia coli str. K-12 substr. MG1655"
+  type: "nmdc:Taxon"
