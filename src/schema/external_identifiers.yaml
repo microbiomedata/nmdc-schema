@@ -235,6 +235,41 @@ slots:
       - value: gold:Gb0312930
     range: uriorcurie
 
+  gold_organism_identifiers:
+    is_a: external_database_identifiers
+    mixins:
+      - gold_identifiers
+    pattern: "^gold:Go[0-9]+$"
+    description: identifiers for corresponding organism in GOLD
+    examples:
+      - value: gold:Go0000058
+        description: GOLD organism_v2 Campylobacter concisus 13826 (queried 2026-04-14)
+    range: uriorcurie
+    multivalued: true
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2973
+
+  insdc_nucleotide_identifiers:
+    is_a: external_database_identifiers
+    mixins:
+      - insdc_identifiers
+    description: >-
+      INSDC nucleotide sequence accessions for marker genes or other sequences
+      associated with this organism or strain (e.g. 16S rRNA, ITS). These are
+      GenBank/ENA/DDBJ accession numbers, not GI numbers.
+    examples:
+      - value: insdc.sra:GU441533
+        description: GOLD organism_v2 genbank_16s_id (queried 2026-04-14)
+    range: uriorcurie
+    multivalued: true
+    comments:
+      - >-
+        GOLD stores these in the genbank_16s_id column of organism_v2, but that
+        field mixes raw accession numbers with free-text descriptions. Values
+        should be normalized to CURIE form before storage.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2960
+
   insdc_biosample_identifiers:
     is_a: biosample_identifiers
     mixins:
