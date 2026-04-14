@@ -1,0 +1,59 @@
+graph TD
+    NT[NamedThing]
+    ME[MaterialEntity]
+    S[Sample]
+    PP[PlannedProcess]
+    OC[OntologyClass]
+
+    NT -->|is_a| ME
+    NT -->|is_a| S
+    NT -->|is_a| PP
+    NT -->|is_a| OC
+
+    ME -->|is_a| Instrument
+    ME -->|is_a| Organism
+    ME -->|is_a| Site
+
+    Organism -->|is_a| Strain
+
+    S -->|is_a| Biosample
+    S -->|is_a| OrganismSample
+    S -->|is_a| ProcessedSample
+
+    PP -->|is_a| MP[MaterialProcessing]
+    PP -->|is_a| DEP[DataEmitterProcess]
+    PP -->|is_a| CBFS[CollectingBiosamplesFromSite]
+
+    MP -->|is_a| Extraction
+    MP -->|is_a| Isolation
+    MP -->|is_a| Culturing
+
+    DEP -->|is_a| DataGeneration
+
+    OC -->|is_a| Taxon
+    OC -->|is_a| FAT[FunctionalAnnotationTerm]
+
+    %% New in this PR — thick colored border
+    style Organism fill:#e1f5fe,stroke:#0277bd,stroke-width:3px
+    style Strain fill:#e1f5fe,stroke:#0277bd,stroke-width:3px
+    style OrganismSample fill:#fff3e0,stroke:#e65100,stroke-width:3px
+    style Isolation fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
+    style Culturing fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
+    style Taxon fill:#e8f5e9,stroke:#2e7d32,stroke-width:3px
+
+    %% Existing classes — thin gray border
+    style NT fill:#fafafa,stroke:#9e9e9e
+    style ME fill:#fafafa,stroke:#9e9e9e
+    style S fill:#fafafa,stroke:#9e9e9e
+    style PP fill:#fafafa,stroke:#9e9e9e
+    style OC fill:#fafafa,stroke:#9e9e9e
+    style Instrument fill:#fafafa,stroke:#9e9e9e
+    style Site fill:#fafafa,stroke:#9e9e9e
+    style Biosample fill:#fafafa,stroke:#9e9e9e
+    style ProcessedSample fill:#fafafa,stroke:#9e9e9e
+    style MP fill:#fafafa,stroke:#9e9e9e
+    style DEP fill:#fafafa,stroke:#9e9e9e
+    style CBFS fill:#fafafa,stroke:#9e9e9e
+    style Extraction fill:#fafafa,stroke:#9e9e9e
+    style DataGeneration fill:#fafafa,stroke:#9e9e9e
+    style FAT fill:#fafafa,stroke:#9e9e9e
