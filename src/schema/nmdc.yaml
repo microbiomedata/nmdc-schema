@@ -488,6 +488,58 @@ classes:
           syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$"
           interpolated: true
 
+  Isolation:
+    class_uri: nmdc:Isolation
+    is_a: MaterialProcessing
+    description: >-
+      A material processing that separates an organism from a mixed sample by
+      selection techniques such as serial dilution, plating on selective media,
+      and colony picking.
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_input:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2978
+
+  Culturing:
+    class_uri: nmdc:Culturing
+    is_a: MaterialProcessing
+    description: >-
+      A material processing that grows an organism under controlled conditions.
+      The input and output are both organism samples; the output is an expanded
+      or maintained culture of the input organism.
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_input:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2978
+
   Extraction:
     class_uri: nmdc:Extraction
     is_a: MaterialProcessing
@@ -505,7 +557,7 @@ classes:
         required: true
         range: Sample
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_output:
         required: true

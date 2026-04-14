@@ -1,0 +1,95 @@
+# Complete workflow: environmental isolation of a bacterium from soil.
+# Demonstrates the full process chain:
+#   Biosample (soil) → Isolation → OrganismSample (colony pick)
+#   → Culturing → OrganismSample (expanded culture)
+#   → Extraction → ProcessedSample (DNA)
+#
+# Based on Alicia Clum's use case (#2925, #2927).
+
+biosample_set:
+  - id: nmdc:bsm-99-soil001
+    type: nmdc:Biosample
+    name: Anavilhanas soil sample
+    associated_studies:
+      - nmdc:sty-99-pupoproject
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002030
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002030
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002169
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002169
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00005792
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00005792
+
+organism_set:
+  - id: nmdc:strn-99-amyco012
+    type: nmdc:Strain
+    name: Amycolatopsis sp. ICBG1012
+    classified_as:
+      - type: nmdc:ControlledIdentifiedTermValue
+        has_raw_value: Amycolatopsis [NCBITaxon:1813]
+        term:
+          id: NCBITaxon:1813
+          name: Amycolatopsis
+          type: nmdc:Taxon
+    biosafety_material_category: Bacteria
+    organism_genus: Amycolatopsis
+    organism_species: sp.
+    strain_name: ICBG1012
+
+organism_sample_set:
+  # Colony pick after isolation
+  - id: nmdc:osm-99-colony01
+    type: nmdc:OrganismSample
+    name: ICBG1012 colony pick
+    associated_studies:
+      - nmdc:sty-99-pupoproject
+    expected_content: nmdc:strn-99-amyco012
+    single_colony_isolation: "yes"
+    sample_isolated_from: Isolated from fungus-growing ant Apterostigma, Anavilhanas, Brazil
+  # Expanded culture after culturing
+  - id: nmdc:osm-99-culture01
+    type: nmdc:OrganismSample
+    name: ICBG1012 expanded culture
+    associated_studies:
+      - nmdc:sty-99-pupoproject
+    expected_content: nmdc:strn-99-amyco012
+    single_colony_isolation: "yes"
+
+material_processing_set:
+  # Step 1: Isolate from soil
+  - id: nmdc:isnp-99-isol001
+    type: nmdc:Isolation
+    has_input:
+      - nmdc:bsm-99-soil001
+    has_output:
+      - nmdc:osm-99-colony01
+  # Step 2: Culture the colony pick
+  - id: nmdc:cultp-99-cult001
+    type: nmdc:Culturing
+    has_input:
+      - nmdc:osm-99-colony01
+    has_output:
+      - nmdc:osm-99-culture01
+  # Step 3: Extract DNA
+  - id: nmdc:extrp-99-extr001
+    type: nmdc:Extraction
+    has_input:
+      - nmdc:osm-99-culture01
+    has_output:
+      - nmdc:procsm-99-dna001
+
+processed_sample_set:
+  - id: nmdc:procsm-99-dna001
+    type: nmdc:ProcessedSample
+    name: ICBG1012 extracted DNA
