@@ -1378,11 +1378,13 @@ enums:
       ChemicalConversionProcess:
       ChromatographicSeparationProcess:
       CollectingBiosamplesFromSite:
+      Culturing:
       DataEmitterProcess:
       DataGeneration:
       DissolvingProcess:
       Extraction:
       FiltrationProcess:
+      Isolation:
       LibraryPreparation:
       MagsAnalysis:
       MassSpectrometry:
