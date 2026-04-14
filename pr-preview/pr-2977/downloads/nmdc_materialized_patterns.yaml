@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post58.dev0+7afc46e73
+version: 11.18.0.post59.dev0+e04194051
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -332,8 +332,8 @@ subsets:
       organism identity, strain verification, purity assessment, and biosafety classification
       for cultured isolate submissions to JGI.
     comments:
-    - Slots in this subset carry a jgi_isolate_field annotation with the exact field
-      name from the JGI Isolate (NA) v19 spreadsheet.
+    - Slots in this subset carry structured_aliases with context https://jgi.doe.gov/isolate-submission-form/v19
+      mapping to the exact field name on the JGI Isolate (NA) v19 spreadsheet.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2803
@@ -6330,10 +6330,6 @@ slots:
     is_a: gff_coordinate
   organism_genus:
     name: organism_genus
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Genus
     description: Genus of the organism.
     comments:
     - Free-text submitter-provided genus name. For formal taxonomic classification,
@@ -6348,13 +6344,13 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: Genus
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   organism_species:
     name: organism_species
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Species
     description: Species of the organism.
     comments:
     - Free-text submitter-provided species name. For formal taxonomic classification,
@@ -6366,13 +6362,13 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: Species
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   strain_name:
     name: strain_name
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Strain or cultivar
     description: Strain or cultivar name of the organism.
     examples:
     - value: ICBG1012
@@ -6385,13 +6381,13 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: Strain or cultivar
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   isolate_name:
     name: isolate_name
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Isolate
     description: Isolate or mutant name.
     examples:
     - value: Isolate
@@ -6399,13 +6395,13 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: Isolate
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   gc_content:
     name: gc_content
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: GC Content %
     description: Estimated GC content as a percentage.
     examples:
     - value: '72.0'
@@ -6414,13 +6410,14 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: GC Content %
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     range: float
   viral_host_genus:
     name: viral_host_genus
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Host Genus
     description: Genus of the viral host. Required for viral minimal drafts.
     comments:
     - Viral host fields are present on the JGI Isolate (NA) v19 form but not in the
@@ -6433,13 +6430,13 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: Host Genus
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   viral_host_species:
     name: viral_host_species
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Host Species
     description: Species of the viral host. Required for viral minimal drafts.
     examples:
     - value: coli
@@ -6448,13 +6445,13 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: Host Species
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   viral_host_strain:
     name: viral_host_strain
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Host Strain
     description: Strain of the viral host. Required for viral minimal drafts.
     examples:
     - value: K-12 MG1655
@@ -6462,13 +6459,13 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: Host Strain
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   biosafety_material_category:
     name: biosafety_material_category
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Biosafety Material Category
     description: General category of organism for biosafety classification.
     examples:
     - value: Bacteria
@@ -6476,6 +6473,11 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Biosafety Material Category
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     range: BiosafetyMaterialCategoryEnum
   expected_content:
     name: expected_content
@@ -6491,10 +6493,6 @@ slots:
     range: Organism
   single_colony_isolation:
     name: single_colony_isolation
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Is the sample isolated from a single colony or equivalent?
     description: Whether the sample was isolated from a single colony or axenic/strain-pure
       culture.
     examples:
@@ -6504,13 +6502,14 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Is the sample isolated from a single colony or equivalent?
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     range: YesNoEnum
   known_suspected_organisms:
     name: known_suspected_organisms
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Known / Suspected Organisms
     description: Organisms known or suspected to grow in co-culture or that may be
       contaminants.
     examples:
@@ -6520,13 +6519,13 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: Known / Suspected Organisms
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   ribosomal_sequence:
     name: ribosomal_sequence
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: First ribosomal sequence
     description: Ribosomal nucleotide sequence for strain verification. At least one
       is required by JGI for all microbial and fungal genome projects.
     examples:
@@ -6536,13 +6535,13 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: First ribosomal sequence
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   ribosomal_sequence_type:
     name: ribosomal_sequence_type
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: First ribosomal sequence type
     description: Type of the ribosomal sequence (16S, ITS, ITS-AGI, 28S, or Other).
     examples:
     - value: 16S
@@ -6551,57 +6550,59 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: First ribosomal sequence type
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     range: RibosomalSequenceTypeEnum
   ribosomal_sequence_comments:
     name: ribosomal_sequence_comments
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: First ribosomal sequence comments
     description: Comments on the ribosomal sequence. Required if type is "Other".
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: First ribosomal sequence comments
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   second_ribosomal_sequence:
     name: second_ribosomal_sequence
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Second ribosomal sequence
     description: A second ribosomal sequence for additional strain verification.
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: Second ribosomal sequence
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   second_ribosomal_sequence_type:
     name: second_ribosomal_sequence_type
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Second ribosomal sequence type
     description: Type of the second ribosomal sequence.
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Second ribosomal sequence type
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     range: RibosomalSequenceTypeEnum
   second_ribosomal_sequence_comments:
     name: second_ribosomal_sequence_comments
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Second ribosomal sequence comments
     description: Comments on the second ribosomal sequence.
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: Second ribosomal sequence comments
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   fungal_16s_screening:
     name: fungal_16s_screening
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: For fungal draft samples, was 16S screening performed?
     description: Whether 16S screening was performed for fungal draft samples.
     examples:
     - value: 'yes'
@@ -6609,13 +6610,14 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: For fungal draft samples, was 16S screening performed?
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     range: YesNoEnum
   its_match_unite:
     name: its_match_unite
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: For fungal draft samples, does ITS match taxonomy in UNITE?
     description: Whether the ITS sequence matches taxonomy in the UNITE database.
     examples:
     - value: 'yes'
@@ -6623,13 +6625,14 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: For fungal draft samples, does ITS match taxonomy in UNITE?
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     range: YesNoEnum
   sample_isolation_method:
     name: sample_isolation_method
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Sample Isolation Method
     description: Method, protocol, or kit used to extract DNA/RNA from the sample.
     comments:
     - See also dna_isolate_meth in submission-schema for the equivalent portal field.
@@ -6640,13 +6643,13 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: Sample Isolation Method
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   sample_isolated_from:
     name: sample_isolated_from
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Sample Isolated From
     description: Description of where the sample originated.
     examples:
     - value: Isolated from the fungus-growing ant Apterostigma
@@ -6657,7 +6660,11 @@ slots:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    structured_aliases:
+    - literal_form: Sample Isolated From
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   name:
     name: name
     description: A human readable label for an entity
@@ -19727,49 +19734,54 @@ classes:
           interpolated: true
       source_mat_id:
         name: source_mat_id
-        annotations:
-          jgi_isolate_field:
-            tag: jgi_isolate_field
-            value: Culture Collection and ID
         description: Culture collection name and identifier for this strain. Reuses
           MIxS source_mat_id (MIXS:0000026).
+        structured_aliases:
+        - literal_form: Culture Collection and ID
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
       host_taxid:
         name: host_taxid
-        annotations:
-          jgi_isolate_field:
-            tag: jgi_isolate_field
-            value: Host NCBI Taxonomy ID
         description: NCBI taxon ID of the host organism. Reuses MIxS host_taxid (MIXS:0000250).
+        structured_aliases:
+        - literal_form: Host NCBI Taxonomy ID
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
       estimated_size:
         name: estimated_size
-        annotations:
-          jgi_isolate_field:
-            tag: jgi_isolate_field
-            value: Estimated Genome Size (Mb)
         description: Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
           The JGI isolate field reports in megabases (Mb); values must be converted
           to the MIxS base-pair representation before validation and storage.
+        structured_aliases:
+        - literal_form: Estimated Genome Size (Mb)
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
       ploidy:
         name: ploidy
-        annotations:
-          jgi_isolate_field:
-            tag: jgi_isolate_field
-            value: Ploidy Comments
         description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
           pattern expects a PATO term label with CURIE (e.g. "haploid [PATO:0001375]").
           The JGI isolate field is free-text comments; values from that field need
           conversion to the ontology-valued form for MIxS compliance.
+        structured_aliases:
+        - literal_form: Ploidy Comments
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
       ref_biomaterial:
         name: ref_biomaterial
-        annotations:
-          jgi_isolate_field:
-            tag: jgi_isolate_field
-            value: Reference Genome
         description: Reference genome or primary publication for this strain. Reuses
           MIxS ref_biomaterial (MIXS:0000025).
         comments:
         - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See
           ongoing MIxS renaming work.
+        structured_aliases:
+        - literal_form: Reference Genome
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
     class_uri: nmdc:Strain
   PlannedProcess:
     name: PlannedProcess

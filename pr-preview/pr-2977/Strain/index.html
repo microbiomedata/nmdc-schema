@@ -691,49 +691,54 @@ slot_usage:
       interpolated: true
   source_mat_id:
     name: source_mat_id
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Culture Collection and ID
     description: Culture collection name and identifier for this strain. Reuses MIxS
       source_mat_id (MIXS:0000026).
+    structured_aliases:
+    - literal_form: Culture Collection and ID
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   host_taxid:
     name: host_taxid
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Host NCBI Taxonomy ID
     description: NCBI taxon ID of the host organism. Reuses MIxS host_taxid (MIXS:0000250).
+    structured_aliases:
+    - literal_form: Host NCBI Taxonomy ID
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   estimated_size:
     name: estimated_size
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Estimated Genome Size (Mb)
     description: Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
       The JGI isolate field reports in megabases (Mb); values must be converted to
       the MIxS base-pair representation before validation and storage.
+    structured_aliases:
+    - literal_form: Estimated Genome Size (Mb)
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   ploidy:
     name: ploidy
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Ploidy Comments
     description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
       pattern expects a PATO term label with CURIE (e.g. "haploid [PATO:0001375]").
       The JGI isolate field is free-text comments; values from that field need conversion
       to the ontology-valued form for MIxS compliance.
+    structured_aliases:
+    - literal_form: Ploidy Comments
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   ref_biomaterial:
     name: ref_biomaterial
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Reference Genome
     description: Reference genome or primary publication for this strain. Reuses MIxS
       ref_biomaterial (MIXS:0000025).
     comments:
     - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
       MIxS renaming work.
+    structured_aliases:
+    - literal_form: Reference Genome
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
 class_uri: nmdc:Strain
 
 </code></pre>
@@ -762,56 +767,57 @@ slot_usage:
       interpolated: true
   source_mat_id:
     name: source_mat_id
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Culture Collection and ID
     description: Culture collection name and identifier for this strain. Reuses MIxS
       source_mat_id (MIXS:0000026).
+    structured_aliases:
+    - literal_form: Culture Collection and ID
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   host_taxid:
     name: host_taxid
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Host NCBI Taxonomy ID
     description: NCBI taxon ID of the host organism. Reuses MIxS host_taxid (MIXS:0000250).
+    structured_aliases:
+    - literal_form: Host NCBI Taxonomy ID
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   estimated_size:
     name: estimated_size
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Estimated Genome Size (Mb)
     description: Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
       The JGI isolate field reports in megabases (Mb); values must be converted to
       the MIxS base-pair representation before validation and storage.
+    structured_aliases:
+    - literal_form: Estimated Genome Size (Mb)
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   ploidy:
     name: ploidy
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Ploidy Comments
     description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
       pattern expects a PATO term label with CURIE (e.g. "haploid [PATO:0001375]").
       The JGI isolate field is free-text comments; values from that field need conversion
       to the ontology-valued form for MIxS compliance.
+    structured_aliases:
+    - literal_form: Ploidy Comments
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   ref_biomaterial:
     name: ref_biomaterial
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Reference Genome
     description: Reference genome or primary publication for this strain. Reuses MIxS
       ref_biomaterial (MIXS:0000025).
     comments:
     - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
       MIxS renaming work.
+    structured_aliases:
+    - literal_form: Reference Genome
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
 attributes:
   organism_genus:
     name: organism_genus
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Genus
     description: Genus of the organism.
     comments:
     - Free-text submitter-provided genus name. For formal taxonomic classification,
@@ -826,6 +832,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Genus
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: organism_genus
     owner: Strain
@@ -834,10 +845,6 @@ attributes:
     range: string
   organism_species:
     name: organism_species
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Species
     description: Species of the organism.
     comments:
     - Free-text submitter-provided species name. For formal taxonomic classification,
@@ -849,6 +856,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Species
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: organism_species
     owner: Strain
@@ -857,10 +869,6 @@ attributes:
     range: string
   strain_name:
     name: strain_name
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Strain or cultivar
     description: Strain or cultivar name of the organism.
     examples:
     - value: ICBG1012
@@ -873,6 +881,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Strain or cultivar
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: strain_name
     owner: Strain
@@ -881,10 +894,6 @@ attributes:
     range: string
   isolate_name:
     name: isolate_name
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Isolate
     description: Isolate or mutant name.
     examples:
     - value: Isolate
@@ -892,6 +901,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Isolate
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: isolate_name
     owner: Strain
@@ -901,15 +915,21 @@ attributes:
   source_mat_id:
     name: source_mat_id
     annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Culture Collection and ID
+      Expected_value:
+        tag: Expected_value
+        value: 'for cultures of microorganisms: identifiers for two culture collections;
+          for other material a unique arbitrary identifer'
     description: Culture collection name and identifier for this strain. Reuses MIxS
       source_mat_id (MIXS:0000026).
     title: source material identifiers
     examples:
     - value: MPI012345
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Culture Collection and ID
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     keywords:
     - identifier
@@ -926,14 +946,19 @@ attributes:
   host_taxid:
     name: host_taxid
     annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Host NCBI Taxonomy ID
+      Expected_value:
+        tag: Expected_value
+        value: NCBI taxon identifier
     description: NCBI taxon ID of the host organism. Reuses MIxS host_taxid (MIXS:0000250).
     title: host taxid
     comments:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host NCBI Taxonomy ID
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     keywords:
     - host
@@ -949,9 +974,9 @@ attributes:
   estimated_size:
     name: estimated_size
     annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Estimated Genome Size (Mb)
+      Expected_value:
+        tag: Expected_value
+        value: number of base pairs
     description: Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
       The JGI isolate field reports in megabases (Mb); values must be converted to
       the MIxS base-pair representation before validation and storage.
@@ -959,6 +984,11 @@ attributes:
     examples:
     - value: 300000 bp
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Estimated Genome Size (Mb)
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     keywords:
     - size
@@ -971,10 +1001,6 @@ attributes:
     range: string
   ploidy:
     name: ploidy
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Ploidy Comments
     description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
       pattern expects a PATO term label with CURIE (e.g. "haploid [PATO:0001375]").
       The JGI isolate field is free-text comments; values from that field need conversion
@@ -983,6 +1009,11 @@ attributes:
     examples:
     - value: allopolyploidy [PATO:0001379]
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Ploidy Comments
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     slot_uri: MIXS:0000021
     alias: ploidy
@@ -996,10 +1027,6 @@ attributes:
       partial_match: true
   ref_biomaterial:
     name: ref_biomaterial
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Reference Genome
     description: Reference genome or primary publication for this strain. Reuses MIxS
       ref_biomaterial (MIXS:0000025).
     title: reference for biomaterial
@@ -1009,6 +1036,11 @@ attributes:
     examples:
     - value: doi:10.1016/j.syapm.2018.01.009
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Reference Genome
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     slot_uri: MIXS:0000025
     alias: ref_biomaterial
@@ -1022,10 +1054,6 @@ attributes:
       partial_match: true
   gc_content:
     name: gc_content
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: GC Content %
     description: Estimated GC content as a percentage.
     examples:
     - value: '72.0'
@@ -1034,6 +1062,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: GC Content %
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: gc_content
     owner: Strain
@@ -1042,10 +1075,6 @@ attributes:
     range: float
   viral_host_genus:
     name: viral_host_genus
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Host Genus
     description: Genus of the viral host. Required for viral minimal drafts.
     comments:
     - Viral host fields are present on the JGI Isolate (NA) v19 form but not in the
@@ -1058,6 +1087,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host Genus
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: viral_host_genus
     owner: Strain
@@ -1066,10 +1100,6 @@ attributes:
     range: string
   viral_host_species:
     name: viral_host_species
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Host Species
     description: Species of the viral host. Required for viral minimal drafts.
     examples:
     - value: coli
@@ -1078,6 +1108,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host Species
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: viral_host_species
     owner: Strain
@@ -1086,10 +1121,6 @@ attributes:
     range: string
   viral_host_strain:
     name: viral_host_strain
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Host Strain
     description: Strain of the viral host. Required for viral minimal drafts.
     examples:
     - value: K-12 MG1655
@@ -1097,6 +1128,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host Strain
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: viral_host_strain
     owner: Strain
@@ -1132,10 +1168,6 @@ attributes:
     inlined_as_list: true
   biosafety_material_category:
     name: biosafety_material_category
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Biosafety Material Category
     description: General category of organism for biosafety classification.
     examples:
     - value: Bacteria
@@ -1143,6 +1175,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Biosafety Material Category
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: biosafety_material_category
     owner: Strain

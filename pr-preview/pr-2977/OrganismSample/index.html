@@ -1101,10 +1101,6 @@ attributes:
     range: string
   single_colony_isolation:
     name: single_colony_isolation
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Is the sample isolated from a single colony or equivalent?
     description: Whether the sample was isolated from a single colony or axenic/strain-pure
       culture.
     examples:
@@ -1114,6 +1110,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Is the sample isolated from a single colony or equivalent?
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: single_colony_isolation
     owner: OrganismSample
@@ -1122,10 +1123,6 @@ attributes:
     range: YesNoEnum
   known_suspected_organisms:
     name: known_suspected_organisms
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Known / Suspected Organisms
     description: Organisms known or suspected to grow in co-culture or that may be
       contaminants.
     examples:
@@ -1135,6 +1132,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Known / Suspected Organisms
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: known_suspected_organisms
     owner: OrganismSample
@@ -1143,10 +1145,6 @@ attributes:
     range: string
   ribosomal_sequence:
     name: ribosomal_sequence
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: First ribosomal sequence
     description: Ribosomal nucleotide sequence for strain verification. At least one
       is required by JGI for all microbial and fungal genome projects.
     examples:
@@ -1156,6 +1154,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: First ribosomal sequence
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: ribosomal_sequence
     owner: OrganismSample
@@ -1164,10 +1167,6 @@ attributes:
     range: string
   ribosomal_sequence_type:
     name: ribosomal_sequence_type
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: First ribosomal sequence type
     description: Type of the ribosomal sequence (16S, ITS, ITS-AGI, 28S, or Other).
     examples:
     - value: 16S
@@ -1176,6 +1175,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: First ribosomal sequence type
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: ribosomal_sequence_type
     owner: OrganismSample
@@ -1184,14 +1188,15 @@ attributes:
     range: RibosomalSequenceTypeEnum
   ribosomal_sequence_comments:
     name: ribosomal_sequence_comments
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: First ribosomal sequence comments
     description: Comments on the ribosomal sequence. Required if type is "Other".
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: First ribosomal sequence comments
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: ribosomal_sequence_comments
     owner: OrganismSample
@@ -1200,14 +1205,15 @@ attributes:
     range: string
   second_ribosomal_sequence:
     name: second_ribosomal_sequence
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Second ribosomal sequence
     description: A second ribosomal sequence for additional strain verification.
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Second ribosomal sequence
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: second_ribosomal_sequence
     owner: OrganismSample
@@ -1216,14 +1222,15 @@ attributes:
     range: string
   second_ribosomal_sequence_type:
     name: second_ribosomal_sequence_type
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Second ribosomal sequence type
     description: Type of the second ribosomal sequence.
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Second ribosomal sequence type
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: second_ribosomal_sequence_type
     owner: OrganismSample
@@ -1232,14 +1239,15 @@ attributes:
     range: RibosomalSequenceTypeEnum
   second_ribosomal_sequence_comments:
     name: second_ribosomal_sequence_comments
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Second ribosomal sequence comments
     description: Comments on the second ribosomal sequence.
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Second ribosomal sequence comments
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: second_ribosomal_sequence_comments
     owner: OrganismSample
@@ -1248,10 +1256,6 @@ attributes:
     range: string
   fungal_16s_screening:
     name: fungal_16s_screening
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: For fungal draft samples, was 16S screening performed?
     description: Whether 16S screening was performed for fungal draft samples.
     examples:
     - value: 'yes'
@@ -1259,6 +1263,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: For fungal draft samples, was 16S screening performed?
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: fungal_16s_screening
     owner: OrganismSample
@@ -1267,10 +1276,6 @@ attributes:
     range: YesNoEnum
   its_match_unite:
     name: its_match_unite
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: For fungal draft samples, does ITS match taxonomy in UNITE?
     description: Whether the ITS sequence matches taxonomy in the UNITE database.
     examples:
     - value: 'yes'
@@ -1278,6 +1283,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: For fungal draft samples, does ITS match taxonomy in UNITE?
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: its_match_unite
     owner: OrganismSample
@@ -1286,10 +1296,6 @@ attributes:
     range: YesNoEnum
   sample_isolation_method:
     name: sample_isolation_method
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Sample Isolation Method
     description: Method, protocol, or kit used to extract DNA/RNA from the sample.
     comments:
     - See also dna_isolate_meth in submission-schema for the equivalent portal field.
@@ -1300,6 +1306,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Sample Isolation Method
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: sample_isolation_method
     owner: OrganismSample
@@ -1308,10 +1319,6 @@ attributes:
     range: string
   sample_isolated_from:
     name: sample_isolated_from
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Sample Isolated From
     description: Description of where the sample originated.
     examples:
     - value: Isolated from the fungus-growing ant Apterostigma
@@ -1322,6 +1329,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Sample Isolated From
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: sample_isolated_from
     owner: OrganismSample

@@ -657,10 +657,6 @@ attributes:
     inlined_as_list: true
   biosafety_material_category:
     name: biosafety_material_category
-    annotations:
-      jgi_isolate_field:
-        tag: jgi_isolate_field
-        value: Biosafety Material Category
     description: General category of organism for biosafety classification.
     examples:
     - value: Bacteria
@@ -668,6 +664,11 @@ attributes:
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Biosafety Material Category
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: biosafety_material_category
     owner: Organism
