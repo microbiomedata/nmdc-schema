@@ -732,13 +732,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
-<td>Metadata pertaining to how a record was created</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
+<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td>A workflow execution activity that provides functional and structural annotat...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -747,14 +742,24 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
-<td>Initial sequencing activity that precedes any analysis</td>
+<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
+<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
 <td></td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../NomAnalysis/">NomAnalysis</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
+<td>Metadata pertaining to how a record was created</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
@@ -772,22 +777,12 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
-<td>A workflow execution activity that provides functional and structural annotat...</td>
+<td><a href="../ReadQcAnalysis/">ReadQcAnalysis</a></td>
+<td>A workflow execution activity that performs quality control on raw Illumina r...</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
-<td>Represents an instance of an execution of a particular workflow</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../NomAnalysis/">NomAnalysis</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -797,9 +792,14 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ReadQcAnalysis/">ReadQcAnalysis</a></td>
-<td>A workflow execution activity that performs quality control on raw Illumina r...</td>
+<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
+<td>Initial sequencing activity that precedes any analysis</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td>Represents an instance of an execution of a particular workflow</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
