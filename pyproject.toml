@@ -22,13 +22,18 @@ keywords = ["NMDC", "schema", "metadata", "microbiome"]
 
 # Upper bound policy (PR #2888): 1.0+ packages cap at next major, pre-1.0 at next minor.
 dependencies = [
-    "click>=8.0.0,<9.0.0",
+    # Capped at <8.2 to match linkml 1.9.4–1.10.0's click constraint.
+    # Can widen to <9.0.0 once linkml releases with the cap removed. See #2985.
+    "click>=8.0.0,<8.2",
     "click-log>=0.4.0,<0.5.0",
     "deprecated>=1.0.0,<2.0.0",
     "jsonasobj2>=1.0.0,<2.0.0",
     "jsonschema>=4.0.0,<5.0.0",
-    "linkml>=1.9.0,<2.0.0",
-    "linkml-runtime>=1.9.0,<2.0.0",
+    # linkml and linkml-runtime versions must be paired — e.g. runtime
+    # 1.10.0 removed Format.JSON which linkml 1.9.x references. See #2985.
+    "linkml>=1.10.0,<2.0.0",
+    "linkml-runtime>=1.10.0,<2.0.0",
+    "linkml-store>=0.3.0,<0.4.0",
     "oaklib>=0.6.23,<1.0.0",
     "python-dotenv>=0.21.0,<2.0.0",
     "pyyaml>=6.0.0,<7.0.0",
@@ -36,8 +41,12 @@ dependencies = [
     "requests>=2.0.0,<3.0.0",
     "pymdown-extensions>=10.16.1,<11.0.0",
     "pymongo>=4.7.2,<5.0.0",
-    "linkml-store[llm]>=0.3.0,<0.4.0",
     "curies>=0.9.0,<1.0.0",
+    # linkml-store[llm] was a core dep but its llm → sqlite-utils chain
+    # requires click>=8.3.1, which conflicts with linkml's click<8.2 cap.
+    # Ontology alignment scripts (#2909, #2910) that need embeddings should
+    # install it separately: uv pip install 'linkml-store[llm]>=0.3.0,<0.4.0'
+    # This can return to core deps once linkml drops the click cap. See #2985.
 ]
 
 [project.urls]
