@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post52.dev0+eb2032548
+version: 11.18.0.post54.dev0+50afc302d
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19029,8 +19029,7 @@ classes:
     class_uri: nmdc:FailureCategorization
   MaterialEntity:
     name: MaterialEntity
-    description: A physical entity that occupies space, has mass, and persists through
-      time. In NMDC this includes organisms, samples, instruments, and sites.
+    description: An entity that occupies space and has mass.
     title: Material Entity
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
@@ -19070,9 +19069,7 @@ classes:
         description: A unique instrument is defined by its vendor and model.
   PlannedProcess:
     name: PlannedProcess
-    description: A process that is executed according to a plan. In NMDC this includes
-      sample collection, material processing, data generation, and computational analysis
-      workflows.
+    description: A process that is executed according to a plan.
     title: Planned Process
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: NamedThing
