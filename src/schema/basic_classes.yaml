@@ -109,7 +109,7 @@ classes:
   MaterialEntity:
     class_uri: nmdc:MaterialEntity
     description: >-
-      An entity that occupies space and has mass.
+      A named thing that occupies space and has mass.
     abstract: true
     aliases:
       - Material
@@ -140,7 +140,7 @@ classes:
           interpolated: true
   PlannedProcess:
     description: >-
-      A process that is executed according to a plan.
+      A named thing that is executed according to a plan.
     abstract: true
     class_uri: OBI:0000011
     is_a: NamedThing
