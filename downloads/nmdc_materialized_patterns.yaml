@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post52.dev0+ec1ad83ee
+version: 11.18.0.post53.dev0+bb2e26bce
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19032,6 +19032,7 @@ classes:
     class_uri: nmdc:FailureCategorization
   MaterialEntity:
     name: MaterialEntity
+    description: A named thing that occupies space and has mass.
     title: Material Entity
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
@@ -19073,6 +19074,7 @@ classes:
         description: A unique instrument is defined by its vendor and model.
   PlannedProcess:
     name: PlannedProcess
+    description: A named thing that is executed according to a plan.
     title: Planned Process
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: NamedThing
