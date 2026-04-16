@@ -10,6 +10,7 @@ prefixes:
   EFO: "http://www.ebi.ac.uk/efo/"
   ISA: "http://example.org/isa/"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
+  IAO: "http://purl.obolibrary.org/obo/IAO_"
   OBI: "http://purl.obolibrary.org/obo/OBI_"
   SIO: "http://semanticscience.org/resource/SIO_" # for Study, StudyCategoryEnum PVs, objective
   biolink: "https://w3id.org/biolink/vocab/"
@@ -348,6 +349,8 @@ classes:
     class_uri: nmdc:InformationObject
     description: >-
       Any data or knowledge that reduces uncertainty or enhances understanding about a system, process, or entity.
+    exact_mappings:
+      - IAO:0000030
     comments:
       - The direct subclasses of NamedThing should aggregate the relevant classes and make them uniform. PlannedProcess and MaterialEntity are clearly disjoint. Let's do the same thing for our modelling of things that don't consist of matter and aren't processes.
       - InformationObjects may include embedded data or links to external resources via the url slot
