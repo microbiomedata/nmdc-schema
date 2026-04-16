@@ -109,6 +109,8 @@ classes:
 
   MaterialEntity:
     class_uri: nmdc:MaterialEntity
+    description: >-
+      A named thing that occupies space and has mass.
     abstract: true
     aliases:
       - Material
@@ -140,6 +142,8 @@ classes:
           syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
           interpolated: true
   PlannedProcess:
+    description: >-
+      A named thing that is executed according to a plan.
     abstract: true
     class_uri: OBI:0000011
     is_a: NamedThing
