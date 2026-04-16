@@ -110,7 +110,6 @@ classes:
     class_uri: nmdc:MaterialEntity
     description: >-
       A physical entity that occupies space, has mass, and persists through time.
-      In NMDC this includes organisms, samples, instruments, and sites.
     abstract: true
     aliases:
       - Material
@@ -141,9 +140,7 @@ classes:
           interpolated: true
   PlannedProcess:
     description: >-
-      A process that is executed according to a plan. In NMDC this includes
-      sample collection, material processing, data generation, and
-      computational analysis workflows.
+      A process that is executed according to a plan.
     abstract: true
     class_uri: OBI:0000011
     is_a: NamedThing
