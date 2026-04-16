@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post50.dev0+9fbb3c921
+version: 11.18.0.post52.dev0+ec1ad83ee
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -304,6 +304,9 @@ prefixes:
   shex:
     prefix_prefix: shex
     prefix_reference: http://www.w3.org/ns/shex#
+  IAO:
+    prefix_prefix: IAO
+    prefix_reference: http://purl.obolibrary.org/obo/IAO_
   TAXRANK:
     prefix_prefix: TAXRANK
     prefix_reference: http://purl.obolibrary.org/obo/TAXRANK_
@@ -19034,6 +19037,8 @@ classes:
     aliases:
     - Material
     - Physical entity
+    exact_mappings:
+    - BFO:0000040
     is_a: NamedThing
     abstract: true
     class_uri: nmdc:MaterialEntity
@@ -19332,6 +19337,8 @@ classes:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - nmdc:AttributeValue
+    exact_mappings:
+    - IAO:0000030
     is_a: NamedThing
     abstract: true
     class_uri: nmdc:InformationObject

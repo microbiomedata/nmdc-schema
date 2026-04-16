@@ -16,6 +16,7 @@
    "GENEPIO": "http://purl.obolibrary.org/obo/GENEPIO_",
    "GO": "http://purl.obolibrary.org/obo/GO_",
    "HMDB": "https://bioregistry.io/hmdb:",
+   "IAO": "http://purl.obolibrary.org/obo/IAO_",
    "ISA": "http://example.org/isa/",
    "KEGG.COMPOUND": "https://bioregistry.io/kegg.compound:",
    "KEGG.MODULE": "https://bioregistry.io/kegg.module:",
