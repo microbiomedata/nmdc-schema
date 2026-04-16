@@ -109,7 +109,7 @@ classes:
   MaterialEntity:
     class_uri: nmdc:MaterialEntity
     description: >-
-      A physical entity that occupies space, has mass, and persists through time.
+      An entity that occupies space and has mass.
     abstract: true
     aliases:
       - Material
