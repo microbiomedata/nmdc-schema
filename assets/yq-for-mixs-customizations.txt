@@ -15,6 +15,12 @@
 '.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
 '.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
 
+# Fix broken ontology links in samp_collec_device slot description
+# Upstream MIxS text references two URLs that no longer resolve correctly:
+#   - http://purl.obolibrary.org/obo/ENVO -> 404 (OBO PURL for the ENVO root returns 404)
+#   - http://purl.obolibrary.org/obo/GENEPIO_0002094 -> obsolete term; moved to OBI_0002814
+'.slots.samp_collec_device.description |= "The device used to collect an environmental sample. This field accepts terms listed under the ENVO ontology (https://www.ebi.ac.uk/ols4/ontologies/envo). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/OBI_0002814)."'
+
 '.slots.env_broad_scale.is_a |= "mixs_env_triad_field"'
 '.slots.env_local_scale.is_a |= "mixs_env_triad_field"'
 '.slots.env_medium.is_a |= "mixs_env_triad_field"'
