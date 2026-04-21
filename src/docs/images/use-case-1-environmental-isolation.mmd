@@ -4,16 +4,16 @@
 %% Upstream collection context (FieldResearchSite + CollectingBiosamplesFromSite)
 %% is not currently in the data file — omitted here to keep diagram faithful.
 flowchart LR
-    BSM["Biosample<br/>nmdc:bsm-99-soil001<br/>Anavilhanas soil"]
+    BSM["Biosample<br/>nmdc:bsm-99-soil001<br/>Example soil biosample"]
     ISN["Isolation<br/>nmdc:isnp-99-isol001"]
-    OSM1["OrganismSample<br/>nmdc:osm-99-colony01<br/>ICBG1012 colony pick"]
+    OSM1["OrganismSample<br/>nmdc:osm-99-colony01<br/>B. subtilis 168 colony pick"]
     CULT["Culturing<br/>nmdc:cultp-99-cult001"]
-    OSM2["OrganismSample<br/>nmdc:osm-99-culture01<br/>ICBG1012 expanded culture"]
+    OSM2["OrganismSample<br/>nmdc:osm-99-culture01<br/>B. subtilis 168 expanded culture"]
     EXT["Extraction<br/>nmdc:extrp-99-extr001"]
-    PSM["ProcessedSample<br/>nmdc:procsm-99-dna001<br/>ICBG1012 extracted DNA"]
-    STRN["Strain<br/>nmdc:strn-99-amyco012<br/>Amycolatopsis sp. ICBG1012"]
-    CITV["ControlledIdentifiedTermValue<br/>Amycolatopsis [NCBITaxon:1813]"]
-    TAX["Taxon<br/>NCBITaxon:1813"]
+    PSM["ProcessedSample<br/>nmdc:procsm-99-dna001<br/>B. subtilis 168 extracted DNA"]
+    STRN["Strain<br/>nmdc:strn-99-bsub168<br/>Bacillus subtilis 168"]
+    CITV["ControlledIdentifiedTermValue<br/>Bacillus [NCBITaxon:1386]"]
+    TAX["Taxon<br/>NCBITaxon:1386"]
 
     ISN -->|has_input| BSM
     ISN -->|has_output| OSM1
