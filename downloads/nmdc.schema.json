@@ -2581,7 +2581,7 @@
                     ]
                 },
                 "name": {
-                    "description": "A local identifier or name for the material sample collected. It can have any format, but we suggest that you make it concise, unique, and consistent within your lab, and as informative as possible. For NMDC this should be unique within a study. International Nucleotide Sequence Database Collaboration (INSDC) requires every sample name from a single submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to the name slot.",
+                    "description": "A local identifier or name for the material sample collected. We recommend it be informative, concise, and consistent within your lab. It must be unique within a study. International Nucleotide Sequence Database Collaboration (INSDC) requires every sample name from a single submitter to be unique. We recommend that, in addition to populating this field, you populate the `source_mat_id` field with a globally-unique identifier.",
                     "type": "string"
                 },
                 "ncbi_taxonomy_name": {
@@ -15357,5 +15357,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post53.dev0+bb2e26bce"
+    "version": "11.18.0.post55.dev0+4b19d0590"
 }
