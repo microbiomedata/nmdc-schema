@@ -1,23 +1,24 @@
-# Amycolatopsis sp. ICBG1012 from JGI Isolate spreadsheet (Pupo project, row 3)
-# GOLD organism record Go0658917 (Micromonospora parastrephiae STR1-7) used for
-# gold_organism_identifiers and insdc_nucleotide_identifiers examples since
-# the Pupo project organisms lack GOLD records.
-id: nmdc:strn-99-pupo1012
+# Shewanella loihica PV-4 — GOLD organism record Go0000189
+# (queried from "gold-db-2 postgresql".gold.organism_v2 on 2026-04-21).
+# Public type strain, collected 1998 from iron-rich microbial mat at Naha Vents
+# on the south rift of Loihi seamount, Hawaii. Complete published genome
+# GCA_000016065.1 (NCBI BioProject PRJNA13906, BioSample SAMN00623064).
+id: nmdc:strn-99-shewa189
 type: nmdc:Strain
-name: Amycolatopsis sp. ICBG1012
+name: Shewanella loihica PV-4
 classified_as:
   - type: nmdc:ControlledIdentifiedTermValue
-    has_raw_value: Amycolatopsis [NCBITaxon:1813]
+    has_raw_value: Shewanella [NCBITaxon:22]
     term:
-      id: NCBITaxon:1813
-      name: Amycolatopsis
+      id: NCBITaxon:22
+      name: Shewanella
       type: nmdc:Taxon
 biosafety_material_category: Bacteria
-organism_genus: Amycolatopsis
-organism_species: sp.
-strain_name: ICBG1012
+organism_genus: Shewanella
+organism_species: loihica
+strain_name: PV-4
 isolate_name: Isolate
-gc_content: 72.0
-estimated_size: 10000000 bp
+gc_content: 54.0
+estimated_size: 4600000 bp
 gold_organism_identifiers:
-  - gold:Go0658917
+  - gold:Go0000189

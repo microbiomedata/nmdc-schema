@@ -1,20 +1,24 @@
-# Micromonospora sp. ICBG1321 from JGI Isolate spreadsheet (Pupo project, row 10)
-# Isolated from nurse bees of Melipona scutellaris, Ribeirão Preto, Brazil
-id: nmdc:osm-99-pupo1321
+# Ruegeria pomeroyi DSS-3 — GOLD organism record Go0000514
+# (queried from "gold-db-2 postgresql".gold.organism_v2 on 2026-04-21).
+# Public type strain (ATCC 700808), collected 1998-03-01 from coastal saltwater
+# off the Georgia coast, USA. Complete published genome GCA_000011965.2 (NCBI
+# BioProject PRJNA281, BioSample SAMN02604003). 16S accession AF098491 was
+# deposited under the former genus name "Silicibacter pomeroyi".
+id: nmdc:osm-99-rpom514
 type: nmdc:OrganismSample
-name: Micromonospora sp. ICBG1321 isolate submission
-samp_name: Micromonospora_sp_ICBG1321
-expected_content: nmdc:strn-99-pupo1321
+name: Ruegeria pomeroyi DSS-3 isolate submission
+samp_name: Ruegeria_pomeroyi_DSS-3
+expected_content: nmdc:strn-99-rpom514
 single_colony_isolation: "yes"
-ribosomal_sequence: AGCGGTAAAGGCCCTTTCGGGGTACTCGAGCGGCGAACGGGTGAGTAACACGTGAGCAACCTTGCCCC
+ribosomal_sequence: TAACTTGAGAGTTTGATCCTGGCTCAGAACGAACGCTGGCGGCAGGCCTAACACATGCAAGTCGAGCGCG
 ribosomal_sequence_type: 16S
 sample_isolation_method: Wizard Genomic DNA Purification Kit
-sample_isolated_from: Isolated from nurse bees of Melipona scutellaris
+sample_isolated_from: Saltwater from water column
 collection_date:
   type: nmdc:TimestampValue
-  has_raw_value: "2014-10-10"
+  has_raw_value: "1998-03-01"
 geo_loc_name:
   type: nmdc:TextValue
-  has_raw_value: Brazil
+  has_raw_value: "USA: Georgia coast"
 associated_studies:
-  - nmdc:sty-99-pupoproject
+  - nmdc:sty-99-isolatedemo

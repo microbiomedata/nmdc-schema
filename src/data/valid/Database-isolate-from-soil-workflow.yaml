@@ -5,13 +5,17 @@
 #   → Extraction → ProcessedSample (DNA)
 #
 # Based on Alicia Clum's use case (#2925, #2927).
+# Strain is a richly-annotated, long-public GOLD reference: Bacillus subtilis
+# 168 (GOLD Go0000781, NCBI Taxonomy 224308, ATCC 6051). Type strain, soil
+# isolate, complete published genome. Selected because it is a canonical soil
+# bacterium with unambiguous non-embargoed public provenance.
 
 biosample_set:
   - id: nmdc:bsm-99-soil001
     type: nmdc:Biosample
-    name: Anavilhanas soil sample
+    name: Example soil biosample
     associated_studies:
-      - nmdc:sty-99-pupoproject
+      - nmdc:sty-99-soildemo
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
@@ -32,38 +36,38 @@ biosample_set:
         id: ENVO:00005792
 
 organism_set:
-  - id: nmdc:strn-99-amyco012
+  - id: nmdc:strn-99-bsub168
     type: nmdc:Strain
-    name: Amycolatopsis sp. ICBG1012
+    name: Bacillus subtilis 168
     classified_as:
       - type: nmdc:ControlledIdentifiedTermValue
-        has_raw_value: Amycolatopsis [NCBITaxon:1813]
+        has_raw_value: Bacillus [NCBITaxon:1386]
         term:
-          id: NCBITaxon:1813
-          name: Amycolatopsis
+          id: NCBITaxon:1386
+          name: Bacillus
           type: nmdc:Taxon
     biosafety_material_category: Bacteria
-    organism_genus: Amycolatopsis
-    organism_species: sp.
-    strain_name: ICBG1012
+    organism_genus: Bacillus
+    organism_species: subtilis
+    strain_name: "168"
 
 organism_sample_set:
   # Colony pick after isolation
   - id: nmdc:osm-99-colony01
     type: nmdc:OrganismSample
-    name: ICBG1012 colony pick
+    name: Bacillus subtilis 168 colony pick
     associated_studies:
-      - nmdc:sty-99-pupoproject
-    expected_content: nmdc:strn-99-amyco012
+      - nmdc:sty-99-soildemo
+    expected_content: nmdc:strn-99-bsub168
     single_colony_isolation: "yes"
-    sample_isolated_from: Isolated from fungus-growing ant Apterostigma, Anavilhanas, Brazil
+    sample_isolated_from: Example soil isolation
   # Expanded culture after culturing
   - id: nmdc:osm-99-culture01
     type: nmdc:OrganismSample
-    name: ICBG1012 expanded culture
+    name: Bacillus subtilis 168 expanded culture
     associated_studies:
-      - nmdc:sty-99-pupoproject
-    expected_content: nmdc:strn-99-amyco012
+      - nmdc:sty-99-soildemo
+    expected_content: nmdc:strn-99-bsub168
     single_colony_isolation: "yes"
 
 material_processing_set:
@@ -92,4 +96,4 @@ material_processing_set:
 processed_sample_set:
   - id: nmdc:procsm-99-dna001
     type: nmdc:ProcessedSample
-    name: ICBG1012 extracted DNA
+    name: Bacillus subtilis 168 extracted DNA
