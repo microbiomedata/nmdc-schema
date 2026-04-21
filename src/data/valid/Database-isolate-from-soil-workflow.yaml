@@ -58,7 +58,7 @@ organism_sample_set:
     name: Bacillus subtilis 168 colony pick
     associated_studies:
       - nmdc:sty-99-soildemo
-    expected_content: nmdc:strn-99-bsub168
+    expected_organism: nmdc:strn-99-bsub168
     single_colony_isolation: "yes"
     sample_isolated_from: Example soil isolation
   # Expanded culture after culturing
@@ -67,7 +67,7 @@ organism_sample_set:
     name: Bacillus subtilis 168 expanded culture
     associated_studies:
       - nmdc:sty-99-soildemo
-    expected_content: nmdc:strn-99-bsub168
+    expected_organism: nmdc:strn-99-bsub168
     single_colony_isolation: "yes"
 
 material_processing_set:

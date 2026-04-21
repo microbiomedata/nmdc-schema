@@ -27,7 +27,7 @@ organism_sample_set:
     type: nmdc:OrganismSample
     name: Arabidopsis thaliana Ler-0 leaf clip
     samp_name: Athal_Ler0_leaf_01
-    expected_content: nmdc:orgn-99-athal001
+    expected_organism: nmdc:orgn-99-athal001
     single_colony_isolation: "no"
     sample_isolated_from: Leaf tissue clipped from greenhouse-grown Arabidopsis thaliana Ler-0
     collection_date:

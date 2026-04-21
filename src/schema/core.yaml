@@ -1291,14 +1291,13 @@ classes:
       expectation may be contradicted by sequencing results.
     slots:
       - associated_studies
-      - expected_content
+      - expected_organism
       - embargoed
       - provenance_metadata
       - external_database_identifiers
       ## collection and provenance (reused from Biosample)
       - collection_date
       - lat_lon
-      - depth
       - elev
       - geo_loc_name
       - samp_name
@@ -1322,7 +1321,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$"
           interpolated: true
-      expected_content:
+      expected_organism:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(orgn|strn)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -1332,7 +1331,7 @@ classes:
         organism, but sequencing may reveal contamination. Purity status is captured by
         single_colony_isolation and known_suspected_organisms, not by the class itself.
       - >-
-        The expected_content slot links to an Organism or Strain instance representing what the
+        The expected_organism slot links to an Organism or Strain instance representing what the
         submitter believes is in the sample.
       - >-
         The defining criterion is genomic homogeneity of intent, not material type. A bacterial

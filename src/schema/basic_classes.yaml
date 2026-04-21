@@ -200,7 +200,7 @@ classes:
       - >-
         Organism instances are stored in organism_set, which is polymorphic and also holds
         Strain instances. An Organism is not a sample — it is the biological entity that an
-        OrganismSample is expected to contain, linked via expected_content.
+        OrganismSample is expected to contain, linked via expected_organism.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/2959
       - https://github.com/microbiomedata/nmdc-schema/issues/2803
@@ -254,9 +254,14 @@ classes:
             predicate: EXACT_SYNONYM
       estimated_size:
         description: >-
-          Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
-          The JGI isolate field reports in megabases (Mb); values must be converted
-          to the MIxS base-pair representation before validation and storage.
+          Estimated genome size, as integer base pairs. Reuses MIxS
+          estimated_size (MIXS:0000024). The JGI isolate field reports in
+          megabases (Mb); values must be converted to the MIxS integer-bp
+          representation before validation and storage. The submission portal
+          should auto-populate the "bp" suffix and enforce integer input.
+        structured_pattern:
+          syntax: '^[0-9]+ bp$'
+          interpolated: false
         structured_aliases:
           - literal_form: Estimated Genome Size (Mb)
             contexts:
@@ -275,8 +280,10 @@ classes:
             predicate: EXACT_SYNONYM
       ref_biomaterial:
         description: >-
-          Reference genome or primary publication for this strain. Reuses MIxS ref_biomaterial
-          (MIXS:0000025).
+          Reference for the strain, preferentially a DOI when a primary
+          publication or genome report exists; PMID and URL are also accepted
+          per the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses
+          MIxS ref_biomaterial (MIXS:0000025).
         structured_aliases:
           - literal_form: Reference Genome
             contexts:
@@ -284,8 +291,19 @@ classes:
             predicate: EXACT_SYNONYM
         comments:
           - >-
-            The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
-            MIxS renaming work.
+            The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred
+            when available — it gives a stable reference to the publication
+            or genome report. See the `associated_dois` pattern elsewhere in
+            the NMDC schema for DOI-structured alternatives.
+          - >-
+            JGI "Reference Genome" submissions sometimes carry non-publication
+            identifiers such as IMG or Phytozome IDs, which do not match the
+            MIxS pattern. Those are out of scope for this slot and should be
+            captured separately (see `gold_organism_identifiers` and
+            `insdc_nucleotide_identifiers` for genome / assembly references).
+          - >-
+            The MIxS name ref_biomaterial may be renamed in a future MIxS
+            release. See ongoing MIxS renaming work.
     comments:
       - >-
         Strain instances are stored in organism_set alongside Organism instances (polymorphic

@@ -8,7 +8,7 @@ id: nmdc:osm-99-rpom514
 type: nmdc:OrganismSample
 name: Ruegeria pomeroyi DSS-3 isolate submission
 samp_name: Ruegeria_pomeroyi_DSS-3
-expected_content: nmdc:strn-99-rpom514
+expected_organism: nmdc:strn-99-rpom514
 single_colony_isolation: "yes"
 ribosomal_sequence: TAACTTGAGAGTTTGATCCTGGCTCAGAACGAACGCTGGCGGCAGGCCTAACACATGCAAGTCGAGCGCG
 ribosomal_sequence_type: 16S
