@@ -22,8 +22,8 @@ flowchart LR
     EXT -->|has_input| OSM2
     EXT -->|has_output| PSM
 
-    OSM1 -.->|expected_content| STRN
-    OSM2 -.->|expected_content| STRN
+    OSM1 -.->|expected_organism| STRN
+    OSM2 -.->|expected_organism| STRN
     STRN -->|classified_as| CITV
     CITV -->|term| TAX
 

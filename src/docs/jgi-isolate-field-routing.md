@@ -23,10 +23,10 @@ to nmdc-schema classes, submission-schema, or deferred.
 | 45 | Collection Site or Growth Conditions* | `sample_isolated_from` | JGI-native (new) — combined with field 44. MIxS isol_growth_condt (MIXS:0000003) was considered but its semantics are "publication reference for growth conditions," not free text |
 | 41-43 | Collection Year/Month/Day* | `collection_date` | MIxS (existing) |
 | 46-47 | Latitude/Longitude* | `lat_lon` | MIxS (existing) |
-| 48-49 | Depth/Max depth* | `depth` | MIxS (existing) |
+| 48-49 | Depth/Max depth* | (deferred — removed from OrganismSample in PR #2977 review pass; see review thread for retain-vs-drop discussion) | MIxS (existing) |
 | 50-51 | Elevation/Max elevation* | `elev` | MIxS (existing) |
 | 52 | Country* | `geo_loc_name` | MIxS (existing) |
-| — | Expected organism | `expected_content` | NMDC-native (new) |
+| — | Expected organism | `expected_organism` | NMDC-native (new) |
 
 ## Organism (orgn) — inherited by Strain
 
