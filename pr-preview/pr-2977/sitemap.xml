@@ -33,10 +33,6 @@
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/BiosafetyMaterialCategoryEnum/</loc>
-         <lastmod>2026-04-21</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/Biosample/</loc>
          <lastmod>2026-04-21</lastmod>
     </url>
@@ -458,6 +454,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/IonizationSourceEnum/</loc>
+         <lastmod>2026-04-21</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/IsolateMaterialCategoryEnum/</loc>
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>
@@ -1977,7 +1977,7 @@
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/expected_content/</loc>
+         <loc>https://microbiomedata.github.io/nmdc-schema/expected_organism/</loc>
          <lastmod>2026-04-21</lastmod>
     </url>
     <url>

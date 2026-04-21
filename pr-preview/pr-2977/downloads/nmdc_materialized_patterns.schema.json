@@ -60,23 +60,6 @@
             "title": "BiolStatEnum",
             "type": "string"
         },
-        "BiosafetyMaterialCategoryEnum": {
-            "description": "General category of organism or material, as used by JGI for biosafety classification.",
-            "enum": [
-                "Alga",
-                "Animal",
-                "Archaea",
-                "Bacteria",
-                "Fungi",
-                "Plant",
-                "Plasmid",
-                "Protist",
-                "Virus",
-                "Synthetic Construct"
-            ],
-            "title": "BiosafetyMaterialCategoryEnum",
-            "type": "string"
-        },
         "Biosample": {
             "additionalProperties": false,
             "description": "Biological source material which can be characterized by an experiment.",
@@ -8683,6 +8666,23 @@
             "title": "IonizationSourceEnum",
             "type": "string"
         },
+        "IsolateMaterialCategoryEnum": {
+            "description": "General category of isolate material, as used by JGI for biosafety classification of pure-organism / strain-pure samples. Deliberately named to avoid confusion with the submission-schema JGIBiosafetyMaterialCategoryEnum and with environmental material category vocabularies (e.g. MIxS `env_medium`).",
+            "enum": [
+                "Alga",
+                "Animal",
+                "Archaea",
+                "Bacteria",
+                "Fungi",
+                "Plant",
+                "Plasmid",
+                "Protist",
+                "Virus",
+                "Synthetic Construct"
+            ],
+            "title": "IsolateMaterialCategoryEnum",
+            "type": "string"
+        },
         "Isolation": {
             "additionalProperties": false,
             "description": "A material processing that separates an organism from a mixed sample by selection techniques such as serial dilution, plating on selective media, and colony picking.",
@@ -12863,7 +12863,7 @@
                     ]
                 },
                 "biosafety_material_category": {
-                    "$ref": "#/$defs/BiosafetyMaterialCategoryEnum",
+                    "$ref": "#/$defs/IsolateMaterialCategoryEnum",
                     "description": "General category of organism for biosafety classification."
                 },
                 "classified_as": {
@@ -12955,18 +12955,6 @@
                     ],
                     "description": "The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant"
                 },
-                "depth": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/QuantityValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples",
-                    "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
-                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -12989,7 +12977,7 @@
                         "null"
                     ]
                 },
-                "expected_content": {
+                "expected_organism": {
                     "description": "The organism or strain that the submitter expects to be present in this sample. May be contradicted by sequencing results.",
                     "pattern": "^(nmdc):(orgn|strn)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
@@ -13129,7 +13117,7 @@
                 },
                 "single_colony_isolation": {
                     "$ref": "#/$defs/YesNoEnum",
-                    "description": "Whether the sample was isolated from a single colony or axenic/strain-pure culture."
+                    "description": "Was the sample isolated from a single colony, or from a procedure considered equivalent to single-colony isolation (e.g. axenic or strain-pure culture)?"
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -15026,7 +15014,7 @@
                     ]
                 },
                 "biosafety_material_category": {
-                    "$ref": "#/$defs/BiosafetyMaterialCategoryEnum",
+                    "$ref": "#/$defs/IsolateMaterialCategoryEnum",
                     "description": "General category of organism for biosafety classification."
                 },
                 "classified_as": {
@@ -15047,7 +15035,8 @@
                     ]
                 },
                 "estimated_size": {
-                    "description": "Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024). The JGI isolate field reports in megabases (Mb); values must be converted to the MIxS base-pair representation before validation and storage.",
+                    "description": "Estimated genome size, as integer base pairs. Reuses MIxS estimated_size (MIXS:0000024). The JGI isolate field reports in megabases (Mb); values must be converted to the MIxS integer-bp representation before validation and storage. The submission portal should auto-populate the \"bp\" suffix and enforce integer input.",
+                    "pattern": "^[0-9]+ bp$",
                     "type": [
                         "string",
                         "null"
@@ -15136,7 +15125,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Reference genome or primary publication for this strain. Reuses MIxS ref_biomaterial (MIXS:0000025).",
+                    "description": "Reference for the strain, preferentially a DOI when a primary publication or genome report exists; PMID and URL are also accepted per the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025).",
                     "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$"
                 },
                 "source_mat_id": {
@@ -16590,6 +16579,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post85.dev0+fdd623f24"
+    "version": "11.18.0.post86.dev0+e4cdcac2d"
 }
 

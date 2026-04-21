@@ -8,7 +8,7 @@ flowchart LR
     CITV["ControlledIdentifiedTermValue<br/>Lentinula edodes [NCBITaxon:5353]"]
     TAX["Taxon<br/>NCBITaxon:5353"]
 
-    OSM -->|expected_content| ORG
+    OSM -->|expected_organism| ORG
     ORG -->|classified_as| CITV
     CITV -->|term| TAX
 

@@ -433,8 +433,8 @@
 
   Organism : biosafety_material_category
 
-      Organism --&gt; "0..1" BiosafetyMaterialCategoryEnum : biosafety_material_category
-    click BiosafetyMaterialCategoryEnum href "../BiosafetyMaterialCategoryEnum"
+      Organism --&gt; "0..1" IsolateMaterialCategoryEnum : biosafety_material_category
+    click IsolateMaterialCategoryEnum href "../IsolateMaterialCategoryEnum"
 
   Organism : classified_as
 
@@ -486,7 +486,7 @@
 </tr>
 <tr>
 <td><a href="../biosafety_material_category/">biosafety_material_category</a></td>
-<td>0..1 <br/> <a href="../BiosafetyMaterialCategoryEnum/">BiosafetyMaterialCategoryEnum</a></td>
+<td>0..1 <br/> <a href="../IsolateMaterialCategoryEnum/">IsolateMaterialCategoryEnum</a></td>
 <td>General category of organism for biosafety classification</td>
 <td>direct</td>
 </tr>
@@ -547,7 +547,7 @@
 </tr>
 <tr>
 <td><a href="../OrganismSample/">OrganismSample</a></td>
-<td><a href="../expected_content/">expected_content</a></td>
+<td><a href="../expected_organism/">expected_organism</a></td>
 <td>range</td>
 <td><a href="./">Organism</a></td>
 </tr>
@@ -555,7 +555,7 @@
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Organism instances are stored in organism_set, which is polymorphic and also holds Strain instances. An Organism is not a sample — it is the biological entity that an OrganismSample is expected to contain, linked via expected_content.</li>
+<li>Organism instances are stored in organism_set, which is polymorphic and also holds Strain instances. An Organism is not a sample — it is the biological entity that an OrganismSample is expected to contain, linked via expected_organism.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -593,7 +593,7 @@ description: A material entity that is a living or once-living individual. Organ
 comments:
 - Organism instances are stored in organism_set, which is polymorphic and also holds
   Strain instances. An Organism is not a sample — it is the biological entity that
-  an OrganismSample is expected to contain, linked via expected_content.
+  an OrganismSample is expected to contain, linked via expected_organism.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2959
@@ -623,7 +623,7 @@ description: A material entity that is a living or once-living individual. Organ
 comments:
 - Organism instances are stored in organism_set, which is polymorphic and also holds
   Strain instances. An Organism is not a sample — it is the biological entity that
-  an OrganismSample is expected to contain, linked via expected_content.
+  an OrganismSample is expected to contain, linked via expected_organism.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2959
@@ -647,7 +647,7 @@ attributes:
       of the organism. The term should reference a Taxon instance identified by an
       NCBITaxon CURIE (or another supported taxonomy prefix). The slot is multivalued
       to allow classifications from multiple authorities (e.g. both NCBITaxon and
-      GTDB) for the same organism. OrganismSample is classified indirectly via expected_content.classified_as.
+      GTDB) for the same organism. OrganismSample is classified indirectly via expected_organism.classified_as.
     - This slot is intended to replace known_as on PortionOfSubstance in a future
       deprecation.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -684,7 +684,7 @@ attributes:
     owner: Organism
     domain_of:
     - Organism
-    range: BiosafetyMaterialCategoryEnum
+    range: IsolateMaterialCategoryEnum
   gold_organism_identifiers:
     name: gold_organism_identifiers
     description: identifiers for corresponding organism in GOLD

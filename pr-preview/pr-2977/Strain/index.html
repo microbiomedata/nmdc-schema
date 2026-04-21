@@ -420,8 +420,8 @@
 
   Strain : biosafety_material_category
 
-      Strain --&gt; "0..1" BiosafetyMaterialCategoryEnum : biosafety_material_category
-    click BiosafetyMaterialCategoryEnum href "../BiosafetyMaterialCategoryEnum"
+      Strain --&gt; "0..1" IsolateMaterialCategoryEnum : biosafety_material_category
+    click IsolateMaterialCategoryEnum href "../IsolateMaterialCategoryEnum"
 
   Strain : classified_as
 
@@ -542,7 +542,7 @@
 <tr>
 <td><a href="../estimated_size/">estimated_size</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Estimated genome size</td>
+<td>Estimated genome size, as integer base pairs</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -554,7 +554,7 @@
 <tr>
 <td><a href="../ref_biomaterial/">ref_biomaterial</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
-<td>Reference genome or primary publication for this strain</td>
+<td>Reference for the strain, preferentially a DOI when a primary publication or ...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -589,7 +589,7 @@
 </tr>
 <tr>
 <td><a href="../biosafety_material_category/">biosafety_material_category</a></td>
-<td>0..1 <br/> <a href="../BiosafetyMaterialCategoryEnum/">BiosafetyMaterialCategoryEnum</a></td>
+<td>0..1 <br/> <a href="../IsolateMaterialCategoryEnum/">IsolateMaterialCategoryEnum</a></td>
 <td>General category of organism for biosafety classification</td>
 <td><a href="../Organism/">Organism</a></td>
 </tr>
@@ -716,14 +716,19 @@ slot_usage:
       - https://jgi.doe.gov/isolate-submission-form/v19
   estimated_size:
     name: estimated_size
-    description: Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
-      The JGI isolate field reports in megabases (Mb); values must be converted to
-      the MIxS base-pair representation before validation and storage.
+    description: Estimated genome size, as integer base pairs. Reuses MIxS estimated_size
+      (MIXS:0000024). The JGI isolate field reports in megabases (Mb); values must
+      be converted to the MIxS integer-bp representation before validation and storage.
+      The submission portal should auto-populate the "bp" suffix and enforce integer
+      input.
     structured_aliases:
     - literal_form: Estimated Genome Size (Mb)
       predicate: EXACT_SYNONYM
       contexts:
       - https://jgi.doe.gov/isolate-submission-form/v19
+    structured_pattern:
+      syntax: ^[0-9]+ bp$
+      interpolated: false
   ploidy:
     name: ploidy
     description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
@@ -737,9 +742,17 @@ slot_usage:
       - https://jgi.doe.gov/isolate-submission-form/v19
   ref_biomaterial:
     name: ref_biomaterial
-    description: Reference genome or primary publication for this strain. Reuses MIxS
-      ref_biomaterial (MIXS:0000025).
+    description: Reference for the strain, preferentially a DOI when a primary publication
+      or genome report exists; PMID and URL are also accepted per the MIxS ref_biomaterial
+      pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025).
     comments:
+    - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available
+      — it gives a stable reference to the publication or genome report. See the `associated_dois`
+      pattern elsewhere in the NMDC schema for DOI-structured alternatives.
+    - JGI "Reference Genome" submissions sometimes carry non-publication identifiers
+      such as IMG or Phytozome IDs, which do not match the MIxS pattern. Those are
+      out of scope for this slot and should be captured separately (see `gold_organism_identifiers`
+      and `insdc_nucleotide_identifiers` for genome / assembly references).
     - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
       MIxS renaming work.
     structured_aliases:
@@ -792,14 +805,19 @@ slot_usage:
       - https://jgi.doe.gov/isolate-submission-form/v19
   estimated_size:
     name: estimated_size
-    description: Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
-      The JGI isolate field reports in megabases (Mb); values must be converted to
-      the MIxS base-pair representation before validation and storage.
+    description: Estimated genome size, as integer base pairs. Reuses MIxS estimated_size
+      (MIXS:0000024). The JGI isolate field reports in megabases (Mb); values must
+      be converted to the MIxS integer-bp representation before validation and storage.
+      The submission portal should auto-populate the "bp" suffix and enforce integer
+      input.
     structured_aliases:
     - literal_form: Estimated Genome Size (Mb)
       predicate: EXACT_SYNONYM
       contexts:
       - https://jgi.doe.gov/isolate-submission-form/v19
+    structured_pattern:
+      syntax: ^[0-9]+ bp$
+      interpolated: false
   ploidy:
     name: ploidy
     description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
@@ -813,9 +831,17 @@ slot_usage:
       - https://jgi.doe.gov/isolate-submission-form/v19
   ref_biomaterial:
     name: ref_biomaterial
-    description: Reference genome or primary publication for this strain. Reuses MIxS
-      ref_biomaterial (MIXS:0000025).
+    description: Reference for the strain, preferentially a DOI when a primary publication
+      or genome report exists; PMID and URL are also accepted per the MIxS ref_biomaterial
+      pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025).
     comments:
+    - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available
+      — it gives a stable reference to the publication or genome report. See the `associated_dois`
+      pattern elsewhere in the NMDC schema for DOI-structured alternatives.
+    - JGI "Reference Genome" submissions sometimes carry non-publication identifiers
+      such as IMG or Phytozome IDs, which do not match the MIxS pattern. Those are
+      out of scope for this slot and should be captured separately (see `gold_organism_identifiers`
+      and `insdc_nucleotide_identifiers` for genome / assembly references).
     - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
       MIxS renaming work.
     structured_aliases:
@@ -989,9 +1015,11 @@ attributes:
       Expected_value:
         tag: Expected_value
         value: number of base pairs
-    description: Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
-      The JGI isolate field reports in megabases (Mb); values must be converted to
-      the MIxS base-pair representation before validation and storage.
+    description: Estimated genome size, as integer base pairs. Reuses MIxS estimated_size
+      (MIXS:0000024). The JGI isolate field reports in megabases (Mb); values must
+      be converted to the MIxS integer-bp representation before validation and storage.
+      The submission portal should auto-populate the "bp" suffix and enforce integer
+      input.
     title: estimated size
     examples:
     - value: 300000 bp
@@ -1011,6 +1039,9 @@ attributes:
     domain_of:
     - Strain
     range: string
+    structured_pattern:
+      syntax: ^[0-9]+ bp$
+      interpolated: false
   ploidy:
     name: ploidy
     description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
@@ -1039,10 +1070,18 @@ attributes:
       partial_match: true
   ref_biomaterial:
     name: ref_biomaterial
-    description: Reference genome or primary publication for this strain. Reuses MIxS
-      ref_biomaterial (MIXS:0000025).
+    description: Reference for the strain, preferentially a DOI when a primary publication
+      or genome report exists; PMID and URL are also accepted per the MIxS ref_biomaterial
+      pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025).
     title: reference for biomaterial
     comments:
+    - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available
+      — it gives a stable reference to the publication or genome report. See the `associated_dois`
+      pattern elsewhere in the NMDC schema for DOI-structured alternatives.
+    - JGI "Reference Genome" submissions sometimes carry non-publication identifiers
+      such as IMG or Phytozome IDs, which do not match the MIxS pattern. Those are
+      out of scope for this slot and should be captured separately (see `gold_organism_identifiers`
+      and `insdc_nucleotide_identifiers` for genome / assembly references).
     - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
       MIxS renaming work.
     examples:
@@ -1066,6 +1105,10 @@ attributes:
       partial_match: true
   gc_content:
     name: gc_content
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '%'
     description: Estimated GC content as a percentage.
     examples:
     - value: '54.0'
@@ -1162,7 +1205,7 @@ attributes:
       of the organism. The term should reference a Taxon instance identified by an
       NCBITaxon CURIE (or another supported taxonomy prefix). The slot is multivalued
       to allow classifications from multiple authorities (e.g. both NCBITaxon and
-      GTDB) for the same organism. OrganismSample is classified indirectly via expected_content.classified_as.
+      GTDB) for the same organism. OrganismSample is classified indirectly via expected_organism.classified_as.
     - This slot is intended to replace known_as on PortionOfSubstance in a future
       deprecation.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -1199,7 +1242,7 @@ attributes:
     owner: Strain
     domain_of:
     - Organism
-    range: BiosafetyMaterialCategoryEnum
+    range: IsolateMaterialCategoryEnum
   gold_organism_identifiers:
     name: gold_organism_identifiers
     description: identifiers for corresponding organism in GOLD

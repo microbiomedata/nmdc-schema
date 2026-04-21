@@ -437,20 +437,15 @@
       OrganismSample --&gt; "0..1" TimestampValue : collection_date
     click TimestampValue href "../TimestampValue"
 
-  OrganismSample : depth
-
-      OrganismSample --&gt; "0..1" QuantityValue : depth
-    click QuantityValue href "../QuantityValue"
-
   OrganismSample : description
 
   OrganismSample : elev
 
   OrganismSample : embargoed
 
-  OrganismSample : expected_content
+  OrganismSample : expected_organism
 
-      OrganismSample --&gt; "0..1" Organism : expected_content
+      OrganismSample --&gt; "0..1" Organism : expected_organism
     click Organism href "../Organism"
 
   OrganismSample : external_database_identifiers
@@ -551,7 +546,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../expected_content/">expected_content</a></td>
+<td><a href="../expected_organism/">expected_organism</a></td>
 <td>0..1 <br/> <a href="../Organism/">Organism</a></td>
 <td>The organism or strain that the submitter expects to be present in this sampl...</td>
 <td>direct</td>
@@ -587,12 +582,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../depth/">depth</a></td>
-<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
-<td>The vertical distance below local surface</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../elev/">elev</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>Elevation of the sampling site is its height above a fixed reference point, m...</td>
@@ -613,7 +602,7 @@
 <tr>
 <td><a href="../single_colony_isolation/">single_colony_isolation</a></td>
 <td>0..1 <br/> <a href="../YesNoEnum/">YesNoEnum</a></td>
-<td>Whether the sample was isolated from a single colony or axenic/strain-pure cu...</td>
+<td>Was the sample isolated from a single colony, or from a procedure considered ...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -754,7 +743,7 @@
 <h2 id="comments">Comments</h2>
 <ul>
 <li>An OrganismSample is not necessarily pure. The submitter expects it to contain a single organism, but sequencing may reveal contamination. Purity status is captured by single_colony_isolation and known_suspected_organisms, not by the class itself.</li>
-<li>The expected_content slot links to an Organism or Strain instance representing what the submitter believes is in the sample.</li>
+<li>The expected_organism slot links to an Organism or Strain instance representing what the submitter believes is in the sample.</li>
 <li>The defining criterion is genomic homogeneity of intent, not material type. A bacterial colony pick, a plant leaf clip, and a fungal fruiting body section are all OrganismSamples because the submitter expects one genome. An algal mat, a cat fecal sample for microbiome study, or a soil sample are Biosamples because they contain communities of organisms.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
@@ -797,8 +786,8 @@ comments:
 - An OrganismSample is not necessarily pure. The submitter expects it to contain a
   single organism, but sequencing may reveal contamination. Purity status is captured
   by single_colony_isolation and known_suspected_organisms, not by the class itself.
-- The expected_content slot links to an Organism or Strain instance representing what
-  the submitter believes is in the sample.
+- The expected_organism slot links to an Organism or Strain instance representing
+  what the submitter believes is in the sample.
 - The defining criterion is genomic homogeneity of intent, not material type. A bacterial
   colony pick, a plant leaf clip, and a fungal fruiting body section are all OrganismSamples
   because the submitter expects one genome. An algal mat, a cat fecal sample for microbiome
@@ -810,13 +799,12 @@ see_also:
 is_a: Sample
 slots:
 - associated_studies
-- expected_content
+- expected_organism
 - embargoed
 - provenance_metadata
 - external_database_identifiers
 - collection_date
 - lat_lon
-- depth
 - elev
 - geo_loc_name
 - samp_name
@@ -839,8 +827,8 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
       interpolated: true
-  expected_content:
-    name: expected_content
+  expected_organism:
+    name: expected_organism
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(orgn|strn)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -861,8 +849,8 @@ comments:
 - An OrganismSample is not necessarily pure. The submitter expects it to contain a
   single organism, but sequencing may reveal contamination. Purity status is captured
   by single_colony_isolation and known_suspected_organisms, not by the class itself.
-- The expected_content slot links to an Organism or Strain instance representing what
-  the submitter believes is in the sample.
+- The expected_organism slot links to an Organism or Strain instance representing
+  what the submitter believes is in the sample.
 - The defining criterion is genomic homogeneity of intent, not material type. A bacterial
   colony pick, a plant leaf clip, and a fungal fruiting body section are all OrganismSamples
   because the submitter expects one genome. An algal mat, a cat fecal sample for microbiome
@@ -879,8 +867,8 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
       interpolated: true
-  expected_content:
-    name: expected_content
+  expected_organism:
+    name: expected_organism
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(orgn|strn)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -902,8 +890,8 @@ attributes:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
       interpolated: true
-  expected_content:
-    name: expected_content
+  expected_organism:
+    name: expected_organism
     description: The organism or strain that the submitter expects to be present in
       this sample. May be contradicted by sequencing results.
     comments:
@@ -914,7 +902,7 @@ attributes:
       description: Reference to a Strain instance in organism_set
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: expected_content
+    alias: expected_organism
     owner: OrganismSample
     domain_of:
     - OrganismSample
@@ -1016,36 +1004,6 @@ attributes:
       syntax: ^{lat} {lon}$
       interpolated: true
       partial_match: true
-  depth:
-    name: depth
-    annotations:
-      Preferred_unit:
-        tag: Preferred_unit
-        value: meter
-      storage_units:
-        tag: storage_units
-        value: m
-    description: The vertical distance below local surface. For sediment or soil samples
-      depth is measured from sediment or soil surface, respectively. Depth can be
-      reported as an interval for subsurface samples
-    title: depth
-    examples:
-    - value: 10 m
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    keywords:
-    - depth
-    slot_uri: MIXS:0000018
-    alias: depth
-    owner: OrganismSample
-    domain_of:
-    - Biosample
-    - OrganismSample
-    range: QuantityValue
-    structured_pattern:
-      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
-      interpolated: true
-      partial_match: true
   elev:
     name: elev
     annotations:
@@ -1130,12 +1088,17 @@ attributes:
     range: string
   single_colony_isolation:
     name: single_colony_isolation
-    description: Whether the sample was isolated from a single colony or axenic/strain-pure
-      culture.
+    description: Was the sample isolated from a single colony, or from a procedure
+      considered equivalent to single-colony isolation (e.g. axenic or strain-pure
+      culture)?
+    comments:
+    - The JGI Isolate form phrases this as a yes/no question where "yes" covers both
+      literal single-colony picks and equivalent axenic / strain-pure isolation procedures.
+      Co-culture or mixed-community samples should be modeled as Biosample, not OrganismSample.
     examples:
     - value: 'yes'
-      description: JGI Isolate form convention — axenic/strain-pure isolates are expected
-        to be single-colony derived
+      description: JGI Isolate form convention — axenic/strain-pure isolates are accepted
+        as single-colony-equivalent
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -1156,8 +1119,8 @@ attributes:
       contaminants.
     examples:
     - value: culture is a microbial community
-      description: GOLD dw_samples.culture_strain_pure_descr (52 occurrences in lakehouse,
-        queried 2026-04-14)
+      description: JGI `dw_samples.culture_strain_pure_descr` (JGI data warehouse
+        — distinct system from the GOLD database; 52 occurrences, queried 2026-04-14)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc

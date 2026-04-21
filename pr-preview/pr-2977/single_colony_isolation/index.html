@@ -647,6 +647,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -717,7 +728,7 @@
 
 
 <h1 id="slot-single_colony_isolation">Slot: single_colony_isolation</h1>
-<p><em>Whether the sample was isolated from a single colony or axenic/strain-pure culture.</em></p>
+<p><em>Was the sample isolated from a single colony, or from a procedure considered equivalent to single-colony isolation (e.g. axenic or strain-pure culture)?</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/single_colony_isolation">nmdc:single_colony_isolation</a></p>
 <!-- no inheritance hierarchy -->
@@ -755,6 +766,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>The JGI Isolate form phrases this as a yes/no question where "yes" covers both literal single-colony picks and equivalent axenic / strain-pure isolation procedures. Co-culture or mixed-community samples should be modeled as Biosample, not OrganismSample.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -779,12 +794,16 @@
 <details>
 
 <pre><code class="language-yaml">name: single_colony_isolation
-description: Whether the sample was isolated from a single colony or axenic/strain-pure
-  culture.
+description: Was the sample isolated from a single colony, or from a procedure considered
+  equivalent to single-colony isolation (e.g. axenic or strain-pure culture)?
+comments:
+- The JGI Isolate form phrases this as a yes/no question where &quot;yes&quot; covers both literal
+  single-colony picks and equivalent axenic / strain-pure isolation procedures. Co-culture
+  or mixed-community samples should be modeled as Biosample, not OrganismSample.
 examples:
 - value: 'yes'
-  description: JGI Isolate form convention — axenic/strain-pure isolates are expected
-    to be single-colony derived
+  description: JGI Isolate form convention — axenic/strain-pure isolates are accepted
+    as single-colony-equivalent
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc

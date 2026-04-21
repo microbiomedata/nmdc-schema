@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post85.dev0+fdd623f24
+version: 11.18.0.post86.dev0+e4cdcac2d
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -1060,10 +1060,12 @@ enums:
         text: 28S
       Other:
         text: Other
-  BiosafetyMaterialCategoryEnum:
-    name: BiosafetyMaterialCategoryEnum
-    description: General category of organism or material, as used by JGI for biosafety
-      classification.
+  IsolateMaterialCategoryEnum:
+    name: IsolateMaterialCategoryEnum
+    description: General category of isolate material, as used by JGI for biosafety
+      classification of pure-organism / strain-pure samples. Deliberately named to
+      avoid confusion with the submission-schema JGIBiosafetyMaterialCategoryEnum
+      and with environmental material category vocabularies (e.g. MIxS `env_medium`).
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       Alga:
@@ -6409,6 +6411,10 @@ slots:
       - https://jgi.doe.gov/isolate-submission-form/v19
   gc_content:
     name: gc_content
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '%'
     description: Estimated GC content as a percentage.
     examples:
     - value: '54.0'
@@ -6487,9 +6493,9 @@ slots:
       predicate: EXACT_SYNONYM
       contexts:
       - https://jgi.doe.gov/isolate-submission-form/v19
-    range: BiosafetyMaterialCategoryEnum
-  expected_content:
-    name: expected_content
+    range: IsolateMaterialCategoryEnum
+  expected_organism:
+    name: expected_organism
     description: The organism or strain that the submitter expects to be present in
       this sample. May be contradicted by sequencing results.
     comments:
@@ -6502,12 +6508,17 @@ slots:
     range: Organism
   single_colony_isolation:
     name: single_colony_isolation
-    description: Whether the sample was isolated from a single colony or axenic/strain-pure
-      culture.
+    description: Was the sample isolated from a single colony, or from a procedure
+      considered equivalent to single-colony isolation (e.g. axenic or strain-pure
+      culture)?
+    comments:
+    - The JGI Isolate form phrases this as a yes/no question where "yes" covers both
+      literal single-colony picks and equivalent axenic / strain-pure isolation procedures.
+      Co-culture or mixed-community samples should be modeled as Biosample, not OrganismSample.
     examples:
     - value: 'yes'
-      description: JGI Isolate form convention — axenic/strain-pure isolates are expected
-        to be single-colony derived
+      description: JGI Isolate form convention — axenic/strain-pure isolates are accepted
+        as single-colony-equivalent
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6523,8 +6534,8 @@ slots:
       contaminants.
     examples:
     - value: culture is a microbial community
-      description: GOLD dw_samples.culture_strain_pure_descr (52 occurrences in lakehouse,
-        queried 2026-04-14)
+      description: JGI `dw_samples.culture_strain_pure_descr` (JGI data warehouse
+        — distinct system from the GOLD database; 52 occurrences, queried 2026-04-14)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -7801,7 +7812,7 @@ slots:
       of the organism. The term should reference a Taxon instance identified by an
       NCBITaxon CURIE (or another supported taxonomy prefix). The slot is multivalued
       to allow classifications from multiple authorities (e.g. both NCBITaxon and
-      GTDB) for the same organism. OrganismSample is classified indirectly via expected_content.classified_as.
+      GTDB) for the same organism. OrganismSample is classified indirectly via expected_organism.classified_as.
     - This slot is intended to replace known_as on PortionOfSubstance in a future
       deprecation.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -19709,7 +19720,7 @@ classes:
     comments:
     - Organism instances are stored in organism_set, which is polymorphic and also
       holds Strain instances. An Organism is not a sample — it is the biological entity
-      that an OrganismSample is expected to contain, linked via expected_content.
+      that an OrganismSample is expected to contain, linked via expected_organism.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2959
@@ -19783,14 +19794,20 @@ classes:
           - https://jgi.doe.gov/isolate-submission-form/v19
       estimated_size:
         name: estimated_size
-        description: Estimated genome size. Reuses MIxS estimated_size (MIXS:0000024).
-          The JGI isolate field reports in megabases (Mb); values must be converted
-          to the MIxS base-pair representation before validation and storage.
+        description: Estimated genome size, as integer base pairs. Reuses MIxS estimated_size
+          (MIXS:0000024). The JGI isolate field reports in megabases (Mb); values
+          must be converted to the MIxS integer-bp representation before validation
+          and storage. The submission portal should auto-populate the "bp" suffix
+          and enforce integer input.
         structured_aliases:
         - literal_form: Estimated Genome Size (Mb)
           predicate: EXACT_SYNONYM
           contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
+        pattern: ^[0-9]+ bp$
+        structured_pattern:
+          syntax: ^[0-9]+ bp$
+          interpolated: false
       ploidy:
         name: ploidy
         description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
@@ -19804,9 +19821,19 @@ classes:
           - https://jgi.doe.gov/isolate-submission-form/v19
       ref_biomaterial:
         name: ref_biomaterial
-        description: Reference genome or primary publication for this strain. Reuses
-          MIxS ref_biomaterial (MIXS:0000025).
+        description: Reference for the strain, preferentially a DOI when a primary
+          publication or genome report exists; PMID and URL are also accepted per
+          the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial
+          (MIXS:0000025).
         comments:
+        - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available
+          — it gives a stable reference to the publication or genome report. See the
+          `associated_dois` pattern elsewhere in the NMDC schema for DOI-structured
+          alternatives.
+        - JGI "Reference Genome" submissions sometimes carry non-publication identifiers
+          such as IMG or Phytozome IDs, which do not match the MIxS pattern. Those
+          are out of scope for this slot and should be captured separately (see `gold_organism_identifiers`
+          and `insdc_nucleotide_identifiers` for genome / assembly references).
         - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See
           ongoing MIxS renaming work.
         structured_aliases:
@@ -21472,7 +21499,7 @@ classes:
       a single organism, but sequencing may reveal contamination. Purity status is
       captured by single_colony_isolation and known_suspected_organisms, not by the
       class itself.
-    - The expected_content slot links to an Organism or Strain instance representing
+    - The expected_organism slot links to an Organism or Strain instance representing
       what the submitter believes is in the sample.
     - The defining criterion is genomic homogeneity of intent, not material type.
       A bacterial colony pick, a plant leaf clip, and a fungal fruiting body section
@@ -21486,13 +21513,12 @@ classes:
     is_a: Sample
     slots:
     - associated_studies
-    - expected_content
+    - expected_organism
     - embargoed
     - provenance_metadata
     - external_database_identifiers
     - collection_date
     - lat_lon
-    - depth
     - elev
     - geo_loc_name
     - samp_name
@@ -21516,8 +21542,8 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
           interpolated: true
-      expected_content:
-        name: expected_content
+      expected_organism:
+        name: expected_organism
         pattern: ^(nmdc):(orgn|strn)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(orgn|strn)-{id_shoulder}-{id_blade}$'

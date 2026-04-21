@@ -8,7 +8,7 @@ flowchart LR
     CITV["ControlledIdentifiedTermValue<br/>Arabidopsis thaliana [NCBITaxon:3702]"]
     TAX["Taxon<br/>NCBITaxon:3702"]
 
-    OSM -->|expected_content| ORG
+    OSM -->|expected_organism| ORG
     ORG -->|classified_as| CITV
     CITV -->|term| TAX
 
