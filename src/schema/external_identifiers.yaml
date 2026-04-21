@@ -23,7 +23,7 @@ prefixes:
   mgnify.proj: 'https://bioregistry.io/mgnify.proj:'
   nmdc: "https://w3id.org/nmdc/"
   skos: "http://www.w3.org/2004/02/skos/core#"
-  genbank: "https://bioregistry.io/registry/genbank:"
+  genbank: "https://bioregistry.io/genbank:"
 
 default_prefix: nmdc
 default_range: string
