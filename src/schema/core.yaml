@@ -1316,6 +1316,7 @@ classes:
       - trophic_level
 
       ## GOLD taxonomy extras
+      - insdc_sequence_identifiers
       - clade
       - organism_common_name
       - genus_synonyms
