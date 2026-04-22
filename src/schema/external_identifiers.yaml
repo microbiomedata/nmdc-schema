@@ -35,6 +35,7 @@ classes:
       - insdc_sequence_identifiers
       - sequence_identifier_type
       - type
+    multivalued: true  
 
 slots:
 
