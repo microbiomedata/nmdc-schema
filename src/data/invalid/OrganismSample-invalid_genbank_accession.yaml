@@ -30,8 +30,8 @@ organism_domain: Bacteria
 
 # GOLD taxonomy extras
 gold_phylogeny: THERMODESULFOBACTERIOTA
-sequence_identifiers:
-  - insdc_sequence_identifiers: AY268891
+insdc_sequence_identifier_metadata:
+  - insdc_sequence_identifier: AY268891
     sequence_identifier_type: rRNA
     type: nmdc:SequenceIdentifierMetadata
 
