@@ -388,7 +388,7 @@ slots:
   
   sequence_identifiers:
     abstract: true
-     description: Slot which contains information on nucleotide or protein sequences. 
+    description: Slot which contains information on nucleotide or protein sequences. 
     
 
   insdc_sequence_identifier:
