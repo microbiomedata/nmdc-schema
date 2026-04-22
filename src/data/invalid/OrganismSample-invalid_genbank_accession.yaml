@@ -1,4 +1,4 @@
-# invalid genbank accession format
+# invalid genbank accession format, no curie
 id: nmdc:orgsm-99-goldorg
 type: nmdc:OrganismSample
 name: Desulfofaba fastidiosa DSM 15249
@@ -30,8 +30,11 @@ organism_domain: Bacteria
 
 # GOLD taxonomy extras
 gold_phylogeny: THERMODESULFOBACTERIOTA
-genbank_16s_id: 
-  - AY268891
+sequence_identifiers:
+  - insdc_sequence_identifiers: AY268891
+    sequence_identifier_type: rRNA
+    type: nmdc:SequenceIdentifierMetadata
+
 
 # Collection and provenance
 geo_loc_name:
