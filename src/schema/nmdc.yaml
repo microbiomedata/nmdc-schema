@@ -788,6 +788,12 @@ classes:
           interpolated: true
 
 enums:
+  SequenceIdentifierTypeEnum:
+    permissible_values:
+      rRNA: { }
+      complete genome: { }
+      WGS: { }
+      
   CalibrationTargetEnum:
     permissible_values:
       mass_charge_ratio:
