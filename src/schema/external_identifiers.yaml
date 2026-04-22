@@ -33,7 +33,7 @@ classes:
   SequenceIdentifierMetadata:
     description: Contains metadata about sequence identifiers
     slots:
-      - insdc_sequence_identifiers
+      - insdc_sequence_identifier
       - sequence_identifier_type
       - type
 
