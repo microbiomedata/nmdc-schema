@@ -36,7 +36,7 @@ classes:
       - insdc_sequence_identifiers
       - sequence_identifier_type
       - type
-    multivalued: true  
+
 
 slots:
 
@@ -385,6 +385,7 @@ slots:
   insdc_sequence_identifier_metadata:
     description: Contains information on nucleotide or protein sequences from INSDC institutions. 
     range: SequenceIdentifierMetadata
+    multivalued: true
   
   sequence_identifiers:
     abstract: true
