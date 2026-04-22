@@ -788,7 +788,6 @@ classes:
           interpolated: true
 
 enums:
-      
   CalibrationTargetEnum:
     permissible_values:
       mass_charge_ratio:
