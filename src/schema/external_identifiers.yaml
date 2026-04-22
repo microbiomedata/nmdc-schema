@@ -390,6 +390,3 @@ slots:
       - value: genbank:AY268891
     narrow_mappings:
      - gold:genbank_16s_id
-
-    
-  
