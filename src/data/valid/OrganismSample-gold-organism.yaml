@@ -33,7 +33,7 @@ organism_domain: Bacteria
 
 # GOLD taxonomy extras
 gold_phylogeny: THERMODESULFOBACTERIOTA
-iinsdc_sequence_identifiers:
+insdc_sequence_identifiers:
   - genbank:AY268891
 
 # Collection and provenance
