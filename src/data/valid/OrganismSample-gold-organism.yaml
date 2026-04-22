@@ -35,6 +35,7 @@ organism_domain: Bacteria
 gold_phylogeny: THERMODESULFOBACTERIOTA
 insdc_sequence_identifiers:
   - genbank:AY268891
+    ena.embl:BN000065
 
 # Collection and provenance
 geo_loc_name:
