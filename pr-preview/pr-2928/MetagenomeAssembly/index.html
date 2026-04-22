@@ -978,6 +978,13 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+  insdc_sequence_identifiers:
+    name: insdc_sequence_identifiers
+    see_also:
+    - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-status/
+    structured_pattern:
+      syntax: ^genbank:(GCF|GCA)_\d{9}\.\d+$|^ena.embl:(GCF|GCA)_\d{9}\.\d+$
+      interpolated: true
 class_uri: nmdc:MetagenomeAssembly
 
 </code></pre>
@@ -1010,6 +1017,13 @@ slot_usage:
     range: MetagenomeAssembly
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
+      interpolated: true
+  insdc_sequence_identifiers:
+    name: insdc_sequence_identifiers
+    see_also:
+    - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-status/
+    structured_pattern:
+      syntax: ^genbank:(GCF|GCA)_\d{9}\.\d+$|^ena.embl:(GCF|GCA)_\d{9}\.\d+$
       interpolated: true
 attributes:
   asm_score:
@@ -1360,6 +1374,8 @@ attributes:
     examples:
     - value: genbank:AY268891
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-status/
     narrow_mappings:
     - gold:genbank_16s_id
     rank: 1000
@@ -1375,6 +1391,9 @@ attributes:
     range: external_identifier
     multivalued: true
     pattern: ^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$|^ena.embl:[A-Z]+[0-9]+$
+    structured_pattern:
+      syntax: ^genbank:(GCF|GCA)_\d{9}\.\d+$|^ena.embl:(GCF|GCA)_\d{9}\.\d+$
+      interpolated: true
   ended_at_time:
     name: ended_at_time
     notes:

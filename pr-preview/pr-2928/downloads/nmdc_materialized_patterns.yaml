@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.1.post60.dev0+a63d3a558
+version: 11.17.1.post61.dev0+957dc307c
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -22968,6 +22968,14 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
+      insdc_sequence_identifiers:
+        name: insdc_sequence_identifiers
+        see_also:
+        - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-status/
+        pattern: ^genbank:(GCF|GCA)_\d{9}\.\d+$|^ena.embl:(GCF|GCA)_\d{9}\.\d+$
+        structured_pattern:
+          syntax: ^genbank:(GCF|GCA)_\d{9}\.\d+$|^ena.embl:(GCF|GCA)_\d{9}\.\d+$
+          interpolated: true
     class_uri: nmdc:MetagenomeAssembly
   MetatranscriptomeAssembly:
     name: MetatranscriptomeAssembly
@@ -23023,6 +23031,14 @@ classes:
         pattern: ^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'
+          interpolated: true
+      insdc_sequence_identifiers:
+        name: insdc_sequence_identifiers
+        see_also:
+        - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-stat
+        pattern: ^genbank:(GCF|GCA)_\d{9}\.\d+$|^ena.embl:(GCF|GCA)_\d{9}\.\d+$
+        structured_pattern:
+          syntax: ^genbank:(GCF|GCA)_\d{9}\.\d+$|^ena.embl:(GCF|GCA)_\d{9}\.\d+$
           interpolated: true
     class_uri: nmdc:MetatranscriptomeAssembly
   MetatranscriptomeAnnotation:

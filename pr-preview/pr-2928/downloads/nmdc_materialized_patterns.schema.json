@@ -10486,7 +10486,7 @@
                 "insdc_sequence_identifiers": {
                     "description": "An identifer for nucleotide or protein sequences from an INSDC instituion.",
                     "items": {
-                        "pattern": "^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$|^ena.embl:[A-Z]+[0-9]+$",
+                        "pattern": "^genbank:(GCF|GCA)_\\d{9}\\.\\d+$|^ena.embl:(GCF|GCA)_\\d{9}\\.\\d+$",
                         "type": "string"
                     },
                     "type": [
@@ -11405,7 +11405,7 @@
                 "insdc_sequence_identifiers": {
                     "description": "An identifer for nucleotide or protein sequences from an INSDC instituion.",
                     "items": {
-                        "pattern": "^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$|^ena.embl:[A-Z]+[0-9]+$",
+                        "pattern": "^genbank:(GCF|GCA)_\\d{9}\\.\\d+$|^ena.embl:(GCF|GCA)_\\d{9}\\.\\d+$",
                         "type": "string"
                     },
                     "type": [
@@ -17130,6 +17130,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.17.1.post60.dev0+a63d3a558"
+    "version": "11.17.1.post61.dev0+957dc307c"
 }
 
