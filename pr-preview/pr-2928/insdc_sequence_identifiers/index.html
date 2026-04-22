@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/insdc_sequence_identifier/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/insdc_sequence_identifiers/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: insdc_sequence_identifier - NMDC Schema Documentation</title>
+        <title>Slot: insdc_sequence_identifiers - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-insdc_sequence_identifier" class="md-skip">
+        <a href="#slot-insdc_sequence_identifiers" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: insdc_sequence_identifier
+              Slot: insdc_sequence_identifiers
             
           </span>
         </div>
@@ -727,14 +727,14 @@
   
 
 
-<h1 id="slot-insdc_sequence_identifier">Slot: insdc_sequence_identifier</h1>
+<h1 id="slot-insdc_sequence_identifiers">Slot: insdc_sequence_identifiers</h1>
 <p><em>An identifer for nucleotide or protein sequences from an INSDC instituion.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/insdc_sequence_identifier">nmdc:insdc_sequence_identifier</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/insdc_sequence_identifiers">nmdc:insdc_sequence_identifiers</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../sequence_identifiers/">sequence_identifiers</a><ul>
-<li><strong>insdc_sequence_identifier</strong> [ <a href="../insdc_identifiers/">insdc_identifiers</a>]</li>
+<li><strong>insdc_sequence_identifiers</strong> [ <a href="../insdc_identifiers/">insdc_identifiers</a>]</li>
 </ul>
 </li>
 </ul>
@@ -749,11 +749,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../SequenceIdentifierMetadata/">SequenceIdentifierMetadata</a></td>
-<td>Contains metadata about sequence identifiers</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
 <td>A workflow execution activity that converts sequencing reads into an assemble...</td>
 <td>no</td>
@@ -761,6 +756,11 @@
 <tr>
 <td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
 <td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OrganismSample/">OrganismSample</a></td>
+<td>A material sample in which all cells are expected to share the same genome</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -805,26 +805,28 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>narrow</td>
+<td>gold:genbank_16s_id</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: insdc_sequence_identifier
+<pre><code class="language-yaml">name: insdc_sequence_identifiers
 description: An identifer for nucleotide or protein sequences from an INSDC instituion.
 examples:
 - value: genbank:AY268891
 from_schema: https://w3id.org/nmdc/nmdc
+narrow_mappings:
+- gold:genbank_16s_id
 rank: 1000
 is_a: sequence_identifiers
 mixins:
 - insdc_identifiers
-alias: insdc_sequence_identifier
+alias: insdc_sequence_identifiers
 domain_of:
-- SequenceIdentifierMetadata
+- OrganismSample
 - MetagenomeAssembly
 - MetatranscriptomeAssembly
 range: external_identifier

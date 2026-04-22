@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.1.post48.dev0+a32bc0beb
+version: 11.17.1.post60.dev0+a63d3a558
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -655,16 +655,6 @@ types:
     base: str
     uri: xsd:language
 enums:
-  SequenceIdentifierTypeEnum:
-    name: SequenceIdentifierTypeEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      rRNA:
-        text: rRNA
-      complete genome:
-        text: complete genome
-      WGS:
-        text: WGS
   CalibrationTargetEnum:
     name: CalibrationTargetEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -7709,33 +7699,24 @@ slots:
     is_a: analysis_identifiers
     mixins:
     - mgnify_identifiers
-  insdc_sequence_identifier_metadata:
-    name: insdc_sequence_identifier_metadata
-    description: Contains information on nucleotide or protein sequences from INSDC
-      institutions.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: SequenceIdentifierMetadata
-    multivalued: true
   sequence_identifiers:
     name: sequence_identifiers
     description: Slot which contains information on nucleotide or protein sequences.
     from_schema: https://w3id.org/nmdc/nmdc
     abstract: true
-  insdc_sequence_identifier:
-    name: insdc_sequence_identifier
+  insdc_sequence_identifiers:
+    name: insdc_sequence_identifiers
     description: An identifer for nucleotide or protein sequences from an INSDC instituion.
     examples:
     - value: genbank:AY268891
     from_schema: https://w3id.org/nmdc/nmdc
+    narrow_mappings:
+    - gold:genbank_16s_id
     is_a: sequence_identifiers
     mixins:
     - insdc_identifiers
+    multivalued: true
     pattern: ^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$|^ena.embl:[A-Z]+[0-9]+$
-  sequence_identifier_type:
-    name: sequence_identifier_type
-    description: The type of sequence described by sequence identifiers.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: SequenceIdentifierTypeEnum
   source_system_of_record:
     name: source_system_of_record
     description: Identifies the system of origin for a record
@@ -20936,14 +20917,6 @@ classes:
         description: UCUM unit code (required only when numeric value is present)
         required: false
     class_uri: nmdc:PropertyAssertion
-  SequenceIdentifierMetadata:
-    name: SequenceIdentifierMetadata
-    description: Contains metadata about sequence identifiers
-    from_schema: https://w3id.org/nmdc/nmdc
-    slots:
-    - insdc_sequence_identifier
-    - sequence_identifier_type
-    - type
   NamedThing:
     name: NamedThing
     description: a databased entity or concept/class
@@ -22729,6 +22702,7 @@ classes:
     - tax_class
     - tax_ident
     - trophic_level
+    - insdc_sequence_identifiers
     - clade
     - organism_common_name
     - genus_synonyms
@@ -22971,7 +22945,7 @@ classes:
     - gc_avg
     - num_input_reads
     - num_aligned_reads
-    - insdc_sequence_identifier
+    - insdc_sequence_identifiers
     slot_usage:
       id:
         name: id
@@ -23027,7 +23001,7 @@ classes:
     - gc_avg
     - num_input_reads
     - num_aligned_reads
-    - insdc_sequence_identifier
+    - insdc_sequence_identifiers
     slot_usage:
       id:
         name: id

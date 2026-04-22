@@ -897,14 +897,6 @@
          <lastmod>2026-04-22</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/SequenceIdentifierMetadata/</loc>
-         <lastmod>2026-04-22</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/SequenceIdentifierTypeEnum/</loc>
-         <lastmod>2026-04-22</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/Sequencing/</loc>
          <lastmod>2026-04-22</lastmod>
     </url>
@@ -2897,11 +2889,7 @@
          <lastmod>2026-04-22</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/insdc_sequence_identifier/</loc>
-         <lastmod>2026-04-22</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/insdc_sequence_identifier_metadata/</loc>
+         <loc>https://microbiomedata.github.io/nmdc-schema/insdc_sequence_identifiers/</loc>
          <lastmod>2026-04-22</lastmod>
     </url>
     <url>
@@ -4386,10 +4374,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/seqid/</loc>
-         <lastmod>2026-04-22</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/sequence_identifier_type/</loc>
          <lastmod>2026-04-22</lastmod>
     </url>
     <url>
