@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/genbank_16s_id/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/sequence_identifiers/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: GenBank 16S ID (genbank_16s_id) - NMDC Schema Documentation</title>
+        <title>Slot: sequence_identifiers - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-genbank-16s-id-genbank_16s_id" class="md-skip">
+        <a href="#slot-sequence_identifiers" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: GenBank 16S ID (genbank_16s_id)
+              Slot: sequence_identifiers
             
           </span>
         </div>
@@ -625,17 +625,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Applicable Classes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -716,42 +705,24 @@
   
 
 
-<h1 id="slot-genbank-16s-id-genbank_16s_id">Slot: GenBank 16S ID (genbank_16s_id)</h1>
-<p><em>GenBank accession for the 16S rRNA gene sequence.</em></p>
+<h1 id="slot-sequence_identifiers">Slot: sequence_identifiers</h1>
+<p><em>Slot which contains information on nucleotide or protein sequences.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/genbank_16s_id">nmdc:genbank_16s_id</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an abstract slot and should not be populated directly.</p>
+</div>
+<p>URI: <a href="https://w3id.org/nmdc/sequence_identifiers">nmdc:sequence_identifiers</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>genbank_16s_id</strong> [ <a href="../insdc_identifiers/">insdc_identifiers</a>]</li>
+<li><strong>sequence_identifiers</strong><ul>
+<li><a href="../insdc_sequence_identifier/">insdc_sequence_identifier</a> [ <a href="../insdc_identifiers/">insdc_identifiers</a>]</li>
 </ul>
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../OrganismSample/">OrganismSample</a></td>
-<td>A material sample in which all cells are expected to share the same genome</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
+</li>
+</ul>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../ExternalIdentifier/">ExternalIdentifier</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
-<li>
-<p>Regex pattern: <code>^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$</code></p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -768,37 +739,21 @@
 </thead>
 <tbody>
 <tr>
-<td>exact</td>
-<td>gold:genbank_16s_id</td>
-</tr>
-<tr>
-<td>narrow</td>
-<td>edam.data:2292</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: genbank_16s_id
-description: GenBank accession for the 16S rRNA gene sequence.
-title: GenBank 16S ID
-in_subset:
-- gold_organism
+<pre><code class="language-yaml">name: sequence_identifiers
+description: Slot which contains information on nucleotide or protein sequences.
 from_schema: https://w3id.org/nmdc/nmdc
-exact_mappings:
-- gold:genbank_16s_id
-narrow_mappings:
-- edam.data:2292
 rank: 1000
-mixins:
-- insdc_identifiers
-alias: genbank_16s_id
-domain_of:
-- OrganismSample
-range: external_identifier
-multivalued: true
-pattern: ^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$
+abstract: true
+alias: sequence_identifiers
+range: string
 
 </code></pre>
 

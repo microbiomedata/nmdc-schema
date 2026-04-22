@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/insdc_assembly_identifiers/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/sequence_identifier_type/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: insdc_assembly_identifiers - NMDC Schema Documentation</title>
+        <title>Slot: sequence_identifier_type - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-insdc_assembly_identifiers" class="md-skip">
+        <a href="#slot-sequence_identifier_type" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: insdc_assembly_identifiers
+              Slot: sequence_identifier_type
             
           </span>
         </div>
@@ -614,17 +614,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Inheritance
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -716,16 +705,11 @@
   
 
 
-<h1 id="slot-insdc_assembly_identifiers">Slot: insdc_assembly_identifiers</h1>
+<h1 id="slot-sequence_identifier_type">Slot: sequence_identifier_type</h1>
+<p><em>The type of sequence described by sequence identifiers.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/insdc_assembly_identifiers">nmdc:insdc_assembly_identifiers</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../assembly_identifiers/">assembly_identifiers</a><ul>
-<li><strong>insdc_assembly_identifiers</strong> [ <a href="../insdc_identifiers/">insdc_identifiers</a>]</li>
-</ul>
-</li>
-</ul>
+<p>URI: <a href="https://w3id.org/nmdc/sequence_identifier_type">nmdc:sequence_identifier_type</a></p>
+<!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -737,28 +721,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td></td>
+<td><a href="../SequenceIdentifierMetadata/">SequenceIdentifierMetadata</a></td>
+<td>Contains metadata about sequence identifiers</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../ExternalIdentifier/">ExternalIdentifier</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
-<li>
-<p>Regex pattern: <code>^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$</code></p>
-</li>
+<li>Range: <a href="../SequenceIdentifierTypeEnum/">SequenceIdentifierTypeEnum</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -783,19 +754,14 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: insdc_assembly_identifiers
+<pre><code class="language-yaml">name: sequence_identifier_type
+description: The type of sequence described by sequence identifiers.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: assembly_identifiers
-mixins:
-- insdc_identifiers
-alias: insdc_assembly_identifiers
+alias: sequence_identifier_type
 domain_of:
-- MetagenomeAssembly
-- MetatranscriptomeAssembly
-range: external_identifier
-multivalued: true
-pattern: ^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
+- SequenceIdentifierMetadata
+range: SequenceIdentifierTypeEnum
 
 </code></pre>
 

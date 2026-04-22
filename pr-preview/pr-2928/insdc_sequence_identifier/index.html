@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/assembly_identifiers/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/insdc_sequence_identifier/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: assembly_identifiers - NMDC Schema Documentation</title>
+        <title>Slot: insdc_sequence_identifier - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-assembly_identifiers" class="md-skip">
+        <a href="#slot-insdc_sequence_identifier" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: assembly_identifiers
+              Slot: insdc_sequence_identifier
             
           </span>
         </div>
@@ -625,10 +625,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applicable Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       
         Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
       
     </span>
   </a>
@@ -705,24 +727,69 @@
   
 
 
-<h1 id="slot-assembly_identifiers">Slot: assembly_identifiers</h1>
+<h1 id="slot-insdc_sequence_identifier">Slot: insdc_sequence_identifier</h1>
+<p><em>An identifer for nucleotide or protein sequences from an INSDC instituion.</em></p>
 <div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is an abstract slot and should not be populated directly.</p>
-</div>
-<p>URI: <a href="https://w3id.org/nmdc/assembly_identifiers">nmdc:assembly_identifiers</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/insdc_sequence_identifier">nmdc:insdc_sequence_identifier</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>assembly_identifiers</strong><ul>
-<li><a href="../insdc_assembly_identifiers/">insdc_assembly_identifiers</a> [ <a href="../insdc_identifiers/">insdc_identifiers</a>]</li>
+<li><a href="../sequence_identifiers/">sequence_identifiers</a><ul>
+<li><strong>insdc_sequence_identifier</strong> [ <a href="../insdc_identifiers/">insdc_identifiers</a>]</li>
 </ul>
 </li>
 </ul>
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../SequenceIdentifierMetadata/">SequenceIdentifierMetadata</a></td>
+<td>Contains metadata about sequence identifiers</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
+<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
+<td></td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../ExternalIdentifier/">ExternalIdentifier</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
+</li>
+<li>
+<p>Regex pattern: <code>^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$|^ena.embl:[A-Z]+[0-9]+$</code></p>
+</li>
 </ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>genbank:AY268891</td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -746,12 +813,23 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: assembly_identifiers
+<pre><code class="language-yaml">name: insdc_sequence_identifier
+description: An identifer for nucleotide or protein sequences from an INSDC instituion.
+examples:
+- value: genbank:AY268891
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-abstract: true
-alias: assembly_identifiers
-range: string
+is_a: sequence_identifiers
+mixins:
+- insdc_identifiers
+alias: insdc_sequence_identifier
+domain_of:
+- SequenceIdentifierMetadata
+- MetagenomeAssembly
+- MetatranscriptomeAssembly
+range: external_identifier
+multivalued: true
+pattern: ^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$|^ena.embl:[A-Z]+[0-9]+$
 
 </code></pre>
 
