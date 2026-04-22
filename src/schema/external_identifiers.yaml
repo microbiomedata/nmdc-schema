@@ -28,6 +28,14 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 
+classes:
+  SequenceIdentifierMetadata:
+    description: Contains metadata about sequence identifiers
+    slots:
+      - insdc_sequence_identifiers
+      - sequence_identifier_type
+      - type
+
 slots:
 
   img_identifiers:
@@ -371,8 +379,11 @@ slots:
       - value: mgnify.analysis:MGYA00002270
         description: combined analyses (taxonomic, functional) of sample ERS438107
 
-  ## assemblies
-
+  ## nucelotide and protein sequences
+  sequence_identifiers:
+    description: Slot which contains information on nucleotide or protein sequences from INSDC institutions. 
+    range: SequenceIdentifierMetadata
+  
   sequence_identifiers:
     abstract: true
 
