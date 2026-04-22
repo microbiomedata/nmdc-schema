@@ -1316,7 +1316,6 @@ classes:
       - trophic_level
 
       ## GOLD taxonomy extras
-      - genbank_16s_id
       - clade
       - organism_common_name
       - genus_synonyms
