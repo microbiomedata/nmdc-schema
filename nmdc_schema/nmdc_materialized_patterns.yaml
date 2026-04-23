@@ -304,9 +304,6 @@ prefixes:
   shex:
     prefix_prefix: shex
     prefix_reference: http://www.w3.org/ns/shex#
-  IAO:
-    prefix_prefix: IAO
-    prefix_reference: http://purl.obolibrary.org/obo/IAO_
   TAXRANK:
     prefix_prefix: TAXRANK
     prefix_reference: http://purl.obolibrary.org/obo/TAXRANK_
@@ -7357,25 +7354,6 @@ slots:
     mixins:
     - insdc_identifiers
     pattern: ^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
-  classified_as:
-    name: classified_as
-    description: A formal classification for this entity, expressed directly as a
-      Taxon instance stored in ontology_class_set.
-    comments:
-    - On OrganismSample, this slot captures the taxonomic classification of the organism
-      in the sample. Each value should be a Taxon instance identified by an NCBITaxon
-      CURIE (or another supported taxonomy prefix). The slot is multivalued to allow
-      classifications from multiple authorities (e.g. both NCBITaxon and GTDB) for
-      the same organism.
-    - This slot is intended to replace known_as on PortionOfSubstance in a future
-      deprecation.
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/2959
-    narrow_mappings:
-    - biolink:in_taxon
-    range: Taxon
-    multivalued: true
   source_system_of_record:
     name: source_system_of_record
     description: Identifies the system of origin for a record
@@ -18993,50 +18971,6 @@ classes:
           constrained to the nmdc namespace
         pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     class_uri: nmdc:OntologyClass
-  Taxon:
-    name: Taxon
-    id_prefixes:
-    - NCBITaxon
-    description: A classification term from a formal taxonomy. Taxon instances are
-      currently identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored
-      in ontology_class_set alongside other OntologyClass instances. No NMDC-minted
-      identifiers are assigned to taxa. Support for additional taxonomic authorities
-      (GTDB, LPSN, SeqCode) can be added by expanding id_prefixes.
-    comments:
-    - 'Follows the FunctionalAnnotationTerm pattern: a semantic subclass of OntologyClass
-      with no additional slots, no typecode, and no dedicated Database collection.
-      Instances go into ontology_class_set and can be referenced directly from sample
-      slots such as classified_as.'
-    - NCBITaxon is the primary authority. Other taxonomic authorities (GTDB, LPSN,
-      SeqCode) can be supported by adding their CURIE prefixes to id_prefixes and
-      loading their terms into ontology_class_set. The schema is currently validated
-      against NCBITaxon only; supporting other authorities would require widening
-      the Taxon.id pattern as well.
-    - Sub-species information (strains, cultivars, lab-specific isolates) is below
-      the resolution of most formal taxonomies. Strain identity should be captured
-      via dedicated text slots on OrganismSample (e.g. isolate_name, source_mat_id,
-      subspecf_gen_lin) or a future Strain class — not by minting Taxon instances
-      for strains.
-    - Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
-      with range OntologyClass. The intent is that these slots point to Taxon instances
-      specifically, but LinkML does not currently support constraining the term slot
-      of a ControlledIdentifiedTermValue to a particular OntologyClass subclass.
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/2959
-    - https://github.com/microbiomedata/nmdc-schema/issues/2971
-    close_mappings:
-    - biolink:OrganismTaxon
-    is_a: OntologyClass
-    slot_usage:
-      id:
-        name: id
-        comments:
-        - Validation is intentionally limited to NCBITaxon CURIEs for now. If GTDB,
-          LPSN, or SeqCode support is added, widen this pattern in lockstep with id_prefixes
-          and example data.
-        pattern: ^NCBITaxon:\d+$
-    class_uri: nmdc:Taxon
   OntologyRelation:
     name: OntologyRelation
     description: A relationship between two ontology classes as specified either directly
@@ -19095,14 +19029,11 @@ classes:
     class_uri: nmdc:FailureCategorization
   MaterialEntity:
     name: MaterialEntity
-    description: A named thing that occupies space and has mass.
     title: Material Entity
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - Material
     - Physical entity
-    exact_mappings:
-    - BFO:0000040
     is_a: NamedThing
     abstract: true
     class_uri: nmdc:MaterialEntity
@@ -19137,7 +19068,6 @@ classes:
         description: A unique instrument is defined by its vendor and model.
   PlannedProcess:
     name: PlannedProcess
-    description: A named thing that is executed according to a plan.
     title: Planned Process
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: NamedThing
@@ -19402,8 +19332,6 @@ classes:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - nmdc:AttributeValue
-    exact_mappings:
-    - IAO:0000030
     is_a: NamedThing
     abstract: true
     class_uri: nmdc:InformationObject
@@ -20328,11 +20256,12 @@ classes:
       name:
         name: name
         description: A local identifier or name for the material sample collected.
-          We recommend it be informative, concise, and consistent within your lab.
-          It must be unique within a study. International Nucleotide Sequence Database
-          Collaboration (INSDC) requires every sample name from a single submitter
-          to be unique. We recommend that, in addition to populating this field, you
-          populate the `source_mat_id` field with a globally-unique identifier.
+          It can have any format, but we suggest that you make it concise, unique,
+          and consistent within your lab, and as informative as possible. For NMDC
+          this should be unique within a study. International Nucleotide Sequence
+          Database Collaboration (INSDC) requires every sample name from a single
+          submitter to be unique. Use of a globally unique identifier for the field
+          source_mat_id is recommended in addition to the name slot.
         examples:
         - value: BW-H-17-M
         required: true
