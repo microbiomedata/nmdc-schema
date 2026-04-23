@@ -4764,7 +4764,9 @@ class Taxon(OntologyClass):
                       'NCBITaxon is the primary authority. Other taxonomic authorities '
                       '(GTDB, LPSN, SeqCode) can be supported by adding their CURIE '
                       'prefixes to id_prefixes and loading their terms into '
-                      'ontology_class_set. No schema changes would be required.',
+                      'ontology_class_set. The schema is currently validated against '
+                      'NCBITaxon only; supporting other authorities would require '
+                      'widening the Taxon.id pattern as well.',
                       'Sub-species information (strains, cultivars, lab-specific '
                       'isolates) is below the resolution of most formal taxonomies. '
                       'Strain identity should be captured via dedicated text slots on '
@@ -4780,7 +4782,14 @@ class Taxon(OntologyClass):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'id_prefixes': ['NCBITaxon'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/2959',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/2971']})
+                      'https://github.com/microbiomedata/nmdc-schema/issues/2971'],
+         'slot_usage': {'id': {'comments': ['Validation is intentionally limited to '
+                                            'NCBITaxon CURIEs for now. If GTDB, LPSN, '
+                                            'or SeqCode support is added, widen this '
+                                            'pattern in lockstep with id_prefixes and '
+                                            'example data.'],
+                               'name': 'id',
+                               'pattern': '^NCBITaxon:\\d+$'}}})
 
     alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OntologyClass', 'Study', 'Biosample'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
@@ -4792,7 +4801,10 @@ class Taxon(OntologyClass):
                       'has ontology_relation_set records.'],
          'domain_of': ['OntologyClass']} })
     is_root: Optional[bool] = Field(default=None, description="""A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OntologyClass']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing'],
+    id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'comments': ['Validation is intentionally limited to NCBITaxon CURIEs for '
+                      'now. If GTDB, LPSN, or SeqCode support is added, widen this '
+                      'pattern in lockstep with id_prefixes and example data.'],
+         'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
                        'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
          'notes': ["The identifiers for terms from external ontologies can't have "
@@ -4837,7 +4849,7 @@ class Taxon(OntologyClass):
 
     @field_validator('id')
     def pattern_id(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^NCBITaxon:\d+$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):

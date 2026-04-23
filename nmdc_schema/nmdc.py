@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-23T15:40:34
+# Generation date: 2026-04-23T15:53:25
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -13512,6 +13512,10 @@ slots.PropertyAssertion_has_unit = Slot(uri=NMDC['attribute_values/has_unit'], n
 slots.OntologyClass_id = Slot(uri=NMDC.id, name="OntologyClass_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.OntologyClass_id, domain=OntologyClass, range=Union[str, OntologyClassId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
+slots.Taxon_id = Slot(uri=NMDC.id, name="Taxon_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.Taxon_id, domain=Taxon, range=Union[str, TaxonId],
+                   pattern=re.compile(r'^NCBITaxon:\d+$'))
 
 slots.Instrument_id = Slot(uri=NMDC.id, name="Instrument_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Instrument_id, domain=Instrument, range=Union[str, InstrumentId],

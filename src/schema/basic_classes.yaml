@@ -73,6 +73,14 @@ classes:
       additional taxonomic authorities (GTDB, LPSN, SeqCode) can be added by expanding id_prefixes.
     id_prefixes:
       - NCBITaxon
+    slot_usage:
+      id:
+        pattern: '^NCBITaxon:\d+$'
+        comments:
+          - >-
+            Validation is intentionally limited to NCBITaxon CURIEs for now. If GTDB, LPSN, or
+            SeqCode support is added, widen this pattern in lockstep with id_prefixes and example
+            data.
     comments:
       - >-
         Follows the FunctionalAnnotationTerm pattern: a semantic subclass of OntologyClass with no
@@ -81,7 +89,8 @@ classes:
       - >-
         NCBITaxon is the primary authority. Other taxonomic authorities (GTDB, LPSN, SeqCode) can be
         supported by adding their CURIE prefixes to id_prefixes and loading their terms into
-        ontology_class_set. No schema changes would be required.
+        ontology_class_set. The schema is currently validated against NCBITaxon only; supporting
+        other authorities would require widening the Taxon.id pattern as well.
       - >-
         Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution
         of most formal taxonomies. Strain identity should be captured via dedicated text slots on
