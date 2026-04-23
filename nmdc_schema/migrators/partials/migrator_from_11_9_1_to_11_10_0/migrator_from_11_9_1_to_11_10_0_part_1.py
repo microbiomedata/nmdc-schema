@@ -68,8 +68,8 @@ def _collection_could_contain_quantity_values(schema_view, range_class: str) -> 
         descendants = schema_view.class_descendants(range_class)
         for desc_class in descendants:
             desc_slots = schema_view.class_induced_slots(desc_class)
-            for slot_def in desc_slots:
-                if slot_def.range == "QuantityValue":
+            for desc_slot_def in desc_slots:
+                if desc_slot_def.range == "QuantityValue":
                     return True
     return False
 
@@ -372,7 +372,7 @@ class Migrator(MigratorBase):
                         for slot_def in subclass_induced_slots:
                             if slot_def.range == "QuantityValue":
                                 subclass_slots.add(slot_def.name)
-                except:
+                except Exception:
                     # If class_descendants doesn't exist, skip subclass processing
                     pass
                 

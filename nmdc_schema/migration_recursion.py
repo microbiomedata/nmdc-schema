@@ -87,15 +87,15 @@ def main(schema_path, input_path, output_path, migrator_name):
         s_range = sv.range
         if s_range == "uriorcurie":
             slot_descendants = view.slot_descendants(sk)
-            for i in slot_descendants:
-                curie_slots.add(i)
+            for slot in slot_descendants:
+                curie_slots.add(slot)
         elif s_range:
             range_type_name = type(view.get_element(s_range)).class_name
             if range_type_name == "class_definition":
                 if view.get_identifier_slot(s_range):
                     slot_descendants = view.slot_descendants(sk)
-                    for i in slot_descendants:
-                        curie_slots.add(i)
+                    for slot in slot_descendants:
+                        curie_slots.add(slot)
 
     logger.info(curie_slots)
 
