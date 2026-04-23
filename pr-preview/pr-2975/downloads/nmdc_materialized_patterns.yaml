@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post70.dev0+06c83768d
+version: 11.18.0.post72.dev0+fbc82d8ac
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7359,14 +7359,15 @@ slots:
     pattern: ^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
   classified_as:
     name: classified_as
-    description: A formal classification for this entity, expressed directly as a
-      Taxon instance stored in ontology_class_set.
+    description: A formal classification for this entity, expressed directly as an
+      ontology-backed class instance stored in ontology_class_set.
     comments:
-    - On OrganismSample, this slot captures the taxonomic classification of the organism
-      in the sample. Each value should be a Taxon instance identified by an NCBITaxon
-      CURIE (or another supported taxonomy prefix). The slot is multivalued to allow
-      classifications from multiple authorities (e.g. both NCBITaxon and GTDB) for
-      the same organism.
+    - 'On OrganismSample, this slot captures the taxonomic classification of the organism
+      in the sample. The desired long-term pattern is to keep the global range general
+      and narrow organism-oriented uses to OrganismTaxon via class-specific slot_usage.
+      That follow-up is tracked in issue #3016. Until then, taxonomy-oriented uses
+      should point to OrganismTaxon instances identified by an NCBITaxon CURIE (or
+      another supported taxonomy prefix).'
     - This slot is intended to replace known_as on PortionOfSubstance in a future
       deprecation.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -7374,7 +7375,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/issues/2959
     narrow_mappings:
     - biolink:in_taxon
-    range: Taxon
+    range: OntologyClass
     multivalued: true
   source_system_of_record:
     name: source_system_of_record
@@ -18993,12 +18994,12 @@ classes:
           constrained to the nmdc namespace
         pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     class_uri: nmdc:OntologyClass
-  Taxon:
-    name: Taxon
+  OrganismTaxon:
+    name: OrganismTaxon
     id_prefixes:
     - NCBITaxon
-    description: A classification term from a formal taxonomy. Taxon instances are
-      currently identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored
+    description: A classification term from a formal taxonomy. OrganismTaxon instances
+      are currently identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored
       in ontology_class_set alongside other OntologyClass instances. No NMDC-minted
       identifiers are assigned to taxa. Support for additional taxonomic authorities
       (GTDB, LPSN, SeqCode) can be added by expanding id_prefixes.
@@ -19011,16 +19012,16 @@ classes:
       SeqCode) can be supported by adding their CURIE prefixes to id_prefixes and
       loading their terms into ontology_class_set. The schema is currently validated
       against NCBITaxon only; supporting other authorities would require widening
-      the Taxon.id pattern as well.
+      the OrganismTaxon.id pattern as well.
     - Sub-species information (strains, cultivars, lab-specific isolates) is below
       the resolution of most formal taxonomies. Strain identity should be captured
       via dedicated text slots on OrganismSample (e.g. isolate_name, source_mat_id,
-      subspecf_gen_lin) or a future Strain class — not by minting Taxon instances
+      subspecf_gen_lin) or a future Strain class — not by minting OrganismTaxon instances
       for strains.
     - Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
-      with range OntologyClass. The intent is that these slots point to Taxon instances
-      specifically, but LinkML does not currently support constraining the term slot
-      of a ControlledIdentifiedTermValue to a particular OntologyClass subclass.
+      with range OntologyClass. The intent is that these slots point to OrganismTaxon
+      instances specifically, but LinkML does not currently support constraining the
+      term slot of a ControlledIdentifiedTermValue to a particular OntologyClass subclass.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2959
@@ -19036,7 +19037,7 @@ classes:
           LPSN, or SeqCode support is added, widen this pattern in lockstep with id_prefixes
           and example data.
         pattern: ^NCBITaxon:\d+$
-    class_uri: nmdc:Taxon
+    class_uri: nmdc:OrganismTaxon
   OntologyRelation:
     name: OntologyRelation
     description: A relationship between two ontology classes as specified either directly

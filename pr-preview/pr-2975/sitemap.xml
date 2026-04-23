@@ -637,6 +637,10 @@
          <lastmod>2026-04-23</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/OrganismTaxon/</loc>
+         <lastmod>2026-04-23</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/OrthologyGroup/</loc>
          <lastmod>2026-04-23</lastmod>
     </url>
@@ -910,10 +914,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/TargetGeneEnum/</loc>
-         <lastmod>2026-04-23</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/Taxon/</loc>
          <lastmod>2026-04-23</lastmod>
     </url>
     <url>
