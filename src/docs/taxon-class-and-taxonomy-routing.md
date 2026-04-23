@@ -7,10 +7,12 @@
   `ontology_class_set` with external CURIEs (e.g. `NCBITaxon:511145`). Current validation
   requires `OrganismTaxon.id` to match `^NCBITaxon:\d+$`.
 
-- **`classified_as` slot** (`range: OrganismTaxon`, multivalued) — a
-  general-purpose classification slot for direct references to `OrganismTaxon`
-  instances. Not yet assigned to any class; OrganismSample (#2884) will be the
-  first consumer.
+- **`classified_as` slot** (`range: OntologyClass`, multivalued) — a
+  general-purpose classification slot. The intended future pattern is to narrow
+  organism-oriented uses to `OrganismTaxon` via class-specific `slot_usage`
+  rather than by making the global slot range taxon-specific. That follow-up is
+  tracked in #3016. Not yet assigned to any class; OrganismSample (#2884) will
+  be the first consumer.
 
 ## What is NOT in this PR — and where it goes
 
@@ -32,13 +34,17 @@
 `samp_taxon_id` and `host_taxid` already use `ControlledIdentifiedTermValue` with
 `range: OntologyClass` via the `term` slot. These are MIxS-originated slots with
 MIxS-specific structured patterns. `classified_as` is an NMDC-native slot without
-MIxS constraints, intended for use on new classes like OrganismSample, and points
-directly to `OrganismTaxon`.
+MIxS constraints, intended for use on new classes like OrganismSample. The target
+design is for organism-oriented usages to be narrowed to `OrganismTaxon` through
+class-specific `slot_usage` rather than through a globally taxon-specific slot range.
 
 At present, `OrganismTaxon` validation is intentionally NCBITaxon-specific. The schema keeps
 `id_prefixes` so the intended authority list is explicit, but actual instance validation
 is enforced by a regex on `OrganismTaxon.id`. When GTDB, LPSN, or SeqCode support is added, both
 `id_prefixes` and the `OrganismTaxon.id` pattern should be updated together.
+
+The remaining modeling question is how much of this specificity should live on the
+global `classified_as` slot versus on class-local `slot_usage`. That is tracked in #3016.
 
 ## Loading taxonomy data into ontology_class_set
 

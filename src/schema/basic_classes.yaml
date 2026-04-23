@@ -602,17 +602,18 @@ classes:
         description: The url of the software repository used to generate the NMDC metadata record
 slots:
   classified_as:
-    range: OrganismTaxon
+    range: OntologyClass
     multivalued: true
     description: >-
-      A formal classification for this entity, expressed directly as an OrganismTaxon instance stored in
-      ontology_class_set.
+      A formal classification for this entity, expressed directly as an ontology-backed class
+      instance stored in ontology_class_set.
     comments:
       - >-
         On OrganismSample, this slot captures the taxonomic classification of the organism in
-        the sample. Each value should be an OrganismTaxon instance identified by an NCBITaxon CURIE (or
-        another supported taxonomy prefix). The slot is multivalued to allow classifications from
-        multiple authorities (e.g. both NCBITaxon and GTDB) for the same organism.
+        the sample. The desired long-term pattern is to keep the global range general and narrow
+        organism-oriented uses to OrganismTaxon via class-specific slot_usage. That follow-up is
+        tracked in issue #3016. Until then, taxonomy-oriented uses should point to OrganismTaxon
+        instances identified by an NCBITaxon CURIE (or another supported taxonomy prefix).
       - >-
         This slot is intended to replace known_as on PortionOfSubstance in a future deprecation.
     see_also:
