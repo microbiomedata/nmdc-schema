@@ -683,7 +683,8 @@
 <li>
 <p><strong><code>Taxon</code> class</strong> (<code>is_a: OntologyClass</code>) — a semantic subclass for formal taxonomy
   terms. No new slots, no typecode, no dedicated MongoDB collection. Instances go into
-  <code>ontology_class_set</code> with external CURIEs (e.g. <code>NCBITaxon:511145</code>).</p>
+  <code>ontology_class_set</code> with external CURIEs (e.g. <code>NCBITaxon:511145</code>). Current validation
+  requires <code>Taxon.id</code> to match <code>^NCBITaxon:\d+$</code>.</p>
 </li>
 <li>
 <p><strong><code>classified_as</code> slot</strong> (<code>range: Taxon</code>, multivalued) — a
@@ -714,12 +715,12 @@
 </tr>
 <tr>
 <td>GTDB taxonomy</td>
-<td>Same <code>Taxon</code> class, add <code>gtdb</code> to <code>id_prefixes</code>, load into <code>ontology_class_set</code></td>
+<td>Same <code>Taxon</code> class, add <code>GTDB</code> to <code>id_prefixes</code>, widen <code>Taxon.id</code> pattern, load into <code>ontology_class_set</code></td>
 <td>Future — needs a GTDB-to-OntologyClass loader since GTDB ships as TSV, not OWL</td>
 </tr>
 <tr>
 <td>LPSN / SeqCode nomenclature</td>
-<td>Same pattern — CURIE-identified Taxon instances</td>
+<td>Same pattern — CURIE-identified Taxon instances, plus widening <code>Taxon.id</code> validation</td>
 <td>Future, when needed</td>
 </tr>
 <tr>
@@ -749,7 +750,7 @@
 </tr>
 <tr>
 <td>Direct <code>Taxon</code> example data</td>
-<td><code>Taxon-minimal.yaml</code></td>
+<td><code>Taxon-minimal.yaml</code> (valid), <code>Taxon-invalid-prefix.yaml</code> (invalid)</td>
 <td>This PR</td>
 </tr>
 </tbody>
@@ -760,6 +761,10 @@
 MIxS-specific structured patterns. <code>classified_as</code> is an NMDC-native slot without
 MIxS constraints, intended for use on new classes like OrganismSample, and points
 directly to <code>Taxon</code>.</p>
+<p>At present, <code>Taxon</code> validation is intentionally NCBITaxon-specific. The schema keeps
+<code>id_prefixes</code> so the intended authority list is explicit, but actual instance validation
+is enforced by a regex on <code>Taxon.id</code>. When GTDB, LPSN, or SeqCode support is added, both
+<code>id_prefixes</code> and the <code>Taxon.id</code> pattern should be updated together.</p>
 <h2 id="loading-taxonomy-data-into-ontology_class_set">Loading taxonomy data into ontology_class_set</h2>
 <p><code>ontology_class_set</code> currently contains ENVO (4,366), UBERON (16,061), and PO (1,998)
 terms. NCBITaxon (~2.5M terms) can be loaded using the same pipeline. GTDB (~131K

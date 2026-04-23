@@ -537,7 +537,7 @@
 <h2 id="comments">Comments</h2>
 <ul>
 <li>Follows the FunctionalAnnotationTerm pattern: a semantic subclass of OntologyClass with no additional slots, no typecode, and no dedicated Database collection. Instances go into ontology_class_set and can be referenced directly from sample slots such as classified_as.</li>
-<li>NCBITaxon is the primary authority. Other taxonomic authorities (GTDB, LPSN, SeqCode) can be supported by adding their CURIE prefixes to id_prefixes and loading their terms into ontology_class_set. No schema changes would be required.</li>
+<li>NCBITaxon is the primary authority. Other taxonomic authorities (GTDB, LPSN, SeqCode) can be supported by adding their CURIE prefixes to id_prefixes and loading their terms into ontology_class_set. The schema is currently validated against NCBITaxon only; supporting other authorities would require widening the Taxon.id pattern as well.</li>
 <li>Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution of most formal taxonomies. Strain identity should be captured via dedicated text slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or a future Strain class — not by minting Taxon instances for strains.</li>
 <li>Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue with range OntologyClass. The intent is that these slots point to Taxon instances specifically, but LinkML does not currently support constraining the term slot of a ControlledIdentifiedTermValue to a particular OntologyClass subclass.</li>
 </ul>
@@ -590,7 +590,9 @@ comments:
   as classified_as.'
 - NCBITaxon is the primary authority. Other taxonomic authorities (GTDB, LPSN, SeqCode)
   can be supported by adding their CURIE prefixes to id_prefixes and loading their
-  terms into ontology_class_set. No schema changes would be required.
+  terms into ontology_class_set. The schema is currently validated against NCBITaxon
+  only; supporting other authorities would require widening the Taxon.id pattern as
+  well.
 - Sub-species information (strains, cultivars, lab-specific isolates) is below the
   resolution of most formal taxonomies. Strain identity should be captured via dedicated
   text slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin)
@@ -606,6 +608,14 @@ see_also:
 close_mappings:
 - biolink:OrganismTaxon
 is_a: OntologyClass
+slot_usage:
+  id:
+    name: id
+    comments:
+    - Validation is intentionally limited to NCBITaxon CURIEs for now. If GTDB, LPSN,
+      or SeqCode support is added, widen this pattern in lockstep with id_prefixes
+      and example data.
+    pattern: ^NCBITaxon:\d+$
 class_uri: nmdc:Taxon
 
 </code></pre>
@@ -627,7 +637,9 @@ comments:
   as classified_as.'
 - NCBITaxon is the primary authority. Other taxonomic authorities (GTDB, LPSN, SeqCode)
   can be supported by adding their CURIE prefixes to id_prefixes and loading their
-  terms into ontology_class_set. No schema changes would be required.
+  terms into ontology_class_set. The schema is currently validated against NCBITaxon
+  only; supporting other authorities would require widening the Taxon.id pattern as
+  well.
 - Sub-species information (strains, cultivars, lab-specific isolates) is below the
   resolution of most formal taxonomies. Strain identity should be captured via dedicated
   text slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin)
@@ -643,6 +655,14 @@ see_also:
 close_mappings:
 - biolink:OrganismTaxon
 is_a: OntologyClass
+slot_usage:
+  id:
+    name: id
+    comments:
+    - Validation is intentionally limited to NCBITaxon CURIEs for now. If GTDB, LPSN,
+      or SeqCode support is added, widen this pattern in lockstep with id_prefixes
+      and example data.
+    pattern: ^NCBITaxon:\d+$
 attributes:
   alternative_names:
     name: alternative_names
@@ -716,6 +736,10 @@ attributes:
     notes:
     - The identifiers for terms from external ontologies can't have their ids constrained
       to the nmdc namespace
+    comments:
+    - Validation is intentionally limited to NCBITaxon CURIEs for now. If GTDB, LPSN,
+      or SeqCode support is added, widen this pattern in lockstep with id_prefixes
+      and example data.
     examples:
     - value: nmdc:mgmag-00-x012.1_7_c1
       description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
@@ -737,7 +761,7 @@ attributes:
     - NamedThing
     range: uriorcurie
     required: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    pattern: ^NCBITaxon:\d+$
   name:
     name: name
     description: A human readable label for an entity
