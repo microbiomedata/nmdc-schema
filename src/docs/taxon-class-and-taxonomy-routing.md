@@ -39,6 +39,9 @@ At present, `OrganismTaxon` validation is intentionally NCBITaxon-specific. The 
 is enforced by a regex on `OrganismTaxon.id`. When GTDB, LPSN, or SeqCode support is added, both
 `id_prefixes` and the `OrganismTaxon.id` pattern should be updated together.
 
+The remaining modeling question is how much of this specificity should live on the
+global `classified_as` slot versus on class-local `slot_usage`. That is tracked in #3016.
+
 ## Loading taxonomy data into ontology_class_set
 
 `ontology_class_set` currently contains ENVO (4,366), UBERON (16,061), and PO (1,998)
