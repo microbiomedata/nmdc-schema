@@ -17,7 +17,6 @@ class Migrator(MigratorBase):
 
         # List of collection names that we want the migration orchestration notebook to validate.
         self._collection_names = [
-            "biosample_set",
             "workflow_execution_set",
         ]
 
