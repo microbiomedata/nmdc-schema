@@ -6,10 +6,10 @@
   terms. No new slots, no typecode, no dedicated MongoDB collection. Instances go into
   `ontology_class_set` with external CURIEs (e.g. `NCBITaxon:511145`).
 
-- **`classified_as` slot** (`range: ControlledIdentifiedTermValue`, multivalued) — a
-  general-purpose classification slot. When used for taxonomy, the `term` should
-  reference a `Taxon` instance. Not yet assigned to any class; OrganismSample (#2884)
-  will be the first consumer.
+- **`classified_as` slot** (`range: Taxon`, multivalued) — a
+  general-purpose classification slot for direct references to `Taxon`
+  instances. Not yet assigned to any class; OrganismSample (#2884) will be the
+  first consumer.
 
 ## What is NOT in this PR — and where it goes
 
@@ -24,18 +24,15 @@
 | GOLD organism identifiers (`Go*`) | `gold_organism_identifiers` slot | #2973 |
 | Genbank 16S / INSDC accessions | String or external identifier slots | #2960 |
 | Deprecation of `known_as` on PortionOfSubstance | Replace with `classified_as` | Future issue |
-| Example data for `classified_as` | Valid example YAML | #2974 |
+| Direct `Taxon` example data | `Taxon-minimal.yaml` | This PR |
 
 ## Relationship to existing taxonomy slots
 
 `samp_taxon_id` and `host_taxid` already use `ControlledIdentifiedTermValue` with
 `range: OntologyClass` via the `term` slot. These are MIxS-originated slots with
 MIxS-specific structured patterns. `classified_as` is an NMDC-native slot without
-MIxS constraints, intended for use on new classes like OrganismSample.
-
-The intent is that all three slots point to `Taxon` instances, but LinkML does not
-currently support constraining the `term` of a `ControlledIdentifiedTermValue` to a
-particular `OntologyClass` subclass.
+MIxS constraints, intended for use on new classes like OrganismSample, and points
+directly to `Taxon`.
 
 ## Loading taxonomy data into ontology_class_set
 

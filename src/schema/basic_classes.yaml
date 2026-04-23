@@ -77,7 +77,7 @@ classes:
       - >-
         Follows the FunctionalAnnotationTerm pattern: a semantic subclass of OntologyClass with no
         additional slots, no typecode, and no dedicated Database collection. Instances go into
-        ontology_class_set and are referenced from sample slots via ControlledIdentifiedTermValue.
+        ontology_class_set and can be referenced directly from sample slots such as classified_as.
       - >-
         NCBITaxon is the primary authority. Other taxonomic authorities (GTDB, LPSN, SeqCode) can be
         supported by adding their CURIE prefixes to id_prefixes and loading their terms into
@@ -593,18 +593,17 @@ classes:
         description: The url of the software repository used to generate the NMDC metadata record
 slots:
   classified_as:
-    range: ControlledIdentifiedTermValue
+    range: Taxon
     multivalued: true
     description: >-
-      A formal classification for this entity, expressed as a controlled term from an ontology
-      or taxonomy. Each value wraps a reference to an OntologyClass instance (or subclass such
-      as Taxon) in ontology_class_set.
+      A formal classification for this entity, expressed directly as a Taxon instance stored in
+      ontology_class_set.
     comments:
       - >-
         On OrganismSample, this slot captures the taxonomic classification of the organism in
-        the sample. The term should reference a Taxon instance identified by an NCBITaxon CURIE
-        (or another supported taxonomy prefix). The slot is multivalued to allow classifications
-        from multiple authorities (e.g. both NCBITaxon and GTDB) for the same organism.
+        the sample. Each value should be a Taxon instance identified by an NCBITaxon CURIE (or
+        another supported taxonomy prefix). The slot is multivalued to allow classifications from
+        multiple authorities (e.g. both NCBITaxon and GTDB) for the same organism.
       - >-
         This slot is intended to replace known_as on PortionOfSubstance in a future deprecation.
     see_also:

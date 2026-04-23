@@ -2687,7 +2687,7 @@
                     ]
                 },
                 "name": {
-                    "description": "A local identifier or name for the material sample collected. It can have any format, but we suggest that you make it concise, unique, and consistent within your lab, and as informative as possible. For NMDC this should be unique within a study. International Nucleotide Sequence Database Collaboration (INSDC) requires every sample name from a single submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to the name slot.",
+                    "description": "A local identifier or name for the material sample collected. We recommend it be informative, concise, and consistent within your lab. It must be unique within a study. International Nucleotide Sequence Database Collaboration (INSDC) requires every sample name from a single submitter to be unique. We recommend that, in addition to populating this field, you populate the `source_mat_id` field with a globally-unique identifier.",
                     "type": "string"
                 },
                 "ncbi_taxonomy_name": {
@@ -6097,6 +6097,9 @@
                             "$ref": "#/$defs/OntologyClass"
                         },
                         {
+                            "$ref": "#/$defs/Taxon"
+                        },
+                        {
                             "$ref": "#/$defs/OrthologyGroup"
                         }
                     ],
@@ -6132,6 +6135,9 @@
                     "anyOf": [
                         {
                             "$ref": "#/$defs/OntologyClass"
+                        },
+                        {
+                            "$ref": "#/$defs/Taxon"
                         },
                         {
                             "$ref": "#/$defs/OrthologyGroup"
@@ -15007,6 +15013,95 @@
             ],
             "title": "TargetGeneEnum",
             "type": "string"
+        },
+        "Taxon": {
+            "additionalProperties": false,
+            "description": "A classification term from a formal taxonomy. Taxon instances are currently identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass instances. No NMDC-minted identifiers are assigned to taxa. Support for additional taxonomic authorities (GTDB, LPSN, SeqCode) can be added by expanding id_prefixes.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "is_obsolete": {
+                    "description": "A boolean value indicating whether the ontology term is obsolete.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "is_root": {
+                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:Taxon"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "Taxon",
+            "type": "object"
         },
         "TextValue": {
             "additionalProperties": false,

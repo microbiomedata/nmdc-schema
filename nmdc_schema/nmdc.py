@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-09T20:29:15
+# Generation date: 2026-04-23T15:40:34
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -80,6 +80,7 @@ FMA = CurieNamespace('FMA', 'http://purl.obolibrary.org/obo/FMA_')
 GENEPIO = CurieNamespace('GENEPIO', 'http://purl.obolibrary.org/obo/GENEPIO_')
 GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
 HMDB = CurieNamespace('HMDB', 'https://bioregistry.io/hmdb:')
+IAO = CurieNamespace('IAO', 'http://purl.obolibrary.org/obo/IAO_')
 ISA = CurieNamespace('ISA', 'http://example.org/isa/')
 KEGG_COMPOUND = CurieNamespace('KEGG_COMPOUND', 'https://bioregistry.io/kegg.compound:')
 KEGG_MODULE = CurieNamespace('KEGG_MODULE', 'https://bioregistry.io/kegg.module:')
@@ -213,6 +214,10 @@ class FunctionalAnnotationTermId(OntologyClassId):
 
 
 class OrthologyGroupId(FunctionalAnnotationTermId):
+    pass
+
+
+class TaxonId(OntologyClassId):
     pass
 
 
@@ -1434,6 +1439,36 @@ class OrthologyGroup(FunctionalAnnotationTerm):
 
 
 @dataclass(repr=False)
+class Taxon(OntologyClass):
+    """
+    A classification term from a formal taxonomy. Taxon instances are currently identified by NCBITaxon CURIEs (e.g.
+    NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass instances. No NMDC-minted
+    identifiers are assigned to taxa. Support for additional taxonomic authorities (GTDB, LPSN, SeqCode) can be added
+    by expanding id_prefixes.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["Taxon"]
+    class_class_curie: ClassVar[str] = "nmdc:Taxon"
+    class_name: ClassVar[str] = "Taxon"
+    class_model_uri: ClassVar[URIRef] = NMDC.Taxon
+
+    id: Union[str, TaxonId] = None
+    type: Union[str, URIorCURIE] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TaxonId):
+            self.id = TaxonId(self.id)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
 class OntologyRelation(YAMLRoot):
     """
     A relationship between two ontology classes as specified either directly in the ontology in the form of axioms
@@ -1507,6 +1542,9 @@ class FailureCategorization(YAMLRoot):
 
 @dataclass(repr=False)
 class MaterialEntity(NamedThing):
+    """
+    A named thing that occupies space and has mass.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MaterialEntity"]
@@ -3907,6 +3945,9 @@ class Instrument(MaterialEntity):
 
 @dataclass(repr=False)
 class PlannedProcess(NamedThing):
+    """
+    A named thing that is executed according to a plan.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = OBI["0000011"]
@@ -11123,6 +11164,9 @@ slots.start_date = Slot(uri=NMDC.start_date, name="start_date", curie=NMDC.curie
 
 slots.end_date = Slot(uri=NMDC.end_date, name="end_date", curie=NMDC.curie('end_date'),
                    model_uri=NMDC.end_date, domain=None, range=Optional[str])
+
+slots.classified_as = Slot(uri=NMDC['basic_classes/classified_as'], name="classified_as", curie=NMDC.curie('basic_classes/classified_as'),
+                   model_uri=NMDC.classified_as, domain=None, range=Optional[Union[Union[str, TaxonId], list[Union[str, TaxonId]]]])
 
 slots.source_system_of_record = Slot(uri=NMDC['basic_classes/source_system_of_record'], name="source_system_of_record", curie=NMDC.curie('basic_classes/source_system_of_record'),
                    model_uri=NMDC.source_system_of_record, domain=None, range=Optional[Union[str, "SourceSystemEnum"]])
