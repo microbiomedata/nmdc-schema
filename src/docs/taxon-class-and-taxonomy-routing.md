@@ -34,6 +34,11 @@ slot intended for new classes like OrganismSample. The target design narrows
 organism-oriented uses to `NcbiTaxon` via class-specific `slot_usage` (#3016) rather than
 making the global slot range taxon-specific.
 
+At present, `Taxon` validation is intentionally NCBITaxon-specific. The schema keeps
+`id_prefixes` so the intended authority list is explicit, but actual instance validation
+is enforced by a regex on `Taxon.id`. When GTDB, LPSN, or SeqCode support is added, both
+`id_prefixes` and the `Taxon.id` pattern should be updated together.
+
 ## Loading taxonomy data into ontology_class_set
 
 `ontology_class_set` currently contains ENVO (4,366), UBERON (16,061), and PO (1,998)

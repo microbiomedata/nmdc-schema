@@ -14749,7 +14749,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "pattern": "^NCBITaxon:\\d+$",
                     "type": "string"
                 },
                 "is_obsolete": {
