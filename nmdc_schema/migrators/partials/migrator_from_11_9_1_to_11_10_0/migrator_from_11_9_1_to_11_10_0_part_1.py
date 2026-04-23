@@ -372,7 +372,7 @@ class Migrator(MigratorBase):
                         for slot_def in subclass_induced_slots:
                             if slot_def.range == "QuantityValue":
                                 subclass_slots.add(slot_def.name)
-                except:
+                except Exception:
                     # If class_descendants doesn't exist, skip subclass processing
                     pass
                 
