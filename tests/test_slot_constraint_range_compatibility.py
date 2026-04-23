@@ -51,7 +51,7 @@ _STRING_BASE_TYPES = frozenset(
         "date",
         "datetime",
         "time",
-        "dateorDatetime",
+        "dateOrDatetime",
     ]
 )
 _NUMERIC_BASE_TYPES = frozenset(["integer", "float", "double", "decimal"])
@@ -69,7 +69,9 @@ def _range_kind(sv: SchemaView, range_name: str) -> str:
             return "numeric"
         if "boolean" in ancestors:
             return "boolean"
-        return "string"
+        if ancestors & _STRING_BASE_TYPES:
+            return "string"
+        return "string"  # fallback for derived types not in the explicit list
     return "unknown"
 
 
@@ -91,7 +93,7 @@ class TestSlotConstraintRangeCompatibility(unittest.TestCase):
 
             for constraint in _ALL_CHECKED:
                 val = getattr(slot_def, constraint, None)
-                if val is None or (isinstance(val, list) and len(val) == 0):
+                if val is None or (isinstance(val, (list, dict)) and len(val) == 0):
                     continue
                 compatible = (
                     (constraint in _STRING_CONSTRAINTS and kind == "string")
