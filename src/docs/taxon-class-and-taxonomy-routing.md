@@ -24,7 +24,7 @@
 | Organism genus/species as separate text fields (JGI requirement) | Slots on OrganismSample (`organism_genus`, `organism_species`) | #2884 |
 | GOLD organism identifiers (`Go*`) | `gold_organism_identifiers` slot | #2973 |
 | Genbank 16S / INSDC accessions | String or external identifier slots | #2960 |
-| Deprecation of `known_as` on PortionOfSubstance | Replace with `classified_as` | Future issue |
+| Deprecation of `known_as` on PortionOfSubstance | Replace with `classified_as` | #2976 |
 | Direct `NcbiTaxon` example data | `NcbiTaxon-minimal.yaml` (valid), `NcbiTaxon-invalid-prefix.yaml` (invalid) | This PR |
 
 ## Relationship to existing taxonomy slots
@@ -38,5 +38,8 @@ making the global slot range taxon-specific.
 ## Loading taxonomy data into ontology_class_set
 
 `ontology_class_set` currently contains ENVO (4,366), UBERON (16,061), and PO (1,998)
-terms. NCBITaxon (~2.5M terms) can be loaded using the same pipeline. GTDB (~143K
-species clusters as of R226) would need a custom loader since it ships as TSV rather than OWL.
+terms. NCBITaxon (~2.7M active terms) can be loaded using the same pipeline once
+microbiomedata/ontology-loader#9-#12 are resolved — those issues cover a blocking CURIE
+prefix bug, memory constraints from full-list materialization, and upsert throughput.
+GTDB (~143K species clusters as of R226) would additionally need a custom loader since
+it ships as TSV rather than OWL.
