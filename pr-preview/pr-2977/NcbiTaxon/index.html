@@ -537,7 +537,7 @@
 <h2 id="comments">Comments</h2>
 <ul>
 <li>Follows the OrthologyGroup pattern: a concrete, directly-instantiated semantic subclass of OntologyClass with no additional slots, no typecode, and no dedicated Database collection. Instances go into ontology_class_set and are referenced from sample slots such as classified_as.</li>
-<li>Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution of NCBI Taxonomy. Strain identity should be captured via dedicated text slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or a future Strain class — not by minting NcbiTaxon instances for strains.</li>
+<li>Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution of NCBI Taxonomy. Strain identity is captured via dedicated slots on Organism (e.g. strain_name, isolate_name, source_mat_id) — not by minting NcbiTaxon instances.</li>
 <li>Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue with range OntologyClass. The intent is that these slots point to NcbiTaxon instances specifically, but LinkML does not currently support constraining the term slot of a ControlledIdentifiedTermValue to a particular OntologyClass subclass.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
@@ -588,9 +588,9 @@ comments:
   Database collection. Instances go into ontology_class_set and are referenced from
   sample slots such as classified_as.'
 - Sub-species information (strains, cultivars, lab-specific isolates) is below the
-  resolution of NCBI Taxonomy. Strain identity should be captured via dedicated text
-  slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or
-  a future Strain class — not by minting NcbiTaxon instances for strains.
+  resolution of NCBI Taxonomy. Strain identity is captured via dedicated slots on
+  Organism (e.g. strain_name, isolate_name, source_mat_id) — not by minting NcbiTaxon
+  instances.
 - Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
   with range OntologyClass. The intent is that these slots point to NcbiTaxon instances
   specifically, but LinkML does not currently support constraining the term slot of
@@ -630,9 +630,9 @@ comments:
   Database collection. Instances go into ontology_class_set and are referenced from
   sample slots such as classified_as.'
 - Sub-species information (strains, cultivars, lab-specific isolates) is below the
-  resolution of NCBI Taxonomy. Strain identity should be captured via dedicated text
-  slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or
-  a future Strain class — not by minting NcbiTaxon instances for strains.
+  resolution of NCBI Taxonomy. Strain identity is captured via dedicated slots on
+  Organism (e.g. strain_name, isolate_name, source_mat_id) — not by minting NcbiTaxon
+  instances.
 - Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
   with range OntologyClass. The intent is that these slots point to NcbiTaxon instances
   specifically, but LinkML does not currently support constraining the term slot of

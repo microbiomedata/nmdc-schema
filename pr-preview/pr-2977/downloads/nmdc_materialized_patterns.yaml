@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post105.dev0+ddf8db2c2
+version: 11.18.0.post106.dev0+19ea61fdb
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -304,6 +304,9 @@ prefixes:
   shex:
     prefix_prefix: shex
     prefix_reference: http://www.w3.org/ns/shex#
+  COB:
+    prefix_prefix: COB
+    prefix_reference: http://purl.obolibrary.org/obo/COB_
   IAO:
     prefix_prefix: IAO
     prefix_reference: http://purl.obolibrary.org/obo/IAO_
@@ -6086,7 +6089,7 @@ slots:
   organism_set:
     name: organism_set
     description: This property links a database object to the set of organisms within
-      it. This collection is polymorphic and holds both Organism and Strain instances.
+      it.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
@@ -6338,7 +6341,7 @@ slots:
     description: Genus of the organism.
     comments:
     - Free-text submitter-provided genus name. For formal taxonomic classification,
-      use classified_as with a Taxon CURIE on the parent Organism class.
+      use classified_as with a NcbiTaxon instance on the parent Organism class.
     examples:
     - value: Shewanella
       description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
@@ -6359,7 +6362,7 @@ slots:
     description: Species of the organism.
     comments:
     - Free-text submitter-provided species name. For formal taxonomic classification,
-      use classified_as with a Taxon CURIE on the parent Organism class.
+      use classified_as with a NcbiTaxon instance on the parent Organism class.
     examples:
     - value: loihica
       description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
@@ -6496,14 +6499,11 @@ slots:
     range: IsolateMaterialCategoryEnum
   expected_organism:
     name: expected_organism
-    description: The organism or strain that the submitter expects to be present in
-      this sample. May be contradicted by sequencing results.
-    comments:
-    - Range is Organism, which includes Strain as a subclass. The organism_set collection
-      is polymorphic.
+    description: The organism that the submitter expects to be present in this sample.
+      May be contradicted by sequencing results.
     examples:
-    - value: nmdc:strn-99-abc123
-      description: Reference to a Strain instance in organism_set
+    - value: nmdc:orgn-99-abc123
+      description: Reference to an Organism instance in organism_set
     from_schema: https://w3id.org/nmdc/nmdc
     range: Organism
   single_colony_isolation:
@@ -18797,6 +18797,8 @@ classes:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2978
+    close_mappings:
+    - OBI:0000512
     is_a: MaterialProcessing
     slot_usage:
       id:
@@ -18830,6 +18832,8 @@ classes:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2978
+    close_mappings:
+    - OBI:0001147
     is_a: MaterialProcessing
     slot_usage:
       id:
@@ -19592,9 +19596,9 @@ classes:
       Database collection. Instances go into ontology_class_set and are referenced
       from sample slots such as classified_as.'
     - Sub-species information (strains, cultivars, lab-specific isolates) is below
-      the resolution of NCBI Taxonomy. Strain identity should be captured via dedicated
-      text slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin)
-      or a future Strain class — not by minting NcbiTaxon instances for strains.
+      the resolution of NCBI Taxonomy. Strain identity is captured via dedicated slots
+      on Organism (e.g. strain_name, isolate_name, source_mat_id) — not by minting
+      NcbiTaxon instances.
     - Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
       with range OntologyClass. The intent is that these slots point to NcbiTaxon
       instances specifically, but LinkML does not currently support constraining the
@@ -19717,20 +19721,38 @@ classes:
     name: Organism
     description: A material entity that is a living or once-living individual. Organism
       instances represent the biological identity of what is in a sample, not the
-      sample itself.
+      sample itself. Sub-species identity (strain, cultivar, lab isolate) is captured
+      by slots on this class rather than via a separate Strain subclass.
     comments:
-    - Organism instances are stored in organism_set, which is polymorphic and also
-      holds Strain instances. An Organism is not a sample — it is the biological entity
-      that an OrganismSample is expected to contain, linked via expected_organism.
+    - Organism instances are stored in organism_set. An Organism is not a sample —
+      it is the biological entity that an OrganismSample is expected to contain, linked
+      via expected_organism. Sub-species identity (strain_name, isolate_name, source_mat_id)
+      is captured directly on Organism.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2959
     - https://github.com/microbiomedata/nmdc-schema/issues/2803
+    - https://github.com/microbiomedata/nmdc-schema/issues/2971
+    exact_mappings:
+    - COB:0000022
     is_a: MaterialEntity
     slots:
     - classified_as
     - biosafety_material_category
     - gold_organism_identifiers
+    - organism_genus
+    - organism_species
+    - strain_name
+    - isolate_name
+    - estimated_size
+    - ploidy
+    - gc_content
+    - source_mat_id
+    - ref_biomaterial
+    - host_taxid
+    - viral_host_genus
+    - viral_host_species
+    - viral_host_strain
     slot_usage:
       id:
         name: id
@@ -19739,46 +19761,9 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
           interpolated: true
-    class_uri: nmdc:Organism
-  Strain:
-    name: Strain
-    description: A sub-species lineage of an organism, identified by a culture collection
-      reference, strain designator, or lab-internal name. Strains carry detail below
-      the resolution of formal taxonomies.
-    comments:
-    - Strain instances are stored in organism_set alongside Organism instances (polymorphic
-      collection). Strain inherits classified_as from Organism for taxonomic classification
-      via CURIE (e.g. NCBITaxon:511145). Strain-level identity (strain_name, source_mat_id)
-      captures detail that no formal taxonomy covers.
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/2971
-    is_a: Organism
-    slots:
-    - organism_genus
-    - organism_species
-    - strain_name
-    - isolate_name
-    - source_mat_id
-    - host_taxid
-    - estimated_size
-    - ploidy
-    - ref_biomaterial
-    - gc_content
-    - viral_host_genus
-    - viral_host_species
-    - viral_host_strain
-    slot_usage:
-      id:
-        name: id
-        required: true
-        pattern: ^(nmdc):strn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:strn-{id_shoulder}-{id_blade}$'
-          interpolated: true
       source_mat_id:
         name: source_mat_id
-        description: Culture collection name and identifier for this strain. Reuses
+        description: Culture collection name and identifier for this organism. Reuses
           MIxS source_mat_id (MIXS:0000026).
         structured_aliases:
         - literal_form: Culture Collection and ID
@@ -19787,7 +19772,8 @@ classes:
           - https://jgi.doe.gov/isolate-submission-form/v19
       host_taxid:
         name: host_taxid
-        description: NCBI taxon ID of the host organism. Reuses MIxS host_taxid (MIXS:0000250).
+        description: NCBI taxon ID of the host organism (for viral isolates). Reuses
+          MIxS host_taxid (MIXS:0000250).
         structured_aliases:
         - literal_form: Host NCBI Taxonomy ID
           predicate: EXACT_SYNONYM
@@ -19822,7 +19808,7 @@ classes:
           - https://jgi.doe.gov/isolate-submission-form/v19
       ref_biomaterial:
         name: ref_biomaterial
-        description: Reference for the strain, preferentially a DOI when a primary
+        description: Reference for the organism, preferentially a DOI when a primary
           publication or genome report exists; PMID and URL are also accepted per
           the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial
           (MIXS:0000025).
@@ -19842,7 +19828,7 @@ classes:
           predicate: EXACT_SYNONYM
           contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
-    class_uri: nmdc:Strain
+    class_uri: nmdc:Organism
   PlannedProcess:
     name: PlannedProcess
     description: A named thing that is executed according to a plan.
@@ -21500,8 +21486,8 @@ classes:
       a single organism, but sequencing may reveal contamination. Purity status is
       captured by single_colony_isolation and known_suspected_organisms, not by the
       class itself.
-    - The expected_organism slot links to an Organism or Strain instance representing
-      what the submitter believes is in the sample.
+    - The expected_organism slot links to an Organism instance representing what the
+      submitter believes is in the sample.
     - The defining criterion is genomic homogeneity of intent, not material type.
       A bacterial colony pick, a plant leaf clip, and a fungal fruiting body section
       are all OrganismSamples because the submitter expects one genome. An algal mat,
@@ -21511,6 +21497,8 @@ classes:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2803
     - https://github.com/microbiomedata/nmdc-schema/issues/2961
+    close_mappings:
+    - OBI:0100051
     is_a: Sample
     slots:
     - associated_studies
@@ -21545,9 +21533,9 @@ classes:
           interpolated: true
       expected_organism:
         name: expected_organism
-        pattern: ^(nmdc):(orgn|strn)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        pattern: ^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(orgn|strn)-{id_shoulder}-{id_blade}$'
+          syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:OrganismSample
   Site:

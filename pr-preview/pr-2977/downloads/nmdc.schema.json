@@ -6503,16 +6503,9 @@
                     ]
                 },
                 "organism_set": {
-                    "description": "This property links a database object to the set of organisms within it. This collection is polymorphic and holds both Organism and Strain instances.",
+                    "description": "This property links a database object to the set of organisms within it.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/Organism"
-                            },
-                            {
-                                "$ref": "#/$defs/Strain"
-                            }
-                        ]
+                        "$ref": "#/$defs/Organism"
                     },
                     "type": [
                         "array",
@@ -12643,7 +12636,7 @@
         },
         "Organism": {
             "additionalProperties": false,
-            "description": "A material entity that is a living or once-living individual. Organism instances represent the biological identity of what is in a sample, not the sample itself.",
+            "description": "A material entity that is a living or once-living individual. Organism instances represent the biological identity of what is in a sample, not the sample itself. Sub-species identity (strain, cultivar, lab isolate) is captured by slots on this class rather than via a separate Strain subclass.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -12687,6 +12680,20 @@
                         "null"
                     ]
                 },
+                "estimated_size": {
+                    "description": "Estimated genome size, as integer base pairs. Reuses MIxS estimated_size (MIXS:0000024). The JGI isolate field reports in megabases (Mb); values must be converted to the MIxS integer-bp representation before validation and storage. The submission portal should auto-populate the \"bp\" suffix and enforce integer input.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gc_content": {
+                    "description": "Estimated GC content as a percentage.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "gold_organism_identifiers": {
                     "description": "identifiers for corresponding organism in GOLD",
                     "items": {
@@ -12698,13 +12705,85 @@
                         "null"
                     ]
                 },
+                "host_taxid": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "NCBI taxon ID of the host organism (for viral isolates). Reuses MIxS host_taxid (MIXS:0000250)."
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
+                "isolate_name": {
+                    "description": "Isolate or mutant name.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "name": {
                     "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organism_genus": {
+                    "description": "Genus of the organism.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organism_species": {
+                    "description": "Species of the organism.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ploidy": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured pattern expects a PATO term label with CURIE (e.g. \"haploid [PATO:0001375]\"). The JGI isolate field is free-text comments; values from that field need conversion to the ontology-valued form for MIxS compliance."
+                },
+                "ref_biomaterial": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Reference for the organism, preferentially a DOI when a primary publication or genome report exists; PMID and URL are also accepted per the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025)."
+                },
+                "source_mat_id": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Culture collection name and identifier for this organism. Reuses MIxS source_mat_id (MIXS:0000026)."
+                },
+                "strain_name": {
+                    "description": "Strain or cultivar name of the organism.",
                     "type": [
                         "string",
                         "null"
@@ -12716,6 +12795,27 @@
                         "nmdc:Organism"
                     ],
                     "type": "string"
+                },
+                "viral_host_genus": {
+                    "description": "Genus of the viral host. Required for viral minimal drafts.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "viral_host_species": {
+                    "description": "Species of the viral host. Required for viral minimal drafts.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "viral_host_strain": {
+                    "description": "Strain of the viral host. Required for viral minimal drafts.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -12780,7 +12880,7 @@
                     ]
                 },
                 "expected_organism": {
-                    "description": "The organism or strain that the submitter expects to be present in this sample. May be contradicted by sequencing results.",
+                    "description": "The organism that the submitter expects to be present in this sample. May be contradicted by sequencing results.",
                     "type": [
                         "string",
                         "null"
@@ -14784,197 +14884,6 @@
             "title": "StorageProcess",
             "type": "object"
         },
-        "Strain": {
-            "additionalProperties": false,
-            "description": "A sub-species lineage of an organism, identified by a culture collection reference, strain designator, or lab-internal name. Strains carry detail below the resolution of formal taxonomies.",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "biosafety_material_category": {
-                    "$ref": "#/$defs/IsolateMaterialCategoryEnum",
-                    "description": "General category of organism for biosafety classification."
-                },
-                "classified_as": {
-                    "description": "A formal classification for this entity, expressed directly as an ontology-backed class instance stored in ontology_class_set.",
-                    "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/OntologyClass"
-                            },
-                            {
-                                "$ref": "#/$defs/NcbiTaxon"
-                            },
-                            {
-                                "$ref": "#/$defs/OrthologyGroup"
-                            }
-                        ]
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "estimated_size": {
-                    "description": "Estimated genome size, as integer base pairs. Reuses MIxS estimated_size (MIXS:0000024). The JGI isolate field reports in megabases (Mb); values must be converted to the MIxS integer-bp representation before validation and storage. The submission portal should auto-populate the \"bp\" suffix and enforce integer input.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "gc_content": {
-                    "description": "Estimated GC content as a percentage.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "gold_organism_identifiers": {
-                    "description": "identifiers for corresponding organism in GOLD",
-                    "items": {
-                        "pattern": "^gold:Go[0-9]+$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "host_taxid": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "NCBI taxon ID of the host organism. Reuses MIxS host_taxid (MIXS:0000250)."
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "isolate_name": {
-                    "description": "Isolate or mutant name.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "organism_genus": {
-                    "description": "Genus of the organism.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "organism_species": {
-                    "description": "Species of the organism.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "ploidy": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured pattern expects a PATO term label with CURIE (e.g. \"haploid [PATO:0001375]\"). The JGI isolate field is free-text comments; values from that field need conversion to the ontology-valued form for MIxS compliance."
-                },
-                "ref_biomaterial": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Reference for the strain, preferentially a DOI when a primary publication or genome report exists; PMID and URL are also accepted per the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025)."
-                },
-                "source_mat_id": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Culture collection name and identifier for this strain. Reuses MIxS source_mat_id (MIXS:0000026)."
-                },
-                "strain_name": {
-                    "description": "Strain or cultivar name of the organism.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:Strain"
-                    ],
-                    "type": "string"
-                },
-                "viral_host_genus": {
-                    "description": "Genus of the viral host. Required for viral minimal drafts.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "viral_host_species": {
-                    "description": "Species of the viral host. Required for viral minimal drafts.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "viral_host_strain": {
-                    "description": "Strain of the viral host. Required for viral minimal drafts.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "id",
-                "type"
-            ],
-            "title": "Strain",
-            "type": "object"
-        },
         "StrandedOrientationEnum": {
             "description": "This enumeration specifies information about stranded RNA library preparations.",
             "enum": [
@@ -16186,16 +16095,9 @@
             ]
         },
         "organism_set": {
-            "description": "This property links a database object to the set of organisms within it. This collection is polymorphic and holds both Organism and Strain instances.",
+            "description": "This property links a database object to the set of organisms within it.",
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/Organism"
-                    },
-                    {
-                        "$ref": "#/$defs/Strain"
-                    }
-                ]
+                "$ref": "#/$defs/Organism"
             },
             "type": [
                 "array",
@@ -16279,5 +16181,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post105.dev0+ddf8db2c2"
+    "version": "11.18.0.post106.dev0+19ea61fdb"
 }

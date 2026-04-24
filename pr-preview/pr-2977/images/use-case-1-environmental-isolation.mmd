@@ -1,6 +1,5 @@
 %% Derived from src/data/valid/Database-isolate-from-soil-workflow.yaml.
-%% Shows every entity and edge asserted by the data file, including the
-%% ControlledIdentifiedTermValue wrapper between Strain.classified_as and Taxon.
+%% Shows every entity and edge asserted by the data file.
 %% Upstream collection context (FieldResearchSite + CollectingBiosamplesFromSite)
 %% is not currently in the data file — omitted here to keep diagram faithful.
 flowchart LR
@@ -11,9 +10,8 @@ flowchart LR
     OSM2["OrganismSample<br/>nmdc:osm-99-culture01<br/>B. subtilis 168 expanded culture"]
     EXT["Extraction<br/>nmdc:extrp-99-extr001"]
     PSM["ProcessedSample<br/>nmdc:procsm-99-dna001<br/>B. subtilis 168 extracted DNA"]
-    STRN["Strain<br/>nmdc:strn-99-bsub168<br/>Bacillus subtilis 168"]
-    CITV["ControlledIdentifiedTermValue<br/>Bacillus [NCBITaxon:1386]"]
-    TAX["Taxon<br/>NCBITaxon:1386"]
+    ORG["Organism<br/>nmdc:orgn-99-bsub168<br/>Bacillus subtilis 168"]
+    TAX["NcbiTaxon<br/>NCBITaxon:1386"]
 
     ISN -->|has_input| BSM
     ISN -->|has_output| OSM1
@@ -22,12 +20,11 @@ flowchart LR
     EXT -->|has_input| OSM2
     EXT -->|has_output| PSM
 
-    OSM1 -.->|expected_organism| STRN
-    OSM2 -.->|expected_organism| STRN
-    STRN -->|classified_as| CITV
-    CITV -->|term| TAX
+    OSM1 -.->|expected_organism| ORG
+    OSM2 -.->|expected_organism| ORG
+    ORG -->|classified_as| TAX
 
     classDef newPR fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
     classDef concrete fill:#fafafa,stroke:#9e9e9e
-    class ISN,CULT,OSM1,OSM2,STRN,TAX newPR
-    class BSM,EXT,PSM,CITV concrete
+    class ISN,CULT,OSM1,OSM2,ORG,TAX newPR
+    class BSM,EXT,PSM concrete

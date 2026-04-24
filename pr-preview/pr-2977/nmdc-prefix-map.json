@@ -4,6 +4,7 @@
    "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_",
    "CHEMBL.COMPOUND": "https://bioregistry.io/chembl.compound:",
    "CHMO": "http://purl.obolibrary.org/obo/CHMO_",
+   "COB": "http://purl.obolibrary.org/obo/COB_",
    "COG": "https://bioregistry.io/cog:",
    "Contaminant": "http://example.org/contaminant/",
    "DRUGBANK": "https://bioregistry.io/drugbank:",
