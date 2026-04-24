@@ -40,12 +40,9 @@ organism_set:
     type: nmdc:Strain
     name: Bacillus subtilis 168
     classified_as:
-      - type: nmdc:ControlledIdentifiedTermValue
-        has_raw_value: Bacillus [NCBITaxon:1386]
-        term:
-          id: NCBITaxon:1386
-          name: Bacillus
-          type: nmdc:Taxon
+      - id: NCBITaxon:1386
+        name: Bacillus
+        type: nmdc:NcbiTaxon
     biosafety_material_category: Bacteria
     organism_genus: Bacillus
     organism_species: subtilis

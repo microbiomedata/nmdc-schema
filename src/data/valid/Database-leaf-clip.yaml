@@ -12,12 +12,9 @@ organism_set:
     type: nmdc:Organism
     name: Arabidopsis thaliana
     classified_as:
-      - type: nmdc:ControlledIdentifiedTermValue
-        has_raw_value: Arabidopsis thaliana [NCBITaxon:3702]
-        term:
-          id: NCBITaxon:3702
-          name: Arabidopsis thaliana
-          type: nmdc:Taxon
+      - id: NCBITaxon:3702
+        name: Arabidopsis thaliana
+        type: nmdc:NcbiTaxon
     biosafety_material_category: Plant
     gold_organism_identifiers:
       - gold:Go0590511

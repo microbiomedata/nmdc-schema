@@ -3,10 +3,7 @@ id: nmdc:orgn-99-camp0058
 type: nmdc:Organism
 name: Campylobacter concisus
 classified_as:
-  - type: nmdc:ControlledIdentifiedTermValue
-    has_raw_value: Campylobacter concisus [NCBITaxon:360104]
-    term:
-      id: NCBITaxon:360104
-      name: Campylobacter concisus
-      type: nmdc:Taxon
+  - id: NCBITaxon:360104
+    name: Campylobacter concisus
+    type: nmdc:NcbiTaxon
 biosafety_material_category: Bacteria

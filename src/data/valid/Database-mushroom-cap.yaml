@@ -13,12 +13,9 @@ organism_set:
     type: nmdc:Organism
     name: Lentinula edodes
     classified_as:
-      - type: nmdc:ControlledIdentifiedTermValue
-        has_raw_value: Lentinula edodes [NCBITaxon:5353]
-        term:
-          id: NCBITaxon:5353
-          name: Lentinula edodes
-          type: nmdc:Taxon
+      - id: NCBITaxon:5353
+        name: Lentinula edodes
+        type: nmdc:NcbiTaxon
     biosafety_material_category: Fungi
     gold_organism_identifiers:
       - gold:Go0372970
