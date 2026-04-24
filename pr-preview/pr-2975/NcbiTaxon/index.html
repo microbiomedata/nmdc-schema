@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/OrganismTaxon/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/NcbiTaxon/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
-<title>Class: OrganismTaxon - NMDC Schema Documentation</title>
+<title>Class: NcbiTaxon - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-organismtaxon">
+<a class="md-skip" href="#class-ncbitaxon">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: OrganismTaxon
+              Class: NcbiTaxon
             
           </span>
 </div>
@@ -413,40 +413,40 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-organismtaxon">Class: OrganismTaxon</h1>
-<p><em>A classification term from a formal taxonomy. OrganismTaxon instances are currently identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass instances. No NMDC-minted identifiers are assigned to taxa. Support for additional taxonomic authorities (GTDB, LPSN, SeqCode) can be added by expanding id_prefixes.</em></p>
+<h1 id="class-ncbitaxon">Class: NcbiTaxon</h1>
+<p><em>A taxonomy term from NCBI Taxonomy. NcbiTaxon instances are identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass instances. No NMDC-minted identifiers are assigned. Support for additional taxonomic authorities (GTDB, LPSN, SeqCode) would be represented by separate classes or by widening this class's id_prefixes in a follow-on PR.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/OrganismTaxon">nmdc:OrganismTaxon</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/NcbiTaxon">nmdc:NcbiTaxon</a></p>
 <div class="mermaid">classDiagram
-  class OrganismTaxon
-  click OrganismTaxon href "../OrganismTaxon"
-    OntologyClass &lt;|-- OrganismTaxon
+  class NcbiTaxon
+  click NcbiTaxon href "../NcbiTaxon"
+    OntologyClass &lt;|-- NcbiTaxon
       click OntologyClass href "../OntologyClass"
 
 
 
-  OrganismTaxon : alternative_identifiers
+  NcbiTaxon : alternative_identifiers
 
-  OrganismTaxon : alternative_names
+  NcbiTaxon : alternative_names
 
-  OrganismTaxon : definition
+  NcbiTaxon : definition
 
-  OrganismTaxon : description
+  NcbiTaxon : description
 
-  OrganismTaxon : id
+  NcbiTaxon : id
 
-  OrganismTaxon : is_obsolete
+  NcbiTaxon : is_obsolete
 
-  OrganismTaxon : is_root
+  NcbiTaxon : is_root
 
-  OrganismTaxon : name
+  NcbiTaxon : name
 
-  OrganismTaxon : relations
+  NcbiTaxon : relations
 
-      OrganismTaxon --&gt; "*" OntologyRelation : relations
+      NcbiTaxon --&gt; "*" OntologyRelation : relations
     click OntologyRelation href "../OntologyRelation"
 
-  OrganismTaxon : type
+  NcbiTaxon : type
 
 
 
@@ -455,7 +455,7 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../OntologyClass/">OntologyClass</a><ul>
-<li><strong>OrganismTaxon</strong></li>
+<li><strong>NcbiTaxon</strong></li>
 </ul>
 </li>
 </ul>
@@ -536,10 +536,9 @@
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Follows the FunctionalAnnotationTerm pattern: a semantic subclass of OntologyClass with no additional slots, no typecode, and no dedicated Database collection. Instances go into ontology_class_set and can be referenced directly from sample slots such as classified_as.</li>
-<li>NCBITaxon is the primary authority. Other taxonomic authorities (GTDB, LPSN, SeqCode) can be supported by adding their CURIE prefixes to id_prefixes and loading their terms into ontology_class_set. The schema is currently validated against NCBITaxon only; supporting other authorities would require widening the OrganismTaxon.id pattern as well.</li>
-<li>Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution of most formal taxonomies. Strain identity should be captured via dedicated text slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or a future Strain class — not by minting OrganismTaxon instances for strains.</li>
-<li>Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue with range OntologyClass. The intent is that these slots point to OrganismTaxon instances specifically, but LinkML does not currently support constraining the term slot of a ControlledIdentifiedTermValue to a particular OntologyClass subclass.</li>
+<li>Follows the OrthologyGroup pattern: a concrete, directly-instantiated semantic subclass of OntologyClass with no additional slots, no typecode, and no dedicated Database collection. Instances go into ontology_class_set and are referenced from sample slots such as classified_as.</li>
+<li>Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution of NCBI Taxonomy. Strain identity should be captured via dedicated text slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or a future Strain class — not by minting NcbiTaxon instances for strains.</li>
+<li>Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue with range OntologyClass. The intent is that these slots point to NcbiTaxon instances specifically, but LinkML does not currently support constraining the term slot of a ControlledIdentifiedTermValue to a particular OntologyClass subclass.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -575,32 +574,27 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: OrganismTaxon
+<pre><code class="language-yaml">name: NcbiTaxon
 id_prefixes:
 - NCBITaxon
-description: A classification term from a formal taxonomy. OrganismTaxon instances
-  are currently identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored
-  in ontology_class_set alongside other OntologyClass instances. No NMDC-minted identifiers
-  are assigned to taxa. Support for additional taxonomic authorities (GTDB, LPSN,
-  SeqCode) can be added by expanding id_prefixes.
+description: A taxonomy term from NCBI Taxonomy. NcbiTaxon instances are identified
+  by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside
+  other OntologyClass instances. No NMDC-minted identifiers are assigned. Support
+  for additional taxonomic authorities (GTDB, LPSN, SeqCode) would be represented
+  by separate classes or by widening this class's id_prefixes in a follow-on PR.
 comments:
-- 'Follows the FunctionalAnnotationTerm pattern: a semantic subclass of OntologyClass
-  with no additional slots, no typecode, and no dedicated Database collection. Instances
-  go into ontology_class_set and can be referenced directly from sample slots such
-  as classified_as.'
-- NCBITaxon is the primary authority. Other taxonomic authorities (GTDB, LPSN, SeqCode)
-  can be supported by adding their CURIE prefixes to id_prefixes and loading their
-  terms into ontology_class_set. The schema is currently validated against NCBITaxon
-  only; supporting other authorities would require widening the OrganismTaxon.id pattern
-  as well.
+- 'Follows the OrthologyGroup pattern: a concrete, directly-instantiated semantic
+  subclass of OntologyClass with no additional slots, no typecode, and no dedicated
+  Database collection. Instances go into ontology_class_set and are referenced from
+  sample slots such as classified_as.'
 - Sub-species information (strains, cultivars, lab-specific isolates) is below the
-  resolution of most formal taxonomies. Strain identity should be captured via dedicated
-  text slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin)
-  or a future Strain class — not by minting OrganismTaxon instances for strains.
+  resolution of NCBI Taxonomy. Strain identity should be captured via dedicated text
+  slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or
+  a future Strain class — not by minting NcbiTaxon instances for strains.
 - Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
-  with range OntologyClass. The intent is that these slots point to OrganismTaxon
-  instances specifically, but LinkML does not currently support constraining the term
-  slot of a ControlledIdentifiedTermValue to a particular OntologyClass subclass.
+  with range OntologyClass. The intent is that these slots point to NcbiTaxon instances
+  specifically, but LinkML does not currently support constraining the term slot of
+  a ControlledIdentifiedTermValue to a particular OntologyClass subclass.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2959
@@ -612,42 +606,37 @@ slot_usage:
   id:
     name: id
     comments:
-    - Validation is intentionally limited to NCBITaxon CURIEs for now. If GTDB, LPSN,
-      or SeqCode support is added, widen this pattern in lockstep with id_prefixes
-      and example data.
+    - Validation is intentionally limited to NCBITaxon CURIEs. If GTDB, LPSN, or SeqCode
+      support is added, widen this pattern in lockstep with id_prefixes and example
+      data.
     pattern: ^NCBITaxon:\d+$
-class_uri: nmdc:OrganismTaxon
+class_uri: nmdc:NcbiTaxon
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: OrganismTaxon
+<pre><code class="language-yaml">name: NcbiTaxon
 id_prefixes:
 - NCBITaxon
-description: A classification term from a formal taxonomy. OrganismTaxon instances
-  are currently identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored
-  in ontology_class_set alongside other OntologyClass instances. No NMDC-minted identifiers
-  are assigned to taxa. Support for additional taxonomic authorities (GTDB, LPSN,
-  SeqCode) can be added by expanding id_prefixes.
+description: A taxonomy term from NCBI Taxonomy. NcbiTaxon instances are identified
+  by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside
+  other OntologyClass instances. No NMDC-minted identifiers are assigned. Support
+  for additional taxonomic authorities (GTDB, LPSN, SeqCode) would be represented
+  by separate classes or by widening this class's id_prefixes in a follow-on PR.
 comments:
-- 'Follows the FunctionalAnnotationTerm pattern: a semantic subclass of OntologyClass
-  with no additional slots, no typecode, and no dedicated Database collection. Instances
-  go into ontology_class_set and can be referenced directly from sample slots such
-  as classified_as.'
-- NCBITaxon is the primary authority. Other taxonomic authorities (GTDB, LPSN, SeqCode)
-  can be supported by adding their CURIE prefixes to id_prefixes and loading their
-  terms into ontology_class_set. The schema is currently validated against NCBITaxon
-  only; supporting other authorities would require widening the OrganismTaxon.id pattern
-  as well.
+- 'Follows the OrthologyGroup pattern: a concrete, directly-instantiated semantic
+  subclass of OntologyClass with no additional slots, no typecode, and no dedicated
+  Database collection. Instances go into ontology_class_set and are referenced from
+  sample slots such as classified_as.'
 - Sub-species information (strains, cultivars, lab-specific isolates) is below the
-  resolution of most formal taxonomies. Strain identity should be captured via dedicated
-  text slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin)
-  or a future Strain class — not by minting OrganismTaxon instances for strains.
+  resolution of NCBI Taxonomy. Strain identity should be captured via dedicated text
+  slots on OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or
+  a future Strain class — not by minting NcbiTaxon instances for strains.
 - Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
-  with range OntologyClass. The intent is that these slots point to OrganismTaxon
-  instances specifically, but LinkML does not currently support constraining the term
-  slot of a ControlledIdentifiedTermValue to a particular OntologyClass subclass.
+  with range OntologyClass. The intent is that these slots point to NcbiTaxon instances
+  specifically, but LinkML does not currently support constraining the term slot of
+  a ControlledIdentifiedTermValue to a particular OntologyClass subclass.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2959
@@ -659,9 +648,9 @@ slot_usage:
   id:
     name: id
     comments:
-    - Validation is intentionally limited to NCBITaxon CURIEs for now. If GTDB, LPSN,
-      or SeqCode support is added, widen this pattern in lockstep with id_prefixes
-      and example data.
+    - Validation is intentionally limited to NCBITaxon CURIEs. If GTDB, LPSN, or SeqCode
+      support is added, widen this pattern in lockstep with id_prefixes and example
+      data.
     pattern: ^NCBITaxon:\d+$
 attributes:
   alternative_names:
@@ -675,7 +664,7 @@ attributes:
     - skos:altLabel
     rank: 1000
     alias: alternative_names
-    owner: OrganismTaxon
+    owner: NcbiTaxon
     domain_of:
     - OntologyClass
     - Study
@@ -687,7 +676,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: relations
-    owner: OrganismTaxon
+    owner: NcbiTaxon
     domain_of:
     - OntologyClass
     range: OntologyRelation
@@ -700,7 +689,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: definition
-    owner: OrganismTaxon
+    owner: NcbiTaxon
     domain_of:
     - OntologyClass
     range: string
@@ -714,7 +703,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: is_obsolete
-    owner: OrganismTaxon
+    owner: NcbiTaxon
     domain_of:
     - OntologyClass
     range: boolean
@@ -725,7 +714,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: is_root
-    owner: OrganismTaxon
+    owner: NcbiTaxon
     domain_of:
     - OntologyClass
     range: boolean
@@ -737,9 +726,9 @@ attributes:
     - The identifiers for terms from external ontologies can't have their ids constrained
       to the nmdc namespace
     comments:
-    - Validation is intentionally limited to NCBITaxon CURIEs for now. If GTDB, LPSN,
-      or SeqCode support is added, widen this pattern in lockstep with id_prefixes
-      and example data.
+    - Validation is intentionally limited to NCBITaxon CURIEs. If GTDB, LPSN, or SeqCode
+      support is added, widen this pattern in lockstep with id_prefixes and example
+      data.
     examples:
     - value: nmdc:mgmag-00-x012.1_7_c1
       description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
@@ -756,7 +745,7 @@ attributes:
     rank: 1000
     identifier: true
     alias: id
-    owner: OrganismTaxon
+    owner: NcbiTaxon
     domain_of:
     - NamedThing
     range: uriorcurie
@@ -768,7 +757,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: name
-    owner: OrganismTaxon
+    owner: NcbiTaxon
     domain_of:
     - PersonValue
     - NamedThing
@@ -781,7 +770,7 @@ attributes:
     rank: 1000
     slot_uri: dcterms:description
     alias: description
-    owner: OrganismTaxon
+    owner: NcbiTaxon
     domain_of:
     - ImageValue
     - NamedThing
@@ -793,7 +782,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: alternative_identifiers
-    owner: OrganismTaxon
+    owner: NcbiTaxon
     domain_of:
     - NamedThing
     - MetaboliteIdentification
@@ -823,7 +812,7 @@ attributes:
     slot_uri: rdf:type
     designates_type: true
     alias: type
-    owner: OrganismTaxon
+    owner: NcbiTaxon
     domain_of:
     - EukEval
     - FunctionalAnnotationAggMember
@@ -845,7 +834,7 @@ attributes:
     - MetaboliteIdentification
     range: uriorcurie
     required: true
-class_uri: nmdc:OrganismTaxon
+class_uri: nmdc:NcbiTaxon
 
 </code></pre>
 </details>

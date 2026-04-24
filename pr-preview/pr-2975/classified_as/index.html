@@ -732,8 +732,8 @@
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>On OrganismSample, this slot captures the taxonomic classification of the organism in the sample. The desired long-term pattern is to keep the global range general and narrow organism-oriented uses to OrganismTaxon via class-specific slot_usage. That follow-up is tracked in issue #3016. Until then, taxonomy-oriented uses should point to OrganismTaxon instances identified by an NCBITaxon CURIE (or another supported taxonomy prefix).</li>
-<li>This slot is intended to replace known_as on PortionOfSubstance in a future deprecation.</li>
+<li>Taxonomy-oriented uses (e.g. on OrganismSample) should point to NcbiTaxon instances. The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked in #3016.</li>
+<li>Intended to replace known_as on PortionOfSubstance in a future deprecation.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -766,13 +766,10 @@
 description: A formal classification for this entity, expressed directly as an ontology-backed
   class instance stored in ontology_class_set.
 comments:
-- 'On OrganismSample, this slot captures the taxonomic classification of the organism
-  in the sample. The desired long-term pattern is to keep the global range general
-  and narrow organism-oriented uses to OrganismTaxon via class-specific slot_usage.
-  That follow-up is tracked in issue #3016. Until then, taxonomy-oriented uses should
-  point to OrganismTaxon instances identified by an NCBITaxon CURIE (or another supported
-  taxonomy prefix).'
-- This slot is intended to replace known_as on PortionOfSubstance in a future deprecation.
+- 'Taxonomy-oriented uses (e.g. on OrganismSample) should point to NcbiTaxon instances.
+  The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked
+  in #3016.'
+- Intended to replace known_as on PortionOfSubstance in a future deprecation.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2959

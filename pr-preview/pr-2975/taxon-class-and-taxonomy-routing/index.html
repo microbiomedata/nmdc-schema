@@ -21,7 +21,7 @@
     
     
       
-        <title>OrganismTaxon Class and Taxonomy Slot Routing - NMDC Schema Documentation</title>
+        <title>NcbiTaxon Class and Taxonomy Slot Routing - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#organismtaxon-class-and-taxonomy-slot-routing" class="md-skip">
+        <a href="#ncbitaxon-class-and-taxonomy-slot-routing" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              OrganismTaxon Class and Taxonomy Slot Routing
+              NcbiTaxon Class and Taxonomy Slot Routing
             
           </span>
         </div>
@@ -677,22 +677,20 @@
   
 
 
-<h1 id="organismtaxon-class-and-taxonomy-slot-routing">OrganismTaxon Class and Taxonomy Slot Routing</h1>
+<h1 id="ncbitaxon-class-and-taxonomy-slot-routing">NcbiTaxon Class and Taxonomy Slot Routing</h1>
 <h2 id="what-this-pr-adds">What this PR adds</h2>
 <ul>
 <li>
-<p><strong><code>OrganismTaxon</code> class</strong> (<code>is_a: OntologyClass</code>) — a semantic subclass for formal taxonomy
-  terms. No new slots, no typecode, no dedicated MongoDB collection. Instances go into
-  <code>ontology_class_set</code> with external CURIEs (e.g. <code>NCBITaxon:511145</code>). Current validation
-  requires <code>OrganismTaxon.id</code> to match <code>^NCBITaxon:\d+$</code>.</p>
+<p><strong><code>NcbiTaxon</code> class</strong> (<code>is_a: OntologyClass</code>) — a concrete subclass for NCBI Taxonomy terms.
+  Instances are identified by NCBITaxon CURIEs (e.g. <code>NCBITaxon:511145</code>), stored in
+  <code>ontology_class_set</code>, and validated against <code>^NCBITaxon:\d+$</code>. No new slots, typecodes,
+  or MongoDB collections.</p>
 </li>
 <li>
-<p><strong><code>classified_as</code> slot</strong> (<code>range: OntologyClass</code>, multivalued) — a
-  general-purpose classification slot. The intended future pattern is to narrow
-  organism-oriented uses to <code>OrganismTaxon</code> via class-specific <code>slot_usage</code>
-  rather than by making the global slot range taxon-specific. That follow-up is
-  tracked in #3016. Not yet assigned to any class; OrganismSample (#2884) will
-  be the first consumer.</p>
+<p><strong><code>classified_as</code> slot</strong> (<code>range: OntologyClass</code>, multivalued) — a general-purpose
+  classification slot. Narrowing to <code>NcbiTaxon</code> on specific classes via <code>slot_usage</code> is
+  tracked in #3016. Not yet assigned to any class; OrganismSample (#2884) will be the first
+  consumer.</p>
 </li>
 </ul>
 <h2 id="what-is-not-in-this-pr-and-where-it-goes">What is NOT in this PR — and where it goes</h2>
@@ -717,13 +715,13 @@
 </tr>
 <tr>
 <td>GTDB taxonomy</td>
-<td>Same <code>OrganismTaxon</code> class, add <code>GTDB</code> to <code>id_prefixes</code>, widen <code>OrganismTaxon.id</code> pattern, load into <code>ontology_class_set</code></td>
-<td>Future — needs a GTDB-to-OntologyClass loader since GTDB ships as TSV, not OWL</td>
+<td>New class or widen <code>NcbiTaxon.id_prefixes</code>; needs a GTDB-to-OntologyClass loader (GTDB ships as TSV, not OWL)</td>
+<td>Future</td>
 </tr>
 <tr>
 <td>LPSN / SeqCode nomenclature</td>
-<td>Same pattern — CURIE-identified OrganismTaxon instances, plus widening <code>OrganismTaxon.id</code> validation</td>
-<td>Future, when needed</td>
+<td>Same pattern — CURIE-identified taxon instances</td>
+<td>Future</td>
 </tr>
 <tr>
 <td>Novel organisms with no taxon ID</td>
@@ -751,29 +749,22 @@
 <td>Future issue</td>
 </tr>
 <tr>
-<td>Direct <code>OrganismTaxon</code> example data</td>
-<td><code>OrganismTaxon-minimal.yaml</code> (valid), <code>OrganismTaxon-invalid-prefix.yaml</code> (invalid)</td>
+<td>Direct <code>NcbiTaxon</code> example data</td>
+<td><code>NcbiTaxon-minimal.yaml</code> (valid), <code>NcbiTaxon-invalid-prefix.yaml</code> (invalid)</td>
 <td>This PR</td>
 </tr>
 </tbody>
 </table>
 <h2 id="relationship-to-existing-taxonomy-slots">Relationship to existing taxonomy slots</h2>
-<p><code>samp_taxon_id</code> and <code>host_taxid</code> already use <code>ControlledIdentifiedTermValue</code> with
-<code>range: OntologyClass</code> via the <code>term</code> slot. These are MIxS-originated slots with
-MIxS-specific structured patterns. <code>classified_as</code> is an NMDC-native slot without
-MIxS constraints, intended for use on new classes like OrganismSample. The target
-design is for organism-oriented usages to be narrowed to <code>OrganismTaxon</code> through
-class-specific <code>slot_usage</code> rather than through a globally taxon-specific slot range.</p>
-<p>At present, <code>OrganismTaxon</code> validation is intentionally NCBITaxon-specific. The schema keeps
-<code>id_prefixes</code> so the intended authority list is explicit, but actual instance validation
-is enforced by a regex on <code>OrganismTaxon.id</code>. When GTDB, LPSN, or SeqCode support is added, both
-<code>id_prefixes</code> and the <code>OrganismTaxon.id</code> pattern should be updated together.</p>
-<p>The remaining modeling question is how much of this specificity should live on the
-global <code>classified_as</code> slot versus on class-local <code>slot_usage</code>. That is tracked in #3016.</p>
+<p><code>samp_taxon_id</code> and <code>host_taxid</code> use <code>ControlledIdentifiedTermValue</code> with <code>term</code> having
+<code>range: OntologyClass</code>. These are MIxS-originated slots; <code>classified_as</code> is an NMDC-native
+slot intended for new classes like OrganismSample. The target design narrows
+organism-oriented uses to <code>NcbiTaxon</code> via class-specific <code>slot_usage</code> (#3016) rather than
+making the global slot range taxon-specific.</p>
 <h2 id="loading-taxonomy-data-into-ontology_class_set">Loading taxonomy data into ontology_class_set</h2>
 <p><code>ontology_class_set</code> currently contains ENVO (4,366), UBERON (16,061), and PO (1,998)
-terms. NCBITaxon (~2.5M terms) can be loaded using the same pipeline. GTDB (~131K
-species clusters) would need a custom loader since it ships as TSV rather than OWL.</p>
+terms. NCBITaxon (~2.5M terms) can be loaded using the same pipeline. GTDB (~143K
+species clusters as of R226) would need a custom loader since it ships as TSV rather than OWL.</p>
 
 
 
