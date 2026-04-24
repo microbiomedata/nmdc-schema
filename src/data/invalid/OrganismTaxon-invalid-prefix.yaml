@@ -1,4 +1,0 @@
-# invalid because OrganismTaxon.id currently only permits NCBITaxon CURIEs
-id: GTDB:GCF_000005845.2
-name: Escherichia coli str. K-12 substr. MG1655
-type: nmdc:OrganismTaxon
