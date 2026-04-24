@@ -7,6 +7,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
   BFO: "http://purl.obolibrary.org/obo/BFO_"
+  COB: "http://purl.obolibrary.org/obo/COB_"
   EFO: "http://www.ebi.ac.uk/efo/"
   ISA: "http://example.org/isa/"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
@@ -88,9 +89,8 @@ classes:
         Instances go into ontology_class_set and are referenced from sample slots such as classified_as.
       - >-
         Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution
-        of NCBI Taxonomy. Strain identity should be captured via dedicated text slots on
-        OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or a future Strain
-        class — not by minting NcbiTaxon instances for strains.
+        of NCBI Taxonomy. Strain identity is captured via dedicated slots on Organism
+        (e.g. strain_name, isolate_name, source_mat_id) — not by minting NcbiTaxon instances.
       - >-
         Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
         with range OntologyClass. The intent is that these slots point to NcbiTaxon instances specifically,
@@ -186,46 +186,27 @@ classes:
     description: >-
       A material entity that is a living or once-living individual. Organism instances
       represent the biological identity of what is in a sample, not the sample itself.
+      Sub-species identity (strain, cultivar, lab isolate) is captured by slots on this
+      class rather than via a separate Strain subclass.
     slots:
+      ## classification + identity
       - classified_as
       - biosafety_material_category
       - gold_organism_identifiers
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
-          interpolated: true
-    comments:
-      - >-
-        Organism instances are stored in organism_set, which is polymorphic and also holds
-        Strain instances. An Organism is not a sample — it is the biological entity that an
-        OrganismSample is expected to contain, linked via expected_organism.
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/2959
-      - https://github.com/microbiomedata/nmdc-schema/issues/2803
-
-  Strain:
-    class_uri: nmdc:Strain
-    is_a: Organism
-    description: >-
-      A sub-species lineage of an organism, identified by a culture collection reference,
-      strain designator, or lab-internal name. Strains carry detail below the resolution of
-      formal taxonomies.
-    slots:
-      ## strain identity (new, JGI Isolate form)
+      ## sub-species identity (JGI Isolate form)
       - organism_genus
       - organism_species
       - strain_name
       - isolate_name
-      ## reused MIxS slots
-      - source_mat_id
-      - host_taxid
+      ## genome properties (JGI Isolate form; MIxS where noted)
       - estimated_size
       - ploidy
-      - ref_biomaterial
-      ## new slots
       - gc_content
+      ## provenance / reference
+      - source_mat_id
+      - ref_biomaterial
+      ## viral host (for viral isolates only)
+      - host_taxid
       - viral_host_genus
       - viral_host_species
       - viral_host_strain
@@ -233,11 +214,11 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:strn-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
           interpolated: true
       source_mat_id:
         description: >-
-          Culture collection name and identifier for this strain. Reuses MIxS source_mat_id
+          Culture collection name and identifier for this organism. Reuses MIxS source_mat_id
           (MIXS:0000026).
         structured_aliases:
           - literal_form: Culture Collection and ID
@@ -246,7 +227,8 @@ classes:
             predicate: EXACT_SYNONYM
       host_taxid:
         description: >-
-          NCBI taxon ID of the host organism. Reuses MIxS host_taxid (MIXS:0000250).
+          NCBI taxon ID of the host organism (for viral isolates). Reuses MIxS host_taxid
+          (MIXS:0000250).
         structured_aliases:
           - literal_form: Host NCBI Taxonomy ID
             contexts:
@@ -280,7 +262,7 @@ classes:
             predicate: EXACT_SYNONYM
       ref_biomaterial:
         description: >-
-          Reference for the strain, preferentially a DOI when a primary
+          Reference for the organism, preferentially a DOI when a primary
           publication or genome report exists; PMID and URL are also accepted
           per the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses
           MIxS ref_biomaterial (MIXS:0000025).
@@ -306,11 +288,15 @@ classes:
             release. See ongoing MIxS renaming work.
     comments:
       - >-
-        Strain instances are stored in organism_set alongside Organism instances (polymorphic
-        collection). Strain inherits classified_as from Organism for taxonomic classification
-        via CURIE (e.g. NCBITaxon:511145). Strain-level identity (strain_name,
-        source_mat_id) captures detail that no formal taxonomy covers.
+        Organism instances are stored in organism_set. An Organism is not a sample — it is
+        the biological entity that an OrganismSample is expected to contain, linked via
+        expected_organism. Sub-species identity (strain_name, isolate_name, source_mat_id)
+        is captured directly on Organism.
+    exact_mappings:
+      - COB:0000022
     see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2959
+      - https://github.com/microbiomedata/nmdc-schema/issues/2803
       - https://github.com/microbiomedata/nmdc-schema/issues/2971
 
   PlannedProcess:

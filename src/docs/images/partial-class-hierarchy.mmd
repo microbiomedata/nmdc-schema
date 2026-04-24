@@ -1,8 +1,8 @@
 %% Class hierarchy for the isolate-modeling PR (#2977 / #2803).
 %% Classes shown are (a) instantiated in src/data/valid/Database-*.yaml
 %% examples for this PR, (b) their parents, and (c) a small set of sibling
-%% classes whose presence explains modeling decisions (e.g. Taxon follows the
-%% FunctionalAnnotationTerm pattern).
+%% classes whose presence explains modeling decisions (e.g. NcbiTaxon follows
+%% the OrthologyGroup pattern).
 graph BT
     classDef abstract stroke-dasharray:5 5,fill:#fafafa,stroke:#9e9e9e
     classDef concrete fill:#fafafa,stroke:#9e9e9e
@@ -22,7 +22,6 @@ graph BT
     Site[Site]:::abstract -->|is_a| ME
     S[Sample]:::abstract -->|is_a| ME
 
-    Strain:::newPR -->|is_a| Organism
     FRS[FieldResearchSite]:::concrete -->|is_a| Site
 
     Biosample:::concrete -->|is_a| S
@@ -43,8 +42,8 @@ graph BT
     WorkflowExecution:::concrete -->|is_a| DEP
 
     %% --- OntologyClass branch ---
-    Taxon:::newPR -->|is_a| OC
-    FAT[FunctionalAnnotationTerm]:::concrete -->|is_a| OC
+    NcbiTaxon:::newPR -->|is_a| OC
+    OrthologyGroup[OrthologyGroup]:::concrete -->|is_a| OC
 
     %% --- InformationObject branch ---
     DataObject:::concrete -->|is_a| IO
