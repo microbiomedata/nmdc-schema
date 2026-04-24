@@ -16,12 +16,12 @@
 
 | Information | Destination | Tracking |
 |---|---|---|
-| Strain identity (culture collection ID, strain designator, lab name) | Text slots on OrganismSample or a future Strain class | #2971 |
+| Strain identity (culture collection ID, strain designator, lab name) | Slots on Organism (`strain_name`, `isolate_name`, `source_mat_id`) | #2977 |
 | Sub-species lineage strings | `subspecf_gen_lin` (existing MIxS slot), assigned to OrganismSample | #2884 |
 | GTDB taxonomy | New class or widen `NcbiTaxon.id_prefixes`; needs a GTDB-to-OntologyClass loader (GTDB ships as TSV, not OWL) | Future |
 | LPSN / SeqCode nomenclature | Same pattern — CURIE-identified taxon instances | Future |
-| Novel organisms with no taxon ID | Strain-level text slots; `classified_as` left empty or pointed at nearest ancestor | Strain class PR |
-| Organism genus/species as separate text fields (JGI requirement) | Slots on Strain (`organism_genus`, `organism_species`) | #2977 |
+| Novel organisms with no taxon ID | Organism-level text slots; `classified_as` left empty or pointed at nearest ancestor | #2977 |
+| Organism genus/species as separate text fields (JGI requirement) | Slots on Organism (`organism_genus`, `organism_species`) | #2977 |
 | GOLD organism identifiers (`Go*`) | `gold_organism_identifiers` slot | #2973 |
 | Genbank 16S / INSDC accessions | String or external identifier slots | #2960 |
 | Deprecation of `known_as` on PortionOfSubstance | Replace with `classified_as` | #2976 |

@@ -1,8 +1,8 @@
 id: https://w3id.org/nmdc/organism_slots
 name: organism-slots
-title: Organism and Strain Slots
+title: Organism and OrganismSample Slots
 description: >-
-  Slots and enums specific to Organism, Strain, and OrganismSample classes.
+  Slots and enums specific to Organism and OrganismSample classes.
   Many originate from the JGI Isolate (NA) v19 submission form. Provenance
   is tracked via in_subset (jgi_isolate) and structured_aliases with context
   https://jgi.doe.gov/isolate-submission-form/v19.
@@ -66,7 +66,7 @@ enums:
       Synthetic Construct: {}
 
 slots:
-  # --- Strain slots (from JGI Isolate form) ---
+  # --- Organism sub-species identity slots (from JGI Isolate form) ---
   organism_genus:
     description: Genus of the organism.
     in_subset:
@@ -86,7 +86,7 @@ slots:
     comments:
       - >-
         Free-text submitter-provided genus name. For formal taxonomic classification,
-        use classified_as with a Taxon CURIE on the parent Organism class.
+        use classified_as with a NcbiTaxon instance on the parent Organism class.
 
   organism_species:
     description: Species of the organism.
@@ -107,7 +107,7 @@ slots:
     comments:
       - >-
         Free-text submitter-provided species name. For formal taxonomic classification,
-        use classified_as with a Taxon CURIE on the parent Organism class.
+        use classified_as with a NcbiTaxon instance on the parent Organism class.
 
   strain_name:
     description: Strain or cultivar name of the organism.
@@ -219,15 +219,11 @@ slots:
   expected_organism:
     range: Organism
     description: >-
-      The organism or strain that the submitter expects to be present in this
-      sample. May be contradicted by sequencing results.
+      The organism that the submitter expects to be present in this sample. May be
+      contradicted by sequencing results.
     examples:
-      - value: nmdc:strn-99-abc123
-        description: Reference to a Strain instance in organism_set
-    comments:
-      - >-
-        Range is Organism, which includes Strain as a subclass. The organism_set
-        collection is polymorphic.
+      - value: nmdc:orgn-99-abc123
+        description: Reference to an Organism instance in organism_set
 
   single_colony_isolation:
     range: YesNoEnum

@@ -28,17 +28,12 @@ to nmdc-schema classes, submission-schema, or deferred.
 | 52 | Country* | `geo_loc_name` | MIxS (existing) |
 | — | Expected organism | `expected_organism` | NMDC-native (new) |
 
-## Organism (orgn) — inherited by Strain
+## Organism (orgn)
 
 | # | JGI Field | nmdc-schema slot | Provenance |
 |---|---|---|---|
-| 39 | Biosafety Material Category* | `biosafety_material_category` | JGI-native (new) |
 | 11 | NCBI Tax ID* | `classified_as` | NMDC-native (#2975) |
-
-## Strain (strn, is_a Organism)
-
-| # | JGI Field | nmdc-schema slot | Provenance |
-|---|---|---|---|
+| 39 | Biosafety Material Category* | `biosafety_material_category` | JGI-native (new) |
 | 6 | Genus* | `organism_genus` | JGI-native (new) |
 | 7 | Species* | `organism_species` | JGI-native (new) |
 | 8 | Strain or cultivar* | `strain_name` | JGI-native (new) |
@@ -78,9 +73,9 @@ to nmdc-schema classes, submission-schema, or deferred.
 
 | Slot | MIXS ID | Used on | JGI Field |
 |---|---|---|---|
-| `estimated_size` | MIXS:0000024 | Strain | Estimated Genome Size |
-| `ploidy` | MIXS:0000021 | Strain | Ploidy Comments |
-| `ref_biomaterial` | MIXS:0000025 | Strain | Reference Genome |
+| `estimated_size` | MIXS:0000024 | Organism | Estimated Genome Size |
+| `ploidy` | MIXS:0000021 | Organism | Ploidy Comments |
+| `ref_biomaterial` | MIXS:0000025 | Organism | Reference Genome |
 
 `isol_growth_condt` (MIXS:0000003) was imported but not assigned. Its MIxS semantics are
 "publication reference for isolation/growth conditions" (DOI/PMID/URL pattern), which does

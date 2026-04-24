@@ -512,6 +512,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$"
           interpolated: true
+    close_mappings:
+      - OBI:0000512
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/2978
 
@@ -540,6 +542,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(osm)-{id_shoulder}-{id_blade}$"
           interpolated: true
+    close_mappings:
+      - OBI:0001147
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/2978
 
@@ -1511,7 +1515,6 @@ slots:
     range: Organism
     description: >-
       This property links a database object to the set of organisms within it.
-      This collection is polymorphic and holds both Organism and Strain instances.
 
   sample_collection_day:
     range: integer

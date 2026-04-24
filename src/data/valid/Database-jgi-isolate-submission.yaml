@@ -7,16 +7,16 @@
 # (queried 2026-04-21) and partial 16S from GenBank DQ286387.2.
 #
 # This example demonstrates:
-# - Strain in organism_set with classified_as → Taxon
-# - OrganismSample in organism_sample_set with expected_organism → Strain
+# - Organism in organism_set with classified_as → NcbiTaxon
+# - OrganismSample in organism_sample_set with expected_organism → Organism
 # - Every supported JGI field populated from real public reference data
 # - Fields routed to submission-schema are NOT shown (concentration, volume,
 #   absorbance, tube/plate label, container, plate location, sample format,
 #   DNAse treatment, JGI project IDs, PI/contact names)
 
 organism_set:
-  - id: nmdc:strn-99-shewa189
-    type: nmdc:Strain
+  - id: nmdc:orgn-99-shewa189
+    type: nmdc:Organism
     name: Shewanella loihica PV-4
     classified_as:
       - id: NCBITaxon:22
@@ -38,7 +38,7 @@ organism_sample_set:
     name: Shewanella loihica PV-4 isolate submission
     associated_studies:
       - nmdc:sty-99-isolatedemo
-    expected_organism: nmdc:strn-99-shewa189
+    expected_organism: nmdc:orgn-99-shewa189
     samp_name: Shewanella_loihica_PV-4
     single_colony_isolation: "yes"
     ribosomal_sequence: AGAGTTTGATCATGGCTCAGATTGAACGCTGGCGGCAGGCCTAACACATGCAAGTCGAGCGGTAACATTT

@@ -1323,15 +1323,17 @@ classes:
           interpolated: true
       expected_organism:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(orgn|strn)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
           interpolated: true
+    close_mappings:
+      - OBI:0100051
     comments:
       - >-
         An OrganismSample is not necessarily pure. The submitter expects it to contain a single
         organism, but sequencing may reveal contamination. Purity status is captured by
         single_colony_isolation and known_suspected_organisms, not by the class itself.
       - >-
-        The expected_organism slot links to an Organism or Strain instance representing what the
+        The expected_organism slot links to an Organism instance representing what the
         submitter believes is in the sample.
       - >-
         The defining criterion is genomic homogeneity of intent, not material type. A bacterial
