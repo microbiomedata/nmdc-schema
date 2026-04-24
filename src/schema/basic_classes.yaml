@@ -607,8 +607,6 @@ slots:
         Taxonomy-oriented uses (e.g. on OrganismSample) should point to NcbiTaxon instances.
         The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked
         in #3016.
-      - >-
-        Intended to replace known_as on PortionOfSubstance in a future deprecation.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/2959
     narrow_mappings:
