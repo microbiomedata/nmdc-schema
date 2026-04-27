@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.1.post67.dev0+177f4386f
+version: 11.17.1.post68.dev0+b4b8335d5
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7703,6 +7703,7 @@ slots:
     name: sequence_identifiers
     description: Slot which contains information on nucleotide or protein sequences.
     from_schema: https://w3id.org/nmdc/nmdc
+    is_a: external_database_identifiers
     abstract: true
   insdc_sequence_identifiers:
     name: insdc_sequence_identifiers
@@ -7715,7 +7716,6 @@ slots:
     is_a: sequence_identifiers
     mixins:
     - insdc_identifiers
-    multivalued: true
     pattern: ^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$|^ena.embl:[A-Z]+[0-9]+$
   source_system_of_record:
     name: source_system_of_record
