@@ -377,13 +377,13 @@ slots:
   sequence_identifiers:
     abstract: true
     description: Slot which contains information on nucleotide or protein sequences. 
+    is_a: external_database_identifiers
     
 
   insdc_sequence_identifiers:
     description: An identifier for nucleotide or protein sequences from an INSDC institution.
     is_a: sequence_identifiers
     pattern: "^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$|^ena.embl:[A-Z]+[0-9]+$"
-    multivalued: true
     mixins:
       - insdc_identifiers
     examples:
