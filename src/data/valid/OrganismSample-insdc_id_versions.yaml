@@ -1,0 +1,81 @@
+# uses insdc version suffixes 
+id: nmdc:orgsm-99-goldorg
+type: nmdc:OrganismSample
+name: Desulfofaba fastidiosa DSM 15249
+description: >-
+  Gram-negative, anaerobic, sulfate-reducing bacterium isolated from marine
+  sediment in Aarhus Bay. Type strain. GOLD Go0013823, NCBI taxon 247157.
+associated_studies:
+  - nmdc:sty-99-abc123
+
+# Taxonomy and organism identity
+samp_taxon_id:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: NCBITaxon:247157
+  term:
+    id: NCBITaxon:247157
+    type: nmdc:OntologyClass
+samp_name: Desulfofaba fastidiosa DSM 15249
+ncbi_taxonomy_name: Desulfofaba fastidiosa
+source_mat_id:
+  type: nmdc:TextValue
+  has_raw_value: "DSM 15249"
+
+# GOLD organism differentia
+gold_organism_type: Natural
+cultured: "yes"
+culture_type: isolate
+type_strain: "yes"
+organism_domain: Bacteria
+
+# GOLD taxonomy extras
+gold_phylogeny: THERMODESULFOBACTERIOTA
+insdc_sequence_identifiers:
+  - genbank:AY268891.2
+  - ena.embl:BN000065.1
+
+# Collection and provenance
+geo_loc_name:
+  type: nmdc:TextValue
+  has_raw_value: "Aarhus Bay"
+sample_collection_site: Marine sediment
+
+# GOLD ecosystem hierarchy
+ecosystem: Environmental
+ecosystem_category: Aquatic
+ecosystem_type: Marine
+ecosystem_subtype: Oceanic
+specific_ecosystem: Sediment
+
+# Organism phenotype and morphology (from GOLD)
+gram_stain: Gram-
+cell_shape: Bean-shaped
+cell_length:
+  has_raw_value: "3.0-3.8 um"
+  has_unit: um
+  type: nmdc:QuantityValue
+cell_diameter:
+  has_raw_value: "0.8-1.0 um"
+  has_unit: um
+  type: nmdc:QuantityValue
+motility: Motile
+sporulation: Nonsporulating
+temperature_range: Mesophilic
+
+# Organism biology
+biotic_relationship: free living
+rel_to_oxygen: anaerobe
+oxy_stat_samp: anaerobic
+
+# Environmental chemistry (from GOLD isolation site)
+temp:
+  has_numeric_value: 30.0
+  has_raw_value: "30 Cel"
+  has_unit: Cel
+  type: nmdc:QuantityValue
+isolation_site_ph:
+  has_numeric_value: 6.0
+  has_maximum_numeric_value: 7.75
+  has_raw_value: "6.0-7.75"
+  has_unit: "[pH]"
+  type: nmdc:QuantityValue
