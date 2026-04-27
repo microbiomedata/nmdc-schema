@@ -372,7 +372,7 @@ slots:
       - value: mgnify.analysis:MGYA00002270
         description: combined analyses (taxonomic, functional) of sample ERS438107
 
-  ## nucelotide and protein sequences
+  ## nucleotide and protein sequences
   
   sequence_identifiers:
     abstract: true
