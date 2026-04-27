@@ -500,17 +500,6 @@ slots:
     exact_mappings:
       - gold:gold_phylogeny
 
-  ## GOLD taxonomy extras
-  genbank_16s_id:
-    description: >-
-      GenBank accession for the 16S rRNA gene sequence.
-    title: GenBank 16S ID
-    range: string
-    in_subset:
-      - gold_organism
-    exact_mappings:
-      - gold:genbank_16s_id
-
   clade:
     description: >-
       Clade assignment for the organism.

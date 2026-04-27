@@ -23,6 +23,8 @@ prefixes:
   mgnify.proj: 'https://bioregistry.io/mgnify.proj:'
   nmdc: "https://w3id.org/nmdc/"
   skos: "http://www.w3.org/2004/02/skos/core#"
+  genbank: "https://bioregistry.io/genbank:"
+  ena.embl: "https://bioregistry.io/ena.embl:"
 
 default_prefix: nmdc
 default_range: string
@@ -370,15 +372,20 @@ slots:
       - value: mgnify.analysis:MGYA00002270
         description: combined analyses (taxonomic, functional) of sample ERS438107
 
-  ## assemblies
+  ## nucleotide and protein sequences
 
-  assembly_identifiers:
+  sequence_identifiers:
     abstract: true
+    description: Slot which contains information on nucleotide or protein sequences.
+    is_a: external_database_identifiers
 
-  insdc_assembly_identifiers:
-    is_a: assembly_identifiers
-    pattern: "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$"
+  insdc_sequence_identifiers:
+    description: An identifier for nucleotide or protein sequences from an INSDC institution.
+    is_a: sequence_identifiers
+    pattern: '^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})(?:\.[0-9]+)?$|^ena\.embl:[A-Z]+[0-9]+(?:\.[0-9]+)?$'
     mixins:
       - insdc_identifiers
-
-
+    examples:
+      - value: genbank:AY268891
+    narrow_mappings:
+      - gold:genbank_16s_id

@@ -1,7 +1,4 @@
-# GOLD organism authority example: Desulfofaba fastidiosa DSM 15249
-# Based on real GOLD organism_v2 record Go0013823 (organism_id: 13823)
-# queried from JGI Dremio lakehouse (lakehouse.jgi.lbl.gov) on 2026-03-18
-# Demonstrates gold_organism subset slots on OrganismSample
+# uses insdc version suffixes 
 id: nmdc:orgsm-99-goldorg
 type: nmdc:OrganismSample
 name: Desulfofaba fastidiosa DSM 15249
@@ -34,8 +31,8 @@ organism_domain: Bacteria
 # GOLD taxonomy extras
 gold_phylogeny: THERMODESULFOBACTERIOTA
 insdc_sequence_identifiers:
-  - genbank:AY268891
-  - ena.embl:BN000065
+  - genbank:AY268891.2
+  - ena.embl:BN000065.1
 
 # Collection and provenance
 geo_loc_name:
