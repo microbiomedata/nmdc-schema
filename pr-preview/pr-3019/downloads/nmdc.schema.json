@@ -5447,6 +5447,7 @@
             "enum": [
                 "acetonitrile",
                 "acetic_acid",
+                "acetone",
                 "alphaLP",
                 "ammonium_acetate",
                 "ammonium_bicarbonate",
@@ -15361,5 +15362,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post61.dev0+2d2eb0713"
+    "version": "11.18.0.post62.dev0+4236baab6"
 }
