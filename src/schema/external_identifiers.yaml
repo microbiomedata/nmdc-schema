@@ -382,7 +382,7 @@ slots:
   insdc_sequence_identifiers:
     description: An identifier for nucleotide or protein sequences from an INSDC institution.
     is_a: sequence_identifiers
-    pattern: "^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$|^ena.embl:[A-Z]+[0-9]+$"
+    pattern: '^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})(?:\.[0-9]+)?$|^ena\.embl:[A-Z]+[0-9]+(?:\.[0-9]+)?$'
     mixins:
       - insdc_identifiers
     examples:
