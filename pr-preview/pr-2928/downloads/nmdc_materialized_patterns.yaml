@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.17.1.post73.dev0+146ed8dea
+version: 11.17.1.post74.dev0+1ea6c82e8
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7716,7 +7716,7 @@ slots:
     is_a: sequence_identifiers
     mixins:
     - insdc_identifiers
-    pattern: ^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$|^ena.embl:[A-Z]+[0-9]+$
+    pattern: ^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})(?:\.[0-9]+)?$|^ena\.embl:[A-Z]+[0-9]+(?:\.[0-9]+)?$
   source_system_of_record:
     name: source_system_of_record
     description: Identifies the system of origin for a record

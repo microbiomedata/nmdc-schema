@@ -755,6 +755,11 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
 <td>A workflow execution activity that converts sequencing reads into an assemble...</td>
 <td>yes</td>
@@ -763,11 +768,6 @@
 <td><a href="../OrganismSample/">OrganismSample</a></td>
 <td>A material sample in which all cells are expected to share the same genome</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td></td>
-<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -780,7 +780,7 @@
 <p>Multivalued: True</p>
 </li>
 <li>
-<p>Regex pattern: <code>^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$|^ena.embl:[A-Z]+[0-9]+$</code></p>
+<p>Regex pattern: <code>^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})(?:\.[0-9]+)?$|^ena\.embl:[A-Z]+[0-9]+(?:\.[0-9]+)?$</code></p>
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
@@ -837,7 +837,7 @@ domain_of:
 - MetatranscriptomeAssembly
 range: external_identifier
 multivalued: true
-pattern: ^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})$|^ena.embl:[A-Z]+[0-9]+$
+pattern: ^genbank:(?:[A-Z]{1}[0-9]{5}|[A-Z]{2}[0-9]{6}|[A-Z]{2}[0-9]{8}|[A-Z]{4}[0-9]{8,}|[A-Z]{6}[0-9]{9,})(?:\.[0-9]+)?$|^ena\.embl:[A-Z]+[0-9]+(?:\.[0-9]+)?$
 
 </code></pre>
 
