@@ -56,7 +56,6 @@ organism_sample_set:
     associated_studies:
       - nmdc:sty-99-soildemo
     expected_organism: nmdc:orgn-99-bsub168
-    single_colony_isolation: "yes"
     sample_isolated_from: Example soil isolation
   # Expanded culture after culturing
   - id: nmdc:osm-99-culture01
@@ -65,7 +64,6 @@ organism_sample_set:
     associated_studies:
       - nmdc:sty-99-soildemo
     expected_organism: nmdc:orgn-99-bsub168
-    single_colony_isolation: "yes"
 
 material_processing_set:
   # Step 1: Isolate from soil
