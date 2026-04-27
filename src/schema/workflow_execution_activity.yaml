@@ -70,9 +70,9 @@ classes:
         structured_pattern:
           syntax: "^genbank:(GCF|GCA)_\\d{9}\\.\\d+$|^ena.embl:(GCF|GCA)_\\d{9}\\.\\d+$"
           interpolated: true
-        see_also: 
+        see_also:
           - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-status/
-         
+
   MetatranscriptomeAssembly:
     class_uri: nmdc:MetatranscriptomeAssembly
     is_a: WorkflowExecution
@@ -125,7 +125,7 @@ classes:
         structured_pattern:
           syntax: "^genbank:(GCF|GCA)_\\d{9}\\.\\d+$|^ena.embl:(GCF|GCA)_\\d{9}\\.\\d+$"
           interpolated: true
-        see_also: 
+        see_also:
           - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-stat
 
   MetatranscriptomeAnnotation:

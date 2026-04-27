@@ -376,7 +376,7 @@ slots:
 
   sequence_identifiers:
     abstract: true
-    description: Slot which contains information on nucleotide or protein sequences. 
+    description: Slot which contains information on nucleotide or protein sequences.
     is_a: external_database_identifiers
 
   insdc_sequence_identifiers:
@@ -388,4 +388,4 @@ slots:
     examples:
       - value: genbank:AY268891
     narrow_mappings:
-     - gold:genbank_16s_id
+      - gold:genbank_16s_id
