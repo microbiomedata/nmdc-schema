@@ -136,11 +136,9 @@ slots:
 
   gc_content:
     range: float
-    description: Estimated GC content as a percentage.
+    description: Estimated GC content as a percentage (0–100).
     in_subset:
       - jgi_isolate
-    annotations:
-      storage_units: "%"
     structured_aliases:
       - literal_form: GC Content %
         contexts:
