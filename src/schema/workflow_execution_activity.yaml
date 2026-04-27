@@ -67,11 +67,11 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
       insdc_sequence_identifiers:
-         structured_pattern:
-           syntax: "^genbank:(GCF|GCA)_\\d{9}\\.\\d+$|^ena.embl:(GCF|GCA)_\\d{9}\\.\\d+$"
-           interpolated: true
-         see_also: 
-           - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-status/
+        structured_pattern:
+          syntax: "^genbank:(GCF|GCA)_\\d{9}\\.\\d+$|^ena.embl:(GCF|GCA)_\\d{9}\\.\\d+$"
+          interpolated: true
+        see_also: 
+          - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-status/
          
   MetatranscriptomeAssembly:
     class_uri: nmdc:MetatranscriptomeAssembly
@@ -122,11 +122,11 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
       insdc_sequence_identifiers:
-         structured_pattern:
-           syntax: "^genbank:(GCF|GCA)_\\d{9}\\.\\d+$|^ena.embl:(GCF|GCA)_\\d{9}\\.\\d+$"
-           interpolated: true
-         see_also: 
-           - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-stat
+        structured_pattern:
+          syntax: "^genbank:(GCF|GCA)_\\d{9}\\.\\d+$|^ena.embl:(GCF|GCA)_\\d{9}\\.\\d+$"
+          interpolated: true
+        see_also: 
+          - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-stat
 
   MetatranscriptomeAnnotation:
     class_uri: nmdc:MetatranscriptomeAnnotation
