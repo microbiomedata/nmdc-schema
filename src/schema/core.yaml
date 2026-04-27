@@ -147,6 +147,8 @@ enums:
         meaning: CHEBI:38472
       acetic_acid:
         meaning: CHEBI:15366
+      acetone:
+        meaning: CHEBI:15347
       alphaLP:
         meaning: EC:3.4.21.12
         see_also:
