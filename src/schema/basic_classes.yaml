@@ -63,6 +63,45 @@ classes:
       - owl:Class
       - schema:Class
 
+  NcbiTaxon:
+    class_uri: nmdc:NcbiTaxon
+    is_a: OntologyClass
+    description: >-
+      A taxonomy term from NCBI Taxonomy. NcbiTaxon instances are identified by NCBITaxon CURIEs
+      (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass
+      instances. No NMDC-minted identifiers are assigned. Support for additional taxonomic
+      authorities (GTDB, LPSN, SeqCode) would be represented by separate classes or by
+      widening this class's id_prefixes in a follow-on PR.
+    id_prefixes:
+      - NCBITaxon
+    slot_usage:
+      id:
+        pattern: '^NCBITaxon:\d+$'
+        comments:
+          - >-
+            Validation is intentionally limited to NCBITaxon CURIEs. If GTDB, LPSN, or SeqCode
+            support is added, widen this pattern in lockstep with id_prefixes and example data.
+    comments:
+      - >-
+        Follows the OrthologyGroup pattern: a concrete, directly-instantiated semantic subclass of
+        OntologyClass with no additional slots, no typecode, and no dedicated Database collection.
+        Instances go into ontology_class_set and are referenced from sample slots such as classified_as.
+      - >-
+        Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution
+        of NCBI Taxonomy. Strain identity should be captured via dedicated text slots on
+        OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or a future Strain
+        class — not by minting NcbiTaxon instances for strains.
+      - >-
+        Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
+        with range OntologyClass. The intent is that these slots point to NcbiTaxon instances specifically,
+        but LinkML does not currently support constraining the term slot of a ControlledIdentifiedTermValue
+        to a particular OntologyClass subclass.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2959
+      - https://github.com/microbiomedata/nmdc-schema/issues/2971
+    close_mappings:
+      - biolink:OrganismTaxon
+
   OntologyRelation:
     aliases: ["OntologyAssociation"]
     description: >-
@@ -557,6 +596,22 @@ classes:
       git_url:
         description: The url of the software repository used to generate the NMDC metadata record
 slots:
+  classified_as:
+    range: OntologyClass
+    multivalued: true
+    description: >-
+      A formal classification for this entity, expressed directly as an ontology-backed class
+      instance stored in ontology_class_set.
+    comments:
+      - >-
+        Taxonomy-oriented uses (e.g. on OrganismSample) should point to NcbiTaxon instances.
+        The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked
+        in #3016.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2959
+    narrow_mappings:
+      - biolink:in_taxon
+
   source_system_of_record:
     description: Identifies the system of origin for a record
     range: SourceSystemEnum
