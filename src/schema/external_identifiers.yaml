@@ -378,7 +378,6 @@ slots:
     abstract: true
     description: Slot which contains information on nucleotide or protein sequences. 
     is_a: external_database_identifiers
-    
 
   insdc_sequence_identifiers:
     description: An identifier for nucleotide or protein sequences from an INSDC institution.
