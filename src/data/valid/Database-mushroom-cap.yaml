@@ -26,7 +26,6 @@ organism_sample_set:
     name: Lentinula edodes NBRC 111202 fruiting body cap
     samp_name: Ledodes_NBRC111202_cap_01
     expected_organism: nmdc:orgn-99-ledodes001
-    single_colony_isolation: "no"
     sample_isolated_from: Fruiting body cap of cultivated Lentinula edodes (shiitake)
     collection_date:
       type: nmdc:TimestampValue

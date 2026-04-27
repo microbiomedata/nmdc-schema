@@ -8,16 +8,16 @@ to nmdc-schema classes, submission-schema, or deferred.
 | # | JGI Field | nmdc-schema slot | Provenance |
 |---|---|---|---|
 | 4 | Sample Name* | `samp_name` | MIxS (existing) |
-| 31 | Single colony isolation?* | `single_colony_isolation` | JGI-native (new) |
-| 32 | Known / Suspected Organisms | `known_suspected_organisms` | JGI-native (new) |
-| 33 | First ribosomal sequence* | `ribosomal_sequence` | JGI-native (new) |
-| 34 | First ribosomal sequence type* | `ribosomal_sequence_type` | JGI-native (new) |
-| 35 | First ribosomal sequence comments | `ribosomal_sequence_comments` | JGI-native (new) |
-| 36 | Second ribosomal sequence | `second_ribosomal_sequence` | JGI-native (new) |
-| 37 | Second ribosomal sequence type | `second_ribosomal_sequence_type` | JGI-native (new) |
-| 38 | Second ribosomal sequence comments | `second_ribosomal_sequence_comments` | JGI-native (new) |
-| 29 | Fungal 16S screening?* | `fungal_16s_screening` | JGI-native (new) |
-| 30 | ITS match UNITE?* | `its_match_unite` | JGI-native (new) |
+| 31 | Single colony isolation?* | ~~`single_colony_isolation`~~ → submission-schema `JgiIsolateInterface.isolate_single_colony` | Moved: JGI submission logistics, not an NMDC data-model field. See submission-schema#418. |
+| 32 | Known / Suspected Organisms | ~~`known_suspected_organisms`~~ → submission-schema `JgiIsolateInterface.isolate_known_contaminants` | Moved: same reason. |
+| 33 | First ribosomal sequence* | ~~`ribosomal_sequence`~~ → submission-schema `JgiIsolateInterface.isolate_ribosomal_seq` | Moved: same reason. |
+| 34 | First ribosomal sequence type* | ~~`ribosomal_sequence_type`~~ → submission-schema `JgiIsolateInterface.isolate_ribosomal_seq_type` | Moved: same reason. |
+| 35 | First ribosomal sequence comments | ~~`ribosomal_sequence_comments`~~ → submission-schema `JgiIsolateInterface.isolate_ribosomal_seq_comments` | Moved: same reason. |
+| 36 | Second ribosomal sequence | ~~`second_ribosomal_sequence`~~ → submission-schema `JgiIsolateInterface.isolate_second_ribosomal_seq` | Moved: same reason. |
+| 37 | Second ribosomal sequence type | ~~`second_ribosomal_sequence_type`~~ → submission-schema `JgiIsolateInterface.isolate_second_ribosomal_seq_type` | Moved: same reason. |
+| 38 | Second ribosomal sequence comments | ~~`second_ribosomal_sequence_comments`~~ → submission-schema `JgiIsolateInterface.isolate_second_ribosomal_seq_comments` | Moved: same reason. |
+| 29 | Fungal 16S screening?* | ~~`fungal_16s_screening`~~ → submission-schema `JgiIsolateInterface.isolate_fungal_16s_screening` | Moved: same reason. |
+| 30 | ITS match UNITE?* | ~~`its_match_unite`~~ → submission-schema `JgiIsolateInterface.isolate_its_match_unite` | Moved: same reason. |
 | 40 | Sample Isolation Method* | `sample_isolation_method` | JGI-native (new) |
 | 44 | Sample Isolated From* | `sample_isolated_from` | JGI-native (new) |
 | 45 | Collection Site or Growth Conditions* | `sample_isolated_from` | JGI-native (new) — combined with field 44. MIxS isol_growth_condt (MIXS:0000003) was considered but its semantics are "publication reference for growth conditions," not free text |

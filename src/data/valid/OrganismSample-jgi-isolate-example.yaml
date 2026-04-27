@@ -9,9 +9,6 @@ type: nmdc:OrganismSample
 name: Ruegeria pomeroyi DSS-3 isolate submission
 samp_name: Ruegeria_pomeroyi_DSS-3
 expected_organism: nmdc:orgn-99-rpom514
-single_colony_isolation: "yes"
-ribosomal_sequence: TAACTTGAGAGTTTGATCCTGGCTCAGAACGAACGCTGGCGGCAGGCCTAACACATGCAAGTCGAGCGCG
-ribosomal_sequence_type: 16S
 sample_isolation_method: Wizard Genomic DNA Purification Kit
 sample_isolated_from: Saltwater from water column
 collection_date:

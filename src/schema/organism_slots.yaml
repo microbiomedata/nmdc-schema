@@ -35,16 +35,11 @@ subsets:
         exact field name on the JGI Isolate (NA) v19 spreadsheet.
 
 enums:
-  RibosomalSequenceTypeEnum:
-    description: >-
-      Type of ribosomal sequence used for strain verification.
-      Values from JGI Isolate (NA) v19.
-    permissible_values:
-      16S: {}
-      ITS: {}
-      ITS-AGI: {}
-      28S: {}
-      Other: {}
+  # NOTE: RibosomalSequenceTypeEnum was removed. The ribosomal sequence slots
+  # (single_colony_isolation, known_suspected_organisms, ribosomal_sequence*,
+  # second_ribosomal_sequence*, fungal_16s_screening, its_match_unite) are JGI
+  # submission logistics, not NMDC data-model fields. Equivalent slots with this
+  # enum live in submission-schema JgiIsolateInterface. See submission-schema#418.
 
   IsolateMaterialCategoryEnum:
     description: >-
@@ -224,141 +219,6 @@ slots:
     examples:
       - value: nmdc:orgn-99-abc123
         description: Reference to an Organism instance in organism_set
-
-  single_colony_isolation:
-    range: YesNoEnum
-    description: >-
-      Was the sample isolated from a single colony, or from a procedure
-      considered equivalent to single-colony isolation (e.g. axenic or
-      strain-pure culture)?
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: Is the sample isolated from a single colony or equivalent?
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-    comments:
-      - >-
-        The JGI Isolate form phrases this as a yes/no question where "yes"
-        covers both literal single-colony picks and equivalent axenic /
-        strain-pure isolation procedures. Co-culture or mixed-community
-        samples should be modeled as Biosample, not OrganismSample.
-    examples:
-      - value: "yes"
-        description: JGI Isolate form convention — axenic/strain-pure isolates are accepted as single-colony-equivalent
-
-  known_suspected_organisms:
-    description: >-
-      Organisms known or suspected to grow in co-culture or that may be contaminants.
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: Known / Suspected Organisms
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-    examples:
-      - value: culture is a microbial community
-        description: JGI `dw_samples.culture_strain_pure_descr` (JGI data warehouse — distinct system from the GOLD database; 52 occurrences, queried 2026-04-14)
-
-  ribosomal_sequence:
-    description: >-
-      Ribosomal nucleotide sequence for strain verification. At least one is
-      required by JGI for all microbial and fungal genome projects.
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: First ribosomal sequence
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-    examples:
-      - value: AGAGTTTGATCATGGCTCAGATTGAACGCTGGCGGCAGGCCTAACACATGCAAGTCGAGCGGTAACATTT
-        description: First 70 bp of 16S from Shewanella loihica PV-4 (GenBank DQ286387.2, linked from GOLD organism_v2 Go0000189, queried 2026-04-21). Full sequences are typically >1300 bp.
-
-  ribosomal_sequence_type:
-    range: RibosomalSequenceTypeEnum
-    description: Type of the ribosomal sequence (16S, ITS, ITS-AGI, 28S, or Other).
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: First ribosomal sequence type
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-    examples:
-      - value: 16S
-        description: JGI Isolate form convention — bacterial submissions use 16S (fungal draft submissions use ITS)
-
-  ribosomal_sequence_comments:
-    description: Comments on the ribosomal sequence. Required if type is "Other".
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: First ribosomal sequence comments
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-
-  second_ribosomal_sequence:
-    description: A second ribosomal sequence for additional strain verification.
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: Second ribosomal sequence
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-
-  second_ribosomal_sequence_type:
-    range: RibosomalSequenceTypeEnum
-    description: Type of the second ribosomal sequence.
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: Second ribosomal sequence type
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-
-  second_ribosomal_sequence_comments:
-    description: Comments on the second ribosomal sequence.
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: Second ribosomal sequence comments
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-
-  fungal_16s_screening:
-    range: YesNoEnum
-    description: Whether 16S screening was performed for fungal draft samples.
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: For fungal draft samples, was 16S screening performed?
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-    examples:
-      - value: "yes"
-        description: Required by JGI for all fungal draft samples
-
-  its_match_unite:
-    range: YesNoEnum
-    description: Whether the ITS sequence matches taxonomy in the UNITE database.
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: For fungal draft samples, does ITS match taxonomy in UNITE?
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-    examples:
-      - value: "yes"
-        description: Required by JGI for all fungal draft samples
 
   sample_isolation_method:
     description: Method, protocol, or kit used to extract DNA/RNA from the sample.

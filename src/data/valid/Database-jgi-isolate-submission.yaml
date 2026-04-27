@@ -40,9 +40,6 @@ organism_sample_set:
       - nmdc:sty-99-isolatedemo
     expected_organism: nmdc:orgn-99-shewa189
     samp_name: Shewanella_loihica_PV-4
-    single_colony_isolation: "yes"
-    ribosomal_sequence: AGAGTTTGATCATGGCTCAGATTGAACGCTGGCGGCAGGCCTAACACATGCAAGTCGAGCGGTAACATTT
-    ribosomal_sequence_type: 16S
     sample_isolation_method: Wizard Genomic DNA Purification Kit
     sample_isolated_from: Iron-rich microbial mat from hydrothermal vent, 1325 m depth, Naha Vents, south rift of Loihi seamount, Hawaii
     collection_date:
