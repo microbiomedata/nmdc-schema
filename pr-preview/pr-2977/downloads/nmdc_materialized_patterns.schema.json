@@ -13198,10 +13198,6 @@
                         "null"
                     ]
                 },
-                "fungal_16s_screening": {
-                    "$ref": "#/$defs/YesNoEnum",
-                    "description": "Whether 16S screening was performed for fungal draft samples."
-                },
                 "geo_loc_name": {
                     "anyOf": [
                         {
@@ -13218,17 +13214,6 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
-                },
-                "its_match_unite": {
-                    "$ref": "#/$defs/YesNoEnum",
-                    "description": "Whether the ITS sequence matches taxonomy in the UNITE database."
-                },
-                "known_suspected_organisms": {
-                    "description": "Organisms known or suspected to grow in co-culture or that may be contaminants.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "lat_lon": {
                     "anyOf": [
@@ -13260,24 +13245,6 @@
                     ],
                     "description": "Provides information about the provenance of a record."
                 },
-                "ribosomal_sequence": {
-                    "description": "Ribosomal nucleotide sequence for strain verification. At least one is required by JGI for all microbial and fungal genome projects.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "ribosomal_sequence_comments": {
-                    "description": "Comments on the ribosomal sequence. Required if type is \"Other\".",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "ribosomal_sequence_type": {
-                    "$ref": "#/$defs/RibosomalSequenceTypeEnum",
-                    "description": "Type of the ribosomal sequence (16S, ITS, ITS-AGI, 28S, or Other)."
-                },
                 "samp_name": {
                     "description": "A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name",
                     "type": [
@@ -13298,28 +13265,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "second_ribosomal_sequence": {
-                    "description": "A second ribosomal sequence for additional strain verification.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "second_ribosomal_sequence_comments": {
-                    "description": "Comments on the second ribosomal sequence.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "second_ribosomal_sequence_type": {
-                    "$ref": "#/$defs/RibosomalSequenceTypeEnum",
-                    "description": "Type of the second ribosomal sequence."
-                },
-                "single_colony_isolation": {
-                    "$ref": "#/$defs/YesNoEnum",
-                    "description": "Was the sample isolated from a single colony, or from a procedure considered equivalent to single-colony isolation (e.g. axenic or strain-pure culture)?"
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -14677,18 +14622,6 @@
                 "low"
             ],
             "title": "ResolutionCategoryEnum",
-            "type": "string"
-        },
-        "RibosomalSequenceTypeEnum": {
-            "description": "Type of ribosomal sequence used for strain verification. Values from JGI Isolate (NA) v19.",
-            "enum": [
-                "16S",
-                "ITS",
-                "ITS-AGI",
-                "28S",
-                "Other"
-            ],
-            "title": "RibosomalSequenceTypeEnum",
             "type": "string"
         },
         "RoomCondtEnum": {
@@ -16501,6 +16434,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post106.dev0+19ea61fdb"
+    "version": "11.18.0.post107.dev0+75e4c23e8"
 }
 

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post106.dev0+19ea61fdb
+version: 11.18.0.post107.dev0+75e4c23e8
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -1047,22 +1047,6 @@ enums:
         description: The portion of a mixture containing molecules dissolved in methanol
         is_a: organic_layer
         title: Methanol layer
-  RibosomalSequenceTypeEnum:
-    name: RibosomalSequenceTypeEnum
-    description: Type of ribosomal sequence used for strain verification. Values from
-      JGI Isolate (NA) v19.
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      16S:
-        text: 16S
-      ITS:
-        text: ITS
-      ITS-AGI:
-        text: ITS-AGI
-      28S:
-        text: 28S
-      Other:
-        text: Other
   IsolateMaterialCategoryEnum:
     name: IsolateMaterialCategoryEnum
     description: General category of isolate material, as used by JGI for biosafety
@@ -6506,152 +6490,6 @@ slots:
       description: Reference to an Organism instance in organism_set
     from_schema: https://w3id.org/nmdc/nmdc
     range: Organism
-  single_colony_isolation:
-    name: single_colony_isolation
-    description: Was the sample isolated from a single colony, or from a procedure
-      considered equivalent to single-colony isolation (e.g. axenic or strain-pure
-      culture)?
-    comments:
-    - The JGI Isolate form phrases this as a yes/no question where "yes" covers both
-      literal single-colony picks and equivalent axenic / strain-pure isolation procedures.
-      Co-culture or mixed-community samples should be modeled as Biosample, not OrganismSample.
-    examples:
-    - value: 'yes'
-      description: JGI Isolate form convention — axenic/strain-pure isolates are accepted
-        as single-colony-equivalent
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Is the sample isolated from a single colony or equivalent?
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-    range: YesNoEnum
-  known_suspected_organisms:
-    name: known_suspected_organisms
-    description: Organisms known or suspected to grow in co-culture or that may be
-      contaminants.
-    examples:
-    - value: culture is a microbial community
-      description: JGI `dw_samples.culture_strain_pure_descr` (JGI data warehouse
-        — distinct system from the GOLD database; 52 occurrences, queried 2026-04-14)
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Known / Suspected Organisms
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-  ribosomal_sequence:
-    name: ribosomal_sequence
-    description: Ribosomal nucleotide sequence for strain verification. At least one
-      is required by JGI for all microbial and fungal genome projects.
-    examples:
-    - value: AGAGTTTGATCATGGCTCAGATTGAACGCTGGCGGCAGGCCTAACACATGCAAGTCGAGCGGTAACATTT
-      description: First 70 bp of 16S from Shewanella loihica PV-4 (GenBank DQ286387.2,
-        linked from GOLD organism_v2 Go0000189, queried 2026-04-21). Full sequences
-        are typically >1300 bp.
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: First ribosomal sequence
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-  ribosomal_sequence_type:
-    name: ribosomal_sequence_type
-    description: Type of the ribosomal sequence (16S, ITS, ITS-AGI, 28S, or Other).
-    examples:
-    - value: 16S
-      description: JGI Isolate form convention — bacterial submissions use 16S (fungal
-        draft submissions use ITS)
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: First ribosomal sequence type
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-    range: RibosomalSequenceTypeEnum
-  ribosomal_sequence_comments:
-    name: ribosomal_sequence_comments
-    description: Comments on the ribosomal sequence. Required if type is "Other".
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: First ribosomal sequence comments
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-  second_ribosomal_sequence:
-    name: second_ribosomal_sequence
-    description: A second ribosomal sequence for additional strain verification.
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Second ribosomal sequence
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-  second_ribosomal_sequence_type:
-    name: second_ribosomal_sequence_type
-    description: Type of the second ribosomal sequence.
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Second ribosomal sequence type
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-    range: RibosomalSequenceTypeEnum
-  second_ribosomal_sequence_comments:
-    name: second_ribosomal_sequence_comments
-    description: Comments on the second ribosomal sequence.
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Second ribosomal sequence comments
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-  fungal_16s_screening:
-    name: fungal_16s_screening
-    description: Whether 16S screening was performed for fungal draft samples.
-    examples:
-    - value: 'yes'
-      description: Required by JGI for all fungal draft samples
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: For fungal draft samples, was 16S screening performed?
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-    range: YesNoEnum
-  its_match_unite:
-    name: its_match_unite
-    description: Whether the ITS sequence matches taxonomy in the UNITE database.
-    examples:
-    - value: 'yes'
-      description: Required by JGI for all fungal draft samples
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: For fungal draft samples, does ITS match taxonomy in UNITE?
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-    range: YesNoEnum
   sample_isolation_method:
     name: sample_isolation_method
     description: Method, protocol, or kit used to extract DNA/RNA from the sample.
@@ -21483,9 +21321,10 @@ classes:
     title: Organism Sample
     comments:
     - An OrganismSample is not necessarily pure. The submitter expects it to contain
-      a single organism, but sequencing may reveal contamination. Purity status is
-      captured by single_colony_isolation and known_suspected_organisms, not by the
-      class itself.
+      a single organism, but sequencing may reveal contamination. Purity and strain-verification
+      fields (single-colony isolation, ribosomal sequences, fungal screening) are
+      JGI submission logistics and live in submission-schema JgiIsolateInterface,
+      not here.
     - The expected_organism slot links to an Organism instance representing what the
       submitter believes is in the sample.
     - The defining criterion is genomic homogeneity of intent, not material type.
@@ -21511,16 +21350,6 @@ classes:
     - elev
     - geo_loc_name
     - samp_name
-    - single_colony_isolation
-    - known_suspected_organisms
-    - ribosomal_sequence
-    - ribosomal_sequence_type
-    - ribosomal_sequence_comments
-    - second_ribosomal_sequence
-    - second_ribosomal_sequence_type
-    - second_ribosomal_sequence_comments
-    - fungal_16s_screening
-    - its_match_unite
     - sample_isolation_method
     - sample_isolated_from
     slot_usage:
