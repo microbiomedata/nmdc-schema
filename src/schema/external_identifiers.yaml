@@ -373,7 +373,7 @@ slots:
         description: combined analyses (taxonomic, functional) of sample ERS438107
 
   ## nucleotide and protein sequences
-  
+
   sequence_identifiers:
     abstract: true
     description: Slot which contains information on nucleotide or protein sequences. 
