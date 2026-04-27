@@ -5881,6 +5881,9 @@
                             "$ref": "#/$defs/OntologyClass"
                         },
                         {
+                            "$ref": "#/$defs/NcbiTaxon"
+                        },
+                        {
                             "$ref": "#/$defs/OrthologyGroup"
                         }
                     ],
@@ -5916,6 +5919,9 @@
                     "anyOf": [
                         {
                             "$ref": "#/$defs/OntologyClass"
+                        },
+                        {
+                            "$ref": "#/$defs/NcbiTaxon"
                         },
                         {
                             "$ref": "#/$defs/OrthologyGroup"
@@ -11673,6 +11679,95 @@
             "title": "MoldVisibilityEnum",
             "type": "string"
         },
+        "NcbiTaxon": {
+            "additionalProperties": false,
+            "description": "A taxonomy term from NCBI Taxonomy. NcbiTaxon instances are identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass instances. No NMDC-minted identifiers are assigned. Support for additional taxonomic authorities (GTDB, LPSN, SeqCode) would be represented by separate classes or by widening this class's id_prefixes in a follow-on PR.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^NCBITaxon:\\d+$",
+                    "type": "string"
+                },
+                "is_obsolete": {
+                    "description": "A boolean value indicating whether the ontology term is obsolete.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "is_root": {
+                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:NcbiTaxon"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "NcbiTaxon",
+            "type": "object"
+        },
         "NomAnalysis": {
             "additionalProperties": false,
             "allOf": [
@@ -15357,5 +15452,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post59.dev0+111cd6d72"
+    "version": "11.18.0.post60.dev0+e99e27d60"
 }
