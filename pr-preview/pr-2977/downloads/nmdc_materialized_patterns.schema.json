@@ -12984,7 +12984,7 @@
                     ]
                 },
                 "gc_content": {
-                    "description": "Estimated GC content as a percentage.",
+                    "description": "Estimated GC content as a percentage (0\u2013100).",
                     "type": [
                         "number",
                         "null"
@@ -16434,6 +16434,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post108.dev0+754ddd279"
+    "version": "11.18.0.post109.dev0+433bb8812"
 }
 

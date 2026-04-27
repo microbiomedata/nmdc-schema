@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post108.dev0+754ddd279
+version: 11.18.0.post109.dev0+433bb8812
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6398,11 +6398,7 @@ slots:
       - https://jgi.doe.gov/isolate-submission-form/v19
   gc_content:
     name: gc_content
-    annotations:
-      storage_units:
-        tag: storage_units
-        value: '%'
-    description: Estimated GC content as a percentage.
+    description: Estimated GC content as a percentage (0–100).
     examples:
     - value: '54.0'
       description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)

@@ -566,7 +566,7 @@
 <tr>
 <td><a href="../gc_content/">gc_content</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Estimated GC content as a percentage</td>
+<td>Estimated GC content as a percentage (0–100)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1123,11 +1123,7 @@ attributes:
       partial_match: true
   gc_content:
     name: gc_content
-    annotations:
-      storage_units:
-        tag: storage_units
-        value: '%'
-    description: Estimated GC content as a percentage.
+    description: Estimated GC content as a percentage (0–100).
     examples:
     - value: '54.0'
       description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)

@@ -659,17 +659,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Annotations
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -728,7 +717,7 @@
 
 
 <h1 id="slot-gc_content">Slot: gc_content</h1>
-<p><em>Estimated GC content as a percentage.</em></p>
+<p><em>Estimated GC content as a percentage (0–100).</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/gc_content">nmdc:gc_content</a></p>
 <!-- no inheritance hierarchy -->
@@ -770,21 +759,6 @@
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>storage_units</td>
-<td>%</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -808,11 +782,7 @@
 <details>
 
 <pre><code class="language-yaml">name: gc_content
-annotations:
-  storage_units:
-    tag: storage_units
-    value: '%'
-description: Estimated GC content as a percentage.
+description: Estimated GC content as a percentage (0–100).
 examples:
 - value: '54.0'
   description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)
