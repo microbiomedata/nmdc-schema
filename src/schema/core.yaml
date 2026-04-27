@@ -157,6 +157,8 @@ enums:
         meaning: CHEBI:62947
       ammonium_bicarbonate:
         meaning: CHEBI:184335
+      ammonium_formate:
+        meaning: CHEBI:63050
       amitriptyline:
         meaning: CHEBI:2666
       Arg-C:
@@ -215,8 +217,14 @@ enums:
         meaning: CHEBI:43945
         comments:
           - A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic acid groups, also known as methylenediphosphonic acid
+      potassium_chloride:
+        meaning: CHEBI:32588
+      phosphate_buffered_saline:
+        meaning: OBI:0100046
       phosphoric_acid:
         meaning: CHEBI:26078
+      trichloroacetic_acid:
+        meaning: CHEBI:30956
       trimethylchlorosilane:
         meaning: CHEBI:85069
       trypsin:
