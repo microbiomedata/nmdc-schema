@@ -126,7 +126,7 @@ classes:
           syntax: "^genbank:(GCF|GCA)_\\d{9}\\.\\d+$|^ena.embl:(GCF|GCA)_\\d{9}\\.\\d+$"
           interpolated: true
         see_also:
-          - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-stat
+          - https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genome-processing/version-status/
 
   MetatranscriptomeAnnotation:
     class_uri: nmdc:MetatranscriptomeAnnotation
