@@ -15,7 +15,10 @@ organism_genus: Shewanella
 organism_species: loihica
 strain_name: PV-4
 isolate_name: Isolate
-gc_content: 54.0
+gc_content:
+  type: nmdc:QuantityValue
+  has_numeric_value: 54.0
+  has_unit: "%"
 estimated_size: 4600000 bp
 gold_organism_identifiers:
   - gold:Go0000189
