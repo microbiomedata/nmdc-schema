@@ -181,6 +181,8 @@ enums:
           - >-
             A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine,
             and phenylalanine.
+      disodium_hydrogenphosphate_dihydrate:
+        meaning: CHEBI:91258
       ethanol:
         meaning: CHEBI:16236
       formic_acid:
@@ -221,10 +223,12 @@ enums:
           - A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic acid groups, also known as methylenediphosphonic acid
       potassium_chloride:
         meaning: CHEBI:32588
-      phosphate_buffered_saline:
-        meaning: OBI:0100046
+      potassium_dihydrogen_phosphate:
+        meaning: CHEBI:63036
       phosphoric_acid:
         meaning: CHEBI:26078
+      sodium_chloride:
+        meaning: CHEBI:26710
       trichloroacetic_acid:
         meaning: CHEBI:30956
       trimethylchlorosilane:
