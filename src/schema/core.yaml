@@ -147,6 +147,8 @@ enums:
         meaning: CHEBI:38472
       acetic_acid:
         meaning: CHEBI:15366
+      acetone:
+        meaning: CHEBI:15347
       alphaLP:
         meaning: EC:3.4.21.12
         see_also:
@@ -157,6 +159,8 @@ enums:
         meaning: CHEBI:62947
       ammonium_bicarbonate:
         meaning: CHEBI:184335
+      ammonium_formate:
+        meaning: CHEBI:63050
       amitriptyline:
         meaning: CHEBI:2666
       Arg-C:
@@ -177,6 +181,8 @@ enums:
           - >-
             A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine,
             and phenylalanine.
+      disodium_hydrogenphosphate_dihydrate:
+        meaning: CHEBI:91258
       ethanol:
         meaning: CHEBI:16236
       formic_acid:
@@ -215,8 +221,16 @@ enums:
         meaning: CHEBI:43945
         comments:
           - A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic acid groups, also known as methylenediphosphonic acid
+      potassium_chloride:
+        meaning: CHEBI:32588
+      potassium_dihydrogen_phosphate:
+        meaning: CHEBI:63036
       phosphoric_acid:
         meaning: CHEBI:26078
+      sodium_chloride:
+        meaning: CHEBI:26710
+      trichloroacetic_acid:
+        meaning: CHEBI:30956
       trimethylchlorosilane:
         meaning: CHEBI:85069
       trypsin:
