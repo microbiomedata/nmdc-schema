@@ -135,8 +135,11 @@ slots:
         description: JGI Isolate form convention — generic isolate designation used when no specific mutant/isolate name is needed
 
   gc_content:
-    range: float
+    range: QuantityValue
     description: Estimated GC content as a percentage (0–100).
+    annotations:
+      storage_units:
+        value: "%"
     in_subset:
       - jgi_isolate
     structured_aliases:

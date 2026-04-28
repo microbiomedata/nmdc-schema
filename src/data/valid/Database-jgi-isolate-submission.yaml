@@ -28,7 +28,10 @@ organism_set:
     strain_name: PV-4
     isolate_name: Isolate
     estimated_size: 4600000 bp
-    gc_content: 54.0
+    gc_content:
+      type: nmdc:QuantityValue
+      has_numeric_value: 54.0
+      has_unit: "%"
     gold_organism_identifiers:
       - gold:Go0000189
 
