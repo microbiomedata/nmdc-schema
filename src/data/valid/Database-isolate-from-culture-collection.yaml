@@ -1,0 +1,77 @@
+# Culture-collection-sourced isolate workflow: an organism ordered from
+# DSMZ (or another culture collection) arrives already pure, so there is
+# no upstream environmental Biosample. The submitter's record begins at
+# the OrganismSample (the cells received from the catalog).
+#
+# Distinct from Database-isolate-from-soil-workflow.yaml: that workflow
+# starts with a Biosample and goes through Isolation; this one skips
+# both, demonstrating that the Organism → OrganismSample → Culturing →
+# Extraction chain works without an environmental upstream.
+#
+# Captures the spirit of #2927 (Alicia Clum's Database-isolate_from_DSMZ.yaml)
+# adapted to the Organism / OrganismSample design.
+#
+# Real organism: Pseudomonas putida KT2440 (NCBITaxon:160488), one of the
+# best-characterized soil-derived biotechnology reference strains.
+# DSMZ catalog item DSM 6125, ATCC 47054. Genome GCA_000007565.2.
+
+organism_set:
+  - id: nmdc:orgn-99-pput2440
+    type: nmdc:Organism
+    name: Pseudomonas putida KT2440
+    classified_as:
+      - id: NCBITaxon:160488
+        name: Pseudomonas putida KT2440
+        type: nmdc:NcbiTaxon
+    biosafety_material_category: Bacteria
+    organism_genus: Pseudomonas
+    organism_species: putida
+    strain_name: KT2440
+    source_mat_id:
+      type: nmdc:TextValue
+      has_raw_value: "DSM 6125"
+
+organism_sample_set:
+  # Cells received from DSMZ — the record begins here, not at a Biosample.
+  - id: nmdc:osm-99-dsmz001
+    type: nmdc:OrganismSample
+    name: Pseudomonas putida KT2440 from DSMZ catalog
+    description: >-
+      Cells of P. putida KT2440 ordered from the DSMZ catalog (DSM 6125).
+      No environmental sample upstream — the submitter's provenance starts at
+      the culture-collection delivery.
+    associated_studies:
+      - nmdc:sty-99-dsmzdemo
+    expected_organism: nmdc:orgn-99-pput2440
+    sample_isolated_from: DSMZ culture collection (DSM 6125)
+    sample_isolation_method: Culture purchased from DSMZ; no in-house isolation step.
+  # Expanded culture grown from the catalog cells.
+  - id: nmdc:osm-99-dsmz001cult
+    type: nmdc:OrganismSample
+    name: Pseudomonas putida KT2440 expanded culture
+    description: Liquid culture grown from the DSMZ-supplied seed cells.
+    associated_studies:
+      - nmdc:sty-99-dsmzdemo
+    expected_organism: nmdc:orgn-99-pput2440
+
+material_processing_set:
+  # Step 1: Culture the catalog cells.
+  - id: nmdc:cultp-99-dsmz001
+    type: nmdc:Culturing
+    has_input:
+      - nmdc:osm-99-dsmz001
+    has_output:
+      - nmdc:osm-99-dsmz001cult
+  # Step 2: Extract DNA from the culture.
+  - id: nmdc:extrp-99-dsmz001
+    type: nmdc:Extraction
+    has_input:
+      - nmdc:osm-99-dsmz001cult
+    has_output:
+      - nmdc:procsm-99-dsmz001dna
+
+processed_sample_set:
+  - id: nmdc:procsm-99-dsmz001dna
+    type: nmdc:ProcessedSample
+    name: Extracted DNA from P. putida KT2440 culture
+    description: DNA extracted from the expanded culture, ready for sequencing.

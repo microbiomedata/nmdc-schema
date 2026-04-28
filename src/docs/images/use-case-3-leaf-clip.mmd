@@ -1,0 +1,14 @@
+%% Derived from src/data/valid/Database-leaf-clip.yaml.
+%% Shows only entities and edges asserted by the data file. No invented
+%% upstream ("Greenhouse") or downstream (Extraction/DataGeneration) —
+%% sample_isolated_from captures greenhouse provenance as prose.
+flowchart LR
+    OSM["OrganismSample<br/>nmdc:osm-99-athleaf01<br/>(leaf clip)"]
+    ORG["Organism<br/>nmdc:orgn-99-athal001<br/>Arabidopsis thaliana"]
+    TAX["NcbiTaxon<br/>NCBITaxon:3702"]
+
+    OSM -->|expected_organism| ORG
+    ORG -->|classified_as| TAX
+
+    classDef newPR fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    class OSM,ORG,TAX newPR

@@ -1293,6 +1293,71 @@ classes:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
 
+  OrganismSample:
+    class_uri: nmdc:OrganismSample
+    is_a: Sample
+    title: Organism Sample
+    description: >-
+      A material sample in which all cells are expected to share the same genome.
+      This includes microbial colony picks, pellets from presumably pure liquid
+      cultures, plant tissue clips, fungal fruiting body sections, and similar
+      materials where the submitter intends to study a single organism. The purity
+      expectation may be contradicted by sequencing results.
+    slots:
+      - associated_studies
+      - expected_organism
+      - embargoed
+      - provenance_metadata
+      - external_database_identifiers
+      ## collection and provenance (reused from Biosample)
+      - collection_date
+      ## DEBATED: lat_lon, elev, geo_loc_name — Montana argues these are captured via the
+      ## Host/Env interface in the submission portal for environmental isolates and need not
+      ## be stored on OrganismSample. Counterargument: culture collection orders have no
+      ## upstream Biosample, so geographic provenance must live here or be lost entirely.
+      ## See submission-schema#418 discussion. Keeping for now pending resolution.
+      - lat_lon
+      - elev
+      - geo_loc_name
+      - samp_name
+      ## isolation provenance
+      - sample_isolation_method
+      - sample_isolated_from
+      ## NOTE: purity / strain-verification slots (single_colony_isolation,
+      ## known_suspected_organisms, ribosomal_sequence*, second_ribosomal_sequence*,
+      ## fungal_16s_screening, its_match_unite) were removed. These are JGI submission
+      ## logistics, not NMDC data-model fields. Equivalent slots live in
+      ## submission-schema JgiIsolateInterface. See submission-schema#418.
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      expected_organism:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
+          interpolated: true
+    close_mappings:
+      - OBI:0100051
+    comments:
+      - >-
+        An OrganismSample is not necessarily pure. The submitter expects it to contain a single
+        organism, but sequencing may reveal contamination. Purity and strain-verification fields
+        (single-colony isolation, ribosomal sequences, fungal screening) are JGI submission
+        logistics and live in submission-schema JgiIsolateInterface, not here.
+      - >-
+        The expected_organism slot links to an Organism instance representing what the
+        submitter believes is in the sample.
+      - >-
+        The defining criterion is genomic homogeneity of intent, not material type. A bacterial
+        colony pick, a plant leaf clip, and a fungal fruiting body section are all OrganismSamples
+        because the submitter expects one genome. An algal mat, a cat fecal sample for microbiome
+        study, or a soil sample are Biosamples because they contain communities of organisms.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2803
+      - https://github.com/microbiomedata/nmdc-schema/issues/2961
+
   Site:
     class_uri: nmdc:Site
     abstract: true

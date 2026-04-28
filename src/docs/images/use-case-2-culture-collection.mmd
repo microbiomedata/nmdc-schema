@@ -1,0 +1,23 @@
+flowchart LR
+    OSM1["OrganismSample\n(received vial)"]
+    CULT["Culturing"]
+    OSM2["OrganismSample\n(expanded culture)"]
+    EXT["Extraction"]
+    PSM["ProcessedSample\n(DNA)"]
+    ORG["Organism\nDictyoglomus turgidum\nDSM 6724"]
+    TAX["NcbiTaxon\nNCBITaxon:515635"]
+
+    CULT -->|has_input| OSM1
+    CULT -->|has_output| OSM2
+    EXT -->|has_input| OSM2
+    EXT -->|has_output| PSM
+    OSM1 -.->|expected_organism| ORG
+    ORG -.->|classified_as| TAX
+
+    style OSM1 fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    style OSM2 fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    style CULT fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    style ORG fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    style TAX fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    style EXT fill:#fafafa,stroke:#9e9e9e
+    style PSM fill:#fafafa,stroke:#9e9e9e

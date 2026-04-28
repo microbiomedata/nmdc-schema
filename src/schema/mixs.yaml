@@ -7101,6 +7101,54 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+  estimated_size:
+    annotations:
+      Expected_value: number of base pairs
+    description: The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period
+    title: estimated size
+    examples:
+      - value: 300000 bp
+    keywords:
+      - size
+    string_serialization: '{integer} bp'
+    slot_uri: MIXS:0000024
+  ploidy:
+    description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO
+    title: ploidy
+    examples:
+      - value: allopolyploidy [PATO:0001379]
+    slot_uri: MIXS:0000021
+    range: TextValue
+    structured_pattern:
+      syntax: ^{termLabel} \[{termID}\]$
+      interpolated: true
+      partial_match: true
+  ref_biomaterial:
+    description: Primary publication if isolated before genome publication; otherwise, primary genome report
+    title: reference for biomaterial
+    examples:
+      - value: doi:10.1016/j.syapm.2018.01.009
+    slot_uri: MIXS:0000025
+    range: TextValue
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+      partial_match: true
+  isol_growth_condt:
+    description: Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material
+    title: isolation and growth condition
+    examples:
+      - value: doi:10.1016/j.syapm.2018.01.009
+    keywords:
+      - condition
+      - growth
+      - isolation
+    slot_uri: MIXS:0000003
+    range: TextValue
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+      partial_match: true
   samp_collec_device:
     annotations:
       Expected_value: device name

@@ -7,6 +7,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
   BFO: "http://purl.obolibrary.org/obo/BFO_"
+  COB: "http://purl.obolibrary.org/obo/COB_"
   EFO: "http://www.ebi.ac.uk/efo/"
   ISA: "http://example.org/isa/"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
@@ -88,9 +89,8 @@ classes:
         Instances go into ontology_class_set and are referenced from sample slots such as classified_as.
       - >-
         Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution
-        of NCBI Taxonomy. Strain identity should be captured via dedicated text slots on
-        OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or a future Strain
-        class — not by minting NcbiTaxon instances for strains.
+        of NCBI Taxonomy. Strain identity is captured via dedicated slots on Organism
+        (e.g. strain_name, isolate_name, source_mat_id) — not by minting NcbiTaxon instances.
       - >-
         Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
         with range OntologyClass. The intent is that these slots point to NcbiTaxon instances specifically,
@@ -180,6 +180,135 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
           interpolated: true
+  Organism:
+    class_uri: nmdc:Organism
+    is_a: MaterialEntity
+    description: >-
+      A material entity that is a living or once-living individual. Organism instances
+      represent the biological identity of what is in a sample, not the sample itself.
+      Sub-species identity (strain, cultivar, lab isolate) is captured by slots on this
+      class rather than via a separate Strain subclass.
+    slots:
+      ## classification + identity
+      - classified_as
+      ## DEBATED: biosafety_material_category — Montana argues this is a JGI submission
+      ## logistics field (like container or DNase) and belongs only in submission-schema
+      ## JgiIsolateInterface. Counterargument: biosafety category is a property of the
+      ## organism itself (not the sample or the submission), so it belongs on Organism for
+      ## downstream consumers. Keeping for now pending resolution.
+      - biosafety_material_category
+      - gold_organism_identifiers
+      ## sub-species identity (JGI Isolate form)
+      - organism_genus
+      - organism_species
+      - strain_name
+      - isolate_name
+      ## genome properties (JGI Isolate form; MIxS where noted)
+      ## DEBATED: estimated_size and gc_content — Montana argues these are analyte
+      ## properties measured during sample QC (like concentration or absorbance) rather
+      ## than stable organism properties, and belong only in submission-schema. Counter:
+      ## genome size and GC% are reproducible biological properties of the organism that
+      ## are useful for downstream data integration. Keeping for now pending resolution.
+      - estimated_size
+      - ploidy
+      - gc_content
+      ## provenance / reference
+      - source_mat_id
+      - ref_biomaterial
+      ## viral host (for viral isolates only)
+      - host_taxid
+      - viral_host_genus
+      - viral_host_species
+      - viral_host_strain
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      source_mat_id:
+        description: >-
+          Culture collection name and identifier for this organism. Reuses MIxS source_mat_id
+          (MIXS:0000026).
+        structured_aliases:
+          - literal_form: Culture Collection and ID
+            contexts:
+              - https://jgi.doe.gov/isolate-submission-form/v19
+            predicate: EXACT_SYNONYM
+      host_taxid:
+        description: >-
+          NCBI taxon ID of the host organism (for viral isolates). Reuses MIxS host_taxid
+          (MIXS:0000250).
+        structured_aliases:
+          - literal_form: Host NCBI Taxonomy ID
+            contexts:
+              - https://jgi.doe.gov/isolate-submission-form/v19
+            predicate: EXACT_SYNONYM
+      estimated_size:
+        description: >-
+          Estimated genome size, as integer base pairs. Reuses MIxS
+          estimated_size (MIXS:0000024). The JGI isolate field reports in
+          megabases (Mb); values must be converted to the MIxS integer-bp
+          representation before validation and storage. The submission portal
+          should auto-populate the "bp" suffix and enforce integer input.
+        structured_pattern:
+          syntax: '^[0-9]+ bp$'
+          interpolated: false
+        structured_aliases:
+          - literal_form: Estimated Genome Size (Mb)
+            contexts:
+              - https://jgi.doe.gov/isolate-submission-form/v19
+            predicate: EXACT_SYNONYM
+      ploidy:
+        description: >-
+          Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
+          pattern expects a PATO term label with CURIE (e.g. "haploid [PATO:0001375]").
+          The JGI isolate field is free-text comments; values from that field need
+          conversion to the ontology-valued form for MIxS compliance.
+        structured_aliases:
+          - literal_form: Ploidy Comments
+            contexts:
+              - https://jgi.doe.gov/isolate-submission-form/v19
+            predicate: EXACT_SYNONYM
+      ref_biomaterial:
+        description: >-
+          Reference for the organism, preferentially a DOI when a primary
+          publication or genome report exists; PMID and URL are also accepted
+          per the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses
+          MIxS ref_biomaterial (MIXS:0000025).
+        structured_aliases:
+          - literal_form: Reference Genome
+            contexts:
+              - https://jgi.doe.gov/isolate-submission-form/v19
+            predicate: EXACT_SYNONYM
+        comments:
+          - >-
+            The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred
+            when available — it gives a stable reference to the publication
+            or genome report. See the `associated_dois` pattern elsewhere in
+            the NMDC schema for DOI-structured alternatives.
+          - >-
+            JGI "Reference Genome" submissions sometimes carry non-publication
+            identifiers such as IMG or Phytozome IDs, which do not match the
+            MIxS pattern. Those are out of scope for this slot and should be
+            captured separately (see `gold_organism_identifiers` and
+            `insdc_nucleotide_identifiers` for genome / assembly references).
+          - >-
+            The MIxS name ref_biomaterial may be renamed in a future MIxS
+            release. See ongoing MIxS renaming work.
+    comments:
+      - >-
+        Organism instances are stored in organism_set. An Organism is not a sample — it is
+        the biological entity that an OrganismSample is expected to contain, linked via
+        expected_organism. Sub-species identity (strain_name, isolate_name, source_mat_id)
+        is captured directly on Organism.
+    exact_mappings:
+      - COB:0000022
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2959
+      - https://github.com/microbiomedata/nmdc-schema/issues/2803
+      - https://github.com/microbiomedata/nmdc-schema/issues/2971
+
   PlannedProcess:
     description: >-
       A named thing that is executed according to a plan.
@@ -478,7 +607,7 @@ classes:
         required: true
         range: Sample
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       associated_studies:
         range: Study
@@ -599,6 +728,7 @@ slots:
   classified_as:
     range: OntologyClass
     multivalued: true
+    inlined_as_list: true
     description: >-
       A formal classification for this entity, expressed directly as an ontology-backed class
       instance stored in ontology_class_set.
@@ -607,6 +737,8 @@ slots:
         Taxonomy-oriented uses (e.g. on OrganismSample) should point to NcbiTaxon instances.
         The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked
         in #3016.
+      - >-
+        Intended to replace known_as on PortionOfSubstance in a future deprecation.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/2959
     narrow_mappings:
@@ -1281,11 +1413,13 @@ enums:
       ChemicalConversionProcess:
       ChromatographicSeparationProcess:
       CollectingBiosamplesFromSite:
+      Culturing:
       DataEmitterProcess:
       DataGeneration:
       DissolvingProcess:
       Extraction:
       FiltrationProcess:
+      Isolation:
       LibraryPreparation:
       MagsAnalysis:
       MassSpectrometry:

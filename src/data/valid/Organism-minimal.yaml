@@ -1,0 +1,9 @@
+# Campylobacter concisus from GOLD organism_v2 (Go0000058, queried 2026-04-14)
+id: nmdc:orgn-99-camp0058
+type: nmdc:Organism
+name: Campylobacter concisus
+classified_as:
+  - id: NCBITaxon:360104
+    name: Campylobacter concisus
+    type: nmdc:NcbiTaxon
+biosafety_material_category: Bacteria

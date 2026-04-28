@@ -1,0 +1,36 @@
+# Sierra's scenario: a leaf clip from a greenhouse plant.
+# All cells in the leaf share the same plant genome. Microbes are present
+# but the submitter's intent is to sequence the plant.
+# OrganismSample, not Biosample, because genomic homogeneity is expected.
+#
+# Organism data from GOLD organism_v2: Arabidopsis thaliana Ath.Ler-0.Leaf.1
+# (Go0590511, NCBITaxon:3702, queried 2026-04-14)
+# See: https://github.com/microbiomedata/nmdc-schema/pull/2884#issuecomment-4166566640
+
+organism_set:
+  - id: nmdc:orgn-99-athal001
+    type: nmdc:Organism
+    name: Arabidopsis thaliana
+    classified_as:
+      - id: NCBITaxon:3702
+        name: Arabidopsis thaliana
+        type: nmdc:NcbiTaxon
+    biosafety_material_category: Plant
+    gold_organism_identifiers:
+      - gold:Go0590511
+
+organism_sample_set:
+  - id: nmdc:osm-99-athleaf01
+    type: nmdc:OrganismSample
+    name: Arabidopsis thaliana Ler-0 leaf clip
+    samp_name: Athal_Ler0_leaf_01
+    expected_organism: nmdc:orgn-99-athal001
+    sample_isolated_from: Leaf tissue clipped from greenhouse-grown Arabidopsis thaliana Ler-0
+    collection_date:
+      type: nmdc:TimestampValue
+      has_raw_value: "2025-06-15"
+    geo_loc_name:
+      type: nmdc:TextValue
+      has_raw_value: USA
+    associated_studies:
+      - nmdc:sty-99-greenhouse

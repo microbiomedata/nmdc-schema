@@ -235,6 +235,22 @@ slots:
       - value: gold:Gb0312930
     range: uriorcurie
 
+  gold_organism_identifiers:
+    is_a: external_database_identifiers
+    mixins:
+      - gold_identifiers
+    pattern: "^gold:Go[0-9]+$"
+    description: identifiers for corresponding organism in GOLD
+    examples:
+      - value: gold:Go0000058
+        description: GOLD organism_v2 Campylobacter concisus 13826 (queried 2026-04-14)
+    range: uriorcurie
+    multivalued: true
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2973
+
+
+
   insdc_biosample_identifiers:
     is_a: biosample_identifiers
     mixins:

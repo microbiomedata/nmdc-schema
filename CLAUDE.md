@@ -91,6 +91,26 @@ by `make all` and are part of the packaged artifacts.
   build correctly, but do not stage or commit the resulting generated
   files.
 
+### YAML implicit type pitfalls in example data
+YAML parses bare `yes`, `no`, `true`, `false` as booleans and bare
+dates like `2023-06-15` as `datetime.date` objects. When these values
+are meant as strings (e.g. `YesNoEnum` permissible values,
+`has_raw_value` on `TimestampValue`), they must be quoted:
+
+```yaml
+# Wrong — parses as boolean True
+single_colony_isolation: yes
+
+# Right — stays as string "yes"
+single_colony_isolation: "yes"
+
+# Wrong — parses as datetime.date(2023, 6, 15)
+has_raw_value: 2023-06-15
+
+# Right — stays as string "2023-06-15"
+has_raw_value: "2023-06-15"
+```
+
 ## Pre-release Process
 
 Use pre-releases to test schema changes on PyPI before a full release.
