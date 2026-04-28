@@ -5447,14 +5447,17 @@
             "enum": [
                 "acetonitrile",
                 "acetic_acid",
+                "acetone",
                 "alphaLP",
                 "ammonium_acetate",
                 "ammonium_bicarbonate",
+                "ammonium_formate",
                 "amitriptyline",
                 "Arg-C",
                 "Asp-N",
                 "chloroform",
                 "chymotrypsin",
+                "disodium_hydrogenphosphate_dihydrate",
                 "ethanol",
                 "formic_acid",
                 "glucose",
@@ -5467,7 +5470,11 @@
                 "methanol",
                 "methoxyamine",
                 "medronic_acid",
+                "potassium_chloride",
+                "potassium_dihydrogen_phosphate",
                 "phosphoric_acid",
+                "sodium_chloride",
+                "trichloroacetic_acid",
                 "trimethylchlorosilane",
                 "trypsin",
                 "water"
@@ -15452,5 +15459,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post60.dev0+e99e27d60"
+    "version": "11.18.0.post64.dev0+e15e2aba7"
 }

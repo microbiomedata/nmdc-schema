@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post60.dev0+e99e27d60
+version: 11.18.0.post64.dev0+e15e2aba7
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -5350,6 +5350,9 @@ enums:
       acetic_acid:
         text: acetic_acid
         meaning: CHEBI:15366
+      acetone:
+        text: acetone
+        meaning: CHEBI:15347
       alphaLP:
         text: alphaLP
         meaning: EC:3.4.21.12
@@ -5364,6 +5367,9 @@ enums:
       ammonium_bicarbonate:
         text: ammonium_bicarbonate
         meaning: CHEBI:184335
+      ammonium_formate:
+        text: ammonium_formate
+        meaning: CHEBI:63050
       amitriptyline:
         text: amitriptyline
         meaning: CHEBI:2666
@@ -5388,6 +5394,9 @@ enums:
         comments:
         - A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan,
           leucine, tyrosine, and phenylalanine.
+      disodium_hydrogenphosphate_dihydrate:
+        text: disodium_hydrogenphosphate_dihydrate
+        meaning: CHEBI:91258
       ethanol:
         text: ethanol
         meaning: CHEBI:16236
@@ -5441,9 +5450,21 @@ enums:
         comments:
         - A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic
           acid groups, also known as methylenediphosphonic acid
+      potassium_chloride:
+        text: potassium_chloride
+        meaning: CHEBI:32588
+      potassium_dihydrogen_phosphate:
+        text: potassium_dihydrogen_phosphate
+        meaning: CHEBI:63036
       phosphoric_acid:
         text: phosphoric_acid
         meaning: CHEBI:26078
+      sodium_chloride:
+        text: sodium_chloride
+        meaning: CHEBI:26710
+      trichloroacetic_acid:
+        text: trichloroacetic_acid
+        meaning: CHEBI:30956
       trimethylchlorosilane:
         text: trimethylchlorosilane
         meaning: CHEBI:85069
