@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post112.dev0+a102d7181
+version: 11.18.0.post114.dev0+48537e9f5
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6398,6 +6398,10 @@ slots:
       - https://jgi.doe.gov/isolate-submission-form/v19
   gc_content:
     name: gc_content
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '%'
     description: Estimated GC content as a percentage (0–100).
     examples:
     - value: '54.0'
@@ -6412,7 +6416,7 @@ slots:
       predicate: EXACT_SYNONYM
       contexts:
       - https://jgi.doe.gov/isolate-submission-form/v19
-    range: float
+    range: QuantityValue
   viral_host_genus:
     name: viral_host_genus
     description: Genus of the viral host. Required for viral minimal drafts.

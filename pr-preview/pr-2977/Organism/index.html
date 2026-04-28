@@ -443,6 +443,9 @@
 
   Organism : gc_content
 
+      Organism --&gt; "0..1" QuantityValue : gc_content
+    click QuantityValue href "../QuantityValue"
+
   Organism : gold_organism_identifiers
 
   Organism : host_taxid
@@ -565,7 +568,7 @@
 </tr>
 <tr>
 <td><a href="../gc_content/">gc_content</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Estimated GC content as a percentage (0–100)</td>
 <td>direct</td>
 </tr>
@@ -1123,6 +1126,10 @@ attributes:
       partial_match: true
   gc_content:
     name: gc_content
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '%'
     description: Estimated GC content as a percentage (0–100).
     examples:
     - value: '54.0'
@@ -1142,7 +1149,7 @@ attributes:
     owner: Organism
     domain_of:
     - Organism
-    range: float
+    range: QuantityValue
   source_mat_id:
     name: source_mat_id
     annotations:

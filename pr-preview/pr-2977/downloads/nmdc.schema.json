@@ -12688,11 +12688,15 @@
                     ]
                 },
                 "gc_content": {
-                    "description": "Estimated GC content as a percentage (0\u2013100).",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Estimated GC content as a percentage (0\u2013100)."
                 },
                 "gold_organism_identifiers": {
                     "description": "identifiers for corresponding organism in GOLD",
@@ -16114,5 +16118,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post112.dev0+a102d7181"
+    "version": "11.18.0.post114.dev0+48537e9f5"
 }
