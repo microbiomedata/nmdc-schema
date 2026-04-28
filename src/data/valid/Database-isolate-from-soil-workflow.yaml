@@ -4,7 +4,14 @@
 #   → Culturing → OrganismSample (expanded culture)
 #   → Extraction → ProcessedSample (DNA)
 #
-# Based on Alicia Clum's use case (#2925, #2927).
+# Carries forward the spirit of Alicia Clum's #2927 examples
+# `Database-cultured_isolate.yaml` and `Database-cultured_isolate_flat.yaml`,
+# both of which modeled the same soil → isolation → culture → DNA workflow.
+# This file is the consolidated home for that scenario. The nested-vs-flat
+# `organism_metadata` design comparison those two files were exploring is
+# moot under this PR's design choice (flat typed slots on Organism rather
+# than nested sub-objects). See also the broader use case writeup in #2925.
+#
 # Organism is a richly-annotated, long-public GOLD reference: Bacillus subtilis
 # 168 (GOLD Go0000781, NCBI Taxonomy 224308, ATCC 6051). Type strain, soil
 # isolate, complete published genome. Selected because it is a canonical soil
