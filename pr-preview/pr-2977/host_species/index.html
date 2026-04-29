@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/viral_host_genus/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/host_species/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: viral_host_genus - NMDC Schema Documentation</title>
+        <title>Slot: host_species - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-viral_host_genus" class="md-skip">
+        <a href="#slot-host_species" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: viral_host_genus
+              Slot: host_species
             
           </span>
         </div>
@@ -647,17 +647,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comments
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -727,10 +716,10 @@
   
 
 
-<h1 id="slot-viral_host_genus">Slot: viral_host_genus</h1>
-<p><em>Genus of the viral host. Required for viral minimal drafts.</em></p>
+<h1 id="slot-host_species">Slot: host_species</h1>
+<p><em>Species of the host organism that the sample was collected from.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/viral_host_genus">nmdc:viral_host_genus</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/host_species">nmdc:host_species</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -743,8 +732,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Organism/">Organism</a></td>
-<td>A material entity that is a living or once-living individual</td>
+<td><a href="../Biosample/">Biosample</a></td>
+<td>Biological source material which can be characterized by an experiment</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -762,14 +751,10 @@
 </thead>
 <tbody>
 <tr>
-<td>Escherichia</td>
+<td>coli</td>
 </tr>
 </tbody>
 </table>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Viral host fields are present on the JGI Isolate (NA) v19 form but not in the GOLD organism_v2 or dw_samples lakehouse tables. No real lakehouse examples available; value shown is from the JGI form field specification.</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -793,27 +778,23 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: viral_host_genus
-description: Genus of the viral host. Required for viral minimal drafts.
-comments:
-- Viral host fields are present on the JGI Isolate (NA) v19 form but not in the GOLD
-  organism_v2 or dw_samples lakehouse tables. No real lakehouse examples available;
-  value shown is from the JGI form field specification.
+<pre><code class="language-yaml">name: host_species
+description: Species of the host organism that the sample was collected from.
 examples:
-- value: Escherichia
+- value: coli
   description: JGI Isolate form field specification — bacterial host for phage submissions
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc
 structured_aliases:
-- literal_form: Host Genus
+- literal_form: Host Species
   predicate: EXACT_SYNONYM
   contexts:
   - https://jgi.doe.gov/isolate-submission-form/v19
 rank: 1000
-alias: viral_host_genus
+alias: host_species
 domain_of:
-- Organism
+- Biosample
 range: string
 
 </code></pre>

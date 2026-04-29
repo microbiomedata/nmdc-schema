@@ -1981,6 +1981,13 @@
                     ],
                     "description": "Observed genotype"
                 },
+                "host_genus": {
+                    "description": "Genus of the host organism that the sample was collected from.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "host_growth_cond": {
                     "anyOf": [
                         {
@@ -2072,6 +2079,20 @@
                         }
                     ],
                     "description": "Morphological shape of host"
+                },
+                "host_species": {
+                    "description": "Species of the host organism that the sample was collected from.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "host_strain": {
+                    "description": "Strain of the host organism that the sample was collected from.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "host_subject_id": {
                     "anyOf": [
@@ -12763,27 +12784,6 @@
                         "nmdc:Organism"
                     ],
                     "type": "string"
-                },
-                "viral_host_genus": {
-                    "description": "Genus of the viral host. Required for viral minimal drafts.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "viral_host_species": {
-                    "description": "Species of the viral host. Required for viral minimal drafts.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "viral_host_strain": {
-                    "description": "Strain of the viral host. Required for viral minimal drafts.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 }
             },
             "required": [
@@ -16104,5 +16104,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post124.dev0+f284ff575"
+    "version": "11.18.0.post125.dev0+fefff5a5b"
 }

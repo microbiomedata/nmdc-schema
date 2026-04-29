@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/viral_host_strain/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/host_strain/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: viral_host_strain - NMDC Schema Documentation</title>
+        <title>Slot: host_strain - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-viral_host_strain" class="md-skip">
+        <a href="#slot-host_strain" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: viral_host_strain
+              Slot: host_strain
             
           </span>
         </div>
@@ -716,10 +716,10 @@
   
 
 
-<h1 id="slot-viral_host_strain">Slot: viral_host_strain</h1>
-<p><em>Strain of the viral host. Required for viral minimal drafts.</em></p>
+<h1 id="slot-host_strain">Slot: host_strain</h1>
+<p><em>Strain of the host organism that the sample was collected from.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/viral_host_strain">nmdc:viral_host_strain</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/host_strain">nmdc:host_strain</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -732,8 +732,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Organism/">Organism</a></td>
-<td>A material entity that is a living or once-living individual</td>
+<td><a href="../Biosample/">Biosample</a></td>
+<td>Biological source material which can be characterized by an experiment</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -778,8 +778,8 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: viral_host_strain
-description: Strain of the viral host. Required for viral minimal drafts.
+<pre><code class="language-yaml">name: host_strain
+description: Strain of the host organism that the sample was collected from.
 examples:
 - value: K-12 MG1655
   description: JGI Isolate form field specification — common lab strain
@@ -792,9 +792,9 @@ structured_aliases:
   contexts:
   - https://jgi.doe.gov/isolate-submission-form/v19
 rank: 1000
-alias: viral_host_strain
+alias: host_strain
 domain_of:
-- Organism
+- Biosample
 range: string
 
 </code></pre>

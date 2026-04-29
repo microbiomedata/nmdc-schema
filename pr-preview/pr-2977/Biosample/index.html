@@ -2006,6 +2006,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../host_genus/">host_genus</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Genus of the host organism that the sample was collected from</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../host_growth_cond/">host_growth_cond</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Literature reference giving growth conditions of the host</td>
@@ -2051,6 +2057,18 @@
 <td><a href="../host_shape/">host_shape</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Morphological shape of host</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_species/">host_species</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Species of the host organism that the sample was collected from</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_strain/">host_strain</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Strain of the host organism that the sample was collected from</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -4345,6 +4363,7 @@ slots:
 - host_dry_mass
 - host_family_relation
 - host_genotype
+- host_genus
 - host_growth_cond
 - host_height
 - host_last_meal
@@ -4353,6 +4372,8 @@ slots:
 - host_phenotype
 - host_sex
 - host_shape
+- host_species
+- host_strain
 - host_subject_id
 - host_subspecf_genlin
 - host_substrate
@@ -10069,6 +10090,33 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
+  host_genus:
+    name: host_genus
+    description: Genus of the host organism that the sample was collected from.
+    comments:
+    - Host info is sample-level, not strain-level — a single organism can be associated
+      with many hosts via different samples. The MIxS-imported `host_taxid` (MIXS:0000250)
+      on the same class is preferred when an NCBI taxon ID is available; this slot
+      captures the genus when only a textual host designation is provided (e.g. on
+      the JGI Isolate form for viral isolates).
+    examples:
+    - value: Escherichia
+      description: JGI Isolate form field specification — bacterial host for phage
+        submissions
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host Genus
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
+    rank: 1000
+    alias: host_genus
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: string
   host_growth_cond:
     name: host_growth_cond
     description: Literature reference giving growth conditions of the host
@@ -10256,6 +10304,47 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
+  host_species:
+    name: host_species
+    description: Species of the host organism that the sample was collected from.
+    examples:
+    - value: coli
+      description: JGI Isolate form field specification — bacterial host for phage
+        submissions
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host Species
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
+    rank: 1000
+    alias: host_species
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: string
+  host_strain:
+    name: host_strain
+    description: Strain of the host organism that the sample was collected from.
+    examples:
+    - value: K-12 MG1655
+      description: JGI Isolate form field specification — common lab strain
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host Strain
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
+    rank: 1000
+    alias: host_strain
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: string
   host_subject_id:
     name: host_subject_id
     description: A unique identifier by which each subject can be referred to, de-identified

@@ -470,12 +470,6 @@
 
   Organism : type
 
-  Organism : viral_host_genus
-
-  Organism : viral_host_species
-
-  Organism : viral_host_strain
-
 
 
 </div>
@@ -558,24 +552,6 @@
 <td><a href="../ref_biomaterial/">ref_biomaterial</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Reference for the organism, preferentially a DOI when a primary publication o...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../viral_host_genus/">viral_host_genus</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Genus of the viral host</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../viral_host_species/">viral_host_species</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Species of the viral host</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../viral_host_strain/">viral_host_strain</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Strain of the viral host</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -698,9 +674,6 @@ slots:
 - gc_content
 - source_mat_id
 - ref_biomaterial
-- viral_host_genus
-- viral_host_species
-- viral_host_strain
 slot_usage:
   id:
     name: id
@@ -1124,72 +1097,6 @@ attributes:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
-  viral_host_genus:
-    name: viral_host_genus
-    description: Genus of the viral host. Required for viral minimal drafts.
-    comments:
-    - Viral host fields are present on the JGI Isolate (NA) v19 form but not in the
-      GOLD organism_v2 or dw_samples lakehouse tables. No real lakehouse examples
-      available; value shown is from the JGI form field specification.
-    examples:
-    - value: Escherichia
-      description: JGI Isolate form field specification — bacterial host for phage
-        submissions
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Host Genus
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-    rank: 1000
-    alias: viral_host_genus
-    owner: Organism
-    domain_of:
-    - Organism
-    range: string
-  viral_host_species:
-    name: viral_host_species
-    description: Species of the viral host. Required for viral minimal drafts.
-    examples:
-    - value: coli
-      description: JGI Isolate form field specification — bacterial host for phage
-        submissions
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Host Species
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-    rank: 1000
-    alias: viral_host_species
-    owner: Organism
-    domain_of:
-    - Organism
-    range: string
-  viral_host_strain:
-    name: viral_host_strain
-    description: Strain of the viral host. Required for viral minimal drafts.
-    examples:
-    - value: K-12 MG1655
-      description: JGI Isolate form field specification — common lab strain
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Host Strain
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-    rank: 1000
-    alias: viral_host_strain
-    owner: Organism
-    domain_of:
-    - Organism
-    range: string
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand

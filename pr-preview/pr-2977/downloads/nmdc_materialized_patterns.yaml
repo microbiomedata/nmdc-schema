@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post124.dev0+f284ff575
+version: 11.18.0.post125.dev0+fefff5a5b
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6313,6 +6313,56 @@ slots:
     close_mappings:
     - biolink:start_interbase_coordinate
     is_a: gff_coordinate
+  host_genus:
+    name: host_genus
+    description: Genus of the host organism that the sample was collected from.
+    comments:
+    - Host info is sample-level, not strain-level — a single organism can be associated
+      with many hosts via different samples. The MIxS-imported `host_taxid` (MIXS:0000250)
+      on the same class is preferred when an NCBI taxon ID is available; this slot
+      captures the genus when only a textual host designation is provided (e.g. on
+      the JGI Isolate form for viral isolates).
+    examples:
+    - value: Escherichia
+      description: JGI Isolate form field specification — bacterial host for phage
+        submissions
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host Genus
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
+  host_species:
+    name: host_species
+    description: Species of the host organism that the sample was collected from.
+    examples:
+    - value: coli
+      description: JGI Isolate form field specification — bacterial host for phage
+        submissions
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host Species
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
+  host_strain:
+    name: host_strain
+    description: Strain of the host organism that the sample was collected from.
+    examples:
+    - value: K-12 MG1655
+      description: JGI Isolate form field specification — common lab strain
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host Strain
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
   organism_genus:
     name: organism_genus
     description: Genus of the organism.
@@ -6410,54 +6460,6 @@ slots:
       contexts:
       - https://jgi.doe.gov/isolate-submission-form/v19
     range: QuantityValue
-  viral_host_genus:
-    name: viral_host_genus
-    description: Genus of the viral host. Required for viral minimal drafts.
-    comments:
-    - Viral host fields are present on the JGI Isolate (NA) v19 form but not in the
-      GOLD organism_v2 or dw_samples lakehouse tables. No real lakehouse examples
-      available; value shown is from the JGI form field specification.
-    examples:
-    - value: Escherichia
-      description: JGI Isolate form field specification — bacterial host for phage
-        submissions
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Host Genus
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-  viral_host_species:
-    name: viral_host_species
-    description: Species of the viral host. Required for viral minimal drafts.
-    examples:
-    - value: coli
-      description: JGI Isolate form field specification — bacterial host for phage
-        submissions
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Host Species
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-  viral_host_strain:
-    name: viral_host_strain
-    description: Strain of the viral host. Required for viral minimal drafts.
-    examples:
-    - value: K-12 MG1655
-      description: JGI Isolate form field specification — common lab strain
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Host Strain
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
   expected_organism:
     name: expected_organism
     description: The organism that the submitter expects to be present in this sample.
@@ -19562,9 +19564,6 @@ classes:
     - gc_content
     - source_mat_id
     - ref_biomaterial
-    - viral_host_genus
-    - viral_host_species
-    - viral_host_strain
     slot_usage:
       id:
         name: id
@@ -20483,6 +20482,7 @@ classes:
     - host_dry_mass
     - host_family_relation
     - host_genotype
+    - host_genus
     - host_growth_cond
     - host_height
     - host_last_meal
@@ -20491,6 +20491,8 @@ classes:
     - host_phenotype
     - host_sex
     - host_shape
+    - host_species
+    - host_strain
     - host_subject_id
     - host_subspecf_genlin
     - host_substrate
