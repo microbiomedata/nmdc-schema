@@ -622,6 +622,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="OrganismSample (osm)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#note-on-host_taxid-and-the-jgi-viral-isolate-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Note on host_taxid and the JGI viral-isolate use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -811,8 +828,33 @@ to nmdc-schema classes, submission-schema, or deferred.</p>
 <td><code>expected_organism</code></td>
 <td>NMDC-native (new)</td>
 </tr>
+<tr>
+<td>19</td>
+<td>Host NCBI Tax ID*</td>
+<td><code>host_taxid</code> (also on <code>Biosample</code>)</td>
+<td>MIxS (existing)</td>
+</tr>
 </tbody>
 </table>
+<h3 id="note-on-host_taxid-and-the-jgi-viral-isolate-use-case">Note on host_taxid and the JGI viral-isolate use case</h3>
+<p>The JGI form labels field 19 ("Host NCBI Tax ID") as <em>for viral isolates only</em>.
+That framing is <strong>not</strong> baked into nmdc-schema. <code>host_taxid</code> is the general
+MIxS slot (<code>MIXS:0000250</code>) describing the host of a sample, applicable to any
+host-associated submission — viral, host-microbiome, parasite, etc. The
+sample-level placement (Biosample, OrganismSample) is the only structural
+constraint at the schema layer.</p>
+<p>The viral-specific framing is a <strong>submission-schema concern</strong>. Whether
+<code>host_taxid</code> is required, what label/help-text it carries, and what input
+controls validate it for a given submission are decided by submission-schema
+interfaces / templates / slot_usage — for example a <code>JgiViralIsolateInterface</code>
+in submission-schema can mark <code>host_taxid</code> required and label it "Host NCBI
+Tax ID (required for viral isolates)" without nmdc-schema needing a
+viral-specific slot.</p>
+<p>Broader normalization of taxon-bearing slots to use <code>NcbiTaxon</code> as their
+range (rather than strings or CURIEs in <code>has_raw_value</code>) is tracked in
+<a href="https://github.com/microbiomedata/nmdc-schema/issues/3000">#3000</a>. <code>host_taxid</code>
+is a likely first concrete migration target once <code>ontology_class_set</code> is
+loaded with NcbiTaxon from semantic-sql / OWL.</p>
 <h2 id="organism-orgn">Organism (orgn)</h2>
 <table>
 <thead>
@@ -907,12 +949,6 @@ to nmdc-schema classes, submission-schema, or deferred.</p>
 <td>Host Strain* (viral)</td>
 <td><code>viral_host_strain</code></td>
 <td>JGI-native (new)</td>
-</tr>
-<tr>
-<td>19</td>
-<td>Host NCBI Tax ID*</td>
-<td><code>host_taxid</code></td>
-<td>MIxS (existing, slot_usage override)</td>
 </tr>
 </tbody>
 </table>
