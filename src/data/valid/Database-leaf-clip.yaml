@@ -15,7 +15,6 @@ organism_set:
       - id: NCBITaxon:3702
         name: Arabidopsis thaliana
         type: nmdc:NcbiTaxon
-    biosafety_material_category: Plant
 
 organism_sample_set:
   - id: nmdc:osm-99-r6qkjb

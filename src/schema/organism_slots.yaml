@@ -41,25 +41,6 @@ enums:
   # submission logistics, not NMDC data-model fields. Equivalent slots with this
   # enum live in submission-schema JgiIsolateInterface. See submission-schema#418.
 
-  IsolateMaterialCategoryEnum:
-    description: >-
-      General category of isolate material, as used by JGI for biosafety
-      classification of pure-organism / strain-pure samples. Deliberately
-      named to avoid confusion with the submission-schema
-      JGIBiosafetyMaterialCategoryEnum and with environmental material
-      category vocabularies (e.g. MIxS `env_medium`).
-    permissible_values:
-      Alga: {}
-      Animal: {}
-      Archaea: {}
-      Bacteria: {}
-      Fungi: {}
-      Plant: {}
-      Plasmid: {}
-      Protist: {}
-      Virus: {}
-      Synthetic Construct: {}
-
 slots:
   # --- Organism sub-species identity slots (from JGI Isolate form) ---
   organism_genus:
@@ -196,20 +177,6 @@ slots:
     examples:
       - value: K-12 MG1655
         description: JGI Isolate form field specification — common lab strain
-
-  biosafety_material_category:
-    range: IsolateMaterialCategoryEnum
-    description: General category of organism for biosafety classification.
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: Biosafety Material Category
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-    examples:
-      - value: Bacteria
-        description: JGI Isolate form — bacterial isolates (e.g. GOLD organism_v2 Go0000189 Shewanella loihica PV-4, queried 2026-04-21)
 
   # --- OrganismSample slots ---
   expected_organism:

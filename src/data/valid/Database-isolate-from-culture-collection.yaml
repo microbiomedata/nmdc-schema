@@ -23,7 +23,6 @@ organism_set:
       - id: NCBITaxon:160488
         name: Pseudomonas putida KT2440
         type: nmdc:NcbiTaxon
-    biosafety_material_category: Bacteria
     organism_genus: Pseudomonas
     organism_species: putida
     strain_name: KT2440

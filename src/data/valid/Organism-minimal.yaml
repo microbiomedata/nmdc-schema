@@ -6,4 +6,3 @@ classified_as:
   - id: NCBITaxon:360104
     name: Campylobacter concisus
     type: nmdc:NcbiTaxon
-biosafety_material_category: Bacteria

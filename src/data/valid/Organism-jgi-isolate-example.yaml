@@ -10,7 +10,6 @@ classified_as:
   - id: NCBITaxon:22
     name: Shewanella
     type: nmdc:NcbiTaxon
-biosafety_material_category: Bacteria
 organism_genus: Shewanella
 organism_species: loihica
 strain_name: PV-4

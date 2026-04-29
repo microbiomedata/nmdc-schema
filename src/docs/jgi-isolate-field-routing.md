@@ -57,7 +57,7 @@ loaded with NcbiTaxon from semantic-sql / OWL.
 | # | JGI Field | nmdc-schema slot | Provenance |
 |---|---|---|---|
 | 11 | NCBI Tax ID* | `classified_as` | NMDC-native (#2975) |
-| 39 | Biosafety Material Category* | `biosafety_material_category` | JGI-native (new) |
+| 39 | Biosafety Material Category* | → submission-schema (microbiomedata/submission-schema#423) | Moved: JGI submission-time routing field, not an NMDC data-model attribute. The 10 permissible values come from the JGI Isolate (NA) v19 form; see PR #423 thread for the verified list and the GOLD/MIxS comparison. |
 | 6 | Genus* | `organism_genus` | JGI-native (new) |
 | 7 | Species* | `organism_species` | JGI-native (new) |
 | 8 | Strain or cultivar* | `strain_name` | JGI-native (new) |

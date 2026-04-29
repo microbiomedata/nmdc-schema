@@ -50,7 +50,6 @@ organism_set:
       - id: NCBITaxon:1386
         name: Bacillus
         type: nmdc:NcbiTaxon
-    biosafety_material_category: Bacteria
     organism_genus: Bacillus
     organism_species: subtilis
     strain_name: "168"

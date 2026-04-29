@@ -16,7 +16,6 @@ organism_set:
       - id: NCBITaxon:5353
         name: Lentinula edodes
         type: nmdc:NcbiTaxon
-    biosafety_material_category: Fungi
 
 organism_sample_set:
   - id: nmdc:osm-99-c3hw28

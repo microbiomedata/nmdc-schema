@@ -191,12 +191,6 @@ classes:
     slots:
       ## classification + identity
       - classified_as
-      ## DEBATED: biosafety_material_category — Montana argues this is a JGI submission
-      ## logistics field (like container or DNase) and belongs only in submission-schema
-      ## JgiIsolateInterface. Counterargument: biosafety category is a property of the
-      ## organism itself (not the sample or the submission), so it belongs on Organism for
-      ## downstream consumers. Keeping for now pending resolution.
-      - biosafety_material_category
       ## sub-species identity (JGI Isolate form)
       - organism_genus
       - organism_species
