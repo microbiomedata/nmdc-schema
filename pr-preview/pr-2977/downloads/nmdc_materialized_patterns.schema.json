@@ -12956,19 +12956,9 @@
                     ]
                 },
                 "classified_as": {
-                    "description": "A formal classification for this entity, expressed directly as an ontology-backed class instance stored in ontology_class_set.",
+                    "description": "Taxonomic classification of this organism. Narrowed from the global OntologyClass range (defined on the slot itself) to NcbiTaxon, since organism identity at NMDC is anchored to NCBI Taxonomy. Per #3016 \u2014 the broader pattern is to narrow `classified_as` to `NcbiTaxon` on all organism-oriented classes via slot_usage.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/OntologyClass"
-                            },
-                            {
-                                "$ref": "#/$defs/NcbiTaxon"
-                            },
-                            {
-                                "$ref": "#/$defs/OrthologyGroup"
-                            }
-                        ]
+                        "$ref": "#/$defs/NcbiTaxon"
                     },
                     "type": [
                         "array",
@@ -13033,10 +13023,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "ploidy": {
-                    "$ref": "#/$defs/PloidyEnum",
-                    "description": "Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured pattern expects a PATO term label with CURIE (e.g. \"haploid [PATO:0001375]\"). The JGI isolate field is free-text comments; values from that field need conversion to the ontology-valued form for MIxS compliance."
                 },
                 "ref_biomaterial": {
                     "anyOf": [
@@ -13215,6 +13201,10 @@
                         "string",
                         "null"
                     ]
+                },
+                "ploidy": {
+                    "$ref": "#/$defs/PloidyEnum",
+                    "description": "The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO"
                 },
                 "provenance_metadata": {
                     "anyOf": [
@@ -13464,7 +13454,7 @@
             "type": "string"
         },
         "PloidyEnum": {
-            "description": "Ploidy of an organism's genome. Permissible values map to PATO classes. Used as the range of the ploidy slot on Organism, narrowing the MIxS-imported `ploidy` (MIXS:0000021) from a free-text/structured pattern to an enumerated set with referential integrity to PATO.",
+            "description": "Ploidy of an organism's genome. Permissible values map to PATO classes. Used as the range of the ploidy slot, narrowing the MIxS- imported `ploidy` (MIXS:0000021) from a free-text / structured pattern to an enumerated set with referential integrity to PATO. Permissible values carry `structured_aliases` for the common label variants found in NCBI biosamples (see distribution audit `~/Desktop/markdown/nmdc-schema-pr-2977-theoretical-migration-needs-2026-04-29.md` and the lakehouse query `SELECT ploidy, COUNT(*) FROM ncbi-sourced .biosamples_flattened` run 2026-04-29).",
             "enum": [
                 "haploid",
                 "diploid",
@@ -16439,6 +16429,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post126.dev0+1d3638aad"
+    "version": "11.18.0.post127.dev0+a669190db"
 }
 

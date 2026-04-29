@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post126.dev0+1d3638aad
+version: 11.18.0.post127.dev0+a669190db
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -3383,35 +3383,149 @@ enums:
   PloidyEnum:
     name: PloidyEnum
     description: Ploidy of an organism's genome. Permissible values map to PATO classes.
-      Used as the range of the ploidy slot on Organism, narrowing the MIxS-imported
-      `ploidy` (MIXS:0000021) from a free-text/structured pattern to an enumerated
-      set with referential integrity to PATO.
+      Used as the range of the ploidy slot, narrowing the MIxS- imported `ploidy`
+      (MIXS:0000021) from a free-text / structured pattern to an enumerated set with
+      referential integrity to PATO. Permissible values carry `structured_aliases`
+      for the common label variants found in NCBI biosamples (see distribution audit
+      `~/Desktop/markdown/nmdc-schema-pr-2977-theoretical-migration-needs-2026-04-29.md`
+      and the lakehouse query `SELECT ploidy, COUNT(*) FROM ncbi-sourced .biosamples_flattened`
+      run 2026-04-29).
+    comments:
+    - '**Cannot cleanly express:** specific aneuploidies (e.g. "Trisomy 21", "Trisomy
+      V", "Trisomy IX", "hexaploid, N1DT1B"). The closest enum value is `aneuploid`,
+      but that loses the chromosome-specific detail. If aneuploidy specificity is
+      needed, capture the chromosome identifier in a separate slot.'
+    - '**Cannot cleanly express:** DNA-content "C-value" notations from cytogenetics
+      (`2C`, `4C`, `8C`, `16C`). C-value reflects DNA mass per cell, which is related
+      to but distinct from chromosome-set ploidy and may differ during S phase or
+      in endopolyploid tissues. NCBI biosamples conflates these with ploidy values;
+      consumers may need to map to `endopolyploid` for tissue-level cases or treat
+      as missing.'
+    - '**Cannot cleanly express:** compound / cell-cycle-modified states like `2N
+      (non-dividing)`, `monokaryotic, haploid`, `haploid/diploid`, `mostly diploid`,
+      `dikaryon`. These layer additional axes (cell cycle, karyon count, uncertainty)
+      on top of bare ploidy. Best handled by normalizing to the dominant ploidy and
+      capturing modifiers separately, or by treating as missing for strict ETL.'
+    - '**Cannot cleanly express:** missing-value placeholders observed in NCBI biosamples
+      — `not applicable`, `Not Applicable`, `not collected`, `NA`, `Not known`, `not
+      provided`, `/`. ETL should normalize these to null / absent rather than mapping
+      to any enum value.'
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       haploid:
         text: haploid
         description: A single set of unpaired chromosomes.
         meaning: PATO:0001375
+        structured_aliases:
+        - literal_form: 1x
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: 1X
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: 1N
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: '1'
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
       diploid:
         text: diploid
         description: Two sets of homologous chromosomes (one from each parent).
         meaning: PATO:0001394
+        structured_aliases:
+        - literal_form: 2x
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: 2X
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: 2N
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: 2n=2x
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: diploidy
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
       triploid:
         text: triploid
         description: Three sets of chromosomes.
         meaning: PATO:0001381
+        structured_aliases:
+        - literal_form: 3x
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: 3X
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: 3N
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
       tetraploid:
         text: tetraploid
         description: Four sets of chromosomes.
         meaning: PATO:0001382
+        structured_aliases:
+        - literal_form: 4x
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: 4X
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: 4N
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: Tertaploid
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
       pentaploid:
         text: pentaploid
         description: Five sets of chromosomes.
         meaning: PATO:0001383
+        structured_aliases:
+        - literal_form: 5x
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: 5X
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
       hexaploid:
         text: hexaploid
         description: Six sets of chromosomes.
         meaning: PATO:0001384
+        structured_aliases:
+        - literal_form: 6x
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: 6X
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
+        - literal_form: autohexaploid
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
       polyploid:
         text: polyploid
         description: More than two sets of chromosomes (generic — use a more specific
@@ -3427,6 +3541,11 @@ enums:
         description: Polyploid arising from hybridization between two or more species.
           (Note PATO label uses -y suffix; aligning with OLS4.)
         meaning: PATO:0001379
+        structured_aliases:
+        - literal_form: allopolyploid
+          predicate: EXACT_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
       paleopolyploid:
         text: paleopolyploid
         description: An organism whose ancestors were polyploid; current genome appears
@@ -3447,6 +3566,11 @@ enums:
         description: A genome with an abnormal number of chromosomes (not an exact
           multiple of the haploid number).
         meaning: PATO:0001385
+        structured_aliases:
+        - literal_form: hyperploid
+          predicate: NARROW_SYNONYM
+          contexts:
+          - https://www.ncbi.nlm.nih.gov/biosample
       euploid:
         text: euploid
         description: A genome with an exact multiple of the haploid chromosome number
@@ -19635,7 +19759,6 @@ classes:
     - strain_name
     - isolate_name
     - estimated_size
-    - ploidy
     - gc_content
     - source_mat_id
     - ref_biomaterial
@@ -19647,6 +19770,14 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
           interpolated: true
+      classified_as:
+        name: classified_as
+        description: 'Taxonomic classification of this organism. Narrowed from the
+          global OntologyClass range (defined on the slot itself) to NcbiTaxon, since
+          organism identity at NMDC is anchored to NCBI Taxonomy. Per #3016 — the
+          broader pattern is to narrow `classified_as` to `NcbiTaxon` on all organism-oriented
+          classes via slot_usage.'
+        range: NcbiTaxon
       source_mat_id:
         name: source_mat_id
         description: Culture collection name and identifier for this organism. Reuses
@@ -19665,24 +19796,13 @@ classes:
           and enforce integer input.
         structured_aliases:
         - literal_form: Estimated Genome Size (Mb)
-          predicate: RELATED_SYNONYM
+          predicate: BROAD_SYNONYM
           contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
         pattern: ^[0-9]+ bp$
         structured_pattern:
           syntax: ^[0-9]+ bp$
           interpolated: false
-      ploidy:
-        name: ploidy
-        description: Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
-          pattern expects a PATO term label with CURIE (e.g. "haploid [PATO:0001375]").
-          The JGI isolate field is free-text comments; values from that field need
-          conversion to the ontology-valued form for MIxS compliance.
-        structured_aliases:
-        - literal_form: Ploidy Comments
-          predicate: BROAD_SYNONYM
-          contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
       ref_biomaterial:
         name: ref_biomaterial
         description: Reference for the organism, preferentially a DOI when a primary
@@ -21396,6 +21516,7 @@ classes:
     - host_taxid
     - sample_isolation_method
     - sample_isolated_from
+    - ploidy
     slot_usage:
       id:
         name: id

@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -695,7 +706,7 @@
 
 
 <h1 id="enum-ploidyenum">Enum: PloidyEnum</h1>
-<p><em>Ploidy of an organism's genome. Permissible values map to PATO classes. Used as the range of the ploidy slot on Organism, narrowing the MIxS-imported <code>ploidy</code> (MIXS:0000021) from a free-text/structured pattern to an enumerated set with referential integrity to PATO.</em></p>
+<p><em>Ploidy of an organism's genome. Permissible values map to PATO classes. Used as the range of the ploidy slot, narrowing the MIxS- imported <code>ploidy</code> (MIXS:0000021) from a free-text / structured pattern to an enumerated set with referential integrity to PATO. Permissible values carry <code>structured_aliases</code> for the common label variants found in NCBI biosamples (see distribution audit <code>~/Desktop/markdown/nmdc-schema-pr-2977-theoretical-migration-needs-2026-04-29.md</code> and the lakehouse query <code>SELECT ploidy, COUNT(*) FROM ncbi-sourced .biosamples_flattened</code> run 2026-04-29).</em></p>
 <div>
 <p>URI: <a href="./">PloidyEnum</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
@@ -805,6 +816,13 @@
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li><strong>Cannot cleanly express:</strong> specific aneuploidies (e.g. "Trisomy 21", "Trisomy V", "Trisomy IX", "hexaploid, N1DT1B"). The closest enum value is <code>aneuploid</code>, but that loses the chromosome-specific detail. If aneuploidy specificity is needed, capture the chromosome identifier in a separate slot.</li>
+<li><strong>Cannot cleanly express:</strong> DNA-content "C-value" notations from cytogenetics (<code>2C</code>, <code>4C</code>, <code>8C</code>, <code>16C</code>). C-value reflects DNA mass per cell, which is related to but distinct from chromosome-set ploidy and may differ during S phase or in endopolyploid tissues. NCBI biosamples conflates these with ploidy values; consumers may need to map to <code>endopolyploid</code> for tissue-level cases or treat as missing.</li>
+<li><strong>Cannot cleanly express:</strong> compound / cell-cycle-modified states like <code>2N (non-dividing)</code>, <code>monokaryotic, haploid</code>, <code>haploid/diploid</code>, <code>mostly diploid</code>, <code>dikaryon</code>. These layer additional axes (cell cycle, karyon count, uncertainty) on top of bare ploidy. Best handled by normalizing to the dominant ploidy and capturing modifiers separately, or by treating as missing for strict ETL.</li>
+<li><strong>Cannot cleanly express:</strong> missing-value placeholders observed in NCBI biosamples — <code>not applicable</code>, <code>Not Applicable</code>, <code>not collected</code>, <code>NA</code>, <code>Not known</code>, <code>not provided</code>, <code>/</code>. ETL should normalize these to null / absent rather than mapping to any enum value.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -815,9 +833,31 @@
 
 <pre><code class="language-yaml">name: PloidyEnum
 description: Ploidy of an organism's genome. Permissible values map to PATO classes.
-  Used as the range of the ploidy slot on Organism, narrowing the MIxS-imported `ploidy`
-  (MIXS:0000021) from a free-text/structured pattern to an enumerated set with referential
-  integrity to PATO.
+  Used as the range of the ploidy slot, narrowing the MIxS- imported `ploidy` (MIXS:0000021)
+  from a free-text / structured pattern to an enumerated set with referential integrity
+  to PATO. Permissible values carry `structured_aliases` for the common label variants
+  found in NCBI biosamples (see distribution audit `~/Desktop/markdown/nmdc-schema-pr-2977-theoretical-migration-needs-2026-04-29.md`
+  and the lakehouse query `SELECT ploidy, COUNT(*) FROM ncbi-sourced .biosamples_flattened`
+  run 2026-04-29).
+comments:
+- '**Cannot cleanly express:** specific aneuploidies (e.g. &quot;Trisomy 21&quot;, &quot;Trisomy
+  V&quot;, &quot;Trisomy IX&quot;, &quot;hexaploid, N1DT1B&quot;). The closest enum value is `aneuploid`, but
+  that loses the chromosome-specific detail. If aneuploidy specificity is needed,
+  capture the chromosome identifier in a separate slot.'
+- '**Cannot cleanly express:** DNA-content &quot;C-value&quot; notations from cytogenetics (`2C`,
+  `4C`, `8C`, `16C`). C-value reflects DNA mass per cell, which is related to but
+  distinct from chromosome-set ploidy and may differ during S phase or in endopolyploid
+  tissues. NCBI biosamples conflates these with ploidy values; consumers may need
+  to map to `endopolyploid` for tissue-level cases or treat as missing.'
+- '**Cannot cleanly express:** compound / cell-cycle-modified states like `2N (non-dividing)`,
+  `monokaryotic, haploid`, `haploid/diploid`, `mostly diploid`, `dikaryon`. These
+  layer additional axes (cell cycle, karyon count, uncertainty) on top of bare ploidy.
+  Best handled by normalizing to the dominant ploidy and capturing modifiers separately,
+  or by treating as missing for strict ETL.'
+- '**Cannot cleanly express:** missing-value placeholders observed in NCBI biosamples
+  — `not applicable`, `Not Applicable`, `not collected`, `NA`, `Not known`, `not provided`,
+  `/`. ETL should normalize these to null / absent rather than mapping to any enum
+  value.'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
@@ -825,26 +865,116 @@ permissible_values:
     text: haploid
     description: A single set of unpaired chromosomes.
     meaning: PATO:0001375
+    structured_aliases:
+    - literal_form: 1x
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: 1X
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: 1N
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: '1'
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
   diploid:
     text: diploid
     description: Two sets of homologous chromosomes (one from each parent).
     meaning: PATO:0001394
+    structured_aliases:
+    - literal_form: 2x
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: 2X
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: 2N
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: 2n=2x
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: diploidy
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
   triploid:
     text: triploid
     description: Three sets of chromosomes.
     meaning: PATO:0001381
+    structured_aliases:
+    - literal_form: 3x
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: 3X
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: 3N
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
   tetraploid:
     text: tetraploid
     description: Four sets of chromosomes.
     meaning: PATO:0001382
+    structured_aliases:
+    - literal_form: 4x
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: 4X
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: 4N
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: Tertaploid
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
   pentaploid:
     text: pentaploid
     description: Five sets of chromosomes.
     meaning: PATO:0001383
+    structured_aliases:
+    - literal_form: 5x
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: 5X
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
   hexaploid:
     text: hexaploid
     description: Six sets of chromosomes.
     meaning: PATO:0001384
+    structured_aliases:
+    - literal_form: 6x
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: 6X
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
+    - literal_form: autohexaploid
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
   polyploid:
     text: polyploid
     description: More than two sets of chromosomes (generic — use a more specific
@@ -859,6 +989,11 @@ permissible_values:
     description: Polyploid arising from hybridization between two or more species.
       (Note PATO label uses -y suffix; aligning with OLS4.)
     meaning: PATO:0001379
+    structured_aliases:
+    - literal_form: allopolyploid
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
   paleopolyploid:
     text: paleopolyploid
     description: An organism whose ancestors were polyploid; current genome appears
@@ -878,6 +1013,11 @@ permissible_values:
     description: A genome with an abnormal number of chromosomes (not an exact multiple
       of the haploid number).
     meaning: PATO:0001385
+    structured_aliases:
+    - literal_form: hyperploid
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://www.ncbi.nlm.nih.gov/biosample
   euploid:
     text: euploid
     description: A genome with an exact multiple of the haploid chromosome number

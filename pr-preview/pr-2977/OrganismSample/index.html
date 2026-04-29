@@ -471,6 +471,11 @@
 
   OrganismSample : name
 
+  OrganismSample : ploidy
+
+      OrganismSample --&gt; "0..1" PloidyEnum : ploidy
+    click PloidyEnum href "../PloidyEnum"
+
   OrganismSample : provenance_metadata
 
       OrganismSample --&gt; "0..1" ProvenanceMetadata : provenance_metadata
@@ -593,6 +598,12 @@
 <td><a href="../sample_isolated_from/">sample_isolated_from</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Description of where the sample originated</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ploidy/">ploidy</a></td>
+<td>0..1 <br/> <a href="../PloidyEnum/">PloidyEnum</a></td>
+<td>The ploidy level of the genome (e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -739,6 +750,7 @@ slots:
 - host_taxid
 - sample_isolation_method
 - sample_isolated_from
+- ploidy
 slot_usage:
   id:
     name: id
@@ -1094,6 +1106,23 @@ attributes:
     domain_of:
     - OrganismSample
     range: string
+  ploidy:
+    name: ploidy
+    description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid,
+      triploid, tetraploid). It has implications for the downstream study of duplicated
+      gene and regions of the genomes (and perhaps for difficulties in assembly).
+      For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic
+      Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer
+      to http://purl.bioontology.org/ontology/PATO
+    title: ploidy
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0000021
+    alias: ploidy
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: PloidyEnum
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
