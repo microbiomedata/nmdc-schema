@@ -214,8 +214,7 @@ classes:
       ## provenance / reference
       - source_mat_id
       - ref_biomaterial
-      ## viral host (for viral isolates only)
-      - host_taxid
+      ## viral host
       - viral_host_genus
       - viral_host_species
       - viral_host_strain
@@ -231,15 +230,6 @@ classes:
           (MIXS:0000026).
         structured_aliases:
           - literal_form: Culture Collection and ID
-            contexts:
-              - https://jgi.doe.gov/isolate-submission-form/v19
-            predicate: EXACT_SYNONYM
-      host_taxid:
-        description: >-
-          NCBI taxon ID of the host organism (for viral isolates). Reuses MIxS host_taxid
-          (MIXS:0000250).
-        structured_aliases:
-          - literal_form: Host NCBI Taxonomy ID
             contexts:
               - https://jgi.doe.gov/isolate-submission-form/v19
             predicate: EXACT_SYNONYM

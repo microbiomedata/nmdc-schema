@@ -1321,6 +1321,10 @@ classes:
       - elev
       - geo_loc_name
       - samp_name
+      ## host of the sample (reused from Biosample) — sample-level per MIxS
+      ## host_taxid (MIXS:0000250). Applies when the sample was collected from
+      ## or co-cultured with a host; for non-host-associated samples leave unset.
+      - host_taxid
       ## isolation provenance
       - sample_isolation_method
       - sample_isolated_from
