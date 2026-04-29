@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post123.dev0+0c786b350
+version: 11.18.0.post124.dev0+f284ff575
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19579,7 +19579,7 @@ classes:
           MIxS source_mat_id (MIXS:0000026).
         structured_aliases:
         - literal_form: Culture Collection and ID
-          predicate: EXACT_SYNONYM
+          predicate: NARROW_SYNONYM
           contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
       estimated_size:
@@ -19591,7 +19591,7 @@ classes:
           and enforce integer input.
         structured_aliases:
         - literal_form: Estimated Genome Size (Mb)
-          predicate: EXACT_SYNONYM
+          predicate: RELATED_SYNONYM
           contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
         pattern: ^[0-9]+ bp$
@@ -19606,7 +19606,7 @@ classes:
           conversion to the ontology-valued form for MIxS compliance.
         structured_aliases:
         - literal_form: Ploidy Comments
-          predicate: EXACT_SYNONYM
+          predicate: BROAD_SYNONYM
           contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
       ref_biomaterial:
@@ -19628,7 +19628,7 @@ classes:
           ongoing MIxS renaming work.
         structured_aliases:
         - literal_form: Reference Genome
-          predicate: EXACT_SYNONYM
+          predicate: RELATED_SYNONYM
           contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
     class_uri: nmdc:Organism
