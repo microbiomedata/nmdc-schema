@@ -1,0 +1,1217 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/OrganismSample/" rel="canonical"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<title>Class: Organism Sample (OrganismSample) - NMDC Schema Documentation</title>
+<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#class-organism-sample-organismsample">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="NMDC Schema Documentation" class="md-header__button md-logo" data-md-component="logo" href=".." title="NMDC Schema Documentation">
+<img alt="logo" src="../images/NMDC_logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            NMDC Schema Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Class: Organism Sample (OrganismSample)
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="NMDC Schema Documentation" class="md-nav__button md-logo" data-md-component="logo" href=".." title="NMDC Schema Documentation">
+<img alt="logo" src="../images/NMDC_logo.png"/>
+</a>
+    NMDC Schema Documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../about/">
+<span class="md-ellipsis">
+    
+  
+    Funding and Acknowledgements
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../collaboration/">
+<span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Metadata_Documentation_Overview/">
+<span class="md-ellipsis">
+    
+  
+    Metadata Standards Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../maintaining-the-schema/">
+<span class="md-ellipsis">
+    
+  
+    Maintaining the NMDC Schema
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../schema_element_deprecation_guide/">
+<span class="md-ellipsis">
+    
+  
+    Schema element deprecation guide
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../schema-validation/">
+<span class="md-ellipsis">
+    
+  
+    NMDC Schema Validation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../identifiers/">
+<span class="md-ellipsis">
+    
+  
+    Identifiers
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../typecode-to-class-map/">
+<span class="md-ellipsis">
+    
+  
+    Typecode to class map
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../migrations/">
+<span class="md-ellipsis">
+    
+  
+    Version Migration Guides
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../visualizations/">
+<span class="md-ellipsis">
+    
+  
+    Visualizations
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../validation/">
+<span class="md-ellipsis">
+    
+  
+    Data Validation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../developer-docs/">
+<span class="md-ellipsis">
+    
+  
+    Developer Docs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../downloads/">
+<span class="md-ellipsis">
+    
+  
+    Downloads
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      
+        Inheritance
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+<span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+<span class="md-ellipsis">
+      
+        Usages
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comments">
+<span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see-also">
+<span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+<span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+</a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+<span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+<span class="md-ellipsis">
+      
+        Mappings
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+<span class="md-ellipsis">
+      
+        LinkML Source
+      
+    </span>
+</a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+<span class="md-ellipsis">
+      
+        Direct
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+<span class="md-ellipsis">
+      
+        Induced
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="class-organism-sample-organismsample">Class: Organism Sample (OrganismSample)</h1>
+<p><em>A material sample in which all cells are expected to share the same genome. This includes microbial colony picks, pellets from presumably pure liquid cultures, plant tissue clips, fungal fruiting body sections, and similar materials where the submitter intends to study a single organism. The purity expectation may be contradicted by sequencing results.</em></p>
+<div>
+<p>URI: <a href="https://w3id.org/nmdc/OrganismSample">nmdc:OrganismSample</a></p>
+<div class="mermaid">classDiagram
+  class OrganismSample
+  click OrganismSample href "../OrganismSample"
+    Sample &lt;|-- OrganismSample
+      click Sample href "../Sample"
+
+
+
+  OrganismSample : alternative_identifiers
+
+  OrganismSample : associated_studies
+
+      OrganismSample --&gt; "1..*" Study : associated_studies
+    click Study href "../Study"
+
+  OrganismSample : collection_date
+
+      OrganismSample --&gt; "0..1" TimestampValue : collection_date
+    click TimestampValue href "../TimestampValue"
+
+  OrganismSample : description
+
+  OrganismSample : elev
+
+  OrganismSample : embargoed
+
+  OrganismSample : expected_organism
+
+      OrganismSample --&gt; "0..1" Organism : expected_organism
+    click Organism href "../Organism"
+
+  OrganismSample : external_database_identifiers
+
+  OrganismSample : geo_loc_name
+
+      OrganismSample --&gt; "0..1" TextValue : geo_loc_name
+    click TextValue href "../TextValue"
+
+  OrganismSample : gold_organism_identifiers
+
+  OrganismSample : id
+
+  OrganismSample : lat_lon
+
+      OrganismSample --&gt; "0..1" GeolocationValue : lat_lon
+    click GeolocationValue href "../GeolocationValue"
+
+  OrganismSample : name
+
+  OrganismSample : provenance_metadata
+
+      OrganismSample --&gt; "0..1" ProvenanceMetadata : provenance_metadata
+    click ProvenanceMetadata href "../ProvenanceMetadata"
+
+  OrganismSample : samp_name
+
+  OrganismSample : sample_isolated_from
+
+  OrganismSample : sample_isolation_method
+
+  OrganismSample : type
+
+
+
+</div>
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../NamedThing/">NamedThing</a><ul>
+<li><a href="../MaterialEntity/">MaterialEntity</a><ul>
+<li><a href="../Sample/">Sample</a><ul>
+<li><strong>OrganismSample</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../associated_studies/">associated_studies</a></td>
+<td>1..* <br/> <a href="../Study/">Study</a></td>
+<td>The study associated with a resource</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../expected_organism/">expected_organism</a></td>
+<td>0..1 <br/> <a href="../Organism/">Organism</a></td>
+<td>The organism that the submitter expects to be present in this sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../embargoed/">embargoed</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Boolean/">Boolean</a></td>
+<td>If true, the data are embargoed and not available for public access</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../provenance_metadata/">provenance_metadata</a></td>
+<td>0..1 <br/> <a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
+<td>Provides information about the provenance of a record</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../external_database_identifiers/">external_database_identifiers</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>Link to corresponding identifier in external database</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gold_organism_identifiers/">gold_organism_identifiers</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>identifiers for corresponding organism in GOLD</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../collection_date/">collection_date</a></td>
+<td>0..1 <br/> <a href="../TimestampValue/">TimestampValue</a></td>
+<td>The time of sampling, either as an instance (single point in time) or interva...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../lat_lon/">lat_lon</a></td>
+<td>0..1 <br/> <a href="../GeolocationValue/">GeolocationValue</a></td>
+<td>The geographical origin of the sample as defined by latitude and longitude</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../elev/">elev</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Elevation of the sampling site is its height above a fixed reference point, m...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../geo_loc_name/">geo_loc_name</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>The geographical origin of the sample as defined by the country or sea name f...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samp_name/">samp_name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A local identifier or name that for the material sample used for extracting n...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_isolation_method/">sample_isolation_method</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Method, protocol, or kit used to extract DNA/RNA from the sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_isolated_from/">sample_isolated_from</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Description of where the sample originated</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A unique identifier for a thing</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A human readable label for an entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>a human-readable description of a thing</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of alternative identifiers for the entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Database/">Database</a></td>
+<td><a href="../organism_sample_set/">organism_sample_set</a></td>
+<td>range</td>
+<td><a href="./">OrganismSample</a></td>
+</tr>
+<tr>
+<td><a href="../Isolation/">Isolation</a></td>
+<td><a href="../has_output/">has_output</a></td>
+<td>range</td>
+<td><a href="./">OrganismSample</a></td>
+</tr>
+<tr>
+<td><a href="../Culturing/">Culturing</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>range</td>
+<td><a href="./">OrganismSample</a></td>
+</tr>
+<tr>
+<td><a href="../Culturing/">Culturing</a></td>
+<td><a href="../has_output/">has_output</a></td>
+<td>range</td>
+<td><a href="./">OrganismSample</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>An OrganismSample is not necessarily pure. The submitter expects it to contain a single organism, but sequencing may reveal contamination. Purity and strain-verification fields (single-colony isolation, ribosomal sequences, fungal screening) are JGI submission logistics and live in submission-schema JgiIsolateInterface, not here.</li>
+<li>The expected_organism slot links to an Organism instance representing what the submitter believes is in the sample.</li>
+<li>The defining criterion is genomic homogeneity of intent, not material type. A bacterial colony pick, a plant leaf clip, and a fungal fruiting body section are all OrganismSamples because the submitter expects one genome. An algal mat, a cat fecal sample for microbiome study, or a soil sample are Biosamples because they contain communities of organisms.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2803">https://github.com/microbiomedata/nmdc-schema/issues/2803</a></li>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2961">https://github.com/microbiomedata/nmdc-schema/issues/2961</a></li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close</td>
+<td>OBI:0100051</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+<h3 id="direct">Direct</h3>
+<details>
+<pre><code class="language-yaml">name: OrganismSample
+description: A material sample in which all cells are expected to share the same genome.
+  This includes microbial colony picks, pellets from presumably pure liquid cultures,
+  plant tissue clips, fungal fruiting body sections, and similar materials where the
+  submitter intends to study a single organism. The purity expectation may be contradicted
+  by sequencing results.
+title: Organism Sample
+comments:
+- An OrganismSample is not necessarily pure. The submitter expects it to contain a
+  single organism, but sequencing may reveal contamination. Purity and strain-verification
+  fields (single-colony isolation, ribosomal sequences, fungal screening) are JGI
+  submission logistics and live in submission-schema JgiIsolateInterface, not here.
+- The expected_organism slot links to an Organism instance representing what the submitter
+  believes is in the sample.
+- The defining criterion is genomic homogeneity of intent, not material type. A bacterial
+  colony pick, a plant leaf clip, and a fungal fruiting body section are all OrganismSamples
+  because the submitter expects one genome. An algal mat, a cat fecal sample for microbiome
+  study, or a soil sample are Biosamples because they contain communities of organisms.
+from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/microbiomedata/nmdc-schema/issues/2803
+- https://github.com/microbiomedata/nmdc-schema/issues/2961
+close_mappings:
+- OBI:0100051
+is_a: Sample
+slots:
+- associated_studies
+- expected_organism
+- embargoed
+- provenance_metadata
+- external_database_identifiers
+- gold_organism_identifiers
+- collection_date
+- lat_lon
+- elev
+- geo_loc_name
+- samp_name
+- sample_isolation_method
+- sample_isolated_from
+slot_usage:
+  id:
+    name: id
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  expected_organism:
+    name: expected_organism
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+      interpolated: true
+class_uri: nmdc:OrganismSample
+
+</code></pre>
+</details>
+<h3 id="induced">Induced</h3>
+<details>
+<pre><code class="language-yaml">name: OrganismSample
+description: A material sample in which all cells are expected to share the same genome.
+  This includes microbial colony picks, pellets from presumably pure liquid cultures,
+  plant tissue clips, fungal fruiting body sections, and similar materials where the
+  submitter intends to study a single organism. The purity expectation may be contradicted
+  by sequencing results.
+title: Organism Sample
+comments:
+- An OrganismSample is not necessarily pure. The submitter expects it to contain a
+  single organism, but sequencing may reveal contamination. Purity and strain-verification
+  fields (single-colony isolation, ribosomal sequences, fungal screening) are JGI
+  submission logistics and live in submission-schema JgiIsolateInterface, not here.
+- The expected_organism slot links to an Organism instance representing what the submitter
+  believes is in the sample.
+- The defining criterion is genomic homogeneity of intent, not material type. A bacterial
+  colony pick, a plant leaf clip, and a fungal fruiting body section are all OrganismSamples
+  because the submitter expects one genome. An algal mat, a cat fecal sample for microbiome
+  study, or a soil sample are Biosamples because they contain communities of organisms.
+from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/microbiomedata/nmdc-schema/issues/2803
+- https://github.com/microbiomedata/nmdc-schema/issues/2961
+close_mappings:
+- OBI:0100051
+is_a: Sample
+slot_usage:
+  id:
+    name: id
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  expected_organism:
+    name: expected_organism
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+      interpolated: true
+attributes:
+  associated_studies:
+    name: associated_studies
+    description: The study associated with a resource.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: associated_studies
+    owner: OrganismSample
+    domain_of:
+    - DataGeneration
+    - Biosample
+    - OrganismSample
+    range: Study
+    required: true
+    multivalued: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  expected_organism:
+    name: expected_organism
+    description: The organism that the submitter expects to be present in this sample.
+      May be contradicted by sequencing results.
+    examples:
+    - value: nmdc:orgn-99-abc123
+      description: Reference to an Organism instance in organism_set
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: expected_organism
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: Organism
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  embargoed:
+    name: embargoed
+    description: If true, the data are embargoed and not available for public access.
+    todos:
+    - make this required?
+    - first apply to Biosample
+    - try to apply to all Biosamples in a particular nmdc-server SubmissionMetadata?
+    - applying to a Study may not be granular enough
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: embargoed
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: boolean
+    recommended: true
+  provenance_metadata:
+    name: provenance_metadata
+    description: Provides information about the provenance of a record.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: provenance_metadata
+    owner: OrganismSample
+    domain_of:
+    - Study
+    - DataGeneration
+    - Biosample
+    - OrganismSample
+    range: ProvenanceMetadata
+  external_database_identifiers:
+    name: external_database_identifiers
+    description: Link to corresponding identifier in external database
+    comments:
+    - The value of this field is always a registered CURIE
+    from_schema: https://w3id.org/nmdc/nmdc
+    close_mappings:
+    - skos:closeMatch
+    rank: 1000
+    is_a: alternative_identifiers
+    abstract: true
+    alias: external_database_identifiers
+    owner: OrganismSample
+    domain_of:
+    - ProcessedSample
+    - OrganismSample
+    range: external_identifier
+    multivalued: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  gold_organism_identifiers:
+    name: gold_organism_identifiers
+    description: identifiers for corresponding organism in GOLD
+    examples:
+    - value: gold:Go0000058
+      description: GOLD organism_v2 Campylobacter concisus 13826 (queried 2026-04-14)
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/2973
+    rank: 1000
+    is_a: external_database_identifiers
+    mixins:
+    - gold_identifiers
+    alias: gold_organism_identifiers
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: uriorcurie
+    multivalued: true
+    pattern: ^gold:Go[0-9]+$
+  collection_date:
+    name: collection_date
+    description: 'The time of sampling, either as an instance (single point in time)
+      or interval. In case no exact time is available, the date/time can be right
+      truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10;
+      2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant'
+    title: collection date
+    examples:
+    - value: '2013-03-25T12:42:31+01:00'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - date
+    slot_uri: MIXS:0000011
+    alias: collection_date
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: TimestampValue
+  lat_lon:
+    name: lat_lon
+    description: The geographical origin of the sample as defined by latitude and
+      longitude. The values should be reported in decimal degrees, limited to 8 decimal
+      points, and in WGS84 system
+    title: geographic location (latitude and longitude)
+    examples:
+    - value: 50.586825 6.408977
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - geographic
+    - location
+    slot_uri: MIXS:0000009
+    alias: lat_lon
+    owner: OrganismSample
+    domain_of:
+    - FieldResearchSite
+    - Biosample
+    - OrganismSample
+    range: GeolocationValue
+    structured_pattern:
+      syntax: ^{lat} {lon}$
+      interpolated: true
+      partial_match: true
+  elev:
+    name: elev
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: meter
+    description: Elevation of the sampling site is its height above a fixed reference
+      point, most commonly the mean sea level. Elevation is mainly used when referring
+      to points on the earth's surface, while altitude is used for points above the
+      surface, such as an aircraft in flight or a spacecraft in orbit
+    title: elevation
+    examples:
+    - value: 100 meter
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - elevation
+    slot_uri: MIXS:0000093
+    alias: elev
+    owner: OrganismSample
+    domain_of:
+    - FieldResearchSite
+    - Biosample
+    - OrganismSample
+    range: float
+    structured_pattern:
+      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
+      interpolated: true
+      partial_match: true
+  geo_loc_name:
+    name: geo_loc_name
+    description: The geographical origin of the sample as defined by the country or
+      sea name followed by specific region name. Country or sea names should be chosen
+      from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology
+      (http://purl.bioontology.org/ontology/GAZ)
+    title: geographic location (country and/or sea,region)
+    examples:
+    - value: 'USA: Maryland, Bethesda'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - geographic
+    - location
+    slot_uri: MIXS:0000010
+    alias: geo_loc_name
+    owner: OrganismSample
+    domain_of:
+    - FieldResearchSite
+    - Biosample
+    - OrganismSample
+    range: TextValue
+    structured_pattern:
+      syntax: '^{country}: {region}, {specific_location}$'
+      interpolated: true
+      partial_match: true
+  samp_name:
+    name: samp_name
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: ''
+    description: A local identifier or name that for the material sample used for
+      extracting nucleic acids, and subsequent sequencing. It can refer either to
+      the original material collected or to any derived sub-samples. It can have any
+      format, but we suggest that you make it concise, unique and consistent within
+      your lab, and as informative as possible. INSDC requires every sample name from
+      a single Submitter to be unique. Use of a globally unique identifier for the
+      field source_mat_id is recommended in addition to sample_name
+    title: sample name
+    examples:
+    - value: ISDsoil1
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - sample
+    slot_uri: MIXS:0001107
+    alias: samp_name
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: string
+  sample_isolation_method:
+    name: sample_isolation_method
+    description: Method, protocol, or kit used to extract DNA/RNA from the sample.
+    comments:
+    - See also dna_isolate_meth in submission-schema for the equivalent portal field.
+    examples:
+    - value: Wizard Genomic DNA Purification Kit
+      description: Promega Wizard kit — a widely-used DNA isolation method in JGI
+        bacterial isolate submissions
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Sample Isolation Method
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
+    rank: 1000
+    alias: sample_isolation_method
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  sample_isolated_from:
+    name: sample_isolated_from
+    description: Description of where the sample originated.
+    examples:
+    - value: Iron-rich microbial mat from hydrothermal vent, 1325 m depth, Naha Vents,
+        south rift of Loihi seamount, Hawaii
+      description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+    - value: Saltwater from water column
+      description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Sample Isolated From
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
+    rank: 1000
+    alias: sample_isolated_from
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  id:
+    name: id
+    description: A unique identifier for a thing. Must be either a CURIE shorthand
+      for a URI or a complete URI
+    notes:
+    - 'abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?'
+    - a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters
+      will be accepted
+    - typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked
+      via per-class id slot usage assertions
+    - minting authority shoulders should probably be enumerated and checked in the
+      pattern
+    examples:
+    - value: nmdc:mgmag-00-x012.1_7_c1
+      description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: workflow_execution_id
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    - literal_form: data_object_id
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: OrganismSample
+    domain_of:
+    - NamedThing
+    range: uriorcurie
+    required: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  name:
+    name: name
+    description: A human readable label for an entity
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: name
+    owner: OrganismSample
+    domain_of:
+    - PersonValue
+    - NamedThing
+    - Protocol
+    range: string
+  description:
+    name: description
+    description: a human-readable description of a thing
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: dcterms:description
+    alias: description
+    owner: OrganismSample
+    domain_of:
+    - ImageValue
+    - NamedThing
+    - Protocol
+    range: string
+  alternative_identifiers:
+    name: alternative_identifiers
+    description: A list of alternative identifiers for the entity.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: alternative_identifiers
+    owner: OrganismSample
+    domain_of:
+    - NamedThing
+    - MetaboliteIdentification
+    range: uriorcurie
+    multivalued: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+    - literal_form: workflow_execution_class
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: OrganismSample
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - OntologyRelation
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    - ProvenanceMetadata
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    range: uriorcurie
+    required: true
+class_uri: nmdc:OrganismSample
+
+</code></pre>
+</details>
+</div>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "hide_page_title"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>
