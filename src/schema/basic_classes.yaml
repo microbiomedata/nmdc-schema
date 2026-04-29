@@ -226,7 +226,7 @@ classes:
           - literal_form: Culture Collection and ID
             contexts:
               - https://jgi.doe.gov/isolate-submission-form/v19
-            predicate: EXACT_SYNONYM
+            predicate: NARROW_SYNONYM    # JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any material-sample identifier)
       estimated_size:
         description: >-
           Estimated genome size, as integer base pairs. Reuses MIxS
@@ -241,7 +241,7 @@ classes:
           - literal_form: Estimated Genome Size (Mb)
             contexts:
               - https://jgi.doe.gov/isolate-submission-form/v19
-            predicate: EXACT_SYNONYM
+            predicate: RELATED_SYNONYM    # Same concept, different unit (Mb vs bp); requires ×10^6 conversion, not exactly substitutable
       ploidy:
         description: >-
           Genome ploidy. Reuses MIxS ploidy (MIXS:0000021). The MIxS structured
@@ -252,7 +252,7 @@ classes:
           - literal_form: Ploidy Comments
             contexts:
               - https://jgi.doe.gov/isolate-submission-form/v19
-            predicate: EXACT_SYNONYM
+            predicate: BROAD_SYNONYM    # JGI label is broader (free-text comments) than the MIxS slot (PATO term reference)
       ref_biomaterial:
         description: >-
           Reference for the organism, preferentially a DOI when a primary
@@ -263,7 +263,7 @@ classes:
           - literal_form: Reference Genome
             contexts:
               - https://jgi.doe.gov/isolate-submission-form/v19
-            predicate: EXACT_SYNONYM
+            predicate: RELATED_SYNONYM    # MIxS expects a publication citation; JGI's "Reference Genome" sometimes refers to the genome record itself (IMG / Phytozome IDs). Concepts overlap but differ.
         comments:
           - >-
             The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred
