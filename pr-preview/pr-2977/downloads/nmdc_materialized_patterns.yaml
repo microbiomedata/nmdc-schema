@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post125.dev0+fefff5a5b
+version: 11.18.0.post126.dev0+1d3638aad
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -3380,6 +3380,88 @@ enums:
         text: SubSamplingProcess
       WorkflowExecution:
         text: WorkflowExecution
+  PloidyEnum:
+    name: PloidyEnum
+    description: Ploidy of an organism's genome. Permissible values map to PATO classes.
+      Used as the range of the ploidy slot on Organism, narrowing the MIxS-imported
+      `ploidy` (MIXS:0000021) from a free-text/structured pattern to an enumerated
+      set with referential integrity to PATO.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      haploid:
+        text: haploid
+        description: A single set of unpaired chromosomes.
+        meaning: PATO:0001375
+      diploid:
+        text: diploid
+        description: Two sets of homologous chromosomes (one from each parent).
+        meaning: PATO:0001394
+      triploid:
+        text: triploid
+        description: Three sets of chromosomes.
+        meaning: PATO:0001381
+      tetraploid:
+        text: tetraploid
+        description: Four sets of chromosomes.
+        meaning: PATO:0001382
+      pentaploid:
+        text: pentaploid
+        description: Five sets of chromosomes.
+        meaning: PATO:0001383
+      hexaploid:
+        text: hexaploid
+        description: Six sets of chromosomes.
+        meaning: PATO:0001384
+      polyploid:
+        text: polyploid
+        description: More than two sets of chromosomes (generic — use a more specific
+          value when known).
+        meaning: PATO:0001377
+      autopolyploid:
+        text: autopolyploid
+        description: Polyploid arising from chromosome duplication within a single
+          species.
+        meaning: PATO:0001378
+      allopolyploidy:
+        text: allopolyploidy
+        description: Polyploid arising from hybridization between two or more species.
+          (Note PATO label uses -y suffix; aligning with OLS4.)
+        meaning: PATO:0001379
+      paleopolyploid:
+        text: paleopolyploid
+        description: An organism whose ancestors were polyploid; current genome appears
+          diploid but retains evidence of polyploidy.
+        meaning: PATO:0001380
+      monoploid:
+        text: monoploid
+        description: One set of chromosomes (sometimes used synonymously with haploid
+          in non-sexual contexts).
+        meaning: PATO:0001376
+      doubled_haploid:
+        text: doubled_haploid
+        description: A diploid organism developed from a haploid through chromosome
+          doubling.
+        meaning: PATO:0040027
+      aneuploid:
+        text: aneuploid
+        description: A genome with an abnormal number of chromosomes (not an exact
+          multiple of the haploid number).
+        meaning: PATO:0001385
+      euploid:
+        text: euploid
+        description: A genome with an exact multiple of the haploid chromosome number
+          (use when more specific value is unknown).
+        meaning: PATO:0001393
+      haplodiploid:
+        text: haplodiploid
+        description: Sex-determination system where one sex is haploid and the other
+          diploid (e.g. bees, ants, wasps).
+        meaning: PATO:0001395
+      endopolyploid:
+        text: endopolyploid
+        description: Polyploidy arising from endoreduplication within somatic cells
+          (genome is polyploid only in some tissues).
+        meaning: PATO:0001392
   AeroStrucEnum:
     name: AeroStrucEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16812,16 +16894,9 @@ slots:
       Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer
       to http://purl.bioontology.org/ontology/PATO
     title: ploidy
-    examples:
-    - value: allopolyploidy [PATO:0001379]
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000021
-    range: TextValue
-    pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$
-    structured_pattern:
-      syntax: ^{termLabel} \[{termID}\]$
-      interpolated: true
-      partial_match: true
+    range: PloidyEnum
   ref_biomaterial:
     name: ref_biomaterial
     description: Primary publication if isolated before genome publication; otherwise,

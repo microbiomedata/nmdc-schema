@@ -636,17 +636,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Examples
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -740,21 +729,8 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../TextValue/">TextValue</a></li>
+<li>Range: <a href="../PloidyEnum/">PloidyEnum</a></li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>allopolyploidy [PATO:0001379]</td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -786,19 +762,13 @@ description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploi
   Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to
   http://purl.bioontology.org/ontology/PATO
 title: ploidy
-examples:
-- value: allopolyploidy [PATO:0001379]
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0000021
 alias: ploidy
 domain_of:
 - Organism
-range: TextValue
-structured_pattern:
-  syntax: ^{termLabel} \[{termID}\]$
-  interpolated: true
-  partial_match: true
+range: PloidyEnum
 
 </code></pre>
 

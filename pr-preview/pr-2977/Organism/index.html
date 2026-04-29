@@ -453,8 +453,8 @@
 
   Organism : ploidy
 
-      Organism --&gt; "0..1" TextValue : ploidy
-    click TextValue href "../TextValue"
+      Organism --&gt; "0..1" PloidyEnum : ploidy
+    click PloidyEnum href "../PloidyEnum"
 
   Organism : ref_biomaterial
 
@@ -532,7 +532,7 @@
 </tr>
 <tr>
 <td><a href="../ploidy/">ploidy</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../PloidyEnum/">PloidyEnum</a></td>
 <td>Genome ploidy</td>
 <td>direct</td>
 </tr>
@@ -986,8 +986,6 @@ attributes:
       The JGI isolate field is free-text comments; values from that field need conversion
       to the ontology-valued form for MIxS compliance.
     title: ploidy
-    examples:
-    - value: allopolyploidy [PATO:0001379]
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Ploidy Comments
@@ -1000,11 +998,7 @@ attributes:
     owner: Organism
     domain_of:
     - Organism
-    range: TextValue
-    structured_pattern:
-      syntax: ^{termLabel} \[{termID}\]$
-      interpolated: true
-      partial_match: true
+    range: PloidyEnum
   gc_content:
     name: gc_content
     annotations:

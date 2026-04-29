@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/ctg_max/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/PloidyEnum/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: ctg_max - NMDC Schema Documentation</title>
+        <title>Enum: PloidyEnum - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-ctg_max" class="md-skip">
+        <a href="#enum-ploidyenum" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: ctg_max
+              Enum: PloidyEnum
             
           </span>
         </div>
@@ -614,10 +614,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
+  <a href="#permissible-values" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inheritance
+        Permissible Values
       
     </span>
   </a>
@@ -625,21 +625,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
+  <a href="#slots" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Applicable Classes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Properties
+        Slots
       
     </span>
   </a>
@@ -675,17 +664,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -716,76 +694,205 @@
   
 
 
-<h1 id="slot-ctg_max">Slot: ctg_max</h1>
-<p><em>Maximum contig length.</em></p>
+<h1 id="enum-ploidyenum">Enum: PloidyEnum</h1>
+<p><em>Ploidy of an organism's genome. Permissible values map to PATO classes. Used as the range of the ploidy slot on Organism, narrowing the MIxS-imported <code>ploidy</code> (MIXS:0000021) from a free-text/structured pattern to an enumerated set with referential integrity to PATO.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/ctg_max">nmdc:ctg_max</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../metagenome_assembly_parameter/">metagenome_assembly_parameter</a><ul>
-<li><strong>ctg_max</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="applicable-classes">Applicable Classes</h2>
+<p>URI: <a href="./">PloidyEnum</a></p>
+<h2 id="permissible-values">Permissible Values</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>haploid</td>
+<td>PATO:0001375</td>
+<td>A single set of unpaired chromosomes</td>
+</tr>
+<tr>
+<td>diploid</td>
+<td>PATO:0001394</td>
+<td>Two sets of homologous chromosomes (one from each parent)</td>
+</tr>
+<tr>
+<td>triploid</td>
+<td>PATO:0001381</td>
+<td>Three sets of chromosomes</td>
+</tr>
+<tr>
+<td>tetraploid</td>
+<td>PATO:0001382</td>
+<td>Four sets of chromosomes</td>
+</tr>
+<tr>
+<td>pentaploid</td>
+<td>PATO:0001383</td>
+<td>Five sets of chromosomes</td>
+</tr>
+<tr>
+<td>hexaploid</td>
+<td>PATO:0001384</td>
+<td>Six sets of chromosomes</td>
+</tr>
+<tr>
+<td>polyploid</td>
+<td>PATO:0001377</td>
+<td>More than two sets of chromosomes (generic — use a more specific value when k...</td>
+</tr>
+<tr>
+<td>autopolyploid</td>
+<td>PATO:0001378</td>
+<td>Polyploid arising from chromosome duplication within a single species</td>
+</tr>
+<tr>
+<td>allopolyploidy</td>
+<td>PATO:0001379</td>
+<td>Polyploid arising from hybridization between two or more species</td>
+</tr>
+<tr>
+<td>paleopolyploid</td>
+<td>PATO:0001380</td>
+<td>An organism whose ancestors were polyploid; current genome appears diploid bu...</td>
+</tr>
+<tr>
+<td>monoploid</td>
+<td>PATO:0001376</td>
+<td>One set of chromosomes (sometimes used synonymously with haploid in non-sexua...</td>
+</tr>
+<tr>
+<td>doubled_haploid</td>
+<td>PATO:0040027</td>
+<td>A diploid organism developed from a haploid through chromosome doubling</td>
+</tr>
+<tr>
+<td>aneuploid</td>
+<td>PATO:0001385</td>
+<td>A genome with an abnormal number of chromosomes (not an exact multiple of the...</td>
+</tr>
+<tr>
+<td>euploid</td>
+<td>PATO:0001393</td>
+<td>A genome with an exact multiple of the haploid chromosome number (use when mo...</td>
+</tr>
+<tr>
+<td>haplodiploid</td>
+<td>PATO:0001395</td>
+<td>Sex-determination system where one sex is haploid and the other diploid (e</td>
+</tr>
+<tr>
+<td>endopolyploid</td>
+<td>PATO:0001392</td>
+<td>Polyploidy arising from endoreduplication within somatic cells (genome is pol...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Description</th>
-<th>Modifies Slot</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
-<td>no</td>
+<td><a href="../ploidy/">ploidy</a></td>
+<td>The ploidy level of the genome (e</td>
 </tr>
 </tbody>
 </table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../Float/">Float</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: ctg_max
-description: Maximum contig length.
+<pre><code class="language-yaml">name: PloidyEnum
+description: Ploidy of an organism's genome. Permissible values map to PATO classes.
+  Used as the range of the ploidy slot on Organism, narrowing the MIxS-imported `ploidy`
+  (MIXS:0000021) from a free-text/structured pattern to an enumerated set with referential
+  integrity to PATO.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: metagenome_assembly_parameter
-alias: ctg_max
-domain_of:
-- MetagenomeAssembly
-- MetatranscriptomeAssembly
-range: float
+permissible_values:
+  haploid:
+    text: haploid
+    description: A single set of unpaired chromosomes.
+    meaning: PATO:0001375
+  diploid:
+    text: diploid
+    description: Two sets of homologous chromosomes (one from each parent).
+    meaning: PATO:0001394
+  triploid:
+    text: triploid
+    description: Three sets of chromosomes.
+    meaning: PATO:0001381
+  tetraploid:
+    text: tetraploid
+    description: Four sets of chromosomes.
+    meaning: PATO:0001382
+  pentaploid:
+    text: pentaploid
+    description: Five sets of chromosomes.
+    meaning: PATO:0001383
+  hexaploid:
+    text: hexaploid
+    description: Six sets of chromosomes.
+    meaning: PATO:0001384
+  polyploid:
+    text: polyploid
+    description: More than two sets of chromosomes (generic — use a more specific
+      value when known).
+    meaning: PATO:0001377
+  autopolyploid:
+    text: autopolyploid
+    description: Polyploid arising from chromosome duplication within a single species.
+    meaning: PATO:0001378
+  allopolyploidy:
+    text: allopolyploidy
+    description: Polyploid arising from hybridization between two or more species.
+      (Note PATO label uses -y suffix; aligning with OLS4.)
+    meaning: PATO:0001379
+  paleopolyploid:
+    text: paleopolyploid
+    description: An organism whose ancestors were polyploid; current genome appears
+      diploid but retains evidence of polyploidy.
+    meaning: PATO:0001380
+  monoploid:
+    text: monoploid
+    description: One set of chromosomes (sometimes used synonymously with haploid
+      in non-sexual contexts).
+    meaning: PATO:0001376
+  doubled_haploid:
+    text: doubled_haploid
+    description: A diploid organism developed from a haploid through chromosome doubling.
+    meaning: PATO:0040027
+  aneuploid:
+    text: aneuploid
+    description: A genome with an abnormal number of chromosomes (not an exact multiple
+      of the haploid number).
+    meaning: PATO:0001385
+  euploid:
+    text: euploid
+    description: A genome with an exact multiple of the haploid chromosome number
+      (use when more specific value is unknown).
+    meaning: PATO:0001393
+  haplodiploid:
+    text: haplodiploid
+    description: Sex-determination system where one sex is haploid and the other diploid
+      (e.g. bees, ants, wasps).
+    meaning: PATO:0001395
+  endopolyploid:
+    text: endopolyploid
+    description: Polyploidy arising from endoreduplication within somatic cells (genome
+      is polyploid only in some tissues).
+    meaning: PATO:0001392
 
 </code></pre>
 
