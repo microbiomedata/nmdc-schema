@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post120.dev0+24ac9ee1f
+version: 11.18.0.post121.dev0+cd4c3de61
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19607,7 +19607,6 @@ classes:
     - gc_content
     - source_mat_id
     - ref_biomaterial
-    - host_taxid
     - viral_host_genus
     - viral_host_species
     - viral_host_strain
@@ -19625,15 +19624,6 @@ classes:
           MIxS source_mat_id (MIXS:0000026).
         structured_aliases:
         - literal_form: Culture Collection and ID
-          predicate: EXACT_SYNONYM
-          contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-      host_taxid:
-        name: host_taxid
-        description: NCBI taxon ID of the host organism (for viral isolates). Reuses
-          MIxS host_taxid (MIXS:0000250).
-        structured_aliases:
-        - literal_form: Host NCBI Taxonomy ID
           predicate: EXACT_SYNONYM
           contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
@@ -21371,6 +21361,7 @@ classes:
     - elev
     - geo_loc_name
     - samp_name
+    - host_taxid
     - sample_isolation_method
     - sample_isolated_from
     slot_usage:

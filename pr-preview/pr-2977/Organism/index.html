@@ -446,11 +446,6 @@
       Organism --&gt; "0..1" QuantityValue : gc_content
     click QuantityValue href "../QuantityValue"
 
-  Organism : host_taxid
-
-      Organism --&gt; "0..1" ControlledIdentifiedTermValue : host_taxid
-    click ControlledIdentifiedTermValue href "../ControlledIdentifiedTermValue"
-
   Organism : id
 
   Organism : isolate_name
@@ -574,12 +569,6 @@
 <td><a href="../ref_biomaterial/">ref_biomaterial</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Reference for the organism, preferentially a DOI when a primary publication o...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../host_taxid/">host_taxid</a></td>
-<td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
-<td>NCBI taxon ID of the host organism (for viral isolates)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -721,7 +710,6 @@ slots:
 - gc_content
 - source_mat_id
 - ref_biomaterial
-- host_taxid
 - viral_host_genus
 - viral_host_species
 - viral_host_strain
@@ -738,15 +726,6 @@ slot_usage:
       MIxS source_mat_id (MIXS:0000026).
     structured_aliases:
     - literal_form: Culture Collection and ID
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-  host_taxid:
-    name: host_taxid
-    description: NCBI taxon ID of the host organism (for viral isolates). Reuses MIxS
-      host_taxid (MIXS:0000250).
-    structured_aliases:
-    - literal_form: Host NCBI Taxonomy ID
       predicate: EXACT_SYNONYM
       contexts:
       - https://jgi.doe.gov/isolate-submission-form/v19
@@ -833,15 +812,6 @@ slot_usage:
       MIxS source_mat_id (MIXS:0000026).
     structured_aliases:
     - literal_form: Culture Collection and ID
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-  host_taxid:
-    name: host_taxid
-    description: NCBI taxon ID of the host organism (for viral isolates). Reuses MIxS
-      host_taxid (MIXS:0000250).
-    structured_aliases:
-    - literal_form: Host NCBI Taxonomy ID
       predicate: EXACT_SYNONYM
       contexts:
       - https://jgi.doe.gov/isolate-submission-form/v19
@@ -1187,35 +1157,6 @@ attributes:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
-  host_taxid:
-    name: host_taxid
-    annotations:
-      Expected_value:
-        tag: Expected_value
-        value: NCBI taxon identifier
-    description: NCBI taxon ID of the host organism (for viral isolates). Reuses MIxS
-      host_taxid (MIXS:0000250).
-    title: host taxid
-    comments:
-    - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Host NCBI Taxonomy ID
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-    rank: 1000
-    keywords:
-    - host
-    - host.
-    - taxon
-    slot_uri: MIXS:0000250
-    alias: host_taxid
-    owner: Organism
-    domain_of:
-    - Organism
-    - Biosample
-    range: ControlledIdentifiedTermValue
   viral_host_genus:
     name: viral_host_genus
     description: Genus of the viral host. Required for viral minimal drafts.

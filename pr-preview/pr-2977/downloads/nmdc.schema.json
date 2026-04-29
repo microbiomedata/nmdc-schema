@@ -12705,17 +12705,6 @@
                     ],
                     "description": "Estimated GC content as a percentage (0\u2013100)."
                 },
-                "host_taxid": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "NCBI taxon ID of the host organism (for viral isolates). Reuses MIxS host_taxid (MIXS:0000250)."
-                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
@@ -12918,6 +12907,17 @@
                         "array",
                         "null"
                     ]
+                },
+                "host_taxid": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "NCBI taxon id of the host, e.g. 9606"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
@@ -16125,5 +16125,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post120.dev0+24ac9ee1f"
+    "version": "11.18.0.post121.dev0+cd4c3de61"
 }

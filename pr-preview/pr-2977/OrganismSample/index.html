@@ -457,6 +457,11 @@
 
   OrganismSample : gold_organism_identifiers
 
+  OrganismSample : host_taxid
+
+      OrganismSample --&gt; "0..1" ControlledIdentifiedTermValue : host_taxid
+    click ControlledIdentifiedTermValue href "../ControlledIdentifiedTermValue"
+
   OrganismSample : id
 
   OrganismSample : lat_lon
@@ -570,6 +575,12 @@
 <td><a href="../samp_name/">samp_name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A local identifier or name that for the material sample used for extracting n...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_taxid/">host_taxid</a></td>
+<td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
+<td>NCBI taxon id of the host, e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -725,6 +736,7 @@ slots:
 - elev
 - geo_loc_name
 - samp_name
+- host_taxid
 - sample_isolation_method
 - sample_isolated_from
 slot_usage:
@@ -1013,6 +1025,29 @@ attributes:
     - Biosample
     - OrganismSample
     range: string
+  host_taxid:
+    name: host_taxid
+    annotations:
+      Expected_value:
+        tag: Expected_value
+        value: NCBI taxon identifier
+    description: NCBI taxon id of the host, e.g. 9606
+    title: host taxid
+    comments:
+    - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - host
+    - host.
+    - taxon
+    slot_uri: MIXS:0000250
+    alias: host_taxid
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: ControlledIdentifiedTermValue
   sample_isolation_method:
     name: sample_isolation_method
     description: Method, protocol, or kit used to extract DNA/RNA from the sample.
