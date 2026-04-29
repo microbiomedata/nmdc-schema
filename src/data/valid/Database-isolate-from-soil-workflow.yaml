@@ -18,11 +18,11 @@
 # bacterium with unambiguous non-embargoed public provenance.
 
 biosample_set:
-  - id: nmdc:bsm-99-soil001
+  - id: nmdc:bsm-99-dss5dg
     type: nmdc:Biosample
     name: Example soil biosample
     associated_studies:
-      - nmdc:sty-99-soildemo
+      - nmdc:sty-99-md8u3e
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
@@ -43,7 +43,7 @@ biosample_set:
         id: ENVO:00005792
 
 organism_set:
-  - id: nmdc:orgn-99-bsub168
+  - id: nmdc:orgn-99-vsds2v
     type: nmdc:Organism
     name: Bacillus subtilis 168
     classified_as:
@@ -57,45 +57,45 @@ organism_set:
 
 organism_sample_set:
   # Colony pick after isolation
-  - id: nmdc:osm-99-colony01
+  - id: nmdc:osm-99-xvrts7
     type: nmdc:OrganismSample
     name: Bacillus subtilis 168 colony pick
     associated_studies:
-      - nmdc:sty-99-soildemo
-    expected_organism: nmdc:orgn-99-bsub168
+      - nmdc:sty-99-md8u3e
+    expected_organism: nmdc:orgn-99-vsds2v
     sample_isolated_from: Example soil isolation
   # Expanded culture after culturing
-  - id: nmdc:osm-99-culture01
+  - id: nmdc:osm-99-jss44u
     type: nmdc:OrganismSample
     name: Bacillus subtilis 168 expanded culture
     associated_studies:
-      - nmdc:sty-99-soildemo
-    expected_organism: nmdc:orgn-99-bsub168
+      - nmdc:sty-99-md8u3e
+    expected_organism: nmdc:orgn-99-vsds2v
 
 material_processing_set:
   # Step 1: Isolate from soil
-  - id: nmdc:isnp-99-isol001
+  - id: nmdc:isnp-99-mukr6y
     type: nmdc:Isolation
     has_input:
-      - nmdc:bsm-99-soil001
+      - nmdc:bsm-99-dss5dg
     has_output:
-      - nmdc:osm-99-colony01
+      - nmdc:osm-99-xvrts7
   # Step 2: Culture the colony pick
-  - id: nmdc:cultp-99-cult001
+  - id: nmdc:cultp-99-vu3tz2
     type: nmdc:Culturing
     has_input:
-      - nmdc:osm-99-colony01
+      - nmdc:osm-99-xvrts7
     has_output:
-      - nmdc:osm-99-culture01
+      - nmdc:osm-99-jss44u
   # Step 3: Extract DNA
-  - id: nmdc:extrp-99-extr001
+  - id: nmdc:extrp-99-9739sc
     type: nmdc:Extraction
     has_input:
-      - nmdc:osm-99-culture01
+      - nmdc:osm-99-jss44u
     has_output:
-      - nmdc:procsm-99-dna001
+      - nmdc:procsm-99-xwekv2
 
 processed_sample_set:
-  - id: nmdc:procsm-99-dna001
+  - id: nmdc:procsm-99-xwekv2
     type: nmdc:ProcessedSample
     name: Bacillus subtilis 168 extracted DNA

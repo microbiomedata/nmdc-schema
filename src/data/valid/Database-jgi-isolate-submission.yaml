@@ -15,7 +15,7 @@
 #   DNAse treatment, JGI project IDs, PI/contact names)
 
 organism_set:
-  - id: nmdc:orgn-99-shewa189
+  - id: nmdc:orgn-99-tuxk3s
     type: nmdc:Organism
     name: Shewanella loihica PV-4
     classified_as:
@@ -34,12 +34,12 @@ organism_set:
       has_unit: "%"
 
 organism_sample_set:
-  - id: nmdc:osm-99-shewa189
+  - id: nmdc:osm-99-pqaau7
     type: nmdc:OrganismSample
     name: Shewanella loihica PV-4 isolate submission
     associated_studies:
-      - nmdc:sty-99-isolatedemo
-    expected_organism: nmdc:orgn-99-shewa189
+      - nmdc:sty-99-m2asmk
+    expected_organism: nmdc:orgn-99-tuxk3s
     gold_organism_identifiers:
       - gold:Go0000189
     samp_name: Shewanella_loihica_PV-4

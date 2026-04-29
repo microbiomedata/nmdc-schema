@@ -9,7 +9,7 @@
 # See: https://github.com/microbiomedata/nmdc-schema/pull/2884#issuecomment-4166566640
 
 organism_set:
-  - id: nmdc:orgn-99-ledodes001
+  - id: nmdc:orgn-99-tagdby
     type: nmdc:Organism
     name: Lentinula edodes
     classified_as:
@@ -19,11 +19,11 @@ organism_set:
     biosafety_material_category: Fungi
 
 organism_sample_set:
-  - id: nmdc:osm-99-shiitake01
+  - id: nmdc:osm-99-c3hw28
     type: nmdc:OrganismSample
     name: Lentinula edodes NBRC 111202 fruiting body cap
     samp_name: Ledodes_NBRC111202_cap_01
-    expected_organism: nmdc:orgn-99-ledodes001
+    expected_organism: nmdc:orgn-99-tagdby
     gold_organism_identifiers:
       - gold:Go0372970
     sample_isolated_from: Fruiting body cap of cultivated Lentinula edodes (shiitake)
@@ -34,4 +34,4 @@ organism_sample_set:
       type: nmdc:TextValue
       has_raw_value: Japan
     associated_studies:
-      - nmdc:sty-99-fungalstudy
+      - nmdc:sty-99-37kp4t

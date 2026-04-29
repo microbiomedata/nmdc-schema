@@ -16,7 +16,7 @@
 # DSMZ catalog item DSM 6125, ATCC 47054. Genome GCA_000007565.2.
 
 organism_set:
-  - id: nmdc:orgn-99-pput2440
+  - id: nmdc:orgn-99-6dwrrh
     type: nmdc:Organism
     name: Pseudomonas putida KT2440
     classified_as:
@@ -33,7 +33,7 @@ organism_set:
 
 organism_sample_set:
   # Cells received from DSMZ — the record begins here, not at a Biosample.
-  - id: nmdc:osm-99-dsmz001
+  - id: nmdc:osm-99-74k7dy
     type: nmdc:OrganismSample
     name: Pseudomonas putida KT2440 from DSMZ catalog
     description: >-
@@ -41,37 +41,37 @@ organism_sample_set:
       No environmental sample upstream — the submitter's provenance starts at
       the culture-collection delivery.
     associated_studies:
-      - nmdc:sty-99-dsmzdemo
-    expected_organism: nmdc:orgn-99-pput2440
+      - nmdc:sty-99-86scx7
+    expected_organism: nmdc:orgn-99-6dwrrh
     sample_isolated_from: DSMZ culture collection (DSM 6125)
     sample_isolation_method: Culture purchased from DSMZ; no in-house isolation step.
   # Expanded culture grown from the catalog cells.
-  - id: nmdc:osm-99-dsmz001cult
+  - id: nmdc:osm-99-3sr885
     type: nmdc:OrganismSample
     name: Pseudomonas putida KT2440 expanded culture
     description: Liquid culture grown from the DSMZ-supplied seed cells.
     associated_studies:
-      - nmdc:sty-99-dsmzdemo
-    expected_organism: nmdc:orgn-99-pput2440
+      - nmdc:sty-99-86scx7
+    expected_organism: nmdc:orgn-99-6dwrrh
 
 material_processing_set:
   # Step 1: Culture the catalog cells.
-  - id: nmdc:cultp-99-dsmz001
+  - id: nmdc:cultp-99-2vhwd4
     type: nmdc:Culturing
     has_input:
-      - nmdc:osm-99-dsmz001
+      - nmdc:osm-99-74k7dy
     has_output:
-      - nmdc:osm-99-dsmz001cult
+      - nmdc:osm-99-3sr885
   # Step 2: Extract DNA from the culture.
-  - id: nmdc:extrp-99-dsmz001
+  - id: nmdc:extrp-99-q4yygh
     type: nmdc:Extraction
     has_input:
-      - nmdc:osm-99-dsmz001cult
+      - nmdc:osm-99-3sr885
     has_output:
-      - nmdc:procsm-99-dsmz001dna
+      - nmdc:procsm-99-8szegv
 
 processed_sample_set:
-  - id: nmdc:procsm-99-dsmz001dna
+  - id: nmdc:procsm-99-8szegv
     type: nmdc:ProcessedSample
     name: Extracted DNA from P. putida KT2440 culture
     description: DNA extracted from the expanded culture, ready for sequencing.

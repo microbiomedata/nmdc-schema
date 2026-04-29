@@ -4,11 +4,11 @@
 # off the Georgia coast, USA. Complete published genome GCA_000011965.2 (NCBI
 # BioProject PRJNA281, BioSample SAMN02604003). 16S accession AF098491 was
 # deposited under the former genus name "Silicibacter pomeroyi".
-id: nmdc:osm-99-rpom514
+id: nmdc:osm-99-rbjsc2
 type: nmdc:OrganismSample
 name: Ruegeria pomeroyi DSS-3 isolate submission
 samp_name: Ruegeria_pomeroyi_DSS-3
-expected_organism: nmdc:orgn-99-rpom514
+expected_organism: nmdc:orgn-99-6wrr79
 sample_isolation_method: Wizard Genomic DNA Purification Kit
 sample_isolated_from: Saltwater from water column
 collection_date:
@@ -18,4 +18,4 @@ geo_loc_name:
   type: nmdc:TextValue
   has_raw_value: "USA: Georgia coast"
 associated_studies:
-  - nmdc:sty-99-isolatedemo
+  - nmdc:sty-99-m2asmk
