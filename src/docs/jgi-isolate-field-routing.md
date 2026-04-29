@@ -27,6 +27,30 @@ to nmdc-schema classes, submission-schema, or deferred.
 | 50-51 | Elevation/Max elevation* | `elev` | MIxS (existing) |
 | 52 | Country* | `geo_loc_name` | MIxS (existing) |
 | — | Expected organism | `expected_organism` | NMDC-native (new) |
+| 19 | Host NCBI Tax ID* | `host_taxid` (also on `Biosample`) | MIxS (existing) |
+
+### Note on host_taxid and the JGI viral-isolate use case
+
+The JGI form labels field 19 ("Host NCBI Tax ID") as *for viral isolates only*.
+That framing is **not** baked into nmdc-schema. `host_taxid` is the general
+MIxS slot (`MIXS:0000250`) describing the host of a sample, applicable to any
+host-associated submission — viral, host-microbiome, parasite, etc. The
+sample-level placement (Biosample, OrganismSample) is the only structural
+constraint at the schema layer.
+
+The viral-specific framing is a **submission-schema concern**. Whether
+`host_taxid` is required, what label/help-text it carries, and what input
+controls validate it for a given submission are decided by submission-schema
+interfaces / templates / slot_usage — for example a `JgiViralIsolateInterface`
+in submission-schema can mark `host_taxid` required and label it "Host NCBI
+Tax ID (required for viral isolates)" without nmdc-schema needing a
+viral-specific slot.
+
+Broader normalization of taxon-bearing slots to use `NcbiTaxon` as their
+range (rather than strings or CURIEs in `has_raw_value`) is tracked in
+[#3000](https://github.com/microbiomedata/nmdc-schema/issues/3000). `host_taxid`
+is a likely first concrete migration target once `ontology_class_set` is
+loaded with NcbiTaxon from semantic-sql / OWL.
 
 ## Organism (orgn)
 
@@ -46,7 +70,6 @@ to nmdc-schema classes, submission-schema, or deferred.
 | 16 | Host Genus* (viral) | `viral_host_genus` | JGI-native (new) |
 | 17 | Host Species* (viral) | `viral_host_species` | JGI-native (new) |
 | 18 | Host Strain* (viral) | `viral_host_strain` | JGI-native (new) |
-| 19 | Host NCBI Tax ID* | `host_taxid` | MIxS (existing, slot_usage override) |
 
 ## submission-schema only (not persisted to MongoDB)
 
