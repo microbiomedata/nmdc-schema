@@ -1423,163 +1423,111 @@ enums:
   PloidyEnum:
     description: >-
       Ploidy of an organism's genome. Permissible values map to PATO
-      classes. Used as the range of the ploidy slot, narrowing the MIxS-
-      imported `ploidy` (MIXS:0000021) from a free-text / structured
-      pattern to an enumerated set with referential integrity to PATO.
-      Permissible values carry `structured_aliases` for the common label
-      variants found in NCBI biosamples (see distribution audit
-      `~/Desktop/markdown/nmdc-schema-pr-2977-theoretical-migration-needs-2026-04-29.md`
-      and the lakehouse query `SELECT ploidy, COUNT(*) FROM ncbi-sourced
-      .biosamples_flattened` run 2026-04-29).
+      classes and were selected from values observed in the JGI GOLD
+      lakehouse table `gold.dw_sample_taxonomy_info.ploidy_comments`
+      (queried 2026-04-29). Used as the range of the `ploidy` slot,
+      narrowing the MIxS-imported `ploidy` (MIXS:0000021) from a free-
+      text / structured pattern to an enumerated set with referential
+      integrity to PATO.
     comments:
       - >-
-        **Cannot cleanly express:** specific aneuploidies (e.g. "Trisomy 21",
-        "Trisomy V", "Trisomy IX", "hexaploid, N1DT1B"). The closest enum
-        value is `aneuploid`, but that loses the chromosome-specific detail.
-        If aneuploidy specificity is needed, capture the chromosome identifier
-        in a separate slot.
+        **Not modeled:** values frequent in JGI but absent from PATO —
+        `octoploid` / `octapolid` (in `Tetraploid or Octoploid`,
+        `Tetraploid and Octoploid`), `dikaryon` / `dikaryotic` /
+        `Diploid(dikaryotic)` (fungal), `monokaryotic`, `polykaryotic`.
       - >-
-        **Cannot cleanly express:** DNA-content "C-value" notations from
-        cytogenetics (`2C`, `4C`, `8C`, `16C`). C-value reflects DNA mass
-        per cell, which is related to but distinct from chromosome-set ploidy
-        and may differ during S phase or in endopolyploid tissues. NCBI
-        biosamples conflates these with ploidy values; consumers may need to
-        map to `endopolyploid` for tissue-level cases or treat as missing.
+        **Not modeled:** cytogenetic notation (`2n=38`, `2n=2x=18`,
+        `2n=4x=40`, `2n=20`), bare counts (`1`, `2`, `3`, `10`), code
+        letters (`H`, `n`, `2N`). ETL should normalize when meaning is
+        unambiguous.
       - >-
-        **Cannot cleanly express:** compound / cell-cycle-modified states
-        like `2N (non-dividing)`, `monokaryotic, haploid`, `haploid/diploid`,
-        `mostly diploid`, `dikaryon`. These layer additional axes (cell cycle,
-        karyon count, uncertainty) on top of bare ploidy. Best handled by
-        normalizing to the dominant ploidy and capturing modifiers separately,
-        or by treating as missing for strict ETL.
+        **Not modeled:** compound / hedged values (`diploid, tetraploid,
+        hexaploid`, `Tetraploid or Octoploid`, `Likely haploid`,
+        `expected haploid`, `possibly diploid`, `Allopolyploid Triploid`,
+        `4x, Tetraploid`). Capture modifiers separately or normalize to
+        the dominant ploidy.
       - >-
-        **Cannot cleanly express:** missing-value placeholders observed in NCBI
-        biosamples — `not applicable`, `Not Applicable`, `not collected`, `NA`,
-        `Not known`, `not provided`, `/`. ETL should normalize these to null /
-        absent rather than mapping to any enum value.
+        **Not modeled:** non-English labels (`haploide`, `Diploïde`).
+        ETL should map to the English PV.
     permissible_values:
       haploid:
         meaning: PATO:0001375
         description: A single set of unpaired chromosomes.
         structured_aliases:
-          - literal_form: "1x"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
+          - literal_form: Haploid
+            contexts: [https://gold.jgi.doe.gov/]
             predicate: EXACT_SYNONYM
-          - literal_form: "1X"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: EXACT_SYNONYM
-          - literal_form: "1N"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: EXACT_SYNONYM
-          - literal_form: "1"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
+          - literal_form: "1n"
+            contexts: [https://gold.jgi.doe.gov/]
             predicate: EXACT_SYNONYM
       diploid:
         meaning: PATO:0001394
         description: Two sets of homologous chromosomes (one from each parent).
         structured_aliases:
-          - literal_form: "2x"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
+          - literal_form: Diploid
+            contexts: [https://gold.jgi.doe.gov/]
             predicate: EXACT_SYNONYM
-          - literal_form: "2X"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
+          - literal_form: "2n"
+            contexts: [https://gold.jgi.doe.gov/]
             predicate: EXACT_SYNONYM
           - literal_form: "2N"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
+            contexts: [https://gold.jgi.doe.gov/]
             predicate: EXACT_SYNONYM
-          - literal_form: "2n=2x"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: EXACT_SYNONYM
-          - literal_form: diploidy
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
+          - literal_form: "2x"
+            contexts: [https://gold.jgi.doe.gov/]
             predicate: EXACT_SYNONYM
       triploid:
         meaning: PATO:0001381
         description: Three sets of chromosomes.
         structured_aliases:
+          - literal_form: Triploid
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "3n"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
           - literal_form: "3x"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: EXACT_SYNONYM
-          - literal_form: "3X"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: EXACT_SYNONYM
-          - literal_form: "3N"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
+            contexts: [https://gold.jgi.doe.gov/]
             predicate: EXACT_SYNONYM
       tetraploid:
         meaning: PATO:0001382
         description: Four sets of chromosomes.
         structured_aliases:
+          - literal_form: Tetraploid
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: tetraploidy
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "4n"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
           - literal_form: "4x"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: EXACT_SYNONYM
-          - literal_form: "4X"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: EXACT_SYNONYM
-          - literal_form: "4N"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: EXACT_SYNONYM
-          - literal_form: Tertaploid
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: EXACT_SYNONYM    # observed misspelling in NCBI biosamples (n=10)
-      pentaploid:
-        meaning: PATO:0001383
-        description: Five sets of chromosomes.
-        structured_aliases:
-          - literal_form: "5x"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: EXACT_SYNONYM
-          - literal_form: "5X"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
+            contexts: [https://gold.jgi.doe.gov/]
             predicate: EXACT_SYNONYM
       hexaploid:
         meaning: PATO:0001384
         description: Six sets of chromosomes.
         structured_aliases:
+          - literal_form: Hexaploid
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "6n"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
           - literal_form: "6x"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
+            contexts: [https://gold.jgi.doe.gov/]
             predicate: EXACT_SYNONYM
-          - literal_form: "6X"
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: EXACT_SYNONYM
-          - literal_form: autohexaploid
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: NARROW_SYNONYM    # autohexaploid is a hexaploid arising from intra-species duplication; narrower than generic hexaploid
       polyploid:
         meaning: PATO:0001377
         description: More than two sets of chromosomes (generic — use a more specific value when known).
-      autopolyploid:
-        meaning: PATO:0001378
-        description: Polyploid arising from chromosome duplication within a single species.
       allopolyploidy:
         meaning: PATO:0001379
-        description: Polyploid arising from hybridization between two or more species. (Note PATO label uses -y suffix; aligning with OLS4.)
+        description: Polyploid arising from hybridization between two or more species. (PATO label uses -y suffix.)
         structured_aliases:
-          - literal_form: allopolyploid
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: EXACT_SYNONYM    # commonly written without the -y suffix
-      paleopolyploid:
-        meaning: PATO:0001380
-        description: An organism whose ancestors were polyploid; current genome appears diploid but retains evidence of polyploidy.
-      monoploid:
-        meaning: PATO:0001376
-        description: One set of chromosomes (sometimes used synonymously with haploid in non-sexual contexts).
-      doubled_haploid:
-        meaning: PATO:0040027
-        description: A diploid organism developed from a haploid through chromosome doubling.
+          - literal_form: Allopolyploid
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
       aneuploid:
         meaning: PATO:0001385
         description: A genome with an abnormal number of chromosomes (not an exact multiple of the haploid number).
-        structured_aliases:
-          - literal_form: hyperploid
-            contexts: [https://www.ncbi.nlm.nih.gov/biosample]
-            predicate: NARROW_SYNONYM    # hyperploidy = aneuploid with extra chromosomes (specific case)
-      euploid:
-        meaning: PATO:0001393
-        description: A genome with an exact multiple of the haploid chromosome number (use when more specific value is unknown).
-      haplodiploid:
-        meaning: PATO:0001395
-        description: Sex-determination system where one sex is haploid and the other diploid (e.g. bees, ants, wasps).
-      endopolyploid:
-        meaning: PATO:0001392
-        description: Polyploidy arising from endoreduplication within somatic cells (genome is polyploid only in some tissues).
