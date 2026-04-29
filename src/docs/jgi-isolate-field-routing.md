@@ -67,9 +67,9 @@ loaded with NcbiTaxon from semantic-sql / OWL.
 | 13 | GC Content % | `gc_content` | JGI-native (new) |
 | 14 | Ploidy Comments | `ploidy` | MIxS (newly imported) |
 | 15 | Reference Genome* | `ref_biomaterial` | MIxS (newly imported) |
-| 16 | Host Genus* (viral) | `viral_host_genus` | JGI-native (new) |
-| 17 | Host Species* (viral) | `viral_host_species` | JGI-native (new) |
-| 18 | Host Strain* (viral) | `viral_host_strain` | JGI-native (new) |
+| 16 | Host Genus* (viral) | `host_genus` (on Biosample) | JGI-native (new) |
+| 17 | Host Species* (viral) | `host_species` (on Biosample) | JGI-native (new) |
+| 18 | Host Strain* (viral) | `host_strain` (on Biosample) | JGI-native (new) |
 
 ## submission-schema only (not persisted to MongoDB)
 

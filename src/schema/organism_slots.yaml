@@ -134,50 +134,6 @@ slots:
       - value: "64.0"
         description: GOLD project Gp0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
 
-  viral_host_genus:
-    description: Genus of the viral host. Required for viral minimal drafts.
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: Host Genus
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-    comments:
-      - >-
-        Viral host fields are present on the JGI Isolate (NA) v19 form but not
-        in the GOLD organism_v2 or dw_samples lakehouse tables. No real lakehouse
-        examples available; value shown is from the JGI form field specification.
-    examples:
-      - value: Escherichia
-        description: JGI Isolate form field specification — bacterial host for phage submissions
-
-  viral_host_species:
-    description: Species of the viral host. Required for viral minimal drafts.
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: Host Species
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-    examples:
-      - value: coli
-        description: JGI Isolate form field specification — bacterial host for phage submissions
-
-  viral_host_strain:
-    description: Strain of the viral host. Required for viral minimal drafts.
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: Host Strain
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: EXACT_SYNONYM
-    examples:
-      - value: K-12 MG1655
-        description: JGI Isolate form field specification — common lab strain
-
   # --- OrganismSample slots ---
   expected_organism:
     range: Organism

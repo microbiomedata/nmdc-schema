@@ -570,6 +570,7 @@ classes:
       - host_dry_mass
       - host_family_relation
       - host_genotype
+      - host_genus
       - host_growth_cond
       - host_height
       - host_last_meal
@@ -578,6 +579,8 @@ classes:
       - host_phenotype
       - host_sex
       - host_shape
+      - host_species
+      - host_strain
       - host_subject_id
       - host_subspecf_genlin
       - host_substrate

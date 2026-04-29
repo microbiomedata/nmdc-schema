@@ -1,0 +1,71 @@
+id: https://w3id.org/nmdc/host_slots
+name: host-slots
+title: Host-of-Sample Slots
+description: >-
+  Sample-level slots that describe the host organism a sample was collected
+  from. NMDC-native slots that complement MIxS-imported host_* slots
+  (host_taxid, host_common_name, host_genotype, host_subject_id, etc.) on
+  Biosample. Currently sourced from the JGI Isolate (NA) v19 submission
+  form fields "Host Genus" / "Host Species" / "Host Strain", which the form
+  uses for viral isolate submissions but which are useful for any
+  host-associated sample.
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: "https://w3id.org/linkml/"
+  nmdc: "https://w3id.org/nmdc/"
+
+imports:
+  - linkml:types
+
+default_prefix: nmdc
+default_range: string
+
+slots:
+  host_genus:
+    description: Genus of the host organism that the sample was collected from.
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Host Genus
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - value: Escherichia
+        description: JGI Isolate form field specification — bacterial host for phage submissions
+    comments:
+      - >-
+        Host info is sample-level, not strain-level — a single organism can be
+        associated with many hosts via different samples. The MIxS-imported
+        `host_taxid` (MIXS:0000250) on the same class is preferred when an NCBI
+        taxon ID is available; this slot captures the genus when only a textual
+        host designation is provided (e.g. on the JGI Isolate form for viral
+        isolates).
+
+  host_species:
+    description: Species of the host organism that the sample was collected from.
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Host Species
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - value: coli
+        description: JGI Isolate form field specification — bacterial host for phage submissions
+
+  host_strain:
+    description: Strain of the host organism that the sample was collected from.
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Host Strain
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - value: K-12 MG1655
+        description: JGI Isolate form field specification — common lab strain

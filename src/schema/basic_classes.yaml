@@ -208,10 +208,6 @@ classes:
       ## provenance / reference
       - source_mat_id
       - ref_biomaterial
-      ## viral host
-      - viral_host_genus
-      - viral_host_species
-      - viral_host_strain
     slot_usage:
       id:
         required: true
