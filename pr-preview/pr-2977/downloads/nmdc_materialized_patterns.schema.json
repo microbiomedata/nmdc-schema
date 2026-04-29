@@ -13454,24 +13454,16 @@
             "type": "string"
         },
         "PloidyEnum": {
-            "description": "Ploidy of an organism's genome. Permissible values map to PATO classes. Used as the range of the ploidy slot, narrowing the MIxS- imported `ploidy` (MIXS:0000021) from a free-text / structured pattern to an enumerated set with referential integrity to PATO. Permissible values carry `structured_aliases` for the common label variants found in NCBI biosamples (see distribution audit `~/Desktop/markdown/nmdc-schema-pr-2977-theoretical-migration-needs-2026-04-29.md` and the lakehouse query `SELECT ploidy, COUNT(*) FROM ncbi-sourced .biosamples_flattened` run 2026-04-29).",
+            "description": "Ploidy of an organism's genome. Permissible values map to PATO classes and were selected from values observed in the JGI GOLD lakehouse table `gold.dw_sample_taxonomy_info.ploidy_comments` (queried 2026-04-29). Used as the range of the `ploidy` slot, narrowing the MIxS-imported `ploidy` (MIXS:0000021) from a free- text / structured pattern to an enumerated set with referential integrity to PATO.",
             "enum": [
                 "haploid",
                 "diploid",
                 "triploid",
                 "tetraploid",
-                "pentaploid",
                 "hexaploid",
                 "polyploid",
-                "autopolyploid",
                 "allopolyploidy",
-                "paleopolyploid",
-                "monoploid",
-                "doubled_haploid",
-                "aneuploid",
-                "euploid",
-                "haplodiploid",
-                "endopolyploid"
+                "aneuploid"
             ],
             "title": "PloidyEnum",
             "type": "string"
@@ -16429,6 +16421,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post127.dev0+a669190db"
+    "version": "11.18.0.post128.dev0+36d580ad8"
 }
 
