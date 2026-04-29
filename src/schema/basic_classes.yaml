@@ -1418,3 +1418,59 @@ enums:
       StorageProcess:
       SubSamplingProcess:
       WorkflowExecution:
+
+  PloidyEnum:
+    description: >-
+      Ploidy of an organism's genome. Permissible values map to PATO
+      classes. Used as the range of the ploidy slot on Organism, narrowing
+      the MIxS-imported `ploidy` (MIXS:0000021) from a free-text/structured
+      pattern to an enumerated set with referential integrity to PATO.
+    permissible_values:
+      haploid:
+        meaning: PATO:0001375
+        description: A single set of unpaired chromosomes.
+      diploid:
+        meaning: PATO:0001394
+        description: Two sets of homologous chromosomes (one from each parent).
+      triploid:
+        meaning: PATO:0001381
+        description: Three sets of chromosomes.
+      tetraploid:
+        meaning: PATO:0001382
+        description: Four sets of chromosomes.
+      pentaploid:
+        meaning: PATO:0001383
+        description: Five sets of chromosomes.
+      hexaploid:
+        meaning: PATO:0001384
+        description: Six sets of chromosomes.
+      polyploid:
+        meaning: PATO:0001377
+        description: More than two sets of chromosomes (generic — use a more specific value when known).
+      autopolyploid:
+        meaning: PATO:0001378
+        description: Polyploid arising from chromosome duplication within a single species.
+      allopolyploidy:
+        meaning: PATO:0001379
+        description: Polyploid arising from hybridization between two or more species. (Note PATO label uses -y suffix; aligning with OLS4.)
+      paleopolyploid:
+        meaning: PATO:0001380
+        description: An organism whose ancestors were polyploid; current genome appears diploid but retains evidence of polyploidy.
+      monoploid:
+        meaning: PATO:0001376
+        description: One set of chromosomes (sometimes used synonymously with haploid in non-sexual contexts).
+      doubled_haploid:
+        meaning: PATO:0040027
+        description: A diploid organism developed from a haploid through chromosome doubling.
+      aneuploid:
+        meaning: PATO:0001385
+        description: A genome with an abnormal number of chromosomes (not an exact multiple of the haploid number).
+      euploid:
+        meaning: PATO:0001393
+        description: A genome with an exact multiple of the haploid chromosome number (use when more specific value is unknown).
+      haplodiploid:
+        meaning: PATO:0001395
+        description: Sex-determination system where one sex is haploid and the other diploid (e.g. bees, ants, wasps).
+      endopolyploid:
+        meaning: PATO:0001392
+        description: Polyploidy arising from endoreduplication within somatic cells (genome is polyploid only in some tissues).

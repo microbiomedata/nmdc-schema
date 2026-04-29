@@ -7115,14 +7115,8 @@ slots:
   ploidy:
     description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO
     title: ploidy
-    examples:
-      - value: allopolyploidy [PATO:0001379]
     slot_uri: MIXS:0000021
-    range: TextValue
-    structured_pattern:
-      syntax: ^{termLabel} \[{termID}\]$
-      interpolated: true
-      partial_match: true
+    range: PloidyEnum
   ref_biomaterial:
     description: Primary publication if isolated before genome publication; otherwise, primary genome report
     title: reference for biomaterial

@@ -476,6 +476,15 @@
 # describing the host of a sample, applicable to any host-associated context.
 '.slots.host_taxid.structured_aliases = [{"literal_form": "Host NCBI Taxonomy ID", "contexts": ["https://jgi.doe.gov/isolate-submission-form/v19"], "predicate": "EXACT_SYNONYM"}]'
 
+# Replace ploidy's range (TextValue, plus a structured_pattern requiring
+# "{termLabel} [{termID}]") with PloidyEnum, an NMDC-defined enumeration
+# whose permissible_values carry meaning: URIs into PATO. Gives referential
+# integrity to the PATO ploidy hierarchy instead of regex-validated free text.
+# PloidyEnum is defined in src/schema/basic_classes.yaml.
+'.slots.ploidy.range = "PloidyEnum"'
+'del(.slots.ploidy.structured_pattern)'
+'del(.slots.ploidy.examples)'
+
 # these slots, by their old names, are not used anywhere in mixs.yaml and seem to confuse the mkdocs search when looking for has_unit etc.
 'del(.slots.["has numeric value"])'
 'del(.slots.["has raw value"])'
