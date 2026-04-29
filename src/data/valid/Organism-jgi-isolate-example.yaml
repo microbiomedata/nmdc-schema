@@ -20,5 +20,8 @@ gc_content:
   has_numeric_value: 54.0
   has_unit: "%"
 estimated_size: 4600000 bp
-gold_organism_identifiers:
-  - gold:Go0000189
+# NB: gold_organism_identifiers was moved to OrganismSample — GOLD records
+# include sample-level provenance (collection date, country, isolation site)
+# that is bound to a specific isolate, not to the abstract strain. See
+# Database-jgi-isolate-submission.yaml for the GOLD ID populated alongside
+# this same Organism via an OrganismSample.

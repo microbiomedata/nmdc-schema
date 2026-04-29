@@ -17,8 +17,6 @@ organism_set:
         name: Lentinula edodes
         type: nmdc:NcbiTaxon
     biosafety_material_category: Fungi
-    gold_organism_identifiers:
-      - gold:Go0372970
 
 organism_sample_set:
   - id: nmdc:osm-99-shiitake01
@@ -26,6 +24,8 @@ organism_sample_set:
     name: Lentinula edodes NBRC 111202 fruiting body cap
     samp_name: Ledodes_NBRC111202_cap_01
     expected_organism: nmdc:orgn-99-ledodes001
+    gold_organism_identifiers:
+      - gold:Go0372970
     sample_isolated_from: Fruiting body cap of cultivated Lentinula edodes (shiitake)
     collection_date:
       type: nmdc:TimestampValue

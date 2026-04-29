@@ -197,7 +197,6 @@ classes:
       ## organism itself (not the sample or the submission), so it belongs on Organism for
       ## downstream consumers. Keeping for now pending resolution.
       - biosafety_material_category
-      - gold_organism_identifiers
       ## sub-species identity (JGI Isolate form)
       - organism_genus
       - organism_species

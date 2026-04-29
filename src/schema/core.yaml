@@ -1309,6 +1309,7 @@ classes:
       - embargoed
       - provenance_metadata
       - external_database_identifiers
+      - gold_organism_identifiers
       ## collection and provenance (reused from Biosample)
       - collection_date
       ## DEBATED: lat_lon, elev, geo_loc_name — Montana argues these are captured via the
