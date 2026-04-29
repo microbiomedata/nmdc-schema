@@ -8430,23 +8430,6 @@
             "title": "IonizationSourceEnum",
             "type": "string"
         },
-        "IsolateMaterialCategoryEnum": {
-            "description": "General category of isolate material, as used by JGI for biosafety classification of pure-organism / strain-pure samples. Deliberately named to avoid confusion with the submission-schema JGIBiosafetyMaterialCategoryEnum and with environmental material category vocabularies (e.g. MIxS `env_medium`).",
-            "enum": [
-                "Alga",
-                "Animal",
-                "Archaea",
-                "Bacteria",
-                "Fungi",
-                "Plant",
-                "Plasmid",
-                "Protist",
-                "Virus",
-                "Synthetic Construct"
-            ],
-            "title": "IsolateMaterialCategoryEnum",
-            "type": "string"
-        },
         "Isolation": {
             "additionalProperties": false,
             "description": "A material processing that separates an organism from a mixed sample by selection techniques such as serial dilution, plating on selective media, and colony picking.",
@@ -12656,10 +12639,6 @@
                         "null"
                     ]
                 },
-                "biosafety_material_category": {
-                    "$ref": "#/$defs/IsolateMaterialCategoryEnum",
-                    "description": "General category of organism for biosafety classification."
-                },
                 "classified_as": {
                     "description": "A formal classification for this entity, expressed directly as an ontology-backed class instance stored in ontology_class_set.",
                     "items": {
@@ -16125,5 +16104,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post122.dev0+4a50a4aa8"
+    "version": "11.18.0.post123.dev0+0c786b350"
 }

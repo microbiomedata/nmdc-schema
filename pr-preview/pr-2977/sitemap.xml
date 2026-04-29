@@ -457,10 +457,6 @@
          <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/IsolateMaterialCategoryEnum/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/Isolation/</loc>
          <lastmod>2026-04-29</lastmod>
     </url>
@@ -1306,10 +1302,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/biomaterial_purity/</loc>
-         <lastmod>2026-04-29</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/biosafety_material_category/</loc>
          <lastmod>2026-04-29</lastmod>
     </url>
     <url>

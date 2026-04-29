@@ -427,11 +427,6 @@
 
   Organism : alternative_identifiers
 
-  Organism : biosafety_material_category
-
-      Organism --&gt; "0..1" IsolateMaterialCategoryEnum : biosafety_material_category
-    click IsolateMaterialCategoryEnum href "../IsolateMaterialCategoryEnum"
-
   Organism : classified_as
 
       Organism --&gt; "*" OntologyClass : classified_as
@@ -509,12 +504,6 @@
 <td><a href="../classified_as/">classified_as</a></td>
 <td>* <br/> <a href="../OntologyClass/">OntologyClass</a></td>
 <td>A formal classification for this entity, expressed directly as an ontology-ba...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../biosafety_material_category/">biosafety_material_category</a></td>
-<td>0..1 <br/> <a href="../IsolateMaterialCategoryEnum/">IsolateMaterialCategoryEnum</a></td>
-<td>General category of organism for biosafety classification</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -700,7 +689,6 @@ exact_mappings:
 is_a: MaterialEntity
 slots:
 - classified_as
-- biosafety_material_category
 - organism_genus
 - organism_species
 - strain_name
@@ -885,27 +873,6 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  biosafety_material_category:
-    name: biosafety_material_category
-    description: General category of organism for biosafety classification.
-    examples:
-    - value: Bacteria
-      description: JGI Isolate form — bacterial isolates (e.g. GOLD organism_v2 Go0000189
-        Shewanella loihica PV-4, queried 2026-04-21)
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Biosafety Material Category
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-    rank: 1000
-    alias: biosafety_material_category
-    owner: Organism
-    domain_of:
-    - Organism
-    range: IsolateMaterialCategoryEnum
   organism_genus:
     name: organism_genus
     description: Genus of the organism.

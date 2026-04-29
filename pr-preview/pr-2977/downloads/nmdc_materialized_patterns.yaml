@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post122.dev0+4a50a4aa8
+version: 11.18.0.post123.dev0+0c786b350
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -1047,34 +1047,6 @@ enums:
         description: The portion of a mixture containing molecules dissolved in methanol
         is_a: organic_layer
         title: Methanol layer
-  IsolateMaterialCategoryEnum:
-    name: IsolateMaterialCategoryEnum
-    description: General category of isolate material, as used by JGI for biosafety
-      classification of pure-organism / strain-pure samples. Deliberately named to
-      avoid confusion with the submission-schema JGIBiosafetyMaterialCategoryEnum
-      and with environmental material category vocabularies (e.g. MIxS `env_medium`).
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      Alga:
-        text: Alga
-      Animal:
-        text: Animal
-      Archaea:
-        text: Archaea
-      Bacteria:
-        text: Bacteria
-      Fungi:
-        text: Fungi
-      Plant:
-        text: Plant
-      Plasmid:
-        text: Plasmid
-      Protist:
-        text: Protist
-      Virus:
-        text: Virus
-      Synthetic Construct:
-        text: Synthetic Construct
   UnitEnum:
     name: UnitEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6486,22 +6458,6 @@ slots:
       predicate: EXACT_SYNONYM
       contexts:
       - https://jgi.doe.gov/isolate-submission-form/v19
-  biosafety_material_category:
-    name: biosafety_material_category
-    description: General category of organism for biosafety classification.
-    examples:
-    - value: Bacteria
-      description: JGI Isolate form — bacterial isolates (e.g. GOLD organism_v2 Go0000189
-        Shewanella loihica PV-4, queried 2026-04-21)
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Biosafety Material Category
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-    range: IsolateMaterialCategoryEnum
   expected_organism:
     name: expected_organism
     description: The organism that the submitter expects to be present in this sample.
@@ -19597,7 +19553,6 @@ classes:
     is_a: MaterialEntity
     slots:
     - classified_as
-    - biosafety_material_category
     - organism_genus
     - organism_species
     - strain_name
