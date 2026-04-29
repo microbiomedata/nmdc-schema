@@ -1331,6 +1331,11 @@ classes:
       ## isolation provenance
       - sample_isolation_method
       - sample_isolated_from
+      ## genome property — sample-level not strain-level, since fungal life
+      ## stages, plant alternation of generations, and some protists vary
+      ## ploidy by life stage. ploidy is the MIxS slot (MIXS:0000021),
+      ## globally re-typed to PloidyEnum via assets/yq-for-mixs-customizations.txt.
+      - ploidy
       ## NOTE: purity / strain-verification slots (single_colony_isolation,
       ## known_suspected_organisms, ribosomal_sequence*, second_ribosomal_sequence*,
       ## fungal_16s_screening, its_match_unite) were removed. These are JGI submission
