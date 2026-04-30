@@ -1314,22 +1314,11 @@ classes:
       - external_database_identifiers
       - gold_organism_identifiers
       - collection_date
-      - lat_lon
-      - elev
-      - geo_loc_name
       - samp_name
       - host_taxid
       - sample_isolation_method
       - sample_isolated_from
       - ploidy
-    notes:
-      - >-
-        DEBATED — `lat_lon`, `elev`, `geo_loc_name` placement on OrganismSample.
-        Montana argues these are captured via the Host/Env interface in the submission
-        portal for environmental isolates and need not be stored on OrganismSample.
-        Counterargument: culture collection orders have no upstream Biosample, so
-        geographic provenance must live here or be lost entirely. See
-        submission-schema#418 discussion. Keeping for now pending resolution.
     slot_usage:
       id:
         required: true

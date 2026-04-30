@@ -29,8 +29,5 @@ organism_sample_set:
     collection_date:
       type: nmdc:TimestampValue
       has_raw_value: "2025-06-15"
-    geo_loc_name:
-      type: nmdc:TextValue
-      has_raw_value: USA
     associated_studies:
       - nmdc:sty-99-gad6bm

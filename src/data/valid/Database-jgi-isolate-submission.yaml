@@ -48,6 +48,3 @@ organism_sample_set:
     collection_date:
       type: nmdc:TimestampValue
       has_raw_value: "1998-01-01"
-    geo_loc_name:
-      type: nmdc:TextValue
-      has_raw_value: "USA: Hawaii"

@@ -642,7 +642,12 @@ slots:
       - See also dna_isolate_meth in submission-schema for the equivalent portal field.
 
   sample_isolated_from:
-    description: Description of where the sample originated.
+    description: >-
+      Free-text description of the environmental or biological source from which the organism
+      sample was isolated, used when no upstream Biosample exists in NMDC (e.g. culture
+      collection orders). When a linked Biosample is available, geographic provenance belongs
+      there rather than here. Not a typed reference — future work may add a structured
+      slot or wrapper class for typed sample-to-sample links.
     in_subset:
       - jgi_isolate
     structured_aliases:
@@ -653,7 +658,7 @@ slots:
     examples:
       - value: Iron-rich microbial mat from hydrothermal vent, 1325 m depth, Naha Vents, south rift of Loihi seamount, Hawaii
         description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
-      - value: Saltwater from water column
+      - value: Saltwater from water column off the Georgia coast, USA
         description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
 
   # --- Host-of-sample slots (from JGI Isolate v19 form) ---

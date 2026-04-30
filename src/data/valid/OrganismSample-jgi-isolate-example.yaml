@@ -10,12 +10,9 @@ name: Ruegeria pomeroyi DSS-3 isolate submission
 samp_name: Ruegeria_pomeroyi_DSS-3
 expected_organism: nmdc:orgn-99-6wrr79
 sample_isolation_method: Wizard Genomic DNA Purification Kit
-sample_isolated_from: Saltwater from water column
+sample_isolated_from: Saltwater from water column off the Georgia coast, USA
 collection_date:
   type: nmdc:TimestampValue
   has_raw_value: "1998-03-01"
-geo_loc_name:
-  type: nmdc:TextValue
-  has_raw_value: "USA: Georgia coast"
 associated_studies:
   - nmdc:sty-99-m2asmk

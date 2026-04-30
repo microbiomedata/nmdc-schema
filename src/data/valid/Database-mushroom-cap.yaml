@@ -29,8 +29,5 @@ organism_sample_set:
     collection_date:
       type: nmdc:TimestampValue
       has_raw_value: "2025-09-20"
-    geo_loc_name:
-      type: nmdc:TextValue
-      has_raw_value: Japan
     associated_studies:
       - nmdc:sty-99-37kp4t
