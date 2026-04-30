@@ -647,6 +647,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -751,10 +762,17 @@
 </thead>
 <tbody>
 <tr>
+<td>mays</td>
+</tr>
+<tr>
 <td>coli</td>
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Free-text submitter-provided host species. For an ontology-grounded host identification, use <code>host_taxid</code> (MIXS:0000250) on the same class.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -780,9 +798,15 @@
 
 <pre><code class="language-yaml">name: host_species
 description: Species of the host organism that the sample was collected from.
+comments:
+- Free-text submitter-provided host species. For an ontology-grounded host identification,
+  use `host_taxid` (MIXS:0000250) on the same class.
 examples:
+- value: mays
+  description: GOLD organism_v2 host_name &quot;Zea mays&quot; (n=432 records, queried 2026-04-30)
 - value: coli
-  description: JGI Isolate form field specification — bacterial host for phage submissions
+  description: GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia
+    phage JSE, queried 2026-04-30)
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc

@@ -647,6 +647,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -728,7 +739,7 @@
 
 
 <h1 id="slot-gc_content">Slot: gc_content</h1>
-<p><em>Estimated GC content as a percentage (0–100).</em></p>
+<p><em>Estimated GC content as a percentage.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/gc_content">nmdc:gc_content</a></p>
 <!-- no inheritance hierarchy -->
@@ -769,6 +780,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Expected <code>has_numeric_value</code> range is 0–100 (percentage units).</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -812,7 +827,9 @@ annotations:
   storage_units:
     tag: storage_units
     value: '%'
-description: Estimated GC content as a percentage (0–100).
+description: Estimated GC content as a percentage.
+comments:
+- Expected `has_numeric_value` range is 0–100 (percentage units).
 examples:
 - description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)
   object:

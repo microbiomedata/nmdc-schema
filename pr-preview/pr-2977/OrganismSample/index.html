@@ -717,6 +717,13 @@ description: A material sample in which all cells are expected to share the same
   submitter intends to study a single organism. The purity expectation may be contradicted
   by sequencing results.
 title: Organism Sample
+notes:
+- 'DEBATED — `lat_lon`, `elev`, `geo_loc_name` placement on OrganismSample. Montana
+  argues these are captured via the Host/Env interface in the submission portal for
+  environmental isolates and need not be stored on OrganismSample. Counterargument:
+  culture collection orders have no upstream Biosample, so geographic provenance must
+  live here or be lost entirely. See submission-schema#418 discussion. Keeping for
+  now pending resolution.'
 comments:
 - An OrganismSample is not necessarily pure. The submitter expects it to contain a
   single organism, but sequencing may reveal contamination. Purity and strain-verification
@@ -776,6 +783,13 @@ description: A material sample in which all cells are expected to share the same
   submitter intends to study a single organism. The purity expectation may be contradicted
   by sequencing results.
 title: Organism Sample
+notes:
+- 'DEBATED — `lat_lon`, `elev`, `geo_loc_name` placement on OrganismSample. Montana
+  argues these are captured via the Host/Env interface in the submission portal for
+  environmental isolates and need not be stored on OrganismSample. Counterargument:
+  culture collection orders have no upstream Biosample, so geographic provenance must
+  live here or be lost entirely. See submission-schema#418 discussion. Keeping for
+  now pending resolution.'
 comments:
 - An OrganismSample is not necessarily pure. The submitter expects it to contain a
   single organism, but sequencing may reveal contamination. Purity and strain-verification

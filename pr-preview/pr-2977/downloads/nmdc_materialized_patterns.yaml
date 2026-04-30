@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post130.dev0+30a58c0c3
+version: 11.18.0.post131.dev0+c68d1495e
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -3388,18 +3388,11 @@ enums:
       MIxS-imported `ploidy` (MIXS:0000021) from a free- text / structured pattern
       to an enumerated set with referential integrity to PATO.
     comments:
-    - '**Not modeled:** values frequent in JGI but absent from PATO — `octoploid`
-      / `octapolid` (in `Tetraploid or Octoploid`, `Tetraploid and Octoploid`), `dikaryon`
-      / `dikaryotic` / `Diploid(dikaryotic)` (fungal), `monokaryotic`, `polykaryotic`.'
-    - '**Not modeled:** cytogenetic notation (`2n=38`, `2n=2x=18`, `2n=4x=40`, `2n=20`),
-      bare counts (`1`, `2`, `3`, `10`), code letters (`H`, `n`, `2N`). ETL should
-      normalize when meaning is unambiguous.'
-    - '**Not modeled:** compound / hedged values (`diploid, tetraploid, hexaploid`,
-      `Tetraploid or Octoploid`, `Likely haploid`, `expected haploid`, `possibly diploid`,
-      `Allopolyploid Triploid`, `4x, Tetraploid`). Capture modifiers separately or
-      normalize to the dominant ploidy.'
-    - '**Not modeled:** non-English labels (`haploide`, `Diploïde`). ETL should map
-      to the English PV.'
+    - Values frequent in JGI but absent from PATO (octoploid, dikaryon / dikaryotic,
+      polykaryotic), cytogenetic notation (e.g. 2n=38), compound or hedged values
+      (e.g. "Likely haploid"), and non-English labels are not modeled. ETL should
+      normalize to a permissible value when the meaning is unambiguous, or treat as
+      missing.
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       haploid:
@@ -6448,15 +6441,14 @@ slots:
     name: host_genus
     description: Genus of the host organism that the sample was collected from.
     comments:
-    - Host info is sample-level, not strain-level — a single organism can be associated
-      with many hosts via different samples. The MIxS-imported `host_taxid` (MIXS:0000250)
-      on the same class is preferred when an NCBI taxon ID is available; this slot
-      captures the genus when only a textual host designation is provided (e.g. on
-      the JGI Isolate form for viral isolates).
+    - Free-text submitter-provided host genus. For an ontology-grounded host identification,
+      use `host_taxid` (MIXS:0000250) on the same class.
     examples:
+    - value: Zea
+      description: GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
     - value: Escherichia
-      description: JGI Isolate form field specification — bacterial host for phage
-        submissions
+      description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia
+        phage JSE, queried 2026-04-30)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6468,10 +6460,15 @@ slots:
   host_species:
     name: host_species
     description: Species of the host organism that the sample was collected from.
+    comments:
+    - Free-text submitter-provided host species. For an ontology-grounded host identification,
+      use `host_taxid` (MIXS:0000250) on the same class.
     examples:
+    - value: mays
+      description: GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
     - value: coli
-      description: JGI Isolate form field specification — bacterial host for phage
-        submissions
+      description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia
+        phage JSE, queried 2026-04-30)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6483,9 +6480,13 @@ slots:
   host_strain:
     name: host_strain
     description: Strain of the host organism that the sample was collected from.
+    comments:
+    - Free-text submitter-provided host strain. For an ontology-grounded host identification,
+      use `host_taxid` (MIXS:0000250) on the same class.
     examples:
-    - value: K-12 MG1655
-      description: JGI Isolate form field specification — common lab strain
+    - value: K-12
+      description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia
+        phage JSE, queried 2026-04-30)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6498,8 +6499,8 @@ slots:
     name: organism_genus
     description: Genus of the organism.
     comments:
-    - Free-text submitter-provided genus name. For formal taxonomic classification,
-      use classified_as with a NcbiTaxon instance on the parent Organism class.
+    - Free-text submitter-provided genus name. For an ontology-grounded classification,
+      use `classified_as` with a NcbiTaxon instance on the parent Organism class.
     examples:
     - value: Shewanella
       description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
@@ -6519,16 +6520,16 @@ slots:
     name: organism_species
     description: Species of the organism.
     comments:
-    - Free-text submitter-provided species name. For formal taxonomic classification,
-      use classified_as with a NcbiTaxon instance on the parent Organism class.
+    - Free-text submitter-provided species name. For an ontology-grounded classification,
+      use `classified_as` with a NcbiTaxon instance on the parent Organism class.
     examples:
     - value: loihica
       description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
     - value: pomeroyi
       description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
     - value: sp.
-      description: JGI Isolate form convention — when the isolate has not yet been
-        assigned a species name
+      description: GOLD organism_v2.species (n=37 records, queried 2026-04-30) — used
+        when the isolate has not yet been assigned a species name
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6559,9 +6560,14 @@ slots:
     name: isolate_name
     description: Isolate or mutant name.
     examples:
+    - value: Bd21-3
+      description: GOLD dw_sample_taxonomy_info.isolate (n=260 records, queried 2026-04-30)
+        — Brachypodium distachyon Bd21-3 reference accession
+    - value: MR164
+      description: GOLD dw_sample_taxonomy_info.isolate (n=555 records, queried 2026-04-30)
     - value: Isolate
-      description: JGI Isolate form convention — generic isolate designation used
-        when no specific mutant/isolate name is needed
+      description: GOLD dw_sample_taxonomy_info.isolate (n=918 records, queried 2026-04-30)
+        — generic placeholder used when no specific mutant/isolate name is recorded
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6576,7 +6582,9 @@ slots:
       storage_units:
         tag: storage_units
         value: '%'
-    description: Estimated GC content as a percentage (0–100).
+    description: Estimated GC content as a percentage.
+    comments:
+    - Expected `has_numeric_value` range is 0–100 (percentage units).
     examples:
     - description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)
       object:
@@ -19675,6 +19683,13 @@ classes:
       instances represent the biological identity of what is in a sample, not the
       sample itself. Sub-species identity (strain, cultivar, lab isolate) is captured
       by slots on this class rather than via a separate Strain subclass.
+    notes:
+    - 'DEBATED — `estimated_size` and `gc_content` placement on Organism. Montana
+      argues these are analyte properties measured during sample QC (like concentration
+      or absorbance) rather than stable organism properties, and belong only in submission-schema.
+      Counterargument: genome size and GC% are reproducible biological properties
+      of the organism that are useful for downstream data integration. Keeping on
+      Organism pending resolution.'
     comments:
     - Organism instances are stored in organism_set. An Organism is not a sample —
       it is the biological entity that an OrganismSample is expected to contain, linked
@@ -21430,6 +21445,13 @@ classes:
       where the submitter intends to study a single organism. The purity expectation
       may be contradicted by sequencing results.
     title: Organism Sample
+    notes:
+    - 'DEBATED — `lat_lon`, `elev`, `geo_loc_name` placement on OrganismSample. Montana
+      argues these are captured via the Host/Env interface in the submission portal
+      for environmental isolates and need not be stored on OrganismSample. Counterargument:
+      culture collection orders have no upstream Biosample, so geographic provenance
+      must live here or be lost entirely. See submission-schema#418 discussion. Keeping
+      for now pending resolution.'
     comments:
     - An OrganismSample is not necessarily pure. The submitter expects it to contain
       a single organism, but sequencing may reveal contamination. Purity and strain-verification

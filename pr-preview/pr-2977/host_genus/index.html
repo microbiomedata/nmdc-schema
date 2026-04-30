@@ -762,13 +762,16 @@
 </thead>
 <tbody>
 <tr>
+<td>Zea</td>
+</tr>
+<tr>
 <td>Escherichia</td>
 </tr>
 </tbody>
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Host info is sample-level, not strain-level — a single organism can be associated with many hosts via different samples. The MIxS-imported <code>host_taxid</code> (MIXS:0000250) on the same class is preferred when an NCBI taxon ID is available; this slot captures the genus when only a textual host designation is provided (e.g. on the JGI Isolate form for viral isolates).</li>
+<li>Free-text submitter-provided host genus. For an ontology-grounded host identification, use <code>host_taxid</code> (MIXS:0000250) on the same class.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -796,14 +799,14 @@
 <pre><code class="language-yaml">name: host_genus
 description: Genus of the host organism that the sample was collected from.
 comments:
-- Host info is sample-level, not strain-level — a single organism can be associated
-  with many hosts via different samples. The MIxS-imported `host_taxid` (MIXS:0000250)
-  on the same class is preferred when an NCBI taxon ID is available; this slot captures
-  the genus when only a textual host designation is provided (e.g. on the JGI Isolate
-  form for viral isolates).
+- Free-text submitter-provided host genus. For an ontology-grounded host identification,
+  use `host_taxid` (MIXS:0000250) on the same class.
 examples:
+- value: Zea
+  description: GOLD organism_v2 host_name &quot;Zea mays&quot; (n=432 records, queried 2026-04-30)
 - value: Escherichia
-  description: JGI Isolate form field specification — bacterial host for phage submissions
+  description: GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia
+    phage JSE, queried 2026-04-30)
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc

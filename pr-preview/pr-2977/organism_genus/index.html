@@ -774,7 +774,7 @@
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Free-text submitter-provided genus name. For formal taxonomic classification, use classified_as with a NcbiTaxon instance on the parent Organism class.</li>
+<li>Free-text submitter-provided genus name. For an ontology-grounded classification, use <code>classified_as</code> with a NcbiTaxon instance on the parent Organism class.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -802,8 +802,8 @@
 <pre><code class="language-yaml">name: organism_genus
 description: Genus of the organism.
 comments:
-- Free-text submitter-provided genus name. For formal taxonomic classification, use
-  classified_as with a NcbiTaxon instance on the parent Organism class.
+- Free-text submitter-provided genus name. For an ontology-grounded classification,
+  use `classified_as` with a NcbiTaxon instance on the parent Organism class.
 examples:
 - value: Shewanella
   description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)

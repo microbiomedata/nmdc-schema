@@ -778,10 +778,7 @@
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li><strong>Not modeled:</strong> values frequent in JGI but absent from PATO — <code>octoploid</code> / <code>octapolid</code> (in <code>Tetraploid or Octoploid</code>, <code>Tetraploid and Octoploid</code>), <code>dikaryon</code> / <code>dikaryotic</code> / <code>Diploid(dikaryotic)</code> (fungal), <code>monokaryotic</code>, <code>polykaryotic</code>.</li>
-<li><strong>Not modeled:</strong> cytogenetic notation (<code>2n=38</code>, <code>2n=2x=18</code>, <code>2n=4x=40</code>, <code>2n=20</code>), bare counts (<code>1</code>, <code>2</code>, <code>3</code>, <code>10</code>), code letters (<code>H</code>, <code>n</code>, <code>2N</code>). ETL should normalize when meaning is unambiguous.</li>
-<li><strong>Not modeled:</strong> compound / hedged values (<code>diploid, tetraploid, hexaploid</code>, <code>Tetraploid or Octoploid</code>, <code>Likely haploid</code>, <code>expected haploid</code>, <code>possibly diploid</code>, <code>Allopolyploid Triploid</code>, <code>4x, Tetraploid</code>). Capture modifiers separately or normalize to the dominant ploidy.</li>
-<li><strong>Not modeled:</strong> non-English labels (<code>haploide</code>, <code>Diploïde</code>). ETL should map to the English PV.</li>
+<li>Values frequent in JGI but absent from PATO (octoploid, dikaryon / dikaryotic, polykaryotic), cytogenetic notation (e.g. 2n=38), compound or hedged values (e.g. "Likely haploid"), and non-English labels are not modeled. ETL should normalize to a permissible value when the meaning is unambiguous, or treat as missing.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -798,18 +795,10 @@ description: Ploidy of an organism's genome. Permissible values map to PATO clas
   `ploidy` (MIXS:0000021) from a free- text / structured pattern to an enumerated
   set with referential integrity to PATO.
 comments:
-- '**Not modeled:** values frequent in JGI but absent from PATO — `octoploid` / `octapolid`
-  (in `Tetraploid or Octoploid`, `Tetraploid and Octoploid`), `dikaryon` / `dikaryotic`
-  / `Diploid(dikaryotic)` (fungal), `monokaryotic`, `polykaryotic`.'
-- '**Not modeled:** cytogenetic notation (`2n=38`, `2n=2x=18`, `2n=4x=40`, `2n=20`),
-  bare counts (`1`, `2`, `3`, `10`), code letters (`H`, `n`, `2N`). ETL should normalize
-  when meaning is unambiguous.'
-- '**Not modeled:** compound / hedged values (`diploid, tetraploid, hexaploid`, `Tetraploid
-  or Octoploid`, `Likely haploid`, `expected haploid`, `possibly diploid`, `Allopolyploid
-  Triploid`, `4x, Tetraploid`). Capture modifiers separately or normalize to the dominant
-  ploidy.'
-- '**Not modeled:** non-English labels (`haploide`, `Diploïde`). ETL should map to
-  the English PV.'
+- Values frequent in JGI but absent from PATO (octoploid, dikaryon / dikaryotic, polykaryotic),
+  cytogenetic notation (e.g. 2n=38), compound or hedged values (e.g. &quot;Likely haploid&quot;),
+  and non-English labels are not modeled. ETL should normalize to a permissible value
+  when the meaning is unambiguous, or treat as missing.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:

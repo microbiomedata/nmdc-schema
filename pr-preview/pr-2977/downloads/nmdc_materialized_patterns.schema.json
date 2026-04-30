@@ -12989,7 +12989,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Estimated GC content as a percentage (0\u2013100)."
+                    "description": "Estimated GC content as a percentage."
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
@@ -16421,6 +16421,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post130.dev0+30a58c0c3"
+    "version": "11.18.0.post131.dev0+c68d1495e"
 }
 

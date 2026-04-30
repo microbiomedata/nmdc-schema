@@ -10094,15 +10094,14 @@ attributes:
     name: host_genus
     description: Genus of the host organism that the sample was collected from.
     comments:
-    - Host info is sample-level, not strain-level — a single organism can be associated
-      with many hosts via different samples. The MIxS-imported `host_taxid` (MIXS:0000250)
-      on the same class is preferred when an NCBI taxon ID is available; this slot
-      captures the genus when only a textual host designation is provided (e.g. on
-      the JGI Isolate form for viral isolates).
+    - Free-text submitter-provided host genus. For an ontology-grounded host identification,
+      use `host_taxid` (MIXS:0000250) on the same class.
     examples:
+    - value: Zea
+      description: GOLD organism_v2 host_name &quot;Zea mays&quot; (n=432 records, queried 2026-04-30)
     - value: Escherichia
-      description: JGI Isolate form field specification — bacterial host for phage
-        submissions
+      description: GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia
+        phage JSE, queried 2026-04-30)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10307,10 +10306,15 @@ attributes:
   host_species:
     name: host_species
     description: Species of the host organism that the sample was collected from.
+    comments:
+    - Free-text submitter-provided host species. For an ontology-grounded host identification,
+      use `host_taxid` (MIXS:0000250) on the same class.
     examples:
+    - value: mays
+      description: GOLD organism_v2 host_name &quot;Zea mays&quot; (n=432 records, queried 2026-04-30)
     - value: coli
-      description: JGI Isolate form field specification — bacterial host for phage
-        submissions
+      description: GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia
+        phage JSE, queried 2026-04-30)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10328,9 +10332,13 @@ attributes:
   host_strain:
     name: host_strain
     description: Strain of the host organism that the sample was collected from.
+    comments:
+    - Free-text submitter-provided host strain. For an ontology-grounded host identification,
+      use `host_taxid` (MIXS:0000250) on the same class.
     examples:
-    - value: K-12 MG1655
-      description: JGI Isolate form field specification — common lab strain
+    - value: K-12
+      description: GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia
+        phage JSE, queried 2026-04-30)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
