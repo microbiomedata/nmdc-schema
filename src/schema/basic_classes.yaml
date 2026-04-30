@@ -189,29 +189,23 @@ classes:
       Sub-species identity (strain, cultivar, lab isolate) is captured by slots on this
       class rather than via a separate Strain subclass.
     slots:
-      ## classification + identity
       - classified_as
-      ## sub-species identity (JGI Isolate form)
       - organism_genus
       - organism_species
       - strain_name
       - isolate_name
-      ## genome properties (JGI Isolate form; MIxS where noted)
-      ## DEBATED: estimated_size and gc_content — Montana argues these are analyte
-      ## properties measured during sample QC (like concentration or absorbance) rather
-      ## than stable organism properties, and belong only in submission-schema. Counter:
-      ## genome size and GC% are reproducible biological properties of the organism that
-      ## are useful for downstream data integration. Keeping for now pending resolution.
       - estimated_size
       - gc_content
-      ## NOTE: ploidy moved off Organism per @turbomam — fungal life stages
-      ## have different ploidies, plants have alternation of generations,
-      ## some protists vary by environment. Ploidy is a property of the
-      ## sampled cells (life stage), not of the abstract strain. Now lives
-      ## on OrganismSample.
-      ## provenance / reference
       - source_mat_id
       - ref_biomaterial
+    notes:
+      - >-
+        DEBATED — `estimated_size` and `gc_content` placement on Organism. Montana
+        argues these are analyte properties measured during sample QC (like
+        concentration or absorbance) rather than stable organism properties, and
+        belong only in submission-schema. Counterargument: genome size and GC% are
+        reproducible biological properties of the organism that are useful for
+        downstream data integration. Keeping on Organism pending resolution.
     slot_usage:
       id:
         required: true
@@ -1444,24 +1438,11 @@ enums:
       integrity to PATO.
     comments:
       - >-
-        **Not modeled:** values frequent in JGI but absent from PATO —
-        `octoploid` / `octapolid` (in `Tetraploid or Octoploid`,
-        `Tetraploid and Octoploid`), `dikaryon` / `dikaryotic` /
-        `Diploid(dikaryotic)` (fungal), `monokaryotic`, `polykaryotic`.
-      - >-
-        **Not modeled:** cytogenetic notation (`2n=38`, `2n=2x=18`,
-        `2n=4x=40`, `2n=20`), bare counts (`1`, `2`, `3`, `10`), code
-        letters (`H`, `n`, `2N`). ETL should normalize when meaning is
-        unambiguous.
-      - >-
-        **Not modeled:** compound / hedged values (`diploid, tetraploid,
-        hexaploid`, `Tetraploid or Octoploid`, `Likely haploid`,
-        `expected haploid`, `possibly diploid`, `Allopolyploid Triploid`,
-        `4x, Tetraploid`). Capture modifiers separately or normalize to
-        the dominant ploidy.
-      - >-
-        **Not modeled:** non-English labels (`haploide`, `Diploïde`).
-        ETL should map to the English PV.
+        Values frequent in JGI but absent from PATO (octoploid, dikaryon /
+        dikaryotic, polykaryotic), cytogenetic notation (e.g. 2n=38), compound
+        or hedged values (e.g. "Likely haploid"), and non-English labels are
+        not modeled. ETL should normalize to a permissible value when the
+        meaning is unambiguous, or treat as missing.
     permissible_values:
       haploid:
         meaning: PATO:0001375

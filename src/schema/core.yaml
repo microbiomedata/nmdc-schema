@@ -1313,34 +1313,23 @@ classes:
       - provenance_metadata
       - external_database_identifiers
       - gold_organism_identifiers
-      ## collection and provenance (reused from Biosample)
       - collection_date
-      ## DEBATED: lat_lon, elev, geo_loc_name — Montana argues these are captured via the
-      ## Host/Env interface in the submission portal for environmental isolates and need not
-      ## be stored on OrganismSample. Counterargument: culture collection orders have no
-      ## upstream Biosample, so geographic provenance must live here or be lost entirely.
-      ## See submission-schema#418 discussion. Keeping for now pending resolution.
       - lat_lon
       - elev
       - geo_loc_name
       - samp_name
-      ## host of the sample (reused from Biosample) — sample-level per MIxS
-      ## host_taxid (MIXS:0000250). Applies when the sample was collected from
-      ## or co-cultured with a host; for non-host-associated samples leave unset.
       - host_taxid
-      ## isolation provenance
       - sample_isolation_method
       - sample_isolated_from
-      ## genome property — sample-level not strain-level, since fungal life
-      ## stages, plant alternation of generations, and some protists vary
-      ## ploidy by life stage. ploidy is the MIxS slot (MIXS:0000021),
-      ## globally re-typed to PloidyEnum via assets/yq-for-mixs-customizations.txt.
       - ploidy
-      ## NOTE: purity / strain-verification slots (single_colony_isolation,
-      ## known_suspected_organisms, ribosomal_sequence*, second_ribosomal_sequence*,
-      ## fungal_16s_screening, its_match_unite) were removed. These are JGI submission
-      ## logistics, not NMDC data-model fields. Equivalent slots live in
-      ## submission-schema JgiIsolateInterface. See submission-schema#418.
+    notes:
+      - >-
+        DEBATED — `lat_lon`, `elev`, `geo_loc_name` placement on OrganismSample.
+        Montana argues these are captured via the Host/Env interface in the submission
+        portal for environmental isolates and need not be stored on OrganismSample.
+        Counterargument: culture collection orders have no upstream Biosample, so
+        geographic provenance must live here or be lost entirely. See
+        submission-schema#418 discussion. Keeping for now pending resolution.
     slot_usage:
       id:
         required: true

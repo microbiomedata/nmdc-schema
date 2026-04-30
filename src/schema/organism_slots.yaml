@@ -34,15 +34,7 @@ subsets:
         https://jgi.doe.gov/isolate-submission-form/v19 mapping to the
         exact field name on the JGI Isolate (NA) v19 spreadsheet.
 
-enums:
-  # NOTE: RibosomalSequenceTypeEnum was removed. The ribosomal sequence slots
-  # (single_colony_isolation, known_suspected_organisms, ribosomal_sequence*,
-  # second_ribosomal_sequence*, fungal_16s_screening, its_match_unite) are JGI
-  # submission logistics, not NMDC data-model fields. Equivalent slots with this
-  # enum live in submission-schema JgiIsolateInterface. See submission-schema#418.
-
 slots:
-  # --- Organism sub-species identity slots (from JGI Isolate form) ---
   organism_genus:
     description: Genus of the organism.
     in_subset:
@@ -61,8 +53,8 @@ slots:
         description: GOLD organism_v2 (Go0000058, queried 2026-04-14)
     comments:
       - >-
-        Free-text submitter-provided genus name. For formal taxonomic classification,
-        use classified_as with a NcbiTaxon instance on the parent Organism class.
+        Free-text submitter-provided genus name. For an ontology-grounded classification,
+        use `classified_as` with a NcbiTaxon instance on the parent Organism class.
 
   organism_species:
     description: Species of the organism.
@@ -79,11 +71,11 @@ slots:
       - value: pomeroyi
         description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
       - value: sp.
-        description: JGI Isolate form convention — when the isolate has not yet been assigned a species name
+        description: GOLD organism_v2.species (n=37 records, queried 2026-04-30) — used when the isolate has not yet been assigned a species name
     comments:
       - >-
-        Free-text submitter-provided species name. For formal taxonomic classification,
-        use classified_as with a NcbiTaxon instance on the parent Organism class.
+        Free-text submitter-provided species name. For an ontology-grounded classification,
+        use `classified_as` with a NcbiTaxon instance on the parent Organism class.
 
   strain_name:
     description: Strain or cultivar name of the organism.
@@ -112,15 +104,20 @@ slots:
           - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
     examples:
+      - value: Bd21-3
+        description: GOLD dw_sample_taxonomy_info.isolate (n=260 records, queried 2026-04-30) — Brachypodium distachyon Bd21-3 reference accession
+      - value: MR164
+        description: GOLD dw_sample_taxonomy_info.isolate (n=555 records, queried 2026-04-30)
       - value: Isolate
-        description: JGI Isolate form convention — generic isolate designation used when no specific mutant/isolate name is needed
+        description: GOLD dw_sample_taxonomy_info.isolate (n=918 records, queried 2026-04-30) — generic placeholder used when no specific mutant/isolate name is recorded
 
   gc_content:
     range: QuantityValue
-    description: Estimated GC content as a percentage (0–100).
+    description: Estimated GC content as a percentage.
+    comments:
+      - Expected `has_numeric_value` range is 0–100 (percentage units).
     annotations:
-      storage_units:
-        value: "%"
+      storage_units: "%"
     in_subset:
       - jgi_isolate
     structured_aliases:
@@ -140,7 +137,6 @@ slots:
           has_unit: "%"
         description: GOLD project Gp0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
 
-  # --- OrganismSample slots ---
   expected_organism:
     range: Organism
     description: >-

@@ -87,10 +87,11 @@ def test_all_valid_examples(nmdc_schema_validator):
     This would be better as part of the `linkml-run-examples` command, but that CLI doesn't allow
     specifying custom validation plugins at present.
 
-    Files whose target class is absent from the materialized-patterns artifact are skipped with a
-    warning. This happens during feature development when new classes have been added to source
-    YAML but the artifact has not yet been regenerated (per project policy, artifacts are only
-    regenerated immediately before merge/release).
+    If any example file's target class is absent from the materialized-patterns artifact, the
+    test is marked skipped at the end with a list of affected files. This happens during feature
+    development when new classes have been added to source YAML but the artifact has not yet been
+    regenerated (per project policy, artifacts are only regenerated immediately before
+    merge/release).
     """
     from linkml_runtime import SchemaView
 
