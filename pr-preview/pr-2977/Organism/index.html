@@ -851,7 +851,8 @@ attributes:
       is to narrow `classified_as` to `NcbiTaxon` on all organism-oriented classes
       via slot_usage.'
     comments:
-    - 'Taxonomy-oriented uses (e.g. on OrganismSample) should point to NcbiTaxon instances.
+    - 'Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
+      OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.
       The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage
       is tracked in #3016.'
     from_schema: https://w3id.org/nmdc/nmdc

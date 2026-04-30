@@ -760,7 +760,7 @@
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Taxonomy-oriented uses (e.g. on OrganismSample) should point to NcbiTaxon instances. The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked in #3016.</li>
+<li>Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances. OrganismSample reaches taxonomy indirectly via expected_organism.classified_as. The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked in #3016.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -793,7 +793,8 @@
 description: A formal classification for this entity, expressed directly as an ontology-backed
   class instance stored in ontology_class_set.
 comments:
-- 'Taxonomy-oriented uses (e.g. on OrganismSample) should point to NcbiTaxon instances.
+- 'Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
+  OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.
   The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked
   in #3016.'
 from_schema: https://w3id.org/nmdc/nmdc
