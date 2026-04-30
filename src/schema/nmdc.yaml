@@ -15,8 +15,6 @@ version: 0.0.0
 
 imports:
   - annotation # also brings core and portal_*
-  - host_slots
-  - organism_slots
   - workflow_execution_activity
 
 prefixes:
