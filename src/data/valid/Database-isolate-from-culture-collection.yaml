@@ -36,10 +36,10 @@ organism_set:
       type: nmdc:TextValue
       has_raw_value: doi:10.1016/j.syapm.2018.01.009
 
-organism_sample_set:
+cultured_sample_set:
   # Cells received from DSMZ — the record begins here, not at a Biosample.
-  - id: nmdc:osm-99-74k7dy
-    type: nmdc:OrganismSample
+  - id: nmdc:csm-99-74k7dy
+    type: nmdc:CulturedSample
     name: Pseudomonas putida KT2440 from DSMZ catalog
     description: >-
       Cells of P. putida KT2440 ordered from the DSMZ catalog (DSM 6125).
@@ -48,30 +48,45 @@ organism_sample_set:
     associated_studies:
       - nmdc:sty-99-86scx7
     expected_organism: nmdc:orgn-99-6dwrrh
-    sample_isolated_from: DSMZ culture collection (DSM 6125)
-    sample_isolation_method: Culture purchased from DSMZ; no in-house isolation step.
+
   # Expanded culture grown from the catalog cells.
-  - id: nmdc:osm-99-3sr885
-    type: nmdc:OrganismSample
+  - id: nmdc:csm-99-3sr885
+    type: nmdc:CulturedSample
     name: Pseudomonas putida KT2440 expanded culture
     description: Liquid culture grown from the DSMZ-supplied seed cells.
     associated_studies:
       - nmdc:sty-99-86scx7
     expected_organism: nmdc:orgn-99-6dwrrh
 
+ organism_sample_set:
+   - id: nmdc:osm-99-3sr886
+     type: nmdc: OrganismSample 
+     name: Pseudomonas putida KT2440
+     description: Pseudomonas putida KT2440 isolated from single colony
+     associated_studies:
+      - nmdc:sty-99-86scx7
+    expected_organism: nmdc:orgn-99-6dwrrh
+    
 material_processing_set:
   # Step 1: Culture the catalog cells.
   - id: nmdc:cultp-99-2vhwd4
     type: nmdc:Culturing
     has_input:
-      - nmdc:osm-99-74k7dy
+      - nmdc:csm-99-74k7dy
     has_output:
-      - nmdc:osm-99-3sr885
-  # Step 2: Extract DNA from the culture.
+      - nmdc:csm-99-3sr885
+  # Step 2: Isolation 
+  - id: nmdc:isnp-99-isol001
+    type: nmdc:Isolation
+    has_input:
+      - nmdc:csm-99-3sr885
+    has_output:
+      - nmdc:osm-99-3sr886
+  # Step 3: Extract DNA from the culture.
   - id: nmdc:extrp-99-q4yygh
     type: nmdc:Extraction
     has_input:
-      - nmdc:osm-99-3sr885
+      - nmdc:osm-99-3sr886
     has_output:
       - nmdc:procsm-99-8szegv
 
