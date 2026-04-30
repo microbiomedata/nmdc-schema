@@ -29,6 +29,26 @@
 - Write verbose, descriptive variable and function names
 - Use None return values to indicate absence of a result
 
+## LinkML Mapping Metaslots — Conventions
+
+Use typed subtypes (`exact_mappings`, `close_mappings`, `broad_mappings`,
+`narrow_mappings`, `related_mappings`) in preference to generic `mappings`.
+
+**Exception — keep `mappings` (generic) for:** schema.org properties
+(`schema:QuantityValue`, `schema:latitude`, etc.), QUDT (`qud:unit`,
+`qud:quantityValue`), and `prov:wasGeneratedBy`. These are
+*property-to-property* alignments where SKOS directional semantics
+(broader/narrower) don't apply. Do not "fix" these to `exact_mappings`.
+
+**`see_also`** is for human-readable documentation pointers only: URLs,
+GitHub issue links, specification documents. Ontology CURIEs belong in a
+`*_mappings` slot. See #3031 for an open cleanup of MIXS CURIEs currently
+in `see_also` in `portal_mixs_inspired.yaml`.
+
+**`structured_aliases`** requires `literal_form`, `contexts` (a URL), and
+a SKOS predicate (`EXACT_SYNONYM`, `NARROW_SYNONYM`, `BROAD_SYNONYM`,
+`RELATED_SYNONYM`). Plain `aliases` is for unattributed synonym strings.
+
 ## LinkML Readonly Metaslots — Do Not Assert
 The LinkML metamodel defines 12 slots that are **readonly** — populated
 automatically by the schema loader or generators. Never add these to
