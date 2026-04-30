@@ -129,9 +129,15 @@ slots:
           - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
     examples:
-      - value: "54.0"
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 54.0
+          has_unit: "%"
         description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)
-      - value: "64.0"
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 64.0
+          has_unit: "%"
         description: GOLD project Gp0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
 
   # --- OrganismSample slots ---
