@@ -681,7 +681,10 @@ enums:
 
       GTDBTK Archaeal Summary:
         description: GTDBTK archaeal summary
-
+      
+      GTDBTK Summary json:
+        description: GTDBTK bacterial and archaeal summary in json format
+        
       GOTTCHA2 Krona Plot:
         description: GOTTCHA2 krona plot HTML file
 
