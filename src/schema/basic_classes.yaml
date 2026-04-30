@@ -256,6 +256,19 @@ classes:
           publication or genome report exists; PMID and URL are also accepted
           per the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses
           MIxS ref_biomaterial (MIXS:0000025).
+        examples:
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: doi:10.1016/j.syapm.2018.01.009
+            description: DOI form (preferred when a primary publication exists)
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: PMID:24296464
+            description: PubMed ID form
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
+            description: URL form (e.g. NCBI Genome record)
         structured_aliases:
           - literal_form: Reference Genome
             contexts:

@@ -29,6 +29,12 @@ organism_set:
     source_mat_id:
       type: nmdc:TextValue
       has_raw_value: "DSM 6125"
+    # ref_biomaterial demonstrates the MIxS DOI/PMID/URL pattern. The DOI shown
+    # is the example value carried in MIxS for this slot — shape demonstration
+    # only, not a real KT2440 genome reference.
+    ref_biomaterial:
+      type: nmdc:TextValue
+      has_raw_value: doi:10.1016/j.syapm.2018.01.009
 
 organism_sample_set:
   # Cells received from DSMZ — the record begins here, not at a Biosample.

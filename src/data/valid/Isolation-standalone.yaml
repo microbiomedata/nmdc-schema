@@ -1,0 +1,9 @@
+# Minimal Isolation: a single isolation step with a Biosample input and an
+# OrganismSample output. Demonstrates the slot_usage constraints
+# (has_input ∈ {bsm,osm,procsm}, has_output ∈ {osm}).
+id: nmdc:isnp-99-mukr6y
+type: nmdc:Isolation
+has_input:
+  - nmdc:bsm-99-dss5dg
+has_output:
+  - nmdc:osm-99-xvrts7

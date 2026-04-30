@@ -1,0 +1,9 @@
+# Minimal Culturing: an OrganismSample is grown into another OrganismSample
+# (e.g. seed cells expanded into a working culture). Both has_input and
+# has_output are constrained to OrganismSample (osm-) CURIEs.
+id: nmdc:cultp-99-vu3tz2
+type: nmdc:Culturing
+has_input:
+  - nmdc:osm-99-xvrts7
+has_output:
+  - nmdc:osm-99-jss44u

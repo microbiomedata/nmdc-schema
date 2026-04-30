@@ -39,6 +39,7 @@ organism_sample_set:
     associated_studies:
       - nmdc:sty-99-m2asmk
     expected_organism: nmdc:orgn-99-tuxk3s
+    ploidy: haploid
     gold_organism_identifiers:
       - gold:Go0000189
     samp_name: Shewanella_loihica_PV-4

@@ -1,0 +1,63 @@
+# Viral isolate scenario: a phage harvested from an E. coli K-12 lysate.
+# The phage is the focal Organism; its OrganismSample carries upstream
+# Biosample provenance where the host bacterium is identified via the
+# host_genus / host_species / host_strain slots (NMDC-native, sourced from
+# the JGI Isolate (NA) v19 form fields "Host Genus" / "Host Species" /
+# "Host Strain"). host_taxid (MIxS-imported) on the Biosample carries the
+# NCBI Taxonomy ID for the host when known.
+#
+# Real organisms used as a placeholder reference:
+#   - Phage (focal): Enterobacteria phage T4 (NCBITaxon:10665)
+#   - Host (substrate): Escherichia coli K-12 substr. MG1655 (NCBITaxon:511145)
+
+biosample_set:
+  - id: nmdc:bsm-99-aqx88e
+    type: nmdc:Biosample
+    name: T4 phage lysate from E. coli K-12 MG1655
+    associated_studies:
+      - nmdc:sty-99-r5xs9t
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:01000254
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:01000254
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:01000748
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:01000748
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002006
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002006
+    host_taxid:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: NCBITaxon:511145
+      term:
+        type: nmdc:OntologyClass
+        id: NCBITaxon:511145
+    host_genus: Escherichia
+    host_species: coli
+    host_strain: K-12 MG1655
+
+organism_set:
+  - id: nmdc:orgn-99-pgw8nq
+    type: nmdc:Organism
+    name: Enterobacteria phage T4
+    classified_as:
+      - id: NCBITaxon:10665
+        name: Escherichia virus T4
+        type: nmdc:NcbiTaxon
+
+organism_sample_set:
+  - id: nmdc:osm-99-vqkvad
+    type: nmdc:OrganismSample
+    name: T4 phage particles from K-12 lysate
+    associated_studies:
+      - nmdc:sty-99-r5xs9t
+    expected_organism: nmdc:orgn-99-pgw8nq
+    sample_isolated_from: Lysate of Escherichia coli K-12 MG1655 culture infected with phage T4

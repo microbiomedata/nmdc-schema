@@ -3511,6 +3511,11 @@ slots:
     comments:
       - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
     range: ControlledIdentifiedTermValue
+    structured_aliases:
+      - literal_form: Host NCBI Taxonomy ID
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
   host_tot_mass:
     annotations:
       Preferred_unit: kilogram, gram
