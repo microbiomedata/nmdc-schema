@@ -744,11 +744,6 @@
 <td>#2960</td>
 </tr>
 <tr>
-<td>Deprecation of <code>known_as</code> on PortionOfSubstance</td>
-<td>Replace with <code>classified_as</code></td>
-<td>#2976</td>
-</tr>
-<tr>
 <td>Direct <code>NcbiTaxon</code> example data</td>
 <td><code>NcbiTaxon-minimal.yaml</code> (valid), <code>NcbiTaxon-invalid-prefix.yaml</code> (invalid)</td>
 <td>This PR</td>
@@ -761,6 +756,12 @@
 slot intended for new classes like OrganismSample. The target design narrows
 organism-oriented uses to <code>NcbiTaxon</code> via class-specific <code>slot_usage</code> (#3016) rather than
 making the global slot range taxon-specific.</p>
+<p>At present, <code>OrganismTaxon</code> validation is intentionally NCBITaxon-specific. The schema keeps
+<code>id_prefixes</code> so the intended authority list is explicit, but actual instance validation
+is enforced by a regex on <code>OrganismTaxon.id</code>. When GTDB, LPSN, or SeqCode support is added, both
+<code>id_prefixes</code> and the <code>OrganismTaxon.id</code> pattern should be updated together.</p>
+<p>The remaining modeling question is how much of this specificity should live on the
+global <code>classified_as</code> slot versus on class-local <code>slot_usage</code>. That is tracked in #3016.</p>
 <h2 id="loading-taxonomy-data-into-ontology_class_set">Loading taxonomy data into ontology_class_set</h2>
 <p><code>ontology_class_set</code> currently contains ENVO (4,366), UBERON (16,061), and PO (1,998)
 terms. NCBITaxon (~2.7M active terms) can be loaded using the same pipeline once

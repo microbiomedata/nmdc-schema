@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post135.dev0+6296bdfa7
+version: 11.18.0.post131.dev0+eb9e46f32
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7777,7 +7777,6 @@ slots:
     - 'Taxonomy-oriented uses (e.g. on OrganismSample) should point to NcbiTaxon instances.
       The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage
       is tracked in #3016.'
-    - Intended to replace known_as on PortionOfSubstance in a future deprecation.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2959
