@@ -762,10 +762,10 @@
 </thead>
 <tbody>
 <tr>
-<td>54.0</td>
+<td>None</td>
 </tr>
 <tr>
-<td>64.0</td>
+<td>None</td>
 </tr>
 </tbody>
 </table>
@@ -814,10 +814,16 @@ annotations:
     value: '%'
 description: Estimated GC content as a percentage (0–100).
 examples:
-- value: '54.0'
-  description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)
-- value: '64.0'
-  description: GOLD project Gp0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+- description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+  object:
+    type: nmdc:QuantityValue
+    has_numeric_value: 54.0
+    has_unit: '%'
+- description: GOLD project Gp0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+  object:
+    type: nmdc:QuantityValue
+    has_numeric_value: 64.0
+    has_unit: '%'
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post128.dev0+36d580ad8
+version: 11.18.0.post129.dev0+5e86e92df
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6578,10 +6578,16 @@ slots:
         value: '%'
     description: Estimated GC content as a percentage (0–100).
     examples:
-    - value: '54.0'
-      description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)
-    - value: '64.0'
-      description: GOLD project Gp0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+    - description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+      object:
+        type: nmdc:QuantityValue
+        has_numeric_value: 54.0
+        has_unit: '%'
+    - description: GOLD project Gp0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+      object:
+        type: nmdc:QuantityValue
+        has_numeric_value: 64.0
+        has_unit: '%'
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
