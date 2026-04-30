@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post129.dev0+5e86e92df
+version: 11.18.0.post130.dev0+30a58c0c3
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -11723,6 +11723,11 @@ slots:
     comments:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host NCBI Taxonomy ID
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     keywords:
     - host
     - host.
@@ -19751,6 +19756,19 @@ classes:
           and `insdc_nucleotide_identifiers` for genome / assembly references).
         - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See
           ongoing MIxS renaming work.
+        examples:
+        - description: DOI form (preferred when a primary publication exists)
+          object:
+            type: nmdc:TextValue
+            has_raw_value: doi:10.1016/j.syapm.2018.01.009
+        - description: PubMed ID form
+          object:
+            type: nmdc:TextValue
+            has_raw_value: PMID:24296464
+        - description: URL form (e.g. NCBI Genome record)
+          object:
+            type: nmdc:TextValue
+            has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
         structured_aliases:
         - literal_form: Reference Genome
           predicate: RELATED_SYNONYM

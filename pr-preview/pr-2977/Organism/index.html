@@ -716,6 +716,19 @@ slot_usage:
       and `insdc_nucleotide_identifiers` for genome / assembly references).
     - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
       MIxS renaming work.
+    examples:
+    - description: DOI form (preferred when a primary publication exists)
+      object:
+        type: nmdc:TextValue
+        has_raw_value: doi:10.1016/j.syapm.2018.01.009
+    - description: PubMed ID form
+      object:
+        type: nmdc:TextValue
+        has_raw_value: PMID:24296464
+    - description: URL form (e.g. NCBI Genome record)
+      object:
+        type: nmdc:TextValue
+        has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
     structured_aliases:
     - literal_form: Reference Genome
       predicate: RELATED_SYNONYM
@@ -799,6 +812,19 @@ slot_usage:
       and `insdc_nucleotide_identifiers` for genome / assembly references).
     - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
       MIxS renaming work.
+    examples:
+    - description: DOI form (preferred when a primary publication exists)
+      object:
+        type: nmdc:TextValue
+        has_raw_value: doi:10.1016/j.syapm.2018.01.009
+    - description: PubMed ID form
+      object:
+        type: nmdc:TextValue
+        has_raw_value: PMID:24296464
+    - description: URL form (e.g. NCBI Genome record)
+      object:
+        type: nmdc:TextValue
+        has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
     structured_aliases:
     - literal_form: Reference Genome
       predicate: RELATED_SYNONYM
@@ -1044,7 +1070,18 @@ attributes:
     - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
       MIxS renaming work.
     examples:
-    - value: doi:10.1016/j.syapm.2018.01.009
+    - description: DOI form (preferred when a primary publication exists)
+      object:
+        type: nmdc:TextValue
+        has_raw_value: doi:10.1016/j.syapm.2018.01.009
+    - description: PubMed ID form
+      object:
+        type: nmdc:TextValue
+        has_raw_value: PMID:24296464
+    - description: URL form (e.g. NCBI Genome record)
+      object:
+        type: nmdc:TextValue
+        has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Reference Genome
