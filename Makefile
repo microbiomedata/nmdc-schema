@@ -309,8 +309,10 @@ DIAGRAM_SVG := $(DIAGRAM_MMD:.mmd=.svg)
 
 diagrams: $(DIAGRAM_SVG)
 
+PUPPETEER_CFG := src/docs/images/puppeteer-config.json
+
 src/docs/images/%.svg: src/docs/images/%.mmd
-	npx -y @mermaid-js/mermaid-cli -i $< -o $@ -b transparent
+	npx -y @mermaid-js/mermaid-cli -i $< -o $@ -b transparent -p $(PUPPETEER_CFG)
 
 
 # custom
