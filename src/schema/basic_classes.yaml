@@ -233,11 +233,18 @@ classes:
       source_mat_id:
         description: >-
           Culture collection name and identifier for this organism. Reuses MIxS source_mat_id
-          (MIXS:0000026). Preferred format is a CURIE using a bioregistry-registered prefix
-          (e.g. dsmz:DSM-5918, atcc:700808). GOLD stores values as "DSM 6724" (space-separated);
-          ingest should normalize to hyphen-separated local IDs before constructing CURIEs.
-          LMG (BCCM/LMG, Belgium) is the most common collection in GOLD without a bioregistry
-          prefix — use "LMG 2257" format until a prefix is registered.
+          (MIXS:0000026). Preferred format is a CURIE using a declared prefix (e.g.
+          dsmz:DSM-15171, atcc:700808). GOLD stores values space-separated (e.g. "DSM 6724");
+          ingest normalization differs by collection: for dsmz, replace the space with a hyphen
+          and keep the sub-collection letters in the local part (DSM 6724 → dsmz:DSM-6724);
+          for all others (atcc, jcm, nbrc, bcrc, ccug, lmg), strip the prefix letters and
+          space, keeping only the numeric local ID (ATCC 700808 → atcc:700808).
+          Declared prefixes cover the top GOLD collections by record count: dsmz (~18K),
+          atcc (~14K), lmg (~13K), ccug (~12K), jcm (~7K), nbrc (~4K), bcrc (~3K).
+          Collections without declared prefixes but common in GOLD: CIP (~7K),
+          ICMP (~4K), NCIMB (~4K), NCTC (~4K), CFBP (~4K), KCTC (~4K), NRRL (~3K),
+          CCRC (~3K) — use space-separated format (e.g. "CIP 54.8") until prefixes
+          are added. See issue #3036.
         examples:
           - object:
               type: nmdc:TextValue
