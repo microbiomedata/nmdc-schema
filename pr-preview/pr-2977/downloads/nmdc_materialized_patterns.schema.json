@@ -13045,7 +13045,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Culture collection name and identifier for this organism. Reuses MIxS source_mat_id (MIXS:0000026)."
+                    "description": "Culture collection name and identifier for this organism. Reuses MIxS source_mat_id (MIXS:0000026). Preferred format is a CURIE using a bioregistry-registered prefix (e.g. dsmz:DSM-5918, atcc:700808). GOLD stores values as \"DSM 6724\" (space-separated); ingest should normalize to hyphen-separated local IDs before constructing CURIEs. LMG (BCCM/LMG, Belgium) is the most common collection in GOLD without a bioregistry prefix \u2014 use \"LMG 2257\" format until a prefix is registered."
                 },
                 "strain_name": {
                     "description": "Strain or cultivar name of the organism.",
@@ -16389,6 +16389,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post132.dev0+072f67110"
+    "version": "11.18.0.post133.dev0+512628e93"
 }
 

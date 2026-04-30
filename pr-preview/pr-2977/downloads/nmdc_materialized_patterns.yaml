@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post132.dev0+072f67110
+version: 11.18.0.post133.dev0+512628e93
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -310,6 +310,27 @@ prefixes:
   IAO:
     prefix_prefix: IAO
     prefix_reference: http://purl.obolibrary.org/obo/IAO_
+  atcc:
+    prefix_prefix: atcc
+    prefix_reference: https://www.atcc.org/products/
+  bcrc:
+    prefix_prefix: bcrc
+    prefix_reference: https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=
+  ccug:
+    prefix_prefix: ccug
+    prefix_reference: https://www.ccug.se/strain?id=
+  dsmz:
+    prefix_prefix: dsmz
+    prefix_reference: https://www.dsmz.de/collection/catalogue/details/culture/
+  jcm:
+    prefix_prefix: jcm
+    prefix_reference: http://www.jcm.riken.go.jp/cgi-bin/jcm/jcm_number?JCM=
+  lmg:
+    prefix_prefix: lmg
+    prefix_reference: https://bccm.belspo.be/catalogues/lmg-strain-details?NUM=
+  nbrc:
+    prefix_prefix: nbrc
+    prefix_reference: http://www.nbrc.nite.go.jp/NBRC2/NBRCCatalogueDetailServlet?ID=NBRC&CAT=
   TAXRANK:
     prefix_prefix: TAXRANK
     prefix_reference: http://purl.obolibrary.org/obo/TAXRANK_
@@ -19737,7 +19758,44 @@ classes:
       source_mat_id:
         name: source_mat_id
         description: Culture collection name and identifier for this organism. Reuses
-          MIxS source_mat_id (MIXS:0000026).
+          MIxS source_mat_id (MIXS:0000026). Preferred format is a CURIE using a bioregistry-registered
+          prefix (e.g. dsmz:DSM-5918, atcc:700808). GOLD stores values as "DSM 6724"
+          (space-separated); ingest should normalize to hyphen-separated local IDs
+          before constructing CURIEs. LMG (BCCM/LMG, Belgium) is the most common collection
+          in GOLD without a bioregistry prefix — use "LMG 2257" format until a prefix
+          is registered.
+        examples:
+        - description: Ruegeria pomeroyi DSS-3 at DSMZ (bioregistry prefix dsmz; same
+            strain as atcc:700808 and lmg:23168). Verified in GOLD organism_v2. https://www.dsmz.de/collection/catalogue/details/culture/DSM-15171
+          object:
+            type: nmdc:TextValue
+            has_raw_value: dsmz:DSM-15171
+        - description: Ruegeria pomeroyi DSS-3 at ATCC (bioregistry prefix atcc; same
+            strain as dsmz:DSM-15171 and lmg:23168). Verified in GOLD organism_v2.
+            https://www.atcc.org/products/700808
+          object:
+            type: nmdc:TextValue
+            has_raw_value: atcc:700808
+        - description: Ruegeria pomeroyi DSS-3 at BCCM/LMG (not yet in bioregistry;
+            same strain as dsmz:DSM-15171 and atcc:700808). Verified in BCCM/LMG catalogue
+            2026-04-30. https://bccm.belspo.be/catalogues/lmg-strain-details?NUM=23168
+          object:
+            type: nmdc:TextValue
+            has_raw_value: lmg:23168
+        - description: Pseudomonas putida KT2440 at JCM/RIKEN (bioregistry prefix
+            jcm). http://www.jcm.riken.go.jp/cgi-bin/jcm/jcm_number?JCM=20004
+          object:
+            type: nmdc:TextValue
+            has_raw_value: jcm:20004
+        - description: Bacillus subtilis 168 at NBRC/NITE (bioregistry prefix nbrc).
+            http://www.nbrc.nite.go.jp/NBRC2/NBRCCatalogueDetailServlet?ID=NBRC&CAT=13719
+          object:
+            type: nmdc:TextValue
+            has_raw_value: nbrc:13719
+        - description: Escherichia coli at BCRC/FIRDI (bioregistry prefix bcrc). https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=10694
+          object:
+            type: nmdc:TextValue
+            has_raw_value: bcrc:10694
         structured_aliases:
         - literal_form: Culture Collection and ID
           predicate: NARROW_SYNONYM
