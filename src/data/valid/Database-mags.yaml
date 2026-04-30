@@ -125,3 +125,5 @@ data_object_set:
     name: nmdc_wfmag-11-0abycm66.1_gtdbtk.json
     data_object_type: GTDBTK Summary json
     data_category: processed_data
+    type: nmdc:DataObject
+    description: GTDBTK Summary json for nmdc:wfmag-11-0abycm66.1
