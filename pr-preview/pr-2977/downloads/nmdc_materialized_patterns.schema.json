@@ -13110,14 +13110,6 @@
                         "null"
                     ]
                 },
-                "elev": {
-                    "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit",
-                    "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
                 "embargoed": {
                     "description": "If true, the data are embargoed and not available for public access.",
                     "type": [
@@ -13143,18 +13135,6 @@
                         "array",
                         "null"
                     ]
-                },
-                "geo_loc_name": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)",
-                    "pattern": "^([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+): ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+), ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$"
                 },
                 "gold_organism_identifiers": {
                     "description": "identifiers for corresponding organism in GOLD",
@@ -13182,18 +13162,6 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
-                },
-                "lat_lon": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/GeolocationValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system",
-                    "pattern": "^(-?((?:[0-8]?[0-9](?:\\.\\d{0,8})?)|90)) -?[0-9]+(?:\\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})$"
                 },
                 "name": {
                     "description": "A human readable label for an entity",
@@ -13225,7 +13193,7 @@
                     ]
                 },
                 "sample_isolated_from": {
-                    "description": "Description of where the sample originated.",
+                    "description": "Free-text description of the environmental or biological source from which the organism sample was isolated, used when no upstream Biosample exists in NMDC (e.g. culture collection orders). When a linked Biosample is available, geographic provenance belongs there rather than here. Not a typed reference \u2014 future work may add a structured slot or wrapper class for typed sample-to-sample links.",
                     "type": [
                         "string",
                         "null"
@@ -16421,6 +16389,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post134.dev0+3eccc278b"
+    "version": "11.18.0.post135.dev0+6296bdfa7"
 }
 

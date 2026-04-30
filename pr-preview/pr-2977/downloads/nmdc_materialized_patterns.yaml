@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post134.dev0+3eccc278b
+version: 11.18.0.post135.dev0+6296bdfa7
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7300,12 +7300,17 @@ slots:
       - https://jgi.doe.gov/isolate-submission-form/v19
   sample_isolated_from:
     name: sample_isolated_from
-    description: Description of where the sample originated.
+    description: Free-text description of the environmental or biological source from
+      which the organism sample was isolated, used when no upstream Biosample exists
+      in NMDC (e.g. culture collection orders). When a linked Biosample is available,
+      geographic provenance belongs there rather than here. Not a typed reference
+      — future work may add a structured slot or wrapper class for typed sample-to-sample
+      links.
     examples:
     - value: Iron-rich microbial mat from hydrothermal vent, 1325 m depth, Naha Vents,
         south rift of Loihi seamount, Hawaii
       description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
-    - value: Saltwater from water column
+    - value: Saltwater from water column off the Georgia coast, USA
       description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
     in_subset:
     - jgi_isolate
@@ -21445,13 +21450,6 @@ classes:
       where the submitter intends to study a single organism. The purity expectation
       may be contradicted by sequencing results.
     title: Organism Sample
-    notes:
-    - 'DEBATED — `lat_lon`, `elev`, `geo_loc_name` placement on OrganismSample. Montana
-      argues these are captured via the Host/Env interface in the submission portal
-      for environmental isolates and need not be stored on OrganismSample. Counterargument:
-      culture collection orders have no upstream Biosample, so geographic provenance
-      must live here or be lost entirely. See submission-schema#418 discussion. Keeping
-      for now pending resolution.'
     comments:
     - An OrganismSample is not necessarily pure. The submitter expects it to contain
       a single organism, but sequencing may reveal contamination. Purity and strain-verification
@@ -21480,9 +21478,6 @@ classes:
     - external_database_identifiers
     - gold_organism_identifiers
     - collection_date
-    - lat_lon
-    - elev
-    - geo_loc_name
     - samp_name
     - host_taxid
     - sample_isolation_method
