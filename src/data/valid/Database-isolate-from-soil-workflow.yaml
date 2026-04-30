@@ -1,12 +1,11 @@
 # Complete workflow: environmental isolation of a bacterium from soil.
 # Demonstrates the full process chain:
-#   Biosample (soil) → Isolation → OrganismSample (colony pick)
-#   → Culturing → OrganismSample (expanded culture)
+#   Biosample (soil) → Culturing -> CulturedSample -> Isolation → OrganismSample (colony pick)
 #   → Extraction → ProcessedSample (DNA)
 #
 # Carries forward the spirit of Alicia Clum's #2927 examples
 # `Database-cultured_isolate.yaml` and `Database-cultured_isolate_flat.yaml`,
-# both of which modeled the same soil → isolation → culture → DNA workflow.
+# both of which modeled the same soil → culture -> isolation → DNA workflow.
 # This file is the consolidated home for that scenario. The nested-vs-flat
 # `organism_metadata` design comparison those two files were exploring is
 # moot under this PR's design choice (flat typed slots on Organism rather
