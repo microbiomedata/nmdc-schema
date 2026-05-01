@@ -7102,19 +7102,22 @@ slots:
       interpolated: true
       partial_match: true
   samp_collec_device:
-    annotations:
-      Expected_value: device name
-    description: The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)
+    annotations: {}
+    description: 'The device used to collect an environmental sample. Recommended values are subclasses of specimen collection device (http://purl.obolibrary.org/obo/OBI_0002814). OBI itself contains only swab/wipe subclasses; environmental sampling devices (corers, grab samplers, passive samplers, etc.) are defined in GENEPIO under the same OBI:0002814 parent. Free-text values are accepted for backward compatibility; new submissions should prefer the form: label [PREFIX:LOCALID].'
     title: sample collection device
     keywords:
       - device
       - sample
-    string_serialization: '{termLabel} [{termID}]|{text}'
     slot_uri: MIXS:0000002
-    structured_aliases:
-      - literal_form: samp_collect_device
-        contexts:
-          - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+    examples:
+      - value: specimen collection swab stick [OBI:0002820]
+      - value: PONAR grab sampler [GENEPIO:0100929]
+      - value: trowel
+    comments:
+      - GENEPIO's subtree of OBI:0002814 includes grouping classes such as GENEPIO:0100941 (grab sampling device), GENEPIO:0100942 (composite sampling device), GENEPIO:0100943 (core sampling device), and GENEPIO:0100948 (passive sampling device).
+      - ENVO has no device classes; do not use ENVO terms here.
+      - 'Existing NMDC biosamples populate this slot with free text (e.g., "corer", "Van Dorn"). New submissions are encouraged to use the form: label [PREFIX:LOCALID].'
+    pattern: ^([^\[\]]+|.+ \[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\])$
     range: string
   samp_collec_method:
     description: The method employed for collecting the sample

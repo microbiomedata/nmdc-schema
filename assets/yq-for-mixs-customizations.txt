@@ -15,6 +15,32 @@
 '.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
 '.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
 
+# Tighten samp_collec_device — see PR #3005 / issue #1480
+# Upstream MIxS description has broken links (ENVO root 404; GENEPIO_0002094 obsolete).
+# Fixes applied here:
+#   - Description anchored on OBI:0002814 (the real grouping class). ENVO has no
+#     device classes; GENEPIO carries the environmental sampling device subtree
+#     under OBI:0002814.
+#   - Strip decorative metadata: Expected_value annotation, string_serialization,
+#     and structured_aliases (slot_uri MIXS:0000002 already provides the GSC crosswalk).
+#   - Add validatable examples (1 OBI + 1 GENEPIO + 1 free text legacy).
+#   - Add comments naming the GENEPIO grouping classes and warning off ENVO.
+#   - Add a permissive pattern: free text without brackets, OR "label [PREFIX:LOCALID]".
+#     Tested against all 28 distinct biosample_set values (6,327 populated docs);
+#     none break. Future submissions encouraged toward the bracketed-CURIE form.
+'.slots.samp_collec_device.description |= "The device used to collect an environmental sample. Recommended values are subclasses of specimen collection device (http://purl.obolibrary.org/obo/OBI_0002814). OBI itself contains only swab/wipe subclasses; environmental sampling devices (corers, grab samplers, passive samplers, etc.) are defined in GENEPIO under the same OBI:0002814 parent. Free-text values are accepted for backward compatibility; new submissions should prefer the form: label [PREFIX:LOCALID]."'
+
+'del(.slots.samp_collec_device.annotations.Expected_value)'
+'del(.slots.samp_collec_device.string_serialization)'
+'del(.slots.samp_collec_device.structured_aliases)'
+
+'del(.slots.samp_collec_device.examples)'
+'.slots.samp_collec_device.examples = [{"value": "specimen collection swab stick [OBI:0002820]"}, {"value": "PONAR grab sampler [GENEPIO:0100929]"}, {"value": "trowel"}]'
+
+'.slots.samp_collec_device.comments = ["GENEPIO'\''s subtree of OBI:0002814 includes grouping classes such as GENEPIO:0100941 (grab sampling device), GENEPIO:0100942 (composite sampling device), GENEPIO:0100943 (core sampling device), and GENEPIO:0100948 (passive sampling device).", "ENVO has no device classes; do not use ENVO terms here.", "Existing NMDC biosamples populate this slot with free text (e.g., \"corer\", \"Van Dorn\"). New submissions are encouraged to use the form: label [PREFIX:LOCALID]."]'
+
+'.slots.samp_collec_device.pattern |= "^([^\\[\\]]+|.+ \\[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\\])$"'
+
 '.slots.env_broad_scale.is_a |= "mixs_env_triad_field"'
 '.slots.env_local_scale.is_a |= "mixs_env_triad_field"'
 '.slots.env_medium.is_a |= "mixs_env_triad_field"'
