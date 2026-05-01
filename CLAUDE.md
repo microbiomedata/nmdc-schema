@@ -111,6 +111,54 @@ by `make all` and are part of the packaged artifacts.
   build correctly, but do not stage or commit the resulting generated
   files.
 
+### QuantityValue slot names — `has_numeric_value`, not `has_value`
+The `QuantityValue` class in this schema has these slots:
+`has_numeric_value`, `has_unit`, `has_minimum_numeric_value`,
+`has_maximum_numeric_value`, `has_raw_value`. There is **no `has_value`**
+on QuantityValue. Example data (and test fixtures) must use
+`has_numeric_value`:
+
+```yaml
+# Right
+gc_content:
+  type: nmdc:QuantityValue
+  has_numeric_value: 54.0
+  has_unit: "%"
+
+# Wrong — `has_value` is not a slot on QuantityValue
+gc_content:
+  type: nmdc:QuantityValue
+  has_value: 54.0
+  has_unit: "%"
+```
+
+The `linkml examples` runner (validating against the materialized
+artifact in closed mode) rejects the wrong form with
+`Additional properties are not allowed ('has_value' was unexpected)`.
+The pytest validation plugin can be more permissive, so this can pass
+unit tests and still fail the build at the examples step.
+
+### Don't put scalar constraints on wrapper-class-ranged slots
+`minimum_value`, `maximum_value`, and `pattern` are scalar constraints.
+On a slot whose range is a wrapper class (`QuantityValue`, `TextValue`,
+`ControlledIdentifiedTermValue`, etc.), they generate JSON Schema
+keywords (`minimum`/`maximum`/`pattern`) that sit alongside the `$ref`
+to the wrapper class. JSON Schema's numeric/string keywords only apply
+to numeric/string instances — when the value is an object, those
+keywords are silently ignored. The build passes, but no enforcement
+happens.
+
+Verified 2026-05-01: `gc_content` with `range: QuantityValue` +
+`minimum_value: 0` + `maximum_value: 100` accepts a value of
+`has_numeric_value: 123` without complaint. The same constraints on
+`completeness` (`range: float`) correctly reject a value of -50.
+See https://github.com/microbiomedata/nmdc-schema/issues/3007 for the
+parallel `structured_pattern` case (silent ignore on wrapper slots).
+
+If you need real bounds on a wrapper-class-ranged slot, write a
+LinkML rule against the inner scalar slot (e.g. `has_numeric_value`),
+not a slot-level `minimum_value` on the outer slot.
+
 ### YAML implicit type pitfalls in example data
 YAML parses bare `yes`, `no`, `true`, `false` as booleans and bare
 dates like `2023-06-15` as `datetime.date` objects. When these values
