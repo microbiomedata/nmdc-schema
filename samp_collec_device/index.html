@@ -636,6 +636,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -646,17 +668,6 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Annotations
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -717,7 +728,7 @@
 
 
 <h1 id="slot-sample-collection-device-samp_collec_device">Slot: sample collection device (samp_collec_device)</h1>
-<p><em>The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (<a href="http://purl.obolibrary.org/obo/ENVO">http://purl.obolibrary.org/obo/ENVO</a>). This field also accepts terms listed under specimen collection device (<a href="http://purl.obolibrary.org/obo/GENEPIO_0002094">http://purl.obolibrary.org/obo/GENEPIO_0002094</a>)</em></p>
+<p><em>The device used to collect an environmental sample. Recommended values are subclasses of specimen collection device (<a href="http://purl.obolibrary.org/obo/OBI_0002814">http://purl.obolibrary.org/obo/OBI_0002814</a>). OBI itself contains only swab/wipe subclasses; environmental sampling devices (corers, grab samplers, passive samplers, etc.) are defined in GENEPIO under the same OBI:0002814 parent. Free-text values are accepted for backward compatibility; new submissions should prefer the form: label [PREFIX:LOCALID].</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/mixs/0000002">MIXS:0000002</a></p>
 <!-- no inheritance hierarchy -->
@@ -740,24 +751,39 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../String/">String</a></p>
+</li>
+<li>
+<p>Regex pattern: <code>^([^\[\]]+|.+ \[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\])$</code></p>
+</li>
 </ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
+<h2 id="examples">Examples</h2>
 <table>
 <thead>
 <tr>
-<th>property</th>
-<th>value</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Expected_value</td>
-<td>device name</td>
+<td>specimen collection swab stick [OBI:0002820]</td>
+</tr>
+<tr>
+<td>PONAR grab sampler [GENEPIO:0100929]</td>
+</tr>
+<tr>
+<td>trowel</td>
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>GENEPIO's subtree of OBI:0002814 includes grouping classes such as GENEPIO:0100941 (grab sampling device), GENEPIO:0100942 (composite sampling device), GENEPIO:0100943 (core sampling device), and GENEPIO:0100948 (passive sampling device).</li>
+<li>ENVO has no device classes; do not use ENVO terms here.</li>
+<li>Existing NMDC biosamples populate this slot with free text (e.g., "corer", "Van Dorn"). New submissions are encouraged to use the form: label [PREFIX:LOCALID].</li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -781,29 +807,35 @@
 <details>
 
 <pre><code class="language-yaml">name: samp_collec_device
-annotations:
-  Expected_value:
-    tag: Expected_value
-    value: device name
-description: The device used to collect an environmental sample. This field accepts
-  terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO).
-  This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)
+description: 'The device used to collect an environmental sample. Recommended values
+  are subclasses of specimen collection device (http://purl.obolibrary.org/obo/OBI_0002814).
+  OBI itself contains only swab/wipe subclasses; environmental sampling devices (corers,
+  grab samplers, passive samplers, etc.) are defined in GENEPIO under the same OBI:0002814
+  parent. Free-text values are accepted for backward compatibility; new submissions
+  should prefer the form: label [PREFIX:LOCALID].'
 title: sample collection device
+comments:
+- GENEPIO's subtree of OBI:0002814 includes grouping classes such as GENEPIO:0100941
+  (grab sampling device), GENEPIO:0100942 (composite sampling device), GENEPIO:0100943
+  (core sampling device), and GENEPIO:0100948 (passive sampling device).
+- ENVO has no device classes; do not use ENVO terms here.
+- 'Existing NMDC biosamples populate this slot with free text (e.g., &quot;corer&quot;, &quot;Van
+  Dorn&quot;). New submissions are encouraged to use the form: label [PREFIX:LOCALID].'
+examples:
+- value: specimen collection swab stick [OBI:0002820]
+- value: PONAR grab sampler [GENEPIO:0100929]
+- value: trowel
 from_schema: https://w3id.org/nmdc/nmdc
-structured_aliases:
-- literal_form: samp_collect_device
-  contexts:
-  - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
 rank: 1000
 keywords:
 - device
 - sample
-string_serialization: '{termLabel} [{termID}]|{text}'
 slot_uri: MIXS:0000002
 alias: samp_collec_device
 domain_of:
 - Biosample
 range: string
+pattern: ^([^\[\]]+|.+ \[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\])$
 
 </code></pre>
 

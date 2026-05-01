@@ -3718,7 +3718,8 @@
                     "description": "Reason for the sample"
                 },
                 "samp_collec_device": {
-                    "description": "The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)",
+                    "description": "The device used to collect an environmental sample. Recommended values are subclasses of specimen collection device (http://purl.obolibrary.org/obo/OBI_0002814). OBI itself contains only swab/wipe subclasses; environmental sampling devices (corers, grab samplers, passive samplers, etc.) are defined in GENEPIO under the same OBI:0002814 parent. Free-text values are accepted for backward compatibility; new submissions should prefer the form: label [PREFIX:LOCALID].",
+                    "pattern": "^([^\\[\\]]+|.+ \\[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\\])$",
                     "type": [
                         "string",
                         "null"
@@ -15765,6 +15766,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post66.dev0+b0a35c46f"
+    "version": "11.18.0.post71.dev0+f92769a69"
 }
 
