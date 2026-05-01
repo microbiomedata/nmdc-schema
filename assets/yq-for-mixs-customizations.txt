@@ -48,7 +48,7 @@
 # plant_growth_med: EO_0007147 PURL returns 404 (EO migrated to PECO) → use PECO_0007147
 # plant_struc:     purl.bioontology.org returns 403 (auth-walled) → use OBO Foundry page
 '.slots.growth_facil.description |= "Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see https://cropontology.org/."'
-'.slots.plant_growth_med.description |= "Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from PECO:plant growth medium exposure (follow this link for terms http://purl.obolibrary.org/obo/PECO_0007147) or other controlled vocabulary."'
+'.slots.plant_growth_med.description |= "Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from the Plant Environment Ontology (PECO), plant growth medium exposure (http://purl.obolibrary.org/obo/PECO_0007147), or other controlled vocabulary."'
 '.slots.plant_struc.description |= "Name of plant structure the sample was obtained from; for Plant Ontology (PO) terms, see http://obofoundry.org/ontology/po.html, e.g. petiole epidermis (PO:0000051). If an individual flower is sampled, the sex of it can be recorded here."'
 
 '.slots.env_broad_scale.is_a |= "mixs_env_triad_field"'
