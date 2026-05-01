@@ -2994,7 +2994,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from PECO:0007147 (\"plant growth medium exposure\"; follow this link for terms http://purl.obolibrary.org/obo/PECO_0007147) or other controlled vocabulary."
+                    "description": "Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from the Plant Environment Ontology (PECO), plant growth medium exposure (http://purl.obolibrary.org/obo/PECO_0007147), or other controlled vocabulary."
                 },
                 "plant_product": {
                     "anyOf": [
@@ -15460,5 +15460,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post80.dev0+5529ca093"
+    "version": "11.18.0.post81.dev0+40e4dd5a7"
 }

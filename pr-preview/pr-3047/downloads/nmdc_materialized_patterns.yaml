@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post80.dev0+5529ca093
+version: 11.18.0.post81.dev0+40e4dd5a7
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -12757,14 +12757,10 @@ slots:
       partial_match: true
   plant_growth_med:
     name: plant_growth_med
-    annotations:
-      Expected_value:
-        tag: Expected_value
-        value: EO or enumeration
     description: Specification of the media for growing the plants or tissue cultured
       samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in
-      vitro liquid culture medium. Recommended value is a specific value from PECO:0007147
-      ("plant growth medium exposure"; follow this link for terms http://purl.obolibrary.org/obo/PECO_0007147)
+      vitro liquid culture medium. Recommended value is a specific value from the
+      Plant Environment Ontology (PECO), plant growth medium exposure (http://purl.obolibrary.org/obo/PECO_0007147),
       or other controlled vocabulary.
     title: plant growth medium
     from_schema: https://w3id.org/nmdc/nmdc
