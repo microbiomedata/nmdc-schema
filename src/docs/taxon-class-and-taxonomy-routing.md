@@ -34,10 +34,10 @@ slot intended for new classes like OrganismSample. The target design narrows
 organism-oriented uses to `NcbiTaxon` via class-specific `slot_usage` (#3016) rather than
 making the global slot range taxon-specific.
 
-At present, `OrganismTaxon` validation is intentionally NCBITaxon-specific. The schema keeps
+At present, `NcbiTaxon` validation is intentionally NCBITaxon-specific. The schema keeps
 `id_prefixes` so the intended authority list is explicit, but actual instance validation
-is enforced by a regex on `OrganismTaxon.id`. When GTDB, LPSN, or SeqCode support is added, both
-`id_prefixes` and the `OrganismTaxon.id` pattern should be updated together.
+is enforced by a regex on `NcbiTaxon.id`. When GTDB, LPSN, or SeqCode support is added, both
+`id_prefixes` and the `NcbiTaxon.id` pattern should be updated together.
 
 The remaining modeling question is how much of this specificity should live on the
 global `classified_as` slot versus on class-local `slot_usage`. That is tracked in #3016.
