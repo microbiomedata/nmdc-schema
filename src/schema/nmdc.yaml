@@ -1168,7 +1168,7 @@ slots:
 
   calibration_object:
     range: DataObject
-    description: the file containing calibration data object
+    description: the file containing the calibration data object
     structured_pattern:
       syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
       interpolated: true
