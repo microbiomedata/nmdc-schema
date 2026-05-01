@@ -1764,7 +1764,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research"
+                    "description": "Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see https://cropontology.org/."
                 },
                 "growth_habit": {
                     "$ref": "#/$defs/GrowthHabitEnum",
@@ -3117,7 +3117,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from EO:plant growth medium (follow this link for terms http://purl.obolibrary.org/obo/EO_0007147) or other controlled vocabulary"
+                    "description": "Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from the Plant Environment Ontology (PECO), plant growth medium exposure (http://purl.obolibrary.org/obo/PECO_0007147), or other controlled vocabulary."
                 },
                 "plant_product": {
                     "anyOf": [
@@ -3146,7 +3146,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Name of plant structure the sample was obtained from; for Plant Ontology (PO) (v releases/2017-12-14) terms, see http://purl.bioontology.org/ontology/PO, e.g. petiole epidermis (PO_0000051). If an individual flower is sampled, the sex of it can be recorded here",
+                    "description": "Name of plant structure the sample was obtained from; for Plant Ontology (PO) terms, see http://obofoundry.org/ontology/po.html, e.g. petiole epidermis (PO:0000051). If an individual flower is sampled, the sex of it can be recorded here.",
                     "pattern": "^([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+) \\[[a-zA-Z]{2,}:[a-zA-Z0-9]\\d+\\]$"
                 },
                 "pollutants": {
@@ -15766,6 +15766,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post75.dev0+a2554673a"
+    "version": "11.18.0.post81.dev0+dba51316c"
 }
 
