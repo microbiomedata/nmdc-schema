@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post72.dev0+3a2368c92
+version: 11.18.0.post73.dev0+c5d1deb9b
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -2159,9 +2159,9 @@ enums:
       GTDBTK Archaeal Summary:
         text: GTDBTK Archaeal Summary
         description: GTDBTK archaeal summary
-      GTDBTK Summary json:
-        text: GTDBTK Summary json
-        description: GTDBTK bacterial and archaeal summary in json format
+      GTDBTK Summary JSON:
+        text: GTDBTK Summary JSON
+        description: GTDBTK bacterial and archaeal summary in JSON format
         annotations:
           file_name_pattern:
             tag: file_name_pattern
