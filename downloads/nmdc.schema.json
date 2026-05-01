@@ -5121,7 +5121,7 @@
                     ]
                 },
                 "calibration_object": {
-                    "description": "the file containing calibration data object",
+                    "description": "the file containing the calibration data object",
                     "type": [
                         "string",
                         "null"
@@ -15460,5 +15460,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post71.dev0+f92769a69"
+    "version": "11.18.0.post75.dev0+a2554673a"
 }

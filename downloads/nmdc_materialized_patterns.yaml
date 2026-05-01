@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post71.dev0+f92769a69
+version: 11.18.0.post75.dev0+a2554673a
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -5696,7 +5696,7 @@ slots:
       interpolated: true
   calibration_object:
     name: calibration_object
-    description: the file containing calibration data object
+    description: the file containing the calibration data object
     from_schema: https://w3id.org/nmdc/nmdc
     range: DataObject
     pattern: ^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$

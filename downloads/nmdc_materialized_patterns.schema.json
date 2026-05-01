@@ -5328,7 +5328,7 @@
                     ]
                 },
                 "calibration_object": {
-                    "description": "the file containing calibration data object",
+                    "description": "the file containing the calibration data object",
                     "pattern": "^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
                         "string",
@@ -15766,6 +15766,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post71.dev0+f92769a69"
+    "version": "11.18.0.post75.dev0+a2554673a"
 }
 
