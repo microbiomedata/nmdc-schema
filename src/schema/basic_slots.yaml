@@ -682,6 +682,16 @@ enums:
       GTDBTK Archaeal Summary:
         description: GTDBTK archaeal summary
 
+      GTDBTK Summary JSON:
+        description: GTDBTK bacterial and archaeal summary in JSON format
+        see_also:
+          - https://ecogenomics.github.io/GTDBTk/
+        annotations:
+          file_name_pattern:
+            value: "[mag_wf_activity_id]_gtdbtk.json"
+        examples:
+          - value: nmdc_wfmag-11-0abycm66.1_gtdbtk.json
+
       GOTTCHA2 Krona Plot:
         description: GOTTCHA2 krona plot HTML file
 
