@@ -2156,6 +2156,17 @@ enums:
       GTDBTK Archaeal Summary:
         text: GTDBTK Archaeal Summary
         description: GTDBTK archaeal summary
+      GTDBTK Summary JSON:
+        text: GTDBTK Summary JSON
+        description: GTDBTK bacterial and archaeal summary in JSON format
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[mag_wf_activity_id]_gtdbtk.json'
+        examples:
+        - value: nmdc_wfmag-11-0abycm66.1_gtdbtk.json
+        see_also:
+        - https://ecogenomics.github.io/GTDBTk/
       GOTTCHA2 Krona Plot:
         text: GOTTCHA2 Krona Plot
         description: GOTTCHA2 krona plot HTML file
@@ -5347,6 +5358,9 @@ enums:
       acetic_acid:
         text: acetic_acid
         meaning: CHEBI:15366
+      acetone:
+        text: acetone
+        meaning: CHEBI:15347
       alphaLP:
         text: alphaLP
         meaning: EC:3.4.21.12
@@ -5361,6 +5375,9 @@ enums:
       ammonium_bicarbonate:
         text: ammonium_bicarbonate
         meaning: CHEBI:184335
+      ammonium_formate:
+        text: ammonium_formate
+        meaning: CHEBI:63050
       amitriptyline:
         text: amitriptyline
         meaning: CHEBI:2666
@@ -5385,6 +5402,9 @@ enums:
         comments:
         - A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan,
           leucine, tyrosine, and phenylalanine.
+      disodium_hydrogenphosphate_dihydrate:
+        text: disodium_hydrogenphosphate_dihydrate
+        meaning: CHEBI:91258
       ethanol:
         text: ethanol
         meaning: CHEBI:16236
@@ -5438,9 +5458,21 @@ enums:
         comments:
         - A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic
           acid groups, also known as methylenediphosphonic acid
+      potassium_chloride:
+        text: potassium_chloride
+        meaning: CHEBI:32588
+      potassium_dihydrogen_phosphate:
+        text: potassium_dihydrogen_phosphate
+        meaning: CHEBI:63036
       phosphoric_acid:
         text: phosphoric_acid
         meaning: CHEBI:26078
+      sodium_chloride:
+        text: sodium_chloride
+        meaning: CHEBI:26710
+      trichloroacetic_acid:
+        text: trichloroacetic_acid
+        meaning: CHEBI:30956
       trimethylchlorosilane:
         text: trimethylchlorosilane
         meaning: CHEBI:85069
