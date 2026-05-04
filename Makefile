@@ -18,7 +18,7 @@ PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 TEMPLATEDIR = doc-templates
 
-.PHONY: all clean examples-clean install site site-clean site-copy squeaky-clean test test-python test-with-examples
+.PHONY: all clean diagrams examples-clean install site site-clean site-copy squeaky-clean test test-python test-with-examples
 
 
 # note: "help" MUST be the first target in the file,
@@ -300,6 +300,20 @@ include project.Makefile
 include makefiles/mixs.Makefile
 include makefiles/migrators.Makefile
 include makefiles/ontology-alignment.Makefile
+
+# Regenerate SVGs from Mermaid sources in src/docs/images/.
+# Requires Node.js; mmdc is pulled on demand via `npx -y`.
+# `make diagrams` re-renders only the SVGs whose .mmd has changed.
+DIAGRAM_MMD := $(wildcard src/docs/images/*.mmd)
+DIAGRAM_SVG := $(DIAGRAM_MMD:.mmd=.svg)
+
+diagrams: $(DIAGRAM_SVG)
+
+PUPPETEER_CFG := src/docs/images/puppeteer-config.json
+
+src/docs/images/%.svg: src/docs/images/%.mmd
+	npx -y @mermaid-js/mermaid-cli -i $< -o $@ -b transparent -p $(PUPPETEER_CFG)
+
 
 # custom
 site-clean: clean

@@ -32,6 +32,21 @@ imports:
 default_prefix: nmdc
 default_range: string
 
+subsets:
+  jgi_isolate:
+    description: >-
+      Slots originating from the JGI Isolate (NA) v19 submission form that are not
+      already captured by MIxS or other existing standards. These slots support
+      organism identity, strain verification, purity assessment, and biosafety
+      classification for cultured isolate submissions to JGI.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2803
+    comments:
+      - >-
+        Slots in this subset carry structured_aliases with context
+        https://jgi.doe.gov/isolate-submission-form/v19 mapping to the
+        exact field name on the JGI Isolate (NA) v19 spreadsheet.
+
 slots:
 
   processing_institution_workflow_metadata:
@@ -497,6 +512,211 @@ slots:
       - The date should be formatted as YYYY-MM-DD
     todos:
       - add date string validation pattern
+
+  # --- Organism identity slots (from JGI Isolate v19 form) ---
+
+  organism_genus:
+    description: Genus of the organism.
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Genus
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - value: Shewanella
+        description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+      - value: Ruegeria
+        description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+      - value: Campylobacter
+        description: GOLD organism_v2 (Go0000058, queried 2026-04-14)
+    comments:
+      - >-
+        Free-text submitter-provided genus name. For an ontology-grounded classification,
+        use `classified_as` with a NcbiTaxon instance on the parent Organism class.
+
+  organism_species:
+    description: Species of the organism.
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Species
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - value: loihica
+        description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+      - value: pomeroyi
+        description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+      - value: sp.
+        description: GOLD organism_v2.species (n=37 records, queried 2026-04-30) — used when the isolate has not yet been assigned a species name
+    comments:
+      - >-
+        Free-text submitter-provided species name. For an ontology-grounded classification,
+        use `classified_as` with a NcbiTaxon instance on the parent Organism class.
+
+  strain_name:
+    description: Strain or cultivar name of the organism.
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Strain or cultivar
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - value: PV-4
+        description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+      - value: DSS-3
+        description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+      - value: DSM 6724
+        description: GOLD organism_v2 Dictyoglomus turgidum (Go0000002, queried 2026-04-14)
+
+  isolate_name:
+    description: Isolate or mutant name.
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Isolate
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - value: Bd21-3
+        description: GOLD dw_sample_taxonomy_info.isolate (n=260 records, queried 2026-04-30) — Brachypodium distachyon Bd21-3 reference accession
+      - value: MR164
+        description: GOLD dw_sample_taxonomy_info.isolate (n=555 records, queried 2026-04-30)
+      - value: Isolate
+        description: GOLD dw_sample_taxonomy_info.isolate (n=918 records, queried 2026-04-30) — generic placeholder used when no specific mutant/isolate name is recorded
+
+  gc_content:
+    range: QuantityValue
+    description: Estimated GC content as a percentage.
+    comments:
+      - Expected `has_numeric_value` range is 0–100 (percentage units).
+    annotations:
+      storage_units: "%"
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: GC Content %
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 54.0
+          has_unit: "%"
+        description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 64.0
+          has_unit: "%"
+        description: GOLD project Gp0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+
+  expected_organism:
+    range: Organism
+    description: >-
+      The organism that the submitter expects to be present in this sample. May be
+      contradicted by sequencing results.
+    examples:
+      - value: nmdc:orgn-99-abc123
+        description: Reference to an Organism instance in organism_set
+
+  sample_isolation_method:
+    description: Method, protocol, or kit used to extract DNA/RNA from the sample.
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Sample Isolation Method
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - value: Wizard Genomic DNA Purification Kit
+        description: Promega Wizard kit — a widely-used DNA isolation method in JGI bacterial isolate submissions
+    comments:
+      - See also dna_isolate_meth in submission-schema for the equivalent portal field.
+
+  sample_isolated_from:
+    description: >-
+      Free-text description of the environmental or biological source from which the organism
+      sample was isolated, used when no upstream Biosample exists in NMDC (e.g. culture
+      collection orders). When a linked Biosample is available, geographic provenance belongs
+      there rather than here. Not a typed reference — future work may add a structured
+      slot or wrapper class for typed sample-to-sample links.
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Sample Isolated From
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - value: Iron-rich microbial mat from hydrothermal vent, 1325 m depth, Naha Vents, south rift of Loihi seamount, Hawaii
+        description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+      - value: Saltwater from water column off the Georgia coast, USA
+        description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+
+  # --- Host-of-sample slots (from JGI Isolate v19 form) ---
+
+  host_genus:
+    description: Genus of the host organism that the sample was collected from.
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Host Genus
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - value: Zea
+        description: GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
+      - value: Escherichia
+        description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage JSE, queried 2026-04-30)
+    comments:
+      - >-
+        Free-text submitter-provided host genus. For an ontology-grounded host
+        identification, use `host_taxid` (MIXS:0000250) on the same class.
+
+  host_species:
+    description: Species of the host organism that the sample was collected from.
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Host Species
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - value: mays
+        description: GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
+      - value: coli
+        description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage JSE, queried 2026-04-30)
+    comments:
+      - >-
+        Free-text submitter-provided host species. For an ontology-grounded host
+        identification, use `host_taxid` (MIXS:0000250) on the same class.
+
+  host_strain:
+    description: Strain of the host organism that the sample was collected from.
+    in_subset:
+      - jgi_isolate
+    structured_aliases:
+      - literal_form: Host Strain
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
+    examples:
+      - value: K-12
+        description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage JSE, queried 2026-04-30)
+    comments:
+      - >-
+        Free-text submitter-provided host strain. For an ontology-grounded host
+        identification, use `host_taxid` (MIXS:0000250) on the same class.
 
 enums:
 

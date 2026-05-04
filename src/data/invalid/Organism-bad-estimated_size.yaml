@@ -1,0 +1,10 @@
+# Invalid: estimated_size missing the required " bp" suffix.
+# Organism slot_usage requires estimated_size to match '^[0-9]+ bp$'.
+id: nmdc:orgn-99-tuxk3s
+type: nmdc:Organism
+name: bad-estimated-size
+classified_as:
+  - id: NCBITaxon:22
+    name: Shewanella
+    type: nmdc:NcbiTaxon
+estimated_size: "4600000"

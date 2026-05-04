@@ -1,0 +1,10 @@
+# Invalid: ploidy value 'octoploid' is not a permissible value of PloidyEnum.
+# PloidyEnum has no octoploid PV (PATO doesn't model octoploid); the enum-
+# level comment notes this is one of the JGI values that NMDC cannot
+# express. ETL should normalize to a supported PV or treat as missing.
+id: nmdc:osm-99-zfx29q
+type: nmdc:OrganismSample
+name: bad-ploidy-value
+ploidy: octoploid
+associated_studies:
+  - nmdc:sty-00-abc123

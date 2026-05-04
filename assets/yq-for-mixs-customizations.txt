@@ -502,10 +502,25 @@
 'del(.slots.samp_taxon_id.examples)' 
 'del(.slots.samp_taxon_id.string_serialization)' 
 
-'.slots.host_taxid.comments |= ["Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value"]' 
-'.slots.host_taxid.range = "ControlledIdentifiedTermValue"' 
-'.slots.samp_taxon_id.comments |= ["coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value"]' 
+'.slots.host_taxid.comments |= ["Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value"]'
+'.slots.host_taxid.range = "ControlledIdentifiedTermValue"'
+'.slots.samp_taxon_id.comments |= ["coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value"]'
 '.slots.samp_taxon_id.range = "ControlledIdentifiedTermValue"'
+
+# JGI Isolate (NA) v19 form alias for host_taxid. Applies to the MIxS slot
+# globally so any class that hosts host_taxid (currently Biosample) carries
+# the JGI mapping. Not viral-specific — host_taxid is a general MIxS slot
+# describing the host of a sample, applicable to any host-associated context.
+'.slots.host_taxid.structured_aliases = [{"literal_form": "Host NCBI Taxonomy ID", "contexts": ["https://jgi.doe.gov/isolate-submission-form/v19"], "predicate": "EXACT_SYNONYM"}]'
+
+# Replace ploidy's range (TextValue, plus a structured_pattern requiring
+# "{termLabel} [{termID}]") with PloidyEnum, an NMDC-defined enumeration
+# whose permissible_values carry meaning: URIs into PATO. Gives referential
+# integrity to the PATO ploidy hierarchy instead of regex-validated free text.
+# PloidyEnum is defined in src/schema/basic_classes.yaml.
+'.slots.ploidy.range = "PloidyEnum"'
+'del(.slots.ploidy.structured_pattern)'
+'del(.slots.ploidy.examples)'
 
 # these slots, by their old names, are not used anywhere in mixs.yaml and seem to confuse the mkdocs search when looking for has_unit etc.
 'del(.slots.["has numeric value"])'

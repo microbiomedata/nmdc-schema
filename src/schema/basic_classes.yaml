@@ -7,6 +7,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
   BFO: "http://purl.obolibrary.org/obo/BFO_"
+  COB: "http://purl.obolibrary.org/obo/COB_"
   EFO: "http://www.ebi.ac.uk/efo/"
   ISA: "http://example.org/isa/"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
@@ -20,6 +21,16 @@ prefixes:
   prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
   rdfs: "http://www.w3.org/2000/01/rdf-schema#"
   schema: "http://schema.org/"
+  # Culture collection prefixes for source_mat_id CURIEs.
+  # bioregistry-registered: atcc, bcrc, dsmz, jcm, nbrc
+  # not yet in bioregistry: ccug, lmg (URLs verified 2026-04-30)
+  atcc: "https://www.atcc.org/products/"
+  bcrc: "https://catalog.bcrc.firdi.org.tw/BcrcContent?bid="
+  ccug: "https://www.ccug.se/strain?id="
+  dsmz: "https://www.dsmz.de/collection/catalogue/details/culture/"
+  jcm: "http://www.jcm.riken.go.jp/cgi-bin/jcm/jcm_number?JCM="
+  lmg: "https://bccm.belspo.be/catalogues/lmg-strain-details?NUM="
+  nbrc: "http://www.nbrc.nite.go.jp/NBRC2/NBRCCatalogueDetailServlet?ID=NBRC&CAT="
 
 
 imports:
@@ -88,9 +99,8 @@ classes:
         Instances go into ontology_class_set and are referenced from sample slots such as classified_as.
       - >-
         Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution
-        of NCBI Taxonomy. Strain identity should be captured via dedicated text slots on
-        OrganismSample (e.g. isolate_name, source_mat_id, subspecf_gen_lin) or a future Strain
-        class — not by minting NcbiTaxon instances for strains.
+        of NCBI Taxonomy. Strain identity is captured via dedicated slots on Organism
+        (e.g. strain_name, isolate_name, source_mat_id) — not by minting NcbiTaxon instances.
       - >-
         Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
         with range OntologyClass. The intent is that these slots point to NcbiTaxon instances specifically,
@@ -180,6 +190,173 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
           interpolated: true
+  Organism:
+    class_uri: nmdc:Organism
+    is_a: MaterialEntity
+    description: >-
+      A material entity that is a living or once-living individual. Organism instances
+      represent the biological identity of what is in a sample, not the sample itself.
+      Sub-species identity (strain, cultivar, lab isolate) is captured by slots on this
+      class rather than via a separate Strain subclass.
+    slots:
+      - classified_as
+      - organism_genus
+      - organism_species
+      - strain_name
+      - isolate_name
+      - estimated_size
+      - gc_content
+      - source_mat_id
+      - ref_biomaterial
+    notes:
+      - >-
+        DEBATED — `estimated_size` and `gc_content` placement on Organism. Montana
+        argues these are analyte properties measured during sample QC (like
+        concentration or absorbance) rather than stable organism properties, and
+        belong only in submission-schema. Counterargument: genome size and GC% are
+        reproducible biological properties of the organism that are useful for
+        downstream data integration. Keeping on Organism pending resolution.
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      classified_as:
+        range: NcbiTaxon
+        description: >-
+          Taxonomic classification of this organism. Narrowed from the global
+          OntologyClass range (defined on the slot itself) to NcbiTaxon, since
+          organism identity at NMDC is anchored to NCBI Taxonomy. Per #3016 —
+          the broader pattern is to narrow `classified_as` to `NcbiTaxon` on
+          all organism-oriented classes via slot_usage.
+      source_mat_id:
+        description: >-
+          Culture collection name and identifier for this organism. Reuses MIxS source_mat_id
+          (MIXS:0000026). Preferred format is a CURIE using a declared prefix (e.g.
+          dsmz:DSM-15171, atcc:700808). GOLD stores values space-separated (e.g. "DSM 6724");
+          ingest normalization differs by collection: for dsmz, replace the space with a hyphen
+          and keep the sub-collection letters in the local part (DSM 6724 → dsmz:DSM-6724);
+          for all others (atcc, jcm, nbrc, bcrc, ccug, lmg), strip the prefix letters and
+          space, keeping only the numeric local ID (ATCC 700808 → atcc:700808).
+          Declared prefixes cover the top GOLD collections by record count: dsmz (~18K),
+          atcc (~14K), lmg (~13K), ccug (~12K), jcm (~7K), nbrc (~4K), bcrc (~3K).
+          Collections without declared prefixes but common in GOLD: CIP (~7K),
+          ICMP (~4K), NCIMB (~4K), NCTC (~4K), CFBP (~4K), KCTC (~4K), NRRL (~3K),
+          CCRC (~3K) — use space-separated format (e.g. "CIP 54.8") until prefixes
+          are added. See issue #3036.
+        examples:
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: dsmz:DSM-15171
+            description: >-
+              Ruegeria pomeroyi DSS-3 at DSMZ (bioregistry prefix dsmz; same strain as
+              atcc:700808 and lmg:23168). Verified in GOLD organism_v2.
+              https://www.dsmz.de/collection/catalogue/details/culture/DSM-15171
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: atcc:700808
+            description: >-
+              Ruegeria pomeroyi DSS-3 at ATCC (bioregistry prefix atcc; same strain as
+              dsmz:DSM-15171 and lmg:23168). Verified in GOLD organism_v2.
+              https://www.atcc.org/products/700808
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: lmg:23168
+            description: >-
+              Ruegeria pomeroyi DSS-3 at BCCM/LMG (not yet in bioregistry; same strain as
+              dsmz:DSM-15171 and atcc:700808). Verified in BCCM/LMG catalogue 2026-04-30.
+              https://bccm.belspo.be/catalogues/lmg-strain-details?NUM=23168
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: jcm:20004
+            description: >-
+              Pseudomonas putida KT2440 at JCM/RIKEN (bioregistry prefix jcm).
+              http://www.jcm.riken.go.jp/cgi-bin/jcm/jcm_number?JCM=20004
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: nbrc:13719
+            description: >-
+              Bacillus subtilis 168 at NBRC/NITE (bioregistry prefix nbrc).
+              http://www.nbrc.nite.go.jp/NBRC2/NBRCCatalogueDetailServlet?ID=NBRC&CAT=13719
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: bcrc:10694
+            description: >-
+              Escherichia coli at BCRC/FIRDI (bioregistry prefix bcrc).
+              https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=10694
+        structured_aliases:
+          - literal_form: Culture Collection and ID
+            contexts:
+              - https://jgi.doe.gov/isolate-submission-form/v19
+            predicate: NARROW_SYNONYM    # JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any material-sample identifier)
+      estimated_size:
+        description: >-
+          Estimated genome size, as integer base pairs. Reuses MIxS
+          estimated_size (MIXS:0000024). The JGI isolate field reports in
+          megabases (Mb); values must be converted to the MIxS integer-bp
+          representation before validation and storage. The submission portal
+          should auto-populate the "bp" suffix and enforce integer input.
+        structured_pattern:
+          syntax: '^[0-9]+ bp$'
+          interpolated: false
+        structured_aliases:
+          - literal_form: Estimated Genome Size (Mb)
+            contexts:
+              - https://jgi.doe.gov/isolate-submission-form/v19
+            predicate: BROAD_SYNONYM    # Per @aclum: Mb is a coarser unit than bp — a single Mb value covers many possible bp values, so the alias is broader in granularity
+      ref_biomaterial:
+        description: >-
+          Reference for the organism, preferentially a DOI when a primary
+          publication or genome report exists; PMID and URL are also accepted
+          per the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses
+          MIxS ref_biomaterial (MIXS:0000025).
+        examples:
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: doi:10.1016/j.syapm.2018.01.009
+            description: DOI form (preferred when a primary publication exists)
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: PMID:24296464
+            description: PubMed ID form
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
+            description: URL form (e.g. NCBI Genome record)
+        structured_aliases:
+          - literal_form: Reference Genome
+            contexts:
+              - https://jgi.doe.gov/isolate-submission-form/v19
+            predicate: RELATED_SYNONYM    # MIxS expects a publication citation; JGI's "Reference Genome" sometimes refers to the genome record itself (IMG / Phytozome IDs). Concepts overlap but differ.
+        comments:
+          - >-
+            The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred
+            when available — it gives a stable reference to the publication
+            or genome report. See the `associated_dois` pattern elsewhere in
+            the NMDC schema for DOI-structured alternatives.
+          - >-
+            JGI "Reference Genome" submissions sometimes carry non-publication
+            identifiers such as IMG or Phytozome IDs, which do not match the
+            MIxS pattern. Those are out of scope for this slot and should be
+            captured separately (see `gold_organism_identifiers` and
+            `insdc_nucleotide_identifiers` for genome / assembly references).
+          - >-
+            The MIxS name ref_biomaterial may be renamed in a future MIxS
+            release. See ongoing MIxS renaming work.
+    comments:
+      - >-
+        Organism instances are stored in organism_set. An Organism is not a sample — it is
+        the biological entity that an OrganismSample is expected to contain, linked via
+        expected_organism. Sub-species identity (strain_name, isolate_name, source_mat_id)
+        is captured directly on Organism.
+    exact_mappings:
+      - COB:0000022
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2959
+      - https://github.com/microbiomedata/nmdc-schema/issues/2803
+      - https://github.com/microbiomedata/nmdc-schema/issues/2971
+
   PlannedProcess:
     description: >-
       A named thing that is executed according to a plan.
@@ -478,7 +655,7 @@ classes:
         required: true
         range: Sample
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       associated_studies:
         range: Study
@@ -599,12 +776,14 @@ slots:
   classified_as:
     range: OntologyClass
     multivalued: true
+    inlined_as_list: true
     description: >-
       A formal classification for this entity, expressed directly as an ontology-backed class
       instance stored in ontology_class_set.
     comments:
       - >-
-        Taxonomy-oriented uses (e.g. on OrganismSample) should point to NcbiTaxon instances.
+        Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
+        OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.
         The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked
         in #3016.
     see_also:
@@ -1281,11 +1460,13 @@ enums:
       ChemicalConversionProcess:
       ChromatographicSeparationProcess:
       CollectingBiosamplesFromSite:
+      Culturing:
       DataEmitterProcess:
       DataGeneration:
       DissolvingProcess:
       Extraction:
       FiltrationProcess:
+      Isolation:
       LibraryPreparation:
       MagsAnalysis:
       MassSpectrometry:
@@ -1307,3 +1488,102 @@ enums:
       StorageProcess:
       SubSamplingProcess:
       WorkflowExecution:
+
+  PloidyEnum:
+    description: >-
+      Ploidy of an organism's genome. Permissible values map to PATO
+      classes and were selected from values observed in the JGI GOLD
+      lakehouse table `gold.dw_sample_taxonomy_info.ploidy_comments`
+      (queried 2026-04-29). Used as the range of the `ploidy` slot,
+      narrowing the MIxS-imported `ploidy` (MIXS:0000021) from a free-
+      text / structured pattern to an enumerated set with referential
+      integrity to PATO.
+    comments:
+      - >-
+        Values frequent in JGI but absent from PATO (octoploid, dikaryon /
+        dikaryotic, polykaryotic), cytogenetic notation (e.g. 2n=38), compound
+        or hedged values (e.g. "Likely haploid"), and non-English labels are
+        not modeled. ETL should normalize to a permissible value when the
+        meaning is unambiguous, or treat as missing.
+    permissible_values:
+      haploid:
+        meaning: PATO:0001375
+        description: A single set of unpaired chromosomes.
+        structured_aliases:
+          - literal_form: Haploid
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "1n"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+      diploid:
+        meaning: PATO:0001394
+        description: Two sets of homologous chromosomes (one from each parent).
+        structured_aliases:
+          - literal_form: Diploid
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "2n"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "2N"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "2x"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+      triploid:
+        meaning: PATO:0001381
+        description: Three sets of chromosomes.
+        structured_aliases:
+          - literal_form: Triploid
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "3n"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "3x"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+      tetraploid:
+        meaning: PATO:0001382
+        description: Four sets of chromosomes.
+        structured_aliases:
+          - literal_form: Tetraploid
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: tetraploidy
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "4n"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "4x"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+      hexaploid:
+        meaning: PATO:0001384
+        description: Six sets of chromosomes.
+        structured_aliases:
+          - literal_form: Hexaploid
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "6n"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: "6x"
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+      polyploid:
+        meaning: PATO:0001377
+        description: More than two sets of chromosomes (generic — use a more specific value when known).
+      allopolyploidy:
+        meaning: PATO:0001379
+        description: Polyploid arising from hybridization between two or more species. (PATO label uses -y suffix.)
+        structured_aliases:
+          - literal_form: Allopolyploid
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+      aneuploid:
+        meaning: PATO:0001385
+        description: A genome with an abnormal number of chromosomes (not an exact multiple of the haploid number).

@@ -1,0 +1,14 @@
+%% Derived from src/data/valid/Database-mushroom-cap.yaml.
+%% Shows only entities and edges asserted by the data file. No invented
+%% upstream ("Cultivation Facility") or downstream (Extraction/DataGeneration) —
+%% sample_isolated_from captures cultivation provenance as prose.
+flowchart LR
+    OSM["OrganismSample<br/>nmdc:osm-99-c3hw28<br/>(fruiting body cap)"]
+    ORG["Organism<br/>nmdc:orgn-99-tagdby<br/>Lentinula edodes"]
+    TAX["NcbiTaxon<br/>NCBITaxon:5353"]
+
+    OSM -->|expected_organism| ORG
+    ORG -->|classified_as| TAX
+
+    classDef newPR fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    class OSM,ORG,TAX newPR
