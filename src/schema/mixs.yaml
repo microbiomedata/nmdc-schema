@@ -1,3 +1,9 @@
+# Build artifact of the MIxS import pipeline (see makefiles/mixs.Makefile
+# and assets/yq-for-mixs-customizations.txt). Customizations live in the yq
+# file — do not hand-edit this YAML. To regenerate after a yq change:
+#     make mixs-yaml-clean && make src/schema/mixs.yaml
+# Checked in here so PR diffs show the customizations introduced on this
+# branch; the next regen recreates this file and drops this comment.
 name: mixs-schema-subset
 source: https://github.com/microbiomedata/mixs/tree/main/model/schema
 id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
