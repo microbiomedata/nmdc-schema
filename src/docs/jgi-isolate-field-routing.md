@@ -19,8 +19,9 @@ to nmdc-schema classes, submission-schema, or deferred.
 | 29 | Fungal 16S screening?* | ~~`fungal_16s_screening`~~ → submission-schema `JgiIsolateInterface.isolate_fungal_16s_screening` | Moved: same reason. |
 | 30 | ITS match UNITE?* | ~~`its_match_unite`~~ → submission-schema `JgiIsolateInterface.isolate_its_match_unite` | Moved: same reason. |
 | 40 | Sample Isolation Method* | `sample_isolation_method` | JGI-native (new) |
-| 44 | Sample Isolated From* | `sample_isolated_from` | JGI-native (new) |
-| 45 | Collection Site or Growth Conditions* | `sample_isolated_from` | JGI-native (new) — combined with field 44. MIxS isol_growth_condt (MIXS:0000003) was considered but its semantics are "publication reference for growth conditions," not free text |
+| 44 | Sample Isolated From* | `sample_isolated_from` | JGI-native (new) — origin matrix only ("the *what* the organism came out of") |
+| 45a | Collection Site or Growth Conditions* (collection-site half) | `sample_collection_site` | NMDC-native (pre-existing slot, reused for OrganismSample) — geographic / environmental site context |
+| 45b | Collection Site or Growth Conditions* (growth-conditions half) | `sample_growth_conditions` | JGI-native (new) — in-vitro lab maintenance context. MIxS `isol_growth_condt` (MIXS:0000003) was considered but its DOI/PMID/URL pattern doesn't fit free text |
 | 41-43 | Collection Year/Month/Day* | `collection_date` | MIxS (existing) |
 | 46-47 | Latitude/Longitude* | `lat_lon` | MIxS (existing) |
 | 48-49 | Depth/Max depth* | (deferred — removed from OrganismSample in PR #2977 review pass; see review thread for retain-vs-drop discussion) | MIxS (existing) |

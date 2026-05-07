@@ -1442,8 +1442,10 @@ enums:
         Values frequent in JGI but absent from PATO (octoploid, dikaryon /
         dikaryotic, polykaryotic), cytogenetic notation (e.g. 2n=38), compound
         or hedged values (e.g. "Likely haploid"), and non-English labels are
-        not modeled. ETL should normalize to a permissible value when the
-        meaning is unambiguous, or treat as missing.
+        not modeled directly. ETL should normalize to a permissible value when
+        the meaning is unambiguous; fall back to the `other` permissible value
+        when a JGI value has biological meaning but no listed mapping; treat
+        as missing only when the value is uninterpretable.
     permissible_values:
       haploid:
         meaning: PATO:0001375
@@ -1526,3 +1528,12 @@ enums:
       aneuploid:
         meaning: PATO:0001385
         description: A genome with an abnormal number of chromosomes (not an exact multiple of the haploid number).
+      other:
+        description: >-
+          A ploidy state with biological meaning that is not covered by the
+          listed permissible values (e.g. dikaryon / dikaryotic, polykaryotic,
+          octoploid, or hedged values like "likely diploid"). Use this when the
+          submitter's value is interpretable but does not map cleanly to one of
+          the named ploidy classes. The original free-text qualifier should be
+          preserved upstream (e.g. in a sample-level note) when it carries
+          information beyond the bare classification.
