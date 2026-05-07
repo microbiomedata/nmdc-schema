@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-09T20:29:15
+# Generation date: 2026-05-01T15:25:23
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -6864,6 +6864,9 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     acetic_acid = PermissibleValue(
         text="acetic_acid",
         meaning=CHEBI["15366"])
+    acetone = PermissibleValue(
+        text="acetone",
+        meaning=CHEBI["15347"])
     alphaLP = PermissibleValue(
         text="alphaLP",
         meaning=EC["3.4.21.12"])
@@ -6873,6 +6876,9 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     ammonium_bicarbonate = PermissibleValue(
         text="ammonium_bicarbonate",
         meaning=CHEBI["184335"])
+    ammonium_formate = PermissibleValue(
+        text="ammonium_formate",
+        meaning=CHEBI["63050"])
     amitriptyline = PermissibleValue(
         text="amitriptyline",
         meaning=CHEBI["2666"])
@@ -6882,6 +6888,9 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     chymotrypsin = PermissibleValue(
         text="chymotrypsin",
         meaning=MS["1001306"])
+    disodium_hydrogenphosphate_dihydrate = PermissibleValue(
+        text="disodium_hydrogenphosphate_dihydrate",
+        meaning=CHEBI["91258"])
     ethanol = PermissibleValue(
         text="ethanol",
         meaning=CHEBI["16236"])
@@ -6906,9 +6915,21 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     medronic_acid = PermissibleValue(
         text="medronic_acid",
         meaning=CHEBI["43945"])
+    potassium_chloride = PermissibleValue(
+        text="potassium_chloride",
+        meaning=CHEBI["32588"])
+    potassium_dihydrogen_phosphate = PermissibleValue(
+        text="potassium_dihydrogen_phosphate",
+        meaning=CHEBI["63036"])
     phosphoric_acid = PermissibleValue(
         text="phosphoric_acid",
         meaning=CHEBI["26078"])
+    sodium_chloride = PermissibleValue(
+        text="sodium_chloride",
+        meaning=CHEBI["26710"])
+    trichloroacetic_acid = PermissibleValue(
+        text="trichloroacetic_acid",
+        meaning=CHEBI["30956"])
     trimethylchlorosilane = PermissibleValue(
         text="trimethylchlorosilane",
         meaning=CHEBI["85069"])
@@ -7629,6 +7650,10 @@ class FileTypeEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="GTDBTK Archaeal Summary",
                 description="GTDBTK archaeal summary"))
+        setattr(cls, "GTDBTK Summary JSON",
+            PermissibleValue(
+                text="GTDBTK Summary JSON",
+                description="GTDBTK bacterial and archaeal summary in JSON format"))
         setattr(cls, "GOTTCHA2 Krona Plot",
             PermissibleValue(
                 text="GOTTCHA2 Krona Plot",
