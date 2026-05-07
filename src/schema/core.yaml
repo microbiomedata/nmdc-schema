@@ -1319,6 +1319,7 @@ classes:
       - sample_isolation_method
       - sample_isolated_from
       - ploidy
+      - source_mat_id
     slot_usage:
       id:
         required: true
@@ -1329,6 +1330,63 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
           interpolated: true
+      source_mat_id:
+        description: >-
+          Culture collection identifier for the source of this organism sample.
+        comments:
+          - >-
+            On OrganismSample the slot identifies the catalog entry the strain
+            was ordered from. CURIE form using a declared prefix is preferred
+            (e.g. dsmz:DSM-15171, atcc:700808). Per-collection normalization
+            rules and prefix-coverage gaps are documented in
+            src/docs/jgi-isolate-field-routing.md.
+        see_also:
+          - https://github.com/microbiomedata/nmdc-schema/issues/3036
+        examples:
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: dsmz:DSM-15171
+            description: >-
+              Ruegeria pomeroyi DSS-3 at DSMZ (bioregistry prefix dsmz; same strain as
+              atcc:700808 and lmg:23168). Verified in GOLD organism_v2.
+              https://www.dsmz.de/collection/catalogue/details/culture/DSM-15171
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: atcc:700808
+            description: >-
+              Ruegeria pomeroyi DSS-3 at ATCC (bioregistry prefix atcc; same strain as
+              dsmz:DSM-15171 and lmg:23168). Verified in GOLD organism_v2.
+              https://www.atcc.org/products/700808
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: lmg:23168
+            description: >-
+              Ruegeria pomeroyi DSS-3 at BCCM/LMG (not yet in bioregistry; same strain as
+              dsmz:DSM-15171 and atcc:700808). Verified in BCCM/LMG catalogue 2026-04-30.
+              https://bccm.belspo.be/catalogues/lmg-strain-details?NUM=23168
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: jcm:20004
+            description: >-
+              Pseudomonas putida KT2440 at JCM/RIKEN (bioregistry prefix jcm).
+              http://www.jcm.riken.go.jp/cgi-bin/jcm/jcm_number?JCM=20004
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: nbrc:13719
+            description: >-
+              Bacillus subtilis 168 at NBRC/NITE (bioregistry prefix nbrc).
+              http://www.nbrc.nite.go.jp/NBRC2/NBRCCatalogueDetailServlet?ID=NBRC&CAT=13719
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: bcrc:10694
+            description: >-
+              Escherichia coli at BCRC/FIRDI (bioregistry prefix bcrc).
+              https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=10694
+        structured_aliases:
+          - literal_form: Culture Collection and ID
+            contexts:
+              - https://jgi.doe.gov/isolate-submission-form/v19
+            predicate: NARROW_SYNONYM    # JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any material-sample identifier)
     close_mappings:
       - OBI:0100051
     comments:

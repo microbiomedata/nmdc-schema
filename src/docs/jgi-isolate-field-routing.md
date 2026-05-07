@@ -107,3 +107,60 @@ reference is appropriate.
 
 Note: `ref_biomaterial` may be renamed in a future MIxS release. Montana Smith has
 ongoing MIxS renaming work that may affect this slot.
+
+## `source_mat_id`: CURIE normalization for culture-collection identifiers
+
+`source_mat_id` (MIXS:0000026) on `OrganismSample` carries the culture-collection
+catalog identifier from which the sample was sourced. Routed from JGI Isolate (NA)
+v19 field 10 ("Culture Collection and ID"). The slot reuses the MIxS source_mat_id
+slot but is scoped here to culture-collection ordering provenance specifically;
+JGI's label is a `NARROW_SYNONYM` of the broader MIxS slot.
+
+### Preferred form
+
+CURIE using a bioregistry-declared prefix:
+
+```
+dsmz:DSM-15171
+atcc:700808
+lmg:23168
+```
+
+### Per-collection normalization (GOLD → CURIE)
+
+GOLD organism_v2 stores the field space-separated (e.g. `DSM 6724`,
+`ATCC 700808`). Ingest normalization differs by collection:
+
+| Source form (GOLD) | Normalized CURIE | Rule |
+|---|---|---|
+| `DSM 6724` | `dsmz:DSM-6724` | Replace space with hyphen, keep sub-collection letters |
+| `ATCC 700808` | `atcc:700808` | Strip prefix letters and space, keep numeric local ID |
+| `JCM 20004` | `jcm:20004` | Same as ATCC: numeric local ID only |
+| `NBRC 13719` | `nbrc:13719` | Same as ATCC |
+| `BCRC 10694` | `bcrc:10694` | Same as ATCC |
+| `CCUG 12345` | `ccug:12345` | Same as ATCC |
+| `LMG 23168` | `lmg:23168` | Same as ATCC |
+
+### Prefix coverage
+
+**Declared prefixes** (covering the top GOLD collections by record count):
+`dsmz` (~18K records), `atcc` (~14K), `lmg` (~13K), `ccug` (~12K), `jcm`
+(~7K), `nbrc` (~4K), `bcrc` (~3K). All seven resolve via the prefix
+declarations in `src/schema/basic_classes.yaml`.
+
+**Common GOLD collections without declared prefixes** (use space-separated
+form e.g. `CIP 54.8` until prefixes are added):
+
+| Collection | GOLD record count |
+|---|---|
+| CIP | ~7K |
+| ICMP | ~4K |
+| NCIMB | ~4K |
+| NCTC | ~4K |
+| CFBP | ~4K |
+| KCTC | ~4K |
+| NRRL | ~3K |
+| CCRC | ~3K |
+
+Adding bioregistry-resolvable prefixes for these is tracked in
+[#3036](https://github.com/microbiomedata/nmdc-schema/issues/3036).

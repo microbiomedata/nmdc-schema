@@ -26,9 +26,6 @@ organism_set:
     organism_genus: Pseudomonas
     organism_species: putida
     strain_name: KT2440
-    source_mat_id:
-      type: nmdc:TextValue
-      has_raw_value: "DSM 6125"
     # ref_biomaterial demonstrates the MIxS DOI/PMID/URL pattern. The DOI shown
     # is the example value carried in MIxS for this slot — shape demonstration
     # only, not a real KT2440 genome reference.
@@ -48,6 +45,9 @@ organism_sample_set:
     associated_studies:
       - nmdc:sty-99-86scx7
     expected_organism: nmdc:orgn-99-6dwrrh
+    source_mat_id:
+      type: nmdc:TextValue
+      has_raw_value: dsmz:DSM-6125
     sample_isolated_from: DSMZ culture collection (DSM 6125)
     sample_isolation_method: Culture purchased from DSMZ; no in-house isolation step.
   # Expanded culture grown from the catalog cells.
