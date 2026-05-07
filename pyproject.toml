@@ -45,7 +45,7 @@ dependencies = [
     # linkml-store[llm] was a core dep but its llm → sqlite-utils chain
     # requires click>=8.3.1, which conflicts with linkml's click<8.2 cap.
     # Ontology alignment scripts (#2909, #2910) that need embeddings should
-    # install it separately: uv pip install 'linkml-store[llm]>=0.3.0,<0.4.0'
+    # install it separately: poetry run pip install 'linkml-store[llm]>=0.3.0,<0.4.0'
     # This can return to core deps once linkml drops the click cap. See #2985.
 ]
 
