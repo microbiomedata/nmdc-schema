@@ -759,6 +759,11 @@
 <td>PATO:0001385</td>
 <td>A genome with an abnormal number of chromosomes (not an exact multiple of the...</td>
 </tr>
+<tr>
+<td>other</td>
+<td>None</td>
+<td>A ploidy state with biological meaning that is not covered by the listed perm...</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -778,7 +783,7 @@
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Values frequent in JGI but absent from PATO (octoploid, dikaryon / dikaryotic, polykaryotic), cytogenetic notation (e.g. 2n=38), compound or hedged values (e.g. "Likely haploid"), and non-English labels are not modeled. ETL should normalize to a permissible value when the meaning is unambiguous, or treat as missing.</li>
+<li>Values frequent in JGI but absent from PATO (octoploid, dikaryon / dikaryotic, polykaryotic), cytogenetic notation (e.g. 2n=38), compound or hedged values (e.g. "Likely haploid"), and non-English labels are not modeled directly. ETL should normalize to a permissible value when the meaning is unambiguous; fall back to the <code>other</code> permissible value when a JGI value has biological meaning but no listed mapping; treat as missing only when the value is uninterpretable.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -797,8 +802,10 @@ description: Ploidy of an organism's genome. Permissible values map to PATO clas
 comments:
 - Values frequent in JGI but absent from PATO (octoploid, dikaryon / dikaryotic, polykaryotic),
   cytogenetic notation (e.g. 2n=38), compound or hedged values (e.g. &quot;Likely haploid&quot;),
-  and non-English labels are not modeled. ETL should normalize to a permissible value
-  when the meaning is unambiguous, or treat as missing.
+  and non-English labels are not modeled directly. ETL should normalize to a permissible
+  value when the meaning is unambiguous; fall back to the `other` permissible value
+  when a JGI value has biological meaning but no listed mapping; treat as missing
+  only when the value is uninterpretable.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
@@ -911,6 +918,14 @@ permissible_values:
     description: A genome with an abnormal number of chromosomes (not an exact multiple
       of the haploid number).
     meaning: PATO:0001385
+  other:
+    text: other
+    description: A ploidy state with biological meaning that is not covered by the
+      listed permissible values (e.g. dikaryon / dikaryotic, polykaryotic, octoploid,
+      or hedged values like &quot;likely diploid&quot;). Use this when the submitter's value
+      is interpretable but does not map cleanly to one of the named ploidy classes.
+      The original free-text qualifier should be preserved upstream (e.g. in a sample-level
+      note) when it carries information beyond the bare classification.
 
 </code></pre>
 

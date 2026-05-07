@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -706,6 +717,7 @@
 
 
 <h1 id="slot-sample_collection_site">Slot: sample_collection_site</h1>
+<p><em>Free-text description of the place where the sample was collected — the geographic / environmental site or named location.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/sample_collection_site">nmdc:sample_collection_site</a></p>
 <!-- no inheritance hierarchy -->
@@ -724,11 +736,20 @@
 <td>Biological source material which can be characterized by an experiment</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../OrganismSample/">OrganismSample</a></td>
+<td>A material sample in which all cells are expected to share the same genome</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
+</ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>On <code>OrganismSample</code>, this slot routes the collection-site half of JGI Isolate (NA) v19 form field 45 ("Collection Site or Growth Conditions"). The growth-conditions half routes to <code>sample_growth_conditions</code>. The submitter populates one or the other depending on whether the sample came from a field collection or from in-vitro maintenance.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -754,11 +775,24 @@
 <details>
 
 <pre><code class="language-yaml">name: sample_collection_site
+description: Free-text description of the place where the sample was collected — the
+  geographic / environmental site or named location.
+comments:
+- On `OrganismSample`, this slot routes the collection-site half of JGI Isolate (NA)
+  v19 form field 45 (&quot;Collection Site or Growth Conditions&quot;). The growth-conditions
+  half routes to `sample_growth_conditions`. The submitter populates one or the other
+  depending on whether the sample came from a field collection or from in-vitro maintenance.
 from_schema: https://w3id.org/nmdc/nmdc
+structured_aliases:
+- literal_form: Collection Site or Growth Conditions
+  predicate: NARROW_SYNONYM
+  contexts:
+  - https://jgi.doe.gov/isolate-submission-form/v19
 rank: 1000
 alias: sample_collection_site
 domain_of:
 - Biosample
+- OrganismSample
 range: string
 
 </code></pre>

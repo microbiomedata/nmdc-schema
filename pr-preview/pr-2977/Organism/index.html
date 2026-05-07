@@ -897,6 +897,16 @@ attributes:
   strain_name:
     name: strain_name
     description: Strain or cultivar name of the organism.
+    comments:
+    - 'Microbial strain identifiers and plant cultivar names (governed by the International
+      Code of Nomenclature for Cultivated Plants, ICNCP) are nomenclaturally distinct,
+      but this slot accepts both for now to match the JGI Isolate (NA) v19 form''s
+      combined "Strain or cultivar" field. A separate `cultivar_name` slot may be
+      added if a plant-specific use case emerges; see #3056.'
+    - MIxS `subspecf_gen_lin` (MIXS:0000020) covers this concept along with cultivar,
+      serovar, biotype, ecotype, and other sub-species lineage types in a single slot
+      using a rank-prefix encoding (e.g. "strain:PV-4"). NMDC splits the concept into
+      separate slots; this slot covers the strain rank specifically.
     examples:
     - value: PV-4
       description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
@@ -912,6 +922,8 @@ attributes:
       predicate: EXACT_SYNONYM
       contexts:
       - https://jgi.doe.gov/isolate-submission-form/v19
+    related_mappings:
+    - MIXS:0000020
     rank: 1000
     alias: strain_name
     owner: Organism
@@ -921,6 +933,11 @@ attributes:
   isolate_name:
     name: isolate_name
     description: Isolate or mutant name.
+    comments:
+    - MIxS `subspecf_gen_lin` (MIXS:0000020) covers this concept along with strain,
+      cultivar, serovar, biotype, ecotype, and other sub-species lineage types in
+      a single slot using a rank-prefix encoding. NMDC uses a separate slot for the
+      isolate rank specifically.
     examples:
     - value: Bd21-3
       description: GOLD dw_sample_taxonomy_info.isolate (n=260 records, queried 2026-04-30)
@@ -938,6 +955,8 @@ attributes:
       predicate: EXACT_SYNONYM
       contexts:
       - https://jgi.doe.gov/isolate-submission-form/v19
+    related_mappings:
+    - MIXS:0000020
     rank: 1000
     alias: isolate_name
     owner: Organism

@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/provenance_metadata/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/sample_growth_conditions/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: provenance_metadata - NMDC Schema Documentation</title>
+        <title>Slot: sample_growth_conditions - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-provenance_metadata" class="md-skip">
+        <a href="#slot-sample_growth_conditions" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: provenance_metadata
+              Slot: sample_growth_conditions
             
           </span>
         </div>
@@ -636,6 +636,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -705,10 +727,10 @@
   
 
 
-<h1 id="slot-provenance_metadata">Slot: provenance_metadata</h1>
-<p><em>Provides information about the provenance of a record.</em></p>
+<h1 id="slot-sample_growth_conditions">Slot: sample_growth_conditions</h1>
+<p><em>Free-text description of the in-vitro conditions under which the organism sample was grown or maintained — culture media, growth chamber settings, facility type, or other lab-controlled growth context. For environmental site context see <code>sample_collection_site</code>; for the source matrix the organism came out of see <code>sample_isolated_from</code>.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/provenance_metadata">nmdc:provenance_metadata</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/sample_growth_conditions">nmdc:sample_growth_conditions</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -721,40 +743,39 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td>A DataGeneration in which the sequence of DNA or RNA molecules is generated</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td>Biological source material which can be characterized by an experiment</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../OrganismSample/">OrganismSample</a></td>
 <td>A material sample in which all cells are expected to share the same genome</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-<td>The methods and processes used to generate omics data from a biosample or org...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Study/">Study</a></td>
-<td>A study summarizes the overall goal of a research initiative and outlines the...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td>Spectrometry where the sample is converted into gaseous ions which are charac...</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../ProvenanceMetadata/">ProvenanceMetadata</a></li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Greenhouse-grown</td>
+</tr>
+<tr>
+<td>Cultivated indoor; substrate logs of supplemented oak</td>
+</tr>
+<tr>
+<td>E. coli K-12 MG1655 broth culture infected with phage T4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>On <code>OrganismSample</code>, this slot routes the growth-conditions half of JGI Isolate (NA) v19 form field 45 ("Collection Site or Growth Conditions"). The collection-site half routes to <code>sample_collection_site</code>. The submitter populates one or the other depending on whether the sample came from a field collection or from in-vitro maintenance.</li>
+<li>Distinct from MIxS <code>isol_growth_condt</code> (MIXS:0000003), which expects a publication reference (DOI/PMID/URL pattern), not free-text growth conditions.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -779,17 +800,38 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: provenance_metadata
-description: Provides information about the provenance of a record.
+<pre><code class="language-yaml">name: sample_growth_conditions
+description: Free-text description of the in-vitro conditions under which the organism
+  sample was grown or maintained — culture media, growth chamber settings, facility
+  type, or other lab-controlled growth context. For environmental site context see
+  `sample_collection_site`; for the source matrix the organism came out of see `sample_isolated_from`.
+comments:
+- On `OrganismSample`, this slot routes the growth-conditions half of JGI Isolate
+  (NA) v19 form field 45 (&quot;Collection Site or Growth Conditions&quot;). The collection-site
+  half routes to `sample_collection_site`. The submitter populates one or the other
+  depending on whether the sample came from a field collection or from in-vitro maintenance.
+- Distinct from MIxS `isol_growth_condt` (MIXS:0000003), which expects a publication
+  reference (DOI/PMID/URL pattern), not free-text growth conditions.
+examples:
+- value: Greenhouse-grown
+  description: Plant-tissue isolate maintained in greenhouse conditions
+- value: Cultivated indoor; substrate logs of supplemented oak
+  description: Mushroom (Lentinula edodes) cultivation context
+- value: E. coli K-12 MG1655 broth culture infected with phage T4
+  description: Viral-isolate growth context — host culture conditions
+in_subset:
+- jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc
+structured_aliases:
+- literal_form: Collection Site or Growth Conditions
+  predicate: NARROW_SYNONYM
+  contexts:
+  - https://jgi.doe.gov/isolate-submission-form/v19
 rank: 1000
-alias: provenance_metadata
+alias: sample_growth_conditions
 domain_of:
-- Study
-- DataGeneration
-- Biosample
 - OrganismSample
-range: ProvenanceMetadata
+range: string
 
 </code></pre>
 

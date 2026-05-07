@@ -647,6 +647,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -761,6 +772,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>MIxS <code>subspecf_gen_lin</code> (MIXS:0000020) covers this concept along with strain, cultivar, serovar, biotype, ecotype, and other sub-species lineage types in a single slot using a rank-prefix encoding. NMDC uses a separate slot for the isolate rank specifically.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -776,8 +791,8 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>related</td>
+<td>MIXS:0000020</td>
 </tr>
 </tbody>
 </table>
@@ -786,6 +801,10 @@
 
 <pre><code class="language-yaml">name: isolate_name
 description: Isolate or mutant name.
+comments:
+- MIxS `subspecf_gen_lin` (MIXS:0000020) covers this concept along with strain, cultivar,
+  serovar, biotype, ecotype, and other sub-species lineage types in a single slot
+  using a rank-prefix encoding. NMDC uses a separate slot for the isolate rank specifically.
 examples:
 - value: Bd21-3
   description: GOLD dw_sample_taxonomy_info.isolate (n=260 records, queried 2026-04-30)
@@ -803,6 +822,8 @@ structured_aliases:
   predicate: EXACT_SYNONYM
   contexts:
   - https://jgi.doe.gov/isolate-submission-form/v19
+related_mappings:
+- MIXS:0000020
 rank: 1000
 alias: isolate_name
 domain_of:

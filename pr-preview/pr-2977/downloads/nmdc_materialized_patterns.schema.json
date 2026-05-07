@@ -3970,6 +3970,7 @@
                     "description": "Name of the well (e.g. BXA1123) where sample was taken"
                 },
                 "sample_collection_site": {
+                    "description": "Free-text description of the place where the sample was collected \u2014 the geographic / environmental site or named location.",
                     "type": [
                         "string",
                         "null"
@@ -13182,8 +13183,22 @@
                         "null"
                     ]
                 },
+                "sample_collection_site": {
+                    "description": "Free-text description of the place where the sample was collected \u2014 the geographic / environmental site or named location.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_growth_conditions": {
+                    "description": "Free-text description of the in-vitro conditions under which the organism sample was grown or maintained \u2014 culture media, growth chamber settings, facility type, or other lab-controlled growth context. For environmental site context see `sample_collection_site`; for the source matrix the organism came out of see `sample_isolated_from`.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "sample_isolated_from": {
-                    "description": "Free-text description of the environmental or biological source from which the organism sample was isolated, used when no upstream Biosample exists in NMDC (e.g. culture collection orders). When a linked Biosample is available, geographic provenance belongs there rather than here. Not a typed reference \u2014 future work may add a structured slot or wrapper class for typed sample-to-sample links.",
+                    "description": "Free-text description of the environmental or biological matrix from which the organism sample was isolated \u2014 the *what* it came out of (e.g. iron-rich microbial mat, leaf tissue, catalog vial). For the *where* (geographic / environmental site of collection) see `sample_collection_site`; for in-vitro growth conditions (lab maintenance, culture media, growth chambers) see `sample_growth_conditions`.",
                     "type": [
                         "string",
                         "null"
@@ -13432,7 +13447,8 @@
                 "hexaploid",
                 "polyploid",
                 "allopolyploidy",
-                "aneuploid"
+                "aneuploid",
+                "other"
             ],
             "title": "PloidyEnum",
             "type": "string"
@@ -16390,6 +16406,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post155.dev0+68d422fe6"
+    "version": "11.18.0.post156.dev0+7d66cb601"
 }
 

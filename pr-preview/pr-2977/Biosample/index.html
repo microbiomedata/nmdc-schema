@@ -3832,7 +3832,7 @@
 <tr>
 <td><a href="../sample_collection_site/">sample_collection_site</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>Free-text description of the place where the sample was collected — the geogr...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -17047,12 +17047,26 @@ attributes:
     range: string
   sample_collection_site:
     name: sample_collection_site
+    description: Free-text description of the place where the sample was collected
+      — the geographic / environmental site or named location.
+    comments:
+    - On `OrganismSample`, this slot routes the collection-site half of JGI Isolate
+      (NA) v19 form field 45 (&quot;Collection Site or Growth Conditions&quot;). The growth-conditions
+      half routes to `sample_growth_conditions`. The submitter populates one or the
+      other depending on whether the sample came from a field collection or from in-vitro
+      maintenance.
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Collection Site or Growth Conditions
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: sample_collection_site
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: string
   soluble_iron_micromol:
     name: soluble_iron_micromol

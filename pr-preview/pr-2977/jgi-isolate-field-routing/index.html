@@ -834,13 +834,19 @@ to nmdc-schema classes, submission-schema, or deferred.</p>
 <td>44</td>
 <td>Sample Isolated From*</td>
 <td><code>sample_isolated_from</code></td>
-<td>JGI-native (new)</td>
+<td>JGI-native (new) — origin matrix only ("the <em>what</em> the organism came out of")</td>
 </tr>
 <tr>
-<td>45</td>
-<td>Collection Site or Growth Conditions*</td>
-<td><code>sample_isolated_from</code></td>
-<td>JGI-native (new) — combined with field 44. MIxS isol_growth_condt (MIXS:0000003) was considered but its semantics are "publication reference for growth conditions," not free text</td>
+<td>45a</td>
+<td>Collection Site or Growth Conditions* (collection-site half)</td>
+<td><code>sample_collection_site</code></td>
+<td>NMDC-native (pre-existing slot, reused for OrganismSample) — geographic / environmental site context</td>
+</tr>
+<tr>
+<td>45b</td>
+<td>Collection Site or Growth Conditions* (growth-conditions half)</td>
+<td><code>sample_growth_conditions</code></td>
+<td>JGI-native (new) — in-vitro lab maintenance context. MIxS <code>isol_growth_condt</code> (MIXS:0000003) was considered but its DOI/PMID/URL pattern doesn't fit free text</td>
 </tr>
 <tr>
 <td>41-43</td>

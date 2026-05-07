@@ -647,6 +647,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -717,7 +728,7 @@
 
 
 <h1 id="slot-sample_isolated_from">Slot: sample_isolated_from</h1>
-<p><em>Free-text description of the environmental or biological source from which the organism sample was isolated, used when no upstream Biosample exists in NMDC (e.g. culture collection orders). When a linked Biosample is available, geographic provenance belongs there rather than here. Not a typed reference — future work may add a structured slot or wrapper class for typed sample-to-sample links.</em></p>
+<p><em>Free-text description of the environmental or biological matrix from which the organism sample was isolated — the <em>what</em> it came out of (e.g. iron-rich microbial mat, leaf tissue, catalog vial). For the <em>where</em> (geographic / environmental site of collection) see <code>sample_collection_site</code>; for in-vitro growth conditions (lab maintenance, culture media, growth chambers) see <code>sample_growth_conditions</code>.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/sample_isolated_from">nmdc:sample_isolated_from</a></p>
 <!-- no inheritance hierarchy -->
@@ -751,13 +762,21 @@
 </thead>
 <tbody>
 <tr>
-<td>Iron-rich microbial mat from hydrothermal vent, 1325 m depth, Naha Vents, south rift of Loihi seamount, Hawaii</td>
+<td>Iron-rich microbial mat from hydrothermal vent, Naha Vents, south rift of Loihi seamount, Hawaii</td>
 </tr>
 <tr>
 <td>Saltwater from water column off the Georgia coast, USA</td>
 </tr>
+<tr>
+<td>DSMZ catalog vial (DSM 6125)</td>
+</tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Routes JGI Isolate (NA) v19 form field 44 ("Sample Isolated From"). Field 45 ("Collection Site or Growth Conditions") routes to <code>sample_collection_site</code> or <code>sample_growth_conditions</code> depending on which half the submitter is reporting.</li>
+<li>Used when no upstream Biosample carries env-triad information (e.g. culture collection orders, lab-derived samples). When a linked Biosample is available, environmental provenance belongs there. Not a typed reference — future work may add a structured slot or wrapper class for typed sample-to-sample links; see #3033 and #3054.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -782,17 +801,30 @@
 <details>
 
 <pre><code class="language-yaml">name: sample_isolated_from
-description: Free-text description of the environmental or biological source from
-  which the organism sample was isolated, used when no upstream Biosample exists in
-  NMDC (e.g. culture collection orders). When a linked Biosample is available, geographic
-  provenance belongs there rather than here. Not a typed reference — future work may
-  add a structured slot or wrapper class for typed sample-to-sample links.
+description: Free-text description of the environmental or biological matrix from
+  which the organism sample was isolated — the *what* it came out of (e.g. iron-rich
+  microbial mat, leaf tissue, catalog vial). For the *where* (geographic / environmental
+  site of collection) see `sample_collection_site`; for in-vitro growth conditions
+  (lab maintenance, culture media, growth chambers) see `sample_growth_conditions`.
+todos:
+- 'Redesign in #3054 will sharpen the boundary between this slot and the sample_collection_site
+  / sample_growth_conditions siblings.'
+comments:
+- Routes JGI Isolate (NA) v19 form field 44 (&quot;Sample Isolated From&quot;). Field 45 (&quot;Collection
+  Site or Growth Conditions&quot;) routes to `sample_collection_site` or `sample_growth_conditions`
+  depending on which half the submitter is reporting.
+- 'Used when no upstream Biosample carries env-triad information (e.g. culture collection
+  orders, lab-derived samples). When a linked Biosample is available, environmental
+  provenance belongs there. Not a typed reference — future work may add a structured
+  slot or wrapper class for typed sample-to-sample links; see #3033 and #3054.'
 examples:
-- value: Iron-rich microbial mat from hydrothermal vent, 1325 m depth, Naha Vents,
-    south rift of Loihi seamount, Hawaii
+- value: Iron-rich microbial mat from hydrothermal vent, Naha Vents, south rift of
+    Loihi seamount, Hawaii
   description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
 - value: Saltwater from water column off the Georgia coast, USA
   description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+- value: DSMZ catalog vial (DSM 6125)
+  description: Catalog-collection origin — no environmental matrix upstream
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc
