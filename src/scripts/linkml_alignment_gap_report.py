@@ -6,7 +6,7 @@ from pathlib import Path
 
 import click
 
-from nmdc_schema.ontology_alignment_prototype import (
+from src.scripts.ontology_alignment_prototype import (
     available_tooling,
     build_schema_index,
     read_alignment_rows,

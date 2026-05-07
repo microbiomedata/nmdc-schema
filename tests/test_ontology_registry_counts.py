@@ -1,4 +1,4 @@
-from nmdc_schema.ontology_registry_counts import summarize_registry_differences
+from src.scripts.ontology_registry_counts import summarize_registry_differences
 
 
 def test_summarize_registry_differences_distinguishes_ols_overall_and_embeddings():

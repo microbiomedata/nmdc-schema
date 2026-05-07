@@ -33,20 +33,12 @@ dependencies = [
     # 1.10.0 removed Format.JSON which linkml 1.9.x references. See #2985.
     "linkml>=1.10.0,<2.0.0",
     "linkml-runtime>=1.10.0,<2.0.0",
-    "linkml-store>=0.3.0,<0.4.0",
-    "oaklib>=0.6.23,<1.0.0",
     "python-dotenv>=0.21.0,<2.0.0",
     "pyyaml>=6.0.0,<7.0.0",
     "rdflib>=6.2.0,<8.0.0",
     "requests>=2.0.0,<3.0.0",
     "pymdown-extensions>=10.16.1,<11.0.0",
     "pymongo>=4.7.2,<5.0.0",
-    "curies>=0.9.0,<1.0.0",
-    # linkml-store[llm] was a core dep but its llm → sqlite-utils chain
-    # requires click>=8.3.1, which conflicts with linkml's click<8.2 cap.
-    # Ontology alignment scripts (#2909, #2910) that need embeddings should
-    # install it separately: poetry run pip install 'linkml-store[llm]>=0.3.0,<0.4.0'
-    # This can return to core deps once linkml drops the click cap. See #2985.
 ]
 
 [project.urls]
@@ -80,15 +72,23 @@ dev = [
     "autopep8>=2.2.0,<3.0.0",
     "bandit>=1.7.8,<2.0.0",
     "black>=26.3.1,<27.0.0",
+    "curies>=0.9.0,<1.0.0",
     "exhaustion-check>=0.1.1,<0.2.0",  # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
     "fastjsonschema>=2.20.0,<3.0.0",
     "flake8>=7.0.0,<8.0.0",
     "isort>=5.13.2,<9.0.0",
+    # linkml-store[llm] was a dependency but its llm → sqlite-utils chain
+    # requires click>=8.3.1, which conflicts with linkml's click<8.2 cap.
+    # Ontology alignment scripts (#2909, #2910) that need embeddings should
+    # install it separately: poetry run pip install 'linkml-store[llm]>=0.3.0,<0.4.0'
+    # The [llm] extra can return once linkml drops the click cap. See #2985.
+    "linkml-store>=0.3.0,<0.4.0",
     "mkdocs>=1.4.2,<2.0.0",
     "mkdocs-material>=9.0.12,<10.0.0",
     "mkdocs-mermaid2-plugin>=0.6.0,<2.0.0",
     "mkdocs-redirects>=1.2.1,<2.0.0",
     "mypy>=1.10.0,<2.0.0",
+    "oaklib>=0.6.23,<1.0.0",
     "pandas>=2.2.3,<4.0.0",
     "psycopg2-binary>=2.9.10,<3.0.0",
     "pydocstyle>=6.3.0,<7.0.0",
