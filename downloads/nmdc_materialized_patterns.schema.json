@@ -7596,6 +7596,7 @@
                 "Read Based Analysis Info File",
                 "GTDBTK Bacterial Summary",
                 "GTDBTK Archaeal Summary",
+                "GTDBTK Summary JSON",
                 "GOTTCHA2 Krona Plot",
                 "GOTTCHA2 Classification Report",
                 "GOTTCHA2 Report Full",
@@ -15766,6 +15767,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.18.0.post81.dev0+dba51316c"
+    "version": "11.18.1.post82.dev0+ff056706f"
 }
 

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.18.0.post81.dev0+dba51316c
+version: 11.18.1.post82.dev0+ff056706f
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -2159,6 +2159,17 @@ enums:
       GTDBTK Archaeal Summary:
         text: GTDBTK Archaeal Summary
         description: GTDBTK archaeal summary
+      GTDBTK Summary JSON:
+        text: GTDBTK Summary JSON
+        description: GTDBTK bacterial and archaeal summary in JSON format
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[mag_wf_activity_id]_gtdbtk.json'
+        examples:
+        - value: nmdc_wfmag-11-0abycm66.1_gtdbtk.json
+        see_also:
+        - https://ecogenomics.github.io/GTDBTk/
       GOTTCHA2 Krona Plot:
         text: GOTTCHA2 Krona Plot
         description: GOTTCHA2 krona plot HTML file
