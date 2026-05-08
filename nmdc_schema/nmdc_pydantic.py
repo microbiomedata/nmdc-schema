@@ -134,6 +134,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/GO_'},
                   'HMDB': {'prefix_prefix': 'HMDB',
                            'prefix_reference': 'https://bioregistry.io/hmdb:'},
+                  'IAO': {'prefix_prefix': 'IAO',
+                          'prefix_reference': 'http://purl.obolibrary.org/obo/IAO_'},
                   'ISA': {'prefix_prefix': 'ISA',
                           'prefix_reference': 'http://example.org/isa/'},
                   'KEGG.COMPOUND': {'prefix_prefix': 'KEGG.COMPOUND',
@@ -4139,7 +4141,7 @@ class ControlledTermValue(AttributeValue):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'todos': ['add fields for ontology, branch']})
 
-    term: Optional[Union[OntologyClass,FunctionalAnnotationTerm,OrthologyGroup]] = Field(default=None, description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'domain_of': ['ControlledTermValue']} })
+    term: Optional[Union[OntologyClass,FunctionalAnnotationTerm,NcbiTaxon,OrthologyGroup]] = Field(default=None, description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'domain_of': ['ControlledTermValue']} })
     has_raw_value: Optional[str] = Field(default=None, description="""The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/ControlledTermValue","nmdc:ControlledTermValue"] = Field(default="nmdc:ControlledTermValue", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['EukEval',
@@ -4178,7 +4180,7 @@ class ControlledIdentifiedTermValue(ControlledTermValue):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'term': {'name': 'term', 'required': True}}})
 
-    term: Union[OntologyClass,FunctionalAnnotationTerm,OrthologyGroup] = Field(default=..., description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'domain_of': ['ControlledTermValue']} })
+    term: Union[OntologyClass,FunctionalAnnotationTerm,NcbiTaxon,OrthologyGroup] = Field(default=..., description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'domain_of': ['ControlledTermValue']} })
     has_raw_value: Optional[str] = Field(default=None, description="""The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"""", json_schema_extra = { "linkml_meta": {'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/ControlledIdentifiedTermValue","nmdc:ControlledIdentifiedTermValue"] = Field(default="nmdc:ControlledIdentifiedTermValue", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['EukEval',
@@ -4759,6 +4761,124 @@ class OrthologyGroup(FunctionalAnnotationTerm):
         return v
 
 
+class NcbiTaxon(OntologyClass):
+    """
+    A taxonomy term from NCBI Taxonomy. NcbiTaxon instances are identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass instances. No NMDC-minted identifiers are assigned. Support for additional taxonomic authorities (GTDB, LPSN, SeqCode) would be represented by separate classes or by widening this class's id_prefixes in a follow-on PR.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:NcbiTaxon',
+         'close_mappings': ['biolink:OrganismTaxon'],
+         'comments': ['Follows the OrthologyGroup pattern: a concrete, '
+                      'directly-instantiated semantic subclass of OntologyClass with '
+                      'no additional slots, no typecode, and no dedicated Database '
+                      'collection. Instances go into ontology_class_set and are '
+                      'referenced from sample slots such as classified_as.',
+                      'Sub-species information (strains, cultivars, lab-specific '
+                      'isolates) is below the resolution of NCBI Taxonomy. Strain '
+                      'identity should be captured via dedicated text slots on '
+                      'OrganismSample (e.g. isolate_name, source_mat_id, '
+                      'subspecf_gen_lin) or a future Strain class — not by minting '
+                      'NcbiTaxon instances for strains.',
+                      'Existing taxonomy slots (samp_taxon_id, host_taxid) already use '
+                      'ControlledIdentifiedTermValue with range OntologyClass. The '
+                      'intent is that these slots point to NcbiTaxon instances '
+                      'specifically, but LinkML does not currently support '
+                      'constraining the term slot of a ControlledIdentifiedTermValue '
+                      'to a particular OntologyClass subclass.'],
+         'from_schema': 'https://w3id.org/nmdc/nmdc',
+         'id_prefixes': ['NCBITaxon'],
+         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/2959',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/2971'],
+         'slot_usage': {'id': {'comments': ['Validation is intentionally limited to '
+                                            'NCBITaxon CURIEs. If GTDB, LPSN, or '
+                                            'SeqCode support is added, widen this '
+                                            'pattern in lockstep with id_prefixes and '
+                                            'example data.'],
+                               'name': 'id',
+                               'pattern': '^NCBITaxon:\\d+$'}}})
+
+    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'domain_of': ['OntologyClass', 'Study', 'Biosample'],
+         'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
+    relations: Optional[list[OntologyRelation]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['OntologyClass']} })
+    definition: Optional[str] = Field(default=None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OntologyClass']} })
+    is_obsolete: Optional[bool] = Field(default=None, description="""A boolean value indicating whether the ontology term is obsolete.""", json_schema_extra = { "linkml_meta": {'comments': ['If true (the ontology term is declared obsolete via the '
+                      'ontology source itself), the term is no longer considered a '
+                      'valid term to use in an annotation at NMDC, and it no longer '
+                      'has ontology_relation_set records.'],
+         'domain_of': ['OntologyClass']} })
+    is_root: Optional[bool] = Field(default=None, description="""A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OntologyClass']} })
+    id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'comments': ['Validation is intentionally limited to NCBITaxon CURIEs. If '
+                      'GTDB, LPSN, or SeqCode support is added, widen this pattern in '
+                      'lockstep with id_prefixes and example data.'],
+         'domain_of': ['NamedThing'],
+         'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
+                       'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
+         'notes': ["The identifiers for terms from external ontologies can't have "
+                   'their ids constrained to the nmdc namespace'],
+         'structured_aliases': [{'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                 'literal_form': 'workflow_execution_id',
+                                 'predicate': 'NARROW_SYNONYM'},
+                                {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                 'literal_form': 'data_object_id',
+                                 'predicate': 'NARROW_SYNONYM'}]} })
+    name: Optional[str] = Field(default=None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
+    description: Optional[str] = Field(default=None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImageValue', 'NamedThing', 'Protocol'],
+         'slot_uri': 'dcterms:description'} })
+    alternative_identifiers: Optional[list[str]] = Field(default=None, description="""A list of alternative identifiers for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedThing', 'MetaboliteIdentification']} })
+    type: Literal["https://w3id.org/nmdc/NcbiTaxon","nmdc:NcbiTaxon"] = Field(default="nmdc:NcbiTaxon", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'designates_type': True,
+         'domain_of': ['EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'AttributeValue',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi',
+                       'ProvenanceMetadata',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': [{'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                 'literal_form': 'workflow_execution_class',
+                                 'predicate': 'NARROW_SYNONYM'}]} })
+
+    @field_validator('id')
+    def pattern_id(cls, v):
+        pattern=re.compile(r"^NCBITaxon:\d+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid id format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid id format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('alternative_identifiers')
+    def pattern_alternative_identifiers(cls, v):
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid alternative_identifiers format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid alternative_identifiers format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
 class OntologyRelation(ConfiguredBaseModel):
     """
     A relationship between two ontology classes as specified either directly in the ontology in the form of axioms (statements or assertions that defines rules or constraints in an ontology) or inferred via reasoning.  The association object is defined by two terms (the subject and the object) and the relationship between them (the predicate). Because ontologies often have a plethora of relationships/axiom types and can have additional metadata on the relationship itself, these kinds of relationships are structured as a class instead of a simple set of slots on OntologyClass itself.
@@ -4858,9 +4978,13 @@ class FailureCategorization(ConfiguredBaseModel):
 
 
 class MaterialEntity(NamedThing):
+    """
+    A named thing that occupies space and has mass.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'aliases': ['Material', 'Physical entity'],
          'class_uri': 'nmdc:MaterialEntity',
+         'exact_mappings': ['BFO:0000040'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'title': 'Material Entity'})
 
@@ -5038,6 +5162,9 @@ class Instrument(MaterialEntity):
 
 
 class PlannedProcess(NamedThing):
+    """
+    A named thing that is executed according to a plan.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'class_uri': 'OBI:0000011',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
@@ -6228,6 +6355,7 @@ class InformationObject(NamedThing):
                       'multivalued or otherwise organized',
                       'Historically information about many classes has been inlined '
                       'into the class. This is an alternative pattern.'],
+         'exact_mappings': ['IAO:0000030'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'see_also': ['nmdc:AttributeValue']})
 
@@ -6744,7 +6872,7 @@ class CalibrationInformation(InformationObject):
                         'internal_calibration': {'name': 'internal_calibration',
                                                  'required': True}}})
 
-    calibration_object: Optional[str] = Field(default=None, description="""the file containing calibration data object""", json_schema_extra = { "linkml_meta": {'domain_of': ['CalibrationInformation'],
+    calibration_object: Optional[str] = Field(default=None, description="""the file containing the calibration data object""", json_schema_extra = { "linkml_meta": {'domain_of': ['CalibrationInformation'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'}} })
     internal_calibration: bool = Field(default=..., description="""whether internal calibration was used, if false, external calibration was used""", json_schema_extra = { "linkml_meta": {'domain_of': ['CalibrationInformation']} })
@@ -8954,19 +9082,18 @@ class Biosample(Sample):
                                                             {'value': 'doi:10.1016/j.soilbio.2005.01.021'}],
                                                'name': 'micro_biomass_meth'},
                         'name': {'description': 'A local identifier or name for the '
-                                                'material sample collected. It can '
-                                                'have any format, but we suggest that '
-                                                'you make it concise, unique, and '
-                                                'consistent within your lab, and as '
-                                                'informative as possible. For NMDC '
-                                                'this should be unique within a study. '
+                                                'material sample collected. We '
+                                                'recommend it be informative, concise, '
+                                                'and consistent within your lab. It '
+                                                'must be unique within a study. '
                                                 'International Nucleotide Sequence '
                                                 'Database Collaboration (INSDC) '
                                                 'requires every sample name from a '
-                                                'single submitter to be unique. Use of '
-                                                'a globally unique identifier for the '
-                                                'field source_mat_id is recommended in '
-                                                'addition to the name slot.',
+                                                'single submitter to be unique. We '
+                                                'recommend that, in addition to '
+                                                'populating this field, you populate '
+                                                'the `source_mat_id` field with a '
+                                                'globally-unique identifier.',
                                  'examples': [{'value': 'BW-H-17-M'}],
                                  'name': 'name',
                                  'required': True},
@@ -10542,7 +10669,7 @@ class Biosample(Sample):
          'examples': [{'value': '12 g;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'}],
          'slot_uri': 'MIXS:0000559',
          'string_serialization': '{float} {unit};{Rn/start_time/end_time/duration}'} })
-    growth_facil: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="growth facility", description="""Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
+    growth_facil: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="growth facility", description="""Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see https://cropontology.org/.""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'free text or CO'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'Growth chamber [CO_715:0000189]'}],
@@ -11424,9 +11551,7 @@ class Biosample(Sample):
                                 'partial_match': True,
                                 'syntax': '^{scientific_float}( *- '
                                           '*{scientific_float})? *{text}$'}} })
-    plant_growth_med: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="plant growth medium", description="""Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from EO:plant growth medium (follow this link for terms http://purl.obolibrary.org/obo/EO_0007147) or other controlled vocabulary""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'EO or enumeration'}},
-         'domain_of': ['Biosample'],
+    plant_growth_med: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="plant growth medium", description="""Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from the Plant Environment Ontology (PECO), plant growth medium exposure (http://purl.obolibrary.org/obo/PECO_0007147), or other controlled vocabulary.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'keywords': ['growth', 'plant'],
          'slot_uri': 'MIXS:0001057',
          'string_serialization': '{termLabel} [{termID}] or [husk|other artificial '
@@ -11442,7 +11567,7 @@ class Biosample(Sample):
          'examples': [{'value': 'Hermaphroditic'}],
          'keywords': ['plant'],
          'slot_uri': 'MIXS:0001059'} })
-    plant_struc: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="plant structure", description="""Name of plant structure the sample was obtained from; for Plant Ontology (PO) (v releases/2017-12-14) terms, see http://purl.bioontology.org/ontology/PO, e.g. petiole epidermis (PO_0000051). If an individual flower is sampled, the sex of it can be recorded here""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
+    plant_struc: Optional[Union[ControlledTermValue,ControlledIdentifiedTermValue]] = Field(default=None, title="plant structure", description="""Name of plant structure the sample was obtained from; for Plant Ontology (PO) terms, see http://obofoundry.org/ontology/po.html, e.g. petiole epidermis (PO:0000051). If an individual flower is sampled, the sex of it can be recorded here.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'epidermis [PO:0005679]'}],
          'keywords': ['plant'],
          'slot_uri': 'MIXS:0001060',
@@ -11846,14 +11971,20 @@ class Biosample(Sample):
          'examples': [{'value': 'farm sample'}],
          'keywords': ['sample', 'status'],
          'slot_uri': 'MIXS:0000860'} })
-    samp_collec_device: Optional[str] = Field(default=None, title="sample collection device", description="""The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
-                                            'value': 'device name'}},
+    samp_collec_device: Optional[str] = Field(default=None, title="sample collection device", description="""The device used to collect an environmental sample. Recommended values are subclasses of specimen collection device (http://purl.obolibrary.org/obo/OBI_0002814). OBI itself contains only swab/wipe subclasses; environmental sampling devices (corers, grab samplers, passive samplers, etc.) are defined in GENEPIO under the same OBI:0002814 parent. Free-text values are accepted for backward compatibility; new submissions should prefer the form: label [PREFIX:LOCALID].""", json_schema_extra = { "linkml_meta": {'comments': ["GENEPIO's subtree of OBI:0002814 includes grouping classes such "
+                      'as GENEPIO:0100941 (grab sampling device), GENEPIO:0100942 '
+                      '(composite sampling device), GENEPIO:0100943 (core sampling '
+                      'device), and GENEPIO:0100948 (passive sampling device).',
+                      'ENVO has no device classes; do not use ENVO terms here.',
+                      'Existing NMDC biosamples populate this slot with free text '
+                      '(e.g., "corer", "Van Dorn"). New submissions are encouraged to '
+                      'use the form: label [PREFIX:LOCALID].'],
          'domain_of': ['Biosample'],
+         'examples': [{'value': 'specimen collection swab stick [OBI:0002820]'},
+                      {'value': 'PONAR grab sampler [GENEPIO:0100929]'},
+                      {'value': 'trowel'}],
          'keywords': ['device', 'sample'],
-         'slot_uri': 'MIXS:0000002',
-         'string_serialization': '{termLabel} [{termID}]|{text}',
-         'structured_aliases': [{'contexts': ['https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2'],
-                                 'literal_form': 'samp_collect_device'}]} })
+         'slot_uri': 'MIXS:0000002'} })
     samp_collec_method: Optional[str] = Field(default=None, title="sample collection method", description="""The method employed for collecting the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'keywords': ['method', 'sample'],
          'slot_uri': 'MIXS:0001225',
@@ -13375,7 +13506,7 @@ class Biosample(Sample):
                                  'predicate': 'NARROW_SYNONYM'}],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'}} })
-    name: str = Field(default=..., description="""A local identifier or name for the material sample collected. It can have any format, but we suggest that you make it concise, unique, and consistent within your lab, and as informative as possible. For NMDC this should be unique within a study. International Nucleotide Sequence Database Collaboration (INSDC) requires every sample name from a single submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to the name slot.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PersonValue', 'NamedThing', 'Protocol'],
+    name: str = Field(default=..., description="""A local identifier or name for the material sample collected. We recommend it be informative, concise, and consistent within your lab. It must be unique within a study. International Nucleotide Sequence Database Collaboration (INSDC) requires every sample name from a single submitter to be unique. We recommend that, in addition to populating this field, you populate the `source_mat_id` field with a globally-unique identifier.""", json_schema_extra = { "linkml_meta": {'domain_of': ['PersonValue', 'NamedThing', 'Protocol'],
          'examples': [{'value': 'BW-H-17-M'}]} })
     description: Optional[str] = Field(default=None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImageValue', 'NamedThing', 'Protocol'],
          'slot_uri': 'dcterms:description'} })
@@ -15394,6 +15525,19 @@ class Biosample(Sample):
                     raise ValueError(err_msg)
         elif isinstance(v, str) and not pattern.match(v):
             err_msg = f"Invalid salinity_meth format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('samp_collec_device')
+    def pattern_samp_collec_device(cls, v):
+        pattern=re.compile(r"^([^\[\]]+|.+ \[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\])$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid samp_collec_device format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid samp_collec_device format: {v}"
             raise ValueError(err_msg)
         return v
 
@@ -21608,6 +21752,7 @@ NamedThing.model_rebuild()
 OntologyClass.model_rebuild()
 FunctionalAnnotationTerm.model_rebuild()
 OrthologyGroup.model_rebuild()
+NcbiTaxon.model_rebuild()
 OntologyRelation.model_rebuild()
 FailureCategorization.model_rebuild()
 MaterialEntity.model_rebuild()

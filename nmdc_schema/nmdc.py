@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-01T15:25:23
+# Generation date: 2026-05-07T17:25:26
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -80,6 +80,7 @@ FMA = CurieNamespace('FMA', 'http://purl.obolibrary.org/obo/FMA_')
 GENEPIO = CurieNamespace('GENEPIO', 'http://purl.obolibrary.org/obo/GENEPIO_')
 GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
 HMDB = CurieNamespace('HMDB', 'https://bioregistry.io/hmdb:')
+IAO = CurieNamespace('IAO', 'http://purl.obolibrary.org/obo/IAO_')
 ISA = CurieNamespace('ISA', 'http://example.org/isa/')
 KEGG_COMPOUND = CurieNamespace('KEGG_COMPOUND', 'https://bioregistry.io/kegg.compound:')
 KEGG_MODULE = CurieNamespace('KEGG_MODULE', 'https://bioregistry.io/kegg.module:')
@@ -213,6 +214,10 @@ class FunctionalAnnotationTermId(OntologyClassId):
 
 
 class OrthologyGroupId(FunctionalAnnotationTermId):
+    pass
+
+
+class NcbiTaxonId(OntologyClassId):
     pass
 
 
@@ -1434,6 +1439,36 @@ class OrthologyGroup(FunctionalAnnotationTerm):
 
 
 @dataclass(repr=False)
+class NcbiTaxon(OntologyClass):
+    """
+    A taxonomy term from NCBI Taxonomy. NcbiTaxon instances are identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145)
+    and stored in ontology_class_set alongside other OntologyClass instances. No NMDC-minted identifiers are assigned.
+    Support for additional taxonomic authorities (GTDB, LPSN, SeqCode) would be represented by separate classes or by
+    widening this class's id_prefixes in a follow-on PR.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["NcbiTaxon"]
+    class_class_curie: ClassVar[str] = "nmdc:NcbiTaxon"
+    class_name: ClassVar[str] = "NcbiTaxon"
+    class_model_uri: ClassVar[URIRef] = NMDC.NcbiTaxon
+
+    id: Union[str, NcbiTaxonId] = None
+    type: Union[str, URIorCURIE] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, NcbiTaxonId):
+            self.id = NcbiTaxonId(self.id)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
 class OntologyRelation(YAMLRoot):
     """
     A relationship between two ontology classes as specified either directly in the ontology in the form of axioms
@@ -1507,6 +1542,9 @@ class FailureCategorization(YAMLRoot):
 
 @dataclass(repr=False)
 class MaterialEntity(NamedThing):
+    """
+    A named thing that occupies space and has mass.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MaterialEntity"]
@@ -3907,6 +3945,9 @@ class Instrument(MaterialEntity):
 
 @dataclass(repr=False)
 class PlannedProcess(NamedThing):
+    """
+    A named thing that is executed according to a plan.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = OBI["0000011"]
@@ -11149,6 +11190,9 @@ slots.start_date = Slot(uri=NMDC.start_date, name="start_date", curie=NMDC.curie
 slots.end_date = Slot(uri=NMDC.end_date, name="end_date", curie=NMDC.curie('end_date'),
                    model_uri=NMDC.end_date, domain=None, range=Optional[str])
 
+slots.classified_as = Slot(uri=NMDC['basic_classes/classified_as'], name="classified_as", curie=NMDC.curie('basic_classes/classified_as'),
+                   model_uri=NMDC.classified_as, domain=None, range=Optional[Union[Union[str, OntologyClassId], list[Union[str, OntologyClassId]]]])
+
 slots.source_system_of_record = Slot(uri=NMDC['basic_classes/source_system_of_record'], name="source_system_of_record", curie=NMDC.curie('basic_classes/source_system_of_record'),
                    model_uri=NMDC.source_system_of_record, domain=None, range=Optional[Union[str, "SourceSystemEnum"]])
 
@@ -12918,7 +12962,8 @@ slots.xylene = Slot(uri=MIXS['0000156'], name="xylene", curie=MIXS.curie('000015
                    model_uri=NMDC.xylene, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.samp_collec_device = Slot(uri=MIXS['0000002'], name="samp_collec_device", curie=MIXS.curie('0000002'),
-                   model_uri=NMDC.samp_collec_device, domain=None, range=Optional[str])
+                   model_uri=NMDC.samp_collec_device, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^([^\[\]]+|.+ \[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\])$'))
 
 slots.samp_collec_method = Slot(uri=MIXS['0001225'], name="samp_collec_method", curie=MIXS.curie('0001225'),
                    model_uri=NMDC.samp_collec_method, domain=None, range=Optional[str])
@@ -13493,6 +13538,10 @@ slots.PropertyAssertion_has_unit = Slot(uri=NMDC['attribute_values/has_unit'], n
 slots.OntologyClass_id = Slot(uri=NMDC.id, name="OntologyClass_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.OntologyClass_id, domain=OntologyClass, range=Union[str, OntologyClassId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
+slots.NcbiTaxon_id = Slot(uri=NMDC.id, name="NcbiTaxon_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.NcbiTaxon_id, domain=NcbiTaxon, range=Union[str, NcbiTaxonId],
+                   pattern=re.compile(r'^NCBITaxon:\d+$'))
 
 slots.Instrument_id = Slot(uri=NMDC.id, name="Instrument_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Instrument_id, domain=Instrument, range=Union[str, InstrumentId],
