@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv("local/.env")
 
-from nmdc_schema.ontology_alignment_prototype import (
+from src.scripts.ontology_alignment_prototype import (
     available_tooling,
     build_schema_index,
     enrich_alignment_rows,

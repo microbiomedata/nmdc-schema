@@ -1,4 +1,4 @@
-from nmdc_schema.ontology_alignment_prototype import (
+from src.scripts.ontology_alignment_prototype import (
     SchemaElementRecord,
     MetadataResolution,
     OlsEntityMetadata,
@@ -9,7 +9,6 @@ from nmdc_schema.ontology_alignment_prototype import (
     compose_subject_query_text,
     enrich_review_rows,
     harvest_bioportal_ontology_terms,
-    harvest_oaklib_ontology_terms,
     lexical_profile,
     linkml_store_available,
     match_type,
@@ -355,7 +354,7 @@ def test_harvest_bioportal_ontology_terms_uses_minimal_payload(monkeypatch):
             )
         return FakeResponse([])
 
-    monkeypatch.setattr("nmdc_schema.ontology_alignment_prototype.requests.get", fake_get)
+    monkeypatch.setattr("src.scripts.ontology_alignment_prototype.requests.get", fake_get)
     rows = harvest_bioportal_ontology_terms(["OBI"], api_key="test-key", page_size=2)
     assert len(rows) == 1
     assert rows[0].object_id == "OBI:0001"
@@ -387,7 +386,7 @@ def test_harvest_bioportal_ontology_terms_excludes_imports_by_default(monkeypatc
             )
         return FakeResponse([])
 
-    monkeypatch.setattr("nmdc_schema.ontology_alignment_prototype.requests.get", fake_get)
+    monkeypatch.setattr("src.scripts.ontology_alignment_prototype.requests.get", fake_get)
     rows = harvest_bioportal_ontology_terms(["OBI"], api_key="test-key", page_size=2)
     assert [row.object_id for row in rows] == ["OBI:0001"]
 
