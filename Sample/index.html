@@ -414,6 +414,8 @@
       click Biosample href "../Biosample"
     Sample &lt;|-- ProcessedSample
       click ProcessedSample href "../ProcessedSample"
+    Sample &lt;|-- OrganismSample
+      click OrganismSample href "../OrganismSample"
 
 
 
@@ -437,6 +439,7 @@
 <li><strong>Sample</strong><ul>
 <li><a href="../Biosample/">Biosample</a></li>
 <li><a href="../ProcessedSample/">ProcessedSample</a></li>
+<li><a href="../OrganismSample/">OrganismSample</a></li>
 </ul>
 </li>
 </ul>
@@ -512,6 +515,12 @@
 </tr>
 <tr>
 <td><a href="../Pooling/">Pooling</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>range</td>
+<td><a href="./">Sample</a></td>
+</tr>
+<tr>
+<td><a href="../Isolation/">Isolation</a></td>
 <td><a href="../has_input/">has_input</a></td>
 <td>range</td>
 <td><a href="./">Sample</a></td>

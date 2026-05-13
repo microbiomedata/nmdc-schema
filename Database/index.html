@@ -459,6 +459,16 @@
       Database --&gt; "*" MaterialProcessing : material_processing_set
     click MaterialProcessing href "../MaterialProcessing"
 
+  Database : organism_sample_set
+
+      Database --&gt; "*" OrganismSample : organism_sample_set
+    click OrganismSample href "../OrganismSample"
+
+  Database : organism_set
+
+      Database --&gt; "*" Organism : organism_set
+    click Organism href "../Organism"
+
   Database : processed_sample_set
 
       Database --&gt; "*" ProcessedSample : processed_sample_set
@@ -573,6 +583,18 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../organism_sample_set/">organism_sample_set</a></td>
+<td>* <br/> <a href="../OrganismSample/">OrganismSample</a></td>
+<td>This property links a database object to the set of organism samples within i...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../organism_set/">organism_set</a></td>
+<td>* <br/> <a href="../Organism/">Organism</a></td>
+<td>This property links a database object to the set of organisms within it</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../processed_sample_set/">processed_sample_set</a></td>
 <td>* <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
 <td>This property links a database object to the set of processed samples within ...</td>
@@ -649,6 +671,8 @@ slots:
 - instrument_set
 - manifest_set
 - material_processing_set
+- organism_sample_set
+- organism_set
 - processed_sample_set
 - storage_process_set
 - study_set
@@ -857,6 +881,36 @@ attributes:
     domain_of:
     - Database
     range: MaterialProcessing
+    multivalued: true
+    inlined_as_list: true
+  organism_sample_set:
+    name: organism_sample_set
+    description: This property links a database object to the set of organism samples
+      within it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    mixins:
+    - object_set
+    alias: organism_sample_set
+    owner: Database
+    domain_of:
+    - Database
+    range: OrganismSample
+    multivalued: true
+    inlined_as_list: true
+  organism_set:
+    name: organism_set
+    description: This property links a database object to the set of organisms within
+      it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    mixins:
+    - object_set
+    alias: organism_set
+    owner: Database
+    domain_of:
+    - Database
+    range: Organism
     multivalued: true
     inlined_as_list: true
   processed_sample_set:

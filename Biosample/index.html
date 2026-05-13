@@ -2006,6 +2006,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../host_genus/">host_genus</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Genus of the host organism that the sample was collected from</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../host_growth_cond/">host_growth_cond</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Literature reference giving growth conditions of the host</td>
@@ -2051,6 +2057,18 @@
 <td><a href="../host_shape/">host_shape</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Morphological shape of host</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_species/">host_species</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Species of the host organism that the sample was collected from</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../host_strain/">host_strain</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Strain of the host organism that the sample was collected from</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -3814,7 +3832,7 @@
 <tr>
 <td><a href="../sample_collection_site/">sample_collection_site</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>Free-text description of the place where the sample was collected — the geogr...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -4345,6 +4363,7 @@ slots:
 - host_dry_mass
 - host_family_relation
 - host_genotype
+- host_genus
 - host_growth_cond
 - host_height
 - host_last_meal
@@ -4353,6 +4372,8 @@ slots:
 - host_phenotype
 - host_sex
 - host_shape
+- host_species
+- host_strain
 - host_subject_id
 - host_subspecf_genlin
 - host_substrate
@@ -5441,6 +5462,7 @@ attributes:
     domain_of:
     - DataGeneration
     - Biosample
+    - OrganismSample
     range: Study
     required: true
     multivalued: true
@@ -5489,6 +5511,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: boolean
     recommended: true
   host_disease_stat:
@@ -5583,6 +5606,7 @@ attributes:
     - Study
     - DataGeneration
     - Biosample
+    - OrganismSample
     range: ProvenanceMetadata
   gold_biosample_identifiers:
     name: gold_biosample_identifiers
@@ -7480,6 +7504,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: TimestampValue
   conduc:
     name: conduc
@@ -10063,6 +10088,32 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
+  host_genus:
+    name: host_genus
+    description: Genus of the host organism that the sample was collected from.
+    comments:
+    - Free-text submitter-provided host genus. For an ontology-grounded host identification,
+      use `host_taxid` (MIXS:0000250) on the same class.
+    examples:
+    - value: Zea
+      description: GOLD organism_v2 host_name &quot;Zea mays&quot; (n=432 records, queried 2026-04-30)
+    - value: Escherichia
+      description: GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia
+        phage JSE, queried 2026-04-30)
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host Genus
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
+    rank: 1000
+    alias: host_genus
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: string
   host_growth_cond:
     name: host_growth_cond
     description: Literature reference giving growth conditions of the host
@@ -10250,6 +10301,56 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
+  host_species:
+    name: host_species
+    description: Species of the host organism that the sample was collected from.
+    comments:
+    - Free-text submitter-provided host species. For an ontology-grounded host identification,
+      use `host_taxid` (MIXS:0000250) on the same class.
+    examples:
+    - value: mays
+      description: GOLD organism_v2 host_name &quot;Zea mays&quot; (n=432 records, queried 2026-04-30)
+    - value: coli
+      description: GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia
+        phage JSE, queried 2026-04-30)
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host Species
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
+    rank: 1000
+    alias: host_species
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: string
+  host_strain:
+    name: host_strain
+    description: Strain of the host organism that the sample was collected from.
+    comments:
+    - Free-text submitter-provided host strain. For an ontology-grounded host identification,
+      use `host_taxid` (MIXS:0000250) on the same class.
+    examples:
+    - value: K-12
+      description: GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia
+        phage JSE, queried 2026-04-30)
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host Strain
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
+    rank: 1000
+    alias: host_strain
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: string
   host_subject_id:
     name: host_subject_id
     description: A unique identifier by which each subject can be referred to, de-identified
@@ -10348,6 +10449,11 @@ attributes:
     comments:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Host NCBI Taxonomy ID
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     keywords:
     - host
@@ -10358,6 +10464,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: ControlledIdentifiedTermValue
   host_tot_mass:
     name: host_tot_mass
@@ -13518,6 +13625,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: string
   samp_preserv:
     name: samp_preserv
@@ -14647,6 +14755,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: TextValue
     multivalued: false
   space_typ_state:
@@ -16938,12 +17047,26 @@ attributes:
     range: string
   sample_collection_site:
     name: sample_collection_site
+    description: Free-text description of the place where the sample was collected
+      — the geographic / environmental site or named location.
+    comments:
+    - On `OrganismSample`, this slot routes the collection-site half of JGI Isolate
+      (NA) v19 form field 45 (&quot;Collection Site or Growth Conditions&quot;). The growth-conditions
+      half routes to `sample_growth_conditions`. The submitter populates one or the
+      other depending on whether the sample came from a field collection or from in-vitro
+      maintenance.
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Collection Site or Growth Conditions
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     alias: sample_collection_site
     owner: Biosample
     domain_of:
     - Biosample
+    - OrganismSample
     range: string
   soluble_iron_micromol:
     name: soluble_iron_micromol

@@ -614,6 +614,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applicable Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -721,6 +732,23 @@
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/classified_as">nmdc:classified_as</a></p>
 <!-- no inheritance hierarchy -->
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Organism/">Organism</a></td>
+<td>A material entity that is a living or once-living individual</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
@@ -732,7 +760,7 @@
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Taxonomy-oriented uses (e.g. on OrganismSample) should point to NcbiTaxon instances. The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked in #3016.</li>
+<li>Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances. OrganismSample reaches taxonomy indirectly via expected_organism.classified_as. The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked in #3016.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -765,7 +793,8 @@
 description: A formal classification for this entity, expressed directly as an ontology-backed
   class instance stored in ontology_class_set.
 comments:
-- 'Taxonomy-oriented uses (e.g. on OrganismSample) should point to NcbiTaxon instances.
+- 'Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
+  OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.
   The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked
   in #3016.'
 from_schema: https://w3id.org/nmdc/nmdc
@@ -775,8 +804,12 @@ narrow_mappings:
 - biolink:in_taxon
 rank: 1000
 alias: classified_as
+domain_of:
+- Organism
 range: OntologyClass
 multivalued: true
+inlined: true
+inlined_as_list: true
 
 </code></pre>
 

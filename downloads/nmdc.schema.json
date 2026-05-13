@@ -1981,6 +1981,13 @@
                     ],
                     "description": "Observed genotype"
                 },
+                "host_genus": {
+                    "description": "Genus of the host organism that the sample was collected from.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "host_growth_cond": {
                     "anyOf": [
                         {
@@ -2072,6 +2079,20 @@
                         }
                     ],
                     "description": "Morphological shape of host"
+                },
+                "host_species": {
+                    "description": "Species of the host organism that the sample was collected from.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "host_strain": {
+                    "description": "Strain of the host organism that the sample was collected from.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "host_subject_id": {
                     "anyOf": [
@@ -3797,6 +3818,7 @@
                     "description": "Name of the well (e.g. BXA1123) where sample was taken"
                 },
                 "sample_collection_site": {
+                    "description": "Free-text description of the place where the sample was collected \u2014 the geographic / environmental site or named location.",
                     "type": [
                         "string",
                         "null"
@@ -6006,6 +6028,129 @@
             "title": "CreditEnum",
             "type": "string"
         },
+        "Culturing": {
+            "additionalProperties": false,
+            "description": "A material processing that grows an organism under controlled conditions. The input and output are both organism samples; the output is an expanded or maintained culture of the input organism.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output from a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "instrument_used": {
+                    "description": "What instrument was used during DataGeneration or MaterialProcessing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:Culturing"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "has_input",
+                "has_output",
+                "id",
+                "type"
+            ],
+            "title": "Culturing",
+            "type": "object"
+        },
         "CurLandUseEnum": {
             "description": "",
             "enum": [
@@ -6344,6 +6489,12 @@
                                 "$ref": "#/$defs/Pooling"
                             },
                             {
+                                "$ref": "#/$defs/Isolation"
+                            },
+                            {
+                                "$ref": "#/$defs/Culturing"
+                            },
+                            {
                                 "$ref": "#/$defs/Extraction"
                             },
                             {
@@ -6365,6 +6516,26 @@
                                 "$ref": "#/$defs/DissolvingProcess"
                             }
                         ]
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "organism_sample_set": {
+                    "description": "This property links a database object to the set of organism samples within it.",
+                    "items": {
+                        "$ref": "#/$defs/OrganismSample"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "organism_set": {
+                    "description": "This property links a database object to the set of organisms within it.",
+                    "items": {
+                        "$ref": "#/$defs/Organism"
                     },
                     "type": [
                         "array",
@@ -8282,6 +8453,129 @@
             ],
             "title": "IonizationSourceEnum",
             "type": "string"
+        },
+        "Isolation": {
+            "additionalProperties": false,
+            "description": "A material processing that separates an organism from a mixed sample by selection techniques such as serial dilution, plating on selective media, and colony picking.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output from a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "instrument_used": {
+                    "description": "What instrument was used during DataGeneration or MaterialProcessing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:Isolation"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "has_input",
+                "has_output",
+                "id",
+                "type"
+            ],
+            "title": "Isolation",
+            "type": "object"
         },
         "LibraryPreparation": {
             "additionalProperties": false,
@@ -12354,6 +12648,298 @@
             "title": "OntologyRelation",
             "type": "object"
         },
+        "Organism": {
+            "additionalProperties": false,
+            "description": "A material entity that is a living or once-living individual. Organism instances represent the biological identity of what is in a sample, not the sample itself. Sub-species identity (strain, cultivar, lab isolate) is captured by slots on this class rather than via a separate Strain subclass.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "classified_as": {
+                    "description": "Taxonomic classification of this organism. Narrowed from the global OntologyClass range (defined on the slot itself) to NcbiTaxon, since organism identity at NMDC is anchored to NCBI Taxonomy. Per #3016 \u2014 the broader pattern is to narrow `classified_as` to `NcbiTaxon` on all organism-oriented classes via slot_usage.",
+                    "items": {
+                        "$ref": "#/$defs/NcbiTaxon"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "estimated_size": {
+                    "description": "Estimated genome size, as integer base pairs. Reuses MIxS estimated_size (MIXS:0000024). The JGI isolate field reports in megabases (Mb); values must be converted to the MIxS integer-bp representation before validation and storage. The submission portal should auto-populate the \"bp\" suffix and enforce integer input.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gc_content": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Estimated GC content as a percentage."
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "isolate_name": {
+                    "description": "Isolate or mutant name.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organism_genus": {
+                    "description": "Genus of the organism.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organism_species": {
+                    "description": "Species of the organism.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ref_biomaterial": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Reference for the organism, preferentially a DOI when a primary publication or genome report exists; PMID and URL are also accepted per the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025)."
+                },
+                "strain_name": {
+                    "description": "Strain or cultivar name of the organism.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:Organism"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "Organism",
+            "type": "object"
+        },
+        "OrganismSample": {
+            "additionalProperties": false,
+            "description": "A material sample in which all cells are expected to share the same genome. This includes microbial colony picks, pellets from presumably pure liquid cultures, plant tissue clips, fungal fruiting body sections, and similar materials where the submitter intends to study a single organism. The purity expectation may be contradicted by sequencing results.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "associated_studies": {
+                    "description": "The study associated with a resource.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "collection_date": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TimestampValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant"
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "embargoed": {
+                    "description": "If true, the data are embargoed and not available for public access.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "expected_organism": {
+                    "description": "The organism that the submitter expects to be present in this sample. May be contradicted by sequencing results.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "external_database_identifiers": {
+                    "description": "Link to corresponding identifier in external database",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "gold_organism_identifiers": {
+                    "description": "identifiers for corresponding organism in GOLD",
+                    "items": {
+                        "pattern": "^gold:Go[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "host_taxid": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "NCBI taxon id of the host, e.g. 9606"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ploidy": {
+                    "$ref": "#/$defs/PloidyEnum",
+                    "description": "The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO"
+                },
+                "provenance_metadata": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ProvenanceMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Provides information about the provenance of a record."
+                },
+                "samp_name": {
+                    "description": "A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_collection_site": {
+                    "description": "Free-text description of the place where the sample was collected \u2014 the geographic / environmental site or named location.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_growth_conditions": {
+                    "description": "Free-text description of the in-vitro conditions under which the organism sample was grown or maintained \u2014 culture media, growth chamber settings, facility type, or other lab-controlled growth context. For environmental site context see `sample_collection_site`; for the source matrix the organism came out of see `sample_isolated_from`.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_isolated_from": {
+                    "description": "Free-text description of the environmental or biological matrix from which the organism sample was isolated \u2014 the *what* it came out of (e.g. iron-rich microbial mat, leaf tissue, catalog vial). For the *where* (geographic / environmental site of collection) see `sample_collection_site`; for in-vitro growth conditions (lab maintenance, culture media, growth chambers) see `sample_growth_conditions`.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_isolation_method": {
+                    "description": "Method, protocol, or kit used to extract DNA/RNA from the sample.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source_mat_id": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Culture collection identifier for the source of this organism sample."
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:OrganismSample"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "associated_studies",
+                "id",
+                "type"
+            ],
+            "title": "OrganismSample",
+            "type": "object"
+        },
         "OrthologyGroup": {
             "additionalProperties": false,
             "description": "A set of genes or gene products in which all members are orthologous",
@@ -12551,6 +13137,22 @@
                 "Unisexual"
             ],
             "title": "PlantSexEnum",
+            "type": "string"
+        },
+        "PloidyEnum": {
+            "description": "Ploidy of an organism's genome. Permissible values map to PATO classes and were selected from values observed in the JGI GOLD lakehouse table `gold.dw_sample_taxonomy_info.ploidy_comments` (queried 2026-04-29). Used as the range of the `ploidy` slot, narrowing the MIxS-imported `ploidy` (MIXS:0000021) from a free- text / structured pattern to an enumerated set with referential integrity to PATO.",
+            "enum": [
+                "haploid",
+                "diploid",
+                "triploid",
+                "tetraploid",
+                "hexaploid",
+                "polyploid",
+                "allopolyploidy",
+                "aneuploid",
+                "other"
+            ],
+            "title": "PloidyEnum",
             "type": "string"
         },
         "PolarityModeEnum": {
@@ -13051,11 +13653,13 @@
                 "ChemicalConversionProcess",
                 "ChromatographicSeparationProcess",
                 "CollectingBiosamplesFromSite",
+                "Culturing",
                 "DataEmitterProcess",
                 "DataGeneration",
                 "DissolvingProcess",
                 "Extraction",
                 "FiltrationProcess",
+                "Isolation",
                 "LibraryPreparation",
                 "MagsAnalysis",
                 "MassSpectrometry",
@@ -15357,6 +15961,12 @@
                         "$ref": "#/$defs/Pooling"
                     },
                     {
+                        "$ref": "#/$defs/Isolation"
+                    },
+                    {
+                        "$ref": "#/$defs/Culturing"
+                    },
+                    {
                         "$ref": "#/$defs/Extraction"
                     },
                     {
@@ -15378,6 +15988,26 @@
                         "$ref": "#/$defs/DissolvingProcess"
                     }
                 ]
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "organism_sample_set": {
+            "description": "This property links a database object to the set of organism samples within it.",
+            "items": {
+                "$ref": "#/$defs/OrganismSample"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "organism_set": {
+            "description": "This property links a database object to the set of organisms within it.",
+            "items": {
+                "$ref": "#/$defs/Organism"
             },
             "type": [
                 "array",
@@ -15461,5 +16091,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.0.post3.dev0+1e598e5cb"
+    "version": "11.19.1.post75.dev0+4fdf4bf11"
 }

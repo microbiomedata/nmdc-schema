@@ -747,6 +747,11 @@
 <td>Biological source material which can be characterized by an experiment</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../OrganismSample/">OrganismSample</a></td>
+<td>A material sample in which all cells are expected to share the same genome</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
@@ -805,6 +810,11 @@ title: host taxid
 comments:
 - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
 from_schema: https://w3id.org/nmdc/nmdc
+structured_aliases:
+- literal_form: Host NCBI Taxonomy ID
+  predicate: EXACT_SYNONYM
+  contexts:
+  - https://jgi.doe.gov/isolate-submission-form/v19
 rank: 1000
 keywords:
 - host
@@ -814,6 +824,7 @@ slot_uri: MIXS:0000250
 alias: host_taxid
 domain_of:
 - Biosample
+- OrganismSample
 range: ControlledIdentifiedTermValue
 
 </code></pre>

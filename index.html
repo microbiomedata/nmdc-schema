@@ -945,12 +945,20 @@ environmental context of samples.</p>
 <td>A material entity that is designed to perform a function in a scientific inve...</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Organism/">Organism</a></td>
+<td>A material entity that is a living or once-living individual</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Sample/">Sample</a></td>
 <td>A sample is a material entity that can be characterized by an experiment</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Biosample/">Biosample</a></td>
 <td>Biological source material which can be characterized by an experiment</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OrganismSample/">OrganismSample</a></td>
+<td>A material sample in which all cells are expected to share the same genome</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProcessedSample/">ProcessedSample</a></td>
@@ -1085,6 +1093,10 @@ environmental context of samples.</p>
 <td>The process of using a selective partitioning of the analyte or interferent b...</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Culturing/">Culturing</a></td>
+<td>A material processing that grows an organism under controlled conditions</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DissolvingProcess/">DissolvingProcess</a></td>
 <td>A mixing step where a soluble component is mixed with a liquid component</td>
 </tr>
@@ -1095,6 +1107,10 @@ environmental context of samples.</p>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FiltrationProcess/">FiltrationProcess</a></td>
 <td>The process of segregation of phases; e</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Isolation/">Isolation</a></td>
+<td>A material processing that separates an organism from a mixed sample by selec...</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="LibraryPreparation/">LibraryPreparation</a></td>
@@ -2044,6 +2060,10 @@ environmental context of samples.</p>
 <td>The number of escalators within the built structure</td>
 </tr>
 <tr>
+<td><a href="estimated_size/">estimated_size</a></td>
+<td>The estimated size of the genome prior to sequencing</td>
+</tr>
+<tr>
 <td><a href="ethylbenzene/">ethylbenzene</a></td>
 <td>Concentration of ethylbenzene in the sample</td>
 </tr>
@@ -2066,6 +2086,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="exp_pipe/">exp_pipe</a></td>
 <td>The number of exposed pipes in the room</td>
+</tr>
+<tr>
+<td><a href="expected_organism/">expected_organism</a></td>
+<td>The organism that the submitter expects to be present in this sample</td>
 </tr>
 <tr>
 <td><a href="experimental_factor/">experimental_factor</a></td>
@@ -2244,6 +2268,10 @@ environmental context of samples.</p>
 <td>Average of GC content of all contigs</td>
 </tr>
 <tr>
+<td><a href="gc_content/">gc_content</a></td>
+<td>Estimated GC content as a percentage</td>
+</tr>
+<tr>
 <td><a href="gc_std/">gc_std</a></td>
 <td>Standard deviation of GC content of all contigs</td>
 </tr>
@@ -2306,6 +2334,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="gold_identifiers/">gold_identifiers</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="gold_organism_identifiers/">gold_organism_identifiers</a></td>
+<td>identifiers for corresponding organism in GOLD</td>
 </tr>
 <tr>
 <td><a href="gold_path_field/">gold_path_field</a></td>
@@ -2580,6 +2612,10 @@ environmental context of samples.</p>
 <td>Observed genotype</td>
 </tr>
 <tr>
+<td><a href="host_genus/">host_genus</a></td>
+<td>Genus of the host organism that the sample was collected from</td>
+</tr>
+<tr>
 <td><a href="host_growth_cond/">host_growth_cond</a></td>
 <td>Literature reference giving growth conditions of the host</td>
 </tr>
@@ -2614,6 +2650,14 @@ environmental context of samples.</p>
 <tr>
 <td><a href="host_shape/">host_shape</a></td>
 <td>Morphological shape of host</td>
+</tr>
+<tr>
+<td><a href="host_species/">host_species</a></td>
+<td>Species of the host organism that the sample was collected from</td>
+</tr>
+<tr>
+<td><a href="host_strain/">host_strain</a></td>
+<td>Strain of the host organism that the sample was collected from</td>
 </tr>
 <tr>
 <td><a href="host_subject_id/">host_subject_id</a></td>
@@ -2798,6 +2842,14 @@ environmental context of samples.</p>
 <tr>
 <td><a href="is_stranded/">is_stranded</a></td>
 <td>Is the (RNA) library stranded or non-stranded (unstranded)</td>
+</tr>
+<tr>
+<td><a href="isol_growth_condt/">isol_growth_condt</a></td>
+<td>Publication reference in the form of pubmed ID (pmid), digital object identif...</td>
+</tr>
+<tr>
+<td><a href="isolate_name/">isolate_name</a></td>
+<td>Isolate or mutant name</td>
 </tr>
 <tr>
 <td><a href="isotope_exposure/">isotope_exposure</a></td>
@@ -3268,6 +3320,22 @@ environmental context of samples.</p>
 <td>Total cell count of any organism (or group of organisms) per gram, volume or ...</td>
 </tr>
 <tr>
+<td><a href="organism_genus/">organism_genus</a></td>
+<td>Genus of the organism</td>
+</tr>
+<tr>
+<td><a href="organism_sample_set/">organism_sample_set</a></td>
+<td>This property links a database object to the set of organism samples within i...</td>
+</tr>
+<tr>
+<td><a href="organism_set/">organism_set</a></td>
+<td>This property links a database object to the set of organisms within it</td>
+</tr>
+<tr>
+<td><a href="organism_species/">organism_species</a></td>
+<td>Species of the organism</td>
+</tr>
+<tr>
 <td><a href="other_treatment/">other_treatment</a></td>
 <td>Other treatments applied to your samples that are not applicable to the provi...</td>
 </tr>
@@ -3418,6 +3486,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="plant_struc/">plant_struc</a></td>
 <td>Name of plant structure the sample was obtained from; for Plant Ontology (PO)...</td>
+</tr>
+<tr>
+<td><a href="ploidy/">ploidy</a></td>
+<td>The ploidy level of the genome (e</td>
 </tr>
 <tr>
 <td><a href="polarity_mode/">polarity_mode</a></td>
@@ -3586,6 +3658,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="redox_potential/">redox_potential</a></td>
 <td>Redox potential, measured relative to a hydrogen cell, indicating oxidation o...</td>
+</tr>
+<tr>
+<td><a href="ref_biomaterial/">ref_biomaterial</a></td>
+<td>Primary publication if isolated before genome publication; otherwise, primary...</td>
 </tr>
 <tr>
 <td><a href="rel_air_humidity/">rel_air_humidity</a></td>
@@ -3877,11 +3953,23 @@ environmental context of samples.</p>
 </tr>
 <tr>
 <td><a href="sample_collection_site/">sample_collection_site</a></td>
-<td></td>
+<td>Free-text description of the place where the sample was collected — the geogr...</td>
 </tr>
 <tr>
 <td><a href="sample_collection_year/">sample_collection_year</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="sample_growth_conditions/">sample_growth_conditions</a></td>
+<td>Free-text description of the in-vitro conditions under which the organism sam...</td>
+</tr>
+<tr>
+<td><a href="sample_isolated_from/">sample_isolated_from</a></td>
+<td>Free-text description of the environmental or biological matrix from which th...</td>
+</tr>
+<tr>
+<td><a href="sample_isolation_method/">sample_isolation_method</a></td>
+<td>Method, protocol, or kit used to extract DNA/RNA from the sample</td>
 </tr>
 <tr>
 <td><a href="sample_link/">sample_link</a></td>
@@ -4186,6 +4274,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="store_cond/">store_cond</a></td>
 <td>Explain how and for how long the soil sample was stored before DNA extraction...</td>
+</tr>
+<tr>
+<td><a href="strain_name/">strain_name</a></td>
+<td>Strain or cultivar name of the organism</td>
 </tr>
 <tr>
 <td><a href="strand/">strand</a></td>
@@ -4999,6 +5091,10 @@ environmental context of samples.</p>
 <td></td>
 </tr>
 <tr>
+<td><a href="PloidyEnum/">PloidyEnum</a></td>
+<td>Ploidy of an organism's genome</td>
+</tr>
+<tr>
 <td><a href="PolarityModeEnum/">PolarityModeEnum</a></td>
 <td></td>
 </tr>
@@ -5361,8 +5457,8 @@ environmental context of samples.</p>
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td><a href="JgiIsolate/">JgiIsolate</a></td>
+<td>Slots originating from the JGI Isolate (NA) v19 submission form that are not ...</td>
 </tr>
 </tbody>
 </table>
