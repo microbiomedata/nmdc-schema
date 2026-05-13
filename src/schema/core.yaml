@@ -570,6 +570,7 @@ classes:
       - host_dry_mass
       - host_family_relation
       - host_genotype
+      - host_genus
       - host_growth_cond
       - host_height
       - host_last_meal
@@ -578,6 +579,8 @@ classes:
       - host_phenotype
       - host_sex
       - host_shape
+      - host_species
+      - host_strain
       - host_subject_id
       - host_subspecf_genlin
       - host_substrate
@@ -1292,6 +1295,119 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
+
+  OrganismSample:
+    class_uri: nmdc:OrganismSample
+    is_a: Sample
+    title: Organism Sample
+    description: >-
+      A material sample in which all cells are expected to share the same genome.
+      This includes microbial colony picks, pellets from presumably pure liquid
+      cultures, plant tissue clips, fungal fruiting body sections, and similar
+      materials where the submitter intends to study a single organism. The purity
+      expectation may be contradicted by sequencing results.
+    slots:
+      - associated_studies
+      - expected_organism
+      - embargoed
+      - provenance_metadata
+      - external_database_identifiers
+      - gold_organism_identifiers
+      - collection_date
+      - samp_name
+      - host_taxid
+      - sample_isolation_method
+      - sample_isolated_from
+      - sample_collection_site
+      - sample_growth_conditions
+      - ploidy
+      - source_mat_id
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      expected_organism:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      source_mat_id:
+        description: >-
+          Culture collection identifier for the source of this organism sample.
+        comments:
+          - >-
+            On OrganismSample the slot identifies the catalog entry the strain
+            was ordered from. CURIE form using a declared prefix is preferred
+            (e.g. dsmz:DSM-15171, atcc:700808). Per-collection normalization
+            rules and prefix-coverage gaps are documented in
+            src/docs/jgi-isolate-field-routing.md.
+        see_also:
+          - https://github.com/microbiomedata/nmdc-schema/issues/3036
+        examples:
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: dsmz:DSM-15171
+            description: >-
+              Ruegeria pomeroyi DSS-3 at DSMZ (bioregistry prefix dsmz; same strain as
+              atcc:700808 and lmg:23168). Verified in GOLD organism_v2.
+              https://www.dsmz.de/collection/catalogue/details/culture/DSM-15171
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: atcc:700808
+            description: >-
+              Ruegeria pomeroyi DSS-3 at ATCC (bioregistry prefix atcc; same strain as
+              dsmz:DSM-15171 and lmg:23168). Verified in GOLD organism_v2.
+              https://www.atcc.org/products/700808
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: lmg:23168
+            description: >-
+              Ruegeria pomeroyi DSS-3 at BCCM/LMG (not yet in bioregistry; same strain as
+              dsmz:DSM-15171 and atcc:700808). Verified in BCCM/LMG catalogue 2026-04-30.
+              https://bccm.belspo.be/catalogues/lmg-strain-details?NUM=23168
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: jcm:20004
+            description: >-
+              Pseudomonas putida KT2440 at JCM/RIKEN (bioregistry prefix jcm).
+              http://www.jcm.riken.go.jp/cgi-bin/jcm/jcm_number?JCM=20004
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: nbrc:13719
+            description: >-
+              Bacillus subtilis 168 at NBRC/NITE (bioregistry prefix nbrc).
+              http://www.nbrc.nite.go.jp/NBRC2/NBRCCatalogueDetailServlet?ID=NBRC&CAT=13719
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: bcrc:10694
+            description: >-
+              Escherichia coli at BCRC/FIRDI (bioregistry prefix bcrc).
+              https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=10694
+        structured_aliases:
+          - literal_form: Culture Collection and ID
+            contexts:
+              - https://jgi.doe.gov/isolate-submission-form/v19
+            predicate: NARROW_SYNONYM    # JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any material-sample identifier)
+    close_mappings:
+      - OBI:0100051
+    comments:
+      - >-
+        An OrganismSample is not necessarily pure. The submitter expects it to contain a single
+        organism, but sequencing may reveal contamination. Purity and strain-verification fields
+        (single-colony isolation, ribosomal sequences, fungal screening) are JGI submission
+        logistics and live in submission-schema JgiIsolateInterface, not here.
+      - >-
+        The expected_organism slot links to an Organism instance representing what the
+        submitter believes is in the sample.
+      - >-
+        The defining criterion is genomic homogeneity of intent, not material type. A bacterial
+        colony pick, a plant leaf clip, and a fungal fruiting body section are all OrganismSamples
+        because the submitter expects one genome. An algal mat, a cat fecal sample for microbiome
+        study, or a soil sample are Biosamples because they contain communities of organisms.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2803
+      - https://github.com/microbiomedata/nmdc-schema/issues/2961
 
   Site:
     class_uri: nmdc:Site

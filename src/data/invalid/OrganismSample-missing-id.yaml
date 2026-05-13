@@ -1,0 +1,6 @@
+# Invalid: OrganismSample missing required id field
+type: nmdc:OrganismSample
+name: bad sample
+samp_name: missing-id-test
+associated_studies:
+  - nmdc:sty-00-abc123

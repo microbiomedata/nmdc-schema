@@ -1,0 +1,10 @@
+# Invalid: Isolation.has_output is a Biosample CURIE (bsm-) instead of an
+# OrganismSample CURIE (osm-). Isolation slot_usage constrains has_output
+# to '{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$'.
+material_processing_set:
+  - id: nmdc:isnp-99-mukr6y
+    type: nmdc:Isolation
+    has_input:
+      - nmdc:osm-99-dss5dg
+    has_output:
+      - nmdc:bsm-99-zfx29q

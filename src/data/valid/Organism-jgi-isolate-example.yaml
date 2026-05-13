@@ -1,0 +1,26 @@
+# Shewanella loihica PV-4 — GOLD organism record Go0000189
+# (queried from "gold-db-2 postgresql".gold.organism_v2 on 2026-04-21).
+# Public type strain, collected 1998 from iron-rich microbial mat at Naha Vents
+# on the south rift of Loihi seamount, Hawaii. Complete published genome
+# GCA_000016065.1 (NCBI BioProject PRJNA13906, BioSample SAMN00623064).
+id: nmdc:orgn-99-tuxk3s
+type: nmdc:Organism
+name: Shewanella loihica PV-4
+classified_as:
+  - id: NCBITaxon:22
+    name: Shewanella
+    type: nmdc:NcbiTaxon
+organism_genus: Shewanella
+organism_species: loihica
+strain_name: PV-4
+isolate_name: Isolate
+gc_content:
+  type: nmdc:QuantityValue
+  has_numeric_value: 54.0
+  has_unit: "%"
+estimated_size: 4600000 bp
+# NB: gold_organism_identifiers was moved to OrganismSample — GOLD records
+# include sample-level provenance (collection date, country, isolation site)
+# that is bound to a specific isolate, not to the abstract strain. See
+# Database-jgi-isolate-submission.yaml for the GOLD ID populated alongside
+# this same Organism via an OrganismSample.
