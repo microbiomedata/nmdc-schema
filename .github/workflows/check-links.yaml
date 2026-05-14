@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: Check out commit
         # Reference: https://github.com/actions/checkout
-        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Install Poetry
         run: pipx install poetry
       - name: Set up Python
@@ -52,7 +52,7 @@ jobs:
         # This step will only run if lychee returned a non-zero exit code.
         # Reference: https://docs.github.com/en/actions/learn-github-actions/variables#using-the-env-context-to-access-environment-variable-values
         if: ${{ env.lychee_exit_code != 0 }}
-        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6.0.0
         with:
           title: Markdown docs contain broken links
           content-filepath: ./lychee/out.md
