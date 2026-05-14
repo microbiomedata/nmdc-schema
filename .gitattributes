@@ -1,2 +1,2 @@
-*.ru linguist-language=SPARQL
+assets/units-sparql/*.ru linguist-language=SPARQL
 assets/mongodb_queries/** linguist-detectable=false
