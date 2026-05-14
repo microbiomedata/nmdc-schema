@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.1.post87.dev0+8fa09145d
+version: 11.19.1.post88.dev0+d3641a7f3
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7727,41 +7727,6 @@ slots:
       environmental provenance belongs there.
     - 'Typed sample-to-sample links ("Y was isolated from X") are out of scope here;
       see #3033.'
-    examples:
-    - value: microbial_mat
-      description: 'Maps to enum PV `microbial_mat` (meaning ENVO:01000008). Real
-        public exemplar: GOLD Go0000189 (Shewanella loihica PV-4) — iron-rich microbial
-        mat at the Naha Vents, south rift of Loihi seamount, Hawaii. Queried from
-        "gold-db-2 postgresql".gold.organism_v2 on 2026-04-21.'
-    - value: sea_water
-      description: 'Maps to enum PV `sea_water` (meaning GOLDVOCAB:Sea-water). Real
-        public exemplar: GOLD Go0000514 (Ruegeria pomeroyi DSS-3) — saltwater from
-        the water column off the Georgia coast, USA. Case variants `seawater`, `Seawater`
-        collapse here.'
-    - value: marine_sediment
-      description: 'Maps to enum PV `marine_sediment` (meaning GOLDVOCAB:Marine-sediment).
-        Real public exemplar: GOLD Go0013501 (Flavobacterium frigidarium DSM 17623)
-        — marine sediment, Adelaide Island, Antarctic.'
-    - value: leaf
-      description: Maps to enum PV `leaf` (meaning PO:0025034). GOLD case/plural variants
-        `Leaf` / `Leaves` / `leaves` collapse here. Use with `host_taxid` to capture
-        the host plant for plant-associated isolates.
-    - value: root
-      description: 'Maps to enum PV `root` (meaning PO:0009005). GOLD compound values
-        such as "Sorghum bicolor - root" decompose: tissue → here, host species →
-        `host_taxid` (e.g., NCBITaxon:4558 for Sorghum bicolor).'
-    - value: rhizosphere
-      description: Maps to enum PV `rhizosphere` (meaning GOLDVOCAB:Rhizosphere).
-        GOLD "maize rhizosphere soils" / "maize rhizosphere soil" decompose here,
-        with `host_taxid` = NCBITaxon:4577 for the plant.
-    - value: soil
-      description: 'Maps to enum PV `soil` (meaning GOLDVOCAB:Soil). Case variants
-        `Soil`, `soils` collapse here. Real public exemplar: GOLD Go0000781 (Bacillus
-        subtilis 168).'
-    - value: fruiting_body
-      description: 'Maps to enum PV `fruiting_body`. No clean OBO anatomy term for
-        fungal fruiting body; `meaning:` is omitted in the enum (gap documented).
-        Real public exemplar: GOLD Go0372970 (Lentinula edodes NBRC 111202).'
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -7786,22 +7751,6 @@ slots:
       reference (DOI / PMID / URL pattern) rather than a categorical growth state.
     - Interim coarse classification. Finer decomposition into media, temperature,
       atmosphere, and time is deferred to the Isolation / Culturing class redesign.
-    examples:
-    - value: liquid_culture
-      description: Maintained in liquid broth. GOLD `dw_samples` top value "Liquid
-        culture from a frozen stock" (n=5,560) collapses here.
-    - value: solid_plate
-      description: Maintained on solid agar plate. GOLD "single colony isolate" (n=3,279)
-        collapses here.
-    - value: cultivated_indoor
-      description: 'Indoor controlled growth (greenhouse, chamber, room). Real public
-        exemplars: GOLD Go0590511 (Arabidopsis thaliana Ler-0, greenhouse) and GOLD
-        Go0372970 (Lentinula edodes, "Cultivated indoor; substrate logs of supplemented
-        oak").'
-    - value: culture_collection_purchase
-      description: 'Received from a culture collection — no in-house growth step.
-        Pair with `source_mat_id` for the catalog identifier. Real public exemplar:
-        GOLD Go0001112 (Pseudomonas putida KT2440, DSMZ DSM 6125).'
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -21992,27 +21941,6 @@ classes:
         - 'Narrowed from the base slot''s free-text range to the closed `SampleCollectionSiteEnum`
           vocabulary for OrganismSample. Biosample keeps the legacy free-text range.
           See #3054.'
-        examples:
-        - value: field
-          description: 'Maps to enum PV `field` (meaning ENVO:01000352). GOLD narrative
-            values like "Field-grown common garden of wild sourced seedlots, near
-            Greytown, KZN, South Africa" decompose: site → here, place name → `geo_loc_name`.'
-        - value: greenhouse
-          description: 'Maps to enum PV `greenhouse` (meaning GOLDVOCAB:Greenhouse).
-            Real public exemplar: GOLD Go0590511 (Arabidopsis thaliana Ath.Ler-0.Leaf.1,
-            grown in greenhouse).'
-        - value: culture_collection
-          description: 'Maps to enum PV `culture_collection`. The catalog accession
-            itself belongs on `source_mat_id` (CURIE form, e.g. `dsmz:DSM-6125`).
-            Real public exemplar: GOLD Go0001112 (Pseudomonas putida KT2440, DSMZ
-            DSM 6125).'
-        - value: laboratory
-          description: 'Maps to enum PV `laboratory` (meaning GOLDVOCAB:Laboratory-developed).
-            Real public exemplar: T4 phage harvested from an E. coli K-12 MG1655 lab
-            broth culture (see `Database-viral-isolate-with-host.yaml`).'
-        - value: deep_subsurface
-          description: Maps to enum PV `deep_subsurface` (meaning GOLDVOCAB:Deep-subsurface).
-            GOLD case variant `Deep well` collapses here.
         range: SampleCollectionSiteEnum
       source_mat_id:
         name: source_mat_id

@@ -636,17 +636,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Examples
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#comments" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -764,28 +753,6 @@
 <ul>
 <li>Range: <a href="../SampleGrowthConditionsEnum/">SampleGrowthConditionsEnum</a></li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>liquid_culture</td>
-</tr>
-<tr>
-<td>solid_plate</td>
-</tr>
-<tr>
-<td>cultivated_indoor</td>
-</tr>
-<tr>
-<td>culture_collection_purchase</td>
-</tr>
-</tbody>
-</table>
 <h2 id="comments">Comments</h2>
 <ul>
 <li>On <code>OrganismSample</code>, routes the growth-conditions half of JGI Isolate (NA) v19 form field 45 ("Collection Site or Growth Conditions"). The collection-site half routes to <code>sample_collection_site</code>.</li>
@@ -830,21 +797,6 @@ comments:
   reference (DOI / PMID / URL pattern) rather than a categorical growth state.
 - Interim coarse classification. Finer decomposition into media, temperature, atmosphere,
   and time is deferred to the Isolation / Culturing class redesign.
-examples:
-- value: liquid_culture
-  description: Maintained in liquid broth. GOLD `dw_samples` top value &quot;Liquid culture
-    from a frozen stock&quot; (n=5,560) collapses here.
-- value: solid_plate
-  description: Maintained on solid agar plate. GOLD &quot;single colony isolate&quot; (n=3,279)
-    collapses here.
-- value: cultivated_indoor
-  description: 'Indoor controlled growth (greenhouse, chamber, room). Real public
-    exemplars: GOLD Go0590511 (Arabidopsis thaliana Ler-0, greenhouse) and GOLD Go0372970
-    (Lentinula edodes, &quot;Cultivated indoor; substrate logs of supplemented oak&quot;).'
-- value: culture_collection_purchase
-  description: 'Received from a culture collection — no in-house growth step. Pair
-    with `source_mat_id` for the catalog identifier. Real public exemplar: GOLD Go0001112
-    (Pseudomonas putida KT2440, DSMZ DSM 6125).'
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc

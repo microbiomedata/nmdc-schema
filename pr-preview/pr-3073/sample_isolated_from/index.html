@@ -636,17 +636,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Examples
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#comments" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -764,40 +753,6 @@
 <ul>
 <li>Range: <a href="../SampleIsolatedFromEnum/">SampleIsolatedFromEnum</a></li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>microbial_mat</td>
-</tr>
-<tr>
-<td>sea_water</td>
-</tr>
-<tr>
-<td>marine_sediment</td>
-</tr>
-<tr>
-<td>leaf</td>
-</tr>
-<tr>
-<td>root</td>
-</tr>
-<tr>
-<td>rhizosphere</td>
-</tr>
-<tr>
-<td>soil</td>
-</tr>
-<tr>
-<td>fruiting_body</td>
-</tr>
-</tbody>
-</table>
 <h2 id="comments">Comments</h2>
 <ul>
 <li>Routes JGI Isolate (NA) v19 form field 44 ("Sample Isolated From"). Field 45 ("Collection Site or Growth Conditions") routes to <code>sample_collection_site</code> or <code>sample_growth_conditions</code> depending on which half the submitter is reporting.</li>
@@ -844,41 +799,6 @@ comments:
   provenance belongs there.
 - 'Typed sample-to-sample links (&quot;Y was isolated from X&quot;) are out of scope here; see
   #3033.'
-examples:
-- value: microbial_mat
-  description: 'Maps to enum PV `microbial_mat` (meaning ENVO:01000008). Real public
-    exemplar: GOLD Go0000189 (Shewanella loihica PV-4) — iron-rich microbial mat at
-    the Naha Vents, south rift of Loihi seamount, Hawaii. Queried from &quot;gold-db-2
-    postgresql&quot;.gold.organism_v2 on 2026-04-21.'
-- value: sea_water
-  description: 'Maps to enum PV `sea_water` (meaning GOLDVOCAB:Sea-water). Real public
-    exemplar: GOLD Go0000514 (Ruegeria pomeroyi DSS-3) — saltwater from the water
-    column off the Georgia coast, USA. Case variants `seawater`, `Seawater` collapse
-    here.'
-- value: marine_sediment
-  description: 'Maps to enum PV `marine_sediment` (meaning GOLDVOCAB:Marine-sediment).
-    Real public exemplar: GOLD Go0013501 (Flavobacterium frigidarium DSM 17623) —
-    marine sediment, Adelaide Island, Antarctic.'
-- value: leaf
-  description: Maps to enum PV `leaf` (meaning PO:0025034). GOLD case/plural variants
-    `Leaf` / `Leaves` / `leaves` collapse here. Use with `host_taxid` to capture the
-    host plant for plant-associated isolates.
-- value: root
-  description: 'Maps to enum PV `root` (meaning PO:0009005). GOLD compound values
-    such as &quot;Sorghum bicolor - root&quot; decompose: tissue → here, host species → `host_taxid`
-    (e.g., NCBITaxon:4558 for Sorghum bicolor).'
-- value: rhizosphere
-  description: Maps to enum PV `rhizosphere` (meaning GOLDVOCAB:Rhizosphere). GOLD
-    &quot;maize rhizosphere soils&quot; / &quot;maize rhizosphere soil&quot; decompose here, with `host_taxid`
-    = NCBITaxon:4577 for the plant.
-- value: soil
-  description: 'Maps to enum PV `soil` (meaning GOLDVOCAB:Soil). Case variants `Soil`,
-    `soils` collapse here. Real public exemplar: GOLD Go0000781 (Bacillus subtilis
-    168).'
-- value: fruiting_body
-  description: 'Maps to enum PV `fruiting_body`. No clean OBO anatomy term for fungal
-    fruiting body; `meaning:` is omitted in the enum (gap documented). Real public
-    exemplar: GOLD Go0372970 (Lentinula edodes NBRC 111202).'
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc
