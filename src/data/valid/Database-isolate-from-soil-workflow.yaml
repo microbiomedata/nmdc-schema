@@ -18,9 +18,8 @@
 # bacterium with unambiguous non-embargoed public provenance
 # (GOLD organism_v2 is_public='Yes', active='Yes', is_test='No').
 #
-# sample_isolated_from / sample_collection_site values preview the enum PVs
-# proposed in #3054. The slot range is still `string`; PV names are
-# forward-compatible when the enum lands.
+# sample_isolated_from / sample_collection_site values use the enum PVs
+# introduced in #3054 at the relevant scope.
 
 biosample_set:
   - id: nmdc:bsm-99-dss5dg
