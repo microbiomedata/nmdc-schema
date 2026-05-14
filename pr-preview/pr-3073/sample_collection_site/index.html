@@ -778,19 +778,10 @@
 </thead>
 <tbody>
 <tr>
-<td>field</td>
+<td>Lithgow State Coal Mine</td>
 </tr>
 <tr>
-<td>greenhouse</td>
-</tr>
-<tr>
-<td>culture_collection</td>
-</tr>
-<tr>
-<td>laboratory</td>
-</tr>
-<tr>
-<td>deep_subsurface</td>
+<td>Mire fen</td>
 </tr>
 </tbody>
 </table>
@@ -838,25 +829,12 @@ comments:
 - Geographic place names (countries, regions, specific localities) go to `geo_loc_name`
   and `lat_lon`, not here.
 examples:
-- value: field
-  description: 'Maps to enum PV `field` (meaning ENVO:01000352). GOLD narrative values
-    like &quot;Field-grown common garden of wild sourced seedlots, near Greytown, KZN,
-    South Africa&quot; decompose: site → here, place name → `geo_loc_name`.'
-- value: greenhouse
-  description: 'Maps to enum PV `greenhouse` (meaning GOLDVOCAB:Greenhouse). Real
-    public exemplar: GOLD Go0590511 (Arabidopsis thaliana Ath.Ler-0.Leaf.1, grown
-    in greenhouse).'
-- value: culture_collection
-  description: 'Maps to enum PV `culture_collection`. The catalog accession itself
-    belongs on `source_mat_id` (CURIE form, e.g. `dsmz:DSM-6125`). Real public exemplar:
-    GOLD Go0001112 (Pseudomonas putida KT2440, DSMZ DSM 6125).'
-- value: laboratory
-  description: 'Maps to enum PV `laboratory` (meaning GOLDVOCAB:Laboratory-developed).
-    Real public exemplar: T4 phage harvested from an E. coli K-12 MG1655 lab broth
-    culture (see `Database-viral-isolate-with-host.yaml`).'
-- value: deep_subsurface
-  description: Maps to enum PV `deep_subsurface` (meaning GOLDVOCAB:Deep-subsurface).
-    GOLD case variant `Deep well` collapses here.
+- value: Lithgow State Coal Mine
+  description: Free-text place name. Historical Biosample usage pattern (see `Database-biosamples-1.yaml`,
+    `Database-interleaved.yaml`).
+- value: Mire fen
+  description: Free-text habitat / locality descriptor. Historical Biosample usage
+    (see `Database-nmdc-example.yaml`, `Database-interleaved.yaml`).
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/3054

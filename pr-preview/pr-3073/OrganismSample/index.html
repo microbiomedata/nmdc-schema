@@ -776,6 +776,26 @@ slot_usage:
     - 'Narrowed from the base slot''s free-text range to the closed `SampleCollectionSiteEnum`
       vocabulary for OrganismSample. Biosample keeps the legacy free-text range. See
       #3054.'
+    examples:
+    - value: field
+      description: 'Maps to enum PV `field` (meaning ENVO:01000352). GOLD narrative
+        values like "Field-grown common garden of wild sourced seedlots, near Greytown,
+        KZN, South Africa" decompose: site → here, place name → `geo_loc_name`.'
+    - value: greenhouse
+      description: 'Maps to enum PV `greenhouse` (meaning GOLDVOCAB:Greenhouse). Real
+        public exemplar: GOLD Go0590511 (Arabidopsis thaliana Ath.Ler-0.Leaf.1, grown
+        in greenhouse).'
+    - value: culture_collection
+      description: 'Maps to enum PV `culture_collection`. The catalog accession itself
+        belongs on `source_mat_id` (CURIE form, e.g. `dsmz:DSM-6125`). Real public
+        exemplar: GOLD Go0001112 (Pseudomonas putida KT2440, DSMZ DSM 6125).'
+    - value: laboratory
+      description: 'Maps to enum PV `laboratory` (meaning GOLDVOCAB:Laboratory-developed).
+        Real public exemplar: T4 phage harvested from an E. coli K-12 MG1655 lab broth
+        culture (see `Database-viral-isolate-with-host.yaml`).'
+    - value: deep_subsurface
+      description: Maps to enum PV `deep_subsurface` (meaning GOLDVOCAB:Deep-subsurface).
+        GOLD case variant `Deep well` collapses here.
     range: SampleCollectionSiteEnum
   source_mat_id:
     name: source_mat_id
@@ -872,6 +892,26 @@ slot_usage:
     - 'Narrowed from the base slot''s free-text range to the closed `SampleCollectionSiteEnum`
       vocabulary for OrganismSample. Biosample keeps the legacy free-text range. See
       #3054.'
+    examples:
+    - value: field
+      description: 'Maps to enum PV `field` (meaning ENVO:01000352). GOLD narrative
+        values like "Field-grown common garden of wild sourced seedlots, near Greytown,
+        KZN, South Africa" decompose: site → here, place name → `geo_loc_name`.'
+    - value: greenhouse
+      description: 'Maps to enum PV `greenhouse` (meaning GOLDVOCAB:Greenhouse). Real
+        public exemplar: GOLD Go0590511 (Arabidopsis thaliana Ath.Ler-0.Leaf.1, grown
+        in greenhouse).'
+    - value: culture_collection
+      description: 'Maps to enum PV `culture_collection`. The catalog accession itself
+        belongs on `source_mat_id` (CURIE form, e.g. `dsmz:DSM-6125`). Real public
+        exemplar: GOLD Go0001112 (Pseudomonas putida KT2440, DSMZ DSM 6125).'
+    - value: laboratory
+      description: 'Maps to enum PV `laboratory` (meaning GOLDVOCAB:Laboratory-developed).
+        Real public exemplar: T4 phage harvested from an E. coli K-12 MG1655 lab broth
+        culture (see `Database-viral-isolate-with-host.yaml`).'
+    - value: deep_subsurface
+      description: Maps to enum PV `deep_subsurface` (meaning GOLDVOCAB:Deep-subsurface).
+        GOLD case variant `Deep well` collapses here.
     range: SampleCollectionSiteEnum
   source_mat_id:
     name: source_mat_id

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.1.post86.dev0+0c70d51c3
+version: 11.19.1.post87.dev0+8fa09145d
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7156,25 +7156,12 @@ slots:
     - Geographic place names (countries, regions, specific localities) go to `geo_loc_name`
       and `lat_lon`, not here.
     examples:
-    - value: field
-      description: 'Maps to enum PV `field` (meaning ENVO:01000352). GOLD narrative
-        values like "Field-grown common garden of wild sourced seedlots, near Greytown,
-        KZN, South Africa" decompose: site → here, place name → `geo_loc_name`.'
-    - value: greenhouse
-      description: 'Maps to enum PV `greenhouse` (meaning GOLDVOCAB:Greenhouse). Real
-        public exemplar: GOLD Go0590511 (Arabidopsis thaliana Ath.Ler-0.Leaf.1, grown
-        in greenhouse).'
-    - value: culture_collection
-      description: 'Maps to enum PV `culture_collection`. The catalog accession itself
-        belongs on `source_mat_id` (CURIE form, e.g. `dsmz:DSM-6125`). Real public
-        exemplar: GOLD Go0001112 (Pseudomonas putida KT2440, DSMZ DSM 6125).'
-    - value: laboratory
-      description: 'Maps to enum PV `laboratory` (meaning GOLDVOCAB:Laboratory-developed).
-        Real public exemplar: T4 phage harvested from an E. coli K-12 MG1655 lab broth
-        culture (see `Database-viral-isolate-with-host.yaml`).'
-    - value: deep_subsurface
-      description: Maps to enum PV `deep_subsurface` (meaning GOLDVOCAB:Deep-subsurface).
-        GOLD case variant `Deep well` collapses here.
+    - value: Lithgow State Coal Mine
+      description: Free-text place name. Historical Biosample usage pattern (see `Database-biosamples-1.yaml`,
+        `Database-interleaved.yaml`).
+    - value: Mire fen
+      description: Free-text habitat / locality descriptor. Historical Biosample usage
+        (see `Database-nmdc-example.yaml`, `Database-interleaved.yaml`).
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3054
@@ -22005,6 +21992,27 @@ classes:
         - 'Narrowed from the base slot''s free-text range to the closed `SampleCollectionSiteEnum`
           vocabulary for OrganismSample. Biosample keeps the legacy free-text range.
           See #3054.'
+        examples:
+        - value: field
+          description: 'Maps to enum PV `field` (meaning ENVO:01000352). GOLD narrative
+            values like "Field-grown common garden of wild sourced seedlots, near
+            Greytown, KZN, South Africa" decompose: site → here, place name → `geo_loc_name`.'
+        - value: greenhouse
+          description: 'Maps to enum PV `greenhouse` (meaning GOLDVOCAB:Greenhouse).
+            Real public exemplar: GOLD Go0590511 (Arabidopsis thaliana Ath.Ler-0.Leaf.1,
+            grown in greenhouse).'
+        - value: culture_collection
+          description: 'Maps to enum PV `culture_collection`. The catalog accession
+            itself belongs on `source_mat_id` (CURIE form, e.g. `dsmz:DSM-6125`).
+            Real public exemplar: GOLD Go0001112 (Pseudomonas putida KT2440, DSMZ
+            DSM 6125).'
+        - value: laboratory
+          description: 'Maps to enum PV `laboratory` (meaning GOLDVOCAB:Laboratory-developed).
+            Real public exemplar: T4 phage harvested from an E. coli K-12 MG1655 lab
+            broth culture (see `Database-viral-isolate-with-host.yaml`).'
+        - value: deep_subsurface
+          description: Maps to enum PV `deep_subsurface` (meaning GOLDVOCAB:Deep-subsurface).
+            GOLD case variant `Deep well` collapses here.
         range: SampleCollectionSiteEnum
       source_mat_id:
         name: source_mat_id
