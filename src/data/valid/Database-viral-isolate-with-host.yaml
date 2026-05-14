@@ -52,6 +52,10 @@ organism_set:
       - id: NCBITaxon:10665
         name: Escherichia virus T4
         type: nmdc:NcbiTaxon
+    organism_genus: Tequatrovirus
+    organism_species: Escherichia virus T4
+    # strain_name omitted: T4 is the species-level name; phage taxonomy
+    # does not map cleanly to the JGI-form genus/species/strain trio.
 
 organism_sample_set:
   - id: nmdc:osm-99-vqkvad
@@ -60,5 +64,7 @@ organism_sample_set:
     associated_studies:
       - nmdc:sty-99-r5xs9t
     expected_organism: nmdc:orgn-99-pgw8nq
-    sample_isolated_from: Lysate from a phage-infected bacterial culture
-    sample_growth_conditions: E. coli K-12 MG1655 broth culture infected with phage T4
+    # No clean SampleIsolatedFromEnum PV for "phage lysate" — the
+    # sample_isolated_from slot is omitted. Host context is on host_taxid.
+    sample_collection_site: laboratory
+    sample_growth_conditions: liquid_culture

@@ -1,0 +1,62 @@
+# Microbe-from-plant compound decomposition example.
+#
+# Demonstrates how a JGI/GOLD compound `sample_isolated_from` value
+# ("root surface of cotton") decomposes into NMDC typed slots:
+#   - `sample_isolated_from`: root      (PV from SampleIsolatedFromEnum)
+#   - `host_taxid`:           NCBITaxon:3635 (Gossypium hirsutum, cotton)
+#   - `sample_collection_site`: field   (cotton was field-grown)
+#   - `source_mat_id`:        atcc:BAA-477
+#
+# Organism is a richly-annotated, long-public GOLD reference:
+# Pseudomonas protegens Pf-5 (GOLD Go0000479, NCBI Taxonomy 220664,
+# ATCC BAA-477). Famous biocontrol bacterium isolated by Charles Howell
+# from the rhizoplane of cotton (Gossypium hirsutum).
+# Verified in "gold-db-2 postgresql".gold.organism_v2 on 2026-05-14
+# with is_public='Yes', active='Yes', is_test='No', and ecosystem path
+# Host-associated > Plants > Roots > Rhizoplane.
+#
+# Compares to Database-isolate-from-soil-workflow.yaml (environmental
+# isolation, no host) and Database-leaf-clip.yaml (plant as focal organism,
+# not host) — this fixture uniquely exercises the typed-host pattern where
+# a microbe (Pf-5) is isolated FROM a plant tissue (cotton root surface).
+
+study_set:
+  - id: nmdc:sty-99-rhizosft
+    type: nmdc:Study
+    name: Rhizosphere isolate example study
+    study_category: research_study
+
+organism_set:
+  - id: nmdc:orgn-99-pf5rhiz
+    type: nmdc:Organism
+    name: Pseudomonas protegens Pf-5
+    classified_as:
+      - id: NCBITaxon:220664
+        name: Pseudomonas protegens Pf-5
+        type: nmdc:NcbiTaxon
+    organism_genus: Pseudomonas
+    organism_species: protegens
+    strain_name: Pf-5
+
+organism_sample_set:
+  - id: nmdc:osm-99-pf5root
+    type: nmdc:OrganismSample
+    name: Pseudomonas protegens Pf-5 rhizoplane isolate
+    samp_name: Pprotegens_Pf-5_cottonRoot_01
+    associated_studies:
+      - nmdc:sty-99-rhizosft
+    expected_organism: nmdc:orgn-99-pf5rhiz
+    gold_organism_identifiers:
+      - gold:Go0000479
+    source_mat_id:
+      type: nmdc:TextValue
+      has_raw_value: atcc:BAA-477
+    host_taxid:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: NCBITaxon:3635
+      term:
+        type: nmdc:OntologyClass
+        id: NCBITaxon:3635
+        name: Gossypium hirsutum
+    sample_isolated_from: root
+    sample_collection_site: field

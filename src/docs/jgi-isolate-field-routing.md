@@ -165,3 +165,47 @@ form e.g. `CIP 54.8` until prefixes are added):
 
 Adding bioregistry-resolvable prefixes for these is tracked in
 [#3036](https://github.com/microbiomedata/nmdc-schema/issues/3036).
+
+## Decomposing GOLD compound `sample_isolated_from` values into NMDC typed slots
+
+GOLD's `dw_samples.sample_isolated_from` is a single free-text column historically populated with values that conflate origin matrix, collection site, growth conditions, and host context. Per [#3054](https://github.com/microbiomedata/nmdc-schema/issues/3054), NMDC splits these concepts into typed slots on `OrganismSample`:
+
+- `sample_isolated_from` — origin matrix (the *what*), enum-typed
+- `sample_collection_site` — site category (the *where*), enum-typed
+- `sample_growth_conditions` — lab maintenance (interim free-text; full decomposition in [#3027](https://github.com/microbiomedata/nmdc-schema/issues/3027) / [#3065](https://github.com/microbiomedata/nmdc-schema/issues/3065))
+- `host_taxid` — host NCBI Taxonomy ID
+
+On export back to GOLD/JGI, the typed slots recombine into the legacy flat string.
+
+### Worked examples
+
+| GOLD source value | `sample_isolated_from` | `sample_collection_site` | `host_taxid` | `geo_loc_name` | Notes |
+|---|---|---|---|---|---|
+| `leaf` / `Leaf` / `Leaves` | `leaf` | — | — | — | Case/plural variants all map to single PV; structured_aliases attribute the originals |
+| `Sorghum bicolor - root` | `root` | — | `NCBITaxon:4558` | — | Host + tissue compound: host goes to `host_taxid`, tissue to origin matrix |
+| `maize rhizosphere soils` | `rhizosphere` | — | `NCBITaxon:4577` | — | Same pattern; rhizosphere is the matrix, maize is the host |
+| `Switchgrass Roots` | `root` | — | `NCBITaxon:38727` | — | Plant-host isolate from root tissue |
+| `Iron-rich microbial mat from hydrothermal vent` | `microbial_mat` | — | — | — | Narrative GOLD value collapses to single PV; remaining geo context goes to `geo_loc_name` / `lat_lon` |
+| `seawater` | `sea_water` | — | — | — | Case-normalized |
+| `DSMZ catalog vial` | — | `culture_collection` | — | — | No origin matrix; site is "culture_collection"; catalog accession on `source_mat_id` |
+| `Greenhouse` (alone) | — | `greenhouse` | — | — | Site-only value, no matrix |
+| `Field-grown common garden of wild sourced seedlots, near Greytown, KZN, South Africa` | — | `field` | — | `South Africa` | Narrative site description: site category → enum PV, place name → `geo_loc_name` |
+| `Liquid culture from a frozen stock` | — | — | — | — | Growth-state value: routes to `sample_growth_conditions` PV `liquid_culture` |
+| `single colony isolate` | — | — | — | — | Routes to `sample_isolation_method` (the *how*), not to any of the three new slots |
+
+### Mapping advice for the JGI/GOLD round-trip
+
+**NMDC → JGI field 44 (Sample Isolated From\*)**: the PV's label for `sample_isolated_from` (e.g., `leaf` → "leaf"). If the matrix is host-tissue, optionally prepend host common name from `host_taxid` lookup for JGI's preferred display ("Sorghum bicolor - root").
+
+**NMDC → JGI field 45 (Collection Site or Growth Conditions\*)**: prefer the populated slot. If `sample_growth_conditions` is set, emit its label. If `sample_collection_site` is set, emit its label (optionally suffixed by `geo_loc_name`).
+
+**NMDC → GOLD `dw_samples.sample_isolated_from`**: concatenate matrix + site + growth + host in whatever order GOLD historically uses, semicolon-separated, with empty parts elided. The unit tests for the exporter should round-trip the worked examples above.
+
+### What does NOT belong in any of these three slots
+
+- Sample names ("S1321") → `samp_name`
+- Submitter notes / project descriptions → `description` (inherited)
+- Sample-to-sample provenance ("Y was isolated from X") → `sample_link` / typed link (see [#3033](https://github.com/microbiomedata/nmdc-schema/issues/3033))
+- Specific lat/lon → `lat_lon`; elevation → `elev`; country → `geo_loc_name`
+- Collection date → `collection_date`
+- DNA extraction kit / protocol → `sample_isolation_method` (the *how*, not the *what* or *where*)

@@ -15,6 +15,9 @@ organism_set:
       - id: NCBITaxon:3702
         name: Arabidopsis thaliana
         type: nmdc:NcbiTaxon
+    organism_genus: Arabidopsis
+    organism_species: thaliana
+    strain_name: Ler-0
 
 organism_sample_set:
   - id: nmdc:osm-99-r6qkjb
@@ -25,8 +28,9 @@ organism_sample_set:
     ploidy: diploid
     gold_organism_identifiers:
       - gold:Go0590511
-    sample_isolated_from: Leaf tissue from Arabidopsis thaliana Ler-0
-    sample_growth_conditions: Greenhouse-grown
+    sample_isolated_from: leaf
+    sample_collection_site: greenhouse
+    sample_growth_conditions: cultivated_indoor
     collection_date:
       type: nmdc:TimestampValue
       has_raw_value: "2025-06-15"

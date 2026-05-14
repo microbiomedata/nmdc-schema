@@ -163,22 +163,53 @@ slots:
     range: string
 
   sample_collection_site:
-    description: >-
-      Free-text description of the place where the sample was collected — the
-      geographic / environmental site or named location.
+    range: string
+    description: Place where the sample was collected.
     comments:
       - >-
-        On `OrganismSample`, this slot routes the collection-site half of JGI
-        Isolate (NA) v19 form field 45 ("Collection Site or Growth Conditions").
-        The growth-conditions half routes to `sample_growth_conditions`. The
-        submitter populates one or the other depending on whether the sample
-        came from a field collection or from in-vitro maintenance.
+        On Biosample, used historically as a free-text place / locality
+        descriptor (e.g. "Lithgow State Coal Mine").
+      - >-
+        On OrganismSample, the range is narrowed via `slot_usage` to
+        `SampleCollectionSiteEnum` for the closed site-category vocabulary
+        (field, greenhouse, growth_chamber, etc.). See #3054.
+      - >-
+        Geographic place names (countries, regions, specific localities) go
+        to `geo_loc_name` and `lat_lon`, not here.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3054
     structured_aliases:
       - literal_form: Collection Site or Growth Conditions
         contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: NARROW_SYNONYM    # JGI label bundles two concepts; this slot covers only the collection-site half
-    range: string
+    examples:
+      # The values below preview the closed enum proposed in #3054 (SampleCollectionSiteEnum).
+      - value: field
+        description: >-
+          Maps to enum PV `field` (meaning ENVO:01000352). GOLD narrative values like
+          "Field-grown common garden of wild sourced seedlots, near Greytown, KZN,
+          South Africa" decompose: site → here, place name → `geo_loc_name`.
+      - value: greenhouse
+        description: >-
+          Maps to enum PV `greenhouse` (meaning GOLDVOCAB:Greenhouse). Real public
+          exemplar: GOLD Go0590511 (Arabidopsis thaliana Ath.Ler-0.Leaf.1, grown in
+          greenhouse).
+      - value: culture_collection
+        description: >-
+          Maps to enum PV `culture_collection`. The catalog accession itself
+          belongs on `source_mat_id` (CURIE form, e.g. `dsmz:DSM-6125`). Real
+          public exemplar: GOLD Go0001112 (Pseudomonas putida KT2440, DSMZ DSM 6125).
+      - value: laboratory
+        description: >-
+          Maps to enum PV `laboratory` (meaning GOLDVOCAB:Laboratory-developed). Real
+          public exemplar: T4 phage harvested from an E. coli K-12 MG1655 lab broth
+          culture (see `Database-viral-isolate-with-host.yaml`).
+      - value: deep_subsurface
+        description: >-
+          Maps to enum PV `deep_subsurface` (meaning GOLDVOCAB:Deep-subsurface). GOLD
+          case variant `Deep well` collapses here.
+      # See #3054 for the closed enum design and migration plan.
 
   salinity_category:
     description:
@@ -681,73 +712,132 @@ slots:
       - See also dna_isolate_meth in submission-schema for the equivalent portal field.
 
   sample_isolated_from:
+    range: SampleIsolatedFromEnum
     description: >-
-      Free-text description of the environmental or biological matrix from which the
-      organism sample was isolated — the *what* it came out of (e.g. iron-rich microbial
-      mat, leaf tissue, catalog vial). For the *where* (geographic / environmental site
-      of collection) see `sample_collection_site`; for in-vitro growth conditions (lab
-      maintenance, culture media, growth chambers) see `sample_growth_conditions`.
+      Origin matrix from which the organism sample was isolated — the *what*
+      it came out of.
     comments:
       - >-
-        Routes JGI Isolate (NA) v19 form field 44 ("Sample Isolated From"). Field 45
-        ("Collection Site or Growth Conditions") routes to `sample_collection_site` or
-        `sample_growth_conditions` depending on which half the submitter is reporting.
+        Routes JGI Isolate (NA) v19 form field 44 ("Sample Isolated From").
+        Field 45 ("Collection Site or Growth Conditions") routes to
+        `sample_collection_site` or `sample_growth_conditions` depending on
+        which half the submitter is reporting.
       - >-
-        Used when no upstream Biosample carries env-triad information (e.g. culture
-        collection orders, lab-derived samples). When a linked Biosample is available,
-        environmental provenance belongs there. Not a typed reference — future work
-        may add a structured slot or wrapper class for typed sample-to-sample links;
-        see #3033 and #3054.
+        Used when no upstream Biosample carries env-triad information (e.g.
+        culture collection orders, lab-derived samples). When a linked
+        Biosample is available, environmental provenance belongs there.
+      - >-
+        Typed sample-to-sample links ("Y was isolated from X") are out of
+        scope here; see #3033.
     in_subset:
       - jgi_isolate
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3054
+      - https://github.com/microbiomedata/nmdc-schema/issues/3033
     structured_aliases:
       - literal_form: Sample Isolated From
         contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
-    todos:
-      - >-
-        Redesign in #3054 will sharpen the boundary between this slot and the
-        sample_collection_site / sample_growth_conditions siblings.
     examples:
-      - value: Iron-rich microbial mat from hydrothermal vent, Naha Vents, south rift of Loihi seamount, Hawaii
-        description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
-      - value: Saltwater from water column off the Georgia coast, USA
-        description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
-      - value: DSMZ catalog vial (DSM 6125)
-        description: Catalog-collection origin — no environmental matrix upstream
+      # The values below preview the closed enum proposed in #3054 (SampleIsolatedFromEnum).
+      # PV names may shift before merge; the underlying public GOLD records are stable.
+      - value: microbial_mat
+        description: >-
+          Maps to enum PV `microbial_mat` (meaning ENVO:01000008). Real public exemplar:
+          GOLD Go0000189 (Shewanella loihica PV-4) — iron-rich microbial mat at the
+          Naha Vents, south rift of Loihi seamount, Hawaii. Queried from
+          "gold-db-2 postgresql".gold.organism_v2 on 2026-04-21.
+      - value: sea_water
+        description: >-
+          Maps to enum PV `sea_water` (meaning GOLDVOCAB:Sea-water). Real public exemplar:
+          GOLD Go0000514 (Ruegeria pomeroyi DSS-3) — saltwater from the water column
+          off the Georgia coast, USA. Case variants `seawater`, `Seawater` collapse here.
+      - value: marine_sediment
+        description: >-
+          Maps to enum PV `marine_sediment` (meaning GOLDVOCAB:Marine-sediment). Real
+          public exemplar: GOLD Go0013501 (Flavobacterium frigidarium DSM 17623) —
+          marine sediment, Adelaide Island, Antarctic.
+      - value: leaf
+        description: >-
+          Maps to enum PV `leaf` (meaning PO:0025034). GOLD case/plural variants
+          `Leaf` / `Leaves` / `leaves` collapse here. Use with `host_taxid` to capture
+          the host plant for plant-associated isolates.
+      - value: root
+        description: >-
+          Maps to enum PV `root` (meaning PO:0009005). GOLD compound values such as
+          "Sorghum bicolor - root" decompose: tissue → here, host species →
+          `host_taxid` (e.g., NCBITaxon:4558 for Sorghum bicolor).
+      - value: rhizosphere
+        description: >-
+          Maps to enum PV `rhizosphere` (meaning GOLDVOCAB:Rhizosphere). GOLD
+          "maize rhizosphere soils" / "maize rhizosphere soil" decompose here, with
+          `host_taxid` = NCBITaxon:4577 for the plant.
+      - value: soil
+        description: >-
+          Maps to enum PV `soil` (meaning GOLDVOCAB:Soil). Case variants `Soil`,
+          `soils` collapse here. Real public exemplar: GOLD Go0000781 (Bacillus
+          subtilis 168).
+      - value: fruiting_body
+        description: >-
+          Maps to enum PV `fruiting_body`. No clean OBO anatomy term for fungal
+          fruiting body; `meaning:` is omitted in the enum (gap documented). Real
+          public exemplar: GOLD Go0372970 (Lentinula edodes NBRC 111202).
+      # See #3054 for the closed enum design and migration plan.
 
   sample_growth_conditions:
+    range: SampleGrowthConditionsEnum
     description: >-
-      Free-text description of the in-vitro conditions under which the organism sample
-      was grown or maintained — culture media, growth chamber settings, facility type,
-      or other lab-controlled growth context. For environmental site context see
-      `sample_collection_site`; for the source matrix the organism came out of see
-      `sample_isolated_from`.
+      In-vitro conditions under which the organism sample was grown or maintained.
     comments:
       - >-
-        On `OrganismSample`, this slot routes the growth-conditions half of JGI
-        Isolate (NA) v19 form field 45 ("Collection Site or Growth Conditions"). The
-        collection-site half routes to `sample_collection_site`. The submitter populates
-        one or the other depending on whether the sample came from a field collection
-        or from in-vitro maintenance.
+        On `OrganismSample`, routes the growth-conditions half of JGI Isolate
+        (NA) v19 form field 45 ("Collection Site or Growth Conditions"). The
+        collection-site half routes to `sample_collection_site`.
       - >-
         Distinct from MIxS `isol_growth_condt` (MIXS:0000003), which expects a
-        publication reference (DOI/PMID/URL pattern), not free-text growth conditions.
+        publication reference (DOI / PMID / URL pattern) rather than a categorical
+        growth state.
+      - >-
+        Interim coarse classification. Finer decomposition into media,
+        temperature, atmosphere, and time is deferred to the Isolation /
+        Culturing class redesign.
     in_subset:
       - jgi_isolate
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3054
+      - https://github.com/microbiomedata/nmdc-schema/issues/3027
     structured_aliases:
       - literal_form: Collection Site or Growth Conditions
         contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: NARROW_SYNONYM    # JGI label bundles two concepts; this slot covers only the growth-conditions half
     examples:
-      - value: Greenhouse-grown
-        description: Plant-tissue isolate maintained in greenhouse conditions
-      - value: Cultivated indoor; substrate logs of supplemented oak
-        description: Mushroom (Lentinula edodes) cultivation context
-      - value: E. coli K-12 MG1655 broth culture infected with phage T4
-        description: Viral-isolate growth context — host culture conditions
+      # The values below preview the interim SampleGrowthConditionsEnum proposed in #3054.
+      # Full decomposition (media, temperature, atmosphere, time) deferred to #3027 / #3065
+      # — most PVs lack ontology-anchored `meaning:` because OBI/PATO/GO don't cover
+      # these as discrete states.
+      - value: liquid_culture
+        description: >-
+          Maintained in liquid broth. GOLD `dw_samples` top value
+          "Liquid culture from a frozen stock" (n=5,560) collapses here.
+      - value: solid_plate
+        description: >-
+          Maintained on solid agar plate. GOLD "single colony isolate" (n=3,279)
+          collapses here.
+      - value: cultivated_indoor
+        description: >-
+          Indoor controlled growth (greenhouse, chamber, room). Real public exemplars:
+          GOLD Go0590511 (Arabidopsis thaliana Ler-0, greenhouse) and GOLD Go0372970
+          (Lentinula edodes, "Cultivated indoor; substrate logs of supplemented oak").
+      - value: culture_collection_purchase
+        description: >-
+          Received from a culture collection — no in-house growth step. Pair with
+          `source_mat_id` for the catalog identifier. Real public exemplar: GOLD
+          Go0001112 (Pseudomonas putida KT2440, DSMZ DSM 6125).
+      # Free-text examples retained as `description:` material for the enum PR; the
+      # enum design includes structured_aliases attributing the narrative variants
+      # back to GOLD `dw_samples.sample_isolated_from`.
 
   # --- Host-of-sample slots (from JGI Isolate v19 form) ---
 
