@@ -27,31 +27,34 @@ to nmdc-schema classes, submission-schema, or deferred.
 | 48-49 | Depth/Max depth* | (deferred — removed from OrganismSample in PR #2977 review pass; see review thread for retain-vs-drop discussion) | MIxS (existing) |
 | 50-51 | Elevation/Max elevation* | `elev` | MIxS (existing) |
 | 52 | Country* | `geo_loc_name` | MIxS (existing) |
-| — | Expected organism | `expected_organism` | NMDC-native (new) |
-| 19 | Host NCBI Tax ID* | `host_taxid` (also on `Biosample`) | MIxS (existing) |
+| — | Expected organism | `expected_organism` | NMDC-native |
+| 19 | Host NCBI Tax ID* (and host name) | `host_organism` (on `OrganismSample`); same pattern as `expected_organism` — a typed reference to an `Organism` instance, whose `classified_as` carries the NCBI Taxonomy CURIE and whose `organism_genus / organism_species / strain_name` carry the JGI-form host-name text fields | NMDC-native (new in #3054) |
 
-### Note on host_taxid and the JGI viral-isolate use case
+### Note on `host_organism` vs the legacy `host_taxid` slot
 
-The JGI form labels field 19 ("Host NCBI Tax ID") as *for viral isolates only*.
-That framing is **not** baked into nmdc-schema. `host_taxid` is the general
-MIxS slot (`MIXS:0000250`) describing the host of a sample, applicable to any
-host-associated submission — viral, host-microbiome, parasite, etc. The
-sample-level placement (Biosample, OrganismSample) is the only structural
-constraint at the schema layer.
+`OrganismSample` uses `host_organism` (range: `Organism`) rather than the
+flat MIxS `host_taxid` slot. The pattern mirrors `expected_organism`:
+`OrganismSample → host_organism → Organism → classified_as → NcbiTaxon`,
+with `Organism.organism_genus / organism_species / strain_name` providing
+the text-level redundancy the JGI Isolate v19 form expects (Host Genus /
+Host Species / Host Strain).
 
-The viral-specific framing is a **submission-schema concern**. Whether
-`host_taxid` is required, what label/help-text it carries, and what input
-controls validate it for a given submission are decided by submission-schema
-interfaces / templates / slot_usage — for example a `JgiViralIsolateInterface`
-in submission-schema can mark `host_taxid` required and label it "Host NCBI
-Tax ID (required for viral isolates)" without nmdc-schema needing a
-viral-specific slot.
+This is the same pattern used for the focal organism; reusing it for the
+host avoids parallel ID-only and name-only host slots on OrganismSample.
+The Pf-5-from-cotton example (`Database-rhizosphere-isolate.yaml`) is the
+canonical demonstration: a cotton `Organism` record carries
+`classified_as: NCBITaxon:3635`, `organism_genus: Gossypium`,
+`organism_species: hirsutum`, and the bacterial-isolate `OrganismSample`
+references it via `host_organism: nmdc:orgn-99-cot0001`.
+
+`Biosample` continues to use the legacy flat `host_taxid` /
+`host_genus` / `host_species` / `host_strain` slots; aligning Biosample to
+the same linked-data pattern is out of scope for #3054 and is tracked as
+a follow-up.
 
 Broader normalization of taxon-bearing slots to use `NcbiTaxon` as their
 range (rather than strings or CURIEs in `has_raw_value`) is tracked in
-[#3000](https://github.com/microbiomedata/nmdc-schema/issues/3000). `host_taxid`
-is a likely first concrete migration target once `ontology_class_set` is
-loaded with NcbiTaxon from semantic-sql / OWL.
+[#3000](https://github.com/microbiomedata/nmdc-schema/issues/3000).
 
 ## Organism (orgn)
 
@@ -173,18 +176,18 @@ GOLD's `dw_samples.sample_isolated_from` is a single free-text column historical
 - `sample_isolated_from` — origin matrix (the *what*), enum-typed
 - `sample_collection_site` — site category (the *where*), enum-typed
 - `sample_growth_conditions` — lab maintenance (interim free-text; full decomposition in [#3027](https://github.com/microbiomedata/nmdc-schema/issues/3027) / [#3065](https://github.com/microbiomedata/nmdc-schema/issues/3065))
-- `host_taxid` — host NCBI Taxonomy ID
+- `host_organism` — typed reference to an `Organism` instance whose `classified_as` carries the host's NCBI Taxonomy CURIE
 
-On export back to GOLD/JGI, the typed slots recombine into the legacy flat string.
+On export back to GOLD/JGI, the typed slots recombine into the legacy flat string. For the host string fields (JGI v19 fields Host Genus / Species / Strain), traverse `host_organism.organism_genus` / `host_organism.organism_species` / `host_organism.strain_name`.
 
 ### Worked examples
 
-| GOLD source value | `sample_isolated_from` | `sample_collection_site` | `host_taxid` | `geo_loc_name` | Notes |
+| GOLD source value | `sample_isolated_from` | `sample_collection_site` | `host_organism.classified_as` | `geo_loc_name` | Notes |
 |---|---|---|---|---|---|
 | `leaf` / `Leaf` / `Leaves` | `leaf` | — | — | — | Case/plural variants all map to single PV; structured_aliases attribute the originals |
-| `Sorghum bicolor - root` | `root` | — | `NCBITaxon:4558` | — | Host + tissue compound: host goes to `host_taxid`, tissue to origin matrix |
-| `maize rhizosphere soils` | `rhizosphere` | — | `NCBITaxon:4577` | — | Same pattern; rhizosphere is the matrix, maize is the host |
-| `Switchgrass Roots` | `root` | — | `NCBITaxon:38727` | — | Plant-host isolate from root tissue |
+| `Sorghum bicolor - root` | `root` | — | `NCBITaxon:4558` (via Sorghum Organism record) | — | Host + tissue compound: host goes to a typed Organism reference, tissue to origin matrix |
+| `maize rhizosphere soils` | `rhizosphere` | — | `NCBITaxon:4577` (via Zea Organism record) | — | Same pattern; rhizosphere is the matrix, maize is the host |
+| `Switchgrass Roots` | `root` | — | `NCBITaxon:38727` (via Panicum Organism record) | — | Plant-host isolate from root tissue |
 | `Iron-rich microbial mat from hydrothermal vent` | `microbial_mat` | — | — | — | Narrative GOLD value collapses to single PV; remaining geo context goes to `geo_loc_name` / `lat_lon` |
 | `seawater` | `sea_water` | — | — | — | Case-normalized |
 | `DSMZ catalog vial` | — | `culture_collection` | — | — | No origin matrix; site is "culture_collection"; catalog accession on `source_mat_id` |
@@ -195,7 +198,7 @@ On export back to GOLD/JGI, the typed slots recombine into the legacy flat strin
 
 ### Mapping advice for the JGI/GOLD round-trip
 
-**NMDC → JGI field 44 (Sample Isolated From\*)**: the PV's label for `sample_isolated_from` (e.g., `leaf` → "leaf"). If the matrix is host-tissue, optionally prepend host common name from `host_taxid` lookup for JGI's preferred display ("Sorghum bicolor - root").
+**NMDC → JGI field 44 (Sample Isolated From\*)**: the PV's label for `sample_isolated_from` (e.g., `leaf` → "leaf"). If the matrix is host-tissue, optionally prepend the host's organism name from `host_organism.name` for JGI's preferred display ("Sorghum bicolor - root").
 
 **NMDC → JGI field 45 (Collection Site or Growth Conditions\*)**: prefer the populated slot. If `sample_growth_conditions` is set, emit its label. If `sample_collection_site` is set, emit its label (optionally suffixed by `geo_loc_name`).
 

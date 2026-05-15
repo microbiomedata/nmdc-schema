@@ -682,6 +682,27 @@ slots:
       - value: nmdc:orgn-99-abc123
         description: Reference to an Organism instance in organism_set
 
+  host_organism:
+    range: Organism
+    description: >-
+      The host organism from which the sample's source material was obtained
+      or with which the sampled organism is associated (e.g. a plant whose
+      root yielded a bacterial isolate; an animal in which a parasite was
+      found).
+    comments:
+      - >-
+        Distinct from `expected_organism` (the focal organism being studied);
+        the same Organism class shape is reused for both roles. Host taxonomy
+        and naming follow the same path as the focal organism's:
+        `host_organism.classified_as` for NCBITaxon, plus
+        `host_organism.organism_genus / organism_species / strain_name` for the
+        text-level redundancy the JGI Isolate v19 form expects.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3054
+    examples:
+      - value: nmdc:orgn-99-cot0001
+        description: Reference to a host Organism instance in organism_set (e.g. cotton, Gossypium hirsutum).
+
   sample_isolation_method:
     description: Method, protocol, or kit used to extract DNA/RNA from the sample.
     in_subset:
