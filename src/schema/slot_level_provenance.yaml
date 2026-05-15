@@ -7,10 +7,10 @@ description: >-
   on records in the NMDC database, including the operation kind, prior and
   new values, the agent that made the change, and the rationale.
 
-  This file is intentionally NOT yet imported by the top-level `nmdc.yaml`.
-  It exists to scope discussion of the field-level provenance proposal
-  without committing to wiring it into `Database`. See the companion
-  design discussion (linked from the PR description).
+  Imported by `nmdc.yaml` so CI exercises the class and reviewers can see
+  the generated artifacts. Wiring into `Database` (`provenance_set`) and
+  Runtime enforcement of append-only semantics are still deliberately out
+  of scope; see the PR description.
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
