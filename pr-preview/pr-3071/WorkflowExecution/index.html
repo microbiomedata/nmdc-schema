@@ -430,8 +430,6 @@
 
     WorkflowExecution &lt;|-- MetagenomeSequencing
       click MetagenomeSequencing href "../MetagenomeSequencing"
-    WorkflowExecution &lt;|-- AnnotatingWorkflow
-      click AnnotatingWorkflow href "../AnnotatingWorkflow"
     WorkflowExecution &lt;|-- MetagenomeAssembly
       click MetagenomeAssembly href "../MetagenomeAssembly"
     WorkflowExecution &lt;|-- MetatranscriptomeAssembly
@@ -448,6 +446,8 @@
       click MetabolomicsAnalysis href "../MetabolomicsAnalysis"
     WorkflowExecution &lt;|-- NomAnalysis
       click NomAnalysis href "../NomAnalysis"
+    WorkflowExecution &lt;|-- AnnotatingWorkflow
+      click AnnotatingWorkflow href "../AnnotatingWorkflow"
 
 
 
@@ -532,7 +532,6 @@
 <li><a href="../DataEmitterProcess/">DataEmitterProcess</a><ul>
 <li><strong>WorkflowExecution</strong><ul>
 <li><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></li>
-<li><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></li>
 <li><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></li>
 <li><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></li>
 <li><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></li>
@@ -541,6 +540,7 @@
 <li><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></li>
 <li><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></li>
 <li><a href="../NomAnalysis/">NomAnalysis</a></li>
+<li><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></li>
 </ul>
 </li>
 </ul>
@@ -719,18 +719,6 @@
 <td><a href="./">WorkflowExecution</a></td>
 </tr>
 <tr>
-<td><a href="../DataObject/">DataObject</a></td>
-<td><a href="../superseded_by/">superseded_by</a></td>
-<td>range</td>
-<td><a href="./">WorkflowExecution</a></td>
-</tr>
-<tr>
-<td><a href="./">WorkflowExecution</a></td>
-<td><a href="../superseded_by/">superseded_by</a></td>
-<td>range</td>
-<td><a href="./">WorkflowExecution</a></td>
-</tr>
-<tr>
 <td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
 <td><a href="../superseded_by/">superseded_by</a></td>
 <td>range</td>
@@ -738,6 +726,18 @@
 </tr>
 <tr>
 <td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td><a href="../superseded_by/">superseded_by</a></td>
+<td>range</td>
+<td><a href="./">WorkflowExecution</a></td>
+</tr>
+<tr>
+<td><a href="../DataObject/">DataObject</a></td>
+<td><a href="../superseded_by/">superseded_by</a></td>
+<td>range</td>
+<td><a href="./">WorkflowExecution</a></td>
+</tr>
+<tr>
+<td><a href="./">WorkflowExecution</a></td>
 <td><a href="../superseded_by/">superseded_by</a></td>
 <td>range</td>
 <td><a href="./">WorkflowExecution</a></td>
@@ -1236,8 +1236,8 @@ attributes:
     alias: alternative_identifiers
     owner: WorkflowExecution
     domain_of:
-    - NamedThing
     - MetaboliteIdentification
+    - NamedThing
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -1273,6 +1273,10 @@ attributes:
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     - NamedThing
     - OntologyRelation
     - FailureCategorization
@@ -1280,10 +1284,7 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
+    - SlotLevelProvenance
     range: uriorcurie
     required: true
 class_uri: nmdc:WorkflowExecution

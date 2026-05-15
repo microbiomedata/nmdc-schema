@@ -781,11 +781,11 @@ attributes:
     alias: img_identifiers
     owner: MetagenomeAnnotation
     domain_of:
-    - MetagenomeAnnotation
-    - Biosample
     - MetatranscriptomeAnnotation
     - MetatranscriptomeExpressionAnalysis
     - MagsAnalysis
+    - MetagenomeAnnotation
+    - Biosample
     range: external_identifier
     multivalued: true
     pattern: ^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$
@@ -803,8 +803,8 @@ attributes:
     alias: gold_analysis_project_identifiers
     owner: MetagenomeAnnotation
     domain_of:
-    - MetagenomeAnnotation
     - MetatranscriptomeAnnotation
+    - MetagenomeAnnotation
     range: external_identifier
     multivalued: true
     pattern: ^gold:Ga[0-9]+$
@@ -1138,8 +1138,8 @@ attributes:
     alias: alternative_identifiers
     owner: MetagenomeAnnotation
     domain_of:
-    - NamedThing
     - MetaboliteIdentification
+    - NamedThing
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -1175,6 +1175,10 @@ attributes:
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     - NamedThing
     - OntologyRelation
     - FailureCategorization
@@ -1182,10 +1186,7 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
+    - SlotLevelProvenance
     range: uriorcurie
     required: true
 class_uri: nmdc:MetagenomeAnnotation

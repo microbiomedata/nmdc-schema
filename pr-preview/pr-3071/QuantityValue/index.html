@@ -589,8 +589,8 @@
 <td><a href="./">QuantityValue</a></td>
 </tr>
 <tr>
-<td><a href="../Organism/">Organism</a></td>
-<td><a href="../gc_content/">gc_content</a></td>
+<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
+<td><a href="../peptide_to_spectrum_match_rate/">peptide_to_spectrum_match_rate</a></td>
 <td>range</td>
 <td><a href="./">QuantityValue</a></td>
 </tr>
@@ -1699,8 +1699,8 @@
 <td><a href="./">QuantityValue</a></td>
 </tr>
 <tr>
-<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
-<td><a href="../peptide_to_spectrum_match_rate/">peptide_to_spectrum_match_rate</a></td>
+<td><a href="../Organism/">Organism</a></td>
+<td><a href="../gc_content/">gc_content</a></td>
 <td>range</td>
 <td><a href="./">QuantityValue</a></td>
 </tr>
@@ -1880,6 +1880,10 @@ attributes:
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     - NamedThing
     - OntologyRelation
     - FailureCategorization
@@ -1887,10 +1891,7 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
+    - SlotLevelProvenance
     range: uriorcurie
     required: true
 class_uri: nmdc:QuantityValue

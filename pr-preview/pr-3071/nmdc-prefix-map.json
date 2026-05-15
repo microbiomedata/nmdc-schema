@@ -98,6 +98,8 @@
    "qud": "http://qudt.org/1.1/schema/qudt#",
    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+   "rfc6901": "https://datatracker.ietf.org/doc/html/rfc6901#",
+   "rfc6902": "https://datatracker.ietf.org/doc/html/rfc6902#",
    "ror": "https://bioregistry.io/ror:",
    "schema": "http://schema.org/",
    "shex": "http://www.w3.org/ns/shex#",

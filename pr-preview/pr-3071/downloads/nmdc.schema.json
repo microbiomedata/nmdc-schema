@@ -9,6 +9,20 @@
             "title": "AeroStrucEnum",
             "type": "string"
         },
+        "AgentRoleEnum": {
+            "description": "The capacity in which an agent acted when applying a change. Different review and audit policies attach to different roles.",
+            "enum": [
+                "submitter",
+                "curator",
+                "automated_pipeline",
+                "migrator",
+                "external_ingest",
+                "api_client",
+                "system_bootstrap"
+            ],
+            "title": "AgentRoleEnum",
+            "type": "string"
+        },
         "AnalysisTypeEnum": {
             "description": "",
             "enum": [
@@ -23,6 +37,17 @@
                 "amplicon sequencing assay"
             ],
             "title": "AnalysisTypeEnum",
+            "type": "string"
+        },
+        "ApprovalStatusEnum": {
+            "description": "Review status of a change, where applicable.",
+            "enum": [
+                "not_required",
+                "pending",
+                "approved",
+                "rejected"
+            ],
+            "title": "ApprovalStatusEnum",
             "type": "string"
         },
         "ArchStrucEnum": {
@@ -5277,6 +5302,21 @@
             "title": "CeilingWallTextureEnum",
             "type": "string"
         },
+        "ChangeReasonEnum": {
+            "description": "Controlled justifications for a change. Use the `commentary` slot for additional free-text context.",
+            "enum": [
+                "data_correction",
+                "upstream_revision",
+                "curation",
+                "migration",
+                "reclassification",
+                "ingest",
+                "bootstrap",
+                "other"
+            ],
+            "title": "ChangeReasonEnum",
+            "type": "string"
+        },
         "ChemicalConversionCategoryEnum": {
             "description": "",
             "enum": [
@@ -6601,13 +6641,13 @@
                                 "$ref": "#/$defs/NomAnalysis"
                             },
                             {
-                                "$ref": "#/$defs/MetagenomeAnnotation"
-                            },
-                            {
                                 "$ref": "#/$defs/MetatranscriptomeAnnotation"
                             },
                             {
                                 "$ref": "#/$defs/MetaproteomicsAnalysis"
+                            },
+                            {
+                                "$ref": "#/$defs/MetagenomeAnnotation"
                             }
                         ]
                     },
@@ -13748,6 +13788,19 @@
             "title": "ProvenanceMetadata",
             "type": "object"
         },
+        "ProvenanceOperationEnum": {
+            "description": "Kinds of recorded changes. Slot-level operations correspond to JSON Patch (RFC 6902) ops. Record-level operations cover lifecycle events that affect the whole document.",
+            "enum": [
+                "create",
+                "update",
+                "delete",
+                "merge",
+                "split",
+                "supersede"
+            ],
+            "title": "ProvenanceOperationEnum",
+            "type": "string"
+        },
         "QuadPosEnum": {
             "description": "",
             "enum": [
@@ -14525,6 +14578,177 @@
             ],
             "title": "ShadingDeviceTypeEnum",
             "type": "string"
+        },
+        "SlotLevelProvenance": {
+            "additionalProperties": false,
+            "description": "A single append-only audit record describing a change to one slot value on one record in the NMDC database. The set of all SlotLevelProvenance records for a given target record can be folded to recover the record's edit history.",
+            "properties": {
+                "agent_id": {
+                    "description": "Identifier of the agent (human or software) that applied the change. ORCID for humans where available; NMDC site/client id, pipeline name, or migrator name+version for software agents.",
+                    "type": "string"
+                },
+                "agent_role": {
+                    "$ref": "#/$defs/AgentRoleEnum",
+                    "description": "The capacity in which the agent acted. Different review and audit policies attach to different roles."
+                },
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "approval_status": {
+                    "$ref": "#/$defs/ApprovalStatusEnum",
+                    "description": "Where applicable, the review status of the change."
+                },
+                "approved_at": {
+                    "description": "Timestamp at which approval was granted.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "approved_by": {
+                    "description": "Identifier of the agent that approved the change, if approval was required.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "batch_id": {
+                    "description": "Groups SlotLevelProvenance records that were applied as a single atomic operation (a changesheet, an API call, a migrator run). Analogous to a git commit; individual records are hunks.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "changed_at": {
+                    "description": "Timestamp at which the change was applied (ISO 8601 / RFC 3339).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "commentary": {
+                    "description": "Free-text additional commentary on the change.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "new_value": {
+                    "description": "The value at path immediately after this change, serialized as a string. May be elided in favor of new_value_hash for large values. Required for create and update operations.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "new_value_hash": {
+                    "description": "SHA-256 hex digest of the new value.",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "operation": {
+                    "$ref": "#/$defs/ProvenanceOperationEnum",
+                    "description": "The kind of change recorded. Follows JSON Patch (RFC 6902) semantics for slot-level operations and adds merge/split/supersede for record-level operations."
+                },
+                "path": {
+                    "description": "JSON Pointer (RFC 6901) reference to the slot value on the target record that was changed. The empty string refers to the whole record.",
+                    "type": "string"
+                },
+                "previous_value": {
+                    "description": "The value at path immediately prior to this change, serialized as a string. May be elided in favor of previous_value_hash for large values. Required for update and delete operations.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "previous_value_hash": {
+                    "description": "SHA-256 hex digest of the previous value. Used when previous_value is omitted (e.g. large embedded structures stored externally).",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "reason": {
+                    "$ref": "#/$defs/ChangeReasonEnum",
+                    "description": "A controlled or semi-controlled justification for the change. Use `commentary` for additional free-text context."
+                },
+                "reverted_by": {
+                    "description": "Reference to a later SlotLevelProvenance record that reverts this one. SlotLevelProvenance records are append-only; reversals are modeled by appending a new record and back-linking it here.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "schema_version_at_change": {
+                    "description": "The version of nmdc-schema in effect when this change was applied. Required to correctly interpret path strings after slot renames or class refactors.",
+                    "type": "string"
+                },
+                "source_record_locator": {
+                    "description": "Pointer to the upstream source that drove the change: a changesheet identifier, migrator name and version, ETL run identifier, or external system row reference.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "target_class": {
+                    "description": "The class of the target record, denormalized to enable indexing provenance by class without resolving the target_record_id.",
+                    "type": "string"
+                },
+                "target_record_id": {
+                    "description": "NMDC ID of the record whose slot value was changed. Must resolve to a document in one of the canonical NMDC collections.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:SlotLevelProvenance"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "target_record_id",
+                "target_class",
+                "path",
+                "operation",
+                "changed_at",
+                "agent_id",
+                "agent_role",
+                "schema_version_at_change",
+                "type",
+                "id"
+            ],
+            "title": "SlotLevelProvenance",
+            "type": "object"
         },
         "SoilHorizonEnum": {
             "description": "",
@@ -16073,13 +16297,13 @@
                         "$ref": "#/$defs/NomAnalysis"
                     },
                     {
-                        "$ref": "#/$defs/MetagenomeAnnotation"
-                    },
-                    {
                         "$ref": "#/$defs/MetatranscriptomeAnnotation"
                     },
                     {
                         "$ref": "#/$defs/MetaproteomicsAnalysis"
+                    },
+                    {
+                        "$ref": "#/$defs/MetagenomeAnnotation"
                     }
                 ]
             },
@@ -16091,5 +16315,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.1.post85.dev0+c501ffac8"
+    "version": "11.19.1.post86.dev0+f75773b5d"
 }

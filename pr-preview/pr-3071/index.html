@@ -1137,6 +1137,10 @@ environmental context of samples.</p>
 <td>A planned process with the objective to preserve and protect material entitie...</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SlotLevelProvenance/">SlotLevelProvenance</a></td>
+<td>A single append-only audit record describing a change to one slot value on on...</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Study/">Study</a></td>
 <td>A study summarizes the overall goal of a research initiative and outlines the...</td>
 </tr>
@@ -1202,6 +1206,14 @@ environmental context of samples.</p>
 <tr>
 <td><a href="aero_struc/">aero_struc</a></td>
 <td>Aerospace structures typically consist of thin plates with stiffeners for the...</td>
+</tr>
+<tr>
+<td><a href="agent_id/">agent_id</a></td>
+<td>Identifier of the agent (human or software) that applied the change</td>
+</tr>
+<tr>
+<td><a href="agent_role/">agent_role</a></td>
+<td>The capacity in which the agent acted</td>
 </tr>
 <tr>
 <td><a href="agrochem_addition/">agrochem_addition</a></td>
@@ -1320,6 +1332,18 @@ environmental context of samples.</p>
 <td></td>
 </tr>
 <tr>
+<td><a href="approval_status/">approval_status</a></td>
+<td>Where applicable, the review status of the change</td>
+</tr>
+<tr>
+<td><a href="approved_at/">approved_at</a></td>
+<td>Timestamp at which approval was granted</td>
+</tr>
+<tr>
+<td><a href="approved_by/">approved_by</a></td>
+<td>Identifier of the agent that approved the change, if approval was required</td>
+</tr>
+<tr>
 <td><a href="arch_struc/">arch_struc</a></td>
 <td>An architectural structure is a human-made, free-standing, immobile outdoor c...</td>
 </tr>
@@ -1382,6 +1406,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="basin/">basin</a></td>
 <td>Name of the basin (e</td>
+</tr>
+<tr>
+<td><a href="batch_id/">batch_id</a></td>
+<td>Groups SlotLevelProvenance records that were applied as a single atomic opera...</td>
 </tr>
 <tr>
 <td><a href="bathroom_count/">bathroom_count</a></td>
@@ -1576,6 +1604,10 @@ environmental context of samples.</p>
 <td>Signs of the presence of mold or mildew on the ceiling</td>
 </tr>
 <tr>
+<td><a href="changed_at/">changed_at</a></td>
+<td>Timestamp at which the change was applied (ISO 8601 / RFC 3339)</td>
+</tr>
+<tr>
 <td><a href="chem_administration/">chem_administration</a></td>
 <td>List of chemical compounds administered to the host or site where sampling oc...</td>
 </tr>
@@ -1654,6 +1686,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="collection_time_inc/">collection_time_inc</a></td>
 <td>Time the incubation was harvested/collected/ended</td>
+</tr>
+<tr>
+<td><a href="commentary/">commentary</a></td>
+<td>Free-text additional commentary on the change</td>
 </tr>
 <tr>
 <td><a href="community/">community</a></td>
@@ -3164,6 +3200,14 @@ environmental context of samples.</p>
 <td></td>
 </tr>
 <tr>
+<td><a href="new_value/">new_value</a></td>
+<td>The value at path immediately after this change, serialized as a string</td>
+</tr>
+<tr>
+<td><a href="new_value_hash/">new_value_hash</a></td>
+<td>SHA-256 hex digest of the new value</td>
+</tr>
+<tr>
 <td><a href="nitrate/">nitrate</a></td>
 <td>Concentration of nitrate in the sample</td>
 </tr>
@@ -3284,6 +3328,10 @@ environmental context of samples.</p>
 <td>This property links a database object to the set of ontology classes within i...</td>
 </tr>
 <tr>
+<td><a href="operation/">operation</a></td>
+<td>The kind of change recorded</td>
+</tr>
+<tr>
 <td><a href="orcid/">orcid</a></td>
 <td>The ORCID of a person</td>
 </tr>
@@ -3378,6 +3426,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="particle_class/">particle_class</a></td>
 <td>Particles are classified, based on their size, into six general categories:cl...</td>
+</tr>
+<tr>
+<td><a href="path/">path</a></td>
+<td>JSON Pointer (RFC 6901) reference to the slot value on the target record that...</td>
 </tr>
 <tr>
 <td><a href="pcr_cond/">pcr_cond</a></td>
@@ -3540,6 +3592,14 @@ environmental context of samples.</p>
 <td>Previous land use and dates</td>
 </tr>
 <tr>
+<td><a href="previous_value/">previous_value</a></td>
+<td>The value at path immediately prior to this change, serialized as a string</td>
+</tr>
+<tr>
+<td><a href="previous_value_hash/">previous_value_hash</a></td>
+<td>SHA-256 hex digest of the previous value</td>
+</tr>
+<tr>
 <td><a href="primary_prod/">primary_prod</a></td>
 <td>Measurement of primary production, generally measured as isotope uptake</td>
 </tr>
@@ -3656,6 +3716,10 @@ environmental context of samples.</p>
 <td></td>
 </tr>
 <tr>
+<td><a href="reason/">reason</a></td>
+<td>A controlled or semi-controlled justification for the change</td>
+</tr>
+<tr>
 <td><a href="redox_potential/">redox_potential</a></td>
 <td>Redox potential, measured relative to a hydrogen cell, indicating oxidation o...</td>
 </tr>
@@ -3698,6 +3762,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="resolution_categories/">resolution_categories</a></td>
 <td>The relative resolution at which spectra were collected</td>
+</tr>
+<tr>
+<td><a href="reverted_by/">reverted_by</a></td>
+<td>Reference to a later SlotLevelProvenance record that reverts this one</td>
 </tr>
 <tr>
 <td><a href="rna_collect_site/">rna_collect_site</a></td>
@@ -4044,6 +4112,10 @@ environmental context of samples.</p>
 <td>Total sequence count of all scaffolds</td>
 </tr>
 <tr>
+<td><a href="schema_version_at_change/">schema_version_at_change</a></td>
+<td>The version of nmdc-schema in effect when this change was applied</td>
+</tr>
+<tr>
 <td><a href="season/">season</a></td>
 <td>The season when sampling occurred</td>
 </tr>
@@ -4202,6 +4274,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="source_mat_id/">source_mat_id</a></td>
 <td>A unique identifier assigned to a material sample (as defined by <a href="http://rs">http://rs</a></td>
+</tr>
+<tr>
+<td><a href="source_record_locator/">source_record_locator</a></td>
+<td>Pointer to the upstream source that drove the change: a changesheet identifie...</td>
 </tr>
 <tr>
 <td><a href="source_system_of_record/">source_system_of_record</a></td>
@@ -4384,8 +4460,16 @@ environmental context of samples.</p>
 <td>Total Acid Number  (TAN) is a measurement of acidity that is determined by th...</td>
 </tr>
 <tr>
+<td><a href="target_class/">target_class</a></td>
+<td>The class of the target record, denormalized to enable indexing provenance by...</td>
+</tr>
+<tr>
 <td><a href="target_gene/">target_gene</a></td>
 <td>Targeted gene or locus name for marker gene studies</td>
+</tr>
+<tr>
+<td><a href="target_record_id/">target_record_id</a></td>
+<td>NMDC ID of the record whose slot value was changed</td>
 </tr>
 <tr>
 <td><a href="target_subfragment/">target_subfragment</a></td>
@@ -4771,8 +4855,16 @@ environmental context of samples.</p>
 <td></td>
 </tr>
 <tr>
+<td><a href="AgentRoleEnum/">AgentRoleEnum</a></td>
+<td>The capacity in which an agent acted when applying a change</td>
+</tr>
+<tr>
 <td><a href="AnalysisTypeEnum/">AnalysisTypeEnum</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="ApprovalStatusEnum/">ApprovalStatusEnum</a></td>
+<td>Review status of a change, where applicable</td>
 </tr>
 <tr>
 <td><a href="ArchStrucEnum/">ArchStrucEnum</a></td>
@@ -4833,6 +4925,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="CeilTypeEnum/">CeilTypeEnum</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="ChangeReasonEnum/">ChangeReasonEnum</a></td>
+<td>Controlled justifications for a change</td>
 </tr>
 <tr>
 <td><a href="ChemicalConversionCategoryEnum/">ChemicalConversionCategoryEnum</a></td>
@@ -5113,6 +5209,10 @@ environmental context of samples.</p>
 <tr>
 <td><a href="ProtocolForEnum/">ProtocolForEnum</a></td>
 <td>The permitted values for describing the type of planned process that a protoc...</td>
+</tr>
+<tr>
+<td><a href="ProvenanceOperationEnum/">ProvenanceOperationEnum</a></td>
+<td>Kinds of recorded changes</td>
 </tr>
 <tr>
 <td><a href="QuadPosEnum/">QuadPosEnum</a></td>

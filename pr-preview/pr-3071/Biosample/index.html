@@ -5460,9 +5460,9 @@ attributes:
     alias: associated_studies
     owner: Biosample
     domain_of:
-    - DataGeneration
     - Biosample
     - OrganismSample
+    - DataGeneration
     range: Study
     required: true
     multivalued: true
@@ -5554,11 +5554,11 @@ attributes:
     alias: img_identifiers
     owner: Biosample
     domain_of:
-    - MetagenomeAnnotation
-    - Biosample
     - MetatranscriptomeAnnotation
     - MetatranscriptomeExpressionAnalysis
     - MagsAnalysis
+    - MetagenomeAnnotation
+    - Biosample
     range: external_identifier
     multivalued: true
     pattern: ^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$
@@ -5589,9 +5589,9 @@ attributes:
     alias: alternative_names
     owner: Biosample
     domain_of:
+    - Biosample
     - OntologyClass
     - Study
-    - Biosample
     range: string
     multivalued: true
   provenance_metadata:
@@ -5603,10 +5603,10 @@ attributes:
     alias: provenance_metadata
     owner: Biosample
     domain_of:
-    - Study
-    - DataGeneration
     - Biosample
     - OrganismSample
+    - Study
+    - DataGeneration
     range: ProvenanceMetadata
   gold_biosample_identifiers:
     name: gold_biosample_identifiers
@@ -16876,8 +16876,8 @@ attributes:
     alias: ecosystem
     owner: Biosample
     domain_of:
-    - Study
     - Biosample
+    - Study
     range: string
   ecosystem_category:
     name: ecosystem_category
@@ -16897,8 +16897,8 @@ attributes:
     alias: ecosystem_category
     owner: Biosample
     domain_of:
-    - Study
     - Biosample
+    - Study
     range: string
   ecosystem_type:
     name: ecosystem_type
@@ -16919,8 +16919,8 @@ attributes:
     alias: ecosystem_type
     owner: Biosample
     domain_of:
-    - Study
     - Biosample
+    - Study
     range: string
   ecosystem_subtype:
     name: ecosystem_subtype
@@ -16939,8 +16939,8 @@ attributes:
     alias: ecosystem_subtype
     owner: Biosample
     domain_of:
-    - Study
     - Biosample
+    - Study
     range: string
   specific_ecosystem:
     name: specific_ecosystem
@@ -16958,8 +16958,8 @@ attributes:
     alias: specific_ecosystem
     owner: Biosample
     domain_of:
-    - Study
     - Biosample
+    - Study
     range: string
   ecosystem_path_id:
     name: ecosystem_path_id
@@ -17579,8 +17579,8 @@ attributes:
     alias: analysis_type
     owner: Biosample
     domain_of:
-    - Protocol
     - Biosample
+    - Protocol
     slot_group: Sample ID
     range: AnalysisTypeEnum
     recommended: true
@@ -17948,8 +17948,8 @@ attributes:
     alias: alternative_identifiers
     owner: Biosample
     domain_of:
-    - NamedThing
     - MetaboliteIdentification
+    - NamedThing
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -17985,6 +17985,10 @@ attributes:
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     - NamedThing
     - OntologyRelation
     - FailureCategorization
@@ -17992,10 +17996,7 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
+    - SlotLevelProvenance
     range: uriorcurie
     required: true
 class_uri: nmdc:Biosample

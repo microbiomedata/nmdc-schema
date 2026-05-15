@@ -406,6 +406,8 @@
 <div class="mermaid">classDiagram
   class NamedThing
   click NamedThing href "../NamedThing"
+    NamedThing &lt;|-- GeneProduct
+      click GeneProduct href "../GeneProduct"
     NamedThing &lt;|-- OntologyClass
       click OntologyClass href "../OntologyClass"
     NamedThing &lt;|-- MaterialEntity
@@ -416,8 +418,8 @@
       click Study href "../Study"
     NamedThing &lt;|-- InformationObject
       click InformationObject href "../InformationObject"
-    NamedThing &lt;|-- GeneProduct
-      click GeneProduct href "../GeneProduct"
+    NamedThing &lt;|-- SlotLevelProvenance
+      click SlotLevelProvenance href "../SlotLevelProvenance"
 
 
 
@@ -437,12 +439,13 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>NamedThing</strong><ul>
+<li><a href="../GeneProduct/">GeneProduct</a></li>
 <li><a href="../OntologyClass/">OntologyClass</a></li>
 <li><a href="../MaterialEntity/">MaterialEntity</a></li>
 <li><a href="../PlannedProcess/">PlannedProcess</a></li>
 <li><a href="../Study/">Study</a></li>
 <li><a href="../InformationObject/">InformationObject</a></li>
-<li><a href="../GeneProduct/">GeneProduct</a></li>
+<li><a href="../SlotLevelProvenance/">SlotLevelProvenance</a></li>
 </ul>
 </li>
 </ul>
@@ -650,8 +653,8 @@ attributes:
     alias: alternative_identifiers
     owner: NamedThing
     domain_of:
-    - NamedThing
     - MetaboliteIdentification
+    - NamedThing
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -687,6 +690,10 @@ attributes:
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     - NamedThing
     - OntologyRelation
     - FailureCategorization
@@ -694,10 +701,7 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
+    - SlotLevelProvenance
     range: uriorcurie
     required: true
 class_uri: nmdc:NamedThing

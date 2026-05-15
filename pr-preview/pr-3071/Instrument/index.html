@@ -594,12 +594,6 @@
 <td><a href="./">Instrument</a></td>
 </tr>
 <tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>range</td>
-<td><a href="./">Instrument</a></td>
-</tr>
-<tr>
 <td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
 <td><a href="../instrument_used/">instrument_used</a></td>
 <td>range</td>
@@ -607,6 +601,12 @@
 </tr>
 <tr>
 <td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
+<td><a href="../instrument_used/">instrument_used</a></td>
+<td>range</td>
+<td><a href="./">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
 <td><a href="../instrument_used/">instrument_used</a></td>
 <td>range</td>
 <td><a href="./">Instrument</a></td>
@@ -778,8 +778,8 @@ attributes:
     alias: alternative_identifiers
     owner: Instrument
     domain_of:
-    - NamedThing
     - MetaboliteIdentification
+    - NamedThing
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -815,6 +815,10 @@ attributes:
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     - NamedThing
     - OntologyRelation
     - FailureCategorization
@@ -822,10 +826,7 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
+    - SlotLevelProvenance
     range: uriorcurie
     required: true
 class_uri: nmdc:Instrument

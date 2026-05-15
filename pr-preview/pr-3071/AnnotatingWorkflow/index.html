@@ -410,12 +410,12 @@
       click WorkflowExecution href "../WorkflowExecution"
 
 
-    AnnotatingWorkflow &lt;|-- MetagenomeAnnotation
-      click MetagenomeAnnotation href "../MetagenomeAnnotation"
     AnnotatingWorkflow &lt;|-- MetatranscriptomeAnnotation
       click MetatranscriptomeAnnotation href "../MetatranscriptomeAnnotation"
     AnnotatingWorkflow &lt;|-- MetaproteomicsAnalysis
       click MetaproteomicsAnalysis href "../MetaproteomicsAnalysis"
+    AnnotatingWorkflow &lt;|-- MetagenomeAnnotation
+      click MetagenomeAnnotation href "../MetagenomeAnnotation"
 
 
 
@@ -500,9 +500,9 @@
 <li><a href="../DataEmitterProcess/">DataEmitterProcess</a><ul>
 <li><a href="../WorkflowExecution/">WorkflowExecution</a><ul>
 <li><strong>AnnotatingWorkflow</strong><ul>
-<li><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></li>
 <li><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></li>
 <li><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></li>
+<li><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></li>
 </ul>
 </li>
 </ul>
@@ -1042,8 +1042,8 @@ attributes:
     alias: alternative_identifiers
     owner: AnnotatingWorkflow
     domain_of:
-    - NamedThing
     - MetaboliteIdentification
+    - NamedThing
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -1079,6 +1079,10 @@ attributes:
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     - NamedThing
     - OntologyRelation
     - FailureCategorization
@@ -1086,10 +1090,7 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
+    - SlotLevelProvenance
     range: uriorcurie
     required: true
 class_uri: nmdc:AnnotatingWorkflow

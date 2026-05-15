@@ -899,11 +899,11 @@ attributes:
     alias: img_identifiers
     owner: MagsAnalysis
     domain_of:
-    - MetagenomeAnnotation
-    - Biosample
     - MetatranscriptomeAnnotation
     - MetatranscriptomeExpressionAnalysis
     - MagsAnalysis
+    - MetagenomeAnnotation
+    - Biosample
     range: external_identifier
     multivalued: true
     pattern: ^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$
@@ -1238,8 +1238,8 @@ attributes:
     alias: alternative_identifiers
     owner: MagsAnalysis
     domain_of:
-    - NamedThing
     - MetaboliteIdentification
+    - NamedThing
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -1275,6 +1275,10 @@ attributes:
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     - NamedThing
     - OntologyRelation
     - FailureCategorization
@@ -1282,10 +1286,7 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
+    - SlotLevelProvenance
     range: uriorcurie
     required: true
 class_uri: nmdc:MagsAnalysis

@@ -924,9 +924,9 @@ attributes:
     alias: associated_studies
     owner: MassSpectrometry
     domain_of:
-    - DataGeneration
     - Biosample
     - OrganismSample
+    - DataGeneration
     range: Study
     required: true
     multivalued: true
@@ -941,8 +941,8 @@ attributes:
     alias: instrument_used
     owner: MassSpectrometry
     domain_of:
-    - DataGeneration
     - MaterialProcessing
+    - DataGeneration
     range: Instrument
     multivalued: true
     structured_pattern:
@@ -982,10 +982,10 @@ attributes:
     alias: provenance_metadata
     owner: MassSpectrometry
     domain_of:
-    - Study
-    - DataGeneration
     - Biosample
     - OrganismSample
+    - Study
+    - DataGeneration
     range: ProvenanceMetadata
   has_input:
     name: has_input
@@ -1179,8 +1179,8 @@ attributes:
     alias: alternative_identifiers
     owner: MassSpectrometry
     domain_of:
-    - NamedThing
     - MetaboliteIdentification
+    - NamedThing
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
@@ -1216,6 +1216,10 @@ attributes:
     - GenomeFeature
     - FunctionalAnnotation
     - AttributeValue
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
     - NamedThing
     - OntologyRelation
     - FailureCategorization
@@ -1223,10 +1227,7 @@ attributes:
     - CreditAssociation
     - Doi
     - ProvenanceMetadata
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
+    - SlotLevelProvenance
     range: uriorcurie
     required: true
 class_uri: nmdc:MassSpectrometry
