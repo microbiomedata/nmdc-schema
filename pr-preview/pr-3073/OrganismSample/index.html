@@ -450,10 +450,10 @@
 
   OrganismSample : gold_organism_identifiers
 
-  OrganismSample : host_taxid
+  OrganismSample : host_organism
 
-      OrganismSample --&gt; "0..1" ControlledIdentifiedTermValue : host_taxid
-    click ControlledIdentifiedTermValue href "../ControlledIdentifiedTermValue"
+      OrganismSample --&gt; "0..1" Organism : host_organism
+    click Organism href "../Organism"
 
   OrganismSample : id
 
@@ -535,6 +535,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../host_organism/">host_organism</a></td>
+<td>0..1 <br/> <a href="../Organism/">Organism</a></td>
+<td>The host organism from which the sample's source material was obtained or wit...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../embargoed/">embargoed</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../Boolean/">Boolean</a></td>
 <td>If true, the data are embargoed and not available for public access</td>
@@ -568,12 +574,6 @@
 <td><a href="../samp_name/">samp_name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A local identifier or name that for the material sample used for extracting n...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../host_taxid/">host_taxid</a></td>
-<td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
-<td>NCBI taxon id of the host, e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -744,13 +744,13 @@ is_a: Sample
 slots:
 - associated_studies
 - expected_organism
+- host_organism
 - embargoed
 - provenance_metadata
 - external_database_identifiers
 - gold_organism_identifiers
 - collection_date
 - samp_name
-- host_taxid
 - sample_isolation_method
 - sample_isolated_from
 - sample_collection_site
@@ -766,6 +766,11 @@ slot_usage:
       interpolated: true
   expected_organism:
     name: expected_organism
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  host_organism:
+    name: host_organism
     structured_pattern:
       syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -865,6 +870,11 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
       interpolated: true
+  host_organism:
+    name: host_organism
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+      interpolated: true
   sample_collection_site:
     name: sample_collection_site
     description: Site category where the OrganismSample (or its host) was collected.
@@ -946,6 +956,33 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: expected_organism
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: Organism
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  host_organism:
+    name: host_organism
+    description: The host organism from which the sample's source material was obtained
+      or with which the sampled organism is associated (e.g. a plant whose root yielded
+      a bacterial isolate; an animal in which a parasite was found).
+    comments:
+    - 'Distinct from `expected_organism` (the focal organism being studied); the same
+      Organism class shape is reused for both roles. Host taxonomy and naming follow
+      the same path as the focal organism''s: `host_organism.classified_as` for NCBITaxon,
+      plus `host_organism.organism_genus / organism_species / strain_name` for the
+      text-level redundancy the JGI Isolate v19 form expects.'
+    examples:
+    - value: nmdc:orgn-99-cot0001
+      description: Reference to a host Organism instance in organism_set (e.g. cotton,
+        Gossypium hirsutum).
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/3054
+    rank: 1000
+    alias: host_organism
     owner: OrganismSample
     domain_of:
     - OrganismSample
@@ -1069,34 +1106,6 @@ attributes:
     - Biosample
     - OrganismSample
     range: string
-  host_taxid:
-    name: host_taxid
-    annotations:
-      Expected_value:
-        tag: Expected_value
-        value: NCBI taxon identifier
-    description: NCBI taxon id of the host, e.g. 9606
-    title: host taxid
-    comments:
-    - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Host NCBI Taxonomy ID
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-    rank: 1000
-    keywords:
-    - host
-    - host.
-    - taxon
-    slot_uri: MIXS:0000250
-    alias: host_taxid
-    owner: OrganismSample
-    domain_of:
-    - Biosample
-    - OrganismSample
-    range: ControlledIdentifiedTermValue
   sample_isolation_method:
     name: sample_isolation_method
     description: Method, protocol, or kit used to extract DNA/RNA from the sample.

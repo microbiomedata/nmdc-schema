@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/host_taxid/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/host_organism/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: host taxid (host_taxid) - NMDC Schema Documentation</title>
+        <title>Slot: host_organism - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-host-taxid-host_taxid" class="md-skip">
+        <a href="#slot-host_organism" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: host taxid (host_taxid)
+              Slot: host_organism
             
           </span>
         </div>
@@ -636,10 +636,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#comments" class="md-nav__link">
     <span class="md-ellipsis">
       
         Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
       
     </span>
   </a>
@@ -657,17 +679,6 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Annotations
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -727,10 +738,10 @@
   
 
 
-<h1 id="slot-host-taxid-host_taxid">Slot: host taxid (host_taxid)</h1>
-<p><em>NCBI taxon id of the host, e.g. 9606</em></p>
+<h1 id="slot-host_organism">Slot: host_organism</h1>
+<p><em>The host organism from which the sample's source material was obtained or with which the sampled organism is associated (e.g. a plant whose root yielded a bacterial isolate; an animal in which a parasite was found).</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/mixs/0000250">MIXS:0000250</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/host_organism">nmdc:host_organism</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -743,36 +754,38 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td>Biological source material which can be characterized by an experiment</td>
-<td>no</td>
+<td><a href="../OrganismSample/">OrganismSample</a></td>
+<td>A material sample in which all cells are expected to share the same genome</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></li>
+<li>Range: <a href="../Organism/">Organism</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value</li>
-</ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
+<h2 id="examples">Examples</h2>
 <table>
 <thead>
 <tr>
-<th>property</th>
-<th>value</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Expected_value</td>
-<td>NCBI taxon identifier</td>
+<td>nmdc:orgn-99-cot0001</td>
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Distinct from <code>expected_organism</code> (the focal organism being studied); the same Organism class shape is reused for both roles. Host taxonomy and naming follow the same path as the focal organism's: <code>host_organism.classified_as</code> for NCBITaxon, plus <code>host_organism.organism_genus / organism_species / strain_name</code> for the text-level redundancy the JGI Isolate v19 form expects.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/3054">https://github.com/microbiomedata/nmdc-schema/issues/3054</a></li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -787,39 +800,36 @@
 </thead>
 <tbody>
 <tr>
-<td>self</td>
-<td>MIXS:0000250</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: host_taxid
-annotations:
-  Expected_value:
-    tag: Expected_value
-    value: NCBI taxon identifier
-description: NCBI taxon id of the host, e.g. 9606
-title: host taxid
+<pre><code class="language-yaml">name: host_organism
+description: The host organism from which the sample's source material was obtained
+  or with which the sampled organism is associated (e.g. a plant whose root yielded
+  a bacterial isolate; an animal in which a parasite was found).
 comments:
-- Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
+- 'Distinct from `expected_organism` (the focal organism being studied); the same
+  Organism class shape is reused for both roles. Host taxonomy and naming follow the
+  same path as the focal organism''s: `host_organism.classified_as` for NCBITaxon,
+  plus `host_organism.organism_genus / organism_species / strain_name` for the text-level
+  redundancy the JGI Isolate v19 form expects.'
+examples:
+- value: nmdc:orgn-99-cot0001
+  description: Reference to a host Organism instance in organism_set (e.g. cotton,
+    Gossypium hirsutum).
 from_schema: https://w3id.org/nmdc/nmdc
-structured_aliases:
-- literal_form: Host NCBI Taxonomy ID
-  predicate: EXACT_SYNONYM
-  contexts:
-  - https://jgi.doe.gov/isolate-submission-form/v19
+see_also:
+- https://github.com/microbiomedata/nmdc-schema/issues/3054
 rank: 1000
-keywords:
-- host
-- host.
-- taxon
-slot_uri: MIXS:0000250
-alias: host_taxid
+alias: host_organism
 domain_of:
-- Biosample
-range: ControlledIdentifiedTermValue
+- OrganismSample
+range: Organism
 
 </code></pre>
 

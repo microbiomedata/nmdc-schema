@@ -13139,16 +13139,13 @@
                         "null"
                     ]
                 },
-                "host_taxid": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "NCBI taxon id of the host, e.g. 9606"
+                "host_organism": {
+                    "description": "The host organism from which the sample's source material was obtained or with which the sampled organism is associated (e.g. a plant whose root yielded a bacterial isolate; an animal in which a parasite was found).",
+                    "pattern": "^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
@@ -16461,6 +16458,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.1.post88.dev0+d3641a7f3"
+    "version": "11.19.1.post89.dev0+a61fd2897"
 }
 

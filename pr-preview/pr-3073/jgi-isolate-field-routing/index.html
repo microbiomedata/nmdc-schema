@@ -626,10 +626,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#note-on-host_taxid-and-the-jgi-viral-isolate-use-case" class="md-nav__link">
+  <a href="#note-on-host_organism-vs-the-legacy-host_taxid-slot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Note on host_taxid and the JGI viral-isolate use case
+        Note on host_organism vs the legacy host_taxid slot
       
     </span>
   </a>
@@ -932,35 +932,37 @@ to nmdc-schema classes, submission-schema, or deferred.</p>
 <td>—</td>
 <td>Expected organism</td>
 <td><code>expected_organism</code></td>
-<td>NMDC-native (new)</td>
+<td>NMDC-native</td>
 </tr>
 <tr>
 <td>19</td>
-<td>Host NCBI Tax ID*</td>
-<td><code>host_taxid</code> (also on <code>Biosample</code>)</td>
-<td>MIxS (existing)</td>
+<td>Host NCBI Tax ID* (and host name)</td>
+<td><code>host_organism</code> (on <code>OrganismSample</code>); same pattern as <code>expected_organism</code> — a typed reference to an <code>Organism</code> instance, whose <code>classified_as</code> carries the NCBI Taxonomy CURIE and whose <code>organism_genus / organism_species / strain_name</code> carry the JGI-form host-name text fields</td>
+<td>NMDC-native (new in #3054)</td>
 </tr>
 </tbody>
 </table>
-<h3 id="note-on-host_taxid-and-the-jgi-viral-isolate-use-case">Note on host_taxid and the JGI viral-isolate use case</h3>
-<p>The JGI form labels field 19 ("Host NCBI Tax ID") as <em>for viral isolates only</em>.
-That framing is <strong>not</strong> baked into nmdc-schema. <code>host_taxid</code> is the general
-MIxS slot (<code>MIXS:0000250</code>) describing the host of a sample, applicable to any
-host-associated submission — viral, host-microbiome, parasite, etc. The
-sample-level placement (Biosample, OrganismSample) is the only structural
-constraint at the schema layer.</p>
-<p>The viral-specific framing is a <strong>submission-schema concern</strong>. Whether
-<code>host_taxid</code> is required, what label/help-text it carries, and what input
-controls validate it for a given submission are decided by submission-schema
-interfaces / templates / slot_usage — for example a <code>JgiViralIsolateInterface</code>
-in submission-schema can mark <code>host_taxid</code> required and label it "Host NCBI
-Tax ID (required for viral isolates)" without nmdc-schema needing a
-viral-specific slot.</p>
+<h3 id="note-on-host_organism-vs-the-legacy-host_taxid-slot">Note on <code>host_organism</code> vs the legacy <code>host_taxid</code> slot</h3>
+<p><code>OrganismSample</code> uses <code>host_organism</code> (range: <code>Organism</code>) rather than the
+flat MIxS <code>host_taxid</code> slot. The pattern mirrors <code>expected_organism</code>:
+<code>OrganismSample → host_organism → Organism → classified_as → NcbiTaxon</code>,
+with <code>Organism.organism_genus / organism_species / strain_name</code> providing
+the text-level redundancy the JGI Isolate v19 form expects (Host Genus /
+Host Species / Host Strain).</p>
+<p>This is the same pattern used for the focal organism; reusing it for the
+host avoids parallel ID-only and name-only host slots on OrganismSample.
+The Pf-5-from-cotton example (<code>Database-rhizosphere-isolate.yaml</code>) is the
+canonical demonstration: a cotton <code>Organism</code> record carries
+<code>classified_as: NCBITaxon:3635</code>, <code>organism_genus: Gossypium</code>,
+<code>organism_species: hirsutum</code>, and the bacterial-isolate <code>OrganismSample</code>
+references it via <code>host_organism: nmdc:orgn-99-cot0001</code>.</p>
+<p><code>Biosample</code> continues to use the legacy flat <code>host_taxid</code> /
+<code>host_genus</code> / <code>host_species</code> / <code>host_strain</code> slots; aligning Biosample to
+the same linked-data pattern is out of scope for #3054 and is tracked as
+a follow-up.</p>
 <p>Broader normalization of taxon-bearing slots to use <code>NcbiTaxon</code> as their
 range (rather than strings or CURIEs in <code>has_raw_value</code>) is tracked in
-<a href="https://github.com/microbiomedata/nmdc-schema/issues/3000">#3000</a>. <code>host_taxid</code>
-is a likely first concrete migration target once <code>ontology_class_set</code> is
-loaded with NcbiTaxon from semantic-sql / OWL.</p>
+<a href="https://github.com/microbiomedata/nmdc-schema/issues/3000">#3000</a>.</p>
 <h2 id="organism-orgn">Organism (orgn)</h2>
 <table>
 <thead>
@@ -1305,9 +1307,9 @@ form e.g. <code>CIP 54.8</code> until prefixes are added):</p>
 <li><code>sample_isolated_from</code> — origin matrix (the <em>what</em>), enum-typed</li>
 <li><code>sample_collection_site</code> — site category (the <em>where</em>), enum-typed</li>
 <li><code>sample_growth_conditions</code> — lab maintenance (interim free-text; full decomposition in <a href="https://github.com/microbiomedata/nmdc-schema/issues/3027">#3027</a> / <a href="https://github.com/microbiomedata/nmdc-schema/issues/3065">#3065</a>)</li>
-<li><code>host_taxid</code> — host NCBI Taxonomy ID</li>
+<li><code>host_organism</code> — typed reference to an <code>Organism</code> instance whose <code>classified_as</code> carries the host's NCBI Taxonomy CURIE</li>
 </ul>
-<p>On export back to GOLD/JGI, the typed slots recombine into the legacy flat string.</p>
+<p>On export back to GOLD/JGI, the typed slots recombine into the legacy flat string. For the host string fields (JGI v19 fields Host Genus / Species / Strain), traverse <code>host_organism.organism_genus</code> / <code>host_organism.organism_species</code> / <code>host_organism.strain_name</code>.</p>
 <h3 id="worked-examples">Worked examples</h3>
 <table>
 <thead>
@@ -1315,7 +1317,7 @@ form e.g. <code>CIP 54.8</code> until prefixes are added):</p>
 <th>GOLD source value</th>
 <th><code>sample_isolated_from</code></th>
 <th><code>sample_collection_site</code></th>
-<th><code>host_taxid</code></th>
+<th><code>host_organism.classified_as</code></th>
 <th><code>geo_loc_name</code></th>
 <th>Notes</th>
 </tr>
@@ -1333,15 +1335,15 @@ form e.g. <code>CIP 54.8</code> until prefixes are added):</p>
 <td><code>Sorghum bicolor - root</code></td>
 <td><code>root</code></td>
 <td>—</td>
-<td><code>NCBITaxon:4558</code></td>
+<td><code>NCBITaxon:4558</code> (via Sorghum Organism record)</td>
 <td>—</td>
-<td>Host + tissue compound: host goes to <code>host_taxid</code>, tissue to origin matrix</td>
+<td>Host + tissue compound: host goes to a typed Organism reference, tissue to origin matrix</td>
 </tr>
 <tr>
 <td><code>maize rhizosphere soils</code></td>
 <td><code>rhizosphere</code></td>
 <td>—</td>
-<td><code>NCBITaxon:4577</code></td>
+<td><code>NCBITaxon:4577</code> (via Zea Organism record)</td>
 <td>—</td>
 <td>Same pattern; rhizosphere is the matrix, maize is the host</td>
 </tr>
@@ -1349,7 +1351,7 @@ form e.g. <code>CIP 54.8</code> until prefixes are added):</p>
 <td><code>Switchgrass Roots</code></td>
 <td><code>root</code></td>
 <td>—</td>
-<td><code>NCBITaxon:38727</code></td>
+<td><code>NCBITaxon:38727</code> (via Panicum Organism record)</td>
 <td>—</td>
 <td>Plant-host isolate from root tissue</td>
 </tr>
@@ -1412,7 +1414,7 @@ form e.g. <code>CIP 54.8</code> until prefixes are added):</p>
 </tbody>
 </table>
 <h3 id="mapping-advice-for-the-jgigold-round-trip">Mapping advice for the JGI/GOLD round-trip</h3>
-<p><strong>NMDC → JGI field 44 (Sample Isolated From*)</strong>: the PV's label for <code>sample_isolated_from</code> (e.g., <code>leaf</code> → "leaf"). If the matrix is host-tissue, optionally prepend host common name from <code>host_taxid</code> lookup for JGI's preferred display ("Sorghum bicolor - root").</p>
+<p><strong>NMDC → JGI field 44 (Sample Isolated From*)</strong>: the PV's label for <code>sample_isolated_from</code> (e.g., <code>leaf</code> → "leaf"). If the matrix is host-tissue, optionally prepend the host's organism name from <code>host_organism.name</code> for JGI's preferred display ("Sorghum bicolor - root").</p>
 <p><strong>NMDC → JGI field 45 (Collection Site or Growth Conditions*)</strong>: prefer the populated slot. If <code>sample_growth_conditions</code> is set, emit its label. If <code>sample_collection_site</code> is set, emit its label (optionally suffixed by <code>geo_loc_name</code>).</p>
 <p><strong>NMDC → GOLD <code>dw_samples.sample_isolated_from</code></strong>: concatenate matrix + site + growth + host in whatever order GOLD historically uses, semicolon-separated, with empty parts elided. The unit tests for the exporter should round-trip the worked examples above.</p>
 <h3 id="what-does-not-belong-in-any-of-these-three-slots">What does NOT belong in any of these three slots</h3>

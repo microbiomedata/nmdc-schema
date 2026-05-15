@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.1.post88.dev0+d3641a7f3
+version: 11.19.1.post89.dev0+a61fd2897
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7696,6 +7696,25 @@ slots:
     - value: nmdc:orgn-99-abc123
       description: Reference to an Organism instance in organism_set
     from_schema: https://w3id.org/nmdc/nmdc
+    range: Organism
+  host_organism:
+    name: host_organism
+    description: The host organism from which the sample's source material was obtained
+      or with which the sampled organism is associated (e.g. a plant whose root yielded
+      a bacterial isolate; an animal in which a parasite was found).
+    comments:
+    - 'Distinct from `expected_organism` (the focal organism being studied); the same
+      Organism class shape is reused for both roles. Host taxonomy and naming follow
+      the same path as the focal organism''s: `host_organism.classified_as` for NCBITaxon,
+      plus `host_organism.organism_genus / organism_species / strain_name` for the
+      text-level redundancy the JGI Isolate v19 form expects.'
+    examples:
+    - value: nmdc:orgn-99-cot0001
+      description: Reference to a host Organism instance in organism_set (e.g. cotton,
+        Gossypium hirsutum).
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/3054
     range: Organism
   sample_isolation_method:
     name: sample_isolation_method
@@ -21907,13 +21926,13 @@ classes:
     slots:
     - associated_studies
     - expected_organism
+    - host_organism
     - embargoed
     - provenance_metadata
     - external_database_identifiers
     - gold_organism_identifiers
     - collection_date
     - samp_name
-    - host_taxid
     - sample_isolation_method
     - sample_isolated_from
     - sample_collection_site
@@ -21930,6 +21949,12 @@ classes:
           interpolated: true
       expected_organism:
         name: expected_organism
+        pattern: ^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      host_organism:
+        name: host_organism
         pattern: ^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'
