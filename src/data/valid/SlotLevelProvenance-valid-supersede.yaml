@@ -1,0 +1,15 @@
+# Valid: record-level supersede. The deduplicated record is being superseded
+# by a canonical one; the new_value carries the superseding NMDC id.
+id: nmdc:slp-00-supr0001
+type: nmdc:SlotLevelProvenance
+target_record_id: nmdc:bsm-13-oldsmpl1
+target_class: nmdc:Biosample
+path: ""
+operation: supersede
+new_value: "nmdc:bsm-13-newsmpl1"
+changed_at: "2026-03-15T18:00:00Z"
+agent_id: "0000-0001-2345-6789"
+agent_role: curator
+reason: data_correction
+commentary: "Sample was duplicated in ingest; merging into canonical record."
+schema_version_at_change: "11.18.0"

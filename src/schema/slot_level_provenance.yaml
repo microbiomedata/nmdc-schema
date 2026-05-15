@@ -46,6 +46,43 @@ classes:
         schema concern.
     broad_mappings:
       - prov:Activity
+    examples:
+      - description: >-
+          A curator updating env_broad_scale on a Biosample via a changesheet.
+        object:
+          id: nmdc:slp-00-curupd01
+          type: nmdc:SlotLevelProvenance
+          target_record_id: nmdc:bsm-13-amrnys72
+          target_class: nmdc:Biosample
+          path: /env_broad_scale/term/id
+          operation: update
+          previous_value: "ENVO:00002030"
+          new_value: "ENVO:00000446"
+          changed_at: "2026-04-03T14:22:00Z"
+          agent_id: "0000-0001-2345-6789"
+          agent_role: curator
+          batch_id: "changesheet:2026-04-03-aliciaclum-001"
+          reason: data_correction
+          commentary: "Reclassified to terrestrial biome after MIxS template review."
+          source_record_locator: "changesheet:nmdc:cs-2026-04-03-001"
+          schema_version_at_change: "11.19.1"
+      - description: >-
+          Initial GOLD ETL ingest creating a Biosample record.
+        object:
+          id: nmdc:slp-00-goldcr01
+          type: nmdc:SlotLevelProvenance
+          target_record_id: nmdc:bsm-13-amrnys72
+          target_class: nmdc:Biosample
+          path: ""
+          operation: create
+          new_value_hash: a3f2e1c4b5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2
+          changed_at: "2024-10-30T00:00:00Z"
+          agent_id: gold_etl_v2.4.1
+          agent_role: external_ingest
+          batch_id: "gold-ingest:2024-10-30-batch-7"
+          reason: ingest
+          source_record_locator: "gold:Gs0110115"
+          schema_version_at_change: "10.7.0"
     slots:
       - target_record_id
       - target_class

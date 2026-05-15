@@ -1,0 +1,17 @@
+# Valid: ETL ingest creating a record. path is "" for whole-record create.
+# new_value omitted in favor of new_value_hash because the value is the
+# entire serialized record.
+id: nmdc:slp-00-goldcr01
+type: nmdc:SlotLevelProvenance
+target_record_id: nmdc:bsm-13-amrnys72
+target_class: nmdc:Biosample
+path: ""
+operation: create
+new_value_hash: a3f2e1c4b5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2
+changed_at: "2024-10-30T00:00:00Z"
+agent_id: gold_etl_v2.4.1
+agent_role: external_ingest
+batch_id: "gold-ingest:2024-10-30-batch-7"
+reason: ingest
+source_record_locator: "gold:Gs0110115"
+schema_version_at_change: "10.7.0"
