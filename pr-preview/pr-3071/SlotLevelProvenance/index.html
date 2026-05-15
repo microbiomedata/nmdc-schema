@@ -632,12 +632,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../type/">type</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>the class_uri of the class that has been instantiated</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A unique identifier for a thing</td>
@@ -659,6 +653,12 @@
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of alternative identifiers for the entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -800,7 +800,6 @@ slots:
 - approved_by
 - approved_at
 - reverted_by
-- type
 class_uri: nmdc:SlotLevelProvenance
 
 </code></pre>
@@ -1095,52 +1094,6 @@ attributes:
     domain_of:
     - SlotLevelProvenance
     range: SlotLevelProvenance
-  type:
-    name: type
-    description: the class_uri of the class that has been instantiated
-    notes:
-    - makes it easier to read example data files
-    - required for polymorphic MongoDB collections
-    examples:
-    - value: nmdc:Biosample
-    - value: nmdc:Study
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
-    structured_aliases:
-    - literal_form: workflow_execution_class
-      predicate: NARROW_SYNONYM
-      contexts:
-      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-    rank: 1000
-    slot_uri: rdf:type
-    designates_type: true
-    alias: type
-    owner: SlotLevelProvenance
-    domain_of:
-    - EukEval
-    - FunctionalAnnotationAggMember
-    - PeptideQuantification
-    - ProteinQuantification
-    - GenomeFeature
-    - FunctionalAnnotation
-    - AttributeValue
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
-    - NamedThing
-    - OntologyRelation
-    - FailureCategorization
-    - Protocol
-    - CreditAssociation
-    - Doi
-    - ProvenanceMetadata
-    - SlotLevelProvenance
-    range: uriorcurie
-    required: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -1213,6 +1166,51 @@ attributes:
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+    - literal_form: workflow_execution_class
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: SlotLevelProvenance
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - NamedThing
+    - OntologyRelation
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    - ProvenanceMetadata
+    range: uriorcurie
+    required: true
 class_uri: nmdc:SlotLevelProvenance
 
 </code></pre>

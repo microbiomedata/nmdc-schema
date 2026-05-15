@@ -15054,8 +15054,8 @@
                 "agent_id",
                 "agent_role",
                 "schema_version_at_change",
-                "type",
-                "id"
+                "id",
+                "type"
             ],
             "title": "SlotLevelProvenance",
             "type": "object"
@@ -16631,6 +16631,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.1.post86.dev0+f75773b5d"
+    "version": "11.19.1.post87.dev0+c751ccd88"
 }
 
