@@ -34,7 +34,6 @@ prefixes:
   FMA: "http://purl.obolibrary.org/obo/FMA_"
   GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_" # for library_preparation_kit, contig identifier and count only
   GO: "http://purl.obolibrary.org/obo/GO_"
-  GOLDTERMS: "https://w3id.org/gold.path/"   # path-anchored GOLD ecosystem terms (semantic-sql bbop-sqlite/goldterms.db.gz)
   GOLDVOCAB: "https://w3id.org/gold.vocab/"  # name-string GOLD ecosystem terms; distinct from `gold` (project IDs at bioregistry.io/gold)
   HMDB: "https://bioregistry.io/hmdb:" # https://bioregistry.io/hmdb:HMDB00001
   ISA: "http://example.org/isa/"
