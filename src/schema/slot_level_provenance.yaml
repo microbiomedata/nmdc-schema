@@ -104,7 +104,6 @@ classes:
       - approved_by
       - approved_at
       - reverted_by
-      - type
 
 slots:
   target_record_id:
