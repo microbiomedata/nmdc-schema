@@ -1282,6 +1282,9 @@ classes:
     class_uri: nmdc:ProcessedSample
     is_a: Sample
     title: Processed Sample
+    description: >-
+      A Sample produced from another Sample through a MaterialProcessing event
+      recorded in nmdc-schema.
     slots:
       - biomaterial_purity
       - dna_absorb1
