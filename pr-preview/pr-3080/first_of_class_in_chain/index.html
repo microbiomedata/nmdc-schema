@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/first_in_chain/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/first_of_class_in_chain/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: first_in_chain - NMDC Schema Documentation</title>
+        <title>Slot: first_of_class_in_chain - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-first_in_chain" class="md-skip">
+        <a href="#slot-first_of_class_in_chain" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: first_in_chain
+              Slot: first_of_class_in_chain
             
           </span>
         </div>
@@ -727,10 +727,10 @@
   
 
 
-<h1 id="slot-first_in_chain">Slot: first_in_chain</h1>
-<p><em>Marks a sample as the head of a processing or culturing chain, that is, the earliest sample of its class for which the chain is documented in NMDC. Provided as a convenience flag, not a normative claim about chain identity.</em></p>
+<h1 id="slot-first_of_class_in_chain">Slot: first_of_class_in_chain</h1>
+<p><em>Marks an instance as the first of its class in a processing or workflow-execution chain. Read literally: of all instances of this class reachable along the chain through has_input / has_output, this one is the earliest. Provided as a convenience flag, not a normative claim about chain identity.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/first_in_chain">nmdc:first_in_chain</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/first_of_class_in_chain">nmdc:first_of_class_in_chain</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -760,8 +760,9 @@
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Backward traversal through has_input / has_output is expensive in a document store like MongoDB. This slot lets a single forward query return the head of a chain without recursive joins. The same answer can be derived from chain topology, so the assertion is bookkeeping, not new information.</li>
-<li>Convention is to assert only when true. Absence of the slot is the negation. The flag may become stale if a new earlier sample is later added to the chain; in that case the new earliest sample MUST set first_in_chain to true and the previous head MUST have the slot removed (not set to false).</li>
+<li>Backward traversal through has_input / has_output is expensive in a document store like MongoDB. This slot lets a single forward query return the first-of-class instance in a chain without recursive joins. The same answer is derivable from chain topology, so the assertion is bookkeeping rather than new information.</li>
+<li>Convention is to assert only when true. Absence of the slot is the negation. The flag may become stale if a new earlier instance is later added to the chain; in that case the new earliest instance MUST set first_of_class_in_chain to true and the previous head MUST have the slot removed (not set to false).</li>
+<li>Note that "chain" here means the per-class slice. For a chain Biosample -&gt; ProcessedSample -&gt; ProcessedSample -&gt; ... the first ProcessedSample carries first_of_class_in_chain=true; the absolute head of the chain is the Biosample and is not marked because Biosample does not carry this slot.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -790,24 +791,29 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: first_in_chain
-description: Marks a sample as the head of a processing or culturing chain, that is,
-  the earliest sample of its class for which the chain is documented in NMDC. Provided
-  as a convenience flag, not a normative claim about chain identity.
+<pre><code class="language-yaml">name: first_of_class_in_chain
+description: 'Marks an instance as the first of its class in a processing or workflow-execution
+  chain. Read literally: of all instances of this class reachable along the chain
+  through has_input / has_output, this one is the earliest. Provided as a convenience
+  flag, not a normative claim about chain identity.'
 comments:
 - Backward traversal through has_input / has_output is expensive in a document store
-  like MongoDB. This slot lets a single forward query return the head of a chain without
-  recursive joins. The same answer can be derived from chain topology, so the assertion
-  is bookkeeping, not new information.
+  like MongoDB. This slot lets a single forward query return the first-of-class instance
+  in a chain without recursive joins. The same answer is derivable from chain topology,
+  so the assertion is bookkeeping rather than new information.
 - Convention is to assert only when true. Absence of the slot is the negation. The
-  flag may become stale if a new earlier sample is later added to the chain; in that
-  case the new earliest sample MUST set first_in_chain to true and the previous head
-  MUST have the slot removed (not set to false).
+  flag may become stale if a new earlier instance is later added to the chain; in
+  that case the new earliest instance MUST set first_of_class_in_chain to true and
+  the previous head MUST have the slot removed (not set to false).
+- Note that &quot;chain&quot; here means the per-class slice. For a chain Biosample -&gt; ProcessedSample
+  -&gt; ProcessedSample -&gt; ... the first ProcessedSample carries first_of_class_in_chain=true;
+  the absolute head of the chain is the Biosample and is not marked because Biosample
+  does not carry this slot.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/3050
 rank: 1000
-alias: first_in_chain
+alias: first_of_class_in_chain
 domain_of:
 - ProcessedSample
 - OrganismSample

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.1.post86.dev0+28c160eb2
+version: 11.19.1.post87.dev0+b929375c0
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6865,20 +6865,25 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: boolean
     recommended: true
-  first_in_chain:
-    name: first_in_chain
-    description: Marks a sample as the head of a processing or culturing chain, that
-      is, the earliest sample of its class for which the chain is documented in NMDC.
-      Provided as a convenience flag, not a normative claim about chain identity.
+  first_of_class_in_chain:
+    name: first_of_class_in_chain
+    description: 'Marks an instance as the first of its class in a processing or workflow-execution
+      chain. Read literally: of all instances of this class reachable along the chain
+      through has_input / has_output, this one is the earliest. Provided as a convenience
+      flag, not a normative claim about chain identity.'
     comments:
     - Backward traversal through has_input / has_output is expensive in a document
-      store like MongoDB. This slot lets a single forward query return the head of
-      a chain without recursive joins. The same answer can be derived from chain topology,
-      so the assertion is bookkeeping, not new information.
+      store like MongoDB. This slot lets a single forward query return the first-of-class
+      instance in a chain without recursive joins. The same answer is derivable from
+      chain topology, so the assertion is bookkeeping rather than new information.
     - Convention is to assert only when true. Absence of the slot is the negation.
-      The flag may become stale if a new earlier sample is later added to the chain;
-      in that case the new earliest sample MUST set first_in_chain to true and the
-      previous head MUST have the slot removed (not set to false).
+      The flag may become stale if a new earlier instance is later added to the chain;
+      in that case the new earliest instance MUST set first_of_class_in_chain to true
+      and the previous head MUST have the slot removed (not set to false).
+    - Note that "chain" here means the per-class slice. For a chain Biosample -> ProcessedSample
+      -> ProcessedSample -> ... the first ProcessedSample carries first_of_class_in_chain=true;
+      the absolute head of the chain is the Biosample and is not marked because Biosample
+      does not carry this slot.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3050
@@ -21557,7 +21562,7 @@ classes:
     - dna_absorb1
     - dna_concentration
     - external_database_identifiers
-    - first_in_chain
+    - first_of_class_in_chain
     - sampled_portion
     slot_usage:
       id:
@@ -21600,7 +21605,7 @@ classes:
     - associated_studies
     - expected_organism
     - embargoed
-    - first_in_chain
+    - first_of_class_in_chain
     - provenance_metadata
     - external_database_identifiers
     - gold_organism_identifiers
