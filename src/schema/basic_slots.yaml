@@ -230,14 +230,9 @@ slots:
       - >-
         Convention is to assert only when true. Absence of the slot is the
         negation. The flag may become stale if a new earlier sample is later
-        added to the chain; in that case the new earliest sample SHOULD set
-        first_in_chain to true and the previous head SHOULD have the slot
+        added to the chain; in that case the new earliest sample MUST set
+        first_in_chain to true and the previous head MUST have the slot
         removed (not set to false).
-      - >-
-        Open design question (cmungall, 2026-05-18 DM): a chain might be
-        better modeled as a first-class entity identified by its initial
-        Sample subclass instance plus one or more terminal data objects.
-        That direction would supersede this slot.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/3050
 
