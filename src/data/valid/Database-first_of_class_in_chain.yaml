@@ -6,6 +6,12 @@
 # Downstream instances of the same class do not assert the slot at all (per the
 # "do not assert false" convention documented on the slot).
 #
+# The slot is also wired onto DataObject (chains through workflow_execution_set
+# via has_input / has_output, same pattern). A DataObject example is not included
+# here because a minimal WorkflowExecution instance requires several additional
+# required slots (was_informed_by, etc.) that would not add clarity beyond the
+# two sample-chain demos below.
+#
 # Chains:
 #   osm-aaaaaa1 (first_of_class_in_chain: true)
 #     -[Culturing cultp-aaaaaa9]-> osm-aaaaaa2 (no assertion)
