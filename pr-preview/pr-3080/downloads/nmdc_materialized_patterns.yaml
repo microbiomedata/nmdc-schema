@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.1.post85.dev0+7cf2591c6
+version: 11.19.1.post86.dev0+28c160eb2
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6877,11 +6877,8 @@ slots:
       so the assertion is bookkeeping, not new information.
     - Convention is to assert only when true. Absence of the slot is the negation.
       The flag may become stale if a new earlier sample is later added to the chain;
-      in that case the new earliest sample SHOULD set first_in_chain to true and the
-      previous head SHOULD have the slot removed (not set to false).
-    - 'Open design question (cmungall, 2026-05-18 DM): a chain might be better modeled
-      as a first-class entity identified by its initial Sample subclass instance plus
-      one or more terminal data objects. That direction would supersede this slot.'
+      in that case the new earliest sample MUST set first_in_chain to true and the
+      previous head MUST have the slot removed (not set to false).
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3050
