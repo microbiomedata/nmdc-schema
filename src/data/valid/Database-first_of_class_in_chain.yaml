@@ -1,23 +1,23 @@
-# Demonstrates the first_in_chain convenience flag (issue #3050).
+# Demonstrates the first_of_class_in_chain convenience flag (issue #3050).
 #
 # Two short chains, one rooted in OrganismSample and one rooted in ProcessedSample,
 # each linked by a MaterialProcessing instance through has_input / has_output.
-# Only the head of each chain asserts first_in_chain: true. Downstream members of
-# the same class do not assert the slot at all (per the "do not assert false"
-# convention documented on the slot).
+# Only the first-of-class instance in each chain asserts first_of_class_in_chain: true.
+# Downstream instances of the same class do not assert the slot at all (per the
+# "do not assert false" convention documented on the slot).
 #
 # Chains:
-#   osm-aaaaaa1 (first_in_chain: true)
-#     -[Culturing cultp-aaaaaa9]-> osm-aaaaaa2 (no first_in_chain)
+#   osm-aaaaaa1 (first_of_class_in_chain: true)
+#     -[Culturing cultp-aaaaaa9]-> osm-aaaaaa2 (no assertion)
 #
-#   procsm-bbbbbb1 (first_in_chain: true)
-#     -[LibraryPreparation libprp-bbbbbb9]-> procsm-bbbbbb2 (no first_in_chain)
+#   procsm-bbbbbb1 (first_of_class_in_chain: true)
+#     -[LibraryPreparation libprp-bbbbbb9]-> procsm-bbbbbb2 (no assertion)
 
 organism_sample_set:
   - id: nmdc:osm-99-aaaaaa1
     type: nmdc:OrganismSample
     samp_name: head_isolate
-    first_in_chain: true
+    first_of_class_in_chain: true
     associated_studies:
       - nmdc:sty-99-firstinchaindemo
   - id: nmdc:osm-99-aaaaaa2
@@ -29,7 +29,7 @@ organism_sample_set:
 processed_sample_set:
   - id: nmdc:procsm-99-bbbbbb1
     type: nmdc:ProcessedSample
-    first_in_chain: true
+    first_of_class_in_chain: true
   - id: nmdc:procsm-99-bbbbbb2
     type: nmdc:ProcessedSample
 
