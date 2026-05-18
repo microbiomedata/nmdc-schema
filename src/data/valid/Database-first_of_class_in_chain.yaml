@@ -13,11 +13,11 @@
 # two sample-chain demos below.
 #
 # Chains:
-#   osm-aaaaaa1 (first_of_class_in_chain: true)
-#     -[Culturing cultp-aaaaaa9]-> osm-aaaaaa2 (no assertion)
+#   nmdc:osm-99-aaaaaa1 (first_of_class_in_chain: true)
+#     -[Culturing nmdc:cultp-99-aaaaaa9]-> nmdc:osm-99-aaaaaa2 (no assertion)
 #
-#   procsm-bbbbbb1 (first_of_class_in_chain: true)
-#     -[LibraryPreparation libprp-bbbbbb9]-> procsm-bbbbbb2 (no assertion)
+#   nmdc:procsm-99-bbbbbb1 (first_of_class_in_chain: true)
+#     -[LibraryPreparation nmdc:libprp-99-bbbbbb9]-> nmdc:procsm-99-bbbbbb2 (no assertion)
 
 organism_sample_set:
   - id: nmdc:osm-99-aaaaaa1

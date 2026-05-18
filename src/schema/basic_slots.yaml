@@ -240,6 +240,14 @@ slots:
         ProcessedSample carries first_of_class_in_chain=true; the absolute
         head of the chain is the Biosample and is not marked because
         Biosample does not carry this slot.
+      - >-
+        Enforcement gap: because the range is boolean, the schema and its
+        generated validators will accept first_of_class_in_chain=false
+        despite the "never assert false" convention above. LinkML rule
+        machinery could in principle enforce this, but generator support
+        is uneven; the convention is documented here and is the same kind
+        of cross-document discipline gap that affects "at most one per
+        chain per class" (see PR description, enforcement gap section).
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/3050
 
