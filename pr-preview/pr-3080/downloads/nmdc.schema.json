@@ -6268,6 +6268,13 @@
                         "null"
                     ]
                 },
+                "first_of_class_in_chain": {
+                    "description": "Marks an instance as the first of its class in a processing or workflow-execution chain. Read literally: of all instances of this class reachable along the chain through has_input / has_output, this one is the earliest. Provided as a convenience flag, not a normative claim about chain identity.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
@@ -16105,5 +16112,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.1.post87.dev0+b929375c0"
+    "version": "11.19.1.post88.dev0+7a2b24698"
 }

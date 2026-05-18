@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.1.post87.dev0+b929375c0
+version: 11.19.1.post88.dev0+7a2b24698
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -20208,6 +20208,7 @@ classes:
     - data_category
     - data_object_type
     - file_size_bytes
+    - first_of_class_in_chain
     - insdc_experiment_identifiers
     - md5_checksum
     - url
