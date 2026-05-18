@@ -213,6 +213,34 @@ slots:
       - try to apply to all Biosamples in a particular nmdc-server SubmissionMetadata?
       - applying to a Study may not be granular enough
 
+  first_in_chain:
+    description: >-
+      Marks a sample as the head of a processing or culturing chain, that is,
+      the earliest sample of its class for which the chain is documented in
+      NMDC. Provided as a convenience flag, not a normative claim about chain
+      identity.
+    range: boolean
+    comments:
+      - >-
+        Backward traversal through has_input / has_output is expensive in a
+        document store like MongoDB. This slot lets a single forward query
+        return the head of a chain without recursive joins. The same answer
+        can be derived from chain topology, so the assertion is bookkeeping,
+        not new information.
+      - >-
+        Convention is to assert only when true. Absence of the slot is the
+        negation. The flag may become stale if a new earlier sample is later
+        added to the chain; in that case the new earliest sample SHOULD set
+        first_in_chain to true and the previous head SHOULD have the slot
+        removed (not set to false).
+      - >-
+        Open design question (cmungall, 2026-05-18 DM): a chain might be
+        better modeled as a first-class entity identified by its initial
+        Sample subclass instance plus one or more terminal data objects.
+        That direction would supersede this slot.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3050
+
   habitat:
     range: string
 

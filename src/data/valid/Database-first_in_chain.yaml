@@ -1,0 +1,48 @@
+# Demonstrates the first_in_chain convenience flag (issue #3050).
+#
+# Two short chains, one rooted in OrganismSample and one rooted in ProcessedSample,
+# each linked by a MaterialProcessing instance through has_input / has_output.
+# Only the head of each chain asserts first_in_chain: true. Downstream members of
+# the same class do not assert the slot at all (per the "do not assert false"
+# convention documented on the slot).
+#
+# Chains:
+#   osm-aaaaaa1 (first_in_chain: true)
+#     -[Culturing cultp-aaaaaa9]-> osm-aaaaaa2 (no first_in_chain)
+#
+#   procsm-bbbbbb1 (first_in_chain: true)
+#     -[LibraryPreparation libprp-bbbbbb9]-> procsm-bbbbbb2 (no first_in_chain)
+
+organism_sample_set:
+  - id: nmdc:osm-99-aaaaaa1
+    type: nmdc:OrganismSample
+    samp_name: head_isolate
+    first_in_chain: true
+    associated_studies:
+      - nmdc:sty-99-firstinchaindemo
+  - id: nmdc:osm-99-aaaaaa2
+    type: nmdc:OrganismSample
+    samp_name: subculture_of_head_isolate
+    associated_studies:
+      - nmdc:sty-99-firstinchaindemo
+
+processed_sample_set:
+  - id: nmdc:procsm-99-bbbbbb1
+    type: nmdc:ProcessedSample
+    first_in_chain: true
+  - id: nmdc:procsm-99-bbbbbb2
+    type: nmdc:ProcessedSample
+
+material_processing_set:
+  - id: nmdc:cultp-99-aaaaaa9
+    type: nmdc:Culturing
+    has_input:
+      - nmdc:osm-99-aaaaaa1
+    has_output:
+      - nmdc:osm-99-aaaaaa2
+  - id: nmdc:libprp-99-bbbbbb9
+    type: nmdc:LibraryPreparation
+    has_input:
+      - nmdc:procsm-99-bbbbbb1
+    has_output:
+      - nmdc:procsm-99-bbbbbb2

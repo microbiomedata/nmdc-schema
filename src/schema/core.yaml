@@ -1287,6 +1287,7 @@ classes:
       - dna_absorb1
       - dna_concentration
       - external_database_identifiers
+      - first_in_chain
       - sampled_portion
 
     slot_usage:
@@ -1310,6 +1311,7 @@ classes:
       - associated_studies
       - expected_organism
       - embargoed
+      - first_in_chain
       - provenance_metadata
       - external_database_identifiers
       - gold_organism_identifiers
