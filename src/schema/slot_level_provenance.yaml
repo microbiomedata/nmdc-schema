@@ -83,6 +83,31 @@ classes:
           reason: ingest
           source_record_locator: "gold:Gs0110115"
           schema_version_at_change: "10.7.0"
+      - description: >-
+          An AI suggester filling in lat_lon by combining geo_loc_name
+          on the same Biosample with funding_sources on the parent
+          Study (which scoped the suggester to plausible regions). The
+          derivation_inputs slot points at every source slot the
+          suggester read; the input on the Study record is referenced
+          by NMDC id plus JSON Pointer.
+        object:
+          id: nmdc:slp-00-geocode01
+          type: nmdc:SlotLevelProvenance
+          target_record_id: nmdc:bsm-99-foo
+          target_class: nmdc:Biosample
+          path: /lat_lon
+          operation: create
+          new_value: "-33.460524 150.168149"
+          changed_at: "2026-05-19T15:00:00Z"
+          agent_id: nominatim_geocoder_v1.0
+          agent_role: automated_pipeline
+          batch_id: "ai-suggester:2026-05-19-geocode-batch-3"
+          reason: cross_slot_derivation
+          commentary: "Derived from /geo_loc_name = 'Lithgow, NSW, Australia' via Nominatim, with study scope used to disambiguate. Reverse-derivable to within ~3 km of the centroid."
+          derivation_inputs:
+            - "/geo_loc_name"
+            - "nmdc:sty-99-foo#/funding_sources"
+          schema_version_at_change: "11.19.1"
     slots:
       - target_record_id
       - target_class
@@ -99,6 +124,7 @@ classes:
       - reason
       - commentary
       - source_record_locator
+      - derivation_inputs
       - schema_version_at_change
       - approval_status
       - approved_by
@@ -208,11 +234,30 @@ slots:
     range: string
 
   source_record_locator:
-    description: >-
-      Pointer to the upstream source that drove the change: a changesheet
-      identifier, migrator name and version, ETL run identifier, or
-      external system row reference.
+    description: Pointer to the upstream operational source that drove the change.
     range: string
+    comments:
+      - >-
+        For values derived from existing slot values on NMDC records,
+        use derivation_inputs instead.
+    examples:
+      - value: "changesheet:nmdc:cs-2026-04-03-001"
+      - value: "migrator_from_11_18_0_to_11_19_0"
+      - value: "gold:Gs0110115"
+
+  derivation_inputs:
+    description: The slot(s) the agent read from to compute the new value.
+    range: string
+    multivalued: true
+    comments:
+      - >-
+        Each entry is a JSON Pointer into a NMDC record. Entries on
+        the same record as target_record_id are bare pointers; entries
+        on a different record use the record's NMDC id followed by "#"
+        and the JSON Pointer.
+    examples:
+      - value: "/geo_loc_name"
+      - value: "nmdc:sty-99-foo#/funding_sources"
 
   schema_version_at_change:
     description: >-
@@ -304,6 +349,13 @@ enums:
         description: Initial ingest of a record from an external source.
       bootstrap:
         description: System-generated record at SlotLevelProvenance retrofit.
+      cross_slot_derivation:
+        description: The new value was computed from one or more existing slot values by an agent.
+        comments:
+          - >-
+            The input slots are listed in derivation_inputs. Typical
+            agents include geocoders, taxonomic classifiers, and AI
+            suggesters.
       other:
         description: A reason not covered by the other permissible values. See commentary.
 

@@ -49,18 +49,169 @@ db.biosample_set.find({"provenance_metadata.mod_date": {$gt: ISODate("2026-04-01
 
 ### 2. `has_raw_value` (raw-vs-coerced pattern)
 
-Required slot on every `AttributeValue` subclass (`TextValue`,
-`QuantityValue`, `ControlledTermValue`, `TimestampValue`,
-`ControlledIdentifiedTermValue`, `PropertyAssertion`, `GeoLocationNameValue`,
-and others). Stores the value as the submitter wrote it, alongside the
-parsed / typed / structured fields.
+A convention used throughout `nmdc-schema`: wrapper classes that buffer
+a raw, contributor-supplied form of a value alongside a coerced,
+NMDC-normalized form. This is implicit slot-value-level provenance —
+NMDC retains the original input as evidence even after applying its
+own parse, classification, or canonicalization. It is the field-level
+analogue of the audit trail that `ProvenanceMetadata` provides at the
+record level.
+
+A wrapper class holds two parallel representations of the same fact:
+
+1. A **raw form** that preserves the contributor's exact submission.
+2. A **coerced form** that is NMDC's normalized, validated, or
+   ontology-resolved interpretation of the raw form.
+
+`has_raw_value` is required on every `AttributeValue` subclass
+(`TextValue`, `QuantityValue`, `ControlledTermValue`, `TimestampValue`,
+`ControlledIdentifiedTermValue`, `PropertyAssertion`, `GeolocationValue`,
+and others). It stores the value as the submitter wrote it, alongside
+the parsed / typed / structured fields.
 
 Captures: what the submitter wrote, so the original input is recoverable
 after the schema applies a coercion or normalization.
 
 Does NOT capture: when the coercion happened or who applied it.
 
-See [`raw-vs-coerced.md`](./raw-vs-coerced.md) for the pattern in detail.
+#### Canonical examples in the schema
+
+**`QuantityValue`** — raw `has_raw_value: "50 kPa"` → coerced
+`has_numeric_value: 50`, `has_unit: kPa`.
+
+**`TimestampValue`** — raw `has_raw_value: "30-OCT-14 12.00.00.000000000 AM"`
+(e.g. GOLD-format) → coerced ISO-8601 datetime. v11.17.0's
+`normalize_date_to_datetime()` migrator does the canonicalization.
+
+**`ControlledIdentifiedTermValue`** — raw free-text term string in
+`has_raw_value` → coerced `term` reference to an `OntologyClass`. The
+example file `Database-provenance-forms.yaml` shows three different
+shapes of difference between raw and coerced (label-only raw, different
+casing, portal labeled-CURIE form).
+
+**`PropertyAssertion`** — the most disciplined instance.
+`has_raw_value` is **required**. Used as the fallback class for
+properties that don't align with a policy-governed slot; preserves the
+contributor's string so nothing is lost when the schema parses out a
+numeric value, unit, attribute label, and attribute id alongside.
+
+#### Recommended discipline for new wrapper classes
+
+When designing a class that coerces a contributor input into a
+structured form:
+
+1. **Provide a raw-capture slot.** `has_raw_value` for `AttributeValue`
+   descendants; a literal-typed slot otherwise.
+2. **Make the raw-capture slot required.** Today only `PropertyAssertion`
+   enforces this. The cost of an optional raw-capture is that the raw
+   form gets silently dropped after coercion, losing field-level provenance.
+3. **Provide one or more coerced slots** holding NMDC's interpretation.
+4. **When coercion can change over time** (NCBI taxon reclassification,
+   ENVO term replacement, etc.), document this in the class and
+   consider whether a future `SlotLevelProvenance` record should
+   accompany re-coercions.
+
+#### Gaps: slots that currently lack a coerced counterpart
+
+Some MIxS / NMDC slots provide `has_raw_value` (because they are typed
+as a `TextValue`-flavored wrapper) but lack a structured coerced form
+that would benefit from one:
+
+- `isolation_source` (MIxS, range `TextValue`): gets `has_raw_value`
+  for free but has no ENVO-coercion target.
+- `geo_loc_name` (MIxS, range `TextValue`): no structured form for
+  country or locality. `GeolocationValue` (used by the companion
+  `lat_lon` slot) covers only latitude/longitude, not the locality
+  hierarchy. The pairing of `geo_loc_name` and `lat_lon` is treated as
+  a cross-slot derivation case (see next subsection).
+- `env_package` (`core.yaml`): ranged at `TextValue` instead of a
+  coerced enum despite only certain package names being valid.
+- `processing_institution_workflow_metadata`: single free-string slot;
+  no structured form for vendor metadata blobs.
+
+Note: the raw-vs-coerced pattern is **distinct** from parallel
+classifications attached to the same entity (e.g. `Doi.doi_value`
+plus `Doi.doi_provider` + `Doi.doi_category`; `Organism.name` plus
+`Organism.classified_as`; GOLD ecosystem path slots plus the ENVO
+triad on `Biosample`). Those are separate categorical assertions
+about the same entity, not parsed forms of a single submitted value.
+The next subsection documents that pattern under its own name.
+
+### 2a. Cross-slot derivation (agent-mediated)
+
+A second pattern with provenance implications: an agent reads values
+from one or more slots, possibly on multiple records of multiple
+classes, and writes a derived value to another slot. The inputs and
+the output are **parallel assertions** about the same or related
+entities, expressed in different vocabularies. None of the inputs is
+a parse of the output, but each contributes to its derivation by an
+agent (geocoder, taxonomic classifier, ontology mapper, AI suggester,
+curator with a web service open).
+
+The classic case is a single input on the same record:
+
+| Slot pair | Same entity | Derivation direction |
+|---|---|---|
+| `geo_loc_name` ↔ `lat_lon` | Sample collection location | place name ⇆ coordinates via a geocoder |
+| `Organism.name` (et al.) ↔ `Organism.classified_as` | Organism identity | label ⇆ NCBI taxon via classification |
+| `Doi.doi_value` ↔ `Doi.doi_provider`, `Doi.doi_category` | One DOI | CURIE ⇆ provider / kind via registry lookup |
+| GOLD `ecosystem*` path slots ↔ ENVO triad (`env_broad_scale`, `env_local_scale`, `env_medium`) | Sample environment | GOLD path ⇆ ENVO terms via vocabulary mapping |
+
+The general case is N-to-M: an agent may read **multiple input slots
+across multiple records of multiple classes** and write one (or more)
+output values. Examples:
+
+- An AI suggester proposes `lat_lon` from `geo_loc_name` on the
+  Biosample plus the parent `Study.funding_sources` to disambiguate
+  region.
+- A taxonomic classifier proposes `classified_as` from `Organism.name`
+  + `strain_name` + `isolate_name`, possibly combined with the
+  Biosample's `samp_taxon_id` for context.
+- An ENVO mapping pulls from a Biosample's GOLD `ecosystem*` path
+  AND a related `Site.geographic_location` to choose the ENVO triad.
+
+Captures (when derivations are recorded): which agent did the
+derivation, in which direction, when, using what reference service or
+model, all of the source slots / records consulted, and what the
+final output was.
+
+Does NOT capture (without explicit instrumentation): a derivation
+that happens silently. An agent that fills in `lat_lon` from
+`geo_loc_name` without writing a provenance record leaves the new
+value indistinguishable from a value the submitter provided directly.
+
+Recording mechanism: a `SlotLevelProvenance` record with
+- `reason: cross_slot_derivation`,
+- `agent_id` and `agent_role` identifying the agent and its capacity,
+- `derivation_inputs` listing every slot the agent read from, in
+  JSON Pointer form. Entries on the same record as `target_record_id`
+  are bare pointers like `/geo_loc_name`; entries on a different
+  record use the record's NMDC id plus `#` plus the pointer, like
+  `nmdc:sty-99-foo#/funding_sources`.
+
+`source_record_locator` is reserved for the upstream operational
+source (a changesheet identifier, migrator name, ETL run id), not for
+in-record / cross-record slot inputs. The geocoding example in
+`src/schema/slot_level_provenance.yaml`'s `examples:` block shows both
+slots being used together.
+
+Recommended discipline: any NMDC agent that fills a slot by computing
+from one or more existing slots (anywhere in the database) SHOULD
+write a `SlotLevelProvenance` record at the same time. The derivation
+event is the only place to capture which agent did the conversion,
+which external service was consulted, what inputs it consumed, and
+how confident the result is. None of the other in-schema mechanisms
+cover this.
+
+Pattern vs raw-vs-coerced, side-by-side:
+
+| | Raw vs coerced | Cross-slot derivation |
+|---|---|---|
+| Same fact, two reps? | Yes | No: two or more facts that constrain each other |
+| Inputs | Always exactly one (the raw value) | One or many, possibly across records and classes |
+| Lossy? | Yes (one direction; parsing throws structure away) | Often lossy in every direction |
+| Mediated by? | Schema parser / coercion logic | Agent (geocoder, classifier, AI model, curator) |
+| Provenance event triggered? | Implicit (one parse on ingest) | Explicit (per derivation, per agent) |
 
 Query examples:
 
