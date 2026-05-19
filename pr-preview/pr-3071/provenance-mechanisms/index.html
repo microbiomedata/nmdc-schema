@@ -691,17 +691,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#7-drs-stored-changesheets-dataobjects-with-changesheet-content" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. DRS-stored changesheets (DataObjects with changesheet content)
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -718,6 +707,17 @@
   
     <nav class="md-nav" aria-label="Operational mechanisms (not in the schema)">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#7-drs-stored-changesheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. DRS-stored changesheets
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#8-nmdc_deleted-and-nmdc_updated-shadow-databases" class="md-nav__link">
@@ -1059,12 +1059,20 @@ db.data_object_set.aggregate([
   }}
 ])
 </code></pre>
-<h3 id="7-drs-stored-changesheets-dataobjects-with-changesheet-content">7. DRS-stored changesheets (DataObjects with changesheet content)</h3>
-<p>Every executed changesheet is saved to MongoDB GridFS by <code>nmdc-runtime</code>
-and registered as a <code>DataObject</code>-like DRS entry. The contents are the
-TSV the curator submitted. The runtime uses <code>types: metadata-changesheet</code>
-at the JSON level; there is not yet a dedicated <code>FileTypeEnum</code> value
-for this in nmdc-schema.</p>
+<h2 id="operational-mechanisms-not-in-the-schema">Operational mechanisms (not in the schema)</h2>
+<p>These live in <code>nmdc-runtime</code> collections and sibling Mongo namespaces.
+They are not expressible as instance data in this schema but are part
+of NMDC's provenance story.</p>
+<h3 id="7-drs-stored-changesheets">7. DRS-stored changesheets</h3>
+<p>Every executed changesheet is saved by <code>nmdc-runtime</code> to MongoDB GridFS
+and registered as a DRS-spec entry in the <code>objects</code> collection. The
+contents are the TSV the curator submitted. The runtime tags these
+entries with <code>types: metadata-changesheet</code>.</p>
+<p>These records are <strong>not</strong> instances of nmdc-schema's <code>DataObject</code> class.
+<code>DataObject</code> is the schema's class for workflow output files and lives
+in the <code>data_object_set</code> collection; the <code>objects</code> collection is the
+runtime's separate DRS-spec table. nmdc-schema does not currently model
+changesheets as a class.</p>
 <p>Captures: full text of every applied changesheet, plus the submitting
 user and timestamp.</p>
 <p>Does NOT directly link to which documents were changed; reconstruction
@@ -1077,10 +1085,6 @@ db.objects.find({&quot;types&quot;: &quot;metadata-changesheet&quot;})
 <pre><code class="language-bash"># Or via the public API
 curl -s &quot;https://api.microbiomedata.org/objects/&lt;drs_object_id&gt;&quot;
 </code></pre>
-<h2 id="operational-mechanisms-not-in-the-schema">Operational mechanisms (not in the schema)</h2>
-<p>These live in <code>nmdc-runtime</code> collections and sibling Mongo namespaces.
-They are not expressible as instance data in this schema but are part
-of NMDC's provenance story.</p>
 <h3 id="8-nmdc_deleted-and-nmdc_updated-shadow-databases">8. <code>nmdc_deleted</code> and <code>nmdc_updated</code> shadow databases</h3>
 <p>Sibling Mongo databases (not collections in <code>nmdc</code>). Before any delete
 or update via <code>POST /queries:run</code>, the runtime copies the pre-image:</p>
