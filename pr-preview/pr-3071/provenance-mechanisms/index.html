@@ -780,6 +780,111 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#researching-bulk-changes-outside-the-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Researching bulk changes outside the schema
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Researching bulk changes outside the schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recipe-a-find-every-change-to-a-specific-slot-in-the-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recipe A: Find every change to a specific slot in the schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-b-find-the-pr-that-introduced-a-particular-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recipe B: Find the PR that introduced a particular change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-c-read-release-notes-for-a-specific-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recipe C: Read release notes for a specific version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-d-inspect-schema-migrators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recipe D: Inspect schema migrators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-e-inspect-runtime-migration-notebooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recipe E: Inspect runtime migration notebooks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-f-correlate-a-records-mod_date-with-a-known-migration-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recipe F: Correlate a record's mod_date with a known migration window
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-g-search-prs-by-author-time-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recipe G: Search PRs by author + time + scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-h-find-what-was-happening-operationally-on-a-given-date" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recipe H: Find what was happening operationally on a given date
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#open-gaps-what-none-of-the-mechanisms-above-capture" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -855,23 +960,116 @@ parsed / typed / structured fields.</p>
 after the schema applies a coercion or normalization.</p>
 <p>Does NOT capture: when the coercion happened or who applied it.</p>
 <p>See <a href="../raw-vs-coerced/"><code>raw-vs-coerced.md</code></a> for the pattern in detail.</p>
+<p>Query examples:</p>
+<pre><code class="language-javascript">// Biosamples whose env_broad_scale has_raw_value differs from a clean
+// ENVO CURIE — revealing places where the ingest pipeline normalized
+// a free-text label into a structured term
+db.biosample_set.find({
+  &quot;env_broad_scale.has_raw_value&quot;: {$not: /^ENVO:\d+$/},
+  &quot;env_broad_scale.term.id&quot;: {$regex: /^ENVO:\d+$/}
+}, {id: 1, &quot;env_broad_scale.has_raw_value&quot;: 1, &quot;env_broad_scale.term.id&quot;: 1})
+</code></pre>
+<pre><code class="language-javascript">// Distinct raw vs coerced patterns across all has_raw_value occurrences
+// on a particular slot — useful for auditing normalization consistency
+db.biosample_set.aggregate([
+  {$project: {
+    raw: &quot;$env_broad_scale.has_raw_value&quot;,
+    coerced: &quot;$env_broad_scale.term.id&quot;
+  }},
+  {$group: {_id: {raw: &quot;$raw&quot;, coerced: &quot;$coerced&quot;}, n: {$sum: 1}}},
+  {$sort: {n: -1}},
+  {$limit: 50}
+])
+</code></pre>
 <h3 id="3-prov-style-timestamps-on-workflowexecution">3. PROV-style timestamps on <code>WorkflowExecution</code></h3>
 <p><code>started_at_time</code>, <code>ended_at_time</code> (mapped to <code>prov:startedAtTime</code> /
 <code>prov:endedAtTime</code>) plus <code>version</code>, <code>execution_resource</code>, <code>git_url</code>.</p>
 <p>Captures: when each workflow ran and which version of which pipeline.</p>
+<p>Query examples:</p>
+<pre><code class="language-javascript">// Workflows that ran during a date window, sorted by duration descending
+db.workflow_execution_set.aggregate([
+  {$match: {
+    started_at_time: {$gte: ISODate(&quot;2026-05-01&quot;), $lt: ISODate(&quot;2026-06-01&quot;)}
+  }},
+  {$addFields: {
+    duration_seconds: {
+      $divide: [{$subtract: [&quot;$ended_at_time&quot;, &quot;$started_at_time&quot;]}, 1000]
+    }
+  }},
+  {$sort: {duration_seconds: -1}},
+  {$limit: 20}
+])
+</code></pre>
+<pre><code class="language-javascript">// Distribution of pipeline versions across all workflow executions of one type
+db.workflow_execution_set.aggregate([
+  {$match: {type: &quot;nmdc:MetagenomeAssembly&quot;}},
+  {$group: {_id: {version: &quot;$version&quot;, git_url: &quot;$git_url&quot;}, n: {$sum: 1}}},
+  {$sort: {n: -1}}
+])
+</code></pre>
 <h3 id="4-was_informed_by-links">4. <code>was_informed_by</code> links</h3>
 <p>On <code>WorkflowExecution</code>. Points to the upstream <code>DataGeneration</code> instance
 that the workflow processed.</p>
 <p>Captures: a lineage edge from a workflow run to its informing data-
 generation event.</p>
+<p>Query examples:</p>
+<pre><code class="language-javascript">// All workflow runs informed by a particular DataGeneration
+db.workflow_execution_set.find(
+  {was_informed_by: &quot;nmdc:dgns-11-foo&quot;},
+  {id: 1, type: 1, started_at_time: 1, has_output: 1}
+)
+</code></pre>
+<pre><code class="language-javascript">// How many runs of each workflow type were informed by each DataGeneration?
+// (sanity check that no DataGeneration has surprisingly many reruns)
+db.workflow_execution_set.aggregate([
+  {$unwind: &quot;$was_informed_by&quot;},
+  {$group: {
+    _id: {informed_by: &quot;$was_informed_by&quot;, type: &quot;$type&quot;},
+    n: {$sum: 1}
+  }},
+  {$match: {n: {$gt: 3}}},
+  {$sort: {n: -1}}
+])
+</code></pre>
 <h3 id="5-was_generated_by-on-dataobject">5. <code>was_generated_by</code> on <code>DataObject</code></h3>
 <p>Points to the process (a <code>DataEmitterProcess</code>, typically a
 <code>WorkflowExecution</code> or <code>DataGeneration</code>) that produced the data object.</p>
 <p>Captures: a lineage edge from a file to its producing process.</p>
+<p>Query examples:</p>
+<pre><code class="language-javascript">// All DataObjects produced by a particular workflow run
+db.data_object_set.find(
+  {was_generated_by: &quot;nmdc:wfrqc-11-foo.1&quot;},
+  {id: 1, name: 1, data_object_type: 1, file_size_bytes: 1}
+)
+</code></pre>
+<pre><code class="language-javascript">// DataObjects that have no producing process recorded — candidates for
+// in-source / uploaded raw data
+db.data_object_set.find({was_generated_by: {$exists: false}}).count()
+</code></pre>
 <h3 id="6-superseded_by-on-dataobject-and-readqcanalysis">6. <code>superseded_by</code> on <code>DataObject</code> and <code>ReadQcAnalysis</code></h3>
 <p>Self-referential pointer to a newer version of the same logical record.</p>
 <p>Captures: that a record has been replaced; consumers should follow the
 pointer to find the current version. The older record is retained.</p>
+<p>Query examples:</p>
+<pre><code class="language-javascript">// All DataObjects that have been superseded (and what replaced them)
+db.data_object_set.find(
+  {superseded_by: {$exists: true}},
+  {id: 1, name: 1, superseded_by: 1}
+)
+</code></pre>
+<pre><code class="language-javascript">// Follow a supersession chain: given any DataObject id, walk forward
+// through superseded_by to find the current version
+db.data_object_set.aggregate([
+  {$match: {id: &quot;nmdc:dobj-11-old&quot;}},
+  {$graphLookup: {
+    from: &quot;data_object_set&quot;,
+    startWith: &quot;$superseded_by&quot;,
+    connectFromField: &quot;superseded_by&quot;,
+    connectToField: &quot;id&quot;,
+    as: &quot;successor_chain&quot;
+  }}
+])
+</code></pre>
 <h3 id="7-drs-stored-changesheets-dataobjects-with-changesheet-content">7. DRS-stored changesheets (DataObjects with changesheet content)</h3>
 <p>Every executed changesheet is saved to MongoDB GridFS by <code>nmdc-runtime</code>
 and registered as a <code>DataObject</code>-like DRS entry. The contents are the
@@ -955,6 +1153,144 @@ queryable as data.</p>
 Feeds the Dagit UI. Related to <code>run_events</code> but at a higher level
 (job-level rather than event-level).</p>
 <p>Source: in <code>nmdc-runtime</code>'s Dagster wiring.</p>
+<p>Query examples:</p>
+<pre><code class="language-javascript">// Most recent Dagster operations
+db.operations.find({}, {id: 1, metadata: 1, expire_time: 1}).sort({_id: -1}).limit(20)
+</code></pre>
+<pre><code class="language-javascript">// Operations that affected a particular collection
+db.operations.find({&quot;metadata.collection_name&quot;: &quot;biosample_set&quot;}).sort({_id: -1})
+</code></pre>
+<h2 id="researching-bulk-changes-outside-the-schema">Researching bulk changes outside the schema</h2>
+<p>Slot-level provenance addresses single-record edits. Many of the
+changes that actually happen to NMDC data are bulk transformations:
+schema migrations, ETL re-runs, mass corrections, slot renames. None
+of those are recorded per-record. Reconstructing them requires reading
+code, release notes, and repository history. Here are the practical
+recipes.</p>
+<h3 id="recipe-a-find-every-change-to-a-specific-slot-in-the-schema">Recipe A: Find every change to a specific slot in the schema</h3>
+<p>Use <code>git log -S</code> to find commits that added or removed lines containing
+a string, and <code>git log -G</code> to find commits where lines matching a
+regex were added or removed.</p>
+<pre><code class="language-bash">cd ~/gitrepos/nmdc-schema
+
+# When was the slot env_broad_scale first defined? Most-recently changed?
+git log --all -p -S '^  env_broad_scale:' -- src/schema/ | head -80
+
+# Every commit that changed a slot's range
+git log --all -p -G 'range: PropertyAssertion' -- src/schema/
+
+# All commits touching a particular class's slot list
+git log --all -p -L '/^  Biosample:/,/^  [A-Z]/' -- src/schema/core.yaml
+</code></pre>
+<p><code>-L</code> is the most powerful for class-level history: it shows every
+commit that touched the range from <code>^  Biosample:</code> to the next class
+header, with full diffs.</p>
+<h3 id="recipe-b-find-the-pr-that-introduced-a-particular-change">Recipe B: Find the PR that introduced a particular change</h3>
+<pre><code class="language-bash"># Find the commit, then look up the PR
+git log --all --oneline -S 'first_of_class_in_chain' -- src/schema/ | head -3
+# Then: gh search prs --repo microbiomedata/nmdc-schema &quot;&lt;commit-sha&gt;&quot;
+# Or directly:
+gh search prs --repo microbiomedata/nmdc-schema &quot;first_of_class_in_chain in:title&quot; \
+  --json number,title,mergedAt,author,mergedBy
+
+# All PRs that touched a specific file across all of microbiomedata
+gh search prs --owner microbiomedata &quot;in:title organism&quot; \
+  --json number,title,repository,mergedAt --limit 30
+</code></pre>
+<h3 id="recipe-c-read-release-notes-for-a-specific-version">Recipe C: Read release notes for a specific version</h3>
+<p>nmdc-schema does not maintain a <code>CHANGELOG.md</code>. Use GitHub releases:</p>
+<pre><code class="language-bash"># List recent releases
+gh release list --repo microbiomedata/nmdc-schema --limit 20
+
+# Read the auto-generated release notes for one
+gh release view v11.17.0 --repo microbiomedata/nmdc-schema
+
+# Same for the runtime, which is where most ETL behavior changes
+gh release list --repo microbiomedata/nmdc-runtime --limit 20
+gh release view &lt;version&gt; --repo microbiomedata/nmdc-runtime
+</code></pre>
+<p>Release notes are derived from PR titles and labels. They are uneven
+in detail but always tell you which PRs landed between two versions.</p>
+<h3 id="recipe-d-inspect-schema-migrators">Recipe D: Inspect schema migrators</h3>
+<p>nmdc-schema migrators are Python classes that mutate Mongo documents
+to make them conform to a target schema version. They live at:</p>
+<pre><code>~/gitrepos/nmdc-schema/nmdc_schema/migrators/migrator_from_X_Y_Z_to_A_B_C.py
+</code></pre>
+<p>Each migrator's docstring and class body describe the transformations.
+For a complete picture of how a database was migrated from version X to
+version Y, read every migrator file with a name prefix in the range.</p>
+<pre><code class="language-bash"># Find migrators that touched a particular slot or class
+grep -rln &quot;env_broad_scale\|provenance_metadata&quot; \
+  ~/gitrepos/nmdc-schema/nmdc_schema/migrators/
+
+# List all migrators between two versions, in order
+ls ~/gitrepos/nmdc-schema/nmdc_schema/migrators/ \
+  | grep -E &quot;migrator_from_11_1[0-9]_&quot; | sort
+</code></pre>
+<h3 id="recipe-e-inspect-runtime-migration-notebooks">Recipe E: Inspect runtime migration notebooks</h3>
+<p>nmdc-runtime contains Jupyter notebooks documenting end-to-end migration
+runs against the production database, including any data fixes applied
+that are not captured in the schema migrators themselves.</p>
+<pre><code>~/gitrepos/nmdc-runtime/db/migrations/notebooks/migrate_X_Y_Z_to_A_B_C.ipynb
+</code></pre>
+<p>41 notebooks at this writing, covering the transition history from
+~<code>10.0.0</code> through <code>11.18.0</code>. They are read in the GitHub UI or any
+notebook viewer; they are not machine-queryable as data.</p>
+<pre><code class="language-bash"># List notebooks bracketing a version transition
+ls ~/gitrepos/nmdc-runtime/db/migrations/notebooks/ | grep -E &quot;11_1[0-7]&quot;
+
+# Grep notebook contents for a specific slot or transformation
+grep -rln &quot;env_broad_scale&quot; \
+  ~/gitrepos/nmdc-runtime/db/migrations/notebooks/
+
+# View a particular notebook on GitHub
+open &quot;https://github.com/microbiomedata/nmdc-runtime/blob/main/db/migrations/notebooks/migrate_11_17_0_to_11_17_1.ipynb&quot;
+</code></pre>
+<h3 id="recipe-f-correlate-a-records-mod_date-with-a-known-migration-window">Recipe F: Correlate a record's mod_date with a known migration window</h3>
+<p>If a Biosample's <code>provenance_metadata.mod_date</code> falls near a migration
+deploy, the migration is the likely cause of the mutation. To find when
+a migration was actually deployed:</p>
+<ol>
+<li>Look at the git timestamp of the migrator file (when it was merged
+   to main).</li>
+<li>Cross-reference with Slack announcements in <code>#infra-admin</code> and
+   <code>#squad-provenance</code> (search for the schema version string and the
+   migrator class name).</li>
+<li>The runtime's <code>txn_log</code> collection records the upsert timestamp for
+   every migrator-driven write.</li>
+</ol>
+<pre><code class="language-bash"># When did the v11.17.0 migrator land in main?
+cd ~/gitrepos/nmdc-schema
+git log --all --pretty=format:'%h %ad %s' --date=short \
+  -- nmdc_schema/migrators/migrator_from_11_16_*to_11_17*.py | head -3
+
+# When was the v11.17.0 release published?
+gh release view v11.17.0 --repo microbiomedata/nmdc-schema \
+  --json publishedAt --jq .publishedAt
+</code></pre>
+<h3 id="recipe-g-search-prs-by-author-time-scope">Recipe G: Search PRs by author + time + scope</h3>
+<pre><code class="language-bash"># All schema PRs by a particular author in a window
+gh search prs --repo microbiomedata/nmdc-schema \
+  --author &lt;username&gt; --merged \
+  --created '&gt;=2026-01-01' --json number,title,mergedAt | head
+
+# All PRs that closed an issue with a specific label
+gh search prs --repo microbiomedata/nmdc-schema \
+  &quot;label:cleanup is:merged&quot; --json number,title,mergedAt | head
+</code></pre>
+<h3 id="recipe-h-find-what-was-happening-operationally-on-a-given-date">Recipe H: Find what was happening operationally on a given date</h3>
+<p>Beyond code: contemporaneous Slack messages, BBOP group-meetings
+issues, and the NMDC Sync rolling-notes Google Doc all carry context
+that does not land in git or releases. The Slack-nmdc MCP and
+<code>gog drive</code> are the practical entry points.</p>
+<pre><code class="language-bash"># Search Slack-nmdc for messages near a date
+# (use the slack-nmdc MCP slack_search_public_and_private tool with
+#  after: / before: date filters; mentions of class names, slot names,
+#  or migrator filenames are usually the highest-signal hits)
+
+# Read the NMDC Sync rolling notes
+gog docs read 1mjICSt3C7bDqgTWc0BrWReuX9UzxqEv5AfEdeMDqLXU
+</code></pre>
 <h2 id="open-gaps-what-none-of-the-mechanisms-above-capture">Open gaps (what none of the mechanisms above capture)</h2>
 <table>
 <thead>
