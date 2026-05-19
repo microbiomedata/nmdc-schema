@@ -1725,6 +1725,10 @@
          <lastmod>2026-05-19</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/derivation_inputs/</loc>
+         <lastmod>2026-05-19</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/description/</loc>
          <lastmod>2026-05-19</lastmod>
     </url>
@@ -3642,10 +3646,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/rainfall_regm/</loc>
-         <lastmod>2026-05-19</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/raw-vs-coerced/</loc>
          <lastmod>2026-05-19</lastmod>
     </url>
     <url>

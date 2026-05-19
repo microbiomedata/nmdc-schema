@@ -636,6 +636,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -706,7 +728,7 @@
 
 
 <h1 id="slot-source_record_locator">Slot: source_record_locator</h1>
-<p><em>Pointer to the upstream source that drove the change: a changesheet identifier, migrator name and version, ETL run identifier, or external system row reference.</em></p>
+<p><em>Pointer to the upstream operational source that drove the change.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/source_record_locator">nmdc:source_record_locator</a></p>
 <!-- no inheritance hierarchy -->
@@ -730,6 +752,29 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
+</ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>changesheet:nmdc:cs-2026-04-03-001</td>
+</tr>
+<tr>
+<td>migrator_from_11_18_0_to_11_19_0</td>
+</tr>
+<tr>
+<td>gold:Gs0110115</td>
+</tr>
+</tbody>
+</table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>For values derived from existing slot values on NMDC records, use derivation_inputs instead.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -755,9 +800,14 @@
 <details>
 
 <pre><code class="language-yaml">name: source_record_locator
-description: 'Pointer to the upstream source that drove the change: a changesheet
-  identifier, migrator name and version, ETL run identifier, or external system row
-  reference.'
+description: Pointer to the upstream operational source that drove the change.
+comments:
+- For values derived from existing slot values on NMDC records, use derivation_inputs
+  instead.
+examples:
+- value: changesheet:nmdc:cs-2026-04-03-001
+- value: migrator_from_11_18_0_to_11_19_0
+- value: gold:Gs0110115
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: source_record_locator

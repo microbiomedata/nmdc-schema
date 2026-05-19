@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/raw-vs-coerced/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/derivation_inputs/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Raw-vs-coerced provenance pattern - NMDC Schema Documentation</title>
+        <title>Slot: derivation_inputs - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#raw-vs-coerced-provenance-pattern" class="md-skip">
+        <a href="#slot-derivation_inputs" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Raw-vs-coerced provenance pattern
+              Slot: derivation_inputs
             
           </span>
         </div>
@@ -614,10 +614,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-pattern" class="md-nav__link">
+  <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The pattern
+        Applicable Classes
       
     </span>
   </a>
@@ -625,88 +625,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#canonical-examples" class="md-nav__link">
+  <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Canonical examples
+        Properties
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Canonical examples">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-and-mapping-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#quantityvalue-attribute_valuesyaml" class="md-nav__link">
+  <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
-        QuantityValue (attribute_values.yaml)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#timestampvalue" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TimestampValue
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#controlledidentifiedtermvalue" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ControlledIdentifiedTermValue
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#propertyassertion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PropertyAssertion
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#doi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Doi
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#organism-and-expected_organism" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Organism and expected_organism
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gold_path_field-family-versus-the-envo-triad" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gold_path_field family versus the ENVO triad
+        Schema Source
       
     </span>
   </a>
@@ -719,10 +686,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recommended-discipline-for-new-wrapper-classes" class="md-nav__link">
+  <a href="#mappings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recommended discipline for new wrapper classes
+        Mappings
       
     </span>
   </a>
@@ -730,21 +697,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gaps-to-fill" class="md-nav__link">
+  <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Gaps to fill
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Related
+        LinkML Source
       
     </span>
   </a>
@@ -771,109 +727,110 @@
   
 
 
-<h1 id="raw-vs-coerced-provenance-pattern">Raw-vs-coerced provenance pattern</h1>
-<p>This document names a convention used throughout <code>nmdc-schema</code>: classes that
-buffer a raw, contributor-supplied form of a value alongside a coerced,
-NMDC-normalized form. The pattern is implicit and undocumented today; this
-doc names it so future class designers don't re-derive it.</p>
-<h2 id="the-pattern">The pattern</h2>
-<p>A wrapper class holds two parallel representations of the same fact:</p>
-<ol>
-<li>A <strong>raw form</strong> that preserves the contributor's exact submission.</li>
-<li>A <strong>coerced form</strong> that is NMDC's normalized, validated, or
-   ontology-resolved interpretation of the raw form.</li>
-</ol>
-<p>This is implicit slot-value-level provenance: NMDC retains the original
-input as evidence even after applying its own parse, classification, or
-canonicalization. It is the field-level analogue of the audit trail that
-<code>ProvenanceMetadata</code> provides at the record level.</p>
-<h2 id="canonical-examples">Canonical examples</h2>
-<h3 id="quantityvalue-attribute_valuesyaml"><code>QuantityValue</code> (<code>attribute_values.yaml</code>)</h3>
+<h1 id="slot-derivation_inputs">Slot: derivation_inputs</h1>
+<p><em>The slot(s) the agent read from to compute the new value.</em></p>
+<div>
+<p>URI: <a href="https://w3id.org/nmdc/derivation_inputs">nmdc:derivation_inputs</a></p>
+<!-- no inheritance hierarchy -->
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../SlotLevelProvenance/">SlotLevelProvenance</a></td>
+<td>A single append-only audit record describing a change to one slot value on on...</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h2 id="properties">Properties</h2>
 <ul>
-<li>Raw: <code>has_raw_value: "50 kPa"</code></li>
-<li>Coerced: <code>has_numeric_value: 50</code>, <code>has_unit: kPa</code></li>
+<li>
+<p>Range: <a href="../String/">String</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
+</li>
 </ul>
-<h3 id="timestampvalue"><code>TimestampValue</code></h3>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/geo_loc_name</td>
+</tr>
+<tr>
+<td>nmdc:sty-99-foo#/funding_sources</td>
+</tr>
+</tbody>
+</table>
+<h2 id="comments">Comments</h2>
 <ul>
-<li>Raw: <code>has_raw_value: "30-OCT-14 12.00.00.000000000 AM"</code> (e.g. GOLD format)</li>
-<li>Coerced: ISO-8601 datetime; v11.17.0's <code>normalize_date_to_datetime()</code>
-  does the migration.</li>
+<li>Each entry is a JSON Pointer into a NMDC record. Entries on the same record as target_record_id are bare pointers; entries on a different record use the record's NMDC id followed by "#" and the JSON Pointer.</li>
 </ul>
-<h3 id="controlledidentifiedtermvalue"><code>ControlledIdentifiedTermValue</code></h3>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>Raw: free-text term string</li>
-<li>Coerced: <code>term</code> reference to an <code>OntologyClass</code></li>
+<li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
-<h3 id="propertyassertion"><code>PropertyAssertion</code></h3>
-<p>The most disciplined instance. <code>has_raw_value</code> is <strong>required</strong>. Used as
-the fallback class for properties that don't align with policy-governed
-slots; preserves the contributor's string so nothing is lost in coercion.</p>
-<h3 id="doi"><code>Doi</code></h3>
-<ul>
-<li>Raw: <code>doi_value</code> (the literal CURIE)</li>
-<li>Coerced: <code>doi_provider</code> (classified into <code>DoiProviderEnum</code>),
-  <code>doi_category</code> (classified into <code>DoiCategoryEnum</code>)</li>
-</ul>
-<h3 id="organism-and-expected_organism"><code>Organism</code> and <code>expected_organism</code></h3>
-<ul>
-<li>Raw: <code>name</code>, <code>alternative_names</code>, <code>strain_name</code>, <code>isolate_name</code></li>
-<li>Coerced: <code>classified_as</code> (range <code>OntologyClass</code>, narrowed to NcbiTaxon)</li>
-</ul>
-<p><code>expected_organism</code>'s description explicitly notes "May be contradicted by
-sequencing results" — the asserted-vs-observed split is part of the
-convention.</p>
-<h3 id="gold_path_field-family-versus-the-envo-triad"><code>gold_path_field</code> family versus the ENVO triad</h3>
-<p>Parallel representation on <code>Biosample</code>:</p>
-<ul>
-<li>Raw: <code>ecosystem</code>, <code>ecosystem_category</code>, <code>ecosystem_subtype</code>,
-  <code>ecosystem_type</code>, <code>specific_ecosystem</code> — GOLD ecosystem path tokens</li>
-<li>Coerced: <code>env_broad_scale</code>, <code>env_local_scale</code>, <code>env_medium</code>
-  (range <code>ControlledIdentifiedTermValue</code>) — NMDC's ENVO-canonicalized triad</li>
-</ul>
-<h2 id="recommended-discipline-for-new-wrapper-classes">Recommended discipline for new wrapper classes</h2>
-<p>When designing a class that coerces a contributor input into a structured
-form:</p>
-<ol>
-<li><strong>Provide a raw-capture slot.</strong> <code>has_raw_value</code> for AttributeValue
-   descendants; a literal-typed slot like <code>doi_value</code> otherwise.</li>
-<li><strong>Make the raw-capture slot required.</strong> Today only <code>PropertyAssertion</code>
-   enforces this. The cost of optional raw-capture is that the raw form
-   gets silently dropped after coercion, losing field-level provenance.</li>
-<li><strong>Provide one or more coerced slots</strong> holding NMDC's interpretation.</li>
-<li><strong>When coercion can change over time</strong> (NcbiTaxon reclassification,
-   ENVO term replacement, etc.), document this in the class and consider
-   whether a future <code>SlotLevelProvenance</code> record should accompany
-   re-coercions.</li>
-</ol>
-<h2 id="gaps-to-fill">Gaps to fill</h2>
-<p>Slots that currently lack a coerced counterpart but should arguably have
-one:</p>
-<ul>
-<li><code>isolation_source</code> (MIxS, range <code>TextValue</code>): gets <code>has_raw_value</code> for
-  free but has no ENVO-coercion target.</li>
-<li><code>geo_loc_name</code> (MIxS, range <code>TextValue</code>): no structured form for country
-  or locality. <code>GeolocationValue</code> covers only lat/lon.</li>
-<li><code>env_package</code> (<code>core.yaml:1521</code>): ranged at <code>TextValue</code> instead of a
-  coerced enum despite only certain package names being valid.</li>
-<li><code>processing_institution_workflow_metadata</code>: single free-string slot;
-  no structured form for vendor metadata blobs.</li>
-</ul>
-<h2 id="related">Related</h2>
-<ul>
-<li><code>attribute_values.yaml</code> — the <code>AttributeValue</code> hierarchy.</li>
-<li><code>basic_classes.yaml</code> — the <code>Doi</code> and <code>Organism</code> classes.</li>
-<li><code>src/schema/external_identifiers.yaml</code> — identity-overlap patterns.</li>
-<li><code>src/schema/slot_level_provenance.yaml</code> — companion draft of an
-  explicit field-level provenance log for changes over time.</li>
-<li>Contributor guide umbrella: see issue #3069 for the broader effort to
-  document data-shape conventions.</li>
-</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
+<details>
+
+<pre><code class="language-yaml">name: derivation_inputs
+description: The slot(s) the agent read from to compute the new value.
+comments:
+- Each entry is a JSON Pointer into a NMDC record. Entries on the same record as target_record_id
+  are bare pointers; entries on a different record use the record's NMDC id followed
+  by &quot;#&quot; and the JSON Pointer.
+examples:
+- value: /geo_loc_name
+- value: nmdc:sty-99-foo#/funding_sources
+from_schema: https://w3id.org/nmdc/nmdc
+rank: 1000
+alias: derivation_inputs
+domain_of:
+- SlotLevelProvenance
+range: string
+multivalued: true
+
+</code></pre>
+
+</details>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 

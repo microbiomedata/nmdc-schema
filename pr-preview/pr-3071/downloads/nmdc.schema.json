@@ -5312,6 +5312,7 @@
                 "reclassification",
                 "ingest",
                 "bootstrap",
+                "cross_slot_derivation",
                 "other"
             ],
             "title": "ChangeReasonEnum",
@@ -14640,6 +14641,16 @@
                         "null"
                     ]
                 },
+                "derivation_inputs": {
+                    "description": "The slot(s) the agent read from to compute the new value.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -14713,7 +14724,7 @@
                     "type": "string"
                 },
                 "source_record_locator": {
-                    "description": "Pointer to the upstream source that drove the change: a changesheet identifier, migrator name and version, ETL run identifier, or external system row reference.",
+                    "description": "Pointer to the upstream operational source that drove the change.",
                     "type": [
                         "string",
                         "null"
@@ -16315,5 +16326,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.1.post92.dev0+0e4553206"
+    "version": "11.19.1.post93.dev0+1ada3be1a"
 }

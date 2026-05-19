@@ -744,6 +744,11 @@
 <td>System-generated record at SlotLevelProvenance retrofit</td>
 </tr>
 <tr>
+<td>cross_slot_derivation</td>
+<td>None</td>
+<td>The new value was computed from one or more existing slot values by an agent</td>
+</tr>
+<tr>
 <td>other</td>
 <td>None</td>
 <td>A reason not covered by the other permissible values</td>
@@ -800,6 +805,13 @@ permissible_values:
   bootstrap:
     text: bootstrap
     description: System-generated record at SlotLevelProvenance retrofit.
+  cross_slot_derivation:
+    text: cross_slot_derivation
+    description: The new value was computed from one or more existing slot values
+      by an agent.
+    comments:
+    - The input slots are listed in derivation_inputs. Typical agents include geocoders,
+      taxonomic classifiers, and AI suggesters.
   other:
     text: other
     description: A reason not covered by the other permissible values. See commentary.
