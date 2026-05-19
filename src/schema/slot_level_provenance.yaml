@@ -1,0 +1,373 @@
+id: https://w3id.org/nmdc/slot_level_provenance
+name: NMDC-Slot-Level-Provenance
+title: NMDC Slot-Level Provenance (DRAFT)
+description: >-
+  DRAFT schema for slot- / field-level provenance logging in NMDC. Captures
+  append-only audit log entries describing individual changes to slot values
+  on records in the NMDC database, including the operation kind, prior and
+  new values, the agent that made the change, and the rationale.
+
+  Imported by `nmdc.yaml` so CI exercises the class and reviewers can see
+  the generated artifacts. Wiring into `Database` (`provenance_set`) and
+  Runtime enforcement of append-only semantics are still deliberately out
+  of scope; see the PR description.
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+imports:
+  - basic_slots
+  - basic_classes
+
+default_range: string
+
+prefixes:
+  nmdc: "https://w3id.org/nmdc/"
+  prov: "http://www.w3.org/ns/prov#"
+  dcterms: "http://purl.org/dc/terms/"
+  rfc6901: "https://datatracker.ietf.org/doc/html/rfc6901#"
+  rfc6902: "https://datatracker.ietf.org/doc/html/rfc6902#"
+
+classes:
+  SlotLevelProvenance:
+    class_uri: nmdc:SlotLevelProvenance
+    is_a: NamedThing
+    description: >-
+      A single append-only audit record describing a change to one slot
+      value on one record in the NMDC database. The set of all
+      SlotLevelProvenance records for a given target record can be folded
+      to recover the record's edit history.
+    comments:
+      - The path slot uses JSON Pointer (RFC 6901) syntax.
+      - The operation slot follows JSON Patch (RFC 6902) semantics, extended
+        with merge/split/supersede for record-level operations.
+      - SlotLevelProvenance records are append-only. Reversals are recorded
+        as additional records, with reverted_by back-linking the original.
+      - Enforcement of append-only semantics is a Runtime concern, not a
+        schema concern.
+    broad_mappings:
+      - prov:Activity
+    examples:
+      - description: >-
+          A curator updating env_broad_scale on a Biosample via a changesheet.
+        object:
+          id: nmdc:slp-00-curupd01
+          type: nmdc:SlotLevelProvenance
+          target_record_id: nmdc:bsm-13-amrnys72
+          target_class: nmdc:Biosample
+          path: /env_broad_scale/term/id
+          operation: update
+          previous_value: "ENVO:00002030"
+          new_value: "ENVO:00000446"
+          changed_at: "2026-04-03T14:22:00Z"
+          agent_id: "0000-0001-2345-6789"
+          agent_role: curator
+          batch_id: "changesheet:2026-04-03-aliciaclum-001"
+          reason: data_correction
+          commentary: "Reclassified to terrestrial biome after MIxS template review."
+          source_record_locator: "changesheet:nmdc:cs-2026-04-03-001"
+          schema_version_at_change: "11.19.1"
+      - description: >-
+          Initial GOLD ETL ingest creating a Biosample record.
+        object:
+          id: nmdc:slp-00-goldcr01
+          type: nmdc:SlotLevelProvenance
+          target_record_id: nmdc:bsm-13-amrnys72
+          target_class: nmdc:Biosample
+          path: ""
+          operation: create
+          new_value_hash: a3f2e1c4b5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2
+          changed_at: "2024-10-30T00:00:00Z"
+          agent_id: gold_etl_v2.4.1
+          agent_role: external_ingest
+          batch_id: "gold-ingest:2024-10-30-batch-7"
+          reason: ingest
+          source_record_locator: "gold:Gs0110115"
+          schema_version_at_change: "10.7.0"
+      - description: >-
+          An AI suggester filling in lat_lon by combining geo_loc_name
+          on the same Biosample with funding_sources on the parent
+          Study (which scoped the suggester to plausible regions). The
+          derivation_inputs slot points at every source slot the
+          suggester read; the input on the Study record is referenced
+          by NMDC id plus JSON Pointer.
+        object:
+          id: nmdc:slp-00-geocode01
+          type: nmdc:SlotLevelProvenance
+          target_record_id: nmdc:bsm-99-foo
+          target_class: nmdc:Biosample
+          path: /lat_lon
+          operation: create
+          new_value: "-33.460524 150.168149"
+          changed_at: "2026-05-19T15:00:00Z"
+          agent_id: nominatim_geocoder_v1.0
+          agent_role: automated_pipeline
+          batch_id: "ai-suggester:2026-05-19-geocode-batch-3"
+          reason: cross_slot_derivation
+          commentary: "Derived from /geo_loc_name = 'Lithgow, NSW, Australia' via Nominatim, with study scope used to disambiguate. Reverse-derivable to within ~3 km of the centroid."
+          derivation_inputs:
+            - "/geo_loc_name"
+            - "nmdc:sty-99-foo#/funding_sources"
+          schema_version_at_change: "11.19.1"
+    slots:
+      - target_record_id
+      - target_class
+      - path
+      - operation
+      - previous_value
+      - new_value
+      - previous_value_hash
+      - new_value_hash
+      - changed_at
+      - agent_id
+      - agent_role
+      - batch_id
+      - reason
+      - commentary
+      - source_record_locator
+      - derivation_inputs
+      - schema_version_at_change
+      - approval_status
+      - approved_by
+      - approved_at
+      - reverted_by
+
+slots:
+  target_record_id:
+    description: >-
+      NMDC ID of the record whose slot value was changed. Must resolve to a
+      document in one of the canonical NMDC collections.
+    range: uriorcurie
+    required: true
+
+  target_class:
+    description: >-
+      The class of the target record, denormalized to enable indexing
+      provenance by class without resolving the target_record_id.
+    range: uriorcurie
+    required: true
+
+  path:
+    description: >-
+      JSON Pointer (RFC 6901) reference to the slot value on the target
+      record that was changed. The empty string refers to the whole record.
+    range: string
+    required: true
+    examples:
+      - value: /env_broad_scale/term/id
+      - value: /associated_dois/0/doi_value
+      - value: /provenance_metadata/mod_date
+      - value: ""
+
+  operation:
+    description: >-
+      The kind of change recorded. Follows JSON Patch (RFC 6902) semantics
+      for slot-level operations and adds merge/split/supersede for
+      record-level operations.
+    range: ProvenanceOperationEnum
+    required: true
+
+  previous_value:
+    description: >-
+      The value at path immediately prior to this change, serialized as a
+      string. May be elided in favor of previous_value_hash for large
+      values. Required for update and delete operations.
+    range: string
+
+  new_value:
+    description: >-
+      The value at path immediately after this change, serialized as a
+      string. May be elided in favor of new_value_hash for large values.
+      Required for create and update operations.
+    range: string
+
+  previous_value_hash:
+    description: >-
+      SHA-256 hex digest of the previous value. Used when previous_value
+      is omitted (e.g. large embedded structures stored externally).
+    range: string
+    pattern: '^[a-f0-9]{64}$'
+
+  new_value_hash:
+    description: >-
+      SHA-256 hex digest of the new value.
+    range: string
+    pattern: '^[a-f0-9]{64}$'
+
+  changed_at:
+    description: >-
+      Timestamp at which the change was applied (ISO 8601 / RFC 3339).
+    range: datetime
+    required: true
+    slot_uri: prov:startedAtTime
+
+  agent_id:
+    description: >-
+      Identifier of the agent (human or software) that applied the change.
+      ORCID for humans where available; NMDC site/client id, pipeline name,
+      or migrator name+version for software agents.
+    range: string
+    required: true
+
+  agent_role:
+    description: >-
+      The capacity in which the agent acted. Different review and audit
+      policies attach to different roles.
+    range: AgentRoleEnum
+    required: true
+
+  batch_id:
+    description: >-
+      Groups SlotLevelProvenance records that were applied as a single
+      atomic operation (a changesheet, an API call, a migrator run).
+      Analogous to a git commit; individual records are hunks.
+    range: string
+
+  reason:
+    description: >-
+      A controlled or semi-controlled justification for the change. Use
+      `commentary` for additional free-text context.
+    range: ChangeReasonEnum
+
+  commentary:
+    description: >-
+      Free-text additional commentary on the change.
+    range: string
+
+  source_record_locator:
+    description: Pointer to the upstream operational source that drove the change.
+    range: string
+    comments:
+      - >-
+        For values derived from existing slot values on NMDC records,
+        use derivation_inputs instead.
+    examples:
+      - value: "changesheet:nmdc:cs-2026-04-03-001"
+      - value: "migrator_from_11_18_0_to_11_19_0"
+      - value: "gold:Gs0110115"
+
+  derivation_inputs:
+    description: The slot(s) the agent read from to compute the new value.
+    range: string
+    multivalued: true
+    comments:
+      - >-
+        Each entry is a JSON Pointer into a NMDC record. Entries on
+        the same record as target_record_id are bare pointers; entries
+        on a different record use the record's NMDC id followed by "#"
+        and the JSON Pointer.
+    examples:
+      - value: "/geo_loc_name"
+      - value: "nmdc:sty-99-foo#/funding_sources"
+
+  schema_version_at_change:
+    description: >-
+      The version of nmdc-schema in effect when this change was applied.
+      Required to correctly interpret path strings after slot renames or
+      class refactors.
+    range: string
+    required: true
+
+  approval_status:
+    description: >-
+      Where applicable, the review status of the change.
+    range: ApprovalStatusEnum
+
+  approved_by:
+    description: >-
+      Identifier of the agent that approved the change, if approval was
+      required.
+    range: string
+
+  approved_at:
+    description: >-
+      Timestamp at which approval was granted.
+    range: datetime
+
+  reverted_by:
+    description: >-
+      Reference to a later SlotLevelProvenance record that reverts this
+      one. SlotLevelProvenance records are append-only; reversals are
+      modeled by appending a new record and back-linking it here.
+    range: SlotLevelProvenance
+
+enums:
+  ProvenanceOperationEnum:
+    description: >-
+      Kinds of recorded changes. Slot-level operations correspond to JSON
+      Patch (RFC 6902) ops. Record-level operations cover lifecycle events
+      that affect the whole document.
+    permissible_values:
+      create:
+        description: A new slot value was set; the path did not previously exist.
+      update:
+        description: An existing slot value was replaced.
+      delete:
+        description: An existing slot value was removed.
+      merge:
+        description: The target record was merged into another. Record-level.
+      split:
+        description: The target record was split into multiple records. Record-level.
+      supersede:
+        description: The target record was superseded by another. Record-level.
+
+  AgentRoleEnum:
+    description: >-
+      The capacity in which an agent acted when applying a change. Different
+      review and audit policies attach to different roles.
+    permissible_values:
+      submitter:
+        description: A submitter writing data via the NMDC Submission Portal.
+      curator:
+        description: An NMDC curator performing manual data correction or enrichment.
+      automated_pipeline:
+        description: An automated processing pipeline (workflow execution, normalization step).
+      migrator:
+        description: A Mongo schema migrator applied during a schema-version transition.
+      external_ingest:
+        description: An ETL process importing from an external system (GOLD, NEON, NCBI, etc.).
+      api_client:
+        description: A site client writing via the nmdc-runtime API.
+      system_bootstrap:
+        description: An initial bootstrap record generated when SlotLevelProvenance was retrofitted onto pre-existing data.
+
+  ChangeReasonEnum:
+    description: >-
+      Controlled justifications for a change. Use the `commentary` slot for
+      additional free-text context.
+    permissible_values:
+      data_correction:
+        description: Fixing an incorrect value.
+      upstream_revision:
+        description: An upstream source revised the value.
+      curation:
+        description: Manual curatorial enrichment or refinement.
+      migration:
+        description: A schema migration transformed the value.
+      reclassification:
+        description: An ontology term or taxonomy assignment changed.
+      ingest:
+        description: Initial ingest of a record from an external source.
+      bootstrap:
+        description: System-generated record at SlotLevelProvenance retrofit.
+      cross_slot_derivation:
+        description: The new value was computed from one or more existing slot values by an agent.
+        comments:
+          - >-
+            The input slots are listed in derivation_inputs. Typical
+            agents include geocoders, taxonomic classifiers, and AI
+            suggesters.
+      other:
+        description: A reason not covered by the other permissible values. See commentary.
+
+  ApprovalStatusEnum:
+    description: >-
+      Review status of a change, where applicable.
+    permissible_values:
+      not_required:
+        description: This change did not require review.
+      pending:
+        description: Awaiting review.
+      approved:
+        description: Reviewed and approved.
+      rejected:
+        description: Reviewed and rejected; the change should be reverted.
