@@ -6,17 +6,21 @@
 #   1. ProvenanceMetadata embedded on a Biosample (add_date, mod_date,
 #      version, source_system_of_record, submission_portal_identifier)
 #   2. has_raw_value on an AttributeValue (the raw-vs-coerced pattern)
-#   3. PROV timestamps on a WorkflowExecution (started_at_time, ended_at_time)
+#   3. PROV-aligned timestamps on a WorkflowExecution (started_at_time,
+#      ended_at_time, mapped to prov:startedAtTime / prov:endedAtTime)
 #   4. was_informed_by linking a WorkflowExecution to its DataGeneration
 #   5. was_generated_by on a DataObject (lineage to producing process)
 #   6. superseded_by on a DataObject (one version replaces another)
-#   7. DataObject representing a stored changesheet (DRS changesheet pattern;
-#      the runtime convention for recording executed changesheets)
 #
-# Operational mechanisms that live OUTSIDE the schema (Mongo sibling
-# namespaces, runtime collections, and ETL artifacts) are documented in
-# src/docs/provenance-mechanisms.md and are not expressible as instance
-# data here.
+# DRS-stored changesheets, the runtime's other major change-record artifact,
+# are NOT shown here because they are not instances of any nmdc-schema class.
+# Executed changesheets are stored in MongoDB's `objects` collection (the
+# DRS-spec table managed by nmdc-runtime), separate from `data_object_set`.
+# See src/docs/provenance-mechanisms.md for details.
+#
+# Other operational mechanisms (Mongo sibling namespaces, runtime collections,
+# ETL artifacts) are also documented in src/docs/provenance-mechanisms.md and
+# are not expressible as instance data here.
 #
 # SlotLevelProvenance records (the class proposed in this PR) are shown
 # separately in src/data/valid/SlotLevelProvenance-valid-*.yaml. They
@@ -29,26 +33,36 @@ biosample_set:
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-99-provdemo
-    # Form 2: has_raw_value preserves what the submitter wrote before the
-    # schema coerced it into an ENVO term + structured ControlledIdentifiedTermValue.
+    # Form 2: has_raw_value preserves the submitter's input alongside the
+    # parsed, structured term. Each of the three env triad slots below
+    # shows a different shape of difference between raw and coerced:
+    #   env_broad_scale  — raw is label only; coerced adds the CURIE
+    #   env_local_scale  — raw has different casing than the canonical label
+    #   env_medium       — raw is the portal's labeled-CURIE form; coerced is fully parsed
+    # Triad values are the canonical soil triad from submission-schema
+    # (SampleData-soil-data-minimal.yaml), validated against
+    # EnvBroadScaleSoilEnum / EnvLocalScaleSoilEnum / EnvMediumSoilEnum.
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: "land [ENVO:00000446]"
+      has_raw_value: urban biome
       term:
         type: nmdc:OntologyClass
-        id: ENVO:00000446
+        id: ENVO:01000249
+        name: urban biome
     env_local_scale:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002169
+      has_raw_value: Tunnel
       term:
         type: nmdc:OntologyClass
-        id: ENVO:00002169
+        id: ENVO:00000068
+        name: tunnel
     env_medium:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00005792
+      has_raw_value: bare soil [ENVO:01001616]
       term:
         type: nmdc:OntologyClass
-        id: ENVO:00005792
+        id: ENVO:01001616
+        name: bare soil
     # Form 1: ProvenanceMetadata block records when the record entered NMDC,
     # when it was most recently modified, the schema version in effect, and
     # the upstream system of record plus the originating submission portal entry.
@@ -107,18 +121,3 @@ data_object_set:
     data_object_type: Filtered Sequencing Reads
     data_category: processed_data
     was_generated_by: nmdc:wfrqc-99-provdemo9.1
-  # Form 7: a stored changesheet is itself a DataObject (the runtime's
-  # DRS-object pattern: every executed changesheet is saved to GridFS and
-  # registered as a DataObject). The runtime uses `types: metadata-changesheet`
-  # at the JSON level; there is not yet a dedicated FileTypeEnum value, so
-  # data_object_type is left as a generic placeholder pending a follow-up
-  # FileTypeEnum addition. See src/docs/provenance-mechanisms.md.
-  - id: nmdc:dobj-99-changeshet
-    type: nmdc:DataObject
-    name: env_broad_scale-correction-2026-04-03.tsv
-    description: >-
-      Curator-applied changesheet that corrected env_broad_scale on
-      nmdc:bsm-99-provdemo1. Stored as a DRS object by nmdc-runtime per
-      its standard convention for executed changesheets.
-    data_object_type: Configuration toml
-    data_category: workflow_parameter_data

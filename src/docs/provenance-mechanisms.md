@@ -209,13 +209,24 @@ db.data_object_set.aggregate([
 ])
 ```
 
-### 7. DRS-stored changesheets (DataObjects with changesheet content)
+## Operational mechanisms (not in the schema)
 
-Every executed changesheet is saved to MongoDB GridFS by `nmdc-runtime`
-and registered as a `DataObject`-like DRS entry. The contents are the
-TSV the curator submitted. The runtime uses `types: metadata-changesheet`
-at the JSON level; there is not yet a dedicated `FileTypeEnum` value
-for this in nmdc-schema.
+These live in `nmdc-runtime` collections and sibling Mongo namespaces.
+They are not expressible as instance data in this schema but are part
+of NMDC's provenance story.
+
+### 7. DRS-stored changesheets
+
+Every executed changesheet is saved by `nmdc-runtime` to MongoDB GridFS
+and registered as a DRS-spec entry in the `objects` collection. The
+contents are the TSV the curator submitted. The runtime tags these
+entries with `types: metadata-changesheet`.
+
+These records are **not** instances of nmdc-schema's `DataObject` class.
+`DataObject` is the schema's class for workflow output files and lives
+in the `data_object_set` collection; the `objects` collection is the
+runtime's separate DRS-spec table. nmdc-schema does not currently model
+changesheets as a class.
 
 Captures: full text of every applied changesheet, plus the submitting
 user and timestamp.
@@ -236,12 +247,6 @@ db.objects.find({"types": "metadata-changesheet"})
 # Or via the public API
 curl -s "https://api.microbiomedata.org/objects/<drs_object_id>"
 ```
-
-## Operational mechanisms (not in the schema)
-
-These live in `nmdc-runtime` collections and sibling Mongo namespaces.
-They are not expressible as instance data in this schema but are part
-of NMDC's provenance story.
 
 ### 8. `nmdc_deleted` and `nmdc_updated` shadow databases
 
