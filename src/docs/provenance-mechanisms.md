@@ -490,20 +490,7 @@ gh release view v11.17.0 --repo microbiomedata/nmdc-schema \
   --json publishedAt --jq .publishedAt
 ```
 
-### Recipe G: Search PRs by author + time + scope
-
-```bash
-# All schema PRs by a particular author in a window
-gh search prs --repo microbiomedata/nmdc-schema \
-  --author <username> --merged \
-  --created '>=2026-01-01' --json number,title,mergedAt | head
-
-# All PRs that closed an issue with a specific label
-gh search prs --repo microbiomedata/nmdc-schema \
-  "label:cleanup is:merged" --json number,title,mergedAt | head
-```
-
-### Recipe H: Find what was happening operationally on a given date
+### Recipe G: Find what was happening operationally on a given date
 
 Beyond code: contemporaneous Slack messages, BBOP group-meetings
 issues, and the NMDC Sync rolling-notes Google Doc all carry context
