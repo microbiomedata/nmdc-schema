@@ -858,21 +858,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#recipe-g-search-prs-by-author-time-scope" class="md-nav__link">
+  <a href="#recipe-g-find-what-was-happening-operationally-on-a-given-date" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recipe G: Search PRs by author + time + scope
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recipe-h-find-what-was-happening-operationally-on-a-given-date" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recipe H: Find what was happening operationally on a given date
+        Recipe G: Find what was happening operationally on a given date
       
     </span>
   </a>
@@ -1268,17 +1257,7 @@ git log --all --pretty=format:'%h %ad %s' --date=short \
 gh release view v11.17.0 --repo microbiomedata/nmdc-schema \
   --json publishedAt --jq .publishedAt
 </code></pre>
-<h3 id="recipe-g-search-prs-by-author-time-scope">Recipe G: Search PRs by author + time + scope</h3>
-<pre><code class="language-bash"># All schema PRs by a particular author in a window
-gh search prs --repo microbiomedata/nmdc-schema \
-  --author &lt;username&gt; --merged \
-  --created '&gt;=2026-01-01' --json number,title,mergedAt | head
-
-# All PRs that closed an issue with a specific label
-gh search prs --repo microbiomedata/nmdc-schema \
-  &quot;label:cleanup is:merged&quot; --json number,title,mergedAt | head
-</code></pre>
-<h3 id="recipe-h-find-what-was-happening-operationally-on-a-given-date">Recipe H: Find what was happening operationally on a given date</h3>
+<h3 id="recipe-g-find-what-was-happening-operationally-on-a-given-date">Recipe G: Find what was happening operationally on a given date</h3>
 <p>Beyond code: contemporaneous Slack messages, BBOP group-meetings
 issues, and the NMDC Sync rolling-notes Google Doc all carry context
 that does not land in git or releases. The Slack-nmdc MCP and
