@@ -1,0 +1,20 @@
+# Demonstrates a ProvenanceObject instance carrying both inline data
+# (the existing ProvenanceMetadata slots) and a url pointer to an
+# external artifact. The url case is the value-add over today's
+# ProvenanceMetadata: provenance records too complex for inline storage
+# can point at a changesheet, a migrator, or any other document.
+#
+# The id typecode (here `prov-`) is a placeholder; the actual typecode
+# is part of the design conversation in #3085.
+id: nmdc:prov-99-aaaaaa1
+type: nmdc:ProvenanceObject
+name: GOLD ETL ingest, batch 2024-10-30
+description: Provenance record for a Biosample created by the GOLD ETL ingest pipeline.
+add_date: "2024-10-30T00:00:00Z"
+mod_date: "2026-04-03T14:22:00Z"
+version: "11.19.1"
+git_url: https://github.com/microbiomedata/nmdc-runtime/releases/tag/v1.0.0
+source_system_of_record: GOLD
+submission_portal_identifier:
+  - "9c9d0a2e-1f3b-4d2a-b1e7-5f6a7b8c9d0e"
+url: drs://api.microbiomedata.org/objects/nmdc:obj-changesheet-2024-10-30-batch-7
