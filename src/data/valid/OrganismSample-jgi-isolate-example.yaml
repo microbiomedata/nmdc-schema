@@ -16,3 +16,6 @@ collection_date:
   has_raw_value: "1998-03-01"
 associated_studies:
   - nmdc:sty-99-m2asmk
+analysis_type:
+  - isolate genome sequencing
+  - isolate transcriptome sequencing
