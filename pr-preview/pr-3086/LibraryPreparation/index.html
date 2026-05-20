@@ -431,6 +431,11 @@
       LibraryPreparation --&gt; "1..*" Sample : has_input
     click Sample href "../Sample"
 
+  LibraryPreparation : has_instance_provenance
+
+      LibraryPreparation --&gt; "*" ProvenanceObject : has_instance_provenance
+    click ProvenanceObject href "../ProvenanceObject"
+
   LibraryPreparation : has_output
 
       LibraryPreparation --&gt; "1..*" ProcessedSample : has_output
@@ -670,6 +675,12 @@
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of alternative identifiers for the entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../has_instance_provenance/">has_instance_provenance</a></td>
+<td>* <br/> <a href="../ProvenanceObject/">ProvenanceObject</a></td>
+<td>A provenance record associated with this document</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
@@ -1164,6 +1175,23 @@ attributes:
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
+  has_instance_provenance:
+    name: has_instance_provenance
+    description: A provenance record associated with this document.
+    comments:
+    - 'Whether this slot should be attached to NamedThing directly or only to specific
+      subclasses is part of the design conversation in issue #3085. This PR defines
+      the slot but does not yet wire it onto any class.'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: has_instance_provenance
+    owner: LibraryPreparation
+    domain_of:
+    - NamedThing
+    range: ProvenanceObject
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   type:
     name: type
     description: the class_uri of the class that has been instantiated
@@ -1206,7 +1234,6 @@ attributes:
     - Protocol
     - CreditAssociation
     - Doi
-    - ProvenanceMetadata
     - ProvenanceObject
     range: uriorcurie
     required: true

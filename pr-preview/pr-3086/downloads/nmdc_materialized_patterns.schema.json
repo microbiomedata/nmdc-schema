@@ -1801,6 +1801,16 @@
                     "$ref": "#/$defs/HandidnessEnum",
                     "description": "The handidness of the individual sampled"
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "hc_produced": {
                     "$ref": "#/$defs/HcProducedEnum",
                     "description": "Main hydrocarbon type produced from resource (i.e. Oil, gas, condensate, etc). If \"other\" is specified, please propose entry in \"additional info\" field"
@@ -3322,17 +3332,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "provenance_metadata": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ProvenanceMetadata"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Provenance metadata for this Biosample, including when the record was added to and last modified in the NMDC database."
                 },
                 "quad_pos": {
                     "$ref": "#/$defs/QuadPosEnum",
@@ -5372,6 +5371,16 @@
                         "null"
                     ]
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
@@ -5557,6 +5566,16 @@
                     "items": {
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
                     },
                     "type": [
                         "array",
@@ -5779,6 +5798,16 @@
                         "null"
                     ]
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -5908,6 +5937,16 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
@@ -6016,6 +6055,16 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "has_output": {
                     "description": "An output from a process.",
@@ -6290,6 +6339,16 @@
                     },
                     "type": "array"
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -6484,6 +6543,16 @@
                     "description": "Size of the file in bytes",
                     "type": [
                         "integer",
+                        "null"
+                    ]
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -6924,6 +6993,16 @@
                         "null"
                     ]
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -7357,6 +7436,16 @@
                     },
                     "type": "array"
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -7661,6 +7750,16 @@
                         "null"
                     ]
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
@@ -7949,6 +8048,16 @@
                         "null"
                     ]
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -8230,6 +8339,16 @@
                     "description": "a human-readable description of a thing",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -8579,6 +8698,16 @@
                         "null"
                     ]
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
@@ -8736,6 +8865,16 @@
                     },
                     "type": "array"
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -8861,6 +9000,16 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "has_output": {
                     "description": "An output from a process.",
@@ -9331,6 +9480,16 @@
                     },
                     "type": "array"
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -9513,6 +9672,16 @@
                     "description": "a human-readable description of a thing",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -9710,6 +9879,16 @@
                     },
                     "type": "array"
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_mass_spectrometry_configuration": {
                     "description": "The identifier of the associated MassSpectrometryConfiguration.",
                     "pattern": "^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
@@ -9781,17 +9960,6 @@
                         }
                     ]
                 },
-                "provenance_metadata": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ProvenanceMetadata"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database."
-                },
                 "qc_comment": {
                     "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
                     "type": [
@@ -9858,6 +10026,16 @@
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": "string"
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
@@ -10122,6 +10300,16 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "has_metabolite_identifications": {
                     "items": {
@@ -10394,6 +10582,16 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "has_output": {
                     "description": "An output from a process.",
@@ -10708,6 +10906,16 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "has_output": {
                     "description": "An output from a process.",
@@ -11029,6 +11237,16 @@
                     },
                     "type": "array"
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -11311,6 +11529,16 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "has_output": {
                     "description": "An output from a process.",
@@ -11626,6 +11854,16 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "has_output": {
                     "description": "An output from a process.",
@@ -11947,6 +12185,16 @@
                     },
                     "type": "array"
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -12122,6 +12370,16 @@
                     "items": {
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
                     },
                     "type": [
                         "array",
@@ -12307,6 +12565,16 @@
                         "null"
                     ]
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^NCBITaxon:\\d+$",
@@ -12459,6 +12727,16 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "has_output": {
                     "description": "An output from a process.",
@@ -12663,6 +12941,16 @@
                     },
                     "type": "array"
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -12755,17 +13043,6 @@
                             "type": "null"
                         }
                     ]
-                },
-                "provenance_metadata": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ProvenanceMetadata"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database."
                 },
                 "qc_comment": {
                     "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
@@ -12860,6 +13137,16 @@
                     "description": "a human-readable description of a thing",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -12993,6 +13280,16 @@
                         }
                     ],
                     "description": "Estimated GC content as a percentage."
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
@@ -13139,6 +13436,16 @@
                         "null"
                     ]
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "host_taxid": {
                     "anyOf": [
                         {
@@ -13165,17 +13472,6 @@
                 "ploidy": {
                     "$ref": "#/$defs/PloidyEnum",
                     "description": "The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO"
-                },
-                "provenance_metadata": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ProvenanceMetadata"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Provides information about the provenance of a record."
                 },
                 "samp_name": {
                     "description": "A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name",
@@ -13275,6 +13571,16 @@
                     "description": "a human-readable description of a thing",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -13510,6 +13816,16 @@
                     "minItems": 2,
                     "type": "array"
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -13715,6 +14031,16 @@
                     "items": {
                         "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                         "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
                     },
                     "type": [
                         "array",
@@ -13987,69 +14313,6 @@
             "title": "ProtocolForEnum",
             "type": "string"
         },
-        "ProvenanceMetadata": {
-            "additionalProperties": false,
-            "description": "Metadata pertaining to how a record was created.",
-            "properties": {
-                "add_date": {
-                    "description": "The date and time at which a record was added to the NMDC database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "git_url": {
-                    "description": "The url of the software repository used to generate the NMDC metadata record",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "mod_date": {
-                    "description": "The date and time at which a record was last modified in the NMDC database.",
-                    "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "source_system_of_record": {
-                    "$ref": "#/$defs/SourceSystemEnum",
-                    "description": "Identifies the system of origin for a record"
-                },
-                "submission_portal_identifier": {
-                    "description": "The UUID of the NMDC Submission Portal entry that generated this record.",
-                    "items": {
-                        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:ProvenanceMetadata"
-                    ],
-                    "type": "string"
-                },
-                "version": {
-                    "description": "The version tag of the software used to generate the NMDC metadata record",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "type"
-            ],
-            "title": "ProvenanceMetadata",
-            "type": "object"
-        },
         "ProvenanceObject": {
             "additionalProperties": false,
             "description": "A record describing how an NMDC document came to be the way it is.",
@@ -14084,6 +14347,16 @@
                     "description": "A url that points to a software repository",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -14316,6 +14589,16 @@
                     },
                     "type": "array"
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -14527,6 +14810,16 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "has_output": {
                     "description": "An output from a process.",
@@ -15116,6 +15409,16 @@
                         "null"
                     ]
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
@@ -15359,6 +15662,16 @@
                         "null"
                     ]
                 },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "homepage_website": {
                     "description": "The website address (URL) of an entity's homepage.",
                     "items": {
@@ -15469,17 +15782,6 @@
                         "array",
                         "null"
                     ]
-                },
-                "provenance_metadata": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ProvenanceMetadata"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Provenance metadata for this Study, including when the record was added to and last modified in the NMDC database."
                 },
                 "related_identifiers": {
                     "description": "Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC",
@@ -15610,6 +15912,16 @@
                     "items": {
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_instance_provenance": {
+                    "description": "A provenance record associated with this document.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceObject"
                     },
                     "type": [
                         "array",
@@ -16508,6 +16820,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.1.post89.dev0+3b4b6d68a"
+    "version": "11.19.1.post90.dev0+f8b3d725e"
 }
 

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.1.post89.dev0+3b4b6d68a
+version: 11.19.1.post90.dev0+f8b3d725e
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -18067,11 +18067,6 @@ slots:
       or resultant DataObjects should be used in favor of this record.
     from_schema: https://w3id.org/nmdc/nmdc
     range: WorkflowExecution
-  provenance_metadata:
-    name: provenance_metadata
-    description: Provides information about the provenance of a record.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: ProvenanceMetadata
   rna_isolate_meth:
     name: rna_isolate_meth
     description: Describe the method/protocol/kit used to extract DNA/RNA.
@@ -20216,7 +20211,6 @@ classes:
     - img_identifiers
     - neon_biosample_identifiers
     - alternative_names
-    - provenance_metadata
     - gold_biosample_identifiers
     - insdc_biosample_identifiers
     - emsl_biosample_identifiers
@@ -20764,10 +20758,6 @@ classes:
         examples:
         - value: BW-H-17-M
         required: true
-      provenance_metadata:
-        name: provenance_metadata
-        description: Provenance metadata for this Biosample, including when the record
-          was added to and last modified in the NMDC database.
       collected_from:
         name: collected_from
         pattern: ^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
@@ -21239,7 +21229,6 @@ classes:
     - associated_studies
     - expected_organism
     - embargoed
-    - provenance_metadata
     - external_database_identifiers
     - gold_organism_identifiers
     - collection_date
@@ -21385,6 +21374,7 @@ classes:
     - name
     - description
     - alternative_identifiers
+    - has_instance_provenance
     - type
     class_uri: nmdc:NamedThing
   OntologyClass:
@@ -21789,7 +21779,6 @@ classes:
     - related_identifiers
     - alternative_descriptions
     - alternative_names
-    - provenance_metadata
     - alternative_titles
     - ecosystem
     - ecosystem_category
@@ -21892,10 +21881,6 @@ classes:
         name: protocol_link
         multivalued: true
         inlined_as_list: true
-      provenance_metadata:
-        name: provenance_metadata
-        description: Provenance metadata for this Study, including when the record
-          was added to and last modified in the NMDC database.
     class_uri: nmdc:Study
   InformationObject:
     name: InformationObject
@@ -22000,7 +21985,6 @@ classes:
     - instrument_used
     - principal_investigator
     - instrument_instance_specifier
-    - provenance_metadata
     slot_usage:
       has_input:
         name: has_input
@@ -22024,10 +22008,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
           interpolated: true
-      provenance_metadata:
-        name: provenance_metadata
-        description: Provenance metadata for this DataGeneration, including when the
-          record was added to and last modified in the NMDC database.
     class_uri: nmdc:DataGeneration
   WorkflowExecution:
     name: WorkflowExecution
@@ -22116,43 +22096,6 @@ classes:
             required: true
       description: If qc_status is not specified, then the has_output slot is required.
       title: qc_status_pass_null_has_output_required
-  ProvenanceMetadata:
-    name: ProvenanceMetadata
-    description: Metadata pertaining to how a record was created.
-    from_schema: https://w3id.org/nmdc/nmdc
-    slots:
-    - add_date
-    - git_url
-    - mod_date
-    - version
-    - source_system_of_record
-    - submission_portal_identifier
-    - type
-    slot_usage:
-      add_date:
-        name: add_date
-        description: The date and time at which a record was added to the NMDC database.
-        comments:
-        - Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23
-          may carry GOLD-sourced dates rather than NMDC-asserted timestamps.
-        range: datetime
-      mod_date:
-        name: mod_date
-        description: The date and time at which a record was last modified in the
-          NMDC database.
-        comments:
-        - Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23
-          may carry GOLD-sourced dates rather than NMDC-asserted timestamps.
-        range: datetime
-      version:
-        name: version
-        description: The version tag of the software used to generate the NMDC metadata
-          record
-      git_url:
-        name: git_url
-        description: The url of the software repository used to generate the NMDC
-          metadata record
-    class_uri: nmdc:ProvenanceMetadata
   ProvenanceObject:
     name: ProvenanceObject
     description: A record describing how an NMDC document came to be the way it is.

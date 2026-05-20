@@ -432,6 +432,11 @@
       ReadQcAnalysis --&gt; "1..*" DataObject : has_input
     click DataObject href "../DataObject"
 
+  ReadQcAnalysis : has_instance_provenance
+
+      ReadQcAnalysis --&gt; "*" ProvenanceObject : has_instance_provenance
+    click ProvenanceObject href "../ProvenanceObject"
+
   ReadQcAnalysis : has_output
 
       ReadQcAnalysis --&gt; "*" DataObject : has_output
@@ -683,6 +688,12 @@
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
+<td><a href="../has_instance_provenance/">has_instance_provenance</a></td>
+<td>* <br/> <a href="../ProvenanceObject/">ProvenanceObject</a></td>
+<td>A provenance record associated with this document</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
 <td><a href="../type/">type</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>the class_uri of the class that has been instantiated</td>
@@ -903,7 +914,6 @@ attributes:
     owner: ReadQcAnalysis
     domain_of:
     - WorkflowExecution
-    - ProvenanceMetadata
     - ProvenanceObject
     range: string
     required: true
@@ -939,7 +949,6 @@ attributes:
     owner: ReadQcAnalysis
     domain_of:
     - WorkflowExecution
-    - ProvenanceMetadata
     - ProvenanceObject
     range: string
   was_informed_by:
@@ -1200,6 +1209,23 @@ attributes:
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
+  has_instance_provenance:
+    name: has_instance_provenance
+    description: A provenance record associated with this document.
+    comments:
+    - 'Whether this slot should be attached to NamedThing directly or only to specific
+      subclasses is part of the design conversation in issue #3085. This PR defines
+      the slot but does not yet wire it onto any class.'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: has_instance_provenance
+    owner: ReadQcAnalysis
+    domain_of:
+    - NamedThing
+    range: ProvenanceObject
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   type:
     name: type
     description: the class_uri of the class that has been instantiated
@@ -1242,7 +1268,6 @@ attributes:
     - Protocol
     - CreditAssociation
     - Doi
-    - ProvenanceMetadata
     - ProvenanceObject
     range: uriorcurie
     required: true

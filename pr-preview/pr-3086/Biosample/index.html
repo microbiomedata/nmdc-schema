@@ -836,12 +836,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../provenance_metadata/">provenance_metadata</a></td>
-<td>0..1 <br/> <a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
-<td>Provenance metadata for this Biosample, including when the record was added t...</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../gold_biosample_identifiers/">gold_biosample_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Unique identifier for a biosample submitted to GOLD that matches the NMDC sub...</td>
@@ -4076,6 +4070,12 @@
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
+<td><a href="../has_instance_provenance/">has_instance_provenance</a></td>
+<td>* <br/> <a href="../ProvenanceObject/">ProvenanceObject</a></td>
+<td>A provenance record associated with this document</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
 <td><a href="../type/">type</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>the class_uri of the class that has been instantiated</td>
@@ -4168,7 +4168,6 @@ slots:
 - img_identifiers
 - neon_biosample_identifiers
 - alternative_names
-- provenance_metadata
 - gold_biosample_identifiers
 - insdc_biosample_identifiers
 - emsl_biosample_identifiers
@@ -4716,10 +4715,6 @@ slot_usage:
     examples:
     - value: BW-H-17-M
     required: true
-  provenance_metadata:
-    name: provenance_metadata
-    description: Provenance metadata for this Biosample, including when the record
-      was added to and last modified in the NMDC database.
   collected_from:
     name: collected_from
     structured_pattern:
@@ -5103,10 +5098,6 @@ slot_usage:
     examples:
     - value: BW-H-17-M
     required: true
-  provenance_metadata:
-    name: provenance_metadata
-    description: Provenance metadata for this Biosample, including when the record
-      was added to and last modified in the NMDC database.
   collected_from:
     name: collected_from
     structured_pattern:
@@ -5594,20 +5585,6 @@ attributes:
     - Study
     range: string
     multivalued: true
-  provenance_metadata:
-    name: provenance_metadata
-    description: Provenance metadata for this Biosample, including when the record
-      was added to and last modified in the NMDC database.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: provenance_metadata
-    owner: Biosample
-    domain_of:
-    - Biosample
-    - OrganismSample
-    - Study
-    - DataGeneration
-    range: ProvenanceMetadata
   gold_biosample_identifiers:
     name: gold_biosample_identifiers
     annotations:
@@ -17953,6 +17930,23 @@ attributes:
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
+  has_instance_provenance:
+    name: has_instance_provenance
+    description: A provenance record associated with this document.
+    comments:
+    - 'Whether this slot should be attached to NamedThing directly or only to specific
+      subclasses is part of the design conversation in issue #3085. This PR defines
+      the slot but does not yet wire it onto any class.'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: has_instance_provenance
+    owner: Biosample
+    domain_of:
+    - NamedThing
+    range: ProvenanceObject
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   type:
     name: type
     description: the class_uri of the class that has been instantiated
@@ -17995,7 +17989,6 @@ attributes:
     - Protocol
     - CreditAssociation
     - Doi
-    - ProvenanceMetadata
     - ProvenanceObject
     range: uriorcurie
     required: true

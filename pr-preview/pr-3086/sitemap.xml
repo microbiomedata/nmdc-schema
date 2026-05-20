@@ -741,10 +741,6 @@
          <lastmod>2026-05-20</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/ProvenanceMetadata/</loc>
-         <lastmod>2026-05-20</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/ProvenanceObject/</loc>
          <lastmod>2026-05-20</lastmod>
     </url>
@@ -3538,10 +3534,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/protocol_link/</loc>
-         <lastmod>2026-05-20</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/provenance_metadata/</loc>
          <lastmod>2026-05-20</lastmod>
     </url>
     <url>
