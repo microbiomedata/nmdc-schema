@@ -15,7 +15,11 @@
 # Organism is a richly-annotated, long-public GOLD reference: Bacillus subtilis
 # 168 (GOLD Go0000781, NCBI Taxonomy 224308, ATCC 6051). Type strain, soil
 # isolate, complete published genome. Selected because it is a canonical soil
-# bacterium with unambiguous non-embargoed public provenance.
+# bacterium with unambiguous non-embargoed public provenance
+# (GOLD organism_v2 is_public='Yes', active='Yes', is_test='No').
+#
+# sample_isolated_from / sample_collection_site values use the enum PVs
+# introduced in #3054 at the relevant scope.
 
 biosample_set:
   - id: nmdc:bsm-99-dss5dg
@@ -62,7 +66,8 @@ organism_sample_set:
     associated_studies:
       - nmdc:sty-99-md8u3e
     expected_organism: nmdc:orgn-99-vsds2v
-    sample_isolated_from: Example soil isolation
+    sample_isolated_from: soil
+    sample_collection_site: field
   # Expanded culture after culturing
   - id: nmdc:osm-99-jss44u
     type: nmdc:OrganismSample

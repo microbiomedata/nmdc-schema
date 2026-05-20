@@ -16,6 +16,9 @@ organism_set:
       - id: NCBITaxon:5353
         name: Lentinula edodes
         type: nmdc:NcbiTaxon
+    organism_genus: Lentinula
+    organism_species: edodes
+    strain_name: NBRC 111202
 
 organism_sample_set:
   - id: nmdc:osm-99-c3hw28
@@ -25,8 +28,11 @@ organism_sample_set:
     expected_organism: nmdc:orgn-99-tagdby
     gold_organism_identifiers:
       - gold:Go0372970
-    sample_isolated_from: Fruiting body cap of Lentinula edodes (shiitake)
-    sample_growth_conditions: Cultivated
+    source_mat_id:
+      type: nmdc:TextValue
+      has_raw_value: nbrc:111202
+    sample_isolated_from: fruiting_body
+    sample_growth_conditions: cultivated_indoor
     collection_date:
       type: nmdc:TimestampValue
       has_raw_value: "2025-09-20"

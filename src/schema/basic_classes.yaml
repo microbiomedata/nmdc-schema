@@ -1537,3 +1537,276 @@ enums:
           the named ploidy classes. The original free-text qualifier should be
           preserved upstream (e.g. in a sample-level note) when it carries
           information beyond the bare classification.
+
+  SampleIsolatedFromEnum:
+    description: >-
+      Origin matrix from which an OrganismSample was isolated — the *what*
+      it came out of.
+    comments:
+      - >-
+        PV names follow snake_case. `meaning:` annotations prefer GOLDVOCAB
+        where the GOLD ecosystem vocabulary has clean coverage, falling back
+        to ENVO / PO / UBERON otherwise. PVs without `meaning:` (e.g.
+        `fruiting_body`) reflect documented gaps in OBO coverage.
+      - >-
+        The `other` permissible value is the escape hatch for genuinely
+        out-of-list values. Recurring `other` captures should be reviewed
+        and promoted to new PVs.
+      - >-
+        Geographic / site context routes to `sample_collection_site`;
+        lab-maintenance context routes to `sample_growth_conditions`.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3054
+    permissible_values:
+      leaf:
+        description: Plant leaf tissue
+        meaning: PO:0025034
+        aliases: [leaves]
+        structured_aliases:
+          - literal_form: Leaf
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: Leaves
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: silica dried leaf tissue
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: NARROW_SYNONYM
+      root:
+        description: Plant root tissue
+        meaning: PO:0009005
+        aliases: [roots]
+        structured_aliases:
+          - literal_form: Roots
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: root surface of cotton
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: NARROW_SYNONYM
+      root_nodule:
+        description: Root nodule (N-fixing symbiosis structure on legume root)
+        meaning: PO:0003023
+      stem:
+        description: Plant stem tissue
+        meaning: PO:0009047
+      flower:
+        description: Plant flower tissue
+        meaning: PO:0009046
+      xylem:
+        description: Vascular xylem
+        meaning: PO:0005352
+      rhizosphere:
+        description: Soil region influenced by plant roots
+        meaning: GOLDVOCAB:Rhizosphere
+        structured_aliases:
+          - literal_form: maize rhizosphere soil
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: NARROW_SYNONYM
+          - literal_form: maize rhizosphere soils
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: NARROW_SYNONYM
+      soil:
+        description: Soil
+        meaning: GOLDVOCAB:Soil
+        aliases: [soils]
+        structured_aliases:
+          - literal_form: Soil
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: garden soil
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: NARROW_SYNONYM
+      peat:
+        description: Peat / peat soil
+        meaning: GOLDVOCAB:Peat
+      sediment:
+        description: Sediment (unqualified)
+        meaning: ENVO:00002007
+      marine_sediment:
+        description: Marine sediment
+        meaning: GOLDVOCAB:Marine-sediment
+      mud:
+        description: Mud
+        meaning: GOLDVOCAB:Mud
+      sea_water:
+        description: Sea water (marine)
+        meaning: GOLDVOCAB:Sea-water
+        aliases: [seawater]
+        structured_aliases:
+          - literal_form: Seawater
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+      fresh_water:
+        description: Fresh water (lake, river, pond, spring)
+        meaning: ENVO:00002011
+        structured_aliases:
+          - literal_form: Freshwater Lake
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: NARROW_SYNONYM
+      wastewater:
+        description: Wastewater (industrial, municipal, agricultural)
+        meaning: GOLDVOCAB:Wastewater
+      sludge:
+        description: Sludge (activated, anaerobic, biological)
+        meaning: GOLDVOCAB:Sludge
+      microbial_mat:
+        description: Microbial mat
+        meaning: ENVO:01000008
+        structured_aliases:
+          - literal_form: iron-rich microbial mat from hydrothermal vent
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: NARROW_SYNONYM
+      hot_spring:
+        description: Hot spring environment
+        meaning: ENVO:00000051
+      air:
+        description: Air
+        meaning: GOLDVOCAB:Air
+      feces:
+        description: Feces / fecal material
+        meaning: GOLDVOCAB:Feces
+        aliases: [stool]
+        structured_aliases:
+          - literal_form: Human feces
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: NARROW_SYNONYM
+      fruiting_body:
+        description: Fungal fruiting body (mushroom cap, conk, sporocarp, etc.).
+        comments:
+          - >-
+            `meaning:` omitted: no clean OBO anatomy term identified. PO is
+            plant-only; GO `fruiting body development` (GO:0030582) is a
+            process term, not anatomy.
+      host_tissue_other:
+        description: Generic host tissue (use only when no more specific PV applies).
+        meaning: UBERON:0000479
+      other:
+        description: Origin matrix that is genuinely outside the closed list.
+        comments:
+          - >-
+            Recurring `other` captures should be reviewed and promoted to
+            new permissible values.
+
+  SampleCollectionSiteEnum:
+    description: >-
+      Site category where an OrganismSample (or its host) was collected.
+    comments:
+      - >-
+        Distinct from environmental biome (which goes on Biosample via
+        `env_broad_scale`) and lab maintenance (`sample_growth_conditions`).
+      - >-
+        PVs without `meaning:` reflect concepts that have no clean ENVO /
+        GOLDVOCAB / OBO term at the time of writing (e.g. `growth_room`,
+        `experimental_garden`, `open_top_chamber`, `culture_collection`).
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3054
+    permissible_values:
+      field:
+        description: Outdoor field site (agricultural or natural).
+        meaning: ENVO:01000352
+        structured_aliases:
+          - literal_form: Field
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: EXACT_SYNONYM
+          - literal_form: Field-grown common garden of wild sourced seedlots
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: NARROW_SYNONYM
+      greenhouse:
+        description: Greenhouse cultivation site.
+        meaning: GOLDVOCAB:Greenhouse
+        aliases: [glasshouse]
+      growth_chamber:
+        description: Controlled-environment plant growth chamber, bench- or stack-scale.
+        meaning: GOLDVOCAB:Plant-growth-chamber
+      growth_room:
+        description: >-
+          Walk-in growth room (e.g., phytotron room) that accommodates plants
+          at full height.
+        comments:
+          - Distinct from `growth_chamber`, which is bench- or stack-scale.
+          - "`meaning:` omitted: no clean ontology term identified."
+      experimental_garden:
+        description: Experimental or common garden.
+        comments:
+          - "`meaning:` omitted: no clean ontology term identified."
+      open_top_chamber:
+        description: Open-top experimental field chamber (CO2 / UV manipulation studies).
+        comments:
+          - "`meaning:` omitted: no clean ontology term identified."
+      laboratory:
+        description: Lab bench / lab-derived sample.
+        meaning: GOLDVOCAB:Laboratory-developed
+      culture_collection:
+        description: Sample received from a culture collection catalog (DSMZ, ATCC, etc.).
+        comments:
+          - The catalog identifier itself belongs on `source_mat_id`.
+          - "`meaning:` omitted: no clean ontology term identified."
+      deep_subsurface:
+        description: Deep subsurface / well / aquifer.
+        meaning: GOLDVOCAB:Deep-subsurface
+        aliases: ["deep well"]
+        structured_aliases:
+          - literal_form: Deep well
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: NARROW_SYNONYM
+      other:
+        description: Collection site that is genuinely outside the closed list.
+        comments:
+          - >-
+            Recurring `other` captures should be reviewed and promoted to
+            new permissible values.
+
+  SampleGrowthConditionsEnum:
+    description: >-
+      In-vitro growth / maintenance context for an OrganismSample.
+    comments:
+      - >-
+        Interim coarse classification. Most PVs lack `meaning:` because OBI /
+        PATO / GO do not cover these maintenance states as discrete classes.
+      - >-
+        Full decomposition into typed sub-slots (media, temperature, atmosphere,
+        time) is deferred to the Isolation / Culturing class redesign.
+    todos:
+      - >-
+        When the Culturing class redesign lands, revisit whether the values
+        here move to typed Culturing sub-slots and this enum is retired
+        or narrowed.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3054
+      - https://github.com/microbiomedata/nmdc-schema/issues/3027
+      - https://github.com/microbiomedata/nmdc-schema/issues/3065
+    permissible_values:
+      liquid_culture:
+        description: Maintained in liquid culture broth.
+        structured_aliases:
+          - literal_form: Liquid culture from a frozen stock
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: NARROW_SYNONYM
+      solid_plate:
+        description: Maintained on solid agar plate (e.g., single-colony pick).
+        structured_aliases:
+          - literal_form: single colony isolate
+            contexts: [https://gold.jgi.doe.gov/]
+            predicate: NARROW_SYNONYM
+      frozen_stock:
+        description: Sample derived from a frozen glycerol or DMSO stock.
+      clonal_line:
+        description: Maintained as a clonal cell line.
+      cultivated_indoor:
+        description: Cultivated in an indoor controlled environment (greenhouse, chamber, room).
+        comments:
+          - The specific facility category is captured by `sample_collection_site`.
+      cultivated_outdoor:
+        description: Cultivated in an outdoor controlled environment (field, garden, open-top chamber).
+      culture_collection_purchase:
+        description: Received from a culture collection with no in-house growth step.
+        comments:
+          - Pair with `source_mat_id` for the catalog identifier.
+      not_recorded:
+        description: Growth or maintenance context not recorded by the submitter.
+      other:
+        description: Growth context that is genuinely outside the closed list.
+        comments:
+          - >-
+            Recurring `other` captures should be reviewed and promoted to
+            new permissible values.

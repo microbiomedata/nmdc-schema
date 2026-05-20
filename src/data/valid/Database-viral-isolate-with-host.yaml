@@ -1,10 +1,13 @@
 # Viral isolate scenario: a phage harvested from an E. coli K-12 lysate.
-# The phage is the focal Organism; its OrganismSample carries upstream
-# Biosample provenance where the host bacterium is identified via the
-# host_genus / host_species / host_strain slots (NMDC-native, sourced from
-# the JGI Isolate (NA) v19 form fields "Host Genus" / "Host Species" /
-# "Host Strain"). host_taxid (MIxS-imported) on the Biosample carries the
-# NCBI Taxonomy ID for the host when known.
+# The phage is the focal Organism; its OrganismSample identifies the host
+# bacterium via the typed `host_organism` reference (linked Organism record
+# for E. coli K-12 MG1655 in this fixture). This mirrors the focal-vs-host
+# pattern used in Database-rhizosphere-isolate.yaml.
+#
+# The accompanying Biosample (the bacterial lysate substrate) still carries
+# its legacy flat MIxS host slots (host_taxid / host_genus / host_species /
+# host_strain). Aligning Biosample to the same linked-data host pattern is
+# tracked separately as a follow-up; see #3075.
 #
 # Real organisms used as a placeholder reference:
 #   - Phage (focal): Enterobacteria phage T4 (NCBITaxon:10665)
@@ -52,6 +55,20 @@ organism_set:
       - id: NCBITaxon:10665
         name: Escherichia virus T4
         type: nmdc:NcbiTaxon
+    organism_genus: Tequatrovirus
+    organism_species: Escherichia virus T4
+    # strain_name omitted: T4 is the species-level name; phage taxonomy
+    # does not map cleanly to the JGI-form genus/species/strain trio.
+  - id: nmdc:orgn-99-ecoli01
+    type: nmdc:Organism
+    name: Escherichia coli K-12 substr. MG1655
+    classified_as:
+      - id: NCBITaxon:511145
+        name: Escherichia coli str. K-12 substr. MG1655
+        type: nmdc:NcbiTaxon
+    organism_genus: Escherichia
+    organism_species: coli
+    strain_name: K-12 MG1655
 
 organism_sample_set:
   - id: nmdc:osm-99-vqkvad
@@ -60,5 +77,8 @@ organism_sample_set:
     associated_studies:
       - nmdc:sty-99-r5xs9t
     expected_organism: nmdc:orgn-99-pgw8nq
-    sample_isolated_from: Lysate from a phage-infected bacterial culture
-    sample_growth_conditions: E. coli K-12 MG1655 broth culture infected with phage T4
+    host_organism: nmdc:orgn-99-ecoli01
+    # No clean SampleIsolatedFromEnum PV for "phage lysate" — the
+    # sample_isolated_from slot is omitted.
+    sample_collection_site: laboratory
+    sample_growth_conditions: liquid_culture

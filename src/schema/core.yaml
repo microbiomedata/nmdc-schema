@@ -1309,13 +1309,13 @@ classes:
     slots:
       - associated_studies
       - expected_organism
+      - host_organism
       - embargoed
       - provenance_metadata
       - external_database_identifiers
       - gold_organism_identifiers
       - collection_date
       - samp_name
-      - host_taxid
       - sample_isolation_method
       - sample_isolated_from
       - sample_collection_site
@@ -1332,6 +1332,18 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
           interpolated: true
+      host_organism:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      sample_collection_site:
+        range: SampleCollectionSiteEnum
+        description: Site category where the OrganismSample (or its host) was collected.
+        comments:
+          - >-
+            Narrowed from the base slot's free-text range to the closed
+            `SampleCollectionSiteEnum` vocabulary for OrganismSample. Biosample
+            keeps the legacy free-text range. See #3054.
       source_mat_id:
         description: >-
           Culture collection identifier for the source of this organism sample.
