@@ -37,13 +37,25 @@ classes:
       SlotLevelProvenance records for a given target record can be folded
       to recover the record's edit history.
     comments:
-      - The path slot uses JSON Pointer (RFC 6901) syntax.
-      - The operation slot follows JSON Patch (RFC 6902) semantics, extended
-        with merge/split/supersede for record-level operations.
-      - SlotLevelProvenance records are append-only. Reversals are recorded
-        as additional records, with reverted_by back-linking the original.
-      - Enforcement of append-only semantics is a Runtime concern, not a
-        schema concern.
+      - >-
+        A SlotLevelProvenance record describes the change to exactly one
+        slot value on one record. Whole-record changes (create, delete,
+        merge, split, supersede) are out of scope and belong to the
+        record-level provenance mechanism (the ProvenanceObject class
+        proposed in #3085), not to this class.
+      - >-
+        The path slot uses JSON Pointer (RFC 6901) syntax. RFC 6901 is
+        the IETF standard for referencing a value inside a JSON document
+        by a forward-slash-separated path; e.g. /env_broad_scale/term/id
+        names the term id nested inside env_broad_scale on the target
+        record. It is not a filesystem path.
+      - >-
+        The operation slot uses JSON Patch (RFC 6902) semantics for
+        create, update, and delete on a single slot value.
+      - SlotLevelProvenance records are append-only and cannot be modified
+        after they are written. Rollback is not in scope; if a change is
+        wrong, a new SlotLevelProvenance record describes the corrective
+        update. Enforcement of append-only semantics is a runtime concern.
     broad_mappings:
       - prov:Activity
     examples:
@@ -67,22 +79,23 @@ classes:
           source_record_locator: "changesheet:nmdc:cs-2026-04-03-001"
           schema_version_at_change: "11.19.1"
       - description: >-
-          Initial GOLD ETL ingest creating a Biosample record.
+          A migrator setting env_package on a Biosample as part of a
+          schema-version transition that filled in missing values for
+          legacy records.
         object:
-          id: nmdc:slp-00-goldcr01
+          id: nmdc:slp-00-migrenvp01
           type: nmdc:SlotLevelProvenance
           target_record_id: nmdc:bsm-13-amrnys72
           target_class: nmdc:Biosample
-          path: ""
+          path: /env_package/has_raw_value
           operation: create
-          new_value_hash: a3f2e1c4b5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2
+          new_value: "ENVO:00002030"
           changed_at: "2024-10-30T00:00:00Z"
-          agent_id: gold_etl_v2.4.1
-          agent_role: external_ingest
-          batch_id: "gold-ingest:2024-10-30-batch-7"
-          reason: ingest
-          source_record_locator: "gold:Gs0110115"
-          schema_version_at_change: "10.7.0"
+          agent_id: migrator_from_11_5_0_to_11_5_1
+          agent_role: migrator
+          batch_id: "migration:11.5.0->11.5.1"
+          reason: migration
+          schema_version_at_change: "11.5.1"
       - description: >-
           An AI suggester filling in lat_lon by combining geo_loc_name
           on the same Biosample with funding_sources on the parent
@@ -115,8 +128,6 @@ classes:
       - operation
       - previous_value
       - new_value
-      - previous_value_hash
-      - new_value_hash
       - changed_at
       - agent_id
       - agent_role
@@ -129,7 +140,6 @@ classes:
       - approval_status
       - approved_by
       - approved_at
-      - reverted_by
 
 slots:
   target_record_id:
@@ -148,15 +158,16 @@ slots:
 
   path:
     description: >-
-      JSON Pointer (RFC 6901) reference to the slot value on the target
-      record that was changed. The empty string refers to the whole record.
+      JSON Pointer (RFC 6901) reference to the specific slot value on the
+      target record that was changed. The path must name a slot; whole-record
+      changes are out of scope for this class.
     range: string
     required: true
+    pattern: '^/.+'
     examples:
       - value: /env_broad_scale/term/id
       - value: /associated_dois/0/doi_value
-      - value: /provenance_metadata/mod_date
-      - value: ""
+      - value: /has_instance_provenance/0/mod_date
 
   operation:
     description: >-
@@ -169,29 +180,14 @@ slots:
   previous_value:
     description: >-
       The value at path immediately prior to this change, serialized as a
-      string. May be elided in favor of previous_value_hash for large
-      values. Required for update and delete operations.
+      string. Required for update and delete operations.
     range: string
 
   new_value:
     description: >-
       The value at path immediately after this change, serialized as a
-      string. May be elided in favor of new_value_hash for large values.
-      Required for create and update operations.
+      string. Required for create and update operations.
     range: string
-
-  previous_value_hash:
-    description: >-
-      SHA-256 hex digest of the previous value. Used when previous_value
-      is omitted (e.g. large embedded structures stored externally).
-    range: string
-    pattern: '^[a-f0-9]{64}$'
-
-  new_value_hash:
-    description: >-
-      SHA-256 hex digest of the new value.
-    range: string
-    pattern: '^[a-f0-9]{64}$'
 
   changed_at:
     description: >-
@@ -283,19 +279,11 @@ slots:
       Timestamp at which approval was granted.
     range: datetime
 
-  reverted_by:
-    description: >-
-      Reference to a later SlotLevelProvenance record that reverts this
-      one. SlotLevelProvenance records are append-only; reversals are
-      modeled by appending a new record and back-linking it here.
-    range: SlotLevelProvenance
-
 enums:
   ProvenanceOperationEnum:
     description: >-
-      Kinds of recorded changes. Slot-level operations correspond to JSON
-      Patch (RFC 6902) ops. Record-level operations cover lifecycle events
-      that affect the whole document.
+      Kinds of recorded slot-level changes, following JSON Patch (RFC 6902)
+      semantics applied to a single slot value at a JSON Pointer path.
     permissible_values:
       create:
         description: A new slot value was set; the path did not previously exist.
@@ -303,12 +291,6 @@ enums:
         description: An existing slot value was replaced.
       delete:
         description: An existing slot value was removed.
-      merge:
-        description: The target record was merged into another. Record-level.
-      split:
-        description: The target record was split into multiple records. Record-level.
-      supersede:
-        description: The target record was superseded by another. Record-level.
 
   AgentRoleEnum:
     description: >-
