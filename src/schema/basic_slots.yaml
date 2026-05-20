@@ -719,9 +719,9 @@ slots:
       - See also dna_isolate_meth in submission-schema for the equivalent portal field.
 
   sample_isolated_from:
-    range: SampleIsolatedFromEnum
+    range: string
     description: >-
-      Origin matrix from which the organism sample was isolated — the *what*
+      Origin matrix from which the organism sample was isolated; the *what*
       it came out of.
     comments:
       - >-
@@ -733,6 +733,12 @@ slots:
         Used when no upstream Biosample carries env-triad information (e.g.
         culture collection orders, lab-derived samples). When a linked
         Biosample is available, environmental provenance belongs there.
+      - >-
+        On OrganismSample, the range is narrowed via `slot_usage` to
+        `any_of: [SampleIsolatedFromEnum, string]`, mirroring the
+        env_broad_scale / env_local_scale / env_medium pattern used in
+        microbiomedata/submission-schema. Long-tail narrative content that
+        does not fit a PV routes to `isolation_details`.
       - >-
         Typed sample-to-sample links ("Y was isolated from X") are out of
         scope here; see #3033.
@@ -746,6 +752,35 @@ slots:
         contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
+
+  isolation_details:
+    range: string
+    recommended: false
+    description: >-
+      Free-text fallback for isolation-provenance content that does not fit
+      the typed slots `sample_isolated_from` (origin matrix),
+      `sample_collection_site` (site category), or `sample_growth_conditions`
+      (in-vitro maintenance). Use only when no PV on the corresponding
+      closed enum applies; recurring patterns here are reviewed for
+      promotion to new PVs.
+    comments:
+      - >-
+        Catches the long tail of narrative descriptions observed in
+        GOLD `dw_samples.sample_isolated_from` (e.g. "Iron-rich microbial
+        mat from hydrothermal vent near 9°N EPR"). The typed slots remain
+        preferred: place names go to `geo_loc_name` / `lat_lon`;
+        matrix to `sample_isolated_from`; site to
+        `sample_collection_site`; in-vitro maintenance to
+        `sample_growth_conditions`. `isolation_details` is the residue.
+      - >-
+        Populating this slot is a tracked data-quality signal:
+        submissions whose `isolation_details` is non-empty while one or
+        more of the typed slots are empty flag candidate PVs for the
+        next vocabulary review on the relevant enum.
+    in_subset:
+      - jgi_isolate
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3054
 
   sample_growth_conditions:
     range: SampleGrowthConditionsEnum

@@ -173,9 +173,10 @@ Adding bioregistry-resolvable prefixes for these is tracked in
 
 GOLD's `dw_samples.sample_isolated_from` is a single free-text column historically populated with values that conflate origin matrix, collection site, growth conditions, and host context. Per [#3054](https://github.com/microbiomedata/nmdc-schema/issues/3054), NMDC splits these concepts into typed slots on `OrganismSample`:
 
-- `sample_isolated_from` — origin matrix (the *what*), enum-typed
+- `sample_isolated_from` — origin matrix (the *what*); on `OrganismSample`, range is `any_of: [SampleIsolatedFromEnum, string]` with a `structured_pattern` accepting either a PV name (`leaf`) or env_medium-style bracket form (`leaf [PO:0025034]`)
 - `sample_collection_site` — site category (the *where*), enum-typed
 - `sample_growth_conditions` — lab maintenance (interim free-text; full decomposition in [#3027](https://github.com/microbiomedata/nmdc-schema/issues/3027) / [#3065](https://github.com/microbiomedata/nmdc-schema/issues/3065))
+- `isolation_details` — free-text fallback (`recommended: false`) for any isolation-provenance content that does not fit the three typed slots above; catches the long tail of narrative descriptions observed in GOLD `dw_samples.sample_isolated_from`
 - `host_organism` — typed reference to an `Organism` instance whose `classified_as` carries the host's NCBI Taxonomy CURIE
 
 On export back to GOLD/JGI, the typed slots recombine into the legacy flat string. For the host string fields (JGI v19 fields Host Genus / Species / Strain), traverse `host_organism.organism_genus` / `host_organism.organism_species` / `host_organism.strain_name`.

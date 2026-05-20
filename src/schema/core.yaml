@@ -1318,6 +1318,7 @@ classes:
       - samp_name
       - sample_isolation_method
       - sample_isolated_from
+      - isolation_details
       - sample_collection_site
       - sample_growth_conditions
       - ploidy
@@ -1336,6 +1337,31 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
           interpolated: true
+      sample_isolated_from:
+        any_of:
+          - range: SampleIsolatedFromEnum
+          - range: string
+        structured_pattern:
+          syntax: "^([a-z][a-z0-9_]*|.+ \\[(ENVO|PO|UBERON|GOLDVOCAB|FAO):[A-Za-z0-9_:\\-]+\\])$"
+        description: >-
+          Origin matrix on OrganismSample. Accepts either a permissible-value
+          name from `SampleIsolatedFromEnum` (e.g. `leaf`, `microbial_mat`) or
+          an env_medium-style bracket label anchoring an ontology / GOLD
+          vocabulary term (e.g. `leaf [PO:0025034]`,
+          `sea water [GOLDVOCAB:Sea-water]`). Long-tail narrative
+          descriptions that do not fit either form go to `isolation_details`.
+        comments:
+          - >-
+            Mirrors the `any_of: [<typed enum>, string]` + structured_pattern
+            shape used for `env_broad_scale` / `env_local_scale` / `env_medium`
+            in microbiomedata/submission-schema. Closed PV names cover the
+            head of the distribution; the bracket form lets submitters anchor
+            an ontology term outside the closed list without forfeiting
+            type safety.
+          - >-
+            The pattern allows GOLDVOCAB IDs (alphanumeric + dashes,
+            e.g. `Sea-water`, `Plant-growth-chamber`) alongside the standard
+            ENVO / PO / UBERON / FAO numeric IDs.
       sample_collection_site:
         range: SampleCollectionSiteEnum
         description: Site category where the OrganismSample (or its host) was collected.
