@@ -51,6 +51,7 @@ classes:
       - name
       - description
       - alternative_identifiers
+      - has_instance_provenance
       - type
 
   OntologyClass:
@@ -413,7 +414,6 @@ classes:
 
       - alternative_descriptions
       - alternative_names
-      - provenance_metadata
       - alternative_titles
 
       - ecosystem
@@ -487,8 +487,6 @@ classes:
       protocol_link:
         multivalued: true
         inlined_as_list: true
-      provenance_metadata:
-        description: Provenance metadata for this Study, including when the record was added to and last modified in the NMDC database.
     exact_mappings:
       - OBI:0000066
       - SIO:000747
@@ -588,7 +586,6 @@ classes:
       - instrument_used
       - principal_investigator
       - instrument_instance_specifier
-      - provenance_metadata
     slot_usage:
       has_input:
         required: true
@@ -608,8 +605,6 @@ classes:
           syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
           interpolated:
             true
-      provenance_metadata:
-        description: Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database.
     broad_mappings:
       - OBI:0000070
       - ISA:Assay
@@ -685,32 +680,6 @@ classes:
           The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution,
           this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.
         
-  ProvenanceMetadata:
-    description: Metadata pertaining to how a record was created.
-    class_uri: nmdc:ProvenanceMetadata
-    slots:
-      - add_date
-      - git_url
-      - mod_date
-      - version
-      - source_system_of_record
-      - submission_portal_identifier
-      - type
-    slot_usage:
-      add_date:
-        range: datetime
-        description: The date and time at which a record was added to the NMDC database.
-        comments:
-          - Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23 may carry GOLD-sourced dates rather than NMDC-asserted timestamps.
-      mod_date:
-        range: datetime
-        description: The date and time at which a record was last modified in the NMDC database.
-        comments:
-          - Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23 may carry GOLD-sourced dates rather than NMDC-asserted timestamps.
-      version:
-        description: The version tag of the software used to generate the NMDC metadata record
-      git_url:
-        description: The url of the software repository used to generate the NMDC metadata record
 slots:
   classified_as:
     range: OntologyClass
@@ -937,10 +906,6 @@ slots:
       supersedes it, marking this record as outdated. The linked WorkflowExecution or
       resultant DataObjects should be used in favor of this record.
 
-  provenance_metadata: 
-    range: ProvenanceMetadata
-    description: Provides information about the provenance of a record.
-    
 enums:
   SourceSystemEnum:
     permissible_values:

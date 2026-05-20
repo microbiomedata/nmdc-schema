@@ -20,10 +20,11 @@ data_generation_set:
   end_date: '2016-05-24 18:54:29.000'
   has_chromatography_configuration: nmdc:chrcon-14-qpvt3v15
   has_mass_spectrometry_configuration: nmdc:mscon-14-5jk7rg60
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    mod_date: '2024-11-07T00:00:00Z'
   start_date: '2016-05-24 18:17:00.000'
+  has_instance_provenance:
+  - id: nmdc:prov-99-13-122e4240
+    type: nmdc:ProvenanceObject
+    mod_date: '2024-11-07T00:00:00Z'
 calibration_set:
 - id: nmdc:calib-14-93cjjw92
   calibration_object: nmdc:dobj-13-rf3br219
@@ -55,7 +56,7 @@ workflow_execution_set:
   has_output:
   - nmdc:dobj-13-hrf1h918
   id: nmdc:wfmb-13-r954ws43.1
-  uses_calibration: 
+  uses_calibration:
   - nmdc:calib-14-93cjjw92
   ended_at_time: '2021-01-07T23:54:40Z'
   execution_resource: EMSL-RZR
@@ -63,5 +64,5 @@ workflow_execution_set:
   git_url: https://github.com/microbiomedata/metaMS
   started_at_time: '2021-01-07T23:54:40Z'
   was_informed_by:
-    - nmdc:dgms-13-122e4240
+  - nmdc:dgms-13-122e4240
   metabolomics_analysis_category: gc_ms_metabolomics
