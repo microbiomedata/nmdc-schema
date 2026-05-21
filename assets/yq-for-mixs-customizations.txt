@@ -526,6 +526,8 @@
 # Slot-level range override is in basic_classes.yaml slot_usage on Organism.
 'del(.slots.estimated_size.string_serialization)'
 'del(.slots.estimated_size.annotations.Expected_value)'
+'del(.slots.estimated_size.examples)'
+'.slots.estimated_size.examples = [{"value": "300000"}]'
 
 # these slots, by their old names, are not used anywhere in mixs.yaml and seem to confuse the mkdocs search when looking for has_unit etc.
 'del(.slots.["has numeric value"])'

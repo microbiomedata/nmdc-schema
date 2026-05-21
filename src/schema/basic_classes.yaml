@@ -234,9 +234,8 @@ classes:
         comments:
           - base pair scale/units
         description: >-
-          Estimated genome size, as integer base pairs. The JGI isolate field reports in
-          megabases (Mb); values must be converted to the MIxS integer-bp
-          representation before validation and storage.
+          Estimated genome size, in integer base pairs. JGI isolate-form values
+          are reported in megabases (Mb); convert to base pairs before submission.
         structured_aliases:
           - literal_form: Estimated Genome Size (Mb)
             contexts:
