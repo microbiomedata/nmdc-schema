@@ -647,6 +647,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -740,7 +751,7 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../Integer/">Integer</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
 <table>
@@ -755,6 +766,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>base pair scale/units</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -783,6 +798,8 @@ description: The estimated size of the genome prior to sequencing. Of particular
   in the sequencing of (eukaryotic) genome which could remain in draft form for a
   long or unspecified period
 title: estimated size
+comments:
+- base pair scale/units
 examples:
 - value: '300000'
 from_schema: https://w3id.org/nmdc/nmdc
@@ -793,7 +810,7 @@ slot_uri: MIXS:0000024
 alias: estimated_size
 domain_of:
 - Organism
-range: string
+range: integer
 
 </code></pre>
 

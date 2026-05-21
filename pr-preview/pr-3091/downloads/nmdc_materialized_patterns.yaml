@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.1.post98.dev0+32f4e8b96
+version: 11.19.1.post99.dev0+fde7d32f6
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -17080,12 +17080,15 @@ slots:
       importance in the sequencing of (eukaryotic) genome which could remain in draft
       form for a long or unspecified period
     title: estimated size
+    comments:
+    - base pair scale/units
     examples:
     - value: '300000'
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - size
     slot_uri: MIXS:0000024
+    range: integer
   ploidy:
     name: ploidy
     description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid,
@@ -19870,14 +19873,11 @@ classes:
         name: estimated_size
         description: Estimated genome size, in integer base pairs. JGI isolate-form
           values are reported in megabases (Mb); convert to base pairs before submission.
-        comments:
-        - base pair scale/units
         structured_aliases:
         - literal_form: Estimated Genome Size (Mb)
           predicate: BROAD_SYNONYM
           contexts:
           - https://jgi.doe.gov/isolate-submission-form/v19
-        range: integer
       ref_biomaterial:
         name: ref_biomaterial
         description: Reference for the organism, preferentially a DOI when a primary
