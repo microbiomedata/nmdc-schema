@@ -517,7 +517,7 @@
 <tr>
 <td><a href="../estimated_size/">estimated_size</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Estimated genome size, as an integer count</td>
+<td>The estimated size of the genome prior to sequencing</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -949,11 +949,12 @@ attributes:
     range: string
   estimated_size:
     name: estimated_size
-    description: Estimated genome size, as an integer count. JGI reports values in
-      megabases (Mb); NMDC stores them in base pairs (bp).
+    description: The estimated size of the genome prior to sequencing. Of particular
+      importance in the sequencing of (eukaryotic) genome which could remain in draft
+      form for a long or unspecified period
     title: estimated size
     comments:
-    - base pair scale/units
+    - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
     examples:
     - object: 300000
     from_schema: https://w3id.org/nmdc/nmdc

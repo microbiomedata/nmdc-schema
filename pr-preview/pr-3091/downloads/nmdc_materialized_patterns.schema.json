@@ -12978,7 +12978,7 @@
                     ]
                 },
                 "estimated_size": {
-                    "description": "Estimated genome size, as an integer count. JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).",
+                    "description": "The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period",
                     "minimum": 1,
                     "type": [
                         "integer",
@@ -16419,6 +16419,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.1.post102.dev0+fa82d1b37"
+    "version": "11.19.1.post103.dev0+e86eacec0"
 }
 
