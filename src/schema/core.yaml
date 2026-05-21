@@ -1322,6 +1322,7 @@ classes:
       - sample_growth_conditions
       - ploidy
       - source_mat_id
+      - analysis_type
     slot_usage:
       id:
         required: true
