@@ -524,6 +524,7 @@
 
 # estimated_size: NMDC uses integer base pairs (no bp suffix). See issue #3090.
 '.slots.estimated_size.range = "integer"'
+'.slots.estimated_size.minimum_value = 1'
 '.slots.estimated_size.comments = ["base pair scale/units"]'
 'del(.slots.estimated_size.string_serialization)'
 'del(.slots.estimated_size.annotations)'

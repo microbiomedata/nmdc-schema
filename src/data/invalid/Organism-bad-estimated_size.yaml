@@ -1,5 +1,4 @@
 # Invalid: estimated_size must be an integer (base pairs); a float is not allowed.
-# Organism slot_usage sets range: integer for this slot.
 id: nmdc:orgn-99-tuxk3s
 type: nmdc:Organism
 name: bad-estimated-size

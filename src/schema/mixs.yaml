@@ -7111,6 +7111,7 @@ slots:
       - size
     slot_uri: MIXS:0000024
     range: integer
+    minimum_value: 1
     comments:
       - base pair scale/units
     examples:
