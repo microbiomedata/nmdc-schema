@@ -230,15 +230,13 @@ classes:
           the broader pattern is to narrow `classified_as` to `NcbiTaxon` on
           all organism-oriented classes via slot_usage.
       estimated_size:
+        range: integer
+        comments:
+          - base pair scale/units
         description: >-
-          Estimated genome size, as integer base pairs. Reuses MIxS
-          estimated_size (MIXS:0000024). The JGI isolate field reports in
+          Estimated genome size, as integer base pairs. The JGI isolate field reports in
           megabases (Mb); values must be converted to the MIxS integer-bp
-          representation before validation and storage. The submission portal
-          should auto-populate the "bp" suffix and enforce integer input.
-        structured_pattern:
-          syntax: '^[0-9]+ bp$'
-          interpolated: false
+          representation before validation and storage.
         structured_aliases:
           - literal_form: Estimated Genome Size (Mb)
             contexts:

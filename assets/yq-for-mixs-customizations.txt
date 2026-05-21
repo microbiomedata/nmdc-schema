@@ -522,6 +522,11 @@
 'del(.slots.ploidy.structured_pattern)'
 'del(.slots.ploidy.examples)'
 
+# estimated_size: NMDC uses integer base pairs (no bp suffix). See issue #3090.
+# Slot-level range override is in basic_classes.yaml slot_usage on Organism.
+'del(.slots.estimated_size.string_serialization)'
+'del(.slots.estimated_size.annotations.Expected_value)'
+
 # these slots, by their old names, are not used anywhere in mixs.yaml and seem to confuse the mkdocs search when looking for has_unit etc.
 'del(.slots.["has numeric value"])'
 'del(.slots.["has raw value"])'
