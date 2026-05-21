@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.1.post99.dev0+fde7d32f6
+version: 11.19.1.post100.dev0+80ce80e5b
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -17083,7 +17083,7 @@ slots:
     comments:
     - base pair scale/units
     examples:
-    - value: '300000'
+    - object: 300000
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - size
