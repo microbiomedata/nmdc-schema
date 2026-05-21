@@ -528,7 +528,7 @@
 'del(.slots.estimated_size.string_serialization)'
 'del(.slots.estimated_size.annotations)'
 'del(.slots.estimated_size.examples)'
-'.slots.estimated_size.examples = [{"value": "300000"}]'
+'.slots.estimated_size.examples = [{"object": 300000}]'
 
 # these slots, by their old names, are not used anywhere in mixs.yaml and seem to confuse the mkdocs search when looking for has_unit etc.
 'del(.slots.["has numeric value"])'
