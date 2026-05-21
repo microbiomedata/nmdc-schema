@@ -427,6 +427,11 @@
 
   OrganismSample : alternative_identifiers
 
+  OrganismSample : analysis_type
+
+      OrganismSample --&gt; "* _recommended_" AnalysisTypeEnum : analysis_type
+    click AnalysisTypeEnum href "../AnalysisTypeEnum"
+
   OrganismSample : associated_studies
 
       OrganismSample --&gt; "1..*" Study : associated_studies
@@ -604,6 +609,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../analysis_type/">analysis_type</a></td>
+<td>* <em>recommended</em> <br/> <a href="../AnalysisTypeEnum/">AnalysisTypeEnum</a></td>
+<td>Select all the data types associated or available for this biosample</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A unique identifier for a thing</td>
@@ -748,6 +759,7 @@ slots:
 - sample_growth_conditions
 - ploidy
 - source_mat_id
+- analysis_type
 slot_usage:
   id:
     name: id
@@ -1277,6 +1289,27 @@ attributes:
     - OrganismSample
     range: TextValue
     multivalued: false
+  analysis_type:
+    name: analysis_type
+    description: Select all the data types associated or available for this biosample
+    title: analysis/data type
+    comments:
+    - MIxS:investigation_type was included as a `see_also` but that term doesn't resolve
+      any more
+    examples:
+    - value: metagenomics; metabolomics; metaproteomics
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 3
+    alias: analysis_type
+    owner: OrganismSample
+    domain_of:
+    - Protocol
+    - Biosample
+    - OrganismSample
+    slot_group: Sample ID
+    range: AnalysisTypeEnum
+    recommended: true
+    multivalued: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand

@@ -20,7 +20,9 @@
                 "metatranscriptomics",
                 "natural organic matter",
                 "bulk chemistry",
-                "amplicon sequencing assay"
+                "amplicon sequencing assay",
+                "isolate genome sequencing",
+                "isolate transcriptome sequencing"
             ],
             "title": "AnalysisTypeEnum",
             "type": "string"
@@ -13076,6 +13078,16 @@
                         "null"
                     ]
                 },
+                "analysis_type": {
+                    "description": "Select all the data types associated or available for this biosample",
+                    "items": {
+                        "$ref": "#/$defs/AnalysisTypeEnum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
@@ -16407,6 +16419,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.1.post87.dev0+fa63afb0b"
+    "version": "11.19.1.post94.dev0+c9afac689"
 }
 

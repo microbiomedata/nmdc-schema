@@ -743,13 +743,18 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td>Biological source material which can be characterized by an experiment</td>
+<td><a href="../Protocol/">Protocol</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td></td>
+<td><a href="../OrganismSample/">OrganismSample</a></td>
+<td>A material sample in which all cells are expected to share the same genome</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td>Biological source material which can be characterized by an experiment</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -820,6 +825,7 @@ alias: analysis_type
 domain_of:
 - Protocol
 - Biosample
+- OrganismSample
 slot_group: Sample ID
 range: AnalysisTypeEnum
 recommended: true
