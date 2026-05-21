@@ -230,9 +230,6 @@ classes:
           the broader pattern is to narrow `classified_as` to `NcbiTaxon` on
           all organism-oriented classes via slot_usage.
       estimated_size:
-        range: integer
-        comments:
-          - base pair scale/units
         description: >-
           Estimated genome size, in integer base pairs. JGI isolate-form values
           are reported in megabases (Mb); convert to base pairs before submission.

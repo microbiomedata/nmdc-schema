@@ -523,9 +523,10 @@
 'del(.slots.ploidy.examples)'
 
 # estimated_size: NMDC uses integer base pairs (no bp suffix). See issue #3090.
-# Slot-level range override is in basic_classes.yaml slot_usage on Organism.
+'.slots.estimated_size.range = "integer"'
+'.slots.estimated_size.comments = ["base pair scale/units"]'
 'del(.slots.estimated_size.string_serialization)'
-'del(.slots.estimated_size.annotations.Expected_value)'
+'del(.slots.estimated_size.annotations)'
 'del(.slots.estimated_size.examples)'
 '.slots.estimated_size.examples = [{"value": "300000"}]'
 
