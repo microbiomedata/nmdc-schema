@@ -16,7 +16,7 @@ strain_name: PV-4
 isolate_name: Isolate
 gc_content:
   type: nmdc:QuantityValue
-  has_numeric_value: 54.0
+  has_numeric_value: 300
   has_unit: "%"
 estimated_size: 4600000 bp
 # NB: gold_organism_identifiers was moved to OrganismSample — GOLD records
