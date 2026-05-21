@@ -526,6 +526,7 @@
 '.slots.estimated_size.range = "integer"'
 '.slots.estimated_size.minimum_value = 1'
 '.slots.estimated_size.comments = ["base pair scale/units"]'
+'.slots.estimated_size.description |= "Estimated genome size, as an integer count. JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp)."'
 'del(.slots.estimated_size.string_serialization)'
 'del(.slots.estimated_size.annotations)'
 'del(.slots.estimated_size.examples)'
