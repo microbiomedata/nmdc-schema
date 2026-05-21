@@ -517,7 +517,7 @@
 <tr>
 <td><a href="../estimated_size/">estimated_size</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Estimated genome size, in integer base pairs</td>
+<td>Estimated genome size, as an integer count</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -673,8 +673,6 @@ slot_usage:
     range: NcbiTaxon
   estimated_size:
     name: estimated_size
-    description: Estimated genome size, in integer base pairs. JGI isolate-form values
-      are reported in megabases (Mb); convert to base pairs before submission.
     structured_aliases:
     - literal_form: Estimated Genome Size (Mb)
       predicate: BROAD_SYNONYM
@@ -760,8 +758,6 @@ slot_usage:
     range: NcbiTaxon
   estimated_size:
     name: estimated_size
-    description: Estimated genome size, in integer base pairs. JGI isolate-form values
-      are reported in megabases (Mb); convert to base pairs before submission.
     structured_aliases:
     - literal_form: Estimated Genome Size (Mb)
       predicate: BROAD_SYNONYM
@@ -953,8 +949,8 @@ attributes:
     range: string
   estimated_size:
     name: estimated_size
-    description: Estimated genome size, in integer base pairs. JGI isolate-form values
-      are reported in megabases (Mb); convert to base pairs before submission.
+    description: Estimated genome size, as an integer count. JGI reports values in
+      megabases (Mb); NMDC stores them in base pairs (bp).
     title: estimated size
     comments:
     - base pair scale/units

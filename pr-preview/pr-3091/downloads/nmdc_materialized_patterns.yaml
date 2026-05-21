@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.1.post101.dev0+b8f86be1a
+version: 11.19.1.post102.dev0+fa82d1b37
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -17076,9 +17076,8 @@ slots:
       partial_match: true
   estimated_size:
     name: estimated_size
-    description: The estimated size of the genome prior to sequencing. Of particular
-      importance in the sequencing of (eukaryotic) genome which could remain in draft
-      form for a long or unspecified period
+    description: Estimated genome size, as an integer count. JGI reports values in
+      megabases (Mb); NMDC stores them in base pairs (bp).
     title: estimated size
     comments:
     - base pair scale/units
@@ -19872,8 +19871,6 @@ classes:
         range: NcbiTaxon
       estimated_size:
         name: estimated_size
-        description: Estimated genome size, in integer base pairs. JGI isolate-form
-          values are reported in megabases (Mb); convert to base pairs before submission.
         structured_aliases:
         - literal_form: Estimated Genome Size (Mb)
           predicate: BROAD_SYNONYM

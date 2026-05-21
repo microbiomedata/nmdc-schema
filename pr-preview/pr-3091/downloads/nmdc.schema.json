@@ -12683,7 +12683,7 @@
                     ]
                 },
                 "estimated_size": {
-                    "description": "Estimated genome size, in integer base pairs. JGI isolate-form values are reported in megabases (Mb); convert to base pairs before submission.",
+                    "description": "Estimated genome size, as an integer count. JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).",
                     "minimum": 1,
                     "type": [
                         "integer",
@@ -16104,5 +16104,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.1.post101.dev0+b8f86be1a"
+    "version": "11.19.1.post102.dev0+fa82d1b37"
 }
