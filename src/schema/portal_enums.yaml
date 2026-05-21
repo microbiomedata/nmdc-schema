@@ -24,9 +24,9 @@ enums:
   AnalysisTypeEnum:
     permissible_values:
       metabolomics:
-        description: Mass spectrometry-based analysis of metabolites from a mixed community.
+        description: Mass spectrometry-based analysis of metabolites.
       lipidomics:
-        description: Mass spectrometry-based analysis of lipids from a mixed community.
+        description: Mass spectrometry-based analysis of lipids.
       metagenomics:
         description: Standard short-read metagenomic sequencing
         title: Metagenomics
@@ -38,14 +38,16 @@ enums:
       metatranscriptomics:
         description: Short-read metatranscriptomic sequencing of RNA from a mixed community.
       natural organic matter:
-        description: Analysis of natural organic matter (NOM) from a mixed community, such as by Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS).
+        description: Analysis of natural organic matter (NOM), such as by Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS).
       bulk chemistry:
         description: Analysis of bulk chemical properties of a sample, such as pH, conductivity, total carbon, total nitrogen, etc.
       amplicon sequencing assay:
         meaning: OBI:0002767
         title: Amplicon sequencing assay
       isolate genome sequencing:
-        meaning: OBI:0002117
+        description: Sequencing of DNA from an isolated organism, such as a pure culture.
+        broad_mappings:
+          - OBI:0002117
         title: Isolate genome sequencing
       isolate transcriptome sequencing:
         description: Sequencing of RNA from an isolated organism, such as a pure culture.
