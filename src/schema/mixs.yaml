@@ -1,9 +1,3 @@
-# Build artifact of the MIxS import pipeline (see makefiles/mixs.Makefile
-# and assets/yq-for-mixs-customizations.txt). Customizations live in the yq
-# file — do not hand-edit this YAML. To regenerate after a yq change:
-#     make mixs-yaml-clean && make src/schema/mixs.yaml
-# Checked in here so PR diffs show the customizations introduced on this
-# branch; the next regen recreates this file and drops this comment.
 name: mixs-schema-subset
 source: https://github.com/microbiomedata/mixs/tree/main/model/schema
 id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
@@ -7111,16 +7105,14 @@ slots:
       interpolated: true
       partial_match: true
   estimated_size:
-    annotations:
-      Expected_value: number of base pairs
+    annotations: {}
     description: The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period
     title: estimated size
-    examples:
-      - value: 300000 bp
     keywords:
       - size
-    string_serialization: '{integer} bp'
     slot_uri: MIXS:0000024
+    examples:
+      - value: "300000"
   ploidy:
     description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO
     title: ploidy
