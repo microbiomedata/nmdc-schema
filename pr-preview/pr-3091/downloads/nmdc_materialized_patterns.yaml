@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.1.post100.dev0+80ce80e5b
+version: 11.19.1.post101.dev0+b8f86be1a
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -17089,6 +17089,7 @@ slots:
     - size
     slot_uri: MIXS:0000024
     range: integer
+    minimum_value: 1
   ploidy:
     name: ploidy
     description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid,
