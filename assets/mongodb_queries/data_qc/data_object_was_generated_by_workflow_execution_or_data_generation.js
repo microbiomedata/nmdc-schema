@@ -40,7 +40,7 @@ applicableClasses.forEach(function(applicableClass) {
     ];
 
     var applicableClassResults = db[applicableClass].aggregate(pipeline).toArray();
-    results.push({applicableClass: applicableClass, applicableClassResults: applicableClassResults})
+    results.push({applicableClass: applicableClass, applicableClassResults: ApplicableClassResults})
 }
 );
 
