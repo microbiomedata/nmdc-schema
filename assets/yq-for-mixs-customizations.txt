@@ -522,6 +522,15 @@
 'del(.slots.ploidy.structured_pattern)'
 'del(.slots.ploidy.examples)'
 
+# estimated_size: NMDC uses integer base pairs (no bp suffix). See issue #3090.
+'.slots.estimated_size.range = "integer"'
+'.slots.estimated_size.minimum_value = 1'
+'.slots.estimated_size.comments = ["JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp)."]'
+'del(.slots.estimated_size.string_serialization)'
+'del(.slots.estimated_size.annotations)'
+'del(.slots.estimated_size.examples)'
+'.slots.estimated_size.examples = [{"object": 300000}]'
+
 # these slots, by their old names, are not used anywhere in mixs.yaml and seem to confuse the mkdocs search when looking for has_unit etc.
 'del(.slots.["has numeric value"])'
 'del(.slots.["has raw value"])'
