@@ -12683,9 +12683,10 @@
                     ]
                 },
                 "estimated_size": {
-                    "description": "Estimated genome size, as integer base pairs. Reuses MIxS estimated_size (MIXS:0000024). The JGI isolate field reports in megabases (Mb); values must be converted to the MIxS integer-bp representation before validation and storage. The submission portal should auto-populate the \"bp\" suffix and enforce integer input.",
+                    "description": "The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period",
+                    "minimum": 1,
                     "type": [
-                        "string",
+                        "integer",
                         "null"
                     ]
                 },
@@ -16103,5 +16104,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.1.post94.dev0+c9afac689"
+    "version": "11.19.1.post103.dev0+eb85d64a5"
 }
