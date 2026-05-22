@@ -37,6 +37,11 @@ dependencies = [
     "pyyaml>=6.0.0,<7.0.0",
     "rdflib>=6.2.0,<8.0.0",
     "requests>=2.0.0,<3.0.0",
+    # Transitive deps pinned directly to ensure users get security fixes
+    # (GHSA-qccp-gfcp-xxvc CVE-2026-44431, GHSA-mf9v-mfxr-j63j CVE-2026-44432)
+    "urllib3>=2.7.0,<3.0.0",
+    # (GHSA-65pc-fj4g-8rjx bypass of CVE-2024-3651)
+    "idna>=3.15,<4.0.0",
     "pymdown-extensions>=10.21.3,<11.0.0",
     "pymongo>=4.7.2,<5.0.0",
 ]
@@ -151,7 +156,7 @@ extend_exclude = [
 ]
 # These are transitive dependencies but we pin them directly
 # to ensure users get security fixes from Dependabot alerts
-per_rule_ignores = {DEP002 = ["pymdown-extensions"]}
+per_rule_ignores = {DEP002 = ["idna", "pymdown-extensions", "urllib3"]}
 
 # linkml 1.10.0+ monorepo includes linkml-runtime
 [tool.deptry.package_module_name_map]
