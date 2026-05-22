@@ -1,6 +1,6 @@
 import pytest
 import yaml
-from linkml.validator import Validator, JsonschemaValidationPlugin
+from linkml.validator import Validator
 
 from nmdc_schema_validation_plugin import NmdcSchemaValidationPlugin
 from tests import SCHEMA_FILE, ROOT
@@ -100,10 +100,10 @@ def test_all_valid_examples(nmdc_schema_validator):
     skipped = []
 
     for example_file in sorted(examples_dir.glob("*.yaml")):
-        with open(example_file) as f:
+        with example_file.open(encoding="utf-8") as f:
             instance = yaml.safe_load(f)
         if '-' in example_file.name:
-            target_class = example_file.name.split('-')[0]
+            target_class = example_file.name.split('-', 1)[0]
         else:
             target_class = example_file.stem
 

@@ -41,7 +41,7 @@ def get_collection_names_with_qv_slots_from_schema() -> List[str]:
             if _collection_could_contain_quantity_values(schema_view, slot_definition.range):
                 collection_names.append(slot_name)
 
-    collection_names = list(set(collection_names))
+    collection_names = list(dict.fromkeys(collection_names))
 
     return collection_names
 
@@ -64,13 +64,13 @@ def _collection_could_contain_quantity_values(schema_view, range_class: str) -> 
         if slot_def.range == "QuantityValue":
             return True
 
-        # Check if any of its descendants have QuantityValue slots
-        descendants = schema_view.class_descendants(range_class)
-        for desc_class in descendants:
-            desc_slots = schema_view.class_induced_slots(desc_class)
-            for desc_slot_def in desc_slots:
-                if desc_slot_def.range == "QuantityValue":
-                    return True
+    # Check if any of its descendants have QuantityValue slots
+    descendants = schema_view.class_descendants(range_class)
+    for desc_class in descendants:
+        desc_slots = schema_view.class_induced_slots(desc_class)
+        for desc_slot_def in desc_slots:
+            if desc_slot_def.range == "QuantityValue":
+                return True
     return False
 
 
@@ -773,8 +773,8 @@ class Migrator(MigratorBase):
                 if unit:
                     return unit
                     
-        except Exception:
+        except (AttributeError, TypeError):
             # If anything goes wrong with schema traversal, just return None
-            pass
+            return None
             
         return None
