@@ -635,6 +635,8 @@ slots:
     description: Estimated GC content as a percentage.
     comments:
       - Expected `has_numeric_value` range is 0–100 (percentage units).
+    minimum_value: 0
+    maximum_value: 100
     annotations:
       storage_units: "%"
     in_subset:
