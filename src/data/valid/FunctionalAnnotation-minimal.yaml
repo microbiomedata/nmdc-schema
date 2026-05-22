@@ -1,2 +1,2 @@
-has_function: KEGG_PATHWAY:abc12345
+has_function: MetaCyc:RXN-14904:alpha_beta+v2.0%test
 type: nmdc:FunctionalAnnotation
