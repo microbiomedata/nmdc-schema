@@ -41,6 +41,7 @@ def get_collection_names_with_qv_slots_from_schema() -> List[str]:
             if _collection_could_contain_quantity_values(schema_view, slot_definition.range):
                 collection_names.append(slot_name)
 
+    # De-duplicate while preserving discovery order from schema traversal.
     collection_names = list(dict.fromkeys(collection_names))
 
     return collection_names
@@ -775,6 +776,6 @@ class Migrator(MigratorBase):
                     
         except (AttributeError, TypeError):
             # If anything goes wrong with schema traversal, just return None
-            return None
+            pass
             
         return None
