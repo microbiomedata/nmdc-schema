@@ -569,7 +569,8 @@ def oaklib_entity_metadata(
             synonyms=synonyms,
         )
     except Exception:
-        pass
+        cache[cache_key] = metadata
+        return metadata
 
     cache[cache_key] = metadata
     return metadata
