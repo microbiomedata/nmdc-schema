@@ -1,4 +1,5 @@
 import logging
+import re
 import importlib
 import inspect
 import shutil
@@ -71,7 +72,7 @@ def main(schema_path, input_path, output_path, migrator_name):
         logger.info("No valid migrators specified. Just copying the input file to the output file.")
         # Copy the input file to the output file
         shutil.copy(input_path, output_path)
-        return
+        exit()
 
     # Load the input data
     logger.info(f"Loading data from {input_path}")
