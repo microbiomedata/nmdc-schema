@@ -969,7 +969,7 @@ enums:
         aliases:
           - 16S rRNA
           - 16S ribosomal RNA
-        narrow_mappings:
+        related_mappings:
           - OBI:0002763
       23S_rRNA:
         aliases:

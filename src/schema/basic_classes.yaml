@@ -758,7 +758,7 @@ slots:
         and MassSpectrometry, the MassSpectrometry record is considered the primary class to reference.
     multivalued: true  
     range: DataGeneration
-    narrow_mappings:
+    exact_mappings:
       - prov:wasInformedBy
     structured_aliases:
       - literal_form: was_informed_by
