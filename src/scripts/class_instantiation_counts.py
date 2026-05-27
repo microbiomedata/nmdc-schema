@@ -1,6 +1,5 @@
 import csv
 import click
-import pprint
 
 
 @click.command()
