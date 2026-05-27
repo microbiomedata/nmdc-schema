@@ -1112,7 +1112,8 @@ enums:
         aliases:
           - NovaSeq
           - Illumina NovaSeq
-          
+        meaning: OBI:0003685
+
       novaseq_6000:
         aliases:
           - NovaSeq 6000
@@ -1157,7 +1158,8 @@ enums:
       hiseq:
         aliases:
           - Illumina HiSeq
-      
+        meaning: OBI:0003683
+
       hiseq_1000:
         aliases:
           - Illumina HiSeq 1000
@@ -1227,6 +1229,7 @@ enums:
         aliases:
           - NextSeq
           - Illumina NextSeq
+        meaning: OBI:0003684
         structured_aliases:
           - literal_form: Illumina NextSeq-HO
             contexts:
