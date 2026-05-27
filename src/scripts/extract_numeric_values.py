@@ -2,7 +2,6 @@
 
 import re
 import yaml
-import sys
 from pathlib import Path
 
 def extract_numeric_from_raw_value(raw_value):
