@@ -8656,6 +8656,7 @@
                 "rs_II",
                 "sequel",
                 "sequel_II",
+                "sequel_IIe",
                 "revio"
             ],
             "title": "InstrumentModelEnum",
@@ -16419,6 +16420,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.2rc1.post2.dev0+e291d8a50"
+    "version": "11.19.2rc1.post4.dev0+fd3164c2a"
 }
 
