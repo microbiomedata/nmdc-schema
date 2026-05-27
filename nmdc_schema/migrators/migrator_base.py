@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Dict, List
 from logging import getLogger
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 
