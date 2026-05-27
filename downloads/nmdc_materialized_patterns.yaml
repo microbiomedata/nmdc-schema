@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.2rc1.post10.dev0+d4cae9b20
+version: 11.19.2rc1.post11.dev0+2087797ab
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -5382,7 +5382,7 @@ enums:
         aliases:
         - 16S rRNA
         - 16S ribosomal RNA
-        narrow_mappings:
+        related_mappings:
         - OBI:0002763
       23S_rRNA:
         text: 23S_rRNA
@@ -6091,7 +6091,7 @@ slots:
     - sample weight
     exact_mappings:
     - MS:1000004
-    narrow_mappings:
+    broad_mappings:
     - MIXS:0000111
     range: QuantityValue
   library_type:
@@ -7982,7 +7982,7 @@ slots:
       predicate: EXACT_SYNONYM
       contexts:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-    narrow_mappings:
+    mappings:
     - prov:wasInformedBy
     range: DataGeneration
     multivalued: true
@@ -21508,7 +21508,7 @@ classes:
     notes:
     - This class is a replacement for BiosampleProcessing.
     from_schema: https://w3id.org/nmdc/nmdc
-    broad_mappings:
+    exact_mappings:
     - OBI:0000094
     is_a: PlannedProcess
     abstract: true
