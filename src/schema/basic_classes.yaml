@@ -1278,7 +1278,11 @@ enums:
         aliases:
           - PacBio Sequel II
         meaning: OBI:0002633
-      
+
+      sequel_IIe:
+        aliases:
+          - PacBio Sequel IIe
+
       revio:
         aliases:
           - PacBio Revio
