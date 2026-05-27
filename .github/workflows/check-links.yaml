@@ -16,6 +16,10 @@ on:
   # Reference: https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow
   workflow_dispatch: {}
 
+permissions:
+  contents: read
+  issues: write
+
 run-name: Check links in docs
 jobs:
   build-docs-and-check-links:

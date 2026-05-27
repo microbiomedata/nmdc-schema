@@ -7,6 +7,10 @@ on:
       - reopened
       - synchronize
 
+permissions:
+  contents: write
+  pull-requests: write
+
 concurrency: preview-${{ github.ref }}
 
 jobs:
