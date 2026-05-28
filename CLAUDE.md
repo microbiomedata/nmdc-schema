@@ -63,6 +63,36 @@ The 12 readonly slots: `definition_uri`, `domain_of`, `from_schema`,
 
 Context: PR #2696 (dematerialize mixs.yaml), issue #2663.
 
+## Permissible-value hierarchies (`is_a`)
+
+Permissible values may declare `is_a: <other-pv-name>` to record that one
+value is a specialization of another (e.g. `sequel_IIe is_a sequel_II`,
+`hiseq_2500 is_a hiseq`). The target is the **name/key** of another PV in
+the same enum. Precedent: `StationaryPhaseEnum` and `SamplePortionEnum` in
+`nmdc.yaml`.
+
+**Apply it only for true specialization** (a variant/refresh of another
+model, or a numbered model under a generic family-head PV). Do **not**
+assert `is_a` between sibling generations (e.g. `sequel_II` is **not** a
+sub-model of `sequel`) or between peer models with no parent.
+
+**It is metadata only in the current build.** Enums compile to a flat
+string list in JSON Schema and to `str` enums in Pydantic, so PV `is_a`
+changes **no validation**: asserting `sequel_IIe is_a sequel_II` does not
+make `sequel_II` accepted where `sequel_IIe` is, and requires **no data
+migration**. The value is queryability and search/rollup in downstream
+consumers.
+
+**OWL is deprioritized; do not enable `--enum-inherits-as-subclass-of`.**
+LinkML 1.10.0's `linkml generate owl --enum-inherits-as-subclass-of` would
+emit PV `is_a` as OWL `subClassOf` (the only way the hierarchy reaches a
+machine-actionable artifact). The OWL build does **not** set this flag
+(checked `Makefile`, `project.Makefile`, `gen-project-config.yaml`), and we
+are intentionally leaving it off for now. Revisit only as part of a
+deliberate OWL re-prioritization.
+
+Context: issue #3120.
+
 ## Architectural Changes (Oct 2025 – Feb 2026)
 Reviewers and contributors should be aware of these changes (Oct 2025
 through Feb 2026) that affect the build system and project layout:
