@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.19.2rc1.post16.dev0+acd5b4560
+version: 11.19.2rc1.post17.dev0+7c65d1915
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7347,11 +7347,6 @@ slots:
   gc_content:
     name: gc_content
     description: Estimated GC content as a percentage.
-    examples:
-    - value: '54.0'
-      description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)
-    - value: '64.0'
-      description: GOLD project Gp0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
