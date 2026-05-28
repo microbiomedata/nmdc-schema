@@ -1,0 +1,9 @@
+# Invalid: gc_content must be in the range 0–100 (a percentage).
+id: nmdc:orgn-99-tuxk3s
+type: nmdc:Organism
+name: bad-gc-content
+classified_as:
+  - id: NCBITaxon:22
+    name: Shewanella
+    type: nmdc:NcbiTaxon
+gc_content: 300

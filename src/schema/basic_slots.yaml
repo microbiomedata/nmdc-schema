@@ -631,14 +631,12 @@ slots:
         description: GOLD dw_sample_taxonomy_info.isolate (n=918 records, queried 2026-04-30) — generic placeholder used when no specific mutant/isolate name is recorded
 
   gc_content:
-    range: QuantityValue
+    range: float
     description: Estimated GC content as a percentage.
-    comments:
-      - Expected `has_numeric_value` range is 0–100 (percentage units).
     minimum_value: 0
     maximum_value: 100
-    annotations:
-      storage_units: "%"
+    unit:
+      ucum_code: "%"
     in_subset:
       - jgi_isolate
     structured_aliases:
@@ -647,15 +645,9 @@ slots:
           - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
     examples:
-      - object:
-          type: nmdc:QuantityValue
-          has_numeric_value: 54.0
-          has_unit: "%"
+      - value: "54.0"
         description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)
-      - object:
-          type: nmdc:QuantityValue
-          has_numeric_value: 64.0
-          has_unit: "%"
+      - value: "64.0"
         description: GOLD project Gp0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
 
   expected_organism:
