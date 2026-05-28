@@ -16,6 +16,10 @@ on:
   # Reference: https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow
   workflow_dispatch: {}
 
+permissions:
+  contents: read
+  issues: write
+
 run-name: Check links in docs
 jobs:
   build-docs-and-check-links:
@@ -28,7 +32,7 @@ jobs:
       - name: Install Poetry
         run: pipx install poetry
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: '3.12'
           cache: 'poetry'
@@ -41,7 +45,7 @@ jobs:
         # Possible exit codes: https://github.com/lycheeverse/lychee?tab=readme-ov-file#exit-codes
         # Reference: https://github.com/lycheeverse/lychee-action
         id: lychee
-        uses: lycheeverse/lychee-action@v2.0.2
+        uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
         with:
           # Reference: https://github.com/lycheeverse/lychee#commandline-parameters
           args: --base docs --verbose --no-progress --format markdown --timeout 5 'docs/*.md' 'docs/**/*.md'

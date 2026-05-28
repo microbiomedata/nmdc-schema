@@ -230,15 +230,6 @@ classes:
           the broader pattern is to narrow `classified_as` to `NcbiTaxon` on
           all organism-oriented classes via slot_usage.
       estimated_size:
-        description: >-
-          Estimated genome size, as integer base pairs. Reuses MIxS
-          estimated_size (MIXS:0000024). The JGI isolate field reports in
-          megabases (Mb); values must be converted to the MIxS integer-bp
-          representation before validation and storage. The submission portal
-          should auto-populate the "bp" suffix and enforce integer input.
-        structured_pattern:
-          syntax: '^[0-9]+ bp$'
-          interpolated: false
         structured_aliases:
           - literal_form: Estimated Genome Size (Mb)
             contexts:
@@ -767,7 +758,7 @@ slots:
         and MassSpectrometry, the MassSpectrometry record is considered the primary class to reference.
     multivalued: true  
     range: DataGeneration
-    narrow_mappings:
+    mappings:
       - prov:wasInformedBy
     structured_aliases:
       - literal_form: was_informed_by
@@ -1121,7 +1112,8 @@ enums:
         aliases:
           - NovaSeq
           - Illumina NovaSeq
-          
+        meaning: OBI:0003685
+
       novaseq_6000:
         aliases:
           - NovaSeq 6000
@@ -1166,7 +1158,8 @@ enums:
       hiseq:
         aliases:
           - Illumina HiSeq
-      
+        meaning: OBI:0003683
+
       hiseq_1000:
         aliases:
           - Illumina HiSeq 1000
@@ -1236,6 +1229,7 @@ enums:
         aliases:
           - NextSeq
           - Illumina NextSeq
+        meaning: OBI:0003684
         structured_aliases:
           - literal_form: Illumina NextSeq-HO
             contexts:
@@ -1287,7 +1281,11 @@ enums:
         aliases:
           - PacBio Sequel II
         meaning: OBI:0002633
-      
+
+      sequel_IIe:
+        aliases:
+          - PacBio Sequel IIe
+
       revio:
         aliases:
           - PacBio Revio

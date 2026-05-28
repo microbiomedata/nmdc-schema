@@ -22,7 +22,7 @@ jobs:
         pipx inject poetry "poetry-dynamic-versioning[plugin]"
 
     - name: Set up Python
-      uses: actions/setup-python@v6
+      uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
       with:
         python-version: '3.12'
         cache: 'poetry'
@@ -41,4 +41,4 @@ jobs:
 
     - name: Publish distribution 📦 to PyPI
       # No username or password because we're using trusted publishing
-      uses: pypa/gh-action-pypi-publish@release/v1
+      uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # v1.14.0

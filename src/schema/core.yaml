@@ -1260,7 +1260,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
-    broad_mappings:
+    exact_mappings:
       - OBI:0000094
 
   PortionOfSubstance:

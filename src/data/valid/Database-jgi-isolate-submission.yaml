@@ -26,7 +26,7 @@ organism_set:
     organism_species: loihica
     strain_name: PV-4
     isolate_name: Isolate
-    estimated_size: 4600000 bp
+    estimated_size: 4600000
     gc_content: 54.0
 
 organism_sample_set:

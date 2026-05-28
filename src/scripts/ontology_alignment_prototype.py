@@ -507,7 +507,7 @@ def ols_entity_metadata(
                 )
                 break
     except requests.RequestException:
-        pass
+        pass  # OLS may be unreachable; fall through to return default empty metadata
 
     cache[cache_key] = metadata
     return metadata
@@ -569,7 +569,8 @@ def oaklib_entity_metadata(
             synonyms=synonyms,
         )
     except Exception:
-        pass
+        cache[cache_key] = metadata
+        return metadata
 
     cache[cache_key] = metadata
     return metadata
