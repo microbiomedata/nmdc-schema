@@ -69,11 +69,11 @@ Permissible values may declare `is_a: <other-pv-name>` (the **name/key** of
 another PV in the *same* enum) to record that one value is a specialization of
 another (e.g. `sequel_IIe is_a sequel_II`, `hiseq_2500 is_a hiseq`).
 
-**When to assert it: see `CONTRIBUTING.md` (Modeling Best Practice) for the
-decision rule.** In short, the value's ontology `meaning:` (e.g. OBI
-`subClassOf`) is the primary evidence; where the ontology is silent or you
-disagree with it, it is a documented curator call; default to flat when
-unsure. Precedent: `StationaryPhaseEnum`, `SamplePortionEnum`.
+**When to assert it: see `CONTRIBUTING.md` (Modeling Best Practice).** In
+short: it is advisory, reversible metadata, so assert `is_a` only for an
+uncontroversial specialization and leave it flat when unsure; OBI (via OLS)
+is a cross-check, not the authority. Precedent: `StationaryPhaseEnum`,
+`SamplePortionEnum`.
 
 **It is metadata only in the current build.** Enums compile to a flat
 string list in JSON Schema and to `str` enums in Pydantic, so PV `is_a`
