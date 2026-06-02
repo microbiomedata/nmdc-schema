@@ -65,22 +65,16 @@ Context: PR #2696 (dematerialize mixs.yaml), issue #2663.
 
 ## Permissible-value hierarchies (`is_a`)
 
-Permissible values may declare `is_a: <other-pv-name>` (the **name/key** of
-another PV in the *same* enum) to record that one value is a specialization of
-another (e.g. `sequel_IIe is_a sequel_II`, `hiseq_2500 is_a hiseq`).
+Permissible values may declare `is_a: <other-pv-name>` (the name/key of another
+PV in the same enum) to record that one value is a more specific kind of
+another (e.g. `sequel_IIe is_a sequel_II`, `hiseq_2500 is_a hiseq`). Most enums
+are flat; `is_a` is an optional, deliberate addition for the cases where a real
+specialization holds, and is read downstream for grouping, rollup, and
+querying. Assert it only where the relationship genuinely holds. Decision
+guidance: `CONTRIBUTING.md` (Modeling Best Practice).
 
-**When to assert it: see `CONTRIBUTING.md` (Modeling Best Practice).** In
-short: it is advisory, reversible metadata, so assert `is_a` only for an
-uncontroversial specialization and leave it flat when unsure; OBI (via OLS)
-is a cross-check, not the authority. Precedent: `StationaryPhaseEnum`,
-`SamplePortionEnum`.
-
-**It is metadata only in the current build.** Enums compile to a flat
-string list in JSON Schema and to `str` enums in Pydantic, so PV `is_a`
-changes **no validation**: asserting `sequel_IIe is_a sequel_II` does not
-make `sequel_II` accepted where `sequel_IIe` is, and requires **no data
-migration**. The value is queryability and search/rollup in downstream
-consumers.
+It does not currently change JSON-Schema validation or require migration (enums
+still compile to a flat value list), so it is non-breaking to merge.
 
 **OWL is deprioritized; do not enable `--enum-inherits-as-subclass-of`.**
 LinkML 1.10.0's `linkml generate owl --enum-inherits-as-subclass-of` would

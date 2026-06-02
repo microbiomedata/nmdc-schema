@@ -101,10 +101,8 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Any slot whose values could be constrained to a finite set should use an Enum
     - Non-categorical values, e.g. descriptive fields like `name` or `description` fall outside of this.
 - Permissible-value hierarchies (`is_a`)
-    - A permissible value may declare `is_a: <other-pv>` to record that it is a more specific kind of another value in the *same* enum (e.g. `hiseq_2500 is_a hiseq`). This is advisory metadata only: no validation, no migration, reversible; its only effect is letting downstream search and rollup group a value with its parent.
-    - Because it is low-stakes and reversible, the bar is pragmatic, not ontological: assert `is_a` only when the specialization is uncontroversial (a numbered model within a named series, or a hardware refresh of a model). When it is not obvious, leave it flat. Flat is always safe.
-    - Cross-check the ontology `meaning:` (e.g. OBI, via OLS): if OBI already asserts the `subClassOf`, that is confirmation (OBI groups `Illumina HiSeq 2500` under `Illumina HiSeq series instrument`; it does not put `PacBio Sequel II` under `PacBio Sequel`, so we leave that flat). If OBI is silent or you disagree with it, decide and note why in the PR. OBI is evidence, not the authority.
-    - After editing, run `linkml generate json-schema src/schema/nmdc.yaml` to confirm the `is_a` target resolves and the enum still compiles to a flat value list.
+    - A permissible value may declare `is_a: <other-pv>` to record that one value is a more specific kind of another in the same enum (e.g. `hiseq_2500 is_a hiseq`). Most enums are a flat list; `is_a` is an optional, deliberate addition for the cases where a real specialization exists. It is consequential where used: downstream consumers read it for grouping, rollup, and querying.
+    - Assert it when X genuinely is a kind of Y (a model within a named series, or a refresh of a model); do not assert relationships that are not true (sibling generations, peer models); when you cannot establish one, leave it unasserted. Judge on domain knowledge, with the ontology `meaning:` (e.g. OBI in OLS) as corroborating evidence, not the sole authority.
     - Precedent: `StationaryPhaseEnum`, `SamplePortionEnum`. Background: issue #3120.
 - Reuse
     - Existing scheme elements should be reused where appropriate, rather than making duplicative elements
