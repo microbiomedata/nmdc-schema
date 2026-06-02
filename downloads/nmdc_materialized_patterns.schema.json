@@ -12987,15 +12987,13 @@
                     ]
                 },
                 "gc_content": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/QuantityValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Estimated GC content as a percentage."
+                    "description": "Estimated GC content as a percentage.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
@@ -16420,6 +16418,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.2rc1.post12.dev0+63b4e7602"
+    "version": "11.19.2rc1.post18.dev0+bc566a0ff"
 }
 

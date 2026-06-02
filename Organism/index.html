@@ -438,9 +438,6 @@
 
   Organism : gc_content
 
-      Organism --&gt; "0..1" QuantityValue : gc_content
-    click QuantityValue href "../QuantityValue"
-
   Organism : id
 
   Organism : isolate_name
@@ -522,7 +519,7 @@
 </tr>
 <tr>
 <td><a href="../gc_content/">gc_content</a></td>
-<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>Estimated GC content as a percentage</td>
 <td>direct</td>
 </tr>
@@ -975,24 +972,7 @@ attributes:
     minimum_value: 1
   gc_content:
     name: gc_content
-    annotations:
-      storage_units:
-        tag: storage_units
-        value: '%'
     description: Estimated GC content as a percentage.
-    comments:
-    - Expected `has_numeric_value` range is 0–100 (percentage units).
-    examples:
-    - description: GOLD project Gp0000189 (Shewanella loihica PV-4, queried 2026-04-21)
-      object:
-        type: nmdc:QuantityValue
-        has_numeric_value: 54.0
-        has_unit: '%'
-    - description: GOLD project Gp0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
-      object:
-        type: nmdc:QuantityValue
-        has_numeric_value: 64.0
-        has_unit: '%'
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -1006,7 +986,11 @@ attributes:
     owner: Organism
     domain_of:
     - Organism
-    range: QuantityValue
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '%'
   ref_biomaterial:
     name: ref_biomaterial
     description: Reference for the organism, preferentially a DOI when a primary publication
