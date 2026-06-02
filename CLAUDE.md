@@ -65,16 +65,15 @@ Context: PR #2696 (dematerialize mixs.yaml), issue #2663.
 
 ## Permissible-value hierarchies (`is_a`)
 
-Permissible values may declare `is_a: <other-pv-name>` to record that one
-value is a specialization of another (e.g. `sequel_IIe is_a sequel_II`,
-`hiseq_2500 is_a hiseq`). The target is the **name/key** of another PV in
-the same enum. Precedent: `StationaryPhaseEnum` and `SamplePortionEnum` in
-`nmdc.yaml`.
+Permissible values may declare `is_a: <other-pv-name>` (the **name/key** of
+another PV in the *same* enum) to record that one value is a specialization of
+another (e.g. `sequel_IIe is_a sequel_II`, `hiseq_2500 is_a hiseq`).
 
-**Apply it only for true specialization** (a variant/refresh of another
-model, or a numbered model under a generic family-head PV). Do **not**
-assert `is_a` between sibling generations (e.g. `sequel_II` is **not** a
-sub-model of `sequel`) or between peer models with no parent.
+**When to assert it: see `CONTRIBUTING.md` (Modeling Best Practice) for the
+decision rule.** In short, the value's ontology `meaning:` (e.g. OBI
+`subClassOf`) is the primary evidence; where the ontology is silent or you
+disagree with it, it is a documented curator call; default to flat when
+unsure. Precedent: `StationaryPhaseEnum`, `SamplePortionEnum`.
 
 **It is metadata only in the current build.** Enums compile to a flat
 string list in JSON Schema and to `str` enums in Pydantic, so PV `is_a`

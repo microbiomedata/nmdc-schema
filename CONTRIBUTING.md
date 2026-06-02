@@ -100,6 +100,14 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Rationale: Open-ended string ranges encourage multiple values to represent the same entity, like “water”, “H2O” and “HOH”
     - Any slot whose values could be constrained to a finite set should use an Enum
     - Non-categorical values, e.g. descriptive fields like `name` or `description` fall outside of this.
+- Permissible-value hierarchies (`is_a`)
+    - A permissible value may declare `is_a: <other-pv>` to record that it is a specialization of another value in the *same* enum (e.g. `hiseq_2500 is_a hiseq`). This is advisory metadata: it changes no validation and needs no migration (enums compile to a flat value list), so its only effect is letting downstream consumers group a value with its parent for search and rollup.
+    - Treat the value's ontology `meaning:` (e.g. OBI) as the primary evidence, not the final word:
+        - If the ontology asserts the `subClassOf` and you agree, mirror it. OBI puts `Illumina HiSeq 2500` (OBI:0002002) under `Illumina HiSeq series instrument` (OBI:0003683), so `hiseq_2500 is_a hiseq`.
+        - If the ontology is silent (a value has no term, or no relevant parent, e.g. `PacBio Sequel II` is not under `PacBio Sequel`; they are siblings under "DNA sequencer"), it is a curator call: assert `is_a` only for a clear specialization (a variant/refresh, or a model under a more general value), document the rationale in the PR, and default to flat when unsure.
+        - If you disagree with the ontology's hierarchy, the curated decision wins. Note the divergence, and consider contributing the correction upstream.
+    - Verify after editing: look the terms up in OLS/OBI to check the `subClassOf`, then run `linkml generate json-schema src/schema/nmdc.yaml` to confirm the `is_a` target resolves and the enum still compiles to a flat value list.
+    - Precedent: `StationaryPhaseEnum`, `SamplePortionEnum`. Background: issue #3120.
 - Reuse
     - Existing scheme elements should be reused where appropriate, rather than making duplicative elements
     - More specific classes can be created by refinining classes using inheritance (`is_a`)

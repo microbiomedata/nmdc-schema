@@ -1298,18 +1298,6 @@ enums:
         is_a: sequel_II
         aliases:
           - PacBio Sequel IIe
-        comments:
-          - >-
-            Kept as a permissible value distinct from sequel_II rather than
-            folded into it as an alias. The Sequel IIe differs from the Sequel II
-            essentially only in onboard electronics, so merging them would improve
-            the NMDC search experience (a IIe query would match II records).
-            However, NCBI treats "Sequel II" and "Sequel IIe" as separate
-            controlled-vocabulary values, so we retain the distinction here in
-            order to forward user-supplied "Sequel IIe" through to NCBI records
-            without lossy normalization. The is_a assertion records that the IIe
-            is a specialization of the II so that NMDC search/rollup can still
-            treat them together.
 
       revio:
         aliases:
