@@ -63,6 +63,29 @@ The 12 readonly slots: `definition_uri`, `domain_of`, `from_schema`,
 
 Context: PR #2696 (dematerialize mixs.yaml), issue #2663.
 
+## Permissible-value hierarchies (`is_a`)
+
+Permissible values may declare `is_a: <other-pv-name>` (the name/key of another
+PV in the same enum) to record that one value is a more specific kind of
+another (e.g. `sequel_IIe is_a sequel_II`, `hiseq_2500 is_a hiseq`). Most enums
+are flat; `is_a` is an optional, deliberate addition for the cases where a real
+specialization holds, and is read downstream for grouping, rollup, and
+querying. Assert it only where the relationship genuinely holds. Decision
+guidance: `CONTRIBUTING.md` (Modeling Best Practice).
+
+It does not currently change JSON-Schema validation or require migration (enums
+still compile to a flat value list), so it is non-breaking to merge.
+
+**OWL is deprioritized; do not enable `--enum-inherits-as-subclass-of`.**
+LinkML 1.10.0's `linkml generate owl --enum-inherits-as-subclass-of` would
+emit PV `is_a` as OWL `subClassOf` (the only way the hierarchy reaches a
+machine-actionable artifact). The OWL build does **not** set this flag
+(checked `Makefile`, `project.Makefile`, `gen-project-config.yaml`), and we
+are intentionally leaving it off for now. Revisit only as part of a
+deliberate OWL re-prioritization.
+
+Context: issue #3120.
+
 ## Architectural Changes (Oct 2025 – Feb 2026)
 Reviewers and contributors should be aware of these changes (Oct 2025
 through Feb 2026) that affect the build system and project layout:

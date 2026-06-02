@@ -1115,6 +1115,7 @@ enums:
         meaning: OBI:0003685
 
       novaseq_6000:
+        is_a: novaseq
         aliases:
           - NovaSeq 6000
           - Illumina NovaSeq 6000
@@ -1138,6 +1139,7 @@ enums:
             predicate: NARROW_SYNONYM                
 
       novaseq_x:
+        is_a: novaseq
         aliases:
           - Illumina NovaSeq X
           - Illumina NovaSeq X Plus
@@ -1161,21 +1163,25 @@ enums:
         meaning: OBI:0003683
 
       hiseq_1000:
+        is_a: hiseq
         aliases:
           - Illumina HiSeq 1000
         meaning: OBI:0002022
       
       hiseq_1500:
+        is_a: hiseq
         aliases:
           - Illumina HiSeq 1500
         meaning: OBI:0003386
       
       hiseq_2000:
+        is_a: hiseq
         aliases:
           - Illumina HiSeq 2000
         meaning: OBI:0002001
      
       hiseq_2500:
+        is_a: hiseq
         aliases:
           - Illumina HiSeq 2500
         meaning: OBI:0002002
@@ -1190,16 +1196,19 @@ enums:
             predicate: NARROW_SYNONYM    
       
       hiseq_3000:
+        is_a: hiseq
         aliases:
           - Illumina HiSeq 3000
         meaning: OBI:0002048
       
       hiseq_4000:
+        is_a: hiseq
         aliases:
           - Illumina HiSeq 4000
         meaning: OBI:0002049
      
       hiseq_x_ten:
+        is_a: hiseq
         aliases:
           - Illumina HiSeq X Ten
         meaning: OBI:0002129
@@ -1221,6 +1230,7 @@ enums:
             predicate: EXACT_SYNONYM
         
       nextseq_1000:
+        is_a: nextseq
         aliases:
           - Illumina NextSeq 1000
         meaning: OBI:0003606
@@ -1241,12 +1251,14 @@ enums:
             predicate: NARROW_SYNONYM              
       
       nextseq_500:
+        is_a: nextseq
         aliases:
           - NextSeq 500
           - Illumina NextSeq 500
         meaning: OBI:0002021
       
       nextseq_550:
+        is_a: nextseq
         aliases:
           - NextSeq 550
           - Illumina NextSeq 550
@@ -1283,6 +1295,7 @@ enums:
         meaning: OBI:0002633
 
       sequel_IIe:
+        is_a: sequel_II
         aliases:
           - PacBio Sequel IIe
 

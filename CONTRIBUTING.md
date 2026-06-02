@@ -100,6 +100,11 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Rationale: Open-ended string ranges encourage multiple values to represent the same entity, like “water”, “H2O” and “HOH”
     - Any slot whose values could be constrained to a finite set should use an Enum
     - Non-categorical values, e.g. descriptive fields like `name` or `description` fall outside of this.
+- Permissible-value hierarchies (`is_a`)
+    - A permissible value may declare `is_a: <other-pv>` to record that one value is a more specific kind of another in the same enum (e.g. `hiseq_2500 is_a hiseq`). Most enums are a flat list; `is_a` is an optional, deliberate addition for the cases where a real specialization exists. It is consequential where used: downstream consumers read it for grouping, rollup, and querying.
+    - Assert it when X genuinely is a kind of Y (a model within a series, where the "series" is a curatorial grouping such as an OBI `... series instrument` class rather than a vendor-guaranteed category, or a refresh of a model); do not assert relationships that are not true (sibling generations, peer models); when you cannot establish one, leave it unasserted. Judge on domain knowledge, with the ontology `meaning:` (e.g. OBI in OLS) as corroborating evidence, not the sole authority.
+    - `is_a` is not `aliases`: use `aliases` only for values that are *equivalent*; use `is_a` when one value is a distinct but more specific kind of another. Example: `sequel_IIe` is kept as its own PV with `is_a: sequel_II`, not folded in as an alias, because NCBI treats "Sequel IIe" and "Sequel II" as separate values, so an alias would assert a false equivalence.
+    - Precedent: `StationaryPhaseEnum`, `SamplePortionEnum`. Background: issue #3120.
 - Reuse
     - Existing scheme elements should be reused where appropriate, rather than making duplicative elements
     - More specific classes can be created by refinining classes using inheritance (`is_a`)
