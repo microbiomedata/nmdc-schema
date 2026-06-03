@@ -952,6 +952,10 @@ attributes:
     title: estimated size
     comments:
     - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
+    - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from
+      JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional
+      required rule are enforced in submission-schema via class rules on IsolateInterface,
+      keyed on biosafety_mat_cat.
     examples:
     - object: 300000
     from_schema: https://w3id.org/nmdc/nmdc
