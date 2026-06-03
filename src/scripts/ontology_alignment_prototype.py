@@ -199,7 +199,12 @@ def _sorted_mappings(mappings: list[str] | None) -> tuple[str, ...]:
 
 
 def _sources_from_mappings(mappings: tuple[str, ...]) -> tuple[str, ...]:
-    return tuple(sorted({mapping_source(value) for value in mappings if mapping_source(value)}))
+    sources: set[str] = set()
+    for value in mappings:
+        source = mapping_source(value)
+        if source:
+            sources.add(source)
+    return tuple(sorted(sources))
 
 
 def _string_values(*candidates: Any) -> tuple[str, ...]:
@@ -750,6 +755,9 @@ def harvest_bioportal_ontology_terms(
         raise RuntimeError("BIOPORTAL_API_KEY is required to harvest BioPortal terms")
 
     harvested: list[OntologyTermRecord] = []
+    # Only treat `max_terms` as a per-ontology cap for single-ontology runs; for
+    # multi-ontology harvests, keep it uncapped per source to avoid implicitly
+    # multiplying a user-provided limit across every acronym.
     per_ontology_cap = max_terms if max_terms is not None and len(ontology_acronyms) == 1 else None
 
     for ontology_acronym in ontology_acronyms:
@@ -835,10 +843,7 @@ def _linkml_store_similarity_search(
     if not vectors:
         return []
 
-    if cache_queries:
-        query_vector = indexer.text_to_vector(query_text, cache=True)
-    else:
-        query_vector = indexer.text_to_vector(query_text, cache=False)
+    query_vector = indexer.text_to_vector(query_text, cache=cache_queries)
 
     from linkml_store.utils.vector_utils import pairwise_cosine_similarity
 
@@ -881,6 +886,11 @@ def run_linkml_store_semantic_search(
     for start in range(0, len(indexed_terms), corpus_batch_size):
         chunk = indexed_terms[start : start + corpus_batch_size]
         vectors.extend(indexer.objects_to_vectors(chunk))
+    if len(vectors) != len(indexed_terms):
+        raise RuntimeError(
+            "Embedding vector count mismatch: "
+            f"expected {len(indexed_terms)} vectors for indexed terms, got {len(vectors)}"
+        )
     indexed_vectors = list(zip([term["id"] for term in indexed_terms], vectors))
 
     rows: list[dict[str, Any]] = []
