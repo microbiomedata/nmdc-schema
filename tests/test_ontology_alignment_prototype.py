@@ -2,7 +2,6 @@ import sys
 import types
 
 import pytest
-import src.scripts.ontology_alignment_prototype as ontology_alignment_prototype
 
 from src.scripts.ontology_alignment_prototype import (
     SchemaElementRecord,
