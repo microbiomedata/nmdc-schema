@@ -7112,6 +7112,7 @@ slots:
     slot_uri: MIXS:0000024
     range: integer
     minimum_value: 1
+    maximum_value: 100000000000
     comments:
       - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
     examples:
