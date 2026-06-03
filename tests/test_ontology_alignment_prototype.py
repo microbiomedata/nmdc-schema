@@ -288,6 +288,7 @@ def test_run_linkml_store_semantic_search_raises_on_vector_count_mismatch(monkey
             self.kwargs = kwargs
 
         def objects_to_vectors(self, chunk):
+            # Intentionally drop one vector so the mismatch guard is exercised.
             return [[1.0] for _ in chunk[:-1]]
 
     linkml_store_module = types.ModuleType("linkml_store")
