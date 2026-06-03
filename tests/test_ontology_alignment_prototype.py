@@ -1,3 +1,8 @@
+import sys
+import types
+
+import pytest
+
 from src.scripts.ontology_alignment_prototype import (
     SchemaElementRecord,
     MetadataResolution,
@@ -18,6 +23,7 @@ from src.scripts.ontology_alignment_prototype import (
     parse_quota_option,
     read_unique_subjects,
     resolve_entity_metadata,
+    run_linkml_store_semantic_search,
     review_flags,
     shortlist_alignment_rows,
     structural_support,
@@ -26,6 +32,8 @@ from src.scripts.ontology_alignment_prototype import (
     summarize_review_rows,
     summarize_source_distribution,
     summarize_backend_overlap,
+    _linkml_store_similarity_search,
+    _sources_from_mappings,
 )
 
 
@@ -258,6 +266,101 @@ def test_oaklib_available_returns_boolean():
 
 def test_linkml_store_available_returns_boolean():
     assert isinstance(linkml_store_available(), bool)
+
+
+def test_sources_from_mappings_calls_mapping_source_once_per_value(monkeypatch):
+    observed: list[str] = []
+
+    def fake_mapping_source(value: str) -> str:
+        observed.append(value)
+        return {"CHEBI:1": "CHEBI", "go:2": "GO"}.get(value, "")
+
+    monkeypatch.setattr("src.scripts.ontology_alignment_prototype.mapping_source", fake_mapping_source)
+
+    mappings = ("CHEBI:1", "", "go:2")
+    assert _sources_from_mappings(mappings) == ("CHEBI", "GO")
+    assert observed == list(mappings)
+
+
+def test_linkml_store_similarity_search_passes_cache_flag(monkeypatch):
+    fake_linkml_store = types.ModuleType("linkml_store")
+    fake_utils = types.ModuleType("linkml_store.utils")
+    fake_vector_utils = types.ModuleType("linkml_store.utils.vector_utils")
+    fake_vector_utils.pairwise_cosine_similarity = lambda *_: 1.0
+    monkeypatch.setitem(sys.modules, "linkml_store", fake_linkml_store)
+    monkeypatch.setitem(sys.modules, "linkml_store.utils", fake_utils)
+    monkeypatch.setitem(sys.modules, "linkml_store.utils.vector_utils", fake_vector_utils)
+
+    class FakeIndexer:
+        def __init__(self):
+            self.cache_values: list[bool] = []
+
+        def text_to_vector(self, query_text: str, cache: bool = True):
+            self.cache_values.append(cache)
+            return [1.0]
+
+    indexer = FakeIndexer()
+    hits = _linkml_store_similarity_search(
+        query_text="query",
+        vectors=[("OBI:1", [1.0])],
+        indexer=indexer,
+        limit=1,
+        cache_queries=False,
+    )
+    assert len(hits) == 1
+    assert indexer.cache_values == [False]
+
+
+def test_run_linkml_store_semantic_search_raises_on_vector_count_mismatch(monkeypatch, tmp_path):
+    monkeypatch.setattr("src.scripts.ontology_alignment_prototype.linkml_store_available", lambda: True)
+
+    fake_linkml_store = types.ModuleType("linkml_store")
+    fake_index = types.ModuleType("linkml_store.index")
+    fake_implementations = types.ModuleType("linkml_store.index.implementations")
+    fake_llm_indexer_module = types.ModuleType("linkml_store.index.implementations.llm_indexer")
+
+    class FakeLLMIndexer:
+        def __init__(self, **kwargs):
+            self.kwargs = kwargs
+
+        def objects_to_vectors(self, chunk):
+            return []
+
+    fake_llm_indexer_module.LLMIndexer = FakeLLMIndexer
+    monkeypatch.setitem(sys.modules, "linkml_store", fake_linkml_store)
+    monkeypatch.setitem(sys.modules, "linkml_store.index", fake_index)
+    monkeypatch.setitem(sys.modules, "linkml_store.index.implementations", fake_implementations)
+    monkeypatch.setitem(sys.modules, "linkml_store.index.implementations.llm_indexer", fake_llm_indexer_module)
+
+    subjects = [
+        SubjectQueryRecord(
+            subject_id="nmdc:test",
+            subject_label="test",
+            subject_category="class",
+            subject_description="",
+            subject_synonyms=tuple(),
+        )
+    ]
+    ontology_terms = [
+        OntologyTermRecord(
+            object_id="OBI:1",
+            object_label="term",
+            object_source="OBI",
+            object_kind="class",
+            object_description="",
+            object_synonyms=tuple(),
+        )
+    ]
+
+    with pytest.raises(RuntimeError, match="Embedding vector count mismatch"):
+        run_linkml_store_semantic_search(
+            subjects=subjects,
+            ontology_terms=ontology_terms,
+            top_k=1,
+            embedding_model_name="fake-model",
+            cache_db_path=tmp_path / "cache.db",
+            cache_collection_name="cache",
+        )
 
 
 def test_resolve_entity_metadata_uses_requested_backend_when_available():
