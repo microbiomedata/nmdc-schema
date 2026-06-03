@@ -286,6 +286,8 @@ def test_linkml_store_similarity_search_passes_cache_flag(monkeypatch):
     fake_linkml_store = types.ModuleType("linkml_store")
     fake_utils = types.ModuleType("linkml_store.utils")
     fake_vector_utils = types.ModuleType("linkml_store.utils.vector_utils")
+    fake_linkml_store.__path__ = []
+    fake_utils.__path__ = []
     fake_vector_utils.pairwise_cosine_similarity = lambda *_: 1.0
     monkeypatch.setitem(sys.modules, "linkml_store", fake_linkml_store)
     monkeypatch.setitem(sys.modules, "linkml_store.utils", fake_utils)
@@ -318,6 +320,9 @@ def test_run_linkml_store_semantic_search_raises_on_vector_count_mismatch(monkey
     fake_index = types.ModuleType("linkml_store.index")
     fake_implementations = types.ModuleType("linkml_store.index.implementations")
     fake_llm_indexer_module = types.ModuleType("linkml_store.index.implementations.llm_indexer")
+    fake_linkml_store.__path__ = []
+    fake_index.__path__ = []
+    fake_implementations.__path__ = []
 
     class FakeLLMIndexer:
         def __init__(self, **kwargs):
