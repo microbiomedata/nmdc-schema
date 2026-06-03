@@ -21,8 +21,8 @@ class Migrator(MigratorBase):
 
     def _enhance_study_name(self, study: dict) -> dict:
         r"""
-        Prefixes every occurrence of the prefix "micro" or "Micro" within the study's name,
-        with a microscope emoji (🔬).
+        Replaces every occurrence of the prefix "micro" or "Micro" within the study's name,
+        with the prefix "microoo" or "Microoo", respectively.
 
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> database = {
@@ -33,7 +33,7 @@ class Migrator(MigratorBase):
         ... }
         >>> migrator = Migrator(adapter=DictionaryAdapter(database=database))
         >>> migrator._enhance_study_name(database["study_set"][0])
-        {'name': '🔬 Microbial communities in 🔬 microenvironments'}
+        {'name': 'Microoobial communities in microooenvironments'}
         >>> migrator._enhance_study_name(database["study_set"][1])
         {'name': 'Foomicrobar'}
         """
@@ -42,10 +42,10 @@ class Migrator(MigratorBase):
         if "name" not in study:
             return study
 
-        # Replace all occurrences of "micro" or "Micro" with "🔬 micro" or "🔬 Micro", respectively.
+        # Replace all occurrences of "micro" or "Micro" with "microoo" or "Microoo", respectively.
         study["name"] = re.sub(
             pattern=r"\b([Mm])icro",
-            repl=r"🔬 \1icro",
+            repl=r"\1icrooo",
             string=study["name"],
         )
 
