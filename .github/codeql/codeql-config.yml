@@ -1,0 +1,4 @@
+paths-ignore:
+  - 'nmdc_schema/nmdc.py'
+  - 'nmdc_schema/nmdc_pydantic.py'
+  - 'nmdc_schema/migrators/partials/**'
