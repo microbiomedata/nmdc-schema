@@ -12,6 +12,9 @@ authors = [
     { name = "Patrick Kalita", email = "pkalita@lbl.gov" },
     { name = "Sujay Patil", email = "spatil@lbl.gov" },
 ]
+maintainers = [
+    { name = "National Microbiome Data Collaborative", email = "support@microbiomedata.org" },
+]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
