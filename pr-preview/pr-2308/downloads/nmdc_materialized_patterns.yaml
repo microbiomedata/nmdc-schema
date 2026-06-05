@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.0rc1.post14.dev0+3fddd324d
+version: 11.20.0rc1.post15.dev0+20ff98cce
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19508,14 +19508,40 @@ classes:
     class_uri: nmdc:FunctionalAnnotation
   AttributeValue:
     name: AttributeValue
-    description: The value for any value of a attribute for a sample. This object
-      can hold both the un-normalized atomic value and the structured value
+    description: "The value for any value of a attribute for a sample. This object\
+      \ can hold both the un-normalized atomic\n  value and the structured value."
     from_schema: https://w3id.org/nmdc/nmdc
     abstract: true
     slots:
     - has_raw_value
     - type
     class_uri: nmdc:AttributeValue
+  GeoLocationNameValue:
+    name: GeoLocationNameValue
+    description: A structured address-like record of where something is located, came
+      from, or took place
+    comments:
+    - When an instance of this class is populated via an ETL pipeline, the raw value
+      from the source should go into this class's has_raw_value slot. The ETL pipeline
+      can parse that raw value and insert the results into this class's other slots.
+    - 'This class is more useful that string-only representations when data may be
+      ingested from multiple sources, some of which may use a style like ''Nation:
+      State, Locality'' and other might use ''Nation: Locality, State''.'
+    - country_or_sea is required. Instances of this class should have either a subnational_1_or_ocean_region
+      or a locality. Preferably both.
+    from_schema: https://w3id.org/nmdc/nmdc
+    narrow_mappings:
+    - mixs:0000010
+    is_a: AttributeValue
+    slots:
+    - country_or_sea
+    - subnational_1_or_ocean_region
+    - locality
+    slot_usage:
+      has_raw_value:
+        name: has_raw_value
+        required: true
+    class_uri: nmdc:GeoLocationNameValue
   QuantityValue:
     name: QuantityValue
     description: A simple quantity, e.g. 2cm

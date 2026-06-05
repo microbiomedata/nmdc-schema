@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/AttributeValue/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/GeoLocationNameValue/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
-<title>Class: AttributeValue - NMDC Schema Documentation</title>
+<title>Class: GeoLocationNameValue - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-attributevalue">
+<a class="md-skip" href="#class-geolocationnamevalue">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: AttributeValue
+              Class: GeoLocationNameValue
             
           </span>
 </div>
@@ -318,6 +318,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#comments">
+<span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       
@@ -386,58 +395,35 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-attributevalue">Class: AttributeValue</h1>
-<p><em>The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic</em></p>
-<p>_  value and the structured value._</p>
+<h1 id="class-geolocationnamevalue">Class: GeoLocationNameValue</h1>
+<p><em>A structured address-like record of where something is located, came from, or took place</em></p>
 <div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is an abstract class and should not be instantiated directly.</p>
-</div>
-<p>URI: <a href="https://w3id.org/nmdc/AttributeValue">nmdc:AttributeValue</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/GeoLocationNameValue">nmdc:GeoLocationNameValue</a></p>
 <div class="mermaid">classDiagram
-  class AttributeValue
-  click AttributeValue href "../AttributeValue"
+  class GeoLocationNameValue
+  click GeoLocationNameValue href "../GeoLocationNameValue"
     AttributeValue &lt;|-- GeoLocationNameValue
-      click GeoLocationNameValue href "../GeoLocationNameValue"
-    AttributeValue &lt;|-- QuantityValue
-      click QuantityValue href "../QuantityValue"
-    AttributeValue &lt;|-- ImageValue
-      click ImageValue href "../ImageValue"
-    AttributeValue &lt;|-- PersonValue
-      click PersonValue href "../PersonValue"
-    AttributeValue &lt;|-- TextValue
-      click TextValue href "../TextValue"
-    AttributeValue &lt;|-- TimestampValue
-      click TimestampValue href "../TimestampValue"
-    AttributeValue &lt;|-- ControlledTermValue
-      click ControlledTermValue href "../ControlledTermValue"
-    AttributeValue &lt;|-- GeolocationValue
-      click GeolocationValue href "../GeolocationValue"
-    AttributeValue &lt;|-- PropertyAssertion
-      click PropertyAssertion href "../PropertyAssertion"
+      click AttributeValue href "../AttributeValue"
 
 
 
-  AttributeValue : has_raw_value
+  GeoLocationNameValue : country_or_sea
 
-  AttributeValue : type
+  GeoLocationNameValue : has_raw_value
+
+  GeoLocationNameValue : locality
+
+  GeoLocationNameValue : subnational_1_or_ocean_region
+
+  GeoLocationNameValue : type
 
 
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>AttributeValue</strong><ul>
-<li><a href="../GeoLocationNameValue/">GeoLocationNameValue</a></li>
-<li><a href="../QuantityValue/">QuantityValue</a></li>
-<li><a href="../ImageValue/">ImageValue</a></li>
-<li><a href="../PersonValue/">PersonValue</a></li>
-<li><a href="../TextValue/">TextValue</a></li>
-<li><a href="../TimestampValue/">TimestampValue</a></li>
-<li><a href="../ControlledTermValue/">ControlledTermValue</a></li>
-<li><a href="../GeolocationValue/">GeolocationValue</a></li>
-<li><a href="../PropertyAssertion/">PropertyAssertion</a></li>
+<li><a href="../AttributeValue/">AttributeValue</a><ul>
+<li><strong>GeoLocationNameValue</strong></li>
 </ul>
 </li>
 </ul>
@@ -453,19 +439,43 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../has_raw_value/">has_raw_value</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The value that was specified for an annotation in raw form, i</td>
+<td><a href="../country_or_sea/">country_or_sea</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>A maximally coarse-grained, geo-political description of where something is, ...</td>
 <td>direct</td>
+</tr>
+<tr>
+<td><a href="../subnational_1_or_ocean_region/">subnational_1_or_ocean_region</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>A geo-political description of a region that is either (a) a direct, unambigu...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../locality/">locality</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>A geo-political description of a region or feature that is within or overlaps...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../has_raw_value/">has_raw_value</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>The value that was specified for an annotation in raw form, i</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>the class_uri of the class that has been instantiated</td>
-<td>direct</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>When an instance of this class is populated via an ETL pipeline, the raw value from the source should go into this class's has_raw_value slot. The ETL pipeline can parse that raw value and insert the results into this class's other slots.</li>
+<li>This class is more useful that string-only representations when data may be ingested from multiple sources, some of which may use a style like 'Nation: State, Locality' and other might use 'Nation: Locality, State'.</li>
+<li>country_or_sea is required. Instances of this class should have either a subnational_1_or_ocean_region or a locality. Preferably both.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -481,8 +491,8 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>narrow</td>
+<td>mixs:0000010</td>
 </tr>
 </tbody>
 </table>
@@ -490,26 +500,128 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: AttributeValue
-description: "The value for any value of a attribute for a sample. This object can\
-  \ hold both the un-normalized atomic\n  value and the structured value."
+<pre><code class="language-yaml">name: GeoLocationNameValue
+description: A structured address-like record of where something is located, came
+  from, or took place
+comments:
+- When an instance of this class is populated via an ETL pipeline, the raw value from
+  the source should go into this class's has_raw_value slot. The ETL pipeline can
+  parse that raw value and insert the results into this class's other slots.
+- 'This class is more useful that string-only representations when data may be ingested
+  from multiple sources, some of which may use a style like ''Nation: State, Locality''
+  and other might use ''Nation: Locality, State''.'
+- country_or_sea is required. Instances of this class should have either a subnational_1_or_ocean_region
+  or a locality. Preferably both.
 from_schema: https://w3id.org/nmdc/nmdc
-abstract: true
+narrow_mappings:
+- mixs:0000010
+is_a: AttributeValue
 slots:
-- has_raw_value
-- type
-class_uri: nmdc:AttributeValue
+- country_or_sea
+- subnational_1_or_ocean_region
+- locality
+slot_usage:
+  has_raw_value:
+    name: has_raw_value
+    required: true
+class_uri: nmdc:GeoLocationNameValue
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: AttributeValue
-description: "The value for any value of a attribute for a sample. This object can\
-  \ hold both the un-normalized atomic\n  value and the structured value."
+<pre><code class="language-yaml">name: GeoLocationNameValue
+description: A structured address-like record of where something is located, came
+  from, or took place
+comments:
+- When an instance of this class is populated via an ETL pipeline, the raw value from
+  the source should go into this class's has_raw_value slot. The ETL pipeline can
+  parse that raw value and insert the results into this class's other slots.
+- 'This class is more useful that string-only representations when data may be ingested
+  from multiple sources, some of which may use a style like ''Nation: State, Locality''
+  and other might use ''Nation: Locality, State''.'
+- country_or_sea is required. Instances of this class should have either a subnational_1_or_ocean_region
+  or a locality. Preferably both.
 from_schema: https://w3id.org/nmdc/nmdc
-abstract: true
+narrow_mappings:
+- mixs:0000010
+is_a: AttributeValue
+slot_usage:
+  has_raw_value:
+    name: has_raw_value
+    required: true
 attributes:
+  country_or_sea:
+    name: country_or_sea
+    description: A maximally coarse-grained, geo-political description of where something
+      is, came from, took place, etc.
+    todos:
+    - 'ValueError: https://www.cia.gov/the-world-factbook/ and http://unstats.un.org/unsd/methods/m49/m49.htm
+      is not a valid URI or CURIE'
+    - when populating see_also
+    comments:
+    - MIxS states that country or sea names should be chosen from the INSDC country
+      list aka the geo_loc_name-qualifier-vocabulary
+    - https://www.insdc.org/submitting-standards/geo_loc_name-qualifier-vocabulary/
+    - https://www.cia.gov/the-world-factbook/ and http://unstats.un.org/unsd/methods/m49/m49.htm
+    examples:
+    - value: Canada
+    - value: Atlantic Ocean
+    - value: USA
+    from_schema: https://w3id.org/nmdc/nmdc
+    narrow_mappings:
+    - mixs:0000010
+    rank: 1
+    alias: country_or_sea
+    owner: GeoLocationNameValue
+    domain_of:
+    - GeoLocationNameValue
+    range: string
+    required: true
+  subnational_1_or_ocean_region:
+    name: subnational_1_or_ocean_region
+    description: A geo-political description of a region that is either (a) a direct,
+      unambiguous subdivision of a paired country_or_sea value, or (b) an unambiguous
+      region or feature within an ocean or sea.
+    comments:
+    - INSDC’s guidance could be taken to imply that Vancouver or Cote d’Azur are appropriate
+      values for this slot, but NMDC would place those in the locality slot.
+    examples:
+    - value: British Columbia
+    - value: Charlie Gibbs Fracture Zone
+    - value: Maryland
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - state
+    narrow_mappings:
+    - mixs:0000010
+    rank: 2
+    alias: subnational_1_or_ocean_region
+    owner: GeoLocationNameValue
+    domain_of:
+    - GeoLocationNameValue
+    range: string
+    recommended: true
+  locality:
+    name: locality
+    description: A geo-political description of a region or feature that is within
+      or overlaps with a paired subnational_1_or_ocean_region value.
+    examples:
+    - value: Vancouver
+    - value: Cote d’Azur
+    - value: Bethesda
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - state
+    narrow_mappings:
+    - mixs:0000010
+    rank: 3
+    alias: locality
+    owner: GeoLocationNameValue
+    domain_of:
+    - GeoLocationNameValue
+    range: string
+    recommended: true
   has_raw_value:
     name: has_raw_value
     description: The value that was specified for an annotation in raw form, i.e.
@@ -517,10 +629,11 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: has_raw_value
-    owner: AttributeValue
+    owner: GeoLocationNameValue
     domain_of:
     - AttributeValue
     range: string
+    required: true
   type:
     name: type
     description: the class_uri of the class that has been instantiated
@@ -544,7 +657,7 @@ attributes:
     slot_uri: rdf:type
     designates_type: true
     alias: type
-    owner: AttributeValue
+    owner: GeoLocationNameValue
     domain_of:
     - EukEval
     - FunctionalAnnotationAggMember
@@ -566,7 +679,7 @@ attributes:
     - MetaboliteIdentification
     range: uriorcurie
     required: true
-class_uri: nmdc:AttributeValue
+class_uri: nmdc:GeoLocationNameValue
 
 </code></pre>
 </details>
