@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.0rc1.post4.dev0+431bf1730
+version: 11.20.0rc1.post5.dev0+bcf693aa7
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -55,9 +55,6 @@ prefixes:
   FBcv:
     prefix_prefix: FBcv
     prefix_reference: http://purl.obolibrary.org/obo/FBcv_
-  FMA:
-    prefix_prefix: FMA
-    prefix_reference: http://purl.obolibrary.org/obo/FMA_
   GENEPIO:
     prefix_prefix: GENEPIO
     prefix_reference: http://purl.obolibrary.org/obo/GENEPIO_
