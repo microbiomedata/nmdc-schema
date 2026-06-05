@@ -39,7 +39,7 @@ Act on new findings, but do not re-report the known ones that are already triage
 - The credential-persistence (`artipacked`) findings on `deploy-docs.yaml` and `test-pages-build.yaml` are intentional, because those workflows push to gh-pages. Tracked in #3147.
 - The `pypi-publish.yaml` findings (cache poisoning and credential persistence) are deliberately left for separate, release-pipeline-aware review. Tracked in #3148. Do not edit `pypi-publish.yaml` casually.
 
-CI also runs zizmor in a non-blocking job that reports to code scanning (the Security tab). The local check is for faster, in-development feedback.
+CI also runs zizmor in a non-blocking job that reports to code scanning (the Security tab), added in #3149. The local check is for faster, in-development feedback.
 
 ## Code Style Guidelines
 - Follow PEP8 conventions and Black formatting
