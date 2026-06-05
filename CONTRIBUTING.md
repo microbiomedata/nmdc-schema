@@ -100,6 +100,11 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Rationale: Open-ended string ranges encourage multiple values to represent the same entity, like “water”, “H2O” and “HOH”
     - Any slot whose values could be constrained to a finite set should use an Enum
     - Non-categorical values, e.g. descriptive fields like `name` or `description` fall outside of this.
+- Permissible-value hierarchies (`is_a`)
+    - A permissible value may declare `is_a: <other-pv>` to record that one value is a more specific kind of another in the same enum (e.g. `hiseq_2500 is_a hiseq`). Most enums are a flat list; `is_a` is an optional, deliberate addition for the cases where a real specialization exists. It is consequential where used: downstream consumers read it for grouping, rollup, and querying.
+    - Assert it when X genuinely is a kind of Y (a model within a series, where the "series" is a curatorial grouping such as an OBI `... series instrument` class rather than a vendor-guaranteed category, or a refresh of a model); do not assert relationships that are not true (sibling generations, peer models); when you cannot establish one, leave it unasserted. Judge on domain knowledge, with the ontology `meaning:` (e.g. OBI in OLS) as corroborating evidence, not the sole authority.
+    - `is_a` is not `aliases`: use `aliases` only for values that are *equivalent*; use `is_a` when one value is a distinct but more specific kind of another. Example: `sequel_IIe` is kept as its own PV with `is_a: sequel_II`, not folded in as an alias, because NCBI treats "Sequel IIe" and "Sequel II" as separate values, so an alias would assert a false equivalence.
+    - Precedent: `StationaryPhaseEnum`, `SamplePortionEnum`. Background: issue #3120.
 - Reuse
     - Existing scheme elements should be reused where appropriate, rather than making duplicative elements
     - More specific classes can be created by refinining classes using inheritance (`is_a`)
@@ -148,6 +153,21 @@ See `.linkmllint.yaml` and `.linkmllint-root.yaml` for the linting configuration
 
 > Advanced testing instructions for migrators can be found [here](nmdc_schema/migrators/README.md).
 
+### Current Policy vs Legacy Guidance
+
+The repository has evolved in how CLI scripts and automation are organized. Use the
+current policy below when adding or modifying developer tooling.
+
+| Topic | Current policy | Legacy guidance (for context) |
+|---|---|---|
+| `src/schema/mixs.yaml` edits | Treat as generated. Change generator inputs/transformations (`makefiles/mixs.Makefile`, `assets/*`, related config) and regenerate. | Hand-edit `mixs.yaml` directly. |
+| Script registration | Keep `[project.scripts]` limited to package-backed, stable CLIs intended for default installs. | Add most repo scripts as CLI aliases. |
+| Repo-local scripts | Invoke explicitly from Makefiles using `poetry run python src/scripts/<name>.py ...`. | Expose `src/scripts/*` commands through Poetry script aliases. |
+| Scripts table location | Use `[project.scripts]` (PEP 621). | Use `[tool.poetry.scripts]` (Poetry-specific). |
+| Output destinations | Choose destination by purpose (`docs/`, `local/`, `project/`, package artifacts). | Default most generated output to `assets/`. |
+| Makefile ergonomics | Prefer `$<`/`$@` where it improves clarity and correctness; not every target can use them. | Apply `$<`/`$@` universally. |
+| CLI naming | Keep hyphenated CLI aliases and consistent option naming when defining public CLIs. | Same intent, now applied only to stable/public entry points. |
+
 ### Recording Decisions
 
 - Use the [NMDC ADR Log](https://github.com/microbiomedata/NMDC_documentation/tree/main/decisions)
@@ -159,5 +179,3 @@ TODO: Add to this section later
 [about-branches]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
 [about-issues]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
 [about-pulls]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
-
-

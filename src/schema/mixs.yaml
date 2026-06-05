@@ -969,7 +969,7 @@ enums:
         aliases:
           - 16S rRNA
           - 16S ribosomal RNA
-        narrow_mappings:
+        related_mappings:
           - OBI:0002763
       23S_rRNA:
         aliases:
@@ -2960,7 +2960,7 @@ slots:
   growth_facil:
     annotations:
       Expected_value: free text or CO
-    description: 'Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research'
+    description: 'Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see https://cropontology.org/.'
     title: growth facility
     examples:
       - value: Growth chamber [CO_715:0000189]
@@ -3511,6 +3511,11 @@ slots:
     comments:
       - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
     range: ControlledIdentifiedTermValue
+    structured_aliases:
+      - literal_form: Host NCBI Taxonomy ID
+        contexts:
+          - https://jgi.doe.gov/isolate-submission-form/v19
+        predicate: EXACT_SYNONYM
   host_tot_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -4482,9 +4487,7 @@ slots:
       interpolated: true
       partial_match: true
   plant_growth_med:
-    annotations:
-      Expected_value: EO or enumeration
-    description: Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from EO:plant growth medium (follow this link for terms http://purl.obolibrary.org/obo/EO_0007147) or other controlled vocabulary
+    description: Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from the Plant Environment Ontology (PECO), plant growth medium exposure (http://purl.obolibrary.org/obo/PECO_0007147), or other controlled vocabulary.
     title: plant growth medium
     keywords:
       - growth
@@ -4514,7 +4517,7 @@ slots:
     slot_uri: MIXS:0001059
     range: PlantSexEnum
   plant_struc:
-    description: Name of plant structure the sample was obtained from; for Plant Ontology (PO) (v releases/2017-12-14) terms, see http://purl.bioontology.org/ontology/PO, e.g. petiole epidermis (PO_0000051). If an individual flower is sampled, the sex of it can be recorded here
+    description: Name of plant structure the sample was obtained from; for Plant Ontology (PO) terms, see http://obofoundry.org/ontology/po.html, e.g. petiole epidermis (PO:0000051). If an individual flower is sampled, the sex of it can be recorded here.
     title: plant structure
     examples:
       - value: epidermis [PO:0005679]
@@ -7101,20 +7104,68 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+  estimated_size:
+    description: The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period
+    title: estimated size
+    keywords:
+      - size
+    slot_uri: MIXS:0000024
+    range: integer
+    minimum_value: 1
+    maximum_value: 100000000000
+    comments:
+      - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
+      - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat.
+    examples:
+      - object: 300000
+  ploidy:
+    description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO
+    title: ploidy
+    slot_uri: MIXS:0000021
+    range: PloidyEnum
+  ref_biomaterial:
+    description: Primary publication if isolated before genome publication; otherwise, primary genome report
+    title: reference for biomaterial
+    examples:
+      - value: doi:10.1016/j.syapm.2018.01.009
+    slot_uri: MIXS:0000025
+    range: TextValue
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+      partial_match: true
+  isol_growth_condt:
+    description: Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material
+    title: isolation and growth condition
+    examples:
+      - value: doi:10.1016/j.syapm.2018.01.009
+    keywords:
+      - condition
+      - growth
+      - isolation
+    slot_uri: MIXS:0000003
+    range: TextValue
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+      partial_match: true
   samp_collec_device:
-    annotations:
-      Expected_value: device name
-    description: The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)
+    annotations: {}
+    description: 'The device used to collect an environmental sample. Recommended values are subclasses of specimen collection device (http://purl.obolibrary.org/obo/OBI_0002814). OBI itself contains only swab/wipe subclasses; environmental sampling devices (corers, grab samplers, passive samplers, etc.) are defined in GENEPIO under the same OBI:0002814 parent. Free-text values are accepted for backward compatibility; new submissions should prefer the form: label [PREFIX:LOCALID].'
     title: sample collection device
     keywords:
       - device
       - sample
-    string_serialization: '{termLabel} [{termID}]|{text}'
     slot_uri: MIXS:0000002
-    structured_aliases:
-      - literal_form: samp_collect_device
-        contexts:
-          - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+    examples:
+      - value: specimen collection swab stick [OBI:0002820]
+      - value: PONAR grab sampler [GENEPIO:0100929]
+      - value: trowel
+    comments:
+      - GENEPIO's subtree of OBI:0002814 includes grouping classes such as GENEPIO:0100941 (grab sampling device), GENEPIO:0100942 (composite sampling device), GENEPIO:0100943 (core sampling device), and GENEPIO:0100948 (passive sampling device).
+      - ENVO has no device classes; do not use ENVO terms here.
+      - 'Existing NMDC biosamples populate this slot with free text (e.g., "corer", "Van Dorn"). New submissions are encouraged to use the form: label [PREFIX:LOCALID].'
+    pattern: ^([^\[\]]+|.+ \[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\])$
     range: string
   samp_collec_method:
     description: The method employed for collecting the sample

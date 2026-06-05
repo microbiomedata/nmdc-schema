@@ -161,3 +161,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ruff
+.ruff_cache/
+
+# AI coding tools
+.claude/
+.aider*
+.copilot/
+.github/copilot-instructions.md
+AGENTS.md

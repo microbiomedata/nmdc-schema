@@ -266,7 +266,6 @@ def extract_study(ctx, study_id: str, output_file: Union[str, bytes, os.PathLike
         # downstream workflow activity records
         (
             read_qc_records,
-            read_based_analysis,
             read_based_taxonomy,
             metagenome_assembly_records,
             metagenome_annotation_records,
@@ -275,7 +274,7 @@ def extract_study(ctx, study_id: str, output_file: Union[str, bytes, os.PathLike
             metabolomics_analysis,
             metaproteomics_analysis,
             nom_analysis,
-        ) = ([], [], [], [], [], [], [], [], [], [])
+        ) = ([], [], [], [], [], [], [], [], [])
         downstream_workflow_activity_sets = {
             "read_qc_analysis_activity_set": read_qc_records,
             "read_based_taxonomy_analysis_activity_set": read_based_taxonomy,

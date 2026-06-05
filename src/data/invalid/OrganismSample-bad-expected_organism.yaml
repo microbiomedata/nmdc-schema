@@ -1,0 +1,8 @@
+# Invalid: expected_organism uses the wrong typecode (bsm- instead of orgn-).
+# expected_organism is a CURIE that must match the Organism id pattern.
+id: nmdc:osm-99-zfx29q
+type: nmdc:OrganismSample
+name: bad-expected-organism-curie
+expected_organism: nmdc:bsm-99-abc123
+associated_studies:
+  - nmdc:sty-00-abc123

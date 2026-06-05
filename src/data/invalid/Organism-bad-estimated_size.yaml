@@ -1,0 +1,9 @@
+# Invalid: estimated_size must be an integer (base pairs); a float is not allowed.
+id: nmdc:orgn-99-tuxk3s
+type: nmdc:Organism
+name: bad-estimated-size
+classified_as:
+  - id: NCBITaxon:22
+    name: Shewanella
+    type: nmdc:NcbiTaxon
+estimated_size: 4600000.5

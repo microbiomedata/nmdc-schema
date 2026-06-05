@@ -1,5 +1,5 @@
 material_processing_set:
-  - id: nmdc:poolp-9x9-1x
+  - id: nmdc:poolp-9x9-1x2
     name: first pooling process
     type: nmdc:Pooling
     has_input:

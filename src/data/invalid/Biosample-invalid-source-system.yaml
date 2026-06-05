@@ -1,5 +1,6 @@
 #this file has an invalid permissible value for source_system_of_record
 id: nmdc:bsm-99-dtTMNb
+name: my_awesome_biosample
 type: nmdc:Biosample
 associated_studies:
   - nmdc:sty-00-abc123

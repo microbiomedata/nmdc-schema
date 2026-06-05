@@ -11,6 +11,26 @@ LATEST_RELEASE_TAG_FILE := local/latest_release_tag.txt
 PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
 
 
+##### Ontology registry counts #####
+# On-demand target — fetches from external APIs (OLS, OBO Foundry, semantic-sql).
+# BioPortal included automatically when BIOPORTAL_API_KEY is set in local/.env
+# or the environment. Outputs go to local/ (gitignored).
+
+ONTOLOGY_REGISTRY_JSON := local/ontology_registry_counts.json
+ONTOLOGY_REGISTRY_TSV := local/ontology_registry_prefixes.tsv
+
+.PHONY: ontology-registry-counts ontology-registry-clean
+ontology-registry-counts: $(ONTOLOGY_REGISTRY_JSON)
+
+$(ONTOLOGY_REGISTRY_JSON):
+	$(RUN) python src/scripts/ontology_registry_counts.py \
+		--output-json $(ONTOLOGY_REGISTRY_JSON) \
+		--output-prefixes-tsv $(ONTOLOGY_REGISTRY_TSV)
+
+ontology-registry-clean:
+	rm -f $(ONTOLOGY_REGISTRY_JSON) $(ONTOLOGY_REGISTRY_TSV)
+
+
 ##### Rules related to grabbing the current schema release from Github #####
 
 REPO  := microbiomedata/nmdc-schema
@@ -203,7 +223,7 @@ filtered-status:
 		grep -v 'nmdc.py' | grep -v 'examples/output/' # | grep -v 'nmdc_materialized_patterns.py' |
 
 local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
-	$(RUN) slot-range-type-reporter \
+	$(RUN) python src/scripts/slot_range_type_reporter.py \
 		--schema $< \
 		--output $@ \
 		--schema-class Biosample
@@ -212,7 +232,7 @@ local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 ## may help predict how long it will take to run study-id-from-filename on a particular study
 ## will become unnecessary once aggregation queries are available in the napa nmdc-runtime API
 local/biosamples-per-study.txt:
-	$(RUN) report-biosamples-per-study \
+	$(RUN) python src/scripts/report_biosamples_per_study.py \
 		--api-server api \
 		--max-page-size 10000 > $@
 
@@ -228,7 +248,7 @@ local/nmdc-no-use-native-uris.owl.ttl: src/schema/nmdc.yaml
 
 
 local/nmdc_materialized.ttl: src/schema/nmdc.yaml
-	$(RUN) schema-view-relation-graph \
+	$(RUN) python src/scripts/schema_view_relation_graph.py \
 		--schema $< \
 		--output $@
 
@@ -309,12 +329,12 @@ assets/mermaid-erd.png: assets/mermaid-erd.mmd
 #	inkscape --export-filename=$@ $<
 
 assets/check_examples_class_coverage.txt:
-	$(RUN) check-examples-class-coverage \
+	$(RUN) python src/scripts/check_examples_class_coverage.py \
 		--source_directory src/data/valid \
 		--schema_file src/schema/nmdc.yaml > $@
 
 assets/schema_pattern_linting.txt:
-	$(RUN) schema-pattern-linting \
+	$(RUN) python src/scripts/schema_pattern_linting.py \
  		--schema-file src/schema/nmdc.yaml > $@
 
 assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
@@ -327,14 +347,14 @@ local/Database-interleaved-class-count.tsv: src/data/valid/Database-interleaved.
 
 
 local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-interleaved-class-count.tsv
-	$(RUN) class-instantiation-counts \
+	$(RUN) python src/scripts/class_instantiation_counts.py \
 		--schemasheets-input $(word 1,$^) \
 		--counts-input $(word 2,$^) \
 		--output $@
 
 .PHONY: generate-json-collections
 generate-json-collections: src/data/valid/Database-interleaved.yaml
-	$(RUN) database-to-json-list-files \
+	$(RUN) python src/scripts/database_to_json_list_files.py \
 		--yaml-input $< \
 		--output-dir assets/jsons-for-mongodb
 
@@ -344,34 +364,42 @@ populate-mongodb-form-json-collections: generate-json-collections
 
 # ----	NMDC NCBI mapping process ---- #
 assets/ncbi_mappings/ncbi_attribute_mappings.tsv:
-	$(RUN) nmdc-ncbi-mapping create-unmapped-ncbi-mapping-file \
+	$(RUN) python src/scripts/ncbi_nmdc_exact_term_matching.py create-unmapped-ncbi-mapping-file \
 		--tsv-output $@
 
 assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv: assets/ncbi_mappings/ncbi_attribute_mappings.tsv
-	$(RUN) nmdc-ncbi-mapping exact-term-matching \
+	$(RUN) python src/scripts/ncbi_nmdc_exact_term_matching.py exact-term-matching \
 		--tsv-input $< \
 		--tsv-output $@
 
-	$(RUN) nmdc-ncbi-mapping ignore-import-schema-slots $@
+	$(RUN) python src/scripts/ncbi_nmdc_exact_term_matching.py ignore-import-schema-slots $@
 	
 
-src/data/valid/Database-interleaved-new.yaml: src/schema/nmdc.yaml
-	$(RUN) interleave-yaml \
+src/data/valid/Database-interleaved.yaml: src/schema/nmdc.yaml
+	rm -f $@
+	$(RUN) python src/scripts/interleave_yaml.py \
 		--directory-path src/data/valid \
 		--output-file $@ \
 		--schema-file $<
 
+.PHONY: interleave-yaml
+interleave-yaml: src/data/valid/Database-interleaved.yaml
+
+.PHONY: check-references
+check-references:
+	$(RUN) python src/scripts/check_references.py \
+		--schema-file $(SOURCE_SCHEMA_PATH)
+
 assets/mentions-of-ids-analysis.txt: src/schema/nmdc.yaml
-	$(RUN) analyze-mentions-of-ids \
+	$(RUN) python src/scripts/analyze_mentions_of_ids.py \
 		--schema-file $< 1> $@ 2> $@.log
 
 assets/usages-report.txt: src/schema/nmdc.yaml
-	$(RUN) report-usages \
+	$(RUN) python src/scripts/report_usages.py \
 		--schema-file $< > $@
 
 
 assets/element-scrutiny.tsv: nmdc_schema/nmdc_materialized_patterns.yaml
-	$(RUN)  scrutinize-elements \
+	$(RUN) python src/scripts/scrutinize_elements.py \
 		--schema-file $< \
 		--output-file assets/element-scrutiny.tsv
-

@@ -110,10 +110,6 @@ enums:
       base:
         description: Accepts a proton or donates an electron pair in a chemical reaction.
         meaning: CHEBI:22695
-      # protease:
-      #   description: Enzyme that catalyzes cleavage of peptide bonds in proteins.
-      # proteolytic_enzyme:
-      #   description: Enzyme that catalyzes the hydrolysis of proteins.
       ms_proteolytic_enzyme:
         description: Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry based proteomics
         meaning: MS:1002986
@@ -123,16 +119,9 @@ enums:
       surfactant:
         description: Reduces surface tension and aids in the solubilization of substances.
         meaning: CHEBI:35195
-      # stabilizer:
-      #   description: Prevents degradation or loss of analytes during sample storage or preparation.
-      #   meaning: CFo000000033
       derivatizing_agent:
         description: Chemically modifies analytes to improve detection or separation.
         # meaning: MSIO:0000003
-      # labeling_reagent:
-      #   description:  Introduces a detectable label for tracing or quantification.
-      # precipitating_agent:
-      #   description: Causes precipitation of unwanted substances or aids in the concentration of analytes.
       solubilizing_agent: { }
 
   SampleStateEnum:
@@ -147,6 +136,8 @@ enums:
         meaning: CHEBI:38472
       acetic_acid:
         meaning: CHEBI:15366
+      acetone:
+        meaning: CHEBI:15347
       alphaLP:
         meaning: EC:3.4.21.12
         see_also:
@@ -157,6 +148,8 @@ enums:
         meaning: CHEBI:62947
       ammonium_bicarbonate:
         meaning: CHEBI:184335
+      ammonium_formate:
+        meaning: CHEBI:63050
       amitriptyline:
         meaning: CHEBI:2666
       Arg-C:
@@ -177,6 +170,8 @@ enums:
           - >-
             A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine,
             and phenylalanine.
+      disodium_hydrogenphosphate_dihydrate:
+        meaning: CHEBI:91258
       ethanol:
         meaning: CHEBI:16236
       formic_acid:
@@ -215,8 +210,16 @@ enums:
         meaning: CHEBI:43945
         comments:
           - A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic acid groups, also known as methylenediphosphonic acid
+      potassium_chloride:
+        meaning: CHEBI:32588
+      potassium_dihydrogen_phosphate:
+        meaning: CHEBI:63036
       phosphoric_acid:
         meaning: CHEBI:26078
+      sodium_chloride:
+        meaning: CHEBI:26710
+      trichloroacetic_acid:
+        meaning: CHEBI:30956
       trimethylchlorosilane:
         meaning: CHEBI:85069
       trypsin:
@@ -335,11 +338,6 @@ classes:
 
   Biosample:
     class_uri: nmdc:Biosample
-    unique_keys:
-      samp_name_unique_key:
-        unique_key_slots:
-          - samp_name # id is already required to be unique because it is the identifier
-                      # in Biosample's ancestor class, NamedThing (parent is MaterialEntity)
     is_a: Sample
     aliases:
       - sample
@@ -561,6 +559,7 @@ classes:
       - host_dry_mass
       - host_family_relation
       - host_genotype
+      - host_genus
       - host_growth_cond
       - host_height
       - host_last_meal
@@ -569,6 +568,8 @@ classes:
       - host_phenotype
       - host_sex
       - host_shape
+      - host_species
+      - host_strain
       - host_subject_id
       - host_subspecf_genlin
       - host_substrate
@@ -859,12 +860,10 @@ classes:
       - ecosystem_path_id
 
       ## GOLD specific fields
-      - add_date
       - community
       - habitat
       - host_name
       - location
-      - mod_date
       - ncbi_taxonomy_name
       - proport_woa_temperature
       - salinity_category
@@ -915,6 +914,20 @@ classes:
       - lbc_thirty
       - lbceq
     slot_usage:
+    
+      name:
+        required: true
+        description: >-
+          A local identifier or name for the material sample collected.
+          We recommend it be informative, concise, and consistent within your lab.
+          It must be unique within a study.
+          International Nucleotide Sequence Database Collaboration (INSDC) requires every sample name from a single submitter to be unique.
+          We recommend that, in addition to populating this field, you populate the `source_mat_id` field with a globally-unique identifier.
+        examples:
+          - value: "BW-H-17-M"
+      
+      provenance_metadata:
+        description: Provenance metadata for this Biosample, including when the record was added to and last modified in the NMDC database.
 
       collected_from:
         structured_pattern:
@@ -1028,6 +1041,8 @@ classes:
           - Required when aluminum saturation is provided.
         examples:
           - value: https://doi.org/10.1371/journal.pone.0176357
+          - value: doi:10.1371/journal.pone.0176357
+          - value: PMID:28448589
         todos:
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts?
       cur_vegetation:
@@ -1048,6 +1063,7 @@ classes:
           - Required when current vegetation is provided.
         examples:
           - value: https://doi.org/10.1111/j.1654-109X.2011.01154.x
+          - value: doi:10.1111/j.1654-109X.2011.01154.x
         todos:
           - I'm not sure this is a DOI, PMID, or URI. Should pool the community and find out how they accomplish this if provided.
       heavy_metals:
@@ -1070,6 +1086,29 @@ classes:
           - value: https://doi.org/10.3390/ijms9040434
           - value: doi:10.1007/BF01056090
           - value: https://doi.org/10.1007/s00216-006-0322-8
+      horizon_meth:
+        examples:
+          - value: https://doi.org/10.1016/j.geoderma.2019.113898
+          - value: doi:10.1016/j.geoderma.2019.113898
+      link_addit_analys:
+        examples:
+          - value: https://doi.org/10.1111/j.1574-6941.2011.01140.x
+          - value: doi:10.1111/j.1574-6941.2011.01140.x
+      link_climate_info:
+        examples:
+          - value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
+          - value: doi:10.3354/cr014161
+      local_class_meth:
+        examples:
+          - value: https://www.nrcs.usda.gov/resources/education-and-teaching-materials/the-twelve-orders-of-soil-taxonomy
+      micro_biomass_meth:
+        examples:
+          - value: https://doi.org/10.1016/j.soilbio.2005.01.021
+          - value: doi:10.1016/j.soilbio.2005.01.021
+      prev_land_use_meth:
+        examples:
+          - value: https://doi.org/10.2737/SRS-GTR-155
+          - value: doi:10.2737/SRS-GTR-155
       season_precpt:
         title: average seasonal precipitation
         comments:
@@ -1083,8 +1122,8 @@ classes:
         comments:
           - Required if providing water content
         examples:
-          - value: J. Nat. Prod. Plant Resour., 2012, 2 (4):500-503
           - value: https://dec.alaska.gov/applications/spar/webcalc/definitions.htm
+          - value: doi:10.1016/j.geoderma.2019.113898
         todos:
           - Why is it soil water content method in the name but not the title? Is this slot used in other samples?
           - Soil water content can be measure MANY ways and often, multiple ways are used in one experiment (gravimetric water content and water holding capacity and water filled pore space, to name a few).
@@ -1106,8 +1145,9 @@ classes:
           - how to manage multiple water content methods?
       ph_meth:
         examples:
-          - value: https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html?gclid=Cj0KCQiAwJWdBhCYARIsAJc4idCO5vtvbVMf545fcvdROFqa6zjzNSoywNx6K4k9Coo9cCc2pybtvGsaAiR0EALw_wcB
           - value: https://doi.org/10.2136/sssabookser5.3.c16
+          - value: doi:10.2136/sssabookser5.3.c16
+          - value: https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html
         comments:
           - This can include a link to the instrument used or a citation for the method.
       tot_carb:
@@ -1120,10 +1160,11 @@ classes:
       tot_nitro_cont_meth:
         examples:
           - value: https://doi.org/10.2134/agronmonogr9.2.c32
-          - value: https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/sssaj2009.0389?casa_token=bm0pYIUdNMgAAAAA%3AOWVRR0STHaOe-afTcTdxn5m1hM8n2ltM0wY-b1iYpYdD9dhwppk5j3LvC2IO5yhOIvyLVeQz4NZRCZo
+          - value: doi:10.2136/sssaj2009.0389
       tot_org_c_meth:
         examples:
           - value: https://doi.org/10.1080/07352680902776556
+          - value: doi:10.1080/07352680902776556
       tot_org_carb:
         todos:
           - check description. How are they different?
@@ -1208,7 +1249,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
-    broad_mappings:
+    exact_mappings:
       - OBI:0000094
 
   PortionOfSubstance:
@@ -1243,6 +1284,120 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
+
+  OrganismSample:
+    class_uri: nmdc:OrganismSample
+    is_a: Sample
+    title: Organism Sample
+    description: >-
+      A material sample in which all cells are expected to share the same genome.
+      This includes microbial colony picks, pellets from presumably pure liquid
+      cultures, plant tissue clips, fungal fruiting body sections, and similar
+      materials where the submitter intends to study a single organism. The purity
+      expectation may be contradicted by sequencing results.
+    slots:
+      - associated_studies
+      - expected_organism
+      - embargoed
+      - provenance_metadata
+      - external_database_identifiers
+      - gold_organism_identifiers
+      - collection_date
+      - samp_name
+      - host_taxid
+      - sample_isolation_method
+      - sample_isolated_from
+      - sample_collection_site
+      - sample_growth_conditions
+      - ploidy
+      - source_mat_id
+      - analysis_type
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      expected_organism:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      source_mat_id:
+        description: >-
+          Culture collection identifier for the source of this organism sample.
+        comments:
+          - >-
+            On OrganismSample the slot identifies the catalog entry the strain
+            was ordered from. CURIE form using a declared prefix is preferred
+            (e.g. dsmz:DSM-15171, atcc:700808). Per-collection normalization
+            rules and prefix-coverage gaps are documented in
+            src/docs/jgi-isolate-field-routing.md.
+        see_also:
+          - https://github.com/microbiomedata/nmdc-schema/issues/3036
+        examples:
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: dsmz:DSM-15171
+            description: >-
+              Ruegeria pomeroyi DSS-3 at DSMZ (bioregistry prefix dsmz; same strain as
+              atcc:700808 and lmg:23168). Verified in GOLD organism_v2.
+              https://www.dsmz.de/collection/catalogue/details/culture/DSM-15171
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: atcc:700808
+            description: >-
+              Ruegeria pomeroyi DSS-3 at ATCC (bioregistry prefix atcc; same strain as
+              dsmz:DSM-15171 and lmg:23168). Verified in GOLD organism_v2.
+              https://www.atcc.org/products/700808
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: lmg:23168
+            description: >-
+              Ruegeria pomeroyi DSS-3 at BCCM/LMG (not yet in bioregistry; same strain as
+              dsmz:DSM-15171 and atcc:700808). Verified in BCCM/LMG catalogue 2026-04-30.
+              https://bccm.belspo.be/catalogues/lmg-strain-details?NUM=23168
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: jcm:20004
+            description: >-
+              Pseudomonas putida KT2440 at JCM/RIKEN (bioregistry prefix jcm).
+              http://www.jcm.riken.go.jp/cgi-bin/jcm/jcm_number?JCM=20004
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: nbrc:13719
+            description: >-
+              Bacillus subtilis 168 at NBRC/NITE (bioregistry prefix nbrc).
+              http://www.nbrc.nite.go.jp/NBRC2/NBRCCatalogueDetailServlet?ID=NBRC&CAT=13719
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: bcrc:10694
+            description: >-
+              Escherichia coli at BCRC/FIRDI (bioregistry prefix bcrc).
+              https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=10694
+        structured_aliases:
+          - literal_form: Culture Collection and ID
+            contexts:
+              - https://jgi.doe.gov/isolate-submission-form/v19
+            predicate: NARROW_SYNONYM    # JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any material-sample identifier)
+    close_mappings:
+      - OBI:0100051
+    comments:
+      - >-
+        An OrganismSample is not necessarily pure. The submitter expects it to contain a single
+        organism, but sequencing may reveal contamination. Purity and strain-verification fields
+        (single-colony isolation, ribosomal sequences, fungal screening) are JGI submission
+        logistics and live in submission-schema JgiIsolateInterface, not here.
+      - >-
+        The expected_organism slot links to an Organism instance representing what the
+        submitter believes is in the sample.
+      - >-
+        The defining criterion is genomic homogeneity of intent, not material type. A bacterial
+        colony pick, a plant leaf clip, and a fungal fruiting body section are all OrganismSamples
+        because the submitter expects one genome. An algal mat, a cat fecal sample for microbiome
+        study, or a soil sample are Biosamples because they contain communities of organisms.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/2803
+      - https://github.com/microbiomedata/nmdc-schema/issues/2961
 
   Site:
     class_uri: nmdc:Site
@@ -1357,9 +1512,6 @@ slots:
       name of the environmental package, a selection of fields can be made from the
       subtables and can be reported
     range: TextValue
-  #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
-  #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
-  #        environment|plant\-associated|sediment|soil|wastewater\/sludge|water]'
   zinc:
     annotations:
       Expected_value: measurement value

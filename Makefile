@@ -6,7 +6,8 @@ SHELL := bash
 .SUFFIXES:
 .SECONDARY:
 
-RUN = poetry run
+# Suppress false RequestsDependencyWarning from requests — see #2889
+RUN = PYTHONWARNINGS="ignore:::requests" poetry run
 SCHEMA_NAME = nmdc_schema
 DOCDIR = docs
 SOURCE_SCHEMA_PATH = src/schema/nmdc.yaml
@@ -17,7 +18,7 @@ PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 TEMPLATEDIR = doc-templates
 
-.PHONY: all clean examples-clean install site site-clean site-copy squeaky-clean test test-python test-with-examples
+.PHONY: all clean diagrams examples-clean install site site-clean site-copy squeaky-clean test test-python test-with-examples
 
 
 # note: "help" MUST be the first target in the file,
@@ -54,7 +55,7 @@ setup: install gen-project gendoc git-init-add
 
 # install any dependencies required for building
 install:
-	poetry install
+	poetry install --with dev,deps
 
 
 # EXPERIMENTAL
@@ -283,6 +284,13 @@ git-status:
 	touch $@
 
 clean:
+	@# Warn if docs/ contains tracked files not originating from src/docs/
+	@if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then \
+		for f in $$(comm -23 <(git ls-files 'docs/*.md' 2>/dev/null | xargs -I{} basename {} | sort) \
+			<(ls src/docs/*.md 2>/dev/null | xargs -I{} basename {} | sort)); do \
+			echo "WARNING: docs/$$f is tracked but has no source in src/docs/. It will be deleted by clean."; \
+		done; \
+	fi
 	rm -rf $(DEST)
 	rm -rf tmp
 	rm -rf docs/*.md
@@ -291,6 +299,21 @@ clean:
 include project.Makefile
 include makefiles/mixs.Makefile
 include makefiles/migrators.Makefile
+include makefiles/ontology-alignment.Makefile
+
+# Regenerate SVGs from Mermaid sources in src/docs/images/.
+# Requires Node.js; mmdc is pulled on demand via `npx -y`.
+# `make diagrams` re-renders only the SVGs whose .mmd has changed.
+DIAGRAM_MMD := $(wildcard src/docs/images/*.mmd)
+DIAGRAM_SVG := $(DIAGRAM_MMD:.mmd=.svg)
+
+diagrams: $(DIAGRAM_SVG)
+
+PUPPETEER_CFG := src/docs/images/puppeteer-config.json
+
+src/docs/images/%.svg: src/docs/images/%.mmd
+	npx -y @mermaid-js/mermaid-cli -i $< -o $@ -b transparent -p $(PUPPETEER_CFG)
+
 
 # custom
 site-clean: clean

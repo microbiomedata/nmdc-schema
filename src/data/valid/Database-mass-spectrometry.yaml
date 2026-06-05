@@ -1,5 +1,5 @@
 data_generation_set:
-  - id: nmdc:dgms-99-zUCd5N
+  - id: nmdc:dgms-99-zUCd5N3
     type: nmdc:MassSpectrometry
     eluent_introduction_category: liquid_chromatography
     has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG1
@@ -9,8 +9,10 @@ data_generation_set:
       - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
     start_date: 30-OCT-14 01.00.00.000000000 AM
     end_date: 30-OCT-14 01.30.00.000000000 AM
-    add_date: 07-MAY-24 12.00.00.000000000 AM
-    mod_date: 07-MAY-24 12.00.00.000000000 AM
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: '2024-05-07T00:00:00Z'
+      mod_date: '2024-05-07T00:00:00Z'
     has_output:
       - nmdc:dobj-00-msdem1
     associated_studies:
@@ -28,8 +30,10 @@ data_generation_set:
       - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
     start_date: 31-OCT-14 01.00.00.000000000 AM
     end_date: 31-OCT-14 01.30.00.000000000 AM
-    add_date: 07-MAY-24 12.00.00.000000000 AM
-    mod_date: 07-MAY-24 12.00.00.000000000 AM
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: '2024-05-07T00:00:00Z'
+      mod_date: '2024-05-07T00:00:00Z'
     has_output:
       - nmdc:dobj-00-msdem2
     associated_studies:
@@ -42,7 +46,7 @@ data_generation_set:
 data_object_set:
   - id: nmdc:dobj-00-msdem1
     name: EMSL_49991_Brodie_122_Lipids_POS_09Aug19_Lola-WCSH417820
-    description: raw instrument file for nmdc:dgms-99-zUCd5N
+    description: raw instrument file for nmdc:dgms-99-zUCd5N3
     file_size_bytes: 1150434379
     url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exisit for lcms metabolite data, this is just an example resolvable url
     md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E

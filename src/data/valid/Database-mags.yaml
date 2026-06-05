@@ -118,3 +118,11 @@ workflow_execution_set:
         num_5s: 0
         num_23s: 0
         num_t_rna: 7
+data_object_set:
+  - id: nmdc:dobj-11-0abycm53
+    file_size_bytes: 4002
+    name: nmdc_wfmag-11-0abycm66.1_gtdbtk.json
+    data_object_type: GTDBTK Summary JSON
+    data_category: processed_data
+    type: nmdc:DataObject
+    description: GTDBTK Summary JSON for nmdc:wfmag-11-0abycm66.1

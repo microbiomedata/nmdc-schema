@@ -38,11 +38,9 @@ biosample_set:
     ecosystem_type: Freshwater
     ecosystem_subtype: Groundwater
     specific_ecosystem: Coalbed water
-    add_date: 28-JUL-14 12.00.00.000000000 AM
     community: microbial communities
     habitat: Coalbed water
     location: from the Lithgow State Coal Mine, New South Wales, Australia
-    mod_date: 26-AUG-16 01.50.27.000000000 PM
     ncbi_taxonomy_name: coal metagenome
     samp_taxon_id:
       type: nmdc:ControlledIdentifiedTermValue
@@ -94,11 +92,9 @@ biosample_set:
     ecosystem_type: Freshwater
     ecosystem_subtype: Groundwater
     specific_ecosystem: Coalbed water
-    add_date: 28-JUL-14 12.00.00.000000000 AM
     community: microbial communities
     habitat: Coalbed water
     location: from the Lithgow State Coal Mine, New South Wales, Australia
-    mod_date: 26-AUG-16 01.50.27.000000000 PM
     ncbi_taxonomy_name: coal metagenome
     samp_taxon_id:
       type: nmdc:ControlledIdentifiedTermValue
@@ -147,11 +143,9 @@ biosample_set:
     ecosystem_type: Freshwater
     ecosystem_subtype: Groundwater
     specific_ecosystem: Coalbed water
-    add_date: 28-JUL-14 12.00.00.000000000 AM
     community: microbial communities
     habitat: Coalbed water
     location: from the Lithgow State Coal Mine, New South Wales, Australia
-    mod_date: 26-AUG-16 01.50.27.000000000 PM
     ncbi_taxonomy_name: coal metagenome
     samp_taxon_id:
       type: nmdc:ControlledIdentifiedTermValue
@@ -200,11 +194,9 @@ biosample_set:
     ecosystem_type: Freshwater
     ecosystem_subtype: Groundwater
     specific_ecosystem: Coalbed water
-    add_date: 28-JUL-14 12.00.00.000000000 AM
     community: microbial communities
     habitat: Coalbed water
     location: from the Lithgow State Coal Mine, New South Wales, Australia
-    mod_date: 26-AUG-16 01.50.27.000000000 PM
     ncbi_taxonomy_name: coal metagenome
     samp_taxon_id:
       type: nmdc:ControlledIdentifiedTermValue

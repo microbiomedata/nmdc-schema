@@ -1,5 +1,6 @@
 id: nmdc:bsm-99-dtTMNb
 type: nmdc:Biosample
+name: my_awesome_biosample
 fire: like a volcano
 associated_studies:
   - nmdc:sty-00-abc123

@@ -1,9 +1,7 @@
-import pprint
 import click
 import os
 import glob
 import yaml
-
 from linkml_runtime import SchemaView
 from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.loaders import yaml_loader
@@ -20,15 +18,15 @@ def process_yaml(directory_path, output_file, schema_file):
     Process and interleave YAML files from the specified directory, excluding the output file.
     Avoids overwriting the existing output file.
     """
-    # Ensure output file does not get processed if it exists in the same directory
     file_paths = glob.glob(os.path.join(directory_path, 'Database-*.yaml'))
     file_paths.sort()
-    output_file_path = os.path.abspath(output_file)  # Ensure the path is absolute
-    file_paths = [file for file in file_paths if file != output_file_path]
+    output_file_path = os.path.abspath(output_file)
+    interleaved_file_path = os.path.abspath(os.path.join(directory_path, 'Database-interleaved.yaml'))
+    file_paths = [file for file in file_paths if os.path.abspath(file) != output_file_path and os.path.abspath(file) != interleaved_file_path]
 
     if os.path.exists(output_file_path):
         click.echo(f"Output file {output_file_path} already exists. Please remove it or specify a different file.")
-        return  # Exit the function if output file already exists
+        return
 
     collector = Database()
     schema_view = SchemaView(schema_file)
@@ -36,28 +34,53 @@ def process_yaml(directory_path, output_file, schema_file):
     database_slot_names = [slot.name for slot in database_slots]
     database_slot_names.sort()
 
-    # pprint.pprint(database_slot_names)
-    # print(schema_view.schema.name)
+    # Track seen items per slot: id -> (source_file, serialized_item)
+    seen_items = defaultdict(dict)
+    dedup_count = 0
 
     for file in file_paths:
         click.echo(f"Processing file: {file}")
         with open(file, 'r') as f:
-            # Load the YAML data
             data = yaml.safe_load(f)
 
             database = yaml_loader.load(data, Database)
             for slot in database_slot_names:
                 payload = getattr(database, slot)
-                # Extend the list in the collector for each slot
                 if payload:
                     if slot not in collector.__dict__:
                         collector.__dict__[slot] = []
-                    collector.__dict__[slot].extend(payload)
 
-    # Dump the interleaved content into YAML format
-    interleaved_content = yaml_dumper.dumps(collector)
-    # print(interleaved_content)
+                    items_to_add = []
+                    for item in payload:
+                        if hasattr(item, 'id') and item.id:
+                            item_yaml = yaml_dumper.dumps(item)
+                            if item.id in seen_items[slot]:
+                                prior_file, prior_yaml = seen_items[slot][item.id]
+                                if item_yaml == prior_yaml:
+                                    click.echo(
+                                        f"  Dedup: identical '{item.id}' in slot '{slot}' "
+                                        f"(first in {prior_file}, also in {file})"
+                                    )
+                                    dedup_count += 1
+                                    continue
+                                else:
+                                    raise click.ClickException(
+                                        f"Non-identical duplicate ID '{item.id}' in slot '{slot}': "
+                                        f"first seen in {prior_file}, different version in {file}. "
+                                        f"Fix the duplicate in the source files by giving one a unique ID."
+                                    )
+                            seen_items[slot][item.id] = (file, item_yaml)
+                        items_to_add.append(item)
+
+                    collector.__dict__[slot].extend(items_to_add)
+
+    if dedup_count:
+        click.echo(f"\n{dedup_count} identical duplicate(s) deduplicated.")
+    else:
+        click.echo("\nNo duplicate IDs found.")
+
     yaml_dumper.dump(collector, output_file_path)
+    click.echo(f"Interleaved YAML saved to: {output_file_path}")
 
 
 if __name__ == '__main__':

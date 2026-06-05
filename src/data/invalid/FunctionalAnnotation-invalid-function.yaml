@@ -1,2 +1,2 @@
-has_function: KEGG_PATHWAY:XOXOXOXO
+has_function: MetaCyc:RXN/14904
 type: nmdc:FunctionalAnnotation

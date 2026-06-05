@@ -1,0 +1,9 @@
+# Invalid: Organism id uses the wrong typecode (bsm- instead of orgn-).
+# Organism.id must match {id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$
+id: nmdc:bsm-99-abc123
+type: nmdc:Organism
+name: bad-organism-id
+classified_as:
+  - id: NCBITaxon:22
+    name: Shewanella
+    type: nmdc:NcbiTaxon

@@ -1,0 +1,7 @@
+# Invalid: OrganismSample id uses the wrong typecode (bsm- instead of osm-).
+# OrganismSample.id must match {id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$
+id: nmdc:bsm-99-zfx29q
+type: nmdc:OrganismSample
+name: bad-organism-sample-id
+associated_studies:
+  - nmdc:sty-00-abc123
