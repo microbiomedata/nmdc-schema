@@ -1566,7 +1566,7 @@ slots:
       occurrence: "1"
       storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of nitrate nitrogen in the sample
-    title: nitrate_nitrogen
+    title: nitrate nitrogen
     examples:
       - value: 0.29 mg/kg
     see_also:
@@ -1582,7 +1582,7 @@ slots:
       occurrence: "1"
       storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of nitrite nitrogen in the sample
-    title: nitrite_nitrogen
+    title: nitrite nitrogen
     examples:
       - value: 1.2 mg/kg
     see_also:
