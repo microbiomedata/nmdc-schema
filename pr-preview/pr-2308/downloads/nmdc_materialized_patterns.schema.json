@@ -8338,48 +8338,6 @@
             "title": "GenomeFeature",
             "type": "object"
         },
-        "GeoLocationNameValue": {
-            "additionalProperties": false,
-            "description": "A structured address-like record of where something is located, came from, or took place",
-            "properties": {
-                "country_or_sea": {
-                    "description": "A maximally coarse-grained, geo-political description of where something is, came from, took place, etc.",
-                    "type": "string"
-                },
-                "has_raw_value": {
-                    "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
-                    "type": "string"
-                },
-                "locality": {
-                    "description": "A geo-political description of a region or feature that is within or overlaps with a paired subnational_1_or_ocean_region value.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "subnational_1_or_ocean_region": {
-                    "description": "A geo-political description of a region that is either (a) a direct, unambiguous subdivision of a paired country_or_sea value, or (b) an unambiguous region or feature within an ocean or sea.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:GeoLocationNameValue"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "country_or_sea",
-                "has_raw_value",
-                "type"
-            ],
-            "title": "GeoLocationNameValue",
-            "type": "object"
-        },
         "GeolAgeEnum": {
             "description": "",
             "enum": [
@@ -16461,6 +16419,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.0rc1.post13.dev0+f7f62a4e1"
+    "version": "11.20.0rc1.post14.dev0+3fddd324d"
 }
 
