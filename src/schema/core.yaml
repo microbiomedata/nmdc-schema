@@ -110,10 +110,6 @@ enums:
       base:
         description: Accepts a proton or donates an electron pair in a chemical reaction.
         meaning: CHEBI:22695
-      # protease:
-      #   description: Enzyme that catalyzes cleavage of peptide bonds in proteins.
-      # proteolytic_enzyme:
-      #   description: Enzyme that catalyzes the hydrolysis of proteins.
       ms_proteolytic_enzyme:
         description: Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry based proteomics
         meaning: MS:1002986
@@ -123,9 +119,6 @@ enums:
       surfactant:
         description: Reduces surface tension and aids in the solubilization of substances.
         meaning: CHEBI:35195
-      # stabilizer:
-      #   description: Prevents degradation or loss of analytes during sample storage or preparation.
-      #   meaning: CFo000000033
       derivatizing_agent:
         description: Chemically modifies analytes to improve detection or separation.
         # meaning: MSIO:0000003
@@ -1523,9 +1516,6 @@ slots:
       name of the environmental package, a selection of fields can be made from the
       subtables and can be reported
     range: TextValue
-  #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
-  #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
-  #        environment|plant\-associated|sediment|soil|wastewater\/sludge|water]'
   zinc:
     annotations:
       Expected_value: measurement value
