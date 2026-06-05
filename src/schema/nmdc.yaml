@@ -31,7 +31,6 @@ prefixes:
   EGGNOG: "https://bioregistry.io/eggnog:" # https://bioregistry.io/eggnog:veNOG12876
   ENVO: "http://purl.obolibrary.org/obo/ENVO_"
   FBcv: "http://purl.obolibrary.org/obo/FBcv_" # for Biosample only
-  FMA: "http://purl.obolibrary.org/obo/FMA_"
   GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_" # for library_preparation_kit, contig identifier and count only
   GO: "http://purl.obolibrary.org/obo/GO_"
   HMDB: "https://bioregistry.io/hmdb:" # https://bioregistry.io/hmdb:HMDB00001
