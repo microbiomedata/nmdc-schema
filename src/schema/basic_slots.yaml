@@ -55,8 +55,8 @@ slots:
 
   subnational_1_or_ocean_region:
     range: string
-    description: A geo-political description of a region that is a direct, unambiguous subdivision of a paired country_or_sea value,
-      OR an unambiguous region or feature within an ocean or "sea".
+    description: A geo-political description of a region that is either (a) a direct, unambiguous subdivision of a paired
+      country_or_sea value, or (b) an unambiguous region or feature within an ocean or sea.
     comments:
       - "INSDC’s guidance could be taken to imply that Vancouver or Cote d’Azur are appropriate values for this slot, but NMDC would place those in the locality slot."
     aliases:
