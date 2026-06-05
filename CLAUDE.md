@@ -18,6 +18,29 @@
 - Do not add ad-hoc aliases for `src/scripts/*` into `[project.scripts]`.
 - For repo-local automation scripts, call them explicitly from Makefiles, e.g. `poetry run python src/scripts/<name>.py`.
 
+## Workflow security and linting (actionlint + zizmor)
+
+The GitHub Actions workflows in `.github/workflows/` are security-sensitive: they carry permissions, secrets, and the PyPI release path. Two static tools audit them:
+
+- `actionlint`: workflow syntax, deprecated action references, and shell bugs in `run:` steps.
+- `zizmor`: workflow security audit (credential persistence, cache poisoning, template injection, and more).
+
+When developing in this repo, if these tools are available in the active environment, run them against the workflows as a routine self-check. Do this whenever a workflow is edited, and opportunistically on any substantive session even when no workflow changed:
+
+```bash
+actionlint
+uvx zizmor .github/workflows/        # or: pipx run zizmor .github/workflows/
+```
+
+Do not install the tools just to run this, and do not treat their absence as a failure; skip the check when they are not present. `actionlint` is a Go binary (`brew install actionlint`). `zizmor` runs with no install via `uvx zizmor` or `pipx run zizmor`.
+
+Act on new findings, but do not re-report the known ones that are already triaged:
+
+- The credential-persistence (`artipacked`) findings on `deploy-docs.yaml` and `test-pages-build.yaml` are intentional, because those workflows push to gh-pages. Tracked in #3147.
+- The `pypi-publish.yaml` findings (cache poisoning and credential persistence) are deliberately left for separate, release-pipeline-aware review. Tracked in #3148. Do not edit `pypi-publish.yaml` casually.
+
+CI also runs zizmor in a non-blocking job that reports to code scanning (the Security tab), added in #3149. The local check is for faster, in-development feedback.
+
 ## Code Style Guidelines
 - Follow PEP8 conventions and Black formatting
 - Use snake_case for variables/functions, PascalCase for classes
