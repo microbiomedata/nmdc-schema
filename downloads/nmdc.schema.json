@@ -12685,6 +12685,7 @@
                 },
                 "estimated_size": {
                     "description": "The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period",
+                    "maximum": 100000000000,
                     "minimum": 1,
                     "type": [
                         "integer",
@@ -16103,5 +16104,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.19.2rc1.post20.dev0+1ffafdf2e"
+    "version": "11.20.0rc1.post3.dev0+c851d9194"
 }
