@@ -1,5 +1,11 @@
 # NMDC schema slots/NCBI Attributes mapping strategy
 
+To generate the filled mapping TSV, run:
+
+```bash
+make assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv
+```
+
 The strategy used to fill in the mappings is exact term matching.
 
 Exact term matching
