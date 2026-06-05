@@ -21,4 +21,4 @@ Security fixes land in the latest release. Note that downstream consumers (for e
 
 ## Security Updates
 
-GitHub Actions dependencies and Python dependencies are monitored by Dependabot and updated through repository automation. CodeQL code scanning runs on the default branch and on pull requests.
+Python dependencies are monitored by Dependabot, which opens pull requests to patch known vulnerabilities. CodeQL code scanning runs on the default branch and on pull requests, configured by [`.github/codeql/codeql-config.yml`](https://github.com/microbiomedata/nmdc-schema/blob/main/.github/codeql/codeql-config.yml).
