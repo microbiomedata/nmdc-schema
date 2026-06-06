@@ -6,7 +6,7 @@ The repository's committed contributor docs are the canonical source for schema-
 
 - `CONTRIBUTING.md`: Modeling Best Practice (naming, documentation, examples and counter-examples, enums for categorical values, PV `is_a`, reuse, placing classes under upper-level classes, ID patterning), the Current Policy vs Legacy Guidance table, and the ADR log pointer for recording decisions.
 - `DEVELOPMENT.md`: prerequisites and local development environment.
-- `MAINTAINERS.md` and `infra-admin/releases/nmdc-schema.md`: release procedure.
+- `MAINTAINERS.md` and the [infra-admin release runbook](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md) (in the separate `microbiomedata/infra-admin` repo): release procedure.
 - `nmdc_schema/migrators/README.md`: migrator authoring and testing.
 
 This guide adds the operational details and gotchas that are not (yet) captured in those files.
@@ -26,7 +26,7 @@ This guide adds the operational details and gotchas that are not (yet) captured 
 
 Build prerequisites and gotchas:
 - `make all` needs `yq` (mikefarah/yq) on PATH (`brew install yq`); it is used to strip readonly metaslots and apply MIxS customizations. Java/ROBOT is NOT needed: the OWL artifact is produced by `linkml generate owl`.
-- `squeaky-clean` runs `clean examples-clean shuttle-clean site-clean`; it deliberately does NOT rebuild `src/schema/mixs.yaml` (that has its own slow, network-dependent `mixs-yaml-clean` target). For a full-from-scratch rebuild including a fresh MIxS pull: `make squeaky-clean mixs-yaml-clean && make src/schema/mixs.yaml && make squeaky-clean all test`.
+- `squeaky-clean` runs `clean examples-clean shuttle-clean site-clean`; it deliberately leaves `src/schema/mixs.yaml` in place. Removing that file is a separate fast target (`mixs-yaml-clean`, just an `rm`); regenerating it (`make src/schema/mixs.yaml`) is the slow, network-dependent step. For a full-from-scratch rebuild including a fresh MIxS pull: `make squeaky-clean mixs-yaml-clean && make src/schema/mixs.yaml && make squeaky-clean all test`.
 - CI tests only Python 3.10 and 3.13 (other workflows pin 3.12). `requires-python` is `>=3.10,<4.0`, so a too-new system Python (e.g. 3.14) is out of range and will break installs. Build and test against a supported interpreter.
 - `local/.env` is optional. Its credential blocks (BioPortal key, NCBI BioSample Postgres, source MongoDB) are only consumed by specific scripts; `make all` and `make test` run without any of them.
 
