@@ -1,0 +1,1035 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/ontology-alignment-linkml-store/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>LinkML-Store Embeddings Comparison for nmdc-schema - NMDC Schema Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linkml-store-embeddings-comparison-for-nmdc-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="NMDC Schema Documentation" class="md-header__button md-logo" aria-label="NMDC Schema Documentation" data-md-component="logo">
+      
+  <img src="../images/NMDC_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NMDC Schema Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              LinkML-Store Embeddings Comparison for nmdc-schema
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="NMDC Schema Documentation" class="md-nav__button md-logo" aria-label="NMDC Schema Documentation" data-md-component="logo">
+      
+  <img src="../images/NMDC_logo.png" alt="logo">
+
+    </a>
+    NMDC Schema Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funding and Acknowledgements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collaboration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Metadata_Documentation_Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadata Standards Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintaining-the-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maintaining the NMDC Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema_element_deprecation_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema element deprecation guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NMDC Schema Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identifiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identifiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typecode-to-class-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Typecode to class map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version Migration Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer-docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Downloads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scripts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linkml_store_embeddings_searchpy-local-semantic-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        linkml_store_embeddings_search.py — local semantic retrieval
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linkml_embeddings_alignment_prototypepy-schema-aware-enrichment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        linkml_embeddings_alignment_prototype.py — schema-aware enrichment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linkml_alignment_reviewpy-review-shortlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        linkml_alignment_review.py — review shortlist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linkml_alignment_gap_reportpy-coverage-gap-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        linkml_alignment_gap_report.py — coverage gap analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-ols4-vs-linkml-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparing OLS4 vs linkml-store
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparing OLS4 vs linkml-store">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-results-differ-between-backends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why results differ between backends
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related issues
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="linkml-store-embeddings-comparison-for-nmdc-schema">LinkML-Store Embeddings Comparison for nmdc-schema</h1>
+<p>This document describes the LinkML-side retrieval pipeline that compares
+local embeddings search (via oaklib + linkml-store) against the OLS4
+embeddings baseline from <a href="https://github.com/microbiomedata/nmdc-schema/pull/2909">PR #2909</a>.</p>
+<p>For the OLS4 baseline docs, see <a href="../ontology-alignment-ols4/">ontology-alignment-ols4.md</a>.</p>
+<h2 id="purpose">Purpose</h2>
+<p>The OLS4 embeddings API searches against ~210 ontologies using a specific
+embedding model (<code>llama-embed-nemotron-8b_pca512</code>). This pipeline provides
+an <strong>alternative retrieval path</strong> that:</p>
+<ul>
+<li>Uses a different embedding model (<code>text-embedding-3-small</code> via OpenAI)</li>
+<li>Can search ontologies <strong>not in OLS4</strong> (e.g. METPO, or any BioPortal ontology)</li>
+<li>Lets you control which ontology corpus is searched</li>
+<li>Produces comparable SSSOM-style output for direct comparison with OLS4</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<pre><code class="language-bash">poetry install --with dev,deps
+</code></pre>
+<p><strong>API keys</strong> (set as environment variables):
+- <code>OPENAI_API_KEY</code> — required for all linkml-store targets
+- <code>BIOPORTAL_API_KEY</code> — required only for BioPortal corpus harvesting</p>
+<p>Both are loaded automatically from <code>local/.env</code> via python-dotenv (see <code>.env.example</code>).</p>
+<p><strong>OLS4 baseline results:</strong> This pipeline uses the OLS4 results TSV as its
+query set (the list of NMDC schema elements to search). The committed baseline
+is at <code>assets/ontology_alignment/ols4_embeddings_results.tsv</code>. Fresh search
+results go to <code>local/ols4_embeddings_results.tsv</code>.</p>
+<h2 id="quick-start">Quick start</h2>
+<pre><code class="language-bash"># Smoke test: OBI, 5 subjects (~30s, needs OPENAI_API_KEY)
+make alignment-linkml-store-smoke
+
+# Enrich OLS4 baseline with schema context (no API calls, no key needed)
+make alignment-enrich
+
+# Generate review shortlist from enriched results
+make alignment-review
+
+# Gap report: property-like slots and source coverage
+make alignment-gap-report
+
+# Full OBI comparison (all baseline subjects with OBI hits)
+make alignment-linkml-store-obi
+
+# BioPortal-backed OBI (needs both API keys)
+make alignment-linkml-store-bioportal
+</code></pre>
+<h2 id="scripts">Scripts</h2>
+<h3 id="linkml_store_embeddings_searchpy-local-semantic-retrieval"><code>linkml_store_embeddings_search.py</code> — local semantic retrieval</h3>
+<p>Harvests ontology terms via oaklib or BioPortal, embeds them locally with
+linkml-store's <code>LLMIndexer</code>, and searches for NMDC schema elements.</p>
+<pre><code class="language-bash">poetry run python src/scripts/linkml_store_embeddings_search.py --help
+</code></pre>
+<p>Key options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--ols4-results</code></td>
+<td><code>/tmp/ols4_embeddings_results.tsv</code></td>
+<td>OLS4 baseline TSV (used to derive query set)</td>
+</tr>
+<tr>
+<td><code>--corpus-source</code></td>
+<td><code>oaklib</code></td>
+<td><code>oaklib</code> or <code>bioportal</code></td>
+</tr>
+<tr>
+<td><code>--ontology-prefix</code></td>
+<td><code>OBI</code></td>
+<td>Ontology prefix for oaklib harvests</td>
+</tr>
+<tr>
+<td><code>--adapter-handle</code></td>
+<td><code>sqlite:obo:obi</code></td>
+<td>oaklib adapter handle</td>
+</tr>
+<tr>
+<td><code>--bioportal-acronyms</code></td>
+<td></td>
+<td>Comma-separated BioPortal acronyms (e.g. <code>OBI,CHEMINF</code>)</td>
+</tr>
+<tr>
+<td><code>--bioportal-exclude-imports</code></td>
+<td>off</td>
+<td>Drop imported classes from BioPortal harvest</td>
+</tr>
+<tr>
+<td><code>--restrict-to-baseline-source-hits</code></td>
+<td>on</td>
+<td>Only query subjects that had OLS4 hits in the target ontology</td>
+</tr>
+<tr>
+<td><code>--all-baseline-subjects</code></td>
+<td>off</td>
+<td>Query all subjects regardless of OLS4 hits</td>
+</tr>
+<tr>
+<td><code>--max-subjects</code></td>
+<td>(all)</td>
+<td>Limit number of subjects queried</td>
+</tr>
+<tr>
+<td><code>--max-ontology-terms</code></td>
+<td>(all)</td>
+<td>Limit ontology corpus size</td>
+</tr>
+<tr>
+<td><code>--top-k</code></td>
+<td>20</td>
+<td>Results per query</td>
+</tr>
+<tr>
+<td><code>--embedding-model-name</code></td>
+<td><code>text-embedding-3-small</code></td>
+<td>OpenAI embedding model</td>
+</tr>
+<tr>
+<td><code>--cache-db</code></td>
+<td><code>local/linkml-store-embeddings.db</code></td>
+<td>DuckDB cache path</td>
+</tr>
+<tr>
+<td><code>--enriched-output</code></td>
+<td></td>
+<td>Optional: also write enriched TSV</td>
+</tr>
+<tr>
+<td><code>--enriched-summary-json</code></td>
+<td></td>
+<td>Optional: also write enriched summary</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cache behavior:</strong> The DuckDB cache stores embeddings by collection name
+(auto-derived from ontology prefix + model). Subsequent runs reuse cached
+embeddings, so only the first run for a given ontology slice is slow.</p>
+<h3 id="linkml_embeddings_alignment_prototypepy-schema-aware-enrichment"><code>linkml_embeddings_alignment_prototype.py</code> — schema-aware enrichment</h3>
+<p>Same enrichment logic as the OLS4 postprocessor, but with additional
+<code>available_tooling()</code> reporting. Can enrich either OLS4 or linkml-store
+results.</p>
+<h3 id="linkml_alignment_reviewpy-review-shortlist"><code>linkml_alignment_review.py</code> — review shortlist</h3>
+<p>Selects top-N rows with quotas per match type (<code>slot-&gt;class=15</code>,
+<code>class-&gt;class=10</code>, <code>pv-&gt;class=15</code>, <code>enum-&gt;class=10</code>), max 3 per subject.
+Prioritizes <code>strong_semantic_weak_lexical_structurally_supported</code> bucket.</p>
+<h3 id="linkml_alignment_gap_reportpy-coverage-gap-analysis"><code>linkml_alignment_gap_report.py</code> — coverage gap analysis</h3>
+<p>Quantifies:
+- How many NMDC slots are <code>property_like</code> (302/851) vs <code>class_filler</code>
+- Source concentration in the OLS4 baseline (SNOMED, NCIT, NCBITaxon dominate)
+- Which subjects got no retrieval hits at all</p>
+<h2 id="comparing-ols4-vs-linkml-store">Comparing OLS4 vs linkml-store</h2>
+<p>The <code>linkml_store_embeddings_search.py</code> script includes built-in overlap
+analysis. When <code>--ols4-results</code> is provided, the summary JSON includes an
+<code>overlap_vs_ols4_by_source</code> section reporting per ontology:</p>
+<ul>
+<li>Subjects compared</li>
+<li>Subjects with any top-k overlap</li>
+<li>Subjects with top-1 overlap</li>
+<li>Mean exact overlap per subject</li>
+</ul>
+<p><strong>Important:</strong> Early comparison results (3/25 top-1 overlap for OBI)
+predate the symmetric textualization fix (commit <code>98aabfab6</code>). Rerun before
+drawing conclusions.</p>
+<h3 id="why-results-differ-between-backends">Why results differ between backends</h3>
+<p>Even for the same ontology (e.g. OBI), results will differ because:</p>
+<ol>
+<li><strong>Different embedding models</strong> — <code>llama-embed-nemotron-8b_pca512</code> (OLS4) vs <code>text-embedding-3-small</code> (OpenAI)</li>
+<li><strong>Different corpus content</strong> — OLS4 indexes its own curated corpus; oaklib uses semsql SQLite; BioPortal has different term coverage and may include imported classes</li>
+<li><strong>Different text representations</strong> — OLS4 constructs its own embeddings from label+definition; linkml-store uses <code>compose_ontology_term_search_text()</code> which formats as <code>"label :: synonyms :: definition"</code></li>
+</ol>
+<p>Low overlap between backends is expected and does not indicate a bug.</p>
+<h2 id="current-limitations">Current limitations</h2>
+<ul>
+<li><strong>No property-oriented retrieval.</strong> 302/851 NMDC slots are <code>property_like</code>
+  (scalar range), but both backends only search for classes. Slots like
+  <code>depth</code>, <code>latitude</code>, <code>pH</code> get structurally mismatched class hits.
+  This is the most important gap.</li>
+<li><strong>Comparison results need rerun</strong> after the symmetric textualization fix.</li>
+<li><strong>No METPO coverage.</strong> METPO is not in OLS4 or BioPortal (stale build).
+  This is the primary motivator for the local retrieval path long-term.</li>
+</ul>
+<h2 id="related-issues">Related issues</h2>
+<ul>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2908">#2908</a> — Evaluate LinkML ecosystem tools for embeddings-based ontology grounding</li>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2907">#2907</a> — OLS4 embeddings search (baseline)</li>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2912">#2912</a> — Ground MS/chromatography enums in OBI</li>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2913">#2913</a> — OWL axiom decomposition for refinement</li>
+<li><a href="https://github.com/berkeleybop/metpo/issues/364">berkeleybop/metpo#364</a> — Evaluate OLS4+linkml-store for METPO</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "hide_page_title"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
+      
+    
+  </body>
+</html>
