@@ -3,7 +3,7 @@ name = "nmdc_schema"
 dynamic = ["version"]
 description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 readme = "README.md"
-license = "MIT"
+license = "CC0-1.0"
 requires-python = ">=3.10,<4.0"
 authors = [
     { name = "Bill Duncan", email = "wdduncan@gmail.com" },
@@ -53,6 +53,7 @@ dependencies = [
 Homepage = "https://microbiomedata.github.io/nmdc-schema/"
 Documentation = "https://microbiomedata.github.io/nmdc-schema/"
 Repository = "https://github.com/microbiomedata/nmdc-schema"
+Issues = "https://github.com/microbiomedata/nmdc-schema/issues"
 
 # scripts should have click clis
 # click parameters/options should be written out with hyphens
