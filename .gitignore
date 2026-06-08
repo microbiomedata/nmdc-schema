@@ -165,6 +165,13 @@ dmypy.json
 # ruff
 .ruff_cache/
 
+# uv lock file: this is a Poetry project (poetry.lock is the tracked lock).
+# A uv.lock gets generated whenever someone runs uv in the repo, and it has
+# slipped into commits before. Ignore it to stop that. REMOVE this entry when
+# the project migrates to uv (see https://github.com/microbiomedata/nmdc-schema/issues/2761),
+# since uv.lock should be tracked once uv is the lock tool.
+uv.lock
+
 # AI coding tools
 .claude/
 .aider*
