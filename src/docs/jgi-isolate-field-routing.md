@@ -27,7 +27,7 @@ the Montana-SlotEval submission slot, the Montana slot is noted in parentheses.
 | 30 | ITS match UNITE?* | ~~`its_match_unite`~~ → submission-schema `JgiIsolateInterface.isolate_its_match_unite` | Moved: same reason. |
 | 40 | Sample Isolation Method* | `sample_isolation_method` (Montana-SlotEval submission slot: `isolate_meth`) | JGI-native (new) |
 | 44 | Sample Isolated From* | ~~`sample_isolated_from`~~ → submission-schema `JgiIsolateInterface.sample_isolated_from` | Removed from nmdc-schema OrganismSample (#3131); no production records. JGI logistics, captured at submission. |
-| 45a | Collection Site or Growth Conditions* (collection-site half) | `sample_collection_site` (Biosample only) | Kept on Biosample (populated in production); removed from OrganismSample (#3131). JGI capture lives in submission-schema `collection_site_or_growth_conditions`. |
+| 45a | Collection Site or Growth Conditions* (collection-site half) | `sample_collection_site` (Biosample only) | Kept on Biosample (populated in production); removed from OrganismSample (#3131). JGI capture lives in submission-schema `JgiIsolateInterface.collection_site_or_growth_conditions`. |
 | 45b | Collection Site or Growth Conditions* (growth-conditions half) | ~~`sample_growth_conditions`~~ → submission-schema `JgiIsolateInterface.collection_site_or_growth_conditions` | Removed from nmdc-schema OrganismSample (#3131); no production records. |
 | 41-43 | Collection Year/Month/Day* | `collection_date` | MIxS (existing) |
 | 46-47 | Latitude/Longitude* | `lat_lon` | MIxS (existing) |
