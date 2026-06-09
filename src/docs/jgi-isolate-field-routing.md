@@ -3,6 +3,13 @@
 Complete routing of all 55 fields from the JGI Isolate (NA) v19 submission form
 to nmdc-schema classes, submission-schema, or deferred.
 
+The authoritative field-to-slot-and-interface mapping is the "Montana-SlotEval"
+tab of the JGI isolate metadata spreadsheet (Pupo). Per the isolate modeling
+squad, submission-schema targets three interfaces: `IsolateInterface`,
+`JgiIsolateGenomeInterface`, and `JgiIsolateTranscriptomeInterface` (the split is
+tracked in submission-schema #444). Where the nmdc-schema slot below differs from
+the Montana-SlotEval submission slot, the Montana slot is noted in parentheses.
+
 ## OrganismSample (osm)
 
 | # | JGI Field | nmdc-schema slot | Provenance |
@@ -18,7 +25,7 @@ to nmdc-schema classes, submission-schema, or deferred.
 | 38 | Second ribosomal sequence comments | ~~`second_ribosomal_sequence_comments`~~ → submission-schema `JgiIsolateInterface.isolate_second_ribosomal_seq_comments` | Moved: same reason. |
 | 29 | Fungal 16S screening?* | ~~`fungal_16s_screening`~~ → submission-schema `JgiIsolateInterface.isolate_fungal_16s_screening` | Moved: same reason. |
 | 30 | ITS match UNITE?* | ~~`its_match_unite`~~ → submission-schema `JgiIsolateInterface.isolate_its_match_unite` | Moved: same reason. |
-| 40 | Sample Isolation Method* | `sample_isolation_method` | JGI-native (new) |
+| 40 | Sample Isolation Method* | `sample_isolation_method` (Montana-SlotEval submission slot: `isolate_meth`) | JGI-native (new) |
 | 44 | Sample Isolated From* | `sample_isolated_from` | JGI-native (new) — origin matrix only ("the *what* the organism came out of") |
 | 45a | Collection Site or Growth Conditions* (collection-site half) | `sample_collection_site` | NMDC-native (pre-existing slot, reused for OrganismSample) — geographic / environmental site context |
 | 45b | Collection Site or Growth Conditions* (growth-conditions half) | `sample_growth_conditions` | JGI-native (new) — in-vitro lab maintenance context. MIxS `isol_growth_condt` (MIXS:0000003) was considered but its DOI/PMID/URL pattern doesn't fit free text |
@@ -62,7 +69,7 @@ loaded with NcbiTaxon from semantic-sql / OWL.
 | 6 | Genus* | `organism_genus` | JGI-native (new) |
 | 7 | Species* | `organism_species` | JGI-native (new) |
 | 8 | Strain or cultivar* | `strain_name` | JGI-native (new) |
-| 9 | Isolate | `isolate_name` | JGI-native (new) |
+| 9 | Isolate | `isolate_name` (Montana-SlotEval routes this field to `samp_name`) | JGI-native (new) |
 | 10 | Culture Collection and ID | `source_mat_id` | MIxS (existing, slot_usage override) |
 | 12 | Estimated Genome Size* | `estimated_size` | MIxS (newly imported) |
 | 13 | GC Content % | `gc_content` | JGI-native (new) |
