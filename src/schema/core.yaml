@@ -1376,9 +1376,11 @@ classes:
               https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=10694
         structured_aliases:
           - literal_form: Culture Collection and ID
-            contexts:
-              - https://jgi.doe.gov/isolate-submission-form/v19
-            predicate: NARROW_SYNONYM    # JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any material-sample identifier)
+            predicate: NARROW_SYNONYM
+            source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+            notes:
+              - Exact JGI form template is access-restricted; source is the public submission overview.
+              - JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any material-sample identifier).
     close_mappings:
       - OBI:0100051
     comments:

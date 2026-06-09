@@ -98,9 +98,17 @@ GitHub issue links, specification documents. Ontology CURIEs belong in a
 `*_mappings` slot. See #3031 for an open cleanup of MIXS CURIEs currently
 in `see_also` in `portal_mixs_inspired.yaml`.
 
-**`structured_aliases`** requires `literal_form`, `contexts` (a URL), and
-a SKOS predicate (`EXACT_SYNONYM`, `NARROW_SYNONYM`, `BROAD_SYNONYM`,
-`RELATED_SYNONYM`). Plain `aliases` is for unattributed synonym strings.
+**`structured_aliases`** requires `literal_form`, a SKOS predicate
+(`EXACT_SYNONYM`, `NARROW_SYNONYM`, `BROAD_SYNONYM`, `RELATED_SYNONYM`),
+and `source` (a real, publicly resolvable URL identifying where the alias
+comes from). Use `source`, not `contexts`: `source` means "where the alias
+comes from" (StructuredAlias metamodel), which is what we record; `contexts`
+means "the context in which the alias applies," which is different. When the
+authoritative source is access-restricted (e.g. the JGI Isolate form
+template), put the best public URL in `source` and a one-line caveat in
+`notes`. Per-alias rationale (e.g. why a predicate is NARROW rather than
+EXACT) also goes in `notes`, not in a YAML `#` comment. Plain `aliases` is
+for unattributed synonym strings.
 
 ## LinkML Readonly Metaslots — Do Not Assert
 The LinkML metamodel defines 12 slots that are **readonly** — populated

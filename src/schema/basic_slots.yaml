@@ -43,9 +43,10 @@ subsets:
       - https://github.com/microbiomedata/nmdc-schema/issues/2803
     comments:
       - >-
-        Slots in this subset carry structured_aliases with context
-        https://jgi.doe.gov/isolate-submission-form/v19 mapping to the
-        exact field name on the JGI Isolate (NA) v19 spreadsheet.
+        Slots in this subset carry structured_aliases whose literal_form is the
+        exact field name on the JGI Isolate (NA) v19 spreadsheet. The form
+        template itself is access-restricted; the alias source points to the
+        public JGI submission overview.
 
 slots:
 
@@ -175,9 +176,11 @@ slots:
         came from a field collection or from in-vitro maintenance.
     structured_aliases:
       - literal_form: Collection Site or Growth Conditions
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
-        predicate: NARROW_SYNONYM    # JGI label bundles two concepts; this slot covers only the collection-site half
+        predicate: NARROW_SYNONYM
+        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+        notes:
+          - Exact JGI form template is access-restricted; source is the public submission overview.
+          - JGI label bundles two concepts; this slot covers only the collection-site half.
     range: string
 
   salinity_category:
@@ -536,9 +539,10 @@ slots:
       - jgi_isolate
     structured_aliases:
       - literal_form: Genus
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
+        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+        notes:
+          - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: Shewanella
         description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
@@ -557,9 +561,10 @@ slots:
       - jgi_isolate
     structured_aliases:
       - literal_form: Species
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
+        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+        notes:
+          - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: loihica
         description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
@@ -594,9 +599,10 @@ slots:
       - jgi_isolate
     structured_aliases:
       - literal_form: Strain or cultivar
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
+        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+        notes:
+          - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: PV-4
         description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
@@ -619,9 +625,10 @@ slots:
       - jgi_isolate
     structured_aliases:
       - literal_form: Isolate
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
+        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+        notes:
+          - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: Bd21-3
         description: GOLD dw_sample_taxonomy_info.isolate (n=260 records, queried 2026-04-30) — Brachypodium distachyon Bd21-3 reference accession
@@ -641,9 +648,10 @@ slots:
       - jgi_isolate
     structured_aliases:
       - literal_form: GC Content %
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
+        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+        notes:
+          - Exact JGI form template is access-restricted; source is the public submission overview.
 
   expected_organism:
     range: Organism
@@ -660,9 +668,10 @@ slots:
       - jgi_isolate
     structured_aliases:
       - literal_form: Sample Isolation Method
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
+        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+        notes:
+          - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: Wizard Genomic DNA Purification Kit
         description: Promega Wizard kit — a widely-used DNA isolation method in JGI bacterial isolate submissions
@@ -746,9 +755,10 @@ slots:
       - jgi_isolate
     structured_aliases:
       - literal_form: Host Genus
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
+        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+        notes:
+          - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: Zea
         description: GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
@@ -765,9 +775,10 @@ slots:
       - jgi_isolate
     structured_aliases:
       - literal_form: Host Species
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
+        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+        notes:
+          - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: mays
         description: GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
@@ -784,9 +795,10 @@ slots:
       - jgi_isolate
     structured_aliases:
       - literal_form: Host Strain
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
+        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+        notes:
+          - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: K-12
         description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage JSE, queried 2026-04-30)
