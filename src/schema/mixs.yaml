@@ -3511,11 +3511,14 @@ slots:
     comments:
       - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
     range: ControlledIdentifiedTermValue
+    in_subset:
+      - jgi_isolate
     structured_aliases:
       - literal_form: Host NCBI Taxonomy ID
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
+        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+        notes:
+          - Exact JGI form template is access-restricted; source is the public submission overview.
   host_tot_mass:
     annotations:
       Preferred_unit: kilogram, gram

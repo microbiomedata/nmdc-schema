@@ -230,11 +230,15 @@ classes:
           the broader pattern is to narrow `classified_as` to `NcbiTaxon` on
           all organism-oriented classes via slot_usage.
       estimated_size:
+        in_subset:
+          - jgi_isolate
         structured_aliases:
           - literal_form: Estimated Genome Size (Mb)
-            contexts:
-              - https://jgi.doe.gov/isolate-submission-form/v19
-            predicate: BROAD_SYNONYM    # Per @aclum: Mb is a coarser unit than bp — a single Mb value covers many possible bp values, so the alias is broader in granularity
+            predicate: BROAD_SYNONYM
+            source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+            notes:
+              - Exact JGI form template is access-restricted; source is the public submission overview.
+              - "Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many possible bp values; the alias is broader in granularity."
       ref_biomaterial:
         description: >-
           Reference for the organism, preferentially a DOI when a primary
@@ -254,23 +258,12 @@ classes:
               type: nmdc:TextValue
               has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
             description: URL form (e.g. NCBI Genome record)
-        structured_aliases:
-          - literal_form: Reference Genome
-            contexts:
-              - https://jgi.doe.gov/isolate-submission-form/v19
-            predicate: RELATED_SYNONYM    # MIxS expects a publication citation; JGI's "Reference Genome" sometimes refers to the genome record itself (IMG / Phytozome IDs). Concepts overlap but differ.
         comments:
           - >-
             The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred
-            when available — it gives a stable reference to the publication
+            when available; it gives a stable reference to the publication
             or genome report. See the `associated_dois` pattern elsewhere in
             the NMDC schema for DOI-structured alternatives.
-          - >-
-            JGI "Reference Genome" submissions sometimes carry non-publication
-            identifiers such as IMG or Phytozome IDs, which do not match the
-            MIxS pattern. Those are out of scope for this slot and should be
-            captured separately (see `gold_organism_identifiers` and
-            `insdc_nucleotide_identifiers` for genome / assembly references).
           - >-
             The MIxS name ref_biomaterial may be renamed in a future MIxS
             release. See ongoing MIxS renaming work.
