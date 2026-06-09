@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/has_output/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/sample_isolated_from/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: has_output - NMDC Schema Documentation</title>
+        <title>Slot: sample_isolated_from - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-has_output" class="md-skip">
+        <a href="#slot-sample_isolated_from" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: has_output
+              Slot: sample_isolated_from
             
           </span>
         </div>
@@ -636,10 +636,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#aliases" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Aliases
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
       
     </span>
   </a>
@@ -716,10 +727,10 @@
   
 
 
-<h1 id="slot-has_output">Slot: has_output</h1>
-<p><em>An output from a process.</em></p>
+<h1 id="slot-sample_isolated_from">Slot: sample_isolated_from</h1>
+<p><em>Free-text description of the environmental or biological matrix from which the organism sample was isolated — the <em>what</em> it came out of (e.g. iron-rich microbial mat, leaf tissue, catalog vial). For the <em>where</em> (geographic / environmental site of collection) see <code>sample_collection_site</code>; for in-vitro growth conditions (lab maintenance, culture media, growth chambers) see <code>sample_growth_conditions</code>.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/has_output">nmdc:has_output</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/sample_isolated_from">nmdc:sample_isolated_from</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -732,189 +743,39 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
-<td>Separating a sample aliquot from the starting material for downstream activit...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../DissolvingProcess/">DissolvingProcess</a></td>
-<td>A mixing step where a soluble component is mixed with a liquid component</td>
+<td><a href="../OrganismSample/">OrganismSample</a></td>
+<td>A material sample in which all cells are expected to share the same genome</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
-<td></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
-<td>The process of segregation of phases; e</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
-<td>A process that results in the interconversion of chemical species by a reacti...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Pooling/">Pooling</a></td>
-<td>physical combination of several instances of like material</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td>Spectrometry where the sample is converted into gaseous ions which are charac...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
-<td>A workflow execution activity that uses computational binning tools to group ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
-<td>A PlannedProces that has PlannedProcess parts</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../PlannedProcess/">PlannedProcess</a></td>
-<td>A named thing that is executed according to a plan</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-<td>The methods and processes used to generate omics data from a biosample or org...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../DataEmitterProcess/">DataEmitterProcess</a></td>
-<td>A process that generates data objects as output</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
-<td>A WorkflowExecution whose output indicates the potential functions of genes o...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MixingProcess/">MixingProcess</a></td>
-<td>The combining of components, particles or layers into a more homogeneous stat...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td>A DataGeneration in which the sequence of DNA or RNA molecules is generated</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Extraction/">Extraction</a></td>
-<td>A material separation in which a desired component of an input material is se...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
-<td>A workflow execution activity that provides functional and structural annotat...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
-<td>The process of using a selective partitioning of the analyte or interferent b...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ReadQcAnalysis/">ReadQcAnalysis</a></td>
-<td>A workflow execution activity that performs quality control on raw Illumina r...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
-<td>A process that takes one or more samples as inputs and generates one or more ...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
-<td>Represents an instance of an execution of a particular workflow</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
-<td>Initial sequencing activity that precedes any analysis</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NomAnalysis/">NomAnalysis</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
-<td>A workflow execution activity that performs taxonomy classification using seq...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../StorageProcess/">StorageProcess</a></td>
-<td>A planned process with the objective to preserve and protect material entitie...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
-<td>A workflow process that provides expression values and read counts for gene f...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../CollectingBiosamplesFromSite/">CollectingBiosamplesFromSite</a></td>
-<td></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Isolation/">Isolation</a></td>
-<td>A material processing that separates an organism from a mixed sample by selec...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
-<td></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Culturing/">Culturing</a></td>
-<td>A material processing that grows an organism under controlled conditions</td>
-<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../NamedThing/">NamedThing</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
-<h2 id="aliases">Aliases</h2>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Iron-rich microbial mat from hydrothermal vent, Naha Vents, south rift of Loihi seamount, Hawaii</td>
+</tr>
+<tr>
+<td>Saltwater from water column off the Georgia coast, USA</td>
+</tr>
+<tr>
+<td>DSMZ catalog vial (DSM 6125)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="comments">Comments</h2>
 <ul>
-<li>output</li>
+<li>Routes JGI Isolate (NA) v19 form field 44 ("Sample Isolated From"). Field 45 ("Collection Site or Growth Conditions") routes to <code>sample_collection_site</code> or <code>sample_growth_conditions</code> depending on which half the submitter is reporting.</li>
+<li>Used when no upstream Biosample carries env-triad information (e.g. culture collection orders, lab-derived samples). When a linked Biosample is available, environmental provenance belongs there. Not a typed reference — future work may add a structured slot or wrapper class for typed sample-to-sample links; see #3033 and #3054.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -939,17 +800,44 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: has_output
-description: An output from a process.
+<pre><code class="language-yaml">name: sample_isolated_from
+description: Free-text description of the environmental or biological matrix from
+  which the organism sample was isolated — the *what* it came out of (e.g. iron-rich
+  microbial mat, leaf tissue, catalog vial). For the *where* (geographic / environmental
+  site of collection) see `sample_collection_site`; for in-vitro growth conditions
+  (lab maintenance, culture media, growth chambers) see `sample_growth_conditions`.
+todos:
+- 'Redesign in #3054 will sharpen the boundary between this slot and the sample_collection_site
+  / sample_growth_conditions siblings.'
+comments:
+- Routes JGI Isolate (NA) v19 form field 44 (&quot;Sample Isolated From&quot;). Field 45 (&quot;Collection
+  Site or Growth Conditions&quot;) routes to `sample_collection_site` or `sample_growth_conditions`
+  depending on which half the submitter is reporting.
+- 'Used when no upstream Biosample carries env-triad information (e.g. culture collection
+  orders, lab-derived samples). When a linked Biosample is available, environmental
+  provenance belongs there. Not a typed reference — future work may add a structured
+  slot or wrapper class for typed sample-to-sample links; see #3033 and #3054.'
+examples:
+- value: Iron-rich microbial mat from hydrothermal vent, Naha Vents, south rift of
+    Loihi seamount, Hawaii
+  description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+- value: Saltwater from water column off the Georgia coast, USA
+  description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+- value: DSMZ catalog vial (DSM 6125)
+  description: Catalog-collection origin — no environmental matrix upstream
+in_subset:
+- jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc
-aliases:
-- output
+structured_aliases:
+- literal_form: Sample Isolated From
+  predicate: EXACT_SYNONYM
+  contexts:
+  - https://jgi.doe.gov/isolate-submission-form/v19
 rank: 1000
-alias: has_output
+alias: sample_isolated_from
 domain_of:
-- PlannedProcess
-range: NamedThing
-multivalued: true
+- OrganismSample
+range: string
 
 </code></pre>
 

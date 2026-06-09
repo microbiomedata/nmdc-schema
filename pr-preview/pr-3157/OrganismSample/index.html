@@ -476,6 +476,12 @@
 
   OrganismSample : samp_name
 
+  OrganismSample : sample_collection_site
+
+  OrganismSample : sample_growth_conditions
+
+  OrganismSample : sample_isolated_from
+
   OrganismSample : sample_isolation_method
 
   OrganismSample : source_mat_id
@@ -570,6 +576,24 @@
 <td><a href="../sample_isolation_method/">sample_isolation_method</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Method, protocol, or kit used to extract DNA/RNA from the sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_isolated_from/">sample_isolated_from</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Free-text description of the environmental or biological matrix from which th...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_collection_site/">sample_collection_site</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Free-text description of the place where the sample was collected: the geogra...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_growth_conditions/">sample_growth_conditions</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Free-text description of the in-vitro conditions under which the organism sam...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -730,6 +754,9 @@ slots:
 - samp_name
 - host_taxid
 - sample_isolation_method
+- sample_isolated_from
+- sample_collection_site
+- sample_growth_conditions
 - ploidy
 - source_mat_id
 - analysis_type
@@ -1094,6 +1121,106 @@ attributes:
       source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     alias: sample_isolation_method
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  sample_isolated_from:
+    name: sample_isolated_from
+    description: Free-text description of the environmental or biological matrix from
+      which the organism sample was isolated — the *what* it came out of (e.g. iron-rich
+      microbial mat, leaf tissue, catalog vial). For the *where* (geographic / environmental
+      site of collection) see `sample_collection_site`; for in-vitro growth conditions
+      (lab maintenance, culture media, growth chambers) see `sample_growth_conditions`.
+    todos:
+    - 'Redesign in #3054 will sharpen the boundary between this slot and the sample_collection_site
+      / sample_growth_conditions siblings.'
+    comments:
+    - Routes JGI Isolate (NA) v19 form field 44 ("Sample Isolated From"). Field 45
+      ("Collection Site or Growth Conditions") routes to `sample_collection_site`
+      or `sample_growth_conditions` depending on which half the submitter is reporting.
+    - 'Used when no upstream Biosample carries env-triad information (e.g. culture
+      collection orders, lab-derived samples). When a linked Biosample is available,
+      environmental provenance belongs there. Not a typed reference — future work
+      may add a structured slot or wrapper class for typed sample-to-sample links;
+      see #3033 and #3054.'
+    examples:
+    - value: Iron-rich microbial mat from hydrothermal vent, Naha Vents, south rift
+        of Loihi seamount, Hawaii
+      description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+    - value: Saltwater from water column off the Georgia coast, USA
+      description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+    - value: DSMZ catalog vial (DSM 6125)
+      description: Catalog-collection origin — no environmental matrix upstream
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Sample Isolated From
+      predicate: EXACT_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
+    rank: 1000
+    alias: sample_isolated_from
+    owner: OrganismSample
+    domain_of:
+    - OrganismSample
+    range: string
+  sample_collection_site:
+    name: sample_collection_site
+    description: 'Free-text description of the place where the sample was collected:
+      the geographic or environmental site or named location.'
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Collection Site or Growth Conditions
+      predicate: NARROW_SYNONYM
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      - JGI label bundles two concepts; this slot covers only the collection-site
+        half.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+    rank: 1000
+    alias: sample_collection_site
+    owner: OrganismSample
+    domain_of:
+    - Biosample
+    - OrganismSample
+    range: string
+  sample_growth_conditions:
+    name: sample_growth_conditions
+    description: Free-text description of the in-vitro conditions under which the
+      organism sample was grown or maintained — culture media, growth chamber settings,
+      facility type, or other lab-controlled growth context. For environmental site
+      context see `sample_collection_site`; for the source matrix the organism came
+      out of see `sample_isolated_from`.
+    comments:
+    - On `OrganismSample`, this slot routes the growth-conditions half of JGI Isolate
+      (NA) v19 form field 45 ("Collection Site or Growth Conditions"). The collection-site
+      half routes to `sample_collection_site`. The submitter populates one or the
+      other depending on whether the sample came from a field collection or from in-vitro
+      maintenance.
+    - Distinct from MIxS `isol_growth_condt` (MIXS:0000003), which expects a publication
+      reference (DOI/PMID/URL pattern), not free-text growth conditions.
+    examples:
+    - value: Greenhouse-grown
+      description: Plant-tissue isolate maintained in greenhouse conditions
+    - value: Cultivated indoor; substrate logs of supplemented oak
+      description: Mushroom (Lentinula edodes) cultivation context
+    - value: E. coli K-12 MG1655 broth culture infected with phage T4
+      description: Viral-isolate growth context — host culture conditions
+    in_subset:
+    - jgi_isolate
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+    - literal_form: Collection Site or Growth Conditions
+      predicate: NARROW_SYNONYM
+      contexts:
+      - https://jgi.doe.gov/isolate-submission-form/v19
+    rank: 1000
+    alias: sample_growth_conditions
     owner: OrganismSample
     domain_of:
     - OrganismSample

@@ -747,6 +747,12 @@
 <h1 id="jgi-isolate-form-field-routing">JGI Isolate Form Field Routing</h1>
 <p>Complete routing of all 55 fields from the JGI Isolate (NA) v19 submission form
 to nmdc-schema classes, submission-schema, or deferred.</p>
+<p>The authoritative field-to-slot-and-interface mapping is the "Montana-SlotEval"
+tab of the JGI isolate metadata spreadsheet (Pupo). Per the isolate modeling
+squad, submission-schema targets three interfaces: <code>IsolateInterface</code>,
+<code>JgiIsolateGenomeInterface</code>, and <code>JgiIsolateTranscriptomeInterface</code> (the split is
+tracked in submission-schema #444). Where the nmdc-schema slot below differs from
+the Montana-SlotEval submission slot, the Montana slot is noted in parentheses.</p>
 <h2 id="organismsample-osm">OrganismSample (osm)</h2>
 <table>
 <thead>
@@ -827,26 +833,26 @@ to nmdc-schema classes, submission-schema, or deferred.</p>
 <tr>
 <td>40</td>
 <td>Sample Isolation Method*</td>
-<td><code>sample_isolation_method</code></td>
+<td><code>sample_isolation_method</code> (Montana-SlotEval submission slot: <code>isolate_meth</code>)</td>
 <td>JGI-native (new)</td>
 </tr>
 <tr>
 <td>44</td>
 <td>Sample Isolated From*</td>
-<td>~~<code>sample_isolated_from</code>~~ → submission-schema <code>JgiIsolateInterface.sample_isolated_from</code></td>
-<td>Removed from nmdc-schema OrganismSample (#3131); no production records. JGI logistics, captured at submission.</td>
+<td><code>sample_isolated_from</code></td>
+<td>JGI-native (new) — origin matrix only ("the <em>what</em> the organism came out of")</td>
 </tr>
 <tr>
 <td>45a</td>
 <td>Collection Site or Growth Conditions* (collection-site half)</td>
-<td><code>sample_collection_site</code> (Biosample only)</td>
-<td>Kept on Biosample (populated in production); removed from OrganismSample (#3131). JGI capture lives in submission-schema <code>JgiIsolateInterface.collection_site_or_growth_conditions</code>.</td>
+<td><code>sample_collection_site</code></td>
+<td>NMDC-native (pre-existing slot, reused for OrganismSample) — geographic / environmental site context</td>
 </tr>
 <tr>
 <td>45b</td>
 <td>Collection Site or Growth Conditions* (growth-conditions half)</td>
-<td>~~<code>sample_growth_conditions</code>~~ → submission-schema <code>JgiIsolateInterface.collection_site_or_growth_conditions</code></td>
-<td>Removed from nmdc-schema OrganismSample (#3131); no production records.</td>
+<td><code>sample_growth_conditions</code></td>
+<td>JGI-native (new) — in-vitro lab maintenance context. MIxS <code>isol_growth_condt</code> (MIXS:0000003) was considered but its DOI/PMID/URL pattern doesn't fit free text</td>
 </tr>
 <tr>
 <td>41-43</td>
@@ -955,7 +961,7 @@ loaded with NcbiTaxon from semantic-sql / OWL.</p>
 <tr>
 <td>9</td>
 <td>Isolate</td>
-<td><code>isolate_name</code></td>
+<td><code>isolate_name</code> (Montana-SlotEval routes this field to <code>samp_name</code>)</td>
 <td>JGI-native (new)</td>
 </tr>
 <tr>

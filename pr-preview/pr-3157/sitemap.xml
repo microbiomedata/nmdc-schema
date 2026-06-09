@@ -3881,6 +3881,14 @@
          <lastmod>2026-06-09</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/sample_growth_conditions/</loc>
+         <lastmod>2026-06-09</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/sample_isolated_from/</loc>
+         <lastmod>2026-06-09</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/sample_isolation_method/</loc>
          <lastmod>2026-06-09</lastmod>
     </url>

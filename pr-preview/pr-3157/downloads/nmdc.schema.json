@@ -12898,6 +12898,27 @@
                         "null"
                     ]
                 },
+                "sample_collection_site": {
+                    "description": "Free-text description of the place where the sample was collected: the geographic or environmental site or named location.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_growth_conditions": {
+                    "description": "Free-text description of the in-vitro conditions under which the organism sample was grown or maintained \u2014 culture media, growth chamber settings, facility type, or other lab-controlled growth context. For environmental site context see `sample_collection_site`; for the source matrix the organism came out of see `sample_isolated_from`.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_isolated_from": {
+                    "description": "Free-text description of the environmental or biological matrix from which the organism sample was isolated \u2014 the *what* it came out of (e.g. iron-rich microbial mat, leaf tissue, catalog vial). For the *where* (geographic / environmental site of collection) see `sample_collection_site`; for in-vitro growth conditions (lab maintenance, culture media, growth chambers) see `sample_growth_conditions`.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "sample_isolation_method": {
                     "description": "Method, protocol, or kit used to extract DNA/RNA from the sample.",
                     "type": [
@@ -16083,5 +16104,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.0rc1.post21.dev0+5f4a50986"
+    "version": "11.20.0rc1.post20.dev0+f206c8aa8"
 }
