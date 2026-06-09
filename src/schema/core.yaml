@@ -1306,9 +1306,6 @@ classes:
       - samp_name
       - host_taxid
       - sample_isolation_method
-      - sample_isolated_from
-      - sample_collection_site
-      - sample_growth_conditions
       - ploidy
       - source_mat_id
       - analysis_type
