@@ -695,12 +695,12 @@
 
 
 <h1 id="subset-jgiisolate">Subset: JgiIsolate</h1>
-<p><em>Slots originating from the JGI Isolate (NA) v19 submission form that are not already captured by MIxS or other existing standards. These slots support organism identity, strain verification, purity assessment, and biosafety classification for cultured isolate submissions to JGI.</em></p>
+<p><em>Slots that map to a field on the JGI Isolate (NA) v19 submission form, identified by a structured_alias whose literal_form is the exact form field name. Membership is the alias: a slot is in this subset if and only if it carries a JGI Isolate v19 structured_alias. Most members are new NMDC slots for organism identity, strain verification, purity assessment, and biosafety classification; a few are reused MIxS slots (for example host_taxid, source_mat_id, estimated_size) whose JGI mapping is recorded via the alias rather than by a new slot.</em></p>
 <div>
 <p>URI: <a href="./">JgiIsolate</a></p>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Slots in this subset carry structured_aliases with context <a href="https://jgi.doe.gov/isolate-submission-form/v19">https://jgi.doe.gov/isolate-submission-form/v19</a> mapping to the exact field name on the JGI Isolate (NA) v19 spreadsheet.</li>
+<li>The form template itself is access-restricted; each alias source points to the public JGI submission overview. To keep this subset exhaustive, add in_subset jgi_isolate wherever a JGI Isolate v19 structured_alias is added, at the same scope the alias lives (global slot or class slot_usage).</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -737,6 +737,10 @@
 <td>Strain of the host organism that the sample was collected from</td>
 </tr>
 <tr>
+<td><a href="../host_taxid/">host_taxid</a></td>
+<td>NCBI taxon id of the host, e</td>
+</tr>
+<tr>
 <td><a href="../isolate_name/">isolate_name</a></td>
 <td>Isolate or mutant name</td>
 </tr>
@@ -747,6 +751,10 @@
 <tr>
 <td><a href="../organism_species/">organism_species</a></td>
 <td>Species of the organism</td>
+</tr>
+<tr>
+<td><a href="../sample_collection_site/">sample_collection_site</a></td>
+<td>Free-text description of the place where the sample was collected: the geogra...</td>
 </tr>
 <tr>
 <td><a href="../sample_growth_conditions/">sample_growth_conditions</a></td>

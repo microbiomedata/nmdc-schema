@@ -743,13 +743,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td>Biological source material which can be characterized by an experiment</td>
+<td><a href="../OrganismSample/">OrganismSample</a></td>
+<td>A material sample in which all cells are expected to share the same genome</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OrganismSample/">OrganismSample</a></td>
-<td>A material sample in which all cells are expected to share the same genome</td>
+<td><a href="../Biosample/">Biosample</a></td>
+<td>Biological source material which can be characterized by an experiment</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -809,12 +809,16 @@ description: NCBI taxon id of the host, e.g. 9606
 title: host taxid
 comments:
 - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
+in_subset:
+- jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc
 structured_aliases:
 - literal_form: Host NCBI Taxonomy ID
   predicate: EXACT_SYNONYM
-  contexts:
-  - https://jgi.doe.gov/isolate-submission-form/v19
+  notes:
+  - Exact JGI form template is access-restricted; source is the public submission
+    overview.
+  source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
 rank: 1000
 keywords:
 - host

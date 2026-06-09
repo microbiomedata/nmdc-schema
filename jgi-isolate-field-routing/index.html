@@ -747,6 +747,12 @@
 <h1 id="jgi-isolate-form-field-routing">JGI Isolate Form Field Routing</h1>
 <p>Complete routing of all 55 fields from the JGI Isolate (NA) v19 submission form
 to nmdc-schema classes, submission-schema, or deferred.</p>
+<p>The authoritative field-to-slot-and-interface mapping is the "Montana-SlotEval"
+tab of the JGI isolate metadata spreadsheet (Pupo). Per the isolate modeling
+squad, submission-schema targets three interfaces: <code>IsolateInterface</code>,
+<code>JgiIsolateGenomeInterface</code>, and <code>JgiIsolateTranscriptomeInterface</code> (the split is
+tracked in submission-schema #444). Where the nmdc-schema slot below differs from
+the Montana-SlotEval submission slot, the Montana slot is noted in parentheses.</p>
 <h2 id="organismsample-osm">OrganismSample (osm)</h2>
 <table>
 <thead>
@@ -827,7 +833,7 @@ to nmdc-schema classes, submission-schema, or deferred.</p>
 <tr>
 <td>40</td>
 <td>Sample Isolation Method*</td>
-<td><code>sample_isolation_method</code></td>
+<td><code>sample_isolation_method</code> (Montana-SlotEval submission slot: <code>isolate_meth</code>)</td>
 <td>JGI-native (new)</td>
 </tr>
 <tr>
@@ -955,7 +961,7 @@ loaded with NcbiTaxon from semantic-sql / OWL.</p>
 <tr>
 <td>9</td>
 <td>Isolate</td>
-<td><code>isolate_name</code></td>
+<td><code>isolate_name</code> (Montana-SlotEval routes this field to <code>samp_name</code>)</td>
 <td>JGI-native (new)</td>
 </tr>
 <tr>
@@ -985,8 +991,8 @@ loaded with NcbiTaxon from semantic-sql / OWL.</p>
 <tr>
 <td>15</td>
 <td>Reference Genome*</td>
-<td><code>ref_biomaterial</code></td>
-<td>MIxS (newly imported)</td>
+<td><code>reference_genome</code> (submission-schema-local slot)</td>
+<td>submission-schema-native, NOT ref_biomaterial. Promotion to nmdc-schema tracked in submission-schema issue 447</td>
 </tr>
 <tr>
 <td>16</td>
@@ -1122,12 +1128,6 @@ loaded with NcbiTaxon from semantic-sql / OWL.</p>
 <td>MIXS:0000021</td>
 <td>Organism</td>
 <td>Ploidy Comments</td>
-</tr>
-<tr>
-<td><code>ref_biomaterial</code></td>
-<td>MIXS:0000025</td>
-<td>Organism</td>
-<td>Reference Genome</td>
 </tr>
 </tbody>
 </table>

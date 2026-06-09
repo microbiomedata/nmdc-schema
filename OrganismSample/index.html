@@ -587,7 +587,7 @@
 <tr>
 <td><a href="../sample_collection_site/">sample_collection_site</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Free-text description of the place where the sample was collected — the geogr...</td>
+<td>Free-text description of the place where the sample was collected: the geogra...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -810,13 +810,19 @@ slot_usage:
       object:
         type: nmdc:TextValue
         has_raw_value: bcrc:10694
+    in_subset:
+    - jgi_isolate
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3036
     structured_aliases:
     - literal_form: Culture Collection and ID
       predicate: NARROW_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      - JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any
+        material-sample identifier).
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
 class_uri: nmdc:OrganismSample
 
 </code></pre>
@@ -898,13 +904,19 @@ slot_usage:
       object:
         type: nmdc:TextValue
         has_raw_value: bcrc:10694
+    in_subset:
+    - jgi_isolate
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3036
     structured_aliases:
     - literal_form: Culture Collection and ID
       predicate: NARROW_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      - JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any
+        material-sample identifier).
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
 attributes:
   associated_studies:
     name: associated_studies
@@ -1066,12 +1078,16 @@ attributes:
     title: host taxid
     comments:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
+    in_subset:
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host NCBI Taxonomy ID
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     keywords:
     - host
@@ -1099,8 +1115,10 @@ attributes:
     structured_aliases:
     - literal_form: Sample Isolation Method
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     alias: sample_isolation_method
     owner: OrganismSample
@@ -1150,20 +1168,20 @@ attributes:
     range: string
   sample_collection_site:
     name: sample_collection_site
-    description: Free-text description of the place where the sample was collected
-      — the geographic / environmental site or named location.
-    comments:
-    - On `OrganismSample`, this slot routes the collection-site half of JGI Isolate
-      (NA) v19 form field 45 ("Collection Site or Growth Conditions"). The growth-conditions
-      half routes to `sample_growth_conditions`. The submitter populates one or the
-      other depending on whether the sample came from a field collection or from in-vitro
-      maintenance.
+    description: 'Free-text description of the place where the sample was collected:
+      the geographic or environmental site or named location.'
+    in_subset:
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Collection Site or Growth Conditions
       predicate: NARROW_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      - JGI label bundles two concepts; this slot covers only the collection-site
+        half.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     alias: sample_collection_site
     owner: OrganismSample
@@ -1268,14 +1286,20 @@ attributes:
       object:
         type: nmdc:TextValue
         has_raw_value: bcrc:10694
+    in_subset:
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3036
     structured_aliases:
     - literal_form: Culture Collection and ID
       predicate: NARROW_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      - JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any
+        material-sample identifier).
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     keywords:
     - identifier

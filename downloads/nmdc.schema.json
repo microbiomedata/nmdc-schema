@@ -3820,7 +3820,7 @@
                     "description": "Name of the well (e.g. BXA1123) where sample was taken"
                 },
                 "sample_collection_site": {
-                    "description": "Free-text description of the place where the sample was collected \u2014 the geographic / environmental site or named location.",
+                    "description": "Free-text description of the place where the sample was collected: the geographic or environmental site or named location.",
                     "type": [
                         "string",
                         "null"
@@ -12899,7 +12899,7 @@
                     ]
                 },
                 "sample_collection_site": {
-                    "description": "Free-text description of the place where the sample was collected \u2014 the geographic / environmental site or named location.",
+                    "description": "Free-text description of the place where the sample was collected: the geographic or environmental site or named location.",
                     "type": [
                         "string",
                         "null"
@@ -16104,5 +16104,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.0rc1.post15.dev0+292f01ec0"
+    "version": "11.20.0rc1.post16.dev0+21ad27708"
 }

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.0rc1.post15.dev0+292f01ec0
+version: 11.20.0rc1.post16.dev0+21ad27708
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -351,13 +351,19 @@ default_range: string
 subsets:
   jgi_isolate:
     name: jgi_isolate
-    description: Slots originating from the JGI Isolate (NA) v19 submission form that
-      are not already captured by MIxS or other existing standards. These slots support
-      organism identity, strain verification, purity assessment, and biosafety classification
-      for cultured isolate submissions to JGI.
+    description: 'Slots that map to a field on the JGI Isolate (NA) v19 submission
+      form, identified by a structured_alias whose literal_form is the exact form
+      field name. Membership is the alias: a slot is in this subset if and only if
+      it carries a JGI Isolate v19 structured_alias. Most members are new NMDC slots
+      for organism identity, strain verification, purity assessment, and biosafety
+      classification; a few are reused MIxS slots (for example host_taxid, source_mat_id,
+      estimated_size) whose JGI mapping is recorded via the alias rather than by a
+      new slot.'
     comments:
-    - Slots in this subset carry structured_aliases with context https://jgi.doe.gov/isolate-submission-form/v19
-      mapping to the exact field name on the JGI Isolate (NA) v19 spreadsheet.
+    - The form template itself is access-restricted; each alias source points to the
+      public JGI submission overview. To keep this subset exhaustive, add in_subset
+      jgi_isolate wherever a JGI Isolate v19 structured_alias is added, at the same
+      scope the alias lives (global slot or class slot_usage).
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2803
@@ -6851,20 +6857,20 @@ slots:
     range: string
   sample_collection_site:
     name: sample_collection_site
-    description: Free-text description of the place where the sample was collected
-      — the geographic / environmental site or named location.
-    comments:
-    - On `OrganismSample`, this slot routes the collection-site half of JGI Isolate
-      (NA) v19 form field 45 ("Collection Site or Growth Conditions"). The growth-conditions
-      half routes to `sample_growth_conditions`. The submitter populates one or the
-      other depending on whether the sample came from a field collection or from in-vitro
-      maintenance.
+    description: 'Free-text description of the place where the sample was collected:
+      the geographic or environmental site or named location.'
+    in_subset:
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Collection Site or Growth Conditions
       predicate: NARROW_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      - JGI label bundles two concepts; this slot covers only the collection-site
+        half.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     range: string
   salinity_category:
     name: salinity_category
@@ -7273,8 +7279,10 @@ slots:
     structured_aliases:
     - literal_form: Genus
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   organism_species:
     name: organism_species
     description: Species of the organism.
@@ -7295,8 +7303,10 @@ slots:
     structured_aliases:
     - literal_form: Species
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   strain_name:
     name: strain_name
     description: Strain or cultivar name of the organism.
@@ -7323,8 +7333,10 @@ slots:
     structured_aliases:
     - literal_form: Strain or cultivar
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     related_mappings:
     - MIXS:0000020
   isolate_name:
@@ -7350,8 +7362,10 @@ slots:
     structured_aliases:
     - literal_form: Isolate
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     related_mappings:
     - MIXS:0000020
   gc_content:
@@ -7363,8 +7377,10 @@ slots:
     structured_aliases:
     - literal_form: GC Content %
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     range: float
     minimum_value: 0
     maximum_value: 100
@@ -7394,8 +7410,10 @@ slots:
     structured_aliases:
     - literal_form: Sample Isolation Method
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   sample_isolated_from:
     name: sample_isolated_from
     description: Free-text description of the environmental or biological matrix from
@@ -7479,8 +7497,10 @@ slots:
     structured_aliases:
     - literal_form: Host Genus
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   host_species:
     name: host_species
     description: Species of the host organism that the sample was collected from.
@@ -7499,8 +7519,10 @@ slots:
     structured_aliases:
     - literal_form: Host Species
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   host_strain:
     name: host_strain
     description: Strain of the host organism that the sample was collected from.
@@ -7517,8 +7539,10 @@ slots:
     structured_aliases:
     - literal_form: Host Strain
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   img_identifiers:
     name: img_identifiers
     description: A list of identifiers that relate the biosample to records in the
@@ -11876,12 +11900,16 @@ slots:
     title: host taxid
     comments:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
+    in_subset:
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host NCBI Taxonomy ID
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     keywords:
     - host
     - host.
@@ -19881,11 +19909,17 @@ classes:
         range: NcbiTaxon
       estimated_size:
         name: estimated_size
+        in_subset:
+        - jgi_isolate
         structured_aliases:
         - literal_form: Estimated Genome Size (Mb)
           predicate: BROAD_SYNONYM
-          contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
+          notes:
+          - Exact JGI form template is access-restricted; source is the public submission
+            overview.
+          - 'Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers
+            many possible bp values; the alias is broader in granularity.'
+          source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
       ref_biomaterial:
         name: ref_biomaterial
         description: Reference for the organism, preferentially a DOI when a primary
@@ -19893,14 +19927,10 @@ classes:
           the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial
           (MIXS:0000025).
         comments:
-        - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available
-          — it gives a stable reference to the publication or genome report. See the
+        - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available;
+          it gives a stable reference to the publication or genome report. See the
           `associated_dois` pattern elsewhere in the NMDC schema for DOI-structured
           alternatives.
-        - JGI "Reference Genome" submissions sometimes carry non-publication identifiers
-          such as IMG or Phytozome IDs, which do not match the MIxS pattern. Those
-          are out of scope for this slot and should be captured separately (see `gold_organism_identifiers`
-          and `insdc_nucleotide_identifiers` for genome / assembly references).
         - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See
           ongoing MIxS renaming work.
         examples:
@@ -19916,11 +19946,6 @@ classes:
           object:
             type: nmdc:TextValue
             has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
-        structured_aliases:
-        - literal_form: Reference Genome
-          predicate: RELATED_SYNONYM
-          contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
     class_uri: nmdc:Organism
   PlannedProcess:
     name: PlannedProcess
@@ -21669,13 +21694,19 @@ classes:
           object:
             type: nmdc:TextValue
             has_raw_value: bcrc:10694
+        in_subset:
+        - jgi_isolate
         see_also:
         - https://github.com/microbiomedata/nmdc-schema/issues/3036
         structured_aliases:
         - literal_form: Culture Collection and ID
           predicate: NARROW_SYNONYM
-          contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
+          notes:
+          - Exact JGI form template is access-restricted; source is the public submission
+            overview.
+          - JGI label is narrower (culture-collection-only) than MIxS source_mat_id
+            (any material-sample identifier).
+          source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     class_uri: nmdc:OrganismSample
   Site:
     name: Site

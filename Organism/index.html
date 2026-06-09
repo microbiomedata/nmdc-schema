@@ -670,24 +670,26 @@ slot_usage:
     range: NcbiTaxon
   estimated_size:
     name: estimated_size
+    in_subset:
+    - jgi_isolate
     structured_aliases:
     - literal_form: Estimated Genome Size (Mb)
       predicate: BROAD_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      - 'Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many
+        possible bp values; the alias is broader in granularity.'
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   ref_biomaterial:
     name: ref_biomaterial
     description: Reference for the organism, preferentially a DOI when a primary publication
       or genome report exists; PMID and URL are also accepted per the MIxS ref_biomaterial
       pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025).
     comments:
-    - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available
-      — it gives a stable reference to the publication or genome report. See the `associated_dois`
+    - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available;
+      it gives a stable reference to the publication or genome report. See the `associated_dois`
       pattern elsewhere in the NMDC schema for DOI-structured alternatives.
-    - JGI "Reference Genome" submissions sometimes carry non-publication identifiers
-      such as IMG or Phytozome IDs, which do not match the MIxS pattern. Those are
-      out of scope for this slot and should be captured separately (see `gold_organism_identifiers`
-      and `insdc_nucleotide_identifiers` for genome / assembly references).
     - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
       MIxS renaming work.
     examples:
@@ -703,11 +705,6 @@ slot_usage:
       object:
         type: nmdc:TextValue
         has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
-    structured_aliases:
-    - literal_form: Reference Genome
-      predicate: RELATED_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
 class_uri: nmdc:Organism
 
 </code></pre>
@@ -755,24 +752,26 @@ slot_usage:
     range: NcbiTaxon
   estimated_size:
     name: estimated_size
+    in_subset:
+    - jgi_isolate
     structured_aliases:
     - literal_form: Estimated Genome Size (Mb)
       predicate: BROAD_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      - 'Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many
+        possible bp values; the alias is broader in granularity.'
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   ref_biomaterial:
     name: ref_biomaterial
     description: Reference for the organism, preferentially a DOI when a primary publication
       or genome report exists; PMID and URL are also accepted per the MIxS ref_biomaterial
       pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025).
     comments:
-    - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available
-      — it gives a stable reference to the publication or genome report. See the `associated_dois`
+    - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available;
+      it gives a stable reference to the publication or genome report. See the `associated_dois`
       pattern elsewhere in the NMDC schema for DOI-structured alternatives.
-    - JGI "Reference Genome" submissions sometimes carry non-publication identifiers
-      such as IMG or Phytozome IDs, which do not match the MIxS pattern. Those are
-      out of scope for this slot and should be captured separately (see `gold_organism_identifiers`
-      and `insdc_nucleotide_identifiers` for genome / assembly references).
     - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
       MIxS renaming work.
     examples:
@@ -788,11 +787,6 @@ slot_usage:
       object:
         type: nmdc:TextValue
         has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
-    structured_aliases:
-    - literal_form: Reference Genome
-      predicate: RELATED_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
 attributes:
   classified_as:
     name: classified_as
@@ -839,8 +833,10 @@ attributes:
     structured_aliases:
     - literal_form: Genus
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     alias: organism_genus
     owner: Organism
@@ -867,8 +863,10 @@ attributes:
     structured_aliases:
     - literal_form: Species
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     alias: organism_species
     owner: Organism
@@ -901,8 +899,10 @@ attributes:
     structured_aliases:
     - literal_form: Strain or cultivar
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     related_mappings:
     - MIXS:0000020
     rank: 1000
@@ -934,8 +934,10 @@ attributes:
     structured_aliases:
     - literal_form: Isolate
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     related_mappings:
     - MIXS:0000020
     rank: 1000
@@ -958,12 +960,18 @@ attributes:
       keyed on biosafety_mat_cat.
     examples:
     - object: 300000
+    in_subset:
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Estimated Genome Size (Mb)
       predicate: BROAD_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      - 'Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many
+        possible bp values; the alias is broader in granularity.'
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     keywords:
     - size
@@ -984,8 +992,10 @@ attributes:
     structured_aliases:
     - literal_form: GC Content %
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     alias: gc_content
     owner: Organism
@@ -1003,13 +1013,9 @@ attributes:
       pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025).
     title: reference for biomaterial
     comments:
-    - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available
-      — it gives a stable reference to the publication or genome report. See the `associated_dois`
+    - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available;
+      it gives a stable reference to the publication or genome report. See the `associated_dois`
       pattern elsewhere in the NMDC schema for DOI-structured alternatives.
-    - JGI "Reference Genome" submissions sometimes carry non-publication identifiers
-      such as IMG or Phytozome IDs, which do not match the MIxS pattern. Those are
-      out of scope for this slot and should be captured separately (see `gold_organism_identifiers`
-      and `insdc_nucleotide_identifiers` for genome / assembly references).
     - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See ongoing
       MIxS renaming work.
     examples:
@@ -1026,11 +1032,6 @@ attributes:
         type: nmdc:TextValue
         has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
     from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Reference Genome
-      predicate: RELATED_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
     rank: 1000
     slot_uri: MIXS:0000025
     alias: ref_biomaterial

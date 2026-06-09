@@ -3832,7 +3832,7 @@
 <tr>
 <td><a href="../sample_collection_site/">sample_collection_site</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Free-text description of the place where the sample was collected — the geogr...</td>
+<td>Free-text description of the place where the sample was collected: the geogra...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -10106,8 +10106,10 @@ attributes:
     structured_aliases:
     - literal_form: Host Genus
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     alias: host_genus
     owner: Biosample
@@ -10319,8 +10321,10 @@ attributes:
     structured_aliases:
     - literal_form: Host Species
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     alias: host_species
     owner: Biosample
@@ -10343,8 +10347,10 @@ attributes:
     structured_aliases:
     - literal_form: Host Strain
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     alias: host_strain
     owner: Biosample
@@ -10448,12 +10454,16 @@ attributes:
     title: host taxid
     comments:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
+    in_subset:
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host NCBI Taxonomy ID
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     keywords:
     - host
@@ -17047,20 +17057,20 @@ attributes:
     range: string
   sample_collection_site:
     name: sample_collection_site
-    description: Free-text description of the place where the sample was collected
-      — the geographic / environmental site or named location.
-    comments:
-    - On `OrganismSample`, this slot routes the collection-site half of JGI Isolate
-      (NA) v19 form field 45 (&quot;Collection Site or Growth Conditions&quot;). The growth-conditions
-      half routes to `sample_growth_conditions`. The submitter populates one or the
-      other depending on whether the sample came from a field collection or from in-vitro
-      maintenance.
+    description: 'Free-text description of the place where the sample was collected:
+      the geographic or environmental site or named location.'
+    in_subset:
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Collection Site or Growth Conditions
       predicate: NARROW_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      - JGI label bundles two concepts; this slot covers only the collection-site
+        half.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     alias: sample_collection_site
     owner: Biosample
