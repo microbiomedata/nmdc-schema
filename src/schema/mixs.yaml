@@ -3511,6 +3511,8 @@ slots:
     comments:
       - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
     range: ControlledIdentifiedTermValue
+    in_subset:
+      - jgi_isolate
     structured_aliases:
       - literal_form: Host NCBI Taxonomy ID
         predicate: EXACT_SYNONYM

@@ -230,6 +230,8 @@ classes:
           the broader pattern is to narrow `classified_as` to `NcbiTaxon` on
           all organism-oriented classes via slot_usage.
       estimated_size:
+        in_subset:
+          - jgi_isolate
         structured_aliases:
           - literal_form: Estimated Genome Size (Mb)
             predicate: BROAD_SYNONYM
@@ -256,6 +258,8 @@ classes:
               type: nmdc:TextValue
               has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
             description: URL form (e.g. NCBI Genome record)
+        in_subset:
+          - jgi_isolate
         structured_aliases:
           - literal_form: Reference Genome
             predicate: RELATED_SYNONYM

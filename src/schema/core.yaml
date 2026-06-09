@@ -1323,6 +1323,8 @@ classes:
           syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
           interpolated: true
       source_mat_id:
+        in_subset:
+          - jgi_isolate
         description: >-
           Culture collection identifier for the source of this organism sample.
         comments:

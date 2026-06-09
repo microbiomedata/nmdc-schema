@@ -35,18 +35,22 @@ default_range: string
 subsets:
   jgi_isolate:
     description: >-
-      Slots originating from the JGI Isolate (NA) v19 submission form that are not
-      already captured by MIxS or other existing standards. These slots support
-      organism identity, strain verification, purity assessment, and biosafety
-      classification for cultured isolate submissions to JGI.
+      Slots that map to a field on the JGI Isolate (NA) v19 submission form,
+      identified by a structured_alias whose literal_form is the exact form
+      field name. Membership is the alias: a slot is in this subset if and only
+      if it carries a JGI Isolate v19 structured_alias. Most members are new
+      NMDC slots for organism identity, strain verification, purity assessment,
+      and biosafety classification; a few are reused MIxS slots (for example
+      host_taxid, source_mat_id, estimated_size) whose JGI mapping is recorded
+      via the alias rather than by a new slot.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/2803
     comments:
       - >-
-        Slots in this subset carry structured_aliases whose literal_form is the
-        exact field name on the JGI Isolate (NA) v19 spreadsheet. The form
-        template itself is access-restricted; the alias source points to the
-        public JGI submission overview.
+        The form template itself is access-restricted; each alias source points
+        to the public JGI submission overview. To keep this subset exhaustive,
+        add in_subset jgi_isolate wherever a JGI Isolate v19 structured_alias is
+        added, at the same scope the alias lives (global slot or class slot_usage).
 
 slots:
 
@@ -165,15 +169,10 @@ slots:
 
   sample_collection_site:
     description: >-
-      Free-text description of the place where the sample was collected — the
-      geographic / environmental site or named location.
-    comments:
-      - >-
-        On `OrganismSample`, this slot routes the collection-site half of JGI
-        Isolate (NA) v19 form field 45 ("Collection Site or Growth Conditions").
-        The growth-conditions half routes to `sample_growth_conditions`. The
-        submitter populates one or the other depending on whether the sample
-        came from a field collection or from in-vitro maintenance.
+      Free-text description of the place where the sample was collected: the
+      geographic or environmental site or named location.
+    in_subset:
+      - jgi_isolate
     structured_aliases:
       - literal_form: Collection Site or Growth Conditions
         predicate: NARROW_SYNONYM
