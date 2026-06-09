@@ -67,7 +67,7 @@ loaded with NcbiTaxon from semantic-sql / OWL.
 | 12 | Estimated Genome Size* | `estimated_size` | MIxS (newly imported) |
 | 13 | GC Content % | `gc_content` | JGI-native (new) |
 | 14 | Ploidy Comments | `ploidy` | MIxS (newly imported) |
-| 15 | Reference Genome* | `ref_biomaterial` | MIxS (newly imported) |
+| 15 | Reference Genome* | `reference_genome` (submission-schema-local slot) | submission-schema-native, NOT ref_biomaterial. Promotion to nmdc-schema tracked in submission-schema issue 447 |
 | 16 | Host Genus* (viral) | `host_genus` (on Biosample) | JGI-native (new) |
 | 17 | Host Species* (viral) | `host_species` (on Biosample) | JGI-native (new) |
 | 18 | Host Strain* (viral) | `host_strain` (on Biosample) | JGI-native (new) |
@@ -99,7 +99,6 @@ loaded with NcbiTaxon from semantic-sql / OWL.
 |---|---|---|---|
 | `estimated_size` | MIXS:0000024 | Organism | Estimated Genome Size |
 | `ploidy` | MIXS:0000021 | Organism | Ploidy Comments |
-| `ref_biomaterial` | MIXS:0000025 | Organism | Reference Genome |
 
 `isol_growth_condt` (MIXS:0000003) was imported but not assigned. Its MIxS semantics are
 "publication reference for isolation/growth conditions" (DOI/PMID/URL pattern), which does
