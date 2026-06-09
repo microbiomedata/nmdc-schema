@@ -48,7 +48,6 @@ organism_sample_set:
     source_mat_id:
       type: nmdc:TextValue
       has_raw_value: dsmz:DSM-6125
-    sample_isolated_from: DSMZ catalog vial
     sample_isolation_method: Culture purchased from DSMZ; no in-house isolation step.
   # Expanded culture grown from the catalog cells.
   - id: nmdc:osm-99-3sr885

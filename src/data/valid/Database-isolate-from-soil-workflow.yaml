@@ -62,7 +62,6 @@ organism_sample_set:
     associated_studies:
       - nmdc:sty-99-md8u3e
     expected_organism: nmdc:orgn-99-vsds2v
-    sample_isolated_from: Example soil isolation
   # Expanded culture after culturing
   - id: nmdc:osm-99-jss44u
     type: nmdc:OrganismSample
