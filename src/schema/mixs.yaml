@@ -3511,8 +3511,6 @@ slots:
     comments:
       - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
     range: ControlledIdentifiedTermValue
-    in_subset:
-      - jgi_isolate
     structured_aliases:
       - literal_form: Host NCBI Taxonomy ID
         predicate: EXACT_SYNONYM
@@ -7115,12 +7113,13 @@ slots:
     slot_uri: MIXS:0000024
     range: integer
     minimum_value: 1
-    maximum_value: 100000000000
     comments:
       - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
-      - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat.
     examples:
       - object: 300000
+    maximum_value: 100000000000
+    notes:
+      - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat.
   ploidy:
     description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO
     title: ploidy
