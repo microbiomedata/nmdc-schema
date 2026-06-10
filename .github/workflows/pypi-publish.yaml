@@ -15,6 +15,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      with:
+        # Do not persist the checkout token in .git/config. Publishing uses OIDC
+        # trusted publishing and version derivation reads only local git tags, so
+        # no step here needs the token (zizmor artipacked, #3148).
+        persist-credentials: false
 
     - name: Install Poetry
       run: |
@@ -25,7 +30,10 @@ jobs:
       uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
       with:
         python-version: '3.12'
-        cache: 'poetry'
+        # No dependency cache on the release trigger: a cache poisoned by a
+        # less-privileged PR run must not reach the publish job. Trade-off is a
+        # slower job (deps re-download); correctness is unaffected
+        # (zizmor cache-poisoning, #3148).
 
     - name: Install project dependencies
       run: poetry install --no-interaction
