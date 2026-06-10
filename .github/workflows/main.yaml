@@ -32,7 +32,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Poetry
-        run: pipx install poetry
+        run: pipx install poetry==2.4.1
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
@@ -45,6 +45,9 @@ jobs:
       #----------------------------------------------
       - name: Install dependencies
         run: poetry install
+
+      - name: Verify lockfile is in sync with pyproject.toml
+        run: poetry check
 
       #----------------------------------------------
       #              build, test, and quality checks

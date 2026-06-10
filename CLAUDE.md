@@ -40,6 +40,8 @@ Build prerequisites and gotchas:
 
 This is a Poetry repo. Sibling `submission-schema` migrated to `uv`; do not confuse the two.
 
+- **Use poetry 2.4.1** (pinned in every CI workflow via `pipx install poetry==2.4.1`). The `poetry.lock` content-hash is poetry-version-sensitive: a different poetry version can report the lock as "out of sync with pyproject.toml" even when the dependencies are unchanged. Align dev/container poetry to the pinned version. CI runs `poetry check` (in `main.yaml`) to catch real pyproject/lock drift in PRs rather than on a teammate's fresh install. To sync after editing pyproject: `poetry lock` (no `--regenerate` unless you intend to bump versions).
+
 - Never create a `uv.lock` here, and never run `uv add`, `uv sync`, or `uv lock`. If a stray `uv.lock` appears, delete it before committing.
 - Before tightening any pin in `pyproject.toml` (especially `linkml`), check that `submission-schema` still resolves. nmdc-schema is a library, so a tighter pin propagates to consumers even when nmdc-schema itself does not exercise the feature. `linkml` and `linkml-runtime` versions must be paired (a runtime release can drop something the matching `linkml` references).
 - `pyproject.toml` conventions: upper-bound policy (packages at 1.0 or above cap at the next major, pre-1.0 cap at the next minor); PEP 508 form (`"pkg>=min,<max"`, not the Poetry caret); alphabetical ordering within each dependency group; runtime deps in `[project.dependencies]`, dev tools in `[dependency-groups] dev`, `deptry` in its own `deps` group; transitive packages pinned for security are also added to `[tool.deptry] per_rule_ignores.DEP002`; comments cite the issue number that motivated a pin.
