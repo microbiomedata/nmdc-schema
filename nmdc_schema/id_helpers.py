@@ -3,7 +3,7 @@ This module contains helper functions related to schema element identifiers.
 """
 
 import re
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 from nmdc_schema.get_nmdc_view import ViewGetter
 
@@ -80,7 +80,7 @@ def get_typecode_for_future_ids(slot_pattern: str) -> Optional[str]:
     return compatible_typecodes[0] if len(compatible_typecodes) > 0 else None
 
 
-def get_class_name_to_typecode_map() -> dict[str, list[str]]:
+def get_class_name_to_typecode_map() -> Dict[str, List[str]]:
     r"""
     Returns a dictionary in which each key is the name of a schema class and each value is a list of all the typecodes
     compatible with the `id` slot of that class.
