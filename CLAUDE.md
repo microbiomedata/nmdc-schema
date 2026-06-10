@@ -52,22 +52,26 @@ Migrator partials under `nmdc_schema/migrators/partials/migrator_from_X_to_Y/` a
 
 The GitHub Actions workflows in `.github/workflows/` are security-sensitive: they carry permissions, secrets, and the PyPI release path. Two static tools audit them:
 
-- `actionlint`: workflow syntax, deprecated action references, and shell bugs in `run:` steps.
-- `zizmor`: workflow security audit (credential persistence, cache poisoning, template injection, and more).
+- `actionlint`: workflow syntax, deprecated action references, and shell bugs in `run:` steps. It only lints shell in `run:` blocks when `shellcheck` is on PATH, and inline Python when `pyflakes` is on PATH; without those it silently skips its strictest checks. For a full-strength run install both (`brew install actionlint shellcheck`, `pipx install pyflakes`).
+- `zizmor`: workflow security audit (credential persistence, cache poisoning, template injection, and more). Its default (`regular`) persona is what CI reports to code scanning; `--persona pedantic` surfaces extra lower-signal audits (excessive-permissions, undocumented-permissions, concurrency-limits, anonymous-definition) that the default hides.
 
 When developing in this repo, if these tools are available in the active environment, run them against the workflows as a routine self-check. Do this whenever a workflow is edited, and opportunistically on any substantive session even when no workflow changed:
 
 ```bash
-actionlint
-uvx zizmor .github/workflows/        # or: pipx run zizmor .github/workflows/
+actionlint                                       # with shellcheck + pyflakes on PATH
+uvx zizmor .github/workflows/                    # default persona (what CI reports)
+uvx zizmor --persona pedantic .github/workflows/ # stricter, optional
 ```
 
 Do not install the tools just to run this, and do not treat their absence as a failure; skip the check when they are not present. `actionlint` is a Go binary (`brew install actionlint`). `zizmor` runs with no install via `uvx zizmor` or `pipx run zizmor`.
 
-Act on new findings, but do not re-report the known ones that are already triaged:
+As of June 2026 the workflows pass both `actionlint` (with shellcheck + pyflakes) and `zizmor` at default and `--persona pedantic`, with two deliberate exceptions. Act on new findings, but do not re-report these known, triaged ones:
 
-- The credential-persistence (`artipacked`) findings on `deploy-docs.yaml` and `test-pages-build.yaml` are intentional, because those workflows push to gh-pages. Tracked in #3147.
-- The `pypi-publish.yaml` findings (cache poisoning and credential persistence) are deliberately left for separate, release-pipeline-aware review. Tracked in #3148. Do not edit `pypi-publish.yaml` casually.
+- The credential-persistence (`artipacked`) findings on `deploy-docs.yaml` and `test-pages-build.yaml` are intentional, because those workflows push to gh-pages with the persisted token. They are suppressed inline with `# zizmor: ignore[artipacked]` and a reason. Proper token-scoped hardening stays open in #3147.
+- The `pypi-publish.yaml` cache-poisoning and credential-persistence findings were fixed in #3160 (removed the release-trigger dependency cache; set `persist-credentials: false`). The `persist-credentials: false` change is validated by analysis, not a live run; confirm it with a pre-release before relying on it. Closed #3148.
+- The pedantic-persona findings (excessive-permissions, concurrency-limits, undocumented-permissions, anonymous-definition) were fixed in #3162 by scoping permissions to the job with a top-level `permissions: {}` deny-all, adding concurrency groups (the publish job uses `cancel-in-progress: false`), documenting each elevated scope, and naming jobs. Closed #3161.
+
+When editing permissions, keep the established pattern: top-level `permissions: {}`, and grant the minimum at the job level with an inline comment saying why. Do not edit `pypi-publish.yaml` casually; it is the release path and only fully exercises at publish time.
 
 CI also runs zizmor in a non-blocking job that reports to code scanning (the Security tab), added in #3149. The local check is for faster, in-development feedback.
 
