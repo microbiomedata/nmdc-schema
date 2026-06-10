@@ -4,14 +4,22 @@ on:
   release:
     types: [created]
 
+permissions: {}  # default deny; the publish job below grants only id-token: write
+
+# Never cancel an in-progress publish: interrupting a release mid-upload could
+# leave a partial upload. Grouped per ref so re-triggering the same release does
+# not publish it twice concurrently; unrelated releases still publish in parallel.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build-n-publish:
     name: Build and publish Python 🐍 distributions 📦 to PyPI
     runs-on: ubuntu-latest
     environment: release
     permissions:
-      # this permission is mandatory for trusted publishing
-      id-token: write
+      id-token: write  # mandatory for OIDC trusted publishing (no other scope needed)
 
     steps:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2

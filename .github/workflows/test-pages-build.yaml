@@ -7,14 +7,19 @@ on:
       - reopened
       - synchronize
 
-permissions:
-  contents: write
-  pull-requests: write
+permissions: {}  # default deny; the job below grants only what it needs
 
-concurrency: preview-${{ github.ref }}
+# One preview build per PR; a newer push supersedes an in-progress build.
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   run:
+    name: Build and deploy docs preview
+    permissions:
+      contents: write       # push the docs preview to the gh-pages branch
+      pull-requests: write  # comment the preview link on the PR (rossjrw/pr-preview-action)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
