@@ -18,6 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+        # zizmor: ignore[artipacked] this workflow pushes a docs preview to the
+        # gh-pages branch via rossjrw/pr-preview-action, which relies on the
+        # persisted checkout token. Proper hardening (push with an explicit
+        # scoped token, then set persist-credentials: false) is tracked in #3147.
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
