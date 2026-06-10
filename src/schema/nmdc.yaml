@@ -148,7 +148,7 @@ settings:
   # 2. The MIxS import pipeline explicitly deletes settings (see project.Makefile)
   # When updating MIxS import, these settings must be manually synced if the source changes.
   #
-  # Source: GSC MIxS v6.3.0 (commit 77cd78836ee01ee8ba2ad10724871a962e3ad694)
+  # Source: GSC MIxS v6.3.0 (commit fb3271909f5ab3277d4c869e816bc9e334cb816f)
   add_recov_methods: 'Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other'
   agrochemical_name: ".*"
   amount: '[-+]?[0-9]*\.?[0-9]+'
@@ -1158,7 +1158,7 @@ slots:
     description: >-
       Familial relationships to other hosts in the same study; can include multiple relationships.
     comments:
-      - "Legacy MIxS slot removed from GSC MIxS v6.3.0. Retained for submission-schema compatibility."
+      - "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
     range: string
     multivalued: true
     examples:
@@ -1172,7 +1172,7 @@ slots:
     description: >-
       Reference or method used in determining salinity.
     comments:
-      - "Legacy MIxS slot removed from GSC MIxS v6.3.0. Retained for submission-schema compatibility."
+      - "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
     range: string
     multivalued: false
     examples:
@@ -1192,7 +1192,7 @@ slots:
       as described using a standard system; express as % sand (50 um to 2 mm),
       silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.
     comments:
-      - "Legacy MIxS slot removed from GSC MIxS v6.3.0. Retained for submission-schema compatibility."
+      - "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
       - "Old MIxS used 'quantity value' range but this is clearly structured text, not a single quantity."
     range: string
     multivalued: false
