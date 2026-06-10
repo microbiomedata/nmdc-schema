@@ -29,24 +29,24 @@ dependencies = [
     # Can widen to <9.0.0 once linkml releases with the cap removed. See #2985.
     "click>=8.0.0,<8.2",
     "click-log>=0.4.0,<0.5.0",
-    "deprecated>=1.0.0,<2.0.0",
+    "deprecated>=1.3.1,<2.0.0",
     # (GHSA-65pc-fj4g-8rjx bypass of CVE-2024-3651)
-    "idna>=3.15,<4.0.0",
+    "idna>=3.18,<4.0.0",
     "jsonasobj2>=1.0.0,<2.0.0",
-    "jsonschema>=4.0.0,<5.0.0",
+    "jsonschema>=4.26.0,<5.0.0",
     # linkml and linkml-runtime versions must be paired — e.g. runtime
     # 1.10.0 removed Format.JSON which linkml 1.9.x references. See #2985.
     "linkml>=1.9.0,<2.0.0",
     "linkml-runtime>=1.9.0,<2.0.0",
     "python-dotenv>=0.21.0,<2.0.0",
-    "pyyaml>=6.0.0,<7.0.0",
+    "pyyaml>=6.0.3,<7.0.0",
     "rdflib>=6.2.0,<8.0.0",
-    "requests>=2.0.0,<3.0.0",
+    "requests>=2.34.2,<3.0.0",
     # Transitive deps pinned directly to ensure users get security fixes
     # (GHSA-qccp-gfcp-xxvc CVE-2026-44431, GHSA-mf9v-mfxr-j63j CVE-2026-44432)
     "urllib3>=2.7.0,<3.0.0",
     "pymdown-extensions>=10.21.3,<11.0.0",
-    "pymongo>=4.7.2,<5.0.0",
+    "pymongo>=4.17.0,<5.0.0",
 ]
 
 [project.urls]
@@ -82,7 +82,7 @@ dev = [
     # isort (import order), bandit (the S security rules), and pydocstyle (D).
     # See [tool.ruff] below. mypy (types), pylint, vulture, and pyroma are kept
     # because ruff does not (yet) fully cover them.
-    "curies>=0.9.0,<1.0.0",
+    "curies>=0.13.11,<1.0.0",
     "defusedxml>=0.7.1,<1.0.0",  # hardened XML parsing in src/scripts/ncbi_nmdc_exact_term_matching.py
     "exhaustion-check>=0.1.1,<0.2.0",  # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
     "fastjsonschema>=2.20.0,<3.0.0",
@@ -91,15 +91,15 @@ dev = [
     # Ontology alignment scripts (#2909, #2910) that need embeddings should
     # install it separately: poetry run pip install 'linkml-store[llm]>=0.3.0,<0.4.0'
     # The [llm] extra can return once linkml drops the click cap. See #2985.
-    "linkml-store>=0.3.0,<0.4.0",
+    "linkml-store>=0.3.2,<0.4.0",
     "mkdocs>=1.4.2,<2.0.0",
-    "mkdocs-material>=9.0.12,<10.0.0",
+    "mkdocs-material>=9.7.6,<10.0.0",
     "mkdocs-mermaid2-plugin>=0.6.0,<2.0.0",
-    "mkdocs-redirects>=1.2.1,<2.0.0",
-    "mypy>=1.10.0,<2.0.0",
+    "mkdocs-redirects>=1.2.3,<2.0.0",
+    "mypy>=1.20.2,<2.0.0",
     "oaklib>=0.6.23,<1.0.0",
     "pandas>=2.2.3,<4.0.0",
-    "psycopg2-binary>=2.9.10,<3.0.0",
+    "psycopg2-binary>=2.9.12,<3.0.0",
     "pylint>=3.2.2,<5.0.0",
     "pyroma>=4.2,<6.0",
     "pytest>=8.4.2,<10.0.0",
@@ -107,14 +107,14 @@ dev = [
     # and diagrams of inter-class relationships.
     # Reference: https://github.com/microbiomedata/refscan
     "refscan>=0.2.3,<0.5.0",
-    "ruff>=0.4.7,<1.0.0",
+    "ruff>=0.15.16,<1.0.0",
     "schemasheets>=0.1.24,<0.5.0",
     "sheets-and-friends>=0.5.0,<0.6.0",  # for do_shuttle (and possibly more)
     "ucumvert>=0.2.2,<0.4.0",
-    "vulture>=2.11,<3.0.0",
+    "vulture>=2.16,<3.0.0",
 ]
 deps = [
-    "deptry>=0.23.0,<1.0.0",
+    "deptry>=0.25.1,<1.0.0",
 ]
 
 [tool.poetry]
