@@ -96,6 +96,9 @@ def get_collection_names_for_class_name(class_name: str) -> List[str]:
 def main():
     r"""
     Generates a Markdown document containing a table that can be used to map typecodes to schema classes.
+
+    TODO: Refactor this function to use the newly-implemented `get_class_name_to_typecode_map` function
+          defined in `nmdc_schema/id_helpers.py`.
     """
 
     # Initialize the data structure that will map each class name to
