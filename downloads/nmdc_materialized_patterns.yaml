@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.0rc1.post24.dev0+c8cb708ff
+version: 11.20.0rc1.post25.dev0+a6aea1d12
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -11835,8 +11835,6 @@ slots:
     title: host taxid
     comments:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
-    in_subset:
-    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host NCBI Taxonomy ID
@@ -17047,12 +17045,13 @@ slots:
       importance in the sequencing of (eukaryotic) genome which could remain in draft
       form for a long or unspecified period
     title: estimated size
-    comments:
-    - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
+    notes:
     - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from
       JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional
       required rule are enforced in submission-schema via class rules on IsolateInterface,
       keyed on biosafety_mat_cat.
+    comments:
+    - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
     examples:
     - object: 300000
     from_schema: https://w3id.org/nmdc/nmdc

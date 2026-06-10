@@ -777,7 +777,6 @@
 <h2 id="comments">Comments</h2>
 <ul>
 <li>JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).</li>
-<li>The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -807,12 +806,13 @@ description: The estimated size of the genome prior to sequencing. Of particular
   in the sequencing of (eukaryotic) genome which could remain in draft form for a
   long or unspecified period
 title: estimated size
-comments:
-- JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
+notes:
 - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI
   esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required
   rule are enforced in submission-schema via class rules on IsolateInterface, keyed
   on biosafety_mat_cat.
+comments:
+- JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
 examples:
 - object: 300000
 from_schema: https://w3id.org/nmdc/nmdc
