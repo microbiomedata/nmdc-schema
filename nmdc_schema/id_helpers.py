@@ -3,11 +3,13 @@ This module contains helper functions related to schema element identifiers.
 """
 
 import re
+from functools import lru_cache
 from typing import Dict, List, Optional
 
 from nmdc_schema.get_nmdc_view import ViewGetter
 
 
+@lru_cache
 def get_compatible_typecodes(slot_pattern: str) -> List[str]:
     r"""
     Returns the typecodes, if any, that the schema says values of the specified `id` field can contain.
@@ -61,6 +63,7 @@ def get_compatible_typecodes(slot_pattern: str) -> List[str]:
     return typecodes
 
 
+@lru_cache
 def get_typecode_for_future_ids(slot_pattern: str) -> Optional[str]:
     r"""
     Returns the typecode, if any, that schema authors want future values of the specified `id` field to contain.
@@ -80,6 +83,7 @@ def get_typecode_for_future_ids(slot_pattern: str) -> Optional[str]:
     return compatible_typecodes[0] if len(compatible_typecodes) > 0 else None
 
 
+@lru_cache
 def get_class_name_to_typecode_map() -> Dict[str, List[str]]:
     r"""
     Returns a dictionary in which each key is the name of a schema class and each value is a list of all the typecodes
