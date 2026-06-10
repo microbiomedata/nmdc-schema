@@ -12,8 +12,8 @@
 '.slots.samp_collec_method = .slots.samp_collect_method | del(.slots.samp_collect_method)'
 
 # Add structured aliases to document the GSC canonical names for renamed slots
-'.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
-'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
+'.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "source": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
+'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "source": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
 
 # Tighten samp_collec_device — see PR #3005 / issue #1480
 # Upstream MIxS description has broken links (ENVO root 404; GENEPIO_0002094 obsolete).
@@ -511,7 +511,10 @@
 # globally so any class that hosts host_taxid (currently Biosample) carries
 # the JGI mapping. Not viral-specific — host_taxid is a general MIxS slot
 # describing the host of a sample, applicable to any host-associated context.
-'.slots.host_taxid.structured_aliases = [{"literal_form": "Host NCBI Taxonomy ID", "contexts": ["https://jgi.doe.gov/isolate-submission-form/v19"], "predicate": "EXACT_SYNONYM"}]'
+# JGI Isolate (NA) v19 form alias for host_taxid. source = where the alias
+# comes from; the exact JGI template is access-restricted so we cite the
+# public submission overview and note that in notes (#3157).
+'.slots.host_taxid.structured_aliases = [{"literal_form": "Host NCBI Taxonomy ID", "predicate": "EXACT_SYNONYM", "source": "https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/", "notes": ["Exact JGI form template is access-restricted; source is the public submission overview."]}]'
 
 # Replace ploidy's range (TextValue, plus a structured_pattern requiring
 # "{termLabel} [{termID}]") with PloidyEnum, an NMDC-defined enumeration
@@ -530,6 +533,9 @@
 'del(.slots.estimated_size.annotations)'
 'del(.slots.estimated_size.examples)'
 '.slots.estimated_size.examples = [{"object": 300000}]'
+'.slots.estimated_size.maximum_value = 100000000000'
+# esplims ceiling rationale is internal modeling context -> notes, not comments.
+'.slots.estimated_size.notes = ["The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat."]'
 
 # these slots, by their old names, are not used anywhere in mixs.yaml and seem to confuse the mkdocs search when looking for has_unit etc.
 'del(.slots.["has numeric value"])'
