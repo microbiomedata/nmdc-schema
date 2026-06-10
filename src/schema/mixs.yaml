@@ -7179,7 +7179,7 @@ slots:
     range: string
     structured_aliases:
       - literal_form: samp_collect_method
-        source:
+        contexts:
           - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
   mixs_env_triad_field:
     annotations:
