@@ -92,15 +92,15 @@ def get_class_name_to_typecode_map() -> dict[str, list[str]]:
     True
     >>> all(isinstance(v, list) for v in d.values())  # all dict values are lists
     True
-    >>> "NamedThing" in d  # schema class lacking an `id` field compatible with any typecodes
+    >>> "NamedThing" in d  # schema class lacking an `id` slot compatible with any typecodes
     True
     >>> d["NamedThing"]
     []
-    >>> "Biosample" in d  # schema class having an `id` field compatible with one typecode
+    >>> "Biosample" in d  # schema class having an `id` slot compatible with one typecode
     True
     >>> d["Biosample"]
     ['bsm']
-    >>> "MassSpectrometry" in d  # schema class having an `id` field compatible with multiple typecodes
+    >>> "MassSpectrometry" in d  # schema class having an `id` slot compatible with multiple typecodes
     True
     >>> sorted(d["MassSpectrometry"])
     ['dgms', 'omprc']
