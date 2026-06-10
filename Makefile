@@ -188,7 +188,7 @@ linkml-lint-all:
 .PHONY: linkml-validate-schema
 linkml-validate-schema:
 	@echo "Validating source schema files against LinkML metamodel..."
-	$(RUN) linkml validate src/schema/*.yaml
+	$(RUN) linkml validate $(SOURCE_SCHEMA_DIR)*.yaml
 	@echo "All source schema files pass metamodel validation."
 
 .PHONY: check-dependencies
