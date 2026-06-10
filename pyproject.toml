@@ -4,7 +4,7 @@ dynamic = ["version"]
 description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 readme = "README.md"
 license = "CC0-1.0"
-requires-python = ">=3.10,<4.0"
+requires-python = ">=3.10,<3.14"
 authors = [
     { name = "Bill Duncan", email = "wdduncan@gmail.com" },
     { name = "Chris Mungall", email = "cjmungall@lbl.gov" },
@@ -25,9 +25,11 @@ keywords = ["NMDC", "schema", "metadata", "microbiome"]
 
 # Upper bound policy (PR #2888): 1.0+ packages cap at next major, pre-1.0 at next minor.
 dependencies = [
-    # Capped at <8.2 to match linkml 1.9.4–1.10.0's click constraint.
-    # Can widen to <9.0.0 once linkml releases with the cap removed. See #2985.
-    "click>=8.0.0,<8.2",
+    # linkml >=1.11 requires click >=8.2; linkml <=1.10 required click <8.2.
+    # Keep the floor at 8.0.0 so consumers are NOT forced to click >=8.2 (that
+    # would force linkml >=1.11 on them); cap at the next major. Our own lock
+    # resolves to the latest click. See #2985.
+    "click>=8.0.0,<9.0.0",
     "click-log>=0.4.0,<0.5.0",
     "deprecated>=1.0.0,<2.0.0",
     # (GHSA-65pc-fj4g-8rjx bypass of CVE-2024-3651)
