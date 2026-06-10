@@ -43,11 +43,12 @@ jobs:
       #----------------------------------------------
       # install dependencies if cache does not exist 
       #----------------------------------------------
+      - name: Verify lockfile is in sync with pyproject.toml
+        run: poetry check
+
       - name: Install dependencies
         run: poetry install
 
-      - name: Verify lockfile is in sync with pyproject.toml
-        run: poetry check
 
       #----------------------------------------------
       #              build, test, and quality checks
