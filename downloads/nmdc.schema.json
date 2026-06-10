@@ -597,7 +597,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
+                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
                 },
                 "asphaltenes_pc": {
                     "anyOf": [
@@ -608,7 +608,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
+                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
                 },
                 "associated_studies": {
                     "description": "The study associated with a resource.",
@@ -3328,7 +3328,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high  pour point  is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (soure: https://en.wikipedia.org/wiki/pour_point)"
+                    "description": "Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high pour point is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (source: https://en.wikipedia.org/wiki/pour_point)"
                 },
                 "pre_treatment": {
                     "anyOf": [
@@ -3544,7 +3544,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
+                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
                 },
                 "rna_isolate_meth": {
                     "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
@@ -4095,7 +4095,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
+                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
                 },
                 "season": {
                     "$ref": "#/$defs/SeasonEnum",
@@ -4605,7 +4605,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total Acid Number  (TAN) is a measurement of acidity that is determined by the amount of  potassium hydroxide  in milligrams that is needed to neutralize the acids in one gram of oil.  It is an important quality measurement of  crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)"
+                    "description": "Total Acid Number (TAN) is a measurement of acidity that is determined by the amount of potassium hydroxide in milligrams that is needed to neutralize the acids in one gram of oil. It is an important quality measurement of crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)"
                 },
                 "technical_reps": {
                     "description": "If sending technical replicates of the same sample, indicate the replicate count.",
@@ -4948,7 +4948,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "A measure of oil's resistance  to gradual deformation by  shear stress  or  tensile stress (e.g. 3.5 cp; 100   C)"
+                    "description": "A measure of oil's resistance to gradual deformation by shear stress or tensile stress (e.g. 3.5 cp; 100 \u00b0C)"
                 },
                 "volatile_org_comp": {
                     "description": "Concentration of carbon-based chemicals that easily evaporate at room temperature; can report multiple volatile organic compounds by entering numeric values preceded by name of compound",
@@ -17523,5 +17523,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.0rc1.post28.dev0+1571299b2"
+    "version": "11.20.0rc1.post29.dev0+957134b0e"
 }
