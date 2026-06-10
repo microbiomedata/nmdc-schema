@@ -226,7 +226,7 @@ def dump_from_api(ctx, client_base_url, endpoint_prefix, page_size):
             ns = stats.get("ns")
             storage_stats = stats.get("storageStats")
             logger.info(f"Namespace: {ns}")
-            logger.info(f"Storage Stats:")
+            logger.info("Storage Stats:")
             logger.info(pprint.pformat(storage_stats))
             logger.info("------------------------------------")
             as_collection_name = ns.split(".")[-1]

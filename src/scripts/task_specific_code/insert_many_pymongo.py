@@ -38,8 +38,8 @@ click_log.basic_config(logger)
     required=False,
     default=True,
     show_default=True,
-    help=f"Whether you want the script to set the `directConnection` flag when connecting to the MongoDB server. "
-         f"That is required by some MongoDB servers that belong to a replica set. ",
+    help="Whether you want the script to set the `directConnection` flag when connecting to the MongoDB server. "
+         "That is required by some MongoDB servers that belong to a replica set. ",
 )
 @click.option(
     "--database-name",
@@ -47,7 +47,7 @@ click_log.basic_config(logger)
     required=False,
     default="nmdc",
     show_default=True,
-    help=f"MongoDB database name",
+    help="MongoDB database name",
 )
 @click.option(
     "--validator-uri",
@@ -55,7 +55,7 @@ click_log.basic_config(logger)
     required=False,
     default="https://api.microbiomedata.org/metadata/json:validate",
     show_default=True,
-    help=f"URI of NMDC Schema-based validator",
+    help="URI of NMDC Schema-based validator",
 )
 def insert_many_pymongo(
     input_file,
@@ -82,16 +82,16 @@ def insert_many_pymongo(
     # Note: The validation endpoint currently returns `{"result": "All Okay!"}`
     #       when data is valid.
     #
-    logger.debug(f"Validating the JSON data.")
+    logger.debug("Validating the JSON data.")
     json_data = json.load(input_file)
     response = requests.post(validator_uri, json=json_data)
     assert response.status_code == 200, f"Failed to access validator at {validator_uri}"
     validation_result = response.json()
     if validation_result.get("result") == "All Okay!":
-        logger.debug(f"The JSON data is valid.")
+        logger.debug("The JSON data is valid.")
     else:
         logger.error(f"Validation result: {validation_result}")
-        raise ValueError(f"The JSON data is not valid.")
+        raise ValueError("The JSON data is not valid.")
 
     # Validate the MongoDB connection string and database name.
     mongo_client = pymongo.MongoClient(host=mongo_uri, directConnection=is_direct_connection)
@@ -109,7 +109,7 @@ def insert_many_pymongo(
             num_documents_provided = len(documents)
             logger.info(f"Inserted {num_documents_inserted} of {num_documents_provided} documents.")
             if num_documents_inserted < num_documents_provided:
-                logger.warning(f"Not all of the provided documents were inserted.")
+                logger.warning("Not all of the provided documents were inserted.")
         else:
             logger.warning(f'Skipping collection "{collection_name}" because no documents were provided for it.')
 

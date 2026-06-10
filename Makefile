@@ -195,6 +195,19 @@ linkml-validate-schema:
 check-dependencies:
 	$(RUN) deptry nmdc_schema --known-first-party nmdc_schema
 
+# Lint hand-written Python with ruff (config in pyproject.toml).
+# `lint` is the check-only gate CI runs; `format` rewrites in place.
+# Formatting is not yet gated in CI (the code is not uniformly format-clean);
+# run `make format` for a deliberate sweep.
+.PHONY: lint
+lint:
+	$(RUN) ruff check .
+
+.PHONY: format
+format:
+	$(RUN) ruff format .
+	$(RUN) ruff check --fix .
+
 # Test documentation locally
 serve: mkd-serve
 

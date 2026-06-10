@@ -1,0 +1,59 @@
+name: Python lint (ruff)
+
+# Lints hand-written Python with ruff, the single linter + formatter that
+# replaced black, flake8, isort, bandit, and pydocstyle (see [tool.ruff] in
+# pyproject.toml). ruff runs from the Poetry environment so the version is
+# pinned by poetry.lock.
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+permissions: {}  # default deny; the job below grants only what it needs
+
+# One lint run per ref; a newer push supersedes an in-progress run.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ruff:
+    name: ruff
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # check out the repository to lint it
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: '3.12'
+          cache: 'poetry'
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Ruff lint
+        run: poetry run ruff check .
+
+      # Formatting is not yet gated: the existing code is not uniformly
+      # ruff-format-clean. A one-time `make format` sweep (~75 files) and the
+      # blocking format check are tracked in #3166, kept separate to avoid
+      # mixing large churn into this PR.
+
+      # Non-blocking until the known src/scripts findings (#3164) are cleared,
+      # mirroring how the zizmor job is non-blocking. Once #3164 is done, add
+      # "S" to select in [tool.ruff.lint] and remove this step.
+      - name: Ruff security scan (non-blocking)
+        continue-on-error: true
+        # S101 (assert) is ignored only for tests/** via [tool.ruff.lint]
+        # per-file-ignores, so asserts elsewhere still surface here.
+        run: poetry run ruff check --select S .
