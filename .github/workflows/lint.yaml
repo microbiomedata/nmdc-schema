@@ -54,4 +54,6 @@ jobs:
       # "S" to select in [tool.ruff.lint] and remove this step.
       - name: Ruff security scan (non-blocking)
         continue-on-error: true
-        run: poetry run ruff check --select S --ignore S101 .
+        # S101 (assert) is ignored only for tests/** via [tool.ruff.lint]
+        # per-file-ignores, so asserts elsewhere still surface here.
+        run: poetry run ruff check --select S .
