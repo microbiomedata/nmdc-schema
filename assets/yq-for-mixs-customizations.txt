@@ -1,8 +1,8 @@
 # =============================================================================
 # MIxS Customizations for NMDC Schema
 # =============================================================================
-# Target: GSC MIxS v6.2.2
-# Documentation: src/docs/mixs-v6.2.2-customizations.md
+# Target: GSC MIxS v6.3.0
+# Documentation: src/docs/mixs-v6.3.0-customizations.md
 # =============================================================================
 
 # Rename GSC MIxS slots to preserve NMDC backward compatibility
@@ -12,8 +12,8 @@
 '.slots.samp_collec_method = .slots.samp_collect_method | del(.slots.samp_collect_method)'
 
 # Add structured aliases to document the GSC canonical names for renamed slots
-'.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
-'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
+'.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0"]}]'
+'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0"]}]'
 
 # Tighten samp_collec_device — see PR #3005 / issue #1480
 # Upstream MIxS description has broken links (ENVO root 404; GENEPIO_0002094 obsolete).
@@ -58,7 +58,7 @@
 
 # Restore QuantityValue range for slots that had it in the old NMDC MIxS fork
 # The old fork (pre-2024-05-15) used "quantity value" range for ~184 slots
-# GSC MIxS 6.2.0 changed these to "string" - we restore QuantityValue for NMDC compatibility
+# GSC MIxS v6.3.0 changed these to "string" - we restore QuantityValue for NMDC compatibility
 '.slots.abs_air_humidity.range |= "QuantityValue"'
 '.slots.air_temp.range |= "QuantityValue"'
 '.slots.al_sat.range |= "QuantityValue"'
@@ -214,7 +214,7 @@
 '.slots.xylene.range |= "QuantityValue"'
 
 # Restore multivalued: false for slots that changed from microbiomedata/mixs tag pre-2024-05-15
-# to GSC MIxS v6.2.2 (release tag v6.2.2, commit 1243e22a7565f36f0955cb9c6806e80efe41cc28).
+# to GSC MIxS v6.3.0 (release tag v6.3.0, commit fb3271909f5ab3277d4c869e816bc9e334cb816f).
 # NMDC data uses single values for these slots.
 '.slots.biotic_regm.multivalued |= false'
 '.slots.experimental_factor.multivalued |= false'
@@ -222,8 +222,8 @@
 '.slots.source_mat_id.multivalued |= false'
 '.slots.ventilation_type.multivalued |= false'
 
-# Remove required: true from slots that gained it in GSC MIxS v6.2.2
-# (release tag v6.2.2, commit 1243e22a7565f36f0955cb9c6806e80efe41cc28).
+# Remove required: true from slots that gained it in GSC MIxS v6.3.0
+# (release tag v6.3.0, commit fb3271909f5ab3277d4c869e816bc9e334cb816f).
 # Not present in tag pre-2024-05-15. NMDC doesn't require these slots.
 'del(.slots.abs_air_humidity.required)'
 'del(.slots.add_recov_method.required)'
@@ -308,7 +308,7 @@
 '.slots.herbicide_regm.range |= "TextValue"'
 '.slots.host_body_product.range |= "ControlledTermValue"'
 '.slots.host_body_site.range |= "ControlledTermValue"'
-# '.slots.host_family_relation.range |= "string"'  # Removed from GSC MIxS v6.2.2 - see issue #1368
+# '.slots.host_family_relation.range |= "string"'  # Removed from GSC MIxS v6.3.0 - see issue #1368
 '.slots.host_phenotype.range |= "ControlledTermValue"'
 '.slots.host_subspecf_genlin.range |= "string"'
 '.slots.host_symbiont.range |= "string"'
@@ -543,11 +543,11 @@
 'del(.slots.["has unit"])'
 
 # add "M horizon" to SoilHorizonEnum
-# Note: GSC MIxS v6.2.2 (release tag v6.2.2, commit 1243e22a7565f36f0955cb9c6806e80efe41cc28)
+# Note: GSC MIxS v6.3.0 (release tag v6.3.0, commit fb3271909f5ab3277d4c869e816bc9e334cb816f)
 # renamed this from soil_horizon_enum to SoilHorizonEnum
 '.enums.SoilHorizonEnum.permissible_values.["M horizon"] = {}'
 
-# rename host_sex_enum to HostSexEnum for consistency with other GSC MIxS v6.2.2 enums
+# rename host_sex_enum to HostSexEnum for consistency with other GSC MIxS v6.3.0 enums
 '.enums.HostSexEnum = .enums.host_sex_enum | del(.enums.host_sex_enum)'
 
 # replace HostSexEnum permissible values
@@ -902,7 +902,7 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.api.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "non_ucum_unit"}'
 
 # Units alignment excuses for MIxS slots with zero occurrences in production data
-# '.slots.soil_text_measure.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "pending_analysis"}'  # Removed from GSC MIxS v6.2.2 - see issue #1368
+# '.slots.soil_text_measure.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "pending_analysis"}'  # Removed from GSC MIxS v6.3.0 - see issue #1368
 
 # Complex measurement slots that combine numeric and text data
 '.slots.microbial_biomass.annotations.units_alignment_excuse = {"tag": "units_alignment_excuse", "value": "complex_unit"}'
