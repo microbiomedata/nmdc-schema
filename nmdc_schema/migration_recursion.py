@@ -118,7 +118,9 @@ def main(schema_path, input_path, output_path, migrator_name):
     # all migrations complete. save data.
     logger.info(f"Saving migrated data to {output_path}")
     with open(output_path, "w") as f:
-        yaml.dump(total_dict, f)
+        # safe_dump: total_dict is loaded YAML (primitives); this keeps output
+        # free of Python-specific tags and fails loud on any non-primitive.
+        yaml.safe_dump(total_dict, f)
 
 
 if __name__ == "__main__":
