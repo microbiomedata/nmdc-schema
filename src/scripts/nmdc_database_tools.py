@@ -368,7 +368,9 @@ def extract_study(ctx, study_id: str, output_file: Union[str, bytes, os.PathLike
     # no custom tags) and avoids the arbitrary-object risk zizmor/bandit flag.
     yaml_data = yaml.safe_load(yaml_dumper.dumps(db))
     with open(output_file_path, "w") as f:
-        f.write(yaml.dump(yaml_data, indent=4))
+        # safe_dump to keep the load+dump pipeline consistently safe (no
+        # Python-specific tags if a non-primitive ever reaches yaml_data).
+        f.write(yaml.safe_dump(yaml_data, indent=4))
 
 
 if __name__ == "__main__":
