@@ -148,7 +148,7 @@ settings:
   # 2. The MIxS import pipeline explicitly deletes settings (see project.Makefile)
   # When updating MIxS import, these settings must be manually synced if the source changes.
   #
-  # Source: GSC MIxS v6.2.3 (commit 77cd78836ee01ee8ba2ad10724871a962e3ad694)
+  # Source: GSC MIxS v6.3.0 (commit fb3271909f5ab3277d4c869e816bc9e334cb816f)
   add_recov_methods: 'Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other'
   agrochemical_name: ".*"
   amount: '[-+]?[0-9]*\.?[0-9]+'
