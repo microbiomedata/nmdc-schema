@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/ProtocolExecution/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: ProtocolExecution (DEPRECATED) - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -677,7 +677,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     list_elements_ordered: true
-    alias: has_process_parts
     owner: ProtocolExecution
     domain_of:
     - ProtocolExecution
@@ -692,7 +691,6 @@ attributes:
     deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2336
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: protocol_execution_category
     owner: ProtocolExecution
     domain_of:
     - ProtocolExecution
@@ -705,7 +703,6 @@ attributes:
     aliases:
     - input
     rank: 1000
-    alias: has_input
     owner: ProtocolExecution
     domain_of:
     - PlannedProcess
@@ -721,7 +718,6 @@ attributes:
     aliases:
     - output
     rank: 1000
-    alias: has_output
     owner: ProtocolExecution
     domain_of:
     - PlannedProcess
@@ -735,7 +731,6 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: processing_institution
     owner: ProtocolExecution
     domain_of:
     - PlannedProcess
@@ -744,7 +739,6 @@ attributes:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: protocol_link
     owner: ProtocolExecution
     domain_of:
     - Configuration
@@ -762,7 +756,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: start_date
     owner: ProtocolExecution
     domain_of:
     - PlannedProcess
@@ -778,7 +771,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: end_date
     owner: ProtocolExecution
     domain_of:
     - PlannedProcess
@@ -790,7 +782,6 @@ attributes:
       was generated)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_status
     owner: ProtocolExecution
     domain_of:
     - PlannedProcess
@@ -802,7 +793,6 @@ attributes:
       (ie Failed at call-stage due to a malformed fastq file).
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_comment
     owner: ProtocolExecution
     domain_of:
     - PlannedProcess
@@ -811,7 +801,6 @@ attributes:
     name: has_failure_categorization
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: has_failure_categorization
     owner: ProtocolExecution
     domain_of:
     - PlannedProcess
@@ -846,7 +835,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: ProtocolExecution
     domain_of:
     - NamedThing
@@ -861,7 +849,6 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: ProtocolExecution
     domain_of:
     - PersonValue
@@ -874,7 +861,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: ProtocolExecution
     domain_of:
     - ImageValue
@@ -886,7 +872,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: ProtocolExecution
     domain_of:
     - NamedThing
@@ -916,7 +901,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: ProtocolExecution
     domain_of:
     - EukEval

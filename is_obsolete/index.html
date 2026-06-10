@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -732,23 +732,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NcbiTaxon/">NcbiTaxon</a></td>
-<td>A taxonomy term from NCBI Taxonomy</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../OntologyClass/">OntologyClass</a></td>
 <td>A representation of class defined in an external ontology</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../FunctionalAnnotationTerm/">FunctionalAnnotationTerm</a></td>
-<td>Abstract grouping class for any term/descriptor that can be applied to a func...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>An atom or molecule that can be represented with a chemical formula</td>
 <td>no</td>
 </tr>
 <tr>
@@ -757,13 +742,28 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Pathway/">Pathway</a></td>
+<td>A pathway is a sequence of steps/reactions carried out by an organism or comm...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
+<td>An atom or molecule that can be represented with a chemical formula</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../FunctionalAnnotationTerm/">FunctionalAnnotationTerm</a></td>
+<td>Abstract grouping class for any term/descriptor that can be applied to a func...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../OrthologyGroup/">OrthologyGroup</a></td>
 <td>A set of genes or gene products in which all members are orthologous</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Pathway/">Pathway</a></td>
-<td>A pathway is a sequence of steps/reactions carried out by an organism or comm...</td>
+<td><a href="../NcbiTaxon/">NcbiTaxon</a></td>
+<td>A taxonomy term from NCBI Taxonomy</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -807,7 +807,6 @@ comments:
   it no longer has ontology_relation_set records.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-alias: is_obsolete
 domain_of:
 - OntologyClass
 range: boolean

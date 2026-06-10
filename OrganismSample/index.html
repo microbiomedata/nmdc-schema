@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/OrganismSample/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: Organism Sample (OrganismSample) - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -896,7 +896,6 @@ attributes:
     description: The study associated with a resource.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: associated_studies
     owner: OrganismSample
     domain_of:
     - DataGeneration
@@ -917,7 +916,6 @@ attributes:
       description: Reference to an Organism instance in organism_set
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: expected_organism
     owner: OrganismSample
     domain_of:
     - OrganismSample
@@ -935,7 +933,6 @@ attributes:
     - applying to a Study may not be granular enough
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: embargoed
     owner: OrganismSample
     domain_of:
     - Biosample
@@ -947,7 +944,6 @@ attributes:
     description: Provides information about the provenance of a record.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: provenance_metadata
     owner: OrganismSample
     domain_of:
     - Study
@@ -966,7 +962,6 @@ attributes:
     rank: 1000
     is_a: alternative_identifiers
     abstract: true
-    alias: external_database_identifiers
     owner: OrganismSample
     domain_of:
     - ProcessedSample
@@ -987,7 +982,6 @@ attributes:
     is_a: external_database_identifiers
     mixins:
     - gold_identifiers
-    alias: gold_organism_identifiers
     owner: OrganismSample
     domain_of:
     - OrganismSample
@@ -1008,7 +1002,6 @@ attributes:
     keywords:
     - date
     slot_uri: MIXS:0000011
-    alias: collection_date
     owner: OrganismSample
     domain_of:
     - Biosample
@@ -1035,7 +1028,6 @@ attributes:
     keywords:
     - sample
     slot_uri: MIXS:0001107
-    alias: samp_name
     owner: OrganismSample
     domain_of:
     - Biosample
@@ -1067,7 +1059,6 @@ attributes:
     - host.
     - taxon
     slot_uri: MIXS:0000250
-    alias: host_taxid
     owner: OrganismSample
     domain_of:
     - Biosample
@@ -1093,7 +1084,6 @@ attributes:
         overview.
       source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
-    alias: sample_isolation_method
     owner: OrganismSample
     domain_of:
     - OrganismSample
@@ -1110,7 +1100,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000021
-    alias: ploidy
     owner: OrganismSample
     domain_of:
     - OrganismSample
@@ -1179,7 +1168,6 @@ attributes:
     - material
     - source
     slot_uri: MIXS:0000026
-    alias: source_mat_id
     owner: OrganismSample
     domain_of:
     - Biosample
@@ -1197,7 +1185,6 @@ attributes:
     - value: metagenomics; metabolomics; metaproteomics
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 3
-    alias: analysis_type
     owner: OrganismSample
     domain_of:
     - Protocol
@@ -1234,7 +1221,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: OrganismSample
     domain_of:
     - NamedThing
@@ -1249,7 +1235,6 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: OrganismSample
     domain_of:
     - PersonValue
@@ -1262,7 +1247,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: OrganismSample
     domain_of:
     - ImageValue
@@ -1274,7 +1258,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: OrganismSample
     domain_of:
     - NamedThing
@@ -1304,7 +1287,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: OrganismSample
     domain_of:
     - EukEval

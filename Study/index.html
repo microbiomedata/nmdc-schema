@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/Study/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: Study - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -1144,7 +1144,6 @@ attributes:
     is_a: study_identifiers
     mixins:
     - emsl_identifiers
-    alias: emsl_project_identifiers
     owner: Study
     domain_of:
     - Study
@@ -1169,7 +1168,6 @@ attributes:
     is_a: study_identifiers
     mixins:
     - gnps_identifiers
-    alias: gnps_task_identifiers
     owner: Study
     domain_of:
     - Study
@@ -1191,7 +1189,6 @@ attributes:
     is_a: study_identifiers
     mixins:
     - gold_identifiers
-    alias: gold_study_identifiers
     owner: Study
     domain_of:
     - Study
@@ -1225,7 +1222,6 @@ attributes:
     is_a: study_identifiers
     mixins:
     - insdc_identifiers
-    alias: insdc_bioproject_identifiers
     owner: Study
     domain_of:
     - NucleotideSequencing
@@ -1254,7 +1250,6 @@ attributes:
     is_a: study_identifiers
     mixins:
     - jgi_portal_identifiers
-    alias: jgi_portal_study_identifiers
     owner: Study
     domain_of:
     - Study
@@ -1271,7 +1266,6 @@ attributes:
     is_a: study_identifiers
     mixins:
     - mgnify_identifiers
-    alias: mgnify_project_identifiers
     owner: Study
     domain_of:
     - Study
@@ -1285,7 +1279,6 @@ attributes:
     is_a: study_identifiers
     mixins:
     - neon_identifiers
-    alias: neon_study_identifiers
     owner: Study
     domain_of:
     - Study
@@ -1299,7 +1292,6 @@ attributes:
     title: Related Identifiers
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: related_identifiers
     owner: Study
     domain_of:
     - Study
@@ -1310,7 +1302,6 @@ attributes:
       between description and alternative descriptions is application-specific.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_descriptions
     owner: Study
     domain_of:
     - Study
@@ -1331,7 +1322,6 @@ attributes:
     - dcterms:alternative
     - skos:altLabel
     rank: 1000
-    alias: alternative_names
     owner: Study
     domain_of:
     - OntologyClass
@@ -1345,7 +1335,6 @@ attributes:
       added to and last modified in the NMDC database.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: provenance_metadata
     owner: Study
     domain_of:
     - Study
@@ -1361,7 +1350,6 @@ attributes:
     exact_mappings:
     - dcterms:alternative
     rank: 1000
-    alias: alternative_titles
     owner: Study
     domain_of:
     - Study
@@ -1385,7 +1373,6 @@ attributes:
     - https://gold.jgi.doe.gov/help
     rank: 1000
     is_a: gold_path_field
-    alias: ecosystem
     owner: Study
     domain_of:
     - Study
@@ -1406,7 +1393,6 @@ attributes:
     - https://gold.jgi.doe.gov/help
     rank: 1000
     is_a: gold_path_field
-    alias: ecosystem_category
     owner: Study
     domain_of:
     - Study
@@ -1426,7 +1412,6 @@ attributes:
     - https://gold.jgi.doe.gov/help
     rank: 1000
     is_a: gold_path_field
-    alias: ecosystem_subtype
     owner: Study
     domain_of:
     - Study
@@ -1448,7 +1433,6 @@ attributes:
     - https://gold.jgi.doe.gov/help
     rank: 1000
     is_a: gold_path_field
-    alias: ecosystem_type
     owner: Study
     domain_of:
     - Study
@@ -1467,7 +1451,6 @@ attributes:
     - https://gold.jgi.doe.gov/help
     rank: 1000
     is_a: gold_path_field
-    alias: specific_ecosystem
     owner: Study
     domain_of:
     - Study
@@ -1497,7 +1480,6 @@ attributes:
     - Associated DOIs
     - Associated digital object identifiers
     rank: 1000
-    alias: associated_dois
     owner: Study
     domain_of:
     - Study
@@ -1521,7 +1503,6 @@ attributes:
     close_mappings:
     - NCIT:C39409
     rank: 1000
-    alias: funding_sources
     owner: Study
     domain_of:
     - Study
@@ -1539,7 +1520,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: prov:qualifiedAssociation
-    alias: has_credit_associations
     owner: Study
     domain_of:
     - Study
@@ -1559,7 +1539,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     is_a: websites
-    alias: homepage_website
     owner: Study
     domain_of:
     - Study
@@ -1575,7 +1554,6 @@ attributes:
         value: Add any additional notes or comments about this study.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: notes
     owner: Study
     domain_of:
     - Study
@@ -1588,7 +1566,6 @@ attributes:
     mappings:
     - SIO:000337
     rank: 1000
-    alias: objective
     owner: Study
     domain_of:
     - Study
@@ -1603,7 +1580,6 @@ attributes:
     - is part of
     rank: 1000
     slot_uri: dcterms:isPartOf
-    alias: part_of
     owner: Study
     domain_of:
     - Study
@@ -1620,7 +1596,6 @@ attributes:
     aliases:
     - PI
     rank: 1000
-    alias: principal_investigator
     owner: Study
     domain_of:
     - Study
@@ -1630,7 +1605,6 @@ attributes:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: protocol_link
     owner: Study
     domain_of:
     - Configuration
@@ -1638,13 +1612,13 @@ attributes:
     - Study
     range: Protocol
     multivalued: true
+    inlined: true
     inlined_as_list: true
   study_category:
     name: study_category
     description: The type of research initiative
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: study_category
     owner: Study
     domain_of:
     - Study
@@ -1655,7 +1629,6 @@ attributes:
     description: Links a study to one or more images.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: study_image
     owner: Study
     domain_of:
     - Study
@@ -1671,7 +1644,6 @@ attributes:
     exact_mappings:
     - dcterms:title
     rank: 1000
-    alias: title
     owner: Study
     domain_of:
     - Study
@@ -1696,7 +1668,6 @@ attributes:
     see_also:
     - nmdc:url
     rank: 1000
-    alias: websites
     owner: Study
     domain_of:
     - PersonValue
@@ -1731,7 +1702,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: Study
     domain_of:
     - NamedThing
@@ -1750,7 +1720,6 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: Study
     domain_of:
     - PersonValue
@@ -1769,7 +1738,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: Study
     domain_of:
     - ImageValue
@@ -1782,7 +1750,6 @@ attributes:
       Matches that which has been submitted to NMDC
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: Study
     domain_of:
     - NamedThing
@@ -1812,7 +1779,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: Study
     domain_of:
     - EukEval

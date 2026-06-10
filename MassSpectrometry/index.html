@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/MassSpectrometry/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: MassSpectrometry - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -852,7 +852,6 @@ attributes:
     - value: direct_infusion_syringe
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: eluent_introduction_category
     owner: MassSpectrometry
     domain_of:
     - MassSpectrometry
@@ -866,7 +865,6 @@ attributes:
       index
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: generates_calibration
     owner: MassSpectrometry
     domain_of:
     - MassSpectrometry
@@ -880,7 +878,6 @@ attributes:
       information about how a sample was introduced into the mass spectrometer.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: has_chromatography_configuration
     owner: MassSpectrometry
     domain_of:
     - MassSpectrometry
@@ -893,7 +890,6 @@ attributes:
     description: The identifier of the associated MassSpectrometryConfiguration.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: has_mass_spectrometry_configuration
     owner: MassSpectrometry
     domain_of:
     - MassSpectrometry
@@ -910,7 +906,6 @@ attributes:
       '
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: analyte_category
     owner: MassSpectrometry
     domain_of:
     - DataGeneration
@@ -921,7 +916,6 @@ attributes:
     description: The study associated with a resource.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: associated_studies
     owner: MassSpectrometry
     domain_of:
     - DataGeneration
@@ -938,7 +932,6 @@ attributes:
     description: What instrument was used during DataGeneration or MaterialProcessing.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: instrument_used
     owner: MassSpectrometry
     domain_of:
     - DataGeneration
@@ -955,7 +948,6 @@ attributes:
     aliases:
     - PI
     rank: 1000
-    alias: principal_investigator
     owner: MassSpectrometry
     domain_of:
     - Study
@@ -968,7 +960,6 @@ attributes:
       or user.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: instrument_instance_specifier
     owner: MassSpectrometry
     domain_of:
     - DataGeneration
@@ -979,7 +970,6 @@ attributes:
       was added to and last modified in the NMDC database.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: provenance_metadata
     owner: MassSpectrometry
     domain_of:
     - Study
@@ -994,7 +984,6 @@ attributes:
     aliases:
     - input
     rank: 1000
-    alias: has_input
     owner: MassSpectrometry
     domain_of:
     - PlannedProcess
@@ -1011,7 +1000,6 @@ attributes:
     aliases:
     - output
     rank: 1000
-    alias: has_output
     owner: MassSpectrometry
     domain_of:
     - PlannedProcess
@@ -1025,7 +1013,6 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: processing_institution
     owner: MassSpectrometry
     domain_of:
     - PlannedProcess
@@ -1034,7 +1021,6 @@ attributes:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: protocol_link
     owner: MassSpectrometry
     domain_of:
     - Configuration
@@ -1052,7 +1038,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: start_date
     owner: MassSpectrometry
     domain_of:
     - PlannedProcess
@@ -1068,7 +1053,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: end_date
     owner: MassSpectrometry
     domain_of:
     - PlannedProcess
@@ -1080,7 +1064,6 @@ attributes:
       was generated)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_status
     owner: MassSpectrometry
     domain_of:
     - PlannedProcess
@@ -1092,7 +1075,6 @@ attributes:
       (ie Failed at call-stage due to a malformed fastq file).
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_comment
     owner: MassSpectrometry
     domain_of:
     - PlannedProcess
@@ -1101,7 +1083,6 @@ attributes:
     name: has_failure_categorization
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: has_failure_categorization
     owner: MassSpectrometry
     domain_of:
     - PlannedProcess
@@ -1136,7 +1117,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: MassSpectrometry
     domain_of:
     - NamedThing
@@ -1151,7 +1131,6 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: MassSpectrometry
     domain_of:
     - PersonValue
@@ -1164,7 +1143,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: MassSpectrometry
     domain_of:
     - ImageValue
@@ -1176,7 +1154,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: MassSpectrometry
     domain_of:
     - NamedThing
@@ -1206,7 +1183,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: MassSpectrometry
     domain_of:
     - EukEval

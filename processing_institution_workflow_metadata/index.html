@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -732,18 +732,28 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ReadQcAnalysis/">ReadQcAnalysis</a></td>
-<td>A workflow execution activity that performs quality control on raw Illumina r...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 <td>Represents an instance of an execution of a particular workflow</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
+<td>Initial sequencing activity that precedes any analysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
+<td>A WorkflowExecution whose output indicates the potential functions of genes o...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td>A workflow execution activity that provides functional and structural annotat...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
+<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -757,28 +767,23 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
+<td>A workflow process that provides expression values and read counts for gene f...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
+<td>A workflow execution activity that uses computational binning tools to group ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ReadQcAnalysis/">ReadQcAnalysis</a></td>
+<td>A workflow execution activity that performs quality control on raw Illumina r...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
 <td>A workflow execution activity that performs taxonomy classification using seq...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
-<td>A workflow execution activity that provides functional and structural annotat...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
-<td>A WorkflowExecution whose output indicates the potential functions of genes o...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NomAnalysis/">NomAnalysis</a></td>
-<td></td>
 <td>no</td>
 </tr>
 <tr>
@@ -787,18 +792,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
-<td>A workflow process that provides expression values and read counts for gene f...</td>
+<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
-<td>Initial sequencing activity that precedes any analysis</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
-<td>A workflow execution activity that uses computational binning tools to group ...</td>
+<td><a href="../NomAnalysis/">NomAnalysis</a></td>
+<td></td>
 <td>no</td>
 </tr>
 </tbody>
@@ -857,7 +857,6 @@ from_schema: https://w3id.org/nmdc/nmdc
 mappings:
 - NCIT:C165211
 rank: 1000
-alias: processing_institution_workflow_metadata
 domain_of:
 - WorkflowExecution
 range: string

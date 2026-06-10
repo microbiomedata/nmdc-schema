@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/MixingProcess/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: MixingProcess - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -713,7 +713,6 @@ attributes:
         has_unit: h
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: duration
     owner: MixingProcess
     domain_of:
     - MixingProcess
@@ -726,7 +725,6 @@ attributes:
     description: What instrument was used during DataGeneration or MaterialProcessing.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: instrument_used
     owner: MixingProcess
     domain_of:
     - DataGeneration
@@ -743,7 +741,6 @@ attributes:
     aliases:
     - input
     rank: 1000
-    alias: has_input
     owner: MixingProcess
     domain_of:
     - PlannedProcess
@@ -759,7 +756,6 @@ attributes:
     aliases:
     - output
     rank: 1000
-    alias: has_output
     owner: MixingProcess
     domain_of:
     - PlannedProcess
@@ -773,7 +769,6 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: processing_institution
     owner: MixingProcess
     domain_of:
     - PlannedProcess
@@ -782,7 +777,6 @@ attributes:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: protocol_link
     owner: MixingProcess
     domain_of:
     - Configuration
@@ -800,7 +794,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: start_date
     owner: MixingProcess
     domain_of:
     - PlannedProcess
@@ -816,7 +809,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: end_date
     owner: MixingProcess
     domain_of:
     - PlannedProcess
@@ -828,7 +820,6 @@ attributes:
       was generated)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_status
     owner: MixingProcess
     domain_of:
     - PlannedProcess
@@ -840,7 +831,6 @@ attributes:
       (ie Failed at call-stage due to a malformed fastq file).
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_comment
     owner: MixingProcess
     domain_of:
     - PlannedProcess
@@ -849,7 +839,6 @@ attributes:
     name: has_failure_categorization
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: has_failure_categorization
     owner: MixingProcess
     domain_of:
     - PlannedProcess
@@ -884,7 +873,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: MixingProcess
     domain_of:
     - NamedThing
@@ -898,7 +886,6 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: MixingProcess
     domain_of:
     - PersonValue
@@ -911,7 +898,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: MixingProcess
     domain_of:
     - ImageValue
@@ -923,7 +909,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: MixingProcess
     domain_of:
     - NamedThing
@@ -953,7 +938,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: MixingProcess
     domain_of:
     - EukEval

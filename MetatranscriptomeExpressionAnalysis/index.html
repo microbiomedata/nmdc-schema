@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/MetatranscriptomeExpressionAnalysis/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: MetatranscriptomeExpressionAnalysis - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -768,7 +768,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     is_a: external_database_identifiers
-    alias: img_identifiers
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - MetagenomeAnnotation
@@ -789,7 +788,6 @@ attributes:
     mappings:
     - prov:endedAtTime
     rank: 1000
-    alias: ended_at_time
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - WorkflowExecution
@@ -802,7 +800,6 @@ attributes:
     - value: NERSC-Cori
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: execution_resource
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - WorkflowExecution
@@ -816,7 +813,6 @@ attributes:
     - value: https://github.com/microbiomedata/metaMS/blob/master/metaMS/gcmsWorkflow.py
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: git_url
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - WorkflowExecution
@@ -832,7 +828,6 @@ attributes:
     mappings:
     - prov:startedAtTime
     rank: 1000
-    alias: started_at_time
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - WorkflowExecution
@@ -851,7 +846,6 @@ attributes:
     exact_mappings:
     - schema:version
     rank: 1000
-    alias: version
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - WorkflowExecution
@@ -874,7 +868,6 @@ attributes:
     mappings:
     - prov:wasInformedBy
     rank: 1000
-    alias: was_informed_by
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - WorkflowExecution
@@ -896,7 +889,6 @@ attributes:
     mappings:
     - NCIT:C165211
     rank: 1000
-    alias: processing_institution_workflow_metadata
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - WorkflowExecution
@@ -908,7 +900,6 @@ attributes:
       or resultant DataObjects should be used in favor of this record.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: superseded_by
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - DataObject
@@ -924,7 +915,6 @@ attributes:
     aliases:
     - input
     rank: 1000
-    alias: has_input
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - PlannedProcess
@@ -941,7 +931,6 @@ attributes:
     aliases:
     - output
     rank: 1000
-    alias: has_output
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - PlannedProcess
@@ -955,7 +944,6 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: processing_institution
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - PlannedProcess
@@ -965,7 +953,6 @@ attributes:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: protocol_link
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Configuration
@@ -983,7 +970,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: start_date
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - PlannedProcess
@@ -999,7 +985,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: end_date
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - PlannedProcess
@@ -1011,7 +996,6 @@ attributes:
       was generated)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_status
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - PlannedProcess
@@ -1023,7 +1007,6 @@ attributes:
       (ie Failed at call-stage due to a malformed fastq file).
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_comment
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - PlannedProcess
@@ -1032,7 +1015,6 @@ attributes:
     name: has_failure_categorization
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: has_failure_categorization
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - PlannedProcess
@@ -1067,7 +1049,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - NamedThing
@@ -1082,7 +1063,6 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - PersonValue
@@ -1095,7 +1075,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - ImageValue
@@ -1107,7 +1086,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - NamedThing
@@ -1137,7 +1115,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - EukEval

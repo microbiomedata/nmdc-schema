@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/ProcessedSample/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: Processed Sample (ProcessedSample) - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -671,7 +671,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     abstract: true
-    alias: biomaterial_purity
     owner: ProcessedSample
     domain_of:
     - ProcessedSample
@@ -687,7 +686,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 7
     is_a: biomaterial_purity
-    alias: dna_absorb1
     owner: ProcessedSample
     domain_of:
     - ProcessedSample
@@ -706,7 +704,6 @@ attributes:
     see_also:
     - nmdc:nucleic_acid_concentration
     rank: 5
-    alias: dna_concentration
     owner: ProcessedSample
     domain_of:
     - ProcessedSample
@@ -726,7 +723,6 @@ attributes:
     rank: 1000
     is_a: alternative_identifiers
     abstract: true
-    alias: external_database_identifiers
     owner: ProcessedSample
     domain_of:
     - ProcessedSample
@@ -739,7 +735,6 @@ attributes:
     description: The portion of the sample that is taken for downstream activity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: sampled_portion
     owner: ProcessedSample
     domain_of:
     - SubSamplingProcess
@@ -773,7 +768,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: ProcessedSample
     domain_of:
     - NamedThing
@@ -788,7 +782,6 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: ProcessedSample
     domain_of:
     - PersonValue
@@ -801,7 +794,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: ProcessedSample
     domain_of:
     - ImageValue
@@ -813,7 +805,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: ProcessedSample
     domain_of:
     - NamedThing
@@ -843,7 +834,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: ProcessedSample
     domain_of:
     - EukEval

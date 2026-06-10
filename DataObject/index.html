@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/DataObject/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: DataObject - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -884,7 +884,6 @@ attributes:
     - value: gzip
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: compression_type
     owner: DataObject
     domain_of:
     - DataObject
@@ -895,7 +894,6 @@ attributes:
       or processed data from a workflow execution.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: data_category
     owner: DataObject
     domain_of:
     - DataObject
@@ -914,7 +912,6 @@ attributes:
       contexts:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
-    alias: data_object_type
     owner: DataObject
     domain_of:
     - DataObject
@@ -925,7 +922,6 @@ attributes:
     description: Size of the file in bytes
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: file_size_bytes
     owner: DataObject
     domain_of:
     - DataObject
@@ -937,7 +933,6 @@ attributes:
     is_a: external_database_identifiers
     mixins:
     - insdc_identifiers
-    alias: insdc_experiment_identifiers
     owner: DataObject
     domain_of:
     - NucleotideSequencing
@@ -950,7 +945,6 @@ attributes:
     description: MD5 checksum of file (pre-compressed)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: md5_checksum
     owner: DataObject
     domain_of:
     - DataObject
@@ -961,7 +955,6 @@ attributes:
     - See issue 207 - this clashes with the mixs field
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: url
     owner: DataObject
     domain_of:
     - ImageValue
@@ -974,7 +967,6 @@ attributes:
     mappings:
     - prov:wasGeneratedBy
     rank: 1000
-    alias: was_generated_by
     owner: DataObject
     domain_of:
     - FunctionalAnnotationAggMember
@@ -994,7 +986,6 @@ attributes:
       replicates of a single sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: in_manifest
     owner: DataObject
     domain_of:
     - DataObject
@@ -1010,7 +1001,6 @@ attributes:
       or resultant DataObjects should be used in favor of this record.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: superseded_by
     owner: DataObject
     domain_of:
     - DataObject
@@ -1043,7 +1033,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: DataObject
     domain_of:
     - NamedThing
@@ -1058,7 +1047,6 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: DataObject
     domain_of:
     - PersonValue
@@ -1072,7 +1060,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: DataObject
     domain_of:
     - ImageValue
@@ -1085,7 +1072,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: DataObject
     domain_of:
     - NamedThing
@@ -1115,7 +1101,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: DataObject
     domain_of:
     - EukEval

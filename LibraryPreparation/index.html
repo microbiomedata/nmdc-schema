@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/LibraryPreparation/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: LibraryPreparation - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -801,7 +801,6 @@ attributes:
     - A value of true means the library is stranded, flase means non-stranded.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: is_stranded
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
@@ -812,7 +811,6 @@ attributes:
     exact_mappings:
     - GENEPIO:0001450
     rank: 1000
-    alias: library_preparation_kit
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
@@ -824,7 +822,6 @@ attributes:
     - value: DNA
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: library_type
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
@@ -840,7 +837,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000038
-    alias: nucl_acid_amp
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
@@ -870,7 +866,6 @@ attributes:
     string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
       elongation:degrees_minutes;total cycles
     slot_uri: MIXS:0000049
-    alias: pcr_cond
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
@@ -881,7 +876,6 @@ attributes:
     exact_mappings:
     - OBI:0002475
     rank: 1000
-    alias: pcr_cycles
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
@@ -900,7 +894,6 @@ attributes:
     keywords:
     - pcr
     slot_uri: MIXS:0000046
-    alias: pcr_primers
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
@@ -913,7 +906,6 @@ attributes:
     description: Lists the strand orientiation for a stranded RNA library preparation.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: stranded_orientation
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
@@ -929,7 +921,6 @@ attributes:
     keywords:
     - target
     slot_uri: MIXS:0000044
-    alias: target_gene
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
@@ -946,7 +937,6 @@ attributes:
     keywords:
     - target
     slot_uri: MIXS:0000045
-    alias: target_subfragment
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
@@ -956,7 +946,6 @@ attributes:
     description: What instrument was used during DataGeneration or MaterialProcessing.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: instrument_used
     owner: LibraryPreparation
     domain_of:
     - DataGeneration
@@ -973,7 +962,6 @@ attributes:
     aliases:
     - input
     rank: 1000
-    alias: has_input
     owner: LibraryPreparation
     domain_of:
     - PlannedProcess
@@ -990,7 +978,6 @@ attributes:
     aliases:
     - output
     rank: 1000
-    alias: has_output
     owner: LibraryPreparation
     domain_of:
     - PlannedProcess
@@ -1005,7 +992,6 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: processing_institution
     owner: LibraryPreparation
     domain_of:
     - PlannedProcess
@@ -1014,7 +1000,6 @@ attributes:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: protocol_link
     owner: LibraryPreparation
     domain_of:
     - Configuration
@@ -1032,7 +1017,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: start_date
     owner: LibraryPreparation
     domain_of:
     - PlannedProcess
@@ -1048,7 +1032,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: end_date
     owner: LibraryPreparation
     domain_of:
     - PlannedProcess
@@ -1060,7 +1043,6 @@ attributes:
       was generated)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_status
     owner: LibraryPreparation
     domain_of:
     - PlannedProcess
@@ -1072,7 +1054,6 @@ attributes:
       (ie Failed at call-stage due to a malformed fastq file).
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_comment
     owner: LibraryPreparation
     domain_of:
     - PlannedProcess
@@ -1081,7 +1062,6 @@ attributes:
     name: has_failure_categorization
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: has_failure_categorization
     owner: LibraryPreparation
     domain_of:
     - PlannedProcess
@@ -1116,7 +1096,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: LibraryPreparation
     domain_of:
     - NamedThing
@@ -1131,7 +1110,6 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: LibraryPreparation
     domain_of:
     - PersonValue
@@ -1144,7 +1122,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: LibraryPreparation
     domain_of:
     - ImageValue
@@ -1156,7 +1133,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: LibraryPreparation
     domain_of:
     - NamedThing
@@ -1186,7 +1162,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: LibraryPreparation
     domain_of:
     - EukEval

@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/FiltrationProcess/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: FiltrationProcess - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -763,7 +763,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     list_elements_ordered: true
-    alias: conditionings
     owner: FiltrationProcess
     domain_of:
     - FiltrationProcess
@@ -782,7 +781,6 @@ attributes:
     - ORCID:0009-0001-1555-1601
     - ORCID:0000-0002-8683-0050
     rank: 1000
-    alias: container_size
     owner: FiltrationProcess
     domain_of:
     - SubSamplingProcess
@@ -802,7 +800,6 @@ attributes:
       are available for air sampling (0.45−0.8 μm are commonly employed).'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: filter_material
     owner: FiltrationProcess
     domain_of:
     - FiltrationProcess
@@ -817,7 +814,6 @@ attributes:
       of the pores in a material.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: filter_pore_size
     owner: FiltrationProcess
     domain_of:
     - FiltrationProcess
@@ -827,7 +823,6 @@ attributes:
     description: The type of conditioning applied to a filter, device, etc.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: filtration_category
     owner: FiltrationProcess
     domain_of:
     - FiltrationProcess
@@ -837,7 +832,6 @@ attributes:
     description: Whether or not pressure was applied to a thing or process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: is_pressurized
     owner: FiltrationProcess
     domain_of:
     - FiltrationProcess
@@ -848,7 +842,6 @@ attributes:
       or mixture.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: separation_method
     owner: FiltrationProcess
     domain_of:
     - FiltrationProcess
@@ -865,7 +858,6 @@ attributes:
     - ORCID:0009-0001-1555-1601
     - ORCID:0000-0002-8683-0050
     rank: 1000
-    alias: volume
     owner: FiltrationProcess
     domain_of:
     - Extraction
@@ -879,7 +871,6 @@ attributes:
     description: What instrument was used during DataGeneration or MaterialProcessing.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: instrument_used
     owner: FiltrationProcess
     domain_of:
     - DataGeneration
@@ -896,7 +887,6 @@ attributes:
     aliases:
     - input
     rank: 1000
-    alias: has_input
     owner: FiltrationProcess
     domain_of:
     - PlannedProcess
@@ -912,7 +902,6 @@ attributes:
     aliases:
     - output
     rank: 1000
-    alias: has_output
     owner: FiltrationProcess
     domain_of:
     - PlannedProcess
@@ -926,7 +915,6 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: processing_institution
     owner: FiltrationProcess
     domain_of:
     - PlannedProcess
@@ -935,7 +923,6 @@ attributes:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: protocol_link
     owner: FiltrationProcess
     domain_of:
     - Configuration
@@ -953,7 +940,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: start_date
     owner: FiltrationProcess
     domain_of:
     - PlannedProcess
@@ -969,7 +955,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: end_date
     owner: FiltrationProcess
     domain_of:
     - PlannedProcess
@@ -981,7 +966,6 @@ attributes:
       was generated)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_status
     owner: FiltrationProcess
     domain_of:
     - PlannedProcess
@@ -993,7 +977,6 @@ attributes:
       (ie Failed at call-stage due to a malformed fastq file).
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_comment
     owner: FiltrationProcess
     domain_of:
     - PlannedProcess
@@ -1002,7 +985,6 @@ attributes:
     name: has_failure_categorization
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: has_failure_categorization
     owner: FiltrationProcess
     domain_of:
     - PlannedProcess
@@ -1037,7 +1019,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: FiltrationProcess
     domain_of:
     - NamedThing
@@ -1052,7 +1033,6 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: FiltrationProcess
     domain_of:
     - PersonValue
@@ -1065,7 +1045,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: FiltrationProcess
     domain_of:
     - ImageValue
@@ -1077,7 +1056,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: FiltrationProcess
     domain_of:
     - NamedThing
@@ -1107,7 +1085,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: FiltrationProcess
     domain_of:
     - EukEval

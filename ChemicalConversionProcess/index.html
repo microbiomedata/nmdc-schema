@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/ChemicalConversionProcess/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: ChemicalConversionProcess - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -740,7 +740,6 @@ attributes:
     description: The type of chemical conversion process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: chemical_conversion_category
     owner: ChemicalConversionProcess
     domain_of:
     - ChemicalConversionProcess
@@ -758,7 +757,6 @@ attributes:
         has_unit: h
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: duration
     owner: ChemicalConversionProcess
     domain_of:
     - MixingProcess
@@ -780,7 +778,6 @@ attributes:
     - ORCID:0009-0001-1555-1601
     - ORCID:0000-0002-8683-0050
     rank: 1000
-    alias: temperature
     owner: ChemicalConversionProcess
     domain_of:
     - ChromatographyConfiguration
@@ -796,7 +793,6 @@ attributes:
     description: The substances that are combined to enable a ChemicalConversionProcess.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: substances_used
     owner: ChemicalConversionProcess
     domain_of:
     - Extraction
@@ -817,7 +813,6 @@ attributes:
     description: The volume of the combined substances that was included in a ChemicalConversionProcess.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: substances_volume
     owner: ChemicalConversionProcess
     domain_of:
     - ChemicalConversionProcess
@@ -827,7 +822,6 @@ attributes:
     description: What instrument was used during DataGeneration or MaterialProcessing.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: instrument_used
     owner: ChemicalConversionProcess
     domain_of:
     - DataGeneration
@@ -844,7 +838,6 @@ attributes:
     aliases:
     - input
     rank: 1000
-    alias: has_input
     owner: ChemicalConversionProcess
     domain_of:
     - PlannedProcess
@@ -860,7 +853,6 @@ attributes:
     aliases:
     - output
     rank: 1000
-    alias: has_output
     owner: ChemicalConversionProcess
     domain_of:
     - PlannedProcess
@@ -874,7 +866,6 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: processing_institution
     owner: ChemicalConversionProcess
     domain_of:
     - PlannedProcess
@@ -883,7 +874,6 @@ attributes:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: protocol_link
     owner: ChemicalConversionProcess
     domain_of:
     - Configuration
@@ -901,7 +891,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: start_date
     owner: ChemicalConversionProcess
     domain_of:
     - PlannedProcess
@@ -917,7 +906,6 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: end_date
     owner: ChemicalConversionProcess
     domain_of:
     - PlannedProcess
@@ -929,7 +917,6 @@ attributes:
       was generated)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_status
     owner: ChemicalConversionProcess
     domain_of:
     - PlannedProcess
@@ -941,7 +928,6 @@ attributes:
       (ie Failed at call-stage due to a malformed fastq file).
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: qc_comment
     owner: ChemicalConversionProcess
     domain_of:
     - PlannedProcess
@@ -950,7 +936,6 @@ attributes:
     name: has_failure_categorization
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: has_failure_categorization
     owner: ChemicalConversionProcess
     domain_of:
     - PlannedProcess
@@ -985,7 +970,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: ChemicalConversionProcess
     domain_of:
     - NamedThing
@@ -1000,7 +984,6 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: ChemicalConversionProcess
     domain_of:
     - PersonValue
@@ -1013,7 +996,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: ChemicalConversionProcess
     domain_of:
     - ImageValue
@@ -1025,7 +1007,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: ChemicalConversionProcess
     domain_of:
     - NamedThing
@@ -1055,7 +1036,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: ChemicalConversionProcess
     domain_of:
     - EukEval

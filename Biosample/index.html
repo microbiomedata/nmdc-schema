@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -5457,7 +5457,6 @@ attributes:
     description: The study associated with a resource.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: associated_studies
     owner: Biosample
     domain_of:
     - DataGeneration
@@ -5474,7 +5473,6 @@ attributes:
     title: Categories the biosample belongs to
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: biosample_categories
     owner: Biosample
     domain_of:
     - Biosample
@@ -5489,7 +5487,6 @@ attributes:
     - this illustrates implementing a Biosample relation with a (binary) slot
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: collected_from
     owner: Biosample
     domain_of:
     - Biosample
@@ -5507,7 +5504,6 @@ attributes:
     - applying to a Study may not be granular enough
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: embargoed
     owner: Biosample
     domain_of:
     - Biosample
@@ -5534,7 +5530,6 @@ attributes:
     - status
     string_serialization: '{termLabel} [{termID}]|{text}'
     slot_uri: MIXS:0000031
-    alias: host_disease_stat
     owner: Biosample
     domain_of:
     - Biosample
@@ -5551,7 +5546,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     is_a: external_database_identifiers
-    alias: img_identifiers
     owner: Biosample
     domain_of:
     - MetagenomeAnnotation
@@ -5569,7 +5563,6 @@ attributes:
     is_a: biosample_identifiers
     mixins:
     - neon_identifiers
-    alias: neon_biosample_identifiers
     owner: Biosample
     domain_of:
     - Biosample
@@ -5586,7 +5579,6 @@ attributes:
     - dcterms:alternative
     - skos:altLabel
     rank: 1000
-    alias: alternative_names
     owner: Biosample
     domain_of:
     - OntologyClass
@@ -5600,7 +5592,6 @@ attributes:
       was added to and last modified in the NMDC database.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: provenance_metadata
     owner: Biosample
     domain_of:
     - Study
@@ -5625,7 +5616,6 @@ attributes:
     is_a: biosample_identifiers
     mixins:
     - gold_identifiers
-    alias: gold_biosample_identifiers
     owner: Biosample
     domain_of:
     - Biosample
@@ -5654,7 +5644,6 @@ attributes:
     is_a: biosample_identifiers
     mixins:
     - insdc_identifiers
-    alias: insdc_biosample_identifiers
     owner: Biosample
     domain_of:
     - Biosample
@@ -5675,7 +5664,6 @@ attributes:
     is_a: biosample_identifiers
     mixins:
     - emsl_identifiers
-    alias: emsl_biosample_identifiers
     owner: Biosample
     domain_of:
     - Biosample
@@ -5691,7 +5679,6 @@ attributes:
     is_a: biosample_identifiers
     mixins:
     - igsn_identifiers
-    alias: igsn_biosample_identifiers
     owner: Biosample
     domain_of:
     - Biosample
@@ -5722,7 +5709,6 @@ attributes:
     - air
     - humidity
     slot_uri: MIXS:0000122
-    alias: abs_air_humidity
     owner: Biosample
     domain_of:
     - Biosample
@@ -5749,7 +5735,6 @@ attributes:
     - secondary
     - start
     slot_uri: MIXS:0001009
-    alias: add_recov_method
     owner: Biosample
     domain_of:
     - Biosample
@@ -5768,7 +5753,6 @@ attributes:
     keywords:
     - information
     slot_uri: MIXS:0000300
-    alias: additional_info
     owner: Biosample
     domain_of:
     - Biosample
@@ -5780,7 +5764,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000218
-    alias: address
     owner: Biosample
     domain_of:
     - Biosample
@@ -5800,7 +5783,6 @@ attributes:
     - adjacent
     - room
     slot_uri: MIXS:0000219
-    alias: adj_room
     owner: Biosample
     domain_of:
     - Biosample
@@ -5820,7 +5802,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000773
-    alias: aero_struc
     owner: Biosample
     domain_of:
     - Biosample
@@ -5840,7 +5821,6 @@ attributes:
     keywords:
     - history
     slot_uri: MIXS:0000639
-    alias: agrochem_addition
     owner: Biosample
     domain_of:
     - Biosample
@@ -5868,7 +5848,6 @@ attributes:
     - particle
     - particulate
     slot_uri: MIXS:0000108
-    alias: air_PM_concen
     owner: Biosample
     domain_of:
     - Biosample
@@ -5899,7 +5878,6 @@ attributes:
     - air
     - temperature
     slot_uri: MIXS:0000124
-    alias: air_temp
     owner: Biosample
     domain_of:
     - Biosample
@@ -5932,7 +5910,6 @@ attributes:
     - temperature
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000551
-    alias: air_temp_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -5971,7 +5948,6 @@ attributes:
     - saturation
     - unusual
     slot_uri: MIXS:0000607
-    alias: al_sat
     owner: Biosample
     domain_of:
     - Biosample
@@ -6001,7 +5977,6 @@ attributes:
     - saturation
     - unusual
     slot_uri: MIXS:0000324
-    alias: al_sat_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -6029,7 +6004,6 @@ attributes:
     keywords:
     - alkalinity
     slot_uri: MIXS:0000421
-    alias: alkalinity
     owner: Biosample
     domain_of:
     - Biosample
@@ -6050,7 +6024,6 @@ attributes:
     - alkalinity
     - method
     slot_uri: MIXS:0000298
-    alias: alkalinity_method
     owner: Biosample
     domain_of:
     - Biosample
@@ -6068,7 +6041,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000490
-    alias: alkyl_diethers
     owner: Biosample
     domain_of:
     - Biosample
@@ -6097,7 +6069,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000094
-    alias: alt
     owner: Biosample
     domain_of:
     - Biosample
@@ -6122,7 +6093,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000172
-    alias: aminopept_act
     owner: Biosample
     domain_of:
     - Biosample
@@ -6147,7 +6117,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000427
-    alias: ammonium
     owner: Biosample
     domain_of:
     - Biosample
@@ -6173,7 +6142,6 @@ attributes:
     keywords:
     - light
     slot_uri: MIXS:0000140
-    alias: amount_light
     owner: Biosample
     domain_of:
     - Biosample
@@ -6193,7 +6161,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000247
-    alias: ances_data
     owner: Biosample
     domain_of:
     - Biosample
@@ -6217,7 +6184,6 @@ attributes:
     keywords:
     - mean
     slot_uri: MIXS:0000644
-    alias: annual_precpt
     owner: Biosample
     domain_of:
     - Biosample
@@ -6245,7 +6211,6 @@ attributes:
     - mean
     - temperature
     slot_uri: MIXS:0000642
-    alias: annual_temp
     owner: Biosample
     domain_of:
     - Biosample
@@ -6277,7 +6242,6 @@ attributes:
     - regimen
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000553
-    alias: antibiotic_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -6303,7 +6267,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000157
-    alias: api
     owner: Biosample
     domain_of:
     - Biosample
@@ -6322,7 +6285,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000774
-    alias: arch_struc
     owner: Biosample
     domain_of:
     - Biosample
@@ -6342,7 +6304,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000133
-    alias: aromatics_pc
     owner: Biosample
     domain_of:
     - Biosample
@@ -6367,7 +6328,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000135
-    alias: asphaltenes_pc
     owner: Biosample
     domain_of:
     - Biosample
@@ -6391,7 +6351,6 @@ attributes:
     rank: 1000
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0001097
-    alias: atmospheric_data
     owner: Biosample
     domain_of:
     - Biosample
@@ -6418,7 +6377,6 @@ attributes:
     keywords:
     - average
     slot_uri: MIXS:0000141
-    alias: avg_dew_point
     owner: Biosample
     domain_of:
     - Biosample
@@ -6437,7 +6395,6 @@ attributes:
     keywords:
     - average
     slot_uri: MIXS:0000775
-    alias: avg_occup
     owner: Biosample
     domain_of:
     - Biosample
@@ -6462,7 +6419,6 @@ attributes:
     - average
     - temperature
     slot_uri: MIXS:0000142
-    alias: avg_temp
     owner: Biosample
     domain_of:
     - Biosample
@@ -6489,7 +6445,6 @@ attributes:
     keywords:
     - production
     slot_uri: MIXS:0000683
-    alias: bac_prod
     owner: Biosample
     domain_of:
     - Biosample
@@ -6514,7 +6469,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000684
-    alias: bac_resp
     owner: Biosample
     domain_of:
     - Biosample
@@ -6539,7 +6493,6 @@ attributes:
     - carbon
     - production
     slot_uri: MIXS:0000173
-    alias: bacteria_carb_prod
     owner: Biosample
     domain_of:
     - Biosample
@@ -6567,7 +6520,6 @@ attributes:
     keywords:
     - pressure
     slot_uri: MIXS:0000096
-    alias: barometric_press
     owner: Biosample
     domain_of:
     - Biosample
@@ -6585,7 +6537,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000290
-    alias: basin
     owner: Biosample
     domain_of:
     - Biosample
@@ -6601,7 +6552,6 @@ attributes:
     keywords:
     - count
     slot_uri: MIXS:0000776
-    alias: bathroom_count
     owner: Biosample
     domain_of:
     - Biosample
@@ -6617,7 +6567,6 @@ attributes:
     keywords:
     - count
     slot_uri: MIXS:0000777
-    alias: bedroom_count
     owner: Biosample
     domain_of:
     - Biosample
@@ -6636,7 +6585,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000153
-    alias: benzene
     owner: Biosample
     domain_of:
     - Biosample
@@ -6664,7 +6612,6 @@ attributes:
     keywords:
     - oxygen
     slot_uri: MIXS:0000653
-    alias: biochem_oxygen_dem
     owner: Biosample
     domain_of:
     - Biosample
@@ -6690,7 +6637,6 @@ attributes:
     - administration
     string_serialization: '{text};{text};{timestamp}'
     slot_uri: MIXS:0001011
-    alias: biocide
     owner: Biosample
     domain_of:
     - Biosample
@@ -6716,7 +6662,6 @@ attributes:
     - method
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration}'
     slot_uri: MIXS:0000456
-    alias: biocide_admin_method
     owner: Biosample
     domain_of:
     - Biosample
@@ -6733,7 +6678,6 @@ attributes:
     keywords:
     - status
     slot_uri: MIXS:0000858
-    alias: biol_stat
     owner: Biosample
     domain_of:
     - Biosample
@@ -6758,7 +6702,6 @@ attributes:
     - biomass
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000174
-    alias: biomass
     owner: Biosample
     domain_of:
     - Biosample
@@ -6778,7 +6721,6 @@ attributes:
     keywords:
     - regimen
     slot_uri: MIXS:0001038
-    alias: biotic_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -6799,7 +6741,6 @@ attributes:
     - observed
     - relationship
     slot_uri: MIXS:0000028
-    alias: biotic_relationship
     owner: Biosample
     domain_of:
     - Biosample
@@ -6820,7 +6761,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000175
-    alias: bishomohopanol
     owner: Biosample
     domain_of:
     - Biosample
@@ -6847,7 +6787,6 @@ attributes:
     - host.
     - pressure
     slot_uri: MIXS:0000258
-    alias: blood_press_diast
     owner: Biosample
     domain_of:
     - Biosample
@@ -6874,7 +6813,6 @@ attributes:
     - host.
     - pressure
     slot_uri: MIXS:0000259
-    alias: blood_press_syst
     owner: Biosample
     domain_of:
     - Biosample
@@ -6899,7 +6837,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000176
-    alias: bromide
     owner: Biosample
     domain_of:
     - Biosample
@@ -6919,7 +6856,6 @@ attributes:
     keywords:
     - documents
     slot_uri: MIXS:0000787
-    alias: build_docs
     owner: Biosample
     domain_of:
     - Biosample
@@ -6936,7 +6872,6 @@ attributes:
     keywords:
     - type
     slot_uri: MIXS:0000761
-    alias: build_occup_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -6951,7 +6886,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000768
-    alias: building_setting
     owner: Biosample
     domain_of:
     - Biosample
@@ -6974,7 +6908,6 @@ attributes:
     keywords:
     - age
     slot_uri: MIXS:0000145
-    alias: built_struc_age
     owner: Biosample
     domain_of:
     - Biosample
@@ -6993,7 +6926,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000778
-    alias: built_struc_set
     owner: Biosample
     domain_of:
     - Biosample
@@ -7008,7 +6940,6 @@ attributes:
     keywords:
     - type
     slot_uri: MIXS:0000721
-    alias: built_struc_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -7029,7 +6960,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000432
-    alias: calcium
     owner: Biosample
     domain_of:
     - Biosample
@@ -7056,7 +6986,6 @@ attributes:
     keywords:
     - carbon
     slot_uri: MIXS:0000097
-    alias: carb_dioxide
     owner: Biosample
     domain_of:
     - Biosample
@@ -7083,7 +7012,6 @@ attributes:
     keywords:
     - carbon
     slot_uri: MIXS:0000098
-    alias: carb_monoxide
     owner: Biosample
     domain_of:
     - Biosample
@@ -7113,7 +7041,6 @@ attributes:
     - ratio
     string_serialization: '{float}:{float}'
     slot_uri: MIXS:0000310
-    alias: carb_nitro_ratio
     owner: Biosample
     domain_of:
     - Biosample
@@ -7137,7 +7064,6 @@ attributes:
     - area
     - ceiling
     slot_uri: MIXS:0000148
-    alias: ceil_area
     owner: Biosample
     domain_of:
     - Biosample
@@ -7159,7 +7085,6 @@ attributes:
     - ceiling
     - condition
     slot_uri: MIXS:0000779
-    alias: ceil_cond
     owner: Biosample
     domain_of:
     - Biosample
@@ -7176,7 +7101,6 @@ attributes:
     - ceiling
     - material
     slot_uri: MIXS:0000780
-    alias: ceil_finish_mat
     owner: Biosample
     domain_of:
     - Biosample
@@ -7192,7 +7116,6 @@ attributes:
     keywords:
     - ceiling
     slot_uri: MIXS:0000782
-    alias: ceil_struc
     owner: Biosample
     domain_of:
     - Biosample
@@ -7209,7 +7132,6 @@ attributes:
     - ceiling
     - texture
     slot_uri: MIXS:0000783
-    alias: ceil_texture
     owner: Biosample
     domain_of:
     - Biosample
@@ -7234,7 +7156,6 @@ attributes:
     - ceiling
     - mass
     slot_uri: MIXS:0000143
-    alias: ceil_thermal_mass
     owner: Biosample
     domain_of:
     - Biosample
@@ -7255,7 +7176,6 @@ attributes:
     - ceiling
     - type
     slot_uri: MIXS:0000784
-    alias: ceil_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -7271,7 +7191,6 @@ attributes:
     keywords:
     - ceiling
     slot_uri: MIXS:0000781
-    alias: ceil_water_mold
     owner: Biosample
     domain_of:
     - Biosample
@@ -7295,7 +7214,6 @@ attributes:
     - administration
     string_serialization: '{termLabel} [{termID}];{timestamp}'
     slot_uri: MIXS:0000751
-    alias: chem_administration
     owner: Biosample
     domain_of:
     - Biosample
@@ -7323,7 +7241,6 @@ attributes:
     rank: 1000
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000555
-    alias: chem_mutagen
     owner: Biosample
     domain_of:
     - Biosample
@@ -7349,7 +7266,6 @@ attributes:
     keywords:
     - oxygen
     slot_uri: MIXS:0000656
-    alias: chem_oxygen_dem
     owner: Biosample
     domain_of:
     - Biosample
@@ -7378,7 +7294,6 @@ attributes:
     - treatment
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration};{duration}'
     slot_uri: MIXS:0000457
-    alias: chem_treat_method
     owner: Biosample
     domain_of:
     - Biosample
@@ -7403,7 +7318,6 @@ attributes:
     - treatment
     string_serialization: '{text};{text};{timestamp}'
     slot_uri: MIXS:0001012
-    alias: chem_treatment
     owner: Biosample
     domain_of:
     - Biosample
@@ -7424,7 +7338,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000429
-    alias: chloride
     owner: Biosample
     domain_of:
     - Biosample
@@ -7449,7 +7362,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000177
-    alias: chlorophyll
     owner: Biosample
     domain_of:
     - Biosample
@@ -7478,7 +7390,6 @@ attributes:
     keywords:
     - environment
     slot_uri: MIXS:0001040
-    alias: climate_environment
     owner: Biosample
     domain_of:
     - Biosample
@@ -7500,7 +7411,6 @@ attributes:
     keywords:
     - date
     slot_uri: MIXS:0000011
-    alias: collection_date
     owner: Biosample
     domain_of:
     - Biosample
@@ -7522,7 +7432,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000692
-    alias: conduc
     owner: Biosample
     domain_of:
     - Biosample
@@ -7542,7 +7451,6 @@ attributes:
     keywords:
     - identifier
     slot_uri: MIXS:0000785
-    alias: cool_syst_id
     owner: Biosample
     domain_of:
     - Biosample
@@ -7562,7 +7470,6 @@ attributes:
     keywords:
     - history
     slot_uri: MIXS:0000318
-    alias: crop_rotation
     owner: Biosample
     domain_of:
     - Biosample
@@ -7581,7 +7488,6 @@ attributes:
     keywords:
     - culture
     slot_uri: MIXS:0001041
-    alias: cult_root_med
     owner: Biosample
     domain_of:
     - Biosample
@@ -7618,7 +7524,6 @@ attributes:
       body dominated by woody plants)|crop trees (nuts,fruit,christmas trees,nursery
       trees)]'
     slot_uri: MIXS:0001080
-    alias: cur_land_use
     owner: Biosample
     domain_of:
     - Biosample
@@ -7646,7 +7551,6 @@ attributes:
     keywords:
     - vegetation
     slot_uri: MIXS:0000312
-    alias: cur_vegetation
     owner: Biosample
     domain_of:
     - FieldResearchSite
@@ -7670,7 +7574,6 @@ attributes:
     - method
     - vegetation
     slot_uri: MIXS:0000314
-    alias: cur_vegetation_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -7691,7 +7594,6 @@ attributes:
     - date
     - rain
     slot_uri: MIXS:0000786
-    alias: date_last_rain
     owner: Biosample
     domain_of:
     - Biosample
@@ -7715,7 +7617,6 @@ attributes:
     keywords:
     - density
     slot_uri: MIXS:0000435
-    alias: density
     owner: Biosample
     domain_of:
     - Biosample
@@ -7734,7 +7635,6 @@ attributes:
     keywords:
     - environment
     slot_uri: MIXS:0000992
-    alias: depos_env
     owner: Biosample
     domain_of:
     - Biosample
@@ -7760,7 +7660,6 @@ attributes:
     keywords:
     - depth
     slot_uri: MIXS:0000018
-    alias: depth
     owner: Biosample
     domain_of:
     - Biosample
@@ -7786,7 +7685,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000129
-    alias: dew_point
     owner: Biosample
     domain_of:
     - Biosample
@@ -7813,7 +7711,6 @@ attributes:
     rank: 1000
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000178
-    alias: diether_lipids
     owner: Biosample
     domain_of:
     - Biosample
@@ -7841,7 +7738,6 @@ attributes:
     - carbon
     - dissolved
     slot_uri: MIXS:0000436
-    alias: diss_carb_dioxide
     owner: Biosample
     domain_of:
     - Biosample
@@ -7868,7 +7764,6 @@ attributes:
     keywords:
     - dissolved
     slot_uri: MIXS:0000179
-    alias: diss_hydrogen
     owner: Biosample
     domain_of:
     - Biosample
@@ -7898,7 +7793,6 @@ attributes:
     - dissolved
     - inorganic
     slot_uri: MIXS:0000434
-    alias: diss_inorg_carb
     owner: Biosample
     domain_of:
     - Biosample
@@ -7927,7 +7821,6 @@ attributes:
     - inorganic
     - nitrogen
     slot_uri: MIXS:0000698
-    alias: diss_inorg_nitro
     owner: Biosample
     domain_of:
     - Biosample
@@ -7953,7 +7846,6 @@ attributes:
     - inorganic
     - phosphorus
     slot_uri: MIXS:0000106
-    alias: diss_inorg_phosp
     owner: Biosample
     domain_of:
     - Biosample
@@ -7978,7 +7870,6 @@ attributes:
     keywords:
     - dissolved
     slot_uri: MIXS:0000139
-    alias: diss_iron
     owner: Biosample
     domain_of:
     - Biosample
@@ -8009,7 +7900,6 @@ attributes:
     - dissolved
     - organic
     slot_uri: MIXS:0000433
-    alias: diss_org_carb
     owner: Biosample
     domain_of:
     - Biosample
@@ -8036,7 +7926,6 @@ attributes:
     - nitrogen
     - organic
     slot_uri: MIXS:0000162
-    alias: diss_org_nitro
     owner: Biosample
     domain_of:
     - Biosample
@@ -8064,7 +7953,6 @@ attributes:
     - dissolved
     - oxygen
     slot_uri: MIXS:0000119
-    alias: diss_oxygen
     owner: Biosample
     domain_of:
     - Biosample
@@ -8091,7 +7979,6 @@ attributes:
     - dissolved
     - oxygen
     slot_uri: MIXS:0000438
-    alias: diss_oxygen_fluid
     owner: Biosample
     domain_of:
     - Biosample
@@ -8112,7 +7999,6 @@ attributes:
     - door
     - type
     slot_uri: MIXS:0000795
-    alias: door_comp_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -8129,7 +8015,6 @@ attributes:
     - condition
     - door
     slot_uri: MIXS:0000788
-    alias: door_cond
     owner: Biosample
     domain_of:
     - Biosample
@@ -8146,7 +8031,6 @@ attributes:
     - direction
     - door
     slot_uri: MIXS:0000789
-    alias: door_direct
     owner: Biosample
     domain_of:
     - Biosample
@@ -8163,7 +8047,6 @@ attributes:
     - door
     - location
     slot_uri: MIXS:0000790
-    alias: door_loc
     owner: Biosample
     domain_of:
     - Biosample
@@ -8180,7 +8063,6 @@ attributes:
     - door
     - material
     slot_uri: MIXS:0000791
-    alias: door_mat
     owner: Biosample
     domain_of:
     - Biosample
@@ -8196,7 +8078,6 @@ attributes:
     keywords:
     - door
     slot_uri: MIXS:0000792
-    alias: door_move
     owner: Biosample
     domain_of:
     - Biosample
@@ -8221,7 +8102,6 @@ attributes:
     - door
     - size
     slot_uri: MIXS:0000158
-    alias: door_size
     owner: Biosample
     domain_of:
     - Biosample
@@ -8242,7 +8122,6 @@ attributes:
     - door
     - type
     slot_uri: MIXS:0000794
-    alias: door_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -8259,7 +8138,6 @@ attributes:
     - door
     - type
     slot_uri: MIXS:0000796
-    alias: door_type_metal
     owner: Biosample
     domain_of:
     - Biosample
@@ -8283,7 +8161,6 @@ attributes:
       and framed|battened|ledged, braced and frame|framed and paneled|glashed or sash|flush|louvered|wire
       gauged]'
     slot_uri: MIXS:0000797
-    alias: door_type_wood
     owner: Biosample
     domain_of:
     - Biosample
@@ -8299,7 +8176,6 @@ attributes:
     keywords:
     - door
     slot_uri: MIXS:0000793
-    alias: door_water_mold
     owner: Biosample
     domain_of:
     - Biosample
@@ -8322,7 +8198,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000703
-    alias: down_par
     owner: Biosample
     domain_of:
     - Biosample
@@ -8342,7 +8217,6 @@ attributes:
     keywords:
     - classification
     slot_uri: MIXS:0001085
-    alias: drainage_class
     owner: Biosample
     domain_of:
     - Biosample
@@ -8359,7 +8233,6 @@ attributes:
     keywords:
     - drawings
     slot_uri: MIXS:0000798
-    alias: drawings
     owner: Biosample
     domain_of:
     - Biosample
@@ -8380,7 +8253,6 @@ attributes:
     keywords:
     - percent
     slot_uri: MIXS:0000657
-    alias: efficiency_percent
     owner: Biosample
     domain_of:
     - Biosample
@@ -8411,7 +8283,6 @@ attributes:
     keywords:
     - elevation
     slot_uri: MIXS:0000093
-    alias: elev
     owner: Biosample
     domain_of:
     - FieldResearchSite
@@ -8432,7 +8303,6 @@ attributes:
     keywords:
     - count
     slot_uri: MIXS:0000799
-    alias: elevator
     owner: Biosample
     domain_of:
     - Biosample
@@ -8454,7 +8324,6 @@ attributes:
     rank: 1000
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000660
-    alias: emulsions
     owner: Biosample
     domain_of:
     - Biosample
@@ -8487,7 +8356,6 @@ attributes:
     - environmental
     is_a: mixs_env_triad_field
     slot_uri: MIXS:0000012
-    alias: env_broad_scale
     owner: Biosample
     domain_of:
     - Biosample
@@ -8531,7 +8399,6 @@ attributes:
     - environmental
     is_a: mixs_env_triad_field
     slot_uri: MIXS:0000013
-    alias: env_local_scale
     owner: Biosample
     domain_of:
     - Biosample
@@ -8569,7 +8436,6 @@ attributes:
     - environmental
     is_a: mixs_env_triad_field
     slot_uri: MIXS:0000014
-    alias: env_medium
     owner: Biosample
     domain_of:
     - Biosample
@@ -8592,7 +8458,6 @@ attributes:
     aliases:
     - environmental package
     rank: 1000
-    alias: env_package
     owner: Biosample
     domain_of:
     - Biosample
@@ -8608,7 +8473,6 @@ attributes:
     keywords:
     - count
     slot_uri: MIXS:0000800
-    alias: escalator
     owner: Biosample
     domain_of:
     - Biosample
@@ -8627,7 +8491,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000155
-    alias: ethylbenzene
     owner: Biosample
     domain_of:
     - Biosample
@@ -8651,7 +8514,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000144
-    alias: exp_duct
     owner: Biosample
     domain_of:
     - Biosample
@@ -8673,7 +8535,6 @@ attributes:
     keywords:
     - pipes
     slot_uri: MIXS:0000220
-    alias: exp_pipe
     owner: Biosample
     domain_of:
     - Biosample
@@ -8702,7 +8563,6 @@ attributes:
     - factor
     string_serialization: '{termLabel} [{termID}]|{text}'
     slot_uri: MIXS:0000008
-    alias: experimental_factor
     owner: Biosample
     domain_of:
     - Biosample
@@ -8720,7 +8580,6 @@ attributes:
     - door
     - exterior
     slot_uri: MIXS:0000170
-    alias: ext_door
     owner: Biosample
     domain_of:
     - Biosample
@@ -8737,7 +8596,6 @@ attributes:
     - exterior
     - wall
     slot_uri: MIXS:0000817
-    alias: ext_wall_orient
     owner: Biosample
     domain_of:
     - Biosample
@@ -8754,7 +8612,6 @@ attributes:
     - exterior
     - window
     slot_uri: MIXS:0000818
-    alias: ext_window_orient
     owner: Biosample
     domain_of:
     - Biosample
@@ -8775,7 +8632,6 @@ attributes:
     - event
     - history
     slot_uri: MIXS:0000320
-    alias: extreme_event
     owner: Biosample
     domain_of:
     - Biosample
@@ -8793,7 +8649,6 @@ attributes:
     keywords:
     - classification
     slot_uri: MIXS:0001083
-    alias: fao_class
     owner: Biosample
     domain_of:
     - Biosample
@@ -8821,7 +8676,6 @@ attributes:
     - regimen
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000556
-    alias: fertilizer_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -8836,7 +8690,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000291
-    alias: field
     owner: Biosample
     domain_of:
     - Biosample
@@ -8854,7 +8707,6 @@ attributes:
     - filter
     - type
     slot_uri: MIXS:0000765
-    alias: filter_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -8881,7 +8733,6 @@ attributes:
     keywords:
     - history
     slot_uri: MIXS:0001086
-    alias: fire
     owner: Biosample
     domain_of:
     - Biosample
@@ -8898,7 +8749,6 @@ attributes:
     keywords:
     - type
     slot_uri: MIXS:0000802
-    alias: fireplace_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -8925,7 +8775,6 @@ attributes:
     keywords:
     - history
     slot_uri: MIXS:0000319
-    alias: flooding
     owner: Biosample
     domain_of:
     - Biosample
@@ -8947,7 +8796,6 @@ attributes:
     - age
     - floor
     slot_uri: MIXS:0000164
-    alias: floor_age
     owner: Biosample
     domain_of:
     - Biosample
@@ -8973,7 +8821,6 @@ attributes:
     - area
     - floor
     slot_uri: MIXS:0000165
-    alias: floor_area
     owner: Biosample
     domain_of:
     - Biosample
@@ -8995,7 +8842,6 @@ attributes:
     - condition
     - floor
     slot_uri: MIXS:0000803
-    alias: floor_cond
     owner: Biosample
     domain_of:
     - Biosample
@@ -9011,7 +8857,6 @@ attributes:
     - count
     - floor
     slot_uri: MIXS:0000225
-    alias: floor_count
     owner: Biosample
     domain_of:
     - Biosample
@@ -9035,7 +8880,6 @@ attributes:
       composition tile|sheet vinyl|stone|bamboo|cork|terrazo|concrete|none;specify
       unfinished|sealed|clear finish|paint]'
     slot_uri: MIXS:0000804
-    alias: floor_finish_mat
     owner: Biosample
     domain_of:
     - Biosample
@@ -9052,7 +8896,6 @@ attributes:
     keywords:
     - floor
     slot_uri: MIXS:0000806
-    alias: floor_struc
     owner: Biosample
     domain_of:
     - Biosample
@@ -9074,7 +8917,6 @@ attributes:
     - floor
     - mass
     slot_uri: MIXS:0000166
-    alias: floor_thermal_mass
     owner: Biosample
     domain_of:
     - Biosample
@@ -9094,7 +8936,6 @@ attributes:
     keywords:
     - floor
     slot_uri: MIXS:0000805
-    alias: floor_water_mold
     owner: Biosample
     domain_of:
     - Biosample
@@ -9115,7 +8956,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000704
-    alias: fluor
     owner: Biosample
     domain_of:
     - Biosample
@@ -9139,7 +8979,6 @@ attributes:
     keywords:
     - frequency
     slot_uri: MIXS:0000226
-    alias: freq_clean
     owner: Biosample
     domain_of:
     - Biosample
@@ -9157,7 +8996,6 @@ attributes:
     keywords:
     - frequency
     slot_uri: MIXS:0000227
-    alias: freq_cook
     owner: Biosample
     domain_of:
     - Biosample
@@ -9184,7 +9022,6 @@ attributes:
     keywords:
     - regimen
     slot_uri: MIXS:0000557
-    alias: fungicide_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -9201,7 +9038,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000807
-    alias: furniture
     owner: Biosample
     domain_of:
     - Biosample
@@ -9229,7 +9065,6 @@ attributes:
     keywords:
     - environment
     slot_uri: MIXS:0000558
-    alias: gaseous_environment
     owner: Biosample
     domain_of:
     - Biosample
@@ -9253,7 +9088,6 @@ attributes:
     rank: 1000
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000661
-    alias: gaseous_substances
     owner: Biosample
     domain_of:
     - Biosample
@@ -9270,7 +9104,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000808
-    alias: gender_restroom
     owner: Biosample
     domain_of:
     - Biosample
@@ -9287,7 +9120,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000859
-    alias: genetic_mod
     owner: Biosample
     domain_of:
     - Biosample
@@ -9310,7 +9142,6 @@ attributes:
     - geographic
     - location
     slot_uri: MIXS:0000010
-    alias: geo_loc_name
     owner: Biosample
     domain_of:
     - FieldResearchSite
@@ -9336,7 +9167,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000137
-    alias: glucosidase_act
     owner: Biosample
     domain_of:
     - Biosample
@@ -9356,7 +9186,6 @@ attributes:
     rank: 1000
     string_serialization: '{boolean};{timestamp}'
     slot_uri: MIXS:0000875
-    alias: gravidity
     owner: Biosample
     domain_of:
     - Biosample
@@ -9382,7 +9211,6 @@ attributes:
     rank: 1000
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000559
-    alias: gravity
     owner: Biosample
     domain_of:
     - Biosample
@@ -9409,7 +9237,6 @@ attributes:
     - growth
     string_serialization: '{text}|{termLabel} [{termID}]'
     slot_uri: MIXS:0001043
-    alias: growth_facil
     owner: Biosample
     domain_of:
     - Biosample
@@ -9425,7 +9252,6 @@ attributes:
     keywords:
     - growth
     slot_uri: MIXS:0001044
-    alias: growth_habit
     owner: Biosample
     domain_of:
     - Biosample
@@ -9454,7 +9280,6 @@ attributes:
     - regimen
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000560
-    alias: growth_hormone_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -9473,7 +9298,6 @@ attributes:
     - count
     - hallway
     slot_uri: MIXS:0000228
-    alias: hall_count
     owner: Biosample
     domain_of:
     - Biosample
@@ -9487,7 +9311,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000809
-    alias: handidness
     owner: Biosample
     domain_of:
     - Biosample
@@ -9505,7 +9328,6 @@ attributes:
     - hydrocarbon
     - type
     slot_uri: MIXS:0000989
-    alias: hc_produced
     owner: Biosample
     domain_of:
     - Biosample
@@ -9529,7 +9351,6 @@ attributes:
     - resource
     - type
     slot_uri: MIXS:0000988
-    alias: hcr
     owner: Biosample
     domain_of:
     - Biosample
@@ -9552,7 +9373,6 @@ attributes:
     - salinity
     - water
     slot_uri: MIXS:0000406
-    alias: hcr_fw_salinity
     owner: Biosample
     domain_of:
     - Biosample
@@ -9576,7 +9396,6 @@ attributes:
     - hydrocarbon
     - resource
     slot_uri: MIXS:0000993
-    alias: hcr_geol_age
     owner: Biosample
     domain_of:
     - Biosample
@@ -9597,7 +9416,6 @@ attributes:
     - pressure
     - resource
     slot_uri: MIXS:0000395
-    alias: hcr_pressure
     owner: Biosample
     domain_of:
     - Biosample
@@ -9623,7 +9441,6 @@ attributes:
     - resource
     - temperature
     slot_uri: MIXS:0000393
-    alias: hcr_temp
     owner: Biosample
     domain_of:
     - Biosample
@@ -9643,7 +9460,6 @@ attributes:
     keywords:
     - type
     slot_uri: MIXS:0000766
-    alias: heat_cool_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -9662,7 +9478,6 @@ attributes:
     - location
     - locations
     slot_uri: MIXS:0000810
-    alias: heat_deliv_loc
     owner: Biosample
     domain_of:
     - Biosample
@@ -9679,7 +9494,6 @@ attributes:
     - delivery
     - method
     slot_uri: MIXS:0000812
-    alias: heat_sys_deliv_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -9693,7 +9507,6 @@ attributes:
     keywords:
     - identifier
     slot_uri: MIXS:0000833
-    alias: heat_system_id
     owner: Biosample
     domain_of:
     - Biosample
@@ -9728,7 +9541,6 @@ attributes:
     - unusual
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000652
-    alias: heavy_metals
     owner: Biosample
     domain_of:
     - Biosample
@@ -9754,7 +9566,6 @@ attributes:
     - properties
     - unusual
     slot_uri: MIXS:0000343
-    alias: heavy_metals_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -9782,7 +9593,6 @@ attributes:
     keywords:
     - height
     slot_uri: MIXS:0000167
-    alias: height_carper_fiber
     owner: Biosample
     domain_of:
     - Biosample
@@ -9810,7 +9620,6 @@ attributes:
     keywords:
     - regimen
     slot_uri: MIXS:0000561
-    alias: herbicide_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -9831,7 +9640,6 @@ attributes:
     - horizon
     - method
     slot_uri: MIXS:0000321
-    alias: horizon_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -9861,7 +9669,6 @@ attributes:
     - host
     - host.
     slot_uri: MIXS:0000255
-    alias: host_age
     owner: Biosample
     domain_of:
     - Biosample
@@ -9882,7 +9689,6 @@ attributes:
     - host
     - host.
     slot_uri: MIXS:0000866
-    alias: host_body_habitat
     owner: Biosample
     domain_of:
     - Biosample
@@ -9908,7 +9714,6 @@ attributes:
     - product
     string_serialization: '{termLabel} [{termID}]'
     slot_uri: MIXS:0000888
-    alias: host_body_product
     owner: Biosample
     domain_of:
     - Biosample
@@ -9931,7 +9736,6 @@ attributes:
     - site
     string_serialization: '{termLabel} [{termID}]'
     slot_uri: MIXS:0000867
-    alias: host_body_site
     owner: Biosample
     domain_of:
     - Biosample
@@ -9957,7 +9761,6 @@ attributes:
     - host.
     - temperature
     slot_uri: MIXS:0000274
-    alias: host_body_temp
     owner: Biosample
     domain_of:
     - Biosample
@@ -9976,7 +9779,6 @@ attributes:
     - host
     - host.
     slot_uri: MIXS:0000260
-    alias: host_color
     owner: Biosample
     domain_of:
     - Biosample
@@ -9995,7 +9797,6 @@ attributes:
     - host
     - host.
     slot_uri: MIXS:0000248
-    alias: host_common_name
     owner: Biosample
     domain_of:
     - Biosample
@@ -10012,7 +9813,6 @@ attributes:
     - host
     - host.
     slot_uri: MIXS:0000869
-    alias: host_diet
     owner: Biosample
     domain_of:
     - Biosample
@@ -10041,7 +9841,6 @@ attributes:
     - host.
     - mass
     slot_uri: MIXS:0000257
-    alias: host_dry_mass
     owner: Biosample
     domain_of:
     - Biosample
@@ -10067,7 +9866,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000872
-    alias: host_family_relation
     owner: Biosample
     domain_of:
     - Biosample
@@ -10083,7 +9881,6 @@ attributes:
     - host
     - host.
     slot_uri: MIXS:0000365
-    alias: host_genotype
     owner: Biosample
     domain_of:
     - Biosample
@@ -10111,7 +9908,6 @@ attributes:
         overview.
       source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
-    alias: host_genus
     owner: Biosample
     domain_of:
     - Biosample
@@ -10130,7 +9926,6 @@ attributes:
     - host
     - host.
     slot_uri: MIXS:0000871
-    alias: host_growth_cond
     owner: Biosample
     domain_of:
     - Biosample
@@ -10159,7 +9954,6 @@ attributes:
     - host
     - host.
     slot_uri: MIXS:0000264
-    alias: host_height
     owner: Biosample
     domain_of:
     - Biosample
@@ -10184,7 +9978,6 @@ attributes:
     - host.
     string_serialization: '{text};{duration}'
     slot_uri: MIXS:0000870
-    alias: host_last_meal
     owner: Biosample
     domain_of:
     - Biosample
@@ -10212,7 +10005,6 @@ attributes:
     - host.
     - length
     slot_uri: MIXS:0000256
-    alias: host_length
     owner: Biosample
     domain_of:
     - Biosample
@@ -10236,7 +10028,6 @@ attributes:
     - host.
     - life
     slot_uri: MIXS:0000251
-    alias: host_life_stage
     owner: Biosample
     domain_of:
     - Biosample
@@ -10257,7 +10048,6 @@ attributes:
     - host.
     string_serialization: '{termLabel} [{termID}]'
     slot_uri: MIXS:0000874
-    alias: host_phenotype
     owner: Biosample
     domain_of:
     - Biosample
@@ -10281,7 +10071,6 @@ attributes:
     string_serialization: '[female|hermaphrodite|non-binary|male|transgender|transgender
       (female to male)|transgender (male to female) |undeclared]'
     slot_uri: MIXS:0000811
-    alias: host_sex
     owner: Biosample
     domain_of:
     - Biosample
@@ -10298,7 +10087,6 @@ attributes:
     - host
     - host.
     slot_uri: MIXS:0000261
-    alias: host_shape
     owner: Biosample
     domain_of:
     - Biosample
@@ -10326,7 +10114,6 @@ attributes:
         overview.
       source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
-    alias: host_species
     owner: Biosample
     domain_of:
     - Biosample
@@ -10352,7 +10139,6 @@ attributes:
         overview.
       source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
-    alias: host_strain
     owner: Biosample
     domain_of:
     - Biosample
@@ -10368,7 +10154,6 @@ attributes:
     - host.
     - identifier
     slot_uri: MIXS:0000861
-    alias: host_subject_id
     owner: Biosample
     domain_of:
     - Biosample
@@ -10396,7 +10181,6 @@ attributes:
     - lineage
     string_serialization: '{rank name}:{text}'
     slot_uri: MIXS:0001318
-    alias: host_subspecf_genlin
     owner: Biosample
     domain_of:
     - Biosample
@@ -10414,7 +10198,6 @@ attributes:
     - host
     - host.
     slot_uri: MIXS:0000252
-    alias: host_substrate
     owner: Biosample
     domain_of:
     - Biosample
@@ -10438,7 +10221,6 @@ attributes:
     - observed
     - symbiosis
     slot_uri: MIXS:0001298
-    alias: host_symbiont
     owner: Biosample
     domain_of:
     - Biosample
@@ -10470,7 +10252,6 @@ attributes:
     - host.
     - taxon
     slot_uri: MIXS:0000250
-    alias: host_taxid
     owner: Biosample
     domain_of:
     - Biosample
@@ -10497,7 +10278,6 @@ attributes:
     - mass
     - total
     slot_uri: MIXS:0000263
-    alias: host_tot_mass
     owner: Biosample
     domain_of:
     - Biosample
@@ -10527,7 +10307,6 @@ attributes:
     - mass
     - wet
     slot_uri: MIXS:0000567
-    alias: host_wet_mass
     owner: Biosample
     domain_of:
     - Biosample
@@ -10551,7 +10330,6 @@ attributes:
     keywords:
     - humidity
     slot_uri: MIXS:0000100
-    alias: humidity
     owner: Biosample
     domain_of:
     - Biosample
@@ -10584,7 +10362,6 @@ attributes:
     - regimen
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000568
-    alias: humidity_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -10604,7 +10381,6 @@ attributes:
     keywords:
     - indoor
     slot_uri: MIXS:0000763
-    alias: indoor_space
     owner: Biosample
     domain_of:
     - Biosample
@@ -10621,7 +10397,6 @@ attributes:
     - indoor
     - surface
     slot_uri: MIXS:0000764
-    alias: indoor_surf
     owner: Biosample
     domain_of:
     - Biosample
@@ -10643,7 +10418,6 @@ attributes:
     keywords:
     - percent
     slot_uri: MIXS:0000662
-    alias: indust_eff_percent
     owner: Biosample
     domain_of:
     - Biosample
@@ -10671,7 +10445,6 @@ attributes:
     - particle
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000664
-    alias: inorg_particles
     owner: Biosample
     domain_of:
     - Biosample
@@ -10696,7 +10469,6 @@ attributes:
     - inside
     - light
     slot_uri: MIXS:0000168
-    alias: inside_lux
     owner: Biosample
     domain_of:
     - Biosample
@@ -10719,7 +10491,6 @@ attributes:
     - interior
     - wall
     slot_uri: MIXS:0000813
-    alias: int_wall_cond
     owner: Biosample
     domain_of:
     - Biosample
@@ -10737,7 +10508,6 @@ attributes:
     - date
     - water
     slot_uri: MIXS:0001010
-    alias: iw_bt_date_well
     owner: Biosample
     domain_of:
     - Biosample
@@ -10764,7 +10534,6 @@ attributes:
     - fraction
     - water
     slot_uri: MIXS:0000455
-    alias: iwf
     owner: Biosample
     domain_of:
     - Biosample
@@ -10784,7 +10553,6 @@ attributes:
     keywords:
     - time
     slot_uri: MIXS:0000814
-    alias: last_clean
     owner: Biosample
     domain_of:
     - Biosample
@@ -10806,7 +10574,6 @@ attributes:
     - geographic
     - location
     slot_uri: MIXS:0000009
-    alias: lat_lon
     owner: Biosample
     domain_of:
     - FieldResearchSite
@@ -10835,7 +10602,6 @@ attributes:
     - intensity
     - light
     slot_uri: MIXS:0000706
-    alias: light_intensity
     owner: Biosample
     domain_of:
     - Biosample
@@ -10865,7 +10631,6 @@ attributes:
     - regimen
     string_serialization: '{text};{float} {unit};{float} {unit}'
     slot_uri: MIXS:0000569
-    alias: light_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -10885,7 +10650,6 @@ attributes:
     - light
     - type
     slot_uri: MIXS:0000769
-    alias: light_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -10903,7 +10667,6 @@ attributes:
     keywords:
     - link
     slot_uri: MIXS:0000340
-    alias: link_addit_analys
     owner: Biosample
     domain_of:
     - Biosample
@@ -10928,7 +10691,6 @@ attributes:
     - link
     string_serialization: '{termLabel} [{termID}]'
     slot_uri: MIXS:0000329
-    alias: link_class_info
     owner: Biosample
     domain_of:
     - Biosample
@@ -10946,7 +10708,6 @@ attributes:
     - information
     - link
     slot_uri: MIXS:0000328
-    alias: link_climate_info
     owner: Biosample
     domain_of:
     - Biosample
@@ -10967,7 +10728,6 @@ attributes:
     keywords:
     - lithology
     slot_uri: MIXS:0000990
-    alias: lithology
     owner: Biosample
     domain_of:
     - Biosample
@@ -10986,7 +10746,6 @@ attributes:
     keywords:
     - classification
     slot_uri: MIXS:0000330
-    alias: local_class
     owner: Biosample
     domain_of:
     - FieldResearchSite
@@ -11004,7 +10763,6 @@ attributes:
     - classification
     - method
     slot_uri: MIXS:0000331
-    alias: local_class_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -11030,7 +10788,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000431
-    alias: magnesium
     owner: Biosample
     domain_of:
     - Biosample
@@ -11052,7 +10809,6 @@ attributes:
     keywords:
     - maximum
     slot_uri: MIXS:0000229
-    alias: max_occup
     owner: Biosample
     domain_of:
     - Biosample
@@ -11080,7 +10836,6 @@ attributes:
     - mean
     - velocity
     slot_uri: MIXS:0000498
-    alias: mean_frict_vel
     owner: Biosample
     domain_of:
     - Biosample
@@ -11109,7 +10864,6 @@ attributes:
     - peak
     - velocity
     slot_uri: MIXS:0000502
-    alias: mean_peak_frict_vel
     owner: Biosample
     domain_of:
     - Biosample
@@ -11127,7 +10881,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000815
-    alias: mech_struc
     owner: Biosample
     domain_of:
     - Biosample
@@ -11147,7 +10900,6 @@ attributes:
     rank: 1000
     string_serialization: '{text};{text}'
     slot_uri: MIXS:0001052
-    alias: mechanical_damage
     owner: Biosample
     domain_of:
     - Biosample
@@ -11171,7 +10923,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000101
-    alias: methane
     owner: Biosample
     domain_of:
     - Biosample
@@ -11196,7 +10947,6 @@ attributes:
     - method
     - microbial
     slot_uri: MIXS:0000339
-    alias: micro_biomass_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -11220,7 +10970,6 @@ attributes:
     - biomass
     - microbial
     slot_uri: MIXS:0000650
-    alias: microbial_biomass
     owner: Biosample
     domain_of:
     - Biosample
@@ -11255,7 +11004,6 @@ attributes:
     - regimen
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000570
-    alias: mineral_nutr_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -11282,7 +11030,6 @@ attributes:
     - parameter
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000752
-    alias: misc_param
     owner: Biosample
     domain_of:
     - Biosample
@@ -11304,7 +11051,6 @@ attributes:
     rank: 1000
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000503
-    alias: n_alkanes
     owner: Biosample
     domain_of:
     - Biosample
@@ -11330,7 +11076,6 @@ attributes:
     keywords:
     - nitrate
     slot_uri: MIXS:0000425
-    alias: nitrate
     owner: Biosample
     domain_of:
     - Biosample
@@ -11357,7 +11102,6 @@ attributes:
     keywords:
     - nitrite
     slot_uri: MIXS:0000426
-    alias: nitrite
     owner: Biosample
     domain_of:
     - Biosample
@@ -11384,7 +11128,6 @@ attributes:
     keywords:
     - nitrogen
     slot_uri: MIXS:0000504
-    alias: nitro
     owner: Biosample
     domain_of:
     - Biosample
@@ -11414,7 +11157,6 @@ attributes:
     - nutrient
     - regimen
     slot_uri: MIXS:0000571
-    alias: non_min_nutr_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -11433,7 +11175,6 @@ attributes:
     keywords:
     - number
     slot_uri: MIXS:0000231
-    alias: number_pets
     owner: Biosample
     domain_of:
     - Biosample
@@ -11455,7 +11196,6 @@ attributes:
     keywords:
     - number
     slot_uri: MIXS:0000230
-    alias: number_plants
     owner: Biosample
     domain_of:
     - Biosample
@@ -11477,7 +11217,6 @@ attributes:
     keywords:
     - number
     slot_uri: MIXS:0000232
-    alias: number_resident
     owner: Biosample
     domain_of:
     - Biosample
@@ -11501,7 +11240,6 @@ attributes:
     keywords:
     - density
     slot_uri: MIXS:0000217
-    alias: occup_density_samp
     owner: Biosample
     domain_of:
     - Biosample
@@ -11517,7 +11255,6 @@ attributes:
     keywords:
     - documentation
     slot_uri: MIXS:0000816
-    alias: occup_document
     owner: Biosample
     domain_of:
     - Biosample
@@ -11535,7 +11272,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000772
-    alias: occup_samp
     owner: Biosample
     domain_of:
     - Biosample
@@ -11560,7 +11296,6 @@ attributes:
     - carbon
     - organic
     slot_uri: MIXS:0000508
-    alias: org_carb
     owner: Biosample
     domain_of:
     - Biosample
@@ -11595,7 +11330,6 @@ attributes:
     string_serialization: '{text};FWD:{dna};REV:{dna};initial denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
       elongation:degrees_minutes; total cycles'
     slot_uri: MIXS:0000099
-    alias: org_count_qpcr_info
     owner: Biosample
     domain_of:
     - Biosample
@@ -11618,7 +11352,6 @@ attributes:
     keywords:
     - organic
     slot_uri: MIXS:0000204
-    alias: org_matter
     owner: Biosample
     domain_of:
     - Biosample
@@ -11643,7 +11376,6 @@ attributes:
     - nitrogen
     - organic
     slot_uri: MIXS:0000205
-    alias: org_nitro
     owner: Biosample
     domain_of:
     - Biosample
@@ -11671,7 +11403,6 @@ attributes:
     - particle
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000665
-    alias: org_particles
     owner: Biosample
     domain_of:
     - Biosample
@@ -11700,7 +11431,6 @@ attributes:
     - organism
     string_serialization: '{text};{float} {unit};[ATP|MPN|qPCR|other]'
     slot_uri: MIXS:0000103
-    alias: organism_count
     owner: Biosample
     domain_of:
     - Biosample
@@ -11726,7 +11456,6 @@ attributes:
     - oil
     - water
     slot_uri: MIXS:0000405
-    alias: owc_tvdss
     owner: Biosample
     domain_of:
     - Biosample
@@ -11748,7 +11477,6 @@ attributes:
     - sample
     - status
     slot_uri: MIXS:0000753
-    alias: oxy_stat_samp
     owner: Biosample
     domain_of:
     - Biosample
@@ -11771,7 +11499,6 @@ attributes:
     keywords:
     - oxygen
     slot_uri: MIXS:0000104
-    alias: oxygen
     owner: Biosample
     domain_of:
     - Biosample
@@ -11798,7 +11525,6 @@ attributes:
     - particle
     - particulate
     slot_uri: MIXS:0000515
-    alias: part_org_carb
     owner: Biosample
     domain_of:
     - Biosample
@@ -11828,7 +11554,6 @@ attributes:
     - particle
     - particulate
     slot_uri: MIXS:0000719
-    alias: part_org_nitro
     owner: Biosample
     domain_of:
     - Biosample
@@ -11857,7 +11582,6 @@ attributes:
     - particle
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000206
-    alias: particle_class
     owner: Biosample
     domain_of:
     - Biosample
@@ -11881,7 +11605,6 @@ attributes:
     rank: 1000
     string_serialization: '{integer} - {integer} {unit}'
     slot_uri: MIXS:0000404
-    alias: permeability
     owner: Biosample
     domain_of:
     - Biosample
@@ -11905,7 +11628,6 @@ attributes:
     - perturbation
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000754
-    alias: perturbation
     owner: Biosample
     domain_of:
     - Biosample
@@ -11932,7 +11654,6 @@ attributes:
     keywords:
     - regimen
     slot_uri: MIXS:0000573
-    alias: pesticide_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -11959,7 +11680,6 @@ attributes:
     - hydrocarbon
     - petroleum
     slot_uri: MIXS:0000516
-    alias: petroleum_hydrocarb
     owner: Biosample
     domain_of:
     - Biosample
@@ -11980,7 +11700,6 @@ attributes:
     keywords:
     - ph
     slot_uri: MIXS:0001001
-    alias: ph
     owner: Biosample
     domain_of:
     - Biosample
@@ -12001,7 +11720,6 @@ attributes:
     - method
     - ph
     slot_uri: MIXS:0001106
-    alias: ph_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -12021,7 +11739,6 @@ attributes:
     - ph
     - regimen
     slot_uri: MIXS:0001056
-    alias: ph_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -12046,7 +11763,6 @@ attributes:
     rank: 1000
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000180
-    alias: phaeopigments
     owner: Biosample
     domain_of:
     - Biosample
@@ -12072,7 +11788,6 @@ attributes:
     keywords:
     - phosphate
     slot_uri: MIXS:0000505
-    alias: phosphate
     owner: Biosample
     domain_of:
     - Biosample
@@ -12095,7 +11810,6 @@ attributes:
     rank: 1000
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000181
-    alias: phosplipid_fatt_acid
     owner: Biosample
     domain_of:
     - Biosample
@@ -12119,7 +11833,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000725
-    alias: photon_flux
     owner: Biosample
     domain_of:
     - Biosample
@@ -12144,7 +11857,6 @@ attributes:
     string_serialization: '{termLabel} [{termID}] or [husk|other artificial liquid
       medium|other artificial solid medium|peat moss|perlite|pumice|sand|soil|vermiculite|water]'
     slot_uri: MIXS:0001057
-    alias: plant_growth_med
     owner: Biosample
     domain_of:
     - Biosample
@@ -12165,7 +11877,6 @@ attributes:
     - plant
     - product
     slot_uri: MIXS:0001058
-    alias: plant_product
     owner: Biosample
     domain_of:
     - Biosample
@@ -12182,7 +11893,6 @@ attributes:
     keywords:
     - plant
     slot_uri: MIXS:0001059
-    alias: plant_sex
     owner: Biosample
     domain_of:
     - Biosample
@@ -12201,7 +11911,6 @@ attributes:
     keywords:
     - plant
     slot_uri: MIXS:0001060
-    alias: plant_struc
     owner: Biosample
     domain_of:
     - Biosample
@@ -12229,7 +11938,6 @@ attributes:
     rank: 1000
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000107
-    alias: pollutants
     owner: Biosample
     domain_of:
     - Biosample
@@ -12255,7 +11963,6 @@ attributes:
     - porosity
     string_serialization: '{float} - {float} {unit}'
     slot_uri: MIXS:0000211
-    alias: porosity
     owner: Biosample
     domain_of:
     - Biosample
@@ -12276,7 +11983,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000430
-    alias: potassium
     owner: Biosample
     domain_of:
     - Biosample
@@ -12302,7 +12008,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000127
-    alias: pour_point
     owner: Biosample
     domain_of:
     - Biosample
@@ -12323,7 +12028,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000348
-    alias: pre_treatment
     owner: Biosample
     domain_of:
     - Biosample
@@ -12346,7 +12050,6 @@ attributes:
     - presence
     string_serialization: '[cat|dog|rodent|snake|other];{integer}'
     slot_uri: MIXS:0000819
-    alias: pres_animal_insect
     owner: Biosample
     domain_of:
     - Biosample
@@ -12369,7 +12072,6 @@ attributes:
     keywords:
     - pressure
     slot_uri: MIXS:0000412
-    alias: pressure
     owner: Biosample
     domain_of:
     - Biosample
@@ -12393,7 +12095,6 @@ attributes:
     - method
     - use
     slot_uri: MIXS:0000316
-    alias: prev_land_use_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -12420,7 +12121,6 @@ attributes:
     - use
     string_serialization: '{text};{timestamp}'
     slot_uri: MIXS:0000315
-    alias: previous_land_use
     owner: Biosample
     domain_of:
     - Biosample
@@ -12445,7 +12145,6 @@ attributes:
     - primary
     - production
     slot_uri: MIXS:0000728
-    alias: primary_prod
     owner: Biosample
     domain_of:
     - Biosample
@@ -12470,7 +12169,6 @@ attributes:
     - primary
     - treatment
     slot_uri: MIXS:0000349
-    alias: primary_treatment
     owner: Biosample
     domain_of:
     - Biosample
@@ -12492,7 +12190,6 @@ attributes:
     - production
     - rate
     slot_uri: MIXS:0000452
-    alias: prod_rate
     owner: Biosample
     domain_of:
     - Biosample
@@ -12515,7 +12212,6 @@ attributes:
     - production
     - start
     slot_uri: MIXS:0001008
-    alias: prod_start_date
     owner: Biosample
     domain_of:
     - Biosample
@@ -12531,7 +12227,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001084
-    alias: profile_position
     owner: Biosample
     domain_of:
     - Biosample
@@ -12545,7 +12240,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000820
-    alias: quad_pos
     owner: Biosample
     domain_of:
     - Biosample
@@ -12573,7 +12267,6 @@ attributes:
     - regimen
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000575
-    alias: radiation_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -12604,7 +12297,6 @@ attributes:
     - regimen
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000576
-    alias: rainfall_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -12627,7 +12319,6 @@ attributes:
     keywords:
     - type
     slot_uri: MIXS:0000350
-    alias: reactor_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -12649,7 +12340,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000182
-    alias: redox_potential
     owner: Biosample
     domain_of:
     - Biosample
@@ -12681,7 +12371,6 @@ attributes:
     - humidity
     - relative
     slot_uri: MIXS:0000121
-    alias: rel_air_humidity
     owner: Biosample
     domain_of:
     - Biosample
@@ -12709,7 +12398,6 @@ attributes:
     - humidity
     - relative
     slot_uri: MIXS:0000188
-    alias: rel_humidity_out
     owner: Biosample
     domain_of:
     - Biosample
@@ -12730,7 +12418,6 @@ attributes:
     - location
     - relative
     slot_uri: MIXS:0000821
-    alias: rel_samp_loc
     owner: Biosample
     domain_of:
     - Biosample
@@ -12742,7 +12429,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000303
-    alias: reservoir
     owner: Biosample
     domain_of:
     - Biosample
@@ -12763,7 +12449,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000134
-    alias: resins_pc
     owner: Biosample
     domain_of:
     - Biosample
@@ -12791,7 +12476,6 @@ attributes:
     - rate
     - room
     slot_uri: MIXS:0000169
-    alias: room_air_exch_rate
     owner: Biosample
     domain_of:
     - Biosample
@@ -12810,7 +12494,6 @@ attributes:
     keywords:
     - room
     slot_uri: MIXS:0000233
-    alias: room_architec_elem
     owner: Biosample
     domain_of:
     - Biosample
@@ -12827,7 +12510,6 @@ attributes:
     - condition
     - room
     slot_uri: MIXS:0000822
-    alias: room_condt
     owner: Biosample
     domain_of:
     - Biosample
@@ -12844,7 +12526,6 @@ attributes:
     - doorway
     - room
     slot_uri: MIXS:0000826
-    alias: room_connected
     owner: Biosample
     domain_of:
     - Biosample
@@ -12860,7 +12541,6 @@ attributes:
     - count
     - room
     slot_uri: MIXS:0000234
-    alias: room_count
     owner: Biosample
     domain_of:
     - Biosample
@@ -12885,7 +12565,6 @@ attributes:
     - room
     string_serialization: '{integer} {unit} x {integer} {unit} x {integer} {unit}'
     slot_uri: MIXS:0000192
-    alias: room_dim
     owner: Biosample
     domain_of:
     - Biosample
@@ -12906,7 +12585,6 @@ attributes:
     - door
     - room
     slot_uri: MIXS:0000193
-    alias: room_door_dist
     owner: Biosample
     domain_of:
     - Biosample
@@ -12926,7 +12604,6 @@ attributes:
     - door
     - room
     slot_uri: MIXS:0000242
-    alias: room_door_share
     owner: Biosample
     domain_of:
     - Biosample
@@ -12946,7 +12623,6 @@ attributes:
     - hallway
     - room
     slot_uri: MIXS:0000238
-    alias: room_hallway
     owner: Biosample
     domain_of:
     - Biosample
@@ -12967,7 +12643,6 @@ attributes:
     - location
     - room
     slot_uri: MIXS:0000823
-    alias: room_loc
     owner: Biosample
     domain_of:
     - Biosample
@@ -12984,7 +12659,6 @@ attributes:
     - moisture
     - room
     slot_uri: MIXS:0000235
-    alias: room_moist_dam_hist
     owner: Biosample
     domain_of:
     - Biosample
@@ -13003,7 +12677,6 @@ attributes:
     - area
     - room
     slot_uri: MIXS:0000194
-    alias: room_net_area
     owner: Biosample
     domain_of:
     - Biosample
@@ -13025,7 +12698,6 @@ attributes:
     keywords:
     - room
     slot_uri: MIXS:0000236
-    alias: room_occup
     owner: Biosample
     domain_of:
     - Biosample
@@ -13046,7 +12718,6 @@ attributes:
     keywords:
     - room
     slot_uri: MIXS:0000824
-    alias: room_samp_pos
     owner: Biosample
     domain_of:
     - Biosample
@@ -13071,7 +12742,6 @@ attributes:
       room|hallway|kitchen|mail room|private office|open office|stairwell|,restroom|lobby|vestibule|mechanical
       or electrical room|data center|laboratory_wet|laboratory_dry|gymnasium|natatorium|auditorium|lockers|cafe|warehouse]'
     slot_uri: MIXS:0000825
-    alias: room_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -13090,7 +12760,6 @@ attributes:
     - room
     - volume
     slot_uri: MIXS:0000195
-    alias: room_vol
     owner: Biosample
     domain_of:
     - Biosample
@@ -13110,7 +12779,6 @@ attributes:
     - room
     - wall
     slot_uri: MIXS:0000243
-    alias: room_wall_share
     owner: Biosample
     domain_of:
     - Biosample
@@ -13130,7 +12798,6 @@ attributes:
     - room
     - window
     slot_uri: MIXS:0000237
-    alias: room_window_count
     owner: Biosample
     domain_of:
     - Biosample
@@ -13147,7 +12814,6 @@ attributes:
     keywords:
     - condition
     slot_uri: MIXS:0001061
-    alias: root_cond
     owner: Biosample
     domain_of:
     - Biosample
@@ -13175,7 +12841,6 @@ attributes:
     - carbon
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000577
-    alias: root_med_carbon
     owner: Biosample
     domain_of:
     - Biosample
@@ -13200,7 +12865,6 @@ attributes:
     - macronutrients
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000578
-    alias: root_med_macronutr
     owner: Biosample
     domain_of:
     - Biosample
@@ -13225,7 +12889,6 @@ attributes:
     - micronutrients
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000579
-    alias: root_med_micronutr
     owner: Biosample
     domain_of:
     - Biosample
@@ -13245,7 +12908,6 @@ attributes:
     keywords:
     - ph
     slot_uri: MIXS:0001062
-    alias: root_med_ph
     owner: Biosample
     domain_of:
     - Biosample
@@ -13268,7 +12930,6 @@ attributes:
     rank: 1000
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000581
-    alias: root_med_regl
     owner: Biosample
     domain_of:
     - Biosample
@@ -13283,7 +12944,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001063
-    alias: root_med_solid
     owner: Biosample
     domain_of:
     - Biosample
@@ -13309,7 +12969,6 @@ attributes:
     - organic
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000580
-    alias: root_med_suppl
     owner: Biosample
     domain_of:
     - Biosample
@@ -13337,7 +12996,6 @@ attributes:
     keywords:
     - salinity
     slot_uri: MIXS:0000183
-    alias: salinity
     owner: Biosample
     domain_of:
     - Biosample
@@ -13363,7 +13021,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000341
-    alias: salinity_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -13392,7 +13049,6 @@ attributes:
     - regimen
     - salt
     slot_uri: MIXS:0000582
-    alias: salt_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -13412,7 +13068,6 @@ attributes:
     - sample
     - status
     slot_uri: MIXS:0000860
-    alias: samp_capt_status
     owner: Biosample
     domain_of:
     - Biosample
@@ -13443,7 +13098,6 @@ attributes:
     - device
     - sample
     slot_uri: MIXS:0000002
-    alias: samp_collec_device
     owner: Biosample
     domain_of:
     - Biosample
@@ -13463,7 +13117,6 @@ attributes:
     - method
     - sample
     slot_uri: MIXS:0001225
-    alias: samp_collec_method
     owner: Biosample
     domain_of:
     - Biosample
@@ -13481,7 +13134,6 @@ attributes:
     keywords:
     - sample
     slot_uri: MIXS:0001015
-    alias: samp_collect_point
     owner: Biosample
     domain_of:
     - Biosample
@@ -13499,7 +13151,6 @@ attributes:
     - disease
     - sample
     slot_uri: MIXS:0000249
-    alias: samp_dis_stage
     owner: Biosample
     domain_of:
     - Biosample
@@ -13519,7 +13170,6 @@ attributes:
     keywords:
     - floor
     slot_uri: MIXS:0000828
-    alias: samp_floor
     owner: Biosample
     domain_of:
     - Biosample
@@ -13546,7 +13196,6 @@ attributes:
     - rate
     - sample
     slot_uri: MIXS:0000136
-    alias: samp_loc_corr_rate
     owner: Biosample
     domain_of:
     - Biosample
@@ -13571,7 +13220,6 @@ attributes:
     - process
     - sample
     slot_uri: MIXS:0000016
-    alias: samp_mat_process
     owner: Biosample
     domain_of:
     - Biosample
@@ -13605,7 +13253,6 @@ attributes:
     - sample
     string_serialization: '{float} {unit};[GL|DF|RT|KB|MSL|other]'
     slot_uri: MIXS:0000413
-    alias: samp_md
     owner: Biosample
     domain_of:
     - Biosample
@@ -13631,7 +13278,6 @@ attributes:
     keywords:
     - sample
     slot_uri: MIXS:0001107
-    alias: samp_name
     owner: Biosample
     domain_of:
     - Biosample
@@ -13651,7 +13297,6 @@ attributes:
     keywords:
     - sample
     slot_uri: MIXS:0000463
-    alias: samp_preserv
     owner: Biosample
     domain_of:
     - Biosample
@@ -13671,7 +13316,6 @@ attributes:
     - identifier
     - room
     slot_uri: MIXS:0000244
-    alias: samp_room_id
     owner: Biosample
     domain_of:
     - Biosample
@@ -13693,7 +13337,6 @@ attributes:
     - sample
     - size
     slot_uri: MIXS:0000001
-    alias: samp_size
     owner: Biosample
     domain_of:
     - Biosample
@@ -13716,7 +13359,6 @@ attributes:
     - sample
     - size
     slot_uri: MIXS:0000216
-    alias: samp_sort_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -13739,7 +13381,6 @@ attributes:
     - sample
     - storage
     slot_uri: MIXS:0000116
-    alias: samp_store_dur
     owner: Biosample
     domain_of:
     - Biosample
@@ -13765,7 +13406,6 @@ attributes:
     - sample
     - storage
     slot_uri: MIXS:0000755
-    alias: samp_store_loc
     owner: Biosample
     domain_of:
     - Biosample
@@ -13790,7 +13430,6 @@ attributes:
     - storage
     - temperature
     slot_uri: MIXS:0000110
-    alias: samp_store_temp
     owner: Biosample
     domain_of:
     - Biosample
@@ -13812,7 +13451,6 @@ attributes:
     keywords:
     - sample
     slot_uri: MIXS:0000999
-    alias: samp_subtype
     owner: Biosample
     domain_of:
     - Biosample
@@ -13834,7 +13472,6 @@ attributes:
     - sample
     - taxon
     slot_uri: MIXS:0001320
-    alias: samp_taxon_id
     owner: Biosample
     domain_of:
     - Biosample
@@ -13860,7 +13497,6 @@ attributes:
     - time
     string_serialization: '{float}'
     slot_uri: MIXS:0000196
-    alias: samp_time_out
     owner: Biosample
     domain_of:
     - Biosample
@@ -13887,7 +13523,6 @@ attributes:
     - transport
     string_serialization: '{float} {unit};{float} {unit}'
     slot_uri: MIXS:0000410
-    alias: samp_transport_cond
     owner: Biosample
     domain_of:
     - Biosample
@@ -13912,7 +13547,6 @@ attributes:
     - sample
     string_serialization: '{float}-{float} {unit}'
     slot_uri: MIXS:0000409
-    alias: samp_tvdss
     owner: Biosample
     domain_of:
     - Biosample
@@ -13935,7 +13569,6 @@ attributes:
     - sample
     - type
     slot_uri: MIXS:0000998
-    alias: samp_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -13956,7 +13589,6 @@ attributes:
     - day
     - weather
     slot_uri: MIXS:0000827
-    alias: samp_weather
     owner: Biosample
     domain_of:
     - Biosample
@@ -13970,7 +13602,6 @@ attributes:
     keywords:
     - sample
     slot_uri: MIXS:0000296
-    alias: samp_well_name
     owner: Biosample
     domain_of:
     - Biosample
@@ -13991,7 +13622,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000131
-    alias: saturates_pc
     owner: Biosample
     domain_of:
     - Biosample
@@ -14014,7 +13644,6 @@ attributes:
     keywords:
     - season
     slot_uri: MIXS:0000829
-    alias: season
     owner: Biosample
     domain_of:
     - Biosample
@@ -14034,7 +13663,6 @@ attributes:
     - environment
     - season
     slot_uri: MIXS:0001068
-    alias: season_environment
     owner: Biosample
     domain_of:
     - Biosample
@@ -14070,7 +13698,6 @@ attributes:
     - mean
     - season
     slot_uri: MIXS:0000645
-    alias: season_precpt
     owner: Biosample
     domain_of:
     - Biosample
@@ -14099,7 +13726,6 @@ attributes:
     - season
     - temperature
     slot_uri: MIXS:0000643
-    alias: season_temp
     owner: Biosample
     domain_of:
     - Biosample
@@ -14120,7 +13746,6 @@ attributes:
     - season
     - use
     slot_uri: MIXS:0000830
-    alias: season_use
     owner: Biosample
     domain_of:
     - Biosample
@@ -14140,7 +13765,6 @@ attributes:
     - secondary
     - treatment
     slot_uri: MIXS:0000351
-    alias: secondary_treatment
     owner: Biosample
     domain_of:
     - Biosample
@@ -14157,7 +13781,6 @@ attributes:
     - sediment
     - type
     slot_uri: MIXS:0001078
-    alias: sediment_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -14175,7 +13798,6 @@ attributes:
     keywords:
     - type
     slot_uri: MIXS:0000215
-    alias: sewage_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -14191,7 +13813,6 @@ attributes:
     keywords:
     - device
     slot_uri: MIXS:0000834
-    alias: shad_dev_water_mold
     owner: Biosample
     domain_of:
     - Biosample
@@ -14208,7 +13829,6 @@ attributes:
     - condition
     - device
     slot_uri: MIXS:0000831
-    alias: shading_device_cond
     owner: Biosample
     domain_of:
     - Biosample
@@ -14225,7 +13845,6 @@ attributes:
     - device
     - location
     slot_uri: MIXS:0000832
-    alias: shading_device_loc
     owner: Biosample
     domain_of:
     - Biosample
@@ -14244,7 +13863,6 @@ attributes:
     - device
     - material
     slot_uri: MIXS:0000245
-    alias: shading_device_mat
     owner: Biosample
     domain_of:
     - Biosample
@@ -14262,7 +13880,6 @@ attributes:
     - device
     - type
     slot_uri: MIXS:0000835
-    alias: shading_device_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -14289,7 +13906,6 @@ attributes:
     rank: 1000
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000322
-    alias: sieving
     owner: Biosample
     domain_of:
     - Biosample
@@ -14310,7 +13926,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000184
-    alias: silicate
     owner: Biosample
     domain_of:
     - Biosample
@@ -14336,7 +13951,6 @@ attributes:
     - size
     string_serialization: '{float}-{float} {unit}'
     slot_uri: MIXS:0000017
-    alias: size_frac
     owner: Biosample
     domain_of:
     - Biosample
@@ -14360,7 +13974,6 @@ attributes:
     keywords:
     - lower
     slot_uri: MIXS:0000735
-    alias: size_frac_low
     owner: Biosample
     domain_of:
     - Biosample
@@ -14388,7 +14001,6 @@ attributes:
     keywords:
     - upper
     slot_uri: MIXS:0000736
-    alias: size_frac_up
     owner: Biosample
     domain_of:
     - Biosample
@@ -14422,7 +14034,6 @@ attributes:
     keywords:
     - slope
     slot_uri: MIXS:0000647
-    alias: slope_aspect
     owner: Biosample
     domain_of:
     - Biosample
@@ -14455,7 +14066,6 @@ attributes:
     keywords:
     - slope
     slot_uri: MIXS:0000646
-    alias: slope_gradient
     owner: Biosample
     domain_of:
     - Biosample
@@ -14480,7 +14090,6 @@ attributes:
     keywords:
     - time
     slot_uri: MIXS:0000669
-    alias: sludge_retent_time
     owner: Biosample
     domain_of:
     - Biosample
@@ -14505,7 +14114,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000428
-    alias: sodium
     owner: Biosample
     domain_of:
     - Biosample
@@ -14528,7 +14136,6 @@ attributes:
     - horizon
     - soil
     slot_uri: MIXS:0001082
-    alias: soil_horizon
     owner: Biosample
     domain_of:
     - Biosample
@@ -14554,7 +14161,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000335
-    alias: soil_text_measure
     owner: Biosample
     domain_of:
     - Biosample
@@ -14573,7 +14179,6 @@ attributes:
     - soil
     - texture
     slot_uri: MIXS:0000336
-    alias: soil_texture_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -14596,7 +14201,6 @@ attributes:
     - soil
     - type
     slot_uri: MIXS:0000332
-    alias: soil_type
     owner: Biosample
     domain_of:
     - FieldResearchSite
@@ -14616,7 +14220,6 @@ attributes:
     - soil
     - type
     slot_uri: MIXS:0000334
-    alias: soil_type_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -14639,7 +14242,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000112
-    alias: solar_irradiance
     owner: Biosample
     domain_of:
     - Biosample
@@ -14669,7 +14271,6 @@ attributes:
     - soluble
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000672
-    alias: soluble_inorg_mat
     owner: Biosample
     domain_of:
     - Biosample
@@ -14697,7 +14298,6 @@ attributes:
     - soluble
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000673
-    alias: soluble_org_mat
     owner: Biosample
     domain_of:
     - Biosample
@@ -14724,7 +14324,6 @@ attributes:
     - phosphorus
     - soluble
     slot_uri: MIXS:0000738
-    alias: soluble_react_phosp
     owner: Biosample
     domain_of:
     - Biosample
@@ -14761,7 +14360,6 @@ attributes:
     - material
     - source
     slot_uri: MIXS:0000026
-    alias: source_mat_id
     owner: Biosample
     domain_of:
     - Biosample
@@ -14777,7 +14375,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000770
-    alias: space_typ_state
     owner: Biosample
     domain_of:
     - Biosample
@@ -14792,7 +14389,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000836
-    alias: specific
     owner: Biosample
     domain_of:
     - Biosample
@@ -14817,7 +14413,6 @@ attributes:
     keywords:
     - humidity
     slot_uri: MIXS:0000214
-    alias: specific_humidity
     owner: Biosample
     domain_of:
     - Biosample
@@ -14839,7 +14434,6 @@ attributes:
     - environment
     - source
     slot_uri: MIXS:0000996
-    alias: sr_dep_env
     owner: Biosample
     domain_of:
     - Biosample
@@ -14857,7 +14451,6 @@ attributes:
     - age
     - source
     slot_uri: MIXS:0000997
-    alias: sr_geol_age
     owner: Biosample
     domain_of:
     - Biosample
@@ -14878,7 +14471,6 @@ attributes:
     - source
     - type
     slot_uri: MIXS:0000994
-    alias: sr_kerog_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -14896,7 +14488,6 @@ attributes:
     - lithology
     - source
     slot_uri: MIXS:0000995
-    alias: sr_lithology
     owner: Biosample
     domain_of:
     - Biosample
@@ -14916,7 +14507,6 @@ attributes:
     - regimen
     - water
     slot_uri: MIXS:0001069
-    alias: standing_water_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -14937,7 +14527,6 @@ attributes:
     - condition
     - storage
     slot_uri: MIXS:0000327
-    alias: store_cond
     owner: Biosample
     domain_of:
     - Biosample
@@ -14954,7 +14543,6 @@ attributes:
     keywords:
     - type
     slot_uri: MIXS:0000767
-    alias: substructure_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -14978,7 +14566,6 @@ attributes:
     keywords:
     - sulfate
     slot_uri: MIXS:0000423
-    alias: sulfate
     owner: Biosample
     domain_of:
     - Biosample
@@ -15004,7 +14591,6 @@ attributes:
     - sulfate
     - water
     slot_uri: MIXS:0000407
-    alias: sulfate_fw
     owner: Biosample
     domain_of:
     - Biosample
@@ -15031,7 +14617,6 @@ attributes:
     keywords:
     - sulfide
     slot_uri: MIXS:0000424
-    alias: sulfide
     owner: Biosample
     domain_of:
     - Biosample
@@ -15049,7 +14634,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000759
-    alias: surf_air_cont
     owner: Biosample
     domain_of:
     - Biosample
@@ -15077,7 +14661,6 @@ attributes:
     - humidity
     - surface
     slot_uri: MIXS:0000123
-    alias: surf_humidity
     owner: Biosample
     domain_of:
     - Biosample
@@ -15099,7 +14682,6 @@ attributes:
     - material
     - surface
     slot_uri: MIXS:0000758
-    alias: surf_material
     owner: Biosample
     domain_of:
     - Biosample
@@ -15123,7 +14705,6 @@ attributes:
     - moisture
     - surface
     slot_uri: MIXS:0000128
-    alias: surf_moisture
     owner: Biosample
     domain_of:
     - Biosample
@@ -15146,7 +14727,6 @@ attributes:
     - ph
     - surface
     slot_uri: MIXS:0000760
-    alias: surf_moisture_ph
     owner: Biosample
     domain_of:
     - Biosample
@@ -15171,7 +14751,6 @@ attributes:
     - surface
     - temperature
     slot_uri: MIXS:0000125
-    alias: surf_temp
     owner: Biosample
     domain_of:
     - Biosample
@@ -15201,7 +14780,6 @@ attributes:
     - particulate
     - suspended
     slot_uri: MIXS:0000741
-    alias: suspend_part_matter
     owner: Biosample
     domain_of:
     - Biosample
@@ -15230,7 +14808,6 @@ attributes:
     - suspended
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000150
-    alias: suspend_solids
     owner: Biosample
     domain_of:
     - Biosample
@@ -15258,7 +14835,6 @@ attributes:
     - number
     - total
     slot_uri: MIXS:0000120
-    alias: tan
     owner: Biosample
     domain_of:
     - Biosample
@@ -15286,7 +14862,6 @@ attributes:
     keywords:
     - temperature
     slot_uri: MIXS:0000113
-    alias: temp
     owner: Biosample
     domain_of:
     - Biosample
@@ -15314,7 +14889,6 @@ attributes:
     - house
     - temperature
     slot_uri: MIXS:0000197
-    alias: temp_out
     owner: Biosample
     domain_of:
     - Biosample
@@ -15337,7 +14911,6 @@ attributes:
     keywords:
     - treatment
     slot_uri: MIXS:0000352
-    alias: tertiary_treatment
     owner: Biosample
     domain_of:
     - Biosample
@@ -15351,7 +14924,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000750
-    alias: tidal_stage
     owner: Biosample
     domain_of:
     - Biosample
@@ -15367,7 +14939,6 @@ attributes:
     keywords:
     - history
     slot_uri: MIXS:0001081
-    alias: tillage
     owner: Biosample
     domain_of:
     - Biosample
@@ -15385,7 +14956,6 @@ attributes:
     - culture
     - growth
     slot_uri: MIXS:0001070
-    alias: tiss_cult_growth_med
     owner: Biosample
     domain_of:
     - Biosample
@@ -15408,7 +14978,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000154
-    alias: toluene
     owner: Biosample
     domain_of:
     - Biosample
@@ -15439,7 +15008,6 @@ attributes:
     - carbon
     - total
     slot_uri: MIXS:0000525
-    alias: tot_carb
     owner: Biosample
     domain_of:
     - Biosample
@@ -15468,7 +15036,6 @@ attributes:
     - total
     - water
     slot_uri: MIXS:0000634
-    alias: tot_depth_water_col
     owner: Biosample
     domain_of:
     - Biosample
@@ -15498,7 +15065,6 @@ attributes:
     - nitrogen
     - total
     slot_uri: MIXS:0000744
-    alias: tot_diss_nitro
     owner: Biosample
     domain_of:
     - Biosample
@@ -15527,7 +15093,6 @@ attributes:
     - nitrogen
     - total
     slot_uri: MIXS:0000745
-    alias: tot_inorg_nitro
     owner: Biosample
     domain_of:
     - Biosample
@@ -15552,7 +15117,6 @@ attributes:
     keywords:
     - total
     slot_uri: MIXS:0000105
-    alias: tot_iron
     owner: Biosample
     domain_of:
     - Biosample
@@ -15584,7 +15148,6 @@ attributes:
     - nitrogen
     - total
     slot_uri: MIXS:0000102
-    alias: tot_nitro
     owner: Biosample
     domain_of:
     - Biosample
@@ -15608,7 +15171,6 @@ attributes:
     - nitrogen
     - total
     slot_uri: MIXS:0000338
-    alias: tot_nitro_cont_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -15634,7 +15196,6 @@ attributes:
     - nitrogen
     - total
     slot_uri: MIXS:0000530
-    alias: tot_nitro_content
     owner: Biosample
     domain_of:
     - Biosample
@@ -15658,7 +15219,6 @@ attributes:
     - organic
     - total
     slot_uri: MIXS:0000337
-    alias: tot_org_c_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -15689,7 +15249,6 @@ attributes:
     - organic
     - total
     slot_uri: MIXS:0000533
-    alias: tot_org_carb
     owner: Biosample
     domain_of:
     - Biosample
@@ -15719,7 +15278,6 @@ attributes:
     - particulate
     - total
     slot_uri: MIXS:0000747
-    alias: tot_part_carb
     owner: Biosample
     domain_of:
     - Biosample
@@ -15748,7 +15306,6 @@ attributes:
     - phosphorus
     - total
     slot_uri: MIXS:0000117
-    alias: tot_phosp
     owner: Biosample
     domain_of:
     - Biosample
@@ -15774,7 +15331,6 @@ attributes:
     - phosphate
     - total
     slot_uri: MIXS:0000689
-    alias: tot_phosphate
     owner: Biosample
     domain_of:
     - Biosample
@@ -15800,7 +15356,6 @@ attributes:
     - sulfur
     - total
     slot_uri: MIXS:0000419
-    alias: tot_sulfur
     owner: Biosample
     domain_of:
     - Biosample
@@ -15821,7 +15376,6 @@ attributes:
     keywords:
     - train
     slot_uri: MIXS:0000837
-    alias: train_line
     owner: Biosample
     domain_of:
     - Biosample
@@ -15838,7 +15392,6 @@ attributes:
     - location
     - train
     slot_uri: MIXS:0000838
-    alias: train_stat_loc
     owner: Biosample
     domain_of:
     - Biosample
@@ -15856,7 +15409,6 @@ attributes:
     - stop
     - train
     slot_uri: MIXS:0000839
-    alias: train_stop_loc
     owner: Biosample
     domain_of:
     - Biosample
@@ -15875,7 +15427,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000191
-    alias: turbidity
     owner: Biosample
     domain_of:
     - Biosample
@@ -15904,7 +15455,6 @@ attributes:
     - pressure
     - resource
     slot_uri: MIXS:0000397
-    alias: tvdss_of_hcr_press
     owner: Biosample
     domain_of:
     - Biosample
@@ -15933,7 +15483,6 @@ attributes:
     - resource
     - temperature
     slot_uri: MIXS:0000394
-    alias: tvdss_of_hcr_temp
     owner: Biosample
     domain_of:
     - Biosample
@@ -15953,7 +15502,6 @@ attributes:
     keywords:
     - density
     slot_uri: MIXS:0000771
-    alias: typ_occup_density
     owner: Biosample
     domain_of:
     - Biosample
@@ -15976,7 +15524,6 @@ attributes:
     keywords:
     - rate
     slot_uri: MIXS:0000114
-    alias: ventilation_rate
     owner: Biosample
     domain_of:
     - Biosample
@@ -16000,7 +15547,6 @@ attributes:
     keywords:
     - type
     slot_uri: MIXS:0000756
-    alias: ventilation_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -16020,7 +15566,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000152
-    alias: vfa
     owner: Biosample
     domain_of:
     - Biosample
@@ -16046,7 +15591,6 @@ attributes:
     keywords:
     - water
     slot_uri: MIXS:0000408
-    alias: vfa_fw
     owner: Biosample
     domain_of:
     - Biosample
@@ -16070,7 +15614,6 @@ attributes:
     string_serialization: '[photos|videos|commonly of the building|site context (adjacent
       buildings, vegetation, terrain, streets)|interiors|equipment|3D scans]'
     slot_uri: MIXS:0000840
-    alias: vis_media
     owner: Biosample
     domain_of:
     - Biosample
@@ -16091,7 +15634,6 @@ attributes:
     rank: 1000
     string_serialization: '{float} {unit};{float} {unit}'
     slot_uri: MIXS:0000126
-    alias: viscosity
     owner: Biosample
     domain_of:
     - Biosample
@@ -16117,7 +15659,6 @@ attributes:
     - organic
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000115
-    alias: volatile_org_comp
     owner: Biosample
     domain_of:
     - Biosample
@@ -16142,7 +15683,6 @@ attributes:
     - area
     - wall
     slot_uri: MIXS:0000198
-    alias: wall_area
     owner: Biosample
     domain_of:
     - Biosample
@@ -16164,7 +15704,6 @@ attributes:
     - type
     - wall
     slot_uri: MIXS:0000841
-    alias: wall_const_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -16181,7 +15720,6 @@ attributes:
     - material
     - wall
     slot_uri: MIXS:0000842
-    alias: wall_finish_mat
     owner: Biosample
     domain_of:
     - Biosample
@@ -16203,7 +15741,6 @@ attributes:
     - height
     - wall
     slot_uri: MIXS:0000221
-    alias: wall_height
     owner: Biosample
     domain_of:
     - Biosample
@@ -16224,7 +15761,6 @@ attributes:
     - location
     - wall
     slot_uri: MIXS:0000843
-    alias: wall_loc
     owner: Biosample
     domain_of:
     - Biosample
@@ -16242,7 +15778,6 @@ attributes:
     - treatment
     - wall
     slot_uri: MIXS:0000845
-    alias: wall_surf_treatment
     owner: Biosample
     domain_of:
     - Biosample
@@ -16259,7 +15794,6 @@ attributes:
     - texture
     - wall
     slot_uri: MIXS:0000846
-    alias: wall_texture
     owner: Biosample
     domain_of:
     - Biosample
@@ -16283,7 +15817,6 @@ attributes:
     - mass
     - wall
     slot_uri: MIXS:0000222
-    alias: wall_thermal_mass
     owner: Biosample
     domain_of:
     - Biosample
@@ -16303,7 +15836,6 @@ attributes:
     keywords:
     - wall
     slot_uri: MIXS:0000844
-    alias: wall_water_mold
     owner: Biosample
     domain_of:
     - Biosample
@@ -16322,7 +15854,6 @@ attributes:
     keywords:
     - type
     slot_uri: MIXS:0000353
-    alias: wastewater_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -16350,7 +15881,6 @@ attributes:
     - method
     - water
     slot_uri: MIXS:0000323
-    alias: water_cont_soil_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -16381,7 +15911,6 @@ attributes:
     - content
     - water
     slot_uri: MIXS:0000185
-    alias: water_content
     owner: Biosample
     domain_of:
     - Biosample
@@ -16409,7 +15938,6 @@ attributes:
     keywords:
     - water
     slot_uri: MIXS:0000203
-    alias: water_current
     owner: Biosample
     domain_of:
     - Biosample
@@ -16439,7 +15967,6 @@ attributes:
     keywords:
     - water
     slot_uri: MIXS:0000454
-    alias: water_cut
     owner: Biosample
     domain_of:
     - Biosample
@@ -16466,7 +15993,6 @@ attributes:
     - size
     - water
     slot_uri: MIXS:0000223
-    alias: water_feat_size
     owner: Biosample
     domain_of:
     - Biosample
@@ -16488,7 +16014,6 @@ attributes:
     - type
     - water
     slot_uri: MIXS:0000847
-    alias: water_feat_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -16511,7 +16036,6 @@ attributes:
     - rate
     - water
     slot_uri: MIXS:0000453
-    alias: water_prod_rate
     owner: Biosample
     domain_of:
     - Biosample
@@ -16541,7 +16065,6 @@ attributes:
     - temperature
     - water
     slot_uri: MIXS:0000590
-    alias: water_temp_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -16569,7 +16092,6 @@ attributes:
     - regimen
     - water
     slot_uri: MIXS:0000591
-    alias: watering_regm
     owner: Biosample
     domain_of:
     - Biosample
@@ -16586,7 +16108,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000848
-    alias: weekday
     owner: Biosample
     domain_of:
     - Biosample
@@ -16604,7 +16125,6 @@ attributes:
     - identifier
     - number
     slot_uri: MIXS:0000297
-    alias: win
     owner: Biosample
     domain_of:
     - Biosample
@@ -16624,7 +16144,6 @@ attributes:
     - direction
     - wind
     slot_uri: MIXS:0000757
-    alias: wind_direction
     owner: Biosample
     domain_of:
     - Biosample
@@ -16645,7 +16164,6 @@ attributes:
     - speed
     - wind
     slot_uri: MIXS:0000118
-    alias: wind_speed
     owner: Biosample
     domain_of:
     - Biosample
@@ -16666,7 +16184,6 @@ attributes:
     - condition
     - window
     slot_uri: MIXS:0000849
-    alias: window_cond
     owner: Biosample
     domain_of:
     - Biosample
@@ -16682,7 +16199,6 @@ attributes:
     keywords:
     - window
     slot_uri: MIXS:0000850
-    alias: window_cover
     owner: Biosample
     domain_of:
     - Biosample
@@ -16698,7 +16214,6 @@ attributes:
     keywords:
     - window
     slot_uri: MIXS:0000851
-    alias: window_horiz_pos
     owner: Biosample
     domain_of:
     - Biosample
@@ -16715,7 +16230,6 @@ attributes:
     - location
     - window
     slot_uri: MIXS:0000852
-    alias: window_loc
     owner: Biosample
     domain_of:
     - Biosample
@@ -16732,7 +16246,6 @@ attributes:
     - material
     - window
     slot_uri: MIXS:0000853
-    alias: window_mat
     owner: Biosample
     domain_of:
     - Biosample
@@ -16747,7 +16260,6 @@ attributes:
     - frequency
     - window
     slot_uri: MIXS:0000246
-    alias: window_open_freq
     owner: Biosample
     domain_of:
     - Biosample
@@ -16769,7 +16281,6 @@ attributes:
     - window
     string_serialization: '{float} {unit} x {float} {unit}'
     slot_uri: MIXS:0000224
-    alias: window_size
     owner: Biosample
     domain_of:
     - Biosample
@@ -16787,7 +16298,6 @@ attributes:
     - status
     - window
     slot_uri: MIXS:0000855
-    alias: window_status
     owner: Biosample
     domain_of:
     - Biosample
@@ -16804,7 +16314,6 @@ attributes:
     - type
     - window
     slot_uri: MIXS:0000856
-    alias: window_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -16820,7 +16329,6 @@ attributes:
     keywords:
     - window
     slot_uri: MIXS:0000857
-    alias: window_vert_pos
     owner: Biosample
     domain_of:
     - Biosample
@@ -16836,7 +16344,6 @@ attributes:
     keywords:
     - window
     slot_uri: MIXS:0000854
-    alias: window_water_mold
     owner: Biosample
     domain_of:
     - Biosample
@@ -16855,7 +16362,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000156
-    alias: xylene
     owner: Biosample
     domain_of:
     - Biosample
@@ -16883,7 +16389,6 @@ attributes:
     - https://gold.jgi.doe.gov/help
     rank: 1000
     is_a: gold_path_field
-    alias: ecosystem
     owner: Biosample
     domain_of:
     - Study
@@ -16904,7 +16409,6 @@ attributes:
     - https://gold.jgi.doe.gov/help
     rank: 1000
     is_a: gold_path_field
-    alias: ecosystem_category
     owner: Biosample
     domain_of:
     - Study
@@ -16926,7 +16430,6 @@ attributes:
     - https://gold.jgi.doe.gov/help
     rank: 1000
     is_a: gold_path_field
-    alias: ecosystem_type
     owner: Biosample
     domain_of:
     - Study
@@ -16946,7 +16449,6 @@ attributes:
     - https://gold.jgi.doe.gov/help
     rank: 1000
     is_a: gold_path_field
-    alias: ecosystem_subtype
     owner: Biosample
     domain_of:
     - Study
@@ -16965,7 +16467,6 @@ attributes:
     - https://gold.jgi.doe.gov/help
     rank: 1000
     is_a: gold_path_field
-    alias: specific_ecosystem
     owner: Biosample
     domain_of:
     - Study
@@ -16980,7 +16481,6 @@ attributes:
     see_also:
     - https://gold.jgi.doe.gov/ecosystem_classification
     rank: 1000
-    alias: ecosystem_path_id
     owner: Biosample
     domain_of:
     - Biosample
@@ -16989,7 +16489,6 @@ attributes:
     name: community
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: community
     owner: Biosample
     domain_of:
     - Biosample
@@ -16998,7 +16497,6 @@ attributes:
     name: habitat
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: habitat
     owner: Biosample
     domain_of:
     - FieldResearchSite
@@ -17008,7 +16506,6 @@ attributes:
     name: host_name
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: host_name
     owner: Biosample
     domain_of:
     - Biosample
@@ -17017,7 +16514,6 @@ attributes:
     name: location
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: location
     owner: Biosample
     domain_of:
     - Biosample
@@ -17026,7 +16522,6 @@ attributes:
     name: ncbi_taxonomy_name
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: ncbi_taxonomy_name
     owner: Biosample
     domain_of:
     - Biosample
@@ -17035,7 +16530,6 @@ attributes:
     name: proport_woa_temperature
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: proport_woa_temperature
     owner: Biosample
     domain_of:
     - Biosample
@@ -17050,7 +16544,6 @@ attributes:
     see_also:
     - https://github.com/microbiomedata/nmdc-metadata/pull/297
     rank: 1000
-    alias: salinity_category
     owner: Biosample
     domain_of:
     - Biosample
@@ -17072,7 +16565,6 @@ attributes:
         half.
       source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
-    alias: sample_collection_site
     owner: Biosample
     domain_of:
     - Biosample
@@ -17081,7 +16573,6 @@ attributes:
     name: soluble_iron_micromol
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: soluble_iron_micromol
     owner: Biosample
     domain_of:
     - Biosample
@@ -17094,7 +16585,6 @@ attributes:
         value: m
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: subsurface_depth
     owner: Biosample
     domain_of:
     - Biosample
@@ -17109,7 +16599,6 @@ attributes:
     aliases:
     - Sample Isolation Method
     rank: 16
-    alias: dna_isolate_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -17125,7 +16614,6 @@ attributes:
     aliases:
     - Sample Isolation Method
     rank: 16
-    alias: rna_isolate_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -17151,7 +16639,6 @@ attributes:
     - MIXS:0000011
     rank: 2
     string_serialization: '{date, arbitrary precision}'
-    alias: collection_date_inc
     owner: Biosample
     domain_of:
     - Biosample
@@ -17175,7 +16662,6 @@ attributes:
     - MIXS:0000011
     rank: 1
     string_serialization: '{time, seconds optional}'
-    alias: collection_time
     owner: Biosample
     domain_of:
     - Biosample
@@ -17200,7 +16686,6 @@ attributes:
     - MIXS:0000011
     rank: 3
     string_serialization: '{time, seconds optional}'
-    alias: collection_time_inc
     owner: Biosample
     domain_of:
     - Biosample
@@ -17225,7 +16710,6 @@ attributes:
     - MIXS:0000300
     rank: 7
     string_serialization: '{text}'
-    alias: experimental_factor_other
     owner: Biosample
     domain_of:
     - Biosample
@@ -17246,7 +16730,6 @@ attributes:
     - MIXS:0000765
     rank: 6
     string_serialization: '{text}'
-    alias: filter_method
     owner: Biosample
     domain_of:
     - Biosample
@@ -17269,7 +16752,6 @@ attributes:
     see_also:
     - MIXS:0000751
     rank: 16
-    alias: isotope_exposure
     owner: Biosample
     domain_of:
     - Biosample
@@ -17292,7 +16774,6 @@ attributes:
     - MIXS:0000339
     rank: 11
     string_serialization: '{PMID}|{DOI}|{URL}'
-    alias: micro_biomass_c_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -17313,7 +16794,6 @@ attributes:
     - MIXS:0000339
     rank: 13
     string_serialization: '{PMID}|{DOI}|{URL}'
-    alias: micro_biomass_n_meth
     owner: Biosample
     domain_of:
     - Biosample
@@ -17334,7 +16814,6 @@ attributes:
     - MIXS:0000650
     rank: 10
     string_serialization: '{float} {unit}'
-    alias: microbial_biomass_c
     owner: Biosample
     domain_of:
     - Biosample
@@ -17355,7 +16834,6 @@ attributes:
     - MIXS:0000650
     rank: 12
     string_serialization: '{float} {unit}'
-    alias: microbial_biomass_n
     owner: Biosample
     domain_of:
     - Biosample
@@ -17375,7 +16853,6 @@ attributes:
     - MIXS:0000650
     rank: 8
     string_serialization: '{text};{float} {unit}'
-    alias: non_microb_biomass
     owner: Biosample
     domain_of:
     - Biosample
@@ -17395,7 +16872,6 @@ attributes:
     - MIXS:0000650
     rank: 9
     string_serialization: '{PMID}|{DOI}|{URL}'
-    alias: non_microb_biomass_method
     owner: Biosample
     domain_of:
     - Biosample
@@ -17416,7 +16892,6 @@ attributes:
     - MIXS:0000205
     rank: 14
     string_serialization: '{PMID}|{DOI}|{URL}'
-    alias: org_nitro_method
     owner: Biosample
     domain_of:
     - Biosample
@@ -17437,7 +16912,6 @@ attributes:
     - MIXS:0000300
     rank: 15
     string_serialization: '{text}'
-    alias: other_treatment
     owner: Biosample
     domain_of:
     - Biosample
@@ -17463,7 +16937,6 @@ attributes:
     - MIXS:0000011
     rank: 4
     string_serialization: '{date, arbitrary precision}'
-    alias: start_date_inc
     owner: Biosample
     domain_of:
     - Biosample
@@ -17487,7 +16960,6 @@ attributes:
     - MIXS:0000011
     rank: 5
     string_serialization: '{time, seconds optional}'
-    alias: start_time_inc
     owner: Biosample
     domain_of:
     - Biosample
@@ -17500,7 +16972,6 @@ attributes:
     title: project ID
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1
-    alias: project_id
     owner: Biosample
     domain_of:
     - Biosample
@@ -17514,7 +16985,6 @@ attributes:
     - This will guide staff in ensuring your samples are blocked &amp; randomized correctly
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 6
-    alias: replicate_number
     owner: Biosample
     domain_of:
     - Biosample
@@ -17534,7 +17004,6 @@ attributes:
     - value: 5 mL
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 3
-    alias: sample_shipped
     owner: Biosample
     domain_of:
     - Biosample
@@ -17550,7 +17019,6 @@ attributes:
     - value: water extracted soil
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 2
-    alias: sample_type
     owner: Biosample
     domain_of:
     - Biosample
@@ -17568,7 +17036,6 @@ attributes:
     - value: '2'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 5
-    alias: technical_reps
     owner: Biosample
     domain_of:
     - Biosample
@@ -17585,7 +17052,6 @@ attributes:
     - value: metagenomics; metabolomics; metaproteomics
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 3
-    alias: analysis_type
     owner: Biosample
     domain_of:
     - Protocol
@@ -17611,7 +17077,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 5
     string_serialization: '{text}:{text}'
-    alias: sample_link
     owner: Biosample
     domain_of:
     - Biosample
@@ -17638,7 +17103,6 @@ attributes:
         has_unit: mS/cm
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: bulk_elect_conductivity
     owner: Biosample
     domain_of:
     - Biosample
@@ -17657,7 +17121,6 @@ attributes:
     - infiltration_2
     rank: 1000
     list_elements_ordered: true
-    alias: infiltrations
     owner: Biosample
     domain_of:
     - Biosample
@@ -17687,7 +17150,6 @@ attributes:
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
     rank: 1000
-    alias: zinc
     owner: Biosample
     domain_of:
     - Biosample
@@ -17715,7 +17177,6 @@ attributes:
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
     rank: 1000
-    alias: manganese
     owner: Biosample
     domain_of:
     - Biosample
@@ -17745,7 +17206,6 @@ attributes:
     aliases:
     - NH4-N
     rank: 1000
-    alias: ammonium_nitrogen
     owner: Biosample
     domain_of:
     - Biosample
@@ -17777,7 +17237,6 @@ attributes:
     aliases:
     - NO3-N
     rank: 1000
-    alias: nitrate_nitrogen
     owner: Biosample
     domain_of:
     - Biosample
@@ -17807,7 +17266,6 @@ attributes:
     aliases:
     - NO2-N
     rank: 1000
-    alias: nitrite_nitrogen
     owner: Biosample
     domain_of:
     - Biosample
@@ -17842,7 +17300,6 @@ attributes:
     - lbc30
     - lime buffer capacity (at 30 minutes)
     rank: 1000
-    alias: lbc_thirty
     owner: Biosample
     domain_of:
     - Biosample
@@ -17875,7 +17332,6 @@ attributes:
     aliases:
     - lime buffer capacity (at 5-day equilibrium)
     rank: 1000
-    alias: lbceq
     owner: Biosample
     domain_of:
     - Biosample
@@ -17906,7 +17362,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: Biosample
     domain_of:
     - NamedThing
@@ -17928,7 +17383,6 @@ attributes:
     - value: BW-H-17-M
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: Biosample
     domain_of:
     - PersonValue
@@ -17942,7 +17396,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: Biosample
     domain_of:
     - ImageValue
@@ -17955,7 +17408,6 @@ attributes:
       Matches the entity that has been submitted to NMDC
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: Biosample
     domain_of:
     - NamedThing
@@ -17985,7 +17437,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: Biosample
     domain_of:
     - EukEval

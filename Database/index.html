@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/Database/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: Database - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -702,12 +702,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: biosample_set
     owner: Database
     domain_of:
     - Database
     range: Biosample
     multivalued: true
+    inlined: true
     inlined_as_list: true
   calibration_set:
     name: calibration_set
@@ -717,12 +717,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: calibration_set
     owner: Database
     domain_of:
     - Database
     range: CalibrationInformation
     multivalued: true
+    inlined: true
     inlined_as_list: true
   collecting_biosamples_from_site_set:
     name: collecting_biosamples_from_site_set
@@ -730,12 +730,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: collecting_biosamples_from_site_set
     owner: Database
     domain_of:
     - Database
     range: CollectingBiosamplesFromSite
     multivalued: true
+    inlined: true
     inlined_as_list: true
   configuration_set:
     name: configuration_set
@@ -745,12 +745,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: configuration_set
     owner: Database
     domain_of:
     - Database
     range: Configuration
     multivalued: true
+    inlined: true
     inlined_as_list: true
   data_generation_set:
     name: data_generation_set
@@ -760,12 +760,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: data_generation_set
     owner: Database
     domain_of:
     - Database
     range: DataGeneration
     multivalued: true
+    inlined: true
     inlined_as_list: true
   data_object_set:
     name: data_object_set
@@ -775,12 +775,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: data_object_set
     owner: Database
     domain_of:
     - Database
     range: DataObject
     multivalued: true
+    inlined: true
     inlined_as_list: true
   field_research_site_set:
     name: field_research_site_set
@@ -788,12 +788,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: field_research_site_set
     owner: Database
     domain_of:
     - Database
     range: FieldResearchSite
     multivalued: true
+    inlined: true
     inlined_as_list: true
   functional_annotation_agg:
     name: functional_annotation_agg
@@ -801,7 +801,6 @@ attributes:
       aggregation (agg) results.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: functional_annotation_agg
     owner: Database
     domain_of:
     - Database
@@ -817,12 +816,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: functional_annotation_set
     owner: Database
     domain_of:
     - Database
     range: FunctionalAnnotation
     multivalued: true
+    inlined: true
     inlined_as_list: true
   genome_feature_set:
     name: genome_feature_set
@@ -831,12 +830,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: genome_feature_set
     owner: Database
     domain_of:
     - Database
     range: GenomeFeature
     multivalued: true
+    inlined: true
     inlined_as_list: true
   instrument_set:
     name: instrument_set
@@ -846,12 +845,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: instrument_set
     owner: Database
     domain_of:
     - Database
     range: Instrument
     multivalued: true
+    inlined: true
     inlined_as_list: true
   manifest_set:
     name: manifest_set
@@ -861,12 +860,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: manifest_set
     owner: Database
     domain_of:
     - Database
     range: Manifest
     multivalued: true
+    inlined: true
     inlined_as_list: true
   material_processing_set:
     name: material_processing_set
@@ -876,12 +875,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: material_processing_set
     owner: Database
     domain_of:
     - Database
     range: MaterialProcessing
     multivalued: true
+    inlined: true
     inlined_as_list: true
   organism_sample_set:
     name: organism_sample_set
@@ -891,12 +890,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: organism_sample_set
     owner: Database
     domain_of:
     - Database
     range: OrganismSample
     multivalued: true
+    inlined: true
     inlined_as_list: true
   organism_set:
     name: organism_set
@@ -906,12 +905,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: organism_set
     owner: Database
     domain_of:
     - Database
     range: Organism
     multivalued: true
+    inlined: true
     inlined_as_list: true
   processed_sample_set:
     name: processed_sample_set
@@ -921,12 +920,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: processed_sample_set
     owner: Database
     domain_of:
     - Database
     range: ProcessedSample
     multivalued: true
+    inlined: true
     inlined_as_list: true
   storage_process_set:
     name: storage_process_set
@@ -936,12 +935,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: storage_process_set
     owner: Database
     domain_of:
     - Database
     range: StorageProcess
     multivalued: true
+    inlined: true
     inlined_as_list: true
   study_set:
     name: study_set
@@ -951,12 +950,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: study_set
     owner: Database
     domain_of:
     - Database
     range: Study
     multivalued: true
+    inlined: true
     inlined_as_list: true
   workflow_execution_set:
     name: workflow_execution_set
@@ -965,12 +964,12 @@ attributes:
     rank: 1000
     mixins:
     - object_set
-    alias: workflow_execution_set
     owner: Database
     domain_of:
     - Database
     range: WorkflowExecution
     multivalued: true
+    inlined: true
     inlined_as_list: true
 class_uri: nmdc:Database
 tree_root: true

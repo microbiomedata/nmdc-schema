@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/Pathway/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.3" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Class: Pathway (DEPRECATED) - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -625,7 +625,6 @@ attributes:
     - dcterms:alternative
     - skos:altLabel
     rank: 1000
-    alias: alternative_names
     owner: Pathway
     domain_of:
     - OntologyClass
@@ -637,7 +636,6 @@ attributes:
     name: relations
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: relations
     owner: Pathway
     domain_of:
     - OntologyClass
@@ -650,7 +648,6 @@ attributes:
     description: The definition of the ontology term as provided by the ontology.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: definition
     owner: Pathway
     domain_of:
     - OntologyClass
@@ -664,7 +661,6 @@ attributes:
       and it no longer has ontology_relation_set records.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: is_obsolete
     owner: Pathway
     domain_of:
     - OntologyClass
@@ -675,7 +671,6 @@ attributes:
       it is not a subclass of  any other term.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: is_root
     owner: Pathway
     domain_of:
     - OntologyClass
@@ -702,7 +697,6 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    alias: id
     owner: Pathway
     domain_of:
     - NamedThing
@@ -714,7 +708,6 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
     owner: Pathway
     domain_of:
     - PersonValue
@@ -727,7 +720,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    alias: description
     owner: Pathway
     domain_of:
     - ImageValue
@@ -739,7 +731,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: alternative_identifiers
     owner: Pathway
     domain_of:
     - NamedThing
@@ -769,7 +760,6 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    alias: type
     owner: Pathway
     domain_of:
     - EukEval
