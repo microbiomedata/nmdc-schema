@@ -1,0 +1,24 @@
+version: 2
+
+# Version updates. Dependabot security updates and alerts are configured
+# separately in repo settings; this file adds proactive version bumps.
+# Updates are grouped to keep PR volume low.
+updates:
+  # Keep the SHA-pinned GitHub Actions current (security patches reach pinned
+  # actions only through deliberate bumps).
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]
+
+  # Python dependencies (Dependabot reads pyproject.toml for the pip ecosystem).
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      python-dependencies:
+        patterns: ["*"]

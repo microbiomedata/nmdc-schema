@@ -75,8 +75,21 @@ When editing permissions, keep the established pattern: top-level `permissions: 
 
 CI also runs zizmor in a non-blocking job that reports to code scanning (the Security tab), added in #3149. The local check is for faster, in-development feedback.
 
+## Python linting and tooling
+
+`ruff` is the single linter and formatter. It replaced black/autopep8 (formatting), flake8 (E/F/W), isort (I), bandit (the `S` security rules), and pydocstyle (D); those packages were removed from the dev group. `mypy` (types), `pylint`, `vulture`, and `pyroma` are kept because ruff does not fully cover them. `deptry` checks for unused/missing dependencies.
+
+- Config lives in `[tool.ruff]` in `pyproject.toml`. Generated artifacts (`nmdc.py`, `nmdc_pydantic.py`, `nmdc_materialized_patterns.yaml`), `notebooks/`, and the frozen `migrators/partials/` are excluded.
+- `make lint` runs `ruff check .` (the blocking CI gate, currently the `F`/pyflakes rules). `make format` runs `ruff format` + `ruff check --fix`.
+- CI: `.github/workflows/lint.yaml` runs `ruff check` (blocking) plus a non-blocking `ruff check --select S` security scan. Formatting is not yet gated (the code is not uniformly format-clean); the one-time sweep is tracked in #3166. The security backlog (timeouts, hardcoded /tmp in `src/scripts`) is #3164; once cleared, add `"S"` to `select` and drop the separate step. mypy typing cleanup is #3165.
+- ruff `S` reproduces bandit's findings, so bandit is redundant here. The in-repo `ruff` + `zizmor` (workflows) pair covers what CodeQL was doing for this repo (CodeQL had 0 open Python alerts), if a move away from CodeQL is wanted.
+
+**YAML safety:** always use `yaml.safe_load` and `yaml.safe_dump` in authored code, never `yaml.load`/`yaml.dump` (even with `FullLoader`). The repo is uniformly on the safe variants as of #3163; keep it that way. linkml's own `yaml_dumper` is separate and fine.
+
+Dependabot security updates and alerts are on; `.github/dependabot.yml` adds grouped weekly version updates for the `github-actions` and `pip` ecosystems. Secret scanning is on.
+
 ## Code Style Guidelines
-- Follow PEP8 conventions and Black formatting
+- Follow PEP8 conventions; format with `ruff format` (black-compatible)
 - Use snake_case for variables/functions, PascalCase for classes
 - Type annotations required for all parameters and returns
 - Imports: stdlib first, third-party next, local modules last

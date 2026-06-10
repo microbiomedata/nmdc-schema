@@ -21,7 +21,7 @@ def main(schema_file):
         if len(classes_for_slot) == 0:
             slot_uri_suffix = f", {sv.slot_uri}" if sv.slot_uri else ""
             slot_children = schema_view.slot_children(sk)
-            slot_children_prefix = f"parent " if len(slot_children) > 0 else ""
+            slot_children_prefix = "parent " if len(slot_children) > 0 else ""
             print(f"No classes for {slot_children_prefix}slot {sk}{slot_uri_suffix}")
     print("\n")
 

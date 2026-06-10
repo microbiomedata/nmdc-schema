@@ -78,15 +78,14 @@ pure-export = "nmdc_schema.dump_single_modality:cli"
 
 [dependency-groups]
 dev = [
-    "autopep8>=2.2.0,<3.0.0",
-    "bandit>=1.7.8,<2.0.0",
-    "black>=26.3.1,<27.0.0",
+    # ruff replaces autopep8/black (formatting), flake8 (pyflakes+pycodestyle),
+    # isort (import order), bandit (the S security rules), and pydocstyle (D).
+    # See [tool.ruff] below. mypy (types), pylint, vulture, and pyroma are kept
+    # because ruff does not (yet) fully cover them.
     "curies>=0.9.0,<1.0.0",
     "defusedxml>=0.7.1,<1.0.0",  # hardened XML parsing in src/scripts/ncbi_nmdc_exact_term_matching.py
     "exhaustion-check>=0.1.1,<0.2.0",  # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
     "fastjsonschema>=2.20.0,<3.0.0",
-    "flake8>=7.0.0,<8.0.0",
-    "isort>=5.13.2,<9.0.0",
     # linkml-store[llm] was a dependency but its llm → sqlite-utils chain
     # requires click>=8.3.1, which conflicts with linkml's click<8.2 cap.
     # Ontology alignment scripts (#2909, #2910) that need embeddings should
@@ -101,7 +100,6 @@ dev = [
     "oaklib>=0.6.23,<1.0.0",
     "pandas>=2.2.3,<4.0.0",
     "psycopg2-binary>=2.9.10,<3.0.0",
-    "pydocstyle>=6.3.0,<7.0.0",
     "pylint>=3.2.2,<5.0.0",
     "pyroma>=4.2,<6.0",
     "pytest>=8.4.2,<10.0.0",
@@ -154,6 +152,31 @@ build-backend = "poetry_dynamic_versioning.backend"
 # (excludes MongoDB integration tests and other tests outside tests/)
 # Module independence is checked by check_schema_self_containment.py instead
 testpaths = ["tests"]
+
+# ruff is the single linter + formatter, replacing black/autopep8 (format),
+# flake8 (E/F/W), isort (I), bandit (S security), and pydocstyle (D).
+[tool.ruff]
+# Generated artifacts, scratch notebooks, and the frozen released migrator
+# partials are not hand-maintained, so they are not linted.
+extend-exclude = [
+    "nmdc_schema/nmdc.py",
+    "nmdc_schema/nmdc_pydantic.py",
+    "nmdc_schema/nmdc_materialized_patterns.yaml",
+    "notebooks",
+    "nmdc_schema/migrators/partials",
+]
+
+[tool.ruff.lint]
+# Start with the high-signal, low-churn rules as a blocking gate (pyflakes).
+# Security rules (S) are run as a separate, non-blocking CI step until the
+# known src/scripts findings (#3164) are cleared, then folded in here.
+# Import order (I), bugbear (B), and pyupgrade (UP) are deferred to a separate
+# modernization pass because they would rewrite a large amount of code at once.
+select = ["F"]
+
+[tool.ruff.lint.per-file-ignores]
+# Asserts are idiomatic in tests; bandit's B101 / ruff's S101 are noise there.
+"tests/**" = ["S101"]
 
 [tool.deptry]
 extend_exclude = [
