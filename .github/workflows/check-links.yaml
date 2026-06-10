@@ -16,14 +16,20 @@ on:
   # Reference: https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow
   workflow_dispatch: {}
 
-permissions:
-  contents: read
-  issues: write
+permissions: {}  # default deny; the job below grants only what it needs
+
+# Only one link-check at a time; a newer run supersedes an older one.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 run-name: Check links in docs
 jobs:
   build-docs-and-check-links:
     name: Build docs and check links
+    permissions:
+      contents: read  # check out the repository to scan docs for links
+      issues: write   # file an issue listing broken links (peter-evans/create-issue-from-file)
     runs-on: ubuntu-latest
     steps:
       - name: Check out commit

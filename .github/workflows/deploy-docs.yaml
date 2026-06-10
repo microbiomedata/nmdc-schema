@@ -4,8 +4,7 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-permissions:
-  contents: write
+permissions: {}  # default deny; the job below grants only what it needs
 
 # Cancel outdated runs when new commits are pushed to main
 concurrency:
@@ -14,6 +13,9 @@ concurrency:
 
 jobs:
   build-docs:
+    name: Build and deploy documentation
+    permissions:
+      contents: write  # push the built docs to the gh-pages branch
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
