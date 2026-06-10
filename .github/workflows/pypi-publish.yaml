@@ -6,8 +6,9 @@ on:
 
 permissions: {}  # default deny; the publish job below grants only id-token: write
 
-# Serialize publishes but never cancel one in progress: interrupting a release
-# mid-publish could leave a partial upload. cancel-in-progress is false.
+# Never cancel an in-progress publish: interrupting a release mid-upload could
+# leave a partial upload. Grouped per ref so re-triggering the same release does
+# not publish it twice concurrently; unrelated releases still publish in parallel.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false

@@ -18,7 +18,7 @@ on:
 
 permissions: {}  # default deny; the job below grants only what it needs
 
-# Only one link-check at a time; a newer run supersedes an older one.
+# Supersede an in-progress link-check for the same ref; a newer run wins.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
