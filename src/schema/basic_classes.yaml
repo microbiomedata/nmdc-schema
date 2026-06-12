@@ -702,8 +702,11 @@ slots:
       - >-
         Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
         OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.
-        The global range stays OntologyClass and is narrowed to NcbiTaxon via slot_usage on
-        organism-oriented classes.
+    notes:
+      - >-
+        The global range stays OntologyClass. Organism is currently the only class that
+        narrows classified_as to NcbiTaxon, via slot_usage. Extending that narrowing to
+        other classes is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3016.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/2959
       - https://github.com/microbiomedata/nmdc-schema/issues/3016
