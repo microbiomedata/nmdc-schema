@@ -100,7 +100,7 @@ classes:
       - >-
         Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution
         of NCBI Taxonomy. Strain identity is captured via dedicated slots on Organism
-        (e.g. strain_name, isolate_name) — not by minting NcbiTaxon instances.
+        (e.g. strain_name, isolate_name), not by minting NcbiTaxon instances.
       - >-
         Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
         with range OntologyClass. The intent is that these slots point to NcbiTaxon instances specifically,
@@ -207,14 +207,6 @@ classes:
       - estimated_size
       - gc_content
       - ref_biomaterial
-    notes:
-      - >-
-        DEBATED — `estimated_size` and `gc_content` placement on Organism. Montana
-        argues these are analyte properties measured during sample QC (like
-        concentration or absorbance) rather than stable organism properties, and
-        belong only in submission-schema. Counterargument: genome size and GC% are
-        reproducible biological properties of the organism that are useful for
-        downstream data integration. Keeping on Organism pending resolution.
     slot_usage:
       id:
         required: true
@@ -271,7 +263,7 @@ classes:
             release. See ongoing MIxS renaming work.
     comments:
       - >-
-        Organism instances are stored in organism_set. An Organism is not a sample — it is
+        Organism instances are stored in organism_set. An Organism is not a sample; it is
         the biological entity that an OrganismSample is expected to contain, linked via
         expected_organism. Sub-species identity (strain_name, isolate_name)
         is captured directly on Organism.
@@ -709,10 +701,11 @@ slots:
       - >-
         Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
         OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.
-        The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked
-        in #3016.
+        The global range stays OntologyClass and is narrowed to NcbiTaxon via slot_usage on
+        organism-oriented classes.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/2959
+      - https://github.com/microbiomedata/nmdc-schema/issues/3016
     narrow_mappings:
       - biolink:in_taxon
 
