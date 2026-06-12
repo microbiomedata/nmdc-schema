@@ -224,6 +224,8 @@ classes:
       estimated_size:
         in_subset:
           - jgi_isolate
+        examples:
+          - value: "5000000"
         structured_aliases:
           - literal_form: Estimated Genome Size (Mb)
             predicate: BROAD_SYNONYM
@@ -231,8 +233,6 @@ classes:
             notes:
               - Exact JGI form template is access-restricted; source is the public submission overview.
               - "Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many possible bp values; the alias is broader in granularity."
-            examples:
-              - value: "5000000"
       ref_biomaterial:
         description: >-
           Reference for the organism, preferentially a DOI when a primary

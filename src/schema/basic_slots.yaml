@@ -568,7 +568,8 @@ slots:
     examples:
       - value: loihica
       - value: pomeroyi
-      - value: sp.  (use when the isolate has not yet been assigned a species name)
+      - value: sp.
+        description: use when the isolate has not yet been assigned a species name
     comments:
       - >-
         Free-text submitter-provided species name. For an ontology-grounded classification,
