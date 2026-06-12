@@ -593,6 +593,7 @@ slots:
         in a single slot using a rank-prefix encoding (e.g. "strain:PV-4"). NMDC
         splits the concept into separate slots; this slot covers the strain
         rank specifically.
+      - Example values are strain names from GOLD organism_v2.
     related_mappings:
       - MIXS:0000020
     in_subset:
@@ -607,10 +608,6 @@ slots:
       - value: PV-4
       - value: DSS-3
       - value: DSM 6724
-    notes:
-      - GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
-      - GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
-      - GOLD organism_v2 Dictyoglomus turgidum (Go0000002, queried 2026-04-14)
 
   isolate_name:
     description: Isolate or mutant name.
@@ -620,6 +617,7 @@ slots:
         strain, cultivar, serovar, biotype, ecotype, and other sub-species
         lineage types in a single slot using a rank-prefix encoding. NMDC uses
         a separate slot for the isolate rank specifically.
+      - Example values are from GOLD dw_sample_taxonomy_info.isolate; "Isolate" is a generic placeholder used when no specific mutant or isolate name is recorded.
     related_mappings:
       - MIXS:0000020
     in_subset:
@@ -634,10 +632,6 @@ slots:
       - value: Bd21-3
       - value: MR164
       - value: Isolate
-    notes:
-      - GOLD dw_sample_taxonomy_info.isolate (n=260 records, queried 2026-04-30) — Brachypodium distachyon Bd21-3 reference accession
-      - GOLD dw_sample_taxonomy_info.isolate (n=555 records, queried 2026-04-30)
-      - GOLD dw_sample_taxonomy_info.isolate (n=918 records, queried 2026-04-30) — generic placeholder used when no specific mutant/isolate name is recorded
 
   gc_content:
     range: float
@@ -645,8 +639,8 @@ slots:
     minimum_value: 0
     maximum_value: 100
     examples:
-      - 45
-      - 60
+      - value: 45
+      - value: 60
     unit:
       ucum_code: "%"
     in_subset:
