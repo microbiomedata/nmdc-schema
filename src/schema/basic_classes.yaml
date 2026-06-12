@@ -1563,13 +1563,6 @@ enums:
             predicate: NARROW_SYNONYM
             notes:
               - Misspelling of octoploid retained as observed in GOLD.
-      autopolyploid:
-        meaning: PATO:0001378
-        description: Polyploid whose chromosome sets derive from a single species.
-        notes:
-          - >-
-            Not observed in the 2026-04-29 GOLD snapshot; included as the
-            origin-counterpart of `allopolyploidy`.
       allopolyploidy:
         meaning: PATO:0001379
         description: Polyploid whose chromosome sets derive from two or more different species.
@@ -1596,6 +1589,13 @@ enums:
                 Allopolyploid at the hexaploid level; observed in GOLD. No PATO
                 class exists, so it is recorded as a narrow synonym pending a PATO
                 term request.
+      autopolyploid:
+        meaning: PATO:0001378
+        description: Polyploid whose chromosome sets derive from a single species.
+        notes:
+          - >-
+            Not observed in the 2026-04-29 GOLD snapshot; included as the
+            origin-counterpart of `allopolyploidy`.
       aneuploid:
         meaning: PATO:0001385
         description: A chromosome number that is not an exact multiple of the haploid set (extra or missing chromosomes).
