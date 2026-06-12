@@ -639,8 +639,8 @@ slots:
     minimum_value: 0
     maximum_value: 100
     examples:
-      - value: 45
-      - value: 60
+      - value: "45"
+      - value: "60"
     unit:
       ucum_code: "%"
     in_subset:
