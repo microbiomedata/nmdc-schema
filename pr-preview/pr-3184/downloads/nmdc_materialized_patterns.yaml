@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.0.post6.dev0+8c21d7d3e
+version: 11.20.0.post8.dev0+757a5cb27
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19871,8 +19871,8 @@ classes:
           global OntologyClass range to NcbiTaxon, since organism identity at NMDC
           is anchored to NCBI Taxonomy.
         notes:
-        - 'Narrowing `classified_as` to `NcbiTaxon` on organism-oriented classes via
-          slot_usage is tracked in #3016.'
+        - Narrowing `classified_as` to `NcbiTaxon` on organism-oriented classes via
+          slot_usage is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3016.
         range: NcbiTaxon
       estimated_size:
         name: estimated_size
