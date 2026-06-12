@@ -640,6 +640,9 @@ slots:
     description: Estimated GC content as a percentage.
     minimum_value: 0
     maximum_value: 100
+    examples:
+      - 45
+      - 60
     unit:
       ucum_code: "%"
     in_subset:
