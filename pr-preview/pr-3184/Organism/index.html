@@ -588,7 +588,7 @@
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Organism instances are stored in organism_set. An Organism is not a sample — it is the biological entity that an OrganismSample is expected to contain, linked via expected_organism. Sub-species identity (strain_name, isolate_name) is captured directly on Organism.</li>
+<li>Organism instances are stored in organism_set. An Organism is not a sample; it is the biological entity that an OrganismSample is expected to contain, linked via expected_organism. Sub-species identity (strain_name, isolate_name) is captured directly on Organism.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -625,15 +625,9 @@ description: A material entity that is a living or once-living individual. Organ
   instances represent the biological identity of what is in a sample, not the sample
   itself. Sub-species identity (strain, cultivar, lab isolate) is captured by slots
   on this class rather than via a separate Strain subclass.
-notes:
-- 'DEBATED — `estimated_size` and `gc_content` placement on Organism. Montana argues
-  these are analyte properties measured during sample QC (like concentration or absorbance)
-  rather than stable organism properties, and belong only in submission-schema. Counterargument:
-  genome size and GC% are reproducible biological properties of the organism that
-  are useful for downstream data integration. Keeping on Organism pending resolution.'
 comments:
-- Organism instances are stored in organism_set. An Organism is not a sample — it
-  is the biological entity that an OrganismSample is expected to contain, linked via
+- Organism instances are stored in organism_set. An Organism is not a sample; it is
+  the biological entity that an OrganismSample is expected to contain, linked via
   expected_organism. Sub-species identity (strain_name, isolate_name) is captured
   directly on Organism.
 from_schema: https://w3id.org/nmdc/nmdc
@@ -717,15 +711,9 @@ description: A material entity that is a living or once-living individual. Organ
   instances represent the biological identity of what is in a sample, not the sample
   itself. Sub-species identity (strain, cultivar, lab isolate) is captured by slots
   on this class rather than via a separate Strain subclass.
-notes:
-- 'DEBATED — `estimated_size` and `gc_content` placement on Organism. Montana argues
-  these are analyte properties measured during sample QC (like concentration or absorbance)
-  rather than stable organism properties, and belong only in submission-schema. Counterargument:
-  genome size and GC% are reproducible biological properties of the organism that
-  are useful for downstream data integration. Keeping on Organism pending resolution.'
 comments:
-- Organism instances are stored in organism_set. An Organism is not a sample — it
-  is the biological entity that an OrganismSample is expected to contain, linked via
+- Organism instances are stored in organism_set. An Organism is not a sample; it is
+  the biological entity that an OrganismSample is expected to contain, linked via
   expected_organism. Sub-species identity (strain_name, isolate_name) is captured
   directly on Organism.
 from_schema: https://w3id.org/nmdc/nmdc
@@ -799,13 +787,14 @@ attributes:
     - 'Narrowing `classified_as` to `NcbiTaxon` on organism-oriented classes via slot_usage
       is tracked in #3016.'
     comments:
-    - 'Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
+    - Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
       OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.
-      The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage
-      is tracked in #3016.'
+      The global range stays OntologyClass and is narrowed to NcbiTaxon via slot_usage
+      on organism-oriented classes.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2959
+    - https://github.com/microbiomedata/nmdc-schema/issues/3016
     narrow_mappings:
     - biolink:in_taxon
     rank: 1000
