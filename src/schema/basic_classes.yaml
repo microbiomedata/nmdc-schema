@@ -215,10 +215,7 @@ classes:
           interpolated: true
       classified_as:
         range: NcbiTaxon
-        description: >-
-          Taxonomic classification of this organism, narrowed from the global
-          OntologyClass range to NcbiTaxon, since organism identity at NMDC is
-          anchored to NCBI Taxonomy.
+        description: Taxonomic classification of this organism.
         notes:
           - >-
             Narrowing `classified_as` to `NcbiTaxon` on organism-oriented
@@ -235,7 +232,7 @@ classes:
               - Exact JGI form template is access-restricted; source is the public submission overview.
               - "Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many possible bp values; the alias is broader in granularity."
             examples:
-              - 5000000
+              - value: 5000000
       ref_biomaterial:
         description: >-
           Reference for the organism, preferentially a DOI when a primary
@@ -266,10 +263,9 @@ classes:
             release. See ongoing MIxS renaming work.
     comments:
       - >-
-        Organism instances are stored in organism_set. An Organism is not a sample; it is
-        the biological entity that an OrganismSample is expected to contain, linked via
-        expected_organism. Sub-species identity (strain_name, isolate_name)
-        is captured directly on Organism.
+        An Organism is not a sample; it is the biological entity that an OrganismSample
+        is expected to contain, linked via expected_organism. Sub-species identity
+        (strain_name, isolate_name) is captured directly on Organism.
     exact_mappings:
       - COB:0000022
     see_also:
