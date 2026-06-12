@@ -72,10 +72,11 @@ titles so they read as change-log entries. Larger releases may add a short hand-
 an example.
 
 This repository previously kept a manually curated `CHANGELOG.md`. It was retired on
-2024-06-14 (PR [#209](https://github.com/microbiomedata/nmdc-schema/pull/209)) in favor of
-the auto-generated notes. Do not reintroduce a `CHANGELOG.md` without recording the
-decision against
-[#2876](https://github.com/microbiomedata/nmdc-schema/issues/2876).
+2024-06-14 in commit
+[010ef75d2](https://github.com/microbiomedata/nmdc-schema/commit/010ef75d22c50d6b7cfa7eed825d0b99bbd74789)
+in favor of the auto-generated notes. Do not reintroduce a `CHANGELOG.md` without recording
+the decision against
+[Audit versioning guidelines and compliance](https://github.com/microbiomedata/nmdc-schema/issues/2876).
 
 ### Notify NMDC Schema users
 After the new version is on PyPI, notify [nmdc-runtime](https://github.com/microbiomedata/nmdc-runtime) and the `metadata` channel on the NMDC Slack that `nmdc-schema` has been updated.
