@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.0.post8.dev0+757a5cb27
+version: 11.20.0.post9.dev0+6eac8e891
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -7915,11 +7915,13 @@ slots:
     name: classified_as
     description: A formal classification for this entity, expressed directly as an
       ontology-backed class instance stored in ontology_class_set.
+    notes:
+    - The global range stays OntologyClass. Organism is currently the only class that
+      narrows classified_as to NcbiTaxon, via slot_usage. Extending that narrowing
+      to other classes is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3016.
     comments:
     - Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
       OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.
-      The global range stays OntologyClass and is narrowed to NcbiTaxon via slot_usage
-      on organism-oriented classes.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2959

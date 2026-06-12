@@ -760,7 +760,7 @@
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances. OrganismSample reaches taxonomy indirectly via expected_organism.classified_as. The global range stays OntologyClass and is narrowed to NcbiTaxon via slot_usage on organism-oriented classes.</li>
+<li>Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances. OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -793,11 +793,13 @@
 <pre><code class="language-yaml">name: classified_as
 description: A formal classification for this entity, expressed directly as an ontology-backed
   class instance stored in ontology_class_set.
+notes:
+- The global range stays OntologyClass. Organism is currently the only class that
+  narrows classified_as to NcbiTaxon, via slot_usage. Extending that narrowing to
+  other classes is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3016.
 comments:
 - Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances. OrganismSample
-  reaches taxonomy indirectly via expected_organism.classified_as. The global range
-  stays OntologyClass and is narrowed to NcbiTaxon via slot_usage on organism-oriented
-  classes.
+  reaches taxonomy indirectly via expected_organism.classified_as.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2959
