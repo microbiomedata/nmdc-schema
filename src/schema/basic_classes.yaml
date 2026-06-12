@@ -234,6 +234,8 @@ classes:
             notes:
               - Exact JGI form template is access-restricted; source is the public submission overview.
               - "Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many possible bp values; the alias is broader in granularity."
+            examples:
+              - 5000000
       ref_biomaterial:
         description: >-
           Reference for the organism, preferentially a DOI when a primary
