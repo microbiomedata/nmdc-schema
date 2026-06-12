@@ -484,7 +484,7 @@
 <tr>
 <td><a href="../classified_as/">classified_as</a></td>
 <td>* <br/> <a href="../NcbiTaxon/">NcbiTaxon</a></td>
-<td>Taxonomic classification of this organism, narrowed from the global OntologyC...</td>
+<td>Taxonomic classification of this organism</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -588,7 +588,7 @@
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Organism instances are stored in organism_set. An Organism is not a sample; it is the biological entity that an OrganismSample is expected to contain, linked via expected_organism. Sub-species identity (strain_name, isolate_name) is captured directly on Organism.</li>
+<li>An Organism is not a sample; it is the biological entity that an OrganismSample is expected to contain, linked via expected_organism. Sub-species identity (strain_name, isolate_name) is captured directly on Organism.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -626,10 +626,9 @@ description: A material entity that is a living or once-living individual. Organ
   itself. Sub-species identity (strain, cultivar, lab isolate) is captured by slots
   on this class rather than via a separate Strain subclass.
 comments:
-- Organism instances are stored in organism_set. An Organism is not a sample; it is
-  the biological entity that an OrganismSample is expected to contain, linked via
-  expected_organism. Sub-species identity (strain_name, isolate_name) is captured
-  directly on Organism.
+- An Organism is not a sample; it is the biological entity that an OrganismSample
+  is expected to contain, linked via expected_organism. Sub-species identity (strain_name,
+  isolate_name) is captured directly on Organism.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2959
@@ -656,9 +655,7 @@ slot_usage:
       interpolated: true
   classified_as:
     name: classified_as
-    description: Taxonomic classification of this organism, narrowed from the global
-      OntologyClass range to NcbiTaxon, since organism identity at NMDC is anchored
-      to NCBI Taxonomy.
+    description: Taxonomic classification of this organism.
     notes:
     - Narrowing `classified_as` to `NcbiTaxon` on organism-oriented classes via slot_usage
       is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3016.
@@ -675,6 +672,8 @@ slot_usage:
         overview.
       - 'Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many
         possible bp values; the alias is broader in granularity.'
+      examples:
+      - value: '5000000'
       source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   ref_biomaterial:
     name: ref_biomaterial
@@ -712,10 +711,9 @@ description: A material entity that is a living or once-living individual. Organ
   itself. Sub-species identity (strain, cultivar, lab isolate) is captured by slots
   on this class rather than via a separate Strain subclass.
 comments:
-- Organism instances are stored in organism_set. An Organism is not a sample; it is
-  the biological entity that an OrganismSample is expected to contain, linked via
-  expected_organism. Sub-species identity (strain_name, isolate_name) is captured
-  directly on Organism.
+- An Organism is not a sample; it is the biological entity that an OrganismSample
+  is expected to contain, linked via expected_organism. Sub-species identity (strain_name,
+  isolate_name) is captured directly on Organism.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2959
@@ -733,9 +731,7 @@ slot_usage:
       interpolated: true
   classified_as:
     name: classified_as
-    description: Taxonomic classification of this organism, narrowed from the global
-      OntologyClass range to NcbiTaxon, since organism identity at NMDC is anchored
-      to NCBI Taxonomy.
+    description: Taxonomic classification of this organism.
     notes:
     - Narrowing `classified_as` to `NcbiTaxon` on organism-oriented classes via slot_usage
       is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3016.
@@ -752,6 +748,8 @@ slot_usage:
         overview.
       - 'Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many
         possible bp values; the alias is broader in granularity.'
+      examples:
+      - value: '5000000'
       source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   ref_biomaterial:
     name: ref_biomaterial
@@ -780,9 +778,7 @@ slot_usage:
 attributes:
   classified_as:
     name: classified_as
-    description: Taxonomic classification of this organism, narrowed from the global
-      OntologyClass range to NcbiTaxon, since organism identity at NMDC is anchored
-      to NCBI Taxonomy.
+    description: Taxonomic classification of this organism.
     notes:
     - Narrowing `classified_as` to `NcbiTaxon` on organism-oriented classes via slot_usage
       is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3016.
@@ -806,16 +802,17 @@ attributes:
   organism_genus:
     name: organism_genus
     description: Genus of the organism.
+    notes:
+    - GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+    - GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+    - GOLD organism_v2 (Go0000058, queried 2026-04-14)
     comments:
     - Free-text submitter-provided genus name. For an ontology-grounded classification,
       use `classified_as` with a NcbiTaxon instance on the parent Organism class.
     examples:
     - value: Shewanella
-      description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
     - value: Ruegeria
-      description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
     - value: Campylobacter
-      description: GOLD organism_v2 (Go0000058, queried 2026-04-14)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -834,17 +831,16 @@ attributes:
   organism_species:
     name: organism_species
     description: Species of the organism.
+    notes:
+    - GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+    - GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
     comments:
     - Free-text submitter-provided species name. For an ontology-grounded classification,
       use `classified_as` with a NcbiTaxon instance on the parent Organism class.
     examples:
     - value: loihica
-      description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
     - value: pomeroyi
-      description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
-    - value: sp.
-      description: GOLD organism_v2.species (n=37 records, queried 2026-04-30) — used
-        when the isolate has not yet been assigned a species name
+    - value: sp.  (use when the isolate has not yet been assigned a species name)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -863,7 +859,7 @@ attributes:
   strain_name:
     name: strain_name
     description: Strain or cultivar name of the organism.
-    comments:
+    notes:
     - 'Microbial strain identifiers and plant cultivar names (governed by the International
       Code of Nomenclature for Cultivated Plants, ICNCP) are nomenclaturally distinct,
       but this slot accepts both for now to match the JGI Isolate (NA) v19 form''s
@@ -873,13 +869,11 @@ attributes:
       serovar, biotype, ecotype, and other sub-species lineage types in a single slot
       using a rank-prefix encoding (e.g. "strain:PV-4"). NMDC splits the concept into
       separate slots; this slot covers the strain rank specifically.
+    - Example values are strain names from GOLD organism_v2.
     examples:
     - value: PV-4
-      description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
     - value: DSS-3
-      description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
     - value: DSM 6724
-      description: GOLD organism_v2 Dictyoglomus turgidum (Go0000002, queried 2026-04-14)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -900,20 +894,17 @@ attributes:
   isolate_name:
     name: isolate_name
     description: Isolate or mutant name.
-    comments:
+    notes:
     - MIxS `subspecf_gen_lin` (MIXS:0000020) covers this concept along with strain,
       cultivar, serovar, biotype, ecotype, and other sub-species lineage types in
       a single slot using a rank-prefix encoding. NMDC uses a separate slot for the
       isolate rank specifically.
+    - Example values are from GOLD dw_sample_taxonomy_info.isolate; "Isolate" is a
+      generic placeholder used when no specific mutant or isolate name is recorded.
     examples:
     - value: Bd21-3
-      description: GOLD dw_sample_taxonomy_info.isolate (n=260 records, queried 2026-04-30)
-        — Brachypodium distachyon Bd21-3 reference accession
     - value: MR164
-      description: GOLD dw_sample_taxonomy_info.isolate (n=555 records, queried 2026-04-30)
     - value: Isolate
-      description: GOLD dw_sample_taxonomy_info.isolate (n=918 records, queried 2026-04-30)
-        — generic placeholder used when no specific mutant/isolate name is recorded
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -957,6 +948,8 @@ attributes:
         overview.
       - 'Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many
         possible bp values; the alias is broader in granularity.'
+      examples:
+      - value: '5000000'
       source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     keywords:
@@ -971,6 +964,9 @@ attributes:
   gc_content:
     name: gc_content
     description: Estimated GC content as a percentage.
+    examples:
+    - value: '45'
+    - value: '60'
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc

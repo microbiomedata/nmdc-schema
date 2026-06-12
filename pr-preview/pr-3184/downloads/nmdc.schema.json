@@ -13666,7 +13666,7 @@
                     ]
                 },
                 "classified_as": {
-                    "description": "Taxonomic classification of this organism, narrowed from the global OntologyClass range to NcbiTaxon, since organism identity at NMDC is anchored to NCBI Taxonomy.",
+                    "description": "Taxonomic classification of this organism.",
                     "items": {
                         "$ref": "#/$defs/NcbiTaxon"
                     },
@@ -13892,13 +13892,6 @@
                 },
                 "samp_name": {
                     "description": "A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "sample_isolation_method": {
-                    "description": "Method, protocol, or kit used to extract DNA/RNA from the sample.",
                     "type": [
                         "string",
                         "null"
@@ -17524,5 +17517,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.0.post9.dev0+6eac8e891"
+    "version": "11.20.0.post18.dev0+78aeb536a"
 }

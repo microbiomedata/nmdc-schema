@@ -476,8 +476,6 @@
 
   OrganismSample : samp_name
 
-  OrganismSample : sample_isolation_method
-
   OrganismSample : source_mat_id
 
       OrganismSample --&gt; "0..1" TextValue : source_mat_id
@@ -564,12 +562,6 @@
 <td><a href="../host_taxid/">host_taxid</a></td>
 <td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
 <td>NCBI taxon id of the host, e</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../sample_isolation_method/">sample_isolation_method</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Method, protocol, or kit used to extract DNA/RNA from the sample</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -729,7 +721,6 @@ slots:
 - collection_date
 - samp_name
 - host_taxid
-- sample_isolation_method
 - ploidy
 - source_mat_id
 - analysis_type
@@ -1062,30 +1053,6 @@ attributes:
     - Biosample
     - OrganismSample
     range: ControlledIdentifiedTermValue
-  sample_isolation_method:
-    name: sample_isolation_method
-    description: Method, protocol, or kit used to extract DNA/RNA from the sample.
-    comments:
-    - See also dna_isolate_meth in submission-schema for the equivalent portal field.
-    examples:
-    - value: Wizard Genomic DNA Purification Kit
-      description: Promega Wizard kit — a widely-used DNA isolation method in JGI
-        bacterial isolate submissions
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Sample Isolation Method
-      predicate: EXACT_SYNONYM
-      notes:
-      - Exact JGI form template is access-restricted; source is the public submission
-        overview.
-      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
-    rank: 1000
-    owner: OrganismSample
-    domain_of:
-    - OrganismSample
-    range: string
   ploidy:
     name: ploidy
     description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid,

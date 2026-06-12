@@ -768,7 +768,7 @@
 <td>pomeroyi</td>
 </tr>
 <tr>
-<td>sp.</td>
+<td>sp.  (use when the isolate has not yet been assigned a species name)</td>
 </tr>
 </tbody>
 </table>
@@ -801,17 +801,16 @@
 
 <pre><code class="language-yaml">name: organism_species
 description: Species of the organism.
+notes:
+- GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+- GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
 comments:
 - Free-text submitter-provided species name. For an ontology-grounded classification,
   use `classified_as` with a NcbiTaxon instance on the parent Organism class.
 examples:
 - value: loihica
-  description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
 - value: pomeroyi
-  description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
-- value: sp.
-  description: GOLD organism_v2.species (n=37 records, queried 2026-04-30) — used
-    when the isolate has not yet been assigned a species name
+- value: sp.  (use when the isolate has not yet been assigned a species name)
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc

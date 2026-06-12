@@ -795,13 +795,14 @@
 
 <pre><code class="language-yaml">name: host_strain
 description: Strain of the host organism that the sample was collected from.
+notes:
+- GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia phage
+  JSE, queried 2026-04-30)
 comments:
 - Free-text submitter-provided host strain. For an ontology-grounded host identification,
   use `host_taxid` (MIXS:0000250) on the same class.
 examples:
 - value: K-12
-  description: GOLD organism_v2 host_name &quot;Escherichia coli K-12&quot; (Go0084483 Escherichia
-    phage JSE, queried 2026-04-30)
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc
