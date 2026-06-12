@@ -517,6 +517,7 @@ classes:
       - data_category
       - data_object_type
       - file_size_bytes
+      - first_of_class_in_chain
       - insdc_experiment_identifiers
       - md5_checksum
       - url
