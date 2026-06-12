@@ -62,11 +62,6 @@ with `v` (e.g. `v11.20.0`). Pre-release tags add a `-rc.N` suffix (e.g. `v11.20.
 affect the schema. The version still advances because it tracks the git tag; such a change
 is a patch-level release.
 
-Whether a release needs a data migrator is a separate, conformance-based question covered
-in [`nmdc_schema/migrators/README.md`](nmdc_schema/migrators/README.md) and the
-*Released migrators* notes in [`CLAUDE.md`](CLAUDE.md), not a function of which version
-number changes.
-
 ### Release notes
 
 Release notes are GitHub's **auto-generated** notes (the *Generate release notes* button

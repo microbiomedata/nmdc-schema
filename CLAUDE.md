@@ -50,8 +50,6 @@ This is a Poetry repo. Sibling `submission-schema` migrated to `uv`; do not conf
 
 Migrator partials under `nmdc_schema/migrators/partials/migrator_from_X_to_Y/` are versioned snapshots of migrations that have already run against the production database. Do not make functional changes to them; they are the authoritative record of what ran. Explanatory comments are fine. New breaking schema changes get a new migrator, not an edit to an old one (and a breaking change with no production data may legitimately ship no migrator, with the reason noted in the PR).
 
-Whether a release needs a migrator at all is a conformance question, not a version-number question: if every database valid under the old schema is still valid under the new one, no migration is needed, and you record that fact with a no-op migrator rather than shipping nothing. Deletions are handled outside migrators. The authoritative explanation and the `make migrator` workflow are in [`nmdc_schema/migrators/README.md`](nmdc_schema/migrators/README.md) (which this section does not duplicate); backfilling no-op migrators for past releases that lack them is tracked in [#3180](https://github.com/microbiomedata/nmdc-schema/issues/3180).
-
 ## Workflow security and linting (actionlint + zizmor)
 
 The GitHub Actions workflows in `.github/workflows/` are security-sensitive: they carry permissions, secrets, and the PyPI release path. Two static tools audit them:

@@ -64,7 +64,7 @@ familiar with the schema, the basics of the LinkML framework, and NMDC Best Prac
 - Never work on the main branch, always work on an issue/feature branch
 - Core developers can work on branches off origin rather than forks
 - Always create a PR on a branch to maximize transparency of what you are doing
-- When a PR makes data that was valid under the current schema invalid under the new schema, include a migrator. A breaking change with no affected production data should still ship a no-op migrator, with the reason noted in the PR. See [`nmdc_schema/migrators/README.md`](nmdc_schema/migrators/README.md).
+- When a PR includes a breaking change, include a migration
 - PRs should be reviewed and merged in a timely fashion by the nmdc-schema technical leads
 - PRs that do not pass GitHub actions should never be merged
 - In the case of git conflicts, the contributor should try and resolve the conflict
@@ -176,7 +176,7 @@ current policy below when adding or modifying developer tooling.
 
 The authoritative release procedure is the [infra-admin release runbook](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md). Pre-release mechanics and the dynamic-versioning setup are in the *Pre-release Process* section of [`CLAUDE.md`](CLAUDE.md). Version-number choice (major vs minor vs patch) and the release-notes convention are in [`MAINTAINERS.md`](MAINTAINERS.md#making-a-pypi-release-of-the-nmdc-schema).
 
-Release notes come from GitHub's auto-generated notes, built from merged pull-request titles, so write PR titles to read as change-log entries. This repository does not keep a `CHANGELOG.md`. Whether a release needs a data migrator is covered under *When a PR ... include a migrator* above and in [`nmdc_schema/migrators/README.md`](nmdc_schema/migrators/README.md).
+Release notes come from GitHub's auto-generated notes, built from merged pull-request titles, so write PR titles to read as change-log entries. This repository does not keep a `CHANGELOG.md`.
 
 [about-branches]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
 [about-issues]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
