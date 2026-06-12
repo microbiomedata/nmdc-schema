@@ -1,0 +1,8 @@
+# Invalid: source_system_of_record carries a value that is not in
+# SourceSystemEnum (which permits GOLD, NMDC_Submission_Portal,
+# NEON_Data_Portal, NCBI, custom).
+id: nmdc:prov-99-bad-source-system
+type: nmdc:ProvenanceObject
+name: ETL ingest from an unsupported upstream system
+add_date: '2024-10-30T00:00:00Z'
+source_system_of_record: SOME_UNRECOGNIZED_SOURCE

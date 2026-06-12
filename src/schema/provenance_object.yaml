@@ -1,0 +1,80 @@
+id: https://w3id.org/nmdc/provenance_object
+name: NMDC-Provenance-Object
+title: NMDC Provenance Object (DRAFT)
+description: >-
+  DRAFT schema for a unified provenance class that replaces the embedded
+  ProvenanceMetadata class. ProvenanceObject is referenced from any
+  NamedThing via has_instance_provenance. Inline slots cover the simple
+  cases that ProvenanceMetadata handles today (add_date, mod_date,
+  source_system_of_record, etc.); a url slot offloads complex or batch
+  cases to an external artifact such as a changesheet TSV stored in DRS.
+
+  Parent class is candidate-only and tracked in issue #3085: the choice
+  between InformationObject sibling of DataObject (cleaner inheritance,
+  needs new collection or rename), DataObject subclass (reuses url but
+  inherits required slots), and a standalone class is part of the open
+  design conversation.
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+imports:
+  - basic_slots
+  - basic_classes
+
+default_range: string
+
+prefixes:
+  nmdc: "https://w3id.org/nmdc/"
+  dcterms: "http://purl.org/dc/terms/"
+  prov: "http://www.w3.org/ns/prov#"
+
+classes:
+  ProvenanceObject:
+    class_uri: nmdc:ProvenanceObject
+    is_a: InformationObject
+    description: A record describing how an NMDC document came to be the way it is.
+    comments:
+      - >-
+        Parent class is candidate-only. The alternatives are documented
+        in issue #3085. The current is_a is the lightest defensible
+        choice that keeps url available without inheriting DataObject's
+        required slots; the final decision affects collection placement
+        and the migration of existing ProvenanceMetadata instances.
+      - >-
+        ProvenanceObject is intended to replace the embedded
+        ProvenanceMetadata class once the design questions are resolved.
+        ProvenanceMetadata is unchanged in this PR.
+    slots:
+      - add_date
+      - mod_date
+      - version
+      - git_url
+      - source_system_of_record
+      - submission_portal_identifier
+      - url
+      - type
+    slot_usage:
+      add_date:
+        range: datetime
+        description: The date and time at which the recorded change took place.
+      mod_date:
+        range: datetime
+        description: The date and time at which the record describing the change was last revised.
+      url:
+        description: >-
+          Pointer to an external artifact that further documents this
+          provenance event. For example, the DRS URL of a stored
+          changesheet TSV, or a reference to a migrator script.
+
+slots:
+  has_instance_provenance:
+    description: A provenance record associated with this document.
+    range: ProvenanceObject
+    multivalued: true
+    inlined_as_list: true
+    comments:
+      - >-
+        Whether this slot should be attached to NamedThing directly or
+        only to specific subclasses is part of the design conversation
+        in issue #3085. This PR defines the slot but does not yet wire
+        it onto any class.
