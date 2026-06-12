@@ -744,14 +744,14 @@
 <td>More than two homologous sets of chromosomes; use a more specific value when ...</td>
 </tr>
 <tr>
-<td>autopolyploid</td>
-<td>PATO:0001378</td>
-<td>Polyploid whose chromosome sets derive from a single species</td>
-</tr>
-<tr>
 <td>allopolyploidy</td>
 <td>PATO:0001379</td>
 <td>Polyploid whose chromosome sets derive from two or more different species</td>
+</tr>
+<tr>
+<td>autopolyploid</td>
+<td>PATO:0001378</td>
+<td>Polyploid whose chromosome sets derive from a single species</td>
 </tr>
 <tr>
 <td>aneuploid</td>
@@ -921,13 +921,6 @@ permissible_values:
       notes:
       - Misspelling of octoploid retained as observed in GOLD.
       source: https://gold.jgi.doe.gov/
-  autopolyploid:
-    text: autopolyploid
-    description: Polyploid whose chromosome sets derive from a single species.
-    meaning: PATO:0001378
-    notes:
-    - Not observed in the 2026-04-29 GOLD snapshot; included as the origin-counterpart
-      of `allopolyploidy`.
   allopolyploidy:
     text: allopolyploidy
     description: Polyploid whose chromosome sets derive from two or more different
@@ -953,6 +946,13 @@ permissible_values:
       - Allopolyploid at the hexaploid level; observed in GOLD. No PATO class exists,
         so it is recorded as a narrow synonym pending a PATO term request.
       source: https://gold.jgi.doe.gov/
+  autopolyploid:
+    text: autopolyploid
+    description: Polyploid whose chromosome sets derive from a single species.
+    meaning: PATO:0001378
+    notes:
+    - Not observed in the 2026-04-29 GOLD snapshot; included as the origin-counterpart
+      of `allopolyploidy`.
   aneuploid:
     text: aneuploid
     description: A chromosome number that is not an exact multiple of the haploid

@@ -14257,8 +14257,8 @@
                 "pentaploid",
                 "hexaploid",
                 "polyploid",
-                "autopolyploid",
                 "allopolyploidy",
+                "autopolyploid",
                 "aneuploid"
             ],
             "title": "PloidyEnum",
@@ -17524,5 +17524,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.0.post5.dev0+df5163ad8"
+    "version": "11.20.0.post6.dev0+8c21d7d3e"
 }

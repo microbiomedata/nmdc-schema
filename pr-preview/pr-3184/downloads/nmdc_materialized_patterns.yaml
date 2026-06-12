@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.0.post5.dev0+df5163ad8
+version: 11.20.0.post6.dev0+8c21d7d3e
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -3573,13 +3573,6 @@ enums:
           notes:
           - Misspelling of octoploid retained as observed in GOLD.
           source: https://gold.jgi.doe.gov/
-      autopolyploid:
-        text: autopolyploid
-        description: Polyploid whose chromosome sets derive from a single species.
-        meaning: PATO:0001378
-        notes:
-        - Not observed in the 2026-04-29 GOLD snapshot; included as the origin-counterpart
-          of `allopolyploidy`.
       allopolyploidy:
         text: allopolyploidy
         description: Polyploid whose chromosome sets derive from two or more different
@@ -3605,6 +3598,13 @@ enums:
           - Allopolyploid at the hexaploid level; observed in GOLD. No PATO class
             exists, so it is recorded as a narrow synonym pending a PATO term request.
           source: https://gold.jgi.doe.gov/
+      autopolyploid:
+        text: autopolyploid
+        description: Polyploid whose chromosome sets derive from a single species.
+        meaning: PATO:0001378
+        notes:
+        - Not observed in the 2026-04-29 GOLD snapshot; included as the origin-counterpart
+          of `allopolyploidy`.
       aneuploid:
         text: aneuploid
         description: A chromosome number that is not an exact multiple of the haploid
