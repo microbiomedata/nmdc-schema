@@ -1452,7 +1452,7 @@ enums:
         hexaploid) and the allopolyploidy subtypes allotetraploid, allohexaploid,
         and segmental allotetraploid. All were observed in GOLD and are recorded
         here as narrow synonyms of `polyploid` / `allopolyploidy` until PATO
-        classes exist.
+        classes exist. Tracked in https://github.com/pato-ontology/pato/issues/605.
       - >-
         Deliberately out of scope: dikaryon / dikaryotic / polykaryotic describe
         the number of nuclei per cell (a fungal life-cycle state), not
