@@ -662,6 +662,8 @@ slot_usage:
     range: NcbiTaxon
   estimated_size:
     name: estimated_size
+    examples:
+    - value: '5000000'
     in_subset:
     - jgi_isolate
     structured_aliases:
@@ -672,8 +674,6 @@ slot_usage:
         overview.
       - 'Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many
         possible bp values; the alias is broader in granularity.'
-      examples:
-      - value: '5000000'
       source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   ref_biomaterial:
     name: ref_biomaterial
@@ -738,6 +738,8 @@ slot_usage:
     range: NcbiTaxon
   estimated_size:
     name: estimated_size
+    examples:
+    - value: '5000000'
     in_subset:
     - jgi_isolate
     structured_aliases:
@@ -748,8 +750,6 @@ slot_usage:
         overview.
       - 'Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many
         possible bp values; the alias is broader in granularity.'
-      examples:
-      - value: '5000000'
       source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   ref_biomaterial:
     name: ref_biomaterial
@@ -840,7 +840,8 @@ attributes:
     examples:
     - value: loihica
     - value: pomeroyi
-    - value: sp.  (use when the isolate has not yet been assigned a species name)
+    - value: sp.
+      description: use when the isolate has not yet been assigned a species name
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -936,7 +937,7 @@ attributes:
     comments:
     - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
     examples:
-    - object: 300000
+    - value: '5000000'
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
@@ -948,8 +949,6 @@ attributes:
         overview.
       - 'Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers many
         possible bp values; the alias is broader in granularity.'
-      examples:
-      - value: '5000000'
       source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     rank: 1000
     keywords:
