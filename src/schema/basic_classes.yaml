@@ -222,7 +222,8 @@ classes:
         notes:
           - >-
             Narrowing `classified_as` to `NcbiTaxon` on organism-oriented
-            classes via slot_usage is tracked in #3016.
+            classes via slot_usage is tracked in
+            https://github.com/microbiomedata/nmdc-schema/issues/3016.
       estimated_size:
         in_subset:
           - jgi_isolate
