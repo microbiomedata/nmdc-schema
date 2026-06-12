@@ -39,7 +39,6 @@ organism_sample_set:
     gold_organism_identifiers:
       - gold:Go0000189
     samp_name: Shewanella_loihica_PV-4
-    sample_isolation_method: Wizard Genomic DNA Purification Kit
     collection_date:
       type: nmdc:TimestampValue
       has_raw_value: "1998-01-01"
