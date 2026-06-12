@@ -660,22 +660,6 @@ slots:
       - value: nmdc:orgn-99-abc123
         description: Reference to an Organism instance in organism_set
 
-  sample_isolation_method:
-    description: Method, protocol, or kit used to extract DNA/RNA from the sample.
-    in_subset:
-      - jgi_isolate
-    structured_aliases:
-      - literal_form: Sample Isolation Method
-        predicate: EXACT_SYNONYM
-        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
-        notes:
-          - Exact JGI form template is access-restricted; source is the public submission overview.
-    examples:
-      - value: Wizard Genomic DNA Purification Kit
-        description: Promega Wizard kit — a widely-used DNA isolation method in JGI bacterial isolate submissions
-    comments:
-      - See also dna_isolate_meth in submission-schema for the equivalent portal field.
-
   # --- Host-of-sample slots (from JGI Isolate v19 form) ---
 
   host_genus:
