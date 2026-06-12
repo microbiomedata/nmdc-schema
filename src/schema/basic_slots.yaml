@@ -544,11 +544,11 @@ slots:
           - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: Shewanella
-        description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+        notes: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
       - value: Ruegeria
-        description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+        notes: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
       - value: Campylobacter
-        description: GOLD organism_v2 (Go0000058, queried 2026-04-14)
+        notes: GOLD organism_v2 (Go0000058, queried 2026-04-14)
     comments:
       - >-
         Free-text submitter-provided genus name. For an ontology-grounded classification,
@@ -566,11 +566,10 @@ slots:
           - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: loihica
-        description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+        notes: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
       - value: pomeroyi
-        description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
-      - value: sp.
-        description: GOLD organism_v2.species (n=37 records, queried 2026-04-30) — used when the isolate has not yet been assigned a species name
+        notes: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+      - value: sp.  (use when the isolate has not yet been assigned a species name)
     comments:
       - >-
         Free-text submitter-provided species name. For an ontology-grounded classification,
@@ -578,7 +577,7 @@ slots:
 
   strain_name:
     description: Strain or cultivar name of the organism.
-    comments:
+    notes:
       - >-
         Microbial strain identifiers and plant cultivar names (governed by the
         International Code of Nomenclature for Cultivated Plants, ICNCP) are
@@ -604,15 +603,15 @@ slots:
           - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: PV-4
-        description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+        notes: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
       - value: DSS-3
-        description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+        notes: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
       - value: DSM 6724
-        description: GOLD organism_v2 Dictyoglomus turgidum (Go0000002, queried 2026-04-14)
+        notes: GOLD organism_v2 Dictyoglomus turgidum (Go0000002, queried 2026-04-14)
 
   isolate_name:
     description: Isolate or mutant name.
-    comments:
+    notes:
       - >-
         MIxS `subspecf_gen_lin` (MIXS:0000020) covers this concept along with
         strain, cultivar, serovar, biotype, ecotype, and other sub-species
@@ -630,11 +629,11 @@ slots:
           - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: Bd21-3
-        description: GOLD dw_sample_taxonomy_info.isolate (n=260 records, queried 2026-04-30) — Brachypodium distachyon Bd21-3 reference accession
+        notes: GOLD dw_sample_taxonomy_info.isolate (n=260 records, queried 2026-04-30) — Brachypodium distachyon Bd21-3 reference accession
       - value: MR164
-        description: GOLD dw_sample_taxonomy_info.isolate (n=555 records, queried 2026-04-30)
+        notes: GOLD dw_sample_taxonomy_info.isolate (n=555 records, queried 2026-04-30)
       - value: Isolate
-        description: GOLD dw_sample_taxonomy_info.isolate (n=918 records, queried 2026-04-30) — generic placeholder used when no specific mutant/isolate name is recorded
+        notes: GOLD dw_sample_taxonomy_info.isolate (n=918 records, queried 2026-04-30) — generic placeholder used when no specific mutant/isolate name is recorded
 
   gc_content:
     range: float
@@ -691,9 +690,9 @@ slots:
           - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: Zea
-        description: GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
+        notes: GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
       - value: Escherichia
-        description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage JSE, queried 2026-04-30)
+        notes: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage JSE, queried 2026-04-30)
     comments:
       - >-
         Free-text submitter-provided host genus. For an ontology-grounded host
@@ -711,9 +710,9 @@ slots:
           - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: mays
-        description: GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
+        notes: GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
       - value: coli
-        description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage JSE, queried 2026-04-30)
+        notes: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage JSE, queried 2026-04-30)
     comments:
       - >-
         Free-text submitter-provided host species. For an ontology-grounded host
@@ -731,7 +730,7 @@ slots:
           - Exact JGI form template is access-restricted; source is the public submission overview.
     examples:
       - value: K-12
-        description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage JSE, queried 2026-04-30)
+        notes: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage JSE, queried 2026-04-30)
     comments:
       - >-
         Free-text submitter-provided host strain. For an ontology-grounded host
