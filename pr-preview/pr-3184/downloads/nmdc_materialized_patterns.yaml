@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.0.post3.dev0+cfae12edd
+version: 11.20.0.post4.dev0+03ef588a8
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -3450,7 +3450,7 @@ enums:
       (eight homologous sets; PATO''s polyploidy ladder stops at hexaploid) and the
       allopolyploidy subtypes allotetraploid, allohexaploid, and segmental allotetraploid.
       All were observed in GOLD and are recorded here as narrow synonyms of `polyploid`
-      / `allopolyploidy` until PATO classes exist.'
+      / `allopolyploidy` until PATO classes exist. Tracked in https://github.com/pato-ontology/pato/issues/605.'
     - 'Deliberately out of scope: dikaryon / dikaryotic / polykaryotic describe the
       number of nuclei per cell (a fungal life-cycle state), not chromosome-set ploidy,
       and have no PATO ploidy class; if needed they belong in a separate slot. Cytogenetic
