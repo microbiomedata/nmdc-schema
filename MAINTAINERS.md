@@ -20,7 +20,7 @@ To track changes made to the NMDC Schema, it is best maintained by following the
 4. Merge pull request once all the necessary changes have been made. If needed, tag other developers to review pull request. 
 5. Delete the issue branch (e.g., branch `issue-50`).
 
-Changes are recorded through GitHub's auto-generated release notes rather than a manually curated change log. Write commit and pull-request messages with this in mind: they become the source those notes are built from. See [Release notes](#release-notes) below for details.
+Changes are recorded through GitHub's auto-generated release notes rather than a manually curated change log. Write commit and pull-request messages with this in mind: they are the source those notes are built from. See [Release notes](#release-notes) below for details.
 
 When the pull request is merged into the `main` branch, new documentation will be generated for the changed schema.
 
@@ -37,7 +37,7 @@ The changes can be cecked locally with `make all test`
 
 The package is published to [PyPI](https://pypi.org/project/nmdc-schema/) by the
 [pypi-publish](https://github.com/microbiomedata/nmdc-schema/blob/main/.github/workflows/pypi-publish.yaml)
-GitHub Action, which fires when a GitHub release is published. The package version is
+GitHub Action, which fires on the GitHub release `created` event. The package version is
 derived from the git tag by `poetry-dynamic-versioning`; there is no `version` field to
 hand-edit before a release.
 
@@ -74,8 +74,8 @@ an example.
 This repository previously kept a manually curated `CHANGELOG.md`. It was retired on
 2024-06-14 in commit
 [010ef75d2](https://github.com/microbiomedata/nmdc-schema/commit/010ef75d22c50d6b7cfa7eed825d0b99bbd74789)
-in favor of the auto-generated notes. Do not reintroduce a `CHANGELOG.md` without recording
-the decision against
+in favor of the auto-generated notes. Do not reintroduce a `CHANGELOG.md` without first
+documenting the decision in
 [Audit versioning guidelines and compliance](https://github.com/microbiomedata/nmdc-schema/issues/2876).
 
 ### Notify NMDC Schema users
