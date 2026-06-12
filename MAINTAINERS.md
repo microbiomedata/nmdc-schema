@@ -20,7 +20,7 @@ To track changes made to the NMDC Schema, it is best maintained by following the
 4. Merge pull request once all the necessary changes have been made. If needed, tag other developers to review pull request. 
 5. Delete the issue branch (e.g., branch `issue-50`).
 
-This project previously used a manually curated [**Change log**](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md). More recently, we have decided that GitHub's auto-generated release notes are sufficient. Commit and pull messages should be written with this in mind: they will become part of the repo's documentation. 
+Changes are recorded through GitHub's auto-generated release notes rather than a manually curated change log. Write commit and pull-request messages with this in mind: they become the source those notes are built from. See [Release notes](#release-notes) below for details.
 
 When the pull request is merged into the `main` branch, new documentation will be generated for the changed schema.
 
@@ -28,45 +28,62 @@ The changes can be cecked locally with `make all test`
 
 ## Making a PyPI release of the NMDC Schema
 
-The NMDC Schema is deployed to [PyPI](https://pypi.org/project/nmdc-schema/) using the [pypi-publish](https://github.com/microbiomedata/nmdc-schema/blob/main/.github/workflows/pypi-publish.yml) github action.
+> The authoritative, step-by-step release procedure is the
+> [infra-admin release runbook](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md).
+> Pre-release (release-candidate) mechanics and the `poetry-dynamic-versioning` setup
+> are documented in the *Pre-release Process* section of
+> [`CLAUDE.md`](CLAUDE.md). This section keeps only the version-numbering guidelines
+> and the release-notes convention; follow the runbook for the current steps.
 
-### Steps for making a release
-1. Generate the set of artifacts by running `make clean` followed by `make all`.
+The package is published to [PyPI](https://pypi.org/project/nmdc-schema/) by the
+[pypi-publish](https://github.com/microbiomedata/nmdc-schema/blob/main/.github/workflows/pypi-publish.yaml)
+GitHub Action, which fires when a GitHub release is published. The package version is
+derived from the git tag by `poetry-dynamic-versioning`; there is no `version` field to
+hand-edit before a release.
 
-2. If **#1** succeeds and changes have been made to the schema, update the `version` [nmdc.yaml](https://github.com/microbiomedata/nmdc-schema/blob/main/src/schema/nmdc.yaml) using semantic versioning (i.e., `<major number>`**.** `<minor number>`**.**`<patch number>`). 
-  
-    #### Guidelines for updating semantic version
-    * If the change **breaks** backward compatibility, update the **major** number.
-      Examples:
-      - Removing a class, slot, or enum
-    * If functionality is added and the change **does not** break backward compatibility, update the **minor** number.
-      Examples:
-      - Adding a class, slot, or enum
-      - Deprecating a class, slot, or enum
-    * If the change neither adds functionality nor breaks backward compatibility, update the **patch** number.
-      Examples:
-      - Fixing typos
-      - Adding comments or annotations
-      
-**Note:** Changes can be made to the Python package (e.g., functionality added to the CLI) that do not affect the schema. In these cases, the schema version does not need to be changed, only the PyPI version needs to be updated.
+### Guidelines for updating semantic version
 
-3. If **#1** succeeds:
-  * Make the sure the sections of the [Change log](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md) (discussed above) have been updated appropriately.
-  * Change the `Current (update before releasing)` section of the [Change log](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md) into a hyperlink that matches the tag you assign to the release in step **#4** below.  
-  For example, if the tag assigned for the release is `1.0.0`, change the section to:  
-  ```
-  [2021.07.01rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/1.0.0)
-  ```
-4. Create a GitHub release of the schema using the `Releases -> Draft new release` links. The tag of the release must conform to the semantic versioning format `<major number>.<minor number>.<patch number>` (see semantic versioning guidelines above). The value of this tag needs to match the value you assigned to the `Current (update before releasing)` section in the [Change log](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md) (discussed above).
+The release tag uses the semantic-versioning format `<major>.<minor>.<patch>`, prefixed
+with `v` (e.g. `v11.20.0`). Pre-release tags add a `-rc.N` suffix (e.g. `v11.20.0-rc.1`).
 
-5. Give the release the same name as the semantic version tag you created in **#4**.
+* If the change **breaks** backward compatibility, update the **major** number.
+  Examples:
+  - Removing a class, slot, or enum
+* If functionality is added and the change **does not** break backward compatibility,
+  update the **minor** number. Examples:
+  - Adding a class, slot, or enum
+  - Deprecating a class, slot, or enum
+* If the change neither adds functionality nor breaks backward compatibility, update the
+  **patch** number. Examples:
+  - Fixing typos
+  - Adding comments or annotations
 
-6. Fill in the changes made for this release. This is most easily done by copying the information you recorded in the [Change log](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md).
+**Note:** Changes can be made to the Python package (e.g. CLI functionality) that do not
+affect the schema. The version still advances because it tracks the git tag; such a change
+is a patch-level release.
 
-7. Click `Publish release` button. This fires the action to update the [PyPI package](https://pypi.org/project/nmdc-schema/).
+Whether a release needs a data migrator is a separate, conformance-based question covered
+in [`nmdc_schema/migrators/README.md`](nmdc_schema/migrators/README.md) and the
+*Released migrators* notes in [`CLAUDE.md`](CLAUDE.md), not a function of which version
+number changes.
+
+### Release notes
+
+Release notes are GitHub's **auto-generated** notes (the *Generate release notes* button
+on the release form), built from merged pull-request titles plus a compare link. Write PR
+titles so they read as change-log entries. Larger releases may add a short hand-written
+**Highlights** section above the generated list; see the
+[v11.20.0 notes](https://github.com/microbiomedata/nmdc-schema/releases/tag/v11.20.0) for
+an example.
+
+This repository previously kept a manually curated `CHANGELOG.md`. It was retired on
+2024-06-14 (PR [#209](https://github.com/microbiomedata/nmdc-schema/pull/209)) in favor of
+the auto-generated notes. Do not reintroduce a `CHANGELOG.md` without recording the
+decision against
+[#2876](https://github.com/microbiomedata/nmdc-schema/issues/2876).
 
 ### Notify NMDC Schema users
-After the new version has been released on PyPI, notify the [nmdc-runtime](https://github.com/microbiomedata/nmdc-runtime) and the `metadata` channel on the NMDC slack group that the `nmdc-schema` has been updated.
+After the new version is on PyPI, notify [nmdc-runtime](https://github.com/microbiomedata/nmdc-runtime) and the `metadata` channel on the NMDC Slack that `nmdc-schema` has been updated.
 
 ## Maintaining the Documentation
 Do **not** git add the files in `docs`. Custom documentation is added to (or edited in) the `src/docs/` directory.
