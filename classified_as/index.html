@@ -760,11 +760,12 @@
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances. OrganismSample reaches taxonomy indirectly via expected_organism.classified_as. The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked in #3016.</li>
+<li>Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances. OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2959">https://github.com/microbiomedata/nmdc-schema/issues/2959</a></li>
+<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/3016">https://github.com/microbiomedata/nmdc-schema/issues/3016</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -792,14 +793,17 @@
 <pre><code class="language-yaml">name: classified_as
 description: A formal classification for this entity, expressed directly as an ontology-backed
   class instance stored in ontology_class_set.
+notes:
+- The global range stays OntologyClass. Organism is currently the only class that
+  narrows classified_as to NcbiTaxon, via slot_usage. Extending that narrowing to
+  other classes is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3016.
 comments:
-- 'Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
-  OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.
-  The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked
-  in #3016.'
+- Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances. OrganismSample
+  reaches taxonomy indirectly via expected_organism.classified_as.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2959
+- https://github.com/microbiomedata/nmdc-schema/issues/3016
 narrow_mappings:
 - biolink:in_taxon
 rank: 1000

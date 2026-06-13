@@ -13970,7 +13970,7 @@
                     ]
                 },
                 "classified_as": {
-                    "description": "Taxonomic classification of this organism. Narrowed from the global OntologyClass range (defined on the slot itself) to NcbiTaxon, since organism identity at NMDC is anchored to NCBI Taxonomy. Per #3016 \u2014 the broader pattern is to narrow `classified_as` to `NcbiTaxon` on all organism-oriented classes via slot_usage.",
+                    "description": "Taxonomic classification of this organism.",
                     "items": {
                         "$ref": "#/$defs/NcbiTaxon"
                     },
@@ -14199,13 +14199,6 @@
                 },
                 "samp_name": {
                     "description": "A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "sample_isolation_method": {
-                    "description": "Method, protocol, or kit used to extract DNA/RNA from the sample.",
                     "type": [
                         "string",
                         "null"
@@ -14555,17 +14548,18 @@
             "type": "string"
         },
         "PloidyEnum": {
-            "description": "Ploidy of an organism's genome. Permissible values map to PATO classes and were selected from values observed in the JGI GOLD lakehouse table `gold.dw_sample_taxonomy_info.ploidy_comments` (queried 2026-04-29). Used as the range of the `ploidy` slot, narrowing the MIxS-imported `ploidy` (MIXS:0000021) from a free- text / structured pattern to an enumerated set with referential integrity to PATO.",
+            "description": "The ploidy state of an organism's genome, drawn from the ploidy classes of the Phenotypic Quality Ontology (PATO).",
             "enum": [
                 "haploid",
                 "diploid",
                 "triploid",
                 "tetraploid",
+                "pentaploid",
                 "hexaploid",
                 "polyploid",
                 "allopolyploidy",
-                "aneuploid",
-                "other"
+                "autopolyploid",
+                "aneuploid"
             ],
             "title": "PloidyEnum",
             "type": "string"
@@ -17849,6 +17843,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.0.post1.dev0+7d1cbca3b"
+    "version": "11.20.0.post2.dev0+46561632d"
 }
 

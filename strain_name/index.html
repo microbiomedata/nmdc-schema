@@ -647,17 +647,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comments
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -772,11 +761,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Microbial strain identifiers and plant cultivar names (governed by the International Code of Nomenclature for Cultivated Plants, ICNCP) are nomenclaturally distinct, but this slot accepts both for now to match the JGI Isolate (NA) v19 form's combined "Strain or cultivar" field. A separate <code>cultivar_name</code> slot may be added if a plant-specific use case emerges; see #3056.</li>
-<li>MIxS <code>subspecf_gen_lin</code> (MIXS:0000020) covers this concept along with cultivar, serovar, biotype, ecotype, and other sub-species lineage types in a single slot using a rank-prefix encoding (e.g. "strain:PV-4"). NMDC splits the concept into separate slots; this slot covers the strain rank specifically.</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -802,7 +786,7 @@
 
 <pre><code class="language-yaml">name: strain_name
 description: Strain or cultivar name of the organism.
-comments:
+notes:
 - 'Microbial strain identifiers and plant cultivar names (governed by the International
   Code of Nomenclature for Cultivated Plants, ICNCP) are nomenclaturally distinct,
   but this slot accepts both for now to match the JGI Isolate (NA) v19 form''s combined
@@ -812,13 +796,11 @@ comments:
   serovar, biotype, ecotype, and other sub-species lineage types in a single slot
   using a rank-prefix encoding (e.g. &quot;strain:PV-4&quot;). NMDC splits the concept into
   separate slots; this slot covers the strain rank specifically.
+- Example values are strain names from GOLD organism_v2.
 examples:
 - value: PV-4
-  description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
 - value: DSS-3
-  description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
 - value: DSM 6724
-  description: GOLD organism_v2 Dictyoglomus turgidum (Go0000002, queried 2026-04-14)
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc

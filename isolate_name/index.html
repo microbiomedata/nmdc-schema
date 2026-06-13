@@ -647,17 +647,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comments
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -772,10 +761,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>MIxS <code>subspecf_gen_lin</code> (MIXS:0000020) covers this concept along with strain, cultivar, serovar, biotype, ecotype, and other sub-species lineage types in a single slot using a rank-prefix encoding. NMDC uses a separate slot for the isolate rank specifically.</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -801,19 +786,16 @@
 
 <pre><code class="language-yaml">name: isolate_name
 description: Isolate or mutant name.
-comments:
+notes:
 - MIxS `subspecf_gen_lin` (MIXS:0000020) covers this concept along with strain, cultivar,
   serovar, biotype, ecotype, and other sub-species lineage types in a single slot
   using a rank-prefix encoding. NMDC uses a separate slot for the isolate rank specifically.
+- Example values are from GOLD dw_sample_taxonomy_info.isolate; &quot;Isolate&quot; is a generic
+  placeholder used when no specific mutant or isolate name is recorded.
 examples:
 - value: Bd21-3
-  description: GOLD dw_sample_taxonomy_info.isolate (n=260 records, queried 2026-04-30)
-    — Brachypodium distachyon Bd21-3 reference accession
 - value: MR164
-  description: GOLD dw_sample_taxonomy_info.isolate (n=555 records, queried 2026-04-30)
 - value: Isolate
-  description: GOLD dw_sample_taxonomy_info.isolate (n=918 records, queried 2026-04-30)
-    — generic placeholder used when no specific mutant/isolate name is recorded
 in_subset:
 - jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc

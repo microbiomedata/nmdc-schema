@@ -636,17 +636,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comments
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -706,7 +695,7 @@
 
 
 <h1 id="enum-ploidyenum">Enum: PloidyEnum</h1>
-<p><em>Ploidy of an organism's genome. Permissible values map to PATO classes and were selected from values observed in the JGI GOLD lakehouse table <code>gold.dw_sample_taxonomy_info.ploidy_comments</code> (queried 2026-04-29). Used as the range of the <code>ploidy</code> slot, narrowing the MIxS-imported <code>ploidy</code> (MIXS:0000021) from a free- text / structured pattern to an enumerated set with referential integrity to PATO.</em></p>
+<p><em>The ploidy state of an organism's genome, drawn from the ploidy classes of the Phenotypic Quality Ontology (PATO).</em></p>
 <div>
 <p>URI: <a href="./">PloidyEnum</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
@@ -722,47 +711,52 @@
 <tr>
 <td>haploid</td>
 <td>PATO:0001375</td>
-<td>A single set of unpaired chromosomes</td>
+<td>A single set of homologous chromosomes</td>
 </tr>
 <tr>
 <td>diploid</td>
 <td>PATO:0001394</td>
-<td>Two sets of homologous chromosomes (one from each parent)</td>
+<td>Two homologous sets of chromosomes</td>
 </tr>
 <tr>
 <td>triploid</td>
 <td>PATO:0001381</td>
-<td>Three sets of chromosomes</td>
+<td>Three homologous sets of chromosomes</td>
 </tr>
 <tr>
 <td>tetraploid</td>
 <td>PATO:0001382</td>
-<td>Four sets of chromosomes</td>
+<td>Four homologous sets of chromosomes</td>
+</tr>
+<tr>
+<td>pentaploid</td>
+<td>PATO:0001383</td>
+<td>Five homologous sets of chromosomes</td>
 </tr>
 <tr>
 <td>hexaploid</td>
 <td>PATO:0001384</td>
-<td>Six sets of chromosomes</td>
+<td>Six homologous sets of chromosomes</td>
 </tr>
 <tr>
 <td>polyploid</td>
 <td>PATO:0001377</td>
-<td>More than two sets of chromosomes (generic — use a more specific value when k...</td>
+<td>More than two homologous sets of chromosomes; use a more specific value when ...</td>
 </tr>
 <tr>
 <td>allopolyploidy</td>
 <td>PATO:0001379</td>
-<td>Polyploid arising from hybridization between two or more species</td>
+<td>Polyploid whose chromosome sets derive from two or more different species</td>
+</tr>
+<tr>
+<td>autopolyploid</td>
+<td>PATO:0001378</td>
+<td>Polyploid whose chromosome sets derive from a single species</td>
 </tr>
 <tr>
 <td>aneuploid</td>
 <td>PATO:0001385</td>
-<td>A genome with an abnormal number of chromosomes (not an exact multiple of the...</td>
-</tr>
-<tr>
-<td>other</td>
-<td>None</td>
-<td>A ploidy state with biological meaning that is not covered by the listed perm...</td>
+<td>A chromosome number that is not an exact multiple of the haploid set (extra o...</td>
 </tr>
 </tbody>
 </table>
@@ -781,10 +775,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Values frequent in JGI but absent from PATO (octoploid, dikaryon / dikaryotic, polykaryotic), cytogenetic notation (e.g. 2n=38), compound or hedged values (e.g. "Likely haploid"), and non-English labels are not modeled directly. ETL should normalize to a permissible value when the meaning is unambiguous; fall back to the <code>other</code> permissible value when a JGI value has biological meaning but no listed mapping; treat as missing only when the value is uninterpretable.</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -794,138 +784,180 @@
 <details>
 
 <pre><code class="language-yaml">name: PloidyEnum
-description: Ploidy of an organism's genome. Permissible values map to PATO classes
-  and were selected from values observed in the JGI GOLD lakehouse table `gold.dw_sample_taxonomy_info.ploidy_comments`
-  (queried 2026-04-29). Used as the range of the `ploidy` slot, narrowing the MIxS-imported
-  `ploidy` (MIXS:0000021) from a free- text / structured pattern to an enumerated
-  set with referential integrity to PATO.
-comments:
-- Values frequent in JGI but absent from PATO (octoploid, dikaryon / dikaryotic, polykaryotic),
-  cytogenetic notation (e.g. 2n=38), compound or hedged values (e.g. &quot;Likely haploid&quot;),
-  and non-English labels are not modeled directly. ETL should normalize to a permissible
-  value when the meaning is unambiguous; fall back to the `other` permissible value
-  when a JGI value has biological meaning but no listed mapping; treat as missing
-  only when the value is uninterpretable.
+description: The ploidy state of an organism's genome, drawn from the ploidy classes
+  of the Phenotypic Quality Ontology (PATO).
+notes:
+- 'How this enum was built: each value is a PATO ploidy (PATO:0001374) subclass observed
+  in the GOLD field dw_sample_taxonomy_info.ploidy_comments (queried 2026-04-29),
+  or added to complete the series, with GOLD literal forms as structured aliases.
+  Alias `source` URLs cite the public GOLD portal because that field is access-restricted.
+  This is the range of the `ploidy` slot, narrowing MIxS `ploidy` (MIXS:0000021) from
+  free text.'
+- 'PATO term requests needed before these can become permissible values: octoploid
+  (eight homologous sets; PATO''s polyploidy ladder stops at hexaploid) and the allopolyploidy
+  subtypes allotetraploid, allohexaploid, and segmental allotetraploid. All were observed
+  in GOLD and are recorded here as narrow synonyms of `polyploid` / `allopolyploidy`
+  until PATO classes exist. Tracked in https://github.com/pato-ontology/pato/issues/605.'
+- 'Deliberately out of scope: dikaryon / dikaryotic / polykaryotic describe the number
+  of nuclei per cell (a fungal life-cycle state), not chromosome-set ploidy, and have
+  no PATO ploidy class; if needed they belong in a separate slot. Cytogenetic counts
+  (e.g. 2n=38), bare integers, hedged phrases (e.g. &quot;Likely haploid&quot;), and free-text
+  identifiers seen in the source field are left to this optional slot being unset
+  rather than forced into a value.'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
   haploid:
     text: haploid
-    description: A single set of unpaired chromosomes.
+    description: A single set of homologous chromosomes.
     meaning: PATO:0001375
     structured_aliases:
     - literal_form: Haploid
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
     - literal_form: 1n
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
+    - literal_form: 1N
+      predicate: EXACT_SYNONYM
+      source: https://gold.jgi.doe.gov/
+    - literal_form: haploide
+      predicate: EXACT_SYNONYM
+      notes:
+      - French-language spelling observed in GOLD.
+      source: https://gold.jgi.doe.gov/
   diploid:
     text: diploid
-    description: Two sets of homologous chromosomes (one from each parent).
+    description: Two homologous sets of chromosomes.
     meaning: PATO:0001394
     structured_aliases:
     - literal_form: Diploid
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
     - literal_form: 2n
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
     - literal_form: 2N
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
     - literal_form: 2x
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
+    - literal_form: Diploïde
+      predicate: EXACT_SYNONYM
+      notes:
+      - French-language spelling observed in GOLD.
+      source: https://gold.jgi.doe.gov/
   triploid:
     text: triploid
-    description: Three sets of chromosomes.
+    description: Three homologous sets of chromosomes.
     meaning: PATO:0001381
     structured_aliases:
     - literal_form: Triploid
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
     - literal_form: 3n
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
     - literal_form: 3x
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
   tetraploid:
     text: tetraploid
-    description: Four sets of chromosomes.
+    description: Four homologous sets of chromosomes.
     meaning: PATO:0001382
     structured_aliases:
     - literal_form: Tetraploid
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
     - literal_form: tetraploidy
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
     - literal_form: 4n
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
     - literal_form: 4x
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
+  pentaploid:
+    text: pentaploid
+    description: Five homologous sets of chromosomes.
+    meaning: PATO:0001383
+    notes:
+    - Not observed in the 2026-04-29 GOLD snapshot; included so the triploid–hexaploid
+      ladder is not arbitrarily gapped.
   hexaploid:
     text: hexaploid
-    description: Six sets of chromosomes.
+    description: Six homologous sets of chromosomes.
     meaning: PATO:0001384
     structured_aliases:
     - literal_form: Hexaploid
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
     - literal_form: 6n
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
     - literal_form: 6x
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
   polyploid:
     text: polyploid
-    description: More than two sets of chromosomes (generic — use a more specific
-      value when known).
+    description: More than two homologous sets of chromosomes; use a more specific
+      value when the level is known.
     meaning: PATO:0001377
+    structured_aliases:
+    - literal_form: octoploid
+      predicate: NARROW_SYNONYM
+      notes:
+      - Eight homologous sets; observed in GOLD (also as &quot;octaploid&quot;, &quot;octapolid&quot;).
+        No PATO class exists, so it is recorded as a narrow synonym of polyploid pending
+        a PATO term request.
+      source: https://gold.jgi.doe.gov/
+    - literal_form: octaploid
+      predicate: NARROW_SYNONYM
+      source: https://gold.jgi.doe.gov/
+    - literal_form: octapolid
+      predicate: NARROW_SYNONYM
+      notes:
+      - Misspelling of octoploid retained as observed in GOLD.
+      source: https://gold.jgi.doe.gov/
   allopolyploidy:
     text: allopolyploidy
-    description: Polyploid arising from hybridization between two or more species.
-      (PATO label uses -y suffix.)
+    description: Polyploid whose chromosome sets derive from two or more different
+      species.
     meaning: PATO:0001379
     structured_aliases:
     - literal_form: Allopolyploid
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://gold.jgi.doe.gov/
+      source: https://gold.jgi.doe.gov/
+    - literal_form: Allotetraploid
+      predicate: NARROW_SYNONYM
+      notes:
+      - Allopolyploid at the tetraploid level; observed in GOLD (also &quot;segmental allotetraploid&quot;).
+        No PATO class exists, so it is recorded as a narrow synonym pending a PATO
+        term request.
+      source: https://gold.jgi.doe.gov/
+    - literal_form: segmental allotetraploid
+      predicate: NARROW_SYNONYM
+      source: https://gold.jgi.doe.gov/
+    - literal_form: allohexaploid
+      predicate: NARROW_SYNONYM
+      notes:
+      - Allopolyploid at the hexaploid level; observed in GOLD. No PATO class exists,
+        so it is recorded as a narrow synonym pending a PATO term request.
+      source: https://gold.jgi.doe.gov/
+  autopolyploid:
+    text: autopolyploid
+    description: Polyploid whose chromosome sets derive from a single species.
+    meaning: PATO:0001378
+    notes:
+    - Not observed in the 2026-04-29 GOLD snapshot; included as the origin-counterpart
+      of `allopolyploidy`.
   aneuploid:
     text: aneuploid
-    description: A genome with an abnormal number of chromosomes (not an exact multiple
-      of the haploid number).
+    description: A chromosome number that is not an exact multiple of the haploid
+      set (extra or missing chromosomes).
     meaning: PATO:0001385
-  other:
-    text: other
-    description: A ploidy state with biological meaning that is not covered by the
-      listed permissible values (e.g. dikaryon / dikaryotic, polykaryotic, octoploid,
-      or hedged values like &quot;likely diploid&quot;). Use this when the submitter's value
-      is interpretable but does not map cleanly to one of the named ploidy classes.
-      The original free-text qualifier should be preserved upstream (e.g. in a sample-level
-      note) when it carries information beyond the bare classification.
 
 </code></pre>
 
