@@ -1305,7 +1305,6 @@ classes:
       - collection_date
       - samp_name
       - host_taxid
-      - sample_isolation_method
       - ploidy
       - source_mat_id
       - analysis_type
