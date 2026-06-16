@@ -511,6 +511,7 @@ classes:
       - data_object_type
       - file_size_bytes
       - insdc_experiment_identifiers
+      - insdc_run_identifiers
       - md5_checksum
       - url
       - was_generated_by
