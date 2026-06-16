@@ -174,7 +174,7 @@ current policy below when adding or modifying developer tooling.
 
 ### Making Releases
 
-The authoritative release procedure is the [infra-admin release runbook](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md). Pre-release mechanics and the dynamic-versioning setup are in the *Pre-release Process* section of [`CLAUDE.md`](CLAUDE.md). Version-number choice (major vs minor vs patch) and the release-notes convention are in [`MAINTAINERS.md`](MAINTAINERS.md#making-a-pypi-release-of-the-nmdc-schema).
+The authoritative release procedure is the [infra-admin release runbook](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md). Pre-release mechanics and the dynamic-versioning setup are in the *Pre-release Process* section of [`CLAUDE.md`](CLAUDE.md). Version-number choice (major vs minor vs patch) and the release notes convention are in [`MAINTAINERS.md`](MAINTAINERS.md#making-a-pypi-release-of-the-nmdc-schema).
 
 Release notes come from GitHub's auto-generated notes, built from merged pull-request titles, so write PR titles to read as change-log entries. This repository does not keep a `CHANGELOG.md`.
 
