@@ -79,7 +79,7 @@ documenting the decision in
 [Audit versioning guidelines and compliance](https://github.com/microbiomedata/nmdc-schema/issues/2876).
 
 ### Notify NMDC Schema users
-After the new version is on PyPI, notify [nmdc-runtime](https://github.com/microbiomedata/nmdc-runtime) and the `metadata` channel on the NMDC Slack that `nmdc-schema` has been updated.
+After the new version is on PyPI, notify [nmdc-runtime](https://github.com/microbiomedata/nmdc-runtime) and the `metadata` channel on the NMDC Slack workspace that `nmdc-schema` has been updated.
 
 ## Maintaining the Documentation
 Do **not** git add the files in `docs`. Custom documentation is added to (or edited in) the `src/docs/` directory.
