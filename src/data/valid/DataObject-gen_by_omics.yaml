@@ -9,4 +9,3 @@ type: "nmdc:DataObject"
 was_generated_by: "nmdc:omprc-99-123456"
 insdc_run_identifiers: 
   - "insdc.run:ERR123456"
-
