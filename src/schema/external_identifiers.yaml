@@ -329,7 +329,7 @@ slots:
     mixins:
       - insdc_identifiers
 
- insdc_run_identifiers:
+  insdc_run_identifiers:
     description: Identifiers for the manifest of data file(s) that are derived from sequencing a library described by the associated INSDC experiment.
     see_also:
       - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#sra-metadata-experiment
