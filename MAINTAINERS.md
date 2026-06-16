@@ -30,7 +30,7 @@ The changes can be cecked locally with `make all test`
 
 > The authoritative, step-by-step release procedure is the
 > [infra-admin release runbook](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md).
-> Pre-release (release-candidate) mechanics and the `poetry-dynamic-versioning` setup
+> Pre-release (release candidate) mechanics and the `poetry-dynamic-versioning` setup
 > are documented in the *Pre-release Process* section of
 > [`CLAUDE.md`](CLAUDE.md). This section keeps only the version-numbering guidelines
 > and the release-notes convention; follow the runbook for the current steps.
