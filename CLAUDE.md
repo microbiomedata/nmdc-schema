@@ -48,7 +48,9 @@ This is a Poetry repo. Sibling `submission-schema` migrated to `uv`; do not conf
 
 ## Released migrators
 
-Migrator partials under `nmdc_schema/migrators/partials/migrator_from_X_to_Y/` are versioned snapshots of migrations that have already run against the production database. Do not make functional changes to them; they are the authoritative record of what ran. Explanatory comments are fine. New breaking schema changes get a new migrator, not an edit to an old one (and a breaking change with no production data may legitimately ship no migrator, with the reason noted in the PR).
+Partial migrators residing under `nmdc_schema/migrators/partials/migrator_from_X_to_Y/` are migrators that only _partially_ migrate a database from conforming to one schema version to another. Partial migrators are invoked by a top-level migrator. Do not make functional changes to top-level migrators or partial migrators. You may make non-functional changes to them, such as modifying comments. Migrators serve as the authoritative record of how data in the NMDC Mongo database has been transformed over time. In summary: New breaking schema changes get new migrators, not changes to old ones.
+
+Whether a release needs a migrator at all is a conformance question, not a version-number question: if every database valid under the old schema is still valid under the new one, no migration is needed. Record that with a no-op migrator (with the reason noted in the PR and the migrator's docstring) rather than shipping nothing. The authoritative explanation and the `make migrator` workflow are in [`nmdc_schema/migrators/README.md`](nmdc_schema/migrators/README.md) (which this section does not duplicate); backfilling no-op migrators for past releases that lack them is tracked in [Implement "no op" migrators for recent releases](https://github.com/microbiomedata/nmdc-schema/issues/3180).
 
 ## Workflow security and linting (actionlint + zizmor)
 

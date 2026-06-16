@@ -64,7 +64,7 @@ familiar with the schema, the basics of the LinkML framework, and NMDC Best Prac
 - Never work on the main branch, always work on an issue/feature branch
 - Core developers can work on branches off origin rather than forks
 - Always create a PR on a branch to maximize transparency of what you are doing
-- When a PR includes a breaking change, include a migration
+- When a PR contains schema changes that would make it so _any hypothetical data_ that complies with the current version of the schema would not comply with the new version of the schema, include a migrator in the PR. If no schema changes made since the last release would do that, include a "no op" migrator before creating the next release. See [`nmdc_schema/migrators/README.md`](nmdc_schema/migrators/README.md).
 - PRs should be reviewed and merged in a timely fashion by the nmdc-schema technical leads
 - PRs that do not pass GitHub actions should never be merged
 - In the case of git conflicts, the contributor should try and resolve the conflict
