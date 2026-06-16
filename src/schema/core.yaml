@@ -360,7 +360,6 @@ classes:
       - img_identifiers
       - neon_biosample_identifiers
       - alternative_names
-      - provenance_metadata
 
       ## external IDs, alternate IDs
       - gold_biosample_identifiers
@@ -925,9 +924,6 @@ classes:
           We recommend that, in addition to populating this field, you populate the `source_mat_id` field with a globally-unique identifier.
         examples:
           - value: "BW-H-17-M"
-      
-      provenance_metadata:
-        description: Provenance metadata for this Biosample, including when the record was added to and last modified in the NMDC database.
 
       collected_from:
         structured_pattern:
@@ -1299,7 +1295,6 @@ classes:
       - associated_studies
       - expected_organism
       - embargoed
-      - provenance_metadata
       - external_database_identifiers
       - gold_organism_identifiers
       - collection_date

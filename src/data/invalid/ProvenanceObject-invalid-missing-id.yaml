@@ -1,0 +1,7 @@
+# Invalid: ProvenanceObject is missing the required `id` slot.
+# Every ProvenanceObject must have an id because it inherits from
+# NamedThing (via InformationObject).
+type: nmdc:ProvenanceObject
+name: GOLD ETL ingest, batch 2024-10-30
+add_date: '2024-10-30T00:00:00Z'
+source_system_of_record: GOLD

@@ -16,10 +16,11 @@ data_generation_set:
   eluent_introduction_category: direct_infusion_autosampler
   end_date: '2022-04-25 14:01:57.000'
   has_mass_spectrometry_configuration: nmdc:mscon-14-j5y11q51
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    mod_date: '2024-11-07T00:00:00Z'
   start_date: '2022-04-25 13:48:27.000'
+  has_instance_provenance:
+  - id: nmdc:prov-99-11-0003fm52
+    type: nmdc:ProvenanceObject
+    mod_date: '2024-11-07T00:00:00Z'
 calibration_set:
 - id: nmdc:calib-14-hhn3qb47
   calibration_object: nmdc:dobj-14-1e9qeq49
@@ -45,17 +46,16 @@ workflow_execution_set:
   started_at_time: '2024-03-10 23:25:16'
   ended_at_time: '2024-03-10 23:25:16'
   was_informed_by:
-    - nmdc:omprc-11-0003fm52
+  - nmdc:omprc-11-0003fm52
   execution_resource: EMSL-RZR
   processing_institution: NMDC
   git_url: https://github.com/microbiomedata/enviroMS
   has_input:
   - nmdc:dobj-11-cp4p5602
   type: nmdc:NomAnalysis
-  uses_calibration: 
+  uses_calibration:
   - nmdc:calib-14-hhn3qb47
   has_output:
   - nmdc:dobj-11-wkvtnj47
   alternative_identifiers:
   - nmdc:wfnom-11-zs6pnn44
-  

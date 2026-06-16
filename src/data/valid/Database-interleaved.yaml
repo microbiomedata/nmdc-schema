@@ -955,11 +955,12 @@ data_generation_set:
     type: nmdc:PersonValue
     email: janet.jansson@pnnl.gov
     name: Janet Jansson
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    add_date: '2022-04-02T00:00:00Z'
   insdc_experiment_identifiers:
   - insdc.sra:ERX4806872
+  has_instance_provenance:
+  - id: nmdc:prov-99-11-abcd
+    type: nmdc:ProvenanceObject
+    add_date: '2022-04-02T00:00:00Z'
 - id: nmdc:dgms-99-zUCd5N
   type: nmdc:MassSpectrometry
   has_input:
@@ -1009,12 +1010,13 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-555xxx
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30T00:00:00Z'
-    mod_date: '2020-05-22T00:00:00Z'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 712P3D
+  has_instance_provenance:
+  - id: nmdc:prov-99-99-zUCd5N
+    type: nmdc:ProvenanceObject
+    add_date: '2014-10-30T00:00:00Z'
+    mod_date: '2020-05-22T00:00:00Z'
 - id: nmdc:dgns-99-gKlQlF2
   type: nmdc:NucleotideSequencing
   name: Thawing permafrost microbial communities from the Arctic, studying carbon
@@ -1029,12 +1031,13 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-555xxx
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30T00:00:00Z'
-    mod_date: '2020-05-22T00:00:00Z'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 612S3M
+  has_instance_provenance:
+  - id: nmdc:prov-99-99-gKlQlF2
+    type: nmdc:ProvenanceObject
+    add_date: '2014-10-30T00:00:00Z'
+    mod_date: '2020-05-22T00:00:00Z'
 - id: nmdc:dgns-99-5kgIJR
   type: nmdc:NucleotideSequencing
   name: Thawing permafrost microbial communities from the Arctic, studying carbon
@@ -1049,12 +1052,13 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-555xxx
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30T00:00:00Z'
-    mod_date: '2020-05-22T00:00:00Z'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 712S3S
+  has_instance_provenance:
+  - id: nmdc:prov-99-99-5kgIJR
+    type: nmdc:ProvenanceObject
+    add_date: '2014-10-30T00:00:00Z'
+    mod_date: '2020-05-22T00:00:00Z'
 - id: nmdc:omprc-99-123456
   type: nmdc:NucleotideSequencing
   name: Permafrost 712P3D
@@ -1068,8 +1072,9 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-123456
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
+  has_instance_provenance:
+  - id: nmdc:prov-99-99-123456
+    type: nmdc:ProvenanceObject
     add_date: '2014-10-30T00:00:00Z'
     mod_date: '2020-05-22T00:00:00Z'
 - id: nmdc:dgms-99-zUCd5N3
@@ -1086,13 +1091,14 @@ data_generation_set:
   instrument_used:
   - nmdc:inst-14-njkx0e66
   instrument_instance_specifier: PNNL_VOrbiETD04
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    add_date: '2024-05-07T00:00:00Z'
-    mod_date: '2024-05-07T00:00:00Z'
   eluent_introduction_category: liquid_chromatography
   has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG1
   has_chromatography_configuration: nmdc:chrcon-11-oW43DzG0
+  has_instance_provenance:
+  - id: nmdc:prov-99-99-zUCd5N3
+    type: nmdc:ProvenanceObject
+    add_date: '2024-05-07T00:00:00Z'
+    mod_date: '2024-05-07T00:00:00Z'
 - id: nmdc:dgms-99-zUCd5x
   type: nmdc:MassSpectrometry
   has_input:
@@ -1107,13 +1113,14 @@ data_generation_set:
   instrument_used:
   - nmdc:inst-14-njkx0e66
   instrument_instance_specifier: PNNL_VOrbiETD04
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    add_date: '2024-05-07T00:00:00Z'
-    mod_date: '2024-05-07T00:00:00Z'
   eluent_introduction_category: liquid_chromatography
   has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG2
   has_chromatography_configuration: nmdc:chrcon-11-oW43DzG0
+  has_instance_provenance:
+  - id: nmdc:prov-99-99-zUCd5x
+    type: nmdc:ProvenanceObject
+    add_date: '2024-05-07T00:00:00Z'
+    mod_date: '2024-05-07T00:00:00Z'
 - id: nmdc:dgms-99-oW43DzG1
   type: nmdc:MassSpectrometry
   has_input:
@@ -1158,13 +1165,14 @@ data_generation_set:
   - nmdc:sty-11-aygzgv51
   instrument_used:
   - nmdc:inst-14-fas8ny90
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    mod_date: '2024-11-07T00:00:00Z'
   eluent_introduction_category: gas_chromatography
   has_mass_spectrometry_configuration: nmdc:mscon-14-5jk7rg60
   generates_calibration: nmdc:calib-14-dy7mc666
   has_chromatography_configuration: nmdc:chrcon-14-qpvt3v15
+  has_instance_provenance:
+  - id: nmdc:prov-99-13-122e4240
+    type: nmdc:ProvenanceObject
+    mod_date: '2024-11-07T00:00:00Z'
 - id: nmdc:dgns-99-zUCd5N2
   type: nmdc:NucleotideSequencing
   name: a process in which a biosample was sequenced?
@@ -1178,12 +1186,13 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-555xxx
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30T00:00:00Z'
-    mod_date: '2020-05-22T00:00:00Z'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 712P3D
+  has_instance_provenance:
+  - id: nmdc:prov-99-99-zUCd5N2
+    type: nmdc:ProvenanceObject
+    add_date: '2014-10-30T00:00:00Z'
+    mod_date: '2020-05-22T00:00:00Z'
 - id: nmdc:dgns-11-s9xj2r24
   type: nmdc:NucleotideSequencing
   name: Test NEON data
@@ -1215,12 +1224,13 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-31415
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    add_date: '2017-08-17T00:00:00Z'
-    mod_date: '2020-10-16T00:00:00Z'
   ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
     LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
+  has_instance_provenance:
+  - id: nmdc:prov-99-99-9XUVVF
+    type: nmdc:ProvenanceObject
+    add_date: '2017-08-17T00:00:00Z'
+    mod_date: '2020-10-16T00:00:00Z'
 - id: nmdc:dgns-99-dk9vgI
   type: nmdc:NucleotideSequencing
   name: Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG
@@ -1235,12 +1245,13 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-8675309
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    add_date: '2017-03-17T00:00:00Z'
-    mod_date: '2020-05-22T00:00:00Z'
   ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
     - 611E1M metaG
+  has_instance_provenance:
+  - id: nmdc:prov-99-99-dk9vgI
+    type: nmdc:ProvenanceObject
+    add_date: '2017-03-17T00:00:00Z'
+    mod_date: '2020-05-22T00:00:00Z'
 - id: nmdc:dgns-99-MVW1FV
   type: nmdc:NucleotideSequencing
   name: Rhizosphere microbial communities from Carex aquatilis grown in University
@@ -1257,12 +1268,13 @@ data_generation_set:
   analyte_category: metagenome
   associated_studies:
   - nmdc:sty-00-avacado
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    add_date: '2018-03-29T00:00:00Z'
-    mod_date: '2020-04-04T00:00:00Z'
   ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
     in University of Washington, Seatle, WA, United States - 4-1-23 metaG
+  has_instance_provenance:
+  - id: nmdc:prov-99-99-MVW1FV
+    type: nmdc:ProvenanceObject
+    add_date: '2018-03-29T00:00:00Z'
+    mod_date: '2020-04-04T00:00:00Z'
 - id: nmdc:dgms-11-0003fm52
   type: nmdc:MassSpectrometry
   name: 1000S_WLUP_FTMS_SPE_BTM_1_run2_Fir_22Apr22_300SA_p01_149_1_3506
@@ -1279,11 +1291,12 @@ data_generation_set:
   - nmdc:sty-11-28tm5d36
   instrument_used:
   - nmdc:inst-14-mwrrj632
-  provenance_metadata:
-    type: nmdc:ProvenanceMetadata
-    mod_date: '2024-11-07T00:00:00Z'
   eluent_introduction_category: direct_infusion_autosampler
   has_mass_spectrometry_configuration: nmdc:mscon-14-j5y11q51
+  has_instance_provenance:
+  - id: nmdc:prov-99-11-0003fm52
+    type: nmdc:ProvenanceObject
+    mod_date: '2024-11-07T00:00:00Z'
 data_object_set:
 - id: nmdc:dobj-99-izwYW6
   type: nmdc:DataObject
@@ -2393,55 +2406,56 @@ study_set:
 - id: nmdc:sty-99-hfaLvo
   type: nmdc:Study
   name: Cyanobacterial communities from the Joint Genome Institute, California, USA
-  description: 'We propose to utilize the unique resources at EMSL and the JGI to
-    obtain a better understanding of the phylogenetic and functional diversity of
-    cyanobacteria that have been collected from DOE mission relevant environments
-    (e.g. alkaline and acidic hot springs, and hypersaline terrestrial and water habitats)
-    and deposited in a culture collection that contains &gt;1,200 strains. The Cyanobacteria
-    are one of the most metabolically and morphologically diverse bacterial phyla
-    and it has been hypothesized that they are the origin of oxygenic photosynthesis.
-    The project proposed here would complement and utilize the genomic information
-    that was generated during JGI’s GEBA Cyano project to add valuable insights about
-    the metabolic processes that are active in members of this phylum and that have
-    been - and still are - key factors in shaping our planet. In contrast to the GEBA
-    Cyano project, the project proposed here include mixed cultures of organisms that
-    are recalcitrant to separation. A comprehensive omics approach of these simple
-    consortia will allow us to develop tools for Systems Microbiology and for analyzing
-    microbe-microbe and microbe-climate interactions and the single-cell and whole
-    system level. Phylogenomics: We will request 16S rRNA data from our culture collections
-    to classify phenotypes that are most promising for addressing questions related
-    to carbon and nitrogen cycling and developing new chassis for biofuel production
-    strains. To obtain a complete 16S rRNA-based inventory of the Cyanobacteria collection
-    we would request ~40 Gb of iTag data from the JGI. In addition, we would request
-    Fluorescence in situ hybridization (FISH) microscopy from EMSL for selected samples
-    that contain more than one phylotype, to obtain a better understanding of the
-    special organization within mixed populations. We will request an additional ~10
-    Gb of iTag data to monitor phylogenetic changes in mixed cultures with phenotypes
-    that are in particular relevant to carbon and nitrogen cycling.   Single Cell
-    Genomics and Metagenomics: We will request sorting of mixed cultures targeting
-    ~100 single cells and genomic sequencing of the obtained isolates using JGI''s
-    PacBio pipeline (total of ~50 Gb genomic data). For mixed cultured from which
-    no ? or only a fraction of the community - can be isolated as single cell, we
-    will request a total of ~50 Gb of metagenomics data. This will provide us with
-    the genomic data that will be necessary to reconstruct metabolic pathways of hitherto
-    uncultured cyanobacteria and to identify the key factors that make the individual
-    members of these mixed cultures recalcitrant to cultivation under axenic conditions.
-    Physiology and chemistry: To determine the physical and chemical changes that
-    occur during Cyanobacteria mediated carbon and nitrogen cycling, we will request
-    access to cryo-transmission electron microscopy, scanning electron microscopy
-    coupled with focused ion beam, X ray spectroscopy and electron diffraction analyses,
-    confocal microscopy, Raman spectroscopy, synchrotron-based computed x-ray microtomography,
-    nano secondary ion mass spectrometry, and high field Fourier transform ion cyclotron
-    resonance mass spectrometry at EMSL.   Functional dynamics: To determine the dynamics
-    of the genetic modules that are being transcribed into mRNA during Cyanobacteria
-    mediated carbon and nitrogen cycling, we propose to generate expression profiles
-    from 10 selected axenic and 10 mixed cultures. We will request a total of ~10
-    Gb and ~50 Gb of transcriptome and metatranscriptomic data from the JGI, respectively.
-    To determine the dynamics of genetic modules being translated and converted into
-    proteins and metabolites during Cyanobacteria mediated carbon and nitrogen cycling,
-    we will generate metaproteomic and metametabolomic data from 10 selected axenic
-    and 10 mixed cultures. We will request access and support to and with mass spectrometry,
-    NMR spectrometry, and computation time on Chinook from EMSL.'
+  description: "We propose to utilize the unique resources at EMSL and the JGI to\
+    \ obtain a better understanding of the phylogenetic and functional diversity of\
+    \ cyanobacteria that have been collected from DOE mission relevant environments\
+    \ (e.g. alkaline and acidic hot springs, and hypersaline terrestrial and water\
+    \ habitats) and deposited in a culture collection that contains &gt;1,200 strains.\
+    \ The Cyanobacteria are one of the most metabolically and morphologically diverse\
+    \ bacterial phyla and it has been hypothesized that they are the origin of oxygenic\
+    \ photosynthesis. The project proposed here would complement and utilize the genomic\
+    \ information that was generated during JGI\u2019s GEBA Cyano project to add valuable\
+    \ insights about the metabolic processes that are active in members of this phylum\
+    \ and that have been - and still are - key factors in shaping our planet. In contrast\
+    \ to the GEBA Cyano project, the project proposed here include mixed cultures\
+    \ of organisms that are recalcitrant to separation. A comprehensive omics approach\
+    \ of these simple consortia will allow us to develop tools for Systems Microbiology\
+    \ and for analyzing microbe-microbe and microbe-climate interactions and the single-cell\
+    \ and whole system level. Phylogenomics: We will request 16S rRNA data from our\
+    \ culture collections to classify phenotypes that are most promising for addressing\
+    \ questions related to carbon and nitrogen cycling and developing new chassis\
+    \ for biofuel production strains. To obtain a complete 16S rRNA-based inventory\
+    \ of the Cyanobacteria collection we would request ~40 Gb of iTag data from the\
+    \ JGI. In addition, we would request Fluorescence in situ hybridization (FISH)\
+    \ microscopy from EMSL for selected samples that contain more than one phylotype,\
+    \ to obtain a better understanding of the special organization within mixed populations.\
+    \ We will request an additional ~10 Gb of iTag data to monitor phylogenetic changes\
+    \ in mixed cultures with phenotypes that are in particular relevant to carbon\
+    \ and nitrogen cycling.   Single Cell Genomics and Metagenomics: We will request\
+    \ sorting of mixed cultures targeting ~100 single cells and genomic sequencing\
+    \ of the obtained isolates using JGI's PacBio pipeline (total of ~50 Gb genomic\
+    \ data). For mixed cultured from which no ? or only a fraction of the community\
+    \ - can be isolated as single cell, we will request a total of ~50 Gb of metagenomics\
+    \ data. This will provide us with the genomic data that will be necessary to reconstruct\
+    \ metabolic pathways of hitherto uncultured cyanobacteria and to identify the\
+    \ key factors that make the individual members of these mixed cultures recalcitrant\
+    \ to cultivation under axenic conditions. Physiology and chemistry: To determine\
+    \ the physical and chemical changes that occur during Cyanobacteria mediated carbon\
+    \ and nitrogen cycling, we will request access to cryo-transmission electron microscopy,\
+    \ scanning electron microscopy coupled with focused ion beam, X ray spectroscopy\
+    \ and electron diffraction analyses, confocal microscopy, Raman spectroscopy,\
+    \ synchrotron-based computed x-ray microtomography, nano secondary ion mass spectrometry,\
+    \ and high field Fourier transform ion cyclotron resonance mass spectrometry at\
+    \ EMSL.   Functional dynamics: To determine the dynamics of the genetic modules\
+    \ that are being transcribed into mRNA during Cyanobacteria mediated carbon and\
+    \ nitrogen cycling, we propose to generate expression profiles from 10 selected\
+    \ axenic and 10 mixed cultures. We will request a total of ~10 Gb and ~50 Gb of\
+    \ transcriptome and metatranscriptomic data from the JGI, respectively. To determine\
+    \ the dynamics of genetic modules being translated and converted into proteins\
+    \ and metabolites during Cyanobacteria mediated carbon and nitrogen cycling, we\
+    \ will generate metaproteomic and metametabolomic data from 10 selected axenic\
+    \ and 10 mixed cultures. We will request access and support to and with mass spectrometry,\
+    \ NMR spectrometry, and computation time on Chinook from EMSL."
   study_category: research_study
   gold_study_identifiers:
   - gold:Gs999999
