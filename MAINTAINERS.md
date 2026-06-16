@@ -33,7 +33,7 @@ The changes can be cecked locally with `make all test`
 > Pre-release (release candidate) mechanics and the `poetry-dynamic-versioning` setup
 > are documented in the *Pre-release Process* section of
 > [`CLAUDE.md`](CLAUDE.md). This section keeps only the version-numbering guidelines
-> and the release-notes convention; follow the runbook for the current steps.
+> and the release notes convention; follow the runbook for the current steps.
 
 The package is published to [PyPI](https://pypi.org/project/nmdc-schema/) by the
 [pypi-publish](https://github.com/microbiomedata/nmdc-schema/blob/main/.github/workflows/pypi-publish.yaml)
