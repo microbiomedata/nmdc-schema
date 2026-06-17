@@ -847,6 +847,13 @@ enums:
         see_also:
           - https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
 
+      SRA toolkit-accessible sequence data:
+        description: Files that are avaliable for download via SRA Toolkit by providing an INSDC accession
+        comments:
+           - File format will depend on options specified to SRA Toolkit
+        see_also:
+          - https://github.com/ncbi/sra-tools/wiki
+
       Direct Infusion FT-ICR MS Analysis Results:
         description: FT-ICR MS based molecular formula assignment results table
       
