@@ -34,7 +34,7 @@ Please carefully read our [Code of Conduct](CODE_OF_CONDUCT.md).
 Please use the [Issue Tracker](https://github.com/microbiomedata/nmdc-schema/issues/) for reporting problems with the schema. 
 
 Please review GitHub's overview article,
-["Tracking Your Work with Issues"][[about-issues]].
+["Tracking Your Work with Issues"][about-issues].
 
 ### Pull Requests
 
