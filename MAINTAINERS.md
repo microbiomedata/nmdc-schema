@@ -24,7 +24,7 @@ Changes are recorded through GitHub's auto-generated release notes rather than a
 
 When the pull request is merged into the `main` branch, new documentation will be generated for the changed schema.
 
-The changes can be cecked locally with `make all test`
+The changes can be checked locally with `make all test`
 
 ## Making a PyPI release of the NMDC Schema
 
