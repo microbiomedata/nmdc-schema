@@ -835,7 +835,7 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.density.annotations.storage_units = {"tag": "storage_units", "value": "g/cm3|g/m3|kg/m3"}'
 '.slots.density.examples = [{"value": "1000 kg/m3"}]'
 
-# MIxS doesn't specify 'uS/cm'
+# MIxS doesn't specify 'uS/cm'; NMDC intentionally allows it for compatibility with existing data/reporting conventions.
 '.slots.conduc.annotations.storage_units = {"tag": "storage_units", "value": "mS/cm|uS/cm"}'
 '.slots.conduc.examples = [{"value": "10 uS/cm"}]'
 
