@@ -827,7 +827,11 @@ enums:
           - https://www.ebi.ac.uk/ena/browser/about/read-formats
 
       Paired interleaved raw sequencing data:
-        description: Interleaved sequencing data
+        description: Paired-end reads with forward and reverse mates interleaved in a single file.
+        comments:
+          - Use when the analyte category is not part of the value, for example NCBI/SRA ingest or isolate data. For metagenome or metatranscriptome interleaved reads, prefer "Metagenome Raw Reads" or "Metatranscriptome Raw Reads" above.
+        see_also:
+          - https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
 
       Raw sequencing data read 1:
         description: Read 1 raw sequencing data, aka forward reads
