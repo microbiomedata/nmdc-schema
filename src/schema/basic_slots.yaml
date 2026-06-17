@@ -819,9 +819,12 @@ enums:
           file_name_pattern: '^.+_R2\.fastq(\.gz)?$'
 
       Unpaired raw sequencing data:
-        description: Reads from a sequencing instrument that generates data that is not paired
+        description: Reads from a single-end sequencing library (not forward/reverse pairs).
         comments:
-          - Data from Oxford Nanopore and Pacific Biosciences can have a library layout of single
+          - Use when the analyte category is not part of the value, for example NCBI/SRA ingest or isolate data. For metagenome or metatranscriptome reads, prefer the analyte-specific values above.
+          - Oxford Nanopore and PacBio runs commonly have a single (unpaired) library layout.
+        see_also:
+          - https://www.ebi.ac.uk/ena/browser/about/read-formats
 
       Paired interleaved raw sequencing data:
         description: Interleaved sequencing data
