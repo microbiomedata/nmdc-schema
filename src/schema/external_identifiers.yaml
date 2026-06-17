@@ -332,7 +332,7 @@ slots:
   insdc_run_identifiers:
     description: Identifiers for the manifest of data file(s) that are derived from sequencing a library described by the associated INSDC experiment.
     see_also:
-      - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#sra-metadata-experiment
+      - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run
     is_a: external_database_identifiers
     pattern: "^insdc\\.run:(E|D|S)RR[0-9]{6,}$"
     mixins:
