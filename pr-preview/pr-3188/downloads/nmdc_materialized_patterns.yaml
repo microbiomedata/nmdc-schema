@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.1.post19.dev0+959f23eeb
+version: 11.20.1.post20.dev0+621f36d19
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -2093,7 +2093,7 @@ enums:
         - value: BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz
       Unpaired raw sequencing data:
         text: Unpaired raw sequencing data
-        description: Reads from a sequencing insturment that generates data that is
+        description: Reads from a sequencing instrument that generates data that is
           not paired
         comments:
         - Data from Oxford Nanopore and Pacific Biosciences can have a library layout
