@@ -839,8 +839,9 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.conduc.annotations.storage_units = {"tag": "storage_units", "value": "mS/cm|uS/cm"}'
 '.slots.conduc.examples = [{"value": "10 uS/cm"}]'
 
-# MIxS says 'joule per degree Celsius'. UCUM says that's illegal division by a non-ration unit,
-# so we use the essentially equivalent J/K instead
+# MIxS says 'joule per degree Celsius'. UCUM treats degree Celsius as a special unit with an offset,
+# so division by Cel is not a valid UCUM unit expression; use the equivalent thermodynamic form J/K.
+# Reference: UCUM specification and guidance at https://ucum.org/ucum and https://ucum.org/trac
 '.slots.ceil_thermal_mass.annotations.storage_units = {"tag": "storage_units", "value": "J/K"}'
 '.slots.floor_thermal_mass.annotations.storage_units = {"tag": "storage_units", "value": "J/K"}'
 '.slots.wall_thermal_mass.annotations.storage_units = {"tag": "storage_units", "value": "J/K"}'
