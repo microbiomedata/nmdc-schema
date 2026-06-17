@@ -1,3 +1,4 @@
+#invalid b/c it uses an experiment identifier instead of a run identifier
 data_object_type: Metagenome Raw Reads
 data_category: instrument_data
 description: "my awesome fastq file"
@@ -8,4 +9,4 @@ name: "1237.14.3718.ATCG-ACTG.fastq.gz"
 type: "nmdc:DataObject"
 was_generated_by: "nmdc:omprc-99-123456"
 insdc_run_identifiers: 
-  - "insdc.run:ERR123456"
+  - "insdc.run:ERX123456"

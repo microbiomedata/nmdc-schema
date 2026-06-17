@@ -90,6 +90,7 @@ prefixes:
   igsn: "https://app.geosamples.org/sample/igsn/"
   img.taxon: "https://bioregistry.io/img.taxon:"
   insdc.sra: "https://bioregistry.io/insdc.sra:"
+  insdc.run: "https://bioregistry.io/insdc.run:"
   jgi.analysis: "https://data.jgi.doe.gov/search?q="
   jgi.proposal: 'https://bioregistry.io/jgi.proposal:'
   jgi: "http://example.org/jgi/"
