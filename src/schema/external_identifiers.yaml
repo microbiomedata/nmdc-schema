@@ -334,7 +334,7 @@ slots:
     see_also:
       - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#sra-metadata-experiment
     is_a: external_database_identifiers
-    pattern: "^insdc.run:(E|D|S)RR[0-9]{6,}$"
+    pattern: "^insdc\\.run:(E|D|S)RR[0-9]{6,}$"
     mixins:
       - insdc_identifiers
 
