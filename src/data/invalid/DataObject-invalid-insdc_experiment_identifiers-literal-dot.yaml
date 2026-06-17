@@ -2,6 +2,7 @@
 # "insdcXsra:" only matched when the regex dot was unescaped (.= any char)
 id: nmdc:dobj-11-dtTMNb
 name: insdc experiment literal-dot check
+description: raw reads whose insdc_experiment_identifiers value is the only invalid field
 data_category: instrument_data
 type: nmdc:DataObject
 data_object_type: Metagenome Raw Reads
