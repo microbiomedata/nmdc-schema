@@ -107,7 +107,7 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Precedent: `StationaryPhaseEnum`, `SamplePortionEnum`. Background: issue #3120.
 - Reuse
     - Existing scheme elements should be reused where appropriate, rather than making duplicative elements
-    - More specific classes can be created by refinining classes using inheritance (`is_a`)
+    - More specific classes can be created by refining classes using inheritance (`is_a`)
 - Place new classes under existing upper level classes
     - __Note__: this is partially aspirational until we have a stable upper level structure in place
     - Most new classes should be refinement of existing classes
