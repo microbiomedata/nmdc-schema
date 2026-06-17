@@ -818,6 +818,42 @@ enums:
         annotations:
           file_name_pattern: '^.+_R2\.fastq(\.gz)?$'
 
+      Unpaired raw sequencing data:
+        description: Reads from a single-end sequencing library (not forward/reverse pairs).
+        comments:
+          - Use when the analyte category is not part of the value, for example amplicon or isolate data. For metagenome or metatranscriptome reads, prefer the analyte-specific values above.
+          - Oxford Nanopore and PacBio runs commonly have a single (unpaired) library layout.
+        see_also:
+          - https://www.ebi.ac.uk/ena/browser/about/read-formats
+
+      Paired interleaved raw sequencing data:
+        description: Paired-end reads with forward and reverse mates interleaved in a single file.
+        comments:
+          - Use when the analyte category is not part of the value, for example amplicon or isolate data. For metagenome or metatranscriptome interleaved reads, prefer "Metagenome Raw Reads" or "Metatranscriptome Raw Reads" above.
+        see_also:
+          - https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
+
+      Raw sequencing data read 1:
+        description: Read 1 (forward) of a paired-end run, as a separate file.
+        comments:
+          - Use when the analyte category is not part of the value, for example amplicon or isolate data. For metagenome or metatranscriptome forward reads, prefer "Metagenome Raw Read 1" or "Metatranscriptome Raw Read 1" above.
+        see_also:
+          - https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
+
+      Raw sequencing data read 2:
+        description: Read 2 (reverse) of a paired-end run, as a separate file.
+        comments:
+          - Use when the analyte category is not part of the value, for example amplicon ingest or isolate data. For metagenome or metatranscriptome reverse reads, prefer "Metagenome Raw Read 2" or "Metatranscriptome Raw Read 2" above.
+        see_also:
+          - https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
+
+      SRA toolkit-accessible sequence data:
+        description: Files that are avaliable for download via SRA Toolkit by providing an INSDC accession
+        comments:
+           - File format will depend on options specified to SRA Toolkit
+        see_also:
+          - https://github.com/ncbi/sra-tools/wiki
+
       Direct Infusion FT-ICR MS Analysis Results:
         description: FT-ICR MS based molecular formula assignment results table
       
