@@ -574,9 +574,13 @@
 'del(.slots.host_body_product.examples)'
 '.slots.host_body_product.examples.[0].value = "mucus [UBERON:0000912]"'
 
-# as of 2024-01-30:
+# Remove upstream `.types` to avoid URI collisions with LinkML built-in/core types
+# during schema generation (for example, duplicate definitions of `date`).
+# This is an intentional compatibility normalization so generated projects use
+# LinkML canonical type URIs rather than conflicting imported MIxS type entries.
+# Historical failure seen as:
 # ValueError: Conflicting URIs (https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml, https://w3id.org/linkml/types) for item: date
-make: *** [Makefile:102: gen-project] Error 1
+# make: *** [Makefile:102: gen-project] Error 1
 'del(.types)'
 
 '.imports += ["attribute_values"]'
