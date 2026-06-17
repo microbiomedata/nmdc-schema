@@ -46,6 +46,10 @@ jobs:
         run: poetry install
 
       - name: Run schema pattern linter (report to job summary)
+        # Explicit bash so the shell runs with -eo pipefail; otherwise the
+        # default `bash -e {0}` lacks pipefail and `tee` would mask a nonzero
+        # exit from the linter, letting a crash pass as a green report.
+        shell: bash
         run: |
           poetry run python src/scripts/schema_pattern_linting.py \
             --schema-file src/schema/nmdc.yaml | tee schema_pattern_lint.txt
