@@ -34,7 +34,7 @@ Please carefully read our [Code of Conduct](CODE_OF_CONDUCT.md).
 Please use the [Issue Tracker](https://github.com/microbiomedata/nmdc-schema/issues/) for reporting problems with the schema. 
 
 Please review GitHub's overview article,
-["Tracking Your Work with Issues"][[about-issues]].
+["Tracking Your Work with Issues"][about-issues].
 
 ### Pull Requests
 
@@ -54,7 +54,7 @@ familiar with the schema, the basics of the LinkML framework, and NMDC Best Prac
 
 (Note: these best practices apply to most development in NMDC; these guidelines may later be moved somewhere central)
 
-- Read ["About Issues"][[about-issues]] and ["About Pull Requests"][[about-pulls]]
+- Read ["About Issues"][about-issues] and ["About Pull Requests"][about-pulls]
 - Issues should be focused and actionable
 - Complex issues should be broken down into simpler issues where possible
 - Pull Requests (PRs) should be atomic and aim to close a single issue
@@ -107,7 +107,7 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Precedent: `StationaryPhaseEnum`, `SamplePortionEnum`. Background: issue #3120.
 - Reuse
     - Existing scheme elements should be reused where appropriate, rather than making duplicative elements
-    - More specific classes can be created by refinining classes using inheritance (`is_a`)
+    - More specific classes can be created by refining classes using inheritance (`is_a`)
 - Place new classes under existing upper level classes
     - __Note__: this is partially aspirational until we have a stable upper level structure in place
     - Most new classes should be refinement of existing classes
@@ -116,7 +116,7 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Inheritance should be monotonic: `slot_usage` should refine rather than override
 - ID patterning and checks
     - ID patterns for new classes should follow conventions found [here](https://microbiomedata.github.io/nmdc-schema/identifiers/)
-    - In the _rare_ case that NMCD records must support legacy typecodes, typecodes can be declared on new classes with multiple typecodes (i.e. `syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$"`). In this case, the _first_ typecode is the one the NMDC Runtime's [minter](https://github.com/microbiomedata/nmdc-runtime/tree/main/nmdc_runtime/minter) will use when generating new ids for the class.
+    - In the _rare_ case that NMDC records must support legacy typecodes, typecodes can be declared on new classes with multiple typecodes (i.e. `syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$"`). In this case, the _first_ typecode is the one the NMDC Runtime's [minter](https://github.com/microbiomedata/nmdc-runtime/tree/main/nmdc_runtime/minter) will use when generating new ids for the class.
     - Class-linking slots (i.e. `has_input`) should have a `slot_usage` declared that limits the slot's values to ids of instances of _only_ the specific classes you want to allow the slot to link to (e.g. using `syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"` on the `structured_pattern` will make it so only ids having the typecode `chrcon` can fill that slot)
 
 ### Testing Changes Locally
