@@ -54,7 +54,7 @@ familiar with the schema, the basics of the LinkML framework, and NMDC Best Prac
 
 (Note: these best practices apply to most development in NMDC; these guidelines may later be moved somewhere central)
 
-- Read ["About Issues"][[about-issues]] and ["About Pull Requests"][[about-pulls]]
+- Read ["About Issues"][about-issues] and ["About Pull Requests"][about-pulls]
 - Issues should be focused and actionable
 - Complex issues should be broken down into simpler issues where possible
 - Pull Requests (PRs) should be atomic and aim to close a single issue
