@@ -1,0 +1,9 @@
+# invalid b/c insdc_experiment_identifiers requires the literal prefix "insdc.sra:";
+# "insdcXsra:" only matched when the regex dot was unescaped (.= any char)
+id: nmdc:dobj-11-dtTMNb
+name: insdc experiment literal-dot check
+data_category: instrument_data
+type: nmdc:DataObject
+data_object_type: Metagenome Raw Reads
+insdc_experiment_identifiers:
+  - insdcXsra:SRX0123456

@@ -105,7 +105,7 @@ slots:
       - jgi_portal_identifiers
     id_prefixes:
       - jgi.proposal
-    pattern: '^jgi.proposal:\d+$'
+    pattern: '^jgi\.proposal:\d+$'
     examples:
       - value: jgi.proposal:507130
     comments:
@@ -131,7 +131,7 @@ slots:
       - EBI ENA study identifiers
       - NCBI SRA identifiers
       - DDBJ SRA identifiers
-    pattern: "^insdc.sra:(E|D|S)RP[0-9]{6,}$"
+    pattern: "^insdc\\.sra:(E|D|S)RP[0-9]{6,}$"
     description: identifiers for corresponding project in INSDC SRA / ENA
     examples:
       - value: insdc.sra:SRP121659
@@ -177,7 +177,7 @@ slots:
     is_a: study_identifiers
     mixins:
       - mgnify_identifiers
-    pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
+    pattern: "^mgnify\\.proj:[A-Z]+[0-9]+$"
     description: identifiers for corresponding project in MGnify
     examples:
       - value: mgnify.proj:MGYS00005757
@@ -322,7 +322,7 @@ slots:
 
   insdc_experiment_identifiers:
     is_a: external_database_identifiers
-    pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
+    pattern: "^insdc\\.sra:(E|D|S)RX[0-9]{6,}$"
     mixins:
       - insdc_identifiers
 
@@ -347,7 +347,7 @@ slots:
       - jgi_portal_identifiers
     id_prefixes:
       - jgi.analysis
-    pattern: '^jgi.analysis:[0-9]+$'
+    pattern: '^jgi\.analysis:[0-9]+$'
     description: identifiers for corresponding analysis projects in JGI Portal
     examples:
       - value: jgi.analysis:1414320
@@ -357,7 +357,7 @@ slots:
     is_a: analysis_identifiers
     comments:
       - in INSDC this is a run but it corresponds to a GOLD analysis
-    pattern: "^insdc.sra:(E|D|S)RR[0-9]{6,}$"
+    pattern: "^insdc\\.sra:(E|D|S)RR[0-9]{6,}$"
     mixins:
       - insdc_identifiers
     examples:
@@ -382,7 +382,7 @@ slots:
 
   insdc_assembly_identifiers:
     is_a: assembly_identifiers
-    pattern: "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$"
+    pattern: "^insdc\\.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$"
     mixins:
       - insdc_identifiers
 
