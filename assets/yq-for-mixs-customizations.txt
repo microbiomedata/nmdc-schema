@@ -299,7 +299,6 @@
 '.slots.growth_facil.range |= "ControlledTermValue"'
 '.slots.growth_hormone_regm.range |= "TextValue"'
 '.slots.hall_count.range |= "TextValue"'
-'.slots.hall_count.range |= "TextValue"'
 '.slots.hcr_pressure.range |= "TextValue"'
 '.slots.hcr_temp.range |= "TextValue"'
 '.slots.heat_sys_deliv_meth.range |= "string"'
@@ -574,9 +573,13 @@
 'del(.slots.host_body_product.examples)'
 '.slots.host_body_product.examples.[0].value = "mucus [UBERON:0000912]"'
 
-# as of 2024-01-30:
+# Remove upstream `.types` to avoid URI collisions with LinkML built-in/core types
+# during schema generation (for example, duplicate definitions of `date`).
+# This is an intentional compatibility normalization so generated projects use
+# LinkML canonical type URIs rather than conflicting imported MIxS type entries.
+# Historical failure seen as:
 # ValueError: Conflicting URIs (https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml, https://w3id.org/linkml/types) for item: date
-make: *** [Makefile:102: gen-project] Error 1
+# make: *** [gen-project] Error 1
 'del(.types)'
 
 '.imports += ["attribute_values"]'
@@ -835,12 +838,13 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.density.annotations.storage_units = {"tag": "storage_units", "value": "g/cm3|g/m3|kg/m3"}'
 '.slots.density.examples = [{"value": "1000 kg/m3"}]'
 
-# MIxS doesn't specify 'uS/cm'
+# MIxS doesn't specify 'uS/cm'; NMDC intentionally allows it for compatibility with existing data/reporting conventions.
 '.slots.conduc.annotations.storage_units = {"tag": "storage_units", "value": "mS/cm|uS/cm"}'
 '.slots.conduc.examples = [{"value": "10 uS/cm"}]'
 
-# MIxS says 'joule per degree Celsius'. UCUM says that's illegal division by a non-ration unit,
-# so we use the essentially equivalent J/K instead
+# MIxS says 'joule per degree Celsius'. UCUM treats degree Celsius as a special unit with an offset,
+# so division by Cel is not a valid UCUM unit expression; use the equivalent thermodynamic form J/K.
+# Reference: UCUM specification and guidance at https://ucum.org/ucum and https://ucum.org/trac
 '.slots.ceil_thermal_mass.annotations.storage_units = {"tag": "storage_units", "value": "J/K"}'
 '.slots.floor_thermal_mass.annotations.storage_units = {"tag": "storage_units", "value": "J/K"}'
 '.slots.wall_thermal_mass.annotations.storage_units = {"tag": "storage_units", "value": "J/K"}'
