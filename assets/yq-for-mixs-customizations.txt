@@ -579,7 +579,7 @@
 # LinkML canonical type URIs rather than conflicting imported MIxS type entries.
 # Historical failure seen as:
 # ValueError: Conflicting URIs (https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml, https://w3id.org/linkml/types) for item: date
-# make: *** [Makefile:102: gen-project] Error 1
+# make: *** [gen-project] Error 1
 'del(.types)'
 
 '.imports += ["attribute_values"]'
