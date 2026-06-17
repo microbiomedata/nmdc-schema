@@ -6868,8 +6868,20 @@
                     ]
                 },
                 "insdc_experiment_identifiers": {
+                    "description": "INSDC identifiers for the unique sequencing result for a specific sample",
                     "items": {
                         "pattern": "^insdc.sra:(E|D|S)RX[0-9]{6,}$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "insdc_run_identifiers": {
+                    "description": "Identifiers for the manifest of data file(s) that are derived from sequencing a library described by the associated INSDC experiment.",
+                    "items": {
+                        "pattern": "^insdc\\.run:(E|D|S)RR[0-9]{6,}$",
                         "type": "string"
                     },
                     "type": [
@@ -8099,6 +8111,11 @@
                 "Metatranscriptome Raw Reads",
                 "Metatranscriptome Raw Read 1",
                 "Metatranscriptome Raw Read 2",
+                "Unpaired raw sequencing data",
+                "Paired interleaved raw sequencing data",
+                "Raw sequencing data read 1",
+                "Raw sequencing data read 2",
+                "SRA toolkit-accessible sequence data",
                 "Direct Infusion FT-ICR MS Analysis Results",
                 "Direct Infusion FT-ICR MS QC Plots",
                 "LC FT-ICR MS Analysis Results",
@@ -13399,6 +13416,7 @@
                     ]
                 },
                 "insdc_experiment_identifiers": {
+                    "description": "INSDC identifiers for the unique sequencing result for a specific sample",
                     "items": {
                         "pattern": "^insdc.sra:(E|D|S)RX[0-9]{6,}$",
                         "type": "string"
@@ -17517,5 +17535,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.1.post21.dev0+9e7c86de8"
+    "version": "11.20.1.post37.dev0+fc22990e6"
 }

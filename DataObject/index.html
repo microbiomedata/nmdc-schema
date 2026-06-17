@@ -434,6 +434,8 @@
 
   DataObject : insdc_experiment_identifiers
 
+  DataObject : insdc_run_identifiers
+
   DataObject : md5_checksum
 
   DataObject : name
@@ -503,7 +505,13 @@
 <tr>
 <td><a href="../insdc_experiment_identifiers/">insdc_experiment_identifiers</a></td>
 <td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
-<td></td>
+<td>INSDC identifiers for the unique sequencing result for a specific sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../insdc_run_identifiers/">insdc_run_identifiers</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>Identifiers for the manifest of data file(s) that are derived from sequencing...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -808,6 +816,7 @@ slots:
 - data_object_type
 - file_size_bytes
 - insdc_experiment_identifiers
+- insdc_run_identifiers
 - md5_checksum
 - url
 - was_generated_by
@@ -928,7 +937,11 @@ attributes:
     range: bytes
   insdc_experiment_identifiers:
     name: insdc_experiment_identifiers
+    description: INSDC identifiers for the unique sequencing result for a specific
+      sample
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#sra-metadata-experiment
     rank: 1000
     is_a: external_database_identifiers
     mixins:
@@ -940,6 +953,23 @@ attributes:
     range: external_identifier
     multivalued: true
     pattern: ^insdc.sra:(E|D|S)RX[0-9]{6,}$
+  insdc_run_identifiers:
+    name: insdc_run_identifiers
+    description: Identifiers for the manifest of data file(s) that are derived from
+      sequencing a library described by the associated INSDC experiment.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run
+    rank: 1000
+    is_a: external_database_identifiers
+    mixins:
+    - insdc_identifiers
+    owner: DataObject
+    domain_of:
+    - DataObject
+    range: external_identifier
+    multivalued: true
+    pattern: ^insdc\.run:(E|D|S)RR[0-9]{6,}$
   md5_checksum:
     name: md5_checksum
     description: MD5 checksum of file (pre-compressed)

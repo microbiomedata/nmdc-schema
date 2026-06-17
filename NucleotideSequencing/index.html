@@ -542,7 +542,7 @@
 <tr>
 <td><a href="../insdc_experiment_identifiers/">insdc_experiment_identifiers</a></td>
 <td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
-<td></td>
+<td>INSDC identifiers for the unique sequencing result for a specific sample</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -856,7 +856,11 @@ attributes:
     pattern: ^bioproject:PRJ[DEN][A-Z][0-9]+$
   insdc_experiment_identifiers:
     name: insdc_experiment_identifiers
+    description: INSDC identifiers for the unique sequencing result for a specific
+      sample
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#sra-metadata-experiment
     rank: 1000
     is_a: external_database_identifiers
     mixins:

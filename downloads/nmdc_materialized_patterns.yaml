@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.1.post21.dev0+9e7c86de8
+version: 11.20.1.post37.dev0+fc22990e6
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -232,6 +232,9 @@ prefixes:
   insdc.sra:
     prefix_prefix: insdc.sra
     prefix_reference: 'https://bioregistry.io/insdc.sra:'
+  insdc.run:
+    prefix_prefix: insdc.run
+    prefix_reference: 'https://bioregistry.io/insdc.run:'
   jgi.analysis:
     prefix_prefix: jgi.analysis
     prefix_reference: https://data.jgi.doe.gov/search?q=
@@ -2091,6 +2094,54 @@ enums:
             value: ^.+_R2\.fastq(\.gz)?$
         examples:
         - value: BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz
+      Unpaired raw sequencing data:
+        text: Unpaired raw sequencing data
+        description: Reads from a single-end sequencing library (not forward/reverse
+          pairs).
+        comments:
+        - Use when the analyte category is not part of the value, for example amplicon
+          or isolate data. For metagenome or metatranscriptome reads, prefer the analyte-specific
+          values above.
+        - Oxford Nanopore and PacBio runs commonly have a single (unpaired) library
+          layout.
+        see_also:
+        - https://www.ebi.ac.uk/ena/browser/about/read-formats
+      Paired interleaved raw sequencing data:
+        text: Paired interleaved raw sequencing data
+        description: Paired-end reads with forward and reverse mates interleaved in
+          a single file.
+        comments:
+        - Use when the analyte category is not part of the value, for example amplicon
+          or isolate data. For metagenome or metatranscriptome interleaved reads,
+          prefer "Metagenome Raw Reads" or "Metatranscriptome Raw Reads" above.
+        see_also:
+        - https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
+      Raw sequencing data read 1:
+        text: Raw sequencing data read 1
+        description: Read 1 (forward) of a paired-end run, as a separate file.
+        comments:
+        - Use when the analyte category is not part of the value, for example amplicon
+          or isolate data. For metagenome or metatranscriptome forward reads, prefer
+          "Metagenome Raw Read 1" or "Metatranscriptome Raw Read 1" above.
+        see_also:
+        - https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
+      Raw sequencing data read 2:
+        text: Raw sequencing data read 2
+        description: Read 2 (reverse) of a paired-end run, as a separate file.
+        comments:
+        - Use when the analyte category is not part of the value, for example amplicon
+          ingest or isolate data. For metagenome or metatranscriptome reverse reads,
+          prefer "Metagenome Raw Read 2" or "Metatranscriptome Raw Read 2" above.
+        see_also:
+        - https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
+      SRA toolkit-accessible sequence data:
+        text: SRA toolkit-accessible sequence data
+        description: Files that are avaliable for download via SRA Toolkit by providing
+          an INSDC accession
+        comments:
+        - File format will depend on options specified to SRA Toolkit
+        see_also:
+        - https://github.com/ncbi/sra-tools/wiki
       Direct Infusion FT-ICR MS Analysis Results:
         text: Direct Infusion FT-ICR MS Analysis Results
         description: FT-ICR MS based molecular formula assignment results table
@@ -7826,11 +7877,26 @@ slots:
     pattern: ^gold:Gp[0-9]+$
   insdc_experiment_identifiers:
     name: insdc_experiment_identifiers
+    description: INSDC identifiers for the unique sequencing result for a specific
+      sample
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#sra-metadata-experiment
     is_a: external_database_identifiers
     mixins:
     - insdc_identifiers
     pattern: ^insdc.sra:(E|D|S)RX[0-9]{6,}$
+  insdc_run_identifiers:
+    name: insdc_run_identifiers
+    description: Identifiers for the manifest of data file(s) that are derived from
+      sequencing a library described by the associated INSDC experiment.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run
+    is_a: external_database_identifiers
+    mixins:
+    - insdc_identifiers
+    pattern: ^insdc\.run:(E|D|S)RR[0-9]{6,}$
   analysis_identifiers:
     name: analysis_identifiers
     from_schema: https://w3id.org/nmdc/nmdc
@@ -20182,6 +20248,7 @@ classes:
     - data_object_type
     - file_size_bytes
     - insdc_experiment_identifiers
+    - insdc_run_identifiers
     - md5_checksum
     - url
     - was_generated_by
