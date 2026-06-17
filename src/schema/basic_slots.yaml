@@ -819,8 +819,8 @@ enums:
           file_name_pattern: '^.+_R2\.fastq(\.gz)?$'
 
       Unpaired raw sequencing data:
-        description: Reads from a sequencing insturment that generates data that is not paired
-        comments: 
+        description: Reads from a sequencing instrument that generates data that is not paired
+        comments:
           - Data from Oxford Nanopore and Pacific Biosciences can have a library layout of single
 
       Paired interleaved raw sequencing data:
