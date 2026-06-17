@@ -1,0 +1,57 @@
+name: Schema pattern lint (report)
+
+# Runs src/scripts/schema_pattern_linting.py on every PR and push to main and
+# surfaces its output in the job summary: orphan slots (no class), orphan enums
+# (no slot), subset usage, candidate unescaped literal dots in regex patterns,
+# and dangling slot_group references.
+#
+# Report-only for now: the step fails only if the script itself errors, not on
+# findings, because there is an existing orphan/backlog (see #2691, #2297,
+# #2298) and the unescaped-dot fixes land in #3200. Converting individual
+# checks to blocking gates is a follow-up tracked in #3202 and #3193.
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+permissions: {}  # default deny; the job below grants only what it needs
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  schema-pattern-lint:
+    name: schema-pattern-lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # check out the repository to lint it
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
+
+      - name: Install Poetry
+        run: pipx install poetry==2.4.1
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: '3.12'
+          cache: 'poetry'
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Run schema pattern linter (report to job summary)
+        run: |
+          poetry run python src/scripts/schema_pattern_linting.py \
+            --schema-file src/schema/nmdc.yaml | tee schema_pattern_lint.txt
+          {
+            echo '## schema_pattern_linting report'
+            echo '```'
+            cat schema_pattern_lint.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
