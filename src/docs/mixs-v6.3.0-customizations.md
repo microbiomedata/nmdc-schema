@@ -140,7 +140,7 @@ The yq pipeline sets explicit `range: string` for 31 slots. Without this, slots 
 
 **Note:** `structured_pattern` is deleted from 6 slots due to non-conforming production data (see [Non-Conforming Production Data](#non-conforming-production-data)).
 
-**Exception (current compatibility state):** `ph_meth` and `soil_type_meth` are kept as TextValue because production data currently uses TextValue objects. This is tracked in [#2774](https://github.com/microbiomedata/nmdc-schema/issues/2774); see also **Other Pending Migrations** for the planned follow-up migration state.
+**Exception (current compatibility state):** `ph_meth` and `soil_type_meth` are kept as TextValue because production data currently uses TextValue objects. This is tracked in [#2774](https://github.com/microbiomedata/nmdc-schema/issues/2774); see also [Other Pending Migrations](#other-pending-migrations) for the planned follow-up migration state.
 
 ### TextValue Range for Enum Slots (6 slots)
 
