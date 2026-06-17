@@ -299,7 +299,6 @@
 '.slots.growth_facil.range |= "ControlledTermValue"'
 '.slots.growth_hormone_regm.range |= "TextValue"'
 '.slots.hall_count.range |= "TextValue"'
-'.slots.hall_count.range |= "TextValue"'
 '.slots.hcr_pressure.range |= "TextValue"'
 '.slots.hcr_temp.range |= "TextValue"'
 '.slots.heat_sys_deliv_meth.range |= "string"'
