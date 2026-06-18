@@ -29,7 +29,7 @@ from pydantic import (
 )
 
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = "0.0.0"
 
 
@@ -128,8 +128,6 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                            'prefix_reference': 'http://purl.obolibrary.org/obo/ENVO_'},
                   'FBcv': {'prefix_prefix': 'FBcv',
                            'prefix_reference': 'http://purl.obolibrary.org/obo/FBcv_'},
-                  'FMA': {'prefix_prefix': 'FMA',
-                          'prefix_reference': 'http://purl.obolibrary.org/obo/FMA_'},
                   'GENEPIO': {'prefix_prefix': 'GENEPIO',
                               'prefix_reference': 'http://purl.obolibrary.org/obo/GENEPIO_'},
                   'GO': {'prefix_prefix': 'GO',
@@ -258,6 +256,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                            'prefix_reference': 'https://app.geosamples.org/sample/igsn/'},
                   'img.taxon': {'prefix_prefix': 'img.taxon',
                                 'prefix_reference': 'https://bioregistry.io/img.taxon:'},
+                  'insdc.run': {'prefix_prefix': 'insdc.run',
+                                'prefix_reference': 'https://bioregistry.io/insdc.run:'},
                   'insdc.sra': {'prefix_prefix': 'insdc.sra',
                                 'prefix_reference': 'https://bioregistry.io/insdc.sra:'},
                   'jcm': {'prefix_prefix': 'jcm',
@@ -392,21 +392,34 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'version': {'setting_key': 'version',
                               'setting_value': '([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)'}},
      'source_file': 'nmdc_schema/nmdc_materialized_patterns.yaml',
-     'subsets': {'jgi_isolate': {'comments': ['Slots in this subset carry '
-                                              'structured_aliases with context '
-                                              'https://jgi.doe.gov/isolate-submission-form/v19 '
-                                              'mapping to the exact field name on '
-                                              'the JGI Isolate (NA) v19 '
-                                              'spreadsheet.'],
-                                 'description': 'Slots originating from the JGI '
-                                                'Isolate (NA) v19 submission form '
-                                                'that are not already captured by '
-                                                'MIxS or other existing standards. '
-                                                'These slots support organism '
-                                                'identity, strain verification, '
-                                                'purity assessment, and biosafety '
-                                                'classification for cultured '
-                                                'isolate submissions to JGI.',
+     'subsets': {'jgi_isolate': {'comments': ['The form template itself is '
+                                              'access-restricted; each alias '
+                                              'source points to the public JGI '
+                                              'submission overview. To keep this '
+                                              'subset exhaustive, add in_subset '
+                                              'jgi_isolate wherever a JGI Isolate '
+                                              'v19 structured_alias is added, at '
+                                              'the same scope the alias lives '
+                                              '(global slot or class slot_usage).'],
+                                 'description': 'Slots that map to a field on the '
+                                                'JGI Isolate (NA) v19 submission '
+                                                'form, identified by a '
+                                                'structured_alias whose '
+                                                'literal_form is the exact form '
+                                                'field name. Membership is the '
+                                                'alias: a slot is in this subset '
+                                                'if and only if it carries a JGI '
+                                                'Isolate v19 structured_alias. '
+                                                'Most members are new NMDC slots '
+                                                'for organism identity, strain '
+                                                'verification, purity assessment, '
+                                                'and biosafety classification; a '
+                                                'few are reused MIxS slots (for '
+                                                'example host_taxid, '
+                                                'source_mat_id, estimated_size) '
+                                                'whose JGI mapping is recorded via '
+                                                'the alias rather than by a new '
+                                                'slot.',
                                  'from_schema': 'https://w3id.org/nmdc/nmdc',
                                  'name': 'jgi_isolate',
                                  'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/2803']}},
@@ -623,7 +636,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                           'name': 'string',
                           'notes': ['In RDF serializations, a slot with range of '
                                     'string is treated as a literal or type '
-                                    'xsd:string.   If you are authoring schemas in '
+                                    'xsd:string. If you are authoring schemas in '
                                     'LinkML YAML, the type is referenced with the '
                                     'lower case "string".'],
                           'uri': 'xsd:string'},
@@ -1560,6 +1573,26 @@ class FileTypeEnum(str, Enum):
     """
     Read 2 raw metatranscriptome sequencing data, aka reverse reads
     """
+    Unpaired_raw_sequencing_data = "Unpaired raw sequencing data"
+    """
+    Reads from a single-end sequencing library (not forward/reverse pairs).
+    """
+    Paired_interleaved_raw_sequencing_data = "Paired interleaved raw sequencing data"
+    """
+    Paired-end reads with forward and reverse mates interleaved in a single file.
+    """
+    Raw_sequencing_data_read_1 = "Raw sequencing data read 1"
+    """
+    Read 1 (forward) of a paired-end run, as a separate file.
+    """
+    Raw_sequencing_data_read_2 = "Raw sequencing data read 2"
+    """
+    Read 2 (reverse) of a paired-end run, as a separate file.
+    """
+    SRA_toolkit_accessible_sequence_data = "SRA toolkit-accessible sequence data"
+    """
+    Files that are avaliable for download via SRA Toolkit by providing an INSDC accession
+    """
     Direct_Infusion_FT_ICR_MS_Analysis_Results = "Direct Infusion FT-ICR MS Analysis Results"
     """
     FT-ICR MS based molecular formula assignment results table
@@ -2341,43 +2374,47 @@ class ProtocolForEnum(str, Enum):
 
 class PloidyEnum(str, Enum):
     """
-    Ploidy of an organism's genome. Permissible values map to PATO classes and were selected from values observed in the JGI GOLD lakehouse table `gold.dw_sample_taxonomy_info.ploidy_comments` (queried 2026-04-29). Used as the range of the `ploidy` slot, narrowing the MIxS-imported `ploidy` (MIXS:0000021) from a free- text / structured pattern to an enumerated set with referential integrity to PATO.
+    The ploidy state of an organism's genome, drawn from the ploidy classes of the Phenotypic Quality Ontology (PATO).
     """
     haploid = "haploid"
     """
-    A single set of unpaired chromosomes.
+    A single set of homologous chromosomes.
     """
     diploid = "diploid"
     """
-    Two sets of homologous chromosomes (one from each parent).
+    Two homologous sets of chromosomes.
     """
     triploid = "triploid"
     """
-    Three sets of chromosomes.
+    Three homologous sets of chromosomes.
     """
     tetraploid = "tetraploid"
     """
-    Four sets of chromosomes.
+    Four homologous sets of chromosomes.
+    """
+    pentaploid = "pentaploid"
+    """
+    Five homologous sets of chromosomes.
     """
     hexaploid = "hexaploid"
     """
-    Six sets of chromosomes.
+    Six homologous sets of chromosomes.
     """
     polyploid = "polyploid"
     """
-    More than two sets of chromosomes (generic — use a more specific value when known).
+    More than two homologous sets of chromosomes; use a more specific value when the level is known.
     """
     allopolyploidy = "allopolyploidy"
     """
-    Polyploid arising from hybridization between two or more species. (PATO label uses -y suffix.)
+    Polyploid whose chromosome sets derive from two or more different species.
+    """
+    autopolyploid = "autopolyploid"
+    """
+    Polyploid whose chromosome sets derive from a single species.
     """
     aneuploid = "aneuploid"
     """
-    A genome with an abnormal number of chromosomes (not an exact multiple of the haploid number).
-    """
-    other = "other"
-    """
-    A ploidy state with biological meaning that is not covered by the listed permissible values (e.g. dikaryon / dikaryotic, polykaryotic, octoploid, or hedged values like "likely diploid"). Use this when the submitter's value is interpretable but does not map cleanly to one of the named ploidy classes. The original free-text qualifier should be preserved upstream (e.g. in a sample-level note) when it carries information beyond the bare classification.
+    A chromosome number that is not an exact multiple of the haploid set (extra or missing chromosomes).
     """
 
 
@@ -4882,8 +4919,7 @@ class NcbiTaxon(OntologyClass):
                       'Sub-species information (strains, cultivars, lab-specific '
                       'isolates) is below the resolution of NCBI Taxonomy. Strain '
                       'identity is captured via dedicated slots on Organism (e.g. '
-                      'strain_name, isolate_name) — not by minting NcbiTaxon '
-                      'instances.',
+                      'strain_name, isolate_name), not by minting NcbiTaxon instances.',
                       'Existing taxonomy slots (samp_taxon_id, host_taxid) already use '
                       'ControlledIdentifiedTermValue with range OntologyClass. The '
                       'intent is that these slots point to NcbiTaxon instances '
@@ -5272,45 +5308,62 @@ class Organism(MaterialEntity):
     A material entity that is a living or once-living individual. Organism instances represent the biological identity of what is in a sample, not the sample itself. Sub-species identity (strain, cultivar, lab isolate) is captured by slots on this class rather than via a separate Strain subclass.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:Organism',
-         'comments': ['Organism instances are stored in organism_set. An Organism is '
-                      'not a sample — it is the biological entity that an '
-                      'OrganismSample is expected to contain, linked via '
+         'comments': ['An Organism is not a sample; it is the biological entity that '
+                      'an OrganismSample is expected to contain, linked via '
                       'expected_organism. Sub-species identity (strain_name, '
                       'isolate_name) is captured directly on Organism.'],
          'exact_mappings': ['COB:0000022'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'notes': ['DEBATED — `estimated_size` and `gc_content` placement on Organism. '
-                   'Montana argues these are analyte properties measured during sample '
-                   'QC (like concentration or absorbance) rather than stable organism '
-                   'properties, and belong only in submission-schema. Counterargument: '
-                   'genome size and GC% are reproducible biological properties of the '
-                   'organism that are useful for downstream data integration. Keeping '
-                   'on Organism pending resolution.'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/2959',
                       'https://github.com/microbiomedata/nmdc-schema/issues/2803',
                       'https://github.com/microbiomedata/nmdc-schema/issues/2971'],
          'slot_usage': {'classified_as': {'description': 'Taxonomic classification of '
-                                                         'this organism. Narrowed from '
-                                                         'the global OntologyClass '
-                                                         'range (defined on the slot '
-                                                         'itself) to NcbiTaxon, since '
-                                                         'organism identity at NMDC is '
-                                                         'anchored to NCBI Taxonomy. '
-                                                         'Per #3016 — the broader '
-                                                         'pattern is to narrow '
-                                                         '`classified_as` to '
-                                                         '`NcbiTaxon` on all '
-                                                         'organism-oriented classes '
-                                                         'via slot_usage.',
+                                                         'this organism.',
                                           'name': 'classified_as',
+                                          'notes': ['Narrowing `classified_as` to '
+                                                    '`NcbiTaxon` on organism-oriented '
+                                                    'classes via slot_usage is tracked '
+                                                    'in '
+                                                    'https://github.com/microbiomedata/nmdc-schema/issues/3016.'],
                                           'range': 'NcbiTaxon'},
-                        'estimated_size': {'name': 'estimated_size',
-                                           'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                                                   'literal_form': 'Estimated '
+                        'estimated_size': {'examples': [{'value': '5000000'}],
+                                           'in_subset': ['jgi_isolate'],
+                                           'name': 'estimated_size',
+                                           'structured_aliases': [{'literal_form': 'Estimated '
                                                                                    'Genome '
                                                                                    'Size '
                                                                                    '(Mb)',
-                                                                   'predicate': 'BROAD_SYNONYM'}]},
+                                                                   'notes': ['Exact '
+                                                                             'JGI form '
+                                                                             'template '
+                                                                             'is '
+                                                                             'access-restricted; '
+                                                                             'source '
+                                                                             'is the '
+                                                                             'public '
+                                                                             'submission '
+                                                                             'overview.',
+                                                                             'Per '
+                                                                             '@aclum: '
+                                                                             'Mb is a '
+                                                                             'coarser '
+                                                                             'unit '
+                                                                             'than bp, '
+                                                                             'so a '
+                                                                             'single '
+                                                                             'Mb value '
+                                                                             'covers '
+                                                                             'many '
+                                                                             'possible '
+                                                                             'bp '
+                                                                             'values; '
+                                                                             'the '
+                                                                             'alias is '
+                                                                             'broader '
+                                                                             'in '
+                                                                             'granularity.'],
+                                                                   'predicate': 'BROAD_SYNONYM',
+                                                                   'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]},
                         'id': {'name': 'id',
                                'pattern': '^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                'required': True,
@@ -5318,28 +5371,14 @@ class Organism(MaterialEntity):
                                                       'syntax': '{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$'}},
                         'ref_biomaterial': {'comments': ['The MIxS pattern accepts '
                                                          'DOI, PMID, or URL. DOI is '
-                                                         'preferred when available — '
-                                                         'it gives a stable reference '
-                                                         'to the publication or genome '
+                                                         'preferred when available; it '
+                                                         'gives a stable reference to '
+                                                         'the publication or genome '
                                                          'report. See the '
                                                          '`associated_dois` pattern '
                                                          'elsewhere in the NMDC schema '
                                                          'for DOI-structured '
                                                          'alternatives.',
-                                                         'JGI "Reference Genome" '
-                                                         'submissions sometimes carry '
-                                                         'non-publication identifiers '
-                                                         'such as IMG or Phytozome '
-                                                         'IDs, which do not match the '
-                                                         'MIxS pattern. Those are out '
-                                                         'of scope for this slot and '
-                                                         'should be captured '
-                                                         'separately (see '
-                                                         '`gold_organism_identifiers` '
-                                                         'and '
-                                                         '`insdc_nucleotide_identifiers` '
-                                                         'for genome / assembly '
-                                                         'references).',
                                                          'The MIxS name '
                                                          'ref_biomaterial may be '
                                                          'renamed in a future MIxS '
@@ -5375,130 +5414,133 @@ class Organism(MaterialEntity):
                                                                          'record)',
                                                           'object': {'has_raw_value': 'https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/',
                                                                      'type': 'nmdc:TextValue'}}],
-                                            'name': 'ref_biomaterial',
-                                            'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                                                    'literal_form': 'Reference '
-                                                                                    'Genome',
-                                                                    'predicate': 'RELATED_SYNONYM'}]}}})
+                                            'name': 'ref_biomaterial'}}})
 
-    classified_as: Optional[list[NcbiTaxon]] = Field(default=None, description="""Taxonomic classification of this organism. Narrowed from the global OntologyClass range (defined on the slot itself) to NcbiTaxon, since organism identity at NMDC is anchored to NCBI Taxonomy. Per #3016 — the broader pattern is to narrow `classified_as` to `NcbiTaxon` on all organism-oriented classes via slot_usage.""", json_schema_extra = { "linkml_meta": {'comments': ['Taxonomy-oriented uses (e.g. on Organism) should point to '
+    classified_as: Optional[list[NcbiTaxon]] = Field(default=None, description="""Taxonomic classification of this organism.""", json_schema_extra = { "linkml_meta": {'comments': ['Taxonomy-oriented uses (e.g. on Organism) should point to '
                       'NcbiTaxon instances. OrganismSample reaches taxonomy indirectly '
-                      'via expected_organism.classified_as. The global range stays '
-                      'OntologyClass; narrowing to NcbiTaxon via slot_usage is tracked '
-                      'in #3016.'],
+                      'via expected_organism.classified_as.'],
          'domain_of': ['Organism'],
          'narrow_mappings': ['biolink:in_taxon'],
-         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/2959']} })
+         'notes': ['Narrowing `classified_as` to `NcbiTaxon` on organism-oriented '
+                   'classes via slot_usage is tracked in '
+                   'https://github.com/microbiomedata/nmdc-schema/issues/3016.'],
+         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/2959',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/3016']} })
     organism_genus: Optional[str] = Field(default=None, description="""Genus of the organism.""", json_schema_extra = { "linkml_meta": {'comments': ['Free-text submitter-provided genus name. For an '
                       'ontology-grounded classification, use `classified_as` with a '
                       'NcbiTaxon instance on the parent Organism class.'],
          'domain_of': ['Organism'],
-         'examples': [{'description': 'GOLD organism_v2 Go0000189 (Shewanella loihica '
-                                      'PV-4, queried 2026-04-21)',
-                       'value': 'Shewanella'},
-                      {'description': 'GOLD organism_v2 Go0000514 (Ruegeria pomeroyi '
-                                      'DSS-3, queried 2026-04-21)',
-                       'value': 'Ruegeria'},
-                      {'description': 'GOLD organism_v2 (Go0000058, queried '
-                                      '2026-04-14)',
-                       'value': 'Campylobacter'}],
+         'examples': [{'value': 'Shewanella'},
+                      {'value': 'Ruegeria'},
+                      {'value': 'Campylobacter'}],
          'in_subset': ['jgi_isolate'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Genus',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
+         'notes': ['GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried '
+                   '2026-04-21)',
+                   'GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried '
+                   '2026-04-21)',
+                   'GOLD organism_v2 (Go0000058, queried 2026-04-14)'],
+         'structured_aliases': [{'literal_form': 'Genus',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.'],
+                                 'predicate': 'EXACT_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]} })
     organism_species: Optional[str] = Field(default=None, description="""Species of the organism.""", json_schema_extra = { "linkml_meta": {'comments': ['Free-text submitter-provided species name. For an '
                       'ontology-grounded classification, use `classified_as` with a '
                       'NcbiTaxon instance on the parent Organism class.'],
          'domain_of': ['Organism'],
-         'examples': [{'description': 'GOLD organism_v2 Go0000189 (Shewanella loihica '
-                                      'PV-4, queried 2026-04-21)',
-                       'value': 'loihica'},
-                      {'description': 'GOLD organism_v2 Go0000514 (Ruegeria pomeroyi '
-                                      'DSS-3, queried 2026-04-21)',
-                       'value': 'pomeroyi'},
-                      {'description': 'GOLD organism_v2.species (n=37 records, queried '
-                                      '2026-04-30) — used when the isolate has not yet '
-                                      'been assigned a species name',
+         'examples': [{'value': 'loihica'},
+                      {'value': 'pomeroyi'},
+                      {'description': 'use when the isolate has not yet been assigned '
+                                      'a species name',
                        'value': 'sp.'}],
          'in_subset': ['jgi_isolate'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Species',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
-    strain_name: Optional[str] = Field(default=None, description="""Strain or cultivar name of the organism.""", json_schema_extra = { "linkml_meta": {'comments': ['Microbial strain identifiers and plant cultivar names (governed '
-                      'by the International Code of Nomenclature for Cultivated '
-                      'Plants, ICNCP) are nomenclaturally distinct, but this slot '
-                      "accepts both for now to match the JGI Isolate (NA) v19 form's "
-                      'combined "Strain or cultivar" field. A separate `cultivar_name` '
-                      'slot may be added if a plant-specific use case emerges; see '
-                      '#3056.',
-                      'MIxS `subspecf_gen_lin` (MIXS:0000020) covers this concept '
-                      'along with cultivar, serovar, biotype, ecotype, and other '
-                      'sub-species lineage types in a single slot using a rank-prefix '
-                      'encoding (e.g. "strain:PV-4"). NMDC splits the concept into '
-                      'separate slots; this slot covers the strain rank specifically.'],
-         'domain_of': ['Organism'],
-         'examples': [{'description': 'GOLD organism_v2 Go0000189 (Shewanella loihica '
-                                      'PV-4, queried 2026-04-21)',
-                       'value': 'PV-4'},
-                      {'description': 'GOLD organism_v2 Go0000514 (Ruegeria pomeroyi '
-                                      'DSS-3, queried 2026-04-21)',
-                       'value': 'DSS-3'},
-                      {'description': 'GOLD organism_v2 Dictyoglomus turgidum '
-                                      '(Go0000002, queried 2026-04-14)',
-                       'value': 'DSM 6724'}],
+         'notes': ['GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried '
+                   '2026-04-21)',
+                   'GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried '
+                   '2026-04-21)'],
+         'structured_aliases': [{'literal_form': 'Species',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.'],
+                                 'predicate': 'EXACT_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]} })
+    strain_name: Optional[str] = Field(default=None, description="""Strain or cultivar name of the organism.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organism'],
+         'examples': [{'value': 'PV-4'}, {'value': 'DSS-3'}, {'value': 'DSM 6724'}],
          'in_subset': ['jgi_isolate'],
+         'notes': ['Microbial strain identifiers and plant cultivar names (governed by '
+                   'the International Code of Nomenclature for Cultivated Plants, '
+                   'ICNCP) are nomenclaturally distinct, but this slot accepts both '
+                   'for now to match the JGI Isolate (NA) v19 form\'s combined "Strain '
+                   'or cultivar" field. A separate `cultivar_name` slot may be added '
+                   'if a plant-specific use case emerges; see #3056.',
+                   'MIxS `subspecf_gen_lin` (MIXS:0000020) covers this concept along '
+                   'with cultivar, serovar, biotype, ecotype, and other sub-species '
+                   'lineage types in a single slot using a rank-prefix encoding (e.g. '
+                   '"strain:PV-4"). NMDC splits the concept into separate slots; this '
+                   'slot covers the strain rank specifically.',
+                   'Example values are strain names from GOLD organism_v2.'],
          'related_mappings': ['MIXS:0000020'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Strain or cultivar',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
-    isolate_name: Optional[str] = Field(default=None, description="""Isolate or mutant name.""", json_schema_extra = { "linkml_meta": {'comments': ['MIxS `subspecf_gen_lin` (MIXS:0000020) covers this concept '
-                      'along with strain, cultivar, serovar, biotype, ecotype, and '
-                      'other sub-species lineage types in a single slot using a '
-                      'rank-prefix encoding. NMDC uses a separate slot for the isolate '
-                      'rank specifically.'],
-         'domain_of': ['Organism'],
-         'examples': [{'description': 'GOLD dw_sample_taxonomy_info.isolate (n=260 '
-                                      'records, queried 2026-04-30) — Brachypodium '
-                                      'distachyon Bd21-3 reference accession',
-                       'value': 'Bd21-3'},
-                      {'description': 'GOLD dw_sample_taxonomy_info.isolate (n=555 '
-                                      'records, queried 2026-04-30)',
-                       'value': 'MR164'},
-                      {'description': 'GOLD dw_sample_taxonomy_info.isolate (n=918 '
-                                      'records, queried 2026-04-30) — generic '
-                                      'placeholder used when no specific '
-                                      'mutant/isolate name is recorded',
-                       'value': 'Isolate'}],
+         'structured_aliases': [{'literal_form': 'Strain or cultivar',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.'],
+                                 'predicate': 'EXACT_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]} })
+    isolate_name: Optional[str] = Field(default=None, description="""Isolate or mutant name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organism'],
+         'examples': [{'value': 'Bd21-3'}, {'value': 'MR164'}, {'value': 'Isolate'}],
          'in_subset': ['jgi_isolate'],
+         'notes': ['MIxS `subspecf_gen_lin` (MIXS:0000020) covers this concept along '
+                   'with strain, cultivar, serovar, biotype, ecotype, and other '
+                   'sub-species lineage types in a single slot using a rank-prefix '
+                   'encoding. NMDC uses a separate slot for the isolate rank '
+                   'specifically.',
+                   'Example values are from GOLD dw_sample_taxonomy_info.isolate; '
+                   '"Isolate" is a generic placeholder used when no specific mutant or '
+                   'isolate name is recorded.'],
          'related_mappings': ['MIXS:0000020'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Isolate',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
-    estimated_size: Optional[int] = Field(default=None, title="estimated size", description="""The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period""", ge=1, json_schema_extra = { "linkml_meta": {'comments': ['JGI reports values in megabases (Mb); NMDC stores them in base '
+         'structured_aliases': [{'literal_form': 'Isolate',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.'],
+                                 'predicate': 'EXACT_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]} })
+    estimated_size: Optional[int] = Field(default=None, title="estimated size", description="""The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period""", ge=1, le=100000000000, json_schema_extra = { "linkml_meta": {'comments': ['JGI reports values in megabases (Mb); NMDC stores them in base '
                       'pairs (bp).'],
          'domain_of': ['Organism'],
-         'examples': [{'object': 300000}],
-         'keywords': ['size'],
-         'slot_uri': 'MIXS:0000024',
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Estimated Genome Size (Mb)',
-                                 'predicate': 'BROAD_SYNONYM'}]} })
-    gc_content: Optional[float] = Field(default=None, description="""Estimated GC content as a percentage.""", ge=0, le=100, json_schema_extra = { "linkml_meta": {'domain_of': ['Organism'],
+         'examples': [{'value': '5000000'}],
          'in_subset': ['jgi_isolate'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'GC Content %',
-                                 'predicate': 'EXACT_SYNONYM'}],
+         'keywords': ['size'],
+         'notes': ['The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote '
+                   'ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) '
+                   'and the category-conditional required rule are enforced in '
+                   'submission-schema via class rules on IsolateInterface, keyed on '
+                   'biosafety_mat_cat.'],
+         'slot_uri': 'MIXS:0000024',
+         'structured_aliases': [{'literal_form': 'Estimated Genome Size (Mb)',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.',
+                                           'Per @aclum: Mb is a coarser unit than bp, '
+                                           'so a single Mb value covers many possible '
+                                           'bp values; the alias is broader in '
+                                           'granularity.'],
+                                 'predicate': 'BROAD_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]} })
+    gc_content: Optional[float] = Field(default=None, description="""Estimated GC content as a percentage.""", ge=0, le=100, json_schema_extra = { "linkml_meta": {'domain_of': ['Organism'],
+         'examples': [{'value': '45'}, {'value': '60'}],
+         'in_subset': ['jgi_isolate'],
+         'structured_aliases': [{'literal_form': 'GC Content %',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.'],
+                                 'predicate': 'EXACT_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}],
          'unit': {'ucum_code': '%'}} })
     ref_biomaterial: Optional[TextValue] = Field(default=None, title="reference for biomaterial", description="""Reference for the organism, preferentially a DOI when a primary publication or genome report exists; PMID and URL are also accepted per the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial (MIXS:0000025).""", json_schema_extra = { "linkml_meta": {'comments': ['The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred '
-                      'when available — it gives a stable reference to the publication '
+                      'when available; it gives a stable reference to the publication '
                       'or genome report. See the `associated_dois` pattern elsewhere '
                       'in the NMDC schema for DOI-structured alternatives.',
-                      'JGI "Reference Genome" submissions sometimes carry '
-                      'non-publication identifiers such as IMG or Phytozome IDs, which '
-                      'do not match the MIxS pattern. Those are out of scope for this '
-                      'slot and should be captured separately (see '
-                      '`gold_organism_identifiers` and `insdc_nucleotide_identifiers` '
-                      'for genome / assembly references).',
                       'The MIxS name ref_biomaterial may be renamed in a future MIxS '
                       'release. See ongoing MIxS renaming work.'],
          'domain_of': ['Organism'],
@@ -5513,9 +5555,6 @@ class Organism(MaterialEntity):
                        'object': {'has_raw_value': 'https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/',
                                   'type': 'nmdc:TextValue'}}],
          'slot_uri': 'MIXS:0000025',
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Reference Genome',
-                                 'predicate': 'RELATED_SYNONYM'}],
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
                                 'syntax': '^({PMID}|{DOI}|{URL})$'}} })
@@ -7451,9 +7490,14 @@ class DataObject(InformationObject):
                                  'literal_form': 'data_object_type',
                                  'predicate': 'EXACT_SYNONYM'}]} })
     file_size_bytes: Optional[int] = Field(default=None, description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataObject']} })
-    insdc_experiment_identifiers: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NucleotideSequencing', 'DataObject'],
+    insdc_experiment_identifiers: Optional[list[str]] = Field(default=None, description="""INSDC identifiers for the unique sequencing result for a specific sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['NucleotideSequencing', 'DataObject'],
          'is_a': 'external_database_identifiers',
-         'mixins': ['insdc_identifiers']} })
+         'mixins': ['insdc_identifiers'],
+         'see_also': ['https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#sra-metadata-experiment']} })
+    insdc_run_identifiers: Optional[list[str]] = Field(default=None, description="""Identifiers for the manifest of data file(s) that are derived from sequencing a library described by the associated INSDC experiment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataObject'],
+         'is_a': 'external_database_identifiers',
+         'mixins': ['insdc_identifiers'],
+         'see_also': ['https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run']} })
     md5_checksum: Optional[str] = Field(default=None, description="""MD5 checksum of file (pre-compressed)""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataObject']} })
     url: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['ImageValue', 'Protocol', 'DataObject'],
          'notes': ['See issue 207 - this clashes with the mixs field']} })
@@ -7532,6 +7576,19 @@ class DataObject(InformationObject):
                     raise ValueError(err_msg)
         elif isinstance(v, str) and not pattern.match(v):
             err_msg = f"Invalid insdc_experiment_identifiers format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('insdc_run_identifiers')
+    def pattern_insdc_run_identifiers(cls, v):
+        pattern=re.compile(r"^insdc\.run:(E|D|S)RR[0-9]{6,}$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid insdc_run_identifiers format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid insdc_run_identifiers format: {v}"
             raise ValueError(err_msg)
         return v
 
@@ -7925,9 +7982,10 @@ class NucleotideSequencing(DataGeneration):
          'mixins': ['insdc_identifiers'],
          'see_also': ['https://www.ncbi.nlm.nih.gov/bioproject/',
                       'https://www.ddbj.nig.ac.jp/bioproject/index-e.html']} })
-    insdc_experiment_identifiers: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NucleotideSequencing', 'DataObject'],
+    insdc_experiment_identifiers: Optional[list[str]] = Field(default=None, description="""INSDC identifiers for the unique sequencing result for a specific sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['NucleotideSequencing', 'DataObject'],
          'is_a': 'external_database_identifiers',
-         'mixins': ['insdc_identifiers']} })
+         'mixins': ['insdc_identifiers'],
+         'see_also': ['https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#sra-metadata-experiment']} })
     ncbi_project_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['NucleotideSequencing']} })
     analyte_category: NucleotideSequencingEnum = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration']} })
@@ -10018,7 +10076,7 @@ class Biosample(Sample):
     arch_struc: Optional[ArchStrucEnum] = Field(default=None, title="architectural structure", description="""An architectural structure is a human-made, free-standing, immobile outdoor construction""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'shed'}],
          'slot_uri': 'MIXS:0000774'} })
-    aromatics_pc: Optional[TextValue] = Field(default=None, title="aromatics wt%", description="""Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
+    aromatics_pc: Optional[TextValue] = Field(default=None, title="aromatics wt%", description="""Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'percent'}},
          'domain_of': ['Biosample'],
          'recommended': True,
@@ -10026,7 +10084,7 @@ class Biosample(Sample):
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
                                 'syntax': '^{name};{float} {unit}$'}} })
-    asphaltenes_pc: Optional[TextValue] = Field(default=None, title="asphaltenes wt%", description="""Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
+    asphaltenes_pc: Optional[TextValue] = Field(default=None, title="asphaltenes wt%", description="""Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'percent'}},
          'domain_of': ['Biosample'],
          'recommended': True,
@@ -11332,17 +11390,18 @@ class Biosample(Sample):
                       'ontology-grounded host identification, use `host_taxid` '
                       '(MIXS:0000250) on the same class.'],
          'domain_of': ['Biosample'],
-         'examples': [{'description': 'GOLD organism_v2 host_name "Zea mays" (n=432 '
-                                      'records, queried 2026-04-30)',
-                       'value': 'Zea'},
-                      {'description': 'GOLD organism_v2 host_name "Escherichia coli '
-                                      'K-12" (Go0084483 Escherichia phage JSE, queried '
-                                      '2026-04-30)',
-                       'value': 'Escherichia'}],
+         'examples': [{'value': 'Zea'}, {'value': 'Escherichia'}],
          'in_subset': ['jgi_isolate'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Host Genus',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
+         'notes': ['GOLD organism_v2 host_name "Zea mays" (n=432 records, queried '
+                   '2026-04-30)',
+                   'GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 '
+                   'Escherichia phage JSE, queried 2026-04-30)'],
+         'structured_aliases': [{'literal_form': 'Host Genus',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.'],
+                                 'predicate': 'EXACT_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]} })
     host_growth_cond: Optional[TextValue] = Field(default=None, title="host growth conditions", description="""Literature reference giving growth conditions of the host""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'https://academic.oup.com/icesjms/article/68/2/349/617247'}],
          'keywords': ['condition', 'growth', 'host', 'host.'],
@@ -11406,29 +11465,32 @@ class Biosample(Sample):
                       'ontology-grounded host identification, use `host_taxid` '
                       '(MIXS:0000250) on the same class.'],
          'domain_of': ['Biosample'],
-         'examples': [{'description': 'GOLD organism_v2 host_name "Zea mays" (n=432 '
-                                      'records, queried 2026-04-30)',
-                       'value': 'mays'},
-                      {'description': 'GOLD organism_v2 host_name "Escherichia coli '
-                                      'K-12" (Go0084483 Escherichia phage JSE, queried '
-                                      '2026-04-30)',
-                       'value': 'coli'}],
+         'examples': [{'value': 'mays'}, {'value': 'coli'}],
          'in_subset': ['jgi_isolate'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Host Species',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
+         'notes': ['GOLD organism_v2 host_name "Zea mays" (n=432 records, queried '
+                   '2026-04-30)',
+                   'GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 '
+                   'Escherichia phage JSE, queried 2026-04-30)'],
+         'structured_aliases': [{'literal_form': 'Host Species',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.'],
+                                 'predicate': 'EXACT_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]} })
     host_strain: Optional[str] = Field(default=None, description="""Strain of the host organism that the sample was collected from.""", json_schema_extra = { "linkml_meta": {'comments': ['Free-text submitter-provided host strain. For an '
                       'ontology-grounded host identification, use `host_taxid` '
                       '(MIXS:0000250) on the same class.'],
          'domain_of': ['Biosample'],
-         'examples': [{'description': 'GOLD organism_v2 host_name "Escherichia coli '
-                                      'K-12" (Go0084483 Escherichia phage JSE, queried '
-                                      '2026-04-30)',
-                       'value': 'K-12'}],
+         'examples': [{'value': 'K-12'}],
          'in_subset': ['jgi_isolate'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Host Strain',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
+         'notes': ['GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 '
+                   'Escherichia phage JSE, queried 2026-04-30)'],
+         'structured_aliases': [{'literal_form': 'Host Strain',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.'],
+                                 'predicate': 'EXACT_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]} })
     host_subject_id: Optional[TextValue] = Field(default=None, title="host subject id", description="""A unique identifier by which each subject can be referred to, de-identified""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'keywords': ['host', 'host.', 'identifier'],
          'slot_uri': 'MIXS:0000861'} })
@@ -11460,9 +11522,12 @@ class Biosample(Sample):
          'domain_of': ['Biosample', 'OrganismSample'],
          'keywords': ['host', 'host.', 'taxon'],
          'slot_uri': 'MIXS:0000250',
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Host NCBI Taxonomy ID',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
+         'structured_aliases': [{'literal_form': 'Host NCBI Taxonomy ID',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.'],
+                                 'predicate': 'EXACT_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]} })
     host_tot_mass: Optional[QuantityValue] = Field(default=None, title="host total mass", description="""Total mass of the host at collection, the unit depends on host""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'kilogram, gram'},
                          'storage_units': {'tag': 'storage_units', 'value': 'g|kg'}},
@@ -12099,7 +12164,7 @@ class Biosample(Sample):
                                 'partial_match': True,
                                 'syntax': '^{scientific_float}( *- '
                                           '*{scientific_float})? *{text}$'}} })
-    pour_point: Optional[QuantityValue] = Field(default=None, title="pour point", description="""Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high  pour point  is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (soure: https://en.wikipedia.org/wiki/pour_point)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
+    pour_point: Optional[QuantityValue] = Field(default=None, title="pour point", description="""Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high pour point is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (source: https://en.wikipedia.org/wiki/pour_point)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'degree Celsius'},
                          'storage_units': {'tag': 'storage_units', 'value': 'Cel'}},
          'domain_of': ['Biosample'],
@@ -12254,7 +12319,7 @@ class Biosample(Sample):
          'keywords': ['location', 'relative'],
          'slot_uri': 'MIXS:0000821'} })
     reservoir: Optional[TextValue] = Field(default=None, title="reservoir name", description="""Name of the reservoir (e.g. Carapebus)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'], 'recommended': True, 'slot_uri': 'MIXS:0000303'} })
-    resins_pc: Optional[TextValue] = Field(default=None, title="resins wt%", description="""Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
+    resins_pc: Optional[TextValue] = Field(default=None, title="resins wt%", description="""Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'percent'}},
          'domain_of': ['Biosample'],
          'recommended': True,
@@ -12482,7 +12547,7 @@ class Biosample(Sample):
     samp_collec_method: Optional[str] = Field(default=None, title="sample collection method", description="""The method employed for collecting the sample""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'keywords': ['method', 'sample'],
          'slot_uri': 'MIXS:0001225',
-         'structured_aliases': [{'contexts': ['https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2'],
+         'structured_aliases': [{'contexts': ['https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0'],
                                  'literal_form': 'samp_collect_method'}]} })
     samp_collect_point: Optional[SampCollectPointEnum] = Field(default=None, title="sample collection point", description="""Sampling point on the asset were sample was collected (e.g. Wellhead, storage tank, separator, etc). If \"other\" is specified, please propose entry in \"additional info\" field""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'examples': [{'value': 'well'}],
@@ -12626,7 +12691,7 @@ class Biosample(Sample):
          'keywords': ['sample'],
          'recommended': True,
          'slot_uri': 'MIXS:0000296'} })
-    saturates_pc: Optional[TextValue] = Field(default=None, title="saturates wt%", description="""Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
+    saturates_pc: Optional[TextValue] = Field(default=None, title="saturates wt%", description="""Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'percent'}},
          'domain_of': ['Biosample'],
          'recommended': True,
@@ -13060,7 +13125,7 @@ class Biosample(Sample):
          'keywords': ['solids', 'suspended'],
          'slot_uri': 'MIXS:0000150',
          'string_serialization': '{text};{float} {unit}'} })
-    tan: Optional[QuantityValue] = Field(default=None, title="total acid number", description="""Total Acid Number  (TAN) is a measurement of acidity that is determined by the amount of  potassium hydroxide  in milligrams that is needed to neutralize the acids in one gram of oil.  It is an important quality measurement of  crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
+    tan: Optional[QuantityValue] = Field(default=None, title="total acid number", description="""Total Acid Number (TAN) is a measurement of acidity that is determined by the amount of potassium hydroxide in milligrams that is needed to neutralize the acids in one gram of oil. It is an important quality measurement of crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)""", json_schema_extra = { "linkml_meta": {'annotations': {'Preferred_unit': {'tag': 'Preferred_unit',
                                             'value': 'milligram per liter'},
                          'storage_units': {'tag': 'storage_units', 'value': 'mg/L'}},
          'domain_of': ['Biosample'],
@@ -13378,7 +13443,7 @@ class Biosample(Sample):
          'string_serialization': '[photos|videos|commonly of the building|site context '
                                  '(adjacent buildings, vegetation, terrain, '
                                  'streets)|interiors|equipment|3D scans]'} })
-    viscosity: Optional[TextValue] = Field(default=None, title="viscosity", description="""A measure of oil's resistance  to gradual deformation by  shear stress  or  tensile stress (e.g. 3.5 cp; 100   C)""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
+    viscosity: Optional[TextValue] = Field(default=None, title="viscosity", description="""A measure of oil's resistance to gradual deformation by shear stress or tensile stress (e.g. 3.5 cp; 100 °C)""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'measurement value;measurement '
                                                      'value'},
                          'Preferred_unit': {'tag': 'Preferred_unit',
@@ -13686,16 +13751,16 @@ class Biosample(Sample):
     salinity_category: Optional[str] = Field(default=None, description="""Categorical description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, huryhaline""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
          'notes': ['maps to gold:salinity'],
          'see_also': ['https://github.com/microbiomedata/nmdc-metadata/pull/297']} })
-    sample_collection_site: Optional[str] = Field(default=None, description="""Free-text description of the place where the sample was collected — the geographic / environmental site or named location.""", json_schema_extra = { "linkml_meta": {'comments': ['On `OrganismSample`, this slot routes the collection-site half '
-                      'of JGI Isolate (NA) v19 form field 45 ("Collection Site or '
-                      'Growth Conditions"). The growth-conditions half routes to '
-                      '`sample_growth_conditions`. The submitter populates one or the '
-                      'other depending on whether the sample came from a field '
-                      'collection or from in-vitro maintenance.'],
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Collection Site or Growth Conditions',
-                                 'predicate': 'NARROW_SYNONYM'}]} })
+    sample_collection_site: Optional[str] = Field(default=None, description="""Free-text description of the place where the sample was collected: the geographic or environmental site or named location.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample'],
+         'in_subset': ['jgi_isolate'],
+         'structured_aliases': [{'literal_form': 'Collection Site or Growth Conditions',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.',
+                                           'JGI label bundles two concepts; this slot '
+                                           'covers only the collection-site half.'],
+                                 'predicate': 'NARROW_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]} })
     soluble_iron_micromol: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Biosample']} })
     subsurface_depth: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'm'}},
          'domain_of': ['Biosample']} })
@@ -13944,7 +14009,7 @@ class Biosample(Sample):
          'domain_of': ['Biosample'],
          'examples': [{'value': '2.3 mg/kg'}],
          'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
-    nitrate_nitrogen: Optional[QuantityValue] = Field(default=None, title="nitrate_nitrogen", description="""Concentration of nitrate nitrogen in the sample""", json_schema_extra = { "linkml_meta": {'aliases': ['NO3-N'],
+    nitrate_nitrogen: Optional[QuantityValue] = Field(default=None, title="nitrate nitrogen", description="""Concentration of nitrate nitrogen in the sample""", json_schema_extra = { "linkml_meta": {'aliases': ['NO3-N'],
          'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'measurement value'},
                          'Preferred_unit': {'tag': 'Preferred_unit', 'value': 'mg/kg'},
@@ -13955,7 +14020,7 @@ class Biosample(Sample):
          'domain_of': ['Biosample'],
          'examples': [{'value': '0.29 mg/kg'}],
          'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
-    nitrite_nitrogen: Optional[QuantityValue] = Field(default=None, title="nitrite_nitrogen", description="""Concentration of nitrite nitrogen in the sample""", json_schema_extra = { "linkml_meta": {'aliases': ['NO2-N'],
+    nitrite_nitrogen: Optional[QuantityValue] = Field(default=None, title="nitrite nitrogen", description="""Concentration of nitrite nitrogen in the sample""", json_schema_extra = { "linkml_meta": {'aliases': ['NO2-N'],
          'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'measurement value'},
                          'Preferred_unit': {'tag': 'Preferred_unit', 'value': 'mg/kg'},
@@ -19508,14 +19573,34 @@ class OrganismSample(Sample):
                                                                        'https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=10694',
                                                         'object': {'has_raw_value': 'bcrc:10694',
                                                                    'type': 'nmdc:TextValue'}}],
+                                          'in_subset': ['jgi_isolate'],
                                           'name': 'source_mat_id',
                                           'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/3036'],
-                                          'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                                                  'literal_form': 'Culture '
+                                          'structured_aliases': [{'literal_form': 'Culture '
                                                                                   'Collection '
                                                                                   'and '
                                                                                   'ID',
-                                                                  'predicate': 'NARROW_SYNONYM'}]}},
+                                                                  'notes': ['Exact JGI '
+                                                                            'form '
+                                                                            'template '
+                                                                            'is '
+                                                                            'access-restricted; '
+                                                                            'source is '
+                                                                            'the '
+                                                                            'public '
+                                                                            'submission '
+                                                                            'overview.',
+                                                                            'JGI label '
+                                                                            'is '
+                                                                            'narrower '
+                                                                            '(culture-collection-only) '
+                                                                            'than MIxS '
+                                                                            'source_mat_id '
+                                                                            '(any '
+                                                                            'material-sample '
+                                                                            'identifier).'],
+                                                                  'predicate': 'NARROW_SYNONYM',
+                                                                  'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]}},
          'title': 'Organism Sample'})
 
     associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'Biosample', 'OrganismSample'],
@@ -19563,83 +19648,12 @@ class OrganismSample(Sample):
          'domain_of': ['Biosample', 'OrganismSample'],
          'keywords': ['host', 'host.', 'taxon'],
          'slot_uri': 'MIXS:0000250',
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Host NCBI Taxonomy ID',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
-    sample_isolation_method: Optional[str] = Field(default=None, description="""Method, protocol, or kit used to extract DNA/RNA from the sample.""", json_schema_extra = { "linkml_meta": {'comments': ['See also dna_isolate_meth in submission-schema for the '
-                      'equivalent portal field.'],
-         'domain_of': ['OrganismSample'],
-         'examples': [{'description': 'Promega Wizard kit — a widely-used DNA '
-                                      'isolation method in JGI bacterial isolate '
-                                      'submissions',
-                       'value': 'Wizard Genomic DNA Purification Kit'}],
-         'in_subset': ['jgi_isolate'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Sample Isolation Method',
-                                 'predicate': 'EXACT_SYNONYM'}]} })
-    sample_isolated_from: Optional[str] = Field(default=None, description="""Free-text description of the environmental or biological matrix from which the organism sample was isolated — the *what* it came out of (e.g. iron-rich microbial mat, leaf tissue, catalog vial). For the *where* (geographic / environmental site of collection) see `sample_collection_site`; for in-vitro growth conditions (lab maintenance, culture media, growth chambers) see `sample_growth_conditions`.""", json_schema_extra = { "linkml_meta": {'comments': ['Routes JGI Isolate (NA) v19 form field 44 ("Sample Isolated '
-                      'From"). Field 45 ("Collection Site or Growth Conditions") '
-                      'routes to `sample_collection_site` or '
-                      '`sample_growth_conditions` depending on which half the '
-                      'submitter is reporting.',
-                      'Used when no upstream Biosample carries env-triad information '
-                      '(e.g. culture collection orders, lab-derived samples). When a '
-                      'linked Biosample is available, environmental provenance belongs '
-                      'there. Not a typed reference — future work may add a structured '
-                      'slot or wrapper class for typed sample-to-sample links; see '
-                      '#3033 and #3054.'],
-         'domain_of': ['OrganismSample'],
-         'examples': [{'description': 'GOLD organism_v2 Go0000189 (Shewanella loihica '
-                                      'PV-4, queried 2026-04-21)',
-                       'value': 'Iron-rich microbial mat from hydrothermal vent, Naha '
-                                'Vents, south rift of Loihi seamount, Hawaii'},
-                      {'description': 'GOLD organism_v2 Go0000514 (Ruegeria pomeroyi '
-                                      'DSS-3, queried 2026-04-21)',
-                       'value': 'Saltwater from water column off the Georgia coast, '
-                                'USA'},
-                      {'description': 'Catalog-collection origin — no environmental '
-                                      'matrix upstream',
-                       'value': 'DSMZ catalog vial (DSM 6125)'}],
-         'in_subset': ['jgi_isolate'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Sample Isolated From',
-                                 'predicate': 'EXACT_SYNONYM'}],
-         'todos': ['Redesign in #3054 will sharpen the boundary between this slot and '
-                   'the sample_collection_site / sample_growth_conditions siblings.']} })
-    sample_collection_site: Optional[str] = Field(default=None, description="""Free-text description of the place where the sample was collected — the geographic / environmental site or named location.""", json_schema_extra = { "linkml_meta": {'comments': ['On `OrganismSample`, this slot routes the collection-site half '
-                      'of JGI Isolate (NA) v19 form field 45 ("Collection Site or '
-                      'Growth Conditions"). The growth-conditions half routes to '
-                      '`sample_growth_conditions`. The submitter populates one or the '
-                      'other depending on whether the sample came from a field '
-                      'collection or from in-vitro maintenance.'],
-         'domain_of': ['Biosample', 'OrganismSample'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Collection Site or Growth Conditions',
-                                 'predicate': 'NARROW_SYNONYM'}]} })
-    sample_growth_conditions: Optional[str] = Field(default=None, description="""Free-text description of the in-vitro conditions under which the organism sample was grown or maintained — culture media, growth chamber settings, facility type, or other lab-controlled growth context. For environmental site context see `sample_collection_site`; for the source matrix the organism came out of see `sample_isolated_from`.""", json_schema_extra = { "linkml_meta": {'comments': ['On `OrganismSample`, this slot routes the growth-conditions '
-                      'half of JGI Isolate (NA) v19 form field 45 ("Collection Site or '
-                      'Growth Conditions"). The collection-site half routes to '
-                      '`sample_collection_site`. The submitter populates one or the '
-                      'other depending on whether the sample came from a field '
-                      'collection or from in-vitro maintenance.',
-                      'Distinct from MIxS `isol_growth_condt` (MIXS:0000003), which '
-                      'expects a publication reference (DOI/PMID/URL pattern), not '
-                      'free-text growth conditions.'],
-         'domain_of': ['OrganismSample'],
-         'examples': [{'description': 'Plant-tissue isolate maintained in greenhouse '
-                                      'conditions',
-                       'value': 'Greenhouse-grown'},
-                      {'description': 'Mushroom (Lentinula edodes) cultivation context',
-                       'value': 'Cultivated indoor; substrate logs of supplemented '
-                                'oak'},
-                      {'description': 'Viral-isolate growth context — host culture '
-                                      'conditions',
-                       'value': 'E. coli K-12 MG1655 broth culture infected with phage '
-                                'T4'}],
-         'in_subset': ['jgi_isolate'],
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Collection Site or Growth Conditions',
-                                 'predicate': 'NARROW_SYNONYM'}]} })
+         'structured_aliases': [{'literal_form': 'Host NCBI Taxonomy ID',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.'],
+                                 'predicate': 'EXACT_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]} })
     ploidy: Optional[PloidyEnum] = Field(default=None, title="ploidy", description="""The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO""", json_schema_extra = { "linkml_meta": {'domain_of': ['OrganismSample'], 'slot_uri': 'MIXS:0000021'} })
     source_mat_id: Optional[TextValue] = Field(default=None, title="source material identifiers", description="""Culture collection identifier for the source of this organism sample.""", json_schema_extra = { "linkml_meta": {'annotations': {'Expected_value': {'tag': 'Expected_value',
                                             'value': 'for cultures of microorganisms: '
@@ -19686,12 +19700,20 @@ class OrganismSample(Sample):
                                       'https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=10694',
                        'object': {'has_raw_value': 'bcrc:10694',
                                   'type': 'nmdc:TextValue'}}],
+         'in_subset': ['jgi_isolate'],
          'keywords': ['identifier', 'material', 'source'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/3036'],
          'slot_uri': 'MIXS:0000026',
-         'structured_aliases': [{'contexts': ['https://jgi.doe.gov/isolate-submission-form/v19'],
-                                 'literal_form': 'Culture Collection and ID',
-                                 'predicate': 'NARROW_SYNONYM'}]} })
+         'structured_aliases': [{'literal_form': 'Culture Collection and ID',
+                                 'notes': ['Exact JGI form template is '
+                                           'access-restricted; source is the public '
+                                           'submission overview.',
+                                           'JGI label is narrower '
+                                           '(culture-collection-only) than MIxS '
+                                           'source_mat_id (any material-sample '
+                                           'identifier).'],
+                                 'predicate': 'NARROW_SYNONYM',
+                                 'source': 'https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/'}]} })
     analysis_type: Optional[list[AnalysisTypeEnum]] = Field(default=None, title="analysis/data type", description="""Select all the data types associated or available for this biosample""", json_schema_extra = { "linkml_meta": {'comments': ['MIxS:investigation_type was included as a `see_also` but that '
                       "term doesn't resolve any more"],
          'domain_of': ['Protocol', 'Biosample', 'OrganismSample'],
