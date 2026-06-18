@@ -489,3 +489,5 @@ MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	ploidy			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	ref_biomaterial			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	isol_growth_condt			placeholder_class
+MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	library_layout			placeholder_class
+MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	adapters			placeholder_class
