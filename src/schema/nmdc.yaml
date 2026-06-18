@@ -594,6 +594,11 @@ classes:
       - stranded_orientation
       - target_gene
       - target_subfragment
+      - library_selection
+      - library_strategy
+      - library_source
+      - library_layout
+      - adapters
     close_mappings:
       - OBI:0000711
     comments:
