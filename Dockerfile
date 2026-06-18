@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.12
 
 WORKDIR /nmdc-schema
 
@@ -12,7 +12,7 @@ RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
     chmod +x /usr/bin/yq
 
 # Install Poetry, a package manager for Python (an alternative to pip).
-RUN pip install "poetry>=2.3.0"
+RUN pip install "poetry==2.4.1"
 
 # Install the project's Python dependencies.
 ADD ./poetry.lock    /nmdc-schema/poetry.lock
