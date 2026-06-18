@@ -8,7 +8,8 @@ RUN apt-get update && \
 
 # Download and install yq.
 # Reference: https://github.com/mikefarah/yq#install
-RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && \
+RUN ARCH="$(dpkg --print-architecture)" && \
+    wget "https://github.com/mikefarah/yq/releases/download/v4.53.3/yq_linux_${ARCH}" -O /usr/bin/yq && \
     chmod +x /usr/bin/yq
 
 # Install Poetry, a package manager for Python (an alternative to pip).
