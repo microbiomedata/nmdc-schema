@@ -1,10 +1,10 @@
 #example record for MicroFlora Danica
 biosample_set:
-  - id: nmdc:bsm-99-2a58f2d5
+  - id: nmdc:bsm-99-2a58f2
     type: nmdc:Biosample
     name: MFD00004
     associated_studies:
-      - nmdc:sty-99-ebd80220
+      - nmdc:sty-99-ebd802
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
       term:
@@ -55,20 +55,20 @@ biosample_set:
 material_processing_set:
   - id: nmdc:extrp-99-abc123
     has_input:
-      - nmdc:bsm-99-2a58f2d5
+      - nmdc:bsm-99-2a58f2
     type: nmdc:Extraction
     name: DNA extraction process for MFD00004
     extraction_targets: 
       - DNA
     has_output:
-      - nmdc:procsm-99-2a58f2d6
+      - nmdc:procsm-99-2a58f2
   - id: nmdc:libprep-99-abc122
     name: Library preparation process for MFD00004
     type: nmdc:LibraryPreparation
     has_input:
-      - nmdc:procsm-99-2a58f2d6
+      - nmdc:procsm-99-2a58f2
     has_output:
-      - nmdc:procsm-99-2a58f2d7
+      - nmdc:procsm-99-2a58f3
     protocol_link:
       url: https://doi.org/10.1101/2023.09.04.556179
       type: nmdc:Protocol
@@ -77,17 +77,17 @@ material_processing_set:
     library_selection: size fractionation
     library_source: METAGENOMIC
 processed_sample_set:
-  - id: nmdc:procsm-99-2a58f2d6
+  - id: nmdc:procsm-99-2a58f2
     name: Extracted DNA for MFD00004
     type: nmdc:ProcessedSample
-  - id: nmdc:procsm-99-2a58f2d7
+  - id: nmdc:procsm-99-2a58f3
     name: ilm_MFD00004
     description: Library for sequencing for MFD00004
     type: nmdc:ProcessedSample
 data_generation_set:
   - id: nmdc:dgns-11-abc123
     has_input:
-      - nmdc:procsm-99-2a58f2d7
+      - nmdc:procsm-99-2a58f3
     has_output:
       - nmdc:dobj-99-abc123
     name: Run SRR27943095 for experiment SRX23599633 - MFD00004
@@ -98,7 +98,7 @@ data_generation_set:
       - insdc.sra:SRX23599633
     analyte_category: metagenome
     instrument_used:
-      - nmdc:inst-14-mr4r2w09
+      - nmdc:inst-14-mr4r2w
     provenance_metadata:
       type: nmdc:ProvenanceMetadata
       add_date: "2026-06-11T22:13:20.151566+00:00"
@@ -107,7 +107,7 @@ data_generation_set:
       version: 0.1.0
       source_system_of_record: NCBI
     associated_studies:
-      - nmdc:sty-99-ebd80220
+      - nmdc:sty-99-ebd802
 data_object_set:
   - id: nmdc:dobj-99-abc123
     name: file manfiest for run SRR27943095
