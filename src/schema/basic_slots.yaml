@@ -53,7 +53,7 @@ subsets:
         added, at the same scope the alias lives (global slot or class slot_usage).
 
 slots:
-    librarystrategy:
+  library_strategy:
     description: Sequencing technique intended for this library
     range: LibraryStrategyEnum
     required: true
