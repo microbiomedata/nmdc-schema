@@ -25,16 +25,16 @@ biosample_set:
         name: soil
     provenance_metadata:
       type: nmdc:ProvenanceMetadata
-      add_date: 2026-06-11T22:13:20.151566+00:00
+      add_date: "2026-06-11T22:13:20.151566+00:00"
       git_url: https://github.com/microbiomedata/nmdc-ingest-agent
-      mod_date: 2026-06-11T22:13:20.151566+00:00
+      mod_date: "2026-06-11T22:13:20.151566+00:00"
       version: 0.1.0
       source_system_of_record: NCBI
     insdc_biosample_identifiers:
       - biosample:SAMN39864936
     collection_date:
       type: nmdc:TimestampValue
-      has_raw_value: 2019-08-28
+      has_raw_value: "2019-08-28"
     env_package:
       type: nmdc:TextValue
       has_raw_value: Metagenome.environmental.1.0
@@ -58,7 +58,8 @@ material_processing_set:
       - nmdc:bsm-99-2a58f2d5
     type: nmdc:Extraction
     name: DNA extraction process for MFD00004
-    extraction_targets: DNA
+    extraction_targets: 
+      - DNA
     has_output:
       - nmdc:procsm-99-2a58f2d6
   - id: nmdc:libprep-99-abc122
@@ -72,7 +73,7 @@ material_processing_set:
       url: https://doi.org/10.1101/2023.09.04.556179
       type: nmdc:Protocol
     #lib_layout: paired
-    library_strategy: RANDOM
+    library_strategy: WGS
     library_selection: size fractionation
     library_source: METAGENOMIC
 processed_sample_set:
@@ -100,9 +101,9 @@ data_generation_set:
       - nmdc:inst-14-mr4r2w09
     provenance_metadata:
       type: nmdc:ProvenanceMetadata
-      add_date: 2026-06-11T22:13:20.151566+00:00
+      add_date: "2026-06-11T22:13:20.151566+00:00"
       git_url: https://github.com/microbiomedata/nmdc-ingest-agent
-      mod_date: 2026-06-11T22:13:20.151566+00:00
+      mod_date: "2026-06-11T22:13:20.151566+00:00"
       version: 0.1.0
       source_system_of_record: NCBI
     associated_studies:
@@ -110,8 +111,10 @@ data_generation_set:
 data_object_set:
   - id: nmdc:dobj-99-abc123
     name: file manfiest for run SRR27943095
+    description: Manifest file for the SRR27943095 run  
     insdc_run_identifiers:
-      - insdc.run: SRR27943095
+      - insdc.run:SRR27943095
     was_generated_by: nmdc:dgns-11-abc123
     data_category: instrument_data
     data_object_type: SRA toolkit-accessible sequence data
+    type: nmdc:DataObject
