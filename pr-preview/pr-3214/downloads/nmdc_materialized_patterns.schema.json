@@ -9760,9 +9760,6 @@
                 }
             },
             "required": [
-                "library_selection",
-                "library_strategy",
-                "library_source",
                 "has_input",
                 "has_output",
                 "id",
@@ -17916,6 +17913,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.2.post13.dev0+f9839aa22"
+    "version": "11.20.2.post14.dev0+590b30e20"
 }
 

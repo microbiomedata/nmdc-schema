@@ -449,17 +449,17 @@
 
   LibraryPreparation : library_selection
 
-      LibraryPreparation --&gt; "1" LibrarySelectionEnum : library_selection
+      LibraryPreparation --&gt; "0..1" LibrarySelectionEnum : library_selection
     click LibrarySelectionEnum href "../LibrarySelectionEnum"
 
   LibraryPreparation : library_source
 
-      LibraryPreparation --&gt; "1" LibrarySourceEnum : library_source
+      LibraryPreparation --&gt; "0..1" LibrarySourceEnum : library_source
     click LibrarySourceEnum href "../LibrarySourceEnum"
 
   LibraryPreparation : library_strategy
 
-      LibraryPreparation --&gt; "1" LibraryStrategyEnum : library_strategy
+      LibraryPreparation --&gt; "0..1" LibraryStrategyEnum : library_strategy
     click LibraryStrategyEnum href "../LibraryStrategyEnum"
 
   LibraryPreparation : library_type
@@ -605,19 +605,19 @@
 </tr>
 <tr>
 <td><a href="../library_selection/">library_selection</a></td>
-<td>1 <br/> <a href="../LibrarySelectionEnum/">LibrarySelectionEnum</a></td>
+<td>0..1 <br/> <a href="../LibrarySelectionEnum/">LibrarySelectionEnum</a></td>
 <td>Library selection or enrichment method used</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../library_strategy/">library_strategy</a></td>
-<td>1 <br/> <a href="../LibraryStrategyEnum/">LibraryStrategyEnum</a></td>
+<td>0..1 <br/> <a href="../LibraryStrategyEnum/">LibraryStrategyEnum</a></td>
 <td>Sequencing technique intended for this library</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../library_source/">library_source</a></td>
-<td>1 <br/> <a href="../LibrarySourceEnum/">LibrarySourceEnum</a></td>
+<td>0..1 <br/> <a href="../LibrarySourceEnum/">LibrarySourceEnum</a></td>
 <td>The molecular source of the sequencing library</td>
 <td>direct</td>
 </tr>
@@ -986,7 +986,7 @@ attributes:
     domain_of:
     - LibraryPreparation
     range: LibrarySelectionEnum
-    required: true
+    required: false
   library_strategy:
     name: library_strategy
     description: Sequencing technique intended for this library
@@ -996,7 +996,7 @@ attributes:
     domain_of:
     - LibraryPreparation
     range: LibraryStrategyEnum
-    required: true
+    required: false
   library_source:
     name: library_source
     description: The molecular source of the sequencing library
@@ -1006,7 +1006,7 @@ attributes:
     domain_of:
     - LibraryPreparation
     range: LibrarySourceEnum
-    required: true
+    required: false
   instrument_used:
     name: instrument_used
     description: What instrument was used during DataGeneration or MaterialProcessing.

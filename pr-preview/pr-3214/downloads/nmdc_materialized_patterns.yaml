@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.2.post13.dev0+f9839aa22
+version: 11.20.2.post14.dev0+590b30e20
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6900,19 +6900,19 @@ slots:
     description: Sequencing technique intended for this library
     from_schema: https://w3id.org/nmdc/nmdc
     range: LibraryStrategyEnum
-    required: true
+    required: false
   library_source:
     name: library_source
     description: The molecular source of the sequencing library
     from_schema: https://w3id.org/nmdc/nmdc
     range: LibrarySourceEnum
-    required: true
+    required: false
   library_selection:
     name: library_selection
     description: Library selection or enrichment method used
     from_schema: https://w3id.org/nmdc/nmdc
     range: LibrarySelectionEnum
-    required: true
+    required: false
   processing_institution_workflow_metadata:
     name: processing_institution_workflow_metadata
     description: Information about how workflow results were generated when the processing
