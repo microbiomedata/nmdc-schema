@@ -741,39 +741,39 @@ slots:
 
 enums:
 
-    LibraryStrategyEnum:
-       description: Sequencing strategy used for library preparation
-       permissible_values:
-         WGA:
-           description: Random sequencing of the whole genome following non-PCR amplification
-         WGS:
-           description: Random sequencing of the whole genome
-         RNA-Seq:
-           description: Random sequencing of whole transcriptome
-         AMPLICON:
-           description: Sequencing of overlapping or distinct PCR or RT-PCR products
-    LibrarySourceEnum:
-       description: Molecular source of the sequencing library
-       permissible_values:
-         GENOMIC:
-           description: Genomic DNA (includes PCR products from genomic DNA)
-         TRANSCRIPTOMIC:
-           description: Transcription products or non-genomic DNA (EST, cDNA, RT-PCR, screened libraries)
-         METAGENOMIC:
-           description: Mixed material from metagenome
-         METATRANSCRIPTOMIC:
-           description: Transcription products from community targets
-         SYNTHETIC:
-           description: Synthetic DNA
-         VIRAL RNA:
-           description: Viral RNA
-         GENOMIC SINGLE CELL:
-           description: Single cell genomic DNA source
-         TRANSCRIPTOMIC SINGLE CELL:
-           description: Single cell transcriptomic source
-         OTHER:
-           description: >-
-             Other, unspecified, or unknown library source material 
+  LibraryStrategyEnum:
+    description: Sequencing strategy used for library preparation
+    permissible_values:
+      WGA:
+        description: Random sequencing of the whole genome following non-PCR amplification
+      WGS:
+        description: Random sequencing of the whole genome
+      RNA-Seq:
+        description: Random sequencing of whole transcriptome
+      AMPLICON:
+        description: Sequencing of overlapping or distinct PCR or RT-PCR products
+  LibrarySourceEnum:
+    description: Molecular source of the sequencing library
+    permissible_values:
+      GENOMIC:
+        description: Genomic DNA (includes PCR products from genomic DNA)
+      TRANSCRIPTOMIC:
+        description: Transcription products or non-genomic DNA (EST, cDNA, RT-PCR,
+          screened libraries)
+      METAGENOMIC:
+        description: Mixed material from metagenome
+      METATRANSCRIPTOMIC:
+        description: Transcription products from community targets
+      SYNTHETIC:
+        description: Synthetic DNA
+      VIRAL RNA:
+        description: Viral RNA
+      GENOMIC SINGLE CELL:
+        description: Single cell genomic DNA source
+      TRANSCRIPTOMIC SINGLE CELL:
+        description: Single cell transcriptomic source
+      OTHER:
+        description: "Other, unspecified, or unknown library source material "
   LibrarySelectionEnum:
     description: Library selection or enrichment method
     permissible_values:
@@ -784,12 +784,12 @@ enums:
       MDA:
         description: Multiple displacement amplification
       other:
-        description: >-
-          Other library enrichment, screening, or selection process (please include
-          additional info in the design description)
-       PolyA:
-         description: >-
-            PolyA selection or enrichment for messenger RNA (mRNA)
+        description: Other library enrichment, screening, or selection process (please
+          include additional info in the design description)
+      PolyA:
+        description: PolyA selection or enrichment for messenger RNA (mRNA)
+      size fractionation:
+        description: Physical selection of size appropriate targets
 
   ExecutionResourceEnum:
     see_also:
