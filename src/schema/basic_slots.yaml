@@ -56,17 +56,17 @@ slots:
   library_strategy:
     description: Sequencing technique intended for this library
     range: LibraryStrategyEnum
-    required: true
+    required: false
 
   library_source:
     description: The molecular source of the sequencing library
     range: LibrarySourceEnum
-    required: true
+    required: false
 
   library_selection:
     description: Library selection or enrichment method used
     range: LibrarySelectionEnum
-    required: true
+    required: false
 
   processing_institution_workflow_metadata:
     range: string
