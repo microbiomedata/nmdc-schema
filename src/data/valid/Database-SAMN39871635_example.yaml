@@ -62,7 +62,7 @@ material_processing_set:
       - DNA
     has_output:
       - nmdc:procsm-99-2a58f2
-  - id: nmdc:libprep-99-abc122
+  - id: nmdc:libprp-99-abc122
     name: Library preparation process for MFD00004
     type: nmdc:LibraryPreparation
     has_input:
