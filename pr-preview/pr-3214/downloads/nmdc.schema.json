@@ -9332,6 +9332,13 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
+                "adapters": {
+                    "description": "Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
@@ -9401,6 +9408,10 @@
                         "boolean",
                         "null"
                     ]
+                },
+                "lib_layout": {
+                    "$ref": "#/$defs/LibLayoutEnum",
+                    "description": "Specify whether to expect single, paired, or other configuration of reads"
                 },
                 "library_preparation_kit": {
                     "type": [
@@ -17598,5 +17609,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.2.post17.dev0+020bdfa90"
+    "version": "11.20.2.post19.dev0+12c21cad8"
 }

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.2.post17.dev0+020bdfa90
+version: 11.20.2.post19.dev0+12c21cad8
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19220,6 +19220,8 @@ classes:
     - library_selection
     - library_strategy
     - library_source
+    - lib_layout
+    - adapters
     slot_usage:
       has_input:
         name: has_input

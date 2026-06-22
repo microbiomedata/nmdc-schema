@@ -415,6 +415,8 @@
 
 
 
+  LibraryPreparation : adapters
+
   LibraryPreparation : alternative_identifiers
 
   LibraryPreparation : description
@@ -444,6 +446,11 @@
     click Instrument href "../Instrument"
 
   LibraryPreparation : is_stranded
+
+  LibraryPreparation : lib_layout
+
+      LibraryPreparation --&gt; "0..1" LibLayoutEnum : lib_layout
+    click LibLayoutEnum href "../LibLayoutEnum"
 
   LibraryPreparation : library_preparation_kit
 
@@ -622,6 +629,18 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../lib_layout/">lib_layout</a></td>
+<td>0..1 <br/> <a href="../LibLayoutEnum/">LibLayoutEnum</a></td>
+<td>Specify whether to expect single, paired, or other configuration of reads</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../adapters/">adapters</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Adapters provide priming sequences for both amplification and sequencing of t...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../instrument_used/">instrument_used</a></td>
 <td>* <br/> <a href="../Instrument/">Instrument</a></td>
 <td>What instrument was used during DataGeneration or MaterialProcessing</td>
@@ -768,6 +787,8 @@ slots:
 - library_selection
 - library_strategy
 - library_source
+- lib_layout
+- adapters
 slot_usage:
   has_input:
     name: has_input
@@ -1007,6 +1028,41 @@ attributes:
     - LibraryPreparation
     range: LibrarySourceEnum
     required: false
+  lib_layout:
+    name: lib_layout
+    description: Specify whether to expect single, paired, or other configuration
+      of reads
+    title: library layout
+    examples:
+    - value: paired
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - library
+    slot_uri: MIXS:0000041
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: LibLayoutEnum
+  adapters:
+    name: adapters
+    description: Adapters provide priming sequences for both amplification and sequencing
+      of the sample-library fragments. Both adapters should be reported; in uppercase
+      letters
+    title: adapters
+    examples:
+    - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0000048
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: string
+    structured_pattern:
+      syntax: ^{dna_bases};{dna_bases}$
+      interpolated: true
+      partial_match: true
   instrument_used:
     name: instrument_used
     description: What instrument was used during DataGeneration or MaterialProcessing.
