@@ -764,8 +764,8 @@ enums:
           - pubmed:18611170
       AMPLICON:
         description: Sequencing of overlapping or distinct PCR or RT-PCR products
-        examples:
-          -  metagenomic community profiling using SSU rRN
+        comments:
+          -  metagenomic community profiling using SSU rRN, for example
         
   LibrarySourceEnum:
     description: Molecular source of the sequencing library
@@ -774,11 +774,8 @@ enums:
         description: Genomic DNA (includes PCR products from genomic DNA)
       TRANSCRIPTOMIC:
         description: Transcription products or non-genomic DNA
-        examples: 
-          - EST
-          - cDNA
-          - RT-PCR
-          - screened libraries
+        comments: 
+          - for example EST cDNA, RT-PCR, or screened libraries
       METAGENOMIC:
         description: Mixed material from metagenome
       METATRANSCRIPTOMIC:
