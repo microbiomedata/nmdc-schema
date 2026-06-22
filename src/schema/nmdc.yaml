@@ -113,6 +113,7 @@ prefixes:
   wgs84: "http://www.w3.org/2003/01/geo/wgs84_pos#"
   wikidata: "http://www.wikidata.org/entity/"
   xsd: "http://www.w3.org/2001/XMLSchema#"
+  pubmed: "https://bioregistry.io/pubmed:"
 
 default_prefix: nmdc
 default_range: string
