@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.2.post21.dev0+d0e87c301
+version: 11.20.2.post26.dev0+b476ad218
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -301,6 +301,9 @@ prefixes:
   xsd:
     prefix_prefix: xsd
     prefix_reference: http://www.w3.org/2001/XMLSchema#
+  pubmed:
+    prefix_prefix: pubmed
+    prefix_reference: 'https://bioregistry.io/pubmed:'
   shex:
     prefix_prefix: shex
     prefix_reference: http://www.w3.org/ns/shex#
@@ -1985,16 +1988,30 @@ enums:
     permissible_values:
       WGA:
         text: WGA
-        description: Random sequencing of the whole genome following non-PCR amplification
+        description: Whole genome amplification followed by random sequencing.
+        title: Whole Genome Amplification
+        see_also:
+        - pubmed:1631067
+        - pubmed:8962113
       WGS:
         text: WGS
-        description: Random sequencing of the whole genome
+        description: Random sequencing of the whole genome.
+        title: Whole Genome Sequencing
+        see_also:
+        - pubmed:10731132
       RNA-Seq:
         text: RNA-Seq
         description: Random sequencing of whole transcriptome
+        see_also:
+        - pubmed:18611170
+        aliases:
+        - Whole Transcriptome Shotgun Sequencing
+        - WTSS
       AMPLICON:
         text: AMPLICON
         description: Sequencing of overlapping or distinct PCR or RT-PCR products
+        comments:
+        - metagenomic community profiling using SSU rRN, for example
   LibrarySourceEnum:
     name: LibrarySourceEnum
     description: Molecular source of the sequencing library
@@ -2005,8 +2022,9 @@ enums:
         description: Genomic DNA (includes PCR products from genomic DNA)
       TRANSCRIPTOMIC:
         text: TRANSCRIPTOMIC
-        description: Transcription products or non-genomic DNA (EST, cDNA, RT-PCR,
-          screened libraries)
+        description: Transcription products or non-genomic DNA
+        comments:
+        - for example EST cDNA, RT-PCR, or screened libraries
       METAGENOMIC:
         text: METAGENOMIC
         description: Mixed material from metagenome

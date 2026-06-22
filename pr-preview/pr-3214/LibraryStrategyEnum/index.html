@@ -711,7 +711,7 @@
 <tr>
 <td>WGA</td>
 <td>None</td>
-<td>Random sequencing of the whole genome following non-PCR amplification</td>
+<td>Whole genome amplification followed by random sequencing</td>
 </tr>
 <tr>
 <td>WGS</td>
@@ -760,16 +760,30 @@ rank: 1000
 permissible_values:
   WGA:
     text: WGA
-    description: Random sequencing of the whole genome following non-PCR amplification
+    description: Whole genome amplification followed by random sequencing.
+    title: Whole Genome Amplification
+    see_also:
+    - pubmed:1631067
+    - pubmed:8962113
   WGS:
     text: WGS
-    description: Random sequencing of the whole genome
+    description: Random sequencing of the whole genome.
+    title: Whole Genome Sequencing
+    see_also:
+    - pubmed:10731132
   RNA-Seq:
     text: RNA-Seq
     description: Random sequencing of whole transcriptome
+    see_also:
+    - pubmed:18611170
+    aliases:
+    - Whole Transcriptome Shotgun Sequencing
+    - WTSS
   AMPLICON:
     text: AMPLICON
     description: Sequencing of overlapping or distinct PCR or RT-PCR products
+    comments:
+    - metagenomic community profiling using SSU rRN, for example
 
 </code></pre>
 
