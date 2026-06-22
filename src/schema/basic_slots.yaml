@@ -754,8 +754,7 @@ enums:
         description: Random sequencing of the whole genome.
         title: Whole Genome Sequencing 
         see_also:
-          - pubmed:1631067
-          - pubmed 8962113
+          - pubmed:10731132
       RNA-Seq:
         description: Random sequencing of whole transcriptome
         aliases: 
