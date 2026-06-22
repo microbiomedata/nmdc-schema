@@ -1513,6 +1513,100 @@ class UnitEnum(str, Enum):
     """
 
 
+class LibraryStrategyEnum(str, Enum):
+    """
+    Sequencing strategy used for library preparation
+    """
+    WGA = "WGA"
+    """
+    Random sequencing of the whole genome following non-PCR amplification
+    """
+    WGS = "WGS"
+    """
+    Random sequencing of the whole genome
+    """
+    RNA_Seq = "RNA-Seq"
+    """
+    Random sequencing of whole transcriptome
+    """
+    AMPLICON = "AMPLICON"
+    """
+    Sequencing of overlapping or distinct PCR or RT-PCR products
+    """
+
+
+class LibrarySourceEnum(str, Enum):
+    """
+    Molecular source of the sequencing library
+    """
+    GENOMIC = "GENOMIC"
+    """
+    Genomic DNA (includes PCR products from genomic DNA)
+    """
+    TRANSCRIPTOMIC = "TRANSCRIPTOMIC"
+    """
+    Transcription products or non-genomic DNA (EST, cDNA, RT-PCR, screened libraries)
+    """
+    METAGENOMIC = "METAGENOMIC"
+    """
+    Mixed material from metagenome
+    """
+    METATRANSCRIPTOMIC = "METATRANSCRIPTOMIC"
+    """
+    Transcription products from community targets
+    """
+    SYNTHETIC = "SYNTHETIC"
+    """
+    Synthetic DNA
+    """
+    VIRAL_RNA = "VIRAL RNA"
+    """
+    Viral RNA
+    """
+    GENOMIC_SINGLE_CELL = "GENOMIC SINGLE CELL"
+    """
+    Single cell genomic DNA source
+    """
+    TRANSCRIPTOMIC_SINGLE_CELL = "TRANSCRIPTOMIC SINGLE CELL"
+    """
+    Single cell transcriptomic source
+    """
+    OTHER = "OTHER"
+    """
+    Other, unspecified, or unknown library source material 
+    """
+
+
+class LibrarySelectionEnum(str, Enum):
+    """
+    Library selection or enrichment method
+    """
+    RANDOM = "RANDOM"
+    """
+    Random selection by shearing or other method
+    """
+    PCR = "PCR"
+    """
+    Source material was selected by designed primers
+    """
+    MDA = "MDA"
+    """
+    Multiple displacement amplification
+    """
+    other = "other"
+    """
+    Other library enrichment, screening, or selection process (please include additional info in the design description)
+    """
+    PolyA = "PolyA"
+    """
+    PolyA selection or enrichment for messenger RNA (mRNA)
+    """
+    size_fractionation = "size fractionation"
+    """
+    Physical selection of size appropriate targets
+    """
+
+
 class ExecutionResourceEnum(str, Enum):
     NERSC_Cori = "NERSC-Cori"
     """
@@ -17968,6 +18062,9 @@ class LibraryPreparation(MaterialProcessing):
          'examples': [{'value': 'V6, V9, ITS'}],
          'keywords': ['target'],
          'slot_uri': 'MIXS:0000045'} })
+    library_selection: Optional[LibrarySelectionEnum] = Field(default=None, description="""Library selection or enrichment method used""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation']} })
+    library_strategy: Optional[LibraryStrategyEnum] = Field(default=None, description="""Sequencing technique intended for this library""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation']} })
+    library_source: Optional[LibrarySourceEnum] = Field(default=None, description="""The molecular source of the sequencing library""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })

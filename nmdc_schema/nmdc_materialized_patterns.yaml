@@ -1978,6 +1978,80 @@ enums:
         aliases:
         - inch
         - inches
+  LibraryStrategyEnum:
+    name: LibraryStrategyEnum
+    description: Sequencing strategy used for library preparation
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      WGA:
+        text: WGA
+        description: Random sequencing of the whole genome following non-PCR amplification
+      WGS:
+        text: WGS
+        description: Random sequencing of the whole genome
+      RNA-Seq:
+        text: RNA-Seq
+        description: Random sequencing of whole transcriptome
+      AMPLICON:
+        text: AMPLICON
+        description: Sequencing of overlapping or distinct PCR or RT-PCR products
+  LibrarySourceEnum:
+    name: LibrarySourceEnum
+    description: Molecular source of the sequencing library
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      GENOMIC:
+        text: GENOMIC
+        description: Genomic DNA (includes PCR products from genomic DNA)
+      TRANSCRIPTOMIC:
+        text: TRANSCRIPTOMIC
+        description: Transcription products or non-genomic DNA (EST, cDNA, RT-PCR,
+          screened libraries)
+      METAGENOMIC:
+        text: METAGENOMIC
+        description: Mixed material from metagenome
+      METATRANSCRIPTOMIC:
+        text: METATRANSCRIPTOMIC
+        description: Transcription products from community targets
+      SYNTHETIC:
+        text: SYNTHETIC
+        description: Synthetic DNA
+      VIRAL RNA:
+        text: VIRAL RNA
+        description: Viral RNA
+      GENOMIC SINGLE CELL:
+        text: GENOMIC SINGLE CELL
+        description: Single cell genomic DNA source
+      TRANSCRIPTOMIC SINGLE CELL:
+        text: TRANSCRIPTOMIC SINGLE CELL
+        description: Single cell transcriptomic source
+      OTHER:
+        text: OTHER
+        description: 'Other, unspecified, or unknown library source material '
+  LibrarySelectionEnum:
+    name: LibrarySelectionEnum
+    description: Library selection or enrichment method
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      RANDOM:
+        text: RANDOM
+        description: Random selection by shearing or other method
+      PCR:
+        text: PCR
+        description: Source material was selected by designed primers
+      MDA:
+        text: MDA
+        description: Multiple displacement amplification
+      other:
+        text: other
+        description: Other library enrichment, screening, or selection process (please
+          include additional info in the design description)
+      PolyA:
+        text: PolyA
+        description: PolyA selection or enrichment for messenger RNA (mRNA)
+      size fractionation:
+        text: size fractionation
+        description: Physical selection of size appropriate targets
   ExecutionResourceEnum:
     name: ExecutionResourceEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6821,6 +6895,24 @@ slots:
       (e.g., "2025-06-12T14:30:00Z").
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
+  library_strategy:
+    name: library_strategy
+    description: Sequencing technique intended for this library
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: LibraryStrategyEnum
+    required: false
+  library_source:
+    name: library_source
+    description: The molecular source of the sequencing library
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: LibrarySourceEnum
+    required: false
+  library_selection:
+    name: library_selection
+    description: Library selection or enrichment method used
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: LibrarySelectionEnum
+    required: false
   processing_institution_workflow_metadata:
     name: processing_institution_workflow_metadata
     description: Information about how workflow results were generated when the processing
@@ -19086,6 +19178,9 @@ classes:
     - stranded_orientation
     - target_gene
     - target_subfragment
+    - library_selection
+    - library_strategy
+    - library_source
     slot_usage:
       has_input:
         name: has_input

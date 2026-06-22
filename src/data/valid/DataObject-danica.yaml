@@ -1,0 +1,9 @@
+  - id: nmdc:dobj-99-abc123
+    name: file manfiest for run SRR27943095
+    description: Library for sequencing for MFD00004
+    insdc_run_identifiers:
+      - insdc.run:SRR27943095
+    was_generated_by: nmdc:dgns-11-abc123
+    data_category: instrument_data
+    data_object_type: SRA toolkit-accessible sequence data
+    type: nmdc:DataObject

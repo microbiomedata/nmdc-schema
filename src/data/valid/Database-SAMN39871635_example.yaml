@@ -72,7 +72,7 @@ material_processing_set:
     protocol_link:
       url: https://doi.org/10.1101/2023.09.04.556179
       type: nmdc:Protocol
-    #lib_layout: paired
+    lib_layout: paired
     library_strategy: WGS
     library_selection: size fractionation
     library_source: METAGENOMIC

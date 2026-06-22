@@ -1,0 +1,7 @@
+  - id: nmdc:procsm-99-2a58f2d6
+    name: Extracted DNA for MFD00004
+    type: nmdc:ProcessedSample
+  - id: nmdc:procsm-99-2a58f2d7
+    name: ilm_MFD00004
+    description: Library for sequencing for MFD00004
+    type: nmdc:ProcessedSample

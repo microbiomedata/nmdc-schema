@@ -597,8 +597,8 @@ classes:
       - library_selection
       - library_strategy
       - library_source
-#     - lib_layout
-#     - adapters
+      - lib_layout
+      - adapters
     close_mappings:
       - OBI:0000711
     comments:

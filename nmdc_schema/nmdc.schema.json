@@ -9397,6 +9397,18 @@
                         "null"
                     ]
                 },
+                "library_selection": {
+                    "$ref": "#/$defs/LibrarySelectionEnum",
+                    "description": "Library selection or enrichment method used"
+                },
+                "library_source": {
+                    "$ref": "#/$defs/LibrarySourceEnum",
+                    "description": "The molecular source of the sequencing library"
+                },
+                "library_strategy": {
+                    "$ref": "#/$defs/LibraryStrategyEnum",
+                    "description": "Sequencing technique intended for this library"
+                },
                 "library_type": {
                     "$ref": "#/$defs/LibraryTypeEnum"
                 },
@@ -9505,6 +9517,46 @@
             ],
             "title": "LibraryPreparation",
             "type": "object"
+        },
+        "LibrarySelectionEnum": {
+            "description": "Library selection or enrichment method",
+            "enum": [
+                "RANDOM",
+                "PCR",
+                "MDA",
+                "other",
+                "PolyA",
+                "size fractionation"
+            ],
+            "title": "LibrarySelectionEnum",
+            "type": "string"
+        },
+        "LibrarySourceEnum": {
+            "description": "Molecular source of the sequencing library",
+            "enum": [
+                "GENOMIC",
+                "TRANSCRIPTOMIC",
+                "METAGENOMIC",
+                "METATRANSCRIPTOMIC",
+                "SYNTHETIC",
+                "VIRAL RNA",
+                "GENOMIC SINGLE CELL",
+                "TRANSCRIPTOMIC SINGLE CELL",
+                "OTHER"
+            ],
+            "title": "LibrarySourceEnum",
+            "type": "string"
+        },
+        "LibraryStrategyEnum": {
+            "description": "Sequencing strategy used for library preparation",
+            "enum": [
+                "WGA",
+                "WGS",
+                "RNA-Seq",
+                "AMPLICON"
+            ],
+            "title": "LibraryStrategyEnum",
+            "type": "string"
         },
         "LibraryTypeEnum": {
             "description": "",

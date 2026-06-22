@@ -1,0 +1,9 @@
+  - id: nmdc:extrp-99-abc123
+    has_input:
+      - nmdc:bsm-99-2a58f2d5
+    type: nmdc:Extraction
+    name: DNA extraction process for MFD00004
+    extraction_targets: 
+      - DNA
+    has_output:
+      - nmdc:procsm-99-2a58f2d6
