@@ -745,21 +745,41 @@ enums:
     description: Sequencing strategy used for library preparation
     permissible_values:
       WGA:
-        description: Random sequencing of the whole genome following non-PCR amplification
+        title: Whole Genome Amplification
+        description: Whole genome amplification followed by random sequencing.
+        see_also:
+          - pubmed:1631067
+          - pubmed:8962113
       WGS:
-        description: Random sequencing of the whole genome
+        description: Random sequencing of the whole genome.
+        title: Whole Genome Sequencing 
+        see_also:
+          - pubmed:1631067
+          - pubmed 8962113
       RNA-Seq:
         description: Random sequencing of whole transcriptome
+        aliases: 
+          - Whole Transcriptome Shotgun Sequencing
+          - WTSS
+        see_also: 
+          - pubmed:18611170
       AMPLICON:
         description: Sequencing of overlapping or distinct PCR or RT-PCR products
+        examples:
+          -  metagenomic community profiling using SSU rRN
+        
   LibrarySourceEnum:
     description: Molecular source of the sequencing library
     permissible_values:
       GENOMIC:
         description: Genomic DNA (includes PCR products from genomic DNA)
       TRANSCRIPTOMIC:
-        description: Transcription products or non-genomic DNA (EST, cDNA, RT-PCR,
-          screened libraries)
+        description: Transcription products or non-genomic DNA
+        examples: 
+          - EST
+          - cDNA
+          - RT-PCR
+          - screened libraries
       METAGENOMIC:
         description: Mixed material from metagenome
       METATRANSCRIPTOMIC:
