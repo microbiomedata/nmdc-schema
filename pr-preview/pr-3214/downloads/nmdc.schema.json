@@ -9317,6 +9317,17 @@
             "title": "Isolation",
             "type": "object"
         },
+        "LibLayoutEnum": {
+            "description": "",
+            "enum": [
+                "other",
+                "paired",
+                "single",
+                "vector"
+            ],
+            "title": "LibLayoutEnum",
+            "type": "string"
+        },
         "LibraryPreparation": {
             "additionalProperties": false,
             "description": "",
@@ -17587,5 +17598,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.2.post16.dev0+e08f2ddf3"
+    "version": "11.20.2.post17.dev0+020bdfa90"
 }

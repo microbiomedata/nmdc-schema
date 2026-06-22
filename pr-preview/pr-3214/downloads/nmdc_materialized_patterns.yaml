@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.2.post16.dev0+e08f2ddf3
+version: 11.20.2.post17.dev0+020bdfa90
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -4506,6 +4506,18 @@ enums:
         text: wall
       window:
         text: window
+  LibLayoutEnum:
+    name: LibLayoutEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      other:
+        text: other
+      paired:
+        text: paired
+      single:
+        text: single
+      vector:
+        text: vector
   LightTypeEnum:
     name: LightTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17288,6 +17300,33 @@ slots:
     pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+      partial_match: true
+  lib_layout:
+    name: lib_layout
+    description: Specify whether to expect single, paired, or other configuration
+      of reads
+    title: library layout
+    examples:
+    - value: paired
+    from_schema: https://w3id.org/nmdc/nmdc
+    keywords:
+    - library
+    slot_uri: MIXS:0000041
+    range: LibLayoutEnum
+  adapters:
+    name: adapters
+    description: Adapters provide priming sequences for both amplification and sequencing
+      of the sample-library fragments. Both adapters should be reported; in uppercase
+      letters
+    title: adapters
+    examples:
+    - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0000048
+    pattern: ^[ACGT];[ACGT]$
+    structured_pattern:
+      syntax: ^{dna_bases};{dna_bases}$
       interpolated: true
       partial_match: true
   samp_collec_device:
