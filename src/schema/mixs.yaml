@@ -404,6 +404,12 @@ enums:
       vent cover: {}
       wall: {}
       window: {}
+  LibLayoutEnum:
+    permissible_values:
+      other: {}
+      paired: {}
+      single: {}
+      vector: {}
   LightTypeEnum:
     permissible_values:
       desk lamp: {}
@@ -7149,6 +7155,25 @@ slots:
     range: TextValue
     structured_pattern:
       syntax: ^({PMID}|{DOI}|{URL})$
+      interpolated: true
+      partial_match: true
+  lib_layout:
+    description: Specify whether to expect single, paired, or other configuration of reads
+    title: library layout
+    examples:
+      - value: paired
+    keywords:
+      - library
+    slot_uri: MIXS:0000041
+    range: LibLayoutEnum
+  adapters:
+    description: Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters
+    title: adapters
+    examples:
+      - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
+    slot_uri: MIXS:0000048
+    structured_pattern:
+      syntax: ^{dna_bases};{dna_bases}$
       interpolated: true
       partial_match: true
   samp_collec_device:

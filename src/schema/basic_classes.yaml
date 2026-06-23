@@ -536,6 +536,18 @@ classes:
         required: true
       data_category:
         required: true
+    rules:
+      - title: sra_toolkit_object_requires_run_identifier
+        description: >-
+          If data_object_type is "SRA toolkit-accessible sequence data", then insdc_run_identifiers is required, because such objects are retrieved by INSDC run accession through the SRA Toolkit rather than by a stable URL.
+        preconditions:
+          slot_conditions:
+            data_object_type:
+              equals_string: SRA toolkit-accessible sequence data
+        postconditions:
+          slot_conditions:
+            insdc_run_identifiers:
+              required: true
 
   DataEmitterProcess:
     class_uri: nmdc:DataEmitterProcess

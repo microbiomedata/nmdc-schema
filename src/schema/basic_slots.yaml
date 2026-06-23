@@ -53,6 +53,23 @@ subsets:
         added, at the same scope the alias lives (global slot or class slot_usage).
 
 slots:
+  library_strategy:
+    description: Sequencing technique intended for this library
+    range: LibraryStrategyEnum
+    see_also:
+      - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+
+  library_source:
+    description: The molecular source of the sequencing library
+    range: LibrarySourceEnum
+    see_also:
+      - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+
+  library_selection:
+    description: Library selection or enrichment method used
+    range: LibrarySelectionEnum
+    see_also:
+      - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
 
   processing_institution_workflow_metadata:
     range: string
@@ -727,6 +744,82 @@ slots:
 
 enums:
 
+  LibraryStrategyEnum:
+    description: Sequencing strategy used for library preparation
+    comments:
+      - NMDC intentionally supports a curated subset of the INSDC library strategy vocabulary. The complete controlled vocabulary is defined in the referenced SRA.experiment.xsd; values can be added as needed.
+    see_also:
+      - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+    permissible_values:
+      WGA:
+        title: Whole Genome Amplification
+        description: Whole genome amplification followed by random sequencing.
+        see_also:
+          - pubmed:1631067
+          - pubmed:8962113
+      WGS:
+        description: Random sequencing of the whole genome.
+        title: Whole Genome Sequencing 
+        see_also:
+          - pubmed:10731132
+      RNA-Seq:
+        description: Random sequencing of whole transcriptome
+        aliases: 
+          - Whole Transcriptome Shotgun Sequencing
+          - WTSS
+        see_also: 
+          - pubmed:18611170
+      AMPLICON:
+        description: Sequencing of overlapping or distinct PCR or RT-PCR products
+        comments:
+          -  metagenomic community profiling using SSU rRNA, for example
+        
+  LibrarySourceEnum:
+    description: Molecular source of the sequencing library
+    see_also:
+      - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+    permissible_values:
+      GENOMIC:
+        description: Genomic DNA (includes PCR products from genomic DNA)
+      TRANSCRIPTOMIC:
+        description: Transcription products or non-genomic DNA
+        comments: 
+          - for example EST cDNA, RT-PCR, or screened libraries
+      METAGENOMIC:
+        description: Mixed material from metagenome
+      METATRANSCRIPTOMIC:
+        description: Transcription products from community targets
+      SYNTHETIC:
+        description: Synthetic DNA
+      VIRAL RNA:
+        description: Viral RNA
+      GENOMIC SINGLE CELL:
+        description: Single cell genomic DNA source
+      TRANSCRIPTOMIC SINGLE CELL:
+        description: Single cell transcriptomic source
+      OTHER:
+        description: "Other, unspecified, or unknown library source material "
+  LibrarySelectionEnum:
+    description: Library selection or enrichment method
+    comments:
+      - NMDC intentionally supports a curated subset of the INSDC library selection vocabulary. The complete controlled vocabulary is defined in the referenced SRA.experiment.xsd; values can be added as needed.
+    see_also:
+      - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+    permissible_values:
+      RANDOM:
+        description: Random selection by shearing or other method
+      PCR:
+        description: Source material was selected by designed primers
+      MDA:
+        description: Multiple displacement amplification
+      other:
+        description: Other library enrichment, screening, or selection process (please
+          include additional info in the design description)
+      PolyA:
+        description: PolyA selection or enrichment for messenger RNA (mRNA)
+      size fractionation:
+        description: Physical selection of size appropriate targets
+
   ExecutionResourceEnum:
     see_also:
       - nmdc:DoiProviderEnum
@@ -848,7 +941,7 @@ enums:
           - https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
 
       SRA toolkit-accessible sequence data:
-        description: Files that are avaliable for download via SRA Toolkit by providing an INSDC accession
+        description: Files that are available for download via SRA Toolkit by providing an INSDC accession
         comments:
            - File format will depend on options specified to SRA Toolkit
         see_also:
