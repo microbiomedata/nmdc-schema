@@ -56,17 +56,20 @@ slots:
   library_strategy:
     description: Sequencing technique intended for this library
     range: LibraryStrategyEnum
-    required: false
+    see_also:
+      - https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
 
   library_source:
     description: The molecular source of the sequencing library
     range: LibrarySourceEnum
-    required: false
+    see_also:
+      - https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
 
   library_selection:
     description: Library selection or enrichment method used
     range: LibrarySelectionEnum
-    required: false
+    see_also:
+      - https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
 
   processing_institution_workflow_metadata:
     range: string
