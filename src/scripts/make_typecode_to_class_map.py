@@ -98,9 +98,13 @@ def main():
     Generates a Markdown document containing a table that can be used to map typecodes to schema classes.
     """
 
-    # Get a dictionary that maps each class name to a list of all of the typecodes that are
-    # compatible with its `id` slot.
-    class_name_to_typecodes = get_class_name_to_typecode_map()
+    # Get a dictionary that maps the name of each class defined in the schema to a list of all of
+    # the typecodes that are compatible with the `id` slot of the class.
+    all_class_name_to_typecodes = get_class_name_to_typecode_map()
+
+    # Filter out the names of classes that lack typecodes, given that the table we will be rendering
+    # is designed to be a "typecode-to-(something)" map, not a "(something)-to-typecode" map.
+    class_name_to_typecodes = {c: t for c, t in all_class_name_to_typecodes.items() if len(t) > 0}
 
     # Build the Markdown table.
     md_table_lines: List[str] = [r"| Typecode(s) | Schema class | Collection name(s) |",
