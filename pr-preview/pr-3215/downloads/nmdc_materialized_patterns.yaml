@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.2.post33.dev0+a5a71c45a
+version: 11.20.2.post34.dev0+95ba559db
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -2246,11 +2246,6 @@ enums:
           an INSDC accession
         comments:
         - File format will depend on options specified to SRA Toolkit
-        - Represent such an object as a single run-level DataObject. Put the run accession
-          in insdc_run_identifiers. url, md5_checksum, and file_size_bytes are typically
-          omitted and are not required, because retrieval is by accession through
-          the SRA Toolkit rather than a single stable URL; they may still be recorded
-          for specific files produced after retrieval.
         see_also:
         - https://github.com/ncbi/sra-tools/wiki
       Direct Infusion FT-ICR MS Analysis Results:
