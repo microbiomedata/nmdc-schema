@@ -110,8 +110,8 @@ data_generation_set:
       - nmdc:sty-99-ebd802
 data_object_set:
   - id: nmdc:dobj-99-abc123
-    name: file manfiest for run SRR27943095
-    description: Manifest file for the SRR27943095 run  
+    name: Data file for run accession SRR27943095
+    description: Data file for run accession SRR27943095  
     insdc_run_identifiers:
       - insdc.run:SRR27943095
     was_generated_by: nmdc:dgns-11-abc123
