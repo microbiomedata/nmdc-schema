@@ -944,7 +944,6 @@ enums:
         description: Files that are available for download via SRA Toolkit by providing an INSDC accession
         comments:
            - File format will depend on options specified to SRA Toolkit
-           - Represent such an object as a single run-level DataObject. Put the run accession in insdc_run_identifiers. url, md5_checksum, and file_size_bytes are typically omitted and are not required, because retrieval is by accession through the SRA Toolkit rather than a single stable URL; they may still be recorded for specific files produced after retrieval.
         see_also:
           - https://github.com/ncbi/sra-tools/wiki
 
