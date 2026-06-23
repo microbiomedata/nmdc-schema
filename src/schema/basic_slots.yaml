@@ -746,6 +746,8 @@ enums:
 
   LibraryStrategyEnum:
     description: Sequencing strategy used for library preparation
+    see_also:
+      - https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
     permissible_values:
       WGA:
         title: Whole Genome Amplification
@@ -772,6 +774,8 @@ enums:
         
   LibrarySourceEnum:
     description: Molecular source of the sequencing library
+    see_also:
+      - https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
     permissible_values:
       GENOMIC:
         description: Genomic DNA (includes PCR products from genomic DNA)
@@ -795,6 +799,8 @@ enums:
         description: "Other, unspecified, or unknown library source material "
   LibrarySelectionEnum:
     description: Library selection or enrichment method
+    see_also:
+      - https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
     permissible_values:
       RANDOM:
         description: Random selection by shearing or other method
