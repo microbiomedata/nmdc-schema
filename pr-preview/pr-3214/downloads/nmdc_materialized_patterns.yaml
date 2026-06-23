@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.20.2.post27.dev0+a0d641680
+version: 11.20.2.post29.dev0+20d08425e
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -1985,6 +1985,8 @@ enums:
     name: LibraryStrategyEnum
     description: Sequencing strategy used for library preparation
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
     permissible_values:
       WGA:
         text: WGA
@@ -2016,6 +2018,8 @@ enums:
     name: LibrarySourceEnum
     description: Molecular source of the sequencing library
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
     permissible_values:
       GENOMIC:
         text: GENOMIC
@@ -2050,6 +2054,8 @@ enums:
     name: LibrarySelectionEnum
     description: Library selection or enrichment method
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
     permissible_values:
       RANDOM:
         text: RANDOM
@@ -6929,20 +6935,23 @@ slots:
     name: library_strategy
     description: Sequencing technique intended for this library
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
     range: LibraryStrategyEnum
-    required: false
   library_source:
     name: library_source
     description: The molecular source of the sequencing library
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
     range: LibrarySourceEnum
-    required: false
   library_selection:
     name: library_selection
     description: Library selection or enrichment method used
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
     range: LibrarySelectionEnum
-    required: false
   processing_institution_workflow_metadata:
     name: processing_institution_workflow_metadata
     description: Information about how workflow results were generated when the processing
