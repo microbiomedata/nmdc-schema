@@ -848,6 +848,21 @@ slot_usage:
     name: data_category
     required: true
 class_uri: nmdc:DataObject
+rules:
+- preconditions:
+    slot_conditions:
+      data_object_type:
+        name: data_object_type
+        equals_string: SRA toolkit-accessible sequence data
+  postconditions:
+    slot_conditions:
+      insdc_run_identifiers:
+        name: insdc_run_identifiers
+        required: true
+  description: If data_object_type is "SRA toolkit-accessible sequence data", then
+    insdc_run_identifiers is required, because such objects are retrieved by INSDC
+    run accession through the SRA Toolkit rather than by a stable URL.
+  title: sra_toolkit_object_requires_run_identifier
 
 </code></pre>
 </details>
@@ -1154,6 +1169,21 @@ attributes:
     range: uriorcurie
     required: true
 class_uri: nmdc:DataObject
+rules:
+- preconditions:
+    slot_conditions:
+      data_object_type:
+        name: data_object_type
+        equals_string: SRA toolkit-accessible sequence data
+  postconditions:
+    slot_conditions:
+      insdc_run_identifiers:
+        name: insdc_run_identifiers
+        required: true
+  description: If data_object_type is "SRA toolkit-accessible sequence data", then
+    insdc_run_identifiers is required, because such objects are retrieved by INSDC
+    run accession through the SRA Toolkit rather than by a stable URL.
+  title: sra_toolkit_object_requires_run_identifier
 
 </code></pre>
 </details>

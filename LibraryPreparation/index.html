@@ -415,6 +415,8 @@
 
 
 
+  LibraryPreparation : adapters
+
   LibraryPreparation : alternative_identifiers
 
   LibraryPreparation : description
@@ -445,7 +447,27 @@
 
   LibraryPreparation : is_stranded
 
+  LibraryPreparation : lib_layout
+
+      LibraryPreparation --&gt; "0..1" LibLayoutEnum : lib_layout
+    click LibLayoutEnum href "../LibLayoutEnum"
+
   LibraryPreparation : library_preparation_kit
+
+  LibraryPreparation : library_selection
+
+      LibraryPreparation --&gt; "0..1" LibrarySelectionEnum : library_selection
+    click LibrarySelectionEnum href "../LibrarySelectionEnum"
+
+  LibraryPreparation : library_source
+
+      LibraryPreparation --&gt; "0..1" LibrarySourceEnum : library_source
+    click LibrarySourceEnum href "../LibrarySourceEnum"
+
+  LibraryPreparation : library_strategy
+
+      LibraryPreparation --&gt; "0..1" LibraryStrategyEnum : library_strategy
+    click LibraryStrategyEnum href "../LibraryStrategyEnum"
 
   LibraryPreparation : library_type
 
@@ -586,6 +608,36 @@
 <td><a href="../target_subfragment/">target_subfragment</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Name of subfragment of a gene or locus</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../library_selection/">library_selection</a></td>
+<td>0..1 <br/> <a href="../LibrarySelectionEnum/">LibrarySelectionEnum</a></td>
+<td>Library selection or enrichment method used</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../library_strategy/">library_strategy</a></td>
+<td>0..1 <br/> <a href="../LibraryStrategyEnum/">LibraryStrategyEnum</a></td>
+<td>Sequencing technique intended for this library</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../library_source/">library_source</a></td>
+<td>0..1 <br/> <a href="../LibrarySourceEnum/">LibrarySourceEnum</a></td>
+<td>The molecular source of the sequencing library</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../lib_layout/">lib_layout</a></td>
+<td>0..1 <br/> <a href="../LibLayoutEnum/">LibLayoutEnum</a></td>
+<td>Specify whether to expect single, paired, or other configuration of reads</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../adapters/">adapters</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Adapters provide priming sequences for both amplification and sequencing of t...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -732,6 +784,11 @@ slots:
 - stranded_orientation
 - target_gene
 - target_subfragment
+- library_selection
+- library_strategy
+- library_source
+- lib_layout
+- adapters
 slot_usage:
   has_input:
     name: has_input
@@ -941,6 +998,74 @@ attributes:
     domain_of:
     - LibraryPreparation
     range: TextValue
+  library_selection:
+    name: library_selection
+    description: Library selection or enrichment method used
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+    rank: 1000
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: LibrarySelectionEnum
+  library_strategy:
+    name: library_strategy
+    description: Sequencing technique intended for this library
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+    rank: 1000
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: LibraryStrategyEnum
+  library_source:
+    name: library_source
+    description: The molecular source of the sequencing library
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+    rank: 1000
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: LibrarySourceEnum
+  lib_layout:
+    name: lib_layout
+    description: Specify whether to expect single, paired, or other configuration
+      of reads
+    title: library layout
+    examples:
+    - value: paired
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    keywords:
+    - library
+    slot_uri: MIXS:0000041
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: LibLayoutEnum
+  adapters:
+    name: adapters
+    description: Adapters provide priming sequences for both amplification and sequencing
+      of the sample-library fragments. Both adapters should be reported; in uppercase
+      letters
+    title: adapters
+    examples:
+    - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0000048
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: string
+    structured_pattern:
+      syntax: ^{dna_bases};{dna_bases}$
+      interpolated: true
+      partial_match: true
   instrument_used:
     name: instrument_used
     description: What instrument was used during DataGeneration or MaterialProcessing.

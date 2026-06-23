@@ -6814,6 +6814,16 @@
         "DataObject": {
             "additionalProperties": false,
             "description": "An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects.",
+            "if": {
+                "properties": {
+                    "data_object_type": {
+                        "const": "SRA toolkit-accessible sequence data"
+                    }
+                },
+                "required": [
+                    "data_object_type"
+                ]
+            },
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -6935,6 +6945,14 @@
                 "description",
                 "type"
             ],
+            "then": {
+                "properties": {
+                    "insdc_run_identifiers": {}
+                },
+                "required": [
+                    "insdc_run_identifiers"
+                ]
+            },
             "title": "DataObject",
             "type": "object"
         },
@@ -9317,10 +9335,28 @@
             "title": "Isolation",
             "type": "object"
         },
+        "LibLayoutEnum": {
+            "description": "",
+            "enum": [
+                "other",
+                "paired",
+                "single",
+                "vector"
+            ],
+            "title": "LibLayoutEnum",
+            "type": "string"
+        },
         "LibraryPreparation": {
             "additionalProperties": false,
             "description": "",
             "properties": {
+                "adapters": {
+                    "description": "Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
@@ -9391,11 +9427,27 @@
                         "null"
                     ]
                 },
+                "lib_layout": {
+                    "$ref": "#/$defs/LibLayoutEnum",
+                    "description": "Specify whether to expect single, paired, or other configuration of reads"
+                },
                 "library_preparation_kit": {
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "library_selection": {
+                    "$ref": "#/$defs/LibrarySelectionEnum",
+                    "description": "Library selection or enrichment method used"
+                },
+                "library_source": {
+                    "$ref": "#/$defs/LibrarySourceEnum",
+                    "description": "The molecular source of the sequencing library"
+                },
+                "library_strategy": {
+                    "$ref": "#/$defs/LibraryStrategyEnum",
+                    "description": "Sequencing technique intended for this library"
                 },
                 "library_type": {
                     "$ref": "#/$defs/LibraryTypeEnum"
@@ -9505,6 +9557,46 @@
             ],
             "title": "LibraryPreparation",
             "type": "object"
+        },
+        "LibrarySelectionEnum": {
+            "description": "Library selection or enrichment method",
+            "enum": [
+                "RANDOM",
+                "PCR",
+                "MDA",
+                "other",
+                "PolyA",
+                "size fractionation"
+            ],
+            "title": "LibrarySelectionEnum",
+            "type": "string"
+        },
+        "LibrarySourceEnum": {
+            "description": "Molecular source of the sequencing library",
+            "enum": [
+                "GENOMIC",
+                "TRANSCRIPTOMIC",
+                "METAGENOMIC",
+                "METATRANSCRIPTOMIC",
+                "SYNTHETIC",
+                "VIRAL RNA",
+                "GENOMIC SINGLE CELL",
+                "TRANSCRIPTOMIC SINGLE CELL",
+                "OTHER"
+            ],
+            "title": "LibrarySourceEnum",
+            "type": "string"
+        },
+        "LibraryStrategyEnum": {
+            "description": "Sequencing strategy used for library preparation",
+            "enum": [
+                "WGA",
+                "WGS",
+                "RNA-Seq",
+                "AMPLICON"
+            ],
+            "title": "LibraryStrategyEnum",
+            "type": "string"
         },
         "LibraryTypeEnum": {
             "description": "",
@@ -17535,5 +17627,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.1.post38.dev0+8f1dc97bd"
+    "version": "11.20.2.post1.dev0+68bcdee15"
 }
