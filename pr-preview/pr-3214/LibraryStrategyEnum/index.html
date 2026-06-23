@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -756,9 +767,13 @@
 </tr>
 </tbody>
 </table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>NMDC intentionally supports a curated subset of the INSDC library strategy vocabulary. The complete controlled vocabulary is defined in the referenced SRA.experiment.xsd; values can be added as needed.</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd">https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd</a></li>
+<li><a href="https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd">https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -770,9 +785,13 @@
 
 <pre><code class="language-yaml">name: LibraryStrategyEnum
 description: Sequencing strategy used for library preparation
+comments:
+- NMDC intentionally supports a curated subset of the INSDC library strategy vocabulary.
+  The complete controlled vocabulary is defined in the referenced SRA.experiment.xsd;
+  values can be added as needed.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
-- https://github.com/enasequence/webin-xml/blob/master/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+- https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
 rank: 1000
 permissible_values:
   WGA:
@@ -800,7 +819,7 @@ permissible_values:
     text: AMPLICON
     description: Sequencing of overlapping or distinct PCR or RT-PCR products
     comments:
-    - metagenomic community profiling using SSU rRN, for example
+    - metagenomic community profiling using SSU rRNA, for example
 
 </code></pre>
 

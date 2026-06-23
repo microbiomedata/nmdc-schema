@@ -7039,6 +7039,16 @@
         "DataObject": {
             "additionalProperties": false,
             "description": "An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects.",
+            "if": {
+                "properties": {
+                    "data_object_type": {
+                        "const": "SRA toolkit-accessible sequence data"
+                    }
+                },
+                "required": [
+                    "data_object_type"
+                ]
+            },
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -7162,6 +7172,14 @@
                 "description",
                 "type"
             ],
+            "then": {
+                "properties": {
+                    "insdc_run_identifiers": {}
+                },
+                "required": [
+                    "insdc_run_identifiers"
+                ]
+            },
             "title": "DataObject",
             "type": "object"
         },
@@ -17936,6 +17954,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.20.2.post30.dev0+287b4354c"
+    "version": "11.20.2.post31.dev0+564188988"
 }
 
