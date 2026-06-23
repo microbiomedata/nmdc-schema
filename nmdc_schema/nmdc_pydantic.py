@@ -292,6 +292,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                           'prefix_reference': 'http://www.w3.org/2002/07/owl#'},
                   'prov': {'prefix_prefix': 'prov',
                            'prefix_reference': 'http://www.w3.org/ns/prov#'},
+                  'pubmed': {'prefix_prefix': 'pubmed',
+                             'prefix_reference': 'https://bioregistry.io/pubmed:'},
                   'qud': {'prefix_prefix': 'qud',
                           'prefix_reference': 'http://qudt.org/1.1/schema/qudt#'},
                   'rdf': {'prefix_prefix': 'rdf',
@@ -1513,6 +1515,100 @@ class UnitEnum(str, Enum):
     """
 
 
+class LibraryStrategyEnum(str, Enum):
+    """
+    Sequencing strategy used for library preparation
+    """
+    Whole_Genome_Amplification = "WGA"
+    """
+    Whole genome amplification followed by random sequencing.
+    """
+    Whole_Genome_Sequencing = "WGS"
+    """
+    Random sequencing of the whole genome.
+    """
+    RNA_Seq = "RNA-Seq"
+    """
+    Random sequencing of whole transcriptome
+    """
+    AMPLICON = "AMPLICON"
+    """
+    Sequencing of overlapping or distinct PCR or RT-PCR products
+    """
+
+
+class LibrarySourceEnum(str, Enum):
+    """
+    Molecular source of the sequencing library
+    """
+    GENOMIC = "GENOMIC"
+    """
+    Genomic DNA (includes PCR products from genomic DNA)
+    """
+    TRANSCRIPTOMIC = "TRANSCRIPTOMIC"
+    """
+    Transcription products or non-genomic DNA
+    """
+    METAGENOMIC = "METAGENOMIC"
+    """
+    Mixed material from metagenome
+    """
+    METATRANSCRIPTOMIC = "METATRANSCRIPTOMIC"
+    """
+    Transcription products from community targets
+    """
+    SYNTHETIC = "SYNTHETIC"
+    """
+    Synthetic DNA
+    """
+    VIRAL_RNA = "VIRAL RNA"
+    """
+    Viral RNA
+    """
+    GENOMIC_SINGLE_CELL = "GENOMIC SINGLE CELL"
+    """
+    Single cell genomic DNA source
+    """
+    TRANSCRIPTOMIC_SINGLE_CELL = "TRANSCRIPTOMIC SINGLE CELL"
+    """
+    Single cell transcriptomic source
+    """
+    OTHER = "OTHER"
+    """
+    Other, unspecified, or unknown library source material 
+    """
+
+
+class LibrarySelectionEnum(str, Enum):
+    """
+    Library selection or enrichment method
+    """
+    RANDOM = "RANDOM"
+    """
+    Random selection by shearing or other method
+    """
+    PCR = "PCR"
+    """
+    Source material was selected by designed primers
+    """
+    MDA = "MDA"
+    """
+    Multiple displacement amplification
+    """
+    other = "other"
+    """
+    Other library enrichment, screening, or selection process (please include additional info in the design description)
+    """
+    PolyA = "PolyA"
+    """
+    PolyA selection or enrichment for messenger RNA (mRNA)
+    """
+    size_fractionation = "size fractionation"
+    """
+    Physical selection of size appropriate targets
+    """
+
+
 class ExecutionResourceEnum(str, Enum):
     NERSC_Cori = "NERSC-Cori"
     """
@@ -1591,7 +1687,7 @@ class FileTypeEnum(str, Enum):
     """
     SRA_toolkit_accessible_sequence_data = "SRA toolkit-accessible sequence data"
     """
-    Files that are avaliable for download via SRA Toolkit by providing an INSDC accession
+    Files that are available for download via SRA Toolkit by providing an INSDC accession
     """
     Direct_Infusion_FT_ICR_MS_Analysis_Results = "Direct Infusion FT-ICR MS Analysis Results"
     """
@@ -2839,6 +2935,13 @@ class IndoorSurfEnum(str, Enum):
     vent_cover = "vent cover"
     wall = "wall"
     window = "window"
+
+
+class LibLayoutEnum(str, Enum):
+    other = "other"
+    paired = "paired"
+    single = "single"
+    vector = "vector"
 
 
 class LightTypeEnum(str, Enum):
@@ -7463,6 +7566,19 @@ class DataObject(InformationObject):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:DataObject',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
+         'rules': [{'description': 'If data_object_type is "SRA toolkit-accessible '
+                                   'sequence data", then insdc_run_identifiers is '
+                                   'required, because such objects are retrieved by '
+                                   'INSDC run accession through the SRA Toolkit rather '
+                                   'than by a stable URL.',
+                    'postconditions': {'slot_conditions': {'insdc_run_identifiers': {'name': 'insdc_run_identifiers',
+                                                                                     'required': True}}},
+                    'preconditions': {'slot_conditions': {'data_object_type': {'equals_string': 'SRA '
+                                                                                                'toolkit-accessible '
+                                                                                                'sequence '
+                                                                                                'data',
+                                                                               'name': 'data_object_type'}}},
+                    'title': 'sra_toolkit_object_requires_run_identifier'}],
          'slot_usage': {'data_category': {'name': 'data_category', 'required': True},
                         'data_object_type': {'name': 'data_object_type',
                                              'required': True},
@@ -17968,6 +18084,22 @@ class LibraryPreparation(MaterialProcessing):
          'examples': [{'value': 'V6, V9, ITS'}],
          'keywords': ['target'],
          'slot_uri': 'MIXS:0000045'} })
+    library_selection: Optional[LibrarySelectionEnum] = Field(default=None, description="""Library selection or enrichment method used""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation'],
+         'see_also': ['https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd']} })
+    library_strategy: Optional[LibraryStrategyEnum] = Field(default=None, description="""Sequencing technique intended for this library""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation'],
+         'see_also': ['https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd']} })
+    library_source: Optional[LibrarySourceEnum] = Field(default=None, description="""The molecular source of the sequencing library""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation'],
+         'see_also': ['https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd']} })
+    lib_layout: Optional[LibLayoutEnum] = Field(default=None, title="library layout", description="""Specify whether to expect single, paired, or other configuration of reads""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation'],
+         'examples': [{'value': 'paired'}],
+         'keywords': ['library'],
+         'slot_uri': 'MIXS:0000041'} })
+    adapters: Optional[str] = Field(default=None, title="adapters", description="""Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation'],
+         'examples': [{'value': 'AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT'}],
+         'slot_uri': 'MIXS:0000048',
+         'structured_pattern': {'interpolated': True,
+                                'partial_match': True,
+                                'syntax': '^{dna_bases};{dna_bases}$'}} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
@@ -18068,6 +18200,19 @@ class LibraryPreparation(MaterialProcessing):
                     raise ValueError(err_msg)
         elif isinstance(v, str) and not pattern.match(v):
             err_msg = f"Invalid pcr_primers format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('adapters')
+    def pattern_adapters(cls, v):
+        pattern=re.compile(r"^[ACGT];[ACGT]$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid adapters format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid adapters format: {v}"
             raise ValueError(err_msg)
         return v
 

@@ -389,6 +389,10 @@
       "prefix_prefix": "xsd",
       "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
     },
+    "pubmed": {
+      "prefix_prefix": "pubmed",
+      "prefix_reference": "https://bioregistry.io/pubmed:"
+    },
     "shex": {
       "prefix_prefix": "shex",
       "prefix_reference": "http://www.w3.org/ns/shex#"
@@ -2324,6 +2328,140 @@
         }
       }
     },
+    "LibraryStrategyEnum": {
+      "name": "LibraryStrategyEnum",
+      "description": "Sequencing strategy used for library preparation",
+      "comments": [
+        "NMDC intentionally supports a curated subset of the INSDC library strategy vocabulary. The complete controlled vocabulary is defined in the referenced SRA.experiment.xsd; values can be added as needed."
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "see_also": [
+        "https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd"
+      ],
+      "permissible_values": {
+        "WGA": {
+          "text": "WGA",
+          "description": "Whole genome amplification followed by random sequencing.",
+          "title": "Whole Genome Amplification",
+          "see_also": [
+            "pubmed:1631067",
+            "pubmed:8962113"
+          ]
+        },
+        "WGS": {
+          "text": "WGS",
+          "description": "Random sequencing of the whole genome.",
+          "title": "Whole Genome Sequencing",
+          "see_also": [
+            "pubmed:10731132"
+          ]
+        },
+        "RNA-Seq": {
+          "text": "RNA-Seq",
+          "description": "Random sequencing of whole transcriptome",
+          "see_also": [
+            "pubmed:18611170"
+          ],
+          "aliases": [
+            "Whole Transcriptome Shotgun Sequencing",
+            "WTSS"
+          ]
+        },
+        "AMPLICON": {
+          "text": "AMPLICON",
+          "description": "Sequencing of overlapping or distinct PCR or RT-PCR products",
+          "comments": [
+            "metagenomic community profiling using SSU rRNA, for example"
+          ]
+        }
+      }
+    },
+    "LibrarySourceEnum": {
+      "name": "LibrarySourceEnum",
+      "description": "Molecular source of the sequencing library",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "see_also": [
+        "https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd"
+      ],
+      "permissible_values": {
+        "GENOMIC": {
+          "text": "GENOMIC",
+          "description": "Genomic DNA (includes PCR products from genomic DNA)"
+        },
+        "TRANSCRIPTOMIC": {
+          "text": "TRANSCRIPTOMIC",
+          "description": "Transcription products or non-genomic DNA",
+          "comments": [
+            "for example EST cDNA, RT-PCR, or screened libraries"
+          ]
+        },
+        "METAGENOMIC": {
+          "text": "METAGENOMIC",
+          "description": "Mixed material from metagenome"
+        },
+        "METATRANSCRIPTOMIC": {
+          "text": "METATRANSCRIPTOMIC",
+          "description": "Transcription products from community targets"
+        },
+        "SYNTHETIC": {
+          "text": "SYNTHETIC",
+          "description": "Synthetic DNA"
+        },
+        "VIRAL RNA": {
+          "text": "VIRAL RNA",
+          "description": "Viral RNA"
+        },
+        "GENOMIC SINGLE CELL": {
+          "text": "GENOMIC SINGLE CELL",
+          "description": "Single cell genomic DNA source"
+        },
+        "TRANSCRIPTOMIC SINGLE CELL": {
+          "text": "TRANSCRIPTOMIC SINGLE CELL",
+          "description": "Single cell transcriptomic source"
+        },
+        "OTHER": {
+          "text": "OTHER",
+          "description": "Other, unspecified, or unknown library source material "
+        }
+      }
+    },
+    "LibrarySelectionEnum": {
+      "name": "LibrarySelectionEnum",
+      "description": "Library selection or enrichment method",
+      "comments": [
+        "NMDC intentionally supports a curated subset of the INSDC library selection vocabulary. The complete controlled vocabulary is defined in the referenced SRA.experiment.xsd; values can be added as needed."
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "see_also": [
+        "https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd"
+      ],
+      "permissible_values": {
+        "RANDOM": {
+          "text": "RANDOM",
+          "description": "Random selection by shearing or other method"
+        },
+        "PCR": {
+          "text": "PCR",
+          "description": "Source material was selected by designed primers"
+        },
+        "MDA": {
+          "text": "MDA",
+          "description": "Multiple displacement amplification"
+        },
+        "other": {
+          "text": "other",
+          "description": "Other library enrichment, screening, or selection process (please include additional info in the design description)"
+        },
+        "PolyA": {
+          "text": "PolyA",
+          "description": "PolyA selection or enrichment for messenger RNA (mRNA)"
+        },
+        "size fractionation": {
+          "text": "size fractionation",
+          "description": "Physical selection of size appropriate targets"
+        }
+      }
+    },
     "ExecutionResourceEnum": {
       "name": "ExecutionResourceEnum",
       "from_schema": "https://w3id.org/nmdc/nmdc",
@@ -2534,7 +2672,7 @@
         },
         "SRA toolkit-accessible sequence data": {
           "text": "SRA toolkit-accessible sequence data",
-          "description": "Files that are avaliable for download via SRA Toolkit by providing an INSDC accession",
+          "description": "Files that are available for download via SRA Toolkit by providing an INSDC accession",
           "comments": [
             "File format will depend on options specified to SRA Toolkit"
           ],
@@ -5743,6 +5881,24 @@
         },
         "window": {
           "text": "window"
+        }
+      }
+    },
+    "LibLayoutEnum": {
+      "name": "LibLayoutEnum",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "permissible_values": {
+        "other": {
+          "text": "other"
+        },
+        "paired": {
+          "text": "paired"
+        },
+        "single": {
+          "text": "single"
+        },
+        "vector": {
+          "text": "vector"
         }
       }
     },
@@ -8978,6 +9134,33 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "string"
+    },
+    "library_strategy": {
+      "name": "library_strategy",
+      "description": "Sequencing technique intended for this library",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "see_also": [
+        "https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd"
+      ],
+      "range": "LibraryStrategyEnum"
+    },
+    "library_source": {
+      "name": "library_source",
+      "description": "The molecular source of the sequencing library",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "see_also": [
+        "https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd"
+      ],
+      "range": "LibrarySourceEnum"
+    },
+    "library_selection": {
+      "name": "library_selection",
+      "description": "Library selection or enrichment method used",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "see_also": [
+        "https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd"
+      ],
+      "range": "LibrarySelectionEnum"
     },
     "processing_institution_workflow_metadata": {
       "name": "processing_institution_workflow_metadata",
@@ -21971,6 +22154,40 @@
         "partial_match": true
       }
     },
+    "lib_layout": {
+      "name": "lib_layout",
+      "description": "Specify whether to expect single, paired, or other configuration of reads",
+      "title": "library layout",
+      "examples": [
+        {
+          "value": "paired"
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "keywords": [
+        "library"
+      ],
+      "slot_uri": "MIXS:0000041",
+      "range": "LibLayoutEnum"
+    },
+    "adapters": {
+      "name": "adapters",
+      "description": "Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters",
+      "title": "adapters",
+      "examples": [
+        {
+          "value": "AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT"
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "slot_uri": "MIXS:0000048",
+      "pattern": "^[ACGT];[ACGT]$",
+      "structured_pattern": {
+        "syntax": "^{dna_bases};{dna_bases}$",
+        "interpolated": true,
+        "partial_match": true
+      }
+    },
     "samp_collec_device": {
       "name": "samp_collec_device",
       "description": "The device used to collect an environmental sample. Recommended values are subclasses of specimen collection device (http://purl.obolibrary.org/obo/OBI_0002814). OBI itself contains only swab/wipe subclasses; environmental sampling devices (corers, grab samplers, passive samplers, etc.) are defined in GENEPIO under the same OBI:0002814 parent. Free-text values are accepted for backward compatibility; new submissions should prefer the form: label [PREFIX:LOCALID].",
@@ -24338,7 +24555,12 @@
         "pcr_primers",
         "stranded_orientation",
         "target_gene",
-        "target_subfragment"
+        "target_subfragment",
+        "library_selection",
+        "library_strategy",
+        "library_source",
+        "lib_layout",
+        "adapters"
       ],
       "slot_usage": {
         "has_input": {
@@ -25730,7 +25952,29 @@
           "required": true
         }
       },
-      "class_uri": "nmdc:DataObject"
+      "class_uri": "nmdc:DataObject",
+      "rules": [
+        {
+          "preconditions": {
+            "slot_conditions": {
+              "data_object_type": {
+                "name": "data_object_type",
+                "equals_string": "SRA toolkit-accessible sequence data"
+              }
+            }
+          },
+          "postconditions": {
+            "slot_conditions": {
+              "insdc_run_identifiers": {
+                "name": "insdc_run_identifiers",
+                "required": true
+              }
+            }
+          },
+          "description": "If data_object_type is \"SRA toolkit-accessible sequence data\", then insdc_run_identifiers is required, because such objects are retrieved by INSDC run accession through the SRA Toolkit rather than by a stable URL.",
+          "title": "sra_toolkit_object_requires_run_identifier"
+        }
+      ]
     },
     "DataEmitterProcess": {
       "name": "DataEmitterProcess",

@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-06-17T21:14:25
+# Generation date: 2026-06-23T18:37:25
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -152,6 +152,7 @@ NEON_SCHEMA = CurieNamespace('neon_schema', 'http://example.org/neon/schema/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
+PUBMED = CurieNamespace('pubmed', 'https://bioregistry.io/pubmed:')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
@@ -4514,6 +4515,11 @@ class LibraryPreparation(MaterialProcessing):
     stranded_orientation: Optional[Union[str, "StrandedOrientationEnum"]] = None
     target_gene: Optional[Union[str, "TargetGeneEnum"]] = None
     target_subfragment: Optional[Union[dict, TextValue]] = None
+    library_selection: Optional[Union[str, "LibrarySelectionEnum"]] = None
+    library_strategy: Optional[Union[str, "LibraryStrategyEnum"]] = None
+    library_source: Optional[Union[str, "LibrarySourceEnum"]] = None
+    lib_layout: Optional[Union[str, "LibLayoutEnum"]] = None
+    adapters: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -4562,6 +4568,21 @@ class LibraryPreparation(MaterialProcessing):
 
         if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
             self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
+
+        if self.library_selection is not None and not isinstance(self.library_selection, LibrarySelectionEnum):
+            self.library_selection = LibrarySelectionEnum(self.library_selection)
+
+        if self.library_strategy is not None and not isinstance(self.library_strategy, LibraryStrategyEnum):
+            self.library_strategy = LibraryStrategyEnum(self.library_strategy)
+
+        if self.library_source is not None and not isinstance(self.library_source, LibrarySourceEnum):
+            self.library_source = LibrarySourceEnum(self.library_source)
+
+        if self.lib_layout is not None and not isinstance(self.lib_layout, LibLayoutEnum):
+            self.lib_layout = LibLayoutEnum(self.lib_layout)
+
+        if self.adapters is not None and not isinstance(self.adapters, str):
+            self.adapters = str(self.adapters)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -7790,6 +7811,109 @@ class UnitEnum(EnumDefinitionImpl):
                 title="inches",
                 description="The Unified Code for Units of Measure (UCUM) representation of inch."))
 
+class LibraryStrategyEnum(EnumDefinitionImpl):
+    """
+    Sequencing strategy used for library preparation
+    """
+    WGA = PermissibleValue(
+        text="WGA",
+        title="Whole Genome Amplification",
+        description="Whole genome amplification followed by random sequencing.")
+    WGS = PermissibleValue(
+        text="WGS",
+        title="Whole Genome Sequencing",
+        description="Random sequencing of the whole genome.")
+    AMPLICON = PermissibleValue(
+        text="AMPLICON",
+        description="Sequencing of overlapping or distinct PCR or RT-PCR products")
+
+    _defn = EnumDefinition(
+        name="LibraryStrategyEnum",
+        description="Sequencing strategy used for library preparation",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "RNA-Seq",
+            PermissibleValue(
+                text="RNA-Seq",
+                description="Random sequencing of whole transcriptome"))
+
+class LibrarySourceEnum(EnumDefinitionImpl):
+    """
+    Molecular source of the sequencing library
+    """
+    GENOMIC = PermissibleValue(
+        text="GENOMIC",
+        description="Genomic DNA (includes PCR products from genomic DNA)")
+    TRANSCRIPTOMIC = PermissibleValue(
+        text="TRANSCRIPTOMIC",
+        description="Transcription products or non-genomic DNA")
+    METAGENOMIC = PermissibleValue(
+        text="METAGENOMIC",
+        description="Mixed material from metagenome")
+    METATRANSCRIPTOMIC = PermissibleValue(
+        text="METATRANSCRIPTOMIC",
+        description="Transcription products from community targets")
+    SYNTHETIC = PermissibleValue(
+        text="SYNTHETIC",
+        description="Synthetic DNA")
+    OTHER = PermissibleValue(
+        text="OTHER",
+        description="Other, unspecified, or unknown library source material")
+
+    _defn = EnumDefinition(
+        name="LibrarySourceEnum",
+        description="Molecular source of the sequencing library",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "VIRAL RNA",
+            PermissibleValue(
+                text="VIRAL RNA",
+                description="Viral RNA"))
+        setattr(cls, "GENOMIC SINGLE CELL",
+            PermissibleValue(
+                text="GENOMIC SINGLE CELL",
+                description="Single cell genomic DNA source"))
+        setattr(cls, "TRANSCRIPTOMIC SINGLE CELL",
+            PermissibleValue(
+                text="TRANSCRIPTOMIC SINGLE CELL",
+                description="Single cell transcriptomic source"))
+
+class LibrarySelectionEnum(EnumDefinitionImpl):
+    """
+    Library selection or enrichment method
+    """
+    RANDOM = PermissibleValue(
+        text="RANDOM",
+        description="Random selection by shearing or other method")
+    PCR = PermissibleValue(
+        text="PCR",
+        description="Source material was selected by designed primers")
+    MDA = PermissibleValue(
+        text="MDA",
+        description="Multiple displacement amplification")
+    other = PermissibleValue(
+        text="other",
+        description="""Other library enrichment, screening, or selection process (please include additional info in the design description)""")
+    PolyA = PermissibleValue(
+        text="PolyA",
+        description="PolyA selection or enrichment for messenger RNA (mRNA)")
+
+    _defn = EnumDefinition(
+        name="LibrarySelectionEnum",
+        description="Library selection or enrichment method",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "size fractionation",
+            PermissibleValue(
+                text="size fractionation",
+                description="Physical selection of size appropriate targets"))
+
 class ExecutionResourceEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
@@ -7882,7 +8006,7 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "SRA toolkit-accessible sequence data",
             PermissibleValue(
                 text="SRA toolkit-accessible sequence data",
-                description="Files that are avaliable for download via SRA Toolkit by providing an INSDC accession"))
+                description="Files that are available for download via SRA Toolkit by providing an INSDC accession"))
         setattr(cls, "Direct Infusion FT-ICR MS Analysis Results",
             PermissibleValue(
                 text="Direct Infusion FT-ICR MS Analysis Results",
@@ -9638,6 +9762,17 @@ class IndoorSurfEnum(EnumDefinitionImpl):
         setattr(cls, "vent cover",
             PermissibleValue(text="vent cover"))
 
+class LibLayoutEnum(EnumDefinitionImpl):
+
+    other = PermissibleValue(text="other")
+    paired = PermissibleValue(text="paired")
+    single = PermissibleValue(text="single")
+    vector = PermissibleValue(text="vector")
+
+    _defn = EnumDefinition(
+        name="LibLayoutEnum",
+    )
+
 class LightTypeEnum(EnumDefinitionImpl):
 
     none = PermissibleValue(text="none")
@@ -11388,6 +11523,15 @@ slots.has_value_term_id = Slot(uri=NMDC['attribute_values/has_value_term_id'], n
 
 slots.has_datetime_value = Slot(uri=NMDC['attribute_values/has_datetime_value'], name="has_datetime_value", curie=NMDC.curie('attribute_values/has_datetime_value'),
                    model_uri=NMDC.has_datetime_value, domain=None, range=Optional[str])
+
+slots.library_strategy = Slot(uri=NMDC.library_strategy, name="library_strategy", curie=NMDC.curie('library_strategy'),
+                   model_uri=NMDC.library_strategy, domain=None, range=Optional[Union[str, "LibraryStrategyEnum"]])
+
+slots.library_source = Slot(uri=NMDC.library_source, name="library_source", curie=NMDC.curie('library_source'),
+                   model_uri=NMDC.library_source, domain=None, range=Optional[Union[str, "LibrarySourceEnum"]])
+
+slots.library_selection = Slot(uri=NMDC.library_selection, name="library_selection", curie=NMDC.curie('library_selection'),
+                   model_uri=NMDC.library_selection, domain=None, range=Optional[Union[str, "LibrarySelectionEnum"]])
 
 slots.processing_institution_workflow_metadata = Slot(uri=NMDC.processing_institution_workflow_metadata, name="processing_institution_workflow_metadata", curie=NMDC.curie('processing_institution_workflow_metadata'),
                    model_uri=NMDC.processing_institution_workflow_metadata, domain=None, range=Optional[str], mappings = [NCIT["C165211"]])
@@ -13382,6 +13526,12 @@ slots.ref_biomaterial = Slot(uri=MIXS['0000025'], name="ref_biomaterial", curie=
 
 slots.isol_growth_condt = Slot(uri=MIXS['0000003'], name="isol_growth_condt", curie=MIXS.curie('0000003'),
                    model_uri=NMDC.isol_growth_condt, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.lib_layout = Slot(uri=MIXS['0000041'], name="lib_layout", curie=MIXS.curie('0000041'),
+                   model_uri=NMDC.lib_layout, domain=None, range=Optional[Union[str, "LibLayoutEnum"]])
+
+slots.adapters = Slot(uri=MIXS['0000048'], name="adapters", curie=MIXS.curie('0000048'),
+                   model_uri=NMDC.adapters, domain=None, range=Optional[str])
 
 slots.samp_collec_device = Slot(uri=MIXS['0000002'], name="samp_collec_device", curie=MIXS.curie('0000002'),
                    model_uri=NMDC.samp_collec_device, domain=None, range=Optional[str],
