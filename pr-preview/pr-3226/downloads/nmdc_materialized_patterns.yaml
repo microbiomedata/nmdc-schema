@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.21.0.post2.dev0+99e0bac05
+version: 11.21.0.post3.dev0+606b3c161
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -13277,9 +13277,9 @@ slots:
     keywords:
     - pcr
     slot_uri: MIXS:0000046
-    pattern: FWD:[ACGT];REV:[ACGT]
+    pattern: FWD:[ACGTRYSWKMBDHVNI]+;REV:[ACGTRYSWKMBDHVNI]+
     structured_pattern:
-      syntax: FWD:{dna_bases};REV:{dna_bases}
+      syntax: FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+
       interpolated: true
   permeability:
     name: permeability
@@ -17359,9 +17359,9 @@ slots:
     - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000048
-    pattern: ^[ACGT];[ACGT]$
+    pattern: ^[ACGTRYSWKMBDHVNI]+;[ACGTRYSWKMBDHVNI]+$
     structured_pattern:
-      syntax: ^{dna_bases};{dna_bases}$
+      syntax: ^{primer_adapter_codes}+;{primer_adapter_codes}+$
       interpolated: true
       partial_match: true
   samp_collec_device:

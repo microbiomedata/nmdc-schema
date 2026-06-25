@@ -956,7 +956,7 @@ attributes:
     - LibraryPreparation
     range: string
     structured_pattern:
-      syntax: FWD:{dna_bases};REV:{dna_bases}
+      syntax: FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+
       interpolated: true
   stranded_orientation:
     name: stranded_orientation
@@ -1063,7 +1063,7 @@ attributes:
     - LibraryPreparation
     range: string
     structured_pattern:
-      syntax: ^{dna_bases};{dna_bases}$
+      syntax: ^{primer_adapter_codes}+;{primer_adapter_codes}+$
       interpolated: true
       partial_match: true
   instrument_used:

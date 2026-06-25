@@ -9597,7 +9597,7 @@
             "properties": {
                 "adapters": {
                     "description": "Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters",
-                    "pattern": "^[ACGT];[ACGT]$",
+                    "pattern": "^[ACGTRYSWKMBDHVNI]+;[ACGTRYSWKMBDHVNI]+$",
                     "type": [
                         "string",
                         "null"
@@ -9735,7 +9735,7 @@
                 },
                 "pcr_primers": {
                     "description": "PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters",
-                    "pattern": "FWD:[ACGT];REV:[ACGT]",
+                    "pattern": "FWD:[ACGTRYSWKMBDHVNI]+;REV:[ACGTRYSWKMBDHVNI]+",
                     "type": [
                         "string",
                         "null"
@@ -17954,6 +17954,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.21.0.post2.dev0+99e0bac05"
+    "version": "11.21.0.post3.dev0+606b3c161"
 }
 
