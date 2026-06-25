@@ -9735,7 +9735,7 @@
                 },
                 "pcr_primers": {
                     "description": "PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters",
-                    "pattern": "FWD:[ACGT]+;REV:[ACGT]+",
+                    "pattern": "FWD:[ACGT];REV:[ACGT]",
                     "type": [
                         "string",
                         "null"
@@ -17954,6 +17954,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.21.0.post2.dev0+37f92075a"
+    "version": "11.21.0.post4.dev0+e73cd9e1d"
 }
 

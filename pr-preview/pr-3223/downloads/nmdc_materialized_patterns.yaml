@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.21.0.post2.dev0+37f92075a
+version: 11.21.0.post4.dev0+e73cd9e1d
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -13277,7 +13277,7 @@ slots:
     keywords:
     - pcr
     slot_uri: MIXS:0000046
-    pattern: FWD:[ACGT]+;REV:[ACGT]+
+    pattern: FWD:[ACGT];REV:[ACGT]
     structured_pattern:
       syntax: FWD:{dna_bases};REV:{dna_bases}
       interpolated: true
@@ -17361,7 +17361,7 @@ slots:
     slot_uri: MIXS:0000048
     pattern: ^[ACGT]+;[ACGT]+$
     structured_pattern:
-      syntax: ^{dna_bases};{dna_bases}$
+      syntax: ^{dna_bases}+;{dna_bases}+$
       interpolated: true
       partial_match: true
   samp_collec_device:
@@ -22433,7 +22433,7 @@ settings:
     setting_value: (\d{4})(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01]\d|2[0-3]):([0-5]\d)(:([0-5]\d))?(\.\d+)?(Z|([+-][01]\d:[0-5]\d))?)?)?)?
   dna_bases:
     setting_key: dna_bases
-    setting_value: '[ACGT]+'
+    setting_value: '[ACGT]'
   DOI:
     setting_key: DOI
     setting_value: doi:10\.\d{2,9}/.*
