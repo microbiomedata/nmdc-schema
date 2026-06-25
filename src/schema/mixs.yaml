@@ -7173,7 +7173,7 @@ slots:
       - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
     slot_uri: MIXS:0000048
     structured_pattern:
-      syntax: ^{dna_bases};{dna_bases}$
+      syntax: ^{dna_bases}+;{dna_bases}+$
       interpolated: true
       partial_match: true
   samp_collec_device:
