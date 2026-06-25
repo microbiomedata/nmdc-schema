@@ -407,6 +407,20 @@
 'del(.slots.ph_meth.structured_pattern)'
 # water_cont_soil_meth data: "volumetric soil water content; ..."
 'del(.slots.water_cont_soil_meth.structured_pattern)'
+
+# Fix the structured_pattern syntax for adapters and pcr_primers.
+# Upstream MIxS interpolates {dna_bases} (= [ACGT]) once, producing patterns that
+# match exactly one canonical base per side (e.g. ^[ACGT];[ACGT]$). Real values are
+# full sequences, and primers/adapters routinely carry IUPAC degenerate codes
+# (e.g. real NCBI SRA amplicon experiment SRX17220408: FWD GTGYCAGCMGCCGCGGTAA,
+# REV CCGYCAATTYMTTTRAGTTT). Switch to the {primer_adapter_codes} setting
+# ([ACGTRYSWKMBDHVNI], defined in src/schema/nmdc.yaml) with a + quantifier so the
+# pattern matches one-or-more degenerate bases per side.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3222 (adapters)
+# and https://github.com/microbiomedata/nmdc-schema/issues/3224 (pcr_primers).
+'.slots.adapters.structured_pattern.syntax = "^{primer_adapter_codes}+;{primer_adapter_codes}+$"'
+'.slots.pcr_primers.structured_pattern.syntax = "FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+"'
+
 '.slots.samp_loc_corr_rate.range |= "TextValue"'
 '.slots.samp_mat_process.range |= "ControlledTermValue"'
 '.slots.samp_md.range |= "QuantityValue"'

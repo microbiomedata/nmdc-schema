@@ -231,6 +231,36 @@ Some production data doesn't match GSC patterns. We handle this by using TextVal
 | `ph_meth` | Data is "measured in 1:1 w/vol slurry (10.2136/...)" | Delete `structured_pattern` |
 | `water_cont_soil_meth` | Data is "volumetric soil water content; ..." | Delete `structured_pattern` |
 
+## Maintaining mixs.yaml (how to change a MIxS slot)
+
+`src/schema/mixs.yaml` is generated. Do not hand-edit it: the next `make src/schema/mixs.yaml` regenerates it from the MIxS source and your edit is lost. The `CONTRIBUTING.md` policy table records this.
+
+There are two durable places to make a change, and a slot fix often needs both:
+
+1. **Structure, range, pattern syntax, descriptions, examples** go in `assets/yq-for-mixs-customizations.txt`. Each line is a single-quoted `yq` expression applied to the imported schema (see `makefiles/mixs.Makefile`).
+2. **The placeholders a `structured_pattern.syntax` interpolates** (e.g. `{dna_bases}`, `{float}`, `{primer_adapter_codes}`) are defined in the `settings:` block of `src/schema/nmdc.yaml`, not in `mixs.yaml`. The import pipeline strips settings, so the materializer reads them from `nmdc.yaml`. To change what a placeholder expands to, edit the setting; to change which placeholder a slot uses, edit the slot's `syntax` in the yq asset. See [Settings for Pattern Interpolation](#settings-for-pattern-interpolation).
+
+### Worked example: fixing the `adapters` and `pcr_primers` patterns
+
+Issues [#3222](https://github.com/microbiomedata/nmdc-schema/issues/3222) and [#3224](https://github.com/microbiomedata/nmdc-schema/issues/3224): both slots interpolated `{dna_bases}` (`[ACGT]`) exactly once, producing patterns that match a single canonical base per side (`^[ACGT];[ACGT]$`). Real values are full sequences, and primers/adapters carry IUPAC degenerate codes (a real NCBI SRA amplicon experiment, SRX17220408, records `FWD GTGYCAGCMGCCGCGGTAA`, `REV CCGYCAATTYMTTTRAGTTT`). The fix uses the existing `primer_adapter_codes` setting (`[ACGTRYSWKMBDHVNI]`) with a `+` quantifier, via two lines in the yq asset:
+
+```
+'.slots.adapters.structured_pattern.syntax = "^{primer_adapter_codes}+;{primer_adapter_codes}+$"'
+'.slots.pcr_primers.structured_pattern.syntax = "FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+"'
+```
+
+### Verifying a pattern change without a full rebuild
+
+A full `make src/schema/mixs.yaml` re-pulls MIxS over the network and is slow. To check that a `structured_pattern` change interpolates as intended, apply your yq line to a scratch copy of `mixs.yaml`, materialize only the patterns, and inspect the result (revert the scratch copy afterward; the committed `mixs.yaml` and generated artifacts are regenerated at release, not in feature PRs):
+
+```bash
+cp src/schema/mixs.yaml /tmp/mixs.yaml
+yq -i '<your yq expression>' /tmp/mixs.yaml   # then point nmdc.yaml's import at it, or edit in place and revert
+poetry run linkml generate linkml --format yaml --materialize-patterns \
+  --no-materialize-attributes --output /tmp/materialized.yaml src/schema/nmdc.yaml
+yq eval '.slots.<slot>.pattern' /tmp/materialized.yaml
+```
+
 ## Future Work
 
 ### TextValue to Enum Migrations
