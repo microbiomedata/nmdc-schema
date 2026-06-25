@@ -1,10 +1,10 @@
-from typing import Dict, List, Tuple
+from typing import List, Tuple
 
 import click
 from linkml_runtime import SchemaView
 
 from nmdc_schema.nmdc_data import get_nmdc_schema_definition
-from nmdc_schema.id_helpers import get_compatible_typecodes
+from nmdc_schema.id_helpers import get_class_name_to_typecode_map
 
 
 DATABASE_CLASS_NAME = "Database"
@@ -96,29 +96,15 @@ def get_collection_names_for_class_name(class_name: str) -> List[str]:
 def main():
     r"""
     Generates a Markdown document containing a table that can be used to map typecodes to schema classes.
-
-    TODO: Refactor this function to use the newly-implemented `get_class_name_to_typecode_map` function
-          defined in `nmdc_schema/id_helpers.py`.
     """
 
-    # Initialize the data structure that will map each class name to
-    # the typecode(s) that are compatible with its `id` slot.
-    class_name_to_typecodes: Dict[str, List[str]] = {}
+    # Get a dictionary that maps the name of each class defined in the schema to a list of all of
+    # the typecodes that are compatible with the `id` slot of the class.
+    all_class_name_to_typecodes = get_class_name_to_typecode_map()
 
-    # Iterate over all class definitions in the schema.
-    all_class_defs_by_class_name = schema_view.all_classes()
-    for class_name, class_def in all_class_defs_by_class_name.items():
-        induced_slot_defs = schema_view.class_induced_slots(class_name)
-
-        # Iterate over all slot definitions in this class definition.
-        for slot_def in induced_slot_defs:
-            slot_name = slot_def.name
-
-            # If this slot's name is `id`, get all the typecodes — if any — from the slot definition's pattern.
-            if slot_name == "id":
-                compatible_typecodes = get_compatible_typecodes(slot_def.pattern)
-                if len(compatible_typecodes) > 0:
-                    class_name_to_typecodes[class_name] = sorted(compatible_typecodes)  # sorts them alphabetically
+    # Filter out the names of classes that lack typecodes, given that the table we will be rendering
+    # is designed to be a "typecode-to-(something)" map, not a "(something)-to-typecode" map.
+    class_name_to_typecodes = {c: t for c, t in all_class_name_to_typecodes.items() if len(t) > 0}
 
     # Build the Markdown table.
     md_table_lines: List[str] = [r"| Typecode(s) | Schema class | Collection name(s) |",
