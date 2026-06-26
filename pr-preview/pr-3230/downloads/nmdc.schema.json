@@ -11042,7 +11042,7 @@
             "type": "string"
         },
         "MetadataBadgeEnum": {
-            "description": "Metadata-quality badges. Each permissible value names a badge topic and a level, in the form <topic>_<level>, where <topic> is the name of a badge subset (a subset carrying annotation badge_topic: true) and <level> is silver or gold. The permissible values are kept in sync with the badge subsets by a test; see https://github.com/microbiomedata/nmdc-schema/issues/3227",
+            "description": "Metadata-quality badges. Each permissible value names a badge topic and a level, in the form <topic>_<level>, where <topic> is the name of a badge subset (a subset whose in_subset includes badge_topic) and <level> is silver or gold. The permissible values are kept in sync with the badge subsets by a test; see https://github.com/microbiomedata/nmdc-schema/issues/3227",
             "enum": [
                 "biogeochemistry_silver",
                 "biogeochemistry_gold",
@@ -17638,5 +17638,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.21.0.post8.dev0+03fc5ccbb"
+    "version": "11.21.0.post8.dev0+894ff4fbf"
 }
