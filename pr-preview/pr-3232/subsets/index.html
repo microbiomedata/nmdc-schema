@@ -716,9 +716,11 @@ never-activated mix of copied MIxS names and NMDC-authored names. It is a
 candidate for removal, tracked separately from the badge work.</p>
 <h2 id="3-badge-subsets-added-active">3. Badge subsets (added, active)</h2>
 <p>Badge subsets group the slots that a metadata-quality badge is scored against.
-They are declared in <code>src/schema/basic_slots.yaml</code> and carry the annotation
-<code>badge_topic: true</code>, which is how tooling and the sync test tell them apart from
-other subsets (for example <code>jgi_isolate</code>, which is not a badge topic).</p>
+They are declared in <code>src/schema/basic_slots.yaml</code> and are themselves members of
+the <code>badge_topic</code> group subset (<code>in_subset: [badge_topic]</code>), which is how tooling
+and the sync test tell them apart from other subsets (for example <code>jgi_isolate</code>,
+which is not a badge topic). This uses the native subset mechanism rather than a
+custom annotation.</p>
 <p>Current badge subsets:</p>
 <table>
 <thead>
@@ -746,10 +748,11 @@ membership cannot be hand-edited on the slot. It is asserted in
 <code>assets/yq-for-mixs-customizations.txt</code>, after the MIxS <code>in_subset</code> strip
 described in population 1.</p>
 <p>The badge subsets are mirrored by the <code>MetadataBadgeEnum</code> permissible values
-(<code>&lt;topic&gt;_&lt;level&gt;</code>, for example <code>biogeochemistry_gold</code>) used by the <code>badges</code>
-slot on Biosample and Study. A test keeps the enum and the badge subsets in
-sync: every badge-topic subset has matching permissible values, and every
-permissible value resolves to a badge-topic subset.</p>
+(<code>&lt;topic&gt;_&lt;level&gt;</code>, for example <code>biogeochemistry_gold</code>), the range of the
+<code>badges</code> slot. Which classes carry the <code>badges</code> slot is decided in separate
+attachment PRs, not here. A test keeps the enum and the badge subsets in sync:
+every badge-topic subset has matching permissible values, and every permissible
+value resolves to a badge-topic subset.</p>
 <p>See <a href="https://github.com/microbiomedata/nmdc-schema/issues/3227">https://github.com/microbiomedata/nmdc-schema/issues/3227</a> (badges slot and
 enum) and <a href="https://github.com/microbiomedata/nmdc-schema/issues/3228">https://github.com/microbiomedata/nmdc-schema/issues/3228</a> (subsets).</p>
 <h2 id="summary">Summary</h2>
