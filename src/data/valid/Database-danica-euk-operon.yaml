@@ -1,7 +1,7 @@
-#example record for MicroFlora Danica, MFD01204
+#example record for MicroFlora Danica, MFD01204, SRX23627677
 material_processing_set:
   - id: nmdc:libprp-99-abc122
-    name: Library preparation process for MFD00004
+    name: Library preparation process for MFD01204
     description: Amplicion library preparation targeting eukaryotic rRNA operons using 3NDF and 21R primers
     type: nmdc:LibraryPreparation
     has_input:
@@ -23,7 +23,7 @@ data_generation_set:
       - nmdc:procsm-99-2a58f3
     has_output:
       - nmdc:dobj-99-abc123
-    name: Run SRR27943095 for experiment SRX23599633 - MFD00004
+    name: Run SRR27974040 for experiment SRX23627677 - MFD01204
     type: nmdc:NucleotideSequencing
     insdc_bioproject_identifiers:
       - bioproject:PRJNA1071982
@@ -43,8 +43,8 @@ data_generation_set:
       - nmdc:sty-99-ebd802
 data_object_set:
   - id: nmdc:dobj-99-abc123
-    name: Data file for run accession SRR27943095
-    description: Data file for run accession SRR27943095  
+    name: Data file for run accession SRR27974040
+    description: Data file for run accession SRR27974040  
     insdc_run_identifiers:
       - insdc.run:SRR27974040
     was_generated_by: nmdc:dgns-11-abc123
