@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.21.0.post9.dev0+e14f89803
+version: 11.21.0.post9.dev0+1955616c6
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -2012,11 +2012,11 @@ enums:
         - inches
   MetadataBadgeEnum:
     name: MetadataBadgeEnum
-    description: 'Metadata-quality badges. Each permissible value names a badge topic
+    description: Metadata-quality badges. Each permissible value names a badge topic
       and a level, in the form <topic>_<level>, where <topic> is the name of a badge
-      subset (a subset carrying annotation badge_topic: true) and <level> is silver
+      subset (a subset whose in_subset includes badge_topic) and <level> is silver
       or gold. The permissible values are kept in sync with the badge subsets by a
-      test; see https://github.com/microbiomedata/nmdc-schema/issues/3227'
+      test; see https://github.com/microbiomedata/nmdc-schema/issues/3227
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       biogeochemistry_silver:
