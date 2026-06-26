@@ -44,10 +44,10 @@ data_generation_set:
       - nmdc:sty-99-ebd802
 data_object_set:
   - id: nmdc:dobj-99-abc123
-    name: Data file for run accession SRR28010109	
-    description: Data file for run accession SRR28010109	
+    name: Data file for run accession SRR28010109
+    description: Data file for run accession SRR28010109
     insdc_run_identifiers:
-      - insdc.run:SRR28010109	
+      - insdc.run:SRR28010109
     was_generated_by: nmdc:dgns-11-abc123
     data_category: instrument_data
     data_object_type: SRA toolkit-accessible sequence data
