@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.21.0.post9.dev0+ad41e0ca7
+version: 11.21.0.post9.dev0+7a9485ca0
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -373,27 +373,32 @@ subsets:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2803
+  badge_topic:
+    name: badge_topic
+    description: Group of subsets that each define a metadata-quality badge topic.
+      A subset is a badge topic if its in_subset includes badge_topic. Its members
+      are the slots the badge for that topic is scored against. The MetadataBadgeEnum
+      permissible values mirror these subsets, kept aligned by a test.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/3228
   biogeochemistry:
     name: biogeochemistry
-    annotations:
-      badge_topic:
-        tag: badge_topic
-        value: true
     description: 'Biosample slots holding measured biogeochemical analytes: nitrogen,
       phosphorus, carbon, sulfur, iron, core physicochemistry, and dissolved gases.
       Used to score a biogeochemistry metadata badge.'
+    in_subset:
+    - badge_topic
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3228
   land_use_and_vegetation:
     name: land_use_and_vegetation
-    annotations:
-      badge_topic:
-        tag: badge_topic
-        value: true
     description: Biosample slots describing current vegetation, land-use history,
       land management, and soil and site context. Used to score a land use and vegetation
       metadata badge.
+    in_subset:
+    - badge_topic
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3228
