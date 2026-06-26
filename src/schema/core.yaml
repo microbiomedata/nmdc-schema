@@ -353,6 +353,7 @@ classes:
         the samples. Samples are always associated with a taxon.
     slots:
       - associated_studies
+      - badges
       - biosample_categories
       - collected_from
       - embargoed
