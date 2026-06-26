@@ -24,7 +24,7 @@ data_generation_set:
       - nmdc:procsm-99-2a58f3
     has_output:
       - nmdc:dobj-99-abc123
-    name: Run SRR28010109	 for experiment SRX23627676 - MFD04222
+    name: Run SRR28010109 for experiment SRX23627676 - MFD04222
     type: nmdc:NucleotideSequencing
     insdc_bioproject_identifiers:
       - bioproject:PRJNA1071982
