@@ -360,7 +360,6 @@ classes:
       - img_identifiers
       - neon_biosample_identifiers
       - alternative_names
-      - provenance_metadata
 
       ## external IDs, alternate IDs
       - gold_biosample_identifiers
@@ -1299,7 +1298,6 @@ classes:
       - associated_studies
       - expected_organism
       - embargoed
-      - provenance_metadata
       - external_database_identifiers
       - gold_organism_identifiers
       - collection_date
