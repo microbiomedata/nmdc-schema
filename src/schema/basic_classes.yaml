@@ -679,6 +679,7 @@ classes:
     description: Metadata pertaining to how a record was created.
     class_uri: nmdc:ProvenanceMetadata
     slots:
+      - badges
       - add_date
       - git_url
       - mod_date
