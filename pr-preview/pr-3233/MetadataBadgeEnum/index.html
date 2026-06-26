@@ -695,7 +695,7 @@
 
 
 <h1 id="enum-metadatabadgeenum">Enum: MetadataBadgeEnum</h1>
-<p><em>Metadata-quality badges. Each permissible value names a badge topic and a level, in the form <topic></em><level>, where <topic> is the name of a badge subset (a subset carrying annotation badge_topic: true) and <level> is silver or gold. The permissible values are kept in sync with the badge subsets by a test; see <a href="https://github.com/microbiomedata/nmdc-schema/issues/3227">https://github.com/microbiomedata/nmdc-schema/issues/3227</a>_</p>
+<p><em>Metadata-quality badges. Each permissible value names a badge topic and a level, in the form <topic></em><level>, where <topic> is the name of a badge subset (a subset whose in_subset includes badge_topic) and <level> is silver or gold. The permissible values are kept in sync with the badge subsets by a test; see <a href="https://github.com/microbiomedata/nmdc-schema/issues/3227">https://github.com/microbiomedata/nmdc-schema/issues/3227</a>_</p>
 <div>
 <p>URI: <a href="./">MetadataBadgeEnum</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
@@ -754,10 +754,10 @@
 <details>
 
 <pre><code class="language-yaml">name: MetadataBadgeEnum
-description: 'Metadata-quality badges. Each permissible value names a badge topic
-  and a level, in the form &lt;topic&gt;_&lt;level&gt;, where &lt;topic&gt; is the name of a badge subset
-  (a subset carrying annotation badge_topic: true) and &lt;level&gt; is silver or gold.
-  The permissible values are kept in sync with the badge subsets by a test; see https://github.com/microbiomedata/nmdc-schema/issues/3227'
+description: Metadata-quality badges. Each permissible value names a badge topic and
+  a level, in the form &lt;topic&gt;_&lt;level&gt;, where &lt;topic&gt; is the name of a badge subset
+  (a subset whose in_subset includes badge_topic) and &lt;level&gt; is silver or gold. The
+  permissible values are kept in sync with the badge subsets by a test; see https://github.com/microbiomedata/nmdc-schema/issues/3227
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
