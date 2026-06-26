@@ -493,6 +493,55 @@
 'del(.slots.add_recov_method.pattern)'
 'del(.subsets.[].name)'
 
+# Badge-topic subset membership (https://github.com/microbiomedata/nmdc-schema/issues/3228).
+# Upstream MIxS subset memberships are stripped above with 'del(.slots.[].in_subset)',
+# so these NMDC badge-subset assignments must come AFTER that strip or they would be
+# removed. The subsets themselves are declared in src/schema/basic_slots.yaml; here we
+# assert per-slot membership at the slot level, agnostic to which class uses the slot.
+# --- biogeochemistry badge subset ---
+'.slots.nitrate.in_subset = ["biogeochemistry"]'
+'.slots.nitrite.in_subset = ["biogeochemistry"]'
+'.slots.ammonium.in_subset = ["biogeochemistry"]'
+'.slots.diss_inorg_nitro.in_subset = ["biogeochemistry"]'
+'.slots.tot_nitro_content.in_subset = ["biogeochemistry"]'
+'.slots.phosphate.in_subset = ["biogeochemistry"]'
+'.slots.diss_inorg_phosp.in_subset = ["biogeochemistry"]'
+'.slots.tot_phosp.in_subset = ["biogeochemistry"]'
+'.slots.diss_inorg_carb.in_subset = ["biogeochemistry"]'
+'.slots.diss_org_carb.in_subset = ["biogeochemistry"]'
+'.slots.tot_org_carb.in_subset = ["biogeochemistry"]'
+'.slots.sulfate.in_subset = ["biogeochemistry"]'
+'.slots.sulfide.in_subset = ["biogeochemistry"]'
+'.slots.tot_sulfur.in_subset = ["biogeochemistry"]'
+'.slots.diss_iron.in_subset = ["biogeochemistry"]'
+'.slots.tot_iron.in_subset = ["biogeochemistry"]'
+'.slots.ph.in_subset = ["biogeochemistry"]'
+'.slots.salinity.in_subset = ["biogeochemistry"]'
+'.slots.conduc.in_subset = ["biogeochemistry"]'
+'.slots.redox_potential.in_subset = ["biogeochemistry"]'
+'.slots.diss_oxygen.in_subset = ["biogeochemistry"]'
+'.slots.alkalinity.in_subset = ["biogeochemistry"]'
+'.slots.methane.in_subset = ["biogeochemistry"]'
+'.slots.carb_dioxide.in_subset = ["biogeochemistry"]'
+# --- land_use_and_vegetation badge subset ---
+'.slots.cur_vegetation.in_subset = ["land_use_and_vegetation"]'
+'.slots.cur_vegetation_meth.in_subset = ["land_use_and_vegetation"]'
+'.slots.cur_land_use.in_subset = ["land_use_and_vegetation"]'
+'.slots.previous_land_use.in_subset = ["land_use_and_vegetation"]'
+'.slots.prev_land_use_meth.in_subset = ["land_use_and_vegetation"]'
+'.slots.crop_rotation.in_subset = ["land_use_and_vegetation"]'
+'.slots.tillage.in_subset = ["land_use_and_vegetation"]'
+'.slots.agrochem_addition.in_subset = ["land_use_and_vegetation"]'
+'.slots.fire.in_subset = ["land_use_and_vegetation"]'
+'.slots.flooding.in_subset = ["land_use_and_vegetation"]'
+'.slots.soil_type.in_subset = ["land_use_and_vegetation"]'
+'.slots.drainage_class.in_subset = ["land_use_and_vegetation"]'
+'.slots.soil_horizon.in_subset = ["land_use_and_vegetation"]'
+'.slots.profile_position.in_subset = ["land_use_and_vegetation"]'
+'.slots.slope_gradient.in_subset = ["land_use_and_vegetation"]'
+'.slots.slope_aspect.in_subset = ["land_use_and_vegetation"]'
+'.slots.fao_class.in_subset = ["land_use_and_vegetation"]'
+
 '.id |= "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"'
 
 # update host_taxid and samp_taxon_id. may want to flatten to a string or URIORCURIE eventually
