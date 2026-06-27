@@ -9,7 +9,7 @@ material_processing_set:
     has_output:
       - nmdc:procsm-99-2a58f3
     target_gene: 16S_rRNA
-    lib_layout: SINGLE
+    lib_layout: single
     library_strategy: AMPLICON
     library_selection: PCR
     library_source: METAGENOMIC

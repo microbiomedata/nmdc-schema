@@ -8,7 +8,7 @@ material_processing_set:
       - nmdc:bsm-99-123abc
     has_output:
       - nmdc:procsm-99-2a58f3
-    lib_layout: SINGLE
+    lib_layout: single
     library_strategy: AMPLICON
     library_selection: PCR
     library_source: METAGENOMIC
