@@ -16,19 +16,31 @@ on:
   # Reference: https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow
   workflow_dispatch: {}
 
+permissions: {}  # default deny; the job below grants only what it needs
+
+# Supersede an in-progress link-check for the same ref; a newer run wins.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 run-name: Check links in docs
 jobs:
   build-docs-and-check-links:
     name: Build docs and check links
+    permissions:
+      contents: read  # check out the repository to scan docs for links
+      issues: write   # file an issue listing broken links (peter-evans/create-issue-from-file)
     runs-on: ubuntu-latest
     steps:
       - name: Check out commit
         # Reference: https://github.com/actions/checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
       - name: Install Poetry
-        run: pipx install poetry
+        run: pipx install poetry==2.4.1
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: '3.12'
           cache: 'poetry'
@@ -41,7 +53,7 @@ jobs:
         # Possible exit codes: https://github.com/lycheeverse/lychee?tab=readme-ov-file#exit-codes
         # Reference: https://github.com/lycheeverse/lychee-action
         id: lychee
-        uses: lycheeverse/lychee-action@v2.0.2
+        uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
         with:
           # Reference: https://github.com/lycheeverse/lychee#commandline-parameters
           args: --base docs --verbose --no-progress --format markdown --timeout 5 'docs/*.md' 'docs/**/*.md'

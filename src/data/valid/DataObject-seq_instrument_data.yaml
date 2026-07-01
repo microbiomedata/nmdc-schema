@@ -1,0 +1,7 @@
+id: nmdc:dobj-99-izwYW6
+type: nmdc:DataObject
+name: my_amplicon_data.fastq.gz
+description: Raw data for amplicon experiment ABCD
+data_category: instrument_data
+file_size_bytes: 32787380
+data_object_type: Paired interleaved raw sequencing data

@@ -1,7 +1,6 @@
 import pkgutil
 
 from linkml_runtime import SchemaView
-from linkml_runtime.dumpers import json_dumper
 
 
 class ViewGetter:

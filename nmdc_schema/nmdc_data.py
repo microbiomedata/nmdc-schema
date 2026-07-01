@@ -5,15 +5,12 @@
 import io
 import json
 import pkgutil
-from os.path import getatime
 from typing import Dict, List, Optional
 from enum import Enum
 
 import click
-import yaml
 from linkml.utils.rawloader import load_raw_schema
 from linkml_runtime.linkml_model.meta import SchemaDefinition
-from linkml_runtime.utils.schemaview import SchemaView
 
 
 class SchemaVariantIdentifier(str, Enum):

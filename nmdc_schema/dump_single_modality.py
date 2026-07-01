@@ -208,7 +208,7 @@ def dump_from_api(ctx, client_base_url, endpoint_prefix, page_size):
     max_docs_per_coll = ctx.obj['MAX_DOCS_PER_COLL']
     selected_collections = ctx.obj['SELECTED_COLLECTIONS']
 
-    (database_slots, selected_vs_schema) = fetch_and_log_schema_info(ctx)  # just printing for now
+    fetch_and_log_schema_info(ctx)  # side-effect: logs schema info
 
     # Make requests call to fetch collection stats
     collection_stats_url = f"{client_base_url}/{endpoint_prefix}/collection_stats"
@@ -226,7 +226,7 @@ def dump_from_api(ctx, client_base_url, endpoint_prefix, page_size):
             ns = stats.get("ns")
             storage_stats = stats.get("storageStats")
             logger.info(f"Namespace: {ns}")
-            logger.info(f"Storage Stats:")
+            logger.info("Storage Stats:")
             logger.info(pprint.pformat(storage_stats))
             logger.info("------------------------------------")
             as_collection_name = ns.split(".")[-1]
@@ -268,7 +268,7 @@ def dump_from_api(ctx, client_base_url, endpoint_prefix, page_size):
 def dump_from_database(ctx, env_file, mongo_db_name, mongo_host, mongo_port,
                        admin_db, auth_mechanism, direct_connection):
     """Sub-command that dumps selected records from NMDC's PyMongo."""
-    (database_slots, selected_vs_schema) = fetch_and_log_schema_info(ctx)  # just printing for now
+    (database_slots, _) = fetch_and_log_schema_info(ctx)  # side-effect: logs schema info
 
     """Sub-command to exclusively use PyMongo for data fetching."""
     logger.info("Starting data fetch using PyMongo...")

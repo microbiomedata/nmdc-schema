@@ -1,8 +1,7 @@
 import logging
-from typing import Any, List, Dict
+from typing import Any, List
 from importlib import resources
 from pathlib import Path
-from functools import lru_cache
 import yaml
 from nmdc_schema.nmdc_data import get_nmdc_schema_definition
 from linkml_runtime import SchemaView

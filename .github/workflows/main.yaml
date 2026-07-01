@@ -5,6 +5,9 @@ name: Build and test nmdc-schema
 
 on: [ pull_request ]
 
+permissions:
+  contents: read
+
 # Cancel outdated runs when new commits are pushed to the same PR
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -12,7 +15,7 @@ concurrency:
 
 jobs:
   test:
-
+    name: Build and test
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,13 +27,15 @@ jobs:
       #       check-out repo and set-up python
       #----------------------------------------------
       - name: Check out repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
 
       - name: Install Poetry
-        run: pipx install poetry
+        run: pipx install poetry==2.4.1
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'poetry'
@@ -38,8 +43,12 @@ jobs:
       #----------------------------------------------
       # install dependencies if cache does not exist 
       #----------------------------------------------
+      - name: Verify lockfile is in sync with pyproject.toml
+        run: poetry check
+
       - name: Install dependencies
         run: poetry install
+
 
       #----------------------------------------------
       #              build, test, and quality checks

@@ -2,7 +2,9 @@ import csv
 from bs4 import BeautifulSoup
 from linkml_runtime.utils.schemaview import SchemaView
 
-import xml.etree.ElementTree as ET
+# defusedxml hardens parsing of the network-fetched NCBI BioSample XML against
+# XML entity-expansion attacks (XXE / billion laughs). Drop-in for ET.parse.
+import defusedxml.ElementTree as ET
 import click
 import requests
 import pandas as pd
