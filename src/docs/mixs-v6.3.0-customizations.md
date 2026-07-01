@@ -255,7 +255,7 @@ A full `make src/schema/mixs.yaml` re-pulls MIxS over the network and is slow. T
 
 ```bash
 cp src/schema/mixs.yaml /tmp/mixs.yaml
-yq -i '<your yq expression>' /tmp/mixs.yaml   # then point nmdc.yaml's import at it, or edit in place and revert
+yq -i <your yq expression> /tmp/mixs.yaml   # lines in assets/yq-for-mixs-customizations.txt already include their surrounding single quotes; paste one verbatim (no extra quoting), then revert the scratch copy afterward
 poetry run linkml generate linkml --format yaml --materialize-patterns \
   --no-materialize-attributes --output /tmp/materialized.yaml src/schema/nmdc.yaml
 yq eval '.slots.<slot>.pattern' /tmp/materialized.yaml
