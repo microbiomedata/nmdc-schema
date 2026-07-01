@@ -4396,7 +4396,7 @@ slots:
       - pcr
     slot_uri: MIXS:0000046
     structured_pattern:
-      syntax: FWD:{dna_bases};REV:{dna_bases}
+      syntax: FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+
       interpolated: true
   permeability:
     annotations:
@@ -7255,7 +7255,7 @@ slots:
       - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
     slot_uri: MIXS:0000048
     structured_pattern:
-      syntax: ^{dna_bases};{dna_bases}$
+      syntax: ^{primer_adapter_codes}+;{primer_adapter_codes}+$
       interpolated: true
       partial_match: true
   samp_collec_device:

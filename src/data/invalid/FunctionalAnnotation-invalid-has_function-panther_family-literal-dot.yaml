@@ -1,0 +1,4 @@
+# invalid b/c has_function requires the literal prefix "PANTHER.FAMILY:";
+# "PANTHERXFAMILY:" only matched when the regex dot was unescaped (.= any char)
+has_function: PANTHERXFAMILY:PTHR12345
+type: nmdc:FunctionalAnnotation
