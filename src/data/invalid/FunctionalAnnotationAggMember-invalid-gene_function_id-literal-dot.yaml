@@ -1,0 +1,6 @@
+# invalid b/c gene_function_id requires the literal prefix "KEGG.ORTHOLOGY:";
+# "KEGGXORTHOLOGY:" only matched when the regex dot was unescaped (.= any char)
+was_generated_by: nmdc:wfmgan-99-123456.1
+gene_function_id: KEGGXORTHOLOGY:K00627
+count: 120
+type: nmdc:FunctionalAnnotationAggMember
