@@ -3,6 +3,13 @@
 Complete routing of all 55 fields from the JGI Isolate (NA) v19 submission form
 to nmdc-schema classes, submission-schema, or deferred.
 
+The authoritative field-to-slot-and-interface mapping is the "Montana-SlotEval"
+tab of the JGI isolate metadata spreadsheet (Pupo). Per the isolate modeling
+squad, submission-schema targets three interfaces: `IsolateInterface`,
+`JgiIsolateGenomeInterface`, and `JgiIsolateTranscriptomeInterface` (the split is
+tracked in submission-schema #444). Where the nmdc-schema slot below differs from
+the Montana-SlotEval submission slot, the Montana slot is noted in parentheses.
+
 ## OrganismSample (osm)
 
 | # | JGI Field | nmdc-schema slot | Provenance |
@@ -18,10 +25,10 @@ to nmdc-schema classes, submission-schema, or deferred.
 | 38 | Second ribosomal sequence comments | ~~`second_ribosomal_sequence_comments`~~ → submission-schema `JgiIsolateInterface.isolate_second_ribosomal_seq_comments` | Moved: same reason. |
 | 29 | Fungal 16S screening?* | ~~`fungal_16s_screening`~~ → submission-schema `JgiIsolateInterface.isolate_fungal_16s_screening` | Moved: same reason. |
 | 30 | ITS match UNITE?* | ~~`its_match_unite`~~ → submission-schema `JgiIsolateInterface.isolate_its_match_unite` | Moved: same reason. |
-| 40 | Sample Isolation Method* | `sample_isolation_method` | JGI-native (new) |
-| 44 | Sample Isolated From* | `sample_isolated_from` | JGI-native (new) — origin matrix only ("the *what* the organism came out of") |
-| 45a | Collection Site or Growth Conditions* (collection-site half) | `sample_collection_site` | NMDC-native (pre-existing slot, reused for OrganismSample) — geographic / environmental site context |
-| 45b | Collection Site or Growth Conditions* (growth-conditions half) | `sample_growth_conditions` | JGI-native (new) — in-vitro lab maintenance context. MIxS `isol_growth_condt` (MIXS:0000003) was considered but its DOI/PMID/URL pattern doesn't fit free text |
+| 40 | Sample Isolation Method* | ~~`sample_isolation_method`~~ → submission-schema `dna_isolate_meth` / `rna_isolate_meth` | Removed from nmdc-schema OrganismSample; submission-schema reuses the existing MIxS `dna_isolate_meth` / `rna_isolate_meth` slots instead of a new `isolate_meth`. |
+| 44 | Sample Isolated From* | ~~`sample_isolated_from`~~ → submission-schema `JgiIsolateInterface.sample_isolated_from` | Removed from nmdc-schema OrganismSample (#3131); no production records. JGI logistics, captured at submission. |
+| 45a | Collection Site or Growth Conditions* (collection-site half) | `sample_collection_site` (Biosample only) | Kept on Biosample (populated in production); removed from OrganismSample (#3131). JGI capture lives in submission-schema `JgiIsolateInterface.collection_site_or_growth_conditions`. |
+| 45b | Collection Site or Growth Conditions* (growth-conditions half) | ~~`sample_growth_conditions`~~ → submission-schema `JgiIsolateInterface.collection_site_or_growth_conditions` | Removed from nmdc-schema OrganismSample (#3131); no production records. |
 | 41-43 | Collection Year/Month/Day* | `collection_date` | MIxS (existing) |
 | 46-47 | Latitude/Longitude* | `lat_lon` | MIxS (existing) |
 | 48-49 | Depth/Max depth* | (deferred — removed from OrganismSample in PR #2977 review pass; see review thread for retain-vs-drop discussion) | MIxS (existing) |
@@ -62,12 +69,12 @@ loaded with NcbiTaxon from semantic-sql / OWL.
 | 6 | Genus* | `organism_genus` | JGI-native (new) |
 | 7 | Species* | `organism_species` | JGI-native (new) |
 | 8 | Strain or cultivar* | `strain_name` | JGI-native (new) |
-| 9 | Isolate | `isolate_name` | JGI-native (new) |
+| 9 | Isolate | `isolate_name` (Montana-SlotEval routes this field to `samp_name`) | JGI-native (new) |
 | 10 | Culture Collection and ID | `source_mat_id` | MIxS (existing, slot_usage override) |
 | 12 | Estimated Genome Size* | `estimated_size` | MIxS (newly imported) |
 | 13 | GC Content % | `gc_content` | JGI-native (new) |
 | 14 | Ploidy Comments | `ploidy` | MIxS (newly imported) |
-| 15 | Reference Genome* | `ref_biomaterial` | MIxS (newly imported) |
+| 15 | Reference Genome* | `reference_genome` (submission-schema-local slot) | submission-schema-native, NOT ref_biomaterial. Promotion to nmdc-schema tracked in submission-schema issue 447 |
 | 16 | Host Genus* (viral) | `host_genus` (on Biosample) | JGI-native (new) |
 | 17 | Host Species* (viral) | `host_species` (on Biosample) | JGI-native (new) |
 | 18 | Host Strain* (viral) | `host_strain` (on Biosample) | JGI-native (new) |
@@ -99,7 +106,6 @@ loaded with NcbiTaxon from semantic-sql / OWL.
 |---|---|---|---|
 | `estimated_size` | MIXS:0000024 | Organism | Estimated Genome Size |
 | `ploidy` | MIXS:0000021 | Organism | Ploidy Comments |
-| `ref_biomaterial` | MIXS:0000025 | Organism | Reference Genome |
 
 `isol_growth_condt` (MIXS:0000003) was imported but not assigned. Its MIxS semantics are
 "publication reference for isolation/growth conditions" (DOI/PMID/URL pattern), which does

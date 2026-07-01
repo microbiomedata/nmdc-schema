@@ -7,22 +7,35 @@ on:
       - reopened
       - synchronize
 
-concurrency: preview-${{ github.ref }}
+permissions: {}  # default deny; the job below grants only what it needs
+
+# One preview build per PR; a newer push supersedes an in-progress build.
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   run:
+    name: Build and deploy docs preview
+    permissions:
+      contents: write       # push the docs preview to the gh-pages branch
+      pull-requests: write  # comment the preview link on the PR (rossjrw/pr-preview-action)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        # zizmor: ignore[artipacked] this workflow pushes a docs preview to the
+        # gh-pages branch via rossjrw/pr-preview-action, which relies on the
+        # persisted checkout token. Proper hardening (push with an explicit
+        # scoped token, then set persist-credentials: false) is tracked in #3147.
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 0
 
       - name: Install Poetry
-        run: pipx install poetry
+        run: pipx install poetry==2.4.1
 
       - name: Set up Python 3
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: '3.12'
           cache: 'poetry'
@@ -52,7 +65,7 @@ jobs:
 
       - name: Deploy preview
         if: github.event.pull_request.user.login != 'dependabot[bot]'
-        uses: rossjrw/pr-preview-action@v1
+        uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1.8.1
         with:
           source-dir: site/
           preview-branch: gh-pages

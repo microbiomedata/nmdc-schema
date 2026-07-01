@@ -3,9 +3,13 @@ This module contains helper functions related to schema element identifiers.
 """
 
 import re
-from typing import List, Optional
+from functools import lru_cache
+from typing import Dict, List, Optional
+
+from nmdc_schema.get_nmdc_view import ViewGetter
 
 
+@lru_cache
 def get_compatible_typecodes(slot_pattern: str) -> List[str]:
     r"""
     Returns the typecodes, if any, that the schema says values of the specified `id` field can contain.
@@ -59,6 +63,7 @@ def get_compatible_typecodes(slot_pattern: str) -> List[str]:
     return typecodes
 
 
+@lru_cache
 def get_typecode_for_future_ids(slot_pattern: str) -> Optional[str]:
     r"""
     Returns the typecode, if any, that schema authors want future values of the specified `id` field to contain.
@@ -76,3 +81,57 @@ def get_typecode_for_future_ids(slot_pattern: str) -> Optional[str]:
     """
     compatible_typecodes = get_compatible_typecodes(slot_pattern)
     return compatible_typecodes[0] if len(compatible_typecodes) > 0 else None
+
+
+@lru_cache
+def get_class_name_to_typecode_map() -> Dict[str, List[str]]:
+    r"""
+    Returns a dictionary in which each key is the name of a schema class and each value is a list of all the typecodes
+    compatible with the `id` slot of that class.
+
+    >>> d = get_class_name_to_typecode_map()
+    >>> isinstance(d, dict)  # returns a dict
+    True
+    >>> all(isinstance(k, str) for k in d.keys())  # all dict keys are strings
+    True
+    >>> all(isinstance(v, list) for v in d.values())  # all dict values are lists
+    True
+    >>> "NamedThing" in d  # schema class lacking an `id` slot compatible with any typecodes
+    True
+    >>> d["NamedThing"]
+    []
+    >>> "Biosample" in d  # schema class having an `id` slot compatible with one typecode
+    True
+    >>> d["Biosample"]
+    ['bsm']
+    >>> "MassSpectrometry" in d  # schema class having an `id` slot compatible with multiple typecodes
+    True
+    >>> sorted(d["MassSpectrometry"])
+    ['dgms', 'omprc']
+    """
+
+    # Make a dictionary in which each key is the name of a schema class and each value is the definition of that class.
+    view_getter = ViewGetter()
+    schema_view = view_getter.get_view()
+    class_definitions_by_class_name = schema_view.all_classes()
+
+    # Make a dictionary in which each key is the name of a schema class and each value is a list of all the typecodes
+    # compatible with the `id` slot of that class.
+    class_name_to_typecodes_map = dict()
+    for class_name, class_definition in class_definitions_by_class_name.items():
+
+        # Ensure this class name appears in the resulting dictionary, regardless of whether its `id` slot is compatible
+        # with any typecodes. That way, all class names end up in the resulting dictionary.
+        if class_name not in class_name_to_typecodes_map:
+            class_name_to_typecodes_map[class_name] = list()
+
+        # Determine whether the `id` slot of this class is compatible with any typecodes and, if it is, add them to the
+        # list.
+        slot_definitions_for_class = schema_view.class_induced_slots(class_name)
+        for slot_definition in slot_definitions_for_class:
+            if slot_definition.name == "id":
+                if slot_definition.pattern is not None:
+                    compatible_typecodes = get_compatible_typecodes(slot_definition.pattern)
+                    class_name_to_typecodes_map[class_name].extend(compatible_typecodes)
+
+    return class_name_to_typecodes_map

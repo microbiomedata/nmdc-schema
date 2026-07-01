@@ -34,7 +34,7 @@ Please carefully read our [Code of Conduct](CODE_OF_CONDUCT.md).
 Please use the [Issue Tracker](https://github.com/microbiomedata/nmdc-schema/issues/) for reporting problems with the schema. 
 
 Please review GitHub's overview article,
-["Tracking Your Work with Issues"][[about-issues]].
+["Tracking Your Work with Issues"][about-issues].
 
 ### Pull Requests
 
@@ -54,7 +54,7 @@ familiar with the schema, the basics of the LinkML framework, and NMDC Best Prac
 
 (Note: these best practices apply to most development in NMDC; these guidelines may later be moved somewhere central)
 
-- Read ["About Issues"][[about-issues]] and ["About Pull Requests"][[about-pulls]]
+- Read ["About Issues"][about-issues] and ["About Pull Requests"][about-pulls]
 - Issues should be focused and actionable
 - Complex issues should be broken down into simpler issues where possible
 - Pull Requests (PRs) should be atomic and aim to close a single issue
@@ -64,7 +64,7 @@ familiar with the schema, the basics of the LinkML framework, and NMDC Best Prac
 - Never work on the main branch, always work on an issue/feature branch
 - Core developers can work on branches off origin rather than forks
 - Always create a PR on a branch to maximize transparency of what you are doing
-- When a PR includes a breaking change, include a migration
+- When a PR contains schema changes that would make it so _any hypothetical data_ that complies with the current version of the schema would not comply with the new version of the schema, include a migrator in the PR. If no schema changes made since the last release would do that, include a "no op" migrator before creating the next release. See [`nmdc_schema/migrators/README.md`](nmdc_schema/migrators/README.md).
 - PRs should be reviewed and merged in a timely fashion by the nmdc-schema technical leads
 - PRs that do not pass GitHub actions should never be merged
 - In the case of git conflicts, the contributor should try and resolve the conflict
@@ -100,9 +100,14 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Rationale: Open-ended string ranges encourage multiple values to represent the same entity, like “water”, “H2O” and “HOH”
     - Any slot whose values could be constrained to a finite set should use an Enum
     - Non-categorical values, e.g. descriptive fields like `name` or `description` fall outside of this.
+- Permissible-value hierarchies (`is_a`)
+    - A permissible value may declare `is_a: <other-pv>` to record that one value is a more specific kind of another in the same enum (e.g. `hiseq_2500 is_a hiseq`). Most enums are a flat list; `is_a` is an optional, deliberate addition for the cases where a real specialization exists. It is consequential where used: downstream consumers read it for grouping, rollup, and querying.
+    - Assert it when X genuinely is a kind of Y (a model within a series, where the "series" is a curatorial grouping such as an OBI `... series instrument` class rather than a vendor-guaranteed category, or a refresh of a model); do not assert relationships that are not true (sibling generations, peer models); when you cannot establish one, leave it unasserted. Judge on domain knowledge, with the ontology `meaning:` (e.g. OBI in OLS) as corroborating evidence, not the sole authority.
+    - `is_a` is not `aliases`: use `aliases` only for values that are *equivalent*; use `is_a` when one value is a distinct but more specific kind of another. Example: `sequel_IIe` is kept as its own PV with `is_a: sequel_II`, not folded in as an alias, because NCBI treats "Sequel IIe" and "Sequel II" as separate values, so an alias would assert a false equivalence.
+    - Precedent: `StationaryPhaseEnum`, `SamplePortionEnum`. Background: issue #3120.
 - Reuse
     - Existing scheme elements should be reused where appropriate, rather than making duplicative elements
-    - More specific classes can be created by refinining classes using inheritance (`is_a`)
+    - More specific classes can be created by refining classes using inheritance (`is_a`)
 - Place new classes under existing upper level classes
     - __Note__: this is partially aspirational until we have a stable upper level structure in place
     - Most new classes should be refinement of existing classes
@@ -111,7 +116,7 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Inheritance should be monotonic: `slot_usage` should refine rather than override
 - ID patterning and checks
     - ID patterns for new classes should follow conventions found [here](https://microbiomedata.github.io/nmdc-schema/identifiers/)
-    - In the _rare_ case that NMCD records must support legacy typecodes, typecodes can be declared on new classes with multiple typecodes (i.e. `syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$"`). In this case, the _first_ typecode is the one the NMDC Runtime's [minter](https://github.com/microbiomedata/nmdc-runtime/tree/main/nmdc_runtime/minter) will use when generating new ids for the class.
+    - In the _rare_ case that NMDC records must support legacy typecodes, typecodes can be declared on new classes with multiple typecodes (i.e. `syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$"`). In this case, the _first_ typecode is the one the NMDC Runtime's [minter](https://github.com/microbiomedata/nmdc-runtime/tree/main/nmdc_runtime/minter) will use when generating new ids for the class.
     - Class-linking slots (i.e. `has_input`) should have a `slot_usage` declared that limits the slot's values to ids of instances of _only_ the specific classes you want to allow the slot to link to (e.g. using `syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"` on the `structured_pattern` will make it so only ids having the typecode `chrcon` can fill that slot)
 
 ### Testing Changes Locally
@@ -155,7 +160,7 @@ current policy below when adding or modifying developer tooling.
 
 | Topic | Current policy | Legacy guidance (for context) |
 |---|---|---|
-| `src/schema/mixs.yaml` edits | Treat as generated. Change generator inputs/transformations (`makefiles/mixs.Makefile`, `assets/*`, related config) and regenerate. | Hand-edit `mixs.yaml` directly. |
+| `src/schema/mixs.yaml` edits | Treat as generated. Change generator inputs/transformations (`makefiles/mixs.Makefile`, `assets/*`, related config) and regenerate. See [Maintaining mixs.yaml](src/docs/mixs-v6.3.0-customizations.md#maintaining-mixsyaml-how-to-change-a-mixs-slot) for which file to edit (yq asset vs `nmdc.yaml` settings) and how to verify without a full rebuild. | Hand-edit `mixs.yaml` directly. |
 | Script registration | Keep `[project.scripts]` limited to package-backed, stable CLIs intended for default installs. | Add most repo scripts as CLI aliases. |
 | Repo-local scripts | Invoke explicitly from Makefiles using `poetry run python src/scripts/<name>.py ...`. | Expose `src/scripts/*` commands through Poetry script aliases. |
 | Scripts table location | Use `[project.scripts]` (PEP 621). | Use `[tool.poetry.scripts]` (Poetry-specific). |
@@ -169,7 +174,9 @@ current policy below when adding or modifying developer tooling.
 
 ### Making Releases
 
-TODO: Add to this section later
+The authoritative release procedure is the [infra-admin release runbook](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md). Pre-release mechanics and the dynamic-versioning setup are in the *Pre-release Process* section of [`CLAUDE.md`](CLAUDE.md). Version-number choice (major vs minor vs patch) and the release notes convention are in [`MAINTAINERS.md`](MAINTAINERS.md#making-a-pypi-release-of-the-nmdc-schema).
+
+Release notes come from GitHub's auto-generated notes, built from merged pull request titles, so write PR titles to read as change log entries. This repository does not keep a `CHANGELOG.md`.
 
 [about-branches]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
 [about-issues]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues

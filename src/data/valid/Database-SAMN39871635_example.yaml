@@ -1,0 +1,120 @@
+#example record for MicroFlora Danica
+biosample_set:
+  - id: nmdc:bsm-99-2a58f2
+    type: nmdc:Biosample
+    name: MFD00004
+    associated_studies:
+      - nmdc:sty-99-ebd802
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      term:
+        id: ENVO:01000177
+        type: nmdc:OntologyClass
+        name: grassland biome
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      term:
+        id: ENVO:01001811
+        type: nmdc:OntologyClass
+        name: temperate grassland
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      term:
+        id: ENVO:00001998
+        type: nmdc:OntologyClass
+        name: soil
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: "2026-06-11T22:13:20.151566+00:00"
+      git_url: https://github.com/microbiomedata/nmdc-ingest-agent
+      mod_date: "2026-06-11T22:13:20.151566+00:00"
+      version: 0.1.0
+      source_system_of_record: NCBI
+    insdc_biosample_identifiers:
+      - biosample:SAMN39864936
+    collection_date:
+      type: nmdc:TimestampValue
+      has_raw_value: "2019-08-28"
+    env_package:
+      type: nmdc:TextValue
+      has_raw_value: Metagenome.environmental.1.0
+    geo_loc_name:
+      type: nmdc:TextValue
+      has_raw_value: Denmark
+    lat_lon:
+      type: nmdc:GeolocationValue
+      latitude: 55.66642
+      longitude: 9.27156
+    samp_name: MFD00004
+    samp_taxon_id:
+      type: nmdc:ControlledIdentifiedTermValue
+      term:
+        id: NCBITaxon:410658
+        type: nmdc:OntologyClass
+        name: soil metagenome
+material_processing_set:
+  - id: nmdc:extrp-99-abc123
+    has_input:
+      - nmdc:bsm-99-2a58f2
+    type: nmdc:Extraction
+    name: DNA extraction process for MFD00004
+    extraction_targets: 
+      - DNA
+    has_output:
+      - nmdc:procsm-99-2a58f2
+  - id: nmdc:libprp-99-abc122
+    name: Library preparation process for MFD00004
+    type: nmdc:LibraryPreparation
+    has_input:
+      - nmdc:procsm-99-2a58f2
+    has_output:
+      - nmdc:procsm-99-2a58f3
+    protocol_link:
+      url: https://doi.org/10.1101/2023.09.04.556179
+      type: nmdc:Protocol
+    lib_layout: paired
+    library_strategy: WGS
+    library_selection: size fractionation
+    library_source: METAGENOMIC
+processed_sample_set:
+  - id: nmdc:procsm-99-2a58f2
+    name: Extracted DNA for MFD00004
+    type: nmdc:ProcessedSample
+  - id: nmdc:procsm-99-2a58f3
+    name: ilm_MFD00004
+    description: Library for sequencing for MFD00004
+    type: nmdc:ProcessedSample
+data_generation_set:
+  - id: nmdc:dgns-11-abc123
+    has_input:
+      - nmdc:procsm-99-2a58f3
+    has_output:
+      - nmdc:dobj-99-abc123
+    name: Run SRR27943095 for experiment SRX23599633 - MFD00004
+    type: nmdc:NucleotideSequencing
+    insdc_bioproject_identifiers:
+      - bioproject:PRJNA1071982
+    insdc_experiment_identifiers:
+      - insdc.sra:SRX23599633
+    analyte_category: metagenome
+    instrument_used:
+      - nmdc:inst-14-mr4r2w
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: "2026-06-11T22:13:20.151566+00:00"
+      git_url: https://github.com/microbiomedata/nmdc-ingest-agent
+      mod_date: "2026-06-11T22:13:20.151566+00:00"
+      version: 0.1.0
+      source_system_of_record: NCBI
+    associated_studies:
+      - nmdc:sty-99-ebd802
+data_object_set:
+  - id: nmdc:dobj-99-abc123
+    name: Data file for run accession SRR27943095
+    description: Data file for run accession SRR27943095  
+    insdc_run_identifiers:
+      - insdc.run:SRR27943095
+    was_generated_by: nmdc:dgns-11-abc123
+    data_category: instrument_data
+    data_object_type: SRA toolkit-accessible sequence data
+    type: nmdc:DataObject

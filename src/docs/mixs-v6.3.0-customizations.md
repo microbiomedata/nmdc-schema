@@ -1,6 +1,6 @@
-# MIxS v6.2.2 NMDC Customizations
+# MIxS v6.3.0 NMDC Customizations
 
-This document describes the migration of NMDC schema's MIxS import from the old `pre-2024-05-15` tag to GSC MIxS release `v6.2.2` (commit `1243e22a7565f36f0955cb9c6806e80efe41cc28`).
+This document describes the migration of NMDC schema's MIxS import from the old `pre-2024-05-15` tag to GSC MIxS release `v6.3.0` (commit `fb3271909f5ab3277d4c869e816bc9e334cb816f`).
 
 ## Overview
 
@@ -8,15 +8,15 @@ The migration maintains backward compatibility with existing NMDC MongoDB data w
 
 **Source Repository:**
 - **Repository**: `GenomicsStandardsConsortium/mixs` (official GSC MIxS)
-- **Release**: `v6.2.2`
-- **Commit**: `1243e22a7565f36f0955cb9c6806e80efe41cc28`
-- **URL**: `https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.2.2/src/mixs/schema/mixs.yaml`
+- **Release**: `v6.3.0`
+- **Commit**: `fb3271909f5ab3277d4c869e816bc9e334cb816f`
+- **URL**: `https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml`
 
 **Validation:** After migration, all 13,847 production biosamples validate successfully against the updated schema.
 
 ## Slot and Enum Inventory Changes
 
-This section summarizes all inventory differences between main branch (old NMDC MIxS fork) and this branch (GSC MIxS v6.2.2).
+This section summarizes all inventory differences between main branch (old NMDC MIxS fork) and this branch (GSC MIxS v6.3.0).
 
 ### Summary
 
@@ -30,7 +30,7 @@ This section summarizes all inventory differences between main branch (old NMDC 
 
 #### Slots No Longer Imported, Hardcoded Instead (3 slots)
 
-These slots were removed from GSC MIxS v6.2.2 and cannot be imported. They are hardcoded in `src/schema/nmdc.yaml` for backward compatibility with `submission-schema`:
+These slots were removed from GSC MIxS v6.3.0 and cannot be imported. They are hardcoded in `src/schema/nmdc.yaml` for backward compatibility with `submission-schema`:
 
 | Slot | Range | Production Data | Why Retained |
 |------|-------|-----------------|--------------|
@@ -40,9 +40,9 @@ These slots were removed from GSC MIxS v6.2.2 and cannot be imported. They are h
 
 #### Slots Imported and Renamed for MongoDB Compatibility (2 slots)
 
-These slots are imported from GSC MIxS v6.2.2 but renamed by yq to stay compliant with existing MongoDB data:
+These slots are imported from GSC MIxS v6.3.0 but renamed by yq to stay compliant with existing MongoDB data:
 
-| GSC MIxS v6.2.2 Name | NMDC Name After Rename | Reason |
+| GSC MIxS v6.3.0 Name | NMDC Name After Rename | Reason |
 |---------------------|------------------------|--------|
 | `samp_collect_device` | `samp_collec_device` | MongoDB uses `samp_collec_device` |
 | `samp_collect_method` | `samp_collec_method` | MongoDB uses `samp_collec_method` |
@@ -51,7 +51,7 @@ Structured aliases are added to document the GSC canonical names.
 
 #### Slots Changed from TextValue to String (10 slots)
 
-These slots had explicit `range: string` in both the old fork and GSC v6.2.2, but the old yq did not override them, so they were converted to TextValue. The new yq explicitly keeps them as string:
+These slots had explicit `range: string` in both the old fork and GSC v6.3.0, but the old yq did not override them, so they were converted to TextValue. The new yq explicitly keeps them as string:
 
 | Slot | Has `structured_pattern` | Reason for Change |
 |------|-------------------------|-------------------|
@@ -72,17 +72,17 @@ These slots had explicit `range: string` in both the old fork and GSC v6.2.2, bu
 
 #### Enums Dropped (accepted removal) (24 enums)
 
-These enums existed in main branch but are not in GSC MIxS v6.2.2:
+These enums existed in main branch but are not in GSC MIxS v6.3.0:
 
 `ceil_cond_enum`, `ceil_texture_enum`, `door_cond_enum`, `door_loc_enum`, `door_type_wood_enum`, `ext_wall_orient_enum`, `ext_window_orient_enum`, `floor_cond_enum`, `floor_finish_mat_enum`, `hcr_geol_age_enum`, `heat_deliv_loc_enum`, `int_wall_cond_enum`, `organism_count_enum`, `plant_growth_med_enum`, `room_type_enum`, `samp_floor_enum`, `samp_md_enum`, `shading_device_cond_enum`, `sr_geol_age_enum`, `vis_media_enum`, `wall_loc_enum`, `wall_texture_enum`, `window_cond_enum`, `window_loc_enum`
 
-#### Enums Added in GSC MIxS v6.2.2 (15 enums)
+#### Enums Added in GSC MIxS v6.3.0 (15 enums)
 
 `AeroStrucEnum`, `BuiltStrucSetEnum`, `CeilingWallTextureEnum`, `CeilStrucEnum`, `DamagedEnum`, `DamagedRupturedEnum`, `FireplaceTypeEnum`, `GeolAgeEnum`, `HeatSysDelivMethEnum`, `MoldVisibilityEnum`, `SeasonEnum`, `SeqQualityCheckEnum`, `ShadingDeviceLocEnum`, `SpaceTypStateEnum`, `WindowStatusEnum`
 
 #### Enums Renamed for Consistency (1 enum)
 
-GSC MIxS v6.2.2 uses `host_sex_enum` (snake_case). NMDC renames it to `HostSexEnum` for consistency with other GSC v6.2.2 enums (PascalCase).
+GSC MIxS v6.3.0 uses `host_sex_enum` (snake_case). NMDC renames it to `HostSexEnum` for consistency with other GSC v6.3.0 enums (PascalCase).
 
 #### Enums Customized
 
@@ -90,15 +90,15 @@ GSC MIxS v6.2.2 uses `host_sex_enum` (snake_case). NMDC renames it to `HostSexEn
 |------|---------------|
 | `HostSexEnum` | Permissible values replaced with: `female`, `male`, `hermaphrodite`, `non-binary`, `transgender`, `transgender (female to male)`, `transgender (male to female)`, `undeclared` |
 | `CurLandUseEnum` | NMDC-defined enum in `assets/other_mixs_yaml_files/CurLandUseEnum.yaml` with restructured permissible values including examples and annotations |
-| `SoilHorizonEnum` | Added `M horizon` (not in GSC MIxS v6.2.2) |
+| `SoilHorizonEnum` | Added `M horizon` (not in GSC MIxS v6.3.0) |
 
 ## Required Customizations
 
-This section documents how NMDC handles differences between GSC MIxS v6.2.2 and NMDC requirements.
+This section documents how NMDC handles differences between GSC MIxS v6.3.0 and NMDC requirements.
 
 ### QuantityValue Range Overrides (158 slots)
 
-GSC MIxS v6.2.2 changed ~158 measurement slots from `quantity value` to `string` range. NMDC maintains `QuantityValue` range because:
+GSC MIxS v6.3.0 changed ~158 measurement slots from `quantity value` to `string` range. NMDC maintains `QuantityValue` range because:
 
 - Production data uses QuantityValue objects (`{type: "nmdc:QuantityValue", has_numeric_value: ..., has_unit: ...}`)
 - QuantityValue provides better structure than pattern-matched strings
@@ -108,7 +108,7 @@ GSC MIxS v6.2.2 changed ~158 measurement slots from `quantity value` to `string`
 
 ### Required Field Deletions (30 slots)
 
-GSC MIxS v6.2.2 made 35 slots required. NMDC deletes `required: true` from 30 slots because existing biosamples don't have these fields:
+GSC MIxS v6.3.0 made 35 slots required. NMDC deletes `required: true` from 30 slots because existing biosamples don't have these fields:
 
 `abs_air_humidity`, `add_recov_method`, `api`, `basin`, `build_occup_type`, `building_setting`, `collection_date`, `env_broad_scale`, `env_local_scale`, `env_medium`, `filter_type`, `geo_loc_name`, `hc_produced`, `hcr`, `heat_cool_type`, `indoor_space`, `iwf`, `lat_lon`, `light_type`, `occup_density_samp`, `occup_samp`, `rel_air_humidity`, `samp_collect_point`, `samp_name`, `samp_taxon_id`, `samp_type`, `seq_meth`, `space_typ_state`, `typ_occup_density`, `water_cut`
 
@@ -140,11 +140,11 @@ The yq pipeline sets explicit `range: string` for 31 slots. Without this, slots 
 
 **Note:** `structured_pattern` is deleted from 6 slots due to non-conforming production data (see [Non-Conforming Production Data](#non-conforming-production-data)).
 
-**Exception:** `ph_meth` and `soil_type_meth` are kept as TextValue because production data uses TextValue objects. See [#2774](https://github.com/microbiomedata/nmdc-schema/issues/2774).
+**Exception (current compatibility state):** `ph_meth` and `soil_type_meth` are kept as TextValue because production data currently uses TextValue objects. This is tracked in [#2774](https://github.com/microbiomedata/nmdc-schema/issues/2774); see also [Other Pending Migrations](#other-pending-migrations) for the planned follow-up migration state.
 
 ### TextValue Range for Enum Slots (6 slots)
 
-GSC MIxS v6.2.2 changed these slots to enum ranges, but NMDC has TextValue objects:
+GSC MIxS v6.3.0 changed these slots to enum ranges, but NMDC has TextValue objects:
 
 | Slot | GSC Range |
 |------|-----------|
@@ -171,9 +171,9 @@ The yq transformation pipeline in `assets/yq-for-mixs-customizations.txt` proces
 
 This distinction is critical: the 21 slots in NMDC's derived mixs.yaml that have implicit string range were never transformed because they lacked explicit `range` declarations in the source.
 
-### GSC MIxS v6.2.2 Slot Range Statistics
+### GSC MIxS v6.3.0 Slot Range Statistics
 
-GSC MIxS v6.2.2 defines 1,059 slots with the following range distribution:
+GSC MIxS v6.3.0 defines 1,059 slots with the following range distribution:
 
 | Range Type | Count | Notes |
 |------------|-------|-------|
@@ -230,6 +230,36 @@ Some production data doesn't match GSC patterns. We handle this by using TextVal
 | `soil_type_meth` | Data is "Textural Analysis Test (hydrometer)" | Delete `structured_pattern` |
 | `ph_meth` | Data is "measured in 1:1 w/vol slurry (10.2136/...)" | Delete `structured_pattern` |
 | `water_cont_soil_meth` | Data is "volumetric soil water content; ..." | Delete `structured_pattern` |
+
+## Maintaining mixs.yaml (how to change a MIxS slot)
+
+`src/schema/mixs.yaml` is generated. Do not hand-edit it: the next `make src/schema/mixs.yaml` regenerates it from the MIxS source and your edit is lost. The `CONTRIBUTING.md` policy table records this.
+
+There are two durable places to make a change, and a slot fix often needs both:
+
+1. **Structure, range, pattern syntax, descriptions, examples** go in `assets/yq-for-mixs-customizations.txt`. Each line is a single-quoted `yq` expression applied to the imported schema (see `makefiles/mixs.Makefile`).
+2. **The placeholders a `structured_pattern.syntax` interpolates** (e.g. `{dna_bases}`, `{float}`, `{primer_adapter_codes}`) are defined in the `settings:` block of `src/schema/nmdc.yaml`, not in `mixs.yaml`. The import pipeline strips settings, so the materializer reads them from `nmdc.yaml`. To change what a placeholder expands to, edit the setting; to change which placeholder a slot uses, edit the slot's `syntax` in the yq asset. See [Settings for Pattern Interpolation](#settings-for-pattern-interpolation).
+
+### Worked example: fixing the `adapters` and `pcr_primers` patterns
+
+Issues [#3222](https://github.com/microbiomedata/nmdc-schema/issues/3222) and [#3224](https://github.com/microbiomedata/nmdc-schema/issues/3224): both slots interpolated `{dna_bases}` (`[ACGT]`) exactly once, producing patterns that match a single canonical base per side (`^[ACGT];[ACGT]$`). Real values are full sequences, and primers/adapters carry IUPAC degenerate codes (a real NCBI SRA amplicon experiment, SRX17220408, records `FWD GTGYCAGCMGCCGCGGTAA`, `REV CCGYCAATTYMTTTRAGTTT`). The fix uses the existing `primer_adapter_codes` setting (`[ACGTRYSWKMBDHVNI]`) with a `+` quantifier, via two lines in the yq asset:
+
+```
+'.slots.adapters.structured_pattern.syntax = "^{primer_adapter_codes}+;{primer_adapter_codes}+$"'
+'.slots.pcr_primers.structured_pattern.syntax = "FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+"'
+```
+
+### Verifying a pattern change without a full rebuild
+
+A full `make src/schema/mixs.yaml` re-pulls MIxS over the network and is slow. To check that a `structured_pattern` change interpolates as intended, apply your yq line to a scratch copy of `mixs.yaml`, materialize only the patterns, and inspect the result (revert the scratch copy afterward; the committed `mixs.yaml` and generated artifacts are regenerated at release, not in feature PRs):
+
+```bash
+cp src/schema/mixs.yaml /tmp/mixs.yaml
+yq -i <your yq expression> /tmp/mixs.yaml   # lines in assets/yq-for-mixs-customizations.txt already include their surrounding single quotes; paste one verbatim (no extra quoting), then revert the scratch copy afterward
+poetry run linkml generate linkml --format yaml --materialize-patterns \
+  --no-materialize-attributes --output /tmp/materialized.yaml src/schema/nmdc.yaml
+yq eval '.slots.<slot>.pattern' /tmp/materialized.yaml
+```
 
 ## Future Work
 

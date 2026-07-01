@@ -1,0 +1,7 @@
+# invalid b/c jgi_portal_study_identifiers requires the literal prefix "jgi.proposal:";
+# "jgiXproposal:" only matched when the regex dot was unescaped (.= any char)
+id: nmdc:sty-11-r2h77870
+type: nmdc:Study
+study_category: research_study
+jgi_portal_study_identifiers:
+  - jgiXproposal:507130

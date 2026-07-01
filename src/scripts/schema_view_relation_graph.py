@@ -7,8 +7,6 @@ from rdflib import Graph, Namespace, RDF, RDFS, OWL
 
 from linkml_runtime.utils.formatutils import camelcase, underscore
 
-from linkml_runtime.dumpers import yaml_dumper
-
 # todo contains a lot of hard-coding that could probably be replaced with some external source of prefix mappings
 
 # todo do we want to materialize slot definitions?
@@ -38,6 +36,7 @@ def get_uri_for_element(element_name, schema_view, schema_default_prefix):
         return get_uri_for_slot(element_name, schema_view, schema_default_prefix)
     elif element_type == 'type_definition':
         return get_uri_for_type(element_name, schema_view, schema_default_prefix)
+    return None
 
 
 def get_uri_for_class(element_name, schema_view, schema_default_prefix):

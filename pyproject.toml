@@ -3,14 +3,17 @@ name = "nmdc_schema"
 dynamic = ["version"]
 description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 readme = "README.md"
-license = "MIT"
-requires-python = ">=3.10,<4.0"
+license = "CC0-1.0"
+requires-python = ">=3.10,<3.14"
 authors = [
     { name = "Bill Duncan", email = "wdduncan@gmail.com" },
     { name = "Chris Mungall", email = "cjmungall@lbl.gov" },
     { name = "Mark Andrew Miller", email = "MAM@lbl.gov" },
     { name = "Patrick Kalita", email = "pkalita@lbl.gov" },
     { name = "Sujay Patil", email = "spatil@lbl.gov" },
+]
+maintainers = [
+    { name = "National Microbiome Data Collaborative", email = "support@microbiomedata.org" },
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -22,11 +25,15 @@ keywords = ["NMDC", "schema", "metadata", "microbiome"]
 
 # Upper bound policy (PR #2888): 1.0+ packages cap at next major, pre-1.0 at next minor.
 dependencies = [
-    # Capped at <8.2 to match linkml 1.9.4–1.10.0's click constraint.
-    # Can widen to <9.0.0 once linkml releases with the cap removed. See #2985.
-    "click>=8.0.0,<8.2",
+    # linkml >=1.11 requires click >=8.2; linkml <=1.10 required click <8.2.
+    # Keep the floor at 8.0.0 so consumers are NOT forced to click >=8.2 (that
+    # would force linkml >=1.11 on them); cap at the next major. Our own lock
+    # resolves to the latest click. See #2985.
+    "click>=8.0.0,<9.0.0",
     "click-log>=0.4.0,<0.5.0",
     "deprecated>=1.0.0,<2.0.0",
+    # (GHSA-65pc-fj4g-8rjx bypass of CVE-2024-3651)
+    "idna>=3.15,<4.0.0",
     "jsonasobj2>=1.0.0,<2.0.0",
     "jsonschema>=4.0.0,<5.0.0",
     # linkml and linkml-runtime versions must be paired — e.g. runtime
@@ -37,7 +44,10 @@ dependencies = [
     "pyyaml>=6.0.0,<7.0.0",
     "rdflib>=6.2.0,<8.0.0",
     "requests>=2.0.0,<3.0.0",
-    "pymdown-extensions>=10.16.1,<11.0.0",
+    # Transitive deps pinned directly to ensure users get security fixes
+    # (GHSA-qccp-gfcp-xxvc CVE-2026-44431, GHSA-mf9v-mfxr-j63j CVE-2026-44432)
+    "urllib3>=2.7.0,<3.0.0",
+    "pymdown-extensions>=10.21.3,<11.0.0",
     "pymongo>=4.7.2,<5.0.0",
 ]
 
@@ -45,6 +55,7 @@ dependencies = [
 Homepage = "https://microbiomedata.github.io/nmdc-schema/"
 Documentation = "https://microbiomedata.github.io/nmdc-schema/"
 Repository = "https://github.com/microbiomedata/nmdc-schema"
+Issues = "https://github.com/microbiomedata/nmdc-schema/issues"
 
 # scripts should have click clis
 # click parameters/options should be written out with hyphens
@@ -69,14 +80,14 @@ pure-export = "nmdc_schema.dump_single_modality:cli"
 
 [dependency-groups]
 dev = [
-    "autopep8>=2.2.0,<3.0.0",
-    "bandit>=1.7.8,<2.0.0",
-    "black>=26.3.1,<27.0.0",
+    # ruff replaces autopep8/black (formatting), flake8 (pyflakes+pycodestyle),
+    # isort (import order), bandit (the S security rules), and pydocstyle (D).
+    # See [tool.ruff] below. mypy (types), pylint, vulture, and pyroma are kept
+    # because ruff does not (yet) fully cover them.
     "curies>=0.9.0,<1.0.0",
+    "defusedxml>=0.7.1,<1.0.0",  # hardened XML parsing in src/scripts/ncbi_nmdc_exact_term_matching.py
     "exhaustion-check>=0.1.1,<0.2.0",  # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
     "fastjsonschema>=2.20.0,<3.0.0",
-    "flake8>=7.0.0,<8.0.0",
-    "isort>=5.13.2,<9.0.0",
     # linkml-store[llm] was a dependency but its llm → sqlite-utils chain
     # requires click>=8.3.1, which conflicts with linkml's click<8.2 cap.
     # Ontology alignment scripts (#2909, #2910) that need embeddings should
@@ -91,7 +102,6 @@ dev = [
     "oaklib>=0.6.23,<1.0.0",
     "pandas>=2.2.3,<4.0.0",
     "psycopg2-binary>=2.9.10,<3.0.0",
-    "pydocstyle>=6.3.0,<7.0.0",
     "pylint>=3.2.2,<5.0.0",
     "pyroma>=4.2,<6.0",
     "pytest>=8.4.2,<10.0.0",
@@ -145,13 +155,38 @@ build-backend = "poetry_dynamic_versioning.backend"
 # Module independence is checked by check_schema_self_containment.py instead
 testpaths = ["tests"]
 
+# ruff is the single linter + formatter, replacing black/autopep8 (format),
+# flake8 (E/F/W), isort (I), bandit (S security), and pydocstyle (D).
+[tool.ruff]
+# Generated artifacts, scratch notebooks, and the frozen released migrator
+# partials are not hand-maintained, so they are not linted.
+extend-exclude = [
+    "nmdc_schema/nmdc.py",
+    "nmdc_schema/nmdc_pydantic.py",
+    "nmdc_schema/nmdc_materialized_patterns.yaml",
+    "notebooks",
+    "nmdc_schema/migrators/partials",
+]
+
+[tool.ruff.lint]
+# Start with the high-signal, low-churn rules as a blocking gate (pyflakes).
+# Security rules (S) are run as a separate, non-blocking CI step until the
+# known src/scripts findings (#3164) are cleared, then folded in here.
+# Import order (I), bugbear (B), and pyupgrade (UP) are deferred to a separate
+# modernization pass because they would rewrite a large amount of code at once.
+select = ["F"]
+
+[tool.ruff.lint.per-file-ignores]
+# Asserts are idiomatic in tests; bandit's B101 / ruff's S101 are noise there.
+"tests/**" = ["S101"]
+
 [tool.deptry]
 extend_exclude = [
     "nmdc_schema/nmdc_pydantic.py"
 ]
 # These are transitive dependencies but we pin them directly
 # to ensure users get security fixes from Dependabot alerts
-per_rule_ignores = {DEP002 = ["pymdown-extensions"]}
+per_rule_ignores = {DEP002 = ["idna", "pymdown-extensions", "urllib3"]}
 
 # linkml 1.10.0+ monorepo includes linkml-runtime
 [tool.deptry.package_module_name_map]
