@@ -60,5 +60,3 @@ organism_sample_set:
     associated_studies:
       - nmdc:sty-99-r5xs9t
     expected_organism: nmdc:orgn-99-pgw8nq
-    sample_isolated_from: Lysate from a phage-infected bacterial culture
-    sample_growth_conditions: E. coli K-12 MG1655 broth culture infected with phage T4

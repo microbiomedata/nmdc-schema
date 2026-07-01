@@ -1305,10 +1305,6 @@ classes:
       - collection_date
       - samp_name
       - host_taxid
-      - sample_isolation_method
-      - sample_isolated_from
-      - sample_collection_site
-      - sample_growth_conditions
       - ploidy
       - source_mat_id
       - analysis_type
@@ -1323,6 +1319,8 @@ classes:
           syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
           interpolated: true
       source_mat_id:
+        in_subset:
+          - jgi_isolate
         description: >-
           Culture collection identifier for the source of this organism sample.
         comments:
@@ -1376,9 +1374,11 @@ classes:
               https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=10694
         structured_aliases:
           - literal_form: Culture Collection and ID
-            contexts:
-              - https://jgi.doe.gov/isolate-submission-form/v19
-            predicate: NARROW_SYNONYM    # JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any material-sample identifier)
+            predicate: NARROW_SYNONYM
+            source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+            notes:
+              - Exact JGI form template is access-restricted; source is the public submission overview.
+              - JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any material-sample identifier).
     close_mappings:
       - OBI:0100051
     comments:
@@ -1566,7 +1566,7 @@ slots:
       occurrence: "1"
       storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of nitrate nitrogen in the sample
-    title: nitrate_nitrogen
+    title: nitrate nitrogen
     examples:
       - value: 0.29 mg/kg
     see_also:
@@ -1582,7 +1582,7 @@ slots:
       occurrence: "1"
       storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of nitrite nitrogen in the sample
-    title: nitrite_nitrogen
+    title: nitrite nitrogen
     examples:
       - value: 1.2 mg/kg
     see_also:

@@ -27,6 +27,222 @@
             "title": "AnalysisTypeEnum",
             "type": "string"
         },
+        "AnnotatingWorkflow": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
+            "description": "A WorkflowExecution whose output indicates the potential functions of genes or gene products",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ended_at_time": {
+                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "execution_resource": {
+                    "$ref": "#/$defs/ExecutionResourceEnum",
+                    "description": "The computing resource or facility where the workflow was executed."
+                },
+                "git_url": {
+                    "description": "The url that points to the exact software repository location used to run a workflow",
+                    "type": "string"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output from a process.",
+                    "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "started_at_time": {
+                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+                    "type": "string"
+                },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:AnnotatingWorkflow"
+                    ],
+                    "type": "string"
+                },
+                "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "was_informed_by": {
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "git_url",
+                "started_at_time",
+                "was_informed_by",
+                "has_input",
+                "processing_institution",
+                "id",
+                "type"
+            ],
+            "title": "AnnotatingWorkflow",
+            "type": "object"
+        },
         "ArchStrucEnum": {
             "description": "",
             "enum": [
@@ -36,6 +252,31 @@
             ],
             "title": "ArchStrucEnum",
             "type": "string"
+        },
+        "AttributeValue": {
+            "additionalProperties": false,
+            "description": "The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value",
+            "properties": {
+                "has_raw_value": {
+                    "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:AttributeValue"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "title": "AttributeValue",
+            "type": "object"
         },
         "BinQualityEnum": {
             "description": "",
@@ -376,7 +617,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
+                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
                     "pattern": "^.*;[-+]?[0-9]*\\.?[0-9]+ ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$"
                 },
                 "asphaltenes_pc": {
@@ -388,7 +629,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
+                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
                     "pattern": "^.*;[-+]?[0-9]*\\.?[0-9]+ ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$"
                 },
                 "associated_studies": {
@@ -3214,7 +3455,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high  pour point  is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (soure: https://en.wikipedia.org/wiki/pour_point)",
+                    "description": "Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high pour point is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (source: https://en.wikipedia.org/wiki/pour_point)",
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
                 "pre_treatment": {
@@ -3438,7 +3679,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
+                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
                     "pattern": "^.*;[-+]?[0-9]*\\.?[0-9]+ ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$"
                 },
                 "rna_isolate_meth": {
@@ -3972,7 +4213,7 @@
                     "description": "Name of the well (e.g. BXA1123) where sample was taken"
                 },
                 "sample_collection_site": {
-                    "description": "Free-text description of the place where the sample was collected \u2014 the geographic / environmental site or named location.",
+                    "description": "Free-text description of the place where the sample was collected: the geographic or environmental site or named location.",
                     "type": [
                         "string",
                         "null"
@@ -4008,7 +4249,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
+                    "description": "Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
                     "pattern": "^.*;[-+]?[0-9]*\\.?[0-9]+ ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$"
                 },
                 "season": {
@@ -4538,7 +4779,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total Acid Number  (TAN) is a measurement of acidity that is determined by the amount of  potassium hydroxide  in milligrams that is needed to neutralize the acids in one gram of oil.  It is an important quality measurement of  crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)",
+                    "description": "Total Acid Number (TAN) is a measurement of acidity that is determined by the amount of potassium hydroxide in milligrams that is needed to neutralize the acids in one gram of oil. It is an important quality measurement of crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)",
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
                 "technical_reps": {
@@ -4906,7 +5147,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "A measure of oil's resistance  to gradual deformation by  shear stress  or  tensile stress (e.g. 3.5 cp; 100   C)"
+                    "description": "A measure of oil's resistance to gradual deformation by shear stress or tensile stress (e.g. 3.5 cp; 100 \u00b0C)"
                 },
                 "volatile_org_comp": {
                     "description": "Concentration of carbon-based chemicals that easily evaporate at room temperature; can report multiple volatile organic compounds by entering numeric values preceded by name of compound",
@@ -6103,6 +6344,65 @@
             "title": "CompassDirections8Enum",
             "type": "string"
         },
+        "Configuration": {
+            "additionalProperties": false,
+            "description": "A set of parameters that define the actions of a process and is shared among multiple instances of the process.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:Configuration"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "Configuration",
+            "type": "object"
+        },
         "ContainerCategoryEnum": {
             "description": "The permitted types of containers used in processing metabolomic samples.",
             "enum": [
@@ -6448,9 +6748,307 @@
             "title": "DataCategoryEnum",
             "type": "string"
         },
+        "DataEmitterProcess": {
+            "additionalProperties": false,
+            "description": "A process that generates data objects as output.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_output": {
+                    "description": "An output from a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:DataEmitterProcess"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "DataEmitterProcess",
+            "type": "object"
+        },
+        "DataGeneration": {
+            "additionalProperties": false,
+            "description": "The methods and processes used to generate omics data from a biosample or organism.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "analyte_category": {
+                    "description": "The type of analyte(s) that were measured in the data generation process\n",
+                    "type": "string"
+                },
+                "associated_studies": {
+                    "description": "The study associated with a resource.",
+                    "items": {
+                        "pattern": "^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output from a process.",
+                    "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "instrument_instance_specifier": {
+                    "description": "A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "instrument_used": {
+                    "description": "What instrument was used during DataGeneration or MaterialProcessing.",
+                    "items": {
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "principal_investigator": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PersonValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Principal Investigator who led the study and/or generated the dataset."
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "provenance_metadata": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ProvenanceMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Provenance metadata for this DataGeneration, including when the record was added to and last modified in the NMDC database."
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:DataGeneration"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "analyte_category",
+                "associated_studies",
+                "has_input",
+                "id",
+                "type"
+            ],
+            "title": "DataGeneration",
+            "type": "object"
+        },
         "DataObject": {
             "additionalProperties": false,
             "description": "An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects.",
+            "if": {
+                "properties": {
+                    "data_object_type": {
+                        "const": "SRA toolkit-accessible sequence data"
+                    }
+                },
+                "required": [
+                    "data_object_type"
+                ]
+            },
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -6506,8 +7104,20 @@
                     ]
                 },
                 "insdc_experiment_identifiers": {
+                    "description": "INSDC identifiers for the unique sequencing result for a specific sample",
                     "items": {
                         "pattern": "^insdc.sra:(E|D|S)RX[0-9]{6,}$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "insdc_run_identifiers": {
+                    "description": "Identifiers for the manifest of data file(s) that are derived from sequencing a library described by the associated INSDC experiment.",
+                    "items": {
+                        "pattern": "^insdc\\.run:(E|D|S)RR[0-9]{6,}$",
                         "type": "string"
                     },
                     "type": [
@@ -6562,6 +7172,14 @@
                 "description",
                 "type"
             ],
+            "then": {
+                "properties": {
+                    "insdc_run_identifiers": {}
+                },
+                "required": [
+                    "insdc_run_identifiers"
+                ]
+            },
             "title": "DataObject",
             "type": "object"
         },
@@ -7748,6 +8366,11 @@
                 "Metatranscriptome Raw Reads",
                 "Metatranscriptome Raw Read 1",
                 "Metatranscriptome Raw Read 2",
+                "Unpaired raw sequencing data",
+                "Paired interleaved raw sequencing data",
+                "Raw sequencing data read 1",
+                "Raw sequencing data read 2",
+                "SRA toolkit-accessible sequence data",
                 "Direct Infusion FT-ICR MS Analysis Results",
                 "Direct Infusion FT-ICR MS QC Plots",
                 "LC FT-ICR MS Analysis Results",
@@ -8190,6 +8813,95 @@
             "title": "FunctionalAnnotationAggMember",
             "type": "object"
         },
+        "FunctionalAnnotationTerm": {
+            "additionalProperties": false,
+            "description": "Abstract grouping class for any term/descriptor that can be applied to a functional unit of a genome (protein, ncRNA, complex).",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "is_obsolete": {
+                    "description": "A boolean value indicating whether the ontology term is obsolete.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "is_root": {
+                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:FunctionalAnnotationTerm"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "FunctionalAnnotationTerm",
+            "type": "object"
+        },
         "FurnitureEnum": {
             "description": "",
             "enum": [
@@ -8559,6 +9271,55 @@
             "title": "IndoorSurfEnum",
             "type": "string"
         },
+        "InformationObject": {
+            "additionalProperties": false,
+            "description": "Any data or knowledge that reduces uncertainty or enhances understanding about a system, process, or entity.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:InformationObject"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "InformationObject",
+            "type": "object"
+        },
         "Instrument": {
             "additionalProperties": false,
             "description": "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent. This class models the make and model of the instrument, not the specific instance of the instrument.",
@@ -8819,10 +9580,29 @@
             "title": "Isolation",
             "type": "object"
         },
+        "LibLayoutEnum": {
+            "description": "",
+            "enum": [
+                "other",
+                "paired",
+                "single",
+                "vector"
+            ],
+            "title": "LibLayoutEnum",
+            "type": "string"
+        },
         "LibraryPreparation": {
             "additionalProperties": false,
             "description": "",
             "properties": {
+                "adapters": {
+                    "description": "Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters",
+                    "pattern": "^[ACGT];[ACGT]$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
@@ -8896,11 +9676,27 @@
                         "null"
                     ]
                 },
+                "lib_layout": {
+                    "$ref": "#/$defs/LibLayoutEnum",
+                    "description": "Specify whether to expect single, paired, or other configuration of reads"
+                },
                 "library_preparation_kit": {
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "library_selection": {
+                    "$ref": "#/$defs/LibrarySelectionEnum",
+                    "description": "Library selection or enrichment method used"
+                },
+                "library_source": {
+                    "$ref": "#/$defs/LibrarySourceEnum",
+                    "description": "The molecular source of the sequencing library"
+                },
+                "library_strategy": {
+                    "$ref": "#/$defs/LibraryStrategyEnum",
+                    "description": "Sequencing technique intended for this library"
                 },
                 "library_type": {
                     "$ref": "#/$defs/LibraryTypeEnum"
@@ -9012,6 +9808,46 @@
             ],
             "title": "LibraryPreparation",
             "type": "object"
+        },
+        "LibrarySelectionEnum": {
+            "description": "Library selection or enrichment method",
+            "enum": [
+                "RANDOM",
+                "PCR",
+                "MDA",
+                "other",
+                "PolyA",
+                "size fractionation"
+            ],
+            "title": "LibrarySelectionEnum",
+            "type": "string"
+        },
+        "LibrarySourceEnum": {
+            "description": "Molecular source of the sequencing library",
+            "enum": [
+                "GENOMIC",
+                "TRANSCRIPTOMIC",
+                "METAGENOMIC",
+                "METATRANSCRIPTOMIC",
+                "SYNTHETIC",
+                "VIRAL RNA",
+                "GENOMIC SINGLE CELL",
+                "TRANSCRIPTOMIC SINGLE CELL",
+                "OTHER"
+            ],
+            "title": "LibrarySourceEnum",
+            "type": "string"
+        },
+        "LibraryStrategyEnum": {
+            "description": "Sequencing strategy used for library preparation",
+            "enum": [
+                "WGA",
+                "WGS",
+                "RNA-Seq",
+                "AMPLICON"
+            ],
+            "title": "LibraryStrategyEnum",
+            "type": "string"
         },
         "LibraryTypeEnum": {
             "description": "",
@@ -9239,7 +10075,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -9259,7 +10098,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -9958,6 +10800,185 @@
             "title": "MassSpectrumCollectionModeEnum",
             "type": "string"
         },
+        "MaterialEntity": {
+            "additionalProperties": false,
+            "description": "A named thing that occupies space and has mass.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:MaterialEntity"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "MaterialEntity",
+            "type": "object"
+        },
+        "MaterialProcessing": {
+            "additionalProperties": false,
+            "description": "A process that takes one or more samples as inputs and generates one or more samples as outputs.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_output": {
+                    "description": "An output from a process.",
+                    "items": {
+                        "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "instrument_used": {
+                    "description": "What instrument was used during DataGeneration or MaterialProcessing.",
+                    "items": {
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:MaterialProcessing"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "MaterialProcessing",
+            "type": "object"
+        },
         "MechStrucEnum": {
             "description": "",
             "enum": [
@@ -10032,7 +11053,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -10052,7 +11076,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -10300,7 +11327,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -10320,7 +11350,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -10534,7 +11567,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -10554,7 +11590,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -10945,7 +11984,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -10965,7 +12007,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -11217,7 +12262,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -11237,7 +12285,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -11452,7 +12503,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -11472,7 +12526,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -11863,7 +12920,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -11883,7 +12943,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -12271,6 +13334,55 @@
             "title": "MoldVisibilityEnum",
             "type": "string"
         },
+        "NamedThing": {
+            "additionalProperties": false,
+            "description": "a databased entity or concept/class",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:NamedThing"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "NamedThing",
+            "type": "object"
+        },
         "NcbiTaxon": {
             "additionalProperties": false,
             "description": "A taxonomy term from NCBI Taxonomy. NcbiTaxon instances are identified by NCBITaxon CURIEs (e.g. NCBITaxon:511145) and stored in ontology_class_set alongside other OntologyClass instances. No NMDC-minted identifiers are assigned. Support for additional taxonomic authorities (GTDB, LPSN, SeqCode) would be represented by separate classes or by widening this class's id_prefixes in a follow-on PR.",
@@ -12376,7 +13488,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -12396,7 +13511,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -12694,6 +13812,7 @@
                     ]
                 },
                 "insdc_experiment_identifiers": {
+                    "description": "INSDC identifiers for the unique sequencing result for a specific sample",
                     "items": {
                         "pattern": "^insdc.sra:(E|D|S)RX[0-9]{6,}$",
                         "type": "string"
@@ -12962,7 +14081,7 @@
                     ]
                 },
                 "classified_as": {
-                    "description": "Taxonomic classification of this organism. Narrowed from the global OntologyClass range (defined on the slot itself) to NcbiTaxon, since organism identity at NMDC is anchored to NCBI Taxonomy. Per #3016 \u2014 the broader pattern is to narrow `classified_as` to `NcbiTaxon` on all organism-oriented classes via slot_usage.",
+                    "description": "Taxonomic classification of this organism.",
                     "items": {
                         "$ref": "#/$defs/NcbiTaxon"
                     },
@@ -12980,6 +14099,7 @@
                 },
                 "estimated_size": {
                     "description": "The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period",
+                    "maximum": 100000000000,
                     "minimum": 1,
                     "type": [
                         "integer",
@@ -13195,34 +14315,6 @@
                         "null"
                     ]
                 },
-                "sample_collection_site": {
-                    "description": "Free-text description of the place where the sample was collected \u2014 the geographic / environmental site or named location.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "sample_growth_conditions": {
-                    "description": "Free-text description of the in-vitro conditions under which the organism sample was grown or maintained \u2014 culture media, growth chamber settings, facility type, or other lab-controlled growth context. For environmental site context see `sample_collection_site`; for the source matrix the organism came out of see `sample_isolated_from`.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "sample_isolated_from": {
-                    "description": "Free-text description of the environmental or biological matrix from which the organism sample was isolated \u2014 the *what* it came out of (e.g. iron-rich microbial mat, leaf tissue, catalog vial). For the *where* (geographic / environmental site of collection) see `sample_collection_site`; for in-vitro growth conditions (lab maintenance, culture media, growth chambers) see `sample_growth_conditions`.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "sample_isolation_method": {
-                    "description": "Method, protocol, or kit used to extract DNA/RNA from the sample.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "source_mat_id": {
                     "anyOf": [
                         {
@@ -13413,6 +14505,123 @@
             "title": "PersonValue",
             "type": "object"
         },
+        "PlannedProcess": {
+            "additionalProperties": false,
+            "description": "A named thing that is executed according to a plan.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_output": {
+                    "description": "An output from a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "OBI:0000011"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "PlannedProcess",
+            "type": "object"
+        },
         "PlantSexEnum": {
             "description": "",
             "enum": [
@@ -13450,17 +14659,18 @@
             "type": "string"
         },
         "PloidyEnum": {
-            "description": "Ploidy of an organism's genome. Permissible values map to PATO classes and were selected from values observed in the JGI GOLD lakehouse table `gold.dw_sample_taxonomy_info.ploidy_comments` (queried 2026-04-29). Used as the range of the `ploidy` slot, narrowing the MIxS-imported `ploidy` (MIXS:0000021) from a free- text / structured pattern to an enumerated set with referential integrity to PATO.",
+            "description": "The ploidy state of an organism's genome, drawn from the ploidy classes of the Phenotypic Quality Ontology (PATO).",
             "enum": [
                 "haploid",
                 "diploid",
                 "triploid",
                 "tetraploid",
+                "pentaploid",
                 "hexaploid",
                 "polyploid",
                 "allopolyploidy",
-                "aneuploid",
-                "other"
+                "autopolyploid",
+                "aneuploid"
             ],
             "title": "PloidyEnum",
             "type": "string"
@@ -14139,7 +15349,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -14159,7 +15372,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -14351,7 +15567,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -14371,7 +15590,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_output": {}
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
                         },
                         "required": [
                             "has_output"
@@ -14732,6 +15954,55 @@
             "title": "SampWeatherEnum",
             "type": "string"
         },
+        "Sample": {
+            "additionalProperties": false,
+            "description": "A sample is a material entity that can be characterized by an experiment.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:Sample"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "Sample",
+            "type": "object"
+        },
         "SamplePortionEnum": {
             "description": "",
             "enum": [
@@ -14846,6 +16117,55 @@
             ],
             "title": "ShadingDeviceTypeEnum",
             "type": "string"
+        },
+        "Site": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:Site"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type"
+            ],
+            "title": "Site",
+            "type": "object"
         },
         "SoilHorizonEnum": {
             "description": "",
@@ -16129,6 +17449,222 @@
             "title": "WindowVertPosEnum",
             "type": "string"
         },
+        "WorkflowExecution": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {
+                                "items": {},
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
+            "description": "Represents an instance of an execution of a particular workflow",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ended_at_time": {
+                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "execution_resource": {
+                    "$ref": "#/$defs/ExecutionResourceEnum",
+                    "description": "The computing resource or facility where the workflow was executed."
+                },
+                "git_url": {
+                    "description": "The url that points to the exact software repository location used to run a workflow",
+                    "type": "string"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output from a process.",
+                    "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "started_at_time": {
+                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+                    "type": "string"
+                },
+                "superseded_by": {
+                    "description": "Links a DataObject or WorkflowExecution record to a newer WorkflowExecution that  supersedes it, marking this record as outdated. The linked WorkflowExecution or resultant DataObjects should be used in favor of this record.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:WorkflowExecution"
+                    ],
+                    "type": "string"
+                },
+                "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "was_informed_by": {
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "git_url",
+                "started_at_time",
+                "was_informed_by",
+                "has_input",
+                "processing_institution",
+                "id",
+                "type"
+            ],
+            "title": "WorkflowExecution",
+            "type": "object"
+        },
         "YesNoEnum": {
             "description": "replaces DnaDnaseEnum and DnaseRnaEnum",
             "enum": [
@@ -16143,7 +17679,7 @@
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": false,
     "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest. For MongoDB, the lists of objects that Database slots point to correspond to **collections**.",
-    "metamodel_version": "1.7.0",
+    "metamodel_version": "1.11.0",
     "properties": {
         "biosample_set": {
             "description": "This property links a database object to the set of samples within it.",

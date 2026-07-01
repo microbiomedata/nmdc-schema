@@ -25,8 +25,6 @@ organism_sample_set:
     ploidy: diploid
     gold_organism_identifiers:
       - gold:Go0590511
-    sample_isolated_from: Leaf tissue from Arabidopsis thaliana Ler-0
-    sample_growth_conditions: Greenhouse-grown
     collection_date:
       type: nmdc:TimestampValue
       has_raw_value: "2025-06-15"

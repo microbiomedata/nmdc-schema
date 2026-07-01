@@ -1,8 +1,8 @@
 # =============================================================================
 # MIxS Customizations for NMDC Schema
 # =============================================================================
-# Target: GSC MIxS v6.2.2
-# Documentation: src/docs/mixs-v6.2.2-customizations.md
+# Target: GSC MIxS v6.3.0
+# Documentation: src/docs/mixs-v6.3.0-customizations.md
 # =============================================================================
 
 # Rename GSC MIxS slots to preserve NMDC backward compatibility
@@ -12,8 +12,8 @@
 '.slots.samp_collec_method = .slots.samp_collect_method | del(.slots.samp_collect_method)'
 
 # Add structured aliases to document the GSC canonical names for renamed slots
-'.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
-'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2"]}]'
+'.slots.samp_collec_device.structured_aliases = [{"literal_form": "samp_collect_device", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0"]}]'
+'.slots.samp_collec_method.structured_aliases = [{"literal_form": "samp_collect_method", "contexts": ["https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0"]}]'
 
 # Tighten samp_collec_device — see PR #3005 / issue #1480
 # Upstream MIxS description has broken links (ENVO root 404; GENEPIO_0002094 obsolete).
@@ -58,7 +58,7 @@
 
 # Restore QuantityValue range for slots that had it in the old NMDC MIxS fork
 # The old fork (pre-2024-05-15) used "quantity value" range for ~184 slots
-# GSC MIxS 6.2.0 changed these to "string" - we restore QuantityValue for NMDC compatibility
+# GSC MIxS v6.3.0 changed these to "string" - we restore QuantityValue for NMDC compatibility
 '.slots.abs_air_humidity.range |= "QuantityValue"'
 '.slots.air_temp.range |= "QuantityValue"'
 '.slots.al_sat.range |= "QuantityValue"'
@@ -214,7 +214,7 @@
 '.slots.xylene.range |= "QuantityValue"'
 
 # Restore multivalued: false for slots that changed from microbiomedata/mixs tag pre-2024-05-15
-# to GSC MIxS v6.2.2 (release tag v6.2.2, commit 1243e22a7565f36f0955cb9c6806e80efe41cc28).
+# to GSC MIxS v6.3.0 (release tag v6.3.0, commit fb3271909f5ab3277d4c869e816bc9e334cb816f).
 # NMDC data uses single values for these slots.
 '.slots.biotic_regm.multivalued |= false'
 '.slots.experimental_factor.multivalued |= false'
@@ -222,8 +222,8 @@
 '.slots.source_mat_id.multivalued |= false'
 '.slots.ventilation_type.multivalued |= false'
 
-# Remove required: true from slots that gained it in GSC MIxS v6.2.2
-# (release tag v6.2.2, commit 1243e22a7565f36f0955cb9c6806e80efe41cc28).
+# Remove required: true from slots that gained it in GSC MIxS v6.3.0
+# (release tag v6.3.0, commit fb3271909f5ab3277d4c869e816bc9e334cb816f).
 # Not present in tag pre-2024-05-15. NMDC doesn't require these slots.
 'del(.slots.abs_air_humidity.required)'
 'del(.slots.add_recov_method.required)'
@@ -298,7 +298,6 @@
 '.slots.gravity.range |= "TextValue"'
 '.slots.growth_facil.range |= "ControlledTermValue"'
 '.slots.growth_hormone_regm.range |= "TextValue"'
-'.slots.hall_count.range |= "TextValue"'
 '.slots.hall_count.range |= "TextValue"'
 '.slots.hcr_pressure.range |= "TextValue"'
 '.slots.hcr_temp.range |= "TextValue"'
@@ -408,6 +407,20 @@
 'del(.slots.ph_meth.structured_pattern)'
 # water_cont_soil_meth data: "volumetric soil water content; ..."
 'del(.slots.water_cont_soil_meth.structured_pattern)'
+
+# Fix the structured_pattern syntax for adapters and pcr_primers.
+# Upstream MIxS interpolates {dna_bases} (= [ACGT]) once, producing patterns that
+# match exactly one canonical base per side (e.g. ^[ACGT];[ACGT]$). Real values are
+# full sequences, and primers/adapters routinely carry IUPAC degenerate codes
+# (e.g. real NCBI SRA amplicon experiment SRX17220408: FWD GTGYCAGCMGCCGCGGTAA,
+# REV CCGYCAATTYMTTTRAGTTT). Switch to the {primer_adapter_codes} setting
+# ([ACGTRYSWKMBDHVNI], defined in src/schema/nmdc.yaml) with a + quantifier so the
+# pattern matches one-or-more degenerate bases per side.
+# See https://github.com/microbiomedata/nmdc-schema/issues/3222 (adapters)
+# and https://github.com/microbiomedata/nmdc-schema/issues/3224 (pcr_primers).
+'.slots.adapters.structured_pattern.syntax = "^{primer_adapter_codes}+;{primer_adapter_codes}+$"'
+'.slots.pcr_primers.structured_pattern.syntax = "FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+"'
+
 '.slots.samp_loc_corr_rate.range |= "TextValue"'
 '.slots.samp_mat_process.range |= "ControlledTermValue"'
 '.slots.samp_md.range |= "QuantityValue"'
@@ -511,7 +524,10 @@
 # globally so any class that hosts host_taxid (currently Biosample) carries
 # the JGI mapping. Not viral-specific — host_taxid is a general MIxS slot
 # describing the host of a sample, applicable to any host-associated context.
-'.slots.host_taxid.structured_aliases = [{"literal_form": "Host NCBI Taxonomy ID", "contexts": ["https://jgi.doe.gov/isolate-submission-form/v19"], "predicate": "EXACT_SYNONYM"}]'
+# JGI Isolate (NA) v19 form alias for host_taxid. source = where the alias
+# comes from; the exact JGI template is access-restricted so we cite the
+# public submission overview and note that in notes (#3157).
+'.slots.host_taxid.structured_aliases = [{"literal_form": "Host NCBI Taxonomy ID", "predicate": "EXACT_SYNONYM", "source": "https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/", "notes": ["Exact JGI form template is access-restricted; source is the public submission overview."]}]'
 
 # Replace ploidy's range (TextValue, plus a structured_pattern requiring
 # "{termLabel} [{termID}]") with PloidyEnum, an NMDC-defined enumeration
@@ -530,6 +546,9 @@
 'del(.slots.estimated_size.annotations)'
 'del(.slots.estimated_size.examples)'
 '.slots.estimated_size.examples = [{"object": 300000}]'
+'.slots.estimated_size.maximum_value = 100000000000'
+# esplims ceiling rationale is internal modeling context -> notes, not comments.
+'.slots.estimated_size.notes = ["The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat."]'
 
 # these slots, by their old names, are not used anywhere in mixs.yaml and seem to confuse the mkdocs search when looking for has_unit etc.
 'del(.slots.["has numeric value"])'
@@ -537,11 +556,11 @@
 'del(.slots.["has unit"])'
 
 # add "M horizon" to SoilHorizonEnum
-# Note: GSC MIxS v6.2.2 (release tag v6.2.2, commit 1243e22a7565f36f0955cb9c6806e80efe41cc28)
+# Note: GSC MIxS v6.3.0 (release tag v6.3.0, commit fb3271909f5ab3277d4c869e816bc9e334cb816f)
 # renamed this from soil_horizon_enum to SoilHorizonEnum
 '.enums.SoilHorizonEnum.permissible_values.["M horizon"] = {}'
 
-# rename host_sex_enum to HostSexEnum for consistency with other GSC MIxS v6.2.2 enums
+# rename host_sex_enum to HostSexEnum for consistency with other GSC MIxS v6.3.0 enums
 '.enums.HostSexEnum = .enums.host_sex_enum | del(.enums.host_sex_enum)'
 
 # replace HostSexEnum permissible values
@@ -568,9 +587,13 @@
 'del(.slots.host_body_product.examples)'
 '.slots.host_body_product.examples.[0].value = "mucus [UBERON:0000912]"'
 
-# as of 2024-01-30:
+# Remove upstream `.types` to avoid URI collisions with LinkML built-in/core types
+# during schema generation (for example, duplicate definitions of `date`).
+# This is an intentional compatibility normalization so generated projects use
+# LinkML canonical type URIs rather than conflicting imported MIxS type entries.
+# Historical failure seen as:
 # ValueError: Conflicting URIs (https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml, https://w3id.org/linkml/types) for item: date
-make: *** [Makefile:102: gen-project] Error 1
+# make: *** [gen-project] Error 1
 'del(.types)'
 
 '.imports += ["attribute_values"]'
@@ -829,12 +852,13 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.density.annotations.storage_units = {"tag": "storage_units", "value": "g/cm3|g/m3|kg/m3"}'
 '.slots.density.examples = [{"value": "1000 kg/m3"}]'
 
-# MIxS doesn't specify 'uS/cm'
+# MIxS doesn't specify 'uS/cm'; NMDC intentionally allows it for compatibility with existing data/reporting conventions.
 '.slots.conduc.annotations.storage_units = {"tag": "storage_units", "value": "mS/cm|uS/cm"}'
 '.slots.conduc.examples = [{"value": "10 uS/cm"}]'
 
-# MIxS says 'joule per degree Celsius'. UCUM says that's illegal division by a non-ration unit,
-# so we use the essentially equivalent J/K instead
+# MIxS says 'joule per degree Celsius'. UCUM treats degree Celsius as a special unit with an offset,
+# so division by Cel is not a valid UCUM unit expression; use the equivalent thermodynamic form J/K.
+# Reference: UCUM specification and guidance at https://ucum.org/ucum and https://ucum.org/trac
 '.slots.ceil_thermal_mass.annotations.storage_units = {"tag": "storage_units", "value": "J/K"}'
 '.slots.floor_thermal_mass.annotations.storage_units = {"tag": "storage_units", "value": "J/K"}'
 '.slots.wall_thermal_mass.annotations.storage_units = {"tag": "storage_units", "value": "J/K"}'

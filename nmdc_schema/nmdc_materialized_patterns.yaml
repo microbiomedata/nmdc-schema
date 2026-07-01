@@ -55,9 +55,6 @@ prefixes:
   FBcv:
     prefix_prefix: FBcv
     prefix_reference: http://purl.obolibrary.org/obo/FBcv_
-  FMA:
-    prefix_prefix: FMA
-    prefix_reference: http://purl.obolibrary.org/obo/FMA_
   GENEPIO:
     prefix_prefix: GENEPIO
     prefix_reference: http://purl.obolibrary.org/obo/GENEPIO_
@@ -235,6 +232,9 @@ prefixes:
   insdc.sra:
     prefix_prefix: insdc.sra
     prefix_reference: 'https://bioregistry.io/insdc.sra:'
+  insdc.run:
+    prefix_prefix: insdc.run
+    prefix_reference: 'https://bioregistry.io/insdc.run:'
   jgi.analysis:
     prefix_prefix: jgi.analysis
     prefix_reference: https://data.jgi.doe.gov/search?q=
@@ -301,6 +301,9 @@ prefixes:
   xsd:
     prefix_prefix: xsd
     prefix_reference: http://www.w3.org/2001/XMLSchema#
+  pubmed:
+    prefix_prefix: pubmed
+    prefix_reference: 'https://bioregistry.io/pubmed:'
   shex:
     prefix_prefix: shex
     prefix_reference: http://www.w3.org/ns/shex#
@@ -354,13 +357,19 @@ default_range: string
 subsets:
   jgi_isolate:
     name: jgi_isolate
-    description: Slots originating from the JGI Isolate (NA) v19 submission form that
-      are not already captured by MIxS or other existing standards. These slots support
-      organism identity, strain verification, purity assessment, and biosafety classification
-      for cultured isolate submissions to JGI.
+    description: 'Slots that map to a field on the JGI Isolate (NA) v19 submission
+      form, identified by a structured_alias whose literal_form is the exact form
+      field name. Membership is the alias: a slot is in this subset if and only if
+      it carries a JGI Isolate v19 structured_alias. Most members are new NMDC slots
+      for organism identity, strain verification, purity assessment, and biosafety
+      classification; a few are reused MIxS slots (for example host_taxid, source_mat_id,
+      estimated_size) whose JGI mapping is recorded via the alias rather than by a
+      new slot.'
     comments:
-    - Slots in this subset carry structured_aliases with context https://jgi.doe.gov/isolate-submission-form/v19
-      mapping to the exact field name on the JGI Isolate (NA) v19 spreadsheet.
+    - The form template itself is access-restricted; each alias source points to the
+      public JGI submission overview. To keep this subset exhaustive, add in_subset
+      jgi_isolate wherever a JGI Isolate v19 structured_alias is added, at the same
+      scope the alias lives (global slot or class slot_usage).
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2803
@@ -370,8 +379,8 @@ types:
     description: A character string
     notes:
     - In RDF serializations, a slot with range of string is treated as a literal or
-      type xsd:string.   If you are authoring schemas in LinkML YAML, the type is
-      referenced with the lower case "string".
+      type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced
+      with the lower case "string".
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - schema:Text
@@ -1972,6 +1981,109 @@ enums:
         aliases:
         - inch
         - inches
+  LibraryStrategyEnum:
+    name: LibraryStrategyEnum
+    description: Sequencing strategy used for library preparation
+    comments:
+    - NMDC intentionally supports a curated subset of the INSDC library strategy vocabulary.
+      The complete controlled vocabulary is defined in the referenced SRA.experiment.xsd;
+      values can be added as needed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+    permissible_values:
+      WGA:
+        text: WGA
+        description: Whole genome amplification followed by random sequencing.
+        title: Whole Genome Amplification
+        see_also:
+        - pubmed:1631067
+        - pubmed:8962113
+      WGS:
+        text: WGS
+        description: Random sequencing of the whole genome.
+        title: Whole Genome Sequencing
+        see_also:
+        - pubmed:10731132
+      RNA-Seq:
+        text: RNA-Seq
+        description: Random sequencing of whole transcriptome
+        see_also:
+        - pubmed:18611170
+        aliases:
+        - Whole Transcriptome Shotgun Sequencing
+        - WTSS
+      AMPLICON:
+        text: AMPLICON
+        description: Sequencing of overlapping or distinct PCR or RT-PCR products
+        comments:
+        - metagenomic community profiling using SSU rRNA, for example
+  LibrarySourceEnum:
+    name: LibrarySourceEnum
+    description: Molecular source of the sequencing library
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+    permissible_values:
+      GENOMIC:
+        text: GENOMIC
+        description: Genomic DNA (includes PCR products from genomic DNA)
+      TRANSCRIPTOMIC:
+        text: TRANSCRIPTOMIC
+        description: Transcription products or non-genomic DNA
+        comments:
+        - for example EST cDNA, RT-PCR, or screened libraries
+      METAGENOMIC:
+        text: METAGENOMIC
+        description: Mixed material from metagenome
+      METATRANSCRIPTOMIC:
+        text: METATRANSCRIPTOMIC
+        description: Transcription products from community targets
+      SYNTHETIC:
+        text: SYNTHETIC
+        description: Synthetic DNA
+      VIRAL RNA:
+        text: VIRAL RNA
+        description: Viral RNA
+      GENOMIC SINGLE CELL:
+        text: GENOMIC SINGLE CELL
+        description: Single cell genomic DNA source
+      TRANSCRIPTOMIC SINGLE CELL:
+        text: TRANSCRIPTOMIC SINGLE CELL
+        description: Single cell transcriptomic source
+      OTHER:
+        text: OTHER
+        description: 'Other, unspecified, or unknown library source material '
+  LibrarySelectionEnum:
+    name: LibrarySelectionEnum
+    description: Library selection or enrichment method
+    comments:
+    - NMDC intentionally supports a curated subset of the INSDC library selection
+      vocabulary. The complete controlled vocabulary is defined in the referenced
+      SRA.experiment.xsd; values can be added as needed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+    permissible_values:
+      RANDOM:
+        text: RANDOM
+        description: Random selection by shearing or other method
+      PCR:
+        text: PCR
+        description: Source material was selected by designed primers
+      MDA:
+        text: MDA
+        description: Multiple displacement amplification
+      other:
+        text: other
+        description: Other library enrichment, screening, or selection process (please
+          include additional info in the design description)
+      PolyA:
+        text: PolyA
+        description: PolyA selection or enrichment for messenger RNA (mRNA)
+      size fractionation:
+        text: size fractionation
+        description: Physical selection of size appropriate targets
   ExecutionResourceEnum:
     name: ExecutionResourceEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -2088,6 +2200,54 @@ enums:
             value: ^.+_R2\.fastq(\.gz)?$
         examples:
         - value: BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz
+      Unpaired raw sequencing data:
+        text: Unpaired raw sequencing data
+        description: Reads from a single-end sequencing library (not forward/reverse
+          pairs).
+        comments:
+        - Use when the analyte category is not part of the value, for example amplicon
+          or isolate data. For metagenome or metatranscriptome reads, prefer the analyte-specific
+          values above.
+        - Oxford Nanopore and PacBio runs commonly have a single (unpaired) library
+          layout.
+        see_also:
+        - https://www.ebi.ac.uk/ena/browser/about/read-formats
+      Paired interleaved raw sequencing data:
+        text: Paired interleaved raw sequencing data
+        description: Paired-end reads with forward and reverse mates interleaved in
+          a single file.
+        comments:
+        - Use when the analyte category is not part of the value, for example amplicon
+          or isolate data. For metagenome or metatranscriptome interleaved reads,
+          prefer "Metagenome Raw Reads" or "Metatranscriptome Raw Reads" above.
+        see_also:
+        - https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
+      Raw sequencing data read 1:
+        text: Raw sequencing data read 1
+        description: Read 1 (forward) of a paired-end run, as a separate file.
+        comments:
+        - Use when the analyte category is not part of the value, for example amplicon
+          or isolate data. For metagenome or metatranscriptome forward reads, prefer
+          "Metagenome Raw Read 1" or "Metatranscriptome Raw Read 1" above.
+        see_also:
+        - https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
+      Raw sequencing data read 2:
+        text: Raw sequencing data read 2
+        description: Read 2 (reverse) of a paired-end run, as a separate file.
+        comments:
+        - Use when the analyte category is not part of the value, for example amplicon
+          ingest or isolate data. For metagenome or metatranscriptome reverse reads,
+          prefer "Metagenome Raw Read 2" or "Metatranscriptome Raw Read 2" above.
+        see_also:
+        - https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
+      SRA toolkit-accessible sequence data:
+        text: SRA toolkit-accessible sequence data
+        description: Files that are available for download via SRA Toolkit by providing
+          an INSDC accession
+        comments:
+        - File format will depend on options specified to SRA Toolkit
+        see_also:
+        - https://github.com/ncbi/sra-tools/wiki
       Direct Infusion FT-ICR MS Analysis Results:
         text: Direct Infusion FT-ICR MS Analysis Results
         description: FT-ICR MS based molecular formula assignment results table
@@ -3434,137 +3594,179 @@ enums:
         text: WorkflowExecution
   PloidyEnum:
     name: PloidyEnum
-    description: Ploidy of an organism's genome. Permissible values map to PATO classes
-      and were selected from values observed in the JGI GOLD lakehouse table `gold.dw_sample_taxonomy_info.ploidy_comments`
-      (queried 2026-04-29). Used as the range of the `ploidy` slot, narrowing the
-      MIxS-imported `ploidy` (MIXS:0000021) from a free- text / structured pattern
-      to an enumerated set with referential integrity to PATO.
-    comments:
-    - Values frequent in JGI but absent from PATO (octoploid, dikaryon / dikaryotic,
-      polykaryotic), cytogenetic notation (e.g. 2n=38), compound or hedged values
-      (e.g. "Likely haploid"), and non-English labels are not modeled directly. ETL
-      should normalize to a permissible value when the meaning is unambiguous; fall
-      back to the `other` permissible value when a JGI value has biological meaning
-      but no listed mapping; treat as missing only when the value is uninterpretable.
+    description: The ploidy state of an organism's genome, drawn from the ploidy classes
+      of the Phenotypic Quality Ontology (PATO).
+    notes:
+    - 'How this enum was built: each value is a PATO ploidy (PATO:0001374) subclass
+      observed in the GOLD field dw_sample_taxonomy_info.ploidy_comments (queried
+      2026-04-29), or added to complete the series, with GOLD literal forms as structured
+      aliases. Alias `source` URLs cite the public GOLD portal because that field
+      is access-restricted. This is the range of the `ploidy` slot, narrowing MIxS
+      `ploidy` (MIXS:0000021) from free text.'
+    - 'PATO term requests needed before these can become permissible values: octoploid
+      (eight homologous sets; PATO''s polyploidy ladder stops at hexaploid) and the
+      allopolyploidy subtypes allotetraploid, allohexaploid, and segmental allotetraploid.
+      All were observed in GOLD and are recorded here as narrow synonyms of `polyploid`
+      / `allopolyploidy` until PATO classes exist. Tracked in https://github.com/pato-ontology/pato/issues/605.'
+    - 'Deliberately out of scope: dikaryon / dikaryotic / polykaryotic describe the
+      number of nuclei per cell (a fungal life-cycle state), not chromosome-set ploidy,
+      and have no PATO ploidy class; if needed they belong in a separate slot. Cytogenetic
+      counts (e.g. 2n=38), bare integers, hedged phrases (e.g. "Likely haploid"),
+      and free-text identifiers seen in the source field are left to this optional
+      slot being unset rather than forced into a value.'
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       haploid:
         text: haploid
-        description: A single set of unpaired chromosomes.
+        description: A single set of homologous chromosomes.
         meaning: PATO:0001375
         structured_aliases:
         - literal_form: Haploid
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
         - literal_form: 1n
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
+        - literal_form: 1N
+          predicate: EXACT_SYNONYM
+          source: https://gold.jgi.doe.gov/
+        - literal_form: haploide
+          predicate: EXACT_SYNONYM
+          notes:
+          - French-language spelling observed in GOLD.
+          source: https://gold.jgi.doe.gov/
       diploid:
         text: diploid
-        description: Two sets of homologous chromosomes (one from each parent).
+        description: Two homologous sets of chromosomes.
         meaning: PATO:0001394
         structured_aliases:
         - literal_form: Diploid
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
         - literal_form: 2n
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
         - literal_form: 2N
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
         - literal_form: 2x
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
+        - literal_form: Diploïde
+          predicate: EXACT_SYNONYM
+          notes:
+          - French-language spelling observed in GOLD.
+          source: https://gold.jgi.doe.gov/
       triploid:
         text: triploid
-        description: Three sets of chromosomes.
+        description: Three homologous sets of chromosomes.
         meaning: PATO:0001381
         structured_aliases:
         - literal_form: Triploid
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
         - literal_form: 3n
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
         - literal_form: 3x
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
       tetraploid:
         text: tetraploid
-        description: Four sets of chromosomes.
+        description: Four homologous sets of chromosomes.
         meaning: PATO:0001382
         structured_aliases:
         - literal_form: Tetraploid
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
         - literal_form: tetraploidy
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
         - literal_form: 4n
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
         - literal_form: 4x
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
+      pentaploid:
+        text: pentaploid
+        description: Five homologous sets of chromosomes.
+        meaning: PATO:0001383
+        notes:
+        - Not observed in the 2026-04-29 GOLD snapshot; included so the triploid–hexaploid
+          ladder is not arbitrarily gapped.
       hexaploid:
         text: hexaploid
-        description: Six sets of chromosomes.
+        description: Six homologous sets of chromosomes.
         meaning: PATO:0001384
         structured_aliases:
         - literal_form: Hexaploid
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
         - literal_form: 6n
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
         - literal_form: 6x
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
       polyploid:
         text: polyploid
-        description: More than two sets of chromosomes (generic — use a more specific
-          value when known).
+        description: More than two homologous sets of chromosomes; use a more specific
+          value when the level is known.
         meaning: PATO:0001377
+        structured_aliases:
+        - literal_form: octoploid
+          predicate: NARROW_SYNONYM
+          notes:
+          - Eight homologous sets; observed in GOLD (also as "octaploid", "octapolid").
+            No PATO class exists, so it is recorded as a narrow synonym of polyploid
+            pending a PATO term request.
+          source: https://gold.jgi.doe.gov/
+        - literal_form: octaploid
+          predicate: NARROW_SYNONYM
+          source: https://gold.jgi.doe.gov/
+        - literal_form: octapolid
+          predicate: NARROW_SYNONYM
+          notes:
+          - Misspelling of octoploid retained as observed in GOLD.
+          source: https://gold.jgi.doe.gov/
       allopolyploidy:
         text: allopolyploidy
-        description: Polyploid arising from hybridization between two or more species.
-          (PATO label uses -y suffix.)
+        description: Polyploid whose chromosome sets derive from two or more different
+          species.
         meaning: PATO:0001379
         structured_aliases:
         - literal_form: Allopolyploid
           predicate: EXACT_SYNONYM
-          contexts:
-          - https://gold.jgi.doe.gov/
+          source: https://gold.jgi.doe.gov/
+        - literal_form: Allotetraploid
+          predicate: NARROW_SYNONYM
+          notes:
+          - Allopolyploid at the tetraploid level; observed in GOLD (also "segmental
+            allotetraploid"). No PATO class exists, so it is recorded as a narrow
+            synonym pending a PATO term request.
+          source: https://gold.jgi.doe.gov/
+        - literal_form: segmental allotetraploid
+          predicate: NARROW_SYNONYM
+          source: https://gold.jgi.doe.gov/
+        - literal_form: allohexaploid
+          predicate: NARROW_SYNONYM
+          notes:
+          - Allopolyploid at the hexaploid level; observed in GOLD. No PATO class
+            exists, so it is recorded as a narrow synonym pending a PATO term request.
+          source: https://gold.jgi.doe.gov/
+      autopolyploid:
+        text: autopolyploid
+        description: Polyploid whose chromosome sets derive from a single species.
+        meaning: PATO:0001378
+        notes:
+        - Not observed in the 2026-04-29 GOLD snapshot; included as the origin-counterpart
+          of `allopolyploidy`.
       aneuploid:
         text: aneuploid
-        description: A genome with an abnormal number of chromosomes (not an exact
-          multiple of the haploid number).
+        description: A chromosome number that is not an exact multiple of the haploid
+          set (extra or missing chromosomes).
         meaning: PATO:0001385
-      other:
-        text: other
-        description: A ploidy state with biological meaning that is not covered by
-          the listed permissible values (e.g. dikaryon / dikaryotic, polykaryotic,
-          octoploid, or hedged values like "likely diploid"). Use this when the submitter's
-          value is interpretable but does not map cleanly to one of the named ploidy
-          classes. The original free-text qualifier should be preserved upstream (e.g.
-          in a sample-level note) when it carries information beyond the bare classification.
   AeroStrucEnum:
     name: AeroStrucEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4336,6 +4538,18 @@ enums:
         text: wall
       window:
         text: window
+  LibLayoutEnum:
+    name: LibLayoutEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      other:
+        text: other
+      paired:
+        text: paired
+      single:
+        text: single
+      vector:
+        text: vector
   LightTypeEnum:
     name: LightTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6725,6 +6939,27 @@ slots:
       (e.g., "2025-06-12T14:30:00Z").
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
+  library_strategy:
+    name: library_strategy
+    description: Sequencing technique intended for this library
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+    range: LibraryStrategyEnum
+  library_source:
+    name: library_source
+    description: The molecular source of the sequencing library
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+    range: LibrarySourceEnum
+  library_selection:
+    name: library_selection
+    description: Library selection or enrichment method used
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/enasequence/webin-xml/blob/2.1.0/src/main/resources/uk/ac/ebi/ena/sra/schema/SRA.experiment.xsd
+    range: LibrarySelectionEnum
   processing_institution_workflow_metadata:
     name: processing_institution_workflow_metadata
     description: Information about how workflow results were generated when the processing
@@ -6854,20 +7089,20 @@ slots:
     range: string
   sample_collection_site:
     name: sample_collection_site
-    description: Free-text description of the place where the sample was collected
-      — the geographic / environmental site or named location.
-    comments:
-    - On `OrganismSample`, this slot routes the collection-site half of JGI Isolate
-      (NA) v19 form field 45 ("Collection Site or Growth Conditions"). The growth-conditions
-      half routes to `sample_growth_conditions`. The submitter populates one or the
-      other depending on whether the sample came from a field collection or from in-vitro
-      maintenance.
+    description: 'Free-text description of the place where the sample was collected:
+      the geographic or environmental site or named location.'
+    in_subset:
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Collection Site or Growth Conditions
       predicate: NARROW_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      - JGI label bundles two concepts; this slot covers only the collection-site
+        half.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     range: string
   salinity_category:
     name: salinity_category
@@ -7260,50 +7495,55 @@ slots:
   organism_genus:
     name: organism_genus
     description: Genus of the organism.
+    notes:
+    - GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+    - GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
+    - GOLD organism_v2 (Go0000058, queried 2026-04-14)
     comments:
     - Free-text submitter-provided genus name. For an ontology-grounded classification,
       use `classified_as` with a NcbiTaxon instance on the parent Organism class.
     examples:
     - value: Shewanella
-      description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
     - value: Ruegeria
-      description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
     - value: Campylobacter
-      description: GOLD organism_v2 (Go0000058, queried 2026-04-14)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Genus
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   organism_species:
     name: organism_species
     description: Species of the organism.
+    notes:
+    - GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
+    - GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
     comments:
     - Free-text submitter-provided species name. For an ontology-grounded classification,
       use `classified_as` with a NcbiTaxon instance on the parent Organism class.
     examples:
     - value: loihica
-      description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
     - value: pomeroyi
-      description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
     - value: sp.
-      description: GOLD organism_v2.species (n=37 records, queried 2026-04-30) — used
-        when the isolate has not yet been assigned a species name
+      description: use when the isolate has not yet been assigned a species name
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Species
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   strain_name:
     name: strain_name
     description: Strain or cultivar name of the organism.
-    comments:
+    notes:
     - 'Microbial strain identifiers and plant cultivar names (governed by the International
       Code of Nomenclature for Cultivated Plants, ICNCP) are nomenclaturally distinct,
       but this slot accepts both for now to match the JGI Isolate (NA) v19 form''s
@@ -7313,61 +7553,65 @@ slots:
       serovar, biotype, ecotype, and other sub-species lineage types in a single slot
       using a rank-prefix encoding (e.g. "strain:PV-4"). NMDC splits the concept into
       separate slots; this slot covers the strain rank specifically.
+    - Example values are strain names from GOLD organism_v2.
     examples:
     - value: PV-4
-      description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
     - value: DSS-3
-      description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
     - value: DSM 6724
-      description: GOLD organism_v2 Dictyoglomus turgidum (Go0000002, queried 2026-04-14)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Strain or cultivar
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     related_mappings:
     - MIXS:0000020
   isolate_name:
     name: isolate_name
     description: Isolate or mutant name.
-    comments:
+    notes:
     - MIxS `subspecf_gen_lin` (MIXS:0000020) covers this concept along with strain,
       cultivar, serovar, biotype, ecotype, and other sub-species lineage types in
       a single slot using a rank-prefix encoding. NMDC uses a separate slot for the
       isolate rank specifically.
+    - Example values are from GOLD dw_sample_taxonomy_info.isolate; "Isolate" is a
+      generic placeholder used when no specific mutant or isolate name is recorded.
     examples:
     - value: Bd21-3
-      description: GOLD dw_sample_taxonomy_info.isolate (n=260 records, queried 2026-04-30)
-        — Brachypodium distachyon Bd21-3 reference accession
     - value: MR164
-      description: GOLD dw_sample_taxonomy_info.isolate (n=555 records, queried 2026-04-30)
     - value: Isolate
-      description: GOLD dw_sample_taxonomy_info.isolate (n=918 records, queried 2026-04-30)
-        — generic placeholder used when no specific mutant/isolate name is recorded
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Isolate
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     related_mappings:
     - MIXS:0000020
   gc_content:
     name: gc_content
     description: Estimated GC content as a percentage.
+    examples:
+    - value: '45'
+    - value: '60'
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: GC Content %
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     range: float
     minimum_value: 0
     maximum_value: 100
@@ -7382,146 +7626,73 @@ slots:
       description: Reference to an Organism instance in organism_set
     from_schema: https://w3id.org/nmdc/nmdc
     range: Organism
-  sample_isolation_method:
-    name: sample_isolation_method
-    description: Method, protocol, or kit used to extract DNA/RNA from the sample.
-    comments:
-    - See also dna_isolate_meth in submission-schema for the equivalent portal field.
-    examples:
-    - value: Wizard Genomic DNA Purification Kit
-      description: Promega Wizard kit — a widely-used DNA isolation method in JGI
-        bacterial isolate submissions
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Sample Isolation Method
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-  sample_isolated_from:
-    name: sample_isolated_from
-    description: Free-text description of the environmental or biological matrix from
-      which the organism sample was isolated — the *what* it came out of (e.g. iron-rich
-      microbial mat, leaf tissue, catalog vial). For the *where* (geographic / environmental
-      site of collection) see `sample_collection_site`; for in-vitro growth conditions
-      (lab maintenance, culture media, growth chambers) see `sample_growth_conditions`.
-    todos:
-    - 'Redesign in #3054 will sharpen the boundary between this slot and the sample_collection_site
-      / sample_growth_conditions siblings.'
-    comments:
-    - Routes JGI Isolate (NA) v19 form field 44 ("Sample Isolated From"). Field 45
-      ("Collection Site or Growth Conditions") routes to `sample_collection_site`
-      or `sample_growth_conditions` depending on which half the submitter is reporting.
-    - 'Used when no upstream Biosample carries env-triad information (e.g. culture
-      collection orders, lab-derived samples). When a linked Biosample is available,
-      environmental provenance belongs there. Not a typed reference — future work
-      may add a structured slot or wrapper class for typed sample-to-sample links;
-      see #3033 and #3054.'
-    examples:
-    - value: Iron-rich microbial mat from hydrothermal vent, Naha Vents, south rift
-        of Loihi seamount, Hawaii
-      description: GOLD organism_v2 Go0000189 (Shewanella loihica PV-4, queried 2026-04-21)
-    - value: Saltwater from water column off the Georgia coast, USA
-      description: GOLD organism_v2 Go0000514 (Ruegeria pomeroyi DSS-3, queried 2026-04-21)
-    - value: DSMZ catalog vial (DSM 6125)
-      description: Catalog-collection origin — no environmental matrix upstream
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Sample Isolated From
-      predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
-  sample_growth_conditions:
-    name: sample_growth_conditions
-    description: Free-text description of the in-vitro conditions under which the
-      organism sample was grown or maintained — culture media, growth chamber settings,
-      facility type, or other lab-controlled growth context. For environmental site
-      context see `sample_collection_site`; for the source matrix the organism came
-      out of see `sample_isolated_from`.
-    comments:
-    - On `OrganismSample`, this slot routes the growth-conditions half of JGI Isolate
-      (NA) v19 form field 45 ("Collection Site or Growth Conditions"). The collection-site
-      half routes to `sample_collection_site`. The submitter populates one or the
-      other depending on whether the sample came from a field collection or from in-vitro
-      maintenance.
-    - Distinct from MIxS `isol_growth_condt` (MIXS:0000003), which expects a publication
-      reference (DOI/PMID/URL pattern), not free-text growth conditions.
-    examples:
-    - value: Greenhouse-grown
-      description: Plant-tissue isolate maintained in greenhouse conditions
-    - value: Cultivated indoor; substrate logs of supplemented oak
-      description: Mushroom (Lentinula edodes) cultivation context
-    - value: E. coli K-12 MG1655 broth culture infected with phage T4
-      description: Viral-isolate growth context — host culture conditions
-    in_subset:
-    - jgi_isolate
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: Collection Site or Growth Conditions
-      predicate: NARROW_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
   host_genus:
     name: host_genus
     description: Genus of the host organism that the sample was collected from.
+    notes:
+    - GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
+    - GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage
+      JSE, queried 2026-04-30)
     comments:
     - Free-text submitter-provided host genus. For an ontology-grounded host identification,
       use `host_taxid` (MIXS:0000250) on the same class.
     examples:
     - value: Zea
-      description: GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
     - value: Escherichia
-      description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia
-        phage JSE, queried 2026-04-30)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host Genus
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   host_species:
     name: host_species
     description: Species of the host organism that the sample was collected from.
+    notes:
+    - GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
+    - GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage
+      JSE, queried 2026-04-30)
     comments:
     - Free-text submitter-provided host species. For an ontology-grounded host identification,
       use `host_taxid` (MIXS:0000250) on the same class.
     examples:
     - value: mays
-      description: GOLD organism_v2 host_name "Zea mays" (n=432 records, queried 2026-04-30)
     - value: coli
-      description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia
-        phage JSE, queried 2026-04-30)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host Species
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   host_strain:
     name: host_strain
     description: Strain of the host organism that the sample was collected from.
+    notes:
+    - GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage
+      JSE, queried 2026-04-30)
     comments:
     - Free-text submitter-provided host strain. For an ontology-grounded host identification,
       use `host_taxid` (MIXS:0000250) on the same class.
     examples:
     - value: K-12
-      description: GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia
-        phage JSE, queried 2026-04-30)
     in_subset:
     - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host Strain
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
   img_identifiers:
     name: img_identifiers
     description: A list of identifiers that relate the biosample to records in the
@@ -7845,11 +8016,26 @@ slots:
     pattern: ^gold:Gp[0-9]+$
   insdc_experiment_identifiers:
     name: insdc_experiment_identifiers
+    description: INSDC identifiers for the unique sequencing result for a specific
+      sample
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#sra-metadata-experiment
     is_a: external_database_identifiers
     mixins:
     - insdc_identifiers
     pattern: ^insdc.sra:(E|D|S)RX[0-9]{6,}$
+  insdc_run_identifiers:
+    name: insdc_run_identifiers
+    description: Identifiers for the manifest of data file(s) that are derived from
+      sequencing a library described by the associated INSDC experiment.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/#linking-metadata-and-data-run
+    is_a: external_database_identifiers
+    mixins:
+    - insdc_identifiers
+    pattern: ^insdc\.run:(E|D|S)RR[0-9]{6,}$
   analysis_identifiers:
     name: analysis_identifiers
     from_schema: https://w3id.org/nmdc/nmdc
@@ -7917,14 +8103,17 @@ slots:
     name: classified_as
     description: A formal classification for this entity, expressed directly as an
       ontology-backed class instance stored in ontology_class_set.
+    notes:
+    - The global range stays OntologyClass. Organism is currently the only class that
+      narrows classified_as to NcbiTaxon, via slot_usage. Extending that narrowing
+      to other classes is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3016.
     comments:
-    - 'Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
+    - Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
       OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.
-      The global range stays OntologyClass; narrowing to NcbiTaxon via slot_usage
-      is tracked in #3016.'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2959
+    - https://github.com/microbiomedata/nmdc-schema/issues/3016
     narrow_mappings:
     - biolink:in_taxon
     range: OntologyClass
@@ -8710,11 +8899,10 @@ slots:
       Preferred_unit:
         tag: Preferred_unit
         value: percent
-    description: 'Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis
-      method that divides  crude oil  components according to their polarizability
-      and polarity. There are three main methods to obtain SARA results. The most
-      popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source:
-      https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
+    description: 'Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method
+      that divides crude oil components according to their polarizability and polarity.
+      There are three main methods to obtain SARA results. The most popular one is
+      known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
     title: aromatics wt%
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000133
@@ -8731,11 +8919,10 @@ slots:
       Preferred_unit:
         tag: Preferred_unit
         value: percent
-    description: 'Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis
-      method that divides  crude oil  components according to their polarizability
-      and polarity. There are three main methods to obtain SARA results. The most
-      popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source:
-      https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
+    description: 'Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method
+      that divides crude oil components according to their polarizability and polarity.
+      There are three main methods to obtain SARA results. The most popular one is
+      known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
     title: asphaltenes wt%
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000135
@@ -11883,8 +12070,10 @@ slots:
     structured_aliases:
     - literal_form: Host NCBI Taxonomy ID
       predicate: EXACT_SYNONYM
-      contexts:
-      - https://jgi.doe.gov/isolate-submission-form/v19
+      notes:
+      - Exact JGI form template is access-restricted; source is the public submission
+        overview.
+      source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     keywords:
     - host
     - host.
@@ -13450,9 +13639,9 @@ slots:
         tag: storage_units
         value: Cel
     description: 'Temperature at which a liquid becomes semi solid and loses its flow
-      characteristics. In crude oil a high  pour point  is generally associated with
+      characteristics. In crude oil a high pour point is generally associated with
       a high paraffin content, typically found in crude deriving from a larger proportion
-      of plant material. (soure: https://en.wikipedia.org/wiki/pour_point)'
+      of plant material. (source: https://en.wikipedia.org/wiki/pour_point)'
     title: pour point
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000127
@@ -13818,11 +14007,10 @@ slots:
       Preferred_unit:
         tag: Preferred_unit
         value: percent
-    description: 'Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis
-      method that divides  crude oil  components according to their polarizability
-      and polarity. There are three main methods to obtain SARA results. The most
-      popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source:
-      https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
+    description: 'Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method
+      that divides crude oil components according to their polarizability and polarity.
+      There are three main methods to obtain SARA results. The most popular one is
+      known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
     title: resins wt%
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000134
@@ -14755,11 +14943,10 @@ slots:
       Preferred_unit:
         tag: Preferred_unit
         value: percent
-    description: 'Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis
-      method that divides  crude oil  components according to their polarizability
-      and polarity. There are three main methods to obtain SARA results. The most
-      popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source:
-      https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
+    description: 'Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method
+      that divides crude oil components according to their polarizability and polarity.
+      There are three main methods to obtain SARA results. The most popular one is
+      known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
     title: saturates wt%
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000131
@@ -15769,9 +15956,9 @@ slots:
       storage_units:
         tag: storage_units
         value: mg/L
-    description: 'Total Acid Number  (TAN) is a measurement of acidity that is determined
-      by the amount of  potassium hydroxide  in milligrams that is needed to neutralize
-      the acids in one gram of oil.  It is an important quality measurement of  crude
+    description: 'Total Acid Number (TAN) is a measurement of acidity that is determined
+      by the amount of potassium hydroxide in milligrams that is needed to neutralize
+      the acids in one gram of oil. It is an important quality measurement of crude
       oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)'
     title: total acid number
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16494,8 +16681,8 @@ slots:
       Preferred_unit:
         tag: Preferred_unit
         value: cP at degree Celsius
-    description: A measure of oil's resistance  to gradual deformation by  shear stress  or  tensile
-      stress (e.g. 3.5 cp; 100   C)
+    description: A measure of oil's resistance to gradual deformation by shear stress
+      or tensile stress (e.g. 3.5 cp; 100 °C)
     title: viscosity
     from_schema: https://w3id.org/nmdc/nmdc
     string_serialization: '{float} {unit};{float} {unit}'
@@ -17087,6 +17274,11 @@ slots:
       importance in the sequencing of (eukaryotic) genome which could remain in draft
       form for a long or unspecified period
     title: estimated size
+    notes:
+    - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from
+      JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional
+      required rule are enforced in submission-schema via class rules on IsolateInterface,
+      keyed on biosafety_mat_cat.
     comments:
     - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
     examples:
@@ -17097,6 +17289,7 @@ slots:
     slot_uri: MIXS:0000024
     range: integer
     minimum_value: 1
+    maximum_value: 100000000000
   ploidy:
     name: ploidy
     description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid,
@@ -17144,6 +17337,33 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+  lib_layout:
+    name: lib_layout
+    description: Specify whether to expect single, paired, or other configuration
+      of reads
+    title: library layout
+    examples:
+    - value: paired
+    from_schema: https://w3id.org/nmdc/nmdc
+    keywords:
+    - library
+    slot_uri: MIXS:0000041
+    range: LibLayoutEnum
+  adapters:
+    name: adapters
+    description: Adapters provide priming sequences for both amplification and sequencing
+      of the sample-library fragments. Both adapters should be reported; in uppercase
+      letters
+    title: adapters
+    examples:
+    - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: MIXS:0000048
+    pattern: ^[ACGT];[ACGT]$
+    structured_pattern:
+      syntax: ^{dna_bases};{dna_bases}$
+      interpolated: true
+      partial_match: true
   samp_collec_device:
     name: samp_collec_device
     description: 'The device used to collect an environmental sample. Recommended
@@ -17179,7 +17399,7 @@ slots:
     structured_aliases:
     - literal_form: samp_collect_method
       contexts:
-      - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+      - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0
     keywords:
     - method
     - sample
@@ -17366,7 +17586,7 @@ slots:
         tag: storage_units
         value: '[ppm]|mg/kg|mg/L'
     description: Concentration of nitrate nitrogen in the sample
-    title: nitrate_nitrogen
+    title: nitrate nitrogen
     comments:
     - often below some specified limit of detection
     examples:
@@ -17393,7 +17613,7 @@ slots:
         tag: storage_units
         value: '[ppm]|mg/kg|mg/L'
     description: Concentration of nitrite nitrogen in the sample
-    title: nitrite_nitrogen
+    title: nitrite nitrogen
     examples:
     - value: 1.2 mg/kg
     from_schema: https://w3id.org/nmdc/nmdc
@@ -19032,6 +19252,11 @@ classes:
     - stranded_orientation
     - target_gene
     - target_subfragment
+    - library_selection
+    - library_strategy
+    - library_source
+    - lib_layout
+    - adapters
     slot_usage:
       has_input:
         name: has_input
@@ -19707,7 +19932,7 @@ classes:
       from sample slots such as classified_as.'
     - Sub-species information (strains, cultivars, lab-specific isolates) is below
       the resolution of NCBI Taxonomy. Strain identity is captured via dedicated slots
-      on Organism (e.g. strain_name, isolate_name) — not by minting NcbiTaxon instances.
+      on Organism (e.g. strain_name, isolate_name), not by minting NcbiTaxon instances.
     - Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue
       with range OntologyClass. The intent is that these slots point to NcbiTaxon
       instances specifically, but LinkML does not currently support constraining the
@@ -19832,18 +20057,10 @@ classes:
       instances represent the biological identity of what is in a sample, not the
       sample itself. Sub-species identity (strain, cultivar, lab isolate) is captured
       by slots on this class rather than via a separate Strain subclass.
-    notes:
-    - 'DEBATED — `estimated_size` and `gc_content` placement on Organism. Montana
-      argues these are analyte properties measured during sample QC (like concentration
-      or absorbance) rather than stable organism properties, and belong only in submission-schema.
-      Counterargument: genome size and GC% are reproducible biological properties
-      of the organism that are useful for downstream data integration. Keeping on
-      Organism pending resolution.'
     comments:
-    - Organism instances are stored in organism_set. An Organism is not a sample —
-      it is the biological entity that an OrganismSample is expected to contain, linked
-      via expected_organism. Sub-species identity (strain_name, isolate_name) is captured
-      directly on Organism.
+    - An Organism is not a sample; it is the biological entity that an OrganismSample
+      is expected to contain, linked via expected_organism. Sub-species identity (strain_name,
+      isolate_name) is captured directly on Organism.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2959
@@ -19871,19 +20088,26 @@ classes:
           interpolated: true
       classified_as:
         name: classified_as
-        description: 'Taxonomic classification of this organism. Narrowed from the
-          global OntologyClass range (defined on the slot itself) to NcbiTaxon, since
-          organism identity at NMDC is anchored to NCBI Taxonomy. Per #3016 — the
-          broader pattern is to narrow `classified_as` to `NcbiTaxon` on all organism-oriented
-          classes via slot_usage.'
+        description: Taxonomic classification of this organism.
+        notes:
+        - Narrowing `classified_as` to `NcbiTaxon` on organism-oriented classes via
+          slot_usage is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3016.
         range: NcbiTaxon
       estimated_size:
         name: estimated_size
+        examples:
+        - value: '5000000'
+        in_subset:
+        - jgi_isolate
         structured_aliases:
         - literal_form: Estimated Genome Size (Mb)
           predicate: BROAD_SYNONYM
-          contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
+          notes:
+          - Exact JGI form template is access-restricted; source is the public submission
+            overview.
+          - 'Per @aclum: Mb is a coarser unit than bp, so a single Mb value covers
+            many possible bp values; the alias is broader in granularity.'
+          source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
       ref_biomaterial:
         name: ref_biomaterial
         description: Reference for the organism, preferentially a DOI when a primary
@@ -19891,14 +20115,10 @@ classes:
           the MIxS ref_biomaterial pattern (`{PMID}|{DOI}|{URL}`). Reuses MIxS ref_biomaterial
           (MIXS:0000025).
         comments:
-        - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available
-          — it gives a stable reference to the publication or genome report. See the
+        - The MIxS pattern accepts DOI, PMID, or URL. DOI is preferred when available;
+          it gives a stable reference to the publication or genome report. See the
           `associated_dois` pattern elsewhere in the NMDC schema for DOI-structured
           alternatives.
-        - JGI "Reference Genome" submissions sometimes carry non-publication identifiers
-          such as IMG or Phytozome IDs, which do not match the MIxS pattern. Those
-          are out of scope for this slot and should be captured separately (see `gold_organism_identifiers`
-          and `insdc_nucleotide_identifiers` for genome / assembly references).
         - The MIxS name ref_biomaterial may be renamed in a future MIxS release. See
           ongoing MIxS renaming work.
         examples:
@@ -19914,11 +20134,6 @@ classes:
           object:
             type: nmdc:TextValue
             has_raw_value: https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000016065.1/
-        structured_aliases:
-        - literal_form: Reference Genome
-          predicate: RELATED_SYNONYM
-          contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
     class_uri: nmdc:Organism
   PlannedProcess:
     name: PlannedProcess
@@ -20204,6 +20419,7 @@ classes:
     - data_object_type
     - file_size_bytes
     - insdc_experiment_identifiers
+    - insdc_run_identifiers
     - md5_checksum
     - url
     - was_generated_by
@@ -20237,6 +20453,21 @@ classes:
         name: data_category
         required: true
     class_uri: nmdc:DataObject
+    rules:
+    - preconditions:
+        slot_conditions:
+          data_object_type:
+            name: data_object_type
+            equals_string: SRA toolkit-accessible sequence data
+      postconditions:
+        slot_conditions:
+          insdc_run_identifiers:
+            name: insdc_run_identifiers
+            required: true
+      description: If data_object_type is "SRA toolkit-accessible sequence data",
+        then insdc_run_identifiers is required, because such objects are retrieved
+        by INSDC run accession through the SRA Toolkit rather than by a stable URL.
+      title: sra_toolkit_object_requires_run_identifier
   DataEmitterProcess:
     name: DataEmitterProcess
     description: A process that generates data objects as output.
@@ -21605,10 +21836,6 @@ classes:
     - collection_date
     - samp_name
     - host_taxid
-    - sample_isolation_method
-    - sample_isolated_from
-    - sample_collection_site
-    - sample_growth_conditions
     - ploidy
     - source_mat_id
     - analysis_type
@@ -21667,13 +21894,19 @@ classes:
           object:
             type: nmdc:TextValue
             has_raw_value: bcrc:10694
+        in_subset:
+        - jgi_isolate
         see_also:
         - https://github.com/microbiomedata/nmdc-schema/issues/3036
         structured_aliases:
         - literal_form: Culture Collection and ID
           predicate: NARROW_SYNONYM
-          contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
+          notes:
+          - Exact JGI form template is access-restricted; source is the public submission
+            overview.
+          - JGI label is narrower (culture-collection-only) than MIxS source_mat_id
+            (any material-sample identifier).
+          source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
     class_uri: nmdc:OrganismSample
   Site:
     name: Site
@@ -22161,7 +22394,7 @@ classes:
         description: The number of m/z peaks with assigned molecular formulas in the
           analysis.
     class_uri: nmdc:NomAnalysis
-metamodel_version: 1.7.0
+metamodel_version: 1.11.0
 source_file: src/schema/nmdc.yaml
 settings:
   id_nmdc_prefix:

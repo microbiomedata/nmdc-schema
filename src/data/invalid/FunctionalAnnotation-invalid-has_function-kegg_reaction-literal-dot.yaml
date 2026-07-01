@@ -1,0 +1,4 @@
+# invalid b/c has_function requires the literal prefix "KEGG.REACTION:";
+# "KEGGXREACTION:" only matched when the regex dot was unescaped (.= any char)
+has_function: KEGGXREACTION:R00100
+type: nmdc:FunctionalAnnotation

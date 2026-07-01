@@ -404,6 +404,12 @@ enums:
       vent cover: {}
       wall: {}
       window: {}
+  LibLayoutEnum:
+    permissible_values:
+      other: {}
+      paired: {}
+      single: {}
+      vector: {}
   LightTypeEnum:
     permissible_values:
       desk lamp: {}
@@ -1331,7 +1337,7 @@ slots:
   aromatics_pc:
     annotations:
       Preferred_unit: percent
-    description: 'Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
+    description: 'Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
     title: aromatics wt%
     slot_uri: MIXS:0000133
     range: TextValue
@@ -1343,7 +1349,7 @@ slots:
   asphaltenes_pc:
     annotations:
       Preferred_unit: percent
-    description: 'Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
+    description: 'Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
     title: asphaltenes wt%
     slot_uri: MIXS:0000135
     range: TextValue
@@ -3513,9 +3519,10 @@ slots:
     range: ControlledIdentifiedTermValue
     structured_aliases:
       - literal_form: Host NCBI Taxonomy ID
-        contexts:
-          - https://jgi.doe.gov/isolate-submission-form/v19
         predicate: EXACT_SYNONYM
+        source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+        notes:
+          - Exact JGI form template is access-restricted; source is the public submission overview.
   host_tot_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -4345,7 +4352,7 @@ slots:
       - pcr
     slot_uri: MIXS:0000046
     structured_pattern:
-      syntax: FWD:{dna_bases};REV:{dna_bases}
+      syntax: FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+
       interpolated: true
   permeability:
     annotations:
@@ -4583,7 +4590,7 @@ slots:
     annotations:
       Preferred_unit: degree Celsius
       storage_units: Cel
-    description: 'Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high  pour point  is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (soure: https://en.wikipedia.org/wiki/pour_point)'
+    description: 'Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high pour point is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (source: https://en.wikipedia.org/wiki/pour_point)'
     title: pour point
     slot_uri: MIXS:0000127
     range: QuantityValue
@@ -4833,7 +4840,7 @@ slots:
   resins_pc:
     annotations:
       Preferred_unit: percent
-    description: 'Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
+    description: 'Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
     title: resins wt%
     slot_uri: MIXS:0000134
     range: TextValue
@@ -5480,7 +5487,7 @@ slots:
   saturates_pc:
     annotations:
       Preferred_unit: percent
-    description: 'Saturate, Aromatic, Resin and Asphaltene  (SARA) is an analysis method that divides  crude oil  components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
+    description: 'Saturate, Aromatic, Resin and Asphaltene (SARA) is an analysis method that divides crude oil components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
     title: saturates wt%
     slot_uri: MIXS:0000131
     range: TextValue
@@ -6175,7 +6182,7 @@ slots:
     annotations:
       Preferred_unit: milligram per liter
       storage_units: mg/L
-    description: 'Total Acid Number  (TAN) is a measurement of acidity that is determined by the amount of  potassium hydroxide  in milligrams that is needed to neutralize the acids in one gram of oil.  It is an important quality measurement of  crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)'
+    description: 'Total Acid Number (TAN) is a measurement of acidity that is determined by the amount of potassium hydroxide in milligrams that is needed to neutralize the acids in one gram of oil. It is an important quality measurement of crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)'
     title: total acid number
     keywords:
       - number
@@ -6680,7 +6687,7 @@ slots:
     annotations:
       Expected_value: measurement value;measurement value
       Preferred_unit: cP at degree Celsius
-    description: A measure of oil's resistance  to gradual deformation by  shear stress  or  tensile stress (e.g. 3.5 cp; 100   C)
+    description: A measure of oil's resistance to gradual deformation by shear stress or tensile stress (e.g. 3.5 cp; 100 °C)
     title: viscosity
     string_serialization: '{float} {unit};{float} {unit}'
     slot_uri: MIXS:0000126
@@ -7112,12 +7119,13 @@ slots:
     slot_uri: MIXS:0000024
     range: integer
     minimum_value: 1
-    maximum_value: 100000000000
     comments:
       - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
-      - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat.
     examples:
       - object: 300000
+    maximum_value: 100000000000
+    notes:
+      - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat.
   ploidy:
     description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO
     title: ploidy
@@ -7149,6 +7157,25 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+  lib_layout:
+    description: Specify whether to expect single, paired, or other configuration of reads
+    title: library layout
+    examples:
+      - value: paired
+    keywords:
+      - library
+    slot_uri: MIXS:0000041
+    range: LibLayoutEnum
+  adapters:
+    description: Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters
+    title: adapters
+    examples:
+      - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
+    slot_uri: MIXS:0000048
+    structured_pattern:
+      syntax: ^{primer_adapter_codes}+;{primer_adapter_codes}+$
+      interpolated: true
+      partial_match: true
   samp_collec_device:
     annotations: {}
     description: 'The device used to collect an environmental sample. Recommended values are subclasses of specimen collection device (http://purl.obolibrary.org/obo/OBI_0002814). OBI itself contains only swab/wipe subclasses; environmental sampling devices (corers, grab samplers, passive samplers, etc.) are defined in GENEPIO under the same OBI:0002814 parent. Free-text values are accepted for backward compatibility; new submissions should prefer the form: label [PREFIX:LOCALID].'
@@ -7178,7 +7205,7 @@ slots:
     structured_aliases:
       - literal_form: samp_collect_method
         contexts:
-          - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.2.2
+          - https://github.com/GenomicsStandardsConsortium/mixs/releases/tag/v6.3.0
   mixs_env_triad_field:
     annotations:
       tooltip: >-

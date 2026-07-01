@@ -90,6 +90,7 @@ prefixes:
   igsn: "https://app.geosamples.org/sample/igsn/"
   img.taxon: "https://bioregistry.io/img.taxon:"
   insdc.sra: "https://bioregistry.io/insdc.sra:"
+  insdc.run: "https://bioregistry.io/insdc.run:"
   jgi.analysis: "https://data.jgi.doe.gov/search?q="
   jgi.proposal: 'https://bioregistry.io/jgi.proposal:'
   jgi: "http://example.org/jgi/"
@@ -112,6 +113,7 @@ prefixes:
   wgs84: "http://www.w3.org/2003/01/geo/wgs84_pos#"
   wikidata: "http://www.wikidata.org/entity/"
   xsd: "http://www.w3.org/2001/XMLSchema#"
+  pubmed: "https://bioregistry.io/pubmed:"
 
 default_prefix: nmdc
 default_range: string
@@ -148,7 +150,7 @@ settings:
   # 2. The MIxS import pipeline explicitly deletes settings (see project.Makefile)
   # When updating MIxS import, these settings must be manually synced if the source changes.
   #
-  # Source: GSC MIxS v6.2.3 (commit 77cd78836ee01ee8ba2ad10724871a962e3ad694)
+  # Source: GSC MIxS v6.3.0 (commit fb3271909f5ab3277d4c869e816bc9e334cb816f)
   add_recov_methods: 'Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other'
   agrochemical_name: ".*"
   amount: '[-+]?[0-9]*\.?[0-9]+'
@@ -425,7 +427,7 @@ classes:
       count: 
           description: The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.
       gene_function_id:
-        pattern: "(COG:COG\\d+|PFAM:PF\\d{5}|KEGG.ORTHOLOGY:K\\d+)"
+        pattern: "^(COG:COG\\d+|PFAM:PF\\d{5}|KEGG\\.ORTHOLOGY:K\\d+)$"
       
   Database:
     class_uri: nmdc:Database
@@ -593,6 +595,11 @@ classes:
       - stranded_orientation
       - target_gene
       - target_subfragment
+      - library_selection
+      - library_strategy
+      - library_source
+      - lib_layout
+      - adapters
     close_mappings:
       - OBI:0000711
     comments:

@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-06-03T10:44:09
+# Generation date: 2026-06-23T18:37:25
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -59,7 +59,7 @@ from rdflib import (
 from linkml_runtime.linkml_model.types import Boolean, Datetime, Decimal, Float, Integer, String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import Bool, Decimal, URIorCURIE, XSDDateTime
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = "0.0.0"
 
 # Namespaces
@@ -77,7 +77,6 @@ EFO = CurieNamespace('EFO', 'http://www.ebi.ac.uk/efo/')
 EGGNOG = CurieNamespace('EGGNOG', 'https://bioregistry.io/eggnog:')
 ENVO = CurieNamespace('ENVO', 'http://purl.obolibrary.org/obo/ENVO_')
 FBCV = CurieNamespace('FBcv', 'http://purl.obolibrary.org/obo/FBcv_')
-FMA = CurieNamespace('FMA', 'http://purl.obolibrary.org/obo/FMA_')
 GENEPIO = CurieNamespace('GENEPIO', 'http://purl.obolibrary.org/obo/GENEPIO_')
 GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
 HMDB = CurieNamespace('HMDB', 'https://bioregistry.io/hmdb:')
@@ -138,6 +137,7 @@ GOLD = CurieNamespace('gold', 'https://bioregistry.io/gold:')
 GTPO = CurieNamespace('gtpo', 'http://example.org/gtpo/')
 IGSN = CurieNamespace('igsn', 'https://app.geosamples.org/sample/igsn/')
 IMG_TAXON = CurieNamespace('img_taxon', 'https://bioregistry.io/img.taxon:')
+INSDC_RUN = CurieNamespace('insdc_run', 'https://bioregistry.io/insdc.run:')
 INSDC_SRA = CurieNamespace('insdc_sra', 'https://bioregistry.io/insdc.sra:')
 JGI = CurieNamespace('jgi', 'http://example.org/jgi/')
 JGI_ANALYSIS = CurieNamespace('jgi_analysis', 'https://data.jgi.doe.gov/search?q=')
@@ -152,6 +152,7 @@ NEON_SCHEMA = CurieNamespace('neon_schema', 'http://example.org/neon/schema/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
+PUBMED = CurieNamespace('pubmed', 'https://bioregistry.io/pubmed:')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
@@ -3888,10 +3889,6 @@ class OrganismSample(Sample):
     collection_date: Optional[Union[dict, TimestampValue]] = None
     samp_name: Optional[str] = None
     host_taxid: Optional[Union[dict, ControlledIdentifiedTermValue]] = None
-    sample_isolation_method: Optional[str] = None
-    sample_isolated_from: Optional[str] = None
-    sample_collection_site: Optional[str] = None
-    sample_growth_conditions: Optional[str] = None
     ploidy: Optional[Union[str, "PloidyEnum"]] = None
     source_mat_id: Optional[Union[dict, TextValue]] = None
     analysis_type: Optional[Union[Union[str, "AnalysisTypeEnum"], list[Union[str, "AnalysisTypeEnum"]]]] = empty_list()
@@ -3933,18 +3930,6 @@ class OrganismSample(Sample):
 
         if self.host_taxid is not None and not isinstance(self.host_taxid, ControlledIdentifiedTermValue):
             self.host_taxid = ControlledIdentifiedTermValue(**as_dict(self.host_taxid))
-
-        if self.sample_isolation_method is not None and not isinstance(self.sample_isolation_method, str):
-            self.sample_isolation_method = str(self.sample_isolation_method)
-
-        if self.sample_isolated_from is not None and not isinstance(self.sample_isolated_from, str):
-            self.sample_isolated_from = str(self.sample_isolated_from)
-
-        if self.sample_collection_site is not None and not isinstance(self.sample_collection_site, str):
-            self.sample_collection_site = str(self.sample_collection_site)
-
-        if self.sample_growth_conditions is not None and not isinstance(self.sample_growth_conditions, str):
-            self.sample_growth_conditions = str(self.sample_growth_conditions)
 
         if self.ploidy is not None and not isinstance(self.ploidy, PloidyEnum):
             self.ploidy = PloidyEnum(self.ploidy)
@@ -4530,6 +4515,11 @@ class LibraryPreparation(MaterialProcessing):
     stranded_orientation: Optional[Union[str, "StrandedOrientationEnum"]] = None
     target_gene: Optional[Union[str, "TargetGeneEnum"]] = None
     target_subfragment: Optional[Union[dict, TextValue]] = None
+    library_selection: Optional[Union[str, "LibrarySelectionEnum"]] = None
+    library_strategy: Optional[Union[str, "LibraryStrategyEnum"]] = None
+    library_source: Optional[Union[str, "LibrarySourceEnum"]] = None
+    lib_layout: Optional[Union[str, "LibLayoutEnum"]] = None
+    adapters: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -4578,6 +4568,21 @@ class LibraryPreparation(MaterialProcessing):
 
         if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
             self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
+
+        if self.library_selection is not None and not isinstance(self.library_selection, LibrarySelectionEnum):
+            self.library_selection = LibrarySelectionEnum(self.library_selection)
+
+        if self.library_strategy is not None and not isinstance(self.library_strategy, LibraryStrategyEnum):
+            self.library_strategy = LibraryStrategyEnum(self.library_strategy)
+
+        if self.library_source is not None and not isinstance(self.library_source, LibrarySourceEnum):
+            self.library_source = LibrarySourceEnum(self.library_source)
+
+        if self.lib_layout is not None and not isinstance(self.lib_layout, LibLayoutEnum):
+            self.lib_layout = LibLayoutEnum(self.lib_layout)
+
+        if self.adapters is not None and not isinstance(self.adapters, str):
+            self.adapters = str(self.adapters)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -5473,6 +5478,7 @@ class DataObject(InformationObject):
     compression_type: Optional[str] = None
     file_size_bytes: Optional[int] = None
     insdc_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
+    insdc_run_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     md5_checksum: Optional[str] = None
     url: Optional[str] = None
     was_generated_by: Optional[Union[str, DataEmitterProcessId]] = None
@@ -5514,6 +5520,10 @@ class DataObject(InformationObject):
         if not isinstance(self.insdc_experiment_identifiers, list):
             self.insdc_experiment_identifiers = [self.insdc_experiment_identifiers] if self.insdc_experiment_identifiers is not None else []
         self.insdc_experiment_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.insdc_experiment_identifiers]
+
+        if not isinstance(self.insdc_run_identifiers, list):
+            self.insdc_run_identifiers = [self.insdc_run_identifiers] if self.insdc_run_identifiers is not None else []
+        self.insdc_run_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.insdc_run_identifiers]
 
         if self.md5_checksum is not None and not isinstance(self.md5_checksum, str):
             self.md5_checksum = str(self.md5_checksum)
@@ -7801,6 +7811,109 @@ class UnitEnum(EnumDefinitionImpl):
                 title="inches",
                 description="The Unified Code for Units of Measure (UCUM) representation of inch."))
 
+class LibraryStrategyEnum(EnumDefinitionImpl):
+    """
+    Sequencing strategy used for library preparation
+    """
+    WGA = PermissibleValue(
+        text="WGA",
+        title="Whole Genome Amplification",
+        description="Whole genome amplification followed by random sequencing.")
+    WGS = PermissibleValue(
+        text="WGS",
+        title="Whole Genome Sequencing",
+        description="Random sequencing of the whole genome.")
+    AMPLICON = PermissibleValue(
+        text="AMPLICON",
+        description="Sequencing of overlapping or distinct PCR or RT-PCR products")
+
+    _defn = EnumDefinition(
+        name="LibraryStrategyEnum",
+        description="Sequencing strategy used for library preparation",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "RNA-Seq",
+            PermissibleValue(
+                text="RNA-Seq",
+                description="Random sequencing of whole transcriptome"))
+
+class LibrarySourceEnum(EnumDefinitionImpl):
+    """
+    Molecular source of the sequencing library
+    """
+    GENOMIC = PermissibleValue(
+        text="GENOMIC",
+        description="Genomic DNA (includes PCR products from genomic DNA)")
+    TRANSCRIPTOMIC = PermissibleValue(
+        text="TRANSCRIPTOMIC",
+        description="Transcription products or non-genomic DNA")
+    METAGENOMIC = PermissibleValue(
+        text="METAGENOMIC",
+        description="Mixed material from metagenome")
+    METATRANSCRIPTOMIC = PermissibleValue(
+        text="METATRANSCRIPTOMIC",
+        description="Transcription products from community targets")
+    SYNTHETIC = PermissibleValue(
+        text="SYNTHETIC",
+        description="Synthetic DNA")
+    OTHER = PermissibleValue(
+        text="OTHER",
+        description="Other, unspecified, or unknown library source material")
+
+    _defn = EnumDefinition(
+        name="LibrarySourceEnum",
+        description="Molecular source of the sequencing library",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "VIRAL RNA",
+            PermissibleValue(
+                text="VIRAL RNA",
+                description="Viral RNA"))
+        setattr(cls, "GENOMIC SINGLE CELL",
+            PermissibleValue(
+                text="GENOMIC SINGLE CELL",
+                description="Single cell genomic DNA source"))
+        setattr(cls, "TRANSCRIPTOMIC SINGLE CELL",
+            PermissibleValue(
+                text="TRANSCRIPTOMIC SINGLE CELL",
+                description="Single cell transcriptomic source"))
+
+class LibrarySelectionEnum(EnumDefinitionImpl):
+    """
+    Library selection or enrichment method
+    """
+    RANDOM = PermissibleValue(
+        text="RANDOM",
+        description="Random selection by shearing or other method")
+    PCR = PermissibleValue(
+        text="PCR",
+        description="Source material was selected by designed primers")
+    MDA = PermissibleValue(
+        text="MDA",
+        description="Multiple displacement amplification")
+    other = PermissibleValue(
+        text="other",
+        description="""Other library enrichment, screening, or selection process (please include additional info in the design description)""")
+    PolyA = PermissibleValue(
+        text="PolyA",
+        description="PolyA selection or enrichment for messenger RNA (mRNA)")
+
+    _defn = EnumDefinition(
+        name="LibrarySelectionEnum",
+        description="Library selection or enrichment method",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "size fractionation",
+            PermissibleValue(
+                text="size fractionation",
+                description="Physical selection of size appropriate targets"))
+
 class ExecutionResourceEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
@@ -7874,6 +7987,26 @@ class FileTypeEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Metatranscriptome Raw Read 2",
                 description="Read 2 raw metatranscriptome sequencing data, aka reverse reads"))
+        setattr(cls, "Unpaired raw sequencing data",
+            PermissibleValue(
+                text="Unpaired raw sequencing data",
+                description="Reads from a single-end sequencing library (not forward/reverse pairs)."))
+        setattr(cls, "Paired interleaved raw sequencing data",
+            PermissibleValue(
+                text="Paired interleaved raw sequencing data",
+                description="Paired-end reads with forward and reverse mates interleaved in a single file."))
+        setattr(cls, "Raw sequencing data read 1",
+            PermissibleValue(
+                text="Raw sequencing data read 1",
+                description="Read 1 (forward) of a paired-end run, as a separate file."))
+        setattr(cls, "Raw sequencing data read 2",
+            PermissibleValue(
+                text="Raw sequencing data read 2",
+                description="Read 2 (reverse) of a paired-end run, as a separate file."))
+        setattr(cls, "SRA toolkit-accessible sequence data",
+            PermissibleValue(
+                text="SRA toolkit-accessible sequence data",
+                description="Files that are available for download via SRA Toolkit by providing an INSDC accession"))
         setattr(cls, "Direct Infusion FT-ICR MS Analysis Results",
             PermissibleValue(
                 text="Direct Infusion FT-ICR MS Analysis Results",
@@ -8802,50 +8935,52 @@ class ProtocolForEnum(EnumDefinitionImpl):
 
 class PloidyEnum(EnumDefinitionImpl):
     """
-    Ploidy of an organism's genome. Permissible values map to PATO classes and were selected from values observed in
-    the JGI GOLD lakehouse table `gold.dw_sample_taxonomy_info.ploidy_comments` (queried 2026-04-29). Used as the
-    range of the `ploidy` slot, narrowing the MIxS-imported `ploidy` (MIXS:0000021) from a free- text / structured
-    pattern to an enumerated set with referential integrity to PATO.
+    The ploidy state of an organism's genome, drawn from the ploidy classes of the Phenotypic Quality Ontology (PATO).
     """
     haploid = PermissibleValue(
         text="haploid",
-        description="A single set of unpaired chromosomes.",
+        description="A single set of homologous chromosomes.",
         meaning=PATO["0001375"])
     diploid = PermissibleValue(
         text="diploid",
-        description="Two sets of homologous chromosomes (one from each parent).",
+        description="Two homologous sets of chromosomes.",
         meaning=PATO["0001394"])
     triploid = PermissibleValue(
         text="triploid",
-        description="Three sets of chromosomes.",
+        description="Three homologous sets of chromosomes.",
         meaning=PATO["0001381"])
     tetraploid = PermissibleValue(
         text="tetraploid",
-        description="Four sets of chromosomes.",
+        description="Four homologous sets of chromosomes.",
         meaning=PATO["0001382"])
+    pentaploid = PermissibleValue(
+        text="pentaploid",
+        description="Five homologous sets of chromosomes.",
+        meaning=PATO["0001383"])
     hexaploid = PermissibleValue(
         text="hexaploid",
-        description="Six sets of chromosomes.",
+        description="Six homologous sets of chromosomes.",
         meaning=PATO["0001384"])
     polyploid = PermissibleValue(
         text="polyploid",
-        description="More than two sets of chromosomes (generic — use a more specific value when known).",
+        description="""More than two homologous sets of chromosomes; use a more specific value when the level is known.""",
         meaning=PATO["0001377"])
     allopolyploidy = PermissibleValue(
         text="allopolyploidy",
-        description="Polyploid arising from hybridization between two or more species. (PATO label uses -y suffix.)",
+        description="Polyploid whose chromosome sets derive from two or more different species.",
         meaning=PATO["0001379"])
+    autopolyploid = PermissibleValue(
+        text="autopolyploid",
+        description="Polyploid whose chromosome sets derive from a single species.",
+        meaning=PATO["0001378"])
     aneuploid = PermissibleValue(
         text="aneuploid",
-        description="A genome with an abnormal number of chromosomes (not an exact multiple of the haploid number).",
+        description="""A chromosome number that is not an exact multiple of the haploid set (extra or missing chromosomes).""",
         meaning=PATO["0001385"])
-    other = PermissibleValue(
-        text="other",
-        description="""A ploidy state with biological meaning that is not covered by the listed permissible values (e.g. dikaryon / dikaryotic, polykaryotic, octoploid, or hedged values like \"likely diploid\"). Use this when the submitter's value is interpretable but does not map cleanly to one of the named ploidy classes. The original free-text qualifier should be preserved upstream (e.g. in a sample-level note) when it carries information beyond the bare classification.""")
 
     _defn = EnumDefinition(
         name="PloidyEnum",
-        description="""Ploidy of an organism's genome. Permissible values map to PATO classes and were selected from values observed in the JGI GOLD lakehouse table `gold.dw_sample_taxonomy_info.ploidy_comments` (queried 2026-04-29). Used as the range of the `ploidy` slot, narrowing the MIxS-imported `ploidy` (MIXS:0000021) from a free- text / structured pattern to an enumerated set with referential integrity to PATO.""",
+        description="""The ploidy state of an organism's genome, drawn from the ploidy classes of the Phenotypic Quality Ontology (PATO).""",
     )
 
 class AeroStrucEnum(EnumDefinitionImpl):
@@ -9626,6 +9761,17 @@ class IndoorSurfEnum(EnumDefinitionImpl):
             PermissibleValue(text="counter top"))
         setattr(cls, "vent cover",
             PermissibleValue(text="vent cover"))
+
+class LibLayoutEnum(EnumDefinitionImpl):
+
+    other = PermissibleValue(text="other")
+    paired = PermissibleValue(text="paired")
+    single = PermissibleValue(text="single")
+    vector = PermissibleValue(text="vector")
+
+    _defn = EnumDefinition(
+        name="LibLayoutEnum",
+    )
 
 class LightTypeEnum(EnumDefinitionImpl):
 
@@ -11378,6 +11524,15 @@ slots.has_value_term_id = Slot(uri=NMDC['attribute_values/has_value_term_id'], n
 slots.has_datetime_value = Slot(uri=NMDC['attribute_values/has_datetime_value'], name="has_datetime_value", curie=NMDC.curie('attribute_values/has_datetime_value'),
                    model_uri=NMDC.has_datetime_value, domain=None, range=Optional[str])
 
+slots.library_strategy = Slot(uri=NMDC.library_strategy, name="library_strategy", curie=NMDC.curie('library_strategy'),
+                   model_uri=NMDC.library_strategy, domain=None, range=Optional[Union[str, "LibraryStrategyEnum"]])
+
+slots.library_source = Slot(uri=NMDC.library_source, name="library_source", curie=NMDC.curie('library_source'),
+                   model_uri=NMDC.library_source, domain=None, range=Optional[Union[str, "LibrarySourceEnum"]])
+
+slots.library_selection = Slot(uri=NMDC.library_selection, name="library_selection", curie=NMDC.curie('library_selection'),
+                   model_uri=NMDC.library_selection, domain=None, range=Optional[Union[str, "LibrarySelectionEnum"]])
+
 slots.processing_institution_workflow_metadata = Slot(uri=NMDC.processing_institution_workflow_metadata, name="processing_institution_workflow_metadata", curie=NMDC.curie('processing_institution_workflow_metadata'),
                    model_uri=NMDC.processing_institution_workflow_metadata, domain=None, range=Optional[str], mappings = [NCIT["C165211"]])
 
@@ -11571,15 +11726,6 @@ slots.gc_content = Slot(uri=NMDC.gc_content, name="gc_content", curie=NMDC.curie
 
 slots.expected_organism = Slot(uri=NMDC.expected_organism, name="expected_organism", curie=NMDC.curie('expected_organism'),
                    model_uri=NMDC.expected_organism, domain=None, range=Optional[Union[str, OrganismId]])
-
-slots.sample_isolation_method = Slot(uri=NMDC.sample_isolation_method, name="sample_isolation_method", curie=NMDC.curie('sample_isolation_method'),
-                   model_uri=NMDC.sample_isolation_method, domain=None, range=Optional[str])
-
-slots.sample_isolated_from = Slot(uri=NMDC.sample_isolated_from, name="sample_isolated_from", curie=NMDC.curie('sample_isolated_from'),
-                   model_uri=NMDC.sample_isolated_from, domain=None, range=Optional[str])
-
-slots.sample_growth_conditions = Slot(uri=NMDC.sample_growth_conditions, name="sample_growth_conditions", curie=NMDC.curie('sample_growth_conditions'),
-                   model_uri=NMDC.sample_growth_conditions, domain=None, range=Optional[str])
 
 slots.host_genus = Slot(uri=NMDC.host_genus, name="host_genus", curie=NMDC.curie('host_genus'),
                    model_uri=NMDC.host_genus, domain=None, range=Optional[str])
@@ -11883,6 +12029,10 @@ slots.gold_sequencing_project_identifiers = Slot(uri=NMDC.gold_sequencing_projec
 slots.insdc_experiment_identifiers = Slot(uri=NMDC.insdc_experiment_identifiers, name="insdc_experiment_identifiers", curie=NMDC.curie('insdc_experiment_identifiers'),
                    model_uri=NMDC.insdc_experiment_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^insdc.sra:(E|D|S)RX[0-9]{6,}$'))
+
+slots.insdc_run_identifiers = Slot(uri=NMDC.insdc_run_identifiers, name="insdc_run_identifiers", curie=NMDC.curie('insdc_run_identifiers'),
+                   model_uri=NMDC.insdc_run_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^insdc\.run:(E|D|S)RR[0-9]{6,}$'))
 
 slots.analysis_identifiers = Slot(uri=NMDC.analysis_identifiers, name="analysis_identifiers", curie=NMDC.curie('analysis_identifiers'),
                    model_uri=NMDC.analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
@@ -13376,6 +13526,12 @@ slots.ref_biomaterial = Slot(uri=MIXS['0000025'], name="ref_biomaterial", curie=
 
 slots.isol_growth_condt = Slot(uri=MIXS['0000003'], name="isol_growth_condt", curie=MIXS.curie('0000003'),
                    model_uri=NMDC.isol_growth_condt, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.lib_layout = Slot(uri=MIXS['0000041'], name="lib_layout", curie=MIXS.curie('0000041'),
+                   model_uri=NMDC.lib_layout, domain=None, range=Optional[Union[str, "LibLayoutEnum"]])
+
+slots.adapters = Slot(uri=MIXS['0000048'], name="adapters", curie=MIXS.curie('0000048'),
+                   model_uri=NMDC.adapters, domain=None, range=Optional[str])
 
 slots.samp_collec_device = Slot(uri=MIXS['0000002'], name="samp_collec_device", curie=MIXS.curie('0000002'),
                    model_uri=NMDC.samp_collec_device, domain=None, range=Optional[str],

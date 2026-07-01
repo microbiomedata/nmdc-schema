@@ -123,7 +123,7 @@ def main():
     # Write back the updated YAML
     if updates_made > 0:
         with open(yaml_file, 'w') as f:
-            yaml.dump(data, f, default_flow_style=False, sort_keys=False)
+            yaml.safe_dump(data, f, default_flow_style=False, sort_keys=False)
         print(f"\nUpdated {updates_made} fields with has_numeric_value")
     else:
         print("No updates needed")
