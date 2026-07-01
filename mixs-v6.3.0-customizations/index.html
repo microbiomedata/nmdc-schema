@@ -908,6 +908,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#maintaining-mixsyaml-how-to-change-a-mixs-slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maintaining mixs.yaml (how to change a MIxS slot)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintaining mixs.yaml (how to change a MIxS slot)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-fixing-the-adapters-and-pcr_primers-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example: fixing the adapters and pcr_primers patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-a-pattern-change-without-a-full-rebuild" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying a pattern change without a full rebuild
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#future-work" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1508,6 +1547,26 @@
 </tr>
 </tbody>
 </table>
+<h2 id="maintaining-mixsyaml-how-to-change-a-mixs-slot">Maintaining mixs.yaml (how to change a MIxS slot)</h2>
+<p><code>src/schema/mixs.yaml</code> is generated. Do not hand-edit it: the next <code>make src/schema/mixs.yaml</code> regenerates it from the MIxS source and your edit is lost. The <code>CONTRIBUTING.md</code> policy table records this.</p>
+<p>There are two durable places to make a change, and a slot fix often needs both:</p>
+<ol>
+<li><strong>Structure, range, pattern syntax, descriptions, examples</strong> go in <code>assets/yq-for-mixs-customizations.txt</code>. Each line is a single-quoted <code>yq</code> expression applied to the imported schema (see <code>makefiles/mixs.Makefile</code>).</li>
+<li><strong>The placeholders a <code>structured_pattern.syntax</code> interpolates</strong> (e.g. <code>{dna_bases}</code>, <code>{float}</code>, <code>{primer_adapter_codes}</code>) are defined in the <code>settings:</code> block of <code>src/schema/nmdc.yaml</code>, not in <code>mixs.yaml</code>. The import pipeline strips settings, so the materializer reads them from <code>nmdc.yaml</code>. To change what a placeholder expands to, edit the setting; to change which placeholder a slot uses, edit the slot's <code>syntax</code> in the yq asset. See <a href="#settings-for-pattern-interpolation">Settings for Pattern Interpolation</a>.</li>
+</ol>
+<h3 id="worked-example-fixing-the-adapters-and-pcr_primers-patterns">Worked example: fixing the <code>adapters</code> and <code>pcr_primers</code> patterns</h3>
+<p>Issues <a href="https://github.com/microbiomedata/nmdc-schema/issues/3222">#3222</a> and <a href="https://github.com/microbiomedata/nmdc-schema/issues/3224">#3224</a>: both slots interpolated <code>{dna_bases}</code> (<code>[ACGT]</code>) exactly once, producing patterns that match a single canonical base per side (<code>^[ACGT];[ACGT]$</code>). Real values are full sequences, and primers/adapters carry IUPAC degenerate codes (a real NCBI SRA amplicon experiment, SRX17220408, records <code>FWD GTGYCAGCMGCCGCGGTAA</code>, <code>REV CCGYCAATTYMTTTRAGTTT</code>). The fix uses the existing <code>primer_adapter_codes</code> setting (<code>[ACGTRYSWKMBDHVNI]</code>) with a <code>+</code> quantifier, via two lines in the yq asset:</p>
+<pre><code>'.slots.adapters.structured_pattern.syntax = &quot;^{primer_adapter_codes}+;{primer_adapter_codes}+$&quot;'
+'.slots.pcr_primers.structured_pattern.syntax = &quot;FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+&quot;'
+</code></pre>
+<h3 id="verifying-a-pattern-change-without-a-full-rebuild">Verifying a pattern change without a full rebuild</h3>
+<p>A full <code>make src/schema/mixs.yaml</code> re-pulls MIxS over the network and is slow. To check that a <code>structured_pattern</code> change interpolates as intended, apply your yq line to a scratch copy of <code>mixs.yaml</code>, materialize only the patterns, and inspect the result (revert the scratch copy afterward; the committed <code>mixs.yaml</code> and generated artifacts are regenerated at release, not in feature PRs):</p>
+<pre><code class="language-bash">cp src/schema/mixs.yaml /tmp/mixs.yaml
+yq -i &lt;your yq expression&gt; /tmp/mixs.yaml   # lines in assets/yq-for-mixs-customizations.txt already include their surrounding single quotes; paste one verbatim (no extra quoting), then revert the scratch copy afterward
+poetry run linkml generate linkml --format yaml --materialize-patterns \
+  --no-materialize-attributes --output /tmp/materialized.yaml src/schema/nmdc.yaml
+yq eval '.slots.&lt;slot&gt;.pattern' /tmp/materialized.yaml
+</code></pre>
 <h2 id="future-work">Future Work</h2>
 <h3 id="textvalue-to-enum-migrations">TextValue to Enum Migrations</h3>
 <p>The following slots have TextValue data that should eventually be migrated to enum values:</p>

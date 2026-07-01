@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.21.0.post10.dev0+9b34fa7bc
+version: 11.21.0.post14.dev0+1e86e5b38
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6660,7 +6660,7 @@ slots:
     - and those are frequently fulltext, not CURIEs. MAM 2021-06-23
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
-    pattern: ^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%:\-]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$
+    pattern: ^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG\.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%:\-]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER\.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$
   gff_coordinate:
     name: gff_coordinate
     description: A positive 1-based integer coordinate indicating start or end
@@ -7792,7 +7792,7 @@ slots:
     is_a: study_identifiers
     mixins:
     - jgi_portal_identifiers
-    pattern: ^jgi.proposal:\d+$
+    pattern: ^jgi\.proposal:\d+$
   neon_study_identifiers:
     name: neon_study_identifiers
     from_schema: https://w3id.org/nmdc/nmdc
@@ -7818,7 +7818,7 @@ slots:
     is_a: study_identifiers
     mixins:
     - insdc_identifiers
-    pattern: ^insdc.sra:(E|D|S)RP[0-9]{6,}$
+    pattern: ^insdc\.sra:(E|D|S)RP[0-9]{6,}$
   insdc_bioproject_identifiers:
     name: insdc_bioproject_identifiers
     description: identifiers for corresponding project in INSDC Bioproject
@@ -7864,7 +7864,7 @@ slots:
     is_a: study_identifiers
     mixins:
     - mgnify_identifiers
-    pattern: ^mgnify.proj:[A-Z]+[0-9]+$
+    pattern: ^mgnify\.proj:[A-Z]+[0-9]+$
   gnps_task_identifiers:
     name: gnps_task_identifiers
     description: identifiers that link a NMDC study to a web-based report about metabolomics
@@ -8024,7 +8024,7 @@ slots:
     is_a: external_database_identifiers
     mixins:
     - insdc_identifiers
-    pattern: ^insdc.sra:(E|D|S)RX[0-9]{6,}$
+    pattern: ^insdc\.sra:(E|D|S)RX[0-9]{6,}$
   insdc_run_identifiers:
     name: insdc_run_identifiers
     description: Identifiers for the manifest of data file(s) that are derived from
@@ -8063,7 +8063,7 @@ slots:
     is_a: analysis_identifiers
     mixins:
     - jgi_portal_identifiers
-    pattern: ^jgi.analysis:[0-9]+$
+    pattern: ^jgi\.analysis:[0-9]+$
   insdc_analysis_identifiers:
     name: insdc_analysis_identifiers
     comments:
@@ -8076,7 +8076,7 @@ slots:
     is_a: analysis_identifiers
     mixins:
     - insdc_identifiers
-    pattern: ^insdc.sra:(E|D|S)RR[0-9]{6,}$
+    pattern: ^insdc\.sra:(E|D|S)RR[0-9]{6,}$
   mgnify_analysis_identifiers:
     name: mgnify_analysis_identifiers
     notes:
@@ -8098,7 +8098,7 @@ slots:
     is_a: assembly_identifiers
     mixins:
     - insdc_identifiers
-    pattern: ^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
+    pattern: ^insdc\.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
   classified_as:
     name: classified_as
     description: A formal classification for this entity, expressed directly as an
@@ -13277,9 +13277,9 @@ slots:
     keywords:
     - pcr
     slot_uri: MIXS:0000046
-    pattern: FWD:[ACGT];REV:[ACGT]
+    pattern: FWD:[ACGTRYSWKMBDHVNI]+;REV:[ACGTRYSWKMBDHVNI]+
     structured_pattern:
-      syntax: FWD:{dna_bases};REV:{dna_bases}
+      syntax: FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+
       interpolated: true
   permeability:
     name: permeability
@@ -17359,9 +17359,9 @@ slots:
     - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000048
-    pattern: ^[ACGT];[ACGT]$
+    pattern: ^[ACGTRYSWKMBDHVNI]+;[ACGTRYSWKMBDHVNI]+$
     structured_pattern:
-      syntax: ^{dna_bases};{dna_bases}$
+      syntax: ^{primer_adapter_codes}+;{primer_adapter_codes}+$
       interpolated: true
       partial_match: true
   samp_collec_device:
@@ -19052,7 +19052,7 @@ classes:
           or spectra (for metaproteomics) associated with the specified function.
       gene_function_id:
         name: gene_function_id
-        pattern: (COG:COG\d+|PFAM:PF\d{5}|KEGG.ORTHOLOGY:K\d+)
+        pattern: ^(COG:COG\d+|PFAM:PF\d{5}|KEGG\.ORTHOLOGY:K\d+)$
     class_uri: nmdc:FunctionalAnnotationAggMember
   Database:
     name: Database
