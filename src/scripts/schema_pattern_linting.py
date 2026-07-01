@@ -1,5 +1,6 @@
 import click
 import pprint
+import re
 
 from linkml_runtime import SchemaView
 from linkml_runtime.dumpers import yaml_dumper
@@ -21,7 +22,7 @@ def main(schema_file):
         if len(classes_for_slot) == 0:
             slot_uri_suffix = f", {sv.slot_uri}" if sv.slot_uri else ""
             slot_children = schema_view.slot_children(sk)
-            slot_children_prefix = f"parent " if len(slot_children) > 0 else ""
+            slot_children_prefix = "parent " if len(slot_children) > 0 else ""
             print(f"No classes for {slot_children_prefix}slot {sk}{slot_uri_suffix}")
     print("\n")
 
@@ -71,6 +72,59 @@ def main(schema_file):
                     subset_usage[subset].append(ev.name)
 
     pprint.pprint(subset_usage)
+    print("\n")
+
+    print("Report of patterns with candidate unescaped literal dots:\n")
+    print("(a bare '.' between word characters, outside character classes; usually a CURIE")
+    print("prefix such as 'insdc.sra:' that should be written '\\.' so it is not a wildcard)\n")
+
+    def has_unescaped_prefix_dot(pattern_string):
+        # Drop character-class spans, where '.' is already a literal.
+        cleaned = re.sub(r'\[[^\]]*\]', '', pattern_string)
+        # A dot flanked by word characters; an escaped dot ('\\.') has a backslash
+        # immediately before it, so the preceding character is not a word character.
+        return re.search(r'[A-Za-z0-9]\.[A-Za-z0-9]', cleaned) is not None
+
+    def patterns_of(slot_definition):
+        found = []
+        if slot_definition.pattern:
+            found.append(slot_definition.pattern)
+        if slot_definition.structured_pattern and slot_definition.structured_pattern.syntax:
+            found.append(slot_definition.structured_pattern.syntax)
+        return found
+
+    seen_patterns = set()
+    for class_name in schema_view.all_classes().keys():
+        for slot in schema_view.class_induced_slots(class_name):
+            for pattern_string in patterns_of(slot):
+                key = (slot.name, pattern_string)
+                if key in seen_patterns:
+                    continue
+                if has_unescaped_prefix_dot(pattern_string):
+                    seen_patterns.add(key)
+                    print(f"slot {slot.name} (in class {class_name}): {pattern_string}")
+    for sk, sv in schema_slots.items():
+        for pattern_string in patterns_of(sv):
+            key = (sk, pattern_string)
+            if key in seen_patterns:
+                continue
+            if has_unescaped_prefix_dot(pattern_string):
+                seen_patterns.add(key)
+                print(f"slot {sk}: {pattern_string}")
+    print("\n")
+
+    print("Report of dangling slot_group references (slot_group value is not a defined slot):\n")
+    all_slot_names = set(schema_view.all_slots().keys())
+    seen_slot_groups = set()
+    for class_name in schema_view.all_classes().keys():
+        for slot in schema_view.class_induced_slots(class_name):
+            if slot.slot_group and slot.slot_group not in all_slot_names:
+                key = (class_name, slot.name, slot.slot_group)
+                if key in seen_slot_groups:
+                    continue
+                seen_slot_groups.add(key)
+                print(f"class {class_name}, slot {slot.name}: slot_group '{slot.slot_group}' is not a defined slot")
+    print("\n")
 
 
 if __name__ == '__main__':

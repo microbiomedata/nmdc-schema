@@ -110,10 +110,6 @@ enums:
       base:
         description: Accepts a proton or donates an electron pair in a chemical reaction.
         meaning: CHEBI:22695
-      # protease:
-      #   description: Enzyme that catalyzes cleavage of peptide bonds in proteins.
-      # proteolytic_enzyme:
-      #   description: Enzyme that catalyzes the hydrolysis of proteins.
       ms_proteolytic_enzyme:
         description: Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry based proteomics
         meaning: MS:1002986
@@ -123,16 +119,9 @@ enums:
       surfactant:
         description: Reduces surface tension and aids in the solubilization of substances.
         meaning: CHEBI:35195
-      # stabilizer:
-      #   description: Prevents degradation or loss of analytes during sample storage or preparation.
-      #   meaning: CFo000000033
       derivatizing_agent:
         description: Chemically modifies analytes to improve detection or separation.
         # meaning: MSIO:0000003
-      # labeling_reagent:
-      #   description:  Introduces a detectable label for tracing or quantification.
-      # precipitating_agent:
-      #   description: Causes precipitation of unwanted substances or aids in the concentration of analytes.
       solubilizing_agent: { }
 
   SampleStateEnum:
@@ -1260,7 +1249,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
-    broad_mappings:
+    exact_mappings:
       - OBI:0000094
 
   PortionOfSubstance:
@@ -1318,12 +1307,9 @@ classes:
       - collection_date
       - samp_name
       - host_taxid
-      - sample_isolation_method
-      - sample_isolated_from
-      - sample_collection_site
-      - sample_growth_conditions
       - ploidy
       - source_mat_id
+      - analysis_type
     slot_usage:
       id:
         required: true
@@ -1335,6 +1321,8 @@ classes:
           syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
           interpolated: true
       source_mat_id:
+        in_subset:
+          - jgi_isolate
         description: >-
           Culture collection identifier for the source of this organism sample.
         comments:
@@ -1388,9 +1376,11 @@ classes:
               https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=10694
         structured_aliases:
           - literal_form: Culture Collection and ID
-            contexts:
-              - https://jgi.doe.gov/isolate-submission-form/v19
-            predicate: NARROW_SYNONYM    # JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any material-sample identifier)
+            predicate: NARROW_SYNONYM
+            source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
+            notes:
+              - Exact JGI form template is access-restricted; source is the public submission overview.
+              - JGI label is narrower (culture-collection-only) than MIxS source_mat_id (any material-sample identifier).
     close_mappings:
       - OBI:0100051
     comments:
@@ -1524,9 +1514,6 @@ slots:
       name of the environmental package, a selection of fields can be made from the
       subtables and can be reported
     range: TextValue
-  #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
-  #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
-  #        environment|plant\-associated|sediment|soil|wastewater\/sludge|water]'
   zinc:
     annotations:
       Expected_value: measurement value
@@ -1581,7 +1568,7 @@ slots:
       occurrence: "1"
       storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of nitrate nitrogen in the sample
-    title: nitrate_nitrogen
+    title: nitrate nitrogen
     examples:
       - value: 0.29 mg/kg
     see_also:
@@ -1597,7 +1584,7 @@ slots:
       occurrence: "1"
       storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of nitrite nitrogen in the sample
-    title: nitrite_nitrogen
+    title: nitrite nitrogen
     examples:
       - value: 1.2 mg/kg
     see_also:

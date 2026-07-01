@@ -2,13 +2,16 @@
 
 ## Prerequisites
 
-This project requires **Poetry >=2.2.0** for local development. The `pyproject.toml` uses
-[PEP 735 dependency groups](https://peps.python.org/pep-0735/) (`[dependency-groups]`), which
-require Poetry 2.2.0 or later. Poetry 2.3.0+ is recommended — earlier 2.2.x versions have
-[known bugs](https://github.com/python-poetry/poetry/issues/10632) with `poetry add -G` and
-`poetry remove` on PEP 735 groups, and the lock file hash doesn't track dependency-group
-changes until 2.3.0. These bugs don't affect `poetry install` (which is all CI needs), but
-they can bite local development workflows.
+This project pins **Poetry 2.4.1** (CI installs `poetry==2.4.1` in every workflow; use the
+same version locally). The `pyproject.toml` uses
+[PEP 735 dependency groups](https://peps.python.org/pep-0735/) (`[dependency-groups]`). The
+`poetry.lock` content-hash only tracks dependency-group changes from **Poetry 2.3.0 onward**
+([poetry#10632](https://github.com/python-poetry/poetry/issues/10632)), so a poetry older than
+that (or simply different from the version that wrote the lock) computes a different hash and
+reports the lock as "out of sync with pyproject.toml" even when nothing changed. CI now runs
+`poetry check`, so an unpinned/mismatched local poetry will also disagree with CI — align on
+2.4.1. After editing `pyproject.toml`, run `poetry lock` (not `--regenerate` unless you intend
+to bump versions) and commit the lock.
 
 ```shell
 # Check your version

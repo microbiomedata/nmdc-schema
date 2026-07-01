@@ -266,7 +266,6 @@ def extract_study(ctx, study_id: str, output_file: Union[str, bytes, os.PathLike
         # downstream workflow activity records
         (
             read_qc_records,
-            read_based_analysis,
             read_based_taxonomy,
             metagenome_assembly_records,
             metagenome_annotation_records,
@@ -275,7 +274,7 @@ def extract_study(ctx, study_id: str, output_file: Union[str, bytes, os.PathLike
             metabolomics_analysis,
             metaproteomics_analysis,
             nom_analysis,
-        ) = ([], [], [], [], [], [], [], [], [], [])
+        ) = ([], [], [], [], [], [], [], [], [])
         downstream_workflow_activity_sets = {
             "read_qc_analysis_activity_set": read_qc_records,
             "read_based_taxonomy_analysis_activity_set": read_based_taxonomy,
@@ -365,9 +364,13 @@ def extract_study(ctx, study_id: str, output_file: Union[str, bytes, os.PathLike
         logger.info("No missing data objects found.")
     # Write the results to a YAML file
     logger.info(f"Writing results to {output_file_path}.")
-    yaml_data = yaml.load(yaml_dumper.dumps(db), Loader=yaml.FullLoader)
+    # safe_load is sufficient here (the input is our own dumped schema data,
+    # no custom tags) and avoids the arbitrary-object risk zizmor/bandit flag.
+    yaml_data = yaml.safe_load(yaml_dumper.dumps(db))
     with open(output_file_path, "w") as f:
-        f.write(yaml.dump(yaml_data, indent=4))
+        # safe_dump to keep the load+dump pipeline consistently safe (no
+        # Python-specific tags if a non-primitive ever reaches yaml_data).
+        f.write(yaml.safe_dump(yaml_data, indent=4))
 
 
 if __name__ == "__main__":

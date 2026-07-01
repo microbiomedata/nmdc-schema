@@ -1,5 +1,4 @@
 import click
-import pprint
 from linkml_runtime import SchemaView
 import csv
 

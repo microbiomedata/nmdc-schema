@@ -1,5 +1,16 @@
 # NMDC-Schema Development Guide
 
+## Authoritative conventions (see also)
+
+The repository's committed contributor docs are the canonical source for schema-modeling and process conventions. This file does not duplicate them; consult them and keep them authoritative:
+
+- `CONTRIBUTING.md`: Modeling Best Practice (naming, documentation, examples and counter-examples, enums for categorical values, PV `is_a`, reuse, placing classes under upper-level classes, ID patterning), the Current Policy vs Legacy Guidance table, and the ADR log pointer for recording decisions.
+- `DEVELOPMENT.md`: prerequisites and local development environment.
+- `MAINTAINERS.md` and the [infra-admin release runbook](https://github.com/microbiomedata/infra-admin/blob/main/releases/nmdc-schema.md) (in the separate `microbiomedata/infra-admin` repo): release procedure.
+- `nmdc_schema/migrators/README.md`: migrator authoring and testing.
+
+This guide adds the operational details and gotchas that are not (yet) captured in those files.
+
 ## Build/Lint/Test Commands
 - Install: `poetry install --with dev,deps`
 - Build: `make all` or `make site`
@@ -13,13 +24,76 @@
 - Check schema patterns: `poetry run python src/scripts/schema_pattern_linting.py --schema-file src/schema/nmdc.yaml`
 - View docs locally: `make serve` (in Docker: `poetry run mkdocs serve --dev-addr 0.0.0.0:8000`)
 
+Build prerequisites and gotchas:
+- `make all` needs `yq` (mikefarah/yq) on PATH (`brew install yq`); it is used to strip readonly metaslots and apply MIxS customizations. Java/ROBOT is NOT needed: the OWL artifact is produced by `linkml generate owl`.
+- `squeaky-clean` runs `clean examples-clean shuttle-clean site-clean`; it deliberately leaves `src/schema/mixs.yaml` in place. Removing that file is a separate fast target (`mixs-yaml-clean`, just an `rm`); regenerating it (`make src/schema/mixs.yaml`) is the slow, network-dependent step. For a full-from-scratch rebuild including a fresh MIxS pull: `make squeaky-clean mixs-yaml-clean && make src/schema/mixs.yaml && make squeaky-clean all test`.
+- CI tests only Python 3.10 and 3.13 (other workflows pin 3.12). `requires-python` is `>=3.10,<4.0`, so a too-new system Python (e.g. 3.14) is out of range and will break installs. Build and test against a supported interpreter.
+- `local/.env` is optional. Its credential blocks (BioPortal key, NCBI BioSample Postgres, source MongoDB) are only consumed by specific scripts; `make all` and `make test` run without any of them.
+
 ## Script Entry Point Policy
 - Keep `[project.scripts]` limited to package-backed, stable CLIs intended for default installs.
 - Do not add ad-hoc aliases for `src/scripts/*` into `[project.scripts]`.
 - For repo-local automation scripts, call them explicitly from Makefiles, e.g. `poetry run python src/scripts/<name>.py`.
+- Do not add new modules under `nmdc_schema/` (the published package) without a client-facing purpose; experimental and developer-only scripts go under `src/scripts/`.
+
+## Dependency Management
+
+This is a Poetry repo. Sibling `submission-schema` migrated to `uv`; do not confuse the two.
+
+- **Use poetry 2.4.1** (pinned in every CI workflow via `pipx install poetry==2.4.1`). The `poetry.lock` content-hash is poetry-version-sensitive: a different poetry version can report the lock as "out of sync with pyproject.toml" even when the dependencies are unchanged. Align dev/container poetry to the pinned version. CI runs `poetry check` (in `main.yaml`) to catch real pyproject/lock drift in PRs rather than on a teammate's fresh install. To sync after editing pyproject: `poetry lock` (no `--regenerate` unless you intend to bump versions).
+
+- Never create a `uv.lock` here, and never run `uv add`, `uv sync`, or `uv lock`. If a stray `uv.lock` appears, delete it before committing.
+- Before tightening any pin in `pyproject.toml` (especially `linkml`), check that `submission-schema` still resolves. nmdc-schema is a library, so a tighter pin propagates to consumers even when nmdc-schema itself does not exercise the feature. `linkml` and `linkml-runtime` versions must be paired (a runtime release can drop something the matching `linkml` references).
+- `pyproject.toml` conventions: upper-bound policy (packages at 1.0 or above cap at the next major, pre-1.0 cap at the next minor); PEP 508 form (`"pkg>=min,<max"`, not the Poetry caret); alphabetical ordering within each dependency group; runtime deps in `[project.dependencies]`, dev tools in `[dependency-groups] dev`, `deptry` in its own `deps` group; transitive packages pinned for security are also added to `[tool.deptry] per_rule_ignores.DEP002`; comments cite the issue number that motivated a pin.
+
+## Released migrators
+
+Partial migrators residing under `nmdc_schema/migrators/partials/migrator_from_X_to_Y/` are migrators that only _partially_ migrate a database from conforming to one schema version to another. Partial migrators are invoked by a top-level migrator. Do not make functional changes to top-level migrators or partial migrators. You may make non-functional changes to them, such as modifying comments. Migrators serve as the authoritative record of how data in the NMDC Mongo database has been transformed over time. In summary: New breaking schema changes get new migrators, not changes to old ones.
+
+Whether a release needs a migrator at all is a conformance question, not a version-number question: if every database valid under the old schema is still valid under the new one, no migration is needed. Record that with a no-op migrator (with the reason noted in the PR and the migrator's docstring) rather than shipping nothing. The authoritative explanation and the `make migrator` workflow are in [`nmdc_schema/migrators/README.md`](nmdc_schema/migrators/README.md) (which this section does not duplicate); backfilling no-op migrators for past releases that lack them is tracked in [Implement "no op" migrators for recent releases](https://github.com/microbiomedata/nmdc-schema/issues/3180).
+
+## Workflow security and linting (actionlint + zizmor)
+
+The GitHub Actions workflows in `.github/workflows/` are security-sensitive: they carry permissions, secrets, and the PyPI release path. Two static tools audit them:
+
+- `actionlint`: workflow syntax, deprecated action references, and shell bugs in `run:` steps. It only lints shell in `run:` blocks when `shellcheck` is on PATH, and inline Python when `pyflakes` is on PATH; without those it silently skips its strictest checks. For a full-strength run install both (`brew install actionlint shellcheck`, `pipx install pyflakes`).
+- `zizmor`: workflow security audit (credential persistence, cache poisoning, template injection, and more). Its default (`regular`) persona is what CI reports to code scanning; `--persona pedantic` surfaces extra lower-signal audits (excessive-permissions, undocumented-permissions, concurrency-limits, anonymous-definition) that the default hides.
+
+When developing in this repo, if these tools are available in the active environment, run them against the workflows as a routine self-check. Do this whenever a workflow is edited, and opportunistically on any substantive session even when no workflow changed:
+
+```bash
+actionlint                                       # with shellcheck + pyflakes on PATH
+uvx zizmor .github/workflows/                    # default persona (what CI reports)
+uvx zizmor --persona pedantic .github/workflows/ # stricter, optional
+```
+
+Do not install the tools just to run this, and do not treat their absence as a failure; skip the check when they are not present. `actionlint` is a Go binary (`brew install actionlint`). `zizmor` runs with no install via `uvx zizmor` or `pipx run zizmor`.
+
+As of June 2026 the workflows pass both `actionlint` (with shellcheck + pyflakes) and `zizmor` at default and `--persona pedantic`, with two deliberate exceptions. Act on new findings, but do not re-report these known, triaged ones:
+
+- The credential-persistence (`artipacked`) findings on `deploy-docs.yaml` and `test-pages-build.yaml` are intentional, because those workflows push to gh-pages with the persisted token. They are suppressed inline with `# zizmor: ignore[artipacked]` and a reason. Proper token-scoped hardening stays open in #3147.
+- The `pypi-publish.yaml` cache-poisoning and credential-persistence findings were fixed in #3160 (removed the release-trigger dependency cache; set `persist-credentials: false`). The `persist-credentials: false` change is validated by analysis, not a live run; confirm it with a pre-release before relying on it. Closed #3148.
+- The pedantic-persona findings (excessive-permissions, concurrency-limits, undocumented-permissions, anonymous-definition) were fixed in #3162 by scoping permissions to the job with a top-level `permissions: {}` deny-all, adding concurrency groups (the publish job uses `cancel-in-progress: false`), documenting each elevated scope, and naming jobs. Closed #3161.
+
+When editing permissions, keep the established pattern: top-level `permissions: {}`, and grant the minimum at the job level with an inline comment saying why. Do not edit `pypi-publish.yaml` casually; it is the release path and only fully exercises at publish time.
+
+CI also runs zizmor in a non-blocking job that reports to code scanning (the Security tab), added in #3149. The local check is for faster, in-development feedback.
+
+## Python linting and tooling
+
+`ruff` is the single linter and formatter. It replaced black/autopep8 (formatting), flake8 (E/F/W), isort (I), bandit (the `S` security rules), and pydocstyle (D); those packages were removed from the dev group. `mypy` (types), `pylint`, `vulture`, and `pyroma` are kept because ruff does not fully cover them. `deptry` checks for unused/missing dependencies.
+
+- Config lives in `[tool.ruff]` in `pyproject.toml`. Generated artifacts (`nmdc.py`, `nmdc_pydantic.py`, `nmdc_materialized_patterns.yaml`), `notebooks/`, and the frozen `migrators/partials/` are excluded.
+- `make lint` runs `ruff check .` (the blocking CI gate, currently the `F`/pyflakes rules). `make format` runs `ruff format` + `ruff check --fix`.
+- CI: `.github/workflows/lint.yaml` runs `ruff check` (blocking) plus a non-blocking `ruff check --select S` security scan. Formatting is not yet gated (the code is not uniformly format-clean); the one-time sweep is tracked in #3166. The security backlog (timeouts, hardcoded /tmp in `src/scripts`) is #3164; once cleared, add `"S"` to `select` and drop the separate step. mypy typing cleanup is #3165.
+- ruff `S` reproduces bandit's findings, so bandit is redundant here. The in-repo `ruff` + `zizmor` (workflows) pair covers what CodeQL was doing for this repo (CodeQL had 0 open Python alerts), if a move away from CodeQL is wanted.
+
+**YAML safety:** always use `yaml.safe_load` and `yaml.safe_dump` in authored code, never `yaml.load`/`yaml.dump` (even with `FullLoader`). The repo is uniformly on the safe variants as of #3163; keep it that way. linkml's own `yaml_dumper` is separate and fine.
+
+Dependabot security updates and alerts are on; `.github/dependabot.yml` adds grouped weekly version updates for the `github-actions` and `pip` ecosystems. Secret scanning is on.
 
 ## Code Style Guidelines
-- Follow PEP8 conventions and Black formatting
+- Follow PEP8 conventions; format with `ruff format` (black-compatible)
 - Use snake_case for variables/functions, PascalCase for classes
 - Type annotations required for all parameters and returns
 - Imports: stdlib first, third-party next, local modules last
@@ -45,9 +119,17 @@ GitHub issue links, specification documents. Ontology CURIEs belong in a
 `*_mappings` slot. See #3031 for an open cleanup of MIXS CURIEs currently
 in `see_also` in `portal_mixs_inspired.yaml`.
 
-**`structured_aliases`** requires `literal_form`, `contexts` (a URL), and
-a SKOS predicate (`EXACT_SYNONYM`, `NARROW_SYNONYM`, `BROAD_SYNONYM`,
-`RELATED_SYNONYM`). Plain `aliases` is for unattributed synonym strings.
+**`structured_aliases`** requires `literal_form`, a SKOS predicate
+(`EXACT_SYNONYM`, `NARROW_SYNONYM`, `BROAD_SYNONYM`, `RELATED_SYNONYM`),
+and `source` (a real, publicly resolvable URL identifying where the alias
+comes from). Use `source`, not `contexts`: `source` means "where the alias
+comes from" (StructuredAlias metamodel), which is what we record; `contexts`
+means "the context in which the alias applies," which is different. When the
+authoritative source is access-restricted (e.g. the JGI Isolate form
+template), put the best public URL in `source` and a one-line caveat in
+`notes`. Per-alias rationale (e.g. why a predicate is NARROW rather than
+EXACT) also goes in `notes`, not in a YAML `#` comment. Plain `aliases` is
+for unattributed synonym strings.
 
 ## LinkML Readonly Metaslots — Do Not Assert
 The LinkML metamodel defines 12 slots that are **readonly** — populated
@@ -62,6 +144,29 @@ The 12 readonly slots: `definition_uri`, `domain_of`, `from_schema`,
 `usage_slot_name`.
 
 Context: PR #2696 (dematerialize mixs.yaml), issue #2663.
+
+## Permissible-value hierarchies (`is_a`)
+
+Permissible values may declare `is_a: <other-pv-name>` (the name/key of another
+PV in the same enum) to record that one value is a more specific kind of
+another (e.g. `sequel_IIe is_a sequel_II`, `hiseq_2500 is_a hiseq`). Most enums
+are flat; `is_a` is an optional, deliberate addition for the cases where a real
+specialization holds, and is read downstream for grouping, rollup, and
+querying. Assert it only where the relationship genuinely holds. Decision
+guidance: `CONTRIBUTING.md` (Modeling Best Practice).
+
+It does not currently change JSON-Schema validation or require migration (enums
+still compile to a flat value list), so it is non-breaking to merge.
+
+**OWL is deprioritized; do not enable `--enum-inherits-as-subclass-of`.**
+LinkML 1.10.0's `linkml generate owl --enum-inherits-as-subclass-of` would
+emit PV `is_a` as OWL `subClassOf` (the only way the hierarchy reaches a
+machine-actionable artifact). The OWL build does **not** set this flag
+(checked `Makefile`, `project.Makefile`, `gen-project-config.yaml`), and we
+are intentionally leaving it off for now. Revisit only as part of a
+deliberate OWL re-prioritization.
+
+Context: issue #3120.
 
 ## Architectural Changes (Oct 2025 – Feb 2026)
 Reviewers and contributors should be aware of these changes (Oct 2025

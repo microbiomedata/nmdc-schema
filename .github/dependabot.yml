@@ -1,0 +1,34 @@
+version: 2
+
+# Version updates. Dependabot security updates and alerts are configured
+# separately in repo settings; this file adds proactive version bumps.
+# Updates are grouped to keep PR volume low.
+updates:
+  # Keep the SHA-pinned GitHub Actions current (security patches reach pinned
+  # actions only through deliberate bumps).
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]
+
+  # Python dependencies (Dependabot reads pyproject.toml for the pip ecosystem).
+  #
+  # versioning-strategy: lockfile-only -> Dependabot updates ONLY poetry.lock,
+  # never the version floors in pyproject.toml. nmdc-schema is a library, so
+  # raising a [project.dependencies] floor would propagate a tighter constraint
+  # to consumers (submission-schema, nmdc-runtime, nmdc-server) and can force
+  # version changes in their environments. lockfile-only keeps our own lock at
+  # the latest compatible versions (what we want for CI) without forcing
+  # anything downstream. Deliberate floor changes (e.g. widening the linkml /
+  # click caps) are made by hand, with the release chain coordinated.
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    versioning-strategy: lockfile-only
+    groups:
+      python-dependencies:
+        patterns: ["*"]

@@ -20,29 +20,29 @@ from linkml_runtime import SchemaView
 from tests import SCHEMA_FILE
 
 _STRING_CONSTRAINTS = frozenset(
-    [
+    {
         "pattern",
         "structured_pattern",
         "equals_string",
         "equals_string_in",
         "string_serialization",
-    ]
+    }
 )
 _NUMERIC_CONSTRAINTS = frozenset(
-    [
+    {
         "minimum_value",
         "maximum_value",
         "equals_number",
-    ]
+    }
 )
-_ENUM_CONSTRAINTS = frozenset(["permissible_values"])
+_ENUM_CONSTRAINTS = frozenset({"permissible_values"})
 _ALL_CHECKED = _STRING_CONSTRAINTS | _NUMERIC_CONSTRAINTS | _ENUM_CONSTRAINTS
 
 # LinkML built-in type names whose ultimate ancestor is string-compatible.
 # Derived user types (e.g. decimal_degree, external_identifier) are handled
 # by walking the type_ancestors chain.
 _STRING_BASE_TYPES = frozenset(
-    [
+    {
         "string",
         "uriorcurie",
         "anyuri",
@@ -52,9 +52,9 @@ _STRING_BASE_TYPES = frozenset(
         "datetime",
         "time",
         "dateOrDatetime",
-    ]
+    }
 )
-_NUMERIC_BASE_TYPES = frozenset(["integer", "float", "double", "decimal"])
+_NUMERIC_BASE_TYPES = frozenset({"integer", "float", "double", "decimal"})
 
 
 def _range_kind(sv: SchemaView, range_name: str) -> str:
@@ -93,7 +93,7 @@ class TestSlotConstraintRangeCompatibility(unittest.TestCase):
 
             for constraint in _ALL_CHECKED:
                 val = getattr(slot_def, constraint, None)
-                if val is None or (isinstance(val, (list, dict)) and len(val) == 0):
+                if val is None or (isinstance(val, (list, dict)) and not val):
                     continue
                 compatible = (
                     (constraint in _STRING_CONSTRAINTS and kind == "string")
