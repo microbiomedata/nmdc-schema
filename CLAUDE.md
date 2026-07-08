@@ -136,12 +136,13 @@ maps to a class, a slot maps to a property, and a permissible value maps to a
 class (a PV names a kind, so it aligns with an ontology class, not a property).
 Do not map a slot to a class or a PV to a property.
 
-**Predicate strength.** Use `exact` only for genuine identity; prefer `close`
-or `related` when the aligned term is an assay, method, or measurement adjacent
-to (not the same as) the schema element. A common trap: mapping a gene or region
-value to a *sequencing-assay* term (e.g. an OBI assay class) is `related`, not
-`exact`, because the assay is not the gene. Keep abstraction layers distinct (a
-process is not the assay that runs it).
+**Predicate strength.** Use `exact_mappings` only for genuine identity; prefer
+`close_mappings` or `related_mappings` when the aligned term is an assay, method,
+or measurement adjacent to (not the same as) the schema element. A common trap:
+mapping a gene or region value to a *sequencing-assay* term (e.g. an OBI assay
+class) belongs in `related_mappings`, not `exact_mappings`, because the assay is
+not the gene. Keep abstraction layers distinct (a process is not the assay that
+runs it).
 
 **Finding candidates.** Prefer embeddings search (OLS4 `llm_search`) over lexical
 matching, and treat a high similarity score as a candidate to verify, not a
@@ -167,8 +168,8 @@ are easy to miss:
 - `assets/yq-for-mixs-customizations.txt` is applied by running only the lines
   that start with a single quote (`grep "^'"`). A line commented with `#` is
   disabled, not merely annotated.
-- The `assets/other_mixs_yaml_files/*.yaml` enums (e.g. `TargetGeneOrLocusEnum`,
-  `CurLandUseEnum`) are injected *after* the yq-customization step, so a `yq`
+- The `assets/other_mixs_yaml_files/*.yaml` enums (e.g. `CurLandUseEnum`) are
+  injected *after* the yq-customization step, so a `yq`
   command that targets an injected enum earlier in the pipeline will no-op.
 - The pipeline drops `in_subset` and `subsets` on the way out; do not rely on
   them surviving into `mixs.yaml`.
@@ -235,12 +236,12 @@ through Feb 2026) that affect the build system and project layout:
 ### Examples on enum-ranged slots
 
 A slot whose range is a closed enum may carry a short `examples:` block, and in
-practice most do (the MIxS-derived enum slots each keep a single valid
-permissible value as the example). Do not duplicate the entire
-permissible-value list as examples, but a single valid value is fine and
-expected. If an inherited example is stale or lists non-permissible values (as
-MIxS free-text examples sometimes do), fix it to a valid permissible value
-rather than deleting the block.
+practice most do (most MIxS-derived enum slots keep a single valid permissible
+value as the example). Do not duplicate the entire permissible-value list as
+examples, but a single valid value is fine and expected. Some slots still carry
+a stale free-text example inherited from MIxS that lists non-permissible values
+(a comma-separated string); fix those to a valid permissible value rather than
+deleting the block.
 
 ### Invalid examples: single point of failure
 Each file in `src/data/invalid/` must be invalid for **exactly one
