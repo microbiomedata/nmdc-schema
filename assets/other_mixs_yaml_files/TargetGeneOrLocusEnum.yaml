@@ -1,0 +1,59 @@
+id: http:/example.com/TargetGeneOrLocusEnum_schema
+name: TargetGeneOrLocusEnum_schema
+enums:
+  TargetGeneOrLocusEnum:
+    comments:
+      - NMDC constrains the MIxS target_gene slot to this enumeration; upstream MIxS
+        leaves it as free text. MIxS defines the slot as the "targeted gene or locus
+        name for marker gene studies." NMDC reads "locus" to include regions larger
+        than a single gene, such as the ribosomal RNA operon, so that long-read
+        amplicon studies that span the 16S, internal transcribed spacer, and 23S
+        region (bacterial) or the 18S, internal transcribed spacer, and 28S region
+        (eukaryotic) can record their target here.
+    permissible_values:
+      16S_rRNA:
+        description: the small subunit of the bacterial/archean ribosome
+        meaning: SO:0001000
+        aliases:
+          - 16S rRNA
+          - 16S ribosomal RNA
+        related_mappings:
+          - OBI:0002763
+      23S_rRNA:
+        description: the large subunit  of the bacterial/archean ribosome
+        meaning: SO:0001001
+        aliases:
+          - 23S rRNA
+          - 23S ribosomal RNA
+      18S_rRNA:
+        description: the small subunit of the eukaryotic ribosome
+        meaning: SO:0000407
+        aliases:
+          - 18S rRNA
+          - 18S ribosomal RNA
+      28S_rRNA:
+        description: the large subunit of the eukaryotic ribosome
+        meaning: SO:0000653
+        aliases:
+          - 28S rRNA
+          - 28S ribosomal RNA
+      bacterial_rRNA_operon:
+        description: >-
+          Bacterial ribosomal RNA operon: the transcriptional unit that includes the
+          16S rRNA gene (SO:0001000), the internal transcribed spacer (SO:0000639),
+          and the 23S rRNA gene (SO:0001001). Used as the amplicon target in
+          near-full-length operon sequencing, for example with primers 8F and 2490R.
+        aliases:
+          - bacterial rRNA operon
+          - 16S-23S rRNA operon
+          - rrn operon
+      eukaryotic_rRNA_operon:
+        description: >-
+          Eukaryotic ribosomal RNA cistron: the tandemly repeated unit that includes
+          the 18S rRNA gene (SO:0000407), the internal transcribed spacer
+          (SO:0000639), and the 28S rRNA gene (SO:0000653). Used as the amplicon
+          target in near-full-length operon sequencing, for example with primers
+          3NDF and 21R.
+        aliases:
+          - eukaryotic rRNA operon
+          - 18S-28S rRNA operon

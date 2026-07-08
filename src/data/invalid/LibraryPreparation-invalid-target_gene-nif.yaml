@@ -1,0 +1,21 @@
+# Invalid target_gene permissible value.
+#
+# Why nif is a worthwhile invalid example:
+# nif appears in the MIxS free-text example string for target_gene
+# ("16S rRNA, 18S rRNA, nif, amoA, rpo"), so a submitter coming from MIxS could
+# plausibly enter it. It is a real marker gene (nitrogenase) used in amplicon
+# studies, but NMDC's TargetGeneOrLocusEnum currently covers only ribosomal RNA
+# regions. That scope could expand later; nif is invalid against the enumeration
+# as it stands at this time, not permanently excluded.
+#
+# Single point of failure: the only reason this record is invalid is the
+# target_gene value. target_gene is allowed on LibraryPreparation, so any
+# in-enum value here would validate.
+id: nmdc:libprp-11-abce
+has_input:
+  - nmdc:procsm-99-dtTMNb
+has_output:
+  - nmdc:procsm-99-dtTMNc
+target_gene: nif
+name: nif amplicon library creation for nmdc:bsm-99-dtTMNb
+type: nmdc:LibraryPreparation
