@@ -1,29 +1,29 @@
 #example record for MicroFlora Danica, MFD04222, SRX23662642
 material_processing_set:
-  - id: nmdc:libprp-99-abc122
+  - id: nmdc:libprp-22-abc122
     name: Library preparation process for MFD04222
     description: Amplicon library preparation targeting bacterial 16S genes with 8F and 1391R primers
     type: nmdc:LibraryPreparation
     has_input:
-      - nmdc:bsm-99-123abc
+      - nmdc:bsm-22-123abc
     has_output:
-      - nmdc:procsm-99-2a58f3
+      - nmdc:procsm-22-2a58f3
     target_gene: 16S_rRNA
     lib_layout: single
     library_strategy: AMPLICON
     library_selection: PCR
     library_source: METAGENOMIC
 processed_sample_set:
-  - id: nmdc:procsm-99-2a58f3
+  - id: nmdc:procsm-22-2a58f3
     name: npumi_16SrRNA_MFD04222
     description: Library for sequencing for MFD04222
     type: nmdc:ProcessedSample
 data_generation_set:
-  - id: nmdc:dgns-11-abc123
+  - id: nmdc:dgns-22-abc123
     has_input:
-      - nmdc:procsm-99-2a58f3
+      - nmdc:procsm-22-2a58f3
     has_output:
-      - nmdc:dobj-99-abc123
+      - nmdc:dobj-22-abc123
     name: Run SRR28010109 for experiment SRX23627676 - MFD04222
     type: nmdc:NucleotideSequencing
     insdc_bioproject_identifiers:
@@ -43,12 +43,12 @@ data_generation_set:
     associated_studies:
       - nmdc:sty-99-ebd802
 data_object_set:
-  - id: nmdc:dobj-99-abc123
+  - id: nmdc:dobj-22-abc123
     name: Data file for run accession SRR28010109
     description: Data file for run accession SRR28010109
     insdc_run_identifiers:
       - insdc.run:SRR28010109
-    was_generated_by: nmdc:dgns-11-abc123
+    was_generated_by: nmdc:dgns-22-abc123
     data_category: instrument_data
     data_object_type: SRA toolkit-accessible sequence data
     type: nmdc:DataObject
