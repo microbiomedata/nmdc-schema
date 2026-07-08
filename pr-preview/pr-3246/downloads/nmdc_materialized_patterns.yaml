@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.21.0.post19.dev0+144013821
+version: 11.21.0.post23.dev0+da09367c6
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -5611,7 +5611,7 @@ enums:
     permissible_values:
       16S_rRNA:
         text: 16S_rRNA
-        description: the small subunit of the bacterial/archean ribosome
+        description: the small subunit of the bacterial/archaeal ribosome
         meaning: SO:0001000
         aliases:
         - 16S rRNA
@@ -5620,7 +5620,7 @@ enums:
         - OBI:0002763
       23S_rRNA:
         text: 23S_rRNA
-        description: the large subunit  of the bacterial/archean ribosome
+        description: the large subunit of the bacterial/archaeal ribosome
         meaning: SO:0001001
         aliases:
         - 23S rRNA
