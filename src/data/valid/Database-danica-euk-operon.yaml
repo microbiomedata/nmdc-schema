@@ -1,28 +1,28 @@
 #example record for MicroFlora Danica, MFD01204, SRX23627677
 material_processing_set:
-  - id: nmdc:libprp-99-abc122
+  - id: nmdc:libprp-99-tre122
     name: Library preparation process for MFD01204
     description: Amplicon library preparation targeting eukaryotic rRNA operons using 3NDF and 21R primers
     type: nmdc:LibraryPreparation
     has_input:
       - nmdc:bsm-99-123abc
     has_output:
-      - nmdc:procsm-99-2a58f3
+      - nmdc:procsm-99-tre8f3
     lib_layout: single
     library_strategy: AMPLICON
     library_selection: PCR
     library_source: METAGENOMIC
 processed_sample_set:
-  - id: nmdc:procsm-99-2a58f3
+  - id: nmdc:procsm-99-tre8f3
     name: pb_eukoperon_MFD01204
     description: Library for sequencing for MFD01204
     type: nmdc:ProcessedSample
 data_generation_set:
-  - id: nmdc:dgns-11-abc123
+  - id: nmdc:dgns-11-tre123
     has_input:
-      - nmdc:procsm-99-2a58f3
+      - nmdc:procsm-99-tre8f3
     has_output:
-      - nmdc:dobj-99-abc123
+      - nmdc:dobj-99-tre123
     name: Run SRR27974040 for experiment SRX23627677 - MFD01204
     type: nmdc:NucleotideSequencing
     insdc_bioproject_identifiers:
@@ -40,14 +40,14 @@ data_generation_set:
       version: 0.1.0
       source_system_of_record: NCBI
     associated_studies:
-      - nmdc:sty-99-ebd802
+      - nmdc:sty-99-tre802
 data_object_set:
-  - id: nmdc:dobj-99-abc123
+  - id: nmdc:dobj-99-tre123
     name: Data file for run accession SRR27974040
     description: Data file for run accession SRR27974040  
     insdc_run_identifiers:
       - insdc.run:SRR27974040
-    was_generated_by: nmdc:dgns-11-abc123
+    was_generated_by: nmdc:dgns-11-tre123
     data_category: instrument_data
     data_object_type: SRA toolkit-accessible sequence data
     type: nmdc:DataObject
