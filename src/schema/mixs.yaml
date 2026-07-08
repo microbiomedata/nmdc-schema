@@ -973,7 +973,7 @@ enums:
       - NMDC constrains the MIxS target_gene slot to this enumeration; upstream MIxS leaves it as free text. MIxS defines the slot as the "targeted gene or locus name for marker gene studies." NMDC reads "locus" to include regions larger than a single gene, such as the ribosomal RNA operon or cistron, so that long-read amplicon studies that span the operon can record their target here.
     permissible_values:
       16S_rRNA:
-        description: the small subunit of the bacterial/archean ribosome
+        description: the small subunit of the bacterial/archaeal ribosome
         meaning: SO:0001000
         aliases:
           - 16S rRNA
