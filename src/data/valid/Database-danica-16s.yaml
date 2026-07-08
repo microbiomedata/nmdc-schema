@@ -2,7 +2,7 @@
 material_processing_set:
   - id: nmdc:libprp-99-abc122
     name: Library preparation process for MFD04222
-    description: Amplicion library preparation targeting bacterial 16S genes with 8F and 1391R primers
+    description: Amplicon library preparation targeting bacterial 16S genes with 8F and 1391R primers
     type: nmdc:LibraryPreparation
     has_input:
       - nmdc:bsm-99-123abc
