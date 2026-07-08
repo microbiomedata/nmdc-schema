@@ -2,6 +2,7 @@
 search:
   boost: {% if element.deprecated %}0.5{% else %}2.0{% endif %}
 ---
+{%- from "_macros.jinja2" import shorten -%}
 
 # Enum: {{ gen.name(element) }} {% if element.deprecated %} <span style="color: red;"><strong> (DEPRECATED) </strong> {% endif %}
 
@@ -21,7 +22,7 @@ URI: {{ gen.link(element) }}
 | Value | Meaning | Description |
 | --- | --- | --- |
 {% for pv in element.permissible_values.values() -%}
-| {{pv.text}} | {{pv.meaning}} | {{pv.description|enshorten}} |
+| {{pv.text}} | {{pv.meaning}} | {{ shorten(pv.description) }} |
 {% endfor %}
 {% else %}
 _This is a dynamic enum_
@@ -33,7 +34,7 @@ _This is a dynamic enum_
 | Name | Description |
 | ---  | --- |
 {% for s in schemaview.get_slots_by_enum(element.name) -%}
-| {{gen.link(s)}} | {{s.description|enshorten}} |
+| {{gen.link(s)}} | {{ shorten(s.description) }} |
 {% endfor %}
 {% endif %}
 
