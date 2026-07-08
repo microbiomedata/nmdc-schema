@@ -6,10 +6,8 @@ enums:
       - NMDC constrains the MIxS target_gene slot to this enumeration; upstream MIxS
         leaves it as free text. MIxS defines the slot as the "targeted gene or locus
         name for marker gene studies." NMDC reads "locus" to include regions larger
-        than a single gene, such as the ribosomal RNA operon, so that long-read
-        amplicon studies that span the 16S, internal transcribed spacer, and 23S
-        region (bacterial) or the 18S, internal transcribed spacer, and 28S region
-        (eukaryotic) can record their target here.
+        than a single gene, such as the ribosomal RNA operon or cistron, so that
+        long-read amplicon studies that span the operon can record their target here.
     permissible_values:
       16S_rRNA:
         description: the small subunit of the bacterial/archean ribosome
@@ -39,21 +37,22 @@ enums:
           - 28S ribosomal RNA
       bacterial_rRNA_operon:
         description: >-
-          Bacterial ribosomal RNA operon: the transcriptional unit that includes the
-          16S rRNA gene (SO:0001000), the internal transcribed spacer (SO:0000639),
-          and the 23S rRNA gene (SO:0001001). Used as the amplicon target in
-          near-full-length operon sequencing, for example with primers 8F and 2490R.
+          Bacterial ribosomal RNA operon (rrn): the transcript containing the 16S
+          rRNA gene (SO:0001000), the 16S-23S intergenic spacer, and the 23S rRNA
+          gene (SO:0001001), with the 5S rRNA gene (SO:0000652) typically further
+          downstream. Recorded as the target for near-full-length operon amplicon
+          sequencing; the example primers 8F and 2490R span 16S through 23S.
         aliases:
           - bacterial rRNA operon
           - 16S-23S rRNA operon
           - rrn operon
       eukaryotic_rRNA_operon:
         description: >-
-          Eukaryotic ribosomal RNA cistron: the tandemly repeated unit that includes
-          the 18S rRNA gene (SO:0000407), the internal transcribed spacer
-          (SO:0000639), and the 28S rRNA gene (SO:0000653). Used as the amplicon
-          target in near-full-length operon sequencing, for example with primers
-          3NDF and 21R.
+          Eukaryotic ribosomal RNA cistron: the transcript containing the 18S rRNA
+          gene (SO:0000407), internal transcribed spacer 1, the 5.8S rRNA gene
+          (SO:0000375), internal transcribed spacer 2, and the 28S rRNA gene
+          (SO:0000653). Recorded as the target for near-full-length operon amplicon
+          sequencing, for example with primers 3NDF and 21R.
         aliases:
           - eukaryotic rRNA operon
           - 18S-28S rRNA operon
