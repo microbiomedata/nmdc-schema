@@ -131,6 +131,48 @@ template), put the best public URL in `source` and a one-line caveat in
 EXACT) also goes in `notes`, not in a YAML `#` comment. Plain `aliases` is
 for unattributed synonym strings.
 
+**Type compatibility.** A mapping relates elements of the same kind: a class
+maps to a class, a slot maps to a property, and a permissible value maps to a
+class (a PV names a kind, so it aligns with an ontology class, not a property).
+Do not map a slot to a class or a PV to a property.
+
+**Predicate strength.** Use `exact` only for genuine identity; prefer `close`
+or `related` when the aligned term is an assay, method, or measurement adjacent
+to (not the same as) the schema element. A common trap: mapping a gene or region
+value to a *sequencing-assay* term (e.g. an OBI assay class) is `related`, not
+`exact`, because the assay is not the gene. Keep abstraction layers distinct (a
+process is not the assay that runs it).
+
+**Finding candidates.** Prefer embeddings search (OLS4 `llm_search`) over lexical
+matching, and treat a high similarity score as a candidate to verify, not a
+confirmed mapping. Confirm the CURIE resolves to the intended term before
+asserting it.
+
+## Documenting modeling decisions, not debates
+
+Element `description`, `comments`, and `notes` state the current modeling
+decision as fact. Do not narrate a debate in them ("DEBATED", "X thinks...",
+alternatives under discussion), and do not name colleagues. Track an open
+question in a GitHub issue and link it with `see_also`.
+
+## MIxS import pipeline (`makefiles/mixs.Makefile`)
+
+`src/schema/mixs.yaml` is generated, never hand-edited. The pipeline pulls a
+MIxS subset with `do_shuttle`, applies yq customizations, injects
+NMDC-specific enums, then strips readonly metaslots. Operational details that
+are easy to miss:
+
+- The imported MIxS slot set is defined by
+  `assets/import_mixs_slots_regardless.tsv`; change what is imported there.
+- `assets/yq-for-mixs-customizations.txt` is applied by running only the lines
+  that start with a single quote (`grep "^'"`). A line commented with `#` is
+  disabled, not merely annotated.
+- The `assets/other_mixs_yaml_files/*.yaml` enums (e.g. `TargetGeneOrLocusEnum`,
+  `CurLandUseEnum`) are injected *after* the yq-customization step, so a `yq`
+  command that targets an injected enum earlier in the pipeline will no-op.
+- The pipeline drops `in_subset` and `subsets` on the way out; do not rely on
+  them surviving into `mixs.yaml`.
+
 ## LinkML Readonly Metaslots — Do Not Assert
 The LinkML metamodel defines 12 slots that are **readonly** — populated
 automatically by the schema loader or generators. Never add these to
@@ -189,6 +231,16 @@ through Feb 2026) that affect the build system and project layout:
   files are now downloadable via the docs website.
 
 ## Example Data Guidelines
+
+### Examples on enum-ranged slots
+
+A slot whose range is a closed enum may carry a short `examples:` block, and in
+practice most do (the MIxS-derived enum slots each keep a single valid
+permissible value as the example). Do not duplicate the entire
+permissible-value list as examples, but a single valid value is fine and
+expected. If an inherited example is stale or lists non-permissible values (as
+MIxS free-text examples sometimes do), fix it to a valid permissible value
+rather than deleting the block.
 
 ### Invalid examples: single point of failure
 Each file in `src/data/invalid/` must be invalid for **exactly one
