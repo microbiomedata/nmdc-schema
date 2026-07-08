@@ -2,7 +2,7 @@
 material_processing_set:
   - id: nmdc:libprp-99-abc122
     name: Library preparation process for MFD01204
-    description: Amplicion library preparation targeting bacterial rRNA operons using 8F and 2490R primers
+    description: Amplicon library preparation targeting bacterial rRNA operons using 8F and 2490R primers
     type: nmdc:LibraryPreparation
     has_input:
       - nmdc:bsm-99-123abc
