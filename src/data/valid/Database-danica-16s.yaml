@@ -24,12 +24,12 @@ data_generation_set:
       - nmdc:procsm-22-2a58f3
     has_output:
       - nmdc:dobj-22-abc123
-    name: Run SRR28010109 for experiment SRX23627676 - MFD04222
+    name: Run SRR28010109 for experiment SRX23662642 - MFD04222
     type: nmdc:NucleotideSequencing
     insdc_bioproject_identifiers:
       - bioproject:PRJNA1071982
     insdc_experiment_identifiers:
-      - insdc.sra:SRX23627676
+      - insdc.sra:SRX23662642
     analyte_category: amplicon_sequencing_assay
     instrument_used:
       - nmdc:inst-14-mr4abc
