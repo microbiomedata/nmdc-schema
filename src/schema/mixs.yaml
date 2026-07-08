@@ -981,7 +981,7 @@ enums:
         related_mappings:
           - OBI:0002763
       23S_rRNA:
-        description: the large subunit  of the bacterial/archean ribosome
+        description: the large subunit of the bacterial/archaeal ribosome
         meaning: SO:0001001
         aliases:
           - 23S rRNA
