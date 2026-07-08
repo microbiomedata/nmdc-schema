@@ -10,7 +10,7 @@ enums:
         long-read amplicon studies that span the operon can record their target here.
     permissible_values:
       16S_rRNA:
-        description: the small subunit of the bacterial/archean ribosome
+        description: the small subunit of the bacterial/archaeal ribosome
         meaning: SO:0001000
         aliases:
           - 16S rRNA
