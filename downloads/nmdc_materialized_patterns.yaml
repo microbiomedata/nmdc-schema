@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.21.0.post33.dev0+3887061ef
+version: 11.21.0.post36.dev0+2712530de
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6318,7 +6318,7 @@ slots:
     - sample weight
     exact_mappings:
     - MS:1000004
-    broad_mappings:
+    related_mappings:
     - MIXS:0000111
     range: QuantityValue
   library_type:
@@ -7167,7 +7167,7 @@ slots:
     - digital object identifier
     exact_mappings:
     - OBI:0002110
-    narrow_mappings:
+    related_mappings:
     - edam.data:1188
     range: uriorcurie
     required: true
@@ -17844,33 +17844,33 @@ slots:
     range: BinQualityEnum
   num_16s:
     name: num_16s
-    description: Number of 16s sequences detected, a subunit of prokaryotic ribosomes.
+    description: Number of 16S sequences detected, a subunit of prokaryotic ribosomes.
     from_schema: https://w3id.org/nmdc/nmdc
-    broad_mappings:
+    related_mappings:
     - OMIT:0013243
     range: integer
     minimum_value: 0
   num_5s:
     name: num_5s
-    description: Number of 5s seqeuences detected, a subunit of ribosomes.
+    description: Number of 5S sequences detected, a subunit of ribosomes.
     from_schema: https://w3id.org/nmdc/nmdc
-    broad_mappings:
+    related_mappings:
     - OMIT:0013248
     range: integer
     minimum_value: 0
   num_23s:
     name: num_23s
-    description: Number of 23 seqeuences detected, a subunit of ribosomes.
+    description: Number of 23S sequences detected, a subunit of ribosomes.
     from_schema: https://w3id.org/nmdc/nmdc
-    broad_mappings:
+    related_mappings:
     - OMIT:0013245
     range: integer
     minimum_value: 0
   num_t_rna:
     name: num_t_rna
-    description: Number of transfer transfer RNAs.
+    description: Number of transfer RNAs.
     from_schema: https://w3id.org/nmdc/nmdc
-    broad_mappings:
+    related_mappings:
     - OMIT:0013250
     range: integer
     minimum_value: 0
