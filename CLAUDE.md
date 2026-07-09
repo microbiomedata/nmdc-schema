@@ -131,6 +131,77 @@ template), put the best public URL in `source` and a one-line caveat in
 EXACT) also goes in `notes`, not in a YAML `#` comment. Plain `aliases` is
 for unattributed synonym strings.
 
+**Type compatibility.** A mapping relates elements of the same kind: a class
+maps to a class, a slot maps to a property, and a permissible value maps to a
+class (a PV names a kind, so it aligns with an ontology class, not a property).
+Do not map a slot to a class or a PV to a property.
+
+**Predicate strength.** Use `exact_mappings` only for genuine identity; prefer
+`close_mappings` or `related_mappings` when the aligned term is an assay, method,
+or measurement adjacent to (not the same as) the schema element. A common trap:
+mapping a gene or region value to a *sequencing-assay* term (e.g. an OBI assay
+class) belongs in `related_mappings`, not `exact_mappings`, because the assay is
+not the gene. Keep abstraction layers distinct (a process is not the assay that
+runs it).
+
+**Finding candidates.** Prefer embeddings search (OLS4 `llm_search`) over lexical
+matching, and treat a high similarity score as a candidate to verify, not a
+confirmed mapping. Confirm the CURIE resolves to the intended term before
+asserting it.
+
+**Predicate choice and directionality.** LinkML's mapping slots map one-to-one to
+SKOS predicates ([`linkml-model` mappings.yaml](https://github.com/linkml/linkml-model/blob/main/linkml_model/model/schema/mappings.yaml),
+[W3C SKOS Reference](https://www.w3.org/TR/skos-reference/)). `exact`/`close`/`related`
+are symmetric; `broad`/`narrow` are directional inverses of each other:
+
+| Slot | SKOS predicate | Symmetric? | `X <slot> Y` means |
+|---|---|---|---|
+| `exact_mappings` | `skos:exactMatch` | yes (transitive) | X and Y denote the same concept |
+| `close_mappings` | `skos:closeMatch` | yes (not transitive, by design) | close enough to treat as the same in some applications |
+| `related_mappings` | `skos:relatedMatch` | yes | X is associatively related to Y (no subsumption) |
+| `broad_mappings` | `skos:broadMatch` | no | **Y is broader than X** (X is the more specific) |
+| `narrow_mappings` | `skos:narrowMatch` | no | **Y is narrower than X** (X is the more general) |
+| `mappings` (generic) | `skos:mappingRelation` | n/a | untyped; reserve for property-to-property alignments |
+
+Directionality is the common trap. The SKOS Reference states "`A skos:broader B`
+asserts that B, the object, is a broader concept than A," and `skos:broadMatch` is a
+sub-property of `skos:broader` (S41), so `X broad_mappings Y` means **Y subsumes X**.
+SKOS Primer example: `platypus skos:broadMatch eggLayingAnimals` (the specific concept
+points up to the broader one). In this schema `bacterial_rRNA_operon broad_mappings
+SO:0000178` (operon) reads correctly: operon is broader than that specific rRNA operon.
+
+**Current state (do not extend).** The schema still holds ~27 slot→class mappings
+(e.g. GTDB-Tk ranks → TAXRANK, mass-spec slots → MS/OBI, `mass` → PATO, DOI slots →
+OBI/NCIT) plus several `broad`/`narrow` mappings that are actually associative and
+should be `related_mappings` (e.g. `num_16s broad_mappings` an rRNA molecule — a
+count is not subsumed by the molecule). These are legacy: do not add new slot→class
+mappings, and use `broad`/`narrow` only for genuine subsumption.
+
+## Documenting modeling decisions, not debates
+
+Element `description`, `comments`, and `notes` state the current modeling
+decision as fact. Do not narrate a debate in them ("DEBATED", "X thinks...",
+alternatives under discussion), and do not name colleagues. Track an open
+question in a GitHub issue and link it with `see_also`.
+
+## MIxS import pipeline (`makefiles/mixs.Makefile`)
+
+`src/schema/mixs.yaml` is generated, never hand-edited. The pipeline pulls a
+MIxS subset with `do_shuttle`, applies yq customizations, injects
+NMDC-specific enums, then strips readonly metaslots. Operational details that
+are easy to miss:
+
+- The imported MIxS slot set is defined by
+  `assets/import_mixs_slots_regardless.tsv`; change what is imported there.
+- `assets/yq-for-mixs-customizations.txt` is applied by running only the lines
+  that start with a single quote (`grep "^'"`). A line commented with `#` is
+  disabled, not merely annotated.
+- The `assets/other_mixs_yaml_files/*.yaml` enums (e.g. `CurLandUseEnum`) are
+  injected *after* the yq-customization step, so a `yq`
+  command that targets an injected enum earlier in the pipeline will no-op.
+- The pipeline drops `in_subset` and `subsets` on the way out; do not rely on
+  them surviving into `mixs.yaml`.
+
 ## LinkML Readonly Metaslots — Do Not Assert
 The LinkML metamodel defines 12 slots that are **readonly** — populated
 automatically by the schema loader or generators. Never add these to
@@ -189,6 +260,16 @@ through Feb 2026) that affect the build system and project layout:
   files are now downloadable via the docs website.
 
 ## Example Data Guidelines
+
+### Examples on enum-ranged slots
+
+A slot whose range is a closed enum may carry a short `examples:` block, and in
+practice most do (most MIxS-derived enum slots keep a single valid permissible
+value as the example). Do not duplicate the entire permissible-value list as
+examples, but a single valid value is fine and expected. Some slots still carry
+a stale free-text example inherited from MIxS that lists non-permissible values
+(a comma-separated string); fix those to a valid permissible value rather than
+deleting the block.
 
 ### Invalid examples: single point of failure
 Each file in `src/data/invalid/` must be invalid for **exactly one
