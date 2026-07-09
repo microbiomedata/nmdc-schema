@@ -1746,25 +1746,25 @@ slots:
     description: Number of 16s sequences detected, a subunit of prokaryotic ribosomes.
     range: integer
     minimum_value: 0
-    broad_mappings:
+    related_mappings:
       - OMIT:0013243
   num_5s:
     description: Number of 5s seqeuences detected, a subunit of ribosomes.
     range: integer
     minimum_value: 0
-    broad_mappings:
+    related_mappings:
       - OMIT:0013248
   num_23s:
     description: Number of 23 seqeuences detected, a subunit of ribosomes.
     minimum_value: 0
     range: integer
-    broad_mappings:
+    related_mappings:
       - OMIT:0013245
   num_t_rna:
     description: Number of transfer transfer RNAs.
     minimum_value: 0
     range: integer
-    broad_mappings:
+    related_mappings:
       - OMIT:0013250
   gtdbtk_domain:
     description: Taxonomic domain assigned by GTDB-Tk.
