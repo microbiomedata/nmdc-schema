@@ -12,7 +12,11 @@ DEFAULT_MIXS_SOURCE_PATH = "https://raw.githubusercontent.com/microbiomedata/nmd
 
 @click.command()
 @click.option('--schema-file', default='src/schema/nmdc.yaml', help='Path to schema file.')
-@click.option('--mixs-source-path', default=DEFAULT_MIXS_SOURCE_PATH, help='Path or URL to MIxS source schema.')
+@click.option(
+    '--mixs-source-path',
+    default=DEFAULT_MIXS_SOURCE_PATH,
+    help='MIxS schema identifier to treat as the source (compared to element.from_schema) when filtering reports.',
+)
 def main(schema_file, mixs_source_path):
     schema_view = SchemaView(schema_file)
 
