@@ -7,11 +7,17 @@ from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.utils.schemaview import OrderedBy
 from linkml_runtime.linkml_model.meta import EnumDefinition
 
+DEFAULT_MIXS_SOURCE_PATH = "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"
+
 
 @click.command()
 @click.option('--schema-file', default='src/schema/nmdc.yaml', help='Path to schema file.')
-def main(schema_file):
-    mixs_source_path = "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"
+@click.option(
+    '--mixs-source-path',
+    default=DEFAULT_MIXS_SOURCE_PATH,
+    help='MIxS schema identifier to treat as the source (compared to element.from_schema) when filtering reports.',
+)
+def main(schema_file, mixs_source_path):
     schema_view = SchemaView(schema_file)
 
     schema_slots = schema_view.all_slots(ordered_by=OrderedBy.LEXICAL)
@@ -75,12 +81,16 @@ def main(schema_file):
     print("\n")
 
     print("Report of patterns with candidate unescaped literal dots:\n")
-    print("(a bare '.' between word characters, outside character classes; usually a CURIE")
-    print("prefix such as 'insdc.sra:' that should be written '\\.' so it is not a wildcard)\n")
+    print(
+        "(a bare '.' between word characters, outside character classes; usually a CURIE "
+        "prefix such as 'insdc.sra:' that should be written '\\.' so it is not a wildcard)\n"
+    )
 
     def has_unescaped_prefix_dot(pattern_string):
         # Drop character-class spans, where '.' is already a literal.
-        cleaned = re.sub(r'\[[^\]]*\]', '', pattern_string)
+        # Handle empty classes explicitly, then non-empty classes.
+        cleaned = re.sub(r'\[\]', '', pattern_string)
+        cleaned = re.sub(r'\[[^\]]+\]', '', cleaned)
         # A dot flanked by word characters; an escaped dot ('\\.') has a backslash
         # immediately before it, so the preceding character is not a word character.
         return re.search(r'[A-Za-z0-9]\.[A-Za-z0-9]', cleaned) is not None
