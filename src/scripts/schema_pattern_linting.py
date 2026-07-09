@@ -75,8 +75,10 @@ def main(schema_file):
     print("\n")
 
     print("Report of patterns with candidate unescaped literal dots:\n")
-    print("(a bare '.' between word characters, outside character classes; usually a CURIE")
-    print("prefix such as 'insdc.sra:' that should be written '\\.' so it is not a wildcard)\n")
+    print(
+        "(a bare '.' between word characters, outside character classes; usually a CURIE "
+        "prefix such as 'insdc.sra:' that should be written '\\.' so it is not a wildcard)\n"
+    )
 
     def has_unescaped_prefix_dot(pattern_string):
         # Drop character-class spans, where '.' is already a literal.
