@@ -7,11 +7,13 @@ from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.utils.schemaview import OrderedBy
 from linkml_runtime.linkml_model.meta import EnumDefinition
 
+DEFAULT_MIXS_SOURCE_PATH = "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"
+
 
 @click.command()
 @click.option('--schema-file', default='src/schema/nmdc.yaml', help='Path to schema file.')
-def main(schema_file):
-    mixs_source_path = "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"
+@click.option('--mixs-source-path', default=DEFAULT_MIXS_SOURCE_PATH, help='Path or URL to MIxS source schema.')
+def main(schema_file, mixs_source_path):
     schema_view = SchemaView(schema_file)
 
     schema_slots = schema_view.all_slots(ordered_by=OrderedBy.LEXICAL)
