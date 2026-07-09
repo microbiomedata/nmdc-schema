@@ -149,6 +149,34 @@ matching, and treat a high similarity score as a candidate to verify, not a
 confirmed mapping. Confirm the CURIE resolves to the intended term before
 asserting it.
 
+**Predicate choice and directionality.** LinkML's mapping slots map one-to-one to
+SKOS predicates ([`linkml-model` mappings.yaml](https://github.com/linkml/linkml-model/blob/main/linkml_model/model/schema/mappings.yaml),
+[W3C SKOS Reference](https://www.w3.org/TR/skos-reference/)). `exact`/`close`/`related`
+are symmetric; `broad`/`narrow` are directional inverses of each other:
+
+| Slot | SKOS predicate | Symmetric? | `X <slot> Y` means |
+|---|---|---|---|
+| `exact_mappings` | `skos:exactMatch` | yes (transitive) | X and Y denote the same concept |
+| `close_mappings` | `skos:closeMatch` | yes (not transitive, by design) | close enough to treat as the same in some applications |
+| `related_mappings` | `skos:relatedMatch` | yes | X is associatively related to Y (no subsumption) |
+| `broad_mappings` | `skos:broadMatch` | no | **Y is broader than X** (X is the more specific) |
+| `narrow_mappings` | `skos:narrowMatch` | no | **Y is narrower than X** (X is the more general) |
+| `mappings` (generic) | `skos:mappingRelation` | n/a | untyped; reserve for property-to-property alignments |
+
+Directionality is the common trap. The SKOS Reference states "`A skos:broader B`
+asserts that B, the object, is a broader concept than A," and `skos:broadMatch` is a
+sub-property of `skos:broader` (S41), so `X broad_mappings Y` means **Y subsumes X**.
+SKOS Primer example: `platypus skos:broadMatch eggLayingAnimals` (the specific concept
+points up to the broader one). In this schema `bacterial_rRNA_operon broad_mappings
+SO:0000178` (operon) reads correctly: operon is broader than that specific rRNA operon.
+
+**Current state (do not extend).** The schema still holds ~27 slot→class mappings
+(e.g. GTDB-Tk ranks → TAXRANK, mass-spec slots → MS/OBI, `mass` → PATO, DOI slots →
+OBI/NCIT) plus several `broad`/`narrow` mappings that are actually associative and
+should be `related_mappings` (e.g. `num_16s broad_mappings` an rRNA molecule — a
+count is not subsumed by the molecule). These are legacy: do not add new slot→class
+mappings, and use `broad`/`narrow` only for genuine subsumption.
+
 ## Documenting modeling decisions, not debates
 
 Element `description`, `comments`, and `notes` state the current modeling
