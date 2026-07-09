@@ -258,7 +258,7 @@ slots:
         description: The DOI links to an electronic document.
     exact_mappings:
       - OBI:0002110
-    narrow_mappings:
+    related_mappings:
       - edam.data:1188
 
   doi_provider:

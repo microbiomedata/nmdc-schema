@@ -1373,7 +1373,7 @@ slots:
       - sample weight
     exact_mappings:
       - MS:1000004
-    broad_mappings:
+    related_mappings:
       - MIXS:0000111
     range: QuantityValue
     annotations:
