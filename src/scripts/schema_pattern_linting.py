@@ -80,7 +80,9 @@ def main(schema_file):
 
     def has_unescaped_prefix_dot(pattern_string):
         # Drop character-class spans, where '.' is already a literal.
-        cleaned = re.sub(r'\[[^\]]*\]', '', pattern_string)
+        # Handle empty classes explicitly, then non-empty classes.
+        cleaned = re.sub(r'\[\]', '', pattern_string)
+        cleaned = re.sub(r'\[[^\]]+\]', '', cleaned)
         # A dot flanked by word characters; an escaped dot ('\\.') has a backslash
         # immediately before it, so the preceding character is not a word character.
         return re.search(r'[A-Za-z0-9]\.[A-Za-z0-9]', cleaned) is not None
