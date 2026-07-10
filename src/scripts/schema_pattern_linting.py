@@ -53,7 +53,7 @@ def main(schema_file, mixs_source_path):
     for wsk in whitespace_keys:
         wse = schema_view.get_element(wsk)
 
-        if type(wse) is EnumDefinition:
+        if isinstance(wse, EnumDefinition):
             wse.permissible_values = None
 
         if wse.from_schema != mixs_source_path:
@@ -104,8 +104,13 @@ def main(schema_file, mixs_source_path):
         return found
 
     seen_patterns = set()
-    for class_name in schema_view.all_classes().keys():
-        for slot in schema_view.class_induced_slots(class_name):
+    class_names = list(schema_view.all_classes().keys())
+    all_slot_names = set(schema_slots.keys())
+    seen_slot_groups = set()
+    dangling_slot_group_messages = []
+    for class_name in class_names:
+        induced_slots = schema_view.class_induced_slots(class_name)
+        for slot in induced_slots:
             for pattern_string in patterns_of(slot):
                 key = (slot.name, pattern_string)
                 if key in seen_patterns:
@@ -113,6 +118,15 @@ def main(schema_file, mixs_source_path):
                 if has_unescaped_prefix_dot(pattern_string):
                     seen_patterns.add(key)
                     print(f"slot {slot.name} (in class {class_name}): {pattern_string}")
+        for slot in induced_slots:
+            if slot.slot_group and slot.slot_group not in all_slot_names:
+                key = (class_name, slot.name, slot.slot_group)
+                if key in seen_slot_groups:
+                    continue
+                seen_slot_groups.add(key)
+                dangling_slot_group_messages.append(
+                    f"class {class_name}, slot {slot.name}: slot_group '{slot.slot_group}' is not a defined slot"
+                )
     for sk, sv in schema_slots.items():
         for pattern_string in patterns_of(sv):
             key = (sk, pattern_string)
@@ -124,16 +138,8 @@ def main(schema_file, mixs_source_path):
     print("\n")
 
     print("Report of dangling slot_group references (slot_group value is not a defined slot):\n")
-    all_slot_names = set(schema_view.all_slots().keys())
-    seen_slot_groups = set()
-    for class_name in schema_view.all_classes().keys():
-        for slot in schema_view.class_induced_slots(class_name):
-            if slot.slot_group and slot.slot_group not in all_slot_names:
-                key = (class_name, slot.name, slot.slot_group)
-                if key in seen_slot_groups:
-                    continue
-                seen_slot_groups.add(key)
-                print(f"class {class_name}, slot {slot.name}: slot_group '{slot.slot_group}' is not a defined slot")
+    for message in dangling_slot_group_messages:
+        print(message)
     print("\n")
 
 
