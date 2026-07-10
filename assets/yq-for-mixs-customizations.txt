@@ -52,6 +52,9 @@
 'del(.slots.plant_growth_med.annotations)'
 '.slots.plant_struc.description |= "Name of plant structure the sample was obtained from; for Plant Ontology (PO) terms, see http://obofoundry.org/ontology/po.html, e.g. petiole epidermis (PO:0000051). If an individual flower is sampled, the sex of it can be recorded here."'
 
+# Keep samp_store_temp's concrete value in examples, not in its description (#2466)
+'.slots.samp_store_temp.description = "Temperature at which the sample was stored."'
+
 '.slots.env_broad_scale.is_a |= "mixs_env_triad_field"'
 '.slots.env_local_scale.is_a |= "mixs_env_triad_field"'
 '.slots.env_medium.is_a |= "mixs_env_triad_field"'
