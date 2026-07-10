@@ -103,12 +103,16 @@ def main(schema_file, mixs_source_path):
         return found
 
     seen_patterns = set()
-    class_names = list(schema_view.all_classes().keys())
+    class_names = schema_view.all_classes().keys()
     all_slot_names = set(schema_slots.keys())
     seen_slot_groups = set()
     dangling_slot_group_messages = []
+    induced_slots_by_class = {}
     for class_name in class_names:
-        induced_slots = schema_view.class_induced_slots(class_name)
+        induced_slots = induced_slots_by_class.get(class_name)
+        if induced_slots is None:
+            induced_slots = schema_view.class_induced_slots(class_name)
+            induced_slots_by_class[class_name] = induced_slots
         for slot in induced_slots:
             for pattern_string in patterns_of(slot):
                 key = (slot.name, pattern_string)
