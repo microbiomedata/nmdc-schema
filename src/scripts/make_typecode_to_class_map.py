@@ -51,7 +51,7 @@ def make_document(md_table: str = "") -> str:
                      r"derived from the schema—shows which schema class can have a given string in the _typecode_ "
                      r"portion of its `id` values, and which collections can contain instances of that schema class.")
     md_footer: str = r""  # currently empty — it's here if we need it
-    return "\n\n".join([md_header, md_intro, md_table, md_footer])
+    return "\n\n".join(part for part in [md_header, md_intro, md_table, md_footer] if part)
 
 
 def extract_comparison_key(class_name_and_typecodes: Tuple[str, List[str]]) -> str:
