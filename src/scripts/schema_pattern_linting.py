@@ -88,9 +88,8 @@ def main(schema_file, mixs_source_path):
 
     def has_unescaped_prefix_dot(pattern_string):
         # Drop character-class spans, where '.' is already a literal.
-        # Handle empty classes explicitly, then non-empty classes.
-        cleaned = re.sub(r'\[\]', '', pattern_string)
-        cleaned = re.sub(r'\[[^\]]+\]', '', cleaned)
+        # One pass handles both empty ('[]') and non-empty ('[abc]') classes.
+        cleaned = re.sub(r'\[[^\]]*\]', '', pattern_string)
         # A dot flanked by word characters; an escaped dot ('\\.') has a backslash
         # immediately before it, so the preceding character is not a word character.
         return re.search(r'[A-Za-z0-9]\.[A-Za-z0-9]', cleaned) is not None
@@ -118,7 +117,6 @@ def main(schema_file, mixs_source_path):
                 if has_unescaped_prefix_dot(pattern_string):
                     seen_patterns.add(key)
                     print(f"slot {slot.name} (in class {class_name}): {pattern_string}")
-        for slot in induced_slots:
             if slot.slot_group and slot.slot_group not in all_slot_names:
                 key = (class_name, slot.name, slot.slot_group)
                 if key in seen_slot_groups:
