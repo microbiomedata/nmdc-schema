@@ -27,7 +27,7 @@ This guide adds the operational details and gotchas that are not (yet) captured 
 Build prerequisites and gotchas:
 - `make all` needs `yq` (mikefarah/yq) on PATH (`brew install yq`); it is used to strip readonly metaslots and apply MIxS customizations. Java/ROBOT is NOT needed: the OWL artifact is produced by `linkml generate owl`.
 - `squeaky-clean` runs `clean examples-clean shuttle-clean site-clean`; it deliberately leaves `src/schema/mixs.yaml` in place. Removing that file is a separate fast target (`mixs-yaml-clean`, just an `rm`); regenerating it (`make src/schema/mixs.yaml`) is the slow, network-dependent step. For a full-from-scratch rebuild including a fresh MIxS pull: `make squeaky-clean mixs-yaml-clean && make src/schema/mixs.yaml && make squeaky-clean all test`.
-- CI tests only Python 3.10 and 3.13 (other workflows pin 3.12). `requires-python` is `>=3.10,<4.0`, so a too-new system Python (e.g. 3.14) is out of range and will break installs. Build and test against a supported interpreter.
+- CI tests only Python 3.10 and 3.13 (other workflows pin 3.12). `requires-python` is `>=3.10,<4.0`, so Python 3.14 is within the declared range, but it is not CI-tested and may fail on dependency or tooling compatibility (for example, a dependency without 3.14 wheels, or Poetry lock resolution). Build and test against a CI-tested interpreter.
 - `local/.env` is optional. Its credential blocks (BioPortal key, NCBI BioSample Postgres, source MongoDB) are only consumed by specific scripts; `make all` and `make test` run without any of them.
 
 ## Script Entry Point Policy
