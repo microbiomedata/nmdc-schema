@@ -53,7 +53,7 @@ def main(schema_file, mixs_source_path):
     for wsk in whitespace_keys:
         wse = schema_view.get_element(wsk)
 
-        if type(wse) is EnumDefinition:
+        if isinstance(wse, EnumDefinition):
             wse.permissible_values = None
 
         if wse.from_schema != mixs_source_path:
