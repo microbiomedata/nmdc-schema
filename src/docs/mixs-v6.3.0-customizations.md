@@ -98,7 +98,7 @@ This section documents how NMDC handles differences between GSC MIxS v6.3.0 and 
 
 ### QuantityValue Range Overrides (158 slots)
 
-GSC MIxS v6.3.0 changed ~158 measurement slots from `quantity value` to `string` range. NMDC maintains `QuantityValue` range because:
+GSC MIxS v6.3.0 changed 158 measurement slots from `quantity value` to `string` range. NMDC maintains `QuantityValue` range because:
 
 - Production data uses QuantityValue objects (`{type: "nmdc:QuantityValue", has_numeric_value: ..., has_unit: ...}`)
 - QuantityValue provides better structure than pattern-matched strings
