@@ -247,7 +247,7 @@ slots:
     aliases:
       - scale
     mappings:
-      - qud:unit
+      - qudt:unit
       - schema:unitCode
     range: string
 
@@ -277,7 +277,7 @@ slots:
     description: Links a quantity value to a number
     range: decimal
     mappings:
-      - qud:quantityValue
+      - qudt:quantityValue
       - schema:value
 
   has_minimum_numeric_value:
@@ -411,7 +411,7 @@ enums:
         exact_mappings:
           - UO:0000027
           - wikidata:Q25267
-          - qud:DEG_C
+          - qudt:DEG_C
           - OM:degreeCelsius
       cm:
         description: The Unified Code for Units of Measure (UCUM) representation of centimeter.

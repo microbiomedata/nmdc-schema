@@ -109,8 +109,8 @@ Use typed subtypes (`exact_mappings`, `close_mappings`, `broad_mappings`,
 `narrow_mappings`, `related_mappings`) in preference to generic `mappings`.
 
 **Exception — keep `mappings` (generic) for:** schema.org properties
-(`schema:QuantityValue`, `schema:latitude`, etc.), QUDT (`qud:unit`,
-`qud:quantityValue`), and `prov:wasGeneratedBy`. These are
+(`schema:QuantityValue`, `schema:latitude`, etc.), QUDT (`qudt:unit`,
+`qudt:quantityValue`), and `prov:wasGeneratedBy`. These are
 *property-to-property* alignments where SKOS directional semantics
 (broader/narrower) don't apply. Do not "fix" these to `exact_mappings`.
 

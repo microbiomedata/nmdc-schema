@@ -33,7 +33,7 @@ prefixes:
   gtpo: "http://example.org/gtpo/"
   linkml: "https://w3id.org/linkml/"
   nmdc: "https://w3id.org/nmdc/"
-  qud: "http://qudt.org/1.1/schema/qudt#"
+  qudt: "http://qudt.org/1.1/schema/qudt#"
   rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   schema: "http://schema.org/"
   wgs84: "http://www.w3.org/2003/01/geo/wgs84_pos#"

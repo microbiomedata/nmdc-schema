@@ -19,7 +19,7 @@ prefixes:
   linkml: "https://w3id.org/linkml/"
   nmdc: "https://w3id.org/nmdc/"
   prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
-  qud: "http://qudt.org/1.1/schema/qudt#"
+  qudt: "http://qudt.org/1.1/schema/qudt#"
   rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   ror: 'https://bioregistry.io/ror:' # https://ror.org/
   schema: "http://schema.org/"
