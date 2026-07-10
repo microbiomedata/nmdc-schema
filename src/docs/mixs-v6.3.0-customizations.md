@@ -140,7 +140,7 @@ The yq pipeline sets explicit `range: string` for 31 slots. Without this, slots 
 
 **Note:** `structured_pattern` is deleted from 6 slots due to non-conforming production data (see [Non-Conforming Production Data](#non-conforming-production-data)).
 
-**Exception (current compatibility state):** Follow-up migration for `ph_meth` and `soil_type_meth` remains tracked in [#2774](https://github.com/microbiomedata/nmdc-schema/issues/2774). In the current yq customizations, `ph_meth` is commented out and `soil_type_meth` is not explicitly set to TextValue; see [Other Pending Migrations](#other-pending-migrations) for planned state alignment.
+**Exception (current compatibility state):** Follow-up migration for `ph_meth` and `soil_type_meth` remains tracked in [#2774](https://github.com/microbiomedata/nmdc-schema/issues/2774). Both slots have active `del(structured_pattern)` customizations and retain their TextValue range (neither has an explicit range override); both currently materialize as `TextValue` in `src/schema/mixs.yaml`. See [Other Pending Migrations](#other-pending-migrations) for planned state alignment.
 
 ### TextValue Range for Enum Slots (6 slots)
 
@@ -169,7 +169,7 @@ The yq transformation pipeline in `assets/yq-for-mixs-customizations.txt` proces
    - These are **NOT transformed** - they remain as string
    - The yq pipeline only matches slots with explicit range declarations
 
-This distinction is critical: the <COUNT_FROM_LINE_201_TABLE> slots in NMDC's derived mixs.yaml that have implicit string range were never transformed because they lacked explicit `range` declarations in the source.
+This distinction is critical: the 21 slots in NMDC's derived mixs.yaml that have implicit string range were never transformed because they lacked explicit `range` declarations in the source.
 
 ### GSC MIxS v6.3.0 Slot Range Statistics
 
