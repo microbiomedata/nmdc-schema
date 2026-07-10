@@ -114,8 +114,8 @@ def main(schema_file, mixs_source_path):
                 key = (slot.name, pattern_string)
                 if key in seen_patterns:
                     continue
+                seen_patterns.add(key)
                 if has_unescaped_prefix_dot(pattern_string):
-                    seen_patterns.add(key)
                     print(f"slot {slot.name} (in class {class_name}): {pattern_string}")
             if slot.slot_group and slot.slot_group not in all_slot_names:
                 key = (class_name, slot.name, slot.slot_group)
@@ -130,8 +130,8 @@ def main(schema_file, mixs_source_path):
             key = (sk, pattern_string)
             if key in seen_patterns:
                 continue
+            seen_patterns.add(key)
             if has_unescaped_prefix_dot(pattern_string):
-                seen_patterns.add(key)
                 print(f"slot {sk}: {pattern_string}")
     print("\n")
 
