@@ -23,7 +23,7 @@ This section summarizes all inventory differences between main branch (old NMDC 
 | Metric | Main Branch | This Branch | Change |
 |--------|-------------|-------------|--------|
 | Slots in mixs.yaml | 489 | 486 | -3 (moved to hardcoded) |
-| Enums in mixs.yaml | 102 | 93 | -24 dropped, +15 added |
+| Enums in mixs.yaml | 102 | 93 | 24 dropped, 15 added (net -9) |
 | Slots explicitly set to string | 22 | 31 | +10 added, -1 removed |
 
 ### Slot Changes
