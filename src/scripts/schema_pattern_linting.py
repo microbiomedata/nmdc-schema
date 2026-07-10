@@ -105,8 +105,9 @@ def main(schema_file, mixs_source_path):
 
     seen_patterns = set()
     class_names = list(schema_view.all_classes().keys())
-    all_slot_names = set(schema_view.all_slots().keys())
+    all_slot_names = set(schema_slots.keys())
     seen_slot_groups = set()
+    dangling_slot_group_messages = []
     for class_name in class_names:
         induced_slots = schema_view.class_induced_slots(class_name)
         for slot in induced_slots:
@@ -123,7 +124,9 @@ def main(schema_file, mixs_source_path):
                 if key in seen_slot_groups:
                     continue
                 seen_slot_groups.add(key)
-                print(f"class {class_name}, slot {slot.name}: slot_group '{slot.slot_group}' is not a defined slot")
+                dangling_slot_group_messages.append(
+                    f"class {class_name}, slot {slot.name}: slot_group '{slot.slot_group}' is not a defined slot"
+                )
     for sk, sv in schema_slots.items():
         for pattern_string in patterns_of(sv):
             key = (sk, pattern_string)
@@ -135,6 +138,8 @@ def main(schema_file, mixs_source_path):
     print("\n")
 
     print("Report of dangling slot_group references (slot_group value is not a defined slot):\n")
+    for message in dangling_slot_group_messages:
+        print(message)
     print("\n")
 
 
