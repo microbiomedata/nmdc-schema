@@ -8,7 +8,21 @@ from nmdc_schema.id_helpers import get_class_name_to_typecode_map
 
 
 DATABASE_CLASS_NAME = "Database"
-schema_view = SchemaView(get_nmdc_schema_definition())
+_schema_view: SchemaView | None = None
+
+
+def get_schema_view() -> SchemaView:
+    r"""
+    Returns a lazily-initialized `SchemaView` for the NMDC schema.
+
+    Initializing at first use, rather than at import time, keeps importing this
+    module cheap and side-effect-free (which helps testing) and defers loading
+    the schema until it is actually needed.
+    """
+    global _schema_view
+    if _schema_view is None:
+        _schema_view = SchemaView(get_nmdc_schema_definition())
+    return _schema_view
 
 
 def make_schema_class_documentation_url(class_name: str) -> str:
@@ -52,7 +66,7 @@ def extract_comparison_key(class_name_and_typecodes: Tuple[str, List[str]]) -> s
     'bar'
     """
     class_name, typecodes = class_name_and_typecodes
-    first_typecode = typecodes[0] if len(typecodes) > 0 else ""
+    first_typecode = typecodes[0] if typecodes else ""
     return first_typecode
 
 
@@ -78,6 +92,7 @@ def get_collection_names_for_class_name(class_name: str) -> List[str]:
     ['data_generation_set']
     """
     collection_names_for_class_name = []
+    schema_view = get_schema_view()
 
     # Process each slot of the "Database" class.
     for slot_name in schema_view.class_slots(class_name=DATABASE_CLASS_NAME):
@@ -85,7 +100,10 @@ def get_collection_names_for_class_name(class_name: str) -> List[str]:
 
         # If this slot represents a collection, check whether the specified class is within the slot's range.
         if slot_definition.multivalued and slot_definition.inlined_as_list:
-            class_names_in_slot_range = schema_view.class_descendants(class_name=slot_definition.range)
+            slot_range = slot_definition.range
+            if not slot_range:
+                continue
+            class_names_in_slot_range = schema_view.class_descendants(class_name=slot_range)
             if class_name in class_names_in_slot_range:
                 collection_names_for_class_name.append(slot_name)
 
