@@ -23,7 +23,7 @@ This section summarizes all inventory differences between main branch (old NMDC 
 | Metric | Main Branch | This Branch | Change |
 |--------|-------------|-------------|--------|
 | Slots in mixs.yaml | 489 | 486 | -3 (moved to hardcoded) |
-| Enums in mixs.yaml | 102 | 93 | -24 dropped, +15 added |
+| Enums in mixs.yaml | 102 | 93 | 24 dropped, 15 added (net -9) |
 | Slots explicitly set to string | 22 | 31 | +10 added, -1 removed |
 
 ### Slot Changes
@@ -98,7 +98,7 @@ This section documents how NMDC handles differences between GSC MIxS v6.3.0 and 
 
 ### QuantityValue Range Overrides (158 slots)
 
-GSC MIxS v6.3.0 changed ~158 measurement slots from `quantity value` to `string` range. NMDC maintains `QuantityValue` range because:
+GSC MIxS v6.3.0 changed 158 measurement slots from `quantity value` to `string` range. NMDC maintains `QuantityValue` range because:
 
 - Production data uses QuantityValue objects (`{type: "nmdc:QuantityValue", has_numeric_value: ..., has_unit: ...}`)
 - QuantityValue provides better structure than pattern-matched strings
@@ -140,7 +140,7 @@ The yq pipeline sets explicit `range: string` for 31 slots. Without this, slots 
 
 **Note:** `structured_pattern` is deleted from 6 slots due to non-conforming production data (see [Non-Conforming Production Data](#non-conforming-production-data)).
 
-**Exception (current compatibility state):** `ph_meth` and `soil_type_meth` are kept as TextValue because production data currently uses TextValue objects. This is tracked in [#2774](https://github.com/microbiomedata/nmdc-schema/issues/2774); see also [Other Pending Migrations](#other-pending-migrations) for the planned follow-up migration state.
+**Exception (current compatibility state):** Follow-up migration for `ph_meth` and `soil_type_meth` remains tracked in [#2774](https://github.com/microbiomedata/nmdc-schema/issues/2774). Both slots have active `del(structured_pattern)` customizations and retain their TextValue range (neither has an explicit range override); both currently materialize as `TextValue` in `src/schema/mixs.yaml`. See [Other Pending Migrations](#other-pending-migrations) for planned state alignment.
 
 ### TextValue Range for Enum Slots (6 slots)
 
@@ -251,7 +251,9 @@ Issues [#3222](https://github.com/microbiomedata/nmdc-schema/issues/3222) and [#
 
 ### Verifying a pattern change without a full rebuild
 
-A full `make src/schema/mixs.yaml` re-pulls MIxS over the network and is slow. To check that a `structured_pattern` change interpolates as intended, apply your yq line to a scratch copy of `mixs.yaml`, materialize only the patterns, and inspect the result (revert the scratch copy afterward; the committed `mixs.yaml` and generated artifacts are regenerated at release, not in feature PRs):
+A full `make src/schema/mixs.yaml` re-pulls MIxS over the network and is slow. To check that a `structured_pattern` change interpolates as intended, apply your yq line to a scratch copy of `mixs.yaml`, materialize only the patterns, and inspect the result (revert the scratch copy afterward; the committed `mixs.yaml` and generated artifacts are regenerated at release, not in feature PRs).
+
+Use one line from `assets/yq-for-mixs-customizations.txt` verbatim as `<your yq expression>`: those lines already include surrounding single quotes, so do not add extra quoting.
 
 ```bash
 cp src/schema/mixs.yaml /tmp/mixs.yaml
