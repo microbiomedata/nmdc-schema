@@ -1,0 +1,64 @@
+name: CodeQL
+
+# CodeQL code scanning, run as *advanced* setup (a workflow) rather than
+# GitHub default setup. The reason is path exclusion: default setup ignores
+# .github/codeql/codeql-config.yml, so the exclusions there never took effect.
+# Advanced setup honors that config file.
+#
+# The excluded paths (see codeql-config.yml) are the generated model modules
+# (nmdc_schema/nmdc.py, nmdc_schema/nmdc_pydantic.py) and the frozen partial
+# migrators. Those files must not be hand-edited, yet the quality queries flag
+# hundreds of false positives in them (e.g. py/not-named-self on the generated
+# pydantic v2 @field_validator methods, which idiomatically take `cls`).
+# Excluding the generated files keeps quality coverage on authored code only.
+#
+# Uses the security-and-quality suite so the security queries (which reported
+# 0 open alerts under default setup) and the quality queries both run, with the
+# path exclusions applied to both.
+#
+# NOTE: CodeQL default setup must be disabled in repo Settings (Security >
+# Code scanning) for this workflow to run; the two setups cannot coexist.
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '31 5 * * 1'  # weekly, Monday 05:31 UTC
+
+permissions: {}
+
+# One analysis per ref; a newer push supersedes an in-progress run.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write  # upload CodeQL results to code scanning
+      contents: read          # check out the repository
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ actions, python ]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
+        with:
+          languages: ${{ matrix.language }}
+          config-file: ./.github/codeql/codeql-config.yml
+          queries: security-and-quality
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
+        with:
+          category: /language:${{ matrix.language }}
