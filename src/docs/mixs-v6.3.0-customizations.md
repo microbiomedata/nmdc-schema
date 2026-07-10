@@ -251,7 +251,9 @@ Issues [#3222](https://github.com/microbiomedata/nmdc-schema/issues/3222) and [#
 
 ### Verifying a pattern change without a full rebuild
 
-A full `make src/schema/mixs.yaml` re-pulls MIxS over the network and is slow. To check that a `structured_pattern` change interpolates as intended, apply your yq line to a scratch copy of `mixs.yaml`, materialize only the patterns, and inspect the result (revert the scratch copy afterward; the committed `mixs.yaml` and generated artifacts are regenerated at release, not in feature PRs):
+A full `make src/schema/mixs.yaml` re-pulls MIxS over the network and is slow. To check that a `structured_pattern` change interpolates as intended, apply your yq line to a scratch copy of `mixs.yaml`, materialize only the patterns, and inspect the result (revert the scratch copy afterward; the committed `mixs.yaml` and generated artifacts are regenerated at release, not in feature PRs).
+
+Use one line from `assets/yq-for-mixs-customizations.txt` verbatim as `<your yq expression>`: those lines already include surrounding single quotes, so do not add extra quoting.
 
 ```bash
 cp src/schema/mixs.yaml /tmp/mixs.yaml
