@@ -1060,7 +1060,7 @@
 <td>Enums in mixs.yaml</td>
 <td>102</td>
 <td>93</td>
-<td>-24 dropped, +15 added</td>
+<td>24 dropped, 15 added (net -9)</td>
 </tr>
 <tr>
 <td>Slots explicitly set to string</td>
@@ -1225,7 +1225,7 @@
 <h2 id="required-customizations">Required Customizations</h2>
 <p>This section documents how NMDC handles differences between GSC MIxS v6.3.0 and NMDC requirements.</p>
 <h3 id="quantityvalue-range-overrides-158-slots">QuantityValue Range Overrides (158 slots)</h3>
-<p>GSC MIxS v6.3.0 changed ~158 measurement slots from <code>quantity value</code> to <code>string</code> range. NMDC maintains <code>QuantityValue</code> range because:</p>
+<p>GSC MIxS v6.3.0 changed 158 measurement slots from <code>quantity value</code> to <code>string</code> range. NMDC maintains <code>QuantityValue</code> range because:</p>
 <ul>
 <li>Production data uses QuantityValue objects (<code>{type: "nmdc:QuantityValue", has_numeric_value: ..., has_unit: ...}</code>)</li>
 <li>QuantityValue provides better structure than pattern-matched strings</li>
@@ -1307,7 +1307,7 @@
 </tbody>
 </table>
 <p><strong>Note:</strong> <code>structured_pattern</code> is deleted from 6 slots due to non-conforming production data (see <a href="#non-conforming-production-data">Non-Conforming Production Data</a>).</p>
-<p><strong>Exception (current compatibility state):</strong> <code>ph_meth</code> and <code>soil_type_meth</code> are kept as TextValue because production data currently uses TextValue objects. This is tracked in <a href="https://github.com/microbiomedata/nmdc-schema/issues/2774">#2774</a>; see also <a href="#other-pending-migrations">Other Pending Migrations</a> for the planned follow-up migration state.</p>
+<p><strong>Exception (current compatibility state):</strong> Follow-up migration for <code>ph_meth</code> and <code>soil_type_meth</code> remains tracked in <a href="https://github.com/microbiomedata/nmdc-schema/issues/2774">#2774</a>. Both slots have active <code>del(structured_pattern)</code> customizations and retain their TextValue range (neither has an explicit range override); both currently materialize as <code>TextValue</code> in <code>src/schema/mixs.yaml</code>. See <a href="#other-pending-migrations">Other Pending Migrations</a> for planned state alignment.</p>
 <h3 id="textvalue-range-for-enum-slots-6-slots">TextValue Range for Enum Slots (6 slots)</h3>
 <p>GSC MIxS v6.3.0 changed these slots to enum ranges, but NMDC has TextValue objects:</p>
 <table>
@@ -1560,7 +1560,8 @@
 '.slots.pcr_primers.structured_pattern.syntax = &quot;FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+&quot;'
 </code></pre>
 <h3 id="verifying-a-pattern-change-without-a-full-rebuild">Verifying a pattern change without a full rebuild</h3>
-<p>A full <code>make src/schema/mixs.yaml</code> re-pulls MIxS over the network and is slow. To check that a <code>structured_pattern</code> change interpolates as intended, apply your yq line to a scratch copy of <code>mixs.yaml</code>, materialize only the patterns, and inspect the result (revert the scratch copy afterward; the committed <code>mixs.yaml</code> and generated artifacts are regenerated at release, not in feature PRs):</p>
+<p>A full <code>make src/schema/mixs.yaml</code> re-pulls MIxS over the network and is slow. To check that a <code>structured_pattern</code> change interpolates as intended, apply your yq line to a scratch copy of <code>mixs.yaml</code>, materialize only the patterns, and inspect the result (revert the scratch copy afterward; the committed <code>mixs.yaml</code> and generated artifacts are regenerated at release, not in feature PRs).</p>
+<p>Use one line from <code>assets/yq-for-mixs-customizations.txt</code> verbatim as <code>&lt;your yq expression&gt;</code>: those lines already include surrounding single quotes, so do not add extra quoting.</p>
 <pre><code class="language-bash">cp src/schema/mixs.yaml /tmp/mixs.yaml
 yq -i &lt;your yq expression&gt; /tmp/mixs.yaml   # lines in assets/yq-for-mixs-customizations.txt already include their surrounding single quotes; paste one verbatim (no extra quoting), then revert the scratch copy afterward
 poetry run linkml generate linkml --format yaml --materialize-patterns \
