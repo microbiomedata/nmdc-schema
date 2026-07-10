@@ -169,7 +169,7 @@ The yq transformation pipeline in `assets/yq-for-mixs-customizations.txt` proces
    - These are **NOT transformed** - they remain as string
    - The yq pipeline only matches slots with explicit range declarations
 
-This distinction is critical: the 21 slots in NMDC's derived mixs.yaml that have implicit string range were never transformed because they lacked explicit `range` declarations in the source.
+This distinction is critical: the <COUNT_FROM_LINE_201_TABLE> slots in NMDC's derived mixs.yaml that have implicit string range were never transformed because they lacked explicit `range` declarations in the source.
 
 ### GSC MIxS v6.3.0 Slot Range Statistics
 
