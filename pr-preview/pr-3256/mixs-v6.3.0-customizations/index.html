@@ -1307,7 +1307,7 @@
 </tbody>
 </table>
 <p><strong>Note:</strong> <code>structured_pattern</code> is deleted from 6 slots due to non-conforming production data (see <a href="#non-conforming-production-data">Non-Conforming Production Data</a>).</p>
-<p><strong>Exception (current compatibility state):</strong> Follow-up migration for <code>ph_meth</code> and <code>soil_type_meth</code> remains tracked in <a href="https://github.com/microbiomedata/nmdc-schema/issues/2774">#2774</a>. In the current yq customizations, <code>ph_meth</code> is commented out and <code>soil_type_meth</code> is not explicitly set to TextValue; see <a href="#other-pending-migrations">Other Pending Migrations</a> for planned state alignment.</p>
+<p><strong>Exception (current compatibility state):</strong> Follow-up migration for <code>ph_meth</code> and <code>soil_type_meth</code> remains tracked in <a href="https://github.com/microbiomedata/nmdc-schema/issues/2774">#2774</a>. Both slots have active <code>del(structured_pattern)</code> customizations and retain their TextValue range (neither has an explicit range override); both currently materialize as <code>TextValue</code> in <code>src/schema/mixs.yaml</code>. See <a href="#other-pending-migrations">Other Pending Migrations</a> for planned state alignment.</p>
 <h3 id="textvalue-range-for-enum-slots-6-slots">TextValue Range for Enum Slots (6 slots)</h3>
 <p>GSC MIxS v6.3.0 changed these slots to enum ranges, but NMDC has TextValue objects:</p>
 <table>
@@ -1359,7 +1359,7 @@
 <li>These are <strong>NOT transformed</strong> - they remain as string</li>
 <li>The yq pipeline only matches slots with explicit range declarations</li>
 </ol>
-<p>This distinction is critical: the <COUNT_FROM_LINE_201_TABLE> slots in NMDC's derived mixs.yaml that have implicit string range were never transformed because they lacked explicit <code>range</code> declarations in the source.</p>
+<p>This distinction is critical: the 21 slots in NMDC's derived mixs.yaml that have implicit string range were never transformed because they lacked explicit <code>range</code> declarations in the source.</p>
 <h3 id="gsc-mixs-v630-slot-range-statistics">GSC MIxS v6.3.0 Slot Range Statistics</h3>
 <p>GSC MIxS v6.3.0 defines 1,059 slots with the following range distribution:</p>
 <table>
