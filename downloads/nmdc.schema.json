@@ -14707,7 +14707,7 @@
                     ]
                 },
                 "has_attribute_label": {
-                    "description": "Human-readable label for the property (e.g., MIxS label, ENVO term label).",
+                    "description": "Human-readable label for the property, taken from its MIxS slot, NMDC slot, or ontology term (ENVO, OBI, etc.) label.",
                     "type": [
                         "string",
                         "null"
@@ -14749,7 +14749,7 @@
                     ]
                 },
                 "has_quantity_kind_id": {
-                    "description": "Optional CURIE or IRI for the physical quantity kind (e.g., qudt:QuantityKind).",
+                    "description": "Optional CURIE or IRI for the physical quantity kind, which is a qudt:QuantityKind.",
                     "type": [
                         "string",
                         "null"
@@ -17627,5 +17627,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.21.0.post48.dev0+326c727d8"
+    "version": "11.21.0.post49.dev0+96028b9b0"
 }

@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#comments" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -717,7 +728,7 @@
 
 
 <h1 id="slot-has_quantity_kind_id">Slot: has_quantity_kind_id</h1>
-<p><em>Optional CURIE or IRI for the physical quantity kind (e.g., qudt:QuantityKind).</em></p>
+<p><em>Optional CURIE or IRI for the physical quantity kind, which is a qudt:QuantityKind.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/has_quantity_kind_id">nmdc:has_quantity_kind_id</a></p>
 <!-- no inheritance hierarchy -->
@@ -742,9 +753,25 @@
 <ul>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qudt:MassConcentration</td>
+</tr>
+<tr>
+<td>qudt:Temperature</td>
+</tr>
+</tbody>
+</table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>This slot enables precise semantic description of what physical quantity is being measured, independent of the specific units used. For example, qudt:MassConcentration or qudt:Temperature.</li>
+<li>This slot enables precise semantic description of what physical quantity is being measured, independent of the specific units used.</li>
 <li>Using quantity kind identifiers from QUDT or similar vocabularies improves data integration and enables automated unit conversion.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -771,13 +798,15 @@
 <details>
 
 <pre><code class="language-yaml">name: has_quantity_kind_id
-description: Optional CURIE or IRI for the physical quantity kind (e.g., qudt:QuantityKind).
+description: Optional CURIE or IRI for the physical quantity kind, which is a qudt:QuantityKind.
 comments:
 - This slot enables precise semantic description of what physical quantity is being
-  measured, independent of the specific units used. For example, qudt:MassConcentration
-  or qudt:Temperature.
+  measured, independent of the specific units used.
 - Using quantity kind identifiers from QUDT or similar vocabularies improves data
   integration and enables automated unit conversion.
+examples:
+- value: qudt:MassConcentration
+- value: qudt:Temperature
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 domain_of:

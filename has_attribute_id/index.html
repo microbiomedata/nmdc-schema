@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#comments" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -742,9 +753,25 @@
 <ul>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MIXS:0000117</td>
+</tr>
+<tr>
+<td>ENVO:01001357</td>
+</tr>
+</tbody>
+</table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>This provides a resolvable identifier for the property being asserted. Examples include MIXS:0000117 for total phosphorus, or ENVO:01001357 for bicarbonate ion concentration.</li>
+<li>This provides a resolvable identifier for the property being asserted.</li>
 <li>Prefer using standard ontology terms (ENVO, PATO, OBI, etc.) or MIxS identifiers when available to enhance interoperability.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -773,11 +800,14 @@
 <pre><code class="language-yaml">name: has_attribute_id
 description: CURIE or IRI for the property (MIxS slot, NMDC slot, ENVO/OBI term, etc.).
 comments:
-- This provides a resolvable identifier for the property being asserted. Examples
-  include MIXS:0000117 for total phosphorus, or ENVO:01001357 for bicarbonate ion
-  concentration.
+- This provides a resolvable identifier for the property being asserted.
 - Prefer using standard ontology terms (ENVO, PATO, OBI, etc.) or MIxS identifiers
   when available to enhance interoperability.
+examples:
+- value: MIXS:0000117
+  description: total phosphorus
+- value: ENVO:01001357
+  description: bicarbonate ion concentration
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 domain_of:

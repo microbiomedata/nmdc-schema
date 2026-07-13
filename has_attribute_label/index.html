@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#comments" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -717,7 +728,7 @@
 
 
 <h1 id="slot-has_attribute_label">Slot: has_attribute_label</h1>
-<p><em>Human-readable label for the property (e.g., MIxS label, ENVO term label).</em></p>
+<p><em>Human-readable label for the property, taken from its MIxS slot, NMDC slot, or ontology term (ENVO, OBI, etc.) label.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/has_attribute_label">nmdc:has_attribute_label</a></p>
 <!-- no inheritance hierarchy -->
@@ -742,9 +753,25 @@
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bicarbonate ion concentration</td>
+</tr>
+<tr>
+<td>total phosphorus</td>
+</tr>
+</tbody>
+</table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>This provides a human-friendly name for the asserted property. For example, "bicarbonate ion concentration" or "total phosphorus". The label helps with readability and data discovery.</li>
+<li>This provides a human-friendly name for the asserted property. The label helps with readability and data discovery.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -770,11 +797,14 @@
 <details>
 
 <pre><code class="language-yaml">name: has_attribute_label
-description: Human-readable label for the property (e.g., MIxS label, ENVO term label).
+description: Human-readable label for the property, taken from its MIxS slot, NMDC
+  slot, or ontology term (ENVO, OBI, etc.) label.
 comments:
-- This provides a human-friendly name for the asserted property. For example, &quot;bicarbonate
-  ion concentration&quot; or &quot;total phosphorus&quot;. The label helps with readability and data
-  discovery.
+- This provides a human-friendly name for the asserted property. The label helps with
+  readability and data discovery.
+examples:
+- value: bicarbonate ion concentration
+- value: total phosphorus
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 domain_of:
