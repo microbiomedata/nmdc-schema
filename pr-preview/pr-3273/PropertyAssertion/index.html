@@ -473,7 +473,7 @@
 <tr>
 <td><a href="../has_attribute_label/">has_attribute_label</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Human-readable label for the property</td>
+<td>Human-readable label for the property, taken from its MIxS label or ENVO term...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -485,7 +485,7 @@
 <tr>
 <td><a href="../has_quantity_kind_id/">has_quantity_kind_id</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Optional CURIE or IRI for the physical quantity kind</td>
+<td>Optional CURIE or IRI for the physical quantity kind, which is a qudt:Quantit...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -736,7 +736,8 @@ slot_usage:
 attributes:
   has_attribute_label:
     name: has_attribute_label
-    description: Human-readable label for the property.
+    description: Human-readable label for the property, taken from its MIxS label
+      or ENVO term label.
     comments:
     - This provides a human-friendly name for the asserted property. The label helps
       with readability and data discovery.
@@ -770,7 +771,8 @@ attributes:
     range: uriorcurie
   has_quantity_kind_id:
     name: has_quantity_kind_id
-    description: Optional CURIE or IRI for the physical quantity kind.
+    description: Optional CURIE or IRI for the physical quantity kind, which is a
+      qudt:QuantityKind.
     comments:
     - This slot enables precise semantic description of what physical quantity is
       being measured, independent of the specific units used.

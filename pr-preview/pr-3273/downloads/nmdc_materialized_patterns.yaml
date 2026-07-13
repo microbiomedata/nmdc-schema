@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.21.0.post49.dev0+e4d58d20e
+version: 11.21.0.post51.dev0+7e9afa60e
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6891,7 +6891,8 @@ slots:
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
   has_attribute_label:
     name: has_attribute_label
-    description: Human-readable label for the property.
+    description: Human-readable label for the property, taken from its MIxS label
+      or ENVO term label.
     comments:
     - This provides a human-friendly name for the asserted property. The label helps
       with readability and data discovery.
@@ -6917,7 +6918,8 @@ slots:
     range: uriorcurie
   has_quantity_kind_id:
     name: has_quantity_kind_id
-    description: Optional CURIE or IRI for the physical quantity kind.
+    description: Optional CURIE or IRI for the physical quantity kind, which is a
+      qudt:QuantityKind.
     comments:
     - This slot enables precise semantic description of what physical quantity is
       being measured, independent of the specific units used.
