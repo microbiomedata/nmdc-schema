@@ -1317,7 +1317,7 @@ slots:
     annotations:
       Preferred_unit: degrees API
       units_alignment_excuse: non_ucum_unit
-    description: 'API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity) (e.g. 31.1   API)'
+    description: 'API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity)'
     title: API gravity
     examples:
       - value: 31.1 API
@@ -2684,13 +2684,11 @@ slots:
     range: TextValue
     inlined_as_list: true
   field:
-    description: Name of the hydrocarbon field
+    description: Name of the hydrocarbon field (e.g. Albacora)
     title: field name
     slot_uri: MIXS:0000291
     range: TextValue
     recommended: true
-    examples:
-      - value: Albacora
   filter_type:
     description: A device which removes solid particulates or airborne molecular contaminants
     title: filter type
@@ -4834,13 +4832,11 @@ slots:
     slot_uri: MIXS:0000821
     range: RelSampLocEnum
   reservoir:
-    description: Name of the reservoir
+    description: Name of the reservoir (e.g. Carapebus)
     title: reservoir name
     slot_uri: MIXS:0000303
     range: TextValue
     recommended: true
-    examples:
-      - value: Carapebus
   resins_pc:
     annotations:
       Preferred_unit: percent
@@ -5089,7 +5085,7 @@ slots:
     annotations:
       Expected_value: macronutrient name;measurement value
       Preferred_unit: milligram per liter
-    description: Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170 mg/L)
+    description: Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S)
     title: rooting medium macronutrients
     examples:
       - value: KH2PO4;170  milligram per liter
@@ -5102,7 +5098,7 @@ slots:
     annotations:
       Expected_value: micronutrient name;measurement value
       Preferred_unit: milligram per liter
-    description: Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo); e.g. H3BO3 (6.2 mg/L)
+    description: Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo)
     title: rooting medium micronutrients
     examples:
       - value: H3BO3;6.2  milligram per liter
@@ -5144,7 +5140,7 @@ slots:
     annotations:
       Expected_value: supplement name;measurement value
       Preferred_unit: milligram per liter
-    description: Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid (0.5  mg/L)
+    description: Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal
     title: rooting medium organic supplements
     examples:
       - value: nicotinic acid;0.5 milligram per liter
@@ -5358,7 +5354,7 @@ slots:
     annotations:
       Preferred_unit: degree Celsius
       storage_units: Cel
-    description: Temperature at which sample was stored, e.g. -80 degree Celsius
+    description: Temperature at which sample was stored
     title: sample storage temperature
     examples:
       - value: -80 Cel
@@ -5481,15 +5477,13 @@ slots:
     slot_uri: MIXS:0000827
     range: SampWeatherEnum
   samp_well_name:
-    description: Name of the well where sample was taken
+    description: Name of the well (e.g. BXA1123) where sample was taken
     title: sample well name
     keywords:
       - sample
     slot_uri: MIXS:0000296
     range: TextValue
     recommended: true
-    examples:
-      - value: BXA1123
   saturates_pc:
     annotations:
       Preferred_unit: percent

@@ -587,20 +587,23 @@
 'del(.slots.host_body_product.examples)'
 '.slots.host_body_product.examples.[0].value = "mucus [UBERON:0000912]"'
 
-# Relocate misplaced example values out of descriptions into the examples metaslot.
-# Scoped to TextValue name/label slots; see CONTRIBUTING.md "Put example values in the
-# examples metaslot, not in prose". Measurement/QuantityValue slots are deliberately
-# excluded here: their example handling belongs with the units work (issue #2950).
-'.slots.field.description |= "Name of the hydrocarbon field"'
-'.slots.field.examples = [{"value": "Albacora"}]'
-'.slots.reservoir.description |= "Name of the reservoir"'
-'.slots.reservoir.examples = [{"value": "Carapebus"}]'
-'.slots.samp_well_name.description |= "Name of the well where sample was taken"'
-'.slots.samp_well_name.examples = [{"value": "BXA1123"}]'
-# examples already present; strip only the redundant inline value from the description
+# Remove redundant inline examples from MIxS slot descriptions: the value is already
+# carried in the slot's examples metaslot, so the copy in the prose is a duplicate.
+# See CONTRIBUTING.md "Put example values in the examples metaslot, not in prose".
+# This block ONLY strips duplicate text from descriptions; it adds no examples and
+# changes no example types, so it does not touch the range/type audit (issue #2950).
+# Deferred to #2950: adding examples to slots that lack them (field, reservoir,
+# samp_well_name), retyping scalar examples to match wrapper-class ranges, and slots
+# whose inline value disagrees with the example (iwf, root_med_ph, root_med_regl,
+# samp_transport_cond).
 '.slots.basin.description |= "Name of the basin"'
 '.slots.root_med_carbon.description |= "Source of organic carbon in the culture rooting medium"'
 '.slots.root_med_solid.description |= "Specification of the solidifying agent in the culture rooting medium"'
+'.slots.samp_store_temp.description |= "Temperature at which sample was stored"'
+'.slots.api.description |= "API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity)"'
+'.slots.root_med_macronutr.description |= "Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S)"'
+'.slots.root_med_micronutr.description |= "Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo)"'
+'.slots.root_med_suppl.description |= "Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal"'
 
 # Remove upstream `.types` to avoid URI collisions with LinkML built-in/core types
 # during schema generation (for example, duplicate definitions of `date`).
