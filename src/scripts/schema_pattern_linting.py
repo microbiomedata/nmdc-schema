@@ -115,6 +115,13 @@ def main(schema_file, mixs_source_path):
                 if key in seen_patterns:
                     continue
                 if has_unescaped_prefix_dot(pattern_string):
+                    # Record the key only when we actually print it: seen_patterns
+                    # dedups *reported* lines, not every visited pattern. Because
+                    # has_unescaped_prefix_dot() is a pure function of pattern_string,
+                    # a pattern skipped here can never print later, so there is
+                    # nothing to dedup for it. Moving this add() above the if would
+                    # not change the output. (AI code-quality scans flag this
+                    # placement; it is intentional.)
                     seen_patterns.add(key)
                     print(f"slot {slot.name} (in class {class_name}): {pattern_string}")
             if slot.slot_group and slot.slot_group not in all_slot_names:
@@ -131,6 +138,8 @@ def main(schema_file, mixs_source_path):
             if key in seen_patterns:
                 continue
             if has_unescaped_prefix_dot(pattern_string):
+                # Add-on-print is intentional here too; see the note in the
+                # induced-slot loop above.
                 seen_patterns.add(key)
                 print(f"slot {sk}: {pattern_string}")
     print("\n")
