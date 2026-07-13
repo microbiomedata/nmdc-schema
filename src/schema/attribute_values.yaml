@@ -332,33 +332,43 @@ slots:
 
   has_attribute_label:
     range: string
-    description: Human-readable label for the property (e.g., MIxS label, ENVO term label).
+    description: Human-readable label for the property, taken from its MIxS slot, NMDC slot, or ontology term (ENVO, OBI, etc.) label.
     comments:
       - >-
-        This provides a human-friendly name for the asserted property. For example, "bicarbonate ion concentration"
-        or "total phosphorus". The label helps with readability and data discovery.
+        This provides a human-friendly name for the asserted property. The label helps with
+        readability and data discovery.
+    examples:
+      - value: bicarbonate ion concentration
+      - value: total phosphorus
 
   has_attribute_id:
     range: uriorcurie
     description: CURIE or IRI for the property (MIxS slot, NMDC slot, ENVO/OBI term, etc.).
     comments:
       - >-
-        This provides a resolvable identifier for the property being asserted. Examples include MIXS:0000117
-        for total phosphorus, or ENVO:01001357 for bicarbonate ion concentration.
+        This provides a resolvable identifier for the property being asserted.
       - >-
         Prefer using standard ontology terms (ENVO, PATO, OBI, etc.) or MIxS identifiers when available
         to enhance interoperability.
+    examples:
+      - value: MIXS:0000117
+        description: total phosphorus
+      - value: ENVO:01001357
+        description: bicarbonate ion concentration
 
   has_quantity_kind_id:
     range: uriorcurie
-    description: Optional CURIE or IRI for the physical quantity kind (e.g., qudt:QuantityKind).
+    description: Optional CURIE or IRI for the physical quantity kind, which is a qudt:QuantityKind.
     comments:
       - >-
         This slot enables precise semantic description of what physical quantity is being measured,
-        independent of the specific units used. For example, qudt:MassConcentration or qudt:Temperature.
+        independent of the specific units used.
       - >-
         Using quantity kind identifiers from QUDT or similar vocabularies improves data integration
         and enables automated unit conversion.
+    examples:
+      - value: qudt:MassConcentration
+      - value: qudt:Temperature
 
   has_value_term_id:
     range: uriorcurie
@@ -366,8 +376,12 @@ slots:
     comments:
       - >-
         Use this slot when the value of the property is a controlled vocabulary term rather than
-        a numeric or free-text value. For example, ENVO:00002297 for "desert ecosystem" or
-        PATO:0001199 for "dry".
+        a numeric or free-text value.
+    examples:
+      - value: ENVO:00002297
+        description: desert ecosystem
+      - value: PATO:0001199
+        description: dry
 
   has_datetime_value:
     range: string
