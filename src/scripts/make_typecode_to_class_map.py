@@ -99,7 +99,7 @@ def get_collection_names_for_class_name(class_name: str) -> List[str]:
         slot_definition = schema_view.induced_slot(slot_name, class_name=DATABASE_CLASS_NAME)
 
         # If this slot represents a collection, check whether the specified class is within the slot's range.
-        if slot_definition.multivalued and slot_definition.inlined_as_list:
+        if slot_definition.multivalued is True and slot_definition.inlined_as_list is True:
             slot_range = slot_definition.range
             if not slot_range:
                 continue
