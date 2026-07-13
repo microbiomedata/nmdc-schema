@@ -1317,7 +1317,7 @@ slots:
     annotations:
       Preferred_unit: degrees API
       units_alignment_excuse: non_ucum_unit
-    description: 'API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity) (e.g. 31.1   API)'
+    description: 'API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity)'
     title: API gravity
     examples:
       - value: 31.1 API
@@ -1473,7 +1473,7 @@ slots:
       interpolated: true
       partial_match: true
   basin:
-    description: Name of the basin (e.g. Campos)
+    description: Name of the basin
     title: basin name
     examples:
       - value: Campos
@@ -5072,7 +5072,7 @@ slots:
     annotations:
       Expected_value: carbon source name;measurement value
       Preferred_unit: milligram per liter
-    description: Source of organic carbon in the culture rooting medium; e.g. sucrose
+    description: Source of organic carbon in the culture rooting medium
     title: rooting medium carbon
     examples:
       - value: sucrose
@@ -5085,7 +5085,7 @@ slots:
     annotations:
       Expected_value: macronutrient name;measurement value
       Preferred_unit: milligram per liter
-    description: Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170 mg/L)
+    description: Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S)
     title: rooting medium macronutrients
     examples:
       - value: KH2PO4;170  milligram per liter
@@ -5098,7 +5098,7 @@ slots:
     annotations:
       Expected_value: micronutrient name;measurement value
       Preferred_unit: milligram per liter
-    description: Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo); e.g. H3BO3 (6.2 mg/L)
+    description: Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo)
     title: rooting medium micronutrients
     examples:
       - value: H3BO3;6.2  milligram per liter
@@ -5130,7 +5130,7 @@ slots:
     slot_uri: MIXS:0000581
     range: TextValue
   root_med_solid:
-    description: Specification of the solidifying agent in the culture rooting medium; e.g. agar
+    description: Specification of the solidifying agent in the culture rooting medium
     title: rooting medium solidifier
     examples:
       - value: agar
@@ -5140,7 +5140,7 @@ slots:
     annotations:
       Expected_value: supplement name;measurement value
       Preferred_unit: milligram per liter
-    description: Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid (0.5  mg/L)
+    description: Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal
     title: rooting medium organic supplements
     examples:
       - value: nicotinic acid;0.5 milligram per liter
@@ -5354,7 +5354,7 @@ slots:
     annotations:
       Preferred_unit: degree Celsius
       storage_units: Cel
-    description: Temperature at which sample was stored, e.g. -80 degree Celsius
+    description: Temperature at which sample was stored
     title: sample storage temperature
     examples:
       - value: -80 Cel
