@@ -582,7 +582,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity) (e.g. 31.1   API)"
+                    "description": "API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity)"
                 },
                 "arch_struc": {
                     "$ref": "#/$defs/ArchStrucEnum",
@@ -1683,7 +1683,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Name of the hydrocarbon field"
+                    "description": "Name of the hydrocarbon field (e.g. Albacora)"
                 },
                 "filter_method": {
                     "description": "Type of filter used or how the sample was filtered",
@@ -3533,7 +3533,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Name of the reservoir"
+                    "description": "Name of the reservoir (e.g. Carapebus)"
                 },
                 "resins_pc": {
                     "anyOf": [
@@ -3738,7 +3738,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170 mg/L)"
+                    "description": "Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S)"
                 },
                 "root_med_micronutr": {
                     "anyOf": [
@@ -3749,7 +3749,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo); e.g. H3BO3 (6.2 mg/L)"
+                    "description": "Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo)"
                 },
                 "root_med_ph": {
                     "anyOf": [
@@ -3793,7 +3793,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid (0.5  mg/L)"
+                    "description": "Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal"
                 },
                 "salinity": {
                     "anyOf": [
@@ -3982,7 +3982,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Temperature at which sample was stored, e.g. -80 degree Celsius"
+                    "description": "Temperature at which sample was stored"
                 },
                 "samp_subtype": {
                     "$ref": "#/$defs/SampSubtypeEnum",
@@ -4056,7 +4056,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Name of the well where sample was taken"
+                    "description": "Name of the well (e.g. BXA1123) where sample was taken"
                 },
                 "sample_collection_site": {
                     "description": "Free-text description of the place where the sample was collected: the geographic or environmental site or named location.",
@@ -17627,5 +17627,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.21.0.post52.dev0+84caadfc2"
+    "version": "11.21.0.post53.dev0+68e935226"
 }

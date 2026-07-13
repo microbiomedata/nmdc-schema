@@ -1666,7 +1666,7 @@
 <tr>
 <td><a href="../field/">field</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
-<td>Name of the hydrocarbon field</td>
+<td>Name of the hydrocarbon field (e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -2668,7 +2668,7 @@
 <tr>
 <td><a href="../reservoir/">reservoir</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
-<td>Name of the reservoir</td>
+<td>Name of the reservoir (e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -2800,7 +2800,7 @@
 <tr>
 <td><a href="../root_med_macronutr/">root_med_macronutr</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
-<td>Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S);...</td>
+<td>Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -2950,7 +2950,7 @@
 <tr>
 <td><a href="../samp_store_temp/">samp_store_temp</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
-<td>Temperature at which sample was stored, e</td>
+<td>Temperature at which sample was stored</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -2998,7 +2998,7 @@
 <tr>
 <td><a href="../samp_well_name/">samp_well_name</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
-<td>Name of the well where sample was taken</td>
+<td>Name of the well (e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -6259,8 +6259,7 @@ attributes:
         tag: units_alignment_excuse
         value: non_ucum_unit
     description: 'API gravity is a measure of how heavy or light a petroleum liquid
-      is compared to water (source: https://en.wikipedia.org/wiki/API_gravity) (e.g.
-      31.1   API)'
+      is compared to water (source: https://en.wikipedia.org/wiki/API_gravity)'
     title: API gravity
     examples:
     - value: 31.1 API
@@ -8683,10 +8682,8 @@ attributes:
     inlined_as_list: true
   field:
     name: field
-    description: Name of the hydrocarbon field
+    description: Name of the hydrocarbon field (e.g. Albacora)
     title: field name
-    examples:
-    - value: Albacora
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000291
@@ -12425,10 +12422,8 @@ attributes:
     range: RelSampLocEnum
   reservoir:
     name: reservoir
-    description: Name of the reservoir
+    description: Name of the reservoir (e.g. Carapebus)
     title: reservoir name
-    examples:
-    - value: Carapebus
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000303
@@ -12857,7 +12852,7 @@ attributes:
         tag: Preferred_unit
         value: milligram per liter
     description: Measurement of the culture rooting medium macronutrients (N,P, K,
-      Ca, Mg, S); e.g. KH2PO4 (170 mg/L)
+      Ca, Mg, S)
     title: rooting medium macronutrients
     examples:
     - value: KH2PO4;170  milligram per liter
@@ -12881,7 +12876,7 @@ attributes:
         tag: Preferred_unit
         value: milligram per liter
     description: Measurement of the culture rooting medium micronutrients (Fe, Mn,
-      Zn, B, Cu, Mo); e.g. H3BO3 (6.2 mg/L)
+      Zn, B, Cu, Mo)
     title: rooting medium micronutrients
     examples:
     - value: H3BO3;6.2  milligram per liter
@@ -12959,8 +12954,7 @@ attributes:
         tag: Preferred_unit
         value: milligram per liter
     description: Organic supplements of the culture rooting medium, such as vitamins,
-      amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid
-      (0.5  mg/L)
+      amino acids, organic acids, antibiotics activated charcoal
     title: rooting medium organic supplements
     examples:
     - value: nicotinic acid;0.5 milligram per liter
@@ -13420,7 +13414,7 @@ attributes:
       storage_units:
         tag: storage_units
         value: Cel
-    description: Temperature at which sample was stored, e.g. -80 degree Celsius
+    description: Temperature at which sample was stored
     title: sample storage temperature
     examples:
     - value: -80 Cel
@@ -13596,10 +13590,8 @@ attributes:
     range: SampWeatherEnum
   samp_well_name:
     name: samp_well_name
-    description: Name of the well where sample was taken
+    description: Name of the well (e.g. BXA1123) where sample was taken
     title: sample well name
-    examples:
-    - value: BXA1123
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
