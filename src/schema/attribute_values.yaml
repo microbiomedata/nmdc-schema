@@ -332,7 +332,7 @@ slots:
 
   has_attribute_label:
     range: string
-    description: Human-readable label for the property, taken from its MIxS label or ENVO term label.
+    description: Human-readable label for the property, taken from its MIxS slot, NMDC slot, or ontology term (ENVO, OBI, etc.) label.
     comments:
       - >-
         This provides a human-friendly name for the asserted property. The label helps with
