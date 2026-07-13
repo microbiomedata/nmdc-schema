@@ -1,3 +1,10 @@
+> **Superseded.** These notes describe the retired NERSC/SPIN tunnel
+> (`dtn01.nersc.gov` to `mongo-loadbalancer.nmdc.production.svc.spin.nersc.org`),
+> which no longer exists. For current production Mongo access through the
+> `jump-dev.microbiomedata.org` gateway, see
+> https://github.com/microbiomedata/nmdc-lakehouse/blob/main/docs/mongodb-connection.md
+> Kept for historical reference.
+
 1. Learn about the NERSC sshproxy app, which generates 24-hour password-less keys:  https://www.nersc.gov/assets/Uploads/Using-sshproxy.pdf
 2. Download the NERSC's `sshproxy` app with the `scp` command on page 5 of the PDF. One caveat: the documentation recommends getting the app from `cori.nersc.gov`, which has been retired. So use `perlmutter.nersc.gov` or  `dtn01.nersc.gov`.
 3. Create a NERSC ssh key with the `sshproxy` command that was just downloaded. Use the `-u` option unless your NERSC username is identical to your local username. For examples, my local username is "XYZ" but my NERSC username is "xyz", so I enter `.sshproxy -u xyz`
