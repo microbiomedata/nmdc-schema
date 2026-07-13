@@ -332,7 +332,7 @@ slots:
 
   has_attribute_label:
     range: string
-    description: Human-readable label for the property.
+    description: Human-readable label for the property, taken from its MIxS label or ENVO term label.
     comments:
       - >-
         This provides a human-friendly name for the asserted property. The label helps with
@@ -358,7 +358,7 @@ slots:
 
   has_quantity_kind_id:
     range: uriorcurie
-    description: Optional CURIE or IRI for the physical quantity kind.
+    description: Optional CURIE or IRI for the physical quantity kind, which is a qudt:QuantityKind.
     comments:
       - >-
         This slot enables precise semantic description of what physical quantity is being measured,
