@@ -1473,7 +1473,7 @@ slots:
       interpolated: true
       partial_match: true
   basin:
-    description: Name of the basin (e.g. Campos)
+    description: Name of the basin
     title: basin name
     examples:
       - value: Campos
@@ -2684,11 +2684,13 @@ slots:
     range: TextValue
     inlined_as_list: true
   field:
-    description: Name of the hydrocarbon field (e.g. Albacora)
+    description: Name of the hydrocarbon field
     title: field name
     slot_uri: MIXS:0000291
     range: TextValue
     recommended: true
+    examples:
+      - value: Albacora
   filter_type:
     description: A device which removes solid particulates or airborne molecular contaminants
     title: filter type
@@ -4832,11 +4834,13 @@ slots:
     slot_uri: MIXS:0000821
     range: RelSampLocEnum
   reservoir:
-    description: Name of the reservoir (e.g. Carapebus)
+    description: Name of the reservoir
     title: reservoir name
     slot_uri: MIXS:0000303
     range: TextValue
     recommended: true
+    examples:
+      - value: Carapebus
   resins_pc:
     annotations:
       Preferred_unit: percent
@@ -5072,7 +5076,7 @@ slots:
     annotations:
       Expected_value: carbon source name;measurement value
       Preferred_unit: milligram per liter
-    description: Source of organic carbon in the culture rooting medium; e.g. sucrose
+    description: Source of organic carbon in the culture rooting medium
     title: rooting medium carbon
     examples:
       - value: sucrose
@@ -5130,7 +5134,7 @@ slots:
     slot_uri: MIXS:0000581
     range: TextValue
   root_med_solid:
-    description: Specification of the solidifying agent in the culture rooting medium; e.g. agar
+    description: Specification of the solidifying agent in the culture rooting medium
     title: rooting medium solidifier
     examples:
       - value: agar
@@ -5477,13 +5481,15 @@ slots:
     slot_uri: MIXS:0000827
     range: SampWeatherEnum
   samp_well_name:
-    description: Name of the well (e.g. BXA1123) where sample was taken
+    description: Name of the well where sample was taken
     title: sample well name
     keywords:
       - sample
     slot_uri: MIXS:0000296
     range: TextValue
     recommended: true
+    examples:
+      - value: BXA1123
   saturates_pc:
     annotations:
       Preferred_unit: percent
