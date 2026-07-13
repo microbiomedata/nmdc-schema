@@ -9,9 +9,26 @@ databases between schemas.
 
 In this document, I'll refer to those Python classes as "migrators."
 
+## Released migrators are frozen
+
+A migrator that has shipped in a release is a permanent record of how the
+production database was actually transformed. Do not make functional changes to a
+released migrator, even to fix a real bug: re-running it would not recover history,
+and changing it would misrepresent what ran. New transformations belong in new
+migrators (see the "Released migrators" section of the repo `CLAUDE.md`).
+
+When you find bad code in a released migrator, resolve it with a comment that flags
+the discouraged pattern, not a code change. Example: #3259 found a missing comma in
+`partials/migrator_from_10_2_0_to_11_0_0/migrator_from_10_2_0_to_11_0_0_part_07.py`
+that joined two collection names and silently skipped both collections. Production
+was verified unaffected, so the resolution was a comment marking the
+implicit-string-concatenation pattern, with the original line kept as the historical
+record.
+
 ## Table Of Contents
 
 - [Contents](#contents)
+- [Released migrators are frozen](#released-migrators-are-frozen)
 - [Creating a migrator](#creating-a-migrator)
 - [Adding Migration Reporting](#adding-migration-reporting)
 - [Adding Transaction Support](#adding-transaction-support)

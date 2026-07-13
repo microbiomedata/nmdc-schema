@@ -25,8 +25,16 @@ class Migrator(MigratorBase):
             "nom_analysis_activity_set",
             "omics_processing_set",
             "read_based_taxonomy_analysis_activity_set",
+            # DISCOURAGED PATTERN (implicit string concatenation in a list literal):
+            # the next two entries lack a separating comma, so Python joins them into a
+            # single invalid collection name and both collections were silently skipped
+            # when this released migrator ran. Left unchanged on purpose: this file is a
+            # frozen record of a released migration, the skip had no production impact
+            # (verified 2026-07-13, see
+            # https://github.com/microbiomedata/nmdc-schema/issues/3259), and re-running
+            # would not recover history. Do not add the comma here.
             "read_qc_analysis_activity_set"
-            "metaproteomics_analysis_activity_set"   
+            "metaproteomics_analysis_activity_set"
         ]
         
         for collection_name in workflow_execution_collection_names:
