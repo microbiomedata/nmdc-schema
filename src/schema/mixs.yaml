@@ -1080,6 +1080,8 @@ slots:
       partial_match: true
     range: TextValue
     inlined_as_list: true
+    in_subset:
+      - land_use_and_vegetation
   air_PM_concen:
     description: Concentration of substances that remain suspended in the air, and comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can report multiple PM's by entering numeric values preceded by name of PM
     title: air particulate matter concentration
@@ -1179,6 +1181,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   alkalinity_method:
     description: Method used for alkalinity measurement
     title: alkalinity method
@@ -1244,6 +1248,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   amount_light:
     annotations:
       Preferred_unit: lux, lumens per square meter
@@ -1739,6 +1745,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   carb_monoxide:
     annotations:
       Preferred_unit: micromole per liter, parts per million
@@ -2000,6 +2008,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   cool_syst_id:
     description: The cooling system identifier
     title: cooling system identifier
@@ -2020,6 +2030,8 @@ slots:
       - history
     slot_uri: MIXS:0000318
     range: TextValue
+    in_subset:
+      - land_use_and_vegetation
   cult_root_med:
     description: Name or reference for the hydroponic or in vitro culture rooting medium; can be the name of a commonly used medium or reference to a specific medium, e.g. Murashige and Skoog medium. If the medium has not been formally published, use the rooting medium descriptors
     title: culture rooting medium
@@ -2044,6 +2056,8 @@ slots:
       - use
     string_serialization: '[cities|farmstead|industrial areas|roads/railroads|rock|sand|gravel|mudflats|salt flats|badlands|permanent snow or ice|saline seeps|mines/quarries|oil waste areas|small grains|row crops|vegetable crops|horticultural plants (e.g. tulips)|marshlands (grass,sedges,rushes)|tundra (mosses,lichens)|rangeland|pastureland (grasslands used for livestock grazing)|hayland|meadows (grasses,alfalfa,fescue,bromegrass,timothy)|shrub land (e.g. mesquite,sage-brush,creosote bush,shrub oak,eucalyptus)|successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries)|shrub crops (blueberries,nursery ornamentals,filberts)|vine crops (grapes)|conifers (e.g. pine,spruce,fir,cypress)|hardwoods (e.g. oak,hickory,elm,aspen)|intermixed hardwood and conifers|tropical (e.g. mangrove,palms)|rainforest (evergreen forest receiving >406 cm annual rainfall)|swamp (permanent or semi-permanent water body dominated by woody plants)|crop trees (nuts,fruit,christmas trees,nursery trees)]'
     slot_uri: MIXS:0001080
+    in_subset:
+      - land_use_and_vegetation
   cur_vegetation:
     annotations:
       Expected_value: current vegetation type
@@ -2053,6 +2067,8 @@ slots:
       - vegetation
     slot_uri: MIXS:0000312
     range: TextValue
+    in_subset:
+      - land_use_and_vegetation
   cur_vegetation_meth:
     description: Reference or method used in vegetation classification
     title: current vegetation method
@@ -2065,6 +2081,8 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    in_subset:
+      - land_use_and_vegetation
   date_last_rain:
     description: The date of the last time it rained
     title: date last rain
@@ -2193,6 +2211,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   diss_inorg_nitro:
     annotations:
       Preferred_unit: microgram per liter, micromole per liter
@@ -2211,6 +2231,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   diss_inorg_phosp:
     description: Concentration of dissolved inorganic phosphorus in the sample
     title: dissolved inorganic phosphorus
@@ -2226,6 +2248,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
     annotations:
       storage_units: '[ppm]|mg/L|ug/L|umol/L'
   diss_iron:
@@ -2243,6 +2267,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   diss_org_carb:
     annotations:
       Preferred_unit: micromole per liter, milligram per liter
@@ -2261,6 +2287,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   diss_org_nitro:
     description: Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2
     title: dissolved organic nitrogen
@@ -2295,6 +2323,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   diss_oxygen_fluid:
     annotations:
       Preferred_unit: micromole per kilogram, milligram per liter
@@ -2451,6 +2481,8 @@ slots:
       - classification
     slot_uri: MIXS:0001085
     range: DrainageClassEnum
+    in_subset:
+      - land_use_and_vegetation
   drawings:
     description: The buildings architectural drawings; if design is chosen, indicate phase-conceptual, schematic, design development, and construction documents
     title: drawings
@@ -2668,6 +2700,8 @@ slots:
       - classification
     slot_uri: MIXS:0001083
     range: FaoClassEnum
+    in_subset:
+      - land_use_and_vegetation
   fertilizer_regm:
     annotations:
       Expected_value: fertilizer name;fertilizer amount;treatment interval and duration
@@ -2707,6 +2741,8 @@ slots:
       - history
     slot_uri: MIXS:0001086
     range: string
+    in_subset:
+      - land_use_and_vegetation
   fireplace_type:
     description: A firebox with chimney
     title: fireplace type
@@ -2723,6 +2759,8 @@ slots:
       - history
     slot_uri: MIXS:0000319
     range: string
+    in_subset:
+      - land_use_and_vegetation
   floor_age:
     annotations:
       Preferred_unit: years, weeks, days
@@ -3916,6 +3954,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
     examples:
       - value: 1800 [ppb]
   micro_biomass_meth:
@@ -4007,6 +4047,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   nitrite:
     annotations:
       Preferred_unit: micromole per liter, milligram per liter, parts per million
@@ -4023,6 +4065,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   nitro:
     annotations:
       Preferred_unit: micromole per liter
@@ -4416,6 +4460,8 @@ slots:
       - ph
     slot_uri: MIXS:0001001
     range: float
+    in_subset:
+      - biogeochemistry
   ph_meth:
     description: Reference or method used in determining pH
     title: pH method
@@ -4467,6 +4513,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   phosplipid_fatt_acid:
     annotations:
       Expected_value: phospholipid fatty acid name;measurement value
@@ -4648,6 +4696,8 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    in_subset:
+      - land_use_and_vegetation
   previous_land_use:
     annotations:
       Expected_value: land use name;date
@@ -4661,6 +4711,8 @@ slots:
       - use
     string_serialization: '{text};{timestamp}'
     slot_uri: MIXS:0000315
+    in_subset:
+      - land_use_and_vegetation
   primary_prod:
     annotations:
       Preferred_unit: milligram per cubic meter per day, gram per square meter per day
@@ -4723,6 +4775,8 @@ slots:
       - value: summit
     slot_uri: MIXS:0001084
     range: ProfilePositionEnum
+    in_subset:
+      - land_use_and_vegetation
   quad_pos:
     description: The quadrant position of the sampling room within the building
     title: quadrant position
@@ -4784,6 +4838,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   rel_air_humidity:
     annotations:
       Preferred_unit: percentage
@@ -5165,6 +5221,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   salt_regm:
     annotations:
       Preferred_unit: gram, microgram, mole per liter, gram per liter
@@ -5746,6 +5804,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - land_use_and_vegetation
     examples:
       - value: 35 deg
   slope_gradient:
@@ -5762,6 +5822,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - land_use_and_vegetation
   sludge_retent_time:
     annotations:
       Preferred_unit: hours
@@ -5800,6 +5862,8 @@ slots:
       - soil
     slot_uri: MIXS:0001082
     range: SoilHorizonEnum
+    in_subset:
+      - land_use_and_vegetation
   soil_texture_meth:
     description: Reference or method used in determining soil texture
     title: soil texture method
@@ -5823,6 +5887,8 @@ slots:
       - type
     slot_uri: MIXS:0000332
     range: TextValue
+    in_subset:
+      - land_use_and_vegetation
   soil_type_meth:
     description: Reference or method used in determining soil series name or other lower-level classification
     title: soil type method
@@ -6028,6 +6094,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   sulfate_fw:
     annotations:
       Preferred_unit: milligram per liter
@@ -6059,6 +6127,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   surf_air_cont:
     description: Contaminant identified on surface
     title: surface-air contaminant
@@ -6271,6 +6341,8 @@ slots:
     slot_uri: MIXS:0001081
     range: TillageEnum
     multivalued: true
+    in_subset:
+      - land_use_and_vegetation
   tiss_cult_growth_med:
     description: Description of plant tissue culture growth media used
     title: tissue culture growth media
@@ -6381,6 +6453,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   tot_nitro:
     annotations:
       Preferred_unit: microgram per liter, micromole per liter, milligram per liter
@@ -6430,6 +6504,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
     annotations:
       storage_units: mg/L|ug/L|umol/L|%
   tot_org_c_meth:
@@ -6466,6 +6542,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   tot_part_carb:
     annotations:
       Preferred_unit: microgram per liter, micromole per liter
@@ -6502,6 +6580,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   tot_phosphate:
     annotations:
       Preferred_unit: microgram per liter, micromole per liter
@@ -6533,6 +6613,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   train_line:
     description: The subway line name
     title: train line
