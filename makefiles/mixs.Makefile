@@ -73,15 +73,19 @@ assets/other_mixs_yaml_files/CurLandUseEnum.yaml
 		'select(fileIndex==0).enums.CurLandUseEnum = select(fileIndex==1).enums.CurLandUseEnum | select(fileIndex==0)' \
 		$^ | cat > $@
 
-local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
-assets/other_mixs_yaml_files/TargetGeneEnum.yaml
+local/mixs_regen/mixs_subset_modified_inj_TargetGeneOrLocusEnum.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
+assets/other_mixs_yaml_files/TargetGeneOrLocusEnum.yaml
 	yq eval-all \
-		'select(fileIndex==0).enums.TargetGeneEnum = select(fileIndex==1).enums.TargetGeneEnum | select(fileIndex==0)' \
+		'select(fileIndex==0).enums.TargetGeneOrLocusEnum = select(fileIndex==1).enums.TargetGeneOrLocusEnum | select(fileIndex==0)' \
 		$^ | cat > $@
-	yq -i '.slots.target_gene.range = "TargetGeneEnum"' $@
+	yq -i '.slots.target_gene.range = "TargetGeneOrLocusEnum"' $@
+	# MIxS ships a free-text example ("16S rRNA, 18S rRNA, nif, amoA, rpo") that
+	# predates the enum range and includes non-permissible values (#3240).
+	# Replace it with valid permissible values.
+	yq -i '.slots.target_gene.examples = [{"value": "16S_rRNA"}, {"value": "bacterial_rRNA_operon"}, {"value": "eukaryotic_rRNA_operon"}]' $@
 
 
-local/mixs_regen/mixs_subset_modified_inj_env_triad.yaml: local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml \
+local/mixs_regen/mixs_subset_modified_inj_env_triad.yaml: local/mixs_regen/mixs_subset_modified_inj_TargetGeneOrLocusEnum.yaml \
 assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 	# Inject all three environment triad tooltips in a single step
 	yq eval-all 'select(fileIndex==0).slots.env_broad_scale.annotations.tooltip = select(fileIndex==1).slots.env_broad_scale.annotations.tooltip | select(fileIndex==0).slots.env_local_scale.annotations.tooltip = select(fileIndex==1).slots.env_local_scale.annotations.tooltip | select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' $^ | cat > $@
