@@ -740,7 +740,7 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../TargetGeneEnum/">TargetGeneEnum</a></li>
+<li>Range: <a href="../TargetGeneOrLocusEnum/">TargetGeneOrLocusEnum</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
 <table>
@@ -751,7 +751,13 @@
 </thead>
 <tbody>
 <tr>
-<td>16S rRNA, 18S rRNA, nif, amoA, rpo</td>
+<td>16S_rRNA</td>
+</tr>
+<tr>
+<td>bacterial_rRNA_operon</td>
+</tr>
+<tr>
+<td>eukaryotic_rRNA_operon</td>
 </tr>
 </tbody>
 </table>
@@ -782,7 +788,9 @@
 description: Targeted gene or locus name for marker gene studies
 title: target gene
 examples:
-- value: 16S rRNA, 18S rRNA, nif, amoA, rpo
+- value: 16S_rRNA
+- value: bacterial_rRNA_operon
+- value: eukaryotic_rRNA_operon
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:
@@ -790,7 +798,7 @@ keywords:
 slot_uri: MIXS:0000044
 domain_of:
 - LibraryPreparation
-range: TargetGeneEnum
+range: TargetGeneOrLocusEnum
 
 </code></pre>
 

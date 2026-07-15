@@ -9778,7 +9778,7 @@
                     "description": "Lists the strand orientiation for a stranded RNA library preparation."
                 },
                 "target_gene": {
-                    "$ref": "#/$defs/TargetGeneEnum",
+                    "$ref": "#/$defs/TargetGeneOrLocusEnum",
                     "description": "Targeted gene or locus name for marker gene studies"
                 },
                 "target_subfragment": {
@@ -17046,15 +17046,17 @@
             "title": "SurfMaterialEnum",
             "type": "string"
         },
-        "TargetGeneEnum": {
+        "TargetGeneOrLocusEnum": {
             "description": "",
             "enum": [
                 "16S_rRNA",
                 "23S_rRNA",
                 "18S_rRNA",
-                "28S_rRNA"
+                "28S_rRNA",
+                "bacterial_rRNA_operon",
+                "eukaryotic_rRNA_operon"
             ],
-            "title": "TargetGeneEnum",
+            "title": "TargetGeneOrLocusEnum",
             "type": "string"
         },
         "TextValue": {
@@ -17954,6 +17956,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.21.0.post49.dev0+96028b9b0"
+    "version": "11.21.0.post57.dev0+9bfa5334b"
 }
 
