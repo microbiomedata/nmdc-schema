@@ -294,8 +294,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                            'prefix_reference': 'http://www.w3.org/ns/prov#'},
                   'pubmed': {'prefix_prefix': 'pubmed',
                              'prefix_reference': 'https://bioregistry.io/pubmed:'},
-                  'qud': {'prefix_prefix': 'qud',
-                          'prefix_reference': 'http://qudt.org/1.1/schema/qudt#'},
+                  'qudt': {'prefix_prefix': 'qudt',
+                           'prefix_reference': 'http://qudt.org/1.1/schema/qudt#'},
                   'rdf': {'prefix_prefix': 'rdf',
                           'prefix_reference': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
                   'rdfs': {'prefix_prefix': 'rdfs',
@@ -3467,14 +3467,14 @@ class CurLandUseEnum(str, Enum):
     vine_crops = "vine crops"
 
 
-class TargetGeneEnum(str, Enum):
+class TargetGeneOrLocusEnum(str, Enum):
     number_16S_rRNA = "16S_rRNA"
     """
-    the small subunit of the bacterial/archean ribosome
+    the small subunit of the bacterial/archaeal ribosome
     """
     number_23S_rRNA = "23S_rRNA"
     """
-    the large subunit  of the bacterial/archean ribosome
+    the large subunit of the bacterial/archaeal ribosome
     """
     number_18S_rRNA = "18S_rRNA"
     """
@@ -3483,6 +3483,14 @@ class TargetGeneEnum(str, Enum):
     number_28S_rRNA = "28S_rRNA"
     """
     the large subunit of the eukaryotic ribosome
+    """
+    bacterial_rRNA_operon = "bacterial_rRNA_operon"
+    """
+    Bacterial ribosomal RNA operon (rrn): the transcript containing the 16S rRNA gene (SO:0001000), the 16S-23S intergenic spacer, and the 23S rRNA gene (SO:0001001), with the 5S rRNA gene (SO:0000652) typically further downstream. Recorded as the target for near-full-length operon amplicon sequencing; the example primers 8F and 2490R span 16S through 23S.
+    """
+    eukaryotic_rRNA_operon = "eukaryotic_rRNA_operon"
+    """
+    Eukaryotic ribosomal RNA cistron: the transcript containing the 18S rRNA gene (SO:0000407), internal transcribed spacer 1, the 5.8S rRNA gene (SO:0000375), internal transcribed spacer 2, and the 28S rRNA gene (SO:0000653). Recorded as the target for near-full-length operon amplicon sequencing, for example with primers 3NDF and 21R.
     """
 
 
@@ -3801,7 +3809,7 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
                                                  'function.',
                                   'name': 'count'},
                         'gene_function_id': {'name': 'gene_function_id',
-                                             'pattern': '(COG:COG\\d+|PFAM:PF\\d{5}|KEGG.ORTHOLOGY:K\\d+)'},
+                                             'pattern': '^(COG:COG\\d+|PFAM:PF\\d{5}|KEGG\\.ORTHOLOGY:K\\d+)$'},
                         'was_generated_by': {'name': 'was_generated_by',
                                              'pattern': '^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$',
                                              'range': 'AnnotatingWorkflow',
@@ -3861,7 +3869,7 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
 
     @field_validator('gene_function_id')
     def pattern_gene_function_id(cls, v):
-        pattern=re.compile(r"(COG:COG\d+|PFAM:PF\d{5}|KEGG.ORTHOLOGY:K\d+)")
+        pattern=re.compile(r"^(COG:COG\d+|PFAM:PF\d{5}|KEGG\.ORTHOLOGY:K\d+)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -4036,7 +4044,7 @@ class FunctionalAnnotation(ConfiguredBaseModel):
 
     @field_validator('has_function')
     def pattern_has_function(cls, v):
-        pattern=re.compile(r"^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%:\-]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$")
+        pattern=re.compile(r"^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG\.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%:\-]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER\.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -4123,10 +4131,10 @@ class QuantityValue(AttributeValue):
     has_minimum_numeric_value: Optional[Decimal] = Field(default=None, description="""The minimum value part, expressed as number, of the quantity value when the value covers a range.""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue', 'PropertyAssertion'],
          'is_a': 'has_numeric_value'} })
     has_numeric_value: Optional[Decimal] = Field(default=None, description="""The number part of the quantity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue', 'PropertyAssertion'],
-         'mappings': ['qud:quantityValue', 'schema:value']} })
+         'mappings': ['qudt:quantityValue', 'schema:value']} })
     has_unit: UnitEnum = Field(default=..., description="""The unit of the quantity""", json_schema_extra = { "linkml_meta": {'aliases': ['scale'],
          'domain_of': ['QuantityValue', 'PropertyAssertion'],
-         'mappings': ['qud:unit', 'schema:unitCode']} })
+         'mappings': ['qudt:unit', 'schema:unitCode']} })
     has_raw_value: Optional[str] = Field(default=None, description="""Unnormalized atomic string representation, should in syntax {number} {unit}""", json_schema_extra = { "linkml_meta": {'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/QuantityValue","nmdc:QuantityValue"] = Field(default="nmdc:QuantityValue", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['EukEval',
@@ -4578,42 +4586,46 @@ class PropertyAssertion(AttributeValue):
                                      'name': 'has_unit',
                                      'required': False}}})
 
-    has_attribute_label: Optional[str] = Field(default=None, description="""Human-readable label for the property (e.g., MIxS label, ENVO term label).""", json_schema_extra = { "linkml_meta": {'comments': ['This provides a human-friendly name for the asserted property. '
-                      'For example, "bicarbonate ion concentration" or "total '
-                      'phosphorus". The label helps with readability and data '
-                      'discovery.'],
-         'domain_of': ['PropertyAssertion']} })
+    has_attribute_label: Optional[str] = Field(default=None, description="""Human-readable label for the property, taken from its MIxS slot, NMDC slot, or ontology term (ENVO, OBI, etc.) label.""", json_schema_extra = { "linkml_meta": {'comments': ['This provides a human-friendly name for the asserted property. '
+                      'The label helps with readability and data discovery.'],
+         'domain_of': ['PropertyAssertion'],
+         'examples': [{'value': 'bicarbonate ion concentration'},
+                      {'value': 'total phosphorus'}]} })
     has_attribute_id: Optional[str] = Field(default=None, description="""CURIE or IRI for the property (MIxS slot, NMDC slot, ENVO/OBI term, etc.).""", json_schema_extra = { "linkml_meta": {'comments': ['This provides a resolvable identifier for the property being '
-                      'asserted. Examples include MIXS:0000117 for total phosphorus, '
-                      'or ENVO:01001357 for bicarbonate ion concentration.',
+                      'asserted.',
                       'Prefer using standard ontology terms (ENVO, PATO, OBI, etc.) or '
                       'MIxS identifiers when available to enhance interoperability.'],
-         'domain_of': ['PropertyAssertion']} })
-    has_quantity_kind_id: Optional[str] = Field(default=None, description="""Optional CURIE or IRI for the physical quantity kind (e.g., qudt:QuantityKind).""", json_schema_extra = { "linkml_meta": {'comments': ['This slot enables precise semantic description of what physical '
+         'domain_of': ['PropertyAssertion'],
+         'examples': [{'description': 'total phosphorus', 'value': 'MIXS:0000117'},
+                      {'description': 'bicarbonate ion concentration',
+                       'value': 'ENVO:01001357'}]} })
+    has_quantity_kind_id: Optional[str] = Field(default=None, description="""Optional CURIE or IRI for the physical quantity kind, which is a qudt:QuantityKind.""", json_schema_extra = { "linkml_meta": {'comments': ['This slot enables precise semantic description of what physical '
                       'quantity is being measured, independent of the specific units '
-                      'used. For example, qudt:MassConcentration or qudt:Temperature.',
+                      'used.',
                       'Using quantity kind identifiers from QUDT or similar '
                       'vocabularies improves data integration and enables automated '
                       'unit conversion.'],
-         'domain_of': ['PropertyAssertion']} })
+         'domain_of': ['PropertyAssertion'],
+         'examples': [{'value': 'qudt:MassConcentration'},
+                      {'value': 'qudt:Temperature'}]} })
     has_value_term_id: Optional[str] = Field(default=None, description="""CURIE or IRI for categorical values (ENVO, PATO, METPO, etc.).""", json_schema_extra = { "linkml_meta": {'comments': ['Use this slot when the value of the property is a controlled '
-                      'vocabulary term rather than a numeric or free-text value. For '
-                      'example, ENVO:00002297 for "desert ecosystem" or PATO:0001199 '
-                      'for "dry".'],
-         'domain_of': ['PropertyAssertion']} })
+                      'vocabulary term rather than a numeric or free-text value.'],
+         'domain_of': ['PropertyAssertion'],
+         'examples': [{'description': 'desert ecosystem', 'value': 'ENVO:00002297'},
+                      {'description': 'dry', 'value': 'PATO:0001199'}]} })
     has_boolean_value: Optional[bool] = Field(default=None, description="""Links a quantity value to a boolean""", json_schema_extra = { "linkml_meta": {'domain_of': ['PropertyAssertion']} })
     has_datetime_value: Optional[str] = Field(default=None, description="""Date-time value for the property in ISO-8601 format.""", json_schema_extra = { "linkml_meta": {'comments': ['Use this slot for temporal properties. The value should follow '
                       'ISO-8601 format (e.g., "2025-06-12T14:30:00Z").'],
          'domain_of': ['PropertyAssertion']} })
     has_numeric_value: Optional[Decimal] = Field(default=None, description="""Links a quantity value to a number""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue', 'PropertyAssertion'],
-         'mappings': ['qud:quantityValue', 'schema:value']} })
+         'mappings': ['qudt:quantityValue', 'schema:value']} })
     has_minimum_numeric_value: Optional[Decimal] = Field(default=None, description="""The minimum value part, expressed as number, of the quantity value when the value covers a range.""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue', 'PropertyAssertion'],
          'is_a': 'has_numeric_value'} })
     has_maximum_numeric_value: Optional[Decimal] = Field(default=None, description="""The maximum value part, expressed as number, of the quantity value when the value covers a range.""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue', 'PropertyAssertion'],
          'is_a': 'has_numeric_value'} })
     has_unit: Optional[str] = Field(default=None, description="""UCUM unit code (required only when numeric value is present)""", json_schema_extra = { "linkml_meta": {'aliases': ['scale'],
          'domain_of': ['QuantityValue', 'PropertyAssertion'],
-         'mappings': ['qud:unit', 'schema:unitCode']} })
+         'mappings': ['qudt:unit', 'schema:unitCode']} })
     has_raw_value: str = Field(default=..., description="""Original contributor string representation (unparsed)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/PropertyAssertion","nmdc:PropertyAssertion"] = Field(default="nmdc:PropertyAssertion", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['EukEval',
@@ -6300,7 +6312,7 @@ class Doi(ConfiguredBaseModel):
          'exact_mappings': ['OBI:0002110'],
          'examples': [{'description': 'The DOI links to an electronic document.',
                        'value': 'doi:10.46936/10.25585/60000880'}],
-         'narrow_mappings': ['edam.data:1188']} })
+         'related_mappings': ['edam.data:1188']} })
     doi_provider: Optional[DoiProviderEnum] = Field(default=None, description="""The authority, or organization, the DOI is associated with.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['NCIT:C74932'],
          'domain_of': ['Doi'],
          'examples': [{'description': 'The corresponding DOI is associated with '
@@ -6823,7 +6835,7 @@ class Study(NamedThing):
 
     @field_validator('jgi_portal_study_identifiers')
     def pattern_jgi_portal_study_identifiers(cls, v):
-        pattern=re.compile(r"^jgi.proposal:\d+$")
+        pattern=re.compile(r"^jgi\.proposal:\d+$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -6836,7 +6848,7 @@ class Study(NamedThing):
 
     @field_validator('mgnify_project_identifiers')
     def pattern_mgnify_project_identifiers(cls, v):
-        pattern=re.compile(r"^mgnify.proj:[A-Z]+[0-9]+$")
+        pattern=re.compile(r"^mgnify\.proj:[A-Z]+[0-9]+$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -7684,7 +7696,7 @@ class DataObject(InformationObject):
 
     @field_validator('insdc_experiment_identifiers')
     def pattern_insdc_experiment_identifiers(cls, v):
-        pattern=re.compile(r"^insdc.sra:(E|D|S)RX[0-9]{6,}$")
+        pattern=re.compile(r"^insdc\.sra:(E|D|S)RX[0-9]{6,}$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -8216,7 +8228,7 @@ class NucleotideSequencing(DataGeneration):
 
     @field_validator('insdc_experiment_identifiers')
     def pattern_insdc_experiment_identifiers(cls, v):
-        pattern=re.compile(r"^insdc.sra:(E|D|S)RX[0-9]{6,}$")
+        pattern=re.compile(r"^insdc\.sra:(E|D|S)RX[0-9]{6,}$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -17851,9 +17863,9 @@ class Extraction(MaterialProcessing):
          'rank': 1000} })
     input_mass: Optional[QuantityValue] = Field(default=None, title="sample mass used", description="""Total mass of sample used in activity.""", json_schema_extra = { "linkml_meta": {'aliases': ['sample mass', 'sample weight'],
          'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'g'}},
-         'broad_mappings': ['MIXS:0000111'],
          'domain_of': ['Extraction'],
-         'exact_mappings': ['MS:1000004']} })
+         'exact_mappings': ['MS:1000004'],
+         'related_mappings': ['MIXS:0000111']} })
     volume: Optional[QuantityValue] = Field(default=None, description="""The volume of the solvent/solute being used, not the input.""", json_schema_extra = { "linkml_meta": {'annotations': {'storage_units': {'tag': 'storage_units', 'value': 'mL|uL'}},
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['Extraction',
@@ -18074,10 +18086,12 @@ class LibraryPreparation(MaterialProcessing):
          'keywords': ['pcr'],
          'slot_uri': 'MIXS:0000046',
          'structured_pattern': {'interpolated': True,
-                                'syntax': 'FWD:{dna_bases};REV:{dna_bases}'}} })
+                                'syntax': 'FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+'}} })
     stranded_orientation: Optional[StrandedOrientationEnum] = Field(default=None, description="""Lists the strand orientiation for a stranded RNA library preparation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation']} })
-    target_gene: Optional[TargetGeneEnum] = Field(default=None, title="target gene", description="""Targeted gene or locus name for marker gene studies""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation'],
-         'examples': [{'value': '16S rRNA, 18S rRNA, nif, amoA, rpo'}],
+    target_gene: Optional[TargetGeneOrLocusEnum] = Field(default=None, title="target gene", description="""Targeted gene or locus name for marker gene studies""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation'],
+         'examples': [{'value': '16S_rRNA'},
+                      {'value': 'bacterial_rRNA_operon'},
+                      {'value': 'eukaryotic_rRNA_operon'}],
          'keywords': ['target'],
          'slot_uri': 'MIXS:0000044'} })
     target_subfragment: Optional[TextValue] = Field(default=None, title="target subfragment", description="""Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA""", json_schema_extra = { "linkml_meta": {'domain_of': ['LibraryPreparation'],
@@ -18099,7 +18113,7 @@ class LibraryPreparation(MaterialProcessing):
          'slot_uri': 'MIXS:0000048',
          'structured_pattern': {'interpolated': True,
                                 'partial_match': True,
-                                'syntax': '^{dna_bases};{dna_bases}$'}} })
+                                'syntax': '^{primer_adapter_codes}+;{primer_adapter_codes}+$'}} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataGeneration', 'MaterialProcessing'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
@@ -18192,7 +18206,7 @@ class LibraryPreparation(MaterialProcessing):
 
     @field_validator('pcr_primers')
     def pattern_pcr_primers(cls, v):
-        pattern=re.compile(r"FWD:[ACGT];REV:[ACGT]")
+        pattern=re.compile(r"FWD:[ACGTRYSWKMBDHVNI]+;REV:[ACGTRYSWKMBDHVNI]+")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -18205,7 +18219,7 @@ class LibraryPreparation(MaterialProcessing):
 
     @field_validator('adapters')
     def pattern_adapters(cls, v):
-        pattern=re.compile(r"^[ACGT];[ACGT]$")
+        pattern=re.compile(r"^[ACGTRYSWKMBDHVNI]+;[ACGTRYSWKMBDHVNI]+$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -20311,10 +20325,10 @@ class MagBin(ConfiguredBaseModel):
          'exact_mappings': ['TAXRANK:0000006'],
          'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     members_id: Optional[list[str]] = Field(default=None, description="""Names of the contigs that make up a metagenome-assembled genome.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['GENEPIO:0100596'], 'domain_of': ['MagBin']} })
-    num_16s: Optional[int] = Field(default=None, description="""Number of 16s sequences detected, a subunit of prokaryotic ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'broad_mappings': ['OMIT:0013243'], 'domain_of': ['MagBin']} })
-    num_23s: Optional[int] = Field(default=None, description="""Number of 23 seqeuences detected, a subunit of ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'broad_mappings': ['OMIT:0013245'], 'domain_of': ['MagBin']} })
-    num_5s: Optional[int] = Field(default=None, description="""Number of 5s seqeuences detected, a subunit of ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'broad_mappings': ['OMIT:0013248'], 'domain_of': ['MagBin']} })
-    num_t_rna: Optional[int] = Field(default=None, description="""Number of transfer transfer RNAs.""", ge=0, json_schema_extra = { "linkml_meta": {'broad_mappings': ['OMIT:0013250'], 'domain_of': ['MagBin']} })
+    num_16s: Optional[int] = Field(default=None, description="""Number of 16S sequences detected, a subunit of prokaryotic ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['MagBin'], 'related_mappings': ['OMIT:0013243']} })
+    num_23s: Optional[int] = Field(default=None, description="""Number of 23S sequences detected, a subunit of ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['MagBin'], 'related_mappings': ['OMIT:0013245']} })
+    num_5s: Optional[int] = Field(default=None, description="""Number of 5S sequences detected, a subunit of ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['MagBin'], 'related_mappings': ['OMIT:0013248']} })
+    num_t_rna: Optional[int] = Field(default=None, description="""Number of transfer RNAs.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['MagBin'], 'related_mappings': ['OMIT:0013250']} })
     number_of_contig: Optional[int] = Field(default=None, description="""Number of contigs""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['MagBin'], 'exact_mappings': ['GENEPIO:0000093']} })
     total_bases: Optional[int] = Field(default=None, description="""Total number of basepairs.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['MagBin']} })
     type: Literal["https://w3id.org/nmdc/MagBin","nmdc:MagBin"] = Field(default="nmdc:MagBin", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'designates_type': True,
@@ -20679,7 +20693,7 @@ class MetagenomeAssembly(WorkflowExecution):
 
     @field_validator('insdc_assembly_identifiers')
     def pattern_insdc_assembly_identifiers(cls, v):
-        pattern=re.compile(r"^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$")
+        pattern=re.compile(r"^insdc\.sra:[A-Z]+[0-9]+(\.[0-9]+)?$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
@@ -20982,7 +20996,7 @@ class MetatranscriptomeAssembly(WorkflowExecution):
 
     @field_validator('insdc_assembly_identifiers')
     def pattern_insdc_assembly_identifiers(cls, v):
-        pattern=re.compile(r"^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$")
+        pattern=re.compile(r"^insdc\.sra:[A-Z]+[0-9]+(\.[0-9]+)?$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.match(element):
