@@ -75,11 +75,22 @@ class Migrator(MigratorBase):
                 collection_name="omics_processing_set", field_name="id", value=doc["was_informed_by"]
             )
             
+            # AI CODE-QUALITY FINDING (not applied, see
+            # https://github.com/microbiomedata/nmdc-schema/issues/3114): if the
+            # OmicsProcessing document above has no instrument_name field, the dict
+            # access below raises an unguarded KeyError instead of an error that
+            # names the offending document. Left unchanged on purpose: this file is
+            # a frozen record of a released migration, and changing its logic now
+            # would not change what already ran against production.
             # Preprocess instrument strings to ignore hyphens, underscores, and blank spaces
             processed_workflow_instrument_string = self.preprocess_string(doc["used"])
             processed_omics_doc_instrument_string = self.preprocess_string(omics_processing_doc["instrument_name"])
-            
+
             similarity_ratio = SequenceMatcher(None, processed_workflow_instrument_string, processed_omics_doc_instrument_string).ratio()
+            # AI CODE-QUALITY FINDING (not applied, see
+            # https://github.com/microbiomedata/nmdc-schema/issues/3114): 0.8 here is
+            # a magic number; a named constant would be easier to find and adjust.
+            # Left unchanged on purpose, same reasoning as above.
             threshold = 0.8
             if similarity_ratio >= threshold:
                 if similarity_ratio < 1.0:
