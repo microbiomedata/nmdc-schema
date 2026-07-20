@@ -19,7 +19,7 @@ slots:
       true; Slot is no longer needed due to modeling changes. 
       Any information that would be given here can be found from individual samples. 
       Issue: https://github.com/microbiomedata/nmdc-schema/issues/2658"
-    last_updated_on: "2022-05-25T00:00:00"
+    last_updated_on: "2022-05-25T00:00:00Z"
     modified_by: 0009-0008-4013-7737
     description: Date the incubation was harvested/collected/ended. Only relevant
       for incubation samples.
