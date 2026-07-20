@@ -1,1 +1,68 @@
-del(.source_file, .definition_uri, .imported_from, .metamodel_version, .source_file_date, .source_file_size, .generation_date) | del(.. | select(has("from_schema")).from_schema) | del(.. | select(has("owner")).owner) | del(.. | select(has("domain_of")).domain_of) | del(.. | select(has("is_usage_slot")).is_usage_slot) | del(.. | select(has("usage_slot_name")).usage_slot_name) | (.classes[] | select(has("annotations")).annotations) |= map_values(.value) | .prefixes |= map_values(.prefix_reference) | (.settings // {}) |= map_values(.setting_value) | (.slots[] | select(has("annotations")).annotations) |= map_values(.value) | del(.classes.[].name) | del(.classes.[].slot_usage.[].name) | del(.enums.[].name) | del(.enums.[].permissible_values.[].text) | del(.slots[] | select(.domain != "MixsCompliantData") | .domain) | del(.slots.[].name) | del(.subsets.[].name) | del(.slots[] | select(.aliases and .title and (.aliases | length == 1) and .aliases[0] == .title) | .aliases) | del(.classes) | del(.settings)
+# =============================================================================
+# MIxS Dematerialization Pipeline
+# =============================================================================
+# Strips generated/materialized metaslots from the shuttle-imported MIxS
+# subset so the result can serve as source YAML (src/schema/mixs.yaml).
+# Step numbers below match the recipe comments on the src/schema/mixs.yaml
+# target in makefiles/mixs.Makefile.
+# See: https://github.com/microbiomedata/nmdc-schema/issues/1368
+# =============================================================================
+
+# Remove readonly schema-level metaslot assertions (these should only be set
+# by the schema loader)
+del(.source_file, .definition_uri, .imported_from, .metamodel_version, .source_file_date, .source_file_size, .generation_date) |
+
+# Remove readonly element-level metaslot assertions, wherever they occur
+del(.. | select(has("from_schema")).from_schema) |
+del(.. | select(has("owner")).owner) |
+del(.. | select(has("domain_of")).domain_of) |
+del(.. | select(has("is_usage_slot")).is_usage_slot) |
+del(.. | select(has("usage_slot_name")).usage_slot_name) |
+
+# Step 2: Simplify annotations in classes (ExpandedDict -> SimpleDict)
+(.classes[] | select(has("annotations")).annotations) |= map_values(.value) |
+
+# Step 3: Simplify prefixes (ExpandedDict -> SimpleDict)
+.prefixes |= map_values(.prefix_reference) |
+
+# Step 4: Simplify settings (ExpandedDict -> SimpleDict)
+(.settings // {}) |= map_values(.setting_value) |
+
+# Step 5: Simplify annotations in slots (ExpandedDict -> SimpleDict)
+(.slots[] | select(has("annotations")).annotations) |= map_values(.value) |
+
+# Step 6: Remove redundant class names
+del(.classes.[].name) |
+
+# Step 7: Remove redundant slot_usage names
+del(.classes.[].slot_usage.[].name) |
+
+# Step 8: Remove redundant enum names
+del(.enums.[].name) |
+
+# Step 9: Remove redundant permissible_values text
+del(.enums.[].permissible_values.[].text) |
+
+# Step 10: Remove domain (except MixsCompliantData)
+del(.slots[] | select(.domain != "MixsCompliantData") | .domain) |
+
+# Step 11: Remove redundant slot names
+del(.slots.[].name) |
+
+# Step 12: Intentionally skipped (not applicable in this MIxS dematerialization pipeline)
+
+# Step 13: Remove redundant subset names
+del(.subsets.[].name) |
+
+# Additional: Remove redundant aliases when they duplicate title
+del(.slots[] | select(.aliases and .title and (.aliases | length == 1) and .aliases[0] == .title) | .aliases) |
+
+# classes are not needed in src/schema/mixs.yaml; only slots/enums/subsets are
+del(.classes) |
+
+# Settings are deleted here on purpose. The sheets-and-friends do_shuttle tool
+# does not import settings from the source schema, and MIxS structured_pattern
+# syntax uses placeholders like {scientific_float}, {text}, {URL} that need
+# settings for pattern interpolation. Those settings are defined in
+# src/schema/nmdc.yaml instead, so they're available during materialization.
+del(.settings)

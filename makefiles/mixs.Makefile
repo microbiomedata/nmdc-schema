@@ -45,7 +45,7 @@ src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_minus_1.yaml
 	# that require settings for pattern interpolation. These settings are defined in
 	# src/schema/nmdc.yaml instead, so they're available during schema materialization.
 	# See: https://github.com/microbiomedata/nmdc-schema/issues/1368
-	yq eval-file assets/yq-for-mixs-dematerialize.yq $(word 2,$^) > $@
+	yq eval --from-file assets/yq-for-mixs-dematerialize.yq $(word 2,$^) > $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
 local/mixs_regen/mixs_subset.yaml: assets/import_mixs_slots_regardless.tsv
@@ -63,7 +63,7 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 	yq eval '(.. | select(. == "quantity value")) |= "QuantityValue" | (.. | select(tag == "!!str" and . == "string")) |= "TextValue" | (.. | select(tag == "!!str" and . == "text value")) |= "TextValue"' $(word 1, $^) > $@
 
 	# Then apply all slot-specific transformations from config file
-	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; yq -i "$$line" "$@" ; done
+	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
 
 
 local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: local/mixs_regen/mixs_subset_modified.yaml \
