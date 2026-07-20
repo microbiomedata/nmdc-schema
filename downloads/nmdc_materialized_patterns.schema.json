@@ -255,7 +255,7 @@
         },
         "AttributeValue": {
             "additionalProperties": false,
-            "description": "The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value",
+            "description": "The value of an attribute of any NMDC entity. This object can hold both the unnormalized atomic value and the structured value.",
             "properties": {
                 "has_raw_value": {
                     "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
@@ -17956,6 +17956,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.22.0.post4.dev0+f86b58852"
+    "version": "11.22.0.post5.dev0+02245dcf8"
 }
 

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.22.0.post4.dev0+f86b58852
+version: 11.22.0.post5.dev0+02245dcf8
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -19717,8 +19717,8 @@ classes:
     class_uri: nmdc:FunctionalAnnotation
   AttributeValue:
     name: AttributeValue
-    description: The value for any value of a attribute for a sample. This object
-      can hold both the un-normalized atomic value and the structured value
+    description: The value of an attribute of any NMDC entity. This object can hold
+      both the unnormalized atomic value and the structured value.
     from_schema: https://w3id.org/nmdc/nmdc
     abstract: true
     slots:
