@@ -20,7 +20,7 @@ classes:
     abstract: true
     class_uri: nmdc:AttributeValue
     description: >-
-      The value of an attribute of any NMDC entity. This object can hold both the un-normalized atomic value
+      The value of an attribute of any NMDC entity. This object can hold both the unnormalized atomic value
       and the structured value.
     slots:
       - has_raw_value
