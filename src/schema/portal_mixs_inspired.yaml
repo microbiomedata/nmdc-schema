@@ -16,11 +16,17 @@ default_range: string
 slots:
   collection_date_inc:
     deprecated: >-
-      true; Slot is no longer needed due to modeling changes. 
-      Any information that would be given here can be found from individual samples. 
-      Issue: https://github.com/microbiomedata/nmdc-schema/issues/2658"
-    last_updated_on: "2022-05-25T00:00:00Z"
-    modified_by: 0009-0008-4013-7737
+      No longer needed. The harvest date is the harvested sample's own
+      collection_date; the incubation can be recorded as a process (a
+      MaterialProcessing subclass) that links the input and output samples and
+      carries start_date and end_date.
+      See https://github.com/microbiomedata/nmdc-schema/issues/2658 and the example
+      src/data/valid/Database-incubation-as-culturing.yaml.
+    last_updated_on: "2026-07-21T00:00:00Z"
+    modified_by: ORCID:0009-0008-4013-7737 #James Tessmer
+    contributors:
+      - ORCID:0009-0008-4013-7737 #James Tessmer
+      - ORCID:0000-0001-9076-6066 #Mark Miller
     description: Date the incubation was harvested/collected/ended. Only relevant
       for incubation samples.
     title: incubation collection date
