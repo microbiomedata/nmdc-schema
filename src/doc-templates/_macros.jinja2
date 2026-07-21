@@ -1,0 +1,9 @@
+{#- Shared macros for the NMDC doc templates. Not rendered as a page itself. -#}
+{#- shorten(): truncate a description for a table cell without splitting on
+    internal periods. Replaces linkml docgen's `enshorten` filter, which does
+    description.split(".")[0] and so truncates mid-word on abbreviations like
+    "i.e." / "e.g." (issue #3242, upstream linkml/linkml#3732). Collapse newlines
+    and escape pipes for table safety, then cap length at a word boundary. -#}
+{%- macro shorten(text) -%}
+{{ (text or '') | replace('\n', ' ') | replace('|', '\\|') | truncate(80, False, '...') }}
+{%- endmacro -%}
