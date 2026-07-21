@@ -1,6 +1,6 @@
 # Modeling an incubation as a class, using Culturing, without the *_inc slots.
 #
-# Companion to src/schema/notes/incubation-modeling.md and the deprecation of
+# Companion to src/docs/collection_date_inc-deprecation.md and the deprecation of
 # collection_date_inc (https://github.com/microbiomedata/nmdc-schema/issues/2658).
 #
 # Culturing (is_a MaterialProcessing) grows an organism under controlled
