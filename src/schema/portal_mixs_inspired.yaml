@@ -21,7 +21,10 @@ slots:
       MaterialProcessing whose end_date records when it was harvested.
       See https://github.com/microbiomedata/nmdc-schema/issues/2658 and src/schema/notes/incubation-modeling.md.
     last_updated_on: "2026-07-21T00:00:00Z"
-    modified_by: ORCID:0000-0001-9076-6066 #Mark Miller
+    modified_by: ORCID:0009-0008-4013-7737 #James Tessmer
+    contributors:
+      - ORCID:0009-0008-4013-7737 #James Tessmer
+      - ORCID:0000-0001-9076-6066 #Mark Miller
     description: Date the incubation was harvested/collected/ended. Only relevant
       for incubation samples.
     title: incubation collection date

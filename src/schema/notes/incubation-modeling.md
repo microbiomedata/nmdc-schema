@@ -44,22 +44,29 @@ each harvested jar is a separate sample output; the incubation itself is a
 ```yaml
 # 1. the field sample
 biosample_set:
-  - id: nmdc:bsm-11-field00
-    collection_date: "2021-04-15"      # the field collection event
-    # ...env_triad, etc.
+  - id: nmdc:bsm-11-fieldsoil
+    collection_date: "2021-04-15"          # the field collection event
+    # env_triad, etc.
 
-# 2. the incubation, as a MaterialProcessing instance
+# 2. the incubation, modeled as a MaterialProcessing
+#    The id prefix is a placeholder: no incubation subclass exists yet
+#    (open question 1), so there is no assigned id pattern.
 material_processing_set:
-  - id: nmdc:???pro-11-jar01           # see open question 1
-    has_input:  [nmdc:bsm-11-field00]
-    has_output: [nmdc:procsm-11-jar01] # see open question 2
-    start_date: "2021-04-16"           # incubation started (PlannedProcess slot)
-    end_date:   "2021-04-17"           # jar harvested (PlannedProcess slot)
-    # duration: could also record elapsed incubation time
+  - id: nmdc:INCUBATION-PROCESS-ID
+    has_input:  [nmdc:bsm-11-fieldsoil]
+    has_output: [nmdc:procsm-11-jar01]     # a ProcessedSample (open question 2)
+    start_date: "2021-04-16"               # incubation started (PlannedProcess slot)
+    end_date:   "2021-04-17"               # jar harvested (PlannedProcess slot)
+    # duration could also record elapsed incubation time
 
-# 3. the harvested incubation sample
-#    (Biosample if it needs collection_date; see open question 2)
+# 3. the harvested incubation sample, one per jar
+#    Shown as a Biosample so it can carry collection_date (open question 2).
+  - id: nmdc:bsm-11-jar01
+    collection_date: "2021-04-17"          # the jar's harvest date
 ```
+
+The last block is under `biosample_set`, not `material_processing_set`. It is
+placed here in sequence for readability.
 
 ## How each `*_inc` slot would map
 
