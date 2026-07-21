@@ -1,0 +1,52 @@
+# Modeling an incubation as a class, using Culturing, without the *_inc slots.
+#
+# Companion to src/schema/notes/incubation-modeling.md and the deprecation of
+# collection_date_inc (https://github.com/microbiomedata/nmdc-schema/issues/2658).
+#
+# Culturing (is_a MaterialProcessing) grows an organism under controlled
+# conditions. Its has_input and has_output are both OrganismSample, and
+# OrganismSample carries collection_date. So the incubation is a first-class
+# process, and the harvested culture's collection date is simply the output
+# sample's own collection_date. No *_inc slots are needed.
+#
+# Mapping from the deprecated slot (and its siblings):
+#   collection_date_inc (harvest date) -> the output OrganismSample collection_date
+#   start_date_inc (incubation start)  -> Culturing.start_date
+#   incubation end / harvest           -> Culturing.end_date
+#   collection_time_inc / start_time_inc (time of day) -> the time component of the
+#     relevant TimestampValue raw value (see the modeling note).
+
+organism_sample_set:
+
+  # The starting organism sample: input to the culture. Its collection_date is
+  # when the source organism was collected.
+  - id: nmdc:osm-11-inoc0001
+    type: nmdc:OrganismSample
+    associated_studies:
+      - nmdc:sty-11-incub00
+    collection_date:
+      type: nmdc:TimestampValue
+      has_raw_value: "2021-04-15"
+
+  # The cultured (incubated) output. Its collection_date is the harvest date.
+  # This is what collection_date_inc used to record.
+  - id: nmdc:osm-11-cult0001
+    type: nmdc:OrganismSample
+    associated_studies:
+      - nmdc:sty-11-incub00
+    collection_date:
+      type: nmdc:TimestampValue
+      has_raw_value: "2021-04-18"
+
+material_processing_set:
+
+  # The incubation itself, as a Culturing process. start_date is the incubation
+  # start (was start_date_inc); end_date is when it was harvested.
+  - id: nmdc:cultp-11-inc00001
+    type: nmdc:Culturing
+    has_input:
+      - nmdc:osm-11-inoc0001
+    has_output:
+      - nmdc:osm-11-cult0001
+    start_date: "2021-04-16"
+    end_date: "2021-04-18"

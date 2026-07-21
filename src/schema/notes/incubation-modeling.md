@@ -9,25 +9,25 @@ There are three sibling slots in the same family: `collection_time_inc`,
 `start_date_inc`, and `start_time_inc`. Only `collection_date_inc` has an agreed
 deprecation (issue 2658). The mapping below covers all four so the full picture
 is visible, but the other three are **not** deprecated here; whether they should
-follow is a separate proposal for Montana's input, not a decision made in this PR.
+follow is a separate proposal (issue
+https://github.com/microbiomedata/nmdc-schema/issues/3289).
 
 ## The scenario (from issue 2658)
 
-50 g of soil is collected from the field on 2021-04-15. 10 g is weighed into each
-of 5 jars, incubated, and harvested one jar per day. The 5 harvested samples share
-one field collection date but differ in when the incubation started and ended.
+Material is collected from the field on 2021-04-15, then incubated and harvested
+later. The harvested sample shares one field collection date but differs in when
+the incubation started and ended.
 
 ## Old modeling (what the `*_inc` slots did)
 
-One `Biosample` carried the field `collection_date` plus four incubation-specific
-slots for the incubation's start and harvest date/time:
+One sample carried the field `collection_date` plus four incubation-specific slots
+for the incubation's start and harvest date and time:
 
 ```yaml
-# one Biosample per jar, all pointing back to the same field event
 collection_date: "2021-04-15"        # field collection
 start_date_inc:  "2021-04-16"        # incubation started
 start_time_inc:  "09:00"
-collection_date_inc: "2021-04-17"    # jar harvested
+collection_date_inc: "2021-04-17"    # harvested
 collection_time_inc: "14:30"
 ```
 
@@ -35,74 +35,67 @@ The incubation start and the harvest are packed onto the sample as parallel
 "shadow" date fields. That conflates a process (the incubation) with a material
 entity (the sample).
 
-## Proposed modeling (no `*_inc` slots)
+## Proposed modeling (no `*_inc` slots): `Culturing`
 
-Model the incubation as a first-class process. A field `Biosample` is the input;
-each harvested jar is a separate sample output; the incubation itself is a
-`MaterialProcessing` that carries the start and end.
+Model the incubation as a first-class process using `Culturing`
+(`is_a MaterialProcessing`). Its `has_input` and `has_output` are both
+`OrganismSample`, and `OrganismSample` carries `collection_date`. So the
+incubation is a process with a start and an end, and the harvested culture's date
+is simply the output sample's own `collection_date`.
+
+A runnable, schema-valid version is in
+`src/data/valid/Database-incubation-as-culturing.yaml`.
 
 ```yaml
-# 1. the field sample
-biosample_set:
-  - id: nmdc:bsm-11-fieldsoil
-    collection_date: "2021-04-15"          # the field collection event
-    # env_triad, etc.
+organism_sample_set:
+  - id: nmdc:osm-11-inoc0001               # the input organism sample
+    type: nmdc:OrganismSample
+    associated_studies: [nmdc:sty-11-incub00]
+    collection_date:
+      type: nmdc:TimestampValue
+      has_raw_value: "2021-04-15"
+  - id: nmdc:osm-11-cult0001               # the cultured (incubated) output
+    type: nmdc:OrganismSample
+    associated_studies: [nmdc:sty-11-incub00]
+    collection_date:
+      type: nmdc:TimestampValue
+      has_raw_value: "2021-04-18"          # the harvest date (was collection_date_inc)
 
-# 2. the incubation, modeled as a MaterialProcessing
-#    The id prefix is a placeholder: no incubation subclass exists yet
-#    (open question 1), so there is no assigned id pattern.
 material_processing_set:
-  - id: nmdc:INCUBATION-PROCESS-ID
-    has_input:  [nmdc:bsm-11-fieldsoil]
-    has_output: [nmdc:procsm-11-jar01]     # a ProcessedSample (open question 2)
-    start_date: "2021-04-16"               # incubation started (PlannedProcess slot)
-    end_date:   "2021-04-17"               # jar harvested (PlannedProcess slot)
-    # duration could also record elapsed incubation time
-
-# 3. the harvested incubation sample, one per jar
-#    Shown as a Biosample so it can carry collection_date (open question 2).
-  - id: nmdc:bsm-11-jar01
-    collection_date: "2021-04-17"          # the jar's harvest date
+  - id: nmdc:cultp-11-inc00001
+    type: nmdc:Culturing
+    has_input:  [nmdc:osm-11-inoc0001]
+    has_output: [nmdc:osm-11-cult0001]
+    start_date: "2021-04-16"               # incubation start (was start_date_inc)
+    end_date:   "2021-04-18"               # harvest
 ```
 
-The last block is under `biosample_set`, not `material_processing_set`. It is
-placed here in sequence for readability.
-
-## How each `*_inc` slot would map
-
-`collection_date_inc` is deprecated here. The other three rows show where their
-data would go under the same model, to inform the separate proposal about them.
+## How each `*_inc` slot maps under the `Culturing` model
 
 | `*_inc` slot | Replacement | Owning element |
 | --- | --- | --- |
-| `collection_date_inc` (harvest date) | `collection_date` of the harvested sample, and/or `end_date` of the incubation process | sample / process |
-| `collection_time_inc` (harvest time) | `collection_time` of the harvested sample | sample |
-| `start_date_inc` (start date) | `start_date` of the incubation `MaterialProcessing` | process |
-| `start_time_inc` (start time) | no clean home yet (see open question 3) | process |
+| `collection_date_inc` (harvest date) | `collection_date` of the output `OrganismSample`, and/or `Culturing.end_date` | sample / process |
+| `collection_time_inc` (harvest time) | the time component of that `collection_date` `TimestampValue` | sample |
+| `start_date_inc` (start date) | `Culturing.start_date` | process |
+| `start_time_inc` (start time) | the time component of the start (see open question 2) | process |
 
-All four are **empty in production**: 0 of 27,352 `biosample_set` documents use any
-of them (verified against prod Mongo 2026-07-21), so deprecation carries no
-migration risk.
+`collection_date_inc` is deprecated here (issue 2658). The other three rows are
+shown to inform the separate proposal (issue 3289); they are not deprecated in
+this PR.
 
-## Open questions for review (James, Montana)
+All four are empty in production: 0 of 27,352 `biosample_set` documents use any of
+them (verified against prod Mongo 2026-07-21), so deprecation carries no migration
+risk.
 
-1. **There is no incubation subclass of `MaterialProcessing` yet.** `MaterialProcessing`
-   is abstract; the concrete subclasses today are `SubSamplingProcess`,
-   `MixingProcess`, `FiltrationProcess`, `StorageProcess`,
-   `ChromatographicSeparationProcess`, `DissolvingProcess`,
-   `ChemicalConversionProcess`, and `Extraction`. An incubation is none of these.
-   Do we add an `IncubationProcess` (or `CulturingProcess`) subclass?
+## Open questions
 
-2. **`MaterialProcessing.has_output` is a `ProcessedSample`, which has no
-   `collection_date`** (only `Biosample` does). So "the incubation sample carries
-   its own `collection_date`" only works if the harvested sample is a `Biosample`,
-   which is not the declared process output type. We need to decide one of:
-   - model the harvested incubation sample as a `Biosample` (keeps `collection_date`,
-     but it is then not the `has_output` `ProcessedSample` of the process), or
-   - add `collection_date` / `collection_time` to `ProcessedSample` (or to the
-     shared `Sample` parent).
+1. **`Culturing` inputs and outputs are `OrganismSample`s** (single-organism
+   intent). The scenario in issue 2658 is a soil incubation, and soil is a
+   `Biosample` (a community), not an `OrganismSample`. There is no community-in,
+   community-out process class analogous to `Culturing`. Decide whether soil-style
+   incubations reuse a process class or keep describing the treatment on the
+   `Biosample`.
 
-3. **`PlannedProcess` has `start_date` and `end_date` but no time-of-day slot.**
-   The date component of an incubation's start/end has a home (`start_date` /
-   `end_date`); the `*_time_inc` minute-level precision does not. Do we need
-   process-level start/end times, or is date precision enough for incubations?
+2. **`Culturing.start_date` and `end_date` are date strings, with no time of day.**
+   `collection_date` (a `TimestampValue`) can hold a time, but the process start and
+   end cannot. Decide whether minute-level incubation timing needs a home.
