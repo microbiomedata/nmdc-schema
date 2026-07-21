@@ -43,32 +43,10 @@ Model the incubation as a first-class process using `Culturing`
 incubation is a process with a start and an end, and the harvested culture's date
 is simply the output sample's own `collection_date`.
 
-A runnable, schema-valid version is in
-`src/data/valid/Database-incubation-as-culturing.yaml`.
-
-```yaml
-organism_sample_set:
-  - id: nmdc:osm-11-inoc0001               # the input organism sample
-    type: nmdc:OrganismSample
-    associated_studies: [nmdc:sty-11-incub00]
-    collection_date:
-      type: nmdc:TimestampValue
-      has_raw_value: "2021-04-15"
-  - id: nmdc:osm-11-cult0001               # the cultured (incubated) output
-    type: nmdc:OrganismSample
-    associated_studies: [nmdc:sty-11-incub00]
-    collection_date:
-      type: nmdc:TimestampValue
-      has_raw_value: "2021-04-18"          # the harvest date (was collection_date_inc)
-
-material_processing_set:
-  - id: nmdc:cultp-11-inc00001
-    type: nmdc:Culturing
-    has_input:  [nmdc:osm-11-inoc0001]
-    has_output: [nmdc:osm-11-cult0001]
-    start_date: "2021-04-16"               # incubation start (was start_date_inc)
-    end_date:   "2021-04-18"               # harvest
-```
+The full, schema-valid instance data is in
+`src/data/valid/Database-incubation-as-culturing.yaml`: two `OrganismSample`s (the
+input organism and the cultured output, each with its own `collection_date`)
+linked by a `Culturing` process that carries `start_date` and `end_date`.
 
 ## How each `*_inc` slot maps under the `Culturing` model
 
