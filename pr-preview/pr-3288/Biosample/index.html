@@ -16621,10 +16621,10 @@ attributes:
     description: Date the incubation was harvested/collected/ended. Only relevant
       for incubation samples.
     title: incubation collection date
-    deprecated: No longer needed. A harvested incubation sample is modeled as its
-      own sample carrying its own collection_date, and the incubation itself is a
-      MaterialProcessing whose end_date records when it was harvested. See https://github.com/microbiomedata/nmdc-schema/issues/2658
-      and src/docs/collection_date_inc-deprecation.md.
+    deprecated: No longer needed. The harvest date is the harvested sample's own collection_date;
+      the incubation can be recorded as a MaterialProcessing that links the input
+      and output samples and carries start_date and end_date. See https://github.com/microbiomedata/nmdc-schema/issues/2658
+      and the example src/data/valid/Database-incubation-as-culturing.yaml.
     notes:
     - MIxS collection_date accepts (truncated) ISO8601. DH taking arbitrary precision
       date only
