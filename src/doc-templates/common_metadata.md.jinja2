@@ -11,7 +11,7 @@
 | Example | Description |
 | --- | --- |
 {% for x in element.examples -%}
-| {% if x.value is not none %}{{ x.value }}{% elif x.object is not none %}{% if x.object is iterable and x.object is not string %}{% set ns = namespace(sep='') %}{% for k in x.object %}{% if k|string != '_if_missing' %}{{ ns.sep }}{{ k }}: {{ x.object[k] }}{% set ns.sep = '; ' %}{% endif %}{% endfor %}{% else %}{{ x.object }}{% endif %}{% endif %} | {% if x.description is not none %}{{ x.description }}{% endif %} |
+| {% if x.value is not none %}{{ x.value }}{% elif x.object is not none %}{% if x.object is iterable and x.object is not string and x.object|string|first != '[' %}{% set ns = namespace(sep='') %}{% for k in x.object %}{% if k|string != '_if_missing' %}{{ ns.sep }}{{ k }}: {{ x.object[k] }}{% set ns.sep = '; ' %}{% endif %}{% endfor %}{% else %}{{ x.object }}{% endif %}{% endif %} | {% if x.description is not none %}{{ x.description }}{% endif %} |
 {% endfor %}
 {% endif -%}
 
