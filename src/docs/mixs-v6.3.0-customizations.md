@@ -231,6 +231,63 @@ Some production data doesn't match GSC patterns. We handle this by using TextVal
 | `ph_meth` | Data is "measured in 1:1 w/vol slurry (10.2136/...)" | Delete `structured_pattern` |
 | `water_cont_soil_meth` | Data is "volumetric soil water content; ..." | Delete `structured_pattern` |
 
+## Example Values
+
+Every MIxS slot whose range is a wrapper class (`QuantityValue`, `TextValue`, `TimestampValue`, `ControlledTermValue`, `ControlledIdentifiedTermValue`, `GeolocationValue`) carries its example in the LinkML `examples` metaslot as a structured `object:` that matches the range, not a scalar string. A `QuantityValue` example is `{type, has_numeric_value, has_unit}`; a `ControlledIdentifiedTermValue` example is `{type, has_raw_value, term: {id, type}}`; and so on. `QuantityValue.has_unit` is required and must be a permissible value of `UnitEnum`. Every objectified example is validated against the materialized schema.
+
+Two conventions follow from that:
+
+- A dimensionless quantity (a ratio, fraction, or count) uses `has_unit: "1"` (for example `carb_nitro_ratio`, `occup_samp`, `iwf`).
+- A quantity whose unit has no UCUM symbol cannot be given a valid example, because `has_unit` is required and only `UnitEnum` values are allowed. Such a slot gets no example and is flagged with `units_alignment_excuse` (see below).
+
+### Example units corrected against production data
+
+Cross-checking `nmdc.biosample_set` found 18 slots whose upstream MIxS example unit does not occur in real data. Each example was replaced with a production-grounded value and unit.
+
+| Slot | Upstream example | Production unit | Corrected example |
+|------|------------------|-----------------|-------------------|
+| `calcium` | 0.2 umol/L | mg/kg | 2774.35 mg/kg |
+| `carb_nitro_ratio` | 0.417361111 | 1 | 20.6 1 |
+| `chlorophyll` | 5 mg/m3 | ug/L | 13 ug/L |
+| `diss_inorg_carb` | 2059 umol/kg | mg/L | 38.18 mg/L |
+| `diss_inorg_nitro` | 761 umol/L | mg/L | 0.404 mg/L |
+| `diss_org_carb` | 197 umol/L | ug/L | 3.68 ug/L |
+| `fluor` | 2.5 V | mg/m3 | 0.9563 mg/m3 |
+| `host_height` | 0.1 m | cm | 56 cm |
+| `humidity` | 25 g/m3 | % | 56.54 % |
+| `magnesium` | 52.8 umol/kg | mg/kg | 578.148 mg/kg |
+| `nitro` | 4.2 umol/L | % | 0.18 % |
+| `org_carb` | 0.015 mg/L | % | 1.36 % |
+| `part_org_nitro` | 0.3 umol/L | mg/L | 0.25 mg/L |
+| `samp_size` | 5 L | mL | 3 mL |
+| `sulfate` | 5 umol/L | mg/L | 16.61 mg/L |
+| `tot_diss_nitro` | 40 ug/L | umol/L | 8.856 umol/L |
+| `tot_nitro` | 50 umol/L | % | 0.598 % |
+| `wind_speed` | 21 km/h | m/s | 2.92 m/s |
+
+### Units that are inconsistent or not UCUM-expressible
+
+| Slot | Issue | Handling |
+|------|-------|----------|
+| `api` | API gravity has no UCUM unit, and `has_unit` is required | example removed; `units_alignment_excuse: non_ucum_unit` |
+| `rel_humidity_out` | upstream unit "per kilogram of air" describes specific humidity, not relative humidity | example uses `%`; `units_alignment_excuse: mixs_inconsistent` |
+| `specific_humidity` | upstream unit "per kilogram of air" | `g/kg` |
+| `iwf`, `rel_air_humidity`, `surf_humidity` | example value is a fraction while `storage_units` is `%` (fraction vs percent ambiguity) | dimensionless `has_unit: "1"` |
+| `microbial_biomass` | compound unit `pmol/g dry soil` | `units_alignment_excuse: complex_unit` |
+
+### Multi-unit slots
+
+Several slots legitimately carry more than one unit in production data. The example uses one valid `UnitEnum` unit; the others remain valid for submitted data.
+
+| Slot | Units observed in production |
+|------|------------------------------|
+| `ammonium`, `diss_oxygen`, `nitrate` variants | mg/L and umol/L |
+| `calcium`, `magnesium`, `potassium` | mg/L and mg/kg |
+| `conduc` | mS/cm and uS/cm |
+| `samp_size` | g and mL |
+| `tot_phosp` | [ppm], mg/L, and umol/L |
+| `host_age` | a and d |
+
 ## Maintaining mixs.yaml (how to change a MIxS slot)
 
 `src/schema/mixs.yaml` is generated. Do not hand-edit it: the next `make src/schema/mixs.yaml` regenerates it from the MIxS source and your edit is lost. The `CONTRIBUTING.md` policy table records this.
