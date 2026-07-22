@@ -1012,7 +1012,7 @@
 # - 18 slots: production-grounded value+unit (upstream example unit contradicted real data).
 # - dimensionless fractions/ratios (iwf, rel_air_humidity, surf_humidity, occup_samp, carb_nitro_ratio) use has_unit '1'.
 # - api: API gravity has no UCUM unit and QuantityValue requires has_unit, so it gets no example (non_ucum_unit).
-# - rel_humidity_out uses % (relative humidity); upstream 'per kilogram of air' is wrong. See docs/mixs-adaptations.md.
+# - rel_humidity_out uses % (relative humidity); upstream 'per kilogram of air' is wrong. See docs/mixs-v6.3.0-customizations.md.
 '.slots.calcium.examples = [{"object": {"type": "nmdc:QuantityValue", "has_numeric_value": 2774.35, "has_unit": "mg/kg"}}]'
 '.slots.carb_nitro_ratio.examples = [{"object": {"type": "nmdc:QuantityValue", "has_numeric_value": 20.6, "has_unit": "1"}}]'
 '.slots.chlorophyll.examples = [{"object": {"type": "nmdc:QuantityValue", "has_numeric_value": 13, "has_unit": "ug/L"}}]'
