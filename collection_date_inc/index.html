@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: incubation collection date (collection_date_inc) - NMDC Schema Documentation</title>
+        <title>Slot: incubation collection date (collection_date_inc) (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-incubation-collection-date-collection_date_inc" class="md-skip">
+        <a href="#slot-incubation-collection-date-collection_date_inc-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: incubation collection date (collection_date_inc)
+              Slot: incubation collection date (collection_date_inc) (DEPRECATED)
             
           </span>
         </div>
@@ -738,7 +738,7 @@
   
 
 
-<h1 id="slot-incubation-collection-date-collection_date_inc">Slot: incubation collection date (collection_date_inc)</h1>
+<h1 id="slot-incubation-collection-date-collection_date_inc-deprecated">Slot: incubation collection date (collection_date_inc)  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p><em>Date the incubation was harvested/collected/ended. Only relevant for incubation samples.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/collection_date_inc">nmdc:collection_date_inc</a></p>
@@ -823,6 +823,10 @@
 description: Date the incubation was harvested/collected/ended. Only relevant for
   incubation samples.
 title: incubation collection date
+deprecated: No longer needed. The harvest date is the harvested sample's own collection_date;
+  the incubation can be recorded as a process (a MaterialProcessing subclass) that
+  links the input and output samples and carries start_date and end_date. See https://github.com/microbiomedata/nmdc-schema/issues/2658
+  and the example src/data/valid/Database-incubation-as-culturing.yaml.
 notes:
 - MIxS collection_date accepts (truncated) ISO8601. DH taking arbitrary precision
   date only
@@ -836,6 +840,11 @@ examples:
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - MIXS:0000011
+contributors:
+- ORCID:0009-0008-4013-7737
+- ORCID:0000-0001-9076-6066
+last_updated_on: '2026-07-21T00:00:00+00:00'
+modified_by: ORCID:0009-0008-4013-7737
 rank: 2
 string_serialization: '{date, arbitrary precision}'
 domain_of:
