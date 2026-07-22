@@ -62,7 +62,11 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 	yq eval '(.. | select(. == "quantity value")) |= "QuantityValue" | (.. | select(tag == "!!str" and . == "string")) |= "TextValue" | (.. | select(tag == "!!str" and . == "text value")) |= "TextValue"' $(word 1, $^) > $@
 
 	# Then apply all slot-specific transformations from config file
-	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
+	# `|| exit 1` so a customization line that fails under `eval` (e.g. an
+	# interior apostrophe closing the single-quote wrapper) aborts the build
+	# loudly instead of being silently skipped (the pipeline's exit status is
+	# the last iteration's, so without this a mid-file failure is swallowed).
+	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ || exit 1 ; done
 
 
 local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: local/mixs_regen/mixs_subset_modified.yaml \
