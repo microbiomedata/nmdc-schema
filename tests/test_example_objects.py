@@ -108,3 +108,43 @@ def test_object_examples_are_valid(schema_view, object_validator):
             failures.append(f"{location}: invalid against {range_class}: {result.message}")
 
     assert not failures, "Object example problems:\n" + "\n".join(sorted(failures))
+
+
+def test_example_form_matches_range(schema_view):
+    """Each example must use the form its slot's range demands: ``object:`` XOR ``value:``.
+
+    A slot whose range is an inlined class without an identifier is a *wrapper* slot: its
+    instances are structured objects (``QuantityValue``, ``TextValue``, ``PropertyAssertion``,
+    ...), so an example must be given as an ``object:``. Every other slot (scalar type, enum, or a
+    class referenced by identifier) carries a plain scalar, so an example must be a ``value:``.
+    ``SchemaView.is_inlined`` is exactly this predicate: it is true only for inlined,
+    identifier-less class ranges. Slots without examples are unconstrained; examples are optional.
+
+    This enforces the dichotomy with no tolerated exceptions: every wrapper example is an object
+    and every non-wrapper example is a scalar.
+    """
+    all_classes = set(schema_view.all_classes())
+    failures = []
+
+    for class_name in sorted(all_classes):
+        for slot in schema_view.class_induced_slots(class_name):
+            examples = slot.examples or []
+            if not examples:
+                continue
+            is_wrapper = slot.range in all_classes and schema_view.is_inlined(slot)
+            for example in examples:
+                has_object = getattr(example, "object", None) is not None
+                has_value = getattr(example, "value", None) is not None
+                location = f"{class_name}.{slot.name}"
+                if is_wrapper and not has_object:
+                    failures.append(
+                        f"{location}: range '{slot.range}' is an inlined wrapper class, so the "
+                        f"example must use 'object:', not 'value:'"
+                    )
+                elif not is_wrapper and not has_value:
+                    failures.append(
+                        f"{location}: range '{slot.range}' is scalar/enum/referenced, so the "
+                        f"example must use 'value:', not 'object:'"
+                    )
+
+    assert not failures, "Example form mismatches:\n" + "\n".join(sorted(set(failures)))
