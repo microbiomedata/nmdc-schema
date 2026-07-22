@@ -5478,7 +5478,7 @@ slots:
     annotations:
       Expected_value: supplement name;measurement value
       Preferred_unit: milligram per liter
-    description: Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal
+    description: Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics, activated charcoal
     title: rooting medium organic supplements
     examples:
       - object:

@@ -590,7 +590,7 @@
 '.slots.api.description |= "API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity)"'
 '.slots.root_med_macronutr.description |= "Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S)"'
 '.slots.root_med_micronutr.description |= "Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo)"'
-'.slots.root_med_suppl.description |= "Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal"'
+'.slots.root_med_suppl.description |= "Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics, activated charcoal"'
 
 # Remove upstream `.types` to avoid URI collisions with LinkML built-in/core types
 # during schema generation (for example, duplicate definitions of `date`).
