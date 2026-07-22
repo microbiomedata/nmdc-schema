@@ -545,7 +545,7 @@
 'del(.slots.estimated_size.string_serialization)'
 'del(.slots.estimated_size.annotations)'
 'del(.slots.estimated_size.examples)'
-'.slots.estimated_size.examples = [{"object": 300000}]'
+'.slots.estimated_size.examples = [{"value": "300000"}]'
 '.slots.estimated_size.maximum_value = 100000000000'
 # esplims ceiling rationale is internal modeling context -> notes, not comments.
 '.slots.estimated_size.notes = ["The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat."]'
