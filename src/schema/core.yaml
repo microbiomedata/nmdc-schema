@@ -1521,7 +1521,10 @@ slots:
     description: Concentration of zinc in the sample
     title: zinc
     examples:
-      - value: 2.5 mg/kg
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 2.5
+          has_unit: mg/kg
     range: QuantityValue
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
@@ -1534,7 +1537,10 @@ slots:
     description: Concentration of manganese in the sample
     title: manganese
     examples:
-      - value: 24.7 mg/kg
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 24.7
+          has_unit: mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
     range: QuantityValue
@@ -1550,7 +1556,10 @@ slots:
     description: Concentration of ammonium nitrogen in the sample
     title: ammonium nitrogen
     examples:
-      - value: 2.3 mg/kg
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 2.3
+          has_unit: mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
     range: QuantityValue
@@ -1568,7 +1577,10 @@ slots:
     description: Concentration of nitrate nitrogen in the sample
     title: nitrate nitrogen
     examples:
-      - value: 0.29 mg/kg
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 0.29
+          has_unit: mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
     range: QuantityValue
@@ -1584,7 +1596,10 @@ slots:
     description: Concentration of nitrite nitrogen in the sample
     title: nitrite nitrogen
     examples:
-      - value: 1.2 mg/kg
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 1.2
+          has_unit: mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
     range: QuantityValue
@@ -1603,7 +1618,10 @@ slots:
     description: lime buffer capacity, determined after 30 minute incubation
     title: lime buffer capacity (at 30 minutes)
     examples:
-      - value: 543 [ppm]
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 543
+          has_unit: "[ppm]"
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
       - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
@@ -1622,7 +1640,10 @@ slots:
     description: lime buffer capacity, determined at equilibrium after 5 day incubation
     title: lime buffer capacity (after 5 day incubation)
     examples:
-      - value: 1575 [ppm]
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 1575
+          has_unit: "[ppm]"
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
     range: QuantityValue
