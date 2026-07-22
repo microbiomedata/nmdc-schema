@@ -233,7 +233,7 @@ Some production data doesn't match GSC patterns. We handle this by using TextVal
 
 ## Example Values
 
-Every MIxS slot whose range is a wrapper class (`QuantityValue`, `TextValue`, `TimestampValue`, `ControlledTermValue`, `ControlledIdentifiedTermValue`, `GeolocationValue`) carries its example in the LinkML `examples` metaslot as a structured `object:` that matches the range, not a scalar string. A `QuantityValue` example is `{type, has_numeric_value, has_unit}`; a `ControlledIdentifiedTermValue` example is `{type, has_raw_value, term: {id, type}}`; and so on. `QuantityValue.has_unit` is required and must be a permissible value of `UnitEnum`. Every objectified example is validated against the materialized schema.
+Where a MIxS slot whose range is a wrapper class (`QuantityValue`, `TextValue`, `TimestampValue`, `ControlledTermValue`, `ControlledIdentifiedTermValue`, `GeolocationValue`) has an example, it is carried in the LinkML `examples` metaslot as a structured `object:` that matches the range, not a scalar string (a few slots have no example; see below). A `QuantityValue` example is `{type, has_numeric_value, has_unit}`; a `ControlledIdentifiedTermValue` example is `{type, has_raw_value, term: {id, type}}`; and so on. `QuantityValue.has_unit` is required and must be a permissible value of `UnitEnum`. Every objectified example is validated against the materialized schema.
 
 Two conventions follow from that:
 
