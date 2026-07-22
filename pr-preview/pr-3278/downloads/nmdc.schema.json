@@ -3793,7 +3793,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal"
+                    "description": "Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics, activated charcoal"
                 },
                 "salinity": {
                     "anyOf": [
@@ -17627,5 +17627,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.21.0.post53.dev0+16c8f8149"
+    "version": "11.21.0.post56.dev0+649421710"
 }
