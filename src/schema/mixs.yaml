@@ -1002,7 +1002,11 @@ slots:
     comments:
       - Can be calculated via mass of water vapor divided by the volume of the air and water vapor mixture.
     examples:
-      - value: 9 g/g
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 9 g/g
+          has_numeric_value: 9
+          has_unit: g/g
     keywords:
       - absolute
       - air
@@ -1069,7 +1073,9 @@ slots:
     description: Addition of fertilizers, pesticides, etc. - amount and time of applications
     title: history/agrochemical additions
     examples:
-      - value: roundup;5 milligram per liter;2018-06-21
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: roundup;5 milligram per liter;2018-06-21
     keywords:
       - history
     slot_uri: MIXS:0000639
@@ -1104,7 +1110,11 @@ slots:
     description: Temperature of the air at the time of sampling
     title: air temperature
     examples:
-      - value: 20 Cel
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 20 Cel
+          has_numeric_value: 20
+          has_unit: Cel
     keywords:
       - air
       - temperature
@@ -1121,7 +1131,9 @@ slots:
     description: Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens
     title: air temperature regimen
     examples:
-      - value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - air
       - regimen
@@ -1170,7 +1182,11 @@ slots:
     description: Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate
     title: alkalinity
     examples:
-      - value: 50 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 50 mg/L
+          has_numeric_value: 50
+          has_unit: mg/L
     keywords:
       - alkalinity
     slot_uri: MIXS:0000421
@@ -1193,7 +1209,11 @@ slots:
     description: Concentration of alkyl diethers
     title: alkyl diethers
     examples:
-      - value: 0.005 mol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.005 mol/L
+          has_numeric_value: 0.005
+          has_unit: mol/L
     slot_uri: MIXS:0000490
     range: QuantityValue
     structured_pattern:
@@ -1209,7 +1229,11 @@ slots:
     description: Heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air
     title: altitude
     examples:
-      - value: 100 m
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 100 m
+          has_numeric_value: 100
+          has_unit: m
     slot_uri: MIXS:0000094
     range: QuantityValue
     structured_pattern:
@@ -1223,7 +1247,11 @@ slots:
     description: Measurement of aminopeptidase activity
     title: aminopeptidase activity
     examples:
-      - value: 0.269 mol/L/h
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.269 mol/L/h
+          has_numeric_value: 0.269
+          has_unit: mol/L/h
     slot_uri: MIXS:0000172
     range: QuantityValue
     structured_pattern:
@@ -1237,7 +1265,11 @@ slots:
     description: Concentration of ammonium in the sample
     title: ammonium
     examples:
-      - value: 1.5 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1.5 mg/L
+          has_numeric_value: 1.5
+          has_unit: mg/L
     slot_uri: MIXS:0000427
     range: QuantityValue
     structured_pattern:
@@ -1262,7 +1294,9 @@ slots:
     description: Information about either pedigree or other ancestral information description (e.g. parental variety in case of mutant or selection), e.g. A/3*B (meaning [(A x B) x B] x B)
     title: ancestral data
     examples:
-      - value: A/3*B
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: A/3*B
     slot_uri: MIXS:0000247
     range: TextValue
   annual_precpt:
@@ -1280,7 +1314,11 @@ slots:
       interpolated: true
       partial_match: true
     examples:
-      - value: 225 mm
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 225 mm
+          has_numeric_value: 225
+          has_unit: mm
   annual_temp:
     annotations:
       Preferred_unit: degree Celsius
@@ -1288,7 +1326,11 @@ slots:
     description: Mean annual temperature
     title: mean annual temperature
     examples:
-      - value: 12.5 Cel
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 12.5 Cel
+          has_numeric_value: 12.5
+          has_unit: Cel
     keywords:
       - mean
       - temperature
@@ -1305,7 +1347,9 @@ slots:
     description: Information about treatment involving antibiotic administration; should include the name of antibiotic, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple antibiotic regimens
     title: antibiotic regimen
     examples:
-      - value: penicillin;5 milligram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: penicillin;5 milligram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - regimen
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
@@ -1364,7 +1408,9 @@ slots:
     description: Measurement of atmospheric data; can include multiple data
     title: atmospheric data
     examples:
-      - value: wind speed;9 knots
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: wind speed;9 knots
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0001097
     multivalued: true
@@ -1377,7 +1423,11 @@ slots:
     description: The average of dew point measures taken at the beginning of every hour over a 24 hour period on the sampling day
     title: average dew point
     examples:
-      - value: 25.5 Cel
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 25.5 Cel
+          has_numeric_value: 25.5
+          has_unit: Cel
     keywords:
       - average
     slot_uri: MIXS:0000141
@@ -1400,7 +1450,11 @@ slots:
     description: The average of temperatures taken at the beginning of every hour over a 24 hour period on the sampling day
     title: average temperature
     examples:
-      - value: 12.5 Cel
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 12.5 Cel
+          has_numeric_value: 12.5
+          has_unit: Cel
     keywords:
       - average
       - temperature
@@ -1417,7 +1471,11 @@ slots:
     description: Bacterial production in the water column measured by isotope uptake
     title: bacterial production
     examples:
-      - value: 5 mg/m3/d
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 5 mg/m3/d
+          has_numeric_value: 5
+          has_unit: mg/m3/d
     keywords:
       - production
     slot_uri: MIXS:0000683
@@ -1433,7 +1491,11 @@ slots:
     description: Measurement of bacterial respiration in the water column
     title: bacterial respiration
     examples:
-      - value: 300 umol/L/h
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 300 umol/L/h
+          has_numeric_value: 300
+          has_unit: umol/L/h
     slot_uri: MIXS:0000684
     range: QuantityValue
     structured_pattern:
@@ -1444,7 +1506,11 @@ slots:
     description: Measurement of bacterial carbon production
     title: bacterial carbon production
     examples:
-      - value: 50 ng/h
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 50 ng/h
+          has_numeric_value: 50
+          has_unit: ng/h
     keywords:
       - carbon
       - production
@@ -1463,7 +1529,11 @@ slots:
     description: Force per unit area exerted against a surface by the weight of air above that surface
     title: barometric pressure
     examples:
-      - value: 1013 mbar
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1013 mbar
+          has_numeric_value: 1013
+          has_unit: mbar
     keywords:
       - pressure
     slot_uri: MIXS:0000096
@@ -1476,14 +1546,18 @@ slots:
     description: Name of the basin
     title: basin name
     examples:
-      - value: Campos
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: Campos
     slot_uri: MIXS:0000290
     range: TextValue
   bathroom_count:
     description: The number of bathrooms in the building
     title: bathroom count
     examples:
-      - value: '1'
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: "1"
     keywords:
       - count
     slot_uri: MIXS:0000776
@@ -1492,7 +1566,9 @@ slots:
     description: The number of bedrooms in the building
     title: bedroom count
     examples:
-      - value: '2'
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: "2"
     keywords:
       - count
     slot_uri: MIXS:0000777
@@ -1565,7 +1641,9 @@ slots:
     description: Amount of biomass; should include the name for the part of biomass measured, e.g. Microbial, total. Can include multiple measurements
     title: biomass
     examples:
-      - value: total;20 gram
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: total;20 gram
     keywords:
       - biomass
     string_serialization: '{text};{float} {unit}'
@@ -1577,7 +1655,9 @@ slots:
     description: Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi
     title: biotic regimen
     examples:
-      - value: sample inoculated with Rhizobium spp. Culture
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: sample inoculated with Rhizobium spp. Culture
     keywords:
       - regimen
     slot_uri: MIXS:0001038
@@ -1600,7 +1680,11 @@ slots:
     description: Concentration of bishomohopanol
     title: bishomohopanol
     examples:
-      - value: 14 ug/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 14 ug/L
+          has_numeric_value: 14
+          has_unit: ug/L
     slot_uri: MIXS:0000175
     range: QuantityValue
     structured_pattern:
@@ -1646,7 +1730,11 @@ slots:
     description: Concentration of bromide
     title: bromide
     examples:
-      - value: 0.05 [ppm]
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.05 [ppm]
+          has_numeric_value: 0.05
+          has_unit: '[ppm]'
     slot_uri: MIXS:0000176
     range: QuantityValue
     structured_pattern:
@@ -1686,7 +1774,11 @@ slots:
     description: The age of the built structure since construction
     title: built structure age
     examples:
-      - value: 15 a
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 15 a
+          has_numeric_value: 15
+          has_unit: a
     keywords:
       - age
     slot_uri: MIXS:0000145
@@ -1730,7 +1822,11 @@ slots:
     description: Carbon dioxide (gas) amount or concentration at the time of sampling
     title: carbon dioxide
     examples:
-      - value: 410 [ppm]
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 410 [ppm]
+          has_numeric_value: 410
+          has_unit: '[ppm]'
     keywords:
       - carbon
     slot_uri: MIXS:0000097
@@ -1746,7 +1842,11 @@ slots:
     description: Carbon monoxide (gas) amount or concentration at the time of sampling
     title: carbon monoxide
     examples:
-      - value: 0.1 [ppm]
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.1 [ppm]
+          has_numeric_value: 0.1
+          has_unit: '[ppm]'
     keywords:
       - carbon
     slot_uri: MIXS:0000098
@@ -1777,7 +1877,11 @@ slots:
     description: The area of the ceiling space within the room
     title: ceiling area
     examples:
-      - value: 25 m2
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 25 m2
+          has_numeric_value: 25
+          has_unit: m2
     keywords:
       - area
       - ceiling
@@ -1866,7 +1970,12 @@ slots:
     description: List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
     title: chemical administration
     examples:
-      - value: agar [CHEBI:2509];2018-05-11T20:00Z
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: agar [CHEBI:2509];2018-05-11T20:00Z
+          term:
+            id: CHEBI:2509
+            type: nmdc:OntologyClass
     keywords:
       - administration
     string_serialization: '{termLabel} [{termID}];{timestamp}'
@@ -1881,7 +1990,9 @@ slots:
     description: Treatment involving use of mutagens; should include the name of mutagen, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mutagen regimens
     title: chemical mutagen
     examples:
-      - value: nitrous acid;0.5 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: nitrous acid;0.5 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000555
     multivalued: true
@@ -1928,7 +2039,9 @@ slots:
     description: Tool(s) used for chimera checking, including version number and parameters, to discover and remove chimeric sequences. A chimeric sequence is comprised of two or more phylogenetically distinct parent sequences
     title: chimera check software
     examples:
-      - value: uchime;v4.1;default parameters
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: uchime;v4.1;default parameters
     keywords:
       - software
     slot_uri: MIXS:0000052
@@ -1944,7 +2057,11 @@ slots:
     description: Concentration of chloride in the sample
     title: chloride
     examples:
-      - value: 5000 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 5000 mg/L
+          has_numeric_value: 5000
+          has_unit: mg/L
     slot_uri: MIXS:0000429
     range: QuantityValue
     structured_pattern:
@@ -1970,7 +2087,9 @@ slots:
     title: climate environment
     deprecated: true, slot is inconsistently used and provides redundant information to other slots, https://github.com/GenomicsStandardsConsortium/mixs/issues/591 and https://github.com/microbiomedata/nmdc-schema/issues/586
     examples:
-      - value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - environment
     slot_uri: MIXS:0001040
@@ -1981,7 +2100,9 @@ slots:
     description: 'The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant'
     title: collection date
     examples:
-      - value: '2013-03-25T12:42:31+01:00'
+      - object:
+          type: nmdc:TimestampValue
+          has_raw_value: "2013-03-25T12:42:31+01:00"
     keywords:
       - date
     slot_uri: MIXS:0000011
@@ -1993,7 +2114,11 @@ slots:
     description: Electrical conductivity of water
     title: conductivity
     examples:
-      - value: 10 uS/cm
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 10 uS/cm
+          has_numeric_value: 10
+          has_unit: uS/cm
     slot_uri: MIXS:0000692
     range: QuantityValue
     structured_pattern:
@@ -2004,7 +2129,9 @@ slots:
     description: The cooling system identifier
     title: cooling system identifier
     examples:
-      - value: '12345'
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: "12345"
     keywords:
       - identifier
     slot_uri: MIXS:0000785
@@ -2015,7 +2142,9 @@ slots:
     description: Whether or not crop is rotated, and if yes, rotation schedule
     title: history/crop rotation
     examples:
-      - value: yes;R2/2017-01-01/2018-12-31/P6M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: yes;R2/2017-01-01/2018-12-31/P6M
     keywords:
       - history
     slot_uri: MIXS:0000318
@@ -2024,7 +2153,9 @@ slots:
     description: Name or reference for the hydroponic or in vitro culture rooting medium; can be the name of a commonly used medium or reference to a specific medium, e.g. Murashige and Skoog medium. If the medium has not been formally published, use the rooting medium descriptors
     title: culture rooting medium
     examples:
-      - value: http://himedialabs.com/TD/PT158.pdf
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: http://himedialabs.com/TD/PT158.pdf
     keywords:
       - culture
     slot_uri: MIXS:0001041
@@ -2069,7 +2200,9 @@ slots:
     description: The date of the last time it rained
     title: date last rain
     examples:
-      - value: '2013-03-25T12:42:31+01:00'
+      - object:
+          type: nmdc:TimestampValue
+          has_raw_value: "2013-03-25T12:42:31+01:00"
     keywords:
       - date
       - rain
@@ -2082,7 +2215,11 @@ slots:
     description: Density of the sample, which is its mass per unit volume (aka volumetric mass density)
     title: density
     examples:
-      - value: 1000 kg/m3
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1000 kg/m3
+          has_numeric_value: 1000
+          has_unit: kg/m3
     keywords:
       - density
     slot_uri: MIXS:0000435
@@ -2114,7 +2251,11 @@ slots:
       interpolated: true
       partial_match: true
     examples:
-      - value: 10 m
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 10 m
+          has_numeric_value: 10
+          has_unit: m
   dew_point:
     annotations:
       Preferred_unit: degree Celsius
@@ -2122,7 +2263,11 @@ slots:
     description: The temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water
     title: dew point
     examples:
-      - value: 22 Cel
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 22 Cel
+          has_numeric_value: 22
+          has_unit: Cel
     slot_uri: MIXS:0000129
     range: QuantityValue
     structured_pattern:
@@ -2136,7 +2281,9 @@ slots:
     description: Concentration of diether lipids; can include multiple types of diether lipids
     title: diether lipids
     examples:
-      - value: 0.2 nanogram per liter
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 0.2 nanogram per liter
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000178
     multivalued: true
@@ -2149,7 +2296,11 @@ slots:
     description: Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample
     title: dissolved carbon dioxide
     examples:
-      - value: 5 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 5 mg/L
+          has_numeric_value: 5
+          has_unit: mg/L
     keywords:
       - carbon
       - dissolved
@@ -2166,7 +2317,11 @@ slots:
     description: Concentration of dissolved hydrogen
     title: dissolved hydrogen
     examples:
-      - value: 0.3 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.3 umol/L
+          has_numeric_value: 0.3
+          has_unit: umol/L
     keywords:
       - dissolved
     slot_uri: MIXS:0000179
@@ -2215,7 +2370,11 @@ slots:
     description: Concentration of dissolved inorganic phosphorus in the sample
     title: dissolved inorganic phosphorus
     examples:
-      - value: 56.5 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 56.5 umol/L
+          has_numeric_value: 56.5
+          has_unit: umol/L
     keywords:
       - dissolved
       - inorganic
@@ -2265,7 +2424,11 @@ slots:
     description: Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2
     title: dissolved organic nitrogen
     examples:
-      - value: 0.05 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.05 mg/L
+          has_numeric_value: 0.05
+          has_unit: mg/L
     keywords:
       - dissolved
       - nitrogen
@@ -2285,7 +2448,11 @@ slots:
     description: Concentration of dissolved oxygen
     title: dissolved oxygen
     examples:
-      - value: 175 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 175 umol/L
+          has_numeric_value: 175
+          has_unit: umol/L
     keywords:
       - dissolved
       - oxygen
@@ -2376,7 +2543,11 @@ slots:
     description: The size of the door
     title: door area or size
     examples:
-      - value: 2.5 m2
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 2.5 m2
+          has_numeric_value: 2.5
+          has_unit: m2
     keywords:
       - area
       - door
@@ -2435,7 +2606,11 @@ slots:
     description: Visible waveband radiance and irradiance measurements in the water column
     title: downward PAR
     examples:
-      - value: 28.71 umol/m2/s
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 28.71 umol/m2/s
+          has_numeric_value: 28.71
+          has_unit: umol/m2/s
     slot_uri: MIXS:0000703
     range: QuantityValue
     structured_pattern:
@@ -2493,7 +2668,9 @@ slots:
     description: The number of elevators within the built structure
     title: elevator count
     examples:
-      - value: '2'
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: "2"
     keywords:
       - count
     slot_uri: MIXS:0000799
@@ -2523,7 +2700,12 @@ slots:
       partial_match: true
     is_a: mixs_env_triad_field
     examples:
-      - value: oceanic epipelagic zone biome [ENVO:01000035]
+      - object:
+          type: nmdc:ControlledIdentifiedTermValue
+          has_raw_value: oceanic epipelagic zone biome [ENVO:01000035]
+          term:
+            id: ENVO:01000035
+            type: nmdc:OntologyClass
     annotations:
       tooltip: The biome or major environmental system where the sample or specimen originated. Choose values from subclasses of the 'biome' class [ENVO:00000428] in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe the broad anatomical or morphological context
   env_local_scale:
@@ -2543,7 +2725,12 @@ slots:
     is_a: mixs_env_triad_field
     range: ControlledIdentifiedTermValue
     examples:
-      - value: litter layer [ENVO:01000338]
+      - object:
+          type: nmdc:ControlledIdentifiedTermValue
+          has_raw_value: litter layer [ENVO:01000338]
+          term:
+            id: ENVO:01000338
+            type: nmdc:OntologyClass
   env_medium:
     description: 'Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)'
     title: environmental medium
@@ -2557,14 +2744,21 @@ slots:
       partial_match: true
     is_a: mixs_env_triad_field
     examples:
-      - value: soil [ENVO:00001998]
+      - object:
+          type: nmdc:ControlledIdentifiedTermValue
+          has_raw_value: soil [ENVO:00001998]
+          term:
+            id: ENVO:00001998
+            type: nmdc:OntologyClass
     annotations:
       tooltip: The predominant environmental material or substrate that directly surrounds or hosts the sample or specimen at the time of sampling. Choose values from subclasses of the 'environmental material' class [ENVO:00010483] in the Environment Ontology (ENVO). Values for this field should be measurable or mass material nouns, representing continuous environmental materials. For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to indicate a tissue, organ, or plant structure
   escalator:
     description: The number of escalators within the built structure
     title: escalator count
     examples:
-      - value: '4'
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: "4"
     keywords:
       - count
     slot_uri: MIXS:0000800
@@ -2613,7 +2807,12 @@ slots:
     description: Variable aspects of an experiment design that can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI)
     title: experimental factor
     examples:
-      - value: time series design [EFO:0001779]
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: time series design [EFO:0001779]
+          term:
+            id: EFO:0001779
+            type: nmdc:OntologyClass
     keywords:
       - experimental
       - factor
@@ -2675,7 +2874,9 @@ slots:
     description: Information about treatment involving the use of fertilizers; should include the name of fertilizer, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fertilizer regimens
     title: fertilizer regimen
     examples:
-      - value: urea;0.6 milligram per liter;R2/2018-05-11:T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: urea;0.6 milligram per liter;R2/2018-05-11:T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - regimen
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
@@ -2834,7 +3035,11 @@ slots:
     description: The number of times the sample location is cleaned per day.
     title: frequency of cleaning
     examples:
-      - value: 2 1/d
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 2 1/d
+          has_numeric_value: 2
+          has_unit: 1/d
     keywords:
       - frequency
     slot_uri: MIXS:0000226
@@ -2860,7 +3065,9 @@ slots:
     description: Information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens
     title: fungicide regimen
     examples:
-      - value: bifonazole;1 mole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: bifonazole;1 mole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - regimen
     slot_uri: MIXS:0000557
@@ -2880,7 +3087,9 @@ slots:
     description: Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens
     title: gaseous environment
     examples:
-      - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - environment
     slot_uri: MIXS:0000558
@@ -2918,7 +3127,9 @@ slots:
     description: The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)
     title: geographic location (country and/or sea,region)
     examples:
-      - value: 'USA: Maryland, Bethesda'
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 'USA: Maryland, Bethesda'
     keywords:
       - geographic
       - location
@@ -2935,7 +3146,11 @@ slots:
     description: Measurement of glucosidase activity
     title: glucosidase activity
     examples:
-      - value: 5 mol/L/h
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 5 mol/L/h
+          has_numeric_value: 5
+          has_unit: mol/L/h
     slot_uri: MIXS:0000137
     range: QuantityValue
     structured_pattern:
@@ -2946,7 +3161,9 @@ slots:
     description: Whether or not subject is gravid, and if yes date due or date post-conception, specifying which is used
     title: gravidity
     examples:
-      - value: yes;due date:2018-05-11
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: yes;due date:2018-05-11
     string_serialization: '{boolean};{timestamp}'
     slot_uri: MIXS:0000875
     range: TextValue
@@ -2957,7 +3174,9 @@ slots:
     description: Information about treatment involving use of gravity factor to study various types of responses in presence, absence or modified levels of gravity; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple treatments
     title: gravity
     examples:
-      - value: 12 g;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 12 g;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000559
     multivalued: true
@@ -2969,7 +3188,12 @@ slots:
     description: 'Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see https://cropontology.org/.'
     title: growth facility
     examples:
-      - value: Growth chamber [CO_715:0000189]
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: Growth chamber [CO_715:0000189]
+          term:
+            id: CO_715:0000189
+            type: nmdc:OntologyClass
     keywords:
       - facility
       - growth
@@ -2992,7 +3216,9 @@ slots:
     description: Information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple growth hormone regimens
     title: growth hormone regimen
     examples:
-      - value: abscisic acid;0.5 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: abscisic acid;0.5 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - growth
       - regimen
@@ -3087,7 +3313,9 @@ slots:
     description: Original temperature of the hydrocarbon resource
     title: hydrocarbon resource original temperature
     examples:
-      - value: 150-295 degree Celsius
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 150-295 degree Celsius
     keywords:
       - hydrocarbon
       - resource
@@ -3143,7 +3371,9 @@ slots:
     description: Heavy metals present in the sequenced sample and their concentrations. For multiple heavy metals and concentrations, add multiple copies of this field
     title: extreme_unusual_properties/heavy metals
     examples:
-      - value: mercury;0.09 micrograms per gram
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: mercury;0.09 micrograms per gram
     keywords:
       - extreme
       - properties
@@ -3188,7 +3418,9 @@ slots:
     description: Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: herbicide regimen
     examples:
-      - value: atrazine;10 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: atrazine;10 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - regimen
     slot_uri: MIXS:0000561
@@ -3224,7 +3456,11 @@ slots:
       interpolated: true
       partial_match: true
     examples:
-      - value: 10 d
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 10 d
+          has_numeric_value: 10
+          has_unit: d
   host_body_habitat:
     description: Original body habitat where the sample was obtained from
     title: host body habitat
@@ -3249,7 +3485,12 @@ slots:
     slot_uri: MIXS:0000888
     range: ControlledTermValue
     examples:
-      - value: mucus [UBERON:0000912]
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: mucus [UBERON:0000912]
+          term:
+            id: UBERON:0000912
+            type: nmdc:OntologyClass
   host_body_site:
     annotations:
       Expected_value: FMA or UBERON
@@ -3280,7 +3521,11 @@ slots:
       interpolated: true
       partial_match: true
     examples:
-      - value: 15 Cel
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 15 Cel
+          has_numeric_value: 15
+          has_unit: Cel
   host_color:
     description: The color of host
     title: host color
@@ -3329,7 +3574,11 @@ slots:
     description: Measurement of dry mass
     title: host dry mass
     examples:
-      - value: 500 g
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 500 g
+          has_numeric_value: 500
+          has_unit: g
     keywords:
       - dry
       - host
@@ -3353,7 +3602,9 @@ slots:
     description: Literature reference giving growth conditions of the host
     title: host growth conditions
     examples:
-      - value: https://academic.oup.com/icesjms/article/68/2/349/617247
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: https://academic.oup.com/icesjms/article/68/2/349/617247
     keywords:
       - condition
       - growth
@@ -3402,7 +3653,11 @@ slots:
     description: The length of subject
     title: host length
     examples:
-      - value: 1 m
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1 m
+          has_numeric_value: 1
+          has_unit: m
     keywords:
       - host
       - host.
@@ -3451,7 +3706,9 @@ slots:
     description: Morphological shape of host
     title: host shape
     examples:
-      - value: round
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: round
     keywords:
       - host
       - host.
@@ -3485,7 +3742,9 @@ slots:
     description: The growth substrate of the host
     title: host substrate
     examples:
-      - value: rock
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: rock
     keywords:
       - host
       - host.
@@ -3541,7 +3800,11 @@ slots:
       interpolated: true
       partial_match: true
     examples:
-      - value: 2500 g
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 2500 g
+          has_numeric_value: 2500
+          has_unit: g
   host_wet_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -3549,7 +3812,11 @@ slots:
     description: Measurement of wet mass
     title: host wet mass
     examples:
-      - value: 1500 g
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1500 g
+          has_numeric_value: 1500
+          has_unit: g
     keywords:
       - host
       - host.
@@ -3583,7 +3850,9 @@ slots:
     description: Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: humidity regimen
     examples:
-      - value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - humidity
       - regimen
@@ -3669,7 +3938,9 @@ slots:
     description: Injection water breakthrough date per well following a secondary and/or tertiary recovery
     title: injection water breakthrough date of specific well
     examples:
-      - value: '2013-03-25T12:42:31+01:00'
+      - object:
+          type: nmdc:TimestampValue
+          has_raw_value: "2013-03-25T12:42:31+01:00"
     keywords:
       - date
       - water
@@ -3698,7 +3969,9 @@ slots:
     description: The last time the floor was cleaned (swept, mopped, vacuumed)
     title: last time swept/mopped/vacuumed
     examples:
-      - value: '2013-03-25T12:42:31+01:00'
+      - object:
+          type: nmdc:TimestampValue
+          has_raw_value: "2013-03-25T12:42:31+01:00"
     keywords:
       - time
     slot_uri: MIXS:0000814
@@ -3707,7 +3980,11 @@ slots:
     description: The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees, limited to 8 decimal points, and in WGS84 system
     title: geographic location (latitude and longitude)
     examples:
-      - value: 50.586825 6.408977
+      - object:
+          type: nmdc:GeolocationValue
+          latitude: 50.586825
+          longitude: 6.408977
+          has_raw_value: 50.586825 6.408977
     keywords:
       - geographic
       - location
@@ -3724,7 +4001,11 @@ slots:
     description: Measurement of light intensity
     title: light intensity
     examples:
-      - value: 0.3 lx
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.3 lx
+          has_numeric_value: 0.3
+          has_unit: lx
     keywords:
       - intensity
       - light
@@ -3741,7 +4022,9 @@ slots:
     description: Information about treatment(s) involving exposure to light, including both light intensity and quality
     title: light regimen
     examples:
-      - value: incandescant light;10 lux;450 nanometer
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: incandescent light;10 lux;450 nanometer
     keywords:
       - light
       - regimen
@@ -3858,7 +4141,11 @@ slots:
     description: Measurement of mean friction velocity
     title: mean friction velocity
     examples:
-      - value: 0.5 m/s
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.5 m/s
+          has_numeric_value: 0.5
+          has_unit: m/s
     keywords:
       - mean
       - velocity
@@ -3875,7 +4162,11 @@ slots:
     description: Measurement of mean peak friction velocity
     title: mean peak friction velocity
     examples:
-      - value: 1 m/s
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1 m/s
+          has_numeric_value: 1
+          has_unit: m/s
     keywords:
       - mean
       - peak
@@ -3917,7 +4208,11 @@ slots:
       interpolated: true
       partial_match: true
     examples:
-      - value: 1800 [ppb]
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1800 [ppb]
+          has_numeric_value: 1800
+          has_unit: '[ppb]'
   micro_biomass_meth:
     description: Reference or method used in determining microbial biomass
     title: microbial biomass method
@@ -3953,7 +4248,9 @@ slots:
     description: Information about treatment involving the use of mineral supplements; should include the name of mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mineral nutrient regimens
     title: mineral nutrient regimen
     examples:
-      - value: potassium;15 gram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: potassium;15 gram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - mineral
       - nutrient
@@ -3985,7 +4282,9 @@ slots:
     description: Concentration of n-alkanes; can include multiple n-alkanes
     title: n-alkanes
     examples:
-      - value: n-hexadecane;100 milligram per liter
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: n-hexadecane;100 milligram per liter
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000503
     multivalued: true
@@ -3998,7 +4297,11 @@ slots:
     description: Concentration of nitrate in the sample
     title: nitrate
     examples:
-      - value: 65 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 65 umol/L
+          has_numeric_value: 65
+          has_unit: umol/L
     keywords:
       - nitrate
     slot_uri: MIXS:0000425
@@ -4014,7 +4317,11 @@ slots:
     description: Concentration of nitrite in the sample
     title: nitrite
     examples:
-      - value: 0.5 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.5 umol/L
+          has_numeric_value: 0.5
+          has_unit: umol/L
     keywords:
       - nitrite
     slot_uri: MIXS:0000426
@@ -4057,7 +4364,9 @@ slots:
     description: A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids
     title: nucleic acid amplification
     examples:
-      - value: https://phylogenomics.me/protocols/16s-pcr-protocol/
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: https://phylogenomics.me/protocols/16s-pcr-protocol/
     slot_uri: MIXS:0000038
     range: TextValue
     structured_pattern:
@@ -4068,7 +4377,9 @@ slots:
     description: A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample
     title: nucleic acid extraction
     examples:
-      - value: https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf
     slot_uri: MIXS:0000037
     range: TextValue
     structured_pattern:
@@ -4183,7 +4494,11 @@ slots:
     description: Concentration of organic matter
     title: organic matter
     examples:
-      - value: 200 ug/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 200 ug/L
+          has_numeric_value: 200
+          has_unit: ug/L
     keywords:
       - organic
     slot_uri: MIXS:0000204
@@ -4196,7 +4511,11 @@ slots:
     description: Concentration of organic nitrogen
     title: organic nitrogen
     examples:
-      - value: 4 ug/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 4 ug/L
+          has_numeric_value: 4
+          has_unit: ug/L
     keywords:
       - nitrogen
       - organic
@@ -4270,7 +4589,11 @@ slots:
     description: Oxygen (gas) amount or concentration at the time of sampling
     title: oxygen
     examples:
-      - value: 600 [ppm]
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 600 [ppm]
+          has_numeric_value: 600
+          has_unit: '[ppm]'
     keywords:
       - oxygen
     slot_uri: MIXS:0000104
@@ -4283,7 +4606,11 @@ slots:
     description: Concentration of particulate organic carbon
     title: particulate organic carbon
     examples:
-      - value: 0.02 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.02 mg/L
+          has_numeric_value: 0.02
+          has_unit: mg/L
     keywords:
       - carbon
       - organic
@@ -4369,7 +4696,9 @@ slots:
     description: Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types
     title: perturbation
     examples:
-      - value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
     keywords:
       - perturbation
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
@@ -4383,7 +4712,9 @@ slots:
     description: Information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple pesticide regimens
     title: pesticide regimen
     examples:
-      - value: pyrethrum;0.6 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: pyrethrum;0.6 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - regimen
     slot_uri: MIXS:0000573
@@ -4397,7 +4728,11 @@ slots:
     description: Concentration of petroleum hydrocarbon
     title: petroleum hydrocarbon
     examples:
-      - value: 0.05 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.05 umol/L
+          has_numeric_value: 0.05
+          has_unit: umol/L
     keywords:
       - hydrocarbon
       - petroleum
@@ -4420,7 +4755,9 @@ slots:
     description: Reference or method used in determining pH
     title: pH method
     examples:
-      - value: https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf
     keywords:
       - method
       - ph
@@ -4430,7 +4767,9 @@ slots:
     description: Information about treatment involving exposure of plants to varying levels of ph of the growth media, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimen
     title: pH regimen
     examples:
-      - value: 7.6;R2/2018-05-11:T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 7.6;R2/2018-05-11:T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - ph
       - regimen
@@ -4445,7 +4784,9 @@ slots:
     description: Concentration of phaeopigments; can include multiple phaeopigments
     title: phaeopigments
     examples:
-      - value: 2.5 milligram per cubic meter
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 2.5 milligram per cubic meter
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000180
     multivalued: true
@@ -4458,7 +4799,11 @@ slots:
     description: Concentration of phosphate
     title: phosphate
     examples:
-      - value: 0.7 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.7 umol/L
+          has_numeric_value: 0.7
+          has_unit: umol/L
     keywords:
       - phosphate
     slot_uri: MIXS:0000505
@@ -4473,7 +4818,9 @@ slots:
     description: Concentration of phospholipid fatty acids; can include multiple values
     title: phospholipid fatty acid
     examples:
-      - value: 2.98 milligram per liter
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 2.98 milligram per liter
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000181
     multivalued: true
@@ -4486,7 +4833,11 @@ slots:
     description: Measurement of photon flux
     title: photon flux
     examples:
-      - value: 3.926 umol/m2/s
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 3.926 umol/m2/s
+          has_numeric_value: 3.926
+          has_unit: umol/m2/s
     slot_uri: MIXS:0000725
     range: QuantityValue
     structured_pattern:
@@ -4508,7 +4859,9 @@ slots:
     description: Substance produced by the plant, where the sample was obtained from
     title: plant product
     examples:
-      - value: xylem sap [PO:0025539]
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: xylem sap [PO:0025539]
     keywords:
       - plant
       - product
@@ -4527,7 +4880,12 @@ slots:
     description: Name of plant structure the sample was obtained from; for Plant Ontology (PO) terms, see http://obofoundry.org/ontology/po.html, e.g. petiole epidermis (PO:0000051). If an individual flower is sampled, the sex of it can be recorded here.
     title: plant structure
     examples:
-      - value: epidermis [PO:0005679]
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: epidermis [PO:0005679]
+          term:
+            id: PO:0005679
+            type: nmdc:OntologyClass
     keywords:
       - plant
     slot_uri: MIXS:0001060
@@ -4543,7 +4901,9 @@ slots:
     description: Pollutant types and, amount or concentrations measured at the time of sampling; can report multiple pollutants by entering numeric values preceded by name of pollutant
     title: pollutants
     examples:
-      - value: lead;0.15 microgram per cubic meter
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: lead;0.15 microgram per cubic meter
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000107
     multivalued: true
@@ -4579,7 +4939,11 @@ slots:
     description: Concentration of potassium in the sample
     title: potassium
     examples:
-      - value: 463 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 463 mg/L
+          has_numeric_value: 463
+          has_unit: mg/L
     slot_uri: MIXS:0000430
     range: QuantityValue
     structured_pattern:
@@ -4625,7 +4989,11 @@ slots:
     description: Pressure to which the sample is subject to, in atmospheres
     title: pressure
     examples:
-      - value: 50 atm
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 50 atm
+          has_numeric_value: 50
+          has_unit: atm
     keywords:
       - pressure
     slot_uri: MIXS:0000412
@@ -4668,7 +5036,11 @@ slots:
     description: Measurement of primary production, generally measured as isotope uptake
     title: primary production
     examples:
-      - value: 100 mg/m3/d
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 100 mg/m3/d
+          has_numeric_value: 100
+          has_unit: mg/m3/d
     keywords:
       - primary
       - production
@@ -4708,7 +5080,9 @@ slots:
     description: Date of field's first production
     title: production start date
     examples:
-      - value: '2013-03-25T12:42:31+01:00'
+      - object:
+          type: nmdc:TimestampValue
+          has_raw_value: "2013-03-25T12:42:31+01:00"
     keywords:
       - date
       - production
@@ -4737,7 +5111,9 @@ slots:
     description: Information about treatment involving exposure of plant or a plant part to a particular radiation regimen; should include the radiation type, amount or intensity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple radiation regimens
     title: radiation regimen
     examples:
-      - value: gamma radiation;60 gray;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: gamma radiation;60 gray;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - regimen
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
@@ -4752,7 +5128,9 @@ slots:
     description: Information about treatment involving an exposure to a given amount of rainfall, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: rainfall regimen
     examples:
-      - value: 15 millimeter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 15 millimeter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - rain
       - regimen
@@ -4777,7 +5155,11 @@ slots:
     description: Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential
     title: redox potential
     examples:
-      - value: 300 mV
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 300 mV
+          has_numeric_value: 300
+          has_unit: mV
     slot_uri: MIXS:0000182
     range: QuantityValue
     structured_pattern:
@@ -4907,7 +5289,9 @@ slots:
     description: The length, width and height of sampling room
     title: room dimensions
     examples:
-      - value: 4 meter x 4 meter x 4 meter
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 4 meter x 4 meter x 4 meter
     keywords:
       - dimensions
       - room
@@ -5059,7 +5443,9 @@ slots:
     description: Relevant rooting conditions such as field plot size, sowing density, container dimensions, number of plants per container
     title: rooting conditions
     examples:
-      - value: http://himedialabs.com/TD/PT158.pdf
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: http://himedialabs.com/TD/PT158.pdf
     keywords:
       - condition
     slot_uri: MIXS:0001061
@@ -5075,7 +5461,9 @@ slots:
     description: Source of organic carbon in the culture rooting medium
     title: rooting medium carbon
     examples:
-      - value: sucrose
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: sucrose
     keywords:
       - carbon
     string_serialization: '{text};{float} {unit}'
@@ -5088,7 +5476,9 @@ slots:
     description: Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S)
     title: rooting medium macronutrients
     examples:
-      - value: KH2PO4;170  milligram per liter
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: KH2PO4;170  milligram per liter
     keywords:
       - macronutrients
     string_serialization: '{text};{float} {unit}'
@@ -5101,7 +5491,9 @@ slots:
     description: Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo)
     title: rooting medium micronutrients
     examples:
-      - value: H3BO3;6.2  milligram per liter
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: H3BO3;6.2  milligram per liter
     keywords:
       - micronutrients
     string_serialization: '{text};{float} {unit}'
@@ -5125,7 +5517,9 @@ slots:
     description: Growth regulators in the culture rooting medium such as cytokinins, auxins, gybberellins, abscisic acid; e.g. 0.5  mg/L NAA
     title: rooting medium regulators
     examples:
-      - value: abscisic acid;0.75 milligram per liter
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: abscisic acid;0.75 milligram per liter
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000581
     range: TextValue
@@ -5133,7 +5527,9 @@ slots:
     description: Specification of the solidifying agent in the culture rooting medium
     title: rooting medium solidifier
     examples:
-      - value: agar
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: agar
     slot_uri: MIXS:0001063
     range: TextValue
   root_med_suppl:
@@ -5143,7 +5539,9 @@ slots:
     description: Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics, activated charcoal
     title: rooting medium organic supplements
     examples:
-      - value: nicotinic acid;0.5 milligram per liter
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: nicotinic acid;0.5 milligram per liter
     keywords:
       - organic
     string_serialization: '{text};{float} {unit}'
@@ -5156,7 +5554,11 @@ slots:
     description: The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater
     title: salinity
     examples:
-      - value: 70 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 70 mg/L
+          has_numeric_value: 70
+          has_unit: mg/L
     keywords:
       - salinity
     slot_uri: MIXS:0000183
@@ -5171,7 +5573,9 @@ slots:
     description: Information about treatment involving use of salts as supplement to liquid and soil growth media; should include the name of salt, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple salt regimens
     title: salt regimen
     examples:
-      - value: NaCl;5 gram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: NaCl;5 gram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - regimen
       - salt
@@ -5239,7 +5643,9 @@ slots:
     description: A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed
     title: sample material processing
     examples:
-      - value: filtering of seawater, storing samples in ethanol
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: filtering of seawater, storing samples in ethanol
     keywords:
       - material
       - process
@@ -5254,7 +5660,11 @@ slots:
     description: In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If "other" is specified, please propose entry in "additional info" field
     title: sample measured depth
     examples:
-      - value: 1534 m
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1534 m
+          has_numeric_value: 1534
+          has_unit: m
     keywords:
       - depth
       - measurement
@@ -5325,7 +5735,9 @@ slots:
     description: Duration for which the sample was stored. Indicate the duration for which the sample was stored written in ISO 8601 format
     title: sample storage duration
     examples:
-      - value: P1Y6M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: P1Y6M
     keywords:
       - duration
       - period
@@ -5343,7 +5755,9 @@ slots:
     description: Location at which sample was stored, usually name of a specific freezer/room
     title: sample storage location
     examples:
-      - value: Freezer no:5
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: Freezer no:5
     keywords:
       - location
       - sample
@@ -5357,7 +5771,11 @@ slots:
     description: Temperature at which sample was stored
     title: sample storage temperature
     examples:
-      - value: -80 Cel
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: -80 Cel
+          has_numeric_value: -80
+          has_unit: Cel
     keywords:
       - sample
       - storage
@@ -5412,7 +5830,9 @@ slots:
     description: Sample transport duration (in days or hrs) and temperature the sample was exposed to (e.g. 5.5 days; 20   C)
     title: sample transport conditions
     examples:
-      - value: 5 days;-20 degree Celsius
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 5 days;-20 degree Celsius
     keywords:
       - condition
       - sample
@@ -5437,7 +5857,9 @@ slots:
     description: The type of material from which the sample was obtained. For the Hydrocarbon package, samples include types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. For the Food Package, samples are usually categorized as food, body products or tissues, or environmental material. This field accepts terms listed under environmental specimen (http://purl.obolibrary.org/obo/GENEPIO_0001246)
     title: sample type
     examples:
-      - value: built environment sample [GENEPIO:0001248]
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: built environment sample [GENEPIO:0001248]
     keywords:
       - sample
       - type
@@ -5454,7 +5876,11 @@ slots:
     description: 'Volume (ml) or mass (g) of total collected sample processed for DNA extraction. Note: total sample collected should be entered under the term Sample Size (MIXS:0000001)'
     title: sample volume or weight for DNA extraction
     examples:
-      - value: 1500 mL
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1500 mL
+          has_numeric_value: 1500
+          has_unit: mL
     keywords:
       - dna
       - sample
@@ -5509,7 +5935,9 @@ slots:
     description: Treatment involving an exposure to a particular season (e.g. Winter, summer, rabi, rainy etc.), treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment
     title: seasonal environment
     examples:
-      - value: rainy;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: rainy;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - environment
       - season
@@ -5524,7 +5952,11 @@ slots:
     description: The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps
     title: mean seasonal precipitation
     examples:
-      - value: 10 mm
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 10 mm
+          has_numeric_value: 10
+          has_unit: mm
     keywords:
       - mean
       - season
@@ -5541,7 +5973,11 @@ slots:
     description: Mean seasonal temperature
     title: mean seasonal temperature
     examples:
-      - value: 18 Cel
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 18 Cel
+          has_numeric_value: 18
+          has_unit: Cel
     keywords:
       - mean
       - season
@@ -5680,7 +6116,11 @@ slots:
     description: Concentration of silicate
     title: silicate
     examples:
-      - value: 0.05 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.05 umol/L
+          has_numeric_value: 0.05
+          has_unit: umol/L
     slot_uri: MIXS:0000184
     range: QuantityValue
     structured_pattern:
@@ -5693,7 +6133,9 @@ slots:
     description: Filtering pore size used in sample preparation
     title: size fraction selected
     examples:
-      - value: 0-0.22 micrometer
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 0-0.22 micrometer
     keywords:
       - fraction
       - size
@@ -5707,7 +6149,11 @@ slots:
     description: Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials smaller than the size threshold are excluded from the sample
     title: size-fraction lower threshold
     examples:
-      - value: 0.2 um
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.2 um
+          has_numeric_value: 0.2
+          has_unit: um
     keywords:
       - lower
     slot_uri: MIXS:0000735
@@ -5723,7 +6169,11 @@ slots:
     description: Mesh or pore size of the device used to retain the sample. Materials larger than the size threshold are excluded from the sample.
     title: size-fraction upper threshold
     examples:
-      - value: 20 um
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 20 um
+          has_numeric_value: 20
+          has_unit: um
     keywords:
       - upper
     slot_uri: MIXS:0000736
@@ -5747,7 +6197,11 @@ slots:
       interpolated: true
       partial_match: true
     examples:
-      - value: 35 deg
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 35 deg
+          has_numeric_value: 35
+          has_unit: deg
   slope_gradient:
     annotations:
       Preferred_unit: percentage
@@ -5783,7 +6237,11 @@ slots:
     description: Sodium concentration in the sample
     title: sodium
     examples:
-      - value: 10.5 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 10.5 mg/L
+          has_numeric_value: 10.5
+          has_unit: mg/L
     slot_uri: MIXS:0000428
     range: QuantityValue
     structured_pattern:
@@ -5817,7 +6275,9 @@ slots:
     description: Description of the soil type or classification. This field accepts terms under soil (http://purl.obolibrary.org/obo/ENVO_00001998).  Multiple terms can be separated by pipes
     title: soil type
     examples:
-      - value: plinthosol [ENVO:00002250]
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: plinthosol [ENVO:00002250]
     keywords:
       - soil
       - type
@@ -5827,7 +6287,9 @@ slots:
     description: Reference or method used in determining soil series name or other lower-level classification
     title: soil type method
     examples:
-      - value: https://www.lrh.usace.army.mil/Portals/38/docs/PR/BluestoneSFEIS/Appendix%20K-Soil%20Descriptions.pdf
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: https://www.lrh.usace.army.mil/Portals/38/docs/PR/BluestoneSFEIS/Appendix%20K-Soil%20Descriptions.pdf
     keywords:
       - method
       - soil
@@ -5841,7 +6303,11 @@ slots:
     description: The amount of solar energy that arrives at a specific area of a surface during a specific time interval
     title: solar irradiance
     examples:
-      - value: 1.36 kW/m2/d
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1.36 kW/m2/d
+          has_numeric_value: 1.36
+          has_unit: kW/m2/d
     slot_uri: MIXS:0000112
     range: QuantityValue
     multivalued: false
@@ -5886,7 +6352,11 @@ slots:
     description: Concentration of soluble reactive phosphorus
     title: soluble reactive phosphorus
     examples:
-      - value: 0.1 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.1 mg/L
+          has_numeric_value: 0.1
+          has_unit: mg/L
     keywords:
       - phosphorus
       - soluble
@@ -5902,7 +6372,9 @@ slots:
     description: A unique identifier assigned to a material sample (as defined by http://rs.tdwg.org/dwc/terms/materialSampleID, and as opposed to a particular digital record of a material sample) used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples. The INSDC qualifiers /specimen_voucher, /bio_material, or /culture_collection may or may not share the same value as the source_mat_id field. For instance, the /specimen_voucher qualifier and source_mat_id may both contain 'UAM:Herps:14' , referring to both the specimen voucher and sampled tissue with the same identifier. However, the /culture_collection qualifier may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id would refer to an identifier from some derived culture from which the nucleic acids were extracted (e.g. xatc123 or ark:/2154/R2)
     title: source material identifiers
     examples:
-      - value: MPI012345
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: MPI012345
     keywords:
       - identifier
       - material
@@ -5984,7 +6456,9 @@ slots:
     description: Treatment involving an exposure to standing water during a plant's life span, types can be flood water or standing water, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: standing water regimen
     examples:
-      - value: standing water;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: standing water;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - regimen
       - water
@@ -5996,7 +6470,9 @@ slots:
     description: Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other)
     title: storage conditions
     examples:
-      - value: -20 degree Celsius freezer;P2Y10D
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: -20 degree Celsius freezer;P2Y10D
     keywords:
       - condition
       - storage
@@ -6050,7 +6526,11 @@ slots:
     description: Concentration of sulfide in the sample
     title: sulfide
     examples:
-      - value: 2 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 2 umol/L
+          has_numeric_value: 2
+          has_unit: umol/L
     keywords:
       - sulfide
     slot_uri: MIXS:0000424
@@ -6105,7 +6585,11 @@ slots:
     description: Water held on a surface
     title: surface moisture
     examples:
-      - value: 0.01 g/m2
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.01 g/m2
+          has_numeric_value: 0.01
+          has_unit: g/m2
     keywords:
       - moisture
       - surface
@@ -6135,7 +6619,11 @@ slots:
     description: Temperature of the surface at the time of sampling
     title: surface temperature
     examples:
-      - value: 15 Cel
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 15 Cel
+          has_numeric_value: 15
+          has_unit: Cel
     keywords:
       - surface
       - temperature
@@ -6153,7 +6641,11 @@ slots:
     description: Concentration of suspended particulate matter
     title: suspended particulate matter
     examples:
-      - value: 0.5 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.5 mg/L
+          has_numeric_value: 0.5
+          has_unit: mg/L
     keywords:
       - particle
       - particulate
@@ -6207,7 +6699,9 @@ slots:
     description: Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA
     title: target subfragment
     examples:
-      - value: V6, V9, ITS
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: V6, V9, ITS
     keywords:
       - target
     slot_uri: MIXS:0000045
@@ -6219,7 +6713,11 @@ slots:
     description: Temperature of the sample at the time of sampling
     title: temperature
     examples:
-      - value: 25 Cel
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 25 Cel
+          has_numeric_value: 25
+          has_unit: Cel
     keywords:
       - temperature
     slot_uri: MIXS:0000113
@@ -6235,7 +6733,11 @@ slots:
     description: The recorded temperature value at sampling time outside
     title: temperature outside house
     examples:
-      - value: 5 Cel
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 5 Cel
+          has_numeric_value: 5
+          has_unit: Cel
     keywords:
       - house
       - temperature
@@ -6275,7 +6777,9 @@ slots:
     description: Description of plant tissue culture growth media used
     title: tissue culture growth media
     examples:
-      - value: https://link.springer.com/content/pdf/10.1007/BF02796489.pdf
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: https://link.springer.com/content/pdf/10.1007/BF02796489.pdf
     keywords:
       - culture
       - growth
@@ -6319,7 +6823,11 @@ slots:
     description: Measurement of total depth of water column
     title: total depth of water column
     examples:
-      - value: 500 m
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 500 m
+          has_numeric_value: 500
+          has_unit: m
     keywords:
       - depth
       - total
@@ -6355,7 +6863,11 @@ slots:
     description: Total inorganic nitrogen content
     title: total inorganic nitrogen
     examples:
-      - value: 40 ug/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 40 ug/L
+          has_numeric_value: 40
+          has_unit: ug/L
     keywords:
       - inorganic
       - nitrogen
@@ -6419,7 +6931,11 @@ slots:
     description: Total nitrogen content of the sample
     title: total nitrogen content
     examples:
-      - value: 5 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 5 mg/L
+          has_numeric_value: 5
+          has_unit: mg/L
     keywords:
       - content
       - nitrogen
@@ -6455,7 +6971,11 @@ slots:
     description: Total organic carbon content
     title: total organic carbon
     examples:
-      - value: 5 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 5 mg/L
+          has_numeric_value: 5
+          has_unit: mg/L
     keywords:
       - carbon
       - organic
@@ -6473,7 +6993,11 @@ slots:
     description: Total particulate carbon content
     title: total particulate carbon
     examples:
-      - value: 35 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 35 umol/L
+          has_numeric_value: 35
+          has_unit: umol/L
     keywords:
       - carbon
       - particle
@@ -6492,7 +7016,11 @@ slots:
     description: 'Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus'
     title: total phosphorus
     examples:
-      - value: 0.03 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.03 mg/L
+          has_numeric_value: 0.03
+          has_unit: mg/L
     keywords:
       - phosphorus
       - total
@@ -6567,7 +7095,11 @@ slots:
     description: Measure of the amount of cloudiness or haziness in water caused by individual particles
     title: turbidity
     examples:
-      - value: 0.3 [NTU]
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 0.3 [NTU]
+          has_numeric_value: 0.3
+          has_unit: '[NTU]'
     slot_uri: MIXS:0000191
     range: QuantityValue
     structured_pattern:
@@ -6626,7 +7158,11 @@ slots:
     description: Ventilation rate of the system in the sampled premises
     title: ventilation rate
     examples:
-      - value: 750 m3/min
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 750 m3/min
+          has_numeric_value: 750
+          has_unit: m3/min
     keywords:
       - rate
     slot_uri: MIXS:0000114
@@ -6641,7 +7177,9 @@ slots:
     description: Ventilation system used in the sampled premises
     title: ventilation type
     examples:
-      - value: Operable windows
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: Operable windows
     keywords:
       - type
     slot_uri: MIXS:0000756
@@ -6699,7 +7237,9 @@ slots:
     description: Concentration of carbon-based chemicals that easily evaporate at room temperature; can report multiple volatile organic compounds by entering numeric values preceded by name of compound
     title: volatile organic compounds
     examples:
-      - value: formaldehyde;500 nanogram per liter
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: formaldehyde;500 nanogram per liter
     keywords:
       - organic
     string_serialization: '{text};{float} {unit}'
@@ -6851,7 +7391,11 @@ slots:
     description: Measurement of magnitude and direction of flow within a fluid
     title: water current
     examples:
-      - value: 10 m3/s
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 10 m3/s
+          has_numeric_value: 10
+          has_unit: m3/s
     keywords:
       - water
     slot_uri: MIXS:0000203
@@ -6869,7 +7413,11 @@ slots:
     comments:
       - percent or float?
     examples:
-      - value: 45%
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 45 %
+          has_numeric_value: 45
+          has_unit: '%'
     keywords:
       - water
     slot_uri: MIXS:0000454
@@ -6928,7 +7476,9 @@ slots:
     description: Information about treatment involving an exposure to water with varying degree of temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: water temperature regimen
     examples:
-      - value: 15 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 15 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - regimen
       - temperature
@@ -6943,7 +7493,9 @@ slots:
     description: Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: watering regimen
     examples:
-      - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - regimen
       - water
@@ -7135,7 +7687,9 @@ slots:
     description: Primary publication if isolated before genome publication; otherwise, primary genome report
     title: reference for biomaterial
     examples:
-      - value: doi:10.1016/j.syapm.2018.01.009
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: doi:10.1016/j.syapm.2018.01.009
     slot_uri: MIXS:0000025
     range: TextValue
     structured_pattern:
@@ -7146,7 +7700,9 @@ slots:
     description: Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material
     title: isolation and growth condition
     examples:
-      - value: doi:10.1016/j.syapm.2018.01.009
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: doi:10.1016/j.syapm.2018.01.009
     keywords:
       - condition
       - growth
