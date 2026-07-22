@@ -1487,6 +1487,7 @@ slots:
     title: bulk electrical conductivity
     examples:
       - object:
+          type: nmdc:QuantityValue
           has_raw_value: 0.017 mS/cm
           has_numeric_value: 0.017
           has_unit: mS/cm
@@ -1720,6 +1721,8 @@ slots:
     description: The elapsed time of an activity.
     examples:
       - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "2 h"
           has_numeric_value: 2
           has_unit: h
     annotations:
