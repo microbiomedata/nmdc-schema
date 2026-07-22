@@ -1806,7 +1806,7 @@ slots:
     description: Concentration of calcium in the sample
     title: calcium
     examples:
-      - description: NMDC uses milligram per kilogram; the MIxS example uses micromole per liter.
+      - description: NMDC records milligram per kilogram, the solid-phase soil value in nmdc.biosample_set; the MIxS example uses micromole per liter, a soil-solution concentration measured on a different basis that is not interconvertible with a per-dry-mass value without the extraction ratio.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 2774.35 mg/kg
@@ -1865,7 +1865,7 @@ slots:
     description: Ratio of amount or concentrations of carbon to nitrogen
     title: carbon/nitrogen ratio
     examples:
-      - description: NMDC uses 20.6; the MIxS example uses 0.417361111.
+      - description: NMDC uses 20.6, a dimensionless carbon-to-nitrogen ratio consistent with organic-rich soil (mineral soils are near 10 and organic soils reach 30 or more); the MIxS example value 0.417361111 would mean nitrogen exceeds carbon, which does not occur in soil or any organic matter and so cannot be a valid measurement.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 20.6 1
@@ -2083,7 +2083,7 @@ slots:
     description: Concentration of chlorophyll
     title: chlorophyll
     examples:
-      - description: NMDC uses microgram per liter; the MIxS example uses milligram per cubic meter.
+      - description: NMDC records microgram per liter, the unit in nmdc.biosample_set; the MIxS example uses milligram per cubic meter, which is numerically identical (1 ug/L equals 1 mg/m3) but is not the notation used in production data.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 13 ug/L
@@ -2350,7 +2350,7 @@ slots:
     description: Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter
     title: dissolved inorganic carbon
     examples:
-      - description: NMDC uses milligram per liter; the MIxS example uses micromole per kilogram.
+      - description: NMDC records milligram per liter, the unit in nmdc.biosample_set; the MIxS example uses micromole per kilogram, the standard oceanographic unit for dissolved inorganic carbon (a mass basis that is conserved as temperature and pressure change), which does not occur in NMDC production data.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 38.18 mg/L
@@ -2373,7 +2373,7 @@ slots:
     description: Concentration of dissolved inorganic nitrogen
     title: dissolved inorganic nitrogen
     examples:
-      - description: NMDC uses milligram per liter; the MIxS example uses micromole per liter.
+      - description: NMDC records milligram per liter, the unit in nmdc.biosample_set; the MIxS example uses micromole per liter, the same dissolved-nitrogen concentration expressed as amount of substance rather than mass (they differ only by the molar mass of nitrogen).
         object:
           type: nmdc:QuantityValue
           has_raw_value: 0.404 mg/L
@@ -2432,7 +2432,7 @@ slots:
     description: Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid
     title: dissolved organic carbon
     examples:
-      - description: NMDC uses milligram per liter; the MIxS example uses micromole per liter.
+      - description: NMDC records milligram per liter (5.46 mg/L is within the roughly 1 to 20 mg/L typical of rivers and streams); the MIxS example uses micromole per liter, the same quantity scaled by the molar mass of carbon, a valid unit that does not occur in NMDC production data.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 5.46 mg/L
@@ -3052,7 +3052,7 @@ slots:
     description: Raw or converted fluorescence of water
     title: fluorescence
     examples:
-      - description: NMDC uses milligram per cubic meter; the MIxS example uses volts, which is a raw sensor voltage rather than a fluorescence unit.
+      - description: NMDC records milligram per cubic meter, the calibrated fluorescence value in nmdc.biosample_set; the MIxS example uses volts, which is the raw analog output of a fluorometer and only becomes a concentration after calibration, so it is not a fluorescence unit.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 0.9563 mg/m3
@@ -3666,7 +3666,7 @@ slots:
       interpolated: true
       partial_match: true
     examples:
-      - description: NMDC uses centimeter; the MIxS example uses meter.
+      - description: NMDC records centimeter, the unit in nmdc.biosample_set; the MIxS example uses meter. Both measure the same length and differ only by a factor of 100, so NMDC uses the unit that appears in production data.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 56 cm
@@ -3880,7 +3880,7 @@ slots:
     annotations:
       storage_units: g/m3|%
     examples:
-      - description: NMDC uses percent; the MIxS example uses gram per cubic meter.
+      - description: NMDC records percent, the unit of relative humidity in nmdc.biosample_set; the MIxS example uses gram per cubic meter, which measures absolute humidity, a different physical quantity that cannot be derived from relative humidity without also knowing the temperature.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 56.54 %
@@ -4161,7 +4161,7 @@ slots:
     description: Concentration of magnesium in the sample
     title: magnesium
     examples:
-      - description: NMDC uses milligram per kilogram; the MIxS example uses micromole per kilogram.
+      - description: NMDC records milligram per kilogram, the unit in nmdc.biosample_set; the MIxS example uses micromole per kilogram, the same per-dry-mass soil quantity expressed as amount of substance rather than mass (they differ only by the molar mass of magnesium).
         object:
           type: nmdc:QuantityValue
           has_raw_value: 578.148 mg/kg
@@ -4389,7 +4389,7 @@ slots:
     description: Concentration of nitrogen (total)
     title: nitrogen
     examples:
-      - description: NMDC uses percent; the MIxS example uses micromole per liter.
+      - description: NMDC records percent, a solid-phase mass fraction of soil nitrogen in nmdc.biosample_set; the MIxS example uses micromole per liter, which measures dissolved inorganic nitrogen in solution, a different and much smaller pool than total soil nitrogen.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 0.18 %
@@ -4527,7 +4527,7 @@ slots:
     description: Concentration of organic carbon
     title: organic carbon
     examples:
-      - description: NMDC uses percent; the MIxS example uses milligram per liter.
+      - description: NMDC records percent, a solid-phase mass fraction of soil organic carbon in nmdc.biosample_set (about 1.36 percent is typical for mineral soil); the MIxS example uses milligram per liter, which measures dissolved organic carbon in a liquid, a different and much smaller pool than bulk soil carbon.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 1.36 %
@@ -4701,7 +4701,7 @@ slots:
     description: Concentration of particulate organic nitrogen
     title: particulate organic nitrogen
     examples:
-      - description: NMDC uses milligram per liter; the MIxS example uses micromole per liter.
+      - description: NMDC records milligram per liter, the unit in nmdc.biosample_set; the MIxS example uses micromole per liter, the same particulate-nitrogen concentration expressed as amount of substance rather than mass (they differ only by the molar mass of nitrogen).
         object:
           type: nmdc:QuantityValue
           has_raw_value: 0.25 mg/L
@@ -5795,7 +5795,7 @@ slots:
     description: The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected
     title: amount or size of sample collected
     examples:
-      - description: NMDC uses milliliter; the MIxS example uses liter.
+      - description: NMDC records milliliter, the unit in nmdc.biosample_set; the MIxS example uses liter. Both measure the same volume and differ only by a factor of 1000, so NMDC uses the unit that appears in production data.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 3 mL
@@ -6591,7 +6591,7 @@ slots:
     description: Concentration of sulfate in the sample
     title: sulfate
     examples:
-      - description: NMDC uses milligram per liter; the MIxS example uses micromole per liter.
+      - description: NMDC records milligram per liter (about 16.61 mg/L is near the freshwater norm of roughly 20 mg/L); the MIxS example uses micromole per liter, the same sulfate concentration expressed as amount of substance rather than mass (they differ only by the molar mass of sulfate).
         object:
           type: nmdc:QuantityValue
           has_raw_value: 16.61 mg/L
@@ -6950,7 +6950,7 @@ slots:
     description: 'Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen'
     title: total dissolved nitrogen
     examples:
-      - description: NMDC uses micromole per liter; the MIxS example uses microgram per liter.
+      - description: NMDC records micromole per liter, the unit in nmdc.biosample_set; the MIxS example uses microgram per liter, the same total-dissolved-nitrogen concentration expressed as mass rather than amount of substance (they differ only by the molar mass of nitrogen).
         object:
           type: nmdc:QuantityValue
           has_raw_value: 8.856 umol/L
@@ -7010,7 +7010,7 @@ slots:
     description: 'Total nitrogen concentration of water samples, calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering, reported as nitrogen'
     title: total nitrogen concentration
     examples:
-      - description: NMDC uses percent; the MIxS example uses micromole per liter.
+      - description: NMDC records percent, a solid-phase mass fraction of total soil nitrogen in nmdc.biosample_set; the MIxS example uses micromole per liter, which measures dissolved inorganic nitrogen in solution, a different and much smaller pool than total nitrogen.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 0.598 %
@@ -7659,7 +7659,7 @@ slots:
     annotations:
       storage_units: km/h|m/s
     examples:
-      - description: NMDC uses meter per second; the MIxS example uses kilometer per hour.
+      - description: NMDC records meter per second, the unit in nmdc.biosample_set; the MIxS example uses kilometer per hour. Both measure the same speed and differ only by a factor of 3.6, so NMDC uses the unit that appears in production data.
         object:
           type: nmdc:QuantityValue
           has_raw_value: 2.92 m/s

@@ -233,7 +233,7 @@ Some production data doesn't match GSC patterns. We handle this by using TextVal
 
 ## Example Values
 
-Where a MIxS slot whose range is a wrapper class (`QuantityValue`, `TextValue`, `TimestampValue`, `ControlledTermValue`, `ControlledIdentifiedTermValue`, `GeolocationValue`) has an example, it is carried in the LinkML `examples` metaslot as a structured `object:` that matches the range, not a scalar string (a few slots have no example; see below). A `QuantityValue` example is `{type, has_numeric_value, has_unit}`; a `ControlledIdentifiedTermValue` example is `{type, has_raw_value, term: {id, type}}`; and so on. `QuantityValue.has_unit` is required and must be a permissible value of `UnitEnum`. Every objectified example is validated against the materialized schema.
+Where a MIxS slot whose range is a wrapper class (`QuantityValue`, `TextValue`, `TimestampValue`, `ControlledTermValue`, `ControlledIdentifiedTermValue`, `GeolocationValue`) has an example, it is carried in the LinkML `examples` metaslot as a structured `object:` that matches the range, not a scalar string (a few slots have no example; see below). A `QuantityValue` example is `{type, has_raw_value, has_numeric_value, has_unit}`; a `ControlledIdentifiedTermValue` example is `{type, has_raw_value, term: {id, type}}`; and so on. `QuantityValue.has_unit` is required and must be a permissible value of `UnitEnum`. Every objectified example is validated against the materialized schema.
 
 Two conventions follow from that:
 
@@ -242,28 +242,7 @@ Two conventions follow from that:
 
 ### Example units corrected against production data
 
-Cross-checking `nmdc.biosample_set` found 18 slots whose upstream MIxS example unit does not occur in real data. Each example was replaced with a production-grounded value and unit.
-
-| Slot | Upstream example | Production unit | Corrected example |
-|------|------------------|-----------------|-------------------|
-| `calcium` | 0.2 umol/L | mg/kg | 2774.35 mg/kg |
-| `carb_nitro_ratio` | 0.417361111 | 1 | 20.6 1 |
-| `chlorophyll` | 5 mg/m3 | ug/L | 13 ug/L |
-| `diss_inorg_carb` | 2059 umol/kg | mg/L | 38.18 mg/L |
-| `diss_inorg_nitro` | 761 umol/L | mg/L | 0.404 mg/L |
-| `diss_org_carb` | 197 umol/L | ug/L | 3.68 ug/L |
-| `fluor` | 2.5 V | mg/m3 | 0.9563 mg/m3 |
-| `host_height` | 0.1 m | cm | 56 cm |
-| `humidity` | 25 g/m3 | % | 56.54 % |
-| `magnesium` | 52.8 umol/kg | mg/kg | 578.148 mg/kg |
-| `nitro` | 4.2 umol/L | % | 0.18 % |
-| `org_carb` | 0.015 mg/L | % | 1.36 % |
-| `part_org_nitro` | 0.3 umol/L | mg/L | 0.25 mg/L |
-| `samp_size` | 5 L | mL | 3 mL |
-| `sulfate` | 5 umol/L | mg/L | 16.61 mg/L |
-| `tot_diss_nitro` | 40 ug/L | umol/L | 8.856 umol/L |
-| `tot_nitro` | 50 umol/L | % | 0.598 % |
-| `wind_speed` | 21 km/h | m/s | 2.92 m/s |
+Cross-checking `nmdc.biosample_set` found 18 slots whose upstream MIxS example unit or value does not occur in production data; each slot's own **Examples** section in the generated schema documentation gives the corrected value and the reason for the divergence, so this document does not restate them in a table that would drift from the shipped schema.
 
 ### Units that are inconsistent or not UCUM-expressible
 
