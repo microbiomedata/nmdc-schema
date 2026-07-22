@@ -3982,7 +3982,7 @@ slots:
     examples:
       - object:
           type: nmdc:TextValue
-          has_raw_value: incandescant light;10 lux;450 nanometer
+          has_raw_value: incandescent light;10 lux;450 nanometer
     keywords:
       - light
       - regimen

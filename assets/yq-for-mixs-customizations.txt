@@ -574,11 +574,6 @@
 '.enums.HostSexEnum.permissible_values.["transgender (male to female)"] = {}'
 '.enums.HostSexEnum.permissible_values.["undeclared"] = {}'
 
-# Fix a few examples so that they are validatable
-
-
-
-
 # Remove redundant inline examples from MIxS slot descriptions: the value is already
 # carried in the slot's examples metaslot, so the copy in the prose is a duplicate.
 # See CONTRIBUTING.md "Put example values in the examples metaslot, not in prose".
@@ -798,7 +793,6 @@
 # Protocol/regimen slots are TextValue/string range, so they don't need units annotations
 '.slots.organism_count.annotations.storage_units = {"tag": "storage_units", "value": "1"}'
 
-
 # MIxS has clear single UCUM-compatible preferred units
 
 # MIxS provides multiple options but both are UCUM-compatible
@@ -939,7 +933,7 @@
 '.slots.last_clean.examples = [{"object": {"type": "nmdc:TimestampValue", "has_raw_value": "2013-03-25T12:42:31+01:00"}}]'
 '.slots.lat_lon.examples = [{"object": {"type": "nmdc:GeolocationValue", "latitude": 50.586825, "longitude": 6.408977, "has_raw_value": "50.586825 6.408977"}}]'
 '.slots.light_intensity.examples = [{"object": {"type": "nmdc:QuantityValue", "has_numeric_value": 0.3, "has_unit": "lx"}}]'
-'.slots.light_regm.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "incandescant light;10 lux;450 nanometer"}}]'
+'.slots.light_regm.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "incandescent light;10 lux;450 nanometer"}}]'
 '.slots.mean_frict_vel.examples = [{"object": {"type": "nmdc:QuantityValue", "has_numeric_value": 0.5, "has_unit": "m/s"}}]'
 '.slots.mean_peak_frict_vel.examples = [{"object": {"type": "nmdc:QuantityValue", "has_numeric_value": 1, "has_unit": "m/s"}}]'
 '.slots.methane.examples = [{"object": {"type": "nmdc:QuantityValue", "has_numeric_value": 1800, "has_unit": "[ppb]"}}]'
