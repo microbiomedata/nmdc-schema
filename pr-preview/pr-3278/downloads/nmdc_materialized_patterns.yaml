@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.21.0.post56.dev0+649421710
+version: 11.21.0.post57.dev0+8785ee4e2
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -8415,6 +8415,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 9 g/g
         has_numeric_value: 9
         has_unit: g/g
     from_schema: https://w3id.org/nmdc/nmdc
@@ -8561,6 +8562,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 20 Cel
         has_numeric_value: 20
         has_unit: Cel
     from_schema: https://w3id.org/nmdc/nmdc
@@ -8661,6 +8663,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 50 mg/L
         has_numeric_value: 50
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -8697,6 +8700,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.005 mol/L
         has_numeric_value: 0.005
         has_unit: mol/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -8726,6 +8730,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 100 m
         has_numeric_value: 100
         has_unit: m
     from_schema: https://w3id.org/nmdc/nmdc
@@ -8751,6 +8756,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.269 mol/L/h
         has_numeric_value: 0.269
         has_unit: mol/L/h
     from_schema: https://w3id.org/nmdc/nmdc
@@ -8776,6 +8782,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 1.5 mg/L
         has_numeric_value: 1.5
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -8838,6 +8845,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 225 mm
         has_numeric_value: 225
         has_unit: mm
     from_schema: https://w3id.org/nmdc/nmdc
@@ -8865,6 +8873,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 12.5 Cel
         has_numeric_value: 12.5
         has_unit: Cel
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9012,6 +9021,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 25.5 Cel
         has_numeric_value: 25.5
         has_unit: Cel
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9050,6 +9060,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 12.5 Cel
         has_numeric_value: 12.5
         has_unit: Cel
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9078,6 +9089,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 5 mg/m3/d
         has_numeric_value: 5
         has_unit: mg/m3/d
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9105,6 +9117,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 300 umol/L/h
         has_numeric_value: 300
         has_unit: umol/L/h
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9127,6 +9140,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 50 ng/h
         has_numeric_value: 50
         has_unit: ng/h
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9156,6 +9170,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 1013 mbar
         has_numeric_value: 1013
         has_unit: mbar
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9368,6 +9383,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 14 ug/L
         has_numeric_value: 14
         has_unit: ug/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9441,6 +9457,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.05 [ppm]
         has_numeric_value: 0.05
         has_unit: '[ppm]'
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9499,6 +9516,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 15 a
         has_numeric_value: 15
         has_unit: a
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9568,6 +9586,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 410 [ppm]
         has_numeric_value: 410
         has_unit: '[ppm]'
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9595,6 +9614,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.1 [ppm]
         has_numeric_value: 0.1
         has_unit: '[ppm]'
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9643,6 +9663,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 25 m2
         has_numeric_value: 25
         has_unit: m2
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9901,6 +9922,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 5000 mg/L
         has_numeric_value: 5000
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -9985,6 +10007,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 10 uS/cm
         has_numeric_value: 10
         has_unit: uS/cm
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10132,6 +10155,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 1000 kg/m3
         has_numeric_value: 1000
         has_unit: kg/m3
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10172,6 +10196,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 10 m
         has_numeric_value: 10
         has_unit: m
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10200,6 +10225,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 22 Cel
         has_numeric_value: 22
         has_unit: Cel
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10248,6 +10274,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 5 mg/L
         has_numeric_value: 5
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10276,6 +10303,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.3 umol/L
         has_numeric_value: 0.3
         has_unit: umol/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10353,6 +10381,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 56.5 umol/L
         has_numeric_value: 56.5
         has_unit: umol/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10430,6 +10459,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.05 mg/L
         has_numeric_value: 0.05
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10459,6 +10489,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 175 umol/L
         has_numeric_value: 175
         has_unit: umol/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10582,6 +10613,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 2.5 m2
         has_numeric_value: 2.5
         has_unit: m2
     from_schema: https://w3id.org/nmdc/nmdc
@@ -10666,6 +10698,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 28.71 umol/m2/s
         has_numeric_value: 28.71
         has_unit: umol/m2/s
     from_schema: https://w3id.org/nmdc/nmdc
@@ -11296,6 +11329,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 2 1/d
         has_numeric_value: 2
         has_unit: 1/d
     from_schema: https://w3id.org/nmdc/nmdc
@@ -11451,6 +11485,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 5 mol/L/h
         has_numeric_value: 5
         has_unit: mol/L/h
     from_schema: https://w3id.org/nmdc/nmdc
@@ -11864,6 +11899,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 10 d
         has_numeric_value: 10
         has_unit: d
     from_schema: https://w3id.org/nmdc/nmdc
@@ -11949,6 +11985,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 15 Cel
         has_numeric_value: 15
         has_unit: Cel
     from_schema: https://w3id.org/nmdc/nmdc
@@ -12036,6 +12073,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 500 g
         has_numeric_value: 500
         has_unit: g
     from_schema: https://w3id.org/nmdc/nmdc
@@ -12140,6 +12178,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 1 m
         has_numeric_value: 1
         has_unit: m
     from_schema: https://w3id.org/nmdc/nmdc
@@ -12325,6 +12364,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 2500 g
         has_numeric_value: 2500
         has_unit: g
     from_schema: https://w3id.org/nmdc/nmdc
@@ -12355,6 +12395,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 1500 g
         has_numeric_value: 1500
         has_unit: g
     from_schema: https://w3id.org/nmdc/nmdc
@@ -12618,6 +12659,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.3 lx
         has_numeric_value: 0.3
         has_unit: lx
     from_schema: https://w3id.org/nmdc/nmdc
@@ -12811,6 +12853,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.5 m/s
         has_numeric_value: 0.5
         has_unit: m/s
     from_schema: https://w3id.org/nmdc/nmdc
@@ -12839,6 +12882,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 1 m/s
         has_numeric_value: 1
         has_unit: m/s
     from_schema: https://w3id.org/nmdc/nmdc
@@ -12893,6 +12937,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 1800 [ppb]
         has_numeric_value: 1800
         has_unit: '[ppb]'
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13027,6 +13072,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 65 umol/L
         has_numeric_value: 65
         has_unit: umol/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13054,6 +13100,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.5 umol/L
         has_numeric_value: 0.5
         has_unit: umol/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13309,6 +13356,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 200 ug/L
         has_numeric_value: 200
         has_unit: ug/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13333,6 +13381,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 4 ug/L
         has_numeric_value: 4
         has_unit: ug/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13442,6 +13491,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 600 [ppm]
         has_numeric_value: 600
         has_unit: '[ppm]'
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13466,6 +13516,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.02 mg/L
         has_numeric_value: 0.02
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13644,6 +13695,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.05 umol/L
         has_numeric_value: 0.05
         has_unit: umol/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13738,6 +13790,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.7 umol/L
         has_numeric_value: 0.7
         has_unit: umol/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13783,6 +13836,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 3.926 umol/m2/s
         has_numeric_value: 3.926
         has_unit: umol/m2/s
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13938,6 +13992,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 463 mg/L
         has_numeric_value: 463
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -14016,6 +14071,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 50 atm
         has_numeric_value: 50
         has_unit: atm
     from_schema: https://w3id.org/nmdc/nmdc
@@ -14078,6 +14134,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 100 mg/m3/d
         has_numeric_value: 100
         has_unit: mg/m3/d
     from_schema: https://w3id.org/nmdc/nmdc
@@ -14251,6 +14308,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 300 mV
         has_numeric_value: 300
         has_unit: mV
     from_schema: https://w3id.org/nmdc/nmdc
@@ -14809,6 +14867,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 70 mg/L
         has_numeric_value: 70
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -14965,6 +15024,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 1534 m
         has_numeric_value: 1534
         has_unit: m
     from_schema: https://w3id.org/nmdc/nmdc
@@ -15120,6 +15180,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: -80 Cel
         has_numeric_value: -80
         has_unit: Cel
     from_schema: https://w3id.org/nmdc/nmdc
@@ -15272,6 +15333,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 1500 mL
         has_numeric_value: 1500
         has_unit: mL
     from_schema: https://w3id.org/nmdc/nmdc
@@ -15377,6 +15439,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 10 mm
         has_numeric_value: 10
         has_unit: mm
     from_schema: https://w3id.org/nmdc/nmdc
@@ -15405,6 +15468,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 18 Cel
         has_numeric_value: 18
         has_unit: Cel
     from_schema: https://w3id.org/nmdc/nmdc
@@ -15596,6 +15660,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.05 umol/L
         has_numeric_value: 0.05
         has_unit: umol/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -15641,6 +15706,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.2 um
         has_numeric_value: 0.2
         has_unit: um
     from_schema: https://w3id.org/nmdc/nmdc
@@ -15669,6 +15735,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 20 um
         has_numeric_value: 20
         has_unit: um
     from_schema: https://w3id.org/nmdc/nmdc
@@ -15699,6 +15766,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 35 deg
         has_numeric_value: 35
         has_unit: deg
     from_schema: https://w3id.org/nmdc/nmdc
@@ -15772,6 +15840,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 10.5 mg/L
         has_numeric_value: 10.5
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -15862,6 +15931,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 1.36 kW/m2/d
         has_numeric_value: 1.36
         has_unit: kW/m2/d
     from_schema: https://w3id.org/nmdc/nmdc
@@ -15932,6 +16002,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.1 mg/L
         has_numeric_value: 0.1
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16186,6 +16257,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 2 umol/L
         has_numeric_value: 2
         has_unit: umol/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16264,6 +16336,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.01 g/m2
         has_numeric_value: 0.01
         has_unit: g/m2
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16307,6 +16380,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 15 Cel
         has_numeric_value: 15
         has_unit: Cel
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16336,6 +16410,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.5 mg/L
         has_numeric_value: 0.5
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16439,6 +16514,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 25 Cel
         has_numeric_value: 25
         has_unit: Cel
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16466,6 +16542,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 5 Cel
         has_numeric_value: 5
         has_unit: Cel
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16589,6 +16666,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 500 m
         has_numeric_value: 500
         has_unit: m
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16645,6 +16723,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 40 ug/L
         has_numeric_value: 40
         has_unit: ug/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16741,6 +16820,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 5 mg/L
         has_numeric_value: 5
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16789,6 +16869,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 5 mg/L
         has_numeric_value: 5
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16818,6 +16899,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 35 umol/L
         has_numeric_value: 35
         has_unit: umol/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16849,6 +16931,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.03 mg/L
         has_numeric_value: 0.03
         has_unit: mg/L
     from_schema: https://w3id.org/nmdc/nmdc
@@ -16958,6 +17041,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.3 [NTU]
         has_numeric_value: 0.3
         has_unit: '[NTU]'
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17046,6 +17130,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 750 m3/min
         has_numeric_value: 750
         has_unit: m3/min
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17378,6 +17463,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 10 m3/s
         has_numeric_value: 10
         has_unit: m3/s
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17408,6 +17494,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 45 %
         has_numeric_value: 45
         has_unit: '%'
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17997,6 +18084,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 2.5 mg/kg
         has_numeric_value: 2.5
         has_unit: mg/kg
     from_schema: https://w3id.org/nmdc/nmdc
@@ -18023,6 +18111,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 24.7 mg/kg
         has_numeric_value: 24.7
         has_unit: mg/kg
     from_schema: https://w3id.org/nmdc/nmdc
@@ -18049,6 +18138,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 2.3 mg/kg
         has_numeric_value: 2.3
         has_unit: mg/kg
     from_schema: https://w3id.org/nmdc/nmdc
@@ -18079,6 +18169,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 0.29 mg/kg
         has_numeric_value: 0.29
         has_unit: mg/kg
     from_schema: https://w3id.org/nmdc/nmdc
@@ -18107,6 +18198,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 1.2 mg/kg
         has_numeric_value: 1.2
         has_unit: mg/kg
     from_schema: https://w3id.org/nmdc/nmdc
@@ -18138,6 +18230,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 543 [ppm]
         has_numeric_value: 543
         has_unit: '[ppm]'
     from_schema: https://w3id.org/nmdc/nmdc
@@ -18171,6 +18264,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
+        has_raw_value: 1575 [ppm]
         has_numeric_value: 1575
         has_unit: '[ppm]'
     from_schema: https://w3id.org/nmdc/nmdc
