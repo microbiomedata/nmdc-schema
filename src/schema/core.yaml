@@ -1523,6 +1523,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: "2.5 mg/kg"
           has_numeric_value: 2.5
           has_unit: mg/kg
     range: QuantityValue
@@ -1539,6 +1540,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: "24.7 mg/kg"
           has_numeric_value: 24.7
           has_unit: mg/kg
     see_also:
@@ -1558,6 +1560,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: "2.3 mg/kg"
           has_numeric_value: 2.3
           has_unit: mg/kg
     see_also:
@@ -1579,6 +1582,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: "0.29 mg/kg"
           has_numeric_value: 0.29
           has_unit: mg/kg
     see_also:
@@ -1598,6 +1602,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: "1.2 mg/kg"
           has_numeric_value: 1.2
           has_unit: mg/kg
     see_also:
@@ -1620,6 +1625,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: "543 [ppm]"
           has_numeric_value: 543
           has_unit: "[ppm]"
     see_also:
@@ -1642,6 +1648,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: "1575 [ppm]"
           has_numeric_value: 1575
           has_unit: "[ppm]"
     see_also:
