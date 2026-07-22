@@ -11,7 +11,7 @@
 {{ obj_yaml(o[k], ind ~ '  ') }}{% else %} {{ o[k]|tojson }}
 {% endif %}{% endif %}{% endfor %}
 {%- endmacro -%}
-{%- macro inline(s) -%}{% if '`' in s|string %}{{ s }}{% else %}`{{ s }}`{% endif %}{%- endmacro -%}
+{%- macro inline(s) -%}{% if '`' in s|string %}{{ s|string|replace('`', '\`') }}{% else %}`{{ s }}`{% endif %}{%- endmacro -%}
 {% if element.examples %}
 ## Examples
 
