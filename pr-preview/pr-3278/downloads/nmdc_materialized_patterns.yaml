@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.21.0.post57.dev0+8785ee4e2
+version: 11.21.0.post58.dev0+81dbf5aef
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -8207,16 +8207,19 @@ slots:
     examples:
     - description: An EMSL award DOI.
       object:
-        doi: doi:10.46936/intm.proj.2021.60141/60000423
+        type: nmdc:Doi
+        doi_value: doi:10.46936/intm.proj.2021.60141/60000423
         doi_provider: emsl
         doi_category: award_doi
     - description: A publication DOI.
       object:
-        doi: doi:10.1101/2022.12.12.520098
+        type: nmdc:Doi
+        doi_value: doi:10.1101/2022.12.12.520098
         doi_category: publication_doi
     - description: A data management plan DOI.
       object:
-        doi: doi:10.48321/D1Z60Q
+        type: nmdc:Doi
+        doi_value: doi:10.48321/D1Z60Q
         doi_category: data_management_plan_doi
         doi_provider: gsc
     from_schema: https://w3id.org/nmdc/nmdc
@@ -18038,6 +18041,7 @@ slots:
     examples:
     - description: The conductivity measurement was 0.017 millisiemens per centimeter.
       object:
+        type: nmdc:QuantityValue
         has_raw_value: 0.017 mS/cm
         has_numeric_value: 0.017
         has_unit: mS/cm
@@ -18363,6 +18367,8 @@ slots:
     description: The elapsed time of an activity.
     examples:
     - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 2 h
         has_numeric_value: 2
         has_unit: h
     from_schema: https://w3id.org/nmdc/nmdc
