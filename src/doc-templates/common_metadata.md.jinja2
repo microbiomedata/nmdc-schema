@@ -6,12 +6,22 @@
 {% endif %}
 
 
+{%- macro obj_yaml(o, ind='') -%}
+{% for k in o %}{% if k|string != '_if_missing' %}{{ ind }}{{ k }}:{% if o[k] is iterable and o[k] is not string and o[k]|string|first != '[' %}
+{{ obj_yaml(o[k], ind ~ '  ') }}{% else %} {{ o[k]|tojson }}
+{% endif %}{% endif %}{% endfor %}
+{%- endmacro -%}
 {% if element.examples %}
 ## Examples
-| Example | Description |
-| --- | --- |
+
 {% for x in element.examples -%}
-| {% if x.value is not none %}{{ x.value }}{% elif x.object is not none %}{% if x.object is iterable and x.object is not string and x.object|string|first != '[' %}{% set ns = namespace(sep='') %}{% for k in x.object %}{% if k|string != '_if_missing' %}{{ ns.sep }}{{ k }}: {{ x.object[k] }}{% set ns.sep = '; ' %}{% endif %}{% endfor %}{% else %}{{ x.object }}{% endif %}{% endif %} | {% if x.description is not none %}{{ x.description }}{% endif %} |
+{% if x.object is not none %}{% if x.object is iterable and x.object is not string and x.object|string|first != '[' %}{% if x.description is not none %}{{ x.description }}
+
+{% endif %}```yaml
+{{ obj_yaml(x.object) }}```
+{% else %}- `{{ x.object|tojson }}`{% if x.description is not none %} - {{ x.description }}{% endif %}
+{% endif %}{% else %}- `{{ x.value }}`{% if x.description is not none %} - {{ x.description }}{% endif %}
+{% endif %}
 {% endfor %}
 {% endif -%}
 
