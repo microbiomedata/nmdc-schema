@@ -1004,6 +1004,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 9 g/g
           has_numeric_value: 9
           has_unit: g/g
     keywords:
@@ -1111,6 +1112,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 20 Cel
           has_numeric_value: 20
           has_unit: Cel
     keywords:
@@ -1182,6 +1184,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 50 mg/L
           has_numeric_value: 50
           has_unit: mg/L
     keywords:
@@ -1208,6 +1211,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.005 mol/L
           has_numeric_value: 0.005
           has_unit: mol/L
     slot_uri: MIXS:0000490
@@ -1227,6 +1231,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 100 m
           has_numeric_value: 100
           has_unit: m
     slot_uri: MIXS:0000094
@@ -1244,6 +1249,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.269 mol/L/h
           has_numeric_value: 0.269
           has_unit: mol/L/h
     slot_uri: MIXS:0000172
@@ -1261,6 +1267,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 1.5 mg/L
           has_numeric_value: 1.5
           has_unit: mg/L
     slot_uri: MIXS:0000427
@@ -1309,6 +1316,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 225 mm
           has_numeric_value: 225
           has_unit: mm
   annual_temp:
@@ -1320,6 +1328,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 12.5 Cel
           has_numeric_value: 12.5
           has_unit: Cel
     keywords:
@@ -1414,6 +1423,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 25.5 Cel
           has_numeric_value: 25.5
           has_unit: Cel
     keywords:
@@ -1440,6 +1450,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 12.5 Cel
           has_numeric_value: 12.5
           has_unit: Cel
     keywords:
@@ -1460,6 +1471,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 5 mg/m3/d
           has_numeric_value: 5
           has_unit: mg/m3/d
     keywords:
@@ -1479,6 +1491,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 300 umol/L/h
           has_numeric_value: 300
           has_unit: umol/L/h
     slot_uri: MIXS:0000684
@@ -1493,6 +1506,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 50 ng/h
           has_numeric_value: 50
           has_unit: ng/h
     keywords:
@@ -1515,6 +1529,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 1013 mbar
           has_numeric_value: 1013
           has_unit: mbar
     keywords:
@@ -1665,6 +1680,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 14 ug/L
           has_numeric_value: 14
           has_unit: ug/L
     slot_uri: MIXS:0000175
@@ -1714,6 +1730,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.05 [ppm]
           has_numeric_value: 0.05
           has_unit: '[ppm]'
     slot_uri: MIXS:0000176
@@ -1757,6 +1774,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 15 a
           has_numeric_value: 15
           has_unit: a
     keywords:
@@ -1790,6 +1808,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 2774.35 mg/kg
           has_numeric_value: 2774.35
           has_unit: mg/kg
     slot_uri: MIXS:0000432
@@ -1807,6 +1826,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 410 [ppm]
           has_numeric_value: 410
           has_unit: '[ppm]'
     keywords:
@@ -1826,6 +1846,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.1 [ppm]
           has_numeric_value: 0.1
           has_unit: '[ppm]'
     keywords:
@@ -1845,6 +1866,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 20.6 1
           has_numeric_value: 20.6
           has_unit: "1"
     keywords:
@@ -1863,6 +1885,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 25 m2
           has_numeric_value: 25
           has_unit: m2
     keywords:
@@ -2042,6 +2065,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 5000 mg/L
           has_numeric_value: 5000
           has_unit: mg/L
     slot_uri: MIXS:0000429
@@ -2059,6 +2083,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 13 ug/L
           has_numeric_value: 13
           has_unit: ug/L
     slot_uri: MIXS:0000177
@@ -2101,6 +2126,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 10 uS/cm
           has_numeric_value: 10
           has_unit: uS/cm
     slot_uri: MIXS:0000692
@@ -2201,6 +2227,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 1000 kg/m3
           has_numeric_value: 1000
           has_unit: kg/m3
     keywords:
@@ -2236,6 +2263,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 10 m
           has_numeric_value: 10
           has_unit: m
   dew_point:
@@ -2247,6 +2275,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 22 Cel
           has_numeric_value: 22
           has_unit: Cel
     slot_uri: MIXS:0000129
@@ -2279,6 +2308,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 5 mg/L
           has_numeric_value: 5
           has_unit: mg/L
     keywords:
@@ -2299,6 +2329,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.3 umol/L
           has_numeric_value: 0.3
           has_unit: umol/L
     keywords:
@@ -2318,6 +2349,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 38.18 mg/L
           has_numeric_value: 38.18
           has_unit: mg/L
     keywords:
@@ -2339,6 +2371,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.404 mg/L
           has_numeric_value: 0.404
           has_unit: mg/L
     keywords:
@@ -2357,6 +2390,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 56.5 umol/L
           has_numeric_value: 56.5
           has_unit: umol/L
     keywords:
@@ -2395,6 +2429,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 3.68 ug/L
           has_numeric_value: 3.68
           has_unit: ug/L
     keywords:
@@ -2413,6 +2448,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.05 mg/L
           has_numeric_value: 0.05
           has_unit: mg/L
     keywords:
@@ -2436,6 +2472,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 175 umol/L
           has_numeric_value: 175
           has_unit: umol/L
     keywords:
@@ -2530,6 +2567,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 2.5 m2
           has_numeric_value: 2.5
           has_unit: m2
     keywords:
@@ -2592,6 +2630,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 28.71 umol/m2/s
           has_numeric_value: 28.71
           has_unit: umol/m2/s
     slot_uri: MIXS:0000703
@@ -3009,6 +3048,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.9563 mg/m3
           has_numeric_value: 0.9563
           has_unit: mg/m3
     slot_uri: MIXS:0000704
@@ -3023,6 +3063,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 2 1/d
           has_numeric_value: 2
           has_unit: 1/d
     keywords:
@@ -3133,6 +3174,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 5 mol/L/h
           has_numeric_value: 5
           has_unit: mol/L/h
     slot_uri: MIXS:0000137
@@ -3442,6 +3484,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 10 d
           has_numeric_value: 10
           has_unit: d
   host_body_habitat:
@@ -3506,6 +3549,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 15 Cel
           has_numeric_value: 15
           has_unit: Cel
   host_color:
@@ -3558,6 +3602,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 500 g
           has_numeric_value: 500
           has_unit: g
     keywords:
@@ -3616,6 +3661,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 56 cm
           has_numeric_value: 56
           has_unit: cm
   host_last_meal:
@@ -3639,6 +3685,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 1 m
           has_numeric_value: 1
           has_unit: m
     keywords:
@@ -3785,6 +3832,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 2500 g
           has_numeric_value: 2500
           has_unit: g
   host_wet_mass:
@@ -3796,6 +3844,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 1500 g
           has_numeric_value: 1500
           has_unit: g
     keywords:
@@ -3825,6 +3874,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 56.54 %
           has_numeric_value: 56.54
           has_unit: '%'
   humidity_regm:
@@ -3941,6 +3991,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.79 1
           has_numeric_value: 0.79
           has_unit: "1"
     keywords:
@@ -3990,6 +4041,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.3 lx
           has_numeric_value: 0.3
           has_unit: lx
     keywords:
@@ -4102,6 +4154,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 578.148 mg/kg
           has_numeric_value: 578.148
           has_unit: mg/kg
     slot_uri: MIXS:0000431
@@ -4132,6 +4185,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.5 m/s
           has_numeric_value: 0.5
           has_unit: m/s
     keywords:
@@ -4152,6 +4206,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 1 m/s
           has_numeric_value: 1
           has_unit: m/s
     keywords:
@@ -4197,6 +4252,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 1800 [ppb]
           has_numeric_value: 1800
           has_unit: '[ppb]'
   micro_biomass_meth:
@@ -4285,6 +4341,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 65 umol/L
           has_numeric_value: 65
           has_unit: umol/L
     keywords:
@@ -4304,6 +4361,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.5 umol/L
           has_numeric_value: 0.5
           has_unit: umol/L
     keywords:
@@ -4323,6 +4381,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.18 %
           has_numeric_value: 0.18
           has_unit: '%'
     keywords:
@@ -4418,6 +4477,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.1 1/[sft_i]
           has_numeric_value: 0.1
           has_unit: 1/[sft_i]
     keywords:
@@ -4441,6 +4501,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 10 1
           has_numeric_value: 10
           has_unit: "1"
     slot_uri: MIXS:0000772
@@ -4457,6 +4518,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 1.36 %
           has_numeric_value: 1.36
           has_unit: '%'
     keywords:
@@ -4492,6 +4554,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 200 ug/L
           has_numeric_value: 200
           has_unit: ug/L
     keywords:
@@ -4508,6 +4571,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 4 ug/L
           has_numeric_value: 4
           has_unit: ug/L
     keywords:
@@ -4585,6 +4649,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 600 [ppm]
           has_numeric_value: 600
           has_unit: '[ppm]'
     keywords:
@@ -4601,6 +4666,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.02 mg/L
           has_numeric_value: 0.02
           has_unit: mg/L
     keywords:
@@ -4625,6 +4691,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.25 mg/L
           has_numeric_value: 0.25
           has_unit: mg/L
     keywords:
@@ -4725,6 +4792,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.05 umol/L
           has_numeric_value: 0.05
           has_unit: umol/L
     keywords:
@@ -4795,6 +4863,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.7 umol/L
           has_numeric_value: 0.7
           has_unit: umol/L
     keywords:
@@ -4828,6 +4897,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 3.926 umol/m2/s
           has_numeric_value: 3.926
           has_unit: umol/m2/s
     slot_uri: MIXS:0000725
@@ -4933,6 +5003,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 463 mg/L
           has_numeric_value: 463
           has_unit: mg/L
     slot_uri: MIXS:0000430
@@ -4982,6 +5053,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 50 atm
           has_numeric_value: 50
           has_unit: atm
     keywords:
@@ -5028,6 +5100,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 100 mg/m3/d
           has_numeric_value: 100
           has_unit: mg/m3/d
     keywords:
@@ -5146,6 +5219,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 300 mV
           has_numeric_value: 300
           has_unit: mV
     slot_uri: MIXS:0000182
@@ -5165,6 +5239,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.8 1
           has_numeric_value: 0.8
           has_unit: "1"
     keywords:
@@ -5186,6 +5261,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 12 %
           has_numeric_value: 12
           has_unit: '%'
     keywords:
@@ -5499,6 +5575,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 7.5 [pH]
           has_numeric_value: 7.5
           has_unit: '[pH]'
     keywords:
@@ -5553,6 +5630,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 70 mg/L
           has_numeric_value: 70
           has_unit: mg/L
     keywords:
@@ -5658,6 +5736,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 1534 m
           has_numeric_value: 1534
           has_unit: m
     keywords:
@@ -5705,6 +5784,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 3 mL
           has_numeric_value: 3
           has_unit: mL
     keywords:
@@ -5771,6 +5851,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: -80 Cel
           has_numeric_value: -80
           has_unit: Cel
     keywords:
@@ -5875,6 +5956,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 1500 mL
           has_numeric_value: 1500
           has_unit: mL
     keywords:
@@ -5950,6 +6032,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 10 mm
           has_numeric_value: 10
           has_unit: mm
     keywords:
@@ -5970,6 +6053,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 18 Cel
           has_numeric_value: 18
           has_unit: Cel
     keywords:
@@ -6112,6 +6196,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.05 umol/L
           has_numeric_value: 0.05
           has_unit: umol/L
     slot_uri: MIXS:0000184
@@ -6144,6 +6229,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.2 um
           has_numeric_value: 0.2
           has_unit: um
     keywords:
@@ -6163,6 +6249,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 20 um
           has_numeric_value: 20
           has_unit: um
     keywords:
@@ -6190,6 +6277,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 35 deg
           has_numeric_value: 35
           has_unit: deg
   slope_gradient:
@@ -6229,6 +6317,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 10.5 mg/L
           has_numeric_value: 10.5
           has_unit: mg/L
     slot_uri: MIXS:0000428
@@ -6294,6 +6383,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 1.36 kW/m2/d
           has_numeric_value: 1.36
           has_unit: kW/m2/d
     slot_uri: MIXS:0000112
@@ -6342,6 +6432,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.1 mg/L
           has_numeric_value: 0.1
           has_unit: mg/L
     keywords:
@@ -6392,6 +6483,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 15 g/kg
           has_numeric_value: 15
           has_unit: g/kg
     keywords:
@@ -6487,6 +6579,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 16.61 mg/L
           has_numeric_value: 16.61
           has_unit: mg/L
     keywords:
@@ -6521,6 +6614,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 2 umol/L
           has_numeric_value: 2
           has_unit: umol/L
     keywords:
@@ -6551,6 +6645,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.1 1
           has_numeric_value: 0.1
           has_unit: "1"
     keywords:
@@ -6582,6 +6677,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.01 g/m2
           has_numeric_value: 0.01
           has_unit: g/m2
     keywords:
@@ -6615,6 +6711,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 15 Cel
           has_numeric_value: 15
           has_unit: Cel
     keywords:
@@ -6636,6 +6733,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.5 mg/L
           has_numeric_value: 0.5
           has_unit: mg/L
     keywords:
@@ -6707,6 +6805,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 25 Cel
           has_numeric_value: 25
           has_unit: Cel
     keywords:
@@ -6726,6 +6825,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 5 Cel
           has_numeric_value: 5
           has_unit: Cel
     keywords:
@@ -6815,6 +6915,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 500 m
           has_numeric_value: 500
           has_unit: m
     keywords:
@@ -6836,6 +6937,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 8.856 umol/L
           has_numeric_value: 8.856
           has_unit: umol/L
     keywords:
@@ -6857,6 +6959,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 40 ug/L
           has_numeric_value: 40
           has_unit: ug/L
     keywords:
@@ -6893,6 +6996,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.598 %
           has_numeric_value: 0.598
           has_unit: '%'
     keywords:
@@ -6927,6 +7031,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 5 mg/L
           has_numeric_value: 5
           has_unit: mg/L
     keywords:
@@ -6966,6 +7071,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 5 mg/L
           has_numeric_value: 5
           has_unit: mg/L
     keywords:
@@ -6987,6 +7093,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 35 umol/L
           has_numeric_value: 35
           has_unit: umol/L
     keywords:
@@ -7009,6 +7116,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.03 mg/L
           has_numeric_value: 0.03
           has_unit: mg/L
     keywords:
@@ -7087,6 +7195,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 0.3 [NTU]
           has_numeric_value: 0.3
           has_unit: '[NTU]'
     slot_uri: MIXS:0000191
@@ -7149,6 +7258,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 750 m3/min
           has_numeric_value: 750
           has_unit: m3/min
     keywords:
@@ -7381,6 +7491,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 10 m3/s
           has_numeric_value: 10
           has_unit: m3/s
     keywords:
@@ -7402,6 +7513,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 45 %
           has_numeric_value: 45
           has_unit: '%'
     keywords:
@@ -7532,6 +7644,7 @@ slots:
     examples:
       - object:
           type: nmdc:QuantityValue
+          has_raw_value: 2.92 m/s
           has_numeric_value: 2.92
           has_unit: m/s
   window_cond:
