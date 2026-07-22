@@ -787,16 +787,19 @@ slots:
     inlined_as_list: true
     examples:
       - object:
-          doi: doi:10.46936/intm.proj.2021.60141/60000423
+          type: nmdc:Doi
+          doi_value: doi:10.46936/intm.proj.2021.60141/60000423
           doi_provider: emsl
           doi_category: award_doi
         description: An EMSL award DOI.
       - object:
-          doi: doi:10.1101/2022.12.12.520098
+          type: nmdc:Doi
+          doi_value: doi:10.1101/2022.12.12.520098
           doi_category: publication_doi
         description: A publication DOI.
       - object:
-          doi: doi:10.48321/D1Z60Q
+          type: nmdc:Doi
+          doi_value: doi:10.48321/D1Z60Q
           doi_category: data_management_plan_doi
           doi_provider: gsc
         description: A data management plan DOI.
