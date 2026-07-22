@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.21.0.post58.dev0+c0eb5b3bf
+version: 11.21.0.post59.dev0+b9fffab7d
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -17832,7 +17832,7 @@ slots:
     comments:
     - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
     examples:
-    - object: 300000
+    - value: '300000'
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - size
