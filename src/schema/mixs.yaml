@@ -1354,8 +1354,6 @@ slots:
       units_alignment_excuse: non_ucum_unit
     description: 'API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity)'
     title: API gravity
-    examples:
-      - value: 31.1 API
     slot_uri: MIXS:0000157
     range: QuantityValue
     structured_pattern:
@@ -1790,7 +1788,10 @@ slots:
     description: Concentration of calcium in the sample
     title: calcium
     examples:
-      - value: 0.2 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 2774.35
+          has_unit: mg/kg
     slot_uri: MIXS:0000432
     range: QuantityValue
     structured_pattern:
@@ -1842,7 +1843,10 @@ slots:
     description: Ratio of amount or concentrations of carbon to nitrogen
     title: carbon/nitrogen ratio
     examples:
-      - value: '0.417361111'
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 20.6
+          has_unit: "1"
     keywords:
       - carbon
       - nitrogen
@@ -2053,7 +2057,10 @@ slots:
     description: Concentration of chlorophyll
     title: chlorophyll
     examples:
-      - value: 5 mg/m3
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 13
+          has_unit: ug/L
     slot_uri: MIXS:0000177
     range: QuantityValue
     structured_pattern:
@@ -2309,7 +2316,10 @@ slots:
     description: Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter
     title: dissolved inorganic carbon
     examples:
-      - value: 2059 umol/kg
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 38.18
+          has_unit: mg/L
     keywords:
       - carbon
       - dissolved
@@ -2327,7 +2337,10 @@ slots:
     description: Concentration of dissolved inorganic nitrogen
     title: dissolved inorganic nitrogen
     examples:
-      - value: 761 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 0.404
+          has_unit: mg/L
     keywords:
       - dissolved
       - inorganic
@@ -2380,7 +2393,10 @@ slots:
     description: Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid
     title: dissolved organic carbon
     examples:
-      - value: 197 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 3.68
+          has_unit: ug/L
     keywords:
       - carbon
       - dissolved
@@ -2991,7 +3007,10 @@ slots:
     description: Raw or converted fluorescence of water
     title: fluorescence
     examples:
-      - value: 2.5 V
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 0.9563
+          has_unit: mg/m3
     slot_uri: MIXS:0000704
     range: QuantityValue
     structured_pattern:
@@ -3595,7 +3614,10 @@ slots:
       interpolated: true
       partial_match: true
     examples:
-      - value: 0.1 m
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 56
+          has_unit: cm
   host_last_meal:
     annotations:
       Expected_value: content;duration
@@ -3801,7 +3823,10 @@ slots:
     annotations:
       storage_units: g/m3|%
     examples:
-      - value: 25 g/m3
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 56.54
+          has_unit: '%'
   humidity_regm:
     annotations:
       Expected_value: humidity value;treatment interval and duration
@@ -3914,7 +3939,10 @@ slots:
     comments:
       - percent or float?
     examples:
-      - value: '0.79'
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 0.79
+          has_unit: "1"
     keywords:
       - fraction
       - water
@@ -4072,7 +4100,10 @@ slots:
     description: Concentration of magnesium in the sample
     title: magnesium
     examples:
-      - value: 52.8 umol/kg
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 578.148
+          has_unit: mg/kg
     slot_uri: MIXS:0000431
     range: QuantityValue
     structured_pattern:
@@ -4290,7 +4321,10 @@ slots:
     description: Concentration of nitrogen (total)
     title: nitrogen
     examples:
-      - value: 4.2 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 0.18
+          has_unit: '%'
     keywords:
       - nitrogen
     slot_uri: MIXS:0000504
@@ -4382,7 +4416,10 @@ slots:
     description: Average number of occupants at time of sampling per square footage
     title: occupant density at sampling
     examples:
-      - value: '0.1'
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 0.1
+          has_unit: 1/[sft_i]
     keywords:
       - density
     slot_uri: MIXS:0000217
@@ -4402,7 +4439,10 @@ slots:
     description: Number of occupants present at time of sample within the given space
     title: occupancy at sampling
     examples:
-      - value: '10'
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 10
+          has_unit: "1"
     slot_uri: MIXS:0000772
     range: QuantityValue
     structured_pattern:
@@ -4415,7 +4455,10 @@ slots:
     description: Concentration of organic carbon
     title: organic carbon
     examples:
-      - value: 0.015 mg/L
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 1.36
+          has_unit: '%'
     keywords:
       - carbon
       - organic
@@ -4580,7 +4623,10 @@ slots:
     description: Concentration of particulate organic nitrogen
     title: particulate organic nitrogen
     examples:
-      - value: 0.3 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 0.25
+          has_unit: mg/L
     keywords:
       - nitrogen
       - organic
@@ -5117,7 +5163,10 @@ slots:
     comments:
       - percent or float?
     examples:
-      - value: '0.8'
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 0.8
+          has_unit: "1"
     keywords:
       - air
       - humidity
@@ -5135,7 +5184,10 @@ slots:
     description: The recorded outside relative humidity value at the time of sampling
     title: outside relative humidity
     examples:
-      - value: 12 per kilogram of air
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 12
+          has_unit: '%'
     keywords:
       - humidity
       - relative
@@ -5445,7 +5497,10 @@ slots:
     description: pH measurement of the culture rooting medium; e.g. 5.5
     title: rooting medium pH
     examples:
-      - value: '7.5'
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 7.5
+          has_unit: '[pH]'
     keywords:
       - ph
     slot_uri: MIXS:0001062
@@ -5648,7 +5703,10 @@ slots:
     description: The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected
     title: amount or size of sample collected
     examples:
-      - value: 5 L
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 3
+          has_unit: mL
     keywords:
       - sample
       - size
@@ -6332,7 +6390,10 @@ slots:
     description: The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound
     title: specific humidity
     examples:
-      - value: 15 per kilogram of air
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 15
+          has_unit: g/kg
     keywords:
       - humidity
     slot_uri: MIXS:0000214
@@ -6424,7 +6485,10 @@ slots:
     description: Concentration of sulfate in the sample
     title: sulfate
     examples:
-      - value: 5 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 16.61
+          has_unit: mg/L
     keywords:
       - sulfate
     slot_uri: MIXS:0000423
@@ -6485,7 +6549,10 @@ slots:
     comments:
       - percent or float?
     examples:
-      - value: '0.1'
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 0.1
+          has_unit: "1"
     keywords:
       - humidity
       - surface
@@ -6767,7 +6834,10 @@ slots:
     description: 'Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen'
     title: total dissolved nitrogen
     examples:
-      - value: 40 ug/L
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 8.856
+          has_unit: umol/L
     keywords:
       - dissolved
       - nitrogen
@@ -6821,7 +6891,10 @@ slots:
     description: 'Total nitrogen concentration of water samples, calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering, reported as nitrogen'
     title: total nitrogen concentration
     examples:
-      - value: 50 umol/L
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 0.598
+          has_unit: '%'
     keywords:
       - concentration
       - nitrogen
@@ -7457,7 +7530,10 @@ slots:
     annotations:
       storage_units: km/h|m/s
     examples:
-      - value: 21 km/h
+      - object:
+          type: nmdc:QuantityValue
+          has_numeric_value: 2.92
+          has_unit: m/s
   window_cond:
     description: The physical condition of the window at the time of sampling
     title: window condition
