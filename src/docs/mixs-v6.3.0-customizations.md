@@ -242,7 +242,11 @@ Two conventions follow from that:
 
 ### Example units corrected against production data
 
-Cross-checking `nmdc.biosample_set` found 18 slots whose upstream MIxS example unit or value does not occur in production data; each slot's own **Examples** section in the generated schema documentation gives the corrected value and the reason for the divergence, so this document does not restate them in a table that would drift from the shipped schema.
+Cross-checking `nmdc.biosample_set` found 18 slots whose upstream MIxS example unit or value does not occur in production data. Those examples were replaced.
+
+The reason for each replacement is recorded as a `#` comment directly above the slot's line in `assets/yq-for-mixs-customizations.txt`, the file that defines the example. Keeping the rationale next to the line it justifies means it cannot drift from the shipped example, which a table in this document would.
+
+The example's own `description` is a separate thing and has a different audience. It is rendered on the public slot page, so it describes the example to someone deciding what to submit: what the value means, which unit it is in, and any measurement basis that is easy to confuse with it. It does not mention MIxS, name internal collections, or argue for the replacement; that reasoning belongs in the asset comment. Three slots (`host_height`, `samp_size`, `wind_speed`) differ from MIxS only by a unit-scale factor and have no `description`, because the example already shows the unit.
 
 ### Units that are inconsistent or not UCUM-expressible
 
