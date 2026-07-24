@@ -4,11 +4,12 @@
 ``assets/yq-for-mixs-customizations.txt`` with ``eval yq -i $line $@``. An
 active line is single-quote-wrapped (``'<yq expression>'``). Any literal single
 quote inside that wrapper (for example an apostrophe in ``MIxS's``) closes the
-quote early, so ``eval`` mangles the command. The Makefile loop's exit status is
-the last iteration's, so a mid-file failure is otherwise swallowed and the
-customization is silently dropped while ``make src/schema/mixs.yaml`` still
-reports success. This test catches such lines before a regeneration would lose
-them.
+quote early, so ``eval`` mangles the command. The loop now ends each iteration
+with ``|| exit 1``, so a mid-file failure aborts the build; before that guard the
+pipeline's exit status was the last iteration's and a broken line was silently
+dropped while ``make src/schema/mixs.yaml`` still reported success. This test
+still earns its place: it names the offending line directly, and it runs in CI
+without the slow, network-dependent regeneration needed to reach the failure.
 
 ``shlex.split`` models POSIX-shell word splitting, which is what ``eval`` does
 to the line. A well-formed active line tokenizes to exactly ``yq``, ``-i``, one
