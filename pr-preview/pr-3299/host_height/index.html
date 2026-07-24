@@ -754,7 +754,6 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>NMDC records centimeter, the unit in nmdc.biosample_set; the MIxS example uses meter. Both measure the same length and differ only by a factor of 100, so NMDC uses the unit that appears in production data.</p>
 <pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
 has_raw_value: &quot;56 cm&quot;
 has_numeric_value: 56
@@ -809,10 +808,7 @@ annotations:
 description: The height of subject
 title: host height
 examples:
-- description: NMDC records centimeter, the unit in nmdc.biosample_set; the MIxS example
-    uses meter. Both measure the same length and differ only by a factor of 100, so
-    NMDC uses the unit that appears in production data.
-  object:
+- object:
     type: nmdc:QuantityValue
     has_raw_value: 56 cm
     has_numeric_value: 56

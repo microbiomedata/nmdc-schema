@@ -754,7 +754,7 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>NMDC records milligram per cubic meter, the calibrated fluorescence value in nmdc.biosample_set; the MIxS example uses volts, which is the raw analog output of a fluorometer and only becomes a concentration after calibration, so it is not a fluorescence unit.</p>
+<p>A calibrated concentration, in milligram per cubic meter. The raw analog output of a fluorometer is in volts and becomes a concentration only after calibration.</p>
 <pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
 has_raw_value: &quot;0.9563 mg/m3&quot;
 has_numeric_value: 0.9563
@@ -809,10 +809,8 @@ annotations:
 description: Raw or converted fluorescence of water
 title: fluorescence
 examples:
-- description: NMDC records milligram per cubic meter, the calibrated fluorescence
-    value in nmdc.biosample_set; the MIxS example uses volts, which is the raw analog
-    output of a fluorometer and only becomes a concentration after calibration, so
-    it is not a fluorescence unit.
+- description: A calibrated concentration, in milligram per cubic meter. The raw analog
+    output of a fluorometer is in volts and becomes a concentration only after calibration.
   object:
     type: nmdc:QuantityValue
     has_raw_value: 0.9563 mg/m3

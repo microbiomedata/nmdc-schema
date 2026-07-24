@@ -754,7 +754,7 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>NMDC records milligram per kilogram, the solid-phase soil value in nmdc.biosample_set; the MIxS example uses micromole per liter, a soil-solution concentration measured on a different basis that is not interconvertible with a per-dry-mass value without the extraction ratio.</p>
+<p>A solid-phase soil measurement, in milligram per kilogram of dry soil. A calcium concentration measured in soil solution is a different basis and cannot be converted to a per-dry-mass value without the extraction ratio.</p>
 <pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
 has_raw_value: &quot;2774.35 mg/kg&quot;
 has_numeric_value: 2774.35
@@ -809,10 +809,9 @@ annotations:
 description: Concentration of calcium in the sample
 title: calcium
 examples:
-- description: NMDC records milligram per kilogram, the solid-phase soil value in
-    nmdc.biosample_set; the MIxS example uses micromole per liter, a soil-solution
-    concentration measured on a different basis that is not interconvertible with
-    a per-dry-mass value without the extraction ratio.
+- description: A solid-phase soil measurement, in milligram per kilogram of dry soil.
+    A calcium concentration measured in soil solution is a different basis and cannot
+    be converted to a per-dry-mass value without the extraction ratio.
   object:
     type: nmdc:QuantityValue
     has_raw_value: 2774.35 mg/kg

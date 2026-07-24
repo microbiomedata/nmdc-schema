@@ -754,7 +754,6 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>NMDC records meter per second, the unit in nmdc.biosample_set; the MIxS example uses kilometer per hour. Both measure the same speed and differ only by a factor of 3.6, so NMDC uses the unit that appears in production data.</p>
 <pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
 has_raw_value: &quot;2.92 m/s&quot;
 has_numeric_value: 2.92
@@ -806,10 +805,7 @@ annotations:
 description: speed of wind measured at the time of sampling
 title: wind speed
 examples:
-- description: NMDC records meter per second, the unit in nmdc.biosample_set; the
-    MIxS example uses kilometer per hour. Both measure the same speed and differ only
-    by a factor of 3.6, so NMDC uses the unit that appears in production data.
-  object:
+- object:
     type: nmdc:QuantityValue
     has_raw_value: 2.92 m/s
     has_numeric_value: 2.92

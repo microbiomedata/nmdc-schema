@@ -754,7 +754,7 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>NMDC records percent, the unit of relative humidity in nmdc.biosample_set; the MIxS example uses gram per cubic meter, which measures absolute humidity, a different physical quantity that cannot be derived from relative humidity without also knowing the temperature.</p>
+<p>Relative humidity, in percent. Absolute humidity, in gram per cubic meter, is a different physical quantity and cannot be derived from relative humidity without also knowing the temperature.</p>
 <pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
 has_raw_value: &quot;56.54 %&quot;
 has_numeric_value: 56.54
@@ -806,10 +806,9 @@ annotations:
 description: Amount of water vapour in the air, at the time of sampling
 title: humidity
 examples:
-- description: NMDC records percent, the unit of relative humidity in nmdc.biosample_set;
-    the MIxS example uses gram per cubic meter, which measures absolute humidity,
-    a different physical quantity that cannot be derived from relative humidity without
-    also knowing the temperature.
+- description: Relative humidity, in percent. Absolute humidity, in gram per cubic
+    meter, is a different physical quantity and cannot be derived from relative humidity
+    without also knowing the temperature.
   object:
     type: nmdc:QuantityValue
     has_raw_value: 56.54 %

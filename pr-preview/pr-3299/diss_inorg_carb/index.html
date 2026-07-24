@@ -754,7 +754,7 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>NMDC records milligram per liter, the unit in nmdc.biosample_set; the MIxS example uses micromole per kilogram, the standard oceanographic unit for dissolved inorganic carbon (a mass basis that is conserved as temperature and pressure change), which does not occur in NMDC production data.</p>
+<p>Milligram per liter. Oceanographic data often reports dissolved inorganic carbon in micromole per kilogram of seawater, a mass basis that is conserved as temperature and pressure change.</p>
 <pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
 has_raw_value: &quot;38.18 mg/L&quot;
 has_numeric_value: 38.18
@@ -810,10 +810,9 @@ description: Dissolved inorganic carbon concentration in the sample, typically m
   after filtering the sample using a 0.45 micrometer filter
 title: dissolved inorganic carbon
 examples:
-- description: NMDC records milligram per liter, the unit in nmdc.biosample_set; the
-    MIxS example uses micromole per kilogram, the standard oceanographic unit for
-    dissolved inorganic carbon (a mass basis that is conserved as temperature and
-    pressure change), which does not occur in NMDC production data.
+- description: Milligram per liter. Oceanographic data often reports dissolved inorganic
+    carbon in micromole per kilogram of seawater, a mass basis that is conserved as
+    temperature and pressure change.
   object:
     type: nmdc:QuantityValue
     has_raw_value: 38.18 mg/L

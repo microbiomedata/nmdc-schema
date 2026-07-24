@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -731,6 +742,13 @@
 <ul>
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;https://www.int-res.com/abstracts/cr/v14/n3/p161-173/&quot;
+</code></pre>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;doi:10.3354/cr014161&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -757,6 +775,13 @@
 <pre><code class="language-yaml">name: link_climate_info
 description: Link to climate resource
 title: link to climate information
+examples:
+- object:
+    type: nmdc:TextValue
+    has_raw_value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
+- object:
+    type: nmdc:TextValue
+    has_raw_value: doi:10.3354/cr014161
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

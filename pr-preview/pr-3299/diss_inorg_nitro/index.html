@@ -754,7 +754,7 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>NMDC records milligram per liter, the unit in nmdc.biosample_set; the MIxS example uses micromole per liter, the same dissolved-nitrogen concentration expressed as amount of substance rather than mass (they differ only by the molar mass of nitrogen).</p>
+<p>Milligram per liter. Micromole per liter expresses the same concentration as amount of substance rather than mass; the two differ by the molar mass of nitrogen.</p>
 <pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
 has_raw_value: &quot;0.404 mg/L&quot;
 has_numeric_value: 0.404
@@ -809,10 +809,8 @@ annotations:
 description: Concentration of dissolved inorganic nitrogen
 title: dissolved inorganic nitrogen
 examples:
-- description: NMDC records milligram per liter, the unit in nmdc.biosample_set; the
-    MIxS example uses micromole per liter, the same dissolved-nitrogen concentration
-    expressed as amount of substance rather than mass (they differ only by the molar
-    mass of nitrogen).
+- description: Milligram per liter. Micromole per liter expresses the same concentration
+    as amount of substance rather than mass; the two differ by the molar mass of nitrogen.
   object:
     type: nmdc:QuantityValue
     has_raw_value: 0.404 mg/L

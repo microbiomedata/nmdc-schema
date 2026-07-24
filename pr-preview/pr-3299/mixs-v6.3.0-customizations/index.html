@@ -1605,7 +1605,9 @@
 <li>A quantity whose unit has no UCUM symbol cannot be given a valid example, because <code>has_unit</code> is required and only <code>UnitEnum</code> values are allowed. Such a slot gets no example and is flagged with <code>units_alignment_excuse</code> (see below).</li>
 </ul>
 <h3 id="example-units-corrected-against-production-data">Example units corrected against production data</h3>
-<p>Cross-checking <code>nmdc.biosample_set</code> found 18 slots whose upstream MIxS example unit or value does not occur in production data; each slot's own <strong>Examples</strong> section in the generated schema documentation gives the corrected value and the reason for the divergence, so this document does not restate them in a table that would drift from the shipped schema.</p>
+<p>Cross-checking <code>nmdc.biosample_set</code> found 18 slots whose upstream MIxS example unit or value does not occur in production data. Those examples were replaced.</p>
+<p>The reason for each replacement is recorded as a <code>#</code> comment directly above the slot's line in <code>assets/yq-for-mixs-customizations.txt</code>, the file that defines the example. Keeping the rationale next to the line it justifies means it cannot drift from the shipped example, which a table in this document would.</p>
+<p>The example's own <code>description</code> is a separate thing and has a different audience. It is rendered on the public slot page, so it describes the example to someone deciding what to submit: what the value means, which unit it is in, and any measurement basis that is easy to confuse with it. It does not mention MIxS, name internal collections, or argue for the replacement; that reasoning belongs in the asset comment. Three slots (<code>host_height</code>, <code>samp_size</code>, <code>wind_speed</code>) differ from MIxS only by a unit-scale factor and have no <code>description</code>, because the example already shows the unit.</p>
 <h3 id="units-that-are-inconsistent-or-not-ucum-expressible">Units that are inconsistent or not UCUM-expressible</h3>
 <table>
 <thead>

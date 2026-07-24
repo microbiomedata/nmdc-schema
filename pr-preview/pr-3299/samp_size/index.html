@@ -754,7 +754,6 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>NMDC records milliliter, the unit in nmdc.biosample_set; the MIxS example uses liter. Both measure the same volume and differ only by a factor of 1000, so NMDC uses the unit that appears in production data.</p>
 <pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
 has_raw_value: &quot;3 mL&quot;
 has_numeric_value: 3
@@ -807,10 +806,7 @@ description: The total amount or size (volume (ml), mass (g) or area (m2) ) of s
   collected
 title: amount or size of sample collected
 examples:
-- description: NMDC records milliliter, the unit in nmdc.biosample_set; the MIxS example
-    uses liter. Both measure the same volume and differ only by a factor of 1000,
-    so NMDC uses the unit that appears in production data.
-  object:
+- object:
     type: nmdc:QuantityValue
     has_raw_value: 3 mL
     has_numeric_value: 3

@@ -754,7 +754,7 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>NMDC records percent, a solid-phase mass fraction of total soil nitrogen in nmdc.biosample_set; the MIxS example uses micromole per liter, which measures dissolved inorganic nitrogen in solution, a different and much smaller pool than total nitrogen.</p>
+<p>A solid-phase mass fraction of total soil nitrogen, in percent. Dissolved inorganic nitrogen in solution is a different and much smaller pool.</p>
 <pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
 has_raw_value: &quot;0.598 %&quot;
 has_numeric_value: 0.598
@@ -811,10 +811,8 @@ description: 'Total nitrogen concentration of water samples, calculated by: tota
   without filtering, reported as nitrogen'
 title: total nitrogen concentration
 examples:
-- description: NMDC records percent, a solid-phase mass fraction of total soil nitrogen
-    in nmdc.biosample_set; the MIxS example uses micromole per liter, which measures
-    dissolved inorganic nitrogen in solution, a different and much smaller pool than
-    total nitrogen.
+- description: A solid-phase mass fraction of total soil nitrogen, in percent. Dissolved
+    inorganic nitrogen in solution is a different and much smaller pool.
   object:
     type: nmdc:QuantityValue
     has_raw_value: 0.598 %

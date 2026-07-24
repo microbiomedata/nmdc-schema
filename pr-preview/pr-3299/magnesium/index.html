@@ -754,7 +754,7 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>NMDC records milligram per kilogram, the unit in nmdc.biosample_set; the MIxS example uses micromole per kilogram, the same per-dry-mass soil quantity expressed as amount of substance rather than mass (they differ only by the molar mass of magnesium).</p>
+<p>Milligram per kilogram of dry soil. Micromole per kilogram expresses the same per-dry-mass quantity as amount of substance rather than mass; the two differ by the molar mass of magnesium.</p>
 <pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
 has_raw_value: &quot;578.148 mg/kg&quot;
 has_numeric_value: 578.148
@@ -809,10 +809,9 @@ annotations:
 description: Concentration of magnesium in the sample
 title: magnesium
 examples:
-- description: NMDC records milligram per kilogram, the unit in nmdc.biosample_set;
-    the MIxS example uses micromole per kilogram, the same per-dry-mass soil quantity
-    expressed as amount of substance rather than mass (they differ only by the molar
-    mass of magnesium).
+- description: Milligram per kilogram of dry soil. Micromole per kilogram expresses
+    the same per-dry-mass quantity as amount of substance rather than mass; the two
+    differ by the molar mass of magnesium.
   object:
     type: nmdc:QuantityValue
     has_raw_value: 578.148 mg/kg
