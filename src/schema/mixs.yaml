@@ -1160,6 +1160,12 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    examples:
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 27 %
+          has_numeric_value: 27
+          has_unit: '%'
   al_sat_meth:
     description: Reference or method used in determining Al saturation
     title: extreme_unusual_properties/Al saturation method
@@ -2197,6 +2203,16 @@ slots:
       - vegetation
     slot_uri: MIXS:0000312
     range: TextValue
+    examples:
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: deciduous forest
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: forest
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: Bauhinia variegata
   cur_vegetation_meth:
     description: Reference or method used in vegetation classification
     title: current vegetation method
@@ -2904,7 +2920,7 @@ slots:
     examples:
       - object:
           type: nmdc:TextValue
-          has_raw_value: urea;0.6 milligram per liter;R2/2018-05-11:T14:30/2018-05-11T19:30/P1H30M
+          has_raw_value: urea;0.6 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - regimen
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
@@ -4100,6 +4116,13 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    examples:
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: https://doi.org/10.1111/j.1574-6941.2011.01140.x
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: doi:10.1111/j.1574-6941.2011.01140.x
   link_class_info:
     annotations:
       Expected_value: PMID,DOI or url
@@ -4123,6 +4146,13 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL})$
       interpolated: true
       partial_match: true
+    examples:
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: doi:10.3354/cr014161
   lithology:
     description: 'Hydrocarbon resource main lithology (Additional information: http://petrowiki.org/Lithology_and_rock_type_determination). If "other" is specified, please propose entry in "additional info" field'
     title: lithology
@@ -4318,7 +4348,12 @@ slots:
     description: Structured miscellaneous property assertions. Use when a value cannot cleanly fit an existing, policy-governed slot.
     title: miscellaneous parameter
     examples:
-      - value: Bicarbonate ion concentration;2075 micromole per kilogram
+      - object:
+          type: nmdc:PropertyAssertion
+          has_attribute_label: Bicarbonate ion concentration
+          has_numeric_value: 2075
+          has_unit: micromole per kilogram
+          has_raw_value: Bicarbonate ion concentration;2075 micromole per kilogram
     keywords:
       - parameter
     string_serialization: '{text};{float} {unit}'
@@ -4844,7 +4879,7 @@ slots:
     examples:
       - object:
           type: nmdc:TextValue
-          has_raw_value: 7.6;R2/2018-05-11:T14:30/2018-05-11T19:30/P1H30M
+          has_raw_value: 7.6;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - ph
       - regimen
@@ -6201,6 +6236,16 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000322
     range: TextValue
+    examples:
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: combined 2 cores | 4mm sieved
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 4 mm sieved and homogenized
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 50 g | 5 cores | 2 mm sieved
   silicate:
     annotations:
       Preferred_unit: micromole per liter
@@ -6308,6 +6353,12 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    examples:
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 10 %
+          has_numeric_value: 10
+          has_unit: '%'
   sludge_retent_time:
     annotations:
       Preferred_unit: hours
@@ -6921,6 +6972,12 @@ slots:
       partial_match: true
     annotations:
       storage_units: ug/L|%
+    examples:
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1 ug/L
+          has_numeric_value: 1
+          has_unit: ug/L
   tot_depth_water_col:
     annotations:
       Preferred_unit: meter
@@ -7793,11 +7850,11 @@ slots:
     minimum_value: 1
     comments:
       - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
-    examples:
-      - value: "300000"
     maximum_value: 100000000000
     notes:
       - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat.
+    examples:
+      - value: "300000"
   ploidy:
     description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO
     title: ploidy
@@ -7860,16 +7917,16 @@ slots:
       - device
       - sample
     slot_uri: MIXS:0000002
-    examples:
-      - value: specimen collection swab stick [OBI:0002820]
-      - value: PONAR grab sampler [GENEPIO:0100929]
-      - value: trowel
     comments:
       - GENEPIO's subtree of OBI:0002814 includes grouping classes such as GENEPIO:0100941 (grab sampling device), GENEPIO:0100942 (composite sampling device), GENEPIO:0100943 (core sampling device), and GENEPIO:0100948 (passive sampling device).
       - ENVO has no device classes; do not use ENVO terms here.
       - 'Existing NMDC biosamples populate this slot with free text (e.g., "corer", "Van Dorn"). New submissions are encouraged to use the form: label [PREFIX:LOCALID].'
     pattern: ^([^\[\]]+|.+ \[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\])$
     range: string
+    examples:
+      - value: specimen collection swab stick [OBI:0002820]
+      - value: PONAR grab sampler [GENEPIO:0100929]
+      - value: trowel
   samp_collec_method:
     description: The method employed for collecting the sample
     title: sample collection method
