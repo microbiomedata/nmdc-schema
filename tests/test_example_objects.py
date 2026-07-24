@@ -136,7 +136,12 @@ def test_example_form_matches_range(schema_view):
                 has_object = getattr(example, "object", None) is not None
                 has_value = getattr(example, "value", None) is not None
                 location = f"{class_name}.{slot.name}"
-                if is_wrapper and not has_object:
+                if has_object and has_value:
+                    failures.append(
+                        f"{location}: example sets both 'object:' and 'value:'; exactly one "
+                        f"is allowed, and which one is fixed by the range"
+                    )
+                elif is_wrapper and not has_object:
                     failures.append(
                         f"{location}: range '{slot.range}' is an inlined wrapper class, so the "
                         f"example must use 'object:', not 'value:'"
