@@ -2876,7 +2876,7 @@ slots:
     examples:
       - object:
           type: nmdc:TextValue
-          has_raw_value: urea;0.6 milligram per liter;R2/2018-05-11:T14:30/2018-05-11T19:30/P1H30M
+          has_raw_value: urea;0.6 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - regimen
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
@@ -4769,7 +4769,7 @@ slots:
     examples:
       - object:
           type: nmdc:TextValue
-          has_raw_value: 7.6;R2/2018-05-11:T14:30/2018-05-11T19:30/P1H30M
+          has_raw_value: 7.6;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
     keywords:
       - ph
       - regimen
