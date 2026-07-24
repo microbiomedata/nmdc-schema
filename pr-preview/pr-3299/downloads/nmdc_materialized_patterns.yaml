@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.22.0.post64.dev0+2aff240d2
+version: 11.22.0.post67.dev0+25ca5c156
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -22319,9 +22319,21 @@ classes:
         todos:
         - Slope is a percent. How does the validation work? Check to correct examples
         examples:
-        - value: 10%
-        - value: 10 %
-        - value: '0.10'
+        - object:
+            type: nmdc:QuantityValue
+            has_raw_value: 10%
+            has_numeric_value: 10
+            has_unit: '%'
+        - object:
+            type: nmdc:QuantityValue
+            has_raw_value: 10 %
+            has_numeric_value: 10
+            has_unit: '%'
+        - object:
+            type: nmdc:QuantityValue
+            has_raw_value: '0.10'
+            has_numeric_value: 0.1
+            has_unit: '1'
       al_sat:
         name: al_sat
         description: The relative abundance of aluminum in the sample
@@ -22337,7 +22349,11 @@ classes:
           all cations, aluminum held by the cation exchange complex is in equilibrium
           with aluminum in the soil solution.
         examples:
-        - value: 27%
+        - object:
+            type: nmdc:QuantityValue
+            has_raw_value: 27%
+            has_numeric_value: 27
+            has_unit: '%'
       al_sat_meth:
         name: al_sat_meth
         description: Reference or method used in determining Aluminum saturation
@@ -22362,9 +22378,15 @@ classes:
           regions
         - See for vegetation regions- https://education.nationalgeographic.org/resource/vegetation-region
         examples:
-        - value: deciduous forest
-        - value: forest
-        - value: Bauhinia variegata
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: deciduous forest
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: forest
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: Bauhinia variegata
       cur_vegetation_meth:
         name: cur_vegetation_meth
         todos:
@@ -22388,8 +22410,12 @@ classes:
         comments:
         - For multiple heavy metals and concentrations, separate by ;
         examples:
-        - value: mercury 0.09 micrograms per gram
-        - value: mercury 0.09 ug/g; chromium 0.03 ug/g
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: mercury 0.09 micrograms per gram
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: mercury 0.09 ug/g; chromium 0.03 ug/g
       heavy_metals_meth:
         name: heavy_metals_meth
         title: heavy metals method/ extreme unusual properties
@@ -22408,13 +22434,21 @@ classes:
       link_addit_analys:
         name: link_addit_analys
         examples:
-        - value: https://doi.org/10.1111/j.1574-6941.2011.01140.x
-        - value: doi:10.1111/j.1574-6941.2011.01140.x
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: https://doi.org/10.1111/j.1574-6941.2011.01140.x
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: doi:10.1111/j.1574-6941.2011.01140.x
       link_climate_info:
         name: link_climate_info
         examples:
-        - value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
-        - value: doi:10.3354/cr014161
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: doi:10.3354/cr014161
       local_class_meth:
         name: local_class_meth
         examples:
@@ -22479,9 +22513,15 @@ classes:
         comments:
         - This can include a link to the instrument used or a citation for the method.
         examples:
-        - value: https://doi.org/10.2136/sssabookser5.3.c16
-        - value: doi:10.2136/sssabookser5.3.c16
-        - value: https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: https://doi.org/10.2136/sssabookser5.3.c16
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: doi:10.2136/sssabookser5.3.c16
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html
       tot_carb:
         name: tot_carb
         todos:
@@ -22490,7 +22530,11 @@ classes:
           databases and re-evaluate. I couldn't find any references that provided
           this data in this format
         examples:
-        - value: 1 ug/L
+        - object:
+            type: nmdc:QuantityValue
+            has_raw_value: 1 ug/L
+            has_numeric_value: 1
+            has_unit: ug/L
       tot_nitro_cont_meth:
         name: tot_nitro_cont_meth
         examples:
@@ -22513,9 +22557,15 @@ classes:
         - Describe how samples were composited or sieved.
         - Use 'sample link' to indicate which samples were combined.
         examples:
-        - value: combined 2 cores | 4mm sieved
-        - value: 4 mm sieved and homogenized
-        - value: 50 g | 5 cores | 2 mm sieved
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: combined 2 cores | 4mm sieved
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: 4 mm sieved and homogenized
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: 50 g | 5 cores | 2 mm sieved
       climate_environment:
         name: climate_environment
         todos:
@@ -22530,13 +22580,21 @@ classes:
         - did I do this right? keep the example that's provided and add another? so
           as to not override
         examples:
-        - value: CO2; 500ppm above ambient; constant
-        - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: CO2; 500ppm above ambient; constant
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
       watering_regm:
         name: watering_regm
         examples:
-        - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-        - value: 75% water holding capacity; constant
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: 75% water holding capacity; constant
       source_mat_id:
         name: source_mat_id
         description: A globally unique identifier assigned to the biological sample.
@@ -22552,8 +22610,12 @@ classes:
           IDs enable linking to derived analytes and subsamples. If you have not assigned
           FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
         examples:
-        - value: igsn:AU1243
-        - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: igsn:AU1243
+        - object:
+            type: nmdc:TextValue
+            has_raw_value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
     class_uri: nmdc:Biosample
   MobilePhaseSegment:
     name: MobilePhaseSegment
