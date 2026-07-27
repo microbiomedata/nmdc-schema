@@ -51,8 +51,46 @@ subsets:
         to the public JGI submission overview. To keep this subset exhaustive,
         add in_subset jgi_isolate wherever a JGI Isolate v19 structured_alias is
         added, at the same scope the alias lives (global slot or class slot_usage).
+  badge_topic:
+    description: >-
+      Group of subsets that each define a metadata-quality badge topic. A subset
+      is a badge topic if its in_subset includes badge_topic. Its members are the
+      slots the badge for that topic is scored against. The MetadataBadgeEnum
+      permissible values mirror these subsets, kept aligned by a test.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3228
+  biogeochemistry:
+    description: >-
+      Biosample slots holding measured biogeochemical analytes: nitrogen,
+      phosphorus, carbon, sulfur, iron, core physicochemistry, and dissolved
+      gases. Used to score a biogeochemistry metadata badge.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3228
+    in_subset:
+      - badge_topic
+  land_use_and_vegetation:
+    description: >-
+      Biosample slots describing current vegetation, land-use history, land
+      management, and soil and site context. Used to score a land use and
+      vegetation metadata badge.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3228
+    in_subset:
+      - badge_topic
 
 slots:
+  badges:
+    description: >-
+      Metadata-quality badges awarded to this record. Each value names a topic
+      and a level (for example biogeochemistry_gold). A topic corresponds to a
+      badge subset (see the subsets in this file and
+      https://github.com/microbiomedata/nmdc-schema/issues/3228); the level
+      reflects how well the record populates that subset's slots. Awarded by a
+      downstream scoring service, not asserted by submitters.
+    range: MetadataBadgeEnum
+    multivalued: true
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3227
   library_strategy:
     description: Sequencing technique intended for this library
     range: LibraryStrategyEnum
@@ -744,6 +782,23 @@ slots:
 
 enums:
 
+  MetadataBadgeEnum:
+    description: >-
+      Metadata-quality badges. Each permissible value names a badge topic and a
+      level, in the form <topic>_<level>, where <topic> is the name of a badge
+      subset (a subset whose in_subset includes badge_topic) and <level> is
+      silver or gold. The permissible values are kept in sync with the badge
+      subsets by a test; see
+      https://github.com/microbiomedata/nmdc-schema/issues/3227
+    permissible_values:
+      biogeochemistry_silver:
+        description: Silver-level metadata coverage of the biogeochemistry subset.
+      biogeochemistry_gold:
+        description: Gold-level metadata coverage of the biogeochemistry subset.
+      land_use_and_vegetation_silver:
+        description: Silver-level metadata coverage of the land_use_and_vegetation subset.
+      land_use_and_vegetation_gold:
+        description: Gold-level metadata coverage of the land_use_and_vegetation subset.
   LibraryStrategyEnum:
     description: Sequencing strategy used for library preparation
     comments:

@@ -376,6 +376,9 @@ classes:
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
     slots:
+      ## Metadata-quality badges
+      - badges
+
       ## Alternative IDs
       - emsl_project_identifiers
       - gnps_task_identifiers
