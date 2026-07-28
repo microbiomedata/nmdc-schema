@@ -754,18 +754,11 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>225 mm</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;225 mm&quot;
+has_numeric_value: 225
+has_unit: &quot;mm&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -816,7 +809,11 @@ description: The average of all annual precipitation values known, or an estimat
   equivalent value derived by such methods as regional indexes or Isohyetal maps
 title: mean annual precipitation
 examples:
-- value: 225 mm
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 225 mm
+    has_numeric_value: 225
+    has_unit: mm
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

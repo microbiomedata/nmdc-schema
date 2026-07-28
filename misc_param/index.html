@@ -759,18 +759,12 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bicarbonate ion concentration;2075 micromole per kilogram</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:PropertyAssertion&quot;
+has_attribute_label: &quot;Bicarbonate ion concentration&quot;
+has_numeric_value: 2075
+has_unit: &quot;micromole per kilogram&quot;
+has_raw_value: &quot;Bicarbonate ion concentration;2075 micromole per kilogram&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -820,7 +814,12 @@ title: miscellaneous parameter
 todos:
 - This slot should not be available in the submission portal.
 examples:
-- value: Bicarbonate ion concentration;2075 micromole per kilogram
+- object:
+    type: nmdc:PropertyAssertion
+    has_attribute_label: Bicarbonate ion concentration
+    has_numeric_value: 2075
+    has_unit: micromole per kilogram
+    has_raw_value: Bicarbonate ion concentration;2075 micromole per kilogram
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

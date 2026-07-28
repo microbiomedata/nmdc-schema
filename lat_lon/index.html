@@ -748,18 +748,11 @@
 <li>Range: <a href="../GeolocationValue/">GeolocationValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>50.586825 6.408977</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:GeolocationValue&quot;
+latitude: 50.586825
+longitude: 6.408977
+has_raw_value: &quot;50.586825 6.408977&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -789,7 +782,11 @@ description: The geographical origin of the sample as defined by latitude and lo
   in WGS84 system
 title: geographic location (latitude and longitude)
 examples:
-- value: 50.586825 6.408977
+- object:
+    type: nmdc:GeolocationValue
+    latitude: 50.586825
+    longitude: 6.408977
+    has_raw_value: 50.586825 6.408977
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

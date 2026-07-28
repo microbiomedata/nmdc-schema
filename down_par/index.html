@@ -754,18 +754,11 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>28.71 umol/m2/s</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;28.71 umol/m2/s&quot;
+has_numeric_value: 28.71
+has_unit: &quot;umol/m2/s&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -816,7 +809,11 @@ annotations:
 description: Visible waveband radiance and irradiance measurements in the water column
 title: downward PAR
 examples:
-- value: 28.71 umol/m2/s
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 28.71 umol/m2/s
+    has_numeric_value: 28.71
+    has_unit: umol/m2/s
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0000703

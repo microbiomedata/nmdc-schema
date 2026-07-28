@@ -771,18 +771,12 @@
 <li>Range: <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>soil [ENVO:00001998]</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:ControlledIdentifiedTermValue&quot;
+has_raw_value: &quot;soil [ENVO:00001998]&quot;
+term:
+  id: &quot;ENVO:00001998&quot;
+  type: &quot;nmdc:OntologyClass&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -841,7 +835,12 @@ description: 'Report the environmental material(s) immediately surrounding the s
   a leaf, a table top)'
 title: environmental medium
 examples:
-- value: soil [ENVO:00001998]
+- object:
+    type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: soil [ENVO:00001998]
+    term:
+      id: ENVO:00001998
+      type: nmdc:OntologyClass
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

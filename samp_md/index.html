@@ -754,18 +754,11 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1534 m</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;1534 m&quot;
+has_numeric_value: 1534
+has_unit: &quot;m&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -823,7 +816,11 @@ description: In non deviated well, measured depth is equal to the true vertical 
   please propose entry in &quot;additional info&quot; field
 title: sample measured depth
 examples:
-- value: 1534 m
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 1534 m
+    has_numeric_value: 1534
+    has_unit: m
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

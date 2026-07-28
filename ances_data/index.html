@@ -743,18 +743,9 @@
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A/3*B</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;A/3*B&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -784,7 +775,9 @@ description: Information about either pedigree or other ancestral information de
   x B) x B] x B)
 title: ancestral data
 examples:
-- value: A/3*B
+- object:
+    type: nmdc:TextValue
+    has_raw_value: A/3*B
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0000247

@@ -754,18 +754,12 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2059 umol/kg</td>
-</tr>
-</tbody>
-</table>
+<p>Milligram per liter. Oceanographic data often reports dissolved inorganic carbon in micromole per kilogram of seawater, a mass basis that is conserved as temperature and pressure change.</p>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;38.18 mg/L&quot;
+has_numeric_value: 38.18
+has_unit: &quot;mg/L&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -816,7 +810,14 @@ description: Dissolved inorganic carbon concentration in the sample, typically m
   after filtering the sample using a 0.45 micrometer filter
 title: dissolved inorganic carbon
 examples:
-- value: 2059 umol/kg
+- description: Milligram per liter. Oceanographic data often reports dissolved inorganic
+    carbon in micromole per kilogram of seawater, a mass basis that is conserved as
+    temperature and pressure change.
+  object:
+    type: nmdc:QuantityValue
+    has_raw_value: 38.18 mg/L
+    has_numeric_value: 38.18
+    has_unit: mg/L
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

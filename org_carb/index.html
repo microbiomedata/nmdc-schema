@@ -754,18 +754,12 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0.015 mg/L</td>
-</tr>
-</tbody>
-</table>
+<p>A solid-phase mass fraction of soil organic carbon, in percent; about 1.36 percent is typical for mineral soil. Dissolved organic carbon in a liquid is a different and much smaller pool.</p>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;1.36 %&quot;
+has_numeric_value: 1.36
+has_unit: &quot;%&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -812,7 +806,14 @@ annotations:
 description: Concentration of organic carbon
 title: organic carbon
 examples:
-- value: 0.015 mg/L
+- description: A solid-phase mass fraction of soil organic carbon, in percent; about
+    1.36 percent is typical for mineral soil. Dissolved organic carbon in a liquid
+    is a different and much smaller pool.
+  object:
+    type: nmdc:QuantityValue
+    has_raw_value: 1.36 %
+    has_numeric_value: 1.36
+    has_unit: '%'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

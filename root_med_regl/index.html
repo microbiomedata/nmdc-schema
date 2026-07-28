@@ -754,18 +754,9 @@
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>abscisic acid;0.75 milligram per liter</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;abscisic acid;0.75 milligram per liter&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -816,7 +807,9 @@ description: Growth regulators in the culture rooting medium such as cytokinins,
   gybberellins, abscisic acid; e.g. 0.5  mg/L NAA
 title: rooting medium regulators
 examples:
-- value: abscisic acid;0.75 milligram per liter
+- object:
+    type: nmdc:TextValue
+    has_raw_value: abscisic acid;0.75 milligram per liter
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 string_serialization: '{text};{float} {unit}'

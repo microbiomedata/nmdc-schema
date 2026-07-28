@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -742,6 +753,16 @@
 <ul>
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;combined 2 cores | 4mm sieved&quot;
+</code></pre>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;4 mm sieved and homogenized&quot;
+</code></pre>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;50 g | 5 cores | 2 mm sieved&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -788,6 +809,16 @@ annotations:
 description: Collection design of pooled samples and/or sieve size and amount of sample
   sieved
 title: sieving
+examples:
+- object:
+    type: nmdc:TextValue
+    has_raw_value: combined 2 cores | 4mm sieved
+- object:
+    type: nmdc:TextValue
+    has_raw_value: 4 mm sieved and homogenized
+- object:
+    type: nmdc:TextValue
+    has_raw_value: 50 g | 5 cores | 2 mm sieved
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 string_serialization: '{text};{float} {unit}'

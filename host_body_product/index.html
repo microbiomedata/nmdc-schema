@@ -754,18 +754,12 @@
 <li>Range: <a href="../ControlledTermValue/">ControlledTermValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>mucus [UBERON:0000912]</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:ControlledTermValue&quot;
+has_raw_value: &quot;mucus [UBERON:0000912]&quot;
+term:
+  id: &quot;UBERON:0000912&quot;
+  type: &quot;nmdc:OntologyClass&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -814,7 +808,12 @@ description: Substance produced by the body, e.g. Stool, mucus, where the sample
   Uber-anatomy ontology (UBERON)
 title: host body product
 examples:
-- value: mucus [UBERON:0000912]
+- object:
+    type: nmdc:ControlledTermValue
+    has_raw_value: mucus [UBERON:0000912]
+    term:
+      id: UBERON:0000912
+      type: nmdc:OntologyClass
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

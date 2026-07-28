@@ -726,18 +726,11 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1500 mL</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;1500 mL&quot;
+has_numeric_value: 1500
+has_unit: &quot;mL&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -789,7 +782,11 @@ description: 'Volume (ml) or mass (g) of total collected sample processed for DN
   Size (MIXS:0000001)'
 title: sample volume or weight for DNA extraction
 examples:
-- value: 1500 mL
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 1500 mL
+    has_numeric_value: 1500
+    has_unit: mL
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

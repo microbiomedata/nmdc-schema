@@ -743,18 +743,9 @@
 <li>Range: <a href="../ControlledTermValue/">ControlledTermValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>filtering of seawater, storing samples in ethanol</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:ControlledTermValue&quot;
+has_raw_value: &quot;filtering of seawater, storing samples in ethanol&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -784,7 +775,9 @@ description: A brief description of any processing applied to the sample during 
   performed
 title: sample material processing
 examples:
-- value: filtering of seawater, storing samples in ethanol
+- object:
+    type: nmdc:ControlledTermValue
+    has_raw_value: filtering of seawater, storing samples in ethanol
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

@@ -754,18 +754,12 @@
 <li>Range: <a href="../ControlledTermValue/">ControlledTermValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Growth chamber [CO_715:0000189]</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:ControlledTermValue&quot;
+has_raw_value: &quot;Growth chamber [CO_715:0000189]&quot;
+term:
+  id: &quot;CO_715:0000189&quot;
+  type: &quot;nmdc:OntologyClass&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -814,7 +808,12 @@ description: 'Type of facility where the sampled plant was grown; controlled voc
   use Crop Ontology (CO) terms, see https://cropontology.org/.'
 title: growth facility
 examples:
-- value: Growth chamber [CO_715:0000189]
+- object:
+    type: nmdc:ControlledTermValue
+    has_raw_value: Growth chamber [CO_715:0000189]
+    term:
+      id: CO_715:0000189
+      type: nmdc:OntologyClass
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

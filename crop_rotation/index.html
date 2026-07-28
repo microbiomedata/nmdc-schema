@@ -754,18 +754,9 @@
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>yes;R2/2017-01-01/2018-12-31/P6M</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;yes;R2/2017-01-01/2018-12-31/P6M&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -812,7 +803,9 @@ annotations:
 description: Whether or not crop is rotated, and if yes, rotation schedule
 title: history/crop rotation
 examples:
-- value: yes;R2/2017-01-01/2018-12-31/P6M
+- object:
+    type: nmdc:TextValue
+    has_raw_value: yes;R2/2017-01-01/2018-12-31/P6M
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

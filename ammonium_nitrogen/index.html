@@ -780,18 +780,11 @@
 <li>NH4-N</li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2.3 mg/kg</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;2.3 mg/kg&quot;
+has_numeric_value: 2.3
+has_unit: &quot;mg/kg&quot;
+</code></pre>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="https://www.ornl.gov/content/bio-scales-0">https://www.ornl.gov/content/bio-scales-0</a></li>
@@ -851,7 +844,11 @@ annotations:
 description: Concentration of ammonium nitrogen in the sample
 title: ammonium nitrogen
 examples:
-- value: 2.3 mg/kg
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 2.3 mg/kg
+    has_numeric_value: 2.3
+    has_unit: mg/kg
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://www.ornl.gov/content/bio-scales-0

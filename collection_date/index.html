@@ -748,18 +748,9 @@
 <li>Range: <a href="../TimestampValue/">TimestampValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2013-03-25T12:42:31+01:00</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TimestampValue&quot;
+has_raw_value: &quot;2013-03-25T12:42:31+01:00&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -790,7 +781,9 @@ description: 'The time of sampling, either as an instance (single point in time)
   2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant'
 title: collection date
 examples:
-- value: '2013-03-25T12:42:31+01:00'
+- object:
+    type: nmdc:TimestampValue
+    has_raw_value: '2013-03-25T12:42:31+01:00'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

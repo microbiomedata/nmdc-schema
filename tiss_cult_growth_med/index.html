@@ -743,18 +743,9 @@
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://link.springer.com/content/pdf/10.1007/BF02796489.pdf">https://link.springer.com/content/pdf/10.1007/BF02796489.pdf</a></td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;https://link.springer.com/content/pdf/10.1007/BF02796489.pdf&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -782,7 +773,9 @@
 description: Description of plant tissue culture growth media used
 title: tissue culture growth media
 examples:
-- value: https://link.springer.com/content/pdf/10.1007/BF02796489.pdf
+- object:
+    type: nmdc:TextValue
+    has_raw_value: https://link.springer.com/content/pdf/10.1007/BF02796489.pdf
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

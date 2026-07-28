@@ -754,18 +754,11 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10 d</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;10 d&quot;
+has_numeric_value: 10
+has_unit: &quot;d&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -816,7 +809,11 @@ description: Age of host at the time of sampling; relevant scale depends on spec
   and study, e.g. Could be seconds for amoebae or centuries for trees
 title: host age
 examples:
-- value: 10 d
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 10 d
+    has_numeric_value: 10
+    has_unit: d
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

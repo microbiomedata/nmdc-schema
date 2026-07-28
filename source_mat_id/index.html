@@ -759,18 +759,9 @@
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MPI012345</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;MPI012345&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -828,7 +819,9 @@ description: A unique identifier assigned to a material sample (as defined by ht
   were extracted (e.g. xatc123 or ark:/2154/R2)
 title: source material identifiers
 examples:
-- value: MPI012345
+- object:
+    type: nmdc:TextValue
+    has_raw_value: MPI012345
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -742,6 +753,12 @@
 <ul>
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;27 %&quot;
+has_numeric_value: 27
+has_unit: &quot;%&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -790,6 +807,12 @@ annotations:
     value: '%'
 description: Aluminum saturation (esp. For tropical soils)
 title: extreme_unusual_properties/Al saturation
+examples:
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 27 %
+    has_numeric_value: 27
+    has_unit: '%'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

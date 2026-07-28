@@ -743,18 +743,12 @@
 <li>Range: <a href="../ControlledTermValue/">ControlledTermValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>epidermis [PO:0005679]</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:ControlledTermValue&quot;
+has_raw_value: &quot;epidermis [PO:0005679]&quot;
+term:
+  id: &quot;PO:0005679&quot;
+  type: &quot;nmdc:OntologyClass&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -784,7 +778,12 @@ description: Name of plant structure the sample was obtained from; for Plant Ont
   If an individual flower is sampled, the sex of it can be recorded here.
 title: plant structure
 examples:
-- value: epidermis [PO:0005679]
+- object:
+    type: nmdc:ControlledTermValue
+    has_raw_value: epidermis [PO:0005679]
+    term:
+      id: PO:0005679
+      type: nmdc:OntologyClass
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

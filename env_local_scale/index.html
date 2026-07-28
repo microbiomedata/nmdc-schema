@@ -771,18 +771,12 @@
 <li>Range: <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>litter layer [ENVO:01000338]</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:ControlledIdentifiedTermValue&quot;
+has_raw_value: &quot;litter layer [ENVO:01000338]&quot;
+term:
+  id: &quot;ENVO:01000338&quot;
+  type: &quot;nmdc:OntologyClass&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -844,7 +838,12 @@ description: 'Report the entity or entities which are in the sample or specimen 
   this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
 title: local environmental context
 examples:
-- value: litter layer [ENVO:01000338]
+- object:
+    type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: litter layer [ENVO:01000338]
+    term:
+      id: ENVO:01000338
+      type: nmdc:OntologyClass
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

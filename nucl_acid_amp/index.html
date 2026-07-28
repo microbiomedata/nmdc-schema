@@ -743,18 +743,9 @@
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://phylogenomics.me/protocols/16s-pcr-protocol/">https://phylogenomics.me/protocols/16s-pcr-protocol/</a></td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;https://phylogenomics.me/protocols/16s-pcr-protocol/&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -784,7 +775,9 @@ description: A link to a literature reference, electronic resource or a standard
   specific nucleic acids
 title: nucleic acid amplification
 examples:
-- value: https://phylogenomics.me/protocols/16s-pcr-protocol/
+- object:
+    type: nmdc:TextValue
+    has_raw_value: https://phylogenomics.me/protocols/16s-pcr-protocol/
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0000038

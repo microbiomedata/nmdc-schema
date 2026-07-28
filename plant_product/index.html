@@ -754,18 +754,9 @@
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>xylem sap [PO:0025539]</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;xylem sap [PO:0025539]&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -812,7 +803,9 @@ annotations:
 description: Substance produced by the plant, where the sample was obtained from
 title: plant product
 examples:
-- value: xylem sap [PO:0025539]
+- object:
+    type: nmdc:TextValue
+    has_raw_value: xylem sap [PO:0025539]
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

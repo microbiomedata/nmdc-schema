@@ -754,18 +754,9 @@
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>5 days;-20 degree Celsius</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;5 days;-20 degree Celsius&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -816,7 +807,9 @@ description: Sample transport duration (in days or hrs) and temperature the samp
   was exposed to (e.g. 5.5 days; 20   C)
 title: sample transport conditions
 examples:
-- value: 5 days;-20 degree Celsius
+- object:
+    type: nmdc:TextValue
+    has_raw_value: 5 days;-20 degree Celsius
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

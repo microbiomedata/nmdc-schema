@@ -759,18 +759,9 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>mercury;0.09 micrograms per gram</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;mercury;0.09 micrograms per gram&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -821,7 +812,9 @@ description: Heavy metals present in the sequenced sample and their concentratio
   For multiple heavy metals and concentrations, add multiple copies of this field
 title: extreme_unusual_properties/heavy metals
 examples:
-- value: mercury;0.09 micrograms per gram
+- object:
+    type: nmdc:TextValue
+    has_raw_value: mercury;0.09 micrograms per gram
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

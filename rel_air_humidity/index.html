@@ -765,18 +765,11 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0.8</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;0.8 1&quot;
+has_numeric_value: 0.8
+has_unit: &quot;1&quot;
+</code></pre>
 <h2 id="comments">Comments</h2>
 <ul>
 <li>percent or float?</li>
@@ -833,7 +826,11 @@ title: relative air humidity
 comments:
 - percent or float?
 examples:
-- value: '0.8'
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 0.8 1
+    has_numeric_value: 0.8
+    has_unit: '1'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

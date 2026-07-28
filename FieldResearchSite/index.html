@@ -723,6 +723,16 @@ attributes:
     description: Vegetation classification from one or more standard classification
       systems, or agricultural crop
     title: current vegetation
+    examples:
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: deciduous forest
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: forest
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: Bauhinia variegata
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -768,7 +778,9 @@ attributes:
       (http://purl.bioontology.org/ontology/GAZ)
     title: geographic location (country and/or sea,region)
     examples:
-    - value: 'USA: Maryland, Bethesda'
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: 'USA: Maryland, Bethesda'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -800,7 +812,11 @@ attributes:
       points, and in WGS84 system
     title: geographic location (latitude and longitude)
     examples:
-    - value: 50.586825 6.408977
+    - object:
+        type: nmdc:GeolocationValue
+        latitude: 50.586825
+        longitude: 6.408977
+        has_raw_value: 50.586825 6.408977
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -863,7 +879,9 @@ attributes:
       can be separated by pipes
     title: soil type
     examples:
-    - value: plinthosol [ENVO:00002250]
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: plinthosol [ENVO:00002250]
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:

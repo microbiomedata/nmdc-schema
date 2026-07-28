@@ -754,18 +754,12 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>25 g/m3</td>
-</tr>
-</tbody>
-</table>
+<p>Relative humidity, in percent. Absolute humidity, in gram per cubic meter, is a different physical quantity and cannot be derived from relative humidity without also knowing the temperature.</p>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;56.54 %&quot;
+has_numeric_value: 56.54
+has_unit: &quot;%&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -812,7 +806,14 @@ annotations:
 description: Amount of water vapour in the air, at the time of sampling
 title: humidity
 examples:
-- value: 25 g/m3
+- description: Relative humidity, in percent. Absolute humidity, in gram per cubic
+    meter, is a different physical quantity and cannot be derived from relative humidity
+    without also knowing the temperature.
+  object:
+    type: nmdc:QuantityValue
+    has_raw_value: 56.54 %
+    has_numeric_value: 56.54
+    has_unit: '%'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

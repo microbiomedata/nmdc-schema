@@ -754,18 +754,11 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>22 Cel</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;22 Cel&quot;
+has_numeric_value: 22
+has_unit: &quot;Cel&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -816,7 +809,11 @@ description: The temperature to which a given parcel of humid air must be cooled
   at constant barometric pressure, for water vapor to condense into water
 title: dew point
 examples:
-- value: 22 Cel
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 22 Cel
+    has_numeric_value: 22
+    has_unit: Cel
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0000129

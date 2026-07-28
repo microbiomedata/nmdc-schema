@@ -759,18 +759,9 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2.5 milligram per cubic meter</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;2.5 milligram per cubic meter&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -820,7 +811,9 @@ annotations:
 description: Concentration of phaeopigments; can include multiple phaeopigments
 title: phaeopigments
 examples:
-- value: 2.5 milligram per cubic meter
+- object:
+    type: nmdc:TextValue
+    has_raw_value: 2.5 milligram per cubic meter
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 string_serialization: '{text};{float} {unit}'

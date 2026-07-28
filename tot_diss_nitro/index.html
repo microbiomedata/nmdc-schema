@@ -754,18 +754,12 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>40 ug/L</td>
-</tr>
-</tbody>
-</table>
+<p>Micromole per liter. Microgram per liter expresses the same concentration as mass rather than amount of substance; the two differ by the molar mass of nitrogen.</p>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;8.856 umol/L&quot;
+has_numeric_value: 8.856
+has_unit: &quot;umol/L&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -816,7 +810,13 @@ description: 'Total dissolved nitrogen concentration, reported as nitrogen, meas
   by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen'
 title: total dissolved nitrogen
 examples:
-- value: 40 ug/L
+- description: Micromole per liter. Microgram per liter expresses the same concentration
+    as mass rather than amount of substance; the two differ by the molar mass of nitrogen.
+  object:
+    type: nmdc:QuantityValue
+    has_raw_value: 8.856 umol/L
+    has_numeric_value: 8.856
+    has_unit: umol/L
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

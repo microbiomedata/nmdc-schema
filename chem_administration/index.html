@@ -759,18 +759,12 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>agar [CHEBI:2509];2018-05-11T20:00Z</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:ControlledTermValue&quot;
+has_raw_value: &quot;agar [CHEBI:2509];2018-05-11T20:00Z&quot;
+term:
+  id: &quot;CHEBI:2509&quot;
+  type: &quot;nmdc:OntologyClass&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -820,7 +814,12 @@ description: List of chemical compounds administered to the host or site where s
   http://purl.bioontology.org/ontology/chebi
 title: chemical administration
 examples:
-- value: agar [CHEBI:2509];2018-05-11T20:00Z
+- object:
+    type: nmdc:ControlledTermValue
+    has_raw_value: agar [CHEBI:2509];2018-05-11T20:00Z
+    term:
+      id: CHEBI:2509
+      type: nmdc:OntologyClass
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

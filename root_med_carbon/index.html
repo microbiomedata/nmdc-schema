@@ -728,7 +728,7 @@
 
 
 <h1 id="slot-rooting-medium-carbon-root_med_carbon">Slot: rooting medium carbon (root_med_carbon)</h1>
-<p><em>Source of organic carbon in the culture rooting medium; e.g. sucrose</em></p>
+<p><em>Source of organic carbon in the culture rooting medium</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/mixs/0000577">MIXS:0000577</a></p>
 <!-- no inheritance hierarchy -->
@@ -754,18 +754,9 @@
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sucrose</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;sucrose&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -812,10 +803,12 @@ annotations:
   Preferred_unit:
     tag: Preferred_unit
     value: milligram per liter
-description: Source of organic carbon in the culture rooting medium; e.g. sucrose
+description: Source of organic carbon in the culture rooting medium
 title: rooting medium carbon
 examples:
-- value: sucrose
+- object:
+    type: nmdc:TextValue
+    has_raw_value: sucrose
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

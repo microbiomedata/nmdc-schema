@@ -759,18 +759,12 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>time series design [EFO:0001779]</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:ControlledTermValue&quot;
+has_raw_value: &quot;time series design [EFO:0001779]&quot;
+term:
+  id: &quot;EFO:0001779&quot;
+  type: &quot;nmdc:OntologyClass&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -820,7 +814,12 @@ description: Variable aspects of an experiment design that can be used to descri
   Biomedical Investigations (OBI)
 title: experimental factor
 examples:
-- value: time series design [EFO:0001779]
+- object:
+    type: nmdc:ControlledTermValue
+    has_raw_value: time series design [EFO:0001779]
+    term:
+      id: EFO:0001779
+      type: nmdc:OntologyClass
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

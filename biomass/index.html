@@ -759,18 +759,9 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>total;20 gram</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;total;20 gram&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -821,7 +812,9 @@ description: Amount of biomass; should include the name for the part of biomass 
   e.g. Microbial, total. Can include multiple measurements
 title: biomass
 examples:
-- value: total;20 gram
+- object:
+    type: nmdc:TextValue
+    has_raw_value: total;20 gram
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

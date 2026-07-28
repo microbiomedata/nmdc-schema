@@ -765,18 +765,11 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>9 g/g</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;9 g/g&quot;
+has_numeric_value: 9
+has_unit: &quot;g/g&quot;
+</code></pre>
 <h2 id="comments">Comments</h2>
 <ul>
 <li>Can be calculated via mass of water vapor divided by the volume of the air and water vapor mixture.</li>
@@ -834,7 +827,11 @@ comments:
 - Can be calculated via mass of water vapor divided by the volume of the air and water
   vapor mixture.
 examples:
-- value: 9 g/g
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 9 g/g
+    has_numeric_value: 9
+    has_unit: g/g
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

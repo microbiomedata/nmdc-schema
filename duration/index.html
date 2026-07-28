@@ -769,18 +769,11 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>None</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;2 h&quot;
+has_numeric_value: 2
+has_unit: &quot;h&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -827,6 +820,8 @@ annotations:
 description: The elapsed time of an activity.
 examples:
 - object:
+    type: nmdc:QuantityValue
+    has_raw_value: 2 h
     has_numeric_value: 2
     has_unit: h
 from_schema: https://w3id.org/nmdc/nmdc

@@ -759,18 +759,11 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>15 Cel</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;15 Cel&quot;
+has_numeric_value: 15
+has_unit: &quot;Cel&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -820,7 +813,11 @@ annotations:
 description: Temperature of the surface at the time of sampling
 title: surface temperature
 examples:
-- value: 15 Cel
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 15 Cel
+    has_numeric_value: 15
+    has_unit: Cel
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

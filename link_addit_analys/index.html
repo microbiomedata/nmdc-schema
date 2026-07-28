@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -731,6 +742,13 @@
 <ul>
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;https://doi.org/10.1111/j.1574-6941.2011.01140.x&quot;
+</code></pre>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;doi:10.1111/j.1574-6941.2011.01140.x&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -757,6 +775,13 @@
 <pre><code class="language-yaml">name: link_addit_analys
 description: Link to additional analysis results performed on the sample
 title: links to additional analysis
+examples:
+- object:
+    type: nmdc:TextValue
+    has_raw_value: https://doi.org/10.1111/j.1574-6941.2011.01140.x
+- object:
+    type: nmdc:TextValue
+    has_raw_value: doi:10.1111/j.1574-6941.2011.01140.x
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

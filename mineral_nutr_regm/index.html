@@ -759,18 +759,9 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>potassium;15 gram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;potassium;15 gram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -824,7 +815,9 @@ description: Information about treatment involving the use of mineral supplement
   nutrient regimens
 title: mineral nutrient regimen
 examples:
-- value: potassium;15 gram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+- object:
+    type: nmdc:TextValue
+    has_raw_value: potassium;15 gram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

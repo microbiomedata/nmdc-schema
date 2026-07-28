@@ -743,18 +743,9 @@
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>V6, V9, ITS</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;V6, V9, ITS&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -783,7 +774,9 @@ description: Name of subfragment of a gene or locus. Important to e.g. identify 
   regions on marker genes like V6 on 16S rRNA
 title: target subfragment
 examples:
-- value: V6, V9, ITS
+- object:
+    type: nmdc:TextValue
+    has_raw_value: V6, V9, ITS
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

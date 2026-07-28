@@ -908,6 +908,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Values
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-units-corrected-against-production-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example units corrected against production data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#units-that-are-inconsistent-or-not-ucum-expressible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Units that are inconsistent or not UCUM-expressible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-unit-slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-unit slots
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#maintaining-mixsyaml-how-to-change-a-mixs-slot" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1544,6 +1594,90 @@
 <td><code>water_cont_soil_meth</code></td>
 <td>Data is "volumetric soil water content; ..."</td>
 <td>Delete <code>structured_pattern</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-values">Example Values</h2>
+<p>Where a MIxS slot whose range is a wrapper class (<code>QuantityValue</code>, <code>TextValue</code>, <code>TimestampValue</code>, <code>ControlledTermValue</code>, <code>ControlledIdentifiedTermValue</code>, <code>GeolocationValue</code>) has an example, it is carried in the LinkML <code>examples</code> metaslot as a structured <code>object:</code> that matches the range, not a scalar string (a few slots have no example; see below). A <code>QuantityValue</code> example is <code>{type, has_raw_value, has_numeric_value, has_unit}</code>; a <code>ControlledIdentifiedTermValue</code> example is <code>{type, has_raw_value, term: {id, type}}</code>; and so on. <code>QuantityValue.has_unit</code> is required and must be a permissible value of <code>UnitEnum</code>. Every objectified example is validated against the materialized schema.</p>
+<p>Two conventions follow from that:</p>
+<ul>
+<li>A dimensionless quantity (a ratio, fraction, or count) uses <code>has_unit: "1"</code> (for example <code>carb_nitro_ratio</code>, <code>occup_samp</code>, <code>iwf</code>).</li>
+<li>A quantity whose unit has no UCUM symbol cannot be given a valid example, because <code>has_unit</code> is required and only <code>UnitEnum</code> values are allowed. Such a slot gets no example and is flagged with <code>units_alignment_excuse</code> (see below).</li>
+</ul>
+<h3 id="example-units-corrected-against-production-data">Example units corrected against production data</h3>
+<p>Cross-checking <code>nmdc.biosample_set</code> found 18 slots whose upstream MIxS example unit or value does not occur in production data. Those examples were replaced.</p>
+<p>The reason for each replacement is recorded as a <code>#</code> comment directly above the slot's line in <code>assets/yq-for-mixs-customizations.txt</code>, the file that defines the example. Keeping the rationale next to the line it justifies means it cannot drift from the shipped example, which a table in this document would.</p>
+<p>The example's own <code>description</code> is a separate thing and has a different audience. It is rendered on the public slot page, so it describes the example to someone deciding what to submit: what the value means, which unit it is in, and any measurement basis that is easy to confuse with it. It does not mention MIxS, name internal collections, or argue for the replacement; that reasoning belongs in the asset comment. Three slots (<code>host_height</code>, <code>samp_size</code>, <code>wind_speed</code>) differ from MIxS only by a unit-scale factor and have no <code>description</code>, because the example already shows the unit.</p>
+<h3 id="units-that-are-inconsistent-or-not-ucum-expressible">Units that are inconsistent or not UCUM-expressible</h3>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Issue</th>
+<th>Handling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>api</code></td>
+<td>API gravity has no UCUM unit, and <code>has_unit</code> is required</td>
+<td>example removed; <code>units_alignment_excuse: non_ucum_unit</code></td>
+</tr>
+<tr>
+<td><code>rel_humidity_out</code></td>
+<td>upstream unit "per kilogram of air" describes specific humidity, not relative humidity</td>
+<td>example uses <code>%</code>; <code>units_alignment_excuse: mixs_inconsistent</code></td>
+</tr>
+<tr>
+<td><code>specific_humidity</code></td>
+<td>upstream unit "per kilogram of air"</td>
+<td><code>g/kg</code></td>
+</tr>
+<tr>
+<td><code>iwf</code>, <code>rel_air_humidity</code>, <code>surf_humidity</code></td>
+<td>example value is a fraction while <code>storage_units</code> is <code>%</code> (fraction vs percent ambiguity)</td>
+<td>dimensionless <code>has_unit: "1"</code></td>
+</tr>
+<tr>
+<td><code>microbial_biomass</code></td>
+<td>compound unit <code>pmol/g dry soil</code></td>
+<td><code>units_alignment_excuse: complex_unit</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="multi-unit-slots">Multi-unit slots</h3>
+<p>Several slots legitimately carry more than one unit in production data. The example uses one valid <code>UnitEnum</code> unit; the others remain valid for submitted data.</p>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Units observed in production</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ammonium</code>, <code>diss_oxygen</code>, <code>nitrate</code> variants</td>
+<td>mg/L and umol/L</td>
+</tr>
+<tr>
+<td><code>calcium</code>, <code>magnesium</code>, <code>potassium</code></td>
+<td>mg/L and mg/kg</td>
+</tr>
+<tr>
+<td><code>conduc</code></td>
+<td>mS/cm and uS/cm</td>
+</tr>
+<tr>
+<td><code>samp_size</code></td>
+<td>g and mL</td>
+</tr>
+<tr>
+<td><code>tot_phosp</code></td>
+<td>[ppm], mg/L, and umol/L</td>
+</tr>
+<tr>
+<td><code>host_age</code></td>
+<td>a and d</td>
 </tr>
 </tbody>
 </table>

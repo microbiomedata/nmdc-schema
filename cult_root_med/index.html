@@ -743,18 +743,9 @@
 <li>Range: <a href="../TextValue/">TextValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://himedialabs.com/TD/PT158.pdf">http://himedialabs.com/TD/PT158.pdf</a></td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;http://himedialabs.com/TD/PT158.pdf&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -785,7 +776,9 @@ description: Name or reference for the hydroponic or in vitro culture rooting me
   rooting medium descriptors
 title: culture rooting medium
 examples:
-- value: http://himedialabs.com/TD/PT158.pdf
+- object:
+    type: nmdc:TextValue
+    has_raw_value: http://himedialabs.com/TD/PT158.pdf
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

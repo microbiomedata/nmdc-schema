@@ -754,18 +754,12 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0.417361111</td>
-</tr>
-</tbody>
-</table>
+<p>A dimensionless ratio, so has_unit is 1. Mineral soils are near 10 and organic soils reach 30 or more; a value below 1 would mean nitrogen exceeds carbon, which does not occur in soil or other organic matter.</p>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;20.6 1&quot;
+has_numeric_value: 20.6
+has_unit: &quot;1&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -815,7 +809,14 @@ annotations:
 description: Ratio of amount or concentrations of carbon to nitrogen
 title: carbon/nitrogen ratio
 examples:
-- value: '0.417361111'
+- description: A dimensionless ratio, so has_unit is 1. Mineral soils are near 10
+    and organic soils reach 30 or more; a value below 1 would mean nitrogen exceeds
+    carbon, which does not occur in soil or other organic matter.
+  object:
+    type: nmdc:QuantityValue
+    has_raw_value: 20.6 1
+    has_numeric_value: 20.6
+    has_unit: '1'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

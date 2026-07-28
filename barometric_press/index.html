@@ -754,18 +754,11 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1013 mbar</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;1013 mbar&quot;
+has_numeric_value: 1013
+has_unit: &quot;mbar&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -816,7 +809,11 @@ description: Force per unit area exerted against a surface by the weight of air 
   that surface
 title: barometric pressure
 examples:
-- value: 1013 mbar
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 1013 mbar
+    has_numeric_value: 1013
+    has_unit: mbar
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

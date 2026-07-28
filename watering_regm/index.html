@@ -759,18 +759,9 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -820,7 +811,9 @@ description: Information about treatment involving an exposure to watering frequ
   multiple regimens
 title: watering regimen
 examples:
-- value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+- object:
+    type: nmdc:TextValue
+    has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

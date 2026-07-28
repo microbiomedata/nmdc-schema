@@ -765,18 +765,12 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>None</td>
-</tr>
-</tbody>
-</table>
+<p>The conductivity measurement was 0.017 millisiemens per centimeter.</p>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;0.017 mS/cm&quot;
+has_numeric_value: 0.017
+has_unit: &quot;mS/cm&quot;
+</code></pre>
 <h2 id="comments">Comments</h2>
 <ul>
 <li>Provide the value output of the field instrument.</li>
@@ -832,6 +826,7 @@ comments:
 examples:
 - description: The conductivity measurement was 0.017 millisiemens per centimeter.
   object:
+    type: nmdc:QuantityValue
     has_raw_value: 0.017 mS/cm
     has_numeric_value: 0.017
     has_unit: mS/cm

@@ -759,18 +759,9 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>wind speed;9 knots</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;wind speed;9 knots&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -817,7 +808,9 @@ annotations:
 description: Measurement of atmospheric data; can include multiple data
 title: atmospheric data
 examples:
-- value: wind speed;9 knots
+- object:
+    type: nmdc:TextValue
+    has_raw_value: wind speed;9 knots
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 string_serialization: '{text};{float} {unit}'

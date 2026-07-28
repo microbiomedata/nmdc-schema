@@ -754,18 +754,11 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>7.5</td>
-</tr>
-</tbody>
-</table>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;7.5 [pH]&quot;
+has_numeric_value: 7.5
+has_unit: &quot;[pH]&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -812,7 +805,11 @@ annotations:
 description: pH measurement of the culture rooting medium; e.g. 5.5
 title: rooting medium pH
 examples:
-- value: '7.5'
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 7.5 [pH]
+    has_numeric_value: 7.5
+    has_unit: '[pH]'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

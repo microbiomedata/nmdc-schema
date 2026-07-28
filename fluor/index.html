@@ -754,18 +754,12 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2.5 V</td>
-</tr>
-</tbody>
-</table>
+<p>A calibrated concentration, in milligram per cubic meter. The raw analog output of a fluorometer is in volts and becomes a concentration only after calibration.</p>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;0.9563 mg/m3&quot;
+has_numeric_value: 0.9563
+has_unit: &quot;mg/m3&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -815,7 +809,13 @@ annotations:
 description: Raw or converted fluorescence of water
 title: fluorescence
 examples:
-- value: 2.5 V
+- description: A calibrated concentration, in milligram per cubic meter. The raw analog
+    output of a fluorometer is in volts and becomes a concentration only after calibration.
+  object:
+    type: nmdc:QuantityValue
+    has_raw_value: 0.9563 mg/m3
+    has_numeric_value: 0.9563
+    has_unit: mg/m3
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0000704
