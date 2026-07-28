@@ -1017,9 +1017,21 @@ classes:
           This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.
       slope_gradient:
         examples:
-          - value: 10%
-          - value: 10 %
-          - value: '0.10'
+          - object:
+              type: nmdc:QuantityValue
+              has_raw_value: 10%
+              has_numeric_value: 10
+              has_unit: '%'
+          - object:
+              type: nmdc:QuantityValue
+              has_raw_value: 10 %
+              has_numeric_value: 10
+              has_unit: '%'
+          - object:
+              type: nmdc:QuantityValue
+              has_raw_value: '0.10'
+              has_numeric_value: 0.10
+              has_unit: '1'
         todos:
           - Slope is a percent. How does the validation work? Check to correct examples
       al_sat:
@@ -1029,7 +1041,11 @@ classes:
           - Aluminum saturation is the percentage of the CEC occupies by aluminum. Like all cations,
             aluminum held by the cation exchange complex is in equilibrium with aluminum in the soil solution.
         examples:
-          - value: 27%
+          - object:
+              type: nmdc:QuantityValue
+              has_raw_value: 27%
+              has_numeric_value: 27
+              has_unit: '%'
         todos:
           - Example & validation. Can we configure things so that 27% & 27 % & 0.27 will validate?
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts?
@@ -1053,9 +1069,15 @@ classes:
           - Values provided here can be specific species of vegetation or vegetation regions
           - See for vegetation regions- https://education.nationalgeographic.org/resource/vegetation-region
         examples:
-          - value: deciduous forest
-          - value: forest
-          - value: Bauhinia variegata
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: deciduous forest
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: forest
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: Bauhinia variegata
         todos:
           - Recommend changing this from text value to some king of ontology?
       cur_vegetation_meth:
@@ -1072,8 +1094,12 @@ classes:
         comments:
           - For multiple heavy metals and concentrations, separate by ;
         examples:
-          - value: mercury 0.09 micrograms per gram
-          - value: mercury 0.09 ug/g; chromium 0.03 ug/g
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: mercury 0.09 micrograms per gram
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: mercury 0.09 ug/g; chromium 0.03 ug/g
         todos:
           - Example & validation. Can we configure things so that 27% & 27 % & 0.27 will validate?
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts? I would argue this isn't an extreme unusual property. It's just a biogeochemical measurement.
@@ -1092,12 +1118,20 @@ classes:
           - value: doi:10.1016/j.geoderma.2019.113898
       link_addit_analys:
         examples:
-          - value: https://doi.org/10.1111/j.1574-6941.2011.01140.x
-          - value: doi:10.1111/j.1574-6941.2011.01140.x
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 'https://doi.org/10.1111/j.1574-6941.2011.01140.x'
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 'doi:10.1111/j.1574-6941.2011.01140.x'
       link_climate_info:
         examples:
-          - value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
-          - value: doi:10.3354/cr014161
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 'https://www.int-res.com/abstracts/cr/v14/n3/p161-173/'
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 'doi:10.3354/cr014161'
       local_class_meth:
         examples:
           - value: https://www.nrcs.usda.gov/resources/education-and-teaching-materials/the-twelve-orders-of-soil-taxonomy
@@ -1145,14 +1179,24 @@ classes:
           - how to manage multiple water content methods?
       ph_meth:
         examples:
-          - value: https://doi.org/10.2136/sssabookser5.3.c16
-          - value: doi:10.2136/sssabookser5.3.c16
-          - value: https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 'https://doi.org/10.2136/sssabookser5.3.c16'
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 'doi:10.2136/sssabookser5.3.c16'
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 'https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html'
         comments:
           - This can include a link to the instrument used or a citation for the method.
       tot_carb:
         examples:
-          - value: 1 ug/L
+          - object:
+              type: nmdc:QuantityValue
+              has_raw_value: 1 ug/L
+              has_numeric_value: 1
+              has_unit: ug/L
         todos:
           - is this inorganic and organic? both? could use some clarification.
           - ug/L doesn't seem like the right units. Should check this slots usage in databases and re-evaluate.
@@ -1173,9 +1217,15 @@ classes:
           - Describe how samples were composited or sieved.
           - Use 'sample link' to indicate which samples were combined.
         examples:
-          - value: combined 2 cores | 4mm sieved
-          - value: 4 mm sieved and homogenized
-          - value: 50 g | 5 cores | 2 mm sieved
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: combined 2 cores | 4mm sieved
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 4 mm sieved and homogenized
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 50 g | 5 cores | 2 mm sieved
         todos:
           - check validation and examples
       climate_environment:
@@ -1187,12 +1237,20 @@ classes:
           - would like to see usage examples for this slot. Requiring micromole/L seems too limiting and doesn't match expected_value value
           - did I do this right? keep the example that's provided and add another? so as to not override
         examples:
-          - value: CO2; 500ppm above ambient; constant
-          - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: CO2; 500ppm above ambient; constant
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 'nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'
       watering_regm:
         examples:
-          - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-          - value: 75% water holding capacity; constant
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: '1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M'
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 75% water holding capacity; constant
       source_mat_id:
         description: A globally unique identifier assigned to the biological sample.
         title: source material identifier
@@ -1203,8 +1261,12 @@ classes:
             If you have not assigned FAIR identifiers to your samples,
             you can generate UUIDs (https://www.uuidgenerator.net/).
         examples:
-          - value: igsn:AU1243
-          - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 'igsn:AU1243'
+          - object:
+              type: nmdc:TextValue
+              has_raw_value: 'UUID:24f1467a-40f4-11ed-b878-0242ac120002'
         todos:
           - Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter
             we dont need to require a GUID. It can be an optional field to fill out only if they already have a resolvable ID.
@@ -1487,6 +1549,7 @@ slots:
     title: bulk electrical conductivity
     examples:
       - object:
+          type: nmdc:QuantityValue
           has_raw_value: 0.017 mS/cm
           has_numeric_value: 0.017
           has_unit: mS/cm
@@ -1521,7 +1584,11 @@ slots:
     description: Concentration of zinc in the sample
     title: zinc
     examples:
-      - value: 2.5 mg/kg
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "2.5 mg/kg"
+          has_numeric_value: 2.5
+          has_unit: mg/kg
     range: QuantityValue
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
@@ -1534,7 +1601,11 @@ slots:
     description: Concentration of manganese in the sample
     title: manganese
     examples:
-      - value: 24.7 mg/kg
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "24.7 mg/kg"
+          has_numeric_value: 24.7
+          has_unit: mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
     range: QuantityValue
@@ -1550,7 +1621,11 @@ slots:
     description: Concentration of ammonium nitrogen in the sample
     title: ammonium nitrogen
     examples:
-      - value: 2.3 mg/kg
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "2.3 mg/kg"
+          has_numeric_value: 2.3
+          has_unit: mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
     range: QuantityValue
@@ -1568,7 +1643,11 @@ slots:
     description: Concentration of nitrate nitrogen in the sample
     title: nitrate nitrogen
     examples:
-      - value: 0.29 mg/kg
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "0.29 mg/kg"
+          has_numeric_value: 0.29
+          has_unit: mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
     range: QuantityValue
@@ -1584,7 +1663,11 @@ slots:
     description: Concentration of nitrite nitrogen in the sample
     title: nitrite nitrogen
     examples:
-      - value: 1.2 mg/kg
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "1.2 mg/kg"
+          has_numeric_value: 1.2
+          has_unit: mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
     range: QuantityValue
@@ -1603,7 +1686,11 @@ slots:
     description: lime buffer capacity, determined after 30 minute incubation
     title: lime buffer capacity (at 30 minutes)
     examples:
-      - value: 543 [ppm]
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "543 [ppm]"
+          has_numeric_value: 543
+          has_unit: "[ppm]"
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
       - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
@@ -1622,7 +1709,11 @@ slots:
     description: lime buffer capacity, determined at equilibrium after 5 day incubation
     title: lime buffer capacity (after 5 day incubation)
     examples:
-      - value: 1575 [ppm]
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "1575 [ppm]"
+          has_numeric_value: 1575
+          has_unit: "[ppm]"
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
     range: QuantityValue
@@ -1692,6 +1783,8 @@ slots:
     description: The elapsed time of an activity.
     examples:
       - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "2 h"
           has_numeric_value: 2
           has_unit: h
     annotations:
