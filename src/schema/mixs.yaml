@@ -2752,6 +2752,13 @@ slots:
   env_broad_scale:
     description: 'Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
     title: broad-scale environmental context
+    examples:
+      - object:
+          type: nmdc:ControlledIdentifiedTermValue
+          has_raw_value: oceanic epipelagic zone biome [ENVO:01000035]
+          term:
+            id: ENVO:01000035
+            type: nmdc:OntologyClass
     keywords:
       - context
       - environmental
@@ -2762,13 +2769,6 @@ slots:
       interpolated: true
       partial_match: true
     is_a: mixs_env_triad_field
-    examples:
-      - object:
-          type: nmdc:ControlledIdentifiedTermValue
-          has_raw_value: oceanic epipelagic zone biome [ENVO:01000035]
-          term:
-            id: ENVO:01000035
-            type: nmdc:OntologyClass
     annotations:
       tooltip: The biome or major environmental system where the sample or specimen originated. Choose values from subclasses of the 'biome' class [ENVO:00000428] in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe the broad anatomical or morphological context
   env_local_scale:
@@ -2777,6 +2777,13 @@ slots:
       tooltip: The specific environmental entities or features near the sample or specimen that significantly influence its characteristics or composition. These entities are typically smaller in scale than the broad environmental context. Values for this field should be countable, material nouns and must be chosen from subclasses of BFO:0000040 (material entity) that appear in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe specific anatomical structures or plant parts.
     description: 'Report the entity or entities which are in the sample or specimen s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
     title: local environmental context
+    examples:
+      - object:
+          type: nmdc:ControlledIdentifiedTermValue
+          has_raw_value: litter layer [ENVO:01000338]
+          term:
+            id: ENVO:01000338
+            type: nmdc:OntologyClass
     keywords:
       - context
       - environmental
@@ -2787,16 +2794,16 @@ slots:
       partial_match: true
     is_a: mixs_env_triad_field
     range: ControlledIdentifiedTermValue
-    examples:
-      - object:
-          type: nmdc:ControlledIdentifiedTermValue
-          has_raw_value: litter layer [ENVO:01000338]
-          term:
-            id: ENVO:01000338
-            type: nmdc:OntologyClass
   env_medium:
     description: 'Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)'
     title: environmental medium
+    examples:
+      - object:
+          type: nmdc:ControlledIdentifiedTermValue
+          has_raw_value: soil [ENVO:00001998]
+          term:
+            id: ENVO:00001998
+            type: nmdc:OntologyClass
     keywords:
       - environmental
     slot_uri: MIXS:0000014
@@ -2806,13 +2813,6 @@ slots:
       interpolated: true
       partial_match: true
     is_a: mixs_env_triad_field
-    examples:
-      - object:
-          type: nmdc:ControlledIdentifiedTermValue
-          has_raw_value: soil [ENVO:00001998]
-          term:
-            id: ENVO:00001998
-            type: nmdc:OntologyClass
     annotations:
       tooltip: The predominant environmental material or substrate that directly surrounds or hosts the sample or specimen at the time of sampling. Choose values from subclasses of the 'environmental material' class [ENVO:00010483] in the Environment Ontology (ENVO). Values for this field should be measurable or mass material nouns, representing continuous environmental materials. For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to indicate a tissue, organ, or plant structure
   escalator:
@@ -3544,6 +3544,13 @@ slots:
       Expected_value: FMA or UBERON
     description: Substance produced by the body, e.g. Stool, mucus, where the sample was obtained from. Use terms from the foundational model of anatomy ontology (fma) or Uber-anatomy ontology (UBERON)
     title: host body product
+    examples:
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: mucus [UBERON:0000912]
+          term:
+            id: UBERON:0000912
+            type: nmdc:OntologyClass
     keywords:
       - body
       - host
@@ -3552,13 +3559,6 @@ slots:
     string_serialization: '{termLabel} [{termID}]'
     slot_uri: MIXS:0000888
     range: ControlledTermValue
-    examples:
-      - object:
-          type: nmdc:ControlledTermValue
-          has_raw_value: mucus [UBERON:0000912]
-          term:
-            id: UBERON:0000912
-            type: nmdc:OntologyClass
   host_body_site:
     annotations:
       Expected_value: FMA or UBERON
@@ -5614,7 +5614,7 @@ slots:
     examples:
       - object:
           type: nmdc:TextValue
-          has_raw_value: KH2PO4;170  milligram per liter
+          has_raw_value: KH2PO4;170 milligram per liter
     keywords:
       - macronutrients
     string_serialization: '{text};{float} {unit}'
@@ -5629,7 +5629,7 @@ slots:
     examples:
       - object:
           type: nmdc:TextValue
-          has_raw_value: H3BO3;6.2  milligram per liter
+          has_raw_value: H3BO3;6.2 milligram per liter
     keywords:
       - micronutrients
     string_serialization: '{text};{float} {unit}'
@@ -7868,11 +7868,11 @@ slots:
     minimum_value: 1
     comments:
       - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
+    examples:
+      - value: "300000"
     maximum_value: 100000000000
     notes:
       - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat.
-    examples:
-      - value: "300000"
   ploidy:
     description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO
     title: ploidy
@@ -7935,16 +7935,16 @@ slots:
       - device
       - sample
     slot_uri: MIXS:0000002
+    examples:
+      - value: specimen collection swab stick [OBI:0002820]
+      - value: PONAR grab sampler [GENEPIO:0100929]
+      - value: trowel
     comments:
       - GENEPIO's subtree of OBI:0002814 includes grouping classes such as GENEPIO:0100941 (grab sampling device), GENEPIO:0100942 (composite sampling device), GENEPIO:0100943 (core sampling device), and GENEPIO:0100948 (passive sampling device).
       - ENVO has no device classes; do not use ENVO terms here.
       - 'Existing NMDC biosamples populate this slot with free text (e.g., "corer", "Van Dorn"). New submissions are encouraged to use the form: label [PREFIX:LOCALID].'
     pattern: ^([^\[\]]+|.+ \[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\])$
     range: string
-    examples:
-      - value: specimen collection swab stick [OBI:0002820]
-      - value: PONAR grab sampler [GENEPIO:0100929]
-      - value: trowel
   samp_collec_method:
     description: The method employed for collecting the sample
     title: sample collection method
