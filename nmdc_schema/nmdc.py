@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-16T00:42:07
+# Generation date: 2026-07-29T07:23:00
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -896,8 +896,8 @@ class MetaboliteIdentification(YAMLRoot):
 @dataclass(repr=False)
 class AttributeValue(YAMLRoot):
     """
-    The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and
-    the structured value
+    The value of an attribute of any NMDC entity. This object can hold both the unnormalized atomic value and the
+    structured value.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
