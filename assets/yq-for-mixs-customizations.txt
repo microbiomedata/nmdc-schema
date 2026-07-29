@@ -1016,7 +1016,7 @@
 # calcium: MIxS example is umol/L, a soil-solution concentration; NMDC uses mg/kg, the solid-phase value, which is not interconvertible without the extraction ratio.
 '.slots.calcium.examples = [{"description": "A solid-phase soil measurement, in milligram per kilogram of dry soil. A calcium concentration measured in soil solution is a different basis and cannot be converted to a per-dry-mass value without the extraction ratio.", "object": {"type": "nmdc:QuantityValue", "has_raw_value": "2774.35 mg/kg", "has_numeric_value": 2774.35, "has_unit": "mg/kg"}}]'
 # carb_nitro_ratio: MIxS example value 0.417361111 would mean nitrogen exceeds carbon, which cannot occur; NMDC uses 20.6, consistent with organic-rich soil.
-'.slots.carb_nitro_ratio.examples = [{"description": "A dimensionless ratio, so has_unit is 1. Mineral soils are near 10 and organic soils reach 30 or more; a value below 1 would mean nitrogen exceeds carbon, which does not occur in soil or other organic matter.", "object": {"type": "nmdc:QuantityValue", "has_raw_value": "20.6 1", "has_numeric_value": 20.6, "has_unit": "1"}}]'
+'.slots.carb_nitro_ratio.examples = [{"description": "A dimensionless ratio, so has_unit is 1. Mineral soils are near 10 and organic soils reach 30 or more; a value below 1 would mean nitrogen exceeds carbon, which does not occur in soil or other organic matter.", "object": {"type": "nmdc:QuantityValue", "has_raw_value": "20.6", "has_numeric_value": 20.6, "has_unit": "1"}}]'
 # chlorophyll: MIxS example is mg/m3; NMDC uses the numerically identical ug/L, the notation present in production data.
 '.slots.chlorophyll.examples = [{"description": "Microgram per liter, which is the same concentration as milligram per cubic meter (1 ug/L equals 1 mg/m3).", "object": {"type": "nmdc:QuantityValue", "has_raw_value": "13 ug/L", "has_numeric_value": 13, "has_unit": "ug/L"}}]'
 # diss_inorg_carb: MIxS example is umol/kg, the standard oceanographic unit; NMDC uses mg/L, the unit present in production data.
@@ -1053,7 +1053,7 @@
 '.slots.rel_humidity_out.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "12 %", "has_numeric_value": 12, "has_unit": "%"}}]'
 '.slots.root_med_ph.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "7.5 [pH]", "has_numeric_value": 7.5, "has_unit": "[pH]"}}]'
 '.slots.occup_density_samp.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.1 1/[sft_i]", "has_numeric_value": 0.1, "has_unit": "1/[sft_i]"}}]'
-'.slots.occup_samp.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "10 1", "has_numeric_value": 10, "has_unit": "1"}}]'
+'.slots.occup_samp.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "10", "has_numeric_value": 10, "has_unit": "1"}}]'
 '.slots.iwf.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.79 1", "has_numeric_value": 0.79, "has_unit": "1"}}]'
 '.slots.rel_air_humidity.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.8 1", "has_numeric_value": 0.8, "has_unit": "1"}}]'
 '.slots.surf_humidity.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.1 1", "has_numeric_value": 0.1, "has_unit": "1"}}]'
