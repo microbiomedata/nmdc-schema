@@ -1434,7 +1434,13 @@ enums:
       amplicon_sequencing_assay:
         meaning: OBI:0002767
         title: Amplicon
-        
+      isolate_genome:
+        description: Sequencing of a single organism's genome, typically from a pure culture or isolate.
+        title: Isolate Genome
+      isolate_transcriptome:
+        description: Sequencing of a single organism's transcriptome, typically from a pure culture or isolate.
+        meaning: OBI:0002768
+        title: Isolate Transcriptome    
   MassSpectrometryEnum:
     permissible_values:
       metaproteome:
