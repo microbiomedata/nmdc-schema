@@ -5,7 +5,7 @@
     - nmdc:sty-00-555xxx
   has_input:
     - nmdc:procsm-11-0wxpzf08
-   has_output:
+  has_output:
     - nmdc:dobj-12-12c89s
 - id: nmdc:omprc-97-gKlQlF
   type: nmdc:NucleotideSequencing
