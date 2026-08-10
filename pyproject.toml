@@ -85,11 +85,6 @@ dev = [
     # because ruff does not (yet) fully cover them.
     "curies>=0.9.0,<1.0.0",
     "defusedxml>=0.7.1,<1.0.0",  # hardened XML parsing in src/scripts/ncbi_nmdc_exact_term_matching.py
-    # Security floor for a docs-only transitive of mkdocs-material and
-    # mkdocs-mermaid2-plugin. Deliberately floor-only: a ceiling on a pin whose
-    # whole purpose is "at least the patched version" blocks the next advisory,
-    # which is what <11.0.0 did to GHSA for 11.0.0/11.0.1.
-    "pymdown-extensions>=11.0.1",
     "exhaustion-check>=0.1.1,<0.2.0",  # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
     "fastjsonschema>=2.20.0,<3.0.0",
     # linkml-store[llm] was a dependency but its llm → sqlite-utils chain
@@ -107,6 +102,12 @@ dev = [
     "pandas>=2.2.3,<4.0.0",
     "psycopg2-binary>=2.9.10,<3.0.0",
     "pylint>=3.2.2,<5.0.0",
+    # Security floor for a docs-only transitive of mkdocs-material and
+    # mkdocs-mermaid2-plugin. It sat in [project.dependencies] purely to push a
+    # floor downstream, where the <11.0.0 ceiling then made the 11.0.0 and 11.0.1
+    # advisories unreachable. Here in dev the ceiling no longer propagates to
+    # consumers, so it keeps the repo's upper-bound policy.
+    "pymdown-extensions>=11.0.1,<12.0.0",
     "pyroma>=4.2,<6.0",
     "pytest>=8.4.2,<10.0.0",
     # We use `refscan` to generate diagrams of inter-collection relationships
