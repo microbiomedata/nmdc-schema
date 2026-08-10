@@ -513,25 +513,25 @@
 <tr>
 <td><a href="../associated_studies/">associated_studies</a></td>
 <td>1..* <br/> <a href="../Study/">Study</a></td>
-<td>The study associated with a resource</td>
+<td>The study associated with a resource.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../expected_organism/">expected_organism</a></td>
 <td>0..1 <br/> <a href="../Organism/">Organism</a></td>
-<td>The organism that the submitter expects to be present in this sample</td>
+<td>The organism that the submitter expects to be present in this sample. May be...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../embargoed/">embargoed</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If true, the data are embargoed and not available for public access</td>
+<td>If true, the data are embargoed and not available for public access.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../provenance_metadata/">provenance_metadata</a></td>
 <td>0..1 <br/> <a href="../ProvenanceMetadata/">ProvenanceMetadata</a></td>
-<td>Provides information about the provenance of a record</td>
+<td>Provides information about the provenance of a record.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -549,31 +549,31 @@
 <tr>
 <td><a href="../collection_date/">collection_date</a></td>
 <td>0..1 <br/> <a href="../TimestampValue/">TimestampValue</a></td>
-<td>The time of sampling, either as an instance (single point in time) or interva...</td>
+<td>The time of sampling, either as an instance (single point in time) or...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../samp_name/">samp_name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A local identifier or name that for the material sample used for extracting n...</td>
+<td>A local identifier or name that for the material sample used for extracting...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../host_taxid/">host_taxid</a></td>
 <td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
-<td>NCBI taxon id of the host, e</td>
+<td>NCBI taxon id of the host, e.g. 9606</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ploidy/">ploidy</a></td>
 <td>0..1 <br/> <a href="../PloidyEnum/">PloidyEnum</a></td>
-<td>The ploidy level of the genome (e</td>
+<td>The ploidy level of the genome (e.g. allopolyploid, haploid, diploid,...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../source_mat_id/">source_mat_id</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
-<td>Culture collection identifier for the source of this organism sample</td>
+<td>Culture collection identifier for the source of this organism sample.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -585,7 +585,7 @@
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A unique identifier for a thing</td>
+<td>A unique identifier for a thing. Must be either a CURIE shorthand for a URI...</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
@@ -603,7 +603,7 @@
 <tr>
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of alternative identifiers for the entity</td>
+<td>A list of alternative identifiers for the entity.</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>

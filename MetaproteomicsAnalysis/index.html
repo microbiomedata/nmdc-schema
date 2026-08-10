@@ -533,43 +533,43 @@
 <tr>
 <td><a href="../metaproteomics_analysis_category/">metaproteomics_analysis_category</a></td>
 <td>1 <br/> <a href="../MetaproteomicsAnalysisCategoryEnum/">MetaproteomicsAnalysisCategoryEnum</a></td>
-<td>The category of metaproteomics analysis being performed</td>
+<td>The category of metaproteomics analysis being performed.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../peptide_to_spectrum_match_count/">peptide_to_spectrum_match_count</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Total number of MS2 spectra with a false discovery rate passing peptide match</td>
+<td>Total number of MS2 spectra with a false discovery rate passing peptide match.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../peptide_to_spectrum_match_rate/">peptide_to_spectrum_match_rate</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
-<td>The percentage of peptide-to-spectrum matches relative to the total number of...</td>
+<td>The percentage of peptide-to-spectrum matches relative to the total number...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../unique_peptide_seq_count/">unique_peptide_seq_count</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The number of distinct peptide sequences identified in the LC-MS/MS file</td>
+<td>The number of distinct peptide sequences identified in the LC-MS/MS file.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../razor_protein_count/">razor_protein_count</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The minimal protein set that describes the unique peptide sequences identifie...</td>
+<td>The minimal protein set that describes the unique peptide sequences...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../mean_peptide_count/">mean_peptide_count</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The average number of peptides per protein identified in the metaproteomics a...</td>
+<td>The average number of peptides per protein identified in the metaproteomics analysis.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../total_protein_count/">total_protein_count</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The total number of distinct proteins identified in the metaproteomics analys...</td>
+<td>The total number of distinct proteins identified in the metaproteomics analysis.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -581,13 +581,13 @@
 <tr>
 <td><a href="../execution_resource/">execution_resource</a></td>
 <td>0..1 <br/> <a href="../ExecutionResourceEnum/">ExecutionResourceEnum</a></td>
-<td>The computing resource or facility where the workflow was executed</td>
+<td>The computing resource or facility where the workflow was executed.</td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
 <td><a href="../git_url/">git_url</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>The url that points to the exact software repository location used to run a w...</td>
+<td>The url that points to the exact software repository location used to run a workflow</td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
@@ -599,43 +599,43 @@
 <tr>
 <td><a href="../version/">version</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The NMDC release tag for a given workflow release used for data processing</td>
+<td>The NMDC release tag for a given workflow release used for data processing....</td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
 <td><a href="../was_informed_by/">was_informed_by</a></td>
 <td>1..* <br/> <a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td>The primary DataGeneration subclass that the WorkflowExecution subclass depen...</td>
+<td>The primary DataGeneration subclass that the WorkflowExecution subclass depends on.</td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
 <td><a href="../processing_institution_workflow_metadata/">processing_institution_workflow_metadata</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Information about how workflow results were generated when the processing is ...</td>
+<td>Information about how workflow results were generated when the processing is...</td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
 <td><a href="../superseded_by/">superseded_by</a></td>
 <td>0..1 <br/> <a href="./">MetaproteomicsAnalysis</a></td>
-<td>Links a DataObject or WorkflowExecution record to a newer WorkflowExecution t...</td>
+<td>Links a DataObject or WorkflowExecution record to a newer WorkflowExecution...</td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
 <td>1..* <br/> <a href="../DataObject/">DataObject</a></td>
-<td>An input to a process</td>
+<td>An input to a process.</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
 <td>* <br/> <a href="../DataObject/">DataObject</a></td>
-<td>An output from a process</td>
+<td>An output from a process.</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../processing_institution/">processing_institution</a></td>
 <td>1 <br/> <a href="../ProcessingInstitutionEnum/">ProcessingInstitutionEnum</a></td>
-<td>The organization that processed the sample</td>
+<td>The organization that processed the sample.</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -659,13 +659,13 @@
 <tr>
 <td><a href="../qc_status/">qc_status</a></td>
 <td>0..1 <br/> <a href="../StatusEnum/">StatusEnum</a></td>
-<td>Stores information about the result of a process (ie the process of sequencin...</td>
+<td>Stores information about the result of a process (ie the process of...</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../qc_comment/">qc_comment</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Slot to store additional comments about laboratory or workflow output</td>
+<td>Slot to store additional comments about laboratory or workflow output. For...</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -677,7 +677,7 @@
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A unique identifier for a thing</td>
+<td>A unique identifier for a thing. Must be either a CURIE shorthand for a URI...</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
@@ -695,7 +695,7 @@
 <tr>
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of alternative identifiers for the entity</td>
+<td>A list of alternative identifiers for the entity.</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>

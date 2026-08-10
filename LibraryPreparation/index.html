@@ -553,7 +553,7 @@
 <tr>
 <td><a href="../is_stranded/">is_stranded</a></td>
 <td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>Is the (RNA) library stranded or non-stranded (unstranded)</td>
+<td>Is the (RNA) library stranded or non-stranded (unstranded).</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -571,13 +571,13 @@
 <tr>
 <td><a href="../nucl_acid_amp/">nucl_acid_amp</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
-<td>A link to a literature reference, electronic resource or a standard operating...</td>
+<td>A link to a literature reference, electronic resource or a standard...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../pcr_cond/">pcr_cond</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Description of reaction conditions and components of polymerase chain reactio...</td>
+<td>Description of reaction conditions and components of polymerase chain...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -589,13 +589,13 @@
 <tr>
 <td><a href="../pcr_primers/">pcr_primers</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>PCR primers that were used to amplify the sequence of the targeted gene, locu...</td>
+<td>PCR primers that were used to amplify the sequence of the targeted gene,...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../stranded_orientation/">stranded_orientation</a></td>
 <td>0..1 <br/> <a href="../StrandedOrientationEnum/">StrandedOrientationEnum</a></td>
-<td>Lists the strand orientiation for a stranded RNA library preparation</td>
+<td>Lists the strand orientiation for a stranded RNA library preparation.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -607,7 +607,7 @@
 <tr>
 <td><a href="../target_subfragment/">target_subfragment</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
-<td>Name of subfragment of a gene or locus</td>
+<td>Name of subfragment of a gene or locus. Important to e.g. identify special...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -637,31 +637,31 @@
 <tr>
 <td><a href="../adapters/">adapters</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Adapters provide priming sequences for both amplification and sequencing of t...</td>
+<td>Adapters provide priming sequences for both amplification and sequencing of...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../instrument_used/">instrument_used</a></td>
 <td>* <br/> <a href="../Instrument/">Instrument</a></td>
-<td>What instrument was used during DataGeneration or MaterialProcessing</td>
+<td>What instrument was used during DataGeneration or MaterialProcessing.</td>
 <td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
 <td>1..* <br/> <a href="../Sample/">Sample</a></td>
-<td>An input to a process</td>
+<td>An input to a process.</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
 <td>1..* <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
-<td>An output from a process</td>
+<td>An output from a process.</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../processing_institution/">processing_institution</a></td>
 <td>0..1 <br/> <a href="../ProcessingInstitutionEnum/">ProcessingInstitutionEnum</a></td>
-<td>The organization that processed the sample</td>
+<td>The organization that processed the sample.</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -685,13 +685,13 @@
 <tr>
 <td><a href="../qc_status/">qc_status</a></td>
 <td>0..1 <br/> <a href="../StatusEnum/">StatusEnum</a></td>
-<td>Stores information about the result of a process (ie the process of sequencin...</td>
+<td>Stores information about the result of a process (ie the process of...</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../qc_comment/">qc_comment</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Slot to store additional comments about laboratory or workflow output</td>
+<td>Slot to store additional comments about laboratory or workflow output. For...</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -703,7 +703,7 @@
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A unique identifier for a thing</td>
+<td>A unique identifier for a thing. Must be either a CURIE shorthand for a URI...</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
@@ -721,7 +721,7 @@
 <tr>
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of alternative identifiers for the entity</td>
+<td>A list of alternative identifiers for the entity.</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
