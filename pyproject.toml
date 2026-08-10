@@ -47,7 +47,6 @@ dependencies = [
     # Transitive deps pinned directly to ensure users get security fixes
     # (GHSA-qccp-gfcp-xxvc CVE-2026-44431, GHSA-mf9v-mfxr-j63j CVE-2026-44432)
     "urllib3>=2.7.0,<3.0.0",
-    "pymdown-extensions>=10.21.3,<11.0.0",
     "pymongo>=4.7.2,<5.0.0",
 ]
 
@@ -103,6 +102,12 @@ dev = [
     "pandas>=2.2.3,<4.0.0",
     "psycopg2-binary>=2.9.10,<3.0.0",
     "pylint>=3.2.2,<5.0.0",
+    # Security floor for a docs-only transitive of mkdocs-material and
+    # mkdocs-mermaid2-plugin. It sat in [project.dependencies] purely to push a
+    # floor downstream, where the <11.0.0 ceiling then made the 11.0.0 and 11.0.1
+    # advisories unreachable. Here in dev the ceiling no longer propagates to
+    # consumers, so it keeps the repo's upper-bound policy.
+    "pymdown-extensions>=11.0.1,<12.0.0",
     "pyroma>=4.2,<6.0",
     "pytest>=8.4.2,<10.0.0",
     # We use `refscan` to generate diagrams of inter-collection relationships
@@ -186,7 +191,7 @@ extend_exclude = [
 ]
 # These are transitive dependencies but we pin them directly
 # to ensure users get security fixes from Dependabot alerts
-per_rule_ignores = {DEP002 = ["idna", "pymdown-extensions", "urllib3"]}
+per_rule_ignores = {DEP002 = ["idna", "urllib3"]}
 
 # linkml 1.10.0+ monorepo includes linkml-runtime
 [tool.deptry.package_module_name_map]
