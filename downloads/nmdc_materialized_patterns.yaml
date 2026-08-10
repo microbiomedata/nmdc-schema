@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.22.0.post30.dev0+8e5459f08
+version: 11.22.0.post31.dev0+84b930399
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -9700,7 +9700,7 @@ slots:
         exceeds carbon, which does not occur in soil or other organic matter.
       object:
         type: nmdc:QuantityValue
-        has_raw_value: 20.6 1
+        has_raw_value: '20.6'
         has_numeric_value: 20.6
         has_unit: '1'
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13444,7 +13444,7 @@ slots:
     examples:
     - object:
         type: nmdc:QuantityValue
-        has_raw_value: 10 1
+        has_raw_value: '10'
         has_numeric_value: 10
         has_unit: '1'
     from_schema: https://w3id.org/nmdc/nmdc
