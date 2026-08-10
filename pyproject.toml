@@ -47,7 +47,6 @@ dependencies = [
     # Transitive deps pinned directly to ensure users get security fixes
     # (GHSA-qccp-gfcp-xxvc CVE-2026-44431, GHSA-mf9v-mfxr-j63j CVE-2026-44432)
     "urllib3>=2.7.0,<3.0.0",
-    "pymdown-extensions>=10.21.3,<11.0.0",
     "pymongo>=4.7.2,<5.0.0",
 ]
 
@@ -86,6 +85,11 @@ dev = [
     # because ruff does not (yet) fully cover them.
     "curies>=0.9.0,<1.0.0",
     "defusedxml>=0.7.1,<1.0.0",  # hardened XML parsing in src/scripts/ncbi_nmdc_exact_term_matching.py
+    # Security floor for a docs-only transitive of mkdocs-material and
+    # mkdocs-mermaid2-plugin. Deliberately floor-only: a ceiling on a pin whose
+    # whole purpose is "at least the patched version" blocks the next advisory,
+    # which is what <11.0.0 did to GHSA for 11.0.0/11.0.1.
+    "pymdown-extensions>=11.0.1",
     "exhaustion-check>=0.1.1,<0.2.0",  # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
     "fastjsonschema>=2.20.0,<3.0.0",
     # linkml-store[llm] was a dependency but its llm → sqlite-utils chain
@@ -186,7 +190,7 @@ extend_exclude = [
 ]
 # These are transitive dependencies but we pin them directly
 # to ensure users get security fixes from Dependabot alerts
-per_rule_ignores = {DEP002 = ["idna", "pymdown-extensions", "urllib3"]}
+per_rule_ignores = {DEP002 = ["idna", "urllib3"]}
 
 # linkml 1.10.0+ monorepo includes linkml-runtime
 [tool.deptry.package_module_name_map]
