@@ -19,7 +19,7 @@ prefixes:
   linkml: "https://w3id.org/linkml/"
   nmdc: "https://w3id.org/nmdc/"
   prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
-  qud: "http://qudt.org/1.1/schema/qudt#"
+  qudt: "http://qudt.org/1.1/schema/qudt#"
   rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   ror: 'https://bioregistry.io/ror:' # https://ror.org/
   schema: "http://schema.org/"
@@ -258,7 +258,7 @@ slots:
         description: The DOI links to an electronic document.
     exact_mappings:
       - OBI:0002110
-    narrow_mappings:
+    related_mappings:
       - edam.data:1188
 
   doi_provider:
@@ -1434,7 +1434,13 @@ enums:
       amplicon_sequencing_assay:
         meaning: OBI:0002767
         title: Amplicon
-        
+      isolate_genome:
+        description: Sequencing of a single organism's genome, typically from a pure culture or isolate.
+        title: Isolate Genome
+      isolate_transcriptome:
+        description: Sequencing of a single organism's transcriptome, typically from a pure culture or isolate.
+        title: Isolate Transcriptome
+
   MassSpectrometryEnum:
     permissible_values:
       metaproteome:

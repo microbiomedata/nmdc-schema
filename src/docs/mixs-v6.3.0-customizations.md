@@ -23,7 +23,7 @@ This section summarizes all inventory differences between main branch (old NMDC 
 | Metric | Main Branch | This Branch | Change |
 |--------|-------------|-------------|--------|
 | Slots in mixs.yaml | 489 | 486 | -3 (moved to hardcoded) |
-| Enums in mixs.yaml | 102 | 93 | -24 dropped, +15 added |
+| Enums in mixs.yaml | 102 | 93 | 24 dropped, 15 added (net -9) |
 | Slots explicitly set to string | 22 | 31 | +10 added, -1 removed |
 
 ### Slot Changes
@@ -98,7 +98,7 @@ This section documents how NMDC handles differences between GSC MIxS v6.3.0 and 
 
 ### QuantityValue Range Overrides (158 slots)
 
-GSC MIxS v6.3.0 changed ~158 measurement slots from `quantity value` to `string` range. NMDC maintains `QuantityValue` range because:
+GSC MIxS v6.3.0 changed 158 measurement slots from `quantity value` to `string` range. NMDC maintains `QuantityValue` range because:
 
 - Production data uses QuantityValue objects (`{type: "nmdc:QuantityValue", has_numeric_value: ..., has_unit: ...}`)
 - QuantityValue provides better structure than pattern-matched strings
@@ -140,7 +140,7 @@ The yq pipeline sets explicit `range: string` for 31 slots. Without this, slots 
 
 **Note:** `structured_pattern` is deleted from 6 slots due to non-conforming production data (see [Non-Conforming Production Data](#non-conforming-production-data)).
 
-**Exception (current compatibility state):** `ph_meth` and `soil_type_meth` are kept as TextValue because production data currently uses TextValue objects. This is tracked in [#2774](https://github.com/microbiomedata/nmdc-schema/issues/2774); see also [Other Pending Migrations](#other-pending-migrations) for the planned follow-up migration state.
+**Exception (current compatibility state):** Follow-up migration for `ph_meth` and `soil_type_meth` remains tracked in [#2774](https://github.com/microbiomedata/nmdc-schema/issues/2774). Both slots have active `del(structured_pattern)` customizations and retain their TextValue range (neither has an explicit range override); both currently materialize as `TextValue` in `src/schema/mixs.yaml`. See [Other Pending Migrations](#other-pending-migrations) for planned state alignment.
 
 ### TextValue Range for Enum Slots (6 slots)
 
@@ -231,6 +231,46 @@ Some production data doesn't match GSC patterns. We handle this by using TextVal
 | `ph_meth` | Data is "measured in 1:1 w/vol slurry (10.2136/...)" | Delete `structured_pattern` |
 | `water_cont_soil_meth` | Data is "volumetric soil water content; ..." | Delete `structured_pattern` |
 
+## Example Values
+
+Where a MIxS slot whose range is a wrapper class (`QuantityValue`, `TextValue`, `TimestampValue`, `ControlledTermValue`, `ControlledIdentifiedTermValue`, `GeolocationValue`) has an example, it is carried in the LinkML `examples` metaslot as a structured `object:` that matches the range, not a scalar string (a few slots have no example; see below). A `QuantityValue` example is `{type, has_raw_value, has_numeric_value, has_unit}`; a `ControlledIdentifiedTermValue` example is `{type, has_raw_value, term: {id, type}}`; and so on. `QuantityValue.has_unit` is required and must be a permissible value of `UnitEnum`. Every objectified example is validated against the materialized schema.
+
+Two conventions follow from that:
+
+- A dimensionless quantity (a ratio, fraction, or count) uses `has_unit: "1"` (for example `carb_nitro_ratio`, `occup_samp`, `iwf`).
+- A quantity whose unit has no UCUM symbol cannot be given a valid example, because `has_unit` is required and only `UnitEnum` values are allowed. Such a slot gets no example and is flagged with `units_alignment_excuse` (see below).
+
+### Example units corrected against production data
+
+Cross-checking `nmdc.biosample_set` found 18 slots whose upstream MIxS example unit or value does not occur in production data. Those examples were replaced.
+
+The reason for each replacement is recorded as a `#` comment directly above the slot's line in `assets/yq-for-mixs-customizations.txt`, the file that defines the example. Keeping the rationale next to the line it justifies means it cannot drift from the shipped example, which a table in this document would.
+
+The example's own `description` is a separate thing and has a different audience. It is rendered on the public slot page, so it describes the example to someone deciding what to submit: what the value means, which unit it is in, and any measurement basis that is easy to confuse with it. It does not mention MIxS, name internal collections, or argue for the replacement; that reasoning belongs in the asset comment. Three slots (`host_height`, `samp_size`, `wind_speed`) differ from MIxS only by a unit-scale factor and have no `description`, because the example already shows the unit.
+
+### Units that are inconsistent or not UCUM-expressible
+
+| Slot | Issue | Handling |
+|------|-------|----------|
+| `api` | API gravity has no UCUM unit, and `has_unit` is required | example removed; `units_alignment_excuse: non_ucum_unit` |
+| `rel_humidity_out` | upstream unit "per kilogram of air" describes specific humidity, not relative humidity | example uses `%`; `units_alignment_excuse: mixs_inconsistent` |
+| `specific_humidity` | upstream unit "per kilogram of air" | `g/kg` |
+| `iwf`, `rel_air_humidity`, `surf_humidity` | example value is a fraction while `storage_units` is `%` (fraction vs percent ambiguity) | dimensionless `has_unit: "1"` |
+| `microbial_biomass` | compound unit `pmol/g dry soil` | `units_alignment_excuse: complex_unit` |
+
+### Multi-unit slots
+
+Several slots legitimately carry more than one unit in production data. The example uses one valid `UnitEnum` unit; the others remain valid for submitted data.
+
+| Slot | Units observed in production |
+|------|------------------------------|
+| `ammonium`, `diss_oxygen`, `nitrate` variants | mg/L and umol/L |
+| `calcium`, `magnesium`, `potassium` | mg/L and mg/kg |
+| `conduc` | mS/cm and uS/cm |
+| `samp_size` | g and mL |
+| `tot_phosp` | [ppm], mg/L, and umol/L |
+| `host_age` | a and d |
+
 ## Maintaining mixs.yaml (how to change a MIxS slot)
 
 `src/schema/mixs.yaml` is generated. Do not hand-edit it: the next `make src/schema/mixs.yaml` regenerates it from the MIxS source and your edit is lost. The `CONTRIBUTING.md` policy table records this.
@@ -251,7 +291,9 @@ Issues [#3222](https://github.com/microbiomedata/nmdc-schema/issues/3222) and [#
 
 ### Verifying a pattern change without a full rebuild
 
-A full `make src/schema/mixs.yaml` re-pulls MIxS over the network and is slow. To check that a `structured_pattern` change interpolates as intended, apply your yq line to a scratch copy of `mixs.yaml`, materialize only the patterns, and inspect the result (revert the scratch copy afterward; the committed `mixs.yaml` and generated artifacts are regenerated at release, not in feature PRs):
+A full `make src/schema/mixs.yaml` re-pulls MIxS over the network and is slow. To check that a `structured_pattern` change interpolates as intended, apply your yq line to a scratch copy of `mixs.yaml`, materialize only the patterns, and inspect the result (revert the scratch copy afterward; the committed `mixs.yaml` and generated artifacts are regenerated at release, not in feature PRs).
+
+Use one line from `assets/yq-for-mixs-customizations.txt` verbatim as `<your yq expression>`: those lines already include surrounding single quotes, so do not add extra quoting.
 
 ```bash
 cp src/schema/mixs.yaml /tmp/mixs.yaml

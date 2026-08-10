@@ -7,11 +7,17 @@ from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.utils.schemaview import OrderedBy
 from linkml_runtime.linkml_model.meta import EnumDefinition
 
+DEFAULT_MIXS_SOURCE_PATH = "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"
+
 
 @click.command()
 @click.option('--schema-file', default='src/schema/nmdc.yaml', help='Path to schema file.')
-def main(schema_file):
-    mixs_source_path = "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"
+@click.option(
+    '--mixs-source-path',
+    default=DEFAULT_MIXS_SOURCE_PATH,
+    help='MIxS schema identifier to treat as the source (compared to element.from_schema) when filtering reports.',
+)
+def main(schema_file, mixs_source_path):
     schema_view = SchemaView(schema_file)
 
     schema_slots = schema_view.all_slots(ordered_by=OrderedBy.LEXICAL)
@@ -47,7 +53,7 @@ def main(schema_file):
     for wsk in whitespace_keys:
         wse = schema_view.get_element(wsk)
 
-        if type(wse) is EnumDefinition:
+        if isinstance(wse, EnumDefinition):
             wse.permissible_values = None
 
         if wse.from_schema != mixs_source_path:
@@ -75,11 +81,14 @@ def main(schema_file):
     print("\n")
 
     print("Report of patterns with candidate unescaped literal dots:\n")
-    print("(a bare '.' between word characters, outside character classes; usually a CURIE")
-    print("prefix such as 'insdc.sra:' that should be written '\\.' so it is not a wildcard)\n")
+    print(
+        "(a bare '.' between word characters, outside character classes; usually a CURIE "
+        "prefix such as 'insdc.sra:' that should be written '\\.' so it is not a wildcard)\n"
+    )
 
     def has_unescaped_prefix_dot(pattern_string):
         # Drop character-class spans, where '.' is already a literal.
+        # One pass handles both empty ('[]') and non-empty ('[abc]') classes.
         cleaned = re.sub(r'\[[^\]]*\]', '', pattern_string)
         # A dot flanked by word characters; an escaped dot ('\\.') has a backslash
         # immediately before it, so the preceding character is not a word character.
@@ -94,36 +103,50 @@ def main(schema_file):
         return found
 
     seen_patterns = set()
-    for class_name in schema_view.all_classes().keys():
-        for slot in schema_view.class_induced_slots(class_name):
+    class_names = list(schema_view.all_classes().keys())
+    all_slot_names = set(schema_slots.keys())
+    seen_slot_groups = set()
+    dangling_slot_group_messages = []
+    for class_name in class_names:
+        induced_slots = schema_view.class_induced_slots(class_name)
+        for slot in induced_slots:
             for pattern_string in patterns_of(slot):
                 key = (slot.name, pattern_string)
                 if key in seen_patterns:
                     continue
                 if has_unescaped_prefix_dot(pattern_string):
+                    # Record the key only when we actually print it: seen_patterns
+                    # dedups *reported* lines, not every visited pattern. Because
+                    # has_unescaped_prefix_dot() is a pure function of pattern_string,
+                    # a pattern skipped here can never print later, so there is
+                    # nothing to dedup for it. Moving this add() above the if would
+                    # not change the output. (AI code-quality scans flag this
+                    # placement; it is intentional.)
                     seen_patterns.add(key)
                     print(f"slot {slot.name} (in class {class_name}): {pattern_string}")
+            if slot.slot_group and slot.slot_group not in all_slot_names:
+                key = (class_name, slot.name, slot.slot_group)
+                if key in seen_slot_groups:
+                    continue
+                seen_slot_groups.add(key)
+                dangling_slot_group_messages.append(
+                    f"class {class_name}, slot {slot.name}: slot_group '{slot.slot_group}' is not a defined slot"
+                )
     for sk, sv in schema_slots.items():
         for pattern_string in patterns_of(sv):
             key = (sk, pattern_string)
             if key in seen_patterns:
                 continue
             if has_unescaped_prefix_dot(pattern_string):
+                # Add-on-print is intentional here too; see the note in the
+                # induced-slot loop above.
                 seen_patterns.add(key)
                 print(f"slot {sk}: {pattern_string}")
     print("\n")
 
     print("Report of dangling slot_group references (slot_group value is not a defined slot):\n")
-    all_slot_names = set(schema_view.all_slots().keys())
-    seen_slot_groups = set()
-    for class_name in schema_view.all_classes().keys():
-        for slot in schema_view.class_induced_slots(class_name):
-            if slot.slot_group and slot.slot_group not in all_slot_names:
-                key = (class_name, slot.name, slot.slot_group)
-                if key in seen_slot_groups:
-                    continue
-                seen_slot_groups.add(key)
-                print(f"class {class_name}, slot {slot.name}: slot_group '{slot.slot_group}' is not a defined slot")
+    for message in dangling_slot_group_messages:
+        print(message)
     print("\n")
 
 

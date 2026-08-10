@@ -35,6 +35,7 @@ src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_minus_1.yaml
 	# Step 9: Remove redundant permissible_values text
 	# Step 10: Remove domain (except MixsCompliantData)
 	# Step 11: Remove redundant slot names
+	# Step 12: Intentionally skipped (not applicable in this MIxS dematerialization pipeline)
 	# Step 13: Remove redundant subset names
 	# Additional: Remove redundant aliases when they duplicate title
 	#
@@ -44,7 +45,7 @@ src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_minus_1.yaml
 	# that require settings for pattern interpolation. These settings are defined in
 	# src/schema/nmdc.yaml instead, so they're available during schema materialization.
 	# See: https://github.com/microbiomedata/nmdc-schema/issues/1368
-	yq eval 'del(.source_file, .definition_uri, .imported_from, .metamodel_version, .source_file_date, .source_file_size, .generation_date) | del(.. | select(has("from_schema")).from_schema) | del(.. | select(has("owner")).owner) | del(.. | select(has("domain_of")).domain_of) | del(.. | select(has("is_usage_slot")).is_usage_slot) | del(.. | select(has("usage_slot_name")).usage_slot_name) | (.classes[] | select(has("annotations")).annotations) |= map_values(.value) | .prefixes |= map_values(.prefix_reference) | (.settings // {}) |= map_values(.setting_value) | (.slots[] | select(has("annotations")).annotations) |= map_values(.value) | del(.classes.[].name) | del(.classes.[].slot_usage.[].name) | del(.enums.[].name) | del(.enums.[].permissible_values.[].text) | del(.slots[] | select(.domain != "MixsCompliantData") | .domain) | del(.slots.[].name) | del(.subsets.[].name) | del(.slots[] | select(.aliases and .title and (.aliases | length == 1) and .aliases[0] == .title) | .aliases) | del(.classes) | del(.settings)' $(word 2,$^) > $@
+	yq eval --from-file assets/yq-for-mixs-dematerialize.yq $(word 2,$^) > $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
 local/mixs_regen/mixs_subset.yaml: assets/import_mixs_slots_regardless.tsv
@@ -62,7 +63,11 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 	yq eval '(.. | select(. == "quantity value")) |= "QuantityValue" | (.. | select(tag == "!!str" and . == "string")) |= "TextValue" | (.. | select(tag == "!!str" and . == "text value")) |= "TextValue"' $(word 1, $^) > $@
 
 	# Then apply all slot-specific transformations from config file
-	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
+	# `|| exit 1` so a customization line that fails under `eval` (e.g. an
+	# interior apostrophe closing the single-quote wrapper) aborts the build
+	# loudly instead of being silently skipped (the pipeline's exit status is
+	# the last iteration's, so without this a mid-file failure is swallowed).
+	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ || exit 1 ; done
 
 
 local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: local/mixs_regen/mixs_subset_modified.yaml \
@@ -73,15 +78,19 @@ assets/other_mixs_yaml_files/CurLandUseEnum.yaml
 		'select(fileIndex==0).enums.CurLandUseEnum = select(fileIndex==1).enums.CurLandUseEnum | select(fileIndex==0)' \
 		$^ | cat > $@
 
-local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
-assets/other_mixs_yaml_files/TargetGeneEnum.yaml
+local/mixs_regen/mixs_subset_modified_inj_TargetGeneOrLocusEnum.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
+assets/other_mixs_yaml_files/TargetGeneOrLocusEnum.yaml
 	yq eval-all \
-		'select(fileIndex==0).enums.TargetGeneEnum = select(fileIndex==1).enums.TargetGeneEnum | select(fileIndex==0)' \
+		'select(fileIndex==0).enums.TargetGeneOrLocusEnum = select(fileIndex==1).enums.TargetGeneOrLocusEnum | select(fileIndex==0)' \
 		$^ | cat > $@
-	yq -i '.slots.target_gene.range = "TargetGeneEnum"' $@
+	yq -i '.slots.target_gene.range = "TargetGeneOrLocusEnum"' $@
+	# MIxS ships a free-text example ("16S rRNA, 18S rRNA, nif, amoA, rpo") that
+	# predates the enum range and includes non-permissible values (#3240).
+	# Replace it with valid permissible values.
+	yq -i '.slots.target_gene.examples = [{"value": "16S_rRNA"}, {"value": "bacterial_rRNA_operon"}, {"value": "eukaryotic_rRNA_operon"}]' $@
 
 
-local/mixs_regen/mixs_subset_modified_inj_env_triad.yaml: local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml \
+local/mixs_regen/mixs_subset_modified_inj_env_triad.yaml: local/mixs_regen/mixs_subset_modified_inj_TargetGeneOrLocusEnum.yaml \
 assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 	# Inject all three environment triad tooltips in a single step
 	yq eval-all 'select(fileIndex==0).slots.env_broad_scale.annotations.tooltip = select(fileIndex==1).slots.env_broad_scale.annotations.tooltip | select(fileIndex==0).slots.env_local_scale.annotations.tooltip = select(fileIndex==1).slots.env_local_scale.annotations.tooltip | select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' $^ | cat > $@
