@@ -119,7 +119,9 @@ defined in the schema files.
 
 In this case, let's assume definitions for the biosample inputs should be defined elsewhere in an NMDC data set.
 Cases in which biosamples are mentioned without being defined would be considered violations of the referential integrity.
-The development of referential integrity validators for LinkML has begun in Autumn, 2023.
+Schema validation does not detect them. See
+[Validating a slot that mentions another class's id](#validating-a-slot-that-mentions-another-classs-id) below for
+what is checked, what is not, and which tools close the gap.
 
 Another pattern is saying that something defined within a NMDC data set is equivalent to something defined elsewhere.
 
@@ -148,6 +150,51 @@ and are not likely to eer be used.
 
 Maintenance of the prefix portions of a `pattern` will generally require more manual checking. We shouldn't be constraining
 the values of slots to use a prefix that isn't declared, but no checks are automatically applied.
+
+## Validating a slot that mentions another class's id
+
+When a slot's range is a class that is not inlined, the value in the data is the `id` of an instance of that class.
+Two different things could be checked about that value, and only one of them is enforced by the schema.
+
+**The shape of the id is enforced by the schema.** A `structured_pattern` in the class's `slot_usage` constrains the
+value to the id pattern of the intended class. For example, `Biosample.slot_usage.associated_studies`:
+
+```yaml
+associated_studies:
+  required: true
+  range: Study
+  structured_pattern:
+    syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+    interpolated: true
+```
+
+The pattern only takes effect after materialization, so validate against `nmdc_schema/nmdc_materialized_patterns.yaml`
+rather than the source schema. In the materialized artifact the syntax above becomes
+`^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$`, so `associated_studies: [xyz]` fails. This is why so many
+`slot_usage` blocks carry a `structured_pattern`: it is the only in-schema guard against pointing a slot at an id of
+the wrong class.
+
+**The existence of the referent is not enforced by the schema, on purpose.** A value that is well formed but names a
+record that does not exist will pass validation. That is deliberate rather than an oversight: records are frequently
+created out of order, and workflow runs can precede the schema updates that describe them, so a write-time
+constraint would reject legitimate intermediate states.
+
+Referential integrity is checked after the fact instead:
+
+- `make check-references` runs `src/scripts/check_references.py` over the schema's collections and reports references
+  to nonexistent targets.
+- [refscan](https://github.com/microbiomedata/refscan) scans the production database for the same violations, and
+  `refgraph` draws the reference graph it derives.
+
+Two consequences worth knowing when you write a `slot_usage`. A `structured_pattern` whose `syntax` contains `|` is
+asserting one pattern per alternative, so `{id_nmdc_prefix}:(bsm|procsm)-...` accepts both `Biosample` and
+`ProcessedSample` ids. And an `any_of` range widens rather than narrows: LinkML reads it as a union with the global
+range, so `any_of: [Biosample, ProcessedSample]` on a slot whose global range is `NamedThing` does not exclude other
+`NamedThing` subclasses.
+
+The fuller discussion of these limitations, including why pattern-plus-class ranges complicate the OWL and RDF
+artifacts, is in
+[the v10 to v11 retrospective](v10-vs-v11-retrospective.md#challenges-with-the-use-of-structured_patterns-in-slot_usages-for-approximating-referential-integrity-etc).
 
 ## Using URIs supports scoping and self-documentation
 

@@ -489,6 +489,10 @@ parent, `NamedThing` and that schema v11 forbids re-asserting slots that are inh
 
 ## Challenges with the use of `structured_pattern`s in `slot_usage`s for approximating referential integrity, etc.
 
+> This section records why the v11 schema uses `structured_pattern`s the way it does. For the current, maintained
+> answer to "what is actually validated when a slot mentions another class's id", see
+> [Validating a slot that mentions another class's id](maintaining-the-schema.md#validating-a-slot-that-mentions-another-classs-id).
+
 LinkML slot definitions must assert their `range`, typically as a type (like `string` or `float`), an enumeration, or a
 class. If they don't, they inherit the schema's default_range, which is `string` in the nmdc-schema.
 
@@ -638,6 +642,7 @@ to the use of the `|` character: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$
   referred thing (asserted in the `range`), and a string (by way of the pattern). That can never be true, and it breaks
   the functionality of some derived artifacts, such as OWL and RDF.
 
-The LinkML and NMDC teams are currently working on more sophisticated solutions for interpreting `any_of` `range`s,
-checking referential integrity and for making `structured_pattern` materialization the default in any situation that
-used the schema.
+Referential integrity checking has since been addressed outside the schema, by
+[refscan](https://github.com/microbiomedata/refscan) against the production database and by `make check-references`
+(`src/scripts/check_references.py`) against schema-derived collections. Interpreting `any_of` `range`s and making
+`structured_pattern` materialization the default remain open on the LinkML side.
