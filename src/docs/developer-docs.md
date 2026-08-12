@@ -29,6 +29,31 @@ counterpart in `src/docs/` will trigger a warning during `make clean`, but
 untracked files will be silently removed. Place all hand-written documentation
 in `src/docs/` instead; the build copies it into `docs/` automatically.
 
+### How do I make sure a directory exists?
+
+Which mechanism to use depends on whether the directory has to be there
+*before* the build runs.
+
+**`.gitkeep` for directories that must be present in a fresh clone.** Git does
+not track empty directories, so a tracked `.gitkeep` is what makes them
+survive a clone. The repo has 8, marking the example-data and asset
+directories that targets read from or write into:
+
+- `src/data/valid/`, `src/data/invalid/`
+- `src/data/problem/` and its `valid/` and `invalid/` subdirectories
+- `assets/jsons-for-mongodb/`, `assets/misc/`
+- `local/`
+
+**`mkdir -p` in the recipe for anything the build creates.** Do not add a
+`.gitkeep` for a build output directory. The Makefiles do this in 11 places:
+`Makefile` before writing `$(DEST)/prefixmap`, `$(DEST)/pydantic`, `local`,
+and the `$(DOCDIR)` subdirectories; `project.Makefile` with the `$@` and
+`$(@D)` forms, so a target creates its own output directory; and
+`makefiles/mixs.Makefile` for `local/mixs_regen`.
+
+Note that `local/` is gitignored while `local/.gitkeep` is tracked. That
+combination is deliberate: ignore the contents, keep the directory.
+
 ### How do I configure environment variables for development scripts?
 
 Some scripts need API keys or database credentials. Scripts that need them
