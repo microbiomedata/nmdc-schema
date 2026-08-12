@@ -303,6 +303,27 @@ poetry run linkml generate linkml --format yaml --materialize-patterns \
 yq eval '.slots.<slot>.pattern' /tmp/materialized.yaml
 ```
 
+### Downstream effects to check before regenerating
+
+Regenerating `mixs.yaml` is not a change contained to this repo. A MIxS slot's range, pattern, description, or
+example can reach production data and two user-facing interfaces. Check these before merging, not after releasing.
+
+| What can be affected | How to check |
+|---|---|
+| Production MongoDB records | A range change (for example TextValue to string) can leave existing documents invalid. Query `nmdc.biosample_set` for the slot before merging, and write a migrator if any documents would stop conforming |
+| Submission Portal / DataHarmonizer | `submission-schema` builds on this schema. Three slots are already hardcoded in `src/schema/nmdc.yaml` purely to keep it resolving. Slot renames and range changes are the risky ones |
+| Data Portal display | Slot descriptions and examples are what a submitter reads. Diff them and tell the Data Portal owners what changed |
+| Pinned consumers | `nmdc-runtime` and `nmdc-server` pin a schema version, so they pick a change up on their own schedule. `MAINTAINERS.md` covers the post-release notification |
+
+Two habits make this cheap. Read `git diff src/schema/mixs.yaml` rather than trusting a green build, since the
+build passing says nothing about whether a description changed under a submitter. And when a change alters what
+existing data must look like, say so in the PR body, because that is what tells a reviewer a migrator is needed.
+
+One question here has been open since 2022 and is still not answered in writing: whether description changes
+propagate to the Data Portal automatically or need coordination with the portal team. Until someone confirms it,
+assume coordination is required. See
+[consequences of changing MIxS import](https://github.com/microbiomedata/nmdc-schema/issues/299).
+
 ## Future Work
 
 ### TextValue to Enum Migrations
