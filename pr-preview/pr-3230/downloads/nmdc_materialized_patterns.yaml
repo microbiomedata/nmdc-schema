@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.22.0.post57.dev0+895abe168
+version: 11.22.0.post58.dev0+6eda4a9f5
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -14254,6 +14254,8 @@ slots:
     - object:
         type: nmdc:TextValue
         has_raw_value: xylem sap [PO:0025539]
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - plant
@@ -14267,6 +14269,8 @@ slots:
     title: plant sex
     examples:
     - value: Hermaphroditic
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - plant
