@@ -73,7 +73,7 @@ subsets:
       gases. A Biosample populating at least badge_minimum_slots of these is
       awarded the biogeochemistry badge.
     annotations:
-      badge_minimum_slots: 1
+      badge_minimum_slots: 2
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/3228
       - https://github.com/microbiomedata/nmdc-schema/issues/3326
@@ -90,7 +90,7 @@ subsets:
         means the slots are unpopulated, not that the sample is deficient. The
         data portal shows only badges a sample has earned.
     annotations:
-      badge_minimum_slots: 1
+      badge_minimum_slots: 2
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/3228
       - https://github.com/microbiomedata/nmdc-schema/issues/3326

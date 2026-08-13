@@ -1,23 +1,27 @@
-# A Biosample carrying awarded metadata-quality badges.
+# A Biosample carrying one awarded metadata-quality badge.
 #
 # Badges are asserted by a downstream service, not by a submitter.
 #
-# The two badges here are ones a single real sample plausibly earns together: a
-# plant rhizosphere soil sample, characterized both chemically and by its host.
-# Each is justified well above its badge_minimum_slots of 1, so this example
-# stays valid if the squad raises either bar:
+# This record earns biogeochemistry and does not earn host_association, which is
+# the point of the example: both subsets have populated slots, but only one
+# clears its badge_minimum_slots of 2.
 #
-#   biogeochemistry   6 populated (ph, nitrate, ammonium, tot_org_carb,
-#                     tot_nitro_content, diss_org_carb)
-#   host_association  5 populated (host_name, host_taxid, host_genus,
-#                     host_species, host_life_stage)
+#   biogeochemistry   6 of 44 slots populated (ph, nitrate, ammonium,
+#                     tot_org_carb, tot_nitro_content, diss_org_carb)
+#                     6 >= 2, so the badge is awarded
+#   host_association  1 of 35 slots populated (host_name)
+#                     1 < 2, so no badge, even though the sample has a host
 #
-# expert_curation is not shown. It is awarded from
-# ProvenanceMetadata.source_system_of_record rather than from slot completeness,
-# so no combination of populated slots earns it.
+# A sample with a host but only one host slot filled is the ordinary case in
+# NMDC, and the portal shows only badges a sample has earned, so the absence
+# reads as "not enough host metadata" rather than "no host".
+#
+# expert_curation cannot be illustrated by slot values at all. It is awarded
+# from ProvenanceMetadata.source_system_of_record, so no combination of
+# populated slots earns it.
 id: nmdc:bsm-99-badge01
 type: nmdc:Biosample
-name: rhizosphere_soil_with_badges
+name: rhizosphere_soil_with_biogeochemistry_badge
 associated_studies:
   - nmdc:sty-00-abc123
 env_broad_scale:
@@ -60,17 +64,5 @@ diss_org_carb:
   has_numeric_value: 18.5
   has_unit: mg/L
 host_name: Zea mays
-host_taxid:
-  type: nmdc:ControlledIdentifiedTermValue
-  has_raw_value: NCBITaxon:4577
-  term:
-    type: nmdc:OntologyClass
-    id: NCBITaxon:4577
-host_genus: Zea
-host_species: mays
-host_life_stage:
-  type: nmdc:TextValue
-  has_raw_value: vegetative
 badges:
   - biogeochemistry
-  - host_association
