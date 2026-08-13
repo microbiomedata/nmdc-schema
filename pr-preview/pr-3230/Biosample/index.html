@@ -794,6 +794,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../badges/">badges</a></td>
+<td>* <br/> <a href="../MetadataBadgeEnum/">MetadataBadgeEnum</a></td>
+<td>Metadata-quality badges awarded to this record. Each value names a badge...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../biosample_categories/">biosample_categories</a></td>
 <td>* <br/> <a href="../BiosampleCategoryEnum/">BiosampleCategoryEnum</a></td>
 <td></td>
@@ -4161,6 +4167,7 @@ exact_mappings:
 is_a: Sample
 slots:
 - associated_studies
+- badges
 - biosample_categories
 - collected_from
 - embargoed
@@ -5592,6 +5599,21 @@ attributes:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
       interpolated: true
+  badges:
+    name: badges
+    description: Metadata-quality badges awarded to this record. Each value names
+      a badge topic (for example biogeochemistry). A badge is present or absent; there
+      are no levels or tiers. Awarded by a downstream service, not asserted by submitters,
+      and recalculated whenever the record's ProvenanceMetadata.last_updated changes.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/3227
+    rank: 1000
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: MetadataBadgeEnum
+    multivalued: true
   biosample_categories:
     name: biosample_categories
     title: Categories the biosample belongs to

@@ -693,6 +693,16 @@
                     ],
                     "description": "Measurement of bacterial carbon production"
                 },
+                "badges": {
+                    "description": "Metadata-quality badges awarded to this record. Each value names a badge topic (for example biogeochemistry). A badge is present or absent; there are no levels or tiers. Awarded by a downstream service, not asserted by submitters, and recalculated whenever the record's ProvenanceMetadata.last_updated changes.",
+                    "items": {
+                        "$ref": "#/$defs/MetadataBadgeEnum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "barometric_press": {
                     "anyOf": [
                         {
@@ -17641,5 +17651,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.22.0.post44.dev0+108f85288"
+    "version": "11.22.0.post45.dev0+26881a06e"
 }
