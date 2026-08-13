@@ -1,0 +1,7 @@
+# invalid b/c mgnify_project_identifiers requires the literal prefix "mgnify.proj:";
+# "mgnifyXproj:" only matched when the regex dot was unescaped (.= any char)
+id: nmdc:sty-11-ab
+type: nmdc:Study
+study_category: research_study
+mgnify_project_identifiers:
+  - mgnifyXproj:ABC123

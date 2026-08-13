@@ -1,13 +1,22 @@
 """Keep the badge enum and the badge-topic subsets in sync.
 
-The MetadataBadgeEnum permissible values are named ``<topic>_<level>``, where
-``<topic>`` is the name of a subset whose ``in_subset`` includes ``badge_topic``
-and ``<level>`` is one of the recognized badge levels. These tests fail if the
-enum and the badge subsets drift apart, for example when a subset is added
-without a matching permissible value or vice versa.
+Badges are awarded in two ways, so the enum has two kinds of permissible value:
+
+- A completeness badge is named for a subset whose ``in_subset`` includes
+  ``badge_topic``. It is awarded when a record populates at least that subset's
+  ``badge_minimum_slots`` slots. These must correspond one-to-one with the badge
+  subsets, which is what most of these tests check.
+- A provenance badge is awarded from a recorded fact about where the metadata
+  came from rather than from slot completeness, so it has no subset. There is
+  one today, ``expert_curation``, awarded from
+  ``ProvenanceMetadata.source_system_of_record``.
+
+There are no levels or tiers: a badge is present or absent (metadata quality
+squad decision, 2026-08-05).
 
 See https://github.com/microbiomedata/nmdc-schema/issues/3227 (badges slot and
-enum) and https://github.com/microbiomedata/nmdc-schema/issues/3228 (subsets).
+enum), https://github.com/microbiomedata/nmdc-schema/issues/3228 (subsets) and
+https://github.com/microbiomedata/nmdc-schema/issues/3326 (qualifying bar).
 """
 
 import unittest
@@ -17,8 +26,13 @@ from linkml_runtime import SchemaView
 from tests import SCHEMA_FILE
 
 BADGE_ENUM = "MetadataBadgeEnum"
-BADGE_LEVELS = {"silver", "gold"}
 BADGE_TOPIC_SUBSET = "badge_topic"
+BADGE_BAR_ANNOTATION = "badge_minimum_slots"
+
+# Badges awarded from provenance rather than slot completeness. These have no
+# badge subset by design. Adding one here is a deliberate act: it exempts the
+# value from the subset correspondence the other badges must satisfy.
+PROVENANCE_BADGES = {"expert_curation"}
 
 
 def _badge_topic_subsets(schema_view):
@@ -37,13 +51,8 @@ def _badge_permissible_values(schema_view):
     return set(schema_view.get_enum(BADGE_ENUM, strict=True).permissible_values.keys())
 
 
-def _split_topic_level(permissible_value):
-    """Split ``<topic>_<level>`` into (topic, level), or (value, None) if no level."""
-    for level in BADGE_LEVELS:
-        suffix = "_" + level
-        if permissible_value.endswith(suffix):
-            return permissible_value[: -len(suffix)], level
-    return permissible_value, None
+def _completeness_badges(schema_view):
+    return _badge_permissible_values(schema_view) - PROVENANCE_BADGES
 
 
 class TestBadgeSubsetSync(unittest.TestCase):
@@ -59,33 +68,85 @@ class TestBadgeSubsetSync(unittest.TestCase):
             "no subsets have in_subset including badge_topic",
         )
 
-    def test_every_permissible_value_maps_to_a_badge_subset(self):
+    def test_every_completeness_badge_has_a_subset(self):
         subsets = _badge_topic_subsets(self.schema_view)
-        for permissible_value in _badge_permissible_values(self.schema_view):
-            topic, level = _split_topic_level(permissible_value)
+        for permissible_value in _completeness_badges(self.schema_view):
             self.assertIn(
-                level,
-                BADGE_LEVELS,
-                f"badge permissible value '{permissible_value}' has no recognized "
-                f"level suffix {sorted(BADGE_LEVELS)}",
-            )
-            self.assertIn(
-                topic,
+                permissible_value,
                 subsets,
-                f"badge permissible value '{permissible_value}' topic '{topic}' is "
-                f"not a badge_topic subset {sorted(subsets)}",
+                f"badge permissible value '{permissible_value}' is not a "
+                f"badge_topic subset {sorted(subsets)}. If it is awarded from "
+                f"provenance rather than slot completeness, add it to "
+                f"PROVENANCE_BADGES and say so in its description.",
             )
 
     def test_every_badge_subset_has_a_permissible_value(self):
-        pv_topics = {
-            _split_topic_level(pv)[0]
-            for pv in _badge_permissible_values(self.schema_view)
-        }
+        permissible_values = _badge_permissible_values(self.schema_view)
         for subset in _badge_topic_subsets(self.schema_view):
             self.assertIn(
                 subset,
-                pv_topics,
+                permissible_values,
                 f"badge subset '{subset}' has no permissible value in {BADGE_ENUM}",
+            )
+
+    def test_provenance_badges_are_declared_in_the_enum(self):
+        """PROVENANCE_BADGES must not drift away from the enum it exempts."""
+        permissible_values = _badge_permissible_values(self.schema_view)
+        for badge in PROVENANCE_BADGES:
+            self.assertIn(
+                badge,
+                permissible_values,
+                f"'{badge}' is exempted as a provenance badge but is not a "
+                f"permissible value of {BADGE_ENUM}",
+            )
+
+    def test_provenance_badges_have_no_subset(self):
+        subsets = _badge_topic_subsets(self.schema_view)
+        for badge in PROVENANCE_BADGES:
+            self.assertNotIn(
+                badge,
+                subsets,
+                f"'{badge}' is exempted as a provenance badge but also has a "
+                f"badge_topic subset; it is one or the other",
+            )
+
+    def test_every_badge_subset_declares_a_qualifying_bar(self):
+        """Each completeness badge records how many slots earn it (issue 3326).
+
+        The bar is an absolute count of populated slots, never a proportion of
+        the subset's size, so that adding a slot to a subset can never revoke a
+        badge a record has already earned.
+        """
+        for name in _badge_topic_subsets(self.schema_view):
+            subset = self.schema_view.get_subset(name)
+            annotation = (subset.annotations or {}).get(BADGE_BAR_ANNOTATION)
+            self.assertIsNotNone(
+                annotation,
+                f"badge subset '{name}' has no {BADGE_BAR_ANNOTATION} annotation",
+            )
+            try:
+                bar = int(annotation.value)
+            except (TypeError, ValueError):
+                self.fail(
+                    f"badge subset '{name}' has a non-integer "
+                    f"{BADGE_BAR_ANNOTATION}: {annotation.value!r}"
+                )
+            member_count = sum(
+                1
+                for slot in self.schema_view.all_slots().values()
+                if name in (slot.in_subset or [])
+            )
+            self.assertGreaterEqual(
+                bar,
+                1,
+                f"badge subset '{name}' has {BADGE_BAR_ANNOTATION} {bar}; a bar "
+                f"below 1 would award the badge to every record",
+            )
+            self.assertLessEqual(
+                bar,
+                member_count,
+                f"badge subset '{name}' has {BADGE_BAR_ANNOTATION} {bar} but only "
+                f"{member_count} member slots, so no record could ever earn it",
             )
 
 

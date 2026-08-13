@@ -1,8 +1,10 @@
 id: nmdc:libprp-11-abcdef
 target_gene: 16S_rRNA
-target_subfragment: 
+target_subfragment:
   has_raw_value: V9
   type: nmdc:TextValue
+pcr_primers: FWD:GTGCCAGCMGCCGCGGTAA;REV:GGACTACHVGGGTWTCTAAT
+adapters: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
 type: nmdc:LibraryPreparation
 has_input:
   - nmdc:procsm-11-def123

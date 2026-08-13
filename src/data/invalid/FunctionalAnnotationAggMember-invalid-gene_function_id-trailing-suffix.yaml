@@ -1,0 +1,6 @@
+# invalid b/c gene_function_id must match the pattern exactly (anchored);
+# "KEGG.ORTHOLOGY:K00627EXTRA" only validated when the pattern was unanchored
+was_generated_by: nmdc:wfmgan-99-123456.1
+gene_function_id: KEGG.ORTHOLOGY:K00627EXTRA
+count: 120
+type: nmdc:FunctionalAnnotationAggMember

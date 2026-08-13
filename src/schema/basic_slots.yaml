@@ -19,7 +19,7 @@ prefixes:
   linkml: "https://w3id.org/linkml/"
   nmdc: "https://w3id.org/nmdc/"
   prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
-  qud: "http://qudt.org/1.1/schema/qudt#"
+  qudt: "http://qudt.org/1.1/schema/qudt#"
   rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   ror: 'https://bioregistry.io/ror:' # https://ror.org/
   schema: "http://schema.org/"
@@ -53,40 +53,58 @@ subsets:
         added, at the same scope the alias lives (global slot or class slot_usage).
   badge_topic:
     description: >-
-      Group of subsets that each define a metadata-quality badge topic. A subset
-      is a badge topic if its in_subset includes badge_topic. Its members are the
-      slots the badge for that topic is scored against. The MetadataBadgeEnum
-      permissible values mirror these subsets, kept aligned by a test.
+      Group of subsets that each define a completeness-based metadata-quality
+      badge topic. A subset is a badge topic if its in_subset includes
+      badge_topic. Its members are the slots a record's completeness is measured
+      against when the badge for that topic is awarded, and its
+      badge_minimum_slots annotation is how many of them the record must
+      populate.
+    comments:
+      - Not every badge is completeness-based, so not every MetadataBadgeEnum
+        permissible value has a subset here. expert_curation is awarded from
+        ProvenanceMetadata.source_system_of_record rather than from slot
+        completeness, so it has no badge_topic subset.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/3228
   biogeochemistry:
     description: >-
       Biosample slots holding measured biogeochemical analytes: nitrogen,
       phosphorus, carbon, sulfur, iron, core physicochemistry, and dissolved
-      gases. Used to score a biogeochemistry metadata badge.
+      gases. A Biosample populating at least badge_minimum_slots of these is
+      awarded the biogeochemistry badge.
+    annotations:
+      badge_minimum_slots: 1
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/3228
+      - https://github.com/microbiomedata/nmdc-schema/issues/3326
     in_subset:
       - badge_topic
-  land_use_and_vegetation:
+  host_association:
     description: >-
-      Biosample slots describing current vegetation, land-use history, land
-      management, and soil and site context. Used to score a land use and
-      vegetation metadata badge.
+      Biosample slots describing the host organism a sample was taken from or
+      associated with: host taxonomy, anatomy, physiology, life stage, and
+      condition. A Biosample populating at least badge_minimum_slots of these is
+      awarded the host_association badge.
+    comments:
+      - Many NMDC biosamples have no host, so an absent host_association badge
+        means the slots are unpopulated, not that the sample is deficient. The
+        data portal shows only badges a sample has earned.
+    annotations:
+      badge_minimum_slots: 1
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/3228
+      - https://github.com/microbiomedata/nmdc-schema/issues/3326
     in_subset:
       - badge_topic
 
 slots:
   badges:
     description: >-
-      Metadata-quality badges awarded to this record. Each value names a topic
-      and a level (for example biogeochemistry_gold). A topic corresponds to a
-      badge subset (see the subsets in this file and
-      https://github.com/microbiomedata/nmdc-schema/issues/3228); the level
-      reflects how well the record populates that subset's slots. Awarded by a
-      downstream scoring service, not asserted by submitters.
+      Metadata-quality badges awarded to this record. Each value names a badge
+      topic (for example biogeochemistry). A badge is present or absent; there
+      are no levels or tiers. Awarded by a downstream service, not asserted by
+      submitters, and recalculated whenever the record's
+      ProvenanceMetadata.last_updated changes.
     range: MetadataBadgeEnum
     multivalued: true
     see_also:
@@ -255,6 +273,8 @@ slots:
 
   host_name:
     range: string
+    in_subset:
+      - host_association
 
   community:
     range: string
@@ -296,7 +316,7 @@ slots:
         description: The DOI links to an electronic document.
     exact_mappings:
       - OBI:0002110
-    narrow_mappings:
+    related_mappings:
       - edam.data:1188
 
   doi_provider:
@@ -440,6 +460,8 @@ slots:
 
   ncbi_taxonomy_name:
     range: string
+    in_subset:
+      - host_association
   ncbi_project_name:
     range: string
 
@@ -723,6 +745,7 @@ slots:
     description: Genus of the host organism that the sample was collected from.
     in_subset:
       - jgi_isolate
+      - host_association
     structured_aliases:
       - literal_form: Host Genus
         predicate: EXACT_SYNONYM
@@ -744,6 +767,7 @@ slots:
     description: Species of the host organism that the sample was collected from.
     in_subset:
       - jgi_isolate
+      - host_association
     structured_aliases:
       - literal_form: Host Species
         predicate: EXACT_SYNONYM
@@ -765,6 +789,7 @@ slots:
     description: Strain of the host organism that the sample was collected from.
     in_subset:
       - jgi_isolate
+      - host_association
     structured_aliases:
       - literal_form: Host Strain
         predicate: EXACT_SYNONYM
@@ -784,21 +809,36 @@ enums:
 
   MetadataBadgeEnum:
     description: >-
-      Metadata-quality badges. Each permissible value names a badge topic and a
-      level, in the form <topic>_<level>, where <topic> is the name of a badge
-      subset (a subset whose in_subset includes badge_topic) and <level> is
-      silver or gold. The permissible values are kept in sync with the badge
-      subsets by a test; see
-      https://github.com/microbiomedata/nmdc-schema/issues/3227
+      Metadata-quality badges a Biosample can be awarded. Each permissible value
+      names one badge topic and is present or absent; there are no levels or
+      tiers. Badges are awarded in two ways. A completeness badge names a badge
+      subset (a subset whose in_subset includes badge_topic) and is awarded when
+      the record populates at least that subset's badge_minimum_slots slots; a
+      test keeps those permissible values and subsets in sync. A provenance badge
+      is awarded from a recorded fact about where the metadata came from, has no
+      subset, and names its source in its own description.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3227
     permissible_values:
-      biogeochemistry_silver:
-        description: Silver-level metadata coverage of the biogeochemistry subset.
-      biogeochemistry_gold:
-        description: Gold-level metadata coverage of the biogeochemistry subset.
-      land_use_and_vegetation_silver:
-        description: Silver-level metadata coverage of the land_use_and_vegetation subset.
-      land_use_and_vegetation_gold:
-        description: Gold-level metadata coverage of the land_use_and_vegetation subset.
+      biogeochemistry:
+        description: >-
+          Completeness badge. Awarded when the Biosample populates at least
+          badge_minimum_slots of the biogeochemistry subset.
+      host_association:
+        description: >-
+          Completeness badge. Awarded when the Biosample populates at least
+          badge_minimum_slots of the host_association subset.
+      expert_curation:
+        description: >-
+          Provenance badge. Awarded when the Biosample's
+          ProvenanceMetadata.source_system_of_record identifies the NMDC
+          submission portal, rather than an ETL process over an external
+          database. Not a completeness measure, so it has no badge subset and no
+          badge_minimum_slots.
+        comments:
+          - source_system_of_record is not yet backpopulated for existing
+            biosamples, so this badge cannot be awarded on historical records
+            until that backfill happens.
   LibraryStrategyEnum:
     description: Sequencing strategy used for library preparation
     comments:
@@ -1489,7 +1529,13 @@ enums:
       amplicon_sequencing_assay:
         meaning: OBI:0002767
         title: Amplicon
-        
+      isolate_genome:
+        description: Sequencing of a single organism's genome, typically from a pure culture or isolate.
+        title: Isolate Genome
+      isolate_transcriptome:
+        description: Sequencing of a single organism's transcriptome, typically from a pure culture or isolate.
+        title: Isolate Transcriptome
+
   MassSpectrometryEnum:
     permissible_values:
       metaproteome:

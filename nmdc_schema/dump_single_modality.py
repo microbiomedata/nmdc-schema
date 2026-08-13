@@ -259,7 +259,9 @@ def dump_from_api(ctx, client_base_url, endpoint_prefix, page_size):
 @click.option('--mongo-db-name', default="nmdc", show_default=True, help='MongoDB database name')
 @click.option('--mongo-host', default="localhost", show_default=True,
               help='MongoDB host name/address.')
-@click.option('--mongo-port', default=27777, type=int, show_default=True, help='MongoDB port')
+@click.option('--mongo-port', default=27124, type=int, show_default=True,
+              help='MongoDB port. 27124 matches the jump-dev tunnel doc: '
+                   'https://github.com/microbiomedata/nmdc-lakehouse/blob/main/docs/mongodb-connection.md')
 @click.option('--admin-db', default=None, help='MongoDB authentication source. Leave blank to not specify.')
 @click.option('--auth-mechanism', default=None, show_default=True,
               help='Authentication mechanism for MongoDB connection. Leave blank to not specify.')

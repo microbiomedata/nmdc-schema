@@ -274,8 +274,8 @@ prefixes:
   prov:
     prefix_prefix: prov
     prefix_reference: http://www.w3.org/ns/prov#
-  qud:
-    prefix_prefix: qud
+  qudt:
+    prefix_prefix: qudt
     prefix_reference: http://qudt.org/1.1/schema/qudt#
   rdf:
     prefix_prefix: rdf
@@ -1117,7 +1117,7 @@ enums:
         exact_mappings:
         - UO:0000027
         - wikidata:Q25267
-        - qud:DEG_C
+        - qudt:DEG_C
         - OM:degreeCelsius
       cm:
         text: cm
@@ -5599,13 +5599,20 @@ enums:
             value: vine crops (grapes)
         examples:
         - value: grapes
-  TargetGeneEnum:
-    name: TargetGeneEnum
+  TargetGeneOrLocusEnum:
+    name: TargetGeneOrLocusEnum
+    comments:
+    - NMDC constrains the MIxS target_gene slot to this enumeration; upstream MIxS
+      leaves it as free text. MIxS defines the slot as the "targeted gene or locus
+      name for marker gene studies." NMDC reads "locus" to include regions larger
+      than a single gene, such as the ribosomal RNA operon or cistron, so that long-read
+      amplicon studies that span the operon can record their target here.
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       16S_rRNA:
         text: 16S_rRNA
-        description: the small subunit of the bacterial/archean ribosome
+        description: the small subunit of the bacterial/archaeal ribosome
+        meaning: SO:0001000
         aliases:
         - 16S rRNA
         - 16S ribosomal RNA
@@ -5613,22 +5620,46 @@ enums:
         - OBI:0002763
       23S_rRNA:
         text: 23S_rRNA
-        description: the large subunit  of the bacterial/archean ribosome
+        description: the large subunit of the bacterial/archaeal ribosome
+        meaning: SO:0001001
         aliases:
         - 23S rRNA
         - 23S ribosomal RNA
       18S_rRNA:
         text: 18S_rRNA
         description: the small subunit of the eukaryotic ribosome
+        meaning: SO:0000407
         aliases:
         - 18S rRNA
         - 18S ribosomal RNA
       28S_rRNA:
         text: 28S_rRNA
         description: the large subunit of the eukaryotic ribosome
+        meaning: SO:0000653
         aliases:
         - 28S rRNA
         - 28S ribosomal RNA
+      bacterial_rRNA_operon:
+        text: bacterial_rRNA_operon
+        description: 'Bacterial ribosomal RNA operon (rrn): the transcript containing
+          the 16S rRNA gene (SO:0001000), the 16S-23S intergenic spacer, and the 23S
+          rRNA gene (SO:0001001), with the 5S rRNA gene (SO:0000652) typically further
+          downstream. Recorded as the target for near-full-length operon amplicon
+          sequencing; the example primers 8F and 2490R span 16S through 23S.'
+        aliases:
+        - bacterial rRNA operon
+        - 16S-23S rRNA operon
+        - rrn operon
+      eukaryotic_rRNA_operon:
+        text: eukaryotic_rRNA_operon
+        description: 'Eukaryotic ribosomal RNA cistron: the transcript containing
+          the 18S rRNA gene (SO:0000407), internal transcribed spacer 1, the 5.8S
+          rRNA gene (SO:0000375), internal transcribed spacer 2, and the 28S rRNA
+          gene (SO:0000653). Recorded as the target for near-full-length operon amplicon
+          sequencing, for example with primers 3NDF and 21R.'
+        aliases:
+        - eukaryotic rRNA operon
+        - 18S-28S rRNA operon
   BinQualityEnum:
     name: BinQualityEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6318,7 +6349,7 @@ slots:
     - sample weight
     exact_mappings:
     - MS:1000004
-    broad_mappings:
+    related_mappings:
     - MIXS:0000111
     range: QuantityValue
   library_type:
@@ -6660,7 +6691,7 @@ slots:
     - and those are frequently fulltext, not CURIEs. MAM 2021-06-23
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
-    pattern: ^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%:\-]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$
+    pattern: ^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG\.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%:\-]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER\.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$
   gff_coordinate:
     name: gff_coordinate
     description: A positive 1-based integer coordinate indicating start or end
@@ -6791,7 +6822,7 @@ slots:
     aliases:
     - scale
     mappings:
-    - qud:unit
+    - qudt:unit
     - schema:unitCode
     range: string
   type:
@@ -6822,7 +6853,7 @@ slots:
     description: Links a quantity value to a number
     from_schema: https://w3id.org/nmdc/nmdc
     mappings:
-    - qud:quantityValue
+    - qudt:quantityValue
     - schema:value
     range: decimal
   has_minimum_numeric_value:
@@ -6891,12 +6922,14 @@ slots:
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
   has_attribute_label:
     name: has_attribute_label
-    description: Human-readable label for the property (e.g., MIxS label, ENVO term
-      label).
+    description: Human-readable label for the property, taken from its MIxS slot,
+      NMDC slot, or ontology term (ENVO, OBI, etc.) label.
     comments:
-    - This provides a human-friendly name for the asserted property. For example,
-      "bicarbonate ion concentration" or "total phosphorus". The label helps with
-      readability and data discovery.
+    - This provides a human-friendly name for the asserted property. The label helps
+      with readability and data discovery.
+    examples:
+    - value: bicarbonate ion concentration
+    - value: total phosphorus
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   has_attribute_id:
@@ -6904,22 +6937,28 @@ slots:
     description: CURIE or IRI for the property (MIxS slot, NMDC slot, ENVO/OBI term,
       etc.).
     comments:
-    - This provides a resolvable identifier for the property being asserted. Examples
-      include MIXS:0000117 for total phosphorus, or ENVO:01001357 for bicarbonate
-      ion concentration.
+    - This provides a resolvable identifier for the property being asserted.
     - Prefer using standard ontology terms (ENVO, PATO, OBI, etc.) or MIxS identifiers
       when available to enhance interoperability.
+    examples:
+    - value: MIXS:0000117
+      description: total phosphorus
+    - value: ENVO:01001357
+      description: bicarbonate ion concentration
     from_schema: https://w3id.org/nmdc/nmdc
     range: uriorcurie
   has_quantity_kind_id:
     name: has_quantity_kind_id
-    description: Optional CURIE or IRI for the physical quantity kind (e.g., qudt:QuantityKind).
+    description: Optional CURIE or IRI for the physical quantity kind, which is a
+      qudt:QuantityKind.
     comments:
     - This slot enables precise semantic description of what physical quantity is
-      being measured, independent of the specific units used. For example, qudt:MassConcentration
-      or qudt:Temperature.
+      being measured, independent of the specific units used.
     - Using quantity kind identifiers from QUDT or similar vocabularies improves data
       integration and enables automated unit conversion.
+    examples:
+    - value: qudt:MassConcentration
+    - value: qudt:Temperature
     from_schema: https://w3id.org/nmdc/nmdc
     range: uriorcurie
   has_value_term_id:
@@ -6927,8 +6966,12 @@ slots:
     description: CURIE or IRI for categorical values (ENVO, PATO, METPO, etc.).
     comments:
     - Use this slot when the value of the property is a controlled vocabulary term
-      rather than a numeric or free-text value. For example, ENVO:00002297 for "desert
-      ecosystem" or PATO:0001199 for "dry".
+      rather than a numeric or free-text value.
+    examples:
+    - value: ENVO:00002297
+      description: desert ecosystem
+    - value: PATO:0001199
+      description: dry
     from_schema: https://w3id.org/nmdc/nmdc
     range: uriorcurie
   has_datetime_value:
@@ -7167,7 +7210,7 @@ slots:
     - digital object identifier
     exact_mappings:
     - OBI:0002110
-    narrow_mappings:
+    related_mappings:
     - edam.data:1188
     range: uriorcurie
     required: true
@@ -7792,7 +7835,7 @@ slots:
     is_a: study_identifiers
     mixins:
     - jgi_portal_identifiers
-    pattern: ^jgi.proposal:\d+$
+    pattern: ^jgi\.proposal:\d+$
   neon_study_identifiers:
     name: neon_study_identifiers
     from_schema: https://w3id.org/nmdc/nmdc
@@ -7818,7 +7861,7 @@ slots:
     is_a: study_identifiers
     mixins:
     - insdc_identifiers
-    pattern: ^insdc.sra:(E|D|S)RP[0-9]{6,}$
+    pattern: ^insdc\.sra:(E|D|S)RP[0-9]{6,}$
   insdc_bioproject_identifiers:
     name: insdc_bioproject_identifiers
     description: identifiers for corresponding project in INSDC Bioproject
@@ -7864,7 +7907,7 @@ slots:
     is_a: study_identifiers
     mixins:
     - mgnify_identifiers
-    pattern: ^mgnify.proj:[A-Z]+[0-9]+$
+    pattern: ^mgnify\.proj:[A-Z]+[0-9]+$
   gnps_task_identifiers:
     name: gnps_task_identifiers
     description: identifiers that link a NMDC study to a web-based report about metabolomics
@@ -8024,7 +8067,7 @@ slots:
     is_a: external_database_identifiers
     mixins:
     - insdc_identifiers
-    pattern: ^insdc.sra:(E|D|S)RX[0-9]{6,}$
+    pattern: ^insdc\.sra:(E|D|S)RX[0-9]{6,}$
   insdc_run_identifiers:
     name: insdc_run_identifiers
     description: Identifiers for the manifest of data file(s) that are derived from
@@ -8063,7 +8106,7 @@ slots:
     is_a: analysis_identifiers
     mixins:
     - jgi_portal_identifiers
-    pattern: ^jgi.analysis:[0-9]+$
+    pattern: ^jgi\.analysis:[0-9]+$
   insdc_analysis_identifiers:
     name: insdc_analysis_identifiers
     comments:
@@ -8076,7 +8119,7 @@ slots:
     is_a: analysis_identifiers
     mixins:
     - insdc_identifiers
-    pattern: ^insdc.sra:(E|D|S)RR[0-9]{6,}$
+    pattern: ^insdc\.sra:(E|D|S)RR[0-9]{6,}$
   mgnify_analysis_identifiers:
     name: mgnify_analysis_identifiers
     notes:
@@ -8098,7 +8141,7 @@ slots:
     is_a: assembly_identifiers
     mixins:
     - insdc_identifiers
-    pattern: ^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
+    pattern: ^insdc\.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
   classified_as:
     name: classified_as
     description: A formal classification for this entity, expressed directly as an
@@ -13277,9 +13320,9 @@ slots:
     keywords:
     - pcr
     slot_uri: MIXS:0000046
-    pattern: FWD:[ACGT];REV:[ACGT]
+    pattern: FWD:[ACGTRYSWKMBDHVNI]+;REV:[ACGTRYSWKMBDHVNI]+
     structured_pattern:
-      syntax: FWD:{dna_bases};REV:{dna_bases}
+      syntax: FWD:{primer_adapter_codes}+;REV:{primer_adapter_codes}+
       interpolated: true
   permeability:
     name: permeability
@@ -15979,12 +16022,14 @@ slots:
     description: Targeted gene or locus name for marker gene studies
     title: target gene
     examples:
-    - value: 16S rRNA, 18S rRNA, nif, amoA, rpo
+    - value: 16S_rRNA
+    - value: bacterial_rRNA_operon
+    - value: eukaryotic_rRNA_operon
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - target
     slot_uri: MIXS:0000044
-    range: TargetGeneEnum
+    range: TargetGeneOrLocusEnum
   target_subfragment:
     name: target_subfragment
     description: Name of subfragment of a gene or locus. Important to e.g. identify
@@ -17359,9 +17404,9 @@ slots:
     - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000048
-    pattern: ^[ACGT];[ACGT]$
+    pattern: ^[ACGTRYSWKMBDHVNI]+;[ACGTRYSWKMBDHVNI]+$
     structured_pattern:
-      syntax: ^{dna_bases};{dna_bases}$
+      syntax: ^{primer_adapter_codes}+;{primer_adapter_codes}+$
       interpolated: true
       partial_match: true
   samp_collec_device:
@@ -17844,33 +17889,33 @@ slots:
     range: BinQualityEnum
   num_16s:
     name: num_16s
-    description: Number of 16s sequences detected, a subunit of prokaryotic ribosomes.
+    description: Number of 16S sequences detected, a subunit of prokaryotic ribosomes.
     from_schema: https://w3id.org/nmdc/nmdc
-    broad_mappings:
+    related_mappings:
     - OMIT:0013243
     range: integer
     minimum_value: 0
   num_5s:
     name: num_5s
-    description: Number of 5s seqeuences detected, a subunit of ribosomes.
+    description: Number of 5S sequences detected, a subunit of ribosomes.
     from_schema: https://w3id.org/nmdc/nmdc
-    broad_mappings:
+    related_mappings:
     - OMIT:0013248
     range: integer
     minimum_value: 0
   num_23s:
     name: num_23s
-    description: Number of 23 seqeuences detected, a subunit of ribosomes.
+    description: Number of 23S sequences detected, a subunit of ribosomes.
     from_schema: https://w3id.org/nmdc/nmdc
-    broad_mappings:
+    related_mappings:
     - OMIT:0013245
     range: integer
     minimum_value: 0
   num_t_rna:
     name: num_t_rna
-    description: Number of transfer transfer RNAs.
+    description: Number of transfer RNAs.
     from_schema: https://w3id.org/nmdc/nmdc
-    broad_mappings:
+    related_mappings:
     - OMIT:0013250
     range: integer
     minimum_value: 0
@@ -19052,7 +19097,7 @@ classes:
           or spectra (for metaproteomics) associated with the specified function.
       gene_function_id:
         name: gene_function_id
-        pattern: (COG:COG\d+|PFAM:PF\d{5}|KEGG.ORTHOLOGY:K\d+)
+        pattern: ^(COG:COG\d+|PFAM:PF\d{5}|KEGG\.ORTHOLOGY:K\d+)$
     class_uri: nmdc:FunctionalAnnotationAggMember
   Database:
     name: Database

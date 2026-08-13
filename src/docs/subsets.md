@@ -47,34 +47,67 @@ candidate for removal, tracked separately from the badge work.
 
 ## 3. Badge subsets (added, active)
 
-Badge subsets group the slots that a metadata-quality badge is scored against.
-They are declared in `src/schema/basic_slots.yaml` and are themselves members of
-the `badge_topic` group subset (`in_subset: [badge_topic]`), which is how tooling
-and the sync test tell them apart from other subsets (for example `jgi_isolate`,
-which is not a badge topic). This uses the native subset mechanism rather than a
-custom annotation.
+Badge subsets group the slots a metadata-quality badge measures completeness
+against. They are declared in `src/schema/basic_slots.yaml` and are themselves
+members of the `badge_topic` group subset (`in_subset: [badge_topic]`), which is
+how tooling and the sync test tell them apart from other subsets (for example
+`jgi_isolate`, which is not a badge topic). This uses the native subset
+mechanism rather than a custom annotation.
 
 Current badge subsets:
 
-| subset | members | scored slots |
-| --- | --- | --- |
-| `biogeochemistry` | 24 | measured chemical analytes (N, P, C, S, Fe, core physicochemistry, gases) |
-| `land_use_and_vegetation` | 17 | current vegetation, land-use history, management, soil and site context |
+| subset | members | bar | slots |
+| --- | --- | --- | --- |
+| `biogeochemistry` | 24 | 1 | measured chemical analytes (N, P, C, S, Fe, core physicochemistry, gases) |
+| `host_association` | 30 | 1 | host taxonomy, anatomy, physiology, life stage, condition |
 
 Most members are MIxS slots defined in the generated `mixs.yaml`, so their
 membership cannot be hand-edited on the slot. It is asserted in
 `assets/yq-for-mixs-customizations.txt`, after the MIxS `in_subset` strip
-described in population 1.
+described in population 1. Six host slots are NMDC-native (`host_name`,
+`ncbi_taxonomy_name`, `host_family_relation`, `host_genus`, `host_species`,
+`host_strain`) and carry `in_subset` in their own definitions instead. A slot
+may belong to more than one subset; the three JGI Isolate host slots are in both
+`jgi_isolate` and `host_association`.
 
-The badge subsets are mirrored by the `MetadataBadgeEnum` permissible values
-(`<topic>_<level>`, for example `biogeochemistry_gold`), the range of the
-`badges` slot. Which classes carry the `badges` slot is decided in separate
-attachment PRs, not here. A test keeps the enum and the badge subsets in sync:
-every badge-topic subset has matching permissible values, and every permissible
-value resolves to a badge-topic subset.
+### The qualifying bar
+
+Each badge subset carries a `badge_minimum_slots` annotation: how many of its
+slots a record must populate to earn the badge
+(https://github.com/microbiomedata/nmdc-schema/issues/3326).
+
+The bar is an **absolute count of populated slots, never a proportion of the
+subset's size**. This is what makes the badges stable as the schema grows: under
+an absolute bar, adding a slot to a subset can only ever make a badge easier to
+earn, so no record loses a badge it already displays because the schema changed
+around it. A proportional bar would revoke badges on a subset that grows, which
+users would experience as a badge disappearing for no reason.
+
+Both subsets start at a bar of 1. The bar lives in the schema so that raising it
+is a reviewable pull request with a visible diff, rather than a change to a
+scoring service's configuration.
+
+### Badges that are not completeness measures
+
+Not every badge has a subset. `MetadataBadgeEnum` also carries
+`expert_curation`, which is awarded from
+`ProvenanceMetadata.source_system_of_record` (did this record come through the
+NMDC submission portal, or from an ETL process over an external database) rather
+than from how many slots are populated. It has no badge subset and no
+`badge_minimum_slots`, and its enum description says where it comes from. The
+sync test exempts it explicitly through a `PROVENANCE_BADGES` list, so adding
+another such badge is a deliberate act rather than a silent gap.
+
+A badge is present or absent. There are no levels or tiers (metadata quality
+squad decision, 2026-08-05).
+
+The badge subsets are mirrored one-to-one by the completeness permissible values
+of `MetadataBadgeEnum`, the range of the `badges` slot. Which classes carry the
+`badges` slot is decided in a separate attachment PR, not here.
 
 See https://github.com/microbiomedata/nmdc-schema/issues/3227 (badges slot and
-enum) and https://github.com/microbiomedata/nmdc-schema/issues/3228 (subsets).
+enum), https://github.com/microbiomedata/nmdc-schema/issues/3228 (subsets) and
+https://github.com/microbiomedata/nmdc-schema/issues/3326 (qualifying bar).
 
 ## Summary
 

@@ -96,6 +96,17 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Rationale: these serve as documentation and unit tests
     - All elements of the nmdc-schema must be illustrated with valid and invalid data examples in src/data. New schema elements will not be merged into the main branch until examples are provided
     - Invalid example data files should be invalid for one single reason, which should be reflected in the filename. It should be possible to render the invalid example files valid by addressing that single fault.
+- Put example values in the `examples` metaslot, not in prose
+    - Rationale: values in `examples` are machine-readable, render consistently in the generated docs, and are checked against the slot's range. The same value written into a `description`, `comments`, or `notes` string is none of those things.
+    - Indicators that a text annotation is holding a misplaced example (the value should move to `examples`):
+        - It introduces a concrete value with "e.g.", "for example", "for instance", "such as", or "Examples include ...".
+        - The value could stand on its own as a filler for the slot: a CURIE (`ENVO:00002297`), a literal label (`total phosphorus`), or an enum value.
+        - It restates, in prose, a value that is already listed in the slot's `examples`.
+    - Keep the text as prose when the "e.g." is explanatory rather than a fillable value: a definition or gloss of the field, usage guidance ("use this value when ..."), a walkthrough that names entities only to illustrate a concept, or a pointer to which vocabulary or source to draw a value from (as opposed to a specific term). The test: would the parenthetical be a valid value of the slot? If not, it is prose, so leave it, and reword any lingering "e.g." into a plain statement.
+    - When an example needs a human-readable gloss, keep the two together with the LinkML `Example` fields: `value:` plus `description:` (for instance `value: ENVO:00002297` with `description: desert ecosystem`). Use `value:` for scalar examples (a CURIE, a label, an enum value), quoted. Use `object:` for a structured-instance example, such as the `QuantityValue` that models a measurement (magnitude in `has_numeric_value`, unit in `has_unit`) or a `TextValue`. In the generated documentation, a mapping-valued `object:` example is rendered as a YAML code block, and scalar examples (a `value:` or a bare scalar) render inline, so nested structure stays readable.
+    - An example `description:` is published on the slot's documentation page, so write it for someone deciding what to submit: what the value means, which unit or vocabulary it comes from, and what it is easy to confuse with. Keep build reasoning out of it. Internal collection names, appeals to what production data contains, and arguments for why an upstream example was replaced belong in a comment beside the line that sets the example, not in text the docs render. Omit `description:` when the example already carries the point on its own.
+    - Keep example objects simple so they render cleanly in the docs: scalar leaf values (strings, numbers, CURIEs) and shallow nesting. Things that render poorly: a backtick inside a `value:` string (the template escapes it and drops the inline code span, so the value renders as plain text), an empty `object: {}` (an empty code block), a multiline string value (the line break is shown escaped, not wrapped), and a list of nested objects as a value (it collapses onto one long line). A bare scalar placed in `object:` should be a `value:` instead.
+    - For MIxS-derived slots the description comes from upstream, so make these edits in `assets/yq-for-mixs-customizations.txt` (`.slots.<name>.description |= "..."` and `.slots.<name>.examples = [{"value": "..."}]`), never by editing the generated `mixs.yaml`.
 - Use enums for categorical values
     - Rationale: Open-ended string ranges encourage multiple values to represent the same entity, like “water”, “H2O” and “HOH”
     - Any slot whose values could be constrained to a finite set should use an Enum
@@ -160,7 +171,7 @@ current policy below when adding or modifying developer tooling.
 
 | Topic | Current policy | Legacy guidance (for context) |
 |---|---|---|
-| `src/schema/mixs.yaml` edits | Treat as generated. Change generator inputs/transformations (`makefiles/mixs.Makefile`, `assets/*`, related config) and regenerate. | Hand-edit `mixs.yaml` directly. |
+| `src/schema/mixs.yaml` edits | Treat as generated. Change generator inputs/transformations (`makefiles/mixs.Makefile`, `assets/*`, related config) and regenerate. See [Maintaining mixs.yaml](src/docs/mixs-v6.3.0-customizations.md#maintaining-mixsyaml-how-to-change-a-mixs-slot) for which file to edit (yq asset vs `nmdc.yaml` settings) and how to verify without a full rebuild. | Hand-edit `mixs.yaml` directly. |
 | Script registration | Keep `[project.scripts]` limited to package-backed, stable CLIs intended for default installs. | Add most repo scripts as CLI aliases. |
 | Repo-local scripts | Invoke explicitly from Makefiles using `poetry run python src/scripts/<name>.py ...`. | Expose `src/scripts/*` commands through Poetry script aliases. |
 | Scripts table location | Use `[project.scripts]` (PEP 621). | Use `[tool.poetry.scripts]` (Poetry-specific). |

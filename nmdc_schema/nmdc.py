@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-06-23T18:37:25
+# Generation date: 2026-07-16T00:42:07
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -153,7 +153,7 @@ NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 PUBMED = CurieNamespace('pubmed', 'https://bioregistry.io/pubmed:')
-QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
+QUDT = CurieNamespace('qudt', 'http://qudt.org/1.1/schema/qudt#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 ROR = CurieNamespace('ror', 'https://bioregistry.io/ror:')
@@ -4513,7 +4513,7 @@ class LibraryPreparation(MaterialProcessing):
     pcr_cycles: Optional[int] = None
     pcr_primers: Optional[str] = None
     stranded_orientation: Optional[Union[str, "StrandedOrientationEnum"]] = None
-    target_gene: Optional[Union[str, "TargetGeneEnum"]] = None
+    target_gene: Optional[Union[str, "TargetGeneOrLocusEnum"]] = None
     target_subfragment: Optional[Union[dict, TextValue]] = None
     library_selection: Optional[Union[str, "LibrarySelectionEnum"]] = None
     library_strategy: Optional[Union[str, "LibraryStrategyEnum"]] = None
@@ -4563,8 +4563,8 @@ class LibraryPreparation(MaterialProcessing):
         if self.stranded_orientation is not None and not isinstance(self.stranded_orientation, StrandedOrientationEnum):
             self.stranded_orientation = StrandedOrientationEnum(self.stranded_orientation)
 
-        if self.target_gene is not None and not isinstance(self.target_gene, TargetGeneEnum):
-            self.target_gene = TargetGeneEnum(self.target_gene)
+        if self.target_gene is not None and not isinstance(self.target_gene, TargetGeneOrLocusEnum):
+            self.target_gene = TargetGeneOrLocusEnum(self.target_gene)
 
         if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
             self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
@@ -10730,10 +10730,17 @@ class CurLandUseEnum(EnumDefinitionImpl):
         setattr(cls, "vine crops",
             PermissibleValue(text="vine crops"))
 
-class TargetGeneEnum(EnumDefinitionImpl):
+class TargetGeneOrLocusEnum(EnumDefinitionImpl):
+
+    bacterial_rRNA_operon = PermissibleValue(
+        text="bacterial_rRNA_operon",
+        description="""Bacterial ribosomal RNA operon (rrn): the transcript containing the 16S rRNA gene (SO:0001000), the 16S-23S intergenic spacer, and the 23S rRNA gene (SO:0001001), with the 5S rRNA gene (SO:0000652) typically further downstream. Recorded as the target for near-full-length operon amplicon sequencing; the example primers 8F and 2490R span 16S through 23S.""")
+    eukaryotic_rRNA_operon = PermissibleValue(
+        text="eukaryotic_rRNA_operon",
+        description="""Eukaryotic ribosomal RNA cistron: the transcript containing the 18S rRNA gene (SO:0000407), internal transcribed spacer 1, the 5.8S rRNA gene (SO:0000375), internal transcribed spacer 2, and the 28S rRNA gene (SO:0000653). Recorded as the target for near-full-length operon amplicon sequencing, for example with primers 3NDF and 21R.""")
 
     _defn = EnumDefinition(
-        name="TargetGeneEnum",
+        name="TargetGeneOrLocusEnum",
     )
 
     @classmethod
@@ -10741,19 +10748,23 @@ class TargetGeneEnum(EnumDefinitionImpl):
         setattr(cls, "16S_rRNA",
             PermissibleValue(
                 text="16S_rRNA",
-                description="the small subunit of the bacterial/archean ribosome"))
+                description="the small subunit of the bacterial/archaeal ribosome",
+                meaning=SO["0001000"]))
         setattr(cls, "23S_rRNA",
             PermissibleValue(
                 text="23S_rRNA",
-                description="the large subunit  of the bacterial/archean ribosome"))
+                description="the large subunit of the bacterial/archaeal ribosome",
+                meaning=SO["0001001"]))
         setattr(cls, "18S_rRNA",
             PermissibleValue(
                 text="18S_rRNA",
-                description="the small subunit of the eukaryotic ribosome"))
+                description="the small subunit of the eukaryotic ribosome",
+                meaning=SO["0000407"]))
         setattr(cls, "28S_rRNA",
             PermissibleValue(
                 text="28S_rRNA",
-                description="the large subunit of the eukaryotic ribosome"))
+                description="the large subunit of the eukaryotic ribosome",
+                meaning=SO["0000653"]))
 
 class SampleTypeEnum(EnumDefinitionImpl):
 
@@ -11122,7 +11133,7 @@ slots.subject = Slot(uri=NMDC.subject, name="subject", curie=NMDC.curie('subject
 
 slots.has_function = Slot(uri=NMDC.has_function, name="has_function", curie=NMDC.curie('has_function'),
                    model_uri=NMDC.has_function, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%:\-]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$'))
+                   pattern=re.compile(r'^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG\.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%:\-]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER\.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$'))
 
 slots.gff_coordinate = Slot(uri=NMDC.gff_coordinate, name="gff_coordinate", curie=NMDC.curie('gff_coordinate'),
                    model_uri=NMDC.gff_coordinate, domain=None, range=Optional[int])
@@ -11482,13 +11493,13 @@ slots.has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_value'], name="has
                    model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
 
 slots.has_unit = Slot(uri=NMDC['attribute_values/has_unit'], name="has_unit", curie=NMDC.curie('attribute_values/has_unit'),
-                   model_uri=NMDC.has_unit, domain=None, range=Optional[str], mappings = [QUD["unit"], SCHEMA["unitCode"]])
+                   model_uri=NMDC.has_unit, domain=None, range=Optional[str], mappings = [QUDT["unit"], SCHEMA["unitCode"]])
 
 slots.type = Slot(uri=RDF.type, name="type", curie=RDF.curie('type'),
                    model_uri=NMDC.type, domain=None, range=Union[str, URIorCURIE])
 
 slots.has_numeric_value = Slot(uri=NMDC['attribute_values/has_numeric_value'], name="has_numeric_value", curie=NMDC.curie('attribute_values/has_numeric_value'),
-                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[Decimal], mappings = [QUD["quantityValue"], SCHEMA["value"]])
+                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[Decimal], mappings = [QUDT["quantityValue"], SCHEMA["value"]])
 
 slots.has_minimum_numeric_value = Slot(uri=NMDC['attribute_values/has_minimum_numeric_value'], name="has_minimum_numeric_value", curie=NMDC.curie('attribute_values/has_minimum_numeric_value'),
                    model_uri=NMDC.has_minimum_numeric_value, domain=None, range=Optional[Decimal])
@@ -11956,7 +11967,7 @@ slots.study_identifiers = Slot(uri=NMDC.study_identifiers, name="study_identifie
 
 slots.jgi_portal_study_identifiers = Slot(uri=NMDC.jgi_portal_study_identifiers, name="jgi_portal_study_identifiers", curie=NMDC.curie('jgi_portal_study_identifiers'),
                    model_uri=NMDC.jgi_portal_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^jgi.proposal:\d+$'))
+                   pattern=re.compile(r'^jgi\.proposal:\d+$'))
 
 slots.neon_study_identifiers = Slot(uri=NMDC.neon_study_identifiers, name="neon_study_identifiers", curie=NMDC.curie('neon_study_identifiers'),
                    model_uri=NMDC.neon_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
@@ -11964,7 +11975,7 @@ slots.neon_study_identifiers = Slot(uri=NMDC.neon_study_identifiers, name="neon_
 
 slots.insdc_sra_ena_study_identifiers = Slot(uri=NMDC.insdc_sra_ena_study_identifiers, name="insdc_sra_ena_study_identifiers", curie=NMDC.curie('insdc_sra_ena_study_identifiers'),
                    model_uri=NMDC.insdc_sra_ena_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^insdc.sra:(E|D|S)RP[0-9]{6,}$'))
+                   pattern=re.compile(r'^insdc\.sra:(E|D|S)RP[0-9]{6,}$'))
 
 slots.insdc_bioproject_identifiers = Slot(uri=NMDC.insdc_bioproject_identifiers, name="insdc_bioproject_identifiers", curie=NMDC.curie('insdc_bioproject_identifiers'),
                    model_uri=NMDC.insdc_bioproject_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
@@ -11976,7 +11987,7 @@ slots.gold_study_identifiers = Slot(uri=NMDC.gold_study_identifiers, name="gold_
 
 slots.mgnify_project_identifiers = Slot(uri=NMDC.mgnify_project_identifiers, name="mgnify_project_identifiers", curie=NMDC.curie('mgnify_project_identifiers'),
                    model_uri=NMDC.mgnify_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^mgnify.proj:[A-Z]+[0-9]+$'))
+                   pattern=re.compile(r'^mgnify\.proj:[A-Z]+[0-9]+$'))
 
 slots.gnps_task_identifiers = Slot(uri=NMDC.gnps_task_identifiers, name="gnps_task_identifiers", curie=NMDC.curie('gnps_task_identifiers'),
                    model_uri=NMDC.gnps_task_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
@@ -12028,7 +12039,7 @@ slots.gold_sequencing_project_identifiers = Slot(uri=NMDC.gold_sequencing_projec
 
 slots.insdc_experiment_identifiers = Slot(uri=NMDC.insdc_experiment_identifiers, name="insdc_experiment_identifiers", curie=NMDC.curie('insdc_experiment_identifiers'),
                    model_uri=NMDC.insdc_experiment_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^insdc.sra:(E|D|S)RX[0-9]{6,}$'))
+                   pattern=re.compile(r'^insdc\.sra:(E|D|S)RX[0-9]{6,}$'))
 
 slots.insdc_run_identifiers = Slot(uri=NMDC.insdc_run_identifiers, name="insdc_run_identifiers", curie=NMDC.curie('insdc_run_identifiers'),
                    model_uri=NMDC.insdc_run_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
@@ -12044,11 +12055,11 @@ slots.gold_analysis_project_identifiers = Slot(uri=NMDC.gold_analysis_project_id
 
 slots.jgi_portal_analysis_project_identifiers = Slot(uri=NMDC.jgi_portal_analysis_project_identifiers, name="jgi_portal_analysis_project_identifiers", curie=NMDC.curie('jgi_portal_analysis_project_identifiers'),
                    model_uri=NMDC.jgi_portal_analysis_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^jgi.analysis:[0-9]+$'))
+                   pattern=re.compile(r'^jgi\.analysis:[0-9]+$'))
 
 slots.insdc_analysis_identifiers = Slot(uri=NMDC.insdc_analysis_identifiers, name="insdc_analysis_identifiers", curie=NMDC.curie('insdc_analysis_identifiers'),
                    model_uri=NMDC.insdc_analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^insdc.sra:(E|D|S)RR[0-9]{6,}$'))
+                   pattern=re.compile(r'^insdc\.sra:(E|D|S)RR[0-9]{6,}$'))
 
 slots.mgnify_analysis_identifiers = Slot(uri=NMDC.mgnify_analysis_identifiers, name="mgnify_analysis_identifiers", curie=NMDC.curie('mgnify_analysis_identifiers'),
                    model_uri=NMDC.mgnify_analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
@@ -12059,7 +12070,7 @@ slots.assembly_identifiers = Slot(uri=NMDC.assembly_identifiers, name="assembly_
 
 slots.insdc_assembly_identifiers = Slot(uri=NMDC.insdc_assembly_identifiers, name="insdc_assembly_identifiers", curie=NMDC.curie('insdc_assembly_identifiers'),
                    model_uri=NMDC.insdc_assembly_identifiers, domain=None, range=Optional[Union[str, list[str]]],
-                   pattern=re.compile(r'^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$'))
+                   pattern=re.compile(r'^insdc\.sra:[A-Z]+[0-9]+(\.[0-9]+)?$'))
 
 slots.abs_air_humidity = Slot(uri=MIXS['0000122'], name="abs_air_humidity", curie=MIXS.curie('0000122'),
                    model_uri=NMDC.abs_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -13300,7 +13311,7 @@ slots.tan = Slot(uri=MIXS['0000120'], name="tan", curie=MIXS.curie('0000120'),
                    model_uri=NMDC.tan, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.target_gene = Slot(uri=MIXS['0000044'], name="target_gene", curie=MIXS.curie('0000044'),
-                   model_uri=NMDC.target_gene, domain=None, range=Optional[Union[str, "TargetGeneEnum"]])
+                   model_uri=NMDC.target_gene, domain=None, range=Optional[Union[str, "TargetGeneOrLocusEnum"]])
 
 slots.target_subfragment = Slot(uri=MIXS['0000045'], name="target_subfragment", curie=MIXS.curie('0000045'),
                    model_uri=NMDC.target_subfragment, domain=None, range=Optional[Union[dict, TextValue]])
@@ -13641,7 +13652,7 @@ slots.FunctionalAnnotationAggMember_count = Slot(uri=NMDC.count, name="Functiona
 
 slots.FunctionalAnnotationAggMember_gene_function_id = Slot(uri=NMDC.gene_function_id, name="FunctionalAnnotationAggMember_gene_function_id", curie=NMDC.curie('gene_function_id'),
                    model_uri=NMDC.FunctionalAnnotationAggMember_gene_function_id, domain=FunctionalAnnotationAggMember, range=Union[str, URIorCURIE],
-                   pattern=re.compile(r'(COG:COG\d+|PFAM:PF\d{5}|KEGG.ORTHOLOGY:K\d+)'))
+                   pattern=re.compile(r'^(COG:COG\d+|PFAM:PF\d{5}|KEGG\.ORTHOLOGY:K\d+)$'))
 
 slots.Pooling_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="Pooling_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.Pooling_has_input, domain=Pooling, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
@@ -13786,7 +13797,7 @@ slots.GenomeFeature_end = Slot(uri=NMDC.end, name="GenomeFeature_end", curie=NMD
 
 slots.FunctionalAnnotation_has_function = Slot(uri=NMDC.has_function, name="FunctionalAnnotation_has_function", curie=NMDC.curie('has_function'),
                    model_uri=NMDC.FunctionalAnnotation_has_function, domain=FunctionalAnnotation, range=Optional[str],
-                   pattern=re.compile(r'^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%:\-]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$'))
+                   pattern=re.compile(r'^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG\.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%:\-]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER\.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$'))
 
 slots.FunctionalAnnotation_was_generated_by = Slot(uri=NMDC['basic_classes/was_generated_by'], name="FunctionalAnnotation_was_generated_by", curie=NMDC.curie('basic_classes/was_generated_by'),
                    model_uri=NMDC.FunctionalAnnotation_was_generated_by, domain=FunctionalAnnotation, range=Optional[Union[str, MetagenomeAnnotationId]], mappings = [PROV["wasGeneratedBy"]])
@@ -14102,10 +14113,10 @@ slots.QuantityValue_has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_valu
                    model_uri=NMDC.QuantityValue_has_raw_value, domain=QuantityValue, range=Optional[str])
 
 slots.QuantityValue_has_unit = Slot(uri=NMDC['attribute_values/has_unit'], name="QuantityValue_has_unit", curie=NMDC.curie('attribute_values/has_unit'),
-                   model_uri=NMDC.QuantityValue_has_unit, domain=QuantityValue, range=Union[str, "UnitEnum"], mappings = [QUD["unit"], SCHEMA["unitCode"]])
+                   model_uri=NMDC.QuantityValue_has_unit, domain=QuantityValue, range=Union[str, "UnitEnum"], mappings = [QUDT["unit"], SCHEMA["unitCode"]])
 
 slots.QuantityValue_has_numeric_value = Slot(uri=NMDC['attribute_values/has_numeric_value'], name="QuantityValue_has_numeric_value", curie=NMDC.curie('attribute_values/has_numeric_value'),
-                   model_uri=NMDC.QuantityValue_has_numeric_value, domain=QuantityValue, range=Optional[Decimal], mappings = [QUD["quantityValue"], SCHEMA["value"]])
+                   model_uri=NMDC.QuantityValue_has_numeric_value, domain=QuantityValue, range=Optional[Decimal], mappings = [QUDT["quantityValue"], SCHEMA["value"]])
 
 slots.PersonValue_orcid = Slot(uri=NMDC['attribute_values/orcid'], name="PersonValue_orcid", curie=NMDC.curie('attribute_values/orcid'),
                    model_uri=NMDC.PersonValue_orcid, domain=PersonValue, range=Optional[str])
@@ -14135,7 +14146,7 @@ slots.PropertyAssertion_has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_
                    model_uri=NMDC.PropertyAssertion_has_raw_value, domain=PropertyAssertion, range=str)
 
 slots.PropertyAssertion_has_unit = Slot(uri=NMDC['attribute_values/has_unit'], name="PropertyAssertion_has_unit", curie=NMDC.curie('attribute_values/has_unit'),
-                   model_uri=NMDC.PropertyAssertion_has_unit, domain=PropertyAssertion, range=Optional[str], mappings = [QUD["unit"], SCHEMA["unitCode"]])
+                   model_uri=NMDC.PropertyAssertion_has_unit, domain=PropertyAssertion, range=Optional[str], mappings = [QUDT["unit"], SCHEMA["unitCode"]])
 
 slots.OntologyClass_id = Slot(uri=NMDC.id, name="OntologyClass_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.OntologyClass_id, domain=OntologyClass, range=Union[str, OntologyClassId],

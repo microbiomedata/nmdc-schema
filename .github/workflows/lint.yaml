@@ -18,6 +18,33 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Guards against uv.lock being committed. This is a Poetry project; poetry.lock
+  # is the tracked lock file. A uv.lock is produced whenever someone runs uv here,
+  # and it has been committed and reverted twice (5c415c17a, 16b10a8e2). .gitignore
+  # covers the accidental case but not `git add -f` or an already-tracked file, so
+  # this check is the backstop. Delete this job if the project adopts uv, since
+  # uv.lock becomes the file to track then. See issue 2761.
+  lockfile-guard:
+    name: lockfile-guard
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # check out the repository to inspect its tracked files
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # `git ls-files` asks whether the file is TRACKED, which is the actual rule.
+      # A `test -f` would also fire on a contributor's git-ignored local copy.
+      - name: Fail if uv.lock is tracked
+        run: |
+          if git ls-files --error-unmatch uv.lock > /dev/null 2>&1; then
+            echo "::error file=uv.lock::uv.lock is tracked, but this is a Poetry project and poetry.lock is the tracked lock file. Remove it (git rm --cached uv.lock); it is already covered by .gitignore. See https://github.com/microbiomedata/nmdc-schema/issues/2761 if the project is moving to uv."
+            exit 1
+          fi
+          echo "OK: uv.lock is not tracked."
+
   ruff:
     name: ruff
     runs-on: ubuntu-latest
@@ -25,7 +52,7 @@ jobs:
       contents: read  # check out the repository to lint it
     steps:
       - name: Check out repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -33,7 +60,7 @@ jobs:
         run: pipx install poetry==2.4.1
 
       - name: Set up Python
-        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
           cache: 'poetry'
