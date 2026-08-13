@@ -131,7 +131,7 @@ data_generation_set:
       - nmdc:sty-00-555xxx
     instrument_used:
       - nmdc:inst-14-njkx0e66
-   - id: nmdc:dgns-11-isog03
+  - id: nmdc:dgns-11-isog03
     type: nmdc:NucleotideSequencing
     name: Isolate genome sequencing for sample name isolate genome non-interleaved
     processing_institution: UCSD
@@ -167,7 +167,7 @@ data_object_set:
     data_object_type: Paired interleaved raw sequencing data
     data_category: instrument_data
     insdc_run_identifiers:
-        - insdc.run:SRR400868
+      - insdc.run:SRR400868
     type: nmdc:DataObject
   - id: nmdc:dobj-00-isot02
     name: Data file for run accession SRR400868
@@ -175,7 +175,7 @@ data_object_set:
     data_object_type: SRA toolkit-accessible sequence data
     data_category: instrument_data
     insdc_run_identifiers:
-        - insdc.run:SRR400868
+      - insdc.run:SRR400868
     type: nmdc:DataObject
   - id: nmdc:dobj-00-isot03
     name: read1.fastq
@@ -185,7 +185,7 @@ data_object_set:
     md5_checksum: 0123456789abcdef0123456789abcdef
     data_category: instrument_data
     insdc_run_identifiers:
-        - insdc.run:SRR400868
+      - insdc.run:SRR400868
     type: nmdc:DataObject
   - id: nmdc:dobj-00-isot03
     name: read2.fastq
@@ -195,7 +195,7 @@ data_object_set:
     md5_checksum: https://example.com/read2.fastq
     data_category: instrument_data
     insdc_run_identifiers:
-        - insdc.run:SRR400868
+      - insdc.run:SRR400868
     type: nmdc:DataObject
   - id: nmdc:dobj-00-isog05
     name: read1.fastq
@@ -205,7 +205,7 @@ data_object_set:
     data_object_type: Paired interleaved raw sequencing data
     data_category: instrument_data
     insdc_run_identifiers:
-        - insdc.run:SRR400868
+      - insdc.run:SRR400868
     type: nmdc:DataObject
   - id: nmdc:dobj-00-isog06
     name: Data file for run accession SRR400868
@@ -213,7 +213,7 @@ data_object_set:
     data_object_type: SRA toolkit-accessible sequence data
     data_category: instrument_data
     insdc_run_identifiers:
-        - insdc.run:SRR400868
+      - insdc.run:SRR400868
     type: nmdc:DataObject
   - id: nmdc:dobj-00-isog07
     name: read1.fastq
@@ -223,7 +223,7 @@ data_object_set:
     md5_checksum: 0123456789abcdef0123456789abcdef
     data_category: instrument_data
     insdc_run_identifiers:
-        - insdc.run:SRR400868
+      - insdc.run:SRR400868
     type: nmdc:DataObject
   - id: nmdc:dobj-00-isog08
     name: read2.fastq
@@ -233,5 +233,5 @@ data_object_set:
     md5_checksum: https://example.com/read2.fastq
     data_category: instrument_data
     insdc_run_identifiers:
-        - insdc.run:SRR400868
+      - insdc.run:SRR400868
     type: nmdc:DataObject
