@@ -920,8 +920,11 @@ directories that targets read from or write into:</p>
 and the <code>$(DOCDIR)</code> subdirectories; <code>project.Makefile</code> with the <code>$@</code> and
 <code>$(@D)</code> forms, so a target creates its own output directory; and
 <code>makefiles/mixs.Makefile</code> for <code>local/mixs_regen</code>.</p>
-<p>Note that <code>local/</code> is gitignored while <code>local/.gitkeep</code> is tracked. That
-combination is deliberate: ignore the contents, keep the directory.</p>
+<p><code>local/</code> is worth understanding because it looks contradictory. <code>.gitignore</code>
+lists <code>local/</code>, yet <code>local/.gitkeep</code> is tracked, because an ignore rule has no
+effect on a file that is already tracked. The result is what you want: a fresh
+clone gets an empty <code>local/</code> directory, and nothing written into it afterward
+is ever staged. Confirm with <code>git archive origin/main | tar -t | grep '^local/'</code>.</p>
 <h3 id="how-do-i-configure-environment-variables-for-development-scripts">How do I configure environment variables for development scripts?</h3>
 <p>Some scripts need API keys or database credentials. Scripts that need them
 load from <code>local/.env</code> via <code>python-dotenv</code>. To get started:</p>
