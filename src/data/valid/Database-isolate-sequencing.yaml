@@ -198,7 +198,7 @@ data_object_set:
     description: Read 2 sequencing data for nmdc:dgns-11-isot03
     data_object_type: Raw sequencing data read 2
     url: https://example.com/read2.fastq
-    md5_checksum: https://example.com/read2.fastq
+    md5_checksum: 0123456789abcdef0123456789abcdef
     data_category: instrument_data
     insdc_run_identifiers:
       - insdc.run:SRR400868
@@ -236,7 +236,7 @@ data_object_set:
     description: Read 2 sequencing data for nmdc:dgns-11-isog03
     data_object_type: Raw sequencing data read 2
     url: https://example.com/read2.fastq
-    md5_checksum: https://example.com/read2.fastq
+    md5_checksum: 0123456789abcdef0123456789abcdef
     data_category: instrument_data
     insdc_run_identifiers:
       - insdc.run:SRR400868
