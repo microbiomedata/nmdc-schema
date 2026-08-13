@@ -580,7 +580,9 @@
 '.slots.host_subspecf_genlin.in_subset = ["host_information"]'
 '.slots.host_substrate.in_subset = ["host_information"]'
 '.slots.host_symbiont.in_subset = ["host_information"]'
-'.slots.host_taxid.in_subset = ["host_information"]'
+# host_taxid is the one MIxS slot carrying a JGI Isolate v19 structured_alias, so the
+# jgi_isolate subset's own rule (membership is the alias) puts it in both subsets.
+'.slots.host_taxid.in_subset = ["host_information", "jgi_isolate"]'
 '.slots.host_tot_mass.in_subset = ["host_information"]'
 '.slots.host_wet_mass.in_subset = ["host_information"]'
 '.slots.plant_struc.in_subset = ["host_information"]'

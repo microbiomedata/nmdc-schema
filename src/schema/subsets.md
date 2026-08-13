@@ -13,13 +13,19 @@ record what happened to them so the question does not get re-litigated.
 
 | subset | members | purpose |
 | --- | --- | --- |
-| `jgi_isolate` | 9 | slots that map to a field on the JGI Isolate (NA) v19 submission form |
+| `jgi_isolate` | 10 | slots that map to a field on the JGI Isolate (NA) v19 submission form |
 | `badge_topic` | 2 | group subset: its members are the completeness badge subsets |
 | `biogeochemistry` | 44 | completeness badge subset, bar 2 |
 | `host_information` | 37 | completeness badge subset, bar 2 |
 
-A slot may belong to more than one subset. `host_genus`, `host_species` and
-`host_strain` are in both `jgi_isolate` and `host_information`.
+A slot may belong to more than one subset. `host_genus`, `host_species`,
+`host_strain` and `host_taxid` are in both `jgi_isolate` and `host_information`.
+
+`host_taxid` is the only MIxS slot carrying a JGI Isolate v19 structured_alias.
+The `jgi_isolate` rule is that membership is the alias, but the `mixs.yaml` build
+strips every `in_subset` and nothing re-added `jgi_isolate` for it, so it was
+absent from that subset until the badge customization lines started assigning it.
+It is now assigned both.
 
 ## MIxS subsets are stripped during the `mixs.yaml` build
 

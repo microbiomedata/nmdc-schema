@@ -3936,6 +3936,7 @@ slots:
           - Exact JGI form template is access-restricted; source is the public submission overview.
     in_subset:
       - host_information
+      - jgi_isolate
   host_tot_mass:
     annotations:
       Preferred_unit: kilogram, gram
