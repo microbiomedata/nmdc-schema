@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.22.0.post60.dev0+20791e47c
+version: 11.22.0.post61.dev0+64318567c
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -12628,6 +12628,7 @@ slots:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
     in_subset:
     - host_information
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host NCBI Taxonomy ID
