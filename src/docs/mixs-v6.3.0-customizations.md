@@ -303,10 +303,11 @@ poetry run linkml generate linkml --format yaml --materialize-patterns \
 yq eval '.slots.<slot>.pattern' /tmp/materialized.yaml
 ```
 
-### Downstream effects to check before regenerating
+### Downstream effects to check after regenerating, before merging
 
 Regenerating `mixs.yaml` is not a change contained to this repo. A MIxS slot's range, pattern, description, or
-example can reach production data and two user-facing interfaces. Check these before merging, not after releasing.
+example can reach production data and two user-facing interfaces. Regenerate first, then work through the table
+below against the resulting diff. Do this before merging, not after releasing.
 
 | What can be affected | How to check |
 |---|---|
