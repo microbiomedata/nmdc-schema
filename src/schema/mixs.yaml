@@ -1328,6 +1328,8 @@ slots:
           has_raw_value: A/3*B
     slot_uri: MIXS:0000247
     range: TextValue
+    in_subset:
+      - host_association
   annual_precpt:
     annotations:
       Preferred_unit: millimeter
@@ -1700,6 +1702,8 @@ slots:
       - relationship
     slot_uri: MIXS:0000028
     range: BioticRelationshipEnum
+    in_subset:
+      - host_association
   bishomohopanol:
     annotations:
       Preferred_unit: microgram per liter, microgram per gram
@@ -1847,6 +1851,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   carb_dioxide:
     annotations:
       Preferred_unit: micromole per liter, parts per million
@@ -1909,6 +1915,8 @@ slots:
     string_serialization: '{float}:{float}'
     slot_uri: MIXS:0000310
     range: QuantityValue
+    in_subset:
+      - biogeochemistry
   ceil_area:
     annotations:
       Preferred_unit: square meter
@@ -2107,6 +2115,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   chlorophyll:
     annotations:
       Preferred_unit: milligram per cubic meter, microgram per liter
@@ -2126,6 +2136,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   climate_environment:
     description: Treatment involving an exposure to a particular climate; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple climates
     title: climate environment
@@ -3255,6 +3267,8 @@ slots:
     string_serialization: '{boolean};{timestamp}'
     slot_uri: MIXS:0000875
     range: TextValue
+    in_subset:
+      - host_association
   gravity:
     annotations:
       Expected_value: gravity factor value;treatment interval and duration
@@ -3549,6 +3563,8 @@ slots:
           has_raw_value: 10 d
           has_numeric_value: 10
           has_unit: d
+    in_subset:
+      - host_association
   host_body_habitat:
     description: Original body habitat where the sample was obtained from
     title: host body habitat
@@ -3918,6 +3934,8 @@ slots:
         source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
         notes:
           - Exact JGI form template is access-restricted; source is the public submission overview.
+    in_subset:
+      - host_association
   host_tot_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -4289,6 +4307,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   max_occup:
     description: The maximum amount of people allowed in the indoor environment
     title: maximum occupancy
@@ -4530,6 +4550,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   non_min_nutr_regm:
     annotations:
       Preferred_unit: gram, mole per liter, milligram per liter
@@ -4671,6 +4693,8 @@ slots:
       partial_match: true
     annotations:
       storage_units: umol/L|%|mg/L
+    in_subset:
+      - biogeochemistry
   org_count_qpcr_info:
     annotations:
       Expected_value: gene name;FWD:forward primer sequence;REV:reverse primer sequence;initial denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes; total cycles
@@ -5100,6 +5124,8 @@ slots:
       syntax: ^{termLabel} \[{termID}\]$
       interpolated: true
       partial_match: true
+    in_subset:
+      - host_association
   pollutants:
     annotations:
       Expected_value: pollutant name;measurement value
@@ -5156,6 +5182,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   pour_point:
     annotations:
       Preferred_unit: degree Celsius
@@ -6363,6 +6391,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   size_frac:
     annotations:
       Expected_value: filter size value range
@@ -6490,6 +6520,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   soil_horizon:
     description: Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath
     title: soil horizon
@@ -6608,6 +6640,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   source_mat_id:
     annotations:
       Expected_value: 'for cultures of microorganisms: identifiers for two culture collections; for other material a unique arbitrary identifer'
@@ -7083,6 +7117,8 @@ slots:
           has_raw_value: 1 ug/L
           has_numeric_value: 1
           has_unit: ug/L
+    in_subset:
+      - biogeochemistry
   tot_depth_water_col:
     annotations:
       Preferred_unit: meter
@@ -7190,6 +7226,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   tot_nitro_cont_meth:
     description: Reference or method used in determining the total nitrogen
     title: total nitrogen content method

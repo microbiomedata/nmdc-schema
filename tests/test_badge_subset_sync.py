@@ -101,13 +101,18 @@ class TestBadgeSubsetSync(unittest.TestCase):
             )
 
     def test_provenance_badges_have_no_subset(self):
-        subsets = _badge_topic_subsets(self.schema_view)
+        """No subset of that name at all, not merely no badge_topic subset.
+
+        Checking only badge_topic membership would let a same-named subset be
+        declared outside the group, which is the drift this guards against.
+        """
+        all_subsets = set(self.schema_view.all_subsets().keys())
         for badge in PROVENANCE_BADGES:
             self.assertNotIn(
                 badge,
-                subsets,
-                f"'{badge}' is exempted as a provenance badge but also has a "
-                f"badge_topic subset; it is one or the other",
+                all_subsets,
+                f"'{badge}' is exempted as a provenance badge but a subset of "
+                f"that name is declared; it is one or the other",
             )
 
     def test_every_badge_subset_declares_a_qualifying_bar(self):

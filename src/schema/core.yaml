@@ -1577,6 +1577,8 @@ slots:
       subtables and can be reported
     range: TextValue
   zinc:
+    in_subset:
+      - biogeochemistry
     annotations:
       Expected_value: measurement value
       Preferred_unit: mg/kg (ppm)
@@ -1594,6 +1596,8 @@ slots:
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
   manganese:
+    in_subset:
+      - biogeochemistry
     annotations:
       Expected_value: measurement value
       Preferred_unit: mg/kg (ppm)
@@ -1612,6 +1616,8 @@ slots:
     range: QuantityValue
 
   ammonium_nitrogen:
+    in_subset:
+      - biogeochemistry
     aliases:
       - NH4-N
     annotations:
@@ -1632,6 +1638,8 @@ slots:
     range: QuantityValue
 
   nitrate_nitrogen:
+    in_subset:
+      - biogeochemistry
     aliases:
       - NO3-N
     comments:
@@ -1654,6 +1662,8 @@ slots:
     range: QuantityValue
 
   nitrite_nitrogen:
+    in_subset:
+      - biogeochemistry
     aliases:
       - NO2-N
     annotations:

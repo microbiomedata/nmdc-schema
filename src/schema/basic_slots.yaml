@@ -100,11 +100,12 @@ subsets:
 slots:
   badges:
     description: >-
-      Metadata-quality badges awarded to this record. Each value names a badge
-      topic (for example biogeochemistry). A badge is present or absent; there
-      are no levels or tiers. Awarded by a downstream service, not asserted by
-      submitters, and recalculated whenever the record's
-      ProvenanceMetadata.last_updated changes.
+      Metadata-quality badges awarded to this record. Each value names one
+      badge, which is present or absent; there are no levels or tiers. Most
+      badges name a completeness subset, but not all do: expert_curation is
+      awarded from provenance instead. Awarded by a downstream service, not
+      asserted by submitters, and recalculated whenever the record's
+      ProvenanceMetadata.mod_date changes.
     range: MetadataBadgeEnum
     multivalued: true
     see_also:
@@ -460,8 +461,6 @@ slots:
 
   ncbi_taxonomy_name:
     range: string
-    in_subset:
-      - host_association
   ncbi_project_name:
     range: string
 

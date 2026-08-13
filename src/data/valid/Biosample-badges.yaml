@@ -1,15 +1,23 @@
 # A Biosample carrying awarded metadata-quality badges.
 #
-# The badges are asserted by a downstream service, not by a submitter. This
-# record is consistent with the two completeness badges it holds: it populates
-# one slot of the biogeochemistry subset (ph) and one of the host_association
-# subset (host_name), and each subset's badge_minimum_slots is 1.
+# Badges are asserted by a downstream service, not by a submitter.
 #
-# expert_curation is not shown here because it is awarded from
-# ProvenanceMetadata.source_system_of_record rather than from slot completeness.
+# The two badges here are ones a single real sample plausibly earns together: a
+# plant rhizosphere soil sample, characterized both chemically and by its host.
+# Each is justified well above its badge_minimum_slots of 1, so this example
+# stays valid if the squad raises either bar:
+#
+#   biogeochemistry   6 populated (ph, nitrate, ammonium, tot_org_carb,
+#                     tot_nitro_content, diss_org_carb)
+#   host_association  5 populated (host_name, host_taxid, host_genus,
+#                     host_species, host_life_stage)
+#
+# expert_curation is not shown. It is awarded from
+# ProvenanceMetadata.source_system_of_record rather than from slot completeness,
+# so no combination of populated slots earns it.
 id: nmdc:bsm-99-badge01
 type: nmdc:Biosample
-name: biosample_with_badges
+name: rhizosphere_soil_with_badges
 associated_studies:
   - nmdc:sty-00-abc123
 env_broad_scale:
@@ -31,7 +39,38 @@ env_medium:
     type: nmdc:OntologyClass
     id: ENVO:00005792
 ph: 6.8
+nitrate:
+  type: nmdc:QuantityValue
+  has_numeric_value: 12.4
+  has_unit: mg/L
+ammonium:
+  type: nmdc:QuantityValue
+  has_numeric_value: 3.1
+  has_unit: mg/L
+tot_org_carb:
+  type: nmdc:QuantityValue
+  has_numeric_value: 2.7
+  has_unit: "%"
+tot_nitro_content:
+  type: nmdc:QuantityValue
+  has_numeric_value: 0.24
+  has_unit: "%"
+diss_org_carb:
+  type: nmdc:QuantityValue
+  has_numeric_value: 18.5
+  has_unit: mg/L
 host_name: Zea mays
+host_taxid:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: NCBITaxon:4577
+  term:
+    type: nmdc:OntologyClass
+    id: NCBITaxon:4577
+host_genus: Zea
+host_species: mays
+host_life_stage:
+  type: nmdc:TextValue
+  has_raw_value: vegetative
 badges:
   - biogeochemistry
   - host_association
