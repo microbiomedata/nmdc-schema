@@ -77,7 +77,7 @@ data_generation_set:
       version: v2.20.0
     has_output:
       - nmdc:dobj-00-isot03
-      nmdc:dobj-00-isot04
+        nmdc:dobj-00-isot04
     associated_studies:
       - nmdc:sty-00-555xxx
     instrument_used:
@@ -193,7 +193,7 @@ data_object_set:
     insdc_run_identifiers:
       - insdc.run:SRR400868
     type: nmdc:DataObject
-  - id: nmdc:dobj-00-isot03
+  - id: nmdc:dobj-00-isot04
     name: read2.fastq
     description: Read 2 sequencing data for nmdc:dgns-11-isot03
     data_object_type: Raw sequencing data read 2
