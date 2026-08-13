@@ -79,14 +79,14 @@ subsets:
       - https://github.com/microbiomedata/nmdc-schema/issues/3326
     in_subset:
       - badge_topic
-  host_association:
+  host_information:
     description: >-
       Biosample slots describing the host organism a sample was taken from or
       associated with: host taxonomy, anatomy, physiology, life stage, and
       condition. A Biosample populating at least badge_minimum_slots of these is
-      awarded the host_association badge.
+      awarded the host_information badge.
     comments:
-      - Many NMDC biosamples have no host, so an absent host_association badge
+      - Many NMDC biosamples have no host, so an absent host_information badge
         means the slots are unpopulated, not that the sample is deficient. The
         data portal shows only badges a sample has earned.
     annotations:
@@ -275,7 +275,7 @@ slots:
   host_name:
     range: string
     in_subset:
-      - host_association
+      - host_information
 
   community:
     range: string
@@ -744,7 +744,7 @@ slots:
     description: Genus of the host organism that the sample was collected from.
     in_subset:
       - jgi_isolate
-      - host_association
+      - host_information
     structured_aliases:
       - literal_form: Host Genus
         predicate: EXACT_SYNONYM
@@ -766,7 +766,7 @@ slots:
     description: Species of the host organism that the sample was collected from.
     in_subset:
       - jgi_isolate
-      - host_association
+      - host_information
     structured_aliases:
       - literal_form: Host Species
         predicate: EXACT_SYNONYM
@@ -788,7 +788,7 @@ slots:
     description: Strain of the host organism that the sample was collected from.
     in_subset:
       - jgi_isolate
-      - host_association
+      - host_information
     structured_aliases:
       - literal_form: Host Strain
         predicate: EXACT_SYNONYM
@@ -823,10 +823,10 @@ enums:
         description: >-
           Completeness badge. Awarded when the Biosample populates at least
           badge_minimum_slots of the biogeochemistry subset.
-      host_association:
+      host_information:
         description: >-
           Completeness badge. Awarded when the Biosample populates at least
-          badge_minimum_slots of the host_association subset.
+          badge_minimum_slots of the host_information subset.
       expert_curation:
         description: >-
           Provenance badge. Awarded when the Biosample's

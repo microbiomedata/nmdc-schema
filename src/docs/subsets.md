@@ -16,10 +16,10 @@ record what happened to them so the question does not get re-litigated.
 | `jgi_isolate` | 9 | slots that map to a field on the JGI Isolate (NA) v19 submission form |
 | `badge_topic` | 2 | group subset: its members are the completeness badge subsets |
 | `biogeochemistry` | 44 | completeness badge subset, bar 2 |
-| `host_association` | 35 | completeness badge subset, bar 2 |
+| `host_information` | 35 | completeness badge subset, bar 2 |
 
 A slot may belong to more than one subset. `host_genus`, `host_species` and
-`host_strain` are in both `jgi_isolate` and `host_association`.
+`host_strain` are in both `jgi_isolate` and `host_information`.
 
 ## MIxS subsets are stripped during the `mixs.yaml` build
 

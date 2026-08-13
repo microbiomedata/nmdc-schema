@@ -1169,7 +1169,7 @@ slots:
     range: string
     multivalued: true
     in_subset:
-      - host_association
+      - host_information
     examples:
       - value: "offspring;Mussel25"
     annotations:

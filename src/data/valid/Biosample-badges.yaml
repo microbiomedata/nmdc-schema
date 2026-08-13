@@ -2,26 +2,23 @@
 #
 # Badges are asserted by a downstream service, not by a submitter.
 #
-# This record earns biogeochemistry and does not earn host_association, which is
-# the point of the example: both subsets have populated slots, but only one
-# clears its badge_minimum_slots of 2.
+# This is a soil sample characterized chemically. It populates 6 of the 44 slots
+# in the biogeochemistry subset (ph, nitrate, ammonium, tot_org_carb,
+# tot_nitro_content, diss_org_carb), which clears that subset's
+# badge_minimum_slots of 2, so it is awarded the biogeochemistry badge.
 #
-#   biogeochemistry   6 of 44 slots populated (ph, nitrate, ammonium,
-#                     tot_org_carb, tot_nitro_content, diss_org_carb)
-#                     6 >= 2, so the badge is awarded
-#   host_association  1 of 35 slots populated (host_name)
-#                     1 < 2, so no badge, even though the sample has a host
-#
-# A sample with a host but only one host slot filled is the ordinary case in
-# NMDC, and the portal shows only badges a sample has earned, so the absence
-# reads as "not enough host metadata" rather than "no host".
+# It populates no host_information slots and earns no host badge. That is the
+# normal case rather than an omission: environmental samples characterized by
+# their chemistry generally have no host organism, and host-associated samples
+# are generally not the ones carrying a full analyte panel. The two badges are
+# not expected to co-occur, and the portal shows only badges a sample earns.
 #
 # expert_curation cannot be illustrated by slot values at all. It is awarded
 # from ProvenanceMetadata.source_system_of_record, so no combination of
 # populated slots earns it.
 id: nmdc:bsm-99-badge01
 type: nmdc:Biosample
-name: rhizosphere_soil_with_biogeochemistry_badge
+name: soil_with_biogeochemistry_badge
 associated_studies:
   - nmdc:sty-00-abc123
 env_broad_scale:
@@ -63,6 +60,5 @@ diss_org_carb:
   type: nmdc:QuantityValue
   has_numeric_value: 18.5
   has_unit: mg/L
-host_name: Zea mays
 badges:
   - biogeochemistry

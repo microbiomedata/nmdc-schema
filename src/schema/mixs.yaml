@@ -1329,7 +1329,7 @@ slots:
     slot_uri: MIXS:0000247
     range: TextValue
     in_subset:
-      - host_association
+      - host_information
   annual_precpt:
     annotations:
       Preferred_unit: millimeter
@@ -1703,7 +1703,7 @@ slots:
     slot_uri: MIXS:0000028
     range: BioticRelationshipEnum
     in_subset:
-      - host_association
+      - host_information
   bishomohopanol:
     annotations:
       Preferred_unit: microgram per liter, microgram per gram
@@ -3268,7 +3268,7 @@ slots:
     slot_uri: MIXS:0000875
     range: TextValue
     in_subset:
-      - host_association
+      - host_information
   gravity:
     annotations:
       Expected_value: gravity factor value;treatment interval and duration
@@ -3564,7 +3564,7 @@ slots:
           has_numeric_value: 10
           has_unit: d
     in_subset:
-      - host_association
+      - host_information
   host_body_habitat:
     description: Original body habitat where the sample was obtained from
     title: host body habitat
@@ -3576,7 +3576,7 @@ slots:
     slot_uri: MIXS:0000866
     range: TextValue
     in_subset:
-      - host_association
+      - host_information
   host_body_product:
     annotations:
       Expected_value: FMA or UBERON
@@ -3598,7 +3598,7 @@ slots:
             id: UBERON:0000912
             type: nmdc:OntologyClass
     in_subset:
-      - host_association
+      - host_information
   host_body_site:
     annotations:
       Expected_value: FMA or UBERON
@@ -3612,7 +3612,7 @@ slots:
     slot_uri: MIXS:0000867
     range: ControlledTermValue
     in_subset:
-      - host_association
+      - host_information
   host_body_temp:
     annotations:
       Preferred_unit: degree Celsius
@@ -3637,7 +3637,7 @@ slots:
           has_numeric_value: 15
           has_unit: Cel
     in_subset:
-      - host_association
+      - host_information
   host_color:
     description: The color of host
     title: host color
@@ -3647,7 +3647,7 @@ slots:
     slot_uri: MIXS:0000260
     range: TextValue
     in_subset:
-      - host_association
+      - host_information
   host_common_name:
     annotations:
       Preferred_unit: ''
@@ -3659,7 +3659,7 @@ slots:
     slot_uri: MIXS:0000248
     range: TextValue
     in_subset:
-      - host_association
+      - host_information
   host_diet:
     description: Type of diet depending on the host, for animals omnivore, herbivore etc., for humans high-fat, meditteranean etc.; can include multiple diet types
     title: host diet
@@ -3672,7 +3672,7 @@ slots:
     multivalued: true
     inlined_as_list: true
     in_subset:
-      - host_association
+      - host_information
   host_disease_stat:
     annotations:
       Expected_value: disease name or Disease Ontology term
@@ -3686,7 +3686,7 @@ slots:
     string_serialization: '{termLabel} [{termID}]|{text}'
     slot_uri: MIXS:0000031
     in_subset:
-      - host_association
+      - host_information
   host_dry_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -3711,7 +3711,7 @@ slots:
       interpolated: true
       partial_match: true
     in_subset:
-      - host_association
+      - host_information
   host_genotype:
     description: Observed genotype
     title: host genotype
@@ -3721,7 +3721,7 @@ slots:
     slot_uri: MIXS:0000365
     range: TextValue
     in_subset:
-      - host_association
+      - host_information
   host_growth_cond:
     description: Literature reference giving growth conditions of the host
     title: host growth conditions
@@ -3741,7 +3741,7 @@ slots:
       interpolated: true
       partial_match: true
     in_subset:
-      - host_association
+      - host_information
   host_height:
     annotations:
       Preferred_unit: centimeter, millimeter, meter
@@ -3765,7 +3765,7 @@ slots:
           has_numeric_value: 56
           has_unit: cm
     in_subset:
-      - host_association
+      - host_information
   host_last_meal:
     annotations:
       Expected_value: content;duration
@@ -3779,7 +3779,7 @@ slots:
     multivalued: true
     inlined_as_list: true
     in_subset:
-      - host_association
+      - host_information
   host_length:
     annotations:
       Preferred_unit: centimeter, millimeter, meter
@@ -3803,7 +3803,7 @@ slots:
       interpolated: true
       partial_match: true
     in_subset:
-      - host_association
+      - host_information
   host_life_stage:
     annotations:
       Expected_value: stage
@@ -3816,7 +3816,7 @@ slots:
     slot_uri: MIXS:0000251
     range: TextValue
     in_subset:
-      - host_association
+      - host_information
   host_phenotype:
     annotations:
       Expected_value: PATO or HP
@@ -3829,7 +3829,7 @@ slots:
     slot_uri: MIXS:0000874
     range: ControlledTermValue
     in_subset:
-      - host_association
+      - host_information
   host_sex:
     annotations:
       Expected_value: enumeration
@@ -3843,7 +3843,7 @@ slots:
     string_serialization: '[female|hermaphrodite|non-binary|male|transgender|transgender (female to male)|transgender (male to female) |undeclared]'
     slot_uri: MIXS:0000811
     in_subset:
-      - host_association
+      - host_information
   host_shape:
     description: Morphological shape of host
     title: host shape
@@ -3857,7 +3857,7 @@ slots:
     slot_uri: MIXS:0000261
     range: TextValue
     in_subset:
-      - host_association
+      - host_information
   host_subject_id:
     description: A unique identifier by which each subject can be referred to, de-identified
     title: host subject id
@@ -3868,7 +3868,7 @@ slots:
     slot_uri: MIXS:0000861
     range: TextValue
     in_subset:
-      - host_association
+      - host_information
   host_subspecf_genlin:
     annotations:
       Expected_value: Genetic lineage below lowest rank of NCBI taxonomy, which is subspecies, e.g. serovar, biotype, ecotype, variety, cultivar
@@ -3885,7 +3885,7 @@ slots:
     multivalued: true
     range: string
     in_subset:
-      - host_association
+      - host_information
   host_substrate:
     description: The growth substrate of the host
     title: host substrate
@@ -3899,7 +3899,7 @@ slots:
     slot_uri: MIXS:0000252
     range: TextValue
     in_subset:
-      - host_association
+      - host_information
   host_symbiont:
     annotations:
       Expected_value: species name or common name
@@ -3914,7 +3914,7 @@ slots:
     range: string
     multivalued: true
     in_subset:
-      - host_association
+      - host_information
   host_taxid:
     annotations:
       Expected_value: NCBI taxon identifier
@@ -3935,7 +3935,7 @@ slots:
         notes:
           - Exact JGI form template is access-restricted; source is the public submission overview.
     in_subset:
-      - host_association
+      - host_information
   host_tot_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -3960,7 +3960,7 @@ slots:
           has_numeric_value: 2500
           has_unit: g
     in_subset:
-      - host_association
+      - host_information
   host_wet_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -3985,7 +3985,7 @@ slots:
       interpolated: true
       partial_match: true
     in_subset:
-      - host_association
+      - host_information
   humidity:
     description: Amount of water vapour in the air, at the time of sampling
     title: humidity
@@ -5125,7 +5125,7 @@ slots:
       interpolated: true
       partial_match: true
     in_subset:
-      - host_association
+      - host_information
   pollutants:
     annotations:
       Expected_value: pollutant name;measurement value
