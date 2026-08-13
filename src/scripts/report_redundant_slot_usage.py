@@ -53,6 +53,38 @@ IGNORED_METASLOTS = frozenset(
     }
 )
 
+# Boolean metaslots whose unset state means false, so `metaslot: false` in a
+# `slot_usage` block restates what the class already inherits even though the
+# baseline reads as None. `inlined` and `inlined_as_list` are deliberately absent:
+# their effective value depends on whether the range class has an identifier
+# (see `SchemaView.is_inlined`), so unset there does not simply mean false.
+UNSET_MEANS_FALSE_METASLOTS = frozenset(
+    {
+        "abstract",
+        "asymmetric",
+        "children_are_mutually_disjoint",
+        "designates_type",
+        "id_prefixes_are_closed",
+        "identifier",
+        "inherited",
+        "irreflexive",
+        "is_class_field",
+        "is_grouping_slot",
+        "key",
+        "list_elements_ordered",
+        "list_elements_unique",
+        "locally_reflexive",
+        "mixin",
+        "multivalued",
+        "recommended",
+        "reflexive",
+        "required",
+        "shared",
+        "symmetric",
+        "transitive",
+    }
+)
+
 
 class Redundancy(NamedTuple):
     """One `slot_usage` metaslot assertion that matches the value it would inherit."""
@@ -97,6 +129,24 @@ def is_empty(value: Any) -> bool:
     return value is None or value == [] or value == {} or value == ()
 
 
+def baseline_value_and_label(
+    baseline_slot: SlotDefinition, baseline_label: str, metaslot: str
+) -> tuple[Any, str]:
+    """The inherited value to compare against, with unset booleans resolved.
+
+    Most unset metaslots have to be skipped, because LinkML cannot tell "absent
+    from the YAML" from "written as null". The boolean metaslots in
+    `UNSET_MEANS_FALSE_METASLOTS` are the exception: unset means false there, so
+    a class writing `required: false` over an unset baseline restates a value it
+    already has. The label records that the baseline was unset rather than
+    asserted, since the two read very differently to someone deciding what to cut.
+    """
+    value = getattr(baseline_slot, metaslot, None)
+    if value is None and metaslot in UNSET_MEANS_FALSE_METASLOTS:
+        return False, f"{baseline_label}, unset so false"
+    return value, baseline_label
+
+
 def find_redundancies(schema_view: SchemaView) -> List[Redundancy]:
     """Return every `slot_usage` assertion that restates an inherited value."""
     redundancies: List[Redundancy] = []
@@ -125,15 +175,15 @@ def find_redundancies(schema_view: SchemaView) -> List[Redundancy]:
                 if is_empty(usage_value):
                     continue
 
-                baseline_value = getattr(baseline_slot, metaslot, None)
+                baseline_value, label = baseline_value_and_label(
+                    baseline_slot, baseline_label, metaslot
+                )
                 if is_empty(baseline_value):
                     continue
 
                 if usage_value == baseline_value:
                     redundancies.append(
-                        Redundancy(
-                            class_name, slot_name, metaslot, usage_value, baseline_label
-                        )
+                        Redundancy(class_name, slot_name, metaslot, usage_value, label)
                     )
 
     return redundancies

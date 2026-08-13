@@ -1,16 +1,22 @@
 """Tests for src/scripts/report_redundant_slot_usage.py."""
 
+from dataclasses import fields
+
 from linkml_runtime import SchemaView
+from linkml_runtime.linkml_model.meta import SlotDefinition
 
 from src.scripts.report_redundant_slot_usage import (
+    UNSET_MEANS_FALSE_METASLOTS,
     find_redundancies,
     format_tsv,
     summarize_value,
 )
 
-# One global slot, and three classes exercising the cases the report must tell apart:
-# Parent restates the global value, Child restates what Parent already says, and
-# Refiner narrows it. Only the first two are redundant.
+# Two global slots, and classes exercising the cases the report must tell apart.
+# On `status`, which is globally required: Parent restates the global value, Child
+# restates what Parent already says, Refiner narrows the range, and Relaxer drops
+# the requirement. On `note`, which is globally unset: ExplicitFalse writes the
+# false it already inherits. Redundant: Parent, Child, ExplicitFalse.
 SCHEMA_YAML = """
 id: https://example.org/test
 name: test-schema
@@ -26,6 +32,9 @@ slots:
     range: string
     required: true
     description: A status.
+  note:
+    range: string
+    description: A note, with `required` left unset so it defaults to false.
 classes:
   Parent:
     slots:
@@ -43,6 +52,17 @@ classes:
     slot_usage:
       status:
         range: integer
+  Relaxer:
+    is_a: Parent
+    slot_usage:
+      status:
+        required: false
+  ExplicitFalse:
+    slots:
+      - note
+    slot_usage:
+      note:
+        required: false
   Untouched:
     slots:
       - status
@@ -78,6 +98,36 @@ def test_does_not_flag_a_genuine_refinement(tmp_path):
     """Refiner narrows the range, so nothing about it is redundant."""
     findings = find_redundancies(build_view(tmp_path))
     assert [f for f in findings if f.class_name == "Refiner"] == []
+
+
+def test_flags_required_false_over_an_unset_baseline(tmp_path):
+    """ExplicitFalse writes required: false on a slot that is already optional.
+
+    The baseline reads as None because LinkML has nothing to inherit, but unset
+    means false, so the assertion leaves the induced slot unchanged.
+    """
+    findings = find_redundancies(build_view(tmp_path))
+    explicit = [f for f in findings if f.class_name == "ExplicitFalse"]
+    assert len(explicit) == 1
+    assert explicit[0].slot_name == "note"
+    assert explicit[0].metaslot == "required"
+    assert explicit[0].value is False
+    assert explicit[0].baseline == "global slot, unset so false"
+
+
+def test_does_not_flag_dropping_an_inherited_requirement(tmp_path):
+    """Relaxer sets required: false where Parent says true, which is a refinement."""
+    findings = find_redundancies(build_view(tmp_path))
+    assert [f for f in findings if f.class_name == "Relaxer"] == []
+
+
+def test_unset_means_false_metaslots_are_real_booleans():
+    """Guards the hand-maintained list against typos and metamodel renames."""
+    boolean_metaslots = {
+        f.name for f in fields(SlotDefinition) if "bool" in str(f.type)
+    }
+    assert UNSET_MEANS_FALSE_METASLOTS <= boolean_metaslots
+    assert not UNSET_MEANS_FALSE_METASLOTS & {"inlined", "inlined_as_list"}
 
 
 def test_ignores_classes_without_slot_usage(tmp_path):
