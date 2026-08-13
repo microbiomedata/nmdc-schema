@@ -1496,6 +1496,11 @@ have a consistent domain or topic.</p>
 slots, which might be counter-intuitive, until one considers that all of those slots are inherited from <code>Study</code>'s
 parent, <code>NamedThing</code> and that schema v11 forbids re-asserting slots that are inherited from a superclass.</p>
 <h2 id="challenges-with-the-use-of-structured_patterns-in-slot_usages-for-approximating-referential-integrity-etc">Challenges with the use of <code>structured_pattern</code>s in <code>slot_usage</code>s for approximating referential integrity, etc.</h2>
+<blockquote>
+<p>This section records why the v11 schema uses <code>structured_pattern</code>s the way it does. For the current, maintained
+answer to "what is actually validated when a slot mentions another class's id", see
+<a href="../maintaining-the-schema/#validating-a-slot-that-mentions-another-classs-id">Validating a slot that mentions another class's id</a>.</p>
+</blockquote>
 <p>LinkML slot definitions must assert their <code>range</code>, typically as a type (like <code>string</code> or <code>float</code>), an enumeration, or a
 class. If they don't, they inherit the schema's default_range, which is <code>string</code> in the nmdc-schema.</p>
 <p>LinkML is able to validate that a slot, used in a data source (file or database collection), is populated with an entity
@@ -1616,9 +1621,10 @@ to the use of the <code>|</code> character: "{id_nmdc_prefix}:bsm-{id_shoulder}-
   referred thing (asserted in the <code>range</code>), and a string (by way of the pattern). That can never be true, and it breaks
   the functionality of some derived artifacts, such as OWL and RDF.</li>
 </ul>
-<p>The LinkML and NMDC teams are currently working on more sophisticated solutions for interpreting <code>any_of</code> <code>range</code>s,
-checking referential integrity and for making <code>structured_pattern</code> materialization the default in any situation that
-used the schema.</p>
+<p>Referential integrity checking has since been addressed outside the schema, by
+<a href="https://github.com/microbiomedata/refscan">refscan</a> against the production database and by <code>make check-references</code>
+(<code>src/scripts/check_references.py</code>) against schema-derived collections. Interpreting <code>any_of</code> <code>range</code>s and making
+<code>structured_pattern</code> materialization the default remain open on the LinkML side.</p>
 
 
 
