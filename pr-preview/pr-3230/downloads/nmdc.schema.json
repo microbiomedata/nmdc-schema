@@ -11055,7 +11055,7 @@
             "description": "Metadata-quality badges a Biosample can be awarded. Each permissible value names one badge topic and is present or absent; there are no levels or tiers. Badges are awarded in two ways. A completeness badge names a badge subset (a subset whose in_subset includes badge_topic) and is awarded when the record populates at least that subset's badge_minimum_slots slots; a test keeps those permissible values and subsets in sync. A provenance badge is awarded from a recorded fact about where the metadata came from, has no subset, and names its source in its own description.",
             "enum": [
                 "biogeochemistry",
-                "host_association",
+                "host_information",
                 "expert_curation"
             ],
             "title": "MetadataBadgeEnum",
@@ -17651,5 +17651,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.22.0.post55.dev0+c9db31561"
+    "version": "11.22.0.post57.dev0+895abe168"
 }
