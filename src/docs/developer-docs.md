@@ -51,8 +51,11 @@ and the `$(DOCDIR)` subdirectories; `project.Makefile` with the `$@` and
 `$(@D)` forms, so a target creates its own output directory; and
 `makefiles/mixs.Makefile` for `local/mixs_regen`.
 
-Note that `local/` is gitignored while `local/.gitkeep` is tracked. That
-combination is deliberate: ignore the contents, keep the directory.
+`local/` is worth understanding because it looks contradictory. `.gitignore`
+lists `local/`, yet `local/.gitkeep` is tracked, because an ignore rule has no
+effect on a file that is already tracked. The result is what you want: a fresh
+clone gets an empty `local/` directory, and nothing written into it afterward
+is ever staged. Confirm with `git archive origin/main | tar -t | grep '^local/'`.
 
 ### How do I configure environment variables for development scripts?
 
