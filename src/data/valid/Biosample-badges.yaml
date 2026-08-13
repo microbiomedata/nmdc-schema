@@ -1,0 +1,37 @@
+# A Biosample carrying awarded metadata-quality badges.
+#
+# The badges are asserted by a downstream service, not by a submitter. This
+# record is consistent with the two completeness badges it holds: it populates
+# one slot of the biogeochemistry subset (ph) and one of the host_association
+# subset (host_name), and each subset's badge_minimum_slots is 1.
+#
+# expert_curation is not shown here because it is awarded from
+# ProvenanceMetadata.source_system_of_record rather than from slot completeness.
+id: nmdc:bsm-99-badge01
+type: nmdc:Biosample
+name: biosample_with_badges
+associated_studies:
+  - nmdc:sty-00-abc123
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002030
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002030
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002169
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002169
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00005792
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00005792
+ph: 6.8
+host_name: Zea mays
+badges:
+  - biogeochemistry
+  - host_association
