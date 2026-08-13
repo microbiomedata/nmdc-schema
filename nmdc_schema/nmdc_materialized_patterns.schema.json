@@ -255,7 +255,7 @@
         },
         "AttributeValue": {
             "additionalProperties": false,
-            "description": "The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value",
+            "description": "The value of an attribute of any NMDC entity. This object can hold both the unnormalized atomic value and the structured value.",
             "properties": {
                 "has_raw_value": {
                     "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
@@ -601,7 +601,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity) (e.g. 31.1   API)",
+                    "description": "API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity)",
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
                 "arch_struc": {
@@ -721,6 +721,16 @@
                     "description": "Measurement of bacterial carbon production",
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
+                "badges": {
+                    "description": "Metadata-quality badges awarded to this record. Each value names one badge, which is present or absent; there are no levels or tiers. Most badges name a completeness subset, but not all do: expert_curation is awarded from provenance instead. Awarded by a downstream service, not asserted by submitters, and recalculated whenever the record's ProvenanceMetadata.mod_date changes.",
+                    "items": {
+                        "$ref": "#/$defs/MetadataBadgeEnum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "barometric_press": {
                     "anyOf": [
                         {
@@ -742,7 +752,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Name of the basin (e.g. Campos)"
+                    "description": "Name of the basin"
                 },
                 "bathroom_count": {
                     "anyOf": [
@@ -3872,7 +3882,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Source of organic carbon in the culture rooting medium; e.g. sucrose"
+                    "description": "Source of organic carbon in the culture rooting medium"
                 },
                 "root_med_macronutr": {
                     "anyOf": [
@@ -3883,7 +3893,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170 mg/L)"
+                    "description": "Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S)"
                 },
                 "root_med_micronutr": {
                     "anyOf": [
@@ -3894,7 +3904,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo); e.g. H3BO3 (6.2 mg/L)"
+                    "description": "Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo)"
                 },
                 "root_med_ph": {
                     "anyOf": [
@@ -3927,7 +3937,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Specification of the solidifying agent in the culture rooting medium; e.g. agar"
+                    "description": "Specification of the solidifying agent in the culture rooting medium"
                 },
                 "root_med_suppl": {
                     "anyOf": [
@@ -3938,7 +3948,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid (0.5  mg/L)"
+                    "description": "Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics, activated charcoal"
                 },
                 "salinity": {
                     "anyOf": [
@@ -4133,7 +4143,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Temperature at which sample was stored, e.g. -80 degree Celsius",
+                    "description": "Temperature at which sample was stored",
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
                 "samp_subtype": {
@@ -11311,6 +11321,16 @@
             "title": "MetabolomicsAnalysisCategoryEnum",
             "type": "string"
         },
+        "MetadataBadgeEnum": {
+            "description": "Metadata-quality badges a Biosample can be awarded. Each permissible value names one badge topic and is present or absent; there are no levels or tiers. Badges are awarded in two ways. A completeness badge names a badge subset (a subset whose in_subset includes badge_topic) and is awarded when the record populates at least that subset's badge_minimum_slots slots; a test keeps those permissible values and subsets in sync. A provenance badge is awarded from a recorded fact about where the metadata came from, has no subset, and names its source in its own description.",
+            "enum": [
+                "biogeochemistry",
+                "host_information",
+                "expert_curation"
+            ],
+            "title": "MetadataBadgeEnum",
+            "type": "string"
+        },
         "MetagenomeAnnotation": {
             "additionalProperties": false,
             "allOf": [
@@ -13930,7 +13950,9 @@
             "enum": [
                 "metagenome",
                 "metatranscriptome",
-                "amplicon_sequencing_assay"
+                "amplicon_sequencing_assay",
+                "isolate_genome",
+                "isolate_transcriptome"
             ],
             "title": "NucleotideSequencingEnum",
             "type": "string"

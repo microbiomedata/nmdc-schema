@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-16T00:42:07
+# Generation date: 2026-08-13T21:24:04
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -896,8 +896,8 @@ class MetaboliteIdentification(YAMLRoot):
 @dataclass(repr=False)
 class AttributeValue(YAMLRoot):
     """
-    The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and
-    the structured value
+    The value of an attribute of any NMDC entity. This object can hold both the unnormalized atomic value and the
+    structured value.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1629,6 +1629,7 @@ class Biosample(Sample):
     env_local_scale: Union[dict, ControlledIdentifiedTermValue] = None
     env_medium: Union[dict, ControlledIdentifiedTermValue] = None
     name: str = None
+    badges: Optional[Union[Union[str, "MetadataBadgeEnum"], list[Union[str, "MetadataBadgeEnum"]]]] = empty_list()
     biosample_categories: Optional[Union[Union[str, "BiosampleCategoryEnum"], list[Union[str, "BiosampleCategoryEnum"]]]] = empty_list()
     collected_from: Optional[Union[str, FieldResearchSiteId]] = None
     embargoed: Optional[Union[bool, Bool]] = None
@@ -2202,6 +2203,10 @@ class Biosample(Sample):
             self.MissingRequiredField("name")
         if not isinstance(self.name, str):
             self.name = str(self.name)
+
+        if not isinstance(self.badges, list):
+            self.badges = [self.badges] if self.badges is not None else []
+        self.badges = [v if isinstance(v, MetadataBadgeEnum) else MetadataBadgeEnum(v) for v in self.badges]
 
         if not isinstance(self.biosample_categories, list):
             self.biosample_categories = [self.biosample_categories] if self.biosample_categories is not None else []
@@ -7811,6 +7816,30 @@ class UnitEnum(EnumDefinitionImpl):
                 title="inches",
                 description="The Unified Code for Units of Measure (UCUM) representation of inch."))
 
+class MetadataBadgeEnum(EnumDefinitionImpl):
+    """
+    Metadata-quality badges a Biosample can be awarded. Each permissible value names one badge topic and is present or
+    absent; there are no levels or tiers. Badges are awarded in two ways. A completeness badge names a badge subset (a
+    subset whose in_subset includes badge_topic) and is awarded when the record populates at least that subset's
+    badge_minimum_slots slots; a test keeps those permissible values and subsets in sync. A provenance badge is
+    awarded from a recorded fact about where the metadata came from, has no subset, and names its source in its own
+    description.
+    """
+    biogeochemistry = PermissibleValue(
+        text="biogeochemistry",
+        description="""Completeness badge. Awarded when the Biosample populates at least badge_minimum_slots of the biogeochemistry subset.""")
+    host_information = PermissibleValue(
+        text="host_information",
+        description="""Completeness badge. Awarded when the Biosample populates at least badge_minimum_slots of the host_information subset.""")
+    expert_curation = PermissibleValue(
+        text="expert_curation",
+        description="""Provenance badge. Awarded when the Biosample's ProvenanceMetadata.source_system_of_record identifies the NMDC submission portal, rather than an ETL process over an external database. Not a completeness measure, so it has no badge subset and no badge_minimum_slots.""")
+
+    _defn = EnumDefinition(
+        name="MetadataBadgeEnum",
+        description="""Metadata-quality badges a Biosample can be awarded. Each permissible value names one badge topic and is present or absent; there are no levels or tiers. Badges are awarded in two ways. A completeness badge names a badge subset (a subset whose in_subset includes badge_topic) and is awarded when the record populates at least that subset's badge_minimum_slots slots; a test keeps those permissible values and subsets in sync. A provenance badge is awarded from a recorded fact about where the metadata came from, has no subset, and names its source in its own description.""",
+    )
+
 class LibraryStrategyEnum(EnumDefinitionImpl):
     """
     Sequencing strategy used for library preparation
@@ -8460,6 +8489,14 @@ class NucleotideSequencingEnum(EnumDefinitionImpl):
         text="amplicon_sequencing_assay",
         title="Amplicon",
         meaning=OBI["0002767"])
+    isolate_genome = PermissibleValue(
+        text="isolate_genome",
+        title="Isolate Genome",
+        description="Sequencing of a single organism's genome, typically from a pure culture or isolate.")
+    isolate_transcriptome = PermissibleValue(
+        text="isolate_transcriptome",
+        title="Isolate Transcriptome",
+        description="Sequencing of a single organism's transcriptome, typically from a pure culture or isolate.")
 
     _defn = EnumDefinition(
         name="NucleotideSequencingEnum",
@@ -11534,6 +11571,9 @@ slots.has_value_term_id = Slot(uri=NMDC['attribute_values/has_value_term_id'], n
 
 slots.has_datetime_value = Slot(uri=NMDC['attribute_values/has_datetime_value'], name="has_datetime_value", curie=NMDC.curie('attribute_values/has_datetime_value'),
                    model_uri=NMDC.has_datetime_value, domain=None, range=Optional[str])
+
+slots.badges = Slot(uri=NMDC.badges, name="badges", curie=NMDC.curie('badges'),
+                   model_uri=NMDC.badges, domain=None, range=Optional[Union[Union[str, "MetadataBadgeEnum"], list[Union[str, "MetadataBadgeEnum"]]]])
 
 slots.library_strategy = Slot(uri=NMDC.library_strategy, name="library_strategy", curie=NMDC.curie('library_strategy'),
                    model_uri=NMDC.library_strategy, domain=None, range=Optional[Union[str, "LibraryStrategyEnum"]])
