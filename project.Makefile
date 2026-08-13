@@ -398,6 +398,12 @@ assets/usages-report.txt: src/schema/nmdc.yaml
 	$(RUN) python src/scripts/report_usages.py \
 		--schema-file $< > $@
 
+# slot_usage assertions that restate a value the class already inherits.
+# Reported, not auto-removed: some restatements are deliberate.
+assets/redundant-slot-usage.txt: src/schema/nmdc.yaml
+	$(RUN) python src/scripts/report_redundant_slot_usage.py \
+		--schema-file $< > $@
+
 
 assets/element-scrutiny.tsv: nmdc_schema/nmdc_materialized_patterns.yaml
 	$(RUN) python src/scripts/scrutinize_elements.py \
