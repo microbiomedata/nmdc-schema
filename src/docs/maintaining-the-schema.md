@@ -174,17 +174,26 @@ rather than the source schema. In the materialized artifact the syntax above bec
 `slot_usage` blocks carry a `structured_pattern`: it is the only in-schema guard against pointing a slot at an id of
 the wrong class.
 
-**The existence of the referent is not enforced by the schema, on purpose.** A value that is well formed but names a
-record that does not exist will pass validation. That is deliberate rather than an oversight: records are frequently
-created out of order, and workflow runs can precede the schema updates that describe them, so a write-time
-constraint would reject legitimate intermediate states.
+**The existence of the referent is not checked by the schema.** Schema validation is per-document: a value that
+matches the pattern but names a record that does not exist will pass. Nothing in LinkML or the generated JSON Schema
+can see the rest of the database.
 
-Referential integrity is checked after the fact instead:
+That check happens in `nmdc-runtime`, at submission time. `/metadata/json:submit` and the workflow-execution
+endpoints call `validate_json(..., check_inter_document_references=True)`, which uses
+[refscan](https://github.com/microbiomedata/refscan) to scan each incoming document's outgoing references and
+rejects the payload with HTTP 422 if a target is missing. A reference is satisfied if the target already exists in
+the database **or** appears in the same payload, so a submission that creates a study and its biosamples together is
+accepted while a dangling reference is not.
 
-- `make check-references` runs `src/scripts/check_references.py` over the schema's collections and reports references
-  to nonexistent targets.
-- [refscan](https://github.com/microbiomedata/refscan) scans the production database for the same violations, and
-  `refgraph` draws the reference graph it derives.
+The same check also runs outside the API:
+
+- `make check-references` (`src/scripts/check_references.py`) reports dangling references in this repo's own data
+  files.
+- `refscan` run directly scans the production database, and `refgraph` draws the reference graph it derives.
+
+Runtime behavior verified 2026-08-13 against `nmdc_runtime/api/endpoints/metadata.py`,
+`nmdc_runtime/api/endpoints/workflows.py`, and `nmdc_runtime/api/db/mongo.py`. That is a different repository and
+can drift, so re-check those files rather than trusting this paragraph if the answer matters.
 
 Two consequences worth knowing when you write a `slot_usage`. A `structured_pattern` whose `syntax` contains `|` is
 asserting one pattern per alternative, so `{id_nmdc_prefix}:(bsm|procsm)-...` accepts both `Biosample` and
