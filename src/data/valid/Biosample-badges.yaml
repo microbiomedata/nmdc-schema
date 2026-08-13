@@ -50,8 +50,8 @@ ammonium:
   has_unit: mg/L
 tot_org_carb:
   type: nmdc:QuantityValue
-  has_numeric_value: 2.7
-  has_unit: "%"
+  has_numeric_value: 14.2
+  has_unit: mg/L
 tot_nitro_content:
   type: nmdc:QuantityValue
   has_numeric_value: 0.24
