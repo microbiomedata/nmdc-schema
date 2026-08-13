@@ -198,7 +198,11 @@ def format_tsv(redundancies: List[Redundancy]) -> str:
     help="Report format.",
 )
 def main(schema_file: str, output_format: str) -> None:
-    """Report slot_usage assertions that restate the global slot definition."""
+    """Report slot_usage assertions that restate a value the class already inherits.
+
+    The baseline is the parent's induced slot when the class has a parent, and the
+    global slot definition otherwise. Each finding names which one it matched.
+    """
     schema_view = SchemaView(schema_file)
     redundancies = find_redundancies(schema_view)
     renderer = format_tsv if output_format == "tsv" else format_text
