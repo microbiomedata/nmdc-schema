@@ -6,8 +6,8 @@ data_generation_set:
     analyte_category: isolate_transcriptome
     processing_institution: UCSD
     protocol_link:
-      - url: https://example.com/protocol.html
-        type: nmdc:Protocol
+      url: https://example.com/protocol.html
+      type: nmdc:Protocol
     insdc_bioproject_identifiers:
       - bioproject:PRJNA366857
     has_input:
@@ -17,7 +17,8 @@ data_generation_set:
       add_date: '2026-05-07T00:00:00Z'
       mod_date: '2026-05-07T00:00:00Z'
       source_system_of_record: NMDC_Submission_Portal
-      submission_portal_identifier: 1232-abc-2id4c-1238d
+      submission_portal_identifier: 
+        - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
       git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
       version: v2.20.0
     has_output:
@@ -31,8 +32,8 @@ data_generation_set:
     name: Isolate transcriptome sequencing for sample name isolate transcriptome sra accession
     processing_institution: UCSD
     protocol_link:
-      - url: https://example.com/protocol.html
-        type: nmdc:Protocol
+      url: https://example.com/protocol.html
+      type: nmdc:Protocol
     insdc_bioproject_identifiers:
       - bioproject:PRJNA366857
     analyte_category: isolate_transcriptome
@@ -43,7 +44,8 @@ data_generation_set:
       add_date: '2026-05-07T00:00:00Z'
       mod_date: '2026-05-07T00:00:00Z'
       source_system_of_record: NMDC_Submission_Portal
-      submission_portal_identifier: 1232-abc-2id4c-1238d
+      submission_portal_identifier:
+        - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
       git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
       version: v2.20.0
     has_output:
@@ -57,8 +59,8 @@ data_generation_set:
     name: sample name isolate transcriptome non-interleaved
     processing_institution: UCSD
     protocol_link:
-      - url: https://example.com/protocol.html
-        type: nmdc:Protocol
+      url: https://example.com/protocol.html
+      type: nmdc:Protocol
     insdc_bioproject_identifiers:
       - bioproject:PRJNA366857
     analyte_category: isolate_transcriptome
@@ -69,7 +71,8 @@ data_generation_set:
       add_date: '2026-05-07T00:00:00Z'
       mod_date: '2026-05-07T00:00:00Z'
       source_system_of_record: NMDC_Submission_Portal
-      submission_portal_identifier: 1232-abc-2id4c-1238d
+      submission_portal_identifier:
+        - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
       git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
       version: v2.20.0
     has_output:
@@ -84,8 +87,8 @@ data_generation_set:
     name: Isolate genome sequencing for sample name isolate genome interleaved url
     processing_institution: UCSD
     protocol_link:
-      - url: https://example.com/protocol.html
-        type: nmdc:Protocol
+      url: https://example.com/protocol.html
+      type: nmdc:Protocol
     insdc_bioproject_identifiers:
       - bioproject:PRJNA366857
     analyte_category: isolate_genome
@@ -96,7 +99,8 @@ data_generation_set:
       add_date: '2026-05-07T00:00:00Z'
       mod_date: '2026-05-07T00:00:00Z'
       source_system_of_record: NMDC_Submission_Portal
-      submission_portal_identifier: 1232-abc-2id4c-1238d
+      submission_portal_identifier:
+        - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
       git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
       version: v2.20.0
     has_output:
@@ -110,8 +114,8 @@ data_generation_set:
     name: Isolate genome sequencing for sample name isolate genome sra accession
     processing_institution: UCSD
     protocol_link:
-      - url: https://example.com/protocol.html
-        type: nmdc:Protocol
+      url: https://example.com/protocol.html
+      type: nmdc:Protocol
     insdc_bioproject_identifiers:
       - bioproject:PRJNA366857
     analyte_category: isolate_genome
@@ -122,7 +126,8 @@ data_generation_set:
       add_date: '2026-05-07T00:00:00Z'
       mod_date: '2026-05-07T00:00:00Z'
       source_system_of_record: NMDC_Submission_Portal
-      submission_portal_identifier: 1232-abc-2id4c-1238d
+      submission_portal_identifier: 
+        - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
       git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
       version: v2.20.0
     has_output:
@@ -136,8 +141,8 @@ data_generation_set:
     name: Isolate genome sequencing for sample name isolate genome non-interleaved
     processing_institution: UCSD
     protocol_link:
-      - url: https://example.com/protocol.html
-        type: nmdc:Protocol
+      url: https://example.com/protocol.html
+      type: nmdc:Protocol
     insdc_bioproject_identifiers:
       - bioproject:PRJNA366857
     analyte_category: isolate_genome
@@ -148,7 +153,8 @@ data_generation_set:
       add_date: '2026-05-07T00:00:00Z'
       mod_date: '2026-05-07T00:00:00Z'
       source_system_of_record: NMDC_Submission_Portal
-      submission_portal_identifier: 1232-abc-2id4c-1238d
+      submission_portal_identifier:
+        - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
       git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
       version: v2.20.0
     has_output:
