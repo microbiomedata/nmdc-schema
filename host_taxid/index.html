@@ -756,7 +756,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></li>
+<li>
+<p>Range: <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></p>
+</li>
+<li>
+<p>In Subsets: <a href="../HostInformation/">HostInformation</a>, <a href="../JgiIsolate/">JgiIsolate</a></p>
+</li>
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
@@ -809,6 +814,9 @@ description: NCBI taxon id of the host, e.g. 9606
 title: host taxid
 comments:
 - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
+in_subset:
+- host_information
+- jgi_isolate
 from_schema: https://w3id.org/nmdc/nmdc
 structured_aliases:
 - literal_form: Host NCBI Taxonomy ID

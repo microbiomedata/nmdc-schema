@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.22.0.post44.dev0+03e798e92
+version: 11.22.0.post45.dev0+c9dd3e50b
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -373,6 +373,56 @@ subsets:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2803
+  badge_topic:
+    name: badge_topic
+    description: Group of subsets that each define a completeness-based metadata-quality
+      badge topic. A subset is a badge topic if its in_subset includes badge_topic.
+      Its members are the slots a record's completeness is measured against when the
+      badge for that topic is awarded, and its badge_minimum_slots annotation is how
+      many of them the record must populate.
+    comments:
+    - Not every badge is completeness-based, so not every MetadataBadgeEnum permissible
+      value has a subset here. expert_curation is awarded from ProvenanceMetadata.source_system_of_record
+      rather than from slot completeness, so it has no badge_topic subset.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/3228
+  biogeochemistry:
+    name: biogeochemistry
+    annotations:
+      badge_minimum_slots:
+        tag: badge_minimum_slots
+        value: 2
+    description: 'Biosample slots holding measured biogeochemical analytes: nitrogen,
+      phosphorus, carbon, sulfur, iron, core physicochemistry, and dissolved gases.
+      A Biosample populating at least badge_minimum_slots of these is awarded the
+      biogeochemistry badge.'
+    in_subset:
+    - badge_topic
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/3228
+    - https://github.com/microbiomedata/nmdc-schema/issues/3326
+  host_information:
+    name: host_information
+    annotations:
+      badge_minimum_slots:
+        tag: badge_minimum_slots
+        value: 2
+    description: 'Biosample slots describing the host organism a sample was taken
+      from or associated with: host taxonomy, anatomy, physiology, life stage, and
+      condition. A Biosample populating at least badge_minimum_slots of these is awarded
+      the host_information badge.'
+    comments:
+    - Many NMDC biosamples have no host, so an absent host_information badge means
+      the slots are unpopulated, not that the sample is deficient. The data portal
+      shows only badges a sample has earned.
+    in_subset:
+    - badge_topic
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/3228
+    - https://github.com/microbiomedata/nmdc-schema/issues/3326
 types:
   string:
     name: string
@@ -1981,6 +2031,38 @@ enums:
         aliases:
         - inch
         - inches
+  MetadataBadgeEnum:
+    name: MetadataBadgeEnum
+    description: Metadata-quality badges a Biosample can be awarded. Each permissible
+      value names one badge topic and is present or absent; there are no levels or
+      tiers. Badges are awarded in two ways. A completeness badge names a badge subset
+      (a subset whose in_subset includes badge_topic) and is awarded when the record
+      populates at least that subset's badge_minimum_slots slots; a test keeps those
+      permissible values and subsets in sync. A provenance badge is awarded from a
+      recorded fact about where the metadata came from, has no subset, and names its
+      source in its own description.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/3227
+    permissible_values:
+      biogeochemistry:
+        text: biogeochemistry
+        description: Completeness badge. Awarded when the Biosample populates at least
+          badge_minimum_slots of the biogeochemistry subset.
+      host_information:
+        text: host_information
+        description: Completeness badge. Awarded when the Biosample populates at least
+          badge_minimum_slots of the host_information subset.
+      expert_curation:
+        text: expert_curation
+        description: Provenance badge. Awarded when the Biosample's ProvenanceMetadata.source_system_of_record
+          identifies the NMDC submission portal, rather than an ETL process over an
+          external database. Not a completeness measure, so it has no badge subset
+          and no badge_minimum_slots.
+        comments:
+        - source_system_of_record is not yet backpopulated for existing biosamples,
+          so this badge cannot be awarded on historical records until that backfill
+          happens.
   LibraryStrategyEnum:
     name: LibraryStrategyEnum
     description: Sequencing strategy used for library preparation
@@ -6096,6 +6178,8 @@ slots:
       compatibility.
     examples:
     - value: offspring;Mussel25
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000872
     range: string
@@ -6992,6 +7076,18 @@ slots:
       (e.g., "2025-06-12T14:30:00Z").
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
+  badges:
+    name: badges
+    description: 'Metadata-quality badges awarded to this record. Each value names
+      one badge, which is present or absent; there are no levels or tiers. Most badges
+      name a completeness subset, but not all do: expert_curation is awarded from
+      provenance instead. Awarded by a downstream service, not asserted by submitters,
+      and recalculated whenever the record''s ProvenanceMetadata.mod_date changes.'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/3227
+    range: MetadataBadgeEnum
+    multivalued: true
   library_strategy:
     name: library_strategy
     description: Sequencing technique intended for this library
@@ -7177,6 +7273,8 @@ slots:
     range: string
   host_name:
     name: host_name
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   community:
@@ -7694,6 +7792,7 @@ slots:
     - value: Escherichia
     in_subset:
     - jgi_isolate
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host Genus
@@ -7717,6 +7816,7 @@ slots:
     - value: coli
     in_subset:
     - jgi_isolate
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host Species
@@ -7738,6 +7838,7 @@ slots:
     - value: K-12
     in_subset:
     - jgi_isolate
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host Strain
@@ -8716,6 +8817,8 @@ slots:
         has_raw_value: 50 mg/L
         has_numeric_value: 50
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - alkalinity
@@ -8835,6 +8938,8 @@ slots:
         has_raw_value: 1.5 mg/L
         has_numeric_value: 1.5
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000427
     range: QuantityValue
@@ -8877,6 +8982,8 @@ slots:
     - object:
         type: nmdc:TextValue
         has_raw_value: A/3*B
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000247
     range: TextValue
@@ -9411,6 +9518,8 @@ slots:
     title: observed biotic relationship
     examples:
     - value: free living
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - observed
@@ -9618,6 +9727,8 @@ slots:
         has_raw_value: 2774.35 mg/kg
         has_numeric_value: 2774.35
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000432
     range: QuantityValue
@@ -9644,6 +9755,8 @@ slots:
         has_raw_value: 410 [ppm]
         has_numeric_value: 410
         has_unit: '[ppm]'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - carbon
@@ -9703,6 +9816,8 @@ slots:
         has_raw_value: '20.6'
         has_numeric_value: 20.6
         has_unit: '1'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - carbon
@@ -9987,6 +10102,8 @@ slots:
         has_raw_value: 5000 mg/L
         has_numeric_value: 5000
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000429
     range: QuantityValue
@@ -10015,6 +10132,8 @@ slots:
         has_raw_value: 13 ug/L
         has_numeric_value: 13
         has_unit: ug/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000177
     range: QuantityValue
@@ -10078,6 +10197,8 @@ slots:
         has_raw_value: 10 uS/cm
         has_numeric_value: 10
         has_unit: uS/cm
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000692
     range: QuantityValue
@@ -10416,6 +10537,8 @@ slots:
         has_raw_value: 38.18 mg/L
         has_numeric_value: 38.18
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - carbon
@@ -10449,6 +10572,8 @@ slots:
         has_raw_value: 0.404 mg/L
         has_numeric_value: 0.404
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - dissolved
@@ -10476,6 +10601,8 @@ slots:
         has_raw_value: 56.5 umol/L
         has_numeric_value: 56.5
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - dissolved
@@ -10500,6 +10627,8 @@ slots:
         value: mg/L
     description: Concentration of dissolved iron in the sample
     title: dissolved iron
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - dissolved
@@ -10532,6 +10661,8 @@ slots:
         has_raw_value: 5.46 mg/L
         has_numeric_value: 5.46
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - carbon
@@ -10590,6 +10721,8 @@ slots:
         has_raw_value: 175 umol/L
         has_numeric_value: 175
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - dissolved
@@ -11611,6 +11744,8 @@ slots:
     - object:
         type: nmdc:TextValue
         has_raw_value: yes;due date:2018-05-11
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     string_serialization: '{boolean};{timestamp}'
     slot_uri: MIXS:0000875
@@ -12007,6 +12142,8 @@ slots:
         has_raw_value: 10 d
         has_numeric_value: 10
         has_unit: d
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - age
@@ -12024,6 +12161,8 @@ slots:
     name: host_body_habitat
     description: Original body habitat where the sample was obtained from
     title: host body habitat
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - body
@@ -12049,6 +12188,8 @@ slots:
         term:
           id: UBERON:0000912
           type: nmdc:OntologyClass
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - body
@@ -12068,6 +12209,8 @@ slots:
       organ or tissue (tongue, lung etc...). Use terms from the foundational model
       of anatomy ontology (fma) or the Uber-anatomy ontology (UBERON)
     title: host body site
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - body
@@ -12093,6 +12236,8 @@ slots:
         has_raw_value: 15 Cel
         has_numeric_value: 15
         has_unit: Cel
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - body
@@ -12111,6 +12256,8 @@ slots:
     name: host_color
     description: The color of host
     title: host color
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12125,6 +12272,8 @@ slots:
         value: ''
     description: Common name of the host
     title: host common name
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12136,6 +12285,8 @@ slots:
     description: Type of diet depending on the host, for animals omnivore, herbivore
       etc., for humans high-fat, meditteranean etc.; can include multiple diet types
     title: host diet
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - diet
@@ -12156,6 +12307,8 @@ slots:
       should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org,
       non-human host diseases are free text
     title: host disease status
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - disease
@@ -12181,6 +12334,8 @@ slots:
         has_raw_value: 500 g
         has_numeric_value: 500
         has_unit: g
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - dry
@@ -12199,6 +12354,8 @@ slots:
     name: host_genotype
     description: Observed genotype
     title: host genotype
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12213,6 +12370,8 @@ slots:
     - object:
         type: nmdc:TextValue
         has_raw_value: https://academic.oup.com/icesjms/article/68/2/349/617247
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - condition
@@ -12243,6 +12402,8 @@ slots:
         has_raw_value: 56 cm
         has_numeric_value: 56
         has_unit: cm
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - height
@@ -12265,6 +12426,8 @@ slots:
     description: Content of last meal and time since feeding; can include multiple
       values
     title: host last meal
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12290,6 +12453,8 @@ slots:
         has_raw_value: 1 m
         has_numeric_value: 1
         has_unit: m
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12311,6 +12476,8 @@ slots:
         value: stage
     description: Description of life stage of host
     title: host life stage
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12327,6 +12494,8 @@ slots:
     description: Phenotype of human or other host. Use terms from the phenotypic quality
       ontology (pato) or the Human Phenotype Ontology (HP)
     title: host phenotype
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12345,6 +12514,8 @@ slots:
     comments:
     - example of non-binary from Excel sheets does not match any of the enumerated
       values
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12360,6 +12531,8 @@ slots:
     - object:
         type: nmdc:TextValue
         has_raw_value: round
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12370,6 +12543,8 @@ slots:
     name: host_subject_id
     description: A unique identifier by which each subject can be referred to, de-identified
     title: host subject id
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12392,6 +12567,8 @@ slots:
     title: host subspecific genetic lineage
     examples:
     - value: 'serovar:Newport, variety:glabrum, cultivar: Red Delicious'
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12409,6 +12586,8 @@ slots:
     - object:
         type: nmdc:TextValue
         has_raw_value: rock
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12426,6 +12605,8 @@ slots:
       can have its own symbionts. For example, parasites may have hyperparasites (=parasites
       of the parasite)
     title: observed host symbionts
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12445,6 +12626,9 @@ slots:
     title: host taxid
     comments:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
+    in_subset:
+    - host_information
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host NCBI Taxonomy ID
@@ -12476,6 +12660,8 @@ slots:
         has_raw_value: 2500 g
         has_numeric_value: 2500
         has_unit: g
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12507,6 +12693,8 @@ slots:
         has_raw_value: 1500 g
         has_numeric_value: 1500
         has_unit: g
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - host
@@ -12953,6 +13141,8 @@ slots:
         has_raw_value: 578.148 mg/kg
         has_numeric_value: 578.148
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000431
     range: QuantityValue
@@ -13081,6 +13271,8 @@ slots:
         has_raw_value: 1800 [ppb]
         has_numeric_value: 1800
         has_unit: '[ppb]'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000101
     range: QuantityValue
@@ -13221,6 +13413,8 @@ slots:
         has_raw_value: 65 umol/L
         has_numeric_value: 65
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - nitrate
@@ -13249,6 +13443,8 @@ slots:
         has_raw_value: 0.5 umol/L
         has_numeric_value: 0.5
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - nitrite
@@ -13280,6 +13476,8 @@ slots:
         has_raw_value: 0.18 %
         has_numeric_value: 0.18
         has_unit: '%'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - nitrogen
@@ -13472,6 +13670,8 @@ slots:
         has_raw_value: 1.36 %
         has_numeric_value: 1.36
         has_unit: '%'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - carbon
@@ -13892,6 +14092,8 @@ slots:
     title: pH
     examples:
     - value: '7.2'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - ph
@@ -13968,6 +14170,8 @@ slots:
         has_raw_value: 0.7 umol/L
         has_numeric_value: 0.7
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - phosphate
@@ -14051,6 +14255,8 @@ slots:
     - object:
         type: nmdc:TextValue
         has_raw_value: xylem sap [PO:0025539]
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - plant
@@ -14064,6 +14270,8 @@ slots:
     title: plant sex
     examples:
     - value: Hermaphroditic
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - plant
@@ -14083,6 +14291,8 @@ slots:
         term:
           id: PO:0005679
           type: nmdc:OntologyClass
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - plant
@@ -14170,6 +14380,8 @@ slots:
         has_raw_value: 463 mg/L
         has_numeric_value: 463
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000430
     range: QuantityValue
@@ -14486,6 +14698,8 @@ slots:
         has_raw_value: 300 mV
         has_numeric_value: 300
         has_unit: mV
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000182
     range: QuantityValue
@@ -15057,6 +15271,8 @@ slots:
         has_raw_value: 70 mg/L
         has_numeric_value: 70
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - salinity
@@ -15864,6 +16080,8 @@ slots:
         has_raw_value: 0.05 umol/L
         has_numeric_value: 0.05
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000184
     range: QuantityValue
@@ -16050,6 +16268,8 @@ slots:
         has_raw_value: 10.5 mg/L
         has_numeric_value: 10.5
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0000428
     range: QuantityValue
@@ -16212,6 +16432,8 @@ slots:
         has_raw_value: 0.1 mg/L
         has_numeric_value: 0.1
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - phosphorus
@@ -16425,6 +16647,8 @@ slots:
         has_raw_value: 16.61 mg/L
         has_numeric_value: 16.61
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - sulfate
@@ -16476,6 +16700,8 @@ slots:
         has_raw_value: 2 umol/L
         has_numeric_value: 2
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - sulfide
@@ -16868,6 +17094,8 @@ slots:
         has_raw_value: 1 ug/L
         has_numeric_value: 1
         has_unit: ug/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - carbon
@@ -16985,6 +17213,8 @@ slots:
         value: mg/L|mg/kg
     description: Concentration of total iron in the sample
     title: total iron
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - total
@@ -17018,6 +17248,8 @@ slots:
         has_raw_value: 0.598 %
         has_numeric_value: 0.598
         has_unit: '%'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - concentration
@@ -17064,6 +17296,8 @@ slots:
         has_raw_value: 5 mg/L
         has_numeric_value: 5
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - content
@@ -17113,6 +17347,8 @@ slots:
         has_raw_value: 5 mg/L
         has_numeric_value: 5
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - carbon
@@ -17175,6 +17411,8 @@ slots:
         has_raw_value: 0.03 mg/L
         has_numeric_value: 0.03
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - phosphorus
@@ -17221,6 +17459,8 @@ slots:
         value: '[ppm]|mg/L'
     description: Concentration of total sulfur in the sample
     title: total sulfur
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     keywords:
     - sulfur
@@ -18333,6 +18573,8 @@ slots:
         has_raw_value: 2.5 mg/kg
         has_numeric_value: 2.5
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
@@ -18360,6 +18602,8 @@ slots:
         has_raw_value: 24.7 mg/kg
         has_numeric_value: 24.7
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
@@ -18387,6 +18631,8 @@ slots:
         has_raw_value: 2.3 mg/kg
         has_numeric_value: 2.3
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
@@ -18418,6 +18664,8 @@ slots:
         has_raw_value: 0.29 mg/kg
         has_numeric_value: 0.29
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
@@ -18447,6 +18695,8 @@ slots:
         has_raw_value: 1.2 mg/kg
         has_numeric_value: 1.2
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
@@ -19435,6 +19685,8 @@ slots:
       and method are required
     examples:
     - value: 0.05 ug C/g dry soil
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000650
@@ -19451,6 +19703,8 @@ slots:
       and method are required
     examples:
     - value: 0.05 ug N/g dry soil
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000650
@@ -21651,6 +21905,7 @@ classes:
     is_a: Sample
     slots:
     - associated_studies
+    - badges
     - biosample_categories
     - collected_from
     - embargoed

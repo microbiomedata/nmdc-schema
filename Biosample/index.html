@@ -794,6 +794,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../badges/">badges</a></td>
+<td>* <br/> <a href="../MetadataBadgeEnum/">MetadataBadgeEnum</a></td>
+<td>Metadata-quality badges awarded to this record. Each value names one badge,...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../biosample_categories/">biosample_categories</a></td>
 <td>* <br/> <a href="../BiosampleCategoryEnum/">BiosampleCategoryEnum</a></td>
 <td></td>
@@ -4161,6 +4167,7 @@ exact_mappings:
 is_a: Sample
 slots:
 - associated_studies
+- badges
 - biosample_categories
 - collected_from
 - embargoed
@@ -5592,6 +5599,22 @@ attributes:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
       interpolated: true
+  badges:
+    name: badges
+    description: 'Metadata-quality badges awarded to this record. Each value names
+      one badge, which is present or absent; there are no levels or tiers. Most badges
+      name a completeness subset, but not all do: expert_curation is awarded from
+      provenance instead. Awarded by a downstream service, not asserted by submitters,
+      and recalculated whenever the record''s ProvenanceMetadata.mod_date changes.'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/3227
+    rank: 1000
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: MetadataBadgeEnum
+    multivalued: true
   biosample_categories:
     name: biosample_categories
     title: Categories the biosample belongs to
@@ -5645,6 +5668,8 @@ attributes:
       should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org,
       non-human host diseases are free text
     title: host disease status
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -6143,6 +6168,8 @@ attributes:
         has_raw_value: 50 mg/L
         has_numeric_value: 50
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -6274,6 +6301,8 @@ attributes:
         has_raw_value: 1.5 mg/L
         has_numeric_value: 1.5
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000427
@@ -6320,6 +6349,8 @@ attributes:
     - object:
         type: nmdc:TextValue
         has_raw_value: A/3*B
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000247
@@ -6938,6 +6969,8 @@ attributes:
     title: observed biotic relationship
     examples:
     - value: free living
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -7179,6 +7212,8 @@ attributes:
         has_raw_value: 2774.35 mg/kg
         has_numeric_value: 2774.35
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000432
@@ -7207,6 +7242,8 @@ attributes:
         has_raw_value: 410 [ppm]
         has_numeric_value: 410
         has_unit: '[ppm]'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -7270,6 +7307,8 @@ attributes:
         has_raw_value: '20.6'
         has_numeric_value: 20.6
         has_unit: '1'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -7587,6 +7626,8 @@ attributes:
         has_raw_value: 5000 mg/L
         has_numeric_value: 5000
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000429
@@ -7617,6 +7658,8 @@ attributes:
         has_raw_value: 13 ug/L
         has_numeric_value: 13
         has_unit: ug/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000177
@@ -7695,6 +7738,8 @@ attributes:
         has_raw_value: 10 uS/cm
         has_numeric_value: 10
         has_unit: uS/cm
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000692
@@ -8095,6 +8140,8 @@ attributes:
         has_raw_value: 38.18 mg/L
         has_numeric_value: 38.18
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -8130,6 +8177,8 @@ attributes:
         has_raw_value: 0.404 mg/L
         has_numeric_value: 0.404
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -8159,6 +8208,8 @@ attributes:
         has_raw_value: 56.5 umol/L
         has_numeric_value: 56.5
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -8185,6 +8236,8 @@ attributes:
         value: mg/L
     description: Concentration of dissolved iron in the sample
     title: dissolved iron
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -8219,6 +8272,8 @@ attributes:
         has_raw_value: 5.46 mg/L
         has_numeric_value: 5.46
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -8281,6 +8336,8 @@ attributes:
         has_raw_value: 175 umol/L
         has_numeric_value: 175
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -9575,6 +9632,8 @@ attributes:
     - object:
         type: nmdc:TextValue
         has_raw_value: yes;due date:2018-05-11
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     string_serialization: '{boolean};{timestamp}'
@@ -10076,6 +10135,8 @@ attributes:
         has_raw_value: 10 d
         has_numeric_value: 10
         has_unit: d
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10095,6 +10156,8 @@ attributes:
     name: host_body_habitat
     description: Original body habitat where the sample was obtained from
     title: host body habitat
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10124,6 +10187,8 @@ attributes:
         term:
           id: UBERON:0000912
           type: nmdc:OntologyClass
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10147,6 +10212,8 @@ attributes:
       organ or tissue (tongue, lung etc...). Use terms from the foundational model
       of anatomy ontology (fma) or the Uber-anatomy ontology (UBERON)
     title: host body site
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10176,6 +10243,8 @@ attributes:
         has_raw_value: 15 Cel
         has_numeric_value: 15
         has_unit: Cel
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10196,6 +10265,8 @@ attributes:
     name: host_color
     description: The color of host
     title: host color
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10214,6 +10285,8 @@ attributes:
         value: ''
     description: Common name of the host
     title: host common name
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10229,6 +10302,8 @@ attributes:
     description: Type of diet depending on the host, for animals omnivore, herbivore
       etc., for humans high-fat, meditteranean etc.; can include multiple diet types
     title: host diet
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10260,6 +10335,8 @@ attributes:
         has_raw_value: 500 g
         has_numeric_value: 500
         has_unit: g
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10290,6 +10367,8 @@ attributes:
       compatibility.
     examples:
     - value: offspring;Mussel25
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000872
@@ -10302,6 +10381,8 @@ attributes:
     name: host_genotype
     description: Observed genotype
     title: host genotype
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10327,6 +10408,7 @@ attributes:
     - value: Escherichia
     in_subset:
     - jgi_isolate
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host Genus
@@ -10348,6 +10430,8 @@ attributes:
     - object:
         type: nmdc:TextValue
         has_raw_value: https://academic.oup.com/icesjms/article/68/2/349/617247
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10381,6 +10465,8 @@ attributes:
         has_raw_value: 56 cm
         has_numeric_value: 56
         has_unit: cm
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10405,6 +10491,8 @@ attributes:
     description: Content of last meal and time since feeding; can include multiple
       values
     title: host last meal
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10436,6 +10524,8 @@ attributes:
         has_raw_value: 1 m
         has_numeric_value: 1
         has_unit: m
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10459,6 +10549,8 @@ attributes:
         value: stage
     description: Description of life stage of host
     title: host life stage
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10479,6 +10571,8 @@ attributes:
     description: Phenotype of human or other host. Use terms from the phenotypic quality
       ontology (pato) or the Human Phenotype Ontology (HP)
     title: host phenotype
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10501,6 +10595,8 @@ attributes:
     comments:
     - example of non-binary from Excel sheets does not match any of the enumerated
       values
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10521,6 +10617,8 @@ attributes:
     - object:
         type: nmdc:TextValue
         has_raw_value: round
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10546,6 +10644,7 @@ attributes:
     - value: coli
     in_subset:
     - jgi_isolate
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host Species
@@ -10572,6 +10671,7 @@ attributes:
     - value: K-12
     in_subset:
     - jgi_isolate
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host Strain
@@ -10589,6 +10689,8 @@ attributes:
     name: host_subject_id
     description: A unique identifier by which each subject can be referred to, de-identified
     title: host subject id
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10615,6 +10717,8 @@ attributes:
     title: host subspecific genetic lineage
     examples:
     - value: 'serovar:Newport, variety:glabrum, cultivar: Red Delicious'
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10636,6 +10740,8 @@ attributes:
     - object:
         type: nmdc:TextValue
         has_raw_value: rock
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10657,6 +10763,8 @@ attributes:
       can have its own symbionts. For example, parasites may have hyperparasites (=parasites
       of the parasite)
     title: observed host symbionts
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10680,6 +10788,9 @@ attributes:
     title: host taxid
     comments:
     - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
+    in_subset:
+    - host_information
+    - jgi_isolate
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
     - literal_form: Host NCBI Taxonomy ID
@@ -10716,6 +10827,8 @@ attributes:
         has_raw_value: 2500 g
         has_numeric_value: 2500
         has_unit: g
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -10749,6 +10862,8 @@ attributes:
         has_raw_value: 1500 g
         has_numeric_value: 1500
         has_unit: g
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -11277,6 +11392,8 @@ attributes:
         has_raw_value: 578.148 mg/kg
         has_numeric_value: 578.148
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000431
@@ -11424,6 +11541,8 @@ attributes:
         has_raw_value: 1800 [ppb]
         has_numeric_value: 1800
         has_unit: '[ppb]'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000101
@@ -11588,6 +11707,8 @@ attributes:
         has_raw_value: 65 umol/L
         has_numeric_value: 65
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -11618,6 +11739,8 @@ attributes:
         has_raw_value: 0.5 umol/L
         has_numeric_value: 0.5
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -11651,6 +11774,8 @@ attributes:
         has_raw_value: 0.18 %
         has_numeric_value: 0.18
         has_unit: '%'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -11833,6 +11958,8 @@ attributes:
         has_raw_value: 1.36 %
         has_numeric_value: 1.36
         has_unit: '%'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -12269,6 +12396,8 @@ attributes:
     title: pH
     examples:
     - value: '7.2'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -12371,6 +12500,8 @@ attributes:
         has_raw_value: 0.7 umol/L
         has_numeric_value: 0.7
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -12467,6 +12598,8 @@ attributes:
     - object:
         type: nmdc:TextValue
         has_raw_value: xylem sap [PO:0025539]
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -12484,6 +12617,8 @@ attributes:
     title: plant sex
     examples:
     - value: Hermaphroditic
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -12507,6 +12642,8 @@ attributes:
         term:
           id: PO:0005679
           type: nmdc:OntologyClass
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -12587,6 +12724,8 @@ attributes:
         has_raw_value: 463 mg/L
         has_numeric_value: 463
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000430
@@ -12962,6 +13101,8 @@ attributes:
         has_raw_value: 300 mV
         has_numeric_value: 300
         has_unit: mV
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000182
@@ -13645,6 +13786,8 @@ attributes:
         has_raw_value: 70 mg/L
         has_numeric_value: 70
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -14620,6 +14763,8 @@ attributes:
         has_raw_value: 0.05 umol/L
         has_numeric_value: 0.05
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000184
@@ -14838,6 +14983,8 @@ attributes:
         has_raw_value: 10.5 mg/L
         has_numeric_value: 10.5
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0000428
@@ -15057,6 +15204,8 @@ attributes:
         has_raw_value: 0.1 mg/L
         has_numeric_value: 0.1
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -15317,6 +15466,8 @@ attributes:
         has_raw_value: 16.61 mg/L
         has_numeric_value: 16.61
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -15372,6 +15523,8 @@ attributes:
         has_raw_value: 2 umol/L
         has_numeric_value: 2
         has_unit: umol/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -15792,6 +15945,8 @@ attributes:
         has_raw_value: 1 ug/L
         has_numeric_value: 1
         has_unit: ug/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -15917,6 +16072,8 @@ attributes:
         value: mg/L|mg/kg
     description: Concentration of total iron in the sample
     title: total iron
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -15952,6 +16109,8 @@ attributes:
         has_raw_value: 0.598 %
         has_numeric_value: 0.598
         has_unit: '%'
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -16004,6 +16163,8 @@ attributes:
         has_raw_value: 5 mg/L
         has_numeric_value: 5
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -16061,6 +16222,8 @@ attributes:
         has_raw_value: 5 mg/L
         has_numeric_value: 5
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -16127,6 +16290,8 @@ attributes:
         has_raw_value: 0.03 mg/L
         has_numeric_value: 0.03
         has_unit: mg/L
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -16177,6 +16342,8 @@ attributes:
         value: '[ppm]|mg/L'
     description: Concentration of total sulfur in the sample
     title: total sulfur
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     keywords:
@@ -17361,6 +17528,8 @@ attributes:
     range: string
   host_name:
     name: host_name
+    in_subset:
+    - host_information
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: Biosample
@@ -17676,6 +17845,8 @@ attributes:
       and method are required
     examples:
     - value: 0.05 ug C/g dry soil
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000650
@@ -17696,6 +17867,8 @@ attributes:
       and method are required
     examples:
     - value: 0.05 ug N/g dry soil
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000650
@@ -18018,6 +18191,8 @@ attributes:
         has_raw_value: 2.5 mg/kg
         has_numeric_value: 2.5
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
@@ -18049,6 +18224,8 @@ attributes:
         has_raw_value: 24.7 mg/kg
         has_numeric_value: 24.7
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
@@ -18080,6 +18257,8 @@ attributes:
         has_raw_value: 2.3 mg/kg
         has_numeric_value: 2.3
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
@@ -18115,6 +18294,8 @@ attributes:
         has_raw_value: 0.29 mg/kg
         has_numeric_value: 0.29
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
@@ -18148,6 +18329,8 @@ attributes:
         has_raw_value: 1.2 mg/kg
         has_numeric_value: 1.2
         has_unit: mg/kg
+    in_subset:
+    - biogeochemistry
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0

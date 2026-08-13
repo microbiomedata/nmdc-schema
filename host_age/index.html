@@ -751,7 +751,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
+<li>
+<p>Range: <a href="../QuantityValue/">QuantityValue</a></p>
+</li>
+<li>
+<p>In Subsets: <a href="../HostInformation/">HostInformation</a></p>
+</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
@@ -814,6 +819,8 @@ examples:
     has_raw_value: 10 d
     has_numeric_value: 10
     has_unit: d
+in_subset:
+- host_information
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 keywords:

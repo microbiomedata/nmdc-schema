@@ -25,7 +25,15 @@
          <lastmod>2026-08-13</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/BadgeTopic/</loc>
+         <lastmod>2026-08-13</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/BinQualityEnum/</loc>
+         <lastmod>2026-08-13</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/Biogeochemistry/</loc>
          <lastmod>2026-08-13</lastmod>
     </url>
     <url>
@@ -413,6 +421,10 @@
          <lastmod>2026-08-13</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/HostInformation/</loc>
+         <lastmod>2026-08-13</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/HostSexEnum/</loc>
          <lastmod>2026-08-13</lastmod>
     </url>
@@ -570,6 +582,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysisCategoryEnum/</loc>
+         <lastmod>2026-08-13</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/MetadataBadgeEnum/</loc>
          <lastmod>2026-08-13</lastmod>
     </url>
     <url>
@@ -1258,6 +1274,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/bacteria_carb_prod/</loc>
+         <lastmod>2026-08-13</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/badges/</loc>
          <lastmod>2026-08-13</lastmod>
     </url>
     <url>
