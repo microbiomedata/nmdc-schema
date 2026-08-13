@@ -659,6 +659,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-do-i-make-sure-a-directory-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I make sure a directory exists?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-do-i-configure-environment-variables-for-development-scripts" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -808,6 +819,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-do-i-make-sure-a-directory-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I make sure a directory exists?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-do-i-configure-environment-variables-for-development-scripts" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -879,6 +901,30 @@ config, CLI/YAML flag mapping, portal submission guidance, and upcoming LinkML c
 counterpart in <code>src/docs/</code> will trigger a warning during <code>make clean</code>, but
 untracked files will be silently removed. Place all hand-written documentation
 in <code>src/docs/</code> instead; the build copies it into <code>docs/</code> automatically.</p>
+<h3 id="how-do-i-make-sure-a-directory-exists">How do I make sure a directory exists?</h3>
+<p>Which mechanism to use depends on whether the directory has to be there
+<em>before</em> the build runs.</p>
+<p><strong><code>.gitkeep</code> for directories that must be present in a fresh clone.</strong> Git does
+not track empty directories, so a tracked <code>.gitkeep</code> is what makes them
+survive a clone. The repo has 8, marking the example-data and asset
+directories that targets read from or write into:</p>
+<ul>
+<li><code>src/data/valid/</code>, <code>src/data/invalid/</code></li>
+<li><code>src/data/problem/</code> and its <code>valid/</code> and <code>invalid/</code> subdirectories</li>
+<li><code>assets/jsons-for-mongodb/</code>, <code>assets/misc/</code></li>
+<li><code>local/</code></li>
+</ul>
+<p><strong><code>mkdir -p</code> in the recipe for anything the build creates.</strong> Do not add a
+<code>.gitkeep</code> for a build output directory. The Makefiles do this in 11 places:
+<code>Makefile</code> before writing <code>$(DEST)/prefixmap</code>, <code>$(DEST)/pydantic</code>, <code>local</code>,
+and the <code>$(DOCDIR)</code> subdirectories; <code>project.Makefile</code> with the <code>$@</code> and
+<code>$(@D)</code> forms, so a target creates its own output directory; and
+<code>makefiles/mixs.Makefile</code> for <code>local/mixs_regen</code>.</p>
+<p><code>local/</code> is worth understanding because it looks contradictory. <code>.gitignore</code>
+lists <code>local/</code>, yet <code>local/.gitkeep</code> is tracked, because an ignore rule has no
+effect on a file that is already tracked. The result is what you want: a fresh
+clone gets an empty <code>local/</code> directory, and nothing written into it afterward
+is ever staged. Confirm with <code>git archive origin/main | tar -t | grep '^local/'</code>.</p>
 <h3 id="how-do-i-configure-environment-variables-for-development-scripts">How do I configure environment variables for development scripts?</h3>
 <p>Some scripts need API keys or database credentials. Scripts that need them
 load from <code>local/.env</code> via <code>python-dotenv</code>. To get started:</p>

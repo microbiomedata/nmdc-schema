@@ -991,6 +991,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#downstream-effects-to-check-after-regenerating-before-merging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Downstream effects to check after regenerating, before merging
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1702,6 +1713,43 @@ poetry run linkml generate linkml --format yaml --materialize-patterns \
   --no-materialize-attributes --output /tmp/materialized.yaml src/schema/nmdc.yaml
 yq eval '.slots.&lt;slot&gt;.pattern' /tmp/materialized.yaml
 </code></pre>
+<h3 id="downstream-effects-to-check-after-regenerating-before-merging">Downstream effects to check after regenerating, before merging</h3>
+<p>Regenerating <code>mixs.yaml</code> is not a change contained to this repo. A MIxS slot's range, pattern, description, or
+example can reach production data and two user-facing interfaces. Regenerate first, then work through the table
+below against the resulting diff. Do this before merging, not after releasing.</p>
+<table>
+<thead>
+<tr>
+<th>What can be affected</th>
+<th>How to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Production MongoDB records</td>
+<td>A range change (for example TextValue to string) can leave existing documents invalid. Query <code>nmdc.biosample_set</code> for the slot before merging, and write a migrator if any documents would stop conforming</td>
+</tr>
+<tr>
+<td>Submission Portal / DataHarmonizer</td>
+<td><code>submission-schema</code> builds on this schema. Three slots are already hardcoded in <code>src/schema/nmdc.yaml</code> purely to keep it resolving. Slot renames and range changes are the risky ones</td>
+</tr>
+<tr>
+<td>Data Portal display</td>
+<td>Slot descriptions and examples are what a submitter reads. Diff them and tell the Data Portal owners what changed</td>
+</tr>
+<tr>
+<td>Pinned consumers</td>
+<td><code>nmdc-runtime</code> and <code>nmdc-server</code> pin a schema version, so they pick a change up on their own schedule. <code>MAINTAINERS.md</code> covers the post-release notification</td>
+</tr>
+</tbody>
+</table>
+<p>Two habits make this cheap. Read <code>git diff src/schema/mixs.yaml</code> rather than trusting a green build, since the
+build passing says nothing about whether a description changed under a submitter. And when a change alters what
+existing data must look like, say so in the PR body, because that is what tells a reviewer a migrator is needed.</p>
+<p>One question here has been open since 2022 and is still not answered in writing: whether description changes
+propagate to the Data Portal automatically or need coordination with the portal team. Until someone confirms it,
+assume coordination is required. See
+<a href="https://github.com/microbiomedata/nmdc-schema/issues/299">consequences of changing MIxS import</a>.</p>
 <h2 id="future-work">Future Work</h2>
 <h3 id="textvalue-to-enum-migrations">TextValue to Enum Migrations</h3>
 <p>The following slots have TextValue data that should eventually be migrated to enum values:</p>
