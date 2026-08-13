@@ -507,6 +507,88 @@
 'del(.slots.add_recov_method.pattern)'
 'del(.subsets.[].name)'
 
+# Badge-topic subset membership (https://github.com/microbiomedata/nmdc-schema/issues/3228).
+# Upstream MIxS subset memberships are stripped above with 'del(.slots.[].in_subset)',
+# so these NMDC badge-subset assignments must come AFTER that strip or they would be
+# removed. The subsets themselves are declared in src/schema/basic_slots.yaml; here we
+# assert per-slot membership at the slot level, agnostic to which class uses the slot.
+# Only MIxS-sourced slots are assigned here. Badge slots defined in NMDC's own modules
+# carry in_subset in their own definitions, since this file only rewrites mixs.yaml.
+# Membership follows the metadata quality squad's Badge Subsets Scratchpad supersets.
+# --- biogeochemistry badge subset ---
+'.slots.alkalinity.in_subset = ["biogeochemistry"]'
+'.slots.ammonium.in_subset = ["biogeochemistry"]'
+'.slots.calcium.in_subset = ["biogeochemistry"]'
+'.slots.carb_dioxide.in_subset = ["biogeochemistry"]'
+'.slots.carb_nitro_ratio.in_subset = ["biogeochemistry"]'
+'.slots.chloride.in_subset = ["biogeochemistry"]'
+'.slots.chlorophyll.in_subset = ["biogeochemistry"]'
+'.slots.conduc.in_subset = ["biogeochemistry"]'
+'.slots.diss_inorg_carb.in_subset = ["biogeochemistry"]'
+'.slots.diss_inorg_nitro.in_subset = ["biogeochemistry"]'
+'.slots.diss_inorg_phosp.in_subset = ["biogeochemistry"]'
+'.slots.diss_iron.in_subset = ["biogeochemistry"]'
+'.slots.diss_org_carb.in_subset = ["biogeochemistry"]'
+'.slots.diss_oxygen.in_subset = ["biogeochemistry"]'
+'.slots.magnesium.in_subset = ["biogeochemistry"]'
+'.slots.methane.in_subset = ["biogeochemistry"]'
+'.slots.nitrate.in_subset = ["biogeochemistry"]'
+'.slots.nitrite.in_subset = ["biogeochemistry"]'
+'.slots.nitro.in_subset = ["biogeochemistry"]'
+'.slots.org_carb.in_subset = ["biogeochemistry"]'
+'.slots.ph.in_subset = ["biogeochemistry"]'
+'.slots.phosphate.in_subset = ["biogeochemistry"]'
+'.slots.potassium.in_subset = ["biogeochemistry"]'
+'.slots.redox_potential.in_subset = ["biogeochemistry"]'
+'.slots.salinity.in_subset = ["biogeochemistry"]'
+'.slots.silicate.in_subset = ["biogeochemistry"]'
+'.slots.sodium.in_subset = ["biogeochemistry"]'
+'.slots.soluble_react_phosp.in_subset = ["biogeochemistry"]'
+'.slots.sulfate.in_subset = ["biogeochemistry"]'
+'.slots.sulfide.in_subset = ["biogeochemistry"]'
+'.slots.tot_carb.in_subset = ["biogeochemistry"]'
+'.slots.tot_iron.in_subset = ["biogeochemistry"]'
+'.slots.tot_nitro.in_subset = ["biogeochemistry"]'
+'.slots.tot_nitro_content.in_subset = ["biogeochemistry"]'
+'.slots.tot_org_carb.in_subset = ["biogeochemistry"]'
+'.slots.tot_phosp.in_subset = ["biogeochemistry"]'
+'.slots.tot_sulfur.in_subset = ["biogeochemistry"]'
+# --- host_information badge subset ---
+'.slots.ances_data.in_subset = ["host_information"]'
+'.slots.biotic_relationship.in_subset = ["host_information"]'
+'.slots.gravidity.in_subset = ["host_information"]'
+'.slots.host_age.in_subset = ["host_information"]'
+'.slots.host_body_habitat.in_subset = ["host_information"]'
+'.slots.host_body_product.in_subset = ["host_information"]'
+'.slots.host_body_site.in_subset = ["host_information"]'
+'.slots.host_body_temp.in_subset = ["host_information"]'
+'.slots.host_color.in_subset = ["host_information"]'
+'.slots.host_common_name.in_subset = ["host_information"]'
+'.slots.host_diet.in_subset = ["host_information"]'
+'.slots.host_disease_stat.in_subset = ["host_information"]'
+'.slots.host_dry_mass.in_subset = ["host_information"]'
+'.slots.host_genotype.in_subset = ["host_information"]'
+'.slots.host_growth_cond.in_subset = ["host_information"]'
+'.slots.host_height.in_subset = ["host_information"]'
+'.slots.host_last_meal.in_subset = ["host_information"]'
+'.slots.host_length.in_subset = ["host_information"]'
+'.slots.host_life_stage.in_subset = ["host_information"]'
+'.slots.host_phenotype.in_subset = ["host_information"]'
+'.slots.host_sex.in_subset = ["host_information"]'
+'.slots.host_shape.in_subset = ["host_information"]'
+'.slots.host_subject_id.in_subset = ["host_information"]'
+'.slots.host_subspecf_genlin.in_subset = ["host_information"]'
+'.slots.host_substrate.in_subset = ["host_information"]'
+'.slots.host_symbiont.in_subset = ["host_information"]'
+# host_taxid is the one MIxS slot carrying a JGI Isolate v19 structured_alias, so the
+# jgi_isolate subset's own rule (membership is the alias) puts it in both subsets.
+'.slots.host_taxid.in_subset = ["host_information", "jgi_isolate"]'
+'.slots.host_tot_mass.in_subset = ["host_information"]'
+'.slots.host_wet_mass.in_subset = ["host_information"]'
+'.slots.plant_struc.in_subset = ["host_information"]'
+'.slots.plant_sex.in_subset = ["host_information"]'
+'.slots.plant_product.in_subset = ["host_information"]'
+
 '.id |= "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"'
 
 # update host_taxid and samp_taxon_id. may want to flatten to a string or URIORCURIE eventually

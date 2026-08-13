@@ -1220,6 +1220,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   alkalinity_method:
     description: Method used for alkalinity measurement
     title: alkalinity method
@@ -1301,6 +1303,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   amount_light:
     annotations:
       Preferred_unit: lux, lumens per square meter
@@ -1324,6 +1328,8 @@ slots:
           has_raw_value: A/3*B
     slot_uri: MIXS:0000247
     range: TextValue
+    in_subset:
+      - host_information
   annual_precpt:
     annotations:
       Preferred_unit: millimeter
@@ -1696,6 +1702,8 @@ slots:
       - relationship
     slot_uri: MIXS:0000028
     range: BioticRelationshipEnum
+    in_subset:
+      - host_information
   bishomohopanol:
     annotations:
       Preferred_unit: microgram per liter, microgram per gram
@@ -1843,6 +1851,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   carb_dioxide:
     annotations:
       Preferred_unit: micromole per liter, parts per million
@@ -1863,6 +1873,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   carb_monoxide:
     annotations:
       Preferred_unit: micromole per liter, parts per million
@@ -1903,6 +1915,8 @@ slots:
     string_serialization: '{float}:{float}'
     slot_uri: MIXS:0000310
     range: QuantityValue
+    in_subset:
+      - biogeochemistry
   ceil_area:
     annotations:
       Preferred_unit: square meter
@@ -2101,6 +2115,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   chlorophyll:
     annotations:
       Preferred_unit: milligram per cubic meter, microgram per liter
@@ -2120,6 +2136,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   climate_environment:
     description: Treatment involving an exposure to a particular climate; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple climates
     title: climate environment
@@ -2163,6 +2181,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   cool_syst_id:
     description: The cooling system identifier
     title: cooling system identifier
@@ -2401,6 +2421,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   diss_inorg_nitro:
     annotations:
       Preferred_unit: microgram per liter, micromole per liter
@@ -2424,6 +2446,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   diss_inorg_phosp:
     description: Concentration of dissolved inorganic phosphorus in the sample
     title: dissolved inorganic phosphorus
@@ -2445,6 +2469,8 @@ slots:
       partial_match: true
     annotations:
       storage_units: '[ppm]|mg/L|ug/L|umol/L'
+    in_subset:
+      - biogeochemistry
   diss_iron:
     annotations:
       Preferred_unit: milligram per liter
@@ -2460,6 +2486,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   diss_org_carb:
     annotations:
       Preferred_unit: micromole per liter, milligram per liter
@@ -2483,6 +2511,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   diss_org_nitro:
     description: Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2
     title: dissolved organic nitrogen
@@ -2525,6 +2555,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   diss_oxygen_fluid:
     annotations:
       Preferred_unit: micromole per kilogram, milligram per liter
@@ -3235,6 +3267,8 @@ slots:
     string_serialization: '{boolean};{timestamp}'
     slot_uri: MIXS:0000875
     range: TextValue
+    in_subset:
+      - host_information
   gravity:
     annotations:
       Expected_value: gravity factor value;treatment interval and duration
@@ -3529,6 +3563,8 @@ slots:
           has_raw_value: 10 d
           has_numeric_value: 10
           has_unit: d
+    in_subset:
+      - host_information
   host_body_habitat:
     description: Original body habitat where the sample was obtained from
     title: host body habitat
@@ -3539,6 +3575,8 @@ slots:
       - host.
     slot_uri: MIXS:0000866
     range: TextValue
+    in_subset:
+      - host_information
   host_body_product:
     annotations:
       Expected_value: FMA or UBERON
@@ -3559,6 +3597,8 @@ slots:
           term:
             id: UBERON:0000912
             type: nmdc:OntologyClass
+    in_subset:
+      - host_information
   host_body_site:
     annotations:
       Expected_value: FMA or UBERON
@@ -3571,6 +3611,8 @@ slots:
     string_serialization: '{termLabel} [{termID}]'
     slot_uri: MIXS:0000867
     range: ControlledTermValue
+    in_subset:
+      - host_information
   host_body_temp:
     annotations:
       Preferred_unit: degree Celsius
@@ -3594,6 +3636,8 @@ slots:
           has_raw_value: 15 Cel
           has_numeric_value: 15
           has_unit: Cel
+    in_subset:
+      - host_information
   host_color:
     description: The color of host
     title: host color
@@ -3602,6 +3646,8 @@ slots:
       - host.
     slot_uri: MIXS:0000260
     range: TextValue
+    in_subset:
+      - host_information
   host_common_name:
     annotations:
       Preferred_unit: ''
@@ -3612,6 +3658,8 @@ slots:
       - host.
     slot_uri: MIXS:0000248
     range: TextValue
+    in_subset:
+      - host_information
   host_diet:
     description: Type of diet depending on the host, for animals omnivore, herbivore etc., for humans high-fat, meditteranean etc.; can include multiple diet types
     title: host diet
@@ -3623,6 +3671,8 @@ slots:
     range: TextValue
     multivalued: true
     inlined_as_list: true
+    in_subset:
+      - host_information
   host_disease_stat:
     annotations:
       Expected_value: disease name or Disease Ontology term
@@ -3635,6 +3685,8 @@ slots:
       - status
     string_serialization: '{termLabel} [{termID}]|{text}'
     slot_uri: MIXS:0000031
+    in_subset:
+      - host_information
   host_dry_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -3658,6 +3710,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - host_information
   host_genotype:
     description: Observed genotype
     title: host genotype
@@ -3666,6 +3720,8 @@ slots:
       - host.
     slot_uri: MIXS:0000365
     range: TextValue
+    in_subset:
+      - host_information
   host_growth_cond:
     description: Literature reference giving growth conditions of the host
     title: host growth conditions
@@ -3684,6 +3740,8 @@ slots:
       syntax: ^({PMID}|{DOI}|{URL}|{text})$
       interpolated: true
       partial_match: true
+    in_subset:
+      - host_information
   host_height:
     annotations:
       Preferred_unit: centimeter, millimeter, meter
@@ -3706,6 +3764,8 @@ slots:
           has_raw_value: 56 cm
           has_numeric_value: 56
           has_unit: cm
+    in_subset:
+      - host_information
   host_last_meal:
     annotations:
       Expected_value: content;duration
@@ -3718,6 +3778,8 @@ slots:
     slot_uri: MIXS:0000870
     multivalued: true
     inlined_as_list: true
+    in_subset:
+      - host_information
   host_length:
     annotations:
       Preferred_unit: centimeter, millimeter, meter
@@ -3740,6 +3802,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - host_information
   host_life_stage:
     annotations:
       Expected_value: stage
@@ -3751,6 +3815,8 @@ slots:
       - life
     slot_uri: MIXS:0000251
     range: TextValue
+    in_subset:
+      - host_information
   host_phenotype:
     annotations:
       Expected_value: PATO or HP
@@ -3762,6 +3828,8 @@ slots:
     string_serialization: '{termLabel} [{termID}]'
     slot_uri: MIXS:0000874
     range: ControlledTermValue
+    in_subset:
+      - host_information
   host_sex:
     annotations:
       Expected_value: enumeration
@@ -3774,6 +3842,8 @@ slots:
       - host.
     string_serialization: '[female|hermaphrodite|non-binary|male|transgender|transgender (female to male)|transgender (male to female) |undeclared]'
     slot_uri: MIXS:0000811
+    in_subset:
+      - host_information
   host_shape:
     description: Morphological shape of host
     title: host shape
@@ -3786,6 +3856,8 @@ slots:
       - host.
     slot_uri: MIXS:0000261
     range: TextValue
+    in_subset:
+      - host_information
   host_subject_id:
     description: A unique identifier by which each subject can be referred to, de-identified
     title: host subject id
@@ -3795,6 +3867,8 @@ slots:
       - identifier
     slot_uri: MIXS:0000861
     range: TextValue
+    in_subset:
+      - host_information
   host_subspecf_genlin:
     annotations:
       Expected_value: Genetic lineage below lowest rank of NCBI taxonomy, which is subspecies, e.g. serovar, biotype, ecotype, variety, cultivar
@@ -3810,6 +3884,8 @@ slots:
     slot_uri: MIXS:0001318
     multivalued: true
     range: string
+    in_subset:
+      - host_information
   host_substrate:
     description: The growth substrate of the host
     title: host substrate
@@ -3822,6 +3898,8 @@ slots:
       - host.
     slot_uri: MIXS:0000252
     range: TextValue
+    in_subset:
+      - host_information
   host_symbiont:
     annotations:
       Expected_value: species name or common name
@@ -3835,6 +3913,8 @@ slots:
     slot_uri: MIXS:0001298
     range: string
     multivalued: true
+    in_subset:
+      - host_information
   host_taxid:
     annotations:
       Expected_value: NCBI taxon identifier
@@ -3854,6 +3934,9 @@ slots:
         source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
         notes:
           - Exact JGI form template is access-restricted; source is the public submission overview.
+    in_subset:
+      - host_information
+      - jgi_isolate
   host_tot_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -3877,6 +3960,8 @@ slots:
           has_raw_value: 2500 g
           has_numeric_value: 2500
           has_unit: g
+    in_subset:
+      - host_information
   host_wet_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -3900,6 +3985,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - host_information
   humidity:
     description: Amount of water vapour in the air, at the time of sampling
     title: humidity
@@ -4221,6 +4308,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   max_occup:
     description: The maximum amount of people allowed in the indoor environment
     title: maximum occupancy
@@ -4313,6 +4402,8 @@ slots:
           has_raw_value: 1800 [ppb]
           has_numeric_value: 1800
           has_unit: '[ppb]'
+    in_subset:
+      - biogeochemistry
   micro_biomass_meth:
     description: Reference or method used in determining microbial biomass
     title: microbial biomass method
@@ -4415,6 +4506,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   nitrite:
     annotations:
       Preferred_unit: micromole per liter, milligram per liter, parts per million
@@ -4435,6 +4528,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   nitro:
     annotations:
       Preferred_unit: micromole per liter
@@ -4456,6 +4551,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   non_min_nutr_regm:
     annotations:
       Preferred_unit: gram, mole per liter, milligram per liter
@@ -4597,6 +4694,8 @@ slots:
       partial_match: true
     annotations:
       storage_units: umol/L|%|mg/L
+    in_subset:
+      - biogeochemistry
   org_count_qpcr_info:
     annotations:
       Expected_value: gene name;FWD:forward primer sequence;REV:reverse primer sequence;initial denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes; total cycles
@@ -4879,6 +4978,8 @@ slots:
       - ph
     slot_uri: MIXS:0001001
     range: float
+    in_subset:
+      - biogeochemistry
   ph_meth:
     description: Reference or method used in determining pH
     title: pH method
@@ -4940,6 +5041,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   phosplipid_fatt_acid:
     annotations:
       Expected_value: phospholipid fatty acid name;measurement value
@@ -4995,6 +5098,8 @@ slots:
       - product
     slot_uri: MIXS:0001058
     range: TextValue
+    in_subset:
+      - host_information
   plant_sex:
     description: Sex of the reproductive parts on the whole plant, e.g. pistillate, staminate, monoecieous, hermaphrodite
     title: plant sex
@@ -5004,6 +5109,8 @@ slots:
       - plant
     slot_uri: MIXS:0001059
     range: PlantSexEnum
+    in_subset:
+      - host_information
   plant_struc:
     description: Name of plant structure the sample was obtained from; for Plant Ontology (PO) terms, see http://obofoundry.org/ontology/po.html, e.g. petiole epidermis (PO:0000051). If an individual flower is sampled, the sex of it can be recorded here.
     title: plant structure
@@ -5022,6 +5129,8 @@ slots:
       syntax: ^{termLabel} \[{termID}\]$
       interpolated: true
       partial_match: true
+    in_subset:
+      - host_information
   pollutants:
     annotations:
       Expected_value: pollutant name;measurement value
@@ -5078,6 +5187,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   pour_point:
     annotations:
       Preferred_unit: degree Celsius
@@ -5294,6 +5405,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   rel_air_humidity:
     annotations:
       Preferred_unit: percentage
@@ -5707,6 +5820,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   salt_regm:
     annotations:
       Preferred_unit: gram, microgram, mole per liter, gram per liter
@@ -6281,6 +6396,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   size_frac:
     annotations:
       Expected_value: filter size value range
@@ -6408,6 +6525,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   soil_horizon:
     description: Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath
     title: soil horizon
@@ -6526,6 +6645,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   source_mat_id:
     annotations:
       Expected_value: 'for cultures of microorganisms: identifiers for two culture collections; for other material a unique arbitrary identifer'
@@ -6673,6 +6794,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   sulfate_fw:
     annotations:
       Preferred_unit: milligram per liter
@@ -6708,6 +6831,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   surf_air_cont:
     description: Contaminant identified on surface
     title: surface-air contaminant
@@ -6997,6 +7122,8 @@ slots:
           has_raw_value: 1 ug/L
           has_numeric_value: 1
           has_unit: ug/L
+    in_subset:
+      - biogeochemistry
   tot_depth_water_col:
     annotations:
       Preferred_unit: meter
@@ -7079,6 +7206,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   tot_nitro:
     annotations:
       Preferred_unit: microgram per liter, micromole per liter, milligram per liter
@@ -7102,6 +7231,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   tot_nitro_cont_meth:
     description: Reference or method used in determining the total nitrogen
     title: total nitrogen content method
@@ -7139,6 +7270,8 @@ slots:
       partial_match: true
     annotations:
       storage_units: mg/L|ug/L|umol/L|%
+    in_subset:
+      - biogeochemistry
   tot_org_c_meth:
     description: Reference or method used in determining total organic carbon
     title: total organic carbon method
@@ -7177,6 +7310,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   tot_part_carb:
     annotations:
       Preferred_unit: microgram per liter, micromole per liter
@@ -7221,6 +7356,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   tot_phosphate:
     annotations:
       Preferred_unit: microgram per liter, micromole per liter
@@ -7252,6 +7389,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
   train_line:
     description: The subway line name
     title: train line

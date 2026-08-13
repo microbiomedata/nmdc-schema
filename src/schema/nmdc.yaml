@@ -1168,6 +1168,8 @@ slots:
       - "Legacy MIxS slot removed from GSC MIxS v6.2.2. Retained for submission-schema compatibility."
     range: string
     multivalued: true
+    in_subset:
+      - host_information
     examples:
       - value: "offspring;Mussel25"
     annotations:

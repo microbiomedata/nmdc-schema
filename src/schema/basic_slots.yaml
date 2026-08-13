@@ -51,8 +51,65 @@ subsets:
         to the public JGI submission overview. To keep this subset exhaustive,
         add in_subset jgi_isolate wherever a JGI Isolate v19 structured_alias is
         added, at the same scope the alias lives (global slot or class slot_usage).
+  badge_topic:
+    description: >-
+      Group of subsets that each define a completeness-based metadata-quality
+      badge topic. A subset is a badge topic if its in_subset includes
+      badge_topic. Its members are the slots a record's completeness is measured
+      against when the badge for that topic is awarded, and its
+      badge_minimum_slots annotation is how many of them the record must
+      populate.
+    comments:
+      - Not every badge is completeness-based, so not every MetadataBadgeEnum
+        permissible value has a subset here. expert_curation is awarded from
+        ProvenanceMetadata.source_system_of_record rather than from slot
+        completeness, so it has no badge_topic subset.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3228
+  biogeochemistry:
+    description: >-
+      Biosample slots holding measured biogeochemical analytes: nitrogen,
+      phosphorus, carbon, sulfur, iron, core physicochemistry, and dissolved
+      gases. A Biosample populating at least badge_minimum_slots of these is
+      awarded the biogeochemistry badge.
+    annotations:
+      badge_minimum_slots: 2
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3228
+      - https://github.com/microbiomedata/nmdc-schema/issues/3326
+    in_subset:
+      - badge_topic
+  host_information:
+    description: >-
+      Biosample slots describing the host organism a sample was taken from or
+      associated with: host taxonomy, anatomy, physiology, life stage, and
+      condition. A Biosample populating at least badge_minimum_slots of these is
+      awarded the host_information badge.
+    comments:
+      - Many NMDC biosamples have no host, so an absent host_information badge
+        means the slots are unpopulated, not that the sample is deficient. The
+        data portal shows only badges a sample has earned.
+    annotations:
+      badge_minimum_slots: 2
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3228
+      - https://github.com/microbiomedata/nmdc-schema/issues/3326
+    in_subset:
+      - badge_topic
 
 slots:
+  badges:
+    description: >-
+      Metadata-quality badges awarded to this record. Each value names one
+      badge, which is present or absent; there are no levels or tiers. Most
+      badges name a completeness subset, but not all do: expert_curation is
+      awarded from provenance instead. Awarded by a downstream service, not
+      asserted by submitters, and recalculated whenever the record's
+      ProvenanceMetadata.mod_date changes.
+    range: MetadataBadgeEnum
+    multivalued: true
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3227
   library_strategy:
     description: Sequencing technique intended for this library
     range: LibraryStrategyEnum
@@ -217,6 +274,8 @@ slots:
 
   host_name:
     range: string
+    in_subset:
+      - host_information
 
   community:
     range: string
@@ -685,6 +744,7 @@ slots:
     description: Genus of the host organism that the sample was collected from.
     in_subset:
       - jgi_isolate
+      - host_information
     structured_aliases:
       - literal_form: Host Genus
         predicate: EXACT_SYNONYM
@@ -706,6 +766,7 @@ slots:
     description: Species of the host organism that the sample was collected from.
     in_subset:
       - jgi_isolate
+      - host_information
     structured_aliases:
       - literal_form: Host Species
         predicate: EXACT_SYNONYM
@@ -727,6 +788,7 @@ slots:
     description: Strain of the host organism that the sample was collected from.
     in_subset:
       - jgi_isolate
+      - host_information
     structured_aliases:
       - literal_form: Host Strain
         predicate: EXACT_SYNONYM
@@ -744,6 +806,38 @@ slots:
 
 enums:
 
+  MetadataBadgeEnum:
+    description: >-
+      Metadata-quality badges a Biosample can be awarded. Each permissible value
+      names one badge topic and is present or absent; there are no levels or
+      tiers. Badges are awarded in two ways. A completeness badge names a badge
+      subset (a subset whose in_subset includes badge_topic) and is awarded when
+      the record populates at least that subset's badge_minimum_slots slots; a
+      test keeps those permissible values and subsets in sync. A provenance badge
+      is awarded from a recorded fact about where the metadata came from, has no
+      subset, and names its source in its own description.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3227
+    permissible_values:
+      biogeochemistry:
+        description: >-
+          Completeness badge. Awarded when the Biosample populates at least
+          badge_minimum_slots of the biogeochemistry subset.
+      host_information:
+        description: >-
+          Completeness badge. Awarded when the Biosample populates at least
+          badge_minimum_slots of the host_information subset.
+      expert_curation:
+        description: >-
+          Provenance badge. Awarded when the Biosample's
+          ProvenanceMetadata.source_system_of_record identifies the NMDC
+          submission portal, rather than an ETL process over an external
+          database. Not a completeness measure, so it has no badge subset and no
+          badge_minimum_slots.
+        comments:
+          - source_system_of_record is not yet backpopulated for existing
+            biosamples, so this badge cannot be awarded on historical records
+            until that backfill happens.
   LibraryStrategyEnum:
     description: Sequencing strategy used for library preparation
     comments:

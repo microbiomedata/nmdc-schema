@@ -1,0 +1,64 @@
+# A Biosample carrying one awarded metadata-quality badge.
+#
+# Badges are asserted by a downstream service, not by a submitter.
+#
+# This is a soil sample characterized chemically. It populates 6 of the 44 slots
+# in the biogeochemistry subset (ph, nitrate, ammonium, tot_org_carb,
+# tot_nitro_content, diss_org_carb), which clears that subset's
+# badge_minimum_slots of 2, so it is awarded the biogeochemistry badge.
+#
+# It populates no host_information slots and earns no host badge. That is the
+# normal case rather than an omission: environmental samples characterized by
+# their chemistry generally have no host organism, and host-associated samples
+# are generally not the ones carrying a full analyte panel. The two badges are
+# not expected to co-occur, and the portal shows only badges a sample earns.
+#
+# expert_curation cannot be illustrated by slot values at all. It is awarded
+# from ProvenanceMetadata.source_system_of_record, so no combination of
+# populated slots earns it.
+id: nmdc:bsm-99-badge01
+type: nmdc:Biosample
+name: soil_with_biogeochemistry_badge
+associated_studies:
+  - nmdc:sty-00-abc123
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002030
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002030
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00002169
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00002169
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  has_raw_value: ENVO:00005792
+  term:
+    type: nmdc:OntologyClass
+    id: ENVO:00005792
+ph: 6.8
+nitrate:
+  type: nmdc:QuantityValue
+  has_numeric_value: 12.4
+  has_unit: mg/L
+ammonium:
+  type: nmdc:QuantityValue
+  has_numeric_value: 3.1
+  has_unit: mg/L
+tot_org_carb:
+  type: nmdc:QuantityValue
+  has_numeric_value: 14.2
+  has_unit: mg/L
+tot_nitro_content:
+  type: nmdc:QuantityValue
+  has_numeric_value: 0.24
+  has_unit: "%"
+diss_org_carb:
+  type: nmdc:QuantityValue
+  has_numeric_value: 18.5
+  has_unit: mg/L
+badges:
+  - biogeochemistry

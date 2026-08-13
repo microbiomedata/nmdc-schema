@@ -11,6 +11,7 @@ from tests import SCHEMA_FILE
 # Note: Expected_value and Preferred_unit use GSC MIxS v6.2.2 capitalization
 ALLOWED_ANNOTATION_KEYS = {
     "Expected_value",
+    "badge_minimum_slots",
     "file_name_pattern",
     "units_alignment_excuse",
     "occurrence",

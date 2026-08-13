@@ -159,6 +159,8 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
   microbial_biomass_c:
+    in_subset:
+      - biogeochemistry
     description: The part of the organic matter in the soil that constitutes living
       microorganisms smaller than 5-10 micrometer.
     title: microbial biomass carbon
@@ -173,6 +175,8 @@ slots:
     string_serialization: '{float} {unit}'
     slot_group: MIxS Inspired
   microbial_biomass_n:
+    in_subset:
+      - biogeochemistry
     description: The part of the organic matter in the soil that constitutes living
       microorganisms smaller than 5-10 micrometer.
     title: microbial biomass nitrogen
