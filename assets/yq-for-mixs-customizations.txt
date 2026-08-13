@@ -584,6 +584,8 @@
 '.slots.host_tot_mass.in_subset = ["host_information"]'
 '.slots.host_wet_mass.in_subset = ["host_information"]'
 '.slots.plant_struc.in_subset = ["host_information"]'
+'.slots.plant_sex.in_subset = ["host_information"]'
+'.slots.plant_product.in_subset = ["host_information"]'
 
 '.id |= "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"'
 

@@ -5097,6 +5097,8 @@ slots:
       - product
     slot_uri: MIXS:0001058
     range: TextValue
+    in_subset:
+      - host_information
   plant_sex:
     description: Sex of the reproductive parts on the whole plant, e.g. pistillate, staminate, monoecieous, hermaphrodite
     title: plant sex
@@ -5106,6 +5108,8 @@ slots:
       - plant
     slot_uri: MIXS:0001059
     range: PlantSexEnum
+    in_subset:
+      - host_information
   plant_struc:
     description: Name of plant structure the sample was obtained from; for Plant Ontology (PO) terms, see http://obofoundry.org/ontology/po.html, e.g. petiole epidermis (PO:0000051). If an individual flower is sampled, the sex of it can be recorded here.
     title: plant structure

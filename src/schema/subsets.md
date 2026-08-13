@@ -16,7 +16,7 @@ record what happened to them so the question does not get re-litigated.
 | `jgi_isolate` | 9 | slots that map to a field on the JGI Isolate (NA) v19 submission form |
 | `badge_topic` | 2 | group subset: its members are the completeness badge subsets |
 | `biogeochemistry` | 44 | completeness badge subset, bar 2 |
-| `host_information` | 35 | completeness badge subset, bar 2 |
+| `host_information` | 37 | completeness badge subset, bar 2 |
 
 A slot may belong to more than one subset. `host_genus`, `host_species` and
 `host_strain` are in both `jgi_isolate` and `host_information`.
@@ -65,12 +65,35 @@ of the `badge_topic` group subset (`in_subset: [badge_topic]`), which is how
 tooling and the sync test tell badge subsets apart from `jgi_isolate`. This uses
 the native subset mechanism rather than a custom annotation.
 
+### What belongs in `host_information`
+
+The test is whether a slot **describes the host organism**, not the sample or
+its environment. That is why the four MIxS plant slots split three to one:
+`plant_struc`, `plant_sex` and `plant_product` describe the plant itself (its
+structure, the sex of its reproductive parts, and what it produces), while
+`plant_growth_med` describes the medium the plant was grown in (soil,
+aeroponic, hydroponic) and is therefore a growth-condition slot rather than a
+host descriptor. `plant_sex` is the direct analogue of `host_sex`, which is
+already a member, so including one and not the other would be arbitrary.
+
+Two members are open questions rather than settled: `host_common_name` and
+`host_taxid` are `required: true` in submission-schema's
+`PlantAssociatedInterface`, so a plant-associated submission supplies exactly
+`badge_minimum_slots` host slots without any optional effort. Whether required
+slots belong in a completeness subset at all is
+https://github.com/microbiomedata/nmdc-schema/issues/3339.
+
 Membership follows the metadata quality squad's Badge Subsets Scratchpad. Most
 members are MIxS slots defined in the generated `mixs.yaml`, so their membership
 cannot be hand-edited on the slot and is asserted in
 `assets/yq-for-mixs-customizations.txt` after the strip described above. Twelve
 members are NMDC-native (7 biogeochemistry, 5 host) and carry `in_subset` in
 their own definitions.
+
+This page is deliberately not published to the documentation site. It lives in
+`src/schema/` rather than `src/docs/`, because `make gendoc` copies everything
+in `src/docs/` into the built site and this is maintainer-facing history rather
+than user-facing reference.
 
 ### The qualifying bar
 
