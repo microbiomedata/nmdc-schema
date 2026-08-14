@@ -108,7 +108,8 @@ examples/output/Biosample-exhaustive-pretty-sorted.yaml: src/data/valid/Database
 #   ssh -i {YOUR_GATEWAY_KEY} -L 27124:runtime-api-mongodb-headless.nmdc-prod.svc.cluster.local:27017 \
 #       -o ServerAliveInterval=60 ssh-mongo@jump-dev.microbiomedata.org
 # then connect to localhost:27124 with directConnection=true. The authoritative procedure, including
-# how to obtain the gateway key, is microbiomedata/nmdc-lakehouse/docs/mongodb-connection.md
+# how to obtain the gateway key, is
+# https://github.com/microbiomedata/nmdc-lakehouse/blob/main/docs/mongodb-connection.md
 
 pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
 

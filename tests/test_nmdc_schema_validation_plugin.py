@@ -54,7 +54,7 @@ def nmdc_schema_validator():
         schema=SCHEMA_FILE,
         validation_plugins=[
             NmdcSchemaValidationPlugin(),
-        ]
+        ],
     )
 
 
@@ -72,7 +72,7 @@ def fully_validating_validator():
         validation_plugins=[
             JsonschemaValidationPlugin(closed=True),
             NmdcSchemaValidationPlugin(),
-        ]
+        ],
     )
 
 
