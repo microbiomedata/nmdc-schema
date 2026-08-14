@@ -47,7 +47,7 @@ def nmdc_schema_validator():
 
     Passing ``validation_plugins`` replaces linkml's default ``JsonschemaValidationPlugin``
     rather than adding to it, so this validator does no structural validation at all. That is
-    what the two tests below want: they assert on the plugin's own results in isolation. Any
+    what the plugin unit tests want: they assert on the plugin's own results in isolation. Any
     test that means "this instance is valid" needs ``fully_validating_validator`` instead.
     """
     return Validator(
