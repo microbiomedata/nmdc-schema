@@ -10,9 +10,12 @@ induced slot when the class has a parent, and the global slot definition
 otherwise. That distinction matters: a `slot_usage` restoring the global value
 after a parent narrowed it is a real refinement, not a redundancy.
 
-This script reports them. It does not edit the schema, because some restatements
-are deliberate (see the note on re-declaring `range: uriorcurie` in
-`src/docs/maintaining-the-schema.md`), so a human decides what to remove.
+This script reports them. It does not edit the schema, because a restatement can
+be deliberate, so a human decides what to remove. `PropertyAssertion.has_unit`
+asserting `required: false` is the one currently kept: its baseline is unset
+rather than asserted, and it documents the conditional requirement its own
+description spells out. `tests/test_no_redundant_slot_usage.py` records it as the
+single expected exception.
 
 Usage:
 
