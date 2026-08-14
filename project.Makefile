@@ -102,10 +102,13 @@ examples/output/Biosample-exhaustive-pretty-sorted.yaml: src/data/valid/Database
 		-i $< \
 		-o $@
 
-# this setup is required if you want to retreive any content or statistics from PyMongo
+# this setup is required if you want to retrieve any content or statistics from PyMongo
 # pure-export doesn't require a PyMongo connection when run in the --skip-collection-check mode
-#   1. . ~/sshproxy.sh -u {YOUR_NERSC_USERNAME}
-#   2. ssh -i ~/.ssh/nersc -L27777:mongo-loadbalancer.nmdc.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 {YOUR_NERSC_USERNAME}@dtn01.nersc.gov
+# Production MongoDB is reached through the cloud gateway, not NERSC. Open a tunnel with:
+#   ssh -i {YOUR_GATEWAY_KEY} -L 27124:runtime-api-mongodb-headless.nmdc-prod.svc.cluster.local:27017 \
+#       -o ServerAliveInterval=60 ssh-mongo@jump-dev.microbiomedata.org
+# then connect to localhost:27124 with directConnection=true. The authoritative procedure, including
+# how to obtain the gateway key, is microbiomedata/nmdc-lakehouse/docs/mongodb-connection.md
 
 pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
 
