@@ -984,12 +984,23 @@ attributes:
   md5_checksum:
     name: md5_checksum
     description: MD5 checksum of file (pre-compressed)
+    notes:
+    - The submission portal already constrains the slots that feed this one. submission-schema
+      patterns read_1_md5_checksum, read_2_md5_checksum, and interleaved_md5_checksum
+      as semicolon-separated lists of 32 hex characters; the submission portal translator
+      splits those and writes one value per DataObject, so the single-value form applies
+      here. Case is not normalized anywhere, so both cases are accepted.
+    examples:
+    - value: 0123456789abcdef0123456789abcdef
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/3364
     rank: 1000
     owner: DataObject
     domain_of:
     - DataObject
     range: string
+    pattern: ^[a-fA-F0-9]{32}$
   url:
     name: url
     notes:
