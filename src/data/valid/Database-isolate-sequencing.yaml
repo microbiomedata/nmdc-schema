@@ -1,0 +1,243 @@
+#example result records from submission schema to nmdc-schema runtime ETL for isolate external data
+data_generation_set:
+  - id: nmdc:dgns-11-isot01
+    type: nmdc:NucleotideSequencing
+    name: Isolate transcriptome sequencing for sample name isolate transcriptome interleaved url
+    analyte_category: isolate_transcriptome
+    processing_institution: UCSD
+    protocol_link:
+      url: https://example.com/protocol.html
+      type: nmdc:Protocol
+    insdc_bioproject_identifiers:
+      - bioproject:PRJNA366857
+    has_input:
+      - nmdc:bsm-11-adi12d
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: '2026-05-07T00:00:00Z'
+      mod_date: '2026-05-07T00:00:00Z'
+      source_system_of_record: NMDC_Submission_Portal
+      submission_portal_identifier: 
+        - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
+      git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+      version: v2.20.0
+    has_output:
+      - nmdc:dobj-00-isot01
+    associated_studies:
+      - nmdc:sty-00-555xxx
+    instrument_used:
+      - nmdc:inst-14-njkx0e66
+  - id: nmdc:dgns-11-isot02
+    type: nmdc:NucleotideSequencing
+    name: Isolate transcriptome sequencing for sample name isolate transcriptome sra accession
+    processing_institution: UCSD
+    protocol_link:
+      url: https://example.com/protocol.html
+      type: nmdc:Protocol
+    insdc_bioproject_identifiers:
+      - bioproject:PRJNA366857
+    analyte_category: isolate_transcriptome
+    has_input:
+      - nmdc:bsm-11-adi12e
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: '2026-05-07T00:00:00Z'
+      mod_date: '2026-05-07T00:00:00Z'
+      source_system_of_record: NMDC_Submission_Portal
+      submission_portal_identifier:
+        - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
+      git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+      version: v2.20.0
+    has_output:
+      - nmdc:dobj-00-isot02
+    associated_studies:
+      - nmdc:sty-00-555xxx
+    instrument_used:
+      - nmdc:inst-14-njkx0e66
+  - id: nmdc:dgns-11-isot03
+    type: nmdc:NucleotideSequencing
+    name: sample name isolate transcriptome non-interleaved
+    processing_institution: UCSD
+    protocol_link:
+      url: https://example.com/protocol.html
+      type: nmdc:Protocol
+    insdc_bioproject_identifiers:
+      - bioproject:PRJNA366857
+    analyte_category: isolate_transcriptome
+    has_input:
+      - nmdc:bsm-11-adi12f
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: '2026-05-07T00:00:00Z'
+      mod_date: '2026-05-07T00:00:00Z'
+      source_system_of_record: NMDC_Submission_Portal
+      submission_portal_identifier:
+        - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
+      git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+      version: v2.20.0
+    has_output:
+      - nmdc:dobj-00-isot03
+      - nmdc:dobj-00-isot04
+    associated_studies:
+      - nmdc:sty-00-555xxx
+    instrument_used:
+      - nmdc:inst-14-njkx0e66
+  - id: nmdc:dgns-11-isog01
+    type: nmdc:NucleotideSequencing
+    name: Isolate genome sequencing for sample name isolate genome interleaved url
+    processing_institution: UCSD
+    protocol_link:
+      url: https://example.com/protocol.html
+      type: nmdc:Protocol
+    insdc_bioproject_identifiers:
+      - bioproject:PRJNA366857
+    analyte_category: isolate_genome
+    has_input:
+      - nmdc:bsm-11-adiajk
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: '2026-05-07T00:00:00Z'
+      mod_date: '2026-05-07T00:00:00Z'
+      source_system_of_record: NMDC_Submission_Portal
+      submission_portal_identifier:
+        - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
+      git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+      version: v2.20.0
+    has_output:
+      - nmdc:dobj-00-isog05
+    associated_studies:
+      - nmdc:sty-00-555xxx
+    instrument_used:
+      - nmdc:inst-14-njkx0e66
+  - id: nmdc:dgns-11-isog02
+    type: nmdc:NucleotideSequencing
+    name: Isolate genome sequencing for sample name isolate genome sra accession
+    processing_institution: UCSD
+    protocol_link:
+      url: https://example.com/protocol.html
+      type: nmdc:Protocol
+    insdc_bioproject_identifiers:
+      - bioproject:PRJNA366857
+    analyte_category: isolate_genome
+    has_input:
+      - nmdc:bsm-11-adi12f
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: '2026-05-07T00:00:00Z'
+      mod_date: '2026-05-07T00:00:00Z'
+      source_system_of_record: NMDC_Submission_Portal
+      submission_portal_identifier: 
+        - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
+      git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+      version: v2.20.0
+    has_output:
+      - nmdc:dobj-00-isog06
+    associated_studies:
+      - nmdc:sty-00-555xxx
+    instrument_used:
+      - nmdc:inst-14-njkx0e66
+  - id: nmdc:dgns-11-isog03
+    type: nmdc:NucleotideSequencing
+    name: Isolate genome sequencing for sample name isolate genome non-interleaved
+    processing_institution: UCSD
+    protocol_link:
+      url: https://example.com/protocol.html
+      type: nmdc:Protocol
+    insdc_bioproject_identifiers:
+      - bioproject:PRJNA366857
+    analyte_category: isolate_genome
+    has_input:
+      - nmdc:bsm-11-adi12z
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: '2026-05-07T00:00:00Z'
+      mod_date: '2026-05-07T00:00:00Z'
+      source_system_of_record: NMDC_Submission_Portal
+      submission_portal_identifier:
+        - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
+      git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+      version: v2.20.0
+    has_output:
+      - nmdc:dobj-00-isog07
+      - nmdc:dobj-00-isog08
+    associated_studies:
+      - nmdc:sty-00-555xxx
+    instrument_used:
+      - nmdc:inst-14-njkx0e66
+data_object_set:
+  - id: nmdc:dobj-00-isot01
+    name: read1.fastq
+    description: Raw Reads for nmdc:dgns-11-isot01
+    url: https://example.com/read1.fastq
+    md5_checksum: 0123456789abcdef0123456789abcdef
+    data_object_type: Paired interleaved raw sequencing data
+    data_category: instrument_data
+    insdc_run_identifiers:
+      - insdc.run:SRR400868
+    type: nmdc:DataObject
+  - id: nmdc:dobj-00-isot02
+    name: Data file for run accession SRR400868
+    description: Data file for run accession SRR400868
+    data_object_type: SRA toolkit-accessible sequence data
+    data_category: instrument_data
+    insdc_run_identifiers:
+      - insdc.run:SRR400868
+    type: nmdc:DataObject
+  - id: nmdc:dobj-00-isot03
+    name: read1.fastq
+    description: Read 1 sequencing data for nmdc:dgns-11-isot03
+    data_object_type: Raw sequencing data read 1
+    url: https://example.com/read1.fastq
+    md5_checksum: 0123456789abcdef0123456789abcdef
+    data_category: instrument_data
+    insdc_run_identifiers:
+      - insdc.run:SRR400868
+    type: nmdc:DataObject
+  - id: nmdc:dobj-00-isot04
+    name: read2.fastq
+    description: Read 2 sequencing data for nmdc:dgns-11-isot03
+    data_object_type: Raw sequencing data read 2
+    url: https://example.com/read2.fastq
+    md5_checksum: 0123456789abcdef0123456789abcdef
+    data_category: instrument_data
+    insdc_run_identifiers:
+      - insdc.run:SRR400868
+    type: nmdc:DataObject
+  - id: nmdc:dobj-00-isog05
+    name: read1.fastq
+    description: Raw Reads for nmdc:dgns-11-isog01
+    url: https://example.com/read1.fastq
+    md5_checksum: 0123456789abcdef0123456789abcdef
+    data_object_type: Paired interleaved raw sequencing data
+    data_category: instrument_data
+    insdc_run_identifiers:
+      - insdc.run:SRR400868
+    type: nmdc:DataObject
+  - id: nmdc:dobj-00-isog06
+    name: Data file for run accession SRR400868
+    description: Data file for run accession SRR400868
+    data_object_type: SRA toolkit-accessible sequence data
+    data_category: instrument_data
+    insdc_run_identifiers:
+      - insdc.run:SRR400868
+    type: nmdc:DataObject
+  - id: nmdc:dobj-00-isog07
+    name: read1.fastq
+    description: Read 1 sequencing data for nmdc:dgns-11-isog03
+    data_object_type: Raw sequencing data read 1
+    url: https://example.com/read1.fastq
+    md5_checksum: 0123456789abcdef0123456789abcdef
+    data_category: instrument_data
+    insdc_run_identifiers:
+      - insdc.run:SRR400868
+    type: nmdc:DataObject
+  - id: nmdc:dobj-00-isog08
+    name: read2.fastq
+    description: Read 2 sequencing data for nmdc:dgns-11-isog03
+    data_object_type: Raw sequencing data read 2
+    url: https://example.com/read2.fastq
+    md5_checksum: 0123456789abcdef0123456789abcdef
+    data_category: instrument_data
+    insdc_run_identifiers:
+      - insdc.run:SRR400868
+    type: nmdc:DataObject
