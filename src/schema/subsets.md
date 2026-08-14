@@ -66,7 +66,11 @@ Two of its entries are worth remembering, because they will come up again:
 ## Badge subsets
 
 A badge subset groups the slots whose completeness one metadata-quality badge
-measures. It is declared in `src/schema/basic_slots.yaml` and is itself a member
+measures. Grouping slots into scoreable sets follows the Metadata
+Coverage Index (Liolios et al. 2012,
+https://pmc.ncbi.nlm.nih.gov/articles/PMC3558968/), which measures completeness
+against a defined field grouping rather than against every field a record could
+carry. It is declared in `src/schema/basic_slots.yaml` and is itself a member
 of the `badge_topic` group subset (`in_subset: [badge_topic]`), which is how
 tooling and the sync test tell badge subsets apart from `jgi_isolate`. This uses
 the native subset mechanism rather than a custom annotation.

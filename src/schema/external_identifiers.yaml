@@ -246,8 +246,6 @@ slots:
         description: GOLD organism_v2 Campylobacter concisus 13826 (queried 2026-04-14)
     range: uriorcurie
     multivalued: true
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/2973
 
 
 

@@ -1397,7 +1397,6 @@ classes:
         study, or a soil sample are Biosamples because they contain communities of organisms.
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/2803
-      - https://github.com/microbiomedata/nmdc-schema/issues/2961
 
   Site:
     class_uri: nmdc:Site
