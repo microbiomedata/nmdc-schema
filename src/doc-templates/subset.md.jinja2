@@ -27,6 +27,7 @@ URI: {{ gen.link(element) }}
 {% set classes_in_subset = [] %}
 {% set slots_in_subset = [] %}
 {% set enums_in_subset = [] %}
+{% set subsets_in_subset = [] %}
 
 {# Collect classes, slots, and enumerations in subset #}
 {% for c in gen.all_class_objects()|sort(attribute=sort_by) %}
@@ -46,6 +47,26 @@ URI: {{ gen.link(element) }}
         {% set _ = enums_in_subset.append(e) %}
     {%- endif %}
 {% endfor %}
+
+{# A subset can group other subsets; badge_topic does. #}
+{% for sub in schemaview.all_subsets().values()|sort(attribute=sort_by) %}
+    {%- if element.name in (sub.in_subset or []) %}
+        {% set _ = subsets_in_subset.append(sub) %}
+    {%- endif %}
+{% endfor %}
+
+{% if element.in_subset %}
+Member of: {% for s in element.in_subset %}{{ gen.link(schemaview.get_subset(s)) }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endif %}
+
+{% if subsets_in_subset %}
+## Subsets in subset
+| Subset | Description |
+| --- | --- |
+{% for sub in subsets_in_subset -%}
+| {{ gen.link(sub) }} | {{ shorten(sub.description) }} |
+{% endfor %}
+{% endif %}
 
 {% if classes_in_subset %}
 ## Classes in subset
