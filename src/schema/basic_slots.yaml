@@ -251,7 +251,7 @@ slots:
   salinity_category:
     description:
       "Categorical description of the sample's salinity. Examples: halophile,
-        halotolerant, hypersaline, huryhaline"
+        halotolerant, hypersaline, euryhaline"
     range: string
     notes:
       - "maps to gold:salinity"
