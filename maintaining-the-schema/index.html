@@ -1038,10 +1038,17 @@ what is checked, what is not, and which tools close the gap.</p>
 these gold_biosample_identifiers would all be web-resolvable.</p>
 <h2 id="constraining-mentioned-identifiers">Constraining mentioned identifiers</h2>
 <p>We can limit the values that go into any slot by using a <code>pattern</code> constraint. We can also use the <code>id_prefixes</code> constraint
-to limit the prefixes that are used in whatever slot has been declared to be the identifier of a class.
-(Attributes of a class are supposed to be cascaded to subclasses, via the <code>is_a</code> attribute.
-This may not always be the case though. In the nmdc-schema we have been using a belt-and-suspenders approach of 
-re-declaring the <code>uriorcurie</code> range )</p>
+to limit the prefixes that are used in whatever slot has been declared to be the identifier of a class.</p>
+<p>Constraints written in a class's <code>slot_usage</code> do cascade to subclasses through <code>is_a</code>, so there is no need to
+restate an inherited value defensively. An earlier version of this page described a belt-and-suspenders practice of
+re-declaring the <code>uriorcurie</code> range for that reason. No class does that, and restating an inherited value is now
+treated as something to remove: <code>src/scripts/report_redundant_slot_usage.py</code> finds them and
+<code>tests/test_no_redundant_slot_usage.py</code> fails CI when a new one appears.</p>
+<p>Restating costs something real. A class that repeats a value it already inherits stops tracking the parent, so a
+later edit upstream silently does not reach it.</p>
+<p>One inheritance path does drop values, and it is not this one: a <em>slot</em> that inherits from another slot through
+slot-level <code>is_a</code> loses a falsy value such as <code>minimum_value: 0</code>. That is <a href="https://github.com/linkml/linkml/issues/3845">linkml issue 3845</a>
+and it does not affect class <code>slot_usage</code>.</p>
 <p>All prefixes used in the <code>id_prefixes</code> constraint must be defined in the schema. 
 We should have a standing practice of reflecting on the declared <code>id_prefixes</code>, and removing prefixes that haven't been used yet
 and are not likely to eer be used.</p>

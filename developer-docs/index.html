@@ -947,9 +947,14 @@ to fill in the variables for the scripts you actually run.</p>
 for details.</p>
 <h3 id="what-are-linkml-readonly-metaslots-and-why-shouldnt-i-assert-them">What are LinkML readonly metaslots and why shouldn't I assert them?</h3>
 <p>The LinkML metamodel defines 12 <strong>readonly</strong> slots that are automatically populated
-by the schema loader or generators: <code>definition_uri</code>, <code>domain_of</code>, <code>from_schema</code>,
-<code>generation_date</code>, <code>imported_from</code>, <code>is_usage_slot</code>, <code>metamodel_version</code>, <code>owner</code>,
-<code>source_file</code>, <code>source_file_date</code>, <code>source_file_size</code>, <code>usage_slot_name</code>.</p>
+by the schema loader or generators. They belong to two different metamodel element
+types, which matters when writing tooling that filters on them.</p>
+<p>Seven are on <code>SlotDefinition</code>, so they can appear on a slot or in a <code>slot_usage</code>
+block: <code>definition_uri</code>, <code>domain_of</code>, <code>from_schema</code>, <code>imported_from</code>,
+<code>is_usage_slot</code>, <code>owner</code>, <code>usage_slot_name</code>.</p>
+<p>Five are on <code>SchemaDefinition</code> and describe the file a schema was read from. They
+never appear on a slot, even after induction: <code>generation_date</code>, <code>metamodel_version</code>,
+<code>source_file</code>, <code>source_file_date</code>, <code>source_file_size</code>.</p>
 <p><strong>Do not add these to hand-edited schema YAML files</strong> under <code>src/schema/</code>. The
 loader fills them in at runtime, so asserting them is redundant and can cause
 confusion when values drift from what the loader would compute.</p>
