@@ -149,6 +149,17 @@ slots:
   md5_checksum:
     range: string
     description: MD5 checksum of file (pre-compressed)
+    pattern: '^[a-fA-F0-9]{32}$'
+    examples:
+      - value: 0123456789abcdef0123456789abcdef
+    notes:
+      - The submission portal already constrains the slots that feed this one. submission-schema
+        patterns read_1_md5_checksum, read_2_md5_checksum, and interleaved_md5_checksum as
+        semicolon-separated lists of 32 hex characters; the submission portal translator splits
+        those and writes one value per DataObject, so the single-value form applies here. Case is
+        not normalized anywhere, so both cases are accepted.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3364
 
   data_object_type:
     range: FileTypeEnum
