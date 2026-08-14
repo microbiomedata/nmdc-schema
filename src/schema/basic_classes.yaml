@@ -66,7 +66,6 @@ classes:
       - is_root
     slot_usage:
       id:
-        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
         notes:
           - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
     exact_mappings:
@@ -206,7 +205,6 @@ classes:
       - ref_biomaterial
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -409,7 +407,6 @@ classes:
       - websites
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -518,7 +515,6 @@ classes:
       description:
         required: true
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -526,7 +522,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
-        range: DataEmitterProcess
       data_object_type:
         required: true
       data_category:
@@ -582,7 +577,6 @@ classes:
           syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       associated_studies:
-        range: Study
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$"
           interpolated:

@@ -257,7 +257,6 @@ classes:
       - substances_volume
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -277,7 +276,6 @@ classes:
       - gold_analysis_project_identifiers
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
@@ -319,7 +317,6 @@ classes:
       - soil_type
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -937,7 +934,6 @@ classes:
 
       elev:
         title: elevation, meters
-        range: float
         comments:
           - All elevations must be reported in meters. Provide the numerical portion only.
           - Please use https://www.advancedconverter.com/map-tools/find-altitude-by-coordinates,
@@ -946,7 +942,6 @@ classes:
           - value: "100"
 
       id:
-        required: true
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
@@ -972,13 +967,6 @@ classes:
       env_medium:
         required: true
 
-      associated_studies:
-        required: true
-        range: Study
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
-          interpolated: true
-
       fire:
         comments:
           - Provide the date the fire occurred. If extended burning occurred provide the date range.
@@ -989,7 +977,6 @@ classes:
           - is "to" acceptable? Is there a better way to request that be written?
         annotations:
           Expected_value: date string
-        range: string
         pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
       flooding:
         annotations:
@@ -1002,13 +989,11 @@ classes:
         todos:
           - is "to" acceptable? Is there a better way to request that be written?
           - What about if the "day" isn't known? Is this ok?
-        range: string
       extreme_event:
         examples:
           - value: 1980-05-18, volcanic eruption
         annotations:
           Expected_value: date, string
-        range: string
       slope_aspect:
         comments:
           - Aspect is the orientation of slope, measured clockwise in degrees from 0 to 360,
@@ -1063,22 +1048,9 @@ classes:
         todos:
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts?
       cur_vegetation:
-        description:
-          Vegetation classification from one or more standard classification
-          systems, or agricultural crop
         comments:
           - Values provided here can be specific species of vegetation or vegetation regions
           - See for vegetation regions- https://education.nationalgeographic.org/resource/vegetation-region
-        examples:
-          - object:
-              type: nmdc:TextValue
-              has_raw_value: deciduous forest
-          - object:
-              type: nmdc:TextValue
-              has_raw_value: forest
-          - object:
-              type: nmdc:TextValue
-              has_raw_value: Bauhinia variegata
         todos:
           - Recommend changing this from text value to some king of ontology?
       cur_vegetation_meth:
@@ -1117,22 +1089,6 @@ classes:
         examples:
           - value: https://doi.org/10.1016/j.geoderma.2019.113898
           - value: doi:10.1016/j.geoderma.2019.113898
-      link_addit_analys:
-        examples:
-          - object:
-              type: nmdc:TextValue
-              has_raw_value: 'https://doi.org/10.1111/j.1574-6941.2011.01140.x'
-          - object:
-              type: nmdc:TextValue
-              has_raw_value: 'doi:10.1111/j.1574-6941.2011.01140.x'
-      link_climate_info:
-        examples:
-          - object:
-              type: nmdc:TextValue
-              has_raw_value: 'https://www.int-res.com/abstracts/cr/v14/n3/p161-173/'
-          - object:
-              type: nmdc:TextValue
-              has_raw_value: 'doi:10.3354/cr014161'
       local_class_meth:
         examples:
           - value: https://www.nrcs.usda.gov/resources/education-and-teaching-materials/the-twelve-orders-of-soil-taxonomy
@@ -1168,7 +1124,6 @@ classes:
           Expected_value: string
           Preferred_unit: gram per gram or cubic centimeter per cubic centimeter
         multivalued: true
-        range: string
         examples:
           - value: 0.75 g water/g dry soil
           - value: 75% water holding capacity
@@ -1192,12 +1147,6 @@ classes:
         comments:
           - This can include a link to the instrument used or a citation for the method.
       tot_carb:
-        examples:
-          - object:
-              type: nmdc:QuantityValue
-              has_raw_value: 1 ug/L
-              has_numeric_value: 1
-              has_unit: ug/L
         todos:
           - is this inorganic and organic? both? could use some clarification.
           - ug/L doesn't seem like the right units. Should check this slots usage in databases and re-evaluate.
@@ -1217,16 +1166,6 @@ classes:
         comments:
           - Describe how samples were composited or sieved.
           - Use 'sample link' to indicate which samples were combined.
-        examples:
-          - object:
-              type: nmdc:TextValue
-              has_raw_value: combined 2 cores | 4mm sieved
-          - object:
-              type: nmdc:TextValue
-              has_raw_value: 4 mm sieved and homogenized
-          - object:
-              type: nmdc:TextValue
-              has_raw_value: 50 g | 5 cores | 2 mm sieved
         todos:
           - check validation and examples
       climate_environment:
@@ -1343,7 +1282,6 @@ classes:
 
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -1373,7 +1311,6 @@ classes:
       - analysis_type
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$"
           interpolated: true

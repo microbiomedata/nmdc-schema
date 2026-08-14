@@ -52,7 +52,6 @@ classes:
       - insdc_assembly_identifiers
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
@@ -101,7 +100,6 @@ classes:
       - insdc_assembly_identifiers
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
@@ -124,20 +122,11 @@ classes:
       - gold_analysis_project_identifiers
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
-      has_input:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-      has_output:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
-          interpolated: true
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
@@ -161,7 +150,6 @@ classes:
       - img_identifiers
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
@@ -196,7 +184,6 @@ classes:
       - img_identifiers
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
@@ -227,7 +214,6 @@ classes:
       - output_read_count
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
@@ -249,7 +235,6 @@ classes:
     is_a: WorkflowExecution
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
@@ -276,7 +261,6 @@ classes:
       - c13_isotopologue_count
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
@@ -308,7 +292,6 @@ classes:
       - total_protein_count
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
@@ -332,7 +315,6 @@ classes:
       - peak_assignment_count
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
