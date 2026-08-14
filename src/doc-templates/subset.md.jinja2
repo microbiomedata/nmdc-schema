@@ -48,7 +48,7 @@ URI: {{ gen.link(element) }}
 {% endfor %}
 
 {# A subset can group other subsets; badge_topic does. #}
-{% for sub in schemaview.all_subsets().values() %}
+{% for sub in schemaview.all_subsets().values()|sort(attribute=sort_by) %}
     {%- if element.name in (sub.in_subset or []) %}
         {% set _ = subsets_in_subset.append(sub) %}
     {%- endif %}
