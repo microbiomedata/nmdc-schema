@@ -86,9 +86,16 @@ for details.
 ### What are LinkML readonly metaslots and why shouldn't I assert them?
 
 The LinkML metamodel defines 12 **readonly** slots that are automatically populated
-by the schema loader or generators: `definition_uri`, `domain_of`, `from_schema`,
-`generation_date`, `imported_from`, `is_usage_slot`, `metamodel_version`, `owner`,
-`source_file`, `source_file_date`, `source_file_size`, `usage_slot_name`.
+by the schema loader or generators. They belong to two different metamodel element
+types, which matters when writing tooling that filters on them.
+
+Seven are on `SlotDefinition`, so they can appear on a slot or in a `slot_usage`
+block: `definition_uri`, `domain_of`, `from_schema`, `imported_from`,
+`is_usage_slot`, `owner`, `usage_slot_name`.
+
+Five are on `SchemaDefinition` and describe the file a schema was read from. They
+never appear on a slot, even after induction: `generation_date`, `metamodel_version`,
+`source_file`, `source_file_date`, `source_file_size`.
 
 **Do not add these to hand-edited schema YAML files** under `src/schema/`. The
 loader fills them in at runtime, so asserting them is redundant and can cause
