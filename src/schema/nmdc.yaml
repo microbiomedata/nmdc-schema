@@ -472,9 +472,6 @@ classes:
       has_input:
         minimum_cardinality: 2
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
       has_output:
         required: true
         minimum_cardinality: 1
@@ -559,15 +556,11 @@ classes:
     slot_usage:
       has_input:
         required: true
-        range: Sample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_output:
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$"
@@ -603,14 +596,8 @@ classes:
     slot_usage:
       has_input:
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
       has_output:
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$"
@@ -678,18 +665,8 @@ classes:
         description: The output volume of the SubSampling Process.
       mass:
         description: The output mass of the SubSampling Process.
-      has_input:
-        range: Sample
-        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
       has_output:
-        range: ProcessedSample
         description: The subsample.
-        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
-          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-
   MixingProcess:
     class_uri: nmdc:MixingProcess
     description: >
@@ -710,13 +687,7 @@ classes:
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$"
-      has_input:
-        range: Sample
-        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
       has_output:
-        range: ProcessedSample
         description: The mixed sample.
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
@@ -750,13 +721,7 @@ classes:
           interpolated: true
       volume:
         description: The volume of sample filtered.
-      has_input:
-        range: Sample
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
       has_output:
-        range: ProcessedSample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -808,13 +773,7 @@ classes:
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
-      has_input:
-        range: Sample
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
       has_output:
-        range: ProcessedSample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
