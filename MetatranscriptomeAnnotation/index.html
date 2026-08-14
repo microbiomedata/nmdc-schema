@@ -712,23 +712,12 @@ slots:
 slot_usage:
   id:
     name: id
-    required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
   img_identifiers:
     name: img_identifiers
     maximum_cardinality: 1
-  has_input:
-    name: has_input
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  has_output:
-    name: has_output
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
-      interpolated: true
   was_informed_by:
     name: was_informed_by
     range: NucleotideSequencing
@@ -758,23 +747,12 @@ is_a: AnnotatingWorkflow
 slot_usage:
   id:
     name: id
-    required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
   img_identifiers:
     name: img_identifiers
     maximum_cardinality: 1
-  has_input:
-    name: has_input
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  has_output:
-    name: has_output
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
-      interpolated: true
   was_informed_by:
     name: was_informed_by
     range: NucleotideSequencing

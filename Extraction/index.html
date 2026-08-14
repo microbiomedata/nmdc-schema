@@ -663,7 +663,6 @@ slots:
 slot_usage:
   has_input:
     name: has_input
-    range: Sample
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
@@ -671,12 +670,8 @@ slot_usage:
   has_output:
     name: has_output
     required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
-      interpolated: true
   id:
     name: id
-    required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -699,7 +694,6 @@ is_a: MaterialProcessing
 slot_usage:
   has_input:
     name: has_input
-    range: Sample
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$'
@@ -707,12 +701,8 @@ slot_usage:
   has_output:
     name: has_output
     required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
-      interpolated: true
   id:
     name: id
-    required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$'
       interpolated: true

@@ -4741,11 +4741,9 @@ slot_usage:
       if needed, to help estimate the elevation based on latitude and longitude coordinates.
     examples:
     - value: '100'
-    range: float
   id:
     name: id
     description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
-    required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -4777,13 +4775,6 @@ slot_usage:
   env_medium:
     name: env_medium
     required: true
-  associated_studies:
-    name: associated_studies
-    range: Study
-    required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
-      interpolated: true
   fire:
     name: fire
     annotations:
@@ -4798,7 +4789,6 @@ slot_usage:
     examples:
     - value: '1871-10-10'
     - value: 1871-10-01 to 1871-10-31
-    range: string
     pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
   flooding:
     name: flooding
@@ -4815,7 +4805,6 @@ slot_usage:
     examples:
     - value: '1927-04-15'
     - value: 1927-04 to 1927-05
-    range: string
   extreme_event:
     name: extreme_event
     annotations:
@@ -4824,7 +4813,6 @@ slot_usage:
         value: date, string
     examples:
     - value: 1980-05-18, volcanic eruption
-    range: string
   slope_aspect:
     name: slope_aspect
     description: The direction a slope faces. While looking down a slope use a compass
@@ -4889,23 +4877,11 @@ slot_usage:
     - value: PMID:28448589
   cur_vegetation:
     name: cur_vegetation
-    description: Vegetation classification from one or more standard classification
-      systems, or agricultural crop
     todos:
     - Recommend changing this from text value to some king of ontology?
     comments:
     - Values provided here can be specific species of vegetation or vegetation regions
     - See for vegetation regions- https://education.nationalgeographic.org/resource/vegetation-region
-    examples:
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: deciduous forest
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: forest
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: Bauhinia variegata
   cur_vegetation_meth:
     name: cur_vegetation_meth
     todos:
@@ -4950,24 +4926,6 @@ slot_usage:
     examples:
     - value: https://doi.org/10.1016/j.geoderma.2019.113898
     - value: doi:10.1016/j.geoderma.2019.113898
-  link_addit_analys:
-    name: link_addit_analys
-    examples:
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: https://doi.org/10.1111/j.1574-6941.2011.01140.x
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: doi:10.1111/j.1574-6941.2011.01140.x
-  link_climate_info:
-    name: link_climate_info
-    examples:
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: doi:10.3354/cr014161
   local_class_meth:
     name: local_class_meth
     examples:
@@ -5025,7 +4983,6 @@ slot_usage:
     - value: 75% water holding capacity
     - value: 1.1 g fresh weight/ dry weight
     - value: 10% water filled pore space
-    range: string
     multivalued: true
   ph_meth:
     name: ph_meth
@@ -5048,12 +5005,6 @@ slot_usage:
     - ug/L doesn't seem like the right units. Should check this slots usage in databases
       and re-evaluate. I couldn't find any references that provided this data in this
       format
-    examples:
-    - object:
-        type: nmdc:QuantityValue
-        has_raw_value: 1 ug/L
-        has_numeric_value: 1
-        has_unit: ug/L
   tot_nitro_cont_meth:
     name: tot_nitro_cont_meth
     examples:
@@ -5075,16 +5026,6 @@ slot_usage:
     comments:
     - Describe how samples were composited or sieved.
     - Use 'sample link' to indicate which samples were combined.
-    examples:
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: combined 2 cores | 4mm sieved
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: 4 mm sieved and homogenized
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: 50 g | 5 cores | 2 mm sieved
   climate_environment:
     name: climate_environment
     todos:
@@ -5190,11 +5131,9 @@ slot_usage:
       if needed, to help estimate the elevation based on latitude and longitude coordinates.
     examples:
     - value: '100'
-    range: float
   id:
     name: id
     description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
-    required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -5226,13 +5165,6 @@ slot_usage:
   env_medium:
     name: env_medium
     required: true
-  associated_studies:
-    name: associated_studies
-    range: Study
-    required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
-      interpolated: true
   fire:
     name: fire
     annotations:
@@ -5247,7 +5179,6 @@ slot_usage:
     examples:
     - value: '1871-10-10'
     - value: 1871-10-01 to 1871-10-31
-    range: string
     pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
   flooding:
     name: flooding
@@ -5264,7 +5195,6 @@ slot_usage:
     examples:
     - value: '1927-04-15'
     - value: 1927-04 to 1927-05
-    range: string
   extreme_event:
     name: extreme_event
     annotations:
@@ -5273,7 +5203,6 @@ slot_usage:
         value: date, string
     examples:
     - value: 1980-05-18, volcanic eruption
-    range: string
   slope_aspect:
     name: slope_aspect
     description: The direction a slope faces. While looking down a slope use a compass
@@ -5338,23 +5267,11 @@ slot_usage:
     - value: PMID:28448589
   cur_vegetation:
     name: cur_vegetation
-    description: Vegetation classification from one or more standard classification
-      systems, or agricultural crop
     todos:
     - Recommend changing this from text value to some king of ontology?
     comments:
     - Values provided here can be specific species of vegetation or vegetation regions
     - See for vegetation regions- https://education.nationalgeographic.org/resource/vegetation-region
-    examples:
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: deciduous forest
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: forest
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: Bauhinia variegata
   cur_vegetation_meth:
     name: cur_vegetation_meth
     todos:
@@ -5399,24 +5316,6 @@ slot_usage:
     examples:
     - value: https://doi.org/10.1016/j.geoderma.2019.113898
     - value: doi:10.1016/j.geoderma.2019.113898
-  link_addit_analys:
-    name: link_addit_analys
-    examples:
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: https://doi.org/10.1111/j.1574-6941.2011.01140.x
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: doi:10.1111/j.1574-6941.2011.01140.x
-  link_climate_info:
-    name: link_climate_info
-    examples:
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: doi:10.3354/cr014161
   local_class_meth:
     name: local_class_meth
     examples:
@@ -5474,7 +5373,6 @@ slot_usage:
     - value: 75% water holding capacity
     - value: 1.1 g fresh weight/ dry weight
     - value: 10% water filled pore space
-    range: string
     multivalued: true
   ph_meth:
     name: ph_meth
@@ -5497,12 +5395,6 @@ slot_usage:
     - ug/L doesn't seem like the right units. Should check this slots usage in databases
       and re-evaluate. I couldn't find any references that provided this data in this
       format
-    examples:
-    - object:
-        type: nmdc:QuantityValue
-        has_raw_value: 1 ug/L
-        has_numeric_value: 1
-        has_unit: ug/L
   tot_nitro_cont_meth:
     name: tot_nitro_cont_meth
     examples:
@@ -5524,16 +5416,6 @@ slot_usage:
     comments:
     - Describe how samples were composited or sieved.
     - Use 'sample link' to indicate which samples were combined.
-    examples:
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: combined 2 cores | 4mm sieved
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: 4 mm sieved and homogenized
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: 50 g | 5 cores | 2 mm sieved
   climate_environment:
     name: climate_environment
     todos:
