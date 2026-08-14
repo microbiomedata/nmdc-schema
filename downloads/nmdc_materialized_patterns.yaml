@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post4.dev0+9f3f7dcd0
+version: 11.23.0.post6.dev0+2a6caf293
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -385,8 +385,6 @@ subsets:
       value has a subset here. expert_curation is awarded from ProvenanceMetadata.source_system_of_record
       rather than from slot completeness, so it has no badge_topic subset.
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/3228
   biogeochemistry:
     name: biogeochemistry
     annotations:
@@ -400,9 +398,6 @@ subsets:
     in_subset:
     - badge_topic
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/3228
-    - https://github.com/microbiomedata/nmdc-schema/issues/3326
   host_information:
     name: host_information
     annotations:
@@ -420,9 +415,6 @@ subsets:
     in_subset:
     - badge_topic
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/3228
-    - https://github.com/microbiomedata/nmdc-schema/issues/3326
 types:
   string:
     name: string
@@ -6925,14 +6917,15 @@ slots:
     notes:
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
+    comments:
+    - 'Deprecating this slot was proposed and rejected: without it, a document read
+      back from a polymorphic MongoDB collection cannot be resolved to the class it
+      instantiates. It is required on every class for that reason, rather than as
+      a convention inherited from LinkML.'
     examples:
     - value: nmdc:Biosample
     - value: nmdc:Study
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
     structured_aliases:
     - literal_form: workflow_execution_class
       predicate: NARROW_SYNONYM
@@ -7256,12 +7249,10 @@ slots:
   salinity_category:
     name: salinity_category
     description: 'Categorical description of the sample''s salinity. Examples: halophile,
-      halotolerant, hypersaline, huryhaline'
+      halotolerant, hypersaline, euryhaline'
     notes:
     - maps to gold:salinity
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-metadata/pull/297
     range: string
   proport_woa_temperature:
     name: proport_woa_temperature
@@ -8085,8 +8076,6 @@ slots:
     - value: gold:Go0000058
       description: GOLD organism_v2 Campylobacter concisus 13826 (queried 2026-04-14)
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/2973
     is_a: external_database_identifiers
     mixins:
     - gold_identifiers
@@ -8265,9 +8254,6 @@ slots:
     - Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances.
       OrganismSample reaches taxonomy indirectly via expected_organism.classified_as.
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/2959
-    - https://github.com/microbiomedata/nmdc-schema/issues/3016
     narrow_mappings:
     - biolink:in_taxon
     range: OntologyClass
@@ -20225,8 +20211,6 @@ classes:
       by selection techniques such as serial dilution, plating on selective media,
       and colony picking.
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/2978
     close_mappings:
     - OBI:0000512
     is_a: MaterialProcessing
@@ -20259,8 +20243,6 @@ classes:
       The input and output are both organism samples; the output is an expanded or
       maintained culture of the input organism.
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/2978
     close_mappings:
     - OBI:0001147
     is_a: MaterialProcessing
@@ -20977,9 +20959,6 @@ classes:
       instances specifically, but LinkML does not currently support constraining the
       term slot of a ControlledIdentifiedTermValue to a particular OntologyClass subclass.
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/2959
-    - https://github.com/microbiomedata/nmdc-schema/issues/2971
     close_mappings:
     - biolink:OrganismTaxon
     is_a: OntologyClass
@@ -21102,9 +21081,7 @@ classes:
       isolate_name) is captured directly on Organism.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/2959
     - https://github.com/microbiomedata/nmdc-schema/issues/2803
-    - https://github.com/microbiomedata/nmdc-schema/issues/2971
     exact_mappings:
     - COB:0000022
     is_a: MaterialEntity
@@ -22855,7 +22832,6 @@ classes:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/2803
-    - https://github.com/microbiomedata/nmdc-schema/issues/2961
     close_mappings:
     - OBI:0100051
     is_a: Sample

@@ -336,15 +336,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#see-also">
-<span class="md-ellipsis">
-      
-        See Also
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       
@@ -568,11 +559,6 @@
 <li>Sub-species information (strains, cultivars, lab-specific isolates) is below the resolution of NCBI Taxonomy. Strain identity is captured via dedicated slots on Organism (e.g. strain_name, isolate_name), not by minting NcbiTaxon instances.</li>
 <li>Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue with range OntologyClass. The intent is that these slots point to NcbiTaxon instances specifically, but LinkML does not currently support constraining the term slot of a ControlledIdentifiedTermValue to a particular OntologyClass subclass.</li>
 </ul>
-<h2 id="see-also">See Also</h2>
-<ul>
-<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2959">https://github.com/microbiomedata/nmdc-schema/issues/2959</a></li>
-<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2971">https://github.com/microbiomedata/nmdc-schema/issues/2971</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="valid-id-prefixes">Valid ID Prefixes</h3>
 <p>Instances of this class <em>should</em> have identifiers with one of the following prefixes:</p>
@@ -623,9 +609,6 @@ comments:
   specifically, but LinkML does not currently support constraining the term slot of
   a ControlledIdentifiedTermValue to a particular OntologyClass subclass.
 from_schema: https://w3id.org/nmdc/nmdc
-see_also:
-- https://github.com/microbiomedata/nmdc-schema/issues/2959
-- https://github.com/microbiomedata/nmdc-schema/issues/2971
 close_mappings:
 - biolink:OrganismTaxon
 is_a: OntologyClass
@@ -664,9 +647,6 @@ comments:
   specifically, but LinkML does not currently support constraining the term slot of
   a ControlledIdentifiedTermValue to a particular OntologyClass subclass.
 from_schema: https://w3id.org/nmdc/nmdc
-see_also:
-- https://github.com/microbiomedata/nmdc-schema/issues/2959
-- https://github.com/microbiomedata/nmdc-schema/issues/2971
 close_mappings:
 - biolink:OrganismTaxon
 is_a: OntologyClass
@@ -812,14 +792,15 @@ attributes:
     notes:
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
+    comments:
+    - 'Deprecating this slot was proposed and rejected: without it, a document read
+      back from a polymorphic MongoDB collection cannot be resolved to the class it
+      instantiates. It is required on every class for that reason, rather than as
+      a convention inherited from LinkML.'
     examples:
     - value: nmdc:Biosample
     - value: nmdc:Study
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
     structured_aliases:
     - literal_form: workflow_execution_class
       predicate: NARROW_SYNONYM

@@ -3817,7 +3817,7 @@
                     "description": "The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater"
                 },
                 "salinity_category": {
-                    "description": "Categorical description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, huryhaline",
+                    "description": "Categorical description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, euryhaline",
                     "type": [
                         "string",
                         "null"
@@ -17651,5 +17651,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post4.dev0+9f3f7dcd0"
+    "version": "11.23.0.post6.dev0+2a6caf293"
 }

@@ -660,7 +660,6 @@
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2803">https://github.com/microbiomedata/nmdc-schema/issues/2803</a></li>
-<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/2961">https://github.com/microbiomedata/nmdc-schema/issues/2961</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -707,7 +706,6 @@ comments:
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2803
-- https://github.com/microbiomedata/nmdc-schema/issues/2961
 close_mappings:
 - OBI:0100051
 is_a: Sample
@@ -813,7 +811,6 @@ comments:
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://github.com/microbiomedata/nmdc-schema/issues/2803
-- https://github.com/microbiomedata/nmdc-schema/issues/2961
 close_mappings:
 - OBI:0100051
 is_a: Sample
@@ -965,8 +962,6 @@ attributes:
     - value: gold:Go0000058
       description: GOLD organism_v2 Campylobacter concisus 13826 (queried 2026-04-14)
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/2973
     rank: 1000
     is_a: external_database_identifiers
     mixins:
@@ -1239,14 +1234,15 @@ attributes:
     notes:
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
+    comments:
+    - 'Deprecating this slot was proposed and rejected: without it, a document read
+      back from a polymorphic MongoDB collection cannot be resolved to the class it
+      instantiates. It is required on every class for that reason, rather than as
+      a convention inherited from LinkML.'
     examples:
     - value: nmdc:Biosample
     - value: nmdc:Study
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
     structured_aliases:
     - literal_form: workflow_execution_class
       predicate: NARROW_SYNONYM
