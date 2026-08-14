@@ -491,6 +491,13 @@ classes:
       A material processing that separates an organism from a mixed sample by
       selection techniques such as serial dilution, plating on selective media,
       and colony picking.
+    comments:
+      - >-
+        Added to model the biological steps between collecting an environmental
+        sample and having an OrganismSample ready for DNA extraction, which
+        previously had no process classes. Isolation, Culturing and the
+        extraction step are the three-step workflow a cultured isolate goes
+        through.
     slot_usage:
       id:
         structured_pattern:
@@ -517,6 +524,13 @@ classes:
       A material processing that grows an organism under controlled conditions.
       The input and output are both organism samples; the output is an expanded
       or maintained culture of the input organism.
+    comments:
+      - >-
+        Added to model the biological steps between collecting an environmental
+        sample and having an OrganismSample ready for DNA extraction, which
+        previously had no process classes. Isolation, Culturing and the
+        extraction step are the three-step workflow a cultured isolate goes
+        through.
     slot_usage:
       id:
         structured_pattern:
