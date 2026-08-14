@@ -398,6 +398,13 @@ assets/usages-report.txt: src/schema/nmdc.yaml
 	$(RUN) python src/scripts/report_usages.py \
 		--schema-file $< > $@
 
+# Every induced slot value, for diffing across a refactor that should not change
+# meaning. Run before and after the change; an empty diff is the proof.
+# Not a prerequisite of anything: it is a hand-run gate, not a build artifact.
+assets/induced-slots.tsv: src/schema/nmdc.yaml
+	$(RUN) python src/scripts/dump_induced_slots.py \
+		--schema-file $< > $@
+
 # slot_usage assertions that restate a value the class already inherits.
 # Reported, not auto-removed: some restatements are deliberate.
 assets/redundant-slot-usage.txt: src/schema/nmdc.yaml
