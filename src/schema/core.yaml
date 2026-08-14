@@ -257,7 +257,6 @@ classes:
       - substances_volume
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -277,7 +276,6 @@ classes:
       - gold_analysis_project_identifiers
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
@@ -319,7 +317,6 @@ classes:
       - soil_type
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -946,7 +943,6 @@ classes:
           - value: "100"
 
       id:
-        required: true
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
@@ -1343,7 +1339,6 @@ classes:
 
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -1373,7 +1368,6 @@ classes:
       - analysis_type
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$"
           interpolated: true

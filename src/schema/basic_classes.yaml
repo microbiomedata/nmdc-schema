@@ -209,7 +209,6 @@ classes:
       - ref_biomaterial
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -414,7 +413,6 @@ classes:
       - websites
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -523,7 +521,6 @@ classes:
       description:
         required: true
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
           interpolated: true

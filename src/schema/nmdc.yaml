@@ -483,7 +483,6 @@ classes:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -497,7 +496,6 @@ classes:
       and colony picking.
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -526,7 +524,6 @@ classes:
       or maintained culture of the input organism.
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -572,7 +569,6 @@ classes:
           syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -616,7 +612,6 @@ classes:
           syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -645,7 +640,6 @@ classes:
           syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
           interpolated: true
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -677,7 +671,6 @@ classes:
       - sampled_portion
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -715,7 +708,6 @@ classes:
       - duration
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$"
       has_input:
@@ -753,7 +745,6 @@ classes:
       - volume
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -786,7 +777,6 @@ classes:
       substances_used:
         description: The substance(s) that a processed sample is stored in.
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:storpr-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -816,7 +806,6 @@ classes:
       - temperature
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
       has_input:
@@ -848,7 +837,6 @@ classes:
       - substances_used
     slot_usage:
       id:
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$"
           interpolated: true
