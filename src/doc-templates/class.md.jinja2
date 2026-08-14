@@ -2,7 +2,8 @@
 search:
   boost: {% if element.deprecated %}0.5{% else %}10.0{% endif %}
 ---
-{%- from "_macros.jinja2" import shorten -%}
+
+{% from "_macros.jinja2" import shorten %}
 
 {%- if element.title %}
     {%- set title = element.title ~ ' (' ~ element.name ~ ')' -%}
