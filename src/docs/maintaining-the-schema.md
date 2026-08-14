@@ -140,9 +140,19 @@ these gold_biosample_identifiers would all be web-resolvable.
 
 We can limit the values that go into any slot by using a `pattern` constraint. We can also use the `id_prefixes` constraint
 to limit the prefixes that are used in whatever slot has been declared to be the identifier of a class.
-(Attributes of a class are supposed to be cascaded to subclasses, via the `is_a` attribute.
-This may not always be the case though. In the nmdc-schema we have been using a belt-and-suspenders approach of 
-re-declaring the `uriorcurie` range )
+
+Constraints written in a class's `slot_usage` do cascade to subclasses through `is_a`, so there is no need to
+restate an inherited value defensively. An earlier version of this page described a belt-and-suspenders practice of
+re-declaring the `uriorcurie` range for that reason. No class does that, and restating an inherited value is now
+treated as something to remove: `src/scripts/report_redundant_slot_usage.py` finds them and
+`tests/test_no_redundant_slot_usage.py` fails CI when a new one appears.
+
+Restating costs something real. A class that repeats a value it already inherits stops tracking the parent, so a
+later edit upstream silently does not reach it.
+
+One inheritance path does drop values, and it is not this one: a *slot* that inherits from another slot through
+slot-level `is_a` loses a falsy value such as `minimum_value: 0`. That is [linkml issue 3845](https://github.com/linkml/linkml/issues/3845)
+and it does not affect class `slot_usage`.
 
 All prefixes used in the `id_prefixes` constraint must be defined in the schema. 
 We should have a standing practice of reflecting on the declared `id_prefixes`, and removing prefixes that haven't been used yet

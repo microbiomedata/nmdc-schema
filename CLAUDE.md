@@ -212,10 +212,17 @@ hand-edited schema YAML files under `src/schema/`. If they appear in
 generated files (like `mixs.yaml`), the build pipeline in
 `makefiles/mixs.Makefile` strips them via `yq eval`.
 
-The 12 readonly slots: `definition_uri`, `domain_of`, `from_schema`,
-`generation_date`, `imported_from`, `is_usage_slot`, `metamodel_version`,
-`owner`, `source_file`, `source_file_date`, `source_file_size`,
-`usage_slot_name`.
+The 12 readonly slots split across two metamodel element types. Tooling that
+filters on them needs the distinction; a list of all 12 read as slot-level has
+already produced a false bug report.
+
+On `SlotDefinition` (7), so reachable on a slot or in `slot_usage`:
+`definition_uri`, `domain_of`, `from_schema`, `imported_from`, `is_usage_slot`,
+`owner`, `usage_slot_name`.
+
+On `SchemaDefinition` (5), never present on a slot even after induction:
+`generation_date`, `metamodel_version`, `source_file`, `source_file_date`,
+`source_file_size`.
 
 Context: PR #2696 (dematerialize mixs.yaml), issue #2663.
 
