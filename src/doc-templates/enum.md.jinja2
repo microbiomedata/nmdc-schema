@@ -2,7 +2,8 @@
 search:
   boost: {% if element.deprecated %}0.5{% else %}2.0{% endif %}
 ---
-{%- from "_macros.jinja2" import shorten -%}
+
+{% from "_macros.jinja2" import shorten %}
 
 # Enum: {{ gen.name(element) }} {% if element.deprecated %} <span style="color: red;"><strong> (DEPRECATED) </strong> {% endif %}
 
