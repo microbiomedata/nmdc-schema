@@ -514,8 +514,6 @@ classes:
           interpolated: true
     close_mappings:
       - OBI:0000512
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/2978
 
   Culturing:
     class_uri: nmdc:Culturing
@@ -544,8 +542,6 @@ classes:
           interpolated: true
     close_mappings:
       - OBI:0001147
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/2978
 
   Extraction:
     class_uri: nmdc:Extraction

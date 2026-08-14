@@ -106,9 +106,6 @@ classes:
         with range OntologyClass. The intent is that these slots point to NcbiTaxon instances specifically,
         but LinkML does not currently support constraining the term slot of a ControlledIdentifiedTermValue
         to a particular OntologyClass subclass.
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/2959
-      - https://github.com/microbiomedata/nmdc-schema/issues/2971
     close_mappings:
       - biolink:OrganismTaxon
 
@@ -269,9 +266,7 @@ classes:
     exact_mappings:
       - COB:0000022
     see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/2959
       - https://github.com/microbiomedata/nmdc-schema/issues/2803
-      - https://github.com/microbiomedata/nmdc-schema/issues/2971
 
   PlannedProcess:
     description: >-
@@ -718,9 +713,6 @@ slots:
         The global range stays OntologyClass. Organism is currently the only class that
         narrows classified_as to NcbiTaxon, via slot_usage. Extending that narrowing to
         other classes is tracked in https://github.com/microbiomedata/nmdc-schema/issues/3016.
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/2959
-      - https://github.com/microbiomedata/nmdc-schema/issues/3016
     narrow_mappings:
       - biolink:in_taxon
 

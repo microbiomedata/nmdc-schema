@@ -64,8 +64,6 @@ subsets:
         permissible value has a subset here. expert_curation is awarded from
         ProvenanceMetadata.source_system_of_record rather than from slot
         completeness, so it has no badge_topic subset.
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/3228
   biogeochemistry:
     description: >-
       Biosample slots holding measured biogeochemical analytes: nitrogen,
@@ -74,9 +72,6 @@ subsets:
       awarded the biogeochemistry badge.
     annotations:
       badge_minimum_slots: 2
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/3228
-      - https://github.com/microbiomedata/nmdc-schema/issues/3326
     in_subset:
       - badge_topic
   host_information:
@@ -91,9 +86,6 @@ subsets:
         data portal shows only badges a sample has earned.
     annotations:
       badge_minimum_slots: 2
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/3228
-      - https://github.com/microbiomedata/nmdc-schema/issues/3326
     in_subset:
       - badge_topic
 
@@ -261,8 +253,6 @@ slots:
       "Categorical description of the sample's salinity. Examples: halophile,
         halotolerant, hypersaline, huryhaline"
     range: string
-    see_also:
-      - https://github.com/microbiomedata/nmdc-metadata/pull/297
     notes:
       - "maps to gold:salinity"
 

@@ -259,10 +259,12 @@ slots:
     notes:
       - makes it easier to read example data files
       - required for polymorphic MongoDB collections
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/1048
-      - https://github.com/microbiomedata/nmdc-schema/issues/1233
-      - https://github.com/microbiomedata/nmdc-schema/issues/248
+    comments:
+      - >-
+        Deprecating this slot was proposed and rejected: without it, a document
+        read back from a polymorphic MongoDB collection cannot be resolved to the
+        class it instantiates. It is required on every class for that reason,
+        rather than as a convention inherited from LinkML.
     structured_aliases:
       - literal_form: workflow_execution_class
         contexts:
