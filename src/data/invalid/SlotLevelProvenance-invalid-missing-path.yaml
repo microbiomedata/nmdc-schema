@@ -1,0 +1,12 @@
+# Invalid: required slot `path` is missing. Everything else is valid.
+id: nmdc:slp-00-nopath01
+type: nmdc:SlotLevelProvenance
+target_record_id: nmdc:bsm-13-amrnys72
+target_class: nmdc:Biosample
+operation: update
+previous_value: "ENVO:00002030"
+new_value: "ENVO:00000446"
+changed_at: "2026-04-03T14:22:00Z"
+agent_id: "0000-0001-2345-6789"
+agent_role: curator
+schema_version_at_change: "11.19.1"
