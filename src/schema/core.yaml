@@ -875,7 +875,6 @@ classes:
       - rna_isolate_meth
       
       ## MIxS Inspired fields
-      - collection_date_inc
       - collection_time
       - collection_time_inc
       - experimental_factor_other
