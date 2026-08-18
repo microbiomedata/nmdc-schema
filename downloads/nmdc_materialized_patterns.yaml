@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post9.dev0+385856ec8
+version: 11.23.0.post10.dev0+9baec25a1
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -21194,8 +21194,6 @@ classes:
     name: CreditAssociation
     description: This class supports binding associated researchers to studies. There
       will be at least a slot for a CRediT Contributor Role and for a person value.
-      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates
-      at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://casrai.org/credit/
