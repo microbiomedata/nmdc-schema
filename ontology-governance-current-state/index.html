@@ -1381,8 +1381,15 @@ carries <code>slot_uri: prov:qualifiedAssociation</code>, so the class and the s
 matched pair from PROV's qualified-relation pattern. Whether it should change was
 examined in <a href="https://github.com/microbiomedata/nmdc-schema/issues/3325">#3325</a> and
 left as-is.</p>
-<p>None of this is enforced. <code>tests/test_all_classes_assert_a_class_uri.py</code> checks
-only that a <code>class_uri</code> is declared, not what it is.</p>
+<p>The correspondence is enforced, but the choice is not. <code>type</code> is <code>required</code> with
+<code>range: uriorcurie</code>, and because it is <code>designates_type: true</code> the generated
+JSON Schema pins it to one permitted value per class, so a <code>Biosample</code> record
+whose <code>type</code> reads <code>nmdc:Study</code> fails validation, and a <code>CreditAssociation</code>
+record must carry exactly <code>prov:Association</code>. What nothing checks is whether a
+foreign <code>class_uri</code> should have been picked in the first place:
+<code>tests/test_all_classes_assert_a_class_uri.py</code> asserts only that a <code>class_uri</code>
+is declared, not what it is. So a new concrete class could take a foreign URI
+and every downstream artifact would enforce that choice faithfully.</p>
 <hr />
 <h2 id="active-work-on-ontology-alignment">Active work on ontology alignment</h2>
 <p>The following open issues and PRs are doing systematic inventory and discovery
