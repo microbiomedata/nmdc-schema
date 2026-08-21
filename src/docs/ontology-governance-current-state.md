@@ -250,8 +250,15 @@ identity in RDF and OWL.
 The second is how far a wrong answer travels, which depends on whether the class
 is abstract. `type` is `designates_type: true`
 (`src/schema/attribute_values.yaml`), so LinkML writes a class's `class_uri` into
-every instance of it. An abstract class has no instances, so its `class_uri`
-never reaches data. `PlannedProcess` is abstract. `CreditAssociation` is not, so
+every instance of it. An abstract class is not instantiated
+directly, so its `class_uri` does not reach production data. `PlannedProcess` is abstract, and no record in
+production carries `OBI:0000011`; every `PlannedProcess` descendant in the data
+carries its own concrete `nmdc:` type. That is a modelling convention rather
+than something the build enforces: `abstract: true` does not stop the generated
+Python dataclass or the JSON Schema definition from accepting a direct instance,
+so the guarantee comes from how data is produced, not from validation.
+
+`CreditAssociation` is not abstract, so
 every credit association record in production carries `type: prov:Association`
 rather than `nmdc:CreditAssociation`. It is the only class whose `class_uri`
 reaches data this way.
