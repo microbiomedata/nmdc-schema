@@ -1356,8 +1356,7 @@ abstract. <code>type</code> is <code>designates_type: true</code>, so LinkML wri
 foreign <code>class_uri</code> there is invisible to data. <code>PlannedProcess</code> is abstract.
 <code>CreditAssociation</code> is not, and every credit association record in production
 carries <code>type: prov:Association</code> rather than <code>nmdc:CreditAssociation</code>, making it
-the only place a foreign URI appears in NMDC data. (Criterion identified by
-Katherine Heal, 2026-08-20.)</p>
+the only place a foreign URI appears in NMDC data.</p>
 <p><code>CreditAssociation</code> is deliberate rather than incidental: <code>has_credit_associations</code>
 carries <code>slot_uri: prov:qualifiedAssociation</code>, so the class and the slot are a
 matched pair from PROV's qualified-relation pattern. Whether it should change was
