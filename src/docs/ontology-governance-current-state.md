@@ -225,6 +225,37 @@ enforcement *could* work elsewhere.
 `PlannedProcess` but is deprecated in OBI; the recommended replacement is
 `COB:0000035`. COB is not yet declared in the schema. See [#2843](https://github.com/microbiomedata/nmdc-schema/issues/2843).
 
+### Foreign `class_uri` and `slot_uri` values
+
+Counts as of 2026-08-20. Foreign URIs are the norm for slots and the exception
+for classes.
+
+All 502 slots carrying an explicit `slot_uri` use a foreign URI; none is
+`nmdc:`. 495 come from MIxS. The other seven are `dcterms:description`,
+`dcterms:isPartOf`, `rdf:type`, `schema:email`, `wgs84:lat`, `wgs84:long` and
+`prov:qualifiedAssociation`.
+
+Only two of the 80 classes have a foreign `class_uri`: `PlannedProcess`
+(`OBI:0000011`, above) and `CreditAssociation` (`prov:Association`).
+
+Whether a foreign `class_uri` reaches data depends on whether the class is
+abstract. `type` is `designates_type: true`, so LinkML writes a class's
+`class_uri` into every instance of it. An abstract class has no instances, so a
+foreign `class_uri` there is invisible to data. `PlannedProcess` is abstract.
+`CreditAssociation` is not, and every credit association record in production
+carries `type: prov:Association` rather than `nmdc:CreditAssociation`, making it
+the only place a foreign URI appears in NMDC data. (Criterion identified by
+Katherine Heal, 2026-08-20.)
+
+`CreditAssociation` is deliberate rather than incidental: `has_credit_associations`
+carries `slot_uri: prov:qualifiedAssociation`, so the class and the slot are a
+matched pair from PROV's qualified-relation pattern. Whether it should change was
+examined in [#3325](https://github.com/microbiomedata/nmdc-schema/issues/3325) and
+left as-is.
+
+None of this is enforced. `tests/test_all_classes_assert_a_class_uri.py` checks
+only that a `class_uri` is declared, not what it is.
+
 ---
 
 ## Active work on ontology alignment
