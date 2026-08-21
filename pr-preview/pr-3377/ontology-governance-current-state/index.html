@@ -1363,8 +1363,13 @@ is abstract. <code>type</code> is <code>designates_type: true</code>
 every instance of it. An abstract class has no instances, so its <code>class_uri</code>
 never reaches data. <code>PlannedProcess</code> is abstract. <code>CreditAssociation</code> is not, so
 every credit association record in production carries <code>type: prov:Association</code>
-rather than <code>nmdc:CreditAssociation</code>, making it the only place a foreign URI
-appears in NMDC data.</p>
+rather than <code>nmdc:CreditAssociation</code>. It is the only class whose <code>class_uri</code>
+reaches data this way.</p>
+<p>This is narrower than it may sound. Foreign CURIEs are common in NMDC data
+generally: every biosample carries an ENVO term in <code>env_broad_scale</code>, and
+<code>has_function</code> values are drawn from fifteen external prefixes. What is unusual
+about <code>CreditAssociation</code> is a foreign URI serving as a class identity in <code>type</code>,
+not a foreign URI appearing in a record.</p>
 <p><code>CreditAssociation</code> is deliberate rather than incidental: <code>has_credit_associations</code>
 carries <code>slot_uri: prov:qualifiedAssociation</code>, so the class and the slot are a
 matched pair from PROV's qualified-relation pattern. Whether it should change was
