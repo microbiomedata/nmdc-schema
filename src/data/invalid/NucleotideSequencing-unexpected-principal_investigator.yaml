@@ -1,4 +1,4 @@
-# This record is invalide because it includes the slot `principal_investigator` which has been unbound from the class
+# This record is invalid because it includes the slot `principal_investigator` which has been unbound from the class
 id: nmdc:dgns-11-credit0
 name: Amplicon sequencing with leftover PI slot
 type: nmdc:NucleotideSequencing

@@ -60,11 +60,6 @@ class Migrator(MigratorBase):
         {'id': 'nmdc:sty-2'}
         """
         if "principal_investigator" in study:
-            self.logger.info(
-                "Dropping principal_investigator from %s without copying; "
-                "Study PI values are owned by issues#1837.",
-                study.get("id"),
-            )
             study.pop("principal_investigator")
         return study
 
