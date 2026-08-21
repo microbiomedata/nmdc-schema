@@ -6506,7 +6506,7 @@
         },
         "CreditAssociation": {
             "additionalProperties": false,
-            "description": "This class supports binding associated researchers to a study or a data generation. There will be at least a slot for a CRediT Contributor Role and for a person value.",
+            "description": "This class supports binding associated researchers to a study or a data generation record. There will be at least a slot for a CRediT Contributor Role and for a person value.",
             "properties": {
                 "applied_roles": {
                     "items": {
@@ -6917,7 +6917,7 @@
                     ]
                 },
                 "has_credit_associations": {
-                    "description": "This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study or data generation. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "description": "This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
                     "items": {
                         "$ref": "#/$defs/CreditAssociation"
                     },
@@ -10549,7 +10549,7 @@
                     ]
                 },
                 "has_credit_associations": {
-                    "description": "This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study or data generation. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "description": "This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
                     "items": {
                         "$ref": "#/$defs/CreditAssociation"
                     },
@@ -13787,7 +13787,7 @@
                     ]
                 },
                 "has_credit_associations": {
-                    "description": "This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study or data generation. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "description": "This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
                     "items": {
                         "$ref": "#/$defs/CreditAssociation"
                     },
@@ -16600,7 +16600,7 @@
                     ]
                 },
                 "has_credit_associations": {
-                    "description": "This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study or data generation. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "description": "This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
                     "items": {
                         "$ref": "#/$defs/CreditAssociation"
                     },
@@ -17965,6 +17965,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post16.dev0+a946731ef"
+    "version": "11.23.0.post17.dev0+00e6f5117"
 }
 

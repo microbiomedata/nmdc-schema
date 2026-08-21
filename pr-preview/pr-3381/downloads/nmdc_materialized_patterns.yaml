@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post16.dev0+a946731ef
+version: 11.23.0.post17.dev0+00e6f5117
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -8380,11 +8380,10 @@ slots:
         tag: tooltip
         value: Researchers associated with this study or data generation, including
           principal investigators.
-    description: 'This slot links a study or a data generation to a credit association.
+    description: This slot links a study or a data generation to a credit association.
       The credit association will be linked to a person value and to a CRediT Contributor
-      Roles term. Overall semantics: person should get credit X for their participation
-      in the study or data generation. Principal investigators are recorded here with
-      applied_roles including Principal Investigator.'
+      Roles term. Principal investigators are recorded here with applied_roles including
+      Principal Investigator.
     examples:
     - description: A principal investigator recorded as a credit association.
       object:
@@ -21210,8 +21209,8 @@ classes:
   CreditAssociation:
     name: CreditAssociation
     description: This class supports binding associated researchers to a study or
-      a data generation. There will be at least a slot for a CRediT Contributor Role
-      and for a person value.
+      a data generation record. There will be at least a slot for a CRediT Contributor
+      Role and for a person value.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://casrai.org/credit/
