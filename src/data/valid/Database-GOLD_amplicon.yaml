@@ -3,10 +3,14 @@ data_generation_set:
   name: Targeted gene survey of Sterile water microbial communities from research facility in San Diego, CA, USA - 13114.BLANK4.3D.18S
   description: Amplicon sequencing of Sterile water microbial communities from research facility in San Diego, CA, USA
   processing_institution: UCSD
-  principal_investigator:
-    name: Janet Jansson
-    email: janet.jansson@pnnl.gov
-    type: nmdc:PersonValue
+  has_credit_associations:
+    - applies_to_person:
+        name: Janet Jansson
+        email: janet.jansson@pnnl.gov
+        type: nmdc:PersonValue
+      applied_roles:
+        - Principal Investigator
+      type: prov:Association
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
     add_date: '2022-04-02T00:00:00Z'

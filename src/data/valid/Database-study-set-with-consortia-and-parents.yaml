@@ -10,13 +10,6 @@ study_set:
     gold_study_identifiers:
       - gold:Gs0144570
       - gold:Gs0161344
-    principal_investigator:
-      type: nmdc:PersonValue
-      has_raw_value: Kate Thibault
-      email: kthibault@battelleecology.org
-      name: Kate Thibault
-      orcid: orcid:0000-0003-3477-6424
-      profile_image_url: https://portal.nersc.gov/project/m3408/profile_images/thibault_katy.jpg
     title: "National Ecological Observatory Network: soil metagenomes (DP1.10107.001)"
     type: nmdc:Study
     websites:
@@ -43,12 +36,6 @@ study_set:
       - https://data.neonscience.org/api/v0/documents/NEON_metagenomes_userGuide_vE.pdf
     funding_sources:
       - "NSF#1724433 National Ecological Observatory Network: Operations Activities"
-    principal_investigator:
-      type: nmdc:PersonValue
-      name: Kate Thibault
-      email: kthibault@battelleecology.org
-      orcid: orcid:0000-0003-3477-6424
-      has_raw_value: Kate Thibault
     study_image:
       - url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
         type: nmdc:ImageValue
@@ -66,11 +53,6 @@ study_set:
       - https://data.neonscience.org/api/v0/documents/NEON_metagenomes_userGuide_vE.pdf
     funding_sources:
       - "NSF#1724433 National Ecological Observatory Network: Operations Activities"
-    principal_investigator:
-      type: nmdc:PersonValue
-      name: Kate Thibault
-      email: kthibault@battelleecology.org
-      orcid: orcid:0000-0003-3477-6424
     study_image:
       - url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
         type: nmdc:ImageValue
