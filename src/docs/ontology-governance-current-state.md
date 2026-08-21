@@ -238,13 +238,23 @@ All 502 slots carrying an explicit `slot_uri` use a foreign URI; none is
 Only two of the 80 classes have a foreign `class_uri`: `PlannedProcess`
 (`OBI:0000011`, above) and `CreditAssociation` (`prov:Association`).
 
-Whether a foreign `class_uri` reaches data depends on whether the class is
-abstract. `type` is `designates_type: true`, so LinkML writes a class's
-`class_uri` into every instance of it. An abstract class has no instances, so a
-foreign `class_uri` there is invisible to data. `PlannedProcess` is abstract.
-`CreditAssociation` is not, and every credit association record in production
-carries `type: prov:Association` rather than `nmdc:CreditAssociation`, making it
-the only place a foreign URI appears in NMDC data.
+Two separate questions arise here and are easily conflated.
+
+The first is whether the foreign term is the right one. A foreign `class_uri` is
+asserted where the external term is judged a faithful match for the NMDC class,
+on the view that reusing an established term beats minting a local one. That
+judgement is made per term and is not recorded anywhere per class. It applies
+whether or not the value is ever serialised, because `class_uri` is the class's
+identity in RDF and OWL.
+
+The second is how far a wrong answer travels, which depends on whether the class
+is abstract. `type` is `designates_type: true`
+(`src/schema/attribute_values.yaml`), so LinkML writes a class's `class_uri` into
+every instance of it. An abstract class has no instances, so its `class_uri`
+never reaches data. `PlannedProcess` is abstract. `CreditAssociation` is not, so
+every credit association record in production carries `type: prov:Association`
+rather than `nmdc:CreditAssociation`, making it the only place a foreign URI
+appears in NMDC data.
 
 `CreditAssociation` is deliberate rather than incidental: `has_credit_associations`
 carries `slot_uri: prov:qualifiedAssociation`, so the class and the slot are a
