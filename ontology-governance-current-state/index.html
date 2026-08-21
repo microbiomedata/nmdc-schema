@@ -813,6 +813,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#foreign-class_uri-and-slot_uri-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Foreign class_uri and slot_uri values
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1330,6 +1341,48 @@ enforcement <em>could</em> work elsewhere.</p>
 <p><code>OBI:0000011</code> (planned process) is used as the <code>class_uri</code> for
 <code>PlannedProcess</code> but is deprecated in OBI; the recommended replacement is
 <code>COB:0000035</code>. COB is not yet declared in the schema. See <a href="https://github.com/microbiomedata/nmdc-schema/issues/2843">#2843</a>.</p>
+<h3 id="foreign-class_uri-and-slot_uri-values">Foreign <code>class_uri</code> and <code>slot_uri</code> values</h3>
+<p>Counts as of 2026-08-20. Foreign URIs are the norm for slots and the exception
+for classes.</p>
+<p>All 502 slots carrying an explicit <code>slot_uri</code> use a foreign URI; none is
+<code>nmdc:</code>. 495 come from MIxS. The other seven are <code>dcterms:description</code>,
+<code>dcterms:isPartOf</code>, <code>rdf:type</code>, <code>schema:email</code>, <code>wgs84:lat</code>, <code>wgs84:long</code> and
+<code>prov:qualifiedAssociation</code>.</p>
+<p>Only two of the 80 classes have a foreign <code>class_uri</code>: <code>PlannedProcess</code>
+(<code>OBI:0000011</code>, above) and <code>CreditAssociation</code> (<code>prov:Association</code>).</p>
+<p>Two separate questions arise here and are easily conflated.</p>
+<p>The first is whether the foreign term is the right one. A foreign <code>class_uri</code> is
+asserted where the external term is judged a faithful match for the NMDC class,
+on the view that reusing an established term beats minting a local one. That
+judgement is made per term and is not recorded anywhere per class. It applies
+whether or not the value is ever serialised, because <code>class_uri</code> is the class's
+identity in RDF and OWL.</p>
+<p>The second is how far a wrong answer travels, which depends on whether the class
+is abstract. <code>type</code> is <code>designates_type: true</code>
+(<code>src/schema/attribute_values.yaml</code>), so LinkML writes a class's <code>class_uri</code> into
+every instance of it. An abstract class is not instantiated
+directly, so its <code>class_uri</code> does not reach production data. <code>PlannedProcess</code> is abstract, and no record in
+production carries <code>OBI:0000011</code>; every <code>PlannedProcess</code> descendant in the data
+carries its own concrete <code>nmdc:</code> type. That is a modelling convention rather
+than something the build enforces: <code>abstract: true</code> does not stop the generated
+Python dataclass or the JSON Schema definition from accepting a direct instance,
+so the guarantee comes from how data is produced, not from validation.</p>
+<p><code>CreditAssociation</code> is not abstract, so
+every credit association record in production carries <code>type: prov:Association</code>
+rather than <code>nmdc:CreditAssociation</code>. It is the only class whose <code>class_uri</code>
+reaches data this way.</p>
+<p>This is narrower than it may sound. Foreign CURIEs are common in NMDC data
+generally: every biosample carries an ENVO term in <code>env_broad_scale</code>, and
+<code>has_function</code> values are drawn from fifteen external prefixes. What is unusual
+about <code>CreditAssociation</code> is a foreign URI serving as a class identity in <code>type</code>,
+not a foreign URI appearing in a record.</p>
+<p><code>CreditAssociation</code> is deliberate rather than incidental: <code>has_credit_associations</code>
+carries <code>slot_uri: prov:qualifiedAssociation</code>, so the class and the slot are a
+matched pair from PROV's qualified-relation pattern. Whether it should change was
+examined in <a href="https://github.com/microbiomedata/nmdc-schema/issues/3325">#3325</a> and
+left as-is.</p>
+<p>None of this is enforced. <code>tests/test_all_classes_assert_a_class_uri.py</code> checks
+only that a <code>class_uri</code> is declared, not what it is.</p>
 <hr />
 <h2 id="active-work-on-ontology-alignment">Active work on ontology alignment</h2>
 <p>The following open issues and PRs are doing systematic inventory and discovery
