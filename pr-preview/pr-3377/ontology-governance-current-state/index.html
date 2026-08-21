@@ -1350,13 +1350,21 @@ for classes.</p>
 <code>prov:qualifiedAssociation</code>.</p>
 <p>Only two of the 80 classes have a foreign <code>class_uri</code>: <code>PlannedProcess</code>
 (<code>OBI:0000011</code>, above) and <code>CreditAssociation</code> (<code>prov:Association</code>).</p>
-<p>Whether a foreign <code>class_uri</code> reaches data depends on whether the class is
-abstract. <code>type</code> is <code>designates_type: true</code>, so LinkML writes a class's
-<code>class_uri</code> into every instance of it. An abstract class has no instances, so a
-foreign <code>class_uri</code> there is invisible to data. <code>PlannedProcess</code> is abstract.
-<code>CreditAssociation</code> is not, and every credit association record in production
-carries <code>type: prov:Association</code> rather than <code>nmdc:CreditAssociation</code>, making it
-the only place a foreign URI appears in NMDC data.</p>
+<p>Two separate questions arise here and are easily conflated.</p>
+<p>The first is whether the foreign term is the right one. A foreign <code>class_uri</code> is
+asserted where the external term is judged a faithful match for the NMDC class,
+on the view that reusing an established term beats minting a local one. That
+judgement is made per term and is not recorded anywhere per class. It applies
+whether or not the value is ever serialised, because <code>class_uri</code> is the class's
+identity in RDF and OWL.</p>
+<p>The second is how far a wrong answer travels, which depends on whether the class
+is abstract. <code>type</code> is <code>designates_type: true</code>
+(<code>src/schema/attribute_values.yaml</code>), so LinkML writes a class's <code>class_uri</code> into
+every instance of it. An abstract class has no instances, so its <code>class_uri</code>
+never reaches data. <code>PlannedProcess</code> is abstract. <code>CreditAssociation</code> is not, so
+every credit association record in production carries <code>type: prov:Association</code>
+rather than <code>nmdc:CreditAssociation</code>, making it the only place a foreign URI
+appears in NMDC data.</p>
 <p><code>CreditAssociation</code> is deliberate rather than incidental: <code>has_credit_associations</code>
 carries <code>slot_uri: prov:qualifiedAssociation</code>, so the class and the slot are a
 matched pair from PROV's qualified-relation pattern. Whether it should change was
