@@ -1,0 +1,12 @@
+# This record is invalide because it includes the slot `principal_investigator` which has been unbound from the class
+id: nmdc:dgns-11-credit0
+name: Amplicon sequencing with leftover PI slot
+type: nmdc:NucleotideSequencing
+analyte_category: amplicon_sequencing_assay
+has_input:
+  - nmdc:bsm-11-credit0
+associated_studies:
+  - nmdc:sty-11-credit0
+principal_investigator:
+  type: nmdc:PersonValue
+  name: Janet Jansson

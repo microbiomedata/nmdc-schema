@@ -298,7 +298,7 @@ classes:
       - credit table
       - associated researchers
     description: >-
-      This class supports binding associated researchers to studies.
+      This class supports binding associated researchers to a study or a data generation.
       There will be at least a slot for a CRediT Contributor Role and for a person value.
     slots:
       - applies_to_person
@@ -397,7 +397,6 @@ classes:
       - notes
       - objective
       - part_of
-      - principal_investigator
       - protocol_link
       - study_category
       - study_image
@@ -564,7 +563,7 @@ classes:
       - analyte_category
       - associated_studies
       - instrument_used
-      - principal_investigator
+      - has_credit_associations
       - instrument_instance_specifier
       - provenance_metadata
     slot_usage:
@@ -757,6 +756,12 @@ slots:
       - PI
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
+    deprecated: >-
+      Unbound from Study and DataGeneration. Identify PIs with has_credit_associations
+      using the CreditEnum value Principal Investigator.
+    deprecated_element_has_possible_replacement: has_credit_associations
+    last_updated_on: "2026-08-21T00:00:00Z"
+    modified_by: ORCID:0000-0002-4504-1039
   was_generated_by:
     range: DataEmitterProcess
     mappings:
@@ -791,13 +796,24 @@ slots:
     range: CreditAssociation
     multivalued: true
     inlined_as_list: true
-    description:
-      "This slot links a study to a credit association.  The credit association
-      will be linked to a person value and to a CRediT Contributor Roles term. Overall
-      semantics: person should get credit X for their participation in the study"
+    description: >-
+      This slot links a study or a data generation to a credit association. The credit
+      association will be linked to a person value and to a CRediT Contributor Roles
+      term. Overall semantics: person should get credit X for their participation in
+      the study or data generation. Principal investigators are recorded here with
+      applied_roles including Principal Investigator.
     slot_uri: prov:qualifiedAssociation
     annotations:
-      tooltip: Other researchers associated with this study.
+      tooltip: Researchers associated with this study or data generation, including principal investigators.
+    examples:
+      - object:
+          type: prov:Association
+          applies_to_person:
+            type: nmdc:PersonValue
+            name: Janet Jansson
+          applied_roles:
+            - Principal Investigator
+        description: A principal investigator recorded as a credit association.
   protocol_link:
     range: Protocol
   study_category:

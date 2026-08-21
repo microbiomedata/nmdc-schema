@@ -1,4 +1,56 @@
 biosample_set:
+- id: nmdc:bsm-99-2a58f2
+  type: nmdc:Biosample
+  name: MFD00004
+  associated_studies:
+  - nmdc:sty-99-ebd802
+  env_broad_scale:
+    type: nmdc:ControlledIdentifiedTermValue
+    term:
+      id: ENVO:01000177
+      type: nmdc:OntologyClass
+      name: grassland biome
+  env_local_scale:
+    type: nmdc:ControlledIdentifiedTermValue
+    term:
+      id: ENVO:01001811
+      type: nmdc:OntologyClass
+      name: temperate grassland
+  env_medium:
+    type: nmdc:ControlledIdentifiedTermValue
+    term:
+      id: ENVO:00001998
+      type: nmdc:OntologyClass
+      name: soil
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2026-06-11T22:13:20.151566+00:00'
+    git_url: https://github.com/microbiomedata/nmdc-ingest-agent
+    mod_date: '2026-06-11T22:13:20.151566+00:00'
+    version: 0.1.0
+    source_system_of_record: NCBI
+  insdc_biosample_identifiers:
+  - biosample:SAMN39864936
+  collection_date:
+    type: nmdc:TimestampValue
+    has_raw_value: '2019-08-28'
+  env_package:
+    type: nmdc:TextValue
+    has_raw_value: Metagenome.environmental.1.0
+  geo_loc_name:
+    type: nmdc:TextValue
+    has_raw_value: Denmark
+  lat_lon:
+    type: nmdc:GeolocationValue
+    latitude: 55.66642
+    longitude: 9.27156
+  samp_name: MFD00004
+  samp_taxon_id:
+    type: nmdc:ControlledIdentifiedTermValue
+    term:
+      id: NCBITaxon:410658
+      type: nmdc:OntologyClass
+      name: soil metagenome
 - id: nmdc:bsm-99-dtTMNb
   type: nmdc:Biosample
   name: Lithgow State Coal Mine Calcium nutrients (early)
@@ -208,7 +260,7 @@ biosample_set:
   sample_collection_site: Lithgow State Coal Mine
 - id: nmdc:bsm-99-dtTMNb2
   type: nmdc:Biosample
-  name: my_awesome_biosample_1
+  name: my_awesome_biosample
   associated_studies:
   - nmdc:sty-00-abc123
   env_broad_scale:
@@ -285,7 +337,7 @@ biosample_set:
   - 00:02:02
 - id: nmdc:bsm-99-dtTMNb3
   type: nmdc:Biosample
-  name: my_awesome_biosample_4
+  name: my_awesome_biosample
   associated_studies:
   - nmdc:sty-00-abc123
   env_broad_scale:
@@ -480,6 +532,29 @@ biosample_set:
   collected_from: nmdc:frsite-99-h2mYFG
   gold_biosample_identifiers:
   - gold:Gb0291583
+- id: nmdc:bsm-99-dss5dg
+  type: nmdc:Biosample
+  name: Example soil biosample
+  associated_studies:
+  - nmdc:sty-99-md8u3e
+  env_broad_scale:
+    type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+      type: nmdc:OntologyClass
+  env_local_scale:
+    type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+      type: nmdc:OntologyClass
+  env_medium:
+    type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+      type: nmdc:OntologyClass
 - id: nmdc:bsm-99-dtTMNb4
   type: nmdc:Biosample
   name: real biosample from the field
@@ -528,7 +603,7 @@ biosample_set:
       type: nmdc:OntologyClass
 - id: nmdc:bsm-99-abcdef1
   type: nmdc:Biosample
-  name: awesome_biosample_1
+  name: my_awesome_biosample
   associated_studies:
   - nmdc:sty-00-abc123
   env_broad_scale:
@@ -551,7 +626,7 @@ biosample_set:
       type: nmdc:OntologyClass
 - id: nmdc:bsm-99-abcdef2
   type: nmdc:Biosample
-  name: awesome_biosample_2
+  name: wind river sept 24
   associated_studies:
   - nmdc:sty-00-abc123
   env_broad_scale:
@@ -574,7 +649,7 @@ biosample_set:
       type: nmdc:OntologyClass
 - id: nmdc:bsm-99-abcdef3
   type: nmdc:Biosample
-  name: awesome_biosample_3
+  name: my_awesome_biosample_2
   associated_studies:
   - nmdc:sty-00-abc123
   env_broad_scale:
@@ -597,7 +672,7 @@ biosample_set:
       type: nmdc:OntologyClass
 - id: nmdc:bsm-99-abcdef12
   type: nmdc:Biosample
-  name: awesome_biosample_4
+  name: my_awesome_sample_1
   associated_studies:
   - nmdc:sty-11-34xj1150
   env_broad_scale:
@@ -620,7 +695,7 @@ biosample_set:
       type: nmdc:OntologyClass
 - id: nmdc:bsm-99-abcdef22
   type: nmdc:Biosample
-  name: awesome_biosample_5
+  name: my_awesome_sample_2
   associated_studies:
   - nmdc:sty-11-34xj1150
   env_broad_scale:
@@ -643,7 +718,7 @@ biosample_set:
       type: nmdc:OntologyClass
 - id: nmdc:bsm-99-abcdef32
   type: nmdc:Biosample
-  name: awesome_biosample_6
+  name: my_awesome_sample_3
   associated_studies:
   - nmdc:sty-11-34xj1150
   env_broad_scale:
@@ -806,6 +881,38 @@ biosample_set:
   location: University of Washington, Seatle, WA, United States
   ncbi_taxonomy_name: rhizosphere metagenome
   sample_collection_site: Peat Soil
+- id: nmdc:bsm-99-aqx88e
+  type: nmdc:Biosample
+  name: T4 phage lysate from E. coli K-12 MG1655
+  associated_studies:
+  - nmdc:sty-99-r5xs9t
+  env_broad_scale:
+    type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: ENVO:01000254
+    term:
+      id: ENVO:01000254
+      type: nmdc:OntologyClass
+  env_local_scale:
+    type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: ENVO:01000748
+    term:
+      id: ENVO:01000748
+      type: nmdc:OntologyClass
+  env_medium:
+    type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: ENVO:00002006
+    term:
+      id: ENVO:00002006
+      type: nmdc:OntologyClass
+  host_genus: Escherichia
+  host_species: coli
+  host_strain: K-12 MG1655
+  host_taxid:
+    type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: NCBITaxon:511145
+    term:
+      id: NCBITaxon:511145
+      type: nmdc:OntologyClass
 calibration_set:
 - id: nmdc:calib-99-zUCd5Q
   type: nmdc:CalibrationInformation
@@ -951,13 +1058,17 @@ data_generation_set:
   analyte_category: amplicon_sequencing_assay
   associated_studies:
   - nmdc:sty-11-547rwq94
-  principal_investigator:
-    type: nmdc:PersonValue
-    email: janet.jansson@pnnl.gov
-    name: Janet Jansson
+  has_credit_associations:
+  - applies_to_person:
+      type: nmdc:PersonValue
+      email: janet.jansson@pnnl.gov
+      name: Janet Jansson
+    applied_roles:
+    - Principal Investigator
+    type: prov:Association
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2022-04-02T00:00:00Z'
+    add_date: '2022-04-02T00:00:00+00:00'
   insdc_experiment_identifiers:
   - insdc.sra:ERX4806872
 - id: nmdc:dgms-99-zUCd5N
@@ -985,6 +1096,29 @@ data_generation_set:
   - nmdc:sty-00-555xxx
   eluent_introduction_category: direct_infusion_syringe
   has_mass_spectrometry_configuration: nmdc:mscon-11-e1vant11
+- id: nmdc:dgns-11-abc123
+  type: nmdc:NucleotideSequencing
+  name: Run SRR27943095 for experiment SRX23599633 - MFD00004
+  has_input:
+  - nmdc:procsm-99-2a58f3
+  has_output:
+  - nmdc:dobj-99-abc123
+  analyte_category: metagenome
+  associated_studies:
+  - nmdc:sty-99-ebd802
+  instrument_used:
+  - nmdc:inst-14-mr4r2w
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2026-06-11T22:13:20.151566+00:00'
+    git_url: https://github.com/microbiomedata/nmdc-ingest-agent
+    mod_date: '2026-06-11T22:13:20.151566+00:00'
+    version: 0.1.0
+    source_system_of_record: NCBI
+  insdc_bioproject_identifiers:
+  - bioproject:PRJNA1071982
+  insdc_experiment_identifiers:
+  - insdc.sra:SRX23599633
 - id: nmdc:dgns-11-abcd2
   type: nmdc:NucleotideSequencing
   name: 16s amplicon sequencing of nmdc:bsm-99-dtTMNb
@@ -995,6 +1129,75 @@ data_generation_set:
   - nmdc:sty-00-abc123
   insdc_experiment_identifiers:
   - insdc.sra:SRX26008237
+- id: nmdc:dgns-22-abc123
+  type: nmdc:NucleotideSequencing
+  name: Run SRR28010109 for experiment SRX23662642 - MFD04222
+  has_input:
+  - nmdc:procsm-22-2a58f3
+  has_output:
+  - nmdc:dobj-22-abc123
+  analyte_category: amplicon_sequencing_assay
+  associated_studies:
+  - nmdc:sty-99-ebd802
+  instrument_used:
+  - nmdc:inst-14-mr4abc
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2026-06-11T22:13:20.151566+00:00'
+    git_url: https://github.com/microbiomedata/nmdc-ingest-agent
+    mod_date: '2026-06-11T22:13:20.151566+00:00'
+    version: 0.1.0
+    source_system_of_record: NCBI
+  insdc_bioproject_identifiers:
+  - bioproject:PRJNA1071982
+  insdc_experiment_identifiers:
+  - insdc.sra:SRX23662642
+- id: nmdc:dgns-11-qwe123
+  type: nmdc:NucleotideSequencing
+  name: Run SRR27974041 for experiment SRX23627676 - MFD01204
+  has_input:
+  - nmdc:procsm-99-qwe8f3
+  has_output:
+  - nmdc:dobj-99-qwe123
+  analyte_category: amplicon_sequencing_assay
+  associated_studies:
+  - nmdc:sty-99-qwe802
+  instrument_used:
+  - nmdc:inst-14-mr4r2w
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2026-06-11T22:13:20.151566+00:00'
+    git_url: https://github.com/microbiomedata/nmdc-ingest-agent
+    mod_date: '2026-06-11T22:13:20.151566+00:00'
+    version: 0.1.0
+    source_system_of_record: NCBI
+  insdc_bioproject_identifiers:
+  - bioproject:PRJNA1071982
+  insdc_experiment_identifiers:
+  - insdc.sra:SRX23627676
+- id: nmdc:dgns-11-tre123
+  type: nmdc:NucleotideSequencing
+  name: Run SRR27974040 for experiment SRX23627677 - MFD01204
+  has_input:
+  - nmdc:procsm-99-tre8f3
+  has_output:
+  - nmdc:dobj-99-tre123
+  analyte_category: amplicon_sequencing_assay
+  associated_studies:
+  - nmdc:sty-99-tre802
+  instrument_used:
+  - nmdc:inst-14-mr4r2w
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2026-06-11T22:13:20.151566+00:00'
+    git_url: https://github.com/microbiomedata/nmdc-ingest-agent
+    mod_date: '2026-06-11T22:13:20.151566+00:00'
+    version: 0.1.0
+    source_system_of_record: NCBI
+  insdc_bioproject_identifiers:
+  - bioproject:PRJNA1071982
+  insdc_experiment_identifiers:
+  - insdc.sra:SRX23627677
 - id: nmdc:dgns-99-zUCd5N
   type: nmdc:NucleotideSequencing
   name: Thawing permafrost microbial communities from the Arctic, studying carbon
@@ -1011,8 +1214,8 @@ data_generation_set:
   - nmdc:sty-00-555xxx
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30T00:00:00Z'
-    mod_date: '2020-05-22T00:00:00Z'
+    add_date: '2014-10-30T00:00:00+00:00'
+    mod_date: '2020-05-22T00:00:00+00:00'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 712P3D
 - id: nmdc:dgns-99-gKlQlF2
@@ -1031,8 +1234,8 @@ data_generation_set:
   - nmdc:sty-00-555xxx
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30T00:00:00Z'
-    mod_date: '2020-05-22T00:00:00Z'
+    add_date: '2014-10-30T00:00:00+00:00'
+    mod_date: '2020-05-22T00:00:00+00:00'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 612S3M
 - id: nmdc:dgns-99-5kgIJR
@@ -1051,8 +1254,8 @@ data_generation_set:
   - nmdc:sty-00-555xxx
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30T00:00:00Z'
-    mod_date: '2020-05-22T00:00:00Z'
+    add_date: '2014-10-30T00:00:00+00:00'
+    mod_date: '2020-05-22T00:00:00+00:00'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 712S3S
 - id: nmdc:omprc-99-123456
@@ -1070,8 +1273,174 @@ data_generation_set:
   - nmdc:sty-00-123456
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30T00:00:00Z'
-    mod_date: '2020-05-22T00:00:00Z'
+    add_date: '2014-10-30T00:00:00+00:00'
+    mod_date: '2020-05-22T00:00:00+00:00'
+- id: nmdc:dgns-11-isot01
+  type: nmdc:NucleotideSequencing
+  name: Isolate transcriptome sequencing for sample name isolate transcriptome interleaved
+    url
+  has_input:
+  - nmdc:bsm-11-adi12d
+  has_output:
+  - nmdc:dobj-00-isot01
+  processing_institution: UCSD
+  protocol_link:
+    type: nmdc:Protocol
+    url: https://example.com/protocol.html
+  analyte_category: isolate_transcriptome
+  associated_studies:
+  - nmdc:sty-00-555xxx
+  instrument_used:
+  - nmdc:inst-14-njkx0e66
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2026-05-07T00:00:00+00:00'
+    git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+    mod_date: '2026-05-07T00:00:00+00:00'
+    version: v2.20.0
+    source_system_of_record: NMDC_Submission_Portal
+    submission_portal_identifier:
+    - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
+  insdc_bioproject_identifiers:
+  - bioproject:PRJNA366857
+- id: nmdc:dgns-11-isot02
+  type: nmdc:NucleotideSequencing
+  name: Isolate transcriptome sequencing for sample name isolate transcriptome sra
+    accession
+  has_input:
+  - nmdc:bsm-11-adi12e
+  has_output:
+  - nmdc:dobj-00-isot02
+  processing_institution: UCSD
+  protocol_link:
+    type: nmdc:Protocol
+    url: https://example.com/protocol.html
+  analyte_category: isolate_transcriptome
+  associated_studies:
+  - nmdc:sty-00-555xxx
+  instrument_used:
+  - nmdc:inst-14-njkx0e66
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2026-05-07T00:00:00+00:00'
+    git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+    mod_date: '2026-05-07T00:00:00+00:00'
+    version: v2.20.0
+    source_system_of_record: NMDC_Submission_Portal
+    submission_portal_identifier:
+    - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
+  insdc_bioproject_identifiers:
+  - bioproject:PRJNA366857
+- id: nmdc:dgns-11-isot03
+  type: nmdc:NucleotideSequencing
+  name: sample name isolate transcriptome non-interleaved
+  has_input:
+  - nmdc:bsm-11-adi12f
+  has_output:
+  - nmdc:dobj-00-isot03
+  - nmdc:dobj-00-isot04
+  processing_institution: UCSD
+  protocol_link:
+    type: nmdc:Protocol
+    url: https://example.com/protocol.html
+  analyte_category: isolate_transcriptome
+  associated_studies:
+  - nmdc:sty-00-555xxx
+  instrument_used:
+  - nmdc:inst-14-njkx0e66
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2026-05-07T00:00:00+00:00'
+    git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+    mod_date: '2026-05-07T00:00:00+00:00'
+    version: v2.20.0
+    source_system_of_record: NMDC_Submission_Portal
+    submission_portal_identifier:
+    - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
+  insdc_bioproject_identifiers:
+  - bioproject:PRJNA366857
+- id: nmdc:dgns-11-isog01
+  type: nmdc:NucleotideSequencing
+  name: Isolate genome sequencing for sample name isolate genome interleaved url
+  has_input:
+  - nmdc:bsm-11-adiajk
+  has_output:
+  - nmdc:dobj-00-isog05
+  processing_institution: UCSD
+  protocol_link:
+    type: nmdc:Protocol
+    url: https://example.com/protocol.html
+  analyte_category: isolate_genome
+  associated_studies:
+  - nmdc:sty-00-555xxx
+  instrument_used:
+  - nmdc:inst-14-njkx0e66
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2026-05-07T00:00:00+00:00'
+    git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+    mod_date: '2026-05-07T00:00:00+00:00'
+    version: v2.20.0
+    source_system_of_record: NMDC_Submission_Portal
+    submission_portal_identifier:
+    - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
+  insdc_bioproject_identifiers:
+  - bioproject:PRJNA366857
+- id: nmdc:dgns-11-isog02
+  type: nmdc:NucleotideSequencing
+  name: Isolate genome sequencing for sample name isolate genome sra accession
+  has_input:
+  - nmdc:bsm-11-adi12f
+  has_output:
+  - nmdc:dobj-00-isog06
+  processing_institution: UCSD
+  protocol_link:
+    type: nmdc:Protocol
+    url: https://example.com/protocol.html
+  analyte_category: isolate_genome
+  associated_studies:
+  - nmdc:sty-00-555xxx
+  instrument_used:
+  - nmdc:inst-14-njkx0e66
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2026-05-07T00:00:00+00:00'
+    git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+    mod_date: '2026-05-07T00:00:00+00:00'
+    version: v2.20.0
+    source_system_of_record: NMDC_Submission_Portal
+    submission_portal_identifier:
+    - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
+  insdc_bioproject_identifiers:
+  - bioproject:PRJNA366857
+- id: nmdc:dgns-11-isog03
+  type: nmdc:NucleotideSequencing
+  name: Isolate genome sequencing for sample name isolate genome non-interleaved
+  has_input:
+  - nmdc:bsm-11-adi12z
+  has_output:
+  - nmdc:dobj-00-isog07
+  - nmdc:dobj-00-isog08
+  processing_institution: UCSD
+  protocol_link:
+    type: nmdc:Protocol
+    url: https://example.com/protocol.html
+  analyte_category: isolate_genome
+  associated_studies:
+  - nmdc:sty-00-555xxx
+  instrument_used:
+  - nmdc:inst-14-njkx0e66
+  provenance_metadata:
+    type: nmdc:ProvenanceMetadata
+    add_date: '2026-05-07T00:00:00+00:00'
+    git_url: https://github.com/microbiomedata/nmdc-runtime/blob/main/nmdc_runtime/site/translation/submission_portal_translator.py
+    mod_date: '2026-05-07T00:00:00+00:00'
+    version: v2.20.0
+    source_system_of_record: NMDC_Submission_Portal
+    submission_portal_identifier:
+    - 3f8a2c1d-7b4e-9a6f-c2d8-1e5b7a9f4c03
+  insdc_bioproject_identifiers:
+  - bioproject:PRJNA366857
 - id: nmdc:dgms-99-zUCd5N3
   type: nmdc:MassSpectrometry
   has_input:
@@ -1088,8 +1457,8 @@ data_generation_set:
   instrument_instance_specifier: PNNL_VOrbiETD04
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2024-05-07T00:00:00Z'
-    mod_date: '2024-05-07T00:00:00Z'
+    add_date: '2024-05-07T00:00:00+00:00'
+    mod_date: '2024-05-07T00:00:00+00:00'
   eluent_introduction_category: liquid_chromatography
   has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG1
   has_chromatography_configuration: nmdc:chrcon-11-oW43DzG0
@@ -1109,8 +1478,8 @@ data_generation_set:
   instrument_instance_specifier: PNNL_VOrbiETD04
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2024-05-07T00:00:00Z'
-    mod_date: '2024-05-07T00:00:00Z'
+    add_date: '2024-05-07T00:00:00+00:00'
+    mod_date: '2024-05-07T00:00:00+00:00'
   eluent_introduction_category: liquid_chromatography
   has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG2
   has_chromatography_configuration: nmdc:chrcon-11-oW43DzG0
@@ -1160,7 +1529,7 @@ data_generation_set:
   - nmdc:inst-14-fas8ny90
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    mod_date: '2024-11-07T00:00:00Z'
+    mod_date: '2024-11-07T00:00:00+00:00'
   eluent_introduction_category: gas_chromatography
   has_mass_spectrometry_configuration: nmdc:mscon-14-5jk7rg60
   generates_calibration: nmdc:calib-14-dy7mc666
@@ -1180,8 +1549,8 @@ data_generation_set:
   - nmdc:sty-00-555xxx
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2014-10-30T00:00:00Z'
-    mod_date: '2020-05-22T00:00:00Z'
+    add_date: '2014-10-30T00:00:00+00:00'
+    mod_date: '2020-05-22T00:00:00+00:00'
   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
     carbon transformations - Permafrost 712P3D
 - id: nmdc:dgns-11-s9xj2r24
@@ -1217,8 +1586,8 @@ data_generation_set:
   - nmdc:sty-00-31415
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2017-08-17T00:00:00Z'
-    mod_date: '2020-10-16T00:00:00Z'
+    add_date: '2017-08-17T00:00:00+00:00'
+    mod_date: '2020-10-16T00:00:00+00:00'
   ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
     LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
 - id: nmdc:dgns-99-dk9vgI
@@ -1237,8 +1606,8 @@ data_generation_set:
   - nmdc:sty-00-8675309
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2017-03-17T00:00:00Z'
-    mod_date: '2020-05-22T00:00:00Z'
+    add_date: '2017-03-17T00:00:00+00:00'
+    mod_date: '2020-05-22T00:00:00+00:00'
   ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
     - 611E1M metaG
 - id: nmdc:dgns-99-MVW1FV
@@ -1259,8 +1628,8 @@ data_generation_set:
   - nmdc:sty-00-avacado
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    add_date: '2018-03-29T00:00:00Z'
-    mod_date: '2020-04-04T00:00:00Z'
+    add_date: '2018-03-29T00:00:00+00:00'
+    mod_date: '2020-04-04T00:00:00+00:00'
   ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
     in University of Washington, Seatle, WA, United States - 4-1-23 metaG
 - id: nmdc:dgms-11-0003fm52
@@ -1281,7 +1650,7 @@ data_generation_set:
   - nmdc:inst-14-mwrrj632
   provenance_metadata:
     type: nmdc:ProvenanceMetadata
-    mod_date: '2024-11-07T00:00:00Z'
+    mod_date: '2024-11-07T00:00:00+00:00'
   eluent_introduction_category: direct_infusion_autosampler
   has_mass_spectrometry_configuration: nmdc:mscon-14-j5y11q51
 data_object_set:
@@ -1327,6 +1696,42 @@ data_object_set:
   data_category: processed_data
   data_object_type: Direct Infusion FT-ICR MS Analysis Results
   file_size_bytes: 5262400
+- id: nmdc:dobj-99-abc123
+  type: nmdc:DataObject
+  name: Data file for run accession SRR27943095
+  description: Data file for run accession SRR27943095
+  data_category: instrument_data
+  data_object_type: SRA toolkit-accessible sequence data
+  insdc_run_identifiers:
+  - insdc.run:SRR27943095
+  was_generated_by: nmdc:dgns-11-abc123
+- id: nmdc:dobj-22-abc123
+  type: nmdc:DataObject
+  name: Data file for run accession SRR28010109
+  description: Data file for run accession SRR28010109
+  data_category: instrument_data
+  data_object_type: SRA toolkit-accessible sequence data
+  insdc_run_identifiers:
+  - insdc.run:SRR28010109
+  was_generated_by: nmdc:dgns-22-abc123
+- id: nmdc:dobj-99-qwe123
+  type: nmdc:DataObject
+  name: Data file for run accession SRR27974041
+  description: Data file for run accession SRR27974041
+  data_category: instrument_data
+  data_object_type: SRA toolkit-accessible sequence data
+  insdc_run_identifiers:
+  - insdc.run:SRR27974041
+  was_generated_by: nmdc:dgns-11-qwe123
+- id: nmdc:dobj-99-tre123
+  type: nmdc:DataObject
+  name: Data file for run accession SRR27974040
+  description: Data file for run accession SRR27974040
+  data_category: instrument_data
+  data_object_type: SRA toolkit-accessible sequence data
+  insdc_run_identifiers:
+  - insdc.run:SRR27974040
+  was_generated_by: nmdc:dgns-11-tre123
 - id: nmdc:dobj-01-abcXYZ
   type: nmdc:DataObject
   name: singlem_classification.csv
@@ -1377,6 +1782,82 @@ data_object_set:
   file_size_bytes: 1382304
   md5_checksum: 22afa3d49b73eaec2e9787a6b88fbdc3
   was_generated_by: nmdc:omprc-99-123456
+- id: nmdc:dobj-00-isot01
+  type: nmdc:DataObject
+  name: read1.fastq
+  description: Raw Reads for nmdc:dgns-11-isot01
+  data_category: instrument_data
+  data_object_type: Paired interleaved raw sequencing data
+  insdc_run_identifiers:
+  - insdc.run:SRR400868
+  md5_checksum: 0123456789abcdef0123456789abcdef
+  url: https://example.com/read1.fastq
+- id: nmdc:dobj-00-isot02
+  type: nmdc:DataObject
+  name: Data file for run accession SRR400868
+  description: Data file for run accession SRR400868
+  data_category: instrument_data
+  data_object_type: SRA toolkit-accessible sequence data
+  insdc_run_identifiers:
+  - insdc.run:SRR400868
+- id: nmdc:dobj-00-isot03
+  type: nmdc:DataObject
+  name: read1.fastq
+  description: Read 1 sequencing data for nmdc:dgns-11-isot03
+  data_category: instrument_data
+  data_object_type: Raw sequencing data read 1
+  insdc_run_identifiers:
+  - insdc.run:SRR400868
+  md5_checksum: 0123456789abcdef0123456789abcdef
+  url: https://example.com/read1.fastq
+- id: nmdc:dobj-00-isot04
+  type: nmdc:DataObject
+  name: read2.fastq
+  description: Read 2 sequencing data for nmdc:dgns-11-isot03
+  data_category: instrument_data
+  data_object_type: Raw sequencing data read 2
+  insdc_run_identifiers:
+  - insdc.run:SRR400868
+  md5_checksum: 0123456789abcdef0123456789abcdef
+  url: https://example.com/read2.fastq
+- id: nmdc:dobj-00-isog05
+  type: nmdc:DataObject
+  name: read1.fastq
+  description: Raw Reads for nmdc:dgns-11-isog01
+  data_category: instrument_data
+  data_object_type: Paired interleaved raw sequencing data
+  insdc_run_identifiers:
+  - insdc.run:SRR400868
+  md5_checksum: 0123456789abcdef0123456789abcdef
+  url: https://example.com/read1.fastq
+- id: nmdc:dobj-00-isog06
+  type: nmdc:DataObject
+  name: Data file for run accession SRR400868
+  description: Data file for run accession SRR400868
+  data_category: instrument_data
+  data_object_type: SRA toolkit-accessible sequence data
+  insdc_run_identifiers:
+  - insdc.run:SRR400868
+- id: nmdc:dobj-00-isog07
+  type: nmdc:DataObject
+  name: read1.fastq
+  description: Read 1 sequencing data for nmdc:dgns-11-isog03
+  data_category: instrument_data
+  data_object_type: Raw sequencing data read 1
+  insdc_run_identifiers:
+  - insdc.run:SRR400868
+  md5_checksum: 0123456789abcdef0123456789abcdef
+  url: https://example.com/read1.fastq
+- id: nmdc:dobj-00-isog08
+  type: nmdc:DataObject
+  name: read2.fastq
+  description: Read 2 sequencing data for nmdc:dgns-11-isog03
+  data_category: instrument_data
+  data_object_type: Raw sequencing data read 2
+  insdc_run_identifiers:
+  - insdc.run:SRR400868
+  md5_checksum: 0123456789abcdef0123456789abcdef
+  url: https://example.com/read2.fastq
 - id: nmdc:dobj-11-r3xkmv70
   type: nmdc:DataObject
   name: Blanch_Nat_Lip_C_7_AB_M_07_POS_23Jan18_Brandi-WCSH5801.raw
@@ -1417,6 +1898,13 @@ data_object_set:
   md5_checksum: a0a270c77ce2c7f4813d1e0b3e9b11ef
   url: https://nmdcdemo.emsl.pnnl.gov/lipidomics/blanchard_11_8ws97026/20241219_processed/Blanch_Nat_Lip_C_7_AB_M_07_POS_23Jan18_Brandi-WCSH5801.csv
   was_generated_by: nmdc:wfmb-11-q0czdv62.1
+- id: nmdc:dobj-11-0abycm53
+  type: nmdc:DataObject
+  name: nmdc_wfmag-11-0abycm66.1_gtdbtk.json
+  description: GTDBTK Summary JSON for nmdc:wfmag-11-0abycm66.1
+  data_category: processed_data
+  data_object_type: GTDBTK Summary JSON
+  file_size_bytes: 4002
 - id: nmdc:dobj-00-msdem1
   type: nmdc:DataObject
   name: EMSL_49991_Brodie_122_Lipids_POS_09Aug19_Lola-WCSH417820
@@ -1850,6 +2338,29 @@ material_processing_set:
       has_raw_value: 0.1667 mL
       has_unit: mL
       has_numeric_value: 0.1667
+- id: nmdc:extrp-99-abc123
+  type: nmdc:Extraction
+  name: DNA extraction process for MFD00004
+  has_input:
+  - nmdc:bsm-99-2a58f2
+  has_output:
+  - nmdc:procsm-99-2a58f2
+  extraction_targets:
+  - DNA
+- id: nmdc:libprp-99-abc122
+  type: nmdc:LibraryPreparation
+  name: Library preparation process for MFD00004
+  has_input:
+  - nmdc:procsm-99-2a58f2
+  has_output:
+  - nmdc:procsm-99-2a58f3
+  protocol_link:
+    type: nmdc:Protocol
+    url: https://doi.org/10.1101/2023.09.04.556179
+  library_selection: size fractionation
+  library_strategy: WGS
+  library_source: METAGENOMIC
+  lib_layout: paired
 - id: nmdc:extrp-11-abd123
   type: nmdc:Extraction
   has_input:
@@ -1866,6 +2377,46 @@ material_processing_set:
   target_subfragment:
     type: nmdc:TextValue
     has_raw_value: V9
+- id: nmdc:libprp-22-abc122
+  type: nmdc:LibraryPreparation
+  name: Library preparation process for MFD04222
+  description: Amplicon library preparation targeting bacterial 16S genes with 8F
+    and 1391R primers
+  has_input:
+  - nmdc:bsm-22-123abc
+  has_output:
+  - nmdc:procsm-22-2a58f3
+  target_gene: 16S_rRNA
+  library_selection: PCR
+  library_strategy: AMPLICON
+  library_source: METAGENOMIC
+  lib_layout: single
+- id: nmdc:libprp-99-qwe122
+  type: nmdc:LibraryPreparation
+  name: Library preparation process for MFD01204
+  description: Amplicon library preparation targeting bacterial rRNA operons using
+    8F and 2490R primers
+  has_input:
+  - nmdc:bsm-99-qweabc
+  has_output:
+  - nmdc:procsm-99-qwe8f3
+  library_selection: PCR
+  library_strategy: AMPLICON
+  library_source: METAGENOMIC
+  lib_layout: single
+- id: nmdc:libprp-99-tre122
+  type: nmdc:LibraryPreparation
+  name: Library preparation process for MFD01204
+  description: Amplicon library preparation targeting eukaryotic rRNA operons using
+    3NDF and 21R primers
+  has_input:
+  - nmdc:bsm-99-123abc
+  has_output:
+  - nmdc:procsm-99-tre8f3
+  library_selection: PCR
+  library_strategy: AMPLICON
+  library_source: METAGENOMIC
+  lib_layout: single
 - id: nmdc:extrp-99-abcdef
   type: nmdc:Extraction
   name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
@@ -1890,6 +2441,44 @@ material_processing_set:
   - nmdc:procsm-99-123456
   has_output:
   - nmdc:procsm-99-987654
+- id: nmdc:cultp-11-inc00001
+  type: nmdc:Culturing
+  has_input:
+  - nmdc:osm-11-inoc0001
+  has_output:
+  - nmdc:osm-11-cult0001
+  start_date: '2021-04-16'
+  end_date: '2021-04-18'
+- id: nmdc:cultp-99-2vhwd4
+  type: nmdc:Culturing
+  has_input:
+  - nmdc:osm-99-74k7dy
+  has_output:
+  - nmdc:osm-99-3sr885
+- id: nmdc:extrp-99-q4yygh
+  type: nmdc:Extraction
+  has_input:
+  - nmdc:osm-99-3sr885
+  has_output:
+  - nmdc:procsm-99-8szegv
+- id: nmdc:isnp-99-mukr6y
+  type: nmdc:Isolation
+  has_input:
+  - nmdc:bsm-99-dss5dg
+  has_output:
+  - nmdc:osm-99-xvrts7
+- id: nmdc:cultp-99-vu3tz2
+  type: nmdc:Culturing
+  has_input:
+  - nmdc:osm-99-xvrts7
+  has_output:
+  - nmdc:osm-99-jss44u
+- id: nmdc:extrp-99-9739sc
+  type: nmdc:Extraction
+  has_input:
+  - nmdc:osm-99-jss44u
+  has_output:
+  - nmdc:procsm-99-xwekv2
 - id: nmdc:libprp-99-123456
   type: nmdc:LibraryPreparation
   name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
@@ -2045,6 +2634,153 @@ material_processing_set:
   - nmdc:bsm-99-abcdef3
   has_output:
   - nmdc:procsm-99-xyz2
+organism_sample_set:
+- id: nmdc:osm-11-inoc0001
+  type: nmdc:OrganismSample
+  associated_studies:
+  - nmdc:sty-11-incub00
+  collection_date:
+    type: nmdc:TimestampValue
+    has_raw_value: '2021-04-15'
+- id: nmdc:osm-11-cult0001
+  type: nmdc:OrganismSample
+  associated_studies:
+  - nmdc:sty-11-incub00
+  collection_date:
+    type: nmdc:TimestampValue
+    has_raw_value: '2021-04-18'
+- id: nmdc:osm-99-74k7dy
+  type: nmdc:OrganismSample
+  name: Pseudomonas putida KT2440 from DSMZ catalog
+  description: Cells of P. putida KT2440 ordered from the DSMZ catalog (DSM 6125).
+    No environmental sample upstream — the submitter's provenance starts at the culture-collection
+    delivery.
+  associated_studies:
+  - nmdc:sty-99-86scx7
+  expected_organism: nmdc:orgn-99-6dwrrh
+  source_mat_id:
+    type: nmdc:TextValue
+    has_raw_value: dsmz:DSM-6125
+- id: nmdc:osm-99-3sr885
+  type: nmdc:OrganismSample
+  name: Pseudomonas putida KT2440 expanded culture
+  description: Liquid culture grown from the DSMZ-supplied seed cells.
+  associated_studies:
+  - nmdc:sty-99-86scx7
+  expected_organism: nmdc:orgn-99-6dwrrh
+- id: nmdc:osm-99-xvrts7
+  type: nmdc:OrganismSample
+  name: Bacillus subtilis 168 colony pick
+  associated_studies:
+  - nmdc:sty-99-md8u3e
+  expected_organism: nmdc:orgn-99-vsds2v
+- id: nmdc:osm-99-jss44u
+  type: nmdc:OrganismSample
+  name: Bacillus subtilis 168 expanded culture
+  associated_studies:
+  - nmdc:sty-99-md8u3e
+  expected_organism: nmdc:orgn-99-vsds2v
+- id: nmdc:osm-99-pqaau7
+  type: nmdc:OrganismSample
+  name: Shewanella loihica PV-4 isolate submission
+  associated_studies:
+  - nmdc:sty-99-m2asmk
+  expected_organism: nmdc:orgn-99-tuxk3s
+  gold_organism_identifiers:
+  - gold:Go0000189
+  collection_date:
+    type: nmdc:TimestampValue
+    has_raw_value: '1998-01-01'
+  samp_name: Shewanella_loihica_PV-4
+  ploidy: haploid
+- id: nmdc:osm-99-r6qkjb
+  type: nmdc:OrganismSample
+  name: Arabidopsis thaliana Ler-0 leaf clip
+  associated_studies:
+  - nmdc:sty-99-gad6bm
+  expected_organism: nmdc:orgn-99-uaznqp
+  gold_organism_identifiers:
+  - gold:Go0590511
+  collection_date:
+    type: nmdc:TimestampValue
+    has_raw_value: '2025-06-15'
+  samp_name: Athal_Ler0_leaf_01
+  ploidy: diploid
+- id: nmdc:osm-99-c3hw28
+  type: nmdc:OrganismSample
+  name: Lentinula edodes NBRC 111202 fruiting body cap
+  associated_studies:
+  - nmdc:sty-99-37kp4t
+  expected_organism: nmdc:orgn-99-tagdby
+  gold_organism_identifiers:
+  - gold:Go0372970
+  collection_date:
+    type: nmdc:TimestampValue
+    has_raw_value: '2025-09-20'
+  samp_name: Ledodes_NBRC111202_cap_01
+- id: nmdc:osm-99-vqkvad
+  type: nmdc:OrganismSample
+  name: T4 phage particles from K-12 lysate
+  associated_studies:
+  - nmdc:sty-99-r5xs9t
+  expected_organism: nmdc:orgn-99-pgw8nq
+organism_set:
+- id: nmdc:orgn-99-6dwrrh
+  type: nmdc:Organism
+  name: Pseudomonas putida KT2440
+  classified_as:
+  - id: NCBITaxon:160488
+    type: nmdc:NcbiTaxon
+    name: Pseudomonas putida KT2440
+  organism_genus: Pseudomonas
+  organism_species: putida
+  strain_name: KT2440
+  ref_biomaterial:
+    type: nmdc:TextValue
+    has_raw_value: doi:10.1016/j.syapm.2018.01.009
+- id: nmdc:orgn-99-vsds2v
+  type: nmdc:Organism
+  name: Bacillus subtilis 168
+  classified_as:
+  - id: NCBITaxon:1386
+    type: nmdc:NcbiTaxon
+    name: Bacillus
+  organism_genus: Bacillus
+  organism_species: subtilis
+  strain_name: '168'
+- id: nmdc:orgn-99-tuxk3s
+  type: nmdc:Organism
+  name: Shewanella loihica PV-4
+  classified_as:
+  - id: NCBITaxon:22
+    type: nmdc:NcbiTaxon
+    name: Shewanella
+  organism_genus: Shewanella
+  organism_species: loihica
+  strain_name: PV-4
+  isolate_name: Isolate
+  estimated_size: 4600000
+- id: nmdc:orgn-99-uaznqp
+  type: nmdc:Organism
+  name: Arabidopsis thaliana
+  classified_as:
+  - id: NCBITaxon:3702
+    type: nmdc:NcbiTaxon
+    name: Arabidopsis thaliana
+- id: nmdc:orgn-99-tagdby
+  type: nmdc:Organism
+  name: Lentinula edodes
+  classified_as:
+  - id: NCBITaxon:5353
+    type: nmdc:NcbiTaxon
+    name: Lentinula edodes
+- id: nmdc:orgn-99-pgw8nq
+  type: nmdc:Organism
+  name: Enterobacteria phage T4
+  classified_as:
+  - id: NCBITaxon:10665
+    type: nmdc:NcbiTaxon
+    name: Escherichia virus T4
 processed_sample_set:
 - id: nmdc:procsm-11-def124
   type: nmdc:ProcessedSample
@@ -2081,6 +2817,13 @@ processed_sample_set:
   type: nmdc:ProcessedSample
   name: resuspended_lipids
   description: resuspended lipids for LC-MS
+- id: nmdc:procsm-99-2a58f2
+  type: nmdc:ProcessedSample
+  name: Extracted DNA for MFD00004
+- id: nmdc:procsm-99-2a58f3
+  type: nmdc:ProcessedSample
+  name: ilm_MFD00004
+  description: Library for sequencing for MFD00004
 - id: nmdc:procsm-11-def123
   type: nmdc:ProcessedSample
   name: Extrated DNA for nmdc:bsm-99-dtTMNb
@@ -2091,6 +2834,25 @@ processed_sample_set:
   type: nmdc:ProcessedSample
   name: WOOD_024-M-20190715-COMP-DNA1
   description: Extracted DNA from WOOD_024-M-20190715-COMP
+- id: nmdc:procsm-22-2a58f3
+  type: nmdc:ProcessedSample
+  name: npumi_16SrRNA_MFD04222
+  description: Library for sequencing for MFD04222
+- id: nmdc:procsm-99-qwe8f3
+  type: nmdc:ProcessedSample
+  name: pb_bacoperon_MFD01204
+  description: Library for sequencing for MFD01204
+- id: nmdc:procsm-99-tre8f3
+  type: nmdc:ProcessedSample
+  name: pb_eukoperon_MFD01204
+  description: Library for sequencing for MFD01204
+- id: nmdc:procsm-99-8szegv
+  type: nmdc:ProcessedSample
+  name: Extracted DNA from P. putida KT2440 culture
+  description: DNA extracted from the expanded culture, ready for sequencing.
+- id: nmdc:procsm-99-xwekv2
+  type: nmdc:ProcessedSample
+  name: Bacillus subtilis 168 extracted DNA
 - id: nmdc:procsm-99-xyz1
   type: nmdc:ProcessedSample
   name: first processed sample set
@@ -2153,9 +2915,6 @@ study_set:
     doi_category: dataset_doi
     type: nmdc:Doi
     doi_provider: osti
-  principal_investigator:
-    type: nmdc:PersonValue
-    has_raw_value: Virginia Rich
 - id: nmdc:sty-99-oJmAOs
   type: nmdc:Study
   name: Forest soil microbial communities from Barre Woods Harvard Forest LTER site,
@@ -2176,9 +2935,6 @@ study_set:
     doi_category: dataset_doi
     type: nmdc:Doi
     doi_provider: osti
-  principal_investigator:
-    type: nmdc:PersonValue
-    has_raw_value: Jeffrey Blanchard
 - id: nmdc:sty-99-3bQQ4j
   type: nmdc:Study
   name: Rhizosphere microbial communities from Carex aquatilis grown in University
@@ -2199,9 +2955,6 @@ study_set:
     doi_category: dataset_doi
     type: nmdc:Doi
     doi_provider: osti
-  principal_investigator:
-    type: nmdc:PersonValue
-    has_raw_value: Rebecca Neumann
 - id: nmdc:sty-11-34xj1152
   type: nmdc:Study
   name: NEON Parent Consortium
@@ -2222,13 +2975,6 @@ study_set:
   - 'NSF#1724433 National Ecological Observatory Network: Operations Activities'
   part_of:
   - nmdc:sty-11-34xj1152
-  principal_investigator:
-    type: nmdc:PersonValue
-    has_raw_value: Kate Thibault
-    email: kthibault@battelleecology.org
-    name: Kate Thibault
-    orcid: orcid:0000-0003-3477-6424
-    profile_image_url: https://portal.nersc.gov/project/m3408/profile_images/thibault_katy.jpg
   study_image:
   - type: nmdc:ImageValue
     url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
@@ -2250,12 +2996,6 @@ study_set:
   - 'NSF#1724433 National Ecological Observatory Network: Operations Activities'
   part_of:
   - nmdc:sty-11-34xj1152
-  principal_investigator:
-    type: nmdc:PersonValue
-    has_raw_value: Kate Thibault
-    email: kthibault@battelleecology.org
-    name: Kate Thibault
-    orcid: orcid:0000-0003-3477-6424
   study_image:
   - type: nmdc:ImageValue
     url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
@@ -2276,11 +3016,6 @@ study_set:
   - 'NSF#1724433 National Ecological Observatory Network: Operations Activities'
   part_of:
   - nmdc:sty-11-34xj1152
-  principal_investigator:
-    type: nmdc:PersonValue
-    email: kthibault@battelleecology.org
-    name: Kate Thibault
-    orcid: orcid:0000-0003-3477-6424
   study_image:
   - type: nmdc:ImageValue
     url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
@@ -2333,9 +3068,6 @@ study_set:
     doi_category: dataset_doi
     type: nmdc:Doi
     doi_provider: figshare
-  principal_investigator:
-    type: nmdc:PersonValue
-    has_raw_value: Virginia Rich
 - id: nmdc:sty-99-FkQIsc3
   type: nmdc:Study
   name: Permafrost microbial communities from Stordalen Mire, Sweden
@@ -2357,9 +3089,6 @@ study_set:
     doi_category: award_doi
     type: nmdc:Doi
     doi_provider: emsl
-  principal_investigator:
-    type: nmdc:PersonValue
-    has_raw_value: Virginia Rich
 - id: nmdc:sty-99-boww8R
   type: nmdc:Study
   name: Avena fatua rhizosphere microbial communities from Hopland, California, USA,
@@ -2387,9 +3116,6 @@ study_set:
   ecosystem_subtype: Soil
   ecosystem_type: Rhizosphere
   specific_ecosystem: Unclassified
-  principal_investigator:
-    type: nmdc:PersonValue
-    has_raw_value: Mary Firestone
 - id: nmdc:sty-99-hfaLvo
   type: nmdc:Study
   name: Cyanobacterial communities from the Joint Genome Institute, California, USA
@@ -2450,9 +3176,6 @@ study_set:
   ecosystem_subtype: Unclassified
   ecosystem_type: Bacteria
   specific_ecosystem: Unclassified
-  principal_investigator:
-    type: nmdc:PersonValue
-    has_raw_value: Matthias Hess
 - id: nmdc:sty-99-dkDZYe
   type: nmdc:Study
   name: Thawing permafrost microbial communities from the Arctic, studying carbon
@@ -2473,9 +3196,6 @@ study_set:
   ecosystem_subtype: Wetlands
   ecosystem_type: Soil
   specific_ecosystem: Permafrost
-  principal_investigator:
-    type: nmdc:PersonValue
-    has_raw_value: Virginia Rich
 workflow_execution_set:
 - id: nmdc:wfmgas-11-d11daf11.1
   type: nmdc:MetagenomeAssembly
