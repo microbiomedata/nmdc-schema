@@ -275,8 +275,15 @@ matched pair from PROV's qualified-relation pattern. Whether it should change wa
 examined in [#3325](https://github.com/microbiomedata/nmdc-schema/issues/3325) and
 left as-is.
 
-None of this is enforced. `tests/test_all_classes_assert_a_class_uri.py` checks
-only that a `class_uri` is declared, not what it is.
+The correspondence is enforced, but the choice is not. `type` is `required` with
+`range: uriorcurie`, and because it is `designates_type: true` the generated
+JSON Schema pins it to one permitted value per class, so a `Biosample` record
+whose `type` reads `nmdc:Study` fails validation, and a `CreditAssociation`
+record must carry exactly `prov:Association`. What nothing checks is whether a
+foreign `class_uri` should have been picked in the first place:
+`tests/test_all_classes_assert_a_class_uri.py` asserts only that a `class_uri`
+is declared, not what it is. So a new concrete class could take a foreign URI
+and every downstream artifact would enforce that choice faithfully.
 
 ---
 
