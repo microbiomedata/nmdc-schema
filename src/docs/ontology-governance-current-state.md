@@ -244,8 +244,7 @@ abstract. `type` is `designates_type: true`, so LinkML writes a class's
 foreign `class_uri` there is invisible to data. `PlannedProcess` is abstract.
 `CreditAssociation` is not, and every credit association record in production
 carries `type: prov:Association` rather than `nmdc:CreditAssociation`, making it
-the only place a foreign URI appears in NMDC data. (Criterion identified by
-Katherine Heal, 2026-08-20.)
+the only place a foreign URI appears in NMDC data.
 
 `CreditAssociation` is deliberate rather than incidental: `has_credit_associations`
 carries `slot_uri: prov:qualifiedAssociation`, so the class and the slot are a
