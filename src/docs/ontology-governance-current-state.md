@@ -253,8 +253,14 @@ is abstract. `type` is `designates_type: true`
 every instance of it. An abstract class has no instances, so its `class_uri`
 never reaches data. `PlannedProcess` is abstract. `CreditAssociation` is not, so
 every credit association record in production carries `type: prov:Association`
-rather than `nmdc:CreditAssociation`, making it the only place a foreign URI
-appears in NMDC data.
+rather than `nmdc:CreditAssociation`. It is the only class whose `class_uri`
+reaches data this way.
+
+This is narrower than it may sound. Foreign CURIEs are common in NMDC data
+generally: every biosample carries an ENVO term in `env_broad_scale`, and
+`has_function` values are drawn from fifteen external prefixes. What is unusual
+about `CreditAssociation` is a foreign URI serving as a class identity in `type`,
+not a foreign URI appearing in a record.
 
 `CreditAssociation` is deliberate rather than incidental: `has_credit_associations`
 carries `slot_uri: prov:qualifiedAssociation`, so the class and the slot are a
