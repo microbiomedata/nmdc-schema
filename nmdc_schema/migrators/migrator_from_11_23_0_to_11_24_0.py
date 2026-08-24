@@ -14,6 +14,9 @@ class Migrator(MigratorBase):
 
     Partial 2 standardizes remaining ``PersonValue.orcid`` values onto the
     Bioregistry ``orcid:`` CURIE (nmdc-schema#3327).
+
+    Partial 3 copies ``has_raw_value`` onto missing ``PersonValue.name`` so
+    name can be required (nmdc-schema#2458).
     """
 
     _from_version = "11.23.0"
@@ -46,7 +49,8 @@ class Migrator(MigratorBase):
         ...         {
         ...             "id": "nmdc:dgns-1",
         ...             "type": "nmdc:NucleotideSequencing",
-        ...             "principal_investigator": {"type": "nmdc:PersonValue", "name": "C",
+        ...             "principal_investigator": {"type": "nmdc:PersonValue",
+        ...                                       "has_raw_value": "C",
         ...                                       "orcid": "0000-0002-9108-5083"},
         ...         },
         ...     ],
@@ -60,6 +64,8 @@ class Migrator(MigratorBase):
         False
         >>> db["data_generation_set"][0]["has_credit_associations"][0]["applies_to_person"]["orcid"]
         'orcid:0000-0002-9108-5083'
+        >>> db["data_generation_set"][0]["has_credit_associations"][0]["applies_to_person"]["name"]
+        'C'
         >>> db["data_generation_set"][0]["has_credit_associations"][0]["applied_roles"]
         ['Principal Investigator']
 
