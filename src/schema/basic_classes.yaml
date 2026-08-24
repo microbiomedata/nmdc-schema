@@ -294,7 +294,6 @@ classes:
       - analysis_type
   CreditAssociation:
     aliases:
-      - study role
       - credit table
       - associated researchers
     description: >-
