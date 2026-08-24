@@ -1,15 +1,19 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
+from nmdc_schema.migrators.partials.migrator_from_11_23_0_to_11_24_0 import (
+    get_migrator_classes,
+)
 
 
 class Migrator(MigratorBase):
-    r"""Remove principal_investigator from Study and DataGeneration records.
+    r"""
+    Migrates a database between two schemas.
 
-    Study: delete the slot. PI information is expected to already live on
-    has_credit_associations (issues#1837).
+    Partial 1 removes ``principal_investigator`` from Study (delete) and
+    DataGeneration (copy onto ``has_credit_associations`` with applied role
+    Principal Investigator, then delete).
 
-    DataGeneration: that class did not previously allow has_credit_associations,
-    so copy principal_investigator into a new Principal Investigator credit
-    association and delete the old slot.
+    Partial 2 standardizes remaining ``PersonValue.orcid`` values onto the
+    Bioregistry ``orcid:`` CURIE (nmdc-schema#3327).
     """
 
     _from_version = "11.23.0"
@@ -17,73 +21,59 @@ class Migrator(MigratorBase):
 
     def upgrade(self, commit_changes: bool = False) -> None:
         r"""
+        Migrates the database from conforming to the original schema, to conforming to the new schema.
+
+        This migrator uses partial migrators. It runs them in the order in which they are returned by
+        the `get_migrator_classes` function.
+
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> db = {
         ...     "study_set": [
-        ...         {"id": "nmdc:sty-1", "type": "nmdc:Study",
-        ...          "principal_investigator": {"type": "nmdc:PersonValue", "name": "A"}},
-        ...         {"id": "nmdc:sty-2", "type": "nmdc:Study"},
+        ...         {
+        ...             "id": "nmdc:sty-1",
+        ...             "type": "nmdc:Study",
+        ...             "principal_investigator": {"type": "nmdc:PersonValue", "name": "A",
+        ...                                       "orcid": "0000-0002-1195-1608"},
+        ...             "has_credit_associations": [
+        ...                 {"type": "prov:Association",
+        ...                  "applies_to_person": {"type": "nmdc:PersonValue",
+        ...                                       "name": "B",
+        ...                                       "orcid": "0000-0003-2254-399x"}},
+        ...             ],
+        ...         },
         ...     ],
         ...     "data_generation_set": [
-        ...         {"id": "nmdc:dgns-1", "type": "nmdc:NucleotideSequencing",
-        ...          "principal_investigator": {"type": "nmdc:PersonValue", "name": "B", "email": "b@x.org"}},
-        ...         {"id": "nmdc:dgns-2", "type": "nmdc:NucleotideSequencing"},
+        ...         {
+        ...             "id": "nmdc:dgns-1",
+        ...             "type": "nmdc:NucleotideSequencing",
+        ...             "principal_investigator": {"type": "nmdc:PersonValue", "name": "C",
+        ...                                       "orcid": "0000-0002-9108-5083"},
+        ...         },
         ...     ],
         ... }
         >>> Migrator(adapter=DictionaryAdapter(database=db)).upgrade()
         >>> "principal_investigator" in db["study_set"][0]
         False
-        >>> "principal_investigator" in db["study_set"][1]
-        False
-        >>> db["data_generation_set"][0]["has_credit_associations"]
-        [{'type': 'prov:Association', 'applies_to_person': {'type': 'nmdc:PersonValue', 'name': 'B', 'email': 'b@x.org'}, 'applied_roles': ['Principal Investigator']}]
+        >>> db["study_set"][0]["has_credit_associations"][0]["applies_to_person"]["orcid"]
+        'orcid:0000-0003-2254-399X'
         >>> "principal_investigator" in db["data_generation_set"][0]
         False
-        >>> "has_credit_associations" in db["data_generation_set"][1]
-        False
+        >>> db["data_generation_set"][0]["has_credit_associations"][0]["applies_to_person"]["orcid"]
+        'orcid:0000-0002-9108-5083'
+        >>> db["data_generation_set"][0]["has_credit_associations"][0]["applied_roles"]
+        ['Principal Investigator']
+
+        Args:
+            commit_changes: If True, commits the changes. If False (default), performs a dry run or rollback.
         """
-        self._warn_if_commit_ignored(commit_changes)
-        self.adapter.process_each_document("study_set", [self.drop_study_principal_investigator])
-        self.adapter.process_each_document(
-            "data_generation_set", [self.move_data_generation_principal_investigator]
-        )
 
-    def drop_study_principal_investigator(self, study: dict) -> dict:
-        r"""Delete principal_investigator from a Study document. Do not copy it.
-
-        >>> m = Migrator()
-        >>> m.drop_study_principal_investigator(
-        ...     {"id": "nmdc:sty-1", "principal_investigator": {"name": "A"}}
-        ... )
-        {'id': 'nmdc:sty-1'}
-        >>> m.drop_study_principal_investigator({"id": "nmdc:sty-2"})
-        {'id': 'nmdc:sty-2'}
-        """
-        if "principal_investigator" in study:
-            study.pop("principal_investigator")
-        return study
-
-    def move_data_generation_principal_investigator(self, record: dict) -> dict:
-        r"""Move principal_investigator onto a new has_credit_associations list.
-
-        >>> m = Migrator()
-        >>> m.move_data_generation_principal_investigator(
-        ...     {"id": "nmdc:dgns-1",
-        ...      "principal_investigator": {"type": "nmdc:PersonValue", "name": "B", "email": "b@x.org"}}
-        ... )
-        {'id': 'nmdc:dgns-1', 'has_credit_associations': [{'type': 'prov:Association', 'applies_to_person': {'type': 'nmdc:PersonValue', 'name': 'B', 'email': 'b@x.org'}, 'applied_roles': ['Principal Investigator']}]}
-        >>> m.move_data_generation_principal_investigator({"id": "nmdc:dgns-2"})
-        {'id': 'nmdc:dgns-2'}
-        """
-        pi = record.pop("principal_investigator", None)
-        if not isinstance(pi, dict):
-            return record
-
-        record["has_credit_associations"] = [
-            {
-                "type": "prov:Association",
-                "applies_to_person": pi,
-                "applied_roles": ["Principal Investigator"],
-            }
-        ]
-        return record
+        migrator_classes = get_migrator_classes()
+        num_migrators = len(migrator_classes)
+        for idx, migrator_class in enumerate(migrator_classes):
+            self.logger.info(f"Running migrator {idx + 1} of {num_migrators}")
+            self.logger.debug(
+                f"Migrating from {migrator_class.get_origin_version()} "
+                f"to {migrator_class.get_destination_version()}"
+            )
+            migrator = migrator_class(adapter=self.adapter, logger=self.logger)
+            migrator.upgrade(commit_changes=commit_changes)

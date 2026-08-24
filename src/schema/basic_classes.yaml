@@ -760,7 +760,7 @@ slots:
       using the CreditEnum value Principal Investigator.
     deprecated_element_has_possible_replacement: has_credit_associations
     last_updated_on: "2026-08-21T00:00:00Z"
-    modified_by: ORCID:0000-0002-4504-1039
+    modified_by: orcid:0000-0002-4504-1039
 
   was_generated_by:
     range: DataEmitterProcess

@@ -53,7 +53,6 @@ prefixes:
   NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
   OBI: "http://purl.obolibrary.org/obo/OBI_"
   OMIT: "http://purl.obolibrary.org/obo/OMIT_" # for RNA subtypes only
-  ORCID: "https://orcid.org/"
   PANTHER.FAMILY: "https://bioregistry.io/panther.family:" # https://bioregistry.io/panther.family:PTHR12345
   PATO: "http://purl.obolibrary.org/obo/PATO_"
   PFAM.CLAN: "https://bioregistry.io/pfam.clan:" # https://bioregistry.io/pfam.clan:CL0192
@@ -102,6 +101,7 @@ prefixes:
   neon.identifier: "http://example.org/neon/identifier/"
   neon.schema: "http://example.org/neon/schema/"
   nmdc: "https://w3id.org/nmdc/"
+  orcid: "https://orcid.org/"  # Bioregistry canonical prefix; PersonValue.orcid and schema contributor metadata
   owl: "http://www.w3.org/2002/07/owl#"
   prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
   qudt: "http://qudt.org/1.1/schema/qudt#"
@@ -129,6 +129,7 @@ emit_prefixes:
   - img.taxon
   - jgi.proposal
   - kegg
+  - orcid
   - rdf
   - rdfs
   - skos
@@ -640,10 +641,10 @@ classes:
         In practice, the meaning is usually apparent from the context or is defined.
       - TODO - Montana to visit slot descriptions
     contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
-      - ORCID:0000-0001-9076-6066 #Mark Miller
-      - ORCID:0009-0008-4013-7737 #James Tessmer
+      - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - orcid:0000-0002-8683-0050 #Montana Smith
+      - orcid:0000-0001-9076-6066 #Mark Miller
+      - orcid:0009-0008-4013-7737 #James Tessmer
     is_a: MaterialProcessing
     slots:
       - container_size
@@ -668,8 +669,8 @@ classes:
     description: >
       The combining of components, particles or layers into a more homogeneous state.
     contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
+      - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - orcid:0000-0002-8683-0050 #Montana Smith
     is_a: MaterialProcessing
     comments:
       - The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps
@@ -696,10 +697,10 @@ classes:
     related_mappings:
       - CHMO:0001640
     contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
-      - ORCID:0000-0001-9076-6066 #Mark Miller
-      - ORCID:0009-0008-4013-7737 #James Tessmer
+      - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - orcid:0000-0002-8683-0050 #Montana Smith
+      - orcid:0000-0001-9076-6066 #Mark Miller
+      - orcid:0009-0008-4013-7737 #James Tessmer
     is_a: MaterialProcessing
     slots:
       - conditionings
@@ -757,8 +758,8 @@ classes:
     description:
       The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
     contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+      - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - orcid:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     slots:
       - chromatographic_category
@@ -783,8 +784,8 @@ classes:
     exact_mappings:
       - CHMO:0002773
     contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+      - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - orcid:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     slots:
       - duration
@@ -965,8 +966,8 @@ enums:
   ContainerCategoryEnum:
     description: The permitted types of containers used in processing metabolomic samples.
     contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
+      - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - orcid:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       v-bottom_conical_tube:
       falcon_tube:
@@ -974,8 +975,8 @@ enums:
   SeparationMethodEnum:
     description: The tool/substance used to separate or filter a solution or mixture.
     contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
+      - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - orcid:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       ptfe_96_well_filter_plate:
       syringe:
@@ -983,8 +984,8 @@ enums:
   StationaryPhaseEnum:
     description: The type of stationary phase used in a chromatography process.
     contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-4504-1039 #Katherine Heal
+      - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - orcid:0000-0002-4504-1039 #Katherine Heal
     permissible_values:
       BEH-HILIC:
         description: Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged Ethylene Hybrid) particles as the stationary phase.
@@ -1490,8 +1491,8 @@ slots:
     range: QuantityValue
     description: The volume of the container an analyte is stored in or an activity takes place in
     contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
+      - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - orcid:0000-0002-8683-0050 #Montana Smith
     annotations:
       storage_units: mL
 
