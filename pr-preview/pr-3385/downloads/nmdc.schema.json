@@ -14137,8 +14137,8 @@
                 }
             },
             "required": [
-                "name",
-                "type"
+                "type",
+                "name"
             ],
             "title": "Organization",
             "type": "object"
@@ -17738,5 +17738,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post17.dev0+fc58ffe94"
+    "version": "11.23.0.post18.dev0+39973ff1a"
 }

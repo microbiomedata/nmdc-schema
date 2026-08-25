@@ -430,12 +430,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>The name of the organization.</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../url/">url</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
@@ -448,15 +442,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../profile_image_url/">profile_image_url</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A url that points to an image of this person or organization.</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../type/">type</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>the class_uri of the class that has been instantiated</td>
+<td><a href="../Agent/">Agent</a></td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>The name of the organization.</td>
+<td><a href="../Agent/">Agent</a></td>
+</tr>
+<tr>
+<td><a href="../profile_image_url/">profile_image_url</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A url that points to an image of this person or organization.</td>
 <td><a href="../Agent/">Agent</a></td>
 </tr>
 </tbody>
@@ -493,10 +493,8 @@ exact_mappings:
 - prov:Organization
 is_a: Agent
 slots:
-- name
 - url
 - websites
-- profile_image_url
 slot_usage:
   name:
     name: name
@@ -521,19 +519,6 @@ slot_usage:
     description: The name of the organization.
     required: true
 attributes:
-  name:
-    name: name
-    description: The name of the organization.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    owner: Organization
-    domain_of:
-    - Agent
-    - Organization
-    - NamedThing
-    - Protocol
-    range: string
-    required: true
   url:
     name: url
     notes:
@@ -569,16 +554,6 @@ attributes:
     range: string
     multivalued: true
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
-  profile_image_url:
-    name: profile_image_url
-    description: A url that points to an image of this person or organization.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    owner: Organization
-    domain_of:
-    - Agent
-    - Organization
-    range: string
   type:
     name: type
     description: the class_uri of the class that has been instantiated
@@ -625,6 +600,27 @@ attributes:
     - MetaboliteIdentification
     range: uriorcurie
     required: true
+  name:
+    name: name
+    description: The name of the organization.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    owner: Organization
+    domain_of:
+    - Agent
+    - NamedThing
+    - Protocol
+    range: string
+    required: true
+  profile_image_url:
+    name: profile_image_url
+    description: A url that points to an image of this person or organization.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    owner: Organization
+    domain_of:
+    - Agent
+    range: string
 class_uri: nmdc:Organization
 
 </code></pre>
