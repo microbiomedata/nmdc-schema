@@ -107,10 +107,8 @@ classes:
     is_a: Agent
     description: A social or legal institution such as a company, society, consortium, etc.
     slots:
-      - name
       - url
       - websites
-      - profile_image_url
     exact_mappings:
       - prov:Organization
     slot_usage:
