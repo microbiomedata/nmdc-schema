@@ -449,21 +449,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The full name of the Investigator. It should follow the format FIRST [MIDDLE...</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../orcid/">orcid</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The ORCID of a person.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../profile_image_url/">profile_image_url</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A url that points to an image of this person or organization.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -482,6 +470,18 @@
 <td><a href="../type/">type</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>the class_uri of the class that has been instantiated</td>
+<td><a href="../Agent/">Agent</a></td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The full name of the Investigator. It should follow the format FIRST [MIDDLE...</td>
+<td><a href="../Agent/">Agent</a></td>
+</tr>
+<tr>
+<td><a href="../profile_image_url/">profile_image_url</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A url that points to an image of this person or organization.</td>
 <td><a href="../Agent/">Agent</a></td>
 </tr>
 </tbody>
@@ -539,7 +539,7 @@
 <tbody>
 <tr>
 <td>exact</td>
-<td>schema:Person, prov:Person</td>
+<td>prov:Person</td>
 </tr>
 </tbody>
 </table>
@@ -554,14 +554,11 @@ todos:
 - deprecate "has_raw_value" in favor of "name"
 from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
-- schema:Person
 - prov:Person
 is_a: Agent
 slots:
 - email
-- name
 - orcid
-- profile_image_url
 - websites
 - has_raw_value
 slot_usage:
@@ -603,7 +600,6 @@ todos:
 - deprecate "has_raw_value" in favor of "name"
 from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
-- schema:Person
 - prov:Person
 is_a: Agent
 slot_usage:
@@ -648,23 +644,6 @@ attributes:
     domain_of:
     - PersonValue
     range: string
-  name:
-    name: name
-    annotations:
-      tooltip:
-        tag: tooltip
-        value: First name, middle initial, and last name of this person.
-    description: The full name of the Investigator. It should follow the format FIRST
-      [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    owner: PersonValue
-    domain_of:
-    - PersonValue
-    - OrganizationValue
-    - NamedThing
-    - Protocol
-    range: string
   orcid:
     name: orcid
     annotations:
@@ -677,16 +656,6 @@ attributes:
     owner: PersonValue
     domain_of:
     - PersonValue
-    range: string
-  profile_image_url:
-    name: profile_image_url
-    description: A url that points to an image of this person or organization.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    owner: PersonValue
-    domain_of:
-    - PersonValue
-    - OrganizationValue
     range: string
   websites:
     name: websites
@@ -705,7 +674,7 @@ attributes:
     owner: PersonValue
     domain_of:
     - PersonValue
-    - OrganizationValue
+    - Organization
     - Study
     range: string
     multivalued: true
@@ -768,6 +737,33 @@ attributes:
     - MetaboliteIdentification
     range: uriorcurie
     required: true
+  name:
+    name: name
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: First name, middle initial, and last name of this person.
+    description: The full name of the Investigator. It should follow the format FIRST
+      [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    owner: PersonValue
+    domain_of:
+    - Agent
+    - Organization
+    - NamedThing
+    - Protocol
+    range: string
+  profile_image_url:
+    name: profile_image_url
+    description: A url that points to an image of this person or organization.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    owner: PersonValue
+    domain_of:
+    - Agent
+    - Organization
+    range: string
 class_uri: nmdc:PersonValue
 
 </code></pre>

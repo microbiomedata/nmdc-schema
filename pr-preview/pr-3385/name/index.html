@@ -721,13 +721,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PersonValue/">PersonValue</a></td>
-<td>A person, typically a researcher associated with a study or data generation.</td>
-<td>yes</td>
+<td><a href="../Agent/">Agent</a></td>
+<td>A person or organization bears some form of responsibility for an activity...</td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="../OrganizationValue/">OrganizationValue</a></td>
-<td>An organization or consortium credited as a contributor.</td>
+<td><a href="../Organization/">Organization</a></td>
+<td>A social or legal institution such as a company, society, consortium, etc.</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -869,6 +869,11 @@
 <td><a href="../OrthologyGroup/">OrthologyGroup</a></td>
 <td>A set of genes or gene products in which all members are orthologous</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../PersonValue/">PersonValue</a></td>
+<td>A person, typically a researcher associated with a study or data generation.</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../OntologyClass/">OntologyClass</a></td>
@@ -1069,8 +1074,8 @@ description: A human readable label for an entity
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 domain_of:
-- PersonValue
-- OrganizationValue
+- Agent
+- Organization
 - NamedThing
 - Protocol
 range: string

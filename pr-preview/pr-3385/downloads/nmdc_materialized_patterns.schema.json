@@ -11,8 +11,22 @@
         },
         "Agent": {
             "additionalProperties": false,
-            "description": "A person or organization that can be the agent of a credit association.",
+            "description": "A person or organization bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.",
             "properties": {
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "profile_image_url": {
+                    "description": "A url that points to an image of this person or organization.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -6538,7 +6552,7 @@
                             "$ref": "#/$defs/PersonValue"
                         },
                         {
-                            "$ref": "#/$defs/OrganizationValue"
+                            "$ref": "#/$defs/Organization"
                         }
                     ]
                 },
@@ -14390,12 +14404,12 @@
             "title": "OrganismSample",
             "type": "object"
         },
-        "OrganizationValue": {
+        "Organization": {
             "additionalProperties": false,
-            "description": "An organization or consortium credited as a contributor.",
+            "description": "A social or legal institution such as a company, society, consortium, etc.",
             "properties": {
                 "name": {
-                    "description": "The name of the organization or consortium.",
+                    "description": "The name of the organization.",
                     "type": "string"
                 },
                 "profile_image_url": {
@@ -14408,7 +14422,7 @@
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
-                        "nmdc:OrganizationValue"
+                        "nmdc:Organization"
                     ],
                     "type": "string"
                 },
@@ -14434,7 +14448,7 @@
                 "name",
                 "type"
             ],
-            "title": "OrganizationValue",
+            "title": "Organization",
             "type": "object"
         },
         "OrthologyGroup": {
@@ -18051,6 +18065,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post16.dev0+34128be29"
+    "version": "11.23.0.post17.dev0+fc58ffe94"
 }
 

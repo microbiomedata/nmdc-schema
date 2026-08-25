@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post16.dev0+34128be29
+version: 11.23.0.post17.dev0+fc58ffe94
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -20753,16 +20753,17 @@ classes:
     class_uri: nmdc:ImageValue
   Agent:
     name: Agent
-    description: A person or organization that can be the agent of a credit association.
+    description: A person or organization bears some form of responsibility for an
+      activity taking place, for the existence of an entity, or for another agent's
+      activity.
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/3375
-    - https://github.com/microbiomedata/nmdc-schema/issues/3376
     exact_mappings:
     - prov:Agent
     abstract: true
     slots:
     - type
+    - name
+    - profile_image_url
     class_uri: nmdc:Agent
   PersonValue:
     name: PersonValue
@@ -20773,14 +20774,11 @@ classes:
     - deprecate "has_raw_value" in favor of "name"
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
-    - schema:Person
     - prov:Person
     is_a: Agent
     slots:
     - email
-    - name
     - orcid
-    - profile_image_url
     - websites
     - has_raw_value
     slot_usage:
@@ -20811,15 +20809,12 @@ classes:
           FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL
           is optional.
     class_uri: nmdc:PersonValue
-  OrganizationValue:
-    name: OrganizationValue
-    description: An organization or consortium credited as a contributor.
-    comments:
-    - One class covers institutions and consortia. Identifiers are optional; a name
-      is enough.
+  Organization:
+    name: Organization
+    description: A social or legal institution such as a company, society, consortium,
+      etc.
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
-    - schema:Organization
     - prov:Organization
     is_a: Agent
     slots:
@@ -20830,9 +20825,9 @@ classes:
     slot_usage:
       name:
         name: name
-        description: The name of the organization or consortium.
+        description: The name of the organization.
         required: true
-    class_uri: nmdc:OrganizationValue
+    class_uri: nmdc:Organization
   TextValue:
     name: TextValue
     description: A basic string value

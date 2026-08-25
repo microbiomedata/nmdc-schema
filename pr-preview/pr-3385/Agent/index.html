@@ -327,15 +327,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#see-also">
-<span class="md-ellipsis">
-      
-        See Also
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       
@@ -405,7 +396,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-agent">Class: Agent</h1>
-<p><em>A person or organization that can be the agent of a credit association.</em></p>
+<p><em>A person or organization bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.</em></p>
 <div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -417,10 +408,14 @@
   click Agent href "../Agent"
     Agent &lt;|-- PersonValue
       click PersonValue href "../PersonValue"
-    Agent &lt;|-- OrganizationValue
-      click OrganizationValue href "../OrganizationValue"
+    Agent &lt;|-- Organization
+      click Organization href "../Organization"
 
 
+
+  Agent : name
+
+  Agent : profile_image_url
 
   Agent : type
 
@@ -431,7 +426,7 @@
 <ul>
 <li><strong>Agent</strong><ul>
 <li><a href="../PersonValue/">PersonValue</a></li>
-<li><a href="../OrganizationValue/">OrganizationValue</a></li>
+<li><a href="../Organization/">Organization</a></li>
 </ul>
 </li>
 </ul>
@@ -450,6 +445,18 @@
 <td><a href="../type/">type</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>the class_uri of the class that has been instantiated</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A human readable label for an entity</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../profile_image_url/">profile_image_url</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A url that points to an image of this person or organization.</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -473,11 +480,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="see-also">See Also</h2>
-<ul>
-<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/3375">https://github.com/microbiomedata/nmdc-schema/issues/3375</a></li>
-<li><a href="https://github.com/microbiomedata/nmdc-schema/issues/3376">https://github.com/microbiomedata/nmdc-schema/issues/3376</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -503,16 +505,16 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Agent
-description: A person or organization that can be the agent of a credit association.
+description: A person or organization bears some form of responsibility for an activity
+  taking place, for the existence of an entity, or for another agent's activity.
 from_schema: https://w3id.org/nmdc/nmdc
-see_also:
-- https://github.com/microbiomedata/nmdc-schema/issues/3375
-- https://github.com/microbiomedata/nmdc-schema/issues/3376
 exact_mappings:
 - prov:Agent
 abstract: true
 slots:
 - type
+- name
+- profile_image_url
 class_uri: nmdc:Agent
 
 </code></pre>
@@ -520,11 +522,9 @@ class_uri: nmdc:Agent
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Agent
-description: A person or organization that can be the agent of a credit association.
+description: A person or organization bears some form of responsibility for an activity
+  taking place, for the existence of an entity, or for another agent's activity.
 from_schema: https://w3id.org/nmdc/nmdc
-see_also:
-- https://github.com/microbiomedata/nmdc-schema/issues/3375
-- https://github.com/microbiomedata/nmdc-schema/issues/3376
 exact_mappings:
 - prov:Agent
 abstract: true
@@ -575,6 +575,28 @@ attributes:
     - MetaboliteIdentification
     range: uriorcurie
     required: true
+  name:
+    name: name
+    description: A human readable label for an entity
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    owner: Agent
+    domain_of:
+    - Agent
+    - Organization
+    - NamedThing
+    - Protocol
+    range: string
+  profile_image_url:
+    name: profile_image_url
+    description: A url that points to an image of this person or organization.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    owner: Agent
+    domain_of:
+    - Agent
+    - Organization
+    range: string
 class_uri: nmdc:Agent
 
 </code></pre>

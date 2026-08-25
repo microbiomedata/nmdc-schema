@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/OrganizationValue/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/Organization/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
-<title>Class: OrganizationValue - NMDC Schema Documentation</title>
+<title>Class: Organization - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-organizationvalue">
+<a class="md-skip" href="#class-organization">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: OrganizationValue
+              Class: Organization
             
           </span>
 </div>
@@ -318,15 +318,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#comments">
-<span class="md-ellipsis">
-      
-        Comments
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       
@@ -395,27 +386,27 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-organizationvalue">Class: OrganizationValue</h1>
-<p><em>An organization or consortium credited as a contributor.</em></p>
+<h1 id="class-organization">Class: Organization</h1>
+<p><em>A social or legal institution such as a company, society, consortium, etc.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/OrganizationValue">nmdc:OrganizationValue</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/Organization">nmdc:Organization</a></p>
 <div class="mermaid">classDiagram
-  class OrganizationValue
-  click OrganizationValue href "../OrganizationValue"
-    Agent &lt;|-- OrganizationValue
+  class Organization
+  click Organization href "../Organization"
+    Agent &lt;|-- Organization
       click Agent href "../Agent"
 
 
 
-  OrganizationValue : name
+  Organization : name
 
-  OrganizationValue : profile_image_url
+  Organization : profile_image_url
 
-  OrganizationValue : type
+  Organization : type
 
-  OrganizationValue : url
+  Organization : url
 
-  OrganizationValue : websites
+  Organization : websites
 
 
 
@@ -423,7 +414,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Agent/">Agent</a><ul>
-<li><strong>OrganizationValue</strong></li>
+<li><strong>Organization</strong></li>
 </ul>
 </li>
 </ul>
@@ -441,7 +432,7 @@
 <tr>
 <td><a href="../name/">name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>The name of the organization or consortium.</td>
+<td>The name of the organization.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -470,10 +461,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>One class covers institutions and consortia. Identifiers are optional; a name is enough.</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -490,7 +477,7 @@
 <tbody>
 <tr>
 <td>exact</td>
-<td>schema:Organization, prov:Organization</td>
+<td>prov:Organization</td>
 </tr>
 </tbody>
 </table>
@@ -498,14 +485,11 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: OrganizationValue
-description: An organization or consortium credited as a contributor.
-comments:
-- One class covers institutions and consortia. Identifiers are optional; a name is
-  enough.
+<pre><code class="language-yaml">name: Organization
+description: A social or legal institution such as a company, society, consortium,
+  etc.
 from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
-- schema:Organization
 - prov:Organization
 is_a: Agent
 slots:
@@ -516,39 +500,36 @@ slots:
 slot_usage:
   name:
     name: name
-    description: The name of the organization or consortium.
+    description: The name of the organization.
     required: true
-class_uri: nmdc:OrganizationValue
+class_uri: nmdc:Organization
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: OrganizationValue
-description: An organization or consortium credited as a contributor.
-comments:
-- One class covers institutions and consortia. Identifiers are optional; a name is
-  enough.
+<pre><code class="language-yaml">name: Organization
+description: A social or legal institution such as a company, society, consortium,
+  etc.
 from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
-- schema:Organization
 - prov:Organization
 is_a: Agent
 slot_usage:
   name:
     name: name
-    description: The name of the organization or consortium.
+    description: The name of the organization.
     required: true
 attributes:
   name:
     name: name
-    description: The name of the organization or consortium.
+    description: The name of the organization.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: OrganizationValue
+    owner: Organization
     domain_of:
-    - PersonValue
-    - OrganizationValue
+    - Agent
+    - Organization
     - NamedThing
     - Protocol
     range: string
@@ -559,10 +540,10 @@ attributes:
     - See issue 207 - this clashes with the mixs field
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: OrganizationValue
+    owner: Organization
     domain_of:
     - ImageValue
-    - OrganizationValue
+    - Organization
     - Protocol
     - DataObject
     range: string
@@ -580,10 +561,10 @@ attributes:
     see_also:
     - nmdc:url
     rank: 1000
-    owner: OrganizationValue
+    owner: Organization
     domain_of:
     - PersonValue
-    - OrganizationValue
+    - Organization
     - Study
     range: string
     multivalued: true
@@ -593,10 +574,10 @@ attributes:
     description: A url that points to an image of this person or organization.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: OrganizationValue
+    owner: Organization
     domain_of:
-    - PersonValue
-    - OrganizationValue
+    - Agent
+    - Organization
     range: string
   type:
     name: type
@@ -621,7 +602,7 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    owner: OrganizationValue
+    owner: Organization
     domain_of:
     - EukEval
     - FunctionalAnnotationAggMember
@@ -644,7 +625,7 @@ attributes:
     - MetaboliteIdentification
     range: uriorcurie
     required: true
-class_uri: nmdc:OrganizationValue
+class_uri: nmdc:Organization
 
 </code></pre>
 </details>
