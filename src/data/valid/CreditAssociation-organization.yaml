@@ -1,0 +1,7 @@
+type: prov:Association
+applies_to_person:
+  type: nmdc:OrganizationValue
+  name: Microflora Danica
+  url: https://www.nature.com/articles/s41586-025-09794-2
+applied_roles:
+  - Investigation

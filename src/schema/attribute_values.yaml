@@ -14,6 +14,7 @@ default_range: string
 prefixes:
   schema: "http://schema.org/"
   nmdc: "https://w3id.org/nmdc/"
+  prov: "http://www.w3.org/ns/prov#"
 
 classes:
   AttributeValue:
@@ -57,19 +58,35 @@ classes:
       - description
       - display_order
 
+  Agent:
+    abstract: true
+    class_uri: nmdc:Agent
+    description: A person or organization that can be the agent of a credit association.
+    slots:
+      - type
+    exact_mappings:
+      - prov:Agent
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/3375
+      - https://github.com/microbiomedata/nmdc-schema/issues/3376
+
   PersonValue:
     class_uri: nmdc:PersonValue
-    is_a: AttributeValue
-    description: An attribute value representing a person
+    is_a: Agent
+    description: A person, typically a researcher associated with a study or data generation.
     slots:
       - email
       - name
       - orcid
       - profile_image_url
       - websites
+      - has_raw_value
     todos:
       - add additional fields e.g for institution
       - deprecate "has_raw_value" in favor of "name"
+    exact_mappings:
+      - schema:Person
+      - prov:Person
     slot_usage:
       orcid:
         annotations:
@@ -88,6 +105,25 @@ classes:
           It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
         annotations:
           tooltip: First name, middle initial, and last name of this person.
+
+  OrganizationValue:
+    class_uri: nmdc:OrganizationValue
+    is_a: Agent
+    description: An organization or consortium credited as a contributor.
+    slots:
+      - name
+      - url
+      - websites
+      - profile_image_url
+    exact_mappings:
+      - schema:Organization
+      - prov:Organization
+    slot_usage:
+      name:
+        required: true
+        description: The name of the organization or consortium.
+    comments:
+      - One class covers institutions and consortia. Identifiers are optional; a name is enough.
   TextValue:
     class_uri: nmdc:TextValue
     is_a: AttributeValue
@@ -228,7 +264,7 @@ slots:
     slot_uri: schema:email
 
   profile_image_url:
-    description: A url that points to an image of a person.
+    description: A url that points to an image of this person or organization.
     range: string
 
   orcid:

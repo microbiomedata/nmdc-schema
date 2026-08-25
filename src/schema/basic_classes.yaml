@@ -297,8 +297,8 @@ classes:
       - credit table
       - associated researchers
     description: >-
-      This class supports binding associated researchers to a study or a data generation record.
-      There will be at least a slot for a CRediT Contributor Role and for a person value.
+      This class supports binding an agent (a PersonValue or OrganizationValue)
+      to a study or a data generation record with a CRediT Contributor Role.
     slots:
       - applies_to_person
       - applied_roles
@@ -798,12 +798,12 @@ slots:
     inlined_as_list: true
     description: >-
       This slot links a study or a data generation to a credit association. The credit
-      association will be linked to a person value and to a CRediT Contributor Roles
-      term. Principal investigators are recorded here with
+      association is linked to an Agent (PersonValue or OrganizationValue) and to a CRediT
+      Contributor Roles term. Principal investigators are recorded here with
       applied_roles including Principal Investigator.
     slot_uri: prov:qualifiedAssociation
     annotations:
-      tooltip: Researchers associated with this study or data generation, including principal investigators.
+      tooltip: Researchers or organizations associated with this study or data generation, including principal investigators.
     examples:
       - object:
           type: prov:Association
@@ -825,7 +825,7 @@ slots:
     inlined_as_list: true
     description: Links a study to one or more images.
   applies_to_person:
-    range: PersonValue
+    range: Agent
     required: true
   applied_roles:
     range: CreditEnum
