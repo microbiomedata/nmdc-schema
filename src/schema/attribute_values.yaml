@@ -61,14 +61,13 @@ classes:
   Agent:
     abstract: true
     class_uri: nmdc:Agent
-    description: A person or organization that can be the agent of a credit association.
+    description: A person or organization bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.
     slots:
       - type
+      - name
+      - profile_image_url
     exact_mappings:
       - prov:Agent
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/3375
-      - https://github.com/microbiomedata/nmdc-schema/issues/3376
 
   PersonValue:
     class_uri: nmdc:PersonValue
@@ -76,16 +75,13 @@ classes:
     description: A person, typically a researcher associated with a study or data generation.
     slots:
       - email
-      - name
       - orcid
-      - profile_image_url
       - websites
       - has_raw_value
     todos:
       - add additional fields e.g for institution
       - deprecate "has_raw_value" in favor of "name"
     exact_mappings:
-      - schema:Person
       - prov:Person
     slot_usage:
       orcid:
@@ -106,24 +102,22 @@ classes:
         annotations:
           tooltip: First name, middle initial, and last name of this person.
 
-  OrganizationValue:
-    class_uri: nmdc:OrganizationValue
+  Organization:
+    class_uri: nmdc:Organization
     is_a: Agent
-    description: An organization or consortium credited as a contributor.
+    description: A social or legal institution such as a company, society, consortium, etc.
     slots:
       - name
       - url
       - websites
       - profile_image_url
     exact_mappings:
-      - schema:Organization
       - prov:Organization
     slot_usage:
       name:
         required: true
-        description: The name of the organization or consortium.
-    comments:
-      - One class covers institutions and consortia. Identifiers are optional; a name is enough.
+        description: The name of the organization.
+
   TextValue:
     class_uri: nmdc:TextValue
     is_a: AttributeValue
