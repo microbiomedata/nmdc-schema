@@ -75,15 +75,15 @@ class Migrator(MigratorBase):
         >>> m.move_data_generation_principal_investigator({"id": "nmdc:dgns-2"})
         {'id': 'nmdc:dgns-2'}
         """
-        pi = record.pop("principal_investigator", None)
+        pi = data_generation.pop("principal_investigator", None)
         if not isinstance(pi, dict):
-            return record
+            return data_generation
 
-        record["has_credit_associations"] = [
+        data_generation["has_credit_associations"] = [
             {
                 "type": "prov:Association",
                 "applies_to_person": pi,
                 "applied_roles": ["Principal Investigator"],
             }
         ]
-        return record
+        return data_generation
