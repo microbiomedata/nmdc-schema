@@ -636,6 +636,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -717,7 +728,7 @@
 
 
 <h1 id="slot-has_credit_associations">Slot: has_credit_associations</h1>
-<p><em>This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study</em></p>
+<p><em>This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.</em></p>
 <div>
 <p>URI: <a href="http://www.w3.org/ns/prov#qualifiedAssociation">prov:qualifiedAssociation</a></p>
 <!-- no inheritance hierarchy -->
@@ -736,6 +747,21 @@
 <td>A study summarizes the overall goal of a research initiative and outlines...</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+<td>The methods and processes used to generate omics data from a biosample or organism.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td>A DataGeneration in which the sequence of DNA or RNA molecules is generated.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td>Spectrometry where the sample is converted into gaseous ions which are...</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
@@ -747,6 +773,14 @@
 <p>Multivalued: True</p>
 </li>
 </ul>
+<h2 id="examples">Examples</h2>
+<p>A principal investigator recorded as a credit association.</p>
+<pre><code class="language-yaml">type: &quot;prov:Association&quot;
+applies_to_person:
+  type: &quot;nmdc:PersonValue&quot;
+  name: &quot;Janet Jansson&quot;
+applied_roles: [&quot;Principal Investigator&quot;]
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -759,7 +793,7 @@
 <tbody>
 <tr>
 <td>tooltip</td>
-<td>Other researchers associated with this study.</td>
+<td>Researchers associated with this study or data generation, including principal investigators.</td>
 </tr>
 </tbody>
 </table>
@@ -789,15 +823,27 @@
 annotations:
   tooltip:
     tag: tooltip
-    value: Other researchers associated with this study.
-description: 'This slot links a study to a credit association.  The credit association
-  will be linked to a person value and to a CRediT Contributor Roles term. Overall
-  semantics: person should get credit X for their participation in the study'
+    value: Researchers associated with this study or data generation, including principal
+      investigators.
+description: This slot links a study or a data generation to a credit association.
+  The credit association will be linked to a person value and to a CRediT Contributor
+  Roles term. Principal investigators are recorded here with applied_roles including
+  Principal Investigator.
+examples:
+- description: A principal investigator recorded as a credit association.
+  object:
+    type: prov:Association
+    applies_to_person:
+      type: nmdc:PersonValue
+      name: Janet Jansson
+    applied_roles:
+    - Principal Investigator
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: prov:qualifiedAssociation
 domain_of:
 - Study
+- DataGeneration
 range: CreditAssociation
 multivalued: true
 inlined: true

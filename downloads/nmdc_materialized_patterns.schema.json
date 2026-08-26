@@ -6506,7 +6506,7 @@
         },
         "CreditAssociation": {
             "additionalProperties": false,
-            "description": "This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role and for a person value.",
+            "description": "This class supports binding associated researchers to a study or a data generation record. There will be at least a slot for a CRediT Contributor Role and for a person value.",
             "properties": {
                 "applied_roles": {
                     "items": {
@@ -6916,6 +6916,16 @@
                         "null"
                     ]
                 },
+                "has_credit_associations": {
+                    "description": "This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "items": {
+                        "$ref": "#/$defs/CreditAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_failure_categorization": {
                     "items": {
                         "$ref": "#/$defs/FailureCategorization"
@@ -6973,17 +6983,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "principal_investigator": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PersonValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Principal Investigator who led the study and/or generated the dataset."
                 },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
@@ -10549,6 +10548,16 @@
                         "null"
                     ]
                 },
+                "has_credit_associations": {
+                    "description": "This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "items": {
+                        "$ref": "#/$defs/CreditAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_failure_categorization": {
                     "items": {
                         "$ref": "#/$defs/FailureCategorization"
@@ -10611,17 +10620,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "principal_investigator": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PersonValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Principal Investigator who led the study and/or generated the dataset."
                 },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
@@ -13788,6 +13786,16 @@
                         "null"
                     ]
                 },
+                "has_credit_associations": {
+                    "description": "This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "items": {
+                        "$ref": "#/$defs/CreditAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_failure_categorization": {
                     "items": {
                         "$ref": "#/$defs/FailureCategorization"
@@ -13873,17 +13881,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "principal_investigator": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PersonValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Principal Investigator who led the study and/or generated the dataset."
                 },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
@@ -16603,7 +16600,7 @@
                     ]
                 },
                 "has_credit_associations": {
-                    "description": "This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study",
+                    "description": "This slot links a study or a data generation to a credit association. The credit association will be linked to a person value and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
                     "items": {
                         "$ref": "#/$defs/CreditAssociation"
                     },
@@ -16702,17 +16699,6 @@
                         "array",
                         "null"
                     ]
-                },
-                "principal_investigator": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PersonValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Principal Investigator who led the study and/or generated the dataset."
                 },
                 "protocol_link": {
                     "items": {
@@ -17979,6 +17965,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post16.dev0+33e2db2e1"
+    "version": "11.23.0.post22.dev0+92f06f5ff"
 }
 

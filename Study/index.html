@@ -484,11 +484,6 @@
       Study --&gt; "*" Study : part_of
     click Study href "../Study"
 
-  Study : principal_investigator
-
-      Study --&gt; "0..1" PersonValue : principal_investigator
-    click PersonValue href "../PersonValue"
-
   Study : protocol_link
 
       Study --&gt; "*" Protocol : protocol_link
@@ -657,7 +652,7 @@
 <tr>
 <td><a href="../has_credit_associations/">has_credit_associations</a></td>
 <td>* <br/> <a href="../CreditAssociation/">CreditAssociation</a></td>
-<td>This slot links a study to a credit association.  The credit association...</td>
+<td>This slot links a study or a data generation to a credit association. The...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -682,12 +677,6 @@
 <td><a href="../part_of/">part_of</a></td>
 <td>* <br/> <a href="./">Study</a></td>
 <td>Links a study or consortium to a parent (or umbrella) study or consortium.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../principal_investigator/">principal_investigator</a></td>
-<td>0..1 <br/> <a href="../PersonValue/">PersonValue</a></td>
-<td>Principal Investigator who led the study and/or generated the dataset.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -910,7 +899,6 @@ slots:
 - notes
 - objective
 - part_of
-- principal_investigator
 - protocol_link
 - study_category
 - study_image
@@ -1514,16 +1502,28 @@ attributes:
     annotations:
       tooltip:
         tag: tooltip
-        value: Other researchers associated with this study.
-    description: 'This slot links a study to a credit association.  The credit association
-      will be linked to a person value and to a CRediT Contributor Roles term. Overall
-      semantics: person should get credit X for their participation in the study'
+        value: Researchers associated with this study or data generation, including
+          principal investigators.
+    description: This slot links a study or a data generation to a credit association.
+      The credit association will be linked to a person value and to a CRediT Contributor
+      Roles term. Principal investigators are recorded here with applied_roles including
+      Principal Investigator.
+    examples:
+    - description: A principal investigator recorded as a credit association.
+      object:
+        type: prov:Association
+        applies_to_person:
+          type: nmdc:PersonValue
+          name: Janet Jansson
+        applied_roles:
+        - Principal Investigator
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: prov:qualifiedAssociation
     owner: Study
     domain_of:
     - Study
+    - DataGeneration
     range: CreditAssociation
     multivalued: true
     inlined: true
@@ -1590,18 +1590,6 @@ attributes:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
       interpolated: true
-  principal_investigator:
-    name: principal_investigator
-    description: Principal Investigator who led the study and/or generated the dataset.
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - PI
-    rank: 1000
-    owner: Study
-    domain_of:
-    - Study
-    - DataGeneration
-    range: PersonValue
   protocol_link:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc

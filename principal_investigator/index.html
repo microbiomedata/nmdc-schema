@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: principal_investigator - NMDC Schema Documentation</title>
+        <title>Slot: principal_investigator (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-principal_investigator" class="md-skip">
+        <a href="#slot-principal_investigator-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: principal_investigator
+              Slot: principal_investigator (DEPRECATED)
             
           </span>
         </div>
@@ -614,17 +614,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Applicable Classes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -716,43 +705,11 @@
   
 
 
-<h1 id="slot-principal_investigator">Slot: principal_investigator</h1>
+<h1 id="slot-principal_investigator-deprecated">Slot: principal_investigator  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p><em>Principal Investigator who led the study and/or generated the dataset.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/principal_investigator">nmdc:principal_investigator</a></p>
 <!-- no inheritance hierarchy -->
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Study/">Study</a></td>
-<td>A study summarizes the overall goal of a research initiative and outlines...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-<td>The methods and processes used to generate omics data from a biosample or organism.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td>A DataGeneration in which the sequence of DNA or RNA molecules is generated.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td>Spectrometry where the sample is converted into gaseous ions which are...</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../PersonValue/">PersonValue</a></li>
@@ -786,13 +743,15 @@
 
 <pre><code class="language-yaml">name: principal_investigator
 description: Principal Investigator who led the study and/or generated the dataset.
+deprecated: Unbound from Study and DataGeneration. Identify PIs with has_credit_associations
+  using the CreditEnum value Principal Investigator.
 from_schema: https://w3id.org/nmdc/nmdc
+deprecated_element_has_possible_replacement: has_credit_associations
 aliases:
 - PI
+last_updated_on: '2026-08-21T00:00:00+00:00'
+modified_by: ORCID:0000-0002-4504-1039
 rank: 1000
-domain_of:
-- Study
-- DataGeneration
 range: PersonValue
 
 </code></pre>

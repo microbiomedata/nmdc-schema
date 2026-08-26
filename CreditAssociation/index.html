@@ -405,7 +405,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-creditassociation">Class: CreditAssociation</h1>
-<p><em>This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role and for a person value.</em></p>
+<p><em>This class supports binding associated researchers to a study or a data generation record. There will be at least a slot for a CRediT Contributor Role and for a person value.</em></p>
 <div>
 <p>URI: <a href="http://www.w3.org/ns/prov#Association">prov:Association</a></p>
 <div class="mermaid">classDiagram
@@ -471,7 +471,25 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td><a href="../has_credit_associations/">has_credit_associations</a></td>
+<td>range</td>
+<td><a href="./">CreditAssociation</a></td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td><a href="../has_credit_associations/">has_credit_associations</a></td>
+<td>range</td>
+<td><a href="./">CreditAssociation</a></td>
+</tr>
+<tr>
 <td><a href="../Study/">Study</a></td>
+<td><a href="../has_credit_associations/">has_credit_associations</a></td>
+<td>range</td>
+<td><a href="./">CreditAssociation</a></td>
+</tr>
+<tr>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
 <td><a href="../has_credit_associations/">has_credit_associations</a></td>
 <td>range</td>
 <td><a href="./">CreditAssociation</a></td>
@@ -480,7 +498,6 @@
 </table>
 <h2 id="aliases">Aliases</h2>
 <ul>
-<li>study role</li>
 <li>credit table</li>
 <li>associated researchers</li>
 </ul>
@@ -513,13 +530,13 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: CreditAssociation
-description: This class supports binding associated researchers to studies. There
-  will be at least a slot for a CRediT Contributor Role and for a person value.
+description: This class supports binding associated researchers to a study or a data
+  generation record. There will be at least a slot for a CRediT Contributor Role and
+  for a person value.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://casrai.org/credit/
 aliases:
-- study role
 - credit table
 - associated researchers
 slots:
@@ -533,13 +550,13 @@ class_uri: prov:Association
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: CreditAssociation
-description: This class supports binding associated researchers to studies. There
-  will be at least a slot for a CRediT Contributor Role and for a person value.
+description: This class supports binding associated researchers to a study or a data
+  generation record. There will be at least a slot for a CRediT Contributor Role and
+  for a person value.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://casrai.org/credit/
 aliases:
-- study role
 - credit table
 - associated researchers
 attributes:

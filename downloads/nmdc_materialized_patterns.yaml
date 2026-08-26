@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post16.dev0+33e2db2e1
+version: 11.23.0.post22.dev0+92f06f5ff
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -8329,9 +8329,14 @@ slots:
   principal_investigator:
     name: principal_investigator
     description: Principal Investigator who led the study and/or generated the dataset.
+    deprecated: Unbound from Study and DataGeneration. Identify PIs with has_credit_associations
+      using the CreditEnum value Principal Investigator.
     from_schema: https://w3id.org/nmdc/nmdc
+    deprecated_element_has_possible_replacement: has_credit_associations
     aliases:
     - PI
+    last_updated_on: '2026-08-21T00:00:00+00:00'
+    modified_by: ORCID:0000-0002-4504-1039
     range: PersonValue
   was_generated_by:
     name: was_generated_by
@@ -8373,10 +8378,21 @@ slots:
     annotations:
       tooltip:
         tag: tooltip
-        value: Other researchers associated with this study.
-    description: 'This slot links a study to a credit association.  The credit association
-      will be linked to a person value and to a CRediT Contributor Roles term. Overall
-      semantics: person should get credit X for their participation in the study'
+        value: Researchers associated with this study or data generation, including
+          principal investigators.
+    description: This slot links a study or a data generation to a credit association.
+      The credit association will be linked to a person value and to a CRediT Contributor
+      Roles term. Principal investigators are recorded here with applied_roles including
+      Principal Investigator.
+    examples:
+    - description: A principal investigator recorded as a credit association.
+      object:
+        type: prov:Association
+        applies_to_person:
+          type: nmdc:PersonValue
+          name: Janet Jansson
+        applied_roles:
+        - Principal Investigator
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: prov:qualifiedAssociation
     range: CreditAssociation
@@ -21192,13 +21208,13 @@ classes:
     class_uri: nmdc:Protocol
   CreditAssociation:
     name: CreditAssociation
-    description: This class supports binding associated researchers to studies. There
-      will be at least a slot for a CRediT Contributor Role and for a person value.
+    description: This class supports binding associated researchers to a study or
+      a data generation record. There will be at least a slot for a CRediT Contributor
+      Role and for a person value.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://casrai.org/credit/
     aliases:
-    - study role
     - credit table
     - associated researchers
     slots:
@@ -21313,7 +21329,6 @@ classes:
     - notes
     - objective
     - part_of
-    - principal_investigator
     - protocol_link
     - study_category
     - study_image
@@ -21521,7 +21536,7 @@ classes:
     - analyte_category
     - associated_studies
     - instrument_used
-    - principal_investigator
+    - has_credit_associations
     - instrument_instance_specifier
     - provenance_metadata
     slot_usage:
