@@ -63,7 +63,7 @@ class Migrator(MigratorBase):
             study.pop("principal_investigator")
         return study
 
-    def move_data_generation_principal_investigator(self, record: dict) -> dict:
+    def move_data_generation_principal_investigator(self, data_generation: dict) -> dict:
         r"""Move principal_investigator onto a new has_credit_associations list.
 
         >>> m = Migrator()
