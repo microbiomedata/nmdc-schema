@@ -1,4 +1,4 @@
-applies_to_person:
+applies_to_agent:
   type: nmdc:Person
   email: jcventer@jcvi.org
   name: J. Craig Venter

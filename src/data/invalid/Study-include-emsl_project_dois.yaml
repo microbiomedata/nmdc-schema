@@ -52,7 +52,7 @@ funding_sources:
   - any string 1
   - any string 2
 has_credit_associations:
-  - applies_to_person:
+  - applies_to_agent:
       type: nmdc:Person
       orcid: orcid:0000-0002-7086-765X
       profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
@@ -66,7 +66,7 @@ has_credit_associations:
       - Supervision
       - Conceptualization
       - Funding acquisition
-  - applies_to_person:
+  - applies_to_agent:
       name: Tanja Davidsen
       type: nmdc:Person
     type: prov:Association

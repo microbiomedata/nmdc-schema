@@ -4,7 +4,7 @@ data_generation_set:
   description: Amplicon sequencing of Sterile water microbial communities from research facility in San Diego, CA, USA
   processing_institution: UCSD
   has_credit_associations:
-    - applies_to_person:
+    - applies_to_agent:
         name: Janet Jansson
         email: janet.jansson@pnnl.gov
         type: nmdc:Person

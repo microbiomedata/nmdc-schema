@@ -300,7 +300,7 @@ classes:
       This class supports binding an agent (a Person or OrganizationValue)
       to a study or a data generation record with a CRediT Contributor Role.
     slots:
-      - applies_to_person
+      - applies_to_agent
       - applied_roles
       - type
     class_uri: prov:Association
@@ -807,7 +807,7 @@ slots:
     examples:
       - object:
           type: prov:Association
-          applies_to_person:
+          applies_to_agent:
             type: nmdc:Person
             name: Janet Jansson
           applied_roles:
@@ -824,7 +824,7 @@ slots:
     multivalued: true
     inlined_as_list: true
     description: Links a study to one or more images.
-  applies_to_person:
+  applies_to_agent:
     range: Agent
     required: true
   applied_roles:
