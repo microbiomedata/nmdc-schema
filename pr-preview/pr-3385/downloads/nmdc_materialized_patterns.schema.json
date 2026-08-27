@@ -15,10 +15,7 @@
             "properties": {
                 "name": {
                     "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "profile_image_url": {
                     "description": "A url that points to an image of this person or organization.",
@@ -36,7 +33,8 @@
                 }
             },
             "required": [
-                "type"
+                "type",
+                "name"
             ],
             "title": "Agent",
             "type": "object"
@@ -6538,7 +6536,7 @@
         },
         "CreditAssociation": {
             "additionalProperties": false,
-            "description": "This class supports binding an agent (a PersonValue or OrganizationValue) to a study or a data generation record with a CRediT Contributor Role.",
+            "description": "This class supports binding an agent (a Person or OrganizationValue) to a study or a data generation record with a CRediT Contributor Role.",
             "properties": {
                 "applied_roles": {
                     "items": {
@@ -6546,10 +6544,10 @@
                     },
                     "type": "array"
                 },
-                "applies_to_person": {
+                "applies_to_agent": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/PersonValue"
+                            "$ref": "#/$defs/Person"
                         },
                         {
                             "$ref": "#/$defs/Organization"
@@ -6565,7 +6563,7 @@
                 }
             },
             "required": [
-                "applies_to_person",
+                "applies_to_agent",
                 "applied_roles",
                 "type"
             ],
@@ -6956,7 +6954,7 @@
                     ]
                 },
                 "has_credit_associations": {
-                    "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (PersonValue or OrganizationValue) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
                     "items": {
                         "$ref": "#/$defs/CreditAssociation"
                     },
@@ -10588,7 +10586,7 @@
                     ]
                 },
                 "has_credit_associations": {
-                    "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (PersonValue or OrganizationValue) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
                     "items": {
                         "$ref": "#/$defs/CreditAssociation"
                     },
@@ -13826,7 +13824,7 @@
                     ]
                 },
                 "has_credit_associations": {
-                    "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (PersonValue or OrganizationValue) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
                     "items": {
                         "$ref": "#/$defs/CreditAssociation"
                     },
@@ -14547,19 +14545,12 @@
             "title": "OxyStatSampEnum",
             "type": "string"
         },
-        "PersonValue": {
+        "Person": {
             "additionalProperties": false,
             "description": "A person, typically a researcher associated with a study or data generation.",
             "properties": {
                 "email": {
                     "description": "An email address for an entity such as a person. This should be the primary email address used.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "has_raw_value": {
-                    "description": "The full name of the Investigator in format FIRST LAST.",
                     "type": [
                         "string",
                         "null"
@@ -14587,7 +14578,7 @@
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
-                        "nmdc:PersonValue"
+                        "nmdc:Person"
                     ],
                     "type": "string"
                 },
@@ -14607,7 +14598,7 @@
                 "type",
                 "name"
             ],
-            "title": "PersonValue",
+            "title": "Person",
             "type": "object"
         },
         "PlannedProcess": {
@@ -16685,7 +16676,7 @@
                     ]
                 },
                 "has_credit_associations": {
-                    "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (PersonValue or OrganizationValue) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
                     "items": {
                         "$ref": "#/$defs/CreditAssociation"
                     },
@@ -18050,6 +18041,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post29.dev0+d8d20f983"
+    "version": "11.23.0.post32.dev0+7b61e5dc3"
 }
 

@@ -717,7 +717,7 @@
          <lastmod>2026-08-27</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/PersonValue/</loc>
+         <loc>https://microbiomedata.github.io/nmdc-schema/Person/</loc>
          <lastmod>2026-08-27</lastmod>
     </url>
     <url>
@@ -1225,7 +1225,7 @@
          <lastmod>2026-08-27</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/applies_to_person/</loc>
+         <loc>https://microbiomedata.github.io/nmdc-schema/applies_to_agent/</loc>
          <lastmod>2026-08-27</lastmod>
     </url>
     <url>

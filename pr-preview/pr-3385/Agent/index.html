@@ -406,8 +406,8 @@
 <div class="mermaid">classDiagram
   class Agent
   click Agent href "../Agent"
-    Agent &lt;|-- PersonValue
-      click PersonValue href "../PersonValue"
+    Agent &lt;|-- Person
+      click Person href "../Person"
     Agent &lt;|-- Organization
       click Organization href "../Organization"
 
@@ -425,7 +425,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Agent</strong><ul>
-<li><a href="../PersonValue/">PersonValue</a></li>
+<li><a href="../Person/">Person</a></li>
 <li><a href="../Organization/">Organization</a></li>
 </ul>
 </li>
@@ -449,7 +449,7 @@
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td>A human readable label for an entity</td>
 <td>direct</td>
 </tr>
@@ -474,7 +474,7 @@
 <tbody>
 <tr>
 <td><a href="../CreditAssociation/">CreditAssociation</a></td>
-<td><a href="../applies_to_person/">applies_to_person</a></td>
+<td><a href="../applies_to_agent/">applies_to_agent</a></td>
 <td>range</td>
 <td><a href="./">Agent</a></td>
 </tr>
@@ -515,6 +515,10 @@ slots:
 - type
 - name
 - profile_image_url
+slot_usage:
+  name:
+    name: name
+    required: true
 class_uri: nmdc:Agent
 
 </code></pre>
@@ -528,6 +532,10 @@ from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
 - prov:Agent
 abstract: true
+slot_usage:
+  name:
+    name: name
+    required: true
 attributes:
   type:
     name: type
@@ -586,6 +594,7 @@ attributes:
     - NamedThing
     - Protocol
     range: string
+    required: true
   profile_image_url:
     name: profile_image_url
     description: A url that points to an image of this person or organization.

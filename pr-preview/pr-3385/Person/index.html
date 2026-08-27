@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/PersonValue/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/Person/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
-<title>Class: PersonValue - NMDC Schema Documentation</title>
+<title>Class: Person - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-personvalue">
+<a class="md-skip" href="#class-person">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: PersonValue
+              Class: Person
             
           </span>
 </div>
@@ -386,31 +386,29 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-personvalue">Class: PersonValue</h1>
+<h1 id="class-person">Class: Person</h1>
 <p><em>A person, typically a researcher associated with a study or data generation.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/PersonValue">nmdc:PersonValue</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/Person">nmdc:Person</a></p>
 <div class="mermaid">classDiagram
-  class PersonValue
-  click PersonValue href "../PersonValue"
-    Agent &lt;|-- PersonValue
+  class Person
+  click Person href "../Person"
+    Agent &lt;|-- Person
       click Agent href "../Agent"
 
 
 
-  PersonValue : email
+  Person : email
 
-  PersonValue : has_raw_value
+  Person : name
 
-  PersonValue : name
+  Person : orcid
 
-  PersonValue : orcid
+  Person : profile_image_url
 
-  PersonValue : profile_image_url
+  Person : type
 
-  PersonValue : type
-
-  PersonValue : websites
+  Person : websites
 
 
 
@@ -418,7 +416,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Agent/">Agent</a><ul>
-<li><strong>PersonValue</strong></li>
+<li><strong>Person</strong></li>
 </ul>
 </li>
 </ul>
@@ -449,12 +447,6 @@
 <td><a href="../websites/">websites</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
 <td>A list of websites that are associated with the entity.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../has_raw_value/">has_raw_value</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The full name of the Investigator in format FIRST LAST.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -501,7 +493,7 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: PersonValue
+<pre><code class="language-yaml">name: Person
 description: A person, typically a researcher associated with a study or data generation.
 todos:
 - add additional fields e.g for institution
@@ -514,7 +506,6 @@ slots:
 - email
 - orcid
 - websites
-- has_raw_value
 slot_usage:
   orcid:
     name: orcid
@@ -542,13 +533,13 @@ slot_usage:
     description: The full name of the Investigator. It should follow the format FIRST
       [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
     required: true
-class_uri: nmdc:PersonValue
+class_uri: nmdc:Person
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: PersonValue
+<pre><code class="language-yaml">name: Person
 description: A person, typically a researcher associated with a study or data generation.
 todos:
 - add additional fields e.g for institution
@@ -596,9 +587,9 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: schema:email
-    owner: PersonValue
+    owner: Person
     domain_of:
-    - PersonValue
+    - Person
     range: string
   orcid:
     name: orcid
@@ -616,9 +607,9 @@ attributes:
     - https://bioregistry.io/registry/orcid
     - https://github.com/microbiomedata/nmdc-schema/issues/3327
     rank: 1000
-    owner: PersonValue
+    owner: Person
     domain_of:
-    - PersonValue
+    - Person
     range: string
     pattern: ^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$
   websites:
@@ -635,26 +626,14 @@ attributes:
     see_also:
     - nmdc:url
     rank: 1000
-    owner: PersonValue
+    owner: Person
     domain_of:
-    - PersonValue
+    - Person
     - Organization
     - Study
     range: string
     multivalued: true
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
-  has_raw_value:
-    name: has_raw_value
-    description: The full name of the Investigator in format FIRST LAST.
-    notes:
-    - May eventually be deprecated in favor of "name".
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    owner: PersonValue
-    domain_of:
-    - AttributeValue
-    - PersonValue
-    range: string
   type:
     name: type
     description: the class_uri of the class that has been instantiated
@@ -678,7 +657,7 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    owner: PersonValue
+    owner: Person
     domain_of:
     - EukEval
     - FunctionalAnnotationAggMember
@@ -711,7 +690,7 @@ attributes:
       [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: PersonValue
+    owner: Person
     domain_of:
     - Agent
     - NamedThing
@@ -723,11 +702,11 @@ attributes:
     description: A url that points to an image of this person or organization.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: PersonValue
+    owner: Person
     domain_of:
     - Agent
     range: string
-class_uri: nmdc:PersonValue
+class_uri: nmdc:Person
 
 </code></pre>
 </details>

@@ -405,7 +405,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-creditassociation">Class: CreditAssociation</h1>
-<p><em>This class supports binding an agent (a PersonValue or OrganizationValue) to a study or a data generation record with a CRediT Contributor Role.</em></p>
+<p><em>This class supports binding an agent (a Person or OrganizationValue) to a study or a data generation record with a CRediT Contributor Role.</em></p>
 <div>
 <p>URI: <a href="http://www.w3.org/ns/prov#Association">prov:Association</a></p>
 <div class="mermaid">classDiagram
@@ -417,9 +417,9 @@
       CreditAssociation --&gt; "1..*" CreditEnum : applied_roles
     click CreditEnum href "../CreditEnum"
 
-  CreditAssociation : applies_to_person
+  CreditAssociation : applies_to_agent
 
-      CreditAssociation --&gt; "1" Agent : applies_to_person
+      CreditAssociation --&gt; "1" Agent : applies_to_agent
     click Agent href "../Agent"
 
   CreditAssociation : type
@@ -440,7 +440,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../applies_to_person/">applies_to_person</a></td>
+<td><a href="../applies_to_agent/">applies_to_agent</a></td>
 <td>1 <br/> <a href="../Agent/">Agent</a></td>
 <td></td>
 <td>direct</td>
@@ -530,7 +530,7 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: CreditAssociation
-description: This class supports binding an agent (a PersonValue or OrganizationValue)
+description: This class supports binding an agent (a Person or OrganizationValue)
   to a study or a data generation record with a CRediT Contributor Role.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
@@ -539,7 +539,7 @@ aliases:
 - credit table
 - associated researchers
 slots:
-- applies_to_person
+- applies_to_agent
 - applied_roles
 - type
 class_uri: prov:Association
@@ -549,7 +549,7 @@ class_uri: prov:Association
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: CreditAssociation
-description: This class supports binding an agent (a PersonValue or OrganizationValue)
+description: This class supports binding an agent (a Person or OrganizationValue)
   to a study or a data generation record with a CRediT Contributor Role.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
@@ -558,8 +558,8 @@ aliases:
 - credit table
 - associated researchers
 attributes:
-  applies_to_person:
-    name: applies_to_person
+  applies_to_agent:
+    name: applies_to_agent
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: CreditAssociation

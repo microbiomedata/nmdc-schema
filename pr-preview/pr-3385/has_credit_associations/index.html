@@ -728,7 +728,7 @@
 
 
 <h1 id="slot-has_credit_associations">Slot: has_credit_associations</h1>
-<p><em>This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (PersonValue or OrganizationValue) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.</em></p>
+<p><em>This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.</em></p>
 <div>
 <p>URI: <a href="http://www.w3.org/ns/prov#qualifiedAssociation">prov:qualifiedAssociation</a></p>
 <!-- no inheritance hierarchy -->
@@ -776,8 +776,8 @@
 <h2 id="examples">Examples</h2>
 <p>A principal investigator recorded as a credit association.</p>
 <pre><code class="language-yaml">type: &quot;prov:Association&quot;
-applies_to_person:
-  type: &quot;nmdc:PersonValue&quot;
+applies_to_agent:
+  type: &quot;nmdc:Person&quot;
   name: &quot;Janet Jansson&quot;
 applied_roles: [&quot;Principal Investigator&quot;]
 </code></pre>
@@ -826,15 +826,15 @@ annotations:
     value: Researchers or organizations associated with this study or data generation,
       including principal investigators.
 description: This slot links a study or a data generation to a credit association.
-  The credit association is linked to an Agent (PersonValue or OrganizationValue)
-  and to a CRediT Contributor Roles term. Principal investigators are recorded here
-  with applied_roles including Principal Investigator.
+  The credit association is linked to an Agent (Person or Organization) and to a CRediT
+  Contributor Roles term. Principal investigators are recorded here with applied_roles
+  including Principal Investigator.
 examples:
 - description: A principal investigator recorded as a credit association.
   object:
     type: prov:Association
-    applies_to_person:
-      type: nmdc:PersonValue
+    applies_to_agent:
+      type: nmdc:Person
       name: Janet Jansson
     applied_roles:
     - Principal Investigator

@@ -863,15 +863,15 @@ attributes:
         value: Researchers or organizations associated with this study or data generation,
           including principal investigators.
     description: This slot links a study or a data generation to a credit association.
-      The credit association is linked to an Agent (PersonValue or OrganizationValue)
-      and to a CRediT Contributor Roles term. Principal investigators are recorded
-      here with applied_roles including Principal Investigator.
+      The credit association is linked to an Agent (Person or Organization) and to
+      a CRediT Contributor Roles term. Principal investigators are recorded here with
+      applied_roles including Principal Investigator.
     examples:
     - description: A principal investigator recorded as a credit association.
       object:
         type: prov:Association
-        applies_to_person:
-          type: nmdc:PersonValue
+        applies_to_agent:
+          type: nmdc:Person
           name: Janet Jansson
         applied_roles:
         - Principal Investigator

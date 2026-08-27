@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post29.dev0+d8d20f983
+version: 11.23.0.post32.dev0+7b61e5dc3
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -8346,7 +8346,7 @@ slots:
     - PI
     last_updated_on: '2026-08-21T00:00:00+00:00'
     modified_by: orcid:0000-0002-4504-1039
-    range: PersonValue
+    range: Person
   was_generated_by:
     name: was_generated_by
     from_schema: https://w3id.org/nmdc/nmdc
@@ -8390,15 +8390,15 @@ slots:
         value: Researchers or organizations associated with this study or data generation,
           including principal investigators.
     description: This slot links a study or a data generation to a credit association.
-      The credit association is linked to an Agent (PersonValue or OrganizationValue)
-      and to a CRediT Contributor Roles term. Principal investigators are recorded
-      here with applied_roles including Principal Investigator.
+      The credit association is linked to an Agent (Person or Organization) and to
+      a CRediT Contributor Roles term. Principal investigators are recorded here with
+      applied_roles including Principal Investigator.
     examples:
     - description: A principal investigator recorded as a credit association.
       object:
         type: prov:Association
-        applies_to_person:
-          type: nmdc:PersonValue
+        applies_to_agent:
+          type: nmdc:Person
           name: Janet Jansson
         applied_roles:
         - Principal Investigator
@@ -8424,8 +8424,8 @@ slots:
     range: ImageValue
     multivalued: true
     inlined_as_list: true
-  applies_to_person:
-    name: applies_to_person
+  applies_to_agent:
+    name: applies_to_agent
     from_schema: https://w3id.org/nmdc/nmdc
     range: Agent
     required: true
@@ -20787,9 +20787,13 @@ classes:
     - type
     - name
     - profile_image_url
+    slot_usage:
+      name:
+        name: name
+        required: true
     class_uri: nmdc:Agent
-  PersonValue:
-    name: PersonValue
+  Person:
+    name: Person
     description: A person, typically a researcher associated with a study or data
       generation.
     todos:
@@ -20803,7 +20807,6 @@ classes:
     - email
     - orcid
     - websites
-    - has_raw_value
     slot_usage:
       orcid:
         name: orcid
@@ -20832,7 +20835,7 @@ classes:
           FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL
           is optional.
         required: true
-    class_uri: nmdc:PersonValue
+    class_uri: nmdc:Person
   Organization:
     name: Organization
     description: A social or legal institution such as a company, society, consortium,
@@ -21251,7 +21254,7 @@ classes:
     class_uri: nmdc:Protocol
   CreditAssociation:
     name: CreditAssociation
-    description: This class supports binding an agent (a PersonValue or OrganizationValue)
+    description: This class supports binding an agent (a Person or OrganizationValue)
       to a study or a data generation record with a CRediT Contributor Role.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
@@ -21260,7 +21263,7 @@ classes:
     - credit table
     - associated researchers
     slots:
-    - applies_to_person
+    - applies_to_agent
     - applied_roles
     - type
     class_uri: prov:Association
