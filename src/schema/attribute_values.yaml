@@ -82,7 +82,6 @@ classes:
       - websites
     todos:
       - add additional fields e.g for institution
-      - deprecate "has_raw_value" in favor of "name"
     exact_mappings:
       - prov:Person
     slot_usage:
@@ -92,10 +91,6 @@ classes:
       email:
         annotations:
           tooltip: Email address for this person.
-      has_raw_value:
-        description: The full name of the Investigator in format FIRST LAST.
-        notes:
-          - May eventually be deprecated in favor of "name".
       name:
         description: >-
           The full name of the Investigator.
