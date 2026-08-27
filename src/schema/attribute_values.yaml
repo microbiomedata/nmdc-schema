@@ -97,7 +97,6 @@ classes:
         notes:
           - May eventually be deprecated in favor of "name".
       name:
-        required: true
         description: >-
           The full name of the Investigator.
           It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
@@ -115,7 +114,6 @@ classes:
       - prov:Organization
     slot_usage:
       name:
-        required: true
         description: The name of the organization.
 
   TextValue:
