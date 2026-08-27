@@ -7,7 +7,7 @@ data_generation_set:
     - applies_to_person:
         name: Janet Jansson
         email: janet.jansson@pnnl.gov
-        type: nmdc:PersonValue
+        type: nmdc:Person
       applied_roles:
         - Principal Investigator
       type: prov:Association

@@ -1060,7 +1060,7 @@ data_generation_set:
   - nmdc:sty-11-547rwq94
   has_credit_associations:
   - applies_to_person:
-      type: nmdc:PersonValue
+      type: nmdc:Person
       email: janet.jansson@pnnl.gov
       name: Janet Jansson
     applied_roles:

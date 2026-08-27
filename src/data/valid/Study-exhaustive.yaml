@@ -58,8 +58,7 @@ funding_sources:
   - any string 2
 has_credit_associations:
   - applies_to_person:
-      type: nmdc:PersonValue
-      has_raw_value: Craig Venter
+      type: nmdc:Person
       orcid: orcid:0000-0002-7086-765X
       profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
       email: jcventer@jcvi.org
@@ -73,7 +72,7 @@ has_credit_associations:
       - Funding acquisition
     type: prov:Association
   - applies_to_person:
-      type: nmdc:PersonValue
+      type: nmdc:Person
       name: Tanja Davidsen
     applied_roles:
       - Investigation
