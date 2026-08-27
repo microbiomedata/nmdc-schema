@@ -68,16 +68,18 @@ classes:
       - profile_image_url
     exact_mappings:
       - prov:Agent
+    slot_usage:
+      name:
+        required: true
 
-  PersonValue:
-    class_uri: nmdc:PersonValue
+  Person:
+    class_uri: nmdc:Person
     is_a: Agent
     description: A person, typically a researcher associated with a study or data generation.
     slots:
       - email
       - orcid
       - websites
-      - has_raw_value
     todos:
       - add additional fields e.g for institution
       - deprecate "has_raw_value" in favor of "name"

@@ -297,7 +297,7 @@ classes:
       - credit table
       - associated researchers
     description: >-
-      This class supports binding an agent (a PersonValue or OrganizationValue)
+      This class supports binding an agent (a Person or OrganizationValue)
       to a study or a data generation record with a CRediT Contributor Role.
     slots:
       - applies_to_person
@@ -753,7 +753,7 @@ slots:
   principal_investigator:
     aliases:
       - PI
-    range: PersonValue
+    range: Person
     description: Principal Investigator who led the study and/or generated the dataset.
     deprecated: >-
       Unbound from Study and DataGeneration. Identify PIs with has_credit_associations
@@ -798,7 +798,7 @@ slots:
     inlined_as_list: true
     description: >-
       This slot links a study or a data generation to a credit association. The credit
-      association is linked to an Agent (PersonValue or OrganizationValue) and to a CRediT
+      association is linked to an Agent (Person or Organization) and to a CRediT
       Contributor Roles term. Principal investigators are recorded here with
       applied_roles including Principal Investigator.
     slot_uri: prov:qualifiedAssociation
@@ -808,7 +808,7 @@ slots:
       - object:
           type: prov:Association
           applies_to_person:
-            type: nmdc:PersonValue
+            type: nmdc:Person
             name: Janet Jansson
           applied_roles:
             - Principal Investigator
