@@ -17,6 +17,10 @@ class Migrator(MigratorBase):
 
     Partial 3 copies ``has_raw_value`` onto missing ``PersonValue.name`` so
     name can be required (nmdc-schema#2458).
+
+    Partial 4 renames ``PersonValue`` to ``Person``, drops leftover
+    ``has_raw_value``, and renames ``applies_to_person`` to
+    ``applies_to_agent`` (nmdc-schema#3375).
     """
 
     _from_version = "11.23.0"
@@ -58,13 +62,13 @@ class Migrator(MigratorBase):
         >>> Migrator(adapter=DictionaryAdapter(database=db)).upgrade()
         >>> "principal_investigator" in db["study_set"][0]
         False
-        >>> db["study_set"][0]["has_credit_associations"][0]["applies_to_person"]["orcid"]
+        >>> db["study_set"][0]["has_credit_associations"][0]["applies_to_agent"]["orcid"]
         'orcid:0000-0003-2254-399X'
         >>> "principal_investigator" in db["data_generation_set"][0]
         False
-        >>> db["data_generation_set"][0]["has_credit_associations"][0]["applies_to_person"]["orcid"]
+        >>> db["data_generation_set"][0]["has_credit_associations"][0]["applies_to_agent"]["orcid"]
         'orcid:0000-0002-9108-5083'
-        >>> db["data_generation_set"][0]["has_credit_associations"][0]["applies_to_person"]["name"]
+        >>> db["data_generation_set"][0]["has_credit_associations"][0]["applies_to_agent"]["name"]
         'C'
         >>> db["data_generation_set"][0]["has_credit_associations"][0]["applied_roles"]
         ['Principal Investigator']
