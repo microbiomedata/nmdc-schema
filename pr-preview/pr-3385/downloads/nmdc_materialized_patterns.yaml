@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post34.dev0+5a1f3a586
+version: 11.23.0.post35.dev0+280049c68
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -20834,7 +20834,6 @@ classes:
         description: The full name of the Investigator. It should follow the format
           FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL
           is optional.
-        required: true
     class_uri: nmdc:Person
   Organization:
     name: Organization
@@ -20851,7 +20850,6 @@ classes:
       name:
         name: name
         description: The name of the organization.
-        required: true
     class_uri: nmdc:Organization
   TextValue:
     name: TextValue
