@@ -15,6 +15,7 @@ prefixes:
   schema: "http://schema.org/"
   nmdc: "https://w3id.org/nmdc/"
   prov: "http://www.w3.org/ns/prov#"
+  dcm: "https://kbase.github.io/credit_engine/linkml/"
 
 classes:
   AttributeValue:
@@ -104,9 +105,13 @@ classes:
       - ror
     exact_mappings:
       - prov:Organization
+    close_mappings:
+      - dcm:Organization
     slot_usage:
       name:
         description: The name of the organization.
+        close_mappings:
+          - dcm:organization_name
 
   TextValue:
     class_uri: nmdc:TextValue
@@ -261,6 +266,8 @@ slots:
       - value: orcid:0000-0002-7086-765X
     see_also:
       - https://bioregistry.io/registry/orcid
+    close_mappings:
+      - dcm:contributor_id
 
   ror:
     description: The Research Organization Registry identifier of an organization.
@@ -275,6 +282,8 @@ slots:
     see_also:
       - https://bioregistry.io/registry/ror
       - https://ror.org
+    close_mappings:
+      - dcm:organization_id
 
   language:
     range: language_code
