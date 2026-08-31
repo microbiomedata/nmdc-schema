@@ -5,6 +5,7 @@ See https://github.com/microbiomedata/nmdc-schema/issues/2458
 
 from __future__ import annotations
 
+from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
@@ -61,12 +62,32 @@ class Migrator(MigratorBase):
         'James Stegen'
         """
         self._warn_if_commit_ignored(commit_changes)
-        self.adapter.process_each_document(
-            "study_set", [self.fill_document_personvalue_names]
-        )
-        self.adapter.process_each_document(
-            "data_generation_set", [self.fill_document_personvalue_names]
-        )
+
+        if isinstance(self.adapter, MongoAdapter):
+            try:
+                self.adapter.process_collections_in_transaction(
+                    collection_names=["study_set", "data_generation_set"],
+                    document_processor=self.fill_document_personvalue_names,
+                    commit_changes=commit_changes,
+                )
+                if commit_changes:
+                    self.logger.info("Transaction committed (changes have been saved)")
+                else:
+                    self.logger.info("Transaction rolled back (no changes were committed)")
+            except Exception as e:
+                self.logger.error(f"Migration failed: {e}")
+                raise
+        else:
+            self.adapter.process_each_document(
+                "study_set", [self.fill_document_personvalue_names]
+            )
+            self.adapter.process_each_document(
+                "data_generation_set", [self.fill_document_personvalue_names]
+            )
+            if not commit_changes:
+                self.logger.info(
+                    "Note: Non-MongoDB adapter doesn't support rollback - changes are applied immediately"
+                )
 
     def fill_document_personvalue_names(self, document: dict) -> dict:
         r"""Copy has_raw_value onto missing name on each credit-association PersonValue.

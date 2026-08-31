@@ -8,6 +8,7 @@ from __future__ import annotations
 import re
 import unicodedata
 
+from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 from nmdc_schema.migrators.migrator_base import MigratorBase
 
 # Destination pattern from nmdc-schema#3327. Shape only; does not verify the
@@ -154,12 +155,32 @@ class Migrator(MigratorBase):
         'orcid:0000-0003-2254-399X'
         """
         self._warn_if_commit_ignored(commit_changes)
-        self.adapter.process_each_document(
-            "study_set", [self.normalize_document_personvalue_orcids]
-        )
-        self.adapter.process_each_document(
-            "data_generation_set", [self.normalize_document_personvalue_orcids]
-        )
+
+        if isinstance(self.adapter, MongoAdapter):
+            try:
+                self.adapter.process_collections_in_transaction(
+                    collection_names=["study_set", "data_generation_set"],
+                    document_processor=self.normalize_document_personvalue_orcids,
+                    commit_changes=commit_changes,
+                )
+                if commit_changes:
+                    self.logger.info("Transaction committed (changes have been saved)")
+                else:
+                    self.logger.info("Transaction rolled back (no changes were committed)")
+            except Exception as e:
+                self.logger.error(f"Migration failed: {e}")
+                raise
+        else:
+            self.adapter.process_each_document(
+                "study_set", [self.normalize_document_personvalue_orcids]
+            )
+            self.adapter.process_each_document(
+                "data_generation_set", [self.normalize_document_personvalue_orcids]
+            )
+            if not commit_changes:
+                self.logger.info(
+                    "Note: Non-MongoDB adapter doesn't support rollback - changes are applied immediately"
+                )
 
     def normalize_document_personvalue_orcids(self, document: dict) -> dict:
         r"""Normalize or drop ``orcid`` on each credit-association PersonValue.
