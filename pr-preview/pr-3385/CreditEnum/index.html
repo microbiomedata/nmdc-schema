@@ -647,6 +647,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -819,6 +830,10 @@
 <ul>
 <li>CreditEnums come from <a href="https://casrai.org/credit/">https://casrai.org/credit/</a></li>
 </ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://kbase.github.io/credit_engine/ContributorRole/">https://kbase.github.io/credit_engine/ContributorRole/</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -831,54 +846,86 @@
 comments:
 - CreditEnums come from https://casrai.org/credit/
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://kbase.github.io/credit_engine/ContributorRole/
 rank: 1000
 permissible_values:
   Conceptualization:
     text: Conceptualization
     description: Conceptualization
+    exact_mappings:
+    - dcm:conceptualization
   Data curation:
     text: Data curation
     description: Data curation
+    exact_mappings:
+    - dcm:data_curation
   Formal Analysis:
     text: Formal Analysis
     description: Formal Analysis
+    exact_mappings:
+    - dcm:formal_analysis
   Funding acquisition:
     text: Funding acquisition
     description: Funding acquisition
+    exact_mappings:
+    - dcm:funding_acquisition
   Investigation:
     text: Investigation
     description: Investigation
+    exact_mappings:
+    - dcm:investigation
   Methodology:
     text: Methodology
     description: Methodology
+    exact_mappings:
+    - dcm:methodology
   Project administration:
     text: Project administration
     description: Project administration
+    exact_mappings:
+    - dcm:project_administration
   Resources:
     text: Resources
     description: Resources
+    exact_mappings:
+    - dcm:resources
   Software:
     text: Software
     description: Software
+    exact_mappings:
+    - dcm:software
   Supervision:
     text: Supervision
     description: Supervision
+    exact_mappings:
+    - dcm:supervision
   Validation:
     text: Validation
     description: Validation
+    exact_mappings:
+    - dcm:validation
   Visualization:
     text: Visualization
     description: Visualization
+    exact_mappings:
+    - dcm:visualization
   Writing original draft:
     text: Writing original draft
     description: Writing – original draft
+    exact_mappings:
+    - dcm:writing_original_draft
   Writing review and editing:
     text: Writing review and editing
     description: Writing – review &amp; editing
+    exact_mappings:
+    - dcm:writing_review_editing
   Principal Investigator:
     text: Principal Investigator
     description: principal investigator role
     meaning: OBI:0000103
+    related_mappings:
+    - dcm:project_leader
   Submitter:
     text: Submitter
     description: the person(s) who enter study and biosample metadata into the NMDC

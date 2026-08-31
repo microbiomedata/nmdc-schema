@@ -30,6 +30,17 @@
                         "nmdc:Agent"
                     ],
                     "type": "string"
+                },
+                "websites": {
+                    "description": "A list of websites that are associated with the entity.",
+                    "items": {
+                        "pattern": "^[Hh][Tt][Tt][Pp][Ss]?:\\/\\/(?!.*[Dd][Oo][Ii]\\.[Oo][Rr][Gg]).*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -6536,7 +6547,7 @@
         },
         "CreditAssociation": {
             "additionalProperties": false,
-            "description": "This class supports binding an agent (a Person or OrganizationValue) to a study or a data generation record with a CRediT Contributor Role.",
+            "description": "This class supports binding an agent (a Person or an Organization) to a study or a data generation record with a CRediT Contributor Role.",
             "properties": {
                 "applied_roles": {
                     "items": {
@@ -14414,18 +14425,20 @@
                         "null"
                     ]
                 },
+                "ror": {
+                    "description": "The Research Organization Registry identifier of an organization.",
+                    "pattern": "^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
                         "nmdc:Organization"
                     ],
                     "type": "string"
-                },
-                "url": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "websites": {
                     "description": "A list of websites that are associated with the entity.",
@@ -18041,6 +18054,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post42.dev0+d6ece6e87"
+    "version": "11.23.0.post47.dev0+0cd9c00cd"
 }
 

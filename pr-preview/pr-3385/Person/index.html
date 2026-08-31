@@ -444,12 +444,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../websites/">websites</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>A list of websites that are associated with the entity.</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../type/">type</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>the class_uri of the class that has been instantiated</td>
@@ -465,6 +459,12 @@
 <td><a href="../profile_image_url/">profile_image_url</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A url that points to an image of this person or organization.</td>
+<td><a href="../Agent/">Agent</a></td>
+</tr>
+<tr>
+<td><a href="../websites/">websites</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>A list of websites that are associated with the entity.</td>
 <td><a href="../Agent/">Agent</a></td>
 </tr>
 </tbody>
@@ -495,8 +495,6 @@
 <details>
 <pre><code class="language-yaml">name: Person
 description: A person, typically a researcher associated with a study or data generation.
-todos:
-- add additional fields e.g for institution
 from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
 - prov:Person
@@ -504,7 +502,6 @@ is_a: Agent
 slots:
 - email
 - orcid
-- websites
 slot_usage:
   orcid:
     name: orcid
@@ -534,8 +531,6 @@ class_uri: nmdc:Person
 <details>
 <pre><code class="language-yaml">name: Person
 description: A person, typically a researcher associated with a study or data generation.
-todos:
-- add additional fields e.g for institution
 from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
 - prov:Person
@@ -591,34 +586,14 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://bioregistry.io/registry/orcid
+    close_mappings:
+    - dcm:contributor_id
     rank: 1000
     owner: Person
     domain_of:
     - Person
     range: string
     pattern: ^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$
-  websites:
-    name: websites
-    description: A list of websites that are associated with the entity.
-    comments:
-    - DOIs should not be included as websites. Instead, use the associated_dois slot.
-    - A consortium's homepage website should be included in the homepage_website slot,
-      not in websites.
-    - consortium is a convenience term for a Study whose study_category value is consortium
-    - the website slot and its subproperties are virtually identical to the url slot,
-      except that they are multivalued and url is single-valued.
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - nmdc:url
-    rank: 1000
-    owner: Person
-    domain_of:
-    - Person
-    - Organization
-    - Study
-    range: string
-    multivalued: true
-    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
   type:
     name: type
     description: the class_uri of the class that has been instantiated
@@ -691,6 +666,27 @@ attributes:
     domain_of:
     - Agent
     range: string
+  websites:
+    name: websites
+    description: A list of websites that are associated with the entity.
+    comments:
+    - DOIs should not be included as websites. Instead, use the associated_dois slot.
+    - A consortium's homepage website should be included in the homepage_website slot,
+      not in websites.
+    - consortium is a convenience term for a Study whose study_category value is consortium
+    - the website slot and its subproperties are virtually identical to the url slot,
+      except that they are multivalued and url is single-valued.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - nmdc:url
+    rank: 1000
+    owner: Person
+    domain_of:
+    - Agent
+    - Study
+    range: string
+    multivalued: true
+    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
 class_uri: nmdc:Person
 
 </code></pre>

@@ -419,6 +419,8 @@
 
   Agent : type
 
+  Agent : websites
+
 
 
 </div>
@@ -457,6 +459,12 @@
 <td><a href="../profile_image_url/">profile_image_url</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A url that points to an image of this person or organization.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../websites/">websites</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>A list of websites that are associated with the entity.</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -515,6 +523,7 @@ slots:
 - type
 - name
 - profile_image_url
+- websites
 slot_usage:
   name:
     name: name
@@ -604,6 +613,27 @@ attributes:
     domain_of:
     - Agent
     range: string
+  websites:
+    name: websites
+    description: A list of websites that are associated with the entity.
+    comments:
+    - DOIs should not be included as websites. Instead, use the associated_dois slot.
+    - A consortium's homepage website should be included in the homepage_website slot,
+      not in websites.
+    - consortium is a convenience term for a Study whose study_category value is consortium
+    - the website slot and its subproperties are virtually identical to the url slot,
+      except that they are multivalued and url is single-valued.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - nmdc:url
+    rank: 1000
+    owner: Agent
+    domain_of:
+    - Agent
+    - Study
+    range: string
+    multivalued: true
+    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
 class_uri: nmdc:Agent
 
 </code></pre>

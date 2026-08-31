@@ -1518,6 +1518,8 @@ attributes:
         applied_roles:
         - Principal Investigator
     from_schema: https://w3id.org/nmdc/nmdc
+    close_mappings:
+    - dcm:contributors
     rank: 1000
     slot_uri: prov:qualifiedAssociation
     owner: Study
@@ -1659,8 +1661,7 @@ attributes:
     rank: 1000
     owner: Study
     domain_of:
-    - Person
-    - Organization
+    - Agent
     - Study
     range: string
     multivalued: true

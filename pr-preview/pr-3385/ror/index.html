@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/has_credit_associations/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/ror/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: has_credit_associations - NMDC Schema Documentation</title>
+        <title>Slot: ror - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-has_credit_associations" class="md-skip">
+        <a href="#slot-ror" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: has_credit_associations
+              Slot: ror
             
           </span>
         </div>
@@ -647,6 +647,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -657,17 +679,6 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Annotations
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -727,10 +738,10 @@
   
 
 
-<h1 id="slot-has_credit_associations">Slot: has_credit_associations</h1>
-<p><em>This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.</em></p>
+<h1 id="slot-ror">Slot: ror</h1>
+<p><em>The Research Organization Registry identifier of an organization.</em></p>
 <div>
-<p>URI: <a href="http://www.w3.org/ns/prov#qualifiedAssociation">prov:qualifiedAssociation</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/ror">nmdc:ror</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -743,23 +754,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Study/">Study</a></td>
-<td>A study summarizes the overall goal of a research initiative and outlines...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-<td>The methods and processes used to generate omics data from a biosample or organism.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td>A DataGeneration in which the sequence of DNA or RNA molecules is generated.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td>Spectrometry where the sample is converted into gaseous ions which are...</td>
+<td><a href="../Organization/">Organization</a></td>
+<td>A social or legal institution such as a company, society, consortium, etc.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -767,36 +763,27 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../CreditAssociation/">CreditAssociation</a></p>
+<p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
-<p>Multivalued: True</p>
+<p>Regex pattern: <code>^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$</code></p>
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>A principal investigator recorded as a credit association.</p>
-<pre><code class="language-yaml">type: &quot;prov:Association&quot;
-applies_to_agent:
-  type: &quot;nmdc:Person&quot;
-  name: &quot;Janet Jansson&quot;
-applied_roles: [&quot;Principal Investigator&quot;]
-</code></pre>
+<ul>
+<li><code>ror:05cwx3318</code> - National Microbiome Data Collaborative</li>
+</ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Canonical form is the Bioregistry CURIE with prefix <code>ror</code>.</li>
+<li>Optional. Institutions usually have a ROR; many consortia do not.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://bioregistry.io/registry/ror">https://bioregistry.io/registry/ror</a></li>
+<li><a href="https://ror.org">https://ror.org</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>tooltip</td>
-<td>Researchers or organizations associated with this study or data generation, including principal investigators.</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -811,49 +798,33 @@ applied_roles: [&quot;Principal Investigator&quot;]
 </thead>
 <tbody>
 <tr>
-<td>self</td>
-<td>prov:qualifiedAssociation</td>
-</tr>
-<tr>
 <td>close</td>
-<td>dcm:contributors</td>
+<td>dcm:organization_id</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: has_credit_associations
-annotations:
-  tooltip:
-    tag: tooltip
-    value: Researchers or organizations associated with this study or data generation,
-      including principal investigators.
-description: This slot links a study or a data generation to a credit association.
-  The credit association is linked to an Agent (Person or Organization) and to a CRediT
-  Contributor Roles term. Principal investigators are recorded here with applied_roles
-  including Principal Investigator.
+<pre><code class="language-yaml">name: ror
+description: The Research Organization Registry identifier of an organization.
+comments:
+- Canonical form is the Bioregistry CURIE with prefix `ror`.
+- Optional. Institutions usually have a ROR; many consortia do not.
 examples:
-- description: A principal investigator recorded as a credit association.
-  object:
-    type: prov:Association
-    applies_to_agent:
-      type: nmdc:Person
-      name: Janet Jansson
-    applied_roles:
-    - Principal Investigator
+- value: ror:05cwx3318
+  description: National Microbiome Data Collaborative
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://bioregistry.io/registry/ror
+- https://ror.org
 close_mappings:
-- dcm:contributors
+- dcm:organization_id
 rank: 1000
-slot_uri: prov:qualifiedAssociation
 domain_of:
-- Study
-- DataGeneration
-range: CreditAssociation
-multivalued: true
-inlined: true
-inlined_as_list: true
+- Organization
+range: string
+pattern: ^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$
 
 </code></pre>
 

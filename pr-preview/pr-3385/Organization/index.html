@@ -402,9 +402,9 @@
 
   Organization : profile_image_url
 
-  Organization : type
+  Organization : ror
 
-  Organization : url
+  Organization : type
 
   Organization : websites
 
@@ -430,15 +430,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../url/">url</a></td>
+<td><a href="../ror/">ror</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../websites/">websites</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>A list of websites that are associated with the entity.</td>
+<td>The Research Organization Registry identifier of an organization.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -457,6 +451,12 @@
 <td><a href="../profile_image_url/">profile_image_url</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A url that points to an image of this person or organization.</td>
+<td><a href="../Agent/">Agent</a></td>
+</tr>
+<tr>
+<td><a href="../websites/">websites</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>A list of websites that are associated with the entity.</td>
 <td><a href="../Agent/">Agent</a></td>
 </tr>
 </tbody>
@@ -479,6 +479,10 @@
 <td>exact</td>
 <td>prov:Organization</td>
 </tr>
+<tr>
+<td>close</td>
+<td>dcm:Organization</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -491,14 +495,17 @@ description: A social or legal institution such as a company, society, consortiu
 from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
 - prov:Organization
+close_mappings:
+- dcm:Organization
 is_a: Agent
 slots:
-- url
-- websites
+- ror
 slot_usage:
   name:
     name: name
     description: The name of the organization.
+    close_mappings:
+    - dcm:organization_name
 class_uri: nmdc:Organization
 
 </code></pre>
@@ -511,47 +518,37 @@ description: A social or legal institution such as a company, society, consortiu
 from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
 - prov:Organization
+close_mappings:
+- dcm:Organization
 is_a: Agent
 slot_usage:
   name:
     name: name
     description: The name of the organization.
+    close_mappings:
+    - dcm:organization_name
 attributes:
-  url:
-    name: url
-    notes:
-    - See issue 207 - this clashes with the mixs field
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    owner: Organization
-    domain_of:
-    - ImageValue
-    - Organization
-    - Protocol
-    - DataObject
-    range: string
-  websites:
-    name: websites
-    description: A list of websites that are associated with the entity.
+  ror:
+    name: ror
+    description: The Research Organization Registry identifier of an organization.
     comments:
-    - DOIs should not be included as websites. Instead, use the associated_dois slot.
-    - A consortium's homepage website should be included in the homepage_website slot,
-      not in websites.
-    - consortium is a convenience term for a Study whose study_category value is consortium
-    - the website slot and its subproperties are virtually identical to the url slot,
-      except that they are multivalued and url is single-valued.
+    - Canonical form is the Bioregistry CURIE with prefix `ror`.
+    - Optional. Institutions usually have a ROR; many consortia do not.
+    examples:
+    - value: ror:05cwx3318
+      description: National Microbiome Data Collaborative
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
-    - nmdc:url
+    - https://bioregistry.io/registry/ror
+    - https://ror.org
+    close_mappings:
+    - dcm:organization_id
     rank: 1000
     owner: Organization
     domain_of:
-    - Person
     - Organization
-    - Study
     range: string
-    multivalued: true
-    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
+    pattern: ^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$
   type:
     name: type
     description: the class_uri of the class that has been instantiated
@@ -602,6 +599,8 @@ attributes:
     name: name
     description: The name of the organization.
     from_schema: https://w3id.org/nmdc/nmdc
+    close_mappings:
+    - dcm:organization_name
     rank: 1000
     owner: Organization
     domain_of:
@@ -619,6 +618,27 @@ attributes:
     domain_of:
     - Agent
     range: string
+  websites:
+    name: websites
+    description: A list of websites that are associated with the entity.
+    comments:
+    - DOIs should not be included as websites. Instead, use the associated_dois slot.
+    - A consortium's homepage website should be included in the homepage_website slot,
+      not in websites.
+    - consortium is a convenience term for a Study whose study_category value is consortium
+    - the website slot and its subproperties are virtually identical to the url slot,
+      except that they are multivalued and url is single-valued.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - nmdc:url
+    rank: 1000
+    owner: Organization
+    domain_of:
+    - Agent
+    - Study
+    range: string
+    multivalued: true
+    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
 class_uri: nmdc:Organization
 
 </code></pre>

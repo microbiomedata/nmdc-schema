@@ -732,7 +732,7 @@
 <tbody>
 <tr>
 <td><a href="../CreditAssociation/">CreditAssociation</a></td>
-<td>This class supports binding an agent (a Person or OrganizationValue) to a...</td>
+<td>This class supports binding an agent (a Person or an Organization) to a...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -779,8 +779,8 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>close</td>
+<td>dcm:contributor_roles</td>
 </tr>
 </tbody>
 </table>
@@ -794,6 +794,8 @@ annotations:
     value: 'Identify all CRediT roles associated with this contributor. CRediT Information:
       https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/'
 from_schema: https://w3id.org/nmdc/nmdc
+close_mappings:
+- dcm:contributor_roles
 rank: 1000
 domain_of:
 - CreditAssociation

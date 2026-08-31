@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post42.dev0+d6ece6e87
+version: 11.23.0.post47.dev0+0cd9c00cd
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -190,6 +190,9 @@ prefixes:
   dcterms:
     prefix_prefix: dcterms
     prefix_reference: http://purl.org/dc/terms/
+  dcm:
+    prefix_prefix: dcm
+    prefix_reference: https://kbase.github.io/credit_engine/linkml/
   doi:
     prefix_prefix: doi
     prefix_reference: 'https://bioregistry.io/doi:'
@@ -351,6 +354,7 @@ emit_prefixes:
 - orcid
 - rdf
 - rdfs
+- ror
 - skos
 - xsd
 default_prefix: nmdc
@@ -3079,53 +3083,85 @@ enums:
     comments:
     - CreditEnums come from https://casrai.org/credit/
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://kbase.github.io/credit_engine/ContributorRole/
     permissible_values:
       Conceptualization:
         text: Conceptualization
         description: Conceptualization
+        exact_mappings:
+        - dcm:conceptualization
       Data curation:
         text: Data curation
         description: Data curation
+        exact_mappings:
+        - dcm:data_curation
       Formal Analysis:
         text: Formal Analysis
         description: Formal Analysis
+        exact_mappings:
+        - dcm:formal_analysis
       Funding acquisition:
         text: Funding acquisition
         description: Funding acquisition
+        exact_mappings:
+        - dcm:funding_acquisition
       Investigation:
         text: Investigation
         description: Investigation
+        exact_mappings:
+        - dcm:investigation
       Methodology:
         text: Methodology
         description: Methodology
+        exact_mappings:
+        - dcm:methodology
       Project administration:
         text: Project administration
         description: Project administration
+        exact_mappings:
+        - dcm:project_administration
       Resources:
         text: Resources
         description: Resources
+        exact_mappings:
+        - dcm:resources
       Software:
         text: Software
         description: Software
+        exact_mappings:
+        - dcm:software
       Supervision:
         text: Supervision
         description: Supervision
+        exact_mappings:
+        - dcm:supervision
       Validation:
         text: Validation
         description: Validation
+        exact_mappings:
+        - dcm:validation
       Visualization:
         text: Visualization
         description: Visualization
+        exact_mappings:
+        - dcm:visualization
       Writing original draft:
         text: Writing original draft
         description: Writing – original draft
+        exact_mappings:
+        - dcm:writing_original_draft
       Writing review and editing:
         text: Writing review and editing
         description: Writing – review & editing
+        exact_mappings:
+        - dcm:writing_review_editing
       Principal Investigator:
         text: Principal Investigator
         description: principal investigator role
         meaning: OBI:0000103
+        related_mappings:
+        - dcm:project_leader
       Submitter:
         text: Submitter
         description: the person(s) who enter study and biosample metadata into the
@@ -6896,8 +6932,27 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://bioregistry.io/registry/orcid
+    close_mappings:
+    - dcm:contributor_id
     range: string
     pattern: ^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$
+  ror:
+    name: ror
+    description: The Research Organization Registry identifier of an organization.
+    comments:
+    - Canonical form is the Bioregistry CURIE with prefix `ror`.
+    - Optional. Institutions usually have a ROR; many consortia do not.
+    examples:
+    - value: ror:05cwx3318
+      description: National Microbiome Data Collaborative
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://bioregistry.io/registry/ror
+    - https://ror.org
+    close_mappings:
+    - dcm:organization_id
+    range: string
+    pattern: ^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$
   language:
     name: language
     description: Should use ISO 639-1 code e.g. "en", "fr"
@@ -8402,6 +8457,8 @@ slots:
         applied_roles:
         - Principal Investigator
     from_schema: https://w3id.org/nmdc/nmdc
+    close_mappings:
+    - dcm:contributors
     slot_uri: prov:qualifiedAssociation
     range: CreditAssociation
     multivalued: true
@@ -8437,6 +8494,8 @@ slots:
           Information: https://info.orcid.org/credit-for-research-contribution ; CRediT:
           https://credit.niso.org/'
     from_schema: https://w3id.org/nmdc/nmdc
+    close_mappings:
+    - dcm:contributor_roles
     range: CreditEnum
     required: true
     multivalued: true
@@ -20786,6 +20845,7 @@ classes:
     - type
     - name
     - profile_image_url
+    - websites
     slot_usage:
       name:
         name: name
@@ -20795,8 +20855,6 @@ classes:
     name: Person
     description: A person, typically a researcher associated with a study or data
       generation.
-    todos:
-    - add additional fields e.g for institution
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - prov:Person
@@ -20804,7 +20862,6 @@ classes:
     slots:
     - email
     - orcid
-    - websites
     slot_usage:
       orcid:
         name: orcid
@@ -20835,14 +20892,17 @@ classes:
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - prov:Organization
+    close_mappings:
+    - dcm:Organization
     is_a: Agent
     slots:
-    - url
-    - websites
+    - ror
     slot_usage:
       name:
         name: name
         description: The name of the organization.
+        close_mappings:
+        - dcm:organization_name
     class_uri: nmdc:Organization
   TextValue:
     name: TextValue
@@ -21245,14 +21305,17 @@ classes:
     class_uri: nmdc:Protocol
   CreditAssociation:
     name: CreditAssociation
-    description: This class supports binding an agent (a Person or OrganizationValue)
+    description: This class supports binding an agent (a Person or an Organization)
       to a study or a data generation record with a CRediT Contributor Role.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://casrai.org/credit/
+    - https://kbase.github.io/credit_engine/
     aliases:
     - credit table
     - associated researchers
+    close_mappings:
+    - dcm:Contributor
     slots:
     - applies_to_agent
     - applied_roles

@@ -405,7 +405,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-creditassociation">Class: CreditAssociation</h1>
-<p><em>This class supports binding an agent (a Person or OrganizationValue) to a study or a data generation record with a CRediT Contributor Role.</em></p>
+<p><em>This class supports binding an agent (a Person or an Organization) to a study or a data generation record with a CRediT Contributor Role.</em></p>
 <div>
 <p>URI: <a href="http://www.w3.org/ns/prov#Association">prov:Association</a></p>
 <div class="mermaid">classDiagram
@@ -504,6 +504,7 @@
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="https://casrai.org/credit/">https://casrai.org/credit/</a></li>
+<li><a href="https://kbase.github.io/credit_engine/">https://kbase.github.io/credit_engine/</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -523,6 +524,10 @@
 <td>self</td>
 <td>prov:Association</td>
 </tr>
+<tr>
+<td>close</td>
+<td>dcm:Contributor</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -530,14 +535,17 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: CreditAssociation
-description: This class supports binding an agent (a Person or OrganizationValue)
-  to a study or a data generation record with a CRediT Contributor Role.
+description: This class supports binding an agent (a Person or an Organization) to
+  a study or a data generation record with a CRediT Contributor Role.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://casrai.org/credit/
+- https://kbase.github.io/credit_engine/
 aliases:
 - credit table
 - associated researchers
+close_mappings:
+- dcm:Contributor
 slots:
 - applies_to_agent
 - applied_roles
@@ -549,14 +557,17 @@ class_uri: prov:Association
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: CreditAssociation
-description: This class supports binding an agent (a Person or OrganizationValue)
-  to a study or a data generation record with a CRediT Contributor Role.
+description: This class supports binding an agent (a Person or an Organization) to
+  a study or a data generation record with a CRediT Contributor Role.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://casrai.org/credit/
+- https://kbase.github.io/credit_engine/
 aliases:
 - credit table
 - associated researchers
+close_mappings:
+- dcm:Contributor
 attributes:
   applies_to_agent:
     name: applies_to_agent
@@ -576,6 +587,8 @@ attributes:
           Information: https://info.orcid.org/credit-for-research-contribution ; CRediT:
           https://credit.niso.org/'
     from_schema: https://w3id.org/nmdc/nmdc
+    close_mappings:
+    - dcm:contributor_roles
     rank: 1000
     owner: CreditAssociation
     domain_of:
