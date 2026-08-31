@@ -132,6 +132,7 @@ emit_prefixes:
   - orcid
   - rdf
   - rdfs
+  - ror
   - skos
   - xsd
 
