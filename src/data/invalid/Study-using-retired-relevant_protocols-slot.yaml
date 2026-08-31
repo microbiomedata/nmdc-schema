@@ -64,7 +64,7 @@ funding_sources:
 has_credit_associations:
   - applies_to_person:
       has_raw_value: Craig Venter
-      orcid: ORCID:0000-0002-7086-765X
+      orcid: orcid:0000-0002-7086-765X
       profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
       email: jcventer@jcvi.org
       name: J. Craig Venter

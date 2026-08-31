@@ -6,7 +6,7 @@ has_credit_associations:
       - Data curation
     applies_to_person:
       type: nmdc:PersonValue
-      orcid: 'orcid:0000-0002-1825-00'
+      orcid: 'orcid:0000-0002-1825-0097'
     type: prov:Association
   - applied_roles:
       - Software
