@@ -14488,6 +14488,7 @@
                 },
                 "orcid": {
                     "description": "The ORCID of a person.",
+                    "pattern": "^orcid:\\d{4}-\\d{4}-\\d{4}-\\d{3}(\\d|X)$",
                     "type": [
                         "string",
                         "null"
@@ -17965,6 +17966,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post22.dev0+92f06f5ff"
+    "version": "11.23.0.post27.dev0+c068568bb"
 }
 

@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post22.dev0+92f06f5ff
+version: 11.23.0.post27.dev0+c068568bb
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -121,9 +121,6 @@ prefixes:
   OMIT:
     prefix_prefix: OMIT
     prefix_reference: http://purl.obolibrary.org/obo/OMIT_
-  ORCID:
-    prefix_prefix: ORCID
-    prefix_reference: https://orcid.org/
   PANTHER.FAMILY:
     prefix_prefix: PANTHER.FAMILY
     prefix_reference: 'https://bioregistry.io/panther.family:'
@@ -268,6 +265,9 @@ prefixes:
   nmdc:
     prefix_prefix: nmdc
     prefix_reference: https://w3id.org/nmdc/
+  orcid:
+    prefix_prefix: orcid
+    prefix_reference: https://orcid.org/
   owl:
     prefix_prefix: owl
     prefix_reference: http://www.w3.org/2002/07/owl#
@@ -348,6 +348,7 @@ emit_prefixes:
 - img.taxon
 - jgi.proposal
 - kegg
+- orcid
 - rdf
 - rdfs
 - skos
@@ -921,8 +922,8 @@ enums:
       samples.
     from_schema: https://w3id.org/nmdc/nmdc
     contributors:
-    - ORCID:0009-0001-1555-1601
-    - ORCID:0000-0002-8683-0050
+    - orcid:0009-0001-1555-1601
+    - orcid:0000-0002-8683-0050
     permissible_values:
       v-bottom_conical_tube:
         text: v-bottom_conical_tube
@@ -933,8 +934,8 @@ enums:
     description: The tool/substance used to separate or filter a solution or mixture.
     from_schema: https://w3id.org/nmdc/nmdc
     contributors:
-    - ORCID:0009-0001-1555-1601
-    - ORCID:0000-0002-8683-0050
+    - orcid:0009-0001-1555-1601
+    - orcid:0000-0002-8683-0050
     permissible_values:
       ptfe_96_well_filter_plate:
         text: ptfe_96_well_filter_plate
@@ -945,8 +946,8 @@ enums:
     description: The type of stationary phase used in a chromatography process.
     from_schema: https://w3id.org/nmdc/nmdc
     contributors:
-    - ORCID:0009-0001-1555-1601
-    - ORCID:0000-0002-4504-1039
+    - orcid:0009-0001-1555-1601
+    - orcid:0000-0002-4504-1039
     permissible_values:
       BEH-HILIC:
         text: BEH-HILIC
@@ -6646,8 +6647,8 @@ slots:
       takes place in
     from_schema: https://w3id.org/nmdc/nmdc
     contributors:
-    - ORCID:0009-0001-1555-1601
-    - ORCID:0000-0002-8683-0050
+    - orcid:0009-0001-1555-1601
+    - orcid:0000-0002-8683-0050
     range: QuantityValue
   filter_material:
     name: filter_material
@@ -6888,8 +6889,15 @@ slots:
   orcid:
     name: orcid
     description: The ORCID of a person.
+    comments:
+    - Canonical form is the Bioregistry CURIE with prefix `orcid`.
+    examples:
+    - value: orcid:0000-0002-7086-765X
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://bioregistry.io/registry/orcid
     range: string
+    pattern: ^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$
   language:
     name: language
     description: Should use ISO 639-1 code e.g. "en", "fr"
@@ -8336,7 +8344,7 @@ slots:
     aliases:
     - PI
     last_updated_on: '2026-08-21T00:00:00+00:00'
-    modified_by: ORCID:0000-0002-4504-1039
+    modified_by: orcid:0000-0002-4504-1039
     range: PersonValue
   was_generated_by:
     name: was_generated_by
@@ -18889,8 +18897,8 @@ slots:
     - Not to be confused with the MIXS:0000113
     from_schema: https://w3id.org/nmdc/nmdc
     contributors:
-    - ORCID:0009-0001-1555-1601
-    - ORCID:0000-0002-8683-0050
+    - orcid:0009-0001-1555-1601
+    - orcid:0000-0002-8683-0050
     range: QuantityValue
   total_bases:
     name: total_bases
@@ -19066,8 +19074,8 @@ slots:
     description: The volume of a substance.
     from_schema: https://w3id.org/nmdc/nmdc
     contributors:
-    - ORCID:0009-0001-1555-1601
-    - ORCID:0000-0002-8683-0050
+    - orcid:0009-0001-1555-1601
+    - orcid:0000-0002-8683-0050
     range: QuantityValue
   known_as:
     name: known_as
@@ -19554,10 +19562,10 @@ slots:
     see_also:
     - MIXS:0000011
     contributors:
-    - ORCID:0009-0008-4013-7737
-    - ORCID:0000-0001-9076-6066
+    - orcid:0009-0008-4013-7737
+    - orcid:0000-0001-9076-6066
     last_updated_on: '2026-07-21T00:00:00+00:00'
-    modified_by: ORCID:0009-0008-4013-7737
+    modified_by: orcid:0009-0008-4013-7737
     rank: 2
     string_serialization: '{date, arbitrary precision}'
     slot_group: MIxS Inspired
@@ -20426,10 +20434,10 @@ classes:
     related_mappings:
     - OBI:0000744
     contributors:
-    - ORCID:0009-0001-1555-1601
-    - ORCID:0000-0002-8683-0050
-    - ORCID:0000-0001-9076-6066
-    - ORCID:0009-0008-4013-7737
+    - orcid:0009-0001-1555-1601
+    - orcid:0000-0002-8683-0050
+    - orcid:0000-0001-9076-6066
+    - orcid:0009-0008-4013-7737
     is_a: MaterialProcessing
     slots:
     - container_size
@@ -20470,8 +20478,8 @@ classes:
       error of the measurement system.
     from_schema: https://w3id.org/nmdc/nmdc
     contributors:
-    - ORCID:0009-0001-1555-1601
-    - ORCID:0000-0002-8683-0050
+    - orcid:0009-0001-1555-1601
+    - orcid:0000-0002-8683-0050
     is_a: MaterialProcessing
     slots:
     - duration
@@ -20498,10 +20506,10 @@ classes:
     related_mappings:
     - CHMO:0001640
     contributors:
-    - ORCID:0009-0001-1555-1601
-    - ORCID:0000-0002-8683-0050
-    - ORCID:0000-0001-9076-6066
-    - ORCID:0009-0008-4013-7737
+    - orcid:0009-0001-1555-1601
+    - orcid:0000-0002-8683-0050
+    - orcid:0000-0001-9076-6066
+    - orcid:0009-0008-4013-7737
     is_a: MaterialProcessing
     slots:
     - conditionings
@@ -20573,8 +20581,8 @@ classes:
       between two immiscible phases.
     from_schema: https://w3id.org/nmdc/nmdc
     contributors:
-    - ORCID:0009-0001-1555-1601
-    - ORCID:0000-0002-1368-8217
+    - orcid:0009-0001-1555-1601
+    - orcid:0000-0002-1368-8217
     is_a: MaterialProcessing
     slots:
     - chromatographic_category
@@ -20605,8 +20613,8 @@ classes:
     exact_mappings:
     - CHMO:0002773
     contributors:
-    - ORCID:0009-0001-1555-1601
-    - ORCID:0000-0002-1368-8217
+    - orcid:0009-0001-1555-1601
+    - orcid:0000-0002-1368-8217
     is_a: MaterialProcessing
     slots:
     - duration
@@ -21705,8 +21713,8 @@ classes:
     exact_mappings:
     - MISO:0000001
     contributors:
-    - ORCID:0009-0001-1555-1601
-    - ORCID:0000-0002-1368-8217
+    - orcid:0009-0001-1555-1601
+    - orcid:0000-0002-1368-8217
     is_a: MaterialProcessing
     slots:
     - chemical_conversion_category

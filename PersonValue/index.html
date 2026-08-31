@@ -646,12 +646,19 @@ attributes:
         tag: tooltip
         value: Open Researcher and Contributor ID for this person. See https://orcid.org
     description: The ORCID of a person.
+    comments:
+    - Canonical form is the Bioregistry CURIE with prefix `orcid`.
+    examples:
+    - value: orcid:0000-0002-7086-765X
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://bioregistry.io/registry/orcid
     rank: 1000
     owner: PersonValue
     domain_of:
     - PersonValue
     range: string
+    pattern: ^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$
   profile_image_url:
     name: profile_image_url
     description: A url that points to an image of a person.
