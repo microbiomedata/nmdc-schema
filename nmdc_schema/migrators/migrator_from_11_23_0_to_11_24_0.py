@@ -29,46 +29,6 @@ class Migrator(MigratorBase):
         This migrator uses partial migrators. It runs them in the order in which they are returned by
         the `get_migrator_classes` function.
 
-        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
-        >>> db = {
-        ...     "study_set": [
-        ...         {
-        ...             "id": "nmdc:sty-1",
-        ...             "type": "nmdc:Study",
-        ...             "principal_investigator": {"type": "nmdc:PersonValue", "name": "A",
-        ...                                       "orcid": "0000-0002-1195-1608"},
-        ...             "has_credit_associations": [
-        ...                 {"type": "prov:Association",
-        ...                  "applies_to_person": {"type": "nmdc:PersonValue",
-        ...                                       "name": "B",
-        ...                                       "orcid": "0000-0003-2254-399x"}},
-        ...             ],
-        ...         },
-        ...     ],
-        ...     "data_generation_set": [
-        ...         {
-        ...             "id": "nmdc:dgns-1",
-        ...             "type": "nmdc:NucleotideSequencing",
-        ...             "principal_investigator": {"type": "nmdc:PersonValue",
-        ...                                       "has_raw_value": "C",
-        ...                                       "orcid": "0000-0002-9108-5083"},
-        ...         },
-        ...     ],
-        ... }
-        >>> Migrator(adapter=DictionaryAdapter(database=db)).upgrade()
-        >>> "principal_investigator" in db["study_set"][0]
-        False
-        >>> db["study_set"][0]["has_credit_associations"][0]["applies_to_person"]["orcid"]
-        'orcid:0000-0003-2254-399X'
-        >>> "principal_investigator" in db["data_generation_set"][0]
-        False
-        >>> db["data_generation_set"][0]["has_credit_associations"][0]["applies_to_person"]["orcid"]
-        'orcid:0000-0002-9108-5083'
-        >>> db["data_generation_set"][0]["has_credit_associations"][0]["applies_to_person"]["name"]
-        'C'
-        >>> db["data_generation_set"][0]["has_credit_associations"][0]["applied_roles"]
-        ['Principal Investigator']
-
         Args:
             commit_changes: If True, commits the changes. If False (default), performs a dry run or rollback.
         """

@@ -1,3 +1,4 @@
+from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
@@ -43,10 +44,41 @@ class Migrator(MigratorBase):
         False
         """
         self._warn_if_commit_ignored(commit_changes)
-        self.adapter.process_each_document("study_set", [self.drop_study_principal_investigator])
-        self.adapter.process_each_document(
-            "data_generation_set", [self.move_data_generation_principal_investigator]
-        )
+
+        if isinstance(self.adapter, MongoAdapter):
+            try:
+                def migrate_collections(adapter, session) -> None:
+                    adapter.process_each_document(
+                        "study_set", [self.drop_study_principal_investigator], session
+                    )
+                    adapter.process_each_document(
+                        "data_generation_set",
+                        [self.move_data_generation_principal_investigator],
+                        session,
+                    )
+
+                self.adapter.execute_in_transaction(
+                    operations_callback=migrate_collections,
+                    commit_changes=commit_changes,
+                )
+                if commit_changes:
+                    self.logger.info("Transaction committed (changes have been saved)")
+                else:
+                    self.logger.info("Transaction rolled back (no changes were committed)")
+            except Exception as e:
+                self.logger.error(f"Migration failed: {e}")
+                raise
+        else:
+            self.adapter.process_each_document(
+                "study_set", [self.drop_study_principal_investigator]
+            )
+            self.adapter.process_each_document(
+                "data_generation_set", [self.move_data_generation_principal_investigator]
+            )
+            if not commit_changes:
+                self.logger.info(
+                    "Note: Non-MongoDB adapter doesn't support rollback - changes are applied immediately"
+                )
 
     def drop_study_principal_investigator(self, study: dict) -> dict:
         r"""Delete principal_investigator from a Study document. Do not copy it.

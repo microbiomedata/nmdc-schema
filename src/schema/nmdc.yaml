@@ -101,7 +101,7 @@ prefixes:
   neon.identifier: "http://example.org/neon/identifier/"
   neon.schema: "http://example.org/neon/schema/"
   nmdc: "https://w3id.org/nmdc/"
-  orcid: "https://orcid.org/"  # Bioregistry canonical prefix; PersonValue.orcid and schema contributor metadata
+  orcid: "https://orcid.org/"
   owl: "http://www.w3.org/2002/07/owl#"
   prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
   qudt: "http://qudt.org/1.1/schema/qudt#"
