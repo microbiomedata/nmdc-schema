@@ -66,6 +66,7 @@ classes:
       - type
       - name
       - profile_image_url
+      - websites
     exact_mappings:
       - prov:Agent
     slot_usage:
@@ -79,9 +80,6 @@ classes:
     slots:
       - email
       - orcid
-      - websites
-    todos:
-      - add additional fields e.g for institution
     exact_mappings:
       - prov:Person
     slot_usage:
@@ -102,9 +100,6 @@ classes:
     class_uri: nmdc:Organization
     is_a: Agent
     description: A social or legal institution such as a company, society, consortium, etc.
-    slots:
-      - url
-      - websites
     exact_mappings:
       - prov:Organization
     slot_usage:
