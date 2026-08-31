@@ -2,6 +2,7 @@ type: prov:Association
 applies_to_agent:
   type: nmdc:Organization
   name: Microflora Danica
-  url: https://www.nature.com/articles/s41586-025-09794-2
+  websites:
+    - https://www.microfloradanicaconsortium.org
 applied_roles:
   - Investigation

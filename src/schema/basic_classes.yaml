@@ -297,7 +297,7 @@ classes:
       - credit table
       - associated researchers
     description: >-
-      This class supports binding an agent (a Person or OrganizationValue)
+      This class supports binding an agent (a Person or an Organization)
       to a study or a data generation record with a CRediT Contributor Role.
     slots:
       - applies_to_agent
