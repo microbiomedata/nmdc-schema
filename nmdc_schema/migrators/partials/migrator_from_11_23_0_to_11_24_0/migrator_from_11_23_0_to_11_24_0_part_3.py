@@ -3,8 +3,6 @@
 See https://github.com/microbiomedata/nmdc-schema/issues/2458
 """
 
-from __future__ import annotations
-
 from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 from nmdc_schema.migrators.migrator_base import MigratorBase
 
