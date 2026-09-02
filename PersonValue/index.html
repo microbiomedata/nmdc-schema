@@ -450,7 +450,7 @@
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td>The full name of the Investigator. It should follow the format FIRST [MIDDLE...</td>
 <td>direct</td>
 </tr>
@@ -568,6 +568,7 @@ slot_usage:
         value: First name, middle initial, and last name of this person.
     description: The full name of the Investigator. It should follow the format FIRST
       [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
+    required: true
 class_uri: nmdc:PersonValue
 
 </code></pre>
@@ -607,6 +608,7 @@ slot_usage:
         value: First name, middle initial, and last name of this person.
     description: The full name of the Investigator. It should follow the format FIRST
       [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
+    required: true
 attributes:
   email:
     name: email
@@ -639,6 +641,7 @@ attributes:
     - NamedThing
     - Protocol
     range: string
+    required: true
   orcid:
     name: orcid
     annotations:
