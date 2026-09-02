@@ -233,6 +233,13 @@ slots:
   orcid:
     description: The ORCID of a person.
     range: string
+    pattern: '^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$'
+    comments:
+      - Canonical form is the Bioregistry CURIE with prefix `orcid`.
+    examples:
+      - value: orcid:0000-0002-7086-765X
+    see_also:
+      - https://bioregistry.io/registry/orcid
 
   language:
     range: language_code

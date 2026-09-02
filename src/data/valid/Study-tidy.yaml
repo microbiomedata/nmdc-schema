@@ -52,7 +52,7 @@ has_credit_associations:
       has_raw_value: Craig Venter
       email: jcventer@jcvi.org
       name: J. Craig Venter
-      orcid: ORCID:0000-0002-7086-765X
+      orcid: orcid:0000-0002-7086-765X
       profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
       websites:
         - https://www.jcvi.org/
@@ -76,16 +76,6 @@ objective: This record, an instance of class Study from the nmdc-schema was had 
   mixture of reasonable values and minimally compliant values.
 part_of:
   - nmdc:sty-11-34xj1157
-principal_investigator:
-  type: nmdc:PersonValue
-  has_raw_value: Craig Venter
-  email: jcventer@jcvi.org
-  name: J. Craig Venter
-  orcid: ORCID:0000-0002-7086-765X
-  profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
-  websites:
-    - https://www.jcvi.org/
-    - https://www.jcvi.org/about/j-craig-venter
 protocol_link:
   - type: nmdc:Protocol
     name: any string 1

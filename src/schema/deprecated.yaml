@@ -294,10 +294,10 @@ slots:
       See https://github.com/microbiomedata/nmdc-schema/issues/2658 and the example
       src/data/valid/Database-incubation-as-culturing.yaml.
     last_updated_on: "2026-08-17T00:00:00Z"
-    modified_by: ORCID:0009-0008-4013-7737 #James Tessmer
+    modified_by: orcid:0009-0008-4013-7737 #James Tessmer
     contributors:
-      - ORCID:0009-0008-4013-7737 #James Tessmer
-      - ORCID:0000-0001-9076-6066 #Mark Miller
+      - orcid:0009-0008-4013-7737 #James Tessmer
+      - orcid:0000-0001-9076-6066 #Mark Miller
     description: Date the incubation was harvested/collected/ended. Only relevant
       for incubation samples.
     title: incubation collection date

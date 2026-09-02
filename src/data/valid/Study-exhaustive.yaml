@@ -19,16 +19,6 @@ ecosystem_category: unconstrained text
 ecosystem_type: unconstrained text
 ecosystem_subtype: unconstrained text
 specific_ecosystem: unconstrained text
-principal_investigator:
-  type: nmdc:PersonValue
-  has_raw_value: Craig Venter
-  orcid: ORCID:0000-0002-7086-765X
-  profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
-  email: jcventer@jcvi.org
-  name: J. Craig Venter
-  websites:
-    - https://www.jcvi.org/
-    - https://www.jcvi.org/about/j-craig-venter
 associated_dois:
   - doi_value: doi:10.1126/science.1058040
     doi_category: publication_doi
@@ -70,7 +60,7 @@ has_credit_associations:
   - applies_to_person:
       type: nmdc:PersonValue
       has_raw_value: Craig Venter
-      orcid: ORCID:0000-0002-7086-765X
+      orcid: orcid:0000-0002-7086-765X
       profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
       email: jcventer@jcvi.org
       name: J. Craig Venter

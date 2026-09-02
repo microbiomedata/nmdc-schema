@@ -225,6 +225,66 @@ enforcement *could* work elsewhere.
 `PlannedProcess` but is deprecated in OBI; the recommended replacement is
 `COB:0000035`. COB is not yet declared in the schema. See [#2843](https://github.com/microbiomedata/nmdc-schema/issues/2843).
 
+### Foreign `class_uri` and `slot_uri` values
+
+Counts as of 2026-08-20. Foreign URIs are the norm for slots and the exception
+for classes.
+
+All 502 slots carrying an explicit `slot_uri` use a foreign URI; none is
+`nmdc:`. 495 come from MIxS. The other seven are `dcterms:description`,
+`dcterms:isPartOf`, `rdf:type`, `schema:email`, `wgs84:lat`, `wgs84:long` and
+`prov:qualifiedAssociation`.
+
+Only two of the 80 classes have a foreign `class_uri`: `PlannedProcess`
+(`OBI:0000011`, above) and `CreditAssociation` (`prov:Association`).
+
+Two separate questions arise here and are easily conflated.
+
+The first is whether the foreign term is the right one. A foreign `class_uri` is
+asserted where the external term is judged a faithful match for the NMDC class,
+on the view that reusing an established term beats minting a local one. That
+judgement is made per term and is not recorded anywhere per class. It applies
+whether or not the value is ever serialised, because `class_uri` is the class's
+identity in RDF and OWL.
+
+The second is how far a wrong answer travels, which depends on whether the class
+is abstract. `type` is `designates_type: true`
+(`src/schema/attribute_values.yaml`), so LinkML writes a class's `class_uri` into
+every instance of it. An abstract class is not instantiated
+directly, so its `class_uri` does not reach production data. `PlannedProcess` is abstract, and no record in
+production carries `OBI:0000011`; every `PlannedProcess` descendant in the data
+carries its own concrete `nmdc:` type. That is a modelling convention rather
+than something the build enforces: `abstract: true` does not stop the generated
+Python dataclass or the JSON Schema definition from accepting a direct instance,
+so the guarantee comes from how data is produced, not from validation.
+
+`CreditAssociation` is not abstract, so
+every credit association record in production carries `type: prov:Association`
+rather than `nmdc:CreditAssociation`. It is the only class whose `class_uri`
+reaches data this way.
+
+This is narrower than it may sound. Foreign CURIEs are common in NMDC data
+generally: every biosample carries an ENVO term in `env_broad_scale`, and
+`has_function` values are drawn from fifteen external prefixes. What is unusual
+about `CreditAssociation` is a foreign URI serving as a class identity in `type`,
+not a foreign URI appearing in a record.
+
+`CreditAssociation` is deliberate rather than incidental: `has_credit_associations`
+carries `slot_uri: prov:qualifiedAssociation`, so the class and the slot are a
+matched pair from PROV's qualified-relation pattern. Whether it should change was
+examined in [#3325](https://github.com/microbiomedata/nmdc-schema/issues/3325) and
+left as-is.
+
+The correspondence is enforced, but the choice is not. `type` is `required` with
+`range: uriorcurie`, and because it is `designates_type: true` the generated
+JSON Schema pins it to one permitted value per class, so a `Biosample` record
+whose `type` reads `nmdc:Study` fails validation, and a `CreditAssociation`
+record must carry exactly `prov:Association`. What nothing checks is whether a
+foreign `class_uri` should have been picked in the first place:
+`tests/test_all_classes_assert_a_class_uri.py` asserts only that a `class_uri`
+is declared, not what it is. So a new concrete class could take a foreign URI
+and every downstream artifact would enforce that choice faithfully.
+
 ---
 
 ## Active work on ontology alignment

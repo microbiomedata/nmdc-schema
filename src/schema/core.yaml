@@ -244,8 +244,8 @@ classes:
     description: >
       A process that results in the interconversion of chemical species by a reaction to transform the reagents into products.
     contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+      - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - orcid:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     comments:
       - The values of both has_reagents slot and has_input slot are considered the reagents of a chemical process.
@@ -1741,8 +1741,8 @@ slots:
       - "Not to be confused with the MIXS:0000113"
     description: The value of a temperature measurement or temperature used in a process.
     contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
+      - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - orcid:0000-0002-8683-0050 #Montana Smith
     annotations:
       storage_units: Cel
 
@@ -1872,8 +1872,8 @@ slots:
     range: QuantityValue
     description: The volume of a substance.
     contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
+      - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - orcid:0000-0002-8683-0050 #Montana Smith
     annotations:
       storage_units: mL|uL
 

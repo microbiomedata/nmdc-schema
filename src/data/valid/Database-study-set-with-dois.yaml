@@ -13,9 +13,6 @@ study_set:
     ecosystem_type: Soil
     ecosystem_subtype: Wetlands
     specific_ecosystem: Permafrost
-    principal_investigator:
-      has_raw_value: Virginia Rich
-      type: nmdc:PersonValue
     associated_dois:
       - doi_value: doi:10.25585/1487763
         doi_category: award_doi
