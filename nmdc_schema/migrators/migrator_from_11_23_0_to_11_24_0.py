@@ -14,6 +14,9 @@ class Migrator(MigratorBase):
 
     Partial 2 standardizes remaining ``PersonValue.orcid`` values onto the
     Bioregistry ``orcid:`` CURIE (nmdc-schema#3327).
+
+    Partial 3 copies ``has_raw_value`` onto missing ``PersonValue.name`` so
+    name can be required (nmdc-schema#2458).
     """
 
     _from_version = "11.23.0"
