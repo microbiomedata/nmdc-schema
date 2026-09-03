@@ -14166,10 +14166,7 @@
                 },
                 "name": {
                     "description": "The full name of the Investigator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "orcid": {
                     "description": "The ORCID of a person.",
@@ -14206,6 +14203,7 @@
                 }
             },
             "required": [
+                "name",
                 "type"
             ],
             "title": "PersonValue",
@@ -17632,5 +17630,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post36.dev0+cfa599dba"
+    "version": "11.23.0.post43.dev0+2e3a2b05e"
 }
