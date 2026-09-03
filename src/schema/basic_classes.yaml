@@ -16,6 +16,7 @@ prefixes:
   SIO: "http://semanticscience.org/resource/SIO_" # for Study, StudyCategoryEnum PVs, objective
   biolink: "https://w3id.org/biolink/vocab/"
   dcterms: "http://purl.org/dc/terms/"
+  dcm: "https://kbase.github.io/credit_engine/linkml/"
   linkml: "https://w3id.org/linkml/"
   owl: "http://www.w3.org/2002/07/owl#"
   prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
@@ -297,15 +298,18 @@ classes:
       - credit table
       - associated researchers
     description: >-
-      This class supports binding associated researchers to a study or a data generation record.
-      There will be at least a slot for a CRediT Contributor Role and for a person value.
+      This class supports binding an agent (a Person or an Organization)
+      to a study or a data generation record with a CRediT Contributor Role.
     slots:
-      - applies_to_person
+      - applies_to_agent
       - applied_roles
       - type
     class_uri: prov:Association
+    close_mappings:
+      - dcm:Contributor
     see_also:
       - https://casrai.org/credit/
+      - https://kbase.github.io/credit_engine/
   Doi:
     class_uri: nmdc:Doi
     aliases:
@@ -753,7 +757,7 @@ slots:
   principal_investigator:
     aliases:
       - PI
-    range: PersonValue
+    range: Person
     description: Principal Investigator who led the study and/or generated the dataset.
     deprecated: >-
       Unbound from Study and DataGeneration. Identify PIs with has_credit_associations
@@ -798,17 +802,19 @@ slots:
     inlined_as_list: true
     description: >-
       This slot links a study or a data generation to a credit association. The credit
-      association will be linked to a person value and to a CRediT Contributor Roles
-      term. Principal investigators are recorded here with
+      association is linked to an Agent (Person or Organization) and to a CRediT
+      Contributor Roles term. Principal investigators are recorded here with
       applied_roles including Principal Investigator.
     slot_uri: prov:qualifiedAssociation
+    close_mappings:
+      - dcm:contributors
     annotations:
-      tooltip: Researchers associated with this study or data generation, including principal investigators.
+      tooltip: Researchers or organizations associated with this study or data generation, including principal investigators.
     examples:
       - object:
           type: prov:Association
-          applies_to_person:
-            type: nmdc:PersonValue
+          applies_to_agent:
+            type: nmdc:Person
             name: Janet Jansson
           applied_roles:
             - Principal Investigator
@@ -824,13 +830,15 @@ slots:
     multivalued: true
     inlined_as_list: true
     description: Links a study to one or more images.
-  applies_to_person:
-    range: PersonValue
+  applies_to_agent:
+    range: Agent
     required: true
   applied_roles:
     range: CreditEnum
     multivalued: true
     required: true
+    close_mappings:
+      - dcm:contributor_roles
     annotations:
       tooltip: >-
         Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/
@@ -965,40 +973,72 @@ enums:
     permissible_values:
       Conceptualization:
         description: Conceptualization
+        exact_mappings:
+          - dcm:conceptualization
       Data curation:
         description: Data curation
+        exact_mappings:
+          - dcm:data_curation
       Formal Analysis:
         description: Formal Analysis
+        exact_mappings:
+          - dcm:formal_analysis
       Funding acquisition:
         description: Funding acquisition
+        exact_mappings:
+          - dcm:funding_acquisition
       Investigation:
         description: Investigation
+        exact_mappings:
+          - dcm:investigation
       Methodology:
         description: Methodology
+        exact_mappings:
+          - dcm:methodology
       Project administration:
         description: Project administration
+        exact_mappings:
+          - dcm:project_administration
       Resources:
         description: Resources
+        exact_mappings:
+          - dcm:resources
       Software:
         description: Software
+        exact_mappings:
+          - dcm:software
       Supervision:
         description: Supervision
+        exact_mappings:
+          - dcm:supervision
       Validation:
         description: Validation
+        exact_mappings:
+          - dcm:validation
       Visualization:
         description: Visualization
+        exact_mappings:
+          - dcm:visualization
       Writing original draft:
         description: "Writing \u2013 original draft"
+        exact_mappings:
+          - dcm:writing_original_draft
       Writing review and editing:
         description: "Writing \u2013 review & editing"
+        exact_mappings:
+          - dcm:writing_review_editing
       Principal Investigator:
         description: principal investigator role
         meaning: OBI:0000103
+        related_mappings:
+          - dcm:project_leader
       Submitter:
         description: the person(s) who enter study and biosample metadata into the NMDC submission portal
         meaning: EFO:0001741
     comments:
       - CreditEnums come from https://casrai.org/credit/
+    see_also:
+      - https://kbase.github.io/credit_engine/ContributorRole/
   StudyCategoryEnum:
     permissible_values:
       research_study:

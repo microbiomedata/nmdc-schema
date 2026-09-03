@@ -10,8 +10,8 @@ analyte_category: nom
 associated_studies:
   - nmdc:sty-00-555xxx
 has_credit_associations:
-  - applies_to_person:
-      type: nmdc:PersonValue
+  - applies_to_agent:
+      type: nmdc:Person
       name: Janet Jansson
       email: janet.jansson@pnnl.gov
     applied_roles:

@@ -76,6 +76,7 @@ prefixes:
   biosample: "https://bioregistry.io/biosample:"
   cas: "https://bioregistry.io/cas:"
   dcterms: "http://purl.org/dc/terms/"
+  dcm: "https://kbase.github.io/credit_engine/linkml/"
   doi: "https://bioregistry.io/doi:"
   edam.data: "http://edamontology.org/data_" # for doi_value and DataCategoryEnum only
   edam.format: "http://edamontology.org/format_" # for 'Configuration toml' PV only only
@@ -132,6 +133,7 @@ emit_prefixes:
   - orcid
   - rdf
   - rdfs
+  - ror
   - skos
   - xsd
 

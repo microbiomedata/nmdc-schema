@@ -1,0 +1,9 @@
+type: prov:Association
+applies_to_agent:
+  type: nmdc:Organization
+  name: National Microbiome Data Collaborative
+  ror: ror:05cwx3318
+  websites:
+    - https://microbiomedata.org
+applied_roles:
+  - Investigation
