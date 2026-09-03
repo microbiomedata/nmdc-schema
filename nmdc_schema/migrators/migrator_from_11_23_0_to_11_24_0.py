@@ -15,7 +15,10 @@ class Migrator(MigratorBase):
     Partial 2 standardizes remaining ``PersonValue.orcid`` values onto the
     Bioregistry ``orcid:`` CURIE (nmdc-schema#3327).
 
-    Partial 3 removes the deprecated ``collection_date_inc`` slot from Biosample
+    Partial 3 copies ``has_raw_value`` onto missing ``PersonValue.name`` so
+    name can be required (nmdc-schema#2458).
+
+    Partial 4 removes the deprecated ``collection_date_inc`` slot from Biosample
     (nmdc-schema#2658).
     """
 
