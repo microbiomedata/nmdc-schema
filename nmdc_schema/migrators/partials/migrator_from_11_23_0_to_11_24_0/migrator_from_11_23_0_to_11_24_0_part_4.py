@@ -106,9 +106,10 @@ class Migrator(MigratorBase):
         for association in document.get("has_credit_associations") or []:
             if not isinstance(association, dict):
                 continue
-            person = association.pop("applies_to_person", None)
+            person = association.get("applies_to_person")
             if not isinstance(person, dict):
                 continue
+            person = association.pop("applies_to_person")
             person["type"] = "nmdc:Person"
             person.pop("has_raw_value", None)
             association["applies_to_agent"] = person
