@@ -1,0 +1,16 @@
+# Valid. An undefined mixture is described in has_raw_value with no term, rather than
+# with a sentinel identifier. This is the case MIxS documents as "enter 0".
+id: nmdc:labp-99-abcdef3
+name: labeling of my awesome biosample
+type: nmdc:LabelingProcess
+has_input:
+  - nmdc:bsm-99-123456
+has_output:
+  - nmdc:procsm-99-987654
+isotope:
+  - 13C
+isotopolog_label: isotopically labeled
+isotopolog_approach: single
+isotopolog:
+  - type: nmdc:ControlledTermValue
+    has_raw_value: root exudates

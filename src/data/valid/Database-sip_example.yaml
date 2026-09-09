@@ -1,29 +1,32 @@
 #example data using new SIP material processing slots. In this example a sample is labeled with C13 for 12 hours, then DNA is extracted, and the sample is fractionated into three fractions.
 material_processing_set:
   - id: nmdc:labp-99-abcdef2
-    name: labeling of my awesome biosample 
+    name: labeling of my awesome biosample
     has_input:
-      - nmdc:bsam-99-123456
+      - nmdc:bsm-99-123456
     has_output:
-      - nmdc:prcsam-99-987654
+      - nmdc:procsm-99-987654
     isotopolog_label: isotopically labeled
     isotopolog_approach: single
-    isotope: 13C
-    isotopolog: 
-      type: nmdc:ControlledIdentifiedTermValue
-      term:
-        id: PUBCHEM.COMPOUND:1140]
-        name: toluene
+    isotope:
+      - 13C
+    isotopolog:
+      - type: nmdc:ControlledIdentifiedTermValue
+        has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
+        term:
+          id: PUBCHEM.COMPOUND:1140
+          name: toluene
+          type: nmdc:OntologyClass
     isotopolog_incu_time:
-      has_units: h
+      type: nmdc:QuantityValue
+      has_raw_value: 12 h
       has_numeric_value: 12
-      type: "nmdc:QuantityValue"
-      has_raw_value: "12 hours"
+      has_unit: h
     type: nmdc:LabelingProcess
   - id: nmdc:extrp-99-abcdef2
     name: DNA extraction of my awesome biosample
     has_input:
-      - nmdc:prcsam-99-987654
+      - nmdc:procsm-99-987654
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_output:
       - nmdc:procsm-99-9437ae
@@ -37,23 +40,23 @@ material_processing_set:
       - nmdc:procsm-99-9437a1
       - nmdc:procsm-99-9437a2
       - nmdc:procsm-99-9437a3
-    type: nmdc:FractionationProcess  
+    type: nmdc:FractionationProcess
 processed_sample_set:
-  - id: nmdc:prcsam-99-987654
+  - id: nmdc:procsm-99-987654
     name: my awesome biosample after isotopolog labeling
-    type: nmdc:ProcessedSample    
-  - id: nmdc:prcsam-99-987654
+    type: nmdc:ProcessedSample
+  - id: nmdc:procsm-99-9437ae
     name: my awesome biosample after DNA extraction
     type: nmdc:ProcessedSample
-  - id: nmdc:procsm-99-9437a1    
+  - id: nmdc:procsm-99-9437a1
     name: my awesome biosample after fractionation
     gradient_position: 1
     type: nmdc:ProcessedSample
-  - id: nmdc:procsm-99-9437a2    
+  - id: nmdc:procsm-99-9437a2
     name: my awesome biosample after fractionation
     gradient_position: 2
     type: nmdc:ProcessedSample
-  - id: nmdc:procsm-99-9437a3    
+  - id: nmdc:procsm-99-9437a3
     name: my awesome biosample after fractionation
     gradient_position: 3
     type: nmdc:ProcessedSample
