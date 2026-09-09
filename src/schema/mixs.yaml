@@ -8203,16 +8203,19 @@ slots:
   isotopolog_dose:
     annotations:
       Preferred_unit: ppm
+      storage_units: '[ppm]'
     description: The concentration (in ppm) of isotopolog added to environmental matrix as a total mass per volume.
     title: dose of isotopolog
     comments:
       - isotopolog mass / total volume soil; ppm of isotopologue in total container volume
     examples:
       - object:
-          type: nmdc:TextValue
-          has_raw_value: 10 ppm
+          type: nmdc:QuantityValue
+          has_raw_value: 10 [ppm]
+          has_numeric_value: 10
+          has_unit: '[ppm]'
     slot_uri: MIXS:0001348
-    range: TextValue
+    range: QuantityValue
     recommended: true
     structured_pattern:
       syntax: ^{float} {unit}$

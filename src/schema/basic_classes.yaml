@@ -292,8 +292,6 @@ classes:
       - description
       - protocol_for
       - analysis_type
-    narrow_mappings:
-      - MIXS:0001345
   CreditAssociation:
     aliases:
       - credit table
@@ -817,6 +815,13 @@ slots:
         description: A principal investigator recorded as a credit association.
   protocol_link:
     range: Protocol
+    narrow_mappings:
+      # MIXS:0001345 is sip_method, "Method used to fractionate nucleic acids", whose value is a
+      # PMID, DOI or URL naming a published method. That is the SIP-specific case of linking to a
+      # protocol, so it is narrower than protocol_link. Asserted on this slot rather than on the
+      # Protocol class because a mapping relates elements of the same kind, and MIXS:0001345 is a
+      # property, not a class.
+      - MIXS:0001345
   study_category:
     description: The type of research initiative
     range: StudyCategoryEnum

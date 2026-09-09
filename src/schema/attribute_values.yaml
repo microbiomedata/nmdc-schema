@@ -929,6 +929,8 @@ enums:
       "g/cm3":
         aliases:
           - grams per cubic centimeter
+          - "g/mL"
+          - grams per milliliter
         description: The Unified Code for Units of Measure (UCUM) representation of grams per cubic centimeter.
       "g/L":
         aliases:
