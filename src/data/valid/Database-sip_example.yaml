@@ -12,7 +12,8 @@ material_processing_set:
     isotopolog: 
       type: nmdc:ControlledIdentifiedTermValue
       term:
-        id: PUBMED.COMPOUND:11480819]
+        id: PUBCHEM.COMPOUND:1140]
+        name: toluene
     isotopolog_incu_time:
       has_units: h
       has_numeric_value: 12
