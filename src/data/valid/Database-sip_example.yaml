@@ -11,9 +11,8 @@ material_processing_set:
     isotope: 13C
     isotopolog: 
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: carbon-13 [PUBCHEM.COMPOUND:175670880]
       term:
-        id: pubchem.compound:175670880]
+        id: PUBMED.COMPOUND:11480819]
     isotopolog_incu_time:
       has_units: h
       has_numeric_value: 12
