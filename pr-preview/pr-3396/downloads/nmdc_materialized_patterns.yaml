@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post41.dev0+0f247d48e
+version: 11.23.0.post51.dev0+c4a54ec15
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -1927,6 +1927,12 @@ enums:
           grams per cubic centimeter.
         aliases:
         - grams per cubic centimeter
+      g/mL:
+        text: g/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          grams per milliliter.
+        aliases:
+        - grams per milliliter
       g/L:
         text: g/L
         description: The Unified Code for Units of Measure (UCUM) representation of
@@ -4673,6 +4679,18 @@ enums:
         text: wall
       window:
         text: window
+  LibLayoutEnum:
+    name: LibLayoutEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      other:
+        text: other
+      paired:
+        text: paired
+      single:
+        text: single
+      vector:
+        text: vector
   LightTypeEnum:
     name: LightTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -5507,18 +5525,6 @@ enums:
         text: middle
       top:
         text: top
-  LibLayoutEnum:
-    name: LibLayoutEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      other:
-        text: other
-      paired:
-        text: paired
-      single:
-        text: single
-      vector:
-        text: vector
   IsotopeEnum:
     name: IsotopeEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -18538,7 +18544,7 @@ slots:
     title: isotope
     examples:
     - value: 13C
-    - value: 13C | 15N
+    - value: 15N
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001338
     range: IsotopeEnum
@@ -18550,11 +18556,19 @@ slots:
       sample.
     title: isotopolog
     comments:
-    - List the PubChem Compound Identification (CID) number. If it's an undefined
-      mixture, enter 0.
+    - Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and
+      in term.id. For an undefined mixture, describe it in has_raw_value and omit
+      term; NMDC does not use a sentinel identifier for that case.
     examples:
-    - value: toluene [pubchem.compound:1140]
-    - value: '0'
+    - object:
+        type: nmdc:ControlledTermValue
+        has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
+        term:
+          id: PUBCHEM.COMPOUND:1140
+          type: nmdc:OntologyClass
+    - object:
+        type: nmdc:ControlledTermValue
+        has_raw_value: root exudates
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001339
     range: ControlledTermValue
@@ -18602,20 +18616,32 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001342
     range: integer
-    required: true
   gradient_pos_density:
     name: gradient_pos_density
     annotations:
       Preferred_unit:
         tag: Preferred_unit
         value: g/mL
+      storage_units:
+        tag: storage_units
+        value: g/mL
     description: Buoyant density of this fraction
     title: density of gradient position
     examples:
-    - value: 1.725 g/mL
-    - value: 1.725-1.735 g/mL
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 1.725 g/mL
+        has_numeric_value: 1.725
+        has_unit: g/mL
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 1.725-1.735 g/mL
+        has_minimum_numeric_value: 1.725
+        has_maximum_numeric_value: 1.735
+        has_unit: g/mL
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001343
+    range: QuantityValue
     recommended: true
     pattern: ^([-+]?[0-9]*\.?[0-9]+-[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)|[-+]?[0-9]*\.?[0-9]+
       ([^\s-]{1,2}|[^\s-]+.+[^\s-]+))$
@@ -18649,8 +18675,9 @@ slots:
       will not provide a multivalued ordered slot in a database. As such, this slot
       also couldn't be marked as multivalued in the yaml.
     examples:
-    - value: '0.95'
-    - value: 0.95 | 0.98
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: '0.95'
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001346
     range: TextValue
@@ -18662,9 +18689,9 @@ slots:
       the same as the isotopolog.
     title: set of labeled atoms in isotopologue
     examples:
-    - value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
-    - value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1 | 1S/C6H12O6/c7-1-3(9)5(11)6(12)4(10)2-8/h1,3-6,8-12H,2H2/t3-,4+,5+,6+/m0/s1
-    - value: undefined
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001347
     range: TextValue
@@ -18678,6 +18705,9 @@ slots:
       Preferred_unit:
         tag: Preferred_unit
         value: ppm
+      storage_units:
+        tag: storage_units
+        value: '[ppm]'
     description: The concentration (in ppm) of isotopolog added to environmental matrix
       as a total mass per volume.
     title: dose of isotopolog
@@ -18685,10 +18715,14 @@ slots:
     - isotopolog mass / total volume soil; ppm of isotopologue in total container
       volume
     examples:
-    - value: 10 ppm
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 10 [ppm]
+        has_numeric_value: 10
+        has_unit: '[ppm]'
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001348
-    range: TextValue
+    range: QuantityValue
     recommended: true
     pattern: ^[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
@@ -18717,7 +18751,11 @@ slots:
     description: Total time of incubation after isotopologue addition in hours
     title: isotopolog incubation time
     examples:
-    - value: 12 hour
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 12 h
+        has_numeric_value: 12
+        has_unit: h
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001350
     range: QuantityValue
@@ -18731,7 +18769,9 @@ slots:
       standard was used (i.e., spiking in a heavy-labelled DNA sequence).
     title: internal standard method
     examples:
-    - value: https://doi.org/10.1101/2022.12.20.521340
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: https://doi.org/10.1101/2022.12.20.521340
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001351
     range: TextValue
@@ -20722,7 +20762,18 @@ classes:
       has_output:
         name: has_output
         required: true
-    class_uri: nmdc:Labeling
+      isotopolog:
+        name: isotopolog
+        range_expression:
+          slot_conditions:
+            term:
+              name: term
+              range_expression:
+                slot_conditions:
+                  id:
+                    name: id
+                    pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
+    class_uri: nmdc:LabelingProcess
   FractionationProcess:
     name: FractionationProcess
     description: A material processing that separates a sample into multiple fractions
@@ -20749,7 +20800,7 @@ classes:
       has_output:
         name: has_output
         required: true
-    class_uri: nmdc:Fractionation
+    class_uri: nmdc:FractionationProcess
   CollectingBiosamplesFromSite:
     name: CollectingBiosamplesFromSite
     title: Collecting Biosamples From Site
@@ -21573,8 +21624,6 @@ classes:
   Protocol:
     name: Protocol
     from_schema: https://w3id.org/nmdc/nmdc
-    narrow_mappings:
-    - MIXS:0001345
     slots:
     - url
     - name

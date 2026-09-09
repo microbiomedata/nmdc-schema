@@ -759,9 +759,11 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<ul>
-<li><code>12 hour</code></li>
-</ul>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;12 h&quot;
+has_numeric_value: 12
+has_unit: &quot;h&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -811,7 +813,11 @@ annotations:
 description: Total time of incubation after isotopologue addition in hours
 title: isotopolog incubation time
 examples:
-- value: 12 hour
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 12 h
+    has_numeric_value: 12
+    has_unit: h
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0001350

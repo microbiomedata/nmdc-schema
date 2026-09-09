@@ -748,14 +748,9 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<ul>
-<li>
-<p><code>0.95</code></p>
-</li>
-<li>
-<p><code>0.95 | 0.98</code></p>
-</li>
-</ul>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;0.95&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -789,8 +784,9 @@ todos:
   not provide a multivalued ordered slot in a database. As such, this slot also couldn't
   be marked as multivalued in the yaml.
 examples:
-- value: '0.95'
-- value: 0.95 | 0.98
+- object:
+    type: nmdc:TextValue
+    has_raw_value: '0.95'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0001346

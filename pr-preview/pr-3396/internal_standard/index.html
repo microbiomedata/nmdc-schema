@@ -748,9 +748,9 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<ul>
-<li><code>https://doi.org/10.1101/2022.12.20.521340</code></li>
-</ul>
+<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
+has_raw_value: &quot;https://doi.org/10.1101/2022.12.20.521340&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -779,7 +779,9 @@ description: Method used for internal standard for SIP fractionation, if an inte
   standard was used (i.e., spiking in a heavy-labelled DNA sequence).
 title: internal standard method
 examples:
-- value: https://doi.org/10.1101/2022.12.20.521340
+- object:
+    type: nmdc:TextValue
+    has_raw_value: https://doi.org/10.1101/2022.12.20.521340
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0001351

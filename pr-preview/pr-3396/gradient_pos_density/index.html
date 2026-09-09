@@ -752,21 +752,24 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../String/">String</a></p>
+<p>Range: <a href="../QuantityValue/">QuantityValue</a></p>
 </li>
 <li>
 <p>Recommended: True</p>
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<ul>
-<li>
-<p><code>1.725 g/mL</code></p>
-</li>
-<li>
-<p><code>1.725-1.735 g/mL</code></p>
-</li>
-</ul>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;1.725 g/mL&quot;
+has_numeric_value: 1.725
+has_unit: &quot;g/mL&quot;
+</code></pre>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;1.725-1.735 g/mL&quot;
+has_minimum_numeric_value: 1.725
+has_maximum_numeric_value: 1.735
+has_unit: &quot;g/mL&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -810,17 +813,29 @@ annotations:
   Preferred_unit:
     tag: Preferred_unit
     value: g/mL
+  storage_units:
+    tag: storage_units
+    value: g/mL
 description: Buoyant density of this fraction
 title: density of gradient position
 examples:
-- value: 1.725 g/mL
-- value: 1.725-1.735 g/mL
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 1.725 g/mL
+    has_numeric_value: 1.725
+    has_unit: g/mL
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 1.725-1.735 g/mL
+    has_minimum_numeric_value: 1.725
+    has_maximum_numeric_value: 1.735
+    has_unit: g/mL
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0001343
 domain_of:
 - ProcessedSample
-range: string
+range: QuantityValue
 recommended: true
 structured_pattern:
   syntax: ^({float}-{float} {unit}|{float} {unit})$

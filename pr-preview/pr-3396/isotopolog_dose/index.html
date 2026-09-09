@@ -763,16 +763,18 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../TextValue/">TextValue</a></p>
+<p>Range: <a href="../QuantityValue/">QuantityValue</a></p>
 </li>
 <li>
 <p>Recommended: True</p>
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<ul>
-<li><code>10 ppm</code></li>
-</ul>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;10 [ppm]&quot;
+has_numeric_value: 10
+has_unit: &quot;[ppm]&quot;
+</code></pre>
 <h2 id="comments">Comments</h2>
 <ul>
 <li>isotopolog mass / total volume soil; ppm of isotopologue in total container volume</li>
@@ -820,19 +822,26 @@ annotations:
   Preferred_unit:
     tag: Preferred_unit
     value: ppm
+  storage_units:
+    tag: storage_units
+    value: '[ppm]'
 description: The concentration (in ppm) of isotopolog added to environmental matrix
   as a total mass per volume.
 title: dose of isotopolog
 comments:
 - isotopolog mass / total volume soil; ppm of isotopologue in total container volume
 examples:
-- value: 10 ppm
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: 10 [ppm]
+    has_numeric_value: 10
+    has_unit: '[ppm]'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0001348
 domain_of:
 - LabelingProcess
-range: TextValue
+range: QuantityValue
 recommended: true
 structured_pattern:
   syntax: ^{float} {unit}$

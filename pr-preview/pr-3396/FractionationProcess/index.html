@@ -389,7 +389,7 @@
 <h1 id="class-fractionationprocess">Class: FractionationProcess</h1>
 <p><em>A material processing that separates a sample into multiple fractions based on a physical or chemical property.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/Fractionation">nmdc:Fractionation</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/FractionationProcess">nmdc:FractionationProcess</a></p>
 <div class="mermaid">classDiagram
   class FractionationProcess
   click FractionationProcess href "../FractionationProcess"
@@ -605,8 +605,8 @@
 </thead>
 <tbody>
 <tr>
-<td>self</td>
-<td>nmdc:Fractionation</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -637,7 +637,7 @@ slot_usage:
   has_output:
     name: has_output
     required: true
-class_uri: nmdc:Fractionation
+class_uri: nmdc:FractionationProcess
 
 </code></pre>
 </details>
@@ -681,7 +681,9 @@ attributes:
       standard was used (i.e., spiking in a heavy-labelled DNA sequence).
     title: internal standard method
     examples:
-    - value: https://doi.org/10.1101/2022.12.20.521340
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: https://doi.org/10.1101/2022.12.20.521340
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001351
@@ -936,7 +938,7 @@ attributes:
     - MetaboliteIdentification
     range: uriorcurie
     required: true
-class_uri: nmdc:Fractionation
+class_uri: nmdc:FractionationProcess
 
 </code></pre>
 </details>

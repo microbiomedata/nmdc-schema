@@ -389,7 +389,7 @@
 <h1 id="class-labelingprocess">Class: LabelingProcess</h1>
 <p><em>A material processing that adds a label to a sample, such as a fluorescent or radioactive tag.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/Labeling">nmdc:Labeling</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/LabelingProcess">nmdc:LabelingProcess</a></p>
 <div class="mermaid">classDiagram
   class LabelingProcess
   click LabelingProcess href "../LabelingProcess"
@@ -458,8 +458,8 @@
 
   LabelingProcess : isotopolog_dose
 
-      LabelingProcess --&gt; "0..1 _recommended_" TextValue : isotopolog_dose
-    click TextValue href "../TextValue"
+      LabelingProcess --&gt; "0..1 _recommended_" QuantityValue : isotopolog_dose
+    click QuantityValue href "../QuantityValue"
 
   LabelingProcess : isotopolog_incu_time
 
@@ -570,7 +570,7 @@
 </tr>
 <tr>
 <td><a href="../isotopolog_dose/">isotopolog_dose</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>The concentration (in ppm) of isotopolog added to environmental matrix as a...</td>
 <td>direct</td>
 </tr>
@@ -693,8 +693,8 @@
 </thead>
 <tbody>
 <tr>
-<td>self</td>
-<td>nmdc:Labeling</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -733,7 +733,18 @@ slot_usage:
   has_output:
     name: has_output
     required: true
-class_uri: nmdc:Labeling
+  isotopolog:
+    name: isotopolog
+    range_expression:
+      slot_conditions:
+        term:
+          name: term
+          range_expression:
+            slot_conditions:
+              id:
+                name: id
+                pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
+class_uri: nmdc:LabelingProcess
 
 </code></pre>
 </details>
@@ -759,6 +770,17 @@ slot_usage:
   has_output:
     name: has_output
     required: true
+  isotopolog:
+    name: isotopolog
+    range_expression:
+      slot_conditions:
+        term:
+          name: term
+          range_expression:
+            slot_conditions:
+              id:
+                name: id
+                pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
 attributes:
   labeling_method:
     name: labeling_method
@@ -778,7 +800,7 @@ attributes:
     title: isotope
     examples:
     - value: 13C
-    - value: 13C | 15N
+    - value: 15N
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001338
@@ -794,11 +816,19 @@ attributes:
       sample.
     title: isotopolog
     comments:
-    - List the PubChem Compound Identification (CID) number. If it's an undefined
-      mixture, enter 0.
+    - Give the PubChem compound as PUBCHEM.COMPOUND:&lt;CID&gt;, both in has_raw_value and
+      in term.id. For an undefined mixture, describe it in has_raw_value and omit
+      term; NMDC does not use a sentinel identifier for that case.
     examples:
-    - value: toluene [pubchem.compound:1140]
-    - value: '0'
+    - object:
+        type: nmdc:ControlledTermValue
+        has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
+        term:
+          id: PUBCHEM.COMPOUND:1140
+          type: nmdc:OntologyClass
+    - object:
+        type: nmdc:ControlledTermValue
+        has_raw_value: root exudates
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001339
@@ -806,6 +836,15 @@ attributes:
     domain_of:
     - LabelingProcess
     range: ControlledTermValue
+    range_expression:
+      slot_conditions:
+        term:
+          name: term
+          range_expression:
+            slot_conditions:
+              id:
+                name: id
+                pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
     required: true
     multivalued: true
     inlined: true
@@ -857,8 +896,9 @@ attributes:
       will not provide a multivalued ordered slot in a database. As such, this slot
       also couldn't be marked as multivalued in the yaml.
     examples:
-    - value: '0.95'
-    - value: 0.95 | 0.98
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: '0.95'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001346
@@ -874,9 +914,9 @@ attributes:
       the same as the isotopolog.
     title: set of labeled atoms in isotopologue
     examples:
-    - value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
-    - value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1 | 1S/C6H12O6/c7-1-3(9)5(11)6(12)4(10)2-8/h1,3-6,8-12H,2H2/t3-,4+,5+,6+/m0/s1
-    - value: undefined
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001347
@@ -893,6 +933,9 @@ attributes:
       Preferred_unit:
         tag: Preferred_unit
         value: ppm
+      storage_units:
+        tag: storage_units
+        value: '[ppm]'
     description: The concentration (in ppm) of isotopolog added to environmental matrix
       as a total mass per volume.
     title: dose of isotopolog
@@ -900,14 +943,18 @@ attributes:
     - isotopolog mass / total volume soil; ppm of isotopologue in total container
       volume
     examples:
-    - value: 10 ppm
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 10 [ppm]
+        has_numeric_value: 10
+        has_unit: '[ppm]'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001348
     owner: LabelingProcess
     domain_of:
     - LabelingProcess
-    range: TextValue
+    range: QuantityValue
     recommended: true
     structured_pattern:
       syntax: ^{float} {unit}$
@@ -923,7 +970,11 @@ attributes:
     description: Total time of incubation after isotopologue addition in hours
     title: isotopolog incubation time
     examples:
-    - value: 12 hour
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 12 h
+        has_numeric_value: 12
+        has_unit: h
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001350
@@ -1210,7 +1261,7 @@ attributes:
     - MetaboliteIdentification
     range: uriorcurie
     required: true
-class_uri: nmdc:Labeling
+class_uri: nmdc:LabelingProcess
 
 </code></pre>
 </details>

@@ -8625,7 +8625,7 @@
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
-                        "nmdc:Fractionation"
+                        "nmdc:FractionationProcess"
                     ],
                     "type": "string"
                 }
@@ -9631,6 +9631,23 @@
                 "isotopolog": {
                     "description": "Isotopologue (isotope source/substrate/molecule) added to the biological sample.",
                     "items": {
+                        "allOf": [
+                            {
+                                "properties": {
+                                    "term": {
+                                        "allOf": [
+                                            {
+                                                "properties": {
+                                                    "id": {
+                                                        "pattern": "^PUBCHEM\\.COMPOUND:[1-9]\\d*$"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
                         "anyOf": [
                             {
                                 "$ref": "#/$defs/ControlledTermValue"
@@ -9671,7 +9688,7 @@
                 "isotopolog_dose": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/TextValue"
+                            "$ref": "#/$defs/QuantityValue"
                         },
                         {
                             "type": "null"
@@ -9740,7 +9757,7 @@
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
-                        "nmdc:Labeling"
+                        "nmdc:LabelingProcess"
                     ],
                     "type": "string"
                 }
@@ -15064,11 +15081,15 @@
                     ]
                 },
                 "gradient_pos_density": {
-                    "description": "Buoyant density of this fraction",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Buoyant density of this fraction"
                 },
                 "gradient_pos_rel_am": {
                     "description": "The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargetted sequencing data, this value should be calculated from total DNA concentration.",
@@ -15079,7 +15100,10 @@
                 },
                 "gradient_position": {
                     "description": "A number designating the gradient position from heaviest (=1) to lightest. Unfractionated samples, from which fractionated samples were derived, should be denoted with \u20131.",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
@@ -15121,7 +15145,6 @@
                 }
             },
             "required": [
-                "gradient_position",
                 "id",
                 "type"
             ],
@@ -17420,6 +17443,7 @@
                 "mg",
                 "umol/L/h",
                 "g/cm3",
+                "g/mL",
                 "g/L",
                 "wk",
                 "[g]",
@@ -18087,5 +18111,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post41.dev0+0f247d48e"
+    "version": "11.23.0.post51.dev0+c4a54ec15"
 }
