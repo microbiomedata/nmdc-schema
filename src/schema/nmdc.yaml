@@ -633,8 +633,6 @@ classes:
       isotopolog:
         range_expression:
           slot_conditions:
-            has_raw_value:
-              required: true
             term:
               range_expression:
                 slot_conditions:
