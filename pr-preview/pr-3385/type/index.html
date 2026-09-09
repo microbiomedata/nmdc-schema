@@ -743,6 +743,11 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../Agent/">Agent</a></td>
+<td>A person or organization bears some form of responsibility for an activity...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../EukEval/">EukEval</a></td>
 <td>This class contains information pertaining to evaluating if a...</td>
 <td>no</td>
@@ -775,11 +780,6 @@
 <tr>
 <td><a href="../AttributeValue/">AttributeValue</a></td>
 <td>The value of an attribute of any NMDC entity. This object can hold both the...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Agent/">Agent</a></td>
-<td>A person or organization bears some form of responsibility for an activity...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -835,6 +835,16 @@
 <tr>
 <td><a href="../MetaboliteIdentification/">MetaboliteIdentification</a></td>
 <td>This is used to link a metabolomics analysis workflow to a specific metabolite</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Person/">Person</a></td>
+<td>A person, typically a researcher associated with a study or data generation.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Organization/">Organization</a></td>
+<td>A social or legal institution such as a company, society, consortium, etc.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -975,16 +985,6 @@
 <tr>
 <td><a href="../ImageValue/">ImageValue</a></td>
 <td>An attribute value representing an image.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Person/">Person</a></td>
-<td>A person, typically a researcher associated with a study or data generation.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Organization/">Organization</a></td>
-<td>A social or legal institution such as a company, society, consortium, etc.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1252,6 +1252,7 @@ rank: 1000
 slot_uri: rdf:type
 designates_type: true
 domain_of:
+- Agent
 - EukEval
 - FunctionalAnnotationAggMember
 - PeptideQuantification
@@ -1259,7 +1260,6 @@ domain_of:
 - GenomeFeature
 - FunctionalAnnotation
 - AttributeValue
-- Agent
 - NamedThing
 - OntologyRelation
 - FailureCategorization

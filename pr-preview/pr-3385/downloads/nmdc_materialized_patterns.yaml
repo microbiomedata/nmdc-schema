@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post56.dev0+634c6b20c
+version: 11.23.0.post57.dev0+4b56ca5af
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6193,6 +6193,49 @@ enums:
           on the data portal. The submitter cannot edit.
         title: Released
 slots:
+  email:
+    name: email
+    description: An email address for an entity such as a person. This should be the
+      primary email address used.
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: schema:email
+    range: string
+  profile_image_url:
+    name: profile_image_url
+    description: A url that points to an image of this person or organization.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
+  orcid:
+    name: orcid
+    description: The ORCID of a person.
+    comments:
+    - Canonical form is the Bioregistry CURIE with prefix `orcid`.
+    examples:
+    - value: orcid:0000-0002-7086-765X
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://bioregistry.io/registry/orcid
+    close_mappings:
+    - dcm:contributor_id
+    range: string
+    pattern: ^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$
+  ror:
+    name: ror
+    description: The Research Organization Registry identifier of an organization.
+    comments:
+    - Canonical form is the Bioregistry CURIE with prefix `ror`.
+    - Optional. Institutions usually have a ROR; many consortia do not.
+    examples:
+    - value: ror:05cwx3318
+      description: National Microbiome Data Collaborative
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://bioregistry.io/registry/ror
+    - https://ror.org
+    close_mappings:
+    - dcm:organization_id
+    range: string
+    pattern: ^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$
   host_family_relation:
     name: host_family_relation
     annotations:
@@ -6910,49 +6953,6 @@ slots:
       which the information should be rendered.
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
-  email:
-    name: email
-    description: An email address for an entity such as a person. This should be the
-      primary email address used.
-    from_schema: https://w3id.org/nmdc/nmdc
-    slot_uri: schema:email
-    range: string
-  profile_image_url:
-    name: profile_image_url
-    description: A url that points to an image of this person or organization.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
-  orcid:
-    name: orcid
-    description: The ORCID of a person.
-    comments:
-    - Canonical form is the Bioregistry CURIE with prefix `orcid`.
-    examples:
-    - value: orcid:0000-0002-7086-765X
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://bioregistry.io/registry/orcid
-    close_mappings:
-    - dcm:contributor_id
-    range: string
-    pattern: ^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$
-  ror:
-    name: ror
-    description: The Research Organization Registry identifier of an organization.
-    comments:
-    - Canonical form is the Bioregistry CURIE with prefix `ror`.
-    - Optional. Institutions usually have a ROR; many consortia do not.
-    examples:
-    - value: ror:05cwx3318
-      description: National Microbiome Data Collaborative
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://bioregistry.io/registry/ror
-    - https://ror.org
-    close_mappings:
-    - dcm:organization_id
-    range: string
-    pattern: ^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$
   language:
     name: language
     description: Should use ISO 639-1 code e.g. "en", "fr"
@@ -19929,6 +19929,78 @@ slots:
     recommended: true
     multivalued: true
 classes:
+  Agent:
+    name: Agent
+    description: A person or organization bears some form of responsibility for an
+      activity taking place, for the existence of an entity, or for another agent's
+      activity.
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - prov:Agent
+    abstract: true
+    slots:
+    - type
+    - name
+    - profile_image_url
+    - websites
+    slot_usage:
+      name:
+        name: name
+        required: true
+    class_uri: nmdc:Agent
+  Person:
+    name: Person
+    description: A person, typically a researcher associated with a study or data
+      generation.
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - prov:Person
+    is_a: Agent
+    slots:
+    - email
+    - orcid
+    slot_usage:
+      orcid:
+        name: orcid
+        annotations:
+          tooltip:
+            tag: tooltip
+            value: Open Researcher and Contributor ID for this person. See https://orcid.org
+      email:
+        name: email
+        annotations:
+          tooltip:
+            tag: tooltip
+            value: Email address for this person.
+      name:
+        name: name
+        annotations:
+          tooltip:
+            tag: tooltip
+            value: First name, middle initial, and last name of this person.
+        description: The full name of the Investigator. It should follow the format
+          FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL
+          is optional.
+    class_uri: nmdc:Person
+  Organization:
+    name: Organization
+    description: A social or legal institution such as a company, society, consortium,
+      etc.
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - prov:Organization
+    close_mappings:
+    - dcm:Organization
+    is_a: Agent
+    slots:
+    - ror
+    slot_usage:
+      name:
+        name: name
+        description: The name of the organization.
+        close_mappings:
+        - dcm:organization_name
+    class_uri: nmdc:Organization
   EukEval:
     name: EukEval
     description: This class contains information pertaining to evaluating if a Metagenome-Assembled
@@ -20832,78 +20904,6 @@ classes:
     - description
     - display_order
     class_uri: nmdc:ImageValue
-  Agent:
-    name: Agent
-    description: A person or organization bears some form of responsibility for an
-      activity taking place, for the existence of an entity, or for another agent's
-      activity.
-    from_schema: https://w3id.org/nmdc/nmdc
-    exact_mappings:
-    - prov:Agent
-    abstract: true
-    slots:
-    - type
-    - name
-    - profile_image_url
-    - websites
-    slot_usage:
-      name:
-        name: name
-        required: true
-    class_uri: nmdc:Agent
-  Person:
-    name: Person
-    description: A person, typically a researcher associated with a study or data
-      generation.
-    from_schema: https://w3id.org/nmdc/nmdc
-    exact_mappings:
-    - prov:Person
-    is_a: Agent
-    slots:
-    - email
-    - orcid
-    slot_usage:
-      orcid:
-        name: orcid
-        annotations:
-          tooltip:
-            tag: tooltip
-            value: Open Researcher and Contributor ID for this person. See https://orcid.org
-      email:
-        name: email
-        annotations:
-          tooltip:
-            tag: tooltip
-            value: Email address for this person.
-      name:
-        name: name
-        annotations:
-          tooltip:
-            tag: tooltip
-            value: First name, middle initial, and last name of this person.
-        description: The full name of the Investigator. It should follow the format
-          FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL
-          is optional.
-    class_uri: nmdc:Person
-  Organization:
-    name: Organization
-    description: A social or legal institution such as a company, society, consortium,
-      etc.
-    from_schema: https://w3id.org/nmdc/nmdc
-    exact_mappings:
-    - prov:Organization
-    close_mappings:
-    - dcm:Organization
-    is_a: Agent
-    slots:
-    - ror
-    slot_usage:
-      name:
-        name: name
-        description: The name of the organization.
-        close_mappings:
-        - dcm:organization_name
-    class_uri: nmdc:Organization
   TextValue:
     name: TextValue
     description: A basic string value
