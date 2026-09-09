@@ -745,14 +745,14 @@
 <tr>
 <td><a href="../LabelingProcess/">LabelingProcess</a></td>
 <td>A material processing that adds a label to a sample, such as a fluorescent...</td>
-<td>yes</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../TextValue/">TextValue</a></p>
+<p>Range: <a href="../ControlledTermValue/">ControlledTermValue</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -812,9 +812,11 @@ rank: 1000
 slot_uri: MIXS:0001339
 domain_of:
 - LabelingProcess
-range: TextValue
+range: ControlledTermValue
 required: true
 multivalued: true
+inlined: true
+inlined_as_list: true
 structured_pattern:
   syntax: ^{termLabel} \[{termID}\]$
   interpolated: true

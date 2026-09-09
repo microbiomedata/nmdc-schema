@@ -438,8 +438,8 @@
 
   LabelingProcess : isotopolog
 
-      LabelingProcess --&gt; "1..*" TextValue : isotopolog
-    click TextValue href "../TextValue"
+      LabelingProcess --&gt; "1..*" ControlledTermValue : isotopolog
+    click ControlledTermValue href "../ControlledTermValue"
 
   LabelingProcess : isotopolog_approach
 
@@ -463,8 +463,8 @@
 
   LabelingProcess : isotopolog_incu_time
 
-      LabelingProcess --&gt; "0..1 _recommended_" TextValue : isotopolog_incu_time
-    click TextValue href "../TextValue"
+      LabelingProcess --&gt; "0..1 _recommended_" QuantityValue : isotopolog_incu_time
+    click QuantityValue href "../QuantityValue"
 
   LabelingProcess : isotopolog_label
 
@@ -540,7 +540,7 @@
 </tr>
 <tr>
 <td><a href="../isotopolog/">isotopolog</a></td>
-<td>1..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>1..* <br/> <a href="../ControlledTermValue/">ControlledTermValue</a></td>
 <td>Isotopologue (isotope source/substrate/molecule) added to the biological sample.</td>
 <td>direct</td>
 </tr>
@@ -576,7 +576,7 @@
 </tr>
 <tr>
 <td><a href="../isotopolog_incu_time/">isotopolog_incu_time</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Total time of incubation after isotopologue addition in hours</td>
 <td>direct</td>
 </tr>
@@ -733,9 +733,6 @@ slot_usage:
   has_output:
     name: has_output
     required: true
-  isotopolog:
-    name: isotopolog
-    inlined_as_list: true
 class_uri: nmdc:Labeling
 
 </code></pre>
@@ -762,9 +759,6 @@ slot_usage:
   has_output:
     name: has_output
     required: true
-  isotopolog:
-    name: isotopolog
-    inlined_as_list: true
 attributes:
   labeling_method:
     name: labeling_method
@@ -811,7 +805,7 @@ attributes:
     owner: LabelingProcess
     domain_of:
     - LabelingProcess
-    range: TextValue
+    range: ControlledTermValue
     required: true
     multivalued: true
     inlined: true
@@ -923,6 +917,9 @@ attributes:
       Preferred_unit:
         tag: Preferred_unit
         value: hours
+      storage_units:
+        tag: storage_units
+        value: h
     description: Total time of incubation after isotopologue addition in hours
     title: isotopolog incubation time
     examples:
@@ -933,7 +930,7 @@ attributes:
     owner: LabelingProcess
     domain_of:
     - LabelingProcess
-    range: TextValue
+    range: QuantityValue
     recommended: true
     structured_pattern:
       syntax: ^{float} {unit}$

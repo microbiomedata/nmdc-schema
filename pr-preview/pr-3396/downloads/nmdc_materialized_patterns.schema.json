@@ -9883,7 +9883,14 @@
                 "isotopolog": {
                     "description": "Isotopologue (isotope source/substrate/molecule) added to the biological sample.",
                     "items": {
-                        "$ref": "#/$defs/TextValue",
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/ControlledTermValue"
+                            },
+                            {
+                                "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                            }
+                        ],
                         "pattern": "^([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+) \\[[a-zA-Z]{2,}:[a-zA-Z0-9]\\d+\\]$"
                     },
                     "type": "array"
@@ -9930,7 +9937,7 @@
                 "isotopolog_incu_time": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/TextValue"
+                            "$ref": "#/$defs/QuantityValue"
                         },
                         {
                             "type": "null"
@@ -18420,6 +18427,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post37.dev0+565d79427"
+    "version": "11.23.0.post38.dev0+c8387b6ae"
 }
 

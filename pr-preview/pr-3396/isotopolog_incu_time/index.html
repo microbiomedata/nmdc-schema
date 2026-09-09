@@ -752,7 +752,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../TextValue/">TextValue</a></p>
+<p>Range: <a href="../QuantityValue/">QuantityValue</a></p>
 </li>
 <li>
 <p>Recommended: True</p>
@@ -805,6 +805,9 @@ annotations:
   Preferred_unit:
     tag: Preferred_unit
     value: hours
+  storage_units:
+    tag: storage_units
+    value: h
 description: Total time of incubation after isotopologue addition in hours
 title: isotopolog incubation time
 examples:
@@ -814,7 +817,7 @@ rank: 1000
 slot_uri: MIXS:0001350
 domain_of:
 - LabelingProcess
-range: TextValue
+range: QuantityValue
 recommended: true
 structured_pattern:
   syntax: ^{float} {unit}$

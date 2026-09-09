@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post37.dev0+565d79427
+version: 11.23.0.post38.dev0+c8387b6ae
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -18557,9 +18557,10 @@ slots:
     - value: '0'
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001339
-    range: TextValue
+    range: ControlledTermValue
     required: true
     multivalued: true
+    inlined_as_list: true
     pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$
     structured_pattern:
       syntax: ^{termLabel} \[{termID}\]$
@@ -18710,13 +18711,16 @@ slots:
       Preferred_unit:
         tag: Preferred_unit
         value: hours
+      storage_units:
+        tag: storage_units
+        value: h
     description: Total time of incubation after isotopologue addition in hours
     title: isotopolog incubation time
     examples:
     - value: 12 hour
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001350
-    range: TextValue
+    range: QuantityValue
     recommended: true
     pattern: ^[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
@@ -20718,9 +20722,6 @@ classes:
       has_output:
         name: has_output
         required: true
-      isotopolog:
-        name: isotopolog
-        inlined_as_list: true
     class_uri: nmdc:Labeling
   FractionationProcess:
     name: FractionationProcess
@@ -21572,6 +21573,8 @@ classes:
   Protocol:
     name: Protocol
     from_schema: https://w3id.org/nmdc/nmdc
+    narrow_mappings:
+    - MIXS:0001345
     slots:
     - url
     - name
