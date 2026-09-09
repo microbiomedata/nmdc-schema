@@ -630,6 +630,8 @@ classes:
           interpolated: true
       has_output:
         required: true
+      isotopolog:
+        inlined_as_list: true  
 
     #add linkml rule to require slots if labeling_method is isotopolog    
   FractionationProcess:
@@ -639,11 +641,6 @@ classes:
       A material processing that separates a sample into multiple fractions based on a physical or chemical property.
     slots:
       - fractionation_method
-      - gradient_position
-      - gradient_pos_density
-      - gradient_pos_rel_am
-      - sip_method
-      - nucleobase_atom_frac
       - internal_standard
     slot_usage:
       id:
@@ -841,7 +838,7 @@ classes:
       - CHMO:0002773
     contributors:
       - orcid:0009-0001-1555-1601 #Anastasiya Prymolenna
-       orcid:0000-0002-1368-8217 #Yuri Corilo
+      - orcid:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     slots:
       - duration
@@ -856,7 +853,7 @@ classes:
 
 
 enums:
-LabelingMethodEnum:
+  LabelingMethodEnum:
     permissible_values:
       isotopolog:
         description: A molecule that differs only in isotopic composition from a reference molecule.
@@ -871,7 +868,7 @@ LabelingMethodEnum:
         aliases:
           - Radioactive
 
-  FactionationMethodEnum:
+  FractionationMethodEnum:
     permissible_values:
       density_gradient:
         description: A method of separating particles based on their density by centrifugation through a medium with a density gradient.
@@ -1139,7 +1136,8 @@ LabelingMethodEnum:
       respiration_measurement:
       texture_measurement:
       dna_extraction:
-      phenol_chloroform_extraction: { }
+      phenol_chloroform_extraction: 
+      stable_isotope_probe: { }
 
   ChromatographicCategoryEnum:
     permissible_values:
@@ -1193,16 +1191,13 @@ slots:
       The method used to separate a sample into multiple fractions based on a physical or chemical property.
     range: FractionationMethodEnum
     multivalued: false
-    in_subset:
-      - sample_processing
 
   labeling_method:
     description: >-
       The method used to add a label to a sample, such as a fluorescent or radioactive tag.
     range: LabelingMethodEnum
     multivalued: false
-    in_subset:
-      - sample_processing
+
   host_family_relation:
     title: host family relationship
     description: >-
