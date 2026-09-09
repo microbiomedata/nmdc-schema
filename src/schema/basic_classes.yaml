@@ -16,7 +16,7 @@ prefixes:
   SIO: "http://semanticscience.org/resource/SIO_" # for Study, StudyCategoryEnum PVs, objective
   biolink: "https://w3id.org/biolink/vocab/"
   dcterms: "http://purl.org/dc/terms/"
-  dcm: "https://kbase.github.io/credit_engine/linkml/"
+  dcm: "https://kbase.github.io/credit_engine/"
   linkml: "https://w3id.org/linkml/"
   owl: "http://www.w3.org/2002/07/owl#"
   prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
