@@ -363,6 +363,7 @@
 '.slots.root_med_regl.range |= "TextValue"'
 '.slots.root_med_suppl.range |= "TextValue"'
 '.slots.salt_regm.range |= "TextValue"'
+'.slots.isotopolog_incu_time.range |= "QuantityValue"'
 # Restore TextValue range for slots where NMDC MongoDB has TextValue data
 # These slots have production data using {type: nmdc:TextValue, has_raw_value: ...} format
 # Future migration to enums tracked in GitHub issue
@@ -446,6 +447,7 @@
 '.slots.watering_regm.range |= "TextValue"'
 '.slots.window_open_freq.range |= "TextValue"'
 '.slots.window_size.range |= "TextValue"'
+'.slots.isotopolog.range |= "ControlledTermValue"'
 
 '.slots.agrochem_addition.inlined_as_list |= true'
 '.slots.air_PM_concen.inlined_as_list |= true'
@@ -496,6 +498,7 @@
 '.slots.volatile_org_comp.inlined_as_list |= true'
 '.slots.water_temp_regm.inlined_as_list |= true'
 '.slots.watering_regm.inlined_as_list |= true'
+'.slots.isotopolog.inlined_as_list |= true'
 
 'del(.subsets)'
 'del(.classes)'
@@ -767,6 +770,7 @@
 '.slots.petroleum_hydrocarb.annotations.storage_units = {"tag": "storage_units", "value": "umol/L"}'
 '.slots.phosphate.annotations.storage_units = {"tag": "storage_units", "value": "umol/L"}'
 '.slots.silicate.annotations.storage_units = {"tag": "storage_units", "value": "umol/L"}'
+'.slots.isotopolog_incu_time.annotations.storage_units = {"tag": "storage_units", "value": "h"}'
 
 # Add storage_units annotations for slots with multiple UCUM-compatible preferred units
 '.slots.abs_air_humidity.annotations.storage_units = {"tag": "storage_units", "value": "[lb_av]|g/g|kg|kg/kg"}'

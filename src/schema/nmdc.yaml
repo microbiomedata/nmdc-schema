@@ -629,9 +629,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_output:
-        required: true
-      isotopolog:
-        inlined_as_list: true  
+        required: true 
 
     #add linkml rule to require slots if labeling_method is isotopolog    
   FractionationProcess:

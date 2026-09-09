@@ -9,8 +9,16 @@ material_processing_set:
     isotopolog_label: isotopically labeled
     isotopolog_approach: single
     isotope: 13C
-    isotopolog: carbon-13 [pubchem.compound:175670880]
-    isotopolog_incu_time: 12 hour
+    isotopolog: 
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: carbon-13 [PUBCHEM.COMPOUND:175670880]
+      term:
+        id: pubchem.compound:175670880]
+    isotopolog_incu_time:
+      has_units: h
+      has_numeric_value: 12
+      type: "nmdc:QuantityValue"
+      has_raw_value: "12 hours"
     type: nmdc:LabelingProcess
   - id: nmdc:extrp-99-abcdef2
     name: DNA extraction of my awesome biosample

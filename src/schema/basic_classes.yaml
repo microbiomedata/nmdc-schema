@@ -292,6 +292,8 @@ classes:
       - description
       - protocol_for
       - analysis_type
+    narrow_mappings:
+      - MIXS:0001345
   CreditAssociation:
     aliases:
       - credit table
