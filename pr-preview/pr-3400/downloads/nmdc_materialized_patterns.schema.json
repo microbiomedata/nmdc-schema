@@ -9886,7 +9886,6 @@
                         "allOf": [
                             {
                                 "properties": {
-                                    "has_raw_value": {},
                                     "term": {
                                         "allOf": [
                                             {
@@ -9898,10 +9897,7 @@
                                             }
                                         ]
                                     }
-                                },
-                                "required": [
-                                    "has_raw_value"
-                                ]
+                                }
                             }
                         ],
                         "anyOf": [
@@ -18455,6 +18451,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post49.dev0+274972c6d"
+    "version": "11.23.0.post50.dev0+9f06aafdf"
 }
 
