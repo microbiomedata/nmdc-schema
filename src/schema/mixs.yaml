@@ -8148,21 +8148,21 @@ slots:
   gradient_pos_density:
     annotations:
       Preferred_unit: g/mL
-      storage_units: g/cm3
+      storage_units: g/mL
     description: Buoyant density of this fraction
     title: density of gradient position
     examples:
       - object:
           type: nmdc:QuantityValue
-          has_raw_value: 1.725 g/cm3
+          has_raw_value: 1.725 g/mL
           has_numeric_value: 1.725
-          has_unit: g/cm3
+          has_unit: g/mL
       - object:
           type: nmdc:QuantityValue
-          has_raw_value: 1.725-1.735 g/cm3
+          has_raw_value: 1.725-1.735 g/mL
           has_minimum_numeric_value: 1.725
           has_maximum_numeric_value: 1.735
-          has_unit: g/cm3
+          has_unit: g/mL
     slot_uri: MIXS:0001343
     recommended: true
     structured_pattern:

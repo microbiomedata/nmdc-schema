@@ -774,7 +774,7 @@
 '.slots.phosphate.annotations.storage_units = {"tag": "storage_units", "value": "umol/L"}'
 '.slots.silicate.annotations.storage_units = {"tag": "storage_units", "value": "umol/L"}'
 '.slots.isotopolog_incu_time.annotations.storage_units = {"tag": "storage_units", "value": "h"}'
-'.slots.gradient_pos_density.annotations.storage_units = {"tag": "storage_units", "value": "g/cm3"}'
+'.slots.gradient_pos_density.annotations.storage_units = {"tag": "storage_units", "value": "g/mL"}'
 '.slots.isotopolog_dose.annotations.storage_units = {"tag": "storage_units", "value": "[ppm]"}'
 
 # Add storage_units annotations for slots with multiple UCUM-compatible preferred units
@@ -988,7 +988,7 @@
 '.slots.gaseous_environment.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
 '.slots.geo_loc_name.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "USA: Maryland, Bethesda"}}]'
 '.slots.glucosidase_act.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "5 mol/L/h", "has_numeric_value": 5, "has_unit": "mol/L/h"}}]'
-'.slots.gradient_pos_density.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "1.725 g/cm3", "has_numeric_value": 1.725, "has_unit": "g/cm3"}}, {"object": {"type": "nmdc:QuantityValue", "has_raw_value": "1.725-1.735 g/cm3", "has_minimum_numeric_value": 1.725, "has_maximum_numeric_value": 1.735, "has_unit": "g/cm3"}}]'
+'.slots.gradient_pos_density.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "1.725 g/mL", "has_numeric_value": 1.725, "has_unit": "g/mL"}}, {"object": {"type": "nmdc:QuantityValue", "has_raw_value": "1.725-1.735 g/mL", "has_minimum_numeric_value": 1.725, "has_maximum_numeric_value": 1.735, "has_unit": "g/mL"}}]'
 '.slots.gravidity.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "yes;due date:2018-05-11"}}]'
 '.slots.gravity.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "12 g;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
 '.slots.growth_facil.examples = [{"object": {"type": "nmdc:ControlledTermValue", "has_raw_value": "Growth chamber [CO_715:0000189]", "term": {"id": "CO_715:0000189", "type": "nmdc:OntologyClass"}}}]'
