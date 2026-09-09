@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post44.dev0+af06a2fbf
+version: 11.23.0.post45.dev0+40c0b06ef
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -8507,8 +8507,6 @@ slots:
   protocol_link:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
-    narrow_mappings:
-    - MIXS:0001345
     range: Protocol
   study_category:
     name: study_category
