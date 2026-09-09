@@ -745,7 +745,7 @@
 <tr>
 <td><a href="../LabelingProcess/">LabelingProcess</a></td>
 <td>A material processing that adds a label to a sample, such as a fluorescent...</td>
-<td>no</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -768,9 +768,12 @@ term:
   id: &quot;PUBCHEM.COMPOUND:1140&quot;
   type: &quot;nmdc:OntologyClass&quot;
 </code></pre>
+<pre><code class="language-yaml">type: &quot;nmdc:ControlledTermValue&quot;
+has_raw_value: &quot;root exudates&quot;
+</code></pre>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>List the PubChem Compound Identification (CID) number.</li>
+<li>Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. For an undefined mixture, describe it in has_raw_value and omit term; NMDC does not use a sentinel identifier for that case.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -800,7 +803,9 @@ description: Isotopologue (isotope source/substrate/molecule) added to the biolo
   sample.
 title: isotopolog
 comments:
-- List the PubChem Compound Identification (CID) number.
+- Give the PubChem compound as PUBCHEM.COMPOUND:&lt;CID&gt;, both in has_raw_value and in
+  term.id. For an undefined mixture, describe it in has_raw_value and omit term; NMDC
+  does not use a sentinel identifier for that case.
 examples:
 - object:
     type: nmdc:ControlledTermValue
@@ -808,6 +813,9 @@ examples:
     term:
       id: PUBCHEM.COMPOUND:1140
       type: nmdc:OntologyClass
+- object:
+    type: nmdc:ControlledTermValue
+    has_raw_value: root exudates
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0001339

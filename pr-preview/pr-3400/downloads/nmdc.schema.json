@@ -9631,6 +9631,27 @@
                 "isotopolog": {
                     "description": "Isotopologue (isotope source/substrate/molecule) added to the biological sample.",
                     "items": {
+                        "allOf": [
+                            {
+                                "properties": {
+                                    "has_raw_value": {},
+                                    "term": {
+                                        "allOf": [
+                                            {
+                                                "properties": {
+                                                    "id": {
+                                                        "pattern": "^PUBCHEM\\.COMPOUND:[1-9]\\d*$"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "has_raw_value"
+                                ]
+                            }
+                        ],
                         "anyOf": [
                             {
                                 "$ref": "#/$defs/ControlledTermValue"
@@ -18093,5 +18114,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post46.dev0+b6c8ba3b9"
+    "version": "11.23.0.post47.dev0+cb0702723"
 }
