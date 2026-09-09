@@ -8100,7 +8100,7 @@ slots:
     description: Isotopologue (isotope source/substrate/molecule) added to the biological sample.
     title: isotopolog
     comments:
-      - List the PubChem Compound Identification (CID) number.
+      - Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. For an undefined mixture, describe it in has_raw_value and omit term; NMDC does not use a sentinel identifier for that case.
     examples:
       - object:
           type: nmdc:ControlledTermValue
@@ -8108,6 +8108,9 @@ slots:
           term:
             id: PUBCHEM.COMPOUND:1140
             type: nmdc:OntologyClass
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: root exudates
     slot_uri: MIXS:0001339
     range: ControlledTermValue
     required: true

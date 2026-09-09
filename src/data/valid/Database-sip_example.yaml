@@ -12,6 +12,7 @@ material_processing_set:
       - 13C
     isotopolog:
       - type: nmdc:ControlledIdentifiedTermValue
+        has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
         term:
           id: PUBCHEM.COMPOUND:1140
           name: toluene
