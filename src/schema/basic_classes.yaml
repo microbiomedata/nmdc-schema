@@ -1020,11 +1020,11 @@ enums:
         exact_mappings:
           - dcm:visualization
       Writing original draft:
-        description: "Writing \u2013 original draft"
+        description: "Writing original draft"
         exact_mappings:
           - dcm:writing_original_draft
       Writing review and editing:
-        description: "Writing \u2013 review & editing"
+        description: "Writing review & editing"
         exact_mappings:
           - dcm:writing_review_editing
       Principal Investigator:
