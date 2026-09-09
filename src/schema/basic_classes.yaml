@@ -815,8 +815,6 @@ slots:
         description: A principal investigator recorded as a credit association.
   protocol_link:
     range: Protocol
-    narrow_mappings:
-      - MIXS:0001345
   study_category:
     description: The type of research initiative
     range: StudyCategoryEnum
