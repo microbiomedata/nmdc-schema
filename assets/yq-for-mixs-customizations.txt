@@ -255,6 +255,7 @@
 'del(.slots.space_typ_state.required)'
 'del(.slots.typ_occup_density.required)'
 'del(.slots.water_cut.required)'
+'del(.slots.gradient_position.required)'
 
 # Set TextValue range for slots that need structured text wrapping
 '.slots.agrochem_addition.range |= "TextValue"'
@@ -364,6 +365,7 @@
 '.slots.root_med_suppl.range |= "TextValue"'
 '.slots.salt_regm.range |= "TextValue"'
 '.slots.isotopolog_incu_time.range |= "QuantityValue"'
+'.slots.gradient_pos_density.range |= "QuantityValue"'
 # Restore TextValue range for slots where NMDC MongoDB has TextValue data
 # These slots have production data using {type: nmdc:TextValue, has_raw_value: ...} format
 # Future migration to enums tracked in GitHub issue
@@ -771,6 +773,7 @@
 '.slots.phosphate.annotations.storage_units = {"tag": "storage_units", "value": "umol/L"}'
 '.slots.silicate.annotations.storage_units = {"tag": "storage_units", "value": "umol/L"}'
 '.slots.isotopolog_incu_time.annotations.storage_units = {"tag": "storage_units", "value": "h"}'
+'.slots.gradient_pos_density.annotations.storage_units = {"tag": "storage_units", "value": "g/mL"}'
 
 # Add storage_units annotations for slots with multiple UCUM-compatible preferred units
 '.slots.abs_air_humidity.annotations.storage_units = {"tag": "storage_units", "value": "[lb_av]|g/g|kg|kg/kg"}'
