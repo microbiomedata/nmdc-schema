@@ -603,21 +603,21 @@ classes:
         description: Description of reaction conditions and components of polymerase chain reaction performed during library preparation
 
   LabelingProcess:
-    class_uri: nmdc:Labeling
+    class_uri: nmdc:LabelingProcess
     is_a: MaterialProcessing
     description: >-
       A material processing that adds a label to a sample, such as a fluorescent or radioactive tag.
-    slots:  
-    - labeling_method
-    - isotope
-    - isotopolog
-    - isotopolog_label
-    - isotopolog_approach
-    - isotopolog_atom_frac
-    - isotopolog_atom_pos
-    - isotopolog_dose
-    - isotopolog_incu_time
-    - chem_administration
+    slots:
+      - labeling_method
+      - isotope
+      - isotopolog
+      - isotopolog_label
+      - isotopolog_approach
+      - isotopolog_atom_frac
+      - isotopolog_atom_pos
+      - isotopolog_dose
+      - isotopolog_incu_time
+      - chem_administration
     slot_usage:
       id:
         structured_pattern:
@@ -629,11 +629,10 @@ classes:
           syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_output:
-        required: true 
-
-    #add linkml rule to require slots if labeling_method is isotopolog    
+        required: true
+    # TODO: add a linkml rule requiring the isotopolog slots when labeling_method is isotopolog
   FractionationProcess:
-    class_uri: nmdc:Fractionation
+    class_uri: nmdc:FractionationProcess
     is_a: MaterialProcessing
     description: >-
       A material processing that separates a sample into multiple fractions based on a physical or chemical property.
@@ -651,8 +650,8 @@ classes:
           syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_output:
-        required: true  
- #add linkml rule to require slots if fractionation_method is density gradient
+        required: true
+    # TODO: add a linkml rule requiring the gradient slots when fractionation_method is density_gradient
   CollectingBiosamplesFromSite:
     class_uri: nmdc:CollectingBiosamplesFromSite
     is_a: PlannedProcess
@@ -848,8 +847,6 @@ classes:
           syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$"
           interpolated: true
 
-
-
 enums:
   LabelingMethodEnum:
     permissible_values:
@@ -876,7 +873,7 @@ enums:
         description: A method of separating molecules based on their size by passing them through a porous matrix.
         aliases:
           - Size Exclusion
-       
+
   CalibrationTargetEnum:
     permissible_values:
       mass_charge_ratio:
@@ -1134,7 +1131,7 @@ enums:
       respiration_measurement:
       texture_measurement:
       dna_extraction:
-      phenol_chloroform_extraction: 
+      phenol_chloroform_extraction: { }
       stable_isotope_probe: { }
 
   ChromatographicCategoryEnum:

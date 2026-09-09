@@ -406,6 +406,12 @@ enums:
       vent cover: {}
       wall: {}
       window: {}
+  LibLayoutEnum:
+    permissible_values:
+      other: {}
+      paired: {}
+      single: {}
+      vector: {}
   LightTypeEnum:
     permissible_values:
       desk lamp: {}
@@ -829,12 +835,6 @@ enums:
       low: {}
       middle: {}
       top: {}
-  LibLayoutEnum:
-    permissible_values:
-      other: {}
-      paired: {}
-      single: {}
-      vector: {}
   IsotopeEnum:
     permissible_values:
       13C:
@@ -8091,7 +8091,7 @@ slots:
     title: isotope
     examples:
       - value: 13C
-      - value: 13C | 15N
+      - value: 15N
     slot_uri: MIXS:0001338
     range: IsotopeEnum
     required: true
@@ -8102,8 +8102,12 @@ slots:
     comments:
       - List the PubChem Compound Identification (CID) number. If it's an undefined mixture, enter 0.
     examples:
-      - value: toluene [pubchem.compound:1140]
-      - value: '0'
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
+          term:
+            id: PUBCHEM.COMPOUND:1140
+            type: nmdc:OntologyClass
     slot_uri: MIXS:0001339
     range: ControlledTermValue
     required: true
@@ -8138,20 +8142,30 @@ slots:
       - value: '-1'
     slot_uri: MIXS:0001342
     range: integer
-    required: true
   gradient_pos_density:
     annotations:
       Preferred_unit: g/mL
+      storage_units: g/cm3
     description: Buoyant density of this fraction
     title: density of gradient position
     examples:
-      - value: 1.725 g/mL
-      - value: 1.725-1.735 g/mL
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1.725 g/cm3
+          has_numeric_value: 1.725
+          has_unit: g/cm3
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1.725-1.735 g/cm3
+          has_minimum_numeric_value: 1.725
+          has_maximum_numeric_value: 1.735
+          has_unit: g/cm3
     slot_uri: MIXS:0001343
     recommended: true
     structured_pattern:
       syntax: ^({float}-{float} {unit}|{float} {unit})$
       interpolated: true
+    range: QuantityValue
   gradient_pos_rel_am:
     description: The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargetted sequencing data, this value should be calculated from total DNA concentration.
     title: relative amount of nucleic acids in the gradient position
@@ -8168,8 +8182,9 @@ slots:
     todos:
       - This ordered slot provides how to write an example in a spreadsheet, but this will not provide a multivalued ordered slot in a database. As such, this slot also couldn't be marked as multivalued in the yaml.
     examples:
-      - value: '0.95'
-      - value: 0.95 | 0.98
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: "0.95"
     slot_uri: MIXS:0001346
     range: TextValue
     recommended: true
@@ -8177,9 +8192,9 @@ slots:
     description: InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.
     title: set of labeled atoms in isotopologue
     examples:
-      - value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
-      - value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1 | 1S/C6H12O6/c7-1-3(9)5(11)6(12)4(10)2-8/h1,3-6,8-12H,2H2/t3-,4+,5+,6+/m0/s1
-      - value: undefined
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
     slot_uri: MIXS:0001347
     range: TextValue
     recommended: true
@@ -8193,7 +8208,9 @@ slots:
     comments:
       - isotopolog mass / total volume soil; ppm of isotopologue in total container volume
     examples:
-      - value: 10 ppm
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 10 ppm
     slot_uri: MIXS:0001348
     range: TextValue
     recommended: true
@@ -8216,7 +8233,11 @@ slots:
     description: Total time of incubation after isotopologue addition in hours
     title: isotopolog incubation time
     examples:
-      - value: 12 hour
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 12 h
+          has_numeric_value: 12
+          has_unit: h
     slot_uri: MIXS:0001350
     range: QuantityValue
     recommended: true
@@ -8226,7 +8247,9 @@ slots:
     description: Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence).
     title: internal standard method
     examples:
-      - value: https://doi.org/10.1101/2022.12.20.521340
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: https://doi.org/10.1101/2022.12.20.521340
     slot_uri: MIXS:0001351
     range: TextValue
     recommended: true
