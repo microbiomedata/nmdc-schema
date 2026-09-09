@@ -15,7 +15,7 @@ prefixes:
   schema: "http://schema.org/"
   nmdc: "https://w3id.org/nmdc/"
   prov: "http://www.w3.org/ns/prov#"
-  dcm: "https://kbase.github.io/credit_engine/linkml/"
+  dcm: "https://kbase.github.io/credit_engine/"
 
 classes:
   AttributeValue:
