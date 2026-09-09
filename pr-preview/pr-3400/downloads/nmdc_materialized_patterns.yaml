@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post47.dev0+cb0702723
+version: 11.23.0.post49.dev0+274972c6d
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -1927,7 +1927,11 @@ enums:
           grams per cubic centimeter.
         aliases:
         - grams per cubic centimeter
-        - g/mL
+      g/mL:
+        text: g/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          grams per milliliter.
+        aliases:
         - grams per milliliter
       g/L:
         text: g/L
@@ -18620,21 +18624,21 @@ slots:
         value: g/mL
       storage_units:
         tag: storage_units
-        value: g/cm3
+        value: g/mL
     description: Buoyant density of this fraction
     title: density of gradient position
     examples:
     - object:
         type: nmdc:QuantityValue
-        has_raw_value: 1.725 g/cm3
+        has_raw_value: 1.725 g/mL
         has_numeric_value: 1.725
-        has_unit: g/cm3
+        has_unit: g/mL
     - object:
         type: nmdc:QuantityValue
-        has_raw_value: 1.725-1.735 g/cm3
+        has_raw_value: 1.725-1.735 g/mL
         has_minimum_numeric_value: 1.725
         has_maximum_numeric_value: 1.735
-        has_unit: g/cm3
+        has_unit: g/mL
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001343
     range: QuantityValue
