@@ -33,7 +33,6 @@ material_processing_set:
     type: nmdc:Extraction
   - id: nmdc:fracp-99-abcdef2
     name: fractionation of my awesome biosample
-    fractionation_method: density_gradient
     has_input:
       - nmdc:procsm-99-9437ae
     has_output:
