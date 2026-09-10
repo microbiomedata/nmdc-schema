@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/FractionationProcess/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/GradientFractionationProcess/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
-<title>Class: FractionationProcess - NMDC Schema Documentation</title>
+<title>Class: GradientFractionationProcess - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-fractionationprocess">
+<a class="md-skip" href="#class-gradientfractionationprocess">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: FractionationProcess
+              Class: GradientFractionationProcess
             
           </span>
 </div>
@@ -318,6 +318,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#aliases">
+<span class="md-ellipsis">
+      
+        Aliases
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       
@@ -386,78 +395,73 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-fractionationprocess">Class: FractionationProcess</h1>
-<p><em>A material processing that separates a sample into multiple fractions based on a physical or chemical property.</em></p>
+<h1 id="class-gradientfractionationprocess">Class: GradientFractionationProcess</h1>
+<p><em>A material processing that separates a sample into multiple fractions based on a density gradient.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/FractionationProcess">nmdc:FractionationProcess</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/GradientFractionationProcess">nmdc:GradientFractionationProcess</a></p>
 <div class="mermaid">classDiagram
-  class FractionationProcess
-  click FractionationProcess href "../FractionationProcess"
-    MaterialProcessing &lt;|-- FractionationProcess
+  class GradientFractionationProcess
+  click GradientFractionationProcess href "../GradientFractionationProcess"
+    MaterialProcessing &lt;|-- GradientFractionationProcess
       click MaterialProcessing href "../MaterialProcessing"
 
 
 
-  FractionationProcess : alternative_identifiers
+  GradientFractionationProcess : alternative_identifiers
 
-  FractionationProcess : description
+  GradientFractionationProcess : description
 
-  FractionationProcess : end_date
+  GradientFractionationProcess : end_date
 
-  FractionationProcess : fractionation_method
+  GradientFractionationProcess : has_failure_categorization
 
-      FractionationProcess --&gt; "0..1" FractionationMethodEnum : fractionation_method
-    click FractionationMethodEnum href "../FractionationMethodEnum"
-
-  FractionationProcess : has_failure_categorization
-
-      FractionationProcess --&gt; "*" FailureCategorization : has_failure_categorization
+      GradientFractionationProcess --&gt; "*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
-  FractionationProcess : has_input
+  GradientFractionationProcess : has_input
 
-      FractionationProcess --&gt; "1..*" Sample : has_input
+      GradientFractionationProcess --&gt; "1..*" Sample : has_input
     click Sample href "../Sample"
 
-  FractionationProcess : has_output
+  GradientFractionationProcess : has_output
 
-      FractionationProcess --&gt; "1..*" ProcessedSample : has_output
+      GradientFractionationProcess --&gt; "1..*" ProcessedSample : has_output
     click ProcessedSample href "../ProcessedSample"
 
-  FractionationProcess : id
+  GradientFractionationProcess : id
 
-  FractionationProcess : instrument_used
+  GradientFractionationProcess : instrument_used
 
-      FractionationProcess --&gt; "*" Instrument : instrument_used
+      GradientFractionationProcess --&gt; "*" Instrument : instrument_used
     click Instrument href "../Instrument"
 
-  FractionationProcess : internal_standard
+  GradientFractionationProcess : internal_standard
 
-      FractionationProcess --&gt; "0..1 _recommended_" TextValue : internal_standard
+      GradientFractionationProcess --&gt; "0..1 _recommended_" TextValue : internal_standard
     click TextValue href "../TextValue"
 
-  FractionationProcess : name
+  GradientFractionationProcess : name
 
-  FractionationProcess : processing_institution
+  GradientFractionationProcess : processing_institution
 
-      FractionationProcess --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
+      GradientFractionationProcess --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
-  FractionationProcess : protocol_link
+  GradientFractionationProcess : protocol_link
 
-      FractionationProcess --&gt; "0..1" Protocol : protocol_link
+      GradientFractionationProcess --&gt; "0..1" Protocol : protocol_link
     click Protocol href "../Protocol"
 
-  FractionationProcess : qc_comment
+  GradientFractionationProcess : qc_comment
 
-  FractionationProcess : qc_status
+  GradientFractionationProcess : qc_status
 
-      FractionationProcess --&gt; "0..1" StatusEnum : qc_status
+      GradientFractionationProcess --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
-  FractionationProcess : start_date
+  GradientFractionationProcess : start_date
 
-  FractionationProcess : type
+  GradientFractionationProcess : type
 
 
 
@@ -467,7 +471,7 @@
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
 <li><a href="../MaterialProcessing/">MaterialProcessing</a><ul>
-<li><strong>FractionationProcess</strong></li>
+<li><strong>GradientFractionationProcess</strong></li>
 </ul>
 </li>
 </ul>
@@ -486,12 +490,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../fractionation_method/">fractionation_method</a></td>
-<td>0..1 <br/> <a href="../FractionationMethodEnum/">FractionationMethodEnum</a></td>
-<td>The method used to separate a sample into multiple fractions based on a...</td>
-<td>direct</td>
-</tr>
 <tr>
 <td><a href="../internal_standard/">internal_standard</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
@@ -590,6 +588,11 @@
 </tr>
 </tbody>
 </table>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>Isopycnic Centrifugation</li>
+<li>Density Gradient Centrifugation</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -614,13 +617,15 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: FractionationProcess
+<pre><code class="language-yaml">name: GradientFractionationProcess
 description: A material processing that separates a sample into multiple fractions
-  based on a physical or chemical property.
+  based on a density gradient.
 from_schema: https://w3id.org/nmdc/nmdc
+aliases:
+- Isopycnic Centrifugation
+- Density Gradient Centrifugation
 is_a: MaterialProcessing
 slots:
-- fractionation_method
 - internal_standard
 slot_usage:
   id:
@@ -637,16 +642,19 @@ slot_usage:
   has_output:
     name: has_output
     required: true
-class_uri: nmdc:FractionationProcess
+class_uri: nmdc:GradientFractionationProcess
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: FractionationProcess
+<pre><code class="language-yaml">name: GradientFractionationProcess
 description: A material processing that separates a sample into multiple fractions
-  based on a physical or chemical property.
+  based on a density gradient.
 from_schema: https://w3id.org/nmdc/nmdc
+aliases:
+- Isopycnic Centrifugation
+- Density Gradient Centrifugation
 is_a: MaterialProcessing
 slot_usage:
   id:
@@ -664,17 +672,6 @@ slot_usage:
     name: has_output
     required: true
 attributes:
-  fractionation_method:
-    name: fractionation_method
-    description: The method used to separate a sample into multiple fractions based
-      on a physical or chemical property.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    owner: FractionationProcess
-    domain_of:
-    - FractionationProcess
-    range: FractionationMethodEnum
-    multivalued: false
   internal_standard:
     name: internal_standard
     description: Method used for internal standard for SIP fractionation, if an internal
@@ -687,9 +684,9 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001351
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
-    - FractionationProcess
+    - GradientFractionationProcess
     range: TextValue
     recommended: true
     structured_pattern:
@@ -699,7 +696,7 @@ attributes:
     description: What instrument was used during DataGeneration or MaterialProcessing.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - DataGeneration
     - MaterialProcessing
@@ -715,7 +712,7 @@ attributes:
     aliases:
     - input
     rank: 1000
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - PlannedProcess
     range: Sample
@@ -731,7 +728,7 @@ attributes:
     aliases:
     - output
     rank: 1000
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - PlannedProcess
     range: ProcessedSample
@@ -745,7 +742,7 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - PlannedProcess
     range: ProcessingInstitutionEnum
@@ -753,7 +750,7 @@ attributes:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - Configuration
     - PlannedProcess
@@ -770,7 +767,7 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - PlannedProcess
     range: string
@@ -785,7 +782,7 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - PlannedProcess
     range: string
@@ -796,7 +793,7 @@ attributes:
       was generated)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - PlannedProcess
     range: StatusEnum
@@ -807,7 +804,7 @@ attributes:
       (ie Failed at call-stage due to a malformed fastq file).
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - PlannedProcess
     range: string
@@ -815,7 +812,7 @@ attributes:
     name: has_failure_categorization
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - PlannedProcess
     range: FailureCategorization
@@ -849,7 +846,7 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - NamedThing
     range: uriorcurie
@@ -863,7 +860,7 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - PersonValue
     - NamedThing
@@ -875,7 +872,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - ImageValue
     - NamedThing
@@ -886,7 +883,7 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - NamedThing
     - MetaboliteIdentification
@@ -916,7 +913,7 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    owner: FractionationProcess
+    owner: GradientFractionationProcess
     domain_of:
     - EukEval
     - FunctionalAnnotationAggMember
@@ -938,7 +935,7 @@ attributes:
     - MetaboliteIdentification
     range: uriorcurie
     required: true
-class_uri: nmdc:FractionationProcess
+class_uri: nmdc:GradientFractionationProcess
 
 </code></pre>
 </details>

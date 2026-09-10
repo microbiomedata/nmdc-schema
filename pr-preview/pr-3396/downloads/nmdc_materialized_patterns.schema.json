@@ -7349,10 +7349,10 @@
                                 "$ref": "#/$defs/LibraryPreparation"
                             },
                             {
-                                "$ref": "#/$defs/LabelingProcess"
+                                "$ref": "#/$defs/IsotopeLabelingProcess"
                             },
                             {
-                                "$ref": "#/$defs/FractionationProcess"
+                                "$ref": "#/$defs/GradientFractionationProcess"
                             },
                             {
                                 "$ref": "#/$defs/SubSamplingProcess"
@@ -8732,157 +8732,6 @@
             "title": "FloorWaterMoldEnum",
             "type": "string"
         },
-        "FractionationMethodEnum": {
-            "description": "",
-            "enum": [
-                "density_gradient",
-                "size_exclusion"
-            ],
-            "title": "FractionationMethodEnum",
-            "type": "string"
-        },
-        "FractionationProcess": {
-            "additionalProperties": false,
-            "description": "A material processing that separates a sample into multiple fractions based on a physical or chemical property.",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "end_date": {
-                    "description": "The date on which any process or activity was ended",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "fractionation_method": {
-                    "$ref": "#/$defs/FractionationMethodEnum",
-                    "description": "The method used to separate a sample into multiple fractions based on a physical or chemical property."
-                },
-                "has_failure_categorization": {
-                    "items": {
-                        "$ref": "#/$defs/FailureCategorization"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_input": {
-                    "description": "An input to a process.",
-                    "items": {
-                        "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "has_output": {
-                    "description": "An output from a process.",
-                    "items": {
-                        "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
-                },
-                "instrument_used": {
-                    "description": "What instrument was used during DataGeneration or MaterialProcessing.",
-                    "items": {
-                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "internal_standard": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence).",
-                    "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$"
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "processing_institution": {
-                    "$ref": "#/$defs/ProcessingInstitutionEnum",
-                    "description": "The organization that processed the sample."
-                },
-                "protocol_link": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Protocol"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "qc_comment": {
-                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "qc_status": {
-                    "$ref": "#/$defs/StatusEnum",
-                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
-                },
-                "start_date": {
-                    "description": "The date on which any process or activity was started",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:FractionationProcess"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "has_input",
-                "has_output",
-                "id",
-                "type"
-            ],
-            "title": "FractionationProcess",
-            "type": "object"
-        },
         "FreqCleanEnum": {
             "description": "",
             "enum": [
@@ -9275,6 +9124,144 @@
                 "type"
             ],
             "title": "GeolocationValue",
+            "type": "object"
+        },
+        "GradientFractionationProcess": {
+            "additionalProperties": false,
+            "description": "A material processing that separates a sample into multiple fractions based on a density gradient.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output from a process.",
+                    "items": {
+                        "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^(nmdc):fracp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                    "type": "string"
+                },
+                "instrument_used": {
+                    "description": "What instrument was used during DataGeneration or MaterialProcessing.",
+                    "items": {
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "internal_standard": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence).",
+                    "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:GradientFractionationProcess"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "has_input",
+                "has_output",
+                "id",
+                "type"
+            ],
+            "title": "GradientFractionationProcess",
             "type": "object"
         },
         "GrowthHabitEnum": {
@@ -9758,37 +9745,9 @@
             "title": "IsotopeEnum",
             "type": "string"
         },
-        "IsotopologApproachEnum": {
-            "description": "",
-            "enum": [
-                "single",
-                "multiple"
-            ],
-            "title": "IsotopologApproachEnum",
-            "type": "string"
-        },
-        "IsotopologLabelEnum": {
-            "description": "",
-            "enum": [
-                "isotopically labeled",
-                "natural abundance"
-            ],
-            "title": "IsotopologLabelEnum",
-            "type": "string"
-        },
-        "LabelingMethodEnum": {
-            "description": "",
-            "enum": [
-                "isotopolog",
-                "fluorescent",
-                "radioactive"
-            ],
-            "title": "LabelingMethodEnum",
-            "type": "string"
-        },
-        "LabelingProcess": {
+        "IsotopeLabelingProcess": {
             "additionalProperties": false,
-            "description": "A material processing that adds a label to a sample, such as a fluorescent or radioactive tag.",
+            "description": "A material processing that labels a substance with a stable or radioactive isotope.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -9967,10 +9926,6 @@
                     "$ref": "#/$defs/IsotopologLabelEnum",
                     "description": "List whether the isotopologue added to this biological sample was heavy-labelled or natural abundance"
                 },
-                "labeling_method": {
-                    "$ref": "#/$defs/LabelingMethodEnum",
-                    "description": "The method used to add a label to a sample, such as a fluorescent or radioactive tag."
-                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -10013,7 +9968,7 @@
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
-                        "nmdc:LabelingProcess"
+                        "nmdc:IsotopeLabelingProcess"
                     ],
                     "type": "string"
                 }
@@ -10028,8 +9983,26 @@
                 "id",
                 "type"
             ],
-            "title": "LabelingProcess",
+            "title": "IsotopeLabelingProcess",
             "type": "object"
+        },
+        "IsotopologApproachEnum": {
+            "description": "",
+            "enum": [
+                "single",
+                "multiple"
+            ],
+            "title": "IsotopologApproachEnum",
+            "type": "string"
+        },
+        "IsotopologLabelEnum": {
+            "description": "",
+            "enum": [
+                "isotopically labeled",
+                "natural abundance"
+            ],
+            "title": "IsotopologLabelEnum",
+            "type": "string"
         },
         "LibLayoutEnum": {
             "description": "",
@@ -18324,10 +18297,10 @@
                         "$ref": "#/$defs/LibraryPreparation"
                     },
                     {
-                        "$ref": "#/$defs/LabelingProcess"
+                        "$ref": "#/$defs/IsotopeLabelingProcess"
                     },
                     {
-                        "$ref": "#/$defs/FractionationProcess"
+                        "$ref": "#/$defs/GradientFractionationProcess"
                     },
                     {
                         "$ref": "#/$defs/SubSamplingProcess"
@@ -18451,6 +18424,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post51.dev0+c4a54ec15"
+    "version": "11.23.0.post52.dev0+533ad6fd7"
 }
 

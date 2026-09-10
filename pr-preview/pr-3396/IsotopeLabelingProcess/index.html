@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/LabelingProcess/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/IsotopeLabelingProcess/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
-<title>Class: LabelingProcess - NMDC Schema Documentation</title>
+<title>Class: IsotopeLabelingProcess - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-labelingprocess">
+<a class="md-skip" href="#class-isotopelabelingprocess">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: LabelingProcess
+              Class: IsotopeLabelingProcess
             
           </span>
 </div>
@@ -386,118 +386,113 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-labelingprocess">Class: LabelingProcess</h1>
-<p><em>A material processing that adds a label to a sample, such as a fluorescent or radioactive tag.</em></p>
+<h1 id="class-isotopelabelingprocess">Class: IsotopeLabelingProcess</h1>
+<p><em>A material processing that labels a substance with a stable or radioactive isotope.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/nmdc/LabelingProcess">nmdc:LabelingProcess</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/IsotopeLabelingProcess">nmdc:IsotopeLabelingProcess</a></p>
 <div class="mermaid">classDiagram
-  class LabelingProcess
-  click LabelingProcess href "../LabelingProcess"
-    MaterialProcessing &lt;|-- LabelingProcess
+  class IsotopeLabelingProcess
+  click IsotopeLabelingProcess href "../IsotopeLabelingProcess"
+    MaterialProcessing &lt;|-- IsotopeLabelingProcess
       click MaterialProcessing href "../MaterialProcessing"
 
 
 
-  LabelingProcess : alternative_identifiers
+  IsotopeLabelingProcess : alternative_identifiers
 
-  LabelingProcess : chem_administration
+  IsotopeLabelingProcess : chem_administration
 
-      LabelingProcess --&gt; "*" ControlledTermValue : chem_administration
+      IsotopeLabelingProcess --&gt; "*" ControlledTermValue : chem_administration
     click ControlledTermValue href "../ControlledTermValue"
 
-  LabelingProcess : description
+  IsotopeLabelingProcess : description
 
-  LabelingProcess : end_date
+  IsotopeLabelingProcess : end_date
 
-  LabelingProcess : has_failure_categorization
+  IsotopeLabelingProcess : has_failure_categorization
 
-      LabelingProcess --&gt; "*" FailureCategorization : has_failure_categorization
+      IsotopeLabelingProcess --&gt; "*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
-  LabelingProcess : has_input
+  IsotopeLabelingProcess : has_input
 
-      LabelingProcess --&gt; "1..*" Sample : has_input
+      IsotopeLabelingProcess --&gt; "1..*" Sample : has_input
     click Sample href "../Sample"
 
-  LabelingProcess : has_output
+  IsotopeLabelingProcess : has_output
 
-      LabelingProcess --&gt; "1..*" ProcessedSample : has_output
+      IsotopeLabelingProcess --&gt; "1..*" ProcessedSample : has_output
     click ProcessedSample href "../ProcessedSample"
 
-  LabelingProcess : id
+  IsotopeLabelingProcess : id
 
-  LabelingProcess : instrument_used
+  IsotopeLabelingProcess : instrument_used
 
-      LabelingProcess --&gt; "*" Instrument : instrument_used
+      IsotopeLabelingProcess --&gt; "*" Instrument : instrument_used
     click Instrument href "../Instrument"
 
-  LabelingProcess : isotope
+  IsotopeLabelingProcess : isotope
 
-      LabelingProcess --&gt; "1..*" IsotopeEnum : isotope
+      IsotopeLabelingProcess --&gt; "1..*" IsotopeEnum : isotope
     click IsotopeEnum href "../IsotopeEnum"
 
-  LabelingProcess : isotopolog
+  IsotopeLabelingProcess : isotopolog
 
-      LabelingProcess --&gt; "1..*" ControlledTermValue : isotopolog
+      IsotopeLabelingProcess --&gt; "1..*" ControlledTermValue : isotopolog
     click ControlledTermValue href "../ControlledTermValue"
 
-  LabelingProcess : isotopolog_approach
+  IsotopeLabelingProcess : isotopolog_approach
 
-      LabelingProcess --&gt; "1" IsotopologApproachEnum : isotopolog_approach
+      IsotopeLabelingProcess --&gt; "1" IsotopologApproachEnum : isotopolog_approach
     click IsotopologApproachEnum href "../IsotopologApproachEnum"
 
-  LabelingProcess : isotopolog_atom_frac
+  IsotopeLabelingProcess : isotopolog_atom_frac
 
-      LabelingProcess --&gt; "0..1 _recommended_" TextValue : isotopolog_atom_frac
+      IsotopeLabelingProcess --&gt; "0..1 _recommended_" TextValue : isotopolog_atom_frac
     click TextValue href "../TextValue"
 
-  LabelingProcess : isotopolog_atom_pos
+  IsotopeLabelingProcess : isotopolog_atom_pos
 
-      LabelingProcess --&gt; "0..1 _recommended_" TextValue : isotopolog_atom_pos
+      IsotopeLabelingProcess --&gt; "0..1 _recommended_" TextValue : isotopolog_atom_pos
     click TextValue href "../TextValue"
 
-  LabelingProcess : isotopolog_dose
+  IsotopeLabelingProcess : isotopolog_dose
 
-      LabelingProcess --&gt; "0..1 _recommended_" QuantityValue : isotopolog_dose
+      IsotopeLabelingProcess --&gt; "0..1 _recommended_" QuantityValue : isotopolog_dose
     click QuantityValue href "../QuantityValue"
 
-  LabelingProcess : isotopolog_incu_time
+  IsotopeLabelingProcess : isotopolog_incu_time
 
-      LabelingProcess --&gt; "0..1 _recommended_" QuantityValue : isotopolog_incu_time
+      IsotopeLabelingProcess --&gt; "0..1 _recommended_" QuantityValue : isotopolog_incu_time
     click QuantityValue href "../QuantityValue"
 
-  LabelingProcess : isotopolog_label
+  IsotopeLabelingProcess : isotopolog_label
 
-      LabelingProcess --&gt; "1" IsotopologLabelEnum : isotopolog_label
+      IsotopeLabelingProcess --&gt; "1" IsotopologLabelEnum : isotopolog_label
     click IsotopologLabelEnum href "../IsotopologLabelEnum"
 
-  LabelingProcess : labeling_method
+  IsotopeLabelingProcess : name
 
-      LabelingProcess --&gt; "0..1" LabelingMethodEnum : labeling_method
-    click LabelingMethodEnum href "../LabelingMethodEnum"
+  IsotopeLabelingProcess : processing_institution
 
-  LabelingProcess : name
-
-  LabelingProcess : processing_institution
-
-      LabelingProcess --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
+      IsotopeLabelingProcess --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
-  LabelingProcess : protocol_link
+  IsotopeLabelingProcess : protocol_link
 
-      LabelingProcess --&gt; "0..1" Protocol : protocol_link
+      IsotopeLabelingProcess --&gt; "0..1" Protocol : protocol_link
     click Protocol href "../Protocol"
 
-  LabelingProcess : qc_comment
+  IsotopeLabelingProcess : qc_comment
 
-  LabelingProcess : qc_status
+  IsotopeLabelingProcess : qc_status
 
-      LabelingProcess --&gt; "0..1" StatusEnum : qc_status
+      IsotopeLabelingProcess --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
-  LabelingProcess : start_date
+  IsotopeLabelingProcess : start_date
 
-  LabelingProcess : type
+  IsotopeLabelingProcess : type
 
 
 
@@ -507,7 +502,7 @@
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
 <li><a href="../MaterialProcessing/">MaterialProcessing</a><ul>
-<li><strong>LabelingProcess</strong></li>
+<li><strong>IsotopeLabelingProcess</strong></li>
 </ul>
 </li>
 </ul>
@@ -526,12 +521,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../labeling_method/">labeling_method</a></td>
-<td>0..1 <br/> <a href="../LabelingMethodEnum/">LabelingMethodEnum</a></td>
-<td>The method used to add a label to a sample, such as a fluorescent or radioactive tag.</td>
-<td>direct</td>
-</tr>
 <tr>
 <td><a href="../isotope/">isotope</a></td>
 <td>1..* <br/> <a href="../IsotopeEnum/">IsotopeEnum</a></td>
@@ -702,13 +691,12 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: LabelingProcess
-description: A material processing that adds a label to a sample, such as a fluorescent
-  or radioactive tag.
+<pre><code class="language-yaml">name: IsotopeLabelingProcess
+description: A material processing that labels a substance with a stable or radioactive
+  isotope.
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: MaterialProcessing
 slots:
-- labeling_method
 - isotope
 - isotopolog
 - isotopolog_label
@@ -744,15 +732,15 @@ slot_usage:
               id:
                 name: id
                 pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
-class_uri: nmdc:LabelingProcess
+class_uri: nmdc:IsotopeLabelingProcess
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: LabelingProcess
-description: A material processing that adds a label to a sample, such as a fluorescent
-  or radioactive tag.
+<pre><code class="language-yaml">name: IsotopeLabelingProcess
+description: A material processing that labels a substance with a stable or radioactive
+  isotope.
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: MaterialProcessing
 slot_usage:
@@ -782,17 +770,6 @@ slot_usage:
                 name: id
                 pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
 attributes:
-  labeling_method:
-    name: labeling_method
-    description: The method used to add a label to a sample, such as a fluorescent
-      or radioactive tag.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    owner: LabelingProcess
-    domain_of:
-    - LabelingProcess
-    range: LabelingMethodEnum
-    multivalued: false
   isotope:
     name: isotope
     description: The element and mass number of the stable isotope used in isotopologue
@@ -804,9 +781,9 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001338
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
-    - LabelingProcess
+    - IsotopeLabelingProcess
     range: IsotopeEnum
     required: true
     multivalued: true
@@ -832,9 +809,9 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001339
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
-    - LabelingProcess
+    - IsotopeLabelingProcess
     range: ControlledTermValue
     range_expression:
       slot_conditions:
@@ -863,9 +840,9 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001340
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
-    - LabelingProcess
+    - IsotopeLabelingProcess
     range: IsotopologLabelEnum
     required: true
   isotopolog_approach:
@@ -880,9 +857,9 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001341
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
-    - LabelingProcess
+    - IsotopeLabelingProcess
     range: IsotopologApproachEnum
     required: true
   isotopolog_atom_frac:
@@ -902,9 +879,9 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001346
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
-    - LabelingProcess
+    - IsotopeLabelingProcess
     range: TextValue
     recommended: true
   isotopolog_atom_pos:
@@ -920,9 +897,9 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001347
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
-    - LabelingProcess
+    - IsotopeLabelingProcess
     range: TextValue
     recommended: true
     structured_pattern:
@@ -951,9 +928,9 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001348
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
-    - LabelingProcess
+    - IsotopeLabelingProcess
     range: QuantityValue
     recommended: true
     structured_pattern:
@@ -978,9 +955,9 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001350
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
-    - LabelingProcess
+    - IsotopeLabelingProcess
     range: QuantityValue
     recommended: true
     structured_pattern:
@@ -1009,9 +986,9 @@ attributes:
     - administration
     string_serialization: '{termLabel} [{termID}];{timestamp}'
     slot_uri: MIXS:0000751
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
-    - LabelingProcess
+    - IsotopeLabelingProcess
     - Biosample
     range: ControlledTermValue
     multivalued: true
@@ -1022,7 +999,7 @@ attributes:
     description: What instrument was used during DataGeneration or MaterialProcessing.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - DataGeneration
     - MaterialProcessing
@@ -1038,7 +1015,7 @@ attributes:
     aliases:
     - input
     rank: 1000
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - PlannedProcess
     range: Sample
@@ -1054,7 +1031,7 @@ attributes:
     aliases:
     - output
     rank: 1000
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - PlannedProcess
     range: ProcessedSample
@@ -1068,7 +1045,7 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - PlannedProcess
     range: ProcessingInstitutionEnum
@@ -1076,7 +1053,7 @@ attributes:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - Configuration
     - PlannedProcess
@@ -1093,7 +1070,7 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - PlannedProcess
     range: string
@@ -1108,7 +1085,7 @@ attributes:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - PlannedProcess
     range: string
@@ -1119,7 +1096,7 @@ attributes:
       was generated)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - PlannedProcess
     range: StatusEnum
@@ -1130,7 +1107,7 @@ attributes:
       (ie Failed at call-stage due to a malformed fastq file).
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - PlannedProcess
     range: string
@@ -1138,7 +1115,7 @@ attributes:
     name: has_failure_categorization
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - PlannedProcess
     range: FailureCategorization
@@ -1172,7 +1149,7 @@ attributes:
       - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
     identifier: true
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - NamedThing
     range: uriorcurie
@@ -1186,7 +1163,7 @@ attributes:
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - PersonValue
     - NamedThing
@@ -1198,7 +1175,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: dcterms:description
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - ImageValue
     - NamedThing
@@ -1209,7 +1186,7 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - NamedThing
     - MetaboliteIdentification
@@ -1239,7 +1216,7 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    owner: LabelingProcess
+    owner: IsotopeLabelingProcess
     domain_of:
     - EukEval
     - FunctionalAnnotationAggMember
@@ -1261,7 +1238,7 @@ attributes:
     - MetaboliteIdentification
     range: uriorcurie
     required: true
-class_uri: nmdc:LabelingProcess
+class_uri: nmdc:IsotopeLabelingProcess
 
 </code></pre>
 </details>

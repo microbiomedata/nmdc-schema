@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post51.dev0+c4a54ec15
+version: 11.23.0.post52.dev0+533ad6fd7
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -687,44 +687,6 @@ types:
     base: str
     uri: xsd:language
 enums:
-  LabelingMethodEnum:
-    name: LabelingMethodEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      isotopolog:
-        text: isotopolog
-        description: A molecule that differs only in isotopic composition from a reference
-          molecule.
-        aliases:
-        - Isotopolog
-      fluorescent:
-        text: fluorescent
-        description: A molecule that absorbs light at one wavelength and emits light
-          at a longer wavelength.
-        aliases:
-        - Fluorescent
-      radioactive:
-        text: radioactive
-        description: A molecule that emits radiation as it decays to a more stable
-          form.
-        aliases:
-        - Radioactive
-  FractionationMethodEnum:
-    name: FractionationMethodEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      density_gradient:
-        text: density_gradient
-        description: A method of separating particles based on their density by centrifugation
-          through a medium with a density gradient.
-        aliases:
-        - Density Gradient
-      size_exclusion:
-        text: size_exclusion
-        description: A method of separating molecules based on their size by passing
-          them through a porous matrix.
-        aliases:
-        - Size Exclusion
   CalibrationTargetEnum:
     name: CalibrationTargetEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6245,20 +6207,6 @@ enums:
           on the data portal. The submitter cannot edit.
         title: Released
 slots:
-  fractionation_method:
-    name: fractionation_method
-    description: The method used to separate a sample into multiple fractions based
-      on a physical or chemical property.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: FractionationMethodEnum
-    multivalued: false
-  labeling_method:
-    name: labeling_method
-    description: The method used to add a label to a sample, such as a fluorescent
-      or radioactive tag.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: LabelingMethodEnum
-    multivalued: false
   host_family_relation:
     name: host_family_relation
     annotations:
@@ -20728,14 +20676,13 @@ classes:
         description: Description of reaction conditions and components of polymerase
           chain reaction performed during library preparation
     class_uri: nmdc:LibraryPreparation
-  LabelingProcess:
-    name: LabelingProcess
-    description: A material processing that adds a label to a sample, such as a fluorescent
-      or radioactive tag.
+  IsotopeLabelingProcess:
+    name: IsotopeLabelingProcess
+    description: A material processing that labels a substance with a stable or radioactive
+      isotope.
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: MaterialProcessing
     slots:
-    - labeling_method
     - isotope
     - isotopolog
     - isotopolog_label
@@ -20773,15 +20720,17 @@ classes:
                   id:
                     name: id
                     pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
-    class_uri: nmdc:LabelingProcess
-  FractionationProcess:
-    name: FractionationProcess
+    class_uri: nmdc:IsotopeLabelingProcess
+  GradientFractionationProcess:
+    name: GradientFractionationProcess
     description: A material processing that separates a sample into multiple fractions
-      based on a physical or chemical property.
+      based on a density gradient.
     from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Isopycnic Centrifugation
+    - Density Gradient Centrifugation
     is_a: MaterialProcessing
     slots:
-    - fractionation_method
     - internal_standard
     slot_usage:
       id:
@@ -20800,7 +20749,7 @@ classes:
       has_output:
         name: has_output
         required: true
-    class_uri: nmdc:FractionationProcess
+    class_uri: nmdc:GradientFractionationProcess
   CollectingBiosamplesFromSite:
     name: CollectingBiosamplesFromSite
     title: Collecting Biosamples From Site
