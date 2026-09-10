@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post53.dev0+472f1287f
+version: 11.23.0.post54.dev0+93ce8903b
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -3693,8 +3693,8 @@ enums:
         text: WorkflowExecution
       GradientFractionationProcess:
         text: GradientFractionationProcess
-      IsotopeLLabelingProcess:
-        text: IsotopeLLabelingProcess
+      IsotopeLabelingProcess:
+        text: IsotopeLabelingProcess
   PloidyEnum:
     name: PloidyEnum
     description: The ploidy state of an organism's genome, drawn from the ploidy classes
