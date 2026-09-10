@@ -15350,8 +15350,8 @@
                 "StorageProcess",
                 "SubSamplingProcess",
                 "WorkflowExecution",
-                "FractionationProcess",
-                "LabelingProcess"
+                "GradientFractionationProcess",
+                "IsotopeLLabelingProcess"
             ],
             "title": "ProtocolForEnum",
             "type": "string"
@@ -18084,5 +18084,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post52.dev0+533ad6fd7"
+    "version": "11.23.0.post53.dev0+472f1287f"
 }
