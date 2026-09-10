@@ -602,13 +602,12 @@ classes:
       pcr_cond:
         description: Description of reaction conditions and components of polymerase chain reaction performed during library preparation
 
-  LabelingProcess:
-    class_uri: nmdc:LabelingProcess
+  IsotopeLabelingProcess:
+    class_uri: nmdc:IsotopeLabelingProcess
     is_a: MaterialProcessing
     description: >-
-      A material processing that adds a label to a sample, such as a fluorescent or radioactive tag.
+      A material processing that labels a substance with a stable or radioactive isotope.
     slots:
-      - labeling_method
       - isotope
       - isotopolog
       - isotopolog_label
@@ -638,14 +637,16 @@ classes:
                 slot_conditions:
                   id:
                     pattern: '^PUBCHEM\.COMPOUND:[1-9]\d*$'
-    # TODO: add a linkml rule requiring the isotopolog slots when labeling_method is isotopolog
-  FractionationProcess:
-    class_uri: nmdc:FractionationProcess
+  
+  GradientFractionationProcess:
+    class_uri: nmdc:GradientFractionationProcess
     is_a: MaterialProcessing
     description: >-
-      A material processing that separates a sample into multiple fractions based on a physical or chemical property.
+      A material processing that separates a sample into multiple fractions based on a density gradient.
+    aliases:
+      - Isopycnic Centrifugation
+      - Density Gradient Centrifugation
     slots:
-      - fractionation_method
       - internal_standard
     slot_usage:
       id:
@@ -659,7 +660,7 @@ classes:
           interpolated: true
       has_output:
         required: true
-    # TODO: add a linkml rule requiring the gradient slots when fractionation_method is density_gradient
+
   CollectingBiosamplesFromSite:
     class_uri: nmdc:CollectingBiosamplesFromSite
     is_a: PlannedProcess
@@ -856,31 +857,6 @@ classes:
           interpolated: true
 
 enums:
-  LabelingMethodEnum:
-    permissible_values:
-      isotopolog:
-        description: A molecule that differs only in isotopic composition from a reference molecule.
-        aliases:
-          - Isotopolog
-      fluorescent:
-        description: A molecule that absorbs light at one wavelength and emits light at a longer wavelength.
-        aliases:
-          - Fluorescent
-      radioactive:
-        description: A molecule that emits radiation as it decays to a more stable form.
-        aliases:
-          - Radioactive
-
-  FractionationMethodEnum:
-    permissible_values:
-      density_gradient:
-        description: A method of separating particles based on their density by centrifugation through a medium with a density gradient.
-        aliases:
-          - Density Gradient
-      size_exclusion:
-        description: A method of separating molecules based on their size by passing them through a porous matrix.
-        aliases:
-          - Size Exclusion
 
   CalibrationTargetEnum:
     permissible_values:
@@ -1189,18 +1165,7 @@ slots:
   # from the current GSC MIxS. NMDC retains them for backward compatibility with
   # submission-schema which references them. No production data uses these slots.
   # ============================================================================
-  fractionation_method:
-    description: >-
-      The method used to separate a sample into multiple fractions based on a physical or chemical property.
-    range: FractionationMethodEnum
-    multivalued: false
-
-  labeling_method:
-    description: >-
-      The method used to add a label to a sample, such as a fluorescent or radioactive tag.
-    range: LabelingMethodEnum
-    multivalued: false
-
+  
   host_family_relation:
     title: host family relationship
     description: >-
