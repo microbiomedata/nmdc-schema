@@ -2,7 +2,7 @@
 # PubChem prefix rather than the PUBCHEM.COMPOUND prefix this schema declares.
 id: nmdc:labp-99-abcdef6
 name: labeling of my awesome biosample
-type: nmdc:LabelingProcess
+type: nmdc:IsotopeLabelingProcess
 has_input:
   - nmdc:bsm-99-123456
 has_output:
