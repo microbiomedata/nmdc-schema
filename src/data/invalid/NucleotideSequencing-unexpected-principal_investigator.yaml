@@ -8,5 +8,5 @@ has_input:
 associated_studies:
   - nmdc:sty-11-credit0
 principal_investigator:
-  type: nmdc:PersonValue
+  type: nmdc:Person
   name: Janet Jansson

@@ -1,0 +1,9 @@
+type: prov:Association
+applies_to_agent:
+  type: nmdc:Person
+  name: J. Craig Venter
+applies_to_person:
+  type: nmdc:Person
+  name: J. Craig Venter
+applied_roles:
+  - Supervision

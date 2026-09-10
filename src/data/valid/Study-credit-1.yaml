@@ -4,15 +4,15 @@ study_category: research_study
 has_credit_associations:
   - applied_roles:
       - Data curation
-    applies_to_person:
-      type: nmdc:PersonValue
+    applies_to_agent:
+      type: nmdc:Person
       name: Josiah Carberry
       orcid: 'orcid:0000-0002-1825-0097'
     type: prov:Association
   - applied_roles:
       - Software
-    applies_to_person:
-      type: nmdc:PersonValue
+    applies_to_agent:
+      type: nmdc:Person
       name: Mark Andrew Miller
       orcid: 'orcid:0000-0001-9076-6066'
     type: prov:Association
