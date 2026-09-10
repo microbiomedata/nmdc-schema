@@ -65,6 +65,9 @@ subsets:
         ProvenanceMetadata.source_system_of_record rather than from slot
         completeness, so it has no badge_topic subset.
   biogeochemistry:
+    created_on: "2026-08-13T00:00:00Z"
+    last_updated_on: "2026-08-13T00:00:00Z"
+    modified_by: orcid:0000-0001-9076-6066
     description: >-
       Biosample slots holding measured biogeochemical analytes: nitrogen,
       phosphorus, carbon, sulfur, iron, core physicochemistry, and dissolved
@@ -75,6 +78,9 @@ subsets:
     in_subset:
       - badge_topic
   host_information:
+    created_on: "2026-08-13T00:00:00Z"
+    last_updated_on: "2026-08-13T00:00:00Z"
+    modified_by: orcid:0000-0001-9076-6066
     description: >-
       Biosample slots describing the host organism a sample was taken from or
       associated with: host taxonomy, anatomy, physiology, life stage, and
