@@ -676,12 +676,24 @@ classes:
         range: datetime
         description: The date and time at which a record was added to the NMDC database.
         comments:
-          - Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23 may carry GOLD-sourced dates rather than NMDC-asserted timestamps.
+          - Records ingested from outside NMDC may carry the source system's dates rather
+            than NMDC-asserted timestamps. All 10,689 production biosamples whose
+            source_system_of_record is NCBI have an add_date later than their mod_date, and a
+            record cannot be modified in NMDC before it was added to NMDC, so that mod_date
+            came from NCBI. Records brought in from GOLD before 2026-03-23 may have the same
+            problem. Counts and method are in
+            https://github.com/microbiomedata/nmdc-schema/issues/3399.
       mod_date:
         range: datetime
         description: The date and time at which a record was last modified in the NMDC database.
         comments:
-          - Biosample and NucleotideSequencing records brought in from GOLD before 2026-03-23 may carry GOLD-sourced dates rather than NMDC-asserted timestamps.
+          - Records ingested from outside NMDC may carry the source system's dates rather
+            than NMDC-asserted timestamps. All 10,689 production biosamples whose
+            source_system_of_record is NCBI have an add_date later than their mod_date, and a
+            record cannot be modified in NMDC before it was added to NMDC, so that mod_date
+            came from NCBI. Records brought in from GOLD before 2026-03-23 may have the same
+            problem. Counts and method are in
+            https://github.com/microbiomedata/nmdc-schema/issues/3399.
       version:
         description: The version tag of the software used to generate the NMDC metadata record
       git_url:
