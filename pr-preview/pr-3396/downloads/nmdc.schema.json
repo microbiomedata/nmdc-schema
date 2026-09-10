@@ -9498,7 +9498,7 @@
         },
         "IsotopeLabelingProcess": {
             "additionalProperties": false,
-            "description": "A material processing that labels a substance with a stable or radioactive isotope.",
+            "description": "A material processing that labels a substance with a stable or radioactive isotope(s).",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -9580,80 +9580,19 @@
                         "null"
                     ]
                 },
-                "isotope": {
-                    "description": "The element and mass number of the stable isotope used in isotopologue labeling.",
+                "isotope_label_metadata": {
+                    "description": "Metadata about the isotope labeling process.",
                     "items": {
-                        "$ref": "#/$defs/IsotopeEnum"
+                        "$ref": "#/$defs/IsotopeMetadata"
                     },
-                    "type": "array"
-                },
-                "isotopolog": {
-                    "description": "Isotopologue (isotope source/substrate/molecule) added to the biological sample.",
-                    "items": {
-                        "allOf": [
-                            {
-                                "properties": {
-                                    "term": {
-                                        "allOf": [
-                                            {
-                                                "properties": {
-                                                    "id": {
-                                                        "pattern": "^PUBCHEM\\.COMPOUND:[1-9]\\d*$"
-                                                    }
-                                                }
-                                            }
-                                        ]
-                                    }
-                                }
-                            }
-                        ],
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/ControlledTermValue"
-                            },
-                            {
-                                "$ref": "#/$defs/ControlledIdentifiedTermValue"
-                            }
-                        ]
-                    },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "isotopolog_approach": {
                     "$ref": "#/$defs/IsotopologApproachEnum",
                     "description": "The labelling approach of this SIP experiment. Details if multiple isotopically labelled isotopologues were added to samples (\"multiple\"), or was only one isotopologue added to each sample (\"single\")."
-                },
-                "isotopolog_atom_frac": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be orded the same as the isotopolog."
-                },
-                "isotopolog_atom_pos": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be orded the same as the isotopolog."
-                },
-                "isotopolog_dose": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/QuantityValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The concentration (in ppm) of isotopolog added to environmental matrix as a total mass per volume."
                 },
                 "isotopolog_incu_time": {
                     "anyOf": [
@@ -9665,10 +9604,6 @@
                         }
                     ],
                     "description": "Total time of incubation after isotopologue addition in hours"
-                },
-                "isotopolog_label": {
-                    "$ref": "#/$defs/IsotopologLabelEnum",
-                    "description": "List whether the isotopologue added to this biological sample was heavy-labelled or natural abundance"
                 },
                 "name": {
                     "description": "A human readable label for an entity",
@@ -9718,9 +9653,6 @@
                 }
             },
             "required": [
-                "isotope",
-                "isotopolog",
-                "isotopolog_label",
                 "isotopolog_approach",
                 "has_input",
                 "has_output",
@@ -9728,6 +9660,96 @@
                 "type"
             ],
             "title": "IsotopeLabelingProcess",
+            "type": "object"
+        },
+        "IsotopeMetadata": {
+            "additionalProperties": false,
+            "description": "An class that contains metadata about an isotope labeling process.",
+            "properties": {
+                "isotope": {
+                    "$ref": "#/$defs/IsotopeEnum",
+                    "description": "The element and mass number of the stable isotope used in isotopologue labeling."
+                },
+                "isotopolog": {
+                    "allOf": [
+                        {
+                            "properties": {
+                                "term": {
+                                    "allOf": [
+                                        {
+                                            "properties": {
+                                                "id": {
+                                                    "pattern": "^PUBCHEM\\.COMPOUND:[1-9]\\d*$"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledTermValue"
+                        },
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        }
+                    ],
+                    "description": "Isotopologue (isotope source/substrate/molecule) added to the biological sample."
+                },
+                "isotopolog_atom_frac": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be orded the same as the isotopolog."
+                },
+                "isotopolog_atom_pos": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be orded the same as the isotopolog."
+                },
+                "isotopolog_dose": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The concentration (in ppm) of isotopolog added to environmental matrix as a total mass per volume."
+                },
+                "isotopolog_label": {
+                    "$ref": "#/$defs/IsotopologLabelEnum",
+                    "description": "List whether the isotopologue added to this biological sample was heavy-labelled or natural abundance"
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:IsotopeMetadata"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "isotope",
+                "isotopolog",
+                "isotopolog_label",
+                "type"
+            ],
+            "title": "IsotopeMetadata",
             "type": "object"
         },
         "IsotopologApproachEnum": {
@@ -18084,5 +18106,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post68.dev0+801dc7562"
+    "version": "11.23.0.post69.dev0+2622a18d1"
 }

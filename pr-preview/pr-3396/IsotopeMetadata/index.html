@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/InformationObject/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/IsotopeMetadata/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
-<title>Class: InformationObject - NMDC Schema Documentation</title>
+<title>Class: IsotopeMetadata - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-informationobject">
+<a class="md-skip" href="#class-isotopemetadata">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: InformationObject
+              Class: IsotopeMetadata
             
           </span>
 </div>
@@ -300,15 +300,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#inheritance">
-<span class="md-ellipsis">
-      
-        Inheritance
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
 <span class="md-ellipsis">
       
@@ -318,19 +309,10 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#comments">
+<a class="md-nav__link" href="#usages">
 <span class="md-ellipsis">
       
-        Comments
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#see-also">
-<span class="md-ellipsis">
-      
-        See Also
+        Usages
       
     </span>
 </a>
@@ -404,58 +386,50 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-informationobject">Class: InformationObject</h1>
-<p><em>Any data or knowledge that reduces uncertainty or enhances understanding about a system, process, or entity.</em></p>
+<h1 id="class-isotopemetadata">Class: IsotopeMetadata</h1>
+<p><em>An class that contains metadata about an isotope labeling process.</em></p>
 <div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is an abstract class and should not be instantiated directly.</p>
-</div>
-<p>URI: <a href="https://w3id.org/nmdc/InformationObject">nmdc:InformationObject</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/IsotopeMetadata">nmdc:IsotopeMetadata</a></p>
 <div class="mermaid">classDiagram
-  class InformationObject
-  click InformationObject href "../InformationObject"
-    NamedThing &lt;|-- InformationObject
-      click NamedThing href "../NamedThing"
+  class IsotopeMetadata
+  click IsotopeMetadata href "../IsotopeMetadata"
 
+  IsotopeMetadata : isotope
 
-    InformationObject &lt;|-- Configuration
-      click Configuration href "../Configuration"
-    InformationObject &lt;|-- Manifest
-      click Manifest href "../Manifest"
-    InformationObject &lt;|-- CalibrationInformation
-      click CalibrationInformation href "../CalibrationInformation"
-    InformationObject &lt;|-- DataObject
-      click DataObject href "../DataObject"
+      IsotopeMetadata --&gt; "1" IsotopeEnum : isotope
+    click IsotopeEnum href "../IsotopeEnum"
 
+  IsotopeMetadata : isotopolog
 
+      IsotopeMetadata --&gt; "1" ControlledTermValue : isotopolog
+    click ControlledTermValue href "../ControlledTermValue"
 
-  InformationObject : alternative_identifiers
+  IsotopeMetadata : isotopolog_atom_frac
 
-  InformationObject : description
+      IsotopeMetadata --&gt; "0..1 _recommended_" TextValue : isotopolog_atom_frac
+    click TextValue href "../TextValue"
 
-  InformationObject : id
+  IsotopeMetadata : isotopolog_atom_pos
 
-  InformationObject : name
+      IsotopeMetadata --&gt; "0..1 _recommended_" TextValue : isotopolog_atom_pos
+    click TextValue href "../TextValue"
 
-  InformationObject : type
+  IsotopeMetadata : isotopolog_dose
+
+      IsotopeMetadata --&gt; "0..1 _recommended_" QuantityValue : isotopolog_dose
+    click QuantityValue href "../QuantityValue"
+
+  IsotopeMetadata : isotopolog_label
+
+      IsotopeMetadata --&gt; "1" IsotopologLabelEnum : isotopolog_label
+    click IsotopologLabelEnum href "../IsotopologLabelEnum"
+
+  IsotopeMetadata : type
 
 
 
 </div>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../NamedThing/">NamedThing</a><ul>
-<li><strong>InformationObject</strong><ul>
-<li><a href="../Configuration/">Configuration</a></li>
-<li><a href="../Manifest/">Manifest</a></li>
-<li><a href="../CalibrationInformation/">CalibrationInformation</a></li>
-<li><a href="../DataObject/">DataObject</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -468,49 +442,68 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A unique identifier for a thing. Must be either a CURIE shorthand for a URI...</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
+<td><a href="../isotope/">isotope</a></td>
+<td>1 <br/> <a href="../IsotopeEnum/">IsotopeEnum</a></td>
+<td>The element and mass number of the stable isotope used in isotopologue labeling.</td>
+<td>direct</td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A human readable label for an entity</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
+<td><a href="../isotopolog/">isotopolog</a></td>
+<td>1 <br/> <a href="../ControlledTermValue/">ControlledTermValue</a></td>
+<td>Isotopologue (isotope source/substrate/molecule) added to the biological sample.</td>
+<td>direct</td>
 </tr>
 <tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>a human-readable description of a thing</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
+<td><a href="../isotopolog_label/">isotopolog_label</a></td>
+<td>1 <br/> <a href="../IsotopologLabelEnum/">IsotopologLabelEnum</a></td>
+<td>List whether the isotopologue added to this biological sample was...</td>
+<td>direct</td>
 </tr>
 <tr>
-<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of alternative identifiers for the entity.</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
+<td><a href="../isotopolog_atom_frac/">isotopolog_atom_frac</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
+<td>The fraction of heavy-labelled atoms out of all atoms of a given element in...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../isotopolog_atom_pos/">isotopolog_atom_pos</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
+<td>InChI label designating set of all isotopically enriched atoms in...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../isotopolog_dose/">isotopolog_dose</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>The concentration (in ppm) of isotopolog added to environmental matrix as a...</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>the class_uri of the class that has been instantiated</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
+<td>direct</td>
 </tr>
 </tbody>
 </table>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>The direct subclasses of NamedThing should aggregate the relevant classes and make them uniform. PlannedProcess and MaterialEntity are clearly disjoint. Let's do the same thing for our modelling of things that don't consist of matter and aren't processes.</li>
-<li>InformationObjects may include embedded data or links to external resources via the url slot</li>
-<li>May appear as output from a process, inputs into a process, or both</li>
-<li>All slots relating one class to a InformationObject should be is_a sub-properties of has_input or has_output, if they are multivalued or otherwise organized</li>
-<li>Historically information about many classes has been inlined into the class. This is an alternative pattern.</li>
-</ul>
-<h2 id="see-also">See Also</h2>
-<ul>
-<li><a href="https://w3id.org/nmdc/AttributeValue">nmdc:AttributeValue</a></li>
-</ul>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../IsotopeLabelingProcess/">IsotopeLabelingProcess</a></td>
+<td><a href="../isotope_label_metadata/">isotope_label_metadata</a></td>
+<td>range</td>
+<td><a href="./">IsotopeMetadata</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -526,8 +519,8 @@
 </thead>
 <tbody>
 <tr>
-<td>exact</td>
-<td>IAO:0000030</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -535,123 +528,197 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: InformationObject
-description: Any data or knowledge that reduces uncertainty or enhances understanding
-  about a system, process, or entity.
-comments:
-- The direct subclasses of NamedThing should aggregate the relevant classes and make
-  them uniform. PlannedProcess and MaterialEntity are clearly disjoint. Let's do the
-  same thing for our modelling of things that don't consist of matter and aren't processes.
-- InformationObjects may include embedded data or links to external resources via
-  the url slot
-- May appear as output from a process, inputs into a process, or both
-- All slots relating one class to a InformationObject should be is_a sub-properties
-  of has_input or has_output, if they are multivalued or otherwise organized
-- Historically information about many classes has been inlined into the class. This
-  is an alternative pattern.
+<pre><code class="language-yaml">name: IsotopeMetadata
+description: An class that contains metadata about an isotope labeling process.
 from_schema: https://w3id.org/nmdc/nmdc
-see_also:
-- nmdc:AttributeValue
-exact_mappings:
-- IAO:0000030
-is_a: NamedThing
-abstract: true
-class_uri: nmdc:InformationObject
+slots:
+- isotope
+- isotopolog
+- isotopolog_label
+- isotopolog_atom_frac
+- isotopolog_atom_pos
+- isotopolog_dose
+- type
+slot_usage:
+  isotopolog:
+    name: isotopolog
+    range_expression:
+      slot_conditions:
+        term:
+          name: term
+          range_expression:
+            slot_conditions:
+              id:
+                name: id
+                pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
+class_uri: nmdc:IsotopeMetadata
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: InformationObject
-description: Any data or knowledge that reduces uncertainty or enhances understanding
-  about a system, process, or entity.
-comments:
-- The direct subclasses of NamedThing should aggregate the relevant classes and make
-  them uniform. PlannedProcess and MaterialEntity are clearly disjoint. Let's do the
-  same thing for our modelling of things that don't consist of matter and aren't processes.
-- InformationObjects may include embedded data or links to external resources via
-  the url slot
-- May appear as output from a process, inputs into a process, or both
-- All slots relating one class to a InformationObject should be is_a sub-properties
-  of has_input or has_output, if they are multivalued or otherwise organized
-- Historically information about many classes has been inlined into the class. This
-  is an alternative pattern.
+<pre><code class="language-yaml">name: IsotopeMetadata
+description: An class that contains metadata about an isotope labeling process.
 from_schema: https://w3id.org/nmdc/nmdc
-see_also:
-- nmdc:AttributeValue
-exact_mappings:
-- IAO:0000030
-is_a: NamedThing
-abstract: true
+slot_usage:
+  isotopolog:
+    name: isotopolog
+    range_expression:
+      slot_conditions:
+        term:
+          name: term
+          range_expression:
+            slot_conditions:
+              id:
+                name: id
+                pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
 attributes:
-  id:
-    name: id
-    description: A unique identifier for a thing. Must be either a CURIE shorthand
-      for a URI or a complete URI
-    notes:
-    - 'abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?'
-    - a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters
-      will be accepted
-    - typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked
-      via per-class id slot usage assertions
-    - minting authority shoulders should probably be enumerated and checked in the
-      pattern
+  isotope:
+    name: isotope
+    description: The element and mass number of the stable isotope used in isotopologue
+      labeling.
+    title: isotope
     examples:
-    - value: nmdc:mgmag-00-x012.1_7_c1
-      description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
+    - value: 13C
+    - value: 15N
     from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-    - literal_form: workflow_execution_id
-      predicate: NARROW_SYNONYM
-      contexts:
-      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-    - literal_form: data_object_id
-      predicate: NARROW_SYNONYM
-      contexts:
-      - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     rank: 1000
-    identifier: true
-    owner: InformationObject
+    slot_uri: MIXS:0001338
+    owner: IsotopeMetadata
     domain_of:
-    - NamedThing
-    range: uriorcurie
+    - IsotopeMetadata
+    range: IsotopeEnum
     required: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-  name:
-    name: name
-    description: A human readable label for an entity
+    multivalued: false
+  isotopolog:
+    name: isotopolog
+    description: Isotopologue (isotope source/substrate/molecule) added to the biological
+      sample.
+    title: isotopolog
+    comments:
+    - Give the PubChem compound as PUBCHEM.COMPOUND:&lt;CID&gt;, both in has_raw_value and
+      in term.id. For an undefined mixture, describe it in has_raw_value and omit
+      term; NMDC does not use a sentinel identifier for that case.
+    examples:
+    - object:
+        type: nmdc:ControlledTermValue
+        has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
+        term:
+          id: PUBCHEM.COMPOUND:1140
+          type: nmdc:OntologyClass
+    - object:
+        type: nmdc:ControlledTermValue
+        has_raw_value: root exudates
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: InformationObject
+    slot_uri: MIXS:0001339
+    owner: IsotopeMetadata
     domain_of:
-    - PersonValue
-    - NamedThing
-    - Protocol
-    range: string
-  description:
-    name: description
-    description: a human-readable description of a thing
+    - IsotopeMetadata
+    range: ControlledTermValue
+    range_expression:
+      slot_conditions:
+        term:
+          name: term
+          range_expression:
+            slot_conditions:
+              id:
+                name: id
+                pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
+    required: true
+    multivalued: false
+    structured_pattern:
+      syntax: ^{termLabel} \[{termID}\]$
+      interpolated: true
+  isotopolog_label:
+    name: isotopolog_label
+    description: List whether the isotopologue added to this biological sample was
+      heavy-labelled or natural abundance
+    title: isotopolog label status
+    examples:
+    - value: natural abundance
+    - value: isotopically labeled
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    slot_uri: dcterms:description
-    owner: InformationObject
+    slot_uri: MIXS:0001340
+    owner: IsotopeMetadata
     domain_of:
-    - ImageValue
-    - NamedThing
-    - Protocol
-    range: string
-  alternative_identifiers:
-    name: alternative_identifiers
-    description: A list of alternative identifiers for the entity.
+    - IsotopeMetadata
+    range: IsotopologLabelEnum
+    required: true
+  isotopolog_atom_frac:
+    name: isotopolog_atom_frac
+    description: The fraction of heavy-labelled atoms out of all atoms of a given
+      element in the isotopolog. Multiple values allowed, separated by a | and should
+      be orded the same as the isotopolog.
+    title: atom fraction of isotopolog
+    todos:
+    - This ordered slot provides how to write an example in a spreadsheet, but this
+      will not provide a multivalued ordered slot in a database. As such, this slot
+      also couldn't be marked as multivalued in the yaml.
+    examples:
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: '0.95'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    owner: InformationObject
+    slot_uri: MIXS:0001346
+    owner: IsotopeMetadata
     domain_of:
-    - NamedThing
-    - MetaboliteIdentification
-    range: uriorcurie
-    multivalued: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
+    - IsotopeMetadata
+    range: TextValue
+    recommended: true
+  isotopolog_atom_pos:
+    name: isotopolog_atom_pos
+    description: InChI label designating set of all isotopically enriched atoms in
+      isotopologue. Multiple values allowed, separated by a | and should be orded
+      the same as the isotopolog.
+    title: set of labeled atoms in isotopologue
+    examples:
+    - object:
+        type: nmdc:TextValue
+        has_raw_value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0001347
+    owner: IsotopeMetadata
+    domain_of:
+    - IsotopeMetadata
+    range: TextValue
+    recommended: true
+    structured_pattern:
+      syntax: ^({termLabel} \[{termID}\]|{text})$
+  isotopolog_dose:
+    name: isotopolog_dose
+    annotations:
+      Preferred_unit:
+        tag: Preferred_unit
+        value: ppm
+      storage_units:
+        tag: storage_units
+        value: '[ppm]'
+    description: The concentration (in ppm) of isotopolog added to environmental matrix
+      as a total mass per volume.
+    title: dose of isotopolog
+    comments:
+    - isotopolog mass / total volume soil; ppm of isotopologue in total container
+      volume
+    examples:
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: 10 [ppm]
+        has_numeric_value: 10
+        has_unit: '[ppm]'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: MIXS:0001348
+    owner: IsotopeMetadata
+    domain_of:
+    - IsotopeMetadata
+    range: QuantityValue
+    recommended: true
+    structured_pattern:
+      syntax: ^{float} {unit}$
   type:
     name: type
     description: the class_uri of the class that has been instantiated
@@ -675,7 +742,7 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     designates_type: true
-    owner: InformationObject
+    owner: IsotopeMetadata
     domain_of:
     - EukEval
     - FunctionalAnnotationAggMember
@@ -698,7 +765,7 @@ attributes:
     - MetaboliteIdentification
     range: uriorcurie
     required: true
-class_uri: nmdc:InformationObject
+class_uri: nmdc:IsotopeMetadata
 
 </code></pre>
 </details>

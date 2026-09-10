@@ -743,8 +743,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../IsotopeLabelingProcess/">IsotopeLabelingProcess</a></td>
-<td>A material processing that labels a substance with a stable or radioactive isotope.</td>
+<td><a href="../IsotopeMetadata/">IsotopeMetadata</a></td>
+<td>An class that contains metadata about an isotope labeling process.</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -753,9 +753,6 @@
 <ul>
 <li>
 <p>Range: <a href="../ControlledTermValue/">ControlledTermValue</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
 </li>
 <li>
 <p>Required: True</p>
@@ -820,12 +817,10 @@ from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0001339
 domain_of:
-- IsotopeLabelingProcess
+- IsotopeMetadata
 range: ControlledTermValue
 required: true
-multivalued: true
-inlined: true
-inlined_as_list: true
+multivalued: false
 structured_pattern:
   syntax: ^{termLabel} \[{termID}\]$
   interpolated: true

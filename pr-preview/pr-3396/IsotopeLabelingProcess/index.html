@@ -387,7 +387,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-isotopelabelingprocess">Class: IsotopeLabelingProcess</h1>
-<p><em>A material processing that labels a substance with a stable or radioactive isotope.</em></p>
+<p><em>A material processing that labels a substance with a stable or radioactive isotope(s).</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/IsotopeLabelingProcess">nmdc:IsotopeLabelingProcess</a></p>
 <div class="mermaid">classDiagram
@@ -431,45 +431,20 @@
       IsotopeLabelingProcess --&gt; "*" Instrument : instrument_used
     click Instrument href "../Instrument"
 
-  IsotopeLabelingProcess : isotope
+  IsotopeLabelingProcess : isotope_label_metadata
 
-      IsotopeLabelingProcess --&gt; "1..*" IsotopeEnum : isotope
-    click IsotopeEnum href "../IsotopeEnum"
-
-  IsotopeLabelingProcess : isotopolog
-
-      IsotopeLabelingProcess --&gt; "1..*" ControlledTermValue : isotopolog
-    click ControlledTermValue href "../ControlledTermValue"
+      IsotopeLabelingProcess --&gt; "*" IsotopeMetadata : isotope_label_metadata
+    click IsotopeMetadata href "../IsotopeMetadata"
 
   IsotopeLabelingProcess : isotopolog_approach
 
       IsotopeLabelingProcess --&gt; "1" IsotopologApproachEnum : isotopolog_approach
     click IsotopologApproachEnum href "../IsotopologApproachEnum"
 
-  IsotopeLabelingProcess : isotopolog_atom_frac
-
-      IsotopeLabelingProcess --&gt; "0..1 _recommended_" TextValue : isotopolog_atom_frac
-    click TextValue href "../TextValue"
-
-  IsotopeLabelingProcess : isotopolog_atom_pos
-
-      IsotopeLabelingProcess --&gt; "0..1 _recommended_" TextValue : isotopolog_atom_pos
-    click TextValue href "../TextValue"
-
-  IsotopeLabelingProcess : isotopolog_dose
-
-      IsotopeLabelingProcess --&gt; "0..1 _recommended_" QuantityValue : isotopolog_dose
-    click QuantityValue href "../QuantityValue"
-
   IsotopeLabelingProcess : isotopolog_incu_time
 
       IsotopeLabelingProcess --&gt; "0..1 _recommended_" QuantityValue : isotopolog_incu_time
     click QuantityValue href "../QuantityValue"
-
-  IsotopeLabelingProcess : isotopolog_label
-
-      IsotopeLabelingProcess --&gt; "1" IsotopologLabelEnum : isotopolog_label
-    click IsotopologLabelEnum href "../IsotopologLabelEnum"
 
   IsotopeLabelingProcess : name
 
@@ -522,45 +497,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../isotope/">isotope</a></td>
-<td>1..* <br/> <a href="../IsotopeEnum/">IsotopeEnum</a></td>
-<td>The element and mass number of the stable isotope used in isotopologue labeling.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../isotopolog/">isotopolog</a></td>
-<td>1..* <br/> <a href="../ControlledTermValue/">ControlledTermValue</a></td>
-<td>Isotopologue (isotope source/substrate/molecule) added to the biological sample.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../isotopolog_label/">isotopolog_label</a></td>
-<td>1 <br/> <a href="../IsotopologLabelEnum/">IsotopologLabelEnum</a></td>
-<td>List whether the isotopologue added to this biological sample was...</td>
+<td><a href="../isotope_label_metadata/">isotope_label_metadata</a></td>
+<td>* <br/> <a href="../IsotopeMetadata/">IsotopeMetadata</a></td>
+<td>Metadata about the isotope labeling process.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../isotopolog_approach/">isotopolog_approach</a></td>
 <td>1 <br/> <a href="../IsotopologApproachEnum/">IsotopologApproachEnum</a></td>
 <td>The labelling approach of this SIP experiment. Details if multiple...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../isotopolog_atom_frac/">isotopolog_atom_frac</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
-<td>The fraction of heavy-labelled atoms out of all atoms of a given element in...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../isotopolog_atom_pos/">isotopolog_atom_pos</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
-<td>InChI label designating set of all isotopically enriched atoms in...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../isotopolog_dose/">isotopolog_dose</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../QuantityValue/">QuantityValue</a></td>
-<td>The concentration (in ppm) of isotopolog added to environmental matrix as a...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -693,17 +638,12 @@
 <details>
 <pre><code class="language-yaml">name: IsotopeLabelingProcess
 description: A material processing that labels a substance with a stable or radioactive
-  isotope.
+  isotope(s).
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: MaterialProcessing
 slots:
-- isotope
-- isotopolog
-- isotopolog_label
+- isotope_label_metadata
 - isotopolog_approach
-- isotopolog_atom_frac
-- isotopolog_atom_pos
-- isotopolog_dose
 - isotopolog_incu_time
 - chem_administration
 slot_usage:
@@ -721,17 +661,6 @@ slot_usage:
   has_output:
     name: has_output
     required: true
-  isotopolog:
-    name: isotopolog
-    range_expression:
-      slot_conditions:
-        term:
-          name: term
-          range_expression:
-            slot_conditions:
-              id:
-                name: id
-                pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
 class_uri: nmdc:IsotopeLabelingProcess
 
 </code></pre>
@@ -740,7 +669,7 @@ class_uri: nmdc:IsotopeLabelingProcess
 <details>
 <pre><code class="language-yaml">name: IsotopeLabelingProcess
 description: A material processing that labels a substance with a stable or radioactive
-  isotope.
+  isotope(s).
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: MaterialProcessing
 slot_usage:
@@ -758,93 +687,17 @@ slot_usage:
   has_output:
     name: has_output
     required: true
-  isotopolog:
-    name: isotopolog
-    range_expression:
-      slot_conditions:
-        term:
-          name: term
-          range_expression:
-            slot_conditions:
-              id:
-                name: id
-                pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
 attributes:
-  isotope:
-    name: isotope
-    description: The element and mass number of the stable isotope used in isotopologue
-      labeling.
-    title: isotope
-    examples:
-    - value: 13C
-    - value: 15N
+  isotope_label_metadata:
+    name: isotope_label_metadata
+    description: Metadata about the isotope labeling process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    slot_uri: MIXS:0001338
     owner: IsotopeLabelingProcess
     domain_of:
     - IsotopeLabelingProcess
-    range: IsotopeEnum
-    required: true
+    range: IsotopeMetadata
     multivalued: true
-  isotopolog:
-    name: isotopolog
-    description: Isotopologue (isotope source/substrate/molecule) added to the biological
-      sample.
-    title: isotopolog
-    comments:
-    - Give the PubChem compound as PUBCHEM.COMPOUND:&lt;CID&gt;, both in has_raw_value and
-      in term.id. For an undefined mixture, describe it in has_raw_value and omit
-      term; NMDC does not use a sentinel identifier for that case.
-    examples:
-    - object:
-        type: nmdc:ControlledTermValue
-        has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
-        term:
-          id: PUBCHEM.COMPOUND:1140
-          type: nmdc:OntologyClass
-    - object:
-        type: nmdc:ControlledTermValue
-        has_raw_value: root exudates
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    slot_uri: MIXS:0001339
-    owner: IsotopeLabelingProcess
-    domain_of:
-    - IsotopeLabelingProcess
-    range: ControlledTermValue
-    range_expression:
-      slot_conditions:
-        term:
-          name: term
-          range_expression:
-            slot_conditions:
-              id:
-                name: id
-                pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
-    required: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-    structured_pattern:
-      syntax: ^{termLabel} \[{termID}\]$
-      interpolated: true
-  isotopolog_label:
-    name: isotopolog_label
-    description: List whether the isotopologue added to this biological sample was
-      heavy-labelled or natural abundance
-    title: isotopolog label status
-    examples:
-    - value: natural abundance
-    - value: isotopically labeled
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    slot_uri: MIXS:0001340
-    owner: IsotopeLabelingProcess
-    domain_of:
-    - IsotopeLabelingProcess
-    range: IsotopologLabelEnum
-    required: true
   isotopolog_approach:
     name: isotopolog_approach
     description: The labelling approach of this SIP experiment. Details if multiple
@@ -862,79 +715,6 @@ attributes:
     - IsotopeLabelingProcess
     range: IsotopologApproachEnum
     required: true
-  isotopolog_atom_frac:
-    name: isotopolog_atom_frac
-    description: The fraction of heavy-labelled atoms out of all atoms of a given
-      element in the isotopolog. Multiple values allowed, separated by a | and should
-      be orded the same as the isotopolog.
-    title: atom fraction of isotopolog
-    todos:
-    - This ordered slot provides how to write an example in a spreadsheet, but this
-      will not provide a multivalued ordered slot in a database. As such, this slot
-      also couldn't be marked as multivalued in the yaml.
-    examples:
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: '0.95'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    slot_uri: MIXS:0001346
-    owner: IsotopeLabelingProcess
-    domain_of:
-    - IsotopeLabelingProcess
-    range: TextValue
-    recommended: true
-  isotopolog_atom_pos:
-    name: isotopolog_atom_pos
-    description: InChI label designating set of all isotopically enriched atoms in
-      isotopologue. Multiple values allowed, separated by a | and should be orded
-      the same as the isotopolog.
-    title: set of labeled atoms in isotopologue
-    examples:
-    - object:
-        type: nmdc:TextValue
-        has_raw_value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    slot_uri: MIXS:0001347
-    owner: IsotopeLabelingProcess
-    domain_of:
-    - IsotopeLabelingProcess
-    range: TextValue
-    recommended: true
-    structured_pattern:
-      syntax: ^({termLabel} \[{termID}\]|{text})$
-  isotopolog_dose:
-    name: isotopolog_dose
-    annotations:
-      Preferred_unit:
-        tag: Preferred_unit
-        value: ppm
-      storage_units:
-        tag: storage_units
-        value: '[ppm]'
-    description: The concentration (in ppm) of isotopolog added to environmental matrix
-      as a total mass per volume.
-    title: dose of isotopolog
-    comments:
-    - isotopolog mass / total volume soil; ppm of isotopologue in total container
-      volume
-    examples:
-    - object:
-        type: nmdc:QuantityValue
-        has_raw_value: 10 [ppm]
-        has_numeric_value: 10
-        has_unit: '[ppm]'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    slot_uri: MIXS:0001348
-    owner: IsotopeLabelingProcess
-    domain_of:
-    - IsotopeLabelingProcess
-    range: QuantityValue
-    recommended: true
-    structured_pattern:
-      syntax: ^{float} {unit}$
   isotopolog_incu_time:
     name: isotopolog_incu_time
     annotations:
@@ -1220,6 +1000,7 @@ attributes:
     domain_of:
     - EukEval
     - FunctionalAnnotationAggMember
+    - IsotopeMetadata
     - PeptideQuantification
     - ProteinQuantification
     - GenomeFeature

@@ -485,6 +485,10 @@
          <lastmod>2026-09-10</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/IsotopeMetadata/</loc>
+         <lastmod>2026-09-10</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/IsotopologApproachEnum/</loc>
          <lastmod>2026-09-10</lastmod>
     </url>
@@ -2818,6 +2822,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/isotope_exposure/</loc>
+         <lastmod>2026-09-10</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/isotope_label_metadata/</loc>
          <lastmod>2026-09-10</lastmod>
     </url>
     <url>

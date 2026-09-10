@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post68.dev0+801dc7562
+version: 11.23.0.post69.dev0+2622a18d1
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6207,6 +6207,12 @@ enums:
           on the data portal. The submitter cannot edit.
         title: Released
 slots:
+  isotope_label_metadata:
+    name: isotope_label_metadata
+    description: Metadata about the isotope labeling process.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: IsotopeMetadata
+    multivalued: true
   host_family_relation:
     name: host_family_relation
     annotations:
@@ -18497,7 +18503,7 @@ slots:
     slot_uri: MIXS:0001338
     range: IsotopeEnum
     required: true
-    multivalued: true
+    multivalued: false
   isotopolog:
     name: isotopolog
     description: Isotopologue (isotope source/substrate/molecule) added to the biological
@@ -18521,8 +18527,7 @@ slots:
     slot_uri: MIXS:0001339
     range: ControlledTermValue
     required: true
-    multivalued: true
-    inlined_as_list: true
+    multivalued: false
     pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$
     structured_pattern:
       syntax: ^{termLabel} \[{termID}\]$
@@ -20679,17 +20684,12 @@ classes:
   IsotopeLabelingProcess:
     name: IsotopeLabelingProcess
     description: A material processing that labels a substance with a stable or radioactive
-      isotope.
+      isotope(s).
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: MaterialProcessing
     slots:
-    - isotope
-    - isotopolog
-    - isotopolog_label
+    - isotope_label_metadata
     - isotopolog_approach
-    - isotopolog_atom_frac
-    - isotopolog_atom_pos
-    - isotopolog_dose
     - isotopolog_incu_time
     - chem_administration
     slot_usage:
@@ -20709,6 +20709,20 @@ classes:
       has_output:
         name: has_output
         required: true
+    class_uri: nmdc:IsotopeLabelingProcess
+  IsotopeMetadata:
+    name: IsotopeMetadata
+    description: An class that contains metadata about an isotope labeling process.
+    from_schema: https://w3id.org/nmdc/nmdc
+    slots:
+    - isotope
+    - isotopolog
+    - isotopolog_label
+    - isotopolog_atom_frac
+    - isotopolog_atom_pos
+    - isotopolog_dose
+    - type
+    slot_usage:
       isotopolog:
         name: isotopolog
         range_expression:
@@ -20720,7 +20734,7 @@ classes:
                   id:
                     name: id
                     pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
-    class_uri: nmdc:IsotopeLabelingProcess
+    class_uri: nmdc:IsotopeMetadata
   GradientFractionationProcess:
     name: GradientFractionationProcess
     description: A material processing that separates a sample into multiple fractions
