@@ -1444,7 +1444,7 @@ enums:
       SubSamplingProcess:
       WorkflowExecution:
       GradientFractionationProcess:
-      IsotopeLLabelingProcess:
+      IsotopeLabelingProcess:
 
   PloidyEnum:
     description: >-
