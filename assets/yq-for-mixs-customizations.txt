@@ -221,6 +221,8 @@
 '.slots.solar_irradiance.multivalued |= false'
 '.slots.source_mat_id.multivalued |= false'
 '.slots.ventilation_type.multivalued |= false'
+'.slots.isotope.multivalued |= false'
+'.slots.isotopolog.multivalued |= false'
 
 # Remove required: true from slots that gained it in GSC MIxS v6.3.0
 # (release tag v6.3.0, commit fb3271909f5ab3277d4c869e816bc9e334cb816f).
@@ -501,7 +503,6 @@
 '.slots.volatile_org_comp.inlined_as_list |= true'
 '.slots.water_temp_regm.inlined_as_list |= true'
 '.slots.watering_regm.inlined_as_list |= true'
-'.slots.isotopolog.inlined_as_list |= true'
 
 'del(.subsets)'
 'del(.classes)'
@@ -920,7 +921,7 @@
 # Objectify wrapper-range example values so each example's structure matches the slot's
 # asserted range. Units validated against UnitEnum; type designator included. Slots needing
 # UCUM additions, value fixes, or non-UCUM/dimensionless handling are deferred to the units PR.
-# isotope is multivalued: one permissible value per example, not the pipe-joined MIxS form
+
 '.slots.isotope.examples = [{"value": "13C"}, {"value": "15N"}]'
 
 '.slots.abs_air_humidity.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "9 g/g", "has_numeric_value": 9, "has_unit": "g/g"}}]'

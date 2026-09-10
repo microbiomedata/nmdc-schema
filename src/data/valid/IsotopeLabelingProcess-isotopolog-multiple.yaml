@@ -6,18 +6,24 @@ has_input:
   - nmdc:bsm-99-123456
 has_output:
   - nmdc:procsm-99-987654
-isotope:
-  - 13C
-isotopolog_label: isotopically labeled
-isotopolog_approach: single
-isotopolog:
-  - type: nmdc:ControlledTermValue
-    has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
-    term:
-      id: PUBCHEM.COMPOUND:1140
-      type: nmdc:OntologyClass
-  - type: nmdc:ControlledTermValue
-    has_raw_value: water [PUBCHEM.COMPOUND:962]
-    term:
-      id: PUBCHEM.COMPOUND:962
-      type: nmdc:OntologyClass
+isotopolog_approach: multiple  
+isotope_label_metadata:
+  - isotopolog_label: isotopically labeled
+    isotope: 13C
+    type: nmdc:IsotopeMetadata
+    isotopolog:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
+      term:
+        id: PUBCHEM.COMPOUND:1140
+        name: toluene
+    type: nmdc:IsotopeMetadata    
+  - isotopolog_label: isotopically labeled
+    isotope: 18O
+    type: nmdc:IsotopeMetadata
+    isotopolog:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: water [PUBCHEM.COMPOUND:962]
+      term:
+        id: PUBCHEM.COMPOUND:962
+        name: water

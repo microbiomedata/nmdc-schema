@@ -8095,7 +8095,7 @@ slots:
     slot_uri: MIXS:0001338
     range: IsotopeEnum
     required: true
-    multivalued: true
+    multivalued: false
   isotopolog:
     description: Isotopologue (isotope source/substrate/molecule) added to the biological sample.
     title: isotopolog
@@ -8114,11 +8114,10 @@ slots:
     slot_uri: MIXS:0001339
     range: ControlledTermValue
     required: true
-    multivalued: true
+    multivalued: false
     structured_pattern:
       syntax: ^{termLabel} \[{termID}\]$
       interpolated: true
-    inlined_as_list: true
   isotopolog_label:
     description: List whether the isotopologue added to this biological sample was heavy-labelled or natural abundance
     title: isotopolog label status

@@ -606,15 +606,10 @@ classes:
     class_uri: nmdc:IsotopeLabelingProcess
     is_a: MaterialProcessing
     description: >-
-      A material processing that labels a substance with a stable or radioactive isotope.
+      A material processing that labels a substance with a stable or radioactive isotope(s).
     slots:
-      - isotope
-      - isotopolog
-      - isotopolog_label
+      - isotope_label_metadata
       - isotopolog_approach
-      - isotopolog_atom_frac
-      - isotopolog_atom_pos
-      - isotopolog_dose
       - isotopolog_incu_time
       - chem_administration
     slot_usage:
@@ -629,6 +624,21 @@ classes:
           interpolated: true
       has_output:
         required: true
+  
+  IsotopeMetadata:
+    class_uri: nmdc:IsotopeMetadata
+    description: >-
+      An class that contains metadata about an isotope labeling process.
+    slots:
+      - isotope
+      - isotopolog
+      - isotopolog_label
+      - isotopolog_atom_frac
+      - isotopolog_atom_pos
+      - isotopolog_dose
+      - type
+
+    slot_usage:
       isotopolog:
         range_expression:
           slot_conditions:
@@ -637,7 +647,7 @@ classes:
                 slot_conditions:
                   id:
                     pattern: '^PUBCHEM\.COMPOUND:[1-9]\d*$'
-  
+
   GradientFractionationProcess:
     class_uri: nmdc:GradientFractionationProcess
     is_a: MaterialProcessing
@@ -1165,7 +1175,12 @@ slots:
   # from the current GSC MIxS. NMDC retains them for backward compatibility with
   # submission-schema which references them. No production data uses these slots.
   # ============================================================================
-  
+  isotope_label_metadata:
+    description: >-
+      Metadata about the isotope labeling process.
+    range: IsotopeMetadata
+    multivalued: true
+
   host_family_relation:
     title: host family relationship
     description: >-
