@@ -179,6 +179,14 @@ current policy below when adding or modifying developer tooling.
 | Makefile ergonomics | Prefer `$<`/`$@` where it improves clarity and correctness; not every target can use them. | Apply `$<`/`$@` universally. |
 | CLI naming | Keep hyphenated CLI aliases and consistent option naming when defining public CLIs. | Same intent, now applied only to stable/public entry points. |
 
+### Attributing schema changes
+
+`created_by`, `modified_by` and `contributors` take an ORCID written as the lowercase Bioregistry CURIE `orcid:0000-0000-0000-0000`, optionally followed by a `#Person Name` comment. An `https://orcid.org/` URL is also accepted. A bare ORCID with no prefix is neither a CURIE nor a URI, so it does not expand. Only lowercase `orcid` is declared as a prefix, in `src/schema/nmdc.yaml`; the uppercase `ORCID` form resolves only through an external default prefix map.
+
+`tests/test_attribution_metaslots.py` reads `src/schema/*.yaml` directly and fails the build on any other spelling.
+
+Deprecating an element additionally requires `last_updated_on` alongside `modified_by`. See [the schema element deprecation guide](src/docs/schema_element_deprecation_guide.md).
+
 ### Recording Decisions
 
 - Use the [NMDC ADR Log](https://github.com/microbiomedata/NMDC_documentation/tree/main/decisions)
