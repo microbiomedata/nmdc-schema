@@ -22,7 +22,7 @@ material_processing_set:
       has_raw_value: 12 h
       has_numeric_value: 12
       has_unit: h
-    type: nmdc:LabelingProcess
+    type: nmdc:IsotopeLabelingProcess
   - id: nmdc:extrp-99-abcdef2
     name: DNA extraction of my awesome biosample
     has_input:
@@ -40,7 +40,7 @@ material_processing_set:
       - nmdc:procsm-99-9437a1
       - nmdc:procsm-99-9437a2
       - nmdc:procsm-99-9437a3
-    type: nmdc:FractionationProcess
+    type: nmdc:GradientFractionationProcess
 processed_sample_set:
   - id: nmdc:procsm-99-987654
     name: my awesome biosample after isotopolog labeling
