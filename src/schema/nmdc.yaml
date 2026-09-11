@@ -1180,6 +1180,7 @@ slots:
       Metadata about the isotope labeling process.
     range: IsotopeMetadata
     multivalued: true
+    inlined_as_list: true
 
   host_family_relation:
     title: host family relationship
