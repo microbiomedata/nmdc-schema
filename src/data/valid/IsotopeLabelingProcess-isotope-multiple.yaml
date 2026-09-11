@@ -8,8 +8,13 @@ has_output:
 isotopolog_approach: multiple  
 isotope_label_metadata:
   - isotopolog_label: isotopically labeled
+    type: nmdc:IsotopeMetadata
     isotope: 13C
-    isotopolog_atom_frac: 0.99
+    isotopolog_atom_frac: 
+      type: nmdc:QuantityValue
+      has_raw_value: 0.99
+      has_numeric_value: 0.99
+      has_unit: 0
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: glucose [PUBCHEM.COMPOUND:5793]
@@ -18,14 +23,20 @@ isotope_label_metadata:
         name: gulcose
         type: nmdc:OntologyClass
   - isotopolog_label: isotopically labeled
+    type: nmdc:IsotopeMetadata
     isotope: 18O
-    isotopolog_atom_frac: 0.97
-    type: nmdc:ControlledIdentifiedTermValue
-    has_raw_value: heavy water [PUBCHEM.COMPOUND:105142]
-    term:
-      id: PUBCHEM.COMPOUND:105142
-      name: oxidane
-      type: nmdc:OntologyClass    
+    isotopolog_atom_frac:
+      type: nmdc:QuantityValue
+      has_raw_value: 0.99
+      has_numeric_value: 0.99
+      has_unit: 0
+    isotopolog:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: heavy water [PUBCHEM.COMPOUND:105142]
+      term:
+        id: PUBCHEM.COMPOUND:105142
+        name: oxidane
+        type: nmdc:OntologyClass    
 isotopolog_incu_time:
   type: nmdc:QuantityValue
   has_raw_value: 168 h
