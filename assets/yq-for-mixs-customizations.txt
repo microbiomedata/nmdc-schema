@@ -371,6 +371,8 @@
 '.slots.isotopolog_incu_time.range |= "QuantityValue"'
 '.slots.gradient_pos_density.range |= "QuantityValue"'
 '.slots.isotopolog_dose.range |= "QuantityValue"'
+'.slots.isotopolog_atom_frac.range |= "QuantityValue"'
+
 # Restore TextValue range for slots where NMDC MongoDB has TextValue data
 # These slots have production data using {type: nmdc:TextValue, has_raw_value: ...} format
 # Future migration to enums tracked in GitHub issue
@@ -381,7 +383,6 @@
 '.slots.soil_type.range |= "TextValue"'
 '.slots.store_cond.range |= "TextValue"'
 '.slots.isotopolog_atom_frac.range |= "QuantityValue"'
-'.slots.isotopolog_dose.range |= "QuantityValue"'
 # submission-schema has historically used an enum for store_cond, which doesn't align with the MIxS pattern
 'del(.slots.store_cond.structured_pattern)'
 
@@ -667,10 +668,6 @@
 '.enums.HostSexEnum.permissible_values.["transgender (male to female)"] = {}'
 '.enums.HostSexEnum.permissible_values.["undeclared"] = {}'
 
-# Add recommended sip slots
-.slots.isotopolog.recommended |= true'
-.slots.isotopolog_approach.recommended |= true'
-
 
 # Remove redundant inline examples from MIxS slot descriptions: the value is already
 # carried in the slot's examples metaslot, so the copy in the prose is a duplicate.
@@ -786,7 +783,7 @@
 '.slots.isotopolog_incu_time.annotations.storage_units = {"tag": "storage_units", "value": "h"}'
 '.slots.gradient_pos_density.annotations.storage_units = {"tag": "storage_units", "value": "g/mL"}'
 '.slots.isotopolog_dose.annotations.storage_units = {"tag": "storage_units", "value": "[ppm]"}'
-'.slots.isotopolog_atom_frac.annotations.storage_units = {"tag": "storage_units", "value": "0"}'
+'.slots.isotopolog_atom_frac.annotations.storage_units = {"tag": "storage_units", "value": "1"}'
 
 # Add storage_units annotations for slots with multiple UCUM-compatible preferred units
 '.slots.abs_air_humidity.annotations.storage_units = {"tag": "storage_units", "value": "[lb_av]|g/g|kg|kg/kg"}'
