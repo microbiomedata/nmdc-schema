@@ -455,6 +455,8 @@ classes:
       - instrument_set
       - manifest_set
       - material_processing_set
+      - ontology_class_set
+      - ontology_relation_set
       - organism_sample_set
       - organism_set
       - processed_sample_set
@@ -1350,6 +1352,13 @@ slots:
     range: OntologyClass
     description:
       This property links a database object to the set of ontology classes
+      within it.
+  ontology_relation_set:
+    mixins:
+      - object_set
+    range: OntologyRelation
+    description:
+      This property links a database object to the set of ontology relations
       within it.
   biosample_set:
     mixins:
