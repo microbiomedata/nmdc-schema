@@ -163,7 +163,7 @@ All heavily-used prefixes (OBI, CHEBI, MS, NCIT, ENVO, GO, NCBITaxon) are covere
 ## Current results summary
 
 The committed baseline (`assets/ontology_alignment/ols4_embeddings_results.tsv`) contains:
-- **45,940 rows** from **2,298 schema elements** across 210 ontologies
+- **45,920 rows** from **2,296 schema elements** across 210 ontologies
 - **2,284 rows** with confidence > 0.90
 - **1,959** strong semantic + strong lexical
 - **325** strong semantic + weak lexical (novel candidates)
