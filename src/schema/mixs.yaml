@@ -8113,7 +8113,6 @@ slots:
           has_raw_value: root exudates
     slot_uri: MIXS:0001339
     range: ControlledTermValue
-    required: true
     multivalued: false
     structured_pattern:
       syntax: ^{termLabel} \[{termID}\]$
@@ -8135,7 +8134,6 @@ slots:
       - value: multiple
     slot_uri: MIXS:0001341
     range: IsotopologApproachEnum
-    required: true
   gradient_position:
     description: A number designating the gradient position from heaviest (=1) to lightest. Unfractionated samples, from which fractionated samples were derived, should be denoted with –1.
     title: gradient position
@@ -8185,11 +8183,15 @@ slots:
       - This ordered slot provides how to write an example in a spreadsheet, but this will not provide a multivalued ordered slot in a database. As such, this slot also couldn't be marked as multivalued in the yaml.
     examples:
       - object:
-          type: nmdc:TextValue
+          type: nmdc:QuantityValue
           has_raw_value: "0.95"
+          has_numeric_value: 0.95
+          has_unit: "1"
     slot_uri: MIXS:0001346
-    range: TextValue
+    range: QuantityValue
     recommended: true
+    annotations:
+      storage_units: "1"
   isotopolog_atom_pos:
     description: InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.
     title: set of labeled atoms in isotopologue

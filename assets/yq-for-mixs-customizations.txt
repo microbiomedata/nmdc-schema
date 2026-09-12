@@ -382,7 +382,6 @@
 '.slots.perturbation.range |= "TextValue"'
 '.slots.soil_type.range |= "TextValue"'
 '.slots.store_cond.range |= "TextValue"'
-'.slots.isotopolog_atom_frac.range |= "QuantityValue"'
 # submission-schema has historically used an enum for store_cond, which doesn't align with the MIxS pattern
 'del(.slots.store_cond.structured_pattern)'
 
@@ -1019,7 +1018,7 @@
 '.slots.isotopolog.examples = [{"object": {"type": "nmdc:ControlledTermValue", "has_raw_value": "toluene [PUBCHEM.COMPOUND:1140]", "term": {"id": "PUBCHEM.COMPOUND:1140", "type": "nmdc:OntologyClass"}}}]'
 '.slots.isotopolog.comments = ["Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. For an undefined mixture, describe it in has_raw_value and omit term; NMDC does not use a sentinel identifier for that case."]'
 '.slots.isotopolog.examples += [{"object": {"type": "nmdc:ControlledTermValue", "has_raw_value": "root exudates"}}]'
-'.slots.isotopolog_atom_frac.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.95","has_numeric_value": 0.95, "has_unit": 0}}]'
+'.slots.isotopolog_atom_frac.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.95","has_numeric_value": 0.95, "has_unit": "1"}}]'
 '.slots.isotopolog_atom_pos.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1"}}]'
 '.slots.isotopolog_dose.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "10 [ppm]", "has_numeric_value": 10, "has_unit": "[ppm]"}}]'
 '.slots.isotopolog_incu_time.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "12 h", "has_numeric_value": 12, "has_unit": "h"}}]'

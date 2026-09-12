@@ -12,9 +12,9 @@ isotope_label_metadata:
     isotope: 13C
     isotopolog_atom_frac: 
       type: nmdc:QuantityValue
-      has_raw_value: 0.99
+      has_raw_value: "0.99"
       has_numeric_value: 0.99
-      has_unit: 0
+      has_unit: "1"
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: glucose [PUBCHEM.COMPOUND:5793]
@@ -27,9 +27,9 @@ isotope_label_metadata:
     isotope: 18O
     isotopolog_atom_frac:
       type: nmdc:QuantityValue
-      has_raw_value: 0.99
+      has_raw_value: "0.99"
       has_numeric_value: 0.99
-      has_unit: 0
+      has_unit: "1"
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: heavy water [PUBCHEM.COMPOUND:105142]

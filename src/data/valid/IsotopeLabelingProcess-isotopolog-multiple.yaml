@@ -17,6 +17,7 @@ isotope_label_metadata:
       term:
         id: PUBCHEM.COMPOUND:1140
         name: toluene
+        type: nmdc:OntologyClass
     type: nmdc:IsotopeMetadata    
   - isotopolog_label: isotopically labeled
     isotope: 18O
@@ -27,3 +28,4 @@ isotope_label_metadata:
       term:
         id: PUBCHEM.COMPOUND:962
         name: water
+        type: nmdc:OntologyClass
