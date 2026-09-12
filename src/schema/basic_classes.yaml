@@ -1443,6 +1443,8 @@ enums:
       StorageProcess:
       SubSamplingProcess:
       WorkflowExecution:
+      GradientFractionationProcess:
+      IsotopeLabelingProcess:
 
   PloidyEnum:
     description: >-

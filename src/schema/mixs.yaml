@@ -13,6 +13,8 @@ prefixes:
   schema: http://schema.org/
   SO: http://purl.obolibrary.org/obo/SO_
   NCIT: http://purl.obolibrary.org/obo/NCIT_
+  chrono: http://rs.tdwg.org/chrono/terms/
+  dc: http://purl.org/dc/elements/1.1/
 default_prefix: MIXS
 enums:
   AeroStrucEnum:
@@ -833,6 +835,24 @@ enums:
       low: {}
       middle: {}
       top: {}
+  IsotopeEnum:
+    permissible_values:
+      13C:
+        description: Carbon with 13C isotope
+      15N:
+        description: Nitrogen with 15N isotope
+      2H:
+        description: Hydrogen with 2H isotope
+      18O:
+        description: Oxygen with 18O isotope
+  IsotopologApproachEnum:
+    permissible_values:
+      single: {}
+      multiple: {}
+  IsotopologLabelEnum:
+    permissible_values:
+      isotopically labeled: {}
+      natural abundance: {}
   HostSexEnum:
     permissible_values:
       female: {}
@@ -2467,10 +2487,10 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
-    annotations:
-      storage_units: '[ppm]|mg/L|ug/L|umol/L'
     in_subset:
       - biogeochemistry
+    annotations:
+      storage_units: '[ppm]|mg/L|ug/L|umol/L'
   diss_iron:
     annotations:
       Preferred_unit: milligram per liter
@@ -2784,6 +2804,13 @@ slots:
   env_broad_scale:
     description: 'Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
     title: broad-scale environmental context
+    examples:
+      - object:
+          type: nmdc:ControlledIdentifiedTermValue
+          has_raw_value: oceanic epipelagic zone biome [ENVO:01000035]
+          term:
+            id: ENVO:01000035
+            type: nmdc:OntologyClass
     keywords:
       - context
       - environmental
@@ -2794,13 +2821,6 @@ slots:
       interpolated: true
       partial_match: true
     is_a: mixs_env_triad_field
-    examples:
-      - object:
-          type: nmdc:ControlledIdentifiedTermValue
-          has_raw_value: oceanic epipelagic zone biome [ENVO:01000035]
-          term:
-            id: ENVO:01000035
-            type: nmdc:OntologyClass
     annotations:
       tooltip: The biome or major environmental system where the sample or specimen originated. Choose values from subclasses of the 'biome' class [ENVO:00000428] in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe the broad anatomical or morphological context
   env_local_scale:
@@ -2809,6 +2829,13 @@ slots:
       tooltip: The specific environmental entities or features near the sample or specimen that significantly influence its characteristics or composition. These entities are typically smaller in scale than the broad environmental context. Values for this field should be countable, material nouns and must be chosen from subclasses of BFO:0000040 (material entity) that appear in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe specific anatomical structures or plant parts.
     description: 'Report the entity or entities which are in the sample or specimen s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
     title: local environmental context
+    examples:
+      - object:
+          type: nmdc:ControlledIdentifiedTermValue
+          has_raw_value: litter layer [ENVO:01000338]
+          term:
+            id: ENVO:01000338
+            type: nmdc:OntologyClass
     keywords:
       - context
       - environmental
@@ -2819,16 +2846,16 @@ slots:
       partial_match: true
     is_a: mixs_env_triad_field
     range: ControlledIdentifiedTermValue
-    examples:
-      - object:
-          type: nmdc:ControlledIdentifiedTermValue
-          has_raw_value: litter layer [ENVO:01000338]
-          term:
-            id: ENVO:01000338
-            type: nmdc:OntologyClass
   env_medium:
     description: 'Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)'
     title: environmental medium
+    examples:
+      - object:
+          type: nmdc:ControlledIdentifiedTermValue
+          has_raw_value: soil [ENVO:00001998]
+          term:
+            id: ENVO:00001998
+            type: nmdc:OntologyClass
     keywords:
       - environmental
     slot_uri: MIXS:0000014
@@ -2838,13 +2865,6 @@ slots:
       interpolated: true
       partial_match: true
     is_a: mixs_env_triad_field
-    examples:
-      - object:
-          type: nmdc:ControlledIdentifiedTermValue
-          has_raw_value: soil [ENVO:00001998]
-          term:
-            id: ENVO:00001998
-            type: nmdc:OntologyClass
     annotations:
       tooltip: The predominant environmental material or substrate that directly surrounds or hosts the sample or specimen at the time of sampling. Choose values from subclasses of the 'environmental material' class [ENVO:00010483] in the Environment Ontology (ENVO). Values for this field should be measurable or mass material nouns, representing continuous environmental materials. For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to indicate a tissue, organ, or plant structure
   escalator:
@@ -3557,14 +3577,14 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - host_information
     examples:
       - object:
           type: nmdc:QuantityValue
           has_raw_value: 10 d
           has_numeric_value: 10
           has_unit: d
-    in_subset:
-      - host_information
   host_body_habitat:
     description: Original body habitat where the sample was obtained from
     title: host body habitat
@@ -3582,6 +3602,13 @@ slots:
       Expected_value: FMA or UBERON
     description: Substance produced by the body, e.g. Stool, mucus, where the sample was obtained from. Use terms from the foundational model of anatomy ontology (fma) or Uber-anatomy ontology (UBERON)
     title: host body product
+    examples:
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: mucus [UBERON:0000912]
+          term:
+            id: UBERON:0000912
+            type: nmdc:OntologyClass
     keywords:
       - body
       - host
@@ -3590,13 +3617,6 @@ slots:
     string_serialization: '{termLabel} [{termID}]'
     slot_uri: MIXS:0000888
     range: ControlledTermValue
-    examples:
-      - object:
-          type: nmdc:ControlledTermValue
-          has_raw_value: mucus [UBERON:0000912]
-          term:
-            id: UBERON:0000912
-            type: nmdc:OntologyClass
     in_subset:
       - host_information
   host_body_site:
@@ -3630,14 +3650,14 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - host_information
     examples:
       - object:
           type: nmdc:QuantityValue
           has_raw_value: 15 Cel
           has_numeric_value: 15
           has_unit: Cel
-    in_subset:
-      - host_information
   host_color:
     description: The color of host
     title: host color
@@ -3758,14 +3778,14 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - host_information
     examples:
       - object:
           type: nmdc:QuantityValue
           has_raw_value: 56 cm
           has_numeric_value: 56
           has_unit: cm
-    in_subset:
-      - host_information
   host_last_meal:
     annotations:
       Expected_value: content;duration
@@ -3925,6 +3945,9 @@ slots:
       - host.
       - taxon
     slot_uri: MIXS:0000250
+    in_subset:
+      - host_information
+      - jgi_isolate
     comments:
       - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
     range: ControlledIdentifiedTermValue
@@ -3934,9 +3957,6 @@ slots:
         source: https://jgi.doe.gov/user-programs/pmo-overview/project-materials-submission-overview/
         notes:
           - Exact JGI form template is access-restricted; source is the public submission overview.
-    in_subset:
-      - host_information
-      - jgi_isolate
   host_tot_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -3954,14 +3974,14 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - host_information
     examples:
       - object:
           type: nmdc:QuantityValue
           has_raw_value: 2500 g
           has_numeric_value: 2500
           has_unit: g
-    in_subset:
-      - host_information
   host_wet_mass:
     annotations:
       Preferred_unit: kilogram, gram
@@ -4396,14 +4416,14 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
     examples:
       - object:
           type: nmdc:QuantityValue
           has_raw_value: 1800 [ppb]
           has_numeric_value: 1800
           has_unit: '[ppb]'
-    in_subset:
-      - biogeochemistry
   micro_biomass_meth:
     description: Reference or method used in determining microbial biomass
     title: microbial biomass method
@@ -4692,10 +4712,10 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
-    annotations:
-      storage_units: umol/L|%|mg/L
     in_subset:
       - biogeochemistry
+    annotations:
+      storage_units: umol/L|%|mg/L
   org_count_qpcr_info:
     annotations:
       Expected_value: gene name;FWD:forward primer sequence;REV:reverse primer sequence;initial denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes; total cycles
@@ -5727,7 +5747,7 @@ slots:
     examples:
       - object:
           type: nmdc:TextValue
-          has_raw_value: KH2PO4;170  milligram per liter
+          has_raw_value: KH2PO4;170 milligram per liter
     keywords:
       - macronutrients
     string_serialization: '{text};{float} {unit}'
@@ -5742,7 +5762,7 @@ slots:
     examples:
       - object:
           type: nmdc:TextValue
-          has_raw_value: H3BO3;6.2  milligram per liter
+          has_raw_value: H3BO3;6.2 milligram per liter
     keywords:
       - micronutrients
     string_serialization: '{text};{float} {unit}'
@@ -7114,6 +7134,8 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+    in_subset:
+      - biogeochemistry
     annotations:
       storage_units: ug/L|%
     examples:
@@ -7122,8 +7144,6 @@ slots:
           has_raw_value: 1 ug/L
           has_numeric_value: 1
           has_unit: ug/L
-    in_subset:
-      - biogeochemistry
   tot_depth_water_col:
     annotations:
       Preferred_unit: meter
@@ -7268,10 +7288,10 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
-    annotations:
-      storage_units: mg/L|ug/L|umol/L|%
     in_subset:
       - biogeochemistry
+    annotations:
+      storage_units: mg/L|ug/L|umol/L|%
   tot_org_c_meth:
     description: Reference or method used in determining total organic carbon
     title: total organic carbon method
@@ -8007,11 +8027,11 @@ slots:
     minimum_value: 1
     comments:
       - JGI reports values in megabases (Mb); NMDC stores them in base pairs (bp).
+    examples:
+      - value: "300000"
     maximum_value: 100000000000
     notes:
       - The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat.
-    examples:
-      - value: "300000"
   ploidy:
     description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO
     title: ploidy
@@ -8066,6 +8086,182 @@ slots:
       syntax: ^{primer_adapter_codes}+;{primer_adapter_codes}+$
       interpolated: true
       partial_match: true
+  isotope:
+    description: The element and mass number of the stable isotope used in isotopologue labeling.
+    title: isotope
+    examples:
+      - value: 13C
+      - value: 15N
+    slot_uri: MIXS:0001338
+    range: IsotopeEnum
+    required: true
+    multivalued: false
+  isotopolog:
+    description: Isotopologue (isotope source/substrate/molecule) added to the biological sample.
+    title: isotopolog
+    comments:
+      - Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. For an undefined mixture, describe it in has_raw_value and omit term; NMDC does not use a sentinel identifier for that case.
+    examples:
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
+          term:
+            id: PUBCHEM.COMPOUND:1140
+            type: nmdc:OntologyClass
+      - object:
+          type: nmdc:ControlledTermValue
+          has_raw_value: root exudates
+    slot_uri: MIXS:0001339
+    range: ControlledTermValue
+    multivalued: false
+    structured_pattern:
+      syntax: ^{termLabel} \[{termID}\]$
+      interpolated: true
+  isotopolog_label:
+    description: List whether the isotopologue added to this biological sample was heavy-labelled or natural abundance
+    title: isotopolog label status
+    examples:
+      - value: natural abundance
+      - value: isotopically labeled
+    slot_uri: MIXS:0001340
+    range: IsotopologLabelEnum
+    required: true
+  isotopolog_approach:
+    description: The labelling approach of this SIP experiment. Details if multiple isotopically labelled isotopologues were added to samples ("multiple"), or was only one isotopologue added to each sample ("single").
+    title: Labeling approach (number of labeled isotopologs supplied)
+    examples:
+      - value: single
+      - value: multiple
+    slot_uri: MIXS:0001341
+    range: IsotopologApproachEnum
+  gradient_position:
+    description: A number designating the gradient position from heaviest (=1) to lightest. Unfractionated samples, from which fractionated samples were derived, should be denoted with –1.
+    title: gradient position
+    examples:
+      - value: '1'
+      - value: '-1'
+    slot_uri: MIXS:0001342
+    range: integer
+  gradient_pos_density:
+    annotations:
+      Preferred_unit: g/mL
+      storage_units: g/mL
+    description: Buoyant density of this fraction
+    title: density of gradient position
+    examples:
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1.725 g/mL
+          has_numeric_value: 1.725
+          has_unit: g/mL
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 1.725-1.735 g/mL
+          has_minimum_numeric_value: 1.725
+          has_maximum_numeric_value: 1.735
+          has_unit: g/mL
+    slot_uri: MIXS:0001343
+    recommended: true
+    structured_pattern:
+      syntax: ^({float}-{float} {unit}|{float} {unit})$
+      interpolated: true
+    range: QuantityValue
+  gradient_pos_rel_am:
+    description: The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargetted sequencing data, this value should be calculated from total DNA concentration.
+    title: relative amount of nucleic acids in the gradient position
+    examples:
+      - value: '0.10'
+    slot_uri: MIXS:0001344
+    range: float
+    recommended: true
+    structured_pattern:
+      syntax: ^{float}$
+  isotopolog_atom_frac:
+    description: The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.
+    title: atom fraction of isotopolog
+    todos:
+      - This ordered slot provides how to write an example in a spreadsheet, but this will not provide a multivalued ordered slot in a database. As such, this slot also couldn't be marked as multivalued in the yaml.
+    examples:
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "0.95"
+          has_numeric_value: 0.95
+          has_unit: "1"
+    slot_uri: MIXS:0001346
+    range: QuantityValue
+    recommended: true
+    annotations:
+      storage_units: "1"
+  isotopolog_atom_pos:
+    description: InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.
+    title: set of labeled atoms in isotopologue
+    examples:
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
+    slot_uri: MIXS:0001347
+    range: TextValue
+    recommended: true
+    structured_pattern:
+      syntax: ^({termLabel} \[{termID}\]|{text})$
+  isotopolog_dose:
+    annotations:
+      Preferred_unit: ppm
+      storage_units: '[ppm]'
+    description: The concentration (in ppm) of isotopolog added to environmental matrix as a total mass per volume.
+    title: dose of isotopolog
+    comments:
+      - isotopolog mass / total volume soil; ppm of isotopologue in total container volume
+    examples:
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 10 [ppm]
+          has_numeric_value: 10
+          has_unit: '[ppm]'
+    slot_uri: MIXS:0001348
+    range: QuantityValue
+    recommended: true
+    structured_pattern:
+      syntax: ^{float} {unit}$
+  nucleobase_atom_frac:
+    description: Excess atom fraction of the nucleobases in this fraction.
+    title: nucleobase excess atom fraction
+    examples:
+      - value: '0.25'
+    slot_uri: MIXS:0001349
+    range: float
+    recommended: true
+    minimum_value: 0
+    maximum_value: 1
+  isotopolog_incu_time:
+    annotations:
+      Preferred_unit: hours
+      storage_units: h
+    description: Total time of incubation after isotopologue addition in hours
+    title: isotopolog incubation time
+    examples:
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: 12 h
+          has_numeric_value: 12
+          has_unit: h
+    slot_uri: MIXS:0001350
+    range: QuantityValue
+    recommended: true
+    structured_pattern:
+      syntax: ^{float} {unit}$
+  internal_standard:
+    description: Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence).
+    title: internal standard method
+    examples:
+      - object:
+          type: nmdc:TextValue
+          has_raw_value: https://doi.org/10.1101/2022.12.20.521340
+    slot_uri: MIXS:0001351
+    range: TextValue
+    recommended: true
+    structured_pattern:
+      syntax: ^({PMID}|{DOI}|{URL})$
   samp_collec_device:
     annotations: {}
     description: 'The device used to collect an environmental sample. Recommended values are subclasses of specimen collection device (http://purl.obolibrary.org/obo/OBI_0002814). OBI itself contains only swab/wipe subclasses; environmental sampling devices (corers, grab samplers, passive samplers, etc.) are defined in GENEPIO under the same OBI:0002814 parent. Free-text values are accepted for backward compatibility; new submissions should prefer the form: label [PREFIX:LOCALID].'
@@ -8074,16 +8270,16 @@ slots:
       - device
       - sample
     slot_uri: MIXS:0000002
+    examples:
+      - value: specimen collection swab stick [OBI:0002820]
+      - value: PONAR grab sampler [GENEPIO:0100929]
+      - value: trowel
     comments:
       - GENEPIO's subtree of OBI:0002814 includes grouping classes such as GENEPIO:0100941 (grab sampling device), GENEPIO:0100942 (composite sampling device), GENEPIO:0100943 (core sampling device), and GENEPIO:0100948 (passive sampling device).
       - ENVO has no device classes; do not use ENVO terms here.
       - 'Existing NMDC biosamples populate this slot with free text (e.g., "corer", "Van Dorn"). New submissions are encouraged to use the form: label [PREFIX:LOCALID].'
     pattern: ^([^\[\]]+|.+ \[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\])$
     range: string
-    examples:
-      - value: specimen collection swab stick [OBI:0002820]
-      - value: PONAR grab sampler [GENEPIO:0100929]
-      - value: trowel
   samp_collec_method:
     description: The method employed for collecting the sample
     title: sample collection method

@@ -491,3 +491,16 @@ MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	isol_growth_condt			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	lib_layout			placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.3.0/src/mixs/schema/mixs.yaml	adapters			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	isotope			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	isotopolog			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	isotopolog_label			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	isotopolog_approach			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	gradient_position			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	gradient_pos_density			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	gradient_pos_rel_am			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	isotopolog_atom_frac			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	isotopolog_atom_pos			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	isotopolog_dose			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	nucleobase_atom_frac			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	isotopolog_incu_time			placeholder_class
+MimsMisip	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v7.0.1/src/mixs/schema/mixs.yaml	internal_standard			placeholder_class

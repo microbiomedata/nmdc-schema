@@ -221,6 +221,8 @@
 '.slots.solar_irradiance.multivalued |= false'
 '.slots.source_mat_id.multivalued |= false'
 '.slots.ventilation_type.multivalued |= false'
+'.slots.isotope.multivalued |= false'
+'.slots.isotopolog.multivalued |= false'
 
 # Remove required: true from slots that gained it in GSC MIxS v6.3.0
 # (release tag v6.3.0, commit fb3271909f5ab3277d4c869e816bc9e334cb816f).
@@ -255,6 +257,9 @@
 'del(.slots.space_typ_state.required)'
 'del(.slots.typ_occup_density.required)'
 'del(.slots.water_cut.required)'
+'del(.slots.gradient_position.required)'
+'del(.slots.isotopolog.required)'
+'del(.slots.isotopolog_approach.required)'
 
 # Set TextValue range for slots that need structured text wrapping
 '.slots.agrochem_addition.range |= "TextValue"'
@@ -363,6 +368,11 @@
 '.slots.root_med_regl.range |= "TextValue"'
 '.slots.root_med_suppl.range |= "TextValue"'
 '.slots.salt_regm.range |= "TextValue"'
+'.slots.isotopolog_incu_time.range |= "QuantityValue"'
+'.slots.gradient_pos_density.range |= "QuantityValue"'
+'.slots.isotopolog_dose.range |= "QuantityValue"'
+'.slots.isotopolog_atom_frac.range |= "QuantityValue"'
+
 # Restore TextValue range for slots where NMDC MongoDB has TextValue data
 # These slots have production data using {type: nmdc:TextValue, has_raw_value: ...} format
 # Future migration to enums tracked in GitHub issue
@@ -446,6 +456,7 @@
 '.slots.watering_regm.range |= "TextValue"'
 '.slots.window_open_freq.range |= "TextValue"'
 '.slots.window_size.range |= "TextValue"'
+'.slots.isotopolog.range |= "ControlledTermValue"'
 
 '.slots.agrochem_addition.inlined_as_list |= true'
 '.slots.air_PM_concen.inlined_as_list |= true'
@@ -656,6 +667,7 @@
 '.enums.HostSexEnum.permissible_values.["transgender (male to female)"] = {}'
 '.enums.HostSexEnum.permissible_values.["undeclared"] = {}'
 
+
 # Remove redundant inline examples from MIxS slot descriptions: the value is already
 # carried in the slot's examples metaslot, so the copy in the prose is a duplicate.
 # See CONTRIBUTING.md "Put example values in the examples metaslot, not in prose".
@@ -767,6 +779,10 @@
 '.slots.petroleum_hydrocarb.annotations.storage_units = {"tag": "storage_units", "value": "umol/L"}'
 '.slots.phosphate.annotations.storage_units = {"tag": "storage_units", "value": "umol/L"}'
 '.slots.silicate.annotations.storage_units = {"tag": "storage_units", "value": "umol/L"}'
+'.slots.isotopolog_incu_time.annotations.storage_units = {"tag": "storage_units", "value": "h"}'
+'.slots.gradient_pos_density.annotations.storage_units = {"tag": "storage_units", "value": "g/mL"}'
+'.slots.isotopolog_dose.annotations.storage_units = {"tag": "storage_units", "value": "[ppm]"}'
+'.slots.isotopolog_atom_frac.annotations.storage_units = {"tag": "storage_units", "value": "1"}'
 
 # Add storage_units annotations for slots with multiple UCUM-compatible preferred units
 '.slots.abs_air_humidity.annotations.storage_units = {"tag": "storage_units", "value": "[lb_av]|g/g|kg|kg/kg"}'
@@ -911,6 +927,9 @@
 # Objectify wrapper-range example values so each example's structure matches the slot's
 # asserted range. Units validated against UnitEnum; type designator included. Slots needing
 # UCUM additions, value fixes, or non-UCUM/dimensionless handling are deferred to the units PR.
+
+'.slots.isotope.examples = [{"value": "13C"}, {"value": "15N"}]'
+
 '.slots.abs_air_humidity.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "9 g/g", "has_numeric_value": 9, "has_unit": "g/g"}}]'
 '.slots.agrochem_addition.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "roundup;5 milligram per liter;2018-06-21"}}]'
 '.slots.air_temp.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "20 Cel", "has_numeric_value": 20, "has_unit": "Cel"}}]'
@@ -976,6 +995,7 @@
 '.slots.gaseous_environment.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
 '.slots.geo_loc_name.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "USA: Maryland, Bethesda"}}]'
 '.slots.glucosidase_act.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "5 mol/L/h", "has_numeric_value": 5, "has_unit": "mol/L/h"}}]'
+'.slots.gradient_pos_density.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "1.725 g/mL", "has_numeric_value": 1.725, "has_unit": "g/mL"}}, {"object": {"type": "nmdc:QuantityValue", "has_raw_value": "1.725-1.735 g/mL", "has_minimum_numeric_value": 1.725, "has_maximum_numeric_value": 1.735, "has_unit": "g/mL"}}]'
 '.slots.gravidity.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "yes;due date:2018-05-11"}}]'
 '.slots.gravity.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "12 g;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
 '.slots.growth_facil.examples = [{"object": {"type": "nmdc:ControlledTermValue", "has_raw_value": "Growth chamber [CO_715:0000189]", "term": {"id": "CO_715:0000189", "type": "nmdc:OntologyClass"}}}]'
@@ -994,6 +1014,14 @@
 '.slots.host_tot_mass.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "2500 g", "has_numeric_value": 2500, "has_unit": "g"}}]'
 '.slots.host_wet_mass.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "1500 g", "has_numeric_value": 1500, "has_unit": "g"}}]'
 '.slots.humidity_regm.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
+'.slots.internal_standard.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "https://doi.org/10.1101/2022.12.20.521340"}}]'
+'.slots.isotopolog.examples = [{"object": {"type": "nmdc:ControlledTermValue", "has_raw_value": "toluene [PUBCHEM.COMPOUND:1140]", "term": {"id": "PUBCHEM.COMPOUND:1140", "type": "nmdc:OntologyClass"}}}]'
+'.slots.isotopolog.comments = ["Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. For an undefined mixture, describe it in has_raw_value and omit term; NMDC does not use a sentinel identifier for that case."]'
+'.slots.isotopolog.examples += [{"object": {"type": "nmdc:ControlledTermValue", "has_raw_value": "root exudates"}}]'
+'.slots.isotopolog_atom_frac.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.95","has_numeric_value": 0.95, "has_unit": "1"}}]'
+'.slots.isotopolog_atom_pos.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1"}}]'
+'.slots.isotopolog_dose.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "10 [ppm]", "has_numeric_value": 10, "has_unit": "[ppm]"}}]'
+'.slots.isotopolog_incu_time.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "12 h", "has_numeric_value": 12, "has_unit": "h"}}]'
 '.slots.iw_bt_date_well.examples = [{"object": {"type": "nmdc:TimestampValue", "has_raw_value": "2013-03-25T12:42:31+01:00"}}]'
 '.slots.last_clean.examples = [{"object": {"type": "nmdc:TimestampValue", "has_raw_value": "2013-03-25T12:42:31+01:00"}}]'
 '.slots.lat_lon.examples = [{"object": {"type": "nmdc:GeolocationValue", "latitude": 50.586825, "longitude": 6.408977, "has_raw_value": "50.586825 6.408977"}}]'
