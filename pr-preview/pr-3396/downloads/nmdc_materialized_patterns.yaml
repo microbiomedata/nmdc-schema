@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post72.dev0+49e79304d
+version: 11.23.0.post73.dev0+4002c76f6
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -18527,7 +18527,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001339
     range: ControlledTermValue
-    required: true
     multivalued: false
     pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$
     structured_pattern:
@@ -18557,7 +18556,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001341
     range: IsotopologApproachEnum
-    required: true
   gradient_position:
     name: gradient_position
     description: A number designating the gradient position from heaviest (=1) to
@@ -18620,6 +18618,10 @@ slots:
       syntax: ^{float}$
   isotopolog_atom_frac:
     name: isotopolog_atom_frac
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '1'
     description: The fraction of heavy-labelled atoms out of all atoms of a given
       element in the isotopolog. Multiple values allowed, separated by a | and should
       be orded the same as the isotopolog.
@@ -18630,11 +18632,13 @@ slots:
       also couldn't be marked as multivalued in the yaml.
     examples:
     - object:
-        type: nmdc:TextValue
+        type: nmdc:QuantityValue
         has_raw_value: '0.95'
+        has_numeric_value: 0.95
+        has_unit: '1'
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001346
-    range: TextValue
+    range: QuantityValue
     recommended: true
   isotopolog_atom_pos:
     name: isotopolog_atom_pos

@@ -401,13 +401,13 @@
 
   IsotopeMetadata : isotopolog
 
-      IsotopeMetadata --&gt; "1" ControlledTermValue : isotopolog
+      IsotopeMetadata --&gt; "0..1" ControlledTermValue : isotopolog
     click ControlledTermValue href "../ControlledTermValue"
 
   IsotopeMetadata : isotopolog_atom_frac
 
-      IsotopeMetadata --&gt; "0..1 _recommended_" TextValue : isotopolog_atom_frac
-    click TextValue href "../TextValue"
+      IsotopeMetadata --&gt; "0..1 _recommended_" QuantityValue : isotopolog_atom_frac
+    click QuantityValue href "../QuantityValue"
 
   IsotopeMetadata : isotopolog_atom_pos
 
@@ -449,7 +449,7 @@
 </tr>
 <tr>
 <td><a href="../isotopolog/">isotopolog</a></td>
-<td>1 <br/> <a href="../ControlledTermValue/">ControlledTermValue</a></td>
+<td>0..1 <br/> <a href="../ControlledTermValue/">ControlledTermValue</a></td>
 <td>Isotopologue (isotope source/substrate/molecule) added to the biological sample.</td>
 <td>direct</td>
 </tr>
@@ -461,7 +461,7 @@
 </tr>
 <tr>
 <td><a href="../isotopolog_atom_frac/">isotopolog_atom_frac</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>The fraction of heavy-labelled atoms out of all atoms of a given element in...</td>
 <td>direct</td>
 </tr>
@@ -625,7 +625,6 @@ attributes:
               id:
                 name: id
                 pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
-    required: true
     multivalued: false
     structured_pattern:
       syntax: ^{termLabel} \[{termID}\]$
@@ -648,6 +647,10 @@ attributes:
     required: true
   isotopolog_atom_frac:
     name: isotopolog_atom_frac
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '1'
     description: The fraction of heavy-labelled atoms out of all atoms of a given
       element in the isotopolog. Multiple values allowed, separated by a | and should
       be orded the same as the isotopolog.
@@ -658,15 +661,17 @@ attributes:
       also couldn't be marked as multivalued in the yaml.
     examples:
     - object:
-        type: nmdc:TextValue
+        type: nmdc:QuantityValue
         has_raw_value: '0.95'
+        has_numeric_value: 0.95
+        has_unit: '1'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001346
     owner: IsotopeMetadata
     domain_of:
     - IsotopeMetadata
-    range: TextValue
+    range: QuantityValue
     recommended: true
   isotopolog_atom_pos:
     name: isotopolog_atom_pos

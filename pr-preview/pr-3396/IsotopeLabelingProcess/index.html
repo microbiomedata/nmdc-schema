@@ -438,7 +438,7 @@
 
   IsotopeLabelingProcess : isotopolog_approach
 
-      IsotopeLabelingProcess --&gt; "1" IsotopologApproachEnum : isotopolog_approach
+      IsotopeLabelingProcess --&gt; "0..1" IsotopologApproachEnum : isotopolog_approach
     click IsotopologApproachEnum href "../IsotopologApproachEnum"
 
   IsotopeLabelingProcess : isotopolog_incu_time
@@ -504,7 +504,7 @@
 </tr>
 <tr>
 <td><a href="../isotopolog_approach/">isotopolog_approach</a></td>
-<td>1 <br/> <a href="../IsotopologApproachEnum/">IsotopologApproachEnum</a></td>
+<td>0..1 <br/> <a href="../IsotopologApproachEnum/">IsotopologApproachEnum</a></td>
 <td>The labelling approach of this SIP experiment. Details if multiple...</td>
 <td>direct</td>
 </tr>
@@ -716,7 +716,6 @@ attributes:
     domain_of:
     - IsotopeLabelingProcess
     range: IsotopologApproachEnum
-    required: true
   isotopolog_incu_time:
     name: isotopolog_incu_time
     annotations:

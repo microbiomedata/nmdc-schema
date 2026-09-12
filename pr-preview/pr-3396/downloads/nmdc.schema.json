@@ -9653,7 +9653,6 @@
                 }
             },
             "required": [
-                "isotopolog_approach",
                 "has_input",
                 "has_output",
                 "id",
@@ -9694,6 +9693,9 @@
                         },
                         {
                             "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "description": "Isotopologue (isotope source/substrate/molecule) added to the biological sample."
@@ -9701,7 +9703,7 @@
                 "isotopolog_atom_frac": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/TextValue"
+                            "$ref": "#/$defs/QuantityValue"
                         },
                         {
                             "type": "null"
@@ -9745,7 +9747,6 @@
             },
             "required": [
                 "isotope",
-                "isotopolog",
                 "isotopolog_label",
                 "type"
             ],
@@ -18106,5 +18107,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post72.dev0+49e79304d"
+    "version": "11.23.0.post73.dev0+4002c76f6"
 }
