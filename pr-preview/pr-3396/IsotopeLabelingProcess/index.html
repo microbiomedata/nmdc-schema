@@ -400,11 +400,6 @@
 
   IsotopeLabelingProcess : alternative_identifiers
 
-  IsotopeLabelingProcess : chem_administration
-
-      IsotopeLabelingProcess --&gt; "*" ControlledTermValue : chem_administration
-    click ControlledTermValue href "../ControlledTermValue"
-
   IsotopeLabelingProcess : description
 
   IsotopeLabelingProcess : end_date
@@ -467,6 +462,11 @@
 
   IsotopeLabelingProcess : start_date
 
+  IsotopeLabelingProcess : substances_used
+
+      IsotopeLabelingProcess --&gt; "*" PortionOfSubstance : substances_used
+    click PortionOfSubstance href "../PortionOfSubstance"
+
   IsotopeLabelingProcess : type
 
 
@@ -515,9 +515,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../chem_administration/">chem_administration</a></td>
-<td>* <br/> <a href="../ControlledTermValue/">ControlledTermValue</a></td>
-<td>List of chemical compounds administered to the host or site where sampling...</td>
+<td><a href="../substances_used/">substances_used</a></td>
+<td>* <br/> <a href="../PortionOfSubstance/">PortionOfSubstance</a></td>
+<td>The substances that are combined to enable a ChemicalConversionProcess.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -645,7 +645,7 @@ slots:
 - isotope_label_metadata
 - isotopolog_approach
 - isotopolog_incu_time
-- chem_administration
+- substances_used
 slot_usage:
   id:
     name: id
@@ -743,35 +743,20 @@ attributes:
     recommended: true
     structured_pattern:
       syntax: ^{float} {unit}$
-  chem_administration:
-    name: chem_administration
-    annotations:
-      Expected_value:
-        tag: Expected_value
-        value: CHEBI;timestamp
-    description: List of chemical compounds administered to the host or site where
-      sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can
-      include multiple compounds. For chemical entities of biological interest ontology
-      (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
-    title: chemical administration
-    examples:
-    - object:
-        type: nmdc:ControlledTermValue
-        has_raw_value: agar [CHEBI:2509];2018-05-11T20:00Z
-        term:
-          id: CHEBI:2509
-          type: nmdc:OntologyClass
+  substances_used:
+    name: substances_used
+    description: The substances that are combined to enable a ChemicalConversionProcess.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    keywords:
-    - administration
-    string_serialization: '{termLabel} [{termID}];{timestamp}'
-    slot_uri: MIXS:0000751
     owner: IsotopeLabelingProcess
     domain_of:
+    - Extraction
     - IsotopeLabelingProcess
-    - Biosample
-    range: ControlledTermValue
+    - StorageProcess
+    - DissolvingProcess
+    - ChemicalConversionProcess
+    - MobilePhaseSegment
+    range: PortionOfSubstance
     multivalued: true
     inlined: true
     inlined_as_list: true

@@ -9760,23 +9760,6 @@
                         "null"
                     ]
                 },
-                "chem_administration": {
-                    "description": "List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi",
-                    "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/ControlledTermValue"
-                            },
-                            {
-                                "$ref": "#/$defs/ControlledIdentifiedTermValue"
-                            }
-                        ]
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -9894,6 +9877,16 @@
                     "description": "The date on which any process or activity was started",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "substances_used": {
+                    "description": "The substances that are combined to enable a ChemicalConversionProcess.",
+                    "items": {
+                        "$ref": "#/$defs/PortionOfSubstance"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -18447,6 +18440,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post73.dev0+4002c76f6"
+    "version": "11.23.0.post74.dev0+110154bd2"
 }
 
