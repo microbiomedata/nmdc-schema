@@ -611,7 +611,7 @@ classes:
       - isotope_label_metadata
       - isotopolog_approach
       - isotopolog_incu_time
-      - chem_administration
+      - substances_used
     slot_usage:
       id:
         structured_pattern:
