@@ -67,7 +67,8 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 	# interior apostrophe closing the single-quote wrapper) aborts the build
 	# loudly instead of being silently skipped (the pipeline's exit status is
 	# the last iteration's, so without this a mid-file failure is swallowed).
-	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ || exit 1 ; done
+	# Only the failing line is printed, so a normal build does not echo all of them.
+	grep "^'" $(word 2, $^) | while IFS= read -r line ; do eval yq -i $$line $@ || { echo "yq customization failed: $$line" >&2 ; exit 1 ; } ; done
 
 
 local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: local/mixs_regen/mixs_subset_modified.yaml \
