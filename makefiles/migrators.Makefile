@@ -10,11 +10,11 @@
 
 # Runs all doctests defined within the migrator modules, adapters, and CLI scripts.
 #
-# To run in non-verbose mode:
+# Quiet by default: doctest prints only failures. To print every example as it runs:
 # ```
-# $ make migration-doctests DOCTEST_OPT=''
+# $ make migration-doctests DOCTEST_OPT=-v
 # ```
-DOCTEST_OPT ?= -v
+DOCTEST_OPT ?=
 migration-doctests: nmdc_schema/nmdc_materialized_patterns.yaml
 	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/*.py
 	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/partials/**/*.py
