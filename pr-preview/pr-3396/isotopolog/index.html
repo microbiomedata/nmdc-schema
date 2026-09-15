@@ -744,7 +744,7 @@
 <tbody>
 <tr>
 <td><a href="../IsotopeMetadata/">IsotopeMetadata</a></td>
-<td>An class that contains metadata about an isotope labeling process.</td>
+<td>A class that contains metadata about an isotope labeling process.</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -766,6 +766,7 @@ has_raw_value: &quot;root exudates&quot;
 <h2 id="comments">Comments</h2>
 <ul>
 <li>Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. For an undefined mixture, describe it in has_raw_value and omit term; NMDC does not use a sentinel identifier for that case.</li>
+<li>PROVISIONAL AND POSSIBLY TOO PERMISSIVE: accepting a value with no term is undecided, see <a href="https://github.com/microbiomedata/nmdc-schema/pull/3396">https://github.com/microbiomedata/nmdc-schema/pull/3396</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -798,6 +799,8 @@ comments:
 - Give the PubChem compound as PUBCHEM.COMPOUND:&lt;CID&gt;, both in has_raw_value and in
   term.id. For an undefined mixture, describe it in has_raw_value and omit term; NMDC
   does not use a sentinel identifier for that case.
+- 'PROVISIONAL AND POSSIBLY TOO PERMISSIVE: accepting a value with no term is undecided,
+  see https://github.com/microbiomedata/nmdc-schema/pull/3396'
 examples:
 - object:
     type: nmdc:ControlledTermValue

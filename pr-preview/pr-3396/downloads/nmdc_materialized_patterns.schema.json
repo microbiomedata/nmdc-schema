@@ -9909,7 +9909,7 @@
         },
         "IsotopeMetadata": {
             "additionalProperties": false,
-            "description": "An class that contains metadata about an isotope labeling process.",
+            "description": "A class that contains metadata about an isotope labeling process.",
             "properties": {
                 "isotope": {
                     "$ref": "#/$defs/IsotopeEnum",
@@ -9956,7 +9956,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be orded the same as the isotopolog."
+                    "description": "The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be ordered the same as the isotopolog."
                 },
                 "isotopolog_atom_pos": {
                     "anyOf": [
@@ -9967,7 +9967,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.",
+                    "description": "InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be ordered the same as the isotopolog.",
                     "pattern": "^(([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+) \\[[a-zA-Z]{2,}:[a-zA-Z0-9]\\d+\\]|.*)$"
                 },
                 "isotopolog_dose": {
@@ -15404,7 +15404,7 @@
                     "pattern": "^([-+]?[0-9]*\\.?[0-9]+-[-+]?[0-9]*\\.?[0-9]+ ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)|[-+]?[0-9]*\\.?[0-9]+ ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+))$"
                 },
                 "gradient_pos_rel_am": {
-                    "description": "The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargetted sequencing data, this value should be calculated from total DNA concentration.",
+                    "description": "The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargeted sequencing data, this value should be calculated from total DNA concentration.",
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+$",
                     "type": [
                         "number",
@@ -15412,7 +15412,7 @@
                     ]
                 },
                 "gradient_position": {
-                    "description": "A number designating the gradient position from heaviest (=1) to lightest. Unfractionated samples, from which fractionated samples were derived, should be denoted with \u20131.",
+                    "description": "A number designating the gradient position from heaviest (=1) to lightest. Unfractionated samples, from which fractionated samples were derived, should be denoted with -1.",
                     "type": [
                         "integer",
                         "null"
@@ -18440,6 +18440,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post82.dev0+274731ec9"
+    "version": "11.23.0.post88.dev0+16d8fc678"
 }
 
