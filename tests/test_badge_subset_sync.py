@@ -17,6 +17,14 @@ squad decision, 2026-08-05).
 See https://github.com/microbiomedata/nmdc-schema/issues/3227 (badges slot and
 enum), https://github.com/microbiomedata/nmdc-schema/issues/3228 (subsets) and
 https://github.com/microbiomedata/nmdc-schema/issues/3326 (qualifying bar).
+
+Badge-topic subsets carry created_on, last_updated_on and modified_by so a
+re-evaluation job can tell that a badge definition changed and score every
+record against it again, instead of re-running badge logic over every
+biosample on every release. See
+https://github.com/microbiomedata/nmdc-schema/issues/3374, and
+https://github.com/microbiomedata/issues/issues/1820 for the job that reads
+them.
 """
 
 import unittest
@@ -114,6 +122,22 @@ class TestBadgeSubsetSync(unittest.TestCase):
                 f"'{badge}' is exempted as a provenance badge but a subset of "
                 f"that name is declared; it is one or the other",
             )
+
+    def test_every_badge_subset_declares_provenance(self):
+        """Each badge topic records its dates and modifier (issue 3374).
+
+        The datetime format needs no assertion here because LinkML refuses to
+        generate the schema when a datetime metaslot holds a value it cannot parse.
+        """
+        for name in _badge_topic_subsets(self.schema_view):
+            subset = self.schema_view.get_subset(name)
+            for metaslot in ("created_on", "last_updated_on", "modified_by"):
+                value = getattr(subset, metaslot)
+                self.assertTrue(
+                    value,
+                    f"badge subset '{name}' has no {metaslot}; add {metaslot} "
+                    f"to record the subset's provenance.",
+                )
 
     def test_every_badge_subset_declares_a_qualifying_bar(self):
         """Each completeness badge records how many slots earn it (issue 3326).
