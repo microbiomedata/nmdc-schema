@@ -84,7 +84,6 @@ Biosample	chlorophyll	QuantityValue	chlorophyll
 Biosample	climate_environment	TextValue	climate_environment		
 Biosample	collected_from	FieldResearchSite			
 Biosample	collection_date	TimestampValue	collection_date		
-Biosample	collection_date_inc	string			PROG_IGNORE
 Biosample	collection_time	string			PROG_IGNORE
 Biosample	collection_time_inc	string			PROG_IGNORE
 Biosample	community	string			

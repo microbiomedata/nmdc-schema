@@ -5,6 +5,7 @@ from nmdc_schema.migrators.partials.migrator_from_11_23_0_to_11_24_0 import (
     migrator_from_11_23_0_to_11_24_0_part_1,
     migrator_from_11_23_0_to_11_24_0_part_2,
     migrator_from_11_23_0_to_11_24_0_part_3,
+    migrator_from_11_23_0_to_11_24_0_part_4,
 )
 
 
@@ -15,8 +16,10 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
 
     Part 1 removes `principal_investigator` (copying it onto DataGeneration
     `has_credit_associations` first). Part 2 standardizes remaining
-    `PersonValue.orcid` values. Part 3 copies `has_raw_value` onto missing
-    `PersonValue.name` so name can be required.
+    `PersonValue.orcid` values, including those copied in part 1. Part 3 copies
+    `has_raw_value` onto missing `PersonValue.name` so name can be required.
+    Part 4 removes the deprecated `collection_date_inc` slot from Biosample; it
+    is independent of parts 1 through 3.
 
     >>> migrator_classes = get_migrator_classes()
     >>> type(migrator_classes) is list and len(migrator_classes) > 0  # the function returns a list
@@ -32,4 +35,5 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
         migrator_from_11_23_0_to_11_24_0_part_1.Migrator,
         migrator_from_11_23_0_to_11_24_0_part_2.Migrator,
         migrator_from_11_23_0_to_11_24_0_part_3.Migrator,
+        migrator_from_11_23_0_to_11_24_0_part_4.Migrator,
     ]
