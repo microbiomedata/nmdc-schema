@@ -1,4 +1,4 @@
-#example data using new SIP material processing slots. In this example a sample is labeled with C13 for 12 hours, then DNA is extracted, and the sample is fractionated into three fractions.
+# Example data using new SIP material processing slots. In this example a sample is labeled with 13C for 12 hours, then DNA is extracted, and the sample is fractionated into three fractions.
 material_processing_set:
   - id: nmdc:labp-99-abcdef2
     name: labeling of my awesome biosample
@@ -10,7 +10,7 @@ material_processing_set:
       - isotopolog_label: isotopically labeled
         isotope: 13C
         type: nmdc:IsotopeMetadata
-        isotopolog: 
+        isotopolog:
           type: nmdc:ControlledIdentifiedTermValue
           has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
           term:
@@ -28,7 +28,7 @@ material_processing_set:
     name: DNA extraction of my awesome biosample
     has_input:
       - nmdc:procsm-99-987654
-    #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
+    # Cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_output:
       - nmdc:procsm-99-9437ae
     type: nmdc:Extraction

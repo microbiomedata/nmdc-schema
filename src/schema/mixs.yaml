@@ -8101,6 +8101,7 @@ slots:
     title: isotopolog
     comments:
       - Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. For an undefined mixture, describe it in has_raw_value and omit term; NMDC does not use a sentinel identifier for that case.
+      - 'PROVISIONAL AND POSSIBLY TOO PERMISSIVE: accepting a value with no term is undecided, see https://github.com/microbiomedata/nmdc-schema/pull/3396'
     examples:
       - object:
           type: nmdc:ControlledTermValue
@@ -8135,7 +8136,7 @@ slots:
     slot_uri: MIXS:0001341
     range: IsotopologApproachEnum
   gradient_position:
-    description: A number designating the gradient position from heaviest (=1) to lightest. Unfractionated samples, from which fractionated samples were derived, should be denoted with –1.
+    description: A number designating the gradient position from heaviest (=1) to lightest. Unfractionated samples, from which fractionated samples were derived, should be denoted with -1.
     title: gradient position
     examples:
       - value: '1'
@@ -8167,7 +8168,7 @@ slots:
       interpolated: true
     range: QuantityValue
   gradient_pos_rel_am:
-    description: The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargetted sequencing data, this value should be calculated from total DNA concentration.
+    description: The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargeted sequencing data, this value should be calculated from total DNA concentration.
     title: relative amount of nucleic acids in the gradient position
     examples:
       - value: '0.10'
@@ -8177,7 +8178,7 @@ slots:
     structured_pattern:
       syntax: ^{float}$
   isotopolog_atom_frac:
-    description: The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.
+    description: The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be ordered the same as the isotopolog.
     title: atom fraction of isotopolog
     todos:
       - This ordered slot provides how to write an example in a spreadsheet, but this will not provide a multivalued ordered slot in a database. As such, this slot also couldn't be marked as multivalued in the yaml.
@@ -8193,7 +8194,7 @@ slots:
     annotations:
       storage_units: "1"
   isotopolog_atom_pos:
-    description: InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.
+    description: InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be ordered the same as the isotopolog.
     title: set of labeled atoms in isotopologue
     examples:
       - object:

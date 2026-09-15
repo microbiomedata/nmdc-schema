@@ -624,11 +624,11 @@ classes:
           interpolated: true
       has_output:
         required: true
-  
+
   IsotopeMetadata:
     class_uri: nmdc:IsotopeMetadata
     description: >-
-      An class that contains metadata about an isotope labeling process.
+      A class that contains metadata about an isotope labeling process.
     slots:
       - isotope
       - isotopolog
@@ -640,6 +640,8 @@ classes:
 
     slot_usage:
       isotopolog:
+        todos:
+          - "PROVISIONAL AND POSSIBLY TOO PERMISSIVE: a ControlledTermValue with only has_raw_value and no term is accepted here, for undefined mixtures such as root exudates. Decide whether to keep allowing that as part of the isotopolog range decision on https://github.com/microbiomedata/nmdc-schema/pull/3396"
         range_expression:
           slot_conditions:
             term:
@@ -867,7 +869,6 @@ classes:
           interpolated: true
 
 enums:
-
   CalibrationTargetEnum:
     permissible_values:
       mass_charge_ratio:

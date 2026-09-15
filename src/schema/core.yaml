@@ -1279,7 +1279,7 @@ classes:
       - dna_concentration
       - external_database_identifiers
       - sampled_portion
-      #output of SIP fractionation related slots
+      # output of SIP fractionation related slots
       - gradient_position
       - gradient_pos_density
       - gradient_pos_rel_am

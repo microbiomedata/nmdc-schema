@@ -1,3 +1,8 @@
+# PROVISIONAL AND POSSIBLY TOO PERMISSIVE. This example is valid only because
+# isotopolog accepts a ControlledTermValue with has_raw_value and no term.
+# Whether term-less values should be allowed is undecided, see
+# https://github.com/microbiomedata/nmdc-schema/pull/3396
+#
 # Valid. An undefined mixture is described in has_raw_value with no term, rather than
 # with a sentinel identifier. This is the case MIxS documents as "enter 0".
 id: nmdc:labp-99-abcdef3
@@ -13,5 +18,5 @@ isotope_label_metadata:
     isotope: 13C
     type: nmdc:IsotopeMetadata
     isotopolog:
-      type: nmdc:ControlledIdentifiedTermValue
+      type: nmdc:ControlledTermValue
       has_raw_value: root exudates
