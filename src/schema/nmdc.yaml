@@ -640,6 +640,8 @@ classes:
 
     slot_usage:
       isotopolog:
+        todos:
+          - "PROVISIONAL AND POSSIBLY TOO PERMISSIVE: a ControlledTermValue with only has_raw_value and no term is accepted here, for undefined mixtures such as root exudates. Decide whether to keep allowing that as part of the isotopolog range decision on https://github.com/microbiomedata/nmdc-schema/pull/3396"
         range_expression:
           slot_conditions:
             term:

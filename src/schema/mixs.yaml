@@ -8101,6 +8101,7 @@ slots:
     title: isotopolog
     comments:
       - Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. For an undefined mixture, describe it in has_raw_value and omit term; NMDC does not use a sentinel identifier for that case.
+      - 'PROVISIONAL AND POSSIBLY TOO PERMISSIVE: accepting a value with no term is undecided, see https://github.com/microbiomedata/nmdc-schema/pull/3396'
     examples:
       - object:
           type: nmdc:ControlledTermValue
