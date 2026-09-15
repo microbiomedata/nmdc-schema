@@ -2,15 +2,13 @@
 
 ## Prerequisites
 
-This project uses **Poetry 2.4.1 or 2.4.3**. CI installs `poetry==2.4.1` in every workflow.
-2.4.3 was checked against `main` on 2026-09-15: `poetry check --lock` reports "All set!" and
-`poetry lock` leaves the committed lock unchanged. The `pyproject.toml` uses
+This project uses **Poetry 2.4.3**, which CI installs in every workflow. The `pyproject.toml` uses
 [PEP 735 dependency groups](https://peps.python.org/pep-0735/) (`[dependency-groups]`). The
 `poetry.lock` content-hash only tracks dependency-group changes from **Poetry 2.3.0 onward**
 ([poetry#10632](https://github.com/python-poetry/poetry/issues/10632)), so a poetry older than
 that (or simply different from the version that wrote the lock) computes a different hash and
 reports the lock as "out of sync with pyproject.toml" even when nothing changed. CI now runs
-`poetry check`, so a local poetry outside those two versions can disagree with CI. Run
+`poetry check`, so a local poetry other than 2.4.3 can disagree with CI. Run
 `poetry check --lock` before trusting any other version. After editing `pyproject.toml`, run `poetry lock` (not `--regenerate` unless you intend
 to bump versions) and commit the lock.
 
@@ -18,8 +16,8 @@ to bump versions) and commit the lock.
 # Check your version
 poetry --version
 
-# Upgrade if needed
-pipx upgrade poetry
+# Install the pinned version
+pipx install --force poetry==2.4.3
 ```
 
 > **Note:** This requirement only applies to developers working on the schema.
