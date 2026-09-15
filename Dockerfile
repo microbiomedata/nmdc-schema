@@ -13,7 +13,7 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     chmod +x /usr/bin/yq
 
 # Install Poetry, a package manager for Python (an alternative to pip).
-RUN pip install "poetry==2.4.1"
+RUN pip install "poetry==2.4.3"
 
 # Install the project's Python dependencies.
 ADD ./poetry.lock    /nmdc-schema/poetry.lock
