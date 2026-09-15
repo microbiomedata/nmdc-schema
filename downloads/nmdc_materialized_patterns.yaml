@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post37.dev0+340cc5162
+version: 11.23.0.post39.dev0+04d7b50b6
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -399,6 +399,9 @@ subsets:
     in_subset:
     - badge_topic
     from_schema: https://w3id.org/nmdc/nmdc
+    created_on: '2026-08-13T00:00:00+00:00'
+    last_updated_on: '2026-08-13T00:00:00+00:00'
+    modified_by: orcid:0000-0001-9076-6066
   host_information:
     name: host_information
     annotations:
@@ -416,6 +419,9 @@ subsets:
     in_subset:
     - badge_topic
     from_schema: https://w3id.org/nmdc/nmdc
+    created_on: '2026-08-13T00:00:00+00:00'
+    last_updated_on: '2026-08-13T00:00:00+00:00'
+    modified_by: orcid:0000-0001-9076-6066
 types:
   string:
     name: string
