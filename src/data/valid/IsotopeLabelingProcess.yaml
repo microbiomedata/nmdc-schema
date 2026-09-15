@@ -1,0 +1,24 @@
+    id: nmdc:labp-99-abcdef2
+    name: labeling of my awesome biosample
+    has_input:
+      - nmdc:bsm-99-123456
+    has_output:
+      - nmdc:procsm-99-987654
+    isotope_label_metadata:
+      - isotopolog_label: isotopically labeled
+        isotope: 13C
+        type: nmdc:IsotopeMetadata
+        isotopolog:
+          type: nmdc:ControlledIdentifiedTermValue
+          has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
+          term:
+            id: PUBCHEM.COMPOUND:1140
+            name: toluene
+            type: nmdc:OntologyClass
+    isotopolog_approach: single
+    isotopolog_incu_time:
+      type: nmdc:QuantityValue
+      has_raw_value: 12 h
+      has_numeric_value: 12
+      has_unit: h
+    type: nmdc:IsotopeLabelingProcess
