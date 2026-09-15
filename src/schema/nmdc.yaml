@@ -624,11 +624,11 @@ classes:
           interpolated: true
       has_output:
         required: true
-  
+
   IsotopeMetadata:
     class_uri: nmdc:IsotopeMetadata
     description: >-
-      An class that contains metadata about an isotope labeling process.
+      A class that contains metadata about an isotope labeling process.
     slots:
       - isotope
       - isotopolog
@@ -869,7 +869,6 @@ classes:
           interpolated: true
 
 enums:
-
   CalibrationTargetEnum:
     permissible_values:
       mass_charge_ratio:

@@ -667,7 +667,6 @@
 '.enums.HostSexEnum.permissible_values.["transgender (male to female)"] = {}'
 '.enums.HostSexEnum.permissible_values.["undeclared"] = {}'
 
-
 # Remove redundant inline examples from MIxS slot descriptions: the value is already
 # carried in the slot's examples metaslot, so the copy in the prose is a duplicate.
 # See CONTRIBUTING.md "Put example values in the examples metaslot, not in prose".
