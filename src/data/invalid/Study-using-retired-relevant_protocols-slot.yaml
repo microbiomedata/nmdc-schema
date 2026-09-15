@@ -62,8 +62,7 @@ funding_sources:
   - any string 1
   - any string 2
 has_credit_associations:
-  - applies_to_person:
-      has_raw_value: Craig Venter
+  - applies_to_agent:
       orcid: orcid:0000-0002-7086-765X
       profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
       email: jcventer@jcvi.org
@@ -71,15 +70,15 @@ has_credit_associations:
       websites:
         - https://www.jcvi.org/
         - https://www.jcvi.org/about/j-craig-venter
-      type: nmdc:PersonValue
+      type: nmdc:Person
     applied_roles:
       - Supervision
       - Conceptualization
       - Funding acquisition
     type: prov:Association
-  - applies_to_person:
+  - applies_to_agent:
       name: Tanja Davidsen
-      type: nmdc:PersonValue
+      type: nmdc:Person
     applied_roles:
       - Investigation
       - Supervision
