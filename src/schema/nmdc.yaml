@@ -632,6 +632,7 @@ classes:
     slots:
       - isotope
       - isotopolog
+      - hetero_isotopolog
       - isotopolog_label
       - isotopolog_atom_frac
       - isotopolog_atom_pos
@@ -640,8 +641,6 @@ classes:
 
     slot_usage:
       isotopolog:
-        todos:
-          - "PROVISIONAL AND POSSIBLY TOO PERMISSIVE: a ControlledTermValue with only has_raw_value and no term is accepted here, for undefined mixtures such as root exudates. Decide whether to keep allowing that as part of the isotopolog range decision on https://github.com/microbiomedata/nmdc-schema/pull/3396"
         range_expression:
           slot_conditions:
             term:
@@ -649,6 +648,29 @@ classes:
                 slot_conditions:
                   id:
                     pattern: '^PUBCHEM\.COMPOUND:[1-9]\d*$'
+    rules:
+      - title: hetero_isotopolog_required_when_isotopolog_absent
+        description: >-
+          If isotopolog is absent, then hetero_isotopolog is required, so that every entry names the labeled input in one of the two ways.
+        preconditions:
+          slot_conditions:
+            isotopolog:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            hetero_isotopolog:
+              required: true
+      - title: hetero_isotopolog_absent_when_isotopolog_present
+        description: >-
+          If isotopolog is present, then hetero_isotopolog must be absent, so that no entry names the labeled input in both ways.
+        preconditions:
+          slot_conditions:
+            isotopolog:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            hetero_isotopolog:
+              value_presence: ABSENT
 
   GradientFractionationProcess:
     class_uri: nmdc:GradientFractionationProcess
@@ -1182,6 +1204,20 @@ slots:
     range: IsotopeMetadata
     multivalued: true
     inlined_as_list: true
+
+  hetero_isotopolog:
+    title: heterogeneous isotopolog
+    description: >-
+      A labeled input that has no PubChem compound identifier, described in free text: an undefined mixture such as root exudates or plant litter, or labeled cells or biomass such as T4 phages. A defined compound with a PubChem compound identifier goes in isotopolog instead.
+    comments:
+      - Exactly one of isotopolog and hetero_isotopolog is given on each IsotopeMetadata entry; the rules on that class enforce it.
+      - hetero_isotopolog is a column of the MISIP supplementary tables (Simpson et al. 2024, https://doi.org/10.1093/gigascience/giae071) and is not yet a MIxS slot.
+    see_also:
+      - https://github.com/GenomicsStandardsConsortium/mixs/issues/1409
+    examples:
+      - value: root exudates
+      - value: T4 phages
+    range: string
 
   host_family_relation:
     title: host family relationship

@@ -1,6 +1,6 @@
-# Invalid for one reason: isotopolog.term.id is the sentinel PUBCHEM.COMPOUND:0, which is
-# not a real compound identifier. PubChem's API returns HTTP 400 for CID 0.
-id: nmdc:labp-99-abcdef7
+# Invalid for one reason: the entry gives both isotopolog and hetero_isotopolog. Exactly one
+# of them names the labeled input.
+id: nmdc:labp-99-abcdef9
 name: labeling of my awesome biosample
 type: nmdc:IsotopeLabelingProcess
 has_input:
@@ -14,8 +14,9 @@ isotope_label_metadata:
     type: nmdc:IsotopeMetadata
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: an undefined mixture [PUBCHEM.COMPOUND:0]
+      has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
       term:
-        id: PUBCHEM.COMPOUND:0
-        name: an undefined mixture
+        id: PUBCHEM.COMPOUND:1140
+        name: toluene
         type: nmdc:OntologyClass
+    hetero_isotopolog: toluene
