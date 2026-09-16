@@ -4,7 +4,7 @@
       - nmdc:bsm-99-123456
     has_output:
       - nmdc:procsm-99-987654
-    isotope_label_metadata:
+    isotopolog_additions:
       - isotopolog_label: isotopically labeled
         isotope: 13C
         type: nmdc:IsotopologAddition

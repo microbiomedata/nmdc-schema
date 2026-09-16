@@ -608,7 +608,7 @@ classes:
     description: >-
       A material processing that labels a substance with a stable or radioactive isotope(s).
     slots:
-      - isotope_label_metadata
+      - isotopolog_additions
       - isotopolog_approach
       - isotopolog_incu_time
       - substances_used
@@ -1192,15 +1192,10 @@ enums:
         is_a: organic_layer
 
 slots:
-  # ============================================================================
-  # Legacy MIxS slots removed from GSC MIxS commit 0368da846b197bef1c0dd27a9cf337a8aeea17f2
-  # These slots were present in microbiomedata/mixs tag pre-2024-05-15 but removed
-  # from the current GSC MIxS. NMDC retains them for backward compatibility with
-  # submission-schema which references them. No production data uses these slots.
-  # ============================================================================
-  isotope_label_metadata:
+  # SIP (stable isotope probing) slots defined by NMDC. The MIxS MISIP slots they group are imported in mixs.yaml.
+  isotopolog_additions:
     description: >-
-      Metadata about the isotope labeling process.
+      The isotopologs, or heterogeneous materials, added during this isotope labeling process, one entry per isotopolog and isotope.
     range: IsotopologAddition
     multivalued: true
     inlined_as_list: true
@@ -1219,6 +1214,12 @@ slots:
       - value: T4 phages
     range: string
 
+  # ============================================================================
+  # Legacy MIxS slots removed from GSC MIxS commit 0368da846b197bef1c0dd27a9cf337a8aeea17f2
+  # These slots were present in microbiomedata/mixs tag pre-2024-05-15 but removed
+  # from the current GSC MIxS. NMDC retains them for backward compatibility with
+  # submission-schema which references them. No production data uses these slots.
+  # ============================================================================
   host_family_relation:
     title: host family relationship
     description: >-

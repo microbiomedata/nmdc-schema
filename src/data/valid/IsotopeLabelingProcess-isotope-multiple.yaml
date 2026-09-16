@@ -6,7 +6,7 @@ has_input:
 has_output:
   - nmdc:procsm-99-987650
 isotopolog_approach: multiple
-isotope_label_metadata:
+isotopolog_additions:
   - isotopolog_label: isotopically labeled
     type: nmdc:IsotopologAddition
     isotope: 13C
