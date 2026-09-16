@@ -6,10 +6,10 @@ kept by hand. It is no longer the default place to write generated output; see t
 output-destination row in the policy table in
 [CONTRIBUTING.md](https://github.com/microbiomedata/nmdc-schema/blob/main/CONTRIBUTING.md).
 
-A file that lands there and is then named by nothing has no way to fail. It is not
-regenerated, so it does not get refreshed; it is not read, so a wrong value never surfaces.
-It just sits at whatever the schema looked like on the day it was written. Two consequences
-have already been paid for:
+An asset without a maintained consumer or regeneration step can stay unchanged as the
+schema evolves. Searching for references helps identify files needing review, although
+the absence of a literal filename does not prove that a file is unused. Two examples of
+stale assets illustrate the problem:
 
 - `assets/schema_pattern_linting.txt` was last regenerated on 2025-12-03 (commit
   `086cb897a`). On 2026-02-13, commit `11139a97a` moved `chemical_entity_set`, `inchi`,
@@ -28,9 +28,11 @@ Every file tracked under `assets/` must be named by something else in the repo: 
 target that builds it, a script or test that reads it, or a document that explains what it
 is for. If none of those is true, it is a retirement candidate.
 
-`tests/test_no_new_unreferenced_assets.py` enforces this going forward. It runs in `make
-test` and so in CI. Files that predate the check are listed in its allowlist, grouped with
-the reason each is still there and the issue tracking its retirement.
+`tests/test_no_new_unreferenced_assets.py` checks for literal references going forward. It
+runs in `make test` and so in CI. Files that predate the check are listed in its allowlist,
+grouped with the reason each is still there and the issue tracking its retirement. Audit
+prose and the detector's own fixtures do not count as consumers. An actual consumer using
+a constructed path may need a documentation reference or a reasoned allowlist entry.
 
 ## Checking one file
 
@@ -40,23 +42,32 @@ Run the report:
 make report-asset-usage
 ```
 
-It prints three lists: assets referenced nowhere in this repo, assets naming an element
-defined in `src/schema/deprecated.yaml`, and the intersection. A file in the third list can
-be deleted without a remapping decision, because nothing reads it and the elements it names
-are retired.
+It prints three lists: assets with no literal reference found in the searched repository
+files, assets naming an element defined in `src/schema/deprecated.yaml`, and the intersection.
+Files in the third list are priorities for retirement review. Check consumers before
+deciding to delete, regenerate, or retain them.
 
 The report only sees this repository. Before deleting, check the rest of the organization,
-because another repo can read a raw GitHub URL without any local reference:
+because another repo can read a raw GitHub URL without any local reference. This preliminary
+search filters out this repository's own matches:
 
 ```bash
-gh search code --owner microbiomedata "<filename without extension>"
+gh search code --owner microbiomedata "<filename without extension>" \
+  --limit 1000 --json repository,path,url \
+  --jq '.[] | select(.repository.nameWithOwner != "microbiomedata/nmdc-schema")'
 ```
 
-Zero results there plus zero references here is the evidence to act on. Record both in the
-pull request. Worked example: `assets/misc/neon_nmdc_term_mapping.tsv` was deleted on
-2026-08-26 after `gh search code --owner microbiomedata neon_nmdc_term_mapping` returned
-nothing and a grep across every local clone of `nmdc-runtime`, `nmdc-server`,
-`nmdc-lakehouse`, and `external-metadata-awareness` returned nothing.
+Zero results are supporting evidence, not proof of non-use. The
+[GitHub CLI uses the legacy code-search index](https://cli.github.com/manual/gh_search_code),
+which has coverage restrictions, and results may reach the requested limit. Inspect likely
+consumer repositories directly, including scripts that construct paths or use globs.
+Record repository revisions, search terms, coverage gaps, and the retirement rationale in
+the pull request. A failed or incomplete search must not be reported as zero matches.
+
+Worked example: the metadata squad decided on 2026-08-26 to delete
+`assets/misc/neon_nmdc_term_mapping.tsv`. The investigation found no code-search hits and
+no filename references in the local clones of `nmdc-runtime`, `nmdc-server`,
+`nmdc-lakehouse`, and `external-metadata-awareness` that it checked.
 NEON (National Ecological Observatory Network) ingest, which might have used it, does its
 own term mapping in `nmdc_runtime/site/translation/neon_soil_translator.py` and siblings.
 
@@ -68,7 +79,7 @@ the report and ratchet described above.
 
 ## Retiring one
 
-1. Confirm it is unreferenced here and in the organization, as above.
+1. Review local and external consumers, as above, and record the evidence supporting retirement.
 2. Delete it with `git rm`. Git history is the archive; there is no need to keep a copy in
    the tree. This is the same disposition as
    [Remove SPARQL query files and unreferenced OWL customization artifact](https://github.com/microbiomedata/nmdc-schema/pull/3132),
@@ -77,8 +88,8 @@ the report and ratchet described above.
 3. Remove its entry from the allowlist in `tests/test_no_new_unreferenced_assets.py`. The
    test fails if an allowlisted path stops being unreferenced or stops existing, so the list
    cannot drift into fiction.
-4. Say in the pull request how you know nothing uses it. A reader a year from now cannot
-   redo the search from a claim that it was unused.
+4. Say in the pull request what you checked and why retirement is appropriate. A reader a
+   year from now cannot redo the search from a claim that the file was unused.
 
 If the file is referenced but stale, regenerate it instead of deleting it, and check whether
 its Makefile target is a prerequisite of anything. If it is not, nothing will regenerate it
@@ -90,8 +101,12 @@ Retiring a schema element is what most often exposes a stale asset, because the 
 is what makes the staleness visible. The second release cycle of
 [the deprecation guide](schema_element_deprecation_guide.md) now includes a step for this.
 
-Two limits worth knowing before trusting the check:
+Limits worth knowing before trusting the check:
 
+- Reference detection searches selected text formats in tracked files. It excludes generated
+  trees, `assets/` itself, and audit prose; see `SEARCHABLE_SUFFIXES`, `ROOT_EXCLUDED_DIRS`,
+  and `AUDIT_FILES` in `src/scripts/report_asset_usage.py` for the exact scope. It does not
+  resolve dynamically constructed paths or establish that a textual mention is a live dependency.
 - It reads element names out of `src/schema/deprecated.yaml`, so it only sees elements that
   have completed the second release cycle. An element marked deprecated but not yet moved is
   invisible to it. So is a rename: `OmicsProcessing` became `DataGeneration` without passing

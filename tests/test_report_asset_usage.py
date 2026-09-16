@@ -5,6 +5,7 @@ Builds a small git repository under ``tmp_path`` (``git add``-ed, not committed;
 end, rather than mocking ``tracked_assets``.
 """
 
+import json
 import subprocess
 
 import pytest
@@ -130,6 +131,45 @@ def test_untracked_file_is_not_a_consumer(repo):
     assert finding.is_unreferenced
 
 
+@pytest.mark.parametrize("suffix", [".ipynb", ".csv", ".tsv"])
+def test_notebooks_and_tables_can_reference_assets(repo, suffix):
+    asset = "assets/misc/input_data.txt"
+    consumer = f"consumers/input_manifest{suffix}"
+    _write(repo / asset, "data\n")
+    if suffix == ".ipynb":
+        content = json.dumps(
+            {"cells": [{"cell_type": "code", "source": [f"open('{asset}')"]}]}
+        )
+    else:
+        content = f"input_path\n{asset}\n"
+    _write(repo / consumer, content)
+    subprocess.run(["git", "add", asset, consumer], cwd=repo, check=True)
+
+    finding = _find(find_asset_findings(repo), asset)
+    assert finding.referenced_by == (consumer,)
+
+
+@pytest.mark.parametrize(
+    "audit_file",
+    [
+        "src/scripts/report_asset_usage.py",
+        "tests/test_no_new_unreferenced_assets.py",
+        "tests/test_report_asset_usage.py",
+        "src/docs/asset-lifecycle.md",
+        "src/docs/schema_element_deprecation_guide.md",
+    ],
+)
+def test_audit_examples_do_not_count_as_consumers(repo, audit_file):
+    asset = "assets/misc/audit_example.tsv"
+    _write(repo / asset, "old_slot\n")
+    _write(repo / audit_file, f"Example path: {asset}\n")
+    subprocess.run(["git", "add", asset, audit_file], cwd=repo, check=True)
+
+    finding = _find(find_asset_findings(repo), asset)
+    assert finding.is_unreferenced
+    assert finding.deprecated_elements == ("old_slot",)
+
+
 def test_deprecated_element_is_detected(repo):
     finding = _find(find_asset_findings(repo), "assets/misc/old_mapping.tsv")
     assert finding.is_unreferenced
@@ -161,9 +201,11 @@ def test_emit_text_lists_every_unreferenced_and_deprecated_asset(repo, capsys):
     out = capsys.readouterr().out
     assert "assets/one/README.md" in out
     assert "old_slot" in out
-    assert "assets/misc/referenced.tsv" not in out.split("Referenced nowhere")[1].split(
-        "Naming an element"
-    )[0]
+    assert "verify consumers before deleting" in out
+    assert (
+        "assets/misc/referenced.tsv"
+        not in out.split("No reference found")[1].split("Naming an element")[0]
+    )
 
 
 def test_emit_tsv_has_one_row_per_asset_and_a_header(repo, capsys):

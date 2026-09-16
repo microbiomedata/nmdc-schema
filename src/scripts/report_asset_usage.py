@@ -2,11 +2,11 @@
 
 Two findings, from one pass over the tracked asset list.
 
-**Unreferenced.** A file under ``assets/`` that no Makefile, workflow, test, script,
-or committed document names. Nothing builds it and nothing consumes it, so it cannot
-go stale loudly; it goes stale silently. ``assets/`` is no longer the default output
-destination (see the policy table in ``CONTRIBUTING.md``), so an unreferenced file
-there is a retirement candidate rather than a normal state.
+**Unreferenced.** A file under ``assets/`` with no literal reference found in the
+searched tracked files. This is a retirement candidate, not proof that nothing uses
+it: constructed paths, excluded files, and external consumers need separate checks.
+``assets/`` is no longer the default output destination (see the policy table in
+``CONTRIBUTING.md``).
 
 **Names a deprecated element.** A file under ``assets/`` that mentions a class, slot,
 enum, or type defined in ``src/schema/deprecated.yaml``. The two-release deprecation
@@ -15,9 +15,8 @@ the schema source; until 2026-08 it said nothing about ``assets/``, so mapping f
 kept naming elements the schema no longer exposes.
 
 The two findings interact, which is the reason they share a script. An asset that is
-both unreferenced and names a deprecated element needs no remapping decision: nothing
-reads it, so it can be deleted. One that is referenced needs the reference fixed or
-regenerated instead.
+both unreferenced and names a deprecated element is a priority for retirement review.
+Verify its consumers before deciding to delete, regenerate, or retain it.
 
 Usage::
 
@@ -70,7 +69,9 @@ SEARCHABLE_SUFFIXES = frozenset(
     {
         "",
         ".cfg",
+        ".csv",
         ".ini",
+        ".ipynb",
         ".js",
         ".json",
         ".jsonld",
@@ -79,6 +80,7 @@ SEARCHABLE_SUFFIXES = frozenset(
         ".py",
         ".sh",
         ".toml",
+        ".tsv",
         ".txt",
         ".yaml",
         ".yml",
@@ -94,7 +96,9 @@ AUDIT_FILES = frozenset(
     {
         "src/scripts/report_asset_usage.py",
         "tests/test_no_new_unreferenced_assets.py",
+        "tests/test_report_asset_usage.py",
         "src/docs/asset-lifecycle.md",
+        "src/docs/schema_element_deprecation_guide.md",
     }
 )
 
@@ -237,11 +241,11 @@ def _emit_text(findings):
 
     click.echo(
         f"{len(findings)} tracked files under {ASSETS_DIR}/; "
-        f"{len(unreferenced)} referenced nowhere; "
+        f"{len(unreferenced)} with no reference found in searched files; "
         f"{len(naming_deprecated)} naming a deprecated element."
     )
 
-    click.echo("\nReferenced nowhere in the repo:")
+    click.echo("\nNo reference found in searched repository files:")
     for finding in unreferenced or ():
         click.echo(f"  {finding.path}")
     if not unreferenced:
@@ -253,7 +257,7 @@ def _emit_text(findings):
     if not naming_deprecated:
         click.echo("  (none)")
 
-    click.echo("\nBoth (deletable without a remapping decision, nothing reads them):")
+    click.echo("\nBoth (retirement candidates; verify consumers before deleting):")
     for finding in both or ():
         click.echo(f"  {finding.path}")
     if not both:

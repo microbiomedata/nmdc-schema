@@ -1,14 +1,14 @@
-"""Guard against adding a file to ``assets/`` that nothing in the repo refers to.
+"""Guard against adding an asset with no reference found in the searched files.
 
 A ratchet over the existing backlog, not a clean-room assertion. Every path in
 ``EXPECTED_UNREFERENCED`` is a file that predates this check; each group below says
-why it is still there and where its retirement is tracked. A newly added asset that
-nothing names fails here instead of joining the pile.
+why it is still there and where its retirement is tracked. A newly added asset with
+no detected reference fails here instead of joining the pile.
 
 The second assertion is the one that connects this to element deprecation: an asset
-that is both unreferenced and names an element in ``src/schema/deprecated.yaml`` needs
-no remap decision, because nothing reads it. Those are listed separately so the set
-shrinks visibly as they are retired.
+that has no detected reference and names an element in ``src/schema/deprecated.yaml``
+is a priority for retirement review. Check its consumers before deciding its fate.
+These candidates are listed separately so the set shrinks visibly as they are retired.
 
 Report and rationale: ``src/scripts/report_asset_usage.py``.
 Procedure: ``src/docs/asset-lifecycle.md``.
@@ -83,8 +83,8 @@ EXPECTED_UNREFERENCED = (
     _REFERENCE_DATA | _MANUAL_MONGO_QUERIES | _ORPHANED_OUTPUTS | _GIT_PLACEHOLDERS
 )
 
-# The subset of the above that also names an element in deprecated.yaml. Nothing reads
-# these and the elements they name are retired, so each is deletable on its own merits.
+# The subset of the above that also names an element in deprecated.yaml. These are
+# retirement candidates; the search does not establish that they have no consumers.
 # This set should only ever shrink.
 EXPECTED_UNREFERENCED_AND_DEPRECATED = {
     "assets/mongodb_queries/data_qc/functional_annotation_agg_metagenome_metatranscriptome_annotation_id.js",
@@ -100,8 +100,8 @@ def test_no_new_unreferenced_assets():
 
     unexpected = actual - EXPECTED_UNREFERENCED
     assert not unexpected, (
-        f"{len(unexpected)} file(s) under assets/ are named by no Makefile, workflow, "
-        f"test, script, or document: {sorted(unexpected)}. Give the file a consumer, "
+        f"{len(unexpected)} file(s) under assets/ have no literal reference in the "
+        f"searched repository files: {sorted(unexpected)}. Document the consumer, "
         f"write it somewhere else (see the output-destination row in CONTRIBUTING.md), "
         f"or add it to EXPECTED_UNREFERENCED with a reason. "
         f"See src/docs/asset-lifecycle.md."
@@ -116,7 +116,7 @@ def test_no_new_unreferenced_assets():
 
 
 def test_unreferenced_and_deprecated_set_only_shrinks():
-    """An unreferenced asset naming a deprecated element is deletable; track the set down."""
+    """Track retirement candidates that also name a deprecated element."""
     findings = find_asset_findings(REPO_ROOT)
     actual = {
         finding.path
@@ -127,8 +127,8 @@ def test_unreferenced_and_deprecated_set_only_shrinks():
     unexpected = actual - EXPECTED_UNREFERENCED_AND_DEPRECATED
     assert not unexpected, (
         f"{len(unexpected)} unreferenced asset(s) name an element in "
-        f"src/schema/deprecated.yaml: {sorted(unexpected)}. Nothing reads them and the "
-        f"elements are retired, so delete them rather than remapping. If one must stay, "
+        f"src/schema/deprecated.yaml: {sorted(unexpected)}. Check local and external "
+        f"consumers before deciding to delete, regenerate, or retain them. If one must stay, "
         f"add it to EXPECTED_UNREFERENCED_AND_DEPRECATED with a reason. "
         f"See src/docs/schema_element_deprecation_guide.md. "
         f"If your branch did not touch assets/, the likely cause is a deprecation that "
@@ -141,5 +141,5 @@ def test_unreferenced_and_deprecated_set_only_shrinks():
         f"{len(retired)} allowlisted asset(s) no longer name a deprecated element while "
         f"unreferenced: {sorted(retired)}. Remove them from "
         f"EXPECTED_UNREFERENCED_AND_DEPRECATED so the list stays an accurate account of "
-        f"what is still deletable."
+        f"the remaining retirement candidates."
     )
