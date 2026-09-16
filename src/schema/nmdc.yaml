@@ -651,7 +651,7 @@ classes:
     rules:
       - title: hetero_isotopolog_required_when_isotopolog_absent
         description: >-
-          If isotopolog is absent, then hetero_isotopolog is required, so that every entry names the labeled input in one of the two ways.
+          If isotopolog is absent, then hetero_isotopolog is required, so that every entry names the input in one of the two ways.
         preconditions:
           slot_conditions:
             isotopolog:
@@ -662,7 +662,7 @@ classes:
               required: true
       - title: hetero_isotopolog_absent_when_isotopolog_present
         description: >-
-          If isotopolog is present, then hetero_isotopolog must be absent, so that no entry names the labeled input in both ways.
+          If isotopolog is present, then hetero_isotopolog must be absent, so that no entry names the input in both ways.
         preconditions:
           slot_conditions:
             isotopolog:
