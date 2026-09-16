@@ -606,7 +606,7 @@ classes:
     class_uri: nmdc:IsotopeLabelingProcess
     is_a: MaterialProcessing
     description: >-
-      A material processing in which one or more substances or materials, isotopically labeled or at natural abundance, are added to a sample so that uptake of the isotope by the resident organisms can be traced.
+      A material processing in which substances or materials, isotopically labeled or at natural abundance, are added to a sample so that uptake of the isotope by the resident organisms can be traced.
     slots:
       - isotopolog_additions
       - isotopolog_approach
@@ -676,7 +676,7 @@ classes:
     class_uri: nmdc:DensityGradientFractionationProcess
     is_a: MaterialProcessing
     description: >-
-      A material processing that separates nucleic acids extracted from a sample into fractions by buoyant density, usually by isopycnic centrifugation. Each output fraction records its position in the gradient.
+      A material processing that separates a sample, typically extracted nucleic acids, into fractions by buoyant density, usually by isopycnic centrifugation. The output fractions can record their gradient position, buoyant density and relative nucleic acid amount.
     aliases:
       - Isopycnic Centrifugation
       - Density Gradient Centrifugation

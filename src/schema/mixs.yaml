@@ -8191,7 +8191,7 @@ slots:
     annotations:
       storage_units: "1"
     comments:
-      - In NMDC each IsotopologAddition entry holds one isotopolog and one atom fraction, so the pipe-separated ordering described for spreadsheets does not apply.
+      - In NMDC each IsotopologAddition entry describes one added input, an isotopolog or a hetero_isotopolog, and carries at most one atom fraction, so the pipe-separated ordering described for spreadsheets does not apply.
   isotopolog_atom_pos:
     description: InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be ordered the same as the isotopolog.
     title: set of labeled atoms in isotopologue
@@ -8205,7 +8205,7 @@ slots:
     structured_pattern:
       syntax: ^({termLabel} \[{termID}\]|{text})$
     comments:
-      - In NMDC each IsotopologAddition entry holds one isotopolog and one set of labeled atoms, so the pipe-separated ordering described for spreadsheets does not apply.
+      - In NMDC each IsotopologAddition entry describes one added input, an isotopolog or a hetero_isotopolog, and carries at most one set of labeled atoms, so the pipe-separated ordering described for spreadsheets does not apply.
   isotopolog_dose:
     annotations:
       Preferred_unit: ppm
