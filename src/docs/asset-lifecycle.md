@@ -37,7 +37,7 @@ the reason each is still there and the issue tracking its retirement.
 Run the report:
 
 ```bash
-poetry run make report-asset-usage
+make report-asset-usage
 ```
 
 It prints three lists: assets referenced nowhere in this repo, assets naming an element

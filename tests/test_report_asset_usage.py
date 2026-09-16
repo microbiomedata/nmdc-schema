@@ -67,8 +67,23 @@ def repo(tmp_path):
     )
     _write(tmp_path / "assets/misc/only_in_generated_docs.tsv", "data\n")
 
+    # A duplicate basename that isn't in GENERIC_BASENAMES: the dynamic uniqueness
+    # check, not the hardcoded denylist, must be what catches this.
+    _write(tmp_path / "assets/a/data.csv", "a\n")
+    _write(tmp_path / "assets/b/data.csv", "b\n")
+    _write(tmp_path / "scripts/loads_data.py", "open('data.csv')\n")
+
+    # An untracked asset naming another tracked asset by full path must not count:
+    # only committed content is a consumer.
+    _write(tmp_path / "assets/misc/only_named_untracked.tsv", "data\n")
+
     subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
     subprocess.run(["git", "add", "-A"], cwd=tmp_path, check=True)
+
+    _write(
+        tmp_path / "untracked_notes.md",
+        "See assets/misc/only_named_untracked.tsv for context.\n",
+    )
     return tmp_path
 
 
@@ -97,6 +112,22 @@ def test_generic_basename_does_not_count_as_a_reference(repo):
     two = _find(findings, "assets/two/README.md")
     assert one.is_unreferenced
     assert two.is_unreferenced
+
+
+def test_duplicate_basename_not_in_denylist_is_caught_dynamically(repo):
+    """Two tracked assets sharing a basename must not trust the bare-name fallback,
+    even though neither name is in GENERIC_BASENAMES."""
+    findings = find_asset_findings(repo)
+    a = _find(findings, "assets/a/data.csv")
+    b = _find(findings, "assets/b/data.csv")
+    assert a.is_unreferenced
+    assert b.is_unreferenced
+
+
+def test_untracked_file_is_not_a_consumer(repo):
+    """Only committed content counts; an untracked file naming an asset must not."""
+    finding = _find(find_asset_findings(repo), "assets/misc/only_named_untracked.tsv")
+    assert finding.is_unreferenced
 
 
 def test_deprecated_element_is_detected(repo):

@@ -27,11 +27,18 @@ Usage::
 Report-only; the exit status is 0 unless the script itself fails. The gate is
 ``tests/test_no_new_unreferenced_assets.py``, which ratchets the unreferenced set
 against a reviewed allowlist.
+
+Plain Python: ``pathlib``, ``re``, ``dataclasses``, ``subprocess`` (to shell out to
+``git ls-files``), plus ``click`` for the CLI and ``pyyaml`` to read
+``deprecated.yaml``. No network calls and no AI in the detection path; matching is
+literal substring and regex, not code-aware parsing, which is why the bare-filename
+fallback needs the distinctiveness checks below rather than trusting every match.
 """
 
 import re
 import subprocess
 import sys
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -143,11 +150,21 @@ def deprecated_element_names(repo_root):
 
 
 def _searchable_files(repo_root):
-    """Repo files that could plausibly name an asset, excluding generated trees."""
-    for path in repo_root.rglob("*"):
+    """Committed files that could plausibly name an asset, excluding generated trees.
+
+    Enumerated from ``git ls-files``, not a filesystem walk: an untracked local file
+    (a stray note, a build artifact) must never be able to make a tracked orphan look
+    referenced, since the ratchet's whole premise is that only committed content
+    counts as a consumer.
+    """
+    output = _run_git(["ls-files"], repo_root)
+    for line in output.splitlines():
+        if not line:
+            continue
+        relative = Path(line)
+        path = repo_root / relative
         if not path.is_file():
             continue
-        relative = path.relative_to(repo_root)
         if relative.parts and relative.parts[0] in ROOT_EXCLUDED_DIRS:
             continue
         if EXCLUDED_DIR_NAMES.intersection(relative.parts):
@@ -172,9 +189,10 @@ def find_asset_findings(repo_root):
 
     An asset counts as referenced if any searchable file outside ``assets/`` contains
     its repo-relative path, or its bare filename when that filename is distinctive
-    enough to trust (see ``GENERIC_BASENAMES``). The bare-filename fallback exists
-    because Makefiles and scripts often build the path from a variable, so requiring
-    the full path would report false orphans.
+    enough to trust: unique among tracked assets, and not a name known to collide
+    with something unrelated (see ``GENERIC_BASENAMES``). The bare-filename fallback
+    exists because Makefiles and scripts often build the path from a variable, so
+    requiring the full path would report false orphans.
     """
     repo_root = Path(repo_root)
     assets = tracked_assets(repo_root)
@@ -187,10 +205,14 @@ def find_asset_findings(repo_root):
         for name in deprecated
     }
 
+    basename_counts = Counter(Path(asset).name for asset in assets)
+
     findings = []
     for asset in assets:
         basename = Path(asset).name
-        trust_basename = basename not in GENERIC_BASENAMES
+        trust_basename = (
+            basename_counts[basename] == 1 and basename not in GENERIC_BASENAMES
+        )
         referenced_by = sorted(
             str(path.relative_to(repo_root))
             for path, text in corpus.items()
