@@ -10,6 +10,24 @@ LATEST_RELEASE_TAG_FILE := local/latest_release_tag.txt
 
 PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
 
+##### SIP instance diagram (generated from example data) #####
+# Graphviz supplies `dot`; no Python graph-rendering dependency is needed.
+SIP_DATABASE := src/data/valid/Database-sip-lifecycle.yaml
+SIP_DIAGRAM_SCRIPT := src/scripts/database_to_diagram.py
+
+.PHONY: sip-diagram
+sip-diagram: src/docs/images/sip-lifecycle.svg src/docs/images/sip-lifecycle.mmd
+
+local/sip-lifecycle.dot: $(SIP_DATABASE) $(SIP_DIAGRAM_SCRIPT)
+	mkdir -p local
+	$(RUN) python $(SIP_DIAGRAM_SCRIPT) $< $@ --format dot
+
+src/docs/images/sip-lifecycle.mmd: $(SIP_DATABASE) $(SIP_DIAGRAM_SCRIPT)
+	$(RUN) python $(SIP_DIAGRAM_SCRIPT) $< $@
+
+src/docs/images/sip-lifecycle.svg: local/sip-lifecycle.dot
+	dot -Tsvg $< -o $@
+
 
 ##### Ontology registry counts #####
 # On-demand target — fetches from external APIs (OLS, OBO Foundry, semantic-sql).

@@ -1,5 +1,12 @@
 # Visualizations
 
+## DNA-SIP lifecycle instance diagram
+
+The [DNA-SIP lifecycle walkthrough](sip-lifecycle.md) follows a self-contained
+Database example from paired incubations through density fractions, library
+preparation and sequence files. Run `make sip-diagram` to regenerate its diagram
+directly from the example's instance relationships.
+
 ## Inter-collection relationship diagram
 
 <!-- Note: `visualizations/collection-graph.html` does not exist in the source code repository.
