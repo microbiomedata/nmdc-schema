@@ -606,7 +606,7 @@ classes:
     class_uri: nmdc:IsotopeLabelingProcess
     is_a: MaterialProcessing
     description: >-
-      A material processing that labels a substance with a stable or radioactive isotope(s).
+      A material processing in which one or more substances or materials, isotopically labeled or at natural abundance, are added to a sample so that uptake of the isotope by the resident organisms can be traced.
     slots:
       - isotopolog_additions
       - isotopolog_approach

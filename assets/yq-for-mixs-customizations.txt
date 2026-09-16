@@ -1018,6 +1018,8 @@
 '.slots.isotopolog.comments = ["Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. A labeled input with no PubChem compound identifier, such as root exudates or labeled cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case."]'
 '.slots.isotopolog_atom_frac.description |= sub("should be orded the same"; "should be ordered the same")'
 '.slots.isotopolog_atom_pos.description |= sub("should be orded the same"; "should be ordered the same")'
+'.slots.isotopolog_atom_frac.comments += ["In NMDC each IsotopologAddition entry holds one isotopolog and one atom fraction, so the pipe-separated ordering described for spreadsheets does not apply."]'
+'.slots.isotopolog_atom_pos.comments += ["In NMDC each IsotopologAddition entry holds one isotopolog and one set of labeled atoms, so the pipe-separated ordering described for spreadsheets does not apply."]'
 '.slots.gradient_pos_rel_am.description |= sub("untargetted"; "untargeted")'
 '.slots.gradient_position.description |= sub("denoted with –1"; "denoted with -1")'
 '.slots.isotopolog_atom_frac.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.95","has_numeric_value": 0.95, "has_unit": "1"}}]'
