@@ -313,19 +313,7 @@ include project.Makefile
 include makefiles/mixs.Makefile
 include makefiles/migrators.Makefile
 include makefiles/ontology-alignment.Makefile
-
-# Regenerate SVGs from Mermaid sources in src/docs/images/.
-# Requires Node.js; mmdc is pulled on demand via `npx -y`.
-# `make diagrams` re-renders only the SVGs whose .mmd has changed.
-DIAGRAM_MMD := $(wildcard src/docs/images/*.mmd)
-DIAGRAM_SVG := $(DIAGRAM_MMD:.mmd=.svg)
-
-diagrams: $(DIAGRAM_SVG)
-
-PUPPETEER_CFG := src/docs/images/puppeteer-config.json
-
-src/docs/images/%.svg: src/docs/images/%.mmd
-	npx -y @mermaid-js/mermaid-cli -i $< -o $@ -b transparent -p $(PUPPETEER_CFG)
+include makefiles/diagrams.Makefile
 
 
 # custom
@@ -388,4 +376,3 @@ check-invalids-for-single-failure:
 		output=$$($$cmd 2>&1 || true); \
 		echo "$$output" | sort | uniq; \
 	done
-

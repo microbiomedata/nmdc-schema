@@ -1,0 +1,12 @@
+{
+  "theme": "base",
+  "layout": "elk",
+  "htmlLabels": false,
+  "deterministicIds": true,
+  "deterministicIDSeed": "nmdc-schema",
+  "flowchart": {
+    "htmlLabels": false,
+    "wrappingWidth": 320,
+    "useMaxWidth": false
+  }
+}

@@ -1,11 +1,16 @@
 # Visualizations
 
-## DNA-SIP lifecycle instance diagram
+## Database example diagrams
 
-The [DNA-SIP lifecycle walkthrough](sip-lifecycle.md) follows a self-contained
-Database example from paired incubations through density fractions, library
-preparation and sequence files. Run `make sip-diagram` to regenerate its diagram
-directly from the example's instance relationships.
+The [Database example diagram generator and gallery](database-example-diagrams.md)
+show relationships between actual records in valid examples. One generator
+produces the SIP lifecycle and five organism/isolate diagrams directly from their
+YAML files, with shared validation and Mermaid rendering. Run
+`make example-diagrams` to regenerate them all.
+
+The [DNA-SIP walkthrough](sip-lifecycle.md) explains the paired incubations,
+density fractions, library preparation, sequence files and Manifests in that
+example. `make sip-diagram` regenerates just its diagram.
 
 ## Inter-collection relationship diagram
 

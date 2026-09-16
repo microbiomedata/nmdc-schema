@@ -65,40 +65,34 @@ before library preparation. No pooling occurs in this example.
 
 ## Generate the diagram from the Database
 
-From the repository root, with its Poetry dependencies and Graphviz installed:
+From the repository root, with its Poetry dependencies and Node.js/npm installed:
 
 ```sh
 make sip-diagram
 ```
 
-This updates `src/docs/images/sip-lifecycle.svg` and
-`src/docs/images/sip-lifecycle.mmd`, with intermediate DOT in `local/`.
-Changes to the YAML or generator cause regeneration. No hand-maintained node or
-edge list is needed.
+This validates the Database against the current source schema, updates
+`src/docs/images/sip-lifecycle.mmd`, and renders that same Mermaid source to
+`src/docs/images/sip-lifecycle.svg`. The shared renderer is pinned in
+`makefiles/diagrams.Makefile`; its first run downloads Mermaid CLI and a headless
+browser. No Graphviz installation or schema build is needed. Unchanged Mermaid
+content keeps its timestamp, so repeated invocations need not rerender the SVG.
 
 ![DNA-SIP lifecycle generated from the Database instance](images/sip-lifecycle.svg)
 
 [Open the full-size SVG](images/sip-lifecycle.svg).
-Green boxes are material samples, blue ellipses are processes, orange boxes are
-data files, and purple boxes are manifests. Solid arrows show inputs/outputs;
-dashed arrows show manifest membership. The Study is checked but not drawn.
+Green boxes are material entities, blue rounded nodes are processes, orange boxes
+are data files, and purple boxes are manifests. Gray nodes include the Study and
+identified ontology terms. Solid arrows show material/data flow. The reverse
+of `has_input` is explicitly labeled `input to (inverse has_input)`; dashed arrows
+show contextual relationships such as manifest and Study membership. When
+`has_output` and the inverse of `was_generated_by` connect the same records,
+one edge carries both labels.
 
-For another Database instance, generate portable Mermaid source directly:
-
-```sh
-poetry run python src/scripts/database_to_diagram.py \
-  src/data/valid/Database-sip-lifecycle.yaml local/example.mmd
-```
-
-Use `--format dot` for Graphviz source and `--direction LR` for a horizontal
-layout. The script reads list-valued Database collections from YAML or JSON. It
-draws records participating in `has_input`, `has_output`, or `in_manifest`, checks
-those references plus `associated_studies` and `was_generated_by`, and rejects
-duplicate IDs. It does not infer missing steps. By default, unresolved references
-are errors. For deliberately partial examples, `--allow-external` draws undefined
-flow endpoints explicitly; it does not make the example self-contained. This
-closure check covers the listed slots, not every possible reference in the schema,
-and is separate from schema validation.
+The same generator now produces the five organism/isolate diagrams. See
+[Database example diagrams](database-example-diagrams.md) for the shared commands,
+relationship versus workflow views, validation, optional metadata labels, and
+handling of intentionally partial examples.
 
 ## Example coverage and limits
 
