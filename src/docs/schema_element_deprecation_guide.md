@@ -58,4 +58,27 @@ mapped `incubationLength` to it. Nothing read that file, so it was deleted separ
 That question, "remove or remap?", was taken to the 2026-08-26 NMDC Schema and Metadata meeting because the 
 guide had no answer for it. This section is the answer.
 
-#### TODO - section on updating the portal schema in the context of deprecation
+## Consumer repositories
+
+The steps above cover this repository. Other repositories import specific elements by name and can 
+break the moment a named element disappears from here, whether or not they still use it.
+
+`submission-schema` is the known case. Its `config/nmdc_schema_import.yaml` and 
+`src/nmdc_submission_schema/schema/nmdc_submission_schema_base.yaml` list individual slots to pull in, 
+and its build (`make schema-build`) fails outright, with `ValueError: Slot '<name>' not found in source 
+schema`, the moment a listed slot is removed here. Before finalizing a deprecation (the second release 
+cycle), check whether the element is named in submission-schema's import config, and either:
+
+- get a submission-schema PR removing it merged first, or in the same release window, or
+- say so explicitly on the nmdc-schema PR, so submission-schema does not repin to a release containing 
+  the removal until its own PR is ready.
+
+Worked example: building submission-schema against 
+[Finalize Deprecation of `collection_date_inc`](https://github.com/microbiomedata/nmdc-schema/pull/3370)'s 
+branch reproduces `ValueError: Slot 'collection_date_inc' not found in source schema.` immediately, 
+because submission-schema still imports it (`config/nmdc_schema_import.yaml` lines 864 and 891, checked 
+2026-09-16).
+
+Other repositories may depend on an element too, without going through this import mechanism. 
+`report_asset_usage.py` above only sees this repository; there is no automated check across the rest 
+of the ecosystem yet.
