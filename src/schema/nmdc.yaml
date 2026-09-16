@@ -1149,7 +1149,7 @@ enums:
       texture_measurement:
       dna_extraction:
       phenol_chloroform_extraction: { }
-      stable_isotope_probe: { }
+      stable_isotope_probing: { }
 
   ChromatographicCategoryEnum:
     permissible_values:
