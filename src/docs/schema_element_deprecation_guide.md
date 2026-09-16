@@ -40,7 +40,7 @@ The steps above cover the schema YAML. They do not cover the mapping files, comm
 changesheets under `assets/`, which keep naming an element long after the schema stops exposing it. Run:
 
 ```bash
-poetry run make report-asset-usage
+make report-asset-usage
 ```
 
 The report lists which assets name an element defined in `deprecated.yaml`. For each one there are three 
