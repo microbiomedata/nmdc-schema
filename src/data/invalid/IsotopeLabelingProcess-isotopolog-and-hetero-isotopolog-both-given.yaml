@@ -1,0 +1,22 @@
+# Invalid for one reason: the entry gives both isotopolog and hetero_isotopolog. Exactly one
+# of them names the labeled input.
+id: nmdc:labp-99-abcdef9
+name: labeling of my awesome biosample
+type: nmdc:IsotopeLabelingProcess
+has_input:
+  - nmdc:bsm-99-123456
+has_output:
+  - nmdc:procsm-99-987654
+isotopolog_approach: single
+isotope_label_metadata:
+  - isotopolog_label: isotopically labeled
+    isotope: 13C
+    type: nmdc:IsotopeMetadata
+    isotopolog:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
+      term:
+        id: PUBCHEM.COMPOUND:1140
+        name: toluene
+        type: nmdc:OntologyClass
+    hetero_isotopolog: toluene

@@ -8100,20 +8100,17 @@ slots:
     description: Isotopologue (isotope source/substrate/molecule) added to the biological sample.
     title: isotopolog
     comments:
-      - Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. For an undefined mixture, describe it in has_raw_value and omit term; NMDC does not use a sentinel identifier for that case.
-      - 'PROVISIONAL AND POSSIBLY TOO PERMISSIVE: accepting a value with no term is undecided, see https://github.com/microbiomedata/nmdc-schema/pull/3396'
+      - Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. A labeled input with no PubChem compound identifier, such as root exudates or labeled cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case.
     examples:
       - object:
-          type: nmdc:ControlledTermValue
+          type: nmdc:ControlledIdentifiedTermValue
           has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
           term:
             id: PUBCHEM.COMPOUND:1140
+            name: toluene
             type: nmdc:OntologyClass
-      - object:
-          type: nmdc:ControlledTermValue
-          has_raw_value: root exudates
     slot_uri: MIXS:0001339
-    range: ControlledTermValue
+    range: ControlledIdentifiedTermValue
     multivalued: false
     structured_pattern:
       syntax: ^{termLabel} \[{termID}\]$
