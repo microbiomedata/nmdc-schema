@@ -1608,6 +1608,10 @@ enums:
         title: Azenta Life Sciences
         meaning: https://www.azenta.com/
 
+      SeqCenter:
+        title: SeqCenter
+        meaning: https://www.seqcenter.com/
+
   DataCategoryEnum:
     permissible_values:
       instrument_data:
