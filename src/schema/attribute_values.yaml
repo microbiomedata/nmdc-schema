@@ -57,37 +57,6 @@ classes:
       - description
       - display_order
 
-  PersonValue:
-    class_uri: nmdc:PersonValue
-    is_a: AttributeValue
-    description: An attribute value representing a person
-    slots:
-      - email
-      - name
-      - orcid
-      - profile_image_url
-      - websites
-    todos:
-      - add additional fields e.g for institution
-      - deprecate "has_raw_value" in favor of "name"
-    slot_usage:
-      orcid:
-        annotations:
-          tooltip: Open Researcher and Contributor ID for this person. See https://orcid.org
-      email:
-        annotations:
-          tooltip: Email address for this person.
-      has_raw_value:
-        description: The full name of the Investigator in format FIRST LAST.
-        notes:
-          - May eventually be deprecated in favor of "name".
-      name:
-        required: true
-        description: >-
-          The full name of the Investigator.
-          It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
-        annotations:
-          tooltip: First name, middle initial, and last name of this person.
   TextValue:
     class_uri: nmdc:TextValue
     is_a: AttributeValue
@@ -219,28 +188,6 @@ slots:
   display_order:
     range: integer
     description: When rendering information, this attribute to specify the order in which the information should be rendered.
-
-  email:
-    description: >-
-      An email address for an entity such as a person.
-      This should be the primary email address used.
-    range: string
-    slot_uri: schema:email
-
-  profile_image_url:
-    description: A url that points to an image of a person.
-    range: string
-
-  orcid:
-    description: The ORCID of a person.
-    range: string
-    pattern: '^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$'
-    comments:
-      - Canonical form is the Bioregistry CURIE with prefix `orcid`.
-    examples:
-      - value: orcid:0000-0002-7086-765X
-    see_also:
-      - https://bioregistry.io/registry/orcid
 
   language:
     range: language_code
