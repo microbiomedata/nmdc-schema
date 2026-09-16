@@ -8100,7 +8100,7 @@ slots:
     description: Isotopologue (isotope source/substrate/molecule) added to the biological sample.
     title: isotopolog
     comments:
-      - Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. A labeled input with no PubChem compound identifier, such as root exudates or labeled cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case.
+      - Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. An input with no PubChem compound identifier, such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case.
     examples:
       - object:
           type: nmdc:ControlledIdentifiedTermValue
