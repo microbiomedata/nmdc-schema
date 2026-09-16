@@ -40,7 +40,7 @@ material_processing_set:
       - nmdc:procsm-99-9437a1
       - nmdc:procsm-99-9437a2
       - nmdc:procsm-99-9437a3
-    type: nmdc:GradientFractionationProcess
+    type: nmdc:DensityGradientFractionationProcess
 processed_sample_set:
   - id: nmdc:procsm-99-987654
     name: my awesome biosample after isotopolog labeling

@@ -672,11 +672,11 @@ classes:
             hetero_isotopolog:
               value_presence: ABSENT
 
-  GradientFractionationProcess:
-    class_uri: nmdc:GradientFractionationProcess
+  DensityGradientFractionationProcess:
+    class_uri: nmdc:DensityGradientFractionationProcess
     is_a: MaterialProcessing
     description: >-
-      A material processing that separates a sample into multiple fractions based on a density gradient.
+      A material processing that separates nucleic acids extracted from a sample into fractions by buoyant density, usually by isopycnic centrifugation. Each output fraction records its position in the gradient.
     aliases:
       - Isopycnic Centrifugation
       - Density Gradient Centrifugation
