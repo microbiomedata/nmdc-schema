@@ -5,6 +5,7 @@ from nmdc_schema.migrators.partials.migrator_from_11_23_0_to_11_24_0 import (
     migrator_from_11_23_0_to_11_24_0_part_1,
     migrator_from_11_23_0_to_11_24_0_part_2,
     migrator_from_11_23_0_to_11_24_0_part_3,
+    migrator_from_11_23_0_to_11_24_0_part_4,
     migrator_from_11_23_0_to_11_24_0_part_5,
 )
 from nmdc_schema.migrators.partials.migrator_from_11_23_0_to_11_24_0 import migrator_from_11_23_0_to_11_24_0_part_5 
@@ -40,6 +41,6 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
         migrator_from_11_23_0_to_11_24_0_part_1.Migrator,
         migrator_from_11_23_0_to_11_24_0_part_2.Migrator,
         migrator_from_11_23_0_to_11_24_0_part_3.Migrator,
-        migrator_from_11_23_0_to_11_24_0_part_5.Migrator,
+        migrator_from_11_23_0_to_11_24_0_part_4.Migrator,
         migrator_from_11_23_0_to_11_24_0_part_5.Migrator,
     ]
