@@ -21,6 +21,9 @@ class Migrator(MigratorBase):
     Partial 4 renames ``PersonValue`` to ``Person``, drops leftover
     ``has_raw_value``, and renames ``applies_to_person`` to
     ``applies_to_agent`` (nmdc-schema#3375).
+
+    Partial 5 removes the deprecated ``collection_date_inc`` slot from Biosample
+    (nmdc-schema#2658).
     """
 
     _from_version = "11.23.0"

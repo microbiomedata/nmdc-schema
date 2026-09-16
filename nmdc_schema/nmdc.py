@@ -2138,7 +2138,6 @@ class Biosample(Sample):
     subsurface_depth: Optional[Union[dict, QuantityValue]] = None
     dna_isolate_meth: Optional[str] = None
     rna_isolate_meth: Optional[str] = None
-    collection_date_inc: Optional[str] = None
     collection_time: Optional[str] = None
     collection_time_inc: Optional[str] = None
     experimental_factor_other: Optional[str] = None
@@ -3712,9 +3711,6 @@ class Biosample(Sample):
 
         if self.rna_isolate_meth is not None and not isinstance(self.rna_isolate_meth, str):
             self.rna_isolate_meth = str(self.rna_isolate_meth)
-
-        if self.collection_date_inc is not None and not isinstance(self.collection_date_inc, str):
-            self.collection_date_inc = str(self.collection_date_inc)
 
         if self.collection_time is not None and not isinstance(self.collection_time, str):
             self.collection_time = str(self.collection_time)
@@ -11910,9 +11906,6 @@ slots.replicate_number = Slot(uri=NMDC.replicate_number, name="replicate_number"
 
 slots.technical_reps = Slot(uri=NMDC.technical_reps, name="technical_reps", curie=NMDC.curie('technical_reps'),
                    model_uri=NMDC.technical_reps, domain=None, range=Optional[int])
-
-slots.collection_date_inc = Slot(uri=NMDC.collection_date_inc, name="collection_date_inc", curie=NMDC.curie('collection_date_inc'),
-                   model_uri=NMDC.collection_date_inc, domain=None, range=Optional[str])
 
 slots.collection_time = Slot(uri=NMDC.collection_time, name="collection_time", curie=NMDC.curie('collection_time'),
                    model_uri=NMDC.collection_time, domain=None, range=Optional[str])
