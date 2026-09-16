@@ -18,7 +18,6 @@ isotope_label_metadata:
         id: PUBCHEM.COMPOUND:1140
         name: toluene
         type: nmdc:OntologyClass
-    type: nmdc:IsotopeMetadata
   - isotopolog_label: isotopically labeled
     isotope: 18O
     type: nmdc:IsotopeMetadata

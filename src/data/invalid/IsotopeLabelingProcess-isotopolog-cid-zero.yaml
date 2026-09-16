@@ -18,3 +18,4 @@ isotope_label_metadata:
       term:
         id: PUBCHEM.COMPOUND:0
         name: an undefined mixture
+        type: nmdc:OntologyClass
