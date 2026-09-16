@@ -1,28 +1,19 @@
-"""Remove the deprecated ``collection_date_inc`` slot from Biosample records.
+"""Reshape credit-association agents for Person and applies_to_agent.
 
-The harvest date is the harvested sample's own ``collection_date``; an
-incubation is recorded as a MaterialProcessing that links the input and output
-samples and carries ``start_date`` and ``end_date``.
-
-See https://github.com/microbiomedata/nmdc-schema/issues/2658 and the example
-``src/data/valid/Database-incubation-as-culturing.yaml``.
+See https://github.com/microbiomedata/nmdc-schema/issues/3375
 """
+
 
 from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 from nmdc_schema.migrators.migrator_base import MigratorBase
 
-FIELD_NAME = "collection_date_inc"
-
 
 class Migrator(MigratorBase):
-    r"""Drop ``collection_date_inc`` from every ``biosample_set`` document.
+    r"""Rename PersonValue to Person, drop has_raw_value, and rename applies_to_person.
 
-    The slot was already treated as removed by
-    ``partials/migrator_from_11_10_0_to_11_11_0/migrator_from_11_10_0_to_11_11_0_part_1.py``,
-    which raises if any biosample carries it, so no production record is
-    expected to have one. This partial removes the field anyway rather than
-    raising, because the slot stayed valid in the schema through 11.23.0 and
-    could have been populated since that check ran.
+    Walks ``has_credit_associations`` on ``study_set`` and ``data_generation_set``
+    after part 3 has filled ``name``. Under 11.23, ``applies_to_person`` is required
+    and ranged to ``PersonValue``, so ``type`` is ``nmdc:PersonValue``.
     """
 
     _from_version = "11.24.0.part_3"
@@ -32,28 +23,46 @@ class Migrator(MigratorBase):
         r"""
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> db = {
-        ...     "biosample_set": [
-        ...         {"id": "nmdc:bsm-1", "type": "nmdc:Biosample",
-        ...          "collection_date": {"type": "nmdc:TimestampValue", "has_raw_value": "2021-04-15"},
-        ...          "collection_date_inc": "2021-04-22"},
-        ...         {"id": "nmdc:bsm-2", "type": "nmdc:Biosample"},
+        ...     "study_set": [
+        ...         {
+        ...             "id": "nmdc:sty-1",
+        ...             "type": "nmdc:Study",
+        ...             "has_credit_associations": [
+        ...                 {"type": "prov:Association",
+        ...                  "applies_to_person": {"type": "nmdc:PersonValue",
+        ...                                       "name": "A",
+        ...                                       "has_raw_value": "A",
+        ...                                       "orcid": "orcid:0000-0002-1195-1608"}},
+        ...             ],
+        ...         },
+        ...     ],
+        ...     "data_generation_set": [
+        ...         {
+        ...             "id": "nmdc:dgns-1",
+        ...             "type": "nmdc:NucleotideSequencing",
+        ...             "has_credit_associations": [
+        ...                 {"type": "prov:Association",
+        ...                  "applied_roles": ["Principal Investigator"],
+        ...                  "applies_to_person": {"type": "nmdc:PersonValue",
+        ...                                       "name": "C",
+        ...                                       "has_raw_value": "C"}},
+        ...             ],
+        ...         },
         ...     ],
         ... }
         >>> Migrator(adapter=DictionaryAdapter(database=db)).upgrade()
-        >>> "collection_date_inc" in db["biosample_set"][0]
-        False
-        >>> db["biosample_set"][0]["collection_date"]["has_raw_value"]
-        '2021-04-15'
-        >>> db["biosample_set"][1]
-        {'id': 'nmdc:bsm-2', 'type': 'nmdc:Biosample'}
+        >>> db["study_set"][0]["has_credit_associations"][0]["applies_to_agent"]
+        {'type': 'nmdc:Person', 'name': 'A', 'orcid': 'orcid:0000-0002-1195-1608'}
+        >>> db["data_generation_set"][0]["has_credit_associations"][0]["applies_to_agent"]
+        {'type': 'nmdc:Person', 'name': 'C'}
         """
         self._warn_if_commit_ignored(commit_changes)
 
         if isinstance(self.adapter, MongoAdapter):
             try:
                 self.adapter.process_collections_in_transaction(
-                    collection_names=["biosample_set"],
-                    document_processor=self.drop_collection_date_inc,
+                    collection_names=["study_set", "data_generation_set"],
+                    document_processor=self.reshape_document_credit_agents,
                     commit_changes=commit_changes,
                 )
                 if commit_changes:
@@ -65,27 +74,42 @@ class Migrator(MigratorBase):
                 raise
         else:
             self.adapter.process_each_document(
-                "biosample_set", [self.drop_collection_date_inc]
+                "study_set", [self.reshape_document_credit_agents]
+            )
+            self.adapter.process_each_document(
+                "data_generation_set", [self.reshape_document_credit_agents]
             )
             if not commit_changes:
                 self.logger.info(
                     "Note: Non-MongoDB adapter doesn't support rollback - changes are applied immediately"
                 )
 
-    def drop_collection_date_inc(self, document: dict) -> dict:
-        r"""Remove ``collection_date_inc`` from a biosample document.
+    def reshape_document_credit_agents(self, document: dict) -> dict:
+        r"""Rename applies_to_person, set type to Person, and drop has_raw_value.
 
         >>> m = Migrator()
-        >>> m.drop_collection_date_inc({"id": "nmdc:bsm-1", "collection_date_inc": "2021-04-22"})
-        {'id': 'nmdc:bsm-1'}
-
-        A document without the field is returned unchanged:
-        >>> m.drop_collection_date_inc({"id": "nmdc:bsm-2", "collection_date": "2021-04-15"})
-        {'id': 'nmdc:bsm-2', 'collection_date': '2021-04-15'}
-
-        An empty-string value is dropped just like a populated one:
-        >>> m.drop_collection_date_inc({"id": "nmdc:bsm-3", "collection_date_inc": ""})
-        {'id': 'nmdc:bsm-3'}
+        >>> m.reshape_document_credit_agents(
+        ...     {"id": "nmdc:sty-1",
+        ...      "has_credit_associations": [
+        ...          {"applies_to_person": {"type": "nmdc:PersonValue",
+        ...                                "name": "Nancy Hess",
+        ...                                "has_raw_value": "Nancy hess"}},
+        ...          {"applies_to_person": {"type": "nmdc:PersonValue",
+        ...                                "name": "James Stegen"}},
+        ...      ]}
+        ... )
+        {'id': 'nmdc:sty-1', 'has_credit_associations': [{'applies_to_agent': {'type': 'nmdc:Person', 'name': 'Nancy Hess'}}, {'applies_to_agent': {'type': 'nmdc:Person', 'name': 'James Stegen'}}]}
+        >>> m.reshape_document_credit_agents({"id": "nmdc:sty-2"})
+        {'id': 'nmdc:sty-2'}
         """
-        document.pop(FIELD_NAME, None)
+        for association in document.get("has_credit_associations") or []:
+            if not isinstance(association, dict):
+                continue
+            person = association.get("applies_to_person")
+            if not isinstance(person, dict):
+                continue
+            person = association.pop("applies_to_person")
+            person["type"] = "nmdc:Person"
+            person.pop("has_raw_value", None)
+            association["applies_to_agent"] = person
         return document
