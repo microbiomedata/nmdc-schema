@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post100.dev0+4eef955a6
+version: 11.23.0.post101.dev0+4ae573292
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6219,6 +6219,7 @@ slots:
       labeling process, one entry per isotopolog and isotope.
     from_schema: https://w3id.org/nmdc/nmdc
     range: IsotopologAddition
+    recommended: true
     multivalued: true
     inlined_as_list: true
   hetero_isotopolog:

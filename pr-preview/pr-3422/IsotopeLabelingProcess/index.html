@@ -428,7 +428,7 @@
 
   IsotopeLabelingProcess : isotopolog_additions
 
-      IsotopeLabelingProcess --&gt; "*" IsotopologAddition : isotopolog_additions
+      IsotopeLabelingProcess --&gt; "* _recommended_" IsotopologAddition : isotopolog_additions
     click IsotopologAddition href "../IsotopologAddition"
 
   IsotopeLabelingProcess : isotopolog_approach
@@ -498,7 +498,7 @@
 <tbody>
 <tr>
 <td><a href="../isotopolog_additions/">isotopolog_additions</a></td>
-<td>* <br/> <a href="../IsotopologAddition/">IsotopologAddition</a></td>
+<td>* <em>recommended</em> <br/> <a href="../IsotopologAddition/">IsotopologAddition</a></td>
 <td>The isotopologs, or heterogeneous materials, added during this isotope...</td>
 <td>direct</td>
 </tr>
@@ -700,6 +700,7 @@ attributes:
     domain_of:
     - IsotopeLabelingProcess
     range: IsotopologAddition
+    recommended: true
     multivalued: true
     inlined: true
     inlined_as_list: true
