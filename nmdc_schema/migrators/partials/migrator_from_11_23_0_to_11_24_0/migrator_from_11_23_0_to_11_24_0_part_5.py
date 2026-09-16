@@ -11,8 +11,6 @@ See https://github.com/microbiomedata/nmdc-schema/issues/2658 and the example
 from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 from nmdc_schema.migrators.migrator_base import MigratorBase
 
-FIELD_NAME = "collection_date_inc"
-
 
 class Migrator(MigratorBase):
     r"""Drop ``collection_date_inc`` from every ``biosample_set`` document.
@@ -25,18 +23,24 @@ class Migrator(MigratorBase):
     could have been populated since that check ran.
     """
 
-    _from_version = "11.24.0.part_3"
-    _to_version = "11.24.0.part_4"
+    _from_version = "11.24.0.part_4"
+    _to_version = "11.24.0.part_5"
 
     def upgrade(self, commit_changes: bool = False) -> None:
         r"""
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> db = {
         ...     "biosample_set": [
-        ...         {"id": "nmdc:bsm-1", "type": "nmdc:Biosample",
-        ...          "collection_date": {"type": "nmdc:TimestampValue", "has_raw_value": "2021-04-15"},
-        ...          "collection_date_inc": "2021-04-22"},
-        ...         {"id": "nmdc:bsm-2", "type": "nmdc:Biosample"},
+        ...         {
+        ...            "id": "nmdc:bsm-1",
+        ...            "type": "nmdc:Biosample",
+        ...            "collection_date": {"type": "nmdc:TimestampValue", "has_raw_value": "2021-04-15"},
+        ...            "collection_date_inc": "2021-04-22",
+        ...         },
+        ...         {
+        ...            "id": "nmdc:bsm-2",
+        ...            "type": "nmdc:Biosample",
+        ...         },
         ...     ],
         ... }
         >>> Migrator(adapter=DictionaryAdapter(database=db)).upgrade()
@@ -87,5 +91,5 @@ class Migrator(MigratorBase):
         >>> m.drop_collection_date_inc({"id": "nmdc:bsm-3", "collection_date_inc": ""})
         {'id': 'nmdc:bsm-3'}
         """
-        document.pop(FIELD_NAME, None)
+        document.pop("collection_date_inc", None)
         return document

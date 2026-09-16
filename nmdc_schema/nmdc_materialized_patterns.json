@@ -149,10 +149,6 @@
       "prefix_prefix": "OMIT",
       "prefix_reference": "http://purl.obolibrary.org/obo/OMIT_"
     },
-    "ORCID": {
-      "prefix_prefix": "ORCID",
-      "prefix_reference": "https://orcid.org/"
-    },
     "PANTHER.FAMILY": {
       "prefix_prefix": "PANTHER.FAMILY",
       "prefix_reference": "https://bioregistry.io/panther.family:"
@@ -244,6 +240,10 @@
     "dcterms": {
       "prefix_prefix": "dcterms",
       "prefix_reference": "http://purl.org/dc/terms/"
+    },
+    "dcm": {
+      "prefix_prefix": "dcm",
+      "prefix_reference": "https://kbase.github.io/credit_engine/"
     },
     "doi": {
       "prefix_prefix": "doi",
@@ -344,6 +344,10 @@
     "nmdc": {
       "prefix_prefix": "nmdc",
       "prefix_reference": "https://w3id.org/nmdc/"
+    },
+    "orcid": {
+      "prefix_prefix": "orcid",
+      "prefix_reference": "https://orcid.org/"
     },
     "owl": {
       "prefix_prefix": "owl",
@@ -449,8 +453,10 @@
     "img.taxon",
     "jgi.proposal",
     "kegg",
+    "orcid",
     "rdf",
     "rdfs",
+    "ror",
     "skos",
     "xsd"
   ],
@@ -474,10 +480,7 @@
       "comments": [
         "Not every badge is completeness-based, so not every MetadataBadgeEnum permissible value has a subset here. expert_curation is awarded from ProvenanceMetadata.source_system_of_record rather than from slot completeness, so it has no badge_topic subset."
       ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "https://github.com/microbiomedata/nmdc-schema/issues/3228"
-      ]
+      "from_schema": "https://w3id.org/nmdc/nmdc"
     },
     "biogeochemistry": {
       "name": "biogeochemistry",
@@ -492,10 +495,9 @@
         "badge_topic"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "https://github.com/microbiomedata/nmdc-schema/issues/3228",
-        "https://github.com/microbiomedata/nmdc-schema/issues/3326"
-      ]
+      "created_on": "2026-08-13T00:00:00+00:00",
+      "last_updated_on": "2026-08-13T00:00:00+00:00",
+      "modified_by": "orcid:0000-0001-9076-6066"
     },
     "host_information": {
       "name": "host_information",
@@ -513,10 +515,9 @@
         "badge_topic"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "https://github.com/microbiomedata/nmdc-schema/issues/3228",
-        "https://github.com/microbiomedata/nmdc-schema/issues/3326"
-      ]
+      "created_on": "2026-08-13T00:00:00+00:00",
+      "last_updated_on": "2026-08-13T00:00:00+00:00",
+      "modified_by": "orcid:0000-0001-9076-6066"
     }
   },
   "types": {
@@ -1110,8 +1111,8 @@
       "description": "The permitted types of containers used in processing metabolomic samples.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "contributors": [
-        "ORCID:0009-0001-1555-1601",
-        "ORCID:0000-0002-8683-0050"
+        "orcid:0009-0001-1555-1601",
+        "orcid:0000-0002-8683-0050"
       ],
       "permissible_values": {
         "v-bottom_conical_tube": {
@@ -1127,8 +1128,8 @@
       "description": "The tool/substance used to separate or filter a solution or mixture.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "contributors": [
-        "ORCID:0009-0001-1555-1601",
-        "ORCID:0000-0002-8683-0050"
+        "orcid:0009-0001-1555-1601",
+        "orcid:0000-0002-8683-0050"
       ],
       "permissible_values": {
         "ptfe_96_well_filter_plate": {
@@ -1144,8 +1145,8 @@
       "description": "The type of stationary phase used in a chromatography process.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "contributors": [
-        "ORCID:0009-0001-1555-1601",
-        "ORCID:0000-0002-4504-1039"
+        "orcid:0009-0001-1555-1601",
+        "orcid:0000-0002-4504-1039"
       ],
       "permissible_values": {
         "BEH-HILIC": {
@@ -2388,17 +2389,23 @@
       "permissible_values": {
         "biogeochemistry": {
           "text": "biogeochemistry",
-          "description": "Completeness badge. Awarded when the Biosample populates at least badge_minimum_slots of the biogeochemistry subset."
+          "description": "Completeness badge. Awarded when the Biosample populates at least badge_minimum_slots of the biogeochemistry subset.",
+          "see_also": [
+            "https://microbiomedata.github.io/nmdc-schema/Biogeochemistry/"
+          ]
         },
         "host_information": {
           "text": "host_information",
-          "description": "Completeness badge. Awarded when the Biosample populates at least badge_minimum_slots of the host_information subset."
+          "description": "Completeness badge. Awarded when the Biosample populates at least badge_minimum_slots of the host_information subset.",
+          "see_also": [
+            "https://microbiomedata.github.io/nmdc-schema/HostInformation/"
+          ]
         },
         "expert_curation": {
           "text": "expert_curation",
-          "description": "Provenance badge. Awarded when the Biosample's ProvenanceMetadata.source_system_of_record identifies the NMDC submission portal, rather than an ETL process over an external database. Not a completeness measure, so it has no badge subset and no badge_minimum_slots.",
-          "comments": [
-            "source_system_of_record is not yet backpopulated for existing biosamples, so this badge cannot be awarded on historical records until that backfill happens."
+          "description": "Provenance badge. Awarded when the Biosample's ProvenanceMetadata.source_system_of_record identifies the NMDC submission portal, rather than an ETL process over an external database.",
+          "see_also": [
+            "https://microbiomedata.github.io/nmdc-schema/source_system_of_record/"
           ]
         }
       }
@@ -3773,67 +3780,115 @@
         "CreditEnums come from https://casrai.org/credit/"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
+      "see_also": [
+        "https://kbase.github.io/credit_engine/ContributorRole/"
+      ],
       "permissible_values": {
         "Conceptualization": {
           "text": "Conceptualization",
-          "description": "Conceptualization"
+          "description": "Conceptualization",
+          "exact_mappings": [
+            "dcm:conceptualization"
+          ]
         },
         "Data curation": {
           "text": "Data curation",
-          "description": "Data curation"
+          "description": "Data curation",
+          "exact_mappings": [
+            "dcm:data_curation"
+          ]
         },
         "Formal Analysis": {
           "text": "Formal Analysis",
-          "description": "Formal Analysis"
+          "description": "Formal Analysis",
+          "exact_mappings": [
+            "dcm:formal_analysis"
+          ]
         },
         "Funding acquisition": {
           "text": "Funding acquisition",
-          "description": "Funding acquisition"
+          "description": "Funding acquisition",
+          "exact_mappings": [
+            "dcm:funding_acquisition"
+          ]
         },
         "Investigation": {
           "text": "Investigation",
-          "description": "Investigation"
+          "description": "Investigation",
+          "exact_mappings": [
+            "dcm:investigation"
+          ]
         },
         "Methodology": {
           "text": "Methodology",
-          "description": "Methodology"
+          "description": "Methodology",
+          "exact_mappings": [
+            "dcm:methodology"
+          ]
         },
         "Project administration": {
           "text": "Project administration",
-          "description": "Project administration"
+          "description": "Project administration",
+          "exact_mappings": [
+            "dcm:project_administration"
+          ]
         },
         "Resources": {
           "text": "Resources",
-          "description": "Resources"
+          "description": "Resources",
+          "exact_mappings": [
+            "dcm:resources"
+          ]
         },
         "Software": {
           "text": "Software",
-          "description": "Software"
+          "description": "Software",
+          "exact_mappings": [
+            "dcm:software"
+          ]
         },
         "Supervision": {
           "text": "Supervision",
-          "description": "Supervision"
+          "description": "Supervision",
+          "exact_mappings": [
+            "dcm:supervision"
+          ]
         },
         "Validation": {
           "text": "Validation",
-          "description": "Validation"
+          "description": "Validation",
+          "exact_mappings": [
+            "dcm:validation"
+          ]
         },
         "Visualization": {
           "text": "Visualization",
-          "description": "Visualization"
+          "description": "Visualization",
+          "exact_mappings": [
+            "dcm:visualization"
+          ]
         },
         "Writing original draft": {
           "text": "Writing original draft",
-          "description": "Writing – original draft"
+          "description": "Writing original draft",
+          "exact_mappings": [
+            "dcm:writing_original_draft"
+          ]
         },
         "Writing review and editing": {
           "text": "Writing review and editing",
-          "description": "Writing – review & editing"
+          "description": "Writing review & editing",
+          "exact_mappings": [
+            "dcm:writing_review_editing"
+          ]
         },
         "Principal Investigator": {
           "text": "Principal Investigator",
           "description": "principal investigator role",
-          "meaning": "OBI:0000103"
+          "meaning": "OBI:0000103",
+          "related_mappings": [
+            "dcm:project_leader"
+          ]
         },
         "Submitter": {
           "text": "Submitter",
@@ -8175,6 +8230,64 @@
     }
   },
   "slots": {
+    "email": {
+      "name": "email",
+      "description": "An email address for an entity such as a person. This should be the primary email address used.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "slot_uri": "schema:email",
+      "range": "string"
+    },
+    "profile_image_url": {
+      "name": "profile_image_url",
+      "description": "A url that points to an image of this person or organization.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "range": "string"
+    },
+    "orcid": {
+      "name": "orcid",
+      "description": "The ORCID of a person.",
+      "comments": [
+        "Canonical form is the Bioregistry CURIE with prefix `orcid`."
+      ],
+      "examples": [
+        {
+          "value": "orcid:0000-0002-7086-765X"
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "see_also": [
+        "https://bioregistry.io/registry/orcid"
+      ],
+      "close_mappings": [
+        "dcm:contributor_id"
+      ],
+      "range": "string",
+      "pattern": "^orcid:\\d{4}-\\d{4}-\\d{4}-\\d{3}(\\d|X)$"
+    },
+    "ror": {
+      "name": "ror",
+      "description": "The Research Organization Registry identifier of an organization.",
+      "comments": [
+        "Canonical form is the Bioregistry CURIE with prefix `ror`.",
+        "Optional. Institutions usually have a ROR; many consortia do not."
+      ],
+      "examples": [
+        {
+          "value": "ror:05cwx3318",
+          "description": "National Microbiome Data Collaborative"
+        }
+      ],
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "see_also": [
+        "https://bioregistry.io/registry/ror",
+        "https://ror.org"
+      ],
+      "close_mappings": [
+        "dcm:organization_id"
+      ],
+      "range": "string",
+      "pattern": "^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$"
+    },
     "host_family_relation": {
       "name": "host_family_relation",
       "annotations": {
@@ -8773,8 +8886,8 @@
       "description": "The volume of the container an analyte is stored in or an activity takes place in",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "contributors": [
-        "ORCID:0009-0001-1555-1601",
-        "ORCID:0000-0002-8683-0050"
+        "orcid:0009-0001-1555-1601",
+        "orcid:0000-0002-8683-0050"
       ],
       "range": "QuantityValue"
     },
@@ -9032,25 +9145,6 @@
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "integer"
     },
-    "email": {
-      "name": "email",
-      "description": "An email address for an entity such as a person. This should be the primary email address used.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "slot_uri": "schema:email",
-      "range": "string"
-    },
-    "profile_image_url": {
-      "name": "profile_image_url",
-      "description": "A url that points to an image of a person.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "string"
-    },
-    "orcid": {
-      "name": "orcid",
-      "description": "The ORCID of a person.",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "string"
-    },
     "language": {
       "name": "language",
       "description": "Should use ISO 639-1 code e.g. \"en\", \"fr\"",
@@ -9083,6 +9177,9 @@
         "makes it easier to read example data files",
         "required for polymorphic MongoDB collections"
       ],
+      "comments": [
+        "Deprecating this slot was proposed and rejected: without it, a document read back from a polymorphic MongoDB collection cannot be resolved to the class it instantiates. It is required on every class for that reason, rather than as a convention inherited from LinkML."
+      ],
       "examples": [
         {
           "value": "nmdc:Biosample"
@@ -9092,11 +9189,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "https://github.com/microbiomedata/nmdc-schema/issues/1048",
-        "https://github.com/microbiomedata/nmdc-schema/issues/1233",
-        "https://github.com/microbiomedata/nmdc-schema/issues/248"
-      ],
       "structured_aliases": [
         {
           "literal_form": "workflow_execution_class",
@@ -9355,8 +9447,20 @@
     "md5_checksum": {
       "name": "md5_checksum",
       "description": "MD5 checksum of file (pre-compressed)",
+      "notes": [
+        "The submission portal already constrains the slots that feed this one. submission-schema patterns read_1_md5_checksum, read_2_md5_checksum, and interleaved_md5_checksum as semicolon-separated lists of 32 hex characters; the submission portal translator splits those and writes one value per DataObject, so the single-value form applies here. Case is not normalized anywhere, so both cases are accepted."
+      ],
+      "examples": [
+        {
+          "value": "0123456789abcdef0123456789abcdef"
+        }
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "string"
+      "see_also": [
+        "https://github.com/microbiomedata/nmdc-schema/issues/3364"
+      ],
+      "range": "string",
+      "pattern": "^[a-fA-F0-9]{32}$"
     },
     "data_object_type": {
       "name": "data_object_type",
@@ -9518,14 +9622,11 @@
     },
     "salinity_category": {
       "name": "salinity_category",
-      "description": "Categorical description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, huryhaline",
+      "description": "Categorical description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, euryhaline",
       "notes": [
         "maps to gold:salinity"
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "https://github.com/microbiomedata/nmdc-metadata/pull/297"
-      ],
       "range": "string"
     },
     "proport_woa_temperature": {
@@ -10557,9 +10658,6 @@
         }
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "https://github.com/microbiomedata/nmdc-schema/issues/2973"
-      ],
       "is_a": "external_database_identifiers",
       "mixins": [
         "gold_identifiers"
@@ -10792,10 +10890,6 @@
         "Taxonomy-oriented uses (e.g. on Organism) should point to NcbiTaxon instances. OrganismSample reaches taxonomy indirectly via expected_organism.classified_as."
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "https://github.com/microbiomedata/nmdc-schema/issues/2959",
-        "https://github.com/microbiomedata/nmdc-schema/issues/3016"
-      ],
       "narrow_mappings": [
         "biolink:in_taxon"
       ],
@@ -10874,11 +10968,15 @@
     "principal_investigator": {
       "name": "principal_investigator",
       "description": "Principal Investigator who led the study and/or generated the dataset.",
+      "deprecated": "Unbound from Study and DataGeneration. Identify PIs with has_credit_associations using the CreditEnum value Principal Investigator.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
+      "deprecated_element_has_possible_replacement": "has_credit_associations",
       "aliases": [
         "PI"
       ],
-      "range": "PersonValue"
+      "last_updated_on": "2026-08-21T00:00:00+00:00",
+      "modified_by": "orcid:0000-0002-4504-1039",
+      "range": "Person"
     },
     "was_generated_by": {
       "name": "was_generated_by",
@@ -10933,11 +11031,29 @@
       "annotations": {
         "tooltip": {
           "tag": "tooltip",
-          "value": "Other researchers associated with this study."
+          "value": "Researchers or organizations associated with this study or data generation, including principal investigators."
         }
       },
-      "description": "This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study",
+      "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+      "examples": [
+        {
+          "description": "A principal investigator recorded as a credit association.",
+          "object": {
+            "type": "prov:Association",
+            "applies_to_agent": {
+              "type": "nmdc:Person",
+              "name": "Janet Jansson"
+            },
+            "applied_roles": [
+              "Principal Investigator"
+            ]
+          }
+        }
+      ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
+      "close_mappings": [
+        "dcm:contributors"
+      ],
       "slot_uri": "prov:qualifiedAssociation",
       "range": "CreditAssociation",
       "multivalued": true,
@@ -10963,10 +11079,10 @@
       "multivalued": true,
       "inlined_as_list": true
     },
-    "applies_to_person": {
-      "name": "applies_to_person",
+    "applies_to_agent": {
+      "name": "applies_to_agent",
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "range": "PersonValue",
+      "range": "Agent",
       "required": true
     },
     "applied_roles": {
@@ -10978,6 +11094,9 @@
         }
       },
       "from_schema": "https://w3id.org/nmdc/nmdc",
+      "close_mappings": [
+        "dcm:contributor_roles"
+      ],
       "range": "CreditEnum",
       "required": true,
       "multivalued": true
@@ -24156,8 +24275,8 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "contributors": [
-        "ORCID:0009-0001-1555-1601",
-        "ORCID:0000-0002-8683-0050"
+        "orcid:0009-0001-1555-1601",
+        "orcid:0000-0002-8683-0050"
       ],
       "range": "QuantityValue"
     },
@@ -24377,8 +24496,8 @@
       "description": "The volume of a substance.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "contributors": [
-        "ORCID:0009-0001-1555-1601",
-        "ORCID:0000-0002-8683-0050"
+        "orcid:0009-0001-1555-1601",
+        "orcid:0000-0002-8683-0050"
       ],
       "range": "QuantityValue"
     },
@@ -24941,6 +25060,7 @@
       "name": "collection_time_inc",
       "description": "Time the incubation was harvested/collected/ended. Only relevant for incubation samples.",
       "title": "incubation collection time, GMT",
+      "deprecated": "This slot is directly replaced by collection_time. Any instances that would use collection_time_inc should use collection_time instead.",
       "notes": [
         "MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional time only"
       ],
@@ -24959,6 +25079,12 @@
       "see_also": [
         "MIXS:0000011"
       ],
+      "deprecated_element_has_exact_replacement": "collection_time",
+      "contributors": [
+        "orcid:0009-0008-4013-7737"
+      ],
+      "last_updated_on": "2026-09-04T00:00:00+00:00",
+      "modified_by": "orcid:0009-0008-4013-7737",
       "rank": 3,
       "string_serialization": "{time, seconds optional}",
       "slot_group": "MIxS Inspired",
@@ -25315,6 +25441,97 @@
     }
   },
   "classes": {
+    "Agent": {
+      "name": "Agent",
+      "description": "A person or organization bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "exact_mappings": [
+        "prov:Agent"
+      ],
+      "abstract": true,
+      "slots": [
+        "type",
+        "name",
+        "profile_image_url",
+        "websites"
+      ],
+      "slot_usage": {
+        "name": {
+          "name": "name",
+          "required": true
+        }
+      },
+      "class_uri": "nmdc:Agent"
+    },
+    "Person": {
+      "name": "Person",
+      "description": "A person, typically a researcher associated with a study or data generation.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "exact_mappings": [
+        "prov:Person"
+      ],
+      "is_a": "Agent",
+      "slots": [
+        "email",
+        "orcid"
+      ],
+      "slot_usage": {
+        "orcid": {
+          "name": "orcid",
+          "annotations": {
+            "tooltip": {
+              "tag": "tooltip",
+              "value": "Open Researcher and Contributor ID for this person. See https://orcid.org"
+            }
+          }
+        },
+        "email": {
+          "name": "email",
+          "annotations": {
+            "tooltip": {
+              "tag": "tooltip",
+              "value": "Email address for this person."
+            }
+          }
+        },
+        "name": {
+          "name": "name",
+          "annotations": {
+            "tooltip": {
+              "tag": "tooltip",
+              "value": "First name, middle initial, and last name of this person."
+            }
+          },
+          "description": "The full name of the Investigator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional."
+        }
+      },
+      "class_uri": "nmdc:Person"
+    },
+    "Organization": {
+      "name": "Organization",
+      "description": "A social or legal institution such as a company, society, consortium, etc.",
+      "from_schema": "https://w3id.org/nmdc/nmdc",
+      "exact_mappings": [
+        "prov:Organization"
+      ],
+      "close_mappings": [
+        "dcm:Organization"
+      ],
+      "is_a": "Agent",
+      "slots": [
+        "ror"
+      ],
+      "slot_usage": {
+        "name": {
+          "name": "name",
+          "description": "The name of the organization.",
+          "close_mappings": [
+            "dcm:organization_name"
+          ]
+        }
+      },
+      "class_uri": "nmdc:Organization"
+    },
     "EukEval": {
       "name": "EukEval",
       "description": "This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.",
@@ -25760,11 +25977,6 @@
         "has_input": {
           "name": "has_input",
           "required": true,
-          "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$",
-            "interpolated": true
-          },
           "minimum_cardinality": 2
         },
         "has_output": {
@@ -25780,7 +25992,6 @@
         },
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$",
@@ -25794,9 +26005,6 @@
       "name": "Isolation",
       "description": "A material processing that separates an organism from a mixed sample by selection techniques such as serial dilution, plating on selective media, and colony picking.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "https://github.com/microbiomedata/nmdc-schema/issues/2978"
-      ],
       "close_mappings": [
         "OBI:0000512"
       ],
@@ -25804,7 +26012,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):isnp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:isnp-{id_shoulder}-{id_blade}$",
@@ -25837,9 +26044,6 @@
       "name": "Culturing",
       "description": "A material processing that grows an organism under controlled conditions. The input and output are both organism samples; the output is an expanded or maintained culture of the input organism.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "https://github.com/microbiomedata/nmdc-schema/issues/2978"
-      ],
       "close_mappings": [
         "OBI:0001147"
       ],
@@ -25847,7 +26051,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):cultp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:cultp-{id_shoulder}-{id_blade}$",
@@ -25895,7 +26098,6 @@
       "slot_usage": {
         "has_input": {
           "name": "has_input",
-          "range": "Sample",
           "required": true,
           "pattern": "^(nmdc):(bsm|osm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
@@ -25905,16 +26107,10 @@
         },
         "has_output": {
           "name": "has_output",
-          "required": true,
-          "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$",
-            "interpolated": true
-          }
+          "required": true
         },
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$",
@@ -25961,25 +26157,14 @@
       "slot_usage": {
         "has_input": {
           "name": "has_input",
-          "required": true,
-          "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$",
-            "interpolated": true
-          }
+          "required": true
         },
         "has_output": {
           "name": "has_output",
-          "required": true,
-          "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$",
-            "interpolated": true
-          }
+          "required": true
         },
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$",
@@ -26027,7 +26212,6 @@
         },
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$",
@@ -26049,10 +26233,10 @@
         "OBI:0000744"
       ],
       "contributors": [
-        "ORCID:0009-0001-1555-1601",
-        "ORCID:0000-0002-8683-0050",
-        "ORCID:0000-0001-9076-6066",
-        "ORCID:0009-0008-4013-7737"
+        "orcid:0009-0001-1555-1601",
+        "orcid:0000-0002-8683-0050",
+        "orcid:0000-0001-9076-6066",
+        "orcid:0009-0008-4013-7737"
       ],
       "is_a": "MaterialProcessing",
       "slots": [
@@ -26066,7 +26250,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$",
@@ -26081,24 +26264,9 @@
           "name": "mass",
           "description": "The output mass of the SubSampling Process."
         },
-        "has_input": {
-          "name": "has_input",
-          "range": "Sample",
-          "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$",
-            "interpolated": true
-          }
-        },
         "has_output": {
           "name": "has_output",
-          "description": "The subsample.",
-          "range": "ProcessedSample",
-          "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$",
-            "interpolated": true
-          }
+          "description": "The subsample."
         }
       },
       "class_uri": "nmdc:SubSamplingProcess"
@@ -26113,8 +26281,8 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "contributors": [
-        "ORCID:0009-0001-1555-1601",
-        "ORCID:0000-0002-8683-0050"
+        "orcid:0009-0001-1555-1601",
+        "orcid:0000-0002-8683-0050"
       ],
       "is_a": "MaterialProcessing",
       "slots": [
@@ -26123,25 +26291,14 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$"
           }
         },
-        "has_input": {
-          "name": "has_input",
-          "range": "Sample",
-          "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$",
-            "interpolated": true
-          }
-        },
         "has_output": {
           "name": "has_output",
           "description": "The mixed sample.",
-          "range": "ProcessedSample",
           "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$",
@@ -26159,10 +26316,10 @@
         "CHMO:0001640"
       ],
       "contributors": [
-        "ORCID:0009-0001-1555-1601",
-        "ORCID:0000-0002-8683-0050",
-        "ORCID:0000-0001-9076-6066",
-        "ORCID:0009-0008-4013-7737"
+        "orcid:0009-0001-1555-1601",
+        "orcid:0000-0002-8683-0050",
+        "orcid:0000-0001-9076-6066",
+        "orcid:0009-0008-4013-7737"
       ],
       "is_a": "MaterialProcessing",
       "slots": [
@@ -26178,7 +26335,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$",
@@ -26189,18 +26345,8 @@
           "name": "volume",
           "description": "The volume of sample filtered."
         },
-        "has_input": {
-          "name": "has_input",
-          "range": "Sample",
-          "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$",
-            "interpolated": true
-          }
-        },
         "has_output": {
           "name": "has_output",
-          "range": "ProcessedSample",
           "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$",
@@ -26230,7 +26376,6 @@
         },
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:storpr-{id_shoulder}-{id_blade}$",
@@ -26263,8 +26408,8 @@
       "description": "The process of using a selective partitioning of the analyte or interferent between two immiscible phases.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "contributors": [
-        "ORCID:0009-0001-1555-1601",
-        "ORCID:0000-0002-1368-8217"
+        "orcid:0009-0001-1555-1601",
+        "orcid:0000-0002-1368-8217"
       ],
       "is_a": "MaterialProcessing",
       "slots": [
@@ -26276,24 +26421,13 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
           }
         },
-        "has_input": {
-          "name": "has_input",
-          "range": "Sample",
-          "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$",
-            "interpolated": true
-          }
-        },
         "has_output": {
           "name": "has_output",
-          "range": "ProcessedSample",
           "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$",
@@ -26314,8 +26448,8 @@
         "CHMO:0002773"
       ],
       "contributors": [
-        "ORCID:0009-0001-1555-1601",
-        "ORCID:0000-0002-1368-8217"
+        "orcid:0009-0001-1555-1601",
+        "orcid:0000-0002-1368-8217"
       ],
       "is_a": "MaterialProcessing",
       "slots": [
@@ -26326,7 +26460,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$",
@@ -26508,61 +26641,6 @@
       ],
       "class_uri": "nmdc:ImageValue"
     },
-    "PersonValue": {
-      "name": "PersonValue",
-      "description": "An attribute value representing a person",
-      "todos": [
-        "add additional fields e.g for institution",
-        "deprecate \"has_raw_value\" in favor of \"name\""
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "is_a": "AttributeValue",
-      "slots": [
-        "email",
-        "name",
-        "orcid",
-        "profile_image_url",
-        "websites"
-      ],
-      "slot_usage": {
-        "orcid": {
-          "name": "orcid",
-          "annotations": {
-            "tooltip": {
-              "tag": "tooltip",
-              "value": "Open Researcher and Contributor ID for this person. See https://orcid.org"
-            }
-          }
-        },
-        "email": {
-          "name": "email",
-          "annotations": {
-            "tooltip": {
-              "tag": "tooltip",
-              "value": "Email address for this person."
-            }
-          }
-        },
-        "has_raw_value": {
-          "name": "has_raw_value",
-          "description": "The full name of the Investigator in format FIRST LAST.",
-          "notes": [
-            "May eventually be deprecated in favor of \"name\"."
-          ]
-        },
-        "name": {
-          "name": "name",
-          "annotations": {
-            "tooltip": {
-              "tag": "tooltip",
-              "value": "First name, middle initial, and last name of this person."
-            }
-          },
-          "description": "The full name of the Investigator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional."
-        }
-      },
-      "class_uri": "nmdc:PersonValue"
-    },
     "TextValue": {
       "name": "TextValue",
       "description": "A basic string value",
@@ -26741,8 +26819,7 @@
           "name": "id",
           "notes": [
             "The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace"
-          ],
-          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$"
+          ]
         }
       },
       "class_uri": "nmdc:OntologyClass"
@@ -26759,10 +26836,6 @@
         "Existing taxonomy slots (samp_taxon_id, host_taxid) already use ControlledIdentifiedTermValue with range OntologyClass. The intent is that these slots point to NcbiTaxon instances specifically, but LinkML does not currently support constraining the term slot of a ControlledIdentifiedTermValue to a particular OntologyClass subclass."
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "https://github.com/microbiomedata/nmdc-schema/issues/2959",
-        "https://github.com/microbiomedata/nmdc-schema/issues/2971"
-      ],
       "close_mappings": [
         "biolink:OrganismTaxon"
       ],
@@ -26884,9 +26957,7 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "see_also": [
-        "https://github.com/microbiomedata/nmdc-schema/issues/2959",
-        "https://github.com/microbiomedata/nmdc-schema/issues/2803",
-        "https://github.com/microbiomedata/nmdc-schema/issues/2971"
+        "https://github.com/microbiomedata/nmdc-schema/issues/2803"
       ],
       "exact_mappings": [
         "COB:0000022"
@@ -26905,7 +26976,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):orgn-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:orgn-{id_shoulder}-{id_blade}$",
@@ -27011,18 +27081,21 @@
     },
     "CreditAssociation": {
       "name": "CreditAssociation",
-      "description": "This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role and for a person value. Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0",
+      "description": "This class supports binding an agent (a Person or an Organization) to a study or a data generation record with a CRediT Contributor Role.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "see_also": [
-        "https://casrai.org/credit/"
+        "https://casrai.org/credit/",
+        "https://kbase.github.io/credit_engine/"
       ],
       "aliases": [
-        "study role",
         "credit table",
         "associated researchers"
       ],
+      "close_mappings": [
+        "dcm:Contributor"
+      ],
       "slots": [
-        "applies_to_person",
+        "applies_to_agent",
         "applied_roles",
         "type"
       ],
@@ -27155,7 +27228,6 @@
         "notes",
         "objective",
         "part_of",
-        "principal_investigator",
         "protocol_link",
         "study_category",
         "study_image",
@@ -27165,7 +27237,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$",
@@ -27323,7 +27394,6 @@
         },
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$",
@@ -27332,7 +27402,6 @@
         },
         "was_generated_by": {
           "name": "was_generated_by",
-          "range": "DataEmitterProcess",
           "pattern": "^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$",
@@ -27407,7 +27476,7 @@
         "analyte_category",
         "associated_studies",
         "instrument_used",
-        "principal_investigator",
+        "has_credit_associations",
         "instrument_instance_specifier",
         "provenance_metadata"
       ],
@@ -27424,7 +27493,6 @@
         },
         "associated_studies": {
           "name": "associated_studies",
-          "range": "Study",
           "pattern": "^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$",
@@ -27616,8 +27684,8 @@
         "MISO:0000001"
       ],
       "contributors": [
-        "ORCID:0009-0001-1555-1601",
-        "ORCID:0000-0002-1368-8217"
+        "orcid:0009-0001-1555-1601",
+        "orcid:0000-0002-1368-8217"
       ],
       "is_a": "MaterialProcessing",
       "slots": [
@@ -27630,7 +27698,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$",
@@ -27660,7 +27727,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$",
@@ -27719,7 +27785,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$",
@@ -28282,7 +28347,6 @@
         "subsurface_depth",
         "dna_isolate_meth",
         "rna_isolate_meth",
-        "collection_date_inc",
         "collection_time",
         "collection_time_inc",
         "experimental_factor_other",
@@ -28349,13 +28413,11 @@
             {
               "value": "100"
             }
-          ],
-          "range": "float"
+          ]
         },
         "id": {
           "name": "id",
           "description": "An NMDC assigned unique identifier for a biosample submitted to NMDC.",
-          "required": true,
           "pattern": "^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$",
@@ -28397,16 +28459,6 @@
           "name": "env_medium",
           "required": true
         },
-        "associated_studies": {
-          "name": "associated_studies",
-          "range": "Study",
-          "required": true,
-          "pattern": "^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$",
-            "interpolated": true
-          }
-        },
         "fire": {
           "name": "fire",
           "annotations": {
@@ -28429,7 +28481,6 @@
               "value": "1871-10-01 to 1871-10-31"
             }
           ],
-          "range": "string",
           "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?(\\s+to\\s+[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?)?$"
         },
         "flooding": {
@@ -28454,8 +28505,7 @@
             {
               "value": "1927-04 to 1927-05"
             }
-          ],
-          "range": "string"
+          ]
         },
         "extreme_event": {
           "name": "extreme_event",
@@ -28469,8 +28519,7 @@
             {
               "value": "1980-05-18, volcanic eruption"
             }
-          ],
-          "range": "string"
+          ]
         },
         "slope_aspect": {
           "name": "slope_aspect",
@@ -28557,33 +28606,12 @@
         },
         "cur_vegetation": {
           "name": "cur_vegetation",
-          "description": "Vegetation classification from one or more standard classification systems, or agricultural crop",
           "todos": [
             "Recommend changing this from text value to some king of ontology?"
           ],
           "comments": [
             "Values provided here can be specific species of vegetation or vegetation regions",
             "See for vegetation regions- https://education.nationalgeographic.org/resource/vegetation-region"
-          ],
-          "examples": [
-            {
-              "object": {
-                "type": "nmdc:TextValue",
-                "has_raw_value": "deciduous forest"
-              }
-            },
-            {
-              "object": {
-                "type": "nmdc:TextValue",
-                "has_raw_value": "forest"
-              }
-            },
-            {
-              "object": {
-                "type": "nmdc:TextValue",
-                "has_raw_value": "Bauhinia variegata"
-              }
-            }
           ]
         },
         "cur_vegetation_meth": {
@@ -28656,40 +28684,6 @@
             },
             {
               "value": "doi:10.1016/j.geoderma.2019.113898"
-            }
-          ]
-        },
-        "link_addit_analys": {
-          "name": "link_addit_analys",
-          "examples": [
-            {
-              "object": {
-                "type": "nmdc:TextValue",
-                "has_raw_value": "https://doi.org/10.1111/j.1574-6941.2011.01140.x"
-              }
-            },
-            {
-              "object": {
-                "type": "nmdc:TextValue",
-                "has_raw_value": "doi:10.1111/j.1574-6941.2011.01140.x"
-              }
-            }
-          ]
-        },
-        "link_climate_info": {
-          "name": "link_climate_info",
-          "examples": [
-            {
-              "object": {
-                "type": "nmdc:TextValue",
-                "has_raw_value": "https://www.int-res.com/abstracts/cr/v14/n3/p161-173/"
-              }
-            },
-            {
-              "object": {
-                "type": "nmdc:TextValue",
-                "has_raw_value": "doi:10.3354/cr014161"
-              }
             }
           ]
         },
@@ -28786,7 +28780,6 @@
               "value": "10% water filled pore space"
             }
           ],
-          "range": "string",
           "multivalued": true
         },
         "ph_meth": {
@@ -28820,16 +28813,6 @@
           "todos": [
             "is this inorganic and organic? both? could use some clarification.",
             "ug/L doesn't seem like the right units. Should check this slots usage in databases and re-evaluate. I couldn't find any references that provided this data in this format"
-          ],
-          "examples": [
-            {
-              "object": {
-                "type": "nmdc:QuantityValue",
-                "has_raw_value": "1 ug/L",
-                "has_numeric_value": 1,
-                "has_unit": "ug/L"
-              }
-            }
           ]
         },
         "tot_nitro_cont_meth": {
@@ -28868,26 +28851,6 @@
           "comments": [
             "Describe how samples were composited or sieved.",
             "Use 'sample link' to indicate which samples were combined."
-          ],
-          "examples": [
-            {
-              "object": {
-                "type": "nmdc:TextValue",
-                "has_raw_value": "combined 2 cores | 4mm sieved"
-              }
-            },
-            {
-              "object": {
-                "type": "nmdc:TextValue",
-                "has_raw_value": "4 mm sieved and homogenized"
-              }
-            },
-            {
-              "object": {
-                "type": "nmdc:TextValue",
-                "has_raw_value": "50 g | 5 cores | 2 mm sieved"
-              }
-            }
           ]
         },
         "climate_environment": {
@@ -29052,7 +29015,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$",
@@ -29073,8 +29035,7 @@
       ],
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "see_also": [
-        "https://github.com/microbiomedata/nmdc-schema/issues/2803",
-        "https://github.com/microbiomedata/nmdc-schema/issues/2961"
+        "https://github.com/microbiomedata/nmdc-schema/issues/2803"
       ],
       "close_mappings": [
         "OBI:0100051"
@@ -29097,7 +29058,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):osm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:osm-{id_shoulder}-{id_blade}$",
@@ -29293,7 +29253,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$",
@@ -29358,7 +29317,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$",
@@ -29397,7 +29355,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$",
@@ -29407,22 +29364,6 @@
         "img_identifiers": {
           "name": "img_identifiers",
           "maximum_cardinality": 1
-        },
-        "has_input": {
-          "name": "has_input",
-          "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$",
-            "interpolated": true
-          }
-        },
-        "has_output": {
-          "name": "has_output",
-          "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$",
-            "interpolated": true
-          }
         },
         "was_informed_by": {
           "name": "was_informed_by",
@@ -29464,7 +29405,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$",
@@ -29514,7 +29454,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$",
@@ -29563,7 +29502,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$",
@@ -29600,7 +29538,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$",
@@ -29643,7 +29580,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$",
@@ -29695,7 +29631,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$",
@@ -29735,7 +29670,6 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "required": true,
           "pattern": "^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[1-9]{1}[0-9]{0,})$",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$",
