@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post73.dev0+fb68d9e54
+version: 11.23.0.post75.dev0+2ed7565e5
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -2052,20 +2052,21 @@ enums:
         text: biogeochemistry
         description: Completeness badge. Awarded when the Biosample populates at least
           badge_minimum_slots of the biogeochemistry subset.
+        see_also:
+        - https://microbiomedata.github.io/nmdc-schema/Biogeochemistry/
       host_information:
         text: host_information
         description: Completeness badge. Awarded when the Biosample populates at least
           badge_minimum_slots of the host_information subset.
+        see_also:
+        - https://microbiomedata.github.io/nmdc-schema/HostInformation/
       expert_curation:
         text: expert_curation
         description: Provenance badge. Awarded when the Biosample's ProvenanceMetadata.source_system_of_record
           identifies the NMDC submission portal, rather than an ETL process over an
-          external database. Not a completeness measure, so it has no badge subset
-          and no badge_minimum_slots.
-        comments:
-        - source_system_of_record is not yet backpopulated for existing biosamples,
-          so this badge cannot be awarded on historical records until that backfill
-          happens.
+          external database.
+        see_also:
+        - https://microbiomedata.github.io/nmdc-schema/source_system_of_record/
   LibraryStrategyEnum:
     name: LibraryStrategyEnum
     description: Sequencing strategy used for library preparation
