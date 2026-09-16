@@ -721,8 +721,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PersonValue/">PersonValue</a></td>
-<td>An attribute value representing a person</td>
+<td><a href="../Agent/">Agent</a></td>
+<td>A person or organization bears some form of responsibility for an activity...</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -734,6 +734,16 @@
 <td><a href="../Protocol/">Protocol</a></td>
 <td></td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../Person/">Person</a></td>
+<td>A person, typically a researcher associated with a study or data generation.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Organization/">Organization</a></td>
+<td>A social or legal institution such as a company, society, consortium, etc.</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
@@ -1064,7 +1074,7 @@ description: A human readable label for an entity
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 domain_of:
-- PersonValue
+- Agent
 - NamedThing
 - Protocol
 range: string

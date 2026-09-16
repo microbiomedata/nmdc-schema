@@ -754,8 +754,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PersonValue/">PersonValue</a></td>
-<td>An attribute value representing a person</td>
+<td><a href="../Person/">Person</a></td>
+<td>A person, typically a researcher associated with a study or data generation.</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -796,8 +796,8 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>close</td>
+<td>dcm:contributor_id</td>
 </tr>
 </tbody>
 </table>
@@ -813,9 +813,11 @@ examples:
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://bioregistry.io/registry/orcid
+close_mappings:
+- dcm:contributor_id
 rank: 1000
 domain_of:
-- PersonValue
+- Person
 range: string
 pattern: ^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$
 

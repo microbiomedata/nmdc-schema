@@ -401,8 +401,6 @@
       click QuantityValue href "../QuantityValue"
     AttributeValue &lt;|-- ImageValue
       click ImageValue href "../ImageValue"
-    AttributeValue &lt;|-- PersonValue
-      click PersonValue href "../PersonValue"
     AttributeValue &lt;|-- TextValue
       click TextValue href "../TextValue"
     AttributeValue &lt;|-- TimestampValue
@@ -428,7 +426,6 @@
 <li><strong>AttributeValue</strong><ul>
 <li><a href="../QuantityValue/">QuantityValue</a></li>
 <li><a href="../ImageValue/">ImageValue</a></li>
-<li><a href="../PersonValue/">PersonValue</a></li>
 <li><a href="../TextValue/">TextValue</a></li>
 <li><a href="../TimestampValue/">TimestampValue</a></li>
 <li><a href="../ControlledTermValue/">ControlledTermValue</a></li>
@@ -541,6 +538,7 @@ attributes:
     designates_type: true
     owner: AttributeValue
     domain_of:
+    - Agent
     - EukEval
     - FunctionalAnnotationAggMember
     - PeptideQuantification

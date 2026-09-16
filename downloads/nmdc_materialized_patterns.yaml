@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post50.dev0+135349819
+version: 11.23.0.post73.dev0+fb68d9e54
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -190,6 +190,9 @@ prefixes:
   dcterms:
     prefix_prefix: dcterms
     prefix_reference: http://purl.org/dc/terms/
+  dcm:
+    prefix_prefix: dcm
+    prefix_reference: https://kbase.github.io/credit_engine/
   doi:
     prefix_prefix: doi
     prefix_reference: 'https://bioregistry.io/doi:'
@@ -351,6 +354,7 @@ emit_prefixes:
 - orcid
 - rdf
 - rdfs
+- ror
 - skos
 - xsd
 default_prefix: nmdc
@@ -3085,53 +3089,85 @@ enums:
     comments:
     - CreditEnums come from https://casrai.org/credit/
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://kbase.github.io/credit_engine/ContributorRole/
     permissible_values:
       Conceptualization:
         text: Conceptualization
         description: Conceptualization
+        exact_mappings:
+        - dcm:conceptualization
       Data curation:
         text: Data curation
         description: Data curation
+        exact_mappings:
+        - dcm:data_curation
       Formal Analysis:
         text: Formal Analysis
         description: Formal Analysis
+        exact_mappings:
+        - dcm:formal_analysis
       Funding acquisition:
         text: Funding acquisition
         description: Funding acquisition
+        exact_mappings:
+        - dcm:funding_acquisition
       Investigation:
         text: Investigation
         description: Investigation
+        exact_mappings:
+        - dcm:investigation
       Methodology:
         text: Methodology
         description: Methodology
+        exact_mappings:
+        - dcm:methodology
       Project administration:
         text: Project administration
         description: Project administration
+        exact_mappings:
+        - dcm:project_administration
       Resources:
         text: Resources
         description: Resources
+        exact_mappings:
+        - dcm:resources
       Software:
         text: Software
         description: Software
+        exact_mappings:
+        - dcm:software
       Supervision:
         text: Supervision
         description: Supervision
+        exact_mappings:
+        - dcm:supervision
       Validation:
         text: Validation
         description: Validation
+        exact_mappings:
+        - dcm:validation
       Visualization:
         text: Visualization
         description: Visualization
+        exact_mappings:
+        - dcm:visualization
       Writing original draft:
         text: Writing original draft
-        description: Writing – original draft
+        description: Writing original draft
+        exact_mappings:
+        - dcm:writing_original_draft
       Writing review and editing:
         text: Writing review and editing
-        description: Writing – review & editing
+        description: Writing review & editing
+        exact_mappings:
+        - dcm:writing_review_editing
       Principal Investigator:
         text: Principal Investigator
         description: principal investigator role
         meaning: OBI:0000103
+        related_mappings:
+        - dcm:project_leader
       Submitter:
         text: Submitter
         description: the person(s) who enter study and biosample metadata into the
@@ -6163,6 +6199,49 @@ enums:
           on the data portal. The submitter cannot edit.
         title: Released
 slots:
+  email:
+    name: email
+    description: An email address for an entity such as a person. This should be the
+      primary email address used.
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: schema:email
+    range: string
+  profile_image_url:
+    name: profile_image_url
+    description: A url that points to an image of this person or organization.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
+  orcid:
+    name: orcid
+    description: The ORCID of a person.
+    comments:
+    - Canonical form is the Bioregistry CURIE with prefix `orcid`.
+    examples:
+    - value: orcid:0000-0002-7086-765X
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://bioregistry.io/registry/orcid
+    close_mappings:
+    - dcm:contributor_id
+    range: string
+    pattern: ^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$
+  ror:
+    name: ror
+    description: The Research Organization Registry identifier of an organization.
+    comments:
+    - Canonical form is the Bioregistry CURIE with prefix `ror`.
+    - Optional. Institutions usually have a ROR; many consortia do not.
+    examples:
+    - value: ror:05cwx3318
+      description: National Microbiome Data Collaborative
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://bioregistry.io/registry/ror
+    - https://ror.org
+    close_mappings:
+    - dcm:organization_id
+    range: string
+    pattern: ^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$
   host_family_relation:
     name: host_family_relation
     annotations:
@@ -6880,30 +6959,6 @@ slots:
       which the information should be rendered.
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
-  email:
-    name: email
-    description: An email address for an entity such as a person. This should be the
-      primary email address used.
-    from_schema: https://w3id.org/nmdc/nmdc
-    slot_uri: schema:email
-    range: string
-  profile_image_url:
-    name: profile_image_url
-    description: A url that points to an image of a person.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
-  orcid:
-    name: orcid
-    description: The ORCID of a person.
-    comments:
-    - Canonical form is the Bioregistry CURIE with prefix `orcid`.
-    examples:
-    - value: orcid:0000-0002-7086-765X
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://bioregistry.io/registry/orcid
-    range: string
-    pattern: ^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$
   language:
     name: language
     description: Should use ISO 639-1 code e.g. "en", "fr"
@@ -8351,7 +8406,7 @@ slots:
     - PI
     last_updated_on: '2026-08-21T00:00:00+00:00'
     modified_by: orcid:0000-0002-4504-1039
-    range: PersonValue
+    range: Person
   was_generated_by:
     name: was_generated_by
     from_schema: https://w3id.org/nmdc/nmdc
@@ -8392,22 +8447,24 @@ slots:
     annotations:
       tooltip:
         tag: tooltip
-        value: Researchers associated with this study or data generation, including
-          principal investigators.
+        value: Researchers or organizations associated with this study or data generation,
+          including principal investigators.
     description: This slot links a study or a data generation to a credit association.
-      The credit association will be linked to a person value and to a CRediT Contributor
-      Roles term. Principal investigators are recorded here with applied_roles including
-      Principal Investigator.
+      The credit association is linked to an Agent (Person or Organization) and to
+      a CRediT Contributor Roles term. Principal investigators are recorded here with
+      applied_roles including Principal Investigator.
     examples:
     - description: A principal investigator recorded as a credit association.
       object:
         type: prov:Association
-        applies_to_person:
-          type: nmdc:PersonValue
+        applies_to_agent:
+          type: nmdc:Person
           name: Janet Jansson
         applied_roles:
         - Principal Investigator
     from_schema: https://w3id.org/nmdc/nmdc
+    close_mappings:
+    - dcm:contributors
     slot_uri: prov:qualifiedAssociation
     range: CreditAssociation
     multivalued: true
@@ -8429,10 +8486,10 @@ slots:
     range: ImageValue
     multivalued: true
     inlined_as_list: true
-  applies_to_person:
-    name: applies_to_person
+  applies_to_agent:
+    name: applies_to_agent
     from_schema: https://w3id.org/nmdc/nmdc
-    range: PersonValue
+    range: Agent
     required: true
   applied_roles:
     name: applied_roles
@@ -8443,6 +8500,8 @@ slots:
           Information: https://info.orcid.org/credit-for-research-contribution ; CRediT:
           https://credit.niso.org/'
     from_schema: https://w3id.org/nmdc/nmdc
+    close_mappings:
+    - dcm:contributor_roles
     range: CreditEnum
     required: true
     multivalued: true
@@ -19883,6 +19942,78 @@ slots:
     recommended: true
     multivalued: true
 classes:
+  Agent:
+    name: Agent
+    description: A person or organization bears some form of responsibility for an
+      activity taking place, for the existence of an entity, or for another agent's
+      activity.
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - prov:Agent
+    abstract: true
+    slots:
+    - type
+    - name
+    - profile_image_url
+    - websites
+    slot_usage:
+      name:
+        name: name
+        required: true
+    class_uri: nmdc:Agent
+  Person:
+    name: Person
+    description: A person, typically a researcher associated with a study or data
+      generation.
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - prov:Person
+    is_a: Agent
+    slots:
+    - email
+    - orcid
+    slot_usage:
+      orcid:
+        name: orcid
+        annotations:
+          tooltip:
+            tag: tooltip
+            value: Open Researcher and Contributor ID for this person. See https://orcid.org
+      email:
+        name: email
+        annotations:
+          tooltip:
+            tag: tooltip
+            value: Email address for this person.
+      name:
+        name: name
+        annotations:
+          tooltip:
+            tag: tooltip
+            value: First name, middle initial, and last name of this person.
+        description: The full name of the Investigator. It should follow the format
+          FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL
+          is optional.
+    class_uri: nmdc:Person
+  Organization:
+    name: Organization
+    description: A social or legal institution such as a company, society, consortium,
+      etc.
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - prov:Organization
+    close_mappings:
+    - dcm:Organization
+    is_a: Agent
+    slots:
+    - ror
+    slot_usage:
+      name:
+        name: name
+        description: The name of the organization.
+        close_mappings:
+        - dcm:organization_name
+    class_uri: nmdc:Organization
   EukEval:
     name: EukEval
     description: This class contains information pertaining to evaluating if a Metagenome-Assembled
@@ -20786,49 +20917,6 @@ classes:
     - description
     - display_order
     class_uri: nmdc:ImageValue
-  PersonValue:
-    name: PersonValue
-    description: An attribute value representing a person
-    todos:
-    - add additional fields e.g for institution
-    - deprecate "has_raw_value" in favor of "name"
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: AttributeValue
-    slots:
-    - email
-    - name
-    - orcid
-    - profile_image_url
-    - websites
-    slot_usage:
-      orcid:
-        name: orcid
-        annotations:
-          tooltip:
-            tag: tooltip
-            value: Open Researcher and Contributor ID for this person. See https://orcid.org
-      email:
-        name: email
-        annotations:
-          tooltip:
-            tag: tooltip
-            value: Email address for this person.
-      has_raw_value:
-        name: has_raw_value
-        description: The full name of the Investigator in format FIRST LAST.
-        notes:
-        - May eventually be deprecated in favor of "name".
-      name:
-        name: name
-        annotations:
-          tooltip:
-            tag: tooltip
-            value: First name, middle initial, and last name of this person.
-        description: The full name of the Investigator. It should follow the format
-          FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL
-          is optional.
-        required: true
-    class_uri: nmdc:PersonValue
   TextValue:
     name: TextValue
     description: A basic string value
@@ -21230,17 +21318,19 @@ classes:
     class_uri: nmdc:Protocol
   CreditAssociation:
     name: CreditAssociation
-    description: This class supports binding associated researchers to a study or
-      a data generation record. There will be at least a slot for a CRediT Contributor
-      Role and for a person value.
+    description: This class supports binding an agent (a Person or an Organization)
+      to a study or a data generation record with a CRediT Contributor Role.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://casrai.org/credit/
+    - https://kbase.github.io/credit_engine/
     aliases:
     - credit table
     - associated researchers
+    close_mappings:
+    - dcm:Contributor
     slots:
-    - applies_to_person
+    - applies_to_agent
     - applied_roles
     - type
     class_uri: prov:Association

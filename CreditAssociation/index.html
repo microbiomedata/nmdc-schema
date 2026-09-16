@@ -405,7 +405,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-creditassociation">Class: CreditAssociation</h1>
-<p><em>This class supports binding associated researchers to a study or a data generation record. There will be at least a slot for a CRediT Contributor Role and for a person value.</em></p>
+<p><em>This class supports binding an agent (a Person or an Organization) to a study or a data generation record with a CRediT Contributor Role.</em></p>
 <div>
 <p>URI: <a href="http://www.w3.org/ns/prov#Association">prov:Association</a></p>
 <div class="mermaid">classDiagram
@@ -417,10 +417,10 @@
       CreditAssociation --&gt; "1..*" CreditEnum : applied_roles
     click CreditEnum href "../CreditEnum"
 
-  CreditAssociation : applies_to_person
+  CreditAssociation : applies_to_agent
 
-      CreditAssociation --&gt; "1" PersonValue : applies_to_person
-    click PersonValue href "../PersonValue"
+      CreditAssociation --&gt; "1" Agent : applies_to_agent
+    click Agent href "../Agent"
 
   CreditAssociation : type
 
@@ -440,8 +440,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../applies_to_person/">applies_to_person</a></td>
-<td>1 <br/> <a href="../PersonValue/">PersonValue</a></td>
+<td><a href="../applies_to_agent/">applies_to_agent</a></td>
+<td>1 <br/> <a href="../Agent/">Agent</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -504,6 +504,7 @@
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="https://casrai.org/credit/">https://casrai.org/credit/</a></li>
+<li><a href="https://kbase.github.io/credit_engine/">https://kbase.github.io/credit_engine/</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -523,6 +524,10 @@
 <td>self</td>
 <td>prov:Association</td>
 </tr>
+<tr>
+<td>close</td>
+<td>dcm:Contributor</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -530,17 +535,19 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: CreditAssociation
-description: This class supports binding associated researchers to a study or a data
-  generation record. There will be at least a slot for a CRediT Contributor Role and
-  for a person value.
+description: This class supports binding an agent (a Person or an Organization) to
+  a study or a data generation record with a CRediT Contributor Role.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://casrai.org/credit/
+- https://kbase.github.io/credit_engine/
 aliases:
 - credit table
 - associated researchers
+close_mappings:
+- dcm:Contributor
 slots:
-- applies_to_person
+- applies_to_agent
 - applied_roles
 - type
 class_uri: prov:Association
@@ -550,24 +557,26 @@ class_uri: prov:Association
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: CreditAssociation
-description: This class supports binding associated researchers to a study or a data
-  generation record. There will be at least a slot for a CRediT Contributor Role and
-  for a person value.
+description: This class supports binding an agent (a Person or an Organization) to
+  a study or a data generation record with a CRediT Contributor Role.
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://casrai.org/credit/
+- https://kbase.github.io/credit_engine/
 aliases:
 - credit table
 - associated researchers
+close_mappings:
+- dcm:Contributor
 attributes:
-  applies_to_person:
-    name: applies_to_person
+  applies_to_agent:
+    name: applies_to_agent
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     owner: CreditAssociation
     domain_of:
     - CreditAssociation
-    range: PersonValue
+    range: Agent
     required: true
   applied_roles:
     name: applied_roles
@@ -578,6 +587,8 @@ attributes:
           Information: https://info.orcid.org/credit-for-research-contribution ; CRediT:
           https://credit.niso.org/'
     from_schema: https://w3id.org/nmdc/nmdc
+    close_mappings:
+    - dcm:contributor_roles
     rank: 1000
     owner: CreditAssociation
     domain_of:
@@ -610,6 +621,7 @@ attributes:
     designates_type: true
     owner: CreditAssociation
     domain_of:
+    - Agent
     - EukEval
     - FunctionalAnnotationAggMember
     - PeptideQuantification
