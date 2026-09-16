@@ -805,10 +805,10 @@ which decides which MIxS slots are imported), a few committed reports, and refer
 kept by hand. It is no longer the default place to write generated output; see the
 output-destination row in the policy table in
 <a href="https://github.com/microbiomedata/nmdc-schema/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
-<p>A file that lands there and is then named by nothing has no way to fail. It is not
-regenerated, so it does not get refreshed; it is not read, so a wrong value never surfaces.
-It just sits at whatever the schema looked like on the day it was written. Two consequences
-have already been paid for:</p>
+<p>An asset without a maintained consumer or regeneration step can stay unchanged as the
+schema evolves. Searching for references helps identify files needing review, although
+the absence of a literal filename does not prove that a file is unused. Two examples of
+stale assets illustrate the problem:</p>
 <ul>
 <li><code>assets/schema_pattern_linting.txt</code> was last regenerated on 2025-12-03 (commit
   <code>086cb897a</code>). On 2026-02-13, commit <code>11139a97a</code> moved <code>chemical_entity_set</code>, <code>inchi</code>,
@@ -825,26 +825,36 @@ have already been paid for:</p>
 <p>Every file tracked under <code>assets/</code> must be named by something else in the repo: a Makefile
 target that builds it, a script or test that reads it, or a document that explains what it
 is for. If none of those is true, it is a retirement candidate.</p>
-<p><code>tests/test_no_new_unreferenced_assets.py</code> enforces this going forward. It runs in <code>make
-test</code> and so in CI. Files that predate the check are listed in its allowlist, grouped with
-the reason each is still there and the issue tracking its retirement.</p>
+<p><code>tests/test_no_new_unreferenced_assets.py</code> checks for literal references going forward. It
+runs in <code>make test</code> and so in CI. Files that predate the check are listed in its allowlist,
+grouped with the reason each is still there and the issue tracking its retirement. Audit
+prose and the detector's own fixtures do not count as consumers. An actual consumer using
+a constructed path may need a documentation reference or a reasoned allowlist entry.</p>
 <h2 id="checking-one-file">Checking one file</h2>
 <p>Run the report:</p>
 <pre><code class="language-bash">make report-asset-usage
 </code></pre>
-<p>It prints three lists: assets referenced nowhere in this repo, assets naming an element
-defined in <code>src/schema/deprecated.yaml</code>, and the intersection. A file in the third list can
-be deleted without a remapping decision, because nothing reads it and the elements it names
-are retired.</p>
+<p>It prints three lists: assets with no literal reference found in the searched repository
+files, assets naming an element defined in <code>src/schema/deprecated.yaml</code>, and the intersection.
+Files in the third list are priorities for retirement review. Check consumers before
+deciding to delete, regenerate, or retain them.</p>
 <p>The report only sees this repository. Before deleting, check the rest of the organization,
-because another repo can read a raw GitHub URL without any local reference:</p>
-<pre><code class="language-bash">gh search code --owner microbiomedata &quot;&lt;filename without extension&gt;&quot;
+because another repo can read a raw GitHub URL without any local reference. This preliminary
+search filters out this repository's own matches:</p>
+<pre><code class="language-bash">gh search code --owner microbiomedata &quot;&lt;filename without extension&gt;&quot; \
+  --limit 1000 --json repository,path,url \
+  --jq '.[] | select(.repository.nameWithOwner != &quot;microbiomedata/nmdc-schema&quot;)'
 </code></pre>
-<p>Zero results there plus zero references here is the evidence to act on. Record both in the
-pull request. Worked example: <code>assets/misc/neon_nmdc_term_mapping.tsv</code> was deleted on
-2026-08-26 after <code>gh search code --owner microbiomedata neon_nmdc_term_mapping</code> returned
-nothing and a grep across every local clone of <code>nmdc-runtime</code>, <code>nmdc-server</code>,
-<code>nmdc-lakehouse</code>, and <code>external-metadata-awareness</code> returned nothing.
+<p>Zero results are supporting evidence, not proof of non-use. The
+<a href="https://cli.github.com/manual/gh_search_code">GitHub CLI uses the legacy code-search index</a>,
+which has coverage restrictions, and results may reach the requested limit. Inspect likely
+consumer repositories directly, including scripts that construct paths or use globs.
+Record repository revisions, search terms, coverage gaps, and the retirement rationale in
+the pull request. A failed or incomplete search must not be reported as zero matches.</p>
+<p>Worked example: the metadata squad decided on 2026-08-26 to delete
+<code>assets/misc/neon_nmdc_term_mapping.tsv</code>. The investigation found no code-search hits and
+no filename references in the local clones of <code>nmdc-runtime</code>, <code>nmdc-server</code>,
+<code>nmdc-lakehouse</code>, and <code>external-metadata-awareness</code> that it checked.
 NEON (National Ecological Observatory Network) ingest, which might have used it, does its
 own term mapping in <code>nmdc_runtime/site/translation/neon_soil_translator.py</code> and siblings.</p>
 <p>Deleting it also moots
@@ -854,7 +864,7 @@ divergence to detect once the file is gone, and the general version of what it a
 the report and ratchet described above.</p>
 <h2 id="retiring-one">Retiring one</h2>
 <ol>
-<li>Confirm it is unreferenced here and in the organization, as above.</li>
+<li>Review local and external consumers, as above, and record the evidence supporting retirement.</li>
 <li>Delete it with <code>git rm</code>. Git history is the archive; there is no need to keep a copy in
    the tree. This is the same disposition as
    <a href="https://github.com/microbiomedata/nmdc-schema/pull/3132">Remove SPARQL query files and unreferenced OWL customization artifact</a>,
@@ -863,8 +873,8 @@ the report and ratchet described above.</p>
 <li>Remove its entry from the allowlist in <code>tests/test_no_new_unreferenced_assets.py</code>. The
    test fails if an allowlisted path stops being unreferenced or stops existing, so the list
    cannot drift into fiction.</li>
-<li>Say in the pull request how you know nothing uses it. A reader a year from now cannot
-   redo the search from a claim that it was unused.</li>
+<li>Say in the pull request what you checked and why retirement is appropriate. A reader a
+   year from now cannot redo the search from a claim that the file was unused.</li>
 </ol>
 <p>If the file is referenced but stale, regenerate it instead of deleting it, and check whether
 its Makefile target is a prerequisite of anything. If it is not, nothing will regenerate it
@@ -873,8 +883,12 @@ next time either, which is the actual defect.</p>
 <p>Retiring a schema element is what most often exposes a stale asset, because the element name
 is what makes the staleness visible. The second release cycle of
 <a href="../schema_element_deprecation_guide/">the deprecation guide</a> now includes a step for this.</p>
-<p>Two limits worth knowing before trusting the check:</p>
+<p>Limits worth knowing before trusting the check:</p>
 <ul>
+<li>Reference detection searches selected text formats in tracked files. It excludes generated
+  trees, <code>assets/</code> itself, and audit prose; see <code>SEARCHABLE_SUFFIXES</code>, <code>ROOT_EXCLUDED_DIRS</code>,
+  and <code>AUDIT_FILES</code> in <code>src/scripts/report_asset_usage.py</code> for the exact scope. It does not
+  resolve dynamically constructed paths or establish that a textual mention is a live dependency.</li>
 <li>It reads element names out of <code>src/schema/deprecated.yaml</code>, so it only sees elements that
   have completed the second release cycle. An element marked deprecated but not yet moved is
   invisible to it. So is a rename: <code>OmicsProcessing</code> became <code>DataGeneration</code> without passing
