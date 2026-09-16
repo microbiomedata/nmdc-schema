@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/database-example-diagrams/" rel="canonical"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>Database example diagrams - NMDC Schema Documentation</title>
+<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#database-example-diagrams">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="NMDC Schema Documentation" class="md-header__button md-logo" data-md-component="logo" href=".." title="NMDC Schema Documentation">
+<img alt="logo" src="../images/NMDC_logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            NMDC Schema Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Database example diagrams
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="NMDC Schema Documentation" class="md-nav__button md-logo" data-md-component="logo" href=".." title="NMDC Schema Documentation">
+<img alt="logo" src="../images/NMDC_logo.png"/>
+</a>
+    NMDC Schema Documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../about/">
+<span class="md-ellipsis">
+    
+  
+    Funding and Acknowledgements
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../collaboration/">
+<span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Metadata_Documentation_Overview/">
+<span class="md-ellipsis">
+    
+  
+    Metadata Standards Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../maintaining-the-schema/">
+<span class="md-ellipsis">
+    
+  
+    Maintaining the NMDC Schema
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../schema_element_deprecation_guide/">
+<span class="md-ellipsis">
+    
+  
+    Schema element deprecation guide
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../schema-validation/">
+<span class="md-ellipsis">
+    
+  
+    NMDC Schema Validation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../identifiers/">
+<span class="md-ellipsis">
+    
+  
+    Identifiers
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../typecode-to-class-map/">
+<span class="md-ellipsis">
+    
+  
+    Typecode to class map
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../migrations/">
+<span class="md-ellipsis">
+    
+  
+    Version Migration Guides
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../visualizations/">
+<span class="md-ellipsis">
+    
+  
+    Visualizations
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../validation/">
+<span class="md-ellipsis">
+    
+  
+    Data Validation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../developer-docs/">
+<span class="md-ellipsis">
+    
+  
+    Developer Docs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../downloads/">
+<span class="md-ellipsis">
+    
+  
+    Downloads
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#existing-tools-and-choice-of-approach">
+<span class="md-ellipsis">
+      
+        Existing tools and choice of approach
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#commands">
+<span class="md-ellipsis">
+      
+        Commands
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#relationship-and-workflow-views">
+<span class="md-ellipsis">
+      
+        Relationship and workflow views
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#validation-and-graph-coverage">
+<span class="md-ellipsis">
+      
+        Validation and graph coverage
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#metadata-in-node-labels">
+<span class="md-ellipsis">
+      
+        Metadata in node labels
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#maintained-example-gallery">
+<span class="md-ellipsis">
+      
+        Maintained example gallery
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="database-example-diagrams">Database example diagrams</h1>
+<p><code>src/scripts/database_to_diagram.py</code> is the shared generator for NMDC Database
+instances. It validates YAML or JSON, discovers relationships from the source
+schema, and writes Mermaid. All example SVGs are rendered from those Mermaid
+files by the same rule in <code>makefiles/diagrams.Makefile</code>.</p>
+<p>This complements the schema class/collection diagrams: each node here represents
+a record or an identified object actually present in an example, rather than a
+class or collection that the schema defines.</p>
+<h2 id="existing-tools-and-choice-of-approach">Existing tools and choice of approach</h2>
+<p>Several established tools cover parts of this task:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Coverage and fit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://linkml.io/linkml/cli/generate">LinkML diagram generators</a></td>
+<td>Generate class/ER diagrams from a schema. Useful alongside these instance diagrams.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/linkml/linkml-renderer">linkml-renderer</a></td>
+<td>The closest prior art: LinkML instance data to HTML, Markdown and Mermaid. The project describes itself as experimental.</td>
+</tr>
+<tr>
+<td><a href="https://plantuml.com/json">PlantUML JSON</a> and <a href="https://plantuml.com/yaml">YAML</a>, <a href="https://github.com/AykutSarac/jsoncrack.com">JSON Crack</a></td>
+<td>Visualize document structure. Turning an NMDC identifier value into an edge to another collection record still requires interpreting the schema.</td>
+</tr>
+<tr>
+<td><a href="https://linkml.io/linkml/data/rdf">LinkML RDF conversion</a> with <a href="https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.tools.rdf2dot/">RDFLib rdf2dot</a></td>
+<td>An existing route from instance data to a semantic graph and Graphviz. A useful alternative for RDF-oriented work; the example-specific label selection and workflow presentation still need configuration or code.</td>
+</tr>
+<tr>
+<td><a href="https://js.cytoscape.org/">Cytoscape.js</a></td>
+<td>An established interactive graph renderer. It takes explicit nodes and edges; the schema-aware extraction step would still be needed.</td>
+</tr>
+</tbody>
+</table>
+<p>On 2026-09-16, we exercised <code>linkml-renderer</code> at commit
+<a href="https://github.com/linkml/linkml-renderer/tree/867cb5c75a03bb82f6d4d3f9185be858450b6b87"><code>867cb5c</code></a>
+using its <code>MermaidRenderer.render</code> API, the source NMDC schema, and the SIP and
+leaf-clip examples. It generated Mermaid, but the SIP output did not draw
+<code>has_input</code>, <code>has_output</code> or <code>in_manifest</code> edges. The leaf-clip output likewise
+omitted the <code>expected_organism</code> edge. Its traversal draws inline containment;
+non-inline identifier references remain attributes. This matches the inspected
+<a href="https://github.com/linkml/linkml-renderer/blob/867cb5c75a03bb82f6d4d3f9185be858450b6b87/src/linkml_renderer/renderers/mermaid_renderer.py">renderer</a>
+and <a href="https://github.com/linkml/linkml-renderer/blob/867cb5c75a03bb82f6d4d3f9185be858450b6b87/src/linkml_renderer/paths/context.py">object-context logic</a>.</p>
+<p>We therefore retain a focused NMDC adapter: LinkML validates and interprets the
+schema, shared <code>refscan</code> helpers discover reference ranges, and Mermaid/ELK
+handles drawing and layout. The adapter adds reference resolution, presentation
+choices and reproducible repository outputs. It is not a general replacement for
+LinkML rendering tools. Support for reference edges in <code>linkml-renderer</code> would
+make it worth reevaluating as an upstream implementation.</p>
+<h2 id="commands">Commands</h2>
+<p>Use the repository's Poetry environment with development dependencies installed
+(<code>poetry install --with dev,deps</code>) and Node.js/npm on PATH. The Makefile pins
+Mermaid CLI; its first use downloads the renderer and a headless browser.
+Graphviz and a full schema build are not required.</p>
+<pre><code class="language-sh">make sip-diagram       # SIP example
+make example-diagrams # All six Database example diagrams
+make diagrams         # Also render the hand-authored class hierarchy diagram
+</code></pre>
+<p>For any other valid Database example:</p>
+<pre><code class="language-sh">make database-diagram \
+  DATABASE=src/data/valid/Database-leaf-clip.yaml \
+  DIAGRAM_OPTIONS="--allow-external --view workflow --direction LR"
+</code></pre>
+<p>This writes <code>local/Database-leaf-clip.mmd</code> and <code>.svg</code>. To save another diagram for
+review and commit, set <code>DIAGRAM_OUTPUT=src/docs/images/my-example</code> (no extension).
+The target does not commit or push files. <code>MERMAID_CLI</code> can be overridden to use
+an already installed renderer; use the pinned version for consistent output.</p>
+<p>To generate only Mermaid, without Node.js or a browser:</p>
+<pre><code class="language-sh">poetry run python src/scripts/database_to_diagram.py \
+  src/data/valid/Database-sip-lifecycle.yaml local/sip.mmd --view workflow
+</code></pre>
+<p>Append <code>--check</code> to compare with an existing Mermaid file without writing it.
+The command fails if the file is absent or stale. Input validation always runs
+before output is written. Existing output is preserved on a validation failure.</p>
+<h2 id="relationship-and-workflow-views">Relationship and workflow views</h2>
+<p>The default <code>--view relationships</code> preserves the direction of each recorded
+property: a process points to a sample through <code>has_input</code>.</p>
+<p><code>--view workflow</code> reverses <code>has_input</code> and <code>was_generated_by</code> to show material/data
+moving forward. Their labels explicitly name the inverse relationship:
+<code>input to (inverse has_input)</code> and <code>generates (inverse was_generated_by)</code>.
+All other relationships retain their recorded direction. Multiple labels between
+the same nodes are combined, so the graph can show both <code>has_output</code> and the
+inverse of <code>was_generated_by</code> without overlapping arrows.</p>
+<p>Solid arrows represent inputs, outputs and generation; dashed arrows represent
+other relationships. Node colors distinguish material entities, processes,
+DataObjects, Manifests, ontology objects, other records and external references.
+External nodes additionally have dashed outlines. <code>--direction TB</code> (default)
+and <code>--direction LR</code> control layout independently of edge meaning.</p>
+<h2 id="validation-and-graph-coverage">Validation and graph coverage</h2>
+<p>The generator reads <code>src/schema/nmdc.yaml</code> and its imports, materializes patterns
+in memory, and runs both closed JSON Schema validation and the NMDC unit plugin.
+It never relies on the packaged schema artifacts being up to date. <code>--schema</code>
+can select another NMDC schema source.</p>
+<p>Collection membership, class URIs and effective slot ranges are discovered with
+the same <code>refscan</code> helpers used by the reference checker. There is no fixed list
+of reference slots. The graph includes:</p>
+<ul>
+<li>Every collection record, including isolated records and annotation records
+  without identifiers. Anonymous collection records use their source path as
+  their graph identity and label.</li>
+<li>References in class-ranged slots, including <code>expected_organism</code>, <code>part_of</code>,
+  <code>associated_studies</code>, <code>in_manifest</code> and process inputs/outputs. A URL or CURIE
+  in an ordinary scalar slot is not inferred to be a relationship.</li>
+<li>Identified inline objects, including taxa under <code>classified_as</code> and ontology
+  terms nested in wrappers. Edge paths such as <code>host_taxid.term</code> preserve the
+  wrapper relationship. List indices distinguish individual embedded entries.</li>
+</ul>
+<p>Anonymous wrapper objects are traversed rather than drawn as extra boxes.
+Occurrences of an identified inline object have separate graph identities;
+different annotations on the same ontology ID are not silently combined.
+Duplicate IDs among collection records are rejected.</p>
+<p>By default, a reference to a missing collection record is an error. For examples
+that deliberately omit supporting records, <code>--allow-external</code> retains an explicit
+external node. This option does not relax schema or unit validation. The five
+organism/isolate examples use it because their Study records are not included.
+The SIP lifecycle remains self-contained and does not use it. Links to resources
+whose classes have no Database collection can be represented as external IDs.</p>
+<p>This checks submitted metadata and reference consistency; it does not infer
+missing laboratory steps or establish experimental correctness. Large examples
+can yield correspondingly large diagrams.</p>
+<h2 id="metadata-in-node-labels">Metadata in node labels</h2>
+<p>The default label contains the class, name and identifier. Repeat <code>--label-slot</code>
+to add relevant scalar or quantity values:</p>
+<pre><code class="language-sh">poetry run python src/scripts/database_to_diagram.py \
+  src/data/valid/Database-sip-lifecycle.yaml local/sip.mmd --view workflow \
+  --label-slot gradient_position --label-slot gradient_pos_density \
+  --label-slot isotopolog_additions.isotope
+</code></pre>
+<p>Dotted paths descend into anonymous objects and lists; displayed indices keep
+different additions distinguishable. Quantities include their units, and
+interval quantities include both bounds. Label selection changes presentation,
+not which relationships are discovered or validated.</p>
+<h2 id="maintained-example-gallery">Maintained example gallery</h2>
+<p>Edit the Database YAML and rerun Make; do not edit generated Mermaid or SVG
+files. The recipes select the source example and presentation options only.
+Each invocation rechecks the current schema, while preserving Mermaid timestamps
+when content is unchanged. Renderer/configuration changes also trigger SVG
+regeneration.</p>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Source under <code>src/data/valid/</code></th>
+<th>Diagram</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paired DNA-SIP lifecycle</td>
+<td><code>Database-sip-lifecycle.yaml</code></td>
+<td><a href="../images/sip-lifecycle.svg">SVG</a></td>
+</tr>
+<tr>
+<td>Environmental isolation</td>
+<td><code>Database-isolate-from-soil-workflow.yaml</code></td>
+<td><a href="../images/use-case-1-environmental-isolation.svg">SVG</a></td>
+</tr>
+<tr>
+<td>Culture collection</td>
+<td><code>Database-isolate-from-culture-collection.yaml</code></td>
+<td><a href="../images/use-case-2-culture-collection.svg">SVG</a></td>
+</tr>
+<tr>
+<td>Leaf clip</td>
+<td><code>Database-leaf-clip.yaml</code></td>
+<td><a href="../images/use-case-3-leaf-clip.svg">SVG</a></td>
+</tr>
+<tr>
+<td>Mushroom cap</td>
+<td><code>Database-mushroom-cap.yaml</code></td>
+<td><a href="../images/use-case-4-mushroom-cap.svg">SVG</a></td>
+</tr>
+<tr>
+<td>Viral isolate and host</td>
+<td><code>Database-viral-isolate-with-host.yaml</code></td>
+<td><a href="../images/use-case-5-viral-isolate-with-host.svg">SVG</a></td>
+</tr>
+</tbody>
+</table>
+<p><code>poetry run pytest tests/test_database_to_diagram.py -q</code> exercises all valid
+Database fixtures and checks the saved gallery's Mermaid sources, together with
+validation failures, external references, taxonomy links and arrow semantics.</p>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "hide_page_title"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
+</body>
+</html>

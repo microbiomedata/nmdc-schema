@@ -550,10 +550,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dna-sip-lifecycle-instance-diagram" class="md-nav__link">
+  <a href="#database-example-diagrams" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DNA-SIP lifecycle instance diagram
+        Database example diagrams
       
     </span>
   </a>
@@ -698,10 +698,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dna-sip-lifecycle-instance-diagram" class="md-nav__link">
+  <a href="#database-example-diagrams" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DNA-SIP lifecycle instance diagram
+        Database example diagrams
       
     </span>
   </a>
@@ -751,11 +751,15 @@
 
 
 <h1 id="visualizations">Visualizations</h1>
-<h2 id="dna-sip-lifecycle-instance-diagram">DNA-SIP lifecycle instance diagram</h2>
-<p>The <a href="../sip-lifecycle/">DNA-SIP lifecycle walkthrough</a> follows a self-contained
-Database example from paired incubations through density fractions, library
-preparation and sequence files. Run <code>make sip-diagram</code> to regenerate its diagram
-directly from the example's instance relationships.</p>
+<h2 id="database-example-diagrams">Database example diagrams</h2>
+<p>The <a href="../database-example-diagrams/">Database example diagram generator and gallery</a>
+show relationships between actual records in valid examples. One generator
+produces the SIP lifecycle and five organism/isolate diagrams directly from their
+YAML files, with shared validation and Mermaid rendering. Run
+<code>make example-diagrams</code> to regenerate them all.</p>
+<p>The <a href="../sip-lifecycle/">DNA-SIP walkthrough</a> explains the paired incubations,
+density fractions, library preparation, sequence files and Manifests in that
+example. <code>make sip-diagram</code> regenerates just its diagram.</p>
 <h2 id="inter-collection-relationship-diagram">Inter-collection relationship diagram</h2>
 <!-- Note: `visualizations/collection-graph.html` does not exist in the source code repository.
            It gets generated as part of the documentation build process. -->

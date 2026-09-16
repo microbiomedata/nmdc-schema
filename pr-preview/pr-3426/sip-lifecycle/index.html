@@ -735,31 +735,28 @@ pooled or reads concatenated. To illustrate physical pooling, add a <code>Poolin
 process consuming the selected fractions and producing a new <code>ProcessedSample</code>
 before library preparation. No pooling occurs in this example.</p>
 <h2 id="generate-the-diagram-from-the-database">Generate the diagram from the Database</h2>
-<p>From the repository root, with its Poetry dependencies and Graphviz installed:</p>
+<p>From the repository root, with its Poetry dependencies and Node.js/npm installed:</p>
 <pre><code class="language-sh">make sip-diagram
 </code></pre>
-<p>This updates <code>src/docs/images/sip-lifecycle.svg</code> and
-<code>src/docs/images/sip-lifecycle.mmd</code>, with intermediate DOT in <code>local/</code>.
-Changes to the YAML or generator cause regeneration. No hand-maintained node or
-edge list is needed.</p>
+<p>This validates the Database against the current source schema, updates
+<code>src/docs/images/sip-lifecycle.mmd</code>, and renders that same Mermaid source to
+<code>src/docs/images/sip-lifecycle.svg</code>. The shared renderer is pinned in
+<code>makefiles/diagrams.Makefile</code>; its first run downloads Mermaid CLI and a headless
+browser. No Graphviz installation or schema build is needed. Unchanged Mermaid
+content keeps its timestamp, so repeated invocations need not rerender the SVG.</p>
 <p><img alt="DNA-SIP lifecycle generated from the Database instance" src="../images/sip-lifecycle.svg" /></p>
 <p><a href="../images/sip-lifecycle.svg">Open the full-size SVG</a>.
-Green boxes are material samples, blue ellipses are processes, orange boxes are
-data files, and purple boxes are manifests. Solid arrows show inputs/outputs;
-dashed arrows show manifest membership. The Study is checked but not drawn.</p>
-<p>For another Database instance, generate portable Mermaid source directly:</p>
-<pre><code class="language-sh">poetry run python src/scripts/database_to_diagram.py \
-  src/data/valid/Database-sip-lifecycle.yaml local/example.mmd
-</code></pre>
-<p>Use <code>--format dot</code> for Graphviz source and <code>--direction LR</code> for a horizontal
-layout. The script reads list-valued Database collections from YAML or JSON. It
-draws records participating in <code>has_input</code>, <code>has_output</code>, or <code>in_manifest</code>, checks
-those references plus <code>associated_studies</code> and <code>was_generated_by</code>, and rejects
-duplicate IDs. It does not infer missing steps. By default, unresolved references
-are errors. For deliberately partial examples, <code>--allow-external</code> draws undefined
-flow endpoints explicitly; it does not make the example self-contained. This
-closure check covers the listed slots, not every possible reference in the schema,
-and is separate from schema validation.</p>
+Green boxes are material entities, blue rounded nodes are processes, orange boxes
+are data files, and purple boxes are manifests. Gray nodes include the Study and
+identified ontology terms. Solid arrows show material/data flow. The reverse
+of <code>has_input</code> is explicitly labeled <code>input to (inverse has_input)</code>; dashed arrows
+show contextual relationships such as manifest and Study membership. When
+<code>has_output</code> and the inverse of <code>was_generated_by</code> connect the same records,
+one edge carries both labels.</p>
+<p>The same generator now produces the five organism/isolate diagrams. See
+<a href="../database-example-diagrams/">Database example diagrams</a> for the shared commands,
+relationship versus workflow views, validation, optional metadata labels, and
+handling of intentionally partial examples.</p>
 <h2 id="example-coverage-and-limits">Example coverage and limits</h2>
 <p>At PR #3396 head <code>da406db84</code>, the SIP addition contained seven valid and six invalid
 fixtures. The valid fixtures covered defined compounds, heterogeneous inputs,
