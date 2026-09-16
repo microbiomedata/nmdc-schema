@@ -1199,6 +1199,7 @@ slots:
     range: IsotopologAddition
     multivalued: true
     inlined_as_list: true
+    recommended: true
 
   hetero_isotopolog:
     title: heterogeneous isotopolog
