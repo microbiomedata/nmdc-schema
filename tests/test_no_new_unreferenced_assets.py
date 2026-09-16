@@ -26,21 +26,26 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 # inputs/, outputs/, and reference/).
 _REFERENCE_DATA = {
     "assets/blanklines.txt",
+    "assets/from-sssom-dir/README.md",
     "assets/from-sssom-dir/biosample_ebs_water_packages_unclassified_taxa_sssom.tsv",
     "assets/from-sssom-dir/biosample_env_package_normalizastion.tsv",
     "assets/from-sssom-dir/per_biosample_scoped_ebs_mapping_results.tsv",
-    "assets/misc/data_prefix_expansions.context.jsonld",
     "assets/misc/gold_seqMethod_to_nmdc_instrument_set.tsv",
     "assets/misc/linter_config_default.yaml",
     "assets/misc/neon_raw_data_file_mappings.tsv",
     "assets/misc/neon_sequencingMethod_to_nmdc_instrument_set.tsv",
+    "assets/neon_mixs_env_triad_mappings/README.md",
     "assets/neon_mixs_env_triad_mappings/neon-nlcd-local-broad-mappings.tsv",
     "assets/neon_mixs_env_triad_mappings/neon-site-env_medium.tsv",
     "assets/neon_table_types.tsv",
     "assets/pref-unit-slots-claude-ucum-expanded-curated-with-has-problem.tsv",
-    "assets/units-semi-static-inputs/mongodb-slots-to-units.csv",
-    "assets/units-semi-static-inputs/mongodb-slots-to-units_remediated.csv",
-    "assets/units-sparql/fix-units-update-v2.ru",
+}
+
+# Git placeholder files. Their entire purpose is to keep an otherwise-empty directory
+# tracked; requiring something to name them by path would be a category error.
+_GIT_PLACEHOLDERS = {
+    "assets/jsons-for-mongodb/.gitkeep",
+    "assets/misc/.gitkeep",
 }
 
 # Ad-hoc MongoDB queries, run by hand against production rather than by any code here.
@@ -67,13 +72,16 @@ _ORPHANED_OUTPUTS = {
     "assets/changesheet_examples/omics_processing_id_inst_changesheet.tsv",
     "assets/misc/README_cookiecutter.md",
     "assets/misc/legacy_migration_notes.md",
+    "assets/ncbi_mappings/README.md",
     "assets/ncbi_mappings/ncbi_pg_db_field_mappings.tsv",
     "assets/ncbi_mappings/ncbi_pg_db_field_mappings_filled.tsv",
     "assets/ncbi_mappings/ncbi_pg_db_fields.txt",
     "assets/mongodb_queries/data_qc/functional_annotation_agg_metagenome_metatranscriptome_annotation_id.js",
 }
 
-EXPECTED_UNREFERENCED = _REFERENCE_DATA | _MANUAL_MONGO_QUERIES | _ORPHANED_OUTPUTS
+EXPECTED_UNREFERENCED = (
+    _REFERENCE_DATA | _MANUAL_MONGO_QUERIES | _ORPHANED_OUTPUTS | _GIT_PLACEHOLDERS
+)
 
 # The subset of the above that also names an element in deprecated.yaml. Nothing reads
 # these and the elements they name are retired, so each is deletable on its own merits.
@@ -126,4 +134,12 @@ def test_unreferenced_and_deprecated_set_only_shrinks():
         f"If your branch did not touch assets/, the likely cause is a deprecation that "
         f"landed on main: an element moved into deprecated.yaml and one of these files "
         f"names it. Run `make report-asset-usage` to see which."
+    )
+
+    retired = EXPECTED_UNREFERENCED_AND_DEPRECATED - actual
+    assert not retired, (
+        f"{len(retired)} allowlisted asset(s) no longer name a deprecated element while "
+        f"unreferenced: {sorted(retired)}. Remove them from "
+        f"EXPECTED_UNREFERENCED_AND_DEPRECATED so the list stays an accurate account of "
+        f"what is still deletable."
     )
