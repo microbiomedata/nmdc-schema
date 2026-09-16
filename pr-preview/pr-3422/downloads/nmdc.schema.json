@@ -7252,7 +7252,7 @@
         },
         "DensityGradientFractionationProcess": {
             "additionalProperties": false,
-            "description": "A material processing that separates nucleic acids extracted from a sample into fractions by buoyant density, usually by isopycnic centrifugation. Each output fraction records its position in the gradient.",
+            "description": "A material processing that separates a sample, typically extracted nucleic acids, into fractions by buoyant density, usually by isopycnic centrifugation. The output fractions can record their gradient position, buoyant density and relative nucleic acid amount.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -9498,7 +9498,7 @@
         },
         "IsotopeLabelingProcess": {
             "additionalProperties": false,
-            "description": "A material processing in which one or more substances or materials, isotopically labeled or at natural abundance, are added to a sample so that uptake of the isotope by the resident organisms can be traced.",
+            "description": "A material processing in which substances or materials, isotopically labeled or at natural abundance, are added to a sample so that uptake of the isotope by the resident organisms can be traced.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -18146,5 +18146,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.23.0.post101.dev0+4ae573292"
+    "version": "11.23.0.post102.dev0+74b830234"
 }

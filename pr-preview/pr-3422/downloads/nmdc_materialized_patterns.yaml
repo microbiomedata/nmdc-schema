@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.23.0.post101.dev0+4ae573292
+version: 11.23.0.post102.dev0+74b830234
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -18658,8 +18658,9 @@ slots:
       will not provide a multivalued ordered slot in a database. As such, this slot
       also couldn't be marked as multivalued in the yaml.
     comments:
-    - In NMDC each IsotopologAddition entry holds one isotopolog and one atom fraction,
-      so the pipe-separated ordering described for spreadsheets does not apply.
+    - In NMDC each IsotopologAddition entry describes one added input, an isotopolog
+      or a hetero_isotopolog, and carries at most one atom fraction, so the pipe-separated
+      ordering described for spreadsheets does not apply.
     examples:
     - object:
         type: nmdc:QuantityValue
@@ -18677,8 +18678,9 @@ slots:
       the same as the isotopolog.
     title: set of labeled atoms in isotopologue
     comments:
-    - In NMDC each IsotopologAddition entry holds one isotopolog and one set of labeled
-      atoms, so the pipe-separated ordering described for spreadsheets does not apply.
+    - In NMDC each IsotopologAddition entry describes one added input, an isotopolog
+      or a hetero_isotopolog, and carries at most one set of labeled atoms, so the
+      pipe-separated ordering described for spreadsheets does not apply.
     examples:
     - object:
         type: nmdc:TextValue
@@ -20721,9 +20723,9 @@ classes:
     class_uri: nmdc:LibraryPreparation
   IsotopeLabelingProcess:
     name: IsotopeLabelingProcess
-    description: A material processing in which one or more substances or materials,
-      isotopically labeled or at natural abundance, are added to a sample so that
-      uptake of the isotope by the resident organisms can be traced.
+    description: A material processing in which substances or materials, isotopically
+      labeled or at natural abundance, are added to a sample so that uptake of the
+      isotope by the resident organisms can be traced.
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: MaterialProcessing
     slots:
@@ -20807,9 +20809,10 @@ classes:
       title: hetero_isotopolog_absent_when_isotopolog_present
   DensityGradientFractionationProcess:
     name: DensityGradientFractionationProcess
-    description: A material processing that separates nucleic acids extracted from
-      a sample into fractions by buoyant density, usually by isopycnic centrifugation.
-      Each output fraction records its position in the gradient.
+    description: A material processing that separates a sample, typically extracted
+      nucleic acids, into fractions by buoyant density, usually by isopycnic centrifugation.
+      The output fractions can record their gradient position, buoyant density and
+      relative nucleic acid amount.
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - Isopycnic Centrifugation

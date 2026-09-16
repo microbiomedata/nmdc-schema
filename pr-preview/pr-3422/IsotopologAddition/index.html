@@ -725,8 +725,9 @@ attributes:
       will not provide a multivalued ordered slot in a database. As such, this slot
       also couldn't be marked as multivalued in the yaml.
     comments:
-    - In NMDC each IsotopologAddition entry holds one isotopolog and one atom fraction,
-      so the pipe-separated ordering described for spreadsheets does not apply.
+    - In NMDC each IsotopologAddition entry describes one added input, an isotopolog
+      or a hetero_isotopolog, and carries at most one atom fraction, so the pipe-separated
+      ordering described for spreadsheets does not apply.
     examples:
     - object:
         type: nmdc:QuantityValue
@@ -748,8 +749,9 @@ attributes:
       the same as the isotopolog.
     title: set of labeled atoms in isotopologue
     comments:
-    - In NMDC each IsotopologAddition entry holds one isotopolog and one set of labeled
-      atoms, so the pipe-separated ordering described for spreadsheets does not apply.
+    - In NMDC each IsotopologAddition entry describes one added input, an isotopolog
+      or a hetero_isotopolog, and carries at most one set of labeled atoms, so the
+      pipe-separated ordering described for spreadsheets does not apply.
     examples:
     - object:
         type: nmdc:TextValue
