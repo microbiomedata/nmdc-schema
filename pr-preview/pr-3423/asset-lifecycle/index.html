@@ -830,7 +830,7 @@ test</code> and so in CI. Files that predate the check are listed in its allowli
 the reason each is still there and the issue tracking its retirement.</p>
 <h2 id="checking-one-file">Checking one file</h2>
 <p>Run the report:</p>
-<pre><code class="language-bash">poetry run make report-asset-usage
+<pre><code class="language-bash">make report-asset-usage
 </code></pre>
 <p>It prints three lists: assets referenced nowhere in this repo, assets naming an element
 defined in <code>src/schema/deprecated.yaml</code>, and the intersection. A file in the third list can
