@@ -6,9 +6,9 @@ has_input:
 has_output:
   - nmdc:procsm-99-987650
 isotopolog_approach: multiple
-isotope_label_metadata:
+isotopolog_additions:
   - isotopolog_label: isotopically labeled
-    type: nmdc:IsotopeMetadata
+    type: nmdc:IsotopologAddition
     isotope: 13C
     isotopolog_atom_frac:
       type: nmdc:QuantityValue
@@ -23,7 +23,7 @@ isotope_label_metadata:
         name: glucose
         type: nmdc:OntologyClass
   - isotopolog_label: isotopically labeled
-    type: nmdc:IsotopeMetadata
+    type: nmdc:IsotopologAddition
     isotope: 18O
     isotopolog_atom_frac:
       type: nmdc:QuantityValue
