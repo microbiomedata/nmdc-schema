@@ -8,8 +8,6 @@ from nmdc_schema.migrators.partials.migrator_from_11_23_0_to_11_24_0 import (
     migrator_from_11_23_0_to_11_24_0_part_4,
     migrator_from_11_23_0_to_11_24_0_part_5,
 )
-from nmdc_schema.migrators.partials.migrator_from_11_23_0_to_11_24_0 import migrator_from_11_23_0_to_11_24_0_part_5 
-
 
 def get_migrator_classes() -> List[Type[MigratorBase]]:
     r"""
