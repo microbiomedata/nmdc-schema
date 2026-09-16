@@ -12,7 +12,7 @@ isotopolog_approach: single
 isotope_label_metadata:
   - isotopolog_label: isotopically labeled
     isotope: 13C
-    type: nmdc:IsotopeMetadata
+    type: nmdc:IsotopologAddition
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: root exudates

@@ -625,10 +625,10 @@ classes:
       has_output:
         required: true
 
-  IsotopeMetadata:
-    class_uri: nmdc:IsotopeMetadata
+  IsotopologAddition:
+    class_uri: nmdc:IsotopologAddition
     description: >-
-      A class that contains metadata about an isotope labeling process.
+      One isotopolog, or one heterogeneous material with no compound identifier, added during an isotope labeling process, with the isotope it carries, whether it was isotopically labeled or at natural abundance, the atom fraction and position of the label, and the dose.
     slots:
       - isotope
       - isotopolog
@@ -1201,7 +1201,7 @@ slots:
   isotope_label_metadata:
     description: >-
       Metadata about the isotope labeling process.
-    range: IsotopeMetadata
+    range: IsotopologAddition
     multivalued: true
     inlined_as_list: true
 
@@ -1210,7 +1210,7 @@ slots:
     description: >-
       A labeled input that has no PubChem compound identifier, described in free text: an undefined mixture such as root exudates or plant litter, or labeled cells or biomass such as T4 phages. A defined compound with a PubChem compound identifier goes in isotopolog instead.
     comments:
-      - Exactly one of isotopolog and hetero_isotopolog is given on each IsotopeMetadata entry; the rules on that class enforce it.
+      - Exactly one of isotopolog and hetero_isotopolog is given on each IsotopologAddition entry; the rules on that class enforce it.
       - hetero_isotopolog is a column of the MISIP supplementary tables (Simpson et al. 2024, https://doi.org/10.1093/gigascience/giae071) and is not yet a MIxS slot.
     see_also:
       - https://github.com/GenomicsStandardsConsortium/mixs/issues/1409

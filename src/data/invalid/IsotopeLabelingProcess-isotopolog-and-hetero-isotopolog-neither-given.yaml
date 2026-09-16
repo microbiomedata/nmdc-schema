@@ -11,4 +11,4 @@ isotopolog_approach: single
 isotope_label_metadata:
   - isotopolog_label: isotopically labeled
     isotope: 13C
-    type: nmdc:IsotopeMetadata
+    type: nmdc:IsotopologAddition

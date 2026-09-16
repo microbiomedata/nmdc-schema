@@ -9,7 +9,7 @@ material_processing_set:
     isotope_label_metadata:
       - isotopolog_label: isotopically labeled
         isotope: 13C
-        type: nmdc:IsotopeMetadata
+        type: nmdc:IsotopologAddition
         isotopolog:
           type: nmdc:ControlledIdentifiedTermValue
           has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
