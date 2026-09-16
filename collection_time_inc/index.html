@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: incubation collection time, GMT (collection_time_inc) - NMDC Schema Documentation</title>
+        <title>Slot: incubation collection time, GMT (collection_time_inc) (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-incubation-collection-time-gmt-collection_time_inc" class="md-skip">
+        <a href="#slot-incubation-collection-time-gmt-collection_time_inc-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: incubation collection time, GMT (collection_time_inc)
+              Slot: incubation collection time, GMT (collection_time_inc) (DEPRECATED)
             
           </span>
         </div>
@@ -738,7 +738,7 @@
   
 
 
-<h1 id="slot-incubation-collection-time-gmt-collection_time_inc">Slot: incubation collection time, GMT (collection_time_inc)</h1>
+<h1 id="slot-incubation-collection-time-gmt-collection_time_inc-deprecated">Slot: incubation collection time, GMT (collection_time_inc)  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p><em>Time the incubation was harvested/collected/ended. Only relevant for incubation samples.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/nmdc/collection_time_inc">nmdc:collection_time_inc</a></p>
@@ -816,6 +816,8 @@
 description: Time the incubation was harvested/collected/ended. Only relevant for
   incubation samples.
 title: incubation collection time, GMT
+deprecated: This slot is directly replaced by collection_time. Any instances that
+  would use collection_time_inc should use collection_time instead.
 notes:
 - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional time
   only
@@ -827,6 +829,11 @@ examples:
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - MIXS:0000011
+deprecated_element_has_exact_replacement: collection_time
+contributors:
+- orcid:0009-0008-4013-7737
+last_updated_on: '2026-09-04T00:00:00+00:00'
+modified_by: orcid:0009-0008-4013-7737
 rank: 3
 string_serialization: '{time, seconds optional}'
 domain_of:

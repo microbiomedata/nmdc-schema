@@ -17589,6 +17589,8 @@ attributes:
     description: Time the incubation was harvested/collected/ended. Only relevant
       for incubation samples.
     title: incubation collection time, GMT
+    deprecated: This slot is directly replaced by collection_time. Any instances that
+      would use collection_time_inc should use collection_time instead.
     notes:
     - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
       time only
@@ -17600,6 +17602,11 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
+    deprecated_element_has_exact_replacement: collection_time
+    contributors:
+    - orcid:0009-0008-4013-7737
+    last_updated_on: '2026-09-04T00:00:00+00:00'
+    modified_by: orcid:0009-0008-4013-7737
     rank: 3
     string_serialization: '{time, seconds optional}'
     owner: Biosample
