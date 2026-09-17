@@ -703,7 +703,7 @@ classes:
               range_expression:
                 slot_conditions:
                   id:
-                    pattern: '^PUBCHEM\.COMPOUND:[1-9]\d*$'
+                    pattern: '^CHEBI:\d*$'
     rules:
       - title: hetero_isotopolog_required_when_isotopolog_absent
         description: >-
@@ -1260,7 +1260,7 @@ slots:
   hetero_isotopolog:
     title: heterogeneous isotopolog
     description: >-
-      An input to the labeling that has no PubChem compound identifier, described in free text: an undefined mixture such as root exudates or plant litter, or cells or biomass such as T4 phages. A defined compound with a PubChem compound identifier goes in isotopolog instead.
+      An input to the labeling that has no ChEBI identifier, described in free text: an undefined mixture such as root exudates or plant litter, or cells or biomass such as T4 phages. A defined compound with a ChEBI identifier goes in isotopolog instead.
     comments:
       - Exactly one of isotopolog and hetero_isotopolog is given on each IsotopologAddition entry; the rules on that class enforce it.
       - hetero_isotopolog is a column of the MISIP supplementary tables (Simpson et al. 2024, https://doi.org/10.1093/gigascience/giae071) and is not yet a MIxS slot.
