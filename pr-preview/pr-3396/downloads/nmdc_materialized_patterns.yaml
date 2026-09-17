@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.0.post63.dev0+cc7318088
+version: 11.24.0.post64.dev0+f15739d9d
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -6261,10 +6261,10 @@ slots:
     inlined_as_list: true
   hetero_isotopolog:
     name: hetero_isotopolog
-    description: 'An input to the labeling that has no PubChem compound identifier,
-      described in free text: an undefined mixture such as root exudates or plant
-      litter, or cells or biomass such as T4 phages. A defined compound with a PubChem
-      compound identifier goes in isotopolog instead.'
+    description: 'An input to the labeling that has no ChEBI identifier, described
+      in free text: an undefined mixture such as root exudates or plant litter, or
+      cells or biomass such as T4 phages. A defined compound with a ChEBI identifier
+      goes in isotopolog instead.'
     title: heterogeneous isotopolog
     comments:
     - Exactly one of isotopolog and hetero_isotopolog is given on each IsotopologAddition
@@ -20885,7 +20885,7 @@ classes:
                 slot_conditions:
                   id:
                     name: id
-                    pattern: ^PUBCHEM\.COMPOUND:[1-9]\d*$
+                    pattern: ^CHEBI:\d*$
     class_uri: nmdc:IsotopologAddition
     rules:
     - preconditions:
