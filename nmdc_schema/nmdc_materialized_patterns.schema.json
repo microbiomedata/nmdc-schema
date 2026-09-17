@@ -9,6 +9,47 @@
             "title": "AeroStrucEnum",
             "type": "string"
         },
+        "Agent": {
+            "additionalProperties": false,
+            "description": "A person or organization bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.",
+            "properties": {
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "profile_image_url": {
+                    "description": "A url that points to an image of this person or organization.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:Agent"
+                    ],
+                    "type": "string"
+                },
+                "websites": {
+                    "description": "A list of websites that are associated with the entity.",
+                    "items": {
+                        "pattern": "^[Hh][Tt][Tt][Pp][Ss]?:\\/\\/(?!.*[Dd][Oo][Ii]\\.[Oo][Rr][Gg]).*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "type",
+                "name"
+            ],
+            "title": "Agent",
+            "type": "object"
+        },
         "AnalysisTypeEnum": {
             "description": "",
             "enum": [
@@ -1156,13 +1197,6 @@
                         }
                     ],
                     "description": "The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant"
-                },
-                "collection_date_inc": {
-                    "description": "Date the incubation was harvested/collected/ended. Only relevant for incubation samples.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "collection_time": {
                     "description": "The time of sampling, either as an instance (single point) or interval.",
@@ -3963,7 +3997,7 @@
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
                 "salinity_category": {
-                    "description": "Categorical description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, huryhaline",
+                    "description": "Categorical description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, euryhaline",
                     "type": [
                         "string",
                         "null"
@@ -6506,7 +6540,7 @@
         },
         "CreditAssociation": {
             "additionalProperties": false,
-            "description": "This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role and for a person value. Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0",
+            "description": "This class supports binding an agent (a Person or an Organization) to a study or a data generation record with a CRediT Contributor Role.",
             "properties": {
                 "applied_roles": {
                     "items": {
@@ -6514,8 +6548,15 @@
                     },
                     "type": "array"
                 },
-                "applies_to_person": {
-                    "$ref": "#/$defs/PersonValue"
+                "applies_to_agent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Person"
+                        },
+                        {
+                            "$ref": "#/$defs/Organization"
+                        }
+                    ]
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -6526,7 +6567,7 @@
                 }
             },
             "required": [
-                "applies_to_person",
+                "applies_to_agent",
                 "applied_roles",
                 "type"
             ],
@@ -6916,6 +6957,16 @@
                         "null"
                     ]
                 },
+                "has_credit_associations": {
+                    "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "items": {
+                        "$ref": "#/$defs/CreditAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_failure_categorization": {
                     "items": {
                         "$ref": "#/$defs/FailureCategorization"
@@ -6973,17 +7024,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "principal_investigator": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PersonValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Principal Investigator who led the study and/or generated the dataset."
                 },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
@@ -7137,6 +7177,7 @@
                 },
                 "md5_checksum": {
                     "description": "MD5 checksum of file (pre-compressed)",
+                    "pattern": "^[a-fA-F0-9]{32}$",
                     "type": [
                         "string",
                         "null"
@@ -10548,6 +10589,16 @@
                         "null"
                     ]
                 },
+                "has_credit_associations": {
+                    "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "items": {
+                        "$ref": "#/$defs/CreditAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_failure_categorization": {
                     "items": {
                         "$ref": "#/$defs/FailureCategorization"
@@ -10610,17 +10661,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "principal_investigator": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PersonValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Principal Investigator who led the study and/or generated the dataset."
                 },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
@@ -13787,6 +13827,16 @@
                         "null"
                     ]
                 },
+                "has_credit_associations": {
+                    "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
+                    "items": {
+                        "$ref": "#/$defs/CreditAssociation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_failure_categorization": {
                     "items": {
                         "$ref": "#/$defs/FailureCategorization"
@@ -13872,17 +13922,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "principal_investigator": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PersonValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Principal Investigator who led the study and/or generated the dataset."
                 },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
@@ -14364,6 +14403,55 @@
             "title": "OrganismSample",
             "type": "object"
         },
+        "Organization": {
+            "additionalProperties": false,
+            "description": "A social or legal institution such as a company, society, consortium, etc.",
+            "properties": {
+                "name": {
+                    "description": "The name of the organization.",
+                    "type": "string"
+                },
+                "profile_image_url": {
+                    "description": "A url that points to an image of this person or organization.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ror": {
+                    "description": "The Research Organization Registry identifier of an organization.",
+                    "pattern": "^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:Organization"
+                    ],
+                    "type": "string"
+                },
+                "websites": {
+                    "description": "A list of websites that are associated with the entity.",
+                    "items": {
+                        "pattern": "^[Hh][Tt][Tt][Pp][Ss]?:\\/\\/(?!.*[Dd][Oo][Ii]\\.[Oo][Rr][Gg]).*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "type",
+                "name"
+            ],
+            "title": "Organization",
+            "type": "object"
+        },
         "OrthologyGroup": {
             "additionalProperties": false,
             "description": "A set of genes or gene products in which all members are orthologous",
@@ -14463,9 +14551,9 @@
             "title": "OxyStatSampEnum",
             "type": "string"
         },
-        "PersonValue": {
+        "Person": {
             "additionalProperties": false,
-            "description": "An attribute value representing a person",
+            "description": "A person, typically a researcher associated with a study or data generation.",
             "properties": {
                 "email": {
                     "description": "An email address for an entity such as a person. This should be the primary email address used.",
@@ -14474,29 +14562,20 @@
                         "null"
                     ]
                 },
-                "has_raw_value": {
-                    "description": "The full name of the Investigator in format FIRST LAST.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "name": {
                     "description": "The full name of the Investigator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "orcid": {
                     "description": "The ORCID of a person.",
+                    "pattern": "^orcid:\\d{4}-\\d{4}-\\d{4}-\\d{3}(\\d|X)$",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "profile_image_url": {
-                    "description": "A url that points to an image of a person.",
+                    "description": "A url that points to an image of this person or organization.",
                     "type": [
                         "string",
                         "null"
@@ -14505,7 +14584,7 @@
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
-                        "nmdc:PersonValue"
+                        "nmdc:Person"
                     ],
                     "type": "string"
                 },
@@ -14522,9 +14601,10 @@
                 }
             },
             "required": [
-                "type"
+                "type",
+                "name"
             ],
-            "title": "PersonValue",
+            "title": "Person",
             "type": "object"
         },
         "PlannedProcess": {
@@ -16602,7 +16682,7 @@
                     ]
                 },
                 "has_credit_associations": {
-                    "description": "This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study",
+                    "description": "This slot links a study or a data generation to a credit association. The credit association is linked to an Agent (Person or Organization) and to a CRediT Contributor Roles term. Principal investigators are recorded here with applied_roles including Principal Investigator.",
                     "items": {
                         "$ref": "#/$defs/CreditAssociation"
                     },
@@ -16701,17 +16781,6 @@
                         "array",
                         "null"
                     ]
-                },
-                "principal_investigator": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PersonValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Principal Investigator who led the study and/or generated the dataset."
                 },
                 "protocol_link": {
                     "items": {

@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-13T21:24:04
+# Generation date: 2026-09-16T22:18:16
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -100,7 +100,6 @@ NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxo
 NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 OMIT = CurieNamespace('OMIT', 'http://purl.obolibrary.org/obo/OMIT_')
-ORCID = CurieNamespace('ORCID', 'https://orcid.org/')
 PANTHER_FAMILY = CurieNamespace('PANTHER_FAMILY', 'https://bioregistry.io/panther.family:')
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
 PFAM = CurieNamespace('PFAM', 'https://bioregistry.io/pfam:')
@@ -124,6 +123,7 @@ BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 BIOPROJECT = CurieNamespace('bioproject', 'https://bioregistry.io/bioproject:')
 BIOSAMPLE = CurieNamespace('biosample', 'https://bioregistry.io/biosample:')
 CAS = CurieNamespace('cas', 'https://bioregistry.io/cas:')
+DCM = CurieNamespace('dcm', 'https://kbase.github.io/credit_engine/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://bioregistry.io/doi:')
 EDAM_DATA = CurieNamespace('edam_data', 'http://edamontology.org/data_')
@@ -150,6 +150,7 @@ MY_EMSL = CurieNamespace('my_emsl', 'https://release.my.emsl.pnnl.gov/released_d
 NEON_IDENTIFIER = CurieNamespace('neon_identifier', 'http://example.org/neon/identifier/')
 NEON_SCHEMA = CurieNamespace('neon_schema', 'http://example.org/neon/schema/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
+ORCID = CurieNamespace('orcid', 'https://orcid.org/')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 PUBMED = CurieNamespace('pubmed', 'https://bioregistry.io/pubmed:')
@@ -417,6 +418,135 @@ class MetaproteomicsAnalysisId(AnnotatingWorkflowId):
 
 class MetagenomeAnnotationId(AnnotatingWorkflowId):
     pass
+
+
+@dataclass(repr=False)
+class Agent(YAMLRoot):
+    """
+    A person or organization bears some form of responsibility for an activity taking place, for the existence of an
+    entity, or for another agent's activity.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["Agent"]
+    class_class_curie: ClassVar[str] = "nmdc:Agent"
+    class_name: ClassVar[str] = "Agent"
+    class_model_uri: ClassVar[URIRef] = NMDC.Agent
+
+    type: Union[str, URIorCURIE] = None
+    name: str = None
+    profile_image_url: Optional[str] = None
+    websites: Optional[Union[str, list[str]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.profile_image_url is not None and not isinstance(self.profile_image_url, str):
+            self.profile_image_url = str(self.profile_image_url)
+
+        if not isinstance(self.websites, list):
+            self.websites = [self.websites] if self.websites is not None else []
+        self.websites = [v if isinstance(v, str) else str(v) for v in self.websites]
+
+        super().__post_init__(**kwargs)
+
+
+    def __new__(cls, *args, **kwargs):
+
+        type_designator = "type"
+        if not type_designator in kwargs:
+            return super().__new__(cls,*args,**kwargs)
+        else:
+            type_designator_value = kwargs[type_designator]
+            target_cls = cls._class_for("class_class_curie", type_designator_value)
+
+
+            if target_cls is None:
+                target_cls = cls._class_for("class_class_uri", type_designator_value)
+
+
+            if target_cls is None:
+                target_cls = cls._class_for("class_model_uri", type_designator_value)
+
+
+            if target_cls is None:
+                raise ValueError(f"Wrong type designator value: class {cls.__name__} "
+                                 f"has no subclass with ['class_class_curie', 'class_class_uri', 'class_model_uri']='{kwargs[type_designator]}'")
+            return super().__new__(target_cls,*args,**kwargs)
+
+
+
+@dataclass(repr=False)
+class Person(Agent):
+    """
+    A person, typically a researcher associated with a study or data generation.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["Person"]
+    class_class_curie: ClassVar[str] = "nmdc:Person"
+    class_name: ClassVar[str] = "Person"
+    class_model_uri: ClassVar[URIRef] = NMDC.Person
+
+    type: Union[str, URIorCURIE] = None
+    name: str = None
+    email: Optional[str] = None
+    orcid: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.email is not None and not isinstance(self.email, str):
+            self.email = str(self.email)
+
+        if self.orcid is not None and not isinstance(self.orcid, str):
+            self.orcid = str(self.orcid)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
+class Organization(Agent):
+    """
+    A social or legal institution such as a company, society, consortium, etc.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["Organization"]
+    class_class_curie: ClassVar[str] = "nmdc:Organization"
+    class_name: ClassVar[str] = "Organization"
+    class_model_uri: ClassVar[URIRef] = NMDC.Organization
+
+    type: Union[str, URIorCURIE] = None
+    name: str = None
+    ror: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.ror is not None and not isinstance(self.ror, str):
+            self.ror = str(self.ror)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
 
 
 @dataclass(repr=False)
@@ -1014,52 +1144,6 @@ class ImageValue(AttributeValue):
 
         if self.display_order is not None and not isinstance(self.display_order, int):
             self.display_order = int(self.display_order)
-
-        super().__post_init__(**kwargs)
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        self.type = str(self.class_class_curie)
-
-
-@dataclass(repr=False)
-class PersonValue(AttributeValue):
-    """
-    An attribute value representing a person
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC["PersonValue"]
-    class_class_curie: ClassVar[str] = "nmdc:PersonValue"
-    class_name: ClassVar[str] = "PersonValue"
-    class_model_uri: ClassVar[URIRef] = NMDC.PersonValue
-
-    type: Union[str, URIorCURIE] = None
-    email: Optional[str] = None
-    name: Optional[str] = None
-    orcid: Optional[str] = None
-    profile_image_url: Optional[str] = None
-    websites: Optional[Union[str, list[str]]] = empty_list()
-    has_raw_value: Optional[str] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self.email is not None and not isinstance(self.email, str):
-            self.email = str(self.email)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self.orcid is not None and not isinstance(self.orcid, str):
-            self.orcid = str(self.orcid)
-
-        if self.profile_image_url is not None and not isinstance(self.profile_image_url, str):
-            self.profile_image_url = str(self.profile_image_url)
-
-        if not isinstance(self.websites, list):
-            self.websites = [self.websites] if self.websites is not None else []
-        self.websites = [v if isinstance(v, str) else str(v) for v in self.websites]
-
-        if self.has_raw_value is not None and not isinstance(self.has_raw_value, str):
-            self.has_raw_value = str(self.has_raw_value)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -2138,7 +2222,6 @@ class Biosample(Sample):
     subsurface_depth: Optional[Union[dict, QuantityValue]] = None
     dna_isolate_meth: Optional[str] = None
     rna_isolate_meth: Optional[str] = None
-    collection_date_inc: Optional[str] = None
     collection_time: Optional[str] = None
     collection_time_inc: Optional[str] = None
     experimental_factor_other: Optional[str] = None
@@ -3713,9 +3796,6 @@ class Biosample(Sample):
         if self.rna_isolate_meth is not None and not isinstance(self.rna_isolate_meth, str):
             self.rna_isolate_meth = str(self.rna_isolate_meth)
 
-        if self.collection_date_inc is not None and not isinstance(self.collection_date_inc, str):
-            self.collection_date_inc = str(self.collection_date_inc)
-
         if self.collection_time is not None and not isinstance(self.collection_time, str):
             self.collection_time = str(self.collection_time)
 
@@ -4450,7 +4530,7 @@ class Extraction(MaterialProcessing):
 
     id: Union[str, ExtractionId] = None
     type: Union[str, URIorCURIE] = None
-    has_input: Union[Union[str, SampleId], list[Union[str, SampleId]]] = None
+    has_input: Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]] = None
     substances_used: Optional[Union[Union[dict, PortionOfSubstance], list[Union[dict, PortionOfSubstance]]]] = empty_list()
     extraction_targets: Optional[Union[Union[str, "ExtractionTargetEnum"], list[Union[str, "ExtractionTargetEnum"]]]] = empty_list()
@@ -4468,7 +4548,7 @@ class Extraction(MaterialProcessing):
             self.MissingRequiredField("has_input")
         if not isinstance(self.has_input, list):
             self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, SampleId) else SampleId(v) for v in self.has_input]
+        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
 
         if self._is_empty(self.has_output):
             self.MissingRequiredField("has_output")
@@ -4615,8 +4695,7 @@ class SubSamplingProcess(MaterialProcessing):
     volume: Optional[Union[dict, QuantityValue]] = None
     mass: Optional[Union[dict, QuantityValue]] = None
     sampled_portion: Optional[Union[Union[str, "SamplePortionEnum"], list[Union[str, "SamplePortionEnum"]]]] = empty_list()
-    has_input: Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -4643,13 +4722,9 @@ class SubSamplingProcess(MaterialProcessing):
             self.sampled_portion = [self.sampled_portion] if self.sampled_portion is not None else []
         self.sampled_portion = [v if isinstance(v, SamplePortionEnum) else SamplePortionEnum(v) for v in self.sampled_portion]
 
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, SampleId) else SampleId(v) for v in self.has_input]
-
         if not isinstance(self.has_output, list):
             self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, ProcessedSampleId) else ProcessedSampleId(v) for v in self.has_output]
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -4672,8 +4747,7 @@ class MixingProcess(MaterialProcessing):
     id: Union[str, MixingProcessId] = None
     type: Union[str, URIorCURIE] = None
     duration: Optional[Union[dict, QuantityValue]] = None
-    has_input: Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -4684,13 +4758,9 @@ class MixingProcess(MaterialProcessing):
         if self.duration is not None and not isinstance(self.duration, QuantityValue):
             self.duration = QuantityValue(**as_dict(self.duration))
 
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, SampleId) else SampleId(v) for v in self.has_input]
-
         if not isinstance(self.has_output, list):
             self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, ProcessedSampleId) else ProcessedSampleId(v) for v in self.has_output]
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -4721,8 +4791,7 @@ class FiltrationProcess(MaterialProcessing):
     is_pressurized: Optional[Union[bool, Bool]] = None
     separation_method: Optional[Union[str, "SeparationMethodEnum"]] = None
     volume: Optional[Union[dict, QuantityValue]] = None
-    has_input: Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -4755,13 +4824,9 @@ class FiltrationProcess(MaterialProcessing):
         if self.volume is not None and not isinstance(self.volume, QuantityValue):
             self.volume = QuantityValue(**as_dict(self.volume))
 
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, SampleId) else SampleId(v) for v in self.has_input]
-
         if not isinstance(self.has_output, list):
             self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, ProcessedSampleId) else ProcessedSampleId(v) for v in self.has_output]
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -4787,8 +4852,7 @@ class ChromatographicSeparationProcess(MaterialProcessing):
     ordered_mobile_phases: Optional[Union[Union[dict, MobilePhaseSegment], list[Union[dict, MobilePhaseSegment]]]] = empty_list()
     stationary_phase: Optional[Union[str, "StationaryPhaseEnum"]] = None
     temperature: Optional[Union[dict, QuantityValue]] = None
-    has_input: Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -4807,13 +4871,9 @@ class ChromatographicSeparationProcess(MaterialProcessing):
         if self.temperature is not None and not isinstance(self.temperature, QuantityValue):
             self.temperature = QuantityValue(**as_dict(self.temperature))
 
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, SampleId) else SampleId(v) for v in self.has_input]
-
         if not isinstance(self.has_output, list):
             self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, ProcessedSampleId) else ProcessedSampleId(v) for v in self.has_output]
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -4949,10 +5009,8 @@ class Protocol(YAMLRoot):
 @dataclass(repr=False)
 class CreditAssociation(YAMLRoot):
     """
-    This class supports binding associated researchers to studies. There will be at least a slot for a CRediT
-    Contributor Role and for a person value. Specifically see the associated researchers tab on the
-    NMDC_SampleMetadata-V4_CommentsForUpdates at
-    https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
+    This class supports binding an agent (a Person or an Organization) to a study or a data generation record with a
+    CRediT Contributor Role.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -4961,15 +5019,15 @@ class CreditAssociation(YAMLRoot):
     class_name: ClassVar[str] = "CreditAssociation"
     class_model_uri: ClassVar[URIRef] = NMDC.CreditAssociation
 
-    applies_to_person: Union[dict, PersonValue] = None
+    applies_to_agent: Union[dict, Agent] = None
     applied_roles: Union[Union[str, "CreditEnum"], list[Union[str, "CreditEnum"]]] = None
     type: Union[str, URIorCURIE] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.applies_to_person):
-            self.MissingRequiredField("applies_to_person")
-        if not isinstance(self.applies_to_person, PersonValue):
-            self.applies_to_person = PersonValue(**as_dict(self.applies_to_person))
+        if self._is_empty(self.applies_to_agent):
+            self.MissingRequiredField("applies_to_agent")
+        if not isinstance(self.applies_to_agent, Agent):
+            self.applies_to_agent = Agent(**as_dict(self.applies_to_agent))
 
         if self._is_empty(self.applied_roles):
             self.MissingRequiredField("applied_roles")
@@ -5063,7 +5121,6 @@ class Study(NamedThing):
     notes: Optional[str] = None
     objective: Optional[str] = None
     part_of: Optional[Union[Union[str, StudyId], list[Union[str, StudyId]]]] = empty_list()
-    principal_investigator: Optional[Union[dict, PersonValue]] = None
     protocol_link: Optional[Union[Union[dict, Protocol], list[Union[dict, Protocol]]]] = empty_list()
     study_image: Optional[Union[Union[dict, ImageValue], list[Union[dict, ImageValue]]]] = empty_list()
     title: Optional[str] = None
@@ -5165,9 +5222,6 @@ class Study(NamedThing):
         if not isinstance(self.part_of, list):
             self.part_of = [self.part_of] if self.part_of is not None else []
         self.part_of = [v if isinstance(v, StudyId) else StudyId(v) for v in self.part_of]
-
-        if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
-            self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
 
         self._normalize_inlined_as_list(slot_name="protocol_link", slot_type=Protocol, key_name="type", keyed=False)
 
@@ -5593,7 +5647,7 @@ class DataGeneration(DataEmitterProcess):
     associated_studies: Union[Union[str, StudyId], list[Union[str, StudyId]]] = None
     has_input: Union[Union[str, SampleId], list[Union[str, SampleId]]] = None
     instrument_used: Optional[Union[Union[str, InstrumentId], list[Union[str, InstrumentId]]]] = empty_list()
-    principal_investigator: Optional[Union[dict, PersonValue]] = None
+    has_credit_associations: Optional[Union[Union[dict, CreditAssociation], list[Union[dict, CreditAssociation]]]] = empty_list()
     instrument_instance_specifier: Optional[str] = None
     provenance_metadata: Optional[Union[dict, "ProvenanceMetadata"]] = None
     has_output: Optional[Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]]] = empty_list()
@@ -5620,8 +5674,7 @@ class DataGeneration(DataEmitterProcess):
             self.instrument_used = [self.instrument_used] if self.instrument_used is not None else []
         self.instrument_used = [v if isinstance(v, InstrumentId) else InstrumentId(v) for v in self.instrument_used]
 
-        if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
-            self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
+        self._normalize_inlined_as_list(slot_name="has_credit_associations", slot_type=CreditAssociation, key_name="applied_roles", keyed=False)
 
         if self.instrument_instance_specifier is not None and not isinstance(self.instrument_instance_specifier, str):
             self.instrument_instance_specifier = str(self.instrument_instance_specifier)
@@ -6504,11 +6557,10 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
     type: Union[str, URIorCURIE] = None
     git_url: str = None
     started_at_time: str = None
+    has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
     processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     img_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     gold_analysis_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
-    has_input: Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]] = empty_list()
     was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
     superseded_by: Optional[Union[str, MetatranscriptomeAnnotationId]] = None
 
@@ -6525,14 +6577,6 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
         if not isinstance(self.gold_analysis_project_identifiers, list):
             self.gold_analysis_project_identifiers = [self.gold_analysis_project_identifiers] if self.gold_analysis_project_identifiers is not None else []
         self.gold_analysis_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.gold_analysis_project_identifiers]
-
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
-
-        if not isinstance(self.has_output, list):
-            self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
         if not isinstance(self.was_informed_by, list):
             self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
@@ -7833,7 +7877,7 @@ class MetadataBadgeEnum(EnumDefinitionImpl):
         description="""Completeness badge. Awarded when the Biosample populates at least badge_minimum_slots of the host_information subset.""")
     expert_curation = PermissibleValue(
         text="expert_curation",
-        description="""Provenance badge. Awarded when the Biosample's ProvenanceMetadata.source_system_of_record identifies the NMDC submission portal, rather than an ETL process over an external database. Not a completeness measure, so it has no badge subset and no badge_minimum_slots.""")
+        description="""Provenance badge. Awarded when the Biosample's ProvenanceMetadata.source_system_of_record identifies the NMDC submission portal, rather than an ETL process over an external database.""")
 
     _defn = EnumDefinition(
         name="MetadataBadgeEnum",
@@ -8671,11 +8715,11 @@ class CreditEnum(EnumDefinitionImpl):
         setattr(cls, "Writing original draft",
             PermissibleValue(
                 text="Writing original draft",
-                description="Writing – original draft"))
+                description="Writing original draft"))
         setattr(cls, "Writing review and editing",
             PermissibleValue(
                 text="Writing review and editing",
-                description="Writing – review & editing"))
+                description="Writing review & editing"))
         setattr(cls, "Principal Investigator",
             PermissibleValue(
                 text="Principal Investigator",
@@ -10924,6 +10968,20 @@ class SubmissionStatusEnum(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.email = Slot(uri=SCHEMA.email, name="email", curie=SCHEMA.curie('email'),
+                   model_uri=NMDC.email, domain=None, range=Optional[str])
+
+slots.profile_image_url = Slot(uri=NMDC.profile_image_url, name="profile_image_url", curie=NMDC.curie('profile_image_url'),
+                   model_uri=NMDC.profile_image_url, domain=None, range=Optional[str])
+
+slots.orcid = Slot(uri=NMDC.orcid, name="orcid", curie=NMDC.curie('orcid'),
+                   model_uri=NMDC.orcid, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$'))
+
+slots.ror = Slot(uri=NMDC.ror, name="ror", curie=NMDC.curie('ror'),
+                   model_uri=NMDC.ror, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^ror:0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}$'))
+
 slots.host_family_relation = Slot(uri=MIXS['0000872'], name="host_family_relation", curie=MIXS.curie('0000872'),
                    model_uri=NMDC.host_family_relation, domain=None, range=Optional[Union[str, list[str]]])
 
@@ -11514,15 +11572,6 @@ slots.description = Slot(uri=DCTERMS.description, name="description", curie=DCTE
 slots.display_order = Slot(uri=NMDC['attribute_values/display_order'], name="display_order", curie=NMDC.curie('attribute_values/display_order'),
                    model_uri=NMDC.display_order, domain=None, range=Optional[int])
 
-slots.email = Slot(uri=SCHEMA.email, name="email", curie=SCHEMA.curie('email'),
-                   model_uri=NMDC.email, domain=None, range=Optional[str])
-
-slots.profile_image_url = Slot(uri=NMDC['attribute_values/profile_image_url'], name="profile_image_url", curie=NMDC.curie('attribute_values/profile_image_url'),
-                   model_uri=NMDC.profile_image_url, domain=None, range=Optional[str])
-
-slots.orcid = Slot(uri=NMDC['attribute_values/orcid'], name="orcid", curie=NMDC.curie('attribute_values/orcid'),
-                   model_uri=NMDC.orcid, domain=None, range=Optional[str])
-
 slots.language = Slot(uri=NMDC['attribute_values/language'], name="language", curie=NMDC.curie('attribute_values/language'),
                    model_uri=NMDC.language, domain=None, range=Optional[str])
 
@@ -11594,7 +11643,8 @@ slots.objective = Slot(uri=NMDC.objective, name="objective", curie=NMDC.curie('o
                    model_uri=NMDC.objective, domain=None, range=Optional[str], mappings = [SIO["000337"]])
 
 slots.md5_checksum = Slot(uri=NMDC.md5_checksum, name="md5_checksum", curie=NMDC.curie('md5_checksum'),
-                   model_uri=NMDC.md5_checksum, domain=None, range=Optional[str])
+                   model_uri=NMDC.md5_checksum, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[a-fA-F0-9]{32}$'))
 
 slots.data_object_type = Slot(uri=NMDC.data_object_type, name="data_object_type", curie=NMDC.curie('data_object_type'),
                    model_uri=NMDC.data_object_type, domain=None, range=Optional[Union[str, "FileTypeEnum"]])
@@ -11807,7 +11857,7 @@ slots.was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="wa
                    model_uri=NMDC.was_informed_by, domain=None, range=Optional[Union[Union[str, DataGenerationId], list[Union[str, DataGenerationId]]]], mappings = [PROV["wasInformedBy"]])
 
 slots.principal_investigator = Slot(uri=NMDC['basic_classes/principal_investigator'], name="principal_investigator", curie=NMDC.curie('basic_classes/principal_investigator'),
-                   model_uri=NMDC.principal_investigator, domain=None, range=Optional[Union[dict, PersonValue]])
+                   model_uri=NMDC.principal_investigator, domain=None, range=Optional[Union[dict, Person]])
 
 slots.was_generated_by = Slot(uri=NMDC['basic_classes/was_generated_by'], name="was_generated_by", curie=NMDC.curie('basic_classes/was_generated_by'),
                    model_uri=NMDC.was_generated_by, domain=None, range=Optional[Union[str, DataEmitterProcessId]], mappings = [PROV["wasGeneratedBy"]])
@@ -11827,8 +11877,8 @@ slots.study_category = Slot(uri=NMDC['basic_classes/study_category'], name="stud
 slots.study_image = Slot(uri=NMDC['basic_classes/study_image'], name="study_image", curie=NMDC.curie('basic_classes/study_image'),
                    model_uri=NMDC.study_image, domain=None, range=Optional[Union[Union[dict, ImageValue], list[Union[dict, ImageValue]]]])
 
-slots.applies_to_person = Slot(uri=NMDC['basic_classes/applies_to_person'], name="applies_to_person", curie=NMDC.curie('basic_classes/applies_to_person'),
-                   model_uri=NMDC.applies_to_person, domain=None, range=Union[dict, PersonValue])
+slots.applies_to_agent = Slot(uri=NMDC['basic_classes/applies_to_agent'], name="applies_to_agent", curie=NMDC.curie('basic_classes/applies_to_agent'),
+                   model_uri=NMDC.applies_to_agent, domain=None, range=Union[dict, Agent])
 
 slots.applied_roles = Slot(uri=NMDC['basic_classes/applied_roles'], name="applied_roles", curie=NMDC.curie('basic_classes/applied_roles'),
                    model_uri=NMDC.applied_roles, domain=None, range=Union[Union[str, "CreditEnum"], list[Union[str, "CreditEnum"]]])
@@ -11910,9 +11960,6 @@ slots.replicate_number = Slot(uri=NMDC.replicate_number, name="replicate_number"
 
 slots.technical_reps = Slot(uri=NMDC.technical_reps, name="technical_reps", curie=NMDC.curie('technical_reps'),
                    model_uri=NMDC.technical_reps, domain=None, range=Optional[int])
-
-slots.collection_date_inc = Slot(uri=NMDC.collection_date_inc, name="collection_date_inc", curie=NMDC.curie('collection_date_inc'),
-                   model_uri=NMDC.collection_date_inc, domain=None, range=Optional[str])
 
 slots.collection_time = Slot(uri=NMDC.collection_time, name="collection_time", curie=NMDC.curie('collection_time'),
                    model_uri=NMDC.collection_time, domain=None, range=Optional[str])
@@ -13603,6 +13650,22 @@ slots.ontologyRelation__predicate = Slot(uri=NMDC['basic_classes/predicate'], na
 slots.ontologyRelation__object = Slot(uri=NMDC['basic_classes/object'], name="ontologyRelation__object", curie=NMDC.curie('basic_classes/object'),
                    model_uri=NMDC.ontologyRelation__object, domain=None, range=Union[str, OntologyClassId])
 
+slots.Agent_name = Slot(uri=NMDC['attribute_values/name'], name="Agent_name", curie=NMDC.curie('attribute_values/name'),
+                   model_uri=NMDC.Agent_name, domain=Agent, range=str)
+
+slots.Person_orcid = Slot(uri=NMDC.orcid, name="Person_orcid", curie=NMDC.curie('orcid'),
+                   model_uri=NMDC.Person_orcid, domain=Person, range=Optional[str],
+                   pattern=re.compile(r'^orcid:\d{4}-\d{4}-\d{4}-\d{3}(\d|X)$'))
+
+slots.Person_email = Slot(uri=SCHEMA.email, name="Person_email", curie=SCHEMA.curie('email'),
+                   model_uri=NMDC.Person_email, domain=Person, range=Optional[str])
+
+slots.Person_name = Slot(uri=NMDC['attribute_values/name'], name="Person_name", curie=NMDC.curie('attribute_values/name'),
+                   model_uri=NMDC.Person_name, domain=Person, range=str)
+
+slots.Organization_name = Slot(uri=NMDC['attribute_values/name'], name="Organization_name", curie=NMDC.curie('attribute_values/name'),
+                   model_uri=NMDC.Organization_name, domain=Organization, range=str)
+
 slots.NucleotideSequencing_id = Slot(uri=NMDC.id, name="NucleotideSequencing_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.NucleotideSequencing_id, domain=NucleotideSequencing, range=Union[str, NucleotideSequencingId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
@@ -13725,7 +13788,7 @@ slots.Culturing_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="Cu
                    model_uri=NMDC.Culturing_has_output, domain=Culturing, range=Union[Union[str, OrganismSampleId], list[Union[str, OrganismSampleId]]])
 
 slots.Extraction_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="Extraction_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.Extraction_has_input, domain=Extraction, range=Union[Union[str, SampleId], list[Union[str, SampleId]]])
+                   model_uri=NMDC.Extraction_has_input, domain=Extraction, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
 
 slots.Extraction_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="Extraction_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.Extraction_has_output, domain=Extraction, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
@@ -13770,21 +13833,15 @@ slots.SubSamplingProcess_volume = Slot(uri=NMDC.volume, name="SubSamplingProcess
 slots.SubSamplingProcess_mass = Slot(uri=NMDC.mass, name="SubSamplingProcess_mass", curie=NMDC.curie('mass'),
                    model_uri=NMDC.SubSamplingProcess_mass, domain=SubSamplingProcess, range=Optional[Union[dict, QuantityValue]])
 
-slots.SubSamplingProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="SubSamplingProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.SubSamplingProcess_has_input, domain=SubSamplingProcess, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]])
-
 slots.SubSamplingProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="SubSamplingProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.SubSamplingProcess_has_output, domain=SubSamplingProcess, range=Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]])
+                   model_uri=NMDC.SubSamplingProcess_has_output, domain=SubSamplingProcess, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]])
 
 slots.MixingProcess_id = Slot(uri=NMDC.id, name="MixingProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MixingProcess_id, domain=MixingProcess, range=Union[str, MixingProcessId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
-slots.MixingProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="MixingProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.MixingProcess_has_input, domain=MixingProcess, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]])
-
 slots.MixingProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="MixingProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.MixingProcess_has_output, domain=MixingProcess, range=Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]])
+                   model_uri=NMDC.MixingProcess_has_output, domain=MixingProcess, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]])
 
 slots.FiltrationProcess_id = Slot(uri=NMDC.id, name="FiltrationProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.FiltrationProcess_id, domain=FiltrationProcess, range=Union[str, FiltrationProcessId],
@@ -13793,11 +13850,8 @@ slots.FiltrationProcess_id = Slot(uri=NMDC.id, name="FiltrationProcess_id", curi
 slots.FiltrationProcess_volume = Slot(uri=NMDC.volume, name="FiltrationProcess_volume", curie=NMDC.curie('volume'),
                    model_uri=NMDC.FiltrationProcess_volume, domain=FiltrationProcess, range=Optional[Union[dict, QuantityValue]])
 
-slots.FiltrationProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="FiltrationProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.FiltrationProcess_has_input, domain=FiltrationProcess, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]])
-
 slots.FiltrationProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="FiltrationProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.FiltrationProcess_has_output, domain=FiltrationProcess, range=Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]])
+                   model_uri=NMDC.FiltrationProcess_has_output, domain=FiltrationProcess, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]])
 
 slots.StorageProcess_substances_used = Slot(uri=NMDC.substances_used, name="StorageProcess_substances_used", curie=NMDC.curie('substances_used'),
                    model_uri=NMDC.StorageProcess_substances_used, domain=StorageProcess, range=Optional[Union[Union[dict, PortionOfSubstance], list[Union[dict, PortionOfSubstance]]]])
@@ -13816,11 +13870,8 @@ slots.ChromatographicSeparationProcess_id = Slot(uri=NMDC.id, name="Chromatograp
                    model_uri=NMDC.ChromatographicSeparationProcess_id, domain=ChromatographicSeparationProcess, range=Union[str, ChromatographicSeparationProcessId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
-slots.ChromatographicSeparationProcess_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="ChromatographicSeparationProcess_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.ChromatographicSeparationProcess_has_input, domain=ChromatographicSeparationProcess, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]])
-
 slots.ChromatographicSeparationProcess_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="ChromatographicSeparationProcess_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.ChromatographicSeparationProcess_has_output, domain=ChromatographicSeparationProcess, range=Optional[Union[Union[str, ProcessedSampleId], list[Union[str, ProcessedSampleId]]]])
+                   model_uri=NMDC.ChromatographicSeparationProcess_has_output, domain=ChromatographicSeparationProcess, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]])
 
 slots.DissolvingProcess_id = Slot(uri=NMDC.id, name="DissolvingProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.DissolvingProcess_id, domain=DissolvingProcess, range=Union[str, DissolvingProcessId],
@@ -13869,12 +13920,6 @@ slots.MetatranscriptomeAnnotation_id = Slot(uri=NMDC.id, name="Metatranscriptome
 slots.MetatranscriptomeAnnotation_img_identifiers = Slot(uri=NMDC.img_identifiers, name="MetatranscriptomeAnnotation_img_identifiers", curie=NMDC.curie('img_identifiers'),
                    model_uri=NMDC.MetatranscriptomeAnnotation_img_identifiers, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'))
-
-slots.MetatranscriptomeAnnotation_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="MetatranscriptomeAnnotation_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.MetatranscriptomeAnnotation_has_input, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]])
-
-slots.MetatranscriptomeAnnotation_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="MetatranscriptomeAnnotation_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.MetatranscriptomeAnnotation_has_output, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]])
 
 slots.MetatranscriptomeAnnotation_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetatranscriptomeAnnotation_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.MetatranscriptomeAnnotation_was_informed_by, domain=MetatranscriptomeAnnotation, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]], mappings = [PROV["wasInformedBy"]])
@@ -14035,9 +14080,6 @@ slots.Biosample_env_local_scale = Slot(uri=MIXS['0000013'], name="Biosample_env_
 slots.Biosample_env_medium = Slot(uri=MIXS['0000014'], name="Biosample_env_medium", curie=MIXS.curie('0000014'),
                    model_uri=NMDC.Biosample_env_medium, domain=Biosample, range=Union[dict, ControlledIdentifiedTermValue])
 
-slots.Biosample_associated_studies = Slot(uri=NMDC['basic_classes/associated_studies'], name="Biosample_associated_studies", curie=NMDC.curie('basic_classes/associated_studies'),
-                   model_uri=NMDC.Biosample_associated_studies, domain=Biosample, range=Union[Union[str, StudyId], list[Union[str, StudyId]]])
-
 slots.Biosample_fire = Slot(uri=MIXS['0001086'], name="Biosample_fire", curie=MIXS.curie('0001086'),
                    model_uri=NMDC.Biosample_fire, domain=Biosample, range=Optional[str],
                    pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$'))
@@ -14074,12 +14116,6 @@ slots.Biosample_heavy_metals_meth = Slot(uri=MIXS['0000343'], name="Biosample_he
 
 slots.Biosample_horizon_meth = Slot(uri=MIXS['0000321'], name="Biosample_horizon_meth", curie=MIXS.curie('0000321'),
                    model_uri=NMDC.Biosample_horizon_meth, domain=Biosample, range=Optional[str])
-
-slots.Biosample_link_addit_analys = Slot(uri=MIXS['0000340'], name="Biosample_link_addit_analys", curie=MIXS.curie('0000340'),
-                   model_uri=NMDC.Biosample_link_addit_analys, domain=Biosample, range=Optional[Union[dict, TextValue]])
-
-slots.Biosample_link_climate_info = Slot(uri=MIXS['0000328'], name="Biosample_link_climate_info", curie=MIXS.curie('0000328'),
-                   model_uri=NMDC.Biosample_link_climate_info, domain=Biosample, range=Optional[Union[dict, TextValue]])
 
 slots.Biosample_local_class_meth = Slot(uri=MIXS['0000331'], name="Biosample_local_class_meth", curie=MIXS.curie('0000331'),
                    model_uri=NMDC.Biosample_local_class_meth, domain=Biosample, range=Optional[str])
@@ -14157,18 +14193,6 @@ slots.QuantityValue_has_unit = Slot(uri=NMDC['attribute_values/has_unit'], name=
 
 slots.QuantityValue_has_numeric_value = Slot(uri=NMDC['attribute_values/has_numeric_value'], name="QuantityValue_has_numeric_value", curie=NMDC.curie('attribute_values/has_numeric_value'),
                    model_uri=NMDC.QuantityValue_has_numeric_value, domain=QuantityValue, range=Optional[Decimal], mappings = [QUDT["quantityValue"], SCHEMA["value"]])
-
-slots.PersonValue_orcid = Slot(uri=NMDC['attribute_values/orcid'], name="PersonValue_orcid", curie=NMDC.curie('attribute_values/orcid'),
-                   model_uri=NMDC.PersonValue_orcid, domain=PersonValue, range=Optional[str])
-
-slots.PersonValue_email = Slot(uri=SCHEMA.email, name="PersonValue_email", curie=SCHEMA.curie('email'),
-                   model_uri=NMDC.PersonValue_email, domain=PersonValue, range=Optional[str])
-
-slots.PersonValue_has_raw_value = Slot(uri=NMDC['attribute_values/has_raw_value'], name="PersonValue_has_raw_value", curie=NMDC.curie('attribute_values/has_raw_value'),
-                   model_uri=NMDC.PersonValue_has_raw_value, domain=PersonValue, range=Optional[str])
-
-slots.PersonValue_name = Slot(uri=NMDC['attribute_values/name'], name="PersonValue_name", curie=NMDC.curie('attribute_values/name'),
-                   model_uri=NMDC.PersonValue_name, domain=PersonValue, range=Optional[str])
 
 slots.ControlledIdentifiedTermValue_term = Slot(uri=NMDC['attribute_values/term'], name="ControlledIdentifiedTermValue_term", curie=NMDC.curie('attribute_values/term'),
                    model_uri=NMDC.ControlledIdentifiedTermValue_term, domain=ControlledIdentifiedTermValue, range=Union[dict, "OntologyClass"])
