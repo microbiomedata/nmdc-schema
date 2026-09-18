@@ -806,6 +806,7 @@ attributes:
     domain_of:
     - ProcessedSample
     range: integer
+    minimum_value: -1
   gradient_pos_density:
     name: gradient_pos_density
     annotations:
@@ -857,6 +858,8 @@ attributes:
     - ProcessedSample
     range: float
     recommended: true
+    minimum_value: 0
+    maximum_value: 1
     structured_pattern:
       syntax: ^{float}$
   nucleobase_atom_frac:

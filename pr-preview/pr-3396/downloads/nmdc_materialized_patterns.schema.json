@@ -10043,7 +10043,9 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be ordered the same as the isotopolog."
+                    "description": "The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be ordered the same as the isotopolog.",
+                    "maximum": 1,
+                    "minimum": 0
                 },
                 "isotopolog_atom_pos": {
                     "anyOf": [
@@ -15534,6 +15536,8 @@
                 },
                 "gradient_pos_rel_am": {
                     "description": "The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargeted sequencing data, this value should be calculated from total DNA concentration.",
+                    "maximum": 1,
+                    "minimum": 0,
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+$",
                     "type": [
                         "number",
@@ -15542,6 +15546,7 @@
                 },
                 "gradient_position": {
                     "description": "A number designating the gradient position from heaviest (=1) to lightest. Unfractionated samples, from which fractionated samples were derived, should be denoted with -1.",
+                    "minimum": -1,
                     "type": [
                         "integer",
                         "null"
@@ -18569,6 +18574,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.0.post64.dev0+f15739d9d"
+    "version": "11.24.0.post65.dev0+f6aa2bab7"
 }
 
