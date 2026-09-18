@@ -1,0 +1,12 @@
+# Invalid only because gradient_pos_rel_am has an unsupported value or scalar shape; see the slot definition.
+id: nmdc:procsm-99-labeledfrac1
+type: nmdc:ProcessedSample
+name: 'labeled: fraction 1'
+gradient_position: 1
+gradient_pos_density:
+  type: nmdc:QuantityValue
+  has_minimum_numeric_value: 1.725
+  has_maximum_numeric_value: 1.745
+  has_unit: g/mL
+gradient_pos_rel_am: '0.25'
+nucleobase_atom_frac: 0.25

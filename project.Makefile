@@ -10,7 +10,6 @@ LATEST_RELEASE_TAG_FILE := local/latest_release_tag.txt
 
 PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
 
-
 ##### Ontology registry counts #####
 # On-demand target — fetches from external APIs (OLS, OBO Foundry, semantic-sql).
 # BioPortal included automatically when BIOPORTAL_API_KEY is set in local/.env

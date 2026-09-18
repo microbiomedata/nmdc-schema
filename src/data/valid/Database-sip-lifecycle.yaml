@@ -1,0 +1,513 @@
+# Self-contained synthetic DNA-SIP lifecycle. See src/docs/sip-lifecycle.md. No real experimental results.
+study_set:
+- id: nmdc:sty-99-sipdemo
+  type: nmdc:Study
+  name: Synthetic paired DNA-SIP demonstration
+  study_category: research_study
+  description: 'Illustrative metadata only: invented measurements, identifiers and file URLs. Three fractions
+    per gradient keep the example small; this is not a laboratory protocol or a complete experimental
+    design.'
+biosample_set:
+- id: nmdc:bsm-99-sipdemo
+  name: Soil for paired SIP microcosms
+  associated_studies:
+  - nmdc:sty-99-sipdemo
+  env_broad_scale:
+    type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: ENVO:00002030
+    term:
+      type: nmdc:OntologyClass
+      id: ENVO:00002030
+  env_local_scale:
+    type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: ENVO:00002169
+    term:
+      type: nmdc:OntologyClass
+      id: ENVO:00002169
+  env_medium:
+    type: nmdc:ControlledIdentifiedTermValue
+    has_raw_value: ENVO:00005792
+    term:
+      type: nmdc:OntologyClass
+      id: ENVO:00005792
+  type: nmdc:Biosample
+  description: Synthetic source sample. Separate aliquots enter the labeled and natural-abundance incubations;
+    aliquoting is implicit.
+material_processing_set:
+- id: nmdc:labp-99-labeled
+  type: nmdc:IsotopeLabelingProcess
+  name: 'labeled: toluene incubation'
+  has_input:
+  - nmdc:bsm-99-sipdemo
+  has_output:
+  - nmdc:procsm-99-labeledinc
+  isotopolog_additions:
+  - isotopolog_label: isotopically labeled
+    isotope: 13C
+    type: nmdc:IsotopologAddition
+    isotopolog:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
+      term:
+        id: PUBCHEM.COMPOUND:1140
+        name: toluene
+        type: nmdc:OntologyClass
+    isotopolog_atom_frac:
+      type: nmdc:QuantityValue
+      has_numeric_value: 0.99
+      has_unit: '1'
+    isotopolog_dose:
+      type: nmdc:QuantityValue
+      has_numeric_value: 10
+      has_unit: '[ppm]'
+    isotopolog_atom_pos:
+      type: nmdc:TextValue
+      has_raw_value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
+  isotopolog_approach: single
+  isotopolog_incu_time:
+    type: nmdc:QuantityValue
+    has_numeric_value: 12
+    has_unit: h
+- id: nmdc:extrp-99-labeled
+  type: nmdc:Extraction
+  name: 'labeled: extract DNA'
+  has_input:
+  - nmdc:procsm-99-labeledinc
+  has_output:
+  - nmdc:procsm-99-labeleddna
+  extraction_targets:
+  - DNA
+- id: nmdc:fracp-99-labeled
+  type: nmdc:DensityGradientFractionationProcess
+  name: 'labeled: density gradient'
+  has_input:
+  - nmdc:procsm-99-labeleddna
+  has_output:
+  - nmdc:procsm-99-labeledfrac1
+  - nmdc:procsm-99-labeledfrac2
+  - nmdc:procsm-99-labeledfrac3
+  protocol_link:
+    type: nmdc:Protocol
+    name: DNA-SIP gradient centrifugation and fractionation
+    url: https://doi.org/10.3791/2027
+    protocol_for: DensityGradientFractionationProcess
+- id: nmdc:extrp-99-labeledclean1
+  type: nmdc:Extraction
+  name: 'labeled: recover fraction 1 DNA'
+  has_input:
+  - nmdc:procsm-99-labeledfrac1
+  has_output:
+  - nmdc:procsm-99-labeledclean1
+  extraction_targets:
+  - DNA
+  description: Recover and purify DNA from the collected gradient fraction before library preparation.
+- id: nmdc:libprp-99-labeled1
+  type: nmdc:LibraryPreparation
+  name: 'labeled: fraction 1 library'
+  has_input:
+  - nmdc:procsm-99-labeledclean1
+  has_output:
+  - nmdc:procsm-99-labeledlib1
+  library_type: DNA
+  library_strategy: WGS
+  library_source: METAGENOMIC
+  lib_layout: paired
+- id: nmdc:extrp-99-labeledclean2
+  type: nmdc:Extraction
+  name: 'labeled: recover fraction 2 DNA'
+  has_input:
+  - nmdc:procsm-99-labeledfrac2
+  has_output:
+  - nmdc:procsm-99-labeledclean2
+  extraction_targets:
+  - DNA
+  description: Recover and purify DNA from the collected gradient fraction before library preparation.
+- id: nmdc:libprp-99-labeled2
+  type: nmdc:LibraryPreparation
+  name: 'labeled: fraction 2 library'
+  has_input:
+  - nmdc:procsm-99-labeledclean2
+  has_output:
+  - nmdc:procsm-99-labeledlib2
+  library_type: DNA
+  library_strategy: WGS
+  library_source: METAGENOMIC
+  lib_layout: paired
+- id: nmdc:extrp-99-labeledclean3
+  type: nmdc:Extraction
+  name: 'labeled: recover fraction 3 DNA'
+  has_input:
+  - nmdc:procsm-99-labeledfrac3
+  has_output:
+  - nmdc:procsm-99-labeledclean3
+  extraction_targets:
+  - DNA
+  description: Recover and purify DNA from the collected gradient fraction before library preparation.
+- id: nmdc:libprp-99-labeled3
+  type: nmdc:LibraryPreparation
+  name: 'labeled: fraction 3 library'
+  has_input:
+  - nmdc:procsm-99-labeledclean3
+  has_output:
+  - nmdc:procsm-99-labeledlib3
+  library_type: DNA
+  library_strategy: WGS
+  library_source: METAGENOMIC
+  lib_layout: paired
+- id: nmdc:labp-99-control
+  type: nmdc:IsotopeLabelingProcess
+  name: 'control: toluene incubation'
+  has_input:
+  - nmdc:bsm-99-sipdemo
+  has_output:
+  - nmdc:procsm-99-controlinc
+  isotopolog_additions:
+  - isotopolog_label: natural abundance
+    isotope: 13C
+    type: nmdc:IsotopologAddition
+    isotopolog:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
+      term:
+        id: PUBCHEM.COMPOUND:1140
+        name: toluene
+        type: nmdc:OntologyClass
+    isotopolog_atom_frac:
+      type: nmdc:QuantityValue
+      has_numeric_value: 0.011
+      has_unit: '1'
+    isotopolog_dose:
+      type: nmdc:QuantityValue
+      has_numeric_value: 10
+      has_unit: '[ppm]'
+  isotopolog_approach: single
+  isotopolog_incu_time:
+    type: nmdc:QuantityValue
+    has_numeric_value: 12
+    has_unit: h
+- id: nmdc:extrp-99-control
+  type: nmdc:Extraction
+  name: 'control: extract DNA'
+  has_input:
+  - nmdc:procsm-99-controlinc
+  has_output:
+  - nmdc:procsm-99-controldna
+  extraction_targets:
+  - DNA
+- id: nmdc:fracp-99-control
+  type: nmdc:DensityGradientFractionationProcess
+  name: 'control: density gradient'
+  has_input:
+  - nmdc:procsm-99-controldna
+  has_output:
+  - nmdc:procsm-99-controlfrac1
+  - nmdc:procsm-99-controlfrac2
+  - nmdc:procsm-99-controlfrac3
+  protocol_link:
+    type: nmdc:Protocol
+    name: DNA-SIP gradient centrifugation and fractionation
+    url: https://doi.org/10.3791/2027
+    protocol_for: DensityGradientFractionationProcess
+- id: nmdc:extrp-99-controlclean1
+  type: nmdc:Extraction
+  name: 'control: recover fraction 1 DNA'
+  has_input:
+  - nmdc:procsm-99-controlfrac1
+  has_output:
+  - nmdc:procsm-99-controlclean1
+  extraction_targets:
+  - DNA
+  description: Recover and purify DNA from the collected gradient fraction before library preparation.
+- id: nmdc:libprp-99-control1
+  type: nmdc:LibraryPreparation
+  name: 'control: fraction 1 library'
+  has_input:
+  - nmdc:procsm-99-controlclean1
+  has_output:
+  - nmdc:procsm-99-controllib1
+  library_type: DNA
+  library_strategy: WGS
+  library_source: METAGENOMIC
+  lib_layout: paired
+- id: nmdc:extrp-99-controlclean2
+  type: nmdc:Extraction
+  name: 'control: recover fraction 2 DNA'
+  has_input:
+  - nmdc:procsm-99-controlfrac2
+  has_output:
+  - nmdc:procsm-99-controlclean2
+  extraction_targets:
+  - DNA
+  description: Recover and purify DNA from the collected gradient fraction before library preparation.
+- id: nmdc:libprp-99-control2
+  type: nmdc:LibraryPreparation
+  name: 'control: fraction 2 library'
+  has_input:
+  - nmdc:procsm-99-controlclean2
+  has_output:
+  - nmdc:procsm-99-controllib2
+  library_type: DNA
+  library_strategy: WGS
+  library_source: METAGENOMIC
+  lib_layout: paired
+- id: nmdc:extrp-99-controlclean3
+  type: nmdc:Extraction
+  name: 'control: recover fraction 3 DNA'
+  has_input:
+  - nmdc:procsm-99-controlfrac3
+  has_output:
+  - nmdc:procsm-99-controlclean3
+  extraction_targets:
+  - DNA
+  description: Recover and purify DNA from the collected gradient fraction before library preparation.
+- id: nmdc:libprp-99-control3
+  type: nmdc:LibraryPreparation
+  name: 'control: fraction 3 library'
+  has_input:
+  - nmdc:procsm-99-controlclean3
+  has_output:
+  - nmdc:procsm-99-controllib3
+  library_type: DNA
+  library_strategy: WGS
+  library_source: METAGENOMIC
+  lib_layout: paired
+processed_sample_set:
+- id: nmdc:procsm-99-labeledinc
+  type: nmdc:ProcessedSample
+  name: 'labeled: incubated soil'
+- id: nmdc:procsm-99-labeleddna
+  type: nmdc:ProcessedSample
+  name: 'labeled: unfractionated DNA'
+  gradient_position: -1
+- id: nmdc:procsm-99-labeledfrac1
+  type: nmdc:ProcessedSample
+  name: 'labeled: fraction 1'
+  gradient_position: 1
+  gradient_pos_density:
+    type: nmdc:QuantityValue
+    has_numeric_value: 1.735
+    has_unit: g/mL
+  gradient_pos_rel_am: 0.45
+- id: nmdc:procsm-99-labeledclean1
+  type: nmdc:ProcessedSample
+  name: 'labeled: purified fraction 1 DNA'
+- id: nmdc:procsm-99-labeledlib1
+  type: nmdc:ProcessedSample
+  name: 'labeled: fraction 1 library'
+- id: nmdc:procsm-99-labeledfrac2
+  type: nmdc:ProcessedSample
+  name: 'labeled: fraction 2'
+  gradient_position: 2
+  gradient_pos_density:
+    type: nmdc:QuantityValue
+    has_numeric_value: 1.715
+    has_unit: g/mL
+  gradient_pos_rel_am: 0.35
+- id: nmdc:procsm-99-labeledclean2
+  type: nmdc:ProcessedSample
+  name: 'labeled: purified fraction 2 DNA'
+- id: nmdc:procsm-99-labeledlib2
+  type: nmdc:ProcessedSample
+  name: 'labeled: fraction 2 library'
+- id: nmdc:procsm-99-labeledfrac3
+  type: nmdc:ProcessedSample
+  name: 'labeled: fraction 3'
+  gradient_position: 3
+  gradient_pos_density:
+    type: nmdc:QuantityValue
+    has_numeric_value: 1.695
+    has_unit: g/mL
+  gradient_pos_rel_am: 0.2
+- id: nmdc:procsm-99-labeledclean3
+  type: nmdc:ProcessedSample
+  name: 'labeled: purified fraction 3 DNA'
+- id: nmdc:procsm-99-labeledlib3
+  type: nmdc:ProcessedSample
+  name: 'labeled: fraction 3 library'
+- id: nmdc:procsm-99-controlinc
+  type: nmdc:ProcessedSample
+  name: 'control: incubated soil'
+- id: nmdc:procsm-99-controldna
+  type: nmdc:ProcessedSample
+  name: 'control: unfractionated DNA'
+  gradient_position: -1
+- id: nmdc:procsm-99-controlfrac1
+  type: nmdc:ProcessedSample
+  name: 'control: fraction 1'
+  gradient_position: 1
+  gradient_pos_density:
+    type: nmdc:QuantityValue
+    has_numeric_value: 1.735
+    has_unit: g/mL
+  gradient_pos_rel_am: 0.1
+- id: nmdc:procsm-99-controlclean1
+  type: nmdc:ProcessedSample
+  name: 'control: purified fraction 1 DNA'
+- id: nmdc:procsm-99-controllib1
+  type: nmdc:ProcessedSample
+  name: 'control: fraction 1 library'
+- id: nmdc:procsm-99-controlfrac2
+  type: nmdc:ProcessedSample
+  name: 'control: fraction 2'
+  gradient_position: 2
+  gradient_pos_density:
+    type: nmdc:QuantityValue
+    has_numeric_value: 1.715
+    has_unit: g/mL
+  gradient_pos_rel_am: 0.25
+- id: nmdc:procsm-99-controlclean2
+  type: nmdc:ProcessedSample
+  name: 'control: purified fraction 2 DNA'
+- id: nmdc:procsm-99-controllib2
+  type: nmdc:ProcessedSample
+  name: 'control: fraction 2 library'
+- id: nmdc:procsm-99-controlfrac3
+  type: nmdc:ProcessedSample
+  name: 'control: fraction 3'
+  gradient_position: 3
+  gradient_pos_density:
+    type: nmdc:QuantityValue
+    has_numeric_value: 1.695
+    has_unit: g/mL
+  gradient_pos_rel_am: 0.65
+- id: nmdc:procsm-99-controlclean3
+  type: nmdc:ProcessedSample
+  name: 'control: purified fraction 3 DNA'
+- id: nmdc:procsm-99-controllib3
+  type: nmdc:ProcessedSample
+  name: 'control: fraction 3 library'
+data_generation_set:
+- id: nmdc:dgns-99-labeled1
+  type: nmdc:NucleotideSequencing
+  name: 'labeled: sequence fraction 1'
+  has_input:
+  - nmdc:procsm-99-labeledlib1
+  has_output:
+  - nmdc:dobj-99-labeled1
+  analyte_category: metagenome
+  associated_studies:
+  - nmdc:sty-99-sipdemo
+- id: nmdc:dgns-99-labeled2
+  type: nmdc:NucleotideSequencing
+  name: 'labeled: sequence fraction 2'
+  has_input:
+  - nmdc:procsm-99-labeledlib2
+  has_output:
+  - nmdc:dobj-99-labeled2
+  analyte_category: metagenome
+  associated_studies:
+  - nmdc:sty-99-sipdemo
+- id: nmdc:dgns-99-labeled3
+  type: nmdc:NucleotideSequencing
+  name: 'labeled: sequence fraction 3'
+  has_input:
+  - nmdc:procsm-99-labeledlib3
+  has_output:
+  - nmdc:dobj-99-labeled3
+  analyte_category: metagenome
+  associated_studies:
+  - nmdc:sty-99-sipdemo
+- id: nmdc:dgns-99-control1
+  type: nmdc:NucleotideSequencing
+  name: 'control: sequence fraction 1'
+  has_input:
+  - nmdc:procsm-99-controllib1
+  has_output:
+  - nmdc:dobj-99-control1
+  analyte_category: metagenome
+  associated_studies:
+  - nmdc:sty-99-sipdemo
+- id: nmdc:dgns-99-control2
+  type: nmdc:NucleotideSequencing
+  name: 'control: sequence fraction 2'
+  has_input:
+  - nmdc:procsm-99-controllib2
+  has_output:
+  - nmdc:dobj-99-control2
+  analyte_category: metagenome
+  associated_studies:
+  - nmdc:sty-99-sipdemo
+- id: nmdc:dgns-99-control3
+  type: nmdc:NucleotideSequencing
+  name: 'control: sequence fraction 3'
+  has_input:
+  - nmdc:procsm-99-controllib3
+  has_output:
+  - nmdc:dobj-99-control3
+  analyte_category: metagenome
+  associated_studies:
+  - nmdc:sty-99-sipdemo
+data_object_set:
+- id: nmdc:dobj-99-labeled1
+  type: nmdc:DataObject
+  name: labeled_fraction_1.interleaved.fastq.gz
+  description: Synthetic placeholder for paired interleaved raw reads; no sequence file is provided.
+  data_category: instrument_data
+  data_object_type: Paired interleaved raw sequencing data
+  url: https://example.org/sip/labeled_fraction_1.interleaved.fastq.gz
+  was_generated_by: nmdc:dgns-99-labeled1
+  in_manifest:
+  - nmdc:manif-99-labeled
+- id: nmdc:dobj-99-labeled2
+  type: nmdc:DataObject
+  name: labeled_fraction_2.interleaved.fastq.gz
+  description: Synthetic placeholder for paired interleaved raw reads; no sequence file is provided.
+  data_category: instrument_data
+  data_object_type: Paired interleaved raw sequencing data
+  url: https://example.org/sip/labeled_fraction_2.interleaved.fastq.gz
+  was_generated_by: nmdc:dgns-99-labeled2
+  in_manifest:
+  - nmdc:manif-99-labeled
+- id: nmdc:dobj-99-labeled3
+  type: nmdc:DataObject
+  name: labeled_fraction_3.interleaved.fastq.gz
+  description: Synthetic placeholder for paired interleaved raw reads; no sequence file is provided.
+  data_category: instrument_data
+  data_object_type: Paired interleaved raw sequencing data
+  url: https://example.org/sip/labeled_fraction_3.interleaved.fastq.gz
+  was_generated_by: nmdc:dgns-99-labeled3
+  in_manifest:
+  - nmdc:manif-99-labeled
+- id: nmdc:dobj-99-control1
+  type: nmdc:DataObject
+  name: control_fraction_1.interleaved.fastq.gz
+  description: Synthetic placeholder for paired interleaved raw reads; no sequence file is provided.
+  data_category: instrument_data
+  data_object_type: Paired interleaved raw sequencing data
+  url: https://example.org/sip/control_fraction_1.interleaved.fastq.gz
+  was_generated_by: nmdc:dgns-99-control1
+  in_manifest:
+  - nmdc:manif-99-control
+- id: nmdc:dobj-99-control2
+  type: nmdc:DataObject
+  name: control_fraction_2.interleaved.fastq.gz
+  description: Synthetic placeholder for paired interleaved raw reads; no sequence file is provided.
+  data_category: instrument_data
+  data_object_type: Paired interleaved raw sequencing data
+  url: https://example.org/sip/control_fraction_2.interleaved.fastq.gz
+  was_generated_by: nmdc:dgns-99-control2
+  in_manifest:
+  - nmdc:manif-99-control
+- id: nmdc:dobj-99-control3
+  type: nmdc:DataObject
+  name: control_fraction_3.interleaved.fastq.gz
+  description: Synthetic placeholder for paired interleaved raw reads; no sequence file is provided.
+  data_category: instrument_data
+  data_object_type: Paired interleaved raw sequencing data
+  url: https://example.org/sip/control_fraction_3.interleaved.fastq.gz
+  was_generated_by: nmdc:dgns-99-control3
+  in_manifest:
+  - nmdc:manif-99-control
+manifest_set:
+- id: nmdc:manif-99-labeled
+  type: nmdc:Manifest
+  name: 'labeled: sequence files across one gradient'
+  manifest_category: fractions
+  description: Sequence DataObjects from the three fractions of nmdc:fracp-99-labeled. The labeled and
+    control gradients have separate manifests.
+- id: nmdc:manif-99-control
+  type: nmdc:Manifest
+  name: 'control: sequence files across one gradient'
+  manifest_category: fractions
+  description: Sequence DataObjects from the three fractions of nmdc:fracp-99-control. The labeled and
+    control gradients have separate manifests.

@@ -1,5 +1,17 @@
 # Visualizations
 
+## Database example diagrams
+
+The [Database example diagram generator and gallery](database-example-diagrams.md)
+show relationships between actual records in valid examples. One generator
+produces the SIP lifecycle and five organism/isolate diagrams directly from their
+YAML files, with shared validation and Mermaid rendering. Run
+`make example-diagrams` to regenerate them all.
+
+The [DNA-SIP walkthrough](sip-lifecycle.md) explains the paired incubations,
+density fractions, library preparation, sequence files and Manifests in that
+example. `make sip-diagram` regenerates just its diagram.
+
 ## Inter-collection relationship diagram
 
 <!-- Note: `visualizations/collection-graph.html` does not exist in the source code repository.
