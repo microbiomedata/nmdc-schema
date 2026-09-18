@@ -182,8 +182,8 @@ primary identifier.
 | gold:Gb* | gold:Gb0110739 | Biosample | gold_biosample_identifiers |
 | emsl:* | emsl:63ca2f94-6647-11eb-ae93-0242ac130002| Biosample | emsl_biosample_identifiers|
 | igsn:*   | igsn:IEWFS001H | Biosample | igsn_biosample_identifiers | 
-| gold:Gp* | gold:Gp0452734 | OmicsProcessing | gold_sequencing_project_identifiers |
-| emsl:* | emsl:598506 | OmicsProcessing | alternative_identifiers |
+| gold:Gp* | gold:Gp0452734 | NucleotideSequencing | gold_sequencing_project_identifiers |
+| emsl:* | emsl:598506 | MassSpectrometry | alternative_identifiers |
 
 Some legacy data object identifiers were based on file md5sums, either with or without a prefix (nmdc, jgi, emsl). 
 In some cases the legacy value can be found by removing the prefix and searching DataObject records on slot 
@@ -260,8 +260,7 @@ the data objects use hashes (md5) prefixed with `nmdc`:
 
 ## MIxS term identifiers
 
-We are working with the GSC to provide permanent IDs for MIxS terms. Note these terms are schema-level rather than
-data-level. For now we place these in the NMDC namespaces, e.g `nmdc:alt`
+MIxS is now in LinkML. If a slot comes from MIxS that is denoted in NMDC's documentation as a mapping. See for example [air temp](https://microbiomedata.github.io/nmdc-schema/air_temp/). 
 
 ## Identifiers and semantic web URIs
 
