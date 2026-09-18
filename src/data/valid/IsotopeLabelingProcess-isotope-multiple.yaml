@@ -17,9 +17,9 @@ isotopolog_additions:
       has_unit: "1"
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: glucose [PUBCHEM.COMPOUND:5793]
+      has_raw_value: glucose [CHEBI:17234]
       term:
-        id: PUBCHEM.COMPOUND:5793
+        id: CHEBI:17234
         name: glucose
         type: nmdc:OntologyClass
   - isotopolog_label: isotopically labeled
@@ -32,9 +32,9 @@ isotopolog_additions:
       has_unit: "1"
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: heavy water [PUBCHEM.COMPOUND:105142]
+      has_raw_value: heavy water [CHEBI:41981]
       term:
-        id: PUBCHEM.COMPOUND:105142
+        id: CHEBI:41981
         name: oxidane
         type: nmdc:OntologyClass
 isotopolog_incu_time:

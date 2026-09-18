@@ -1,5 +1,5 @@
 # Invalid for one reason: isotopolog.term.id uses the lowercase bioregistry form of the
-# PubChem prefix rather than the PUBCHEM.COMPOUND prefix this schema declares.
+# ChEBI prefix rather than the CHEBI prefix this schema declares.
 id: nmdc:labp-99-abcdef6
 name: labeling of my awesome biosample
 type: nmdc:IsotopeLabelingProcess
@@ -14,8 +14,8 @@ isotopolog_additions:
     type: nmdc:IsotopologAddition
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: toluene [pubchem.compound:1140]
+      has_raw_value: toluene [chebi:17578]
       term:
-        id: pubchem.compound:1140
+        id: chebi:17578
         name: toluene
         type: nmdc:OntologyClass

@@ -1,4 +1,4 @@
-# Invalid for one reason: isotopolog.term.id uses a namespace other than PUBCHEM.COMPOUND.
+# Invalid for one reason: isotopolog.term.id uses a namespace other than CHEBI.
 id: nmdc:labp-99-abcdef5
 name: labeling of my awesome biosample
 type: nmdc:IsotopeLabelingProcess
@@ -13,8 +13,8 @@ isotopolog_additions:
     type: nmdc:IsotopologAddition
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: mixture [CHEBI:60004]
+      has_raw_value: mixture [my_awesome_chemical_ontology:60004]
       term:
-        id: CHEBI:60004
+        id: my_awesome_chemical_ontology:60004
         name: mixture
         type: nmdc:OntologyClass

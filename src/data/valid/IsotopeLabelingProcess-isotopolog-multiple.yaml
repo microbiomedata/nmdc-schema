@@ -13,9 +13,9 @@ isotopolog_additions:
     type: nmdc:IsotopologAddition
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: toluene [PUBCHEM.COMPOUND:1140]
+      has_raw_value: toluene [CHEBI:17578]
       term:
-        id: PUBCHEM.COMPOUND:1140
+        id: CHEBI:17578
         name: toluene
         type: nmdc:OntologyClass
   - isotopolog_label: isotopically labeled
@@ -23,8 +23,8 @@ isotopolog_additions:
     type: nmdc:IsotopologAddition
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: water [PUBCHEM.COMPOUND:962]
+      has_raw_value: water [CHEBI:15377]
       term:
-        id: PUBCHEM.COMPOUND:962
+        id: CHEBI:15377
         name: water
         type: nmdc:OntologyClass

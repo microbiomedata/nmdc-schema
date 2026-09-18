@@ -508,6 +508,7 @@
 '.slots.water_temp_regm.inlined_as_list |= true'
 '.slots.watering_regm.inlined_as_list |= true'
 
+
 'del(.subsets)'
 'del(.classes)'
 'del(.enums.[].name)'
@@ -642,6 +643,11 @@
 '.slots.estimated_size.maximum_value = 100000000000'
 # esplims ceiling rationale is internal modeling context -> notes, not comments.
 '.slots.estimated_size.notes = ["The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat."]'
+'.slots.isotopolog_atom_frac.minimum_value = 0'
+'.slots.isotopolog_atom_frac.maximum_value = 1'
+'.slots.gradient_position.minimum_value= -1'
+'.slots.gradient_pos_rel_am.minimum_value = 0'
+'.slots.gradient_pos_rel_am.maximum_value =1'
 
 # these slots, by their old names, are not used anywhere in mixs.yaml and seem to confuse the mkdocs search when looking for has_unit etc.
 'del(.slots.["has numeric value"])'
@@ -1014,8 +1020,8 @@
 '.slots.host_wet_mass.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "1500 g", "has_numeric_value": 1500, "has_unit": "g"}}]'
 '.slots.humidity_regm.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
 '.slots.internal_standard.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "https://doi.org/10.1101/2022.12.20.521340"}}]'
-'.slots.isotopolog.examples = [{"object": {"type": "nmdc:ControlledIdentifiedTermValue", "has_raw_value": "toluene [PUBCHEM.COMPOUND:1140]", "term": {"id": "PUBCHEM.COMPOUND:1140", "name": "toluene", "type": "nmdc:OntologyClass"}}}]'
-'.slots.isotopolog.comments = ["Give the PubChem compound as PUBCHEM.COMPOUND:<CID>, both in has_raw_value and in term.id. An input with no PubChem compound identifier, such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case."]'
+'.slots.isotopolog.examples = [{"object": {"type": "nmdc:ControlledIdentifiedTermValue", "has_raw_value": "toluene [CHEBI:17578]", "term": {"id": "CHEBI:17578", "name": "toluene", "type": "nmdc:OntologyClass"}}}]'
+'.slots.isotopolog.comments = ["Give the ChEBI compound as CEBI:<ID>, both in has_raw_value and in term.id. An input with no ChEBI identifier, such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case."]'
 '.slots.isotopolog_atom_frac.description |= sub("should be orded the same"; "should be ordered the same")'
 '.slots.isotopolog_atom_pos.description |= sub("should be orded the same"; "should be ordered the same")'
 '.slots.isotopolog_atom_frac.comments += ["In NMDC each IsotopologAddition entry describes one added input, an isotopolog or a hetero_isotopolog, and carries at most one atom fraction, so the pipe-separated ordering described for spreadsheets does not apply."]'
