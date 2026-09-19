@@ -659,6 +659,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -741,7 +752,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Float/">Float</a></p>
+<p>Range: <a href="../QuantityValue/">QuantityValue</a></p>
 </li>
 <li>
 <p>Recommended: True</p>
@@ -754,10 +765,27 @@
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
-<ul>
-<li><code>0.10</code></li>
-</ul>
+<pre><code class="language-yaml">type: &quot;nmdc:QuantityValue&quot;
+has_raw_value: &quot;0.1&quot;
+has_numeric_value: 0.1
+has_unit: &quot;1&quot;
+</code></pre>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storage_units</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -781,24 +809,30 @@
 <details>
 
 <pre><code class="language-yaml">name: gradient_pos_rel_am
+annotations:
+  storage_units:
+    tag: storage_units
+    value: '1'
 description: The total nucleic acids loaded onto the column in this fraction as a
   decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value
   should be calculated from qPCR data. If uploading untargeted sequencing data, this
   value should be calculated from total DNA concentration.
 title: relative amount of nucleic acids in the gradient position
 examples:
-- value: '0.10'
+- object:
+    type: nmdc:QuantityValue
+    has_raw_value: '0.1'
+    has_numeric_value: 0.1
+    has_unit: '1'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0001344
 domain_of:
 - ProcessedSample
-range: float
+range: QuantityValue
 recommended: true
 minimum_value: 0
 maximum_value: 1
-structured_pattern:
-  syntax: ^{float}$
 
 </code></pre>
 

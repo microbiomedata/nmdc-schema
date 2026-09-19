@@ -638,7 +638,7 @@ attributes:
       sample.
     title: isotopolog
     comments:
-    - Give the ChEBI compound as CEBI:&lt;ID&gt;, both in has_raw_value and in term.id.
+    - Give the ChEBI compound as CHEBI:&lt;ID&gt;, both in has_raw_value and in term.id.
       An input with no ChEBI identifier, such as root exudates or cells, goes in hetero_isotopolog
       instead; NMDC does not use a sentinel identifier for that case.
     examples:
@@ -796,8 +796,6 @@ attributes:
     - IsotopologAddition
     range: QuantityValue
     recommended: true
-    structured_pattern:
-      syntax: ^{float} {unit}$
   type:
     name: type
     description: the class_uri of the class that has been instantiated

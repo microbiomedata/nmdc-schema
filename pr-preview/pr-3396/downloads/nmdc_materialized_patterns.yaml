@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.0.post65.dev0+f6aa2bab7
+version: 11.24.0.post66.dev0+b3c79a8b0
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -18599,7 +18599,7 @@ slots:
       sample.
     title: isotopolog
     comments:
-    - Give the ChEBI compound as CEBI:<ID>, both in has_raw_value and in term.id.
+    - Give the ChEBI compound as CHEBI:<ID>, both in has_raw_value and in term.id.
       An input with no ChEBI identifier, such as root exudates or cells, goes in hetero_isotopolog
       instead; NMDC does not use a sentinel identifier for that case.
     examples:
@@ -18689,22 +18689,27 @@ slots:
       interpolated: true
   gradient_pos_rel_am:
     name: gradient_pos_rel_am
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '1'
     description: The total nucleic acids loaded onto the column in this fraction as
       a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this
       value should be calculated from qPCR data. If uploading untargeted sequencing
       data, this value should be calculated from total DNA concentration.
     title: relative amount of nucleic acids in the gradient position
     examples:
-    - value: '0.10'
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: '0.1'
+        has_numeric_value: 0.1
+        has_unit: '1'
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001344
-    range: float
+    range: QuantityValue
     recommended: true
     minimum_value: 0
     maximum_value: 1
-    pattern: ^[-+]?[0-9]*\.?[0-9]+$
-    structured_pattern:
-      syntax: ^{float}$
   isotopolog_atom_frac:
     name: isotopolog_atom_frac
     annotations:
@@ -18781,9 +18786,6 @@ slots:
     slot_uri: MIXS:0001348
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
-    structured_pattern:
-      syntax: ^{float} {unit}$
   nucleobase_atom_frac:
     name: nucleobase_atom_frac
     description: Excess atom fraction of the nucleobases in this fraction.
@@ -18817,9 +18819,6 @@ slots:
     slot_uri: MIXS:0001350
     range: QuantityValue
     recommended: true
-    pattern: ^[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
-    structured_pattern:
-      syntax: ^{float} {unit}$
   internal_standard:
     name: internal_standard
     description: Method used for internal standard for SIP fractionation, if an internal

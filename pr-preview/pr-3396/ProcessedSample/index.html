@@ -428,6 +428,9 @@
 
   ProcessedSample : gradient_pos_rel_am
 
+      ProcessedSample --&gt; "0..1 _recommended_" QuantityValue : gradient_pos_rel_am
+    click QuantityValue href "../QuantityValue"
+
   ProcessedSample : gradient_position
 
   ProcessedSample : id
@@ -514,7 +517,7 @@
 </tr>
 <tr>
 <td><a href="../gradient_pos_rel_am/">gradient_pos_rel_am</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>The total nucleic acids loaded onto the column in this fraction as a...</td>
 <td>direct</td>
 </tr>
@@ -843,25 +846,31 @@ attributes:
       interpolated: true
   gradient_pos_rel_am:
     name: gradient_pos_rel_am
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: '1'
     description: The total nucleic acids loaded onto the column in this fraction as
       a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this
       value should be calculated from qPCR data. If uploading untargeted sequencing
       data, this value should be calculated from total DNA concentration.
     title: relative amount of nucleic acids in the gradient position
     examples:
-    - value: '0.10'
+    - object:
+        type: nmdc:QuantityValue
+        has_raw_value: '0.1'
+        has_numeric_value: 0.1
+        has_unit: '1'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001344
     owner: ProcessedSample
     domain_of:
     - ProcessedSample
-    range: float
+    range: QuantityValue
     recommended: true
     minimum_value: 0
     maximum_value: 1
-    structured_pattern:
-      syntax: ^{float}$
   nucleobase_atom_frac:
     name: nucleobase_atom_frac
     description: Excess atom fraction of the nucleobases in this fraction.

@@ -9879,8 +9879,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Total time of incubation after isotopologue addition in hours",
-                    "pattern": "^[-+]?[0-9]*\\.?[0-9]+ ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$"
+                    "description": "Total time of incubation after isotopologue addition in hours"
                 },
                 "name": {
                     "description": "A human readable label for an entity",
@@ -10068,8 +10067,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The concentration (in ppm) of isotopolog added to environmental matrix as a total mass per volume.",
-                    "pattern": "^[-+]?[0-9]*\\.?[0-9]+ ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$"
+                    "description": "The concentration (in ppm) of isotopolog added to environmental matrix as a total mass per volume."
                 },
                 "isotopolog_label": {
                     "$ref": "#/$defs/IsotopologLabelEnum",
@@ -15535,14 +15533,17 @@
                     "pattern": "^([-+]?[0-9]*\\.?[0-9]+-[-+]?[0-9]*\\.?[0-9]+ ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)|[-+]?[0-9]*\\.?[0-9]+ ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+))$"
                 },
                 "gradient_pos_rel_am": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargeted sequencing data, this value should be calculated from total DNA concentration.",
                     "maximum": 1,
-                    "minimum": 0,
-                    "pattern": "^[-+]?[0-9]*\\.?[0-9]+$",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "minimum": 0
                 },
                 "gradient_position": {
                     "description": "A number designating the gradient position from heaviest (=1) to lightest. Unfractionated samples, from which fractionated samples were derived, should be denoted with -1.",
@@ -18574,6 +18575,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.0.post65.dev0+f6aa2bab7"
+    "version": "11.24.0.post66.dev0+b3c79a8b0"
 }
 
