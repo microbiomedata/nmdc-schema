@@ -417,6 +417,9 @@
 'del(.slots.ph_meth.structured_pattern)'
 # water_cont_soil_meth data: "volumetric soil water content; ..."
 'del(.slots.water_cont_soil_meth.structured_pattern)'
+'del(.slots.isotopolog_dose.structured_pattern)'
+'del(.slots.isotopolog_incu_time.structured_pattern)'
+'del(.slots.gradient_pos_rel_am.structured_pattern)'
 
 # Fix the structured_pattern syntax for adapters and pcr_primers.
 # Upstream MIxS interpolates {dna_bases} (= [ACGT]) once, producing patterns that
@@ -457,6 +460,7 @@
 '.slots.window_open_freq.range |= "TextValue"'
 '.slots.window_size.range |= "TextValue"'
 '.slots.isotopolog.range |= "ControlledIdentifiedTermValue"'
+'.slots.gradient_pos_rel_am.range |= "QuantityValue"'
 
 '.slots.agrochem_addition.inlined_as_list |= true'
 '.slots.air_PM_concen.inlined_as_list |= true'
@@ -788,6 +792,7 @@
 '.slots.gradient_pos_density.annotations.storage_units = {"tag": "storage_units", "value": "g/mL"}'
 '.slots.isotopolog_dose.annotations.storage_units = {"tag": "storage_units", "value": "[ppm]"}'
 '.slots.isotopolog_atom_frac.annotations.storage_units = {"tag": "storage_units", "value": "1"}'
+'.slots.gradient_pos_rel_am.annotations.storage_units = {"tag": "storage_units", "value": "1"}'
 
 # Add storage_units annotations for slots with multiple UCUM-compatible preferred units
 '.slots.abs_air_humidity.annotations.storage_units = {"tag": "storage_units", "value": "[lb_av]|g/g|kg|kg/kg"}'
@@ -1021,7 +1026,7 @@
 '.slots.humidity_regm.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
 '.slots.internal_standard.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "https://doi.org/10.1101/2022.12.20.521340"}}]'
 '.slots.isotopolog.examples = [{"object": {"type": "nmdc:ControlledIdentifiedTermValue", "has_raw_value": "toluene [CHEBI:17578]", "term": {"id": "CHEBI:17578", "name": "toluene", "type": "nmdc:OntologyClass"}}}]'
-'.slots.isotopolog.comments = ["Give the ChEBI compound as CEBI:<ID>, both in has_raw_value and in term.id. An input with no ChEBI identifier, such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case."]'
+'.slots.isotopolog.comments = ["Give the ChEBI compound as CHEBI:<ID>, both in has_raw_value and in term.id. An input with no ChEBI identifier, such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case."]' 
 '.slots.isotopolog_atom_frac.description |= sub("should be orded the same"; "should be ordered the same")'
 '.slots.isotopolog_atom_pos.description |= sub("should be orded the same"; "should be ordered the same")'
 '.slots.isotopolog_atom_frac.comments += ["In NMDC each IsotopologAddition entry describes one added input, an isotopolog or a hetero_isotopolog, and carries at most one atom fraction, so the pipe-separated ordering described for spreadsheets does not apply."]'
@@ -1186,3 +1191,4 @@
 '.slots.link_climate_info.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "https://www.int-res.com/abstracts/cr/v14/n3/p161-173/"}}, {"object": {"type": "nmdc:TextValue", "has_raw_value": "doi:10.3354/cr014161"}}]'
 '.slots.sieving.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "combined 2 cores | 4mm sieved"}}, {"object": {"type": "nmdc:TextValue", "has_raw_value": "4 mm sieved and homogenized"}}, {"object": {"type": "nmdc:TextValue", "has_raw_value": "50 g | 5 cores | 2 mm sieved"}}]'
 '.slots.misc_param.examples = [{"object": {"type": "nmdc:PropertyAssertion", "has_attribute_label": "Bicarbonate ion concentration", "has_numeric_value": 2075, "has_unit": "micromole per kilogram", "has_raw_value": "Bicarbonate ion concentration;2075 micromole per kilogram"}}]'
+'.slots.gradient_pos_rel_am.examples  = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.1", "has_numeric_value": 0.1, "has_unit": "1"}}]'

@@ -8100,7 +8100,7 @@ slots:
     description: Isotopologue (isotope source/substrate/molecule) added to the biological sample.
     title: isotopolog
     comments:
-      - Give the ChEBI compound as CEBI:<ID>, both in has_raw_value and in term.id. An input with no ChEBI identifier, such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case.
+      - Give the ChEBI compound as CHEBI:<ID>, both in has_raw_value and in term.id. An input with no ChEBI identifier, such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case.
     examples:
       - object:
           type: nmdc:ControlledIdentifiedTermValue
@@ -8169,14 +8169,18 @@ slots:
     description: The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargeted sequencing data, this value should be calculated from total DNA concentration.
     title: relative amount of nucleic acids in the gradient position
     examples:
-      - value: '0.10'
+      - object:
+          type: nmdc:QuantityValue
+          has_raw_value: "0.1"
+          has_numeric_value: 0.1
+          has_unit: "1"
     slot_uri: MIXS:0001344
-    range: float
+    range: QuantityValue
     recommended: true
-    structured_pattern:
-      syntax: ^{float}$
     minimum_value: 0
     maximum_value: 1
+    annotations:
+      storage_units: "1"
   isotopolog_atom_frac:
     description: The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be ordered the same as the isotopolog.
     title: atom fraction of isotopolog
@@ -8228,8 +8232,6 @@ slots:
     slot_uri: MIXS:0001348
     range: QuantityValue
     recommended: true
-    structured_pattern:
-      syntax: ^{float} {unit}$
   nucleobase_atom_frac:
     description: Excess atom fraction of the nucleobases in this fraction.
     title: nucleobase excess atom fraction
@@ -8255,8 +8257,6 @@ slots:
     slot_uri: MIXS:0001350
     range: QuantityValue
     recommended: true
-    structured_pattern:
-      syntax: ^{float} {unit}$
   internal_standard:
     description: Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence).
     title: internal standard method
