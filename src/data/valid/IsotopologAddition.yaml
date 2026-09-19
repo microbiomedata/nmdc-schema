@@ -1,0 +1,15 @@
+        isotopolog_label: isotopically labeled
+        isotope: 13C
+        type: nmdc:IsotopologAddition
+        isotopolog:
+          type: nmdc:ControlledIdentifiedTermValue
+          has_raw_value: toluene [CHEBI:17578
+          term:
+            id: CHEBI:17578
+            name: toluene
+            type: nmdc:OntologyClass
+        isotopolog_atom_frac:
+          type: nmdc:QuantityValue
+          has_raw_value: '0.99'
+          has_numeric_value: 0.99
+          has_unit: "1"

@@ -1,0 +1,20 @@
+# Invalid for one reason: isotopolog.term.id uses a namespace other than CHEBI.
+id: nmdc:labp-99-abcdef5
+name: labeling of my awesome biosample
+type: nmdc:IsotopeLabelingProcess
+has_input:
+  - nmdc:bsm-99-123456
+has_output:
+  - nmdc:procsm-99-987654
+isotopolog_approach: single
+isotopolog_additions:
+  - isotopolog_label: isotopically labeled
+    isotope: 13C
+    type: nmdc:IsotopologAddition
+    isotopolog:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: mixture [my_awesome_chemical_ontology:60004]
+      term:
+        id: my_awesome_chemical_ontology:60004
+        name: mixture
+        type: nmdc:OntologyClass
