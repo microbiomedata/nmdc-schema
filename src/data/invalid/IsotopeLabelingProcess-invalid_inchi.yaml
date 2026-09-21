@@ -9,28 +9,13 @@ isotopolog_approach: multiple
 isotopolog_additions:
   - isotopolog_label: isotopically labeled
     type: nmdc:IsotopologAddition
-    isotope: 13C
-    isotopolog_atom_frac:
-      type: nmdc:QuantityValue
-      has_raw_value: "0.99"
-      has_numeric_value: 0.99
-      has_unit: "1"
-    isotopolog:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: glucose [CHEBI:17234]
-      term:
-        id: CHEBI:17234
-        name: glucose
-        type: nmdc:OntologyClass
-  - isotopolog_label: isotopically labeled
-    type: nmdc:IsotopologAddition
     isotope: 18O
     isotopolog_atom_frac:
       type: nmdc:QuantityValue
       has_raw_value: "0.99"
       has_numeric_value: 0.99
       has_unit: "1"
-    isotopolog_atom_pos: inchi:InChI=1S/H2O/h1H2
+    isotopolog_atom_pos: inchi:1S/H2O/h1H2
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: heavy water [CHEBI:41981]
@@ -38,6 +23,7 @@ isotopolog_additions:
         id: CHEBI:41981
         name: oxidane
         type: nmdc:OntologyClass
+    isotopolog_atom_pos: inchi:1S/H2O/h1H2 
 isotopolog_incu_time:
   type: nmdc:QuantityValue
   has_raw_value: 168 h

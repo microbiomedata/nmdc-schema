@@ -115,6 +115,7 @@ prefixes:
   wikidata: "http://www.wikidata.org/entity/"
   xsd: "http://www.w3.org/2001/XMLSchema#"
   pubmed: "https://bioregistry.io/pubmed:"
+  inchi: "https://n2t.net/inchi:"
 
 default_prefix: nmdc
 default_range: string

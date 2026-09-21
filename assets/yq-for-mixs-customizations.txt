@@ -40,7 +40,7 @@
 '.slots.samp_collec_device.comments = ["GENEPIO'\''s subtree of OBI:0002814 includes grouping classes such as GENEPIO:0100941 (grab sampling device), GENEPIO:0100942 (composite sampling device), GENEPIO:0100943 (core sampling device), and GENEPIO:0100948 (passive sampling device).", "ENVO has no device classes; do not use ENVO terms here.", "Existing NMDC biosamples populate this slot with free text (e.g., \"corer\", \"Van Dorn\"). New submissions are encouraged to use the form: label [PREFIX:LOCALID]."]'
 
 '.slots.samp_collec_device.pattern |= "^([^\\[\\]]+|.+ \\[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\\])$"'
-
+'.slots.isotopolog_atom_pos.pattern = "^inchi:InChI\\=1S?\\/[A-Za-z0-9\\.]+(\\+[0-9]+)?(\\/[cnpqbtmsih][A-Za-z0-9\\-\\+\\(\\)\\,\\/\\?\\;\\.]+)*$"'
 # Fix broken/inaccessible ontology URLs in inherited MIxS slot descriptions
 # (sister fixes to samp_collec_device above; same broken-link family as #1480).
 #
@@ -212,6 +212,7 @@
 '.slots.water_prod_rate.range |= "QuantityValue"'
 '.slots.wind_speed.range |= "QuantityValue"'
 '.slots.xylene.range |= "QuantityValue"'
+'.slots.isotopolog_atom_pos.range |= "uriorcurie"'
 
 # Restore multivalued: false for slots that changed from microbiomedata/mixs tag pre-2024-05-15
 # to GSC MIxS v6.3.0 (release tag v6.3.0, commit fb3271909f5ab3277d4c869e816bc9e334cb816f).
@@ -420,6 +421,7 @@
 'del(.slots.isotopolog_dose.structured_pattern)'
 'del(.slots.isotopolog_incu_time.structured_pattern)'
 'del(.slots.gradient_pos_rel_am.structured_pattern)'
+'del(.slots.isotopolog_atom_pos.structured_pattern)'
 
 # Fix the structured_pattern syntax for adapters and pcr_primers.
 # Upstream MIxS interpolates {dna_bases} (= [ACGT]) once, producing patterns that
@@ -1034,7 +1036,7 @@
 '.slots.gradient_pos_rel_am.description |= sub("untargetted"; "untargeted")'
 '.slots.gradient_position.description |= sub("denoted with –1"; "denoted with -1")'
 '.slots.isotopolog_atom_frac.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "0.95","has_numeric_value": 0.95, "has_unit": "1"}}]'
-'.slots.isotopolog_atom_pos.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1"}}]'
+'.slots.isotopolog_atom_pos.examples = [{"value":"itchi:InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1"}]'
 '.slots.isotopolog_dose.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "10 [ppm]", "has_numeric_value": 10, "has_unit": "[ppm]"}}]'
 '.slots.isotopolog_incu_time.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "12 h", "has_numeric_value": 12, "has_unit": "h"}}]'
 '.slots.iw_bt_date_well.examples = [{"object": {"type": "nmdc:TimestampValue", "has_raw_value": "2013-03-25T12:42:31+01:00"}}]'
