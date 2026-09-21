@@ -752,16 +752,19 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../TextValue/">TextValue</a></p>
+<p>Range: <a href="../Uriorcurie/">Uriorcurie</a></p>
 </li>
 <li>
 <p>Recommended: True</p>
 </li>
+<li>
+<p>Regex pattern: <code>^inchi:InChI\=1S?\/[A-Za-z0-9\.]+(\+[0-9]+)?(\/[cnpqbtmsih][A-Za-z0-9\-\+\(\)\,\/\?\;\.]+)*$</code></p>
+</li>
 </ul>
 <h2 id="examples">Examples</h2>
-<pre><code class="language-yaml">type: &quot;nmdc:TextValue&quot;
-has_raw_value: &quot;1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1&quot;
-</code></pre>
+<ul>
+<li><code>itchi:InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1</code></li>
+</ul>
 <h2 id="comments">Comments</h2>
 <ul>
 <li>In NMDC each IsotopologAddition entry describes one added input, an isotopolog or a hetero_isotopolog, and carries at most one set of labeled atoms, so the pipe-separated ordering described for spreadsheets does not apply.</li>
@@ -799,18 +802,15 @@ comments:
   a hetero_isotopolog, and carries at most one set of labeled atoms, so the pipe-separated
   ordering described for spreadsheets does not apply.
 examples:
-- object:
-    type: nmdc:TextValue
-    has_raw_value: 1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
+- value: itchi:InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 slot_uri: MIXS:0001347
 domain_of:
 - IsotopologAddition
-range: TextValue
+range: uriorcurie
 recommended: true
-structured_pattern:
-  syntax: ^({termLabel} \[{termID}\]|{text})$
+pattern: ^inchi:InChI\=1S?\/[A-Za-z0-9\.]+(\+[0-9]+)?(\/[cnpqbtmsih][A-Za-z0-9\-\+\(\)\,\/\?\;\.]+)*$
 
 </code></pre>
 
