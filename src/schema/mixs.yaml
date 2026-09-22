@@ -8112,9 +8112,14 @@ slots:
     slot_uri: MIXS:0001339
     range: ControlledIdentifiedTermValue
     multivalued: false
-    structured_pattern:
-      syntax: ^{termLabel} \[{termID}\]$
-      interpolated: true
+    range_expression:
+      slot_conditions:
+        term:
+          range_expression:
+            slot_conditions:
+              id:
+                pattern: ^CHEBI:\d+$
+    recommended: true
   isotopolog_label:
     description: List whether the isotopologue added to this biological sample was heavy-labelled or natural abundance
     title: isotopolog label status
@@ -8132,6 +8137,7 @@ slots:
       - value: multiple
     slot_uri: MIXS:0001341
     range: IsotopologApproachEnum
+    recommended: true
   gradient_position:
     description: A number designating the gradient position from heaviest (=1) to lightest. Unfractionated samples, from which fractionated samples were derived, should be denoted with -1.
     title: gradient position
@@ -8161,9 +8167,6 @@ slots:
           has_unit: g/mL
     slot_uri: MIXS:0001343
     recommended: true
-    structured_pattern:
-      syntax: ^({float}-{float} {unit}|{float} {unit})$
-      interpolated: true
     range: QuantityValue
   gradient_pos_rel_am:
     description: The total nucleic acids loaded onto the column in this fraction as a decimal. If uploading 16S rRNA gene (or other amplicon) sequencing data, this value should be calculated from qPCR data. If uploading untargeted sequencing data, this value should be calculated from total DNA concentration.
@@ -8182,7 +8185,7 @@ slots:
     annotations:
       storage_units: "1"
   isotopolog_atom_frac:
-    description: The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be ordered the same as the isotopolog.
+    description: The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. | and should be orded the same as the isotopolog.
     title: atom fraction of isotopolog
     todos:
       - This ordered slot provides how to write an example in a spreadsheet, but this will not provide a multivalued ordered slot in a database. As such, this slot also couldn't be marked as multivalued in the yaml.
@@ -8202,7 +8205,7 @@ slots:
     comments:
       - In NMDC each IsotopologAddition entry describes one added input, an isotopolog or a hetero_isotopolog, and carries at most one atom fraction, so the pipe-separated ordering described for spreadsheets does not apply.
   isotopolog_atom_pos:
-    description: InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be ordered the same as the isotopolog.
+    description: InChI label designating set of all isotopically enriched atoms in isotopologue. | and should be orded the same as the isotopolog.
     title: set of labeled atoms in isotopologue
     examples:
       - value: itchi:InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1

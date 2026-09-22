@@ -41,6 +41,7 @@
 
 '.slots.samp_collec_device.pattern |= "^([^\\[\\]]+|.+ \\[[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+\\])$"'
 '.slots.isotopolog_atom_pos.pattern = "^inchi:InChI\\=1S?\\/[A-Za-z0-9\\.]+(\\+[0-9]+)?(\\/[cnpqbtmsih][A-Za-z0-9\\-\\+\\(\\)\\,\\/\\?\\;\\.]+)*$"'
+'.slots.isotopolog.range_expression.slot_conditions.term.range_expression.slot_conditions.id.pattern = "^CHEBI:\\d+$"'
 # Fix broken/inaccessible ontology URLs in inherited MIxS slot descriptions
 # (sister fixes to samp_collec_device above; same broken-link family as #1480).
 #
@@ -263,6 +264,9 @@
 'del(.slots.isotopolog.required)'
 'del(.slots.isotopolog_approach.required)'
 'del(.slots.internal_standard.structured_pattern)'
+'del(.slots.isotopolog.structured_pattern)'
+'del(.slots.gradient_pos_density.structured_pattern)'
+'del(.slots.gradient_pos_density.todos)'
 
 # Set TextValue range for slots that need structured text wrapping
 '.slots.agrochem_addition.range |= "TextValue"'
@@ -516,6 +520,8 @@
 '.slots.water_temp_regm.inlined_as_list |= true'
 '.slots.watering_regm.inlined_as_list |= true'
 
+'.slots.isotopolog.recommended |= true'
+'.slots.isotopolog_approach.recommended |= true'
 
 'del(.subsets)'
 'del(.classes)'
@@ -1030,8 +1036,8 @@
 '.slots.humidity_regm.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
 '.slots.isotopolog.examples = [{"object": {"type": "nmdc:ControlledIdentifiedTermValue", "has_raw_value": "toluene [CHEBI:17578]", "term": {"id": "CHEBI:17578", "name": "toluene", "type": "nmdc:OntologyClass"}}}]'
 '.slots.isotopolog.comments = ["Give the ChEBI compound as CHEBI:<ID>, both in has_raw_value and in term.id. An input with no ChEBI identifier, such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case."]' 
-'.slots.isotopolog_atom_frac.description |= sub("should be orded the same"; "should be ordered the same")'
-'.slots.isotopolog_atom_pos.description |= sub("should be orded the same"; "should be ordered the same")'
+'.slots.isotopolog_atom_frac.description |= sub("Multiple values allowed, separated by a | and should be ordered the same as the isotopolog."; "")'
+'.slots.isotopolog_atom_pos.description |= sub("Multiple values allowed, separated by a | and should be ordered the same as the isotopolog."; "")'
 '.slots.isotopolog_atom_frac.comments += ["In NMDC each IsotopologAddition entry describes one added input, an isotopolog or a hetero_isotopolog, and carries at most one atom fraction, so the pipe-separated ordering described for spreadsheets does not apply."]'
 '.slots.isotopolog_atom_pos.comments += ["In NMDC each IsotopologAddition entry describes one added input, an isotopolog or a hetero_isotopolog, and carries at most one set of labeled atoms, so the pipe-separated ordering described for spreadsheets does not apply."]'
 '.slots.gradient_pos_rel_am.description |= sub("untargetted"; "untargeted")'
