@@ -213,6 +213,7 @@
 '.slots.wind_speed.range |= "QuantityValue"'
 '.slots.xylene.range |= "QuantityValue"'
 '.slots.isotopolog_atom_pos.range |= "uriorcurie"'
+'.slots.internal_standard.range |= "Protocol"'
 
 # Restore multivalued: false for slots that changed from microbiomedata/mixs tag pre-2024-05-15
 # to GSC MIxS v6.3.0 (release tag v6.3.0, commit fb3271909f5ab3277d4c869e816bc9e334cb816f).
@@ -261,6 +262,7 @@
 'del(.slots.gradient_position.required)'
 'del(.slots.isotopolog.required)'
 'del(.slots.isotopolog_approach.required)'
+'del(.slots.internal_standard.structured_pattern)'
 
 # Set TextValue range for slots that need structured text wrapping
 '.slots.agrochem_addition.range |= "TextValue"'
@@ -1026,7 +1028,6 @@
 '.slots.host_tot_mass.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "2500 g", "has_numeric_value": 2500, "has_unit": "g"}}]'
 '.slots.host_wet_mass.examples = [{"object": {"type": "nmdc:QuantityValue", "has_raw_value": "1500 g", "has_numeric_value": 1500, "has_unit": "g"}}]'
 '.slots.humidity_regm.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
-'.slots.internal_standard.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "https://doi.org/10.1101/2022.12.20.521340"}}]'
 '.slots.isotopolog.examples = [{"object": {"type": "nmdc:ControlledIdentifiedTermValue", "has_raw_value": "toluene [CHEBI:17578]", "term": {"id": "CHEBI:17578", "name": "toluene", "type": "nmdc:OntologyClass"}}}]'
 '.slots.isotopolog.comments = ["Give the ChEBI compound as CHEBI:<ID>, both in has_raw_value and in term.id. An input with no ChEBI identifier, such as root exudates or cells, goes in hetero_isotopolog instead; NMDC does not use a sentinel identifier for that case."]' 
 '.slots.isotopolog_atom_frac.description |= sub("should be orded the same"; "should be ordered the same")'
@@ -1134,6 +1135,7 @@
 '.slots.watering_regm.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"}}]'
 '.slots.ref_biomaterial.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "doi:10.1016/j.syapm.2018.01.009"}}]'
 '.slots.isol_growth_condt.examples = [{"object": {"type": "nmdc:TextValue", "has_raw_value": "doi:10.1016/j.syapm.2018.01.009"}}]'
+'.slots.internal_standard.examples = [{"object": {"type": "nmdc:Protocol", "url": "https://doi.org/10.1101/2022.12.20.521340"}}]'
 
 # Deferred unit/example cases (judgment-heavy).
 # - 18 slots: production-grounded value+unit (upstream example unit contradicted real data).
