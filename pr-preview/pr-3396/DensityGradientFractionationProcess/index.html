@@ -437,8 +437,8 @@
 
   DensityGradientFractionationProcess : internal_standard
 
-      DensityGradientFractionationProcess --&gt; "0..1 _recommended_" TextValue : internal_standard
-    click TextValue href "../TextValue"
+      DensityGradientFractionationProcess --&gt; "0..1 _recommended_" Protocol : internal_standard
+    click Protocol href "../Protocol"
 
   DensityGradientFractionationProcess : name
 
@@ -492,7 +492,7 @@
 <tbody>
 <tr>
 <td><a href="../internal_standard/">internal_standard</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Protocol/">Protocol</a></td>
 <td>Method used for internal standard for SIP fractionation, if an internal...</td>
 <td>direct</td>
 </tr>
@@ -683,18 +683,16 @@ attributes:
     title: internal standard method
     examples:
     - object:
-        type: nmdc:TextValue
-        has_raw_value: https://doi.org/10.1101/2022.12.20.521340
+        type: nmdc:Protocol
+        url: https://doi.org/10.1101/2022.12.20.521340
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     slot_uri: MIXS:0001351
     owner: DensityGradientFractionationProcess
     domain_of:
     - DensityGradientFractionationProcess
-    range: TextValue
+    range: Protocol
     recommended: true
-    structured_pattern:
-      syntax: ^({PMID}|{DOI}|{URL})$
   instrument_used:
     name: instrument_used
     description: What instrument was used during DataGeneration or MaterialProcessing.

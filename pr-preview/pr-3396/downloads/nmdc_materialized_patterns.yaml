@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.0.post67.dev0+e72847cd4
+version: 11.24.0.post68.dev0+769402164
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -18825,15 +18825,12 @@ slots:
     title: internal standard method
     examples:
     - object:
-        type: nmdc:TextValue
-        has_raw_value: https://doi.org/10.1101/2022.12.20.521340
+        type: nmdc:Protocol
+        url: https://doi.org/10.1101/2022.12.20.521340
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001351
-    range: TextValue
+    range: Protocol
     recommended: true
-    pattern: ^(PMID:\d+|doi:10\.\d{2,9}/.*|https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*))$
-    structured_pattern:
-      syntax: ^({PMID}|{DOI}|{URL})$
   samp_collec_device:
     name: samp_collec_device
     description: 'The device used to collect an environmental sample. Recommended

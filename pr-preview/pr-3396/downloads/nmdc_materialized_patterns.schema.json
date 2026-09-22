@@ -7591,14 +7591,13 @@
                 "internal_standard": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/TextValue"
+                            "$ref": "#/$defs/Protocol"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence).",
-                    "pattern": "^(PMID:\\d+|doi:10\\.\\d{2,9}/.*|https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*))$"
+                    "description": "Method used for internal standard for SIP fractionation, if an internal standard was used (i.e., spiking in a heavy-labelled DNA sequence)."
                 },
                 "name": {
                     "description": "A human readable label for an entity",
@@ -18571,6 +18570,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.0.post67.dev0+e72847cd4"
+    "version": "11.24.0.post68.dev0+769402164"
 }
 
