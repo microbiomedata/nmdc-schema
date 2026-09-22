@@ -1,0 +1,18 @@
+# Standalone variant illustrating the optional internal-standard method reference, reusing the schema example.
+id: nmdc:fracp-99-labeled
+type: nmdc:DensityGradientFractionationProcess
+name: 'labeled: density gradient'
+has_input:
+- nmdc:procsm-99-labeleddna
+has_output:
+- nmdc:procsm-99-labeledfrac1
+- nmdc:procsm-99-labeledfrac2
+- nmdc:procsm-99-labeledfrac3
+protocol_link:
+  type: nmdc:Protocol
+  name: DNA-SIP gradient centrifugation and fractionation
+  url: https://doi.org/10.3791/2027
+  protocol_for: DensityGradientFractionationProcess
+internal_standard:
+  type: nmdc:TextValue
+  has_raw_value: https://doi.org/10.1101/2022.12.20.521340

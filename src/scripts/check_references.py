@@ -4,25 +4,20 @@ import os
 import sys
 import yaml
 from collections import defaultdict
-from dataclasses import dataclass, field
-from typing import Optional
+from dataclasses import dataclass
 
 from linkml_runtime import SchemaView
 from linkml_runtime.loaders import yaml_loader
 from nmdc_schema.nmdc import Database
+from refscan.lib.Reference import Reference
+from refscan.lib.helpers import (
+    get_collection_names_from_schema,
+    get_collection_name_to_class_names_map,
+    identify_references,
+    translate_class_uri_into_schema_class_name,
+)
 
 DATABASE_CLASS_NAME = "Database"
-
-
-@dataclass(frozen=True, order=True)
-class Reference:
-    """A schema-derived reference from a source field to a target collection."""
-
-    source_collection_name: str = field()
-    source_class_name: str = field()
-    source_field_name: str = field()
-    target_collection_name: str = field()
-    target_class_name: str = field()
 
 
 @dataclass
@@ -35,97 +30,6 @@ class Violation:
     source_field_name: str
     target_id: str
     allowed_target_collections: list[str]
-
-
-def get_collection_names_from_schema(schema_view: SchemaView) -> list[str]:
-    """Returns names of Database slots that represent collections (multivalued + inlined_as_list)."""
-    collection_names = []
-    for slot_name in schema_view.class_slots(DATABASE_CLASS_NAME):
-        slot_definition = schema_view.induced_slot(slot_name, DATABASE_CLASS_NAME)
-        if slot_definition.multivalued and slot_definition.inlined_as_list:
-            collection_names.append(slot_name)
-    return sorted(set(collection_names))
-
-
-def get_names_of_classes_in_effective_range_of_slot(
-    schema_view: SchemaView, slot_definition
-) -> list[str]:
-    """
-    Determine the slot's effective range, taking into account any_of constraints.
-
-    Replicates refscan/lib/helpers.py logic for resolving effective range.
-    """
-    names = []
-    if "any_of" in slot_definition and len(slot_definition.any_of) > 0:
-        for slot_expression in slot_definition.any_of:
-            if slot_expression.range in schema_view.all_classes():
-                names.extend(schema_view.class_descendants(slot_expression.range))
-    else:
-        if slot_definition.range in schema_view.all_classes():
-            names.extend(schema_view.class_descendants(slot_definition.range))
-    return list(set(names))
-
-
-def get_collection_name_to_class_names_map(
-    schema_view: SchemaView,
-) -> dict[str, list[str]]:
-    """Map each collection name to the class names whose instances can be stored in it."""
-    mapping = {}
-    for collection_name in get_collection_names_from_schema(schema_view):
-        slot_definition = schema_view.induced_slot(collection_name, DATABASE_CLASS_NAME)
-        class_names = get_names_of_classes_in_effective_range_of_slot(
-            schema_view, slot_definition
-        )
-        mapping[collection_name] = class_names
-    return mapping
-
-
-def identify_references(
-    schema_view: SchemaView,
-    collection_name_to_class_names: dict[str, list[str]],
-) -> list[Reference]:
-    """
-    Identify all inter-document references allowed by the schema.
-
-    Replicates refscan/lib/helpers.py identify_references() logic.
-    """
-    references = []
-    for collection_name, class_names in sorted(collection_name_to_class_names.items()):
-        for class_name in class_names:
-            for slot_name in schema_view.class_slots(class_name):
-                slot_definition = schema_view.induced_slot(
-                    slot_name=slot_name, class_name=class_name
-                )
-                eligible_target_classes = (
-                    get_names_of_classes_in_effective_range_of_slot(
-                        schema_view, slot_definition
-                    )
-                )
-                for target_class in eligible_target_classes:
-                    for (
-                        target_collection,
-                        classes_in_collection,
-                    ) in collection_name_to_class_names.items():
-                        if target_class in classes_in_collection:
-                            ref = Reference(
-                                source_collection_name=collection_name,
-                                source_class_name=class_name,
-                                source_field_name=slot_name,
-                                target_collection_name=target_collection,
-                                target_class_name=target_class,
-                            )
-                            references.append(ref)
-    return references
-
-
-def translate_class_uri_into_schema_class_name(
-    schema_view: SchemaView, class_uri: str
-) -> Optional[str]:
-    """Convert a class_uri (e.g., 'nmdc:Biosample') to a schema class name (e.g., 'Biosample')."""
-    for class_name, class_definition in schema_view.all_classes().items():
-        if class_definition.class_uri == class_uri:
-            return class_definition.name
-    return None
 
 
 def build_reference_lookup(
