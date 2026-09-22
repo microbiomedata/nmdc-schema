@@ -9789,12 +9789,12 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be ordered the same as the isotopolog.",
+                    "description": "The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. | and should be orded the same as the isotopolog.",
                     "maximum": 1,
                     "minimum": 0
                 },
                 "isotopolog_atom_pos": {
-                    "description": "InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be ordered the same as the isotopolog.",
+                    "description": "InChI label designating set of all isotopically enriched atoms in isotopologue. | and should be orded the same as the isotopolog.",
                     "pattern": "^inchi:InChI\\=1S?\\/[A-Za-z0-9\\.]+(\\+[0-9]+)?(\\/[cnpqbtmsih][A-Za-z0-9\\-\\+\\(\\)\\,\\/\\?\\;\\.]+)*$",
                     "type": [
                         "string",
@@ -18235,5 +18235,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.0.post68.dev0+769402164"
+    "version": "11.24.0.post69.dev0+265f8ebf4"
 }

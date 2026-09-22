@@ -403,7 +403,7 @@
 
   IsotopologAddition : isotopolog
 
-      IsotopologAddition --&gt; "0..1" ControlledIdentifiedTermValue : isotopolog
+      IsotopologAddition --&gt; "0..1 _recommended_" ControlledIdentifiedTermValue : isotopolog
     click ControlledIdentifiedTermValue href "../ControlledIdentifiedTermValue"
 
   IsotopologAddition : isotopolog_atom_frac
@@ -448,7 +448,7 @@
 </tr>
 <tr>
 <td><a href="../isotopolog/">isotopolog</a></td>
-<td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
 <td>Isotopologue (isotope source/substrate/molecule) added to the biological sample.</td>
 <td>direct</td>
 </tr>
@@ -662,10 +662,8 @@ attributes:
               id:
                 name: id
                 pattern: ^CHEBI:\d*$
+    recommended: true
     multivalued: false
-    structured_pattern:
-      syntax: ^{termLabel} \[{termID}\]$
-      interpolated: true
   hetero_isotopolog:
     name: hetero_isotopolog
     description: 'An input to the labeling that has no ChEBI identifier, described
@@ -713,8 +711,7 @@ attributes:
         tag: storage_units
         value: '1'
     description: The fraction of heavy-labelled atoms out of all atoms of a given
-      element in the isotopolog. Multiple values allowed, separated by a | and should
-      be ordered the same as the isotopolog.
+      element in the isotopolog. | and should be orded the same as the isotopolog.
     title: atom fraction of isotopolog
     todos:
     - This ordered slot provides how to write an example in a spreadsheet, but this
@@ -743,8 +740,7 @@ attributes:
   isotopolog_atom_pos:
     name: isotopolog_atom_pos
     description: InChI label designating set of all isotopically enriched atoms in
-      isotopologue. Multiple values allowed, separated by a | and should be ordered
-      the same as the isotopolog.
+      isotopologue. | and should be orded the same as the isotopolog.
     title: set of labeled atoms in isotopologue
     comments:
     - In NMDC each IsotopologAddition entry describes one added input, an isotopolog

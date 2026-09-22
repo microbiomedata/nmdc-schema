@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.0.post68.dev0+769402164
+version: 11.24.0.post69.dev0+265f8ebf4
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -18616,11 +18616,17 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001339
     range: ControlledIdentifiedTermValue
+    range_expression:
+      slot_conditions:
+        term:
+          name: term
+          range_expression:
+            slot_conditions:
+              id:
+                name: id
+                pattern: ^CHEBI:\d+$
+    recommended: true
     multivalued: false
-    pattern: ^([^\s-]{1,2}|[^\s-]+.+[^\s-]+) \[[a-zA-Z]{2,}:[a-zA-Z0-9]\d+\]$
-    structured_pattern:
-      syntax: ^{termLabel} \[{termID}\]$
-      interpolated: true
   isotopolog_label:
     name: isotopolog_label
     description: List whether the isotopologue added to this biological sample was
@@ -18645,6 +18651,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     slot_uri: MIXS:0001341
     range: IsotopologApproachEnum
+    recommended: true
   gradient_position:
     name: gradient_position
     description: A number designating the gradient position from heaviest (=1) to
@@ -18685,11 +18692,6 @@ slots:
     slot_uri: MIXS:0001343
     range: QuantityValue
     recommended: true
-    pattern: ^([-+]?[0-9]*\.?[0-9]+-[-+]?[0-9]*\.?[0-9]+ ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)|[-+]?[0-9]*\.?[0-9]+
-      ([^\s-]{1,2}|[^\s-]+.+[^\s-]+))$
-    structured_pattern:
-      syntax: ^({float}-{float} {unit}|{float} {unit})$
-      interpolated: true
   gradient_pos_rel_am:
     name: gradient_pos_rel_am
     annotations:
@@ -18720,8 +18722,7 @@ slots:
         tag: storage_units
         value: '1'
     description: The fraction of heavy-labelled atoms out of all atoms of a given
-      element in the isotopolog. Multiple values allowed, separated by a | and should
-      be ordered the same as the isotopolog.
+      element in the isotopolog. | and should be orded the same as the isotopolog.
     title: atom fraction of isotopolog
     todos:
     - This ordered slot provides how to write an example in a spreadsheet, but this
@@ -18746,8 +18747,7 @@ slots:
   isotopolog_atom_pos:
     name: isotopolog_atom_pos
     description: InChI label designating set of all isotopically enriched atoms in
-      isotopologue. Multiple values allowed, separated by a | and should be ordered
-      the same as the isotopolog.
+      isotopologue. | and should be orded the same as the isotopolog.
     title: set of labeled atoms in isotopologue
     comments:
     - In NMDC each IsotopologAddition entry describes one added input, an isotopolog

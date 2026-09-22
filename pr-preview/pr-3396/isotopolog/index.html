@@ -751,7 +751,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></li>
+<li>
+<p>Range: <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></p>
+</li>
+<li>
+<p>Recommended: True</p>
+</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <pre><code class="language-yaml">type: &quot;nmdc:ControlledIdentifiedTermValue&quot;
@@ -810,10 +815,17 @@ slot_uri: MIXS:0001339
 domain_of:
 - IsotopologAddition
 range: ControlledIdentifiedTermValue
+range_expression:
+  slot_conditions:
+    term:
+      name: term
+      range_expression:
+        slot_conditions:
+          id:
+            name: id
+            pattern: ^CHEBI:\d+$
+recommended: true
 multivalued: false
-structured_pattern:
-  syntax: ^{termLabel} \[{termID}\]$
-  interpolated: true
 
 </code></pre>
 
