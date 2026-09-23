@@ -248,6 +248,12 @@ class TestBadgeSubsetSync(unittest.TestCase):
         source_range = self.schema_view.induced_slot(
             "source_system_of_record", "ProvenanceMetadata"
         ).range
+        self.assertTrue(
+            source_range in self.schema_view.all_enums(),
+            f"source_system_of_record now has range {source_range!r}, not an "
+            f"enum; {BADGE_JOB} compares it against {EXPERT_CURATION_SOURCE} "
+            f"to award expert_curation, so change both together",
+        )
         permissible_values = self.schema_view.get_enum(
             source_range, strict=True
         ).permissible_values
