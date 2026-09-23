@@ -763,7 +763,7 @@
                     "pattern": "^[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *.*$"
                 },
                 "badges": {
-                    "description": "Metadata-quality badges awarded to this record. Each value names one badge, which is present or absent; there are no levels or tiers. Most badges name a completeness subset, but not all do: expert_curation is awarded from provenance instead. Awarded by a downstream service, not asserted by submitters, and recalculated whenever the record's ProvenanceMetadata.mod_date changes.",
+                    "description": "Metadata-quality badges awarded to this record. Each value names one badge, which is present or absent; there are no levels or tiers. Most badges name a completeness subset, but not all do: expert_curation is awarded from provenance instead. Awarded by a downstream service, not asserted by submitters. Awarding is additive: a badge, once awarded, is not removed from the record.",
                     "items": {
                         "$ref": "#/$defs/MetadataBadgeEnum"
                     },
@@ -18048,6 +18048,6 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.0.post6.dev0+c2ee3fc2d"
+    "version": "11.24.0.post8.dev0+2a41fc6b3"
 }
 
