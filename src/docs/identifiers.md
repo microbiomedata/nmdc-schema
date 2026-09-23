@@ -260,7 +260,7 @@ the data objects use hashes (md5) prefixed with `nmdc`:
 
 ## MIxS term identifiers
 
-MIxS is now in LinkML. If a slot comes from MIxS that is denoted in NMDC's documentation as a mapping. See for example [air temp](https://microbiomedata.github.io/nmdc-schema/air_temp/). 
+The NMDC schema includes many MIxS terms, sometimes with more structured ranges than the multi-part string ranges GSC asserts. NMDC retains the `name`s and `slot_uri` identifiers from GSC. For example: [air temp](https://microbiomedata.github.io/nmdc-schema/air_temp/). 
 
 ## Identifiers and semantic web URIs
 
