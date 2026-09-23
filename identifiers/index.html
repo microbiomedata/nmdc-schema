@@ -1241,13 +1241,13 @@ primary identifier. </p>
 <tr>
 <td style="text-align: left;">gold:Gp*</td>
 <td style="text-align: left;">gold:Gp0452734</td>
-<td style="text-align: left;">OmicsProcessing</td>
+<td style="text-align: left;">NucleotideSequencing</td>
 <td style="text-align: left;">gold_sequencing_project_identifiers</td>
 </tr>
 <tr>
 <td style="text-align: left;">emsl:*</td>
 <td style="text-align: left;">emsl:598506</td>
-<td style="text-align: left;">OmicsProcessing</td>
+<td style="text-align: left;">MassSpectrometry</td>
 <td style="text-align: left;">alternative_identifiers</td>
 </tr>
 </tbody>
@@ -1309,8 +1309,7 @@ please contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#117;&#11
       id: &quot;nmdc:e0c70280a7a23c7c5cc1e589f72e896e&quot;
 </code></pre>
 <h2 id="mixs-term-identifiers">MIxS term identifiers</h2>
-<p>We are working with the GSC to provide permanent IDs for MIxS terms. Note these terms are schema-level rather than
-data-level. For now we place these in the NMDC namespaces, e.g <code>nmdc:alt</code></p>
+<p>The NMDC schema includes many MIxS terms, sometimes with more structured ranges than the multi-part string ranges GSC asserts. NMDC retains the <code>name</code>s and <code>slot_uri</code> identifiers from GSC. For example: <a href="https://microbiomedata.github.io/nmdc-schema/air_temp/">air temp</a>. </p>
 <h2 id="identifiers-and-semantic-web-uris">Identifiers and semantic web URIs</h2>
 <p>Using LinkML's default tooling, we produce a JSON-LD context with the schema:</p>
 <ul>
