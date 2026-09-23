@@ -115,6 +115,7 @@ prefixes:
   wikidata: "http://www.wikidata.org/entity/"
   xsd: "http://www.w3.org/2001/XMLSchema#"
   pubmed: "https://bioregistry.io/pubmed:"
+  inchi: "https://n2t.net/inchi:"
 
 default_prefix: nmdc
 default_range: string
@@ -658,6 +659,99 @@ classes:
       pcr_cond:
         description: Description of reaction conditions and components of polymerase chain reaction performed during library preparation
 
+  IsotopeLabelingProcess:
+    class_uri: nmdc:IsotopeLabelingProcess
+    is_a: MaterialProcessing
+    description: >-
+      A material processing in which substances or materials, isotopically labeled or at natural abundance, are added to a sample so that uptake of the isotope by the resident organisms can be traced.
+    slots:
+      - isotopolog_additions
+      - isotopolog_approach
+      - isotopolog_incu_time
+      - substances_used
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:labp-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_input:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        required: true
+
+  IsotopologAddition:
+    class_uri: nmdc:IsotopologAddition
+    description: >-
+      One isotopolog, or one heterogeneous material with no compound identifier, added during an isotope labeling process, with the isotope it carries, whether it was isotopically labeled or at natural abundance, the atom fraction and position of the label, and the dose.
+    slots:
+      - isotope
+      - isotopolog
+      - hetero_isotopolog
+      - isotopolog_label
+      - isotopolog_atom_frac
+      - isotopolog_atom_pos
+      - isotopolog_dose
+      - type
+
+    slot_usage:
+      isotopolog:
+        range_expression:
+          slot_conditions:
+            term:
+              range_expression:
+                slot_conditions:
+                  id:
+                    pattern: '^CHEBI:\d*$'
+    rules:
+      - title: hetero_isotopolog_required_when_isotopolog_absent
+        description: >-
+          If isotopolog is absent, then hetero_isotopolog is required, so that every entry names the input in one of the two ways.
+        preconditions:
+          slot_conditions:
+            isotopolog:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            hetero_isotopolog:
+              required: true
+      - title: hetero_isotopolog_absent_when_isotopolog_present
+        description: >-
+          If isotopolog is present, then hetero_isotopolog must be absent, so that no entry names the input in both ways.
+        preconditions:
+          slot_conditions:
+            isotopolog:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            hetero_isotopolog:
+              value_presence: ABSENT
+
+  DensityGradientFractionationProcess:
+    class_uri: nmdc:DensityGradientFractionationProcess
+    is_a: MaterialProcessing
+    description: >-
+      A material processing that separates a sample, typically extracted nucleic acids, into fractions by buoyant density, usually by isopycnic centrifugation. The output fractions can record their gradient position, buoyant density and relative nucleic acid amount.
+    aliases:
+      - Isopycnic Centrifugation
+      - Density Gradient Centrifugation
+    slots:
+      - internal_standard
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:fracp-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_input:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|osm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        required: true
+
   CollectingBiosamplesFromSite:
     class_uri: nmdc:CollectingBiosamplesFromSite
     is_a: PlannedProcess
@@ -1112,6 +1206,7 @@ enums:
       texture_measurement:
       dna_extraction:
       phenol_chloroform_extraction: { }
+      stable_isotope_probing: { }
 
   ChromatographicCategoryEnum:
     permissible_values:
@@ -1154,6 +1249,29 @@ enums:
         is_a: organic_layer
 
 slots:
+# SIP (stable isotope probing) slots defined by NMDC. The MIxS MISIP slots they group are imported in mixs.yaml.
+  isotopolog_additions:
+    description: >-
+      The isotopologs, or heterogeneous materials, added during this isotope labeling process, one entry per isotopolog and isotope.
+    range: IsotopologAddition
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+
+  hetero_isotopolog:
+    title: heterogeneous isotopolog
+    description: >-
+      An input to the labeling that has no ChEBI identifier, described in free text: an undefined mixture such as root exudates or plant litter, or cells or biomass such as T4 phages. A defined compound with a ChEBI identifier goes in isotopolog instead.
+    comments:
+      - Exactly one of isotopolog and hetero_isotopolog is given on each IsotopologAddition entry; the rules on that class enforce it.
+      - hetero_isotopolog is a column of the MISIP supplementary tables (Simpson et al. 2024, https://doi.org/10.1093/gigascience/giae071) and is not yet a MIxS slot.
+    see_also:
+      - https://github.com/GenomicsStandardsConsortium/mixs/issues/1409
+    examples:
+      - value: root exudates
+      - value: T4 phages
+    range: string
+
   email:
     description: >-
       An email address for an entity such as a person.

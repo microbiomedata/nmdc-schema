@@ -1,0 +1,16 @@
+# Valid. An undefined mixture has no PubChem compound identifier, so it is named in
+# hetero_isotopolog and isotopolog is omitted. This is the case MIxS documents as "enter 0";
+# NMDC does not use a sentinel identifier for it.
+id: nmdc:labp-99-abcdef3
+name: labeling of my awesome biosample
+type: nmdc:IsotopeLabelingProcess
+has_input:
+  - nmdc:bsm-99-123456
+has_output:
+  - nmdc:procsm-99-987654
+isotopolog_approach: single
+isotopolog_additions:
+  - isotopolog_label: isotopically labeled
+    isotope: 13C
+    type: nmdc:IsotopologAddition
+    hetero_isotopolog: root exudates
