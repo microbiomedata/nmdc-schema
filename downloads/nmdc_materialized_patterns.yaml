@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.0.post4.dev0+dc1fa048d
+version: 11.24.0.post6.dev0+c2ee3fc2d
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -3039,6 +3039,10 @@ enums:
         text: Azenta
         meaning: https://www.azenta.com/
         title: Azenta Life Sciences
+      SeqCenter:
+        text: SeqCenter
+        meaning: https://www.seqcenter.com/
+        title: SeqCenter
   DataCategoryEnum:
     name: DataCategoryEnum
     from_schema: https://w3id.org/nmdc/nmdc

@@ -14780,7 +14780,8 @@
                 "Battelle",
                 "ANL",
                 "UCD_Genome_Center",
-                "Azenta"
+                "Azenta",
+                "SeqCenter"
             ],
             "title": "ProcessingInstitutionEnum",
             "type": "string"
@@ -17720,5 +17721,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.0.post4.dev0+dc1fa048d"
+    "version": "11.24.0.post6.dev0+c2ee3fc2d"
 }
