@@ -102,8 +102,8 @@ slots:
       badge, which is present or absent; there are no levels or tiers. Most
       badges name a completeness subset, but not all do: expert_curation is
       awarded from provenance instead. Awarded by a downstream service, not
-      asserted by submitters, and recalculated whenever the record's
-      ProvenanceMetadata.mod_date changes.
+      asserted by submitters. Awarding is additive: a badge, once awarded, is
+      not removed from the record.
     range: MetadataBadgeEnum
     multivalued: true
     see_also:
