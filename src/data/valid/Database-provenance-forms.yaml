@@ -1,0 +1,123 @@
+# Demonstrates every in-schema mechanism that NMDC uses to indicate
+# changes to records during the time they are in NMDC custody. All other
+# slots are filled minimally.
+#
+# In-schema forms illustrated here:
+#   1. ProvenanceMetadata embedded on a Biosample (add_date, mod_date,
+#      version, source_system_of_record, submission_portal_identifier)
+#   2. has_raw_value on an AttributeValue (the raw-vs-coerced pattern)
+#   3. PROV-aligned timestamps on a WorkflowExecution (started_at_time,
+#      ended_at_time, mapped to prov:startedAtTime / prov:endedAtTime)
+#   4. was_informed_by linking a WorkflowExecution to its DataGeneration
+#   5. was_generated_by on a DataObject (lineage to producing process)
+#   6. superseded_by on a DataObject (one version replaces another)
+#
+# DRS-stored changesheets, the runtime's other major change-record artifact,
+# are NOT shown here because they are not instances of any nmdc-schema class.
+# Executed changesheets are stored in MongoDB's `objects` collection (the
+# DRS-spec table managed by nmdc-runtime), separate from `data_object_set`.
+# See src/docs/provenance-mechanisms.md for details.
+#
+# Other operational mechanisms (Mongo sibling namespaces, runtime collections,
+# ETL artifacts) are also documented in src/docs/provenance-mechanisms.md and
+# are not expressible as instance data here.
+#
+# SlotLevelProvenance records (the class proposed in this PR) are shown
+# separately in src/data/valid/SlotLevelProvenance-valid-*.yaml. They
+# are not wired into Database.provenance_set in this PR, so they cannot
+# appear in a Database-targeted example.
+
+biosample_set:
+  - id: nmdc:bsm-99-provdemo1
+    name: provenance_forms_demo_biosample
+    type: nmdc:Biosample
+    associated_studies:
+      - nmdc:sty-99-provdemo
+    # Form 2: has_raw_value preserves the submitter's input alongside the
+    # parsed, structured term. Each of the three env triad slots below
+    # shows a different shape of difference between raw and coerced:
+    #   env_broad_scale  — raw is label only; coerced adds the CURIE
+    #   env_local_scale  — raw has different casing than the canonical label
+    #   env_medium       — raw is the portal's labeled-CURIE form; coerced is fully parsed
+    # Triad values are the canonical soil triad from submission-schema
+    # (SampleData-soil-data-minimal.yaml), validated against
+    # EnvBroadScaleSoilEnum / EnvLocalScaleSoilEnum / EnvMediumSoilEnum.
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: urban biome
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:01000249
+        name: urban biome
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: Tunnel
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000068
+        name: tunnel
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: bare soil [ENVO:01001616]
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:01001616
+        name: bare soil
+    # Form 1: ProvenanceMetadata block records when the record entered NMDC,
+    # when it was most recently modified, the schema version in effect, and
+    # the upstream system of record plus the originating submission portal entry.
+    provenance_metadata:
+      type: nmdc:ProvenanceMetadata
+      add_date: "2024-10-30T00:00:00Z"
+      mod_date: "2026-04-03T14:22:00Z"
+      version: "11.19.1"
+      source_system_of_record: GOLD
+      submission_portal_identifier:
+        - "9c9d0a2e-1f3b-4d2a-b1e7-5f6a7b8c9d0e"
+
+workflow_execution_set:
+  # Form 3: started_at_time and ended_at_time are PROV timestamps recording
+  # when the workflow ran. Form 4: was_informed_by links to the upstream
+  # DataGeneration (nucleotide-sequencing event) that produced the inputs.
+  - id: nmdc:wfrqc-99-provdemo9.1
+    type: nmdc:ReadQcAnalysis
+    name: ReadQcAnalysis for provenance forms demo
+    started_at_time: "2026-05-01T08:00:00Z"
+    ended_at_time: "2026-05-01T09:34:12Z"
+    was_informed_by:
+      - nmdc:dgns-99-provdemo0
+    git_url: https://github.com/microbiomedata/ReadsQC
+    execution_resource: NERSC-Perlmutter
+    processing_institution: NMDC
+    version: v1.0.8
+    has_input:
+      - nmdc:dobj-99-provdemo3
+    has_output:
+      - nmdc:dobj-99-provdemo2
+
+data_object_set:
+  # Form 6: superseded_by signals that nmdc:dobj-99-provdemo1 was replaced
+  # by a corrected version (nmdc:dobj-99-provdemo3). Both versions are
+  # retained; consumers should follow superseded_by to find the current one.
+  - id: nmdc:dobj-99-provdemo1
+    type: nmdc:DataObject
+    name: raw_reads_v1.fastq.gz
+    description: Initial raw sequencing reads; corrected in v2.
+    data_object_type: Metagenome Raw Reads
+    data_category: instrument_data
+    superseded_by: nmdc:dobj-99-provdemo3
+  - id: nmdc:dobj-99-provdemo3
+    type: nmdc:DataObject
+    name: raw_reads_v2.fastq.gz
+    description: Corrected raw sequencing reads, superseding nmdc:dobj-99-provdemo1.
+    data_object_type: Metagenome Raw Reads
+    data_category: instrument_data
+  # Form 5: was_generated_by points to the WorkflowExecution above that
+  # produced this DataObject.
+  - id: nmdc:dobj-99-provdemo2
+    type: nmdc:DataObject
+    name: filtered_reads.fastq.gz
+    description: Filtered reads produced by the ReadQcAnalysis above.
+    data_object_type: Filtered Sequencing Reads
+    data_category: processed_data
+    was_generated_by: nmdc:wfrqc-99-provdemo9.1
