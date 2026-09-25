@@ -394,6 +394,14 @@ check-references:
 	$(RUN) python src/scripts/check_references.py \
 		--schema-file $(SOURCE_SCHEMA_PATH)
 
+# Files under assets/ that nothing in the repo names, and files that name an element
+# in deprecated.yaml. Prints to stdout on purpose: writing the report into assets/ is
+# how the stale committed reports this checks for got there in the first place.
+# Procedure: src/docs/asset-lifecycle.md. Gate: tests/test_no_new_unreferenced_assets.py.
+.PHONY: report-asset-usage
+report-asset-usage:
+	$(RUN) python src/scripts/report_asset_usage.py
+
 assets/mentions-of-ids-analysis.txt: src/schema/nmdc.yaml
 	$(RUN) python src/scripts/analyze_mentions_of_ids.py \
 		--schema-file $< 1> $@ 2> $@.log
