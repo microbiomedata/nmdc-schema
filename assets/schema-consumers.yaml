@@ -1,0 +1,112 @@
+# Inventory for coordinating compatibility checks and release updates.
+# This file does not dispatch workflows or declare a consumer compatible.
+registry_version: 1
+reviewed_on: "2026-09-16"
+tracking_issue: https://github.com/microbiomedata/nmdc-schema/issues/3427
+candidate_orchestration_issue: https://github.com/microbiomedata/nmdc-schema/issues/3428
+release_orchestration_issue: https://github.com/microbiomedata/nmdc-schema/issues/3429
+
+# The repository named in each record owns its checks and dependency updates.
+# Named maintainers and runnable integration entry points remain to be confirmed.
+# Read current versions from the dependency files; do not use this as a lockfile.
+consumers:
+  - repository: microbiomedata/submission-schema
+    role: derived_schema
+    status: planned_integration
+    dependencies:
+      - package: nmdc-schema
+        declaration: pyproject.toml
+    candidate_issue: https://github.com/microbiomedata/submission-schema/issues/483
+    release_update_issue: https://github.com/microbiomedata/submission-schema/issues/484
+
+  - repository: microbiomedata/nmdc-lakehouse-schema
+    role: derived_schema
+    status: planned_integration
+    dependencies:
+      - package: nmdc-schema
+        declaration: pyproject.toml
+        usage: development_and_artifact_generation
+    candidate_issue: https://github.com/microbiomedata/nmdc-lakehouse-schema/issues/12
+    release_update_issue: https://github.com/microbiomedata/nmdc-lakehouse-schema/issues/13
+    rollout_issues:
+      - https://github.com/microbiomedata/nmdc-lakehouse-schema/issues/11
+
+  - repository: microbiomedata/nmdc-lakehouse
+    role: data_consumer
+    status: planned_integration
+    dependencies:
+      - package: nmdc-schema
+        declaration: pyproject.toml
+      - package: nmdc-lakehouse-schema
+        declaration: pyproject.toml
+        status: adoption_pending
+        adoption_issue: https://github.com/microbiomedata/nmdc-lakehouse/issues/332
+    candidate_issue: https://github.com/microbiomedata/nmdc-schema/issues/3428
+    release_update_issue: https://github.com/microbiomedata/nmdc-lakehouse/issues/343
+    rollout_issues:
+      - https://github.com/microbiomedata/nmdc-lakehouse/issues/129
+      - https://github.com/microbiomedata/nmdc-lakehouse/issues/332
+
+  - repository: microbiomedata/nmdc-runtime
+    role: application
+    status: planned_integration
+    dependencies:
+      - package: nmdc-schema
+        declaration: pyproject.toml
+    candidate_issue: https://github.com/microbiomedata/nmdc-schema/issues/3428
+    release_update_issue: https://github.com/microbiomedata/nmdc-schema/issues/3429
+    rollout_issues:
+      - https://github.com/microbiomedata/nmdc-runtime/issues/1591
+      - https://github.com/microbiomedata/nmdc-runtime/issues/1597
+
+  - repository: microbiomedata/nmdc-server
+    role: application
+    status: planned_integration
+    dependencies:
+      - package: nmdc-schema
+        declaration: pyproject.toml
+      - package: nmdc-submission-schema
+        declaration: pyproject.toml
+    candidate_issue: https://github.com/microbiomedata/nmdc-schema/issues/3428
+    release_update_issue: https://github.com/microbiomedata/nmdc-schema/issues/3429
+    rollout_issues:
+      - https://github.com/microbiomedata/nmdc-server/issues/2332
+
+  - repository: microbiomedata/nmdc_mass_spectrometry_metadata_generation
+    role: data_producer
+    status: planned_integration
+    dependencies:
+      - package: nmdc-schema
+        declaration: requirements.txt
+    candidate_issue: https://github.com/microbiomedata/nmdc_mass_spectrometry_metadata_generation/issues/280
+    release_update_issue: https://github.com/microbiomedata/nmdc-schema/issues/3429
+    rollout_issues:
+      - https://github.com/microbiomedata/nmdc_mass_spectrometry_metadata_generation/issues/280
+
+  - repository: microbiomedata/nmdc_automation
+    role: application
+    status: discovery
+    dependencies:
+      - package: nmdc-schema
+        declaration: pyproject.toml
+
+  - repository: microbiomedata/nmdc-ingest-agent
+    role: data_producer
+    status: discovery
+    dependencies:
+      - package: nmdc-schema
+        declaration: pyproject.toml
+
+  - repository: microbiomedata/ontology-loader
+    role: application
+    status: discovery
+    dependencies:
+      - package: nmdc-schema
+        declaration: pyproject.toml
+
+historical_paths:
+  - repository: microbiomedata/sample-annotator
+    path: sample_annotator/clients/gold_nmdc_pipeline.py
+    production_owner: microbiomedata/nmdc-runtime
+    evidence: https://github.com/microbiomedata/sample-annotator/issues/106#issuecomment-2590703062
+    note: Production GOLD translation moved to runtime; this does not classify every use of sample-annotator as retired.
