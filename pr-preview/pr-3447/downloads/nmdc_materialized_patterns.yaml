@@ -13,7 +13,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: 11.24.0.post71.dev0+79a1b39d6
+version: 11.24.0.post84.dev0+878db45ce
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   BFO:
@@ -3056,6 +3056,10 @@ enums:
         text: Azenta
         meaning: https://www.azenta.com/
         title: Azenta Life Sciences
+      SeqCenter:
+        text: SeqCenter
+        meaning: https://www.seqcenter.com/
+        title: SeqCenter
   DataCategoryEnum:
     name: DataCategoryEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -7226,8 +7230,8 @@ slots:
     description: 'Metadata-quality badges awarded to this record. Each value names
       one badge, which is present or absent; there are no levels or tiers. Most badges
       name a completeness subset, but not all do: expert_curation is awarded from
-      provenance instead. Awarded by a downstream service, not asserted by submitters,
-      and recalculated whenever the record''s ProvenanceMetadata.mod_date changes.'
+      provenance instead. Awarded by a downstream service, not asserted by submitters.
+      Awarding is additive: a badge, once awarded, is not removed from the record.'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/issues/3227
