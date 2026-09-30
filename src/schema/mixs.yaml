@@ -8180,8 +8180,11 @@ slots:
     slot_uri: MIXS:0001344
     range: QuantityValue
     recommended: true
-    minimum_value: 0
-    maximum_value: 1
+    range_expression:
+      slot_conditions:
+        has_numeric_value:
+          minimum_value: 0
+          maximum_value: 1
     annotations:
       storage_units: "1"
   isotopolog_atom_frac:
@@ -8198,8 +8201,11 @@ slots:
     slot_uri: MIXS:0001346
     range: QuantityValue
     recommended: true
-    minimum_value: 0
-    maximum_value: 1
+    range_expression:
+      slot_conditions:
+        has_numeric_value:
+          minimum_value: 0
+          maximum_value: 1
     annotations:
       storage_units: "1"
     comments:
