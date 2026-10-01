@@ -13,21 +13,6 @@ workflow_execution_set:
     has_output:
      - nmdc:dobj-11-547rwq97
      - nmdc:dobj-11-547rwq98
-metagenome_assembly_set:
-  - id: nmdc:wfmtas-11-23986.1
-    git_url: https://github.com/microbiomedata/metaT_Assembly/releases
-    version: v0.0.1
-    started_at_time: '2024-07-06T14:48:51+00:00'
-    ended_at_time: '2024-07-06T14:48:51+00:00'
-    type: MetatranscriptomeAssembly
-    processing_institution: NMDC
-    was_informed_by:  nmdc:omprc-11-547rwq95
-    has_input:
-     - nmdc:dobj-11-547rwq97
-    has_output:
-     - nmdc:dobj-11-547rwq72
-     - nmdc:dobj-11-547rwq73
-workflow_execution_set:
   - id: nmdc:wfmtan-11-23987.1
     git_url: https://github.com/microbiomedata/mg_annotation
     version: v1.1.1
@@ -42,7 +27,6 @@ workflow_execution_set:
     has_output:
      - nmdc:dobj-11-547rwq75
      - nmdc:dobj-11-547rwq77
-workflow_execution_set:
   - id: nmdc:wfmtex-11-23989.1
     git_url: https://github.com/microbiomedata/metaT_ReadCounts
     version: v0.0.1
@@ -59,3 +43,17 @@ workflow_execution_set:
      - nmdc:dobj-11-547rwq82
      - nmdc:dobj-11-547rwq83
      - nmdc:dobj-11-547rwq84
+metagenome_assembly_set:
+  - id: nmdc:wfmtas-11-23986.1
+    git_url: https://github.com/microbiomedata/metaT_Assembly/releases
+    version: v0.0.1
+    started_at_time: '2024-07-06T14:48:51+00:00'
+    ended_at_time: '2024-07-06T14:48:51+00:00'
+    type: MetatranscriptomeAssembly
+    processing_institution: NMDC
+    was_informed_by:  nmdc:omprc-11-547rwq95
+    has_input:
+     - nmdc:dobj-11-547rwq97
+    has_output:
+     - nmdc:dobj-11-547rwq72
+     - nmdc:dobj-11-547rwq73

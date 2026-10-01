@@ -10,7 +10,6 @@ has_input:
   - nmdc:dobj-11-fh8dk924
 has_output:
   - nmdc:dobj-11-fh8dk925
-type: nmdc:MetaproteomicsAnalysis
 was_informed_by:
   - nmdc:dgms-11-fh8dk920
 metaproteomics_analysis_category: matched_metagenome
