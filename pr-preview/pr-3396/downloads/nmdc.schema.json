@@ -9754,7 +9754,7 @@
                     "description": "Isotopologue (isotope source/substrate/molecule) added to the biological sample."
                 },
                 "isotopolog_atom_pos": {
-                    "description": "InChI label designating set of all isotopically enriched atoms in isotopologue. Multiple values allowed, separated by a | and should be orded the same as the isotopolog.",
+                    "description": "InChI label designating set of all isotopically enriched atoms in isotopologue. This slot should be omitted for natural abundance samples",
                     "pattern": "^InChI=1S?/[A-Za-z0-9.]+(/[^/]+)*/i(?:[0-9]+[+-][0-9]+(?:,[0-9]+[+-][0-9]+)*(?:/h[^/]+)?|/h[^/]+)$",
                     "type": [
                         "string",
@@ -9837,7 +9837,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. Multiple values allowed, separated by a | and should be orded the same as the isotopolog."
+                    "description": "The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog. "
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -18257,5 +18257,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "11.24.0.post108.dev0+d5d640196"
+    "version": "11.24.0.post109.dev0+7c0ed181b"
 }
