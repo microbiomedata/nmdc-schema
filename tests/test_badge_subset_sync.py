@@ -40,6 +40,42 @@ BADGE_BAR_ANNOTATION = "badge_minimum_slots"
 # value from the subset correspondence the other badges must satisfy.
 PROVENANCE_BADGES = {"expert_curation"}
 
+# The nmdc-runtime Dagster job that awards badges reads two things from this
+# schema at run time: which slots are in each badge subset, and each subset's
+# badge_minimum_slots. Everything else it needs is written into its own code:
+# the badge names it awards, the slot ranges it knows how to check for
+# emptiness, and the source_system_of_record value for expert_curation.
+#
+# These tests do not read or import the runtime code. BADGE_JOB_RANGES and
+# EXPERT_CURATION_SOURCE below are copies of what the job contained when they
+# were written (nmdc-runtime f9ef7ab, 2026-10-01). So a failure here is an early
+# warning that a schema change may break the job or make it skip a badge, not
+# proof that it will, and a passing run says nothing about changes made on the
+# runtime side. If the job changes, update these copies by hand.
+#
+# Not checked here: the job only awards badges it has a method for, so a new
+# completeness badge added to MetadataBadgeEnum and given a subset is never
+# awarded until the job gains code for it.
+#
+# See https://github.com/microbiomedata/nmdc-schema/issues/3440.
+BADGE_JOB = (
+    "nmdc_runtime/site/ops/badges.py in https://github.com/microbiomedata/nmdc-runtime"
+)
+
+# Slot ranges the badge job has an emptiness rule for, in addition to enums.
+BADGE_JOB_RANGES = {
+    "ControlledIdentifiedTermValue",
+    "ControlledTermValue",
+    "QuantityValue",
+    "TextValue",
+    "float",
+    "string",
+}
+
+# The badge job awards expert_curation when a biosample's
+# provenance_metadata.source_system_of_record equals this literal value.
+EXPERT_CURATION_SOURCE = "NMDC_Submission_Portal"
+
 
 def _badge_topic_subsets(schema_view):
     """Names of subsets that belong to the badge_topic group (via in_subset).
@@ -59,6 +95,15 @@ def _badge_permissible_values(schema_view):
 
 def _completeness_badges(schema_view):
     return _badge_permissible_values(schema_view) - PROVENANCE_BADGES
+
+
+def _badge_subset_members(schema_view, subset_name):
+    """Names of the slots whose in_subset includes the given subset."""
+    return sorted(
+        name
+        for name, slot in schema_view.all_slots().items()
+        if subset_name in (slot.in_subset or [])
+    )
 
 
 class TestBadgeSubsetSync(unittest.TestCase):
@@ -151,18 +196,16 @@ class TestBadgeSubsetSync(unittest.TestCase):
                 annotation,
                 f"badge subset '{name}' has no {BADGE_BAR_ANNOTATION} annotation",
             )
-            try:
-                bar = int(annotation.value)
-            except (TypeError, ValueError):
-                self.fail(
-                    f"badge subset '{name}' has a non-integer "
-                    f"{BADGE_BAR_ANNOTATION}: {annotation.value!r}"
-                )
-            member_count = sum(
-                1
-                for slot in self.schema_view.all_slots().values()
-                if name in (slot.in_subset or [])
+            bar = annotation.value
+            # An unquoted YAML integer. "2" and 2.0 would convert with int(),
+            # but the badge job requires an integer and fails on either.
+            self.assertTrue(
+                isinstance(bar, int) and not isinstance(bar, bool),
+                f"badge subset '{name}' has {BADGE_BAR_ANNOTATION} {bar!r} "
+                f"({type(bar).__name__}); write it as an unquoted integer, "
+                f"because {BADGE_JOB} requires one",
             )
+            member_count = len(_badge_subset_members(self.schema_view, name))
             self.assertGreaterEqual(
                 bar,
                 1,
@@ -175,6 +218,65 @@ class TestBadgeSubsetSync(unittest.TestCase):
                 f"badge subset '{name}' has {BADGE_BAR_ANNOTATION} {bar} but only "
                 f"{member_count} member slots, so no record could ever earn it",
             )
+
+    def test_badge_subset_members_are_biosample_slots(self):
+        """Badges are awarded to biosamples, so every member must be a Biosample slot.
+
+        SchemaView.induced_slot does not fail for a slot the class lacks; it
+        returns the slot with the default range, so the badge job would quietly
+        check a slot no biosample can have.
+        """
+        biosample_slots = set(self.schema_view.class_slots("Biosample"))
+        for name in _badge_topic_subsets(self.schema_view):
+            outside = [
+                slot
+                for slot in _badge_subset_members(self.schema_view, name)
+                if slot not in biosample_slots
+            ]
+            self.assertEqual(
+                outside,
+                [],
+                f"badge subset '{name}' has members that are not Biosample slots",
+            )
+
+    def test_badge_subset_ranges_are_readable_by_the_badge_job(self):
+        """Every member's range must be one the badge job has an emptiness rule for."""
+        enums = set(self.schema_view.all_enums())
+        for name in _badge_topic_subsets(self.schema_view):
+            unreadable = {}
+            for slot in _badge_subset_members(self.schema_view, name):
+                slot_range = self.schema_view.induced_slot(slot, "Biosample").range
+                if slot_range not in BADGE_JOB_RANGES and slot_range not in enums:
+                    unreadable[slot] = slot_range
+            self.assertEqual(
+                unreadable,
+                {},
+                f"badge subset '{name}' has members with ranges the badge job "
+                f"has no rule for; add a rule to {BADGE_JOB} and to "
+                f"BADGE_JOB_RANGES here, or drop the slot from the subset",
+            )
+
+    def test_expert_curation_source_value_exists(self):
+        """The badge job matches this permissible value by its literal name."""
+        source_range = self.schema_view.induced_slot(
+            "source_system_of_record", "ProvenanceMetadata"
+        ).range
+        self.assertTrue(
+            source_range in self.schema_view.all_enums(),
+            f"source_system_of_record now has range {source_range!r}, not an "
+            f"enum; {BADGE_JOB} compares it against {EXPERT_CURATION_SOURCE} "
+            f"to award expert_curation, so change both together",
+        )
+        permissible_values = self.schema_view.get_enum(
+            source_range, strict=True
+        ).permissible_values
+        self.assertIn(
+            EXPERT_CURATION_SOURCE,
+            permissible_values,
+            f"{source_range} no longer has {EXPERT_CURATION_SOURCE}, which "
+            f"{BADGE_JOB} compares against to award expert_curation; change "
+            f"both together",
+        )
 
     def test_every_badge_has_a_title(self):
         # The Data Portal displays badge names; a title keeps it from
