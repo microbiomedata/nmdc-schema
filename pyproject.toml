@@ -47,9 +47,6 @@ dependencies = [
     # Transitive deps pinned directly to ensure users get security fixes
     # (GHSA-qccp-gfcp-xxvc CVE-2026-44431, GHSA-mf9v-mfxr-j63j CVE-2026-44432)
     "urllib3>=2.7.0,<3.0.0",
-    # pymongo is a direct dependency, not a transitive pin: the package imports
-    # it in nmdc_schema/migrators/adapters/mongo_adapter.py, run_migrator.py and
-    # dump_single_modality.py.
     "pymongo>=4.7.2,<5.0.0",
 ]
 
