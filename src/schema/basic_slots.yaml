@@ -97,6 +97,7 @@ subsets:
 
 slots:
   badges:
+    title: Metadata Quality Badges
     description: >-
       Metadata-quality badges awarded to this record. Each value names one
       badge, which is present or absent; there are no levels or tiers. Most
@@ -233,6 +234,7 @@ slots:
     range: boolean
 
   infiltrations:
+    title: Infiltrations
     description: The amount of time it takes to complete each infiltration activity
     examples:
       - value: '00:01:32'
@@ -248,9 +250,11 @@ slots:
       - https://www.protocols.io/view/field-sampling-protocol-kqdg3962pg25/v1
 
   soluble_iron_micromol:
+    title: Soluble Iron (micromol)
     range: string
 
   sample_collection_site:
+    title: Sample Collection Site
     description: >-
       Free-text description of the place where the sample was collected: the
       geographic or environmental site or named location.
@@ -266,6 +270,7 @@ slots:
     range: string
 
   salinity_category:
+    title: Salinity Category
     description:
       "Categorical description of the sample's salinity. Examples: halophile,
         halotolerant, hypersaline, euryhaline"
@@ -274,20 +279,25 @@ slots:
       - "maps to gold:salinity"
 
   proport_woa_temperature:
+    title: Proport WOA Temperature
     range: string
 
   location:
+    title: Location
     range: string
 
   host_name:
+    title: Host Name
     range: string
     in_subset:
       - host_information
 
   community:
+    title: Community
     range: string
 
   embargoed:
+    title: Embargoed
     description: >-
       If true, the data are embargoed and not available for public access.
     range: boolean
@@ -299,6 +309,7 @@ slots:
       - applying to a Study may not be granular enough
 
   habitat:
+    title: Habitat
     range: string
 
   version:
@@ -370,6 +381,7 @@ slots:
       - NCIT:C39409
 
   ecosystem_path_id:
+    title: GOLD Ecosystem Path ID
     range: integer
     description: A unique id representing the GOLD classifiers associated with a sample.
     examples:
@@ -390,6 +402,7 @@ slots:
         annotations:
           source: https://gold.jgi.doe.gov/ecosystem_classification
   ecosystem:
+    title: Ecosystem
     is_a: gold_path_field
     description:
       An ecosystem is a combination of a physical environment (abiotic
@@ -406,6 +419,7 @@ slots:
     see_also:
       - https://gold.jgi.doe.gov/help
   ecosystem_category:
+    title: Ecosystem Category
     is_a: gold_path_field
     description:
       Ecosystem categories represent divisions within the ecosystem based
@@ -419,6 +433,7 @@ slots:
     see_also:
       - https://gold.jgi.doe.gov/help
   ecosystem_type:
+    title: Ecosystem Type
     is_a: gold_path_field
     description:
       Ecosystem types represent things having common characteristics within
@@ -434,6 +449,7 @@ slots:
     see_also:
       - https://gold.jgi.doe.gov/help
   ecosystem_subtype:
+    title: Ecosystem Subtype
     is_a: gold_path_field
     description:
       Ecosystem subtypes represent further subdivision of Ecosystem types
@@ -446,6 +462,7 @@ slots:
     see_also:
       - https://gold.jgi.doe.gov/help
   specific_ecosystem:
+    title: Specific Ecosystem
     is_a: gold_path_field
     description:
       Specific ecosystems represent specific features of the environment
@@ -467,6 +484,7 @@ slots:
     description: The date on which information was last modified in a database.
 
   ncbi_taxonomy_name:
+    title: NCBI Taxonomy Name
     range: string
   ncbi_project_name:
     range: string
@@ -529,6 +547,7 @@ slots:
       - MIXS:0000037
 
   id:
+    title: ID
     required: true
     identifier: true
     range: uriorcurie
@@ -571,6 +590,7 @@ slots:
       - dcterms:alternative
 
   alternative_names:
+    title: Alternative Names
     range: string
     multivalued: true
     description: >-
@@ -589,6 +609,7 @@ slots:
       The distinction between description and alternative descriptions is application-specific.
 
   alternative_identifiers:
+    title: Alternative Identifiers
     range: uriorcurie
     multivalued: true
     description: >-
@@ -748,6 +769,7 @@ slots:
   # --- Host-of-sample slots (from JGI Isolate v19 form) ---
 
   host_genus:
+    title: Host Genus
     description: Genus of the host organism that the sample was collected from.
     in_subset:
       - jgi_isolate
@@ -770,6 +792,7 @@ slots:
       - GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage JSE, queried 2026-04-30)
 
   host_species:
+    title: Host Species
     description: Species of the host organism that the sample was collected from.
     in_subset:
       - jgi_isolate
@@ -792,6 +815,7 @@ slots:
       - GOLD organism_v2 host_name "Escherichia coli K-12" (Go0084483 Escherichia phage JSE, queried 2026-04-30)
 
   host_strain:
+    title: Host Strain
     description: Strain of the host organism that the sample was collected from.
     in_subset:
       - jgi_isolate
