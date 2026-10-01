@@ -18,13 +18,11 @@ See https://github.com/microbiomedata/nmdc-schema/issues/3227 (badges slot and
 enum), https://github.com/microbiomedata/nmdc-schema/issues/3228 (subsets) and
 https://github.com/microbiomedata/nmdc-schema/issues/3326 (qualifying bar).
 
-Badge-topic subsets carry created_on, last_updated_on and modified_by so a
-re-evaluation job can tell that a badge definition changed and score every
-record against it again, instead of re-running badge logic over every
-biosample on every release. See
-https://github.com/microbiomedata/nmdc-schema/issues/3374, and
-https://github.com/microbiomedata/issues/issues/1820 for the job that reads
-them.
+Badge-topic subsets carry created_on, last_updated_on and modified_by as a
+record of when each badge definition was made and last changed. See
+https://github.com/microbiomedata/nmdc-schema/issues/3374. The job that awards
+badges (https://github.com/microbiomedata/issues/issues/1820) reads each
+subset's members and badge_minimum_slots, not these dates.
 """
 
 import unittest
