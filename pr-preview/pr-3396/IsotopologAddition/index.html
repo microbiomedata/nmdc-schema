@@ -444,7 +444,7 @@
 <tr>
 <td><a href="../isotopolog/">isotopolog</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../ChemicalEntityEnum/">ChemicalEntityEnum</a></td>
-<td>Isotopologue (isotope source/substrate/molecule) added to the biological sample.</td>
+<td>Isotopolog (isotope source/substrate/molecule) added to the biological sample.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -456,7 +456,7 @@
 <tr>
 <td><a href="../isotopolog_label/">isotopolog_label</a></td>
 <td>1 <br/> <a href="../IsotopologLabelEnum/">IsotopologLabelEnum</a></td>
-<td>List whether the isotopologue added to this biological sample was...</td>
+<td>List whether the isotopolog added to this biological sample was...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -592,7 +592,7 @@ attributes:
     inlined_as_list: true
   isotopolog:
     name: isotopolog
-    description: Isotopologue (isotope source/substrate/molecule) added to the biological
+    description: Isotopolog (isotope source/substrate/molecule) added to the biological
       sample.
     title: isotopolog
     comments:
@@ -635,8 +635,8 @@ attributes:
     range: string
   isotopolog_label:
     name: isotopolog_label
-    description: List whether the isotopologue added to this biological sample was
-      heavy-labelled or natural abundance
+    description: List whether the isotopolog added to this biological sample was heavy-labelled
+      or natural abundance
     title: isotopolog label status
     examples:
     - value: natural abundance
@@ -652,8 +652,8 @@ attributes:
   isotopolog_atom_pos:
     name: isotopolog_atom_pos
     description: InChI label designating set of all isotopically enriched atoms in
-      isotopologue. This slot should be omitted for natural abundance samples
-    title: set of labeled atoms in isotopologue
+      isotopolog. This slot should be omitted for natural abundance samples
+    title: set of labeled atoms in isotopolog
     examples:
     - value: InChI=1S/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3/i1+1,2+1,3+1,4+1,5+1,6+1,7+1
     from_schema: https://w3id.org/nmdc/nmdc
@@ -678,8 +678,7 @@ attributes:
       as a total mass per volume.
     title: dose of isotopolog
     comments:
-    - isotopolog mass / total volume soil; ppm of isotopologue in total container
-      volume
+    - isotopolog mass / total volume soil; ppm of isotopolog in total container volume
     examples:
     - object:
         type: nmdc:QuantityValue

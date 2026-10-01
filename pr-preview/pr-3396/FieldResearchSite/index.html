@@ -429,17 +429,11 @@
 
   FieldResearchSite : cur_vegetation
 
-      FieldResearchSite --&gt; "0..1" TextValue : cur_vegetation
-    click TextValue href "../TextValue"
-
   FieldResearchSite : description
 
   FieldResearchSite : elev
 
   FieldResearchSite : geo_loc_name
-
-      FieldResearchSite --&gt; "0..1" TextValue : geo_loc_name
-    click TextValue href "../TextValue"
 
   FieldResearchSite : habitat
 
@@ -451,9 +445,6 @@
     click GeolocationValue href "../GeolocationValue"
 
   FieldResearchSite : local_class
-
-      FieldResearchSite --&gt; "0..1" TextValue : local_class
-    click TextValue href "../TextValue"
 
   FieldResearchSite : name
 
@@ -498,7 +489,7 @@
 <tbody>
 <tr>
 <td><a href="../cur_vegetation/">cur_vegetation</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Vegetation classification from one or more standard classification systems,...</td>
 <td>direct</td>
 </tr>
@@ -510,7 +501,7 @@
 </tr>
 <tr>
 <td><a href="../geo_loc_name/">geo_loc_name</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The geographical origin of the sample as defined by the country or sea name...</td>
 <td>direct</td>
 </tr>
@@ -528,7 +519,7 @@
 </tr>
 <tr>
 <td><a href="../local_class/">local_class</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Soil classification based on local soil classification system</td>
 <td>direct</td>
 </tr>
@@ -740,7 +731,7 @@ attributes:
     domain_of:
     - FieldResearchSite
     - Biosample
-    range: TextValue
+    range: string
   elev:
     name: elev
     annotations:
@@ -789,7 +780,7 @@ attributes:
     domain_of:
     - FieldResearchSite
     - Biosample
-    range: TextValue
+    range: string
     structured_pattern:
       syntax: '^{country}: {region}, {specific_location}$'
       interpolated: true
@@ -848,7 +839,7 @@ attributes:
     domain_of:
     - FieldResearchSite
     - Biosample
-    range: TextValue
+    range: string
   part_of:
     name: part_of
     description: Links a resource to another resource that either logically or physically
