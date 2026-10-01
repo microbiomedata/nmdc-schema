@@ -8187,8 +8187,6 @@ slots:
   isotopolog_atom_frac:
     description: The fraction of heavy-labelled atoms out of all atoms of a given element in the isotopolog.
     title: atom fraction of isotopolog
-    todos:
-      - This ordered slot provides how to write an example in a spreadsheet, but this will not provide a multivalued ordered slot in a database. As such, this slot also couldn't be marked as multivalued in the yaml.
     examples:
       - object:
           type: nmdc:QuantityValue
@@ -8203,7 +8201,7 @@ slots:
     annotations:
       storage_units: "1"
     comments:
-      - In NMDC each IsotopologAddition entry describes one added input, an isotopolog or a hetero_isotopolog, and carries at most one atom fraction, so the pipe-separated ordering described for spreadsheets does not apply.
+      - In MIxS spreadsheets this field can hold several values separated by a pipe character (|), listed in the same order as the isotopolog values, so each fraction lines up with its compound. In NMDC each IsotopologAddition entry pairs one isotopolog or hetero_isotopolog with its own atom fraction, so the pairing is kept by structure and an entry has one value. A compound labeled with two isotopes, such as 15N and 13C glycine, is entered as two IsotopologAddition entries, one per isotope.
   isotopolog_atom_pos:
     description: InChI label designating set of all isotopically enriched atoms in isotopologue.
     title: set of labeled atoms in isotopologue
@@ -8214,7 +8212,7 @@ slots:
     recommended: true
     pattern: ^inchi:InChI\=1S?\/[A-Za-z0-9\.]+(\+[0-9]+)?(\/[cnpqbtmsih][A-Za-z0-9\-\+\(\)\,\/\?\;\.]+)*$
     comments:
-      - In NMDC each IsotopologAddition entry describes one added input, an isotopolog or a hetero_isotopolog, and carries at most one set of labeled atoms, so the pipe-separated ordering described for spreadsheets does not apply.
+      - In MIxS spreadsheets this field can hold several InChI strings separated by a pipe character (|), listed in the same order as the isotopolog values. In NMDC each IsotopologAddition entry pairs one isotopolog or hetero_isotopolog with its own InChI, so the pairing is kept by structure and an entry has one value.
   isotopolog_dose:
     annotations:
       Preferred_unit: ppm
