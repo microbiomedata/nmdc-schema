@@ -18,13 +18,11 @@ See https://github.com/microbiomedata/nmdc-schema/issues/3227 (badges slot and
 enum), https://github.com/microbiomedata/nmdc-schema/issues/3228 (subsets) and
 https://github.com/microbiomedata/nmdc-schema/issues/3326 (qualifying bar).
 
-Badge-topic subsets carry created_on, last_updated_on and modified_by so a
-re-evaluation job can tell that a badge definition changed and score every
-record against it again, instead of re-running badge logic over every
-biosample on every release. See
-https://github.com/microbiomedata/nmdc-schema/issues/3374, and
-https://github.com/microbiomedata/issues/issues/1820 for the job that reads
-them.
+Badge-topic subsets carry created_on, last_updated_on and modified_by as a
+record of when each badge definition was made and last changed. See
+https://github.com/microbiomedata/nmdc-schema/issues/3374. The job that awards
+badges (https://github.com/microbiomedata/issues/issues/1820) reads each
+subset's members and badge_minimum_slots, not these dates.
 """
 
 import unittest
@@ -42,9 +40,24 @@ BADGE_BAR_ANNOTATION = "badge_minimum_slots"
 # value from the subset correspondence the other badges must satisfy.
 PROVENANCE_BADGES = {"expert_curation"}
 
-# The nmdc-runtime Dagster job that awards badges reads the subsets defined
-# here, so the tests below keep them within what that job can read. See
-# https://github.com/microbiomedata/nmdc-schema/issues/3440.
+# The nmdc-runtime Dagster job that awards badges reads two things from this
+# schema at run time: which slots are in each badge subset, and each subset's
+# badge_minimum_slots. Everything else it needs is written into its own code:
+# the badge names it awards, the slot ranges it knows how to check for
+# emptiness, and the source_system_of_record value for expert_curation.
+#
+# These tests do not read or import the runtime code. BADGE_JOB_RANGES and
+# EXPERT_CURATION_SOURCE below are copies of what the job contained when they
+# were written (nmdc-runtime f9ef7ab, 2026-10-01). So a failure here is an early
+# warning that a schema change may break the job or make it skip a badge, not
+# proof that it will, and a passing run says nothing about changes made on the
+# runtime side. If the job changes, update these copies by hand.
+#
+# Not checked here: the job only awards badges it has a method for, so a new
+# completeness badge added to MetadataBadgeEnum and given a subset is never
+# awarded until the job gains code for it.
+#
+# See https://github.com/microbiomedata/nmdc-schema/issues/3440.
 BADGE_JOB = (
     "nmdc_runtime/site/ops/badges.py in https://github.com/microbiomedata/nmdc-runtime"
 )
@@ -264,6 +277,14 @@ class TestBadgeSubsetSync(unittest.TestCase):
             f"{BADGE_JOB} compares against to award expert_curation; change "
             f"both together",
         )
+
+    def test_every_badge_has_a_title(self):
+        # The Data Portal displays badge names; a title keeps it from
+        # deriving them from the snake_case value. See
+        # https://github.com/microbiomedata/nmdc-server/issues/2390
+        enum = self.schema_view.get_enum(BADGE_ENUM, strict=True)
+        untitled = sorted(name for name, pv in enum.permissible_values.items() if not pv.title)
+        self.assertListEqual(untitled, [], "MetadataBadgeEnum values without a title")
 
 
 if __name__ == "__main__":

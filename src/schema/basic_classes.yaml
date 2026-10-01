@@ -725,6 +725,7 @@ slots:
       - value: c41dfeac-102e-43b2-adae-6a67f25791f0
 
   associated_studies:
+    title: Associated Studies
     description: The study associated with a resource.
     range: Study
     multivalued: true
@@ -942,6 +943,7 @@ slots:
       resultant DataObjects should be used in favor of this record.
 
   provenance_metadata: 
+    title: Provenance Metadata
     range: ProvenanceMetadata
     description: Provides information about the provenance of a record.
     

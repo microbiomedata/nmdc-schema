@@ -100,7 +100,6 @@ dev = [
     "mypy>=1.10.0,<3.0.0",
     "oaklib>=0.6.23,<1.0.0",
     "pandas>=2.2.3,<4.0.0",
-    "psycopg2-binary>=2.9.10,<3.0.0",
     "pylint>=3.2.2,<5.0.0",
     # Security floor for a docs-only transitive of mkdocs-material and
     # mkdocs-mermaid2-plugin. It sat in [project.dependencies] purely to push a
