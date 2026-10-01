@@ -656,11 +656,9 @@
 '.slots.estimated_size.maximum_value = 100000000000'
 # esplims ceiling rationale is internal modeling context -> notes, not comments.
 '.slots.estimated_size.notes = ["The maximum_value here (1e11 bp = 100,000 Mb) is the eukaryote ceiling from JGI esplims. The tighter microbe ceiling (5,000 Mb) and the category-conditional required rule are enforced in submission-schema via class rules on IsolateInterface, keyed on biosafety_mat_cat."]'
-'.slots.isotopolog_atom_frac.minimum_value = 0'
-'.slots.isotopolog_atom_frac.maximum_value = 1'
+'.slots.isotopolog_atom_frac.range_expression.slot_conditions.has_numeric_value = {"minimum_value": 0, "maximum_value": 1}'
 '.slots.gradient_position.minimum_value= -1'
-'.slots.gradient_pos_rel_am.minimum_value = 0'
-'.slots.gradient_pos_rel_am.maximum_value =1'
+'.slots.gradient_pos_rel_am.range_expression.slot_conditions.has_numeric_value = {"minimum_value": 0, "maximum_value": 1}'
 
 # these slots, by their old names, are not used anywhere in mixs.yaml and seem to confuse the mkdocs search when looking for has_unit etc.
 'del(.slots.["has numeric value"])'
