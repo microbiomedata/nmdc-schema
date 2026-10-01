@@ -43,13 +43,13 @@ material_processing_set:
       - nmdc:procsm-99-library
     type: nmdc:LibraryPreparation
 processed_sample_set:
-  - id: nmdc:procsm-99-xyz1
+  - id: nmdc:procsm-99-pooled
     name: first processed sample set
     type: nmdc:ProcessedSample
-  - id: nmdc:procsm-99-xyz2
+  - id: nmdc:procsm-99-extract
     name: first DNA extract
     type: nmdc:ProcessedSample
-  - id: nmdc:procsm-99-xyz3
+  - id: nmdc:procsm-99-library
     name: first library
     type: nmdc:ProcessedSample
 biosample_set:

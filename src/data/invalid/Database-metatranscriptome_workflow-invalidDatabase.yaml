@@ -5,9 +5,10 @@ workflow_execution_set:
     version: v0.0.1
     started_at_time: '2023-08-05T14:48:51+00:00'
     ended_at_time: '2021-08-05T14:48:51+00:00'
-    type: ReadQcAnalysis
+    type: nmdc:ReadQcAnalysis
     processing_institution: NMDC
-    was_informed_by:  nmdc:omprc-11-547rwq95
+    was_informed_by:
+      - nmdc:omprc-11-547rwq95
     has_input:
      - nmdc:dobj-11-547rwq96
     has_output:
@@ -18,7 +19,7 @@ workflow_execution_set:
     version: v1.1.1
     started_at_time: '2024-07-07T14:48:51+00:00'
     ended_at_time: '2024-07-07T14:48:51+00:00'
-    type: MetatranscriptomeAnnotationActivity
+    type: nmdc:MetatranscriptomeAnnotation
     was_informed_by:
       - nmdc:omprc-11-547rwq95
     processing_institution: NMDC
@@ -32,8 +33,9 @@ workflow_execution_set:
     version: v0.0.1
     started_at_time: '2024-07-08T14:48:51+00:00'
     ended_at_time: '2024-07-08T14:48:51+00:00'
-    type: MetatranscriptomeExpressionAnalysis
-    was_informed_by:  nmdc:omprc-11-547rwq95
+    type: nmdc:MetatranscriptomeExpressionAnalysis
+    was_informed_by:
+      - nmdc:omprc-11-547rwq95
     processing_institution: NMDC
     has_input:
      - nmdc:dobj-11-547rwq75
@@ -49,9 +51,10 @@ metagenome_assembly_set:
     version: v0.0.1
     started_at_time: '2024-07-06T14:48:51+00:00'
     ended_at_time: '2024-07-06T14:48:51+00:00'
-    type: MetatranscriptomeAssembly
+    type: nmdc:MetatranscriptomeAssembly
     processing_institution: NMDC
-    was_informed_by:  nmdc:omprc-11-547rwq95
+    was_informed_by:
+      - nmdc:omprc-11-547rwq95
     has_input:
      - nmdc:dobj-11-547rwq97
     has_output:
