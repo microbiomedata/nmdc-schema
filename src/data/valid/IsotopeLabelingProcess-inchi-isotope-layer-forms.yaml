@@ -1,6 +1,6 @@
 # Two InChI isotope-layer forms that isotopolog_atom_pos must accept: deuterium written as an
 # isotopic hydrogen layer (/i/hD2, ChEBI's own InChI for heavy water), and a two-component salt
-# whose layers are separated by ";" (13C sodium acetate, InChI from PubChem).
+# whose layers are separated by ";" (15N ammonium chloride, InChI from PubChem).
 id: nmdc:labp-99-abcde14
 name: labeling of my awesome biosample
 type: nmdc:IsotopeLabelingProcess
@@ -22,13 +22,13 @@ isotopolog_additions:
         name: water
         type: nmdc:OntologyClass
   - isotopolog_label: isotopically labeled
-    isotope: 13C
+    isotope: 15N
     type: nmdc:IsotopologAddition
-    isotopolog_atom_pos: InChI=1S/C2H4O2.Na/c1-2(3)4;/h1H3,(H,3,4);/q;+1/p-1/i2+1;
+    isotopolog_atom_pos: InChI=1S/ClH.H3N/h1H;1H3/i;1+1
     isotopolog:
       type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: acetic acid [CHEBI:15366]
+      has_raw_value: ammonium chloride [CHEBI:31206]
       term:
-        id: CHEBI:15366
-        name: acetic acid
+        id: CHEBI:31206
+        name: ammonium chloride
         type: nmdc:OntologyClass
