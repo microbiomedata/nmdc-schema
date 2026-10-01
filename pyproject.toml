@@ -47,6 +47,9 @@ dependencies = [
     # Transitive deps pinned directly to ensure users get security fixes
     # (GHSA-qccp-gfcp-xxvc CVE-2026-44431, GHSA-mf9v-mfxr-j63j CVE-2026-44432)
     "urllib3>=2.7.0,<3.0.0",
+    # pymongo is a direct dependency, not a transitive pin: the package imports
+    # it in nmdc_schema/migrators/adapters/mongo_adapter.py, run_migrator.py and
+    # dump_single_modality.py.
     "pymongo>=4.7.2,<5.0.0",
 ]
 
@@ -100,7 +103,6 @@ dev = [
     "mypy>=1.10.0,<3.0.0",
     "oaklib>=0.6.23,<1.0.0",
     "pandas>=2.2.3,<4.0.0",
-    "psycopg2-binary>=2.9.10,<3.0.0",
     "pylint>=3.2.2,<5.0.0",
     # Security floor for a docs-only transitive of mkdocs-material and
     # mkdocs-mermaid2-plugin. It sat in [project.dependencies] purely to push a
